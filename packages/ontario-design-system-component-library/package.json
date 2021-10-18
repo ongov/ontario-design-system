@@ -1,5 +1,5 @@
 {
-  "name": "ontario-design-system-components",
+  "name": "ontario-design-system-component-library",
   "version": "0.0.1",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
@@ -9,7 +9,7 @@
   "types": "dist/custom-elements/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/ontario-design-system-components/ontario-design-system-components.esm.js",
+  "unpkg": "dist/ontario-design-system-component-library/ontario-design-system-component-library.esm.js",
   "files": [
     "dist/",
     "loader/"
@@ -25,10 +25,13 @@
     "@stencil/core": "^2.7.0"
   },
   "devDependencies": {
+    "@stencil/react-output-target": "0.0.9",
+    "@stencil/sass": "^1.4.1",
     "@types/jest": "^26.0.24",
+    "@types/puppeteer": "^5.4.3",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
     "puppeteer": "^10.0.0"
   },
-  "license": "MIT"
+  "license": "Apache-2.0"
 }
