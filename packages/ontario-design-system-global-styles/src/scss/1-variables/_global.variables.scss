@@ -1,0 +1,13 @@
+/*
+*  Global variables
+*  Used across multiple components
+*/
+
+// Builds a rem-calc function for use in SCSS
+@function rem-calc($size) {
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
+}
+
+// Radius for rounded corners (for example, buttons)
+$global-radius: 4px;

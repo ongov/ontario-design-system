@@ -1,0 +1,96 @@
+
+/*
+*  Global colour variables
+*
+*  1 - Greyscale colours
+*  2 - System colours
+*  3 - Accent colours
+*    3.1 - Main
+*    3.2 - Light
+*    3.3 - Dark
+*    3.4 - Callout backgrounds
+*/
+
+/*** 1 - Greyscale colours ***/
+$ontario-colour-white: #FFFFFF;
+$ontario-greyscale-5: darken(#FFFFFF, 5); // #F2F2F2
+$ontario-greyscale-20: darken(#FFFFFF, 20); // #CCCCCC
+$ontario-greyscale-40: darken(#FFFFFF, 40); // #999999
+$ontario-greyscale-60: darken(#FFFFFF, 60); // #666666
+$ontario-greyscale-70: darken(#FFFFFF, 70); // #4d4d4d
+$ontario-colour-black: darken(#FFFFFF, 90); // #1A1A1A
+
+/*** 2 - System colours ***/
+// Link and primary button colours
+$ontario-colour-link: #0066CC;
+$ontario-colour-link--hover: #00478F;
+$ontario-colour-link--active: #002142;
+$ontario-colour-link--visited: #551A8B;
+
+// Secondary and tertiary button colours
+$ontario-colour-button-secondary--hover: scale_color($ontario-colour-link, $lightness: 90%); // #E0F0FF
+$ontario-colour-button-secondary--active: scale_color($ontario-colour-link,  $lightness: 80%); // #C2E0FF
+$ontario-colour-button-tertiary--hover: scale_color($ontario-colour-black,  $lightness: 90%); // #E8E8E8
+$ontario-colour-button-tertiary--active: scale_color($ontario-colour-black,  $lightness: 80%); // #D1D1D1
+
+// Alert colours
+$ontario-colour-alert: #CD0000;
+$ontario-colour-alert-light: #FCEFF0;
+$ontario-colour-warning: #FFD440;
+$ontario-colour-warning-light: #FEF6DC;
+$ontario-colour-success: #118847;
+$ontario-colour-success-light: #E5f0E9;
+$ontario-colour-information: #1080A6;
+$ontario-colour-information-light: #E2F0F4;
+
+// Focus colour
+$ontario-colour-focus: #009ADB;
+
+/*** 3 - Accent colours ***/
+
+/* Main */
+$ontario-colour-gold: #CBA52E;
+$ontario-colour-yellow: #FCAF17;
+$ontario-colour-taupe: #C1B28F;
+$ontario-colour-green: #39B54A;
+$ontario-colour-lime: #8DC63F;
+$ontario-colour-teal: #49A7A2;
+$ontario-colour-sky: #00B2E3;
+$ontario-colour-blue: #3193CC;
+$ontario-colour-purple: #B975B7;
+$ontario-colour-orange: #F15A22;
+$ontario-colour-red: #F0454B;
+$ontario-colour-magenta: #F03093;
+
+/* Light */
+$ontario-colour-light-gold: #F0E7CC;
+$ontario-colour-light-yellow: #F8E5C3;
+$ontario-colour-light-taupe: #EBE7DB;
+$ontario-colour-light-green: #D1EFD4;
+$ontario-colour-light-lime: #DDEDC7;
+$ontario-colour-light-teal: #CFEDED;
+$ontario-colour-light-sky: #C5EEFA;
+$ontario-colour-light-blue: #DBE9F5;
+$ontario-colour-light-purple: #F1E3F2;
+$ontario-colour-light-orange: #FEE1D9;
+$ontario-colour-light-red: #FFE0E2;
+$ontario-colour-light-magenta: #FEDFF0;
+
+/* Dark */
+$ontario-colour-dark-gold: #86743D;
+$ontario-colour-dark-yellow: #8A600D;
+$ontario-colour-dark-taupe: #7B725C;
+$ontario-colour-dark-green: #2B8737;
+$ontario-colour-dark-lime: #5F8129;
+$ontario-colour-dark-teal: #367A76;
+$ontario-colour-dark-sky: #1080A6;
+$ontario-colour-dark-blue: #0369ac;
+$ontario-colour-dark-purple: #92278F;
+$ontario-colour-dark-orange: #C64A1C;
+$ontario-colour-dark-red: #D81A21;
+$ontario-colour-dark-magenta: #C00264;
+
+/* callout backgrounds */
+$ontario-colour-lighter-red: #FCEFF0;
+$ontario-colour-lighter-green: #E5F0E9;
+$ontario-colour-lighter-yellow: #FEF6DC;

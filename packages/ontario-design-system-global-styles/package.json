@@ -1,0 +1,14 @@
+{
+  "name": "ontario-design-system-global-styles",
+  "version": "1.0.0",
+  "description": "This is a global styles package for the Ontario Design System",
+  "main": "index.css",
+  "scripts": {
+    "test": "Test"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^6.0.1"
+  }
+}
