@@ -1,0 +1,32 @@
+/*
+* Spacing
+*
+* This .scss loop will create margin & padding helpers classes
+*/
+
+$spacing-units: (
+    0: $spacing-0,
+    4: $spacing-1,
+    8: $spacing-2,
+    12: $spacing-3,
+    16: $spacing-4,
+    24: $spacing-5,
+    32: $spacing-6,
+    40: $spacing-7,
+    48: $spacing-8,
+    64: $spacing-9
+);
+
+$sides: (top, bottom, left, right);
+
+@each $unit, $spacing in $spacing-units {
+    @each $side in $sides {
+        .ontario-margin-#{$side}-#{$unit}-\! {
+            margin-#{$side}: #{$spacing};
+        }
+
+        .ontario-padding-#{$side}-#{$unit}-\! {
+            padding-#{$side}: #{$spacing}
+        }
+    }
+}

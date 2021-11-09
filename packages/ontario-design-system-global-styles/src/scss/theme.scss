@@ -1,0 +1,42 @@
+/* -----------------------------------------------------------------------------
+
+    Please see /standards/architecture.md for standards on how to write CSS for
+    this project.
+
+----------------------------------------------------------------------------- */
+
+/*** 1 - Variables ***/
+@import './1-variables/breakpoints.variables';
+@import './1-variables/colours.variables';
+@import './1-variables/global.variables';
+@import './1-variables/grid.variables';
+@import './1-variables/spacing.variables';
+@import './1-variables/typography.variables';
+
+
+/*** 2 - Tools ***/
+@import './2-tools/functions/grid.functions';
+@import "./2-tools/functions/asset-helper.functions";
+
+@import './2-tools/mixins/global.mixins';
+@import './2-tools/mixins/grid.mixins';
+
+@import './2-tools/placeholders/focus.placeholders';
+@import './2-tools/placeholders/typography.placeholders';
+
+
+/*** 3 - Generics ***/
+@import './3-generics/colours.generics';
+@import './3-generics/typography.generics';
+
+
+/*** 4 - Elements ***/
+@import './4-elements/global.elements';
+
+
+/*** 5 - Layout ***/
+@import './5-layout/grid.layout';
+@import './5-layout/spacing.layout';
+
+
+/*** 6 - Overrides ***/
