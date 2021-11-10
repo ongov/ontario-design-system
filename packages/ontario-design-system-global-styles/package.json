@@ -4,7 +4,9 @@
   "description": "This is a global styles package for the Ontario Design System",
   "main": "index.css",
   "scripts": {
-    "test": "Test"
+    "test": "Test",
+    "scs
+    ]]'[;/πl-s": "node-sass --watch scss -o css"
   },
   "author": "",
   "license": "ISC",
