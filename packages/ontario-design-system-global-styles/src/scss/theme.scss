@@ -16,13 +16,13 @@
 
 /*** 2 - Tools ***/
 @import './2-tools/functions/grid.functions';
-@import "./2-tools/functions/asset-helper.functions";
+@import './2-tools/functions/asset-helper.functions';
 
 @import './2-tools/mixins/global.mixins';
 @import './2-tools/mixins/grid.mixins';
 
-@import './2-tools/placeholders/focus.placeholders';
-@import './2-tools/placeholders/typography.placeholders';
+@import './2-tools/placeholder/focus.placeholders';
+@import './2-tools/placeholder/typography.placeholders';
 
 
 /*** 3 - Generics ***/
