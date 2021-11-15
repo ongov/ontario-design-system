@@ -20,6 +20,13 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface OntarioButton {
+        "ariaLabel": string;
+        "isDisabled": boolean;
+        "label": string;
+        "type": string;
+        "variant": string;
+    }
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -28,8 +35,15 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLOntarioButtonElement extends Components.OntarioButton, HTMLStencilElement {
+    }
+    var HTMLOntarioButtonElement: {
+        prototype: HTMLOntarioButtonElement;
+        new (): HTMLOntarioButtonElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "ontario-button": HTMLOntarioButtonElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,8 +61,16 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface OntarioButton {
+        "ariaLabel"?: string;
+        "isDisabled"?: boolean;
+        "label"?: string;
+        "type"?: string;
+        "variant"?: string;
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "ontario-button": OntarioButton;
     }
 }
 export { LocalJSX as JSX };
@@ -56,6 +78,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
         }
     }
 }
