@@ -1,0 +1,16 @@
+{
+  "ontario-grid-columns": {
+    "include-html-classes": {
+      "value": "true !default"
+    },
+    "total-columns": {
+      "value": "12"
+    },
+    "row-width": {
+      "value": "rem-calc(1152)"
+    },
+    "column-gutter": {
+      "value": "rem-calc(32)"
+    }
+  }
+}
