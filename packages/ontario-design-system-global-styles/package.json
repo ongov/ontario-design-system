@@ -5,11 +5,13 @@
   "main": "index.css",
   "scripts": {
     "test": "Test",
-    "scs
-    ]]'[;/πl-s": "node-sass --watch scss -o css"
+    "scss": "node-sass --watch scss -o css"
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "ontario-design-tokens": "1.0.0"
+  },
   "devDependencies": {
     "node-sass": "^6.0.1"
   }

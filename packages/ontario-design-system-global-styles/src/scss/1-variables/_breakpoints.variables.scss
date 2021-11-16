@@ -1,5 +1,6 @@
 @import "../tools/12col-grid.functions.scss";
 @import "../tools/12col-grid.mixins.scss";
+@import "~ontario-design-tokens/build/scss/variables.scss";
 
 /*
 *  Breakpoint variables
@@ -11,7 +12,7 @@
 /*** 1 - Breakpoint sizes for media queries ***/
 // Note: much of this is based on Foundation 5's 12 column grid system, with breakpoints tweaked.
 
-$xsmall-breakpoint: 20em !default;  // used only in media query for styles in header, not for grid functionality
+$xsmall-breakpoint: $ontario-breakpoints-xsmall;  // used only in media query for styles in header, not for grid functionality
 $small-breakpoint: 40em !default;
 $medium-breakpoint: 73em !default;
 $large-breakpoint: 96em !default;
