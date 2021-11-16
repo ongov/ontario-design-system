@@ -12,20 +12,20 @@
 */
 
 /*** 1 - Greyscale colours ***/
-$ontario-colour-white: #FFFFFF;
-$ontario-greyscale-5: darken(#FFFFFF, 5); // #F2F2F2
-$ontario-greyscale-20: darken(#FFFFFF, 20); // #CCCCCC
-$ontario-greyscale-40: darken(#FFFFFF, 40); // #999999
-$ontario-greyscale-60: darken(#FFFFFF, 60); // #666666
-$ontario-greyscale-70: darken(#FFFFFF, 70); // #4d4d4d
-$ontario-colour-black: darken(#FFFFFF, 90); // #1A1A1A
+$ontario-colour-white: $ontario-colour-greyscale-white;
+$ontario-greyscale-5: darken($ontario-colour-greyscale-white, 5); // #F2F2F2
+$ontario-greyscale-20: darken($ontario-colour-greyscale-white, 20); // #CCCCCC
+$ontario-greyscale-40: darken($ontario-colour-greyscale-white, 40); // #999999
+$ontario-greyscale-60: darken($ontario-colour-greyscale-white, 60); // #666666
+$ontario-greyscale-70: darken($ontario-colour-greyscale-white, 70); // #4d4d4d
+$ontario-colour-black: darken($ontario-colour-greyscale-whiteF, 90); // #1A1A1A
 
 /*** 2 - System colours ***/
 // Link and primary button colours
-$ontario-colour-link: #0066CC;
-$ontario-colour-link--hover: #00478F;
-$ontario-colour-link--active: #002142;
-$ontario-colour-link--visited: #551A8B;
+$ontario-colour-link: $ontario-colour-system-link;
+$ontario-colour-link--hover: $ontario-colour-system-link-hover;
+$ontario-colour-link--active: $ontario-colour-system-link-active;
+$ontario-colour-link--visited: $ontario-colour-system-link-visited;
 
 // Secondary and tertiary button colours
 $ontario-colour-button-secondary--hover: scale_color($ontario-colour-link, $lightness: 90%); // #E0F0FF

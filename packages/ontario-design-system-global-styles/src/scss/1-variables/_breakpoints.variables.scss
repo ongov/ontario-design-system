@@ -1,6 +1,6 @@
-@import "../tools/12col-grid.functions.scss";
-@import "../tools/12col-grid.mixins.scss";
-@import "~ontario-design-tokens/build/scss/variables.scss";
+@import "../2-tools/mixins/grid.mixins";
+@import "../2-tools/functions/grid.functions";
+@import "../../../node_modules/ontario-design-tokens/build/scss/variables";
 
 /*
 *  Breakpoint variables
@@ -12,11 +12,11 @@
 /*** 1 - Breakpoint sizes for media queries ***/
 // Note: much of this is based on Foundation 5's 12 column grid system, with breakpoints tweaked.
 
-$xsmall-breakpoint: $ontario-breakpoints-xsmall;  // used only in media query for styles in header, not for grid functionality
-$small-breakpoint: 40em !default;
-$medium-breakpoint: 73em !default;
-$large-breakpoint: 96em !default;
-$xlarge-breakpoint: 120em !default;
+$xsmall-breakpoint: $ontario-breakpoints-xsmall !default;  // used only in media query for styles in header, not for grid functionality
+$small-breakpoint: $ontario-breakpoints-small !default;
+$medium-breakpoint: $ontario-breakpoints-medium !default;
+$large-breakpoint: $ontario-breakpoints-large !default;
+$xlarge-breakpoint: $ontario-breakpoints-xlarge !default;
 
 $small-range: (0, $small-breakpoint) !default;
 $medium-range: ($small-breakpoint + 0.063em, $medium-breakpoint) !default;
@@ -25,9 +25,9 @@ $xlarge-range: ($large-breakpoint + 0.063em, $xlarge-breakpoint) !default;
 $xxlarge-range: ($xlarge-breakpoint + 0.063em, 9999999em) !default;
 
 // We use these to control text direction settings
-$text-direction: ltr !default;
-$default-float: left !default;
-$opposite-direction: right !default;
+$text-direction: $ontario-text-directions-text-direction !default;
+$default-float: $ontario-text-directions-default-float !default;
+$opposite-direction: $ontario-text-directions-opposite-direction !default;
 
 @if $text-direction == ltr {
     $default-float: left;
@@ -38,12 +38,12 @@ $opposite-direction: right !default;
 }
 
 /*** 1 - Grid Columns ***/
-$include-html-classes: true !default;
+$include-html-classes: $ontario-grid-columns-include-html-classes !default;
 $include-html-grid-classes: $include-html-classes !default;
 
-$row-width: rem-calc(1152);
-$total-columns: 12;
-$column-gutter: rem-calc(32);
+$row-width: rem-calc($ontario-grid-columns-row-width);
+$total-columns: $ontario-grid-columns-total-columns;
+$column-gutter: rem-calc($ontario-grid-columns-column-gutter);
 
 $last-child-float: $opposite-direction !default;
 
