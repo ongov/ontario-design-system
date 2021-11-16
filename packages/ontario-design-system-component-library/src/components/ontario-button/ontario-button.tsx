@@ -20,9 +20,13 @@ export class OntarioButton {
 		}
 	}
 
+  generateClass() {
+    return "ontario-button " + "ontario-button--" + this.variant;
+  }
+
 	render() {
 		return (
-			<button type={this.type} disabled={this.isDisabled}>{this.label}
+			<button type={this.type} disabled={this.isDisabled} class={this.generateClass()}>{this.label}
 			</button>
 		);
 	}
