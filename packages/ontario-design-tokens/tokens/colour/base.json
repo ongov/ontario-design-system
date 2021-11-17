@@ -3,24 +3,6 @@
     "greyscale": {
       "white": {
         "value": "#FFFFFF"
-      },
-      "5": {
-        "value": "#F2F2F2"
-      },
-      "20": {
-        "value": "#CCCCCC"
-      },
-      "40": {
-        "value": "#999999"
-      },
-      "60": {
-        "value": "#666666"
-      },
-      "70": {
-        "value": "#4d4d4d"
-      },
-      "black": {
-        "value": "#1A1A1A"
       }
     },
     "system": {
@@ -80,79 +62,90 @@
         }
       },
       "light": {
-        "light-gold": {
+        "gold": {
           "value": "#F0E7CC"
         },
-        "light-yellow": {
+        "yellow": {
           "value": "#F8E5C3"
         },
-        "light-taupe": {
+        "taupe": {
           "value": "#EBE7DB"
         },
-        "light-green": {
+        "green": {
           "value": "#D1EFD4"
         },
-        "light-lime": {
+        "lime": {
           "value": "#DDEDC7"
         },
-        "light-teal": {
+        "teal": {
           "value": "#CFEDED"
         },
-        "light-sky": {
+        "sky": {
           "value": "#C5EEFA"
         },
-        "light-blue": {
+        "blue": {
           "value": "#DBE9F5"
         },
-        "light-purple": {
+        "purple": {
           "value": "#F1E3F2"
         },
-        "light-orange": {
+        "orange": {
           "value": "#FEE1D9"
         },
-        "light-red": {
+        "red": {
           "value": "#FFE0E2"
         },
-        "light-magenta": {
+        "magenta": {
           "value": "#FEDFF0"
         }
       },
       "dark": {
-        "dark-gold": {
+        "gold": {
           "value": "#86743D"
         },
-        "dark-yellow": {
+        "yellow": {
           "value": "#8A600D"
         },
-        "dark-taupe": {
+        "taupe": {
           "value": "#7B725C"
         },
-        "dark-green": {
+        "green": {
           "value": "#2B8737"
         },
-        "dark-lime": {
+        "lime": {
           "value": "#5F8129"
         },
-        "dark-teal": {
+        "teal": {
           "value": "#367A76"
         },
-        "dark-sky": {
+        "sky": {
           "value": "#1080A6"
         },
-        "dark-blue": {
+        "blue": {
           "value": "#0369ac"
         },
-        "dark-purple": {
+        "purple": {
           "value": "#92278F"
         },
-        "dark-orange": {
+        "orange": {
           "value": "#C64A1C"
         },
-        "dark-red": {
+        "red": {
           "value": "#D81A21"
         },
-        "dark-magenta": {
+        "magenta": {
           "value": "#C00264"
+        }
+      },
+      "callout-backgrounds": {
+        "red": {
+          "value": "#FCEFF0"
+        },
+        "green": {
+          "value": "#E5F0E9"
+        },
+        "yellow": {
+          "value": "#FEF6DC"
         }
       }
     }

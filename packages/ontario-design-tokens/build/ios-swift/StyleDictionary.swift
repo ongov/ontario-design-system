@@ -4,41 +4,44 @@
 //
 
 // Do not edit directly
-// Generated on Tue, 16 Nov 2021 17:13:38 GMT
+// Generated on Wed, 17 Nov 2021 15:18:25 GMT
 
 
 import UIKit
 
 public class StyleDictionary {
-    public static let ontarioBreakpointsLarge = 96em !default
-    public static let ontarioBreakpointsMedium = 73em !default
-    public static let ontarioBreakpointsSmall = 40em !default
-    public static let ontarioBreakpointsXlarge = 120em !default
-    public static let ontarioBreakpointsXsmall = 20em !default
-    public static let ontarioColourAccentDarkDarkBlue = #0369ac
-    public static let ontarioColourAccentDarkDarkGold = #86743D
-    public static let ontarioColourAccentDarkDarkGreen = #2B8737
-    public static let ontarioColourAccentDarkDarkLime = #5F8129
-    public static let ontarioColourAccentDarkDarkMagenta = #C00264
-    public static let ontarioColourAccentDarkDarkOrange = #C64A1C
-    public static let ontarioColourAccentDarkDarkPurple = #92278F
-    public static let ontarioColourAccentDarkDarkRed = #D81A21
-    public static let ontarioColourAccentDarkDarkSky = #1080A6
-    public static let ontarioColourAccentDarkDarkTaupe = #7B725C
-    public static let ontarioColourAccentDarkDarkTeal = #367A76
-    public static let ontarioColourAccentDarkDarkYellow = #8A600D
-    public static let ontarioColourAccentLightLightBlue = #DBE9F5
-    public static let ontarioColourAccentLightLightGold = #F0E7CC
-    public static let ontarioColourAccentLightLightGreen = #D1EFD4
-    public static let ontarioColourAccentLightLightLime = #DDEDC7
-    public static let ontarioColourAccentLightLightMagenta = #FEDFF0
-    public static let ontarioColourAccentLightLightOrange = #FEE1D9
-    public static let ontarioColourAccentLightLightPurple = #F1E3F2
-    public static let ontarioColourAccentLightLightRed = #FFE0E2
-    public static let ontarioColourAccentLightLightSky = #C5EEFA
-    public static let ontarioColourAccentLightLightTaupe = #EBE7DB
-    public static let ontarioColourAccentLightLightTeal = #CFEDED
-    public static let ontarioColourAccentLightLightYellow = #F8E5C3
+    public static let ontarioBreakpointsLarge = 96em
+    public static let ontarioBreakpointsMedium = 73em
+    public static let ontarioBreakpointsSmall = 40em
+    public static let ontarioBreakpointsXlarge = 120em
+    public static let ontarioBreakpointsXsmall = 20em
+    public static let ontarioColourAccentCalloutBackgroundsGreen = #E5F0E9
+    public static let ontarioColourAccentCalloutBackgroundsRed = #FCEFF0
+    public static let ontarioColourAccentCalloutBackgroundsYellow = #FEF6DC
+    public static let ontarioColourAccentDarkBlue = #0369ac
+    public static let ontarioColourAccentDarkGold = #86743D
+    public static let ontarioColourAccentDarkGreen = #2B8737
+    public static let ontarioColourAccentDarkLime = #5F8129
+    public static let ontarioColourAccentDarkMagenta = #C00264
+    public static let ontarioColourAccentDarkOrange = #C64A1C
+    public static let ontarioColourAccentDarkPurple = #92278F
+    public static let ontarioColourAccentDarkRed = #D81A21
+    public static let ontarioColourAccentDarkSky = #1080A6
+    public static let ontarioColourAccentDarkTaupe = #7B725C
+    public static let ontarioColourAccentDarkTeal = #367A76
+    public static let ontarioColourAccentDarkYellow = #8A600D
+    public static let ontarioColourAccentLightBlue = #DBE9F5
+    public static let ontarioColourAccentLightGold = #F0E7CC
+    public static let ontarioColourAccentLightGreen = #D1EFD4
+    public static let ontarioColourAccentLightLime = #DDEDC7
+    public static let ontarioColourAccentLightMagenta = #FEDFF0
+    public static let ontarioColourAccentLightOrange = #FEE1D9
+    public static let ontarioColourAccentLightPurple = #F1E3F2
+    public static let ontarioColourAccentLightRed = #FFE0E2
+    public static let ontarioColourAccentLightSky = #C5EEFA
+    public static let ontarioColourAccentLightTaupe = #EBE7DB
+    public static let ontarioColourAccentLightTeal = #CFEDED
+    public static let ontarioColourAccentLightYellow = #F8E5C3
     public static let ontarioColourAccentMainBlue = #3193CC
     public static let ontarioColourAccentMainGold = #CBA52E
     public static let ontarioColourAccentMainGreen = #39B54A
@@ -51,12 +54,6 @@ public class StyleDictionary {
     public static let ontarioColourAccentMainTaupe = #C1B28F
     public static let ontarioColourAccentMainTeal = #49A7A2
     public static let ontarioColourAccentMainYellow = #FCAF17
-    public static let ontarioColourGreyscale20 = #CCCCCC
-    public static let ontarioColourGreyscale40 = #999999
-    public static let ontarioColourGreyscale5 = #F2F2F2
-    public static let ontarioColourGreyscale60 = #666666
-    public static let ontarioColourGreyscale70 = #4d4d4d
-    public static let ontarioColourGreyscaleBlack = #1A1A1A
     public static let ontarioColourGreyscaleWhite = #FFFFFF
     public static let ontarioColourSystemFocus = #009ADB
     public static let ontarioColourSystemLink = #0066CC
@@ -64,9 +61,9 @@ public class StyleDictionary {
     public static let ontarioColourSystemLinkHover = #00478F
     public static let ontarioColourSystemLinkVisited = #551A8B
     public static let ontarioGlobalTokensRadius = 4px
-    public static let ontarioGridColumnsColumnGutter = rem-calc(32)
-    public static let ontarioGridColumnsIncludeHtmlClasses = true !default
-    public static let ontarioGridColumnsRowWidth = rem-calc(1152)
+    public static let ontarioGridColumnsColumnGutter = 32
+    public static let ontarioGridColumnsIncludeHtmlClasses = true
+    public static let ontarioGridColumnsRowWidth = 1152
     public static let ontarioGridColumnsTotalColumns = 12
     public static let ontarioSpacing0 = 0
     public static let ontarioSpacing1 = 0.25rem
@@ -78,7 +75,7 @@ public class StyleDictionary {
     public static let ontarioSpacing7 = 2.5rem
     public static let ontarioSpacing8 = 3rem
     public static let ontarioSpacing9 = 4rem
-    public static let ontarioTextDirectionsDefaultFloat = left !default
-    public static let ontarioTextDirectionsOppositeDirection = right !default
-    public static let ontarioTextDirectionsTextDirection = ltr !default
+    public static let ontarioTextDirectionsDefaultFloat = left
+    public static let ontarioTextDirectionsOppositeDirection = right
+    public static let ontarioTextDirectionsTextDirection = ltr
 }
