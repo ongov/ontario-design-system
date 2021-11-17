@@ -44,23 +44,23 @@ $ontario-colour-information: #1080A6;
 $ontario-colour-information-light: #E2F0F4;
 
 // Focus colour
-$ontario-colour-focus: #009ADB;
+$ontario-colour-focus: $ontario-colour-system-focus;
 
 /*** 3 - Accent colours ***/
 
 /* Main */
-$ontario-colour-gold: #CBA52E;
-$ontario-colour-yellow: #FCAF17;
-$ontario-colour-taupe: #C1B28F;
-$ontario-colour-green: #39B54A;
-$ontario-colour-lime: #8DC63F;
-$ontario-colour-teal: #49A7A2;
-$ontario-colour-sky: #00B2E3;
-$ontario-colour-blue: #3193CC;
-$ontario-colour-purple: #B975B7;
-$ontario-colour-orange: #F15A22;
-$ontario-colour-red: #F0454B;
-$ontario-colour-magenta: #F03093;
+$ontario-colour-gold: $ontario-colour-accent-main-gold;
+$ontario-colour-yellow: $ontario-colour-accent-main-yellow;
+$ontario-colour-taupe: $ontario-colour-accent-main-taupe;
+$ontario-colour-green: $ontario-colour-accent-main-green;
+$ontario-colour-lime: $ontario-colour-accent-main-lime;
+$ontario-colour-teal: $ontario-colour-accent-main-teal;
+$ontario-colour-sky: $ontario-colour-accent-main-sky;
+$ontario-colour-blue: $ontario-colour-accent-main-blue;
+$ontario-colour-purple: $ontario-colour-accent-main-purple;
+$ontario-colour-orange: $ontario-colour-accent-main-orange;
+$ontario-colour-red: $ontario-colour-accent-main-red;
+$ontario-colour-magenta: $ontario-colour-accent-main-magenta;
 
 /* Light */
 $ontario-colour-light-gold: #F0E7CC;
