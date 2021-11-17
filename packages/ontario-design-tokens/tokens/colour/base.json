@@ -20,6 +20,30 @@
       },
       "focus": {
         "value": "#009ADB"
+      },
+      "alert": {
+        "value": "#CD0000"
+      },
+      "alert-light": {
+        "value": "#FCEFF0"
+      },
+      "warning": {
+        "value": "#FFD440"
+      },
+      "warning-light": {
+        "value": "#FEF6DC"
+      },
+      "success": {
+        "value": "#118847"
+      },
+      "success-light": {
+        "value": "#E5f0E9"
+      },
+      "information": {
+        "value": "#1080A6"
+      },
+      "information-light": {
+        "value": "##E2F0F4"
       }
     },
     "accent": {

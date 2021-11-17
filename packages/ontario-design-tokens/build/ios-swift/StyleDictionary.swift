@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly
-// Generated on Wed, 17 Nov 2021 15:18:25 GMT
+// Generated on Wed, 17 Nov 2021 17:14:42 GMT
 
 
 import UIKit
@@ -55,11 +55,19 @@ public class StyleDictionary {
     public static let ontarioColourAccentMainTeal = #49A7A2
     public static let ontarioColourAccentMainYellow = #FCAF17
     public static let ontarioColourGreyscaleWhite = #FFFFFF
+    public static let ontarioColourSystemAlert = #CD0000
+    public static let ontarioColourSystemAlertLight = #FCEFF0
     public static let ontarioColourSystemFocus = #009ADB
+    public static let ontarioColourSystemInformation = #1080A6
+    public static let ontarioColourSystemInformationLight = ##E2F0F4
     public static let ontarioColourSystemLink = #0066CC
     public static let ontarioColourSystemLinkActive = #002142
     public static let ontarioColourSystemLinkHover = #00478F
     public static let ontarioColourSystemLinkVisited = #551A8B
+    public static let ontarioColourSystemSuccess = #118847
+    public static let ontarioColourSystemSuccessLight = #E5f0E9
+    public static let ontarioColourSystemWarning = #FFD440
+    public static let ontarioColourSystemWarningLight = #FEF6DC
     public static let ontarioGlobalTokensRadius = 4px
     public static let ontarioGridColumnsColumnGutter = 32
     public static let ontarioGridColumnsIncludeHtmlClasses = true

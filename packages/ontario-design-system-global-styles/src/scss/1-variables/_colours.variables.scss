@@ -1,3 +1,4 @@
+@import "../../../node_modules/ontario-design-tokens/build/scss/variables";
 
 /*
 *  Global colour variables
@@ -34,14 +35,14 @@ $ontario-colour-button-tertiary--hover: scale_color($ontario-colour-black,  $lig
 $ontario-colour-button-tertiary--active: scale_color($ontario-colour-black,  $lightness: 80%); // #D1D1D1
 
 // Alert colours
-$ontario-colour-alert: #CD0000;
-$ontario-colour-alert-light: #FCEFF0;
-$ontario-colour-warning: #FFD440;
-$ontario-colour-warning-light: #FEF6DC;
-$ontario-colour-success: #118847;
-$ontario-colour-success-light: #E5f0E9;
-$ontario-colour-information: #1080A6;
-$ontario-colour-information-light: #E2F0F4;
+$ontario-colour-alert: $ontario-colour-system-alert;
+$ontario-colour-alert-light: $ontario-colour-system-alert-light;
+$ontario-colour-warning: $ontario-colour-system-warning;
+$ontario-colour-warning-light: $ontario-colour-system-warning-light;
+$ontario-colour-success: $ontario-colour-system-success;
+$ontario-colour-success-light: $ontario-colour-system-success-light;
+$ontario-colour-information: $ontario-colour-system-information;
+$ontario-colour-information-light: $ontario-colour-system-information-light;
 
 // Focus colour
 $ontario-colour-focus: $ontario-colour-system-focus;
