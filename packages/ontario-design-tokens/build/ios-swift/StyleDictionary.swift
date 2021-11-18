@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly
-// Generated on Wed, 17 Nov 2021 17:14:42 GMT
+// Generated on Thu, 18 Nov 2021 15:24:53 GMT
 
 
 import UIKit
@@ -59,7 +59,7 @@ public class StyleDictionary {
     public static let ontarioColourSystemAlertLight = #FCEFF0
     public static let ontarioColourSystemFocus = #009ADB
     public static let ontarioColourSystemInformation = #1080A6
-    public static let ontarioColourSystemInformationLight = ##E2F0F4
+    public static let ontarioColourSystemInformationLight = #E2F0F4
     public static let ontarioColourSystemLink = #0066CC
     public static let ontarioColourSystemLinkActive = #002142
     public static let ontarioColourSystemLinkHover = #00478F
