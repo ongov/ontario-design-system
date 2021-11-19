@@ -11,6 +11,18 @@
     },
     "column-gutter": {
       "value": "32"
+    },
+    "column-count-1": {
+      "value": "1"
+    },
+    "column-count-2": {
+      "value": "2"
+    },
+    "column-count-3": {
+      "value": "3"
+    },
+    "column-count-4": {
+      "value": "4"
     }
   }
 }

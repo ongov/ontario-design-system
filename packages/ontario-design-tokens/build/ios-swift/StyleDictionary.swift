@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly
-// Generated on Thu, 18 Nov 2021 15:24:53 GMT
+// Generated on Fri, 19 Nov 2021 17:18:08 GMT
 
 
 import UIKit
@@ -69,6 +69,10 @@ public class StyleDictionary {
     public static let ontarioColourSystemWarning = #FFD440
     public static let ontarioColourSystemWarningLight = #FEF6DC
     public static let ontarioGlobalTokensRadius = 4px
+    public static let ontarioGridColumnsColumnCount1 = 1
+    public static let ontarioGridColumnsColumnCount2 = 2
+    public static let ontarioGridColumnsColumnCount3 = 3
+    public static let ontarioGridColumnsColumnCount4 = 4
     public static let ontarioGridColumnsColumnGutter = 32
     public static let ontarioGridColumnsIncludeHtmlClasses = true
     public static let ontarioGridColumnsRowWidth = 1152

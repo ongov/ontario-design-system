@@ -40,7 +40,7 @@ const processSass = (opts) => {
   }
 };
 
-task('sass', (done) => {
+task('sass:build', (done) => {
   processSass({
     compress: false,
     debug: false,
@@ -48,14 +48,14 @@ task('sass', (done) => {
   });
 });
 
-task('sass-minify', (done) => {
+task('sass:minify', (done) => {
   processSass({
     compress: true,
     callback: done,
   });
 });
 
-task('sass:both', parallel('sass', 'sass-minify'));
+task('sass:build-minify', parallel('sass:build', 'sass:minify'));
 
 // Move all non-style related fonts to the dist/fonts folder
 task('fonts-move', (done) => {
@@ -65,7 +65,7 @@ task('fonts-move', (done) => {
 });
 
 task('watch', (done) => {
-  watch(styleDir, { ignoreInitial: false }, parallel('sass:both'));
+  watch(styleDir, { ignoreInitial: false }, parallel('sass:build-minify'));
   done();
 });
 
@@ -74,6 +74,6 @@ task('clean', (done) => {
   done();
 });
 
-task('deploy', series('clean', 'fonts-move', 'sass:both'));
+task('deploy', series('clean', 'fonts-move', 'sass:build-minify'));
 
 task('default', series('watch'));

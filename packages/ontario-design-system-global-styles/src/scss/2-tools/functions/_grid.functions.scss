@@ -11,7 +11,7 @@
 */
 
 /*** 1 - Lower-bound ***/
-    // Used to define ranges for various things, like media queries.
+// Used to define ranges for various things, like media queries.
 @function ontario-lower-bound($range) {
     @if length($range) <= 0 {
         @return 0;
@@ -22,7 +22,7 @@
 
 
 /*** 2 - Upper-bound ***/
-    // Used to define ranges for various things, like media queries.
+// Used to define ranges for various things, like media queries.
 @function ontario-upper-bound($range) {
     @if length($range) < 2 {
         @return 999999999999;
@@ -32,7 +32,7 @@
 }
 
 /*** 3 - Grid calc ***/
-    // We use this function to turn n number of columns into a percentage of the whole width
+// We use this function to turn n number of columns into a percentage of the whole width
 @function ontario-grid-calc($colNumber, $totalColumns) {
     $result: percentage(math.div($colNumber, $totalColumns));
     @if $result == 0% {

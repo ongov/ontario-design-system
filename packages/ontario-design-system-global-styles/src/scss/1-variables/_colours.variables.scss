@@ -14,12 +14,12 @@
 
 /*** 1 - Greyscale colours ***/
 $ontario-colour-white: $ontario-colour-greyscale-white;
-$ontario-greyscale-5: darken($ontario-colour-greyscale-white, 5); // #F2F2F2
-$ontario-greyscale-20: darken($ontario-colour-greyscale-white, 20); // #CCCCCC
-$ontario-greyscale-40: darken($ontario-colour-greyscale-white, 40); // #999999
-$ontario-greyscale-60: darken($ontario-colour-greyscale-white, 60); // #666666
-$ontario-greyscale-70: darken($ontario-colour-greyscale-white, 70); // #4d4d4d
-$ontario-colour-black: darken($ontario-colour-greyscale-whiteF, 90); // #1A1A1A
+$ontario-greyscale-5: scale_color($ontario-colour-greyscale-white, $lightness: -5%); // #F2F2F2
+$ontario-greyscale-20: scale_color($ontario-colour-greyscale-white, $lightness: -20%); // #CCCCCC
+$ontario-greyscale-40: scale_color($ontario-colour-greyscale-white, $lightness: -40%); // #999999
+$ontario-greyscale-60: scale_color($ontario-colour-greyscale-white, $lightness: -60%); // #666666
+$ontario-greyscale-70: scale_color($ontario-colour-greyscale-white, $lightness: -70%); // #4d4d4d
+$ontario-colour-black: scale_color($ontario-colour-greyscale-white, $lightness: -90%); // #1A1A1A
 
 /*** 2 - System colours ***/
 // Link and primary button colours

@@ -16,12 +16,12 @@
 }
 
 @mixin ontario-two-column-lists() {
-  column-count: 1;
+  column-count: $ontario-grid-columns-column-count-1;
   display: block;
   margin: 0;
 
   @media screen and (min-width: $small-breakpoint) {
-      column-count: 2;
+      column-count: $ontario-grid-columns-column-count-2;
 
       li:last-child {
           padding: 0 0 $spacing-3 0;

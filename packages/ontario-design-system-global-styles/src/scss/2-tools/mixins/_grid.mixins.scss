@@ -26,7 +26,7 @@
 @mixin ontario-clearfix {
   &:before,
   &:after {
-      content: " ";
+      content: "";
       display: table;
   }
 
@@ -37,26 +37,26 @@
 
 /*** 3 - Grid row ***/
   // For creating container, nested, and collapsed rows.
-      // $behavior - Any special behavior for this row?
+      // $behaviour - Any special behaviour for this row?
           // Default: false.
           // Options: nest, collapse, nest-collapse, false
-@mixin ontario-grid-row($behavior: false) {
+@mixin ontario-grid-row($behaviour: false) {
   // use @include ontario-grid-row(nest); to include a nested row
-  @if $behavior == nest {
-      margin: 0 calc(-#{$column-gutter}/2);
+  @if $behaviour == nest {
+      margin: 0 calc(-#{$column-gutter} / 2);
       max-width: none;
       width: auto;
   }
 
   // use @include ontario-grid-row(collapse); to collapsed a container row margins
-  @else if $behavior == collapse {
+  @else if $behaviour == collapse {
       margin: 0;
       max-width: $row-width;
       width: 100%;
   }
 
   // use @include ontario-grid-row(nest-collapse); to collapse outer margins on a nested row
-  @else if $behavior == nest-collapse {
+  @else if $behaviour == nest-collapse {
       margin: 0;
       max-width: none;
       width: auto;

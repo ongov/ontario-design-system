@@ -19,12 +19,12 @@
 
       .ontario-row {
           @include ontario-grid-row(
-              $behavior:nest
+              $behaviour:nest
           );
 
           &.ontario-row--collapse {
               @include ontario-grid-row(
-                  $behavior:nest-collapse
+                  $behaviour:nest-collapse
               );
           }
       }
