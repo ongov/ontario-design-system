@@ -1,0 +1,16 @@
+{
+  "ontario-font-sizes": {
+    "standard": {
+      "value": "1rem"
+    },
+    "medium": {
+      "value": "1.25rem"
+    },
+    "large": {
+      "value": "1.5rem"
+    },
+    "x-large": {
+      "value": "2rem"
+    }
+  }
+}

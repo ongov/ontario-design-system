@@ -9,6 +9,11 @@
 */
 
 /*** 1 - Exporting grid code ***/
+/// Creates a global modulet.
+///
+/// @param {string} $name
+///   The name of the module.
+
 @mixin ontario-exports($name) {
   // Import from global scope
   $modules: $modules !global;
@@ -20,7 +25,6 @@
       @content;
   }
 }
-
 
 /*** 2 - Clearfix ***/
 @mixin ontario-clearfix {
@@ -36,10 +40,13 @@
 }
 
 /*** 3 - Grid row ***/
-  // For creating container, nested, and collapsed rows.
-      // $behaviour - Any special behaviour for this row?
-          // Default: false.
-          // Options: nest, collapse, nest-collapse, false
+/// For creating container, nested, and collapsed rows.
+///
+/// @param {string} $behaviour
+///   Any special behaviour for this row.
+///   Default: false
+///   Options: nest, collapse, nest-collapse, false
+
 @mixin ontario-grid-row($behaviour: false) {
   // use @include ontario-grid-row(nest); to include a nested row
   @if $behaviour == nest {
@@ -74,15 +81,25 @@
 }
 
 /*** 4 - Grid column ***/
-  // Creates a column, should be used inside of a media query to control layouts
-      // $columns - The number of columns this should be
-      // $last-column - Is this the last column? Default: false.
-      // $center - Center these columns? Default: false.
-      // $offset - # of columns to offset. Default: false.
-      // $push - # of columns to push. Default: false.
-      // $pull - # of columns to pull. Default: false.
-      // $collapse - Get rid of gutter padding on column? Default: false.
-      // $float - Should this float? Default: true. Options: true, false, left, right.
+/// Creates a column, should be used inside of a media query to control layouts
+///
+/// @param {number} $columns
+///   The number of columns this should be
+/// @param {boolean} $last-column
+///   Is this the last column? Default: false.
+/// @param {boolean} $center
+///   Center these columns? Default: false.
+/// @param {number} $offset
+///   # of columns to offset. Default: false.
+/// @param {number or boolean} $push
+///   # of columns to push. Default: false.
+/// @param {number or boolean} $pull
+///   # of columns to pull. Default: false.
+/// @param {boolean} $collapse
+///   Get rid of gutter padding on column? Default: false.
+/// @param {boolean or string} $float
+///   Should this float? Default: true. Options: true, false, left, right.
+
 @mixin ontario-grid-column(
   $columns:false,
   $last-column:false,
@@ -160,9 +177,12 @@
 }
 
 
-/*** 4 - Grid HTML classes ***/
-  // Create presentational classes for grid
-      // $size - Name of class to use, i.e. "large" will generate .large-1, .large-2, etc.
+/*** 5 - Grid HTML classes ***/
+/// Create presentational classes for grid
+///
+/// @param {string} $size
+///   Name of class to use, i.e. "large" will generate .large-1, .large-2, etc.
+
 @mixin ontario-grid-html-classes($size) {
   @for $i from 0 through $total-columns - 1 {
       .ontario-#{$size}-push-#{$i} {

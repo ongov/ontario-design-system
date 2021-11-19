@@ -1,0 +1,12 @@
+@import "../../../node_modules/ontario-design-tokens/build/scss/variables";
+
+/* -------------------------------
+    Global font-size variables
+--------------------------------- */
+
+// These pixel values are based on a based rem value of 16px
+
+$ontario-font-size-standard: $ontario-font-sizes-standard;
+$ontario-font-size-medium: $ontario-font-sizes-medium; // 20px
+$ontario-font-size-large: $ontario-font-sizes-large; // 25px
+$ontario-font-size-xlarge: $ontario-font-sizes-x-large; // 32px
