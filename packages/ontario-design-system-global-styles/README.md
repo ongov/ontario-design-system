@@ -5,6 +5,7 @@ Global Style Package
  * [Architecture](#architecture)
  * [Naming Convention](#naming-convention)
  * [Configuration](#configuration)
+ * [References](#references)
 
 ## Introduction
 
@@ -12,7 +13,7 @@ This is a repository for the global styles package that is required to use the O
 
 ## Artchitecture
 
-For this package, we are using Harry Roberts' Inverted Triangle CSS (ITCSS) method of organizing code (read more here: https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/). The inverted triangle organizes code along three axes:
+For this package, we are using Harry Roberts' Inverted Triangle CSS (ITCSS) method of organizing code. The inverted triangle organizes code along three axes:
 
 - Generic to explicit
 - Low specificity to high specificity
@@ -24,7 +25,7 @@ In ITCSS, there is a concept of breaking down the CSS into layers. With the top 
 
 #### Variables: 
   Since this layer contains all the variables that will be used in the SCSS partials, it needs to be the first partial to be imported into the style sheet. This includes settings for vendor frameworks like Foundation. If you would like to define variables for re-use in a specific component, please keep it local to that component file, for ease of future maintenance.
-  It is worth noting that the values in our variables are using Design Tokens (https://css-tricks.com/what-are-design-tokens/), which are defined in the Global Design Token package. Please check that package for more information. 
+  It is worth noting that the values in our variables are using Design Tokens, which are defined in the Global Design Token package. Please check that package for more information. 
   The variables layer holds the following folders: Breakpoints, Colours, Global, Grid, Spacing, Typography.
   
   Note: These files should not generate any CSS 
@@ -51,7 +52,7 @@ These layers can then be imported to the theme.css file based on order of specif
 
 ## Naming convention
 
-The Global Styles Package, we are using the Block Element Modifier (BEM) methodology, which is used for naming CSS classes and variables (read more here: http://getbem.com/). It works by breaking all classes in a codebase down into one of three groups:
+The Global Styles Package, we are using the Block Element Modifier (BEM) methodology, which is used for naming CSS classes and variables. It works by breaking all classes in a codebase down into one of three groups:
 
 #### Block
 
@@ -80,3 +81,12 @@ A variant or extension of the Block. The modifier defines the look, state and be
 ​​The basic BEM convention goes: .block-name__element-name--modifier-state, with double underscores denoting relationships between elements, and double hyphens indicating variants and states.
 
 ## Configuration
+
+
+
+## References
+
+ * BEM naming convention (http://getbem.com/)
+ * SASS compiler (https://sass-lang.com/)
+ * ITCSS architecture (https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)
+ * Design Tokens (https://css-tricks.com/what-are-design-tokens/)
