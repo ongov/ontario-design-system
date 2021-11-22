@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, h } from '@stencil/core';
+import { Component, Prop, Element, h } from '@stencil/core';
 
 @Component({
 	tag: 'ontario-button',
@@ -6,27 +6,30 @@ import { Component, Prop, Watch, h } from '@stencil/core';
 	shadow: true,
 })
 export class OntarioButton {
-	@Prop() variant: string = 'primary';
+  @Element() el: HTMLElement;
+	@Prop() type: string = 'primary';
 	@Prop() label: string;
 	@Prop() ariaLabel: string;
-	@Prop({ reflect: true }) type: string = 'button';
-	@Prop({ reflect: true, attribute: 'disabled' }) isDisabled: boolean;
 
-	@Watch('label')
-	validateLabel(label: string) {
-		const isBlank = typeof label !== 'string' || label === '';
-		if (isBlank) {
-			throw new Error('label is required');
-		}
-	}
+  /**
+   * The attribute property is one of the propOptions that explicity defines a property that has an associated DOM attribute and the name of it.
+   * Because HTML attributes are case-insensitive, the default convention for a camelCase-named property would be hyphenated.
+   * Example: isSubmitButton would become is-submit-button when used as a HTML attribute while resetButton can be used as a HTML attribute due to its propOptions configuration.
+   */
+	@Prop() isSubmitButton: boolean;
+	@Prop({ attribute: 'resetButton' }) isResetButton: boolean;
 
-  generateClass() {
-    return "ontario-button " + "ontario-button--" + this.variant;
+  private getLabel() {
+    console.log('button textContent: ', this.el.textContent);
+    return this.el.textContent;
   }
 
 	render() {
 		return (
-			<button type={this.type} disabled={this.isDisabled} class={this.generateClass()}>{this.label}
+			<button
+				type={this.isSubmitButton ? 'submit' : (this.isResetButton ? 'reset' : 'button')}
+				class={'ontario-button ontario-button--' + this.type.toLowerCase()}
+			>{this.getLabel()}
 			</button>
 		);
 	}
