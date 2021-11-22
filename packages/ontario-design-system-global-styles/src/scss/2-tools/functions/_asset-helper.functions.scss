@@ -3,19 +3,26 @@
 $asset-base-path: '..' !default;
 
 /* Asset URL builder */
-/// @param {string} $type - Asset type, matching folder name
-/// @param {string} $file - Asset file name, including extension
-/// @return {url} - A `url()` function leading to the asset
+/// Creates URL for assets.
+///
+/// @param {string} $type
+///   Asset type, matching folder name
+/// @param {string} $file
+///   Asset file name, including extension
+/// @return {url}
+///   A `url()` function leading to the asset
 
 @function asset($type, $file) {
     @return url($asset-base-path + '/' + $type + '/' + $file);
 }
 
 /* Image asset helper */
+/// Creates image asset.
+///
 /// @param {string} $file
 ///   Asset file name, including extension
-/// @return {url} - A `url()`
-///   function leading to the image
+/// @return {url
+///   A `url()` function leading to the image
 /// @require {function} assetß
 
 @function image($file) {
@@ -23,8 +30,12 @@ $asset-base-path: '..' !default;
 }
 
 /* Font asset helper */
-/// @param {string} $file - Asset file name, including extension
-/// @return {url} - A `url()` function leading to the font
+/// Creates font asset.
+///
+/// @param {string} $file
+///   Asset file name, including extension
+/// @return {url}
+///   A `url()` function leading to the font
 /// @require {function} asset
 
 @function font($file) {
@@ -32,8 +43,12 @@ $asset-base-path: '..' !default;
 }
 
 /* Icon asset helper */
-/// @param {string} $file - Asset file name, including extension
-/// @return {url} - A `url()` function leading to the font
+/// Creates icon asset.
+///
+/// @param {string} $file
+///   Asset file name, including extension
+/// @return {url}
+///   A `url()` function leading to the font
 /// @require {function} asset
 
 @function icon($file) {

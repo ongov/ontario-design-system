@@ -93,7 +93,7 @@ input[type="checkbox"] + label,
 input[type="radio"] + label {
   font-family: $ontario-font-open-sans;
   font-size: $ontario-font-size-standard;
-  font-weight: 400;
+  font-weight: $ontario-font-sizes-standard;
   margin-left: 0;
   margin-right: 0;
 }
