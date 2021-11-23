@@ -1,0 +1,26 @@
+{
+  "name": "ontario-design-system-global-styles",
+  "version": "0.0.1",
+  "description": "This is a global styles package for the Ontario Design System",
+  "main": "index.css",
+  "scripts": {
+    "scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js --watch scss -o css "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-if": "^3.0.0",
+    "gulp-sass": "^5.0.0",
+    "sass": "^1.43.4",
+    "ontario-design-tokens": "0.0.1"
+  },
+  "devDependencies": {
+    "node-sass": "^6.0.1",
+    "node-sass-package-importer": "^5.3.2"
+  }
+}

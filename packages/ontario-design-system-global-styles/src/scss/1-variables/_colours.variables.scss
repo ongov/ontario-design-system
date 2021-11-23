@@ -1,0 +1,96 @@
+@import "../../../node_modules/ontario-design-tokens/build/scss/variables";
+
+/*
+*  Global colour variables
+*
+*  1 - Greyscale colours
+*  2 - System colours
+*  3 - Accent colours
+*    3.1 - Main
+*    3.2 - Light
+*    3.3 - Dark
+*    3.4 - Callout backgrounds
+*/
+
+/*** 1 - Greyscale colours ***/
+$ontario-colour-white: $ontario-colour-greyscale-white;
+$ontario-greyscale-5: scale_color($ontario-colour-greyscale-white, $lightness: -5%); // #F2F2F2
+$ontario-greyscale-20: scale_color($ontario-colour-greyscale-white, $lightness: -20%); // #CCCCCC
+$ontario-greyscale-40: scale_color($ontario-colour-greyscale-white, $lightness: -40%); // #999999
+$ontario-greyscale-60: scale_color($ontario-colour-greyscale-white, $lightness: -60%); // #666666
+$ontario-greyscale-70: scale_color($ontario-colour-greyscale-white, $lightness: -70%); // #4d4d4d
+$ontario-colour-black: scale_color($ontario-colour-greyscale-white, $lightness: -90%); // #1A1A1A
+
+/*** 2 - System colours ***/
+// Link and primary button colours
+$ontario-colour-link: $ontario-colour-system-link;
+$ontario-colour-link--hover: $ontario-colour-system-link-hover;
+$ontario-colour-link--active: $ontario-colour-system-link-active;
+$ontario-colour-link--visited: $ontario-colour-system-link-visited;
+
+// Secondary and tertiary button colours
+$ontario-colour-button-secondary--hover: scale_color($ontario-colour-link, $lightness: 90%); // #E0F0FF
+$ontario-colour-button-secondary--active: scale_color($ontario-colour-link,  $lightness: 80%); // #C2E0FF
+$ontario-colour-button-tertiary--hover: scale_color($ontario-colour-black,  $lightness: 90%); // #E8E8E8
+$ontario-colour-button-tertiary--active: scale_color($ontario-colour-black,  $lightness: 80%); // #D1D1D1
+
+// Alert colours
+$ontario-colour-alert: $ontario-colour-system-alert;
+$ontario-colour-alert-light: $ontario-colour-system-alert-light;
+$ontario-colour-warning: $ontario-colour-system-warning;
+$ontario-colour-warning-light: $ontario-colour-system-warning-light;
+$ontario-colour-success: $ontario-colour-system-success;
+$ontario-colour-success-light: $ontario-colour-system-success-light;
+$ontario-colour-information: $ontario-colour-system-information;
+$ontario-colour-information-light: $ontario-colour-system-information-light;
+
+// Focus colour
+$ontario-colour-focus: $ontario-colour-system-focus;
+
+/*** 3 - Accent colours ***/
+/* Main */
+$ontario-colour-gold: $ontario-colour-accent-main-gold;
+$ontario-colour-yellow: $ontario-colour-accent-main-yellow;
+$ontario-colour-taupe: $ontario-colour-accent-main-taupe;
+$ontario-colour-green: $ontario-colour-accent-main-green;
+$ontario-colour-lime: $ontario-colour-accent-main-lime;
+$ontario-colour-teal: $ontario-colour-accent-main-teal;
+$ontario-colour-sky: $ontario-colour-accent-main-sky;
+$ontario-colour-blue: $ontario-colour-accent-main-blue;
+$ontario-colour-purple: $ontario-colour-accent-main-purple;
+$ontario-colour-orange: $ontario-colour-accent-main-orange;
+$ontario-colour-red: $ontario-colour-accent-main-red;
+$ontario-colour-magenta: $ontario-colour-accent-main-magenta;
+
+/* Light */
+$ontario-colour-light-gold: $ontario-colour-accent-light-gold;
+$ontario-colour-light-yellow: $ontario-colour-accent-light-yellow;
+$ontario-colour-light-taupe: $ontario-colour-accent-light-taupe;
+$ontario-colour-light-green: $ontario-colour-accent-light-green;
+$ontario-colour-light-lime: $ontario-colour-accent-light-lime;
+$ontario-colour-light-teal: $ontario-colour-accent-light-teal;
+$ontario-colour-light-sky: $ontario-colour-accent-light-sky;
+$ontario-colour-light-blue: $ontario-colour-accent-light-blue;
+$ontario-colour-light-purple: $ontario-colour-accent-light-purple;
+$ontario-colour-light-orange: $ontario-colour-accent-light-orange;
+$ontario-colour-light-red: $ontario-colour-accent-light-red;
+$ontario-colour-light-magenta: $ontario-colour-accent-light-magenta;
+
+/* Dark */
+$ontario-colour-dark-gold: $ontario-colour-accent-dark-gold;
+$ontario-colour-dark-yellow: $ontario-colour-accent-dark-yellow;
+$ontario-colour-dark-taupe: $ontario-colour-accent-dark-taupe;
+$ontario-colour-dark-green: $ontario-colour-accent-dark-green;
+$ontario-colour-dark-lime: $ontario-colour-accent-dark-lime;
+$ontario-colour-dark-teal: $ontario-colour-accent-dark-teal;
+$ontario-colour-dark-sky: $ontario-colour-accent-dark-sky;
+$ontario-colour-dark-blue: $ontario-colour-accent-dark-blue;
+$ontario-colour-dark-purple: $ontario-colour-accent-dark-purple;
+$ontario-colour-dark-orange: $ontario-colour-accent-dark-orange;
+$ontario-colour-dark-red: $ontario-colour-accent-dark-red;
+$ontario-colour-dark-magenta: $ontario-colour-accent-dark-magenta;
+
+/* callout backgrounds */
+$ontario-colour-lighter-red: $ontario-colour-accent-callout-backgrounds-red;
+$ontario-colour-lighter-green: $ontario-colour-accent-callout-backgrounds-green;
+$ontario-colour-lighter-yellow: $ontario-colour-accent-callout-backgrounds-yellow;
