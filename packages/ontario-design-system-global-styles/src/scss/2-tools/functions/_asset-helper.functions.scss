@@ -23,7 +23,7 @@ $asset-base-path: '..' !default;
 ///   Asset file name, including extension
 /// @return {url}
 ///   A `url()` function leading to the image
-/// @require {function} assetß
+/// @require {function} asset
 
 @function image($file) {
     @return asset('images', $file);

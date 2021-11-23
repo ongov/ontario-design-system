@@ -2,6 +2,12 @@
   "ontario-global-tokens": {
     "radius": {
       "value": "4px"
+    },
+    "pixel-value": {
+      "value": "0.063em"
+    },
+    "max-value": {
+      "value": "999999999999"
     }
   }
 }

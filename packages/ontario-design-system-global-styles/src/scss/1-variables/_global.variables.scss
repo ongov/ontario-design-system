@@ -8,7 +8,12 @@
 *  Used across multiple components
 */
 
-// Builds a rem-calc function for use in SCSS
+/* Rem calc function */
+/// Builds a rem-calc function for use in SCSS
+///
+/// @param {number} $size
+///   Rem value size
+
 @function rem-calc($size) {
   $remSize: math.div($size, 16);
   @return #{$remSize}rem;
@@ -16,3 +21,9 @@
 
 // Radius for rounded corners (for example, buttons)
 $global-radius: $ontario-global-tokens-radius;
+
+// This value represents 1 pixel based on a base rem value of 16px
+$pixel: $ontario-global-tokens-pixel-value;
+
+// This value represents a large max value
+$max-value: $ontario-global-tokens-max-value;

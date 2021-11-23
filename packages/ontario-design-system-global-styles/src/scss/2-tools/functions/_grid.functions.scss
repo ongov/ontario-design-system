@@ -24,7 +24,7 @@
 // Used to define ranges for various things, like media queries.
 @function ontario-upper-bound($range) {
     @if length($range) < 2 {
-        @return 999999999999; // A large max value
+        @return $ontario-global-tokens-max-value;
     }
 
     @return nth($range, 2);
