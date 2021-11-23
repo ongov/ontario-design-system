@@ -1,16 +1,16 @@
 {
-  "ontario-font-sizes": {
-    "standard": {
+  "ontario-font-size": {
+    "small": {
+      "value": "0.875rem"
+    },
+    "standard-body-text": {
       "value": "1rem"
     },
-    "medium": {
+    "large": {
       "value": "1.25rem"
     },
-    "large": {
-      "value": "1.5rem"
-    },
     "x-large": {
-      "value": "2rem"
+      "value": "1.5rem"
     }
   }
 }

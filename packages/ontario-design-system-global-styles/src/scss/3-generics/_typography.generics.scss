@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Open Sans';
-  font-weight: $ontario-font-sizes-standard;
+  font-weight: $ontario-font-weights-normal;
   font-style: normal;
   src: local('Open Sans'),
   local('Open-Sans-regular'),
@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: 'Open Sans';
-  font-weight: $ontario-font-sizes-semi-bold;
+  font-weight: $ontario-font-weights-semi-bold;
   font-style: normal;
   src: local('Open Sans Semibold'),
   local('Open-Sans-600'),
@@ -22,7 +22,7 @@
 
 @font-face {
   font-family: 'Open Sans';
-  font-weight: $ontario-font-sizes-standard;
+  font-weight: $ontario-font-weights-normal;
   font-style: italic;
   src: local('Open Sans Italic'),
   local('Open-Sans-italic'),
@@ -33,7 +33,7 @@
 
 @font-face {
   font-family: 'Raleway';
-  font-weight: $ontario-font-sizes-standard;
+  font-weight: $ontario-font-weights-normal;
   font-style: normal;
   src: font('raleway-modified-400/raleway-modified-400.woff2') format('woff2'),
   font('raleway-modified-400/raleway-modified-400.woff') format('woff'),
@@ -44,7 +44,7 @@
 
 @font-face {
   font-family: 'Raleway';
-  font-weight: $ontario-font-sizes-semi-bold;
+  font-weight: $ontario-font-weights-semi-bold;
   font-style: normal;
   src: font('raleway-modified-600/raleway-modified-600.woff2') format('woff2'),
   font('raleway-modified-600/raleway-modified-600.woff') format('woff'),
@@ -55,7 +55,7 @@
 
 @font-face {
   font-family: 'Raleway';
-  font-weight: $ontario-font-sizes-bold;
+  font-weight: $ontario-font-weights-bold;
   font-style: normal;
   src: font('raleway-modified-700/raleway-modified-700.woff2') format('woff2'),
   font('raleway-modified-700/raleway-modified-700.woff') format('woff'),

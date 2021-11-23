@@ -13,7 +13,7 @@
 /* Base */
 html {
   font-family: $ontario-font-open-sans;
-  font-size: $ontario-font-size-standard;
+  font-size: $ontario-font-size-standard-body-text;
 }
 
 body {
@@ -92,8 +92,8 @@ textarea {
 input[type="checkbox"] + label,
 input[type="radio"] + label {
   font-family: $ontario-font-open-sans;
-  font-size: $ontario-font-size-standard;
-  font-weight: $ontario-font-sizes-standard;
+  font-size: $ontario-font-size-standard-body-text;
+  font-weight: $ontario-font-weights-normal;
   margin-left: 0;
   margin-right: 0;
 }
