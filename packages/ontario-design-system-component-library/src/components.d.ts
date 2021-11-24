@@ -22,10 +22,9 @@ export namespace Components {
     }
     interface OntarioButton {
         "ariaLabel": string;
-        "isDisabled": boolean;
+        "htmlType": string;
         "label": string;
         "type": string;
-        "variant": string;
     }
 }
 declare global {
@@ -63,10 +62,9 @@ declare namespace LocalJSX {
     }
     interface OntarioButton {
         "ariaLabel"?: string;
-        "isDisabled"?: boolean;
+        "htmlType"?: string;
         "label"?: string;
         "type"?: string;
-        "variant"?: string;
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
