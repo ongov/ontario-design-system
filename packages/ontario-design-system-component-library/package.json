@@ -22,7 +22,8 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@stencil/core": "^2.7.0"
+    "@stencil/core": "^2.7.0",
+    "ontario-design-system-global-styles": "file:../ontario-design-system-global-styles"
   },
   "devDependencies": {
     "@stencil/react-output-target": "0.0.9",
