@@ -2,34 +2,28 @@ import { Component, Prop, Element, h } from '@stencil/core';
 
 @Component({
 	tag: 'ontario-button',
-	styleUrl: 'ontario-button.css',
+	styleUrl: 'ontario-button.scss',
 	shadow: true,
 })
 export class OntarioButton {
-  @Element() el: HTMLElement;
-	@Prop() type: string = 'primary';
+	@Element() el: HTMLElement;
+	@Prop() type: string = 'secondary';
+	@Prop() htmlType: string = 'button';
 	@Prop() label: string;
 	@Prop() ariaLabel: string;
 
-  /**
-   * The attribute property is one of the propOptions that explicity defines a property that has an associated DOM attribute and the name of it.
-   * Because HTML attributes are case-insensitive, the default convention for a camelCase-named property would be hyphenated.
-   * Example: isSubmitButton would become is-submit-button when used as a HTML attribute while resetButton can be used as a HTML attribute due to its propOptions configuration.
-   */
-	@Prop() isSubmitButton: boolean;
-	@Prop({ attribute: 'resetButton' }) isResetButton: boolean;
+	private get buttonLabel() {
+		return this.label && this.label.length > 0 ? this.label : this.el.textContent;
+	}
 
-  private getLabel() {
-    console.log('button textContent: ', this.el.textContent);
-    return this.el.textContent;
-  }
+	private get className() {
+		return 'ontario-button ontario-button--' + this.type.toLowerCase();
+	}
 
 	render() {
 		return (
-			<button
-				type={this.isSubmitButton ? 'submit' : (this.isResetButton ? 'reset' : 'button')}
-				class={'ontario-button ontario-button--' + this.type.toLowerCase()}
-			>{this.getLabel()}
+			<button type={this.htmlType} class={this.className} aria-label={this.ariaLabel && this.ariaLabel.length > 0 ? this.ariaLabel : this.buttonLabel}>
+				{this.buttonLabel}
 			</button>
 		);
 	}
