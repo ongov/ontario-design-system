@@ -5,6 +5,7 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 export const config: Config = {
 	namespace: 'ontario-design-system-components',
 	plugins: [sass()],
+	globalStyle: './src/global.scss',
 	buildEs5: 'prod',
 	outputTargets: [
 		reactOutputTarget({
