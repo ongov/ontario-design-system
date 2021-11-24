@@ -1,0 +1,12 @@
+{
+  "name": "ontario-design-tokens",
+  "version": "0.0.1",
+  "description": "Design Tokens to be used in Ontario Design System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

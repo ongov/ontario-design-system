@@ -1,0 +1,13 @@
+{
+  "ontario-text-directions": {
+    "text-direction": {
+      "value": "ltr"
+    },
+    "default-float": {
+      "value": "left"
+    },
+    "opposite-direction": {
+      "value": "right"
+    }
+  }
+}
