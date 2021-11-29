@@ -60,11 +60,11 @@ In order to use the design tokens in your project, it is first required to insta
 
 ### Configuring Design Tokens in your project
 
-In the component-library’s repository, start by installing the Ontario Design Tokens package by running the following command in your terminal: 
+In the the root of your projects repository, start by installing the Ontario Design Tokens package by running the following command in your terminal: 
 ```
 npm install ontario-design-tokens
 ```
-Any styles that you have in your component style sheet can now reference any of the values from the `variables.scss` file in the `ontario-design-tokens` package. 
+Any styles that you have in your style sheet can now reference any of the values from the `variables.scss` file in the `ontario-design-tokens` package. 
 
 ## References
 
