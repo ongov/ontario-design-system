@@ -56,17 +56,9 @@ You can then access this token in the global styles package by referencing the f
 
 ### Adding design tokens to your project
 
-In order to use the design tokens in your project, it is first required to install the design token package. Within the context of using the Ontario Design System, design tokens are a dependency in the Ontario Design Global Styles Package, and therefore, any of the tokens added in this package, can be used as values in the variables set in the Ontario Design Global Styles Package. If you are not using the Ontario Design Global Styles Package, you can reference the tokens in the individual stylesheets for the component. 
+In order to use the design tokens in your project, it is first required to install the Ontario Design Tokens package. Within the context of using the Ontario Design System, design tokens are a dependency in the Ontario Design Global Styles Package. Therefore, any of the tokens added in this package, are being used as values in the variables that are set in the Ontario Design Global Styles Package. If you are not using the Ontario Design Global Styles Package, you can reference the tokens in the individual stylesheets for the component that you are using. 
 
-### Configuring Design Tokens with Global Styles Pacakage
-
-In the component-library’s repository, start by installing the Ontario Design Tokens package by running the following command in your terminal: 
-```
-npm install ontario-design-system-global-styles
-``` 
-If you navigate into your newly installed package, you should see that the Design Tokens are listed as a dependency in the `package.json` file. 
-
-### Configuring Design Tokens without the Global Styles Package
+### Configuring Design Tokens in your project
 
 In the component-library’s repository, start by installing the Ontario Design Tokens package by running the following command in your terminal: 
 ```
