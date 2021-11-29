@@ -7,7 +7,7 @@ import { Component, Prop, Element, h } from '@stencil/core';
 })
 export class OntarioButton {
 	@Element() el: HTMLElement;
-	@Prop() type: string = 'secondary';
+	@Prop() type: 'primary' | 'secondary' | 'tertiary' = 'secondary';
 	@Prop() htmlType: string = 'button';
 	@Prop() label: string;
 	@Prop() ariaLabel: string;
