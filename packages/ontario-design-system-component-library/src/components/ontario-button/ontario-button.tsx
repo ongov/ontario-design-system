@@ -7,12 +7,10 @@ import { Component, Prop, Element, h } from '@stencil/core';
 })
 export class OntarioButton {
 	@Element() host: HTMLElement;
-	@Prop() type: string = 'secondary';
+	@Prop() type: 'primary' | 'secondary' | 'tertiary' = 'secondary';
 	@Prop() htmlType: 'button' | 'reset' | 'submit' = 'button';
 	@Prop() label: string;
 	@Prop() ariaLabel: string;
-
-
 
 	private getButtonLabel() {
 		return this.label ?? (this.label = this.host.textContent!);

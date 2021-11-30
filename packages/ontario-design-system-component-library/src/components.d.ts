@@ -24,7 +24,7 @@ export namespace Components {
         "ariaLabel": string;
         "htmlType": 'button' | 'reset' | 'submit';
         "label": string;
-        "type": string;
+        "type": 'primary' | 'secondary' | 'tertiary';
     }
 }
 declare global {
@@ -64,7 +64,7 @@ declare namespace LocalJSX {
         "ariaLabel"?: string;
         "htmlType"?: 'button' | 'reset' | 'submit';
         "label"?: string;
-        "type"?: string;
+        "type"?: 'primary' | 'secondary' | 'tertiary';
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
