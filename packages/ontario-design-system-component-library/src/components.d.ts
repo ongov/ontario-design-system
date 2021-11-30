@@ -22,7 +22,7 @@ export namespace Components {
     }
     interface OntarioButton {
         "ariaLabel": string;
-        "htmlType": string;
+        "htmlType": 'button' | 'reset' | 'submit';
         "label": string;
         "type": string;
     }
@@ -62,7 +62,7 @@ declare namespace LocalJSX {
     }
     interface OntarioButton {
         "ariaLabel"?: string;
-        "htmlType"?: string;
+        "htmlType"?: 'button' | 'reset' | 'submit';
         "label"?: string;
         "type"?: string;
     }

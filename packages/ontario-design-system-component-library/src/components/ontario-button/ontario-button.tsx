@@ -6,24 +6,30 @@ import { Component, Prop, Element, h } from '@stencil/core';
 	shadow: true,
 })
 export class OntarioButton {
-	@Element() el: HTMLElement;
+	@Element() host: HTMLElement;
 	@Prop() type: string = 'secondary';
-	@Prop() htmlType: string = 'button';
+	@Prop() htmlType: 'button' | 'reset' | 'submit' = 'button';
 	@Prop() label: string;
 	@Prop() ariaLabel: string;
 
-	private get buttonLabel() {
-		return this.label && this.label.length > 0 ? this.label : this.el.textContent;
+
+
+	private getButtonLabel() {
+		return this.label ?? (this.label = this.host.textContent!);
 	}
 
-	private get className() {
+	private getClass() {
 		return 'ontario-button ontario-button--' + this.type.toLowerCase();
+	}
+
+	private getAriaLabel() {
+		return this.ariaLabel ?? (this.ariaLabel = this.getButtonLabel());
 	}
 
 	render() {
 		return (
-			<button type={this.htmlType} class={this.className} aria-label={this.ariaLabel && this.ariaLabel.length > 0 ? this.ariaLabel : this.buttonLabel}>
-				{this.buttonLabel}
+			<button type={this.htmlType} class={this.getClass()} aria-label={this.getAriaLabel()}>
+				{this.getButtonLabel()}
 			</button>
 		);
 	}
