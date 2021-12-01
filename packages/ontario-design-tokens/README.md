@@ -34,20 +34,37 @@ For this package, we have a 'tokens' folder, that holds sub-folders for differen
 
 ## Configuration
 
+### Adding a new design token 
+
 If you want to add a new design token, you must go into one of the correct sub-folders, and include the token in JSON format. This means that the token will need a name, and a value. 
 
-Let's say we want to add a new colour. First, we would go to the colour folder, and open up the `base.json` file. In this file, there are 3 sub-categories of colours: `greyscale`, `system`, and `accent`. Within these categories there are even more sub-categories. Let's say our colour is a dark colour, we would add this in by including the following object to the code:
+Let's say we want to add a new colour. First, we would go to the colour folder, and open up the `base.json` file. In this file, there are 3 sub-categories of colours: `greyscale`, `system`, and `accent`. Within these categories there are even more sub-categories. Let's say our colour is a dark colour, we would add this in by including the following plain object to the code:
 
-```json
-  "new-colour": {
-    "value": "#111111"
-  }
+```js
+newColour: { value: "#111111"},
 ```
 
-We would then save this file, and run the following command in the terminal: `npm run build`, which will then compile all of the tokens into the `build/variables.scss` file.
+We would then save this file, and run the following command in the terminal: 
+
+```
+npm run build
+```
+
+which will then compile all of the tokens into the `build/variables.scss` file.
 
 You can then access this token in the global styles package by referencing the following variables: `$ontario-colour-accent-dark-new-colour`
 
+### Adding design tokens to your project
+
+In order to use the design tokens in your project, it is first required to install the Ontario Design Tokens package. Within the context of using the Ontario Design System, design tokens are a dependency in the Ontario Design Global Styles Package. Therefore, any of the tokens added in this package, are being used as values in the variables that are set in the Ontario Design Global Styles Package. If you are not using the Ontario Design Global Styles Package, you can reference the tokens in the individual stylesheets for the component that you are using. 
+
+### Configuring Design Tokens in your project
+
+In the the root of your projects repository, start by installing the Ontario Design Tokens package by running the following command in your terminal: 
+```
+npm install ontario-design-tokens
+```
+Any styles that you have in your style sheet can now reference any of the values from the `variables.scss` file in the `ontario-design-tokens` package. 
 
 ## References
 
