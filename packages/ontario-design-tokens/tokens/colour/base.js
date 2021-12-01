@@ -1,6 +1,6 @@
 // config.js
 module.exports = {
-  ontarioColor: {
+  ontarioColour: {
     greyscale: {
       white: { value: "#ffffff" }
     },
