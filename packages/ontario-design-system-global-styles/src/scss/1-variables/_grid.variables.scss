@@ -31,10 +31,10 @@ $row-width: rem-calc($ontario-grid-columns-row-width);
 $total-columns: $ontario-grid-columns-total-columns;
 $column-gutter: rem-calc($ontario-grid-columns-column-gutter);
 
-$column-count-1: $ontario-grid-columns-column-count-1;
-$column-count-2: $ontario-grid-columns-column-count-2;
-$column-count-3: $ontario-grid-columns-column-count-3;
-$column-count-4: $ontario-grid-columns-column-count-4;
+$column-count-1: $ontario-grid-columns-column-count1;
+$column-count-2: $ontario-grid-columns-column-count2;
+$column-count-3: $ontario-grid-columns-column-count3;
+$column-count-4: $ontario-grid-columns-column-count4;
 
 $last-child-float: $opposite-direction !default;
 
