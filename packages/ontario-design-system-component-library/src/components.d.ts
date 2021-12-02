@@ -21,9 +21,21 @@ export namespace Components {
         "middle": string;
     }
     interface OntarioButton {
+        /**
+          * Overrides the default value of the aria-label attribute.
+         */
         "ariaLabel": string;
+        /**
+          * Sets the native HTML button type attribute.
+         */
         "htmlType": 'button' | 'reset' | 'submit';
+        /**
+          * Sets text to display within the button. This will override the text provided through the Element Content.
+         */
         "label": string;
+        /**
+          * Sets the type of button that the Ontario Design System uses.
+         */
         "type": 'primary' | 'secondary' | 'tertiary';
     }
 }
@@ -61,9 +73,21 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface OntarioButton {
+        /**
+          * Overrides the default value of the aria-label attribute.
+         */
         "ariaLabel"?: string;
+        /**
+          * Sets the native HTML button type attribute.
+         */
         "htmlType"?: 'button' | 'reset' | 'submit';
+        /**
+          * Sets text to display within the button. This will override the text provided through the Element Content.
+         */
         "label"?: string;
+        /**
+          * Sets the type of button that the Ontario Design System uses.
+         */
         "type"?: 'primary' | 'secondary' | 'tertiary';
     }
     interface IntrinsicElements {
