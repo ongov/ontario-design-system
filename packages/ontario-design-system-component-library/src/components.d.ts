@@ -24,7 +24,7 @@ export namespace Components {
         /**
           * Overrides the default value of the aria-label attribute.
          */
-        "ariaLabel": string;
+        "ariaLabel": string | null;
         /**
           * Sets the native HTML button type attribute.
          */
@@ -32,7 +32,7 @@ export namespace Components {
         /**
           * Sets text to display within the button. This will override the text provided through the Element Content.
          */
-        "label": string;
+        "label": string | null;
         /**
           * Sets the type of button that the Ontario Design System uses.
          */
@@ -76,7 +76,7 @@ declare namespace LocalJSX {
         /**
           * Overrides the default value of the aria-label attribute.
          */
-        "ariaLabel"?: string;
+        "ariaLabel"?: string | null;
         /**
           * Sets the native HTML button type attribute.
          */
@@ -84,7 +84,7 @@ declare namespace LocalJSX {
         /**
           * Sets text to display within the button. This will override the text provided through the Element Content.
          */
-        "label"?: string;
+        "label"?: string | null;
         /**
           * Sets the type of button that the Ontario Design System uses.
          */

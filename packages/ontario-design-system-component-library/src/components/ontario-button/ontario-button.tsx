@@ -10,25 +10,29 @@ import { Component, Prop, Element, h } from '@stencil/core';
 })
 export class OntarioButton {
 	@Element() host: HTMLElement;
+
 	/**
 	 * Sets the type of button that the Ontario Design System uses.
 	 */
 	@Prop() type: 'primary' | 'secondary' | 'tertiary' = 'secondary';
+
 	/**
 	 * Sets the native HTML button type attribute.
 	 */
 	@Prop() htmlType: 'button' | 'reset' | 'submit' = 'button';
+
 	/**
 	 * Sets text to display within the button. This will override the text provided through the Element Content.
 	 */
-	@Prop() label: string;
+	@Prop() label: string | null;
+
 	/**
 	 * Overrides the default value of the aria-label attribute.
 	 */
-	@Prop() ariaLabel: string;
+	@Prop() ariaLabel: string | null;
 
 	private getButtonLabel() {
-		return this.label ?? (this.label = this.host.textContent!);
+		return this.label ?? (this.label = this.host.textContent);
 	}
 
 	private getClass() {
