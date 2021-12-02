@@ -1,5 +1,8 @@
 import { Component, Prop, Element, h } from '@stencil/core';
 
+/**
+ * Ontario design system button web component
+ */
 @Component({
 	tag: 'ontario-button',
 	styleUrl: 'ontario-button.scss',
