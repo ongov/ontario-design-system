@@ -27,7 +27,7 @@ export class OntarioButton {
 	@Prop() label: string | null;
 
 	/**
-	 * Overrides the default value of the aria-label attribute.
+	 * Overrides the default value of the `aria-label` HTML attribute.
 	 */
 	@Prop() ariaLabel: string | null;
 
