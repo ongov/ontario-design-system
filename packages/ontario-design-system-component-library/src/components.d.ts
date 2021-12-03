@@ -22,19 +22,20 @@ export namespace Components {
     }
     interface OntarioButton {
         /**
-          * Overrides the default value of the aria-label attribute.
+          * Overrides the default value of the `aria-label` HTML attribute.
          */
         "ariaLabel": string | null;
         /**
-          * Sets the native HTML button type attribute.
+          * The native HTML button type the button should use.
          */
         "htmlType": 'button' | 'reset' | 'submit';
         /**
-          * Sets text to display within the button. This will override the text provided through the Element Content.
+          * Text to be displayed within the button. This will override the text provided through the Element Content.
+          * @example <ontario-button label="Label Text">Text</ontario-button>      The resulting button will have the label `"Label Text"`.
          */
         "label": string | null;
         /**
-          * Sets the type of button that the Ontario Design System uses.
+          * The type of button to render.
          */
         "type": 'primary' | 'secondary' | 'tertiary';
     }
@@ -74,19 +75,20 @@ declare namespace LocalJSX {
     }
     interface OntarioButton {
         /**
-          * Overrides the default value of the aria-label attribute.
+          * Overrides the default value of the `aria-label` HTML attribute.
          */
         "ariaLabel"?: string | null;
         /**
-          * Sets the native HTML button type attribute.
+          * The native HTML button type the button should use.
          */
         "htmlType"?: 'button' | 'reset' | 'submit';
         /**
-          * Sets text to display within the button. This will override the text provided through the Element Content.
+          * Text to be displayed within the button. This will override the text provided through the Element Content.
+          * @example <ontario-button label="Label Text">Text</ontario-button>      The resulting button will have the label `"Label Text"`.
          */
         "label"?: string | null;
         /**
-          * Sets the type of button that the Ontario Design System uses.
+          * The type of button to render.
          */
         "type"?: 'primary' | 'secondary' | 'tertiary';
     }
