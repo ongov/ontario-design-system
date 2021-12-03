@@ -1,7 +1,7 @@
 import { Component, Prop, Element, h } from '@stencil/core';
 
 /**
- * Ontario design system button web component
+ * Ontario Design System button web component
  */
 @Component({
 	tag: 'ontario-button',
