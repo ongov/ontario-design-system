@@ -50,7 +50,7 @@ We would then save this file, and run the following command in the terminal:
 npm run build
 ```
 
-which will then compile all of the tokens into the `build/variables.scss` file.
+which will then compile all of the tokens into the `dist/scss/variables.scss` file.
 
 You can then access this token in the global styles package by referencing the following variables: `$ontario-colour-accent-dark-new-colour`
 
@@ -62,9 +62,9 @@ In order to use the design tokens in your project, it is first required to insta
 
 In the the root of your projects repository, start by installing the Ontario Design Tokens package by running the following command in your terminal: 
 ```
-npm install ontario-design-tokens
+npm install ontario-design-system-design-tokens
 ```
-Any styles that you have in your style sheet can now reference any of the values from the `variables.scss` file in the `ontario-design-tokens` package. 
+Any styles that you have in your style sheet can now reference any of the values from the `variables.scss` file in the `ontario-design-system-design-tokens` package. 
 
 ## References
 
