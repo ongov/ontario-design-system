@@ -36,6 +36,11 @@ export class OntarioButton {
 	 */
 	@Prop() ariaLabel: string | null;
 
+	/**
+	 * The unique identifier of the button
+	 */
+	@Prop({ attribute: 'id' }) buttonId: string | undefined;
+
 	private getButtonLabel() {
 		return this.label ?? (this.label = this.host.textContent);
 	}
@@ -50,7 +55,7 @@ export class OntarioButton {
 
 	render() {
 		return (
-			<button type={this.htmlType} class={this.getClass()} aria-label={this.getAriaLabel()}>
+			<button type={this.htmlType} class={this.getClass()} aria-label={this.getAriaLabel()} id={this.buttonId}>
 				{this.getButtonLabel()}
 			</button>
 		);

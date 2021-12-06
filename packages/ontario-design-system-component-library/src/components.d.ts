@@ -26,6 +26,10 @@ export namespace Components {
          */
         "ariaLabel": string | null;
         /**
+          * The unique identifier of the button
+         */
+        "buttonId": string | undefined;
+        /**
           * The native HTML button type the button should use.
          */
         "htmlType": 'button' | 'reset' | 'submit';
@@ -78,6 +82,10 @@ declare namespace LocalJSX {
           * Overrides the default value of the `aria-label` HTML attribute.
          */
         "ariaLabel"?: string | null;
+        /**
+          * The unique identifier of the button
+         */
+        "buttonId"?: string | undefined;
         /**
           * The native HTML button type the button should use.
          */
