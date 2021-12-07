@@ -24,20 +24,20 @@ export namespace Components {
         /**
           * Overrides the default value of the `aria-label` HTML attribute.
          */
-        "ariaLabel": string | null;
+        "ariaLabel"?: string | null;
         /**
           * The unique identifier of the button
          */
-        "buttonId": string | undefined;
+        "buttonId"?: string | undefined;
         /**
           * The native HTML button type the button should use.
          */
-        "htmlType": 'button' | 'reset' | 'submit';
+        "htmlType"?: 'button' | 'reset' | 'submit';
         /**
           * Text to be displayed within the button. This will override the text provided through the Element Content.
           * @example <ontario-button label="Label Text">Text</ontario-button>      The resulting button will have the label `"Label Text"`.
          */
-        "label": string | null;
+        "label"?: string | null;
         /**
           * The type of button to render.
          */

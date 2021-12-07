@@ -46,7 +46,7 @@ export class OntarioButton {
 	}
 
 	private getClass() {
-		return 'ontario-button ontario-button--' + this.type.toLowerCase();
+		return `ontario-button ontario-button--${this.type.toLowerCase()}`;
 	}
 
 	private getAriaLabel() {
