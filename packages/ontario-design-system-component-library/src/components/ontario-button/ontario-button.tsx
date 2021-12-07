@@ -29,17 +29,17 @@ export class OntarioButton {
      * 
      * The resulting button will have the label `"Label Text"`.
 	 */
-	@Prop() label: string | null;
+	@Prop() label?: string | null;
 
 	/**
 	 * Overrides the default value of the `aria-label` HTML attribute.
 	 */
-	@Prop() ariaLabel: string | null;
+	@Prop() ariaLabel?: string | null;
 
 	/**
 	 * The unique identifier of the button
 	 */
-	@Prop({ attribute: 'id' }) buttonId: string | undefined;
+	@Prop({ attribute: 'id' }) buttonId?: string | undefined;
 
 	private getButtonLabel() {
 		return this.label ?? (this.label = this.host.textContent);
