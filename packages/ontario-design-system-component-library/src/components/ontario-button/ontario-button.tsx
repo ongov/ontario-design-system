@@ -19,7 +19,7 @@ export class OntarioButton {
 	/**
 	 * The native HTML button type the button should use.
 	 */
-	@Prop() htmlType: 'button' | 'reset' | 'submit' = 'button';
+	@Prop() htmlType?: 'button' | 'reset' | 'submit' = 'button';
 
 	/**
 	 * Text to be displayed within the button. This will override the text provided through the Element Content.
