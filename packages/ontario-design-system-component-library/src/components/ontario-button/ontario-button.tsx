@@ -34,7 +34,7 @@ export class OntarioButton {
 	/**
 	 * Overrides the default value of the `aria-label` HTML attribute.
 	 */
-	@Prop() ariaLabel?: string | null;
+	@Prop({ mutable: true}) ariaLabel?: string | null;
 
 	/**
 	 * The unique identifier of the button
