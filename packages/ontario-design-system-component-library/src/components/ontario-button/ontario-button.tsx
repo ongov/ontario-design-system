@@ -34,29 +34,33 @@ export class OntarioButton {
 	/**
 	 * Overrides the default value of the `aria-label` HTML attribute.
 	 */
-	@Prop({ mutable: true}) ariaLabel?: string | null;
+	@Prop({ mutable: true }) ariaLabel?: string | null;
 
 	/**
 	 * The unique identifier of the button
 	 */
 	@Prop({ attribute: 'id' }) buttonId?: string | undefined;
 
-	private getButtonLabel() {
-		return this.label ?? (this.label = this.host.textContent);
+	/**
+	 * Set `label` and `ariaLabel` using internal component logic
+	 */
+	componentWillLoad() {
+		this.label = this.label ?? (this.label = this.host.textContent);
+		this.ariaLabel = this.ariaLabel ?? (this.ariaLabel = this.label);
 	}
 
+	/**
+	 * 
+	 * @returns the classes of the button based of the button's `type`
+	 */
 	private getClass() {
 		return `ontario-button ontario-button--${this.type.toLowerCase()}`;
 	}
 
-	private getAriaLabel() {
-		return this.ariaLabel ?? (this.ariaLabel = this.getButtonLabel());
-	}
-
 	render() {
 		return (
-			<button type={this.htmlType} class={this.getClass()} aria-label={this.getAriaLabel()} id={this.buttonId}>
-				{this.getButtonLabel()}
+			<button type={this.htmlType} class={this.getClass()} aria-label={this.ariaLabel} id={this.buttonId}>
+				{this.label}
 			</button>
 		);
 	}
