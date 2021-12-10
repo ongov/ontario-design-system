@@ -23,13 +23,13 @@ export class OntarioButton {
 
 	/**
 	 * Text to be displayed within the button. This will override the text provided through the Element Content.
-	 * 
+	 *
 	 * @example
 	 * <ontario-button label="Label Text">Text</ontario-button>
-     * 
-     * The resulting button will have the label `"Label Text"`.
+	 *
+	 * The resulting button will have the label `"Label Text"`.
 	 */
-	@Prop() label?: string | null;
+	@Prop({ mutable: true }) label?: string | null;
 
 	/**
 	 * Overrides the default value of the `aria-label` HTML attribute.
