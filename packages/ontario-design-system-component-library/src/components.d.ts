@@ -35,7 +35,7 @@ export namespace Components {
         "htmlType"?: 'button' | 'reset' | 'submit';
         /**
           * Text to be displayed within the button. This will override the text provided through the Element Content.
-          * @example <ontario-button label="Label Text">Text</ontario-button>      The resulting button will have the label `"Label Text"`.
+          * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
          */
         "label"?: string | null;
         /**
@@ -92,7 +92,7 @@ declare namespace LocalJSX {
         "htmlType"?: 'button' | 'reset' | 'submit';
         /**
           * Text to be displayed within the button. This will override the text provided through the Element Content.
-          * @example <ontario-button label="Label Text">Text</ontario-button>      The resulting button will have the label `"Label Text"`.
+          * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
          */
         "label"?: string | null;
         /**
