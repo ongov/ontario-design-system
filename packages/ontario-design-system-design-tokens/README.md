@@ -66,6 +66,12 @@ npm install ontario-design-system-design-tokens
 ```
 Any styles that you have in your style sheet can now reference any of the values from the `variables.scss` file in the `ontario-design-system-design-tokens` package. Or, if you are using CSS custom prpoerties, you can reference any of the CSS variables outlined in the `variables.css` file. 
 
+### Format types
+
+Formats define the output of your created files. For example, to use your styles in CSS you use the css/variables format. This will create a CSS file containing the variables from your style dictionary. All of the different format types and how to output them are outlined here: https://amzn.github.io/style-dictionary/#/formats. 
+
+For the Design Tokens package, the tokens are configured to output both SCSS and CSS variables. 
+
 ## References
 
  * [Style Dictionary](https://amzn.github.io/style-dictionary/)
