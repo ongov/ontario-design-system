@@ -12,6 +12,16 @@
           "format": "scss/variables"
         }
       ]
+    },
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/",
+      "files": [
+        {
+          "destination": "_variables.css",
+          "format": "css/variables"
+        }
+      ]
     }
   }
 }
