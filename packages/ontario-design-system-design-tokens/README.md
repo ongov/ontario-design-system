@@ -68,7 +68,7 @@ Any styles that you have in your style sheet can now reference any of the values
 
 ### Format types
 
-Formats define the output of your created files. For example, to use your styles in CSS you use the css/variables format. This will create a CSS file containing the variables from your style dictionary. All of the different format types and how to output them are outlined here: https://amzn.github.io/style-dictionary/#/formats. 
+Formats define the output of your created files. For example, to use your styles in CSS you use the `css/variables` format. This will create a CSS file containing the variables from your style dictionary. All of the different format types and how to output them are outlined here: https://amzn.github.io/style-dictionary/#/formats.
 
 For the Design Tokens package, the tokens are configured to output both SCSS and CSS variables. 
 
