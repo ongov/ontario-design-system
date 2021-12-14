@@ -2,106 +2,104 @@ import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { OntarioButton } from '../ontario-button';
 
-export const types = ['primary', 'secondary', 'tertiary'];
-export const htmlTypes = ['button', 'submit', 'reset'];
 export const typeDefault = 'secondary';
 export const htmlTypeDefault = 'button';
 export const elementContentDefault = 'Element Content';
 export const labelDefault = 'Label';
 export const ariaLabelDefault = 'Aria Label';
+/**
+ * The only function that the `Test` class exposes for end user to generate unit test suites in their unit test file.
+ * It will rely on multiple private properties and functions within the class to generate the test suites.
+ * @param testSuiteData test suite configuration data
+ * @returns unit test suites that are generated based on config data
+ */
+export function getUnitTestSuite(testSuiteData: any) {
+	return describe(testSuiteData.name, () => {
+		testSuiteData.cases?.forEach((testCase: any) => {
+			getUnitTestCases(testCase);
+		});
+	});
+}
 
-export class Test {
-	/**
-	 * Generates the test case that is to be executed by the test framework
-	 * @param testCase case configuration data
-	 * @returns the test case to be executed by the test framework
-	 */
-	private getUnitTestCases(testCase: any) {
-		let unitTestCase;
-		const elementContent = testCase.hasElementContent ? elementContentDefault : null;
+const types = ['primary', 'secondary', 'tertiary'];
+const htmlTypes = ['button', 'submit', 'reset'];
 
-		if (testCase.hasTypes && testCase.hasHTMLTypes) {
-			types.forEach((type: any) => {
-				htmlTypes.forEach((htmlType: any) => {
-					unitTestCase = it(`renders ${type} ${htmlType} button`, async () => {
-						const page = await newSpecPage(
-							this.getPage(
-								<ontario-button type={type} htmlType={htmlType}>
-									{elementContent}
-								</ontario-button>,
-							),
-						);
-						this.getExpectedResults(page, type, htmlType, elementContent);
-					});
-				});
-			});
-		} else if (testCase.hasTypes && !testCase.hasHTMLTypes) {
-			types.forEach((type: any) => {
-				unitTestCase = it(`renders ${type} button`, async () => {
-					const page = await newSpecPage(this.getPage(<ontario-button type={type}>{elementContent}</ontario-button>));
-					this.getExpectedResults(page, type, htmlTypeDefault, elementContent);
-				});
-			});
-		} else if (!testCase.hasTypes && testCase.hasHTMLTypes) {
+/**
+ * Generates the test case that is to be executed by the test framework
+ * @param testCase case configuration data
+ * @returns the test case to be executed by the test framework
+ */
+function getUnitTestCases(testCase: any) {
+	let unitTestCase;
+	const elementContent = testCase.hasElementContent ? elementContentDefault : null;
+
+	if (testCase.hasTypes && testCase.hasHTMLTypes) {
+		types.forEach((type: any) => {
 			htmlTypes.forEach((htmlType: any) => {
-				unitTestCase = it(`renders ${htmlType} button`, async () => {
-					const page = await newSpecPage(this.getPage(<ontario-button htmlType={htmlType}>{elementContent}</ontario-button>));
-					this.getExpectedResults(page, typeDefault, htmlType, elementContent);
+				unitTestCase = it(`renders ${type} ${htmlType} button`, async () => {
+					const page = await newSpecPage(
+						getPage(
+							<ontario-button type={type} htmlType={htmlType}>
+								{elementContent}
+							</ontario-button>,
+						),
+					);
+					getExpectedResults(page, type, htmlType, elementContent);
 				});
-			});
-		} else {
-			unitTestCase = it(`${testCase.name}`, async () => {
-				const page = await newSpecPage(this.getPage(<ontario-button>{elementContent}</ontario-button>));
-				this.getExpectedResults(page, typeDefault, htmlTypeDefault, elementContent);
-			});
-		}
-
-		return unitTestCase;
-	}
-
-	/**
-	 * Generates the HTML template that the test framework uses
-	 * @param htmlTemplate HTML code that is used to generate the template
-	 * @returns template that the test framework will use
-	 */
-	private getPage(htmlTemplate: any) {
-		return {
-			components: [OntarioButton],
-			template: () => htmlTemplate,
-		};
-	}
-
-	/**
-	 * Generates the expected result that the test framework uses as the baseline
-	 * @param page HTML template that the test framework uses
-	 * @param type type of button with default being `secondary`
-	 * @param htmlType html type of button with default being `button`
-	 * @param elementContent text that user provides between the `<button>` tags
-	 * @returns returns the expected HTML code that the `OntarioButton` component should generate based on the test case parameters
-	 */
-	private getExpectedResults(page: SpecPage, type: any, htmlType: any, elementContent?: any) {
-		const openingTags = `<ontario-button><mock:shadow-root>`;
-		const buttonTags = elementContent
-			? `<button aria-label="${elementContent}" class="ontario-button ontario-button--${type}" type="${htmlType}">${elementContent}</button>`
-			: `<button aria-label="" class="ontario-button ontario-button--${type}" type="${htmlType}"></button>`;
-		const closingTags = elementContent ? `</mock:shadow-root>${elementContent}</ontario-button>` : `</mock:shadow-root></ontario-button>`;
-
-		return expect(page.root).toEqualHtml(`${openingTags}${buttonTags}${closingTags}`);
-	}
-
-	/**
-	 * The only function that the `Test` class exposes for end user to generate unit test suites in their unit test file.
-	 * It will rely on multiple private properties and functions within the class to generate the test suites.
-	 * @param testSuite configuration data provided
-	 * @returns unit test suites that contains all possible combinations
-	 */
-	getUnitTestSuite(testSuite: any) {
-		return describe(testSuite.name, () => {
-			testSuite.cases?.forEach((testCase: any) => {
-				this.getUnitTestCases(testCase);
 			});
 		});
+	} else if (testCase.hasTypes && !testCase.hasHTMLTypes) {
+		types.forEach((type: any) => {
+			unitTestCase = it(`renders ${type} button`, async () => {
+				const page = await newSpecPage(getPage(<ontario-button type={type}>{elementContent}</ontario-button>));
+				getExpectedResults(page, type, htmlTypeDefault, elementContent);
+			});
+		});
+	} else if (!testCase.hasTypes && testCase.hasHTMLTypes) {
+		htmlTypes.forEach((htmlType: any) => {
+			unitTestCase = it(`renders ${htmlType} button`, async () => {
+				const page = await newSpecPage(getPage(<ontario-button htmlType={htmlType}>{elementContent}</ontario-button>));
+				getExpectedResults(page, typeDefault, htmlType, elementContent);
+			});
+		});
+	} else {
+		unitTestCase = it(`${testCase.name}`, async () => {
+			const page = await newSpecPage(getPage(<ontario-button>{elementContent}</ontario-button>));
+			getExpectedResults(page, typeDefault, htmlTypeDefault, elementContent);
+		});
 	}
+
+	return unitTestCase;
+}
+
+/**
+ * Generates the HTML template that the test framework uses
+ * @param htmlTemplate HTML code that is used to generate the template
+ * @returns template that the test framework will use
+ */
+function getPage(htmlTemplate: any) {
+	return {
+		components: [OntarioButton],
+		template: () => htmlTemplate,
+	};
+}
+
+/**
+ * Generates the expected result that the test framework uses as the baseline
+ * @param page HTML template that the test framework uses
+ * @param type type of button with default being `secondary`
+ * @param htmlType html type of button with default being `button`
+ * @param elementContent text that user provides between the `<button>` tags
+ * @returns returns the expected HTML code that the `OntarioButton` component should generate based on the test case parameters
+ */
+function getExpectedResults(page: SpecPage, type: any, htmlType: any, elementContent?: any) {
+	const openingTags = `<ontario-button><mock:shadow-root>`;
+	const buttonTags = elementContent
+		? `<button aria-label="${elementContent}" class="ontario-button ontario-button--${type}" type="${htmlType}">${elementContent}</button>`
+		: `<button aria-label="" class="ontario-button ontario-button--${type}" type="${htmlType}"></button>`;
+	const closingTags = elementContent ? `</mock:shadow-root>${elementContent}</ontario-button>` : `</mock:shadow-root></ontario-button>`;
+
+	return expect(page.root).toEqualHtml(`${openingTags}${buttonTags}${closingTags}`);
 }
 
 /**
