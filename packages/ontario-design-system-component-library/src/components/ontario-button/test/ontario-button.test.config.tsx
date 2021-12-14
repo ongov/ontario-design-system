@@ -2,15 +2,15 @@ import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { OntarioButton } from '../ontario-button';
 
-export class Test {
-	private types = ['primary', 'secondary', 'tertiary'];
-	private htmlTypes = ['button', 'submit', 'reset'];
-	private typeDefault = 'secondary';
-	private htmlTypeDefault = 'button';
-	private elementContentDefault = 'Element Content';
-	// private labelDefault = 'Label';
-	// private ariaLabelDefault = 'Aria Label';
+export const types = ['primary', 'secondary', 'tertiary'];
+export const htmlTypes = ['button', 'submit', 'reset'];
+export const typeDefault = 'secondary';
+export const htmlTypeDefault = 'button';
+export const elementContentDefault = 'Element Content';
+export const labelDefault = 'Label';
+export const ariaLabelDefault = 'Aria Label';
 
+export class Test {
 	/**
 	 * Generates the test case that is to be executed by the test framework
 	 * @param testCase case configuration data
@@ -18,13 +18,11 @@ export class Test {
 	 */
 	private getUnitTestCases(testCase: any) {
 		let unitTestCase;
-		const elementContent = testCase.hasElementContent ? this.elementContentDefault : null;
-		// const label = testCase.hasLabel ? this.labelDefault : null;
-		// const ariaLabel = testCase.hasAriaLabel ? this.ariaLabelDefault : null;
+		const elementContent = testCase.hasElementContent ? elementContentDefault : null;
 
 		if (testCase.hasTypes && testCase.hasHTMLTypes) {
-			this.types.forEach((type: any) => {
-				this.htmlTypes.forEach((htmlType: any) => {
+			types.forEach((type: any) => {
+				htmlTypes.forEach((htmlType: any) => {
 					unitTestCase = it(`renders ${type} ${htmlType} button`, async () => {
 						const page = await newSpecPage(
 							this.getPage(
@@ -38,23 +36,23 @@ export class Test {
 				});
 			});
 		} else if (testCase.hasTypes && !testCase.hasHTMLTypes) {
-			this.types.forEach((type: any) => {
+			types.forEach((type: any) => {
 				unitTestCase = it(`renders ${type} button`, async () => {
 					const page = await newSpecPage(this.getPage(<ontario-button type={type}>{elementContent}</ontario-button>));
-					this.getExpectedResults(page, type, this.htmlTypeDefault, elementContent);
+					this.getExpectedResults(page, type, htmlTypeDefault, elementContent);
 				});
 			});
 		} else if (!testCase.hasTypes && testCase.hasHTMLTypes) {
-			this.htmlTypes.forEach((htmlType: any) => {
+			htmlTypes.forEach((htmlType: any) => {
 				unitTestCase = it(`renders ${htmlType} button`, async () => {
 					const page = await newSpecPage(this.getPage(<ontario-button htmlType={htmlType}>{elementContent}</ontario-button>));
-					this.getExpectedResults(page, this.typeDefault, htmlType, elementContent);
+					this.getExpectedResults(page, typeDefault, htmlType, elementContent);
 				});
 			});
 		} else {
 			unitTestCase = it(`${testCase.name}`, async () => {
 				const page = await newSpecPage(this.getPage(<ontario-button>{elementContent}</ontario-button>));
-				this.getExpectedResults(page, this.typeDefault, this.htmlTypeDefault, elementContent);
+				this.getExpectedResults(page, typeDefault, htmlTypeDefault, elementContent);
 			});
 		}
 
@@ -92,8 +90,8 @@ export class Test {
 	}
 
 	/**
-	 * The only function that the `Test` class exposes for end user to generate unit test suites in their unit test file. 
-	 * It will rely on multiple private properties and functions within the class to generate the test suites.  
+	 * The only function that the `Test` class exposes for end user to generate unit test suites in their unit test file.
+	 * It will rely on multiple private properties and functions within the class to generate the test suites.
 	 * @param testSuite configuration data provided
 	 * @returns unit test suites that contains all possible combinations
 	 */
@@ -153,7 +151,7 @@ export const testSuites = [
 				hasTypes: true,
 				hasHTMLTypes: true,
 				hasLabel: true,
-			}
-		]
-	}
+			},
+		],
+	},
 ];
