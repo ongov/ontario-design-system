@@ -1,6 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { OntarioButton } from '../ontario-button';
-import { elementContentDefault, labelDefault, ariaLabelDefault } from './ontario-button.test.config';
+import { elementContentDefault, labelDefault, ariaLabelDefault, htmlTypeDefault, typeDefault } from './ontario-button.test.config';
 
 it('should render a default button', async () => {
 	const page = await newSpecPage({
@@ -10,11 +10,11 @@ it('should render a default button', async () => {
 	expect(page.root).toEqualHtml(`
     <ontario-button>
       <mock:shadow-root>
-        <button aria-label="Element Content" class="ontario-button ontario-button--secondary" type="button">
-          Element Content
+        <button aria-label="${elementContentDefault}" class="ontario-button ontario-button--${typeDefault}" type="${htmlTypeDefault}">
+          ${elementContentDefault}
         </button>
       </mock:shadow-root>
-      Element Content
+      ${elementContentDefault}
     </ontario-button>    
   `);
 });
@@ -27,11 +27,11 @@ it('should render a primary submit button', async () => {
 	expect(page.root).toEqualHtml(`
     <ontario-button type="primary" html-type="submit">
       <mock:shadow-root>
-        <button aria-label="Element Content" class="ontario-button ontario-button--primary" type="submit">
-          Element Content
+        <button aria-label="${elementContentDefault}" class="ontario-button ontario-button--primary" type="submit">
+          ${elementContentDefault}
         </button>
       </mock:shadow-root>
-      Element Content
+      ${elementContentDefault}
     </ontario-button>
   `);
 });
@@ -42,13 +42,13 @@ it('should render a default button with label overriding the element content', a
 		html: `<ontario-button label="${labelDefault}">${elementContentDefault}</ontario-button>`,
 	});
 	expect(page.root).toEqualHtml(`
-    <ontario-button label="Label">
+    <ontario-button label="${labelDefault}">
       <mock:shadow-root>
-        <button aria-label="Label" class="ontario-button ontario-button--secondary" type="button">
-          Label
+        <button aria-label="${labelDefault}" class="ontario-button ontario-button--${typeDefault}" type="${htmlTypeDefault}">
+          ${labelDefault}
         </button>
       </mock:shadow-root>
-      Element Content
+      ${elementContentDefault}
     </ontario-button>
   `);
 });
@@ -59,13 +59,13 @@ it('should render a default button with the aria-label attribute being overwritt
 		html: `<ontario-button aria-label="${ariaLabelDefault}">${elementContentDefault}</ontario-button>`,
 	});
 	expect(page.root).toEqualHtml(`
-    <ontario-button aria-label="Aria Label">
+    <ontario-button aria-label="${ariaLabelDefault}">
       <mock:shadow-root>
-        <button aria-label="Aria Label" class="ontario-button ontario-button--secondary" type="button">
-          Element Content
+        <button aria-label="${ariaLabelDefault}" class="ontario-button ontario-button--${typeDefault}" type="${htmlTypeDefault}">
+          ${elementContentDefault}
         </button>
       </mock:shadow-root>
-      Element Content
+      ${elementContentDefault}
     </ontario-button>
   `);
 });
@@ -78,11 +78,11 @@ it('should render a default button with an id being explicity specified', async 
 	expect(page.root).toEqualHtml(`
     <ontario-button id="DefaultButton">
       <mock:shadow-root>
-        <button aria-label="Element Content" class="ontario-button ontario-button--secondary" type="button" id="DefaultButton">
-          Element Content
+        <button aria-label="${elementContentDefault}" class="ontario-button ontario-button--${typeDefault}" type="${htmlTypeDefault}" id="DefaultButton">
+          ${elementContentDefault}
         </button>
       </mock:shadow-root>
-      Element Content
+      ${elementContentDefault}
     </ontario-button>
   `);
 });
