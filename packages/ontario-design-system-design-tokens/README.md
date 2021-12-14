@@ -50,7 +50,7 @@ We would then save this file, and run the following command in the terminal:
 npm run build
 ```
 
-which will then compile all of the tokens into the `dist/scss/variables.scss` file.
+which will then compile all of the tokens into both the `dist/scss/variables.scss` and `dist/css/variables.css` files.
 
 You can then access this token in the global styles package by referencing the following variables: `$ontario-colour-accent-dark-new-colour`
 
@@ -64,7 +64,13 @@ In the the root of your projects repository, start by installing the Ontario Des
 ```
 npm install ontario-design-system-design-tokens
 ```
-Any styles that you have in your style sheet can now reference any of the values from the `variables.scss` file in the `ontario-design-system-design-tokens` package. 
+Any styles that you have in your style sheet can now reference any of the values from the `variables.scss` file in the `ontario-design-system-design-tokens` package. If you are using [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), you can reference any of the CSS variables outlined in the `variables.css` file. 
+
+### Format types
+
+Formats define the output of your created files. For example, to use your styles in CSS you use the `css/variables` format. This will create a CSS file containing the variables from your style dictionary. All of the different format types and how to output them are outlined here: https://amzn.github.io/style-dictionary/#/formats.
+
+For the Design Tokens package, the tokens are configured to output both SCSS and CSS variables. 
 
 ## References
 
