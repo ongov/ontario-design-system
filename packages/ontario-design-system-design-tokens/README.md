@@ -64,7 +64,7 @@ In the the root of your projects repository, start by installing the Ontario Des
 ```
 npm install ontario-design-system-design-tokens
 ```
-Any styles that you have in your style sheet can now reference any of the values from the `variables.scss` file in the `ontario-design-system-design-tokens` package. Or, if you are using CSS custom prpoerties, you can reference any of the CSS variables outlined in the `variables.css` file. 
+Any styles that you have in your style sheet can now reference any of the values from the `variables.scss` file in the `ontario-design-system-design-tokens` package. Or, if you are using CSS custom properties, you can reference any of the CSS variables outlined in the `variables.css` file. 
 
 ### Format types
 
