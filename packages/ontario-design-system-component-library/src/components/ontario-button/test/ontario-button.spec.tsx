@@ -1,6 +1,11 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { OntarioButton } from '../ontario-button';
-import { elementContentDefault, labelDefault, ariaLabelDefault, htmlTypeDefault, typeDefault } from './ontario-button.test.config';
+
+const typeDefault = 'secondary';
+const htmlTypeDefault = 'button';
+const elementContentDefault = 'Element Content';
+const labelDefault = 'Label';
+const ariaLabelDefault = 'Aria Label';
 
 it('should render a default button', async () => {
 	const page = await newSpecPage({
