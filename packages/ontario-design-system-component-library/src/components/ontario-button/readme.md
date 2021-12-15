@@ -1,6 +1,21 @@
 # ontario-button
+Use button to trigger an action
 
+## Usage guidance
+Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for guidance.
 
+## Examples
+```
+<ontario-button>Element Content</ontario-button>
+```
+
+```
+<ontario-button aria-label="Example" buttonId="example" htmlType="button" type="tertiary">Element Content</ontario-button>
+```
+
+```
+<ontario-button label="Example" htmlType="submit" type="primary"></ontario-button>
+```
 
 <!-- Auto Generated Below -->
 
