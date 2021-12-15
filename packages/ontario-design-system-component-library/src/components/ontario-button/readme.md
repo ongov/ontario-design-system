@@ -1,10 +1,13 @@
 # ontario-button
+
 Use button to trigger an action
 
 ## Usage guidance
+
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for guidance.
 
 ## Examples
+
 ```
 <ontario-button>Element Content</ontario-button>
 ```
@@ -23,7 +26,6 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property    | Attribute    | Description                                                                                               | Type                                           | Default       |
@@ -34,7 +36,6 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for
 | `label`     | `label`      | Text to be displayed within the button. This will override the text provided through the Element Content. | `null \| string \| undefined`                  | `undefined`   |
 | `type`      | `type`       | The type of button to render.                                                                             | `"primary" \| "secondary" \| "tertiary"`       | `'secondary'` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

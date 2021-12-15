@@ -36,7 +36,7 @@ npm run bootstrap
 
 ### Building Component Library Packages
 
-The component library packages have to be built/updated before they can be used. 
+The component library packages have to be built/updated before they can be used.
 
 Simply run at the root of the repository,
 
@@ -73,9 +73,10 @@ If you don't have `stencil` installed globally, prefix the command with `npx`,
 ```bash
 npx stencil generate name-of-component
 ```
+
 #### Component Development
 
-The project contains an HTML file called `index.html` that is immediately loaded when the development server is started it.  It is a simple place to stage a component for development.
+The project contains an HTML file called `index.html` that is immediately loaded when the development server is started it. It is a simple place to stage a component for development.
 
 A development server can be run by running,
 
@@ -85,7 +86,7 @@ npm run start
 
 #### Building the Library
 
-Wanting to build and test within one of the framework applications?  Running the `build-libs` script from the root triggers this behaviour.
+Wanting to build and test within one of the framework applications? Running the `build-libs` script from the root triggers this behaviour.
 
 The library can be built independently by running,
 
@@ -101,7 +102,7 @@ See the [Stencil Docs on React](https://stenciljs.com/docs/react) for more infor
 
 #### Building the Library
 
-Wanting to build and test within one of the framework applications?  Running the `build-libs` script from the root triggers this behaviour.
+Wanting to build and test within one of the framework applications? Running the `build-libs` script from the root triggers this behaviour.
 
 The library can be built independently by running,
 
@@ -125,4 +126,4 @@ npm run start
 
 Here are some helpful resources one can use to learn more.
 
-- [ReactJS: Web Components]( https://reactjs.org/docs/web-components.html)
+- [ReactJS: Web Components](https://reactjs.org/docs/web-components.html)
