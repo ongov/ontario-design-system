@@ -52,7 +52,7 @@ describe('ontario-button', () => {
 
 		component.setProperty('id', 'defaultButton');
 		await page.waitForChanges();
-    expect(element).toHaveClasses(['ontario-button', 'ontario-button--secondary']);
+		expect(element).toHaveClasses(['ontario-button', 'ontario-button--secondary']);
 		expect(element.textContent).toEqual('Label');
 		expect(element).toEqualAttributes({
 			'aria-label': 'Aria Label',
@@ -60,29 +60,39 @@ describe('ontario-button', () => {
 			'id': 'defaultButton',
 		});
 
-    component.setProperty('type', 'primary');
-    component.setProperty('htmlType', 'submit');
-    await page.waitForChanges();
-    expect(element).toHaveClasses(['ontario-button', 'ontario-button--primary']);
-    expect(element.textContent).toEqual('Label');
-    expect(element).toEqualAttributes({
-      'aria-label': 'Aria Label',
+		component.setProperty('type', 'primary');
+		component.setProperty('htmlType', 'submit');
+		await page.waitForChanges();
+		expect(element).toHaveClasses(['ontario-button', 'ontario-button--primary']);
+		expect(element.textContent).toEqual('Label');
+		expect(element).toEqualAttributes({
+			'aria-label': 'Aria Label',
 			'type': 'submit',
 			'id': 'defaultButton',
-    });
+		});
 
-    component.setProperty('type', 'tertiary');
-    component.setProperty('htmlType', 'button');
-    component.setProperty('label', 'Back');
-    component.setProperty('ariaLabel', 'Back');
-    component.setProperty('id', 'BackButton');
-    await page.waitForChanges();
-    expect(element).toHaveClasses(['ontario-button', 'ontario-button--tertiary']);
-    expect(element.textContent).toEqual('Back');
-    expect(element).toEqualAttributes({
-      'aria-label': 'Back',
-      'type': 'button',
-      'id': 'BackButton',
-    });
+		component.setProperty('type', 'tertiary');
+		component.setProperty('htmlType', 'button');
+		component.setProperty('label', 'Back');
+		component.setProperty('ariaLabel', 'Back');
+		component.setProperty('id', 'BackButton');
+		await page.waitForChanges();
+		expect(element).toHaveClasses(['ontario-button', 'ontario-button--tertiary']);
+		expect(element.textContent).toEqual('Back');
+		expect(element).toEqualAttributes({
+			'aria-label': 'Back',
+			'type': 'button',
+			'id': 'BackButton',
+		});
+	});
+
+	it('fires the onclick event', async () => {
+		const page = await newE2EPage();
+		await page.setContent('<ontario-button onclick="testFunction()">Element Content</ontario-button>');
+		const component = await page.find('ontario-button');
+		component.triggerEvent('onclick');
+		await page.waitForChanges();
+		const changedEvent = await page.spyOnEvent('onclick');
+		expect(changedEvent).toHaveReceivedEventTimes(1);
 	});
 });
