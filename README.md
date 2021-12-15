@@ -72,7 +72,7 @@ npm run start
 
 ##### Generating a New Component
 
-A new component can be generated within the `src/components` folder through Stencil CLI by running, 
+Stencil CLI can generate a new component within the `src/components` folder. With the `ontario-design-system-component-library` being your current directory run,
 
 ```bash
 stencil generate name-of-component
