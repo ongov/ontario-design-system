@@ -62,12 +62,26 @@ The build process of this library emits NPM package compatible packages as well 
 
 #### Component Development
 
-The project contains an HTML file called `index.html` that is immediatly loaded when the development server is started it.  It is a simple place to stage a component for development.
+The project contains an HTML file called `index.html` that is immediately loaded when the development server is started it.  It is a simple place to stage a component for development.
 
 A development server can be run by running,
 
 ```bash
 npm run start
+```
+
+##### Generating a New Component
+
+A new component can be generated within the `src/components` folder through Stencil CLI by running, 
+
+```bash
+stencil generate name-of-component
+```
+
+If you don't have `stencil` installed globally, prefix the command with `npx`,
+
+```bash
+npx stencil generate name-of-component
 ```
 
 #### Building the Library
