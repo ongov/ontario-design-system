@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-		<title>Stencil Component Starter</title>
 
-		<script type="module" src="/build/ontario-design-system-components.esm.js"></script>
-		<script nomodule src="/build/ontario-design-system-components.js"></script>
-	</head>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+	<title>Stencil Component Starter</title>
 
-	<body>
-		<my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
-		<ontario-button label="Primary" aria-label="Primary Button" type="primary" onclick="testFunction()">Primary</ontario-button>
-		<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">Secondary</ontario-button>
-		<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary">Tertiary</ontario-button>
+	<script type="module" src="/build/ontario-design-system-components.esm.js"></script>
+	<script nomodule src="/build/ontario-design-system-components.js"></script>
+</head>
 
-    <script>
-      function testFunction() {
-        alert("HELLO WORLD!");
-      }
-      </script>
-	</body>
+<body>
+	<my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+	<ontario-button label="Primary" aria-label="Primary Button" type="primary" onclick="testFunction()">Primary
+	</ontario-button>
+	<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">Secondary
+	</ontario-button>
+	<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary">Tertiary</ontario-button>
+
+
+	<ontario-hint-text id="hello" aria-hint="This is a hint"></ontario-hint-text>
+
+	<script>
+		function testFunction() {
+			alert("HELLO WORLD!");
+		}
+	</script>
+</body>
+
 </html>
