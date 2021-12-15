@@ -17,6 +17,10 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for
 <ontario-button label="Example" htmlType="submit" type="primary"></ontario-button>
 ```
 
+```
+<ontario-button onclick="exampleFunction()">Element Content</ontario-button>
+```
+
 <!-- Auto Generated Below -->
 
 
