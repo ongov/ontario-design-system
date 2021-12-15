@@ -60,17 +60,7 @@ The `ontario-design-system-component-library` is the heart of the project, it co
 
 The build process of this library emits NPM package compatible packages as well as component libraries for other JavaScript UI Frameworks.
 
-#### Component Development
-
-The project contains an HTML file called `index.html` that is immediately loaded when the development server is started it.  It is a simple place to stage a component for development.
-
-A development server can be run by running,
-
-```bash
-npm run start
-```
-
-##### Generating a New Component
+#### Generating a New Component
 
 Stencil CLI can generate a new component within the `src/components` folder. With the `ontario-design-system-component-library` being your current directory run,
 
@@ -82,6 +72,15 @@ If you don't have `stencil` installed globally, prefix the command with `npx`,
 
 ```bash
 npx stencil generate name-of-component
+```
+#### Component Development
+
+The project contains an HTML file called `index.html` that is immediately loaded when the development server is started it.  It is a simple place to stage a component for development.
+
+A development server can be run by running,
+
+```bash
+npm run start
 ```
 
 #### Building the Library
