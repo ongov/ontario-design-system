@@ -7,6 +7,6 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build-libs": "lerna run --scope ontario-design-system-component-library* build"
+    "build-libs": "lerna run --scope ontario-design-system* build"
   }
 }
