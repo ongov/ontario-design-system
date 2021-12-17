@@ -88,11 +88,11 @@ describe('ontario-button', () => {
 
 	it('fires the onclick event', async () => {
 		const page = await newE2EPage();
-		await page.setContent('<ontario-button onclick="testFunction()">Element Content</ontario-button>');
+		await page.setContent('<ontario-button>Element Content</ontario-button>');
+		const changedEvent = await page.spyOnEvent('click');
 		const component = await page.find('ontario-button');
-		component.triggerEvent('onclick');
+		component.click();
 		await page.waitForChanges();
-		const changedEvent = await page.spyOnEvent('onclick');
 		expect(changedEvent).toHaveReceivedEventTimes(1);
 	});
 });
