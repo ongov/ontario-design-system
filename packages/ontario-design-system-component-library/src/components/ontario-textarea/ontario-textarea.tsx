@@ -66,7 +66,7 @@ export class OntarioTextarea {
   }
 
 	private getValue(): string {
-    return this.value || ''
+    return this.value ?? ''
   }
 
   render() {
