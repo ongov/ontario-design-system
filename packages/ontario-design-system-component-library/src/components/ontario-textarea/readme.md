@@ -12,27 +12,6 @@ User enters text into the textarea component.
 
 <br>
 
-## API Specifications
-
-| Property   	| Required? 	| Type     	| Description                                                                                                	| Default   	|
-|------------	|-----------	|----------	|------------------------------------------------------------------------------------------------------------	|-----------	|
-| `textareaId` 	| optional  	| `string`   	| The ID assigned to the textarea.                                                                           	|           	|
-| `name`       	| required  	| `string`   	| The name assigned to the textarea.The name value is used to reference form data after a form is submitted. 	|           	|
-| `required`   	| optional  	| `boolean`  	| Used to define whether the textarea field is required or not.                                              	| false     	|
-| `value`      	| optional  	| `string`   	| The textarea content value.                                                                                	|           	|
-| `onBlur`     	| optional  	| `Function` 	| The custom action assigned when the textarea loses focus.                                                  	| undefined 	|
-| `onChange`   	| optional  	| `Function` 	| The custom action when the textarea value changes.                                                         	| undefined 	|
-
-<br>
-
-## Events
-### Emitted Events
-
-* `onBlur`:  Triggered once user focuses out of textarea component
-* `onChange`: Triggered once user changes the value of the textarea component
-
-<br>
-
 ## Examples
 
 ```
@@ -55,3 +34,35 @@ User enters text into the textarea component.
 ## Further documentation
 
 See the [Design System textarea guidance](https://designsystem.ontario.ca/components/detail/text-areas.html) for current documentation guidelines.
+
+<br>
+
+---
+
+<br>
+
+<!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property      | Attribute      | Description                                                                                                      | Type                          | Default     |
+| ------------- | -------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------------- | ----------- |
+| `describedBy` | `described-by` | The aria-desribedBy value if the textarea has hint text associated with it                                       | `string \| undefined`         | `undefined` |
+| `name`        | `name`         | The name assigned to the textarea.The name value is used to reference form data after a form is submitted        | `string`                      | `undefined` |
+| `required`    | `required`     | Used to define whether the textarea field is required or not. If required, the value passed should be 'required' | `boolean \| undefined`        | `false`     |
+| `textareaId`  | `id`           | The unique identifier of the textarea                                                                            | `string`                      | `undefined` |
+| `value`       | `value`        | The textarea content value.                                                                                      | `null \| string \| undefined` | `undefined` |
+
+
+## Events
+
+| Event         | Description                             | Type                         |
+| ------------- | --------------------------------------- | ---------------------------- |
+| `blurEvent`   | Emitted when the input loses focus.     | `CustomEvent<void>`          |
+| `changeEvent` | Emitted when a keyboard input occurred. | `CustomEvent<KeyboardEvent>` |
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

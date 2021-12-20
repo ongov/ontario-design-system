@@ -49,21 +49,21 @@ export namespace Components {
          */
         "describedBy"?: string;
         /**
-          * The name value for the textarea
+          * The name assigned to the textarea.The name value is used to reference form data after a form is submitted
          */
         "name": string;
         /**
-          * If `true`, the user must fill in a value before submitting a form.
+          * Used to define whether the textarea field is required or not. If required, the value passed should be 'required'
          */
-        "required": boolean;
+        "required"?: boolean;
         /**
           * The unique identifier of the textarea
          */
         "textareaId": string;
         /**
-          * The value of the input.
+          * The textarea content value.
          */
-        "value"?: string | null;
+        "value"?: string | null | undefined;
     }
 }
 declare global {
@@ -135,7 +135,7 @@ declare namespace LocalJSX {
          */
         "describedBy"?: string;
         /**
-          * The name value for the textarea
+          * The name assigned to the textarea.The name value is used to reference form data after a form is submitted
          */
         "name"?: string;
         /**
@@ -147,7 +147,7 @@ declare namespace LocalJSX {
          */
         "onChangeEvent"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
-          * If `true`, the user must fill in a value before submitting a form.
+          * Used to define whether the textarea field is required or not. If required, the value passed should be 'required'
          */
         "required"?: boolean;
         /**
@@ -155,9 +155,9 @@ declare namespace LocalJSX {
          */
         "textareaId"?: string;
         /**
-          * The value of the input.
+          * The textarea content value.
          */
-        "value"?: string | null;
+        "value"?: string | null | undefined;
     }
     interface IntrinsicElements {
         "my-component": MyComponent;

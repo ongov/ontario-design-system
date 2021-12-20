@@ -1,16 +1,9 @@
-import {
-	Component,
-	Event,
-  EventEmitter,
-	h,
-	Prop,
-	State
-} from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, State } from '@stencil/core';
 
 @Component({
-  tag: 'ontario-textarea',
-  styleUrl: 'ontario-textarea.scss',
-  shadow: true,
+	tag: 'ontario-textarea',
+	styleUrl: 'ontario-textarea.scss',
+	shadow: true,
 })
 export class OntarioTextarea {
 	/**
@@ -24,65 +17,63 @@ export class OntarioTextarea {
 	@Prop() describedBy?: string;
 
 	/**
-	 * The name value for the textarea
+	 * The name assigned to the textarea.The name value is used to reference form data after a form is submitted
 	 */
 	@Prop() name: string;
 
 	/**
-   * If `true`, the user must fill in a value before submitting a form.
-   */
-  @Prop() required: boolean = false;
+	 * Used to define whether the textarea field is required or not. If required, the value passed should be 'required'
+	 */
+	@Prop() required?: boolean = false;
 
 	/**
-   * The value of the input.
-   */
-  @Prop({ mutable: true }) value?: string | null = ''
+	 * The textarea content value.
+	 */
+	@Prop({ mutable: true }) value?: string | null | undefined = undefined;
 
 	/**
-   * Emitted when the input loses focus.
-   */
-  @Event() blurEvent!: EventEmitter<void>;
+	 * Emitted when the input loses focus.
+	 */
+	@Event() blurEvent!: EventEmitter<void>;
 
 	/**
-   * Emitted when a keyboard input occurred.
-   */
-  @Event() changeEvent!: EventEmitter<KeyboardEvent>
+	 * Emitted when a keyboard input occurred.
+	 */
+	@Event() changeEvent!: EventEmitter<KeyboardEvent>;
 
 	@State() focused?: boolean = false;
 
 	private onBlur = () => {
-    this.blurEvent.emit();
-    this.focused = false;
-  }
+		this.blurEvent.emit();
+		this.focused = false;
+	};
 
 	private onChange = (ev: Event) => {
-    const textarea = ev.target as HTMLInputElement | null;
+		const textarea = ev.target as HTMLInputElement | null;
 
-    if (textarea) {
-      this.value = textarea.value ?? '';
-    };
+		if (textarea) {
+			this.value = textarea.value ?? '';
+		}
 
-    this.changeEvent.emit(ev as KeyboardEvent)
-  }
+		this.changeEvent.emit(ev as KeyboardEvent);
+	};
 
 	private getValue(): string {
-    return this.value ?? ''
-  }
+		return this.value ?? '';
+	}
 
-  render() {
-		const value = this.getValue();
-
-    return (
+	render() {
+		return (
 			<textarea
 				aria-describedby={this.describedBy}
 				class="ontario-textarea"
 				id={this.textareaId}
 				name={this.name}
 				onBlur={this.onBlur}
-				value={value}
+				value={this.getValue()}
 				onInput={this.onChange}
 				required={this.required}
 			></textarea>
-    );
-  }
-};
+		);
+	}
+}
