@@ -15,7 +15,8 @@
 		"react-scripts": "5.0.0",
 		"typescript": "^4.5.4",
 		"web-vitals": "^2.1.2",
-		"ontario-design-system-component-library-react": "^0.0.1"
+		"ontario-design-system-component-library-react": "^0.0.1",
+    "ontario-design-system-global-styles": "0.0.1"
 	},
 	"scripts": {
 		"start": "react-scripts start",

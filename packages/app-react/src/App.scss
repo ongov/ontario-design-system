@@ -33,19 +33,29 @@
   width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.content-layout {
+  display: grid;
+  height: 100vh;
+  grid-template-areas: 
+      "head head"
+      "nav main"
+      "foot foot";
+  grid-template-rows: 100px 1fr 100px;
+  grid-template-columns: 1fr 5fr;
 }
 
-.buttons {
-  text-align: center;
+.content-layout > .header {
+  grid-area: head;
 }
 
-.footer {
-  margin-top: auto;
+.content-layout > .nav-bar {
+  grid-area: nav;
+}
+
+.content-layout > .main-content {
+  grid-area: main;
+}
+
+.content-layout > .footer {
+  grid-area: foot;
 }
