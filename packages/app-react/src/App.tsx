@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
+import NavBar from './Navbar';
+import './App.scss';
+import StoryRouter from './Story';
+import { BrowserRouter } from "react-router-dom";
+import Header from './Header';
+// import '../node_modules/ontario-design-system-global-styles/src/scss/theme.scss';
+// import '../ ontario-design-system-global-styles/src/scss/theme.scss';
 
 interface State {
   value: number | null;
@@ -22,11 +28,21 @@ class App extends Component<{}, State> {
 
   render() {
     return (
-      <div className="App">
-        <div className="App-content">
-        <p>This is a sample React App where we can build out a demo of the Web Components.</p>
+      <BrowserRouter>
+        <div className="App">
+            <div className="content-layout">
+              <div className="header">
+                <Header />
+              </div>
+              <div className="nav-bar">
+                <NavBar />
+              </div>
+              <div className="main-content">
+                <StoryRouter />
+              </div>
+            </div>
         </div>
-      </div>
+      </BrowserRouter>
     );
   }
 }

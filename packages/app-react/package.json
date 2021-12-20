@@ -1,17 +1,20 @@
 {
   "name": "react-app",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@types/jest": "24.0.11",
     "@types/node": "11.12.0",
     "@types/react": "16.8.10",
     "@types/react-dom": "16.8.3",
+    "ontario-design-system-component-library-react": "^0.0.1",
+    "ontario-design-system-global-styles": "0.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8",
-    "typescript": "3.3.4000",
-    "ontario-design-system-component-library-react": "^0.0.1"
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "4.0.3",
+    "sass": "^1.45.0",
+    "typescript": "3.3.4000"
   },
   "scripts": {
     "start": "react-scripts start",
