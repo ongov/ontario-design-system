@@ -59,7 +59,7 @@ export class OntarioTextarea {
     const textarea = ev.target as HTMLInputElement | null;
 
     if (textarea) {
-      this.value = textarea.value || '';
+      this.value = textarea.value ?? '';
     };
 
     this.changeEvent.emit(ev as KeyboardEvent)
