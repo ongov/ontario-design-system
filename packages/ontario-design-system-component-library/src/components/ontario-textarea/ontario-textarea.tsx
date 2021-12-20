@@ -10,7 +10,7 @@ import {
 @Component({
   tag: 'ontario-textarea',
   styleUrl: 'ontario-textarea.scss',
-  shadow: false,
+  shadow: true,
 })
 export class OntarioTextarea {
 	/**
