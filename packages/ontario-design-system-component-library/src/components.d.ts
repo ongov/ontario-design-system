@@ -43,6 +43,28 @@ export namespace Components {
          */
         "type": 'primary' | 'secondary' | 'tertiary';
     }
+    interface OntarioTextarea {
+        /**
+          * The aria-desribedBy value if the textarea has hint text associated with it
+         */
+        "describedBy"?: string;
+        /**
+          * The name value for the textarea
+         */
+        "name": string;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * The unique identifier of the textarea
+         */
+        "textareaId": string;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | null;
+    }
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -57,9 +79,16 @@ declare global {
         prototype: HTMLOntarioButtonElement;
         new (): HTMLOntarioButtonElement;
     };
+    interface HTMLOntarioTextareaElement extends Components.OntarioTextarea, HTMLStencilElement {
+    }
+    var HTMLOntarioTextareaElement: {
+        prototype: HTMLOntarioTextareaElement;
+        new (): HTMLOntarioTextareaElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "ontario-button": HTMLOntarioButtonElement;
+        "ontario-textarea": HTMLOntarioTextareaElement;
     }
 }
 declare namespace LocalJSX {
@@ -100,9 +129,40 @@ declare namespace LocalJSX {
          */
         "type"?: 'primary' | 'secondary' | 'tertiary';
     }
+    interface OntarioTextarea {
+        /**
+          * The aria-desribedBy value if the textarea has hint text associated with it
+         */
+        "describedBy"?: string;
+        /**
+          * The name value for the textarea
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onBlurEvent"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onChangeEvent"?: (event: CustomEvent<KeyboardEvent>) => void;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * The unique identifier of the textarea
+         */
+        "textareaId"?: string;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | null;
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
         "ontario-button": OntarioButton;
+        "ontario-textarea": OntarioTextarea;
     }
 }
 export { LocalJSX as JSX };
@@ -111,6 +171,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
+            "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
         }
     }
 }
