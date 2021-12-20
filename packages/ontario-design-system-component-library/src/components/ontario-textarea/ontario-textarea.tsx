@@ -48,7 +48,7 @@ export class OntarioTextarea {
    */
   @Event() changeEvent!: EventEmitter<KeyboardEvent>
 
-	@State() focused: boolean = false;
+	@State() focused?: boolean = false;
 
 	private onBlur = () => {
     this.blurEvent.emit();
