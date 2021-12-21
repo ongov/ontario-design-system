@@ -61,7 +61,6 @@ task('sass:build-minify', parallel('sass:build', 'sass:minify'));
 task('fonts-move', (done) => {
   return src(fonts, { base: './src' })
     .pipe(dest(`${distDir}`));
-  done();
 });
 
 task('watch', (done) => {
@@ -71,7 +70,6 @@ task('watch', (done) => {
 
 task('clean', (done) => {
   return del(distDir);
-  done();
 });
 
 task('deploy', series('clean', 'fonts-move', 'sass:build-minify'));
