@@ -7,6 +7,8 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build-libs": "lerna run --scope ontario-design-system* build"
+    "build-libs": "lerna run --scope ontario-design-system* build",
+    "clean": "lerna run --scope ontario-design-system* clean",
+    "clean:full": "lerna run --scope ontario-design-system* clean:full"
   }
 }
