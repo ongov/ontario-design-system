@@ -59,7 +59,7 @@ export namespace Components {
         /**
           * The unique identifier of the textarea
          */
-        "textareaId": string;
+        "textareaId"?: string;
         /**
           * The textarea content value.
          */

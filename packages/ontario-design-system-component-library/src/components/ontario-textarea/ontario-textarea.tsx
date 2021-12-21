@@ -1,4 +1,5 @@
 import { Component, Event, EventEmitter, h, Prop, State } from '@stencil/core';
+import { v4 as uuid } from 'uuid';
 
 @Component({
 	tag: 'ontario-textarea',
@@ -9,7 +10,7 @@ export class OntarioTextarea {
 	/**
 	 * The unique identifier of the textarea
 	 */
-	@Prop({ attribute: 'id' }) textareaId: string;
+	@Prop({ attribute: 'id' }) textareaId?: string;
 
 	/**
 	 * The aria-desribedBy value if the textarea has hint text associated with it
@@ -62,12 +63,16 @@ export class OntarioTextarea {
 		return this.value ?? '';
 	}
 
+	private getId(): string {
+		return uuid();
+	}
+
 	render() {
 		return (
 			<textarea
 				aria-describedby={this.describedBy}
 				class="ontario-textarea"
-				id={this.textareaId}
+				id={this.textareaId ? this.textareaId : this.getId()}
 				name={this.name}
 				onBlur={this.onBlur}
 				value={this.getValue()}
