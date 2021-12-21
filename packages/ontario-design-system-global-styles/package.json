@@ -5,6 +5,7 @@
   "main": "index.css",
   "scripts": {
     "scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js --watch scss -o css ",
+    "build": "gulp deploy",
     "clean": "rm -rf dist",
     "clean:full": "rm -rf node_modules && npm run clean"
   },
