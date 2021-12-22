@@ -63,8 +63,8 @@ export class OntarioTextarea {
 		return this.value ?? '';
 	}
 
-	private getId(): string {
-		return uuid();
+	public getId(): string {
+		return this.textareaId ?? (this.textareaId = uuid());
 	}
 
 	render() {
