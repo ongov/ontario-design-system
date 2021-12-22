@@ -72,7 +72,7 @@ export class OntarioTextarea {
 			<textarea
 				aria-describedby={this.describedBy}
 				class="ontario-textarea"
-				id={this.textareaId ? this.textareaId : this.getId()}
+				id={this.getId()}
 				name={this.name}
 				onBlur={this.onBlur}
 				onInput={this.onChange}
