@@ -19,25 +19,24 @@ export class OntarioHintText {
       *
       * The resulting hint text will display `"Hint Text"`.
     */
-  @Prop() hint: string | null;
+  @Prop({ mutable: true }) hint: string | null;
 
   /**
    * Used to used to establish a relationship between hint text content and elements using aria-describedby.
    */
   @Prop({ attribute: 'id' }) hintId?: string | undefined;
 
-  private getHintId() {
-    return this.hintId ?? (this.hintId = this.host.id);
-  }
-
-  private getHintContent() {
-    return this.hint ?? (this.hint = this.host.textContent);
+  /**
+   * Set `hint` using internal component logic
+   */
+  componentWillLoad() {
+    this.hint = this.hint ?? (this.hint = this.host.textContent);
   }
 
   render() {
     return (
-      <p id={this.getHintId()} class="ontario-hint" aria-hint={this.getHintContent()}>
-        {this.getHintContent()}
+      <p id={this.hintId} class="ontario-hint" aria-hint={this.hint}>
+        {this.hint}
       </p>
     );
   }

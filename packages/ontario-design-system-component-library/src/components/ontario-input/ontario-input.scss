@@ -1,0 +1,52 @@
+@import '../../global.scss';
+
+$ontario-input-padding: 0.625rem;
+
+.ontario-input {
+	border: 2px solid $ontario-colour-black;
+	border-radius: $global-radius;
+	box-sizing: border-box;
+	color: $ontario-colour-black;
+	display: block;
+	font-size: 1rem;
+	font-family: $ontario-font-open-sans;
+	line-height: 1.5;
+	margin: $spacing-0 $spacing-0 $spacing-7;
+	max-width: 48rem;
+	width: 100%;
+	padding: $ontario-input-padding $spacing-4;
+	transition: box-shadow 0.1s ease-in-out;
+
+	&:focus,
+	&:active {
+		@extend %ontario-focus;
+	}
+}
+
+.ontario-input--2-char-width {
+	max-width: 8ex;
+}
+
+.ontario-input--3-char-width {
+	max-width: 10ex;
+}
+
+.ontario-input--4-char-width {
+	max-width: 12ex;
+}
+
+.ontario-input--5-char-width {
+	max-width: 14ex;
+}
+
+.ontario-input--7-char-width {
+	max-width: 17ex;
+}
+
+.ontario-input--10-char-width {
+	max-width: 23ex;
+}
+
+.ontario-input--20-char-width {
+	max-width: 41ex;
+}
