@@ -40,7 +40,7 @@ export class OntarioInput {
 	/**
 	 * The input content value.
 	 */
-	@Prop({ mutable: true }) value?: string | null | undefined = undefined;
+	@Prop({ mutable: true }) value?: string | null | undefined;
 
 	/**
 	 * Emitted when the input loses focus.
