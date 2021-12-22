@@ -82,7 +82,7 @@ export class OntarioInput {
 			<input
 				aria-describedby={this.describedBy}
 				class={this.inputWidth ? `ontario-input ontario-input--${this.inputWidth}` : 'ontario-input'}
-				id={this.inputId ? this.inputId : this.getId()}
+				id={this.getId()}
 				onBlur={this.onBlur}
 				onInput={this.onChange}
 				required={this.required}
