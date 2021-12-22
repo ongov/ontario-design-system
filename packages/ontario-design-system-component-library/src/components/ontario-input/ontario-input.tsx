@@ -73,8 +73,8 @@ export class OntarioInput {
 		return this.value ?? '';
 	}
 
-	private getId(): string {
-		return uuid();
+	public getId(): string {
+		return this.inputId ?? (this.inputId = uuid());
 	}
 
 	render() {
