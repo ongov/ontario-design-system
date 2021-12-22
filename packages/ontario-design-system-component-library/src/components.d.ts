@@ -55,7 +55,7 @@ export namespace Components {
         /**
           * The width of the input field. If no value is assigned, it will present as the default input width.
          */
-        "inputWidth"?: '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width';
+        "inputWidth"?: '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default';
         /**
           * The name assigned to the input.The name value is used to reference form data after a form is submitted.
          */
@@ -149,7 +149,7 @@ declare namespace LocalJSX {
         /**
           * The width of the input field. If no value is assigned, it will present as the default input width.
          */
-        "inputWidth"?: '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width';
+        "inputWidth"?: '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default';
         /**
           * The name assigned to the input.The name value is used to reference form data after a form is submitted.
          */
