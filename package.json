@@ -2,11 +2,12 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "@stencil/sass": "^1.5.2",
     "lerna": "^4.0.0"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build-libs": "lerna run --scope ontario-design-system* build"
+    "build-libs": "lerna run --scope ontario-design-system* build",
+    "clean": "lerna run clean",
+    "clean:full": "lerna run clean:full"
   }
 }
