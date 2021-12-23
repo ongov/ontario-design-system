@@ -3,12 +3,17 @@
   "version": "0.0.1",
   "description": "This is a global styles package for the Ontario Design System",
   "main": "index.css",
+  "style": "dist/styles/ontario-theme.min.css",
+  "sass": "dist/styles/scss/theme.scss",
   "scripts": {
     "scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js --watch scss -o css ",
     "build": "gulp deploy",
     "clean": "rm -rf dist",
     "clean:full": "rm -rf node_modules && npm run clean"
   },
+  "files": [
+		"dist/"
+	],
   "author": "",
   "license": "ISC",
   "dependencies": {
