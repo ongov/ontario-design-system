@@ -12,12 +12,15 @@ export class OntarioHintText {
   @Element() host: HTMLElement;
 
   /**
-   * Text to display as the hint text statement
+   * Text to display as the hint text statement.
+   *
+   * Setting the hint can be done using the element content or setting the
+   * this property.  This property will take precedence.
    *
    * @example
-   * <ontario-hint-text hint="Hint Text"></ontario-button>
+   * <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>
    *
-   * The resulting hint text will display `"Hint Text"`.
+   * The resulting hint text will display `"Override Hint Text"`.
    */
   @Prop({ mutable: true }) hint: string | null;
 
