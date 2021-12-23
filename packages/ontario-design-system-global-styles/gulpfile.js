@@ -19,59 +19,62 @@ const fonts = ['./src/fonts/**'];
  *   [debug]:boolean
  * }} opts Configuration options
  */
-const processSass = (opts) => {
-  const sassOptions = {
-    outputStyle: 'expanded',
-  };
+const processSass = opts => {
+	const sassOptions = {
+		outputStyle: 'expanded',
+	};
 
-  if (opts.debug) {
-    sassOptions.sourceComments = true;
-  }
+	if (opts.debug) {
+		sassOptions.sourceComments = true;
+	}
 
-  src('./src/scss/theme.scss')
-    .pipe(sass(sassOptions).on('error', sass.logError))
-    .pipe(autoprefixer())
-    .pipe(concat(gulpif(opts.compress, 'ontario-theme.min.css', 'ontario-theme.css')))
-    .pipe(gulpif(opts.compress, minify()))
-    .pipe(dest(`${distDir}/styles`));
+	src('./src/scss/theme.scss')
+		.pipe(sass(sassOptions).on('error', sass.logError))
+		.pipe(autoprefixer())
+		.pipe(concat(gulpif(opts.compress, 'ontario-theme.min.css', 'ontario-theme.css')))
+		.pipe(gulpif(opts.compress, minify()))
+		.pipe(dest(`${distDir}/styles`));
 
-  if (opts.callback) {
-    opts.callback();
-  }
+	if (opts.callback) {
+		opts.callback();
+	}
 };
 
-task('sass:build', (done) => {
-  processSass({
-    compress: false,
-    debug: false,
-    callback: done
-  });
+task('sass:build', done => {
+	processSass({
+		compress: false,
+		debug: false,
+		callback: done,
+	});
 });
 
-task('sass:minify', (done) => {
-  processSass({
-    compress: true,
-    callback: done,
-  });
+task('sass:minify', done => {
+	processSass({
+		compress: true,
+		callback: done,
+	});
+});
+
+task('sass:copy-dist', () => {
+	return src('src/scss/**/*.scss').pipe(dest('dist/styles/scss'));
 });
 
 task('sass:build-minify', parallel('sass:build', 'sass:minify'));
 
 // Move all non-style related fonts to the dist/fonts folder
-task('fonts-move', (done) => {
-  return src(fonts, { base: './src' })
-    .pipe(dest(`${distDir}`));
+task('fonts-move', done => {
+	return src(fonts, { base: './src' }).pipe(dest(distDir));
 });
 
-task('watch', (done) => {
-  watch(styleDir, { ignoreInitial: false }, parallel('sass:build-minify'));
-  done();
+task('watch', done => {
+	watch(styleDir, { ignoreInitial: false }, parallel('sass:build-minify'));
+	done();
 });
 
-task('clean', (done) => {
-  return del(distDir);
+task('clean', done => {
+	return del(distDir);
 });
 
-task('deploy', series('clean', 'fonts-move', 'sass:build-minify'));
+task('deploy', series('clean', 'fonts-move', 'sass:copy-dist', 'sass:build-minify'));
 
 task('default', series('watch'));
