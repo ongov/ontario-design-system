@@ -13,12 +13,12 @@ export class OntarioHintText {
 
   /**
    * Text to display as the hint text statement
-    *
-    * @example
-    * <ontario-hint-text hint="Hint Text"></ontario-button>
-      *
-      * The resulting hint text will display `"Hint Text"`.
-    */
+   *
+   * @example
+   * <ontario-hint-text hint="Hint Text"></ontario-button>
+   *
+   * The resulting hint text will display `"Hint Text"`.
+   */
   @Prop({ mutable: true }) hint: string | null;
 
   /**
