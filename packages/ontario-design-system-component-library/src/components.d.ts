@@ -46,13 +46,13 @@ export namespace Components {
     interface OntarioHintText {
         /**
           * Text to display as the hint text statement
-          * @example <ontario-hint-text hint="Hint Text"></ontario-button>   The resulting hint text will display `"Hint Text"`.
+          * @example <ontario-hint-text hint="Hint Text"></ontario-button>  The resulting hint text will display `"Hint Text"`.
          */
         "hint": string | null;
         /**
           * Used to used to establish a relationship between hint text content and elements using aria-describedby.
          */
-        "hintId"?: string | undefined;
+        "hintId"?: string;
     }
     interface OntarioInput {
         /**
@@ -187,13 +187,13 @@ declare namespace LocalJSX {
     interface OntarioHintText {
         /**
           * Text to display as the hint text statement
-          * @example <ontario-hint-text hint="Hint Text"></ontario-button>   The resulting hint text will display `"Hint Text"`.
+          * @example <ontario-hint-text hint="Hint Text"></ontario-button>  The resulting hint text will display `"Hint Text"`.
          */
         "hint"?: string | null;
         /**
           * Used to used to establish a relationship between hint text content and elements using aria-describedby.
          */
-        "hintId"?: string | undefined;
+        "hintId"?: string;
     }
     interface OntarioInput {
         /**

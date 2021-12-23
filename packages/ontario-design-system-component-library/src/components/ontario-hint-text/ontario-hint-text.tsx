@@ -24,7 +24,7 @@ export class OntarioHintText {
   /**
    * Used to used to establish a relationship between hint text content and elements using aria-describedby.
    */
-  @Prop({ attribute: 'id' }) hintId?: string | undefined;
+  @Prop({ attribute: 'id' }) hintId?: string;
 
   /**
    * Set `hint` using internal component logic
