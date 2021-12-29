@@ -1,5 +1,9 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { OntarioTextarea } from '../ontario-textarea';
+import {
+	newSpecPage
+} from '@stencil/core/testing';
+import {
+	OntarioTextarea
+} from '../ontario-textarea';
 
 describe('ontario-textarea', () => {
 	describe('snapshot', () => {
@@ -74,8 +78,11 @@ describe('ontario-textarea', () => {
 			});
 
 			const emitSpy = jest.fn();
+			const leftArrowKeyCode = 37;
 			page.doc.addEventListener('changeEvent', emitSpy);
-			page.rootInstance.handleChange(new KeyboardEvent('keydown', {'keyCode': 37}));
+			page.rootInstance.handleChange(new KeyboardEvent('keydown', {
+				'keyCode': leftArrowKeyCode
+			}));
 			await page.waitForChanges();
 			expect(emitSpy).toHaveBeenCalled();
 		});
@@ -91,14 +98,18 @@ describe('ontario-textarea', () => {
 			});
 
 			const emitSpy = jest.fn();
+			const testValue = 'This is a test'
+			const leftArrowKeyCode = 37;
 			page.doc.addEventListener('changeEvent', emitSpy);
-			page.rootInstance.value = 'This is a test';
-			page.rootInstance.handleChange(new KeyboardEvent('keydown', {'keyCode': 37}));
+			page.rootInstance.value = testValue;
+			page.rootInstance.handleChange(new KeyboardEvent('keydown', {
+				'keyCode': leftArrowKeyCode
+			}));
 			await page.waitForChanges();
-			expect(page.rootInstance.value).toBe('This is a test');
+			expect(page.rootInstance.value).toBe(testValue);
 		})
 
-		it('should return the textarea id when using the getId method', async() => {
+		it('should return the textarea id when using the getId method', async () => {
 			const page = await newSpecPage({
 				components: [OntarioTextarea],
 				html: `<ontario-textarea
