@@ -16,7 +16,7 @@
 
 @function rem-calc($size) {
   $remSize: math.div($size, 16);
-  @return #{$remSize}rem;
+  @return $remSize * 1rem;
 }
 
 // Radius for rounded corners (for example, buttons)
