@@ -93,7 +93,7 @@ export namespace Components {
         /**
           * The textarea content value.
          */
-        "value"?: string | null | undefined;
+        "value"?: string | number | null;
     }
 }
 declare global {
@@ -222,6 +222,10 @@ declare namespace LocalJSX {
          */
         "onChangeEvent"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
+          * Emitted when the input gains focus.
+         */
+        "onFocusEvent"?: (event: CustomEvent<void>) => void;
+        /**
           * Used to define whether the textarea field is required or not. If required, the value passed should be 'required'.
          */
         "required"?: boolean;
@@ -232,7 +236,7 @@ declare namespace LocalJSX {
         /**
           * The textarea content value.
          */
-        "value"?: string | null | undefined;
+        "value"?: string | number | null;
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
