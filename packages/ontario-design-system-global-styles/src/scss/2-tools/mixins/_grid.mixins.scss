@@ -52,9 +52,9 @@
 @mixin ontario-grid-row($behaviour: false) {
   // use @include ontario-grid-row(nest); to include a nested row
   @if $behaviour == nest {
-      margin: 0 math.div($column-gutter, 2);
-      max-width: none;
-      width: auto;
+    margin: 0 math.div(-#{$column-gutter}, 2);
+    max-width: none;
+    width: auto;
   }
 
   // use @include ontario-grid-row(collapse); to collapsed a container row margins

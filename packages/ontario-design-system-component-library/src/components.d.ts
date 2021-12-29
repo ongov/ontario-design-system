@@ -45,8 +45,8 @@ export namespace Components {
     }
     interface OntarioHintText {
         /**
-          * Text to display as the hint text statement
-          * @example <ontario-hint-text hint="Hint Text"></ontario-button>  The resulting hint text will display `"Hint Text"`.
+          * Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence.
+          * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
          */
         "hint": string | null;
         /**
@@ -186,8 +186,8 @@ declare namespace LocalJSX {
     }
     interface OntarioHintText {
         /**
-          * Text to display as the hint text statement
-          * @example <ontario-hint-text hint="Hint Text"></ontario-button>  The resulting hint text will display `"Hint Text"`.
+          * Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence.
+          * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
          */
         "hint"?: string | null;
         /**
