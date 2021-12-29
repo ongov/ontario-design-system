@@ -43,6 +43,17 @@ export namespace Components {
          */
         "type": 'primary' | 'secondary' | 'tertiary';
     }
+    interface OntarioHintText {
+        /**
+          * Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence.
+          * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
+         */
+        "hint": string | null;
+        /**
+          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
+         */
+        "hintId"?: string;
+    }
     interface OntarioInput {
         /**
           * The aria-desribedBy value if the input has hint text associated with it.
@@ -109,6 +120,12 @@ declare global {
         prototype: HTMLOntarioButtonElement;
         new (): HTMLOntarioButtonElement;
     };
+    interface HTMLOntarioHintTextElement extends Components.OntarioHintText, HTMLStencilElement {
+    }
+    var HTMLOntarioHintTextElement: {
+        prototype: HTMLOntarioHintTextElement;
+        new (): HTMLOntarioHintTextElement;
+    };
     interface HTMLOntarioInputElement extends Components.OntarioInput, HTMLStencilElement {
     }
     var HTMLOntarioInputElement: {
@@ -124,6 +141,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "ontario-button": HTMLOntarioButtonElement;
+        "ontario-hint-text": HTMLOntarioHintTextElement;
         "ontario-input": HTMLOntarioInputElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
     }
@@ -165,6 +183,17 @@ declare namespace LocalJSX {
           * The type of button to render.
          */
         "type"?: 'primary' | 'secondary' | 'tertiary';
+    }
+    interface OntarioHintText {
+        /**
+          * Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence.
+          * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
+         */
+        "hint"?: string | null;
+        /**
+          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
+         */
+        "hintId"?: string;
     }
     interface OntarioInput {
         /**
@@ -241,6 +270,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "my-component": MyComponent;
         "ontario-button": OntarioButton;
+        "ontario-hint-text": OntarioHintText;
         "ontario-input": OntarioInput;
         "ontario-textarea": OntarioTextarea;
     }
@@ -251,6 +281,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
+            "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
             "ontario-input": LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
         }
