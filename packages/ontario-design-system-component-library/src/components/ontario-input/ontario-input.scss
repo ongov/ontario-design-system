@@ -12,10 +12,10 @@ $ontario-input-padding: 0.625rem;
 	font-family: $ontario-font-open-sans;
 	line-height: 1.5;
 	margin: $spacing-0 $spacing-0 $spacing-7;
-	max-width: 48rem;
-	width: 100%;
+	max-width: $standard-width;
 	padding: $ontario-input-padding $spacing-4;
 	transition: box-shadow 0.1s ease-in-out;
+	width: $full-width;
 
 	&:focus,
 	&:active {
