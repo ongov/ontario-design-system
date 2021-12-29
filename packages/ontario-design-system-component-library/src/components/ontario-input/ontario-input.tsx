@@ -95,6 +95,7 @@ export class OntarioInput {
 				aria-describedby={this.describedBy}
 				class={this.getClass()}
 				id={this.getId()}
+				name={this.name}
 				onBlur={this.handleBlur}
 				onFocus={this.handleFocus}
 				onInput={this.handleChange}
