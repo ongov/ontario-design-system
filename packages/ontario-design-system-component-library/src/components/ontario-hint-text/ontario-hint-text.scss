@@ -1,0 +1,9 @@
+@import '../../global.scss';
+
+.ontario-hint {
+  color: $ontario-greyscale-70;
+  display: inline-block;
+  margin: 0 0 $spacing-4 0;
+  width: $full-width;
+  max-width: $standard-width;
+}
