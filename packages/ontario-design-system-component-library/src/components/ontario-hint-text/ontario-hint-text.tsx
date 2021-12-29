@@ -1,4 +1,5 @@
 import { Component, Prop, Element, h } from '@stencil/core';
+import { v4 as uuid } from 'uuid';
 
 /**
  * Ontario Design System hint text web component
@@ -27,13 +28,18 @@ export class OntarioHintText {
   /**
    * Used to used to establish a relationship between hint text content and elements using aria-describedby.
    */
-  @Prop({ attribute: 'id' }) hintId?: string;
+  @Prop({ mutable: true }) hintId?: string;
 
   /**
    * Set `hint` using internal component logic
    */
   componentWillLoad() {
     this.hint = this.hint ?? this.host.textContent;
+    this.hintId = this.hintId ?? uuid();
+  }
+
+  public getId(): string {
+    return this.hintId ?? '';
   }
 
   render() {
