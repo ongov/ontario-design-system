@@ -72,10 +72,10 @@ it('should render a default button with the aria-label attribute being overwritt
 it('should render a default button with an id being explicity specified', async () => {
 	const page = await newSpecPage({
 		components: [OntarioButton],
-		html: `<ontario-button id="DefaultButton">Element Content</ontario-button>`,
+		html: `<ontario-button button-id="DefaultButton">Element Content</ontario-button>`,
 	});
 	expect(page.root).toEqualHtml(`
-    <ontario-button id="DefaultButton">
+    <ontario-button button-id="DefaultButton">
       <mock:shadow-root>
         <button aria-label="Element Content" class="ontario-button ontario-button--secondary" type="button" id="DefaultButton">
           Element Content
