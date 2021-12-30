@@ -5,12 +5,14 @@ describe('ontario-hint-text', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [OntarioHintText],
-      html: `<ontario-hint-text></ontario-hint-text>`,
+      html: `<ontario-hint-text hint-id="idTest" hint="This is a test hint"></ontario-hint-text>`,
     });
     expect(page.root).toEqualHtml(`
-      <ontario-hint-text>
+      <ontario-hint-text hint-id="idTest" hint="This is a test hint">
         <mock:shadow-root>
-          <slot></slot>
+          <p id="idTest" class="ontario-hint" aria-hint="This is a test hint">
+            This is a test hint
+          </p>
         </mock:shadow-root>
       </ontario-hint-text>
     `);
