@@ -9,13 +9,13 @@
 	font-family: $ontario-font-open-sans;
 	line-height: 1.5;
 	display: block;
-	max-width: 48rem;
+	max-width: $standard-width;
 	min-height: 144px;
 	margin: 0 0 $spacing-5;
 	padding: 0.625rem $spacing-4;
 	transition: box-shadow 0.1s ease-in-out;
 	white-space: pre-wrap;
-	width: 100%;
+	width: $full-width;
 
 	&:focus,
 	&:active {
