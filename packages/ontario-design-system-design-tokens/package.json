@@ -1,15 +1,22 @@
 {
-  "name": "ontario-design-system-design-tokens",
-  "version": "0.0.1",
-  "description": "Design Tokens to be used in Ontario Design System",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node build.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "style-dictionary": "^3.0.3"
-  }
+	"name": "ontario-design-system-design-tokens",
+	"version": "0.0.1",
+	"description": "Design Tokens to be used in Ontario Design System",
+	"main": "index.js",
+	"style": "dist/css/_variables.css",
+	"sass": "dist/scss/_variables.scss",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "node build.js",
+		"clean": "rm -rf dist",
+		"clean:full": "rm -rf node_modules && npm run clean"
+	},
+	"files": [
+		"dist/{css,scss}/"
+	],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"style-dictionary": "^3.0.3"
+	}
 }

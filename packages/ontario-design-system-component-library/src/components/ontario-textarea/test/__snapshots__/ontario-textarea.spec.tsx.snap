@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-textarea should match snapshot 1`] = `
+<ontario-textarea name="ontario-textarea" textarea-id="ontario-textarea">
+  <mock:shadow-root><textarea class="ontario-textarea" id="ontario-textarea" name="ontario-textarea" value=""></textarea>
+  </mock:shadow-root>
+</ontario-textarea>
+`;
+
+exports[`ontario-textarea snapshot should render the expected html 1`] = `
+<ontario-textarea name="ontario-textarea" textarea-id="ontario-textarea">
+  <mock:shadow-root><textarea class="ontario-textarea" id="ontario-textarea" name="ontario-textarea" value=""></textarea>
+  </mock:shadow-root>
+</ontario-textarea>
+`;
