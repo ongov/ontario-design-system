@@ -84,6 +84,8 @@ export namespace Components {
          */
         "value"?: string | number | null;
     }
+    interface OntarioLabel {
+    }
     interface OntarioTextarea {
         /**
           * The aria-desribedBy value if the textarea has hint text associated with it.
@@ -132,6 +134,12 @@ declare global {
         prototype: HTMLOntarioInputElement;
         new (): HTMLOntarioInputElement;
     };
+    interface HTMLOntarioLabelElement extends Components.OntarioLabel, HTMLStencilElement {
+    }
+    var HTMLOntarioLabelElement: {
+        prototype: HTMLOntarioLabelElement;
+        new (): HTMLOntarioLabelElement;
+    };
     interface HTMLOntarioTextareaElement extends Components.OntarioTextarea, HTMLStencilElement {
     }
     var HTMLOntarioTextareaElement: {
@@ -143,6 +151,7 @@ declare global {
         "ontario-button": HTMLOntarioButtonElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
         "ontario-input": HTMLOntarioInputElement;
+        "ontario-label": HTMLOntarioLabelElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
     }
 }
@@ -237,6 +246,8 @@ declare namespace LocalJSX {
          */
         "value"?: string | number | null;
     }
+    interface OntarioLabel {
+    }
     interface OntarioTextarea {
         /**
           * The aria-desribedBy value if the textarea has hint text associated with it.
@@ -276,6 +287,7 @@ declare namespace LocalJSX {
         "ontario-button": OntarioButton;
         "ontario-hint-text": OntarioHintText;
         "ontario-input": OntarioInput;
+        "ontario-label": OntarioLabel;
         "ontario-textarea": OntarioTextarea;
     }
 }
@@ -287,6 +299,7 @@ declare module "@stencil/core" {
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
             "ontario-input": LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
+            "ontario-label": LocalJSX.OntarioLabel & JSXBase.HTMLAttributes<HTMLOntarioLabelElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
         }
     }
