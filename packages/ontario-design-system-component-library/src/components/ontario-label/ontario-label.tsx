@@ -5,9 +5,9 @@ import { Component, h, Element, Prop } from '@stencil/core';
  */
 export interface OntarioLabelProperties {
 	/**
-	 * The type of label to render.
+	 * The text to display as label.
 	 */
-	type?: 'default' | 'large' | 'heading';
+	caption?: string;
 
 	/**
 	 * The form control with which the caption is associated.
@@ -15,14 +15,14 @@ export interface OntarioLabelProperties {
 	for: string;
 
 	/**
-	 * The text to display as label.
-	 */
-	caption: string | null;
-
-	/**
 	 * Defines whether the input field is required. If required, the value passed should be 'required'.
 	 */
 	required?: boolean;
+
+	/**
+	 * The type of label to render.
+	 */
+	type?: 'default' | 'large' | 'heading';
 }
 
 /**
@@ -39,7 +39,7 @@ export class OntarioLabel implements OntarioLabelProperties {
 	/**
 	 * The text to display as label.
 	 */
-	@Prop() caption: string | null;
+	@Prop({ mutable: true }) caption: string;
 
 	/**
 	 * The form control with which the caption is associated.
@@ -60,7 +60,7 @@ export class OntarioLabel implements OntarioLabelProperties {
 	 * Set `caption` using internal component logic
 	 */
 	componentWillLoad() {
-		this.caption = this.caption ?? (this.caption = this.host.textContent);
+		this.caption = this.caption ?? this.host.textContent ?? '';
 	}
 
 	/**

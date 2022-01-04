@@ -88,7 +88,7 @@ export namespace Components {
         /**
           * The text to display as label.
          */
-        "caption": string | null;
+        "caption": string;
         /**
           * The form control with which the caption is associated.
          */
@@ -266,7 +266,7 @@ declare namespace LocalJSX {
         /**
           * The text to display as label.
          */
-        "caption"?: string | null;
+        "caption"?: string;
         /**
           * The form control with which the caption is associated.
          */
