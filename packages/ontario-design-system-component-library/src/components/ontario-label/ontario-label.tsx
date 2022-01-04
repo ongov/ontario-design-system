@@ -17,7 +17,7 @@ export interface OntarioLabelProperties {
 	/**
 	 * The text to display as label.
 	 */
-	caption: string;
+	caption: string | null;
 
 	/**
 	 * Defines whether the input field is required. If required, the value passed should be 'required'.
@@ -39,7 +39,7 @@ export class OntarioLabel implements OntarioLabelProperties {
 	/**
 	 * The text to display as label.
 	 */
-	@Prop() caption: string;
+	@Prop() caption: string | null;
 
 	/**
 	 * The form control with which the caption is associated.
@@ -55,6 +55,13 @@ export class OntarioLabel implements OntarioLabelProperties {
 	 * Defines whether the input field is required. If required, the value passed should be 'required'.
 	 */
 	@Prop() required?: boolean = false;
+
+	/**
+	 * Set `caption` using internal component logic
+	 */
+	componentWillLoad() {
+		this.caption = this.caption ?? (this.caption = this.host.textContent);
+	}
 
 	/**
 	 *
