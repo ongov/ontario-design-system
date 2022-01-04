@@ -1,46 +1,50 @@
-import { Component, Host, h, Element, Prop } from '@stencil/core';
+import { Component, h, Element, Prop } from '@stencil/core';
 
 /**
  * Ontario Label component properties
  */
 export interface OntarioLabelProperties {
-  /**
-   * The type of label to render.
-   */
-  type?: 'default' | 'large' | 'heading';
+	/**
+	 * The type of label to render.
+	 */
+	type?: 'default' | 'large' | 'heading';
 
-  /**
-   * The form control with which the caption is associated.
-   */
-  for?: string | HTMLElement;
+	/**
+	 * The form control with which the caption is associated.
+	 */
+	for: string;
 
-  /**
-   * The text to display as label.
-   */
-  caption?: string;
+	/**
+	 * The text to display as label.
+	 */
+	caption: string;
+
+	/**
+	 * Defines whether the input field is required. If required, the value passed should be 'required'.
+	 */
+	required?: boolean;
 }
 
 /**
  * Ontario Design System label web component
  */
 @Component({
-  tag: 'ontario-label',
-  styleUrl: 'ontario-label.scss',
-  shadow: true,
+	tag: 'ontario-label',
+	styleUrl: 'ontario-label.scss',
+	shadow: true,
 })
 export class OntarioLabel implements OntarioLabelProperties {
-
-  @Element() host: HTMLElement;
+	@Element() host: HTMLElement;
 
 	/**
 	 * The text to display as label.
 	 */
-	@Prop() caption: string | undefined;
+	@Prop() caption: string;
 
-  /**
-   * The form control with which the caption is associated.
-   */
-  @Prop() for: string | HTMLElement | undefined;
+	/**
+	 * The form control with which the caption is associated.
+	 */
+	@Prop({ attribute: 'for', reflect: true }) for: string;
 
 	/**
 	 * The type of label to render.
@@ -48,16 +52,32 @@ export class OntarioLabel implements OntarioLabelProperties {
 	@Prop() type: 'default' | 'large' | 'heading' = 'default';
 
 	/**
-	 * The unique identifier of the button
+	 * Defines whether the input field is required. If required, the value passed should be 'required'.
 	 */
-	@Prop({ attribute: 'id' }) buttonId?: string | undefined;
+	@Prop() required?: boolean = false;
 
-  render() {
-    return (
-      <Host>
-        <slot></slot>
-      </Host>
-    );
-  }
+	/**
+	 *
+	 * @returns the classes of the label based on the label's `type`
+	 */
+	private getClass() {
+		return this.type.toLowerCase() === 'default' ? `ontario-label` : `ontario-label ontario-label--${this.type.toLowerCase()}`;
+	}
 
+	/**
+	 *
+	 * @returns the flag text
+	 */
+	private getFlag() {
+		return this.required ? '(required)' : '(optional)';
+	}
+
+	render() {
+		return (
+			<label htmlFor={this.for} class={this.getClass()}>
+				{this.caption}
+				<span class="ontario-label__flag">{this.getFlag()}</span>
+			</label>
+		);
+	}
 }
