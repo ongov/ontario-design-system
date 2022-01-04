@@ -104,7 +104,7 @@ export namespace Components {
     }
     interface OntarioTextarea {
         /**
-          * The aria-desribedBy value if the textarea has hint text associated with it.
+          * The aria-describedBy value if the textarea has hint text associated with it.
          */
         "describedBy"?: string;
         /**
@@ -282,7 +282,7 @@ declare namespace LocalJSX {
     }
     interface OntarioTextarea {
         /**
-          * The aria-desribedBy value if the textarea has hint text associated with it.
+          * The aria-describedBy value if the textarea has hint text associated with it.
          */
         "describedBy"?: string;
         /**

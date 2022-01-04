@@ -8,7 +8,7 @@ import { v4 as uuid } from 'uuid';
 })
 export class OntarioTextarea {
 	/**
-	 * The aria-desribedBy value if the textarea has hint text associated with it.
+	 * The aria-describedBy value if the textarea has hint text associated with it.
 	 */
 	@Prop() describedBy?: string;
 
