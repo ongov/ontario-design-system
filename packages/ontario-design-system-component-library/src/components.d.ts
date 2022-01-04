@@ -56,7 +56,7 @@ export namespace Components {
     }
     interface OntarioInput {
         /**
-          * The aria-desribedBy value if the input has hint text associated with it.
+          * The aria-describedBy value if the input has hint text associated with it.
          */
         "describedBy"?: string;
         /**
@@ -206,7 +206,7 @@ declare namespace LocalJSX {
     }
     interface OntarioInput {
         /**
-          * The aria-desribedBy value if the input has hint text associated with it.
+          * The aria-describedBy value if the input has hint text associated with it.
          */
         "describedBy"?: string;
         /**
