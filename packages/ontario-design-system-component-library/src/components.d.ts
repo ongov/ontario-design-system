@@ -85,6 +85,22 @@ export namespace Components {
         "value"?: string | number | null;
     }
     interface OntarioLabel {
+        /**
+          * The text to display as label.
+         */
+        "caption": string | null;
+        /**
+          * The form control with which the caption is associated.
+         */
+        "for": string;
+        /**
+          * Defines whether the input field is required. If required, the value passed should be 'required'.
+         */
+        "required"?: boolean;
+        /**
+          * The type of label to render.
+         */
+        "type": 'default' | 'large' | 'heading';
     }
     interface OntarioTextarea {
         /**
@@ -247,6 +263,22 @@ declare namespace LocalJSX {
         "value"?: string | number | null;
     }
     interface OntarioLabel {
+        /**
+          * The text to display as label.
+         */
+        "caption"?: string | null;
+        /**
+          * The form control with which the caption is associated.
+         */
+        "for"?: string;
+        /**
+          * Defines whether the input field is required. If required, the value passed should be 'required'.
+         */
+        "required"?: boolean;
+        /**
+          * The type of label to render.
+         */
+        "type"?: 'default' | 'large' | 'heading';
     }
     interface OntarioTextarea {
         /**
