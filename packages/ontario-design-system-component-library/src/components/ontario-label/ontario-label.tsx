@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop } from '@stencil/core';
+import { Component, h, Element, Prop, Watch } from '@stencil/core';
 
 /**
  * Ontario Label component properties
@@ -37,7 +37,12 @@ export class OntarioLabel implements OntarioLabelProperties {
 	@Element() host: HTMLElement;
 
 	/**
-	 * The text to display as label.
+	 * The text to display as label. This will override the text provided through the Element Content.
+   * 
+   * @example
+   * <ontario-label caption="Comments" for"comments">Feedback</ontario-label>
+   * 
+   * The resulting label will show `"Comments"`.
 	 */
 	@Prop({ mutable: true }) caption: string;
 
@@ -55,6 +60,13 @@ export class OntarioLabel implements OntarioLabelProperties {
 	 * Defines whether the input field is required. If required, the value passed should be 'required'.
 	 */
 	@Prop() required?: boolean = false;
+
+  @Watch('caption')
+  validateCaption(newValue: string) {
+    const isCaptionBlank = typeof newValue !== 'string' || newValue === '';
+    const isElementContentBlank = typeof this.host.textContent !== 'string' || this.host.textContent === '';
+    if (isCaptionBlank && isElementContentBlank) { throw new Error('Label caption is required') }; 
+  }
 
 	/**
 	 * Set `caption` using internal component logic
