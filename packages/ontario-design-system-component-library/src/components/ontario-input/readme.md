@@ -23,8 +23,9 @@ User enters data into the input component.
 <br>
 
 ## Accessibility Considerations
-* An `id` attribute is necessary to allow the input to be associated with a label element
-* A `name` attribute needs to be set to be submitted to the server when the form is submitted.
+
+- An `id` attribute is necessary to allow the input to be associated with a label element
+- A `name` attribute needs to be set to be submitted to the server when the form is submitted.
 
 <br>
 
@@ -40,7 +41,6 @@ See the [Design System input guidance](https://designsystem.ontario.ca/component
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property      | Attribute      | Description                                                                                                    | Type                                                                                                                                                     | Default     |
@@ -51,8 +51,7 @@ See the [Design System input guidance](https://designsystem.ontario.ca/component
 | `name`        | `name`         | The name assigned to the input.The name value is used to reference form data after a form is submitted.        | `string`                                                                                                                                                 | `undefined` |
 | `required`    | `required`     | Used to define whether the input field is required or not. If required, the value passed should be 'required'. | `boolean \| undefined`                                                                                                                                   | `false`     |
 | `type`        | `type`         | The input type value.                                                                                          | `"email" \| "password" \| "tel" \| "text" \| undefined`                                                                                                  | `'text'`    |
-| `value`       | `value`        | The input content value.                                                                                       | `null \| number \| string \| undefined`                                                                                                                  | `''`        |
-
+| `value`       | `value`        | The input content value.                                                                                       | `string \| undefined`                                                                                                                                    | `undefined` |
 
 ## Events
 
@@ -62,7 +61,6 @@ See the [Design System input guidance](https://designsystem.ontario.ca/component
 | `changeEvent` | Emitted when a keyboard input occurred. | `CustomEvent<KeyboardEvent>` |
 | `focusEvent`  | Emitted when the input gains focus.     | `CustomEvent<void>`          |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

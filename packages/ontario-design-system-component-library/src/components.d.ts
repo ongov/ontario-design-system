@@ -24,11 +24,11 @@ export namespace Components {
         /**
           * Overrides the default value of the `aria-label` HTML attribute.
          */
-        "ariaLabel"?: string | null;
+        "ariaLabel"?: string;
         /**
           * The unique identifier of the button
          */
-        "buttonId"?: string | undefined;
+        "buttonId"?: string;
         /**
           * The native HTML button type the button should use.
          */
@@ -37,18 +37,18 @@ export namespace Components {
           * Text to be displayed within the button. This will override the text provided through the Element Content.
           * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
          */
-        "label"?: string | null;
+        "label"?: string;
         /**
           * The type of button to render.
          */
-        "type": 'primary' | 'secondary' | 'tertiary';
+        "type"?: 'primary' | 'secondary' | 'tertiary';
     }
     interface OntarioHintText {
         /**
           * Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence.
           * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
          */
-        "hint": string | null;
+        "hint": string;
         /**
           * Used to used to establish a relationship between hint text content and elements using aria-describedby.
          */
@@ -82,7 +82,7 @@ export namespace Components {
         /**
           * The input content value.
          */
-        "value"?: string | number | null;
+        "value"?: string;
     }
     interface OntarioLabel {
         /**
@@ -123,7 +123,7 @@ export namespace Components {
         /**
           * The textarea content value.
          */
-        "value"?: string | number | null;
+        "value"?: string;
     }
 }
 declare global {
@@ -191,11 +191,11 @@ declare namespace LocalJSX {
         /**
           * Overrides the default value of the `aria-label` HTML attribute.
          */
-        "ariaLabel"?: string | null;
+        "ariaLabel"?: string;
         /**
           * The unique identifier of the button
          */
-        "buttonId"?: string | undefined;
+        "buttonId"?: string;
         /**
           * The native HTML button type the button should use.
          */
@@ -204,7 +204,7 @@ declare namespace LocalJSX {
           * Text to be displayed within the button. This will override the text provided through the Element Content.
           * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
          */
-        "label"?: string | null;
+        "label"?: string;
         /**
           * The type of button to render.
          */
@@ -215,7 +215,7 @@ declare namespace LocalJSX {
           * Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence.
           * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
          */
-        "hint"?: string | null;
+        "hint"?: string;
         /**
           * Used to used to establish a relationship between hint text content and elements using aria-describedby.
          */
@@ -261,7 +261,7 @@ declare namespace LocalJSX {
         /**
           * The input content value.
          */
-        "value"?: string | number | null;
+        "value"?: string;
     }
     interface OntarioLabel {
         /**
@@ -314,7 +314,7 @@ declare namespace LocalJSX {
         /**
           * The textarea content value.
          */
-        "value"?: string | number | null;
+        "value"?: string;
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
