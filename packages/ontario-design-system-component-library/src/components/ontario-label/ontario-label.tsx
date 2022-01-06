@@ -65,7 +65,7 @@ export class OntarioLabel implements OntarioLabelProperties {
   validateCaption(newValue: string) {
     const isCaptionBlank = typeof newValue !== 'string' || newValue === '';
     const isElementContentBlank = typeof this.host.textContent !== 'string' || this.host.textContent === '';
-    if (isCaptionBlank && isElementContentBlank) { throw new Error('Label caption is required') }; 
+    if (isCaptionBlank && isElementContentBlank) { throw new Error('Label cannot be empty. Please set the label through its caption property or by inserting text between the <ontario-label> tags.') }; 
   }
 
 	/**
