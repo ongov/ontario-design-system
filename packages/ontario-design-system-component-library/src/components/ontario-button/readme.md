@@ -26,6 +26,7 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property    | Attribute    | Description                                                                                               | Type                                                  | Default       |
@@ -36,6 +37,7 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for
 | `label`     | `label`      | Text to be displayed within the button. This will override the text provided through the Element Content. | `string \| undefined`                                 | `undefined`   |
 | `type`      | `type`       | The type of button to render.                                                                             | `"primary" \| "secondary" \| "tertiary" \| undefined` | `'secondary'` |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

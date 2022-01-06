@@ -85,9 +85,9 @@ export class OntarioLabel implements OntarioLabelProperties {
 
 	/**
 	 *
-	 * @returns the flag text
+	 * @returns the flag text based on whether the input is required or optional
 	 */
-	private getFlag() {
+	private getRequiredFlagText() {
 		return this.required ? '(required)' : '(optional)';
 	}
 
@@ -95,7 +95,7 @@ export class OntarioLabel implements OntarioLabelProperties {
 		return (
 			<label htmlFor={this.for} class={this.getClass()}>
 				{this.caption}
-				<span class="ontario-label__flag">{this.getFlag()}</span>
+				<span class="ontario-label__flag">{this.getRequiredFlagText()}</span>
 			</label>
 		);
 	}
