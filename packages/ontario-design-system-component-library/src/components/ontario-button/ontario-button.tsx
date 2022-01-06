@@ -50,7 +50,7 @@ export class OntarioButton {
 	}
 
 	/**
-	 * 
+	 *
 	 * @returns the classes of the button based of the button's `type`
 	 */
 	private getClass() {
