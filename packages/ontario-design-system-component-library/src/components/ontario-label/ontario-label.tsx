@@ -38,11 +38,11 @@ export class OntarioLabel implements OntarioLabelProperties {
 
 	/**
 	 * The text to display as label. This will override the text provided through the Element Content.
-   * 
-   * @example
-   * <ontario-label caption="Comments" for"comments">Feedback</ontario-label>
-   * 
-   * The resulting label will show `"Comments"`.
+	 *
+	 * @example
+	 * <ontario-label caption="Comments" for"comments">Feedback</ontario-label>
+	 *
+	 * The resulting label will show `"Comments"`.
 	 */
 	@Prop({ mutable: true }) caption: string;
 
@@ -61,12 +61,14 @@ export class OntarioLabel implements OntarioLabelProperties {
 	 */
 	@Prop() required?: boolean = false;
 
-  @Watch('caption')
-  validateCaption(newValue: string) {
-    const isCaptionBlank = typeof newValue !== 'string' || newValue === '';
-    const isElementContentBlank = typeof this.host.textContent !== 'string' || this.host.textContent === '';
-    if (isCaptionBlank && isElementContentBlank) { throw new Error('Label cannot be empty. Please set the label through its caption property or by inserting text between the <ontario-label> tags.') }; 
-  }
+	@Watch('caption')
+	validateCaption(newValue: string) {
+		const isCaptionBlank = typeof newValue !== 'string' || newValue === '';
+		const isElementContentBlank = typeof this.host.textContent !== 'string' || this.host.textContent === '';
+		if (isCaptionBlank && isElementContentBlank) {
+			throw new Error('Label cannot be empty. Please set the label through its caption property or by inserting text between the <ontario-label> tags.');
+		}
+	}
 
 	/**
 	 * Set `caption` using internal component logic
@@ -91,12 +93,12 @@ export class OntarioLabel implements OntarioLabelProperties {
 		return this.required ? '(required)' : '(optional)';
 	}
 
+  private getLabel() {
+    const labelContent = <label htmlFor={this.for} class={this.getClass()}>{this.caption}<span class="ontario-label__flag">{this.getRequiredFlagText()}</span></label>;
+    return this.type.toLowerCase() === 'heading' ? <h1>{labelContent}</h1> : labelContent;
+  }
+
 	render() {
-		return (
-			<label htmlFor={this.for} class={this.getClass()}>
-				{this.caption}
-				<span class="ontario-label__flag">{this.getRequiredFlagText()}</span>
-			</label>
-		);
+		return this.getLabel();
 	}
 }
