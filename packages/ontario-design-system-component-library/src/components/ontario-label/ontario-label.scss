@@ -1,48 +1,54 @@
 @import '../../global.scss';
 
 .ontario-label {
-  cursor: pointer;
-  color: $ontario-colour-black;
-  font-family: $ontario-font-raleway-modified;
-  font-size: 1.1875rem;
-  font-weight: 700;
-  line-height: 1.5;
-  margin: 0 0 $spacing-4 0;
-  max-width: 38.75em;
-  white-space: normal;
-  width: 100%;
+	cursor: pointer;
+	color: $ontario-colour-black;
+	font-family: $ontario-font-raleway-modified;
+	font-size: 1.1875rem;
+	font-weight: 700;
+	line-height: 1.5;
+	margin: 0 0 $spacing-4 0;
+	max-width: 38.75em;
+	white-space: normal;
+	width: 100%;
 
-  @media screen and (max-width: $small-breakpoint) {
-      font-size: 1.125rem;
-      line-height: 1.56;
-  }
+	@media screen and (max-width: $small-breakpoint) {
+		font-size: 1.125rem;
+		line-height: 1.56;
+	}
 }
 
 .ontario-label--large {
-  font-size: 1.75rem;
-  letter-spacing: 0.02rem;
-  line-height: 1.2;
-  max-width: 26.25em;
+	font-size: 1.75rem;
+	letter-spacing: 0.02rem;
+	line-height: 1.2;
+	max-width: 26.25em;
 
-  @media screen and (max-width: $small-breakpoint) {
-      font-size: 1.4375rem;
-      line-height: 1.39;
-  }
+	@media screen and (max-width: $small-breakpoint) {
+		font-size: 1.4375rem;
+		line-height: 1.39;
+	}
 }
 
 .ontario-label--heading {
-  h1 {
-      display: inline-block;
-      margin: $spacing-0;
+	display: inline-block;
+	margin: $spacing-0;
+  font-size: rem-calc(32);
+  letter-spacing: 0.04rem;
+  line-height: 1.2;
+
+  @media screen and (min-width: $small-breakpoint) {
+      font-size: rem-calc(40);
+      line-height: 1.29;
   }
 }
 
 .ontario-label__flag {
-  font-family: $ontario-font-open-sans;
-  font-size: 1rem;
-  font-weight: 400;
+	font-family: $ontario-font-open-sans;
+	font-size: 1rem;
+	font-weight: 400;
 
-  &:before {
-      content: "\a0";
-  }
+	&:before {
+		content: '\a0';
+	}
 }
