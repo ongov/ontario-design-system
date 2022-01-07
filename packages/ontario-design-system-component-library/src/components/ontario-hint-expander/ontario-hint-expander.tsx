@@ -38,7 +38,6 @@ export class OntarioHintExpander {
    */
   @Event() toggleExpanderEvent!: EventEmitter<MouseEvent>;
 
-
   private onClick = (ev: Event) => {
     const hintExpander = ev.target as HTMLButtonElement | null;
     const hintExpanderParent = hintExpander?.parentElement;
