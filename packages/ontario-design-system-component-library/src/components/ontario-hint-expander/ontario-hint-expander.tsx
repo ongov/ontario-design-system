@@ -76,7 +76,7 @@ export class OntarioHintExpander {
       <div class="ontario-hint-expander__container">
         <button class="ontario-hint-expander__button" onClick={this.onClick} id="hint-expander-button-{this.hintExpanderId}" aria-controls="hint-expander-content-{this.hintExpanderId}" aria-expanded="false" data-toggle="ontario-collapse">
           <span class="ontario-hint-expander__button-icon--close"></span>
-          <span class="ontario-hint-expander__button-icon--open">Open Icon</span>
+          <span class="ontario-hint-expander__button-icon--open"></span>
           {this.hint}
         </button>
         <div class="ontario-hint-expander__content" id="hint-expander-content-{this.hintExpanderId}" aria-labelledby="hint-expander-button-id-{this.hintExpanderId}" aria-hidden="true" data-toggle="ontario-expander-content">
