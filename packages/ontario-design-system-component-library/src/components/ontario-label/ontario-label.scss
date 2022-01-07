@@ -33,14 +33,14 @@
 .ontario-label--heading {
 	display: inline-block;
 	margin: $spacing-0;
-  font-size: rem-calc(32);
-  letter-spacing: 0.04rem;
-  line-height: 1.2;
+	font-size: rem-calc(32);
+	letter-spacing: 0.04rem;
+	line-height: 1.2;
 
-  @media screen and (min-width: $small-breakpoint) {
-      font-size: rem-calc(40);
-      line-height: 1.29;
-  }
+	@media screen and (min-width: $small-breakpoint) {
+		font-size: rem-calc(40);
+		line-height: 1.29;
+	}
 }
 
 .ontario-label__flag {
