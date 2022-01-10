@@ -82,7 +82,7 @@ export class OntarioLabel implements OntarioLabelProperties {
 	 * @returns the classes of the label based on the label's `type`
 	 */
 	private getClass() {
-    const typeLowerCase = this.type.toLowerCase();
+		const typeLowerCase = this.type.toLowerCase();
 		return typeLowerCase === 'default' ? `ontario-label` : `ontario-label ontario-label--${typeLowerCase}`;
 	}
 
