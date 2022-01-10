@@ -89,7 +89,7 @@ export namespace Components {
           * The text to display as label. This will override the text provided through the Element Content.
           * @example <ontario-label caption="Comments" for"comments">Feedback</ontario-label>  The resulting label will show `"Comments"`.
          */
-        "caption": string;
+        "caption"?: string;
         /**
           * The form control with which the caption is associated.
          */

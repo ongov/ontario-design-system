@@ -44,7 +44,7 @@ export class OntarioLabel implements OntarioLabelProperties {
 	 *
 	 * The resulting label will show `"Comments"`.
 	 */
-	@Prop({ mutable: true }) caption: string;
+	@Prop({ mutable: true }) caption?: string;
 
 	/**
 	 * The form control with which the caption is associated.
