@@ -49,7 +49,7 @@ export class OntarioLabel implements OntarioLabelProperties {
 	/**
 	 * The form control with which the caption is associated.
 	 */
-	@Prop({ attribute: 'for', reflect: true }) for: string;
+	@Prop() for: string;
 
 	/**
 	 * The type of label to render.
