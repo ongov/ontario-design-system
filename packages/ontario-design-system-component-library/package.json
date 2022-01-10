@@ -1,41 +1,43 @@
 {
-  "name": "ontario-design-system-component-library",
-  "version": "0.0.1",
-  "description": "Stencil Component Starter",
-  "main": "dist/index.cjs.js",
-  "module": "dist/custom-elements/index.js",
-  "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs",
-  "types": "dist/custom-elements/index.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
-  "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/ontario-design-system-component-library/ontario-design-system-component-library.esm.js",
-  "files": [
-    "dist/",
-    "loader/"
-  ],
-  "scripts": {
-    "build": "stencil build --docs",
-    "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate",
-    "clean": "rm -rf dist loader www",
-    "clean:full": "rm -rf node_modules && npm run clean"
-  },
-  "dependencies": {
-    "@stencil/core": "^2.7.0",
-    "ontario-design-system-global-styles": "0.0.1"
-  },
-  "devDependencies": {
-    "@stencil/react-output-target": "0.0.9",
-    "@stencil/sass": "^1.4.1",
-    "@types/jest": "^26.0.24",
-    "@types/puppeteer": "^5.4.3",
-    "@types/uuid": "^8.3.3",
-    "jest": "^26.6.3",
-    "jest-cli": "^26.6.3",
-    "puppeteer": "^10.0.0"
-  },
-  "license": "Apache-2.0"
+	"name": "ontario-design-system-component-library",
+	"version": "0.0.1",
+	"description": "Stencil Component Starter",
+	"main": "dist/index.cjs.js",
+	"module": "dist/custom-elements/index.js",
+	"es2015": "dist/esm/index.mjs",
+	"es2017": "dist/esm/index.mjs",
+	"types": "dist/custom-elements/index.d.ts",
+	"collection": "dist/collection/collection-manifest.json",
+	"collection:main": "dist/collection/index.js",
+	"unpkg": "dist/ontario-design-system-component-library/ontario-design-system-component-library.esm.js",
+	"files": [
+		"dist/",
+		"loader/"
+	],
+	"scripts": {
+		"build": "stencil build --docs",
+		"start": "stencil build --dev --watch --serve",
+		"test": "stencil test --spec --e2e",
+		"test.watch": "stencil test --spec --e2e --watchAll",
+		"generate": "stencil generate",
+		"clean": "rm -rf dist loader www",
+		"clean:full": "rm -rf node_modules && npm run clean",
+		"format": "prettier --write ."
+	},
+	"dependencies": {
+		"@stencil/core": "^2.7.0",
+		"ontario-design-system-global-styles": "0.0.1"
+	},
+	"devDependencies": {
+		"@stencil/react-output-target": "0.0.9",
+		"@stencil/sass": "^1.4.1",
+		"@types/jest": "^26.0.24",
+		"@types/puppeteer": "^5.4.3",
+		"@types/uuid": "^8.3.3",
+		"jest": "^26.6.3",
+		"jest-cli": "^26.6.3",
+		"prettier": "^2.5.1",
+		"puppeteer": "^10.0.0"
+	},
+	"license": "Apache-2.0"
 }
