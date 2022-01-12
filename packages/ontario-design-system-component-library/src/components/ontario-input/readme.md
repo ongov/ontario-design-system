@@ -41,6 +41,7 @@ See the [Design System input guidance](https://designsystem.ontario.ca/component
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property      | Attribute      | Description                                                                                                    | Type                                                                                                                                                     | Default     |
@@ -53,6 +54,7 @@ See the [Design System input guidance](https://designsystem.ontario.ca/component
 | `type`        | `type`         | The input type value.                                                                                          | `"email" \| "password" \| "tel" \| "text" \| undefined`                                                                                                  | `'text'`    |
 | `value`       | `value`        | The input content value.                                                                                       | `string \| undefined`                                                                                                                                    | `undefined` |
 
+
 ## Events
 
 | Event         | Description                             | Type                         |
@@ -61,6 +63,7 @@ See the [Design System input guidance](https://designsystem.ontario.ca/component
 | `changeEvent` | Emitted when a keyboard input occurred. | `CustomEvent<KeyboardEvent>` |
 | `focusEvent`  | Emitted when the input gains focus.     | `CustomEvent<void>`          |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

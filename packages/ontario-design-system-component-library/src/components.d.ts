@@ -84,6 +84,25 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface OntarioLabel {
+        /**
+          * The text to display as label. This will override the text provided through the Element Content.
+          * @example <ontario-label caption="Comments" for"comments">Feedback</ontario-label>  The resulting label will show `"Comments"`.
+         */
+        "caption"?: string;
+        /**
+          * The form control with which the caption is associated.
+         */
+        "for": string;
+        /**
+          * Defines whether the input field is required. If required, the value passed should be 'required'.
+         */
+        "required"?: boolean;
+        /**
+          * The type of label to render.
+         */
+        "type": 'default' | 'large' | 'heading';
+    }
     interface OntarioTextarea {
         /**
           * The aria-describedBy value if the textarea has hint text associated with it.
@@ -132,6 +151,12 @@ declare global {
         prototype: HTMLOntarioInputElement;
         new (): HTMLOntarioInputElement;
     };
+    interface HTMLOntarioLabelElement extends Components.OntarioLabel, HTMLStencilElement {
+    }
+    var HTMLOntarioLabelElement: {
+        prototype: HTMLOntarioLabelElement;
+        new (): HTMLOntarioLabelElement;
+    };
     interface HTMLOntarioTextareaElement extends Components.OntarioTextarea, HTMLStencilElement {
     }
     var HTMLOntarioTextareaElement: {
@@ -143,6 +168,7 @@ declare global {
         "ontario-button": HTMLOntarioButtonElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
         "ontario-input": HTMLOntarioInputElement;
+        "ontario-label": HTMLOntarioLabelElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
     }
 }
@@ -237,6 +263,25 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface OntarioLabel {
+        /**
+          * The text to display as label. This will override the text provided through the Element Content.
+          * @example <ontario-label caption="Comments" for"comments">Feedback</ontario-label>  The resulting label will show `"Comments"`.
+         */
+        "caption"?: string;
+        /**
+          * The form control with which the caption is associated.
+         */
+        "for"?: string;
+        /**
+          * Defines whether the input field is required. If required, the value passed should be 'required'.
+         */
+        "required"?: boolean;
+        /**
+          * The type of label to render.
+         */
+        "type"?: 'default' | 'large' | 'heading';
+    }
     interface OntarioTextarea {
         /**
           * The aria-describedBy value if the textarea has hint text associated with it.
@@ -276,6 +321,7 @@ declare namespace LocalJSX {
         "ontario-button": OntarioButton;
         "ontario-hint-text": OntarioHintText;
         "ontario-input": OntarioInput;
+        "ontario-label": OntarioLabel;
         "ontario-textarea": OntarioTextarea;
     }
 }
@@ -287,6 +333,7 @@ declare module "@stencil/core" {
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
             "ontario-input": LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
+            "ontario-label": LocalJSX.OntarioLabel & JSXBase.HTMLAttributes<HTMLOntarioLabelElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
         }
     }
