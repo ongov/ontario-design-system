@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Prop, State } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
 /**
@@ -19,10 +19,10 @@ export interface OntarioRadioButtonProperties {
 	 *
 	 * Setting the radio label can be done using the element content or setting
 	 * the property. This property will take precedence.
-	 * 
+	 *
 	 * @example
 	 * <ontario-radio-button radioLabel="Override Radio Label">Radio Label</ontario-radio-button>
-	 * 
+	 *
 	 * The resulting radio label text will display "Override Radio label".
 	 *
 	 */
@@ -53,7 +53,7 @@ export interface OntarioRadioButtonProperties {
 	tag: 'ontario-radio-button',
 	styleUrl: 'ontario-radio-button.scss',
 	shadow: true,
-}) 
+})
 
 export class OntarioRadioButton implements OntarioRadioButtonProperties {
 	@Element() host: HTMLElement;
@@ -72,10 +72,10 @@ export class OntarioRadioButton implements OntarioRadioButtonProperties {
 	 *
 	 * Setting the radio label can be done using the element content or setting
 	 * the property. This property will take precedence.
-	 * 
+	 *
 	 * @example
 	 * <ontario-radio-button radioLabel="Override Radio Label">Radio Label</ontario-radio-button>
-	 * 
+	 *
 	 * The resulting radio label text will display "Override Radio label".
 	 *
 	 */
@@ -106,6 +106,8 @@ export class OntarioRadioButton implements OntarioRadioButtonProperties {
 	*/
 	@Event() radioChangeEvent!: EventEmitter<void>;
 
+	@State() checkedValueSet: boolean = false;
+
 
 	handleChange = (e: any) => {
 		this.checked = e.target.checked;
@@ -126,28 +128,42 @@ export class OntarioRadioButton implements OntarioRadioButtonProperties {
 		return radioButtonSiblings.forEach((radio: HTMLOntarioRadioButtonElement) => radio.checked = false);
 	}
 
+	private validateCheckedValue() {
+		if (this.checked === true) {
+			this.checkedValueSet = true;
+			throw new Error('The default checked value of a radio button should be `false`. The checked attribute is controlled via the change event handler.');
+		}
+
+		this.checkedValueSet = false;
+	}
+
 	componentWillLoad() {
+		// make sure a true checked value has not been set
+		this.validateCheckedValue();
+
 		this.radioLabel = this.radioLabel ?? this.host.textContent ?? '';
 		this.radioId = this.radioId ?? uuid();
-	} 
+	}
 
 	render() {
 		return (
-			<div class="ontario-radios__item">
-			<input 
-				checked={this.checked}
-				class="ontario-radios__input" 
-				id={this.radioId} 
-				name={this.name}
-				onChange={this.handleChange} 
-				type="radio" 
-				required={this.required}
-				value={this.value} 
-			/>
-			<label class="ontario-radios__label" htmlFor={this.radioId}>
-				{this.radioLabel}
-			</label>
-			</div>
-		)	
+			this.checkedValueSet === false && (
+				<div class="ontario-radios__item">
+					<input
+						checked={this.checked}
+						class="ontario-radios__input"
+						id={this.radioId}
+						name={this.name}
+						onChange={this.handleChange}
+						type="radio"
+						required={this.required}
+						value={this.value}
+					/>
+					<label class="ontario-radios__label" htmlFor={this.radioId}>
+						{this.radioLabel}
+					</label>
+				</div>
+			)
+		)
 	}
 }
