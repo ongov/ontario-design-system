@@ -444,6 +444,25 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface OntarioLabel {
+        /**
+          * The text to display as label. This will override the text provided through the Element Content.
+          * @example <ontario-label caption="Comments" for"comments">Feedback</ontario-label>  The resulting label will show `"Comments"`.
+         */
+        "caption"?: string;
+        /**
+          * The form control with which the caption is associated.
+         */
+        "for": string;
+        /**
+          * Defines whether the input field is required. If required, the value passed should be 'required'.
+         */
+        "required"?: boolean;
+        /**
+          * The type of label to render.
+         */
+        "type": 'default' | 'large' | 'heading';
+    }
     interface OntarioRadioButton {
         /**
           * The checked attribute of the radio button.  This value is updated through the onChange event handler and by default is set to false.
@@ -1167,6 +1186,12 @@ declare global {
         prototype: HTMLOntarioInputElement;
         new (): HTMLOntarioInputElement;
     };
+    interface HTMLOntarioLabelElement extends Components.OntarioLabel, HTMLStencilElement {
+    }
+    var HTMLOntarioLabelElement: {
+        prototype: HTMLOntarioLabelElement;
+        new (): HTMLOntarioLabelElement;
+    };
     interface HTMLOntarioRadioButtonElement extends Components.OntarioRadioButton, HTMLStencilElement {
     }
     var HTMLOntarioRadioButtonElement: {
@@ -1290,6 +1315,7 @@ declare global {
         "ontario-icon-wheelchair": HTMLOntarioIconWheelchairElement;
         "ontario-icon-wifi": HTMLOntarioIconWifiElement;
         "ontario-input": HTMLOntarioInputElement;
+        "ontario-label": HTMLOntarioLabelElement;
         "ontario-radio-button": HTMLOntarioRadioButtonElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
     }
@@ -1751,6 +1777,25 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface OntarioLabel {
+        /**
+          * The text to display as label. This will override the text provided through the Element Content.
+          * @example <ontario-label caption="Comments" for"comments">Feedback</ontario-label>  The resulting label will show `"Comments"`.
+         */
+        "caption"?: string;
+        /**
+          * The form control with which the caption is associated.
+         */
+        "for"?: string;
+        /**
+          * Defines whether the input field is required. If required, the value passed should be 'required'.
+         */
+        "required"?: boolean;
+        /**
+          * The type of label to render.
+         */
+        "type"?: 'default' | 'large' | 'heading';
+    }
     interface OntarioRadioButton {
         /**
           * The checked attribute of the radio button.  This value is updated through the onChange event handler and by default is set to false.
@@ -1939,6 +1984,7 @@ declare namespace LocalJSX {
         "ontario-icon-wheelchair": OntarioIconWheelchair;
         "ontario-icon-wifi": OntarioIconWifi;
         "ontario-input": OntarioInput;
+        "ontario-label": OntarioLabel;
         "ontario-radio-button": OntarioRadioButton;
         "ontario-textarea": OntarioTextarea;
     }
@@ -2057,6 +2103,7 @@ declare module "@stencil/core" {
             "ontario-icon-wheelchair": LocalJSX.OntarioIconWheelchair & JSXBase.HTMLAttributes<HTMLOntarioIconWheelchairElement>;
             "ontario-icon-wifi": LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
             "ontario-input": LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
+            "ontario-label": LocalJSX.OntarioLabel & JSXBase.HTMLAttributes<HTMLOntarioLabelElement>;
             "ontario-radio-button": LocalJSX.OntarioRadioButton & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
         }
