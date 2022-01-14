@@ -5,8 +5,8 @@ describe('ontario-label', () => {
 	let component: E2EElement;
 	let labelElement: E2EElement;
 	let requiredFlagElement: E2EElement;
-  const defaultLabel = 'Default Label';
-  const defaultRequiredFlag = '(optional)';
+  	const defaultLabel = 'Default Label';
+  	const defaultRequiredFlag = '(optional)';
 
 	beforeEach(async () => {
 		page = await newE2EPage();
@@ -93,13 +93,13 @@ describe('ontario-label', () => {
 			const element = await page.find('ontario-label >>> h1');
 
 			expect(element.outerHTML).toEqualHtml(`
-        <h1>
-          <label for="email" class="ontario-label ontario-label--heading">
-            Email Address
-            <span class="ontario-label__flag">(required)</span>
-          </label>
-        </h1>
-      `);
+        		<h1>
+          			<label for="email" class="ontario-label ontario-label--heading">
+            			Email Address
+            			<span class="ontario-label__flag">(required)</span>
+          			</label>
+        		</h1>
+      		`);
 		});
 	});
 });
