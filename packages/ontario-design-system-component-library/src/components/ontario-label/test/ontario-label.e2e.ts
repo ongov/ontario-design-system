@@ -1,96 +1,96 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 
 describe('ontario-label', () => {
-  let page: E2EPage;
-  let component: E2EElement;
-  let labelElement: E2EElement;
-  let requiredFlagElement: E2EElement;
+	let page: E2EPage;
+	let component: E2EElement;
+	let labelElement: E2EElement;
+	let requiredFlagElement: E2EElement;
 
-  beforeEach(async () => {
-    page = await newE2EPage();
-    await page.setContent("<ontario-label>Default Label</ontario-label>");
-    component = await page.find('ontario-label');
-    labelElement = await page.find('ontario-label >>> label');
-    requiredFlagElement = await page.find('ontario-label >>> label > span');
-  });
+	beforeEach(async () => {
+		page = await newE2EPage();
+		await page.setContent('<ontario-label>Default Label</ontario-label>');
+		component = await page.find('ontario-label');
+		labelElement = await page.find('ontario-label >>> label');
+		requiredFlagElement = await page.find('ontario-label >>> label > span');
+	});
 
-  describe('render default', () => {
-    it('renders the default label', async () => {
-      expect(component).toHaveClass('hydrated');
-      expect(component.textContent).toEqual('Default Label');
-      expect(component).not.toHaveAttribute('type');
-      expect(component).not.toHaveAttribute('for');
-      expect(component).not.toHaveAttribute('required');
-  
-      expect(labelElement).toHaveClass('ontario-label');
-      expect(labelElement.textContent).toEqual('Default Label(optional)');
-      expect(labelElement).not.toHaveAttribute('for');
-      expect(labelElement).not.toHaveAttribute('required');
-  
-      expect(requiredFlagElement).toHaveClass('ontario-label__flag');
-      expect(requiredFlagElement.textContent).toEqual('(optional)');
-    });
-  });
+	describe('render default', () => {
+		it('renders the default label', async () => {
+			expect(component).toHaveClass('hydrated');
+			expect(component.textContent).toEqual('Default Label');
+			expect(component).not.toHaveAttribute('type');
+			expect(component).not.toHaveAttribute('for');
+			expect(component).not.toHaveAttribute('required');
 
-  describe('render changes', () => {
-    it('renders changes to the caption property', async () => {
-      component.setProperty('caption', 'Comments');
+			expect(labelElement).toHaveClass('ontario-label');
+			expect(labelElement.textContent).toEqual('Default Label(optional)');
+			expect(labelElement).not.toHaveAttribute('for');
+			expect(labelElement).not.toHaveAttribute('required');
 
-			await page.waitForChanges();
+			expect(requiredFlagElement).toHaveClass('ontario-label__flag');
+			expect(requiredFlagElement.textContent).toEqual('(optional)');
+		});
+	});
 
-      expect(component.textContent).toEqual('Default Label');
-      expect(labelElement.textContent).toEqual('Comments(optional)');
-    });
-
-    it('renders changes to the caption and for properties', async () => {
-      component.setProperty('caption', 'Comments');
-      component.setProperty('for', 'comments');
+	describe('render changes', () => {
+		it('renders changes to the caption property', async () => {
+			component.setProperty('caption', 'Comments');
 
 			await page.waitForChanges();
 
-      expect(component.textContent).toEqual('Default Label');
-      expect(labelElement.textContent).toEqual('Comments(optional)');
-      expect(labelElement).toEqualAttribute('for', 'comments');
-    });
+			expect(component.textContent).toEqual('Default Label');
+			expect(labelElement.textContent).toEqual('Comments(optional)');
+		});
 
-    it('renders changes to the type, caption, and for properties', async () => {
-      component.setProperty('type', 'large');
-      component.setProperty('caption', 'Feedback');
-      component.setProperty('for', 'feedback');
+		it('renders changes to the caption and for properties', async () => {
+			component.setProperty('caption', 'Comments');
+			component.setProperty('for', 'comments');
 
 			await page.waitForChanges();
 
-      expect(component.textContent).toEqual('Default Label');
-      expect(labelElement.textContent).toEqual('Feedback(optional)');
-      expect(labelElement).toEqualAttribute('for', 'feedback');
-      expect(labelElement).toHaveClasses(['ontario-label', 'ontario-label--large']);
-    });
+			expect(component.textContent).toEqual('Default Label');
+			expect(labelElement.textContent).toEqual('Comments(optional)');
+			expect(labelElement).toEqualAttribute('for', 'comments');
+		});
 
-    it('renders changes to the caption and for properties while setting the required attribute to true', async () => {
-      component.setProperty('caption', 'Email');
-      component.setProperty('for', 'email');
-      component.setAttribute('required', true);
+		it('renders changes to the type, caption, and for properties', async () => {
+			component.setProperty('type', 'large');
+			component.setProperty('caption', 'Feedback');
+			component.setProperty('for', 'feedback');
 
 			await page.waitForChanges();
 
-      expect(component.textContent).toEqual('Default Label');
-      expect(component.getAttribute('required')).toBeTruthy;
-      expect(labelElement.textContent).toEqual('Email(required)');
-      expect(labelElement).toEqualAttribute('for', 'email');
-      expect(requiredFlagElement.textContent).toEqual('(required)');
-    });
+			expect(component.textContent).toEqual('Default Label');
+			expect(labelElement.textContent).toEqual('Feedback(optional)');
+			expect(labelElement).toEqualAttribute('for', 'feedback');
+			expect(labelElement).toHaveClasses(['ontario-label', 'ontario-label--large']);
+		});
 
-    it('renders changes to the caption and for properties, modifies the type property to heading, and sets the required attribute to true', async () => {
-      component.setProperty('type', 'heading');
-      component.setProperty('caption', 'Email Address');
-      component.setProperty('for', 'email');
-      component.setAttribute('required', true);
+		it('renders changes to the caption and for properties while setting the required attribute to true', async () => {
+			component.setProperty('caption', 'Email');
+			component.setProperty('for', 'email');
+			component.setAttribute('required', true);
 
-      await page.waitForChanges();
+			await page.waitForChanges();
 
-      const element = await page.find('ontario-label >>> h1');
-      
-      expect(element.outerHTML).toEqualHtml(`
+			expect(component.textContent).toEqual('Default Label');
+			expect(component.getAttribute('required')).toBeTruthy;
+			expect(labelElement.textContent).toEqual('Email(required)');
+			expect(labelElement).toEqualAttribute('for', 'email');
+			expect(requiredFlagElement.textContent).toEqual('(required)');
+		});
+
+		it('renders changes to the caption and for properties, modifies the type property to heading, and sets the required attribute to true', async () => {
+			component.setProperty('type', 'heading');
+			component.setProperty('caption', 'Email Address');
+			component.setProperty('for', 'email');
+			component.setAttribute('required', true);
+
+			await page.waitForChanges();
+
+			const element = await page.find('ontario-label >>> h1');
+
+			expect(element.outerHTML).toEqualHtml(`
         <h1>
           <label for="email" class="ontario-label ontario-label--heading">
             Email Address
@@ -98,6 +98,6 @@ describe('ontario-label', () => {
           </label>
         </h1>
       `);
-    });
-  });
+		});
+	});
 });
