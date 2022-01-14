@@ -54,6 +54,9 @@ export namespace Components {
          */
         "hintId"?: string;
     }
+    interface OntarioIconAccessibility {
+        "color": string;
+    }
     interface OntarioInput {
         /**
           * The aria-describedBy value if the input has hint text associated with it.
@@ -126,6 +129,12 @@ declare global {
         prototype: HTMLOntarioHintTextElement;
         new (): HTMLOntarioHintTextElement;
     };
+    interface HTMLOntarioIconAccessibilityElement extends Components.OntarioIconAccessibility, HTMLStencilElement {
+    }
+    var HTMLOntarioIconAccessibilityElement: {
+        prototype: HTMLOntarioIconAccessibilityElement;
+        new (): HTMLOntarioIconAccessibilityElement;
+    };
     interface HTMLOntarioInputElement extends Components.OntarioInput, HTMLStencilElement {
     }
     var HTMLOntarioInputElement: {
@@ -142,6 +151,7 @@ declare global {
         "my-component": HTMLMyComponentElement;
         "ontario-button": HTMLOntarioButtonElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
+        "ontario-icon-accessibility": HTMLOntarioIconAccessibilityElement;
         "ontario-input": HTMLOntarioInputElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
     }
@@ -194,6 +204,9 @@ declare namespace LocalJSX {
           * Used to used to establish a relationship between hint text content and elements using aria-describedby.
          */
         "hintId"?: string;
+    }
+    interface OntarioIconAccessibility {
+        "color"?: string;
     }
     interface OntarioInput {
         /**
@@ -275,6 +288,7 @@ declare namespace LocalJSX {
         "my-component": MyComponent;
         "ontario-button": OntarioButton;
         "ontario-hint-text": OntarioHintText;
+        "ontario-icon-accessibility": OntarioIconAccessibility;
         "ontario-input": OntarioInput;
         "ontario-textarea": OntarioTextarea;
     }
@@ -286,6 +300,7 @@ declare module "@stencil/core" {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
+            "ontario-icon-accessibility": LocalJSX.OntarioIconAccessibility & JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;
             "ontario-input": LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
         }
