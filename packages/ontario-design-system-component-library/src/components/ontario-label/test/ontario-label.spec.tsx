@@ -7,7 +7,6 @@ describe('ontario-label snapshot', () => {
 			components: [OntarioLabel],
 			html: `<ontario-label>Default Label</ontario-label>`,
 		});
-
 		expect(page.root).toMatchSnapshot();
 	});
 });
@@ -19,15 +18,15 @@ describe('ontario-label', () => {
 			html: `<ontario-label>Default Label</ontario-label>`,
 		});
 		expect(page.root).toEqualHtml(`
-      <ontario-label>
-        <mock:shadow-root>
-          <label class="ontario-label">Default Label
-            <span class="ontario-label__flag">(optional)</span>
-          </label>
-        </mock:shadow-root>
-        Default Label
-      </ontario-label>
-    `);
+      		<ontario-label>
+        		<mock:shadow-root>
+          			<label class="ontario-label">Default Label
+            			<span class="ontario-label__flag">(optional)</span>
+          			</label>
+        		</mock:shadow-root>
+        		Default Label
+      		</ontario-label>
+    	`);
 	});
 
 	it('should render the large label element', async () => {
@@ -36,15 +35,15 @@ describe('ontario-label', () => {
 			html: `<ontario-label type="large">Large Label</ontario-label>`,
 		});
 		expect(page.root).toEqualHtml(`
-      <ontario-label type="large">
-        <mock:shadow-root>
-          <label class="ontario-label ontario-label--large">Large Label
-            <span class="ontario-label__flag">(optional)</span>
-          </label>
-        </mock:shadow-root>
-        Large Label
-      </ontario-label>
-    `);
+      		<ontario-label type="large">
+        		<mock:shadow-root>
+          			<label class="ontario-label ontario-label--large">Large Label
+            			<span class="ontario-label__flag">(optional)</span>
+          			</label>
+        		</mock:shadow-root>
+        		Large Label
+      		</ontario-label>
+    	`);
 	});
 
 	it('should render the heading label element', async () => {
@@ -53,17 +52,17 @@ describe('ontario-label', () => {
 			html: `<ontario-label type="heading">Heading Label</ontario-label>`,
 		});
 		expect(page.root).toEqualHtml(`
-      <ontario-label type="heading">
-        <mock:shadow-root>
-          <h1>
-            <label class="ontario-label ontario-label--heading">Heading Label
-              <span class="ontario-label__flag">(optional)</span>
-            </label>
-          </h1>
-        </mock:shadow-root>
-        Heading Label
-      </ontario-label>
-    `);
+      		<ontario-label type="heading">
+        		<mock:shadow-root>
+          			<h1>
+            			<label class="ontario-label ontario-label--heading">Heading Label
+              				<span class="ontario-label__flag">(optional)</span>
+            			</label>
+          			</h1>
+        		</mock:shadow-root>
+        		Heading Label
+      		</ontario-label>
+    	`);
 	});
 
 	it('should render a default required label element', async () => {
@@ -72,15 +71,15 @@ describe('ontario-label', () => {
 			html: `<ontario-label required>Default Label</ontario-label>`,
 		});
 		expect(page.root).toEqualHtml(`
-      <ontario-label required>
-        <mock:shadow-root>
-          <label class="ontario-label">Default Label
-            <span class="ontario-label__flag">(required)</span>
-          </label>
-        </mock:shadow-root>
-        Default Label
-      </ontario-label>
-    `);
+      		<ontario-label required>
+        		<mock:shadow-root>
+          			<label class="ontario-label">Default Label
+            			<span class="ontario-label__flag">(required)</span>
+          			</label>
+        		</mock:shadow-root>
+        		Default Label
+      		</ontario-label>
+    	`);
 	});
 
 	it('should render a default required label element', async () => {
@@ -106,15 +105,15 @@ describe('ontario-label', () => {
 			html: `<ontario-label caption="Label Caption">Default Label</ontario-label>`,
 		});
 		expect(page.root).toEqualHtml(`
-      <ontario-label caption="Label Caption">
-        <mock:shadow-root>
-          <label class="ontario-label">Label Caption
-            <span class="ontario-label__flag">(optional)</span>
-          </label>
-        </mock:shadow-root>
-        Default Label
-      </ontario-label>
-    `);
+    		<ontario-label caption="Label Caption">
+        		<mock:shadow-root>
+          			<label class="ontario-label">Label Caption
+            			<span class="ontario-label__flag">(optional)</span>
+          			</label>
+        		</mock:shadow-root>
+        		Default Label
+      		</ontario-label>
+    	`);
 	});
 
 	it('should render a default label element setting the htmlFor attribute', async () => {
@@ -123,15 +122,15 @@ describe('ontario-label', () => {
 			html: `<ontario-label for="comments">Comments</ontario-label>`,
 		});
 		expect(page.root).toEqualHtml(`
-      <ontario-label for="comments">
-        <mock:shadow-root>
-          <label class="ontario-label" htmlFor="comments">Comments
-            <span class="ontario-label__flag">(optional)</span>
-          </label>
-        </mock:shadow-root>
-        Comments
-      </ontario-label>
-    `);
+      		<ontario-label for="comments">
+        		<mock:shadow-root>
+          			<label class="ontario-label" htmlFor="comments">Comments
+            			<span class="ontario-label__flag">(optional)</span>
+          			</label>
+        		</mock:shadow-root>
+        		Comments
+      		</ontario-label>
+    	`);
 	});
 
 	it('should throw an error when label is not supplied', async () => {
