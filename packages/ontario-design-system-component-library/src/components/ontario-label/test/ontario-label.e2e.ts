@@ -5,10 +5,12 @@ describe('ontario-label', () => {
 	let component: E2EElement;
 	let labelElement: E2EElement;
 	let requiredFlagElement: E2EElement;
+  const defaultLabel = 'Default Label';
+  const defaultRequiredFlag = '(optional)';
 
 	beforeEach(async () => {
 		page = await newE2EPage();
-		await page.setContent('<ontario-label>Default Label</ontario-label>');
+		await page.setContent(`<ontario-label>${defaultLabel}</ontario-label>`);
 		component = await page.find('ontario-label');
 		labelElement = await page.find('ontario-label >>> label');
 		requiredFlagElement = await page.find('ontario-label >>> label > span');
@@ -17,18 +19,18 @@ describe('ontario-label', () => {
 	describe('render default', () => {
 		it('renders the default label', async () => {
 			expect(component).toHaveClass('hydrated');
-			expect(component.textContent).toEqual('Default Label');
+			expect(component.textContent).toEqual(defaultLabel);
 			expect(component).not.toHaveAttribute('type');
 			expect(component).not.toHaveAttribute('for');
 			expect(component).not.toHaveAttribute('required');
 
 			expect(labelElement).toHaveClass('ontario-label');
-			expect(labelElement.textContent).toEqual('Default Label(optional)');
+			expect(labelElement.textContent).toEqual(`${defaultLabel}${defaultRequiredFlag}`);
 			expect(labelElement).not.toHaveAttribute('for');
 			expect(labelElement).not.toHaveAttribute('required');
 
 			expect(requiredFlagElement).toHaveClass('ontario-label__flag');
-			expect(requiredFlagElement.textContent).toEqual('(optional)');
+			expect(requiredFlagElement.textContent).toEqual(defaultRequiredFlag);
 		});
 	});
 
@@ -38,8 +40,8 @@ describe('ontario-label', () => {
 
 			await page.waitForChanges();
 
-			expect(component.textContent).toEqual('Default Label');
-			expect(labelElement.textContent).toEqual('Comments(optional)');
+			expect(component.textContent).toEqual(defaultLabel);
+			expect(labelElement.textContent).toEqual(`Comments${defaultRequiredFlag}`);
 		});
 
 		it('renders changes to the caption and for properties', async () => {
@@ -48,8 +50,8 @@ describe('ontario-label', () => {
 
 			await page.waitForChanges();
 
-			expect(component.textContent).toEqual('Default Label');
-			expect(labelElement.textContent).toEqual('Comments(optional)');
+			expect(component.textContent).toEqual(defaultLabel);
+			expect(labelElement.textContent).toEqual(`Comments${defaultRequiredFlag}`);
 			expect(labelElement).toEqualAttribute('for', 'comments');
 		});
 
@@ -60,8 +62,8 @@ describe('ontario-label', () => {
 
 			await page.waitForChanges();
 
-			expect(component.textContent).toEqual('Default Label');
-			expect(labelElement.textContent).toEqual('Feedback(optional)');
+			expect(component.textContent).toEqual(defaultLabel);
+			expect(labelElement.textContent).toEqual(`Feedback${defaultRequiredFlag}`);
 			expect(labelElement).toEqualAttribute('for', 'feedback');
 			expect(labelElement).toHaveClasses(['ontario-label', 'ontario-label--large']);
 		});
@@ -73,7 +75,7 @@ describe('ontario-label', () => {
 
 			await page.waitForChanges();
 
-			expect(component.textContent).toEqual('Default Label');
+			expect(component.textContent).toEqual(defaultLabel);
 			expect(component.getAttribute('required')).toBeTruthy;
 			expect(labelElement.textContent).toEqual('Email(required)');
 			expect(labelElement).toEqualAttribute('for', 'email');
