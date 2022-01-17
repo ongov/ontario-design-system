@@ -6,9 +6,6 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface ChevronUp {
-        "size": string;
-    }
     interface MyComponent {
         /**
           * The first name
@@ -148,12 +145,6 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLChevronUpElement extends Components.ChevronUp, HTMLStencilElement {
-    }
-    var HTMLChevronUpElement: {
-        prototype: HTMLChevronUpElement;
-        new (): HTMLChevronUpElement;
-    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -197,7 +188,6 @@ declare global {
         new (): HTMLOntarioTextareaElement;
     };
     interface HTMLElementTagNameMap {
-        "chevron-up": HTMLChevronUpElement;
         "my-component": HTMLMyComponentElement;
         "ontario-button": HTMLOntarioButtonElement;
         "ontario-hint-expander": HTMLOntarioHintExpanderElement;
@@ -208,9 +198,6 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface ChevronUp {
-        "size"?: string;
-    }
     interface MyComponent {
         /**
           * The first name
@@ -377,7 +364,6 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface IntrinsicElements {
-        "chevron-up": ChevronUp;
         "my-component": MyComponent;
         "ontario-button": OntarioButton;
         "ontario-hint-expander": OntarioHintExpander;
@@ -391,7 +377,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "chevron-up": LocalJSX.ChevronUp & JSXBase.HTMLAttributes<HTMLChevronUpElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
