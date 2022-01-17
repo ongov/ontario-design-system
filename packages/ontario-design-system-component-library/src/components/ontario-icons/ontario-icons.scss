@@ -1,3 +1,5 @@
+@import '../../global.scss';
+
 .ontario-icon svg {
   display: inline-block;
   width: 24px;
@@ -13,11 +15,11 @@
 }
 
 .ontario-icon--blue svg {
-  stroke: #0066CC;
-  fill: #0066CC;
+  stroke: $ontario-colour-icon-blue;
+  fill: $ontario-colour-icon-blue;
 }
 
 .ontario-icon--grey svg {
-  stroke: #666666;
-  fill: #666666;
+  stroke: $ontario-colour-icon-grey;
+  fill: $ontario-colour-icon-grey;
 }
