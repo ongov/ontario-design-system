@@ -80,7 +80,7 @@ export class OntarioHintExpander {
           data-toggle="ontario-collapse"
           aria-label={this.ariaLabel}
         >
-          <span class="ontario-hint-expander__button-icon--close ontario-icon"><chevron-up></chevron-up></span>
+          <span class="ontario-hint-expander__button-icon--close ontario-icon"></span>
           <span class="ontario-hint-expander__button-icon--open"></span>
           {this.hint}
         </button>
