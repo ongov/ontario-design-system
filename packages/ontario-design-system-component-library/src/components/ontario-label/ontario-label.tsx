@@ -31,7 +31,7 @@ export interface OntarioLabelProperties {
 @Component({
 	tag: 'ontario-label',
 	styleUrl: 'ontario-label.scss',
-	shadow: true,
+	shadow: { delegatesFocus: true },
 })
 export class OntarioLabel implements OntarioLabelProperties {
 	@Element() host: HTMLElement;
@@ -101,8 +101,11 @@ export class OntarioLabel implements OntarioLabelProperties {
 	private getLabelElement() {
 		const labelContent = (
 			<label htmlFor={this.for} class={this.getClass()}>
-				{this.caption}
-				<span class="ontario-label__flag">{this.getRequiredFlagText()}</span>
+				<slot name="caption">
+					{this.caption}
+					<span class="ontario-label__flag">{this.getRequiredFlagText()}</span>
+				</slot>
+				<slot name="input"></slot>
 			</label>
 		);
 		return this.type.toLowerCase() === 'heading' ? <h1>{labelContent}</h1> : labelContent;
