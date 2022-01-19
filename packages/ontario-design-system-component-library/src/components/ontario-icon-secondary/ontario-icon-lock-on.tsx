@@ -1,0 +1,18 @@
+import { Component, Prop, h } from '@stencil/core';
+import lockOn from './assets/ontario-icon-lock-on.svg';
+
+/** @internal **/
+@Component({
+  tag: 'ontario-icon-lock-on',
+  styleUrl: 'ontario-icon-secondary.scss',
+  shadow: false,
+})
+
+export class ontarioIconLockOn {
+
+  @Prop() color: string;
+
+  render() {
+    return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={lockOn} />;
+  }
+};
