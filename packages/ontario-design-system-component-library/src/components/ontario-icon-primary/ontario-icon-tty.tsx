@@ -10,7 +10,7 @@ import tty from './assets/ontario-icon-tty.svg';
 
 export class ontarioIconTty {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={tty} />;

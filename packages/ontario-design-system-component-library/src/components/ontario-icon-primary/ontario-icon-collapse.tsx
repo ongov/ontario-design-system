@@ -10,7 +10,7 @@ import collapse from './assets/ontario-icon-collapse.svg'
 
 export class OntarioIconCollapse {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={collapse} />;

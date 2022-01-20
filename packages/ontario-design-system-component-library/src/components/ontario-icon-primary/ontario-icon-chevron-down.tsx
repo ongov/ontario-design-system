@@ -10,7 +10,7 @@ import chevronDown from './assets/ontario-icon-chevron-down.svg'
 
 export class ontarioIconChevronDown {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={chevronDown} />;

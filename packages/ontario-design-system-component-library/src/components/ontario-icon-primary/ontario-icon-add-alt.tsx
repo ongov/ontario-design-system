@@ -10,7 +10,7 @@ import addAlt from './assets/ontario-icon-add-alt.svg'
 
 export class ontarioIconAddAlt {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={addAlt} />;

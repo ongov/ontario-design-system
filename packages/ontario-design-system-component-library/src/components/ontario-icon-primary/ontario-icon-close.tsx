@@ -10,7 +10,7 @@ import close from './assets/ontario-icon-close.svg'
 
 export class ontarioIconClose {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={close} />;

@@ -10,7 +10,7 @@ import menu from './assets/ontario-icon-menu.svg'
 
 export class ontarioIconMenu {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={menu} />;

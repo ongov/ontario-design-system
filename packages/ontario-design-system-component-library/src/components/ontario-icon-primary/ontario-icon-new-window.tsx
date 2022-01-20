@@ -10,7 +10,7 @@ import newWindow from './assets/ontario-icon-new-window.svg'
 
 export class ontarioIconCreditCard {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={newWindow} />;

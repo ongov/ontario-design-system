@@ -10,7 +10,7 @@ import accessibility from './assets/ontario-icon-accessibility.svg'
 
 export class ontarioIconAccessibility {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={accessibility} />;
