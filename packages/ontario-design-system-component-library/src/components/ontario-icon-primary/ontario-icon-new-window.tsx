@@ -13,6 +13,6 @@ export class ontarioIconCreditCard {
   @Prop() colour: "black" | "blue" | "grey";
 
   render() {
-    return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={newWindow} />;
+    return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={newWindow} />;
   }
 };

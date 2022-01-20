@@ -13,6 +13,6 @@ export class ontarioIconAdd {
   @Prop() colour: "black" | "blue" | "grey";
 
   render() {
-    return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={add} />;
+    return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={add} />;
   }
 };

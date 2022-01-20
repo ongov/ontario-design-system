@@ -13,6 +13,6 @@ export class ontarioIconRemoveAlt {
   @Prop() colour: "black" | "blue" | "grey";
 
   render() {
-    return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={removeAlt} />;
+    return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={removeAlt} />;
   }
 };

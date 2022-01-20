@@ -13,6 +13,6 @@ export class ontarioIconExpand {
   @Prop() colour: "black" | "blue" | "grey";
 
   render() {
-    return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={expand} />;
+    return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={expand} />;
   }
 };

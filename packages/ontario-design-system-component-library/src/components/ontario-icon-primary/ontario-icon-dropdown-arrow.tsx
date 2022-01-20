@@ -13,6 +13,6 @@ export class ontarioIconDropdownArrow {
   @Prop() colour: "black" | "blue" | "grey";
 
   render() {
-    return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={dropdownArrow} />;
+    return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={dropdownArrow} />;
   }
 };

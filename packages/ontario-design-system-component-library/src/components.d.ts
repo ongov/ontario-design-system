@@ -55,13 +55,13 @@ export namespace Components {
         "hintId"?: string;
     }
     interface OntarioIconAccessibility {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconAdd {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconAddAlt {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconAlertError {
     }
@@ -72,55 +72,55 @@ export namespace Components {
     interface OntarioIconAlertWarning {
     }
     interface OntarioIconChevronDown {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconChevronLeft {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconChevronRight {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconChevronUp {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconClose {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconCollapse {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconDropdownArrow {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconEmail {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconExpand {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconHelp {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconMenu {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconNewWindow {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconPhone {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconRemove {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconRemoveAlt {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconSearch {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconTty {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioInput {
         /**
@@ -432,13 +432,13 @@ declare namespace LocalJSX {
         "hintId"?: string;
     }
     interface OntarioIconAccessibility {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconAdd {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconAddAlt {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconAlertError {
     }
@@ -449,55 +449,55 @@ declare namespace LocalJSX {
     interface OntarioIconAlertWarning {
     }
     interface OntarioIconChevronDown {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconChevronLeft {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconChevronRight {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconChevronUp {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconClose {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconCollapse {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconDropdownArrow {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconEmail {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconExpand {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconHelp {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconMenu {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconNewWindow {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconPhone {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconRemove {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconRemoveAlt {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconSearch {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconTty {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioInput {
         /**
