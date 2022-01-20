@@ -99,16 +99,19 @@ export class OntarioLabel implements OntarioLabelProperties {
 	 * @returns the label element to be rendered by the browser
 	 */
 	private getLabelElement() {
-		const labelContent = (
+		let labelContent = (
 			<label htmlFor={this.for} class={this.getClass()}>
-				<slot name="caption">
-					{this.caption}
-					<span class="ontario-label__flag">{this.getRequiredFlagText()}</span>
-				</slot>
-				<slot name="input"></slot>
+				{this.caption}
+				<span class="ontario-label__flag">{this.getRequiredFlagText()}</span>
 			</label>
 		);
-		return this.type.toLowerCase() === 'heading' ? <h1>{labelContent}</h1> : labelContent;
+		labelContent = this.type.toLowerCase() === 'heading' ? <h1>{labelContent}</h1> : labelContent;
+		return (
+			<div>
+				{labelContent}
+				<slot name="input"></slot>
+			</div>
+		);
 	}
 
 	render() {
