@@ -10,7 +10,7 @@ import cloud from './assets/ontario-icon-cloud.svg';
 
 export class ontarioIconCloud {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={cloud} />;

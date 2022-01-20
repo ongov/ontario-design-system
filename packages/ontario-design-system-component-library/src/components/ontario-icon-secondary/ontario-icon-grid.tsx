@@ -10,7 +10,7 @@ import grid from './assets/ontario-icon-grid.svg';
 
 export class ontarioIconGrid {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={grid} />;

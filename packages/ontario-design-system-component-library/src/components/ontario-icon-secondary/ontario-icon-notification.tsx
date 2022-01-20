@@ -10,7 +10,7 @@ import notification from './assets/ontario-icon-notification.svg';
 
 export class ontarioIconNotification {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={notification} />;

@@ -10,7 +10,7 @@ import lockOff from './assets/ontario-icon-lock-off.svg';
 
 export class ontarioIconLockOff {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={lockOff} />;

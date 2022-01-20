@@ -10,7 +10,7 @@ import locationOn from './assets/ontario-icon-location-on.svg';
 
 export class ontarioIconLocationOn {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={locationOn} />;

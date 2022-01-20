@@ -10,7 +10,7 @@ import sort from './assets/ontario-icon-sort.svg';
 
 export class ontarioIconSort {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={sort} />;

@@ -10,7 +10,7 @@ import share from './assets/ontario-icon-share.svg';
 
 export class ontarioIconShare {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={share} />;

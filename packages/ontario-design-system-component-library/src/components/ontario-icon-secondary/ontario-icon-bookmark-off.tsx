@@ -10,7 +10,7 @@ import bookmarkOff from './assets/ontario-icon-bookmark-off.svg';
 
 export class ontarioIconBookmarkOff {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={bookmarkOff} />;

@@ -10,7 +10,7 @@ import wheelchair from './assets/ontario-icon-wheelchair.svg';
 
 export class ontarioIconWheelchair {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={wheelchair} />;

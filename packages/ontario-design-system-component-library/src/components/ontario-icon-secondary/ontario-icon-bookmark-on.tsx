@@ -10,7 +10,7 @@ import bookmarkOn from './assets/ontario-icon-bookmark-on.svg';
 
 export class ontarioIconBookmarkOn {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={bookmarkOn} />;

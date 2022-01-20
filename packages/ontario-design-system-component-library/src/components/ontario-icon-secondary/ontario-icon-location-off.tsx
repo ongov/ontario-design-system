@@ -10,7 +10,7 @@ import locationOff from './assets/ontario-icon-location-off.svg';
 
 export class ontarioIconLocationOff {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={locationOff} />;

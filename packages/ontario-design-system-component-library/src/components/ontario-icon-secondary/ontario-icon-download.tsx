@@ -10,7 +10,7 @@ import download from './assets/ontario-icon-download.svg';
 
 export class ontarioIconDownload {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={download} />;

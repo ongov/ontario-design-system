@@ -10,7 +10,7 @@ import replay from './assets/ontario-icon-replay.svg';
 
 export class ontarioIconPrint {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={replay} />;

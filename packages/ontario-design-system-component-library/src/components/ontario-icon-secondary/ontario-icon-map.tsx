@@ -10,7 +10,7 @@ import mapIcon from './assets/ontario-icon-map.svg';
 
 export class ontarioIconMap {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={mapIcon} />;

@@ -10,7 +10,7 @@ import passwordShow from './assets/ontario-icon-password-show.svg';
 
 export class ontarioIconPasswordShow {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={passwordShow} />;

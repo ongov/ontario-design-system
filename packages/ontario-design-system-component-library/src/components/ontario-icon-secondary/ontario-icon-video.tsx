@@ -10,7 +10,7 @@ import video from './assets/ontario-icon-video.svg';
 
 export class ontarioIconVideo {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={video} />;

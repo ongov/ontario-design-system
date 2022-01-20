@@ -10,7 +10,7 @@ import mastercard from './assets/ontario-icon-mastercard.svg';
 
 export class ontarioIconMastercard {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={mastercard} />;

@@ -10,7 +10,7 @@ import mediaFastRewind from './assets/ontario-icon-media-fast-rewind.svg';
 
 export class ontarioIconMediaFastRewind {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={mediaFastRewind} />;

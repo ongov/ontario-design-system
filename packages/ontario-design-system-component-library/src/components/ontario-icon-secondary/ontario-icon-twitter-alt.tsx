@@ -10,7 +10,7 @@ import twitterAlt from './assets/ontario-icon-twitter-alt.svg';
 
 export class ontarioIconTwitterAlt {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={twitterAlt} />;

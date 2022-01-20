@@ -10,7 +10,7 @@ import voteLike from './assets/ontario-icon-vote-like.svg';
 
 export class ontarioIconVoteLike {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={voteLike} />;

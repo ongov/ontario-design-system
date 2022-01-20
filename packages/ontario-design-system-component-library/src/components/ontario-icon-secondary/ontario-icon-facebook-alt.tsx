@@ -10,7 +10,7 @@ import facebookAlt from './assets/ontario-icon-facebook-alt.svg';
 
 export class ontarioIconFacebookAlt {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={facebookAlt} />;

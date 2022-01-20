@@ -10,7 +10,7 @@ import instagram from './assets/ontario-icon-instagram.svg';
 
 export class ontarioIconInstagram {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={instagram} />;

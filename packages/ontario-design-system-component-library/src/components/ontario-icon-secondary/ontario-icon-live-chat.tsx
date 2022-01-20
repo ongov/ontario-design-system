@@ -10,7 +10,7 @@ import liveChat from './assets/ontario-icon-live-chat.svg';
 
 export class ontarioIconLiveChat {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={liveChat} />;

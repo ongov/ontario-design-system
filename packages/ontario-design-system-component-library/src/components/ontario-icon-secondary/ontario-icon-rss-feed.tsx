@@ -10,7 +10,7 @@ import rssFeed from './assets/ontario-icon-rss-feed.svg';
 
 export class ontarioIconRssFeed {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={rssFeed} />;

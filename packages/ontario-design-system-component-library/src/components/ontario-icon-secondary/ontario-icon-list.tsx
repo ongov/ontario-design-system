@@ -10,7 +10,7 @@ import list from './assets/ontario-icon-list.svg';
 
 export class ontarioIconList {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={list} />;

@@ -10,7 +10,7 @@ import textMessage from './assets/ontario-icon-text-message.svg';
 
 export class ontarioIconTextMessage {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={textMessage} />;

@@ -10,7 +10,7 @@ import sentiment4 from './assets/ontario-icon-sentiment-4.svg';
 
 export class ontarioIconSentiment4 {
 
-  @Prop() color: string;
+  @Prop() colour: "black" | "blue" | "grey";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={sentiment4} />;
