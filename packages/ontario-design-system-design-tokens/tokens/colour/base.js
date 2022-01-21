@@ -69,7 +69,8 @@ module.exports = {
       },
       iconColours: {
         blue: { value: "#0066CC" },
-        grey: { value: "#666666" }
+        grey: { value: "#666666" },
+        black: { value: "#1A1A1A" }
       }
     }
   }
