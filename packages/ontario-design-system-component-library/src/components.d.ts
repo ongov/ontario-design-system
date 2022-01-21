@@ -180,175 +180,175 @@ declare global {
     }
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
-        new(): HTMLMyComponentElement;
+        new (): HTMLMyComponentElement;
     };
     interface HTMLOntarioButtonElement extends Components.OntarioButton, HTMLStencilElement {
     }
     var HTMLOntarioButtonElement: {
         prototype: HTMLOntarioButtonElement;
-        new(): HTMLOntarioButtonElement;
+        new (): HTMLOntarioButtonElement;
     };
     interface HTMLOntarioHintTextElement extends Components.OntarioHintText, HTMLStencilElement {
     }
     var HTMLOntarioHintTextElement: {
         prototype: HTMLOntarioHintTextElement;
-        new(): HTMLOntarioHintTextElement;
+        new (): HTMLOntarioHintTextElement;
     };
     interface HTMLOntarioIconAccessibilityElement extends Components.OntarioIconAccessibility, HTMLStencilElement {
     }
     var HTMLOntarioIconAccessibilityElement: {
         prototype: HTMLOntarioIconAccessibilityElement;
-        new(): HTMLOntarioIconAccessibilityElement;
+        new (): HTMLOntarioIconAccessibilityElement;
     };
     interface HTMLOntarioIconAddElement extends Components.OntarioIconAdd, HTMLStencilElement {
     }
     var HTMLOntarioIconAddElement: {
         prototype: HTMLOntarioIconAddElement;
-        new(): HTMLOntarioIconAddElement;
+        new (): HTMLOntarioIconAddElement;
     };
     interface HTMLOntarioIconAddAltElement extends Components.OntarioIconAddAlt, HTMLStencilElement {
     }
     var HTMLOntarioIconAddAltElement: {
         prototype: HTMLOntarioIconAddAltElement;
-        new(): HTMLOntarioIconAddAltElement;
+        new (): HTMLOntarioIconAddAltElement;
     };
     interface HTMLOntarioIconAlertErrorElement extends Components.OntarioIconAlertError, HTMLStencilElement {
     }
     var HTMLOntarioIconAlertErrorElement: {
         prototype: HTMLOntarioIconAlertErrorElement;
-        new(): HTMLOntarioIconAlertErrorElement;
+        new (): HTMLOntarioIconAlertErrorElement;
     };
     interface HTMLOntarioIconAlertInformationElement extends Components.OntarioIconAlertInformation, HTMLStencilElement {
     }
     var HTMLOntarioIconAlertInformationElement: {
         prototype: HTMLOntarioIconAlertInformationElement;
-        new(): HTMLOntarioIconAlertInformationElement;
+        new (): HTMLOntarioIconAlertInformationElement;
     };
     interface HTMLOntarioIconAlertSuccessElement extends Components.OntarioIconAlertSuccess, HTMLStencilElement {
     }
     var HTMLOntarioIconAlertSuccessElement: {
         prototype: HTMLOntarioIconAlertSuccessElement;
-        new(): HTMLOntarioIconAlertSuccessElement;
+        new (): HTMLOntarioIconAlertSuccessElement;
     };
     interface HTMLOntarioIconAlertWarningElement extends Components.OntarioIconAlertWarning, HTMLStencilElement {
     }
     var HTMLOntarioIconAlertWarningElement: {
         prototype: HTMLOntarioIconAlertWarningElement;
-        new(): HTMLOntarioIconAlertWarningElement;
+        new (): HTMLOntarioIconAlertWarningElement;
     };
     interface HTMLOntarioIconChevronDownElement extends Components.OntarioIconChevronDown, HTMLStencilElement {
     }
     var HTMLOntarioIconChevronDownElement: {
         prototype: HTMLOntarioIconChevronDownElement;
-        new(): HTMLOntarioIconChevronDownElement;
+        new (): HTMLOntarioIconChevronDownElement;
     };
     interface HTMLOntarioIconChevronLeftElement extends Components.OntarioIconChevronLeft, HTMLStencilElement {
     }
     var HTMLOntarioIconChevronLeftElement: {
         prototype: HTMLOntarioIconChevronLeftElement;
-        new(): HTMLOntarioIconChevronLeftElement;
+        new (): HTMLOntarioIconChevronLeftElement;
     };
     interface HTMLOntarioIconChevronRightElement extends Components.OntarioIconChevronRight, HTMLStencilElement {
     }
     var HTMLOntarioIconChevronRightElement: {
         prototype: HTMLOntarioIconChevronRightElement;
-        new(): HTMLOntarioIconChevronRightElement;
+        new (): HTMLOntarioIconChevronRightElement;
     };
     interface HTMLOntarioIconChevronUpElement extends Components.OntarioIconChevronUp, HTMLStencilElement {
     }
     var HTMLOntarioIconChevronUpElement: {
         prototype: HTMLOntarioIconChevronUpElement;
-        new(): HTMLOntarioIconChevronUpElement;
+        new (): HTMLOntarioIconChevronUpElement;
     };
     interface HTMLOntarioIconCloseElement extends Components.OntarioIconClose, HTMLStencilElement {
     }
     var HTMLOntarioIconCloseElement: {
         prototype: HTMLOntarioIconCloseElement;
-        new(): HTMLOntarioIconCloseElement;
+        new (): HTMLOntarioIconCloseElement;
     };
     interface HTMLOntarioIconCollapseElement extends Components.OntarioIconCollapse, HTMLStencilElement {
     }
     var HTMLOntarioIconCollapseElement: {
         prototype: HTMLOntarioIconCollapseElement;
-        new(): HTMLOntarioIconCollapseElement;
+        new (): HTMLOntarioIconCollapseElement;
     };
     interface HTMLOntarioIconDropdownArrowElement extends Components.OntarioIconDropdownArrow, HTMLStencilElement {
     }
     var HTMLOntarioIconDropdownArrowElement: {
         prototype: HTMLOntarioIconDropdownArrowElement;
-        new(): HTMLOntarioIconDropdownArrowElement;
+        new (): HTMLOntarioIconDropdownArrowElement;
     };
     interface HTMLOntarioIconEmailElement extends Components.OntarioIconEmail, HTMLStencilElement {
     }
     var HTMLOntarioIconEmailElement: {
         prototype: HTMLOntarioIconEmailElement;
-        new(): HTMLOntarioIconEmailElement;
+        new (): HTMLOntarioIconEmailElement;
     };
     interface HTMLOntarioIconExpandElement extends Components.OntarioIconExpand, HTMLStencilElement {
     }
     var HTMLOntarioIconExpandElement: {
         prototype: HTMLOntarioIconExpandElement;
-        new(): HTMLOntarioIconExpandElement;
+        new (): HTMLOntarioIconExpandElement;
     };
     interface HTMLOntarioIconHelpElement extends Components.OntarioIconHelp, HTMLStencilElement {
     }
     var HTMLOntarioIconHelpElement: {
         prototype: HTMLOntarioIconHelpElement;
-        new(): HTMLOntarioIconHelpElement;
+        new (): HTMLOntarioIconHelpElement;
     };
     interface HTMLOntarioIconMenuElement extends Components.OntarioIconMenu, HTMLStencilElement {
     }
     var HTMLOntarioIconMenuElement: {
         prototype: HTMLOntarioIconMenuElement;
-        new(): HTMLOntarioIconMenuElement;
+        new (): HTMLOntarioIconMenuElement;
     };
     interface HTMLOntarioIconNewWindowElement extends Components.OntarioIconNewWindow, HTMLStencilElement {
     }
     var HTMLOntarioIconNewWindowElement: {
         prototype: HTMLOntarioIconNewWindowElement;
-        new(): HTMLOntarioIconNewWindowElement;
+        new (): HTMLOntarioIconNewWindowElement;
     };
     interface HTMLOntarioIconPhoneElement extends Components.OntarioIconPhone, HTMLStencilElement {
     }
     var HTMLOntarioIconPhoneElement: {
         prototype: HTMLOntarioIconPhoneElement;
-        new(): HTMLOntarioIconPhoneElement;
+        new (): HTMLOntarioIconPhoneElement;
     };
     interface HTMLOntarioIconRemoveElement extends Components.OntarioIconRemove, HTMLStencilElement {
     }
     var HTMLOntarioIconRemoveElement: {
         prototype: HTMLOntarioIconRemoveElement;
-        new(): HTMLOntarioIconRemoveElement;
+        new (): HTMLOntarioIconRemoveElement;
     };
     interface HTMLOntarioIconRemoveAltElement extends Components.OntarioIconRemoveAlt, HTMLStencilElement {
     }
     var HTMLOntarioIconRemoveAltElement: {
         prototype: HTMLOntarioIconRemoveAltElement;
-        new(): HTMLOntarioIconRemoveAltElement;
+        new (): HTMLOntarioIconRemoveAltElement;
     };
     interface HTMLOntarioIconSearchElement extends Components.OntarioIconSearch, HTMLStencilElement {
     }
     var HTMLOntarioIconSearchElement: {
         prototype: HTMLOntarioIconSearchElement;
-        new(): HTMLOntarioIconSearchElement;
+        new (): HTMLOntarioIconSearchElement;
     };
     interface HTMLOntarioIconTtyElement extends Components.OntarioIconTty, HTMLStencilElement {
     }
     var HTMLOntarioIconTtyElement: {
         prototype: HTMLOntarioIconTtyElement;
-        new(): HTMLOntarioIconTtyElement;
+        new (): HTMLOntarioIconTtyElement;
     };
     interface HTMLOntarioInputElement extends Components.OntarioInput, HTMLStencilElement {
     }
     var HTMLOntarioInputElement: {
         prototype: HTMLOntarioInputElement;
-        new(): HTMLOntarioInputElement;
+        new (): HTMLOntarioInputElement;
     };
     interface HTMLOntarioTextareaElement extends Components.OntarioTextarea, HTMLStencilElement {
     }
     var HTMLOntarioTextareaElement: {
         prototype: HTMLOntarioTextareaElement;
-        new(): HTMLOntarioTextareaElement;
+        new (): HTMLOntarioTextareaElement;
     };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
