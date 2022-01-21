@@ -8,7 +8,7 @@ import alertSuccess from './assets/ontario-icon-alert-success.svg'
   shadow: false,
 })
 
-export class ontarioIconAlertSuccess {
+export class OntarioIconAlertSuccess {
   render() {
     return <div class="ontario-icon" innerHTML={alertSuccess} />;
   }

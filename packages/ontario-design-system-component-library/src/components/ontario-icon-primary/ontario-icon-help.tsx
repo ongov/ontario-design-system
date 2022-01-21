@@ -8,7 +8,7 @@ import help from './assets/ontario-icon-help.svg'
   shadow: false,
 })
 
-export class ontarioIconHelp {
+export class OntarioIconHelp {
 
   @Prop() colour: "black" | "blue" | "grey";
 

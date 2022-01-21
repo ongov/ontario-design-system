@@ -8,7 +8,7 @@ import alertError from './assets/ontario-icon-alert-error.svg'
   shadow: false,
 })
 
-export class ontarioIconAlertError {
+export class OntarioIconAlertError {
   render() {
     return <div class="ontario-icon" innerHTML={alertError} />;
   }

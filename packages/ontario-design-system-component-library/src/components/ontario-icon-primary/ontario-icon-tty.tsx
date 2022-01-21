@@ -8,7 +8,7 @@ import tty from './assets/ontario-icon-tty.svg';
   shadow: false,
 })
 
-export class ontarioIconTty {
+export class OntarioIconTty {
 
   @Prop() colour: "black" | "blue" | "grey";
 

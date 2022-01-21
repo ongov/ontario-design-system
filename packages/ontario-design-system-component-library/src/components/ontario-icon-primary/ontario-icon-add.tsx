@@ -8,7 +8,7 @@ import add from './assets/ontario-icon-add.svg'
   shadow: false,
 })
 
-export class ontarioIconAdd {
+export class OntarioIconAdd {
 
   @Prop() colour: "black" | "blue" | "grey";
 

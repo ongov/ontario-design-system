@@ -8,7 +8,7 @@ import phone from './assets/ontario-icon-phone.svg';
   shadow: false,
 })
 
-export class ontarioIconPhone {
+export class OntarioIconPhone {
 
   @Prop() colour: "black" | "blue" | "grey";
 

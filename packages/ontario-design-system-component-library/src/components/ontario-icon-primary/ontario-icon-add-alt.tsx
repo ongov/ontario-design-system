@@ -8,7 +8,7 @@ import addAlt from './assets/ontario-icon-add-alt.svg'
   shadow: false,
 })
 
-export class ontarioIconAddAlt {
+export class OntarioIconAddAlt {
 
   @Prop() colour: "black" | "blue" | "grey";
 

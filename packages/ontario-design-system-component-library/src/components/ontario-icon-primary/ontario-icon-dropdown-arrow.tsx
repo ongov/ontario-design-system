@@ -8,7 +8,7 @@ import dropdownArrow from './assets/ontario-icon-dropdown-arrow.svg'
   shadow: false,
 })
 
-export class ontarioIconDropdownArrow {
+export class OntarioIconDropdownArrow {
 
   @Prop() colour: "black" | "blue" | "grey";
 

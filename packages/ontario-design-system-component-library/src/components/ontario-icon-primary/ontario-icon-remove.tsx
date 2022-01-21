@@ -8,7 +8,7 @@ import remove from './assets/ontario-icon-remove.svg';
   shadow: false,
 })
 
-export class ontarioIconRemove {
+export class OntarioIconRemove {
 
   @Prop() colour: "black" | "blue" | "grey";
 

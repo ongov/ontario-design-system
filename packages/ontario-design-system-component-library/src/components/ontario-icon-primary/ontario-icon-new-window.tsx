@@ -8,7 +8,7 @@ import newWindow from './assets/ontario-icon-new-window.svg'
   shadow: false,
 })
 
-export class ontarioIconCreditCard {
+export class OntarioIconCreditCard {
 
   @Prop() colour: "black" | "blue" | "grey";
 

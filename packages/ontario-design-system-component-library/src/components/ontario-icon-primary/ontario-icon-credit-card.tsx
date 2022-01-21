@@ -8,7 +8,7 @@ import expand from './assets/ontario-icon-expand.svg'
   shadow: false,
 })
 
-export class ontarioIconExpand {
+export class OntarioIconExpand {
 
   @Prop() colour: "black" | "blue" | "grey";
 

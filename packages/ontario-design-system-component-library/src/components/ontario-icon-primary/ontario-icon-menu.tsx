@@ -8,7 +8,7 @@ import menu from './assets/ontario-icon-menu.svg'
   shadow: false,
 })
 
-export class ontarioIconMenu {
+export class OntarioIconMenu {
 
   @Prop() colour: "black" | "blue" | "grey";
 

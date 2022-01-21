@@ -8,7 +8,7 @@ import search from './assets/ontario-icon-search.svg';
   shadow: false,
 })
 
-export class ontarioIconSearch {
+export class OntarioIconSearch {
 
   @Prop() colour: "black" | "blue" | "grey";
 

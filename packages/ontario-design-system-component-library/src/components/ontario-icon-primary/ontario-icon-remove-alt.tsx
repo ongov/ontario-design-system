@@ -8,7 +8,7 @@ import removeAlt from './assets/ontario-icon-remove-alt.svg';
   shadow: false,
 })
 
-export class ontarioIconRemoveAlt {
+export class OntarioIconRemoveAlt {
 
   @Prop() colour: "black" | "blue" | "grey";
 

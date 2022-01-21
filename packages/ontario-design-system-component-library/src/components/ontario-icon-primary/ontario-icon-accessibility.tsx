@@ -8,7 +8,7 @@ import accessibility from './assets/ontario-icon-accessibility.svg'
   shadow: false,
 })
 
-export class ontarioIconAccessibility {
+export class OntarioIconAccessibility {
 
   @Prop() colour: "black" | "blue" | "grey";
 

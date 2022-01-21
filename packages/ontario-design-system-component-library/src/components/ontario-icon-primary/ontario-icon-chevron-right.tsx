@@ -8,7 +8,7 @@ import chevronRight from './assets/ontario-icon-chevron-right.svg'
   shadow: false,
 })
 
-export class ontarioIconChevronRight {
+export class OntarioIconChevronRight {
 
   @Prop() colour: "black" | "blue" | "grey";
 

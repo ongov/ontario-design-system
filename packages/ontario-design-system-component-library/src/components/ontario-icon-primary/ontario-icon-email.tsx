@@ -8,7 +8,7 @@ import email from './assets/ontario-icon-email.svg'
   shadow: false,
 })
 
-export class ontarioIconEmail {
+export class OntarioIconEmail {
 
   @Prop() colour: "black" | "blue" | "grey";
 
