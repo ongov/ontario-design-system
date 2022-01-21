@@ -4,7 +4,7 @@ import collapse from './assets/ontario-icon-collapse.svg'
 /** @internal **/
 @Component({
   tag: 'ontario-icon-collapse',
-  styleUrl: 'ontario-icon-primary.scss',
+  styleUrl: 'ontario-icon.scss',
   shadow: false,
 })
 

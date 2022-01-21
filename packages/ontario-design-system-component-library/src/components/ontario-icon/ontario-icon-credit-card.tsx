@@ -4,7 +4,7 @@ import expand from './assets/ontario-icon-expand.svg'
 /** @internal **/
 @Component({
   tag: 'ontario-icon-expand',
-  styleUrl: 'ontario-icon-primary.scss',
+  styleUrl: 'ontario-icon.scss',
   shadow: false,
 })
 

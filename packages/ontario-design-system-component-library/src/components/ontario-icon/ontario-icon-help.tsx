@@ -4,7 +4,7 @@ import help from './assets/ontario-icon-help.svg'
 /** @internal **/
 @Component({
   tag: 'ontario-icon-help',
-  styleUrl: 'ontario-icon-primary.scss',
+  styleUrl: 'ontario-icon.scss',
   shadow: false,
 })
 

@@ -4,7 +4,7 @@ import search from './assets/ontario-icon-search.svg';
 /** @internal **/
 @Component({
   tag: 'ontario-icon-search',
-  styleUrl: 'ontario-icon-primary.scss',
+  styleUrl: 'ontario-icon.scss',
   shadow: false,
 })
 

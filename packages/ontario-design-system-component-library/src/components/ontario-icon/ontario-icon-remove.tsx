@@ -4,7 +4,7 @@ import remove from './assets/ontario-icon-remove.svg';
 /** @internal **/
 @Component({
   tag: 'ontario-icon-remove',
-  styleUrl: 'ontario-icon-primary.scss',
+  styleUrl: 'ontario-icon.scss',
   shadow: false,
 })
 

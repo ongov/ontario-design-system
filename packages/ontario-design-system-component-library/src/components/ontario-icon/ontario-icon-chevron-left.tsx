@@ -4,7 +4,7 @@ import chevronLeft from './assets/ontario-icon-chevron-left.svg'
 /** @internal **/
 @Component({
   tag: 'ontario-icon-chevron-left',
-  styleUrl: 'ontario-icon-primary.scss',
+  styleUrl: 'ontario-icon.scss',
   shadow: false,
 })
 

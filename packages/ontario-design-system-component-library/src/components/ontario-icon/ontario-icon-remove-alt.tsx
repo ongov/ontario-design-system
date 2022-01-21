@@ -4,7 +4,7 @@ import removeAlt from './assets/ontario-icon-remove-alt.svg';
 /** @internal **/
 @Component({
   tag: 'ontario-icon-remove-alt',
-  styleUrl: 'ontario-icon-primary.scss',
+  styleUrl: 'ontario-icon.scss',
   shadow: false,
 })
 

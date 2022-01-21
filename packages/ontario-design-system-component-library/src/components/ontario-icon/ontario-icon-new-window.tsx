@@ -4,7 +4,7 @@ import newWindow from './assets/ontario-icon-new-window.svg'
 /** @internal **/
 @Component({
   tag: 'ontario-icon-new-window',
-  styleUrl: 'ontario-icon-primary.scss',
+  styleUrl: 'ontario-icon.scss',
   shadow: false,
 })
 

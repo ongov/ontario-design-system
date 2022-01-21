@@ -4,7 +4,7 @@ import add from './assets/ontario-icon-add.svg'
 /** @internal **/
 @Component({
   tag: 'ontario-icon-add',
-  styleUrl: 'ontario-icon-primary.scss',
+  styleUrl: 'ontario-icon.scss',
   shadow: false,
 })
 

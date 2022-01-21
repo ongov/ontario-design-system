@@ -4,7 +4,7 @@ import alertError from './assets/ontario-icon-alert-error.svg'
 /** @internal **/
 @Component({
   tag: 'ontario-icon-alert-error',
-  styleUrl: 'ontario-icon-primary.scss',
+  styleUrl: 'ontario-icon.scss',
   shadow: false,
 })
 

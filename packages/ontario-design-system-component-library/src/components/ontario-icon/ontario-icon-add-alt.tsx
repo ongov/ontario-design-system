@@ -4,7 +4,7 @@ import addAlt from './assets/ontario-icon-add-alt.svg'
 /** @internal **/
 @Component({
   tag: 'ontario-icon-add-alt',
-  styleUrl: 'ontario-icon-primary.scss',
+  styleUrl: 'ontario-icon.scss',
   shadow: false,
 })
 
