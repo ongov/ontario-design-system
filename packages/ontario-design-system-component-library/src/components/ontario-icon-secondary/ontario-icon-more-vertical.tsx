@@ -8,7 +8,7 @@ import moreVertical from './assets/ontario-icon-more-vertical.svg';
   shadow: false,
 })
 
-export class ontarioIconMoreVertical {
+export class OntarioIconMoreVertical {
 
   @Prop() colour: "black" | "blue" | "grey";
 

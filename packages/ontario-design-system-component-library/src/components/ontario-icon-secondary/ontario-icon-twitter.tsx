@@ -8,7 +8,7 @@ import twitter from './assets/ontario-icon-twitter.svg';
   shadow: false,
 })
 
-export class ontarioIconTwitter {
+export class OntarioIconTwitter {
 
   @Prop() colour: "black" | "blue" | "grey";
 

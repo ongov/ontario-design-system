@@ -8,7 +8,7 @@ import bookmarkOff from './assets/ontario-icon-bookmark-off.svg';
   shadow: false,
 })
 
-export class ontarioIconBookmarkOff {
+export class OntarioIconBookmarkOff {
 
   @Prop() colour: "black" | "blue" | "grey";
 

@@ -8,7 +8,7 @@ import vpnKey from './assets/ontario-icon-vpn-key.svg';
   shadow: false,
 })
 
-export class ontarioIconVpnKey {
+export class OntarioIconVpnKey {
 
   @Prop() colour: "black" | "blue" | "grey";
 

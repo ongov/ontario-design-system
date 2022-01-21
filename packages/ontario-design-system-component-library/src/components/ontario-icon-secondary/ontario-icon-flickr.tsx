@@ -8,7 +8,7 @@ import flickr from './assets/ontario-icon-flickr.svg';
   shadow: false,
 })
 
-export class ontarioIconFlickr {
+export class OntarioIconFlickr {
 
   @Prop() colour: "black" | "blue" | "grey";
 

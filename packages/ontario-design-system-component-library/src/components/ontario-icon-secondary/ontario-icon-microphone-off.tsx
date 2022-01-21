@@ -8,7 +8,7 @@ import microphoneOff from './assets/ontario-icon-microphone-off.svg';
   shadow: false,
 })
 
-export class ontarioIconMicrophoneOff {
+export class OntarioIconMicrophoneOff {
 
   @Prop() colour: "black" | "blue" | "grey";
 

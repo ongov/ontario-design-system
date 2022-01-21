@@ -8,7 +8,7 @@ import sentiment3 from './assets/ontario-icon-sentiment-3.svg';
   shadow: false,
 })
 
-export class ontarioIconSentiment3 {
+export class OntarioIconSentiment3 {
 
   @Prop() colour: "black" | "blue" | "grey";
 

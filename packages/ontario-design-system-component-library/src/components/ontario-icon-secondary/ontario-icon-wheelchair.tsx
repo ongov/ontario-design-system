@@ -8,7 +8,7 @@ import wheelchair from './assets/ontario-icon-wheelchair.svg';
   shadow: false,
 })
 
-export class ontarioIconWheelchair {
+export class OntarioIconWheelchair {
 
   @Prop() colour: "black" | "blue" | "grey";
 

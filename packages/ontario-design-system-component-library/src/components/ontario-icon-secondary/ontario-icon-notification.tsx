@@ -8,7 +8,7 @@ import notification from './assets/ontario-icon-notification.svg';
   shadow: false,
 })
 
-export class ontarioIconNotification {
+export class OntarioIconNotification {
 
   @Prop() colour: "black" | "blue" | "grey";
 

@@ -8,7 +8,7 @@ import rssFeed from './assets/ontario-icon-rss-feed.svg';
   shadow: false,
 })
 
-export class ontarioIconRssFeed {
+export class OntarioIconRssFeed {
 
   @Prop() colour: "black" | "blue" | "grey";
 

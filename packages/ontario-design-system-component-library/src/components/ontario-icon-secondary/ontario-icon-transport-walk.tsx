@@ -8,7 +8,7 @@ import transportWalk from './assets/ontario-icon-transport-walk.svg';
   shadow: false,
 })
 
-export class ontarioIconTransportWalk {
+export class OntarioIconTransportWalk {
 
   @Prop() colour: "black" | "blue" | "grey";
 

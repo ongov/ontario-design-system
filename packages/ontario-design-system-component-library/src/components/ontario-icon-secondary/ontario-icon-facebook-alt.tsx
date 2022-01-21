@@ -8,7 +8,7 @@ import facebookAlt from './assets/ontario-icon-facebook-alt.svg';
   shadow: false,
 })
 
-export class ontarioIconFacebookAlt {
+export class OntarioIconFacebookAlt {
 
   @Prop() colour: "black" | "blue" | "grey";
 

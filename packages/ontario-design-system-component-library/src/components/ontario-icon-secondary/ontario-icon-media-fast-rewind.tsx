@@ -8,7 +8,7 @@ import mediaFastRewind from './assets/ontario-icon-media-fast-rewind.svg';
   shadow: false,
 })
 
-export class ontarioIconMediaFastRewind {
+export class OntarioIconMediaFastRewind {
 
   @Prop() colour: "black" | "blue" | "grey";
 

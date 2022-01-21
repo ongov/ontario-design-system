@@ -8,7 +8,7 @@ import share from './assets/ontario-icon-share.svg';
   shadow: false,
 })
 
-export class ontarioIconShare {
+export class OntarioIconShare {
 
   @Prop() colour: "black" | "blue" | "grey";
 

@@ -8,7 +8,7 @@ import mediaStop from './assets/ontario-icon-media-stop.svg';
   shadow: false,
 })
 
-export class ontarioIconMediaStop {
+export class OntarioIconMediaStop {
 
   @Prop() colour: "black" | "blue" | "grey";
 

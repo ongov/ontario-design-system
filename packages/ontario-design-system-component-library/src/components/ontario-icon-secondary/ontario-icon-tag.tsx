@@ -8,7 +8,7 @@ import tag from './assets/ontario-icon-tag.svg';
   shadow: false,
 })
 
-export class ontarioIconTag {
+export class OntarioIconTag {
 
   @Prop() colour: "black" | "blue" | "grey";
 

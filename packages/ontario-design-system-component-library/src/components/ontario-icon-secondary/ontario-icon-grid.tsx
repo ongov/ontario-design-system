@@ -8,7 +8,7 @@ import grid from './assets/ontario-icon-grid.svg';
   shadow: false,
 })
 
-export class ontarioIconGrid {
+export class OntarioIconGrid {
 
   @Prop() colour: "black" | "blue" | "grey";
 

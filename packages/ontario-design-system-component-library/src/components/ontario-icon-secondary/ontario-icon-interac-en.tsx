@@ -8,7 +8,7 @@ import interacEn from './assets/ontario-icon-interac-en-alt.svg';
   shadow: false,
 })
 
-export class ontarioIconInteracEn {
+export class OntarioIconInteracEn {
   render() {
     return <div class="ontario-icon" innerHTML={interacEn} />;
   }

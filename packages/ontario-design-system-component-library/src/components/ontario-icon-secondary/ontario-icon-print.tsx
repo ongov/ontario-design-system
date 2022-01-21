@@ -8,7 +8,7 @@ import print from './assets/ontario-icon-print.svg';
   shadow: false,
 })
 
-export class ontarioIconPrint {
+export class OntarioIconPrint {
 
   @Prop() colour: "black" | "blue" | "grey";
 

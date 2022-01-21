@@ -8,7 +8,7 @@ import settings from './assets/ontario-icon-settings.svg';
   shadow: false,
 })
 
-export class ontarioIconPasswordSettings {
+export class OntarioIconPasswordSettings {
 
   @Prop() colour: "black" | "blue" | "grey";
 

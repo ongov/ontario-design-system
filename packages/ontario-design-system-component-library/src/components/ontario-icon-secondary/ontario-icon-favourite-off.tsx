@@ -8,7 +8,7 @@ import favouriteOff from './assets/ontario-icon-favourite-off.svg';
   shadow: false,
 })
 
-export class ontarioIconFavouriteOff {
+export class OntarioIconFavouriteOff {
 
   @Prop() colour: "black" | "blue" | "grey";
 

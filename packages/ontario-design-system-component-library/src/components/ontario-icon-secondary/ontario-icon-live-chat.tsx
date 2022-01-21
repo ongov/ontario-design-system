@@ -8,7 +8,7 @@ import liveChat from './assets/ontario-icon-live-chat.svg';
   shadow: false,
 })
 
-export class ontarioIconLiveChat {
+export class OntarioIconLiveChat {
 
   @Prop() colour: "black" | "blue" | "grey";
 

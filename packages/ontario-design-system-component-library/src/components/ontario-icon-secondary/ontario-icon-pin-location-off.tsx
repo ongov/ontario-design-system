@@ -8,7 +8,7 @@ import pinLocationOff from './assets/ontario-icon-pin-location-off.svg';
   shadow: false,
 })
 
-export class ontarioIconPinLocationOff {
+export class OntarioIconPinLocationOff {
 
   @Prop() colour: "black" | "blue" | "grey";
 

@@ -8,7 +8,7 @@ import locationOff from './assets/ontario-icon-location-off.svg';
   shadow: false,
 })
 
-export class ontarioIconLocationOff {
+export class OntarioIconLocationOff {
 
   @Prop() colour: "black" | "blue" | "grey";
 

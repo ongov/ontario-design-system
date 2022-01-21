@@ -8,7 +8,7 @@ import voteLike from './assets/ontario-icon-vote-like.svg';
   shadow: false,
 })
 
-export class ontarioIconVoteLike {
+export class OntarioIconVoteLike {
 
   @Prop() colour: "black" | "blue" | "grey";
 

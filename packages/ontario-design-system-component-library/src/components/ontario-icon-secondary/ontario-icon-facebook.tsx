@@ -8,7 +8,7 @@ import facebook from './assets/ontario-icon-facebook.svg';
   shadow: false,
 })
 
-export class ontarioIconFacebook {
+export class OntarioIconFacebook {
 
   @Prop() colour: "black" | "blue" | "grey";
 

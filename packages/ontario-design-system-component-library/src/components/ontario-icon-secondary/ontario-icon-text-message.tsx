@@ -8,7 +8,7 @@ import textMessage from './assets/ontario-icon-text-message.svg';
   shadow: false,
 })
 
-export class ontarioIconTextMessage {
+export class OntarioIconTextMessage {
 
   @Prop() colour: "black" | "blue" | "grey";
 

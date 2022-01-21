@@ -8,7 +8,7 @@ import wifi from './assets/ontario-icon-wifi.svg';
   shadow: false,
 })
 
-export class ontarioIconWifi {
+export class OntarioIconWifi {
 
   @Prop() colour: "black" | "blue" | "grey";
 

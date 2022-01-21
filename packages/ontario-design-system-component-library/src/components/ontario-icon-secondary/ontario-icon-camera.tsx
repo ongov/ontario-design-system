@@ -8,7 +8,7 @@ import camera from './assets/ontario-icon-camera.svg';
   shadow: false,
 })
 
-export class ontarioIconCamera {
+export class OntarioIconCamera {
 
   @Prop() colour: "black" | "blue" | "grey";
 

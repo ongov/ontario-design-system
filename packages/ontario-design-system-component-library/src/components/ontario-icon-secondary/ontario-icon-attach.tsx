@@ -8,7 +8,7 @@ import attach from './assets/ontario-icon-attach.svg';
   shadow: false,
 })
 
-export class ontarioIconAttach {
+export class OntarioIconAttach {
 
   @Prop() colour: "black" | "blue" | "grey";
 

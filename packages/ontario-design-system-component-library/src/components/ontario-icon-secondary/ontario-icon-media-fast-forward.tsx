@@ -8,7 +8,7 @@ import mediaFastForward from './assets/ontario-icon-media-fast-forward.svg';
   shadow: false,
 })
 
-export class ontarioIconMediaFastForward {
+export class OntarioIconMediaFastForward {
 
   @Prop() colour: "black" | "blue" | "grey";
 

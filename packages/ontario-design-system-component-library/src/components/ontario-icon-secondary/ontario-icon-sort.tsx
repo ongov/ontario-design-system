@@ -8,7 +8,7 @@ import sort from './assets/ontario-icon-sort.svg';
   shadow: false,
 })
 
-export class ontarioIconSort {
+export class OntarioIconSort {
 
   @Prop() colour: "black" | "blue" | "grey";
 

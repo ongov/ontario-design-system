@@ -8,7 +8,7 @@ import calendar from './assets/ontario-icon-calendar.svg';
   shadow: false,
 })
 
-export class ontarioIconCalendar {
+export class OntarioIconCalendar {
 
   @Prop() colour: "black" | "blue" | "grey";
 

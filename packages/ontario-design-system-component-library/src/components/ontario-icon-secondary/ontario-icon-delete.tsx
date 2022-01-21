@@ -8,7 +8,7 @@ import deleteIcon from './assets/ontario-icon-delete.svg';
   shadow: false,
 })
 
-export class ontarioIconDelete {
+export class OntarioIconDelete {
 
   @Prop() colour: "black" | "blue" | "grey";
 

@@ -8,7 +8,7 @@ import clock from './assets/ontario-icon-clock.svg';
   shadow: false,
 })
 
-export class ontarioIconClock {
+export class OntarioIconClock {
 
   @Prop() colour: "black" | "blue" | "grey";
 

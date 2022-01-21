@@ -8,7 +8,7 @@ import passwordHide from './assets/ontario-icon-password-hide.svg';
   shadow: false,
 })
 
-export class ontarioIconPasswordHide {
+export class OntarioIconPasswordHide {
 
   @Prop() colour: "black" | "blue" | "grey";
 

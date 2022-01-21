@@ -8,7 +8,7 @@ import transportCar from './assets/ontario-icon-transport-car.svg';
   shadow: false,
 })
 
-export class ontarioIconTransportCar {
+export class OntarioIconTransportCar {
 
   @Prop() colour: "black" | "blue" | "grey";
 

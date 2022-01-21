@@ -8,7 +8,7 @@ import interacFrAlt from './assets/ontario-icon-interac-fr-alt.svg';
   shadow: false,
 })
 
-export class ontarioIconInteracFrAlt {
+export class OntarioIconInteracFrAlt {
   render() {
     return <div class="ontario-icon" innerHTML={interacFrAlt} />;
   }

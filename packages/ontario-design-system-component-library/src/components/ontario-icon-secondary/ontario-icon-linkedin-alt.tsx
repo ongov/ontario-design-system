@@ -8,7 +8,7 @@ import linkedinAlt from './assets/ontario-icon-linkedin-alt.svg';
   shadow: false,
 })
 
-export class ontarioIconLinkedinAlt {
+export class OntarioIconLinkedinAlt {
 
   @Prop() colour: "black" | "blue" | "grey";
 

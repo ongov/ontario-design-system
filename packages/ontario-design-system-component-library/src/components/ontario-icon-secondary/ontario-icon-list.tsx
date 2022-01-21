@@ -8,7 +8,7 @@ import list from './assets/ontario-icon-list.svg';
   shadow: false,
 })
 
-export class ontarioIconList {
+export class OntarioIconList {
 
   @Prop() colour: "black" | "blue" | "grey";
 

@@ -8,7 +8,7 @@ import instagram from './assets/ontario-icon-instagram.svg';
   shadow: false,
 })
 
-export class ontarioIconInstagram {
+export class OntarioIconInstagram {
 
   @Prop() colour: "black" | "blue" | "grey";
 

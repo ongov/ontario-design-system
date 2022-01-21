@@ -8,7 +8,7 @@ import lockOn from './assets/ontario-icon-lock-on.svg';
   shadow: false,
 })
 
-export class ontarioIconLockOn {
+export class OntarioIconLockOn {
 
   @Prop() colour: "black" | "blue" | "grey";
 

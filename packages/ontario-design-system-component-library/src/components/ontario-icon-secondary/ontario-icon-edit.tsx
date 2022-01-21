@@ -8,7 +8,7 @@ import edit from './assets/ontario-icon-edit.svg';
   shadow: false,
 })
 
-export class ontarioIconEdit {
+export class OntarioIconEdit {
 
   @Prop() colour: "black" | "blue" | "grey";
 

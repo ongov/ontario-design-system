@@ -8,7 +8,7 @@ import next from './assets/ontario-icon-next.svg';
   shadow: false,
 })
 
-export class ontarioIconNext {
+export class OntarioIconNext {
 
   @Prop() colour: "black" | "blue" | "grey";
 

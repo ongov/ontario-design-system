@@ -8,7 +8,7 @@ import mapIcon from './assets/ontario-icon-map.svg';
   shadow: false,
 })
 
-export class ontarioIconMap {
+export class OntarioIconMap {
 
   @Prop() colour: "black" | "blue" | "grey";
 

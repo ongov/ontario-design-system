@@ -8,7 +8,7 @@ import previous from './assets/ontario-icon-previous.svg';
   shadow: false,
 })
 
-export class ontarioIconPrevious {
+export class OntarioIconPrevious {
 
   @Prop() colour: "black" | "blue" | "grey";
 

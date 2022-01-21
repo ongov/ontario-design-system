@@ -8,7 +8,7 @@ import mediaPause from './assets/ontario-icon-media-pause.svg';
   shadow: false,
 })
 
-export class ontarioIconMediaPause {
+export class OntarioIconMediaPause {
 
   @Prop() colour: "black" | "blue" | "grey";
 

@@ -8,7 +8,7 @@ import video from './assets/ontario-icon-video.svg';
   shadow: false,
 })
 
-export class ontarioIconVideo {
+export class OntarioIconVideo {
 
   @Prop() colour: "black" | "blue" | "grey";
 

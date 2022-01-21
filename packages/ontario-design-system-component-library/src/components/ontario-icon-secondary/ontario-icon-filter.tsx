@@ -8,7 +8,7 @@ import filter from './assets/ontario-icon-filter.svg';
   shadow: false,
 })
 
-export class ontarioIconFilter {
+export class OntarioIconFilter {
 
   @Prop() colour: "black" | "blue" | "grey";
 

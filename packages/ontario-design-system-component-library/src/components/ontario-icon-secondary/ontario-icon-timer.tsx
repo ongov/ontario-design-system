@@ -8,7 +8,7 @@ import timer from './assets/ontario-icon-timer.svg';
   shadow: false,
 })
 
-export class ontarioIconTimer {
+export class OntarioIconTimer {
 
   @Prop() colour: "black" | "blue" | "grey";
 

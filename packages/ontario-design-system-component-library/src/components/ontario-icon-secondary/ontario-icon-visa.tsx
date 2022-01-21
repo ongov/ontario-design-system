@@ -8,7 +8,7 @@ import visa from './assets/ontario-icon-visa.svg';
   shadow: false,
 })
 
-export class ontarioIconVisa {
+export class OntarioIconVisa {
   render() {
     return <div class="ontario-icon" innerHTML={visa} />;
   }

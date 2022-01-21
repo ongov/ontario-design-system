@@ -8,7 +8,7 @@ import voteDislike from './assets/ontario-icon-vote-dislike.svg';
   shadow: false,
 })
 
-export class ontarioIconVoteDislike {
+export class OntarioIconVoteDislike {
 
   @Prop() colour: "black" | "blue" | "grey";
 

@@ -8,7 +8,7 @@ import save from './assets/ontario-icon-save.svg';
   shadow: false,
 })
 
-export class ontarioIconSave {
+export class OntarioIconSave {
 
   @Prop() colour: "black" | "blue" | "grey";
 

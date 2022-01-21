@@ -8,7 +8,7 @@ import mediaPlay from './assets/ontario-icon-media-play.svg';
   shadow: false,
 })
 
-export class ontarioIconMediaPlay {
+export class OntarioIconMediaPlay {
 
   @Prop() colour: "black" | "blue" | "grey";
 

@@ -8,7 +8,7 @@ import mastercardAlt from './assets/ontario-icon-mastercard-alt.svg';
   shadow: false,
 })
 
-export class ontarioIconMastercardAlt {
+export class OntarioIconMastercardAlt {
 
   @Prop() colour: "black" | "blue" | "grey";
 

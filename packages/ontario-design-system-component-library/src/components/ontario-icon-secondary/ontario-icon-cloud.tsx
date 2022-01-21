@@ -8,7 +8,7 @@ import cloud from './assets/ontario-icon-cloud.svg';
   shadow: false,
 })
 
-export class ontarioIconCloud {
+export class OntarioIconCloud {
 
   @Prop() colour: "black" | "blue" | "grey";
 

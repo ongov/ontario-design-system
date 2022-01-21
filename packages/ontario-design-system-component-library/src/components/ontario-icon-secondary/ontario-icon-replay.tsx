@@ -8,7 +8,7 @@ import replay from './assets/ontario-icon-replay.svg';
   shadow: false,
 })
 
-export class ontarioIconPrint {
+export class OntarioIconPrint {
 
   @Prop() colour: "black" | "blue" | "grey";
 
