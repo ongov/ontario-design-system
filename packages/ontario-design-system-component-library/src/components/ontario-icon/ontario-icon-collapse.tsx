@@ -1,7 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import collapse from './assets/ontario-icon-collapse.svg'
 
-/** @internal **/
 @Component({
   tag: 'ontario-icon-collapse',
   styleUrl: 'ontario-icon.scss',

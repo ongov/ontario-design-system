@@ -1,7 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import removeAlt from './assets/ontario-icon-remove-alt.svg';
 
-/** @internal **/
 @Component({
   tag: 'ontario-icon-remove-alt',
   styleUrl: 'ontario-icon.scss',

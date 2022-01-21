@@ -1,7 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import tty from './assets/ontario-icon-tty.svg';
 
-/** @internal **/
 @Component({
   tag: 'ontario-icon-tty',
   styleUrl: 'ontario-icon.scss',

@@ -1,7 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import phone from './assets/ontario-icon-phone.svg';
 
-/** @internal **/
 @Component({
   tag: 'ontario-icon-phone',
   styleUrl: 'ontario-icon.scss',

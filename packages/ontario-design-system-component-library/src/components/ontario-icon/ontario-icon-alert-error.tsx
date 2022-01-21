@@ -1,7 +1,6 @@
 import { Component, h } from '@stencil/core';
 import alertError from './assets/ontario-icon-alert-error.svg'
 
-/** @internal **/
 @Component({
   tag: 'ontario-icon-alert-error',
   styleUrl: 'ontario-icon.scss',

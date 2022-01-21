@@ -1,7 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import chevronLeft from './assets/ontario-icon-chevron-left.svg'
 
-/** @internal **/
 @Component({
   tag: 'ontario-icon-chevron-left',
   styleUrl: 'ontario-icon.scss',
