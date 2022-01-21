@@ -1,7 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import mediaStop from './assets/ontario-icon-media-stop.svg';
 
-/** @internal **/
 @Component({
   tag: 'ontario-icon-media-stop',
   styleUrl: 'ontario-icon-secondary.scss',
@@ -13,6 +12,6 @@ export class OntarioIconMediaStop {
   @Prop() colour: "black" | "blue" | "grey";
 
   render() {
-    return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={mediaStop} />;
+    return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={mediaStop} />;
   }
 };

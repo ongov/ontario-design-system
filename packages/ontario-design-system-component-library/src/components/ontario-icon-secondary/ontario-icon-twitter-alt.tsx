@@ -1,7 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import twitterAlt from './assets/ontario-icon-twitter-alt.svg';
 
-/** @internal **/
 @Component({
   tag: 'ontario-icon-twitter-alt',
   styleUrl: 'ontario-icon-secondary.scss',
@@ -13,6 +12,6 @@ export class OntarioIconTwitterAlt {
   @Prop() colour: "black" | "blue" | "grey";
 
   render() {
-    return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={twitterAlt} />;
+    return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={twitterAlt} />;
   }
 };

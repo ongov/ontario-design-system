@@ -1,7 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import passwordHide from './assets/ontario-icon-password-hide.svg';
 
-/** @internal **/
 @Component({
   tag: 'ontario-icon-password-hide',
   styleUrl: 'ontario-icon-secondary.scss',
@@ -13,6 +12,6 @@ export class OntarioIconPasswordHide {
   @Prop() colour: "black" | "blue" | "grey";
 
   render() {
-    return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={passwordHide} />;
+    return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={passwordHide} />;
   }
 };

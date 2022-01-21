@@ -1,7 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import microphoneOff from './assets/ontario-icon-microphone-off.svg';
 
-/** @internal **/
 @Component({
   tag: 'ontario-icon-microphone-off',
   styleUrl: 'ontario-icon-secondary.scss',
@@ -13,6 +12,6 @@ export class OntarioIconMicrophoneOff {
   @Prop() colour: "black" | "blue" | "grey";
 
   render() {
-    return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={microphoneOff} />;
+    return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={microphoneOff} />;
   }
 };

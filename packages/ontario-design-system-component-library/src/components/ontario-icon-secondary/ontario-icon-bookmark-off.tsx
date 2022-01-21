@@ -1,7 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import bookmarkOff from './assets/ontario-icon-bookmark-off.svg';
 
-/** @internal **/
 @Component({
   tag: 'ontario-icon-bookmark-off',
   styleUrl: 'ontario-icon-secondary.scss',
@@ -13,6 +12,6 @@ export class OntarioIconBookmarkOff {
   @Prop() colour: "black" | "blue" | "grey";
 
   render() {
-    return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={bookmarkOff} />;
+    return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={bookmarkOff} />;
   }
 };

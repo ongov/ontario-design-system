@@ -1,7 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import transportBus from './assets/ontario-icon-transport-bus.svg';
 
-/** @internal **/
 @Component({
   tag: 'ontario-icon-transport-bus',
   styleUrl: 'ontario-icon-secondary.scss',
@@ -13,6 +12,6 @@ export class OntarioIconTransportBus {
   @Prop() colour: "black" | "blue" | "grey";
 
   render() {
-    return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={transportBus} />;
+    return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={transportBus} />;
   }
 };

@@ -1,7 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import camera from './assets/ontario-icon-camera.svg';
 
-/** @internal **/
 @Component({
   tag: 'ontario-icon-camera',
   styleUrl: 'ontario-icon-secondary.scss',
@@ -13,6 +12,6 @@ export class OntarioIconCamera {
   @Prop() colour: "black" | "blue" | "grey";
 
   render() {
-    return <div class={`ontario-icon ontario-icon--${this.color}`} innerHTML={camera} />;
+    return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={camera} />;
   }
 };
