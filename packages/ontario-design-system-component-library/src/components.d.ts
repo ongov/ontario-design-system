@@ -54,6 +54,74 @@ export namespace Components {
          */
         "hintId"?: string;
     }
+    interface OntarioIconAccessibility {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconAdd {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconAddAlt {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconAlertError {
+    }
+    interface OntarioIconAlertInformation {
+    }
+    interface OntarioIconAlertSuccess {
+    }
+    interface OntarioIconAlertWarning {
+    }
+    interface OntarioIconChevronDown {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconChevronLeft {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconChevronRight {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconChevronUp {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconClose {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconCollapse {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconDropdownArrow {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconEmail {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconExpand {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconHelp {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconMenu {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconNewWindow {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconPhone {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconRemove {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconRemoveAlt {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconSearch {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconTty {
+        "colour": "black" | "blue" | "grey";
+    }
     interface OntarioInput {
         /**
           * The aria-describedBy value if the input has hint text associated with it.
@@ -145,6 +213,150 @@ declare global {
         prototype: HTMLOntarioHintTextElement;
         new (): HTMLOntarioHintTextElement;
     };
+    interface HTMLOntarioIconAccessibilityElement extends Components.OntarioIconAccessibility, HTMLStencilElement {
+    }
+    var HTMLOntarioIconAccessibilityElement: {
+        prototype: HTMLOntarioIconAccessibilityElement;
+        new (): HTMLOntarioIconAccessibilityElement;
+    };
+    interface HTMLOntarioIconAddElement extends Components.OntarioIconAdd, HTMLStencilElement {
+    }
+    var HTMLOntarioIconAddElement: {
+        prototype: HTMLOntarioIconAddElement;
+        new (): HTMLOntarioIconAddElement;
+    };
+    interface HTMLOntarioIconAddAltElement extends Components.OntarioIconAddAlt, HTMLStencilElement {
+    }
+    var HTMLOntarioIconAddAltElement: {
+        prototype: HTMLOntarioIconAddAltElement;
+        new (): HTMLOntarioIconAddAltElement;
+    };
+    interface HTMLOntarioIconAlertErrorElement extends Components.OntarioIconAlertError, HTMLStencilElement {
+    }
+    var HTMLOntarioIconAlertErrorElement: {
+        prototype: HTMLOntarioIconAlertErrorElement;
+        new (): HTMLOntarioIconAlertErrorElement;
+    };
+    interface HTMLOntarioIconAlertInformationElement extends Components.OntarioIconAlertInformation, HTMLStencilElement {
+    }
+    var HTMLOntarioIconAlertInformationElement: {
+        prototype: HTMLOntarioIconAlertInformationElement;
+        new (): HTMLOntarioIconAlertInformationElement;
+    };
+    interface HTMLOntarioIconAlertSuccessElement extends Components.OntarioIconAlertSuccess, HTMLStencilElement {
+    }
+    var HTMLOntarioIconAlertSuccessElement: {
+        prototype: HTMLOntarioIconAlertSuccessElement;
+        new (): HTMLOntarioIconAlertSuccessElement;
+    };
+    interface HTMLOntarioIconAlertWarningElement extends Components.OntarioIconAlertWarning, HTMLStencilElement {
+    }
+    var HTMLOntarioIconAlertWarningElement: {
+        prototype: HTMLOntarioIconAlertWarningElement;
+        new (): HTMLOntarioIconAlertWarningElement;
+    };
+    interface HTMLOntarioIconChevronDownElement extends Components.OntarioIconChevronDown, HTMLStencilElement {
+    }
+    var HTMLOntarioIconChevronDownElement: {
+        prototype: HTMLOntarioIconChevronDownElement;
+        new (): HTMLOntarioIconChevronDownElement;
+    };
+    interface HTMLOntarioIconChevronLeftElement extends Components.OntarioIconChevronLeft, HTMLStencilElement {
+    }
+    var HTMLOntarioIconChevronLeftElement: {
+        prototype: HTMLOntarioIconChevronLeftElement;
+        new (): HTMLOntarioIconChevronLeftElement;
+    };
+    interface HTMLOntarioIconChevronRightElement extends Components.OntarioIconChevronRight, HTMLStencilElement {
+    }
+    var HTMLOntarioIconChevronRightElement: {
+        prototype: HTMLOntarioIconChevronRightElement;
+        new (): HTMLOntarioIconChevronRightElement;
+    };
+    interface HTMLOntarioIconChevronUpElement extends Components.OntarioIconChevronUp, HTMLStencilElement {
+    }
+    var HTMLOntarioIconChevronUpElement: {
+        prototype: HTMLOntarioIconChevronUpElement;
+        new (): HTMLOntarioIconChevronUpElement;
+    };
+    interface HTMLOntarioIconCloseElement extends Components.OntarioIconClose, HTMLStencilElement {
+    }
+    var HTMLOntarioIconCloseElement: {
+        prototype: HTMLOntarioIconCloseElement;
+        new (): HTMLOntarioIconCloseElement;
+    };
+    interface HTMLOntarioIconCollapseElement extends Components.OntarioIconCollapse, HTMLStencilElement {
+    }
+    var HTMLOntarioIconCollapseElement: {
+        prototype: HTMLOntarioIconCollapseElement;
+        new (): HTMLOntarioIconCollapseElement;
+    };
+    interface HTMLOntarioIconDropdownArrowElement extends Components.OntarioIconDropdownArrow, HTMLStencilElement {
+    }
+    var HTMLOntarioIconDropdownArrowElement: {
+        prototype: HTMLOntarioIconDropdownArrowElement;
+        new (): HTMLOntarioIconDropdownArrowElement;
+    };
+    interface HTMLOntarioIconEmailElement extends Components.OntarioIconEmail, HTMLStencilElement {
+    }
+    var HTMLOntarioIconEmailElement: {
+        prototype: HTMLOntarioIconEmailElement;
+        new (): HTMLOntarioIconEmailElement;
+    };
+    interface HTMLOntarioIconExpandElement extends Components.OntarioIconExpand, HTMLStencilElement {
+    }
+    var HTMLOntarioIconExpandElement: {
+        prototype: HTMLOntarioIconExpandElement;
+        new (): HTMLOntarioIconExpandElement;
+    };
+    interface HTMLOntarioIconHelpElement extends Components.OntarioIconHelp, HTMLStencilElement {
+    }
+    var HTMLOntarioIconHelpElement: {
+        prototype: HTMLOntarioIconHelpElement;
+        new (): HTMLOntarioIconHelpElement;
+    };
+    interface HTMLOntarioIconMenuElement extends Components.OntarioIconMenu, HTMLStencilElement {
+    }
+    var HTMLOntarioIconMenuElement: {
+        prototype: HTMLOntarioIconMenuElement;
+        new (): HTMLOntarioIconMenuElement;
+    };
+    interface HTMLOntarioIconNewWindowElement extends Components.OntarioIconNewWindow, HTMLStencilElement {
+    }
+    var HTMLOntarioIconNewWindowElement: {
+        prototype: HTMLOntarioIconNewWindowElement;
+        new (): HTMLOntarioIconNewWindowElement;
+    };
+    interface HTMLOntarioIconPhoneElement extends Components.OntarioIconPhone, HTMLStencilElement {
+    }
+    var HTMLOntarioIconPhoneElement: {
+        prototype: HTMLOntarioIconPhoneElement;
+        new (): HTMLOntarioIconPhoneElement;
+    };
+    interface HTMLOntarioIconRemoveElement extends Components.OntarioIconRemove, HTMLStencilElement {
+    }
+    var HTMLOntarioIconRemoveElement: {
+        prototype: HTMLOntarioIconRemoveElement;
+        new (): HTMLOntarioIconRemoveElement;
+    };
+    interface HTMLOntarioIconRemoveAltElement extends Components.OntarioIconRemoveAlt, HTMLStencilElement {
+    }
+    var HTMLOntarioIconRemoveAltElement: {
+        prototype: HTMLOntarioIconRemoveAltElement;
+        new (): HTMLOntarioIconRemoveAltElement;
+    };
+    interface HTMLOntarioIconSearchElement extends Components.OntarioIconSearch, HTMLStencilElement {
+    }
+    var HTMLOntarioIconSearchElement: {
+        prototype: HTMLOntarioIconSearchElement;
+        new (): HTMLOntarioIconSearchElement;
+    };
+    interface HTMLOntarioIconTtyElement extends Components.OntarioIconTty, HTMLStencilElement {
+    }
+    var HTMLOntarioIconTtyElement: {
+        prototype: HTMLOntarioIconTtyElement;
+        new (): HTMLOntarioIconTtyElement;
+    };
     interface HTMLOntarioInputElement extends Components.OntarioInput, HTMLStencilElement {
     }
     var HTMLOntarioInputElement: {
@@ -167,6 +379,30 @@ declare global {
         "my-component": HTMLMyComponentElement;
         "ontario-button": HTMLOntarioButtonElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
+        "ontario-icon-accessibility": HTMLOntarioIconAccessibilityElement;
+        "ontario-icon-add": HTMLOntarioIconAddElement;
+        "ontario-icon-add-alt": HTMLOntarioIconAddAltElement;
+        "ontario-icon-alert-error": HTMLOntarioIconAlertErrorElement;
+        "ontario-icon-alert-information": HTMLOntarioIconAlertInformationElement;
+        "ontario-icon-alert-success": HTMLOntarioIconAlertSuccessElement;
+        "ontario-icon-alert-warning": HTMLOntarioIconAlertWarningElement;
+        "ontario-icon-chevron-down": HTMLOntarioIconChevronDownElement;
+        "ontario-icon-chevron-left": HTMLOntarioIconChevronLeftElement;
+        "ontario-icon-chevron-right": HTMLOntarioIconChevronRightElement;
+        "ontario-icon-chevron-up": HTMLOntarioIconChevronUpElement;
+        "ontario-icon-close": HTMLOntarioIconCloseElement;
+        "ontario-icon-collapse": HTMLOntarioIconCollapseElement;
+        "ontario-icon-dropdown-arrow": HTMLOntarioIconDropdownArrowElement;
+        "ontario-icon-email": HTMLOntarioIconEmailElement;
+        "ontario-icon-expand": HTMLOntarioIconExpandElement;
+        "ontario-icon-help": HTMLOntarioIconHelpElement;
+        "ontario-icon-menu": HTMLOntarioIconMenuElement;
+        "ontario-icon-new-window": HTMLOntarioIconNewWindowElement;
+        "ontario-icon-phone": HTMLOntarioIconPhoneElement;
+        "ontario-icon-remove": HTMLOntarioIconRemoveElement;
+        "ontario-icon-remove-alt": HTMLOntarioIconRemoveAltElement;
+        "ontario-icon-search": HTMLOntarioIconSearchElement;
+        "ontario-icon-tty": HTMLOntarioIconTtyElement;
         "ontario-input": HTMLOntarioInputElement;
         "ontario-label": HTMLOntarioLabelElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
@@ -220,6 +456,74 @@ declare namespace LocalJSX {
           * Used to used to establish a relationship between hint text content and elements using aria-describedby.
          */
         "hintId"?: string;
+    }
+    interface OntarioIconAccessibility {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconAdd {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconAddAlt {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconAlertError {
+    }
+    interface OntarioIconAlertInformation {
+    }
+    interface OntarioIconAlertSuccess {
+    }
+    interface OntarioIconAlertWarning {
+    }
+    interface OntarioIconChevronDown {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconChevronLeft {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconChevronRight {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconChevronUp {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconClose {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconCollapse {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconDropdownArrow {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconEmail {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconExpand {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconHelp {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconMenu {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconNewWindow {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconPhone {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconRemove {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconRemoveAlt {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconSearch {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconTty {
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioInput {
         /**
@@ -320,6 +624,30 @@ declare namespace LocalJSX {
         "my-component": MyComponent;
         "ontario-button": OntarioButton;
         "ontario-hint-text": OntarioHintText;
+        "ontario-icon-accessibility": OntarioIconAccessibility;
+        "ontario-icon-add": OntarioIconAdd;
+        "ontario-icon-add-alt": OntarioIconAddAlt;
+        "ontario-icon-alert-error": OntarioIconAlertError;
+        "ontario-icon-alert-information": OntarioIconAlertInformation;
+        "ontario-icon-alert-success": OntarioIconAlertSuccess;
+        "ontario-icon-alert-warning": OntarioIconAlertWarning;
+        "ontario-icon-chevron-down": OntarioIconChevronDown;
+        "ontario-icon-chevron-left": OntarioIconChevronLeft;
+        "ontario-icon-chevron-right": OntarioIconChevronRight;
+        "ontario-icon-chevron-up": OntarioIconChevronUp;
+        "ontario-icon-close": OntarioIconClose;
+        "ontario-icon-collapse": OntarioIconCollapse;
+        "ontario-icon-dropdown-arrow": OntarioIconDropdownArrow;
+        "ontario-icon-email": OntarioIconEmail;
+        "ontario-icon-expand": OntarioIconExpand;
+        "ontario-icon-help": OntarioIconHelp;
+        "ontario-icon-menu": OntarioIconMenu;
+        "ontario-icon-new-window": OntarioIconNewWindow;
+        "ontario-icon-phone": OntarioIconPhone;
+        "ontario-icon-remove": OntarioIconRemove;
+        "ontario-icon-remove-alt": OntarioIconRemoveAlt;
+        "ontario-icon-search": OntarioIconSearch;
+        "ontario-icon-tty": OntarioIconTty;
         "ontario-input": OntarioInput;
         "ontario-label": OntarioLabel;
         "ontario-textarea": OntarioTextarea;
@@ -332,6 +660,30 @@ declare module "@stencil/core" {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
+            "ontario-icon-accessibility": LocalJSX.OntarioIconAccessibility & JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;
+            "ontario-icon-add": LocalJSX.OntarioIconAdd & JSXBase.HTMLAttributes<HTMLOntarioIconAddElement>;
+            "ontario-icon-add-alt": LocalJSX.OntarioIconAddAlt & JSXBase.HTMLAttributes<HTMLOntarioIconAddAltElement>;
+            "ontario-icon-alert-error": LocalJSX.OntarioIconAlertError & JSXBase.HTMLAttributes<HTMLOntarioIconAlertErrorElement>;
+            "ontario-icon-alert-information": LocalJSX.OntarioIconAlertInformation & JSXBase.HTMLAttributes<HTMLOntarioIconAlertInformationElement>;
+            "ontario-icon-alert-success": LocalJSX.OntarioIconAlertSuccess & JSXBase.HTMLAttributes<HTMLOntarioIconAlertSuccessElement>;
+            "ontario-icon-alert-warning": LocalJSX.OntarioIconAlertWarning & JSXBase.HTMLAttributes<HTMLOntarioIconAlertWarningElement>;
+            "ontario-icon-chevron-down": LocalJSX.OntarioIconChevronDown & JSXBase.HTMLAttributes<HTMLOntarioIconChevronDownElement>;
+            "ontario-icon-chevron-left": LocalJSX.OntarioIconChevronLeft & JSXBase.HTMLAttributes<HTMLOntarioIconChevronLeftElement>;
+            "ontario-icon-chevron-right": LocalJSX.OntarioIconChevronRight & JSXBase.HTMLAttributes<HTMLOntarioIconChevronRightElement>;
+            "ontario-icon-chevron-up": LocalJSX.OntarioIconChevronUp & JSXBase.HTMLAttributes<HTMLOntarioIconChevronUpElement>;
+            "ontario-icon-close": LocalJSX.OntarioIconClose & JSXBase.HTMLAttributes<HTMLOntarioIconCloseElement>;
+            "ontario-icon-collapse": LocalJSX.OntarioIconCollapse & JSXBase.HTMLAttributes<HTMLOntarioIconCollapseElement>;
+            "ontario-icon-dropdown-arrow": LocalJSX.OntarioIconDropdownArrow & JSXBase.HTMLAttributes<HTMLOntarioIconDropdownArrowElement>;
+            "ontario-icon-email": LocalJSX.OntarioIconEmail & JSXBase.HTMLAttributes<HTMLOntarioIconEmailElement>;
+            "ontario-icon-expand": LocalJSX.OntarioIconExpand & JSXBase.HTMLAttributes<HTMLOntarioIconExpandElement>;
+            "ontario-icon-help": LocalJSX.OntarioIconHelp & JSXBase.HTMLAttributes<HTMLOntarioIconHelpElement>;
+            "ontario-icon-menu": LocalJSX.OntarioIconMenu & JSXBase.HTMLAttributes<HTMLOntarioIconMenuElement>;
+            "ontario-icon-new-window": LocalJSX.OntarioIconNewWindow & JSXBase.HTMLAttributes<HTMLOntarioIconNewWindowElement>;
+            "ontario-icon-phone": LocalJSX.OntarioIconPhone & JSXBase.HTMLAttributes<HTMLOntarioIconPhoneElement>;
+            "ontario-icon-remove": LocalJSX.OntarioIconRemove & JSXBase.HTMLAttributes<HTMLOntarioIconRemoveElement>;
+            "ontario-icon-remove-alt": LocalJSX.OntarioIconRemoveAlt & JSXBase.HTMLAttributes<HTMLOntarioIconRemoveAltElement>;
+            "ontario-icon-search": LocalJSX.OntarioIconSearch & JSXBase.HTMLAttributes<HTMLOntarioIconSearchElement>;
+            "ontario-icon-tty": LocalJSX.OntarioIconTty & JSXBase.HTMLAttributes<HTMLOntarioIconTtyElement>;
             "ontario-input": LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
             "ontario-label": LocalJSX.OntarioLabel & JSXBase.HTMLAttributes<HTMLOntarioLabelElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
