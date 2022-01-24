@@ -54,68 +54,115 @@ export namespace Components {
          */
         "hintId"?: string;
     }
+    interface OntarioIconAccessibility {
+        "colour": "black" | "blue" | "grey";
+    }
     interface OntarioIconAccount {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconAdd {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconAddAlt {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconAlertError {
+    }
+    interface OntarioIconAlertInformation {
+    }
+    interface OntarioIconAlertSuccess {
+    }
+    interface OntarioIconAlertWarning {
     }
     interface OntarioIconAttach {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconBookmarkOff {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconBookmarkOn {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconCalendar {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconCamera {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconChevronDown {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconChevronLeft {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconChevronRight {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconChevronUp {
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconClock {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconClose {
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconCloud {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconCollapse {
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconDelete {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconDocument {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconDownload {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconDropdownArrow {
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconEdit {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconEmail {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconExpand {
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconExport {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconFacebook {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconFacebookAlt {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconFavouriteOff {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconFavouriteOn {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconFilter {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconFlickr {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconGrid {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconHelp {
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconInstagram {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconInteracEn {
     }
@@ -126,168 +173,189 @@ export namespace Components {
     interface OntarioIconInteracFrAlt {
     }
     interface OntarioIconLinkedin {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconLinkedinAlt {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconList {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconLiveChat {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconLocationOff {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconLocationOn {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconLockOff {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconLockOn {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconMap {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconMastercard {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconMastercardAlt {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconMediaFastForward {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconMediaFastRewind {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconMediaPause {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconMediaPlay {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconMediaStop {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconMenu {
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconMicrophoneOff {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconMicrophoneOn {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconMoreVertical {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconNewWindow {
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconNext {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconNotification {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconPasswordHide {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconPasswordShow {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconPhone {
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconPhoto {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconPinLocationOff {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconPinLocationOn {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconPrevious {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconPrint {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconRemove {
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconRemoveAlt {
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconReplay {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconRssFeed {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconSave {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconSearch {
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconSentiment1 {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconSentiment2 {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconSentiment3 {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconSentiment4 {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconSentiment5 {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconSettings {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconShare {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconSort {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconTag {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconTextMessage {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconTimer {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconTransportBicycle {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconTransportBus {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconTransportCar {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconTransportWalk {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconTty {
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconTwitter {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconTwitterAlt {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconVideo {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconVisa {
     }
     interface OntarioIconVoteDislike {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconVoteLike {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconVpnKey {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconWheelchair {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconWifi {
-        "color": string;
+        "colour": "black" | "blue" | "grey";
     }
     interface OntarioInput {
         /**
@@ -380,11 +448,53 @@ declare global {
         prototype: HTMLOntarioHintTextElement;
         new (): HTMLOntarioHintTextElement;
     };
+    interface HTMLOntarioIconAccessibilityElement extends Components.OntarioIconAccessibility, HTMLStencilElement {
+    }
+    var HTMLOntarioIconAccessibilityElement: {
+        prototype: HTMLOntarioIconAccessibilityElement;
+        new (): HTMLOntarioIconAccessibilityElement;
+    };
     interface HTMLOntarioIconAccountElement extends Components.OntarioIconAccount, HTMLStencilElement {
     }
     var HTMLOntarioIconAccountElement: {
         prototype: HTMLOntarioIconAccountElement;
         new (): HTMLOntarioIconAccountElement;
+    };
+    interface HTMLOntarioIconAddElement extends Components.OntarioIconAdd, HTMLStencilElement {
+    }
+    var HTMLOntarioIconAddElement: {
+        prototype: HTMLOntarioIconAddElement;
+        new (): HTMLOntarioIconAddElement;
+    };
+    interface HTMLOntarioIconAddAltElement extends Components.OntarioIconAddAlt, HTMLStencilElement {
+    }
+    var HTMLOntarioIconAddAltElement: {
+        prototype: HTMLOntarioIconAddAltElement;
+        new (): HTMLOntarioIconAddAltElement;
+    };
+    interface HTMLOntarioIconAlertErrorElement extends Components.OntarioIconAlertError, HTMLStencilElement {
+    }
+    var HTMLOntarioIconAlertErrorElement: {
+        prototype: HTMLOntarioIconAlertErrorElement;
+        new (): HTMLOntarioIconAlertErrorElement;
+    };
+    interface HTMLOntarioIconAlertInformationElement extends Components.OntarioIconAlertInformation, HTMLStencilElement {
+    }
+    var HTMLOntarioIconAlertInformationElement: {
+        prototype: HTMLOntarioIconAlertInformationElement;
+        new (): HTMLOntarioIconAlertInformationElement;
+    };
+    interface HTMLOntarioIconAlertSuccessElement extends Components.OntarioIconAlertSuccess, HTMLStencilElement {
+    }
+    var HTMLOntarioIconAlertSuccessElement: {
+        prototype: HTMLOntarioIconAlertSuccessElement;
+        new (): HTMLOntarioIconAlertSuccessElement;
+    };
+    interface HTMLOntarioIconAlertWarningElement extends Components.OntarioIconAlertWarning, HTMLStencilElement {
+    }
+    var HTMLOntarioIconAlertWarningElement: {
+        prototype: HTMLOntarioIconAlertWarningElement;
+        new (): HTMLOntarioIconAlertWarningElement;
     };
     interface HTMLOntarioIconAttachElement extends Components.OntarioIconAttach, HTMLStencilElement {
     }
@@ -416,17 +526,53 @@ declare global {
         prototype: HTMLOntarioIconCameraElement;
         new (): HTMLOntarioIconCameraElement;
     };
+    interface HTMLOntarioIconChevronDownElement extends Components.OntarioIconChevronDown, HTMLStencilElement {
+    }
+    var HTMLOntarioIconChevronDownElement: {
+        prototype: HTMLOntarioIconChevronDownElement;
+        new (): HTMLOntarioIconChevronDownElement;
+    };
+    interface HTMLOntarioIconChevronLeftElement extends Components.OntarioIconChevronLeft, HTMLStencilElement {
+    }
+    var HTMLOntarioIconChevronLeftElement: {
+        prototype: HTMLOntarioIconChevronLeftElement;
+        new (): HTMLOntarioIconChevronLeftElement;
+    };
+    interface HTMLOntarioIconChevronRightElement extends Components.OntarioIconChevronRight, HTMLStencilElement {
+    }
+    var HTMLOntarioIconChevronRightElement: {
+        prototype: HTMLOntarioIconChevronRightElement;
+        new (): HTMLOntarioIconChevronRightElement;
+    };
+    interface HTMLOntarioIconChevronUpElement extends Components.OntarioIconChevronUp, HTMLStencilElement {
+    }
+    var HTMLOntarioIconChevronUpElement: {
+        prototype: HTMLOntarioIconChevronUpElement;
+        new (): HTMLOntarioIconChevronUpElement;
+    };
     interface HTMLOntarioIconClockElement extends Components.OntarioIconClock, HTMLStencilElement {
     }
     var HTMLOntarioIconClockElement: {
         prototype: HTMLOntarioIconClockElement;
         new (): HTMLOntarioIconClockElement;
     };
+    interface HTMLOntarioIconCloseElement extends Components.OntarioIconClose, HTMLStencilElement {
+    }
+    var HTMLOntarioIconCloseElement: {
+        prototype: HTMLOntarioIconCloseElement;
+        new (): HTMLOntarioIconCloseElement;
+    };
     interface HTMLOntarioIconCloudElement extends Components.OntarioIconCloud, HTMLStencilElement {
     }
     var HTMLOntarioIconCloudElement: {
         prototype: HTMLOntarioIconCloudElement;
         new (): HTMLOntarioIconCloudElement;
+    };
+    interface HTMLOntarioIconCollapseElement extends Components.OntarioIconCollapse, HTMLStencilElement {
+    }
+    var HTMLOntarioIconCollapseElement: {
+        prototype: HTMLOntarioIconCollapseElement;
+        new (): HTMLOntarioIconCollapseElement;
     };
     interface HTMLOntarioIconDeleteElement extends Components.OntarioIconDelete, HTMLStencilElement {
     }
@@ -446,11 +592,29 @@ declare global {
         prototype: HTMLOntarioIconDownloadElement;
         new (): HTMLOntarioIconDownloadElement;
     };
+    interface HTMLOntarioIconDropdownArrowElement extends Components.OntarioIconDropdownArrow, HTMLStencilElement {
+    }
+    var HTMLOntarioIconDropdownArrowElement: {
+        prototype: HTMLOntarioIconDropdownArrowElement;
+        new (): HTMLOntarioIconDropdownArrowElement;
+    };
     interface HTMLOntarioIconEditElement extends Components.OntarioIconEdit, HTMLStencilElement {
     }
     var HTMLOntarioIconEditElement: {
         prototype: HTMLOntarioIconEditElement;
         new (): HTMLOntarioIconEditElement;
+    };
+    interface HTMLOntarioIconEmailElement extends Components.OntarioIconEmail, HTMLStencilElement {
+    }
+    var HTMLOntarioIconEmailElement: {
+        prototype: HTMLOntarioIconEmailElement;
+        new (): HTMLOntarioIconEmailElement;
+    };
+    interface HTMLOntarioIconExpandElement extends Components.OntarioIconExpand, HTMLStencilElement {
+    }
+    var HTMLOntarioIconExpandElement: {
+        prototype: HTMLOntarioIconExpandElement;
+        new (): HTMLOntarioIconExpandElement;
     };
     interface HTMLOntarioIconExportElement extends Components.OntarioIconExport, HTMLStencilElement {
     }
@@ -499,6 +663,12 @@ declare global {
     var HTMLOntarioIconGridElement: {
         prototype: HTMLOntarioIconGridElement;
         new (): HTMLOntarioIconGridElement;
+    };
+    interface HTMLOntarioIconHelpElement extends Components.OntarioIconHelp, HTMLStencilElement {
+    }
+    var HTMLOntarioIconHelpElement: {
+        prototype: HTMLOntarioIconHelpElement;
+        new (): HTMLOntarioIconHelpElement;
     };
     interface HTMLOntarioIconInstagramElement extends Components.OntarioIconInstagram, HTMLStencilElement {
     }
@@ -626,6 +796,12 @@ declare global {
         prototype: HTMLOntarioIconMediaStopElement;
         new (): HTMLOntarioIconMediaStopElement;
     };
+    interface HTMLOntarioIconMenuElement extends Components.OntarioIconMenu, HTMLStencilElement {
+    }
+    var HTMLOntarioIconMenuElement: {
+        prototype: HTMLOntarioIconMenuElement;
+        new (): HTMLOntarioIconMenuElement;
+    };
     interface HTMLOntarioIconMicrophoneOffElement extends Components.OntarioIconMicrophoneOff, HTMLStencilElement {
     }
     var HTMLOntarioIconMicrophoneOffElement: {
@@ -643,6 +819,12 @@ declare global {
     var HTMLOntarioIconMoreVerticalElement: {
         prototype: HTMLOntarioIconMoreVerticalElement;
         new (): HTMLOntarioIconMoreVerticalElement;
+    };
+    interface HTMLOntarioIconNewWindowElement extends Components.OntarioIconNewWindow, HTMLStencilElement {
+    }
+    var HTMLOntarioIconNewWindowElement: {
+        prototype: HTMLOntarioIconNewWindowElement;
+        new (): HTMLOntarioIconNewWindowElement;
     };
     interface HTMLOntarioIconNextElement extends Components.OntarioIconNext, HTMLStencilElement {
     }
@@ -667,6 +849,12 @@ declare global {
     var HTMLOntarioIconPasswordShowElement: {
         prototype: HTMLOntarioIconPasswordShowElement;
         new (): HTMLOntarioIconPasswordShowElement;
+    };
+    interface HTMLOntarioIconPhoneElement extends Components.OntarioIconPhone, HTMLStencilElement {
+    }
+    var HTMLOntarioIconPhoneElement: {
+        prototype: HTMLOntarioIconPhoneElement;
+        new (): HTMLOntarioIconPhoneElement;
     };
     interface HTMLOntarioIconPhotoElement extends Components.OntarioIconPhoto, HTMLStencilElement {
     }
@@ -698,6 +886,18 @@ declare global {
         prototype: HTMLOntarioIconPrintElement;
         new (): HTMLOntarioIconPrintElement;
     };
+    interface HTMLOntarioIconRemoveElement extends Components.OntarioIconRemove, HTMLStencilElement {
+    }
+    var HTMLOntarioIconRemoveElement: {
+        prototype: HTMLOntarioIconRemoveElement;
+        new (): HTMLOntarioIconRemoveElement;
+    };
+    interface HTMLOntarioIconRemoveAltElement extends Components.OntarioIconRemoveAlt, HTMLStencilElement {
+    }
+    var HTMLOntarioIconRemoveAltElement: {
+        prototype: HTMLOntarioIconRemoveAltElement;
+        new (): HTMLOntarioIconRemoveAltElement;
+    };
     interface HTMLOntarioIconReplayElement extends Components.OntarioIconReplay, HTMLStencilElement {
     }
     var HTMLOntarioIconReplayElement: {
@@ -715,6 +915,12 @@ declare global {
     var HTMLOntarioIconSaveElement: {
         prototype: HTMLOntarioIconSaveElement;
         new (): HTMLOntarioIconSaveElement;
+    };
+    interface HTMLOntarioIconSearchElement extends Components.OntarioIconSearch, HTMLStencilElement {
+    }
+    var HTMLOntarioIconSearchElement: {
+        prototype: HTMLOntarioIconSearchElement;
+        new (): HTMLOntarioIconSearchElement;
     };
     interface HTMLOntarioIconSentiment1Element extends Components.OntarioIconSentiment1, HTMLStencilElement {
     }
@@ -806,6 +1012,12 @@ declare global {
         prototype: HTMLOntarioIconTransportWalkElement;
         new (): HTMLOntarioIconTransportWalkElement;
     };
+    interface HTMLOntarioIconTtyElement extends Components.OntarioIconTty, HTMLStencilElement {
+    }
+    var HTMLOntarioIconTtyElement: {
+        prototype: HTMLOntarioIconTtyElement;
+        new (): HTMLOntarioIconTtyElement;
+    };
     interface HTMLOntarioIconTwitterElement extends Components.OntarioIconTwitter, HTMLStencilElement {
     }
     var HTMLOntarioIconTwitterElement: {
@@ -882,18 +1094,34 @@ declare global {
         "my-component": HTMLMyComponentElement;
         "ontario-button": HTMLOntarioButtonElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
+        "ontario-icon-accessibility": HTMLOntarioIconAccessibilityElement;
         "ontario-icon-account": HTMLOntarioIconAccountElement;
+        "ontario-icon-add": HTMLOntarioIconAddElement;
+        "ontario-icon-add-alt": HTMLOntarioIconAddAltElement;
+        "ontario-icon-alert-error": HTMLOntarioIconAlertErrorElement;
+        "ontario-icon-alert-information": HTMLOntarioIconAlertInformationElement;
+        "ontario-icon-alert-success": HTMLOntarioIconAlertSuccessElement;
+        "ontario-icon-alert-warning": HTMLOntarioIconAlertWarningElement;
         "ontario-icon-attach": HTMLOntarioIconAttachElement;
         "ontario-icon-bookmark-off": HTMLOntarioIconBookmarkOffElement;
         "ontario-icon-bookmark-on": HTMLOntarioIconBookmarkOnElement;
         "ontario-icon-calendar": HTMLOntarioIconCalendarElement;
         "ontario-icon-camera": HTMLOntarioIconCameraElement;
+        "ontario-icon-chevron-down": HTMLOntarioIconChevronDownElement;
+        "ontario-icon-chevron-left": HTMLOntarioIconChevronLeftElement;
+        "ontario-icon-chevron-right": HTMLOntarioIconChevronRightElement;
+        "ontario-icon-chevron-up": HTMLOntarioIconChevronUpElement;
         "ontario-icon-clock": HTMLOntarioIconClockElement;
+        "ontario-icon-close": HTMLOntarioIconCloseElement;
         "ontario-icon-cloud": HTMLOntarioIconCloudElement;
+        "ontario-icon-collapse": HTMLOntarioIconCollapseElement;
         "ontario-icon-delete": HTMLOntarioIconDeleteElement;
         "ontario-icon-document": HTMLOntarioIconDocumentElement;
         "ontario-icon-download": HTMLOntarioIconDownloadElement;
+        "ontario-icon-dropdown-arrow": HTMLOntarioIconDropdownArrowElement;
         "ontario-icon-edit": HTMLOntarioIconEditElement;
+        "ontario-icon-email": HTMLOntarioIconEmailElement;
+        "ontario-icon-expand": HTMLOntarioIconExpandElement;
         "ontario-icon-export": HTMLOntarioIconExportElement;
         "ontario-icon-facebook": HTMLOntarioIconFacebookElement;
         "ontario-icon-facebook-alt": HTMLOntarioIconFacebookAltElement;
@@ -902,6 +1130,7 @@ declare global {
         "ontario-icon-filter": HTMLOntarioIconFilterElement;
         "ontario-icon-flickr": HTMLOntarioIconFlickrElement;
         "ontario-icon-grid": HTMLOntarioIconGridElement;
+        "ontario-icon-help": HTMLOntarioIconHelpElement;
         "ontario-icon-instagram": HTMLOntarioIconInstagramElement;
         "ontario-icon-interac-en": HTMLOntarioIconInteracEnElement;
         "ontario-icon-interac-en-alt": HTMLOntarioIconInteracEnAltElement;
@@ -923,21 +1152,27 @@ declare global {
         "ontario-icon-media-pause": HTMLOntarioIconMediaPauseElement;
         "ontario-icon-media-play": HTMLOntarioIconMediaPlayElement;
         "ontario-icon-media-stop": HTMLOntarioIconMediaStopElement;
+        "ontario-icon-menu": HTMLOntarioIconMenuElement;
         "ontario-icon-microphone-off": HTMLOntarioIconMicrophoneOffElement;
         "ontario-icon-microphone-on": HTMLOntarioIconMicrophoneOnElement;
         "ontario-icon-more-vertical": HTMLOntarioIconMoreVerticalElement;
+        "ontario-icon-new-window": HTMLOntarioIconNewWindowElement;
         "ontario-icon-next": HTMLOntarioIconNextElement;
         "ontario-icon-notification": HTMLOntarioIconNotificationElement;
         "ontario-icon-password-hide": HTMLOntarioIconPasswordHideElement;
         "ontario-icon-password-show": HTMLOntarioIconPasswordShowElement;
+        "ontario-icon-phone": HTMLOntarioIconPhoneElement;
         "ontario-icon-photo": HTMLOntarioIconPhotoElement;
         "ontario-icon-pin-location-off": HTMLOntarioIconPinLocationOffElement;
         "ontario-icon-pin-location-on": HTMLOntarioIconPinLocationOnElement;
         "ontario-icon-previous": HTMLOntarioIconPreviousElement;
         "ontario-icon-print": HTMLOntarioIconPrintElement;
+        "ontario-icon-remove": HTMLOntarioIconRemoveElement;
+        "ontario-icon-remove-alt": HTMLOntarioIconRemoveAltElement;
         "ontario-icon-replay": HTMLOntarioIconReplayElement;
         "ontario-icon-rss-feed": HTMLOntarioIconRssFeedElement;
         "ontario-icon-save": HTMLOntarioIconSaveElement;
+        "ontario-icon-search": HTMLOntarioIconSearchElement;
         "ontario-icon-sentiment-1": HTMLOntarioIconSentiment1Element;
         "ontario-icon-sentiment-2": HTMLOntarioIconSentiment2Element;
         "ontario-icon-sentiment-3": HTMLOntarioIconSentiment3Element;
@@ -953,6 +1188,7 @@ declare global {
         "ontario-icon-transport-bus": HTMLOntarioIconTransportBusElement;
         "ontario-icon-transport-car": HTMLOntarioIconTransportCarElement;
         "ontario-icon-transport-walk": HTMLOntarioIconTransportWalkElement;
+        "ontario-icon-tty": HTMLOntarioIconTtyElement;
         "ontario-icon-twitter": HTMLOntarioIconTwitterElement;
         "ontario-icon-twitter-alt": HTMLOntarioIconTwitterAltElement;
         "ontario-icon-video": HTMLOntarioIconVideoElement;
@@ -1016,68 +1252,115 @@ declare namespace LocalJSX {
          */
         "hintId"?: string;
     }
+    interface OntarioIconAccessibility {
+        "colour"?: "black" | "blue" | "grey";
+    }
     interface OntarioIconAccount {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconAdd {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconAddAlt {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconAlertError {
+    }
+    interface OntarioIconAlertInformation {
+    }
+    interface OntarioIconAlertSuccess {
+    }
+    interface OntarioIconAlertWarning {
     }
     interface OntarioIconAttach {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconBookmarkOff {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconBookmarkOn {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconCalendar {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconCamera {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconChevronDown {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconChevronLeft {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconChevronRight {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconChevronUp {
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconClock {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconClose {
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconCloud {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconCollapse {
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconDelete {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconDocument {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconDownload {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconDropdownArrow {
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconEdit {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconEmail {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconExpand {
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconExport {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconFacebook {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconFacebookAlt {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconFavouriteOff {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconFavouriteOn {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconFilter {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconFlickr {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconGrid {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconHelp {
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconInstagram {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconInteracEn {
     }
@@ -1088,168 +1371,189 @@ declare namespace LocalJSX {
     interface OntarioIconInteracFrAlt {
     }
     interface OntarioIconLinkedin {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconLinkedinAlt {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconList {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconLiveChat {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconLocationOff {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconLocationOn {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconLockOff {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconLockOn {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconMap {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconMastercard {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconMastercardAlt {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconMediaFastForward {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconMediaFastRewind {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconMediaPause {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconMediaPlay {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconMediaStop {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconMenu {
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconMicrophoneOff {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconMicrophoneOn {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconMoreVertical {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconNewWindow {
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconNext {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconNotification {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconPasswordHide {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconPasswordShow {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconPhone {
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconPhoto {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconPinLocationOff {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconPinLocationOn {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconPrevious {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconPrint {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconRemove {
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconRemoveAlt {
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconReplay {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconRssFeed {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconSave {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconSearch {
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconSentiment1 {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconSentiment2 {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconSentiment3 {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconSentiment4 {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconSentiment5 {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconSettings {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconShare {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconSort {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconTag {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconTextMessage {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconTimer {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconTransportBicycle {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconTransportBus {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconTransportCar {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconTransportWalk {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconTty {
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconTwitter {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconTwitterAlt {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconVideo {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconVisa {
     }
     interface OntarioIconVoteDislike {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconVoteLike {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconVpnKey {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconWheelchair {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconWifi {
-        "color"?: string;
+        "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioInput {
         /**
@@ -1350,18 +1654,34 @@ declare namespace LocalJSX {
         "my-component": MyComponent;
         "ontario-button": OntarioButton;
         "ontario-hint-text": OntarioHintText;
+        "ontario-icon-accessibility": OntarioIconAccessibility;
         "ontario-icon-account": OntarioIconAccount;
+        "ontario-icon-add": OntarioIconAdd;
+        "ontario-icon-add-alt": OntarioIconAddAlt;
+        "ontario-icon-alert-error": OntarioIconAlertError;
+        "ontario-icon-alert-information": OntarioIconAlertInformation;
+        "ontario-icon-alert-success": OntarioIconAlertSuccess;
+        "ontario-icon-alert-warning": OntarioIconAlertWarning;
         "ontario-icon-attach": OntarioIconAttach;
         "ontario-icon-bookmark-off": OntarioIconBookmarkOff;
         "ontario-icon-bookmark-on": OntarioIconBookmarkOn;
         "ontario-icon-calendar": OntarioIconCalendar;
         "ontario-icon-camera": OntarioIconCamera;
+        "ontario-icon-chevron-down": OntarioIconChevronDown;
+        "ontario-icon-chevron-left": OntarioIconChevronLeft;
+        "ontario-icon-chevron-right": OntarioIconChevronRight;
+        "ontario-icon-chevron-up": OntarioIconChevronUp;
         "ontario-icon-clock": OntarioIconClock;
+        "ontario-icon-close": OntarioIconClose;
         "ontario-icon-cloud": OntarioIconCloud;
+        "ontario-icon-collapse": OntarioIconCollapse;
         "ontario-icon-delete": OntarioIconDelete;
         "ontario-icon-document": OntarioIconDocument;
         "ontario-icon-download": OntarioIconDownload;
+        "ontario-icon-dropdown-arrow": OntarioIconDropdownArrow;
         "ontario-icon-edit": OntarioIconEdit;
+        "ontario-icon-email": OntarioIconEmail;
+        "ontario-icon-expand": OntarioIconExpand;
         "ontario-icon-export": OntarioIconExport;
         "ontario-icon-facebook": OntarioIconFacebook;
         "ontario-icon-facebook-alt": OntarioIconFacebookAlt;
@@ -1370,6 +1690,7 @@ declare namespace LocalJSX {
         "ontario-icon-filter": OntarioIconFilter;
         "ontario-icon-flickr": OntarioIconFlickr;
         "ontario-icon-grid": OntarioIconGrid;
+        "ontario-icon-help": OntarioIconHelp;
         "ontario-icon-instagram": OntarioIconInstagram;
         "ontario-icon-interac-en": OntarioIconInteracEn;
         "ontario-icon-interac-en-alt": OntarioIconInteracEnAlt;
@@ -1391,21 +1712,27 @@ declare namespace LocalJSX {
         "ontario-icon-media-pause": OntarioIconMediaPause;
         "ontario-icon-media-play": OntarioIconMediaPlay;
         "ontario-icon-media-stop": OntarioIconMediaStop;
+        "ontario-icon-menu": OntarioIconMenu;
         "ontario-icon-microphone-off": OntarioIconMicrophoneOff;
         "ontario-icon-microphone-on": OntarioIconMicrophoneOn;
         "ontario-icon-more-vertical": OntarioIconMoreVertical;
+        "ontario-icon-new-window": OntarioIconNewWindow;
         "ontario-icon-next": OntarioIconNext;
         "ontario-icon-notification": OntarioIconNotification;
         "ontario-icon-password-hide": OntarioIconPasswordHide;
         "ontario-icon-password-show": OntarioIconPasswordShow;
+        "ontario-icon-phone": OntarioIconPhone;
         "ontario-icon-photo": OntarioIconPhoto;
         "ontario-icon-pin-location-off": OntarioIconPinLocationOff;
         "ontario-icon-pin-location-on": OntarioIconPinLocationOn;
         "ontario-icon-previous": OntarioIconPrevious;
         "ontario-icon-print": OntarioIconPrint;
+        "ontario-icon-remove": OntarioIconRemove;
+        "ontario-icon-remove-alt": OntarioIconRemoveAlt;
         "ontario-icon-replay": OntarioIconReplay;
         "ontario-icon-rss-feed": OntarioIconRssFeed;
         "ontario-icon-save": OntarioIconSave;
+        "ontario-icon-search": OntarioIconSearch;
         "ontario-icon-sentiment-1": OntarioIconSentiment1;
         "ontario-icon-sentiment-2": OntarioIconSentiment2;
         "ontario-icon-sentiment-3": OntarioIconSentiment3;
@@ -1421,6 +1748,7 @@ declare namespace LocalJSX {
         "ontario-icon-transport-bus": OntarioIconTransportBus;
         "ontario-icon-transport-car": OntarioIconTransportCar;
         "ontario-icon-transport-walk": OntarioIconTransportWalk;
+        "ontario-icon-tty": OntarioIconTty;
         "ontario-icon-twitter": OntarioIconTwitter;
         "ontario-icon-twitter-alt": OntarioIconTwitterAlt;
         "ontario-icon-video": OntarioIconVideo;
@@ -1442,18 +1770,34 @@ declare module "@stencil/core" {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
+            "ontario-icon-accessibility": LocalJSX.OntarioIconAccessibility & JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;
             "ontario-icon-account": LocalJSX.OntarioIconAccount & JSXBase.HTMLAttributes<HTMLOntarioIconAccountElement>;
+            "ontario-icon-add": LocalJSX.OntarioIconAdd & JSXBase.HTMLAttributes<HTMLOntarioIconAddElement>;
+            "ontario-icon-add-alt": LocalJSX.OntarioIconAddAlt & JSXBase.HTMLAttributes<HTMLOntarioIconAddAltElement>;
+            "ontario-icon-alert-error": LocalJSX.OntarioIconAlertError & JSXBase.HTMLAttributes<HTMLOntarioIconAlertErrorElement>;
+            "ontario-icon-alert-information": LocalJSX.OntarioIconAlertInformation & JSXBase.HTMLAttributes<HTMLOntarioIconAlertInformationElement>;
+            "ontario-icon-alert-success": LocalJSX.OntarioIconAlertSuccess & JSXBase.HTMLAttributes<HTMLOntarioIconAlertSuccessElement>;
+            "ontario-icon-alert-warning": LocalJSX.OntarioIconAlertWarning & JSXBase.HTMLAttributes<HTMLOntarioIconAlertWarningElement>;
             "ontario-icon-attach": LocalJSX.OntarioIconAttach & JSXBase.HTMLAttributes<HTMLOntarioIconAttachElement>;
             "ontario-icon-bookmark-off": LocalJSX.OntarioIconBookmarkOff & JSXBase.HTMLAttributes<HTMLOntarioIconBookmarkOffElement>;
             "ontario-icon-bookmark-on": LocalJSX.OntarioIconBookmarkOn & JSXBase.HTMLAttributes<HTMLOntarioIconBookmarkOnElement>;
             "ontario-icon-calendar": LocalJSX.OntarioIconCalendar & JSXBase.HTMLAttributes<HTMLOntarioIconCalendarElement>;
             "ontario-icon-camera": LocalJSX.OntarioIconCamera & JSXBase.HTMLAttributes<HTMLOntarioIconCameraElement>;
+            "ontario-icon-chevron-down": LocalJSX.OntarioIconChevronDown & JSXBase.HTMLAttributes<HTMLOntarioIconChevronDownElement>;
+            "ontario-icon-chevron-left": LocalJSX.OntarioIconChevronLeft & JSXBase.HTMLAttributes<HTMLOntarioIconChevronLeftElement>;
+            "ontario-icon-chevron-right": LocalJSX.OntarioIconChevronRight & JSXBase.HTMLAttributes<HTMLOntarioIconChevronRightElement>;
+            "ontario-icon-chevron-up": LocalJSX.OntarioIconChevronUp & JSXBase.HTMLAttributes<HTMLOntarioIconChevronUpElement>;
             "ontario-icon-clock": LocalJSX.OntarioIconClock & JSXBase.HTMLAttributes<HTMLOntarioIconClockElement>;
+            "ontario-icon-close": LocalJSX.OntarioIconClose & JSXBase.HTMLAttributes<HTMLOntarioIconCloseElement>;
             "ontario-icon-cloud": LocalJSX.OntarioIconCloud & JSXBase.HTMLAttributes<HTMLOntarioIconCloudElement>;
+            "ontario-icon-collapse": LocalJSX.OntarioIconCollapse & JSXBase.HTMLAttributes<HTMLOntarioIconCollapseElement>;
             "ontario-icon-delete": LocalJSX.OntarioIconDelete & JSXBase.HTMLAttributes<HTMLOntarioIconDeleteElement>;
             "ontario-icon-document": LocalJSX.OntarioIconDocument & JSXBase.HTMLAttributes<HTMLOntarioIconDocumentElement>;
             "ontario-icon-download": LocalJSX.OntarioIconDownload & JSXBase.HTMLAttributes<HTMLOntarioIconDownloadElement>;
+            "ontario-icon-dropdown-arrow": LocalJSX.OntarioIconDropdownArrow & JSXBase.HTMLAttributes<HTMLOntarioIconDropdownArrowElement>;
             "ontario-icon-edit": LocalJSX.OntarioIconEdit & JSXBase.HTMLAttributes<HTMLOntarioIconEditElement>;
+            "ontario-icon-email": LocalJSX.OntarioIconEmail & JSXBase.HTMLAttributes<HTMLOntarioIconEmailElement>;
+            "ontario-icon-expand": LocalJSX.OntarioIconExpand & JSXBase.HTMLAttributes<HTMLOntarioIconExpandElement>;
             "ontario-icon-export": LocalJSX.OntarioIconExport & JSXBase.HTMLAttributes<HTMLOntarioIconExportElement>;
             "ontario-icon-facebook": LocalJSX.OntarioIconFacebook & JSXBase.HTMLAttributes<HTMLOntarioIconFacebookElement>;
             "ontario-icon-facebook-alt": LocalJSX.OntarioIconFacebookAlt & JSXBase.HTMLAttributes<HTMLOntarioIconFacebookAltElement>;
@@ -1462,6 +1806,7 @@ declare module "@stencil/core" {
             "ontario-icon-filter": LocalJSX.OntarioIconFilter & JSXBase.HTMLAttributes<HTMLOntarioIconFilterElement>;
             "ontario-icon-flickr": LocalJSX.OntarioIconFlickr & JSXBase.HTMLAttributes<HTMLOntarioIconFlickrElement>;
             "ontario-icon-grid": LocalJSX.OntarioIconGrid & JSXBase.HTMLAttributes<HTMLOntarioIconGridElement>;
+            "ontario-icon-help": LocalJSX.OntarioIconHelp & JSXBase.HTMLAttributes<HTMLOntarioIconHelpElement>;
             "ontario-icon-instagram": LocalJSX.OntarioIconInstagram & JSXBase.HTMLAttributes<HTMLOntarioIconInstagramElement>;
             "ontario-icon-interac-en": LocalJSX.OntarioIconInteracEn & JSXBase.HTMLAttributes<HTMLOntarioIconInteracEnElement>;
             "ontario-icon-interac-en-alt": LocalJSX.OntarioIconInteracEnAlt & JSXBase.HTMLAttributes<HTMLOntarioIconInteracEnAltElement>;
@@ -1483,21 +1828,27 @@ declare module "@stencil/core" {
             "ontario-icon-media-pause": LocalJSX.OntarioIconMediaPause & JSXBase.HTMLAttributes<HTMLOntarioIconMediaPauseElement>;
             "ontario-icon-media-play": LocalJSX.OntarioIconMediaPlay & JSXBase.HTMLAttributes<HTMLOntarioIconMediaPlayElement>;
             "ontario-icon-media-stop": LocalJSX.OntarioIconMediaStop & JSXBase.HTMLAttributes<HTMLOntarioIconMediaStopElement>;
+            "ontario-icon-menu": LocalJSX.OntarioIconMenu & JSXBase.HTMLAttributes<HTMLOntarioIconMenuElement>;
             "ontario-icon-microphone-off": LocalJSX.OntarioIconMicrophoneOff & JSXBase.HTMLAttributes<HTMLOntarioIconMicrophoneOffElement>;
             "ontario-icon-microphone-on": LocalJSX.OntarioIconMicrophoneOn & JSXBase.HTMLAttributes<HTMLOntarioIconMicrophoneOnElement>;
             "ontario-icon-more-vertical": LocalJSX.OntarioIconMoreVertical & JSXBase.HTMLAttributes<HTMLOntarioIconMoreVerticalElement>;
+            "ontario-icon-new-window": LocalJSX.OntarioIconNewWindow & JSXBase.HTMLAttributes<HTMLOntarioIconNewWindowElement>;
             "ontario-icon-next": LocalJSX.OntarioIconNext & JSXBase.HTMLAttributes<HTMLOntarioIconNextElement>;
             "ontario-icon-notification": LocalJSX.OntarioIconNotification & JSXBase.HTMLAttributes<HTMLOntarioIconNotificationElement>;
             "ontario-icon-password-hide": LocalJSX.OntarioIconPasswordHide & JSXBase.HTMLAttributes<HTMLOntarioIconPasswordHideElement>;
             "ontario-icon-password-show": LocalJSX.OntarioIconPasswordShow & JSXBase.HTMLAttributes<HTMLOntarioIconPasswordShowElement>;
+            "ontario-icon-phone": LocalJSX.OntarioIconPhone & JSXBase.HTMLAttributes<HTMLOntarioIconPhoneElement>;
             "ontario-icon-photo": LocalJSX.OntarioIconPhoto & JSXBase.HTMLAttributes<HTMLOntarioIconPhotoElement>;
             "ontario-icon-pin-location-off": LocalJSX.OntarioIconPinLocationOff & JSXBase.HTMLAttributes<HTMLOntarioIconPinLocationOffElement>;
             "ontario-icon-pin-location-on": LocalJSX.OntarioIconPinLocationOn & JSXBase.HTMLAttributes<HTMLOntarioIconPinLocationOnElement>;
             "ontario-icon-previous": LocalJSX.OntarioIconPrevious & JSXBase.HTMLAttributes<HTMLOntarioIconPreviousElement>;
             "ontario-icon-print": LocalJSX.OntarioIconPrint & JSXBase.HTMLAttributes<HTMLOntarioIconPrintElement>;
+            "ontario-icon-remove": LocalJSX.OntarioIconRemove & JSXBase.HTMLAttributes<HTMLOntarioIconRemoveElement>;
+            "ontario-icon-remove-alt": LocalJSX.OntarioIconRemoveAlt & JSXBase.HTMLAttributes<HTMLOntarioIconRemoveAltElement>;
             "ontario-icon-replay": LocalJSX.OntarioIconReplay & JSXBase.HTMLAttributes<HTMLOntarioIconReplayElement>;
             "ontario-icon-rss-feed": LocalJSX.OntarioIconRssFeed & JSXBase.HTMLAttributes<HTMLOntarioIconRssFeedElement>;
             "ontario-icon-save": LocalJSX.OntarioIconSave & JSXBase.HTMLAttributes<HTMLOntarioIconSaveElement>;
+            "ontario-icon-search": LocalJSX.OntarioIconSearch & JSXBase.HTMLAttributes<HTMLOntarioIconSearchElement>;
             "ontario-icon-sentiment-1": LocalJSX.OntarioIconSentiment1 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment1Element>;
             "ontario-icon-sentiment-2": LocalJSX.OntarioIconSentiment2 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment2Element>;
             "ontario-icon-sentiment-3": LocalJSX.OntarioIconSentiment3 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment3Element>;
@@ -1513,6 +1864,7 @@ declare module "@stencil/core" {
             "ontario-icon-transport-bus": LocalJSX.OntarioIconTransportBus & JSXBase.HTMLAttributes<HTMLOntarioIconTransportBusElement>;
             "ontario-icon-transport-car": LocalJSX.OntarioIconTransportCar & JSXBase.HTMLAttributes<HTMLOntarioIconTransportCarElement>;
             "ontario-icon-transport-walk": LocalJSX.OntarioIconTransportWalk & JSXBase.HTMLAttributes<HTMLOntarioIconTransportWalkElement>;
+            "ontario-icon-tty": LocalJSX.OntarioIconTty & JSXBase.HTMLAttributes<HTMLOntarioIconTtyElement>;
             "ontario-icon-twitter": LocalJSX.OntarioIconTwitter & JSXBase.HTMLAttributes<HTMLOntarioIconTwitterElement>;
             "ontario-icon-twitter-alt": LocalJSX.OntarioIconTwitterAlt & JSXBase.HTMLAttributes<HTMLOntarioIconTwitterAltElement>;
             "ontario-icon-video": LocalJSX.OntarioIconVideo & JSXBase.HTMLAttributes<HTMLOntarioIconVideoElement>;

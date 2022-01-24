@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { OntarioIconSecondary } from '../ontario-icon-account';
+import { OntarioIconSecondary } from '../../ontario-icon/ontario-icon-account';
 
 describe('ontario-icon-secondary', () => {
   it('renders', async () => {

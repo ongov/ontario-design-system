@@ -59,7 +59,7 @@ export class OntarioLabel implements OntarioLabelProperties {
 	/**
 	 * Defines whether the input field is required. If required, the value passed should be 'required'.
 	 */
-	@Prop() required?: boolean = false;
+	@Prop({ reflect: true }) required?: boolean = false;
 
 	@Watch('caption')
 	validateCaption(newValue: string) {
