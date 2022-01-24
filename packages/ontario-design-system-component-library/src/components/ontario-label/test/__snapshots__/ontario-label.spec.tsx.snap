@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-label snapshot should render the expected html of ontario-label 1`] = `
+<ontario-label>
+  <mock:shadow-root>
+    <label class="ontario-label">
+      Default Label
+      <span class="ontario-label__flag">
+        (optional)
+      </span>
+    </label>
+  </mock:shadow-root>
+  Default Label
+</ontario-label>
+`;
