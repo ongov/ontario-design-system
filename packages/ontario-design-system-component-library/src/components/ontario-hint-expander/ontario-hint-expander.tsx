@@ -36,7 +36,7 @@ export class OntarioHintExpander {
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() toggleExpanderEvent!: EventEmitter<MouseEvent>;
+  @Event() toggleExpanderEvent!: EventEmitter<any>;
 
   private onClick = (ev: Event) => {
     const hintExpander = ev.target as HTMLButtonElement | null;
@@ -61,7 +61,7 @@ export class OntarioHintExpander {
    * Set `hint` using internal component logic
    */
   componentWillLoad() {
-    this.ariaLabel = this.ariaLabel ?? (this.ariaLabel = this.hint);
+    this.ariaLabel = this.ariaLabel ?? this.hint;
     this.content = this.content ?? this.host.textContent;
     this.hintExpanderId = this.hintExpanderId ?? uuid();
   }
@@ -80,8 +80,8 @@ export class OntarioHintExpander {
           data-toggle="ontario-collapse"
           aria-label={this.ariaLabel}
         >
-          <span class="ontario-hint-expander__button-icon--close ontario-icon"></span>
-          <span class="ontario-hint-expander__button-icon--open"></span>
+          <span class="ontario-hint-expander__button-icon--close ontario-icon"><ontario-icon-chevron-up></ontario-icon-chevron-up></span>
+          <span class="ontario-hint-expander__button-icon--open"><ontario-icon-chevron-down></ontario-icon-chevron-down></span>
           {this.hint}
         </button>
         <div class="ontario-hint-expander__content" id={`hint-expander-content-${this.hintExpanderId}`} aria-labelledby={`hint-expander-button-${this.hintExpanderId}`} aria-hidden="true" data-toggle="ontario-expander-content">

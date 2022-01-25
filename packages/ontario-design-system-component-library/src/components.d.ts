@@ -1286,7 +1286,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onToggleExpanderEvent"?: (event: CustomEvent<MouseEvent>) => void;
+        "onToggleExpanderEvent"?: (event: CustomEvent<any>) => void;
     }
     interface OntarioHintText {
         /**
