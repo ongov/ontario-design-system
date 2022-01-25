@@ -16,11 +16,15 @@
 		<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary">Tertiary</ontario-button>
 		<ontario-hint-text hint-id="idTest" hint="This is a hint"></ontario-hint-text>
 		<ontario-input name="ontario-text-input"></ontario-input>
-
-		<ontario-label caption="Comments" for="comments" required>
-			caption should override this when set
-			<ontario-textarea name="comments" textarea-id="comments" slot="input"></ontario-textarea>
-		</ontario-label>
+		<ontario-label caption="Comments" for="comments" required>caption should override this when set</ontario-label>
+		<ontario-textarea name="comments" textarea-id="comments"></ontario-textarea>
+		<ontario-label for="feedback" type="large">Feedback</ontario-label>
+		<ontario-textarea name="feedback" textarea-id="feedback"></ontario-textarea>
+		<ontario-label for="rationale" type="large"></ontario-label>
+		<ontario-textarea name="rationale" textarea-id="rationale"></ontario-textarea>
+		<ontario-label for="example" type="heading">Heading Example</ontario-label>
+		<ontario-textarea name="example" textarea-id="example"></ontario-textarea>
+		<ontario-icon-accessibility colour="grey"> </ontario-icon-accessibility>
 
 		<ontario-label for="feedback" type="large">
 			Feedback

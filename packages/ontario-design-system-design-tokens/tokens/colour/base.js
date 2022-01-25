@@ -66,6 +66,11 @@ module.exports = {
         red: { value: "#FCEFF0" },
         green: { value: "#E5F0E9" },
         yellow: { value: "#FEF6DC" }
+      },
+      iconColours: {
+        blue: { value: "#0066CC" },
+        grey: { value: "#666666" },
+        black: { value: "#1A1A1A" }
       }
     }
   }
