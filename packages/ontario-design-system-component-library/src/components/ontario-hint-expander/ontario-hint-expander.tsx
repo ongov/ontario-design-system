@@ -35,7 +35,7 @@ export interface OntarioHintExpanderProperties {
   shadow: true,
 })
 
-export class OntarioHintExpander {
+export class OntarioHintExpander implements OntarioHintExpanderProperties {
   @Element() host: HTMLElement;
 
   /**
