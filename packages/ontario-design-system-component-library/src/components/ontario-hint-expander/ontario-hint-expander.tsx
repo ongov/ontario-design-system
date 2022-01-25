@@ -2,6 +2,31 @@ import { Component, Element, Event, EventEmitter, h, Prop } from '@stencil/core'
 import { v4 as uuid } from 'uuid';
 
 /**
+ * Ontario HintExpander component properties
+ */
+export interface OntarioHintExpanderProperties {
+  /**
+    * Text to display as the hint expander question/statement
+    */
+  hint: string;
+
+  /**
+    * Content to display as the hint, once the expander is toggled open
+    */
+  content: string;
+
+  /**
+    * Include visually hidden text inside the label that describes to screen readers the availability of a hint expander
+    */
+  ariaLabel?: string | null;
+
+  /**
+    * Used to used to establish a relationship between hint text content and elements using aria-describedby.
+    */
+  hintExpanderId?: string;
+}
+
+/**
  * Ontario Design System hint expander web component
  */
 @Component({
@@ -34,7 +59,7 @@ export class OntarioHintExpander {
   @Prop({ mutable: true }) hintExpanderId?: string;
 
   /**
-   * Emitted when a keyboard input occurred.
+   * Emitted when a keyboard input or mouse event occurs.
    */
   @Event() toggleExpanderEvent!: EventEmitter<any>;
 

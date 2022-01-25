@@ -1284,7 +1284,7 @@ declare namespace LocalJSX {
          */
         "hintExpanderId"?: string;
         /**
-          * Emitted when a keyboard input occurred.
+          * Emitted when a keyboard input or mouse event occurs.
          */
         "onToggleExpanderEvent"?: (event: CustomEvent<any>) => void;
     }
