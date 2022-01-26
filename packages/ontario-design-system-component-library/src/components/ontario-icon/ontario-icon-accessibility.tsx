@@ -1,5 +1,5 @@
 import { Component, Prop, h } from '@stencil/core';
-import accessibility from './assets/ontario-icon-accessibility.svg'
+import accessibility from './assets/ontario-icon-accessibility.svg';
 
 @Component({
   tag: 'ontario-icon-accessibility',

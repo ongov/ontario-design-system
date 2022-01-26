@@ -21,7 +21,7 @@
   },
   "include": [
     "src"
-  ],
+, "svgTransform.js"  ],
   "exclude": [
     "node_modules"
   ]
