@@ -13,7 +13,7 @@ User enters data into the input component.
 ## Examples
 
 ```
-<ontario-input name="ontario-text-input" id="ontario-text-input" required="required"/>
+<ontario-input name="ontario-text-input" id="ontario-text-input" required/>
 ```
 
 ```

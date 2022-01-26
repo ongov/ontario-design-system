@@ -48,7 +48,7 @@ export class OntarioInput implements TextInput {
 	@Prop() name: string;
 
 	/**
-	 * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
+	 * Used to define whether the input field is required or not.
 	 */
 	@Prop({ mutable: true }) required: boolean = false;
 
