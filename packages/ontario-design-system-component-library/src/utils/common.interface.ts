@@ -31,7 +31,7 @@ export interface Input extends Base {
 	/**
 	 * The name assigned to the element. The name value is used to reference form data after a form is submitted.
 	 */
-	name?: string;
+	name: string;
 
 	/**
 	 * Used to define whether the input field is required or not.
