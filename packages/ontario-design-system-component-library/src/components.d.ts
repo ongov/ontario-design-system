@@ -377,7 +377,7 @@ export namespace Components {
         /**
           * The form control with which the caption is associated.
          */
-        "labelFor": string;
+        "labelFor"?: string;
         /**
           * The type of label to render.
          */
