@@ -20,7 +20,7 @@ export class OntarioInput implements TextInput {
 	/**
 	 * The form control with which the caption is associated.
 	 */
-	@Prop({ mutable: true }) labelFor: string;
+	@Prop({ mutable: true }) labelFor?: string;
 
 	/**
 	 * The type of label to render.

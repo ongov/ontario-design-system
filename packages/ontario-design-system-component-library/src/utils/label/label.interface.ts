@@ -7,7 +7,7 @@ export interface Label {
 	/**
 	 * The form control with which the caption is associated. Must be implemented.
 	 */
-	labelFor: string;
+	labelFor?: string;
 
 	/**
 	 * The type of label to render. Must be implemented.
