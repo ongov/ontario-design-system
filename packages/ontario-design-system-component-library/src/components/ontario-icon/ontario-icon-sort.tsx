@@ -4,7 +4,7 @@ import sort from './assets/ontario-icon-sort.svg';
 @Component({
   tag: 'ontario-icon-sort',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconSort {

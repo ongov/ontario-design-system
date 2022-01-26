@@ -4,7 +4,7 @@ import facebookAlt from './assets/ontario-icon-facebook-alt.svg';
 @Component({
   tag: 'ontario-icon-facebook-alt',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconFacebookAlt {

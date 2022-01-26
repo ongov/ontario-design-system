@@ -4,7 +4,7 @@ import camera from './assets/ontario-icon-camera.svg';
 @Component({
   tag: 'ontario-icon-camera',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconCamera {

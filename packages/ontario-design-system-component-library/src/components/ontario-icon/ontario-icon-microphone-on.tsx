@@ -4,7 +4,7 @@ import microphoneOn from './assets/ontario-icon-microphone-on.svg';
 @Component({
   tag: 'ontario-icon-microphone-on',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconMicrophoneOn {

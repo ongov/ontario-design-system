@@ -4,7 +4,7 @@ import linkedin from './assets/ontario-icon-linkedin.svg';
 @Component({
   tag: 'ontario-icon-linkedin',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconLinkedin {

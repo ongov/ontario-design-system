@@ -4,7 +4,7 @@ import mediaPlay from './assets/ontario-icon-media-play.svg';
 @Component({
   tag: 'ontario-icon-media-play',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconMediaPlay {

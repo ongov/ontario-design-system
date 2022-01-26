@@ -4,7 +4,7 @@ import textMessage from './assets/ontario-icon-text-message.svg';
 @Component({
   tag: 'ontario-icon-text-message',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconTextMessage {

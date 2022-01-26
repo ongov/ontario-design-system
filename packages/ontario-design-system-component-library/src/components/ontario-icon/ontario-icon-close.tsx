@@ -4,7 +4,7 @@ import close from './assets/ontario-icon-close.svg'
 @Component({
   tag: 'ontario-icon-close',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconClose {

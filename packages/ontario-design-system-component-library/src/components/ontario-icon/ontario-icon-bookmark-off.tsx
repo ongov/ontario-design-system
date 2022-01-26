@@ -4,7 +4,7 @@ import bookmarkOff from './assets/ontario-icon-bookmark-off.svg';
 @Component({
   tag: 'ontario-icon-bookmark-off',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconBookmarkOff {

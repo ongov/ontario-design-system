@@ -4,7 +4,7 @@ import previous from './assets/ontario-icon-previous.svg';
 @Component({
   tag: 'ontario-icon-previous',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconPrevious {

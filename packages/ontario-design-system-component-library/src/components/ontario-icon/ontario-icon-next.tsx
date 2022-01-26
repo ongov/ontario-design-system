@@ -4,7 +4,7 @@ import next from './assets/ontario-icon-next.svg';
 @Component({
   tag: 'ontario-icon-next',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconNext {

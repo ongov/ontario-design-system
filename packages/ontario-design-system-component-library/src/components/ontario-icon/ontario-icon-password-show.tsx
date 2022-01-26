@@ -4,7 +4,7 @@ import passwordShow from './assets/ontario-icon-password-show.svg';
 @Component({
   tag: 'ontario-icon-password-show',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconPasswordShow {

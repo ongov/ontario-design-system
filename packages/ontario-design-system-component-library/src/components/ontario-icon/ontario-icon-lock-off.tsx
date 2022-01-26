@@ -4,7 +4,7 @@ import lockOff from './assets/ontario-icon-lock-off.svg';
 @Component({
   tag: 'ontario-icon-lock-off',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconLockOff {

@@ -4,7 +4,7 @@ import dropdownArrow from './assets/ontario-icon-dropdown-arrow.svg'
 @Component({
   tag: 'ontario-icon-dropdown-arrow',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconDropdownArrow {

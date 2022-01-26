@@ -4,7 +4,7 @@ import list from './assets/ontario-icon-list.svg';
 @Component({
   tag: 'ontario-icon-list',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconList {

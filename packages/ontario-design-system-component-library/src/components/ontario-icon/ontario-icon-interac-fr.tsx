@@ -4,7 +4,7 @@ import interacFr from './assets/ontario-icon-interac-fr.svg';
 @Component({
   tag: 'ontario-icon-interac-fr',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconInteracFr {

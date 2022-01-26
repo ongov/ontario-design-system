@@ -4,7 +4,7 @@ import mastercard from './assets/ontario-icon-mastercard.svg';
 @Component({
   tag: 'ontario-icon-mastercard',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconMastercard {
