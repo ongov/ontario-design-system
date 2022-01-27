@@ -29,4 +29,10 @@ export const config: Config = {
 			serviceWorker: null, // disable service workers
 		},
 	],
+	testing: {
+		"transform": {
+			"^.+\\.tsx?$": "ts-jest",
+			"^.+\\.svg$": "<rootDir>/svgTransform.js"
+		}
+	}
 };
