@@ -1,0 +1,95 @@
+@import '../../global.scss';
+
+.ontario-hint-expander__container {
+  max-width: $standard-width;
+}
+
+.ontario-hint-expander__button {
+  color: $ontario-colour-link;
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  font-family: $ontario-font-open-sans;
+  font-weight: 400;
+  font-size: 1rem;
+  text-align: left;
+  margin: 0 0 $spacing-4 0;
+  padding: 0 $spacing-1 0 0;
+
+  &-icon--close {
+      display: none;
+      margin-right: $spacing-1;
+  }
+
+  &-icon--open {
+      display: inline-block;
+      margin-right: $spacing-1;
+  }
+
+  &:hover {
+      color: $ontario-colour-link--hover;
+  }
+
+  &:active {
+      color: $ontario-colour-link--active;
+  }
+
+  &:focus,
+  &:active {
+      @extend %ontario-focus;
+  }
+
+  & > * {
+    pointer-events: none;
+  }
+}
+
+.ontario-hint-expander__content {
+  border-left: 4px solid $ontario-greyscale-20;
+  color: $ontario-colour-black;
+  background-color: $ontario-greyscale-5;
+  display: none;
+  padding: $spacing-4 $spacing-4 $spacing-4 calc(#{$spacing-4} + #{$spacing-1});
+  margin: 0 0 $spacing-4 $spacing-1;
+
+  & *:last-child {
+      margin-bottom: 0;
+  }
+
+  & img {
+      width: $full-width;
+
+      @media screen and (min-width: $small-breakpoint) {
+          width: 50%;
+      }
+  }
+}
+
+.ontario-hint-expander__content.ontario-expander__content--opened {
+  display: block;
+}
+
+.ontario-hint-expander__container.ontario-expander--active {
+  .ontario-hint-expander__button-icon--close {
+      display: inline-block;
+  }
+
+  .ontario-hint-expander__button-icon--open {
+      display: none;
+  }
+}
+
+.ontario-input + .ontario-hint-expander__container {
+  margin-top: -$spacing-5;
+}
+
+.ontario-checkboxes__label + .ontario-hint-expander__container,
+.ontario-radios__label + .ontario-hint-expander__container {
+  margin-top: $spacing-3;
+
+  @media screen and (max-width: $small-breakpoint) {
+      margin-top: $spacing-4;
+  }
+}
