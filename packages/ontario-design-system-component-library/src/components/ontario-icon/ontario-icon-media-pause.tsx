@@ -4,7 +4,7 @@ import mediaPause from './assets/ontario-icon-media-pause.svg';
 @Component({
   tag: 'ontario-icon-media-pause',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconMediaPause {

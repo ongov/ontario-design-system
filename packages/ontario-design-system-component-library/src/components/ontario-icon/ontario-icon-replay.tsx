@@ -4,7 +4,7 @@ import replay from './assets/ontario-icon-replay.svg';
 @Component({
   tag: 'ontario-icon-replay',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconPrint {

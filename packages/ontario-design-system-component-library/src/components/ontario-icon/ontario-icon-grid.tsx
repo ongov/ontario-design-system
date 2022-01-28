@@ -4,7 +4,7 @@ import grid from './assets/ontario-icon-grid.svg';
 @Component({
   tag: 'ontario-icon-grid',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconGrid {

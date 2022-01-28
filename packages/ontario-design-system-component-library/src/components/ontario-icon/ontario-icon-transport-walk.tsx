@@ -4,7 +4,7 @@ import transportWalk from './assets/ontario-icon-transport-walk.svg';
 @Component({
   tag: 'ontario-icon-transport-walk',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconTransportWalk {

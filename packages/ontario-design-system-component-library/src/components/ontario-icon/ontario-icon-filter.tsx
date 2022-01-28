@@ -4,7 +4,7 @@ import filter from './assets/ontario-icon-filter.svg';
 @Component({
   tag: 'ontario-icon-filter',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconFilter {

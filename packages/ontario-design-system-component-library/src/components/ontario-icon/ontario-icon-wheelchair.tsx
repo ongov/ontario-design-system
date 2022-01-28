@@ -4,7 +4,7 @@ import wheelchair from './assets/ontario-icon-wheelchair.svg';
 @Component({
   tag: 'ontario-icon-wheelchair',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconWheelchair {

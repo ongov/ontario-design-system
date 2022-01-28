@@ -4,7 +4,7 @@ import attach from './assets/ontario-icon-attach.svg';
 @Component({
   tag: 'ontario-icon-attach',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconAttach {

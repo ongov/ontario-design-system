@@ -4,7 +4,7 @@ import phone from './assets/ontario-icon-phone.svg';
 @Component({
   tag: 'ontario-icon-phone',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconPhone {

@@ -4,7 +4,7 @@ import visa from './assets/ontario-icon-visa.svg';
 @Component({
   tag: 'ontario-icon-visa',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconVisa {

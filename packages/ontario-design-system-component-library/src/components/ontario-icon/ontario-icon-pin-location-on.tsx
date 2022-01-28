@@ -4,7 +4,7 @@ import pinLocationOn from './assets/ontario-icon-pin-location-on.svg';
 @Component({
   tag: 'ontario-icon-pin-location-on',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconPinLocationOn {

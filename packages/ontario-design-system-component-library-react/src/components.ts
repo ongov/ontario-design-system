@@ -10,6 +10,7 @@ import { defineCustomElements } from 'ontario-design-system-component-library/lo
 defineCustomElements();
 export const MyComponent = /*@__PURE__*/createReactComponent<JSX.MyComponent, HTMLMyComponentElement>('my-component');
 export const OntarioButton = /*@__PURE__*/createReactComponent<JSX.OntarioButton, HTMLOntarioButtonElement>('ontario-button');
+export const OntarioHintExpander = /*@__PURE__*/createReactComponent<JSX.OntarioHintExpander, HTMLOntarioHintExpanderElement>('ontario-hint-expander');
 export const OntarioHintText = /*@__PURE__*/createReactComponent<JSX.OntarioHintText, HTMLOntarioHintTextElement>('ontario-hint-text');
 export const OntarioIconAccessibility = /*@__PURE__*/createReactComponent<JSX.OntarioIconAccessibility, HTMLOntarioIconAccessibilityElement>('ontario-icon-accessibility');
 export const OntarioIconAccount = /*@__PURE__*/createReactComponent<JSX.OntarioIconAccount, HTMLOntarioIconAccountElement>('ontario-icon-account');

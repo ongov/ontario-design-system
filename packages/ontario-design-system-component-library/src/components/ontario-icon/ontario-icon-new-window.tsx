@@ -4,7 +4,7 @@ import newWindow from './assets/ontario-icon-new-window.svg'
 @Component({
   tag: 'ontario-icon-new-window',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconCreditCard {

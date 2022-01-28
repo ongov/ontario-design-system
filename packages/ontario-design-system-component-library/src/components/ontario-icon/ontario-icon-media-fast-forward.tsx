@@ -4,7 +4,7 @@ import mediaFastForward from './assets/ontario-icon-media-fast-forward.svg';
 @Component({
   tag: 'ontario-icon-media-fast-forward',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconMediaFastForward {

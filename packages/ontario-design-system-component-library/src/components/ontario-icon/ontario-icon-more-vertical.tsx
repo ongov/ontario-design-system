@@ -4,7 +4,7 @@ import moreVertical from './assets/ontario-icon-more-vertical.svg';
 @Component({
   tag: 'ontario-icon-more-vertical',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconMoreVertical {

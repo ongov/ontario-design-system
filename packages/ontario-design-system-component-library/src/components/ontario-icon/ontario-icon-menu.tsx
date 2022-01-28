@@ -4,7 +4,7 @@ import menu from './assets/ontario-icon-menu.svg'
 @Component({
   tag: 'ontario-icon-menu',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconMenu {

@@ -4,7 +4,7 @@ import timer from './assets/ontario-icon-timer.svg';
 @Component({
   tag: 'ontario-icon-timer',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconTimer {

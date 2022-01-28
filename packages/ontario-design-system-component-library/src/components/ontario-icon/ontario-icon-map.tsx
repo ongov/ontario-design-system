@@ -4,7 +4,7 @@ import mapIcon from './assets/ontario-icon-map.svg';
 @Component({
   tag: 'ontario-icon-map',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconMap {

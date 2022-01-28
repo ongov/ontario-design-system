@@ -4,7 +4,7 @@ import transportBus from './assets/ontario-icon-transport-bus.svg';
 @Component({
   tag: 'ontario-icon-transport-bus',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconTransportBus {

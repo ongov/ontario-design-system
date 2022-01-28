@@ -4,7 +4,7 @@ import print from './assets/ontario-icon-print.svg';
 @Component({
   tag: 'ontario-icon-print',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconPrint {
