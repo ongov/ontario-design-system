@@ -1,6 +1,7 @@
 import { Component, Event, EventEmitter, h, Prop, State } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 import { TextInput } from './input.interface';
+import { Label } from '../../utils/label/label.interface';
 import { getLabelElement } from '../../utils/label/label';
 
 /**
@@ -11,7 +12,7 @@ import { getLabelElement } from '../../utils/label/label';
 	styleUrl: 'ontario-input.scss',
 	shadow: true,
 })
-export class OntarioInput implements TextInput {
+export class OntarioInput implements TextInput, Label {
 	/**
 	 * The text to display as label.
 	 */
