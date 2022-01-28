@@ -45,6 +45,7 @@ describe('ontario-textarea', () => {
 									required="true"
 									element-id="textarea-id"
 									value="textarea value"
+									label-caption="Ontario Textarea"
 								></ontario-textarea>`,
 			});
 
@@ -54,6 +55,7 @@ describe('ontario-textarea', () => {
 			expect(page.rootInstance.value).toBe('textarea value');
 			expect(page.rootInstance.elementId).toBe('textarea-id');
 			expect(page.rootInstance.focused).toBe(false);
+			expect(page.rootInstance.labelCaption).toBe('Ontario Textarea');
 		});
 	});
 
