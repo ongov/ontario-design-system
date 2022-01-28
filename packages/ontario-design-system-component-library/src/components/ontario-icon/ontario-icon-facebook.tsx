@@ -4,7 +4,7 @@ import facebook from './assets/ontario-icon-facebook.svg';
 @Component({
   tag: 'ontario-icon-facebook',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconFacebook {

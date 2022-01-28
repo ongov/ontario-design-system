@@ -4,7 +4,7 @@ import alertWarning from './assets/ontario-icon-alert-warning.svg'
 @Component({
   tag: 'ontario-icon-alert-warning',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconAlertWarning {

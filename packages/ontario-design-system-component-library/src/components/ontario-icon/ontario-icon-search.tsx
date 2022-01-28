@@ -4,7 +4,7 @@ import search from './assets/ontario-icon-search.svg';
 @Component({
   tag: 'ontario-icon-search',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconSearch {

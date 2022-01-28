@@ -4,7 +4,7 @@ import sentiment5 from './assets/ontario-icon-sentiment-5.svg';
 @Component({
   tag: 'ontario-icon-sentiment-5',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconSentiment5 {

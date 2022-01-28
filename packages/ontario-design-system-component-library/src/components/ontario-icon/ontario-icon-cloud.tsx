@@ -4,7 +4,7 @@ import cloud from './assets/ontario-icon-cloud.svg';
 @Component({
   tag: 'ontario-icon-cloud',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconCloud {

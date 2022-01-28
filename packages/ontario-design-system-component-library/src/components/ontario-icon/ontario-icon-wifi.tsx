@@ -4,7 +4,7 @@ import wifi from './assets/ontario-icon-wifi.svg';
 @Component({
   tag: 'ontario-icon-wifi',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconWifi {

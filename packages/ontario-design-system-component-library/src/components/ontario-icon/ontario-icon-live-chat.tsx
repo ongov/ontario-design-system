@@ -4,7 +4,7 @@ import liveChat from './assets/ontario-icon-live-chat.svg';
 @Component({
   tag: 'ontario-icon-live-chat',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconLiveChat {

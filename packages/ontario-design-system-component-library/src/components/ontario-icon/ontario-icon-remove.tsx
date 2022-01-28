@@ -4,7 +4,7 @@ import remove from './assets/ontario-icon-remove.svg';
 @Component({
   tag: 'ontario-icon-remove',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconRemove {

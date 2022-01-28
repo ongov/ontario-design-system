@@ -4,7 +4,7 @@ import twitter from './assets/ontario-icon-twitter.svg';
 @Component({
   tag: 'ontario-icon-twitter',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconTwitter {

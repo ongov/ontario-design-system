@@ -4,7 +4,7 @@ import passwordHide from './assets/ontario-icon-password-hide.svg';
 @Component({
   tag: 'ontario-icon-password-hide',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconPasswordHide {

@@ -4,7 +4,7 @@ import chevronUp from './assets/ontario-icon-chevron-up.svg'
 @Component({
   tag: 'ontario-icon-chevron-up',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconChevronUp {

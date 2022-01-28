@@ -4,7 +4,7 @@ import transportCar from './assets/ontario-icon-transport-car.svg';
 @Component({
   tag: 'ontario-icon-transport-car',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconTransportCar {

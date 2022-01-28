@@ -4,7 +4,7 @@ import edit from './assets/ontario-icon-edit.svg';
 @Component({
   tag: 'ontario-icon-edit',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconEdit {

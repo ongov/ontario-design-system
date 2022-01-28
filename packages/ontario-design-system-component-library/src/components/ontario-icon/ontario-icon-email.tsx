@@ -4,7 +4,7 @@ import email from './assets/ontario-icon-email.svg'
 @Component({
   tag: 'ontario-icon-email',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconEmail {
