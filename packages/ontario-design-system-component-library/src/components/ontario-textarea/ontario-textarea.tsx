@@ -27,7 +27,7 @@ export class OntarioTextarea implements Input, Label {
 	/**
 	 * The type of label to render.
 	 */
-	@Prop() labelType: 'default' | 'large' | 'heading' = 'default';
+	@Prop({ mutable: true }) labelType: 'default' | 'large' | 'heading' = 'default';
 
 	/**
 	 * The aria-describedBy value if the textarea has hint text associated with it.
