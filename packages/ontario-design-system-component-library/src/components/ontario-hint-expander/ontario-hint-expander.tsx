@@ -91,8 +91,8 @@ export class OntarioHintExpander implements OntarioHintExpanderProperties {
     this.hintExpanderId = this.hintExpanderId ?? uuid();
   }
 
-  public getId(): string {
-    return this.hintExpanderId ?? '';
+  public getId(): string | undefined {
+    return this.hintExpanderId;
   }
 
   render() {

@@ -27,10 +27,11 @@
 	<ontario-textarea name="rationale" textarea-id="rationale"></ontario-textarea>
 	<ontario-label for="example" type='heading'>Heading Example</ontario-label>
 	<ontario-textarea name="example" textarea-id="example"></ontario-textarea>
-	<ontario-hint-expander hint="This is the hint" content="This is the content"
-		aria-label="This indicates that the hint can be expanded"></ontario-hint-expander>
 	<ontario-icon-accessibility colour="grey">
 	</ontario-icon-accessibility>
+	<ontario-hint-expander aria-controls="hint-expander-controls"
+		aria-label="This indicates that the hint can be expanded" content="This is the content" hint="This is the hint"
+		hint-expander-id="hintExpanderId"></ontario-hint-expander>
 
 	<script>
 		function testFunction() {
