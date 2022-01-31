@@ -1,7 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { OntarioIconAccessibility } from '../ontario-icon-accessibility';
 
-describe('ontario-icons', () => {
+describe('ontario-icon', () => {
   describe('snapshot', () => {
     it('should render the expected html', async () => {
       const page = await newSpecPage({
