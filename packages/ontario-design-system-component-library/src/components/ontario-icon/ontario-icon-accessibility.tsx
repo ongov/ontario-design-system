@@ -6,7 +6,6 @@ import accessibility from './assets/ontario-icon-accessibility.svg';
   styleUrl: 'ontario-icon.scss',
   shadow: true,
 })
-
 export class OntarioIconAccessibility {
 
   @Prop() colour?: 'black' | 'blue' | 'grey';
