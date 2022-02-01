@@ -31,7 +31,6 @@ export const config: Config = {
 	],
 	testing: {
 		"transform": {
-			"^.+\\.tsx?$": "ts-jest",
 			"^.+\\.svg$": "<rootDir>/svgTransform.js"
 		}
 	}
