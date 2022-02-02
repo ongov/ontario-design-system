@@ -43,6 +43,24 @@ export namespace Components {
          */
         "type"?: 'primary' | 'secondary' | 'tertiary';
     }
+    interface OntarioHintExpander {
+        /**
+          * Include visually hidden text inside the label that describes to screen readers the availability of a hint expander
+         */
+        "ariaLabel"?: string | null;
+        /**
+          * Content to display as the hint, once the expander is toggled open
+         */
+        "content": string;
+        /**
+          * Text to display as the hint expander question/statement
+         */
+        "hint": string;
+        /**
+          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
+         */
+        "hintExpanderId"?: string;
+    }
     interface OntarioHintText {
         /**
           * Used to used to establish a relationship between hint text content and elements using aria-describedby.
@@ -446,6 +464,12 @@ declare global {
     var HTMLOntarioButtonElement: {
         prototype: HTMLOntarioButtonElement;
         new (): HTMLOntarioButtonElement;
+    };
+    interface HTMLOntarioHintExpanderElement extends Components.OntarioHintExpander, HTMLStencilElement {
+    }
+    var HTMLOntarioHintExpanderElement: {
+        prototype: HTMLOntarioHintExpanderElement;
+        new (): HTMLOntarioHintExpanderElement;
     };
     interface HTMLOntarioHintTextElement extends Components.OntarioHintText, HTMLStencilElement {
     }
@@ -1092,6 +1116,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "ontario-button": HTMLOntarioButtonElement;
+        "ontario-hint-expander": HTMLOntarioHintExpanderElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
         "ontario-icon-accessibility": HTMLOntarioIconAccessibilityElement;
         "ontario-icon-account": HTMLOntarioIconAccountElement;
@@ -1238,6 +1263,28 @@ declare namespace LocalJSX {
           * The type of button to render.
          */
         "type"?: 'primary' | 'secondary' | 'tertiary';
+    }
+    interface OntarioHintExpander {
+        /**
+          * Include visually hidden text inside the label that describes to screen readers the availability of a hint expander
+         */
+        "ariaLabel"?: string | null;
+        /**
+          * Content to display as the hint, once the expander is toggled open
+         */
+        "content"?: string;
+        /**
+          * Text to display as the hint expander question/statement
+         */
+        "hint"?: string;
+        /**
+          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
+         */
+        "hintExpanderId"?: string;
+        /**
+          * Emitted when a keyboard input or mouse event occurs.
+         */
+        "onToggleExpanderEvent"?: (event: CustomEvent<any>) => void;
     }
     interface OntarioHintText {
         /**
@@ -1656,6 +1703,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "my-component": MyComponent;
         "ontario-button": OntarioButton;
+        "ontario-hint-expander": OntarioHintExpander;
         "ontario-hint-text": OntarioHintText;
         "ontario-icon-accessibility": OntarioIconAccessibility;
         "ontario-icon-account": OntarioIconAccount;
@@ -1771,6 +1819,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
+            "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
             "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
             "ontario-icon-accessibility": LocalJSX.OntarioIconAccessibility & JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;
             "ontario-icon-account": LocalJSX.OntarioIconAccount & JSXBase.HTMLAttributes<HTMLOntarioIconAccountElement>;

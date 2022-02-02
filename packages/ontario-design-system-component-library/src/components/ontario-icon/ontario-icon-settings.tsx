@@ -4,7 +4,7 @@ import settings from './assets/ontario-icon-settings.svg';
 @Component({
   tag: 'ontario-icon-settings',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconPasswordSettings {

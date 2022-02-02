@@ -4,7 +4,7 @@ import calendar from './assets/ontario-icon-calendar.svg';
 @Component({
   tag: 'ontario-icon-calendar',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconCalendar {

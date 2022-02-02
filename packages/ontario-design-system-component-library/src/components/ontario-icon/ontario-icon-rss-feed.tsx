@@ -4,7 +4,7 @@ import rssFeed from './assets/ontario-icon-rss-feed.svg';
 @Component({
   tag: 'ontario-icon-rss-feed',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconRssFeed {

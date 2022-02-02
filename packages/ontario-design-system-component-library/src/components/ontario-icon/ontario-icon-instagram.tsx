@@ -4,7 +4,7 @@ import instagram from './assets/ontario-icon-instagram.svg';
 @Component({
   tag: 'ontario-icon-instagram',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconInstagram {

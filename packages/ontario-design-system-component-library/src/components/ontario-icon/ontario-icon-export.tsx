@@ -4,7 +4,7 @@ import exportIcon from './assets/ontario-icon-export.svg';
 @Component({
   tag: 'ontario-icon-export',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconExport {

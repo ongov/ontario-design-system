@@ -4,7 +4,7 @@ import share from './assets/ontario-icon-share.svg';
 @Component({
   tag: 'ontario-icon-share',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconShare {

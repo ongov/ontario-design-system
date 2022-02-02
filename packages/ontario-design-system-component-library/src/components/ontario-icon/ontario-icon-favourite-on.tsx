@@ -4,7 +4,7 @@ import favouriteOn from './assets/ontario-icon-favourite-on.svg';
 @Component({
   tag: 'ontario-icon-favourite-on',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconFavouriteOn {

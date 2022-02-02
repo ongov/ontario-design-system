@@ -4,7 +4,7 @@ import vpnKey from './assets/ontario-icon-vpn-key.svg';
 @Component({
   tag: 'ontario-icon-vpn-key',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconVpnKey {

@@ -4,7 +4,7 @@ import tty from './assets/ontario-icon-tty.svg';
 @Component({
   tag: 'ontario-icon-tty',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconTty {

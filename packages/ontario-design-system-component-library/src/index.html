@@ -25,7 +25,10 @@
 			<ontario-hint-text slot="hint-text">For example, A1A 1A1</ontario-hint-test>
 		</ontario-input>
 		
-		<ontario-input name="address" label-caption="Address" required></ontario-input>
+		<ontario-input name="address" label-caption="Address" required>
+			<ontario-hint-expander slot="hint-expander" hint="This is the hint" content="This is the content"
+			aria-label="This indicates that the hint can be expanded"></ontario-hint-expander>
+		</ontario-input>
 
 		<hr />
 		<ontario-textarea name="comments" label-caption="Comments" label-type="heading" required></ontario-textarea>

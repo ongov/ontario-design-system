@@ -4,7 +4,7 @@ import chevronRight from './assets/ontario-icon-chevron-right.svg'
 @Component({
   tag: 'ontario-icon-chevron-right',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconChevronRight {

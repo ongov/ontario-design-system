@@ -4,7 +4,7 @@ import transportBicycle from './assets/ontario-icon-transport-bicycle.svg';
 @Component({
   tag: 'ontario-icon-transport-bicycle',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconTransportBicycle {

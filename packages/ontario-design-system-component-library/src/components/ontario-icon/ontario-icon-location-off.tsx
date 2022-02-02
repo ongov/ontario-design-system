@@ -4,7 +4,7 @@ import locationOff from './assets/ontario-icon-location-off.svg';
 @Component({
   tag: 'ontario-icon-location-off',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconLocationOff {

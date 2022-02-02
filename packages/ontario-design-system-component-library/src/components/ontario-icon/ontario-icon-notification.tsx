@@ -4,7 +4,7 @@ import notification from './assets/ontario-icon-notification.svg';
 @Component({
   tag: 'ontario-icon-notification',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconNotification {

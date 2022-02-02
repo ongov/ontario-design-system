@@ -4,7 +4,7 @@ import accessibility from './assets/ontario-icon-accessibility.svg'
 @Component({
   tag: 'ontario-icon-accessibility',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconAccessibility {

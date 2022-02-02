@@ -4,7 +4,7 @@ import clock from './assets/ontario-icon-clock.svg';
 @Component({
   tag: 'ontario-icon-clock',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconClock {

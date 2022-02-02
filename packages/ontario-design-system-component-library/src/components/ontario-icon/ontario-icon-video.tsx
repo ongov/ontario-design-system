@@ -4,7 +4,7 @@ import video from './assets/ontario-icon-video.svg';
 @Component({
   tag: 'ontario-icon-video',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconVideo {

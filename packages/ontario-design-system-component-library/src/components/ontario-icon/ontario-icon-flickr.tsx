@@ -4,7 +4,7 @@ import flickr from './assets/ontario-icon-flickr.svg';
 @Component({
   tag: 'ontario-icon-flickr',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconFlickr {

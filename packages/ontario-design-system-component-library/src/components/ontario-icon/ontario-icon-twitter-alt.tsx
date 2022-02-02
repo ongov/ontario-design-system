@@ -4,7 +4,7 @@ import twitterAlt from './assets/ontario-icon-twitter-alt.svg';
 @Component({
   tag: 'ontario-icon-twitter-alt',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconTwitterAlt {

@@ -4,7 +4,7 @@ import mediaStop from './assets/ontario-icon-media-stop.svg';
 @Component({
   tag: 'ontario-icon-media-stop',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconMediaStop {

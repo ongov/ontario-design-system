@@ -4,7 +4,7 @@ import mediaFastRewind from './assets/ontario-icon-media-fast-rewind.svg';
 @Component({
   tag: 'ontario-icon-media-fast-rewind',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconMediaFastRewind {

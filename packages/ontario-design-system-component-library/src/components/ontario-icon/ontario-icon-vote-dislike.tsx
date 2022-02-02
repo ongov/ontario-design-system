@@ -4,7 +4,7 @@ import voteDislike from './assets/ontario-icon-vote-dislike.svg';
 @Component({
   tag: 'ontario-icon-vote-dislike',
   styleUrl: 'ontario-icon.scss',
-  shadow: false,
+  shadow: true,
 })
 
 export class OntarioIconVoteDislike {
