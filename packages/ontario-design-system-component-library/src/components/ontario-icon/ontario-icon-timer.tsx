@@ -9,7 +9,7 @@ import timer from './assets/ontario-icon-timer.svg';
 
 export class OntarioIconTimer {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={timer} />;
