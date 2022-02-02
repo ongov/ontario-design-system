@@ -28,7 +28,12 @@
 	},
 	"dependencies": {
 		"@stencil/core": "2.13.0",
-		"ontario-design-system-global-styles": "0.0.1"
+		"@types/react": "^17.0.38",
+		"@types/react-dom": "^17.0.11",
+		"enzyme": "^3.11.0",
+		"ontario-design-system-global-styles": "0.0.1",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2"
 	},
 	"devDependencies": {
 		"@stencil/react-output-target": "0.0.9",
@@ -36,6 +41,7 @@
 		"@types/jest": "^26.0.24",
 		"@types/puppeteer": "^5.4.3",
 		"@types/uuid": "^8.3.3",
+		"babel-jest": "^27.4.6",
 		"jest": "^26.0.24",
 		"jest-cli": "^26.6.3",
 		"jest-svg-transformer": "^1.0.0",

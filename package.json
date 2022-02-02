@@ -2,6 +2,7 @@
   "name": "root",
   "private": true,
   "devDependencies": {
+    "@types/enzyme": "^3.10.11",
     "lerna": "^4.0.0"
   },
   "scripts": {

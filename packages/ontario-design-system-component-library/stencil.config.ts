@@ -31,7 +31,8 @@ export const config: Config = {
 	],
 	testing: {
 		"transform": {
-			"^.+\\.svg$": "<rootDir>/svgTransform.js"
-		}
+			'^.+\\.jsx?$': 'babel-jest',
+			'^.+\\.svg$': 'jest-svg-transformer',
+		},
 	}
 };
