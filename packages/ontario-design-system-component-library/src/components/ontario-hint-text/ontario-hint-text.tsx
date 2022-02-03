@@ -1,6 +1,6 @@
 import { Component, Prop, Element, h } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
-import { HintText } from './hint.interface';
+import { Hint } from '../../utils/common.interface';
 
 /**
  * Ontario Design System hint text web component
@@ -10,7 +10,7 @@ import { HintText } from './hint.interface';
 	styleUrl: 'ontario-hint-text.scss',
 	shadow: true,
 })
-export class OntarioHintText implements HintText {
+export class OntarioHintText implements Hint {
 	@Element() host: HTMLElement;
 
 	/**
