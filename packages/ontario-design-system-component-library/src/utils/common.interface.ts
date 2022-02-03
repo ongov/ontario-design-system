@@ -69,3 +69,10 @@ export interface Input extends Base {
 
 	handleChange?: (event: Event) => void;
 }
+
+export interface Hint extends Base {
+	/**
+	 * Text to display as the hint.
+	 */
+	hint: string;
+}
