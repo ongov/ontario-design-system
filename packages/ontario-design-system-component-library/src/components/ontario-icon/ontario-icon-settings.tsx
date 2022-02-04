@@ -9,7 +9,7 @@ import settings from './assets/ontario-icon-settings.svg';
 
 export class OntarioIconPasswordSettings {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={settings} />;

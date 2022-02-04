@@ -9,7 +9,7 @@ import mastercardAlt from './assets/ontario-icon-mastercard-alt.svg';
 
 export class OntarioIconMastercardAlt {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={mastercardAlt} />;

@@ -9,7 +9,7 @@ import email from './assets/ontario-icon-email.svg'
 
 export class OntarioIconEmail {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={email} />;

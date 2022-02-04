@@ -9,7 +9,7 @@ import document from './assets/ontario-icon-document.svg';
 
 export class OntarioIconDocument {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={document} />;
