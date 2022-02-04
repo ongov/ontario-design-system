@@ -8,7 +8,7 @@ import accessibility from './assets/ontario-icon-accessibility.svg';
 })
 export class OntarioIconAccessibility {
 
-  @Prop() colour?: 'black' | 'blue' | 'grey';
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={accessibility} />;

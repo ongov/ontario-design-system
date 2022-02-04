@@ -9,7 +9,7 @@ import flickr from './assets/ontario-icon-flickr.svg';
 
 export class OntarioIconFlickr {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={flickr} />;

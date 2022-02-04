@@ -9,7 +9,7 @@ import deleteIcon from './assets/ontario-icon-delete.svg';
 
 export class OntarioIconDelete {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={deleteIcon} />;
