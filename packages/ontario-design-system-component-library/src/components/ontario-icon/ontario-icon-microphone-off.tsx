@@ -9,7 +9,7 @@ import microphoneOff from './assets/ontario-icon-microphone-off.svg';
 
 export class OntarioIconMicrophoneOff {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={microphoneOff} />;

@@ -1,5 +1,5 @@
 {
-	"name": "ontario-design-system-design-tokens",
+	"name": "@ontario-digital-service/ontario-design-system-design-tokens",
 	"version": "0.0.1",
 	"description": "Design Tokens to be used in Ontario Design System",
 	"main": "index.js",

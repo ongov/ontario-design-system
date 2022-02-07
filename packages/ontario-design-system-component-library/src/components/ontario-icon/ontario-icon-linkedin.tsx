@@ -9,7 +9,7 @@ import linkedin from './assets/ontario-icon-linkedin.svg';
 
 export class OntarioIconLinkedin {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={linkedin} />;
