@@ -1,5 +1,5 @@
 {
-	"name": "ontario-design-system-component-library-react",
+	"name": "@ontario-digital-service/ontario-design-system-component-library-react",
 	"sideEffects": false,
 	"version": "0.0.1",
 	"private": true,
@@ -23,7 +23,7 @@
 		"dist/"
 	],
 	"dependencies": {
-		"ontario-design-system-component-library": "^0.0.1"
+		"@ontario-digital-service/ontario-design-system-component-library": "^0.0.1"
 	},
 	"devDependencies": {
 		"@types/jest": "23.3.9",
