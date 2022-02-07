@@ -3,7 +3,7 @@
 /* auto-generated react proxies */
 import { createReactComponent } from './react-component-lib';
 
-import type { JSX } from 'ontario-design-system-component-library';
+import type { JSX } from '@ontario-digital-service/ontario-design-system-component-library/dist/types';
 
 import { defineCustomElements } from 'ontario-design-system-component-library/loader';
 
