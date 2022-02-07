@@ -33,7 +33,7 @@
 h1 > .ontario-label--heading {
 	display: inline-block;
 	margin: $spacing-0;
-  	@extend %h1-styles;
+	@extend %h1-styles;
 }
 
 .ontario-label__flag {

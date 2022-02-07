@@ -40,7 +40,7 @@ describe('ontario-textarea', () => {
 		});
 
 		it('renders changes to the id property', async () => {
-			component.setProperty('textareaId', 'ontario-textarea-id');
+			component.setProperty('elementId', 'ontario-textarea-id');
 			await page.waitForChanges();
 			expect(element).toEqualAttributes({
 				'name': 'ontario-textarea',
