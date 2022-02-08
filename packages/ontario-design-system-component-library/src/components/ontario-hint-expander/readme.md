@@ -17,10 +17,25 @@
 
 ## Events
 
-| Event                 | Description                             | Type                      |
-| --------------------- | --------------------------------------- | ------------------------- |
-| `toggleExpanderEvent` | Emitted when a keyboard input occurred. | `CustomEvent<MouseEvent>` |
+| Event                 | Description                                          | Type               |
+| --------------------- | ---------------------------------------------------- | ------------------ |
+| `toggleExpanderEvent` | Emitted when a keyboard input or mouse event occurs. | `CustomEvent<any>` |
 
+
+## Dependencies
+
+### Depends on
+
+- [ontario-icon-chevron-up](../ontario-icon)
+- [ontario-icon-chevron-down](../ontario-icon)
+
+### Graph
+```mermaid
+graph TD;
+  ontario-hint-expander --> ontario-icon-chevron-up
+  ontario-hint-expander --> ontario-icon-chevron-down
+  style ontario-hint-expander fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 
