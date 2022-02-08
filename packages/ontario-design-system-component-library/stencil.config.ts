@@ -10,7 +10,7 @@ export const config: Config = {
 	buildEs5: 'prod',
 	outputTargets: [
 		reactOutputTarget({
-			componentCorePackage: 'ontario-design-system-component-library',
+			componentCorePackage: '@ontario-digital-service/ontario-design-system-component-library',
 			proxiesFile: '../ontario-design-system-component-library-react/src/components.ts',
 			includeDefineCustomElements: true,
 		}),
@@ -43,4 +43,10 @@ export const config: Config = {
 			],
 		},
 	],
+	testing: {
+		"transform": {
+			'^.+\\.jsx?$': 'babel-jest',
+			'^.+\\.svg$': 'jest-svg-transformer',
+		},
+	}
 };

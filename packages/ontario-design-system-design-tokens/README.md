@@ -62,7 +62,7 @@ In order to use the design tokens in your project, it is first required to insta
 
 In the the root of your projects repository, start by installing the Ontario Design Tokens package by running the following command in your terminal: 
 ```
-npm install ontario-design-system-design-tokens
+npm install @ontario-digital-service/ontario-design-system-design-tokens
 ```
 Any styles that you have in your style sheet can now reference any of the values from the `variables.scss` file in the `ontario-design-system-design-tokens` package. If you are using [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), you can reference any of the CSS variables outlined in the `variables.css` file. 
 
