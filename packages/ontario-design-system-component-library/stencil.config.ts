@@ -29,4 +29,10 @@ export const config: Config = {
 			serviceWorker: null, // disable service workers
 		},
 	],
+	testing: {
+		"transform": {
+			'^.+\\.jsx?$': 'babel-jest',
+			'^.+\\.svg$': 'jest-svg-transformer',
+		},
+	}
 };
