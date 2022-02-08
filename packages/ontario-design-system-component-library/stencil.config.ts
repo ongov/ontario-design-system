@@ -36,7 +36,7 @@ export const config: Config = {
 			serviceWorker: null, // disable service workers
 			copy: [
 				{
-					src: '../node_modules/ontario-design-system-global-styles/dist/fonts',
+					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/fonts',
 					dest: 'fonts',
 					warn: true,
 				},
