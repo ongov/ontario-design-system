@@ -9,7 +9,7 @@ import mediaPause from './assets/ontario-icon-media-pause.svg';
 
 export class OntarioIconMediaPause {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={mediaPause} />;

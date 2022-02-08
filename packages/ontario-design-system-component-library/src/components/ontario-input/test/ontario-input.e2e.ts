@@ -42,7 +42,7 @@ describe('ontario-input', () => {
 		});
 
 		it('renders changes to the id property', async () => {
-			component.setProperty('inputId', 'ontario-input-id');
+			component.setProperty('elementId', 'ontario-input-id');
 			await page.waitForChanges();
 			expect(element).toEqualAttributes({
 				'name': 'ontario-input',

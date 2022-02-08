@@ -1,5 +1,5 @@
 {
-	"name": "ontario-design-system-component-library",
+	"name": "@ontario-digital-service/ontario-design-system-component-library",
 	"version": "0.0.1",
 	"description": "Stencil Component Starter",
 	"main": "dist/index.cjs.js",
@@ -27,8 +27,8 @@
 		"format": "prettier --write ."
 	},
 	"dependencies": {
-		"@stencil/core": "^2.7.0",
-		"ontario-design-system-global-styles": "0.0.1"
+		"@stencil/core": "2.13.0",
+		"@ontario-digital-service/ontario-design-system-global-styles": "0.0.1"
 	},
 	"devDependencies": {
 		"@stencil/react-output-target": "0.0.9",
@@ -36,11 +36,14 @@
 		"@types/jest": "^26.0.24",
 		"@types/puppeteer": "^5.4.3",
 		"@types/uuid": "^8.3.3",
-		"jest": "^26.6.3",
+		"babel-jest": "^27.4.6",
+		"jest": "^26.0.24",
 		"jest-cli": "^26.6.3",
+		"jest-svg-transformer": "^1.0.0",
 		"prettier": "^2.5.1",
 		"puppeteer": "^10.0.0",
-		"stencil-inline-svg": "^1.1.0"
+		"stencil-inline-svg": "^1.1.0",
+		"typescript": "^4.5.5"
 	},
 	"license": "Apache-2.0"
 }

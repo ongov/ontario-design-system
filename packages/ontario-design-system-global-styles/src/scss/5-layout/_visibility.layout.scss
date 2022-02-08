@@ -12,7 +12,7 @@
     visibility: hidden;
 }
 
-@media screen and (max-width: $small-breakpoint - $pixel) {
+@media screen and (max-width: ($small-breakpoint - $pixel)) {
     .ontario-hide-for-small-only {
         display: none;
     }
@@ -30,19 +30,19 @@
     }
 }
 
-@media screen and (max-width: $small-breakpoint - $pixel) {
+@media screen and (max-width: ($small-breakpoint - $pixel)) {
     .ontario-show-for-medium {
         display: none;
     }
 }
 
-@media screen and (min-width: $small-breakpoint) and (max-width: $medium-breakpoint - $pixel) {
+@media screen and (min-width: $small-breakpoint) and (max-width: ($medium-breakpoint - $pixel)) {
     .ontario-hide-for-medium-only {
         display: none;
     }
 }
 
-@media screen and (max-width: $small-breakpoint - $pixel),
+@media screen and (max-width: ($small-breakpoint - $pixel)),
     screen and (min-width: $medium-breakpoint) {
     .ontario-show-for-medium-only {
         display: none;
@@ -55,19 +55,19 @@
     }
 }
 
-@media screen and (max-width: $medium-breakpoint - $pixel) {
+@media screen and (max-width: ($medium-breakpoint - $pixel)) {
     .ontario-show-for-large {
         display: none;
     }
 }
 
-@media screen and (min-width: $medium-breakpoint) and (max-width: $large-breakpoint - $pixel) {
+@media screen and (min-width: $medium-breakpoint) and (max-width: ($large-breakpoint - $pixel)) {
     .ontario-hide-for-large-only {
         display: none;
     }
 }
 
-@media screen and (max-width: $medium-breakpoint - $pixel),
+@media screen and (max-width: ($medium-breakpoint - $pixel)),
     screen and (min-width: $large-breakpoint) {
     .ontario-show-for-large-only {
         display: none

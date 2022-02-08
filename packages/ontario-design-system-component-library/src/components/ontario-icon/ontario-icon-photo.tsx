@@ -9,7 +9,7 @@ import photo from './assets/ontario-icon-photo.svg';
 
 export class OntarioIconPhoto {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={photo} />;

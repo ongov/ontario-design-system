@@ -9,7 +9,7 @@ import favouriteOff from './assets/ontario-icon-favourite-off.svg';
 
 export class OntarioIconFavouriteOff {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={favouriteOff} />;
