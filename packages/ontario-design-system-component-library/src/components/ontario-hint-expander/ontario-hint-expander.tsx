@@ -75,8 +75,8 @@ export class OntarioHintExpander implements HintExpander {
     return (
       <div class="ontario-hint-expander__container">
         <button class="ontario-hint-expander__button"
-          onClick={this.onClick} id={`hint-expander-button-${this.elementId}`}
-          aria-controls={`hint-expander-content-${this.elementId}`}
+          onClick={this.onClick} id={`hint-expander-button-${this.getId()}`}
+          aria-controls={`hint-expander-content-${this.getId()}`}
           aria-expanded="false"
           data-toggle="ontario-collapse"
           aria-label={this.ariaLabel}
@@ -85,7 +85,7 @@ export class OntarioHintExpander implements HintExpander {
           <span class="ontario-hint-expander__button-icon--open"><ontario-icon-chevron-down></ontario-icon-chevron-down></span>
           {this.hint}
         </button>
-        <div class="ontario-hint-expander__content" id={`hint-expander-content-${this.elementId}`} aria-labelledby={`hint-expander-button-${this.elementId}`} aria-hidden="true" data-toggle="ontario-expander-content">
+        <div class="ontario-hint-expander__content" id={`hint-expander-content-${this.getId()}`} aria-labelledby={`hint-expander-button-${this.getId()}`} aria-hidden="true" data-toggle="ontario-expander-content">
           {this.content}
         </div>
       </div>
