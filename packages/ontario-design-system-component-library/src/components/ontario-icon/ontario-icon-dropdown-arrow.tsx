@@ -9,7 +9,7 @@ import dropdownArrow from './assets/ontario-icon-dropdown-arrow.svg'
 
 export class OntarioIconDropdownArrow {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={dropdownArrow} />;

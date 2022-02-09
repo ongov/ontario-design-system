@@ -3,9 +3,9 @@
 /* auto-generated react proxies */
 import { createReactComponent } from './react-component-lib';
 
-import type { JSX } from 'ontario-design-system-component-library';
+import type { JSX } from '@ontario-digital-service/ontario-design-system-component-library';
 
-import { defineCustomElements } from 'ontario-design-system-component-library/loader';
+import { defineCustomElements } from '@ontario-digital-service/ontario-design-system-component-library/loader';
 
 defineCustomElements();
 export const MyComponent = /*@__PURE__*/createReactComponent<JSX.MyComponent, HTMLMyComponentElement>('my-component');
@@ -117,5 +117,4 @@ export const OntarioIconVpnKey = /*@__PURE__*/createReactComponent<JSX.OntarioIc
 export const OntarioIconWheelchair = /*@__PURE__*/createReactComponent<JSX.OntarioIconWheelchair, HTMLOntarioIconWheelchairElement>('ontario-icon-wheelchair');
 export const OntarioIconWifi = /*@__PURE__*/createReactComponent<JSX.OntarioIconWifi, HTMLOntarioIconWifiElement>('ontario-icon-wifi');
 export const OntarioInput = /*@__PURE__*/createReactComponent<JSX.OntarioInput, HTMLOntarioInputElement>('ontario-input');
-export const OntarioLabel = /*@__PURE__*/createReactComponent<JSX.OntarioLabel, HTMLOntarioLabelElement>('ontario-label');
 export const OntarioTextarea = /*@__PURE__*/createReactComponent<JSX.OntarioTextarea, HTMLOntarioTextareaElement>('ontario-textarea');

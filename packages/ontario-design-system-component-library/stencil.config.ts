@@ -10,13 +10,20 @@ export const config: Config = {
 	buildEs5: 'prod',
 	outputTargets: [
 		reactOutputTarget({
-			componentCorePackage: 'ontario-design-system-component-library',
+			componentCorePackage: '@ontario-digital-service/ontario-design-system-component-library',
 			proxiesFile: '../ontario-design-system-component-library-react/src/components.ts',
 			includeDefineCustomElements: true,
 		}),
 		{
 			type: 'dist',
 			esmLoaderPath: '../loader',
+			copy: [
+				{
+					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/fonts',
+					dest: 'fonts',
+					warn: true,
+				},
+			],
 		},
 		{
 			type: 'dist-custom-elements-bundle',
@@ -27,6 +34,19 @@ export const config: Config = {
 		{
 			type: 'www',
 			serviceWorker: null, // disable service workers
+			copy: [
+				{
+					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/fonts',
+					dest: 'fonts',
+					warn: true,
+				},
+			],
 		},
 	],
+	testing: {
+		"transform": {
+			'^.+\\.jsx?$': 'babel-jest',
+			'^.+\\.svg$': 'jest-svg-transformer',
+		},
+	}
 };

@@ -1,42 +1,53 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-	<title>Stencil Component Starter</title>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+		<title>Ontario Design System - component samples</title>
 
-	<script type="module" src="/build/ontario-design-system-components.esm.js"></script>
-	<script nomodule src="/build/ontario-design-system-components.js"></script>
-</head>
+		<script type="module" src="/build/ontario-design-system-components.esm.js"></script>
+		<script nomodule src="/build/ontario-design-system-components.js"></script>
+	</head>
 
-<body>
-	<my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
-	<ontario-button label="Primary" aria-label="Primary Button" type="primary" onclick="testFunction()">Primary
-	</ontario-button>
-	<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">Secondary
-	</ontario-button>
-	<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary">Tertiary</ontario-button>
-	<ontario-hint-text hint-id="idTest" hint="This is a hint"></ontario-hint-text>
-	<ontario-input name="ontario-text-input"></ontario-input>
-	<ontario-label caption="Comments" for="comments" required>caption should override this when set</ontario-label>
-	<ontario-textarea name="comments" textarea-id="comments"></ontario-textarea>
-	<ontario-label for="feedback" type='large'>Feedback</ontario-label>
-	<ontario-textarea name="feedback" textarea-id="feedback"></ontario-textarea>
-	<ontario-label for="rationale" type='large'></ontario-label>
-	<ontario-textarea name="rationale" textarea-id="rationale"></ontario-textarea>
-	<ontario-label for="example" type='heading'>Heading Example</ontario-label>
-	<ontario-textarea name="example" textarea-id="example"></ontario-textarea>
-	<ontario-hint-expander hint="This is the hint" content="This is the content"
-		aria-label="This indicates that the hint can be expanded"></ontario-hint-expander>
-	<ontario-icon-accessibility colour="grey">
-	</ontario-icon-accessibility>
+	<body>
+		<ontario-button label="Primary" aria-label="Primary Button" type="primary" onclick="testFunction()">Primary
+		</ontario-button>
+		<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">Secondary
+		</ontario-button>
+		<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary">Tertiary</ontario-button>
 
-	<script>
-		function testFunction() {
-			alert("HELLO WORLD!");
-		}
-	</script>
-</body>
+		<hr />
 
+		<ontario-icon-accessibility colour="grey"></ontario-icon-accessibility>
+
+		<hr />
+
+		<ontario-input name="email" input-width="20-char-width" label-caption="Email" label-type="heading" required>
+			<ontario-hint-text slot="hint-text">Hint text placeholder</ontario-hint-text>
+		</ontario-input>
+
+		<ontario-input name="postal" input-width="7-char-width" label-caption="Postal code" label-type="large">
+			<ontario-hint-text slot="hint-text">For example, A1A 1A1</ontario-hint-test>
+		</ontario-input>
+
+		<ontario-input name="address" label-caption="Address" required>
+			<ontario-hint-expander slot="hint-expander" hint="This is the hint" content="This is the content"
+				aria-label="This indicates that the hint can be expanded"></ontario-hint-expander>
+		</ontario-input>
+
+		<hr />
+
+		<ontario-textarea name="comments" label-caption="Comments" label-type="heading" required></ontario-textarea>
+		<ontario-textarea name="feedback" label-caption="Feedback" element-id="feedback" label-type="large">OHHH?
+		</ontario-textarea>
+		<ontario-textarea name="response" label-caption="What do you like about ODS?" element-id="response">
+		</ontario-textarea>
+
+		<script>
+			function testFunction() {
+				alert('HELLO WORLD!');
+			}
+		</script>
+	</body>
 </html>

@@ -34,7 +34,7 @@ describe('ontario-hint-text', () => {
       });
 
       it('renders changes to the id property', async () => {
-        component.setProperty('hintId', 'testId');
+        component.setProperty('elementId', 'testId');
         await page.waitForChanges();
         expect(element).toEqualAttributes({
           'id': 'testId'

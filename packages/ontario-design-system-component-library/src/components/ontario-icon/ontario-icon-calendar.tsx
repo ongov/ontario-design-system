@@ -9,7 +9,7 @@ import calendar from './assets/ontario-icon-calendar.svg';
 
 export class OntarioIconCalendar {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={calendar} />;

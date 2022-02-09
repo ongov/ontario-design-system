@@ -9,7 +9,7 @@ import transportBus from './assets/ontario-icon-transport-bus.svg';
 
 export class OntarioIconTransportBus {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={transportBus} />;

@@ -9,7 +9,7 @@ import chevronRight from './assets/ontario-icon-chevron-right.svg'
 
 export class OntarioIconChevronRight {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={chevronRight} />;

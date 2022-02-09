@@ -9,7 +9,7 @@ import pinLocationOn from './assets/ontario-icon-pin-location-on.svg';
 
 export class OntarioIconPinLocationOn {
 
-  @Prop() colour: "black" | "blue" | "grey";
+  @Prop() colour: "black" | "blue" | "grey" = "black";
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={pinLocationOn} />;
