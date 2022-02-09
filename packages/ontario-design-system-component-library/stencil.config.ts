@@ -17,6 +17,13 @@ export const config: Config = {
 		{
 			type: 'dist',
 			esmLoaderPath: '../loader',
+			copy: [
+				{
+					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/fonts',
+					dest: 'fonts',
+					warn: true,
+				},
+			],
 		},
 		{
 			type: 'dist-custom-elements-bundle',
@@ -27,6 +34,13 @@ export const config: Config = {
 		{
 			type: 'www',
 			serviceWorker: null, // disable service workers
+			copy: [
+				{
+					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/fonts',
+					dest: 'fonts',
+					warn: true,
+				},
+			],
 		},
 	],
 	testing: {
