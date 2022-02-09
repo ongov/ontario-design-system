@@ -5,10 +5,10 @@ describe('ontario-hint-expander', () => {
   it('should render a default hint expander', async () => {
     const page = await newSpecPage({
       components: [OntarioHintExpander],
-      html: `<ontario-hint-expander hint="This is the hint" content="This is the content" aria-label="This indicates that the hint can be expanded" hint-expander-id="hintExpanderId" aria-controls="hint-expander-controls">`,
+      html: `<ontario-hint-expander hint="This is the hint" content="This is the content" aria-label="This indicates that the hint can be expanded" element-id="hintExpanderId" aria-controls="hint-expander-controls">`,
     });
     expect(page.root).toEqualHtml(`
-      <ontario-hint-expander hint="This is the hint" content="This is the content" aria-label="This indicates that the hint can be expanded" hint-expander-id="hintExpanderId" aria-controls="hint-expander-controls">
+      <ontario-hint-expander hint="This is the hint" content="This is the content" aria-label="This indicates that the hint can be expanded" element-id="hintExpanderId" aria-controls="hint-expander-controls">
         <mock:shadow-root>
         <div class="ontario-hint-expander__container">
           <button class="ontario-hint-expander__button"
