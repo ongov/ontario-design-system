@@ -1,5 +1,5 @@
 import React from "react";
-import { OntarioButton } from "ontario-design-system-component-library-react";
+import { OntarioButton } from "@ontario-digital-service/ontario-design-system-component-library-react";
 
 const StoryOntarioButton = () => (
 	<>
