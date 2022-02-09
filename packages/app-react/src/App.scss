@@ -1,61 +1,58 @@
 .App {
-  /* text-align: center; */
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-
+	/* text-align: center; */
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+	animation: App-logo-spin infinite 20s linear;
+	height: 40vmin;
+	pointer-events: none;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 
 .App-content {
-  max-width: 62.5rem;
-  margin: 0 auto;
-  width: 100%;
+	max-width: 62.5rem;
+	margin: 0 auto;
+	width: 100%;
 }
 
 .content-layout {
-  display: grid;
-  height: 100vh;
-  grid-template-areas: 
-      "head head"
-      "nav main"
-      "foot foot";
-  grid-template-rows: 100px 1fr 100px;
-  grid-template-columns: 1fr 5fr;
+	display: grid;
+	height: 100vh;
+	grid-template-areas:
+		'header header header header'
+		'content content content content'
+		'footer footer footer footer';
+	grid-template-rows: auto 1fr 100px;
+	grid-template-columns: 1fr;
 }
 
-.content-layout > .header {
-  grid-area: head;
-}
+.content-layout > 
 
 .content-layout > .nav-bar {
-  grid-area: nav;
+	grid-area: nav;
 }
 
 .content-layout > .main-content {
-  grid-area: main;
+	grid-area: content;
 }
 
 .content-layout > .footer {
-  grid-area: foot;
+	grid-area: footer;
 }

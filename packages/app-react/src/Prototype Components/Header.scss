@@ -1,0 +1,30 @@
+.header {
+	grid-area: header;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	.ontario-row {
+		margin: 0 auto;
+		max-width: 72rem;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+	}
+}
+
+.header > .mainheader {
+	background-color: #1a1a1a;
+	color: white;
+	align-items: center;
+	justify-content: center;
+	height: 3.125rem;
+	width: 100%;
+}
+
+.header > .subheader {
+	padding: calc(0.5rem + 0.75rem) 0;
+	background-color: #404040;
+	overflow: hidden;
+	position: relative;
+}
