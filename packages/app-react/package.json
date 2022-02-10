@@ -21,7 +21,7 @@
 		"@ontario-digital-service/ontario-design-system-global-styles": "^0.0.1"
 	},
 	"scripts": {
-		"start": "react-scripts start",
+		"start": "react-scripts start --reset-cache",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
