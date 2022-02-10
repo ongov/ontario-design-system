@@ -1,4 +1,4 @@
-@import '../../ontario-design-system-component-library/src/global.scss';
+@import '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme';
 
 .App {
 	/* text-align: center; */
@@ -45,9 +45,7 @@
 	grid-template-columns: 1fr;
 }
 
-.content-layout > 
-
-.content-layout > .nav-bar {
+.content-layout > .content-layout > .nav-bar {
 	grid-area: nav;
 }
 

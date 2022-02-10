@@ -1,6 +1,6 @@
-@use "sass:math";
+@use 'sass:math';
 
-@import "../../../node_modules/@ontario-digital-service/ontario-design-system-design-tokens/dist/scss/variables";
+@import '../../../../node_modules/@ontario-digital-service/ontario-design-system-design-tokens/dist/scss/variables';
 
 /*
 *  Global variables
@@ -15,8 +15,8 @@
 ///   Rem value size
 
 @function rem-calc($size) {
-  $remSize: math.div($size, 16);
-  @return $remSize * 1rem;
+	$remSize: math.div($size, 16);
+	@return $remSize * 1rem;
 }
 
 // Radius for rounded corners (for example, buttons)
@@ -30,4 +30,4 @@ $max-value: $ontario-global-tokens-max-value;
 
 // Width values
 $standard-width: $ontario-global-tokens-standard-width;
-$full-width:  $ontario-global-tokens-full-width;
+$full-width: $ontario-global-tokens-full-width;
