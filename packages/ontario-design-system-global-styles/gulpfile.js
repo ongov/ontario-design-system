@@ -28,12 +28,12 @@ const processSass = opts => {
 		sassOptions.sourceComments = true;
 	}
 
-	src('./src/scss/theme.scss')
+	src('./src/styles/scss/theme.scss')
 		.pipe(sass(sassOptions).on('error', sass.logError))
 		.pipe(autoprefixer())
 		.pipe(concat(gulpif(opts.compress, 'ontario-theme.min.css', 'ontario-theme.css')))
 		.pipe(gulpif(opts.compress, minify()))
-		.pipe(dest(`${distDir}/styles`));
+		.pipe(dest(`${distDir}/styles/css/compiled`));
 
 	if (opts.callback) {
 		opts.callback();
@@ -56,7 +56,7 @@ task('sass:minify', done => {
 });
 
 task('sass:copy-dist', () => {
-	return src('src/scss/**/*.scss').pipe(dest('dist/styles/scss'));
+	return src('src/styles/scss/**/*.scss').pipe(dest('dist/styles/scss'));
 });
 
 task('sass:build-minify', parallel('sass:build', 'sass:minify'));

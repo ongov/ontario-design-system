@@ -1,6 +1,6 @@
 /// Base path for assets (fonts, images...),
 /// should not include trailing slash
-$asset-base-path: '..' !default;
+$asset-base-path: '../../..' !default;
 
 /* Asset URL builder */
 /// Creates URL for assets.
