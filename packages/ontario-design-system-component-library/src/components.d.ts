@@ -67,7 +67,7 @@ export namespace Components {
         /**
           * If there are multiple checkboxes, display each checkbox as an option
          */
-        "options": string;
+        "options"?: string;
         /**
           * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
          */

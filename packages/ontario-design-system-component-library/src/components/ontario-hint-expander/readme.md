@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property         | Attribute          | Description                                                                                                        | Type                   | Default     |
-| ---------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------ | ---------------------- | ----------- |
-| `ariaLabel`      | `aria-label`       | Include visually hidden text inside the label that describes to screen readers the availability of a hint expander | `string \| undefined`  | `undefined` |
-| `content`        | `content`          | Content to display as the hint, once the expander is toggled open                                                  | `string`               | `undefined` |
-| `hint`           | `hint`             | Text to display as the hint expander question/statement                                                            | `string`               | `undefined` |
-| `elementId` | `hint-expander-id` | Used to used to establish a relationship between hint text content and elements using aria-describedby.            | `string \| undefined`  | `undefined` |
-| `inputExists`    | `input-exists`     | Used to used check if the parent component is an input.                                                            | `boolean \| undefined` | `false`     |
+| Property      | Attribute      | Description                                                                                                        | Type                   | Default     |
+| ------------- | -------------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------- | ----------- |
+| `ariaLabel`   | `aria-label`   | Include visually hidden text inside the label that describes to screen readers the availability of a hint expander | `string \| undefined`  | `undefined` |
+| `content`     | `content`      | Content to display as the hint, once the expander is toggled open                                                  | `string`               | `undefined` |
+| `elementId`   | `element-id`   | Used to used to establish a relationship between hint text content and elements using aria-describedby.            | `string \| undefined`  | `undefined` |
+| `hint`        | `hint`         | Text to display as the hint expander question/statement                                                            | `string`               | `undefined` |
+| `inputExists` | `input-exists` | Used to used check if the parent component is an input.                                                            | `boolean \| undefined` | `false`     |
 
 
 ## Events

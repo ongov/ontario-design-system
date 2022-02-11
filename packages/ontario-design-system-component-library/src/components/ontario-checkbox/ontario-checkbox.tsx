@@ -52,7 +52,7 @@ export class OntarioCheckbox implements Checkbox {
   /**
    * If there are multiple checkboxes, display each checkbox as an option
    */
-  @Prop() options: string;
+  @Prop() options?: string;
 
   @State() internalOptions: string[];
 
@@ -98,7 +98,7 @@ export class OntarioCheckbox implements Checkbox {
           <div class="ontario-checkboxes__item">
             <input
               class="ontario-checkboxes__input"
-              id={checkbox.getId()}
+              id={this.getId()}
               name={checkbox.name}
               type="checkbox"
               value={checkbox.value}
@@ -106,7 +106,7 @@ export class OntarioCheckbox implements Checkbox {
               required={checkbox.required}
               onChange={checkbox.handleChange}
             />
-            <label class="ontario-checkboxes__label" htmlFor={checkbox.getId()}>
+            <label class="ontario-checkboxes__label" htmlFor={this.getId()}>
               {checkbox.checkboxLabel}
             </label>
 
