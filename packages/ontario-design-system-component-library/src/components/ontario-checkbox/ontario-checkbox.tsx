@@ -1,62 +1,17 @@
 import { Component, Element, h, Prop, Event, EventEmitter, State, Watch } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
+import { Checkbox } from './checkbox.interface';
 
 /**
- * Ontario Checkbox component properties
+ * Ontario Checkbox component
  */
-export interface OntarioCheckboxProperties {
-  /**
-    * The name for the checkbox (note that to group checkboxes to the same question, the name must be the same)
-    */
-  name: string;
-
-  /**
-   * The text to display as label. This will override the text provided through the Element Content.
-   *
-   * @example
-   * <ontario-checkbox name="checkbox-name" checkbox-label="checkbox label">This is a checkbox label</ontario-label>
-   *
-   * The resulting label will show `"checkbox label"`.
-   */
-  checkboxLabel: string;
-
-  /**
-   * The ID for the checkbox
-   */
-  elementId?: string;
-
-  /**
-   * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
-   */
-  required?: boolean;
-
-  /**
-   * Used to define whether the hint text component is required or not. If required, the value passed should be 'true'.
-   */
-  hintText?: boolean;
-
-  /**
-    * Used to define whether the hint expander component is required or not. If required, the value passed should be 'true'.
-    */
-  hintExpander?: boolean;
-
-  /**
-   * The checkbox content value
-   */
-  value: string;
-
-  /**
-   * If there are multiple checkboxes, display each checkbox as an option
-   */
-  options: string;
-}
 @Component({
   tag: 'ontario-checkbox',
   styleUrl: 'ontario-checkbox.scss',
   shadow: true,
 })
 
-export class OntarioCheckbox implements OntarioCheckboxProperties {
+export class OntarioCheckbox implements Checkbox {
   @Element() host: HTMLElement;
 
   /**
