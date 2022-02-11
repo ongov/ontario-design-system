@@ -31,7 +31,7 @@ export class OntarioHintExpander implements HintExpander {
   /**
    * Used to used to establish a relationship between hint text content and elements using aria-describedby.
    */
-  @Prop({ mutable: true }) hintExpanderId?: string;
+  @Prop({ mutable: true }) elementId?: string;
 
   /**
     * Used to used check if the parent component is an input.
@@ -68,11 +68,11 @@ export class OntarioHintExpander implements HintExpander {
   componentWillLoad() {
     this.ariaLabel = this.ariaLabel ?? this.hint;
     this.content = this.content ?? this.host.textContent;
-    this.hintExpanderId = this.hintExpanderId ?? uuid();
+    this.elementId = this.elementId ?? uuid();
   }
 
   public getId(): string {
-    return this.hintExpanderId ?? '';
+    return this.elementId ?? '';
   }
 
   render() {

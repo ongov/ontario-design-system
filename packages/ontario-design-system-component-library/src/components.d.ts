@@ -87,13 +87,13 @@ export namespace Components {
          */
         "content": string;
         /**
+          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
+         */
+        "elementId"?: string;
+        /**
           * Text to display as the hint expander question/statement
          */
         "hint": string;
-        /**
-          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
-         */
-        "hintExpanderId"?: string;
         /**
           * Used to used check if the parent component is an input.
          */
@@ -101,14 +101,14 @@ export namespace Components {
     }
     interface OntarioHintText {
         /**
+          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
+         */
+        "elementId"?: string;
+        /**
           * Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence.
           * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
          */
         "hint": string;
-        /**
-          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
-         */
-        "hintId"?: string;
         /**
           * Used to used check if the parent component is a checkbox.
          */
@@ -1361,13 +1361,13 @@ declare namespace LocalJSX {
          */
         "content"?: string;
         /**
+          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
+         */
+        "elementId"?: string;
+        /**
           * Text to display as the hint expander question/statement
          */
         "hint"?: string;
-        /**
-          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
-         */
-        "hintExpanderId"?: string;
         /**
           * Used to used check if the parent component is an input.
          */
@@ -1379,14 +1379,14 @@ declare namespace LocalJSX {
     }
     interface OntarioHintText {
         /**
+          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
+         */
+        "elementId"?: string;
+        /**
           * Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence.
           * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
          */
         "hint"?: string;
-        /**
-          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
-         */
-        "hintId"?: string;
         /**
           * Used to used check if the parent component is a checkbox.
          */
