@@ -81,12 +81,15 @@
   }
 }
 
-.ontario-input + .ontario-hint-expander__container {
+.ontario-input .ontario-hint-expander__checkbox-exists-true {
   margin-top: -$spacing-5;
 }
 
-.ontario-checkboxes__label + .ontario-hint-expander__container,
-.ontario-radios__label + .ontario-hint-expander__container {
+.ontario-hint-expander__checkbox-exists-true {
+  margin-left: $spacing-2;
+}
+
+.ontario-hint-expander__checkbox-exists-true {
   margin-top: $spacing-3;
 
   @media screen and (max-width: $small-breakpoint) {

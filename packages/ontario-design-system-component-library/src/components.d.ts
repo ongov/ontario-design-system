@@ -43,6 +43,40 @@ export namespace Components {
          */
         "type"?: 'primary' | 'secondary' | 'tertiary';
     }
+    interface OntarioCheckbox {
+        /**
+          * The label text for the checkbox
+         */
+        "checkboxLabel": string;
+        /**
+          * The ID for the checkbox
+         */
+        "elementId"?: string;
+        /**
+          * Used to define whether the hint expander component is required or not. If required, the value passed should be 'true'.
+         */
+        "hintExpander"?: boolean;
+        /**
+          * Used to define whether the hint text component is required or not. If required, the value passed should be 'true'.
+         */
+        "hintText"?: boolean;
+        /**
+          * The name for the checkbox (note that to group checkboxes to the same question, the name must be the same)
+         */
+        "name": string;
+        /**
+          * If there are multiple checkboxes, display each checkbox as an option
+         */
+        "options": string;
+        /**
+          * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
+         */
+        "required"?: boolean;
+        /**
+          * The checkbox content value
+         */
+        "value": string;
+    }
     interface OntarioHintExpander {
         /**
           * Include visually hidden text inside the label that describes to screen readers the availability of a hint expander
@@ -53,24 +87,32 @@ export namespace Components {
          */
         "content": string;
         /**
-          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
-         */
-        "elementId"?: string;
-        /**
           * Text to display as the hint expander question/statement
          */
         "hint": string;
-    }
-    interface OntarioHintText {
         /**
           * Used to used to establish a relationship between hint text content and elements using aria-describedby.
          */
-        "elementId"?: string;
+        "hintExpanderId"?: string;
+        /**
+          * Used to used check if the parent component is an input.
+         */
+        "inputExists"?: boolean;
+    }
+    interface OntarioHintText {
         /**
           * Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence.
           * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
          */
         "hint": string;
+        /**
+          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
+         */
+        "hintId"?: string;
+        /**
+          * Used to used check if the parent component is a checkbox.
+         */
+        "inputExists"?: boolean;
     }
     interface OntarioIconAccessibility {
         "colour": "black" | "blue" | "grey";
@@ -464,6 +506,12 @@ declare global {
     var HTMLOntarioButtonElement: {
         prototype: HTMLOntarioButtonElement;
         new (): HTMLOntarioButtonElement;
+    };
+    interface HTMLOntarioCheckboxElement extends Components.OntarioCheckbox, HTMLStencilElement {
+    }
+    var HTMLOntarioCheckboxElement: {
+        prototype: HTMLOntarioCheckboxElement;
+        new (): HTMLOntarioCheckboxElement;
     };
     interface HTMLOntarioHintExpanderElement extends Components.OntarioHintExpander, HTMLStencilElement {
     }
@@ -1116,6 +1164,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "ontario-button": HTMLOntarioButtonElement;
+        "ontario-checkbox": HTMLOntarioCheckboxElement;
         "ontario-hint-expander": HTMLOntarioHintExpanderElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
         "ontario-icon-accessibility": HTMLOntarioIconAccessibilityElement;
@@ -1264,6 +1313,44 @@ declare namespace LocalJSX {
          */
         "type"?: 'primary' | 'secondary' | 'tertiary';
     }
+    interface OntarioCheckbox {
+        /**
+          * The label text for the checkbox
+         */
+        "checkboxLabel"?: string;
+        /**
+          * The ID for the checkbox
+         */
+        "elementId"?: string;
+        /**
+          * Used to define whether the hint expander component is required or not. If required, the value passed should be 'true'.
+         */
+        "hintExpander"?: boolean;
+        /**
+          * Used to define whether the hint text component is required or not. If required, the value passed should be 'true'.
+         */
+        "hintText"?: boolean;
+        /**
+          * The name for the checkbox (note that to group checkboxes to the same question, the name must be the same)
+         */
+        "name"?: string;
+        /**
+          * Emitted when a keyboard input or mouse event occurs.
+         */
+        "onChangeEvent"?: (event: CustomEvent<any>) => void;
+        /**
+          * If there are multiple checkboxes, display each checkbox as an option
+         */
+        "options"?: string;
+        /**
+          * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
+         */
+        "required"?: boolean;
+        /**
+          * The checkbox content value
+         */
+        "value"?: string;
+    }
     interface OntarioHintExpander {
         /**
           * Include visually hidden text inside the label that describes to screen readers the availability of a hint expander
@@ -1274,13 +1361,17 @@ declare namespace LocalJSX {
          */
         "content"?: string;
         /**
-          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
-         */
-        "elementId"?: string;
-        /**
           * Text to display as the hint expander question/statement
          */
         "hint"?: string;
+        /**
+          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
+         */
+        "hintExpanderId"?: string;
+        /**
+          * Used to used check if the parent component is an input.
+         */
+        "inputExists"?: boolean;
         /**
           * Emitted when a keyboard input or mouse event occurs.
          */
@@ -1288,14 +1379,18 @@ declare namespace LocalJSX {
     }
     interface OntarioHintText {
         /**
-          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
-         */
-        "elementId"?: string;
-        /**
           * Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence.
           * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
          */
         "hint"?: string;
+        /**
+          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
+         */
+        "hintId"?: string;
+        /**
+          * Used to used check if the parent component is a checkbox.
+         */
+        "inputExists"?: boolean;
     }
     interface OntarioIconAccessibility {
         "colour"?: "black" | "blue" | "grey";
@@ -1703,6 +1798,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "my-component": MyComponent;
         "ontario-button": OntarioButton;
+        "ontario-checkbox": OntarioCheckbox;
         "ontario-hint-expander": OntarioHintExpander;
         "ontario-hint-text": OntarioHintText;
         "ontario-icon-accessibility": OntarioIconAccessibility;
@@ -1819,6 +1915,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
+            "ontario-checkbox": LocalJSX.OntarioCheckbox & JSXBase.HTMLAttributes<HTMLOntarioCheckboxElement>;
             "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
             "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
             "ontario-icon-accessibility": LocalJSX.OntarioIconAccessibility & JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;

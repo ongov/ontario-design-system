@@ -10,4 +10,9 @@ export interface HintExpander extends Hint {
 	 * Include visually hidden text inside the label that describes to screen readers the availability of a hint expander
 	 */
 	ariaLabel?: string;
+
+	/**
+	 * Used to used check if the parent component is an input.
+	 */
+	inputExists?: boolean;
 }

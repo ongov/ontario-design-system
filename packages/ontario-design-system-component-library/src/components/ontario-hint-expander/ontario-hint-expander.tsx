@@ -23,7 +23,6 @@ export class OntarioHintExpander implements HintExpander {
    * Content to display as the hint, once the expander is toggled open
    */
   @Prop({ mutable: true }) content: string;
-
   /**
    * Include visually hidden text inside the label that describes to screen readers the availability of a hint expander
    */
@@ -32,7 +31,12 @@ export class OntarioHintExpander implements HintExpander {
   /**
    * Used to used to establish a relationship between hint text content and elements using aria-describedby.
    */
-  @Prop({ mutable: true }) elementId?: string;
+  @Prop({ mutable: true }) hintExpanderId?: string;
+
+  /**
+    * Used to used check if the parent component is an input.
+    */
+  @Prop({ mutable: true }) inputExists?: boolean = false;
 
   /**
    * Emitted when a keyboard input or mouse event occurs.
@@ -64,16 +68,16 @@ export class OntarioHintExpander implements HintExpander {
   componentWillLoad() {
     this.ariaLabel = this.ariaLabel ?? this.hint;
     this.content = this.content ?? this.host.textContent;
-    this.elementId = this.elementId ?? uuid();
+    this.hintExpanderId = this.hintExpanderId ?? uuid();
   }
 
   public getId(): string {
-    return this.elementId ?? '';
+    return this.hintExpanderId ?? '';
   }
 
   render() {
     return (
-      <div class="ontario-hint-expander__container">
+      <div class={`ontario-hint-expander__container ontario-hint-expander__checkbox-exists-${this.inputExists}`}>
         <button class="ontario-hint-expander__button"
           onClick={this.onClick} id={`hint-expander-button-${this.getId()}`}
           aria-controls={`hint-expander-content-${this.getId()}`}

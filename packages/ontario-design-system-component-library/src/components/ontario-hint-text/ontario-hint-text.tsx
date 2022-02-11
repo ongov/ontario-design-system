@@ -29,10 +29,15 @@ export class OntarioHintText implements Hint {
 	/**
 	 * Used to used to establish a relationship between hint text content and elements using aria-describedby.
 	 */
-	@Prop({ mutable: true }) elementId?: string;
+	@Prop({ mutable: true }) hintId?: string;
+
+	/**
+	 * Used to used check if the parent component is a checkbox.
+	 */
+	@Prop({ mutable: true }) inputExists?: boolean = false;
 
 	public getId(): string {
-		return this.elementId ?? '';
+		return this.hintId ?? '';
 	}
 
 	/**
@@ -40,12 +45,12 @@ export class OntarioHintText implements Hint {
 	 */
 	componentWillLoad() {
 		this.hint = this.hint ?? this.host.textContent ?? '';
-		this.elementId = this.elementId ?? uuid();
+		this.hintId = this.hintId ?? uuid();
 	}
 
 	render() {
 		return (
-			<p id={this.elementId} class="ontario-hint" aria-hint={this.hint}>
+			<p id={this.hintId} class={`ontario-hint ontario-hint__checkbox-exists-${this.inputExists}`} aria-hint={this.hint}>
 				{this.hint}
 			</p>
 		);
