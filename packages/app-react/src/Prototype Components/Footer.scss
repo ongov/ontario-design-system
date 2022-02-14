@@ -1,0 +1,335 @@
+@import '../../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme';
+//$background: url('./svg/footer-default-supergraphic-logo.svg');
+
+.ontario-footer {
+	color: $ontario-colour-white;
+	padding: $spacing-9 $spacing-0;
+
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.ontario-footer .ontario-columns {
+	*:last-child {
+		margin-bottom: $spacing-0;
+	}
+
+	@media screen and (max-width: $medium-breakpoint) {
+		margin-bottom: $spacing-8;
+
+		&:last-of-type {
+			margin-bottom: $spacing-0;
+		}
+	}
+}
+
+.ontario-footer__links-container {
+	list-style: none;
+	margin: $spacing-0 $spacing-0 $spacing-4 $spacing-0;
+
+	@media screen and (min-width: $medium-breakpoint) {
+		margin-bottom: $spacing-2;
+	}
+
+	padding-left: 0;
+}
+
+.ontario-footer__links-container--inline {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+
+	@media screen and (min-width: $small-breakpoint) {
+		flex-direction: row;
+	}
+}
+
+// .ontario-footer__links-container--two-column-list {
+// 	column-count: 1;
+// 	display: block;
+// 	margin: 0;
+
+// 	@media screen and (min-width: $small-breakpoint) {
+// 		column-count: 2;
+
+// 		.ontario-footer__link {
+// 			padding: 0;
+// 			margin: 0 $spacing-4 $spacing-4 0;
+// 		}
+// 	}
+// }
+
+.ontario-footer__links-container li {
+	padding: $spacing-1 0;
+}
+
+.ontario-footer__link {
+	color: $ontario-colour-white;
+	display: inline-block;
+	padding: $spacing-2 $spacing-0;
+	margin: $spacing-0;
+	text-decoration: underline;
+
+	&:hover,
+	&:focus {
+		text-decoration: none;
+	}
+
+	&:visited,
+	&:active,
+	&:hover {
+		color: $ontario-colour-white;
+	}
+
+	@media screen and (min-width: $small-breakpoint) {
+		padding: 0;
+		margin: $spacing-0 $spacing-8 $spacing-4 $spacing-0;
+	}
+}
+
+.ontario-footer__copyright a {
+	margin: 0;
+}
+
+// .ontario-footer__links-container--social {
+// 	display: flex;
+// 	flex-direction: row;
+// 	flex-wrap: wrap;
+// }
+
+// .ontario-footer__links-container--social .ontario-footer__link {
+// 	background: transparent;
+// 	border-radius: 45%;
+// 	margin: $spacing-0 $spacing-4 $spacing-3 $spacing-0;
+// 	padding: $spacing-0;
+// 	outline: none;
+
+// 	height: calc(#{$spacing-8} + #{$spacing-2});
+// 	width: calc(#{$spacing-8} + #{$spacing-2});
+
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+
+// 	&:hover,
+// 	&:focus {
+// 		background-color: darken($ontario-colour-white, 100);
+
+// 		.ontario-icon {
+// 			fill: $ontario-colour-white;
+// 		}
+// 	}
+
+// 	@media screen and (min-width: $small-breakpoint) {
+// 		height: $spacing-8;
+// 		width: $spacing-8;
+// 	}
+// }
+
+// .ontario-footer__links-container--social .ontario-footer__link .ontario-icon {
+// 	fill: $ontario-colour-white;
+// 	width: 36px;
+// 	height: 36px;
+
+// 	@media screen and (min-width: $small-breakpoint) {
+// 		width: 32px;
+// 		height: 32px;
+// 	}
+// }
+
+.ontario-footer p {
+	max-width: $standard-width;
+	width: $full-width;
+
+	a {
+		color: $ontario-colour-white;
+		font-weight: 600;
+
+		&:visited {
+			color: $ontario-colour-white;
+		}
+
+		&:active {
+			color: darken($ontario-colour-white, 10);
+		}
+
+		&:focus,
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+.ontario-footer__ministry-logo {
+	width: $full-width;
+	max-width: 255px;
+}
+
+.ontario-button.ontario-footer__button {
+	background-color: $ontario-colour-black;
+	border: 2px solid $ontario-colour-white;
+	border-color: $ontario-colour-white;
+	color: $ontario-colour-white;
+	margin-bottom: $spacing-6;
+
+	&:hover,
+	&:focus {
+		background-color: darken($ontario-colour-white, 70);
+	}
+
+	&:active {
+		background-color: darken($ontario-colour-white, 60);
+	}
+}
+
+/* Supergraphic background */
+.ontario-footer--default,
+.ontario-footer--partnernship,
+.ontario-footer__expanded-top-section {
+	position: relative;
+
+	&:before {
+		background-color: darken($ontario-colour-white, 80);
+		background-repeat: no-repeat;
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: $full-width;
+		height: 100%;
+	}
+}
+
+.ontario-footer--default:before {
+	// background-image: url('./svg/footer-default-supergraphic-logo.svg');
+	background-image: url('/ontario-design-system-components/packages/app-react/src/Prototype\ Components/footer-default-supergraphic-logo.svg');
+}
+
+.ontario-footer__expanded-top-section:before {
+	//background-image: url('./footer-expanded-supergraphic-logo.svg');
+}
+
+//////////////////////////
+//  Footer variations  //
+/////////////////////////
+
+/* Default footer */
+.ontario-footer--default {
+	background-color: $ontario-colour-black;
+	border-bottom: 4px solid $ontario-greyscale-70;
+
+	&:before {
+		background-size: 112.5rem;
+		//background-position: calc(50vw - 73.5rem) - 64rem;
+
+		@media screen and (min-width: $small-breakpoint) {
+			background-size: 180rem;
+			//background-position: calc(50vw - 120rem) -106rem;
+		}
+
+		@media screen and (min-width: $medium-breakpoint) {
+			background-size: 275rem;
+			//background-position: calc(50vw - 187rem) -160rem;
+		}
+	}
+}
+
+/* Partnership footer */
+.ontario-footer--partnership {
+	background-color: $ontario-colour-black;
+}
+
+.ontario-footer__partnership-logo-container {
+	text-align: right;
+
+	@media screen and (max-width: $small-breakpoint) {
+		text-align: left;
+	}
+}
+
+.ontario-footer__ontario-logo {
+	display: inline-block;
+	height: 46px;
+	margin-bottom: $spacing-5;
+	margin-top: $spacing-0;
+
+	@media screen and (min-width: $medium-breakpoint) {
+		margin-top: -5px;
+	}
+}
+
+/* expanded footer */
+.ontario-footer--expanded {
+	padding-top: $spacing-0;
+	background-color: $ontario-colour-black;
+	border-bottom: 4px solid $ontario-greyscale-70;
+}
+
+// .ontario-footer__expanded-top-section {
+// 	background-color: darken($ontario-colour-white, 85);
+// 	padding: $spacing-9 $spacing-0;
+
+// 	&:before {
+// 		background-size: 165rem;
+// 		background-position: calc(50vw - 125rem) - 64rem;
+
+// 		@media screen and (min-width: $small-breakpoint) {
+// 			background-size: 250rem;
+// 			background-position: calc(50vw - 195rem) -106rem;
+// 		}
+// 		@media screen and (min-width: $medium-breakpoint) {
+// 			background-size: 305rem;
+// 			background-position: calc(50vw - 222rem) -160rem;
+// 		}
+// 	}
+// }
+
+.ontario-footer__expanded-top-section .ontario-footer__link {
+	text-decoration: underline;
+
+	&:hover,
+	&:focus {
+		text-decoration: none;
+	}
+
+	&:active {
+		color: darken($ontario-colour-white, 10);
+	}
+}
+
+.ontario-footer__expanded-top-section ul {
+	margin-bottom: 0;
+}
+
+.ontario-expanded-footer__one-third-block {
+	margin-bottom: $spacing-0;
+
+	&:first-of-type,
+	&:nth-child(2) {
+		margin-bottom: $spacing-8;
+	}
+
+	@media screen and (min-width: $small-breakpoint) {
+		margin-bottom: $spacing-0;
+
+		&:first-of-type {
+			margin-bottom: $spacing-8;
+		}
+
+		&:nth-child(2) {
+			margin-bottom: 0;
+		}
+	}
+
+	@media screen and (min-width: $medium-breakpoint) {
+		margin-bottom: $spacing-0;
+
+		&:first-of-type {
+			margin-bottom: $spacing-0;
+		}
+	}
+}
+
+.ontario-footer__expanded-bottom-section {
+	background-color: $ontario-colour-black;
+	padding-top: $spacing-9;
+}
