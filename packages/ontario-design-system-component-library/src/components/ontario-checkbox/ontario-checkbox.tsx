@@ -94,26 +94,43 @@ export class OntarioCheckbox implements Checkbox {
   render() {
     return (
       <div class="ontario-checkboxes">
-        {this.internalOptions.map((checkbox: any = {}) =>
-          <div class="ontario-checkboxes__item">
+        {this.internalOptions
+          ? this.internalOptions.map((checkbox: any = {}) =>
+            <div class="ontario-checkboxes__item">
+              <input
+                class="ontario-checkboxes__input"
+                id={`${checkbox.checkboxLabel}-${this.getId()}`}
+                name={checkbox.name}
+                type="checkbox"
+                value={checkbox.value}
+                checkbox-label={checkbox.checkboxLabel}
+                required={checkbox.required}
+                onChange={checkbox.handleChange}
+              />
+              <label class="ontario-checkboxes__label" htmlFor={`${this.checkboxLabel}-${this.getId()}`}>
+                {checkbox.checkboxLabel}
+              </label>
+
+              {checkbox.hintText && <ontario-hint-text hint={checkbox.hint} inputExists={checkbox.checkboxExists}></ontario-hint-text>}
+              {checkbox.hintExpander && <ontario-hint-expander hint={checkbox.hint} content={checkbox.content} aria-label={checkbox.ariaLabel} inputExists={checkbox.checkboxExists}></ontario-hint-expander>}
+            </div>
+          )
+          : <div class="ontario-checkboxes__item">
             <input
               class="ontario-checkboxes__input"
-              id={`${checkbox.checkboxLabel}-${this.getId()}`}
-              name={checkbox.name}
+              id={`${this.checkboxLabel}-${this.getId()}`}
+              name={this.name}
               type="checkbox"
-              value={checkbox.value}
-              checkbox-label={checkbox.checkboxLabel}
-              required={checkbox.required}
-              onChange={checkbox.handleChange}
+              value={this.value}
+              checkbox-label={this.checkboxLabel}
+              required={this.required}
+              onChange={this.handleChange}
             />
-            <label class="ontario-checkboxes__label" htmlFor={checkbox.elementId}>
-              {checkbox.checkboxLabel}
+            <label class="ontario-checkboxes__label" htmlFor={`${this.checkboxLabel}-${this.getId()}`}>
+              {this.checkboxLabel}
             </label>
-
-            {checkbox.hintText && <ontario-hint-text hint={checkbox.hint} checkbox-exists={checkbox.checkboxExists}></ontario-hint-text>}
-            {checkbox.hintExpander && <ontario-hint-expander hint={checkbox.hint} content={checkbox.content} aria-label={checkbox.ariaLabel} checkbox-exists={checkbox.checkboxExists}></ontario-hint-expander>}
           </div>
-        )}
+        }
       </div>
     );
   }
