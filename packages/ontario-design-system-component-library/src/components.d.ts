@@ -123,7 +123,7 @@ export namespace Components {
         "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconClose {
-        "colour": "black" | "blue" | "grey";
+        "colour": 'black' | 'blue' | 'grey' | 'white';
     }
     interface OntarioIconCloud {
         "colour": "black" | "blue" | "grey";
@@ -239,7 +239,7 @@ export namespace Components {
         "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconMenu {
-        "colour": "black" | "blue" | "grey";
+        "colour": 'black' | 'blue' | 'grey' | 'white';
     }
     interface OntarioIconMicrophoneOff {
         "colour": "black" | "blue" | "grey";
@@ -1348,7 +1348,7 @@ declare namespace LocalJSX {
         "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconClose {
-        "colour"?: "black" | "blue" | "grey";
+        "colour"?: 'black' | 'blue' | 'grey' | 'white';
     }
     interface OntarioIconCloud {
         "colour"?: "black" | "blue" | "grey";
@@ -1464,7 +1464,7 @@ declare namespace LocalJSX {
         "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconMenu {
-        "colour"?: "black" | "blue" | "grey";
+        "colour"?: 'black' | 'blue' | 'grey' | 'white';
     }
     interface OntarioIconMicrophoneOff {
         "colour"?: "black" | "blue" | "grey";
