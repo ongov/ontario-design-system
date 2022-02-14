@@ -68,10 +68,6 @@ export class OntarioCheckbox implements Checkbox {
    */
   @Event() changeEvent!: EventEmitter<any>;
 
-  public getId(): string {
-    return this.elementId ?? '';
-  }
-
   handleChange = (ev: Event) => {
     const input = ev.target as HTMLInputElement | null;
 
@@ -91,6 +87,10 @@ export class OntarioCheckbox implements Checkbox {
     this.parseOptions();
   }
 
+  public getId(): string {
+    return this.elementId ?? '';
+  }
+
   render() {
     return (
       <div class="ontario-checkboxes">
@@ -98,7 +98,7 @@ export class OntarioCheckbox implements Checkbox {
           <div class="ontario-checkboxes__item">
             <input
               class="ontario-checkboxes__input"
-              id={this.getId()}
+              id={`${checkbox.checkboxLabel}-${this.getId()}`}
               name={checkbox.name}
               type="checkbox"
               value={checkbox.value}
@@ -106,7 +106,7 @@ export class OntarioCheckbox implements Checkbox {
               required={checkbox.required}
               onChange={checkbox.handleChange}
             />
-            <label class="ontario-checkboxes__label" htmlFor={this.getId()}>
+            <label class="ontario-checkboxes__label" htmlFor={checkbox.elementId}>
               {checkbox.checkboxLabel}
             </label>
 
