@@ -1,6 +1,7 @@
 @import '~@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme';
 
-a {
+a,
+abbr {
 	text-decoration: none;
 }
 
@@ -9,32 +10,22 @@ a {
 	align-items: center;
 }
 
-.ontario-icon--white svg {
-	stroke: $ontario-colour-white !important;
-	fill: $ontario-colour-white !important;
+.ontario-application-header-container {
+	display: flex;
 }
 
 .ontario-application-header-menu-span {
 	margin-left: 0.75rem;
 }
 
-.ontario-header.ontario-application-header {
+.ontario-application-header {
 	display: flex;
 	align-items: center;
 	background-color: $ontario-colour-black;
 	color: $ontario-colour-white;
 	height: 3.4rem;
 	z-index: 5;
-}
-
-.ontario-show-for-medium {
-	border-radius: 4px;
-	color: #ffffff;
-	display: inline;
-	font-weight: 600;
-	line-height: 1.4375rem;
-	text-decoration: none;
-	white-space: nowrap;
+	width: 100%;
 }
 
 .ontario-header-button--with-outline {
@@ -71,8 +62,10 @@ a {
 .ontario-application-header__lang-toggle,
 .ontario-application-subheader__container,
 .ontario-application-subheader__menu-container,
-.ontario-application-subheader__menu {
+.ontario-application-subheader__menu,
+.ontario-application-main-header-container {
 	display: flex;
+	align-items: center;
 }
 
 .ontario-header__menu-toggler {
@@ -247,24 +240,44 @@ a {
 .ontario-application-navigation__container {
 	background: white;
 	position: absolute;
-	transform: translateY(-100%);
-	transition: transform 0.2s ease-in-out, visibility 0.1s ease;
+	top: calc(26.4rem);
 	width: 100%;
-	visibility: visible;
 	z-index: 4;
+
+	@media screen and (min-width: $small-breakpoint) {
+		background: white;
+		position: absolute;
+		top: calc(20rem);
+		width: 100%;
+		z-index: 4;
+	}
 
 	@media screen and (min-width: $medium-breakpoint) {
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 		border-radius: 4px;
-		display: grid;
 		position: absolute;
-		right: $spacing-4;
-		top: calc(450% + #{$spacing-2});
+		right: $spacing-3;
+		top: calc(10rem);
 		transition: none;
 		min-width: 290px;
 		max-width: 30%;
 		z-index: 3;
+		transition: none !important;
 	}
+}
+
+.nav-ul-closed {
+	transition: 0.1s ease-in-out;
+	transform: translateY(-200%);
+	visibility: hidden;
+	opacity: 0;
+}
+
+.nav-ul-opened {
+	transition: 0.3s ease-in-out;
+	transform: translateY(-100%);
+	visibility: visible;
+	opacity: 1;
 }
 
 .ontario-application-navigation.ontario-navigation--open .ontario-application-navigation__container {
@@ -328,7 +341,6 @@ a {
 }
 
 .ontario-application-overlay {
-	display: none;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -336,29 +348,4 @@ a {
 	width: 100%;
 	height: 100%;
 	z-index: 2;
-}
-
-.ontario-application-navigation--open {
-	.ontario-application-navigation .ontario-header-button {
-		visibility: visible;
-	}
-
-	.ontario-application-subheader .ontario-header-button {
-		visibility: hidden;
-	}
-
-	@media screen and (max-width: $medium-breakpoint) {
-		.ontario-application-subheader-menu__container {
-			position: relative;
-			z-index: 3;
-		}
-	}
-
-	.ontario-application-overlay {
-		display: block;
-
-		@media screen and (min-width: $medium-breakpoint) {
-			display: none;
-		}
-	}
 }
