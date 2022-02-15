@@ -58,7 +58,6 @@ See the [Design System textarea guidance](https://designsystem.ontario.ca/compon
 | `value`        | `value`         | The textarea content value.                                                                                 | `string \| undefined`               | `undefined` |
 
 
-
 ## Events
 
 | Event         | Description                             | Type                         |
