@@ -32,7 +32,7 @@ export class OntarioHintText implements Hint {
 	@Prop({ mutable: true }) elementId?: string;
 
 	/**
-	 * Used to used check if the parent component is a checkbox.
+	 * Used to used check if the parent component is an input.
 	 */
 	@Prop({ mutable: true }) inputExists?: boolean = false;
 

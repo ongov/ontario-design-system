@@ -5,6 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Hint } from "./utils/common.interface";
+import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
+import { CheckboxOption } from "./components/ontario-checkbox/checkboxoption.interface";
 export namespace Components {
     interface MyComponent {
         /**
@@ -45,21 +48,25 @@ export namespace Components {
     }
     interface OntarioCheckbox {
         /**
-          * The label text for the checkbox
-         */
-        "checkboxLabel": string;
-        /**
           * The ID for the checkbox
          */
         "elementId"?: string;
         /**
           * Used to define whether the hint expander component is required or not. If required, the value passed should be 'true'.
          */
-        "hintExpander"?: boolean;
+        "hintExpander"?: HintExpander;
         /**
           * Used to define whether the hint text component is required or not. If required, the value passed should be 'true'.
          */
-        "hintText"?: boolean;
+        "hintText"?: Hint;
+        /**
+          * The label text for the checkbox
+         */
+        "label": string;
+        /**
+          * The legend for the checkbox
+         */
+        "legend": string;
         /**
           * The name for the checkbox (note that to group checkboxes to the same question, the name must be the same)
          */
@@ -67,7 +74,7 @@ export namespace Components {
         /**
           * If there are multiple checkboxes, display each checkbox as an option
          */
-        "options"?: string;
+        "options": CheckboxOption[] | string;
         /**
           * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
          */
@@ -110,7 +117,7 @@ export namespace Components {
          */
         "hint": string;
         /**
-          * Used to used check if the parent component is a checkbox.
+          * Used to used check if the parent component is an input.
          */
         "inputExists"?: boolean;
     }
@@ -1315,21 +1322,25 @@ declare namespace LocalJSX {
     }
     interface OntarioCheckbox {
         /**
-          * The label text for the checkbox
-         */
-        "checkboxLabel"?: string;
-        /**
           * The ID for the checkbox
          */
         "elementId"?: string;
         /**
           * Used to define whether the hint expander component is required or not. If required, the value passed should be 'true'.
          */
-        "hintExpander"?: boolean;
+        "hintExpander"?: HintExpander;
         /**
           * Used to define whether the hint text component is required or not. If required, the value passed should be 'true'.
          */
-        "hintText"?: boolean;
+        "hintText"?: Hint;
+        /**
+          * The label text for the checkbox
+         */
+        "label"?: string;
+        /**
+          * The legend for the checkbox
+         */
+        "legend"?: string;
         /**
           * The name for the checkbox (note that to group checkboxes to the same question, the name must be the same)
          */
@@ -1341,7 +1352,7 @@ declare namespace LocalJSX {
         /**
           * If there are multiple checkboxes, display each checkbox as an option
          */
-        "options"?: string;
+        "options"?: CheckboxOption[] | string;
         /**
           * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
          */
@@ -1388,7 +1399,7 @@ declare namespace LocalJSX {
          */
         "hint"?: string;
         /**
-          * Used to used check if the parent component is a checkbox.
+          * Used to used check if the parent component is an input.
          */
         "inputExists"?: boolean;
     }

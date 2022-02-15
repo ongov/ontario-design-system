@@ -1,13 +1,7 @@
-import { Base } from '../../utils/common.interface';
-import { Hint } from '../../utils/common.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+import { Hint } from '../../utils/common.interface';
 
-export interface Checkbox extends Base {
-  /**
-   * The legend for the checkbox
-   */
-  legend: string;
-
+export interface CheckboxOption {
   /**
    * The name for the checkbox (note that to group checkboxes to the same question, the name must be the same)
    */
@@ -23,15 +17,6 @@ export interface Checkbox extends Base {
    */
   label: string;
 
-  /**
-   * If there are multiple inputs in a fieldset, display each input as an option
-   */
-  options?: string;
-
-  /**
-   * Used to define whether the hint text component is required or not. If required, the value passed should be 'true'.
-   */
-  hintText?: Hint;
 
   /**
    * Used to define whether the hint expander component is required or not. If required, the value passed should be 'true'.
@@ -39,12 +24,17 @@ export interface Checkbox extends Base {
   hintExpander?: HintExpander;
 
   /**
-   * Used to used check if the parent component is an input.
+   * Used to define whether the hint expander component is required or not. If required, the value passed should be 'true'.
    */
-  inputExists?: boolean;
+  hintText?: Hint;
+
+
 
   /**
    * The checkbox content value
    */
   value: string;
+
+  handleChange: ((event: Event) => void) | undefined;
+
 }

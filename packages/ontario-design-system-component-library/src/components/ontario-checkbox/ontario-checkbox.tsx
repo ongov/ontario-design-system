@@ -1,6 +1,7 @@
 import { Component, Element, h, Prop, Event, EventEmitter, State, Watch } from '@stencil/core';
-import { v4 as uuid } from 'uuid';
-import { Checkbox } from './checkbox.interface';
+import { CheckboxOption as CheckboxOption } from './checkboxoption.interface';
+import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+import { Hint } from '../../utils/common.interface';
 
 /**
  * Ontario Checkbox component
@@ -11,8 +12,14 @@ import { Checkbox } from './checkbox.interface';
   shadow: true,
 })
 
-export class OntarioCheckbox implements Checkbox {
+export class OntarioCheckbox implements CheckboxOption {
+
   @Element() host: HTMLElement;
+
+  /**
+   * The legend for the checkbox
+   */
+  @Prop() legend: string;
 
   /**
    * The name for the checkbox (note that to group checkboxes to the same question, the name must be the same)
@@ -22,7 +29,7 @@ export class OntarioCheckbox implements Checkbox {
   /**
    * The label text for the checkbox
    */
-  @Prop({ mutable: true }) checkboxLabel: string;
+  @Prop({ mutable: true }) label: string;
 
   /**
    * The ID for the checkbox
@@ -37,12 +44,12 @@ export class OntarioCheckbox implements Checkbox {
   /**
    * Used to define whether the hint text component is required or not. If required, the value passed should be 'true'.
    */
-  @Prop({ mutable: true }) hintText?: boolean = false;
+  @Prop({ mutable: true }) hintText?: Hint;
 
   /**
    * Used to define whether the hint expander component is required or not. If required, the value passed should be 'true'.
    */
-  @Prop({ mutable: true }) hintExpander?: boolean = false;
+  @Prop({ mutable: true }) hintExpander?: HintExpander;
 
   /**
    * The checkbox content value
@@ -52,14 +59,16 @@ export class OntarioCheckbox implements Checkbox {
   /**
    * If there are multiple checkboxes, display each checkbox as an option
    */
-  @Prop() options?: string;
+  @Prop() options: CheckboxOption[] | string;
 
-  @State() internalOptions: string[];
+  @State() internalOptions: CheckboxOption[];
 
   @Watch('options')
   parseOptions() {
-    if (this.options) {
+    if (!Array.isArray(this.options)) {
       this.internalOptions = JSON.parse(this.options);
+    } else {
+      this.internalOptions = this.options;
     }
   }
 
@@ -82,55 +91,59 @@ export class OntarioCheckbox implements Checkbox {
    * Set `hint` using internal component logic
    */
   componentWillLoad() {
-    this.checkboxLabel = this.checkboxLabel ?? this.host.textContent ?? '';
-    this.elementId = this.elementId ?? uuid();
+    this.label = this.label ?? this.host.textContent ?? '';
     this.parseOptions();
-  }
-
-  public getId(): string {
-    return this.elementId ?? '';
   }
 
   render() {
     return (
-      <div class="ontario-checkboxes">
-        {this.internalOptions
-          ? this.internalOptions.map((checkbox: any = {}) =>
-            <div class="ontario-checkboxes__item">
-              <input
-                class="ontario-checkboxes__input"
-                id={`${checkbox.value}-${this.getId()}`}
-                name={checkbox.name}
-                type="checkbox"
-                value={checkbox.value}
-                checkbox-label={checkbox.checkboxLabel}
-                required={checkbox.required}
-                onChange={checkbox.handleChange}
-              />
-              <label class="ontario-checkboxes__label" htmlFor={`${checkbox.value}-${this.getId()}`}>
-                {checkbox.checkboxLabel}
-              </label>
+      <div class="ontario-form-group">
+        <fieldset class="ontario-fieldset">
+          <legend class="ontario-fieldset__legend">
+            {this.legend}
+          </legend>
+          {this.hintText && <ontario-hint-text hint={this.hintText.hint} inputExists={this.hintText.inputExists}></ontario-hint-text>}
 
-              {checkbox.hintText && <ontario-hint-text hint={checkbox.hint} inputExists={checkbox.inputExists}></ontario-hint-text>}
-              {checkbox.hintExpander && <ontario-hint-expander hint={checkbox.hint} content={checkbox.content} aria-label={checkbox.ariaLabel} inputExists={checkbox.inputExists}></ontario-hint-expander>}
-            </div>
-          )
-          : <div class="ontario-checkboxes__item">
-            <input
-              class="ontario-checkboxes__input"
-              id={`${this.value}-${this.getId()}`}
-              name={this.name}
-              type="checkbox"
-              value={this.value}
-              checkbox-label={this.checkboxLabel}
-              required={this.required}
-              onChange={this.handleChange}
-            />
-            <label class="ontario-checkboxes__label" htmlFor={`${this.value}-${this.getId()}`}>
-              {this.checkboxLabel}
-            </label>
+          <div class="ontario-checkboxes">
+            {this.internalOptions
+              ? this.internalOptions.map((checkbox) =>
+                <div class="ontario-checkboxes__item">
+                  <input
+                    class="ontario-checkboxes__input"
+                    id={checkbox.name}
+                    name={checkbox.name}
+                    type="checkbox"
+                    value={checkbox.value}
+                    checkbox-label={checkbox.label}
+                    onChange={checkbox.handleChange}
+                  />
+                  <label class="ontario-checkboxes__label" htmlFor={checkbox.name}>
+                    {checkbox.label}
+                  </label>
+
+                  {checkbox.hintExpander && <ontario-hint-expander hint={checkbox.hintExpander.hint} content={checkbox.hintExpander.content} aria-label={checkbox.hintExpander.ariaLabel} checkbox-exists={checkbox.hintExpander.inputExists}></ontario-hint-expander>}
+                </div>
+              )
+              : <div class="ontario-checkboxes__item">
+                <input
+                  class="ontario-checkboxes__input"
+                  id={this.name}
+                  name={this.name}
+                  type="checkbox"
+                  value={this.value}
+                  checkbox-label={this.label}
+                  required={this.required}
+                  onChange={this.handleChange}
+                />
+                <label class="ontario-checkboxes__label" htmlFor={this.name}>
+                  {this.label}
+                </label>
+
+                {this.hintExpander && <ontario-hint-expander hint={this.hintExpander.hint} content={this.hintExpander.content} aria-label={this.hintExpander.ariaLabel} checkbox-exists={this.hintExpander.inputExists}></ontario-hint-expander>}
+              </div>
+            }
           </div>
-        }
+        </fieldset>
       </div>
     );
   }
