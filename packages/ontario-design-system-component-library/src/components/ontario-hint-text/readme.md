@@ -11,7 +11,7 @@
 | ------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |
 | `elementId`   | `element-id`   | Used to used to establish a relationship between hint text content and elements using aria-describedby.                                                                | `string \| undefined`  | `undefined` |
 | `hint`        | `hint`         | Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence. | `string`               | `undefined` |
-| `inputExists` | `input-exists` | Used to used check if the parent component is a checkbox.                                                                                                              | `boolean \| undefined` | `false`     |
+| `inputExists` | `input-exists` | Used to used check if the parent component is an input.                                                                                                                | `boolean \| undefined` | `false`     |
 
 
 ## Dependencies

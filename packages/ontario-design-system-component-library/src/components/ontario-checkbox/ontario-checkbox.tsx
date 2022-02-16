@@ -44,12 +44,12 @@ export class OntarioCheckbox implements CheckboxOption {
   /**
    * Used to define whether the hint text component is required or not. If required, the value passed should be 'true'.
    */
-  @Prop({ mutable: true }) hintText?: Hint;
+  @State() hintText?: Hint;
 
   /**
    * Used to define whether the hint expander component is required or not. If required, the value passed should be 'true'.
    */
-  @Prop({ mutable: true }) hintExpander?: HintExpander;
+  @State() hintExpander?: HintExpander;
 
   /**
    * The checkbox content value
