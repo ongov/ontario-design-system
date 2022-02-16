@@ -17,6 +17,9 @@ export interface CheckboxOption {
     */
   label: string;
 
+  /**
+  * Used to define hint text on element'.
+  */
   hintText?: string;
 
   // This boolean can be replaced and implied by whether the hintExpander object is null/undefined and has a length > 0.
@@ -28,12 +31,6 @@ export interface CheckboxOption {
     * Used to define whether the hint expander component is required or not. If required, the value passed should be 'true'.
     */
   hintExpander?: HintExpander;
-
-  // This boolean can be replaced and implied by whether the hintText object is null/undefined and has a length > 0.
-  // The team needs to decide which pattern to use and make it a standard to follow throughout for consistency.
-  // This is being added in now to match what's being passed into the options object through the HTML sample.
-  isHintText?: boolean;
-
 
   /**
     * The checkbox content value
