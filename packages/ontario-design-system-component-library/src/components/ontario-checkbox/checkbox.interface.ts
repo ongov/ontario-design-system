@@ -1,6 +1,6 @@
 import { Base } from '../../utils/common.interface';
-import { Hint } from '../../utils/common.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+import { CheckboxOption } from './checkboxoption.interface';
 
 export interface Checkbox extends Base {
   /**
@@ -24,14 +24,15 @@ export interface Checkbox extends Base {
   label: string;
 
   /**
-   * If there are multiple inputs in a fieldset, display each input as an option
+   * Used to define hint text on element'.
    */
-  options?: string;
+  hintText?: string;
 
   /**
-   * Used to define whether the hint text component is required or not. If required, the value passed should be 'true'.
+   * If there are multiple inputs in a fieldset, display each input as an option
    */
-  hintText?: Hint;
+  options?: string | CheckboxOption[];
+
 
   /**
    * Used to define whether the hint expander component is required or not. If required, the value passed should be 'true'.

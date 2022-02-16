@@ -44,11 +44,27 @@
 	<ontario-textarea name="response" label-caption="What do you like about ODS?" element-id="response">
 	</ontario-textarea>
 
-	<ontario-checkbox name="checkboxOne" label="Checkbox-1"></ontario-checkbox>
-
-	<ontario-checkbox legend="Are these checkboxes?"
-		options='[{"name": "Checkbox-1" , "value":"checkbox-1", "label":"checkbox-1-label"}, {"name": "Checkbox-2", "value":"checkbox-2", "label"
-			:"checkbox-2-label", "hintExpander":"true", "hint":"Hint expander", "hint-expander-content":"This is the content", "aria-label":"This indicates that the hint can be expanded", "inputExists":"true"}]'>
+	<ontario-checkbox legend="Do you have children?" options='[{
+			"name": "Checkbox-1",
+			"value": "checkbox-1",
+			"label": "checkbox-1-label",
+			"isHintText": "true",
+			"hintText": {
+				"hint": "This is a hint",
+				"inputExists": "true"}
+			},
+			{
+				"name": "Checkbox-2",
+				"value": "checkbox-2",
+				"label": "checkbox-2-label",
+				"isHintExpander": "true",
+				"hintExpander": {
+					"hint": "Hint expander",
+					"content": "This is the content",
+					"aria-label": "This indicates that the hint can be expanded",
+					"inputExists": "true"			}
+				}
+				]'>
 	</ontario-checkbox>
 
 	<script>

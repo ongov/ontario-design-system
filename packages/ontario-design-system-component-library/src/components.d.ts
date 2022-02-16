@@ -50,6 +50,10 @@ export namespace Components {
          */
         "elementId"?: string;
         /**
+          * Used to define hint text on element'.
+         */
+        "hintText"?: string;
+        /**
           * The label text for the checkbox
          */
         "label": string;
@@ -1315,6 +1319,10 @@ declare namespace LocalJSX {
           * The ID for the checkbox
          */
         "elementId"?: string;
+        /**
+          * Used to define hint text on element'.
+         */
+        "hintText"?: string;
         /**
           * The label text for the checkbox
          */

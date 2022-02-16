@@ -7,15 +7,3 @@
   width: $full-width;
   max-width: $standard-width;
 }
-
-.ontario-hint__checkbox-exists-true {
-  margin-left: $spacing-4;
-}
-
-.ontario-hint__checkbox-exists-true {
-  margin-top: $spacing-3;
-
-  @media screen and (max-width: $small-breakpoint) {
-      margin-top: $spacing-4;
-  }
-}

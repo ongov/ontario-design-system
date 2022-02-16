@@ -1,7 +1,7 @@
 import { Component, Element, h, Prop, Event, EventEmitter, State, Watch } from '@stencil/core';
-import { CheckboxOption as CheckboxOption } from './checkboxoption.interface';
+import { CheckboxOption } from './checkboxoption.interface';
+import { Checkbox } from './checkbox.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
-import { Hint } from '../../utils/common.interface';
 
 /**
  * Ontario Checkbox component
@@ -12,7 +12,7 @@ import { Hint } from '../../utils/common.interface';
   shadow: true,
 })
 
-export class OntarioCheckbox implements CheckboxOption {
+export class OntarioCheckbox implements CheckboxOption, Checkbox {
 
   @Element() host: HTMLElement;
 
@@ -41,10 +41,11 @@ export class OntarioCheckbox implements CheckboxOption {
    */
   @Prop({ mutable: true }) required?: boolean = false;
 
+
   /**
-   * Used to define whether the hint text component is required or not. If required, the value passed should be 'true'.
+   * Used to define hint text on element'.
    */
-  @State() hintText?: Hint;
+  @Prop() hintText?: string;
 
   /**
    * Used to define whether the hint expander component is required or not. If required, the value passed should be 'true'.
@@ -65,10 +66,12 @@ export class OntarioCheckbox implements CheckboxOption {
 
   @Watch('options')
   parseOptions() {
-    if (!Array.isArray(this.options)) {
-      this.internalOptions = JSON.parse(this.options);
-    } else {
-      this.internalOptions = this.options;
+    if (typeof (this.options) !== 'undefined') {
+      if (!Array.isArray(this.options)) {
+        this.internalOptions = JSON.parse(this.options);
+      } else {
+        this.internalOptions = this.options;
+      }
     }
   }
 
@@ -102,7 +105,7 @@ export class OntarioCheckbox implements CheckboxOption {
           <legend class="ontario-fieldset__legend">
             {this.legend}
           </legend>
-          {this.hintText && <ontario-hint-text hint={this.hintText.hint} inputExists={this.hintText.inputExists}></ontario-hint-text>}
+          <ontario-hint-text hint={this.hintText}></ontario-hint-text>
 
           <div class="ontario-checkboxes">
             {this.internalOptions
@@ -121,7 +124,7 @@ export class OntarioCheckbox implements CheckboxOption {
                     {checkbox.label}
                   </label>
 
-                  {checkbox.hintExpander && <ontario-hint-expander hint={checkbox.hintExpander.hint} content={checkbox.hintExpander.content} aria-label={checkbox.hintExpander.ariaLabel} checkbox-exists={checkbox.hintExpander.inputExists}></ontario-hint-expander>}
+                  {checkbox.hintExpander && <ontario-hint-expander hint={checkbox.hintExpander.hint} content={checkbox.hintExpander.content} aria-label={checkbox.hintExpander.ariaLabel} input-exists={checkbox.hintExpander.inputExists}></ontario-hint-expander>}
                 </div>
               )
               : <div class="ontario-checkboxes__item">
