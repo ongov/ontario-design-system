@@ -107,43 +107,24 @@ export class OntarioCheckbox implements CheckboxOption, Checkbox {
           <ontario-hint-text hint={this.hintText}></ontario-hint-text>
 
           <div class="ontario-checkboxes">
-            {this.internalOptions
-              ? this.internalOptions.map((checkbox) =>
-                <div class="ontario-checkboxes__item">
-                  <input
-                    class="ontario-checkboxes__input"
-                    id={checkbox.name}
-                    name={checkbox.name}
-                    type="checkbox"
-                    value={checkbox.value}
-                    checkbox-label={checkbox.label}
-                    onChange={checkbox.handleChange}
-                  />
-                  <label class="ontario-checkboxes__label" htmlFor={checkbox.name}>
-                    {checkbox.label}
-                  </label>
-
-                  {checkbox.hintExpander && <ontario-hint-expander hint={checkbox.hintExpander.hint} content={checkbox.hintExpander.content} aria-label={checkbox.hintExpander.ariaLabel} input-exists></ontario-hint-expander>}
-                </div>
-              )
-              : <div class="ontario-checkboxes__item">
+            {this.internalOptions.map((checkbox) =>
+              <div class="ontario-checkboxes__item">
                 <input
                   class="ontario-checkboxes__input"
-                  id={this.name}
-                  name={this.name}
+                  id={checkbox.name}
+                  name={checkbox.name}
                   type="checkbox"
-                  value={this.value}
-                  checkbox-label={this.label}
-                  required={this.required}
-                  onChange={this.handleChange}
+                  value={checkbox.value}
+                  checkbox-label={checkbox.label}
+                  onChange={checkbox.handleChange}
                 />
-                <label class="ontario-checkboxes__label" htmlFor={this.name}>
-                  {this.label}
+                <label class="ontario-checkboxes__label" htmlFor={checkbox.name}>
+                  {checkbox.label}
                 </label>
 
-                {this.hintExpander && <ontario-hint-expander hint={this.hintExpander.hint} content={this.hintExpander.content} aria-label={this.hintExpander.ariaLabel} input-exists></ontario-hint-expander>}
+                {checkbox.hintExpander && <ontario-hint-expander hint={checkbox.hintExpander.hint} content={checkbox.hintExpander.content} aria-label={checkbox.hintExpander.ariaLabel} input-exists></ontario-hint-expander>}
               </div>
-            }
+            )}
           </div>
         </fieldset>
       </div>
