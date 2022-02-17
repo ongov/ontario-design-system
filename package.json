@@ -10,6 +10,7 @@
     "test:unit": "lerna run test:unit",
     "test:e2e": "lerna run test:e2e",
     "clean": "lerna run clean",
-    "clean:full": "lerna run clean:full"
+    "clean:full": "lerna run clean:full",
+    "refresh": "npm run clean:full && npm run bootstrap && npm run build-libs"
   }
 }
