@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Header.scss';
+import './ontario-header.scss';
 import ontarioLogoDesktop from './ontario-logo--desktop.svg';
 import { ReactComponent as OntarioIconClose } from './ontario-icon-close.svg';
 import { ReactComponent as OntarioIconMenu } from './ontario-icon-menu.svg';
@@ -38,13 +38,13 @@ const Header = () => {
 						<div className="ontario-row">
 							<div className="ontario-columns ontario-small-12 ontario-application-subheader__container">
 								<p className="ontario-application-subheader__heading">
-									<a href="#">Design System</a>
+									<a href="/">Design System</a>
 								</p>
 								<div className="ontario-application-subheader__menu-container">
 									<div className="ontario-show-for-large">
 										<ul className="ontario-application-subheader__menu ">
 											<li>
-												<a href="#">Link 1</a>
+												<a href="ontario-button">Button</a>
 											</li>
 											<li>
 												<a href="#">Link 2</a>

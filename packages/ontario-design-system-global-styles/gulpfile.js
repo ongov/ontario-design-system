@@ -33,7 +33,7 @@ const processSass = opts => {
 		.pipe(autoprefixer())
 		.pipe(concat(gulpif(opts.compress, 'ontario-theme.min.css', 'ontario-theme.css')))
 		.pipe(gulpif(opts.compress, minify()))
-		.pipe(dest(`${distDir}/styles`));
+		.pipe(dest(`${distDir}/styles/css/compiled`));
 
 	if (opts.callback) {
 		opts.callback();

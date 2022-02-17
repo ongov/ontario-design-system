@@ -1,32 +1,40 @@
 @import '~@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme';
 
+p.ontario-lead-statement {
+	font-size: 1rem;
+	@media screen and (min-width: $small-breakpoint) {
+		font-size: 1.2rem;
+	}
+	@media screen and (min-width: $medium-breakpoint) {
+		font-size: 1.375rem;
+	}
+}
+
 .platform-homepage {
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .platform-homepage-banner {
+	padding: 3rem;
 	background-color: #367a76;
 	background-image: url('ds-supergraphic-element.svg');
-	padding: 5rem;
-	background-position-x: 55vw;
+	background-position-x: 40vw;
 	background-repeat: no-repeat;
-	background-size: 58rem;
+	background-size: 50rem;
 	background-position-y: -5rem;
-	max-width: 100vw;
+	margin-bottom: 5rem;
 }
 
 .platform-homepage-banner::before {
-    display:block;
 	background-image: url('ds-supergraphic-element.svg');
 	right: 0%;
 	position: absolute;
-	background-position-x: 55vw;
+	background-position-x: 40vw;
 	background-repeat: no-repeat;
-	background-size: 58rem;
-	background-position-y: -10rem;
-    width: 100%;
-    overflow: hidden;
-    height: 30rem;
+	background-size: 50rem;
+	background-position-y: -8rem;
+	width: 100%;
+	height: 30rem;
 	content: '';
 	z-index: -1;
 }
@@ -34,5 +42,11 @@
 .platform-homepage-banner--content {
 	padding: 1rem;
 	color: $ontario-colour-white;
-	width: 50%;
+	width: 100%;
+	@media screen and (min-width: $small-breakpoint) {
+		width: 70%;
+	}
+	@media screen and (min-width: $medium-breakpoint) {
+		width: 45%;
+	}
 }

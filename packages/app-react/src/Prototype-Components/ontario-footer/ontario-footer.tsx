@@ -1,5 +1,5 @@
 import React from 'react';
-import './Footer.scss';
+import './ontario-footer.scss';
 
 const Footer = () => (
 	<>

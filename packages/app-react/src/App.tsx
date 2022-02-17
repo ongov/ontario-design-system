@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.scss';
 import StoryRouter from './Story';
 import { BrowserRouter } from 'react-router-dom';
-import Header from './Prototype-Components/Header';
-import Footer from './Prototype-Components/Footer';
+import Header from './Prototype-Components/ontario-header/ontario-header';
+import Footer from './Prototype-Components/ontario-footer/ontario-footer';
 
 interface State {
 	value: number | null;
