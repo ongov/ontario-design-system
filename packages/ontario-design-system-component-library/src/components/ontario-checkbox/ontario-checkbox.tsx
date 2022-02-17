@@ -11,7 +11,6 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
   styleUrl: 'ontario-checkbox.scss',
   shadow: true,
 })
-
 export class OntarioCheckbox implements CheckboxOption, Checkbox {
 
   @Element() host: HTMLElement;
