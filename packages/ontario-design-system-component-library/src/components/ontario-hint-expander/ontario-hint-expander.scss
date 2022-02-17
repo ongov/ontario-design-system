@@ -81,16 +81,8 @@
   }
 }
 
-.ontario-input .ontario-hint-expander__checkbox-exists-true {
-  margin-top: -$spacing-5;
-}
-
 .ontario-hint-expander__checkbox-exists-true {
-  margin-left: $spacing-2;
-}
-
-.ontario-hint-expander__checkbox-exists-true {
-  margin-top: $spacing-3;
+  margin: $spacing-3 0 0 $spacing-2;
 
   @media screen and (max-width: $small-breakpoint) {
       margin-top: $spacing-4;

@@ -23,6 +23,7 @@ export class OntarioHintExpander implements HintExpander {
    * Content to display as the hint, once the expander is toggled open
    */
   @Prop({ mutable: true }) content: string;
+
   /**
    * Include visually hidden text inside the label that describes to screen readers the availability of a hint expander
    */

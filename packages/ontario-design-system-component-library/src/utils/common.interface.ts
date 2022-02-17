@@ -43,7 +43,6 @@ export interface Input extends Base {
 	 */
 	value?: string;
 
-
 	/**
 	 * Determines if the element is focused.
 	 */
