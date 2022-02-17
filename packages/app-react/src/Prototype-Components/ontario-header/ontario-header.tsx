@@ -23,7 +23,7 @@ const Header = () => {
 								</a>
 							</div>
 							<div className="ontario-columns ontario-small-6 ontario-application-header__lang-toggle">
-								<a href="header" className="ontario-header-button ontario-header-button--without-outline">
+								<a href="/" className="ontario-header-button ontario-header-button--without-outline">
 									<abbr title="Français" className="ontario-show-for-small-only">
 										FR
 									</abbr>
