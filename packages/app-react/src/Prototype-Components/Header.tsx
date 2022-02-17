@@ -38,7 +38,7 @@ const Header = () => {
 						<div className="ontario-row">
 							<div className="ontario-columns ontario-small-12 ontario-application-subheader__container">
 								<p className="ontario-application-subheader__heading">
-									<a href="#">Application name</a>
+									<a href="#">Design System</a>
 								</p>
 								<div className="ontario-application-subheader__menu-container">
 									<div className="ontario-show-for-large">

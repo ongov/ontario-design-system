@@ -41,7 +41,7 @@
 		'header header header header'
 		'content content content content'
 		'footer footer footer footer';
-	grid-template-rows: auto 1fr 100px;
+	grid-template-rows: auto 1fr auto;
 	grid-template-columns: 1fr;
 }
 
