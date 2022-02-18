@@ -11,8 +11,4 @@ export interface HintExpander extends Hint {
 	 */
 	ariaLabel?: string;
 
-	/**
-	 * Used to used check if the parent component is an input.
-	 */
-	inputExists?: boolean;
 }

@@ -40,11 +40,6 @@ export interface Checkbox extends Base {
   hintExpander?: HintExpander;
 
   /**
-   * Used to used check if the parent component is an input.
-   */
-  inputExists?: boolean;
-
-  /**
    * The checkbox content value
    */
   value: string;

@@ -35,11 +35,6 @@ export class OntarioHintExpander implements HintExpander {
   @Prop({ mutable: true }) elementId?: string;
 
   /**
-    * Used to used check if the parent component is an input.
-    */
-  @Prop({ mutable: true }) inputExists?: boolean = false;
-
-  /**
    * Emitted when a keyboard input or mouse event occurs.
    */
   @Event() toggleExpanderEvent!: EventEmitter<any>;
@@ -78,7 +73,7 @@ export class OntarioHintExpander implements HintExpander {
 
   render() {
     return (
-      <div class={`ontario-hint-expander__container ontario-hint-expander__checkbox-exists-${this.inputExists}`}>
+      <div class="ontario-hint-expander__container">
         <button class="ontario-hint-expander__button"
           onClick={this.onClick} id={`hint-expander-button-${this.getId()}`}
           aria-controls={`hint-expander-content-${this.getId()}`}

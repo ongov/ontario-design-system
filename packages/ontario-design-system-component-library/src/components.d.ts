@@ -95,10 +95,6 @@ export namespace Components {
           * Text to display as the hint expander question/statement
          */
         "hint": string;
-        /**
-          * Used to used check if the parent component is an input.
-         */
-        "inputExists"?: boolean;
     }
     interface OntarioHintText {
         /**
@@ -110,10 +106,6 @@ export namespace Components {
           * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
          */
         "hint": string;
-        /**
-          * Used to used check if the parent component is an input.
-         */
-        "inputExists"?: boolean;
     }
     interface OntarioIconAccessibility {
         "colour": "black" | "blue" | "grey";
@@ -1370,10 +1362,6 @@ declare namespace LocalJSX {
          */
         "hint"?: string;
         /**
-          * Used to used check if the parent component is an input.
-         */
-        "inputExists"?: boolean;
-        /**
           * Emitted when a keyboard input or mouse event occurs.
          */
         "onToggleExpanderEvent"?: (event: CustomEvent<any>) => void;
@@ -1388,10 +1376,6 @@ declare namespace LocalJSX {
           * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
          */
         "hint"?: string;
-        /**
-          * Used to used check if the parent component is an input.
-         */
-        "inputExists"?: boolean;
     }
     interface OntarioIconAccessibility {
         "colour"?: "black" | "blue" | "grey";

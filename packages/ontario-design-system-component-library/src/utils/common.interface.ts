@@ -76,8 +76,4 @@ export interface Hint extends Base {
 	 */
 	hint: string;
 
-	/**
-	 * Used to used check if the parent component is an input.
-	 */
-	inputExists?: boolean;
 }

@@ -31,11 +31,6 @@ export class OntarioHintText implements Hint {
 	 */
 	@Prop({ mutable: true }) elementId?: string;
 
-	/**
-	 * Used to used check if the parent component is an input.
-	 */
-	@Prop({ mutable: true }) inputExists?: boolean = false;
-
 	public getId(): string {
 		return this.elementId ?? '';
 	}
@@ -50,7 +45,7 @@ export class OntarioHintText implements Hint {
 
 	render() {
 		return (
-			<p id={this.getId()} class={`ontario-hint ontario-hint__checkbox-exists-${this.inputExists}`} aria-hint={this.hint}>
+			<p id={this.getId()} class="ontario-hint" aria-hint={this.hint}>
 				{this.hint}
 			</p>
 		);
