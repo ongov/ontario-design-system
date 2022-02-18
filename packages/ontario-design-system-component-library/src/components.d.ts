@@ -50,6 +50,10 @@ export namespace Components {
          */
         "hintText"?: string;
         /**
+          * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
+         */
+        "isRequired": boolean;
+        /**
           * The legend for the checkbox
          */
         "legend": string;
@@ -58,10 +62,6 @@ export namespace Components {
           * @example <ontario-checkbox   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Checkbox 1",        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "name": "Checkbox-2",        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkbox>
          */
         "options": CheckboxOption[] | string;
-        /**
-          * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
-         */
-        "required"?: "required" | "optional";
         /**
           * The checkbox content value
          */
@@ -1301,6 +1301,10 @@ declare namespace LocalJSX {
          */
         "hintText"?: string;
         /**
+          * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
+         */
+        "isRequired"?: boolean;
+        /**
           * The legend for the checkbox
          */
         "legend"?: string;
@@ -1313,10 +1317,6 @@ declare namespace LocalJSX {
           * @example <ontario-checkbox   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Checkbox 1",        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "name": "Checkbox-2",        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkbox>
          */
         "options"?: CheckboxOption[] | string;
-        /**
-          * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
-         */
-        "required"?: "required" | "optional";
         /**
           * The checkbox content value
          */

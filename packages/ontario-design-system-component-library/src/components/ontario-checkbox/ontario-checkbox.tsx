@@ -20,7 +20,7 @@ export class OntarioCheckbox implements Checkbox {
   /**
    * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
    */
-  @Prop() required?: "required" | "optional" = "optional";
+  @Prop() isRequired: boolean = false;
 
   /**
    * Define hint text on an element.
@@ -111,7 +111,7 @@ export class OntarioCheckbox implements Checkbox {
           <legend class="ontario-fieldset__legend">
             {this.legend}
             <span class="ontario-label__flag">
-              ({this.required})
+              {this.isRequired ? "(Required)" : "(Optional)"}
             </span>
           </legend>
           <ontario-hint-text hint={this.hintText}></ontario-hint-text>

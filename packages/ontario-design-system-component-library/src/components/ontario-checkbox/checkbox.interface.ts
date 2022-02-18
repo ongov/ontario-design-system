@@ -55,6 +55,6 @@ export interface Checkbox extends Base {
    * Used to define whether the input field is required or not.
    * If required, the value passed should be 'required'.
    */
-  required?: "required" | "optional";
+  isRequired: boolean;
 
 }
