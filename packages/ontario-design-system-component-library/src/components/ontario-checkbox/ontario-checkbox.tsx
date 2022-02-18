@@ -122,7 +122,9 @@ export class OntarioCheckbox implements CheckboxOption, Checkbox {
                   {checkbox.label}
                 </label>
 
-                {checkbox.hintExpander && <ontario-hint-expander hint={checkbox.hintExpander.hint} content={checkbox.hintExpander.content} aria-label={checkbox.hintExpander.ariaLabel} input-exists></ontario-hint-expander>}
+                <div class="ontario-checkboxes__hint-expander">
+                  {checkbox.hintExpander && <ontario-hint-expander hint={checkbox.hintExpander.hint} content={checkbox.hintExpander.content} aria-label={checkbox.hintExpander.ariaLabel} input-exists></ontario-hint-expander>}
+                </div>
               </div>
             )}
           </div>
