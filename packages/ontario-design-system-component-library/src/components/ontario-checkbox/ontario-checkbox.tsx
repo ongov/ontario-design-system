@@ -1,7 +1,6 @@
-import { Component, Element, h, Prop, Event, EventEmitter, State, Watch } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, State, Watch } from '@stencil/core';
 import { CheckboxOption } from './checkboxoption.interface';
 import { Checkbox } from './checkbox.interface';
-import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
 /**
  * Ontario Checkbox component
@@ -11,9 +10,7 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
   styleUrl: 'ontario-checkbox.scss',
   shadow: true,
 })
-export class OntarioCheckbox implements CheckboxOption, Checkbox {
-
-  @Element() host: HTMLElement;
+export class OntarioCheckbox implements Checkbox {
 
   /**
    * The legend for the checkbox
@@ -31,25 +28,14 @@ export class OntarioCheckbox implements CheckboxOption, Checkbox {
   @Prop({ mutable: true }) label: string;
 
   /**
-   * The ID for the checkbox
-   */
-  @Prop() elementId?: string;
-
-  /**
    * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
    */
-  @Prop({ mutable: true }) required?: boolean = false;
-
+  @Prop() required?: "required" | "optional" = "optional";
 
   /**
-   * Used to define hint text on element'.
+   * Define hint text on an element.
    */
   @Prop() hintText?: string;
-
-  /**
-   * Used to define whether the hint expander component is required or not. If required, the value passed should be 'true'.
-   */
-  @State() hintExpander?: HintExpander;
 
   /**
    * The checkbox content value
@@ -93,7 +79,6 @@ export class OntarioCheckbox implements CheckboxOption, Checkbox {
    * Set `hint` using internal component logic
    */
   componentWillLoad() {
-    this.label = this.label ?? this.host.textContent ?? '';
     this.parseOptions();
   }
 
@@ -103,6 +88,9 @@ export class OntarioCheckbox implements CheckboxOption, Checkbox {
         <fieldset class="ontario-fieldset">
           <legend class="ontario-fieldset__legend">
             {this.legend}
+            <span class="ontario-label__flag">
+              ({this.required})
+            </span>
           </legend>
           <ontario-hint-text hint={this.hintText}></ontario-hint-text>
 
@@ -116,7 +104,7 @@ export class OntarioCheckbox implements CheckboxOption, Checkbox {
                   type="checkbox"
                   value={checkbox.value}
                   checkbox-label={checkbox.label}
-                  onChange={checkbox.handleChange}
+                  onChange={this.handleChange}
                 />
                 <label class="ontario-checkboxes__label" htmlFor={checkbox.name}>
                   {checkbox.label}

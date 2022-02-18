@@ -46,11 +46,7 @@ export namespace Components {
     }
     interface OntarioCheckbox {
         /**
-          * The ID for the checkbox
-         */
-        "elementId"?: string;
-        /**
-          * Used to define hint text on element'.
+          * Define hint text on an element.
          */
         "hintText"?: string;
         /**
@@ -72,7 +68,7 @@ export namespace Components {
         /**
           * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
          */
-        "required"?: boolean;
+        "required"?: "required" | "optional";
         /**
           * The checkbox content value
          */
@@ -1308,11 +1304,7 @@ declare namespace LocalJSX {
     }
     interface OntarioCheckbox {
         /**
-          * The ID for the checkbox
-         */
-        "elementId"?: string;
-        /**
-          * Used to define hint text on element'.
+          * Define hint text on an element.
          */
         "hintText"?: string;
         /**
@@ -1338,7 +1330,7 @@ declare namespace LocalJSX {
         /**
           * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
          */
-        "required"?: boolean;
+        "required"?: "required" | "optional";
         /**
           * The checkbox content value
          */
