@@ -18,16 +18,6 @@ export class OntarioCheckbox implements Checkbox {
   @Prop() legend: string;
 
   /**
-   * The name for the checkbox (note that to group checkboxes to the same question, the name must be the same)
-   */
-  @Prop() name: string;
-
-  /**
-   * The label text for the checkbox
-   */
-  @Prop({ mutable: true }) label: string;
-
-  /**
    * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
    */
   @Prop() required?: "required" | "optional" = "optional";

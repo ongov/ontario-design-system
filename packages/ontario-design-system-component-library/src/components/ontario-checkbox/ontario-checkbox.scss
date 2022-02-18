@@ -6,6 +6,7 @@ $ontario-touch-target-size-mobile: 40px;
 $ontario-checkboxes-size: 28px;
 $ontario-checkboxes-size-mobile: 32px;
 $ontario-checkbox-border-size: 2px;
+$ontario-checkbox-box-shadow-outline: 4px;
 
 .ontario-checkboxes {
     margin-bottom: $spacing-7;
@@ -102,10 +103,10 @@ $ontario-checkbox-border-size: 2px;
 }
 
 .ontario-checkboxes__input:focus + .ontario-checkboxes__label:before {
-    -moz-box-shadow: 0 0 0 4px $ontario-colour-focus;
-    -webkit-box-shadow: 0 0 0 4px $ontario-colour-focus;
-    box-shadow: 0 0 0 4px $ontario-colour-focus;
-    outline: 4px solid transparent;
+    -moz-box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline $ontario-colour-focus;
+    -webkit-box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline $ontario-colour-focus;
+    box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline $ontario-colour-focus;
+    outline: $ontario-checkbox-box-shadow-outline solid transparent;
     transition: all 0.1s ease-in-out;
 }
 

@@ -50,19 +50,12 @@ export namespace Components {
          */
         "hintText"?: string;
         /**
-          * The label text for the checkbox
-         */
-        "label": string;
-        /**
           * The legend for the checkbox
          */
         "legend": string;
         /**
-          * The name for the checkbox (note that to group checkboxes to the same question, the name must be the same)
-         */
-        "name": string;
-        /**
-          * If there are multiple checkboxes, display each checkbox as an option
+          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
+          * @example <ontario-checkbox   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Checkbox 1",        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "name": "Checkbox-2",        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkbox>
          */
         "options": CheckboxOption[] | string;
         /**
@@ -1308,23 +1301,16 @@ declare namespace LocalJSX {
          */
         "hintText"?: string;
         /**
-          * The label text for the checkbox
-         */
-        "label"?: string;
-        /**
           * The legend for the checkbox
          */
         "legend"?: string;
-        /**
-          * The name for the checkbox (note that to group checkboxes to the same question, the name must be the same)
-         */
-        "name"?: string;
         /**
           * Emitted when a keyboard input or mouse event occurs.
          */
         "onChangeEvent"?: (event: CustomEvent<any>) => void;
         /**
-          * If there are multiple checkboxes, display each checkbox as an option
+          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
+          * @example <ontario-checkbox   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Checkbox 1",        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "name": "Checkbox-2",        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkbox>
          */
         "options"?: CheckboxOption[] | string;
         /**
