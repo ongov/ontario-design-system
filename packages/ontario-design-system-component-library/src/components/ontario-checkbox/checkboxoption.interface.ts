@@ -8,13 +8,22 @@ export interface CheckboxOption {
   name: string;
 
   /**
-    * The text to display as label. This will override the text provided through the Element Content.
-    *
-    * @example
-    * <ontario-checkbox name="checkbox-name" checkbox-label="checkbox label">This is a checkbox label</ontario-label>
-    *
-    * The resulting label will show `"checkbox label"`.
-    */
+   * The text to display as label.
+   *
+   * @example
+   * <ontario-checkbox
+   *   legend="This is a question?"
+   *   hint-text="This is the hint text"
+   *   options='[{
+   *     "name": "Checkbox 1",
+   *     "value": "checkbox-1-value",
+   *     "label": "Checkbox Label"
+   *   }]'
+   * >
+   * </ontario-checkbox>
+   *
+   * The resulting label will show `"Checkbox Label"`.
+   */
   label: string;
 
   /**
