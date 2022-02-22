@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkboxoption.interface";
 export namespace Components {
     interface MyComponent {
@@ -45,6 +46,11 @@ export namespace Components {
         "type"?: 'primary' | 'secondary' | 'tertiary';
     }
     interface OntarioCheckbox {
+        /**
+          * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
+          * @example <ontario-checkbox   legend="This is a question?"   options='[{     "name": "Checkbox 1",     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkbox>
+         */
+        "hintExpander": HintExpander | string;
         /**
           * Define hint text on an element.
          */
@@ -1293,6 +1299,11 @@ declare namespace LocalJSX {
         "type"?: 'primary' | 'secondary' | 'tertiary';
     }
     interface OntarioCheckbox {
+        /**
+          * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
+          * @example <ontario-checkbox   legend="This is a question?"   options='[{     "name": "Checkbox 1",     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkbox>
+         */
+        "hintExpander"?: HintExpander | string;
         /**
           * Define hint text on an element.
          */

@@ -1,6 +1,7 @@
 import { Component, h, Prop, Event, EventEmitter, State, Watch } from '@stencil/core';
 import { CheckboxOption } from './checkboxoption.interface';
 import { Checkbox } from './checkbox.interface';
+import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
 /**
  * Ontario Checkbox component
@@ -28,6 +29,48 @@ export class OntarioCheckbox implements Checkbox {
    * Define hint text on an element.
    */
   @Prop() hintText?: string;
+
+  /**
+   * Used to include the Hint Expander component underneath the Checkbox Legend.
+   * This is passed in as an object with key-value pairs.
+   *
+   * @example
+   * <ontario-checkbox
+   *   legend="This is a question?"
+   *   options='[{
+   *     "name": "Checkbox 1",
+   *     "value": "checkbox-1-value",
+   *     "label": "Checkbox Label",
+   *     "hintExpander": {
+   *			  "hint": "Hint expander",
+   * 		    "content": "This is the content",
+   *			  "aria-label": "This indicates that the hint can be expanded"
+   *		 }
+   *   }]'
+   *   hint-expander='{
+   *    "hint": "Hint expander",
+   *    "content": "This is the content, yup this is the content",
+   *    "aria-label": "This indicates that the hint can be expanded"
+      }'
+
+   * >
+   * </ontario-checkbox>
+   */
+  @Prop() hintExpander: HintExpander | string;
+
+  /**
+   * The hint expander options are re-assigned to the internalHintExpander array.
+   */
+  @State() private internalHintExpander: HintExpander;
+
+  @Watch('hintExpander')
+  private parseHintExpander() {
+    const hintExpander = this.hintExpander;
+    if (hintExpander) {
+      if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
+      else this.internalHintExpander = hintExpander;
+    }
+  }
 
   /**
    * Each property will be passed in through an object in the options array.
@@ -93,11 +136,9 @@ export class OntarioCheckbox implements Checkbox {
     this.changeEvent.emit(ev as any);
   };
 
-  /**
-   * Parse through options passed in as a string and convert to JSON.
-   */
   componentWillLoad() {
     this.parseOptions();
+    this.parseHintExpander();
   }
 
   render() {
@@ -110,7 +151,10 @@ export class OntarioCheckbox implements Checkbox {
               {this.isRequired ? "(Required)" : "(Optional)"}
             </span>
           </legend>
-          <ontario-hint-text hint={this.hintText}></ontario-hint-text>
+
+          {this.hintText && (
+            <ontario-hint-text hint={this.hintText}></ontario-hint-text>
+          )}
 
           <div class="ontario-checkboxes">
             {this.internalOptions.map((checkbox) =>
@@ -132,6 +176,15 @@ export class OntarioCheckbox implements Checkbox {
                   {checkbox.hintExpander && <ontario-hint-expander hint={checkbox.hintExpander.hint} content={checkbox.hintExpander.content} aria-label={checkbox.hintExpander.ariaLabel} input-exists></ontario-hint-expander>}
                 </div>
               </div>
+            )}
+
+            {this.internalHintExpander && (
+              <ontario-hint-expander
+                hint={this.internalHintExpander.hint}
+                content={this.internalHintExpander.content}
+                aria-label={this.internalHintExpander.ariaLabel}
+                input-exists
+              ></ontario-hint-expander>
             )}
           </div>
         </fieldset>
