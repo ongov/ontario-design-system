@@ -33,11 +33,11 @@
 ### Graph
 ```mermaid
 graph TD;
-  ontario-checkbox --> ontario-hint-text
-  ontario-checkbox --> ontario-hint-expander
+  ontario-checkboxes --> ontario-hint-text
+  ontario-checkboxes --> ontario-hint-expander
   ontario-hint-expander --> ontario-icon-chevron-up
   ontario-hint-expander --> ontario-icon-chevron-down
-  style ontario-checkbox fill:#f9f,stroke:#333,stroke-width:4px
+  style ontario-checkboxes fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

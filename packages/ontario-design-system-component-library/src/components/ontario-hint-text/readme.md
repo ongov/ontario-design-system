@@ -17,12 +17,12 @@
 
 ### Used by
 
- - [ontario-checkbox](../ontario-checkbox)
+ - [ontario-checkboxes](../ontario-checkbox)
 
 ### Graph
 ```mermaid
 graph TD;
-  ontario-checkbox --> ontario-hint-text
+  ontario-checkboxes --> ontario-hint-text
   style ontario-hint-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
