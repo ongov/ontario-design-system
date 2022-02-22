@@ -18,7 +18,7 @@ export interface Checkbox extends Base {
    * This is passed in as an object with key-value pairs.
    *
    * @example
-   * <ontario-checkbox
+   * <ontario-checkboxes
    *   legend="This is a question?"
    *   options='[{
    *     "name": "Checkbox 1",
@@ -37,7 +37,7 @@ export interface Checkbox extends Base {
       }'
 
    * >
-   * </ontario-checkbox>
+   * </ontario-checkboxes>
    */
   hintExpander: HintExpander | string;
 
@@ -49,7 +49,7 @@ export interface Checkbox extends Base {
    * there are two checkboxes to be displayed in the fieldset.
    *
    * @example
-   * <ontario-checkbox
+   * <ontario-checkboxes
    *   legend="This is a question?"
    *   hint-text="This is the hint text"
    *   options='[
@@ -78,7 +78,7 @@ export interface Checkbox extends Base {
    * Determine whether the input field is required.
    * If required, it should be set to true.
    * @example
-   * <ontario-checkbox ... is-required></ontario-checkbox>
+   * <ontario-checkboxes ... is-required></ontario-checkboxes>
    */
   isRequired: boolean;
 }

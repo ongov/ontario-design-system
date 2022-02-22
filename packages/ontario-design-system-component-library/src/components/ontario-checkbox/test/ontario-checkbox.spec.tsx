@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { OntarioCheckbox } from '../ontario-checkbox';
+import { OntarioCheckbox } from '../ontario-checkboxes';
 
 describe('ontario-checkbox', () => {
   it('renders', async () => {

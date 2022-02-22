@@ -7,8 +7,8 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
  * Ontario Checkbox component
  */
 @Component({
-  tag: 'ontario-checkbox',
-  styleUrl: 'ontario-checkbox.scss',
+  tag: 'ontario-checkboxes',
+  styleUrl: 'ontario-checkboxes.scss',
   shadow: true,
 })
 export class OntarioCheckbox implements Checkbox {
@@ -21,7 +21,7 @@ export class OntarioCheckbox implements Checkbox {
    * Determine whether the input field is required.
    * If required, it should be set to true.
    * @example
-   * <ontario-checkbox ... is-required></ontario-checkbox>
+   * <ontario-checkboxes ... is-required></ontario-checkboxes>
    */
   @Prop() isRequired: boolean = false;
 
@@ -35,7 +35,7 @@ export class OntarioCheckbox implements Checkbox {
    * This is passed in as an object with key-value pairs.
    *
    * @example
-   * <ontario-checkbox
+   * <ontario-checkboxes
    *   legend="This is a question?"
    *   options='[{
    *     "name": "Checkbox 1",
@@ -54,7 +54,7 @@ export class OntarioCheckbox implements Checkbox {
       }'
 
    * >
-   * </ontario-checkbox>
+   * </ontario-checkboxes>
    */
   @Prop() hintExpander: HintExpander | string;
 
@@ -80,7 +80,7 @@ export class OntarioCheckbox implements Checkbox {
    * there are two checkboxes to be displayed in the fieldset.
    *
    * @example
-   * <ontario-checkbox
+   * <ontario-checkboxes
    *   legend="This is a question?"
    *   hint-text="This is the hint text"
    *   options='[
@@ -101,7 +101,7 @@ export class OntarioCheckbox implements Checkbox {
    *      }
    *   ]'
    * >
-   * </ontario-checkbox>
+   * </ontario-checkboxes>
    */
   @Prop() options: CheckboxOption[] | string;
 

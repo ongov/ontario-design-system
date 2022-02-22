@@ -10,7 +10,7 @@ export interface CheckboxOption {
    * The text to display as label.
    *
    * @example
-   * <ontario-checkbox
+   * <ontario-checkboxes
    *   legend="This is a question?"
    *   hint-text="This is the hint text"
    *   options='[{
@@ -19,7 +19,7 @@ export interface CheckboxOption {
    *     "label": "Checkbox Label"
    *   }]'
    * >
-   * </ontario-checkbox>
+   * </ontario-checkboxes>
    *
    * The resulting label will show `"Checkbox Label"`.
    */
@@ -30,7 +30,7 @@ export interface CheckboxOption {
    * This is passed in as an object in the `options` with key-value pairs.
    *
    * @example
-   * <ontario-checkbox
+   * <ontario-checkboxes
    *   legend="This is a question?"
    *   hint-text="This is the hint text"
    *   options='[{
@@ -44,7 +44,7 @@ export interface CheckboxOption {
    *		 }
    *   }]'
    * >
-   * </ontario-checkbox>
+   * </ontario-checkboxes>
    */
   hintExpander?: HintExpander;
 
