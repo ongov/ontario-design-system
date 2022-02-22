@@ -1,5 +1,4 @@
 @import '~@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme';
-
 p.ontario-lead-statement {
 	font-size: 1rem;
 	@media screen and (min-width: $small-breakpoint) {
@@ -49,4 +48,36 @@ p.ontario-lead-statement {
 	@media screen and (min-width: $medium-breakpoint) {
 		width: 45%;
 	}
+}
+
+hr.dark {
+    border-bottom: 4px solid #1a1a1a;
+
+	margin: 2.5rem 0;
+}
+
+@mixin ontario-two-column-lists() {
+    column-count: 1;
+    display: block;
+
+    @media screen and (min-width: $small-breakpoint) {
+        column-count: 2;
+
+        li {
+            padding: 0;
+            margin: 0 $spacing-4 $spacing-4 0;
+        }
+    }
+}
+
+// To be used for markdown
+.ontario-lists--two-column-list-md {
+    ul {
+        @include ontario-two-column-lists;
+    }
+}
+
+// To be used for general lists
+.ontario-lists--two-column-list {
+    @include ontario-two-column-lists;
 }
