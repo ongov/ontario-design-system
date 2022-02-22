@@ -1,5 +1,5 @@
 import { Component, h, Prop, Event, EventEmitter, State, Watch } from '@stencil/core';
-import { CheckboxOption } from './checkboxoption.interface';
+import { CheckboxOption } from './checkbox-option.interface';
 import { Checkbox } from './checkbox.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 

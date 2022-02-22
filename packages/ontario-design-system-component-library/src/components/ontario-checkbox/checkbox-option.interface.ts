@@ -45,11 +45,11 @@ export interface CheckboxOption {
    *   }]'
    * >
    * </ontario-checkbox>
-    */
+   */
   hintExpander?: HintExpander;
 
   /**
-    * The checkbox content value
-    */
+   * The checkbox content value
+   */
   value: string;
 }

@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
-import { CheckboxOption } from "./components/ontario-checkbox/checkboxoption.interface";
+import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 export namespace Components {
     interface MyComponent {
         /**

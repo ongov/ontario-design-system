@@ -1,5 +1,6 @@
 import { Base } from '../../utils/common.interface';
-import { CheckboxOption } from './checkboxoption.interface';
+import { CheckboxOption } from './checkbox-option.interface';
+import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
 export interface Checkbox extends Base {
   /**
@@ -11,6 +12,34 @@ export interface Checkbox extends Base {
    * Define hint text on an element.
    */
   hintText?: string;
+
+  /**
+   * Used to include the Hint Expander component underneath the Checkbox Legend.
+   * This is passed in as an object with key-value pairs.
+   *
+   * @example
+   * <ontario-checkbox
+   *   legend="This is a question?"
+   *   options='[{
+   *     "name": "Checkbox 1",
+   *     "value": "checkbox-1-value",
+   *     "label": "Checkbox Label",
+   *     "hintExpander": {
+   *			  "hint": "Hint expander",
+   * 		    "content": "This is the content",
+   *			  "aria-label": "This indicates that the hint can be expanded"
+   *		 }
+   *   }]'
+   *   hint-expander='{
+   *    "hint": "Hint expander",
+   *    "content": "This is the content, yup this is the content",
+   *    "aria-label": "This indicates that the hint can be expanded"
+      }'
+
+   * >
+   * </ontario-checkbox>
+   */
+  hintExpander: HintExpander | string;
 
   /**
    * Each property will be passed in through an object in the options array.
