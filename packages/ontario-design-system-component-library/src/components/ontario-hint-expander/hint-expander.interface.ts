@@ -10,5 +10,4 @@ export interface HintExpander extends Hint {
 	 * Include visually hidden text inside the label that describes to screen readers the availability of a hint expander
 	 */
 	ariaLabel?: string;
-
 }
