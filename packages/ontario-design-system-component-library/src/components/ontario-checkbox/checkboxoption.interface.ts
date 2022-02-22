@@ -1,7 +1,6 @@
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
 export interface CheckboxOption {
-
   /**
    * The name for the checkbox (note that to group checkboxes to the same question, the name must be the same)
    */
@@ -27,7 +26,25 @@ export interface CheckboxOption {
   label: string;
 
   /**
-    * Used to define whether the hint expander component is required or not. If required, the value passed should be 'true'.
+   * Used to include the Hint Expander component underneath the Checkbox Label.
+   * This is passed in as an object in the `options` with key-value pairs.
+   *
+   * @example
+   * <ontario-checkbox
+   *   legend="This is a question?"
+   *   hint-text="This is the hint text"
+   *   options='[{
+   *     "name": "Checkbox 1",
+   *     "value": "checkbox-1-value",
+   *     "label": "Checkbox Label",
+   *     "hintExpander": {
+   *			  "hint": "Hint expander",
+   * 		    "content": "This is the content",
+   *			  "aria-label": "This indicates that the hint can be expanded"
+   *		 }
+   *   }]'
+   * >
+   * </ontario-checkbox>
     */
   hintExpander?: HintExpander;
 
@@ -35,5 +52,4 @@ export interface CheckboxOption {
     * The checkbox content value
     */
   value: string;
-
 }

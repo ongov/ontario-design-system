@@ -11,14 +11,16 @@ import { Checkbox } from './checkbox.interface';
   shadow: true,
 })
 export class OntarioCheckbox implements Checkbox {
-
   /**
    * The legend for the checkbox
    */
   @Prop() legend: string;
 
   /**
-   * Used to define whether the input field is required or not. If required, the value passed should be 'is-required'.
+   * Determine whether the input field is required.
+   * If required, it should be set to true.
+   * @example
+   * <ontario-checkbox ... is-required></ontario-checkbox>
    */
   @Prop() isRequired: boolean = false;
 
@@ -26,11 +28,6 @@ export class OntarioCheckbox implements Checkbox {
    * Define hint text on an element.
    */
   @Prop() hintText?: string;
-
-  /**
-   * The checkbox content value
-   */
-  @Prop() value: string;
 
   /**
    * Each property will be passed in through an object in the options array.
@@ -66,10 +63,9 @@ export class OntarioCheckbox implements Checkbox {
   @Prop() options: CheckboxOption[] | string;
 
   /**
-   * If the options are passed in as a string,
-   * they will be parsed to JSON and assigned to internalOptions.
+   * The options are re-assigned to the internalOptions array.
    */
-  @State() internalOptions: CheckboxOption[];
+  @State() private internalOptions: CheckboxOption[];
 
   @Watch('options')
   parseOptions() {

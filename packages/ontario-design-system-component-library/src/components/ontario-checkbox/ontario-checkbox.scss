@@ -83,7 +83,8 @@ $ontario-checkbox-box-shadow-outline: 4px;
     // ✔✔✔ Check mark styles ✔✔✔
     &:after {
         content: "";
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M0 2.667C0 1.194 1.194 0 2.667 0h18.667C22.806 0 24 1.194 24 2.667v18.667C24 22.806 22.806 24 21.333 24H2.667C1.194 24 0 22.806 0 21.333V2.667z' fill='%231a1a1a'/%3E%3Cpath d='M2.667 12.616l6.667 6.718 12-12.092-1.88-1.908L9.333 15.53l-4.787-4.8-1.88 1.894z' fill='%23fff'/%3E%3C/svg%3E%0A");        background-repeat: no-repeat;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M0 2.667C0 1.194 1.194 0 2.667 0h18.667C22.806 0 24 1.194 24 2.667v18.667C24 22.806 22.806 24 21.333 24H2.667C1.194 24 0 22.806 0 21.333V2.667z' fill='%231a1a1a'/%3E%3Cpath d='M2.667 12.616l6.667 6.718 12-12.092-1.88-1.908L9.333 15.53l-4.787-4.8-1.88 1.894z' fill='%23fff'/%3E%3C/svg%3E%0A");
+        background-repeat: no-repeat;
         height: $ontario-checkboxes-size + $ontario-checkbox-border-size;
         width: $ontario-checkboxes-size + $ontario-checkbox-border-size;
         position: absolute;
@@ -117,7 +118,6 @@ $ontario-checkbox-box-shadow-outline: 4px;
 .ontario-checkboxes__input:checked + .ontario-checkboxes__label:before {
     background-color: $ontario-colour-black;
 }
-
 
 .ontario-checkboxes__hint-expander {
   margin: $spacing-3 0 0 $spacing-2;

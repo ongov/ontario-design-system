@@ -50,7 +50,8 @@ export namespace Components {
          */
         "hintText"?: string;
         /**
-          * Used to define whether the input field is required or not. If required, the value passed should be 'is-required'.
+          * Determine whether the input field is required. If required, it should be set to true.
+          * @example <ontario-checkbox ... is-required></ontario-checkbox>
          */
         "isRequired": boolean;
         /**
@@ -62,10 +63,6 @@ export namespace Components {
           * @example <ontario-checkbox   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Checkbox 1",        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "name": "Checkbox-2",        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkbox>
          */
         "options": CheckboxOption[] | string;
-        /**
-          * The checkbox content value
-         */
-        "value": string;
     }
     interface OntarioHintExpander {
         /**
@@ -1301,7 +1298,8 @@ declare namespace LocalJSX {
          */
         "hintText"?: string;
         /**
-          * Used to define whether the input field is required or not. If required, the value passed should be 'is-required'.
+          * Determine whether the input field is required. If required, it should be set to true.
+          * @example <ontario-checkbox ... is-required></ontario-checkbox>
          */
         "isRequired"?: boolean;
         /**
@@ -1317,10 +1315,6 @@ declare namespace LocalJSX {
           * @example <ontario-checkbox   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Checkbox 1",        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "name": "Checkbox-2",        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkbox>
          */
         "options"?: CheckboxOption[] | string;
-        /**
-          * The checkbox content value
-         */
-        "value"?: string;
     }
     interface OntarioHintExpander {
         /**

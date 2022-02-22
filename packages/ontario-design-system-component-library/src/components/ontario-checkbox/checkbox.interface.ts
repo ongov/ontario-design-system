@@ -46,15 +46,10 @@ export interface Checkbox extends Base {
   options: string | CheckboxOption[];
 
   /**
-   * If the options are passed in as a string,
-   * they will be parsed to JSON and assigned to internalOptions.
-   */
-  internalOptions: CheckboxOption[]
-
-  /**
-   * Used to define whether the input field is required or not.
-   * If required, the value passed should be 'required'.
+   * Determine whether the input field is required.
+   * If required, it should be set to true.
+   * @example
+   * <ontario-checkbox ... is-required></ontario-checkbox>
    */
   isRequired: boolean;
-
 }
