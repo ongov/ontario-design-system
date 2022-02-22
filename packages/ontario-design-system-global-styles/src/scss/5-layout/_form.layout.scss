@@ -42,14 +42,8 @@
   font-family: $ontario-font-open-sans;
   font-size: 1rem;
   font-weight: 400;
-}
-
-.ontario-label__flag {
-  font-family: $ontario-font-open-sans;
-  font-size: 1rem;
-  font-weight: 400;
 
   &:before {
-      content: "\a0";
+    content: '\a0';
   }
 }
