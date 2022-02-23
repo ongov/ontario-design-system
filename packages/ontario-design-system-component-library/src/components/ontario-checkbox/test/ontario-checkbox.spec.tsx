@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { OntarioCheckbox } from '../ontario-checkboxes';
+import { OntarioCheckboxes } from '../ontario-checkboxes';
 
 describe('ontario-checkbox', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [OntarioCheckbox],
-      html: `<ontario-checkbox></ontario-checkbox>`,
+      components: [OntarioCheckboxes],
+      html: `<ontario-checkboxes></ontario-checkboxes>`,
     });
     expect(page.root).toEqualHtml(`
-      <ontario-checkbox>
+      <ontario-checkboxes>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </ontario-checkbox>
+      </ontario-checkboxes>
     `);
   });
 });
