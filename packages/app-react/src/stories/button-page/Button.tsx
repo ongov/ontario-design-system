@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './Button.scss';
 import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react';
 
@@ -17,6 +17,31 @@ const StoryOntarioButton = () => {
 			}
 		}
 	}, [iframeref]);
+
+	const [toggleHTML, setToggleHTML] = useState(false);
+	const [toggleSCSS, setToggleSCSS] = useState(false);
+	const [toggleCSS, setToggleCSS] = useState(false);
+
+	const handleToggleHTML = () => {
+		setToggleHTML(prev => !prev);
+
+		setToggleSCSS(false);
+		setToggleCSS(false);
+	};
+
+	const handleToggleSCSS = () => {
+		setToggleSCSS(prev => !prev);
+
+		setToggleHTML(false);
+		setToggleCSS(false);
+	};
+
+	const handleToggleCSS = () => {
+		setToggleCSS(prev => !prev);
+
+		setToggleSCSS(false);
+		setToggleHTML(false);
+	};
 
 	return (
 		<div className="button-page">
@@ -37,7 +62,41 @@ const StoryOntarioButton = () => {
 						<h5>Tertiary:</h5>
 						<OntarioButton type="tertiary">Click Me!</OntarioButton>
 					</div>
-					<button>List 1</button>
+					<div className="previewNav">
+						{toggleHTML ? (
+							<button className="on" onClick={handleToggleHTML}>
+								HTML
+							</button>
+						) : (
+							<button className="off" onClick={handleToggleHTML}>
+								HTML
+							</button>
+						)}
+						{toggleSCSS ? (
+							<button className="on" onClick={handleToggleSCSS}>
+								SCSS
+							</button>
+						) : (
+							<button className="off" onClick={handleToggleSCSS}>
+								SCSS
+							</button>
+						)}
+						{toggleCSS ? (
+							<button className="on" onClick={handleToggleCSS}>
+								CSS
+							</button>
+						) : (
+							<button className="off" onClick={handleToggleCSS}>
+								CSS
+							</button>
+						)}
+					</div>
+
+					<div className="previewCodeContent">
+						{toggleHTML ? <p className="previewNavContent--HTML"> HTML ahdashjdasdjasd</p> : <></>}
+						{toggleSCSS ? <p className="previewNavContent--SCSS">SCSS asdasdasdasda</p> : <></>}
+						{toggleCSS ? <p className="previewNavContent--C-CSS">CSS sajdashdjkasdhjkas</p> : <></>}
+					</div>
 				</div>
 
 				<div className="ontario-row">
