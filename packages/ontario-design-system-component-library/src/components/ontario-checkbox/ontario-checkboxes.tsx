@@ -11,7 +11,7 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
   styleUrl: 'ontario-checkboxes.scss',
   shadow: true,
 })
-export class OntarioCheckbox implements Checkbox {
+export class OntarioCheckboxes implements Checkbox {
   /**
    * The legend for the checkbox
    */
