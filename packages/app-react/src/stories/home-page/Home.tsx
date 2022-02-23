@@ -7,11 +7,13 @@ const Home = () => (
 		<div className="platform-homepage">
 			<div className="platform-homepage-banner">
 				<div className="ontario-row">
-					<div className="platform-homepage-banner--content">
-						<h1 className="ontario-h1">Ontario Design System </h1>
-						<p className="ontario-lead-statement">
-							Use this design system to create accessible and user-centred digital products and services that are consistent with the platform brand.
-						</p>
+					<div className="ontario-columns ontario-medium-12 ontario-large-12">
+						<div className="ontario-banner-font">
+							<h1 className="ontario-h1">Ontario Design System </h1>
+							<p className="ontario-lead-statement">
+								Use this design system to create accessible and user-centred digital products and services that are consistent with the platform brand.
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -57,11 +59,16 @@ const Home = () => (
 			<div className="ontario-row">
 				<div className="ontario-columns ontario-medium-6 ontario-large-6 ontario-margin-top-24-!">
 					<h3 className="ontario-h4">For designers</h3>
-					If you're creating mockups and prototypes, <a href="https://sb-designsystem.ontariogovernment.ca/alex/docs/documentation/for-designers.html">get the Ontario Design System fonts and prototyping kit</a>.
+					If you're creating mockups and prototypes,{' '}
+					<a href="https://sb-designsystem.ontariogovernment.ca/alex/docs/documentation/for-designers.html">get the Ontario Design System fonts and prototyping kit</a>.
 				</div>
 				<div className="ontario-columns  ontario-medium-6 ontario-large-6 ontario-margin-top-24-!">
 					<h3 className="ontario-h4">For developers</h3>
-					If you're coding the website, <a href="https://sb-designsystem.ontariogovernment.ca/alex/docs/documentation/for-developers.html">learn how to install the distribution package and create custom components</a>.
+					If you're coding the website,{' '}
+					<a href="https://sb-designsystem.ontariogovernment.ca/alex/docs/documentation/for-developers.html">
+						learn how to install the distribution package and create custom components
+					</a>
+					.
 				</div>
 			</div>
 			<div className="ontario-row">

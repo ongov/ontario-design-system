@@ -14,7 +14,8 @@ p.ontario-lead-statement {
 }
 
 .platform-homepage-banner {
-	padding: 3rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
 	background-color: #367a76;
 	background-image: url('ds-supergraphic-element.svg');
 	background-position-x: 40vw;
@@ -38,8 +39,7 @@ p.ontario-lead-statement {
 	z-index: -1;
 }
 
-.platform-homepage-banner--content {
-	padding: 1rem;
+.ontario-banner-font {
 	color: $ontario-colour-white;
 	width: 100%;
 	@media screen and (min-width: $small-breakpoint) {
@@ -52,7 +52,6 @@ p.ontario-lead-statement {
 
 hr.dark {
     border-bottom: 4px solid #1a1a1a;
-
 	margin: 2.5rem 0;
 }
 

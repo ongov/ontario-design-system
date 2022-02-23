@@ -1,27 +1,11 @@
 @import '~@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme';
 
 .button-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin: 2rem 0;
 }
 
-.ontario-button-container {
-    margin-top: 1rem;
-	padding: 3rem;
-	border: 2px solid;
-	padding: 20px;
-	resize: horizontal ;
-	overflow: auto;
-    max-width: 72rem;
-    width: 100%;
-}
-
-.ontario-button-container > .ontario-row {
-    display: flex;
-    flex-direction: column;
-}
-
-iframe .header {
-    display: none;
+.button-preview {
+    background-color: $ontario-greyscale-5;
+    margin: 1.5rem 0 2.5rem 0;
+    padding: 2rem 0;
 }
