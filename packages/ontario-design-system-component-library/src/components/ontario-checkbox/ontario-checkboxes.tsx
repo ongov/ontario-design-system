@@ -157,7 +157,7 @@ export class OntarioCheckboxes implements Checkbox {
           )}
 
           <div class="ontario-checkboxes">
-            {this.internalOptions.map((checkbox) =>
+            {this.internalOptions?.map((checkbox) =>
               <div class="ontario-checkboxes__item">
                 <input
                   class="ontario-checkboxes__input"
