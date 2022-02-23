@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { OntarioRadioButton } from '../ontario-radio-button';
+import { OntarioRadioButton } from '../ontario-radio-buttons';
 
 describe('ontario-radio-button', () => {
   it('renders', async () => {
