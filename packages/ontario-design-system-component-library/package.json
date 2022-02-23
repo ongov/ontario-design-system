@@ -39,6 +39,7 @@
 		"babel-jest": "^27.4.6",
 		"jest": "^26.0.24",
 		"jest-cli": "^26.6.3",
+		"jest-junit": "^13.0.0",
 		"jest-svg-transformer": "^1.0.0",
 		"prettier": "^2.5.1",
 		"puppeteer": "^10.0.0",
