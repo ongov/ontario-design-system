@@ -1,11 +1,13 @@
 @import '~@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme';
 
 .button-page {
-    margin: 2rem 0;
+	margin: 2rem 0;
 }
 
 .button-preview {
-    background-color: $ontario-greyscale-5;
-    margin: 1.5rem 0 2.5rem 0;
-    padding: 2rem 0;
+	margin-top: 1.5rem;
+	padding: rem-calc(24) rem-calc(24) 0 rem-calc(24);
+	background-color: $ontario-greyscale-5;
 }
+
+
