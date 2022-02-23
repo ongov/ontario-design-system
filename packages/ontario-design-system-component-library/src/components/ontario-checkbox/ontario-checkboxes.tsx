@@ -148,7 +148,7 @@ export class OntarioCheckboxes implements Checkbox {
           <legend class="ontario-fieldset__legend">
             {this.legend}
             <span class="ontario-label__flag">
-              {this.isRequired ? "(Required)" : "(Optional)"}
+              {this.isRequired ? "(required)" : "(optional)"}
             </span>
           </legend>
 
