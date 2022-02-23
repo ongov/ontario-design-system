@@ -58,6 +58,7 @@ See the [Design System input guidance](https://designsystem.ontario.ca/component
 | `value`        | `value`         | The input content value.                                                                                | `string \| undefined`                                                                                                                       | `undefined` |
 
 
+
 ## Events
 
 | Event         | Description                             | Type                         |
