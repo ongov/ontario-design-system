@@ -5,6 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
+import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 export namespace Components {
     interface MyComponent {
         /**
@@ -42,6 +44,31 @@ export namespace Components {
           * The type of button to render.
          */
         "type"?: 'primary' | 'secondary' | 'tertiary';
+    }
+    interface OntarioCheckboxes {
+        /**
+          * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
+          * @example <ontario-checkboxes   legend="This is a question?"   options='[{     "name": "Checkbox 1",     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
+         */
+        "hintExpander": HintExpander | string;
+        /**
+          * Define hint text on an element.
+         */
+        "hintText"?: string;
+        /**
+          * Determine whether the input field is required. If required, it should be set to true.
+          * @example <ontario-checkboxes ... is-required></ontario-checkboxes>
+         */
+        "isRequired": boolean;
+        /**
+          * The legend for the checkbox
+         */
+        "legend": string;
+        /**
+          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
+          * @example <ontario-checkboxes   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Checkbox 1",        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "name": "Checkbox-2",        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
+         */
+        "options": CheckboxOption[] | string;
     }
     interface OntarioHintExpander {
         /**
@@ -464,6 +491,12 @@ declare global {
     var HTMLOntarioButtonElement: {
         prototype: HTMLOntarioButtonElement;
         new (): HTMLOntarioButtonElement;
+    };
+    interface HTMLOntarioCheckboxesElement extends Components.OntarioCheckboxes, HTMLStencilElement {
+    }
+    var HTMLOntarioCheckboxesElement: {
+        prototype: HTMLOntarioCheckboxesElement;
+        new (): HTMLOntarioCheckboxesElement;
     };
     interface HTMLOntarioHintExpanderElement extends Components.OntarioHintExpander, HTMLStencilElement {
     }
@@ -1116,6 +1149,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "ontario-button": HTMLOntarioButtonElement;
+        "ontario-checkboxes": HTMLOntarioCheckboxesElement;
         "ontario-hint-expander": HTMLOntarioHintExpanderElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
         "ontario-icon-accessibility": HTMLOntarioIconAccessibilityElement;
@@ -1263,6 +1297,35 @@ declare namespace LocalJSX {
           * The type of button to render.
          */
         "type"?: 'primary' | 'secondary' | 'tertiary';
+    }
+    interface OntarioCheckboxes {
+        /**
+          * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
+          * @example <ontario-checkboxes   legend="This is a question?"   options='[{     "name": "Checkbox 1",     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
+         */
+        "hintExpander"?: HintExpander | string;
+        /**
+          * Define hint text on an element.
+         */
+        "hintText"?: string;
+        /**
+          * Determine whether the input field is required. If required, it should be set to true.
+          * @example <ontario-checkboxes ... is-required></ontario-checkboxes>
+         */
+        "isRequired"?: boolean;
+        /**
+          * The legend for the checkbox
+         */
+        "legend"?: string;
+        /**
+          * Emitted when a keyboard input or mouse event occurs.
+         */
+        "onChangeEvent"?: (event: CustomEvent<any>) => void;
+        /**
+          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
+          * @example <ontario-checkboxes   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Checkbox 1",        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "name": "Checkbox-2",        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
+         */
+        "options"?: CheckboxOption[] | string;
     }
     interface OntarioHintExpander {
         /**
@@ -1703,6 +1766,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "my-component": MyComponent;
         "ontario-button": OntarioButton;
+        "ontario-checkboxes": OntarioCheckboxes;
         "ontario-hint-expander": OntarioHintExpander;
         "ontario-hint-text": OntarioHintText;
         "ontario-icon-accessibility": OntarioIconAccessibility;
@@ -1819,6 +1883,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
+            "ontario-checkboxes": LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
             "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
             "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
             "ontario-icon-accessibility": LocalJSX.OntarioIconAccessibility & JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;

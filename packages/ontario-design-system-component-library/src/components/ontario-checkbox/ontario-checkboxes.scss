@@ -1,0 +1,128 @@
+@use "sass:math";
+@import '../../global.scss';
+
+$ontario-touch-target-size: 36px;
+$ontario-touch-target-size-mobile: 40px;
+$ontario-checkboxes-size: 28px;
+$ontario-checkboxes-size-mobile: 32px;
+$ontario-checkbox-border-size: 2px;
+$ontario-checkbox-box-shadow-outline: 4px;
+
+.ontario-checkboxes {
+    margin-bottom: $spacing-7;
+    max-width: $standard-width;
+}
+
+.ontario-checkboxes__item {
+    position: relative;
+    margin: 0 0 $spacing-4;
+    padding: 0 0 0 $spacing-6;
+    min-height: $ontario-checkboxes-size;
+    box-sizing: content-box;
+    &:last-of-type {
+        margin: 0;
+    }
+    @media screen and (max-width: $small-breakpoint) {
+        padding: 0 0 0$spacing-7;
+        min-height: $ontario-checkboxes-size-mobile;
+    }
+}
+
+.ontario-checkboxes__input {
+    cursor: pointer;
+    margin: 0;
+    position: absolute;
+    top: -$ontario-checkbox-border-size;
+    left: -$ontario-checkbox-border-size;
+    opacity: 0;
+    width: $ontario-touch-target-size;
+    height: $ontario-touch-target-size;
+    z-index: 1;
+
+    // prevent blue default highlighting of input on android
+    -webkit-tap-highlight-color: transparent;
+
+    @media screen and (max-width: $small-breakpoint) {
+        width: $ontario-touch-target-size-mobile;
+        height: $ontario-touch-target-size-mobile;
+    }
+}
+
+.ontario-checkboxes__label {
+    display: inline-block;
+    cursor: pointer;
+    line-height: 1.5;
+    margin: $spacing-1 0;
+    padding: 0 $spacing-4;
+    width: auto;
+    white-space: normal;
+
+    @media screen and (max-width: $small-breakpoint) {
+        margin: 0.33rem 0;
+    }
+
+    // [ ] Check box styles
+    &:before {
+        content: "";
+        border: $ontario-checkbox-border-size solid $ontario-colour-black;
+        border-radius: $global-radius;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: $ontario-checkboxes-size-mobile;
+        height: $ontario-checkboxes-size-mobile;
+        transition: border 0.1s ease-in-out;
+        display: block;
+
+        @media screen and (min-width: $small-breakpoint) {
+            width: $ontario-checkboxes-size;
+            height: $ontario-checkboxes-size;
+        }
+    }
+
+    // ✔✔✔ Check mark styles ✔✔✔
+    &:after {
+        content: "";
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M0 2.667C0 1.194 1.194 0 2.667 0h18.667C22.806 0 24 1.194 24 2.667v18.667C24 22.806 22.806 24 21.333 24H2.667C1.194 24 0 22.806 0 21.333V2.667z' fill='%231a1a1a'/%3E%3Cpath d='M2.667 12.616l6.667 6.718 12-12.092-1.88-1.908L9.333 15.53l-4.787-4.8-1.88 1.894z' fill='%23fff'/%3E%3C/svg%3E%0A");
+        background-repeat: no-repeat;
+        height: $ontario-checkboxes-size + $ontario-checkbox-border-size;
+        width: $ontario-checkboxes-size + $ontario-checkbox-border-size;
+        position: absolute;
+        top: math.div($ontario-checkbox-border-size, 2);
+        left: math.div($ontario-checkbox-border-size, 2);
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        display: block;
+        @media screen and (max-width: $small-breakpoint) {
+            height: $ontario-checkboxes-size-mobile +
+                $ontario-checkbox-border-size;
+            width: $ontario-checkboxes-size-mobile +
+                $ontario-checkbox-border-size;
+        }
+    }
+}
+
+.ontario-checkboxes__input:focus + .ontario-checkboxes__label:before {
+    -moz-box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline $ontario-colour-focus;
+    -webkit-box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline $ontario-colour-focus;
+    box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline $ontario-colour-focus;
+    outline: $ontario-checkbox-box-shadow-outline solid transparent;
+    transition: all 0.1s ease-in-out;
+}
+
+.ontario-checkboxes__input:checked + .ontario-checkboxes__label:after {
+    opacity: 1;
+}
+
+.ontario-checkboxes__input:checked + .ontario-checkboxes__label:before {
+    background-color: $ontario-colour-black;
+}
+
+.ontario-checkboxes__hint-expander {
+  margin: $spacing-3 0 0 $spacing-2;
+
+  @media screen and (max-width: $small-breakpoint) {
+    margin-top: $spacing-4;
+  }
+}
