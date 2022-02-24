@@ -1,0 +1,59 @@
+.ontario-form-group:last-of-type {
+	margin-bottom: $spacing-8;
+}
+
+.ontario-fieldset__legend {
+	color: $ontario-colour-black;
+	font-family: $ontario-font-raleway-modified;
+	font-size: 1.1875rem;
+	font-weight: 700;
+	margin: 0 0 $spacing-4 0;
+	line-height: 1.5;
+	max-width: 38.75em;
+	white-space: normal;
+	width: $full-width;
+
+	@media screen and (max-width: $small-breakpoint) {
+		font-size: 1.125rem;
+		line-height: 1.56;
+	}
+}
+
+.ontario-fieldset__legend--large,
+.ontario-fieldset__legend--heading {
+	font-size: 1.75rem;
+	letter-spacing: 0.02rem;
+	line-height: 1.2;
+
+	h1 {
+		display: inline-block;
+		font-size: inherit;
+		margin: 0;
+	}
+
+	@media screen and (max-width: $small-breakpoint) {
+		font-size: 1.4375rem;
+		line-height: 1.39;
+	}
+}
+
+.ontario-fieldset__legend-required-flag,
+.ontario-fieldset__legend-optional-flag {
+	font-family: $ontario-font-open-sans;
+	font-size: 1rem;
+	font-weight: 400;
+
+	&:before {
+		content: '\a0';
+	}
+}
+
+.ontario-label__flag {
+	font-family: $ontario-font-open-sans;
+	font-size: 1rem;
+	font-weight: 400;
+
+	&:before {
+		content: '\a0';
+	}
+}

@@ -11,7 +11,7 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
   styleUrl: 'ontario-checkboxes.scss',
   shadow: true,
 })
-export class OntarioCheckbox implements Checkbox {
+export class OntarioCheckboxes implements Checkbox {
   /**
    * The legend for the checkbox
    */
@@ -148,7 +148,7 @@ export class OntarioCheckbox implements Checkbox {
           <legend class="ontario-fieldset__legend">
             {this.legend}
             <span class="ontario-label__flag">
-              {this.isRequired ? "(Required)" : "(Optional)"}
+              {this.isRequired ? "(required)" : "(optional)"}
             </span>
           </legend>
 
@@ -157,7 +157,7 @@ export class OntarioCheckbox implements Checkbox {
           )}
 
           <div class="ontario-checkboxes">
-            {this.internalOptions.map((checkbox) =>
+            {this.internalOptions?.map((checkbox) =>
               <div class="ontario-checkboxes__item">
                 <input
                   class="ontario-checkboxes__input"
