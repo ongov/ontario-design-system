@@ -24,6 +24,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [ontario-checkboxes](../ontario-checkbox)
+
 ### Depends on
 
 - [ontario-icon-chevron-up](../ontario-icon)
@@ -34,6 +38,7 @@
 graph TD;
   ontario-hint-expander --> ontario-icon-chevron-up
   ontario-hint-expander --> ontario-icon-chevron-down
+  ontario-checkboxes --> ontario-hint-expander
   style ontario-hint-expander fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

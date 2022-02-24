@@ -13,6 +13,19 @@
 | `hint`      | `hint`       | Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence. | `string`              | `undefined` |
 
 
+## Dependencies
+
+### Used by
+
+ - [ontario-checkboxes](../ontario-checkbox)
+
+### Graph
+```mermaid
+graph TD;
+  ontario-checkboxes --> ontario-hint-text
+  style ontario-hint-text fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

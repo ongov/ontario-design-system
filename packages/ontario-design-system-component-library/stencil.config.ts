@@ -44,9 +44,10 @@ export const config: Config = {
 		},
 	],
 	testing: {
-		"transform": {
+		transform: {
 			'^.+\\.jsx?$': 'babel-jest',
 			'^.+\\.svg$': 'jest-svg-transformer',
 		},
-	}
+		reporters: ['default', 'jest-junit'],
+	},
 };
