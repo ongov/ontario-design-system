@@ -4,8 +4,10 @@
 	margin: 2rem 0;
 }
 
+.preview-container {
+	margin: 1.5rem 0;
+}
 .button-preview {
-	margin-top: 1.5rem;
 	padding: rem-calc(24) rem-calc(24) 0 rem-calc(24);
 	background-color: $ontario-greyscale-5;
 }
@@ -23,17 +25,19 @@
 		font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		font-weight: 600;
 
-		width: calc(100%/3);
-	}
+		width: calc(100% / 3);
 
-	button.on {
-		background-color: #dadada;
-	}
-	button:hover.on {
-		background-color: #e8e8e8;
-	}
-	button:hover.off {
-		background-color: #a7a7a7;
+		&.on {
+			background-color: #dadada;
+			border-bottom: 2px solid;
+		}
+		&:hover.on {
+			background-color: #e8e8e8;
+			border-bottom: 2px solid lightgrey;
+		}
+		&:hover.off {
+			background-color: #a7a7a7;
+		}
 	}
 }
 
