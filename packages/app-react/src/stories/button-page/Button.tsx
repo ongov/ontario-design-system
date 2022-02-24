@@ -27,30 +27,30 @@ const StoryOntarioButton = () => {
 	const tertiaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react';
 	<OntarioButton type="tertiary">Click Me!</OntarioButton>`;
 
-	const [toggleHTML, setToggleHTML] = useState(false);
-	const [toggleSCSS, setToggleSCSS] = useState(false);
-	const [toggleCSS, setToggleCSS] = useState(false);
+	// const [toggleHTML, setToggleHTML] = useState(false);
+	// const [toggleSCSS, setToggleSCSS] = useState(false);
+	// const [toggleCSS, setToggleCSS] = useState(false);
 
-	const handleToggleHTML = () => {
-		setToggleHTML(prev => !prev);
+	// const handleToggleHTML = () => {
+	// 	setToggleHTML(prev => !prev);
 
-		setToggleSCSS(false);
-		setToggleCSS(false);
-	};
+	// 	setToggleSCSS(false);
+	// 	setToggleCSS(false);
+	// };
 
-	const handleToggleSCSS = () => {
-		setToggleSCSS(prev => !prev);
+	// const handleToggleSCSS = () => {
+	// 	setToggleSCSS(prev => !prev);
 
-		setToggleHTML(false);
-		setToggleCSS(false);
-	};
+	// 	setToggleHTML(false);
+	// 	setToggleCSS(false);
+	// };
 
-	const handleToggleCSS = () => {
-		setToggleCSS(prev => !prev);
+	// const handleToggleCSS = () => {
+	// 	setToggleCSS(prev => !prev);
 
-		setToggleSCSS(false);
-		setToggleHTML(false);
-	};
+	// 	setToggleSCSS(false);
+	// 	setToggleHTML(false);
+	// };
 
 	return (
 		<div className="button-page">
@@ -113,7 +113,6 @@ const StoryOntarioButton = () => {
 				<div className="ontario-columns ontario-medium-12 ontario-large-12">
 					<h2>When to use this component</h2>
 					<p>
-						{' '}
 						Use buttons when you want the user to <strong>do</strong> something (often called a “call to action”), for example:
 					</p>
 
