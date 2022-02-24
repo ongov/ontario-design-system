@@ -18,11 +18,13 @@
 ### Used by
 
  - [ontario-checkboxes](../ontario-checkbox)
+ - [ontario-radio-buttons](../ontario-radio-button)
 
 ### Graph
 ```mermaid
 graph TD;
   ontario-checkboxes --> ontario-hint-text
+  ontario-radio-buttons --> ontario-hint-text
   style ontario-hint-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

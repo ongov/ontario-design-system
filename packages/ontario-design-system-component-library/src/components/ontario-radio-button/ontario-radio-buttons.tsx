@@ -1,5 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Prop, State } from '@stencil/core';
-import { v4 as uuid } from 'uuid';
+import { Component, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import { RadioButtons } from './radio-buttons.interface';
 import { RadioOption } from './radio-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
@@ -11,8 +10,6 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 })
 
 export class OntarioRadioButtons implements RadioButtons {
-	@Element() host: HTMLElement;
-
 	/**
 	 * The legend for the Radio Buttons.
 	 */
@@ -82,6 +79,22 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * </ontario-radio-buttons>
 	 */
 	@Prop() options: string | RadioOption[];
+
+	/**
+	 * The options are re-assigned to the internalOptions array.
+	 */
+	@State() internalOptions: RadioOption[];
+
+	@Watch('options')
+	parseOptions() {
+		if (typeof (this.options) !== 'undefined') {
+			if (!Array.isArray(this.options)) {
+				this.internalOptions = JSON.parse(this.options);
+			} else {
+				this.internalOptions = this.options;
+			}
+		}
+	}
 
 	/**
 	* Determine whether the input field is required.
@@ -155,10 +168,10 @@ export class OntarioRadioButtons implements RadioButtons {
 
 	private uncheckRadioButtonSiblings = () => {
 		// get all sibling radio buttons with the same name value that are not the one being selected
-		const radioButtonSiblings = Array.from(document.querySelectorAll(`ontario-radio-button[name="${this.name}"]`)).filter((radio: HTMLOntarioRadioButtonElement) => radio.radioId !== this.radioId);
+		const radioButtonSiblings = Array.from(document.querySelectorAll(`ontario-radio-button[name="${this.name}"]`)).filter((radio: HTMLOntarioRadioButtonsElement) => radio.radioId !== this.radioId);
 
 		// manually set all sibling radio button's checked status to be false
-		return radioButtonSiblings.forEach((radio: HTMLOntarioRadioButtonElement) => radio.checked = false);
+		return radioButtonSiblings.forEach((radio: HTMLOntarioRadioButtonsElement) => radio.checked = false);
 	}
 
 	private validateCheckedValue() {
@@ -173,30 +186,45 @@ export class OntarioRadioButtons implements RadioButtons {
 	componentWillLoad() {
 		// make sure a true checked value has not been set
 		this.validateCheckedValue();
-
-		this.radioLabel = this.radioLabel ?? this.host.textContent ?? '';
-		this.radioId = this.radioId ?? uuid();
+		this.parseOptions();
 	}
 
 	render() {
 		return (
-			this.checkedValueSet === false && (
-				<div class="ontario-radios__item">
-					<input
-						checked={this.checked}
-						class="ontario-radios__input"
-						id={this.radioId}
-						name={this.name}
-						onChange={this.handleChange}
-						type="radio"
-						required={this.required}
-						value={this.value}
-					/>
-					<label class="ontario-radios__label" htmlFor={this.radioId}>
-						{this.radioLabel}
-					</label>
-				</div>
-			)
+			<div class="ontario-form-group">
+				<fieldset class="ontario-fieldset">
+					<legend class="ontario-fieldset__legend">
+						{this.legend}
+						<span class="ontario-label__flag">
+							{this.isRequired ? "(Required)" : "(Optional)"}
+						</span>
+					</legend>
+
+					{this.hintText && (
+						<ontario-hint-text hint={this.hintText}></ontario-hint-text>
+					)}
+					<div class="ontario-radios">
+						{this.internalOptions.map((radio) =>
+							this.checkedValueSet === false && (
+								<div class="ontario-radios__item">
+									<input
+										checked={this.checked}
+										class="ontario-radios__input"
+										id={radio.name}
+										name={radio.name}
+										onChange={this.handleChange}
+										type="radio"
+										value={radio.value}
+									/>
+									<label class="ontario-radios__label" htmlFor={radio.name}>
+										{radio.label}
+									</label>
+								</div>
+							)
+						)}
+					</div>
+				</fieldset>
+			</div>
 		)
 	}
 }

@@ -81,6 +81,43 @@
 		}'>
 	</ontario-checkboxes>
 
+	<ontario-radio-buttons legend="Do you have cats?" hint-text="This is the hint text" is-required options='[{
+		"name": "Radio-1",
+		"value": "radio-1",
+		"label": "radio-1-label"
+		},
+		{
+			"name": "radio-2",
+			"value": "radio-2",
+			"label": "radio-2-label",
+			"hintExpander": {
+				"hint": "Hint expander",
+				"content": "This is the content, yup this is the content",
+				"aria-label": "This indicates that the hint can be expanded"
+			}
+		},
+		{
+			"name": "radio-3",
+			"value": "radio-3",
+			"label": "radio-3-label",
+			"hintExpander": {
+				"hint": "Hint expander",
+				"content": "This is the content",
+				"aria-label": "This indicates that the hint can be expanded"
+			}
+		},
+		{
+			"name": "radio-4",
+			"value": "radio-4",
+			"label": "radio-4-label"
+		}
+		]' hint-expander='{
+			"hint": "Hint expander",
+			"content": "This is hint expander content",
+			"aria-label": "This indicates that the hint can be expanded"
+		}'>
+	</ontario-radio-buttons>
+
 
 	<script>
 		function testFunction() {
