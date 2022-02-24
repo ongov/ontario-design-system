@@ -115,28 +115,31 @@ export class OntarioRadioButtons implements RadioButtons {
 	@Prop({ reflect: true, mutable: true }) checked?: boolean = false;
 
 	/**
-	 * Text to display as the radio button's label
-	 *
-	 * Setting the radio label can be done using the element content or setting
-	 * the property. This property will take precedence.
-	 *
-	 * @example
-	 * <ontario-radio-button radioLabel="Override Radio Label">Radio Label</ontario-radio-button>
-	 *
-	 * The resulting radio label text will display "Override Radio label".
-	 *
-	 */
-	@Prop({ mutable: true }) radioLabel: string;
-
-	/**
-	 ** The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
+	 * The name assigned to the radio button.
+	 * The name value is used to reference form data after a form is submitted.
 	 */
 	@Prop() name: string;
 
 	/**
-	 * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
+	 * Used to used to establish a relationship between radio label and the radio input.
+	 * This ID must be unique to the radio option.
+	 *
+	 * @example
+	 * <ontario-radio-buttons legend="Do you have cats?" hint-text="This is the hint text" is-required
+	 *  options='[{
+	 *	 "name": "radio",
+	 *	 "value": "radio",
+	 *	 "elementId": "radio-1",
+	 *	 "label": "radio-1-label"
+	 *	},
+	 *	{
+	 *		"name": "radio",
+	 *		"value": "radio-2",
+	 *		"elementId": "radio-2",
+	 *		"label": "radio-2-label"
+	 *  }
 	 */
-	@Prop({ reflect: true }) required?: boolean = false;
+	@Prop() elementId: string;
 
 	/**
 	 ** The radio button content value.
@@ -149,26 +152,6 @@ export class OntarioRadioButtons implements RadioButtons {
 	@Event() radioChangeEvent!: EventEmitter<void>;
 
 	@State() checkedValueSet: boolean = false;
-
-	handleChange = (e: any) => {
-		this.checked = e.target.checked;
-
-		// uncheck any radio buttons with the same name value
-		if (this.checked) {
-			this.uncheckRadioButtonSiblings();
-		}
-
-		this.radioChangeEvent.emit()
-	}
-
-	private uncheckRadioButtonSiblings = () => {
-		// get all sibling radio buttons with the same name value that are not the one being selected
-		const radioButtonSiblings = Array.from(document.querySelectorAll(`ontario-radio-button[name="${this.name}"]`)).filter((radio: HTMLOntarioRadioButtonsElement) => radio.value !== this.value);
-
-		console.log(document.querySelectorAll(`ontario-radio-button[name="${this.name}"]`));
-		// manually set all sibling radio button's checked status to be false
-		return radioButtonSiblings.forEach((radio: HTMLOntarioRadioButtonsElement) => radio.checked = false);
-	}
 
 	private validateCheckedValue() {
 		if (this.checked === true) {
@@ -206,12 +189,12 @@ export class OntarioRadioButtons implements RadioButtons {
 									<input
 										checked={this.checked}
 										class="ontario-radios__input"
-										name={radioButton .name}
-										onChange={this.handleChange}
+										id={radioButton.elementId}
+										name={radioButton.name}
 										type="radio"
 										value={radioButton.value}
 									/>
-									<label class="ontario-radios__label" htmlFor={radioButton.name}>
+									<label class="ontario-radios__label" htmlFor={radioButton.elementId}>
 										{radioButton.label}
 									</label>
 								</div>

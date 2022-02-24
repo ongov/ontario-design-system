@@ -54,6 +54,27 @@ export interface RadioOption {
 
   /**
    ** The radio button content value.
-  */
+   */
   value: string | number;
+
+  /**
+   * Used to used to establish a relationship between radio label and the radio input.
+   * This ID must be unique to the radio option.
+   *
+   * @example
+   * <ontario-radio-buttons legend="Do you have cats?" hint-text="This is the hint text" is-required
+   *  options='[{
+   *	 "name": "radio",
+   *	 "value": "radio",
+   *	 "elementId": "radio-1",
+   *	 "label": "radio-1-label"
+   *	},
+   *	{
+   *		"name": "radio",
+   *		"value": "radio-2",
+   *		"elementId": "radio-2",
+   *		"label": "radio-2-label"
+   *  }
+   */
+  elementId: string;
 }

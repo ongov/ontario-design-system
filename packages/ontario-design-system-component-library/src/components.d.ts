@@ -451,6 +451,11 @@ export namespace Components {
          */
         "checked"?: boolean;
         /**
+          * Used to used to establish a relationship between radio label and the radio input. This ID must be unique to the radio option.
+          * @example <ontario-radio-buttons legend="Do you have cats?" hint-text="This is the hint text" is-required  options='[{  "name": "radio",  "value": "radio",  "elementId": "radio-1",  "label": "radio-1-label" }, { 	"name": "radio", 	"value": "radio-2", 	"elementId": "radio-2", 	"label": "radio-2-label"  }
+         */
+        "elementId": string;
+        /**
           * Used to include the Hint Expander component underneath the Radio Button Legend. This is passed in as an object with key-value pairs.
           * @example <ontario-radio-buttons   legend="This is a question?"   options='[{     "name": "Radio Option 1",     "value": "radio-option-1",     "label": "Radio Option 1 Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"   }' > </ontario-radio-buttons>
          */
@@ -469,7 +474,7 @@ export namespace Components {
          */
         "legend": string;
         /**
-          * * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
+          * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
          */
         "name": string;
         /**
@@ -477,15 +482,6 @@ export namespace Components {
           * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Radio Button 1",        "value": "radio-1-value",        "label": "Radio Button Label 1"     },     {        "name": "Radio Button 2",        "value": "radio-2-value",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-radio-buttons>
          */
         "options": string | RadioOption[];
-        /**
-          * Text to display as the radio button's label  Setting the radio label can be done using the element content or setting the property. This property will take precedence.
-          * @example <ontario-radio-button radioLabel="Override Radio Label">Radio Label</ontario-radio-button>  The resulting radio label text will display "Override Radio label".
-         */
-        "radioLabel": string;
-        /**
-          * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
-         */
-        "required"?: boolean;
         /**
           * * The radio button content value.
          */
@@ -1777,6 +1773,11 @@ declare namespace LocalJSX {
          */
         "checked"?: boolean;
         /**
+          * Used to used to establish a relationship between radio label and the radio input. This ID must be unique to the radio option.
+          * @example <ontario-radio-buttons legend="Do you have cats?" hint-text="This is the hint text" is-required  options='[{  "name": "radio",  "value": "radio",  "elementId": "radio-1",  "label": "radio-1-label" }, { 	"name": "radio", 	"value": "radio-2", 	"elementId": "radio-2", 	"label": "radio-2-label"  }
+         */
+        "elementId"?: string;
+        /**
           * Used to include the Hint Expander component underneath the Radio Button Legend. This is passed in as an object with key-value pairs.
           * @example <ontario-radio-buttons   legend="This is a question?"   options='[{     "name": "Radio Option 1",     "value": "radio-option-1",     "label": "Radio Option 1 Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"   }' > </ontario-radio-buttons>
          */
@@ -1795,7 +1796,7 @@ declare namespace LocalJSX {
          */
         "legend"?: string;
         /**
-          * * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
+          * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
          */
         "name"?: string;
         /**
@@ -1807,15 +1808,6 @@ declare namespace LocalJSX {
           * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Radio Button 1",        "value": "radio-1-value",        "label": "Radio Button Label 1"     },     {        "name": "Radio Button 2",        "value": "radio-2-value",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-radio-buttons>
          */
         "options"?: string | RadioOption[];
-        /**
-          * Text to display as the radio button's label  Setting the radio label can be done using the element content or setting the property. This property will take precedence.
-          * @example <ontario-radio-button radioLabel="Override Radio Label">Radio Label</ontario-radio-button>  The resulting radio label text will display "Override Radio label".
-         */
-        "radioLabel"?: string;
-        /**
-          * Used to define whether the input field is required or not. If required, the value passed should be 'required'.
-         */
-        "required"?: boolean;
         /**
           * * The radio button content value.
          */
