@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './Button.scss';
 import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
 
 const StoryOntarioButton = () => {
 	// const iframeref = useRef<HTMLIFrameElement>(null);
@@ -146,11 +149,13 @@ const StoryOntarioButton = () => {
 
 					<p>With the following markup:</p>
 
-					<div className="code-preview">
-						<code>
-							<pre>{primaryButtonCodeExample}</pre>
-						</code>
-					</div>
+			
+						<SyntaxHighlighter language="javascript" style={dark}>
+						
+								{primaryButtonCodeExample}
+							
+						</SyntaxHighlighter>
+			
 
 					<p>
 						Use a <strong>secondary button</strong> for a <strong>less important</strong> call to action on a page. Avoid using multiple secondary buttons so the user is not
