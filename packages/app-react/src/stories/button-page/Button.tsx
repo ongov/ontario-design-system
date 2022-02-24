@@ -17,6 +17,7 @@ const StoryOntarioButton = () => {
 	// 		}
 	// 	}
 	// }, [iframeref]);
+<<<<<<< Updated upstream
 
 	const primaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react';
 	<OntarioButton type="primary">Click Me!</OntarioButton>`;
@@ -26,6 +27,8 @@ const StoryOntarioButton = () => {
 
 	const tertiaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react';
 	<OntarioButton type="tertiary">Click Me!</OntarioButton>`;
+=======
+>>>>>>> Stashed changes
 
 	const [toggleHTML, setToggleHTML] = useState(false);
 	const [toggleSCSS, setToggleSCSS] = useState(false);

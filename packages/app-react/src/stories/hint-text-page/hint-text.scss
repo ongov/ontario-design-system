@@ -1,0 +1,14 @@
+@import '~@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme';
+
+.hint-expander-page {
+	margin: 2rem 0;
+}
+
+.preview-container {
+	margin: 1.5rem 0;
+}
+
+.hint-expander-preview {
+	padding: rem-calc(24);
+	background-color: $ontario-greyscale-5;
+}

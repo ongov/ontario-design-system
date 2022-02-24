@@ -47,16 +47,16 @@ const Header = () => {
 												<a href="ontario-button">Button</a>
 											</li>
 											<li>
-												<a href="ontario-hint-expander">Hint Expander</a>
+												<a href="ontario-hint-text">Hint Text</a>
 											</li>
 											<li>
-												<a href="ontario-hint-text">Hint Text</a>
+												<a href="ontario-text-area">Text Area</a>
 											</li>
 											<li>
 												<a href="ontario-text-input">Text Input</a>
 											</li>
 											<li>
-												<a href="ontario-text-area">Text Area</a>
+												<a href="#">Link 5</a>
 											</li>
 										</ul>
 									</div>
