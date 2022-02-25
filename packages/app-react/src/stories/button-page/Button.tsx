@@ -20,14 +20,11 @@ const StoryOntarioButton = () => {
 	// 	}
 	// }, [iframeref]);
 
-	const primaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react';
-	<OntarioButton type="primary">Click Me!</OntarioButton>`;
+	const primaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="primary">Click Me!</OntarioButton>`;
 
-	const secondaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react';
-	<OntarioButton type="secondary">Click Me!</OntarioButton>`;
+	const secondaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="secondary">Click Me!</OntarioButton>`;
 
-	const tertiaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react';
-	<OntarioButton type="tertiary">Click Me!</OntarioButton>`;
+	const tertiaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="tertiary">Click Me!</OntarioButton>`;
 
 	// const [toggleHTML, setToggleHTML] = useState(false);
 	// const [toggleSCSS, setToggleSCSS] = useState(false);
