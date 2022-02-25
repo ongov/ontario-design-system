@@ -53,12 +53,12 @@ export interface RadioButtons extends Base {
    *   hint-text="This is the hint text"
    *   options='[
    *     {
-   *        "name": "Radio Button 1",
+   *        "name": "Radio",
    *        "value": "radio-1-value",
    *        "label": "Radio Button Label 1"
    *     },
    *     {
-   *        "name": "Radio Button 2",
+   *        "name": "Radio",
    *        "value": "radio-2-value",
    *        "label": "Radio Button Label 2",
    *        "hintExpander": {
@@ -76,6 +76,7 @@ export interface RadioButtons extends Base {
   /**
    * Determine whether the input field is required.
    * If required, it should be set to true.
+   * This can be done by passing in `is-required` to the component.
    *
    * @example
    * <ontario-radio-buttons ... is-required></ontario-radio-buttons>

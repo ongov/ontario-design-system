@@ -131,6 +131,7 @@ export class OntarioCheckboxes implements Checkbox {
 
     if (input) {
       input.checked = input.checked ?? '';
+
     }
 
     this.changeEvent.emit(ev as any);

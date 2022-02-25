@@ -2,7 +2,10 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
 export interface RadioOption {
   /**
-   ** The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
+   * The name assigned to the radio button.
+   * The name value is used to reference form data after a form is submitted.
+   * Please note that if you have multiple radio button options, the name must
+   * the same for all options in a fieldset.
    */
   name: string;
 
@@ -29,7 +32,7 @@ export interface RadioOption {
    *   legend="This is a question?"
    *   hint-text="This is the hint text"
    *   options='[{
-   *     "name": "Radio Option 1",
+   *     "name": "Radio",
    *     "value": "radio-option-1",
    *     "label": "Radio Option Label",
    *     "hintExpander": {
@@ -42,15 +45,6 @@ export interface RadioOption {
    * </ontario-radio-buttons>
    */
   hintExpander?: HintExpander;
-
-  /**
-   * The checked attribute of the radio button.
-   *
-   * This value is updated through the onChange event handler and by default
-   * is set to false.
-   *
-   */
-  checked?: boolean;
 
   /**
    ** The radio button content value.

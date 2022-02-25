@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 import { RadioButtons } from './radio-buttons.interface';
 import { RadioOption } from './radio-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
@@ -16,19 +16,19 @@ export class OntarioRadioButtons implements RadioButtons {
 	@Prop() legend: string;
 
 	/**
-	* Define hint text on an element.
-	*/
+	 * Define hint text for Radio Button fieldset.
+	 */
 	@Prop() hintText?: string;
 
 	/**
-	 * Used to include the Hint Expander component underneath the Radio Button Legend.
+	 * Used to include the Hint Expander component for the Radio Button fieldset.
 	 * This is passed in as an object with key-value pairs.
 	 *
 	 * @example
 	 * <ontario-radio-buttons
 	 *   legend="This is a question?"
 	 *   options='[{
-	 *     "name": "Radio Option 1",
+	 *     "name": "Radio",
 	 *     "value": "radio-option-1",
 	 *     "label": "Radio Option 1 Label",
 	 *     "hintExpander": {
@@ -60,12 +60,12 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *   hint-text="This is the hint text"
 	 *   options='[
 	 *     {
-	 *        "name": "Radio Button 1",
+	 *        "name": "Radio",
 	 *        "value": "radio-1-value",
 	 *        "label": "Radio Button Label 1"
 	 *     },
 	 *     {
-	 *        "name": "Radio Button 2",
+	 *        "name": "Radio",
 	 *        "value": "radio-2-value",
 	 *        "label": "Radio Button Label 2",
 	 *        "hintExpander": {
@@ -99,6 +99,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	/**
 	 * Determine whether the input field is required.
 	 * If required, it should be set to true.
+	 * This can be done by passing in `is-required` to the component.
 	 *
 	 * @example
 	 * <ontario-radio-buttons ... is-required></ontario-radio-buttons>
@@ -106,17 +107,10 @@ export class OntarioRadioButtons implements RadioButtons {
 	@Prop() isRequired: boolean;
 
 	/**
-	 * The checked attribute of the radio button.
-	 *
-	 * This value is updated through the onChange event handler and by default
-	 * is set to false.
-	 *
-	 */
-	@Prop({ reflect: true, mutable: true }) checked?: boolean = false;
-
-	/**
 	 * The name assigned to the radio button.
 	 * The name value is used to reference form data after a form is submitted.
+	 * Please note that if you have multiple radio button options, the name must
+	 * the same for all options in a fieldset.
 	 */
 	@Prop() name: string;
 
@@ -146,25 +140,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 */
 	@Prop() value: string | number;
 
-	/**
-	 ** Emitted when the input gains focus.
-	 */
-	@Event() radioChangeEvent!: EventEmitter<void>;
-
-	@State() checkedValueSet: boolean = false;
-
-	private validateCheckedValue() {
-		if (this.checked === true) {
-			this.checkedValueSet = true;
-			throw new Error('The default checked value of a radio button should be `false`. The checked attribute is controlled via the change event handler.');
-		}
-
-		this.checkedValueSet = false;
-	}
-
 	componentWillLoad() {
-		// make sure a true checked value has not been set
-		this.validateCheckedValue();
 		this.parseOptions();
 	}
 
@@ -184,21 +160,18 @@ export class OntarioRadioButtons implements RadioButtons {
 					)}
 					<div class="ontario-radios">
 						{this.internalOptions.map((radioButton) =>
-							this.checkedValueSet === false && (
-								<div class="ontario-radios__item">
-									<input
-										checked={this.checked}
-										class="ontario-radios__input"
-										id={radioButton.elementId}
-										name={radioButton.name}
-										type="radio"
-										value={radioButton.value}
-									/>
-									<label class="ontario-radios__label" htmlFor={radioButton.elementId}>
-										{radioButton.label}
-									</label>
-								</div>
-							)
+							<div class="ontario-radios__item">
+								<input
+									class="ontario-radios__input"
+									id={radioButton.elementId}
+									name={radioButton.name}
+									type="radio"
+									value={radioButton.value}
+								/>
+								<label class="ontario-radios__label" htmlFor={radioButton.elementId}>
+									{radioButton.label}
+								</label>
+							</div>
 						)}
 					</div>
 				</fieldset>
