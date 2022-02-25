@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import Home from './stories/home-page/Home';
 import StoryButton from './stories/button-page/Button';
-import StoryOntarioHintText from './stories/hint-text-page/hint-text';
+import StoryOntarioHint from './stories/hint-text-page/Hint';
 import StoryOntarioTextArea from './stories/text-area-page/text-area';
 import StoryOntarioTextInput from './stories/text-input-page/text-input';
 
@@ -12,7 +12,7 @@ const StoryRouter = () => {
 		<Routes>
 			<Route path="/" element={<Home />} />
 			<Route path="/ontario-button" element={<StoryButton />} />
-			<Route path="/ontario-hint-text" element={<StoryOntarioHintText />} />
+			<Route path="/ontario-hint" element={<StoryOntarioHint />} />
 			<Route path="/ontario-text-area" element={<StoryOntarioTextArea />} />
 			<Route path="/ontario-text-input" element={<StoryOntarioTextInput />} />
 		</Routes>

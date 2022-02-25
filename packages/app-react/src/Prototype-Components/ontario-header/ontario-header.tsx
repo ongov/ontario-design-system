@@ -47,7 +47,7 @@ const Header = () => {
 												<a href="ontario-button">Button</a>
 											</li>
 											<li>
-												<a href="ontario-hint-text">Hint Text</a>
+												<a href="ontario-hint">Hint</a>
 											</li>
 											<li>
 												<a href="ontario-text-area">Text Area</a>
