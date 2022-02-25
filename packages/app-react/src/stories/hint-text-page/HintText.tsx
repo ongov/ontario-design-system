@@ -47,7 +47,7 @@ export default function HintText() {
 						</ul>
 					</p>
 					<div className="preview-container">
-						<div className="hint-expander-preview">
+						<div className="example-container">
 							<OntarioHintText hint="This is a hint" elementId="this is the element id" />
 						</div>
 						<p>With the following markup:</p>
