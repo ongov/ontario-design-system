@@ -52,7 +52,7 @@ export class OntarioInput implements TextInput, Label {
 	/**
 	 * Used to define whether the input field is required or not.
 	 */
-	@Prop({ reflect: true }) required: boolean = false;
+	@Prop({ mutable: true }) required: boolean = false;
 
 	/**
 	 * The input type value.
