@@ -131,9 +131,12 @@ const StoryOntarioButton = () => {
 						Don’t use a button when you’re not encouraging an action. Buttons <strong>should not be used the same way as links</strong>, which usually send the user to another page
 						or to a different part of the same page.
 					</p>
-
 					<hr />
-					<h2>Types of buttons</h2>
+				</div>
+			</div>
+			<div className="ontario-row">
+				<div className="ontario-columns ontario-medium-12 ontario-large-12">
+					<h3>Types of buttons</h3>
 					<p>
 						Use a <strong>primary button</strong> to draw attention to the <strong>main action</strong> you want to help the user take. Avoid using multiple primary buttons on one
 						page unless the page has equally important calls to action.
@@ -179,7 +182,11 @@ const StoryOntarioButton = () => {
 					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
 						{tertiaryButtonCodeExample}
 					</SyntaxHighlighter>
+				</div>
+			</div>
 
+			<div className="ontario-row">
+				<div className="ontario-columns ontario-medium-12 ontario-large-12">
 					<h3>Disabled buttons</h3>
 					<p>
 						Disabling buttons until users have correctly completed a form can cause usability and accessibility problems. Disabled buttons can create barriers for assistive
