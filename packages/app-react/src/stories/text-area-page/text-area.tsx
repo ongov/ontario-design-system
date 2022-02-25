@@ -70,23 +70,25 @@ const StoryOntarioTextArea = () => {
 					</ul>
 
 					<div className="preview-container">
-						<OntarioTextarea
-							labelCaption="this is a label caption"
-							labelFor="this is a lable for"
-							labelType="default"
-							describedBy="described by"
-							elementId="id"
-							name="name"
-							required
-							value="value"
-						/>
+						<div className="example-container">
+							<OntarioTextarea
+								labelCaption="this is a label caption"
+								labelFor="this is a lable for"
+								labelType="default"
+								describedBy="described by"
+								elementId="id"
+								name="name"
+								required
+								value="value"
+							/>
+						</div>
+
+						<p>With the following markup:</p>
+
+						<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
+							{codeExample}
+						</SyntaxHighlighter>
 					</div>
-
-					<p>With the following markup:</p>
-
-					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-						{codeExample}
-					</SyntaxHighlighter>
 				</div>
 			</div>
 		</div>

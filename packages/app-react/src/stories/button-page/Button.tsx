@@ -6,51 +6,11 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const StoryOntarioButton = () => {
-	// const iframeref = useRef<HTMLIFrameElement>(null);
-	// useEffect(() => {
-	// 	if (iframeref.current) {
-	// 		const current = iframeref.current;
-	// 		const header = current.contentWindow?.document.getElementById('header');
-	// 		if (header) {
-	// 			header.style.display = 'none';
-	// 		}
-	// 		const footer = current.contentWindow?.document.getElementById('footer');
-	// 		if (footer) {
-	// 			footer.style.display = 'none';
-	// 		}
-	// 	}
-	// }, [iframeref]);
-
 	const primaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="primary">Click Me!</OntarioButton>`;
 
 	const secondaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="secondary">Click Me!</OntarioButton>`;
 
 	const tertiaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="tertiary">Click Me!</OntarioButton>`;
-
-	// const [toggleHTML, setToggleHTML] = useState(false);
-	// const [toggleSCSS, setToggleSCSS] = useState(false);
-	// const [toggleCSS, setToggleCSS] = useState(false);
-
-	// const handleToggleHTML = () => {
-	// 	setToggleHTML(prev => !prev);
-
-	// 	setToggleSCSS(false);
-	// 	setToggleCSS(false);
-	// };
-
-	// const handleToggleSCSS = () => {
-	// 	setToggleSCSS(prev => !prev);
-
-	// 	setToggleHTML(false);
-	// 	setToggleCSS(false);
-	// };
-
-	// const handleToggleCSS = () => {
-	// 	setToggleCSS(prev => !prev);
-
-	// 	setToggleSCSS(false);
-	// 	setToggleHTML(false);
-	// };
 
 	return (
 		<div className="page-content">
@@ -62,51 +22,7 @@ const StoryOntarioButton = () => {
 			</div>
 
 			<div className="ontario-row">
-				<div className="ontario-columns ontario-medium-12 ontario-large-12">
-					{/* <div className="preview-container">
-						<h5>Primary:</h5>
-						<OntarioButton type="primary">Click Me!</OntarioButton>
-						<h5>Secondary:</h5>
-						<OntarioButton type="secondary">Click Me!</OntarioButton>
-						<h5>Tertiary:</h5>
-						<OntarioButton type="tertiary">Click Me!</OntarioButton>
-					</div> */}
-					{/* <div className="previewNav">
-							{toggleHTML ? (
-								<button className="on" onClick={handleToggleHTML}>
-									HTML
-								</button>
-							) : (
-								<button className="off" onClick={handleToggleHTML}>
-									HTML
-								</button>
-							)}
-							{toggleSCSS ? (
-								<button className="on" onClick={handleToggleSCSS}>
-									SCSS
-								</button>
-							) : (
-								<button className="off" onClick={handleToggleSCSS}>
-									SCSS
-								</button>
-							)}
-							{toggleCSS ? (
-								<button className="on" onClick={handleToggleCSS}>
-									CSS
-								</button>
-							) : (
-								<button className="off" onClick={handleToggleCSS}>
-									CSS
-								</button>
-							)}
-						</div>
-
-						<div className="previewCodeContent">
-							{toggleHTML ? <p className="previewNavContent--HTML"> HTML ahdashjdasdjasd</p> : <></>}
-							{toggleSCSS ? <p className="previewNavContent--SCSS">SCSS asdasdasdasda</p> : <></>}
-							{toggleCSS ? <p className="previewNavContent--C-CSS">CSS sajdashdjkasdhjkas</p> : <></>}
-						</div> */}
-				</div>
+				<div className="ontario-columns ontario-medium-12 ontario-large-12"></div>
 			</div>
 
 			<div className="ontario-row">
