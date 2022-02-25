@@ -159,17 +159,17 @@ export class OntarioRadioButtons implements RadioButtons {
 						<ontario-hint-text hint={this.hintText}></ontario-hint-text>
 					)}
 					<div class="ontario-radios">
-						{this.internalOptions.map((radioButton) =>
+						{this.internalOptions && this.internalOptions.map((radioOption) =>
 							<div class="ontario-radios__item">
 								<input
 									class="ontario-radios__input"
-									id={radioButton.elementId}
-									name={radioButton.name}
+									id={radioOption.elementId}
+									name={radioOption.name}
 									type="radio"
-									value={radioButton.value}
+									value={radioOption.value}
 								/>
-								<label class="ontario-radios__label" htmlFor={radioButton.elementId}>
-									{radioButton.label}
+								<label class="ontario-radios__label" htmlFor={radioOption.elementId}>
+									{radioOption.label}
 								</label>
 							</div>
 						)}
