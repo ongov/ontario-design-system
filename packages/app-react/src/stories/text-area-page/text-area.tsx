@@ -6,7 +6,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const StoryOntarioTextArea = () => {
-	const codeExample = `import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n <OntarioTextarea
+	const codeExample = `import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioTextarea
 	labelCaption="this is a label caption"
 	labelFor="this is a lable for"
 	labelType="default"
@@ -70,23 +70,25 @@ const StoryOntarioTextArea = () => {
 					</ul>
 
 					<div className="preview-container">
-						<OntarioTextarea
-							labelCaption="this is a label caption"
-							labelFor="this is a lable for"
-							labelType="default"
-							describedBy="described by"
-							elementId="id"
-							name="name"
-							required
-							value="value"
-						/>
+						<div className="example-container">
+							<OntarioTextarea
+								labelCaption="this is a label caption"
+								labelFor="this is a lable for"
+								labelType="default"
+								describedBy="described by"
+								elementId="id"
+								name="name"
+								required
+								value="value"
+							/>
+						</div>
+
+						<p>With the following markup:</p>
+
+						<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
+							{codeExample}
+						</SyntaxHighlighter>
 					</div>
-
-					<p>With the following markup:</p>
-
-					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-						{codeExample}
-					</SyntaxHighlighter>
 				</div>
 			</div>
 		</div>

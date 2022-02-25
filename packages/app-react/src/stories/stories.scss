@@ -6,7 +6,6 @@
 
 .preview-container {
 	margin: 1.5rem 0;
-
 }
 
 .example-container {
@@ -16,34 +15,8 @@
 
 hr {
 	border-bottom: 4px solid #ccc;
+    border-top: none;
+    border-left: none;
+
 	margin: 2.5rem 0;
-}
-
-.previewNav {
-	margin: 0;
-	background-color: $ontario-greyscale-5;
-	button {
-		background-color: $ontario-greyscale-20;
-		border: none;
-		padding: 15px 32px;
-		text-align: center;
-
-		font-size: 1.125rem;
-		font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		font-weight: 600;
-
-		width: calc(100% / 3);
-
-		&.on {
-			background-color: #dadada;
-			border-bottom: 2px solid;
-		}
-		&:hover.on {
-			background-color: #e8e8e8;
-			border-bottom: 2px solid lightgrey;
-		}
-		&:hover.off {
-			background-color: #a7a7a7;
-		}
-	}
 }
