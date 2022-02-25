@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { OntarioRadioButton } from '../ontario-radio-buttons';
+import { OntarioRadioButtons } from '../ontario-radio-buttons';
 
-describe('ontario-radio-button', () => {
+describe('ontario-radio-buttons', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [OntarioRadioButton],
-      html: `<ontario-radio-button></ontario-radio-button>`,
+      components: [OntarioRadioButtons],
+      html: `<ontario-radio-buttons></ontario-radio-buttons>`,
     });
     expect(page.root).toEqualHtml(`
-      <ontario-radio-button>
+      <ontario-radio-buttons>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </ontario-radio-button>
+      </ontario-radio-buttons>
     `);
   });
 });
