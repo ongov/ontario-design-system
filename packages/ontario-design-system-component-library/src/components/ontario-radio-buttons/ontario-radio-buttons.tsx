@@ -8,7 +8,6 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 	styleUrl: 'ontario-radio-buttons.scss',
 	shadow: true,
 })
-
 export class OntarioRadioButtons implements RadioButtons {
 	/**
 	 * The legend for the Radio Buttons.
@@ -46,6 +45,20 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * </ontario-radio-buttons>
 	 */
 	@Prop() hintExpander: HintExpander | string;
+
+	/**
+	 * The hint expander options are re-assigned to the internalHintExpander array.
+	 */
+	@State() private internalHintExpander: HintExpander;
+
+	@Watch('hintExpander')
+	private parseHintExpander() {
+		const hintExpander = this.hintExpander;
+		if (hintExpander) {
+			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
+			else this.internalHintExpander = hintExpander;
+		}
+	}
 
 	/**
 	 * Each property will be passed in through an object in the options array.
@@ -142,6 +155,7 @@ export class OntarioRadioButtons implements RadioButtons {
 
 	componentWillLoad() {
 		this.parseOptions();
+		this.parseHintExpander();
 	}
 
 	render() {
@@ -171,7 +185,20 @@ export class OntarioRadioButtons implements RadioButtons {
 								<label class="ontario-radios__label" htmlFor={radioOption.elementId}>
 									{radioOption.label}
 								</label>
+
+								<div class="ontario-radios__hint-expander">
+									{radioOption.hintExpander && <ontario-hint-expander hint={radioOption.hintExpander.hint} content={radioOption.hintExpander.content} aria-label={radioOption.hintExpander.ariaLabel} input-exists></ontario-hint-expander>}
+								</div>
 							</div>
+						)}
+
+						{this.internalHintExpander && (
+							<ontario-hint-expander
+								hint={this.internalHintExpander.hint}
+								content={this.internalHintExpander.content}
+								aria-label={this.internalHintExpander.ariaLabel}
+								input-exists
+							></ontario-hint-expander>
 						)}
 					</div>
 				</fieldset>

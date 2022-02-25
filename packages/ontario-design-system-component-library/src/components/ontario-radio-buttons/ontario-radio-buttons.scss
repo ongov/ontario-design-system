@@ -103,3 +103,11 @@ $ontario-input-offset: math.div(($ontario-touch-target-size - $ontario-radios-si
 .ontario-radios__input:checked + .ontario-radios__label:after {
   opacity: 1;
 }
+
+.ontario-radios__hint-expander {
+  margin: $spacing-3 0 0 $spacing-2;
+
+  @media screen and (max-width: $small-breakpoint) {
+    margin-top: $spacing-4;
+  }
+}
