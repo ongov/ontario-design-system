@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import './Button.scss';
 import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const StoryOntarioButton = () => {
 	// const iframeref = useRef<HTMLIFrameElement>(null);
@@ -149,13 +148,9 @@ const StoryOntarioButton = () => {
 
 					<p>With the following markup:</p>
 
-			
-						<SyntaxHighlighter language="javascript" style={dark}>
-						
-								{primaryButtonCodeExample}
-							
-						</SyntaxHighlighter>
-			
+					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
+						{primaryButtonCodeExample}
+					</SyntaxHighlighter>
 
 					<p>
 						Use a <strong>secondary button</strong> for a <strong>less important</strong> call to action on a page. Avoid using multiple secondary buttons so the user is not
@@ -168,11 +163,9 @@ const StoryOntarioButton = () => {
 
 					<p>With the following markup:</p>
 
-					<div className="code-preview">
-						<code>
-							<pre>{secondaryButtonCodeExample}</pre>
-						</code>
-					</div>
+					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
+						{secondaryButtonCodeExample}
+					</SyntaxHighlighter>
 
 					<p>
 						Use <strong>tertiary buttons</strong> for links that should function like a button, such as “edit” or “cancel” in applications. It’s okay to use more than one tertiary
@@ -185,11 +178,9 @@ const StoryOntarioButton = () => {
 
 					<p>With the following markup:</p>
 
-					<div className="code-preview">
-						<code>
-							<pre>{tertiaryButtonCodeExample}</pre>
-						</code>
-					</div>
+					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
+						{tertiaryButtonCodeExample}
+					</SyntaxHighlighter>
 
 					<h3>Disabled buttons</h3>
 					<p>
