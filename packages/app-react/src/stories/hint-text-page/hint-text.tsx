@@ -1,5 +1,6 @@
 import React from 'react';
 import './hint-text.scss';
+import '../stories.scss';
 import { OntarioHintExpander, OntarioHintText } from '@ontario-digital-service/ontario-design-system-component-library-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -131,7 +132,7 @@ const StoryOntarioHintExpander = () => {
 						Hint expanders are specific to hints within forms. On standard content pages, use an accordion instead.
 					</p>
 					<div className="preview-container">
-						<div className="hint-expander-preview">
+						<div className="example-container">
 							<OntarioHintExpander
 								hint="This is a hint with an expander"
 								content="This is the expanded content"

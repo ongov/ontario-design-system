@@ -143,45 +143,53 @@ const StoryOntarioButton = () => {
 					</p>
 
 					<div className="preview-container">
-						<h5>Primary:</h5>
-						<OntarioButton type="primary">Click Me!</OntarioButton>
+						<div className="example-container">
+							<h5>Primary:</h5>
+							<OntarioButton type="primary">Click Me!</OntarioButton>
+						</div>
+
+						<p>With the following markup:</p>
+
+						<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
+							{primaryButtonCodeExample}
+						</SyntaxHighlighter>
 					</div>
-
-					<p>With the following markup:</p>
-
-					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-						{primaryButtonCodeExample}
-					</SyntaxHighlighter>
 
 					<p>
 						Use a <strong>secondary button</strong> for a <strong>less important</strong> call to action on a page. Avoid using multiple secondary buttons so the user is not
 						confused about what they should do next. Instead, ask the writer to simplify or break up the content so that it doesn’t need multiple secondary buttons.
 					</p>
+
 					<div className="preview-container">
-						<h5>Secondary:</h5>
-						<OntarioButton type="secondary">Click Me!</OntarioButton>
+						<div className="example-container">
+							<h5>Secondary:</h5>
+							<OntarioButton type="secondary">Click Me!</OntarioButton>
+						</div>
+
+						<p>With the following markup:</p>
+
+						<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
+							{secondaryButtonCodeExample}
+						</SyntaxHighlighter>
 					</div>
-
-					<p>With the following markup:</p>
-
-					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-						{secondaryButtonCodeExample}
-					</SyntaxHighlighter>
 
 					<p>
 						Use <strong>tertiary buttons</strong> for links that should function like a button, such as “edit” or “cancel” in applications. It’s okay to use more than one tertiary
 						button on a page.
 					</p>
+
 					<div className="preview-container">
-						<h5>Tertiary:</h5>
-						<OntarioButton type="tertiary">Click Me!</OntarioButton>
+						<div className="example-container">
+							<h5>Tertiary:</h5>
+							<OntarioButton type="tertiary">Click Me!</OntarioButton>
+						</div>
+
+						<p>With the following markup:</p>
+
+						<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
+							{tertiaryButtonCodeExample}
+						</SyntaxHighlighter>
 					</div>
-
-					<p>With the following markup:</p>
-
-					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-						{tertiaryButtonCodeExample}
-					</SyntaxHighlighter>
 				</div>
 			</div>
 

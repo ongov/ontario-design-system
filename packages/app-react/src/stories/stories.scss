@@ -5,9 +5,13 @@
 }
 
 .preview-container {
-	padding: rem-calc(24) rem-calc(24) rem-calc(24) rem-calc(24);
+	margin: 1.5rem 0;
+
+}
+
+.example-container {
+	padding: rem-calc(24);
 	background-color: $ontario-greyscale-5;
-	margin: 2rem 0;
 }
 
 hr {
