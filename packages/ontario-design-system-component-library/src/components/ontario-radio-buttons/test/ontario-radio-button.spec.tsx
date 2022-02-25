@@ -10,7 +10,16 @@ describe('ontario-radio-buttons', () => {
     expect(page.root).toEqualHtml(`
       <ontario-radio-buttons>
         <mock:shadow-root>
-          <slot></slot>
+          <div class="ontario-form-group">
+            <fieldset class="ontario-fieldset">
+                <legend class="ontario-fieldset__legend">
+                  <span class="ontario-label__flag">
+                    (Optional)
+                  </span>
+                </legend>
+              <div class="ontario-radios"></div>
+            </fieldset>
+          </div>
         </mock:shadow-root>
       </ontario-radio-buttons>
     `);
