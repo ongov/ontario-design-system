@@ -44,7 +44,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *   }'
 	 * >
 	 * </ontario-radio-buttons>
-		*/
+	 */
 	@Prop() hintExpander: HintExpander | string;
 
 	/**
