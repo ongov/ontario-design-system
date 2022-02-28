@@ -4,13 +4,13 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function HintExpander() {
-	const hintExpanderCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; 
-	\n\n<OntarioHintExpander
-			hint="This is a hint with an expander"
-			content="This is the expanded content"
-			ariaLabel="this it the arialabel"
-			elementId="this is the element id"
-		/>`;
+	const hintExpanderCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n
+<OntarioHintExpander
+	hint="This is a hint with an expander"
+	content="This is the expanded content"
+	ariaLabel="this it the arialabel"
+	elementId="this is the element id"
+/>`;
 	return (
 		<>
 			<div className="ontario-row">
