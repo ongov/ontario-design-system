@@ -18,7 +18,7 @@
 ### Used by
 
  - [ontario-checkboxes](../ontario-checkbox)
- - [ontario-radio-buttons](../ontario-radio-button)
+ - [ontario-radio-buttons](../ontario-radio-buttons)
 
 ### Graph
 ```mermaid

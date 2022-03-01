@@ -44,7 +44,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * >
 	 * </ontario-radio-buttons>
 	 */
-	@Prop() hintExpander: HintExpander | string;
+	@Prop() hintExpander?: HintExpander | string;
 
 	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.
@@ -117,41 +117,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * @example
 	 * <ontario-radio-buttons ... is-required></ontario-radio-buttons>
 	 */
-	@Prop() isRequired: boolean;
-
-	/**
-	 * The name assigned to the radio button.
-	 * The name value is used to reference form data after a form is submitted.
-	 * Please note that if you have multiple radio button options, the name must
-	 * the same for all options in a fieldset.
-	 */
-	@Prop() name: string;
-
-	/**
-	 * Used to used to establish a relationship between radio label and the radio input.
-	 * This ID must be unique to the radio option.
-	 *
-	 * @example
-	 * <ontario-radio-buttons legend="Do you have cats?" hint-text="This is the hint text" is-required
-	 *  options='[{
-	 *	 "name": "radio",
-	 *	 "value": "radio",
-	 *	 "elementId": "radio-1",
-	 *	 "label": "radio-1-label"
-	 *	},
-	 *	{
-	 *		"name": "radio",
-	 *		"value": "radio-2",
-	 *		"elementId": "radio-2",
-	 *		"label": "radio-2-label"
-	 *  }
-	 */
-	@Prop() elementId: string;
-
-	/**
-	 ** The radio button content value.
-	 */
-	@Prop() value: string | number;
+	@Prop() isRequired?: boolean = false;
 
 	componentWillLoad() {
 		this.parseOptions();

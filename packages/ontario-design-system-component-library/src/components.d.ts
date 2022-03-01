@@ -51,7 +51,7 @@ export namespace Components {
           * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
           * @example <ontario-checkboxes   legend="This is a question?"   options='[{     "name": "Checkbox 1",     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
          */
-        "hintExpander": HintExpander | string;
+        "hintExpander"?: HintExpander | string;
         /**
           * Define hint text on an element.
          */
@@ -60,7 +60,7 @@ export namespace Components {
           * Determine whether the input field is required. If required, it should be set to true.
           * @example <ontario-checkboxes ... is-required></ontario-checkboxes>
          */
-        "isRequired": boolean;
+        "isRequired"?: boolean;
         /**
           * The legend for the checkbox
          */
@@ -447,15 +447,10 @@ export namespace Components {
     }
     interface OntarioRadioButtons {
         /**
-          * Used to used to establish a relationship between radio label and the radio input. This ID must be unique to the radio option.
-          * @example <ontario-radio-buttons legend="Do you have cats?" hint-text="This is the hint text" is-required  options='[{  "name": "radio",  "value": "radio",  "elementId": "radio-1",  "label": "radio-1-label" }, { 	"name": "radio", 	"value": "radio-2", 	"elementId": "radio-2", 	"label": "radio-2-label"  }
-         */
-        "elementId": string;
-        /**
           * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
           * @example <ontario-radio-buttons   legend="This is a question?"   options='[{     "name": "Radio",     "value": "radio-option-1",     "label": "Radio Option 1 Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"   }' > </ontario-radio-buttons>
          */
-        "hintExpander": HintExpander | string;
+        "hintExpander"?: HintExpander | string;
         /**
           * Define hint text for Radio Button fieldset.
          */
@@ -464,24 +459,16 @@ export namespace Components {
           * Determine whether the input field is required. If required, it should be set to true. This can be done by passing in `is-required` to the component.
           * @example <ontario-radio-buttons ... is-required></ontario-radio-buttons>
          */
-        "isRequired": boolean;
+        "isRequired"?: boolean;
         /**
           * The legend for the Radio Buttons.
          */
         "legend": string;
         /**
-          * The name assigned to the radio button. The name value is used to reference form data after a form is submitted. Please note that if you have multiple radio button options, the name must the same for all options in a fieldset.
-         */
-        "name": string;
-        /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
           * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Radio",        "value": "radio-1-value",        "label": "Radio Button Label 1"     },     {        "name": "Radio",        "value": "radio-2-value",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-radio-buttons>
          */
         "options": string | RadioOption[];
-        /**
-          * * The radio button content value.
-         */
-        "value": string | number;
     }
     interface OntarioTextarea {
         /**
@@ -1765,11 +1752,6 @@ declare namespace LocalJSX {
     }
     interface OntarioRadioButtons {
         /**
-          * Used to used to establish a relationship between radio label and the radio input. This ID must be unique to the radio option.
-          * @example <ontario-radio-buttons legend="Do you have cats?" hint-text="This is the hint text" is-required  options='[{  "name": "radio",  "value": "radio",  "elementId": "radio-1",  "label": "radio-1-label" }, { 	"name": "radio", 	"value": "radio-2", 	"elementId": "radio-2", 	"label": "radio-2-label"  }
-         */
-        "elementId"?: string;
-        /**
           * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
           * @example <ontario-radio-buttons   legend="This is a question?"   options='[{     "name": "Radio",     "value": "radio-option-1",     "label": "Radio Option 1 Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"   }' > </ontario-radio-buttons>
          */
@@ -1788,18 +1770,10 @@ declare namespace LocalJSX {
          */
         "legend"?: string;
         /**
-          * The name assigned to the radio button. The name value is used to reference form data after a form is submitted. Please note that if you have multiple radio button options, the name must the same for all options in a fieldset.
-         */
-        "name"?: string;
-        /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
           * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Radio",        "value": "radio-1-value",        "label": "Radio Button Label 1"     },     {        "name": "Radio",        "value": "radio-2-value",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-radio-buttons>
          */
         "options"?: string | RadioOption[];
-        /**
-          * * The radio button content value.
-         */
-        "value"?: string | number;
     }
     interface OntarioTextarea {
         /**

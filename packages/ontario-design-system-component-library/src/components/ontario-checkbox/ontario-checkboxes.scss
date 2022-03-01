@@ -1,8 +1,6 @@
 @use "sass:math";
 @import '../../global.scss';
 
-$ontario-touch-target-size: 36px;
-$ontario-touch-target-size-mobile: 40px;
 $ontario-checkboxes-size: 28px;
 $ontario-checkboxes-size-mobile: 32px;
 $ontario-checkbox-border-size: 2px;
@@ -35,16 +33,16 @@ $ontario-checkbox-box-shadow-outline: 4px;
     top: -$ontario-checkbox-border-size;
     left: -$ontario-checkbox-border-size;
     opacity: 0;
-    width: $ontario-touch-target-size;
-    height: $ontario-touch-target-size;
+    width: $touch-target-size;
+    height: $touch-target-size;
     z-index: 1;
 
     // prevent blue default highlighting of input on android
     -webkit-tap-highlight-color: transparent;
 
     @media screen and (max-width: $small-breakpoint) {
-        width: $ontario-touch-target-size-mobile;
-        height: $ontario-touch-target-size-mobile;
+        width: $touch-target-size-mobile;
+        height: $touch-target-size-mobile;
     }
 }
 

@@ -39,7 +39,7 @@ export interface Checkbox extends Base {
    * >
    * </ontario-checkboxes>
    */
-  hintExpander: HintExpander | string;
+  hintExpander?: HintExpander | string;
 
   /**
    * Each property will be passed in through an object in the options array.
@@ -80,5 +80,5 @@ export interface Checkbox extends Base {
    * @example
    * <ontario-checkboxes ... is-required></ontario-checkboxes>
    */
-  isRequired: boolean;
+  isRequired?: boolean;
 }

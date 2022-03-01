@@ -6,7 +6,7 @@
   color: $ontario-colour-black;
   font-family: $ontario-font-raleway-modified;
   font-size: 1.1875rem;
-  font-weight: 700;
+  font-weight: $ontario-font-weights-bold;
   margin: 0 0 $spacing-4 0;
   line-height: 1.5;
   max-width: 38.75em;
@@ -41,7 +41,7 @@
 .ontario-fieldset__legend-optional-flag {
   font-family: $ontario-font-open-sans;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: $ontario-font-weights-normal;
 
   &:before {
     content: '\a0';
@@ -51,7 +51,7 @@
 .ontario-label__flag {
 	font-family: $ontario-font-open-sans;
 	font-size: 1rem;
-	font-weight: 400;
+	font-weight: $ontario-font-weights-normal;
 
 	&:before {
 		content: '\a0';

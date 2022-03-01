@@ -1,11 +1,9 @@
 @use "sass:math";
 @import '../../global.scss';
 
-$ontario-touch-target-size: 36px;
-$ontario-touch-target-size-mobile: 40px;
 $ontario-radios-size: 32px;
 $ontario-radios-size-mobile: 36px;
-$ontario-input-offset: math.div(($ontario-touch-target-size - $ontario-radios-size), 2);
+$ontario-input-offset: math.div(($touch-target-size - $ontario-radios-size), 2);
 
 .ontario-radios__item {
   position: relative;
@@ -21,13 +19,13 @@ $ontario-input-offset: math.div(($ontario-touch-target-size - $ontario-radios-si
   opacity: 0;
   top: $ontario-input-offset * -1;
   left: $ontario-input-offset * -1;
-  width: $ontario-touch-target-size;
-  height: $ontario-touch-target-size;
+  width: $touch-target-size;
+  height: $touch-target-size;
   z-index: 1;
 
   @media screen and (max-width: $small-breakpoint) {
-    width: $ontario-touch-target-size-mobile;
-    height: $ontario-touch-target-size-mobile;
+    width: $touch-target-size-mobile;
+    height: $touch-target-size-mobile;
     top: $ontario-input-offset * -0.75;
     left: $ontario-input-offset * -0.75;
   }
@@ -38,8 +36,8 @@ $ontario-input-offset: math.div(($ontario-touch-target-size - $ontario-radios-si
   color: $ontario-colour-black;
   display: inline-block;
   font-family: $ontario-font-raleway-modified;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: $ontario-font-size-standard-body-text;
+  font-weight: $ontario-font-weights-bold;
   line-height: 1.5;
   margin: 0.2rem 0;
   max-width: 38.75em;
@@ -52,12 +50,12 @@ $ontario-input-offset: math.div(($ontario-touch-target-size - $ontario-radios-si
 
   @media screen and (max-width: $small-breakpoint) {
     margin: 0.3rem 0;
-    padding: 0 1rem;
+    padding: 0 $spacing-4;
   }
 
   &:before {
     content: "";
-    border: 2px solid $ontario-colour-black;
+    border: $border-size-standard solid $ontario-colour-black;
     border-radius: 50%;
     box-sizing: border-box;
     position: absolute;

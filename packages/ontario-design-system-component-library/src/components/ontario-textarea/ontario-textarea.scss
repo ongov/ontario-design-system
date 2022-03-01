@@ -3,7 +3,7 @@
 @import '../../global.scss';
 
 .ontario-textarea {
-	border: 2px solid $ontario-colour-black;
+	border: $border-size-standard solid $ontario-colour-black;
 	border-radius: $global-radius;
 	box-sizing: border-box;
 	color: $ontario-colour-black;

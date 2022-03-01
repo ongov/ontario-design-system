@@ -38,7 +38,7 @@ export interface RadioButtons extends Base {
    * >
    * </ontario-radio-buttons>
    */
-  hintExpander: HintExpander | string;
+  hintExpander?: HintExpander | string;
 
   /**
    * Each property will be passed in through an object in the options array.
@@ -81,5 +81,5 @@ export interface RadioButtons extends Base {
    * @example
    * <ontario-radio-buttons ... is-required></ontario-radio-buttons>
    */
-  isRequired: boolean;
+  isRequired?: boolean;
 }
