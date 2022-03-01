@@ -13,11 +13,11 @@ User selects a radio button option from a list of radio buttons.
 
 ## Examples
 
-```
+```html
 <ontario-radio-button name="ontario-radio-button" radio-id="ontario-radio-1" value="Option 1" radio-label="Option 1"></ontario-radio-button>
 ```
 
-```
+```html
 <ontario-radio-button name="ontario-radio-button" radio-id="ontario-radio-2" value="Option 2">Option 2</ontario-radio-button>
 ```
 
