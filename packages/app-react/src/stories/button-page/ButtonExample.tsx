@@ -3,7 +3,7 @@ import { OntarioButton } from '@ontario-digital-service/ontario-design-system-co
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-export default function TypesOfButtons() {
+export default function ButtonExample() {
 	const primaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="primary">Click Me!</OntarioButton>`;
 	const secondaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="secondary">Click Me!</OntarioButton>`;
 	const tertiaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="tertiary">Click Me!</OntarioButton>`;

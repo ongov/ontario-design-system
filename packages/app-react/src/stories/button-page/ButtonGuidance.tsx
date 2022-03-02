@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function DisabledButtons() {
+export default function ButtonGuidance() {
 	return (
 		<>
 			<div className="ontario-row">

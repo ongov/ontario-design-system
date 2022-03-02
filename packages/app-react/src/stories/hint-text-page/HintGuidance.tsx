@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function WriteClearLinkText() {
+export default function HintGuidance() {
 	return (
 		<>
 			<div className="ontario-row">

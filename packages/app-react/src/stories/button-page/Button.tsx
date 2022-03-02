@@ -1,15 +1,15 @@
 import React from 'react';
 import '../stories.scss';
 import ButtonWhenToUse from './ButtonWhenToUse';
-import DisabledButtons from './DisabledButtons';
-import TypesOfButtons from './TypesOfButtons';
+import ButtonExample from './ButtonExample';
+import ButtonGuidance from './ButtonGuidance';
 
 const StoryOntarioButton = () => {
 	return (
 		<div className="page-content">
 			<ButtonWhenToUse />
-			<TypesOfButtons />
-			<DisabledButtons />
+			<ButtonExample />
+			<ButtonGuidance/>
 		</div>
 	);
 };

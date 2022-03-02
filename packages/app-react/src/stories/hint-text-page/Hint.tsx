@@ -3,7 +3,7 @@ import '../stories.scss';
 import HintWhenToUse from './HintWhenToUse';
 import HintText from './HintText';
 import HintExpander from './HintExpander';
-import WriteClearLinkText from './WriteClearLinkText';
+import HintGuidance from './HintGuidance';
 
 const StoryOntarioHint = () => {
 	return (
@@ -11,7 +11,7 @@ const StoryOntarioHint = () => {
 			<HintWhenToUse />
 			<HintText />
 			<HintExpander />
-			<WriteClearLinkText />
+			<HintGuidance />
 		</div>
 	);
 };

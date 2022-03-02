@@ -1,10 +1,9 @@
 import React from 'react';
-import './text-input.scss';
 import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-const StoryOntarioInput = () => {
+export default function TextInputExample() {
 	const codeExample = `import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioInput
 	labelCaption="this is a label caption"
 	labelFor="this is a lable for"
@@ -17,23 +16,11 @@ const StoryOntarioInput = () => {
 	type="text"
 	value="value"
 />`;
-
 	return (
-		<div className="page-content">
+		<>
 			<div className="ontario-row">
 				<div className="ontario-columns ontario-medium-12 ontario-large-12">
-					<h1 className="ontario-h1">Text inputs</h1>
-					<p className="ontario-lead-statement">Use a text input when you want the user to enter no more than a single line of information.</p>
-				</div>
-			</div>
-
-			<div className="ontario-row">
-				<div className="ontario-columns ontario-medium-12 ontario-large-12">
-					<h2>When to use this component</h2>
-					<p>
-						A text input is a <strong>single-line field</strong> where the user can type in information. For example:
-					</p>
-
+					<h3>Examples</h3>
 					<div className="preview-container">
 						<div className="example-container">
 							<OntarioInput
@@ -92,49 +79,9 @@ const StoryOntarioInput = () => {
 							</p>
 						</li>
 					</ul>
+					<hr />
 				</div>
-
-				<hr />
-
-				<h2>Use appropriately sized text inputs</h2>
-
-				<p>All text inputs have a height of 48px.</p>
-
-				<p>
-					Providing clear <a href="https://designsystem.ontario.ca/components/detail/labels.html">labels</a>, <a href="/ontario-hint-text">hint text</a> and specifying the width of
-					the fields <strong>gives the user an indication on how to correctly fill out the input field</strong>. Choose the width of your text input field based on the type of
-					information you’re asking for, but never limit the number of characters a user can input.
-				</p>
-
-				<h3>Known input length</h3>
-
-				<p>
-					Use <strong>fixed-width inputs</strong> for content that has a specific, known length, such as a postal code. Add room for 1 or 2 extra character spaces if users are
-					likely to add spaces or dashes. Our standard fixed input widths are:
-				</p>
-
-				<ul>
-					<li>2 characters (use for: date, month)</li>
-					<li>
-						3 characters (use for: area code, <abbr title="card verification code">CVC</abbr> on a credit card, age)
-					</li>
-					<li>4 characters (use for: year)</li>
-					<li>7 characters (use for: postal code [includes extra character])</li>
-					<li>8 characters (use for: licence plate)</li>
-					<li>
-						11 characters (use for: <abbr title="Social Insurance Number">SIN</abbr> [includes extra character])
-					</li>
-				</ul>
-
-				<h3>Unknown input length</h3>
-
-				<p>
-					If you don’t know how many characters the user will need to input (for example, if you’re asking them for their name), make your text input{' '}
-					<strong>100% of the container</strong>.
-				</p>
 			</div>
-		</div>
+		</>
 	);
-};
-
-export default StoryOntarioInput;
+}

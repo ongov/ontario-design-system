@@ -3,8 +3,8 @@ import { Routes, Route, Link } from 'react-router-dom';
 import Home from './stories/home-page/Home';
 import StoryButton from './stories/button-page/Button';
 import StoryOntarioHint from './stories/hint-text-page/Hint';
-import StoryOntarioTextArea from './stories/text-area-page/text-area';
-import StoryOntarioTextInput from './stories/text-input-page/text-input';
+import StoryOntarioTextArea from './stories/text-area-page/TextArea';
+import StoryOntarioTextInput from './stories/text-input-page/TextInput';
 
 
 const StoryRouter = () => {
