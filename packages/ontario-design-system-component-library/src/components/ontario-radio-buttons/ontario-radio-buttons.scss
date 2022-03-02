@@ -91,11 +91,9 @@ $ontario-input-offset: math.div(($touch-target-size - $ontario-radios-size), 2);
 }
 
 .ontario-radios__input:focus + .ontario-radios__label:before {
-  -moz-box-shadow: 0 0 0 4px $ontario-colour-focus;
+  -moz-box-shadow: $ontario-focus-box-shadow;
   -webkit-box-shadow: $ontario-colour-focus;
-  box-shadow: 0 0 0 4px $ontario-colour-focus;
-  outline: 4px solid transparent;
-  transition: box-shadow 0.1s ease-in-out;
+  @extend %ontario-focus;
 }
 
 .ontario-radios__input:checked + .ontario-radios__label:after {
