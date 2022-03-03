@@ -39,16 +39,18 @@ $ontario-input-offset: math.div(($touch-target-size - $ontario-radios-size), 2);
   font-size: $ontario-font-size-standard-body-text;
   font-weight: $ontario-font-weights-bold;
   line-height: 1.5;
+  // Specific spacing required in order to visually align label with input
   margin: 0.2rem 0;
   max-width: $narrow-width;
   padding: 0 $spacing-3;
-// remove 300ms pause on mobile
+  // remove 300ms pause on mobile
   touch-action: manipulation;
   white-space: normal;
   width: auto;
   white-space: normal;
 
   @media screen and (max-width: $small-breakpoint) {
+    // Specific spacing required in order to visually align label with input
     margin: 0.3rem 0;
     padding: 0 $spacing-4;
   }

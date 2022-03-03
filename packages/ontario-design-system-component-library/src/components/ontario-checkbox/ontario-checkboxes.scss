@@ -50,12 +50,14 @@ $ontario-checkbox-box-shadow-outline: 4px;
     display: inline-block;
     cursor: pointer;
     line-height: 1.5;
+    // Specific spacing required in order to visually align label with input
     margin: $spacing-1 0;
     padding: 0 $spacing-4;
     width: auto;
     white-space: normal;
 
     @media screen and (max-width: $small-breakpoint) {
+        // Specific spacing required in order to visually align label with input
         margin: 0.33rem 0;
     }
 
