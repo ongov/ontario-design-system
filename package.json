@@ -2,7 +2,12 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/gitlab": "^7.0.4",
+    "lerna": "^4.0.0",
+    "semantic-release": "^19.0.2",
+    "semantic-release-lerna": "^0.4.2"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
@@ -11,6 +16,8 @@
     "test:e2e": "lerna run test:e2e",
     "clean": "lerna run clean",
     "clean:full": "lerna run clean:full",
-    "refresh": "npm run clean:full && npm run bootstrap && npm run build-libs"
+    "refresh": "npm run clean:full && npm run bootstrap && npm run build-libs",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "semantic-release": "semantic-release"
   }
 }
