@@ -28,15 +28,15 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *   legend="This is a question?"
 	 *   options='[
 	 * 	   {
-			*     "name": "Radio",
-			*     "value": "radio-option-1",
-			*     "label": "Radio Option 1 Label",
-			*     "hintExpander": {
-			*			  "hint": "Hint expander",
-			* 		    "content": "This is the content",
-			*			  "aria-label": "This indicates that the hint can be expanded"
-		*		    }
-	 *      }
+	 *        "name": "Radio",
+	 *        "value": "radio-option-1",
+	 *        "label": "Radio Option 1 Label",
+	 *        "hintExpander": {
+	 *			    "hint": "Hint expander",
+	 * 		      "content": "This is the content",
+	 *			    "aria-label": "This indicates that the hint can be expanded"
+	 *		    }
+	 *     }
 	 *   ]'
 	 *   hint-expander='{
 	 *     "hint": "Hint expander",
