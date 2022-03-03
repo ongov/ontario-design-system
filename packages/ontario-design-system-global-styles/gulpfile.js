@@ -22,6 +22,7 @@ const fonts = ['./src/fonts/**'];
 const processSass = opts => {
 	const sassOptions = {
 		outputStyle: 'expanded',
+		includePaths: ['./node_modules'],
 	};
 
 	if (opts.debug) {
