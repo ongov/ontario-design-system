@@ -1,7 +1,7 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-component-library-react",
 	"sideEffects": false,
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"private": true,
 	"description": "React specific wrapper for ontario-design-system-component-library",
 	"repository": {
@@ -23,7 +23,7 @@
 		"dist/"
 	],
 	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-component-library": "^0.0.1"
+		"@ontario-digital-service/ontario-design-system-component-library": "^0.1.0"
 	},
 	"devDependencies": {
 		"@types/jest": "23.3.9",
