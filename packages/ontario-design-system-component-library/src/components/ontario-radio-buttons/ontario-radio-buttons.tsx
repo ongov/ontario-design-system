@@ -26,20 +26,22 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * @example
 	 * <ontario-radio-buttons
 	 *   legend="This is a question?"
-	 *   options='[{
-	 *     "name": "Radio",
-	 *     "value": "radio-option-1",
-	 *     "label": "Radio Option 1 Label",
-	 *     "hintExpander": {
-	 *			  "hint": "Hint expander",
-	 * 		    "content": "This is the content",
-	 *			  "aria-label": "This indicates that the hint can be expanded"
-	 *		 }
-	 *   }]'
+	 *   options='[
+	 * 	   {
+			*     "name": "Radio",
+			*     "value": "radio-option-1",
+			*     "label": "Radio Option 1 Label",
+			*     "hintExpander": {
+			*			  "hint": "Hint expander",
+			* 		    "content": "This is the content",
+			*			  "aria-label": "This indicates that the hint can be expanded"
+		*		    }
+	 *      }
+	 *   ]'
 	 *   hint-expander='{
-	 *    "hint": "Hint expander",
-	 *    "content": "This is the content, yup this is the content",
-	 *    "aria-label": "This indicates that the hint can be expanded"
+	 *     "hint": "Hint expander",
+	 *     "content": "This is the content, yup this is the content",
+	 *     "aria-label": "This indicates that the hint can be expanded"
 	 *   }'
 	 * >
 	 * </ontario-radio-buttons>
@@ -131,7 +133,7 @@ export class OntarioRadioButtons implements RadioButtons {
 					<legend class="ontario-fieldset__legend">
 						{this.legend}
 						<span class="ontario-label__flag">
-							{this.isRequired ? "(Required)" : "(Optional)"}
+							{this.isRequired ? "(required)" : "(optional)"}
 						</span>
 					</legend>
 
