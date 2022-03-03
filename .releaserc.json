@@ -1,0 +1,16 @@
+{
+	"branches": ["master"],
+	"plugins": [
+		"@semantic-release/commit-analyzer",
+		["semantic-release-lerna", { "generateNotes": true }],
+		"@semantic-release/gitlab",
+        "@semantic-release/changelog",
+		[
+			"@semantic-release/git",
+			{
+				"assets": ["CHANGELOG.md", "lerna.json", "package.json", "package-lock.json", "lerna.json", "packages/*/package.json", "packages/*/package-lock.json"],
+				"message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
+			}
+		]
+	]
+}
