@@ -23,16 +23,28 @@ export default function TextInputGuidance() {
 					</p>
 
 					<ul>
-						<li>2 characters (use for: date, month)</li>
-						<li>
-							3 characters (use for: area code, <abbr title="card verification code">CVC</abbr> on a credit card, age)
-						</li>
-						<li>4 characters (use for: year)</li>
-						<li>7 characters (use for: postal code [includes extra character])</li>
-						<li>8 characters (use for: licence plate)</li>
-						<li>
-							11 characters (use for: <abbr title="Social Insurance Number">SIN</abbr> [includes extra character])
-						</li>
+						<p>
+							<li>2 characters (use for: date, month)</li>
+						</p>
+						<p>
+							<li>
+								3 characters (use for: area code, <abbr title="card verification code">CVC</abbr> on a credit card, age)
+							</li>
+						</p>
+						<p>
+							<li>4 characters (use for: year)</li>
+						</p>
+						<p>
+							<li>7 characters (use for: postal code [includes extra character])</li>
+						</p>
+						<p>
+							<li>8 characters (use for: licence plate)</li>
+						</p>
+						<p>
+							<li>
+								11 characters (use for: <abbr title="Social Insurance Number">SIN</abbr> [includes extra character])
+							</li>
+						</p>
 					</ul>
 
 					<h3>Unknown input length</h3>

@@ -22,9 +22,15 @@ export default function TextAreaExample() {
 					<p>Examples of where to use text areas include:</p>
 
 					<ul>
-						<li>comments and user feedback</li>
-						<li>"tell us about yourself" sections</li>
-						<li>requests for more detail</li>
+						<p>
+							<li>comments and user feedback</li>
+						</p>
+						<p>
+							<li>"tell us about yourself" sections</li>
+						</p>
+						<p>
+							<li>requests for more detail</li>
+						</p>
 					</ul>
 
 					<div className="preview-container">
@@ -37,7 +43,7 @@ export default function TextAreaExample() {
 								elementId="id"
 								name="name"
 								required
-								value="value"
+								value="this is the content"
 							/>
 						</div>
 
