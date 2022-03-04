@@ -1,7 +1,7 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-global-styles",
 	"version": "0.1.0",
-  "private": false,
+	"private": false,
 	"description": "This is a global styles package for the Ontario Design System",
 	"main": "index.css",
 	"style": "dist/styles/ontario-theme.min.css",
@@ -15,7 +15,24 @@
 	"files": [
 		"dist/"
 	],
-	"author": "",
+	"authors": [
+		{
+			"name": "Scott Morris",
+			"email": "Scott.Morris@ontario.ca"
+		},
+		{
+			"name": "Elsa Ng",
+			"email": "Elsa.Ng@ontario.ca"
+		},
+		{
+			"name": "Erin Carrieres",
+			"email": "Erin.Carrieres@ontario.ca"
+		},
+		{
+			"name": "Meaghan Carrieres",
+			"email": "Meaghan.Carrieres@ontario.ca"
+		}
+	],
 	"license": "ISC",
 	"dependencies": {
 		"@ontario-digital-service/ontario-design-system-design-tokens": "0.1.0"
