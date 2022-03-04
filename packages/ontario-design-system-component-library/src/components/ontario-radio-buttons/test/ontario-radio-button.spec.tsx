@@ -14,7 +14,7 @@ describe('ontario-radio-buttons', () => {
             <fieldset class="ontario-fieldset">
                 <legend class="ontario-fieldset__legend">
                   <span class="ontario-label__flag">
-                    (Optional)
+                    (optional)
                   </span>
                 </legend>
               <div class="ontario-radios"></div>
