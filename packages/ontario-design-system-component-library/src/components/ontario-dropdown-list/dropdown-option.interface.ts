@@ -3,18 +3,22 @@ export interface DropdownOption {
    * The text to display as label.
    *
    * @example
-   * <ontario-checkboxes
-   *   legend="This is a question?"
-   *   hint-text="This is the hint text"
-   *   options='[{
-   *     "name": "Checkbox 1",
-   *     "value": "checkbox-1-value",
-   *     "label": "Checkbox Label"
-   *   }]'
-   * >
-   * </ontario-checkboxes>
+   * <ontario-dropdown-list legend="Do you like cats?" name="cat-dropdown" is-required
+   * is-empty-start-option="Please select" options='[{
+   *     "value": "dropdown-list-1",
+   *     "label": "Option 1"
+   *   },
+   *   {
+   *     "value": "dropdown-list-2",
+   *     "label": "Option 2"
+   *   },
+   *   {
+   *      "value": "dropdown-list-3",
+   *      "label": "Option 3"
+   *   }]'>
+   * </ontario-dropdown-list>
    *
-   * The resulting label will show `"Checkbox Label"`.
+   * The resulting text for the first dropdown option will show `"Option 1"`.
    */
   label: string;
 
@@ -22,9 +26,4 @@ export interface DropdownOption {
    * The dropdown option content value.
    */
   value: string;
-
-  /**
-   * Whether or not the option is by default selected or not.
-   */
-  isSelected?: boolean;
 }
