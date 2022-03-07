@@ -6,7 +6,7 @@
 	font-family: $ontario-font-raleway-modified;
 	font-size: 1.1875rem;
 	font-weight: 700;
-	line-height: 1.5;
+	line-height: $line-height-default;
 	margin: 0 0 $spacing-4 0;
 	max-width: $narrow-width;
 	white-space: normal;

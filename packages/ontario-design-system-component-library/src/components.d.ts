@@ -448,7 +448,7 @@ export namespace Components {
     interface OntarioRadioButtons {
         /**
           * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
-          * @example <ontario-radio-buttons   legend="This is a question?"   options='[{     "name": "Radio",     "value": "radio-option-1",     "label": "Radio Option 1 Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"   }' > </ontario-radio-buttons>
+          * @example <ontario-radio-buttons   legend="This is a question?"   options='[ 	   {        "name": "Radio",        "value": "radio-option-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content", 		    "aria-label": "This indicates that the hint can be expanded" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content",     "aria-label": "This indicates that the hint can be expanded"   }' > </ontario-radio-buttons>
          */
         "hintExpander"?: HintExpander | string;
         /**
@@ -1753,7 +1753,7 @@ declare namespace LocalJSX {
     interface OntarioRadioButtons {
         /**
           * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
-          * @example <ontario-radio-buttons   legend="This is a question?"   options='[{     "name": "Radio",     "value": "radio-option-1",     "label": "Radio Option 1 Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"   }' > </ontario-radio-buttons>
+          * @example <ontario-radio-buttons   legend="This is a question?"   options='[ 	   {        "name": "Radio",        "value": "radio-option-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content", 		    "aria-label": "This indicates that the hint can be expanded" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content",     "aria-label": "This indicates that the hint can be expanded"   }' > </ontario-radio-buttons>
          */
         "hintExpander"?: HintExpander | string;
         /**

@@ -8,6 +8,7 @@ module.exports = {
     fullWidth: { value: "100%" },
     borderSize: { value: "2px" },
     touchTargetSize: { value: "36px" },
-    touchTargetSizeMobile: { value: "40px" }
+    touchTargetSizeMobile: { value: "40px" },
+    lineHeightDefault: { value: "1.5" }
   }
 }

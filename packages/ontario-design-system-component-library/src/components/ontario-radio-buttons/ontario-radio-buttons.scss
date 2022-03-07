@@ -21,7 +21,7 @@ $ontario-input-offset: math.div(($touch-target-size - $ontario-radios-size), 2);
   left: $ontario-input-offset * -1;
   width: $touch-target-size;
   height: $touch-target-size;
-  z-index: 1;
+  z-index: $ontario-z-index-neutral;
 
   @media screen and (max-width: $small-breakpoint) {
     width: $touch-target-size-mobile;
@@ -38,7 +38,7 @@ $ontario-input-offset: math.div(($touch-target-size - $ontario-radios-size), 2);
   font-family: $ontario-font-raleway-modified;
   font-size: $ontario-font-size-standard-body-text;
   font-weight: $ontario-font-weights-bold;
-  line-height: 1.5;
+  line-height: $line-height-default;
   // Specific spacing required in order to visually align label with input
   margin: 0.2rem 0;
   max-width: $narrow-width;

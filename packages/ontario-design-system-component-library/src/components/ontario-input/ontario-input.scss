@@ -12,7 +12,7 @@ $ontario-input-padding: 0.625rem;
 	display: block;
 	font-size: 1rem;
 	font-family: $ontario-font-open-sans;
-	line-height: 1.5;
+	line-height: $line-height-default;
 	margin: $spacing-0 $spacing-0 $spacing-7;
 	max-width: $standard-width;
 	padding: $ontario-input-padding $spacing-4;

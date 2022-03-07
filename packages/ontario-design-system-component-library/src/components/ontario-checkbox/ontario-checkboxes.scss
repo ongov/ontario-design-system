@@ -35,7 +35,7 @@ $ontario-checkbox-box-shadow-outline: 4px;
     opacity: 0;
     width: $touch-target-size;
     height: $touch-target-size;
-    z-index: 1;
+    z-index: $ontario-z-index-neutral;
 
     // prevent blue default highlighting of input on android
     -webkit-tap-highlight-color: transparent;
@@ -49,7 +49,7 @@ $ontario-checkbox-box-shadow-outline: 4px;
 .ontario-checkboxes__label {
     display: inline-block;
     cursor: pointer;
-    line-height: 1.5;
+    line-height: $line-height-default;
     // Specific spacing required in order to visually align label with input
     margin: $spacing-1 0;
     padding: 0 $spacing-4;
