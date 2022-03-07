@@ -12,7 +12,7 @@
 | Component Name | Component Element  | Description                                    | Status | Specification                                                                                            |
 | -------------- | ------------------ | ---------------------------------------------- | ------ | -------------------------------------------------------------------------------------------------------- |
 | Ontario Button | `<ontario-button>` | Button Component                               | ✅     | [Link](https://docs.google.com/document/d/1-VBef6I95x081RvTip4K4LZYUCAcdzGvS72qeWP6Rbw/edit?usp=sharing) |
-| Ontario Icon   | `<ontario-icon-X>` | Icon Component, where `X` is the specific Icon | 🆕     | [Link](https://docs.google.com/document/d/1mwCjnr9VGaR4Dj1pPmj8lYWQK8lx2RencfVrGiLbDvw/edit?usp=sharing) |
+| Ontario Icon   | `<ontario-icon-X>` | Icon Component, where `X` is the specific Icon | ✅     | [Link](https://docs.google.com/document/d/1mwCjnr9VGaR4Dj1pPmj8lYWQK8lx2RencfVrGiLbDvw/edit?usp=sharing) |
 
 ### Form
 
