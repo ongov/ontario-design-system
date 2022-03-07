@@ -6,13 +6,13 @@ Web Components provide strong encapsulation for reusable components that can be 
 
 ## Built using Stencil
 
-[Stencil](https://stenciljs.com), _a toolchain for building reusable, scalable Design Systems._
+[Stencil](https://stenciljs.com) is _a toolchain for building reusable, scalable Design Systems._
 
 Learn more in the [Stencil Docs](https://stenciljs.com/docs/introduction).
 
 ## Quick Start
 
-Using [Lerna](https://github.com/lerna/lerna), this project is made up of multiple packages that are linked together. Lerna takes care of bootstrapping the packages within this repository together with their dependencies. It will install the `node_modules` for each package, then link the internal project packages together.
+Using [Lerna](https://github.com/lerna/lerna), this project is made up of multiple packages that are linked together, called a _monorepo_. Lerna takes care of bootstrapping the packages within this repository together with their dependencies. It will install the `node_modules` for each package, then link the internal project packages together.
 
 ### Installing Lerna
 
@@ -34,9 +34,9 @@ While at repository root run,
 npm run bootstrap
 ```
 
-### Building Component Library Packages
+### Building `ontario-design-system` Packages
 
-The component library packages have to be built/updated before they can be used. 
+The `ontario-design-system` packages are all designed to be published as NPM packages. In order to do any development, or to just build the project in general, the packages have to be built/updated before they can be used.
 
 Simply run at the root of the repository,
 
@@ -44,7 +44,7 @@ Simply run at the root of the repository,
 npm run build-libs
 ```
 
-This will build the component library packages and prep them for use with any app.
+This will build the packages that are marked as public and prep them for use with any app.
 
 ### Next Steps
 
@@ -52,7 +52,35 @@ Checkout each package in the [`packages`](packages) folder. They each have their
 
 ## Packages
 
-This project is made up of three packages.
+This project is made up of five packages.
+
+### `ontario-design-system-design-tokens`
+
+#### Building the Library
+
+_Content coming soon._
+
+Wanting to build and test within one of the framework applications? Running the `build-libs` script from the root triggers this behaviour.
+
+The library can be built independently by running,
+
+```bash
+npm run build
+```
+
+### `ontario-design-system-global-styles`
+
+_Content coming soon._
+
+#### Building the Library
+
+Wanting to build and test within one of the framework applications? Running the `build-libs` script from the root triggers this behaviour.
+
+The library can be built independently by running,
+
+```bash
+npm run build
+```
 
 ### `ontario-design-system-component-library`
 
@@ -60,9 +88,19 @@ The `ontario-design-system-component-library` is the heart of the project, it co
 
 The build process of this library emits NPM package compatible packages as well as component libraries for other JavaScript UI Frameworks.
 
+#### Building the Library
+
+Wanting to build and test within one of the framework applications? Running the `build-libs` script from the root triggers this behaviour.
+
+The library can be built independently by running,
+
+```bash
+npm run build
+```
+
 #### Component Development
 
-The project contains an HTML file called `index.html` that is immediatly loaded when the development server is started it.  It is a simple place to stage a component for development.
+The project contains an HTML file called `index.html` that is immediately loaded when the development server is started it. It is a simple place to stage a component for development.
 
 A development server can be run by running,
 
@@ -70,14 +108,18 @@ A development server can be run by running,
 npm run start
 ```
 
-#### Building the Library
+##### Generating a New Component
 
-Wanting to build and test within one of the framework applications?  Running the `build-libs` script from the root triggers this behaviour.
-
-The library can be built independently by running,
+Stencil CLI can generate a new component within the `src/components` folder. With the `ontario-design-system-component-library` being your current directory run,
 
 ```bash
-npm run build
+stencil generate name-of-component
+```
+
+If you don't have `stencil` installed globally, prefix the command with `npx`,
+
+```bash
+npx stencil generate name-of-component
 ```
 
 ### `ontario-design-system-component-library-react`
@@ -88,7 +130,7 @@ See the [Stencil Docs on React](https://stenciljs.com/docs/react) for more infor
 
 #### Building the Library
 
-Wanting to build and test within one of the framework applications?  Running the `build-libs` script from the root triggers this behaviour.
+Wanting to build and test within one of the framework applications? Running the `build-libs` script from the root triggers this behaviour.
 
 The library can be built independently by running,
 
@@ -96,9 +138,9 @@ The library can be built independently by running,
 npm run build
 ```
 
-### `app-react` _(Not yet implemented)_
+### `app-react`
 
-A React frontend to show off the whole process, from `ontario-design-system-component-library` component to React component. It is a simple [Create React App]() application and demos the simplicity of using the generated components.
+A React frontend to show off the whole process, from `ontario-design-system-component-library` component to React component. It is a simple [Create React App](https://github.com/facebook/create-react-app) application and demos the simplicity of using the generated components.
 
 #### Running the App for Development
 
@@ -108,8 +150,44 @@ The application can be run in development by running,
 npm run start
 ```
 
+#### Building the App for Production
+
+The application can be build for production by running,
+
+```bash
+npm run build
+```
+
+## Package/Project Clean-up
+
+Each package, as well as the root of the repository, contain `package.json` scripts to clean up each package/project.
+
+### `clean`
+
+The `clean` script is used to clean up any build artefacts that might be produced. It should not touch any installed dependencies and is good for making sure the builds build cleanly. Try this is you're running into any weird, non package related build issues.
+
+In any project, or at the root of the repository run,
+
+```bash
+npm run clean
+```
+
+If run at the root of the repository Lerna will execute each package's `clean` script, allowing the entire project to be cleaned up.
+
+### `clean:full`
+
+The `clean:full` script is used to clean any build artefacts as well as nuke the package's `node_modules` folder. For a non module clean see [`clean`](#clean).
+
+In any project, or at the root of the repository run,
+
+```bash
+npm run clean:full
+```
+
+If run at root this will run the `clean:full` script on each package, which will clean build artefacts and nuke the `node_modules` directory. _The root level `node_modules` directory will not be touched._ This makes sure that Lerna is left around.
+
 ## Resources
 
 Here are some helpful resources one can use to learn more.
 
-- [ReactJS: Web Components]( https://reactjs.org/docs/web-components.html)
+- [ReactJS: Web Components](https://reactjs.org/docs/web-components.html)

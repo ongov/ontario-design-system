@@ -1,0 +1,32 @@
+@use "sass:math";
+@import '@ontario-digital-service/ontario-design-system-design-tokens/dist/scss/variables';
+
+/*
+*  Global variables
+*
+*  Used across multiple components
+*/
+
+/* Rem calc function */
+/// Builds a rem-calc function for use in SCSS
+///
+/// @param {number} $size
+///   Rem value size
+
+@function rem-calc($size) {
+  $remSize: math.div($size, 16);
+  @return $remSize * 1rem;
+}
+
+// Radius for rounded corners (for example, buttons)
+$global-radius: $ontario-global-tokens-radius;
+
+// This value represents 1 pixel based on a base rem value of 16px
+$pixel: $ontario-global-tokens-pixel-value;
+
+// This value represents a large max value
+$max-value: $ontario-global-tokens-max-value;
+
+// Width values
+$standard-width: $ontario-global-tokens-standard-width;
+$full-width:  $ontario-global-tokens-full-width;

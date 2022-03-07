@@ -1,0 +1,40 @@
+{
+	"name": "@ontario-digital-service/ontario-design-system-design-tokens",
+	"version": "0.1.0",
+	"private": false,
+	"description": "Design Tokens to be used in Ontario Design System",
+	"main": "index.js",
+	"style": "dist/css/_variables.css",
+	"sass": "dist/scss/_variables.scss",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "node build.js",
+		"clean": "rm -rf dist",
+		"clean:full": "rm -rf node_modules && npm run clean"
+	},
+	"files": [
+		"dist/{css,scss}/"
+	],
+	"authors": [
+		{
+			"name": "Scott Morris",
+			"email": "Scott.Morris@ontario.ca"
+		},
+		{
+			"name": "Elsa Ng",
+			"email": "Elsa.Ng@ontario.ca"
+		},
+		{
+			"name": "Erin Carrieres",
+			"email": "Erin.Carrieres@ontario.ca"
+		},
+		{
+			"name": "Meaghan Carrieres",
+			"email": "Meaghan.Carrieres@ontario.ca"
+		}
+	],
+	"license": "ISC",
+	"devDependencies": {
+		"style-dictionary": "^3.0.3"
+	}
+}
