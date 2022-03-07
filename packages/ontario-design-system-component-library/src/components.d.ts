@@ -83,7 +83,7 @@ export namespace Components {
          */
         "isEmptyStartOption": boolean | string;
         /**
-          * Determine whether the dropdown list is required. If required, it should be set to true.
+          * Determine whether the dropdown list is required. If required, add `is-required` attribute. Otherwise, the `optional` flag will appear.
           * @example <ontario-dropdown-list ... is-required></ontario-dropdown-list>
          */
         "isRequired": boolean;
@@ -96,7 +96,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are two dropdown options to be displayed in the fieldset.
+          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset.
           * @example <ontario-dropdown-list legend="Do you like cats?" name="cat-dropdown" is-required is-empty-start-option="Please select" options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
          */
         "options": string | DropdownOption[];
@@ -1824,7 +1824,7 @@ declare namespace LocalJSX {
          */
         "isEmptyStartOption"?: boolean | string;
         /**
-          * Determine whether the dropdown list is required. If required, it should be set to true.
+          * Determine whether the dropdown list is required. If required, add `is-required` attribute. Otherwise, the `optional` flag will appear.
           * @example <ontario-dropdown-list ... is-required></ontario-dropdown-list>
          */
         "isRequired"?: boolean;
@@ -1837,7 +1837,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are two dropdown options to be displayed in the fieldset.
+          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset.
           * @example <ontario-dropdown-list legend="Do you like cats?" name="cat-dropdown" is-required is-empty-start-option="Please select" options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
          */
         "options"?: string | DropdownOption[];
