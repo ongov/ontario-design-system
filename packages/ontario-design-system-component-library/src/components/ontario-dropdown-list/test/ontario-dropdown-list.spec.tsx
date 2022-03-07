@@ -14,7 +14,7 @@ describe('ontario-dropdown-list', () => {
             <fieldset class="ontario-fieldset">
               <legend class="ontario-fieldset__legend">
                 <span class="ontario-label__flag">
-                  (Optional)
+                  (optional)
                 </span>
               </legend>
               <select class="ontario-dropdown ontario-input"></select>

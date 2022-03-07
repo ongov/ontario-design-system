@@ -19,11 +19,14 @@ export interface DropdownOption {
    * </ontario-dropdown-list>
    *
    * The resulting text for the first dropdown option will show `"Option 1"`.
+   * The resulting text for the first dropdown option will show `"Option 2"`.
+   * The resulting text for the first dropdown option will show `"Option 3"`.
    */
   label: string;
 
   /**
    * The dropdown option content value.
+   * Each value must be unique to the option.
    */
   value: string;
 }

@@ -21,7 +21,7 @@ export interface Dropdown extends Base {
    * Each property will be passed in through an object in the options array.
    * This can either be passed in as an object directly (if using react), or as a string in HTML.
    * In the example below, the options are being passed in as a string and
-   * there are two dropdown options to be displayed in the fieldset.
+   * there are three dropdown options to be displayed in the fieldset.
    *
    * @example
    * <ontario-dropdown-list legend="Do you like cats?" name="cat-dropdown" is-required
@@ -43,7 +43,9 @@ export interface Dropdown extends Base {
 
   /**
    * Determine whether the dropdown list is required.
-   * If required, it should be set to true.
+   * If required, add `is-required` attribute.
+   * Otherwise, the `optional` flag will appear.
+   *
    * @example
    * <ontario-dropdown-list ... is-required></ontario-dropdown-list>
    */
