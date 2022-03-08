@@ -14,7 +14,7 @@
 @import './1-variables/grid.variables';
 @import './1-variables/spacing.variables';
 @import './1-variables/typography.variables';
-
+@import './1-variables/z-index.variables';
 
 /*** 2 - Tools ***/
 @import './2-tools/functions/grid.functions';
@@ -27,15 +27,13 @@
 @import './2-tools/placeholder/focus.placeholders';
 @import './2-tools/placeholder/typography.placeholders';
 
-
 /*** 3 - Generics ***/
 @import './3-generics/colours.generics';
 @import './3-generics/typography.generics';
 
-
 /*** 4 - Elements ***/
 @import './4-elements/global.elements';
-
+@import './4-elements/text-inputs.elements';
 
 /*** 5 - Layout ***/
 @import './5-layout/form.layout';
