@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
+import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
     interface MyComponent {
         /**
@@ -50,7 +51,7 @@ export namespace Components {
           * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
           * @example <ontario-checkboxes   legend="This is a question?"   options='[{     "name": "Checkbox 1",     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
          */
-        "hintExpander": HintExpander | string;
+        "hintExpander"?: HintExpander | string;
         /**
           * Define hint text on an element.
          */
@@ -59,7 +60,7 @@ export namespace Components {
           * Determine whether the input field is required. If required, it should be set to true.
           * @example <ontario-checkboxes ... is-required></ontario-checkboxes>
          */
-        "isRequired": boolean;
+        "isRequired"?: boolean;
         /**
           * The legend for the checkbox
          */
@@ -443,6 +444,31 @@ export namespace Components {
           * The input content value.
          */
         "value"?: string;
+    }
+    interface OntarioRadioButtons {
+        /**
+          * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
+          * @example <ontario-radio-buttons   legend="This is a question?"   options='[ 	   {        "name": "Radio",        "value": "radio-option-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content", 		    "aria-label": "This indicates that the hint can be expanded" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content",     "aria-label": "This indicates that the hint can be expanded"   }' > </ontario-radio-buttons>
+         */
+        "hintExpander"?: HintExpander | string;
+        /**
+          * Define hint text for Radio Button fieldset.
+         */
+        "hintText"?: string;
+        /**
+          * Determine whether the input field is required. If required, it should be set to true. This can be done by passing in `is-required` to the component.
+          * @example <ontario-radio-buttons ... is-required></ontario-radio-buttons>
+         */
+        "isRequired"?: boolean;
+        /**
+          * The legend for the Radio Buttons.
+         */
+        "legend": string;
+        /**
+          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
+          * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Radio",        "value": "radio-1-value",        "label": "Radio Button Label 1"     },     {        "name": "Radio",        "value": "radio-2-value",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-radio-buttons>
+         */
+        "options": string | RadioOption[];
     }
     interface OntarioTextarea {
         /**
@@ -1140,6 +1166,12 @@ declare global {
         prototype: HTMLOntarioInputElement;
         new (): HTMLOntarioInputElement;
     };
+    interface HTMLOntarioRadioButtonsElement extends Components.OntarioRadioButtons, HTMLStencilElement {
+    }
+    var HTMLOntarioRadioButtonsElement: {
+        prototype: HTMLOntarioRadioButtonsElement;
+        new (): HTMLOntarioRadioButtonsElement;
+    };
     interface HTMLOntarioTextareaElement extends Components.OntarioTextarea, HTMLStencilElement {
     }
     var HTMLOntarioTextareaElement: {
@@ -1257,6 +1289,7 @@ declare global {
         "ontario-icon-wheelchair": HTMLOntarioIconWheelchairElement;
         "ontario-icon-wifi": HTMLOntarioIconWifiElement;
         "ontario-input": HTMLOntarioInputElement;
+        "ontario-radio-buttons": HTMLOntarioRadioButtonsElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
     }
 }
@@ -1717,6 +1750,31 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface OntarioRadioButtons {
+        /**
+          * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
+          * @example <ontario-radio-buttons   legend="This is a question?"   options='[ 	   {        "name": "Radio",        "value": "radio-option-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content", 		    "aria-label": "This indicates that the hint can be expanded" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content",     "aria-label": "This indicates that the hint can be expanded"   }' > </ontario-radio-buttons>
+         */
+        "hintExpander"?: HintExpander | string;
+        /**
+          * Define hint text for Radio Button fieldset.
+         */
+        "hintText"?: string;
+        /**
+          * Determine whether the input field is required. If required, it should be set to true. This can be done by passing in `is-required` to the component.
+          * @example <ontario-radio-buttons ... is-required></ontario-radio-buttons>
+         */
+        "isRequired"?: boolean;
+        /**
+          * The legend for the Radio Buttons.
+         */
+        "legend"?: string;
+        /**
+          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
+          * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Radio",        "value": "radio-1-value",        "label": "Radio Button Label 1"     },     {        "name": "Radio",        "value": "radio-2-value",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-radio-buttons>
+         */
+        "options"?: string | RadioOption[];
+    }
     interface OntarioTextarea {
         /**
           * The aria-describedBy value if the textarea has hint text associated with it.
@@ -1874,6 +1932,7 @@ declare namespace LocalJSX {
         "ontario-icon-wheelchair": OntarioIconWheelchair;
         "ontario-icon-wifi": OntarioIconWifi;
         "ontario-input": OntarioInput;
+        "ontario-radio-buttons": OntarioRadioButtons;
         "ontario-textarea": OntarioTextarea;
     }
 }
@@ -1991,6 +2050,7 @@ declare module "@stencil/core" {
             "ontario-icon-wheelchair": LocalJSX.OntarioIconWheelchair & JSXBase.HTMLAttributes<HTMLOntarioIconWheelchairElement>;
             "ontario-icon-wifi": LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
             "ontario-input": LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
+            "ontario-radio-buttons": LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
         }
     }

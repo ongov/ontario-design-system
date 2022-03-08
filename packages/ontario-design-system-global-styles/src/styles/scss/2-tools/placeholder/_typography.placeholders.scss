@@ -42,7 +42,7 @@
   @media screen and (min-width: $small-breakpoint) {
       font-size: rem-calc(28);
       letter-spacing: 0.02rem;
-      line-height: 1.5;
+      line-height: $line-height-default;
   }
 }
 
@@ -50,12 +50,12 @@
   @extend %ontario-header-styles;
   font-size: rem-calc(20);
   letter-spacing: 0.03rem;
-  line-height: 1.5;
+  line-height: $line-height-default;
   margin: 0 0 $spacing-4 0;
   @media screen and (min-width: $small-breakpoint) {
       font-size: rem-calc(24);
       letter-spacing: 0.0313rem;
-      line-height: 1.5;
+      line-height: $line-height-default;
   }
 }
 
@@ -63,7 +63,7 @@
   @extend %ontario-header-styles;
   font-size: rem-calc(18);
   letter-spacing: 0.03rem;
-  line-height: 1.5;
+  line-height: $line-height-default;
   margin: 0 0 $spacing-4 0;
   @media screen and (min-width: $small-breakpoint) {
       font-size: rem-calc(19);
@@ -76,7 +76,7 @@
   @extend %ontario-header-styles;
   font-size: rem-calc(16);
   letter-spacing: 0.03rem;
-  line-height: 1.5;
+  line-height: $line-height-default;
   margin: 0 0 $spacing-4 0;
   @media screen and (min-width: $small-breakpoint) {
       font-size: rem-calc(16);

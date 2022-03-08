@@ -1,0 +1,111 @@
+@use "sass:math";
+@import '../../global.scss';
+
+$ontario-radios-size: 32px;
+$ontario-radios-size-mobile: 36px;
+$ontario-input-offset: math.div(($touch-target-size - $ontario-radios-size), 2);
+
+.ontario-radios__item {
+  position: relative;
+  display: block;
+  margin: 0 0 $spacing-4;
+  padding: 0 $spacing-6 0;
+}
+
+.ontario-radios__input {
+  cursor: pointer;
+  margin: 0;
+  position: absolute;
+  opacity: 0;
+  top: $ontario-input-offset * -1;
+  left: $ontario-input-offset * -1;
+  width: $touch-target-size;
+  height: $touch-target-size;
+  z-index: $ontario-z-index-neutral;
+
+  @media screen and (max-width: $small-breakpoint) {
+    width: $touch-target-size-mobile;
+    height: $touch-target-size-mobile;
+    top: $ontario-input-offset * -0.75;
+    left: $ontario-input-offset * -0.75;
+  }
+}
+
+.ontario-radios__label {
+  cursor: pointer;
+  color: $ontario-colour-black;
+  display: inline-block;
+  font-family: $ontario-font-raleway-modified;
+  font-size: $ontario-font-size-standard-body-text;
+  font-weight: $ontario-font-weights-bold;
+  line-height: $line-height-default;
+  // Specific spacing required in order to visually align label with input
+  margin: 0.2rem 0;
+  max-width: $narrow-width;
+  padding: 0 $spacing-3;
+  // remove 300ms pause on mobile
+  touch-action: manipulation;
+  white-space: normal;
+  width: auto;
+  white-space: normal;
+
+  @media screen and (max-width: $small-breakpoint) {
+    // Specific spacing required in order to visually align label with input
+    margin: 0.3rem 0;
+    padding: 0 $spacing-4;
+  }
+
+  &:before {
+    content: "";
+    border: $border-size-standard solid $ontario-colour-black;
+    border-radius: 50%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $ontario-radios-size;
+    height: $ontario-radios-size;
+    transition: border 0.1s ease-in-out;
+
+    @media screen and (max-width: $small-breakpoint) {
+      width: $ontario-radios-size-mobile;
+      height: $ontario-radios-size-mobile;
+    }
+  }
+
+  &:after {
+    content: "";
+    border-radius: 50%;
+    border: 10px solid $ontario-colour-black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(
+      $ontario-input-offset * 3,
+      $ontario-input-offset * 3
+    );
+    opacity: 0;
+
+    @media screen and (max-width: $small-breakpoint) {
+      border: 12px solid $ontario-colour-black;
+    }
+  }
+}
+
+.ontario-radios__input:focus + .ontario-radios__label:before {
+  -moz-box-shadow: $ontario-focus-box-shadow;
+  -webkit-box-shadow: $ontario-colour-focus;
+  @extend %ontario-focus;
+}
+
+.ontario-radios__input:checked + .ontario-radios__label:after {
+  opacity: 1;
+}
+
+.ontario-radios__hint-expander {
+  margin: $spacing-3 0 0 $spacing-2;
+
+  @media screen and (max-width: $small-breakpoint) {
+    margin-top: $spacing-4;
+  }
+}

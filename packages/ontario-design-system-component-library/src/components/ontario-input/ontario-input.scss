@@ -5,14 +5,14 @@
 $ontario-input-padding: 0.625rem;
 
 .ontario-input {
-	border: 2px solid $ontario-colour-black;
+	border: $border-size-standard solid $ontario-colour-black;
 	border-radius: $global-radius;
 	box-sizing: border-box;
 	color: $ontario-colour-black;
 	display: block;
 	font-size: 1rem;
 	font-family: $ontario-font-open-sans;
-	line-height: 1.5;
+	line-height: $line-height-default;
 	margin: $spacing-0 $spacing-0 $spacing-7;
 	max-width: $standard-width;
 	padding: $ontario-input-padding $spacing-4;
