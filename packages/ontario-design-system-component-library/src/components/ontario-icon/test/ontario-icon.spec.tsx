@@ -1,4 +1,3 @@
-
 import { newSpecPage } from '@stencil/core/testing';
 import { OntarioIconAccessibility } from '../ontario-icon-accessibility';
 
@@ -12,7 +11,7 @@ describe('ontario-icon', () => {
 
       expect(page.root).toMatchSnapshot();
     });
-  })
+  });
 
   it('renders', async () => {
     const page = await newSpecPage({
