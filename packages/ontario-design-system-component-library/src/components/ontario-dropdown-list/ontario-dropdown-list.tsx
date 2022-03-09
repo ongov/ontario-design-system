@@ -139,6 +139,11 @@ export class OntarioDropdownList implements Dropdown {
             id={this.elementId}
             name={this.name}
           >
+            {this.isEmptyStartOption &&
+              (<option>
+                Select
+              </option>)
+            }
             {this.internalOptions?.map((dropdown) =>
               <option value={dropdown.value}>
                 {dropdown.label}
