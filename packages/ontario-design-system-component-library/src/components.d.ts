@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
+import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
     interface MyComponent {
@@ -70,6 +71,48 @@ export namespace Components {
           * @example <ontario-checkboxes   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Checkbox 1",        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "name": "Checkbox-2",        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
          */
         "options": CheckboxOption[] | string;
+    }
+    interface OntarioDropdownList {
+        /**
+          * The ID for the dropdown list.
+         */
+        "elementId": string;
+        /**
+          * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
+          * @example <ontario-dropdown-list ... ></ontario-dropdown-list>
+         */
+        "isEmptyStartOption": boolean | string;
+        /**
+          * Determine whether the dropdown list is required. If required, it should be set to true.
+          * @example <ontario-dropdown-list ... is-required></ontario-dropdown-list>
+         */
+        "isRequired": boolean;
+        /**
+          * Whether or not the option is by default selected or not.
+         */
+        "isSelected"?: boolean;
+        /**
+          * The text to display as label.
+          * @example <ontario-checkboxes   legend="This is a question?"   hint-text="This is the hint text"   options='[{     "name": "Checkbox 1",     "value": "checkbox-1-value",     "label": "Checkbox Label"   }]' > </ontario-checkboxes>  The resulting label will show `"Checkbox Label"`.
+         */
+        "label": string;
+        /**
+          * The legend for the Dropdown List.
+         */
+        "legend": string;
+        /**
+          * The name for the dropdown list.
+         */
+        "name": string;
+        /**
+          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
+          * @example <ontario-checkboxes   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Checkbox 1",        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "name": "Checkbox-2",        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkbox>
+         */
+        "options": string | DropdownOption[];
+        /**
+          * The dropdown option content value.
+         */
+        "value": string;
     }
     interface OntarioHintExpander {
         /**
@@ -940,6 +983,12 @@ declare global {
         prototype: HTMLOntarioCheckboxesElement;
         new (): HTMLOntarioCheckboxesElement;
     };
+    interface HTMLOntarioDropdownListElement extends Components.OntarioDropdownList, HTMLStencilElement {
+    }
+    var HTMLOntarioDropdownListElement: {
+        prototype: HTMLOntarioDropdownListElement;
+        new (): HTMLOntarioDropdownListElement;
+    };
     interface HTMLOntarioHintExpanderElement extends Components.OntarioHintExpander, HTMLStencilElement {
     }
     var HTMLOntarioHintExpanderElement: {
@@ -1598,6 +1647,7 @@ declare global {
         "my-component": HTMLMyComponentElement;
         "ontario-button": HTMLOntarioButtonElement;
         "ontario-checkboxes": HTMLOntarioCheckboxesElement;
+        "ontario-dropdown-list": HTMLOntarioDropdownListElement;
         "ontario-hint-expander": HTMLOntarioHintExpanderElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
         "ontario-icon-accessibility": HTMLOntarioIconAccessibilityElement;
@@ -1775,6 +1825,48 @@ declare namespace LocalJSX {
           * @example <ontario-checkboxes   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Checkbox 1",        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "name": "Checkbox-2",        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
          */
         "options"?: CheckboxOption[] | string;
+    }
+    interface OntarioDropdownList {
+        /**
+          * The ID for the dropdown list.
+         */
+        "elementId"?: string;
+        /**
+          * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
+          * @example <ontario-dropdown-list ... ></ontario-dropdown-list>
+         */
+        "isEmptyStartOption"?: boolean | string;
+        /**
+          * Determine whether the dropdown list is required. If required, it should be set to true.
+          * @example <ontario-dropdown-list ... is-required></ontario-dropdown-list>
+         */
+        "isRequired"?: boolean;
+        /**
+          * Whether or not the option is by default selected or not.
+         */
+        "isSelected"?: boolean;
+        /**
+          * The text to display as label.
+          * @example <ontario-checkboxes   legend="This is a question?"   hint-text="This is the hint text"   options='[{     "name": "Checkbox 1",     "value": "checkbox-1-value",     "label": "Checkbox Label"   }]' > </ontario-checkboxes>  The resulting label will show `"Checkbox Label"`.
+         */
+        "label"?: string;
+        /**
+          * The legend for the Dropdown List.
+         */
+        "legend"?: string;
+        /**
+          * The name for the dropdown list.
+         */
+        "name"?: string;
+        /**
+          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
+          * @example <ontario-checkboxes   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Checkbox 1",        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "name": "Checkbox-2",        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkbox>
+         */
+        "options"?: string | DropdownOption[];
+        /**
+          * The dropdown option content value.
+         */
+        "value"?: string;
     }
     interface OntarioHintExpander {
         /**
@@ -2657,6 +2749,7 @@ declare namespace LocalJSX {
         "my-component": MyComponent;
         "ontario-button": OntarioButton;
         "ontario-checkboxes": OntarioCheckboxes;
+        "ontario-dropdown-list": OntarioDropdownList;
         "ontario-hint-expander": OntarioHintExpander;
         "ontario-hint-text": OntarioHintText;
         "ontario-icon-accessibility": OntarioIconAccessibility;
@@ -2775,6 +2868,7 @@ declare module "@stencil/core" {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             "ontario-checkboxes": LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
+            "ontario-dropdown-list": LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
             "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
             "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
             "ontario-icon-accessibility": LocalJSX.OntarioIconAccessibility & JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;
