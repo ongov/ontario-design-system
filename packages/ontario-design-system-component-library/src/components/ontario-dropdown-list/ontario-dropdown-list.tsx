@@ -86,7 +86,11 @@ export class OntarioDropdownList implements Dropdown {
   * If set to a string, it will render the string value.
   *
   * @example
-  * <ontario-dropdown-list ... ></ontario-dropdown-list>
+  * <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>
+  *
+  * or
+  *
+  * <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
   */
   @Prop() isEmptyStartOption: boolean | string;
 
@@ -139,11 +143,17 @@ export class OntarioDropdownList implements Dropdown {
             id={this.elementId}
             name={this.name}
           >
-            {this.isEmptyStartOption &&
-              (<option>
-                Select
-              </option>)
-            }
+            {this.isEmptyStartOption && (
+              this.isEmptyStartOption == true ?
+                <option>
+                  Select
+                </option>
+                :
+                <option>
+                  {this.isEmptyStartOption}
+                </option>
+            )}
+
             {this.internalOptions?.map((dropdown) =>
               <option value={dropdown.value}>
                 {dropdown.label}

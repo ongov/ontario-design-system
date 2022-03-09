@@ -79,7 +79,7 @@ export namespace Components {
         "elementId": string;
         /**
           * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
-          * @example <ontario-dropdown-list ... ></ontario-dropdown-list>
+          * @example <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
          */
         "isEmptyStartOption": boolean | string;
         /**
@@ -1833,7 +1833,7 @@ declare namespace LocalJSX {
         "elementId"?: string;
         /**
           * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
-          * @example <ontario-dropdown-list ... ></ontario-dropdown-list>
+          * @example <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
          */
         "isEmptyStartOption"?: boolean | string;
         /**
