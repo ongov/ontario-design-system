@@ -6,7 +6,7 @@ import { Component, Prop, h } from '@stencil/core';
 	shadow: true,
 })
 export class OntarioFooter {
-	@Prop() class: 'default' | 'partnership' | 'expanded';
+	@Prop() type: 'default' | 'partnership' | 'expanded';
 
 	@Prop() default: boolean;
 
@@ -75,8 +75,7 @@ export class OntarioFooter {
 
 	render() {
 		return (
-			<footer class={'ontario-footer ontario-footer--' + this.class}>
-				<h1>WE ARE HERE</h1>
+			<footer class={'ontario-footer ontario-footer--' + this.type}>
 				{this.expanded && (
 					<div class="ontario-footer__expanded-top-section">
 						<div class="ontario-row">

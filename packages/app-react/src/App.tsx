@@ -23,7 +23,7 @@ const App = () => {
 					</div>
 					<div className="footer">
 						{/* <Footer /> */}
-						<OntarioFooter class="expanded" default={true} twoColumns={false} expanded={false} expandedTwoColumn={false} expandedThreeColumn={false}/>
+						<OntarioFooter type="expanded" default={true} twoColumns={false} expanded={true} expandedTwoColumn={false} expandedThreeColumn={true}/>
 					</div>
 				</div>
 			</div>
