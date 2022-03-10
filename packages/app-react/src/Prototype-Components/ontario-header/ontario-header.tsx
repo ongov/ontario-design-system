@@ -166,7 +166,7 @@ const Header = () => {
 					</nav>
 				</div>
 			</div>
-			{toggle && <div className="ontario-hide-for-large ontario-application-overlay"></div>}
+			{toggle && <div className="ontario-hide-for-large ontario-application-overlay" />}
 		</>
 	);
 };

@@ -70,6 +70,9 @@ export namespace Components {
          */
         "options": CheckboxOption[] | string;
     }
+    interface OntarioHeader {
+        "toggle": boolean;
+    }
     interface OntarioHintExpander {
         /**
           * Include visually hidden text inside the label that describes to screen readers the availability of a hint expander
@@ -497,6 +500,12 @@ declare global {
     var HTMLOntarioCheckboxesElement: {
         prototype: HTMLOntarioCheckboxesElement;
         new (): HTMLOntarioCheckboxesElement;
+    };
+    interface HTMLOntarioHeaderElement extends Components.OntarioHeader, HTMLStencilElement {
+    }
+    var HTMLOntarioHeaderElement: {
+        prototype: HTMLOntarioHeaderElement;
+        new (): HTMLOntarioHeaderElement;
     };
     interface HTMLOntarioHintExpanderElement extends Components.OntarioHintExpander, HTMLStencilElement {
     }
@@ -1150,6 +1159,7 @@ declare global {
         "my-component": HTMLMyComponentElement;
         "ontario-button": HTMLOntarioButtonElement;
         "ontario-checkboxes": HTMLOntarioCheckboxesElement;
+        "ontario-header": HTMLOntarioHeaderElement;
         "ontario-hint-expander": HTMLOntarioHintExpanderElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
         "ontario-icon-accessibility": HTMLOntarioIconAccessibilityElement;
@@ -1326,6 +1336,10 @@ declare namespace LocalJSX {
           * @example <ontario-checkboxes   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Checkbox 1",        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "name": "Checkbox-2",        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
          */
         "options"?: CheckboxOption[] | string;
+    }
+    interface OntarioHeader {
+        "onChangeEvent"?: (event: CustomEvent<any>) => void;
+        "toggle"?: boolean;
     }
     interface OntarioHintExpander {
         /**
@@ -1767,6 +1781,7 @@ declare namespace LocalJSX {
         "my-component": MyComponent;
         "ontario-button": OntarioButton;
         "ontario-checkboxes": OntarioCheckboxes;
+        "ontario-header": OntarioHeader;
         "ontario-hint-expander": OntarioHintExpander;
         "ontario-hint-text": OntarioHintText;
         "ontario-icon-accessibility": OntarioIconAccessibility;
@@ -1884,6 +1899,7 @@ declare module "@stencil/core" {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             "ontario-checkboxes": LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
+            "ontario-header": LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
             "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
             "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
             "ontario-icon-accessibility": LocalJSX.OntarioIconAccessibility & JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;

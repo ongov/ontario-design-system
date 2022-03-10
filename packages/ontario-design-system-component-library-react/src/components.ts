@@ -11,6 +11,7 @@ defineCustomElements();
 export const MyComponent = /*@__PURE__*/createReactComponent<JSX.MyComponent, HTMLMyComponentElement>('my-component');
 export const OntarioButton = /*@__PURE__*/createReactComponent<JSX.OntarioButton, HTMLOntarioButtonElement>('ontario-button');
 export const OntarioCheckboxes = /*@__PURE__*/createReactComponent<JSX.OntarioCheckboxes, HTMLOntarioCheckboxesElement>('ontario-checkboxes');
+export const OntarioHeader = /*@__PURE__*/createReactComponent<JSX.OntarioHeader, HTMLOntarioHeaderElement>('ontario-header');
 export const OntarioHintExpander = /*@__PURE__*/createReactComponent<JSX.OntarioHintExpander, HTMLOntarioHintExpanderElement>('ontario-hint-expander');
 export const OntarioHintText = /*@__PURE__*/createReactComponent<JSX.OntarioHintText, HTMLOntarioHintTextElement>('ontario-hint-text');
 export const OntarioIconAccessibility = /*@__PURE__*/createReactComponent<JSX.OntarioIconAccessibility, HTMLOntarioIconAccessibilityElement>('ontario-icon-accessibility');
