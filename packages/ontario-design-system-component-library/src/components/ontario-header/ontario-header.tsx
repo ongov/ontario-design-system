@@ -1,4 +1,8 @@
 import { Component, Prop, h, Event, EventEmitter } from '@stencil/core';
+import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
+import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
+import OntarioLogo from './ontario-logo-header.svg';
+import { titleHeader, languageTogglePaths } from './titleHeader';
 
 @Component({
 	tag: 'ontario-header',
@@ -6,6 +10,14 @@ import { Component, Prop, h, Event, EventEmitter } from '@stencil/core';
 	shadow: true,
 })
 export class OntarioHeader {
+	@Prop() type?: 'application' | 'ontario' = 'application';
+
+	@Prop() titleHeader: titleHeader;
+
+	@Prop() menuItems: titleHeader[];
+
+	@Prop() languageTogglePaths: languageTogglePaths;
+
 	@Prop() toggle: boolean = false;
 
 	@Event() changeEvent!: EventEmitter<any>;
@@ -20,8 +32,8 @@ export class OntarioHeader {
 					<div class="ontario-application-main-header-container">
 						<section class="ontario-application-header">
 							<div class="ontario-row">
-								<div class="ontario-columns ontario-small-6 ontario-application-header__logo">
-									<a href="https://www.ontario.ca/page/government-ontario">{/* <img src={ontarioLogoDesktop} alt="" /> */}</a>
+								<div class="ontario-columns ontario-small-6 ontario-application-header__logo" innerHTML={OntarioLogo}>
+									<a href="https://www.ontario.ca/page/government-ontario" />
 								</div>
 								<div class="ontario-columns ontario-small-6 ontario-application-header__lang-toggle">
 									<a href="/" class="ontario-header-button ontario-header-button--without-outline">
@@ -80,10 +92,10 @@ export class OntarioHeader {
 												data-target="megaMenu"
 												onClick={this.handleToggle}
 											>
-												<div class={`ontario-icon ontario-icon--white`}>
+												<div class={`ontario-icon ontario-icon--white`} innerHTML={OntarioIconClose}>
 													{/* <OntarioIconClose width="32px" height="32px" viewBox="0 0 24 24" /> */}
-													<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
 												</div>
+												<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
 											</button>
 										) : (
 											<button
@@ -94,7 +106,9 @@ export class OntarioHeader {
 												data-target="megaMenu"
 												onClick={this.handleToggle}
 											>
-												<div class={`ontario-icon ontario-icon--white`}>{/* <OntarioIconMenu width="32px" height="32px" viewBox="0 0 24 24" /> */}</div>
+												<div class={`ontario-icon ontario-icon--white`} innerHTML={OntarioIconMenu}>
+													{/* <OntarioIconMenu width="32px" height="32px" viewBox="0 0 24 24" /> */}
+												</div>
 												<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
 											</button>
 										)}

@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
+import { languageTogglePaths, titleHeader } from "./components/ontario-header/titleHeader";
 export namespace Components {
     interface MyComponent {
         /**
@@ -70,7 +71,6 @@ export namespace Components {
          */
         "options": CheckboxOption[] | string;
     }
-<<<<<<< HEAD
     interface OntarioFooter {
         "class": 'default' | 'partnership' | 'expanded';
         "default": boolean;
@@ -78,10 +78,13 @@ export namespace Components {
         "expandedThreeColumn": boolean;
         "expandedTwoColumn": boolean;
         "twoColumns": boolean;
-=======
+    }
     interface OntarioHeader {
+        "languageTogglePaths": languageTogglePaths;
+        "menuItems": titleHeader[];
+        "titleHeader": titleHeader;
         "toggle": boolean;
->>>>>>> 93a0c21a09dff419f6d4bd5fb1f690b685904b1c
+        "type"?: 'application' | 'ontario';
     }
     interface OntarioHintExpander {
         /**
@@ -511,19 +514,17 @@ declare global {
         prototype: HTMLOntarioCheckboxesElement;
         new (): HTMLOntarioCheckboxesElement;
     };
-<<<<<<< HEAD
     interface HTMLOntarioFooterElement extends Components.OntarioFooter, HTMLStencilElement {
     }
     var HTMLOntarioFooterElement: {
         prototype: HTMLOntarioFooterElement;
         new (): HTMLOntarioFooterElement;
-=======
+    };
     interface HTMLOntarioHeaderElement extends Components.OntarioHeader, HTMLStencilElement {
     }
     var HTMLOntarioHeaderElement: {
         prototype: HTMLOntarioHeaderElement;
         new (): HTMLOntarioHeaderElement;
->>>>>>> 93a0c21a09dff419f6d4bd5fb1f690b685904b1c
     };
     interface HTMLOntarioHintExpanderElement extends Components.OntarioHintExpander, HTMLStencilElement {
     }
@@ -1177,11 +1178,8 @@ declare global {
         "my-component": HTMLMyComponentElement;
         "ontario-button": HTMLOntarioButtonElement;
         "ontario-checkboxes": HTMLOntarioCheckboxesElement;
-<<<<<<< HEAD
         "ontario-footer": HTMLOntarioFooterElement;
-=======
         "ontario-header": HTMLOntarioHeaderElement;
->>>>>>> 93a0c21a09dff419f6d4bd5fb1f690b685904b1c
         "ontario-hint-expander": HTMLOntarioHintExpanderElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
         "ontario-icon-accessibility": HTMLOntarioIconAccessibilityElement;
@@ -1359,7 +1357,6 @@ declare namespace LocalJSX {
          */
         "options"?: CheckboxOption[] | string;
     }
-<<<<<<< HEAD
     interface OntarioFooter {
         "class"?: 'default' | 'partnership' | 'expanded';
         "default"?: boolean;
@@ -1367,11 +1364,14 @@ declare namespace LocalJSX {
         "expandedThreeColumn"?: boolean;
         "expandedTwoColumn"?: boolean;
         "twoColumns"?: boolean;
-=======
+    }
     interface OntarioHeader {
+        "languageTogglePaths"?: languageTogglePaths;
+        "menuItems"?: titleHeader[];
         "onChangeEvent"?: (event: CustomEvent<any>) => void;
+        "titleHeader"?: titleHeader;
         "toggle"?: boolean;
->>>>>>> 93a0c21a09dff419f6d4bd5fb1f690b685904b1c
+        "type"?: 'application' | 'ontario';
     }
     interface OntarioHintExpander {
         /**
@@ -1813,11 +1813,8 @@ declare namespace LocalJSX {
         "my-component": MyComponent;
         "ontario-button": OntarioButton;
         "ontario-checkboxes": OntarioCheckboxes;
-<<<<<<< HEAD
         "ontario-footer": OntarioFooter;
-=======
         "ontario-header": OntarioHeader;
->>>>>>> 93a0c21a09dff419f6d4bd5fb1f690b685904b1c
         "ontario-hint-expander": OntarioHintExpander;
         "ontario-hint-text": OntarioHintText;
         "ontario-icon-accessibility": OntarioIconAccessibility;
@@ -1935,11 +1932,8 @@ declare module "@stencil/core" {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             "ontario-checkboxes": LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
-<<<<<<< HEAD
             "ontario-footer": LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;
-=======
             "ontario-header": LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
->>>>>>> 93a0c21a09dff419f6d4bd5fb1f690b685904b1c
             "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
             "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
             "ontario-icon-accessibility": LocalJSX.OntarioIconAccessibility & JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;
