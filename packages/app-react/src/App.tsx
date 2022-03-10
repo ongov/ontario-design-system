@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import StoryRouter from './Story';
 import Header from './Prototype-Components/ontario-header/ontario-header';
 import Footer from './Prototype-Components/ontario-footer/ontario-footer';
+import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react';
 
 import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react';
 
@@ -14,7 +15,8 @@ const App = () => {
 			<div className="App">
 				<div className="content-layout">
 					<div className="header">
-						<Header />
+						<OntarioHeader />
+						{/* <Header /> */}
 					</div>
 					<div className="main-content">
 						<StoryRouter />
