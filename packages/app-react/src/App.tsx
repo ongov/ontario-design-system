@@ -5,6 +5,9 @@ import StoryRouter from './Story';
 import Header from './Prototype-Components/ontario-header/ontario-header';
 import Footer from './Prototype-Components/ontario-footer/ontario-footer';
 
+import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
+
 const App = () => {
 	return (
 		<BrowserRouter>
@@ -17,7 +20,8 @@ const App = () => {
 						<StoryRouter />
 					</div>
 					<div className="footer">
-						<Footer />
+						{/* <Footer /> */}
+						<OntarioFooter class="expanded" default={true} twoColumns={false} expanded={false} expandedTwoColumn={false} expandedThreeColumn={false}/>
 					</div>
 				</div>
 			</div>
