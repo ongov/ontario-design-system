@@ -45,7 +45,7 @@ export const config: Config = {
 	],
 	testing: {
 		"transform": {
-			"^.+\\.svg$": "<rootDir>/svgTransform.js"
+			"^.+\\.svg$": "<rootDir>/src/utils/svgTransform.js"
 		},
 		reporters: ['default', 'jest-junit'],
 	}
