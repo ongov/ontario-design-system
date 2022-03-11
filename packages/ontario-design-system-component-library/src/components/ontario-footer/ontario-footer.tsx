@@ -6,17 +6,17 @@ import { Component, Prop, h } from '@stencil/core';
 	shadow: true,
 })
 export class OntarioFooter {
-	@Prop() type: 'default' | 'partnership' | 'expanded';
+	@Prop() type: 'default' | 'partnership' | 'expanded' = 'default';
 
-	@Prop() default: boolean;
+	@Prop() ifDefault: boolean = true;
 
-	@Prop() twoColumns: boolean;
+	@Prop() ifTwoColumns: boolean = false;
 
-	@Prop() expanded: boolean;
+	@Prop() ifExpanded: boolean = false;
 
-	@Prop() expandedTwoColumn: boolean;
+	@Prop() ifExpandedTwoColumn: boolean = false;
 
-	@Prop() expandedThreeColumn: boolean;
+	@Prop() ifExpandedThreeColumn: boolean = false;
 
 	text: {
 		footerLinks: {
@@ -76,17 +76,17 @@ export class OntarioFooter {
 	render() {
 		return (
 			<footer class={'ontario-footer ontario-footer--' + this.type}>
-				{this.expanded && (
+				{this.ifExpanded && (
 					<div class="ontario-footer__expanded-top-section">
 						<div class="ontario-row">
 							<div
 								class={
 									'ontario-columns ontario-small-12' +
-									(this.expandedTwoColumn ? 'ontario-medium-6' : null) +
-									(this.expandedThreeColumn ? 'ontario-expanded-footer__one-third-block ontario-medium-12 ontario-large-4' : null)
+									(this.ifExpandedTwoColumn ? 'ontario-medium-6' : null) +
+									(this.ifExpandedThreeColumn ? 'ontario-expanded-footer__one-third-block ontario-medium-12 ontario-large-4' : null)
 								}
 							>
-								{this.expandedTwoColumn && (
+								{this.ifExpandedTwoColumn && (
 									<div>
 										<h2 class="ontario-h4">{this.text.ministryOne.heading}</h2>
 										<p>
@@ -94,14 +94,14 @@ export class OntarioFooter {
 										</p>
 									</div>
 								)}
-								{this.expandedThreeColumn && (
+								{this.ifExpandedThreeColumn && (
 									<div>
 										<h2 class="ontario-h4">{this.text.ministryTwo.heading}</h2>
 										<p>{this.text.ministryTwo.description}</p>
 									</div>
 								)}
 							</div>
-							{this.expandedThreeColumn && (
+							{this.ifExpandedThreeColumn && (
 								<div class="ontario-columns ontario-small-12 ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block">
 									<h2 class="ontario-h4">{this.text.visitedTopics}</h2>
 									<ul class="ontario-footer__links-container ontario-footer__links-container--two-column-list">
@@ -161,11 +161,11 @@ export class OntarioFooter {
 							<div
 								class={
 									'ontario-columns ontario-small-12' +
-									(this.expandedTwoColumn ? ' ontario-medium-6' : null) +
-									(this.expandedThreeColumn ? ' ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block' : null)
+									(this.ifExpandedTwoColumn ? ' ontario-medium-6' : null) +
+									(this.ifExpandedThreeColumn ? ' ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block' : null)
 								}
 							>
-								{this.expandedTwoColumn && (
+								{this.ifExpandedTwoColumn && (
 									<div>
 										<h2 class="ontario-h4">{this.text.contactUs}</h2>
 										<p>
@@ -176,7 +176,7 @@ export class OntarioFooter {
 										</a>
 									</div>
 								)}
-								{this.expandedThreeColumn && (
+								{this.ifExpandedThreeColumn && (
 									<div>
 										<h2 class="ontario-h4">{this.text.contactUs}</h2>
 										<p>
@@ -257,9 +257,9 @@ export class OntarioFooter {
 						</div>
 					</div>
 				)}
-				<div class={'ontario-row ' + (this.expanded ? 'ontario-footer__expanded-bottom-section' : null)}>
-					{this.default && (
-						<div class={'ontario-columns ontario-small-12 ' + (this.twoColumns ? 'ontario-medium-7' : null)}>
+				<div class={'ontario-row ' + (this.ifExpanded ? 'ontario-footer__expanded-bottom-section' : null)}>
+					{this.ifDefault && (
+						<div class={'ontario-columns ontario-small-12 ' + (this.ifTwoColumns ? 'ontario-medium-7' : null)}>
 							<ul class="ontario-footer__links-container ontario-footer__links-container--inline">
 								<li>
 									<a class="ontario-footer__link" href={this.text.footerLinks.accessibility.url}>
@@ -284,7 +284,7 @@ export class OntarioFooter {
 							</div>
 						</div>
 					)}
-					{this.twoColumns && (
+					{this.ifTwoColumns && (
 						<div class="ontario-columns ontario-small-12 ontario-medium-5 ontario-footer__partnership-logo-container">
 							<a href="" class="ontario-footer__ontario-logo">
 								{/* <img src="{{ path '/logos/ontario-logo--partnership-footer.svg' }}" alt={this.text.govOfOntario} /> */}
