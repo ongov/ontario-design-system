@@ -20,11 +20,11 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of a bare-bones textarea component, the user is passing the `name` which is the value used to reference form data after a form is submitted. The `id` is also being passed in as the unique identifier of the textarea. 
 
-```
+```html
 <ontario-textarea name="comments" id="form-comments"/>
 ```
 
-```
+```html
 <ontario-textarea name="comments" id="form-comments" required="true" onBlur="exampleFunction()"/>
 ```
 

@@ -59,7 +59,6 @@ Example of a checkbox component with multiple options, a hint text for the entir
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property       | Attribute       | Description                                                                                                                                                                                                                                                                                                                                                                                        | Type                                  | Default     |

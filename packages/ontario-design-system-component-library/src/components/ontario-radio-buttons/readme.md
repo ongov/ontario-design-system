@@ -2,39 +2,86 @@
 
 The ontario-radio-button is an interactive element which allows a user to select a single item from a predefined list of options. 
 
-<br>
-
-
 ## User Interaction Behaviour
 
 User selects a radio button option from a list of radio buttons.
 
-<br>
+## User guidance
+
+Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for current documentation guidance.
+
+## Configuration
+
+Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the radio button component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component. 
 
 ## Examples
 
-```html
-<ontario-radio-button name="ontario-radio-button" radio-id="ontario-radio-1" value="Option 1" radio-label="Option 1"></ontario-radio-button>
-```
+Example of a bare-bones radio button component, the user is simply passing in the legend for the radio button fieldset, as well as 2 radio options.
 
 ```html
-<ontario-radio-button name="ontario-radio-button" radio-id="ontario-radio-2" value="Option 2">Option 2</ontario-radio-button>
+  <ontario-radio-buttons
+    legend="This is a question?"
+    options='[{
+        "name": "radio",
+        "value": "radio-1",
+        "elementId": "radio-1",
+        "label": "radio-1-label"
+		  },
+      {
+      	"name": "radio",
+        "value": "radio-2",
+        "elementId": "radio-2",
+        "label": "radio-2-label"
+      }
+    ]'
+  >
+  </ontario-radio-buttons>```
+
+Example of a radio button component with multiple options, a hint text for the entire fieldset, and a hint expander on the individual option. It also has the `is-required` property set to true.  
+
+```html
+	<ontario-radio-buttons legend="Do you have cats?" hint-text="This is the hint text" is-required options='[{
+		"name": "radio",
+		"value": "radio",
+		"elementId": "radio-1",
+		"label": "radio-1-label"
+		},
+		{
+			"name": "radio",
+			"value": "radio-2",
+			"elementId": "radio-2",
+			"label": "radio-2-label",
+			"hintExpander": {
+				"hint": "Hint expander",
+				"content": "This is the content, yup this is the content",
+				"aria-label": "This indicates that the hint can be expanded"
+			}
+		},
+		{
+			"name": "radio",
+			"value": "radio-3",
+			"elementId": "radio-3",
+			"label": "radio-3-label",
+			"hintExpander": {
+				"hint": "Hint expander",
+				"content": "This is the content",
+				"aria-label": "This indicates that the hint can be expanded"
+			}
+		},
+		{
+			"name": "radio",
+			"value": "radio-4",
+			"elementId": "radio-4",
+			"label": "radio-4-label"
+		}
+		]'>
+	</ontario-radio-buttons>
 ```
 
-<br>
+## Accesibility
 
-## Accessibility Considerations
-
-* Do not pre-select radio buttons (there should be no checked attribute by default on the radio button)
-* All radio buttons in a group should have the same `name` value to associate them as a group of options
-
-<br>
-
-## Further documentation
-
-See the [Design system radio button guidance](https://designsystem.ontario.ca/components/detail/radio-buttons.html) for current documentation guidelines.
-
-<br>
+- Do not pre-select radio buttons (there should be no checked attribute by default on the radio button)
+- All radio buttons in a group should have the same `name` value to associate them as a group of options
 
 <!-- Auto Generated Below -->
 
