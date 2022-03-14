@@ -15,12 +15,12 @@ const App = () => {
 					<div className="header">
 						<OntarioHeader
 							titleHeader={{
-								name: 'something',
-								href: '#something',
+								name: 'Design System',
+								href: '/',
 							}}
 							languageTogglePaths={{
-								englishLink: 'englishlink',
-								frenchLink: 'frenchlink',
+								englishLink: '/en',
+								frenchLink: '/fr',
 							}}
 							menuItems={[
 								{
@@ -69,7 +69,6 @@ const App = () => {
 								},
 							]}
 						/>
-						{/* <Header /> */}
 					</div>
 					<div className="main-content">
 						<StoryRouter />
