@@ -20,7 +20,7 @@ export class OntarioHeader {
 	private parseTitleHeader() {
 		const titleHeader = this.titleHeader;
 		if (titleHeader) {
-			console.log("titleheader",titleHeader);
+			console.log('titleheader', titleHeader);
 			if (typeof titleHeader === 'string') this.titleHeaderState = JSON.parse(titleHeader);
 			else this.titleHeaderState = titleHeader;
 		}
@@ -32,7 +32,7 @@ export class OntarioHeader {
 
 	@Watch('menuItems')
 	parseMenuItems() {
-		console.log("menuitems",this.menuItems);
+		console.log('menuitems', this.menuItems);
 		if (typeof this.menuItems !== 'undefined') {
 			if (!Array.isArray(this.menuItems)) {
 				this.itemState = JSON.parse(this.menuItems);
@@ -50,7 +50,7 @@ export class OntarioHeader {
 	private parseLanguage() {
 		const languageTogglePaths = this.languageTogglePaths;
 		if (languageTogglePaths) {
-			console.log("languagetoggle",languageTogglePaths);
+			console.log('languagetoggle', languageTogglePaths);
 			if (typeof languageTogglePaths === 'string') this.languageState = JSON.parse(languageTogglePaths);
 			else this.languageState = languageTogglePaths;
 		}
@@ -100,21 +100,20 @@ export class OntarioHeader {
 									<div class="ontario-application-subheader__menu-container">
 										<div class="ontario-show-for-large">
 											<ul class="ontario-application-subheader__menu ">
-												{this.itemState?.map((item) => 
+												{this.itemState?.slice(0, 5).map(item => (
 													<li>
 														<a href={item.href}>{item.name}</a>
 													</li>
-												)}
+												))}
 											</ul>
 										</div>
 										<div class="ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large">
 											<ul class="ontario-application-subheader__menu ">
-												<li>
-													<a href="#">Link 1</a>
-												</li>
-												<li>
-													<a href="#">Link 2</a>
-												</li>
+												{this.itemState?.slice(0, 2).map(item => (
+													<li>
+														<a href={item.href}>{item.name}</a>
+													</li>
+												))}
 											</ul>
 										</div>
 										{this.toggle ? (
@@ -154,59 +153,45 @@ export class OntarioHeader {
 							{this.toggle ? (
 								<div class="ontario-application-navigation ontario-application-navigation__container nav-ul-opened">
 									<ul>
-										<li class="ontario-show-for-small-only">
-											<a href="#">Link 1</a>
-										</li>
-										<li class="ontario-show-for-small-only">
-											<a href="#">Link 2</a>
-										</li>
-										<li class="ontario-hide-for-large">
-											<a href="#">Link 3</a>
-										</li>
-										<li class="ontario-hide-for-large">
-											<a href="#">Link 4</a>
-										</li>
-										<li class="ontario-hide-for-large">
-											<a href="#">Link 5</a>
-										</li>
-										<li>
-											<a href="#">Link 6</a>
-										</li>
-										<li>
-											<a href="#">Link 7</a>
-										</li>
-										<li>
-											<a href="#">Link 8</a>
-										</li>
+										{this.itemState?.slice(0, 2).map(item => (
+											<li class="ontario-show-for-small-only">
+												<a href={item.href}>{item.name}</a>
+											</li>
+										))}
+
+										{this.itemState?.slice(2, 5).map(item => (
+											<li class="ontario-hide-for-large">
+												<a href={item.href}>{item.name}</a>
+											</li>
+										))}
+
+										{this.itemState?.slice(5).map(item => (
+											<li>
+												<a href={item.href}>{item.name}</a>
+											</li>
+										))}
 									</ul>
 								</div>
 							) : (
 								<div class="ontario-application-navigation ontario-application-navigation__container nav-ul-closed">
 									<ul>
-										<li class="ontario-show-for-small-only">
-											<a href="#">Link 1</a>
-										</li>
-										<li class="ontario-show-for-small-only">
-											<a href="#">Link 2</a>
-										</li>
-										<li class="ontario-hide-for-large">
-											<a href="#">Link 3</a>
-										</li>
-										<li class="ontario-hide-for-large">
-											<a href="#">Link 4</a>
-										</li>
-										<li class="ontario-hide-for-large">
-											<a href="#">Link 5</a>
-										</li>
-										<li>
-											<a href="#">Link 6</a>
-										</li>
-										<li>
-											<a href="#">Link 7</a>
-										</li>
-										<li>
-											<a href="#">Link 8</a>
-										</li>
+										{this.itemState?.slice(0, 2).map(item => (
+											<li class="ontario-show-for-small-only">
+												<a href={item.href}>{item.name}</a>
+											</li>
+										))}
+
+										{this.itemState?.slice(2, 5).map(item => (
+											<li class="ontario-hide-for-large">
+												<a href={item.href}>{item.name}</a>
+											</li>
+										))}
+
+										{this.itemState?.slice(5).map(item => (
+											<li>
+												<a href={item.href}>{item.name}</a>
+											</li>
+										))}
 									</ul>
 								</div>
 							)}

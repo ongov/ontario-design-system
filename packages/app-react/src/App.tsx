@@ -15,25 +15,60 @@ const App = () => {
 					<div className="header">
 						<OntarioHeader
 							titleHeader={{
-								name: 'something',
-								href: '#something',
+								name: 'Design System',
+								href: '/',
 							}}
 							languageTogglePaths={{
-								englishLink: 'englishlink',
-								frenchLink: 'frenchlink',
+								englishLink: '/en',
+								frenchLink: '/fr',
 							}}
 							menuItems={[
 								{
-									"name": "Button",
-									"href": "/ontario-button",
+									name: 'Button',
+									href: '/ontario-button',
 								},
 								{
-									"name": "Hint",
-									"href": "/ontario-hint",
-								}	
+									name: 'Hint',
+									href: '/ontario-hint',
+								},
+								{
+									name: 'Text Area',
+									href: '/ontario-text-area',
+								},
+								{
+									name: 'Text Input',
+									href: '/ontario-text-input',
+								},
+								{
+									name: 'Hint',
+									href: '/ontario-hint',
+								},
+								{
+									name: 'Hint',
+									href: '/ontario-hint',
+								},
+								{
+									name: 'Hint',
+									href: '/ontario-hint',
+								},
+								{
+									name: 'Hint',
+									href: '/ontario-hint',
+								},
+								{
+									name: 'Hint',
+									href: '/ontario-hint',
+								},
+								{
+									name: 'Hint',
+									href: '/ontario-hint',
+								},
+								{
+									name: 'Hint',
+									href: '/ontario-hint',
+								},
 							]}
 						/>
-						{/* <Header /> */}
 					</div>
 					<div className="main-content">
 						<StoryRouter />
