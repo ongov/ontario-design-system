@@ -27,7 +27,18 @@ export class OntarioHeader {
 
 	@Prop() menuItems: titleHeader[] | string;
 
-	@State() itemListState: titleHeader;
+	@State() itemState: titleHeader[];
+
+	@Watch('menuItems')
+	parseMenuItems() {
+		if (typeof this.menuItems !== 'undefined') {
+			if (!Array.isArray(this.menuItems)) {
+				this.itemState = JSON.parse(this.menuItems);
+			} else {
+				this.itemState = this.menuItems;
+			}
+		}
+	}
 
 	@Prop() languageTogglePaths: languageTogglePaths;
 
@@ -51,6 +62,7 @@ export class OntarioHeader {
 
 	componentWillLoad() {
 		this.parseTitleHeader();
+		this.parseMenuItems();
 		this.parseLanguage();
 	}
 
@@ -85,21 +97,11 @@ export class OntarioHeader {
 									<div class="ontario-application-subheader__menu-container">
 										<div class="ontario-show-for-large">
 											<ul class="ontario-application-subheader__menu ">
-												<li>
-													<a href="ontario-button">Button</a>
-												</li>
-												<li>
-													<a href="ontario-hint">Hint</a>
-												</li>
-												<li>
-													<a href="ontario-text-area">Text Area</a>
-												</li>
-												<li>
-													<a href="ontario-text-input">Text Input</a>
-												</li>
-												<li>
-													<a href="#">Link 5</a>
-												</li>
+												{this.itemState?.map(item => (
+													<li>
+														<a href={item.href}>{item.name}</a>
+													</li>
+												))}
 											</ul>
 										</div>
 										<div class="ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large">

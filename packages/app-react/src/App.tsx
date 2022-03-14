@@ -22,6 +22,16 @@ const App = () => {
 								englishLink: '/englishlink',
 								frenchLink: '/frenchlink',
 							}}
+							menuItems='[
+								{
+									"name": "Button",
+									"href": "/ontario-button",
+								},
+								{
+									"name": "Hint,
+									"href": "/ontario-hint",
+								}
+							]'
 						/>
 						{/* <Header /> */}
 					</div>
@@ -30,7 +40,7 @@ const App = () => {
 					</div>
 					<div className="footer">
 						{/* <Footer /> */}
-						<OntarioFooter type="expanded" default={true} twoColumns={false} expanded={true} expandedTwoColumn={false} expandedThreeColumn={true}/>
+						{/* <OntarioFooter type="expanded" default={true} twoColumns={false} expanded={true} expandedTwoColumn={false} expandedThreeColumn={true} /> */}
 					</div>
 				</div>
 			</div>
