@@ -1,5 +1,5 @@
 export interface titleHeader {
-	titleHeader: string;
+	name: string;
 	href: string;
 }
 

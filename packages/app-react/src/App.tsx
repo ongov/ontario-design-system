@@ -5,9 +5,7 @@ import StoryRouter from './Story';
 import Header from './Prototype-Components/ontario-header/ontario-header';
 import Footer from './Prototype-Components/ontario-footer/ontario-footer';
 import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react';
-
 import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react';
-
 
 const App = () => {
 	return (
@@ -15,7 +13,16 @@ const App = () => {
 			<div className="App">
 				<div className="content-layout">
 					<div className="header">
-						<OntarioHeader />
+						<OntarioHeader
+							titleHeader={{
+								name: 'something',
+								href: '#something',
+							}}
+							languageTogglePaths={{
+								englishLink: '/englishlink',
+								frenchLink: '/frenchlink',
+							}}
+						/>
 						{/* <Header /> */}
 					</div>
 					<div className="main-content">
@@ -23,7 +30,7 @@ const App = () => {
 					</div>
 					<div className="footer">
 						{/* <Footer /> */}
-						<OntarioFooter class="expanded" default={true} twoColumns={false} expanded={false} expandedTwoColumn={false} expandedThreeColumn={false}/>
+						<OntarioFooter class="expanded" default={true} twoColumns={false} expanded={false} expandedTwoColumn={false} expandedThreeColumn={false} />
 					</div>
 				</div>
 			</div>

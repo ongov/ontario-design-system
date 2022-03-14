@@ -1,4 +1,4 @@
-import { Component, Prop, h, Event, EventEmitter } from '@stencil/core';
+import { Component, Prop, State, Watch, h, Event, EventEmitter } from '@stencil/core';
 import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
 import OntarioLogo from './ontario-logo-header.svg';
@@ -12,11 +12,35 @@ import { titleHeader, languageTogglePaths } from './titleHeader';
 export class OntarioHeader {
 	@Prop() type?: 'application' | 'ontario' = 'application';
 
-	@Prop() titleHeader: titleHeader;
+	@Prop() titleHeader: titleHeader | string;
 
-	@Prop() menuItems: titleHeader[];
+	@State() titleHeaderState: titleHeader;
+
+	@Watch('titleHeader')
+	private parseTitleHeader() {
+		const titleHeader = this.titleHeader;
+		if (titleHeader) {
+			if (typeof titleHeader === 'string') this.titleHeaderState = JSON.parse(titleHeader);
+			else this.titleHeaderState = titleHeader;
+		}
+	}
+
+	@Prop() menuItems: titleHeader[] | string;
+
+	@State() itemListState: titleHeader;
 
 	@Prop() languageTogglePaths: languageTogglePaths;
+
+	@State() languageState: languageTogglePaths;
+
+	@Watch('languageTogglePaths')
+	private parseLanguage() {
+		const languageTogglePaths = this.languageTogglePaths;
+		if (languageTogglePaths) {
+			if (typeof languageTogglePaths === 'string') this.languageState = JSON.parse(languageTogglePaths);
+			else this.languageState = languageTogglePaths;
+		}
+	}
 
 	@Prop() toggle: boolean = false;
 
@@ -24,6 +48,11 @@ export class OntarioHeader {
 	handleToggle = () => {
 		this.toggle = !this.toggle;
 	};
+
+	componentWillLoad() {
+		this.parseTitleHeader();
+		this.parseLanguage();
+	}
 
 	render() {
 		return (
@@ -36,7 +65,7 @@ export class OntarioHeader {
 									<a href="https://www.ontario.ca/page/government-ontario" />
 								</div>
 								<div class="ontario-columns ontario-small-6 ontario-application-header__lang-toggle">
-									<a href="/" class="ontario-header-button ontario-header-button--without-outline">
+									<a href={this.languageState.frenchLink} class="ontario-header-button ontario-header-button--without-outline">
 										<abbr title="Français" class="ontario-show-for-small-only">
 											FR
 										</abbr>
@@ -51,7 +80,7 @@ export class OntarioHeader {
 							<div class="ontario-row">
 								<div class="ontario-columns ontario-small-12 ontario-application-subheader__container">
 									<p class="ontario-application-subheader__heading">
-										<a href="/">Design System</a>
+										<a href={this.titleHeaderState.href}>{this.titleHeaderState.name}</a>
 									</p>
 									<div class="ontario-application-subheader__menu-container">
 										<div class="ontario-show-for-large">
