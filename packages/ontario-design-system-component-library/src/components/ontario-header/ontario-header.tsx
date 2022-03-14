@@ -20,6 +20,7 @@ export class OntarioHeader {
 	private parseTitleHeader() {
 		const titleHeader = this.titleHeader;
 		if (titleHeader) {
+			console.log("titleheader",titleHeader);
 			if (typeof titleHeader === 'string') this.titleHeaderState = JSON.parse(titleHeader);
 			else this.titleHeaderState = titleHeader;
 		}
@@ -27,10 +28,11 @@ export class OntarioHeader {
 
 	@Prop() menuItems: titleHeader[] | string;
 
-	@State() itemState: titleHeader[];
+	@State() private itemState: titleHeader[];
 
 	@Watch('menuItems')
 	parseMenuItems() {
+		console.log("menuitems",this.menuItems);
 		if (typeof this.menuItems !== 'undefined') {
 			if (!Array.isArray(this.menuItems)) {
 				this.itemState = JSON.parse(this.menuItems);
@@ -48,6 +50,7 @@ export class OntarioHeader {
 	private parseLanguage() {
 		const languageTogglePaths = this.languageTogglePaths;
 		if (languageTogglePaths) {
+			console.log("languagetoggle",languageTogglePaths);
 			if (typeof languageTogglePaths === 'string') this.languageState = JSON.parse(languageTogglePaths);
 			else this.languageState = languageTogglePaths;
 		}
@@ -97,11 +100,11 @@ export class OntarioHeader {
 									<div class="ontario-application-subheader__menu-container">
 										<div class="ontario-show-for-large">
 											<ul class="ontario-application-subheader__menu ">
-												{this.itemState?.map(item => (
+												{this.itemState?.map((item) => 
 													<li>
 														<a href={item.href}>{item.name}</a>
 													</li>
-												))}
+												)}
 											</ul>
 										</div>
 										<div class="ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large">

@@ -19,19 +19,19 @@ const App = () => {
 								href: '#something',
 							}}
 							languageTogglePaths={{
-								englishLink: '/englishlink',
-								frenchLink: '/frenchlink',
+								englishLink: 'englishlink',
+								frenchLink: 'frenchlink',
 							}}
-							menuItems='[
+							menuItems={[
 								{
 									"name": "Button",
 									"href": "/ontario-button",
 								},
 								{
-									"name": "Hint,
+									"name": "Hint",
 									"href": "/ontario-hint",
-								}
-							]'
+								}	
+							]}
 						/>
 						{/* <Header /> */}
 					</div>
