@@ -72,12 +72,12 @@ export namespace Components {
         "options": CheckboxOption[] | string;
     }
     interface OntarioFooter {
-        "class": 'default' | 'partnership' | 'expanded';
         "default": boolean;
         "expanded": boolean;
         "expandedThreeColumn": boolean;
         "expandedTwoColumn": boolean;
         "twoColumns": boolean;
+        "type": 'default' | 'partnership' | 'expanded';
     }
     interface OntarioHeader {
         "languageTogglePaths": languageTogglePaths;
@@ -1358,12 +1358,12 @@ declare namespace LocalJSX {
         "options"?: CheckboxOption[] | string;
     }
     interface OntarioFooter {
-        "class"?: 'default' | 'partnership' | 'expanded';
         "default"?: boolean;
         "expanded"?: boolean;
         "expandedThreeColumn"?: boolean;
         "expandedTwoColumn"?: boolean;
         "twoColumns"?: boolean;
+        "type"?: 'default' | 'partnership' | 'expanded';
     }
     interface OntarioHeader {
         "languageTogglePaths"?: languageTogglePaths;
