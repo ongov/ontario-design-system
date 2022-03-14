@@ -239,15 +239,13 @@ abbr {
 .ontario-application-navigation__container {
 	background: white;
 	position: absolute;
-	top: calc(26.4rem);
+	top: 0rem;
 	width: 100%;
 	z-index: 4;
 
 	@media screen and (min-width: $small-breakpoint) {
 		background: white;
 		position: absolute;
-		top: calc(20rem);
-		width: 100%;
 		z-index: 4;
 	}
 
@@ -256,7 +254,7 @@ abbr {
 		border-radius: 4px;
 		position: absolute;
 		right: $spacing-3;
-		top: calc(10rem);
+		top: -0.6rem;
 		transition: none;
 		min-width: 290px;
 		max-width: 30%;
@@ -266,7 +264,7 @@ abbr {
 }
 
 .nav-ul-closed {
-	transition: 0.1s ease-in-out;
+	transition: 0.3s ease-in-out;
 	transform: translateY(-200%);
 	visibility: hidden;
 	opacity: 0;
@@ -274,7 +272,7 @@ abbr {
 
 .nav-ul-opened {
 	transition: 0.3s ease-in-out;
-	transform: translateY(-100%);
+	transform: translateY(0%);
 	visibility: visible;
 	opacity: 1;
 }
@@ -283,7 +281,6 @@ abbr {
 	visibility: visible;
 	transform: translateY(0);
 	transition: transform 0.4s ease-in-out;
-
 	@media screen and (min-width: $medium-breakpoint) {
 		transition: none;
 		display: block;
@@ -295,7 +292,6 @@ abbr {
 	padding: $spacing-2 $spacing-0;
 	margin: $spacing-0;
 	border-bottom: 1px solid $ontario-greyscale-20;
-
 	@media screen and (min-width: $medium-breakpoint) {
 		border-bottom: none;
 	}

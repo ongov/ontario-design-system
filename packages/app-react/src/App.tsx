@@ -24,13 +24,49 @@ const App = () => {
 							}}
 							menuItems={[
 								{
-									"name": "Button",
-									"href": "/ontario-button",
+									name: 'Button',
+									href: '/ontario-button',
 								},
 								{
-									"name": "Hint",
-									"href": "/ontario-hint",
-								}	
+									name: 'Hint',
+									href: '/ontario-hint',
+								},
+								{
+									name: 'Text Area',
+									href: '/ontario-text-area',
+								},
+								{
+									name: 'Text Input',
+									href: '/ontario-text-input',
+								},
+								{
+									name: 'Hint',
+									href: '/ontario-hint',
+								},
+								{
+									name: 'Hint',
+									href: '/ontario-hint',
+								},
+								{
+									name: 'Hint',
+									href: '/ontario-hint',
+								},
+								{
+									name: 'Hint',
+									href: '/ontario-hint',
+								},
+								{
+									name: 'Hint',
+									href: '/ontario-hint',
+								},
+								{
+									name: 'Hint',
+									href: '/ontario-hint',
+								},
+								{
+									name: 'Hint',
+									href: '/ontario-hint',
+								},
 							]}
 						/>
 						{/* <Header /> */}
