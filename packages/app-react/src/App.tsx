@@ -40,7 +40,7 @@ const App = () => {
 					</div>
 					<div className="footer">
 						{/* <Footer /> */}
-						{/* <OntarioFooter type="expanded" default={true} twoColumns={false} expanded={true} expandedTwoColumn={false} expandedThreeColumn={true} /> */}
+						<OntarioFooter type="default" if-default = "true" if-two-columns= "true"  if-expanded="false" if-expanded-two-column="false" if-expanded-three-column="true"/>
 					</div>
 				</div>
 			</div>
