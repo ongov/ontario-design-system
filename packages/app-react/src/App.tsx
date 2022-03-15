@@ -2,8 +2,6 @@ import React from 'react';
 import './App.scss';
 import { BrowserRouter } from 'react-router-dom';
 import StoryRouter from './Story';
-import Header from './Prototype-Components/ontario-header/ontario-header';
-import Footer from './Prototype-Components/ontario-footer/ontario-footer';
 import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react';
 import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react';
 
@@ -74,7 +72,6 @@ const App = () => {
 						<StoryRouter />
 					</div>
 					<div className="footer">
-						{/* <Footer /> */}
 						<OntarioFooter type="default" if-default = "true" if-two-columns= "true"  if-expanded="false" if-expanded-two-column="false" if-expanded-three-column="true"/>
 					</div>
 				</div>
