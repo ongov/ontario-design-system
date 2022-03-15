@@ -1,37 +1,90 @@
 import React, { Component } from 'react';
 import './App.css';
-import '../../ontario-design-system-component-library/dist/ontario-design-system-components/ontario-icon-account.entry';
 import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react';
 
 interface State {
-  value: number | null;
+	value: number | null;
 }
 
 class App extends Component<{}, State> {
-  constructor(props: {}) {
-    super(props);
+	constructor(props: {}) {
+		super(props);
 
-    this.state = {
-      value: null,
-    };
-  }
+		this.state = {
+			value: null,
+		};
+	}
 
-  updateRangeValue = (newValue: number) => {
-    this.setState(() => ({
-      value: newValue,
-    }));
-  };
+	updateRangeValue = (newValue: number) => {
+		this.setState(() => ({
+			value: newValue,
+		}));
+	};
 
-  render() {
-    return (
-      <div className="App">
-        <div className="App-content">
-			    <OntarioHeader />
-          <p>This is a sample React App where we can build out a demo of the Web Components.</p>
-        </div>
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div className="App">
+				<div className="App-content">
+					<OntarioHeader
+						titleHeader={{
+							name: 'Design System',
+							href: '/',
+						}}
+						languageTogglePaths={{
+							englishLink: '/en',
+							frenchLink: '/fr',
+						}}
+						menuItems={[
+							{
+								name: 'Button',
+								href: '/ontario-button',
+							},
+							{
+								name: 'Hint',
+								href: '/ontario-hint',
+							},
+							{
+								name: 'Text Area',
+								href: '/ontario-text-area',
+							},
+							{
+								name: 'Text Input',
+								href: '/ontario-text-input',
+							},
+							{
+								name: 'Hint',
+								href: '/ontario-hint',
+							},
+							{
+								name: 'Hint',
+								href: '/ontario-hint',
+							},
+							{
+								name: 'Hint',
+								href: '/ontario-hint',
+							},
+							{
+								name: 'Hint',
+								href: '/ontario-hint',
+							},
+							{
+								name: 'Hint',
+								href: '/ontario-hint',
+							},
+							{
+								name: 'Hint',
+								href: '/ontario-hint',
+							},
+							{
+								name: 'Hint',
+								href: '/ontario-hint',
+							},
+						]}
+					/>
+				</div>
+			</div>
+		);
+	}
 }
 
 export default App;
