@@ -71,7 +71,7 @@ export class OntarioDropdownList implements Dropdown {
    * @example
    * <ontario-dropdown-list ... is-required></ontario-dropdown-list>
    */
-  @Prop() isRequired: boolean;
+  @Prop() isRequired?: boolean = false;
 
   /**
    * Whether or not the initial option displayed is empty.
