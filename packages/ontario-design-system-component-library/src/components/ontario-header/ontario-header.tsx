@@ -48,7 +48,7 @@ export class OntarioHeader {
 
 	@Watch('languageTogglePaths')
 	private parseLanguage() {
-		const languageTogglePaths = this.languageTogglePaths ?? {englishLink: "/", frenchLink:"/"};
+		const languageTogglePaths = this.languageTogglePaths;
 		if (languageTogglePaths) {
 			console.log('languagetoggle', languageTogglePaths);
 			if (typeof languageTogglePaths === 'string') this.languageState = JSON.parse(languageTogglePaths);
