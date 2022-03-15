@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@ontario-digital-service/ontario-design-system-component-library-react": "^0.0.1",
 		"@testing-library/jest-dom": "^5.16.1",
 		"@testing-library/react": "^12.1.2",
 		"@testing-library/user-event": "^13.5.0",
@@ -12,10 +13,10 @@
 		"@types/react-dom": "^17.0.11",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
+		"react-router-dom": "^6.2.2",
 		"react-scripts": "5.0.0",
 		"typescript": "^4.5.4",
-		"web-vitals": "^2.1.2",
-		"@ontario-digital-service/ontario-design-system-component-library-react": "^0.0.1"
+		"web-vitals": "^2.1.2"
 	},
 	"scripts": {
 		"start": "react-scripts start",

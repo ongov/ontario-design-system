@@ -73,7 +73,7 @@ export namespace Components {
         "options": CheckboxOption[] | string;
     }
     interface OntarioHeader {
-        "languageTogglePaths": languageTogglePaths;
+        "languageTogglePaths": languageTogglePaths | string;
         "menuItems": titleHeader[] | string;
         "titleHeader": titleHeader | string;
         "toggle": boolean;
@@ -1376,7 +1376,7 @@ declare namespace LocalJSX {
         "options"?: CheckboxOption[] | string;
     }
     interface OntarioHeader {
-        "languageTogglePaths"?: languageTogglePaths;
+        "languageTogglePaths"?: languageTogglePaths | string;
         "menuItems"?: titleHeader[] | string;
         "onChangeEvent"?: (event: CustomEvent<any>) => void;
         "titleHeader"?: titleHeader | string;

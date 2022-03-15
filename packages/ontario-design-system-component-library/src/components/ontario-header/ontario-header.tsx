@@ -42,13 +42,13 @@ export class OntarioHeader {
 		}
 	}
 
-	@Prop() languageTogglePaths: languageTogglePaths;
+	@Prop() languageTogglePaths: languageTogglePaths | string;
 
 	@State() languageState: languageTogglePaths;
 
 	@Watch('languageTogglePaths')
 	private parseLanguage() {
-		const languageTogglePaths = this.languageTogglePaths;
+		const languageTogglePaths = this.languageTogglePaths ?? {englishLink: "/", frenchLink:"/"};
 		if (languageTogglePaths) {
 			console.log('languagetoggle', languageTogglePaths);
 			if (typeof languageTogglePaths === 'string') this.languageState = JSON.parse(languageTogglePaths);
@@ -80,7 +80,7 @@ export class OntarioHeader {
 									<a href="https://www.ontario.ca/page/government-ontario" />
 								</div>
 								<div class="ontario-columns ontario-small-6 ontario-application-header__lang-toggle">
-									<a href={this.languageState.frenchLink} class="ontario-header-button ontario-header-button--without-outline">
+									<a href={this.languageState?.frenchLink} class="ontario-header-button ontario-header-button--without-outline">
 										<abbr title="Français" class="ontario-show-for-small-only">
 											FR
 										</abbr>
