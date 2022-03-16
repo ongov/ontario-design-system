@@ -95,7 +95,7 @@ export class OntarioHeader {
 							<div class="ontario-row">
 								<div class="ontario-columns ontario-small-12 ontario-application-subheader__container">
 									<p class="ontario-application-subheader__heading">
-										<a href={this.titleHeaderState.href}>{this.titleHeaderState.name}</a>
+										<a href={this.titleHeaderState?.href}>{this.titleHeaderState?.name}</a>
 									</p>
 									<div class="ontario-application-subheader__menu-container">
 										<div class="ontario-show-for-large">
