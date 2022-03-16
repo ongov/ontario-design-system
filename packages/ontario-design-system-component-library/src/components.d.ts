@@ -199,7 +199,7 @@ export namespace Components {
         "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconFacebook {
-        "colour": "black" | "blue" | "grey";
+        "colour": "black" | "blue" | "grey" | "white";
     }
     interface OntarioIconFacebookAlt {
         "colour": "black" | "blue" | "grey";
@@ -223,7 +223,7 @@ export namespace Components {
         "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconInstagram {
-        "colour": "black" | "blue" | "grey";
+        "colour": "black" | "blue" | "grey" | "white";
     }
     interface OntarioIconInteracEn {
     }
@@ -393,7 +393,7 @@ export namespace Components {
         "colour": "black" | "blue" | "grey";
     }
     interface OntarioIconTwitter {
-        "colour": "black" | "blue" | "grey";
+        "colour": "black" | "blue" | "grey" | "white";
     }
     interface OntarioIconTwitterAlt {
         "colour": "black" | "blue" | "grey";
@@ -417,6 +417,9 @@ export namespace Components {
     }
     interface OntarioIconWifi {
         "colour": "black" | "blue" | "grey";
+    }
+    interface OntarioIconYoutube {
+        "colour": "black" | "blue" | "grey" | "white";
     }
     interface OntarioInput {
         /**
@@ -1162,6 +1165,12 @@ declare global {
         prototype: HTMLOntarioIconWifiElement;
         new (): HTMLOntarioIconWifiElement;
     };
+    interface HTMLOntarioIconYoutubeElement extends Components.OntarioIconYoutube, HTMLStencilElement {
+    }
+    var HTMLOntarioIconYoutubeElement: {
+        prototype: HTMLOntarioIconYoutubeElement;
+        new (): HTMLOntarioIconYoutubeElement;
+    };
     interface HTMLOntarioInputElement extends Components.OntarioInput, HTMLStencilElement {
     }
     var HTMLOntarioInputElement: {
@@ -1286,6 +1295,7 @@ declare global {
         "ontario-icon-vpn-key": HTMLOntarioIconVpnKeyElement;
         "ontario-icon-wheelchair": HTMLOntarioIconWheelchairElement;
         "ontario-icon-wifi": HTMLOntarioIconWifiElement;
+        "ontario-icon-youtube": HTMLOntarioIconYoutubeElement;
         "ontario-input": HTMLOntarioInputElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
     }
@@ -1490,7 +1500,7 @@ declare namespace LocalJSX {
         "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconFacebook {
-        "colour"?: "black" | "blue" | "grey";
+        "colour"?: "black" | "blue" | "grey" | "white";
     }
     interface OntarioIconFacebookAlt {
         "colour"?: "black" | "blue" | "grey";
@@ -1514,7 +1524,7 @@ declare namespace LocalJSX {
         "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconInstagram {
-        "colour"?: "black" | "blue" | "grey";
+        "colour"?: "black" | "blue" | "grey" | "white";
     }
     interface OntarioIconInteracEn {
     }
@@ -1684,7 +1694,7 @@ declare namespace LocalJSX {
         "colour"?: "black" | "blue" | "grey";
     }
     interface OntarioIconTwitter {
-        "colour"?: "black" | "blue" | "grey";
+        "colour"?: "black" | "blue" | "grey" | "white";
     }
     interface OntarioIconTwitterAlt {
         "colour"?: "black" | "blue" | "grey";
@@ -1708,6 +1718,9 @@ declare namespace LocalJSX {
     }
     interface OntarioIconWifi {
         "colour"?: "black" | "blue" | "grey";
+    }
+    interface OntarioIconYoutube {
+        "colour"?: "black" | "blue" | "grey" | "white";
     }
     interface OntarioInput {
         /**
@@ -1921,6 +1934,7 @@ declare namespace LocalJSX {
         "ontario-icon-vpn-key": OntarioIconVpnKey;
         "ontario-icon-wheelchair": OntarioIconWheelchair;
         "ontario-icon-wifi": OntarioIconWifi;
+        "ontario-icon-youtube": OntarioIconYoutube;
         "ontario-input": OntarioInput;
         "ontario-textarea": OntarioTextarea;
     }
@@ -2040,6 +2054,7 @@ declare module "@stencil/core" {
             "ontario-icon-vpn-key": LocalJSX.OntarioIconVpnKey & JSXBase.HTMLAttributes<HTMLOntarioIconVpnKeyElement>;
             "ontario-icon-wheelchair": LocalJSX.OntarioIconWheelchair & JSXBase.HTMLAttributes<HTMLOntarioIconWheelchairElement>;
             "ontario-icon-wifi": LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
+            "ontario-icon-youtube": LocalJSX.OntarioIconYoutube & JSXBase.HTMLAttributes<HTMLOntarioIconYoutubeElement>;
             "ontario-input": LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
         }

@@ -1,4 +1,8 @@
 import { Component, Prop, h, getAssetPath } from '@stencil/core';
+// import { OntarioIconFacebook } from '@ontario-digital-service/ontario-design-system-component-library-react';
+// import { OntarioIconTwitter } from '@ontario-digital-service/ontario-design-system-component-library-react';
+// import { OntarioIconInstagram } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 
 @Component({
 	tag: 'ontario-footer',
@@ -192,66 +196,22 @@ export class OntarioFooter {
 										<ul class="ontario-footer__links-container ontario-footer__links-container--social">
 											<li>
 												<a class="ontario-footer__link" href="" aria-label="Facebook">
-													<svg
-														class="ontario-icon"
-														// alt=""
-														// sol:category="communication"
-														// aria-hidden="true"
-														// focusable="false"
-														// viewBox="0 0 24 24"
-														// preserveAspectRatio="xMidYMid meet"
-													>
-														{/* <use href="../../icons/ontario-icons-secondary.svg#ontario-icon-facebook"></use> */}
-														<use href="../ontario-icon/assets/ontario-icon-facebook.svg"></use>
-													</svg>
+													<ontario-icon-facebook colour="white" />
 												</a>
 											</li>
 											<li>
 												<a class="ontario-footer__link" href="" aria-label="Twitter">
-													<svg
-														class="ontario-icon"
-														// alt=""
-														// sol:category="communication"
-														// aria-hidden="true"
-														// focusable="false"
-														// viewBox="0 0 24 24"
-														// preserveAspectRatio="xMidYMid meet"
-													>
-														{/* <use href="../../icons/ontario-icons-secondary.svg#ontario-icon-twitter"></use> */}
-														<use href="../ontario-icon/assets/ontario-icon-twitter.svg"></use>
-													</svg>
+													<ontario-icon-twitter colour="white" />
 												</a>
 											</li>
 											<li>
 												<a class="ontario-footer__link" href="" aria-label="Instagram">
-													<svg
-														class="ontario-icon"
-														// alt=""
-														// sol:category="communication"
-														// aria-hidden="true"
-														// focusable="false"
-														// viewBox="0 0 24 24"
-														// preserveAspectRatio="xMidYMid meet"
-													>
-														{/* <use href="../../icons/ontario-icons-secondary.svg#ontario-icon-instagram"></use> */}
-														<use href="../ontario-icon/assets/ontario-icon-instagram.svg"></use>
-													</svg>
+													<ontario-icon-instagram colour="white" />
 												</a>
 											</li>
 											<li>
 												<a class="ontario-footer__link" href="" aria-label="Youtube">
-													<svg
-														class="ontario-icon"
-														// alt=""
-														// sol:category="communication"
-														// aria-hidden="true"
-														// focusable="false"
-														// viewBox="0 0 24 24"
-														// preserveAspectRatio="xMidYMid meet"
-													>
-														{/* <use href="../../icons/ontario-icons-secondary.svg#ontario-icon-youtube"></use> */}
-														<use href="../ontario-icon/assets/ontario-icon-youtube.svg"></use>
-													</svg>
+													<ontario-icon-youtube colour="white" />
 												</a>
 											</li>
 										</ul>

@@ -366,7 +366,7 @@
     cursor: pointer;
 }
 
-.ontario-button:active, .ontario-footer__link:active {
+.ontario-button:active, .ontario-footer__link:active, a:active {
 	box-shadow: 0 0 0 4px $ontario-colour-focus;
 	outline: 4px solid transparent;
 	transition: all 0.1s ease-in-out;
