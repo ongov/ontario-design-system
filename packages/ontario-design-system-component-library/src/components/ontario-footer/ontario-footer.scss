@@ -346,3 +346,29 @@
     background-color: $ontario-colour-black;
     padding-top: $spacing-9;
 }
+
+//new
+.ontario-button {
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: none;
+    display: inline-block;
+    font-size: 1.125rem;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    line-height: calc(14/9);
+    margin: 0 calc(1rem + 0.75rem) 1.5rem 0;
+    min-width: 10rem;
+    padding: 0.625rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.ontario-button:active, .ontario-footer__link:active {
+	box-shadow: 0 0 0 4px $ontario-colour-focus;
+	outline: 4px solid transparent;
+	transition: all 0.1s ease-in-out;
+	background-color: $ontario-colour-black !important;
+}

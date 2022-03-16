@@ -83,7 +83,7 @@ export class OntarioFooter {
 						<div class="ontario-row">
 							<div
 								class={
-									'ontario-columns ontario-small-12' +
+									'ontario-columns ontario-small-12 ' +
 									(this.isExpandedTwoColumn ? 'ontario-medium-6' : '') +
 									(this.isExpandedThreeColumn ? 'ontario-expanded-footer__one-third-block ontario-medium-12 ontario-large-4' : '')
 								}
@@ -98,7 +98,7 @@ export class OntarioFooter {
 								)}
 								{this.isExpandedThreeColumn && (
 									<div>
-										<h2 class="ontario-h4">"Ministry of Government and Consumer Services</h2>
+										<h2 class="ontario-h4">Ministry of Government and Consumer Services</h2>
 										<p>
 											We deliver vital programs, services, and products ranging from health cards, drivers licences and birth certisicates to consumer protection and public safety.
 										</p>
