@@ -183,7 +183,7 @@
 
 /* Supergraphic background */
 .ontario-footer--default,
-.ontario-footer--partnernship,
+//.ontario-footer--partnership,      <-- used to be included
 .ontario-footer__expanded-top-section {
     position: relative;
 
@@ -200,11 +200,11 @@
 }
 
 .ontario-footer--default:before {
-    background-image: url("./footer-default-supergraphic-logo.svg");
+    background-image: url("./build/assets/footer-default-supergraphic-logo.svg");
 }
 
 .ontario-footer__expanded-top-section:before {
-    background-image: url("./footer-expanded-supergraphic-logo.svg");
+    background-image: url("./build/assets/footer-expanded-supergraphic-logo.svg");
 }
 
 //////////////////////////

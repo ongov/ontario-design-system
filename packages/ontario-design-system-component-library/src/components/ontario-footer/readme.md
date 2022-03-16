@@ -9,11 +9,11 @@
 
 | Property                | Attribute                  | Description | Type                                       | Default     |
 | ----------------------- | -------------------------- | ----------- | ------------------------------------------ | ----------- |
-| `ifDefault`             | `if-default`               |             | `boolean`                                  | `true`      |
-| `ifExpanded`            | `if-expanded`              |             | `boolean`                                  | `false`     |
-| `ifExpandedThreeColumn` | `if-expanded-three-column` |             | `boolean`                                  | `false`     |
-| `ifExpandedTwoColumn`   | `if-expanded-two-column`   |             | `boolean`                                  | `false`     |
-| `ifTwoColumns`          | `if-two-columns`           |             | `boolean`                                  | `false`     |
+| `isDefault`             | `is-default`               |             | `boolean`                                  | `true`      |
+| `isExpanded`            | `is-expanded`              |             | `boolean`                                  | `false`     |
+| `isExpandedThreeColumn` | `is-expanded-three-column` |             | `boolean`                                  | `false`     |
+| `isExpandedTwoColumn`   | `is-expanded-two-column`   |             | `boolean`                                  | `false`     |
+| `isTwoColumns`          | `is-two-columns`           |             | `boolean`                                  | `false`     |
 | `type`                  | `type`                     |             | `"default" \| "expanded" \| "partnership"` | `'default'` |
 
 

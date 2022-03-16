@@ -1,26 +1,22 @@
-import { Component, Prop, h } from '@stencil/core';
-
-// import FooterDefaultSupergraphic from './assets/footer-default-supergraphic-logo.svg';
-// import OntarioExpandedSupergraphic from './assets/footer-expanded-supergraphic-logo.svg';
-import OntarioPartnershipLogo from './ontario-logo--partnership-footer.svg';
-
+import { Component, Prop, h, getAssetPath } from '@stencil/core';
 @Component({
 	tag: 'ontario-footer',
 	styleUrl: 'ontario-footer.scss',
 	shadow: true,
+	assetsDirs: ['assets'],
 })
 export class OntarioFooter {
 	@Prop() type: 'default' | 'partnership' | 'expanded' = 'default';
 
-	@Prop() ifDefault: boolean = true;
+	@Prop() isDefault: boolean = false;
 
-	@Prop() ifTwoColumns: boolean = false;
+	@Prop() isTwoColumns: boolean = false;
 
-	@Prop() ifExpanded: boolean = false;
+	@Prop() isExpanded: boolean = false;
 
-	@Prop() ifExpandedTwoColumn: boolean = false;
+	@Prop() isExpandedTwoColumn: boolean = false;
 
-	@Prop() ifExpandedThreeColumn: boolean = false;
+	@Prop() isExpandedThreeColumn: boolean = false;
 
 	// text: {
 	// 	footerLinks: {
@@ -51,7 +47,7 @@ export class OntarioFooter {
 	// 	};
 	// 	ministryTwo: {
 	// 		heading: 'Ministry of Government and Consumer Services';
-	// 		description: 'We deliver vital programs, services, and products ranging from health cards, drivers licences and birth certificates to consumer protection and public safety.';
+	// 		description: 'We deliver vital programs, services, and products ranging from health cards, drivers licences and birth certisicates to consumer protection and public safety.';
 	// 		links: {
 	// 			linkOne: 'ServiceOntario';
 	// 			linkTwo: 'Consumer Protection Ontario';
@@ -80,17 +76,17 @@ export class OntarioFooter {
 	render() {
 		return (
 			<footer class={'ontario-footer ontario-footer--' + this.type}>
-				{this.ifExpanded && (
+				{this.isExpanded && (
 					<div class="ontario-footer__expanded-top-section">
 						<div class="ontario-row">
 							<div
 								class={
 									'ontario-columns ontario-small-12' +
-									(this.ifExpandedTwoColumn ? 'ontario-medium-6' : '') +
-									(this.ifExpandedThreeColumn ? 'ontario-expanded-footer__one-third-block ontario-medium-12 ontario-large-4' : '')
+									(this.isExpandedTwoColumn ? 'ontario-medium-6' : '') +
+									(this.isExpandedThreeColumn ? 'ontario-expanded-footer__one-third-block ontario-medium-12 ontario-large-4' : '')
 								}
 							>
-								{this.ifExpandedTwoColumn && (
+								{this.isExpandedTwoColumn && (
 									<div>
 										<h2 class="ontario-h4">Ontario Government</h2>
 										<p>
@@ -98,16 +94,16 @@ export class OntarioFooter {
 										</p>
 									</div>
 								)}
-								{this.ifExpandedThreeColumn && (
+								{this.isExpandedThreeColumn && (
 									<div>
 										<h2 class="ontario-h4">"Ministry of Government and Consumer Services</h2>
 										<p>
-											We deliver vital programs, services, and products ranging from health cards, drivers licences and birth certificates to consumer protection and public safety.
+											We deliver vital programs, services, and products ranging from health cards, drivers licences and birth certisicates to consumer protection and public safety.
 										</p>
 									</div>
 								)}
 							</div>
-							{this.ifExpandedThreeColumn && (
+							{this.isExpandedThreeColumn && (
 								<div class="ontario-columns ontario-small-12 ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block">
 									<h2 class="ontario-h4">Most visited topics</h2>
 									<ul class="ontario-footer__links-container ontario-footer__links-container--two-column-list">
@@ -167,11 +163,11 @@ export class OntarioFooter {
 							<div
 								class={
 									'ontario-columns ontario-small-12' +
-									(this.ifExpandedTwoColumn ? ' ontario-medium-6' : '') +
-									(this.ifExpandedThreeColumn ? ' ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block' : '')
+									(this.isExpandedTwoColumn ? ' ontario-medium-6' : '') +
+									(this.isExpandedThreeColumn ? ' ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block' : '')
 								}
 							>
-								{this.ifExpandedTwoColumn && (
+								{this.isExpandedTwoColumn && (
 									<div>
 										<h2 class="ontario-h4">Contact us</h2>
 										<p>
@@ -182,7 +178,7 @@ export class OntarioFooter {
 										</a>
 									</div>
 								)}
-								{this.ifExpandedThreeColumn && (
+								{this.isExpandedThreeColumn && (
 									<div>
 										<h2 class="ontario-h4">Contact us</h2>
 										<p>
@@ -263,9 +259,9 @@ export class OntarioFooter {
 						</div>
 					</div>
 				)}
-				<div class={'ontario-row ' + (this.ifExpanded ? 'ontario-footer__expanded-bottom-section' : '')}>
-					{this.ifDefault && (
-						<div class={'ontario-columns ontario-small-12 ' + (this.ifTwoColumns ? 'ontario-medium-7' : '')}>
+				<div class={'ontario-row ' + (this.isExpanded ? 'ontario-footer__expanded-bottom-section' : '')}>
+					{this.isDefault && (
+						<div class={'ontario-columns ontario-small-12 ' + (this.isTwoColumns ? 'ontario-medium-7' : '')}>
 							<ul class="ontario-footer__links-container ontario-footer__links-container--inline">
 								<li>
 									<a class="ontario-footer__link" href="https://www.ontario.ca/page/accessibility">
@@ -290,16 +286,11 @@ export class OntarioFooter {
 							</div>
 						</div>
 					)}
-					{this.ifTwoColumns && (
+					{this.isTwoColumns && (
 						<div class="ontario-columns ontario-small-12 ontario-medium-5 ontario-footer__partnership-logo-container">
-							{/* <a href="" class="ontario-footer__ontario-logo"> */}
-								{/* <img src="{{ path '/logos/ontario-logo--partnership-footer.svg' }}" alt={this.text.govOfOntario} /> */}
-								{/* <img src="./assets/ontario-logo--partnership-footer.svg" alt='Government of Ontario' /> */}
-                                                                                                                                                            {/* NOT WORKING */}
-                <div class="ontario-application-header__logo" innerHTML={OntarioPartnershipLogo}>
-									<a href="https://www.ontario.ca/page/government-ontario" /> 
-								</div>
-							{/* </a> */}
+							<a href="https://www.ontario.ca/page/government-ontario" class="ontario-footer__ontario-logo">
+								<img src={getAssetPath(`./assets/ontario-logo--partnership-footer.svg`)} alt="Government of Ontario" />
+							</a>
 							<p class="ontario-margin-bottom-0-!">
 								In partnership with the <span class="ontario-nbsp">Government of Ontario</span>
 							</p>
