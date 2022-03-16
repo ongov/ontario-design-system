@@ -32,7 +32,6 @@ export class OntarioHeader {
 
 	@Watch('menuItems')
 	parseMenuItems() {
-		console.log('menuitems', this.menuItems);
 		if (typeof this.menuItems !== 'undefined') {
 			if (!Array.isArray(this.menuItems)) {
 				this.itemState = JSON.parse(this.menuItems);
