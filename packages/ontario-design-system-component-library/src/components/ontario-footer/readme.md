@@ -9,7 +9,7 @@
 
 | Property                | Attribute                  | Description | Type                                       | Default     |
 | ----------------------- | -------------------------- | ----------- | ------------------------------------------ | ----------- |
-| `isDefault`             | `is-default`               |             | `boolean`                                  | `true`      |
+| `isDefault`             | `is-default`               |             | `boolean`                                  | `false`     |
 | `isExpanded`            | `is-expanded`              |             | `boolean`                                  | `false`     |
 | `isExpandedThreeColumn` | `is-expanded-three-column` |             | `boolean`                                  | `false`     |
 | `isExpandedTwoColumn`   | `is-expanded-two-column`   |             | `boolean`                                  | `false`     |

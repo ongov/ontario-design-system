@@ -1,10 +1,12 @@
 import { Component, Prop, h, getAssetPath } from '@stencil/core';
+
 @Component({
 	tag: 'ontario-footer',
 	styleUrl: 'ontario-footer.scss',
 	shadow: true,
 	assetsDirs: ['assets'],
 })
+
 export class OntarioFooter {
 	@Prop() type: 'default' | 'partnership' | 'expanded' = 'default';
 

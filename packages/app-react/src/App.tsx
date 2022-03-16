@@ -72,7 +72,7 @@ const App = () => {
 						<StoryRouter />
 					</div>
 					<div className="footer">
-						<OntarioFooter type="expanded" is-default = "true" is-two-columns= "false"  is-expanded="true" is-expanded-two-column="false" is-expanded-three-column="true"/>
+						<OntarioFooter type="default" is-default = "true" is-two-columns= "false"  is-expanded="false" is-expanded-two-column="false" is-expanded-three-column="false"/>
 					</div>
 				</div>
 			</div>

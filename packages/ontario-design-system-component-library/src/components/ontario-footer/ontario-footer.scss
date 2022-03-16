@@ -6,7 +6,12 @@
 .ontario-footer {
     color: $ontario-colour-white;
     padding: $spacing-9 $spacing-0;
-    // font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+    //new
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1rem;
+    line-height: 1.6rem
+
 
 }
 
@@ -31,6 +36,10 @@
     @media screen and (min-width: $medium-breakpoint) {
         margin-bottom: $spacing-2;
     }
+
+    //new
+    padding-inline-start: 0px;
+
 }
 
 .ontario-footer__links-container--inline {
@@ -242,6 +251,11 @@
 
     @media screen and (max-width: $small-breakpoint) {
         text-align: left;
+    }
+    
+    //new
+    p {
+        margin: 0;
     }
 }
 
