@@ -102,6 +102,7 @@ export namespace Components {
     }
     interface OntarioIconAccessibility {
         "colour": "black" | "blue" | "grey";
+        "iconWidth"?: string;
     }
     interface OntarioIconAccount {
         "colour": "black" | "blue" | "grey";
@@ -1395,6 +1396,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconAccessibility {
         "colour"?: "black" | "blue" | "grey";
+        "iconWidth"?: string;
     }
     interface OntarioIconAccount {
         "colour"?: "black" | "blue" | "grey";
