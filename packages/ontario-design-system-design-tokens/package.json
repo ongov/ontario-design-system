@@ -6,6 +6,9 @@
 	"main": "index.js",
 	"style": "dist/css/_variables.css",
 	"sass": "dist/scss/_variables.scss",
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "node build.js",

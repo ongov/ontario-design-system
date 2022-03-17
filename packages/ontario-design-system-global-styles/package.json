@@ -6,6 +6,9 @@
 	"main": "index.css",
 	"style": "dist/styles/ontario-theme.min.css",
 	"sass": "dist/styles/scss/theme.scss",
+  "publishConfig": {
+    "access": "public"
+  },
 	"scripts": {
 		"scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js --watch scss -o css ",
 		"build": "gulp deploy",

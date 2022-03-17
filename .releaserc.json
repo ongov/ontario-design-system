@@ -2,7 +2,7 @@
 	"branches": ["master"],
 	"plugins": [
 		"@semantic-release/commit-analyzer",
-		["semantic-release-lerna", { "generateNotes": true }],
+		["semantic-release-lerna", { "generateNotes": true, "latch": "none" }],
 		"@semantic-release/gitlab",
 		"@semantic-release/changelog",
 		[
