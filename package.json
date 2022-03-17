@@ -20,5 +20,6 @@
     "refresh": "npm run clean:full && npm run bootstrap && npm run build-libs",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "semantic-release": "semantic-release"
-  }
+  },
+  "version": "1.0.0"
 }
