@@ -81,5 +81,5 @@ export interface RadioButtons extends Base {
    * @example
    * <ontario-radio-buttons ... is-required></ontario-radio-buttons>
    */
-  isRequired?: boolean;
+  isRequired: boolean;
 }

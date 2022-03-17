@@ -1,4 +1,4 @@
-import { Component, State, h, Prop, Watch } from '@stencil/core';
+import { Component, State, h, Prop, Watch, getAssetPath } from '@stencil/core';
 import { DropdownOption } from './dropdown-option.interface';
 import { Dropdown } from './dropdown.interface';
 
@@ -6,6 +6,7 @@ import { Dropdown } from './dropdown.interface';
   tag: 'ontario-dropdown-list',
   styleUrl: 'ontario-dropdown-list.scss',
   shadow: true,
+  assetsDirs: ['./assets']
 })
 export class OntarioDropdownList implements Dropdown {
   /**
@@ -71,7 +72,7 @@ export class OntarioDropdownList implements Dropdown {
    * @example
    * <ontario-dropdown-list ... is-required></ontario-dropdown-list>
    */
-  @Prop() isRequired?: boolean = false;
+  @Prop() isRequired: boolean = false;
 
   /**
    * Whether or not the initial option displayed is empty.
@@ -86,6 +87,13 @@ export class OntarioDropdownList implements Dropdown {
    * <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
    */
   @Prop() isEmptyStartOption?: boolean | string = false;
+
+
+  private getDropdownArrow() {
+    return {
+      backgroundImage: `url(${getAssetPath('./assets/ontario-material-dropdown-arrow-48px.svg')})`,
+    }
+  }
 
   componentWillLoad() {
     this.parseOptions();
@@ -106,6 +114,7 @@ export class OntarioDropdownList implements Dropdown {
             class="ontario-input ontario-dropdown"
             id={this.elementId}
             name={this.name}
+            style={this.getDropdownArrow()}
           >
             {this.isEmptyStartOption && (
               this.isEmptyStartOption === true ?
