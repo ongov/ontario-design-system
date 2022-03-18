@@ -1,0 +1,12 @@
+@use "sass:math";
+
+/* Rem calc function */
+/// Builds a rem-calc function for use in SCSS
+///
+/// @param {number} $size
+///   Rem value size
+
+@function rem-calc($size) {
+  $remSize: math.div($size, 16);
+  @return $remSize * 1rem;
+}

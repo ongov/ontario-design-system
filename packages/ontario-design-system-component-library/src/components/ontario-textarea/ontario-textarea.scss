@@ -3,13 +3,13 @@
 @import '../../global.scss';
 
 .ontario-textarea {
-	border: 2px solid $ontario-colour-black;
+	border: $border-size-standard solid $ontario-colour-black;
 	border-radius: $global-radius;
 	box-sizing: border-box;
 	color: $ontario-colour-black;
 	font-size: 1rem;
 	font-family: $ontario-font-open-sans;
-	line-height: 1.5;
+	line-height: $line-height-default;
 	display: block;
 	max-width: $standard-width;
 	min-height: 144px;

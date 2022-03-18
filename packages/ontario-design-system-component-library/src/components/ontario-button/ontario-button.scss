@@ -66,7 +66,7 @@ $ontario-button-bg-secondary: $ontario-colour-white;
 
 .ontario-button--secondary {
 	background-color: $ontario-button-bg-secondary;
-	border: 2px solid $ontario-colour-link;
+	border: $border-size-standard solid $ontario-colour-link;
 	color: $ontario-colour-link;
 	padding-top: $spacing-2;
 	padding-bottom: $spacing-2;

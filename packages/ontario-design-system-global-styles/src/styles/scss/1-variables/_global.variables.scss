@@ -28,5 +28,16 @@ $pixel: $ontario-global-tokens-pixel-value;
 $max-value: $ontario-global-tokens-max-value;
 
 // Width values
+$narrow-width: $ontario-global-tokens-narrow-width;
 $standard-width: $ontario-global-tokens-standard-width;
-$full-width: $ontario-global-tokens-full-width;
+$full-width:  $ontario-global-tokens-full-width;
+
+// Border sizes
+$border-size-standard: $ontario-global-tokens-border-size; // 2px
+
+// Touch target sizes
+$touch-target-size: $ontario-global-tokens-touch-target-size; // 36px
+$touch-target-size-mobile: $ontario-global-tokens-touch-target-size-mobile; // 40px
+
+// Line height sizes
+$line-height-default: $ontario-global-tokens-line-height-default; // 1.5

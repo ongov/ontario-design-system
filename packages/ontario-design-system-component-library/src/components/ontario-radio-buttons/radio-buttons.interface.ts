@@ -1,10 +1,10 @@
 import { Base } from '../../utils/common.interface';
-import { CheckboxOption } from './checkbox-option.interface';
+import { RadioOption } from './radio-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
-export interface Checkbox extends Base {
+export interface RadioButtons extends Base {
   /**
-   * The legend for the checkbox.
+   * The legend for the Radio Buttons.
    */
   legend: string;
 
@@ -14,16 +14,16 @@ export interface Checkbox extends Base {
   hintText?: string;
 
   /**
-   * Used to include the Hint Expander component underneath the Checkbox Legend.
+   * Used to include the Hint Expander component underneath the Radio Button Legend.
    * This is passed in as an object with key-value pairs.
    *
    * @example
-   * <ontario-checkboxes
+   * <ontario-radio-buttons
    *   legend="This is a question?"
    *   options='[{
-   *     "name": "Checkbox 1",
-   *     "value": "checkbox-1-value",
-   *     "label": "Checkbox Label",
+   *     "name": "Radio Option 1",
+   *     "value": "radio-option-1",
+   *     "label": "Radio Option 1 Label",
    *     "hintExpander": {
    *			  "hint": "Hint expander",
    * 		    "content": "This is the content",
@@ -34,34 +34,33 @@ export interface Checkbox extends Base {
    *    "hint": "Hint expander",
    *    "content": "This is the content, yup this is the content",
    *    "aria-label": "This indicates that the hint can be expanded"
-      }'
-
+   *   }'
    * >
-   * </ontario-checkboxes>
+   * </ontario-radio-buttons>
    */
   hintExpander?: HintExpander | string;
 
   /**
    * Each property will be passed in through an object in the options array.
    * This can either be passed in as an object directly (if using react), or as a string in HTML.
-   * If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option.
+   * If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option.
    * In the example below, the options are being passed in as a string and
-   * there are two checkboxes to be displayed in the fieldset.
+   * there are two radio buttons to be displayed in the fieldset.
    *
    * @example
-   * <ontario-checkboxes
+   * <ontario-radio-buttons
    *   legend="This is a question?"
    *   hint-text="This is the hint text"
    *   options='[
    *     {
-   *        "name": "Checkbox 1",
-   *        "value": "checkbox-1-value",
-   *        "label": "Checkbox Label"
+   *        "name": "Radio",
+   *        "value": "radio-1-value",
+   *        "label": "Radio Button Label 1"
    *     },
    *     {
-   *        "name": "Checkbox-2",
-   *        "value": "checkbox-2",
-   *        "label": "checkbox-2-label",
+   *        "name": "Radio",
+   *        "value": "radio-2-value",
+   *        "label": "Radio Button Label 2",
    *        "hintExpander": {
    *          "hint": "Hint expander",
    *          "content": "This is the content",
@@ -70,15 +69,17 @@ export interface Checkbox extends Base {
    *      }
    *   ]'
    * >
-   * </ontario-checkbox>
+   * </ontario-radio-buttons>
    */
-  options: string | CheckboxOption[];
+  options: string | RadioOption[];
 
   /**
    * Determine whether the input field is required.
    * If required, it should be set to true.
+   * This can be done by passing in `is-required` to the component.
+   *
    * @example
-   * <ontario-checkboxes ... is-required></ontario-checkboxes>
+   * <ontario-radio-buttons ... is-required></ontario-radio-buttons>
    */
   isRequired?: boolean;
 }
