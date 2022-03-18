@@ -103,7 +103,7 @@ export namespace Components {
     interface OntarioIconAccessibility {
         "colour": "black" | "blue" | "grey";
         /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
         "iconWidth"?: number;
     }
@@ -1400,7 +1400,7 @@ declare namespace LocalJSX {
     interface OntarioIconAccessibility {
         "colour"?: "black" | "blue" | "grey";
         /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
         "iconWidth"?: number;
     }
