@@ -32,7 +32,6 @@ export class OntarioHeader {
 
 	@Watch('menuItems')
 	parseMenuItems() {
-		console.log('menuitems', this.menuItems);
 		if (typeof this.menuItems !== 'undefined') {
 			if (!Array.isArray(this.menuItems)) {
 				this.itemState = JSON.parse(this.menuItems);
@@ -42,7 +41,7 @@ export class OntarioHeader {
 		}
 	}
 
-	@Prop() languageTogglePaths: languageTogglePaths;
+	@Prop() languageTogglePaths: languageTogglePaths | string;
 
 	@State() languageState: languageTogglePaths;
 
@@ -80,7 +79,7 @@ export class OntarioHeader {
 									<a href="https://www.ontario.ca/page/government-ontario" />
 								</div>
 								<div class="ontario-columns ontario-small-6 ontario-application-header__lang-toggle">
-									<a href={this.languageState.frenchLink} class="ontario-header-button ontario-header-button--without-outline">
+									<a href={this.languageState?.frenchLink} class="ontario-header-button ontario-header-button--without-outline">
 										<abbr title="Français" class="ontario-show-for-small-only">
 											FR
 										</abbr>
@@ -95,7 +94,7 @@ export class OntarioHeader {
 							<div class="ontario-row">
 								<div class="ontario-columns ontario-small-12 ontario-application-subheader__container">
 									<p class="ontario-application-subheader__heading">
-										<a href={this.titleHeaderState.href}>{this.titleHeaderState.name}</a>
+										<a href={this.titleHeaderState?.href}>{this.titleHeaderState?.name}</a>
 									</p>
 									<div class="ontario-application-subheader__menu-container">
 										<div class="ontario-show-for-large">
