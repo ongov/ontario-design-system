@@ -10,7 +10,10 @@ export class OntarioIconAccessibility {
 
   @Prop() colour: "black" | "blue" | "grey" = "black";
 
-  @Prop() iconWidth?: string;
+  /**
+   * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio
+   */
+  @Prop() iconWidth?: number;
 
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={accessibility} style={{ width: this.iconWidth + "px" }} />
