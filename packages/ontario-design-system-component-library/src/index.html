@@ -2,20 +2,60 @@
 <html dir="ltr" lang="en">
 
 <head>
+	<link rel="stylesheet" href="/build/ontario-design-system-components.css" />
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
 	<title>Ontario Design System - component samples</title>
-
 	<script type="module" src="/build/ontario-design-system-components.esm.js"></script>
 	<script nomodule src="/build/ontario-design-system-components.js"></script>
 </head>
 
-<body>
-	<ontario-button label="Primary" aria-label="Primary Button" type="primary" onclick="testFunction()">Primary
+<body style="margin: 0;">
+	<ontario-header title-Header='{ "name": "Application name" , "href": "/"}' language-Toggle-Paths='{
+						"englishLink":"/en",
+						"frenchLink": "/fr"
+					}' menu-Items='[{
+					"name": "Button",
+					"href": "/ontario-button"
+				}, {
+					"name": "Hint",
+					"href": "/ontario-hint"
+				}, {
+					"name": "Text Area",
+					"href": "/ontario-text-area"
+				}, {
+					"name": "Text Input",
+					"href": "/ontario-text-input"
+				}, {
+					"name": "Hint",
+					"href": "/ontario-hint"
+				}, {
+					"name": "Hint",
+					"href": "/ontario-hint"
+				}, {
+					"name": "Hint",
+					"href": "/ontario-hint"
+				}, {
+					"name": "Hint",
+					"href": "/ontario-hint"
+				}, {
+					"name": "Hint",
+					"href": "/ontario-hint"
+				}, {
+					"name": "Hint",
+					"href": "/ontario-hint"
+				}, {
+					"name": "Hint",
+					"href": "/ontario-hint"
+				}]'>
+		<hr />
+
+	</ontario-header>
+	<ontario-button label="Primary" aria-label="Primary Button" type="primary" onclick="testFunction()">
 	</ontario-button>
-	<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">Secondary
+	<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">
 	</ontario-button>
-	<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary">Tertiary</ontario-button>
+	<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary"></ontario-button>
 
 	<hr />
 
@@ -81,7 +121,46 @@
 		}'>
 	</ontario-checkboxes>
 
-	<ontario-footer type="default" if-default = "true" if-two-columns= "false"  if-expanded="false" if-expanded-two-column="false" if-expanded-three-column="true"/>
+	<ontario-radio-buttons legend="Do you have cats?" hint-text="This is the hint text" is-required options='[{
+		"name": "radio",
+		"value": "radio",
+		"elementId": "radio-1",
+		"label": "radio-1-label"
+		},
+		{
+			"name": "radio",
+			"value": "radio-2",
+			"elementId": "radio-2",
+			"label": "radio-2-label",
+			"hintExpander": {
+				"hint": "Hint expander",
+				"content": "This is the content, yup this is the content",
+				"aria-label": "This indicates that the hint can be expanded"
+			}
+		},
+		{
+			"name": "radio",
+			"value": "radio-3",
+			"elementId": "radio-3",
+			"label": "radio-3-label",
+			"hintExpander": {
+				"hint": "Hint expander",
+				"content": "This is the content",
+				"aria-label": "This indicates that the hint can be expanded"
+			}
+		},
+		{
+			"name": "radio",
+			"value": "radio-4",
+			"elementId": "radio-4",
+			"label": "radio-4-label"
+		}
+		]' hint-expander='{
+			"hint": "Hint expander",
+			"content": "This is hint expander content",
+			"aria-label": "This indicates that the hint can be expanded"
+		}'>
+	</ontario-radio-buttons>
 
 
 
