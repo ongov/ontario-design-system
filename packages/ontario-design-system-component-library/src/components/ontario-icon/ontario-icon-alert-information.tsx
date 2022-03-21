@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import alertInformation from './assets/ontario-icon-alert-information.svg'
 
 @Component({
@@ -8,7 +8,15 @@ import alertInformation from './assets/ontario-icon-alert-information.svg'
 })
 
 export class OntarioIconAlertError {
+  /**
+   * The icon width will autogenerate the height since the icons are in square format, thus preserving
+   * the aspect ratio.
+   */
+  @Prop() iconWidth?: number = 24;
+
   render() {
-    return <div class="ontario-icon" innerHTML={alertInformation} />;
+    return <div class="ontario-icon" style={{
+      width: `${this.iconWidth}px`
+    }} innerHTML={alertInformation} />;
   }
 };

@@ -17,8 +17,9 @@ export class OntarioIconAccessibility {
   @Prop() iconWidth?: number = 24;
 
   render() {
-    return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={accessibility} style={{
+    return <div class={`ontario-icon ontario-icon--${this.colour}`} style={{
       width: `${this.iconWidth}px`
-    }} />
+    }} innerHTML={accessibility}
+    />
   }
 };

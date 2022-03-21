@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import interacEn from './assets/ontario-icon-interac-en-alt.svg';
 
 @Component({
@@ -8,7 +8,15 @@ import interacEn from './assets/ontario-icon-interac-en-alt.svg';
 })
 
 export class OntarioIconInteracEn {
+  /**
+   * The icon width will autogenerate the height since the icons are in square format, thus preserving
+   * the aspect ratio.
+   */
+  @Prop() iconWidth?: number = 24;
+
   render() {
-    return <div class="ontario-icon" innerHTML={interacEn} />;
+    return <div class="ontario-icon" style={{
+      width: `${this.iconWidth}px`
+    }} innerHTML={interacEn} />;
   }
 };
