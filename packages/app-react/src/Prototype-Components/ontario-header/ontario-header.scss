@@ -242,14 +242,14 @@ abbr {
 	position: absolute;
 	top: calc(26.4rem);
 	width: 100%;
-	z-index: 4;
+	z-index: $ontario-z-index-above-high;
 
 	@media screen and (min-width: $small-breakpoint) {
-		background: white;
+		background: $ontario-colour-white;
 		position: absolute;
 		top: calc(20rem);
 		width: 100%;
-		z-index: 4;
+		z-index: $ontario-z-index-above-high;
 	}
 
 	@media screen and (min-width: $medium-breakpoint) {
@@ -347,5 +347,5 @@ abbr {
 	background: rgba(0, 0, 0, 0.6);
 	width: 100%;
 	height: 100%;
-	z-index: 2;
+	z-index: $ontario-z-index-above-medium;
 }
