@@ -20,7 +20,6 @@ export class OntarioHeader {
 	private parseTitleHeader() {
 		const titleHeader = this.titleHeader;
 		if (titleHeader) {
-			console.log('titleheader', titleHeader);
 			if (typeof titleHeader === 'string') this.titleHeaderState = JSON.parse(titleHeader);
 			else this.titleHeaderState = titleHeader;
 		}
@@ -49,7 +48,6 @@ export class OntarioHeader {
 	private parseLanguage() {
 		const languageTogglePaths = this.languageTogglePaths;
 		if (languageTogglePaths) {
-			console.log('languagetoggle', languageTogglePaths);
 			if (typeof languageTogglePaths === 'string') this.languageState = JSON.parse(languageTogglePaths);
 			else this.languageState = languageTogglePaths;
 		}

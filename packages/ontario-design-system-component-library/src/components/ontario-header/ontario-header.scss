@@ -38,7 +38,7 @@ abbr {
 }
 
 .ontario-header-button--with-outline {
-	border: 2px solid #ffffff;
+	border: $border-size-standard solid #ffffff;
 	margin: 0 0 0 1rem;
 	padding: 0.375rem 1rem;
 }
@@ -53,11 +53,11 @@ abbr {
 	border-radius: 4px;
 	box-sizing: border-box;
 	box-shadow: none;
-	color: #ffffff;
+	color: $ontario-colour-white;
 	cursor: pointer;
 	display: flex;
 	font-size: 1.125rem;
-	font-weight: 600;
+	font-weight: $ontario-font-weights-semi-bold;
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	height: 48px;
 	line-height: 1.5555555556;
@@ -162,7 +162,7 @@ abbr {
 
 	a {
 		color: $ontario-colour-white;
-		font-weight: 600;
+		font-weight: $ontario-font-weights-semi-bold;
 		text-decoration: none;
 
 		&:hover,
@@ -197,7 +197,7 @@ abbr {
 	display: inline;
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: rem-calc(18);
-	font-weight: 600;
+	font-weight: $ontario-font-weights-semi-bold;
 	height: 48px;
 	line-height: rem-calc(23);
 	padding: $spacing-3 $spacing-4;
@@ -318,7 +318,7 @@ abbr {
 .ontario-application-navigation a {
 	color: $ontario-colour-black;
 	display: block;
-	font-weight: 600;
+	font-weight: $ontario-font-weights-semi-bold;
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	text-decoration: none;
 	padding: $spacing-3 $spacing-3 $spacing-3 $spacing-6;

@@ -13,7 +13,7 @@ $ontario-button-bg-secondary: $ontario-colour-white;
 	display: inline-block;
 	font-size: 1.125rem;
 	font-family: $ontario-font-open-sans;
-	font-weight: 600;
+	font-weight: $ontario-font-weights-semi-bold;
 	line-height: calc(14 / 9);
 	margin: $spacing-0 calc(#{$spacing-4} + #{$spacing-3}) $spacing-5 $spacing-0;
 	min-width: 10rem;
