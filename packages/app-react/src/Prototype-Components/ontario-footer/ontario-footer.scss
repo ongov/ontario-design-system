@@ -23,12 +23,11 @@
 .ontario-footer__links-container {
 	list-style: none;
 	margin: $spacing-0 $spacing-0 $spacing-4 $spacing-0;
+	padding-left: 0;
 
 	@media screen and (min-width: $medium-breakpoint) {
 		margin-bottom: $spacing-2;
 	}
-
-	padding-left: 0;
 }
 
 .ontario-footer__links-container--inline {
@@ -132,7 +131,7 @@
 
 .ontario-button.ontario-footer__button {
 	background-color: $ontario-colour-black;
-	border: 2px solid $ontario-colour-white;
+	border: $border-size-standard solid $ontario-colour-white;
 	border-color: $ontario-colour-white;
 	color: $ontario-colour-white;
 	margin-bottom: $spacing-6;
