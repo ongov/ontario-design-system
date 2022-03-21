@@ -15,42 +15,42 @@ Once the component package has been installed (see Ontario Design System Compone
 Example of a bare-bones checkbox component, the user is simply passing in the legend for the checkbox fieldset, as well as 1 checkbox option.
 
 ```html
-  <ontario-checkboxes
-    legend="This is a question?"
-    options='[{
-      "name": "Checkbox 1",
-      "value": "checkbox-1-value",
-      "label": "Checkbox Label"
-    }]'
-  >
-  </ontario-checkboxes>
+<ontario-checkboxes
+  legend="This is a question?"
+  options='[{
+    "name": "Checkbox 1",
+    "value": "checkbox-1-value",
+    "label": "Checkbox Label"
+  }]'
+>
+</ontario-checkboxes>
 ```
 
 Example of a checkbox component with multiple options, a hint text for the entire fieldset, and a hint expander on the individual option. It also has the `is-required` property set to true.  
 
 ```html
-  <ontario-checkboxes
-    legend="This is a question?"
-    hint-text="This is the hint text"
-    is-required
-    options='[
-      {
-        "name": "Checkbox 1",
-        "value": "checkbox-1-value",
-        "label": "Checkbox Label"
-      },
-      {
-        "name": "Checkbox-2",
-        "value": "checkbox-2",
-        "label": "checkbox-2-label",
-        "hintExpander": {
-          "hint": "Hint expander",
-          "content": "This is the content",
-          "aria-label": "This indicates that the hint can be expanded"
-        }
+<ontario-checkboxes
+  legend="This is a question?"
+  hint-text="This is the hint text"
+  is-required
+  options='[
+    {
+      "name": "Checkbox 1",
+      "value": "checkbox-1-value",
+      "label": "Checkbox Label"
+    },
+    {
+      "name": "Checkbox-2",
+      "value": "checkbox-2",
+      "label": "checkbox-2-label",
+      "hintExpander": {
+        "hint": "Hint expander",
+        "content": "This is the content",
+        "aria-label": "This indicates that the hint can be expanded"
       }
-    ]'
-  </ontario-checkboxes>
+    }
+  ]'
+</ontario-checkboxes>
 ```
 
 ## Accesibility
