@@ -154,7 +154,7 @@ abbr {
 
 	a {
 		color: $ontario-colour-white;
-		font-weight: 600;
+		font-weight: $ontario-font-weights-semi-bold;
 		text-decoration: none;
 
 		&:hover,
@@ -189,7 +189,7 @@ abbr {
 	display: inline;
 	font-family: $ontario-font-open-sans;
 	font-size: rem-calc(18);
-	font-weight: 600;
+	font-weight: $ontario-font-weights-semi-bold;
 	height: 48px;
 	line-height: rem-calc(23);
 	padding: $spacing-3 $spacing-4;
@@ -314,7 +314,7 @@ abbr {
 .ontario-application-navigation a {
 	color: $ontario-colour-black;
 	display: block;
-	font-weight: 600;
+	font-weight: $ontario-font-weights-semi-bold;
 	text-decoration: none;
 	padding: $spacing-3 $spacing-3 $spacing-3 $spacing-6;
 

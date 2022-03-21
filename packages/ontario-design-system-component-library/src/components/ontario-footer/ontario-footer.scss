@@ -142,7 +142,7 @@
 
     a {
         color: $ontario-colour-white;
-        font-weight: 600;
+        font-weight: $ontario-font-weights-semi-bold;
 
         &:visited {
             color: $ontario-colour-white;
