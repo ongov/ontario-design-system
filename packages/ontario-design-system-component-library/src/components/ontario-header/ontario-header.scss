@@ -240,7 +240,7 @@ abbr {
 .ontario-application-navigation .ontario-header-button {
 	visibility: hidden;
 	position: absolute;
-	top: calc(-#{$spacing-9} + -#{$spacing-1});
+	top: (-$spacing-9 + -$spacing-1);
 	right: $spacing-4;
 	z-index: 6;
 }
