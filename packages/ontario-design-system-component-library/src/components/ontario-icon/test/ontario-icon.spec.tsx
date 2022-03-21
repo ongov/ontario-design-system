@@ -21,7 +21,7 @@ describe('ontario-icon', () => {
     expect(page.root).toEqualHtml(`
       <ontario-icon-accessibility icon-width="36" colour="grey">
         <mock:shadow-root>
-          <div class="ontario-icon ontario-icon--grey">
+          <div class="ontario-icon ontario-icon--grey" style="width: 36px;">
           </div>
         </mock:shadow-root>
       </ontario-icon-accessibility>
