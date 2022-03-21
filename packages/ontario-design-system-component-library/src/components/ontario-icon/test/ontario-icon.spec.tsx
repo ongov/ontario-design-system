@@ -6,7 +6,7 @@ describe('ontario-icon', () => {
     it('should render the expected html', async () => {
       const page = await newSpecPage({
         components: [OntarioIconAccessibility],
-        html: `<ontario-icon-accessibility icon-width="200" colour="grey"></ontario-icon-accessibility>`,
+        html: `<ontario-icon-accessibility icon-width="36" colour="grey"></ontario-icon-accessibility>`,
       });
 
       expect(page.root).toMatchSnapshot();
@@ -16,10 +16,10 @@ describe('ontario-icon', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [OntarioIconAccessibility],
-      html: `<ontario-icon-accessibility icon-width="200" colour="grey"></ontario-icon-accessibility>`,
+      html: `<ontario-icon-accessibility icon-width="36" colour="grey"></ontario-icon-accessibility>`,
     });
     expect(page.root).toEqualHtml(`
-      <ontario-icon-accessibility icon-width="200" colour="grey">
+      <ontario-icon-accessibility icon-width="36" colour="grey">
         <mock:shadow-root>
           <div class="ontario-icon ontario-icon--grey">
           </div>
