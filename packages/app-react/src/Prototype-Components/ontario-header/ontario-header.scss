@@ -1,17 +1,8 @@
-@import '../../global.scss';
+@import '~@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme';
+
 a,
 abbr {
 	text-decoration: none;
-}
-
-.ontario-row {
-	margin: 0 auto;
-	max-width: 72rem;
-	width: 100%;
-}
-
-.ontario-columns {
-	padding: 0 1rem;
 }
 
 .ontario-icon--white {
@@ -24,7 +15,7 @@ abbr {
 }
 
 .ontario-application-header-menu-span {
-	margin: 0.1rem 0 0 0.35rem;
+	margin-left: 0.75rem;
 }
 
 .ontario-application-header {
@@ -38,7 +29,7 @@ abbr {
 }
 
 .ontario-header-button--with-outline {
-	border: 2px solid #ffffff;
+	border: $border-size-standard solid $ontario-colour-white;
 	margin: 0 0 0 1rem;
 	padding: 0.375rem 1rem;
 }
@@ -53,11 +44,12 @@ abbr {
 	border-radius: 4px;
 	box-sizing: border-box;
 	box-shadow: none;
-	color: #ffffff;
+	color: $ontario-colour-white;
 	cursor: pointer;
 	display: flex;
+	align-items: center;
 	font-size: 1.125rem;
-	font-weight: 600;
+	font-weight: 300;
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	height: 48px;
 	line-height: 1.5555555556;
@@ -101,7 +93,7 @@ abbr {
 }
 
 .ontario-application-subheader {
-	padding: ($spacing-2 + $spacing-3) 0;
+	padding: calc(#{$spacing-2} + #{$spacing-3}) 0;
 	background-color: #404040;
 	overflow: visible;
 	position: relative;
@@ -162,7 +154,7 @@ abbr {
 
 	a {
 		color: $ontario-colour-white;
-		font-weight: 600;
+		font-weight: $ontario-font-weights-semi-bold;
 		text-decoration: none;
 
 		&:hover,
@@ -195,9 +187,9 @@ abbr {
 	border-radius: $global-radius;
 	color: $ontario-colour-white;
 	display: inline;
-	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: $ontario-font-open-sans;
 	font-size: rem-calc(18);
-	font-weight: 600;
+	font-weight: $ontario-font-weights-semi-bold;
 	height: 48px;
 	line-height: rem-calc(23);
 	padding: $spacing-3 $spacing-4;
@@ -240,7 +232,7 @@ abbr {
 .ontario-application-navigation .ontario-header-button {
 	visibility: hidden;
 	position: absolute;
-	top: (-$spacing-9 + -$spacing-1);
+	top: calc(-#{$spacing-9} + -#{$spacing-1});
 	right: $spacing-4;
 	z-index: 6;
 }
@@ -248,13 +240,15 @@ abbr {
 .ontario-application-navigation__container {
 	background: white;
 	position: absolute;
-	top: 0rem;
+	top: calc(26.4rem);
 	width: 100%;
 	z-index: $ontario-z-index-above-high;
 
 	@media screen and (min-width: $small-breakpoint) {
-		background: white;
+		background: $ontario-colour-white;
 		position: absolute;
+		top: calc(20rem);
+		width: 100%;
 		z-index: $ontario-z-index-above-high;
 	}
 
@@ -263,7 +257,7 @@ abbr {
 		border-radius: 4px;
 		position: absolute;
 		right: $spacing-3;
-		top: -0.6rem;
+		top: calc(10rem);
 		transition: none;
 		min-width: 290px;
 		max-width: 30%;
@@ -273,15 +267,15 @@ abbr {
 }
 
 .nav-ul-closed {
-	transition: 0.2s ease-in-out;
-	transform: translateY(-100%);
+	transition: 0.1s ease-in-out;
+	transform: translateY(-200%);
 	visibility: hidden;
 	opacity: 0;
 }
 
 .nav-ul-opened {
 	transition: 0.3s ease-in-out;
-	transform: translateY(0%);
+	transform: translateY(-100%);
 	visibility: visible;
 	opacity: 1;
 }
@@ -290,6 +284,7 @@ abbr {
 	visibility: visible;
 	transform: translateY(0);
 	transition: transform 0.4s ease-in-out;
+
 	@media screen and (min-width: $medium-breakpoint) {
 		transition: none;
 		display: block;
@@ -301,6 +296,7 @@ abbr {
 	padding: $spacing-2 $spacing-0;
 	margin: $spacing-0;
 	border-bottom: 1px solid $ontario-greyscale-20;
+
 	@media screen and (min-width: $medium-breakpoint) {
 		border-bottom: none;
 	}
@@ -318,8 +314,7 @@ abbr {
 .ontario-application-navigation a {
 	color: $ontario-colour-black;
 	display: block;
-	font-weight: 600;
-	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: $ontario-font-weights-semi-bold;
 	text-decoration: none;
 	padding: $spacing-3 $spacing-3 $spacing-3 $spacing-6;
 
