@@ -17,7 +17,7 @@ export class OntarioIconAccessibility {
   @Prop() iconWidth: number = 24;
 
   @Watch('iconWidth')
-  validateName() {
+  validateWidth() {
     // If value is not a number, set the iconWidth to be 24
     if (isNaN(this.iconWidth)) {
       this.iconWidth = 24;
@@ -25,7 +25,7 @@ export class OntarioIconAccessibility {
   }
 
   componentWillLoad() {
-    this.validateName();
+    this.validateWidth();
   }
   render() {
     return <div class={`ontario-icon ontario-icon--${this.colour}`} style={{
