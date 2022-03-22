@@ -11,10 +11,19 @@
 </head>
 
 <body style="margin: 0;">
-	<ontario-header title-Header='{ "name": "Application name" , "href": "/"}' language-Toggle-Paths='{
-						"englishLink":"/en",
-						"frenchLink": "/fr"
-					}' menu-Items='[{
+	<ontario-header
+				type="application"
+				title-Header='{
+					"name": "Application name" ,
+					"href": "/"
+				}'
+				
+				language-Toggle-Paths='{
+					"englishLink":"/en",
+					"frenchLink": "/fr"
+				}'
+
+				menu-Items='[{
 					"name": "Button",
 					"href": "/ontario-button"
 				}, {
@@ -56,7 +65,7 @@
 	<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">
 	</ontario-button>
 	<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary"></ontario-button>
-	
+
 	<hr />
 
 	<ontario-icon-accessibility colour="grey"></ontario-icon-accessibility>
