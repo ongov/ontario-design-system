@@ -105,7 +105,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth": number;
     }
     interface OntarioIconAccount {
         "colour": "black" | "blue" | "grey";
