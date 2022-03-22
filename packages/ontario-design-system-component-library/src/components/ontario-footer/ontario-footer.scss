@@ -208,12 +208,19 @@
     }
 }
 
+// .ontario-footer--default:before {
+//     background-image: url("./build/assets/footer-default-supergraphic-logo.svg");
+// }
+
 .ontario-footer--default:before {
-    background-image: url("./build/assets/footer-default-supergraphic-logo.svg");
+    background-image: var(--imagePath, url(""));
 }
 
+// .ontario-footer__expanded-top-section:before {
+//     background-image: url("./build/assets/footer-expanded-supergraphic-logo.svg");
+// }
 .ontario-footer__expanded-top-section:before {
-    background-image: url("./build/assets/footer-expanded-supergraphic-logo.svg");
+    background-image: var(--imagePath, url(""));
 }
 
 //////////////////////////

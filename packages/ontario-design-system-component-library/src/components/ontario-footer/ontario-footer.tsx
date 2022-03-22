@@ -1,7 +1,5 @@
-import { Component, Prop, h, getAssetPath } from '@stencil/core';
-// import { OntarioIconFacebook } from '@ontario-digital-service/ontario-design-system-component-library-react';
-// import { OntarioIconTwitter } from '@ontario-digital-service/ontario-design-system-component-library-react';
-// import { OntarioIconInstagram } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { Component, Prop, h, getAssetPath, State, Watch } from '@stencil/core';
+import { defaultOptions } from './footer-option.interface';
 
 
 @Component({
@@ -14,7 +12,7 @@ import { Component, Prop, h, getAssetPath } from '@stencil/core';
 export class OntarioFooter {
 	@Prop() type: 'default' | 'partnership' | 'expanded' = 'default';
 
-	@Prop() isDefault: boolean = false;
+	
 
 	@Prop() isTwoColumns: boolean = false;
 
@@ -23,6 +21,40 @@ export class OntarioFooter {
 	@Prop() isExpandedTwoColumn: boolean = false;
 
 	@Prop() isExpandedThreeColumn: boolean = false;
+
+
+	@State() private isDefault: boolean = true;
+
+	@Prop() partnershipConnection: 
+		'Licensed by Government of Ontario' | 
+		'In partnership with Government of Ontario' | 
+		'Funded by Government of Ontario'|
+		'Sponsored by Government of Ontario' |
+		null = null;
+
+	@Prop() defaultOptions: defaultOptions | string = ""; //add initialized thing here
+
+	@State() defaultState: defaultOptions;
+
+	@Watch('defaultOptions')
+	private parseDefaultOptions() {
+		const defaultOptions = this.defaultOptions;
+		if (defaultOptions) {
+			console.log('default Option Stuff:', defaultOptions);
+			if (typeof defaultOptions === 'string') this.defaultState = JSON.parse(defaultOptions);
+			else this.defaultState = defaultOptions;
+		} else {
+			throw 'Default Options Not Entered'
+		}
+	}
+
+
+
+
+
+	componentWillLoad() {
+		this.parseDefaultOptions();
+	}
 
 	// text: {
 	// 	footerLinks: {
@@ -79,11 +111,17 @@ export class OntarioFooter {
 	// 	logoPlaceholder: 'Ministry logo placeholder';
 	// };
 
+	private getBackgroundImagePath() {
+		const backgroundImage = this.isExpanded ? 'footer-expanded-supergraphic-logo.svg' : 'footer-default-supergraphic-logo.svg';
+		console.log("dasdasda " + backgroundImage + " " + this.type);
+		return {'--imagePath': `url(${getAssetPath(`./assets/${backgroundImage}`)})`};
+	}
+
 	render() {
 		return (
-			<footer class={'ontario-footer ontario-footer--' + this.type}>
+			<footer class={'ontario-footer ontario-footer--' + this.type} style={this.getBackgroundImagePath()}>
 				{this.isExpanded && (
-					<div class="ontario-footer__expanded-top-section">
+					<div class="ontario-footer__expanded-top-section" style={this.getBackgroundImagePath()}>
 						<div class="ontario-row">
 							<div
 								class={
@@ -226,24 +264,24 @@ export class OntarioFooter {
 						<div class={'ontario-columns ontario-small-12 ' + (this.isTwoColumns ? 'ontario-medium-7' : '')}>
 							<ul class="ontario-footer__links-container ontario-footer__links-container--inline">
 								<li>
-									<a class="ontario-footer__link" href="https://www.ontario.ca/page/accessibility">
+									<a class="ontario-footer__link" href={this.defaultState.accessibilityLink}>
 										Accessibility
 									</a>
 								</li>
 								<li>
-									<a class="ontario-footer__link" href="https://www.ontario.ca/page/privacy-statement">
+									<a class="ontario-footer__link" href={this.defaultState.privacyLink}>
 										Privacy
 									</a>
 								</li>
 								<li>
-									<a class="ontario-footer__link" href="https://www.ontario.ca/feedback/contact-us">
+									<a class="ontario-footer__link" href={this.defaultState.contactLink}>
 										Contact us
 									</a>
 								</li>
 							</ul>
 							<div class="ontario-footer__copyright">
-								<a class="ontario-footer__link" href="https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario">
-									&copy; Queen’s Printer for Ontario, <span class="ontario-nbsp">2012&ndash;21</span>
+								<a class="ontario-footer__link" href={this.defaultState.queensPrinterLink}>
+									&copy; Queen’s Printer for Ontario, <span class="ontario-nbsp">{"2012-"+String((new Date().getFullYear())).slice(-2)}</span>
 								</a>
 							</div>
 						</div>
@@ -254,7 +292,8 @@ export class OntarioFooter {
 								<img src={getAssetPath(`./assets/ontario-logo--partnership-footer.svg`)} alt="Government of Ontario" />
 							</a>
 							<p class="ontario-margin-bottom-0-!">
-								In partnership with the <span class="ontario-nbsp">Government of Ontario</span>
+								{/* In partnership with the <span class="ontario-nbsp">Government of Ontario</span> */}
+								{this.partnershipConnection}
 							</p>
 						</div>
 					)}

@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
+import { defaultOptions } from "./components/ontario-footer/footer-option.interface";
 import { languageTogglePaths, titleHeader } from "./components/ontario-header/titleHeader";
 export namespace Components {
     interface MyComponent {
@@ -72,11 +73,16 @@ export namespace Components {
         "options": CheckboxOption[] | string;
     }
     interface OntarioFooter {
-        "isDefault": boolean;
+        "defaultOptions": defaultOptions | string;
         "isExpanded": boolean;
         "isExpandedThreeColumn": boolean;
         "isExpandedTwoColumn": boolean;
         "isTwoColumns": boolean;
+        "partnershipConnection": 'Licensed by Government of Ontario' | 
+		'In partnership with Government of Ontario' | 
+		'Funded by Government of Ontario'|
+		'Sponsored by Government of Ontario' |
+		null;
         "type": 'default' | 'partnership' | 'expanded';
     }
     interface OntarioHeader {
@@ -1368,11 +1374,16 @@ declare namespace LocalJSX {
         "options"?: CheckboxOption[] | string;
     }
     interface OntarioFooter {
-        "isDefault"?: boolean;
+        "defaultOptions"?: defaultOptions | string;
         "isExpanded"?: boolean;
         "isExpandedThreeColumn"?: boolean;
         "isExpandedTwoColumn"?: boolean;
         "isTwoColumns"?: boolean;
+        "partnershipConnection"?: 'Licensed by Government of Ontario' | 
+		'In partnership with Government of Ontario' | 
+		'Funded by Government of Ontario'|
+		'Sponsored by Government of Ontario' |
+		null;
         "type"?: 'default' | 'partnership' | 'expanded';
     }
     interface OntarioHeader {
