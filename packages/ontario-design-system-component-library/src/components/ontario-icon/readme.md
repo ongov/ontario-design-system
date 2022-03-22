@@ -10,7 +10,7 @@
 | Property    | Attribute    | Description                                                                                                         | Type                          | Default   |
 | ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------- | ----------------------------- | --------- |
 | `colour`    | `colour`     |                                                                                                                     | `"black" \| "blue" \| "grey"` | `"black"` |
-| `iconWidth` | `icon-width` | The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio. | `number \| undefined`         | `24`      |
+| `iconWidth` | `icon-width` | The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio. | `number`                      | `24`      |
 
 
 ----------------------------------------------
