@@ -2,8 +2,8 @@ import { Component, Prop, State, Watch, h, Event, EventEmitter } from '@stencil/
 import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
 import OntarioLogo from './ontario-logo-header.svg';
-import { titleHeader, languageTogglePaths } from './titleHeader';
-
+import { headerTitle } from './headerTitle.interface';
+import { languageTogglePaths } from './languageTogglePaths.interface';
 @Component({
 	tag: 'ontario-header',
 	styleUrl: 'ontario-header.scss',
@@ -12,9 +12,9 @@ import { titleHeader, languageTogglePaths } from './titleHeader';
 export class OntarioHeader {
 	@Prop() type?: 'application' | 'ontario' = 'application';
 
-	@Prop() titleHeader: titleHeader | string;
+	@Prop() titleHeader: headerTitle | string;
 
-	@State() titleHeaderState: titleHeader;
+	@State() titleHeaderState: headerTitle;
 
 	@Watch('titleHeader')
 	private parseTitleHeader() {
@@ -25,9 +25,9 @@ export class OntarioHeader {
 		}
 	}
 
-	@Prop() menuItems: titleHeader[] | string;
+	@Prop() menuItems: headerTitle[] | string;
 
-	@State() private itemState: titleHeader[];
+	@State() private itemState: headerTitle[];
 
 	@Watch('menuItems')
 	parseMenuItems() {
@@ -56,9 +56,7 @@ export class OntarioHeader {
 	@Prop() toggle: boolean = false;
 
 	@Event() changeEvent!: EventEmitter<any>;
-	handleToggle = () => {
-		this.toggle = !this.toggle;
-	};
+	handleToggle = () => this.toggle = !this.toggle;
 
 	componentWillLoad() {
 		this.parseTitleHeader();
@@ -191,7 +189,7 @@ justTest() {
     <script src="../../scripts/ontario-search.js"></script>
 </div>
 			);
-		} 
+		}
 		else {
 			return (
 				<div>
@@ -324,6 +322,6 @@ justTest() {
 					{this.toggle && <div class="ontario-hide-for-large ontario-application-overlay" />}
 				</div>
 			);
-		} 
+		}
 	}
 }

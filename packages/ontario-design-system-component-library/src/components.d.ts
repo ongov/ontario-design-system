@@ -7,7 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
-import { languageTogglePaths, titleHeader } from "./components/ontario-header/titleHeader";
+import { headerTitle } from "./components/ontario-header/headerTitle.interface";
+import { languageTogglePaths } from "./components/ontario-header/languageTogglePaths.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
     interface MyComponent {
@@ -74,8 +75,8 @@ export namespace Components {
     }
     interface OntarioHeader {
         "languageTogglePaths": languageTogglePaths | string;
-        "menuItems": titleHeader[] | string;
-        "titleHeader": titleHeader | string;
+        "menuItems": headerTitle[] | string;
+        "titleHeader": headerTitle | string;
         "toggle": boolean;
         "type"?: 'application' | 'ontario';
     }
@@ -1377,9 +1378,9 @@ declare namespace LocalJSX {
     }
     interface OntarioHeader {
         "languageTogglePaths"?: languageTogglePaths | string;
-        "menuItems"?: titleHeader[] | string;
+        "menuItems"?: headerTitle[] | string;
         "onChangeEvent"?: (event: CustomEvent<any>) => void;
-        "titleHeader"?: titleHeader | string;
+        "titleHeader"?: headerTitle | string;
         "toggle"?: boolean;
         "type"?: 'application' | 'ontario';
     }
