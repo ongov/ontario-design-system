@@ -18,9 +18,11 @@ export class OntarioIconAccessibility {
 
   @Watch('iconWidth')
   validateWidth() {
+    const defaultWidth = 24;
+
     // If value is not a number, set the iconWidth to be 24
     if (isNaN(this.iconWidth)) {
-      this.iconWidth = 24;
+      this.iconWidth = defaultWidth;
     }
   }
 
