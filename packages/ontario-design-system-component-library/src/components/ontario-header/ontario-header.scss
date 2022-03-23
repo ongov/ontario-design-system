@@ -1,7 +1,8 @@
-@use "sass:math";
+@use 'sass:math';
 @import '../../global.scss';
 
 $standard-input-height: 48px;
+$ontario-logo-height: 46px;
 
 .ontario-row {
 	margin: 0 auto;
@@ -13,6 +14,11 @@ $standard-input-height: 48px;
 	padding: 0 1rem;
 }
 
+.ontario-icon-container {
+	display: flex;
+	align-items: center;
+}
+
 .ontario-icon--white {
 	display: flex;
 	align-items: center;
@@ -20,10 +26,6 @@ $standard-input-height: 48px;
 
 .ontario-application-header-container {
 	display: flex;
-}
-
-.ontario-application-header-menu-span {
-	margin-left: 0.35rem;
 }
 
 .ontario-application-header {
@@ -75,7 +77,14 @@ $standard-input-height: 48px;
 	align-items: center;
 }
 
-.ontario-application-header__logo img {
+.ontario-application-header__logo a {
+	&:focus {
+		box-shadow: 0 0 0 4px $ontario-colour-focus;
+		transition: all 0.1s ease-in-out;
+	}
+}
+
+.ontario-application-header__logo svg {
 	width: 100px;
 	height: 25px;
 }
@@ -119,12 +128,10 @@ $standard-input-height: 48px;
 	visibility: visible;
 }
 
-.active {
-	box-shadow: 0 0 0 4px $ontario-colour-focus;
-	outline: 4px solid transparent;
-	transition: all 0.1s ease-in-out;
-	background-color: $ontario-colour-black !important;
+.ontario-header-button abbr {
+	text-decoration: none;
 }
+
 
 .ontario-application-subheader .ontario-header-button,
 .ontario-application-navigation .ontario-header-button {
@@ -277,6 +284,10 @@ $standard-input-height: 48px;
 	transform: translateY(0%);
 	visibility: visible;
 	opacity: 1;
+	z-index: 4;
+	@media screen and (min-width: $medium-breakpoint) {
+		z-index: 5;
+	}
 }
 
 .ontario-application-navigation.ontario-navigation--open .ontario-application-navigation__container {
@@ -348,18 +359,18 @@ $standard-input-height: 48px;
 	z-index: $ontario-z-index-above-medium;
 }
 
-
-
 // -----------------------------------------------------------
 
 $ontario-search-input-padding: 7.2rem;
 $ontario-search-input-padding--mobile: 6.4rem;
-$ontario-logo-height: 180px;
+
 $ontario-header-logo-width: 180px;
 $ontario-header-logo-width--mobile: 45px;
 
 .ontario-header {
     position: relative;
+    overflow: hidden;
+    z-index: 5;
     background-color: $ontario-colour-black;
     color: $ontario-colour-white;
     display: flex;
@@ -379,10 +390,6 @@ $ontario-header-logo-width--mobile: 45px;
     }
 }
 
-.ontario-header__logo-container {
-    height: $ontario-logo-height;
-}
-
 .ontario-header__logo-container a {
     display: inline-block;
     height: 100%;
@@ -393,7 +400,7 @@ $ontario-header-logo-width--mobile: 45px;
 }
 
 .ontario-header__logo-container {
-    img {
+    svg {
         width: $ontario-header-logo-width--mobile;
         height: $ontario-logo-height;
 
@@ -492,6 +499,9 @@ $ontario-header-logo-width--mobile: 45px;
     &:hover {
         background-color: $ontario-colour-link--hover;
         color: $ontario-colour-white;
+				svg{
+					fill: $ontario-colour-white;
+				}
     }
 
     &:focus {
@@ -739,19 +749,23 @@ input[type="reset"].ontario-header__search-reset {
     }
 }
 
-.ontario-mobile-navigation--open {
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    overflow-y: hidden;
+.ontario-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    z-index: 2;
 }
 
-.ontario-header-navigation--open {
-    overflow: hidden;
-
+.ontario-navigation--open {
     .ontario-overlay {
         display: block;
-    }
 
-    .ontario-header-navigation--open {
-        height: 100vh;
+        @media screen and (min-width: $medium-breakpoint) {
+            display: none;
+        }
     }
 }
