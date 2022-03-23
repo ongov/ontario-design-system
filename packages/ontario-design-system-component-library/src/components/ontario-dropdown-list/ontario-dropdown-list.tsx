@@ -102,38 +102,36 @@ export class OntarioDropdownList implements Dropdown {
   render() {
     return (
       <div class="ontario-form-group">
-        <fieldset class="ontario-fieldset">
-          <legend class="ontario-fieldset__legend">
-            {this.legend}
-            <span class="ontario-label__flag">
-              {this.isRequired ? "(required)" : "(optional)"}
-            </span>
-          </legend>
+        <label class="ontario-label" htmlFor="ontario-dropdown-list">
+          {this.legend}
+          <span class="ontario-label__flag">
+            {this.isRequired ? "(required)" : "(optional)"}
+          </span>
+        </label>
 
-          <select
-            class="ontario-input ontario-dropdown"
-            id={this.elementId}
-            name={this.name}
-            style={this.getDropdownArrow()}
-          >
-            {this.isEmptyStartOption && (
-              this.isEmptyStartOption === true ?
-                <option>
-                  Select
-                </option>
-                :
-                <option>
-                  {this.isEmptyStartOption}
-                </option>
-            )}
-
-            {this.internalOptions?.map((dropdown) =>
-              <option value={dropdown.value}>
-                {dropdown.label}
+        <select
+          class="ontario-input ontario-dropdown"
+          id={this.elementId}
+          name={this.name}
+          style={this.getDropdownArrow()}
+        >
+          {this.isEmptyStartOption && (
+            this.isEmptyStartOption === true ?
+              <option>
+                Select
               </option>
-            ) ?? ""}
-          </select>
-        </fieldset>
+              :
+              <option>
+                {this.isEmptyStartOption}
+              </option>
+          )}
+
+          {this.internalOptions?.map((dropdown) =>
+            <option value={dropdown.value}>
+              {dropdown.label}
+            </option>
+          ) ?? ""}
+        </select>
       </div>
     )
   }
