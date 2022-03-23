@@ -9,15 +9,44 @@ export interface defaultOptions {
 export interface expandedTwoColumnOptions {
     firstColumn: {
         title: string;
-        body: string;
-        extraContent?: string;
+        content: string;
     };
     secondColumn: {
         title: string;
-        body: string;
-        extraContent?: string;
+        content: string;
         contactButtonText: string;
     }
+}
+
+export interface expandedThreeColumnOptions {
+    firstColumn: {
+        title: string;
+        content: string;
+    };
+    secondColumn: {
+        title: string;
+        content: [{
+            title: string;
+            link: string;
+        }];
+    };
+    thirdColumn: {
+        title: string;
+        content: string;
+        facebook?: {
+            link: string;
+        };
+        twitter?: {
+            link: string;
+        };
+        instagram?: {
+            link: string;
+        };
+        youtube?: {
+            link: string;
+        };
+    }
+
 }
 
 // export interface ExpandedOptions {}

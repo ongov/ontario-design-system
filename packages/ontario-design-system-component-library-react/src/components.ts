@@ -119,5 +119,6 @@ export const OntarioIconVoteLike = /*@__PURE__*/createReactComponent<JSX.Ontario
 export const OntarioIconVpnKey = /*@__PURE__*/createReactComponent<JSX.OntarioIconVpnKey, HTMLOntarioIconVpnKeyElement>('ontario-icon-vpn-key');
 export const OntarioIconWheelchair = /*@__PURE__*/createReactComponent<JSX.OntarioIconWheelchair, HTMLOntarioIconWheelchairElement>('ontario-icon-wheelchair');
 export const OntarioIconWifi = /*@__PURE__*/createReactComponent<JSX.OntarioIconWifi, HTMLOntarioIconWifiElement>('ontario-icon-wifi');
+export const OntarioIconYoutube = /*@__PURE__*/createReactComponent<JSX.OntarioIconYoutube, HTMLOntarioIconYoutubeElement>('ontario-icon-youtube');
 export const OntarioInput = /*@__PURE__*/createReactComponent<JSX.OntarioInput, HTMLOntarioInputElement>('ontario-input');
 export const OntarioTextarea = /*@__PURE__*/createReactComponent<JSX.OntarioTextarea, HTMLOntarioTextareaElement>('ontario-textarea');
