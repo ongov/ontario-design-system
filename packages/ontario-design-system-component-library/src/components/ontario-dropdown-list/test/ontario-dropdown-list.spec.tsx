@@ -11,14 +11,12 @@ describe('ontario-dropdown-list', () => {
       <ontario-dropdown-list>
         <mock:shadow-root>
           <div class="ontario-form-group">
-            <fieldset class="ontario-fieldset">
-              <legend class="ontario-fieldset__legend">
-                <span class="ontario-label__flag">
-                  (optional)
-                </span>
-              </legend>
-              <select class="ontario-dropdown ontario-input" style="background-image: url(/assets/ontario-material-dropdown-arrow-48px.svg);"></select>
-            </fieldset>
+            <label class="ontario-label" htmlFor="ontario-dropdown-list">
+              <span class="ontario-label__flag">
+                (optional)
+              </span>
+            </label>
+            <select class="ontario-dropdown ontario-input" style="background-image: url(/assets/ontario-material-dropdown-arrow-48px.svg);"></select>
           </div>
         </mock:shadow-root>
       </ontario-dropdown-list>
