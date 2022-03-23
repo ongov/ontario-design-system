@@ -35,17 +35,18 @@ Since the hint expander information is after the form element, add text in the a
 
 #### Example: 
 ```html 
-<span class="ontario-show-for-sr">More information on (label name) is available in the next element</span>
+<legend class="ontario-fieldset__legend">
+  {this.legend}
+  <span class="ontario-label__flag">
+    {this.isRequired ? "(required)" : "(optional)"}
+  </span>
+  <span class="ontario-show-for-sr">More information on (label name) is available in the next element</span>
+</legend>
 ```
 
 ### Aria-expanded
 
 When the hint text is in it’s open state, the value in the `aria-expanded` attribute should update to `true`, and when the hint text is in it’s closed state, the value should update to `false`.  This gives screen readers an indication that the hint text is either expanded or collapsed. 
-
-### Aria-label
-
-We must include visually hidden text inside the label that describes to screen readers the availability of a hint expander
-
 
 <!-- Auto Generated Below -->
 
