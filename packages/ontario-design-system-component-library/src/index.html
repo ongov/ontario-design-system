@@ -10,7 +10,7 @@
 	<script nomodule src="/build/ontario-design-system-components.js"></script>
 </head>
 
-<body style="margin: 0;">
+<body>
 	<ontario-header
 				type="ontario"
 				title-header='{
@@ -61,10 +61,14 @@
 
 	</ontario-header>
 	<ontario-button label="Primary" aria-label="Primary Button" type="primary" onclick="testFunction()">
+		Content here will be overwritten by the value of the label property
 	</ontario-button>
 	<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">
+		Content here will be overwritten by the value of the label property
 	</ontario-button>
-	<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary">Content here will be overwritten by the value of the label property</ontario-button>
+	<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary">
+		Content here will be overwritten by the value of the label property
+	</ontario-button>
 
 	<hr />
 
@@ -170,8 +174,6 @@
 			"aria-label": "This indicates that the hint can be expanded"
 		}'>
 	</ontario-radio-buttons>
-
-
 
 	<script>
 		function testFunction() {
