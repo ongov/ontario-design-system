@@ -5,7 +5,7 @@
   background-position: right $spacing-2 center;
   background-repeat: no-repeat;
   background-size: $spacing-6;
-  padding-right: calc(#{$spacing-4}* 2.25);
+  padding-right: calc($spacing-4 * 2.25);
   cursor: pointer;
 }
 
