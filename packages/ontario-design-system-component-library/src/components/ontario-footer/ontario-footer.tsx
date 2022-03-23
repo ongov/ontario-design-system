@@ -1,5 +1,5 @@
 import { Component, Prop, h, getAssetPath, State, Watch } from '@stencil/core';
-import { defaultOptions } from './footer-option.interface';
+import { defaultOptions, expandedTwoColumnOptions } from './footer-option.interface';
 
 
 @Component({
@@ -10,17 +10,17 @@ import { defaultOptions } from './footer-option.interface';
 })
 
 export class OntarioFooter {
-	@Prop() type: 'default' | 'partnership' | 'expanded' = 'default';
+	@Prop() type: 'default' | 'partnership' | 'expanded' = 'default'; //make this determined
 
 	
 
-	@Prop() isTwoColumns: boolean = false;
+	@Prop() isTwoColumns: boolean = false;     //make this determined
 
-	@Prop() isExpanded: boolean = false;
+	@Prop() isExpanded: boolean = false;        //make this determined
 
-	@Prop() isExpandedTwoColumn: boolean = false;
+	@Prop() isExpandedTwoColumn: boolean = false;        //make this determined
 
-	@Prop() isExpandedThreeColumn: boolean = false;
+	@Prop() isExpandedThreeColumn: boolean = false;      //make this determined
 
 
 	@State() private isDefault: boolean = true;
@@ -48,12 +48,32 @@ export class OntarioFooter {
 		}
 	}
 
+	@Prop() expandedTwoColumnOptions: expandedTwoColumnOptions | string = ""; //add initialized thing here
+
+	@State() expandedTwoColumnState: expandedTwoColumnOptions;
+
+	@Watch('expandedTwoColumnOptions')
+	private parseExpandedTwoColumnOptions() {
+		const expandedTwoColumnOptions = this.expandedTwoColumnOptions;
+		if (expandedTwoColumnOptions ) {
+			console.log('expanded two column Stuff:', expandedTwoColumnOptions );
+			if (typeof expandedTwoColumnOptions  === 'string') {
+				this.expandedTwoColumnState = JSON.parse(expandedTwoColumnOptions );
+				console.log(this.expandedTwoColumnState)
+			}
+			else this.expandedTwoColumnState = expandedTwoColumnOptions ;
+		} else {
+			throw 'Expanded Two Column Options Not Entered'
+		}
+	}
+
 
 
 
 
 	componentWillLoad() {
 		this.parseDefaultOptions();
+		this.parseExpandedTwoColumnOptions()
 	}
 
 	// text: {
@@ -113,7 +133,6 @@ export class OntarioFooter {
 
 	private getBackgroundImagePath() {
 		const backgroundImage = this.isExpanded ? 'footer-expanded-supergraphic-logo.svg' : 'footer-default-supergraphic-logo.svg';
-		console.log("dasdasda " + backgroundImage + " " + this.type);
 		return {'--imagePath': `url(${getAssetPath(`./assets/${backgroundImage}`)})`};
 	}
 

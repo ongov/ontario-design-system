@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
-import { defaultOptions } from "./components/ontario-footer/footer-option.interface";
+import { defaultOptions, expandedTwoColumnOptions } from "./components/ontario-footer/footer-option.interface";
 import { languageTogglePaths, titleHeader } from "./components/ontario-header/titleHeader";
 export namespace Components {
     interface MyComponent {
@@ -74,6 +74,7 @@ export namespace Components {
     }
     interface OntarioFooter {
         "defaultOptions": defaultOptions | string;
+        "expandedTwoColumnOptions": expandedTwoColumnOptions | string;
         "isExpanded": boolean;
         "isExpandedThreeColumn": boolean;
         "isExpandedTwoColumn": boolean;
@@ -1375,6 +1376,7 @@ declare namespace LocalJSX {
     }
     interface OntarioFooter {
         "defaultOptions"?: defaultOptions | string;
+        "expandedTwoColumnOptions"?: expandedTwoColumnOptions | string;
         "isExpanded"?: boolean;
         "isExpandedThreeColumn"?: boolean;
         "isExpandedTwoColumn"?: boolean;
