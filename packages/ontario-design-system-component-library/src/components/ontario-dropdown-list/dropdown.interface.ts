@@ -3,9 +3,9 @@ import { DropdownOption } from './dropdown-option.interface';
 
 export interface Dropdown extends Base {
   /**
-   * The legend for the Dropdown List.
+   * The label for the Dropdown List.
    */
-  legend: string;
+  label: string;
 
   /**
    * The name for the dropdown list.
@@ -24,7 +24,7 @@ export interface Dropdown extends Base {
    * there are three dropdown options to be displayed in the fieldset.
    *
    * @example
-   * <ontario-dropdown-list legend="Do you like cats?" name="cat-dropdown" is-required
+   * <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required
    * is-empty-start-option="Please select" options='[{
    *     "value": "dropdown-list-1",
    *     "label": "Option 1"

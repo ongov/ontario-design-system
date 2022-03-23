@@ -3,7 +3,7 @@ export interface DropdownOption {
    * The text to display as label.
    *
    * @example
-   * <ontario-dropdown-list legend="Do you like cats?" name="cat-dropdown" is-required
+   * <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required
    * is-empty-start-option="Please select" options='[{
    *     "value": "dropdown-list-1",
    *     "label": "Option 1"

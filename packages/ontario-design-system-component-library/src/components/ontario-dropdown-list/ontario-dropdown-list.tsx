@@ -10,9 +10,9 @@ import { Dropdown } from './dropdown.interface';
 })
 export class OntarioDropdownList implements Dropdown {
   /**
-   * The legend for the Dropdown List.
+   * The label for the Dropdown List.
    */
-  @Prop() legend: string;
+  @Prop() label: string;
 
   /**
    * The name for the dropdown list.
@@ -31,7 +31,7 @@ export class OntarioDropdownList implements Dropdown {
    * there are three dropdown options to be displayed in the fieldset.
    *
    * @example
-   * <ontario-dropdown-list legend="Do you like cats?" name="cat-dropdown" is-required
+   * <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required
    * is-empty-start-option="Please select" options='[{
    *     "value": "dropdown-list-1",
    *     "label": "Option 1"
@@ -103,7 +103,7 @@ export class OntarioDropdownList implements Dropdown {
     return (
       <div class="ontario-form-group">
         <label class="ontario-label" htmlFor="ontario-dropdown-list">
-          {this.legend}
+          {this.label}
           <span class="ontario-label__flag">
             {this.isRequired ? "(required)" : "(optional)"}
           </span>
