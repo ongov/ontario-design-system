@@ -49,7 +49,7 @@ export interface Dropdown extends Base {
    * @example
    * <ontario-dropdown-list ... is-required></ontario-dropdown-list>
    */
-  isRequired: boolean;
+  isRequired?: boolean;
 
   /**
    * Whether or not the initial option displayed is empty.

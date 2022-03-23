@@ -61,7 +61,7 @@ export namespace Components {
           * Determine whether the input field is required. If required, it should be set to true.
           * @example <ontario-checkboxes ... is-required></ontario-checkboxes>
          */
-        "isRequired": boolean;
+        "isRequired"?: boolean;
         /**
           * The legend for the checkbox
          */
@@ -86,7 +86,7 @@ export namespace Components {
           * Determine whether the dropdown list is required. If required, add `is-required` attribute. Otherwise, the `optional` flag will appear.
           * @example <ontario-dropdown-list ... is-required></ontario-dropdown-list>
          */
-        "isRequired": boolean;
+        "isRequired"?: boolean;
         /**
           * The legend for the Dropdown List.
          */
@@ -905,7 +905,7 @@ export namespace Components {
           * Determine whether the input field is required. If required, it should be set to true. This can be done by passing in `is-required` to the component.
           * @example <ontario-radio-buttons ... is-required></ontario-radio-buttons>
          */
-        "isRequired": boolean;
+        "isRequired"?: boolean;
         /**
           * The legend for the Radio Buttons.
          */

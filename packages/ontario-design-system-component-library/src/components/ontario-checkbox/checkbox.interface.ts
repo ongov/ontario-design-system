@@ -80,5 +80,5 @@ export interface Checkbox extends Base {
    * @example
    * <ontario-checkboxes ... is-required></ontario-checkboxes>
    */
-  isRequired: boolean;
+  isRequired?: boolean;
 }

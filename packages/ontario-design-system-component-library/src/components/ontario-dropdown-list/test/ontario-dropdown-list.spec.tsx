@@ -17,7 +17,7 @@ describe('ontario-dropdown-list', () => {
                   (optional)
                 </span>
               </legend>
-              <select class="ontario-dropdown ontario-input"></select>
+              <select class="ontario-dropdown ontario-input" style="background-image: url(/assets/ontario-material-dropdown-arrow-48px.svg);"></select>
             </fieldset>
           </div>
         </mock:shadow-root>

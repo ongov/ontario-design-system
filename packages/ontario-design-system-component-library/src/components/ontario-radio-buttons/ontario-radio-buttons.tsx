@@ -119,7 +119,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * @example
 	 * <ontario-radio-buttons ... is-required></ontario-radio-buttons>
 	 */
-	@Prop() isRequired: boolean = false;
+	@Prop() isRequired?: boolean = false;
 
 	componentWillLoad() {
 		this.parseOptions();
