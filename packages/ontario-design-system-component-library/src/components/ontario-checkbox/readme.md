@@ -12,7 +12,7 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
-Example of a bare-bones checkbox component, the user is simply passing in the legend for the checkbox fieldset, as well as 1 checkbox option.
+Example of a bare-bones checkbox component, the legend for the checkbox fieldset is provided, as well as 1 checkbox option.  
 
 ```html
 <ontario-checkboxes

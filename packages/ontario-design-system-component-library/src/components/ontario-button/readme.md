@@ -12,7 +12,7 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
-Example of a bare-bones button component, the user is simply passing in the label for the button. The default button type will be `secondary`, and the native HTML button type will be `button`.
+Example of a bare-bones button component, the label for the button is provided. The default button type will be `secondary`, and the native HTML button type will be `button`.
 
 ```html
 <ontario-button>Element Content</ontario-button>

@@ -16,7 +16,7 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
-Example of a bare-bones radio button component, the user is simply passing in the legend for the radio button fieldset, as well as 2 radio options.
+Example of a bare-bones radio button component, the legend for the radio button fieldset is provided, as well as 2 radio options.
 
 ```html
   <ontario-radio-buttons

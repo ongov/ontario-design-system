@@ -12,7 +12,7 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for
 
 ## Examples
 
-Example of a bare-bones input component, the user is passing in the `name` property for the input, which is used to reference form data after a form is submitted. The `label-caption` property is being passed in, which will be displayed as the label. By default, the `label-type` will be `default`, the `input-type` will be `text`, and the input will be set to `optional`. 
+Example of a bare-bones input component, the `name` property is passed in for the input, which is used to reference form data after a form is submitted. The `label-caption` property is being provided, which will be displayed as the label. By default, the `label-type` will be `default`, the `input-type` will be `text`, and the input will be set to `optional`. 
 
 ```html
 <ontario-input name="ontario-text-input" label-caption="Ontario input"/></ontario-input>
