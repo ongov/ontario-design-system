@@ -1,6 +1,6 @@
 {
 	"name": "react-app",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"private": true,
 	"dependencies": {
 		"@testing-library/jest-dom": "^5.16.1",
@@ -15,7 +15,7 @@
 		"react-scripts": "5.0.0",
 		"typescript": "^4.5.4",
 		"web-vitals": "^2.1.2",
-		"@ontario-digital-service/ontario-design-system-component-library-react": "^0.0.1"
+		"@ontario-digital-service/ontario-design-system-component-library-react": "^1.0.0"
 	},
 	"scripts": {
 		"start": "react-scripts start",
@@ -41,5 +41,23 @@
 		"last 1 chrome version",
 		"last 1 firefox version",
 		"last 1 safari version"
+	],
+	"authors": [
+		{
+			"name": "Scott Morris",
+			"email": "Scott.Morris@ontario.ca"
+		},
+		{
+			"name": "Elsa Ng",
+			"email": "Elsa.Ng@ontario.ca"
+		},
+		{
+			"name": "Erin Carrieres",
+			"email": "Erin.Carrieres@ontario.ca"
+		},
+		{
+			"name": "Meaghan Carrieres",
+			"email": "Meaghan.Carrieres@ontario.ca"
+		}
 	]
 }
