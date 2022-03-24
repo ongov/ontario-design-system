@@ -81,12 +81,12 @@ export namespace Components {
           * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
           * @example <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
          */
-        "isEmptyStartOption": boolean | string;
+        "isEmptyStartOption"?: boolean | string;
         /**
           * Determine whether the dropdown list is required. If required, add `is-required` attribute. Otherwise, the `optional` flag will appear.
           * @example <ontario-dropdown-list ... is-required></ontario-dropdown-list>
          */
-        "isRequired": boolean;
+        "isRequired"?: boolean;
         /**
           * The legend for the Dropdown List.
          */

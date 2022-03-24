@@ -85,7 +85,7 @@ export class OntarioDropdownList implements Dropdown {
    *
    * <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
    */
-  @Prop() isEmptyStartOption: boolean | string;
+  @Prop() isEmptyStartOption?: boolean | string = false;
 
   componentWillLoad() {
     this.parseOptions();
@@ -108,7 +108,7 @@ export class OntarioDropdownList implements Dropdown {
             name={this.name}
           >
             {this.isEmptyStartOption && (
-              this.isEmptyStartOption == true ?
+              this.isEmptyStartOption === true ?
                 <option>
                   Select
                 </option>

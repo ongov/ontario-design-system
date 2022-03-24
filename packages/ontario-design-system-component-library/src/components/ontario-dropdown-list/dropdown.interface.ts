@@ -63,5 +63,5 @@ export interface Dropdown extends Base {
    *
    * <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
    */
-  isEmptyStartOption: boolean | string;
+  isEmptyStartOption?: boolean | string;
 }
