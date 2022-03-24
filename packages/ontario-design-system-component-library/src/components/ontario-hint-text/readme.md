@@ -15,13 +15,13 @@ Once the component package has been installed (see Ontario Design System Compone
 Example of a bare-bones hint-text component, the user is passing the `hint` directly in the element, which will be displayed as the question/statement.
 
 ```html
-	<ontario-hint-text>This is a hint</ontario-hint-text>
+<ontario-hint-text>This is a hint</ontario-hint-text>
 ```
 
 Example of a hint text that includes the hint property, which will override the `This is a hint` text. The element ID has also been added, which is used to establish a relationship between hint text content and elements using aria-describedby. 
 
 ```html
-	<ontario-hint-text hint="This hint will override the other hint text" element-id="hint-293849">This is a hint</ontario-hint-text>
+<ontario-hint-text hint="This hint will override the other hint text" element-id="hint-293849">This is a hint</ontario-hint-text>
 ```
 
 ## Accesibility

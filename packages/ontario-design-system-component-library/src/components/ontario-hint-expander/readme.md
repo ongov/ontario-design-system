@@ -15,14 +15,14 @@ Once the component package has been installed (see Ontario Design System Compone
 Example of a bare-bones hint-expander component, the user is passing the `hint` that will be displayed as the question/statement, and the `content` is what is displayed once the hint expander is expanded.
 
 ```html
-	<ontario-hint-expander hint="This is the hint" content="This is the content"></ontario-hint-expander>
+<ontario-hint-expander hint="This is the hint" content="This is the content"></ontario-hint-expander>
 ```
 
 Example of a hint-expander that includes an aria-label, and an `element id` which is used to establish a relationship etween hint text content and elements using the aria-describedby. 
 
 ```html
-	<ontario-hint-expander hint="This is the hint" content="This is the content"
-	aria-label="This indicates that the hint can be expanded" element-id="expander-82913`"></ontario-hint-expander>
+<ontario-hint-expander hint="This is the hint" content="This is the content" 
+aria-label="This indicates that the hint can be expanded" element-id="expander-82913`"></ontario-hint-expander>
 ```
 
 ## Accesibility
@@ -35,7 +35,8 @@ Since the hint expander information is after the form element, add text in the a
 
 #### Example: 
 ```html 
-<span class="ontario-show-for-sr">More information on (label name) is available in the next element</span>```
+<span class="ontario-show-for-sr">More information on (label name) is available in the next element</span>
+```
 
 ### Aria-expanded
 

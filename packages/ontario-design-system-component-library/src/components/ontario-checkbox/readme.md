@@ -23,7 +23,8 @@ Example of a bare-bones checkbox component, the user is simply passing in the le
       "label": "Checkbox Label"
     }]'
   >
-  </ontario-checkboxes>```
+  </ontario-checkboxes>
+```
 
 Example of a checkbox component with multiple options, a hint text for the entire fieldset, and a hint expander on the individual option. It also has the `is-required` property set to true.  
 

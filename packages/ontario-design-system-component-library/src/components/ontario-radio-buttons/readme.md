@@ -35,7 +35,8 @@ Example of a bare-bones radio button component, the user is simply passing in th
       }
     ]'
   >
-  </ontario-radio-buttons>```
+  </ontario-radio-buttons>
+```
 
 Example of a radio button component with multiple options, a hint text for the entire fieldset, and a hint expander on the individual option. It also has the `is-required` property set to true.  
 
