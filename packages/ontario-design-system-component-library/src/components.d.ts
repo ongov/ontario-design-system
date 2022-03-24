@@ -76,14 +76,12 @@ export namespace Components {
         "defaultOptions": defaultOptions | string;
         "expandedThreeColumnOptions"?: expandedThreeColumnOptions | string;
         "expandedTwoColumnOptions"?: expandedTwoColumnOptions | string;
-        "isExpandedThreeColumn": boolean;
-        "isExpandedTwoColumn": boolean;
         "partnershipConnection": | 'Licensed by Government of Ontario'
 		| 'In partnership with Government of Ontario'
 		| 'Funded by Government of Ontario'
 		| 'Sponsored by Government of Ontario'
 		| null;
-        "type": 'default' | 'partnership' | 'expanded';
+        "type": 'default' | 'partnership' | 'expanded two column' | 'expanded three column';
     }
     interface OntarioHeader {
         "languageTogglePaths": languageTogglePaths;
@@ -1377,14 +1375,12 @@ declare namespace LocalJSX {
         "defaultOptions"?: defaultOptions | string;
         "expandedThreeColumnOptions"?: expandedThreeColumnOptions | string;
         "expandedTwoColumnOptions"?: expandedTwoColumnOptions | string;
-        "isExpandedThreeColumn"?: boolean;
-        "isExpandedTwoColumn"?: boolean;
         "partnershipConnection"?: | 'Licensed by Government of Ontario'
 		| 'In partnership with Government of Ontario'
 		| 'Funded by Government of Ontario'
 		| 'Sponsored by Government of Ontario'
 		| null;
-        "type"?: 'default' | 'partnership' | 'expanded';
+        "type"?: 'default' | 'partnership' | 'expanded two column' | 'expanded three column';
     }
     interface OntarioHeader {
         "languageTogglePaths"?: languageTogglePaths;
