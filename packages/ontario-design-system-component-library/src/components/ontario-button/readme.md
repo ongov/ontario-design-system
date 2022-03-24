@@ -18,16 +18,16 @@ Example of a bare-bones button component, the user is simply passing in the labe
 <ontario-button>Element Content</ontario-button>
 ```
 
-Example of the button component, which includes the properties for the label, the button ID, the native HTML button type, and the type of button. The aria-label property will override the `Element Content`, and the aria-label will instead display `Example`. 
+Example of the button component, which includes the label, the button ID, the native HTML button type, the type of button, and the `aria-label` - which will override the default value of the 'aria-label' HTML attribute.
 
 ```html
 <ontario-button aria-label="Example" buttonId="example" htmlType="button" type="tertiary">Element Content</ontario-button>
 ```
 
-This is another example of a button component, where the user is passing in the label, and the resulting label text will disaplay as `Example`. 
+This is another example of a button component, where the user is passing in the label through the `label` property - overriding the 'Element Content' value, and the resulting label text will display as `Example`. 
 
 ```html
-<ontario-button label="Example" htmlType="submit" type="primary"></ontario-button>
+<ontario-button label="Example" htmlType="submit" type="primary">Element Content</ontario-button>
 ```
 
 An example of how to pass in an `onclick` function. 
@@ -36,7 +36,7 @@ An example of how to pass in an `onclick` function.
 <ontario-button onclick="exampleFunction()">Element Content</ontario-button>
 ```
 
-## Accesibility
+## Accessibility
 
 It is important to know when the proper use-case is for a button. Often, the roles of links and buttons can get confused with one another.
 

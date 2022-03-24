@@ -26,7 +26,7 @@ Example of a bare-bones checkbox component, the user is simply passing in the le
 </ontario-checkboxes>
 ```
 
-Example of a checkbox component with multiple options, a hint text for the entire fieldset, and a hint expander on the individual option. It also has the `is-required` property set to true.  
+Example of a checkbox component with multiple options, a hint text for the entire fieldset, and a hint expander on the individual option. It also has the `is-required` property set to `true`. 
 
 ```html
 <ontario-checkboxes
@@ -50,10 +50,11 @@ Example of a checkbox component with multiple options, a hint text for the entir
       }
     }
   ]'
+>
 </ontario-checkboxes>
 ```
 
-## Accesibility
+## Accessibility
 
 - Do not preselect checkboxes (there should be no checked attribute by default on the checkbox)
 - All checkboxes in a group should have the same name value to associate them as a group of options

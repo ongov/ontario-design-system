@@ -38,7 +38,7 @@ Example of a bare-bones radio button component, the user is simply passing in th
   </ontario-radio-buttons>
 ```
 
-Example of a radio button component with multiple options, a hint text for the entire fieldset, and a hint expander on the individual option. It also has the `is-required` property set to true.  
+Example of a radio button component with multiple options, a hint text for the entire fieldset, and a hint expander on the individual option. It also has the `is-required` property set to `true`. 
 
 ```html
 	<ontario-radio-buttons legend="Do you have cats?" hint-text="This is the hint text" is-required options='[{
@@ -79,7 +79,7 @@ Example of a radio button component with multiple options, a hint text for the e
 	</ontario-radio-buttons>
 ```
 
-## Accesibility
+## Accessibility
 
 - Do not pre-select radio buttons (there should be no checked attribute by default on the radio button)
 - All radio buttons in a group should have the same `name` value to associate them as a group of options

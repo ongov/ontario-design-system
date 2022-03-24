@@ -12,7 +12,7 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
-Example of a bare-bones icon component, the user is referencing the accessibility Ontario icon. The default colour will display as black. 
+Example of a bare-bones icon component, the user is referencing the Ontario Design System's accessibility icon. The default colour will display as black. 
 
 ```html
 	<ontario-icon-accessibility></ontario-icon-accessibility>
