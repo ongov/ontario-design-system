@@ -1,4 +1,5 @@
 # ontario-hint-expander
+
 A hint expander is a block of hint text that can be shown or hidden using a toggle. 
 
 ## Usage guidance
@@ -7,7 +8,7 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for
 
 ## Configuration
 
-Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the hint expander component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component. 
+Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the hint-expander component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component. 
 
 ## Examples
 
