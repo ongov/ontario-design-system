@@ -72,7 +72,66 @@ const App = () => {
 						<StoryRouter />
 					</div>
 					<div className="footer">
-						<OntarioFooter type="default" is-default = "true" is-two-columns= "false"  is-expanded="false" is-expanded-two-column="false" is-expanded-three-column="false"/>
+						<OntarioFooter 
+						type = "expanded three column" 
+						defaultOptions={{
+							accessibilityLink:"https://www.ontario.ca/page/accessibility",
+							privacyLink: "https://www.ontario.ca/page/privacy-statement",
+							contactLink: "https://www.ontario.ca/feedback/contact-us",
+							queensPrinterLink: "https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario"
+							
+						}} 
+						expandedThreeColumnOptions = {{
+							firstColumn: {
+								title: "This is my First Title",
+								content:"this is my first content" 
+							},
+							secondColumn: {
+								title: "This is my Second Title",
+								content:[
+								{
+									title: "1 asdas",
+									link: "12"
+								},
+								{
+									title: "2 asdasddasd",
+									link: "22"
+								},
+								{
+									title: "2 asdasddasd",
+									link: "22"
+								},
+								{
+									title: "2 asdasddasd",
+									link: "22"
+								},
+								{
+									title: "2 asdasddasd",
+									link: "22"
+								},
+								{
+									title: "2 asdasddasd",
+									link: "22"
+								}
+								]
+							},
+							thirdColumn: {
+								title: "this is my third title",
+								content: "this is my third content",
+								facebook: {
+									link: "1"
+								},
+								twitter: {
+									link: "2"
+								},
+								instagram: {
+									link: "3"
+								},
+								youtube: {
+									link: "4"
+								}
+							}
+						}}/>
 					</div>
 				</div>
 			</div>
