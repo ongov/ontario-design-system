@@ -73,13 +73,25 @@ const App = () => {
 					</div>
 					<div className="footer">
 						<OntarioFooter 
-						type = "expanded three column" 
+						type = "partnership" 
 						defaultOptions={{
 							accessibilityLink:"https://www.ontario.ca/page/accessibility",
 							privacyLink: "https://www.ontario.ca/page/privacy-statement",
 							contactLink: "https://www.ontario.ca/feedback/contact-us",
 							queensPrinterLink: "https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario"
 							
+						}} 
+						partnershipConnection="Sponsored by Government of Ontario"  
+						expandedTwoColumnOptions = {{
+							firstColumn: {
+								title: "This is my First Title",
+								content:"this is my first content" 
+							},
+							secondColumn: {
+								title: "This is my Second Title",
+								content:"this is my second content",
+								contactButtonText: "BUTTON"
+							}
 						}} 
 						expandedThreeColumnOptions = {{
 							firstColumn: {
