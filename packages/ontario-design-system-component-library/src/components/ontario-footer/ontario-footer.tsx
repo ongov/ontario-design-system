@@ -1,5 +1,6 @@
 import { Component, Prop, h, getAssetPath, State, Watch } from '@stencil/core';
 import { defaultOptions, expandedTwoColumnOptions, expandedThreeColumnOptions } from './footer-option.interface';
+import ontarioPartnershipLogo from './assets/ontario-logo--partnership-footer.svg';
 
 const enDash = '\u2013';
 
@@ -263,7 +264,7 @@ export class OntarioFooter {
 					{this.type == 'partnership' && (
 						<div class="ontario-columns ontario-small-12 ontario-medium-5 ontario-footer__partnership-logo-container">
 							<a href="https://www.ontario.ca/page/government-ontario" class="ontario-footer__ontario-logo">
-								<img src={getAssetPath(`./assets/ontario-logo--partnership-footer.svg`)} alt="Government of Ontario" />
+								<div innerHTML={ontarioPartnershipLogo}/>
 							</a>
 							<p class="ontario-margin-bottom-0-!">{this.partnershipConnection}</p>
 						</div>
