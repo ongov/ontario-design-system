@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property              | Attribute               | Description | Type                                      | Default         |
-| --------------------- | ----------------------- | ----------- | ----------------------------------------- | --------------- |
-| `languageTogglePaths` | `language-toggle-paths` |             | `languageTogglePaths \| string`           | `undefined`     |
-| `menuItems`           | `menu-items`            |             | `headerTitle[] \| string`                 | `undefined`     |
-| `titleHeader`         | `title-header`          |             | `headerTitle \| string`                   | `undefined`     |
-| `toggle`              | `toggle`                |             | `boolean`                                 | `false`         |
-| `type`                | `type`                  |             | `"application" \| "ontario" \| undefined` | `'application'` |
+| Property                | Attribute                 | Description | Type                                      | Default         |
+| ----------------------- | ------------------------- | ----------- | ----------------------------------------- | --------------- |
+| `languageToggleOptions` | `language-toggle-options` |             | `languageToggleOptions \| string`         | `undefined`     |
+| `menuItems`             | `menu-items`              |             | `headerTitle[] \| string`                 | `undefined`     |
+| `titleHeader`           | `title-header`            |             | `headerTitle \| string`                   | `undefined`     |
+| `toggle`                | `toggle`                  |             | `boolean`                                 | `false`         |
+| `type`                  | `type`                    |             | `"application" \| "ontario" \| undefined` | `'application'` |
 
 
 ## Events

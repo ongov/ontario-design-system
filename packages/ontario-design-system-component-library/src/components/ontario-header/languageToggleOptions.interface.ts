@@ -1,4 +1,4 @@
-export interface languageTogglePaths {
+export interface languageToggleOptions {
 	englishLink: string;
 	frenchLink: string;
 }
