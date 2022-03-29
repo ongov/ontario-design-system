@@ -2,10 +2,12 @@ import React from 'react';
 import './App.scss';
 import { BrowserRouter } from 'react-router-dom';
 import StoryRouter from './Story';
-import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react';
-import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioHeader, OntarioFooter, setAssetPath  } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 
 const App = () => {
+
+	setAssetPath("localhost:3000");
 	return (
 		<BrowserRouter>
 			<div className="App">
@@ -73,13 +75,12 @@ const App = () => {
 					</div>
 					<div className="footer">
 						<OntarioFooter 
-						type = "partnership" 
+						type = "expanded two column" 
 						defaultOptions={{
 							accessibilityLink:"https://www.ontario.ca/page/accessibility",
 							privacyLink: "https://www.ontario.ca/page/privacy-statement",
 							contactLink: "https://www.ontario.ca/feedback/contact-us",
 							queensPrinterLink: "https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario"
-							
 						}} 
 						partnershipConnection="Sponsored by Government of Ontario"  
 						expandedTwoColumnOptions = {{

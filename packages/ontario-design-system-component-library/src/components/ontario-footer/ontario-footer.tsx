@@ -1,4 +1,4 @@
-import { Component, Prop, h, getAssetPath, State, Watch } from '@stencil/core';
+import { Component, Prop, h, getAssetPath, State, Watch} from '@stencil/core';
 import { defaultOptions, expandedTwoColumnOptions, expandedThreeColumnOptions } from './footer-option.interface';
 import ontarioPartnershipLogo from './assets/ontario-logo--partnership-footer.svg';
 
