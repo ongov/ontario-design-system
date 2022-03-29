@@ -33,7 +33,7 @@ $ontario-header-logo-width--mobile: 45px;
 	}
 }
 
-.ontario-application-subheader__menu a {
+.ontario-subheader__menu a {
 	border-radius: $global-radius;
 	color: $ontario-colour-white;
 	display: inline;
@@ -67,7 +67,7 @@ $ontario-header-logo-width--mobile: 45px;
 	}
 }
 
-.ontario-application-navigation {
+.ontario-navigation {
 	position: absolute;
 	width: 100%;
 
@@ -79,7 +79,7 @@ $ontario-header-logo-width--mobile: 45px;
 	}
 }
 
-.ontario-application-navigation__container {
+.ontario-navigation__container {
 	background: $ontario-colour-white;
 	position: absolute;
 	top: 0;
@@ -106,22 +106,25 @@ $ontario-header-logo-width--mobile: 45px;
 }
 
 .nav-ul-closed {
-	transition: transform 0.4s ease-in-out;
+	background: white;
+	position: absolute;
 	transform: translateY(-100%);
+	transition: transform 0.3s ease-in-out, visibility 0.1s ease;
+	width: 100%;
+	visibility: hidden;
+	z-index: 4;
 }
 
 .nav-ul-opened {
-	transition: transform 0.4s ease-in-out;
-	transform: translateY(0%);
 	visibility: visible;
-	opacity: 1;
-	z-index: 4;
+	transform: translateY(0);
+	transition: transform 0.4s ease-in-out;
 	@media screen and (min-width: $medium-breakpoint) {
 		z-index: 5;
 	}
 }
 
-.ontario-application-navigation ul {
+.ontario-navigation ul {
 	list-style: none;
 	padding: $spacing-2 $spacing-0;
 	margin: $spacing-0;
@@ -131,7 +134,7 @@ $ontario-header-logo-width--mobile: 45px;
 	}
 }
 
-.ontario-application-navigation li {
+.ontario-navigation li {
 	border-top: 1px solid $ontario-greyscale-20;
 	padding: $spacing-0;
 
@@ -140,7 +143,7 @@ $ontario-header-logo-width--mobile: 45px;
 	}
 }
 
-.ontario-application-navigation a {
+.ontario-navigation a {
 	color: $ontario-colour-black;
 	display: block;
 	font-weight: $ontario-font-weights-semi-bold;
@@ -170,7 +173,7 @@ $ontario-header-logo-width--mobile: 45px;
 	}
 }
 
-.ontario-application-overlay {
+.ontario-overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -582,26 +585,5 @@ input[type='reset'].ontario-header__search-reset {
 	.ontario-header--search-open .ontario-header__search-container,
 	.ontario-header--search-open .ontario-header__search-close {
 		display: flex;
-	}
-}
-
-.ontario-overlay {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background: rgba(0, 0, 0, 0.6);
-	width: 100%;
-	height: 100%;
-	z-index: 2;
-}
-
-.ontario-navigation--open {
-	.ontario-overlay {
-		display: block;
-
-		@media screen and (min-width: $medium-breakpoint) {
-			display: none;
-		}
 	}
 }

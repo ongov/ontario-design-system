@@ -91,9 +91,10 @@ export class OntarioHeader {
 	}
 
 	componentDidUpdate() {
-		if (this.searchToggle) this.searchBar.focus();
-		console.log(this.searchToggle);
-		if (!this.searchToggle) this.searchButton.focus();
+		if (this.type == 'ontario') {
+			if (this.searchToggle) this.searchBar.focus();
+			if (!this.searchToggle) this.searchButton.focus();
+		}
 	}
 
 	justTest = () => {
@@ -106,7 +107,13 @@ export class OntarioHeader {
 
 	@Listen('click', { target: 'window' })
 	handleClick(event: any) {
+		var text = event.path[0].className;
+		var result = text.includes('ontario-overlay');
 		if (this.el.contains(event.target)) {
+			if (result && this.toggle) {
+				this.toggle = !this.toggle;
+				result = !result;
+			}
 			// If click was inside header, stop
 			return;
 		}
@@ -178,8 +185,8 @@ export class OntarioHeader {
 									{this.toggle ? (
 										<button
 											class="ontario-header__menu-toggler  ontario-header-button--with-outline ontario-header-button ontario-navigation--open"
-											id="ontario-application-header-menu-toggler"
-											aria-controls="ontario-application-navigation"
+											id="ontario-header-menu-toggler"
+											aria-controls="ontario-navigation"
 											aria-label="open menu"
 											data-target="megaMenu"
 											aria-hidden={!this.toggle}
@@ -187,13 +194,13 @@ export class OntarioHeader {
 											ref={el => (this.menuButton = el as HTMLInputElement)}
 										>
 											<div class="ontario-icon-container" innerHTML={OntarioIconClose} />
-											<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
+											<span class="ontario-header-menu-span ontario-hide-for-small-only">Menu</span>
 										</button>
 									) : (
 										<button
 											class="ontario-header__menu-toggler  ontario-header-button--with-outline ontario-header-button ontario-navigation--closed"
-											id="ontario-application-header-menu-toggler"
-											aria-controls="ontario-application-navigation"
+											id="ontario-header-menu-toggler"
+											aria-controls="ontario-navigation"
 											aria-label="close menu"
 											data-target="megaMenu"
 											aria-hidden={!this.toggle}
@@ -201,7 +208,7 @@ export class OntarioHeader {
 											ref={el => (this.menuButton = el as HTMLInputElement)}
 										>
 											<div class="ontario-icon-container" innerHTML={OntarioIconMenu} />
-											<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
+											<span class="ontario-header-menu-span ontario-hide-for-small-only">Menu</span>
 										</button>
 									)}
 								</div>
@@ -219,8 +226,8 @@ export class OntarioHeader {
 							</div>
 						</header>
 						{this.toggle ? (
-							<nav role="navigation" class="ontario-application-navigation" id="ontario-application-navigation" aria-hidden={!this.toggle} onBlur={this.trapMenuFocus}>
-								<div class="ontario-application-navigation ontario-application-navigation__container nav-ul-opened">
+							<nav role="navigation" class="ontario-navigation" id="ontario-navigation" aria-hidden={!this.toggle} onBlur={this.trapMenuFocus}>
+								<div class="ontario-navigation ontario-navigation__container nav-ul-opened">
 									<ul>
 										{this.itemState?.map((item, index) => {
 											const lastLink = index + 1 === this.itemState.length;
@@ -240,8 +247,8 @@ export class OntarioHeader {
 								</div>
 							</nav>
 						) : (
-							<nav role="navigation" class="ontario-application-navigation" id="ontario-application-navigation" aria-hidden={!this.toggle}>
-								<div class="ontario-application-navigation ontario-application-navigation__container nav-ul-closed">
+							<nav role="navigation" class="ontario-navigation" id="ontario-navigation" aria-hidden={!this.toggle}>
+								<div class="ontario-navigation ontario-navigation__container nav-ul-closed">
 									<ul>
 										{this.itemState?.map(item => (
 											<li>
@@ -255,7 +262,7 @@ export class OntarioHeader {
 							</nav>
 						)}
 					</div>
-					{this.toggle && <div class="ontario-hide-for-large ontario-application-overlay" />}
+					{this.toggle && <div class="ontario-hide-for-large ontario-overlay" />}
 				</div>
 			);
 		} else {
@@ -406,7 +413,7 @@ export class OntarioHeader {
 							)}
 						</div>
 					</div>
-					{this.toggle && <div class="ontario-hide-for-large ontario-application-overlay" />}
+					{this.toggle && <div class="ontario-hide-for-large ontario-overlay" />}
 				</div>
 			);
 		}
