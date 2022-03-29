@@ -1,4 +1,5 @@
-import { Component, Prop, State, Watch, h, Event, EventEmitter, Listen, Element } from '@stencil/core';
+import { Component, Prop, State, Watch, h, Listen, Element } from '@stencil/core';
+import OntarioIconCloseSearch from '../ontario-icon/assets/ontario-icon-close.svg';
 import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
 import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
@@ -62,9 +63,26 @@ export class OntarioHeader {
 	}
 
 	@Prop({ mutable: true }) toggle: boolean = false;
+	@Prop({ mutable: true }) searchToggle: boolean = false;
+	@Prop({ mutable: true }) closeToggle: boolean = false;
 
-	@Event() changeEvent!: EventEmitter<any>;
+	header!: HTMLInputElement;
+	menuButton!: HTMLInputElement;
+	searchBar!: HTMLInputElement;
+	searchButton!: HTMLInputElement;
+
 	handleToggle = () => (this.toggle = !this.toggle);
+
+	handleSearchToggle = () => {
+		this.searchToggle = !this.searchToggle;
+		this.closeToggle = !this.closeToggle;
+	};
+
+	handleCloseToggle = () => {
+		this.searchToggle = !this.searchToggle;
+		this.closeToggle = !this.closeToggle;
+		this.searchButton.focus();
+	};
 
 	componentWillLoad() {
 		this.parseTitleHeader();
@@ -72,12 +90,16 @@ export class OntarioHeader {
 		this.parseLanguage();
 	}
 
+	componentDidUpdate() {
+		if (this.searchToggle) this.searchBar.focus();
+		console.log(this.searchToggle);
+		if (!this.searchToggle) this.searchButton.focus();
+	}
+
 	justTest = () => {
 		console.log('test');
 	};
 
-	header!: HTMLInputElement;
-	menuButton!: HTMLInputElement;
 	trapMenuFocus = () => {
 		this.menuButton.focus();
 	};
@@ -97,7 +119,7 @@ export class OntarioHeader {
 			return (
 				<div>
 					<div class="ontario-header__container" ref={el => (this.header = el as HTMLInputElement)}>
-						<header class="ontario-header" id="ontario-header">
+						<header class={this.searchToggle ? 'ontario-header ontario-header--search-open' : 'ontario-header'} id="ontario-header">
 							<div class="ontario-row">
 								<div class="ontario-hide-for-small-only ontario-header__logo-container ontario-columns ontario-small-2 ontario-medium-4 ontario-large-3 ">
 									<a href="https://www.ontario.ca/page/government-ontario" innerHTML={OntarioLogo} />
@@ -112,6 +134,7 @@ export class OntarioHeader {
 									id="ontario-search-form-container"
 									onSubmit={this.justTest}
 									class="ontario-header__search-container ontario-columns ontario-small-10 ontario-medium-offset-3 ontario-medium-6 ontario-large-offset-0 ontario-large-6"
+									aria-hidden={!this.searchToggle}
 									novalidate
 								>
 									<label htmlFor="ontario-search-input-field" class="ontario-show-for-sr">
@@ -125,8 +148,9 @@ export class OntarioHeader {
 										aria-autocomplete="none"
 										class="ontario-input ontario-header__search-input"
 										required={true}
+										ref={el => (this.searchBar = el as HTMLInputElement)}
 									/>
-									<input class="ontario-header__search-reset" id="ontario-search-reset" type="reset" value="" aria-label="Clear" />
+									<input class="ontario-header__search-reset" id="ontario-search-reset" type="reset" value="" aria-label="Clear" innerHTML={OntarioIconCloseSearch}></input>
 									<button class="ontario-header__search-submit" id="ontario-search-submit" type="submit" onClick={this.justTest}>
 										<div class="ontario-icon-container" innerHTML={OntarioIconSearch} />
 										<span class="ontario-show-for-sr">Submit</span>
@@ -144,6 +168,8 @@ export class OntarioHeader {
 											class="ontario-header__search-toggler ontario-header-button ontario-header-button--without-outline "
 											id="ontario-header-search-toggler"
 											aria-controls="ontario-search-form-container"
+											onClick={this.handleSearchToggle}
+											ref={el => (this.searchButton = el as HTMLInputElement)}
 										>
 											<div class="ontario-icon-container" innerHTML={OntarioIconSearchWhite} />
 											<span class="ontario-show-for-medium ontario-show">Search</span>
@@ -178,6 +204,17 @@ export class OntarioHeader {
 											<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
 										</button>
 									)}
+								</div>
+								<div class="ontario-header__search-close-container ontario-columns ontario-small-2 ontario-medium-3">
+									<button
+										class="ontario-header__search-close ontario-header-button ontario-header-button--without-outline"
+										id="ontario-header-search-close"
+										aria-label="close search bar"
+										onClick={this.handleCloseToggle}
+									>
+										<span aria-hidden="true">close</span>
+										<div class="ontario-icon-container" innerHTML={OntarioIconClose} />
+									</button>
 								</div>
 							</div>
 						</header>

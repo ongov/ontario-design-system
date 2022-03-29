@@ -74,8 +74,10 @@ export namespace Components {
         "options": CheckboxOption[] | string;
     }
     interface OntarioHeader {
+        "closeToggle": boolean;
         "languageToggleOptions": languageToggleOptions | string;
         "menuItems": headerTitle[] | string;
+        "searchToggle": boolean;
         "titleHeader": headerTitle | string;
         "toggle": boolean;
         "type"?: 'application' | 'ontario';
@@ -1377,9 +1379,10 @@ declare namespace LocalJSX {
         "options"?: CheckboxOption[] | string;
     }
     interface OntarioHeader {
+        "closeToggle"?: boolean;
         "languageToggleOptions"?: languageToggleOptions | string;
         "menuItems"?: headerTitle[] | string;
-        "onChangeEvent"?: (event: CustomEvent<any>) => void;
+        "searchToggle"?: boolean;
         "titleHeader"?: headerTitle | string;
         "toggle"?: boolean;
         "type"?: 'application' | 'ontario';

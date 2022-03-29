@@ -25,6 +25,14 @@ $ontario-header-logo-width--mobile: 45px;
 	align-items: center;
 }
 
+.ontario-icon-container-reset {
+	display: flex;
+	align-items: center;
+	svg {
+		fill: black;
+	}
+}
+
 .ontario-application-subheader__menu a {
 	border-radius: $global-radius;
 	color: $ontario-colour-white;
@@ -113,7 +121,6 @@ $ontario-header-logo-width--mobile: 45px;
 	}
 }
 
-
 .ontario-application-navigation ul {
 	list-style: none;
 	padding: $spacing-2 $spacing-0;
@@ -173,7 +180,6 @@ $ontario-header-logo-width--mobile: 45px;
 	z-index: $ontario-z-index-above-medium;
 }
 
-
 .ontario-header {
 	position: relative;
 	overflow: hidden;
@@ -224,7 +230,7 @@ $ontario-header-logo-width--mobile: 45px;
 }
 
 .ontario-header__logo-container {
-  height: $ontario-logo-height;
+	height: $ontario-logo-height;
 	svg {
 		width: $ontario-header-logo-width--mobile;
 		height: $ontario-logo-height;
@@ -365,8 +371,7 @@ input[type='reset'].ontario-header__search-reset {
 	color: black;
 	margin: $spacing-0;
 	padding: $spacing-2;
-
-	background-image: url(../icons/ontario-icons-close.svg);
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTE5IDYuNEwxNy42IDUgMTIgMTAuNiA2LjQgNSA1IDYuNGw1LjYgNS42TDUgMTcuNiA2LjQgMTlsNS42LTUuNiA1LjYgNS42IDEuNC0xLjQtNS42LTUuNkwxOSA2LjR6IiBmaWxsPSIjMDAwIi8+PC9zdmc+);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-color: transparent;

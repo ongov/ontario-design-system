@@ -4,7 +4,6 @@
 $standard-input-height: 48px;
 $ontario-logo-height: 46px;
 
-
 .ontario-row {
 	margin: 0 auto;
 	max-width: 72rem;
@@ -282,10 +281,8 @@ $ontario-logo-height: 46px;
 }
 
 .nav-ul-closed {
-	transition: 0.2s ease-in-out;
+	transition: transform 0.4s ease-in-out;
 	transform: translateY(-100%);
-	visibility: hidden;
-	opacity: 0;
 }
 
 .nav-ul-opened {
@@ -368,7 +365,6 @@ $ontario-logo-height: 46px;
 	z-index: $ontario-z-index-above-medium;
 }
 
-
 .ontario-header-button.ontario-navigation--open {
 	&:hover {
 		background-color: $ontario-greyscale-60;
@@ -449,7 +445,6 @@ $ontario-logo-height: 46px;
 		padding: calc(#{$spacing-3} / 2);
 	}
 }
-
 
 .ontario-header__menu-toggler {
 	padding: math.div($spacing-3, 2) $spacing-4;
