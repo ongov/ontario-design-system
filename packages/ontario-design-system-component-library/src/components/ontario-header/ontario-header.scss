@@ -146,10 +146,11 @@ $ontario-header-logo-width--mobile: 45px;
 .ontario-navigation a {
 	color: $ontario-colour-black;
 	display: block;
+	font-size: 1.125rem;
 	font-weight: $ontario-font-weights-semi-bold;
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	text-decoration: none;
-	padding: $spacing-3 $spacing-3 $spacing-3 $spacing-6;
+	padding: calc($ontario-spacing-3 - ($ontario-spacing-1 / 3.25)) $ontario-spacing-5;
 
 	&:hover {
 		text-decoration: underline;
