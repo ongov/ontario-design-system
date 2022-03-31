@@ -14,7 +14,8 @@
 		"clean:full": "rm -rf node_modules && npm run clean",
 		"compile": "npm run tsc",
 		"tsc": "tsc -p .",
-		"rollup": "rollup -c"
+		"rollup": "rollup -c",
+		"postbuild": "copyfiles -V -E -u 6 \"./node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/assets/*.svg\" \"./dist/assets\""
 	},
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",

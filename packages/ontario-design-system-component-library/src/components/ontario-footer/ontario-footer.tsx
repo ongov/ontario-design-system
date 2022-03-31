@@ -33,6 +33,7 @@ export class OntarioFooter {
 	@State() private expandedThreeColumnState: expandedThreeColumnOptions;
 
 	private verifyInfo() {
+		console.log("asset path: " + getAssetPath(`./assets/footer-expanded-supergraphic-logo.svg`));
 		if (!this.defaultState
 			|| !this.defaultState.accessibilityLink
 			|| !this.defaultState.contactLink
