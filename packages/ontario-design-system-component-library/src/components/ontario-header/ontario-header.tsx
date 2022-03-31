@@ -70,7 +70,7 @@ export class OntarioHeader {
 	searchBar!: HTMLInputElement;
 	searchButton!: HTMLInputElement;
 
-	handleToggle = () => {
+	handleMenuToggle = () => {
 		this.menuToggle = !this.menuToggle;
 		this.searchToggle = undefined;
 	};
@@ -89,10 +89,8 @@ export class OntarioHeader {
 		if (this.type == 'ontario') {
 			if (this.searchToggle === true) this.searchBar.focus();
 			if (this.searchToggle === false) this.searchButton.focus();
-			if (this.searchToggle === undefined) this.menuButton.focus();
 			if (this.menuToggle === false) {
 				this.menuButton.blur();
-				return;
 			}
 		}
 	}
@@ -192,7 +190,7 @@ export class OntarioHeader {
 											aria-label="open menu"
 											data-target="megaMenu"
 											aria-hidden={!this.menuToggle}
-											onClick={this.handleToggle}
+											onClick={this.handleMenuToggle}
 											ref={el => (this.menuButton = el as HTMLInputElement)}
 										>
 											<div class="ontario-icon-container" innerHTML={OntarioIconClose} />
@@ -206,7 +204,7 @@ export class OntarioHeader {
 											aria-label="close menu"
 											data-target="megaMenu"
 											aria-hidden={!this.menuToggle}
-											onClick={this.handleToggle}
+											onClick={this.handleMenuToggle}
 											ref={el => (this.menuButton = el as HTMLInputElement)}
 										>
 											<div class="ontario-icon-container" innerHTML={OntarioIconMenu} />
@@ -228,7 +226,7 @@ export class OntarioHeader {
 							</div>
 						</header>
 						{this.menuToggle ? (
-							<nav role="navigation" class="ontario-navigation" id="ontario-navigation" aria-hidden={!this.menuToggle} onBlur={this.trapMenuFocus}>
+							<nav role="navigation" class="ontario-navigation" id="ontario-navigation" aria-hidden={!this.menuToggle}>
 								<div class="ontario-navigation ontario-navigation__container nav-ul-opened">
 									<ul>
 										{this.itemState?.map((item, index) => {
@@ -321,7 +319,7 @@ export class OntarioHeader {
 													aria-controls="ontario-application-navigation"
 													aria-label="open menu"
 													data-target="megaMenu"
-													onClick={this.handleToggle}
+													onClick={this.handleMenuToggle}
 													aria-hidden={!this.menuToggle}
 													ref={el => (this.menuButton = el as HTMLInputElement)}
 												>
@@ -335,13 +333,11 @@ export class OntarioHeader {
 													aria-controls="ontario-application-navigation"
 													aria-label="open menu"
 													data-target="megaMenu"
-													onClick={this.handleToggle}
+													onClick={this.handleMenuToggle}
 													aria-hidden={!this.menuToggle}
 													ref={el => (this.menuButton = el as HTMLInputElement)}
 												>
-													<div class="ontario-icon-container" innerHTML={OntarioIconMenu}>
-														{/* <OntarioIconMenu width="32px" height="32px" viewBox="0 0 24 24" /> */}
-													</div>
+													<div class="ontario-icon-container" innerHTML={OntarioIconMenu} />
 													<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
 												</button>
 											)}
