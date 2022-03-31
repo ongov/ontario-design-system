@@ -97,8 +97,9 @@ export class OntarioHeader {
 		}
 	}
 
-	justTest = () => {
-		console.log('test');
+	handleSubmit = (event: any) => {
+		event.preventDefault();
+		location.href = `https://www.ontario.ca/search/search-results?query=${event.target[0].value}`;
 	};
 
 	trapMenuFocus = () => {
@@ -140,7 +141,7 @@ export class OntarioHeader {
 								<form
 									name="searchForm"
 									id="ontario-search-form-container"
-									onSubmit={this.justTest}
+									onSubmit={this.handleSubmit}
 									class="ontario-header__search-container ontario-columns ontario-small-10 ontario-medium-offset-3 ontario-medium-6 ontario-large-offset-0 ontario-large-6"
 									aria-hidden={!this.searchToggle}
 									novalidate
@@ -159,7 +160,7 @@ export class OntarioHeader {
 										ref={el => (this.searchBar = el as HTMLInputElement)}
 									/>
 									<input class="ontario-header__search-reset" id="ontario-search-reset" type="reset" value="" aria-label="Clear" innerHTML={OntarioIconCloseSearch}></input>
-									<button class="ontario-header__search-submit" id="ontario-search-submit" type="submit" onClick={this.justTest}>
+									<button class="ontario-header__search-submit" id="ontario-search-submit" type="submit">
 										<div class="ontario-icon-container" innerHTML={OntarioIconSearch} />
 										<span class="ontario-show-for-sr">Submit</span>
 									</button>
