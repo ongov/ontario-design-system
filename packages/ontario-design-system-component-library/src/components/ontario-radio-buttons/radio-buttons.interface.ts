@@ -4,6 +4,12 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
 export interface RadioButtons extends Base {
   /**
+   * The name assigned to the radio button.
+   * The name value is used to reference form data after a form is submitted.
+   */
+  name: string;
+
+  /**
    * The legend for the Radio Buttons.
    */
   legend: string;
@@ -21,8 +27,8 @@ export interface RadioButtons extends Base {
    * <ontario-radio-buttons
    *   legend="This is a question?"
    *   options='[{
-   *     "name": "Radio Option 1",
    *     "value": "radio-option-1",
+   *     "elementId": "radio-1",
    *     "label": "Radio Option 1 Label",
    *     "hintExpander": {
    *			  "hint": "Hint expander",
@@ -53,13 +59,13 @@ export interface RadioButtons extends Base {
    *   hint-text="This is the hint text"
    *   options='[
    *     {
-   *        "name": "Radio",
    *        "value": "radio-1-value",
+   *        "elementId": "radio-1",
    *        "label": "Radio Button Label 1"
    *     },
    *     {
-   *        "name": "Radio",
    *        "value": "radio-2-value",
+   *        "elementId": "radio-1",
    *        "label": "Radio Button Label 2",
    *        "hintExpander": {
    *          "hint": "Hint expander",
