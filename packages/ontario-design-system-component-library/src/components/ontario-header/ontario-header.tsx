@@ -8,6 +8,7 @@ import OntarioLogo from './ontario-logo--desktop.svg';
 import OntarioLogoMobile from './ontario-logo--mobile.svg';
 import { headerTitle } from './headerTitle.interface';
 import { languageToggleOptions } from './languageToggleOptions.interface';
+
 @Component({
 	tag: 'ontario-header',
 	styleUrls: {
@@ -89,9 +90,7 @@ export class OntarioHeader {
 		if (this.type == 'ontario') {
 			if (this.searchToggle === true) this.searchBar.focus();
 			if (this.searchToggle === false) this.searchButton.focus();
-			if (this.menuToggle === false) {
-				this.menuButton.blur();
-			}
+			if (this.menuToggle === false) this.menuButton.blur();
 		}
 	}
 
