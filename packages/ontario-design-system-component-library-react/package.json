@@ -10,7 +10,7 @@
 	},
 	"scripts": {
 		"build": "npm run clean && npm run compile",
-		"postbuild": "copyfiles -E -f node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/assets/* dist/assets",
+		"postbuild": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/assets/*\" dist/assets",
 		"clean": "rm -rf dist",
 		"clean:full": "rm -rf node_modules && npm run clean",
 		"compile": "npm run tsc",
