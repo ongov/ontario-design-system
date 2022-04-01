@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ontario-icon snapshot should render the expected html 1`] = `
-<ontario-icon-accessibility colour="grey">
+<ontario-icon-accessibility colour="grey" icon-width="36">
   <mock:shadow-root>
-    <div class="ontario-icon ontario-icon--grey"></div>
+    <div class="ontario-icon ontario-icon--grey" style="width: 36px;"></div>
   </mock:shadow-root>
 </ontario-icon-accessibility>
 `;
