@@ -18,7 +18,8 @@
 		"@ontario-digital-service/ontario-design-system-component-library-react": "^1.0.0"
 	},
 	"scripts": {
-		"start": "react-scripts start",
+		"start": "npm run build && react-scripts start",
+		"prebuild": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/*\" public/assets",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
@@ -59,5 +60,8 @@
 			"name": "Meaghan Carrieres",
 			"email": "Meaghan.Carrieres@ontario.ca"
 		}
-	]
+	],
+	"devDependencies": {
+		"copyfiles": "^2.4.1"
+	}
 }
