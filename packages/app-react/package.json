@@ -59,5 +59,8 @@
 			"name": "Meaghan Carrieres",
 			"email": "Meaghan.Carrieres@ontario.ca"
 		}
-	]
+	],
+	"devDependencies": {
+		"copyfiles": "^2.4.1"
+	}
 }
