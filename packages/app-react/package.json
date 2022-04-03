@@ -19,12 +19,14 @@
 	},
 	"scripts": {
 		"start": "npm run build && react-scripts start",
-		"prebuild": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/*\" public/assets",
+		"prebuild": "npm run copy:assets && npm run copy:icons",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"clean": "rm -rf build",
-		"clean:full": "rm -rf node_modules && npm run clean"
+		"clean:full": "rm -rf node_modules && npm run clean",
+		"copy:icons": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/icons/*\" public/assets/icons",
+		"copy:assets": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/*\" public/assets"
 	},
 	"eslintConfig": {
 		"extends": [
