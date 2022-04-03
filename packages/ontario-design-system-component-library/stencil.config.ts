@@ -25,6 +25,11 @@ export const config: Config = {
 					dest: 'fonts',
 					warn: true,
 				},
+				{
+					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/icons',
+					dest: 'assets/icons',
+					warn: true,
+				}
 			],
 		},
 		{
@@ -42,6 +47,11 @@ export const config: Config = {
 					dest: 'fonts',
 					warn: true,
 				},
+				{
+					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/icons',
+					dest: 'assets/icons',
+					warn: true,
+				}
 			],
 		},
 	],
