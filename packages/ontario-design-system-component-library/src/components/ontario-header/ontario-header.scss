@@ -61,7 +61,7 @@ $ontario-header-logo-width--mobile: 45px;
 	}
 
 	&:focus {
-		box-shadow: 0 0 0 4px $ontario-colour-focus;
+		box-shadow: $ontario-focus-box-shadow;
 		outline: 4px solid transparent;
 		transition: all 0.1s ease-in-out;
 	}

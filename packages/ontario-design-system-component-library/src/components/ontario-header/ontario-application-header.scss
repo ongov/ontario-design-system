@@ -442,7 +442,7 @@ $ontario-logo-height: 46px;
 	}
 
 	@media screen and (max-width: $xsmall-breakpoint) {
-		padding: calc(#{$spacing-3} / 2);
+		padding: math.div($spacing-3, 2);
 	}
 }
 
