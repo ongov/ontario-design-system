@@ -332,7 +332,9 @@ $ontario-header-logo-width--mobile: 45px;
 
 	padding-left: $spacing-3;
 	padding-right: $spacing-3;
-
+	svg {
+		fill: $ontario-colour-black;
+	}
 	&:hover {
 		background-color: $ontario-colour-link--hover;
 		color: $ontario-colour-white;

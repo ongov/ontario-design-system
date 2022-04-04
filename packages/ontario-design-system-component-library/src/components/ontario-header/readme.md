@@ -11,16 +11,10 @@
 | ----------------------- | ------------------------- | ----------- | ----------------------------------------- | --------------- |
 | `languageToggleOptions` | `language-toggle-options` |             | `languageToggleOptions \| string`         | `undefined`     |
 | `menuItems`             | `menu-items`              |             | `headerTitle[] \| string`                 | `undefined`     |
+| `menuToggle`            | `menu-toggle`             |             | `boolean`                                 | `false`         |
+| `searchToggle`          | `search-toggle`           |             | `boolean \| undefined`                    | `false`         |
 | `titleHeader`           | `title-header`            |             | `headerTitle \| string`                   | `undefined`     |
-| `toggle`                | `toggle`                  |             | `boolean`                                 | `false`         |
 | `type`                  | `type`                    |             | `"application" \| "ontario" \| undefined` | `'application'` |
-
-
-## Events
-
-| Event         | Description | Type               |
-| ------------- | ----------- | ------------------ |
-| `changeEvent` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------
