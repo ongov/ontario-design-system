@@ -22,12 +22,14 @@
 		"web-vitals": "^2.1.2"
 	},
 	"scripts": {
-		"start": "react-scripts start --reset-cache",
+		"start": "npm run build && react-scripts start",
+		"prebuild": "copyfiles -E -V -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/assets/*\" public/assets",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"clean": "rm -rf build",
 		"clean:full": "rm -rf node_modules && npm run clean"
+		
 	},
 	"eslintConfig": {
 		"extends": [
