@@ -23,7 +23,7 @@
 	},
 	"scripts": {
 		"start": "npm run build && react-scripts start",
-		"prebuild": "copyfiles -E -V -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/assets/*\" public/assets",
+		"prebuild": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/*\" public/assets",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
