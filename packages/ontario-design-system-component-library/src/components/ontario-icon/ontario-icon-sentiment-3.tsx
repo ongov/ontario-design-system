@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h, Watch } from '@stencil/core';
 import sentiment3 from './assets/ontario-icon-sentiment-3.svg';
 
 @Component({
@@ -11,7 +11,28 @@ export class OntarioIconSentiment3 {
 
   @Prop() colour: "black" | "blue" | "grey" = "black";
 
+  /**
+   * The icon width will autogenerate the height since the icons are in square format, thus preserving
+   * the aspect ratio.
+   */
+  @Prop() iconWidth: number = 24;
+
+  @Watch('iconWidth')
+  validateWidth() {
+    const defaultWidth = 24;
+
+    // If value is not a number, set the iconWidth to be 24
+    if (isNaN(this.iconWidth)) {
+      this.iconWidth = defaultWidth;
+    }
+  }
+
+  componentWillLoad() {
+    this.validateWidth();
+  }
   render() {
-    return <div class={`ontario-icon ontario-icon--${this.colour}`} innerHTML={sentiment3} />;
+    return <div class={`ontario-icon ontario-icon--${this.colour}`} style={{
+      width: `${this.iconWidth}px`
+    }} innerHTML={sentiment3} />;
   }
 };

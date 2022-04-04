@@ -16,7 +16,7 @@ $ontario-input-padding: 0.625rem;
 	margin: $spacing-0 $spacing-0 $spacing-7;
 	max-width: $standard-width;
 	padding: $ontario-input-padding $spacing-4;
-	transition: box-shadow 0.1s ease-in-out;
+	transition: $ontario-focus-transition;
 	width: $full-width;
 
 	&:focus,

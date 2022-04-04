@@ -4,42 +4,35 @@ The ontario-textarea is a multiline version of a text input. It is often used in
 
 It should be used when you want the user to enter more than a single line of information.
 
-<br>
-
 ## User Interaction Behaviour
 
 User enters text into the textarea component.
 
-<br>
+## Usage guidance
+
+Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for current documentation guidance.
+
+## Configuration
+
+Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the textarea component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component. 
 
 ## Examples
 
-```
+Example of a bare-bones textarea component, the user is passing the `name` which is the value used to reference form data after a form is submitted. The `id` is also being passed in as the unique identifier of the textarea. 
+
+```html
 <ontario-textarea name="comments" id="form-comments"/>
 ```
 
-```
+```html
 <ontario-textarea name="comments" id="form-comments" required="true" onBlur="exampleFunction()"/>
 ```
 
-<br>
-
-## Accessibility Considerations
+## Accessibility
 
 - An `id` attribute is necessary to allow the textarea to be associated with a label element
 - A `name` attribute needs to be set to be submitted to the server when the form is submitted.
 
-<br>
-
-## Further documentation
-
-See the [Design System textarea guidance](https://designsystem.ontario.ca/components/detail/text-areas.html) for current documentation guidelines.
-
-<br>
-
----
-
-<br>
 
 <!-- Auto Generated Below -->
 
