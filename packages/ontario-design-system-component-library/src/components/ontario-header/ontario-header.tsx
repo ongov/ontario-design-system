@@ -8,7 +8,9 @@ import OntarioLogo from './ontario-logo--desktop.svg';
 import OntarioLogoMobile from './ontario-logo--mobile.svg';
 import { headerTitle } from './headerTitle.interface';
 import { languageToggleOptions } from './languageToggleOptions.interface';
-
+/**
+ * Ontario Header component
+ */
 @Component({
 	tag: 'ontario-header',
 	styleUrls: {
@@ -18,12 +20,24 @@ import { languageToggleOptions } from './languageToggleOptions.interface';
 	shadow: true,
 })
 export class OntarioHeader {
+	/**
+	 * The HTML Element for the header
+	 */
 	@Element() el: HTMLElement;
 
+	/**
+	 * The type of header
+	 */
 	@Prop() type?: 'application' | 'ontario' = 'application';
 
+	/**
+	 * The title for the header
+	 */
 	@Prop() titleHeader: headerTitle | string;
 
+	/**
+	 * The title is reassigned to headerTitle for parsing
+	 */
 	@State() titleHeaderState: headerTitle;
 
 	@Watch('titleHeader')
@@ -35,8 +49,31 @@ export class OntarioHeader {
 		}
 	}
 
+	/**
+	 * The items that will go inside the menu
+	 */
 	@Prop() menuItems: headerTitle[] | string;
 
+	/**
+	 * The menuItems is reassigned to itemState for parsing
+	 *
+	 * @example
+	 * 	<ontario-header
+	 *			menu-Items='[{
+	 *				"name": "Hint",
+	 *				"href": "/ontario-hint"
+	 *			},{
+	 *				"name": "Hint",
+	 *				"href": "/ontario-hint"
+	 *			},{
+	 *				"name": "Hint",
+	 *				"href": "/ontario-hint"
+	 *			},{
+	 *				"name": "Hint",
+	 *				"href": "/ontario-hint"
+	 *			}]'>
+	 *	</ontario-header>
+	 */
 	@State() private itemState: headerTitle[];
 
 	@Watch('menuItems')
@@ -50,8 +87,22 @@ export class OntarioHeader {
 		}
 	}
 
+	/**
+	 * The link that contains the french page
+	 */
 	@Prop() languageToggleOptions: languageToggleOptions | string;
 
+	/**
+	 * The languageToggleOptions is reassigned to languageState for parsing
+	 *
+	 * @example
+	 * 	<ontario-header
+	 *		language-Toggle-Options='{
+	 *			"englishLink":"/en",
+	 *			"frenchLink": "/fr"
+	 *		}'
+	 *	</ontario-header>
+	 */
 	@State() languageState: languageToggleOptions;
 
 	@Watch('languageToggleOptions')
@@ -63,19 +114,31 @@ export class OntarioHeader {
 		}
 	}
 
+	/**
+	 * Toggler for the menu and the search button
+	 */
 	@Prop({ mutable: true }) menuToggle: boolean = false;
 	@Prop({ mutable: true }) searchToggle?: boolean = false;
 
+	/**
+	 * Assigning values to HTMLInputElement to use them as ref
+	 */
 	header!: HTMLInputElement;
 	menuButton!: HTMLInputElement;
 	searchBar!: HTMLInputElement;
 	searchButton!: HTMLInputElement;
 
+	/**
+	 * Logic to handle the menu toggling
+	 */
 	handleMenuToggle = () => {
 		this.menuToggle = !this.menuToggle;
 		this.searchToggle = undefined;
 	};
 
+	/**
+	 * Logic to handle the search toggling
+	 */
 	handleSearchToggle = () => {
 		this.searchToggle = !this.searchToggle;
 	};
@@ -86,6 +149,12 @@ export class OntarioHeader {
 		this.parseLanguage();
 	}
 
+	/**
+	 * Handles the focus when menu/toggle button is clicked.
+	 * When search button is clicked, the search bar is in focus,
+	 * when the closed button is clicked, the search button is back into focus.
+	 * When the menu is closed, the menu button should be out of focus.
+	 */
 	componentDidUpdate() {
 		if (this.type == 'ontario') {
 			if (this.searchToggle === true) this.searchBar.focus();
@@ -94,22 +163,35 @@ export class OntarioHeader {
 		}
 	}
 
+	/**
+	 * event.preventDefault(): https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
+	 * location.href: https://developer.mozilla.org/en-US/docs/Web/API/Location/href
+	 */
 	handleSubmit = (event: any) => {
 		event.preventDefault();
 		location.href = `https://www.ontario.ca/search/search-results?query=${event.target[0].value}`;
 	};
 
+	/**
+	 * Logic to make the focus go back to the menu button when the list ends
+	 */
 	trapMenuFocus = () => {
 		this.menuButton.focus();
 	};
 
+	/**
+	 * Logic to close the menu when anything outside the menu is clicked
+	 */
 	@Listen('click', { capture: true, target: 'window' })
 	handleClick(event: any) {
 		let overlay = event.path[0].className;
 		let isOverlay;
-
 		if (typeof overlay === 'string') isOverlay = overlay.includes('ontario-overlay');
 		if (this.el.contains(event.target)) {
+			/**
+			 * If the click was on the overlay, close the menu.
+			 * This code has to be inside this if statement because the overlay is part of the header.
+			 */
 			if (isOverlay && this.menuToggle) {
 				this.menuToggle = !this.menuToggle;
 			}
@@ -228,6 +310,11 @@ export class OntarioHeader {
 							<nav role="navigation" class="ontario-navigation" id="ontario-navigation" aria-hidden={!this.menuToggle}>
 								<div class="ontario-navigation ontario-navigation__container nav-ul-opened">
 									<ul>
+										{/*
+											Maps through all the menu items, and the last item is set to lastLink.
+											When the focus goes away from the lastLink, return to the menu button
+											(only applicable pressing the "tab" key, not actually clicking away from the menu).
+										*/}
 										{this.itemState?.map((item, index) => {
 											const lastLink = index + 1 === this.itemState.length;
 											return lastLink ? (
@@ -249,6 +336,11 @@ export class OntarioHeader {
 							<nav role="navigation" class="ontario-navigation" id="ontario-navigation" aria-hidden={!this.menuToggle}>
 								<div class="ontario-navigation ontario-navigation__container nav-ul-closed">
 									<ul>
+										{/*
+											When the menu is closed, all the items are set to tabindex = "-1".
+											This is not really necessary, but it's good practice.
+											https://www.maxability.co.in/2016/06/13/tabindex-for-accessibility-good-bad-and-ugly/
+										*/}
 										{this.itemState?.map(item => (
 											<li>
 												<a tabindex="-1" href={item.href}>
@@ -295,6 +387,9 @@ export class OntarioHeader {
 										<div class="ontario-application-subheader__menu-container">
 											<div class="ontario-show-for-large">
 												<ul class="ontario-application-subheader__menu ">
+													{/*
+														First 5 items in the itemState are shown in the header itself.
+													*/}
 													{this.itemState?.slice(0, 5).map(item => (
 														<li>
 															<a href={item.href}>{item.name}</a>
@@ -304,6 +399,9 @@ export class OntarioHeader {
 											</div>
 											<div class="ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large">
 												<ul class="ontario-application-subheader__menu ">
+													{/*
+														First 2 items in the itemState are shown in the header itself (tablet).
+													*/}
 													{this.itemState?.slice(0, 2).map(item => (
 														<li>
 															<a href={item.href}>{item.name}</a>
@@ -348,6 +446,11 @@ export class OntarioHeader {
 								<nav role="navigation" class="ontario-application-navigation" id="ontario-application-navigation" aria-hidden={!this.menuToggle}>
 									<div class="ontario-application-navigation ontario-application-navigation__container nav-ul-opened">
 										<ul>
+											{/*
+												All items will be shown inside the menu on mobile,
+												The first 2 items will be in the header, and rest inside menu on tablet,
+												The first 5 items will be in the header, and rest inside menu on desktop.
+											*/}
 											{this.itemState?.slice(0, 2).map(item => (
 												<li class="ontario-show-for-small-only">
 													<a href={item.href}>{item.name}</a>
@@ -381,6 +484,12 @@ export class OntarioHeader {
 								<nav role="navigation" class="ontario-application-navigation" id="ontario-application-navigation" aria-hidden={!this.menuToggle}>
 									<div class="ontario-application-navigation ontario-application-navigation__container nav-ul-closed">
 										<ul>
+											{/*
+												This part of the code is necessary for the animation to close the menu to work properly.
+												When the menu is closed, all the items are set to tabindex = "-1".
+												This is not really necessary, but it's good practice.
+												https://www.maxability.co.in/2016/06/13/tabindex-for-accessibility-good-bad-and-ugly/
+											*/}
 											{this.itemState?.slice(0, 2).map(item => (
 												<li class="ontario-show-for-small-only">
 													<a tabindex="-1" href={item.href}>

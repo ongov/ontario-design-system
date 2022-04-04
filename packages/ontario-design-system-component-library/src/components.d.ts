@@ -104,11 +104,26 @@ export namespace Components {
         "options": string | DropdownOption[];
     }
     interface OntarioHeader {
+        /**
+          * The link that contains the french page
+         */
         "languageToggleOptions": languageToggleOptions | string;
+        /**
+          * The items that will go inside the menu
+         */
         "menuItems": headerTitle[] | string;
+        /**
+          * Toggler for the menu and the search button
+         */
         "menuToggle": boolean;
         "searchToggle"?: boolean;
+        /**
+          * The title for the header
+         */
         "titleHeader": headerTitle | string;
+        /**
+          * The type of header
+         */
         "type"?: 'application' | 'ontario';
     }
     interface OntarioHintExpander {
@@ -1860,11 +1875,26 @@ declare namespace LocalJSX {
         "options"?: string | DropdownOption[];
     }
     interface OntarioHeader {
+        /**
+          * The link that contains the french page
+         */
         "languageToggleOptions"?: languageToggleOptions | string;
+        /**
+          * The items that will go inside the menu
+         */
         "menuItems"?: headerTitle[] | string;
+        /**
+          * Toggler for the menu and the search button
+         */
         "menuToggle"?: boolean;
         "searchToggle"?: boolean;
+        /**
+          * The title for the header
+         */
         "titleHeader"?: headerTitle | string;
+        /**
+          * The type of header
+         */
         "type"?: 'application' | 'ontario';
     }
     interface OntarioHintExpander {
