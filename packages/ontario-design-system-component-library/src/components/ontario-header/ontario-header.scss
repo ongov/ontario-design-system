@@ -17,7 +17,7 @@ $ontario-header-logo-width--mobile: 45px;
 }
 
 .ontario-columns {
-	padding: 0 1rem;
+	padding: 0 $ontario-spacing-4;
 }
 
 .ontario-icon-container {
@@ -165,7 +165,7 @@ $ontario-header-logo-width--mobile: 45px;
 	&:focus,
 	&:active {
 		@extend %ontario-focus;
-		box-shadow: 0 0 0 4px $ontario-colour-focus inset;
+		box-shadow: $ontario-focus-box-shadow inset;
 	}
 
 	&.ontario-link--active {
@@ -294,7 +294,7 @@ $ontario-header-logo-width--mobile: 45px;
 
 	// Remove red outline around input area on Firefox
 	&:invalid:focus {
-		box-shadow: 0 0 0 4px $ontario-colour-focus;
+		box-shadow: $ontario-focus-box-shadow;
 		-moz-box-shadow: none;
 	}
 
@@ -459,7 +459,7 @@ input[type='reset'].ontario-header__search-reset {
 	}
 
 	@media screen and (max-width: $xsmall-breakpoint) {
-		padding: calc(#{$spacing-3} / 2);
+		padding: math.div($spacing-3, 2);
 	}
 }
 
@@ -508,7 +508,7 @@ input[type='reset'].ontario-header__search-reset {
 
 	svg {
 		@media screen and (min-width: $small-breakpoint) {
-			margin-right: 4px;
+			margin-right: $ontario-spacing-1;
 		}
 	}
 }
@@ -525,11 +525,11 @@ input[type='reset'].ontario-header__search-reset {
 	span {
 		position: relative;
 		top: -3px;
-		font-size: 1rem;
+		font-size: $ontario-spacing-4;
 		margin-left: $spacing-0;
 
 		@media screen and (min-width: 39.9375em) {
-			margin-right: 4px;
+			margin-right: $ontario-spacing-1;
 		}
 
 		&:hover,
