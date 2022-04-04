@@ -10,6 +10,12 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 })
 export class OntarioRadioButtons implements RadioButtons {
 	/**
+	 * The name assigned to the radio button.
+	 * The name value is used to reference form data after a form is submitted.
+	 */
+	@Prop() name: string;
+
+	/**
 	 * The legend for the Radio Buttons.
 	 */
 	@Prop() legend: string;
@@ -26,10 +32,11 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * @example
 	 * <ontario-radio-buttons
 	 *   legend="This is a question?"
+	 * 	 name: "Radio"
 	 *   options='[
 	 * 	   {
-	 *        "name": "Radio",
 	 *        "value": "radio-option-1",
+	 * 				"elementId": "radio-1",
 	 *        "label": "Radio Option 1 Label",
 	 *        "hintExpander": {
 	 *			    "hint": "Hint expander",
@@ -75,13 +82,13 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *   hint-text="This is the hint text"
 	 *   options='[
 	 *     {
-	 *        "name": "Radio",
 	 *        "value": "radio-1-value",
+	 * 				"elementId": "radio-1",
 	 *        "label": "Radio Button Label 1"
 	 *     },
 	 *     {
-	 *        "name": "Radio",
 	 *        "value": "radio-2-value",
+	 * 				"elementId": "radio-1",
 	 *        "label": "Radio Button Label 2",
 	 *        "hintExpander": {
 	 *          "hint": "Hint expander",
@@ -146,7 +153,7 @@ export class OntarioRadioButtons implements RadioButtons {
 								<input
 									class="ontario-radios__input"
 									id={radioOption.elementId}
-									name={radioOption.name}
+									name={this.name}
 									type="radio"
 									value={radioOption.value}
 								/>
