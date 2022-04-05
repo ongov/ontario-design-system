@@ -25,7 +25,10 @@ export interface OntarioButtonProperties {
 	label?: string;
 
 	/**
-	 * Overrides the default value of the `aria-label` HTML attribute.
+	 * Provides more context as to what the button interaction is doing.
+	 *
+	 * @example
+	 * <ontario-button aria-label="Click button to open map">Open</ontario button>
 	 */
 	ariaLabel?: string;
 
@@ -67,7 +70,10 @@ export class OntarioButton implements OntarioButtonProperties {
 	@Prop({ mutable: true }) label?: string;
 
 	/**
-	 * Overrides the default value of the `aria-label` HTML attribute.
+	 * Provides more context as to what the button interaction is doing.
+	 *
+	 * @example
+	 * <ontario-button aria-label="Click button to open map">Open</ontario button>
 	 */
 	@Prop({ mutable: true }) ariaLabel?: string;
 
