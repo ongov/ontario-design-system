@@ -19,15 +19,6 @@ $ontario-logo-height: 46px;
 	align-items: center;
 }
 
-.ontario-icon--white {
-	display: flex;
-	align-items: center;
-}
-
-.ontario-application-header-container {
-	display: flex;
-}
-
 .ontario-application-header {
 	display: flex;
 	align-items: center;
@@ -75,7 +66,7 @@ $ontario-logo-height: 46px;
 .ontario-application-subheader__container,
 .ontario-application-subheader__menu-container,
 .ontario-application-subheader__menu,
-.ontario-application-main-header-container {
+.ontario-application-header-container {
 	display: flex;
 	align-items: center;
 	outline: none;
@@ -276,7 +267,16 @@ $ontario-logo-height: 46px;
 	}
 }
 
-.nav-ul-closed {
+.ontario-navigation--open {
+	visibility: visible;
+	transform: translateY(0);
+	transition: transform 0.4s ease-in-out;
+	@media screen and (min-width: $medium-breakpoint) {
+		z-index: 5;
+	}
+}
+
+.ontario-navigation--closed {
 	background: white;
 	position: absolute;
 	transform: translateY(-100%);
@@ -284,15 +284,6 @@ $ontario-logo-height: 46px;
 	width: 100%;
 	visibility: hidden;
 	z-index: 4;
-}
-
-.nav-ul-opened {
-	visibility: visible;
-	transform: translateY(0);
-	transition: transform 0.4s ease-in-out;
-	@media screen and (min-width: $medium-breakpoint) {
-		z-index: 5;
-	}
 }
 
 .ontario-application-navigation.ontario-navigation--open .ontario-application-navigation__container {
@@ -394,7 +385,7 @@ $ontario-logo-height: 46px;
 	align-items: center;
 
 	font-size: 1.125rem;
-	font-weight: 600;
+	font-weight: $ontario-font-weights-semi-bold;
 	font-family: $ontario-font-open-sans;
 	height: $standard-input-height;
 	line-height: math.div(14, 9);

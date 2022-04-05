@@ -184,8 +184,10 @@ export class OntarioHeader {
 	 */
 	@Listen('click', { capture: true, target: 'window' })
 	handleClick(event: any) {
-		let overlay = event.path[0].className;
+		const path = event.path || (event.composedPath && event.composedPath());
+		let overlay = path[0].className;
 		let isOverlay;
+
 		if (typeof overlay === 'string') isOverlay = overlay.includes('ontario-overlay');
 		if (this.el.contains(event.target)) {
 			/**
@@ -198,6 +200,7 @@ export class OntarioHeader {
 			// If click was inside header, stop
 			return;
 		}
+
 		// If the click was outside the current component, do the following
 		if (this.menuToggle) this.menuToggle = !this.menuToggle;
 	}
@@ -308,7 +311,7 @@ export class OntarioHeader {
 						</header>
 						{this.menuToggle ? (
 							<nav role="navigation" class="ontario-navigation" id="ontario-navigation" aria-hidden={!this.menuToggle}>
-								<div class="ontario-navigation ontario-navigation__container nav-ul-opened">
+								<div class="ontario-navigation ontario-navigation__container ontario-navigation--open">
 									<ul>
 										{/*
 											Maps through all the menu items, and the last item is set to lastLink.
@@ -334,7 +337,7 @@ export class OntarioHeader {
 							</nav>
 						) : (
 							<nav role="navigation" class="ontario-navigation" id="ontario-navigation" aria-hidden={!this.menuToggle}>
-								<div class="ontario-navigation ontario-navigation__container nav-ul-closed">
+								<div class="ontario-navigation ontario-navigation__container ontario-navigation--closed">
 									<ul>
 										{/*
 											When the menu is closed, all the items are set to tabindex = "-1".
@@ -360,7 +363,7 @@ export class OntarioHeader {
 			return (
 				<div>
 					<div class="ontario-application-header__container" id="ontario-application-header" ref={el => (this.header = el as HTMLInputElement)}>
-						<div class="ontario-application-main-header-container">
+						<div class="ontario-application-header-container ">
 							<section class="ontario-application-header">
 								<div class="ontario-row">
 									<div class="ontario-columns ontario-small-6 ontario-application-header__logo">
@@ -444,7 +447,7 @@ export class OntarioHeader {
 							</section>
 							{this.menuToggle ? (
 								<nav role="navigation" class="ontario-application-navigation" id="ontario-application-navigation" aria-hidden={!this.menuToggle}>
-									<div class="ontario-application-navigation ontario-application-navigation__container nav-ul-opened">
+									<div class="ontario-application-navigation ontario-application-navigation__container ontario-navigation--open">
 										<ul>
 											{/*
 												All items will be shown inside the menu on mobile,
@@ -482,7 +485,7 @@ export class OntarioHeader {
 								</nav>
 							) : (
 								<nav role="navigation" class="ontario-application-navigation" id="ontario-application-navigation" aria-hidden={!this.menuToggle}>
-									<div class="ontario-application-navigation ontario-application-navigation__container nav-ul-closed">
+									<div class="ontario-application-navigation ontario-application-navigation__container ontario-navigation--closed">
 										<ul>
 											{/*
 												This part of the code is necessary for the animation to close the menu to work properly.
