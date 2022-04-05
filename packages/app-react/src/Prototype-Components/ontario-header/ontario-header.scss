@@ -100,7 +100,7 @@ abbr {
 	z-index: 5;
 
 	@media screen and (min-width: $medium-breakpoint) {
-		z-index: 0;
+		z-index: $ontario-z-index-neutral;
 	}
 
 	& > .ontario-row {
