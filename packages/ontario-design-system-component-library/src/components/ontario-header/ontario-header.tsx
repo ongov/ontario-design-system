@@ -205,6 +205,16 @@ export class OntarioHeader {
 		if (this.menuToggle) this.menuToggle = !this.menuToggle;
 	}
 
+	private generateMenuItem(href: string, name: string, liClass?: string, aClass?: string, onBlur?: boolean, tabIndex?: boolean) {
+		return (
+			<li class={liClass}>
+				<a class={aClass} href={href} onBlur={onBlur ? this.trapMenuFocus : undefined} tabindex={tabIndex ? -1 : undefined}>
+					{name}
+				</a>
+			</li>
+		);
+	}
+
 	render() {
 		if (this.type == 'ontario') {
 			return (
@@ -315,22 +325,12 @@ export class OntarioHeader {
 									<ul>
 										{/*
 											Maps through all the menu items, and the last item is set to lastLink.
-											When the focus goes away from the lastLink, return to the menu button
+											When the focus goes away from the lastLink, return the focus to the menu button
 											(only applicable pressing the "tab" key, not actually clicking away from the menu).
 										*/}
 										{this.itemState?.map((item, index) => {
 											const lastLink = index + 1 === this.itemState.length;
-											return lastLink ? (
-												<li>
-													<a onBlur={this.trapMenuFocus} href={item.href}>
-														{item.name}
-													</a>
-												</li>
-											) : (
-												<li>
-													<a href={item.href}>{item.name}</a>
-												</li>
-											);
+											return lastLink ? this.generateMenuItem(item.href, item.name, '', '', true) : this.generateMenuItem(item.href, item.name, '', '');
 										})}
 									</ul>
 								</div>
@@ -344,13 +344,7 @@ export class OntarioHeader {
 											This is not really necessary, but it's good practice.
 											https://www.maxability.co.in/2016/06/13/tabindex-for-accessibility-good-bad-and-ugly/
 										*/}
-										{this.itemState?.map(item => (
-											<li>
-												<a tabindex="-1" href={item.href}>
-													{item.name}
-												</a>
-											</li>
-										))}
+										{this.itemState?.map(item => this.generateMenuItem(item.href, item.name, '', '', false, true))}
 									</ul>
 								</div>
 							</nav>
@@ -393,11 +387,7 @@ export class OntarioHeader {
 													{/*
 														First 5 items in the itemState are shown in the header itself.
 													*/}
-													{this.itemState?.slice(0, 5).map(item => (
-														<li>
-															<a href={item.href}>{item.name}</a>
-														</li>
-													))}
+													{this.itemState?.slice(0, 5).map(item => this.generateMenuItem(item.href, item.name, '', ''))}
 												</ul>
 											</div>
 											<div class="ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large">
@@ -405,41 +395,41 @@ export class OntarioHeader {
 													{/*
 														First 2 items in the itemState are shown in the header itself (tablet).
 													*/}
-													{this.itemState?.slice(0, 2).map(item => (
-														<li>
-															<a href={item.href}>{item.name}</a>
-														</li>
-													))}
+													{this.itemState?.slice(0, 2).map(item => this.generateMenuItem(item.href, item.name, '', ''))}
 												</ul>
 											</div>
-											{this.menuToggle ? (
-												<button
-													class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-application-navigation--open"
-													id="ontario-application-header-menu-toggler"
-													aria-controls="ontario-application-navigation"
-													aria-label="open menu"
-													data-target="megaMenu"
-													onClick={this.handleMenuToggle}
-													aria-hidden={!this.menuToggle}
-													ref={el => (this.menuButton = el as HTMLInputElement)}
-												>
-													<div class="ontario-icon-container" innerHTML={OntarioIconClose} />
-													<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
-												</button>
-											) : (
-												<button
-													class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-application-navigation--closed"
-													id="ontario-application-header-menu-toggler"
-													aria-controls="ontario-application-navigation"
-													aria-label="open menu"
-													data-target="megaMenu"
-													onClick={this.handleMenuToggle}
-													aria-hidden={!this.menuToggle}
-													ref={el => (this.menuButton = el as HTMLInputElement)}
-												>
-													<div class="ontario-icon-container" innerHTML={OntarioIconMenu} />
-													<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
-												</button>
+											{this.itemState.length > 5 && (
+												<div>
+													{this.menuToggle ? (
+														<button
+															class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-application-navigation--open"
+															id="ontario-application-header-menu-toggler"
+															aria-controls="ontario-application-navigation"
+															aria-label="open menu"
+															data-target="megaMenu"
+															onClick={this.handleMenuToggle}
+															aria-hidden={!this.menuToggle}
+															ref={el => (this.menuButton = el as HTMLInputElement)}
+														>
+															<div class="ontario-icon-container" innerHTML={OntarioIconClose} />
+															<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
+														</button>
+													) : (
+														<button
+															class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-application-navigation--closed"
+															id="ontario-application-header-menu-toggler"
+															aria-controls="ontario-application-navigation"
+															aria-label="open menu"
+															data-target="megaMenu"
+															onClick={this.handleMenuToggle}
+															aria-hidden={!this.menuToggle}
+															ref={el => (this.menuButton = el as HTMLInputElement)}
+														>
+															<div class="ontario-icon-container" innerHTML={OntarioIconMenu} />
+															<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
+														</button>
+													)}
+												</div>
 											)}
 										</div>
 									</div>
@@ -454,31 +444,13 @@ export class OntarioHeader {
 												The first 2 items will be in the header, and rest inside menu on tablet,
 												The first 5 items will be in the header, and rest inside menu on desktop.
 											*/}
-											{this.itemState?.slice(0, 2).map(item => (
-												<li class="ontario-show-for-small-only">
-													<a href={item.href}>{item.name}</a>
-												</li>
-											))}
+											{this.itemState?.slice(0, 2).map(item => this.generateMenuItem(item.href, item.name, 'ontario-show-for-small-only', ''))}
 
-											{this.itemState?.slice(2, 5).map(item => (
-												<li class="ontario-hide-for-large">
-													<a href={item.href}>{item.name}</a>
-												</li>
-											))}
+											{this.itemState?.slice(2, 5).map(item => this.generateMenuItem(item.href, item.name, 'ontario-hide-for-large', ''))}
 
 											{this.itemState?.slice(5).map((item, index) => {
 												const lastLink = index + 1 === this.itemState.length - 5;
-												return lastLink ? (
-													<li>
-														<a onBlur={this.trapMenuFocus} href={item.href}>
-															{item.name}
-														</a>
-													</li>
-												) : (
-													<li>
-														<a href={item.href}>{item.name}</a>
-													</li>
-												);
+												return lastLink ? this.generateMenuItem(item.href, item.name, '', '', true) : this.generateMenuItem(item.href, item.name, '', '');
 											})}
 										</ul>
 									</div>
@@ -493,29 +465,11 @@ export class OntarioHeader {
 												This is not really necessary, but it's good practice.
 												https://www.maxability.co.in/2016/06/13/tabindex-for-accessibility-good-bad-and-ugly/
 											*/}
-											{this.itemState?.slice(0, 2).map(item => (
-												<li class="ontario-show-for-small-only">
-													<a tabindex="-1" href={item.href}>
-														{item.name}
-													</a>
-												</li>
-											))}
+											{this.itemState?.slice(0, 2).map(item => this.generateMenuItem(item.href, item.name, 'ontario-show-for-small-only', '', false, true))}
 
-											{this.itemState?.slice(2, 5).map(item => (
-												<li class="ontario-hide-for-large">
-													<a tabindex="-1" href={item.href}>
-														{item.name}
-													</a>
-												</li>
-											))}
+											{this.itemState?.slice(2, 5).map(item => this.generateMenuItem(item.href, item.name, 'ontario-hide-for-large', '', false, true))}
 
-											{this.itemState?.slice(5).map(item => (
-												<li>
-													<a tabindex="-1" href={item.href}>
-														{item.name}
-													</a>
-												</li>
-											))}
+											{this.itemState?.slice(5).map(item => this.generateMenuItem(item.href, item.name, '', '', false, true))}
 										</ul>
 									</div>
 								</nav>
