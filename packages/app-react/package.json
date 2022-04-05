@@ -1,6 +1,6 @@
 {
 	"name": "react-app",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"private": true,
 	"dependencies": {
 		"@ontario-digital-service/ontario-design-system-component-library-react": "^0.0.1",
@@ -19,10 +19,12 @@
 		"react-syntax-highlighter": "^15.4.5",
 		"sass": "^1.49.7",
 		"typescript": "^4.5.4",
-		"web-vitals": "^2.1.2"
+		"web-vitals": "^2.1.2",
+		"@ontario-digital-service/ontario-design-system-component-library-react": "^1.0.0"
 	},
 	"scripts": {
-		"start": "react-scripts start --reset-cache",
+		"start": "npm run build && react-scripts start",
+		"prebuild": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/*\" public/assets",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
@@ -46,7 +48,25 @@
 		"last 1 firefox version",
 		"last 1 safari version"
 	],
+	"authors": [
+		{
+			"name": "Scott Morris",
+			"email": "Scott.Morris@ontario.ca"
+		},
+		{
+			"name": "Elsa Ng",
+			"email": "Elsa.Ng@ontario.ca"
+		},
+		{
+			"name": "Erin Carrieres",
+			"email": "Erin.Carrieres@ontario.ca"
+		},
+		{
+			"name": "Meaghan Carrieres",
+			"email": "Meaghan.Carrieres@ontario.ca"
+		}
+	],
 	"devDependencies": {
-		"@types/react-syntax-highlighter": "^13.5.2"
+		"copyfiles": "^2.4.1"
 	}
 }

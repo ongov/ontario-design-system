@@ -2,42 +2,32 @@
 
 The ontario-input is an interactive element often used in forms to capture data from the user.
 
-<br>
-
 ## User Interaction Behaviour
 
 User enters data into the input component.
 
-<br>
+## Usage guidance
+
+Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for current documentation guidance.
 
 ## Examples
 
-```
-<ontario-input name="ontario-text-input" id="ontario-text-input" required/>
+Example of a bare-bones input component, the `name` property is passed in for the input, which is used to reference form data after a form is submitted. The `label-caption` property is being provided, which will be displayed as the label. By default, the `label-type` will be `default`, the `input-type` will be `text`, and the input will be set to `optional`. 
+
+```html
+<ontario-input name="ontario-text-input" label-caption="Ontario input"/></ontario-input>
 ```
 
-```
-<ontario-input name="ontario-text-input" input-width="10-char-width" describedBy="ontario-input-label-example" onChange="exampleFunction()"/>
+The following input component has the `input-width` property passed in, which will define the width of the input field. The `described-by` property has been passed in because the input has hint text associated with it.
+
+```html
+<ontario-input name="ontario-text-input" label-caption="Ontario input" input-width="10-char-width" describedBy="ontario-input-label-example"/><ontario-input>
 ```
 
-<br>
-
-## Accessibility Considerations
+## Accessibility 
 
 - An `id` attribute is necessary to allow the input to be associated with a label element
 - A `name` attribute needs to be set to be submitted to the server when the form is submitted.
-
-<br>
-
-## Further documentation
-
-See the [Design System input guidance](https://designsystem.ontario.ca/components/detail/text-inputs.html) for current documentation guidelines.
-
-<br>
-
----
-
-<br>
 
 <!-- Auto Generated Below -->
 
