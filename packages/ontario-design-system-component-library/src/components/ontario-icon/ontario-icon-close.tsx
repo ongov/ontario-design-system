@@ -7,8 +7,6 @@ import close from './assets/ontario-icon-close.svg'
 	shadow: true,
 })
 export class OntarioIconClose {
-	@Prop() colour: 'black' | 'blue' | 'grey' | 'white' = 'black';
-
   @Prop() colour: "black" | "blue" | "grey" = "black";
 
   /**

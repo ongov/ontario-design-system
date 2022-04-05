@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
+import { languageTogglePaths, titleHeader } from "./components/ontario-header/titleHeader";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
     interface MyComponent {
@@ -100,6 +101,21 @@ export namespace Components {
           * @example <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required is-empty-start-option="Please select" options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
          */
         "options": string | DropdownOption[];
+    }
+    interface OntarioFooter {
+        "ifDefault": boolean;
+        "ifExpanded": boolean;
+        "ifExpandedThreeColumn": boolean;
+        "ifExpandedTwoColumn": boolean;
+        "ifTwoColumns": boolean;
+        "type": 'default' | 'partnership' | 'expanded';
+    }
+    interface OntarioHeader {
+        "languageTogglePaths": languageTogglePaths | string;
+        "menuItems": titleHeader[] | string;
+        "titleHeader": titleHeader | string;
+        "toggle": boolean;
+        "type"?: 'application' | 'ontario';
     }
     interface OntarioHintExpander {
         /**
@@ -976,6 +992,18 @@ declare global {
         prototype: HTMLOntarioDropdownListElement;
         new (): HTMLOntarioDropdownListElement;
     };
+    interface HTMLOntarioFooterElement extends Components.OntarioFooter, HTMLStencilElement {
+    }
+    var HTMLOntarioFooterElement: {
+        prototype: HTMLOntarioFooterElement;
+        new (): HTMLOntarioFooterElement;
+    };
+    interface HTMLOntarioHeaderElement extends Components.OntarioHeader, HTMLStencilElement {
+    }
+    var HTMLOntarioHeaderElement: {
+        prototype: HTMLOntarioHeaderElement;
+        new (): HTMLOntarioHeaderElement;
+    };
     interface HTMLOntarioHintExpanderElement extends Components.OntarioHintExpander, HTMLStencilElement {
     }
     var HTMLOntarioHintExpanderElement: {
@@ -1635,6 +1663,8 @@ declare global {
         "ontario-button": HTMLOntarioButtonElement;
         "ontario-checkboxes": HTMLOntarioCheckboxesElement;
         "ontario-dropdown-list": HTMLOntarioDropdownListElement;
+        "ontario-footer": HTMLOntarioFooterElement;
+        "ontario-header": HTMLOntarioHeaderElement;
         "ontario-hint-expander": HTMLOntarioHintExpanderElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
         "ontario-icon-accessibility": HTMLOntarioIconAccessibilityElement;
@@ -1841,6 +1871,22 @@ declare namespace LocalJSX {
           * @example <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required is-empty-start-option="Please select" options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
          */
         "options"?: string | DropdownOption[];
+    }
+    interface OntarioFooter {
+        "ifDefault"?: boolean;
+        "ifExpanded"?: boolean;
+        "ifExpandedThreeColumn"?: boolean;
+        "ifExpandedTwoColumn"?: boolean;
+        "ifTwoColumns"?: boolean;
+        "type"?: 'default' | 'partnership' | 'expanded';
+    }
+    interface OntarioHeader {
+        "languageTogglePaths"?: languageTogglePaths | string;
+        "menuItems"?: titleHeader[] | string;
+        "onChangeEvent"?: (event: CustomEvent<any>) => void;
+        "titleHeader"?: titleHeader | string;
+        "toggle"?: boolean;
+        "type"?: 'application' | 'ontario';
     }
     interface OntarioHintExpander {
         /**
@@ -2724,6 +2770,8 @@ declare namespace LocalJSX {
         "ontario-button": OntarioButton;
         "ontario-checkboxes": OntarioCheckboxes;
         "ontario-dropdown-list": OntarioDropdownList;
+        "ontario-footer": OntarioFooter;
+        "ontario-header": OntarioHeader;
         "ontario-hint-expander": OntarioHintExpander;
         "ontario-hint-text": OntarioHintText;
         "ontario-icon-accessibility": OntarioIconAccessibility;
@@ -2843,6 +2891,8 @@ declare module "@stencil/core" {
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             "ontario-checkboxes": LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
             "ontario-dropdown-list": LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
+            "ontario-footer": LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;
+            "ontario-header": LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
             "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
             "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
             "ontario-icon-accessibility": LocalJSX.OntarioIconAccessibility & JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;

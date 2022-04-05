@@ -7,8 +7,6 @@ import menu from './assets/ontario-icon-menu.svg'
 	shadow: true,
 })
 export class OntarioIconMenu {
-	@Prop() colour: 'black' | 'blue' | 'grey' | 'white' = 'black';
-
   @Prop() colour: "black" | "blue" | "grey" = "black";
 
   /**
