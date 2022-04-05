@@ -2,11 +2,11 @@
 import { Component, Prop, h, Watch } from '@stencil/core';
     
 @Component({
-    tag: 'ontario-icon-list',
+    tag: 'ontario-icon-transport-car',
     styleUrl: 'ontario-icon.scss',
     shadow: true,
 })
-export class OntarioIconList {
+export class OntarioIconTransportCar {
     /**
      * The icon width will autogenerate the height since the icons are in square format, thus preserving
      * the aspect ratio.
@@ -36,7 +36,7 @@ export class OntarioIconList {
     render() {
         return (
             <div class={`ontario-icon ontario-icon--${this.colour}`} style={{ 'width': `${this.iconWidth}px` }}>
-                <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="list"><path d="M4 10.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 1 0 0-3zm0-6a1.5 1.5 0 1 0 0 3 1.5 1.5 0 1 0 0-3zm0 12c-.83 0-1.5.68-1.5 1.5A1.51 1.51 0 0 0 4 19.5 1.51 1.51 0 0 0 5.5 18c0-.82-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z"/></svg>
+                <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="transport-car"><path d="M18.92 6c-.2-.6-.76-1-1.42-1h-11c-.66 0-1.2.42-1.42 1L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-6zM6.5 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 1 1 0 3zm11 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 1 1 0 3zM5 11l1.5-4.5h11L19 11H5z"/></svg>
             </div>
         );
     }

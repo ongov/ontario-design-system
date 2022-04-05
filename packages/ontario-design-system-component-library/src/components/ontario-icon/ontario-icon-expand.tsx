@@ -2,11 +2,11 @@
 import { Component, Prop, h, Watch } from '@stencil/core';
     
 @Component({
-    tag: 'ontario-icon-list',
+    tag: 'ontario-icon-expand',
     styleUrl: 'ontario-icon.scss',
     shadow: true,
 })
-export class OntarioIconList {
+export class OntarioIconExpand {
     /**
      * The icon width will autogenerate the height since the icons are in square format, thus preserving
      * the aspect ratio.
@@ -36,7 +36,7 @@ export class OntarioIconList {
     render() {
         return (
             <div class={`ontario-icon ontario-icon--${this.colour}`} style={{ 'width': `${this.iconWidth}px` }}>
-                <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="list"><path d="M4 10.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 1 0 0-3zm0-6a1.5 1.5 0 1 0 0 3 1.5 1.5 0 1 0 0-3zm0 12c-.83 0-1.5.68-1.5 1.5A1.51 1.51 0 0 0 4 19.5 1.51 1.51 0 0 0 5.5 18c0-.82-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z"/></svg>
+                <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="expand"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
             </div>
         );
     }
