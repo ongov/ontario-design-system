@@ -1,7 +1,9 @@
 @import '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme';
 
+$ontario-100vh: 100vh;
+
 .App {
-	min-height: 100vh;
+	min-height: $ontario-100vh;
 	display: flex;
 	flex-direction: column;
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -9,7 +11,7 @@
 
 .content-layout {
 	display: grid;
-	height: 100vh;
+	height: $ontario-100vh;
 	grid-template-areas:
 		'header header header header'
 		'content content content content'
