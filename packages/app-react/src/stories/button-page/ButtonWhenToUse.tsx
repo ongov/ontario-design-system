@@ -18,15 +18,9 @@ export default function ButtonWhenToUse() {
 					</p>
 
 					<ul>
-						<li>
-							<p>start an application process or a transaction</p>
-						</li>
-						<li>
-							<p>agree to make a payment</p>
-						</li>
-						<li>
-							<p>download a PDF</p>
-						</li>
+						<li>start an application process or a transaction</li>
+						<li>agree to make a payment</li>
+						<li>download a PDF</li>
 					</ul>
 					<p>
 						Don’t use a button when you’re not encouraging an action. Buttons <strong>should not be used the same way as links</strong>, which usually send the user to another page

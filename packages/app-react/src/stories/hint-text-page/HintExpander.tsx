@@ -23,19 +23,13 @@ export default function HintExpander() {
 						<br></br>Use a hint expander when:
 						<ul>
 							<li>
-								<p>
-									the hint text is long and <strong>won’t be needed by the majority of users</strong>
-								</p>
+								the hint text is long and <strong>won’t be needed by the majority of users</strong>
 							</li>
 							<li>
-								<p>
-									you want to give the user the option to see a <strong>helpful image</strong>, such as a picture of a driver’s licence showing where to find the licence number
-								</p>
+								you want to give the user the option to see a <strong>helpful image</strong>, such as a picture of a driver’s licence showing where to find the licence number
 							</li>
 							<ul>
-								<li>
-									<p>remember, you will also need text that explains the image</p>
-								</li>
+								<li>remember, you will also need text that explains the image</li>
 							</ul>
 						</ul>
 						Hint expanders are specific to hints within forms. On standard content pages, use an accordion instead.

@@ -20,19 +20,11 @@ export default function TextAreaExample() {
 				<div className="ontario-columns ontario-medium-12 ontario-large-12">
 					<h3>Examples</h3>
 					<p>Examples of where to use text areas include:</p>
-
 					<ul>
-						<p>
-							<li>comments and user feedback</li>
-						</p>
-						<p>
-							<li>"tell us about yourself" sections</li>
-						</p>
-						<p>
-							<li>requests for more detail</li>
-						</p>
+						<li>comments and user feedback</li>
+						<li>"tell us about yourself" sections</li>
+						<li>requests for more detail</li>
 					</ul>
-
 					<div className="preview-container">
 						<div className="example-container">
 							<OntarioTextarea

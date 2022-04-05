@@ -19,3 +19,7 @@ hr {
     border-left: none;
 	margin: $spacing-7 $spacing-0;
 }
+
+li {
+	@extend p;
+}
