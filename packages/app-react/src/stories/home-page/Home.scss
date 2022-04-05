@@ -3,7 +3,6 @@
 $ontario-5rem: 5rem;
 $ontario-50rem: 50rem;
 $ontario-40-vw: 40vw;
-$ontario-100-percent: 100%;
 
 p.ontario-lead-statement {
 	font-size: $spacing-4;
@@ -35,15 +34,15 @@ p.ontario-lead-statement {
 	background-repeat: no-repeat;
 	background-size: $ontario-50rem;
 	background-position-y: -8rem;
-	width: $ontario-100-percent;
+	width: $ontario-global-tokens-full-width;
 	height: 30rem;
 	content: '';
-	z-index: -1;
+	z-index: $ontario-z-index-behind-high;
 }
 
 .ontario-banner-font {
 	color: $ontario-colour-white;
-	width: $ontario-100-percent;
+	width: $ontario-global-tokens-full-width;
 	@media screen and (min-width: $small-breakpoint) {
 		width: 70%;
 	}
