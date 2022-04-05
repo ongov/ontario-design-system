@@ -8,7 +8,6 @@ describe('ontario-footer', () => {
       html: `<ontario-footer></ontario-footer>`,
     });
     expect(page.root).toEqualHtml(`
-      <slot></slot>
        <ontario-footer>
          <mock:shadow-root>
            <footer class="ontario-footer ontario-footer--default" style="--imagePath: url(/assets/footer-default-supergraphic-logo.svg);">
