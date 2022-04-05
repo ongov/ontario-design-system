@@ -79,7 +79,7 @@
 	padding: $spacing-0;
 	outline: none;
 
-	height: calc(#{$spacing-8} + #{$spacing-2});
+	height: $spacing-8 + $spacing-2;
 	width: calc(#{$spacing-8} + #{$spacing-2});
 
 	display: flex;
