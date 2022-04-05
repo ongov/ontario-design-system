@@ -214,6 +214,37 @@ export class OntarioHeader {
 			</li>
 		);
 	}
+	private showMenuButton() {
+		return this.menuToggle ? (
+			<button
+				class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-application-navigation--open"
+				id="ontario-application-header-menu-toggler"
+				aria-controls="ontario-application-navigation"
+				aria-label="open menu"
+				data-target="megaMenu"
+				onClick={this.handleMenuToggle}
+				aria-hidden={!this.menuToggle}
+				ref={el => (this.menuButton = el as HTMLInputElement)}
+			>
+				<div class="ontario-icon-container" innerHTML={OntarioIconClose} />
+				<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
+			</button>
+		) : (
+			<button
+				class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-application-navigation--closed"
+				id="ontario-application-header-menu-toggler"
+				aria-controls="ontario-application-navigation"
+				aria-label="open menu"
+				data-target="megaMenu"
+				onClick={this.handleMenuToggle}
+				aria-hidden={!this.menuToggle}
+				ref={el => (this.menuButton = el as HTMLInputElement)}
+			>
+				<div class="ontario-icon-container" innerHTML={OntarioIconMenu} />
+				<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
+			</button>
+		);
+	}
 
 	render() {
 		if (this.type == 'ontario') {
@@ -276,35 +307,7 @@ export class OntarioHeader {
 											<span class="ontario-show-for-medium ontario-show">Search</span>
 										</button>
 									</div>
-									{this.menuToggle ? (
-										<button
-											class="ontario-header__menu-toggler  ontario-header-button--with-outline ontario-header-button ontario-navigation--open"
-											id="ontario-header-menu-toggler"
-											aria-controls="ontario-navigation"
-											aria-label="open menu"
-											data-target="megaMenu"
-											aria-hidden={!this.menuToggle}
-											onClick={this.handleMenuToggle}
-											ref={el => (this.menuButton = el as HTMLInputElement)}
-										>
-											<div class="ontario-icon-container" innerHTML={OntarioIconClose} />
-											<span class="ontario-header-menu-span ontario-hide-for-small-only">Menu</span>
-										</button>
-									) : (
-										<button
-											class="ontario-header__menu-toggler  ontario-header-button--with-outline ontario-header-button ontario-navigation--closed"
-											id="ontario-header-menu-toggler"
-											aria-controls="ontario-navigation"
-											aria-label="close menu"
-											data-target="megaMenu"
-											aria-hidden={!this.menuToggle}
-											onClick={this.handleMenuToggle}
-											ref={el => (this.menuButton = el as HTMLInputElement)}
-										>
-											<div class="ontario-icon-container" innerHTML={OntarioIconMenu} />
-											<span class="ontario-header-menu-span ontario-hide-for-small-only">Menu</span>
-										</button>
-									)}
+									{this.showMenuButton()}
 								</div>
 								<div class="ontario-header__search-close-container ontario-columns ontario-small-2 ontario-medium-3">
 									<button
@@ -398,39 +401,9 @@ export class OntarioHeader {
 													{this.itemState?.slice(0, 2).map(item => this.generateMenuItem(item.href, item.name, '', ''))}
 												</ul>
 											</div>
-											{this.itemState.length > 5 && (
-												<div>
-													{this.menuToggle ? (
-														<button
-															class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-application-navigation--open"
-															id="ontario-application-header-menu-toggler"
-															aria-controls="ontario-application-navigation"
-															aria-label="open menu"
-															data-target="megaMenu"
-															onClick={this.handleMenuToggle}
-															aria-hidden={!this.menuToggle}
-															ref={el => (this.menuButton = el as HTMLInputElement)}
-														>
-															<div class="ontario-icon-container" innerHTML={OntarioIconClose} />
-															<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
-														</button>
-													) : (
-														<button
-															class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-application-navigation--closed"
-															id="ontario-application-header-menu-toggler"
-															aria-controls="ontario-application-navigation"
-															aria-label="open menu"
-															data-target="megaMenu"
-															onClick={this.handleMenuToggle}
-															aria-hidden={!this.menuToggle}
-															ref={el => (this.menuButton = el as HTMLInputElement)}
-														>
-															<div class="ontario-icon-container" innerHTML={OntarioIconMenu} />
-															<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
-														</button>
-													)}
-												</div>
-											)}
+											{this.itemState.length > 5 && <div>{this.showMenuButton()}</div>}
+											{this.itemState.length > 2 && <div class="ontario-show-for-medium-only">{this.showMenuButton()}</div>}
+											{this.itemState.length > 0 && <div class="ontario-show-for-small-only">{this.showMenuButton()}</div>}
 										</div>
 									</div>
 								</div>
