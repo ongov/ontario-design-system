@@ -26,7 +26,8 @@
 		"clean": "rm -rf dist loader www",
 		"clean:full": "rm -rf node_modules && npm run clean",
 		"format": "prettier --write .",
-		"generate:icons": "node src/components/ontario-icon/scripts/generate-icons.js"
+		"generate:icons": "node src/components/ontario-icon/scripts/generate-icons.js",
+		"clean:icons": "rm -rf src/components/ontario-icon/ontario-icon-*.tsx"
 	},
 	"dependencies": {
 		"@stencil/core": "2.13.0",
