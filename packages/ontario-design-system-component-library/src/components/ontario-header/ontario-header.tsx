@@ -186,9 +186,7 @@ export class OntarioHeader {
 	handleClick(event: any) {
 		const path = event.path || (event.composedPath && event.composedPath());
 		let overlay = path[0].className;
-		let isOverlay;
-
-		if (typeof overlay === 'string') isOverlay = overlay.includes('ontario-overlay');
+		const isOverlay = (typeof overlay === 'string') ? overlay.includes('ontario-overlay') : false;
 		if (this.el.contains(event.target)) {
 			/**
 			 * If the click was on the overlay, close the menu.
