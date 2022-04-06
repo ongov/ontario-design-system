@@ -25,14 +25,6 @@ describe('ontario-hint-text', () => {
         element = await page.find('ontario-hint-text >>> p');
       });
 
-      it('renders changes to the aria-hint property', async () => {
-        component.setProperty('hint', 'This is a test hint');
-        await page.waitForChanges();
-        expect(element).toEqualAttributes({
-          'aria-hint': 'This is a test hint'
-        });
-      });
-
       it('renders changes to the id property', async () => {
         component.setProperty('elementId', 'testId');
         await page.waitForChanges();

@@ -52,7 +52,7 @@ It can be confusing and frustrating for users to expect a button to trigger an a
 
 | Property    | Attribute    | Description                                                                                               | Type                                                  | Default       |
 | ----------- | ------------ | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ------------- |
-| `ariaLabel` | `aria-label` | Overrides the default value of the `aria-label` HTML attribute.                                           | `string \| undefined`                                 | `undefined`   |
+| `ariaLabel` | `aria-label` | Provides more context as to what the button interaction is doing.                                         | `string \| undefined`                                 | `undefined`   |
 | `buttonId`  | `button-id`  | The unique identifier of the button                                                                       | `string \| undefined`                                 | `undefined`   |
 | `htmlType`  | `html-type`  | The native HTML button type the button should use.                                                        | `"button" \| "reset" \| "submit" \| undefined`        | `'button'`    |
 | `label`     | `label`      | Text to be displayed within the button. This will override the text provided through the Element Content. | `string \| undefined`                                 | `undefined`   |
