@@ -185,10 +185,8 @@ export class OntarioHeader {
 	@Listen('click', { capture: true, target: 'window' })
 	handleClick(event: any) {
 		const path = event.path || (event.composedPath && event.composedPath());
-		let overlay = path[0].className;
-		let isOverlay;
-
-		if (typeof overlay === 'string') isOverlay = overlay.includes('ontario-overlay');
+		const overlay = path[0].className;
+		const isOverlay = (typeof overlay === 'string') ? overlay.includes('ontario-overlay') : false;
 		if (this.el.contains(event.target)) {
 			/**
 			 * If the click was on the overlay, close the menu.
@@ -364,7 +362,7 @@ export class OntarioHeader {
 			return (
 				<div>
 					<div class="ontario-application-header__container" id="ontario-application-header" ref={el => (this.header = el as HTMLInputElement)}>
-						<div class="ontario-application-header-container ">
+						<div class="ontario-application-header-container">
 							<section class="ontario-application-header">
 								<div class="ontario-row">
 									<div class="ontario-columns ontario-small-6 ontario-application-header__logo">
