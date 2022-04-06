@@ -403,7 +403,7 @@ export class OntarioHeader {
 													{this.itemState?.slice(0, 2).map(item => this.generateMenuItem(item.href, item.name, '', ''))}
 												</ul>
 											</div>
-											{this.itemState !== undefined && this.itemState.length > 5 && <div>{this.showMenuButton()}</div>}
+											{this.itemState !== undefined && this.itemState.length > 5 && <div class="ontario-show-for-large-only">{this.showMenuButton()}</div>}
 											{this.itemState !== undefined && this.itemState.length > 2 && <div class="ontario-show-for-medium-only">{this.showMenuButton()}</div>}
 											{this.itemState !== undefined && this.itemState.length > 0 && <div class="ontario-show-for-small-only">{this.showMenuButton()}</div>}
 										</div>
