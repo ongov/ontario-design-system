@@ -80,7 +80,7 @@
 	outline: none;
 
 	height: $spacing-8 + $spacing-2;
-	width: calc(#{$spacing-8} + #{$spacing-2});
+	width: $spacing-8 + $spacing-2;
 
 	display: flex;
 	justify-content: center;
@@ -173,16 +173,16 @@
 
 	&:before {
 		background-size: 112.5rem;
-		background-position: calc(50vw - 73.5rem) -64rem;
+		background-position: (50vw - 73.5rem) -64rem;
 
 		@media screen and (min-width: $small-breakpoint) {
 			background-size: 180rem;
-			background-position: calc(50vw - 120rem) -106rem;
+			background-position: (50vw - 120rem) -106rem;
 		}
 
 		@media screen and (min-width: $medium-breakpoint) {
 			background-size: 275rem;
-			background-position: calc(50vw - 187rem) -160rem;
+			background-position: (50vw - 187rem) -160rem;
 		}
 	}
 }
