@@ -205,6 +205,19 @@ export class OntarioHeader {
 		if (this.menuToggle) this.menuToggle = !this.menuToggle;
 	}
 
+	/**
+	 * This function generates the menu items in a <li>, accordingly, to the given parameters.
+	 *
+	 * href and name are necessary, but rest are not.
+	 *
+	 * href: the href of the menu item
+	 * name: the name of the menu item
+	 * liClass: if there is a class that is related to the <li> portion of the menu item, put it here
+	 * liClass: if there is a class that is related to the <a> portion of the menu item, put it here
+	 * onBlur: when set to true, it will call the function trapMenuFocus(), otherwise nothing is done (used in lastLink)
+	 * tabIndex: when set to true, it will set the tabindex to be -1, meaning it can't be in focus (used in items when the menu is closed)
+	 */
+
 	private generateMenuItem(href: string, name: string, liClass?: string, aClass?: string, onBlur?: boolean, tabIndex?: boolean) {
 		return (
 			<li class={liClass}>
@@ -214,33 +227,24 @@ export class OntarioHeader {
 			</li>
 		);
 	}
+
 	private showMenuButton() {
-		return this.menuToggle ? (
+		return (
 			<button
-				class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-application-navigation--open"
+				class={
+					this.menuToggle
+						? 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-application-navigation--open'
+						: 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-application-navigation--closed'
+				}
 				id="ontario-application-header-menu-toggler"
 				aria-controls="ontario-application-navigation"
-				aria-label="open menu"
+				aria-label={this.menuToggle ? 'open menu' : 'close menu'}
 				data-target="megaMenu"
 				onClick={this.handleMenuToggle}
 				aria-hidden={!this.menuToggle}
 				ref={el => (this.menuButton = el as HTMLInputElement)}
 			>
-				<div class="ontario-icon-container" innerHTML={OntarioIconClose} />
-				<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
-			</button>
-		) : (
-			<button
-				class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-application-navigation--closed"
-				id="ontario-application-header-menu-toggler"
-				aria-controls="ontario-application-navigation"
-				aria-label="open menu"
-				data-target="megaMenu"
-				onClick={this.handleMenuToggle}
-				aria-hidden={!this.menuToggle}
-				ref={el => (this.menuButton = el as HTMLInputElement)}
-			>
-				<div class="ontario-icon-container" innerHTML={OntarioIconMenu} />
+				<div class="ontario-icon-container" innerHTML={this.menuToggle ? OntarioIconClose : OntarioIconMenu} />
 				<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
 			</button>
 		);
