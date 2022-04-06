@@ -8,11 +8,11 @@ describe('ontario-header', () => {
 			html: `<ontario-header ></ontario-header>`,
 		});
 		expect(page.root).toEqualHtml(`
-      <ontario-header>
-        <mock:shadow-root>
+     <ontario-header>
+       <mock:shadow-root>
          <div>
            <div class="ontario-application-header__container" id="ontario-application-header">
-             <div class="ontario-application-main-header-container">
+             <div class="ontario-application-header-container">
                <section class="ontario-application-header">
                  <div class="ontario-row">
                    <div class="ontario-application-header__logo ontario-columns ontario-small-6">
@@ -45,24 +45,18 @@ describe('ontario-header', () => {
                        <div class="ontario-hide-for-large ontario-hide-for-small ontario-show-for-medium">
                          <ul class="ontario-application-subheader__menu"></ul>
                        </div>
-                       <button aria-controls="ontario-application-navigation" aria-hidden="" aria-label="open menu" class="ontario-application-navigation--closed ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" data-target="megaMenu" id="ontario-application-header-menu-toggler">
-                         <div class="ontario-icon-container"></div>
-                         <span class="ontario-application-header-menu-span ontario-hide-for-small-only">
-                           Menu
-                         </span>
-                       </button>
                      </div>
                    </div>
                  </div>
                </section>
                <nav aria-hidden="" class="ontario-application-navigation" id="ontario-application-navigation" role="navigation">
-                 <div class="nav-ul-closed ontario-application-navigation ontario-application-navigation__container">
+                 <div class="ontario-application-navigation ontario-application-navigation__container ontario-navigation--closed">
                    <ul></ul>
                  </div>
                </nav>
              </div>
            </div>
-        </div>
+         </div>
        </mock:shadow-root>
       </ontario-header>
     `);
