@@ -17,7 +17,7 @@ export class OntarioIconAttach {
      * Set the icon's colour.
      * Note that some icon's colour cannot be changed.
      */
-    @Prop() colour: "black" | "blue" | "grey" = "black";
+    @Prop() colour: "black" | "blue" | "grey" | "white" = "black";
     
     @Watch('iconWidth')
     validateWidth() {
