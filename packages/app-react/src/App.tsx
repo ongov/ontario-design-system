@@ -86,12 +86,12 @@ const App = () => {
 						expandedTwoColumnOptions = {{
 							firstColumn: {
 								title: "This is my First Title",
-								content:"this is my first content" 
+								content:"this is my first content: content content content content" 
 							},
 							secondColumn: {
 								title: "This is my Second Title",
-								content:"this is my second content",
-								contactButtonText: "BUTTON"
+								content:"this is my second content: content content content content",
+								contactButtonText: "im a button"
 							}
 						}} 
 						expandedThreeColumnOptions = {{
@@ -139,9 +139,6 @@ const App = () => {
 								},
 								instagram: {
 									link: "3"
-								},
-								youtube: {
-									link: "4"
 								}
 							}
 						}}/>

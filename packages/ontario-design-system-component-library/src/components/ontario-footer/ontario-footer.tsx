@@ -135,7 +135,7 @@ export class OntarioFooter {
 								class={
 									'ontario-columns ontario-small-12 ' +
 									(this.type == "expanded two column" ? 'ontario-medium-6' : '') +
-									(this.type == "expanded three column" ? 'ontario-expanded-footer__one-third-block ontario-medium-12 ontagit io-large-4' : '')
+									(this.type == "expanded three column" ? 'ontario-expanded-footer__one-third-block ontario-medium-12 ontario-large-4' : '')
 								}
 							>
 								{this.type == "expanded two column" && (
