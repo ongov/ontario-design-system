@@ -1,11 +1,9 @@
-import { Component, Prop, State, Watch, h, Listen, Element } from '@stencil/core';
+import { Component, Prop, State, Watch, h, Listen, Element, getAssetPath} from '@stencil/core';
 import OntarioIconCloseSearch from '../ontario-icon/assets/ontario-icon-close.svg';
 import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
 import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
 import OntarioIconSearchWhite from '../ontario-icon/assets/ontario-icon-search-white.svg';
-import OntarioLogo from './ontario-logo--desktop.svg';
-import OntarioLogoMobile from './ontario-logo--mobile.svg';
 import { headerTitle } from './headerTitle.interface';
 import { languageToggleOptions } from './languageToggleOptions.interface';
 /**
@@ -18,6 +16,7 @@ import { languageToggleOptions } from './languageToggleOptions.interface';
 		application: 'ontario-application-header.scss',
 	},
 	shadow: true,
+	assetsDirs: ['./assets'],
 })
 export class OntarioHeader {
 	/**
@@ -186,7 +185,7 @@ export class OntarioHeader {
 	handleClick(event: any) {
 		const path = event.path || (event.composedPath && event.composedPath());
 		const overlay = path[0].className;
-		const isOverlay = (typeof overlay === 'string') ? overlay.includes('ontario-overlay') : false;
+		const isOverlay = typeof overlay === 'string' ? overlay.includes('ontario-overlay') : false;
 		if (this.el.contains(event.target)) {
 			/**
 			 * If the click was on the overlay, close the menu.
@@ -252,15 +251,19 @@ export class OntarioHeader {
 		if (this.type == 'ontario') {
 			return (
 				<div>
-					<div class="ontario-header__container" ref={el => (this.header = el as HTMLInputElement)}>
+					<div ref={el => (this.header = el as HTMLInputElement)}>
 						<header class={this.searchToggle ? 'ontario-header ontario-header--search-open' : 'ontario-header'} id="ontario-header">
 							<div class="ontario-row">
 								<div class="ontario-hide-for-small-only ontario-header__logo-container ontario-columns ontario-small-2 ontario-medium-4 ontario-large-3 ">
-									<a href="https://www.ontario.ca/page/government-ontario" innerHTML={OntarioLogo} />
+									<a href="https://www.ontario.ca/page/government-ontario">
+										<img class="ontario-show-for-medium" src={getAssetPath('./assets/ontario-logo--desktop.svg')} alt="Government of Ontario" />
+									</a>
 								</div>
 
 								<div class="ontario-show-for-small-only ontario-header__logo-container ontario-columns ontario-small-2 ontario-medium-4 ontario-large-3 ">
-									<a href="https://www.ontario.ca/page/government-ontario" innerHTML={OntarioLogoMobile} />
+									<a href="https://www.ontario.ca/page/government-ontario">
+										<img class="ontario-show-for-small-only" src={getAssetPath('./assets/ontario-logo--mobile.svg')} alt="Government of Ontario" />
+									</a>
 								</div>
 
 								<form
@@ -366,7 +369,9 @@ export class OntarioHeader {
 							<section class="ontario-application-header">
 								<div class="ontario-row">
 									<div class="ontario-columns ontario-small-6 ontario-application-header__logo">
-										<a href="https://www.ontario.ca/page/government-ontario" innerHTML={OntarioLogo} />
+										<a href="https://www.ontario.ca/page/government-ontario">
+											<img src={getAssetPath('./assets/ontario-logo-application-header.svg')} alt="Government of Ontario" />
+										</a>
 									</div>
 									<div class="ontario-columns ontario-small-6 ontario-application-header__lang-toggle">
 										<a href={this.languageState?.frenchLink} class="ontario-header-button ontario-header-button--without-outline">

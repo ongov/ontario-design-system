@@ -209,7 +209,7 @@ $ontario-header-logo-width--mobile: 45px;
 
 .ontario-header__logo-container {
 	a {
-		display: inline-block;
+		display: flex;
 		height: 100%;
 		outline: none;
 		&:focus {
