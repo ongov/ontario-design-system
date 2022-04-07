@@ -16,7 +16,9 @@ describe('ontario-header', () => {
                <section class="ontario-application-header">
                  <div class="ontario-row">
                    <div class="ontario-application-header__logo ontario-columns ontario-small-6">
-                     <a href="https://www.ontario.ca/page/government-ontario"></a>
+                     <a href="https://www.ontario.ca/page/government-ontario">
+                       <img alt="Government of Ontario" src="/assets/ontario-logo-application-header.svg">
+                     </a>
                    </div>
                    <div class="ontario-application-header__lang-toggle ontario-columns ontario-small-6">
                      <a class="ontario-header-button ontario-header-button--without-outline">
