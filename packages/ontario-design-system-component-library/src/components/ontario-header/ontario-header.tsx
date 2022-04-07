@@ -1,4 +1,4 @@
-import { Component, Prop, State, Watch, h, Listen, Element, getAssetPath} from '@stencil/core';
+import { Component, Prop, State, Watch, h, Listen, Element, getAssetPath } from '@stencil/core';
 import OntarioIconCloseSearch from '../ontario-icon/assets/ontario-icon-close.svg';
 import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
@@ -176,6 +176,7 @@ export class OntarioHeader {
 	 */
 	trapMenuFocus = () => {
 		this.menuButton.focus();
+		console.log('imhere');
 	};
 
 	/**
@@ -245,6 +246,28 @@ export class OntarioHeader {
 				<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
 			</button>
 		);
+	}
+
+	private renderMenuButton(itemLength: number) {
+		if (itemLength > 5) {
+			return <div>{this.showMenuButton()}</div>;
+		} else if (itemLength > 2) {
+			return <div class="ontario-hide-for-large">{this.showMenuButton()}</div>;
+		} else return <div class="ontario-show-for-small-only">{this.showMenuButton()}</div>;
+	}
+
+	private renderMenu(itemLength: number) {
+		if (itemLength > 5) {
+			return '';
+		} else if (itemLength > 2) {
+			return 'ontario-hide-for-large';
+		} else return 'ontario-show-for-small-only';
+	}
+
+	private renderOverlay(itemLength: number) {
+		if (itemLength <= 2) {
+			return 'ontario-show-for-small-only ontario-overlay';
+		} else return 'ontario-hide-for-large ontario-overlay';
 	}
 
 	render() {
@@ -408,9 +431,7 @@ export class OntarioHeader {
 													{this.itemState?.slice(0, 2).map(item => this.generateMenuItem(item.href, item.name, '', ''))}
 												</ul>
 											</div>
-											{this.itemState !== undefined && this.itemState.length > 5 && <div class="ontario-show-for-large">{this.showMenuButton()}</div>}
-											{this.itemState !== undefined && this.itemState.length > 2 && <div class="ontario-show-for-medium-only">{this.showMenuButton()}</div>}
-											{this.itemState !== undefined && this.itemState.length > 0 && <div class="ontario-show-for-small-only">{this.showMenuButton()}</div>}
+											{this.itemState !== undefined && this.renderMenuButton(this.itemState.length)}
 										</div>
 									</div>
 								</div>
@@ -418,18 +439,31 @@ export class OntarioHeader {
 							{this.menuToggle ? (
 								<nav role="navigation" class="ontario-application-navigation" id="ontario-application-navigation" aria-hidden={!this.menuToggle}>
 									<div class="ontario-application-navigation ontario-application-navigation__container ontario-navigation--open">
-										<ul>
+										<ul class={this.renderMenu(this.itemState.length)}>
 											{/*
 												All items will be shown inside the menu on mobile,
 												The first 2 items will be in the header, and rest inside menu on tablet,
 												The first 5 items will be in the header, and rest inside menu on desktop.
 											*/}
-											{this.itemState?.slice(0, 2).map(item => this.generateMenuItem(item.href, item.name, 'ontario-show-for-small-only', ''))}
+											{this.itemState?.slice(0, 2).map((item, index) => {
+												const lastLink = index + 1 === this.itemState.length - 0;
+												console.log(lastLink);
+												return lastLink
+													? this.generateMenuItem(item.href, item.name, 'ontario-show-for-small-only', '', true)
+													: this.generateMenuItem(item.href, item.name, 'ontario-show-for-small-only', '');
+											})}
 
-											{this.itemState?.slice(2, 5).map(item => this.generateMenuItem(item.href, item.name, 'ontario-hide-for-large', ''))}
+											{this.itemState?.slice(2, 5).map((item, index) => {
+												const lastLink = index + 1 === this.itemState.length - 2;
+												console.log(lastLink);
+												return lastLink
+													? this.generateMenuItem(item.href, item.name, 'ontario-hide-for-large', '', true)
+													: this.generateMenuItem(item.href, item.name, 'ontario-hide-for-large', '');
+											})}
 
 											{this.itemState?.slice(5).map((item, index) => {
 												const lastLink = index + 1 === this.itemState.length - 5;
+												console.log(lastLink);
 												return lastLink ? this.generateMenuItem(item.href, item.name, '', '', true) : this.generateMenuItem(item.href, item.name, '', '');
 											})}
 										</ul>
@@ -456,7 +490,7 @@ export class OntarioHeader {
 							)}
 						</div>
 					</div>
-					{this.menuToggle && <div class="ontario-hide-for-large ontario-overlay" />}
+					{this.menuToggle && <div class={this.renderOverlay(this.itemState.length)} />}
 				</div>
 			);
 		}
