@@ -248,6 +248,11 @@ export class OntarioHeader {
 		);
 	}
 
+	/**
+	 * The renderMenuButton is needed because of how the ref can only be used once in a component.
+	 * Without this function, the trapMenuFocus() would not work in all of the 3 different configs (desktop, tablet, and mobile).
+	 */
+
 	private renderMenuButton(itemLength: number) {
 		if (itemLength > 5) {
 			return <div>{this.showMenuButton()}</div>;
@@ -256,13 +261,23 @@ export class OntarioHeader {
 		} else return <div class="ontario-show-for-small-only">{this.showMenuButton()}</div>;
 	}
 
-	private renderMenu(itemLength: number) {
+	/**
+	 * The renderMenuUl function covers the edge case of when there are less than 4 items,
+	 * and the screen size changes when the menu is opened.
+	 */
+
+	private renderMenuUl(itemLength: number) {
 		if (itemLength > 5) {
 			return '';
 		} else if (itemLength > 2) {
 			return 'ontario-hide-for-large';
 		} else return 'ontario-show-for-small-only';
 	}
+
+	/**
+	 * The renderOverlay function covers the edge case of when there are 2 or less items,
+	 * and the screen size changes when the menu is opened.
+	 */
 
 	private renderOverlay(itemLength: number) {
 		if (itemLength <= 2) {
@@ -439,7 +454,7 @@ export class OntarioHeader {
 							{this.menuToggle ? (
 								<nav role="navigation" class="ontario-application-navigation" id="ontario-application-navigation" aria-hidden={!this.menuToggle}>
 									<div class="ontario-application-navigation ontario-application-navigation__container ontario-navigation--open">
-										<ul class={this.renderMenu(this.itemState.length)}>
+										<ul class={this.renderMenuUl(this.itemState.length)}>
 											{/*
 												All items will be shown inside the menu on mobile,
 												The first 2 items will be in the header, and rest inside menu on tablet,
