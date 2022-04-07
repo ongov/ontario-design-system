@@ -7,9 +7,9 @@
  * This approach follows the DRY (don't repeat yourself) concept and reduces the maintenance effort for the icon components.
  */
 
-const fs = require('fs');
+const {readdir, readFile, writeFile} = require('fs/promises');
 const path = require('path');
-const { parseSync, stringify } = require('svgson');
+const { parse, stringify } = require('svgson');
 
 const iconDirectory = './node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/icons';
 const iconsWithoutColour = [
@@ -101,55 +101,48 @@ export class ${toPascalCase(iconName)} {
 /**
  * Create an icon component for each icon presented in the `iconDirectory`
  */
-const createIconComponents = () => { 
-    fs.readdir(iconDirectory, (err, iconFiles) => {
-        if (err) throw err;
+const createIconComponents = async () => {
+    const iconFiles = await readdir(iconDirectory);
+    
+    for (const iconFile of iconFiles) {
 
-        // traverse through each filename
-        iconFiles?.forEach(iconFilename => {
+        // proceed with icon generation process if the file extension is `.svg` and the filename starts with the string `ontario-icon-`.
+        if (iconFile.includes('.svg') && iconFile.startsWith('ontario-icon-')) {
 
-            // proceed with icon generation process if the file extension is `.svg` and the filename starts with the string `ontario-icon-`.
-            if (iconFilename.includes('.svg') && iconFilename.startsWith('ontario-icon-')) {
+            // Strip the path data and file extension from `iconFilename` and store the resulting value in `iconName`
+            const iconName = path.basename(iconFile, '.svg');
 
-                // Strip the path data and file extension from `iconFilename` and store the resulting value in `iconName`
-                const iconName = path.basename(iconFilename, '.svg');
+            // the array.slice() function is used to remove the `./` from the `iconDirectory` variable
+            const iconFilePath = path.join(__dirname, `../../../../${iconDirectory.slice(2)}/${iconFile}`);
+            const iconFileContent = await readFile(iconFilePath, {encoding: 'utf-8'});
+            let iconObject = await parse(iconFileContent, {
+                transformNode: node => {
+                    // transform `node` object to rename `viewbox` property to `viewBox` for HTML consumption.
+                    if (node.attributes["viewbox"] && !node.attributes["viewBox"]) {
+                        Object.defineProperty(node.attributes, 'viewBox', Object.getOwnPropertyDescriptor(node.attributes, 'viewbox'));
+                        delete node.attributes['viewbox'];
+                    };
 
-                // the array.slice() function is used to remove the `./` from the `iconDirectory` variable
-                const iconPath = path.join(__dirname, `../../../../${iconDirectory.slice(2)}/${iconFilename}`);
+                    // transform `node` object to add a `hasColour` property to the main object.
+                    node.hasColour = !iconsWithoutColour.includes(iconName);
 
-                // read the SVG file
-                fs.readFile(iconPath, { encoding: 'utf-8' }, (err, svgContent) => {
-                    if (err) throw err;
+                    // transform `node` object to add an `id` attribute to the parent `<svg>`.
+                    node.attributes.id = getId(iconName);
+                    return node;
+                },
+            });
 
-                    // parse `svgContent` into JSON object.
-                    let svgObject = parseSync(svgContent, {
-                        transformNode: node => {
-                            // transform `node` object to rename `viewbox` property to `viewBox` for HTML consumption.
-                            if (node.attributes["viewbox"] && !node.attributes["viewBox"]) {
-                                Object.defineProperty(node.attributes, 'viewBox', Object.getOwnPropertyDescriptor(node.attributes, 'viewbox'));
-                                delete node.attributes['viewbox'];
-                            };
+            // generate the template
+            let iconComponentTemplate = getIconComponentTemplate(iconObject, iconName);
 
-                            // transform `node` object to add a `hasColour` property to the main object.
-                            node.hasColour = !iconsWithoutColour.includes(iconName);
-
-                            // transform `node` object to add an `id` attribute to the parent `<svg>`.
-                            node.attributes.id = getId(iconName);
-                            return node;
-                        },
-                    });
-
-                    // generate the template
-                    let iconComponentTemplate = getIconComponentTemplate(svgObject, iconName);
-
-                    // create `ontario-icon-*.tsx` file
-                    fs.writeFile(`./src/components/ontario-icon/${iconName}.tsx`, iconComponentTemplate, (err) => {
-                        if (err) throw err;
-                    });
-                });
+            // create `ontario-icon-*.tsx` file
+            try {
+                await writeFile(`./src/components/ontario-icon/${iconName}.tsx`, iconComponentTemplate)
+            } catch (error) {
+                throw error;
             }
-        });
-    });
+        }
+    }
 };
 
 createIconComponents();
