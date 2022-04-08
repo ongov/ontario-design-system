@@ -116,8 +116,8 @@ export class OntarioHeader {
 	/**
 	 * Toggler for the menu and the search button
 	 */
-	@Prop({ mutable: true }) menuToggle: boolean = false;
-	@Prop({ mutable: true }) searchToggle?: boolean = false;
+	@State() menuToggle: boolean = false;
+	@State() searchToggle?: boolean = false;
 
 	/**
 	 * Assigning values to HTMLInputElement to use them as ref
@@ -285,9 +285,13 @@ export class OntarioHeader {
 		} else return 'ontario-hide-for-large ontario-overlay';
 	}
 
+	/**
+	 * The onEscapePressed function clears the searchbar form when Escape is pressed
+	 */
+	
 	private onEscapePressed(event: any) {
 		if (event.key === 'Escape') {
-			event.path[0].value = "";
+			event.path[0].value = '';
 		}
 	}
 

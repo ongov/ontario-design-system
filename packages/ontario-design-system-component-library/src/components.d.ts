@@ -121,11 +121,6 @@ export namespace Components {
          */
         "menuItems": headerTitle[] | string;
         /**
-          * Toggler for the menu and the search button
-         */
-        "menuToggle": boolean;
-        "searchToggle"?: boolean;
-        /**
           * The title for the header
          */
         "titleHeader": headerTitle | string;
@@ -1906,11 +1901,6 @@ declare namespace LocalJSX {
           * The items that will go inside the menu
          */
         "menuItems"?: headerTitle[] | string;
-        /**
-          * Toggler for the menu and the search button
-         */
-        "menuToggle"?: boolean;
-        "searchToggle"?: boolean;
         /**
           * The title for the header
          */
