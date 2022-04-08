@@ -1,4 +1,4 @@
-import { Component, Prop, Element, h } from '@stencil/core';
+import { Component, Prop, Element, h, Watch } from '@stencil/core';
 
 /**
  * Ontario Button component properties
@@ -78,13 +78,23 @@ export class OntarioButton implements OntarioButtonProperties {
 	@Prop({ mutable: true }) ariaLabel?: string;
 
 	/**
-	 * The unique identifier of the button
+	 * The unique identifier of the button.
 	 */
 	@Prop({ mutable: true }) buttonId?: string;
 
 	/**
-	 *
-	 * @returns the classes of the button based of the button's `type`
+	 * Throw error if user doesn't input a value for the label or element content.
+	 */
+	@Watch('label')
+	validateCaption(newValue: string) {
+		const isLabelBlank = typeof newValue !== 'string' || newValue === '';
+		const isElementContentBlank = typeof this.host.textContent !== 'string' || this.host.textContent === '';
+		if (isLabelBlank && isElementContentBlank) { throw new Error('Label is required') };
+	}
+
+	/**
+
+	 * @returns the classes of the button based of the button's `type`.
 	 */
 	private getClass() {
 		return `ontario-button ontario-button--${this.type?.toLowerCase() ?? 'secondary'}`;
@@ -95,7 +105,7 @@ export class OntarioButton implements OntarioButtonProperties {
 	}
 
 	/**
-	 * Set `buttonId`, `label`, and `ariaLabel` using internal component logic
+	 * Set `buttonId`, `label`, and `ariaLabel` using internal component logic.
 	 */
 	componentWillLoad() {
 		this.label = this.label ?? this.host.textContent ?? '';

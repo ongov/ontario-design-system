@@ -32,7 +32,7 @@ export namespace Components {
          */
         "ariaLabel"?: string;
         /**
-          * The unique identifier of the button
+          * The unique identifier of the button.
          */
         "buttonId"?: string;
         /**
@@ -2099,7 +2099,7 @@ declare namespace LocalJSX {
          */
         "ariaLabel"?: string;
         /**
-          * The unique identifier of the button
+          * The unique identifier of the button.
          */
         "buttonId"?: string;
         /**
