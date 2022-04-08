@@ -93,7 +93,6 @@ export class OntarioButton implements OntarioButtonProperties {
 	}
 
 	/**
-
 	 * @returns the classes of the button based of the button's `type`.
 	 */
 	private getClass() {
