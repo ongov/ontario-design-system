@@ -71,13 +71,16 @@ export class ${toPascalCase(iconName)} {
      * Set the icon's colour.
      * Note that some icon's colour cannot be changed.
      */
-    @Prop() colour: "black" | "blue" | "grey" | "white" = "black";
+    @Prop() colour: 'black' | 'blue' | 'grey' | 'white' = 'black';
     ` : ``}
+    /**
+     * Watch for changes in the \`iconWidth\` variable for validation purpose
+     */
     @Watch('iconWidth')
     validateWidth() {
         const defaultWidth = 24;
-            
-        // If value is not a number, set the iconWidth to be 24
+
+        // if value is not a number, set the iconWidth to be 24
         if (isNaN(this.iconWidth)) {
             this.iconWidth = defaultWidth;
         }
@@ -89,7 +92,7 @@ export class ${toPascalCase(iconName)} {
 
     render() {
         return (
-            <div class=${svgObject.hasColour ? `{\`ontario-icon ontario-icon--\${this.colour}\`}` : `"ontario-icon"`} style={{ 'width': \`\${this.iconWidth}px\` }}>
+            <div class=${svgObject.hasColour ? `{\`ontario-icon ontario-icon--\${this.colour}\`}` : `'ontario-icon'`} style={{ 'width': \`\${this.iconWidth}px\` }}>
                 ${svgElement}
             </div>
         );
@@ -119,7 +122,7 @@ const createIconComponents = async () => {
             let iconObject = await parse(iconFileContent, {
                 transformNode: node => {
                     // transform `node` object to rename `viewbox` property to `viewBox` for HTML consumption.
-                    if (node.attributes["viewbox"] && !node.attributes["viewBox"]) {
+                    if (node.attributes['viewbox'] && !node.attributes['viewBox']) {
                         Object.defineProperty(node.attributes, 'viewBox', Object.getOwnPropertyDescriptor(node.attributes, 'viewbox'));
                         delete node.attributes['viewbox'];
                     };
