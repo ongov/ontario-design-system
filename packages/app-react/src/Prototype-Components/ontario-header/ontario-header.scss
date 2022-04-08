@@ -1,0 +1,351 @@
+@import '~@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme';
+
+a,
+abbr {
+	text-decoration: none;
+}
+
+.ontario-icon--white {
+	display: flex;
+	align-items: center;
+}
+
+.ontario-application-header-container {
+	display: flex;
+}
+
+.ontario-application-header-menu-span {
+	margin-left: 0.75rem;
+}
+
+.ontario-application-header {
+	display: flex;
+	align-items: center;
+	background-color: $ontario-colour-black;
+	color: $ontario-colour-white;
+	height: 3.4rem;
+	z-index: 5;
+	width: 100%;
+}
+
+.ontario-header-button--with-outline {
+	border: $border-size-standard solid $ontario-colour-white;
+	margin: 0 0 0 1rem;
+	padding: 0.375rem 1rem;
+}
+
+.ontario-application-subheader .ontario-header-button,
+.ontario-application-navigation .ontario-header-button {
+	background-color: #4d4d4d;
+}
+
+.ontario-header-button {
+	background-color: #1a1a1a;
+	border-radius: 4px;
+	box-sizing: border-box;
+	box-shadow: none;
+	color: $ontario-colour-white;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	font-size: 1.125rem;
+	font-weight: 300;
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	height: 48px;
+	line-height: 1.5555555556;
+	text-align: center;
+	text-decoration: none;
+}
+
+.ontario-application-header__logo,
+.ontario-application-header__logo a,
+.ontario-application-header__lang-toggle,
+.ontario-application-subheader__container,
+.ontario-application-subheader__menu-container,
+.ontario-application-subheader__menu,
+.ontario-application-main-header-container {
+	display: flex;
+	align-items: center;
+}
+
+.ontario-header__menu-toggler {
+	padding: 0.375rem 1rem;
+}
+
+.ontario-application-header__logo img {
+	width: 100px;
+	height: 25px;
+}
+
+.ontario-application-header__lang-toggle {
+	justify-content: flex-end;
+
+	a {
+		font-size: rem-calc(16);
+		line-height: rem-calc(22);
+		height: auto;
+		padding: $spacing-2;
+	}
+}
+
+.dropdown-toggle::after {
+	display: none !important;
+}
+
+.ontario-application-subheader {
+	padding: calc(#{$spacing-2} + #{$spacing-3}) 0;
+	background-color: #404040;
+	overflow: visible;
+	position: relative;
+	z-index: 5;
+
+	@media screen and (min-width: $medium-breakpoint) {
+		z-index: $ontario-z-index-neutral;
+	}
+
+	& > .ontario-row {
+		position: relative;
+	}
+}
+
+.ontario-application-header > .ontario-row {
+	display: flex;
+	align-items: center;
+}
+
+.ontario-application-subheader .ontario-header-button {
+	visibility: visible;
+}
+
+.active {
+	box-shadow: 0 0 0 4px $ontario-colour-focus;
+	outline: 4px solid transparent;
+	transition: all 0.1s ease-in-out;
+	background-color: $ontario-colour-black !important;
+}
+
+.ontario-application-subheader .ontario-header-button,
+.ontario-application-navigation .ontario-header-button {
+	background-color: $ontario-greyscale-70;
+	&:hover {
+		background-color: $ontario-greyscale-60;
+	}
+
+	&:active {
+		background-color: $ontario-colour-black;
+	}
+}
+
+.ontario-header-button--without-outline {
+	&:hover {
+		background-color: #4d4d4d;
+	}
+	&:focus {
+		box-shadow: 0 0 0 4px $ontario-colour-focus;
+		outline: 4px solid transparent;
+		transition: all 0.1s ease-in-out;
+	}
+}
+
+.ontario-application-subheader__heading {
+	@extend %h4-styles;
+	margin-bottom: $spacing-0;
+	max-width: 65%;
+
+	a {
+		color: $ontario-colour-white;
+		font-weight: $ontario-font-weights-semi-bold;
+		text-decoration: none;
+
+		&:hover,
+		&:active,
+		&:visited {
+			color: $ontario-colour-white;
+			text-decoration: underline;
+		}
+	}
+}
+
+.ontario-application-subheader__container {
+	align-items: center;
+	justify-content: space-between;
+}
+
+.ontario-application-subheader__menu {
+	list-style: none;
+	margin: $spacing-0;
+	padding-left: $spacing-0;
+	align-items: center;
+}
+
+.ontario-application-subheader__menu li {
+	padding: 0;
+	margin-left: $spacing-3;
+}
+
+.ontario-application-subheader__menu a {
+	border-radius: $global-radius;
+	color: $ontario-colour-white;
+	display: inline;
+	font-family: $ontario-font-open-sans;
+	font-size: rem-calc(18);
+	font-weight: $ontario-font-weights-semi-bold;
+	height: 48px;
+	line-height: rem-calc(23);
+	padding: $spacing-3 $spacing-4;
+	text-decoration: none;
+	white-space: nowrap;
+
+	&.ontario-link--active {
+		border-radius: 4px 4px 0 0;
+		border-bottom: 4px solid $ontario-colour-white;
+	}
+
+	&:hover {
+		background-color: $ontario-greyscale-60;
+		color: $ontario-colour-white;
+	}
+
+	&:active {
+		background-color: $ontario-colour-black;
+	}
+
+	&:focus {
+		box-shadow: 0 0 0 4px $ontario-colour-focus;
+		outline: 4px solid transparent;
+		transition: all 0.1s ease-in-out;
+	}
+}
+
+.ontario-application-navigation {
+	position: absolute;
+	width: 100%;
+
+	@media screen and (min-width: $medium-breakpoint) {
+		position: relative;
+		max-width: 72rem;
+		width: auto;
+		margin: 0 auto;
+	}
+}
+
+.ontario-application-navigation .ontario-header-button {
+	visibility: hidden;
+	position: absolute;
+	top: calc(-#{$spacing-9} + -#{$spacing-1});
+	right: $spacing-4;
+	z-index: 6;
+}
+
+.ontario-application-navigation__container {
+	background: white;
+	position: absolute;
+	top: calc(26.4rem);
+	width: 100%;
+	z-index: $ontario-z-index-above-high;
+
+	@media screen and (min-width: $small-breakpoint) {
+		background: $ontario-colour-white;
+		position: absolute;
+		top: calc(20rem);
+		width: 100%;
+		z-index: $ontario-z-index-above-high;
+	}
+
+	@media screen and (min-width: $medium-breakpoint) {
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+		border-radius: 4px;
+		position: absolute;
+		right: $spacing-3;
+		top: calc(10rem);
+		transition: none;
+		min-width: 290px;
+		max-width: 30%;
+		z-index: 3;
+		transition: none !important;
+	}
+}
+
+.nav-ul-closed {
+	transition: 0.1s ease-in-out;
+	transform: translateY(-200%);
+	visibility: hidden;
+	opacity: 0;
+}
+
+.nav-ul-opened {
+	transition: 0.3s ease-in-out;
+	transform: translateY(-100%);
+	visibility: visible;
+	opacity: 1;
+}
+
+.ontario-application-navigation.ontario-navigation--open .ontario-application-navigation__container {
+	visibility: visible;
+	transform: translateY(0);
+	transition: transform 0.4s ease-in-out;
+
+	@media screen and (min-width: $medium-breakpoint) {
+		transition: none;
+		display: block;
+	}
+}
+
+.ontario-application-navigation ul {
+	list-style: none;
+	padding: $spacing-2 $spacing-0;
+	margin: $spacing-0;
+	border-bottom: 1px solid $ontario-greyscale-20;
+
+	@media screen and (min-width: $medium-breakpoint) {
+		border-bottom: none;
+	}
+}
+
+.ontario-application-navigation li {
+	border-top: 1px solid $ontario-greyscale-20;
+	padding: $spacing-0;
+
+	&:last-of-type {
+		border-bottom: 1px solid $ontario-greyscale-20;
+	}
+}
+
+.ontario-application-navigation a {
+	color: $ontario-colour-black;
+	display: block;
+	font-weight: $ontario-font-weights-semi-bold;
+	text-decoration: none;
+	padding: $spacing-3 $spacing-3 $spacing-3 $spacing-6;
+
+	&:hover {
+		text-decoration: underline;
+		background-color: #e5e5e5;
+	}
+
+	&:active {
+		text-decoration: underline;
+		background-color: $ontario-greyscale-20;
+	}
+
+	&:focus,
+	&:active {
+		@extend %ontario-focus;
+		box-shadow: 0 0 0 4px $ontario-colour-focus inset;
+	}
+
+	&.ontario-link--active {
+		border-left: 6px solid $ontario-colour-black;
+		background-color: $ontario-greyscale-5;
+	}
+}
+
+.ontario-application-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.6);
+	width: 100%;
+	height: 100%;
+	z-index: $ontario-z-index-above-medium;
+}

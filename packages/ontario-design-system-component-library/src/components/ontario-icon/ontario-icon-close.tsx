@@ -2,13 +2,11 @@ import { Component, Prop, h, Watch } from '@stencil/core';
 import close from './assets/ontario-icon-close.svg'
 
 @Component({
-  tag: 'ontario-icon-close',
-  styleUrl: 'ontario-icon.scss',
-  shadow: true,
+	tag: 'ontario-icon-close',
+	styleUrl: 'ontario-icon.scss',
+	shadow: true,
 })
-
 export class OntarioIconClose {
-
   @Prop() colour: "black" | "blue" | "grey" = "black";
 
   /**

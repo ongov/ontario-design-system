@@ -2,13 +2,11 @@ import { Component, Prop, h, Watch } from '@stencil/core';
 import menu from './assets/ontario-icon-menu.svg'
 
 @Component({
-  tag: 'ontario-icon-menu',
-  styleUrl: 'ontario-icon.scss',
-  shadow: true,
+	tag: 'ontario-icon-menu',
+	styleUrl: 'ontario-icon.scss',
+	shadow: true,
 })
-
 export class OntarioIconMenu {
-
   @Prop() colour: "black" | "blue" | "grey" = "black";
 
   /**
