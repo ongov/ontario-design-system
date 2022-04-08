@@ -1,7 +1,7 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-component-library-react",
 	"sideEffects": false,
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"private": true,
 	"description": "React specific wrapper for ontario-design-system-component-library",
 	"repository": {
@@ -24,13 +24,14 @@
 		"dist/"
 	],
 	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-component-library": "^0.0.1"
+		"@ontario-digital-service/ontario-design-system-component-library": "^1.0.0"
 	},
 	"devDependencies": {
 		"@types/jest": "23.3.9",
 		"@types/node": "^15.12.2",
 		"@types/react": "16.7.6",
 		"@types/react-dom": "16.0.9",
+		"copyfiles": "^2.4.1",
 		"jest": "^23.0.0",
 		"jest-dom": "^3.0.2",
 		"np": "^3.1.0",
@@ -49,5 +50,23 @@
 			"node_modules",
 			"dist"
 		]
-	}
+	},
+	"authors": [
+		{
+			"name": "Scott Morris",
+			"email": "Scott.Morris@ontario.ca"
+		},
+		{
+			"name": "Elsa Ng",
+			"email": "Elsa.Ng@ontario.ca"
+		},
+		{
+			"name": "Erin Carrieres",
+			"email": "Erin.Carrieres@ontario.ca"
+		},
+		{
+			"name": "Meaghan Carrieres",
+			"email": "Meaghan.Carrieres@ontario.ca"
+		}
+	]
 }

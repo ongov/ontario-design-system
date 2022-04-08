@@ -58,8 +58,6 @@ This project is made up of five packages.
 
 #### Building the Library
 
-_Content coming soon._
-
 Wanting to build and test within one of the framework applications? Running the `build-libs` script from the root triggers this behaviour.
 
 The library can be built independently by running,

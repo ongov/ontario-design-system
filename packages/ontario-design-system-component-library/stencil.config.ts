@@ -5,7 +5,9 @@ import { inlineSvg } from 'stencil-inline-svg';
 
 export const config: Config = {
 	namespace: 'ontario-design-system-components',
-	plugins: [sass(), inlineSvg()],
+	plugins: [sass({
+		includePaths: ['./node_modules', './node_modules/@ontario-digital-service/ontario-design-system-global-styles/node_modules'],
+	}), inlineSvg()],
 	globalStyle: './src/global.scss',
 	buildEs5: 'prod',
 	outputTargets: [
@@ -44,10 +46,9 @@ export const config: Config = {
 		},
 	],
 	testing: {
-		transform: {
-			'^.+\\.jsx?$': 'babel-jest',
-			'^.+\\.svg$': 'jest-svg-transformer',
+		"transform": {
+			"^.+\\.svg$": "<rootDir>/src/utils/svgTransform.js"
 		},
 		reporters: ['default', 'jest-junit'],
-	},
+	}
 };

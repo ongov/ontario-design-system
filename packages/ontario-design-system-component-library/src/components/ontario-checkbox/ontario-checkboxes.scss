@@ -1,8 +1,6 @@
 @use "sass:math";
 @import '../../global.scss';
 
-$ontario-touch-target-size: 36px;
-$ontario-touch-target-size-mobile: 40px;
 $ontario-checkboxes-size: 28px;
 $ontario-checkboxes-size-mobile: 32px;
 $ontario-checkbox-border-size: 2px;
@@ -35,29 +33,31 @@ $ontario-checkbox-box-shadow-outline: 4px;
     top: -$ontario-checkbox-border-size;
     left: -$ontario-checkbox-border-size;
     opacity: 0;
-    width: $ontario-touch-target-size;
-    height: $ontario-touch-target-size;
-    z-index: 1;
+    width: $touch-target-size;
+    height: $touch-target-size;
+    z-index: $ontario-z-index-neutral;
 
     // prevent blue default highlighting of input on android
     -webkit-tap-highlight-color: transparent;
 
     @media screen and (max-width: $small-breakpoint) {
-        width: $ontario-touch-target-size-mobile;
-        height: $ontario-touch-target-size-mobile;
+        width: $touch-target-size-mobile;
+        height: $touch-target-size-mobile;
     }
 }
 
 .ontario-checkboxes__label {
     display: inline-block;
     cursor: pointer;
-    line-height: 1.5;
+    line-height: $line-height-default;
+    // Specific spacing required in order to visually align label with input
     margin: $spacing-1 0;
     padding: 0 $spacing-4;
     width: auto;
     white-space: normal;
 
     @media screen and (max-width: $small-breakpoint) {
+        // Specific spacing required in order to visually align label with input
         margin: 0.33rem 0;
     }
 

@@ -1,0 +1,19 @@
+@import '../../global.scss';
+
+.ontario-dropdown {
+  background-color: $ontario-colour-white;
+  background-position: right $spacing-2 center;
+  background-repeat: no-repeat;
+  background-size: $spacing-6;
+  padding-right: calc($spacing-4 * 2.25);
+  cursor: pointer;
+}
+
+/* These styles are to fix differences in default styling for dropdowns in IE */
+.ontario-dropdown::-ms-expand {
+  display: none;
+}
+
+.ontario-dropdown option {
+  font-weight: normal;
+}

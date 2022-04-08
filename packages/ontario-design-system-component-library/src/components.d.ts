@@ -7,8 +7,10 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
+import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
 import { defaultOptions, expandedThreeColumnOptions, expandedTwoColumnOptions } from "./components/ontario-footer/footer-option.interface";
 import { languageTogglePaths, titleHeader } from "./components/ontario-header/titleHeader";
+import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
     interface MyComponent {
         /**
@@ -52,7 +54,7 @@ export namespace Components {
           * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
           * @example <ontario-checkboxes   legend="This is a question?"   options='[{     "name": "Checkbox 1",     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
          */
-        "hintExpander": HintExpander | string;
+        "hintExpander"?: HintExpander | string;
         /**
           * Define hint text on an element.
          */
@@ -61,7 +63,7 @@ export namespace Components {
           * Determine whether the input field is required. If required, it should be set to true.
           * @example <ontario-checkboxes ... is-required></ontario-checkboxes>
          */
-        "isRequired": boolean;
+        "isRequired"?: boolean;
         /**
           * The legend for the checkbox
          */
@@ -71,6 +73,35 @@ export namespace Components {
           * @example <ontario-checkboxes   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Checkbox 1",        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "name": "Checkbox-2",        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
          */
         "options": CheckboxOption[] | string;
+    }
+    interface OntarioDropdownList {
+        /**
+          * The ID for the dropdown list.
+         */
+        "elementId": string;
+        /**
+          * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
+          * @example <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
+         */
+        "isEmptyStartOption"?: boolean | string;
+        /**
+          * Determine whether the dropdown list is required. If required, add `is-required` attribute. Otherwise, the `optional` flag will appear.
+          * @example <ontario-dropdown-list ... is-required></ontario-dropdown-list>
+         */
+        "isRequired"?: boolean;
+        /**
+          * The label for the Dropdown List.
+         */
+        "label": string;
+        /**
+          * The name for the dropdown list.
+         */
+        "name": string;
+        /**
+          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset.
+          * @example <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required is-empty-start-option="Please select" options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
+         */
+        "options": string | DropdownOption[];
     }
     interface OntarioFooter {
         "defaultOptions": defaultOptions | string;
@@ -121,306 +152,722 @@ export namespace Components {
     }
     interface OntarioIconAccessibility {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconAccount {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconAdd {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconAddAlt {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconAlertError {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconAlertInformation {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconAlertSuccess {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconAlertWarning {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconAttach {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconBookmarkOff {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconBookmarkOn {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconCalendar {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconCamera {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconChevronDown {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconChevronLeft {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconChevronRight {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconChevronUp {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconClock {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconClose {
         "colour": 'black' | 'blue' | 'grey' | 'white';
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconCloud {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconCollapse {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconDelete {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconDocument {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconDownload {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconDropdownArrow {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconEdit {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconEmail {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconExpand {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconExport {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconFacebook {
         "colour": "black" | "blue" | "grey" | "white";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconFacebookAlt {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconFavouriteOff {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconFavouriteOn {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconFilter {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconFlickr {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconGrid {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconHelp {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconInstagram {
         "colour": "black" | "blue" | "grey" | "white";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconInteracEn {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconInteracEnAlt {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconInteracFr {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconInteracFrAlt {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconLinkedin {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconLinkedinAlt {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconList {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconLiveChat {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconLocationOff {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconLocationOn {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconLockOff {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconLockOn {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconMap {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconMastercard {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconMastercardAlt {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconMediaFastForward {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconMediaFastRewind {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconMediaPause {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconMediaPlay {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconMediaStop {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconMenu {
         "colour": 'black' | 'blue' | 'grey' | 'white';
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconMicrophoneOff {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconMicrophoneOn {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconMoreVertical {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconNewWindow {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconNext {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconNotification {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconPasswordHide {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconPasswordShow {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconPhone {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconPhoto {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconPinLocationOff {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconPinLocationOn {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconPrevious {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconPrint {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconRemove {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconRemoveAlt {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconReplay {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconRssFeed {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconSave {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconSearch {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconSentiment1 {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconSentiment2 {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconSentiment3 {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconSentiment4 {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconSentiment5 {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconSettings {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconShare {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconSort {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconTag {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconTextMessage {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconTimer {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconTransportBicycle {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconTransportBus {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconTransportCar {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconTransportWalk {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconTty {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconTwitter {
         "colour": "black" | "blue" | "grey" | "white";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconTwitterAlt {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconVideo {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconVisa {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconVoteDislike {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconVoteLike {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconVpnKey {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconWheelchair {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconWifi {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioIconYoutube {
         "colour": "black" | "blue" | "grey" | "white";
@@ -466,6 +913,31 @@ export namespace Components {
           * The input content value.
          */
         "value"?: string;
+    }
+    interface OntarioRadioButtons {
+        /**
+          * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
+          * @example <ontario-radio-buttons   legend="This is a question?"   options='[ 	   {        "name": "Radio",        "value": "radio-option-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content", 		    "aria-label": "This indicates that the hint can be expanded" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content",     "aria-label": "This indicates that the hint can be expanded"   }' > </ontario-radio-buttons>
+         */
+        "hintExpander"?: HintExpander | string;
+        /**
+          * Define hint text for Radio Button fieldset.
+         */
+        "hintText"?: string;
+        /**
+          * Determine whether the input field is required. If required, it should be set to true. This can be done by passing in `is-required` to the component.
+          * @example <ontario-radio-buttons ... is-required></ontario-radio-buttons>
+         */
+        "isRequired"?: boolean;
+        /**
+          * The legend for the Radio Buttons.
+         */
+        "legend": string;
+        /**
+          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
+          * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Radio",        "value": "radio-1-value",        "label": "Radio Button Label 1"     },     {        "name": "Radio",        "value": "radio-2-value",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-radio-buttons>
+         */
+        "options": string | RadioOption[];
     }
     interface OntarioTextarea {
         /**
@@ -520,6 +992,12 @@ declare global {
     var HTMLOntarioCheckboxesElement: {
         prototype: HTMLOntarioCheckboxesElement;
         new (): HTMLOntarioCheckboxesElement;
+    };
+    interface HTMLOntarioDropdownListElement extends Components.OntarioDropdownList, HTMLStencilElement {
+    }
+    var HTMLOntarioDropdownListElement: {
+        prototype: HTMLOntarioDropdownListElement;
+        new (): HTMLOntarioDropdownListElement;
     };
     interface HTMLOntarioFooterElement extends Components.OntarioFooter, HTMLStencilElement {
     }
@@ -1181,6 +1659,12 @@ declare global {
         prototype: HTMLOntarioInputElement;
         new (): HTMLOntarioInputElement;
     };
+    interface HTMLOntarioRadioButtonsElement extends Components.OntarioRadioButtons, HTMLStencilElement {
+    }
+    var HTMLOntarioRadioButtonsElement: {
+        prototype: HTMLOntarioRadioButtonsElement;
+        new (): HTMLOntarioRadioButtonsElement;
+    };
     interface HTMLOntarioTextareaElement extends Components.OntarioTextarea, HTMLStencilElement {
     }
     var HTMLOntarioTextareaElement: {
@@ -1191,6 +1675,7 @@ declare global {
         "my-component": HTMLMyComponentElement;
         "ontario-button": HTMLOntarioButtonElement;
         "ontario-checkboxes": HTMLOntarioCheckboxesElement;
+        "ontario-dropdown-list": HTMLOntarioDropdownListElement;
         "ontario-footer": HTMLOntarioFooterElement;
         "ontario-header": HTMLOntarioHeaderElement;
         "ontario-hint-expander": HTMLOntarioHintExpanderElement;
@@ -1301,6 +1786,7 @@ declare global {
         "ontario-icon-wifi": HTMLOntarioIconWifiElement;
         "ontario-icon-youtube": HTMLOntarioIconYoutubeElement;
         "ontario-input": HTMLOntarioInputElement;
+        "ontario-radio-buttons": HTMLOntarioRadioButtonsElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
     }
 }
@@ -1371,6 +1857,35 @@ declare namespace LocalJSX {
          */
         "options"?: CheckboxOption[] | string;
     }
+    interface OntarioDropdownList {
+        /**
+          * The ID for the dropdown list.
+         */
+        "elementId"?: string;
+        /**
+          * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
+          * @example <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
+         */
+        "isEmptyStartOption"?: boolean | string;
+        /**
+          * Determine whether the dropdown list is required. If required, add `is-required` attribute. Otherwise, the `optional` flag will appear.
+          * @example <ontario-dropdown-list ... is-required></ontario-dropdown-list>
+         */
+        "isRequired"?: boolean;
+        /**
+          * The label for the Dropdown List.
+         */
+        "label"?: string;
+        /**
+          * The name for the dropdown list.
+         */
+        "name"?: string;
+        /**
+          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset.
+          * @example <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required is-empty-start-option="Please select" options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
+         */
+        "options"?: string | DropdownOption[];
+    }
     interface OntarioFooter {
         "defaultOptions"?: defaultOptions | string;
         "expandedThreeColumnOptions"?: expandedThreeColumnOptions | string;
@@ -1425,306 +1940,722 @@ declare namespace LocalJSX {
     }
     interface OntarioIconAccessibility {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconAccount {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconAdd {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconAddAlt {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconAlertError {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconAlertInformation {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconAlertSuccess {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconAlertWarning {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconAttach {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconBookmarkOff {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconBookmarkOn {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconCalendar {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconCamera {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconChevronDown {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconChevronLeft {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconChevronRight {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconChevronUp {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconClock {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconClose {
         "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconCloud {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconCollapse {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconDelete {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconDocument {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconDownload {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconDropdownArrow {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconEdit {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconEmail {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconExpand {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconExport {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconFacebook {
         "colour"?: "black" | "blue" | "grey" | "white";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconFacebookAlt {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconFavouriteOff {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconFavouriteOn {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconFilter {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconFlickr {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconGrid {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconHelp {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconInstagram {
         "colour"?: "black" | "blue" | "grey" | "white";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconInteracEn {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconInteracEnAlt {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconInteracFr {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconInteracFrAlt {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconLinkedin {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconLinkedinAlt {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconList {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconLiveChat {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconLocationOff {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconLocationOn {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconLockOff {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconLockOn {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconMap {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconMastercard {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconMastercardAlt {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconMediaFastForward {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconMediaFastRewind {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconMediaPause {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconMediaPlay {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconMediaStop {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconMenu {
         "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconMicrophoneOff {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconMicrophoneOn {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconMoreVertical {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconNewWindow {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconNext {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconNotification {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconPasswordHide {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconPasswordShow {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconPhone {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconPhoto {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconPinLocationOff {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconPinLocationOn {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconPrevious {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconPrint {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconRemove {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconRemoveAlt {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconReplay {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconRssFeed {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconSave {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconSearch {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconSentiment1 {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconSentiment2 {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconSentiment3 {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconSentiment4 {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconSentiment5 {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconSettings {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconShare {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconSort {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconTag {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconTextMessage {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconTimer {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconTransportBicycle {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconTransportBus {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconTransportCar {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconTransportWalk {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconTty {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconTwitter {
         "colour"?: "black" | "blue" | "grey" | "white";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconTwitterAlt {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconVideo {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconVisa {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconVoteDislike {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconVoteLike {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconVpnKey {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconWheelchair {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconWifi {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioIconYoutube {
         "colour"?: "black" | "blue" | "grey" | "white";
@@ -1783,6 +2714,31 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface OntarioRadioButtons {
+        /**
+          * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
+          * @example <ontario-radio-buttons   legend="This is a question?"   options='[ 	   {        "name": "Radio",        "value": "radio-option-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content", 		    "aria-label": "This indicates that the hint can be expanded" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content",     "aria-label": "This indicates that the hint can be expanded"   }' > </ontario-radio-buttons>
+         */
+        "hintExpander"?: HintExpander | string;
+        /**
+          * Define hint text for Radio Button fieldset.
+         */
+        "hintText"?: string;
+        /**
+          * Determine whether the input field is required. If required, it should be set to true. This can be done by passing in `is-required` to the component.
+          * @example <ontario-radio-buttons ... is-required></ontario-radio-buttons>
+         */
+        "isRequired"?: boolean;
+        /**
+          * The legend for the Radio Buttons.
+         */
+        "legend"?: string;
+        /**
+          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
+          * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Radio",        "value": "radio-1-value",        "label": "Radio Button Label 1"     },     {        "name": "Radio",        "value": "radio-2-value",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-radio-buttons>
+         */
+        "options"?: string | RadioOption[];
+    }
     interface OntarioTextarea {
         /**
           * The aria-describedBy value if the textarea has hint text associated with it.
@@ -1833,6 +2789,7 @@ declare namespace LocalJSX {
         "my-component": MyComponent;
         "ontario-button": OntarioButton;
         "ontario-checkboxes": OntarioCheckboxes;
+        "ontario-dropdown-list": OntarioDropdownList;
         "ontario-footer": OntarioFooter;
         "ontario-header": OntarioHeader;
         "ontario-hint-expander": OntarioHintExpander;
@@ -1943,6 +2900,7 @@ declare namespace LocalJSX {
         "ontario-icon-wifi": OntarioIconWifi;
         "ontario-icon-youtube": OntarioIconYoutube;
         "ontario-input": OntarioInput;
+        "ontario-radio-buttons": OntarioRadioButtons;
         "ontario-textarea": OntarioTextarea;
     }
 }
@@ -1953,6 +2911,7 @@ declare module "@stencil/core" {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             "ontario-checkboxes": LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
+            "ontario-dropdown-list": LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
             "ontario-footer": LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;
             "ontario-header": LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
             "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
@@ -2063,6 +3022,7 @@ declare module "@stencil/core" {
             "ontario-icon-wifi": LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
             "ontario-icon-youtube": LocalJSX.OntarioIconYoutube & JSXBase.HTMLAttributes<HTMLOntarioIconYoutubeElement>;
             "ontario-input": LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
+            "ontario-radio-buttons": LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
         }
     }

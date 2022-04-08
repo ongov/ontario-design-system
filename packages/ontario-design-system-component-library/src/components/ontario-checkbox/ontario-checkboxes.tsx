@@ -23,7 +23,7 @@ export class OntarioCheckboxes implements Checkbox {
    * @example
    * <ontario-checkboxes ... is-required></ontario-checkboxes>
    */
-  @Prop() isRequired: boolean = false;
+  @Prop() isRequired?: boolean = false;
 
   /**
    * Define hint text on an element.
@@ -56,7 +56,7 @@ export class OntarioCheckboxes implements Checkbox {
    * >
    * </ontario-checkboxes>
    */
-  @Prop() hintExpander: HintExpander | string;
+  @Prop() hintExpander?: HintExpander | string;
 
   /**
    * The hint expander options are re-assigned to the internalHintExpander array.

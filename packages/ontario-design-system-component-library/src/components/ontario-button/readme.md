@@ -4,25 +4,46 @@ Use button to trigger an action
 
 ## Usage guidance
 
-Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for guidance.
+Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for current documentation guidance.
+
+## Configuration
+
+Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the button component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component. 
 
 ## Examples
 
-```
+Example of a bare-bones button component, the label for the button is provided. The default button type will be `secondary`, and the native HTML button type will be `button`.
+
+```html
 <ontario-button>Element Content</ontario-button>
 ```
 
-```
+Example of the button component, which includes the label, the button ID, the native HTML button type, the type of button, and the `aria-label` - which will override the default value of the 'aria-label' HTML attribute.
+
+```html
 <ontario-button aria-label="Example" buttonId="example" htmlType="button" type="tertiary">Element Content</ontario-button>
 ```
 
-```
-<ontario-button label="Example" htmlType="submit" type="primary"></ontario-button>
+This is another example of a button component, where the user is passing in the label through the `label` property - overriding the 'Element Content' value, and the resulting label text will display as `Example`. 
+
+```html
+<ontario-button label="Example" htmlType="submit" type="primary">Element Content</ontario-button>
 ```
 
-```
+An example of how to pass in an `onclick` function. 
+
+```html
 <ontario-button onclick="exampleFunction()">Element Content</ontario-button>
 ```
+
+## Accessibility
+
+It is important to know when the proper use-case is for a button. Often, the roles of links and buttons can get confused with one another.
+
+- Links will redirect you to a new page or another section/component on a page. 
+- Buttons will trigger an action, such as opening or closing a modal, or submitting a form. 
+
+It can be confusing and frustrating for users to expect a button to trigger an action, and then they are redirected to a new page. 
 
 <!-- Auto Generated Below -->
 
