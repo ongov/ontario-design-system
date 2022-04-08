@@ -12,19 +12,20 @@ const path = require('path');
 const { parse, stringify } = require('svgson');
 
 const iconDirectory = './node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/icons';
+const iconNamePrefix = 'ontario-icon-';
 const iconsWithoutColour = [
-	'ontario-icon-alert-error',
-	'ontario-icon-alert-information',
-	'ontario-icon-alert-success',
-	'ontario-icon-alert-warning',
-	'ontario-icon-dropdown-arrow',
-	'ontario-icon-interac-en',
-	'ontario-icon-interac-fr',
-	'ontario-icon-interac-en-alt',
-	'ontario-icon-interac-fr-alt',
-	'ontario-icon-mastercard',
-	'ontario-icon-mastercard-alt',
-	'ontario-icon-visa',
+	`${iconNamePrefix}alert-error`,
+	`${iconNamePrefix}alert-information`,
+	`${iconNamePrefix}alert-success`,
+	`${iconNamePrefix}alert-warning`,
+	`${iconNamePrefix}dropdown-arrow`,
+	`${iconNamePrefix}interac-en`,
+	`${iconNamePrefix}interac-fr`,
+	`${iconNamePrefix}interac-en-alt`,
+	`${iconNamePrefix}interac-fr-alt`,
+	`${iconNamePrefix}mastercard`,
+	`${iconNamePrefix}mastercard-alt`,
+    `${iconNamePrefix}visa`,
 ];
 
 /**
@@ -33,7 +34,7 @@ const iconsWithoutColour = [
  * @returns name of icon without the `ontario-icon-` prefix
  */
 const getId = iconName => {
-	return iconName.startsWith('ontario-icon-') ? iconName.replace('ontario-icon-', '') : iconName;
+	return iconName.startsWith(iconNamePrefix) ? iconName.replace(iconNamePrefix, '') : iconName;
 };
 
 /**
@@ -107,7 +108,7 @@ const createIconComponents = async () => {
     for (const iconFile of iconFiles) {
 
         // proceed with icon generation process if the file extension is `.svg` and the filename starts with the string `ontario-icon-`.
-        if (iconFile.includes('.svg') && iconFile.startsWith('ontario-icon-')) {
+        if (iconFile.includes('.svg') && iconFile.startsWith(iconNamePrefix)) {
 
             // Strip the path data and file extension from `iconFilename` and store the resulting value in `iconName`
             const iconName = path.basename(iconFile, '.svg');
