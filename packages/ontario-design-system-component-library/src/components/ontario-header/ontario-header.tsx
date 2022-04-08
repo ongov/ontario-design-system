@@ -6,6 +6,7 @@ import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
 import OntarioIconSearchWhite from '../ontario-icon/assets/ontario-icon-search-white.svg';
 import { headerTitle } from './headerTitle.interface';
 import { languageToggleOptions } from './languageToggleOptions.interface';
+
 /**
  * Ontario Header component
  */
@@ -208,12 +209,12 @@ export class OntarioHeader {
 	 *
 	 * href and name are necessary, but rest are not.
 	 *
-	 * href: the href of the menu item
-	 * name: the name of the menu item
-	 * liClass: if there is a class that is related to the <li> portion of the menu item, put it here
-	 * liClass: if there is a class that is related to the <a> portion of the menu item, put it here
-	 * onBlur: when set to true, it will call the function trapMenuFocus(), otherwise nothing is done (used in lastLink)
-	 * tabIndex: when set to true, it will set the tabindex to be -1, meaning it can't be in focus (used in items when the menu is closed)
+	 * @param href the href of the menu item
+	 * @param name the name of the menu item
+	 * @param liClass if there is a class that is related to the <li> portion of the menu item, put it here
+	 * @param liClass if there is a class that is related to the <a> portion of the menu item, put it here
+	 * @param onBlur when set to true, it will call the function trapMenuFocus(), otherwise nothing is done (used in lastLink)
+	 * @param tabIndex when set to true, it will set the tabindex to be -1, meaning it can't be in focus (used in items when the menu is closed)
 	 */
 
 	private generateMenuItem(href: string, name: string, liClass?: string, aClass?: string, onBlur?: boolean, tabIndex?: boolean) {
