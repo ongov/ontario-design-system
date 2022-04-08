@@ -17,13 +17,16 @@ export class OntarioIconVoteLike {
      * Set the icon's colour.
      * Note that some icon's colour cannot be changed.
      */
-    @Prop() colour: "black" | "blue" | "grey" | "white" = "black";
+    @Prop() colour: 'black' | 'blue' | 'grey' | 'white' = 'black';
     
+    /**
+     * Watch for changes in the `iconWidth` variable for validation purpose
+     */
     @Watch('iconWidth')
     validateWidth() {
         const defaultWidth = 24;
-            
-        // If value is not a number, set the iconWidth to be 24
+
+        // if value is not a number, set the iconWidth to be 24
         if (isNaN(this.iconWidth)) {
             this.iconWidth = defaultWidth;
         }

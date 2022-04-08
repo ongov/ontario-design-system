@@ -13,11 +13,14 @@ export class OntarioIconAlertInformation {
      */
     @Prop() iconWidth: number = 24;
     
+    /**
+     * Watch for changes in the `iconWidth` variable for validation purpose
+     */
     @Watch('iconWidth')
     validateWidth() {
         const defaultWidth = 24;
-            
-        // If value is not a number, set the iconWidth to be 24
+
+        // if value is not a number, set the iconWidth to be 24
         if (isNaN(this.iconWidth)) {
             this.iconWidth = defaultWidth;
         }
@@ -29,7 +32,7 @@ export class OntarioIconAlertInformation {
 
     render() {
         return (
-            <div class="ontario-icon" style={{ 'width': `${this.iconWidth}px` }}>
+            <div class='ontario-icon' style={{ 'width': `${this.iconWidth}px` }}>
                 <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-information"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="#1080a6"/><path d="M11 17h2v-6h-2v6zm0-8h2V7h-2v2z" fill="#fff"/></svg>
             </div>
         );
