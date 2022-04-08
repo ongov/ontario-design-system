@@ -285,6 +285,12 @@ export class OntarioHeader {
 		} else return 'ontario-hide-for-large ontario-overlay';
 	}
 
+	private onEscapePressed(event: any) {
+		if (event.key === 'Escape') {
+			event.path[0].value = "";
+		}
+	}
+
 	render() {
 		if (this.type == 'ontario') {
 			return (
@@ -324,6 +330,7 @@ export class OntarioHeader {
 										class="ontario-input ontario-header__search-input"
 										required={true}
 										ref={el => (this.searchBar = el as HTMLInputElement)}
+										onKeyDown={this.onEscapePressed}
 									/>
 									<input class="ontario-header__search-reset" id="ontario-search-reset" type="reset" value="" aria-label="Clear" innerHTML={OntarioIconCloseSearch}></input>
 									<button class="ontario-header__search-submit" id="ontario-search-submit" type="submit">
