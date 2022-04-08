@@ -1,21 +1,25 @@
 @import '~@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme';
 
 .page-content {
-	margin: 2rem 0;
+	margin: $spacing-6 $spacing-0;
 }
 
 .preview-container {
-	margin: 1.5rem 0;
+	margin: $spacing-5 $spacing-0;
 }
 
 .example-container {
-	padding: rem-calc(24);
+	padding: $spacing-5;
 	background-color: $ontario-greyscale-5;
 }
 
 hr {
-	border-bottom: 4px solid #ccc;
+	border-bottom: $spacing-1 solid #ccc;
     border-top: none;
     border-left: none;
-	margin: 2.5rem 0;
+	margin: $spacing-7 $spacing-0;
+}
+
+li {
+	@extend p;
 }

@@ -4,6 +4,16 @@ abbr {
 	text-decoration: none;
 }
 
+.ontario-row {
+	margin: 0 auto;
+    max-width: 72rem;
+    width: 100%;
+}
+
+.ontario-columns {
+	padding: 0 1rem;
+}
+
 .ontario-icon--white {
 	display: flex;
 	align-items: center;
@@ -14,8 +24,7 @@ abbr {
 }
 
 .ontario-application-header-menu-span {
-	margin-left: 0.75rem;
-	margin-top: 0.1rem;
+    margin:  0.1rem 0 0 0.35rem;
 }
 
 .ontario-application-header {
@@ -48,8 +57,8 @@ abbr {
 	cursor: pointer;
 	display: flex;
 	font-size: 1.125rem;
-	font-weight: 300;
-	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: $ontario-font-weights-semi-bold;
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	height: 48px;
 	line-height: 1.5555555556;
 	text-align: center;
@@ -153,7 +162,7 @@ abbr {
 
 	a {
 		color: $ontario-colour-white;
-		font-weight: 600;
+		font-weight: $ontario-font-weights-semi-bold;
 		text-decoration: none;
 
 		&:hover,
@@ -186,9 +195,9 @@ abbr {
 	border-radius: $global-radius;
 	color: $ontario-colour-white;
 	display: inline;
-	font-family: $ontario-font-open-sans;
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: rem-calc(18);
-	font-weight: 600;
+	font-weight: $ontario-font-weights-semi-bold;
 	height: 48px;
 	line-height: rem-calc(23);
 	padding: $spacing-3 $spacing-4;
@@ -241,12 +250,12 @@ abbr {
 	position: absolute;
 	top: 0rem;
 	width: 100%;
-	z-index: 4;
+	z-index: $ontario-z-index-above-high;
 
 	@media screen and (min-width: $small-breakpoint) {
 		background: white;
 		position: absolute;
-		z-index: 4;
+		z-index: $ontario-z-index-above-high;
 	}
 
 	@media screen and (min-width: $medium-breakpoint) {
@@ -309,7 +318,8 @@ abbr {
 .ontario-application-navigation a {
 	color: $ontario-colour-black;
 	display: block;
-	font-weight: 600;
+	font-weight: $ontario-font-weights-semi-bold;
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	text-decoration: none;
 	padding: $spacing-3 $spacing-3 $spacing-3 $spacing-6;
 
@@ -342,5 +352,5 @@ abbr {
 	background: rgba(0, 0, 0, 0.6);
 	width: 100%;
 	height: 100%;
-	z-index: 2;
+	z-index: $ontario-z-index-above-medium;
 }

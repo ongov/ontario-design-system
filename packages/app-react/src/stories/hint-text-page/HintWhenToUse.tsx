@@ -19,19 +19,13 @@ export default function HintWhenToUse() {
 
 					<ul>
 						<li>
-							<p>
-								If the information is <strong>very important</strong> and most or all users will need it, make it part of the form field label.
-							</p>
+							If the information is <strong>very important</strong> and most or all users will need it, make it part of the form field label.
 						</li>
 						<li>
-							<p>
-								If the information is <strong>fairly important</strong> and many users will need it, provide hint text that is visible by default.
-							</p>
+							If the information is <strong>fairly important</strong> and many users will need it, provide hint text that is visible by default.
 						</li>
 						<li>
-							<p>
-								If the information is <strong>less important</strong> and only a minority of users will need it, put it in a hint expander.
-							</p>
+							If the information is <strong>less important</strong> and only a minority of users will need it, put it in a hint expander.
 						</li>
 					</ul>
 					<hr />

@@ -2,20 +2,60 @@
 <html dir="ltr" lang="en">
 
 <head>
+	<link rel="stylesheet" href="/build/ontario-design-system-components.css" />
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
 	<title>Ontario Design System - component samples</title>
-
 	<script type="module" src="/build/ontario-design-system-components.esm.js"></script>
 	<script nomodule src="/build/ontario-design-system-components.js"></script>
 </head>
 
-<body>
-	<ontario-button label="Primary" aria-label="Primary Button" type="primary" onclick="testFunction()">Primary
+<body style="margin: 0;">
+	<ontario-header title-Header='{ "name": "Application name" , "href": "/"}' language-Toggle-Paths='{
+						"englishLink":"/en",
+						"frenchLink": "/fr"
+					}' menu-Items='[{
+					"name": "Button",
+					"href": "/ontario-button"
+				}, {
+					"name": "Hint",
+					"href": "/ontario-hint"
+				}, {
+					"name": "Text Area",
+					"href": "/ontario-text-area"
+				}, {
+					"name": "Text Input",
+					"href": "/ontario-text-input"
+				}, {
+					"name": "Hint",
+					"href": "/ontario-hint"
+				}, {
+					"name": "Hint",
+					"href": "/ontario-hint"
+				}, {
+					"name": "Hint",
+					"href": "/ontario-hint"
+				}, {
+					"name": "Hint",
+					"href": "/ontario-hint"
+				}, {
+					"name": "Hint",
+					"href": "/ontario-hint"
+				}, {
+					"name": "Hint",
+					"href": "/ontario-hint"
+				}, {
+					"name": "Hint",
+					"href": "/ontario-hint"
+				}]'>
+		<hr />
+
+	</ontario-header>
+	<ontario-button label="Primary" aria-label="Primary Button" type="primary" onclick="testFunction()">
 	</ontario-button>
-	<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">Secondary
+	<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">
 	</ontario-button>
-	<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary">Tertiary</ontario-button>
+	<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary"></ontario-button>
 
 	<hr />
 
@@ -230,8 +270,6 @@
 			}
 		}'
 	></ontario-footer>
-
-
 
 	<ontario-radio-buttons legend="Do you have cats?" hint-text="This is the hint text" is-required options='[{
 		"name": "radio",

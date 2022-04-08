@@ -26,14 +26,10 @@ export default function TextAreaWhenToUse() {
 					<p>Do not use a text area if:</p>
 					<ul>
 						<li>
-							<p>
-								you want users to enter answers that are only <strong>one line</strong> (instead, consider a <a href="/ontario-text-input">text input</a>)
-							</p>
+							you want users to enter answers that are only <strong>one line</strong> (instead, consider a <a href="/ontario-text-input">text input</a>)
 						</li>
 						<li>
-							<p>
-								it will be easier for the user to choose from a <strong>set list of options</strong>
-							</p>
+							it will be easier for the user to choose from a <strong>set list of options</strong>
 							<ul>
 								<li>
 									users can find open-ended questions difficult to answer, so only use them when it doesn’t make sense to give them answers to choose from with a{' '}

@@ -115,7 +115,7 @@ export namespace Components {
         "type": 'default' | 'partnership' | 'expanded two column' | 'expanded three column';
     }
     interface OntarioHeader {
-        "languageTogglePaths": languageTogglePaths;
+        "languageTogglePaths": languageTogglePaths | string;
         "menuItems": titleHeader[] | string;
         "titleHeader": titleHeader | string;
         "toggle": boolean;
@@ -1898,7 +1898,7 @@ declare namespace LocalJSX {
         "type"?: 'default' | 'partnership' | 'expanded two column' | 'expanded three column';
     }
     interface OntarioHeader {
-        "languageTogglePaths"?: languageTogglePaths;
+        "languageTogglePaths"?: languageTogglePaths | string;
         "menuItems"?: titleHeader[] | string;
         "onChangeEvent"?: (event: CustomEvent<any>) => void;
         "titleHeader"?: titleHeader | string;

@@ -44,5 +44,5 @@ describe('ontario-footer', () => {
          </mock:shadow-root>
        </ontario-footer>
     `);
-  });
+	});
 });

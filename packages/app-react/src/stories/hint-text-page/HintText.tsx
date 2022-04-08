@@ -15,34 +15,22 @@ export default function HintText() {
 						Use hint text when you need to:
 						<ul>
 							<li>
-								<p>
-									explain <strong>why you are asking</strong> a certain question
-								</p>
+								explain <strong>why you are asking</strong> a certain question
 							</li>
 							<ul>
-								<li>
-									<p>example: “We will only email you if there’s a problem with your order”</p>
-								</li>
+								<li>example: “We will only email you if there’s a problem with your order”</li>
 							</ul>
 							<li>
-								<p>
-									provide <strong>clarifying details</strong>
-								</p>
+								provide <strong>clarifying details</strong>
 							</li>
 							<ul>
-								<li>
-									<p>example: “For example, A1A 1A1”</p>
-								</li>
+								<li>example: “For example, A1A 1A1”</li>
 							</ul>
 							<li>
-								<p>
-									tell the user <strong>where to find the information</strong> you’re asking for
-								</p>
+								tell the user <strong>where to find the information</strong> you’re asking for
 							</li>
 							<ul>
-								<li>
-									<p>example: “Find taxes payable on line 435 of your notice of assessment”</p>
-								</li>
+								<li>example: “Find taxes payable on line 435 of your notice of assessment”</li>
 							</ul>
 						</ul>
 					</p>

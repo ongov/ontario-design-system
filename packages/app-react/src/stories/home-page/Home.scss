@@ -1,7 +1,11 @@
 @import '~@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme';
 
+$ontario-5rem: 5rem;
+$ontario-50rem: 50rem;
+$ontario-40-vw: 40vw;
+
 p.ontario-lead-statement {
-	font-size: 1rem;
+	font-size: $ontario-font-size-standard-body-text;
 	@media screen and (min-width: $small-breakpoint) {
 		font-size: 1.2rem;
 	}
@@ -11,34 +15,34 @@ p.ontario-lead-statement {
 }
 
 .platform-homepage-banner {
-	padding-top: 3rem;
-	padding-bottom: 3rem;
+	padding-top: $spacing-8;
+	padding-bottom: $spacing-8;
 	background-color: #367a76;
 	background-image: url('ds-supergraphic-element.svg');
-	background-position-x: 40vw;
+	background-position-x: $ontario-40-vw;
 	background-repeat: no-repeat;
-	background-size: 50rem;
-	background-position-y: -5rem;
-	margin-bottom: 5rem;
+	background-size: $ontario-50rem;
+	background-position-y: -$ontario-5rem;
+	margin-bottom: $ontario-5rem;
 }
 
 .platform-homepage-banner::before {
 	background-image: url('ds-supergraphic-element.svg');
-	right: 0%;
+	right: $spacing-0;
 	position: absolute;
-	background-position-x: 40vw;
+	background-position-x: $ontario-40-vw;
 	background-repeat: no-repeat;
-	background-size: 50rem;
+	background-size: $ontario-50rem;
 	background-position-y: -8rem;
-	width: 100%;
+	width: $ontario-global-tokens-full-width;
 	height: 30rem;
 	content: '';
-	z-index: -1;
+	z-index: $ontario-z-index-behind-high;
 }
 
 .ontario-banner-font {
 	color: $ontario-colour-white;
-	width: 100%;
+	width: $ontario-global-tokens-full-width;
 	@media screen and (min-width: $small-breakpoint) {
 		width: 70%;
 	}
@@ -48,8 +52,8 @@ p.ontario-lead-statement {
 }
 
 hr.dark {
-	border-bottom: 4px solid #1a1a1a;
-	margin: 2.5rem 0;
+	border-bottom: $spacing-1 solid #1a1a1a;
+	margin: 2.5rem $spacing-0;
 }
 
 @mixin ontario-two-column-lists() {
@@ -60,8 +64,8 @@ hr.dark {
 		column-count: 2;
 
 		li {
-			padding: 0;
-			margin: 0 $spacing-4 $spacing-4 0;
+			padding: $spacing-0;
+			margin: $spacing-0 $spacing-4 $spacing-4 $spacing-0;
 		}
 	}
 }

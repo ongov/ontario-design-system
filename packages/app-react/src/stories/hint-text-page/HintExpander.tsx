@@ -18,28 +18,22 @@ export default function HintExpander() {
 					<h3>Hint Expander</h3>
 					<p>
 						A hint expander is a block of hint text that can be shown or hidden using a toggle. <br></br>Before deciding to use a hint expander, try to{' '}
-						<strong>clarify the field label</strong>
-						or <strong>simplify the hint text</strong> so that a hint expander isn’t needed.
-						<br></br>Use a hint expander when:
-						<ul>
-							<li>
-								<p>
-									the hint text is long and <strong>won’t be needed by the majority of users</strong>
-								</p>
-							</li>
-							<li>
-								<p>
-									you want to give the user the option to see a <strong>helpful image</strong>, such as a picture of a driver’s licence showing where to find the licence number
-								</p>
-							</li>
-							<ul>
-								<li>
-									<p>remember, you will also need text that explains the image</p>
-								</li>
-							</ul>
-						</ul>
-						Hint expanders are specific to hints within forms. On standard content pages, use an accordion instead.
+						<strong>clarify the field label</strong> or <strong>simplify the hint text</strong> so that a hint expander isn’t needed.
 					</p>
+					<p>Use a hint expander when:</p>
+					<ul>
+						<li>
+							the hint text is long and <strong>won’t be needed by the majority of users</strong>
+						</li>
+						<li>
+							you want to give the user the option to see a <strong>helpful image</strong>, such as a picture of a driver’s licence showing where to find the licence number
+						</li>
+						<ul>
+							<li>remember, you will also need text that explains the image</li>
+						</ul>
+					</ul>
+					<p>Hint expanders are specific to hints within forms. On standard content pages, use an accordion instead.</p>
+
 					<div className="preview-container">
 						<div className="example-container">
 							<OntarioHintExpander

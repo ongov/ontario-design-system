@@ -3,15 +3,6 @@
 
 @import '../../global.scss';
 
-.ontario-row { //temporary fix to missing global class
-	margin: 0 auto;
-	max-width: 72rem;
-	width: 100%;
-}
-.ontario-columns { //temporary fix to missing global class
-	padding: 0 $ontario-spacing-4;
-}
-
 .ontario-footer {
 	color: $ontario-colour-white;
 	padding: $spacing-9 $spacing-0;
@@ -155,9 +146,9 @@
 	max-width: $standard-width;
 	width: $full-width;
 
-	a {
-		color: $ontario-colour-white;
-		font-weight: 600;
+    a {
+        color: $ontario-colour-white;
+        font-weight: $ontario-font-weights-semi-bold;
 
 		&:visited {
 			color: $ontario-colour-white;
