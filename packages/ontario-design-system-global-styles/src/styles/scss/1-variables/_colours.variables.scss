@@ -30,9 +30,9 @@ $ontario-colour-link--visited: $ontario-colour-system-link-visited;
 
 // Secondary and tertiary button colours
 $ontario-colour-button-secondary--hover: scale_color($ontario-colour-link, $lightness: 90%); // #E0F0FF
-$ontario-colour-button-secondary--active: scale_color($ontario-colour-link,  $lightness: 80%); // #C2E0FF
-$ontario-colour-button-tertiary--hover: scale_color($ontario-colour-black,  $lightness: 90%); // #E8E8E8
-$ontario-colour-button-tertiary--active: scale_color($ontario-colour-black,  $lightness: 80%); // #D1D1D1
+$ontario-colour-button-secondary--active: scale_color($ontario-colour-link, $lightness: 80%); // #C2E0FF
+$ontario-colour-button-tertiary--hover: scale_color($ontario-colour-black, $lightness: 90%); // #E8E8E8
+$ontario-colour-button-tertiary--active: scale_color($ontario-colour-black, $lightness: 80%); // #D1D1D1
 
 // Alert colours
 $ontario-colour-alert: $ontario-colour-system-alert;

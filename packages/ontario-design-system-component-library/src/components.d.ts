@@ -8,8 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
-import { headerTitle } from "./components/ontario-header/headerTitle.interface";
-import { languageToggleOptions } from "./components/ontario-header/languageToggleOptions.interface";
+import { languageTogglePaths, titleHeader } from "./components/ontario-header/titleHeader";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
     interface MyComponent {
@@ -103,27 +102,19 @@ export namespace Components {
          */
         "options": string | DropdownOption[];
     }
+    interface OntarioFooter {
+        "ifDefault": boolean;
+        "ifExpanded": boolean;
+        "ifExpandedThreeColumn": boolean;
+        "ifExpandedTwoColumn": boolean;
+        "ifTwoColumns": boolean;
+        "type": 'default' | 'partnership' | 'expanded';
+    }
     interface OntarioHeader {
-        /**
-          * The link that contains the french page
-         */
-        "languageToggleOptions": languageToggleOptions | string;
-        /**
-          * The items that will go inside the menu
-         */
-        "menuItems": headerTitle[] | string;
-        /**
-          * Toggler for the menu and the search button
-         */
-        "menuToggle": boolean;
-        "searchToggle"?: boolean;
-        /**
-          * The title for the header
-         */
-        "titleHeader": headerTitle | string;
-        /**
-          * The type of header
-         */
+        "languageTogglePaths": languageTogglePaths | string;
+        "menuItems": titleHeader[] | string;
+        "titleHeader": titleHeader | string;
+        "toggle": boolean;
         "type"?: 'application' | 'ontario';
     }
     interface OntarioHintExpander {
@@ -1001,6 +992,12 @@ declare global {
         prototype: HTMLOntarioDropdownListElement;
         new (): HTMLOntarioDropdownListElement;
     };
+    interface HTMLOntarioFooterElement extends Components.OntarioFooter, HTMLStencilElement {
+    }
+    var HTMLOntarioFooterElement: {
+        prototype: HTMLOntarioFooterElement;
+        new (): HTMLOntarioFooterElement;
+    };
     interface HTMLOntarioHeaderElement extends Components.OntarioHeader, HTMLStencilElement {
     }
     var HTMLOntarioHeaderElement: {
@@ -1666,6 +1663,7 @@ declare global {
         "ontario-button": HTMLOntarioButtonElement;
         "ontario-checkboxes": HTMLOntarioCheckboxesElement;
         "ontario-dropdown-list": HTMLOntarioDropdownListElement;
+        "ontario-footer": HTMLOntarioFooterElement;
         "ontario-header": HTMLOntarioHeaderElement;
         "ontario-hint-expander": HTMLOntarioHintExpanderElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
@@ -1874,27 +1872,20 @@ declare namespace LocalJSX {
          */
         "options"?: string | DropdownOption[];
     }
+    interface OntarioFooter {
+        "ifDefault"?: boolean;
+        "ifExpanded"?: boolean;
+        "ifExpandedThreeColumn"?: boolean;
+        "ifExpandedTwoColumn"?: boolean;
+        "ifTwoColumns"?: boolean;
+        "type"?: 'default' | 'partnership' | 'expanded';
+    }
     interface OntarioHeader {
-        /**
-          * The link that contains the french page
-         */
-        "languageToggleOptions"?: languageToggleOptions | string;
-        /**
-          * The items that will go inside the menu
-         */
-        "menuItems"?: headerTitle[] | string;
-        /**
-          * Toggler for the menu and the search button
-         */
-        "menuToggle"?: boolean;
-        "searchToggle"?: boolean;
-        /**
-          * The title for the header
-         */
-        "titleHeader"?: headerTitle | string;
-        /**
-          * The type of header
-         */
+        "languageTogglePaths"?: languageTogglePaths | string;
+        "menuItems"?: titleHeader[] | string;
+        "onChangeEvent"?: (event: CustomEvent<any>) => void;
+        "titleHeader"?: titleHeader | string;
+        "toggle"?: boolean;
         "type"?: 'application' | 'ontario';
     }
     interface OntarioHintExpander {
@@ -2779,6 +2770,7 @@ declare namespace LocalJSX {
         "ontario-button": OntarioButton;
         "ontario-checkboxes": OntarioCheckboxes;
         "ontario-dropdown-list": OntarioDropdownList;
+        "ontario-footer": OntarioFooter;
         "ontario-header": OntarioHeader;
         "ontario-hint-expander": OntarioHintExpander;
         "ontario-hint-text": OntarioHintText;
@@ -2899,6 +2891,7 @@ declare module "@stencil/core" {
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             "ontario-checkboxes": LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
             "ontario-dropdown-list": LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
+            "ontario-footer": LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;
             "ontario-header": LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
             "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
             "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
