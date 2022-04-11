@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
+import { IconColour } from "./components/ontario-icon/ontario-icon.enum";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
     interface MyComponent {
@@ -134,7 +135,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -144,7 +145,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -154,7 +155,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -164,7 +165,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -198,7 +199,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -208,7 +209,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -218,7 +219,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -228,7 +229,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -238,7 +239,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -248,7 +249,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -258,7 +259,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -268,7 +269,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -278,7 +279,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -288,7 +289,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -298,7 +299,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -308,7 +309,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -318,7 +319,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -328,7 +329,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -338,7 +339,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -348,7 +349,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -358,7 +359,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -374,7 +375,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -384,7 +385,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -394,7 +395,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -404,7 +405,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -414,7 +415,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -424,7 +425,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -434,7 +435,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -444,7 +445,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -454,7 +455,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -464,7 +465,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -474,7 +475,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -484,7 +485,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -494,7 +495,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -528,7 +529,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -538,7 +539,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -548,7 +549,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -558,7 +559,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -568,7 +569,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -578,7 +579,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -588,7 +589,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -598,7 +599,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -608,7 +609,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -630,7 +631,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -640,7 +641,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -650,7 +651,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -660,7 +661,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -670,7 +671,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -680,7 +681,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -690,7 +691,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -700,7 +701,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -710,7 +711,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -720,7 +721,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -730,7 +731,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -740,7 +741,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -750,7 +751,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -760,7 +761,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -770,7 +771,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -780,7 +781,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -790,7 +791,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -800,7 +801,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -810,7 +811,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -820,7 +821,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -830,7 +831,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -840,7 +841,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -850,7 +851,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -860,7 +861,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -870,7 +871,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -880,7 +881,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -890,7 +891,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -900,7 +901,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -910,7 +911,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -920,7 +921,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -930,7 +931,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -940,7 +941,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -950,7 +951,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -960,7 +961,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -970,7 +971,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -980,7 +981,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -990,7 +991,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1000,7 +1001,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1010,7 +1011,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1020,7 +1021,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1030,7 +1031,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1040,7 +1041,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1050,7 +1051,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1060,7 +1061,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1070,7 +1071,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1080,7 +1081,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1096,7 +1097,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1106,7 +1107,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1116,7 +1117,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1126,7 +1127,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1136,7 +1137,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1146,7 +1147,7 @@ export namespace Components {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2203,7 +2204,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2213,7 +2214,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2223,7 +2224,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2233,7 +2234,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2267,7 +2268,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2277,7 +2278,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2287,7 +2288,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2297,7 +2298,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2307,7 +2308,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2317,7 +2318,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2327,7 +2328,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2337,7 +2338,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2347,7 +2348,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2357,7 +2358,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2367,7 +2368,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2377,7 +2378,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2387,7 +2388,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2397,7 +2398,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2407,7 +2408,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2417,7 +2418,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2427,7 +2428,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2443,7 +2444,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2453,7 +2454,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2463,7 +2464,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2473,7 +2474,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2483,7 +2484,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2493,7 +2494,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2503,7 +2504,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2513,7 +2514,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2523,7 +2524,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2533,7 +2534,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2543,7 +2544,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2553,7 +2554,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2563,7 +2564,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2597,7 +2598,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2607,7 +2608,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2617,7 +2618,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2627,7 +2628,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2637,7 +2638,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2647,7 +2648,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2657,7 +2658,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2667,7 +2668,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2677,7 +2678,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2699,7 +2700,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2709,7 +2710,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2719,7 +2720,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2729,7 +2730,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2739,7 +2740,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2749,7 +2750,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2759,7 +2760,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2769,7 +2770,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2779,7 +2780,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2789,7 +2790,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2799,7 +2800,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2809,7 +2810,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2819,7 +2820,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2829,7 +2830,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2839,7 +2840,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2849,7 +2850,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2859,7 +2860,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2869,7 +2870,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2879,7 +2880,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2889,7 +2890,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2899,7 +2900,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2909,7 +2910,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2919,7 +2920,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2929,7 +2930,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2939,7 +2940,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2949,7 +2950,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2959,7 +2960,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2969,7 +2970,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2979,7 +2980,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2989,7 +2990,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2999,7 +3000,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3009,7 +3010,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3019,7 +3020,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3029,7 +3030,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3039,7 +3040,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3049,7 +3050,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3059,7 +3060,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3069,7 +3070,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3079,7 +3080,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3089,7 +3090,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3099,7 +3100,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3109,7 +3110,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3119,7 +3120,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3129,7 +3130,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3139,7 +3140,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3149,7 +3150,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3165,7 +3166,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3175,7 +3176,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3185,7 +3186,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3195,7 +3196,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3205,7 +3206,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3215,7 +3216,7 @@ declare namespace LocalJSX {
         /**
           * Set the icon's colour. Note that some icon's colour cannot be changed.
          */
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
