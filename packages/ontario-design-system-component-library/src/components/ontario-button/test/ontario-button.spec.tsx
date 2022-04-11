@@ -2,11 +2,11 @@ import { newSpecPage } from '@stencil/core/testing';
 import { OntarioButton } from '../ontario-button';
 
 it('should render a default button', async () => {
-	const page = await newSpecPage({
-		components: [OntarioButton],
-		html: `<ontario-button>Element Content</ontario-button>`,
-	});
-	expect(page.root).toEqualHtml(`
+  const page = await newSpecPage({
+    components: [OntarioButton],
+    html: `<ontario-button>Element Content</ontario-button>`,
+  });
+  expect(page.root).toEqualHtml(`
     <ontario-button>
       <mock:shadow-root>
         <button aria-label="Element Content" class="ontario-button ontario-button--secondary" type="button">
@@ -14,16 +14,16 @@ it('should render a default button', async () => {
         </button>
       </mock:shadow-root>
       Element Content
-    </ontario-button>    
+    </ontario-button>
   `);
 });
 
 it('should render a primary submit button', async () => {
-	const page = await newSpecPage({
-		components: [OntarioButton],
-		html: `<ontario-button type="primary" html-type="submit">Element Content</ontario-button>`,
-	});
-	expect(page.root).toEqualHtml(`
+  const page = await newSpecPage({
+    components: [OntarioButton],
+    html: `<ontario-button type="primary" html-type="submit">Element Content</ontario-button>`,
+  });
+  expect(page.root).toEqualHtml(`
     <ontario-button type="primary" html-type="submit">
       <mock:shadow-root>
         <button aria-label="Element Content" class="ontario-button ontario-button--primary" type="submit">
@@ -36,11 +36,11 @@ it('should render a primary submit button', async () => {
 });
 
 it('should render a default button with label overriding the element content', async () => {
-	const page = await newSpecPage({
-		components: [OntarioButton],
-		html: `<ontario-button label="Label">Element Content</ontario-button>`,
-	});
-	expect(page.root).toEqualHtml(`
+  const page = await newSpecPage({
+    components: [OntarioButton],
+    html: `<ontario-button label="Label">Element Content</ontario-button>`,
+  });
+  expect(page.root).toEqualHtml(`
     <ontario-button label="Label">
       <mock:shadow-root>
         <button aria-label="Label" class="ontario-button ontario-button--secondary" type="button">
@@ -53,11 +53,11 @@ it('should render a default button with label overriding the element content', a
 });
 
 it('should render a default button with the aria-label attribute being overwritten', async () => {
-	const page = await newSpecPage({
-		components: [OntarioButton],
-		html: `<ontario-button aria-label="Aria Label">Element Content</ontario-button>`,
-	});
-	expect(page.root).toEqualHtml(`
+  const page = await newSpecPage({
+    components: [OntarioButton],
+    html: `<ontario-button aria-label="Aria Label">Element Content</ontario-button>`,
+  });
+  expect(page.root).toEqualHtml(`
     <ontario-button aria-label="Aria Label">
       <mock:shadow-root>
         <button aria-label="Aria Label" class="ontario-button ontario-button--secondary" type="button">
@@ -70,11 +70,11 @@ it('should render a default button with the aria-label attribute being overwritt
 });
 
 it('should render a default button with an id being explicity specified', async () => {
-	const page = await newSpecPage({
-		components: [OntarioButton],
-		html: `<ontario-button button-id="DefaultButton">Element Content</ontario-button>`,
-	});
-	expect(page.root).toEqualHtml(`
+  const page = await newSpecPage({
+    components: [OntarioButton],
+    html: `<ontario-button button-id="DefaultButton">Element Content</ontario-button>`,
+  });
+  expect(page.root).toEqualHtml(`
     <ontario-button button-id="DefaultButton">
       <mock:shadow-root>
         <button aria-label="Element Content" class="ontario-button ontario-button--secondary" type="button" id="DefaultButton">
@@ -84,4 +84,15 @@ it('should render a default button with an id being explicity specified', async 
       Element Content
     </ontario-button>
   `);
+});
+
+it('should throw an error when label is not supplied', async () => {
+  try {
+    await newSpecPage({
+      components: [OntarioButton],
+      html: `<ontario-button></ontario-button>`,
+    });
+  } catch (validationError) {
+    expect(validationError).toEqual(console.log('Label is required'));
+  }
 });
