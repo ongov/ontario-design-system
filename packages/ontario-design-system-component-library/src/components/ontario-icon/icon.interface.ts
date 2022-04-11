@@ -14,8 +14,14 @@ export interface Icon {
 	 */
 	iconWidth: number;
 
+    /**
+     * Validate user input for the `colour` property.
+     * Implementation is optional because some icons don't use the `colour` property.
+     */
+    validateColour?: () => void;
+
 	/**
-	 * Validate icon width user input. Implementation is mandatory.
+	 * Validate user input for the `iconWidth` property. Implementation is mandatory.
 	 */
 	validateWidth: () => void;
 
