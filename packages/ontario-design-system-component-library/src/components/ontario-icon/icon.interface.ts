@@ -4,6 +4,7 @@ export interface Icon {
 	/**
 	 * Set the icon's colour.
 	 * Some icon components do not implement this property and hence implementation is optional.
+     * Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
 	 */
 	colour?: IconColour;
 
