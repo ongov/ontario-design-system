@@ -26,7 +26,8 @@ export interface Icon {
 	validateWidth: () => void;
 
 	/**
-	 * Stencil API that doesn't return anything. Implementation is optional.
+	 * Stencil component lifecycle method that is called once after the component is first connected to the DOM.
+     * Implementation is optional.
 	 */
 	componentWillLoad?: () => void;
 

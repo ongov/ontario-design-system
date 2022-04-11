@@ -27,15 +27,15 @@ export class OntarioIconInteracEn implements Icon {
         }
     }
 
-    /**
-	 * Stencil API that doesn't return anything. Implementation is optional.
+	/**
+	 * Stencil component lifecycle method that is called once after the component is first connected to the DOM.
 	 */
     componentWillLoad() {
         this.validateWidth();
     }
 
     /**
-	 * Returns the HTML code to be rendered into a custom element. Implementation is mandatory.
+	 * Returns the HTML code to be rendered into a custom element.
 	 */
     render() {
         return (
