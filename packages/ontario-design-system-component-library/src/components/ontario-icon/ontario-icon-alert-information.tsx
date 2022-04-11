@@ -16,7 +16,7 @@ export class OntarioIconAlertInformation implements Icon {
     
     /**
      * Watch for changes in the `iconWidth` variable for validation purpose.
-     * If the user input is not a number or a negative number then `iconWidth` will be set to its default (24).
+     * If the user input is not a number or is a negative number then `iconWidth` will be set to its default (24).
      */
     @Watch('iconWidth')
     validateWidth() {

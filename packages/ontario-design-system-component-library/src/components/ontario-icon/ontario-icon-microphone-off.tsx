@@ -21,10 +21,20 @@ export class OntarioIconMicrophoneOff implements Icon {
      * Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
      */
     @Prop() colour: IconColour = IconColour.black;
+
+    /**
+     * Watch for changes in the `colour` variable for validation purpose.
+     * If the user input doesn't match one of the enum values then `colour` will be set to its default (`black`).
+     * If a match is found in one of the enum values then `colour` will be set to the matching enum value.
+     */
+    @Watch('colour')
+    validateColour() {
+        this.colour = (this.colour && Object.values(IconColour).find(colour => colour === this.colour.toLowerCase())) || IconColour.black;
+    }
     
     /**
      * Watch for changes in the `iconWidth` variable for validation purpose.
-     * If the user input is not a number or a negative number then `iconWidth` will be set to its default (24).
+     * If the user input is not a number or is a negative number then `iconWidth` will be set to its default (24).
      */
     @Watch('iconWidth')
     validateWidth() {
@@ -39,6 +49,7 @@ export class OntarioIconMicrophoneOff implements Icon {
 	 * Stencil API that doesn't return anything. Implementation is optional.
 	 */
     componentWillLoad() {
+        this.validateColour();
         this.validateWidth();
     }
 
