@@ -71,19 +71,20 @@ export class ${toPascalCase(iconName)} implements Icon {
     ${svgObject.hasColour ? `
     /**
      * Set the icon's colour.
-     * Note that some icon's colour cannot be changed.
+     * Some icon's colour cannot be changed.
+     * Note that the \`keyof typeof\` syntax is not necessary to use the enum as a type with StencilJS component.
      */
     @Prop() colour: IconColour = IconColour.black;
     ` : ``}
     /**
-     * Watch for changes in the \`iconWidth\` variable for validation purpose
+     * Watch for changes in the \`iconWidth\` variable for validation purpose.
+     * If the user input is not a number or a negative number then \`iconWidth\` will be set to its default (24).
      */
     @Watch('iconWidth')
     validateWidth() {
         const defaultWidth = 24;
 
-        // if value is not a number, set the iconWidth to be 24
-        if (isNaN(this.iconWidth)) {
+        if (isNaN(this.iconWidth) || (!isNaN(this.iconWidth) && this.iconWidth <= 0)) {
             this.iconWidth = defaultWidth;
         }
     }
@@ -121,13 +122,16 @@ const createIconComponents = async () => {
         // proceed with icon generation process if the file extension is `.svg` and the filename starts with the string `ontario-icon-`.
         if (iconFile.includes('.svg') && iconFile.startsWith(iconNamePrefix)) {
 
-            // Strip the path data and file extension from `iconFilename` and store the resulting value in `iconName`
+            // strip the path data and file extension from `iconFilename` and store the resulting value in `iconName`
             const iconName = path.basename(iconFile, '.svg');
 
             // the array.slice() function is used to remove the `./` from the `iconDirectory` variable
+            // NodeJS's `readFile` resolves path relative to the current working directory and hence absolute path is used to ensure everyone can execute this script.
+            // a environment variable `__dirname` is used to retrieve the absolute path to the folder containing this script.
+            // because the icons are stored in the node_modules, the `../../../../` is required to traverse up to the node_modules folder for `path.join` to create an absolute path to the icons folder.
             const iconFilePath = path.join(__dirname, `../../../../${iconDirectory.slice(2)}/${iconFile}`);
             const iconFileContent = await readFile(iconFilePath, {encoding: 'utf-8'});
-            let iconObject = await parse(iconFileContent, {
+            const iconObject = await parse(iconFileContent, {
                 transformNode: node => {
                     // transform `node` object to rename `viewbox` property to `viewBox` for HTML consumption.
                     if (node.attributes['viewbox'] && !node.attributes['viewBox']) {
@@ -145,14 +149,10 @@ const createIconComponents = async () => {
             });
 
             // generate the template
-            let iconComponentTemplate = getIconComponentTemplate(iconObject, iconName);
+            const iconComponentTemplate = getIconComponentTemplate(iconObject, iconName);
 
             // create `ontario-icon-*.tsx` file
-            try {
-                await writeFile(`./src/components/ontario-icon/${iconName}.tsx`, iconComponentTemplate)
-            } catch (error) {
-                throw error;
-            }
+            await writeFile(`./src/components/ontario-icon/${iconName}.tsx`, iconComponentTemplate);
         }
     }
 };
