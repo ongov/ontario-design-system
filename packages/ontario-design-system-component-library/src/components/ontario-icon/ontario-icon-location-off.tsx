@@ -17,19 +17,20 @@ export class OntarioIconLocationOff implements Icon {
     
     /**
      * Set the icon's colour.
-     * Note that some icon's colour cannot be changed.
+     * Some icon's colour cannot be changed.
+     * Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
      */
     @Prop() colour: IconColour = IconColour.black;
     
     /**
-     * Watch for changes in the `iconWidth` variable for validation purpose
+     * Watch for changes in the `iconWidth` variable for validation purpose.
+     * If the user input is not a number or a negative number then `iconWidth` will be set to its default (24).
      */
     @Watch('iconWidth')
     validateWidth() {
         const defaultWidth = 24;
 
-        // if value is not a number, set the iconWidth to be 24
-        if (isNaN(this.iconWidth)) {
+        if (isNaN(this.iconWidth) || (!isNaN(this.iconWidth) && this.iconWidth <= 0)) {
             this.iconWidth = defaultWidth;
         }
     }
