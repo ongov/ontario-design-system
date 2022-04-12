@@ -90,7 +90,7 @@ export class OntarioButton implements OntarioButtonProperties {
 	validateCaption(newValue: string) {
 		const isLabelBlank = typeof newValue !== 'string' || newValue === '';
 		const isElementContentBlank = typeof this.host.textContent !== 'string' || this.host.textContent === '';
-		if (isLabelBlank && isElementContentBlank) { console.log('Label is required') };
+		if (isLabelBlank && isElementContentBlank) { console.warn('Label prop is required for ontario-button') };
 	}
 
 	/**

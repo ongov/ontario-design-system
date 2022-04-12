@@ -93,6 +93,6 @@ it('should throw an error when label is not supplied', async () => {
       html: `<ontario-button></ontario-button>`,
     });
   } catch (validationError) {
-    expect(validationError).toEqual(console.log('Label is required'));
+    expect(validationError).toEqual(console.warn('Label prop is required for ontario-button'));
   }
 });
