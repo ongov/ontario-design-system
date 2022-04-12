@@ -20,7 +20,9 @@ export class OntarioHintExpander implements HintExpander {
   @Prop({ mutable: true }) hint: string;
 
   /**
-   * Content to display as the hint, once the expander is toggled open
+   * Content to display as the hint, once the expander is toggled open.
+   * Please note that any content that is passed into this prop will only be displayed as a string.
+   * If you would like to add HTML content, supply child content to the component.
    */
   @Prop({ mutable: true }) content: string;
 
@@ -63,7 +65,7 @@ export class OntarioHintExpander implements HintExpander {
    */
   componentWillLoad() {
     this.ariaLabel = this.ariaLabel ?? this.hint;
-    this.content = this.content ?? this.host.textContent;
+    this.content = this.content ?? <slot />;
     this.elementId = this.elementId ?? uuid();
   }
 
