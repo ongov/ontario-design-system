@@ -1,13 +1,9 @@
-// @import "../../../theme/assets/styles/sass/variables-import";
-// @import "../../../theme/assets/styles/sass/utilities/text-utilities";
-
 @import '../../global.scss';
 
 .ontario-footer {
 	color: $ontario-colour-white;
 	padding: $spacing-9 $spacing-0;
 
-	//new
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 1rem;
 	line-height: 1.6rem;
@@ -35,7 +31,6 @@
 		margin-bottom: $spacing-2;
 	}
 
-	//new
 	padding-inline-start: 0px;
 }
 
@@ -109,8 +104,8 @@
 	padding: $spacing-0;
 	outline: none;
 
-	height: calc(#{$spacing-8} + #{$spacing-2});
-	width: calc(#{$spacing-8} + #{$spacing-2});
+	height: $spacing-8 + $spacing-2;
+	width: $spacing-8 + $spacing-2;
 
 	display: flex;
 	justify-content: center;
@@ -189,7 +184,6 @@
 
 /* Supergraphic background */
 .ontario-footer--default,
-//.ontario-footer--partnership,      <-- used to be included
 .ontario-footer__expanded-top-section {
 	position: relative;
 
@@ -205,17 +199,10 @@
 	}
 }
 
-// .ontario-footer--default:before {
-//     background-image: url("./build/assets/footer-default-supergraphic-logo.svg");
-// }
-
 .ontario-footer--default:before {
 	background-image: var(--imagePath, url(''));
 }
 
-// .ontario-footer__expanded-top-section:before {
-//     background-image: url("./build/assets/footer-expanded-supergraphic-logo.svg");
-// }
 .ontario-footer__expanded-top-section:before {
 	background-image: var(--imagePath, url(''));
 }
@@ -257,7 +244,6 @@
 		text-align: left;
 	}
 
-	//new
 	p {
 		margin: 0;
 	}
@@ -351,7 +337,6 @@
 	padding-top: $spacing-9;
 }
 
-//new
 .ontario-button {
 	border: none;
 	border-radius: 4px;
