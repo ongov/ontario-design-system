@@ -216,7 +216,6 @@ export class OntarioHeader {
 	 * @param onBlur when set to true, it will call the function trapMenuFocus(), otherwise nothing is done (used in lastLink)
 	 * @param tabIndex when set to true, it will set the tabindex to be -1, meaning it can't be in focus (used in items when the menu is closed)
 	 */
-
 	private generateMenuItem(href: string, name: string, liClass?: string, aClass?: string, onBlur?: boolean, tabIndex?: boolean) {
 		return (
 			<li class={liClass}>
@@ -236,11 +235,10 @@ export class OntarioHeader {
 						: 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-application-navigation--closed'
 				}
 				id="ontario-application-header-menu-toggler"
-				aria-controls="ontario-application-navigation"
 				aria-label={this.menuToggle ? 'open menu' : 'close menu'}
 				data-target="megaMenu"
 				onClick={this.handleMenuToggle}
-				aria-hidden={!this.menuToggle}
+				aria-hidden={`${this.menuToggle}`}
 				ref={el => (this.menuButton = el as HTMLInputElement)}
 			>
 				<div class="ontario-icon-container" innerHTML={this.menuToggle ? OntarioIconClose : OntarioIconMenu} />
@@ -253,7 +251,6 @@ export class OntarioHeader {
 	 * The renderMenuButton is needed because of how the ref can only be used once in a component.
 	 * Without this function, the trapMenuFocus() would not work in all of the 3 different configs (desktop, tablet, and mobile).
 	 */
-
 	private renderMenuButton(itemLength: number) {
 		if (itemLength > 5) {
 			return <div>{this.showMenuButton()}</div>;
@@ -266,7 +263,6 @@ export class OntarioHeader {
 	 * The renderMenuUl function covers the edge case of when there are less than 4 items,
 	 * and the screen size changes when the menu is opened.
 	 */
-
 	private renderMenuUl(itemLength: number) {
 		if (itemLength > 5) {
 			return '';
@@ -279,7 +275,6 @@ export class OntarioHeader {
 	 * The renderOverlay function covers the edge case of when there are 2 or less items,
 	 * and the screen size changes when the menu is opened.
 	 */
-
 	private renderOverlay(itemLength: number) {
 		if (itemLength <= 2) {
 			return 'ontario-show-for-small-only ontario-overlay';
@@ -289,7 +284,6 @@ export class OntarioHeader {
 	/**
 	 * The onEscapePressed function clears the searchbar form when Escape is pressed
 	 */
-	
 	private onEscapePressed(event: any) {
 		if (event.key === 'Escape') {
 			event.path[0].value = '';
@@ -320,7 +314,7 @@ export class OntarioHeader {
 									id="ontario-search-form-container"
 									onSubmit={this.handleSubmit}
 									class="ontario-header__search-container ontario-columns ontario-small-10 ontario-medium-offset-3 ontario-medium-6 ontario-large-offset-0 ontario-large-6"
-									aria-hidden={!this.searchToggle}
+									aria-hidden={`${this.menuToggle}`}
 									novalidate
 								>
 									<label htmlFor="ontario-search-input-field" class="ontario-show-for-sr">
@@ -371,14 +365,14 @@ export class OntarioHeader {
 										aria-label="close search bar"
 										onClick={this.handleSearchToggle}
 									>
-										<span aria-hidden="true">close</span>
+										<span aria-hidden={`${this.menuToggle}`}>close</span>
 										<div class="ontario-icon-container" innerHTML={OntarioIconClose} />
 									</button>
 								</div>
 							</div>
 						</header>
 						{this.menuToggle ? (
-							<nav role="navigation" class="ontario-navigation" id="ontario-navigation" aria-hidden={!this.menuToggle}>
+							<nav role="navigation" class="ontario-navigation" id="ontario-navigation" aria-hidden={`${this.menuToggle}`}>
 								<div class="ontario-navigation ontario-navigation__container ontario-navigation--open">
 									<ul>
 										{/*
@@ -394,7 +388,7 @@ export class OntarioHeader {
 								</div>
 							</nav>
 						) : (
-							<nav role="navigation" class="ontario-navigation" id="ontario-navigation" aria-hidden={!this.menuToggle}>
+							<nav role="navigation" class="ontario-navigation" id="ontario-navigation" aria-hidden={`${this.menuToggle}`}>
 								<div class="ontario-navigation ontario-navigation__container ontario-navigation--closed">
 									<ul>
 										{/*
@@ -464,7 +458,7 @@ export class OntarioHeader {
 								</div>
 							</section>
 							{this.menuToggle ? (
-								<nav role="navigation" class="ontario-application-navigation" id="ontario-application-navigation" aria-hidden={!this.menuToggle}>
+								<nav role="navigation" class="ontario-application-navigation" id="ontario-application-navigation" aria-hidden={`${this.menuToggle}`}>
 									<div class="ontario-application-navigation ontario-application-navigation__container ontario-navigation--open">
 										<ul class={this.renderMenuUl(this.itemState.length)}>
 											{/*
@@ -497,7 +491,7 @@ export class OntarioHeader {
 									</div>
 								</nav>
 							) : (
-								<nav role="navigation" class="ontario-application-navigation" id="ontario-application-navigation" aria-hidden={!this.menuToggle}>
+								<nav role="navigation" class="ontario-application-navigation" id="ontario-application-navigation" aria-hidden={`${this.menuToggle}`}>
 									<div class="ontario-application-navigation ontario-application-navigation__container ontario-navigation--closed">
 										<ul>
 											{/*
