@@ -109,6 +109,7 @@ export namespace Components {
         "ariaLabel"?: string;
         /**
           * Content to display as the hint, once the expander is toggled open. Please note that any content that is passed into this prop will only be displayed as a string. If you would like to add HTML content, supply child content to the component.
+          * @example <ontario-hint-expander hint="This is the hint" aria-label="This indicates that the hint can be expanded">   <img src="https://www.jquery-az.com/html/images/banana.jpg" title="Title of image" alt="alt text here"/>   <p> Here is the content beside the image </p> </ontario-hint-expander>
          */
         "content": string;
         /**
@@ -1855,6 +1856,7 @@ declare namespace LocalJSX {
         "ariaLabel"?: string;
         /**
           * Content to display as the hint, once the expander is toggled open. Please note that any content that is passed into this prop will only be displayed as a string. If you would like to add HTML content, supply child content to the component.
+          * @example <ontario-hint-expander hint="This is the hint" aria-label="This indicates that the hint can be expanded">   <img src="https://www.jquery-az.com/html/images/banana.jpg" title="Title of image" alt="alt text here"/>   <p> Here is the content beside the image </p> </ontario-hint-expander>
          */
         "content"?: string;
         /**
