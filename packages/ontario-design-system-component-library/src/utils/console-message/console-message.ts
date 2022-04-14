@@ -3,10 +3,14 @@ import { ConsoleType, MessageStyle } from './console-message.enum';
 
 // system tag with formatting specifier
 const designSystemTag = '%cOntario Design System';
+
+// default font size for console messages
 const fontSize = '12px';
 
 // styles for the system tag in a string format
-const tagStyle = [
+// the `background-color`, `color`, `padding` and `border-radius` values are hardcoded because
+// they are specific for console message use case
+const tagStyles = [
 	'background-color: #118847',
 	'border: none',
 	'color: white',
@@ -19,33 +23,35 @@ const tagStyle = [
 ].join(';');
 
 // styles for regular text in string format
-const regularText = ['font-family: sans-serif', `font-size: ${fontSize}`].join(';');
+const regularTextStyles = ['font-family: sans-serif', `font-size: ${fontSize}`].join(';');
 
 // styles for code in string format
-const codedText = ['font-family: monospace', `font-size: ${fontSize}`].join(';');
+const codedTextStyles = ['font-family: monospace', `font-size: ${fontSize}`].join(';');
 
-// print message to console depending on the type of console
-export function printConsoleMessage(messageObject: ConsoleMessage[], consoleType = ConsoleType.WARNING, hasTag = true) {
-    
-    // retrieve message from each object and concatenate them into one single string in order
-    const message = messageObject.reduce((message: string, currentObject: ConsoleMessage) => (message += currentObject.message ?? ''), hasTag ? designSystemTag : '');
-    
-    // array of arguments to be passed into the the console function
-    const messageArray: string[] = [];
-    
-    // push message into the array of arguments depending on whether `hasTag` is true
-    if (hasTag) {
-        messageArray.push(message, tagStyle);
-    } else {
-        messageArray.push(message);
-    }
+// print message to console depending on the `ConsoleType`
+export function printConsoleMessage(messageObject: ConsoleMessage[], consoleType = ConsoleType.WARNING, hasSystemTag = true) {
+	// retrieve message from each object and concatenate them into one single string in order
+	// if `hasSystemTag` is true then the message string will being with the value stored within `designSystemTag`.
+	const message = messageObject.reduce((message: string, currentObject: ConsoleMessage) => (message += currentObject.message ?? ''), hasSystemTag ? designSystemTag : '');
 
-    // push style of reach message into the array of arguments in order
-    messageObject.forEach((message: ConsoleMessage) => {
-        messageArray.push(message.style && message.style === MessageStyle.CODE ? codedText : regularText);
-    });
+	// array of arguments to be passed into the the console function
+	const messageArray: string[] = [];
 
-    // pass array of arguments into the console function depending on `consoleType`
+	// push message into the array of arguments
+	// depending on whether the system tag is used (i.e. `hasSystemTag` is true), push `tagStyles` into the array
+	if (hasSystemTag) {
+		messageArray.push(message, tagStyles);
+	} else {
+		messageArray.push(message);
+	}
+
+	// push style of each message into the array of arguments in order
+	messageObject.forEach((message: ConsoleMessage) => {
+		messageArray.push(message.style && message.style === MessageStyle.CODE ? codedTextStyles : regularTextStyles);
+	});
+
+	// pass array of arguments into the console function for printing depending on `consoleType`
+	// the `function.apply()` function handles array of arguments which allows list of arguments to be set programmatically
 	switch (consoleType) {
 		case ConsoleType.ERROR:
 			console.error.apply(null, messageArray);
@@ -54,9 +60,9 @@ export function printConsoleMessage(messageObject: ConsoleMessage[], consoleType
 			console.info.apply(null, messageArray);
 			break;
 		case ConsoleType.WARNING:
-            console.warn.apply(null, messageArray);
-            break;
+			console.warn.apply(null, messageArray);
+			break;
 		default:
-            console.log.apply(null, messageArray);
+			console.log.apply(null, messageArray);
 	}
 }
