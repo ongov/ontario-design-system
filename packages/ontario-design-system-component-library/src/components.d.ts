@@ -133,7 +133,7 @@ export namespace Components {
     }
     interface OntarioIconAccessibility {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -143,7 +143,7 @@ export namespace Components {
     }
     interface OntarioIconAccount {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -153,7 +153,7 @@ export namespace Components {
     }
     interface OntarioIconAdd {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -163,7 +163,7 @@ export namespace Components {
     }
     interface OntarioIconAddAlt {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -197,7 +197,7 @@ export namespace Components {
     }
     interface OntarioIconAttach {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -207,7 +207,7 @@ export namespace Components {
     }
     interface OntarioIconBookmarkOff {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -217,7 +217,7 @@ export namespace Components {
     }
     interface OntarioIconBookmarkOn {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -227,7 +227,7 @@ export namespace Components {
     }
     interface OntarioIconCalendar {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -237,7 +237,7 @@ export namespace Components {
     }
     interface OntarioIconCamera {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -247,7 +247,7 @@ export namespace Components {
     }
     interface OntarioIconChevronDown {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -257,7 +257,7 @@ export namespace Components {
     }
     interface OntarioIconChevronLeft {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -267,7 +267,7 @@ export namespace Components {
     }
     interface OntarioIconChevronRight {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -277,7 +277,7 @@ export namespace Components {
     }
     interface OntarioIconChevronUp {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -287,7 +287,7 @@ export namespace Components {
     }
     interface OntarioIconClock {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -297,7 +297,7 @@ export namespace Components {
     }
     interface OntarioIconClose {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -307,7 +307,7 @@ export namespace Components {
     }
     interface OntarioIconCloud {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -317,7 +317,7 @@ export namespace Components {
     }
     interface OntarioIconCollapse {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -327,7 +327,7 @@ export namespace Components {
     }
     interface OntarioIconCreditCard {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -337,7 +337,7 @@ export namespace Components {
     }
     interface OntarioIconDelete {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -347,7 +347,7 @@ export namespace Components {
     }
     interface OntarioIconDocument {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -357,7 +357,7 @@ export namespace Components {
     }
     interface OntarioIconDownload {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -373,7 +373,7 @@ export namespace Components {
     }
     interface OntarioIconEdit {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -383,7 +383,7 @@ export namespace Components {
     }
     interface OntarioIconEmail {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -393,7 +393,7 @@ export namespace Components {
     }
     interface OntarioIconExpand {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -403,7 +403,7 @@ export namespace Components {
     }
     interface OntarioIconExport {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -413,7 +413,7 @@ export namespace Components {
     }
     interface OntarioIconFacebook {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -423,7 +423,7 @@ export namespace Components {
     }
     interface OntarioIconFacebookAlt {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -433,7 +433,7 @@ export namespace Components {
     }
     interface OntarioIconFavouriteOff {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -443,7 +443,7 @@ export namespace Components {
     }
     interface OntarioIconFavouriteOn {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -453,7 +453,7 @@ export namespace Components {
     }
     interface OntarioIconFilter {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -463,7 +463,7 @@ export namespace Components {
     }
     interface OntarioIconFlickr {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -473,7 +473,7 @@ export namespace Components {
     }
     interface OntarioIconGrid {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -483,7 +483,7 @@ export namespace Components {
     }
     interface OntarioIconHelp {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -493,7 +493,7 @@ export namespace Components {
     }
     interface OntarioIconInstagram {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -527,7 +527,7 @@ export namespace Components {
     }
     interface OntarioIconLinkedin {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -537,7 +537,7 @@ export namespace Components {
     }
     interface OntarioIconLinkedinAlt {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -547,7 +547,7 @@ export namespace Components {
     }
     interface OntarioIconList {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -557,7 +557,7 @@ export namespace Components {
     }
     interface OntarioIconLiveChat {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -567,7 +567,7 @@ export namespace Components {
     }
     interface OntarioIconLocationOff {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -577,7 +577,7 @@ export namespace Components {
     }
     interface OntarioIconLocationOn {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -587,7 +587,7 @@ export namespace Components {
     }
     interface OntarioIconLockOff {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -597,7 +597,7 @@ export namespace Components {
     }
     interface OntarioIconLockOn {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -607,7 +607,7 @@ export namespace Components {
     }
     interface OntarioIconMap {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -629,7 +629,7 @@ export namespace Components {
     }
     interface OntarioIconMediaFastForward {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -639,7 +639,7 @@ export namespace Components {
     }
     interface OntarioIconMediaFastRewind {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -649,7 +649,7 @@ export namespace Components {
     }
     interface OntarioIconMediaPause {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -659,7 +659,7 @@ export namespace Components {
     }
     interface OntarioIconMediaPlay {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -669,7 +669,7 @@ export namespace Components {
     }
     interface OntarioIconMediaStop {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -679,7 +679,7 @@ export namespace Components {
     }
     interface OntarioIconMenu {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -689,7 +689,7 @@ export namespace Components {
     }
     interface OntarioIconMicrophoneOff {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -699,7 +699,7 @@ export namespace Components {
     }
     interface OntarioIconMicrophoneOn {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -709,7 +709,7 @@ export namespace Components {
     }
     interface OntarioIconMoreVertical {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -719,7 +719,7 @@ export namespace Components {
     }
     interface OntarioIconNewWindow {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -729,7 +729,7 @@ export namespace Components {
     }
     interface OntarioIconNext {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -739,7 +739,7 @@ export namespace Components {
     }
     interface OntarioIconNotification {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -749,7 +749,7 @@ export namespace Components {
     }
     interface OntarioIconPasswordHide {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -759,7 +759,7 @@ export namespace Components {
     }
     interface OntarioIconPasswordShow {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -769,7 +769,7 @@ export namespace Components {
     }
     interface OntarioIconPhone {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -779,7 +779,7 @@ export namespace Components {
     }
     interface OntarioIconPhoto {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -789,7 +789,7 @@ export namespace Components {
     }
     interface OntarioIconPinLocationOff {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -799,7 +799,7 @@ export namespace Components {
     }
     interface OntarioIconPinLocationOn {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -809,7 +809,7 @@ export namespace Components {
     }
     interface OntarioIconPrevious {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -819,7 +819,7 @@ export namespace Components {
     }
     interface OntarioIconPrint {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -829,7 +829,7 @@ export namespace Components {
     }
     interface OntarioIconRemove {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -839,7 +839,7 @@ export namespace Components {
     }
     interface OntarioIconRemoveAlt {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -849,7 +849,7 @@ export namespace Components {
     }
     interface OntarioIconReplay {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -859,7 +859,7 @@ export namespace Components {
     }
     interface OntarioIconRssFeed {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -869,7 +869,7 @@ export namespace Components {
     }
     interface OntarioIconSave {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -879,7 +879,7 @@ export namespace Components {
     }
     interface OntarioIconSearch {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -889,7 +889,7 @@ export namespace Components {
     }
     interface OntarioIconSentiment1 {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -899,7 +899,7 @@ export namespace Components {
     }
     interface OntarioIconSentiment2 {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -909,7 +909,7 @@ export namespace Components {
     }
     interface OntarioIconSentiment3 {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -919,7 +919,7 @@ export namespace Components {
     }
     interface OntarioIconSentiment4 {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -929,7 +929,7 @@ export namespace Components {
     }
     interface OntarioIconSentiment5 {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -939,7 +939,7 @@ export namespace Components {
     }
     interface OntarioIconSettings {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -949,7 +949,7 @@ export namespace Components {
     }
     interface OntarioIconShare {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -959,7 +959,7 @@ export namespace Components {
     }
     interface OntarioIconSort {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -969,7 +969,7 @@ export namespace Components {
     }
     interface OntarioIconTag {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -979,7 +979,7 @@ export namespace Components {
     }
     interface OntarioIconTextMessage {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -989,7 +989,7 @@ export namespace Components {
     }
     interface OntarioIconTimer {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -999,7 +999,7 @@ export namespace Components {
     }
     interface OntarioIconTransportBicycle {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -1009,7 +1009,7 @@ export namespace Components {
     }
     interface OntarioIconTransportBus {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -1019,7 +1019,7 @@ export namespace Components {
     }
     interface OntarioIconTransportCar {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -1029,7 +1029,7 @@ export namespace Components {
     }
     interface OntarioIconTransportWalk {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -1039,7 +1039,7 @@ export namespace Components {
     }
     interface OntarioIconTty {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -1049,7 +1049,7 @@ export namespace Components {
     }
     interface OntarioIconTwitter {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -1059,7 +1059,7 @@ export namespace Components {
     }
     interface OntarioIconTwitterAlt {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -1069,7 +1069,7 @@ export namespace Components {
     }
     interface OntarioIconUpload {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -1079,7 +1079,7 @@ export namespace Components {
     }
     interface OntarioIconVideo {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -1095,7 +1095,7 @@ export namespace Components {
     }
     interface OntarioIconVoteDislike {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -1105,7 +1105,7 @@ export namespace Components {
     }
     interface OntarioIconVoteLike {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -1115,7 +1115,7 @@ export namespace Components {
     }
     interface OntarioIconVpnKey {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -1125,7 +1125,7 @@ export namespace Components {
     }
     interface OntarioIconWheelchair {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -1135,7 +1135,7 @@ export namespace Components {
     }
     interface OntarioIconWifi {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -1145,7 +1145,7 @@ export namespace Components {
     }
     interface OntarioIconYoutube {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour": IconColour;
         /**
@@ -2202,7 +2202,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconAccessibility {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2212,7 +2212,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconAccount {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2222,7 +2222,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconAdd {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2232,7 +2232,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconAddAlt {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2266,7 +2266,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconAttach {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2276,7 +2276,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconBookmarkOff {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2286,7 +2286,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconBookmarkOn {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2296,7 +2296,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconCalendar {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2306,7 +2306,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconCamera {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2316,7 +2316,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconChevronDown {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2326,7 +2326,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconChevronLeft {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2336,7 +2336,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconChevronRight {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2346,7 +2346,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconChevronUp {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2356,7 +2356,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconClock {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2366,7 +2366,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconClose {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2376,7 +2376,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconCloud {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2386,7 +2386,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconCollapse {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2396,7 +2396,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconCreditCard {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2406,7 +2406,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconDelete {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2416,7 +2416,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconDocument {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2426,7 +2426,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconDownload {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2442,7 +2442,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconEdit {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2452,7 +2452,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconEmail {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2462,7 +2462,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconExpand {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2472,7 +2472,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconExport {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2482,7 +2482,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconFacebook {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2492,7 +2492,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconFacebookAlt {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2502,7 +2502,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconFavouriteOff {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2512,7 +2512,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconFavouriteOn {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2522,7 +2522,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconFilter {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2532,7 +2532,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconFlickr {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2542,7 +2542,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconGrid {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2552,7 +2552,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconHelp {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2562,7 +2562,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconInstagram {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2596,7 +2596,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconLinkedin {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2606,7 +2606,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconLinkedinAlt {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2616,7 +2616,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconList {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2626,7 +2626,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconLiveChat {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2636,7 +2636,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconLocationOff {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2646,7 +2646,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconLocationOn {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2656,7 +2656,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconLockOff {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2666,7 +2666,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconLockOn {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2676,7 +2676,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMap {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2698,7 +2698,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMediaFastForward {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2708,7 +2708,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMediaFastRewind {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2718,7 +2718,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMediaPause {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2728,7 +2728,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMediaPlay {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2738,7 +2738,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMediaStop {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2748,7 +2748,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMenu {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2758,7 +2758,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMicrophoneOff {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2768,7 +2768,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMicrophoneOn {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2778,7 +2778,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMoreVertical {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2788,7 +2788,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconNewWindow {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2798,7 +2798,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconNext {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2808,7 +2808,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconNotification {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2818,7 +2818,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconPasswordHide {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2828,7 +2828,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconPasswordShow {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2838,7 +2838,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconPhone {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2848,7 +2848,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconPhoto {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2858,7 +2858,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconPinLocationOff {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2868,7 +2868,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconPinLocationOn {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2878,7 +2878,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconPrevious {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2888,7 +2888,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconPrint {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2898,7 +2898,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconRemove {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2908,7 +2908,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconRemoveAlt {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2918,7 +2918,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconReplay {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2928,7 +2928,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconRssFeed {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2938,7 +2938,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconSave {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2948,7 +2948,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconSearch {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2958,7 +2958,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconSentiment1 {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2968,7 +2968,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconSentiment2 {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2978,7 +2978,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconSentiment3 {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2988,7 +2988,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconSentiment4 {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -2998,7 +2998,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconSentiment5 {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3008,7 +3008,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconSettings {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3018,7 +3018,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconShare {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3028,7 +3028,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconSort {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3038,7 +3038,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconTag {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3048,7 +3048,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconTextMessage {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3058,7 +3058,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconTimer {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3068,7 +3068,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconTransportBicycle {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3078,7 +3078,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconTransportBus {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3088,7 +3088,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconTransportCar {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3098,7 +3098,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconTransportWalk {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3108,7 +3108,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconTty {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3118,7 +3118,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconTwitter {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3128,7 +3128,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconTwitterAlt {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3138,7 +3138,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconUpload {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3148,7 +3148,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconVideo {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3164,7 +3164,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconVoteDislike {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3174,7 +3174,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconVoteLike {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3184,7 +3184,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconVpnKey {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3194,7 +3194,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconWheelchair {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3204,7 +3204,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconWifi {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**
@@ -3214,7 +3214,7 @@ declare namespace LocalJSX {
     }
     interface OntarioIconYoutube {
         /**
-          * Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
+          * Set the icon's colour.
          */
         "colour"?: IconColour;
         /**

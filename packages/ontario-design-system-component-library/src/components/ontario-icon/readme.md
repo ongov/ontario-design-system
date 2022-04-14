@@ -29,10 +29,10 @@ Example of a bookmark icon, where the user is is passing a colour property of 'G
 
 ## Properties
 
-| Property    | Attribute    | Description                                                                                                                                                           | Type                                                                         | Default            |
-| ----------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------ |
-| `colour`    | `colour`     | Set the icon's colour. Some icon's colour cannot be changed. Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component. | `IconColour.black \| IconColour.blue \| IconColour.grey \| IconColour.white` | `IconColour.black` |
-| `iconWidth` | `icon-width` | The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.                                                   | `number`                                                                     | `24`               |
+| Property    | Attribute    | Description                                                                                                         | Type                                                                         | Default            |
+| ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------ |
+| `colour`    | `colour`     | Set the icon's colour.                                                                                              | `IconColour.BLACK \| IconColour.BLUE \| IconColour.GREY \| IconColour.WHITE` | `IconColour.BLACK` |
+| `iconWidth` | `icon-width` | The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio. | `number`                                                                     | `IconSize.DEFAULT` |
 
 
 ----------------------------------------------
