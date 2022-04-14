@@ -173,32 +173,33 @@ $ontario-logo-height: 46px;
 }
 
 .ontario-application-subheader__menu li {
-	padding: 0;
+	border-radius: $global-radius;
 	margin-left: $spacing-3;
+	text-align: center;
+	max-width: 155px;
+	&:hover {
+		background-color: $ontario-greyscale-60;
+		color: $ontario-colour-white;
+	}
 }
 
 .ontario-application-subheader__menu a {
 	border-radius: $global-radius;
 	color: $ontario-colour-white;
-	display: inline;
+	display: inline-block;
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: rem-calc(18);
 	font-weight: $ontario-font-weights-semi-bold;
-	height: 48px;
+	height: auto;
 	line-height: rem-calc(23);
-	padding: $spacing-3 $spacing-4;
+	padding: $spacing-3 $spacing-2;
 	text-decoration: none;
-	white-space: nowrap;
+	white-space: pre-line;
 	outline: none;
-
+	text-align: left;
 	&.ontario-link--active {
 		border-radius: 4px 4px 0 0;
 		border-bottom: 4px solid $ontario-colour-white;
-	}
-
-	&:hover {
-		background-color: $ontario-greyscale-60;
-		color: $ontario-colour-white;
 	}
 
 	&:active {
