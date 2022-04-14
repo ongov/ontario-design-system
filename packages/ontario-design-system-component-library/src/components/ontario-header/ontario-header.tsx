@@ -177,7 +177,6 @@ export class OntarioHeader {
 	 */
 	trapMenuFocus = () => {
 		this.menuButton.focus();
-		console.log('imhere');
 	};
 
 	/**
@@ -468,7 +467,6 @@ export class OntarioHeader {
 											*/}
 											{this.itemState?.slice(0, 2).map((item, index) => {
 												const lastLink = index + 1 === this.itemState.length - 0;
-												console.log(lastLink);
 												return lastLink
 													? this.generateMenuItem(item.href, item.name, 'ontario-show-for-small-only', '', true)
 													: this.generateMenuItem(item.href, item.name, 'ontario-show-for-small-only', '');
@@ -476,7 +474,6 @@ export class OntarioHeader {
 
 											{this.itemState?.slice(2, 5).map((item, index) => {
 												const lastLink = index + 1 === this.itemState.length - 2;
-												console.log(lastLink);
 												return lastLink
 													? this.generateMenuItem(item.href, item.name, 'ontario-hide-for-large', '', true)
 													: this.generateMenuItem(item.href, item.name, 'ontario-hide-for-large', '');
@@ -484,7 +481,6 @@ export class OntarioHeader {
 
 											{this.itemState?.slice(5).map((item, index) => {
 												const lastLink = index + 1 === this.itemState.length - 5;
-												console.log(lastLink);
 												return lastLink ? this.generateMenuItem(item.href, item.name, '', '', true) : this.generateMenuItem(item.href, item.name, '', '');
 											})}
 										</ul>
