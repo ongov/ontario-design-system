@@ -1,6 +1,10 @@
 export enum IconColour {
-	black = 'black',
-	blue = 'blue',
-	grey = 'grey',
-	white = 'white',
+	BLACK = 'black',
+	BLUE = 'blue',
+	GREY = 'grey',
+	WHITE = 'white',
+}
+
+export enum IconSize {
+	DEFAULT = 24,
 }
