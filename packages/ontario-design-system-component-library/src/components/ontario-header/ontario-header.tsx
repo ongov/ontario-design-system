@@ -193,7 +193,7 @@ export class OntarioHeader {
 			 * This code has to be inside this if statement because the overlay is part of the header.
 			 */
 			if (isOverlay && this.menuToggle) {
-				this.menuToggle = !this.menuToggle;
+				this.handleMenuToggle();
 			}
 			// If click was inside header, stop
 			return;
