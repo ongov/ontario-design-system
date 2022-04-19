@@ -10,7 +10,7 @@ const {readdir, readFile, writeFile} = require('fs/promises');
 const path = require('path');
 const { parse, stringify } = require('svgson');
 
-const iconDirectory = './node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/icons';
+const iconDirectory = './src/components/ontario-icon/assets';
 const iconNamePrefix = 'ontario-icon-';
 const iconsWithoutColour = [
 	`${iconNamePrefix}alert-error`,
