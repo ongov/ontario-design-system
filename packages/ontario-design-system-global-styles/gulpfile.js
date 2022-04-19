@@ -8,7 +8,6 @@ const { dest, series, src, task, parallel, watch } = require('gulp');
 
 const distDir = './dist';
 const styleDir = './src/sass/**';
-const icons = ['./src/icons/**'];
 const fonts = ['./src/fonts/**'];
 
 /**
@@ -67,11 +66,6 @@ task('fonts-move', done => {
 	return src(fonts, { base: './src' }).pipe(dest(distDir));
 });
 
-// Move all SVG icons to the dist/icons folder
-task('icons-move', done => {
-	return src(icons, { base: './src' }).pipe(dest(distDir));
-});
-
 task('watch', done => {
 	watch(styleDir, { ignoreInitial: false }, parallel('sass:build-minify'));
 	done();
@@ -81,6 +75,6 @@ task('clean', done => {
 	return del(distDir);
 });
 
-task('deploy', series('clean', 'fonts-move', 'icons-move', 'sass:copy-dist', 'sass:build-minify'));
+task('deploy', series('clean', 'fonts-move', 'sass:copy-dist', 'sass:build-minify'));
 
 task('default', series('watch'));
