@@ -44,7 +44,7 @@ export class OntarioIconAccount implements IconWithColour {
             style: MessageStyle.Code,
         },
         {
-            message: `%cwas set to a non-numeric value; only positive number is allowed. The default size of`,
+            message: `%cwas set to a non-numeric value; only a positive number is allowed. The default size of`,
             style: MessageStyle.Regular,
         },
         {
