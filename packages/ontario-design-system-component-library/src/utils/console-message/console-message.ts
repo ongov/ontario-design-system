@@ -2,7 +2,7 @@ import { ConsoleMessage } from './console-message.interface';
 import { ConsoleType, MessageStyle } from './console-message.enum';
 
 // system tag with formatting specifier
-const designSystemTag = '%cOntario Design System';
+const designSystemTag = 'Ontario Design System';
 
 // default font size for console messages
 const fontSize = '12px';
@@ -28,11 +28,16 @@ const regularTextStyles = ['font-family: sans-serif', `font-size: ${fontSize}`].
 // styles for code in string format
 const codedTextStyles = ['font-family: monospace', `font-size: ${fontSize}`].join(';');
 
+function addSpecifier(message: string): string {
+	const styleSpecifier = '%c';
+	return styleSpecifier.concat(message);
+}
+
 // print message to console depending on the `ConsoleType`
 export function printConsoleMessage(messageObject: ConsoleMessage[], consoleType = ConsoleType.Warning, hasSystemTag = true) {
 	// retrieve message from each object and concatenate them into one single string in order
 	// if `hasSystemTag` is true then the message string will being with the value stored within `designSystemTag`.
-	const message = messageObject.reduce((message: string, currentObject: ConsoleMessage) => (message += currentObject.message ?? ''), hasSystemTag ? designSystemTag : '');
+	const message = messageObject.reduce((message: string, currentObject: ConsoleMessage) => (message += addSpecifier(currentObject.message) ?? ''), hasSystemTag ? addSpecifier(designSystemTag) : '');
 
 	// array of arguments to be passed into the the console function
 	const messageArray: string[] = [];

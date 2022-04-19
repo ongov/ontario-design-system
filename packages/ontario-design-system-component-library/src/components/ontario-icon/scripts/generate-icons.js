@@ -54,9 +54,9 @@ const useIconColour = (iconName) => {
 
 /**
  * Generate a message template to be used for icon width validation warnings.
- * This template leverages the `console` object's `%c` specifier to apply CSS onto target strings.
+ * This template leverages the `console` object's CSS specifier to apply styles onto the target strings.
  * The messages are grouped by the styles that are to be applied to them.
- * Note that once a `%c` specifier is used, the rest of the string will inherit the styles provided.
+ * Note that spacing matters and impacts the final message being printed to the console.
  * @param {*} iconName name of icon in `ontario-icon-name` format
  * @param {*} iconWidth width of the icon provided by user
  * @returns an array of objects with each object containing part of the message and associated styles
@@ -64,27 +64,27 @@ const useIconColour = (iconName) => {
 const getIconWidthWarningMessage = (iconName, iconWidth) => {
     return iconWidthValidationWarningMessage = `[
         {
-            message: '%c icon-width ',
+            message: ' icon-width ',
             style: MessageStyle.Code,
         },
         {
-            message: '%con',
+            message: 'on',
             style: MessageStyle.Regular,
         },
         {
-            message: \`%c <${iconName}> \`,
+            message: \` <${iconName}> \`,
             style: MessageStyle.Code,
         },
         {
-            message: \`%c${isNaN(iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only positive number is allowed. The default size of\`,
+            message: \`${isNaN(iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of\`,
             style: MessageStyle.Regular,
         },
         {
-            message: '%c 24px ',
+            message: ' 24px ',
             style: MessageStyle.Code,
         },
         {
-            message: '%cwas assumed.',
+            message: 'was assumed.',
             style: MessageStyle.Regular,
         },
     ]`;

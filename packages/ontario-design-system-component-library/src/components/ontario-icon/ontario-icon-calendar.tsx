@@ -32,27 +32,27 @@ export class OntarioIconCalendar implements IconWithColour {
 		if (isNaN(this.iconWidth) || (!isNaN(this.iconWidth) && this.iconWidth <= 0)) {
 			printConsoleMessage([
         {
-            message: '%c icon-width ',
+            message: ' icon-width ',
             style: MessageStyle.Code,
         },
         {
-            message: '%con',
+            message: 'on',
             style: MessageStyle.Regular,
         },
         {
-            message: `%c <ontario-icon-calendar> `,
+            message: ` <ontario-icon-calendar> `,
             style: MessageStyle.Code,
         },
         {
-            message: `%cwas set to a non-numeric value; only positive number is allowed. The default size of`,
+            message: `was set to a non-numeric value; only a positive number is allowed. The default size of`,
             style: MessageStyle.Regular,
         },
         {
-            message: '%c 24px ',
+            message: ' 24px ',
             style: MessageStyle.Code,
         },
         {
-            message: '%cwas assumed.',
+            message: 'was assumed.',
             style: MessageStyle.Regular,
         },
     ], ConsoleType.Warning);
