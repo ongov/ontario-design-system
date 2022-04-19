@@ -15,13 +15,13 @@ export class OntarioIconDropdownArrow implements Icon {
      * The icon width will autogenerate the height since the icons are in square format, thus preserving
      * the aspect ratio.
      */
-    @Prop() iconWidth: number = IconSize.DEFAULT;
+    @Prop() iconWidth: number = IconSize.Default;
 
     /**
 	 * Mutable variable, for internal use only.
 	 * Set the icon's width depending on validation result.
 	 */
-	@State() iconWidthState: number = IconSize.DEFAULT;
+	@State() iconWidthState: number = IconSize.Default;
 
     /**
      * Watch for changes in the `iconWidth` variable for validation purpose.
@@ -33,30 +33,30 @@ export class OntarioIconDropdownArrow implements Icon {
 			printConsoleMessage([
         {
             message: '%c icon-width ',
-            style: MessageStyle.CODE,
+            style: MessageStyle.Code,
         },
         {
             message: '%con',
-            style: MessageStyle.REGULAR,
+            style: MessageStyle.Regular,
         },
         {
             message: `%c <ontario-icon-dropdown-arrow> `,
-            style: MessageStyle.CODE,
+            style: MessageStyle.Code,
         },
         {
             message: `%cwas set to a non-numeric value; only positive number is allowed. The default size of`,
-            style: MessageStyle.REGULAR,
+            style: MessageStyle.Regular,
         },
         {
             message: '%c 24px ',
-            style: MessageStyle.CODE,
+            style: MessageStyle.Code,
         },
         {
             message: '%cwas assumed.',
-            style: MessageStyle.REGULAR,
+            style: MessageStyle.Regular,
         },
-    ], ConsoleType.WARNING);
-			this.iconWidthState = IconSize.DEFAULT;
+    ], ConsoleType.Warning);
+			this.iconWidthState = IconSize.Default;
 		} else {
 			this.iconWidthState = this.iconWidth;
 		}

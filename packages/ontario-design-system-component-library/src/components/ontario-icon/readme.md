@@ -31,8 +31,8 @@ Example of a bookmark icon, where the user is is passing a colour property of 'G
 
 | Property    | Attribute    | Description                                                                                                         | Type                                                                         | Default            |
 | ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------ |
-| `colour`    | `colour`     | Set the icon's colour.                                                                                              | `IconColour.BLACK \| IconColour.BLUE \| IconColour.GREY \| IconColour.WHITE` | `IconColour.BLACK` |
-| `iconWidth` | `icon-width` | The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio. | `number`                                                                     | `IconSize.DEFAULT` |
+| `colour`    | `colour`     | Set the icon's colour.                                                                                              | `IconColour.Black \| IconColour.Blue \| IconColour.Grey \| IconColour.White` | `IconColour.Black` |
+| `iconWidth` | `icon-width` | The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio. | `number`                                                                     | `IconSize.Default` |
 
 
 ----------------------------------------------

@@ -29,7 +29,7 @@ const regularTextStyles = ['font-family: sans-serif', `font-size: ${fontSize}`].
 const codedTextStyles = ['font-family: monospace', `font-size: ${fontSize}`].join(';');
 
 // print message to console depending on the `ConsoleType`
-export function printConsoleMessage(messageObject: ConsoleMessage[], consoleType = ConsoleType.WARNING, hasSystemTag = true) {
+export function printConsoleMessage(messageObject: ConsoleMessage[], consoleType = ConsoleType.Warning, hasSystemTag = true) {
 	// retrieve message from each object and concatenate them into one single string in order
 	// if `hasSystemTag` is true then the message string will being with the value stored within `designSystemTag`.
 	const message = messageObject.reduce((message: string, currentObject: ConsoleMessage) => (message += currentObject.message ?? ''), hasSystemTag ? designSystemTag : '');
@@ -47,19 +47,19 @@ export function printConsoleMessage(messageObject: ConsoleMessage[], consoleType
 
 	// push style of each message into the array of arguments in order
 	messageObject.forEach((message: ConsoleMessage) => {
-		messageArray.push(message.style && message.style === MessageStyle.CODE ? codedTextStyles : regularTextStyles);
+		messageArray.push(message.style && message.style === MessageStyle.Code ? codedTextStyles : regularTextStyles);
 	});
 
 	// pass array of arguments into the console function for printing depending on `consoleType`
 	// the `function.apply()` function handles array of arguments which allows list of arguments to be set programmatically
 	switch (consoleType) {
-		case ConsoleType.ERROR:
+		case ConsoleType.Error:
 			console.error.apply(null, messageArray);
 			break;
-		case ConsoleType.INFO:
+		case ConsoleType.Info:
 			console.info.apply(null, messageArray);
 			break;
-		case ConsoleType.WARNING:
+		case ConsoleType.Warning:
 			console.warn.apply(null, messageArray);
 			break;
 		default:

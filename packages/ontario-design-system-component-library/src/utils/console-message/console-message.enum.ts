@@ -1,11 +1,11 @@
 export enum ConsoleType {
-	ERROR = 'error',
-	INFO = 'info',
-	LOG = 'log',
-	WARNING = 'warning',
+	Error = 'error',
+	Info = 'info',
+	Log = 'log',
+	Warning = 'warning',
 }
 
 export enum MessageStyle {
-	REGULAR = 'regular',
-	CODE = 'code',
+	Regular = 'regular',
+	Code = 'code',
 }
