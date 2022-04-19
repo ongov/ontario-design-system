@@ -10,56 +10,52 @@
 	<script nomodule src="/build/ontario-design-system-components.js"></script>
 </head>
 
-<body style="margin: 0;">
-	<ontario-header title-Header='{ "name": "Application name" , "href": "/"}' language-Toggle-Paths='{
-						"englishLink":"/en",
-						"frenchLink": "/fr"
-					}' menu-Items='[{
-					"name": "Button",
-					"href": "/ontario-button"
-				}, {
-					"name": "Hint",
+<body>
+	<ontario-header
+				type="ontario"
+				title-header='{
+					"name": "Application name" ,
+					"href": "/"
+				}'
+
+				language-Toggle-Options='{
+					"englishLink":"/en",
+					"frenchLink": "/fr"
+				}'
+
+				menu-Items='[{
+					"name": "Health Health HealthHealth",
 					"href": "/ontario-hint"
-				}, {
-					"name": "Text Area",
-					"href": "/ontario-text-area"
-				}, {
-					"name": "Text Input",
-					"href": "/ontario-text-input"
-				}, {
-					"name": "Hint",
+				},{
+					"name": "FinancialHealth HealthHealth",
 					"href": "/ontario-hint"
-				}, {
-					"name": "Hint",
+				},{
+					"name": "FinancialHealth HealthHealth",
 					"href": "/ontario-hint"
-				}, {
-					"name": "Hint",
+				},{
+					"name": "FinancialHealth HealthHealth",
 					"href": "/ontario-hint"
-				}, {
-					"name": "Hint",
+				},{
+					"name": "FinancialHealth HealthHealth",
 					"href": "/ontario-hint"
-				}, {
-					"name": "Hint",
-					"href": "/ontario-hint"
-				}, {
-					"name": "Hint",
-					"href": "/ontario-hint"
-				}, {
-					"name": "Hint",
+				},{
+					"name": "FinancialHealth HealthHealth",
 					"href": "/ontario-hint"
 				}]'>
-		<hr />
-
 	</ontario-header>
-	<ontario-button label="Primary" aria-label="Primary Button" type="primary" onclick="testFunction()">
-	</ontario-button>
-	<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">
-	</ontario-button>
-	<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary"></ontario-button>
 
 	<hr />
 
-	<ontario-icon-accessibility icon-width="36" colour="grey"></ontario-icon-accessibility>
+	<ontario-button label="Primary" aria-label="Primary Button" type="primary" onclick="testFunction()">
+		Content here will be overwritten by the value of the label property
+	</ontario-button>
+	<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">
+		Content here will be overwritten by the value of the label property
+	</ontario-button>
+	<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary">
+		Content here will be overwritten by the value of the label property
+	</ontario-button>
+<ontario-icon-accessibility icon-width="36" colour="grey"></ontario-icon-accessibility>
 
 	<hr />
 

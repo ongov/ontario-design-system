@@ -8,7 +8,8 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
-import { languageTogglePaths, titleHeader } from "./components/ontario-header/titleHeader";
+import { headerTitle } from "./components/ontario-header/headerTitle.interface";
+import { languageToggleOptions } from "./components/ontario-header/languageToggleOptions.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
     interface MyComponent {
@@ -111,10 +112,21 @@ export namespace Components {
         "type": 'default' | 'partnership' | 'expanded';
     }
     interface OntarioHeader {
-        "languageTogglePaths": languageTogglePaths | string;
-        "menuItems": titleHeader[] | string;
-        "titleHeader": titleHeader | string;
-        "toggle": boolean;
+        /**
+          * The link that contains the french page
+         */
+        "languageToggleOptions": languageToggleOptions | string;
+        /**
+          * The items that will go inside the menu
+         */
+        "menuItems": headerTitle[] | string;
+        /**
+          * The title for the header
+         */
+        "titleHeader": headerTitle | string;
+        /**
+          * The type of header
+         */
         "type"?: 'application' | 'ontario';
     }
     interface OntarioHintExpander {
@@ -1881,11 +1893,21 @@ declare namespace LocalJSX {
         "type"?: 'default' | 'partnership' | 'expanded';
     }
     interface OntarioHeader {
-        "languageTogglePaths"?: languageTogglePaths | string;
-        "menuItems"?: titleHeader[] | string;
-        "onChangeEvent"?: (event: CustomEvent<any>) => void;
-        "titleHeader"?: titleHeader | string;
-        "toggle"?: boolean;
+        /**
+          * The link that contains the french page
+         */
+        "languageToggleOptions"?: languageToggleOptions | string;
+        /**
+          * The items that will go inside the menu
+         */
+        "menuItems"?: headerTitle[] | string;
+        /**
+          * The title for the header
+         */
+        "titleHeader"?: headerTitle | string;
+        /**
+          * The type of header
+         */
         "type"?: 'application' | 'ontario';
     }
     interface OntarioHintExpander {

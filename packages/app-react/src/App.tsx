@@ -12,11 +12,12 @@ const App = () => {
 				<div className="content-layout">
 					<div className="header">
 						<OntarioHeader
+							type="ontario"
 							titleHeader={{
 								name: 'Design System',
 								href: '/',
 							}}
-							languageTogglePaths={{
+							languageToggleOptions={{
 								englishLink: '/en',
 								frenchLink: '/fr',
 							}}

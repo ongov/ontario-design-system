@@ -9,6 +9,7 @@ export const config: Config = {
 		includePaths: ['./node_modules', './node_modules/@ontario-digital-service/ontario-design-system-global-styles/node_modules'],
 	}), inlineSvg()],
 	globalStyle: './src/global.scss',
+	globalScript: './src/global.ts',
 	buildEs5: 'prod',
 	outputTargets: [
 		reactOutputTarget({
@@ -46,9 +47,9 @@ export const config: Config = {
 		},
 	],
 	testing: {
-		"transform": {
-			"^.+\\.svg$": "<rootDir>/src/utils/svgTransform.js"
+		transform: {
+			'^.+\\.svg$': '<rootDir>/src/utils/svgTransform.js',
 		},
 		reporters: ['default', 'jest-junit'],
-	}
+	},
 };
