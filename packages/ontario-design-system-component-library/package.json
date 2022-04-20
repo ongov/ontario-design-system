@@ -25,7 +25,9 @@
 		"generate": "stencil generate",
 		"clean": "rm -rf dist loader www",
 		"clean:full": "rm -rf node_modules && npm run clean",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"generate:icons": "node src/components/ontario-icon/scripts/generate-icons.js",
+		"clean:icons": "rm -rf src/components/ontario-icon/ontario-icon-*.tsx"
 	},
 	"dependencies": {
 		"@stencil/core": "2.13.0",
@@ -38,6 +40,9 @@
 		"@types/puppeteer": "^5.4.3",
 		"@types/uuid": "^8.3.3",
 		"babel-jest": "^27.4.6",
+		"fs-extra": "^10.0.0",
+		"glob": "^7.2.0",
+		"glob-promise": "^4.2.2",
 		"jest": "^26.0.24",
 		"jest-cli": "^26.6.3",
 		"jest-junit": "^13.0.0",
@@ -45,6 +50,7 @@
 		"prettier": "^2.5.1",
 		"puppeteer": "^10.0.0",
 		"stencil-inline-svg": "^1.1.0",
+		"svgson": "^5.2.1",
 		"typescript": "^4.5.5"
 	},
 	"authors": [

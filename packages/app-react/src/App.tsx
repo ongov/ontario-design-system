@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import '../../ontario-design-system-component-library/dist/ontario-design-system-components/ontario-icon-account.entry';
 
 interface State {
   value: number | null;
