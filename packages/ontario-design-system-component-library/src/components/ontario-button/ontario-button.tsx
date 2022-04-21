@@ -82,16 +82,19 @@ export class OntarioButton implements OntarioButtonProperties {
 	 */
 	@Prop({ mutable: true }) buttonId?: string;
 
+	/* Validation function */
+	public validateElementContent(newValue: string) {
+		const isNewValueBlank = typeof newValue !== 'string' || newValue === '';
+		if (isNewValueBlank) {
+			return true;
+		}
+	}
 	/**
 	 * Validate the label and make sure the label has a value.
 	 * Log error if user doesn't input a value for the label or element content.
 	 */
 	@Watch('label')
-	validateLabel(newValue: string) {
-		const isLabelBlank = typeof newValue !== 'string' || newValue === '';
-		const isElementContentBlank = typeof this.host.textContent !== 'string' || this.host.textContent === '';
-		if (isLabelBlank && isElementContentBlank) { console.error('Label prop is required for ontario-button') };
-	}
+	validateElementContent(newValue: string): boolean;
 
 	/**
 	 * @returns the classes of the button based of the button's `type`.
