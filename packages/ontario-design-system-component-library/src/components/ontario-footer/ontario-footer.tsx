@@ -56,14 +56,14 @@ export class OntarioFooter {
 			this.defaultState.queensPrinterLink = "https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario"
 		}
 		if (!this.defaultState || !this.defaultState.accessibilityLink || !this.defaultState.contactLink || !this.defaultState.privacyLink) {
-			console.error('Error: Default Options Are Not Completely Entered');
+			console.error('Error: defaultOptions not fully set, please review your values and ensure all required options are truthy.');
 		}
 	}
 
 	private verifyPartnership() {
 		if (this.type == 'partnership') {
 			if (!this.partnershipConnection) {
-				console.error('Error: A Partnership Connection Has Not Been Selected');
+				console.error('Error: A Partnership Connection has not been selected, please review your entry.');
 			}
 		}
 	}
@@ -80,7 +80,7 @@ export class OntarioFooter {
 				!this.expandedTwoColumnState.secondColumn.content ||
 				!this.expandedTwoColumnState.secondColumn.contactButtonText
 			) {
-				console.error('Error: Expanded Two Column Options Are Not Completely Entered');
+				console.error('Error: expandedTwoColumnOptions not fully set, please review your values and ensure all options are truthy.');
 			}
 		}
 	}
@@ -104,7 +104,7 @@ export class OntarioFooter {
 				(this.expandedThreeColumnState.thirdColumn.instagram && !this.expandedThreeColumnState.thirdColumn.instagram.link) ||
 				(this.expandedThreeColumnState.thirdColumn.youtube && !this.expandedThreeColumnState.thirdColumn.youtube.link)
 			) {
-				console.error('Error: Expanded Three Column Options Are Not Completely Entered');
+				console.error('Error: expandedThreeColumnOptions not fully set, please review your values and ensure all required options are truthy.');
 			}
 		}
 	}
