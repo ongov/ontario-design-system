@@ -6,7 +6,7 @@ describe('ontario-input', () => {
 		it('should render the expected html', async () => {
 			const page = await newSpecPage({
 				components: [OntarioInput],
-				html: `<ontario-input element-id="ontario-input" label-caption="Ontario Input" name="ontario-input"></ontario-input>`,
+				html: `<ontario-input element-id="ontario-input" caption='{"caption": "Ontario Input"}' name="ontario-input"></ontario-input>`,
 			});
 
 			expect(page.root).toMatchSnapshot();
@@ -17,10 +17,10 @@ describe('ontario-input', () => {
 		it('should render a default input element', async () => {
 			const page = await newSpecPage({
 				components: [OntarioInput],
-				html: `<ontario-input element-id="ontario-input" label-caption="Ontario Input" name="ontario-input"></ontario-input>`,
+				html: `<ontario-input element-id="ontario-input" caption='{"caption": "Ontario Input"}' name="ontario-input"></ontario-input>`,
 			});
 			expect(page.root).toEqualHtml(`
-				<ontario-input element-id="ontario-input" label-caption="Ontario Input" name="ontario-input">
+				<ontario-input element-id="ontario-input" caption='{"caption": "Ontario Input"}' name="ontario-input">
 					<mock:shadow-root>
 						<div>
 							<label class="ontario-label" htmlfor="ontario-input">
@@ -42,24 +42,23 @@ describe('ontario-input', () => {
 				html: `<ontario-input
 									described-by="input-hint-id"
 									name="input-name"
-									required="true"
 									element-id="input-id"
 									value="input value"
 									type='tel'
 									input-width='7-char-width'
-									label-caption="Ontario Input"
+									caption='{"caption": "Ontario Input", "isRequired": true}'
 								></ontario-input>`,
 			});
 
 			expect(page.rootInstance.describedBy).toBe('input-hint-id');
 			expect(page.rootInstance.name).toBe('input-name');
-			expect(page.rootInstance.required).toBe(true);
+			expect(page.rootInstance.parsedCaption.isRequired).toBe(true);
 			expect(page.rootInstance.value).toBe('input value');
 			expect(page.rootInstance.elementId).toBe('input-id');
 			expect(page.rootInstance.type).toBe('tel');
 			expect(page.rootInstance.inputWidth).toBe('7-char-width');
 			expect(page.rootInstance.focused).toBe(false);
-			expect(page.rootInstance.labelCaption).toBe('Ontario Input');
+			expect(page.rootInstance.parsedCaption.caption).toBe('Ontario Input');
 		});
 	});
 
