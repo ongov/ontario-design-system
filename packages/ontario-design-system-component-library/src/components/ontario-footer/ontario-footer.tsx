@@ -51,9 +51,8 @@ export class OntarioFooter {
 	@State() private expandedThreeColumnState: expandedThreeColumnOptions;
 
 	private verifyDefault() {
-
-		if (this.defaultState && !this.defaultState.queensPrinterLink){
-			this.defaultState.queensPrinterLink = "https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario";
+		if (this.defaultState && !this.defaultState.queensPrinterLink) {
+			this.defaultState.queensPrinterLink = 'https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario';
 		}
 		if (!this.defaultState || !this.defaultState.accessibilityLink || !this.defaultState.contactLink || !this.defaultState.privacyLink || !this.defaultState.queensPrinterLink) {
 			console.error('Error: defaultOptions not fully set, please review your values and ensure all required options are truthy.');
@@ -163,7 +162,7 @@ export class OntarioFooter {
 		this.processExpandedTwoColumnOptions();
 		this.processExpandedThreeColumnOptions();
 		this.processPartnershipConnection();
-	} 
+	}
 
 	private getBackgroundImagePath() {
 		const backgroundImage =
@@ -187,17 +186,13 @@ export class OntarioFooter {
 								{this.type == 'expandedTwoColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedTwoColumnState?.firstColumn?.title}</h2>
-										<p>
-											<div innerHTML={this.expandedTwoColumnState?.firstColumn?.content} />
-										</p>
+										<div class="ontario-footer--paragraph" innerHTML={this.expandedTwoColumnState?.firstColumn?.content} />
 									</div>
 								)}
 								{this.type == 'expandedThreeColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedThreeColumnState?.firstColumn?.title}</h2>
-										<p>
-											<div innerHTML={this.expandedThreeColumnState?.firstColumn?.content} />
-										</p>
+										<div class="ontario-footer--paragraph" innerHTML={this.expandedThreeColumnState?.firstColumn?.content} />
 									</div>
 								)}
 							</div>
@@ -225,9 +220,7 @@ export class OntarioFooter {
 								{this.type == 'expandedTwoColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedTwoColumnState?.secondColumn?.title}</h2>
-										<p>
-											<div innerHTML={this.expandedTwoColumnState?.secondColumn?.content} />
-										</p>
+										<div class="ontario-footer--paragraph" innerHTML={this.expandedTwoColumnState?.secondColumn?.content} />
 										<a class="ontario-footer__button ontario-button ontario-margin-bottom-0-!" href={this.defaultState?.contactLink}>
 											{this.expandedTwoColumnState?.secondColumn?.contactButtonText}
 										</a>
@@ -236,9 +229,7 @@ export class OntarioFooter {
 								{this.type == 'expandedThreeColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedThreeColumnState?.thirdColumn?.title}</h2>
-										<p>
-											<div innerHTML={this.expandedThreeColumnState?.thirdColumn?.content} />
-										</p>
+										<div class="ontario-footer--paragraph" innerHTML={this.expandedThreeColumnState?.thirdColumn?.content} />
 										<ul class="ontario-footer__links-container ontario-footer__links-container--social">
 											{this.expandedThreeColumnState.thirdColumn.facebook && (
 												<li>

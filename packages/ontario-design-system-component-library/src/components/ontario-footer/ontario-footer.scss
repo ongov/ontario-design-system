@@ -364,3 +364,9 @@ a:active {
 	transition: all 0.1s ease-in-out;
 	background-color: $ontario-colour-black !important;
 }
+
+.ontario-footer-paragraph {
+	font-size: inherit;
+	margin-bottom: 1.25rem;
+	text-rendering: optimizeLegibility;
+}
