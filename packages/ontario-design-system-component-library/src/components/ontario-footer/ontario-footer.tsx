@@ -61,7 +61,7 @@ export class OntarioFooter {
 
 		if(this.type == 'partnership'){
 			if (!this.partnershipConnection){
-				console.error('Error: Default Options Are Not Completely Entered');
+				console.error('Error: A Partnership Connection Has Not Been Selected');
 			}
 
 		} else if (this.type == 'expandedTwoColumn'){
