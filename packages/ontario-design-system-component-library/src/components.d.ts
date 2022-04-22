@@ -8,7 +8,9 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
-import { defaultOptions, expandedThreeColumnOptions, expandedTwoColumnOptions } from "./components/ontario-footer/footer-expanded-three-column-option-interface";
+import { defaultOptions } from "./components/ontario-footer/footer-default-option-interface";
+import { expandedTwoColumnOptions } from "./components/ontario-footer/footer-expanded-two-column-option-interface";
+import { expandedThreeColumnOptions } from "./components/ontario-footer/footer-expanded-three-column-option-interface";
 import { languageTogglePaths, titleHeader } from "./components/ontario-header/titleHeader";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
@@ -104,13 +106,28 @@ export namespace Components {
         "options": string | DropdownOption[];
     }
     interface OntarioFooter {
+        /**
+          * Stores the required links for all footers
+         */
         "defaultOptions": defaultOptions | string;
+        /**
+          * Stores the titles and content for the expanded three column footer
+         */
         "expandedThreeColumnOptions"?: expandedThreeColumnOptions | string;
+        /**
+          * Stores the titles and content for the expanded two column footer
+         */
         "expandedTwoColumnOptions"?: expandedTwoColumnOptions | string;
+        /**
+          * Stores the page's connection with Ontario for the partnership footer
+         */
         "partnershipConnection"?: | 'Licensed by Government of Ontario'
 		| 'In partnership with Government of Ontario'
 		| 'Funded by Government of Ontario'
 		| 'Sponsored by Government of Ontario';
+        /**
+          * Type of footer to be rendered
+         */
         "type": 'default' | 'partnership' | 'expandedTwoColumn' | 'expandedThreeColumn';
     }
     interface OntarioHeader {
@@ -1890,13 +1907,28 @@ declare namespace LocalJSX {
         "options"?: string | DropdownOption[];
     }
     interface OntarioFooter {
+        /**
+          * Stores the required links for all footers
+         */
         "defaultOptions"?: defaultOptions | string;
+        /**
+          * Stores the titles and content for the expanded three column footer
+         */
         "expandedThreeColumnOptions"?: expandedThreeColumnOptions | string;
+        /**
+          * Stores the titles and content for the expanded two column footer
+         */
         "expandedTwoColumnOptions"?: expandedTwoColumnOptions | string;
+        /**
+          * Stores the page's connection with Ontario for the partnership footer
+         */
         "partnershipConnection"?: | 'Licensed by Government of Ontario'
 		| 'In partnership with Government of Ontario'
 		| 'Funded by Government of Ontario'
 		| 'Sponsored by Government of Ontario';
+        /**
+          * Type of footer to be rendered
+         */
         "type"?: 'default' | 'partnership' | 'expandedTwoColumn' | 'expandedThreeColumn';
     }
     interface OntarioHeader {

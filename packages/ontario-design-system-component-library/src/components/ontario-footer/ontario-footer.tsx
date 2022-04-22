@@ -137,6 +137,11 @@ export class OntarioFooter {
 		this.verifyDefault();
 	}
 
+	@Watch('partnershipConnection')
+	private processPartnershipConnection() {
+		this.verifyPartnership();
+	}
+
 	@Watch('expandedTwoColumnOptions')
 	private processExpandedTwoColumnOptions() {
 		this.parseExpandedTwoColumnOptions();
@@ -153,8 +158,8 @@ export class OntarioFooter {
 		this.processDefaultOptions();
 		this.processExpandedTwoColumnOptions();
 		this.processExpandedThreeColumnOptions();
-		this.verifyPartnership();
-	}
+		this.processPartnershipConnection();
+	} 
 
 	private getBackgroundImagePath() {
 		const backgroundImage =
