@@ -52,10 +52,10 @@ export class OntarioFooter {
 
 	private verifyDefault() {
 
-		if (!this.defaultState.queensPrinterLink){
-			this.defaultState.queensPrinterLink = "https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario"
+		if (this.defaultState && !this.defaultState.queensPrinterLink){
+			this.defaultState.queensPrinterLink = "https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario";
 		}
-		if (!this.defaultState || !this.defaultState.accessibilityLink || !this.defaultState.contactLink || !this.defaultState.privacyLink) {
+		if (!this.defaultState || !this.defaultState.accessibilityLink || !this.defaultState.contactLink || !this.defaultState.privacyLink || !this.defaultState.queensPrinterLink) {
 			console.error('Error: defaultOptions not fully set, please review your values and ensure all required options are truthy.');
 		}
 	}
