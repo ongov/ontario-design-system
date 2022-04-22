@@ -10,14 +10,33 @@ const enDash = '\u2013';
 	assetsDirs: ['assets'],
 })
 export class OntarioFooter {
+
+	/** 
+	 * Type of footer to be rendered
+	*/
 	@Prop() type: 'default' | 'partnership' | 'expandedTwoColumn' | 'expandedThreeColumn' = 'default';
 
+	/**
+	 * Stores the required links for all footers
+	 */
 	@Prop() defaultOptions: defaultOptions | string;
 
+	/**
+	 * Stores the titles and content for the expanded
+	 * two column footer
+	 */
 	@Prop() expandedTwoColumnOptions?: expandedTwoColumnOptions | string;
 
+	/**
+	 * Stores the titles and content for the expanded
+	 * three column footer
+	 */
 	@Prop() expandedThreeColumnOptions?: expandedThreeColumnOptions | string;
 
+	/**
+	 * Stores the page's connection with Ontario for 
+	 * the partnership footer
+	 */
 	@Prop() partnershipConnection?:
 		| 'Licensed by Government of Ontario'
 		| 'In partnership with Government of Ontario'
