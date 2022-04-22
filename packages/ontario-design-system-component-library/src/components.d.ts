@@ -107,12 +107,11 @@ export namespace Components {
         "defaultOptions": defaultOptions | string;
         "expandedThreeColumnOptions"?: expandedThreeColumnOptions | string;
         "expandedTwoColumnOptions"?: expandedTwoColumnOptions | string;
-        "partnershipConnection": | 'Licensed by Government of Ontario'
+        "partnershipConnection"?: | 'Licensed by Government of Ontario'
 		| 'In partnership with Government of Ontario'
 		| 'Funded by Government of Ontario'
-		| 'Sponsored by Government of Ontario'
-		| null;
-        "type": 'default' | 'partnership' | 'expanded two column' | 'expanded three column';
+		| 'Sponsored by Government of Ontario';
+        "type": 'default' | 'partnership' | 'expandedTwoColumn' | 'expandedThreeColumn';
     }
     interface OntarioHeader {
         "languageTogglePaths": languageTogglePaths | string;
@@ -870,7 +869,11 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconYoutube {
-        "colour": "black" | "blue" | "grey" | "white";
+        "colour": 'black' | 'blue' | 'grey' | 'white';
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
     }
     interface OntarioInput {
         /**
@@ -1893,9 +1896,8 @@ declare namespace LocalJSX {
         "partnershipConnection"?: | 'Licensed by Government of Ontario'
 		| 'In partnership with Government of Ontario'
 		| 'Funded by Government of Ontario'
-		| 'Sponsored by Government of Ontario'
-		| null;
-        "type"?: 'default' | 'partnership' | 'expanded two column' | 'expanded three column';
+		| 'Sponsored by Government of Ontario';
+        "type"?: 'default' | 'partnership' | 'expandedTwoColumn' | 'expandedThreeColumn';
     }
     interface OntarioHeader {
         "languageTogglePaths"?: languageTogglePaths | string;
@@ -2658,7 +2660,11 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconYoutube {
-        "colour"?: "black" | "blue" | "grey" | "white";
+        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
     }
     interface OntarioInput {
         /**

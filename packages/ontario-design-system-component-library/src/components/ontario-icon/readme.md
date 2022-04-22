@@ -29,9 +29,10 @@ Example of a bookmark icon, where the user is is passing a colour property of 'G
 
 ## Properties
 
-| Property | Attribute | Description | Type                                     | Default   |
-| -------- | --------- | ----------- | ---------------------------------------- | --------- |
-| `colour` | `colour`  |             | `"black" \| "blue" \| "grey" \| "white"` | `"black"` |
+| Property    | Attribute    | Description                                                                                                         | Type                                     | Default   |
+| ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | --------- |
+| `colour`    | `colour`     |                                                                                                                     | `"black" \| "blue" \| "grey" \| "white"` | `'black'` |
+| `iconWidth` | `icon-width` | The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio. | `number`                                 | `24`      |
 
 
 ## Dependencies

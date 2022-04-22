@@ -10,7 +10,7 @@ const enDash = '\u2013';
 	assetsDirs: ['assets'],
 })
 export class OntarioFooter {
-	@Prop() type: 'default' | 'partnership' | 'expanded two column' | 'expanded three column' = 'default';
+	@Prop() type: 'default' | 'partnership' | 'expandedTwoColumn' | 'expandedThreeColumn' = 'default';
 
 	@Prop() defaultOptions: defaultOptions | string;
 
@@ -18,12 +18,11 @@ export class OntarioFooter {
 
 	@Prop() expandedThreeColumnOptions?: expandedThreeColumnOptions | string;
 
-	@Prop() partnershipConnection:
+	@Prop() partnershipConnection?:
 		| 'Licensed by Government of Ontario'
 		| 'In partnership with Government of Ontario'
 		| 'Funded by Government of Ontario'
-		| 'Sponsored by Government of Ontario'
-		| null = null;
+		| 'Sponsored by Government of Ontario';
 
 	@State() private defaultState: defaultOptions;
 
@@ -46,7 +45,7 @@ export class OntarioFooter {
 				console.error('Error: Default Options Are Not Completely Entered');
 			}
 
-		} else if (this.type == 'expanded two column'){
+		} else if (this.type == 'expandedTwoColumn'){
 			if (!this.expandedTwoColumnState
 				|| !this.expandedTwoColumnState.firstColumn
 				|| !this.expandedTwoColumnState.firstColumn.title
@@ -59,7 +58,7 @@ export class OntarioFooter {
 				console.error('Error: Expanded Two Column Options Are Not Completely Entered');
 			}
 
-		} else if(this.type == 'expanded three column'){
+		} else if(this.type == 'expandedThreeColumn'){
 			if (!this.expandedThreeColumnState
 				|| !this.expandedThreeColumnState.firstColumn
 				|| !this.expandedThreeColumnState.firstColumn.title
@@ -121,24 +120,24 @@ export class OntarioFooter {
 	}
 
 	private getBackgroundImagePath() {
-		const backgroundImage = (this.type == 'expanded two column' || this.type == 'expanded three column')? 'footer-expanded-supergraphic-logo.svg' : 'footer-default-supergraphic-logo.svg';
+		const backgroundImage = (this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn')? 'footer-expanded-supergraphic-logo.svg' : 'footer-default-supergraphic-logo.svg';
 		return { '--imagePath': `url(${getAssetPath(`./assets/${backgroundImage}`)})` };
 	}
 
 	render() {
 		return (
 			<footer class={'ontario-footer ontario-footer--' + this.type} style={this.getBackgroundImagePath()}>
-				{(this.type == 'expanded two column' || this.type == 'expanded three column') && (
+				{(this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn') && (
 					<div class="ontario-footer__expanded-top-section">
 						<div class="ontario-row">
 							<div
 								class={
 									'ontario-columns ontario-small-12 ' +
-									(this.type == "expanded two column" ? 'ontario-medium-6' : '') +
-									(this.type == "expanded three column" ? 'ontario-expanded-footer__one-third-block ontario-medium-12 ontario-large-4' : '')
+									(this.type == "expandedTwoColumn" ? 'ontario-medium-6' : '') +
+									(this.type == "expandedThreeColumn" ? 'ontario-expanded-footer__one-third-block ontario-medium-12 ontario-large-4' : '')
 								}
 							>
-								{this.type == "expanded two column" && (
+								{this.type == "expandedTwoColumn" && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedTwoColumnState?.firstColumn?.title}</h2>
 										<p>
@@ -146,7 +145,7 @@ export class OntarioFooter {
 										</p>
 									</div>
 								)}
-								{this.type == "expanded three column" && (
+								{this.type == "expandedThreeColumn" && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedThreeColumnState?.firstColumn?.title}</h2>
 										<p>
@@ -155,7 +154,7 @@ export class OntarioFooter {
 									</div>
 								)}
 							</div>
-							{this.type == "expanded three column" && (
+							{this.type == "expandedThreeColumn" && (
 								<div class="ontario-columns ontario-small-12 ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block">
 									<h2 class="ontario-h4">Most visited topics</h2>
 									<ul class="ontario-footer__links-container ontario-footer__links-container--two-column-list">
@@ -172,11 +171,11 @@ export class OntarioFooter {
 							<div
 								class={
 									'ontario-columns ontario-small-12' +
-									(this.type == "expanded two column" ? ' ontario-medium-6' : '') +
-									(this.type == "expanded three column" ? ' ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block' : '')
+									(this.type == "expandedTwoColumn" ? ' ontario-medium-6' : '') +
+									(this.type == "expandedThreeColumn" ? ' ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block' : '')
 								}
 							>
-								{this.type == "expanded two column" && (
+								{this.type == "expandedTwoColumn" && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedTwoColumnState?.secondColumn?.title}</h2>
 										<p>
@@ -187,7 +186,7 @@ export class OntarioFooter {
 										</a>
 									</div>
 								)}
-								{this.type == "expanded three column" && (
+								{this.type == "expandedThreeColumn" && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedThreeColumnState?.thirdColumn?.title}</h2>
 										<p>
@@ -229,7 +228,7 @@ export class OntarioFooter {
 						</div>
 					</div>
 				)}
-				<div class={'ontario-row ' + ((this.type == 'expanded two column' || this.type == 'expanded three column') ? 'ontario-footer__expanded-bottom-section' : '')}>
+				<div class={'ontario-row ' + ((this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn') ? 'ontario-footer__expanded-bottom-section' : '')}>
 					<div class={'ontario-columns ontario-small-12 ' + (this.type == 'partnership' ? 'ontario-medium-7' : '')}>
 						<ul class="ontario-footer__links-container ontario-footer__links-container--inline">
 							<li>
@@ -242,7 +241,7 @@ export class OntarioFooter {
 									Privacy
 								</a>
 							</li>
-							{!(this.type == "expanded two column") && (
+							{!(this.type == "expandedTwoColumn") && (
 								<li>
 									<a class="ontario-footer__link" href={this.defaultState?.contactLink}>
 										Contact us

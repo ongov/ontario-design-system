@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property                     | Attribute                       | Description | Type                                                                                                                                                                      | Default     |
-| ---------------------------- | ------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `defaultOptions`             | `default-options`               |             | `defaultOptions \| string`                                                                                                                                                | `undefined` |
-| `expandedThreeColumnOptions` | `expanded-three-column-options` |             | `expandedThreeColumnOptions \| string \| undefined`                                                                                                                       | `undefined` |
-| `expandedTwoColumnOptions`   | `expanded-two-column-options`   |             | `expandedTwoColumnOptions \| string \| undefined`                                                                                                                         | `undefined` |
-| `partnershipConnection`      | `partnership-connection`        |             | `"Funded by Government of Ontario" \| "In partnership with Government of Ontario" \| "Licensed by Government of Ontario" \| "Sponsored by Government of Ontario" \| null` | `null`      |
-| `type`                       | `type`                          |             | `"default" \| "expanded three column" \| "expanded two column" \| "partnership"`                                                                                          | `'default'` |
+| Property                     | Attribute                       | Description | Type                                                                                                                                                                           | Default     |
+| ---------------------------- | ------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| `defaultOptions`             | `default-options`               |             | `defaultOptions \| string`                                                                                                                                                     | `undefined` |
+| `expandedThreeColumnOptions` | `expanded-three-column-options` |             | `expandedThreeColumnOptions \| string \| undefined`                                                                                                                            | `undefined` |
+| `expandedTwoColumnOptions`   | `expanded-two-column-options`   |             | `expandedTwoColumnOptions \| string \| undefined`                                                                                                                              | `undefined` |
+| `partnershipConnection`      | `partnership-connection`        |             | `"Funded by Government of Ontario" \| "In partnership with Government of Ontario" \| "Licensed by Government of Ontario" \| "Sponsored by Government of Ontario" \| undefined` | `undefined` |
+| `type`                       | `type`                          |             | `"default" \| "expandedThreeColumn" \| "expandedTwoColumn" \| "partnership"`                                                                                                   | `'default'` |
 
 
 ## Dependencies
