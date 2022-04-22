@@ -9,6 +9,7 @@ import { HintExpander } from "./components/ontario-hint-expander/hint-expander.i
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
 import { IconColour } from "./components/ontario-icon/ontario-icon.enum";
+import { InputCaption } from "./utils/input-caption/input-caption";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
     interface MyComponent {
@@ -1157,6 +1158,11 @@ export namespace Components {
     }
     interface OntarioInput {
         /**
+          * The text to display as label
+          * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-input>
+         */
+        "caption": InputCaption | string;
+        /**
           * The aria-describedBy value if the input has hint text associated with it.
          */
         "describedBy"?: string;
@@ -1168,18 +1174,6 @@ export namespace Components {
           * The width of the input field. If no value is assigned, it will present as the default input width.
          */
         "inputWidth": '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default';
-        /**
-          * The text to display as label.
-         */
-        "labelCaption": string;
-        /**
-          * The form control with which the caption is associated.
-         */
-        "labelFor"?: string;
-        /**
-          * The type of label to render.
-         */
-        "labelType": 'default' | 'large' | 'heading';
         /**
           * The name assigned to the input.The name value is used to reference form data after a form is submitted.
          */
@@ -3232,6 +3226,11 @@ declare namespace LocalJSX {
     }
     interface OntarioInput {
         /**
+          * The text to display as label
+          * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-input>
+         */
+        "caption"?: InputCaption | string;
+        /**
           * The aria-describedBy value if the input has hint text associated with it.
          */
         "describedBy"?: string;
@@ -3243,18 +3242,6 @@ declare namespace LocalJSX {
           * The width of the input field. If no value is assigned, it will present as the default input width.
          */
         "inputWidth"?: '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default';
-        /**
-          * The text to display as label.
-         */
-        "labelCaption"?: string;
-        /**
-          * The form control with which the caption is associated.
-         */
-        "labelFor"?: string;
-        /**
-          * The type of label to render.
-         */
-        "labelType"?: 'default' | 'large' | 'heading';
         /**
           * The name assigned to the input.The name value is used to reference form data after a form is submitted.
          */
