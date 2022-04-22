@@ -1,8 +1,7 @@
-import { Component, Prop, h, getAssetPath, State, Watch} from '@stencil/core';
+import { Component, Prop, h, getAssetPath, State, Watch } from '@stencil/core';
 import { expandedThreeColumnOptions } from './footer-expanded-three-column-option-interface';
 import { expandedTwoColumnOptions } from './footer-expanded-two-column-option-interface';
 import { defaultOptions } from './footer-default-option-interface';
-
 
 const enDash = '\u2013';
 
@@ -13,10 +12,9 @@ const enDash = '\u2013';
 	assetsDirs: ['assets'],
 })
 export class OntarioFooter {
-
-	/** 
+	/**
 	 * Type of footer to be rendered
-	*/
+	 */
 	@Prop() type: 'default' | 'partnership' | 'expandedTwoColumn' | 'expandedThreeColumn' = 'default';
 
 	/**
@@ -37,7 +35,7 @@ export class OntarioFooter {
 	@Prop() expandedThreeColumnOptions?: expandedThreeColumnOptions | string;
 
 	/**
-	 * Stores the page's connection with Ontario for 
+	 * Stores the page's connection with Ontario for
 	 * the partnership footer
 	 */
 	@Prop() partnershipConnection?:
@@ -52,60 +50,61 @@ export class OntarioFooter {
 
 	@State() private expandedThreeColumnState: expandedThreeColumnOptions;
 
-	private verifyInfo() {
-		if (!this.defaultState
-			|| !this.defaultState.accessibilityLink
-			|| !this.defaultState.contactLink
-			|| !this.defaultState.privacyLink
-			|| !this.defaultState.queensPrinterLink) 
-		{
+	private verifyDefault() {
+		if (!this.defaultState || !this.defaultState.accessibilityLink || !this.defaultState.contactLink || !this.defaultState.privacyLink || !this.defaultState.queensPrinterLink) {
 			console.error('Error: Default Options Are Not Completely Entered');
-		}
-
-		if(this.type == 'partnership'){
-			if (!this.partnershipConnection){
-				console.error('Error: A Partnership Connection Has Not Been Selected');
-			}
-
-		} else if (this.type == 'expandedTwoColumn'){
-			if (!this.expandedTwoColumnState
-				|| !this.expandedTwoColumnState.firstColumn
-				|| !this.expandedTwoColumnState.firstColumn.title
-				|| !this.expandedTwoColumnState.firstColumn.content
-				|| !this.expandedTwoColumnState.secondColumn
-				|| !this.expandedTwoColumnState.secondColumn.title
-				|| !this.expandedTwoColumnState.secondColumn.content
-				|| !this.expandedTwoColumnState.secondColumn.contactButtonText )
-			{
-				console.error('Error: Expanded Two Column Options Are Not Completely Entered');
-			}
-
-		} else if(this.type == 'expandedThreeColumn'){
-			if (!this.expandedThreeColumnState
-				|| !this.expandedThreeColumnState.firstColumn
-				|| !this.expandedThreeColumnState.firstColumn.title
-				|| !this.expandedThreeColumnState.firstColumn.content
-				|| !this.expandedThreeColumnState.secondColumn
-				|| !this.expandedThreeColumnState.secondColumn.title
-				|| !this.expandedThreeColumnState.secondColumn.content
-				|| !this.expandedThreeColumnState.secondColumn.content[0].title
-				|| !this.expandedThreeColumnState.secondColumn.content[0].link
-				|| !this.expandedThreeColumnState.thirdColumn
-				|| !this.expandedThreeColumnState.thirdColumn.title
-				|| !this.expandedThreeColumnState.thirdColumn.content
-				|| (this.expandedThreeColumnState.thirdColumn.facebook && !this.expandedThreeColumnState.thirdColumn.facebook.link)
-				|| (this.expandedThreeColumnState.thirdColumn.twitter && !this.expandedThreeColumnState.thirdColumn.twitter.link)
-				|| (this.expandedThreeColumnState.thirdColumn.instagram && !this.expandedThreeColumnState.thirdColumn.instagram.link)
-				|| (this.expandedThreeColumnState.thirdColumn.youtube && !this.expandedThreeColumnState.thirdColumn.youtube.link))
-			{
-
-				console.error('Error: Expanded Three Column Options Are Not Completely Entered');
-			}
-
 		}
 	}
 
-	@Watch('defaultOptions')
+	private verifyPartnership() {
+		if (this.type == 'partnership') {
+			if (!this.partnershipConnection) {
+				console.error('Error: A Partnership Connection Has Not Been Selected');
+			}
+		}
+	}
+
+	private verifyExpandedTwoColumn() {
+		if (this.type == 'expandedTwoColumn') {
+			if (
+				!this.expandedTwoColumnState ||
+				!this.expandedTwoColumnState.firstColumn ||
+				!this.expandedTwoColumnState.firstColumn.title ||
+				!this.expandedTwoColumnState.firstColumn.content ||
+				!this.expandedTwoColumnState.secondColumn ||
+				!this.expandedTwoColumnState.secondColumn.title ||
+				!this.expandedTwoColumnState.secondColumn.content ||
+				!this.expandedTwoColumnState.secondColumn.contactButtonText
+			) {
+				console.error('Error: Expanded Two Column Options Are Not Completely Entered');
+			}
+		}
+	}
+	private verifyExpandedThreeColumn() {
+		if (this.type == 'expandedThreeColumn') {
+			if (
+				!this.expandedThreeColumnState ||
+				!this.expandedThreeColumnState.firstColumn ||
+				!this.expandedThreeColumnState.firstColumn.title ||
+				!this.expandedThreeColumnState.firstColumn.content ||
+				!this.expandedThreeColumnState.secondColumn ||
+				!this.expandedThreeColumnState.secondColumn.title ||
+				!this.expandedThreeColumnState.secondColumn.content ||
+				!this.expandedThreeColumnState.secondColumn.content[0].title ||
+				!this.expandedThreeColumnState.secondColumn.content[0].link ||
+				!this.expandedThreeColumnState.thirdColumn ||
+				!this.expandedThreeColumnState.thirdColumn.title ||
+				!this.expandedThreeColumnState.thirdColumn.content ||
+				(this.expandedThreeColumnState.thirdColumn.facebook && !this.expandedThreeColumnState.thirdColumn.facebook.link) ||
+				(this.expandedThreeColumnState.thirdColumn.twitter && !this.expandedThreeColumnState.thirdColumn.twitter.link) ||
+				(this.expandedThreeColumnState.thirdColumn.instagram && !this.expandedThreeColumnState.thirdColumn.instagram.link) ||
+				(this.expandedThreeColumnState.thirdColumn.youtube && !this.expandedThreeColumnState.thirdColumn.youtube.link)
+			) {
+				console.error('Error: Expanded Three Column Options Are Not Completely Entered');
+			}
+		}
+	}
+
 	private parseDefaultOptions() {
 		const defaultOptions = this.defaultOptions;
 		if (defaultOptions) {
@@ -114,7 +113,6 @@ export class OntarioFooter {
 		}
 	}
 
-	@Watch('expandedTwoColumnOptions')
 	private parseExpandedTwoColumnOptions() {
 		const expandedTwoColumnOptions = this.expandedTwoColumnOptions;
 		if (expandedTwoColumnOptions) {
@@ -124,7 +122,6 @@ export class OntarioFooter {
 		}
 	}
 
-	@Watch('expandedThreeColumnOptions')
 	private parseExpandedThreeColumnOptions() {
 		const expandedThreeColumnOptions = this.expandedThreeColumnOptions;
 		if (expandedThreeColumnOptions) {
@@ -134,15 +131,34 @@ export class OntarioFooter {
 		}
 	}
 
-	componentWillLoad() {
+	@Watch('defaultOptions')
+	private processDefaultOptions() {
 		this.parseDefaultOptions();
+		this.verifyDefault();
+	}
+
+	@Watch('expandedTwoColumnOptions')
+	private processExpandedTwoColumnOptions() {
 		this.parseExpandedTwoColumnOptions();
+		this.verifyExpandedTwoColumn();
+	}
+
+	@Watch('expandedThreeColumnOptions')
+	private processExpandedThreeColumnOptions() {
 		this.parseExpandedThreeColumnOptions();
-		this.verifyInfo();
+		this.verifyExpandedThreeColumn();
+	}
+
+	componentWillLoad() {
+		this.processDefaultOptions();
+		this.processExpandedTwoColumnOptions();
+		this.processExpandedThreeColumnOptions();
+		this.verifyPartnership();
 	}
 
 	private getBackgroundImagePath() {
-		const backgroundImage = (this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn')? 'footer-expanded-supergraphic-logo.svg' : 'footer-default-supergraphic-logo.svg';
+		const backgroundImage =
+			this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn' ? 'footer-expanded-supergraphic-logo.svg' : 'footer-default-supergraphic-logo.svg';
 		return { '--imagePath': `url(${getAssetPath(`./assets/${backgroundImage}`)})` };
 	}
 
@@ -155,11 +171,11 @@ export class OntarioFooter {
 							<div
 								class={
 									'ontario-columns ontario-small-12 ' +
-									(this.type == "expandedTwoColumn" ? 'ontario-medium-6' : '') +
-									(this.type == "expandedThreeColumn" ? 'ontario-expanded-footer__one-third-block ontario-medium-12 ontario-large-4' : '')
+									(this.type == 'expandedTwoColumn' ? 'ontario-medium-6' : '') +
+									(this.type == 'expandedThreeColumn' ? 'ontario-expanded-footer__one-third-block ontario-medium-12 ontario-large-4' : '')
 								}
 							>
-								{this.type == "expandedTwoColumn" && (
+								{this.type == 'expandedTwoColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedTwoColumnState?.firstColumn?.title}</h2>
 										<p>
@@ -167,7 +183,7 @@ export class OntarioFooter {
 										</p>
 									</div>
 								)}
-								{this.type == "expandedThreeColumn" && (
+								{this.type == 'expandedThreeColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedThreeColumnState?.firstColumn?.title}</h2>
 										<p>
@@ -176,7 +192,7 @@ export class OntarioFooter {
 									</div>
 								)}
 							</div>
-							{this.type == "expandedThreeColumn" && (
+							{this.type == 'expandedThreeColumn' && (
 								<div class="ontario-columns ontario-small-12 ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block">
 									<h2 class="ontario-h4">Most visited topics</h2>
 									<ul class="ontario-footer__links-container ontario-footer__links-container--two-column-list">
@@ -193,11 +209,11 @@ export class OntarioFooter {
 							<div
 								class={
 									'ontario-columns ontario-small-12' +
-									(this.type == "expandedTwoColumn" ? ' ontario-medium-6' : '') +
-									(this.type == "expandedThreeColumn" ? ' ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block' : '')
+									(this.type == 'expandedTwoColumn' ? ' ontario-medium-6' : '') +
+									(this.type == 'expandedThreeColumn' ? ' ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block' : '')
 								}
 							>
-								{this.type == "expandedTwoColumn" && (
+								{this.type == 'expandedTwoColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedTwoColumnState?.secondColumn?.title}</h2>
 										<p>
@@ -208,7 +224,7 @@ export class OntarioFooter {
 										</a>
 									</div>
 								)}
-								{this.type == "expandedThreeColumn" && (
+								{this.type == 'expandedThreeColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedThreeColumnState?.thirdColumn?.title}</h2>
 										<p>
@@ -250,7 +266,7 @@ export class OntarioFooter {
 						</div>
 					</div>
 				)}
-				<div class={'ontario-row ' + ((this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn') ? 'ontario-footer__expanded-bottom-section' : '')}>
+				<div class={'ontario-row ' + (this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn' ? 'ontario-footer__expanded-bottom-section' : '')}>
 					<div class={'ontario-columns ontario-small-12 ' + (this.type == 'partnership' ? 'ontario-medium-7' : '')}>
 						<ul class="ontario-footer__links-container ontario-footer__links-container--inline">
 							<li>
@@ -263,7 +279,7 @@ export class OntarioFooter {
 									Privacy
 								</a>
 							</li>
-							{!(this.type == "expandedTwoColumn") && (
+							{!(this.type == 'expandedTwoColumn') && (
 								<li>
 									<a class="ontario-footer__link" href={this.defaultState?.contactLink}>
 										Contact us
@@ -284,7 +300,7 @@ export class OntarioFooter {
 					{this.type == 'partnership' && (
 						<div class="ontario-columns ontario-small-12 ontario-medium-5 ontario-footer__partnership-logo-container">
 							<a href="https://www.ontario.ca/page/government-ontario" class="ontario-footer__ontario-logo">
-								<img src={getAssetPath(`./assets/ontario-logo--partnership-footer.svg`)}/>
+								<img src={getAssetPath(`./assets/ontario-logo--partnership-footer.svg`)} />
 							</a>
 							<p class="ontario-margin-bottom-0-!">{this.partnershipConnection}</p>
 						</div>
