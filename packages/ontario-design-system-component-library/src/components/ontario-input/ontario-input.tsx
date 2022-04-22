@@ -1,8 +1,7 @@
 import { Component, Event, EventEmitter, h, Prop, State } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 import { TextInput } from './input.interface';
-import { Label } from '../../utils/label/label.interface';
-import { getLabelElement } from '../../utils/label/label';
+import { InputCaption } from '../../utils/input-caption/input-caption';
 
 /**
  * Ontario Input component
@@ -12,21 +11,25 @@ import { getLabelElement } from '../../utils/label/label';
 	styleUrl: 'ontario-input.scss',
 	shadow: true,
 })
-export class OntarioInput implements TextInput, Label {
+export class OntarioInput implements TextInput {
 	/**
-	 * The text to display as label.
+	 * The text to display as label
+	 *
+	 * @example
+	 * <ontario-input
+	 *   caption='{
+	 *     "caption": "Address",
+	 *     "captionType": "heading",
+	 *     "isRequired": true}'
+	 *   ...>
+	 * </ontario-input>
 	 */
-	@Prop() labelCaption: string;
+	@Prop() caption: InputCaption | string;
 
 	/**
-	 * The form control with which the caption is associated.
+	 * Instantiate an InputCaption object for internal logic use
 	 */
-	@Prop({ mutable: true }) labelFor?: string;
-
-	/**
-	 * The type of label to render.
-	 */
-	@Prop({ mutable: true }) labelType: 'default' | 'large' | 'heading' = 'default';
+	@State() private captionState = new InputCaption(this.parseCaption());
 
 	/**
 	 * The aria-describedBy value if the input has hint text associated with it.
@@ -99,6 +102,21 @@ export class OntarioInput implements TextInput, Label {
 		this.changeEvent.emit(ev as KeyboardEvent);
 	};
 
+	/**
+	 * Parse caption into InputCaption object
+	 */
+	private parseCaption() {
+		let caption = new Object() as InputCaption;
+		if (this.caption) {
+			if (typeof this.caption === 'string') {
+				caption = JSON.parse(this.caption) as InputCaption;
+			} else {
+				caption = this.caption;
+			}
+		}
+		return caption;
+	}
+
 	private getValue(): string | number {
 		return this.value ?? '';
 	}
@@ -118,7 +136,7 @@ export class OntarioInput implements TextInput, Label {
 	render() {
 		return (
 			<div>
-				{getLabelElement(this.labelType, this.getId(), this.required, this.labelCaption)}
+				{this.captionState.getCaption(true, this.getId())}
 				<slot name="hint-text"></slot>
 				<input
 					aria-describedby={this.describedBy}
@@ -128,7 +146,7 @@ export class OntarioInput implements TextInput, Label {
 					onBlur={this.handleBlur}
 					onFocus={this.handleFocus}
 					onInput={this.handleChange}
-					required={this.required}
+					required={this.captionState.isRequired}
 					type={this.type}
 					value={this.getValue()}
 				/>
