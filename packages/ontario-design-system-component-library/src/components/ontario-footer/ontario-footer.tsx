@@ -145,7 +145,7 @@ export class OntarioFooter {
 
 	render() {
 		return (
-			<footer class={'ontario-footer ontario-footer--' + this.type} style={this.getBackgroundImagePath()}>
+			<footer class={`ontario-footer ontario-footer--${this.type}`} style={this.getBackgroundImagePath()}>
 				{(this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn') && (
 					<div class="ontario-footer__expanded-top-section">
 						<div class="ontario-row">
