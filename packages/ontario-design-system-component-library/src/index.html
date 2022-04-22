@@ -23,15 +23,13 @@
 
 	<hr />
 
-	<ontario-input name="email" input-width="20-char-width" label-caption="Email" label-type="heading" required>
-		<ontario-hint-text slot="hint-text">Hint text placeholder</ontario-hint-text>
-	</ontario-input>
+	<ontario-input name="email" input-width="20-char-width" caption='{"caption": "Email", "isRequired": true, "captionType": "HEADING"}'></ontario-input>
 
-	<ontario-input name="postal" input-width="7-char-width" label-caption="Postal code" label-type="large">
+	<ontario-input name="postal" input-width="7-char-width" caption='{"caption": "Postal Code", "captionType": "Large"}'>
 		<ontario-hint-text slot="hint-text">For example, A1A 1A1</ontario-hint-test>
 	</ontario-input>
 
-	<ontario-input name="address" label-caption="Address" required>
+	<ontario-input name="address" caption='{"caption": "Address", "isRequired": true}'>
 		<ontario-hint-expander slot="hint-expander" hint="This is the hint" content="This is the content"
 			aria-label="This indicates that the hint can be expanded"></ontario-hint-expander>
 	</ontario-input>

@@ -52,13 +52,13 @@ describe('ontario-input', () => {
 
 			expect(page.rootInstance.describedBy).toBe('input-hint-id');
 			expect(page.rootInstance.name).toBe('input-name');
-			expect(page.rootInstance.parsedCaption.isRequired).toBe(true);
+			expect(page.rootInstance.captionState.isRequired).toBe(true);
 			expect(page.rootInstance.value).toBe('input value');
 			expect(page.rootInstance.elementId).toBe('input-id');
 			expect(page.rootInstance.type).toBe('tel');
 			expect(page.rootInstance.inputWidth).toBe('7-char-width');
 			expect(page.rootInstance.focused).toBe(false);
-			expect(page.rootInstance.parsedCaption.caption).toBe('Ontario Input');
+			expect(page.rootInstance.captionState.caption).toBe('Ontario Input');
 		});
 	});
 
