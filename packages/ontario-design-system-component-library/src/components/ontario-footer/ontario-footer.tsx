@@ -1,5 +1,8 @@
 import { Component, Prop, h, getAssetPath, State, Watch} from '@stencil/core';
-import { defaultOptions, expandedTwoColumnOptions, expandedThreeColumnOptions } from './footer-option.interface';
+import { expandedThreeColumnOptions } from './footer-expanded-three-column-option-interface';
+import { expandedTwoColumnOptions } from './footer-expanded-two-column-option-interface';
+import { defaultOptions } from './footer-default-option-interface';
+
 
 const enDash = '\u2013';
 

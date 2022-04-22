@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
-import { defaultOptions, expandedThreeColumnOptions, expandedTwoColumnOptions } from "./components/ontario-footer/footer-option.interface";
+import { defaultOptions, expandedThreeColumnOptions, expandedTwoColumnOptions } from "./components/ontario-footer/footer-expanded-three-column-option-interface";
 import { languageTogglePaths, titleHeader } from "./components/ontario-header/titleHeader";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {

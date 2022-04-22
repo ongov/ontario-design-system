@@ -75,7 +75,7 @@ const App = () => {
 					</div>
 					<div className="footer">
 						<OntarioFooter 
-						type = "default" 
+						type = "expandedThreeColumn" 
 						defaultOptions={{
 							accessibilityLink:"https://www.ontario.ca/page/accessibility",
 							privacyLink: "https://www.ontario.ca/page/privacy-statement",

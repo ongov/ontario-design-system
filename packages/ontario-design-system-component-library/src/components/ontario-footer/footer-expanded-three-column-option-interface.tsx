@@ -1,23 +1,3 @@
-export interface defaultOptions {
-	accessibilityLink: string;
-	privacyLink: string;
-	contactLink: string;
-	queensPrinterLink: string;
-	
-}
-
-export interface expandedTwoColumnOptions {
-    firstColumn: {
-        title: string;
-        content: string;
-    };
-    secondColumn: {
-        title: string;
-        content: string;
-        contactButtonText: string;
-    }
-}
-
 export interface expandedThreeColumnOptions {
     firstColumn: {
         title: string;
