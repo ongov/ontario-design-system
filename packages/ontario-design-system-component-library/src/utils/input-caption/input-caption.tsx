@@ -86,7 +86,8 @@ export class InputCaption implements Caption {
 						style: MessageStyle.Regular,
 					},
 					{
-						message: ` <${this.componentName}> `,
+						// message: ` <${this.componentName}> `,
+						message: ' <test component> ',
 						style: MessageStyle.Code
 					},
 					{
