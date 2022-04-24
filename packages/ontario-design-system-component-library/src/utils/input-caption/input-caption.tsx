@@ -29,7 +29,7 @@ export class InputCaption implements Caption {
 	 * Name of the component instantiating the class.
 	 * This is used for validation warning message.
 	 */
-	// componentName: string;
+	componentName: string;
 
 	/**
 	 * Set the class members
@@ -37,9 +37,9 @@ export class InputCaption implements Caption {
 	 * @param caption object containing the essential data to configure the input label
 	 */
 	constructor(caption: InputCaption) {
-		this.isRequired = caption.isRequired;
-		this.isLegend = caption.isLegend;
-		// this.componentName = caption.componentName;
+		this.isRequired = caption.isRequired ?? false;
+		this.isLegend = caption.isLegend ?? false;
+		this.componentName = caption.componentName;
 
 		if ((caption.caption && caption.caption.length <= 0) || !caption.caption) {
 			printConsoleMessage(
@@ -53,8 +53,7 @@ export class InputCaption implements Caption {
 						style: MessageStyle.Regular,
 					},
 					{
-						// message: ` <${this.componentName}> `,
-						message: ' <test component> ',
+						message: ` <${this.componentName}> `,
 						style: MessageStyle.Code,
 					},
 					{
@@ -86,8 +85,7 @@ export class InputCaption implements Caption {
 						style: MessageStyle.Regular,
 					},
 					{
-						// message: ` <${this.componentName}> `,
-						message: ' <test component> ',
+						message: ` <${this.componentName}> `,
 						style: MessageStyle.Code
 					},
 					{

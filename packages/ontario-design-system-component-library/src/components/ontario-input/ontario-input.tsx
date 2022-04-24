@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop, State } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, State, Element } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 import { TextInput } from './input.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
@@ -84,6 +84,11 @@ export class OntarioInput implements TextInput {
 
 	@State() focused: boolean = false;
 
+	/**
+	 * Grant access to the host element and related DOM methods/events within the class instance.
+	 */
+	@Element() element: HTMLElement;
+
 	handleBlur = () => {
 		this.focused = false;
 	};
@@ -98,7 +103,6 @@ export class OntarioInput implements TextInput {
 		if (input) {
 			this.value = input.value ?? '';
 		}
-
 		this.changeEvent.emit(ev as KeyboardEvent);
 	};
 
@@ -114,6 +118,8 @@ export class OntarioInput implements TextInput {
 				caption = this.caption;
 			}
 		}
+		// the `toLowerCase()` function is needed because `tagName` returns a upper-cased string
+		caption.componentName = this.element.tagName.toLowerCase();
 		return caption;
 	}
 

@@ -25,5 +25,5 @@ export interface Caption {
 	 * Name of the component instantiating the class.
 	 * This is used for validation warning message.
 	 */
-	// componentName: string;
+	componentName: string;
 }
