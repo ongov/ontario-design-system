@@ -15,4 +15,15 @@ export interface Caption {
 	 * Determine whether the input field is required.
 	 */
 	isRequired?: boolean;
+
+	/**
+	 * Determine whether the rendered element is a `<label>` or `<legend>`.
+	 */
+	isLegend?: boolean;
+
+	/**
+	 * Name of the component instantiating the class.
+	 * This is used for validation warning message.
+	 */
+	// componentName: string;
 }

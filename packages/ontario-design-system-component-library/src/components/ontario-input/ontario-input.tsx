@@ -136,7 +136,7 @@ export class OntarioInput implements TextInput {
 	render() {
 		return (
 			<div>
-				{this.captionState.getCaption(true, this.getId())}
+				{this.captionState.getCaption(this.getId())}
 				<slot name="hint-text"></slot>
 				<input
 					aria-describedby={this.describedBy}
