@@ -4,7 +4,7 @@ export interface Caption {
 	/**
 	 * The text to display as caption. Must be implemented.
 	 */
-	caption: string;
+	captionText: string;
 
 	/**
 	 * The type of caption to render. Must be implemented.
@@ -25,5 +25,5 @@ export interface Caption {
 	 * Name of the component instantiating the class.
 	 * This is used for validation warning message.
 	 */
-	componentName: string;
+	componentTagName: string;
 }
