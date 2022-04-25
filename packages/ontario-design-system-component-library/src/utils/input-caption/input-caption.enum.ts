@@ -1,5 +1,13 @@
 export enum CaptionType {
-	default = 'default',
-	large = 'large',
-	heading = 'heading',
+	Default = 'default',
+	Large = 'large',
+	Heading = 'heading',
+}
+
+export enum MessageContentType {
+	UndefinedCaptionObject = 'undefinedCaptionObject',
+	UndefinedCaption = 'undefinedCaption',
+	EmptyCaption = 'emptyCaption',
+	UndefinedCaptionType = 'undefinedCaptionType',
+	IncorrectCaptionType = 'incorrectCaptionType',
 }
