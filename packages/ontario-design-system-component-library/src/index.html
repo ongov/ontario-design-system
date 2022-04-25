@@ -23,24 +23,51 @@
 
 	<hr />
 
-	<ontario-input name="email" input-width="20-char-width" caption='{"isRequired": true, "captionType": "HEADING"}'></ontario-input>
+	<!-- `ontario-input` components - happy path examples -->
+	<ontario-input name="email" input-width="20-char-width" caption='{"captionText": "Email", "isRequired": true, "captionType": "HEADING"}'></ontario-input>
+	<ontario-input name="postal" input-width="7-char-width" caption='{"captionText": "Postal Code", "captionType": "Large"}'></ontario-input>
+	<ontario-input name="address" caption='{"captionText": "Address", "captionType": "default"}'></ontario-input>
 
-	<ontario-input name="postal" input-width="7-char-width" caption='{"caption": "Postal Code", "captionType": "Large"}'>
+	<details>
+		<summary style="padding: 0 15px 15px 0;">ontario-input components - unhappy path examples</summary>
+		<!-- `ontario-input` components - unhappy paths - undefined `caption` object -->
+		<ontario-input name="email" input-width="20-char-width"></ontario-input>
+
+		<!-- `ontario-input` components - unhappy paths - undefined `captionText` property -->
+		<ontario-input name="postal-text" input-width="7-char-width" caption='{"captionType": "Large"}'></ontario-input>
+		<ontario-input name="address-text" caption='{"captionText": "", "captionType": "heading"}'></ontario-input>
+
+		<!-- `ontario-input` components - unhappy paths - empty `captionText` property or `captionText` contains only spaces -->
+		<ontario-input name="address-text" caption='{"captionText": " ", "captionType": "heading"}'></ontario-input>
+
+		<!-- `ontario-input` components - unhappy paths - undefined `captionType` property -->
+		<ontario-input name="postal-type" input-width="7-char-width" caption='{"captionText": "Postal"}'></ontario-input>
+
+		<!-- `ontario-input` components - unhappy paths - incorrect `captionType` property -->
+		<ontario-input name="address-type" caption='{"captionText": "Address", "captionType": "hello"}'></ontario-input>
+	</details>
+	
+	<hr />
+
+	<!-- ontario-input components - happy paths with ontario-hint-text usage -->
+	<ontario-input name="postal" input-width="7-char-width" caption='{"captionText": "Postal Code", "captionType": "default"}'>
 		<ontario-hint-text slot="hint-text">For example, A1A 1A1</ontario-hint-test>
 	</ontario-input>
 
-	<ontario-input name="address">
+	<!-- ontario-input components - happy paths with ontario-hint-expander usage -->
+	<ontario-input name="address" caption='{"captionText": "Address", "captionType": "default"}'>
 		<ontario-hint-expander slot="hint-expander" hint="This is the hint" content="This is the content"
 			aria-label="This indicates that the hint can be expanded"></ontario-hint-expander>
 	</ontario-input>
 
 	<hr />
 
-	<ontario-textarea name="comments" label-caption="Comments" label-type="heading" required></ontario-textarea>
-	<ontario-textarea name="feedback" label-caption="Feedback" element-id="feedback" label-type="large">OHHH?
-	</ontario-textarea>
-	<ontario-textarea name="response" label-caption="What do you like about ODS?" element-id="response">
-	</ontario-textarea>
+	<!-- `ontario-input` components - happy path examples -->
+	<ontario-textarea name="comments" caption='{"captionText": "Comments", "isRequired": true, "captionType": "HEADING"}'></ontario-textarea>
+	<ontario-textarea name="feedback" caption='{"captionText": "Feedback", "captionType": "large"}' element-id="feedback"></ontario-textarea>
+	<ontario-textarea name="response" caption='{"captionText": "What do you like about ODS?", "captionType": "default"}' element-id="response"></ontario-textarea>
+
+	<hr />
 
 	<ontario-checkboxes legend="Do you have children?" hint-text="This is the hint text" is-required options='[{
 		"name": "Checkbox-1",
