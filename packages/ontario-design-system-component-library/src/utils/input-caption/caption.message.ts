@@ -10,15 +10,13 @@ import { MessageContentType } from './input-caption.enum';
  * @returns an array of `ConsoleMessage` objects containing the message and associated styles to be printed to the console
  */
 export const getWarningMessage = (messageType: MessageContentType, componentTagName: string, requiredFlagText: string = '(optional)'): ConsoleMessage[] => {
-	const problematicProperty = messageType === MessageContentType.UndefinedCaptionType || messageType === MessageContentType.IncorrectCaptionType ? ' captionType ' : ' caption ';
-
 	let message: ConsoleMessage[] = [
 		{
-			message: `${problematicProperty}`,
+			message: ' caption ',
 			style: MessageStyle.Code,
 		},
 		{
-			message: `${messageType === MessageContentType.UndefinedCaptionObject ? 'object ' : ''}on`,
+			message: 'object on',
 			style: MessageStyle.Regular,
 		},
 		{
@@ -27,12 +25,30 @@ export const getWarningMessage = (messageType: MessageContentType, componentTagN
 		},
 	];
 
+    if (messageType !== MessageContentType.UndefinedCaptionObject) {
+        const problematicProperty: ConsoleMessage[] = [
+            {
+                message: ` ${messageType === MessageContentType.EmptyCaptionText || messageType === MessageContentType.UndefinedCaptionText ? 'captionText' : 'captionType'} `,
+                style: MessageStyle.Code,
+            },
+            {
+                message: 'property of',
+                style: MessageStyle.Regular,
+            }
+        ];
+        message = [...problematicProperty, ...message];
+    }
+
 	switch (messageType) {
+        // undefinedCaptionObject example: caption object on <ontario-input> is required but not defined. A blank followed by the (optional) flag is assumed.
+        // undefinedCaptionText example: captionText property of caption object on <ontario-input> is required but not defined. A blank followed by the (optional) flag is assumed.
+        // EmptyCaptionText example: captionText property of caption object on <ontario-input> is empty. A blank followed by the (optional) flag is assumed.
 		case MessageContentType.UndefinedCaptionObject:
-		case MessageContentType.UndefinedCaption:
+        case MessageContentType.UndefinedCaptionText:
+        case MessageContentType.EmptyCaptionText:
 			let undefinedMessage: ConsoleMessage[] = [
 				{
-					message: 'is required but not defined. A blank followed by the',
+					message: `${messageType === MessageContentType.EmptyCaptionText ? 'is empty' : 'is required but not defined'}. A blank followed by a`,
 					style: MessageStyle.Regular,
 				},
 				{
@@ -47,24 +63,7 @@ export const getWarningMessage = (messageType: MessageContentType, componentTagN
 			message = [...message, ...undefinedMessage];
 			break;
 
-		case MessageContentType.EmptyCaption:
-			let emptyCaptionMessage: ConsoleMessage[] = [
-				{
-					message: 'is empty. A blank followed by the',
-					style: MessageStyle.Regular,
-				},
-				{
-					message: ` ${requiredFlagText} `,
-					style: MessageStyle.Code,
-				},
-				{
-					message: 'flag is assumed.',
-					style: MessageStyle.Regular,
-				},
-			];
-			message = [...message, ...emptyCaptionMessage];
-			break;
-
+        // UndefinedCaptionType example: captionType property of caption object on <ontario-input> is not defined. The default type is assumed.
 		case MessageContentType.UndefinedCaptionType:
 			let undefinedTypeMessage: ConsoleMessage[] = [
 				{
@@ -83,6 +82,7 @@ export const getWarningMessage = (messageType: MessageContentType, componentTagN
 			message = [...message, ...undefinedTypeMessage];
 			break;
 
+        // IncorrectCaptionType example: captionType property of caption object on <ontario-input> was set to an incorrect type; only default, heading or large type is allowed. The default type is assumed.
 		case MessageContentType.IncorrectCaptionType:
 			let incorrectTypeMessage: ConsoleMessage[] = [
 				{

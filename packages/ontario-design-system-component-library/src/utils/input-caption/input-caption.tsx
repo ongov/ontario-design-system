@@ -117,11 +117,11 @@ export class InputCaption implements Caption {
 		} else {
 			// undefined `caption.caption` text
 			if (!caption.captionText) {
-				printConsoleMessage(getWarningMessage(MessageContentType.UndefinedCaption, this.componentTagName, this.getRequiredFlagText()), ConsoleType.Warning);
+				printConsoleMessage(getWarningMessage(MessageContentType.UndefinedCaptionText, this.componentTagName, this.getRequiredFlagText()), ConsoleType.Warning);
 			} else {
 				// empty `caption.caption` text
 				if (caption.captionText.length <= 0) {
-					printConsoleMessage(getWarningMessage(MessageContentType.EmptyCaption, this.componentTagName ,this.getRequiredFlagText()), ConsoleType.Warning);
+					printConsoleMessage(getWarningMessage(MessageContentType.EmptyCaptionText, this.componentTagName ,this.getRequiredFlagText()), ConsoleType.Warning);
 				}
 			}
 

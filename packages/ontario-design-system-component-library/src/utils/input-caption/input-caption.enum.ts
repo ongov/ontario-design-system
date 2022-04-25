@@ -6,8 +6,8 @@ export enum CaptionType {
 
 export enum MessageContentType {
 	UndefinedCaptionObject = 'undefinedCaptionObject',
-	UndefinedCaption = 'undefinedCaption',
-	EmptyCaption = 'emptyCaption',
+	UndefinedCaptionText = 'undefinedCaption',
+	EmptyCaptionText = 'emptyCaption',
 	UndefinedCaptionType = 'undefinedCaptionType',
 	IncorrectCaptionType = 'incorrectCaptionType',
 }
