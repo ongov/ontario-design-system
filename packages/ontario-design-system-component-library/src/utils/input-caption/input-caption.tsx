@@ -1,14 +1,15 @@
 import { h } from '@stencil/core';
-import { CaptionType } from './input-caption.enum';
+import { CaptionType, MessageContentType } from './input-caption.enum';
 import { Caption } from './caption.interface';
-import { ConsoleType, MessageStyle } from '../../utils/console-message/console-message.enum';
+import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { printConsoleMessage } from '../../utils/console-message/console-message';
+import { getWarningMessage } from './caption.message';
 
 export class InputCaption implements Caption {
 	/**
 	 * The text to display as caption.
 	 */
-	caption: string;
+	captionText: string;
 
 	/**
 	 * The type of caption to render. Must be implemented.
@@ -29,122 +30,52 @@ export class InputCaption implements Caption {
 	 * Name of the component instantiating the class.
 	 * This is used for validation warning message.
 	 */
-	componentName: string;
+	componentTagName: string;
 
 	/**
 	 * Set the class members
 	 * Output a console warning message if the provided `label` type is incorrect
 	 * @param caption object containing the essential data to configure the input label
 	 */
-	constructor(caption: InputCaption) {
-		this.isRequired = caption.isRequired ?? false;
-		this.isLegend = caption.isLegend ?? false;
-		this.componentName = caption.componentName;
-
-		if ((caption.caption && caption.caption.length <= 0) || !caption.caption) {
-			printConsoleMessage(
-				[
-					{
-						message: `${this.isLegend ? ' legend ' : ' label '}`,
-						style: MessageStyle.Code,
-					},
-					{
-						message: 'on',
-						style: MessageStyle.Regular,
-					},
-					{
-						message: ` <${this.componentName}> `,
-						style: MessageStyle.Code,
-					},
-					{
-						message: 'is empty. A blank followed by the',
-						style: MessageStyle.Regular,
-					},
-					{
-						message: ` ${this.getRequiredFlagText()} `,
-						style: MessageStyle.Code,
-					},
-					{
-						message: 'flag is assumed.',
-						style: MessageStyle.Regular,
-					},
-				],
-				ConsoleType.Warning,
-			);
-		} 
-
-		if (!Object.values(CaptionType).includes(caption?.captionType?.toLowerCase() as CaptionType)) {
-			printConsoleMessage(
-				[
-					{
-						message: `${this.isLegend ? ' legend ' : ' label '}`,
-						style: MessageStyle.Code,
-					},
-					{
-						message: 'on',
-						style: MessageStyle.Regular,
-					},
-					{
-						message: ` <${this.componentName}> `,
-						style: MessageStyle.Code
-					},
-					{
-						message: `was set to an incorrect type; only`,
-						style: MessageStyle.Regular,
-					},
-					{
-						message: ' default, heading, ',
-						style: MessageStyle.Code,
-					},
-					{
-						message: 'or',
-						style: MessageStyle.Regular,
-					},
-					{
-						message: ' large ',
-						style: MessageStyle.Code,
-					},
-					{
-						message: 'type is allowed. The',
-						style: MessageStyle.Regular,
-					},
-					{
-						message: ' default ',
-						style: MessageStyle.Code,
-					},
-					{
-						message: 'type is assumed.',
-						style: MessageStyle.Regular,
-					},
-				],
-				ConsoleType.Warning,
-			);
+	constructor(componentTagName: string, caption: InputCaption | string) {
+		let captionObject = new Object() as InputCaption;
+		
+		if (caption) {
+			if (typeof caption === 'string') {
+				captionObject = JSON.parse(caption) as InputCaption;
+			} else {
+				captionObject = caption;
+			}
 		}
-		this.caption = caption.caption ?? '';
-		this.captionType = (caption && caption.captionType && Object.values(CaptionType).find(type => type === caption?.captionType?.toLowerCase())) || CaptionType.default;
+
+		this.isRequired = captionObject?.isRequired ?? false;
+		this.isLegend = captionObject?.isLegend ?? false;
+		this.componentTagName = componentTagName;
+		this.validateCaption(captionObject);
+		this.captionText = captionObject?.captionText ?? '';
+		this.captionType = (captionObject && captionObject?.captionType && Object.values(CaptionType).find(type => type === captionObject?.captionType?.toLowerCase())) || CaptionType.Default;
 	}
 
 	/**
 	 * Return the `<label>` element for text inputs
-	 * @param isLabel Determine if the `<label>` is used, otherwise `<legend>` is used (for future expansion)
 	 * @param captionFor Set the `htmlFor` attribute
 	 * @returns element containing the caption for the input
 	 */
 	getCaption = (captionFor?: string): HTMLElement => {
 		const captionContent = this.isLegend ? (
 			<legend class={this.getClass()}>
-				{this.caption}
+				{this.captionText}
 				{this.getRequiredFlagElement()}
 			</legend>
 		) : (
 			<label htmlFor={captionFor} class={this.getClass()}>
-				{this.caption}
+				{this.captionText}
 				{this.getRequiredFlagElement()}
 			</label>
 		);
 
 		// with `this.captionType` already set to one of the enum values, the comparison no longer needs the `toLowerCase()` transform
-		return this.captionType === CaptionType.heading ? <h1>{captionContent}</h1> : captionContent;
+		return this.captionType === CaptionType.Heading ? <h1>{captionContent}</h1> : captionContent;
 	};
 
 	/**
@@ -168,6 +99,42 @@ export class InputCaption implements Caption {
 	 * @returns CSS class for the `label` element.
 	 */
 	private getClass(): string {
-		return this.captionType === CaptionType.large || this.captionType === CaptionType.heading ? `ontario-label ontario-label--${this.captionType}` : `ontario-label`;
+		return this.captionType === CaptionType.Large || this.captionType === CaptionType.Heading ? `ontario-label ontario-label--${this.captionType}` : `ontario-label`;
+	}
+
+	/**
+	 * Validate caption input by user and output warning message to the console if:
+	 * 1. the `caption` object is not provided
+	 * 2. the `caption.caption` text is not provided
+	 * 3. the `caption.caption` text is empty
+	 * 4. the `caption.captionType` is not provided
+	 * 5. the `caption.captionType` is incorrect
+	 */
+	private validateCaption(caption?: InputCaption) {
+		// undefined `caption` object
+		if (!caption || Object.keys(caption).length <= 0) {
+			console.log('undefined caption object');
+			printConsoleMessage(getWarningMessage(MessageContentType.UndefinedCaptionObject, this.componentTagName), ConsoleType.Warning);
+		} else {
+			// undefined `caption.caption` text
+			if (!caption.captionText) {
+				printConsoleMessage(getWarningMessage(MessageContentType.UndefinedCaption, this.componentTagName, this.getRequiredFlagText()), ConsoleType.Warning);
+			} else {
+				// empty `caption.caption` text
+				if (caption.captionText.length <= 0) {
+					printConsoleMessage(getWarningMessage(MessageContentType.EmptyCaption, this.componentTagName ,this.getRequiredFlagText()), ConsoleType.Warning);
+				}
+			}
+
+			// undefined `caption.captionType` 
+			if (!caption.captionType) {
+				printConsoleMessage(getWarningMessage(MessageContentType.UndefinedCaptionType, this.componentTagName), ConsoleType.Warning);
+			} else {
+				// incorrect `caption.captionType`
+				if (!Object.values(CaptionType).includes(caption?.captionType?.toLowerCase() as CaptionType)) {
+					printConsoleMessage(getWarningMessage(MessageContentType.IncorrectCaptionType, this.componentTagName), ConsoleType.Warning);
+				}
+			}
+		}
 	}
 }
