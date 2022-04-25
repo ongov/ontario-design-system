@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ontario-textarea snapshot should render the expected html 1`] = `
-<ontario-textarea element-id="ontario-textarea" label-caption="Ontario Textarea" name="ontario-textarea">
+<ontario-textarea caption="{&quot;captionText&quot;: &quot;Ontario Textarea&quot;}" element-id="ontario-textarea" name="ontario-textarea">
   <mock:shadow-root>
     <div>
       <label class="ontario-label" htmlfor="ontario-textarea">
