@@ -29,7 +29,7 @@ export class OntarioInput implements TextInput {
 	/**
 	 * Instantiate an InputCaption object for internal logic use
 	 */
-	@State() private captionState = new InputCaption(this.parseCaption());
+	@State() private captionState: InputCaption;
 
 	/**
 	 * The aria-describedBy value if the input has hint text associated with it.
@@ -106,23 +106,6 @@ export class OntarioInput implements TextInput {
 		this.changeEvent.emit(ev as KeyboardEvent);
 	};
 
-	/**
-	 * Parse caption into InputCaption object
-	 */
-	private parseCaption() {
-		let caption = new Object() as InputCaption;
-		if (this.caption) {
-			if (typeof this.caption === 'string') {
-				caption = JSON.parse(this.caption) as InputCaption;
-			} else {
-				caption = this.caption;
-			}
-		}
-		// the `toLowerCase()` function is needed because `tagName` returns a upper-cased string
-		caption.componentName = this.element.tagName.toLowerCase();
-		return caption;
-	}
-
 	private getValue(): string | number {
 		return this.value ?? '';
 	}
@@ -136,6 +119,8 @@ export class OntarioInput implements TextInput {
 	}
 
 	componentWillLoad() {
+		// the `toLowerCase()` function is needed because `tagName` returns a upper-cased string
+		this.captionState = new InputCaption(this.element.tagName.toLowerCase(), this.caption);	
 		this.elementId = this.elementId ?? uuid();
 	}
 
