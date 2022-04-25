@@ -113,7 +113,6 @@ export class InputCaption implements Caption {
 	private validateCaption(caption?: InputCaption) {
 		// undefined `caption` object
 		if (!caption || Object.keys(caption).length <= 0) {
-			console.log('undefined caption object');
 			printConsoleMessage(getWarningMessage(MessageContentType.UndefinedCaptionObject, this.componentTagName), ConsoleType.Warning);
 		} else {
 			// undefined `caption.caption` text

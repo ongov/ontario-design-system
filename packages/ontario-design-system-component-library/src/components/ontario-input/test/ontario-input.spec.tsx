@@ -6,7 +6,7 @@ describe('ontario-input', () => {
 		it('should render the expected html', async () => {
 			const page = await newSpecPage({
 				components: [OntarioInput],
-				html: `<ontario-input element-id="ontario-input" caption='{"caption": "Ontario Input"}' name="ontario-input"></ontario-input>`,
+				html: `<ontario-input element-id="ontario-input" caption='{"captionText": "Ontario Input"}' name="ontario-input"></ontario-input>`,
 			});
 
 			expect(page.root).toMatchSnapshot();
@@ -17,10 +17,10 @@ describe('ontario-input', () => {
 		it('should render a default input element', async () => {
 			const page = await newSpecPage({
 				components: [OntarioInput],
-				html: `<ontario-input element-id="ontario-input" caption='{"caption": "Ontario Input"}' name="ontario-input"></ontario-input>`,
+				html: `<ontario-input element-id="ontario-input" caption='{"captionText": "Ontario Input"}' name="ontario-input"></ontario-input>`,
 			});
 			expect(page.root).toEqualHtml(`
-				<ontario-input element-id="ontario-input" caption='{"caption": "Ontario Input"}' name="ontario-input">
+				<ontario-input element-id="ontario-input" caption='{"captionText": "Ontario Input"}' name="ontario-input">
 					<mock:shadow-root>
 						<div>
 							<label class="ontario-label" htmlfor="ontario-input">
@@ -46,7 +46,7 @@ describe('ontario-input', () => {
 									value="input value"
 									type='tel'
 									input-width='7-char-width'
-									caption='{"caption": "Ontario Input", "isRequired": true}'
+									caption='{"captionText": "Ontario Input", "isRequired": true}'
 								></ontario-input>`,
 			});
 
@@ -58,7 +58,7 @@ describe('ontario-input', () => {
 			expect(page.rootInstance.type).toBe('tel');
 			expect(page.rootInstance.inputWidth).toBe('7-char-width');
 			expect(page.rootInstance.focused).toBe(false);
-			expect(page.rootInstance.captionState.caption).toBe('Ontario Input');
+			expect(page.rootInstance.captionState.captionText).toBe('Ontario Input');
 		});
 	});
 
