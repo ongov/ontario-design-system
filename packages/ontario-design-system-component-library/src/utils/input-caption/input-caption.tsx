@@ -3,7 +3,7 @@ import { CaptionType, MessageContentType } from './input-caption.enum';
 import { Caption } from './caption.interface';
 import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { printConsoleMessage } from '../../utils/console-message/console-message';
-import { getWarningMessage } from './caption.message';
+import { getWarningMessage } from './caption-message';
 
 export class InputCaption implements Caption {
 	/**
