@@ -43,7 +43,7 @@ export function printConsoleMessage(messages: ConsoleMessage[] | string, console
 			: messages?.reduce(
 					(message: string, currentObject: ConsoleMessage) => (message += addSpecifier(currentObject.message) ?? ''),
 					hasDesignSystemTag ? addSpecifier(designSystemTag) : '',
-			  );
+			);
 
 	// array of arguments to be passed into the the console function
 	const messageArray: string[] = [];
@@ -70,15 +70,15 @@ export function printConsoleMessage(messages: ConsoleMessage[] | string, console
 	// the `function.apply()` function handles array of arguments which allows list of arguments to be set programmatically
 	switch (consoleType) {
 		case ConsoleType.Error:
-			console.error.apply(null, messageArray);
-			break;
+			return console.error.apply(null, messageArray);
+
 		case ConsoleType.Info:
-			console.info.apply(null, messageArray);
-			break;
+			return console.info.apply(null, messageArray);
+
 		case ConsoleType.Warning:
-			console.warn.apply(null, messageArray);
-			break;
+			return console.warn.apply(null, messageArray);
+
 		default:
-			console.log.apply(null, messageArray);
+			return console.log.apply(null, messageArray);
 	}
 }

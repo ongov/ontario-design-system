@@ -40,15 +40,15 @@ export const getWarningMessage = (messageType: MessageContentType, componentTagN
     }
 
 	switch (messageType) {
-        // undefinedCaptionObject example: caption object on <ontario-input> is required but not defined. A blank followed by the (optional) flag is assumed.
-        // undefinedCaptionText example: captionText property of caption object on <ontario-input> is required but not defined. A blank followed by the (optional) flag is assumed.
-        // EmptyCaptionText example: captionText property of caption object on <ontario-input> is empty. A blank followed by the (optional) flag is assumed.
+        // undefinedCaptionObject example: caption object on <ontario-input> is required but not defined. A blank followed by a (optional) flag is assumed.
+        // undefinedCaptionText example: captionText property of caption object on <ontario-input> is required but not defined. A blank followed by a (optional) flag is assumed.
+        // EmptyCaptionText example: captionText property of caption object on <ontario-input> is empty or contains only spaces. A blank followed by a (optional) flag is assumed.
 		case MessageContentType.UndefinedCaptionObject:
         case MessageContentType.UndefinedCaptionText:
         case MessageContentType.EmptyCaptionText:
 			let undefinedMessage: ConsoleMessage[] = [
 				{
-					message: `${messageType === MessageContentType.EmptyCaptionText ? 'is empty' : 'is required but not defined'}. A blank followed by a`,
+					message: `${messageType === MessageContentType.EmptyCaptionText ? 'is empty or contains only spaces' : 'is required but not defined'}. A blank followed by a`,
 					style: MessageStyle.Regular,
 				},
 				{

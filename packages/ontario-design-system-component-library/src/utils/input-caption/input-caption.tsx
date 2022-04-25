@@ -51,9 +51,9 @@ export class InputCaption implements Caption {
 		this.isRequired = captionObject?.isRequired ?? false;
 		this.isLegend = captionObject?.isLegend ?? false;
 		this.componentTagName = componentTagName;
-		this.validateCaption(captionObject);
 		this.captionText = captionObject?.captionText ?? '';
 		this.captionType = (captionObject && captionObject?.captionType && Object.values(CaptionType).find(type => type === captionObject?.captionType?.toLowerCase())) || CaptionType.Default;
+		this.validateCaption(captionObject);
 	}
 
 	/**
@@ -105,31 +105,31 @@ export class InputCaption implements Caption {
 	/**
 	 * Validate caption input by user and output warning message to the console if:
 	 * 1. the `caption` object is not provided
-	 * 2. the `caption.caption` text is not provided
-	 * 3. the `caption.caption` text is empty
-	 * 4. the `caption.captionType` is not provided
-	 * 5. the `caption.captionType` is incorrect
+	 * 2. the `captionText` property of the `caption` object is not provided
+	 * 3. the `captionText` property of the `caption` object is empty or contain only spaces
+	 * 4. the `captionType` property of the `caption` object is not provided
+	 * 5. the `captionType` property of the `caption` object is incorrect
 	 */
 	private validateCaption(caption?: InputCaption) {
 		// undefined `caption` object
 		if (!caption || Object.keys(caption).length <= 0) {
 			printConsoleMessage(getWarningMessage(MessageContentType.UndefinedCaptionObject, this.componentTagName), ConsoleType.Warning);
 		} else {
-			// undefined `caption.caption` text
+			// undefined `captionText` property
 			if (!caption.captionText) {
 				printConsoleMessage(getWarningMessage(MessageContentType.UndefinedCaptionText, this.componentTagName, this.getRequiredFlagText()), ConsoleType.Warning);
-			} else {
-				// empty `caption.caption` text
-				if (caption.captionText.length <= 0) {
+			}  else {
+				// `captionText` that is empty or contains only spaces
+				if (/^\s*$/.test(caption.captionText)) {
 					printConsoleMessage(getWarningMessage(MessageContentType.EmptyCaptionText, this.componentTagName ,this.getRequiredFlagText()), ConsoleType.Warning);
 				}
 			}
 
-			// undefined `caption.captionType` 
+			// undefined `captionType` 
 			if (!caption.captionType) {
 				printConsoleMessage(getWarningMessage(MessageContentType.UndefinedCaptionType, this.componentTagName), ConsoleType.Warning);
 			} else {
-				// incorrect `caption.captionType`
+				// incorrect `captionType`
 				if (!Object.values(CaptionType).includes(caption?.captionType?.toLowerCase() as CaptionType)) {
 					printConsoleMessage(getWarningMessage(MessageContentType.IncorrectCaptionType, this.componentTagName), ConsoleType.Warning);
 				}
