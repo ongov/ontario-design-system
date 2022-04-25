@@ -6,9 +6,15 @@ import { ConsoleType, MessageStyle } from '../../utils/console-message/console-m
 import { printConsoleMessage } from '../../utils/console-message/console-message';
 
 @Component({
+<<<<<<< HEAD
     tag: 'ontario-icon-bookmark-off',
     styleUrl: 'ontario-icon.scss',
     shadow: true,
+=======
+  tag: 'ontario-icon-bookmark-off',
+  styleUrl: 'ontario-icon.scss',
+  shadow: true, 
+>>>>>>> 77e6442 (some initial validation)
 })
 export class OntarioIconBookmarkOff implements IconWithColour {
     /**

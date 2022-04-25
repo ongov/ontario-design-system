@@ -1,4 +1,6 @@
 import { Component, Prop, Element, h, Watch } from '@stencil/core';
+import { ButtonType, HtmlType } from './ontario-button.enum';
+import { validatePropExists, validateValueAgainstEnum } from '../../utils/validation/validation-functions';
 
 /**
  * Ontario Button component properties
@@ -82,25 +84,41 @@ export class OntarioButton implements OntarioButtonProperties {
 	 */
 	@Prop({ mutable: true }) buttonId?: string;
 
-	/* Validation function */
-	public validateElementContent(newValue: string): boolean {
-		const isNewValueBlank = typeof newValue !== 'string' || newValue === '';
-		return isNewValueBlank;
-	}
-
-	public validateElementType(newValue: string): boolean {
-		
-	}
-
 	/**
+	 * Watch for changes in the `label` variable for validation purpose
 	 * Validate the label and make sure the label has a value.
 	 * Log error if user doesn't input a value for the label or element content.
 	 */
 	@Watch('label')
 	validateLabelContent(newValue: string) {
-		const isLabelBlank = this.validateElementContent(newValue);
+		const isLabelBlank = validatePropExists(newValue);
 		if (isLabelBlank) {
-			console.log("label does not exist")
+			console.log("Label does not exist")
+		}
+	}
+
+	/**
+	 * Watch for changes in the `type` variable for validation purpose.
+	 * If the user input doesn't match one of the enum values then return an error message.
+	 * If a match is found in one of the enum values then `type` will be set to the matching enum value.
+	 */
+	@Watch('type')
+	validateButtonType(newValue: string) {
+		const isTypeValid = validateValueAgainstEnum(newValue, ButtonType);
+		if (isTypeValid) {
+			console.log("Type is valid")
+		} else {
+			console.log("Type is not valid")
+		}
+	}
+
+	@Watch('htmlType')
+	validateHtmlType(newValue: string) {
+		const isHtmlTypeValid = validateValueAgainstEnum(newValue, HtmlType);
+		if (isHtmlTypeValid) {
+			console.log("Html type is valid")
+		} else {
+			console.log("Html type is not valid")
 		}
 	}
 
@@ -125,7 +143,7 @@ export class OntarioButton implements OntarioButtonProperties {
 
 	render() {
 		return (
-			<button type={this.htmlType} class={this.getClass()} aria-label={this.ariaLabel} id={this.getId()}>
+			<button type={this.type} html-type={this.htmlType} class={this.getClass()} aria-label={this.ariaLabel} id={this.getId()}>
 				{this.label}
 			</button>
 		);
