@@ -1,11 +1,11 @@
-export interface expandedThreeColumnOptions {
+export interface ExpandedThreeColumnOptions {
     firstColumn: {
         title: string;
         content: string;
     };
     secondColumn: {
         title: string;
-        content: threeColumnRowTwoContent[];
+        content: ThreeColumnRowTwoContent[];
     };
     thirdColumn: {
         title: string;
@@ -25,7 +25,7 @@ export interface expandedThreeColumnOptions {
     }
 }
 
-interface threeColumnRowTwoContent {
+interface ThreeColumnRowTwoContent {
     title:string;
     link:string;
 }

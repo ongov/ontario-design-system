@@ -1,4 +1,4 @@
-export interface expandedTwoColumnOptions {
+export interface ExpandedTwoColumnOptions {
     firstColumn: {
         title: string;
         content: string;

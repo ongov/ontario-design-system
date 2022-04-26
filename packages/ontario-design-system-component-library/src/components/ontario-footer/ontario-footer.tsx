@@ -1,7 +1,7 @@
 import { Component, Prop, h, getAssetPath, State, Watch } from '@stencil/core';
-import { expandedThreeColumnOptions } from './footer-expanded-three-column-option-interface';
-import { expandedTwoColumnOptions } from './footer-expanded-two-column-option-interface';
-import { defaultOptions } from './footer-default-option-interface';
+import { ExpandedThreeColumnOptions } from './footer-expanded-three-column-option-interface';
+import { ExpandedTwoColumnOptions } from './footer-expanded-two-column-option-interface';
+import { DefaultOptions } from './footer-default-option-interface';
 
 const enDash = '\u2013';
 
@@ -20,19 +20,19 @@ export class OntarioFooter {
 	/**
 	 * Stores the required links for all footers
 	 */
-	@Prop() defaultOptions: defaultOptions | string;
+	@Prop() defaultOptions: DefaultOptions | string;
 
 	/**
 	 * Stores the titles and content for the expanded
 	 * two column footer
 	 */
-	@Prop() expandedTwoColumnOptions?: expandedTwoColumnOptions | string;
+	@Prop() expandedTwoColumnOptions?: ExpandedTwoColumnOptions | string;
 
 	/**
 	 * Stores the titles and content for the expanded
 	 * three column footer
 	 */
-	@Prop() expandedThreeColumnOptions?: expandedThreeColumnOptions | string;
+	@Prop() expandedThreeColumnOptions?: ExpandedThreeColumnOptions | string;
 
 	/**
 	 * Stores the page's connection with Ontario for
@@ -44,11 +44,11 @@ export class OntarioFooter {
 		| 'Funded by Government of Ontario'
 		| 'Sponsored by Government of Ontario';
 
-	@State() private defaultState: defaultOptions;
+	@State() private defaultState: DefaultOptions;
 
-	@State() private expandedTwoColumnState: expandedTwoColumnOptions;
+	@State() private expandedTwoColumnState: ExpandedTwoColumnOptions;
 
-	@State() private expandedThreeColumnState: expandedThreeColumnOptions;
+	@State() private expandedThreeColumnState: ExpandedThreeColumnOptions;
 
 	private verifyDefault() {
 		if (this.defaultState && !this.defaultState.queensPrinterLink) {

@@ -8,9 +8,9 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
-import { defaultOptions } from "./components/ontario-footer/footer-default-option-interface";
-import { expandedTwoColumnOptions } from "./components/ontario-footer/footer-expanded-two-column-option-interface";
-import { expandedThreeColumnOptions } from "./components/ontario-footer/footer-expanded-three-column-option-interface";
+import { DefaultOptions } from "./components/ontario-footer/footer-default-option-interface";
+import { ExpandedTwoColumnOptions } from "./components/ontario-footer/footer-expanded-two-column-option-interface";
+import { ExpandedThreeColumnOptions } from "./components/ontario-footer/footer-expanded-three-column-option-interface";
 import { headerTitle } from "./components/ontario-header/headerTitle.interface";
 import { languageToggleOptions } from "./components/ontario-header/languageToggleOptions.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
@@ -110,15 +110,15 @@ export namespace Components {
         /**
           * Stores the required links for all footers
          */
-        "defaultOptions": defaultOptions | string;
+        "defaultOptions": DefaultOptions | string;
         /**
           * Stores the titles and content for the expanded three column footer
          */
-        "expandedThreeColumnOptions"?: expandedThreeColumnOptions | string;
+        "expandedThreeColumnOptions"?: ExpandedThreeColumnOptions | string;
         /**
           * Stores the titles and content for the expanded two column footer
          */
-        "expandedTwoColumnOptions"?: expandedTwoColumnOptions | string;
+        "expandedTwoColumnOptions"?: ExpandedTwoColumnOptions | string;
         /**
           * Stores the page's connection with Ontario for the partnership footer
          */
@@ -1922,15 +1922,15 @@ declare namespace LocalJSX {
         /**
           * Stores the required links for all footers
          */
-        "defaultOptions"?: defaultOptions | string;
+        "defaultOptions"?: DefaultOptions | string;
         /**
           * Stores the titles and content for the expanded three column footer
          */
-        "expandedThreeColumnOptions"?: expandedThreeColumnOptions | string;
+        "expandedThreeColumnOptions"?: ExpandedThreeColumnOptions | string;
         /**
           * Stores the titles and content for the expanded two column footer
          */
-        "expandedTwoColumnOptions"?: expandedTwoColumnOptions | string;
+        "expandedTwoColumnOptions"?: ExpandedTwoColumnOptions | string;
         /**
           * Stores the page's connection with Ontario for the partnership footer
          */
