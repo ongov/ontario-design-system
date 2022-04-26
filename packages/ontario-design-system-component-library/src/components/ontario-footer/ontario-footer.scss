@@ -1,11 +1,11 @@
+@use "sass:math";
 @import '../../global.scss';
 
 .ontario-footer {
 	color: $ontario-colour-white;
 	padding: $spacing-9 $spacing-0;
-
-	font-family: $ontario-font-open-sans, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size: 1rem;
+	font-family: $ontario-font-open-sans;
+	font-size: $ontario-font-size-standard-body-text;
 	line-height: 1.6rem;
 }
 
@@ -126,14 +126,17 @@
 	}
 }
 
+$ontario-icon-size--social-large: 36px;
+$ontario-icon-size--social-small: 32px;
+
 .ontario-footer__links-container--social .ontario-footer__link .ontario-icon {
 	fill: $ontario-colour-white;
-	width: 36px;
-	height: 36px;
+	width: $ontario-icon-size--social-large;
+	height: $ontario-icon-size--social-large;
 
 	@media screen and (min-width: $small-breakpoint) {
-		width: 32px;
-		height: 32px;
+		width: $ontario-icon-size--social-small;
+		height: $ontario-icon-size--social-small;
 	}
 }
 
@@ -338,6 +341,9 @@
 	padding-top: $spacing-9;
 }
 
+
+// Note: Styles relating to the Ontario button should be reviewed and
+// aligned to use the real <ontario-button>, if possible.
 .ontario-button {
 	border: none;
 	border-radius: $spacing-1;
@@ -345,10 +351,10 @@
 	box-shadow: none;
 	display: inline-block;
 	font-size: 1.125rem;
-	font-family: $ontario-font-open-sans, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: $ontario-font-open-sans;
 	font-weight: 600;
-	line-height: calc(14 / 9);
-	margin: 0 calc(1rem + 0.75rem) 1.5rem 0;
+	line-height: math.div(14, 9);
+	margin: 0 (1rem + 0.75rem) 1.5rem 0;
 	min-width: 10rem;
 	padding: 0.625rem 1.5rem;
 	text-align: center;
