@@ -14,7 +14,7 @@ const App = () => {
 				<div className="content-layout">
 					<div className="header">
 						<OntarioHeader
-							type="ontario"
+							type="application"
 							titleHeader={{
 								name: 'Design System',
 								href: '/',
@@ -76,76 +76,25 @@ const App = () => {
 					</div>
 					<div className="footer">
 						<OntarioFooter 
-						type = "expandedThreeColumn" 
+						type = "expandedTwoColumn" 
 						defaultOptions={{
 							accessibilityLink:"https://www.ontario.ca/page/accessibility",
 							privacyLink: "https://www.ontario.ca/page/privacy-statement",
 							contactLink: "https://www.ontario.ca/feedback/contact-us",
 							queensPrinterLink: "https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario"
 						}} 
-						partnershipConnection="Sponsored by Government of Ontario"  
 						expandedTwoColumnOptions = {{
 							firstColumn: {
-								title: "This is my First Title",
-								content:"this is my first content: content content content content" 
+								title: "Ontario Design System",
+								content:"The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services." 
 							},
 							secondColumn: {
-								title: "This is my Second Title",
-								content:"this is my second content: content content content content",
-								contactButtonText: "im a button"
+								title: "Help us improve the design system",
+								content:'You can check our <a href="https://designsystem.ontario.ca/docs/help-feedback.html">help and feedback page</a> if you don’t see the component you need.',
+								contactButtonText: "Send us an email"
 							}
 						}} 
-						expandedThreeColumnOptions = {{
-							firstColumn: {
-								title: "This is my First Title",
-								content:"this is my first content" 
-							},
-							secondColumn: {
-								title: "This is my Second Title",
-								content:[
-								{
-									title: "1 asdas",
-									link: "12"
-								},
-								{
-									title: "2 asdasddasd",
-									link: "22"
-								},
-								{
-									title: "2 asdasddasd",
-									link: "22"
-								},
-								{
-									title: "2 asdasddasd",
-									link: "22"
-								},
-								{
-									title: "2 asdasddasd",
-									link: "22"
-								},
-								{
-									title: "2 asdasddasd",
-									link: "22"
-								}
-								]
-							},
-							thirdColumn: {
-								title: "this is my third title",
-								content: "this is my third content",
-								facebook: {
-									link: "1"
-								},
-								twitter: {
-									link: "2"
-								},
-								instagram: {
-									link: "3"
-								},
-								youtube: {
-									link: "4"
-								}
-							}
-						}}/>
+						/>
 					</div>
 				</div>
 			</div>
