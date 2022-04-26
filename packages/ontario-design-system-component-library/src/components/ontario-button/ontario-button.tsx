@@ -1,5 +1,5 @@
 import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
-import { OntarioButtonProperties } from './button.interface';
+import { Button } from './button.interface';
 import { ButtonType, HtmlType } from './ontario-button.enum';
 import { validatePropExists, validateValueAgainstEnum } from '../../utils/validation/validation-functions';
 import { ConsoleType, MessageStyle } from '../../utils/console-message/console-message.enum';
@@ -10,7 +10,7 @@ import { printConsoleMessage } from '../../utils/console-message/console-message
 	styleUrl: 'ontario-button.scss',
 	shadow: true,
 })
-export class OntarioButton implements OntarioButtonProperties {
+export class OntarioButton implements Button {
 	@Element() host: HTMLElement;
 
 	/**
@@ -20,7 +20,7 @@ export class OntarioButton implements OntarioButtonProperties {
 
 	/**
 	 * Mutable variable, for internal use only.
-	 * Set the icon's width depending on validation result.
+	 * Set the button's type depending on validation result.
 	 */
 	@State() typeState: string = ButtonType.Secondary;
 
@@ -31,7 +31,7 @@ export class OntarioButton implements OntarioButtonProperties {
 
 	/**
 	 * Mutable variable, for internal use only.
-	 * Set the icon's width depending on validation result.
+	 *  Set the native HTML button type depending on validation result.
 	 */
 	@State() htmlTypeState: string = HtmlType.Button;
 
@@ -194,7 +194,7 @@ export class OntarioButton implements OntarioButtonProperties {
 
 	render() {
 		return (
-			<button type={this.typeState} html-type={this.htmlType} class={this.getClass()} aria-label={this.ariaLabel} id={this.getId()}>
+			<button type={this.htmlTypeState} class={this.getClass()} aria-label={this.ariaLabel} id={this.getId()}>
 				{this.label}
 			</button>
 		);
