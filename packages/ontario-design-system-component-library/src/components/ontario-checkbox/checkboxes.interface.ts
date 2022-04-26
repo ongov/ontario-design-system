@@ -26,7 +26,7 @@ export interface Checkboxes extends Base {
    * @example
    * <ontario-checkboxes
    *   legend="This is a question?"
-   *   name="ontario-checkbox"
+   *   name="ontario-checkboxes"
    *   options='[{
    *     "value": "checkbox-1-value",
    *     "label": "Checkbox Label",
@@ -57,7 +57,7 @@ export interface Checkboxes extends Base {
    * @example
    * <ontario-checkboxes
    *   legend="This is a question?"
-   *   name="ontario-checkbox"
+   *   name="ontario-checkboxes"
    *   hint-text="This is the hint text"
    *   options='[
    *     {

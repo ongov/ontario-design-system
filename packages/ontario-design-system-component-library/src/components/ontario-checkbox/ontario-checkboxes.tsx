@@ -42,7 +42,7 @@ export class OntarioCheckboxes implements Checkboxes {
    * @example
    * <ontario-checkboxes
    *   legend="This is a question?"
-   *   name="ontario-checkbox"
+   *   name="ontario-checkboxes"
    *   options='[{
    *     "value": "checkbox-1-value",
    *     "label": "Checkbox Label",
