@@ -13,12 +13,12 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 })
 export class OntarioCheckboxes implements Checkboxes {
   /**
-   * The legend for the checkbox
+   * The legend for the checkboxes
    */
   @Prop() legend: string;
 
   /**
-   * The name for the checkbox.
+   * The name for the checkboxes.
    */
   @Prop() name: string;
 
@@ -87,7 +87,7 @@ export class OntarioCheckboxes implements Checkboxes {
    * @example
    * <ontario-checkboxes
    *   legend="This is a question?"
-   *   name: "Checkbox 1",
+   *   name= "ontario-checkboxes",
    *   hint-text="This is the hint text"
    *   options='[
    *     {

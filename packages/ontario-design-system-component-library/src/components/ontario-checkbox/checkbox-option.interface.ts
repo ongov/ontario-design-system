@@ -6,6 +6,7 @@ export interface CheckboxOption {
    *
    * @example
    * <ontario-checkboxes
+   *   name="ontario-checkboxes"
    *   legend="This is a question?"
    *   hint-text="This is the hint text"
    *   options='[{
@@ -25,6 +26,7 @@ export interface CheckboxOption {
    *
    * @example
    * <ontario-checkboxes
+   *   name="ontario-checkboxes"
    *   legend="This is a question?"
    *   hint-text="This is the hint text"
    *   options='[{

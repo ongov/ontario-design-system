@@ -65,16 +65,16 @@ export namespace Components {
          */
         "isRequired"?: boolean;
         /**
-          * The legend for the checkbox
+          * The legend for the checkboxes
          */
         "legend": string;
         /**
-          * The name for the checkbox.
+          * The name for the checkboxes.
          */
         "name": string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
-          * @example <ontario-checkboxes   legend="This is a question?"   name: "Checkbox 1",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
+          * @example <ontario-checkboxes   legend="This is a question?"   name= "ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
          */
         "options": CheckboxOption[] | string;
     }
@@ -2136,11 +2136,11 @@ declare namespace LocalJSX {
          */
         "isRequired"?: boolean;
         /**
-          * The legend for the checkbox
+          * The legend for the checkboxes
          */
         "legend"?: string;
         /**
-          * The name for the checkbox.
+          * The name for the checkboxes.
          */
         "name"?: string;
         /**
@@ -2149,7 +2149,7 @@ declare namespace LocalJSX {
         "onChangeEvent"?: (event: CustomEvent<any>) => void;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
-          * @example <ontario-checkboxes   legend="This is a question?"   name: "Checkbox 1",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
+          * @example <ontario-checkboxes   legend="This is a question?"   name= "ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
          */
         "options"?: CheckboxOption[] | string;
     }
