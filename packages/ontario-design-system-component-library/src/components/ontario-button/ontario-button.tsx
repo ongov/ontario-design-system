@@ -1,48 +1,10 @@
-import { Component, Prop, Element, h, Watch } from '@stencil/core';
+import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
+import { OntarioButtonProperties } from './button.interface';
 import { ButtonType, HtmlType } from './ontario-button.enum';
 import { validatePropExists, validateValueAgainstEnum } from '../../utils/validation/validation-functions';
+import { ConsoleType, MessageStyle } from '../../utils/console-message/console-message.enum';
+import { printConsoleMessage } from '../../utils/console-message/console-message';
 
-/**
- * Ontario Button component properties
- */
-export interface OntarioButtonProperties {
-	/**
-	 * The type of button to render.
-	 */
-	type?: 'primary' | 'secondary' | 'tertiary';
-
-	/**
-	 * The native HTML button type the button should use.
-	 */
-	htmlType?: 'button' | 'reset' | 'submit';
-
-	/**
-	 * Text to be displayed within the button. This will override the text provided through the Element Content.
-	 *
-	 * @example
-	 * <ontario-button label="Label Text">Text</ontario-button>
-	 *
-	 * The resulting button will have the label `"Label Text"`.
-	 */
-	label?: string;
-
-	/**
-	 * Provides more context as to what the button interaction is doing.
-	 *
-	 * @example
-	 * <ontario-button aria-label="Click button to open map">Open</ontario button>
-	 */
-	ariaLabel?: string;
-
-	/**
-	 * The unique identifier of the button
-	 */
-	buttonId?: string;
-}
-
-/**
- * Ontario Design System button web component
- */
 @Component({
 	tag: 'ontario-button',
 	styleUrl: 'ontario-button.scss',
@@ -54,7 +16,13 @@ export class OntarioButton implements OntarioButtonProperties {
 	/**
 	 * The type of button to render.
 	 */
-	@Prop() type?: 'primary' | 'secondary' | 'tertiary' = 'secondary';
+	@Prop() type?: ButtonType = ButtonType.Secondary;
+
+	/**
+	 * Mutable variable, for internal use only.
+	 * Set the icon's width depending on validation result.
+	 */
+	@State() typeState: string = ButtonType.Secondary;
 
 	/**
 	 * The native HTML button type the button should use.
@@ -82,7 +50,7 @@ export class OntarioButton implements OntarioButtonProperties {
 	/**
 	 * The unique identifier of the button.
 	 */
-	@Prop({ mutable: true }) buttonId?: string;
+	@Prop({ mutable: true }) elementId?: string;
 
 	/**
 	 * Watch for changes in the `label` variable for validation purpose
@@ -93,7 +61,25 @@ export class OntarioButton implements OntarioButtonProperties {
 	validateLabelContent(newValue: string) {
 		const isLabelBlank = validatePropExists(newValue);
 		if (isLabelBlank) {
-			console.log("Label does not exist")
+			printConsoleMessage([
+				{
+					message: ' label ',
+					style: MessageStyle.Code,
+				},
+				{
+					message: 'for',
+					style: MessageStyle.Regular,
+				},
+				{
+					message: ` <ontario-button> `,
+					style: MessageStyle.Code,
+				},
+				{
+					message: `was not provided`,
+					style: MessageStyle.Regular,
+				},
+			], ConsoleType.Error);
+			this.typeState = ButtonType.Secondary;
 		}
 	}
 
@@ -105,10 +91,33 @@ export class OntarioButton implements OntarioButtonProperties {
 	@Watch('type')
 	validateButtonType(newValue: string) {
 		const isTypeValid = validateValueAgainstEnum(newValue, ButtonType);
-		if (isTypeValid) {
-			console.log("Type is valid")
-		} else {
-			console.log("Type is not valid")
+		if (!isTypeValid) {
+			printConsoleMessage([
+				{
+					message: ' type ',
+					style: MessageStyle.Code,
+				},
+				{
+					message: 'for',
+					style: MessageStyle.Regular,
+				},
+				{
+					message: ` <ontario-button> `,
+					style: MessageStyle.Code,
+				},
+				{
+					message: `is not valid. The default type of`,
+					style: MessageStyle.Regular,
+				},
+				{
+					message: ' secondary ',
+					style: MessageStyle.Code,
+				},
+				{
+					message: 'was assumed.',
+					style: MessageStyle.Regular,
+				},
+			], ConsoleType.Warning);
 		}
 	}
 
@@ -129,8 +138,8 @@ export class OntarioButton implements OntarioButtonProperties {
 		return `ontario-button ontario-button--${this.type?.toLowerCase() ?? 'secondary'}`;
 	}
 
-	public getId(): string | undefined {
-		return this.buttonId;
+	public getId(): string {
+		return this.elementId ?? '';
 	}
 
 	/**

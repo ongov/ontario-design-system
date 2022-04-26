@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ButtonType } from "./components/ontario-button/ontario-button.enum";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
@@ -34,7 +35,7 @@ export namespace Components {
         /**
           * The unique identifier of the button.
          */
-        "buttonId"?: string;
+        "elementId"?: string;
         /**
           * The native HTML button type the button should use.
          */
@@ -47,7 +48,7 @@ export namespace Components {
         /**
           * The type of button to render.
          */
-        "type"?: 'primary' | 'secondary' | 'tertiary';
+        "type"?: ButtonType;
     }
     interface OntarioCheckboxes {
         /**
@@ -2101,7 +2102,7 @@ declare namespace LocalJSX {
         /**
           * The unique identifier of the button.
          */
-        "buttonId"?: string;
+        "elementId"?: string;
         /**
           * The native HTML button type the button should use.
          */
@@ -2114,7 +2115,7 @@ declare namespace LocalJSX {
         /**
           * The type of button to render.
          */
-        "type"?: 'primary' | 'secondary' | 'tertiary';
+        "type"?: ButtonType;
     }
     interface OntarioCheckboxes {
         /**
