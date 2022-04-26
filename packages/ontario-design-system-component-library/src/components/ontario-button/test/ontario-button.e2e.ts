@@ -12,7 +12,7 @@ describe('ontario-button', () => {
 		expect(element.textContent).toEqual('');
 		expect(element).toEqualAttributes({
 			'aria-label': '',
-			'type': 'button',
+			'type': 'secondary',
 		});
 		expect(element).not.toHaveAttribute('id');
 	});
@@ -27,7 +27,7 @@ describe('ontario-button', () => {
 		expect(element.textContent).toEqual('Element Content');
 		expect(element).toEqualAttributes({
 			'aria-label': 'Element Content',
-			'type': 'button',
+			'type': 'secondary',
 		});
 		expect(element).not.toHaveAttribute('id');
 
@@ -37,7 +37,7 @@ describe('ontario-button', () => {
 		expect(element.textContent).toEqual(`Label`);
 		expect(element).toEqualAttributes({
 			'aria-label': 'Element Content',
-			'type': 'button',
+			'type': 'secondary',
 		});
 
 		component.setProperty('ariaLabel', 'Aria Label');
@@ -46,17 +46,17 @@ describe('ontario-button', () => {
 		expect(element.textContent).toEqual('Label');
 		expect(element).toEqualAttributes({
 			'aria-label': 'Aria Label',
-			'type': 'button',
+			'type': 'secondary',
 		});
 		expect(element).not.toHaveAttribute('id');
 
-		component.setProperty('buttonId', 'defaultButton');
+		component.setProperty('elementId', 'defaultButton');
 		await page.waitForChanges();
 		expect(element).toHaveClasses(['ontario-button', 'ontario-button--secondary']);
 		expect(element.textContent).toEqual('Label');
 		expect(element).toEqualAttributes({
 			'aria-label': 'Aria Label',
-			'type': 'button',
+			'type': 'secondary',
 			'id': 'defaultButton',
 		});
 
@@ -67,7 +67,8 @@ describe('ontario-button', () => {
 		expect(element.textContent).toEqual('Label');
 		expect(element).toEqualAttributes({
 			'aria-label': 'Aria Label',
-			'type': 'submit',
+			'type': 'secondary',
+			'html-type': 'submit',
 			'id': 'defaultButton',
 		});
 
@@ -81,7 +82,7 @@ describe('ontario-button', () => {
 		expect(element.textContent).toEqual('Back');
 		expect(element).toEqualAttributes({
 			'aria-label': 'Back',
-			'type': 'button',
+			'type': 'tertiary',
 			'id': 'BackButton',
 		});
 	});
