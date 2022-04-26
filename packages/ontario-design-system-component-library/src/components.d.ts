@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType } from "./components/ontario-button/ontario-button.enum";
+import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.enum";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
@@ -39,7 +39,7 @@ export namespace Components {
         /**
           * The native HTML button type the button should use.
          */
-        "htmlType"?: 'button' | 'reset' | 'submit';
+        "htmlType": HtmlType;
         /**
           * Text to be displayed within the button. This will override the text provided through the Element Content.
           * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
@@ -48,7 +48,7 @@ export namespace Components {
         /**
           * The type of button to render.
          */
-        "type"?: ButtonType;
+        "type": ButtonType;
     }
     interface OntarioCheckboxes {
         /**
@@ -2106,7 +2106,7 @@ declare namespace LocalJSX {
         /**
           * The native HTML button type the button should use.
          */
-        "htmlType"?: 'button' | 'reset' | 'submit';
+        "htmlType"?: HtmlType;
         /**
           * Text to be displayed within the button. This will override the text provided through the Element Content.
           * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.

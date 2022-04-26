@@ -1,17 +1,17 @@
 import { Base } from '../../utils/common.interface';
-import { ButtonType } from './ontario-button.enum';
+import { ButtonType, HtmlType } from './ontario-button.enum';
 
 
 export interface OntarioButtonProperties extends Base {
   /**
    * The type of button to render.
    */
-  type?: ButtonType;
+  type: ButtonType;
 
   /**
    * The native HTML button type the button should use.
    */
-  htmlType?: 'button' | 'reset' | 'submit';
+  htmlType: HtmlType;
 
   /**
    * Text to be displayed within the button. This will override the text provided through the Element Content.

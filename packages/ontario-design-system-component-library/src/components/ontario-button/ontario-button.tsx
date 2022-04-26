@@ -16,7 +16,7 @@ export class OntarioButton implements OntarioButtonProperties {
 	/**
 	 * The type of button to render.
 	 */
-	@Prop() type?: ButtonType = ButtonType.Secondary;
+	@Prop() type: ButtonType = ButtonType.Secondary;
 
 	/**
 	 * Mutable variable, for internal use only.
@@ -27,7 +27,13 @@ export class OntarioButton implements OntarioButtonProperties {
 	/**
 	 * The native HTML button type the button should use.
 	 */
-	@Prop() htmlType?: 'button' | 'reset' | 'submit' = 'button';
+	@Prop() htmlType: HtmlType = HtmlType.Button;
+
+	/**
+	 * Mutable variable, for internal use only.
+	 * Set the icon's width depending on validation result.
+	 */
+	@State() htmlTypeState: string = HtmlType.Button;
 
 	/**
 	 * Text to be displayed within the button. This will override the text provided through the Element Content.
@@ -59,33 +65,35 @@ export class OntarioButton implements OntarioButtonProperties {
 	 */
 	@Watch('label')
 	validateLabelContent(newValue: string) {
-		const isLabelBlank = validatePropExists(newValue);
-		if (isLabelBlank) {
-			printConsoleMessage([
-				{
-					message: ' label ',
-					style: MessageStyle.Code,
-				},
-				{
-					message: 'for',
-					style: MessageStyle.Regular,
-				},
-				{
-					message: ` <ontario-button> `,
-					style: MessageStyle.Code,
-				},
-				{
-					message: `was not provided`,
-					style: MessageStyle.Regular,
-				},
-			], ConsoleType.Error);
-			this.typeState = ButtonType.Secondary;
+		// If element content is not provided, check whether prop exists
+		if (!this.host.textContent) {
+			const isLabelBlank = validatePropExists(newValue);
+			if (isLabelBlank) {
+				printConsoleMessage([
+					{
+						message: ' label ',
+						style: MessageStyle.Code,
+					},
+					{
+						message: 'for',
+						style: MessageStyle.Regular,
+					},
+					{
+						message: ` <ontario-button> `,
+						style: MessageStyle.Code,
+					},
+					{
+						message: `was not provided`,
+						style: MessageStyle.Regular,
+					},
+				], ConsoleType.Error);
+			}
 		}
 	}
 
 	/**
 	 * Watch for changes in the `type` variable for validation purpose.
-	 * If the user input doesn't match one of the enum values then return an error message.
+	 * If the user input doesn't match one of the enum values then return a warning message.
 	 * If a match is found in one of the enum values then `type` will be set to the matching enum value.
 	 */
 	@Watch('type')
@@ -118,16 +126,50 @@ export class OntarioButton implements OntarioButtonProperties {
 					style: MessageStyle.Regular,
 				},
 			], ConsoleType.Warning);
+			this.typeState = ButtonType.Secondary;
+		} else {
+			this.typeState = this.type;
 		}
 	}
 
+	/**
+	 * Watch for changes in the `htmlType` variable for validation purpose.
+	 * If the user input doesn't match one of the enum values then return a warning message.
+	 * If a match is found in one of the enum values then `type` will be set to the matching enum value.
+	 */
 	@Watch('htmlType')
 	validateHtmlType(newValue: string) {
 		const isHtmlTypeValid = validateValueAgainstEnum(newValue, HtmlType);
-		if (isHtmlTypeValid) {
-			console.log("Html type is valid")
+		if (!isHtmlTypeValid) {
+			printConsoleMessage([
+				{
+					message: ' html-type ',
+					style: MessageStyle.Code,
+				},
+				{
+					message: 'for',
+					style: MessageStyle.Regular,
+				},
+				{
+					message: ` <ontario-button> `,
+					style: MessageStyle.Code,
+				},
+				{
+					message: `is not valid. The default type of`,
+					style: MessageStyle.Regular,
+				},
+				{
+					message: ' button ',
+					style: MessageStyle.Code,
+				},
+				{
+					message: 'was assumed.',
+					style: MessageStyle.Regular,
+				},
+			], ConsoleType.Warning);
+			this.htmlTypeState = HtmlType.Button;
 		} else {
-			console.log("Html type is not valid")
+			this.htmlTypeState = this.htmlType;
 		}
 	}
 
@@ -152,7 +194,7 @@ export class OntarioButton implements OntarioButtonProperties {
 
 	render() {
 		return (
-			<button type={this.type} html-type={this.htmlType} class={this.getClass()} aria-label={this.ariaLabel} id={this.getId()}>
+			<button type={this.typeState} html-type={this.htmlType} class={this.getClass()} aria-label={this.ariaLabel} id={this.getId()}>
 				{this.label}
 			</button>
 		);
