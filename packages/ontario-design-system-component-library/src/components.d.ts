@@ -8,6 +8,9 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
+import { DefaultOptions } from "./components/ontario-footer/footer-default-option-interface";
+import { ExpandedTwoColumnOptions } from "./components/ontario-footer/footer-expanded-two-column-option-interface";
+import { ExpandedThreeColumnOptions } from "./components/ontario-footer/footer-expanded-three-column-option-interface";
 import { headerTitle } from "./components/ontario-header/headerTitle.interface";
 import { languageToggleOptions } from "./components/ontario-header/languageToggleOptions.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
@@ -104,12 +107,29 @@ export namespace Components {
         "options": string | DropdownOption[];
     }
     interface OntarioFooter {
-        "ifDefault": boolean;
-        "ifExpanded": boolean;
-        "ifExpandedThreeColumn": boolean;
-        "ifExpandedTwoColumn": boolean;
-        "ifTwoColumns": boolean;
-        "type": 'default' | 'partnership' | 'expanded';
+        /**
+          * Stores the required links for all footers
+         */
+        "defaultOptions": DefaultOptions | string;
+        /**
+          * Stores the titles and content for the expanded three column footer
+         */
+        "expandedThreeColumnOptions"?: ExpandedThreeColumnOptions | string;
+        /**
+          * Stores the titles and content for the expanded two column footer
+         */
+        "expandedTwoColumnOptions"?: ExpandedTwoColumnOptions | string;
+        /**
+          * Stores the page's connection with Ontario for the partnership footer
+         */
+        "partnershipConnection"?: | 'Licensed by Government of Ontario'
+		| 'In partnership with Government of Ontario'
+		| 'Funded by Government of Ontario'
+		| 'Sponsored by Government of Ontario';
+        /**
+          * Type of footer to be rendered
+         */
+        "type": 'default' | 'partnership' | 'expandedTwoColumn' | 'expandedThreeColumn';
     }
     interface OntarioHeader {
         /**
@@ -281,7 +301,7 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconClose {
-        "colour": "black" | "blue" | "grey";
+        "colour": 'black' | 'blue' | 'grey' | 'white';
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -358,7 +378,7 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconFacebook {
-        "colour": "black" | "blue" | "grey";
+        "colour": "black" | "blue" | "grey" | "white";
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -414,7 +434,7 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconInstagram {
-        "colour": "black" | "blue" | "grey";
+        "colour": "black" | "blue" | "grey" | "white";
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -557,7 +577,7 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconMenu {
-        "colour": "black" | "blue" | "grey";
+        "colour": 'black' | 'blue' | 'grey' | 'white';
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -816,7 +836,7 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconTwitter {
-        "colour": "black" | "blue" | "grey";
+        "colour": "black" | "blue" | "grey" | "white";
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -872,6 +892,13 @@ export namespace Components {
     }
     interface OntarioIconWifi {
         "colour": "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
+    }
+    interface OntarioIconYoutube {
+        "colour": 'black' | 'blue' | 'grey' | 'white';
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1652,6 +1679,12 @@ declare global {
         prototype: HTMLOntarioIconWifiElement;
         new (): HTMLOntarioIconWifiElement;
     };
+    interface HTMLOntarioIconYoutubeElement extends Components.OntarioIconYoutube, HTMLStencilElement {
+    }
+    var HTMLOntarioIconYoutubeElement: {
+        prototype: HTMLOntarioIconYoutubeElement;
+        new (): HTMLOntarioIconYoutubeElement;
+    };
     interface HTMLOntarioInputElement extends Components.OntarioInput, HTMLStencilElement {
     }
     var HTMLOntarioInputElement: {
@@ -1783,6 +1816,7 @@ declare global {
         "ontario-icon-vpn-key": HTMLOntarioIconVpnKeyElement;
         "ontario-icon-wheelchair": HTMLOntarioIconWheelchairElement;
         "ontario-icon-wifi": HTMLOntarioIconWifiElement;
+        "ontario-icon-youtube": HTMLOntarioIconYoutubeElement;
         "ontario-input": HTMLOntarioInputElement;
         "ontario-radio-buttons": HTMLOntarioRadioButtonsElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
@@ -1885,12 +1919,29 @@ declare namespace LocalJSX {
         "options"?: string | DropdownOption[];
     }
     interface OntarioFooter {
-        "ifDefault"?: boolean;
-        "ifExpanded"?: boolean;
-        "ifExpandedThreeColumn"?: boolean;
-        "ifExpandedTwoColumn"?: boolean;
-        "ifTwoColumns"?: boolean;
-        "type"?: 'default' | 'partnership' | 'expanded';
+        /**
+          * Stores the required links for all footers
+         */
+        "defaultOptions"?: DefaultOptions | string;
+        /**
+          * Stores the titles and content for the expanded three column footer
+         */
+        "expandedThreeColumnOptions"?: ExpandedThreeColumnOptions | string;
+        /**
+          * Stores the titles and content for the expanded two column footer
+         */
+        "expandedTwoColumnOptions"?: ExpandedTwoColumnOptions | string;
+        /**
+          * Stores the page's connection with Ontario for the partnership footer
+         */
+        "partnershipConnection"?: | 'Licensed by Government of Ontario'
+		| 'In partnership with Government of Ontario'
+		| 'Funded by Government of Ontario'
+		| 'Sponsored by Government of Ontario';
+        /**
+          * Type of footer to be rendered
+         */
+        "type"?: 'default' | 'partnership' | 'expandedTwoColumn' | 'expandedThreeColumn';
     }
     interface OntarioHeader {
         /**
@@ -2066,7 +2117,7 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconClose {
-        "colour"?: "black" | "blue" | "grey";
+        "colour"?: 'black' | 'blue' | 'grey' | 'white';
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2143,7 +2194,7 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconFacebook {
-        "colour"?: "black" | "blue" | "grey";
+        "colour"?: "black" | "blue" | "grey" | "white";
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2199,7 +2250,7 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconInstagram {
-        "colour"?: "black" | "blue" | "grey";
+        "colour"?: "black" | "blue" | "grey" | "white";
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2342,7 +2393,7 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconMenu {
-        "colour"?: "black" | "blue" | "grey";
+        "colour"?: 'black' | 'blue' | 'grey' | 'white';
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2601,7 +2652,7 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconTwitter {
-        "colour"?: "black" | "blue" | "grey";
+        "colour"?: "black" | "blue" | "grey" | "white";
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2657,6 +2708,13 @@ declare namespace LocalJSX {
     }
     interface OntarioIconWifi {
         "colour"?: "black" | "blue" | "grey";
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
+    }
+    interface OntarioIconYoutube {
+        "colour"?: 'black' | 'blue' | 'grey' | 'white';
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2900,6 +2958,7 @@ declare namespace LocalJSX {
         "ontario-icon-vpn-key": OntarioIconVpnKey;
         "ontario-icon-wheelchair": OntarioIconWheelchair;
         "ontario-icon-wifi": OntarioIconWifi;
+        "ontario-icon-youtube": OntarioIconYoutube;
         "ontario-input": OntarioInput;
         "ontario-radio-buttons": OntarioRadioButtons;
         "ontario-textarea": OntarioTextarea;
@@ -3021,6 +3080,7 @@ declare module "@stencil/core" {
             "ontario-icon-vpn-key": LocalJSX.OntarioIconVpnKey & JSXBase.HTMLAttributes<HTMLOntarioIconVpnKeyElement>;
             "ontario-icon-wheelchair": LocalJSX.OntarioIconWheelchair & JSXBase.HTMLAttributes<HTMLOntarioIconWheelchairElement>;
             "ontario-icon-wifi": LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
+            "ontario-icon-youtube": LocalJSX.OntarioIconYoutube & JSXBase.HTMLAttributes<HTMLOntarioIconYoutubeElement>;
             "ontario-input": LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
             "ontario-radio-buttons": LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;

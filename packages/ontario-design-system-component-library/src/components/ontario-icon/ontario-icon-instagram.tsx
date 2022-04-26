@@ -9,7 +9,7 @@ import instagram from './assets/ontario-icon-instagram.svg';
 
 export class OntarioIconInstagram {
 
-  @Prop() colour: "black" | "blue" | "grey" = "black";
+  @Prop() colour: "black" | "blue" | "grey" | "white" = "black";
 
   /**
    * The icon width will autogenerate the height since the icons are in square format, thus preserving

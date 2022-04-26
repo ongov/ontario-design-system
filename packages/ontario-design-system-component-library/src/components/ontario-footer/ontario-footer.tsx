@@ -1,261 +1,264 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h, getAssetPath, State, Watch } from '@stencil/core';
+import { ExpandedThreeColumnOptions } from './footer-expanded-three-column-option-interface';
+import { ExpandedTwoColumnOptions } from './footer-expanded-two-column-option-interface';
+import { DefaultOptions } from './footer-default-option-interface';
 
-// import FooterDefaultSupergraphic from './assets/footer-default-supergraphic-logo.svg';
-// import OntarioExpandedSupergraphic from './assets/footer-expanded-supergraphic-logo.svg';
-import OntarioPartnershipLogo from './ontario-logo--partnership-footer.svg';
+const enDash = '\u2013';
 
 @Component({
 	tag: 'ontario-footer',
 	styleUrl: 'ontario-footer.scss',
 	shadow: true,
+	assetsDirs: ['assets'],
 })
 export class OntarioFooter {
-	@Prop() type: 'default' | 'partnership' | 'expanded' = 'default';
+	/**
+	 * Type of footer to be rendered
+	 */
+	@Prop() type: 'default' | 'partnership' | 'expandedTwoColumn' | 'expandedThreeColumn' = 'default';
 
-	@Prop() ifDefault: boolean = true;
+	/**
+	 * Stores the required links for all footers
+	 */
+	@Prop() defaultOptions: DefaultOptions | string;
 
-	@Prop() ifTwoColumns: boolean = false;
+	/**
+	 * Stores the titles and content for the expanded
+	 * two column footer
+	 */
+	@Prop() expandedTwoColumnOptions?: ExpandedTwoColumnOptions | string;
 
-	@Prop() ifExpanded: boolean = false;
+	/**
+	 * Stores the titles and content for the expanded
+	 * three column footer
+	 */
+	@Prop() expandedThreeColumnOptions?: ExpandedThreeColumnOptions | string;
 
-	@Prop() ifExpandedTwoColumn: boolean = false;
+	/**
+	 * Stores the page's connection with Ontario for
+	 * the partnership footer
+	 */
+	@Prop() partnershipConnection?:
+		| 'Licensed by Government of Ontario'
+		| 'In partnership with Government of Ontario'
+		| 'Funded by Government of Ontario'
+		| 'Sponsored by Government of Ontario';
 
-	@Prop() ifExpandedThreeColumn: boolean = false;
+	@State() private defaultState: DefaultOptions;
 
-	// text: {
-	// 	footerLinks: {
-	// 		accessibility: {
-	// 			text: 'Accessibility';
-	// 			url: 'https://www.ontario.ca/page/accessibility';
-	// 		};
-	// 		privacy: {
-	// 			text: 'Privacy';
-	// 			url: 'https://www.ontario.ca/page/privacy-statement';
-	// 		};
-	// 		contactUs: {
-	// 			text: 'Contact us';
-	// 			url: 'https://www.ontario.ca/feedback/contact-us';
-	// 		};
-	// 	};
-	// 	copyright: 'Queen’s Printer for Ontario,';
-	// 	copyrightLink: 'https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario';
-	// 	inPartnershipWith: 'In partnership with the';
-	// 	govOfOntario: 'Government of Ontario';
-	// 	ministryOne: {
-	// 		heading: 'Ontario Government';
-	// 		description: 'The Government of Ontario includes 24 ministries as well as agencies and Crown corporations. Learn about';
-	// 		descriptionLink: 'how the government works.';
-	// 		contactUs: 'You can contact us through a ministry or';
-	// 		contactUsLink: 'send us an email.';
-	// 		buttonText: 'Find a ministry';
-	// 	};
-	// 	ministryTwo: {
-	// 		heading: 'Ministry of Government and Consumer Services';
-	// 		description: 'We deliver vital programs, services, and products ranging from health cards, drivers licences and birth certificates to consumer protection and public safety.';
-	// 		links: {
-	// 			linkOne: 'ServiceOntario';
-	// 			linkTwo: 'Consumer Protection Ontario';
-	// 			linkThree: 'Switch to a photo health card';
-	// 			linkFour: 'Administrative authorities';
-	// 			linkFive: 'The Ontario Gazette';
-	// 			linkSix: 'Archives of Ontario';
-	// 			linkSeven: "Renew a driver's licence";
-	// 			linkEight: 'Ontario photo card';
-	// 			linkNine: 'Open Government';
-	// 			linkTen: 'Search services';
-	// 		};
-	// 		contactUs: 'Call ServiceOntario at';
-	// 		phone: '516-326-1234';
-	// 		or: 'or';
-	// 		email: 'send us an email.';
-	// 		signupForReminders: 'for email reminders.';
-	// 	};
-	// 	signUp: 'Sign up';
-	// 	contactUs: 'Contact us';
-	// 	visitedTopics: 'Most visited topics';
-	// 	topicItem: 'Topic item';
-	// 	logoPlaceholder: 'Ministry logo placeholder';
-	// };
+	@State() private expandedTwoColumnState: ExpandedTwoColumnOptions;
+
+	@State() private expandedThreeColumnState: ExpandedThreeColumnOptions;
+
+	private verifyDefault() {
+		if (this.defaultState && !this.defaultState.queensPrinterLink) {
+			this.defaultState.queensPrinterLink = 'https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario';
+		}
+		if (!this.defaultState || !this.defaultState.accessibilityLink || !this.defaultState.contactLink || !this.defaultState.privacyLink || !this.defaultState.queensPrinterLink) {
+			console.error('Error: defaultOptions not fully set, please review your values and ensure all required options are truthy.');
+		}
+	}
+
+	private verifyPartnership() {
+		if (this.type == 'partnership') {
+			if (!this.partnershipConnection) {
+				console.error('Error: A Partnership Connection has not been selected, please review your entry.');
+			}
+		}
+	}
+
+	private verifyExpandedTwoColumn() {
+		if (this.type == 'expandedTwoColumn') {
+			if (
+				!this.expandedTwoColumnState ||
+				!this.expandedTwoColumnState.firstColumn ||
+				!this.expandedTwoColumnState.firstColumn.title ||
+				!this.expandedTwoColumnState.firstColumn.content ||
+				!this.expandedTwoColumnState.secondColumn ||
+				!this.expandedTwoColumnState.secondColumn.title ||
+				!this.expandedTwoColumnState.secondColumn.content ||
+				!this.expandedTwoColumnState.secondColumn.contactButtonText
+			) {
+				console.error('Error: expandedTwoColumnOptions not fully set, please review your values and ensure all options are truthy.');
+			}
+		}
+	}
+	private verifyExpandedThreeColumn() {
+		if (this.type == 'expandedThreeColumn') {
+			if (
+				!this.expandedThreeColumnState ||
+				!this.expandedThreeColumnState.firstColumn ||
+				!this.expandedThreeColumnState.firstColumn.title ||
+				!this.expandedThreeColumnState.firstColumn.content ||
+				!this.expandedThreeColumnState.secondColumn ||
+				!this.expandedThreeColumnState.secondColumn.title ||
+				!this.expandedThreeColumnState.secondColumn.content ||
+				!this.expandedThreeColumnState.secondColumn.content[0].title ||
+				!this.expandedThreeColumnState.secondColumn.content[0].link ||
+				!this.expandedThreeColumnState.thirdColumn ||
+				!this.expandedThreeColumnState.thirdColumn.title ||
+				!this.expandedThreeColumnState.thirdColumn.content ||
+				(this.expandedThreeColumnState.thirdColumn.facebook && !this.expandedThreeColumnState.thirdColumn.facebook.link) ||
+				(this.expandedThreeColumnState.thirdColumn.twitter && !this.expandedThreeColumnState.thirdColumn.twitter.link) ||
+				(this.expandedThreeColumnState.thirdColumn.instagram && !this.expandedThreeColumnState.thirdColumn.instagram.link) ||
+				(this.expandedThreeColumnState.thirdColumn.youtube && !this.expandedThreeColumnState.thirdColumn.youtube.link)
+			) {
+				console.error('Error: expandedThreeColumnOptions not fully set, please review your values and ensure all required options are truthy.');
+			}
+		}
+	}
+
+	private parseDefaultOptions() {
+		const defaultOptions = this.defaultOptions;
+		if (defaultOptions) {
+			if (typeof defaultOptions === 'string') this.defaultState = JSON.parse(defaultOptions);
+			else this.defaultState = defaultOptions;
+		}
+	}
+
+	private parseExpandedTwoColumnOptions() {
+		const expandedTwoColumnOptions = this.expandedTwoColumnOptions;
+		if (expandedTwoColumnOptions) {
+			if (typeof expandedTwoColumnOptions === 'string') {
+				this.expandedTwoColumnState = JSON.parse(expandedTwoColumnOptions);
+			} else this.expandedTwoColumnState = expandedTwoColumnOptions;
+		}
+	}
+
+	private parseExpandedThreeColumnOptions() {
+		const expandedThreeColumnOptions = this.expandedThreeColumnOptions;
+		if (expandedThreeColumnOptions) {
+			if (typeof expandedThreeColumnOptions === 'string') {
+				this.expandedThreeColumnState = JSON.parse(expandedThreeColumnOptions);
+			} else this.expandedThreeColumnState = expandedThreeColumnOptions;
+		}
+	}
+
+	@Watch('defaultOptions')
+	private processDefaultOptions() {
+		this.parseDefaultOptions();
+		this.verifyDefault();
+	}
+
+	@Watch('partnershipConnection')
+	private processPartnershipConnection() {
+		this.verifyPartnership();
+	}
+
+	@Watch('expandedTwoColumnOptions')
+	private processExpandedTwoColumnOptions() {
+		this.parseExpandedTwoColumnOptions();
+		this.verifyExpandedTwoColumn();
+	}
+
+	@Watch('expandedThreeColumnOptions')
+	private processExpandedThreeColumnOptions() {
+		this.parseExpandedThreeColumnOptions();
+		this.verifyExpandedThreeColumn();
+	}
+
+	componentWillLoad() {
+		this.processDefaultOptions();
+		this.processExpandedTwoColumnOptions();
+		this.processExpandedThreeColumnOptions();
+		this.processPartnershipConnection();
+	}
+
+	private getBackgroundImagePath() {
+		const backgroundImage =
+			this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn' ? 'footer-expanded-supergraphic-logo.svg' : 'footer-default-supergraphic-logo.svg';
+		return { '--imagePath': `url(${getAssetPath(`./assets/${backgroundImage}`)})` };
+	}
 
 	render() {
 		return (
-			<footer class={'ontario-footer ontario-footer--' + this.type}>
-				{this.ifExpanded && (
+			<footer class={`ontario-footer ontario-footer--${this.type}`} style={this.getBackgroundImagePath()}>
+				{(this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn') && (
 					<div class="ontario-footer__expanded-top-section">
 						<div class="ontario-row">
 							<div
 								class={
-									'ontario-columns ontario-small-12' +
-									(this.ifExpandedTwoColumn ? 'ontario-medium-6' : '') +
-									(this.ifExpandedThreeColumn ? 'ontario-expanded-footer__one-third-block ontario-medium-12 ontario-large-4' : '')
+									'ontario-columns ontario-small-12 ' +
+									(this.type == 'expandedTwoColumn' ? 'ontario-medium-6' : '') +
+									(this.type == 'expandedThreeColumn' ? 'ontario-expanded-footer__one-third-block ontario-medium-12 ontario-large-4' : '')
 								}
 							>
-								{this.ifExpandedTwoColumn && (
+								{this.type == 'expandedTwoColumn' && (
 									<div>
-										<h2 class="ontario-h4">Ontario Government</h2>
-										<p>
-											The Government of Ontario includes 24 ministries as well as agencies and Crown corporations. Learn about <a href="#">how the government works.</a>
-										</p>
+										<h2 class="ontario-h4">{this.expandedTwoColumnState?.firstColumn?.title}</h2>
+										<div class="ontario-footer--paragraph" innerHTML={this.expandedTwoColumnState?.firstColumn?.content} />
 									</div>
 								)}
-								{this.ifExpandedThreeColumn && (
+								{this.type == 'expandedThreeColumn' && (
 									<div>
-										<h2 class="ontario-h4">"Ministry of Government and Consumer Services</h2>
-										<p>
-											We deliver vital programs, services, and products ranging from health cards, drivers licences and birth certificates to consumer protection and public safety.
-										</p>
+										<h2 class="ontario-h4">{this.expandedThreeColumnState?.firstColumn?.title}</h2>
+										<div class="ontario-footer--paragraph" innerHTML={this.expandedThreeColumnState?.firstColumn?.content} />
 									</div>
 								)}
 							</div>
-							{this.ifExpandedThreeColumn && (
+							{this.type == 'expandedThreeColumn' && (
 								<div class="ontario-columns ontario-small-12 ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block">
 									<h2 class="ontario-h4">Most visited topics</h2>
 									<ul class="ontario-footer__links-container ontario-footer__links-container--two-column-list">
-										<li>
-											<a class="ontario-footer__link" href="">
-												ServiceOntario
-											</a>
-										</li>
-										<li>
-											<a class="ontario-footer__link" href="">
-												Consumer Protection Ontario
-											</a>
-										</li>
-										<li>
-											<a class="ontario-footer__link" href="">
-												Switch to a photo health card
-											</a>
-										</li>
-										<li>
-											<a class="ontario-footer__link" href="">
-												Administrative authorities
-											</a>
-										</li>
-										<li>
-											<a class="ontario-footer__link" href="">
-												The Ontario Gazette
-											</a>
-										</li>
-										<li>
-											<a class="ontario-footer__link" href="">
-												Archives of Ontario
-											</a>
-										</li>
-										<li>
-											<a class="ontario-footer__link" href="">
-												Renew a driver's licence
-											</a>
-										</li>
-										<li>
-											<a class="ontario-footer__link" href="">
-												Ontario photo card
-											</a>
-										</li>
-										<li>
-											<a class="ontario-footer__link" href="">
-												Open Government
-											</a>
-										</li>
-										<li>
-											<a class="ontario-footer__link" href="">
-												Search services
-											</a>
-										</li>
+										{this.expandedThreeColumnState?.secondColumn?.content?.map(item => (
+											<li>
+												<a class="ontario-footer__link" href={item?.link}>
+													{item?.title}
+												</a>
+											</li>
+										))}
 									</ul>
 								</div>
 							)}
 							<div
 								class={
 									'ontario-columns ontario-small-12' +
-									(this.ifExpandedTwoColumn ? ' ontario-medium-6' : '') +
-									(this.ifExpandedThreeColumn ? ' ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block' : '')
+									(this.type == 'expandedTwoColumn' ? ' ontario-medium-6' : '') +
+									(this.type == 'expandedThreeColumn' ? ' ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block' : '')
 								}
 							>
-								{this.ifExpandedTwoColumn && (
+								{this.type == 'expandedTwoColumn' && (
 									<div>
-										<h2 class="ontario-h4">Contact us</h2>
-										<p>
-											You can contact us through a ministry or <a href="#">send us an email.</a>
-										</p>
-										<a class="ontario-footer__button ontario-button ontario-margin-bottom-0-!" href="#">
-											Find a ministry
+										<h2 class="ontario-h4">{this.expandedTwoColumnState?.secondColumn?.title}</h2>
+										<div class="ontario-footer--paragraph" innerHTML={this.expandedTwoColumnState?.secondColumn?.content} />
+										<a class="ontario-footer__button ontario-button ontario-margin-bottom-0-!" href={this.defaultState?.contactLink}>
+											{this.expandedTwoColumnState?.secondColumn?.contactButtonText}
 										</a>
 									</div>
 								)}
-								{this.ifExpandedThreeColumn && (
+								{this.type == 'expandedThreeColumn' && (
 									<div>
-										<h2 class="ontario-h4">Contact us</h2>
-										<p>
-											Call ServiceOntario at <a href="#">516-326-1234</a> or <a href="#">send us an email.</a>
-										</p>
-										<p>
-											<a href="#">Sign up</a> for email reminders.
-										</p>
+										<h2 class="ontario-h4">{this.expandedThreeColumnState?.thirdColumn?.title}</h2>
+										<div class="ontario-footer--paragraph" innerHTML={this.expandedThreeColumnState?.thirdColumn?.content} />
 										<ul class="ontario-footer__links-container ontario-footer__links-container--social">
-											<li>
-												<a class="ontario-footer__link" href="" aria-label="Facebook">
-													<svg
-														class="ontario-icon"
-														// alt=""
-														// sol:category="communication"
-														// aria-hidden="true"
-														// focusable="false"
-														// viewBox="0 0 24 24"
-														// preserveAspectRatio="xMidYMid meet"
-													>
-														{/* <use href="../../icons/ontario-icons-secondary.svg#ontario-icon-facebook"></use> */}
-														<use href="../ontario-icon/assets/ontario-icon-facebook.svg"></use>
-													</svg>
-												</a>
-											</li>
-											<li>
-												<a class="ontario-footer__link" href="" aria-label="Twitter">
-													<svg
-														class="ontario-icon"
-														// alt=""
-														// sol:category="communication"
-														// aria-hidden="true"
-														// focusable="false"
-														// viewBox="0 0 24 24"
-														// preserveAspectRatio="xMidYMid meet"
-													>
-														{/* <use href="../../icons/ontario-icons-secondary.svg#ontario-icon-twitter"></use> */}
-														<use href="../ontario-icon/assets/ontario-icon-twitter.svg"></use>
-													</svg>
-												</a>
-											</li>
-											<li>
-												<a class="ontario-footer__link" href="" aria-label="Instagram">
-													<svg
-														class="ontario-icon"
-														// alt=""
-														// sol:category="communication"
-														// aria-hidden="true"
-														// focusable="false"
-														// viewBox="0 0 24 24"
-														// preserveAspectRatio="xMidYMid meet"
-													>
-														{/* <use href="../../icons/ontario-icons-secondary.svg#ontario-icon-instagram"></use> */}
-														<use href="../ontario-icon/assets/ontario-icon-instagram.svg"></use>
-													</svg>
-												</a>
-											</li>
-											<li>
-												<a class="ontario-footer__link" href="" aria-label="Youtube">
-													<svg
-														class="ontario-icon"
-														// alt=""
-														// sol:category="communication"
-														// aria-hidden="true"
-														// focusable="false"
-														// viewBox="0 0 24 24"
-														// preserveAspectRatio="xMidYMid meet"
-													>
-														{/* <use href="../../icons/ontario-icons-secondary.svg#ontario-icon-youtube"></use> */}
-														<use href="../ontario-icon/assets/ontario-icon-youtube.svg"></use>
-													</svg>
-												</a>
-											</li>
+											{this.expandedThreeColumnState.thirdColumn.facebook && (
+												<li>
+													<a class="ontario-footer__link" href={this.expandedThreeColumnState?.thirdColumn?.facebook?.link} aria-label="Facebook">
+														<ontario-icon-facebook colour="white" />
+													</a>
+												</li>
+											)}
+											{this.expandedThreeColumnState.thirdColumn.twitter && (
+												<li>
+													<a class="ontario-footer__link" href={this.expandedThreeColumnState?.thirdColumn?.twitter?.link} aria-label="Twitter">
+														<ontario-icon-twitter colour="white" />
+													</a>
+												</li>
+											)}
+											{this.expandedThreeColumnState.thirdColumn.instagram && (
+												<li>
+													<a class="ontario-footer__link" href={this.expandedThreeColumnState?.thirdColumn?.instagram?.link} aria-label="Instagram">
+														<ontario-icon-instagram colour="white" />
+													</a>
+												</li>
+											)}
+											{this.expandedThreeColumnState.thirdColumn.youtube && (
+												<li>
+													<a class="ontario-footer__link" href={this.expandedThreeColumnState?.thirdColumn?.youtube?.link} aria-label="Youtube">
+														<ontario-icon-youtube colour="white" />
+													</a>
+												</li>
+											)}
 										</ul>
 									</div>
 								)}
@@ -263,46 +266,43 @@ export class OntarioFooter {
 						</div>
 					</div>
 				)}
-				<div class={'ontario-row ' + (this.ifExpanded ? 'ontario-footer__expanded-bottom-section' : '')}>
-					{this.ifDefault && (
-						<div class={'ontario-columns ontario-small-12 ' + (this.ifTwoColumns ? 'ontario-medium-7' : '')}>
-							<ul class="ontario-footer__links-container ontario-footer__links-container--inline">
+				<div class={'ontario-row ' + (this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn' ? 'ontario-footer__expanded-bottom-section' : '')}>
+					<div class={'ontario-columns ontario-small-12 ' + (this.type == 'partnership' ? 'ontario-medium-7' : '')}>
+						<ul class="ontario-footer__links-container ontario-footer__links-container--inline">
+							<li>
+								<a class="ontario-footer__link" href={this.defaultState?.accessibilityLink}>
+									Accessibility
+								</a>
+							</li>
+							<li>
+								<a class="ontario-footer__link" href={this.defaultState?.privacyLink}>
+									Privacy
+								</a>
+							</li>
+							{!(this.type == 'expandedTwoColumn') && (
 								<li>
-									<a class="ontario-footer__link" href="https://www.ontario.ca/page/accessibility">
-										Accessibility
-									</a>
-								</li>
-								<li>
-									<a class="ontario-footer__link" href="https://www.ontario.ca/page/privacy-statement">
-										Privacy
-									</a>
-								</li>
-								<li>
-									<a class="ontario-footer__link" href="https://www.ontario.ca/feedback/contact-us">
+									<a class="ontario-footer__link" href={this.defaultState?.contactLink}>
 										Contact us
 									</a>
 								</li>
-							</ul>
-							<div class="ontario-footer__copyright">
-								<a class="ontario-footer__link" href="https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario">
-									&copy; Queen’s Printer for Ontario, <span class="ontario-nbsp">2012&ndash;21</span>
-								</a>
-							</div>
+							)}
+						</ul>
+						<div class="ontario-footer__copyright">
+							<a class="ontario-footer__link" href={this.defaultState?.queensPrinterLink}>
+								&copy; Queen’s Printer for Ontario,{' '}
+								<span class="ontario-nbsp">
+									2012{enDash}
+									{String(new Date().getFullYear()).slice(-2)}
+								</span>
+							</a>
 						</div>
-					)}
-					{this.ifTwoColumns && (
+					</div>
+					{this.type == 'partnership' && (
 						<div class="ontario-columns ontario-small-12 ontario-medium-5 ontario-footer__partnership-logo-container">
-							{/* <a href="" class="ontario-footer__ontario-logo"> */}
-								{/* <img src="{{ path '/logos/ontario-logo--partnership-footer.svg' }}" alt={this.text.govOfOntario} /> */}
-								{/* <img src="./assets/ontario-logo--partnership-footer.svg" alt='Government of Ontario' /> */}
-                                                                                                                                                            {/* NOT WORKING */}
-                <div class="ontario-application-header__logo" innerHTML={OntarioPartnershipLogo}>
-									<a href="https://www.ontario.ca/page/government-ontario" /> 
-								</div>
-							{/* </a> */}
-							<p class="ontario-margin-bottom-0-!">
-								In partnership with the <span class="ontario-nbsp">Government of Ontario</span>
-							</p>
+							<a href="https://www.ontario.ca/page/government-ontario" class="ontario-footer__ontario-logo">
+								<img src={getAssetPath(`./assets/ontario-logo--partnership-footer.svg`)} />
+							</a>
+							<p class="ontario-margin-bottom-0-!">{this.partnershipConnection}</p>
 						</div>
 					)}
 				</div>

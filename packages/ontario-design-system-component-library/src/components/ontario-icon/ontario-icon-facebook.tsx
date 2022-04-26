@@ -9,7 +9,7 @@ import facebook from './assets/ontario-icon-facebook.svg';
 
 export class OntarioIconFacebook {
 
-  @Prop() colour: "black" | "blue" | "grey" = "black";
+  @Prop() colour: "black" | "blue" | "grey" | "white" = "black";
 
   /**
    * The icon width will autogenerate the height since the icons are in square format, thus preserving
