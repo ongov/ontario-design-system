@@ -27,13 +27,13 @@ export class OntarioButton implements Button {
 	/**
 	 * The native HTML button type the button should use.
 	 */
-	@Prop() htmlType: HtmlType = HtmlType.Button;
+	@Prop() htmlType: HtmlType;
 
 	/**
 	 * Mutable variable, for internal use only.
 	 *  Set the native HTML button type depending on validation result.
 	 */
-	@State() htmlTypeState: string = HtmlType.Button;
+	@State() htmlTypeState: string;
 
 	/**
 	 * Text to be displayed within the button. This will override the text provided through the Element Content.
@@ -98,8 +98,11 @@ export class OntarioButton implements Button {
 	 */
 	@Watch('type')
 	validateButtonType(newValue: string) {
-		const isTypeValid = validateValueAgainstEnum(newValue, ButtonType);
-		if (!isTypeValid) {
+		var isTypeValid;
+		if (newValue != undefined) {
+			isTypeValid = validateValueAgainstEnum(newValue, ButtonType);
+		}
+		if (!isTypeValid && newValue != undefined) {
 			printConsoleMessage([
 				{
 					message: ' type ',
@@ -127,6 +130,34 @@ export class OntarioButton implements Button {
 				},
 			], ConsoleType.Warning);
 			this.typeState = ButtonType.Secondary;
+		} else if (newValue === undefined) {
+			printConsoleMessage([
+				{
+					message: ' type ',
+					style: MessageStyle.Code,
+				},
+				{
+					message: 'for',
+					style: MessageStyle.Regular,
+				},
+				{
+					message: ` <ontario-button> `,
+					style: MessageStyle.Code,
+				},
+				{
+					message: `was not provided. The default type of`,
+					style: MessageStyle.Regular,
+				},
+				{
+					message: ' secondary ',
+					style: MessageStyle.Code,
+				},
+				{
+					message: 'was assumed.',
+					style: MessageStyle.Regular,
+				},
+			], ConsoleType.Warning);
+			this.typeState = ButtonType.Secondary;
 		} else {
 			this.typeState = this.type;
 		}
@@ -139,8 +170,11 @@ export class OntarioButton implements Button {
 	 */
 	@Watch('htmlType')
 	validateHtmlType(newValue: string) {
-		const isHtmlTypeValid = validateValueAgainstEnum(newValue, HtmlType);
-		if (!isHtmlTypeValid) {
+		var isHtmlTypeValid;
+		if (newValue != undefined) {
+			isHtmlTypeValid = validateValueAgainstEnum(newValue, HtmlType);
+		}
+		if (!isHtmlTypeValid && newValue != undefined) {
 			printConsoleMessage([
 				{
 					message: ' html-type ',
@@ -156,6 +190,34 @@ export class OntarioButton implements Button {
 				},
 				{
 					message: `is not valid. The default type of`,
+					style: MessageStyle.Regular,
+				},
+				{
+					message: ' button ',
+					style: MessageStyle.Code,
+				},
+				{
+					message: 'was assumed.',
+					style: MessageStyle.Regular,
+				},
+			], ConsoleType.Warning);
+			this.htmlTypeState = HtmlType.Button;
+		} else if (newValue === undefined) {
+			printConsoleMessage([
+				{
+					message: ' html-type ',
+					style: MessageStyle.Code,
+				},
+				{
+					message: 'for',
+					style: MessageStyle.Regular,
+				},
+				{
+					message: ` <ontario-button> `,
+					style: MessageStyle.Code,
+				},
+				{
+					message: `was not provided. The default type of`,
 					style: MessageStyle.Regular,
 				},
 				{
@@ -190,6 +252,8 @@ export class OntarioButton implements Button {
 	componentWillLoad() {
 		this.label = this.label ?? this.host.textContent ?? '';
 		this.ariaLabel = this.ariaLabel ?? this.label;
+		this.validateButtonType(this.type)
+		this.validateHtmlType(this.htmlType)
 	}
 
 	render() {
