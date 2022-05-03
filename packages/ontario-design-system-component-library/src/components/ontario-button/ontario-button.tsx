@@ -16,13 +16,13 @@ export class OntarioButton implements Button {
 	/**
 	 * The type of button to render.
 	 */
-	@Prop() type: ButtonType = ButtonType.Secondary;
+	@Prop() type: ButtonType;
 
 	/**
 	 * Mutable variable, for internal use only.
 	 * Set the button's type depending on validation result.
 	 */
-	@State() typeState: string = ButtonType.Secondary;
+	@State() typeState: string;
 
 	/**
 	 * The native HTML button type the button should use.
@@ -177,7 +177,7 @@ export class OntarioButton implements Button {
 	 * @returns the classes of the button based of the button's `type`.
 	 */
 	private getClass() {
-		return `ontario-button ontario-button--${this.type?.toLowerCase() ?? 'secondary'}`;
+		return `ontario-button ontario-button--${this.typeState}`;
 	}
 
 	public getId(): string {
