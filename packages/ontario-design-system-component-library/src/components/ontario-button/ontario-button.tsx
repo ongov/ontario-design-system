@@ -98,7 +98,7 @@ export class OntarioButton implements Button {
 	 */
 	@Watch('type')
 	validateButtonType(newValue: string) {
-		var isTypeValid;
+		let isTypeValid;
 		if (newValue != undefined) {
 			isTypeValid = validateValueAgainstEnum(newValue, ButtonType);
 		}
@@ -170,7 +170,7 @@ export class OntarioButton implements Button {
 	 */
 	@Watch('htmlType')
 	validateHtmlType(newValue: string) {
-		var isHtmlTypeValid;
+		let isHtmlTypeValid;
 		if (newValue != undefined) {
 			isHtmlTypeValid = validateValueAgainstEnum(newValue, HtmlType);
 		}
