@@ -9,7 +9,9 @@ describe('ontario-button', () => {
 
 		expect(component).toHaveClass('hydrated');
 		expect(element).toHaveClasses(['ontario-button', 'ontario-button--secondary']);
+		expect(element.textContent).toEqual('');
 		expect(element).toEqualAttributes({
+			'aria-label': '',
 			'type': 'button',
 		});
 	});
@@ -23,6 +25,7 @@ describe('ontario-button', () => {
 		expect(element).toHaveClasses(['ontario-button', 'ontario-button--secondary']);
 		expect(element.textContent).toEqual('Element Content');
 		expect(element).toEqualAttributes({
+			'aria-label': 'Element Content',
 			'type': 'button',
 		});
 
@@ -31,6 +34,7 @@ describe('ontario-button', () => {
 		expect(element).toHaveClasses(['ontario-button', 'ontario-button--secondary']);
 		expect(element.textContent).toEqual(`Label`);
 		expect(element).toEqualAttributes({
+			'aria-label': 'Element Content',
 			'type': 'button',
 		});
 
