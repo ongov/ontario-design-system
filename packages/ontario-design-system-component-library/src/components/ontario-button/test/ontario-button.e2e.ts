@@ -9,12 +9,9 @@ describe('ontario-button', () => {
 
 		expect(component).toHaveClass('hydrated');
 		expect(element).toHaveClasses(['ontario-button', 'ontario-button--secondary']);
-		expect(element.textContent).toEqual('');
 		expect(element).toEqualAttributes({
-			'aria-label': '',
-			'type': 'secondary',
+			'type': 'button',
 		});
-		expect(element).not.toHaveAttribute('id');
 	});
 
 	it('renders changes to the button', async () => {
@@ -26,18 +23,15 @@ describe('ontario-button', () => {
 		expect(element).toHaveClasses(['ontario-button', 'ontario-button--secondary']);
 		expect(element.textContent).toEqual('Element Content');
 		expect(element).toEqualAttributes({
-			'aria-label': 'Element Content',
-			'type': 'secondary',
+			'type': 'button',
 		});
-		expect(element).not.toHaveAttribute('id');
 
 		component.setProperty('label', 'Label');
 		await page.waitForChanges();
 		expect(element).toHaveClasses(['ontario-button', 'ontario-button--secondary']);
 		expect(element.textContent).toEqual(`Label`);
 		expect(element).toEqualAttributes({
-			'aria-label': 'Element Content',
-			'type': 'secondary',
+			'type': 'button',
 		});
 
 		component.setProperty('ariaLabel', 'Aria Label');
@@ -46,9 +40,8 @@ describe('ontario-button', () => {
 		expect(element.textContent).toEqual('Label');
 		expect(element).toEqualAttributes({
 			'aria-label': 'Aria Label',
-			'type': 'secondary',
+			'type': 'button',
 		});
-		expect(element).not.toHaveAttribute('id');
 
 		component.setProperty('elementId', 'defaultButton');
 		await page.waitForChanges();
@@ -56,7 +49,7 @@ describe('ontario-button', () => {
 		expect(element.textContent).toEqual('Label');
 		expect(element).toEqualAttributes({
 			'aria-label': 'Aria Label',
-			'type': 'secondary',
+			'type': 'button',
 			'id': 'defaultButton',
 		});
 
@@ -67,22 +60,19 @@ describe('ontario-button', () => {
 		expect(element.textContent).toEqual('Label');
 		expect(element).toEqualAttributes({
 			'aria-label': 'Aria Label',
-			'type': 'secondary',
-			'html-type': 'submit',
+			'type': 'submit',
 			'id': 'defaultButton',
 		});
 
 		component.setProperty('type', 'tertiary');
 		component.setProperty('htmlType', 'button');
 		component.setProperty('label', 'Back');
-		component.setProperty('ariaLabel', 'Back');
-		component.setProperty('buttonId', 'BackButton');
+		component.setProperty('elementId', 'BackButton');
 		await page.waitForChanges();
 		expect(element).toHaveClasses(['ontario-button', 'ontario-button--tertiary']);
 		expect(element.textContent).toEqual('Back');
 		expect(element).toEqualAttributes({
-			'aria-label': 'Back',
-			'type': 'tertiary',
+			'type': 'button',
 			'id': 'BackButton',
 		});
 	});
