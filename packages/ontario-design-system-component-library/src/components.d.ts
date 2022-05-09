@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.enum";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
@@ -32,13 +33,13 @@ export namespace Components {
          */
         "ariaLabel"?: string;
         /**
-          * The unique identifier of the button
+          * The unique identifier of the button.
          */
-        "buttonId"?: string;
+        "elementId"?: string;
         /**
           * The native HTML button type the button should use.
          */
-        "htmlType"?: 'button' | 'reset' | 'submit';
+        "htmlType": HtmlType;
         /**
           * Text to be displayed within the button. This will override the text provided through the Element Content.
           * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
@@ -47,7 +48,7 @@ export namespace Components {
         /**
           * The type of button to render.
          */
-        "type"?: 'primary' | 'secondary' | 'tertiary';
+        "type": ButtonType;
     }
     interface OntarioCheckboxes {
         /**
@@ -2103,13 +2104,13 @@ declare namespace LocalJSX {
          */
         "ariaLabel"?: string;
         /**
-          * The unique identifier of the button
+          * The unique identifier of the button.
          */
-        "buttonId"?: string;
+        "elementId"?: string;
         /**
           * The native HTML button type the button should use.
          */
-        "htmlType"?: 'button' | 'reset' | 'submit';
+        "htmlType"?: HtmlType;
         /**
           * Text to be displayed within the button. This will override the text provided through the Element Content.
           * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
@@ -2118,7 +2119,7 @@ declare namespace LocalJSX {
         /**
           * The type of button to render.
          */
-        "type"?: 'primary' | 'secondary' | 'tertiary';
+        "type"?: ButtonType;
     }
     interface OntarioCheckboxes {
         /**
