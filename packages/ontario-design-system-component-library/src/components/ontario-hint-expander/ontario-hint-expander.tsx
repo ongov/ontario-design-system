@@ -71,8 +71,6 @@ export class OntarioHintExpander implements HintExpander {
    */
   @Watch('hint')
   validateHintContent(newValue: string) {
-    // If element content is not provided, check whether prop exists
-    console.log(newValue);
     const isHintBlank = validatePropExists(newValue);
     if (isHintBlank) {
       printConsoleMessage([
