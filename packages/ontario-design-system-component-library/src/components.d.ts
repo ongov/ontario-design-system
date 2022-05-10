@@ -53,7 +53,7 @@ export namespace Components {
     interface OntarioCheckboxes {
         /**
           * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
-          * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkbox"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
+          * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkboxes"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
          */
         "hintExpander"?: HintExpander | string;
         /**
@@ -2124,7 +2124,7 @@ declare namespace LocalJSX {
     interface OntarioCheckboxes {
         /**
           * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
-          * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkbox"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
+          * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkboxes"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
          */
         "hintExpander"?: HintExpander | string;
         /**
