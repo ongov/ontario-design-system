@@ -35,9 +35,9 @@ export class OntarioHintText implements Hint {
 	@Prop({ mutable: true }) elementId?: string;
 
 	/*
-	 * Watch for changes in the `label` variable for validation purpose
-	 * Validate the label and make sure the label has a value.
-	 * Log error if user doesn't input a value for the label or element content.
+	 * Watch for changes in the `hint` variable for validation purpose
+	 * Validate the hint and make sure the hint has a value.
+	 * Log error if user doesn't input a value for the hint or element content.
 	 */
 	@Watch('hint')
 	validateHintContent(newValue: string) {
