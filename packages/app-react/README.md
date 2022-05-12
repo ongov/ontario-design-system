@@ -37,6 +37,17 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Deploying to a Design System Sandbox
+
+Using a Design System sandbox this application can be deployed and tested or shared with others externally.
+
+- `PUBLIC_URL` _(optional)_ – The URL to base the file paths off of. By default React assumes everything is at the root (`/`) or is set via the `homepage` property in the `package.json` file. Setting this option overrides that. Eg. `https://site.ca/poc`
+
+```bash
+PUBLIC_URL=urlToSandbox npm run build && aws s3 sync --delete build s3://s3Bucket/poc
+```
+Where `s3Bucket` is the path to the S3 bucket to deploy to.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
