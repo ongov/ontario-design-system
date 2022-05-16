@@ -1,6 +1,9 @@
 import { Component, State, h, Prop, Watch, getAssetPath } from '@stencil/core';
 import { DropdownOption } from './dropdown-option.interface';
 import { Dropdown } from './dropdown.interface';
+import { validatePropExists } from '../../utils/validation/validation-functions';
+import { ConsoleType, MessageStyle } from '../../utils/console-message/console-message.enum';
+import { printConsoleMessage } from '../../utils/console-message/console-message';
 
 @Component({
   tag: 'ontario-dropdown-list',
@@ -88,15 +91,107 @@ export class OntarioDropdownList implements Dropdown {
    */
   @Prop() isEmptyStartOption?: boolean | string = false;
 
-
   private getDropdownArrow() {
     return {
       backgroundImage: `url(${getAssetPath('./assets/ontario-material-dropdown-arrow-48px.svg')})`,
     }
   }
 
+  /*
+   * Watch for changes in the `name` variable for validation purpose
+   * Validate the name and make sure the name has a value.
+   * Log error if user doesn't input a value for the name.
+   */
+  @Watch('name')
+  validateNameContent(newValue: string) {
+    const isNameBlank = validatePropExists(newValue);
+    if (isNameBlank) {
+      printConsoleMessage([
+        {
+          message: ' name ',
+          style: MessageStyle.Code,
+        },
+        {
+          message: 'for',
+          style: MessageStyle.Regular,
+        },
+        {
+          message: ` <ontario-dropdown-list> `,
+          style: MessageStyle.Code,
+        },
+        {
+          message: `was not provided`,
+          style: MessageStyle.Regular,
+        },
+      ], ConsoleType.Error);
+    }
+  }
+
+  /*
+   * Watch for changes in the `element-id` variable for validation purpose
+   * Validate the Element Id and make sure the Element Id has a value.
+   * Log error if user doesn't input a value for the Element Id.
+   */
+  @Watch('elementId')
+  validateElementId(newValue: string) {
+    const isElementIdBlank = validatePropExists(newValue);
+    if (isElementIdBlank) {
+      printConsoleMessage([
+        {
+          message: ' element-id ',
+          style: MessageStyle.Code,
+        },
+        {
+          message: 'for',
+          style: MessageStyle.Regular,
+        },
+        {
+          message: ` <ontario-dropdown-list> `,
+          style: MessageStyle.Code,
+        },
+        {
+          message: `was not provided`,
+          style: MessageStyle.Regular,
+        },
+      ], ConsoleType.Error);
+    }
+  }
+
+  /*
+   * Watch for changes in the `label` variable for validation purpose
+   * Validate the label and make sure the label has a value.
+   * Log error if user doesn't input a value for the label.
+   */
+  @Watch('label')
+  validateLabelContent(newValue: string) {
+    const isLabelBlank = validatePropExists(newValue);
+    if (isLabelBlank) {
+      printConsoleMessage([
+        {
+          message: ' label ',
+          style: MessageStyle.Code,
+        },
+        {
+          message: 'for',
+          style: MessageStyle.Regular,
+        },
+        {
+          message: ` <ontario-dropdown-list> `,
+          style: MessageStyle.Code,
+        },
+        {
+          message: `was not provided`,
+          style: MessageStyle.Regular,
+        },
+      ], ConsoleType.Error);
+    }
+  }
+
   componentWillLoad() {
     this.parseOptions();
+    this.validateNameContent(this.name);
+    this.validateLabelContent(this.label);
+    this.validateElementId(this.elementId);
   }
 
   render() {
