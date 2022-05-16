@@ -14,7 +14,7 @@ import { InputCaption } from '../../utils/input-caption/input-caption';
 })
 export class OntarioTextarea implements Input {
 	/**
-	 * The text to display as label
+	 * The text to display as the label
 	 *
 	 * @example
 	 * <ontario-input
