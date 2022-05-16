@@ -163,9 +163,9 @@ export class OntarioRadioButtons implements RadioButtons {
 
 
 	/*
-	 * Watch for changes in the `name` variable for validation purpose
-	 * Validate the name and make sure the name has a value.
-	 * Log error if user doesn't input a value for the name.
+	 * Watch for changes in the `legend` variable for validation purpose
+	 * Validate the legend and make sure the legend has a value.
+	 * Log error if user doesn't input a value for the legend.
 	 */
 	@Watch('legend')
 	validateLegendContent(newValue: string) {
@@ -196,7 +196,7 @@ export class OntarioRadioButtons implements RadioButtons {
 		this.parseOptions();
 		this.parseHintExpander();
 		this.validateNameContent(this.name);
-		this.validateLegendContent(this.name);
+		this.validateLegendContent(this.legend);
 	}
 
 	render() {
