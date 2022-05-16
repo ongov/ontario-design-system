@@ -102,7 +102,7 @@ export class OntarioTextarea implements Input {
 	}
 
 	componentWillLoad() {
-		// the `toLowerCase()` function is needed because `tagName` returns a upper-cased string
+		// the `toLowerCase()` function is needed because `tagName` returns an upper-cased string
 		this.captionState = new InputCaption(this.element.tagName.toLowerCase(), this.caption);	
 		this.elementId = this.elementId ?? uuid();
 	}

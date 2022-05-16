@@ -2,7 +2,7 @@ import { CaptionType } from './input-caption.enum';
 
 export interface Caption {
 	/**
-	 * The text to display as caption. Must be implemented.
+	 * The text to display as the caption. Must be implemented.
 	 */
 	captionText: string;
 
@@ -23,7 +23,7 @@ export interface Caption {
 
 	/**
 	 * Name of the component instantiating the class.
-	 * This is used for validation warning message.
+	 * This is used for the validation warning message.
 	 */
 	componentTagName: string;
 }
