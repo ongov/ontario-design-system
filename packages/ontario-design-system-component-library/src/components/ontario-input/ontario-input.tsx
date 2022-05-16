@@ -13,7 +13,7 @@ import { InputCaption } from '../../utils/input-caption/input-caption';
 })
 export class OntarioInput implements TextInput {
 	/**
-	 * The text to display as label
+	 * The text to display as the label
 	 *
 	 * @example
 	 * <ontario-input
