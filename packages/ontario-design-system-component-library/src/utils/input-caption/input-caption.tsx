@@ -12,9 +12,9 @@ export class InputCaption implements Caption {
 	captionText: string;
 
 	/**
-	 * The type of caption to render. Must be implemented.
+	 * The type of caption to render.
 	 */
-	captionType: CaptionType;
+	captionType?: CaptionType;
 
 	/**
 	 * Determine whether the input field is required.

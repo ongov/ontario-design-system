@@ -1158,7 +1158,7 @@ export namespace Components {
     }
     interface OntarioInput {
         /**
-          * The text to display as label
+          * The text to display as the label
           * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-input>
          */
         "caption": InputCaption | string;
@@ -1222,7 +1222,7 @@ export namespace Components {
     }
     interface OntarioTextarea {
         /**
-          * The text to display as label
+          * The text to display as the label
           * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-input>
          */
         "caption": InputCaption | string;
@@ -3219,7 +3219,7 @@ declare namespace LocalJSX {
     }
     interface OntarioInput {
         /**
-          * The text to display as label
+          * The text to display as the label
           * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-input>
          */
         "caption"?: InputCaption | string;
@@ -3295,7 +3295,7 @@ declare namespace LocalJSX {
     }
     interface OntarioTextarea {
         /**
-          * The text to display as label
+          * The text to display as the label
           * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-input>
          */
         "caption"?: InputCaption | string;
