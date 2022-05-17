@@ -17,9 +17,10 @@ $pixel: $ontario-global-tokens-pixel-value;
 $max-value: $ontario-global-tokens-max-value;
 
 // Width values
-$narrow-width: $ontario-global-tokens-narrow-width;
-$standard-width: $ontario-global-tokens-standard-width;
-$full-width:  $ontario-global-tokens-full-width;
+$narrower-width: $ontario-global-tokens-width-narrower; // 26.25em
+$narrow-width: $ontario-global-tokens-width-narrow; // 38.75em
+$standard-width: $ontario-global-tokens-width-standard;
+$full-width:  $ontario-global-tokens-width-max; // 100%
 
 // Border sizes
 $border-size-standard: $ontario-global-tokens-border-size; // 2px
