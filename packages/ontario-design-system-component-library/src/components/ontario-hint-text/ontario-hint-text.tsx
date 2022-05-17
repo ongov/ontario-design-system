@@ -45,7 +45,7 @@ export class OntarioHintText implements Hint {
 
 	render() {
 		return (
-			<p id={this.getId()} class="ontario-hint" aria-hint={this.hint}>
+			<p id={this.getId()} class="ontario-hint">
 				{this.hint}
 			</p>
 		);

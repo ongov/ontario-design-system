@@ -21,7 +21,7 @@ describe('ontario-hint-text', () => {
     expect(page.root).toEqualHtml(`
       <ontario-hint-text element-id="idTest" hint="This is a test hint">
         <mock:shadow-root>
-          <p id="idTest" class="ontario-hint" aria-hint="This is a test hint">
+          <p id="idTest" class="ontario-hint">
             This is a test hint
           </p>
         </mock:shadow-root>
