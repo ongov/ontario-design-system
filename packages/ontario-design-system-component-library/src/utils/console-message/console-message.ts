@@ -11,7 +11,7 @@ const fontSize = '12px';
 // the `background-color`, `color`, `padding` and `border-radius` values are hardcoded because
 // they are specific for console message use case
 const tagStyles = [
-	'background-color: #118847',
+	'background-color: #367A76',
 	'border: none',
 	'color: white',
 	'padding: 2px 5px',
