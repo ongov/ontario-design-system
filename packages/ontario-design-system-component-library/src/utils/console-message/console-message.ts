@@ -62,7 +62,7 @@ export function printConsoleMessage(messages: ConsoleMessage[] | string, console
 	} else {
 		// push style of each message into the array of arguments in order
 		messages?.forEach((message: ConsoleMessage) => {
-			messageArray.push(message.style && message.style === MessageStyle.Code ? codedTextStyles : regularTextStyles);
+			messageArray.push(message.style && message.style === MessageStyle.Code ? monospaceTextStyles : regularTextStyles);
 		});
 	}
 
