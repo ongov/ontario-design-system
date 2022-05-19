@@ -2,8 +2,7 @@
 import { Component, Prop, h, Watch, State } from '@stencil/core';
 import { Icon } from './icon.interface';
 import { IconSize} from './ontario-icon.enum';
-import { ConsoleType, MessageStyle } from '../../utils/console-message/console-message.enum';
-import { printConsoleMessage } from '../../utils/console-message/console-message';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 @Component({
     tag: 'ontario-icon-mastercard',
@@ -30,32 +29,16 @@ export class OntarioIconMastercard implements Icon {
     @Watch('iconWidth')
     validateWidth() {
 		if (isNaN(this.iconWidth) || (!isNaN(this.iconWidth) && this.iconWidth <= 0)) {
-			printConsoleMessage([
-        {
-            message: ' icon-width ',
-            style: MessageStyle.Code,
-        },
-        {
-            message: 'on',
-            style: MessageStyle.Regular,
-        },
-        {
-            message: ` <ontario-icon-mastercard> `,
-            style: MessageStyle.Code,
-        },
-        {
-            message: `was set to a non-numeric value; only a positive number is allowed. The default size of`,
-            style: MessageStyle.Regular,
-        },
-        {
-            message: ' 24px ',
-            style: MessageStyle.Code,
-        },
-        {
-            message: 'was assumed.',
-            style: MessageStyle.Regular,
-        },
-    ], ConsoleType.Warning);
+			const message = new ConsoleMessageClass();
+            message
+                .addDesignSystemTag()
+                .addMonospaceText(' icon-width ')
+                .addRegularText('on')
+                .addMonospaceText(' <ontario-icon-mastercard> ')
+                .addRegularText(`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`)
+                .addMonospaceText(' 24px ')
+                .addRegularText('was assumed.')
+                .printMessage();
 			this.iconWidthState = IconSize.Default;
 		} else {
 			this.iconWidthState = this.iconWidth;

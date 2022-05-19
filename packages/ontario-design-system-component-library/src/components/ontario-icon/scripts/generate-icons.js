@@ -53,44 +53,6 @@ const useIconColour = (iconName) => {
 }
 
 /**
- * Generate a message template to be used for icon width validation warnings.
- * This template leverages the `console` object's CSS specifier to apply styles onto the target strings.
- * The messages are grouped by the styles that are to be applied to them.
- * Note that spacing matters and impacts the final message being printed to the console.
- * @param {*} iconName name of icon in `ontario-icon-name` format
- * @param {*} iconWidth width of the icon provided by user
- * @returns an array of objects with each object containing part of the message and associated styles
- */
-const getIconWidthWarningMessage = (iconName, iconWidth) => {
-    return iconWidthValidationWarningMessage = `[
-        {
-            message: ' icon-width ',
-            style: MessageStyle.Code,
-        },
-        {
-            message: 'on',
-            style: MessageStyle.Regular,
-        },
-        {
-            message: \` <${iconName}> \`,
-            style: MessageStyle.Code,
-        },
-        {
-            message: \`${isNaN(iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of\`,
-            style: MessageStyle.Regular,
-        },
-        {
-            message: ' 24px ',
-            style: MessageStyle.Code,
-        },
-        {
-            message: 'was assumed.',
-            style: MessageStyle.Regular,
-        },
-    ]`;
-};
-
-/**
  * Generate the icon component template
  * @param {*} svgObject svg content in JSON object notation
  * @param {*} iconName name of the icon
@@ -103,8 +65,7 @@ const getIconComponentTemplate = (svgObject, iconName) => {
 import { Component, Prop, h, Watch, State } from '@stencil/core';
 import { ${hasColour ? 'IconWithColour' : 'Icon'} } from './icon.interface';
 import { IconSize${hasColour ? `, IconColour ` : ``}} from './ontario-icon.enum';
-import { ConsoleType, MessageStyle } from '../../utils/console-message/console-message.enum';
-import { printConsoleMessage } from '../../utils/console-message/console-message';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 @Component({
     tag: '${iconName}',
@@ -131,7 +92,16 @@ export class ${toPascalCase(iconName)} implements ${hasColour ? 'IconWithColour'
     @Watch('iconWidth')
     validateWidth() {
 		if (isNaN(this.iconWidth) || (!isNaN(this.iconWidth) && this.iconWidth <= 0)) {
-			printConsoleMessage(${getIconWidthWarningMessage(iconName, this.iconWidth)}, ConsoleType.Warning);
+			const message = new ConsoleMessageClass();
+            message
+                .addDesignSystemTag()
+                .addMonospaceText(' icon-width ')
+                .addRegularText('on')
+                .addMonospaceText(' <${iconName}> ')
+                .addRegularText(\`\${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of\`)
+                .addMonospaceText(' 24px ')
+                .addRegularText('was assumed.')
+                .printMessage();
 			this.iconWidthState = IconSize.Default;
 		} else {
 			this.iconWidthState = this.iconWidth;
