@@ -83,8 +83,8 @@ export function printConsoleMessage(messages: ConsoleMessage[] | string, console
 	}
 }
 
-// POC to use a fluent interface to build and print console messages
-export class consoleMessage {
+// build and print console message with a fluent interface design
+export class ConsoleMessageClass {
 	message: string;
 	styles: string[];
 
@@ -104,11 +104,13 @@ export class consoleMessage {
 	// builds console message as regular text 
 	addRegularText(text: string) {
 		this.addText(text, regularTextStyles);
+		return this;
 	}
 
 	// builds console message as monospace text
 	addMonospaceText(text: string) {
 		this.addText(text, codedTextStyles);
+		return this;
 	}
 
 	// prints message to console depending on the `ConsoleType`
@@ -139,6 +141,5 @@ export class consoleMessage {
 			this.message += addSpecifier(text);
 			this.styles.push(style);
 		}
-		return this;
 	}
 }
