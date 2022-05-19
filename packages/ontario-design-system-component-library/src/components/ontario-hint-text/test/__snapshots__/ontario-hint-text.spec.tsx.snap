@@ -3,7 +3,7 @@
 exports[`ontario-hint-text snapshot should render the expected html 1`] = `
 <ontario-hint-text element-id="idTest" hint="This is a test hint">
   <mock:shadow-root>
-    <p aria-hint="This is a test hint" class="ontario-hint" id="idTest">
+    <p class="ontario-hint" id="idTest">
       This is a test hint
     </p>
   </mock:shadow-root>

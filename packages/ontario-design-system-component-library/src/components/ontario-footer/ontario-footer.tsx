@@ -83,6 +83,7 @@ export class OntarioFooter {
 			}
 		}
 	}
+
 	private verifyExpandedThreeColumn() {
 		if (this.type == 'expandedThreeColumn') {
 			if (
