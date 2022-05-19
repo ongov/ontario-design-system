@@ -26,7 +26,7 @@ const tagStyles = [
 const regularTextStyles = ['font-family: sans-serif', `font-size: ${fontSize}`].join(';');
 
 // styles for code in string format
-const codedTextStyles = ['font-family: monospace', `font-size: ${fontSize}`].join(';');
+const monospaceTextStyles = ['font-family: monospace', `font-size: ${fontSize}`].join(';');
 
 function addSpecifier(message: string): string {
 	const styleSpecifier = '%c';
@@ -109,7 +109,7 @@ export class ConsoleMessageClass {
 
 	// builds console message as monospace text
 	addMonospaceText(text: string) {
-		this.addText(text, codedTextStyles);
+		this.addText(text, monospaceTextStyles);
 		return this;
 	}
 
