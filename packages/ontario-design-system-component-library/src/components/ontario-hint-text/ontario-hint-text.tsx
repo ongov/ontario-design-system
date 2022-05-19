@@ -75,9 +75,12 @@ export class OntarioHintText implements Hint {
 	 * Set `hint` using internal component logic
 	 */
 	componentWillLoad() {
-		this.hint = this.hint ?? this.host.textContent ?? '';
+		if (this.hint || this.host.textContent) {
+			this.hint = this.hint ?? this.host.textContent ?? '';
+		} else {
+			this.validateHintContent(this.hint);
+		}
 		this.elementId = this.elementId ?? uuid();
-		this.validateHintContent(this.hint);
 	}
 
 	render() {
