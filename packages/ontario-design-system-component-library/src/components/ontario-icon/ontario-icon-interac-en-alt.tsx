@@ -46,10 +46,15 @@ export class OntarioIconInteracEnAlt implements Icon {
     }
     
     /**
-     * reference to the host element
+     * Reference to the host element
+     * Use to check if the host element has the `colour` attribute set
      */
     @Element() host: HTMLElement;
 
+    /**
+     * Validate that the `colour` attribute is not set by users
+     * Prints a warning message if the `colour` attribute is set
+     */
     validateColour() {
         if (this.host.hasAttribute('colour')) {
             const message = new ConsoleMessageClass();
