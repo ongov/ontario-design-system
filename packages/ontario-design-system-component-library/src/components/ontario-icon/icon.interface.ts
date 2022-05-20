@@ -1,4 +1,4 @@
-import { IconColour } from './ontario-icon.enum';
+import { IconColour } from './icon.enum';
 
 export interface Icon {
 	/**
