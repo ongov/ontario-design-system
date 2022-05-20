@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.enum";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
@@ -32,13 +33,13 @@ export namespace Components {
          */
         "ariaLabel"?: string;
         /**
-          * The unique identifier of the button
+          * The unique identifier of the button.
          */
-        "buttonId"?: string;
+        "elementId"?: string;
         /**
           * The native HTML button type the button should use.
          */
-        "htmlType"?: 'button' | 'reset' | 'submit';
+        "htmlType": HtmlType;
         /**
           * Text to be displayed within the button. This will override the text provided through the Element Content.
           * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
@@ -47,12 +48,12 @@ export namespace Components {
         /**
           * The type of button to render.
          */
-        "type"?: 'primary' | 'secondary' | 'tertiary';
+        "type": ButtonType;
     }
     interface OntarioCheckboxes {
         /**
           * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
-          * @example <ontario-checkboxes   legend="This is a question?"   options='[{     "name": "Checkbox 1",     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
+          * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkbox"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
          */
         "hintExpander"?: HintExpander | string;
         /**
@@ -65,12 +66,16 @@ export namespace Components {
          */
         "isRequired"?: boolean;
         /**
-          * The legend for the checkbox
+          * The legend for the checkboxes
          */
         "legend": string;
         /**
+          * The name for the checkboxes.
+         */
+        "name": string;
+        /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
-          * @example <ontario-checkboxes   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Checkbox 1",        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "name": "Checkbox-2",        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
+          * @example <ontario-checkboxes   legend="This is a question?"   name= "ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
          */
         "options": CheckboxOption[] | string;
     }
@@ -2099,13 +2104,13 @@ declare namespace LocalJSX {
          */
         "ariaLabel"?: string;
         /**
-          * The unique identifier of the button
+          * The unique identifier of the button.
          */
-        "buttonId"?: string;
+        "elementId"?: string;
         /**
           * The native HTML button type the button should use.
          */
-        "htmlType"?: 'button' | 'reset' | 'submit';
+        "htmlType"?: HtmlType;
         /**
           * Text to be displayed within the button. This will override the text provided through the Element Content.
           * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
@@ -2114,12 +2119,12 @@ declare namespace LocalJSX {
         /**
           * The type of button to render.
          */
-        "type"?: 'primary' | 'secondary' | 'tertiary';
+        "type"?: ButtonType;
     }
     interface OntarioCheckboxes {
         /**
           * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
-          * @example <ontario-checkboxes   legend="This is a question?"   options='[{     "name": "Checkbox 1",     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
+          * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkbox"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
          */
         "hintExpander"?: HintExpander | string;
         /**
@@ -2132,16 +2137,20 @@ declare namespace LocalJSX {
          */
         "isRequired"?: boolean;
         /**
-          * The legend for the checkbox
+          * The legend for the checkboxes
          */
         "legend"?: string;
+        /**
+          * The name for the checkboxes.
+         */
+        "name"?: string;
         /**
           * Emitted when a keyboard input or mouse event occurs.
          */
         "onChangeEvent"?: (event: CustomEvent<any>) => void;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
-          * @example <ontario-checkboxes   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "name": "Checkbox 1",        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "name": "Checkbox-2",        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
+          * @example <ontario-checkboxes   legend="This is a question?"   name= "ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
          */
         "options"?: CheckboxOption[] | string;
     }

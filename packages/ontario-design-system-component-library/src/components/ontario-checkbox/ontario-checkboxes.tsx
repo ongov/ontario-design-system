@@ -1,6 +1,6 @@
 import { Component, h, Prop, Event, EventEmitter, State, Watch } from '@stencil/core';
 import { CheckboxOption } from './checkbox-option.interface';
-import { Checkbox } from './checkbox.interface';
+import { Checkboxes } from './checkboxes.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
 /**
@@ -11,11 +11,16 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
   styleUrl: 'ontario-checkboxes.scss',
   shadow: true,
 })
-export class OntarioCheckboxes implements Checkbox {
+export class OntarioCheckboxes implements Checkboxes {
   /**
-   * The legend for the checkbox
+   * The legend for the checkboxes
    */
   @Prop() legend: string;
+
+  /**
+   * The name for the checkboxes.
+   */
+  @Prop() name: string;
 
   /**
    * Determine whether the input field is required.
@@ -37,8 +42,8 @@ export class OntarioCheckboxes implements Checkbox {
    * @example
    * <ontario-checkboxes
    *   legend="This is a question?"
+   *   name="ontario-checkboxes"
    *   options='[{
-   *     "name": "Checkbox 1",
    *     "value": "checkbox-1-value",
    *     "label": "Checkbox Label",
    *     "hintExpander": {
@@ -82,15 +87,14 @@ export class OntarioCheckboxes implements Checkbox {
    * @example
    * <ontario-checkboxes
    *   legend="This is a question?"
+   *   name= "ontario-checkboxes",
    *   hint-text="This is the hint text"
    *   options='[
    *     {
-   *        "name": "Checkbox 1",
    *        "value": "checkbox-1-value",
    *        "label": "Checkbox Label"
    *     },
    *     {
-   *        "name": "Checkbox-2",
    *        "value": "checkbox-2",
    *        "label": "checkbox-2-label",
    *        "hintExpander": {
@@ -161,14 +165,14 @@ export class OntarioCheckboxes implements Checkbox {
               <div class="ontario-checkboxes__item">
                 <input
                   class="ontario-checkboxes__input"
-                  id={checkbox.name}
-                  name={checkbox.name}
+                  id={checkbox.value}
+                  name={this.name}
                   type="checkbox"
                   value={checkbox.value}
                   checkbox-label={checkbox.label}
                   onChange={this.handleChange}
                 />
-                <label class="ontario-checkboxes__label" htmlFor={checkbox.name}>
+                <label class="ontario-checkboxes__label" htmlFor={checkbox.value}>
                   {checkbox.label}
                 </label>
 

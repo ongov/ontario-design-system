@@ -11,15 +11,15 @@
 </head>
 
 <body>
-	<ontario-button label="Primary" aria-label="Primary Button" type="primary" onclick="testFunction()">Primary
+	<ontario-button label="Primary" type="primary" onclick="testFunction()">Primary
 	</ontario-button>
-	<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">Secondary
+	<ontario-button label="Secondary" aria-label="Secondary Button" html-type="reset" id="secondaryButton">Secondary
 	</ontario-button>
 	<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary">Tertiary</ontario-button>
 
 	<hr />
 
-	<ontario-icon-accessibility icon-width="null" colour="indigo"></ontario-icon-accessibility>
+	<ontario-icon-accessibility icon-width="36" colour="grey"></ontario-icon-accessibility>
 
 	<hr />
 
@@ -44,13 +44,13 @@
 	<ontario-textarea name="response" label-caption="What do you like about ODS?" element-id="response">
 	</ontario-textarea>
 
-	<ontario-checkboxes legend="Do you have children?" hint-text="This is the hint text" is-required options='[{
-		"name": "Checkbox-1",
+
+	<ontario-checkboxes legend='Do you have children?' name='ontario-checkbox-group' hint-text='This is the hint text'
+		is-required options='[{
 		"value": "checkbox-1",
 		"label": "checkbox-1-label"
 		},
 		{
-			"name": "Checkbox-2",
 			"value": "checkbox-2",
 			"label": "checkbox-2-label",
 			"hintExpander": {
@@ -60,7 +60,6 @@
 			}
 		},
 		{
-			"name": "Checkbox-3",
 			"value": "checkbox-3",
 			"label": "checkbox-3-label",
 			"hintExpander": {
@@ -70,7 +69,6 @@
 			}
 		},
 		{
-			"name": "Checkbox-4",
 			"value": "checkbox-4",
 			"label": "checkbox-4-label"
 		}
