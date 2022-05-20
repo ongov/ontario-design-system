@@ -1,4 +1,4 @@
-import { Component, Prop, Element, h, Watch } from '@stencil/core';
+import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 import { Hint } from '../../utils/common.interface';
 import { validatePropExists } from '../../utils/validation/validation-functions';
@@ -29,6 +29,14 @@ export class OntarioHintText implements Hint {
 	 */
 	@Prop({ mutable: true }) hint: string;
 
+	@State() hintState: string;
+
+	@Watch('hint')
+	private updateHintContent() {
+		this.hintState = this.hint ?? this.host.textContent ?? '';
+		this.validateHintContent(this.hintState);
+	}
+
 	/**
 	 * Used to used to establish a relationship between hint text content and elements using aria-describedby.
 	 */
@@ -39,7 +47,6 @@ export class OntarioHintText implements Hint {
 	 * Validate the hint and make sure the hint has a value.
 	 * Log error if user doesn't input a value for the hint or element content.
 	 */
-	@Watch('hint')
 	validateHintContent(newValue: string) {
 		// If element content is not provided, check whether prop exists
 		if (!this.host.textContent) {
@@ -75,18 +82,14 @@ export class OntarioHintText implements Hint {
 	 * Set `hint` using internal component logic
 	 */
 	componentWillLoad() {
-		if ((this.hint && this.hint.length) || this.host.textContent) {
-			this.hint = this.hint ?? this.host.textContent ?? '';
-		} else {
-			this.validateHintContent(this.hint);
-		}
+		this.updateHintContent();
 		this.elementId = this.elementId ?? uuid();
 	}
 
 	render() {
 		return (
 			<p id={this.getId()} class="ontario-hint">
-				{this.hint}
+				{this.hintState}
 			</p>
 		);
 	}
