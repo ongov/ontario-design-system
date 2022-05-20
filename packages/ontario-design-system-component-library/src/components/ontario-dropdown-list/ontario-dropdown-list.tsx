@@ -69,9 +69,9 @@ export class OntarioDropdownList implements Dropdown {
   }
 
   /*
-   * Watch for changes in the `name` variable for validation purpose
-   * Validate the name and make sure the name has a value.
-   * Log error if user doesn't input a value for the name.
+   * Watch for changes in the `options` object for validation purpose
+   * Validate the objects and make sure they exist.
+   * Log error if user doesn't provide the options.
    */
   @Watch('options')
   validateOptionsContent(newValue: object) {
