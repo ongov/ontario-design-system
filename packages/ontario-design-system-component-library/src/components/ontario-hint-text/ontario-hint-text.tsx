@@ -31,19 +31,22 @@ export class OntarioHintText implements Hint {
 
 	@State() hintState: string;
 
+	/*
+	 * Watch for changes in the `hint` variable for validation purposes.
+	 * If hint is not provided, set hint to Element Content (if it exists).
+	*/
 	@Watch('hint')
 	private updateHintContent() {
 		this.hintState = this.hint ?? this.host.textContent ?? '';
 		this.validateHintContent(this.hintState);
 	}
 
-	/**
+	/*
 	 * Used to used to establish a relationship between hint text content and elements using aria-describedby.
 	 */
 	@Prop({ mutable: true }) elementId?: string;
 
 	/*
-	 * Watch for changes in the `hint` variable for validation purpose
 	 * Validate the hint and make sure the hint has a value.
 	 * Log error if user doesn't input a value for the hint or element content.
 	 */
