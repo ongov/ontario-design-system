@@ -74,7 +74,7 @@ export class OntarioIconAccessibility implements IconWithColour {
 		const message = new ConsoleMessageClass();
 		message
 			.addDesignSystemTag()
-			.addMonospaceText(' icon-colour ')
+			.addMonospaceText(' colour ')
 			.addRegularText('on')
 			.addMonospaceText(' <ontario-icon-accessibility> ')
 			.addRegularText('was set to an invalid colour; only')

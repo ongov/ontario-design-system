@@ -74,9 +74,9 @@ export class OntarioIconClock implements IconWithColour {
 		const message = new ConsoleMessageClass();
 		message
 			.addDesignSystemTag()
-			.addMonospaceText(' icon-colour ')
+			.addMonospaceText(' colour ')
 			.addRegularText('on')
-			.addMonospaceText(' <ontario-icon-accessibility> ')
+			.addMonospaceText(' <ontario-icon-clock> ')
 			.addRegularText('was set to an invalid colour; only')
 			.addMonospaceText(' black, blue, grey or white ')
 			.addRegularText('are supported. The default colour')
