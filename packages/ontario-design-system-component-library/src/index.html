@@ -2,52 +2,23 @@
 <html dir="ltr" lang="en">
 
 <head>
-	<link rel="stylesheet" href="/build/ontario-design-system-components.css" />
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
 	<title>Ontario Design System - component samples</title>
+
 	<script type="module" src="/build/ontario-design-system-components.esm.js"></script>
 	<script nomodule src="/build/ontario-design-system-components.js"></script>
 </head>
 
 <body>
-	<ontario-header type="ontario" title-header='{
-					"name": "Application name" ,
-					"href": "/"
-				}' language-Toggle-Options='{
-					"englishLink":"/en",
-					"frenchLink": "/fr"
-				}' menu-Items='[{
-					"name": "Health Health HealthHealth",
-					"href": "/ontario-hint"
-				},{
-					"name": "FinancialHealth HealthHealth",
-					"href": "/ontario-hint"
-				},{
-					"name": "FinancialHealth HealthHealth",
-					"href": "/ontario-hint"
-				},{
-					"name": "FinancialHealth HealthHealth",
-					"href": "/ontario-hint"
-				},{
-					"name": "FinancialHealth HealthHealth",
-					"href": "/ontario-hint"
-				},{
-					"name": "FinancialHealth HealthHealth",
-					"href": "/ontario-hint"
-				}]'>
-	</ontario-header>
+	<ontario-button label="Primary" type="primary" onclick="testFunction()">Primary
+	</ontario-button>
+	<ontario-button label="Secondary" aria-label="Secondary Button" html-type="reset" id="secondaryButton">Secondary
+	</ontario-button>
+	<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary">Tertiary</ontario-button>
 
 	<hr />
 
-	<ontario-button label="Primary" aria-label="Primary Button" type="primary" onclick="testFunction()">
-		Content here will be overwritten by the value of the label property
-	</ontario-button>
-	<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">
-		Content here will be overwritten by the value of the label property
-	</ontario-button>
-	<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary"> Content here will be overwritten by the
-		value of the label property </ontario-button>
 	<ontario-icon-accessibility icon-width="36" colour="grey"></ontario-icon-accessibility>
 
 	<hr />
@@ -57,7 +28,7 @@
 	</ontario-input>
 
 	<ontario-input name="postal" input-width="7-char-width" label-caption="Postal code" label-type="large">
-		<ontario-hint-text slot="hint-text">For example, A1A 1A1</ontario-hint-text>
+		<ontario-hint-text slot="hint-text">For example, A1A 1A1</ontario-hint-test>
 	</ontario-input>
 
 	<ontario-input name="address" label-caption="Address" required>
@@ -73,13 +44,13 @@
 	<ontario-textarea name="response" label-caption="What do you like about ODS?" element-id="response">
 	</ontario-textarea>
 
-	<ontario-checkboxes legend="Do you have children?" hint-text="This is the hint text" is-required options='[{
-		"name": "Checkbox-1",
+
+	<ontario-checkboxes legend='Do you have children?' name='ontario-checkbox-group' hint-text='This is the hint text'
+		is-required options='[{
 		"value": "checkbox-1",
 		"label": "checkbox-1-label"
 		},
 		{
-			"name": "Checkbox-2",
 			"value": "checkbox-2",
 			"label": "checkbox-2-label",
 			"hintExpander": {
@@ -89,7 +60,6 @@
 			}
 		},
 		{
-			"name": "Checkbox-3",
 			"value": "checkbox-3",
 			"label": "checkbox-3-label",
 			"hintExpander": {
@@ -99,7 +69,6 @@
 			}
 		},
 		{
-			"name": "Checkbox-4",
 			"value": "checkbox-4",
 			"label": "checkbox-4-label"
 		}
@@ -110,14 +79,12 @@
 		}'>
 	</ontario-checkboxes>
 
-	<ontario-radio-buttons legend="Do you have cats?" hint-text="This is the hint text" is-required options='[{
-		"name": "radio",
+	<ontario-radio-buttons legend="Do you have cats?" name="radios" hint-text="This is the hint text" is-required options='[{
 		"value": "radio",
 		"elementId": "radio-1",
 		"label": "radio-1-label"
 		},
 		{
-			"name": "radio",
 			"value": "radio-2",
 			"elementId": "radio-2",
 			"label": "radio-2-label",
@@ -128,7 +95,6 @@
 			}
 		},
 		{
-			"name": "radio",
 			"value": "radio-3",
 			"elementId": "radio-3",
 			"label": "radio-3-label",
@@ -139,7 +105,6 @@
 			}
 		},
 		{
-			"name": "radio",
 			"value": "radio-4",
 			"elementId": "radio-4",
 			"label": "radio-4-label"
@@ -165,54 +130,6 @@
 		  "label": "Option 3"
 		}]'>
 	</ontario-dropdown-list>
-
-	<ontario-footer type="expandedTwoColumn" partnership-Connection="Sponsored by Government of Ontario" default-options='{
-			"accessibilityLink":"https://www.ontario.ca/page/accessibility",
-			"privacyLink": "https://www.ontario.ca/page/privacy-statement",
-			"contactLink": "https://www.ontario.ca/feedback/contact-us",
-			"queensPrinterLink": "https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario"
-
-		}' expanded-two-column-options='{
-			"firstColumn": {
-				"title": "This is my First Title",
-				"content":"this is my first content"
-			},
-			"secondColumn": {
-				"title": "This is my Second Title",
-				"content":"this is my second content",
-				"contactButtonText": "BUTTON"
-			}
-		}' expanded-three-column-options='{
-			"firstColumn": {
-				"title": "This is my First Title",
-				"content":"this is my first content"
-			},
-			"secondColumn": {
-				"title": "This is my Second Title",
-				"content":[
-					{
-						"title": "1 asdas",
-						"link": "12"
-					}
-				]
-			},
-			"thirdColumn": {
-				"title": "this is my third title",
-				"content": "this is my third content",
-				"facebook": {
-					"link": "1"
-				},
-				"twitter": {
-					"link": "2"
-				},
-				"instagram": {
-					"link": "3"
-				},
-				"youtube": {
-					"link": "4"
-				}
-			}
-		}'></ontario-footer>
 
 	<script>
 		function testFunction() {
