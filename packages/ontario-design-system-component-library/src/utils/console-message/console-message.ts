@@ -93,7 +93,7 @@ export class ConsoleMessageClass {
 		this.styles = [];
 	}
 
-	// adds the `Ontario Design System` tag to the beginning of the message
+	// add the `Ontario Design System` tag to the beginning of the message
 	// the first call in the chain if a tag is required
 	addDesignSystemTag() {
 		this.message = addSpecifier(designSystemTag);
@@ -101,19 +101,19 @@ export class ConsoleMessageClass {
 		return this;
 	}
 
-	// builds console message as regular text 
+	// build console message as regular text 
 	addRegularText(text: string) {
 		this.addText(text, regularTextStyles);
 		return this;
 	}
 
-	// builds console message as monospace text
+	// build console message as monospace text
 	addMonospaceText(text: string) {
 		this.addText(text, monospaceTextStyles);
 		return this;
 	}
 
-	// prints message to console depending on the `ConsoleType`
+	// print message to console depending on the `ConsoleType`
 	// the last function call in the chain
 	printMessage(consoleType = ConsoleType.Warning) {
 		const messageArray = [this.message, ...this.styles];
@@ -135,7 +135,7 @@ export class ConsoleMessageClass {
 		}
 	}
 
-	// adds text to the `message` property and associated styles into the `styles` array
+	// add text to the `message` property and associated styles into the `styles` array
 	private addText(text: string, style: string) {
 		if (text && text?.trim().length > 0) {
 			this.message += addSpecifier(text);

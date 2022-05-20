@@ -63,8 +63,28 @@ export class OntarioIconInstagram implements IconWithColour {
      */
     @Watch('colour')
     validateColour() {
-        this.iconColourState = (this.colour && Object.values(IconColour).find(colour => colour === this.colour.toLowerCase())) || IconColour.Black;
+        this.iconColourState = (this.colour && Object.values(IconColour).find(colour => colour === this.colour.toLowerCase())) || this.warnDefaultColour();
     }
+
+    /**
+     * Print the invalid colour warning message
+     * @returns default colour (black)
+     */
+	private warnDefaultColour() {
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addMonospaceText(' icon-colour ')
+			.addRegularText('on')
+			.addMonospaceText(' <ontario-icon-accessibility> ')
+			.addRegularText('was set to an invalid colour; only')
+			.addMonospaceText(' black, blue, grey or white ')
+			.addRegularText('are supported. The default colour')
+			.addMonospaceText(' black ')
+			.addRegularText('is assumed.')
+			.printMessage();
+		return IconColour.Black;
+	}
     
 	/**
 	 * Stencil component lifecycle method that is called once after the component is first connected to the DOM.
