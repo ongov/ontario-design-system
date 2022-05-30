@@ -9,7 +9,7 @@ export interface Caption {
 	/**
 	 * The type of caption to render. Must be implemented.
 	 */
-	captionType?: CaptionType;
+	captionType: CaptionType;
 
 	/**
 	 * Determine whether the input field is required.
