@@ -1,6 +1,9 @@
-import { Component, Element, Event, EventEmitter, h, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 import { HintExpander } from './hint-expander.interface';
+import { validatePropExists } from '../../utils/validation/validation-functions';
+import { ConsoleType, MessageStyle } from '../../utils/console-message/console-message.enum';
+import { printConsoleMessage } from '../../utils/console-message/console-message';
 
 /**
  * Ontario Design System hint expander web component
@@ -26,17 +29,11 @@ export class OntarioHintExpander implements HintExpander {
    *
    * @example
    * <ontario-hint-expander hint="This is the hint"
-   * aria-label="This indicates that the hint can be expanded">
    *   <img src="https://www.jquery-az.com/html/images/banana.jpg" title="Title of image" alt="alt text here"/>
    *   <p> Here is the content beside the image </p>
    * </ontario-hint-expander>
    */
   @Prop({ mutable: true }) content: string;
-
-  /**
-   * Include visually hidden text inside the label that describes to screen readers the availability of a hint expander
-   */
-  @Prop({ mutable: true }) ariaLabel?: string;
 
   /**
    * Used to used to establish a relationship between hint text content and elements using aria-describedby.
@@ -67,13 +64,77 @@ export class OntarioHintExpander implements HintExpander {
     this.toggleExpanderEvent.emit(ev as MouseEvent);
   };
 
+  /*
+   * Watch for changes in the `hint` prop for validation purpose
+   * Validate the hint and make sure the hint has a value.
+   * Log error if user doesn't input a value for the hint.
+   */
+  @Watch('hint')
+  validateHintContent(newValue: string) {
+    const isHintBlank = validatePropExists(newValue);
+    if (isHintBlank) {
+      printConsoleMessage([
+        {
+          message: ' hint ',
+          style: MessageStyle.Code,
+        },
+        {
+          message: 'for',
+          style: MessageStyle.Regular,
+        },
+        {
+          message: ` <ontario-hint-expander> `,
+          style: MessageStyle.Code,
+        },
+        {
+          message: `was not provided`,
+          style: MessageStyle.Regular,
+        },
+      ], ConsoleType.Error);
+    }
+  }
+
+  /*
+   * Watch for changes in the `content` prop for validation purpose
+   * Validate the content and make sure the content has a value.
+   * Log error if user doesn't input a value for the content or element content.
+   */
+  @Watch('content')
+  validateContent(newValue: string) {
+    // If element content is not provided, check whether prop exists
+    if (!this.host.textContent) {
+      const isContentBlank = validatePropExists(newValue);
+      if (isContentBlank) {
+        printConsoleMessage([
+          {
+            message: ' content ',
+            style: MessageStyle.Code,
+          },
+          {
+            message: 'for',
+            style: MessageStyle.Regular,
+          },
+          {
+            message: ` <ontario-hint-expander> `,
+            style: MessageStyle.Code,
+          },
+          {
+            message: `was not provided`,
+            style: MessageStyle.Regular,
+          },
+        ], ConsoleType.Error);
+      }
+    }
+  }
+
   /**
    * Set `hint` using internal component logic
    */
   componentWillLoad() {
-    this.ariaLabel = this.ariaLabel ?? this.hint;
     this.content = this.content ?? <slot />;
     this.elementId = this.elementId ?? uuid();
+    this.validateHintContent(this.hint);
+    this.validateContent(this.content);
   }
 
   public getId(): string {
@@ -88,7 +149,6 @@ export class OntarioHintExpander implements HintExpander {
           aria-controls={`hint-expander-content-${this.getId()}`}
           aria-expanded="false"
           data-toggle="ontario-collapse"
-          aria-label={this.ariaLabel}
         >
           <span class="ontario-hint-expander__button-icon--close ontario-icon"><ontario-icon-chevron-up></ontario-icon-chevron-up></span>
           <span class="ontario-hint-expander__button-icon--open"><ontario-icon-chevron-down></ontario-icon-chevron-down></span>

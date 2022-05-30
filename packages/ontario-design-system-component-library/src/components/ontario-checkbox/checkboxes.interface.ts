@@ -32,14 +32,12 @@ export interface Checkboxes extends Base {
    *     "label": "Checkbox Label",
    *     "hintExpander": {
    *			  "hint": "Hint expander",
-   * 		    "content": "This is the content",
-   *			  "aria-label": "This indicates that the hint can be expanded"
+   * 		    "content": "This is the content"
    *		 }
    *   }]'
    *   hint-expander='{
    *    "hint": "Hint expander",
-   *    "content": "This is the content, yup this is the content",
-   *    "aria-label": "This indicates that the hint can be expanded"
+   *    "content": "This is the content, yup this is the content"
       }'
 
    * >
@@ -69,8 +67,7 @@ export interface Checkboxes extends Base {
    *        "label": "checkbox-2-label",
    *        "hintExpander": {
    *          "hint": "Hint expander",
-   *          "content": "This is the content",
-   *          "aria-label": "This indicates that the hint can be expanded"
+   *          "content": "This is the content"
    *        }
    *      }
    *   ]'

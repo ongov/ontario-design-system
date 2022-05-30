@@ -32,14 +32,12 @@ export interface RadioButtons extends Base {
    *     "label": "Radio Option 1 Label",
    *     "hintExpander": {
    *			  "hint": "Hint expander",
-   * 		    "content": "This is the content",
-   *			  "aria-label": "This indicates that the hint can be expanded"
+   * 		    "content": "This is the content"
    *		 }
    *   }]'
    *   hint-expander='{
    *    "hint": "Hint expander",
-   *    "content": "This is the content, yup this is the content",
-   *    "aria-label": "This indicates that the hint can be expanded"
+   *    "content": "This is the content, yup this is the content"
    *   }'
    * >
    * </ontario-radio-buttons>
@@ -69,8 +67,7 @@ export interface RadioButtons extends Base {
    *        "label": "Radio Button Label 2",
    *        "hintExpander": {
    *          "hint": "Hint expander",
-   *          "content": "This is the content",
-   *          "aria-label": "This indicates that the hint can be expanded"
+   *          "content": "This is the content"
    *        }
    *      }
    *   ]'
