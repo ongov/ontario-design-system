@@ -16,3 +16,11 @@ export function validatePropExists(newValue: string): boolean {
 export function validateValueAgainstEnum<T extends String, E>(value: T, enums: E): T {
   return (Object.values(enums).find(type => type === value.toLowerCase()));
 }
+
+export function validateObjectExists(newValue: object): boolean {
+  // Check if new value that is passed in is a string and is not empty
+  const isNewValueBlank = typeof newValue !== 'object';
+
+  // Return true if new value is both a string and is not empty
+  return isNewValueBlank;
+}
