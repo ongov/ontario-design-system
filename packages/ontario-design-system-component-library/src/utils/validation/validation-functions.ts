@@ -7,12 +7,12 @@ export function validatePropExists(newValue: string): boolean {
 }
 
 /**
- * Validate value against enumList
+ * Validate value against enumType
  * T must extends String to gain access to the `toLowerCase()` function
- * @param value value to be compared against enumList
- * @param enumList list of enum values provided by caller
+ * @param value value to be compared against enumType
+ * @param enumType list of enum values provided by caller
  * @returns enum value if a match is found or undefined if no matches are found
  */
-export function validateValueAgainstEnum<T extends String, E>(value: T, enumList: E): T {
-  return (Object.values(enumList).find(type => type === value.toLowerCase()));
+export function validateValueAgainstEnum<T extends String, E>(value: T, enumType: E): T {
+  return (Object.values(enumType).find(type => type === value.toLowerCase()));
 }
