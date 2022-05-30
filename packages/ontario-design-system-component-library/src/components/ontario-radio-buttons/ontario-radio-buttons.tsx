@@ -43,15 +43,13 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *        "label": "Radio Option 1 Label",
 	 *        "hintExpander": {
 	 *			    "hint": "Hint expander",
-	 * 		      "content": "This is the content",
-	 *			    "aria-label": "This indicates that the hint can be expanded"
+	 * 		      "content": "This is the content"
 	 *		    }
 	 *     }
 	 *   ]'
 	 *   hint-expander='{
 	 *     "hint": "Hint expander",
-	 *     "content": "This is the content, yup this is the content",
-	 *     "aria-label": "This indicates that the hint can be expanded"
+	 *     "content": "This is the content, yup this is the content"
 	 *   }'
 	 * >
 	 * </ontario-radio-buttons>
@@ -95,8 +93,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *        "label": "Radio Button Label 2",
 	 *        "hintExpander": {
 	 *          "hint": "Hint expander",
-	 *          "content": "This is the content",
-	 *          "aria-label": "This indicates that the hint can be expanded"
+	 *          "content": "This is the content"
 	 *        }
 	 *      }
 	 *   ]'
@@ -228,7 +225,7 @@ export class OntarioRadioButtons implements RadioButtons {
 								</label>
 
 								<div class="ontario-radios__hint-expander">
-									{radioOption.hintExpander && <ontario-hint-expander hint={radioOption.hintExpander.hint} content={radioOption.hintExpander.content} aria-label={radioOption.hintExpander.ariaLabel} input-exists></ontario-hint-expander>}
+									{radioOption.hintExpander && <ontario-hint-expander hint={radioOption.hintExpander.hint} content={radioOption.hintExpander.content} input-exists></ontario-hint-expander>}
 								</div>
 							</div>
 						)}
@@ -237,7 +234,6 @@ export class OntarioRadioButtons implements RadioButtons {
 							<ontario-hint-expander
 								hint={this.internalHintExpander.hint}
 								content={this.internalHintExpander.content}
-								aria-label={this.internalHintExpander.ariaLabel}
 								input-exists
 							></ontario-hint-expander>
 						)}

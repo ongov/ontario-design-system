@@ -54,8 +54,7 @@ Example of a radio button component with multiple options, a hint text for the e
 			"label": "radio-2-label",
 			"hintExpander": {
 				"hint": "Hint expander",
-				"content": "This is the content, yup this is the content",
-				"aria-label": "This indicates that the hint can be expanded"
+				"content": "This is the content, yup this is the content"
 			}
 		},
 		{
@@ -65,8 +64,7 @@ Example of a radio button component with multiple options, a hint text for the e
 			"label": "radio-3-label",
 			"hintExpander": {
 				"hint": "Hint expander",
-				"content": "This is the content",
-				"aria-label": "This indicates that the hint can be expanded"
+				"content": "This is the content"
 			}
 		},
 		{

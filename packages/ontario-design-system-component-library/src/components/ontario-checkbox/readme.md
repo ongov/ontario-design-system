@@ -45,8 +45,7 @@ Example of a checkbox component with multiple options, a hint text for the entir
       "label": "checkbox-2-label",
       "hintExpander": {
         "hint": "Hint expander",
-        "content": "This is the content",
-        "aria-label": "This indicates that the hint can be expanded"
+        "content": "This is the content"
       }
     }
   ]'

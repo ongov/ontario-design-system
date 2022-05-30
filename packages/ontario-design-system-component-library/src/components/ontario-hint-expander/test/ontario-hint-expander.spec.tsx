@@ -5,10 +5,10 @@ describe('ontario-hint-expander', () => {
   it('should render a default hint expander', async () => {
     const page = await newSpecPage({
       components: [OntarioHintExpander],
-      html: `<ontario-hint-expander hint="This is the hint" content="This is the content" aria-label="This indicates that the hint can be expanded" element-id="elementId" aria-controls="hint-expander-controls">`,
+      html: `<ontario-hint-expander hint="This is the hint" content="This is the content" element-id="elementId" aria-controls="hint-expander-controls">`,
     });
     expect(page.root).toEqualHtml(`
-      <ontario-hint-expander hint="This is the hint" content="This is the content" aria-label="This indicates that the hint can be expanded" element-id="elementId" aria-controls="hint-expander-controls">
+      <ontario-hint-expander hint="This is the hint" content="This is the content" element-id="elementId" aria-controls="hint-expander-controls">
         <mock:shadow-root>
         <div class="ontario-hint-expander__container">
           <button class="ontario-hint-expander__button"
@@ -16,7 +16,6 @@ describe('ontario-hint-expander', () => {
             aria-controls="hint-expander-content-elementId"
             aria-expanded="false"
             data-toggle="ontario-collapse"
-            aria-label="This indicates that the hint can be expanded"
           >
             <span class="ontario-hint-expander__button-icon--close ontario-icon"><ontario-icon-chevron-up></ontario-icon-chevron-up></span>
             <span class="ontario-hint-expander__button-icon--open"><ontario-icon-chevron-down></ontario-icon-chevron-down></span>
