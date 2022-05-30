@@ -6,10 +6,13 @@ export function validatePropExists(newValue: string): boolean {
   return isNewValueBlank;
 }
 
-export function validateValueAgainstEnum<T>(newValue: string, validTypes: T): boolean {
-  // compare the new value against enumList that is provided
-  const compareValue = (Object.values(validTypes).find(type => type === newValue.toLowerCase()));
-
-  // Return true if there is a match, otherwise return false
-  return compareValue;
+/**
+ * Validate value against enums
+ * T must extends String to gain access to the `toLowerCase()` function
+ * @param value value to be compared against enums
+ * @param enums list of enum values provided by caller
+ * @returns enum value if a match is found or undefined if no matches are found
+ */
+export function validateValueAgainstEnum<T extends String, E>(value: T, enums: E): T {
+  return  (Object.values(enums).find(type => type === value.toLowerCase()));
 }
