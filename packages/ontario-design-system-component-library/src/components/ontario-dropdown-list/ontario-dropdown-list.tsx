@@ -1,7 +1,8 @@
 import { Component, State, h, Prop, Watch, getAssetPath } from '@stencil/core';
 import { DropdownOption } from './dropdown-option.interface';
 import { Dropdown } from './dropdown.interface';
-import { validatePropExists } from '../../utils/validation/validation-functions';
+import { v4 as uuid } from 'uuid';
+import { validatePropExists, validateObjectExists } from '../../utils/validation/validation-functions';
 import { ConsoleType, MessageStyle } from '../../utils/console-message/console-message.enum';
 import { printConsoleMessage } from '../../utils/console-message/console-message';
 
@@ -25,7 +26,7 @@ export class OntarioDropdownList implements Dropdown {
   /**
    * The ID for the dropdown list.
    */
-  @Prop() elementId: string;
+  @Prop({ mutable: true }) elementId?: string;
 
   /**
    * Each property will be passed in through an object in the options array.
@@ -66,6 +67,37 @@ export class OntarioDropdownList implements Dropdown {
       }
     }
   }
+
+  /*
+   * Watch for changes in the `name` variable for validation purpose
+   * Validate the name and make sure the name has a value.
+   * Log error if user doesn't input a value for the name.
+   */
+  @Watch('options')
+  validateOptionsContent(newValue: object) {
+    const isOptionsBlank = validateObjectExists(newValue);
+    if (isOptionsBlank) {
+      printConsoleMessage([
+        {
+          message: ' options ',
+          style: MessageStyle.Code,
+        },
+        {
+          message: 'for',
+          style: MessageStyle.Regular,
+        },
+        {
+          message: ` <ontario-dropdown-list> `,
+          style: MessageStyle.Code,
+        },
+        {
+          message: `were not provided`,
+          style: MessageStyle.Regular,
+        },
+      ], ConsoleType.Error);
+    }
+  }
+
 
   /**
    * Determine whether the dropdown list is required.
@@ -128,36 +160,6 @@ export class OntarioDropdownList implements Dropdown {
   }
 
   /*
-   * Watch for changes in the `element-id` variable for validation purpose
-   * Validate the Element Id and make sure the Element Id has a value.
-   * Log error if user doesn't input a value for the Element Id.
-   */
-  @Watch('elementId')
-  validateElementId(newValue: string) {
-    const isElementIdBlank = validatePropExists(newValue);
-    if (isElementIdBlank) {
-      printConsoleMessage([
-        {
-          message: ' element-id ',
-          style: MessageStyle.Code,
-        },
-        {
-          message: 'for',
-          style: MessageStyle.Regular,
-        },
-        {
-          message: ` <ontario-dropdown-list> `,
-          style: MessageStyle.Code,
-        },
-        {
-          message: `was not provided`,
-          style: MessageStyle.Regular,
-        },
-      ], ConsoleType.Error);
-    }
-  }
-
-  /*
    * Watch for changes in the `label` variable for validation purpose
    * Validate the label and make sure the label has a value.
    * Log error if user doesn't input a value for the label.
@@ -187,11 +189,16 @@ export class OntarioDropdownList implements Dropdown {
     }
   }
 
+  public getId(): string {
+    return this.elementId ?? '';
+  }
+
   componentWillLoad() {
     this.parseOptions();
     this.validateNameContent(this.name);
     this.validateLabelContent(this.label);
-    this.validateElementId(this.elementId);
+    this.validateOptionsContent(this.internalOptions);
+    this.elementId = this.elementId ?? uuid();
   }
 
   render() {
@@ -206,7 +213,7 @@ export class OntarioDropdownList implements Dropdown {
 
         <select
           class="ontario-input ontario-dropdown"
-          id={this.elementId}
+          id={this.getId()}
           name={this.name}
           style={this.getDropdownArrow()}
         >

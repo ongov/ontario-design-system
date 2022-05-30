@@ -83,7 +83,7 @@ export namespace Components {
         /**
           * The ID for the dropdown list.
          */
-        "elementId": string;
+        "elementId"?: string;
         /**
           * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
           * @example <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
