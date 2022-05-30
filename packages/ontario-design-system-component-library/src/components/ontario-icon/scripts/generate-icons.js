@@ -65,7 +65,8 @@ const getIconComponentTemplate = (svgObject, iconName) => {
 import { Component, Prop, h, Watch, State${hasColour ? '' : `, Element`} } from '@stencil/core';
 import { ${hasColour ? 'IconWithColour' : 'Icon'} } from './icon.interface';
 import { IconSize${hasColour ? `, IconColour ` : ``}} from './icon.enum';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';${hasColour ? `
+import { validateValueAgainstEnum } from '../../utils/validation/validation-functions';` : ''}
 
 @Component({
     tag: '${iconName}',
@@ -126,7 +127,7 @@ export class ${toPascalCase(iconName)} implements ${hasColour ? 'IconWithColour'
      */
     @Watch('colour')
     validateColour() {
-        this.iconColourState = (this.colour && Object.values(IconColour).find(colour => colour === this.colour.toLowerCase())) || this.warnDefaultColour();
+        this.iconColourState = (this.colour && validateValueAgainstEnum(this.colour, IconColour)) || this.warnDefaultColour();
     }
 
     /**
