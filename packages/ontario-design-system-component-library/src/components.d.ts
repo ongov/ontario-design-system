@@ -12,3601 +12,3597 @@ import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-opti
 import { IconColour } from "./components/ontario-icon/icon.enum";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
-    }
-    interface OntarioButton {
-        /**
-          * Provides more context as to what the button interaction is doing.
-          * @example <ontario-button aria-label="Click button to open map">Open</ontario button>
-         */
-        "ariaLabel"?: string;
-        /**
-          * The unique identifier of the button.
-         */
-        "elementId"?: string;
-        /**
-          * The native HTML button type the button should use.
-         */
-        "htmlType": HtmlType;
-        /**
-          * Text to be displayed within the button. This will override the text provided through the Element Content.
-          * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
-         */
-        "label"?: string;
-        /**
-          * The type of button to render.
-         */
-        "type": ButtonType;
-    }
-    interface OntarioCheckboxes {
-        /**
-          * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
-          * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkboxes"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
-         */
-        "hintExpander"?: HintExpander | string;
-        /**
-          * Define hint text on an element.
-         */
-        "hintText"?: string;
-        /**
-          * Determine whether the input field is required. If required, it should be set to true.
-          * @example <ontario-checkboxes ... is-required></ontario-checkboxes>
-         */
-        "isRequired"?: boolean;
-        /**
-          * The legend for the checkboxes
-         */
-        "legend": string;
-        /**
-          * The name for the checkboxes.
-         */
-        "name": string;
-        /**
-          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
-          * @example <ontario-checkboxes   legend="This is a question?"   name= "ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
-         */
-        "options": CheckboxOption[] | string;
-    }
-    interface OntarioDropdownList {
-        /**
-          * The ID for the dropdown list.
-         */
-        "elementId": string;
-        /**
-          * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
-          * @example <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
-         */
-        "isEmptyStartOption"?: boolean | string;
-        /**
-          * Determine whether the dropdown list is required. If required, add `is-required` attribute. Otherwise, the `optional` flag will appear.
-          * @example <ontario-dropdown-list ... is-required></ontario-dropdown-list>
-         */
-        "isRequired"?: boolean;
-        /**
-          * The label for the Dropdown List.
-         */
-        "label": string;
-        /**
-          * The name for the dropdown list.
-         */
-        "name": string;
-        /**
-          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset.
-          * @example <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required is-empty-start-option="Please select" options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
-         */
-        "options": string | DropdownOption[];
-    }
-    interface OntarioHintExpander {
-        /**
-          * Include visually hidden text inside the label that describes to screen readers the availability of a hint expander
-         */
-        "ariaLabel"?: string;
-        /**
-          * Content to display as the hint, once the expander is toggled open. Please note that any content that is passed into this prop will only be displayed as a string. If you would like to add HTML content, supply child content to the component.
-          * @example <ontario-hint-expander hint="This is the hint" aria-label="This indicates that the hint can be expanded">   <img src="https://www.jquery-az.com/html/images/banana.jpg" title="Title of image" alt="alt text here"/>   <p> Here is the content beside the image </p> </ontario-hint-expander>
-         */
-        "content": string;
-        /**
-          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
-         */
-        "elementId"?: string;
-        /**
-          * Text to display as the hint expander question/statement
-         */
-        "hint": string;
-    }
-    interface OntarioHintText {
-        /**
-          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
-         */
-        "elementId"?: string;
-        /**
-          * Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence.
-          * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
-         */
-        "hint": string;
-    }
-    interface OntarioIconAccessibility {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconAccount {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconAdd {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconAddAlt {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconAlertError {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconAlertInformation {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconAlertSuccess {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconAlertWarning {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconAttach {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconBookmarkOff {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconBookmarkOn {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconCalendar {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconCamera {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconChevronDown {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconChevronLeft {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconChevronRight {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconChevronUp {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconClock {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconClose {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconCloud {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconCollapse {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconCreditCard {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconDelete {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconDocument {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconDownload {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconDropdownArrow {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconEdit {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconEmail {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconExpand {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconExport {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconFacebook {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconFacebookAlt {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconFavouriteOff {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconFavouriteOn {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconFilter {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconFlickr {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconGrid {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconHelp {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconInstagram {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconInteracEn {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconInteracEnAlt {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconInteracFr {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconInteracFrAlt {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconLinkedin {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconLinkedinAlt {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconList {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconLiveChat {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconLocationOff {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconLocationOn {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconLockOff {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconLockOn {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconMap {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconMastercard {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconMastercardAlt {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconMediaFastForward {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconMediaFastRewind {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconMediaPause {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconMediaPlay {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconMediaStop {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconMenu {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconMicrophoneOff {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconMicrophoneOn {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconMoreVertical {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconNewWindow {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconNext {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconNotification {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconPasswordHide {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconPasswordShow {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconPhone {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconPhoto {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconPinLocationOff {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconPinLocationOn {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconPrevious {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconPrint {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconRemove {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconRemoveAlt {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconReplay {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconRssFeed {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconSave {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconSearch {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconSentiment1 {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconSentiment2 {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconSentiment3 {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconSentiment4 {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconSentiment5 {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconSettings {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconShare {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconSort {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconTag {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconTextMessage {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconTimer {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconTransportBicycle {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconTransportBus {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconTransportCar {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconTransportWalk {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconTty {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconTwitter {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconTwitterAlt {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconUpload {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconVideo {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconVisa {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconVoteDislike {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconVoteLike {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconVpnKey {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconWheelchair {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconWifi {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconYoutube {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioInput {
-        /**
-          * The aria-describedBy value if the input has hint text associated with it.
-         */
-        "describedBy"?: string;
-        /**
-          * The unique identifier of the input. If no ID is passed, one will be autogenerated.
-         */
-        "elementId"?: string;
-        /**
-          * The width of the input field. If no value is assigned, it will present as the default input width.
-         */
-        "inputWidth": '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default';
-        /**
-          * The text to display as label.
-         */
-        "labelCaption": string;
-        /**
-          * The form control with which the caption is associated.
-         */
-        "labelFor"?: string;
-        /**
-          * The type of label to render.
-         */
-        "labelType": 'default' | 'large' | 'heading';
-        /**
-          * The name assigned to the input.The name value is used to reference form data after a form is submitted.
-         */
-        "name": string;
-        /**
-          * Used to define whether the input field is required or not.
-         */
-        "required": boolean;
-        /**
-          * The input type value.
-         */
-        "type": 'text' | 'tel' | 'email' | 'password';
-        /**
-          * The input content value.
-         */
-        "value"?: string;
-    }
-    interface OntarioRadioButtons {
-        /**
-          * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
-          * @example <ontario-radio-buttons   legend="This is a question?" 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content", 		    "aria-label": "This indicates that the hint can be expanded" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content",     "aria-label": "This indicates that the hint can be expanded"   }' > </ontario-radio-buttons>
-         */
-        "hintExpander"?: HintExpander | string;
-        /**
-          * Define hint text for Radio Button fieldset.
-         */
-        "hintText"?: string;
-        /**
-          * Determine whether the input field is required. If required, it should be set to true. This can be done by passing in `is-required` to the component.
-          * @example <ontario-radio-buttons ... is-required></ontario-radio-buttons>
-         */
-        "isRequired"?: boolean;
-        /**
-          * The legend for the Radio Buttons.
-         */
-        "legend": string;
-        /**
-          * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
-         */
-        "name": string;
-        /**
-          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
-          * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-radio-buttons>
-         */
-        "options": string | RadioOption[];
-    }
-    interface OntarioTextarea {
-        /**
-          * The aria-describedBy value if the textarea has hint text associated with it.
-         */
-        "describedBy"?: string;
-        /**
-          * The unique identifier of the textarea. If no ID is passed, one will be autogenerated.
-         */
-        "elementId"?: string;
-        /**
-          * The text to display as label.
-         */
-        "labelCaption": string;
-        /**
-          * The form control with which the caption is associated.
-         */
-        "labelFor"?: string;
-        /**
-          * The type of label to render.
-         */
-        "labelType": 'default' | 'large' | 'heading';
-        /**
-          * The name assigned to the textarea. The name value is used to reference form data after a form is submitted.
-         */
-        "name": string;
-        /**
-          * Used to define whether the textarea field is required or not.
-         */
-        "required": boolean;
-        /**
-          * The textarea content value.
-         */
-        "value"?: string;
-    }
+  interface MyComponent {
+    /**
+      * The first name
+     */
+    "first": string;
+    /**
+      * The last name
+     */
+    "last": string;
+    /**
+      * The middle name
+     */
+    "middle": string;
+  }
+  interface OntarioButton {
+    /**
+      * Provides more context as to what the button interaction is doing.
+      * @example <ontario-button aria-label="Click button to open map">Open</ontario button>
+     */
+    "ariaLabel"?: string;
+    /**
+      * The unique identifier of the button.
+     */
+    "elementId"?: string;
+    /**
+      * The native HTML button type the button should use.
+     */
+    "htmlType": HtmlType;
+    /**
+      * Text to be displayed within the button. This will override the text provided through the Element Content.
+      * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
+     */
+    "label"?: string;
+    /**
+      * The type of button to render.
+     */
+    "type": ButtonType;
+  }
+  interface OntarioCheckboxes {
+    /**
+      * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
+<<<<<<< HEAD
+      * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkboxes"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
+=======
+      * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkboxes"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content"  }'  > </ontario-checkboxes>
+>>>>>>> 4901a5a (update validation for hint-expander)
+     */
+    "hintExpander"?: HintExpander | string;
+    /**
+      * Define hint text on an element.
+     */
+    "hintText"?: string;
+    /**
+      * Determine whether the input field is required. If required, it should be set to true.
+      * @example <ontario-checkboxes ... is-required></ontario-checkboxes>
+     */
+    "isRequired"?: boolean;
+    /**
+      * The legend for the checkboxes
+     */
+    "legend": string;
+    /**
+      * The name for the checkboxes.
+     */
+    "name": string;
+    /**
+      * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
+      * @example <ontario-checkboxes   legend="This is a question?"   name= "ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-checkboxes>
+     */
+    "options": CheckboxOption[] | string;
+  }
+  interface OntarioDropdownList {
+    /**
+      * The ID for the dropdown list.
+     */
+    "elementId": string;
+    /**
+      * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
+      * @example <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
+     */
+    "isEmptyStartOption"?: boolean | string;
+    /**
+      * Determine whether the dropdown list is required. If required, add `is-required` attribute. Otherwise, the `optional` flag will appear.
+      * @example <ontario-dropdown-list ... is-required></ontario-dropdown-list>
+     */
+    "isRequired"?: boolean;
+    /**
+      * The label for the Dropdown List.
+     */
+    "label": string;
+    /**
+      * The name for the dropdown list.
+     */
+    "name": string;
+    /**
+      * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset.
+      * @example <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required is-empty-start-option="Please select" options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
+     */
+    "options": string | DropdownOption[];
+  }
+  interface OntarioHintExpander {
+    /**
+      * Content to display as the hint, once the expander is toggled open. Please note that any content that is passed into this prop will only be displayed as a string. If you would like to add HTML content, supply child content to the component.
+      * @example <ontario-hint-expander hint="This is the hint"   <img src="https://www.jquery-az.com/html/images/banana.jpg" title="Title of image" alt="alt text here"/>   <p> Here is the content beside the image </p> </ontario-hint-expander>
+     */
+    "content": string;
+    /**
+      * Used to used to establish a relationship between hint text content and elements using aria-describedby.
+     */
+    "elementId"?: string;
+    /**
+      * Text to display as the hint expander question/statement
+     */
+    "hint": string;
+  }
+  interface OntarioHintText {
+    /**
+      * Used to used to establish a relationship between hint text content and elements using aria-describedby.
+     */
+    "elementId"?: string;
+    /**
+      * Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence.
+      * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
+     */
+    "hint": string;
+  }
+  interface OntarioIconAccessibility {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconAccount {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconAdd {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconAddAlt {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconAlertError {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconAlertInformation {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconAlertSuccess {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconAlertWarning {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconAttach {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconBookmarkOff {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconBookmarkOn {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconCalendar {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconCamera {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconChevronDown {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconChevronLeft {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconChevronRight {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconChevronUp {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconClock {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconClose {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconCloud {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconCollapse {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconCreditCard {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconDelete {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconDocument {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconDownload {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconDropdownArrow {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconEdit {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconEmail {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconExpand {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconExport {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconFacebook {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconFacebookAlt {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconFavouriteOff {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconFavouriteOn {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconFilter {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconFlickr {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconGrid {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconHelp {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconInstagram {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconInteracEn {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconInteracEnAlt {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconInteracFr {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconInteracFrAlt {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconLinkedin {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconLinkedinAlt {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconList {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconLiveChat {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconLocationOff {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconLocationOn {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconLockOff {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconLockOn {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconMap {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconMastercard {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconMastercardAlt {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconMediaFastForward {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconMediaFastRewind {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconMediaPause {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconMediaPlay {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconMediaStop {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconMenu {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconMicrophoneOff {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconMicrophoneOn {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconMoreVertical {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconNewWindow {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconNext {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconNotification {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconPasswordHide {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconPasswordShow {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconPhone {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconPhoto {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconPinLocationOff {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconPinLocationOn {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconPrevious {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconPrint {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconRemove {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconRemoveAlt {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconReplay {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconRssFeed {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconSave {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconSearch {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconSentiment1 {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconSentiment2 {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconSentiment3 {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconSentiment4 {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconSentiment5 {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconSettings {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconShare {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconSort {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconTag {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconTextMessage {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconTimer {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconTransportBicycle {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconTransportBus {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconTransportCar {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconTransportWalk {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconTty {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconTwitter {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconTwitterAlt {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconUpload {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconVideo {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconVisa {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconVoteDislike {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconVoteLike {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconVpnKey {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconWheelchair {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconWifi {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioIconYoutube {
+    /**
+      * Set the icon's colour.
+     */
+    "colour": IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth": number;
+  }
+  interface OntarioInput {
+    /**
+      * The aria-describedBy value if the input has hint text associated with it.
+     */
+    "describedBy"?: string;
+    /**
+      * The unique identifier of the input. If no ID is passed, one will be autogenerated.
+     */
+    "elementId"?: string;
+    /**
+      * The width of the input field. If no value is assigned, it will present as the default input width.
+     */
+    "inputWidth": '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default';
+    /**
+      * The text to display as label.
+     */
+    "labelCaption": string;
+    /**
+      * The form control with which the caption is associated.
+     */
+    "labelFor"?: string;
+    /**
+      * The type of label to render.
+     */
+    "labelType": 'default' | 'large' | 'heading';
+    /**
+      * The name assigned to the input.The name value is used to reference form data after a form is submitted.
+     */
+    "name": string;
+    /**
+      * Used to define whether the input field is required or not.
+     */
+    "required": boolean;
+    /**
+      * The input type value.
+     */
+    "type": 'text' | 'tel' | 'email' | 'password';
+    /**
+      * The input content value.
+     */
+    "value"?: string;
+  }
+  interface OntarioRadioButtons {
+    /**
+      * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
+      * @example <ontario-radio-buttons   legend="This is a question?" 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }' > </ontario-radio-buttons>
+     */
+    "hintExpander"?: HintExpander | string;
+    /**
+      * Define hint text for Radio Button fieldset.
+     */
+    "hintText"?: string;
+    /**
+      * Determine whether the input field is required. If required, it should be set to true. This can be done by passing in `is-required` to the component.
+      * @example <ontario-radio-buttons ... is-required></ontario-radio-buttons>
+     */
+    "isRequired"?: boolean;
+    /**
+      * The legend for the Radio Buttons.
+     */
+    "legend": string;
+    /**
+      * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
+     */
+    "name": string;
+    /**
+      * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
+      * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-radio-buttons>
+     */
+    "options": string | RadioOption[];
+  }
+  interface OntarioTextarea {
+    /**
+      * The aria-describedBy value if the textarea has hint text associated with it.
+     */
+    "describedBy"?: string;
+    /**
+      * The unique identifier of the textarea. If no ID is passed, one will be autogenerated.
+     */
+    "elementId"?: string;
+    /**
+      * The text to display as label.
+     */
+    "labelCaption": string;
+    /**
+      * The form control with which the caption is associated.
+     */
+    "labelFor"?: string;
+    /**
+      * The type of label to render.
+     */
+    "labelType": 'default' | 'large' | 'heading';
+    /**
+      * The name assigned to the textarea. The name value is used to reference form data after a form is submitted.
+     */
+    "name": string;
+    /**
+      * Used to define whether the textarea field is required or not.
+     */
+    "required": boolean;
+    /**
+      * The textarea content value.
+     */
+    "value"?: string;
+  }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
-    }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
-    };
-    interface HTMLOntarioButtonElement extends Components.OntarioButton, HTMLStencilElement {
-    }
-    var HTMLOntarioButtonElement: {
-        prototype: HTMLOntarioButtonElement;
-        new (): HTMLOntarioButtonElement;
-    };
-    interface HTMLOntarioCheckboxesElement extends Components.OntarioCheckboxes, HTMLStencilElement {
-    }
-    var HTMLOntarioCheckboxesElement: {
-        prototype: HTMLOntarioCheckboxesElement;
-        new (): HTMLOntarioCheckboxesElement;
-    };
-    interface HTMLOntarioDropdownListElement extends Components.OntarioDropdownList, HTMLStencilElement {
-    }
-    var HTMLOntarioDropdownListElement: {
-        prototype: HTMLOntarioDropdownListElement;
-        new (): HTMLOntarioDropdownListElement;
-    };
-    interface HTMLOntarioHintExpanderElement extends Components.OntarioHintExpander, HTMLStencilElement {
-    }
-    var HTMLOntarioHintExpanderElement: {
-        prototype: HTMLOntarioHintExpanderElement;
-        new (): HTMLOntarioHintExpanderElement;
-    };
-    interface HTMLOntarioHintTextElement extends Components.OntarioHintText, HTMLStencilElement {
-    }
-    var HTMLOntarioHintTextElement: {
-        prototype: HTMLOntarioHintTextElement;
-        new (): HTMLOntarioHintTextElement;
-    };
-    interface HTMLOntarioIconAccessibilityElement extends Components.OntarioIconAccessibility, HTMLStencilElement {
-    }
-    var HTMLOntarioIconAccessibilityElement: {
-        prototype: HTMLOntarioIconAccessibilityElement;
-        new (): HTMLOntarioIconAccessibilityElement;
-    };
-    interface HTMLOntarioIconAccountElement extends Components.OntarioIconAccount, HTMLStencilElement {
-    }
-    var HTMLOntarioIconAccountElement: {
-        prototype: HTMLOntarioIconAccountElement;
-        new (): HTMLOntarioIconAccountElement;
-    };
-    interface HTMLOntarioIconAddElement extends Components.OntarioIconAdd, HTMLStencilElement {
-    }
-    var HTMLOntarioIconAddElement: {
-        prototype: HTMLOntarioIconAddElement;
-        new (): HTMLOntarioIconAddElement;
-    };
-    interface HTMLOntarioIconAddAltElement extends Components.OntarioIconAddAlt, HTMLStencilElement {
-    }
-    var HTMLOntarioIconAddAltElement: {
-        prototype: HTMLOntarioIconAddAltElement;
-        new (): HTMLOntarioIconAddAltElement;
-    };
-    interface HTMLOntarioIconAlertErrorElement extends Components.OntarioIconAlertError, HTMLStencilElement {
-    }
-    var HTMLOntarioIconAlertErrorElement: {
-        prototype: HTMLOntarioIconAlertErrorElement;
-        new (): HTMLOntarioIconAlertErrorElement;
-    };
-    interface HTMLOntarioIconAlertInformationElement extends Components.OntarioIconAlertInformation, HTMLStencilElement {
-    }
-    var HTMLOntarioIconAlertInformationElement: {
-        prototype: HTMLOntarioIconAlertInformationElement;
-        new (): HTMLOntarioIconAlertInformationElement;
-    };
-    interface HTMLOntarioIconAlertSuccessElement extends Components.OntarioIconAlertSuccess, HTMLStencilElement {
-    }
-    var HTMLOntarioIconAlertSuccessElement: {
-        prototype: HTMLOntarioIconAlertSuccessElement;
-        new (): HTMLOntarioIconAlertSuccessElement;
-    };
-    interface HTMLOntarioIconAlertWarningElement extends Components.OntarioIconAlertWarning, HTMLStencilElement {
-    }
-    var HTMLOntarioIconAlertWarningElement: {
-        prototype: HTMLOntarioIconAlertWarningElement;
-        new (): HTMLOntarioIconAlertWarningElement;
-    };
-    interface HTMLOntarioIconAttachElement extends Components.OntarioIconAttach, HTMLStencilElement {
-    }
-    var HTMLOntarioIconAttachElement: {
-        prototype: HTMLOntarioIconAttachElement;
-        new (): HTMLOntarioIconAttachElement;
-    };
-    interface HTMLOntarioIconBookmarkOffElement extends Components.OntarioIconBookmarkOff, HTMLStencilElement {
-    }
-    var HTMLOntarioIconBookmarkOffElement: {
-        prototype: HTMLOntarioIconBookmarkOffElement;
-        new (): HTMLOntarioIconBookmarkOffElement;
-    };
-    interface HTMLOntarioIconBookmarkOnElement extends Components.OntarioIconBookmarkOn, HTMLStencilElement {
-    }
-    var HTMLOntarioIconBookmarkOnElement: {
-        prototype: HTMLOntarioIconBookmarkOnElement;
-        new (): HTMLOntarioIconBookmarkOnElement;
-    };
-    interface HTMLOntarioIconCalendarElement extends Components.OntarioIconCalendar, HTMLStencilElement {
-    }
-    var HTMLOntarioIconCalendarElement: {
-        prototype: HTMLOntarioIconCalendarElement;
-        new (): HTMLOntarioIconCalendarElement;
-    };
-    interface HTMLOntarioIconCameraElement extends Components.OntarioIconCamera, HTMLStencilElement {
-    }
-    var HTMLOntarioIconCameraElement: {
-        prototype: HTMLOntarioIconCameraElement;
-        new (): HTMLOntarioIconCameraElement;
-    };
-    interface HTMLOntarioIconChevronDownElement extends Components.OntarioIconChevronDown, HTMLStencilElement {
-    }
-    var HTMLOntarioIconChevronDownElement: {
-        prototype: HTMLOntarioIconChevronDownElement;
-        new (): HTMLOntarioIconChevronDownElement;
-    };
-    interface HTMLOntarioIconChevronLeftElement extends Components.OntarioIconChevronLeft, HTMLStencilElement {
-    }
-    var HTMLOntarioIconChevronLeftElement: {
-        prototype: HTMLOntarioIconChevronLeftElement;
-        new (): HTMLOntarioIconChevronLeftElement;
-    };
-    interface HTMLOntarioIconChevronRightElement extends Components.OntarioIconChevronRight, HTMLStencilElement {
-    }
-    var HTMLOntarioIconChevronRightElement: {
-        prototype: HTMLOntarioIconChevronRightElement;
-        new (): HTMLOntarioIconChevronRightElement;
-    };
-    interface HTMLOntarioIconChevronUpElement extends Components.OntarioIconChevronUp, HTMLStencilElement {
-    }
-    var HTMLOntarioIconChevronUpElement: {
-        prototype: HTMLOntarioIconChevronUpElement;
-        new (): HTMLOntarioIconChevronUpElement;
-    };
-    interface HTMLOntarioIconClockElement extends Components.OntarioIconClock, HTMLStencilElement {
-    }
-    var HTMLOntarioIconClockElement: {
-        prototype: HTMLOntarioIconClockElement;
-        new (): HTMLOntarioIconClockElement;
-    };
-    interface HTMLOntarioIconCloseElement extends Components.OntarioIconClose, HTMLStencilElement {
-    }
-    var HTMLOntarioIconCloseElement: {
-        prototype: HTMLOntarioIconCloseElement;
-        new (): HTMLOntarioIconCloseElement;
-    };
-    interface HTMLOntarioIconCloudElement extends Components.OntarioIconCloud, HTMLStencilElement {
-    }
-    var HTMLOntarioIconCloudElement: {
-        prototype: HTMLOntarioIconCloudElement;
-        new (): HTMLOntarioIconCloudElement;
-    };
-    interface HTMLOntarioIconCollapseElement extends Components.OntarioIconCollapse, HTMLStencilElement {
-    }
-    var HTMLOntarioIconCollapseElement: {
-        prototype: HTMLOntarioIconCollapseElement;
-        new (): HTMLOntarioIconCollapseElement;
-    };
-    interface HTMLOntarioIconCreditCardElement extends Components.OntarioIconCreditCard, HTMLStencilElement {
-    }
-    var HTMLOntarioIconCreditCardElement: {
-        prototype: HTMLOntarioIconCreditCardElement;
-        new (): HTMLOntarioIconCreditCardElement;
-    };
-    interface HTMLOntarioIconDeleteElement extends Components.OntarioIconDelete, HTMLStencilElement {
-    }
-    var HTMLOntarioIconDeleteElement: {
-        prototype: HTMLOntarioIconDeleteElement;
-        new (): HTMLOntarioIconDeleteElement;
-    };
-    interface HTMLOntarioIconDocumentElement extends Components.OntarioIconDocument, HTMLStencilElement {
-    }
-    var HTMLOntarioIconDocumentElement: {
-        prototype: HTMLOntarioIconDocumentElement;
-        new (): HTMLOntarioIconDocumentElement;
-    };
-    interface HTMLOntarioIconDownloadElement extends Components.OntarioIconDownload, HTMLStencilElement {
-    }
-    var HTMLOntarioIconDownloadElement: {
-        prototype: HTMLOntarioIconDownloadElement;
-        new (): HTMLOntarioIconDownloadElement;
-    };
-    interface HTMLOntarioIconDropdownArrowElement extends Components.OntarioIconDropdownArrow, HTMLStencilElement {
-    }
-    var HTMLOntarioIconDropdownArrowElement: {
-        prototype: HTMLOntarioIconDropdownArrowElement;
-        new (): HTMLOntarioIconDropdownArrowElement;
-    };
-    interface HTMLOntarioIconEditElement extends Components.OntarioIconEdit, HTMLStencilElement {
-    }
-    var HTMLOntarioIconEditElement: {
-        prototype: HTMLOntarioIconEditElement;
-        new (): HTMLOntarioIconEditElement;
-    };
-    interface HTMLOntarioIconEmailElement extends Components.OntarioIconEmail, HTMLStencilElement {
-    }
-    var HTMLOntarioIconEmailElement: {
-        prototype: HTMLOntarioIconEmailElement;
-        new (): HTMLOntarioIconEmailElement;
-    };
-    interface HTMLOntarioIconExpandElement extends Components.OntarioIconExpand, HTMLStencilElement {
-    }
-    var HTMLOntarioIconExpandElement: {
-        prototype: HTMLOntarioIconExpandElement;
-        new (): HTMLOntarioIconExpandElement;
-    };
-    interface HTMLOntarioIconExportElement extends Components.OntarioIconExport, HTMLStencilElement {
-    }
-    var HTMLOntarioIconExportElement: {
-        prototype: HTMLOntarioIconExportElement;
-        new (): HTMLOntarioIconExportElement;
-    };
-    interface HTMLOntarioIconFacebookElement extends Components.OntarioIconFacebook, HTMLStencilElement {
-    }
-    var HTMLOntarioIconFacebookElement: {
-        prototype: HTMLOntarioIconFacebookElement;
-        new (): HTMLOntarioIconFacebookElement;
-    };
-    interface HTMLOntarioIconFacebookAltElement extends Components.OntarioIconFacebookAlt, HTMLStencilElement {
-    }
-    var HTMLOntarioIconFacebookAltElement: {
-        prototype: HTMLOntarioIconFacebookAltElement;
-        new (): HTMLOntarioIconFacebookAltElement;
-    };
-    interface HTMLOntarioIconFavouriteOffElement extends Components.OntarioIconFavouriteOff, HTMLStencilElement {
-    }
-    var HTMLOntarioIconFavouriteOffElement: {
-        prototype: HTMLOntarioIconFavouriteOffElement;
-        new (): HTMLOntarioIconFavouriteOffElement;
-    };
-    interface HTMLOntarioIconFavouriteOnElement extends Components.OntarioIconFavouriteOn, HTMLStencilElement {
-    }
-    var HTMLOntarioIconFavouriteOnElement: {
-        prototype: HTMLOntarioIconFavouriteOnElement;
-        new (): HTMLOntarioIconFavouriteOnElement;
-    };
-    interface HTMLOntarioIconFilterElement extends Components.OntarioIconFilter, HTMLStencilElement {
-    }
-    var HTMLOntarioIconFilterElement: {
-        prototype: HTMLOntarioIconFilterElement;
-        new (): HTMLOntarioIconFilterElement;
-    };
-    interface HTMLOntarioIconFlickrElement extends Components.OntarioIconFlickr, HTMLStencilElement {
-    }
-    var HTMLOntarioIconFlickrElement: {
-        prototype: HTMLOntarioIconFlickrElement;
-        new (): HTMLOntarioIconFlickrElement;
-    };
-    interface HTMLOntarioIconGridElement extends Components.OntarioIconGrid, HTMLStencilElement {
-    }
-    var HTMLOntarioIconGridElement: {
-        prototype: HTMLOntarioIconGridElement;
-        new (): HTMLOntarioIconGridElement;
-    };
-    interface HTMLOntarioIconHelpElement extends Components.OntarioIconHelp, HTMLStencilElement {
-    }
-    var HTMLOntarioIconHelpElement: {
-        prototype: HTMLOntarioIconHelpElement;
-        new (): HTMLOntarioIconHelpElement;
-    };
-    interface HTMLOntarioIconInstagramElement extends Components.OntarioIconInstagram, HTMLStencilElement {
-    }
-    var HTMLOntarioIconInstagramElement: {
-        prototype: HTMLOntarioIconInstagramElement;
-        new (): HTMLOntarioIconInstagramElement;
-    };
-    interface HTMLOntarioIconInteracEnElement extends Components.OntarioIconInteracEn, HTMLStencilElement {
-    }
-    var HTMLOntarioIconInteracEnElement: {
-        prototype: HTMLOntarioIconInteracEnElement;
-        new (): HTMLOntarioIconInteracEnElement;
-    };
-    interface HTMLOntarioIconInteracEnAltElement extends Components.OntarioIconInteracEnAlt, HTMLStencilElement {
-    }
-    var HTMLOntarioIconInteracEnAltElement: {
-        prototype: HTMLOntarioIconInteracEnAltElement;
-        new (): HTMLOntarioIconInteracEnAltElement;
-    };
-    interface HTMLOntarioIconInteracFrElement extends Components.OntarioIconInteracFr, HTMLStencilElement {
-    }
-    var HTMLOntarioIconInteracFrElement: {
-        prototype: HTMLOntarioIconInteracFrElement;
-        new (): HTMLOntarioIconInteracFrElement;
-    };
-    interface HTMLOntarioIconInteracFrAltElement extends Components.OntarioIconInteracFrAlt, HTMLStencilElement {
-    }
-    var HTMLOntarioIconInteracFrAltElement: {
-        prototype: HTMLOntarioIconInteracFrAltElement;
-        new (): HTMLOntarioIconInteracFrAltElement;
-    };
-    interface HTMLOntarioIconLinkedinElement extends Components.OntarioIconLinkedin, HTMLStencilElement {
-    }
-    var HTMLOntarioIconLinkedinElement: {
-        prototype: HTMLOntarioIconLinkedinElement;
-        new (): HTMLOntarioIconLinkedinElement;
-    };
-    interface HTMLOntarioIconLinkedinAltElement extends Components.OntarioIconLinkedinAlt, HTMLStencilElement {
-    }
-    var HTMLOntarioIconLinkedinAltElement: {
-        prototype: HTMLOntarioIconLinkedinAltElement;
-        new (): HTMLOntarioIconLinkedinAltElement;
-    };
-    interface HTMLOntarioIconListElement extends Components.OntarioIconList, HTMLStencilElement {
-    }
-    var HTMLOntarioIconListElement: {
-        prototype: HTMLOntarioIconListElement;
-        new (): HTMLOntarioIconListElement;
-    };
-    interface HTMLOntarioIconLiveChatElement extends Components.OntarioIconLiveChat, HTMLStencilElement {
-    }
-    var HTMLOntarioIconLiveChatElement: {
-        prototype: HTMLOntarioIconLiveChatElement;
-        new (): HTMLOntarioIconLiveChatElement;
-    };
-    interface HTMLOntarioIconLocationOffElement extends Components.OntarioIconLocationOff, HTMLStencilElement {
-    }
-    var HTMLOntarioIconLocationOffElement: {
-        prototype: HTMLOntarioIconLocationOffElement;
-        new (): HTMLOntarioIconLocationOffElement;
-    };
-    interface HTMLOntarioIconLocationOnElement extends Components.OntarioIconLocationOn, HTMLStencilElement {
-    }
-    var HTMLOntarioIconLocationOnElement: {
-        prototype: HTMLOntarioIconLocationOnElement;
-        new (): HTMLOntarioIconLocationOnElement;
-    };
-    interface HTMLOntarioIconLockOffElement extends Components.OntarioIconLockOff, HTMLStencilElement {
-    }
-    var HTMLOntarioIconLockOffElement: {
-        prototype: HTMLOntarioIconLockOffElement;
-        new (): HTMLOntarioIconLockOffElement;
-    };
-    interface HTMLOntarioIconLockOnElement extends Components.OntarioIconLockOn, HTMLStencilElement {
-    }
-    var HTMLOntarioIconLockOnElement: {
-        prototype: HTMLOntarioIconLockOnElement;
-        new (): HTMLOntarioIconLockOnElement;
-    };
-    interface HTMLOntarioIconMapElement extends Components.OntarioIconMap, HTMLStencilElement {
-    }
-    var HTMLOntarioIconMapElement: {
-        prototype: HTMLOntarioIconMapElement;
-        new (): HTMLOntarioIconMapElement;
-    };
-    interface HTMLOntarioIconMastercardElement extends Components.OntarioIconMastercard, HTMLStencilElement {
-    }
-    var HTMLOntarioIconMastercardElement: {
-        prototype: HTMLOntarioIconMastercardElement;
-        new (): HTMLOntarioIconMastercardElement;
-    };
-    interface HTMLOntarioIconMastercardAltElement extends Components.OntarioIconMastercardAlt, HTMLStencilElement {
-    }
-    var HTMLOntarioIconMastercardAltElement: {
-        prototype: HTMLOntarioIconMastercardAltElement;
-        new (): HTMLOntarioIconMastercardAltElement;
-    };
-    interface HTMLOntarioIconMediaFastForwardElement extends Components.OntarioIconMediaFastForward, HTMLStencilElement {
-    }
-    var HTMLOntarioIconMediaFastForwardElement: {
-        prototype: HTMLOntarioIconMediaFastForwardElement;
-        new (): HTMLOntarioIconMediaFastForwardElement;
-    };
-    interface HTMLOntarioIconMediaFastRewindElement extends Components.OntarioIconMediaFastRewind, HTMLStencilElement {
-    }
-    var HTMLOntarioIconMediaFastRewindElement: {
-        prototype: HTMLOntarioIconMediaFastRewindElement;
-        new (): HTMLOntarioIconMediaFastRewindElement;
-    };
-    interface HTMLOntarioIconMediaPauseElement extends Components.OntarioIconMediaPause, HTMLStencilElement {
-    }
-    var HTMLOntarioIconMediaPauseElement: {
-        prototype: HTMLOntarioIconMediaPauseElement;
-        new (): HTMLOntarioIconMediaPauseElement;
-    };
-    interface HTMLOntarioIconMediaPlayElement extends Components.OntarioIconMediaPlay, HTMLStencilElement {
-    }
-    var HTMLOntarioIconMediaPlayElement: {
-        prototype: HTMLOntarioIconMediaPlayElement;
-        new (): HTMLOntarioIconMediaPlayElement;
-    };
-    interface HTMLOntarioIconMediaStopElement extends Components.OntarioIconMediaStop, HTMLStencilElement {
-    }
-    var HTMLOntarioIconMediaStopElement: {
-        prototype: HTMLOntarioIconMediaStopElement;
-        new (): HTMLOntarioIconMediaStopElement;
-    };
-    interface HTMLOntarioIconMenuElement extends Components.OntarioIconMenu, HTMLStencilElement {
-    }
-    var HTMLOntarioIconMenuElement: {
-        prototype: HTMLOntarioIconMenuElement;
-        new (): HTMLOntarioIconMenuElement;
-    };
-    interface HTMLOntarioIconMicrophoneOffElement extends Components.OntarioIconMicrophoneOff, HTMLStencilElement {
-    }
-    var HTMLOntarioIconMicrophoneOffElement: {
-        prototype: HTMLOntarioIconMicrophoneOffElement;
-        new (): HTMLOntarioIconMicrophoneOffElement;
-    };
-    interface HTMLOntarioIconMicrophoneOnElement extends Components.OntarioIconMicrophoneOn, HTMLStencilElement {
-    }
-    var HTMLOntarioIconMicrophoneOnElement: {
-        prototype: HTMLOntarioIconMicrophoneOnElement;
-        new (): HTMLOntarioIconMicrophoneOnElement;
-    };
-    interface HTMLOntarioIconMoreVerticalElement extends Components.OntarioIconMoreVertical, HTMLStencilElement {
-    }
-    var HTMLOntarioIconMoreVerticalElement: {
-        prototype: HTMLOntarioIconMoreVerticalElement;
-        new (): HTMLOntarioIconMoreVerticalElement;
-    };
-    interface HTMLOntarioIconNewWindowElement extends Components.OntarioIconNewWindow, HTMLStencilElement {
-    }
-    var HTMLOntarioIconNewWindowElement: {
-        prototype: HTMLOntarioIconNewWindowElement;
-        new (): HTMLOntarioIconNewWindowElement;
-    };
-    interface HTMLOntarioIconNextElement extends Components.OntarioIconNext, HTMLStencilElement {
-    }
-    var HTMLOntarioIconNextElement: {
-        prototype: HTMLOntarioIconNextElement;
-        new (): HTMLOntarioIconNextElement;
-    };
-    interface HTMLOntarioIconNotificationElement extends Components.OntarioIconNotification, HTMLStencilElement {
-    }
-    var HTMLOntarioIconNotificationElement: {
-        prototype: HTMLOntarioIconNotificationElement;
-        new (): HTMLOntarioIconNotificationElement;
-    };
-    interface HTMLOntarioIconPasswordHideElement extends Components.OntarioIconPasswordHide, HTMLStencilElement {
-    }
-    var HTMLOntarioIconPasswordHideElement: {
-        prototype: HTMLOntarioIconPasswordHideElement;
-        new (): HTMLOntarioIconPasswordHideElement;
-    };
-    interface HTMLOntarioIconPasswordShowElement extends Components.OntarioIconPasswordShow, HTMLStencilElement {
-    }
-    var HTMLOntarioIconPasswordShowElement: {
-        prototype: HTMLOntarioIconPasswordShowElement;
-        new (): HTMLOntarioIconPasswordShowElement;
-    };
-    interface HTMLOntarioIconPhoneElement extends Components.OntarioIconPhone, HTMLStencilElement {
-    }
-    var HTMLOntarioIconPhoneElement: {
-        prototype: HTMLOntarioIconPhoneElement;
-        new (): HTMLOntarioIconPhoneElement;
-    };
-    interface HTMLOntarioIconPhotoElement extends Components.OntarioIconPhoto, HTMLStencilElement {
-    }
-    var HTMLOntarioIconPhotoElement: {
-        prototype: HTMLOntarioIconPhotoElement;
-        new (): HTMLOntarioIconPhotoElement;
-    };
-    interface HTMLOntarioIconPinLocationOffElement extends Components.OntarioIconPinLocationOff, HTMLStencilElement {
-    }
-    var HTMLOntarioIconPinLocationOffElement: {
-        prototype: HTMLOntarioIconPinLocationOffElement;
-        new (): HTMLOntarioIconPinLocationOffElement;
-    };
-    interface HTMLOntarioIconPinLocationOnElement extends Components.OntarioIconPinLocationOn, HTMLStencilElement {
-    }
-    var HTMLOntarioIconPinLocationOnElement: {
-        prototype: HTMLOntarioIconPinLocationOnElement;
-        new (): HTMLOntarioIconPinLocationOnElement;
-    };
-    interface HTMLOntarioIconPreviousElement extends Components.OntarioIconPrevious, HTMLStencilElement {
-    }
-    var HTMLOntarioIconPreviousElement: {
-        prototype: HTMLOntarioIconPreviousElement;
-        new (): HTMLOntarioIconPreviousElement;
-    };
-    interface HTMLOntarioIconPrintElement extends Components.OntarioIconPrint, HTMLStencilElement {
-    }
-    var HTMLOntarioIconPrintElement: {
-        prototype: HTMLOntarioIconPrintElement;
-        new (): HTMLOntarioIconPrintElement;
-    };
-    interface HTMLOntarioIconRemoveElement extends Components.OntarioIconRemove, HTMLStencilElement {
-    }
-    var HTMLOntarioIconRemoveElement: {
-        prototype: HTMLOntarioIconRemoveElement;
-        new (): HTMLOntarioIconRemoveElement;
-    };
-    interface HTMLOntarioIconRemoveAltElement extends Components.OntarioIconRemoveAlt, HTMLStencilElement {
-    }
-    var HTMLOntarioIconRemoveAltElement: {
-        prototype: HTMLOntarioIconRemoveAltElement;
-        new (): HTMLOntarioIconRemoveAltElement;
-    };
-    interface HTMLOntarioIconReplayElement extends Components.OntarioIconReplay, HTMLStencilElement {
-    }
-    var HTMLOntarioIconReplayElement: {
-        prototype: HTMLOntarioIconReplayElement;
-        new (): HTMLOntarioIconReplayElement;
-    };
-    interface HTMLOntarioIconRssFeedElement extends Components.OntarioIconRssFeed, HTMLStencilElement {
-    }
-    var HTMLOntarioIconRssFeedElement: {
-        prototype: HTMLOntarioIconRssFeedElement;
-        new (): HTMLOntarioIconRssFeedElement;
-    };
-    interface HTMLOntarioIconSaveElement extends Components.OntarioIconSave, HTMLStencilElement {
-    }
-    var HTMLOntarioIconSaveElement: {
-        prototype: HTMLOntarioIconSaveElement;
-        new (): HTMLOntarioIconSaveElement;
-    };
-    interface HTMLOntarioIconSearchElement extends Components.OntarioIconSearch, HTMLStencilElement {
-    }
-    var HTMLOntarioIconSearchElement: {
-        prototype: HTMLOntarioIconSearchElement;
-        new (): HTMLOntarioIconSearchElement;
-    };
-    interface HTMLOntarioIconSentiment1Element extends Components.OntarioIconSentiment1, HTMLStencilElement {
-    }
-    var HTMLOntarioIconSentiment1Element: {
-        prototype: HTMLOntarioIconSentiment1Element;
-        new (): HTMLOntarioIconSentiment1Element;
-    };
-    interface HTMLOntarioIconSentiment2Element extends Components.OntarioIconSentiment2, HTMLStencilElement {
-    }
-    var HTMLOntarioIconSentiment2Element: {
-        prototype: HTMLOntarioIconSentiment2Element;
-        new (): HTMLOntarioIconSentiment2Element;
-    };
-    interface HTMLOntarioIconSentiment3Element extends Components.OntarioIconSentiment3, HTMLStencilElement {
-    }
-    var HTMLOntarioIconSentiment3Element: {
-        prototype: HTMLOntarioIconSentiment3Element;
-        new (): HTMLOntarioIconSentiment3Element;
-    };
-    interface HTMLOntarioIconSentiment4Element extends Components.OntarioIconSentiment4, HTMLStencilElement {
-    }
-    var HTMLOntarioIconSentiment4Element: {
-        prototype: HTMLOntarioIconSentiment4Element;
-        new (): HTMLOntarioIconSentiment4Element;
-    };
-    interface HTMLOntarioIconSentiment5Element extends Components.OntarioIconSentiment5, HTMLStencilElement {
-    }
-    var HTMLOntarioIconSentiment5Element: {
-        prototype: HTMLOntarioIconSentiment5Element;
-        new (): HTMLOntarioIconSentiment5Element;
-    };
-    interface HTMLOntarioIconSettingsElement extends Components.OntarioIconSettings, HTMLStencilElement {
-    }
-    var HTMLOntarioIconSettingsElement: {
-        prototype: HTMLOntarioIconSettingsElement;
-        new (): HTMLOntarioIconSettingsElement;
-    };
-    interface HTMLOntarioIconShareElement extends Components.OntarioIconShare, HTMLStencilElement {
-    }
-    var HTMLOntarioIconShareElement: {
-        prototype: HTMLOntarioIconShareElement;
-        new (): HTMLOntarioIconShareElement;
-    };
-    interface HTMLOntarioIconSortElement extends Components.OntarioIconSort, HTMLStencilElement {
-    }
-    var HTMLOntarioIconSortElement: {
-        prototype: HTMLOntarioIconSortElement;
-        new (): HTMLOntarioIconSortElement;
-    };
-    interface HTMLOntarioIconTagElement extends Components.OntarioIconTag, HTMLStencilElement {
-    }
-    var HTMLOntarioIconTagElement: {
-        prototype: HTMLOntarioIconTagElement;
-        new (): HTMLOntarioIconTagElement;
-    };
-    interface HTMLOntarioIconTextMessageElement extends Components.OntarioIconTextMessage, HTMLStencilElement {
-    }
-    var HTMLOntarioIconTextMessageElement: {
-        prototype: HTMLOntarioIconTextMessageElement;
-        new (): HTMLOntarioIconTextMessageElement;
-    };
-    interface HTMLOntarioIconTimerElement extends Components.OntarioIconTimer, HTMLStencilElement {
-    }
-    var HTMLOntarioIconTimerElement: {
-        prototype: HTMLOntarioIconTimerElement;
-        new (): HTMLOntarioIconTimerElement;
-    };
-    interface HTMLOntarioIconTransportBicycleElement extends Components.OntarioIconTransportBicycle, HTMLStencilElement {
-    }
-    var HTMLOntarioIconTransportBicycleElement: {
-        prototype: HTMLOntarioIconTransportBicycleElement;
-        new (): HTMLOntarioIconTransportBicycleElement;
-    };
-    interface HTMLOntarioIconTransportBusElement extends Components.OntarioIconTransportBus, HTMLStencilElement {
-    }
-    var HTMLOntarioIconTransportBusElement: {
-        prototype: HTMLOntarioIconTransportBusElement;
-        new (): HTMLOntarioIconTransportBusElement;
-    };
-    interface HTMLOntarioIconTransportCarElement extends Components.OntarioIconTransportCar, HTMLStencilElement {
-    }
-    var HTMLOntarioIconTransportCarElement: {
-        prototype: HTMLOntarioIconTransportCarElement;
-        new (): HTMLOntarioIconTransportCarElement;
-    };
-    interface HTMLOntarioIconTransportWalkElement extends Components.OntarioIconTransportWalk, HTMLStencilElement {
-    }
-    var HTMLOntarioIconTransportWalkElement: {
-        prototype: HTMLOntarioIconTransportWalkElement;
-        new (): HTMLOntarioIconTransportWalkElement;
-    };
-    interface HTMLOntarioIconTtyElement extends Components.OntarioIconTty, HTMLStencilElement {
-    }
-    var HTMLOntarioIconTtyElement: {
-        prototype: HTMLOntarioIconTtyElement;
-        new (): HTMLOntarioIconTtyElement;
-    };
-    interface HTMLOntarioIconTwitterElement extends Components.OntarioIconTwitter, HTMLStencilElement {
-    }
-    var HTMLOntarioIconTwitterElement: {
-        prototype: HTMLOntarioIconTwitterElement;
-        new (): HTMLOntarioIconTwitterElement;
-    };
-    interface HTMLOntarioIconTwitterAltElement extends Components.OntarioIconTwitterAlt, HTMLStencilElement {
-    }
-    var HTMLOntarioIconTwitterAltElement: {
-        prototype: HTMLOntarioIconTwitterAltElement;
-        new (): HTMLOntarioIconTwitterAltElement;
-    };
-    interface HTMLOntarioIconUploadElement extends Components.OntarioIconUpload, HTMLStencilElement {
-    }
-    var HTMLOntarioIconUploadElement: {
-        prototype: HTMLOntarioIconUploadElement;
-        new (): HTMLOntarioIconUploadElement;
-    };
-    interface HTMLOntarioIconVideoElement extends Components.OntarioIconVideo, HTMLStencilElement {
-    }
-    var HTMLOntarioIconVideoElement: {
-        prototype: HTMLOntarioIconVideoElement;
-        new (): HTMLOntarioIconVideoElement;
-    };
-    interface HTMLOntarioIconVisaElement extends Components.OntarioIconVisa, HTMLStencilElement {
-    }
-    var HTMLOntarioIconVisaElement: {
-        prototype: HTMLOntarioIconVisaElement;
-        new (): HTMLOntarioIconVisaElement;
-    };
-    interface HTMLOntarioIconVoteDislikeElement extends Components.OntarioIconVoteDislike, HTMLStencilElement {
-    }
-    var HTMLOntarioIconVoteDislikeElement: {
-        prototype: HTMLOntarioIconVoteDislikeElement;
-        new (): HTMLOntarioIconVoteDislikeElement;
-    };
-    interface HTMLOntarioIconVoteLikeElement extends Components.OntarioIconVoteLike, HTMLStencilElement {
-    }
-    var HTMLOntarioIconVoteLikeElement: {
-        prototype: HTMLOntarioIconVoteLikeElement;
-        new (): HTMLOntarioIconVoteLikeElement;
-    };
-    interface HTMLOntarioIconVpnKeyElement extends Components.OntarioIconVpnKey, HTMLStencilElement {
-    }
-    var HTMLOntarioIconVpnKeyElement: {
-        prototype: HTMLOntarioIconVpnKeyElement;
-        new (): HTMLOntarioIconVpnKeyElement;
-    };
-    interface HTMLOntarioIconWheelchairElement extends Components.OntarioIconWheelchair, HTMLStencilElement {
-    }
-    var HTMLOntarioIconWheelchairElement: {
-        prototype: HTMLOntarioIconWheelchairElement;
-        new (): HTMLOntarioIconWheelchairElement;
-    };
-    interface HTMLOntarioIconWifiElement extends Components.OntarioIconWifi, HTMLStencilElement {
-    }
-    var HTMLOntarioIconWifiElement: {
-        prototype: HTMLOntarioIconWifiElement;
-        new (): HTMLOntarioIconWifiElement;
-    };
-    interface HTMLOntarioIconYoutubeElement extends Components.OntarioIconYoutube, HTMLStencilElement {
-    }
-    var HTMLOntarioIconYoutubeElement: {
-        prototype: HTMLOntarioIconYoutubeElement;
-        new (): HTMLOntarioIconYoutubeElement;
-    };
-    interface HTMLOntarioInputElement extends Components.OntarioInput, HTMLStencilElement {
-    }
-    var HTMLOntarioInputElement: {
-        prototype: HTMLOntarioInputElement;
-        new (): HTMLOntarioInputElement;
-    };
-    interface HTMLOntarioRadioButtonsElement extends Components.OntarioRadioButtons, HTMLStencilElement {
-    }
-    var HTMLOntarioRadioButtonsElement: {
-        prototype: HTMLOntarioRadioButtonsElement;
-        new (): HTMLOntarioRadioButtonsElement;
-    };
-    interface HTMLOntarioTextareaElement extends Components.OntarioTextarea, HTMLStencilElement {
-    }
-    var HTMLOntarioTextareaElement: {
-        prototype: HTMLOntarioTextareaElement;
-        new (): HTMLOntarioTextareaElement;
-    };
-    interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
-        "ontario-button": HTMLOntarioButtonElement;
-        "ontario-checkboxes": HTMLOntarioCheckboxesElement;
-        "ontario-dropdown-list": HTMLOntarioDropdownListElement;
-        "ontario-hint-expander": HTMLOntarioHintExpanderElement;
-        "ontario-hint-text": HTMLOntarioHintTextElement;
-        "ontario-icon-accessibility": HTMLOntarioIconAccessibilityElement;
-        "ontario-icon-account": HTMLOntarioIconAccountElement;
-        "ontario-icon-add": HTMLOntarioIconAddElement;
-        "ontario-icon-add-alt": HTMLOntarioIconAddAltElement;
-        "ontario-icon-alert-error": HTMLOntarioIconAlertErrorElement;
-        "ontario-icon-alert-information": HTMLOntarioIconAlertInformationElement;
-        "ontario-icon-alert-success": HTMLOntarioIconAlertSuccessElement;
-        "ontario-icon-alert-warning": HTMLOntarioIconAlertWarningElement;
-        "ontario-icon-attach": HTMLOntarioIconAttachElement;
-        "ontario-icon-bookmark-off": HTMLOntarioIconBookmarkOffElement;
-        "ontario-icon-bookmark-on": HTMLOntarioIconBookmarkOnElement;
-        "ontario-icon-calendar": HTMLOntarioIconCalendarElement;
-        "ontario-icon-camera": HTMLOntarioIconCameraElement;
-        "ontario-icon-chevron-down": HTMLOntarioIconChevronDownElement;
-        "ontario-icon-chevron-left": HTMLOntarioIconChevronLeftElement;
-        "ontario-icon-chevron-right": HTMLOntarioIconChevronRightElement;
-        "ontario-icon-chevron-up": HTMLOntarioIconChevronUpElement;
-        "ontario-icon-clock": HTMLOntarioIconClockElement;
-        "ontario-icon-close": HTMLOntarioIconCloseElement;
-        "ontario-icon-cloud": HTMLOntarioIconCloudElement;
-        "ontario-icon-collapse": HTMLOntarioIconCollapseElement;
-        "ontario-icon-credit-card": HTMLOntarioIconCreditCardElement;
-        "ontario-icon-delete": HTMLOntarioIconDeleteElement;
-        "ontario-icon-document": HTMLOntarioIconDocumentElement;
-        "ontario-icon-download": HTMLOntarioIconDownloadElement;
-        "ontario-icon-dropdown-arrow": HTMLOntarioIconDropdownArrowElement;
-        "ontario-icon-edit": HTMLOntarioIconEditElement;
-        "ontario-icon-email": HTMLOntarioIconEmailElement;
-        "ontario-icon-expand": HTMLOntarioIconExpandElement;
-        "ontario-icon-export": HTMLOntarioIconExportElement;
-        "ontario-icon-facebook": HTMLOntarioIconFacebookElement;
-        "ontario-icon-facebook-alt": HTMLOntarioIconFacebookAltElement;
-        "ontario-icon-favourite-off": HTMLOntarioIconFavouriteOffElement;
-        "ontario-icon-favourite-on": HTMLOntarioIconFavouriteOnElement;
-        "ontario-icon-filter": HTMLOntarioIconFilterElement;
-        "ontario-icon-flickr": HTMLOntarioIconFlickrElement;
-        "ontario-icon-grid": HTMLOntarioIconGridElement;
-        "ontario-icon-help": HTMLOntarioIconHelpElement;
-        "ontario-icon-instagram": HTMLOntarioIconInstagramElement;
-        "ontario-icon-interac-en": HTMLOntarioIconInteracEnElement;
-        "ontario-icon-interac-en-alt": HTMLOntarioIconInteracEnAltElement;
-        "ontario-icon-interac-fr": HTMLOntarioIconInteracFrElement;
-        "ontario-icon-interac-fr-alt": HTMLOntarioIconInteracFrAltElement;
-        "ontario-icon-linkedin": HTMLOntarioIconLinkedinElement;
-        "ontario-icon-linkedin-alt": HTMLOntarioIconLinkedinAltElement;
-        "ontario-icon-list": HTMLOntarioIconListElement;
-        "ontario-icon-live-chat": HTMLOntarioIconLiveChatElement;
-        "ontario-icon-location-off": HTMLOntarioIconLocationOffElement;
-        "ontario-icon-location-on": HTMLOntarioIconLocationOnElement;
-        "ontario-icon-lock-off": HTMLOntarioIconLockOffElement;
-        "ontario-icon-lock-on": HTMLOntarioIconLockOnElement;
-        "ontario-icon-map": HTMLOntarioIconMapElement;
-        "ontario-icon-mastercard": HTMLOntarioIconMastercardElement;
-        "ontario-icon-mastercard-alt": HTMLOntarioIconMastercardAltElement;
-        "ontario-icon-media-fast-forward": HTMLOntarioIconMediaFastForwardElement;
-        "ontario-icon-media-fast-rewind": HTMLOntarioIconMediaFastRewindElement;
-        "ontario-icon-media-pause": HTMLOntarioIconMediaPauseElement;
-        "ontario-icon-media-play": HTMLOntarioIconMediaPlayElement;
-        "ontario-icon-media-stop": HTMLOntarioIconMediaStopElement;
-        "ontario-icon-menu": HTMLOntarioIconMenuElement;
-        "ontario-icon-microphone-off": HTMLOntarioIconMicrophoneOffElement;
-        "ontario-icon-microphone-on": HTMLOntarioIconMicrophoneOnElement;
-        "ontario-icon-more-vertical": HTMLOntarioIconMoreVerticalElement;
-        "ontario-icon-new-window": HTMLOntarioIconNewWindowElement;
-        "ontario-icon-next": HTMLOntarioIconNextElement;
-        "ontario-icon-notification": HTMLOntarioIconNotificationElement;
-        "ontario-icon-password-hide": HTMLOntarioIconPasswordHideElement;
-        "ontario-icon-password-show": HTMLOntarioIconPasswordShowElement;
-        "ontario-icon-phone": HTMLOntarioIconPhoneElement;
-        "ontario-icon-photo": HTMLOntarioIconPhotoElement;
-        "ontario-icon-pin-location-off": HTMLOntarioIconPinLocationOffElement;
-        "ontario-icon-pin-location-on": HTMLOntarioIconPinLocationOnElement;
-        "ontario-icon-previous": HTMLOntarioIconPreviousElement;
-        "ontario-icon-print": HTMLOntarioIconPrintElement;
-        "ontario-icon-remove": HTMLOntarioIconRemoveElement;
-        "ontario-icon-remove-alt": HTMLOntarioIconRemoveAltElement;
-        "ontario-icon-replay": HTMLOntarioIconReplayElement;
-        "ontario-icon-rss-feed": HTMLOntarioIconRssFeedElement;
-        "ontario-icon-save": HTMLOntarioIconSaveElement;
-        "ontario-icon-search": HTMLOntarioIconSearchElement;
-        "ontario-icon-sentiment-1": HTMLOntarioIconSentiment1Element;
-        "ontario-icon-sentiment-2": HTMLOntarioIconSentiment2Element;
-        "ontario-icon-sentiment-3": HTMLOntarioIconSentiment3Element;
-        "ontario-icon-sentiment-4": HTMLOntarioIconSentiment4Element;
-        "ontario-icon-sentiment-5": HTMLOntarioIconSentiment5Element;
-        "ontario-icon-settings": HTMLOntarioIconSettingsElement;
-        "ontario-icon-share": HTMLOntarioIconShareElement;
-        "ontario-icon-sort": HTMLOntarioIconSortElement;
-        "ontario-icon-tag": HTMLOntarioIconTagElement;
-        "ontario-icon-text-message": HTMLOntarioIconTextMessageElement;
-        "ontario-icon-timer": HTMLOntarioIconTimerElement;
-        "ontario-icon-transport-bicycle": HTMLOntarioIconTransportBicycleElement;
-        "ontario-icon-transport-bus": HTMLOntarioIconTransportBusElement;
-        "ontario-icon-transport-car": HTMLOntarioIconTransportCarElement;
-        "ontario-icon-transport-walk": HTMLOntarioIconTransportWalkElement;
-        "ontario-icon-tty": HTMLOntarioIconTtyElement;
-        "ontario-icon-twitter": HTMLOntarioIconTwitterElement;
-        "ontario-icon-twitter-alt": HTMLOntarioIconTwitterAltElement;
-        "ontario-icon-upload": HTMLOntarioIconUploadElement;
-        "ontario-icon-video": HTMLOntarioIconVideoElement;
-        "ontario-icon-visa": HTMLOntarioIconVisaElement;
-        "ontario-icon-vote-dislike": HTMLOntarioIconVoteDislikeElement;
-        "ontario-icon-vote-like": HTMLOntarioIconVoteLikeElement;
-        "ontario-icon-vpn-key": HTMLOntarioIconVpnKeyElement;
-        "ontario-icon-wheelchair": HTMLOntarioIconWheelchairElement;
-        "ontario-icon-wifi": HTMLOntarioIconWifiElement;
-        "ontario-icon-youtube": HTMLOntarioIconYoutubeElement;
-        "ontario-input": HTMLOntarioInputElement;
-        "ontario-radio-buttons": HTMLOntarioRadioButtonsElement;
-        "ontario-textarea": HTMLOntarioTextareaElement;
-    }
+  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+  }
+  var HTMLMyComponentElement: {
+    prototype: HTMLMyComponentElement;
+    new(): HTMLMyComponentElement;
+  };
+  interface HTMLOntarioButtonElement extends Components.OntarioButton, HTMLStencilElement {
+  }
+  var HTMLOntarioButtonElement: {
+    prototype: HTMLOntarioButtonElement;
+    new(): HTMLOntarioButtonElement;
+  };
+  interface HTMLOntarioCheckboxesElement extends Components.OntarioCheckboxes, HTMLStencilElement {
+  }
+  var HTMLOntarioCheckboxesElement: {
+    prototype: HTMLOntarioCheckboxesElement;
+    new(): HTMLOntarioCheckboxesElement;
+  };
+  interface HTMLOntarioDropdownListElement extends Components.OntarioDropdownList, HTMLStencilElement {
+  }
+  var HTMLOntarioDropdownListElement: {
+    prototype: HTMLOntarioDropdownListElement;
+    new(): HTMLOntarioDropdownListElement;
+  };
+  interface HTMLOntarioHintExpanderElement extends Components.OntarioHintExpander, HTMLStencilElement {
+  }
+  var HTMLOntarioHintExpanderElement: {
+    prototype: HTMLOntarioHintExpanderElement;
+    new(): HTMLOntarioHintExpanderElement;
+  };
+  interface HTMLOntarioHintTextElement extends Components.OntarioHintText, HTMLStencilElement {
+  }
+  var HTMLOntarioHintTextElement: {
+    prototype: HTMLOntarioHintTextElement;
+    new(): HTMLOntarioHintTextElement;
+  };
+  interface HTMLOntarioIconAccessibilityElement extends Components.OntarioIconAccessibility, HTMLStencilElement {
+  }
+  var HTMLOntarioIconAccessibilityElement: {
+    prototype: HTMLOntarioIconAccessibilityElement;
+    new(): HTMLOntarioIconAccessibilityElement;
+  };
+  interface HTMLOntarioIconAccountElement extends Components.OntarioIconAccount, HTMLStencilElement {
+  }
+  var HTMLOntarioIconAccountElement: {
+    prototype: HTMLOntarioIconAccountElement;
+    new(): HTMLOntarioIconAccountElement;
+  };
+  interface HTMLOntarioIconAddElement extends Components.OntarioIconAdd, HTMLStencilElement {
+  }
+  var HTMLOntarioIconAddElement: {
+    prototype: HTMLOntarioIconAddElement;
+    new(): HTMLOntarioIconAddElement;
+  };
+  interface HTMLOntarioIconAddAltElement extends Components.OntarioIconAddAlt, HTMLStencilElement {
+  }
+  var HTMLOntarioIconAddAltElement: {
+    prototype: HTMLOntarioIconAddAltElement;
+    new(): HTMLOntarioIconAddAltElement;
+  };
+  interface HTMLOntarioIconAlertErrorElement extends Components.OntarioIconAlertError, HTMLStencilElement {
+  }
+  var HTMLOntarioIconAlertErrorElement: {
+    prototype: HTMLOntarioIconAlertErrorElement;
+    new(): HTMLOntarioIconAlertErrorElement;
+  };
+  interface HTMLOntarioIconAlertInformationElement extends Components.OntarioIconAlertInformation, HTMLStencilElement {
+  }
+  var HTMLOntarioIconAlertInformationElement: {
+    prototype: HTMLOntarioIconAlertInformationElement;
+    new(): HTMLOntarioIconAlertInformationElement;
+  };
+  interface HTMLOntarioIconAlertSuccessElement extends Components.OntarioIconAlertSuccess, HTMLStencilElement {
+  }
+  var HTMLOntarioIconAlertSuccessElement: {
+    prototype: HTMLOntarioIconAlertSuccessElement;
+    new(): HTMLOntarioIconAlertSuccessElement;
+  };
+  interface HTMLOntarioIconAlertWarningElement extends Components.OntarioIconAlertWarning, HTMLStencilElement {
+  }
+  var HTMLOntarioIconAlertWarningElement: {
+    prototype: HTMLOntarioIconAlertWarningElement;
+    new(): HTMLOntarioIconAlertWarningElement;
+  };
+  interface HTMLOntarioIconAttachElement extends Components.OntarioIconAttach, HTMLStencilElement {
+  }
+  var HTMLOntarioIconAttachElement: {
+    prototype: HTMLOntarioIconAttachElement;
+    new(): HTMLOntarioIconAttachElement;
+  };
+  interface HTMLOntarioIconBookmarkOffElement extends Components.OntarioIconBookmarkOff, HTMLStencilElement {
+  }
+  var HTMLOntarioIconBookmarkOffElement: {
+    prototype: HTMLOntarioIconBookmarkOffElement;
+    new(): HTMLOntarioIconBookmarkOffElement;
+  };
+  interface HTMLOntarioIconBookmarkOnElement extends Components.OntarioIconBookmarkOn, HTMLStencilElement {
+  }
+  var HTMLOntarioIconBookmarkOnElement: {
+    prototype: HTMLOntarioIconBookmarkOnElement;
+    new(): HTMLOntarioIconBookmarkOnElement;
+  };
+  interface HTMLOntarioIconCalendarElement extends Components.OntarioIconCalendar, HTMLStencilElement {
+  }
+  var HTMLOntarioIconCalendarElement: {
+    prototype: HTMLOntarioIconCalendarElement;
+    new(): HTMLOntarioIconCalendarElement;
+  };
+  interface HTMLOntarioIconCameraElement extends Components.OntarioIconCamera, HTMLStencilElement {
+  }
+  var HTMLOntarioIconCameraElement: {
+    prototype: HTMLOntarioIconCameraElement;
+    new(): HTMLOntarioIconCameraElement;
+  };
+  interface HTMLOntarioIconChevronDownElement extends Components.OntarioIconChevronDown, HTMLStencilElement {
+  }
+  var HTMLOntarioIconChevronDownElement: {
+    prototype: HTMLOntarioIconChevronDownElement;
+    new(): HTMLOntarioIconChevronDownElement;
+  };
+  interface HTMLOntarioIconChevronLeftElement extends Components.OntarioIconChevronLeft, HTMLStencilElement {
+  }
+  var HTMLOntarioIconChevronLeftElement: {
+    prototype: HTMLOntarioIconChevronLeftElement;
+    new(): HTMLOntarioIconChevronLeftElement;
+  };
+  interface HTMLOntarioIconChevronRightElement extends Components.OntarioIconChevronRight, HTMLStencilElement {
+  }
+  var HTMLOntarioIconChevronRightElement: {
+    prototype: HTMLOntarioIconChevronRightElement;
+    new(): HTMLOntarioIconChevronRightElement;
+  };
+  interface HTMLOntarioIconChevronUpElement extends Components.OntarioIconChevronUp, HTMLStencilElement {
+  }
+  var HTMLOntarioIconChevronUpElement: {
+    prototype: HTMLOntarioIconChevronUpElement;
+    new(): HTMLOntarioIconChevronUpElement;
+  };
+  interface HTMLOntarioIconClockElement extends Components.OntarioIconClock, HTMLStencilElement {
+  }
+  var HTMLOntarioIconClockElement: {
+    prototype: HTMLOntarioIconClockElement;
+    new(): HTMLOntarioIconClockElement;
+  };
+  interface HTMLOntarioIconCloseElement extends Components.OntarioIconClose, HTMLStencilElement {
+  }
+  var HTMLOntarioIconCloseElement: {
+    prototype: HTMLOntarioIconCloseElement;
+    new(): HTMLOntarioIconCloseElement;
+  };
+  interface HTMLOntarioIconCloudElement extends Components.OntarioIconCloud, HTMLStencilElement {
+  }
+  var HTMLOntarioIconCloudElement: {
+    prototype: HTMLOntarioIconCloudElement;
+    new(): HTMLOntarioIconCloudElement;
+  };
+  interface HTMLOntarioIconCollapseElement extends Components.OntarioIconCollapse, HTMLStencilElement {
+  }
+  var HTMLOntarioIconCollapseElement: {
+    prototype: HTMLOntarioIconCollapseElement;
+    new(): HTMLOntarioIconCollapseElement;
+  };
+  interface HTMLOntarioIconCreditCardElement extends Components.OntarioIconCreditCard, HTMLStencilElement {
+  }
+  var HTMLOntarioIconCreditCardElement: {
+    prototype: HTMLOntarioIconCreditCardElement;
+    new(): HTMLOntarioIconCreditCardElement;
+  };
+  interface HTMLOntarioIconDeleteElement extends Components.OntarioIconDelete, HTMLStencilElement {
+  }
+  var HTMLOntarioIconDeleteElement: {
+    prototype: HTMLOntarioIconDeleteElement;
+    new(): HTMLOntarioIconDeleteElement;
+  };
+  interface HTMLOntarioIconDocumentElement extends Components.OntarioIconDocument, HTMLStencilElement {
+  }
+  var HTMLOntarioIconDocumentElement: {
+    prototype: HTMLOntarioIconDocumentElement;
+    new(): HTMLOntarioIconDocumentElement;
+  };
+  interface HTMLOntarioIconDownloadElement extends Components.OntarioIconDownload, HTMLStencilElement {
+  }
+  var HTMLOntarioIconDownloadElement: {
+    prototype: HTMLOntarioIconDownloadElement;
+    new(): HTMLOntarioIconDownloadElement;
+  };
+  interface HTMLOntarioIconDropdownArrowElement extends Components.OntarioIconDropdownArrow, HTMLStencilElement {
+  }
+  var HTMLOntarioIconDropdownArrowElement: {
+    prototype: HTMLOntarioIconDropdownArrowElement;
+    new(): HTMLOntarioIconDropdownArrowElement;
+  };
+  interface HTMLOntarioIconEditElement extends Components.OntarioIconEdit, HTMLStencilElement {
+  }
+  var HTMLOntarioIconEditElement: {
+    prototype: HTMLOntarioIconEditElement;
+    new(): HTMLOntarioIconEditElement;
+  };
+  interface HTMLOntarioIconEmailElement extends Components.OntarioIconEmail, HTMLStencilElement {
+  }
+  var HTMLOntarioIconEmailElement: {
+    prototype: HTMLOntarioIconEmailElement;
+    new(): HTMLOntarioIconEmailElement;
+  };
+  interface HTMLOntarioIconExpandElement extends Components.OntarioIconExpand, HTMLStencilElement {
+  }
+  var HTMLOntarioIconExpandElement: {
+    prototype: HTMLOntarioIconExpandElement;
+    new(): HTMLOntarioIconExpandElement;
+  };
+  interface HTMLOntarioIconExportElement extends Components.OntarioIconExport, HTMLStencilElement {
+  }
+  var HTMLOntarioIconExportElement: {
+    prototype: HTMLOntarioIconExportElement;
+    new(): HTMLOntarioIconExportElement;
+  };
+  interface HTMLOntarioIconFacebookElement extends Components.OntarioIconFacebook, HTMLStencilElement {
+  }
+  var HTMLOntarioIconFacebookElement: {
+    prototype: HTMLOntarioIconFacebookElement;
+    new(): HTMLOntarioIconFacebookElement;
+  };
+  interface HTMLOntarioIconFacebookAltElement extends Components.OntarioIconFacebookAlt, HTMLStencilElement {
+  }
+  var HTMLOntarioIconFacebookAltElement: {
+    prototype: HTMLOntarioIconFacebookAltElement;
+    new(): HTMLOntarioIconFacebookAltElement;
+  };
+  interface HTMLOntarioIconFavouriteOffElement extends Components.OntarioIconFavouriteOff, HTMLStencilElement {
+  }
+  var HTMLOntarioIconFavouriteOffElement: {
+    prototype: HTMLOntarioIconFavouriteOffElement;
+    new(): HTMLOntarioIconFavouriteOffElement;
+  };
+  interface HTMLOntarioIconFavouriteOnElement extends Components.OntarioIconFavouriteOn, HTMLStencilElement {
+  }
+  var HTMLOntarioIconFavouriteOnElement: {
+    prototype: HTMLOntarioIconFavouriteOnElement;
+    new(): HTMLOntarioIconFavouriteOnElement;
+  };
+  interface HTMLOntarioIconFilterElement extends Components.OntarioIconFilter, HTMLStencilElement {
+  }
+  var HTMLOntarioIconFilterElement: {
+    prototype: HTMLOntarioIconFilterElement;
+    new(): HTMLOntarioIconFilterElement;
+  };
+  interface HTMLOntarioIconFlickrElement extends Components.OntarioIconFlickr, HTMLStencilElement {
+  }
+  var HTMLOntarioIconFlickrElement: {
+    prototype: HTMLOntarioIconFlickrElement;
+    new(): HTMLOntarioIconFlickrElement;
+  };
+  interface HTMLOntarioIconGridElement extends Components.OntarioIconGrid, HTMLStencilElement {
+  }
+  var HTMLOntarioIconGridElement: {
+    prototype: HTMLOntarioIconGridElement;
+    new(): HTMLOntarioIconGridElement;
+  };
+  interface HTMLOntarioIconHelpElement extends Components.OntarioIconHelp, HTMLStencilElement {
+  }
+  var HTMLOntarioIconHelpElement: {
+    prototype: HTMLOntarioIconHelpElement;
+    new(): HTMLOntarioIconHelpElement;
+  };
+  interface HTMLOntarioIconInstagramElement extends Components.OntarioIconInstagram, HTMLStencilElement {
+  }
+  var HTMLOntarioIconInstagramElement: {
+    prototype: HTMLOntarioIconInstagramElement;
+    new(): HTMLOntarioIconInstagramElement;
+  };
+  interface HTMLOntarioIconInteracEnElement extends Components.OntarioIconInteracEn, HTMLStencilElement {
+  }
+  var HTMLOntarioIconInteracEnElement: {
+    prototype: HTMLOntarioIconInteracEnElement;
+    new(): HTMLOntarioIconInteracEnElement;
+  };
+  interface HTMLOntarioIconInteracEnAltElement extends Components.OntarioIconInteracEnAlt, HTMLStencilElement {
+  }
+  var HTMLOntarioIconInteracEnAltElement: {
+    prototype: HTMLOntarioIconInteracEnAltElement;
+    new(): HTMLOntarioIconInteracEnAltElement;
+  };
+  interface HTMLOntarioIconInteracFrElement extends Components.OntarioIconInteracFr, HTMLStencilElement {
+  }
+  var HTMLOntarioIconInteracFrElement: {
+    prototype: HTMLOntarioIconInteracFrElement;
+    new(): HTMLOntarioIconInteracFrElement;
+  };
+  interface HTMLOntarioIconInteracFrAltElement extends Components.OntarioIconInteracFrAlt, HTMLStencilElement {
+  }
+  var HTMLOntarioIconInteracFrAltElement: {
+    prototype: HTMLOntarioIconInteracFrAltElement;
+    new(): HTMLOntarioIconInteracFrAltElement;
+  };
+  interface HTMLOntarioIconLinkedinElement extends Components.OntarioIconLinkedin, HTMLStencilElement {
+  }
+  var HTMLOntarioIconLinkedinElement: {
+    prototype: HTMLOntarioIconLinkedinElement;
+    new(): HTMLOntarioIconLinkedinElement;
+  };
+  interface HTMLOntarioIconLinkedinAltElement extends Components.OntarioIconLinkedinAlt, HTMLStencilElement {
+  }
+  var HTMLOntarioIconLinkedinAltElement: {
+    prototype: HTMLOntarioIconLinkedinAltElement;
+    new(): HTMLOntarioIconLinkedinAltElement;
+  };
+  interface HTMLOntarioIconListElement extends Components.OntarioIconList, HTMLStencilElement {
+  }
+  var HTMLOntarioIconListElement: {
+    prototype: HTMLOntarioIconListElement;
+    new(): HTMLOntarioIconListElement;
+  };
+  interface HTMLOntarioIconLiveChatElement extends Components.OntarioIconLiveChat, HTMLStencilElement {
+  }
+  var HTMLOntarioIconLiveChatElement: {
+    prototype: HTMLOntarioIconLiveChatElement;
+    new(): HTMLOntarioIconLiveChatElement;
+  };
+  interface HTMLOntarioIconLocationOffElement extends Components.OntarioIconLocationOff, HTMLStencilElement {
+  }
+  var HTMLOntarioIconLocationOffElement: {
+    prototype: HTMLOntarioIconLocationOffElement;
+    new(): HTMLOntarioIconLocationOffElement;
+  };
+  interface HTMLOntarioIconLocationOnElement extends Components.OntarioIconLocationOn, HTMLStencilElement {
+  }
+  var HTMLOntarioIconLocationOnElement: {
+    prototype: HTMLOntarioIconLocationOnElement;
+    new(): HTMLOntarioIconLocationOnElement;
+  };
+  interface HTMLOntarioIconLockOffElement extends Components.OntarioIconLockOff, HTMLStencilElement {
+  }
+  var HTMLOntarioIconLockOffElement: {
+    prototype: HTMLOntarioIconLockOffElement;
+    new(): HTMLOntarioIconLockOffElement;
+  };
+  interface HTMLOntarioIconLockOnElement extends Components.OntarioIconLockOn, HTMLStencilElement {
+  }
+  var HTMLOntarioIconLockOnElement: {
+    prototype: HTMLOntarioIconLockOnElement;
+    new(): HTMLOntarioIconLockOnElement;
+  };
+  interface HTMLOntarioIconMapElement extends Components.OntarioIconMap, HTMLStencilElement {
+  }
+  var HTMLOntarioIconMapElement: {
+    prototype: HTMLOntarioIconMapElement;
+    new(): HTMLOntarioIconMapElement;
+  };
+  interface HTMLOntarioIconMastercardElement extends Components.OntarioIconMastercard, HTMLStencilElement {
+  }
+  var HTMLOntarioIconMastercardElement: {
+    prototype: HTMLOntarioIconMastercardElement;
+    new(): HTMLOntarioIconMastercardElement;
+  };
+  interface HTMLOntarioIconMastercardAltElement extends Components.OntarioIconMastercardAlt, HTMLStencilElement {
+  }
+  var HTMLOntarioIconMastercardAltElement: {
+    prototype: HTMLOntarioIconMastercardAltElement;
+    new(): HTMLOntarioIconMastercardAltElement;
+  };
+  interface HTMLOntarioIconMediaFastForwardElement extends Components.OntarioIconMediaFastForward, HTMLStencilElement {
+  }
+  var HTMLOntarioIconMediaFastForwardElement: {
+    prototype: HTMLOntarioIconMediaFastForwardElement;
+    new(): HTMLOntarioIconMediaFastForwardElement;
+  };
+  interface HTMLOntarioIconMediaFastRewindElement extends Components.OntarioIconMediaFastRewind, HTMLStencilElement {
+  }
+  var HTMLOntarioIconMediaFastRewindElement: {
+    prototype: HTMLOntarioIconMediaFastRewindElement;
+    new(): HTMLOntarioIconMediaFastRewindElement;
+  };
+  interface HTMLOntarioIconMediaPauseElement extends Components.OntarioIconMediaPause, HTMLStencilElement {
+  }
+  var HTMLOntarioIconMediaPauseElement: {
+    prototype: HTMLOntarioIconMediaPauseElement;
+    new(): HTMLOntarioIconMediaPauseElement;
+  };
+  interface HTMLOntarioIconMediaPlayElement extends Components.OntarioIconMediaPlay, HTMLStencilElement {
+  }
+  var HTMLOntarioIconMediaPlayElement: {
+    prototype: HTMLOntarioIconMediaPlayElement;
+    new(): HTMLOntarioIconMediaPlayElement;
+  };
+  interface HTMLOntarioIconMediaStopElement extends Components.OntarioIconMediaStop, HTMLStencilElement {
+  }
+  var HTMLOntarioIconMediaStopElement: {
+    prototype: HTMLOntarioIconMediaStopElement;
+    new(): HTMLOntarioIconMediaStopElement;
+  };
+  interface HTMLOntarioIconMenuElement extends Components.OntarioIconMenu, HTMLStencilElement {
+  }
+  var HTMLOntarioIconMenuElement: {
+    prototype: HTMLOntarioIconMenuElement;
+    new(): HTMLOntarioIconMenuElement;
+  };
+  interface HTMLOntarioIconMicrophoneOffElement extends Components.OntarioIconMicrophoneOff, HTMLStencilElement {
+  }
+  var HTMLOntarioIconMicrophoneOffElement: {
+    prototype: HTMLOntarioIconMicrophoneOffElement;
+    new(): HTMLOntarioIconMicrophoneOffElement;
+  };
+  interface HTMLOntarioIconMicrophoneOnElement extends Components.OntarioIconMicrophoneOn, HTMLStencilElement {
+  }
+  var HTMLOntarioIconMicrophoneOnElement: {
+    prototype: HTMLOntarioIconMicrophoneOnElement;
+    new(): HTMLOntarioIconMicrophoneOnElement;
+  };
+  interface HTMLOntarioIconMoreVerticalElement extends Components.OntarioIconMoreVertical, HTMLStencilElement {
+  }
+  var HTMLOntarioIconMoreVerticalElement: {
+    prototype: HTMLOntarioIconMoreVerticalElement;
+    new(): HTMLOntarioIconMoreVerticalElement;
+  };
+  interface HTMLOntarioIconNewWindowElement extends Components.OntarioIconNewWindow, HTMLStencilElement {
+  }
+  var HTMLOntarioIconNewWindowElement: {
+    prototype: HTMLOntarioIconNewWindowElement;
+    new(): HTMLOntarioIconNewWindowElement;
+  };
+  interface HTMLOntarioIconNextElement extends Components.OntarioIconNext, HTMLStencilElement {
+  }
+  var HTMLOntarioIconNextElement: {
+    prototype: HTMLOntarioIconNextElement;
+    new(): HTMLOntarioIconNextElement;
+  };
+  interface HTMLOntarioIconNotificationElement extends Components.OntarioIconNotification, HTMLStencilElement {
+  }
+  var HTMLOntarioIconNotificationElement: {
+    prototype: HTMLOntarioIconNotificationElement;
+    new(): HTMLOntarioIconNotificationElement;
+  };
+  interface HTMLOntarioIconPasswordHideElement extends Components.OntarioIconPasswordHide, HTMLStencilElement {
+  }
+  var HTMLOntarioIconPasswordHideElement: {
+    prototype: HTMLOntarioIconPasswordHideElement;
+    new(): HTMLOntarioIconPasswordHideElement;
+  };
+  interface HTMLOntarioIconPasswordShowElement extends Components.OntarioIconPasswordShow, HTMLStencilElement {
+  }
+  var HTMLOntarioIconPasswordShowElement: {
+    prototype: HTMLOntarioIconPasswordShowElement;
+    new(): HTMLOntarioIconPasswordShowElement;
+  };
+  interface HTMLOntarioIconPhoneElement extends Components.OntarioIconPhone, HTMLStencilElement {
+  }
+  var HTMLOntarioIconPhoneElement: {
+    prototype: HTMLOntarioIconPhoneElement;
+    new(): HTMLOntarioIconPhoneElement;
+  };
+  interface HTMLOntarioIconPhotoElement extends Components.OntarioIconPhoto, HTMLStencilElement {
+  }
+  var HTMLOntarioIconPhotoElement: {
+    prototype: HTMLOntarioIconPhotoElement;
+    new(): HTMLOntarioIconPhotoElement;
+  };
+  interface HTMLOntarioIconPinLocationOffElement extends Components.OntarioIconPinLocationOff, HTMLStencilElement {
+  }
+  var HTMLOntarioIconPinLocationOffElement: {
+    prototype: HTMLOntarioIconPinLocationOffElement;
+    new(): HTMLOntarioIconPinLocationOffElement;
+  };
+  interface HTMLOntarioIconPinLocationOnElement extends Components.OntarioIconPinLocationOn, HTMLStencilElement {
+  }
+  var HTMLOntarioIconPinLocationOnElement: {
+    prototype: HTMLOntarioIconPinLocationOnElement;
+    new(): HTMLOntarioIconPinLocationOnElement;
+  };
+  interface HTMLOntarioIconPreviousElement extends Components.OntarioIconPrevious, HTMLStencilElement {
+  }
+  var HTMLOntarioIconPreviousElement: {
+    prototype: HTMLOntarioIconPreviousElement;
+    new(): HTMLOntarioIconPreviousElement;
+  };
+  interface HTMLOntarioIconPrintElement extends Components.OntarioIconPrint, HTMLStencilElement {
+  }
+  var HTMLOntarioIconPrintElement: {
+    prototype: HTMLOntarioIconPrintElement;
+    new(): HTMLOntarioIconPrintElement;
+  };
+  interface HTMLOntarioIconRemoveElement extends Components.OntarioIconRemove, HTMLStencilElement {
+  }
+  var HTMLOntarioIconRemoveElement: {
+    prototype: HTMLOntarioIconRemoveElement;
+    new(): HTMLOntarioIconRemoveElement;
+  };
+  interface HTMLOntarioIconRemoveAltElement extends Components.OntarioIconRemoveAlt, HTMLStencilElement {
+  }
+  var HTMLOntarioIconRemoveAltElement: {
+    prototype: HTMLOntarioIconRemoveAltElement;
+    new(): HTMLOntarioIconRemoveAltElement;
+  };
+  interface HTMLOntarioIconReplayElement extends Components.OntarioIconReplay, HTMLStencilElement {
+  }
+  var HTMLOntarioIconReplayElement: {
+    prototype: HTMLOntarioIconReplayElement;
+    new(): HTMLOntarioIconReplayElement;
+  };
+  interface HTMLOntarioIconRssFeedElement extends Components.OntarioIconRssFeed, HTMLStencilElement {
+  }
+  var HTMLOntarioIconRssFeedElement: {
+    prototype: HTMLOntarioIconRssFeedElement;
+    new(): HTMLOntarioIconRssFeedElement;
+  };
+  interface HTMLOntarioIconSaveElement extends Components.OntarioIconSave, HTMLStencilElement {
+  }
+  var HTMLOntarioIconSaveElement: {
+    prototype: HTMLOntarioIconSaveElement;
+    new(): HTMLOntarioIconSaveElement;
+  };
+  interface HTMLOntarioIconSearchElement extends Components.OntarioIconSearch, HTMLStencilElement {
+  }
+  var HTMLOntarioIconSearchElement: {
+    prototype: HTMLOntarioIconSearchElement;
+    new(): HTMLOntarioIconSearchElement;
+  };
+  interface HTMLOntarioIconSentiment1Element extends Components.OntarioIconSentiment1, HTMLStencilElement {
+  }
+  var HTMLOntarioIconSentiment1Element: {
+    prototype: HTMLOntarioIconSentiment1Element;
+    new(): HTMLOntarioIconSentiment1Element;
+  };
+  interface HTMLOntarioIconSentiment2Element extends Components.OntarioIconSentiment2, HTMLStencilElement {
+  }
+  var HTMLOntarioIconSentiment2Element: {
+    prototype: HTMLOntarioIconSentiment2Element;
+    new(): HTMLOntarioIconSentiment2Element;
+  };
+  interface HTMLOntarioIconSentiment3Element extends Components.OntarioIconSentiment3, HTMLStencilElement {
+  }
+  var HTMLOntarioIconSentiment3Element: {
+    prototype: HTMLOntarioIconSentiment3Element;
+    new(): HTMLOntarioIconSentiment3Element;
+  };
+  interface HTMLOntarioIconSentiment4Element extends Components.OntarioIconSentiment4, HTMLStencilElement {
+  }
+  var HTMLOntarioIconSentiment4Element: {
+    prototype: HTMLOntarioIconSentiment4Element;
+    new(): HTMLOntarioIconSentiment4Element;
+  };
+  interface HTMLOntarioIconSentiment5Element extends Components.OntarioIconSentiment5, HTMLStencilElement {
+  }
+  var HTMLOntarioIconSentiment5Element: {
+    prototype: HTMLOntarioIconSentiment5Element;
+    new(): HTMLOntarioIconSentiment5Element;
+  };
+  interface HTMLOntarioIconSettingsElement extends Components.OntarioIconSettings, HTMLStencilElement {
+  }
+  var HTMLOntarioIconSettingsElement: {
+    prototype: HTMLOntarioIconSettingsElement;
+    new(): HTMLOntarioIconSettingsElement;
+  };
+  interface HTMLOntarioIconShareElement extends Components.OntarioIconShare, HTMLStencilElement {
+  }
+  var HTMLOntarioIconShareElement: {
+    prototype: HTMLOntarioIconShareElement;
+    new(): HTMLOntarioIconShareElement;
+  };
+  interface HTMLOntarioIconSortElement extends Components.OntarioIconSort, HTMLStencilElement {
+  }
+  var HTMLOntarioIconSortElement: {
+    prototype: HTMLOntarioIconSortElement;
+    new(): HTMLOntarioIconSortElement;
+  };
+  interface HTMLOntarioIconTagElement extends Components.OntarioIconTag, HTMLStencilElement {
+  }
+  var HTMLOntarioIconTagElement: {
+    prototype: HTMLOntarioIconTagElement;
+    new(): HTMLOntarioIconTagElement;
+  };
+  interface HTMLOntarioIconTextMessageElement extends Components.OntarioIconTextMessage, HTMLStencilElement {
+  }
+  var HTMLOntarioIconTextMessageElement: {
+    prototype: HTMLOntarioIconTextMessageElement;
+    new(): HTMLOntarioIconTextMessageElement;
+  };
+  interface HTMLOntarioIconTimerElement extends Components.OntarioIconTimer, HTMLStencilElement {
+  }
+  var HTMLOntarioIconTimerElement: {
+    prototype: HTMLOntarioIconTimerElement;
+    new(): HTMLOntarioIconTimerElement;
+  };
+  interface HTMLOntarioIconTransportBicycleElement extends Components.OntarioIconTransportBicycle, HTMLStencilElement {
+  }
+  var HTMLOntarioIconTransportBicycleElement: {
+    prototype: HTMLOntarioIconTransportBicycleElement;
+    new(): HTMLOntarioIconTransportBicycleElement;
+  };
+  interface HTMLOntarioIconTransportBusElement extends Components.OntarioIconTransportBus, HTMLStencilElement {
+  }
+  var HTMLOntarioIconTransportBusElement: {
+    prototype: HTMLOntarioIconTransportBusElement;
+    new(): HTMLOntarioIconTransportBusElement;
+  };
+  interface HTMLOntarioIconTransportCarElement extends Components.OntarioIconTransportCar, HTMLStencilElement {
+  }
+  var HTMLOntarioIconTransportCarElement: {
+    prototype: HTMLOntarioIconTransportCarElement;
+    new(): HTMLOntarioIconTransportCarElement;
+  };
+  interface HTMLOntarioIconTransportWalkElement extends Components.OntarioIconTransportWalk, HTMLStencilElement {
+  }
+  var HTMLOntarioIconTransportWalkElement: {
+    prototype: HTMLOntarioIconTransportWalkElement;
+    new(): HTMLOntarioIconTransportWalkElement;
+  };
+  interface HTMLOntarioIconTtyElement extends Components.OntarioIconTty, HTMLStencilElement {
+  }
+  var HTMLOntarioIconTtyElement: {
+    prototype: HTMLOntarioIconTtyElement;
+    new(): HTMLOntarioIconTtyElement;
+  };
+  interface HTMLOntarioIconTwitterElement extends Components.OntarioIconTwitter, HTMLStencilElement {
+  }
+  var HTMLOntarioIconTwitterElement: {
+    prototype: HTMLOntarioIconTwitterElement;
+    new(): HTMLOntarioIconTwitterElement;
+  };
+  interface HTMLOntarioIconTwitterAltElement extends Components.OntarioIconTwitterAlt, HTMLStencilElement {
+  }
+  var HTMLOntarioIconTwitterAltElement: {
+    prototype: HTMLOntarioIconTwitterAltElement;
+    new(): HTMLOntarioIconTwitterAltElement;
+  };
+  interface HTMLOntarioIconUploadElement extends Components.OntarioIconUpload, HTMLStencilElement {
+  }
+  var HTMLOntarioIconUploadElement: {
+    prototype: HTMLOntarioIconUploadElement;
+    new(): HTMLOntarioIconUploadElement;
+  };
+  interface HTMLOntarioIconVideoElement extends Components.OntarioIconVideo, HTMLStencilElement {
+  }
+  var HTMLOntarioIconVideoElement: {
+    prototype: HTMLOntarioIconVideoElement;
+    new(): HTMLOntarioIconVideoElement;
+  };
+  interface HTMLOntarioIconVisaElement extends Components.OntarioIconVisa, HTMLStencilElement {
+  }
+  var HTMLOntarioIconVisaElement: {
+    prototype: HTMLOntarioIconVisaElement;
+    new(): HTMLOntarioIconVisaElement;
+  };
+  interface HTMLOntarioIconVoteDislikeElement extends Components.OntarioIconVoteDislike, HTMLStencilElement {
+  }
+  var HTMLOntarioIconVoteDislikeElement: {
+    prototype: HTMLOntarioIconVoteDislikeElement;
+    new(): HTMLOntarioIconVoteDislikeElement;
+  };
+  interface HTMLOntarioIconVoteLikeElement extends Components.OntarioIconVoteLike, HTMLStencilElement {
+  }
+  var HTMLOntarioIconVoteLikeElement: {
+    prototype: HTMLOntarioIconVoteLikeElement;
+    new(): HTMLOntarioIconVoteLikeElement;
+  };
+  interface HTMLOntarioIconVpnKeyElement extends Components.OntarioIconVpnKey, HTMLStencilElement {
+  }
+  var HTMLOntarioIconVpnKeyElement: {
+    prototype: HTMLOntarioIconVpnKeyElement;
+    new(): HTMLOntarioIconVpnKeyElement;
+  };
+  interface HTMLOntarioIconWheelchairElement extends Components.OntarioIconWheelchair, HTMLStencilElement {
+  }
+  var HTMLOntarioIconWheelchairElement: {
+    prototype: HTMLOntarioIconWheelchairElement;
+    new(): HTMLOntarioIconWheelchairElement;
+  };
+  interface HTMLOntarioIconWifiElement extends Components.OntarioIconWifi, HTMLStencilElement {
+  }
+  var HTMLOntarioIconWifiElement: {
+    prototype: HTMLOntarioIconWifiElement;
+    new(): HTMLOntarioIconWifiElement;
+  };
+  interface HTMLOntarioIconYoutubeElement extends Components.OntarioIconYoutube, HTMLStencilElement {
+  }
+  var HTMLOntarioIconYoutubeElement: {
+    prototype: HTMLOntarioIconYoutubeElement;
+    new(): HTMLOntarioIconYoutubeElement;
+  };
+  interface HTMLOntarioInputElement extends Components.OntarioInput, HTMLStencilElement {
+  }
+  var HTMLOntarioInputElement: {
+    prototype: HTMLOntarioInputElement;
+    new(): HTMLOntarioInputElement;
+  };
+  interface HTMLOntarioRadioButtonsElement extends Components.OntarioRadioButtons, HTMLStencilElement {
+  }
+  var HTMLOntarioRadioButtonsElement: {
+    prototype: HTMLOntarioRadioButtonsElement;
+    new(): HTMLOntarioRadioButtonsElement;
+  };
+  interface HTMLOntarioTextareaElement extends Components.OntarioTextarea, HTMLStencilElement {
+  }
+  var HTMLOntarioTextareaElement: {
+    prototype: HTMLOntarioTextareaElement;
+    new(): HTMLOntarioTextareaElement;
+  };
+  interface HTMLElementTagNameMap {
+    "my-component": HTMLMyComponentElement;
+    "ontario-button": HTMLOntarioButtonElement;
+    "ontario-checkboxes": HTMLOntarioCheckboxesElement;
+    "ontario-dropdown-list": HTMLOntarioDropdownListElement;
+    "ontario-hint-expander": HTMLOntarioHintExpanderElement;
+    "ontario-hint-text": HTMLOntarioHintTextElement;
+    "ontario-icon-accessibility": HTMLOntarioIconAccessibilityElement;
+    "ontario-icon-account": HTMLOntarioIconAccountElement;
+    "ontario-icon-add": HTMLOntarioIconAddElement;
+    "ontario-icon-add-alt": HTMLOntarioIconAddAltElement;
+    "ontario-icon-alert-error": HTMLOntarioIconAlertErrorElement;
+    "ontario-icon-alert-information": HTMLOntarioIconAlertInformationElement;
+    "ontario-icon-alert-success": HTMLOntarioIconAlertSuccessElement;
+    "ontario-icon-alert-warning": HTMLOntarioIconAlertWarningElement;
+    "ontario-icon-attach": HTMLOntarioIconAttachElement;
+    "ontario-icon-bookmark-off": HTMLOntarioIconBookmarkOffElement;
+    "ontario-icon-bookmark-on": HTMLOntarioIconBookmarkOnElement;
+    "ontario-icon-calendar": HTMLOntarioIconCalendarElement;
+    "ontario-icon-camera": HTMLOntarioIconCameraElement;
+    "ontario-icon-chevron-down": HTMLOntarioIconChevronDownElement;
+    "ontario-icon-chevron-left": HTMLOntarioIconChevronLeftElement;
+    "ontario-icon-chevron-right": HTMLOntarioIconChevronRightElement;
+    "ontario-icon-chevron-up": HTMLOntarioIconChevronUpElement;
+    "ontario-icon-clock": HTMLOntarioIconClockElement;
+    "ontario-icon-close": HTMLOntarioIconCloseElement;
+    "ontario-icon-cloud": HTMLOntarioIconCloudElement;
+    "ontario-icon-collapse": HTMLOntarioIconCollapseElement;
+    "ontario-icon-credit-card": HTMLOntarioIconCreditCardElement;
+    "ontario-icon-delete": HTMLOntarioIconDeleteElement;
+    "ontario-icon-document": HTMLOntarioIconDocumentElement;
+    "ontario-icon-download": HTMLOntarioIconDownloadElement;
+    "ontario-icon-dropdown-arrow": HTMLOntarioIconDropdownArrowElement;
+    "ontario-icon-edit": HTMLOntarioIconEditElement;
+    "ontario-icon-email": HTMLOntarioIconEmailElement;
+    "ontario-icon-expand": HTMLOntarioIconExpandElement;
+    "ontario-icon-export": HTMLOntarioIconExportElement;
+    "ontario-icon-facebook": HTMLOntarioIconFacebookElement;
+    "ontario-icon-facebook-alt": HTMLOntarioIconFacebookAltElement;
+    "ontario-icon-favourite-off": HTMLOntarioIconFavouriteOffElement;
+    "ontario-icon-favourite-on": HTMLOntarioIconFavouriteOnElement;
+    "ontario-icon-filter": HTMLOntarioIconFilterElement;
+    "ontario-icon-flickr": HTMLOntarioIconFlickrElement;
+    "ontario-icon-grid": HTMLOntarioIconGridElement;
+    "ontario-icon-help": HTMLOntarioIconHelpElement;
+    "ontario-icon-instagram": HTMLOntarioIconInstagramElement;
+    "ontario-icon-interac-en": HTMLOntarioIconInteracEnElement;
+    "ontario-icon-interac-en-alt": HTMLOntarioIconInteracEnAltElement;
+    "ontario-icon-interac-fr": HTMLOntarioIconInteracFrElement;
+    "ontario-icon-interac-fr-alt": HTMLOntarioIconInteracFrAltElement;
+    "ontario-icon-linkedin": HTMLOntarioIconLinkedinElement;
+    "ontario-icon-linkedin-alt": HTMLOntarioIconLinkedinAltElement;
+    "ontario-icon-list": HTMLOntarioIconListElement;
+    "ontario-icon-live-chat": HTMLOntarioIconLiveChatElement;
+    "ontario-icon-location-off": HTMLOntarioIconLocationOffElement;
+    "ontario-icon-location-on": HTMLOntarioIconLocationOnElement;
+    "ontario-icon-lock-off": HTMLOntarioIconLockOffElement;
+    "ontario-icon-lock-on": HTMLOntarioIconLockOnElement;
+    "ontario-icon-map": HTMLOntarioIconMapElement;
+    "ontario-icon-mastercard": HTMLOntarioIconMastercardElement;
+    "ontario-icon-mastercard-alt": HTMLOntarioIconMastercardAltElement;
+    "ontario-icon-media-fast-forward": HTMLOntarioIconMediaFastForwardElement;
+    "ontario-icon-media-fast-rewind": HTMLOntarioIconMediaFastRewindElement;
+    "ontario-icon-media-pause": HTMLOntarioIconMediaPauseElement;
+    "ontario-icon-media-play": HTMLOntarioIconMediaPlayElement;
+    "ontario-icon-media-stop": HTMLOntarioIconMediaStopElement;
+    "ontario-icon-menu": HTMLOntarioIconMenuElement;
+    "ontario-icon-microphone-off": HTMLOntarioIconMicrophoneOffElement;
+    "ontario-icon-microphone-on": HTMLOntarioIconMicrophoneOnElement;
+    "ontario-icon-more-vertical": HTMLOntarioIconMoreVerticalElement;
+    "ontario-icon-new-window": HTMLOntarioIconNewWindowElement;
+    "ontario-icon-next": HTMLOntarioIconNextElement;
+    "ontario-icon-notification": HTMLOntarioIconNotificationElement;
+    "ontario-icon-password-hide": HTMLOntarioIconPasswordHideElement;
+    "ontario-icon-password-show": HTMLOntarioIconPasswordShowElement;
+    "ontario-icon-phone": HTMLOntarioIconPhoneElement;
+    "ontario-icon-photo": HTMLOntarioIconPhotoElement;
+    "ontario-icon-pin-location-off": HTMLOntarioIconPinLocationOffElement;
+    "ontario-icon-pin-location-on": HTMLOntarioIconPinLocationOnElement;
+    "ontario-icon-previous": HTMLOntarioIconPreviousElement;
+    "ontario-icon-print": HTMLOntarioIconPrintElement;
+    "ontario-icon-remove": HTMLOntarioIconRemoveElement;
+    "ontario-icon-remove-alt": HTMLOntarioIconRemoveAltElement;
+    "ontario-icon-replay": HTMLOntarioIconReplayElement;
+    "ontario-icon-rss-feed": HTMLOntarioIconRssFeedElement;
+    "ontario-icon-save": HTMLOntarioIconSaveElement;
+    "ontario-icon-search": HTMLOntarioIconSearchElement;
+    "ontario-icon-sentiment-1": HTMLOntarioIconSentiment1Element;
+    "ontario-icon-sentiment-2": HTMLOntarioIconSentiment2Element;
+    "ontario-icon-sentiment-3": HTMLOntarioIconSentiment3Element;
+    "ontario-icon-sentiment-4": HTMLOntarioIconSentiment4Element;
+    "ontario-icon-sentiment-5": HTMLOntarioIconSentiment5Element;
+    "ontario-icon-settings": HTMLOntarioIconSettingsElement;
+    "ontario-icon-share": HTMLOntarioIconShareElement;
+    "ontario-icon-sort": HTMLOntarioIconSortElement;
+    "ontario-icon-tag": HTMLOntarioIconTagElement;
+    "ontario-icon-text-message": HTMLOntarioIconTextMessageElement;
+    "ontario-icon-timer": HTMLOntarioIconTimerElement;
+    "ontario-icon-transport-bicycle": HTMLOntarioIconTransportBicycleElement;
+    "ontario-icon-transport-bus": HTMLOntarioIconTransportBusElement;
+    "ontario-icon-transport-car": HTMLOntarioIconTransportCarElement;
+    "ontario-icon-transport-walk": HTMLOntarioIconTransportWalkElement;
+    "ontario-icon-tty": HTMLOntarioIconTtyElement;
+    "ontario-icon-twitter": HTMLOntarioIconTwitterElement;
+    "ontario-icon-twitter-alt": HTMLOntarioIconTwitterAltElement;
+    "ontario-icon-upload": HTMLOntarioIconUploadElement;
+    "ontario-icon-video": HTMLOntarioIconVideoElement;
+    "ontario-icon-visa": HTMLOntarioIconVisaElement;
+    "ontario-icon-vote-dislike": HTMLOntarioIconVoteDislikeElement;
+    "ontario-icon-vote-like": HTMLOntarioIconVoteLikeElement;
+    "ontario-icon-vpn-key": HTMLOntarioIconVpnKeyElement;
+    "ontario-icon-wheelchair": HTMLOntarioIconWheelchairElement;
+    "ontario-icon-wifi": HTMLOntarioIconWifiElement;
+    "ontario-icon-youtube": HTMLOntarioIconYoutubeElement;
+    "ontario-input": HTMLOntarioInputElement;
+    "ontario-radio-buttons": HTMLOntarioRadioButtonsElement;
+    "ontario-textarea": HTMLOntarioTextareaElement;
+  }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
-    }
-    interface OntarioButton {
-        /**
-          * Provides more context as to what the button interaction is doing.
-          * @example <ontario-button aria-label="Click button to open map">Open</ontario button>
-         */
-        "ariaLabel"?: string;
-        /**
-          * The unique identifier of the button.
-         */
-        "elementId"?: string;
-        /**
-          * The native HTML button type the button should use.
-         */
-        "htmlType"?: HtmlType;
-        /**
-          * Text to be displayed within the button. This will override the text provided through the Element Content.
-          * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
-         */
-        "label"?: string;
-        /**
-          * The type of button to render.
-         */
-        "type"?: ButtonType;
-    }
-    interface OntarioCheckboxes {
-        /**
-          * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
-          * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkboxes"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
-         */
-        "hintExpander"?: HintExpander | string;
-        /**
-          * Define hint text on an element.
-         */
-        "hintText"?: string;
-        /**
-          * Determine whether the input field is required. If required, it should be set to true.
-          * @example <ontario-checkboxes ... is-required></ontario-checkboxes>
-         */
-        "isRequired"?: boolean;
-        /**
-          * The legend for the checkboxes
-         */
-        "legend"?: string;
-        /**
-          * The name for the checkboxes.
-         */
-        "name"?: string;
-        /**
-          * Emitted when a keyboard input or mouse event occurs.
-         */
-        "onChangeEvent"?: (event: CustomEvent<any>) => void;
-        /**
-          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
-          * @example <ontario-checkboxes   legend="This is a question?"   name= "ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
-         */
-        "options"?: CheckboxOption[] | string;
-    }
-    interface OntarioDropdownList {
-        /**
-          * The ID for the dropdown list.
-         */
-        "elementId"?: string;
-        /**
-          * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
-          * @example <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
-         */
-        "isEmptyStartOption"?: boolean | string;
-        /**
-          * Determine whether the dropdown list is required. If required, add `is-required` attribute. Otherwise, the `optional` flag will appear.
-          * @example <ontario-dropdown-list ... is-required></ontario-dropdown-list>
-         */
-        "isRequired"?: boolean;
-        /**
-          * The label for the Dropdown List.
-         */
-        "label"?: string;
-        /**
-          * The name for the dropdown list.
-         */
-        "name"?: string;
-        /**
-          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset.
-          * @example <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required is-empty-start-option="Please select" options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
-         */
-        "options"?: string | DropdownOption[];
-    }
-    interface OntarioHintExpander {
-        /**
-          * Include visually hidden text inside the label that describes to screen readers the availability of a hint expander
-         */
-        "ariaLabel"?: string;
-        /**
-          * Content to display as the hint, once the expander is toggled open. Please note that any content that is passed into this prop will only be displayed as a string. If you would like to add HTML content, supply child content to the component.
-          * @example <ontario-hint-expander hint="This is the hint" aria-label="This indicates that the hint can be expanded">   <img src="https://www.jquery-az.com/html/images/banana.jpg" title="Title of image" alt="alt text here"/>   <p> Here is the content beside the image </p> </ontario-hint-expander>
-         */
-        "content"?: string;
-        /**
-          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
-         */
-        "elementId"?: string;
-        /**
-          * Text to display as the hint expander question/statement
-         */
-        "hint"?: string;
-        /**
-          * Emitted when a keyboard input or mouse event occurs.
-         */
-        "onToggleExpanderEvent"?: (event: CustomEvent<any>) => void;
-    }
-    interface OntarioHintText {
-        /**
-          * Used to used to establish a relationship between hint text content and elements using aria-describedby.
-         */
-        "elementId"?: string;
-        /**
-          * Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence.
-          * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
-         */
-        "hint"?: string;
-    }
-    interface OntarioIconAccessibility {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconAccount {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconAdd {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconAddAlt {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconAlertError {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconAlertInformation {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconAlertSuccess {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconAlertWarning {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconAttach {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconBookmarkOff {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconBookmarkOn {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconCalendar {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconCamera {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconChevronDown {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconChevronLeft {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconChevronRight {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconChevronUp {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconClock {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconClose {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconCloud {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconCollapse {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconCreditCard {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconDelete {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconDocument {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconDownload {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconDropdownArrow {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconEdit {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconEmail {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconExpand {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconExport {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconFacebook {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconFacebookAlt {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconFavouriteOff {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconFavouriteOn {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconFilter {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconFlickr {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconGrid {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconHelp {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconInstagram {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconInteracEn {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconInteracEnAlt {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconInteracFr {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconInteracFrAlt {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconLinkedin {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconLinkedinAlt {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconList {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconLiveChat {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconLocationOff {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconLocationOn {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconLockOff {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconLockOn {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconMap {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconMastercard {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconMastercardAlt {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconMediaFastForward {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconMediaFastRewind {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconMediaPause {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconMediaPlay {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconMediaStop {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconMenu {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconMicrophoneOff {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconMicrophoneOn {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconMoreVertical {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconNewWindow {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconNext {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconNotification {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconPasswordHide {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconPasswordShow {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconPhone {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconPhoto {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconPinLocationOff {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconPinLocationOn {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconPrevious {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconPrint {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconRemove {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconRemoveAlt {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconReplay {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconRssFeed {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconSave {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconSearch {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconSentiment1 {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconSentiment2 {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconSentiment3 {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconSentiment4 {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconSentiment5 {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconSettings {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconShare {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconSort {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconTag {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconTextMessage {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconTimer {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconTransportBicycle {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconTransportBus {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconTransportCar {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconTransportWalk {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconTty {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconTwitter {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconTwitterAlt {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconUpload {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconVideo {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconVisa {
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconVoteDislike {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconVoteLike {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconVpnKey {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconWheelchair {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconWifi {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconYoutube {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioInput {
-        /**
-          * The aria-describedBy value if the input has hint text associated with it.
-         */
-        "describedBy"?: string;
-        /**
-          * The unique identifier of the input. If no ID is passed, one will be autogenerated.
-         */
-        "elementId"?: string;
-        /**
-          * The width of the input field. If no value is assigned, it will present as the default input width.
-         */
-        "inputWidth"?: '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default';
-        /**
-          * The text to display as label.
-         */
-        "labelCaption"?: string;
-        /**
-          * The form control with which the caption is associated.
-         */
-        "labelFor"?: string;
-        /**
-          * The type of label to render.
-         */
-        "labelType"?: 'default' | 'large' | 'heading';
-        /**
-          * The name assigned to the input.The name value is used to reference form data after a form is submitted.
-         */
-        "name"?: string;
-        /**
-          * Emitted when the input loses focus.
-         */
-        "onBlurEvent"?: (event: CustomEvent<void>) => void;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onChangeEvent"?: (event: CustomEvent<KeyboardEvent>) => void;
-        /**
-          * Emitted when the input gains focus.
-         */
-        "onFocusEvent"?: (event: CustomEvent<void>) => void;
-        /**
-          * Used to define whether the input field is required or not.
-         */
-        "required"?: boolean;
-        /**
-          * The input type value.
-         */
-        "type"?: 'text' | 'tel' | 'email' | 'password';
-        /**
-          * The input content value.
-         */
-        "value"?: string;
-    }
-    interface OntarioRadioButtons {
-        /**
-          * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
-          * @example <ontario-radio-buttons   legend="This is a question?" 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content", 		    "aria-label": "This indicates that the hint can be expanded" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content",     "aria-label": "This indicates that the hint can be expanded"   }' > </ontario-radio-buttons>
-         */
-        "hintExpander"?: HintExpander | string;
-        /**
-          * Define hint text for Radio Button fieldset.
-         */
-        "hintText"?: string;
-        /**
-          * Determine whether the input field is required. If required, it should be set to true. This can be done by passing in `is-required` to the component.
-          * @example <ontario-radio-buttons ... is-required></ontario-radio-buttons>
-         */
-        "isRequired"?: boolean;
-        /**
-          * The legend for the Radio Buttons.
-         */
-        "legend"?: string;
-        /**
-          * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
-         */
-        "name"?: string;
-        /**
-          * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
-          * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-radio-buttons>
-         */
-        "options"?: string | RadioOption[];
-    }
-    interface OntarioTextarea {
-        /**
-          * The aria-describedBy value if the textarea has hint text associated with it.
-         */
-        "describedBy"?: string;
-        /**
-          * The unique identifier of the textarea. If no ID is passed, one will be autogenerated.
-         */
-        "elementId"?: string;
-        /**
-          * The text to display as label.
-         */
-        "labelCaption"?: string;
-        /**
-          * The form control with which the caption is associated.
-         */
-        "labelFor"?: string;
-        /**
-          * The type of label to render.
-         */
-        "labelType"?: 'default' | 'large' | 'heading';
-        /**
-          * The name assigned to the textarea. The name value is used to reference form data after a form is submitted.
-         */
-        "name"?: string;
-        /**
-          * Emitted when the input loses focus.
-         */
-        "onBlurEvent"?: (event: CustomEvent<void>) => void;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onChangeEvent"?: (event: CustomEvent<KeyboardEvent>) => void;
-        /**
-          * Emitted when the input gains focus.
-         */
-        "onFocusEvent"?: (event: CustomEvent<void>) => void;
-        /**
-          * Used to define whether the textarea field is required or not.
-         */
-        "required"?: boolean;
-        /**
-          * The textarea content value.
-         */
-        "value"?: string;
-    }
-    interface IntrinsicElements {
-        "my-component": MyComponent;
-        "ontario-button": OntarioButton;
-        "ontario-checkboxes": OntarioCheckboxes;
-        "ontario-dropdown-list": OntarioDropdownList;
-        "ontario-hint-expander": OntarioHintExpander;
-        "ontario-hint-text": OntarioHintText;
-        "ontario-icon-accessibility": OntarioIconAccessibility;
-        "ontario-icon-account": OntarioIconAccount;
-        "ontario-icon-add": OntarioIconAdd;
-        "ontario-icon-add-alt": OntarioIconAddAlt;
-        "ontario-icon-alert-error": OntarioIconAlertError;
-        "ontario-icon-alert-information": OntarioIconAlertInformation;
-        "ontario-icon-alert-success": OntarioIconAlertSuccess;
-        "ontario-icon-alert-warning": OntarioIconAlertWarning;
-        "ontario-icon-attach": OntarioIconAttach;
-        "ontario-icon-bookmark-off": OntarioIconBookmarkOff;
-        "ontario-icon-bookmark-on": OntarioIconBookmarkOn;
-        "ontario-icon-calendar": OntarioIconCalendar;
-        "ontario-icon-camera": OntarioIconCamera;
-        "ontario-icon-chevron-down": OntarioIconChevronDown;
-        "ontario-icon-chevron-left": OntarioIconChevronLeft;
-        "ontario-icon-chevron-right": OntarioIconChevronRight;
-        "ontario-icon-chevron-up": OntarioIconChevronUp;
-        "ontario-icon-clock": OntarioIconClock;
-        "ontario-icon-close": OntarioIconClose;
-        "ontario-icon-cloud": OntarioIconCloud;
-        "ontario-icon-collapse": OntarioIconCollapse;
-        "ontario-icon-credit-card": OntarioIconCreditCard;
-        "ontario-icon-delete": OntarioIconDelete;
-        "ontario-icon-document": OntarioIconDocument;
-        "ontario-icon-download": OntarioIconDownload;
-        "ontario-icon-dropdown-arrow": OntarioIconDropdownArrow;
-        "ontario-icon-edit": OntarioIconEdit;
-        "ontario-icon-email": OntarioIconEmail;
-        "ontario-icon-expand": OntarioIconExpand;
-        "ontario-icon-export": OntarioIconExport;
-        "ontario-icon-facebook": OntarioIconFacebook;
-        "ontario-icon-facebook-alt": OntarioIconFacebookAlt;
-        "ontario-icon-favourite-off": OntarioIconFavouriteOff;
-        "ontario-icon-favourite-on": OntarioIconFavouriteOn;
-        "ontario-icon-filter": OntarioIconFilter;
-        "ontario-icon-flickr": OntarioIconFlickr;
-        "ontario-icon-grid": OntarioIconGrid;
-        "ontario-icon-help": OntarioIconHelp;
-        "ontario-icon-instagram": OntarioIconInstagram;
-        "ontario-icon-interac-en": OntarioIconInteracEn;
-        "ontario-icon-interac-en-alt": OntarioIconInteracEnAlt;
-        "ontario-icon-interac-fr": OntarioIconInteracFr;
-        "ontario-icon-interac-fr-alt": OntarioIconInteracFrAlt;
-        "ontario-icon-linkedin": OntarioIconLinkedin;
-        "ontario-icon-linkedin-alt": OntarioIconLinkedinAlt;
-        "ontario-icon-list": OntarioIconList;
-        "ontario-icon-live-chat": OntarioIconLiveChat;
-        "ontario-icon-location-off": OntarioIconLocationOff;
-        "ontario-icon-location-on": OntarioIconLocationOn;
-        "ontario-icon-lock-off": OntarioIconLockOff;
-        "ontario-icon-lock-on": OntarioIconLockOn;
-        "ontario-icon-map": OntarioIconMap;
-        "ontario-icon-mastercard": OntarioIconMastercard;
-        "ontario-icon-mastercard-alt": OntarioIconMastercardAlt;
-        "ontario-icon-media-fast-forward": OntarioIconMediaFastForward;
-        "ontario-icon-media-fast-rewind": OntarioIconMediaFastRewind;
-        "ontario-icon-media-pause": OntarioIconMediaPause;
-        "ontario-icon-media-play": OntarioIconMediaPlay;
-        "ontario-icon-media-stop": OntarioIconMediaStop;
-        "ontario-icon-menu": OntarioIconMenu;
-        "ontario-icon-microphone-off": OntarioIconMicrophoneOff;
-        "ontario-icon-microphone-on": OntarioIconMicrophoneOn;
-        "ontario-icon-more-vertical": OntarioIconMoreVertical;
-        "ontario-icon-new-window": OntarioIconNewWindow;
-        "ontario-icon-next": OntarioIconNext;
-        "ontario-icon-notification": OntarioIconNotification;
-        "ontario-icon-password-hide": OntarioIconPasswordHide;
-        "ontario-icon-password-show": OntarioIconPasswordShow;
-        "ontario-icon-phone": OntarioIconPhone;
-        "ontario-icon-photo": OntarioIconPhoto;
-        "ontario-icon-pin-location-off": OntarioIconPinLocationOff;
-        "ontario-icon-pin-location-on": OntarioIconPinLocationOn;
-        "ontario-icon-previous": OntarioIconPrevious;
-        "ontario-icon-print": OntarioIconPrint;
-        "ontario-icon-remove": OntarioIconRemove;
-        "ontario-icon-remove-alt": OntarioIconRemoveAlt;
-        "ontario-icon-replay": OntarioIconReplay;
-        "ontario-icon-rss-feed": OntarioIconRssFeed;
-        "ontario-icon-save": OntarioIconSave;
-        "ontario-icon-search": OntarioIconSearch;
-        "ontario-icon-sentiment-1": OntarioIconSentiment1;
-        "ontario-icon-sentiment-2": OntarioIconSentiment2;
-        "ontario-icon-sentiment-3": OntarioIconSentiment3;
-        "ontario-icon-sentiment-4": OntarioIconSentiment4;
-        "ontario-icon-sentiment-5": OntarioIconSentiment5;
-        "ontario-icon-settings": OntarioIconSettings;
-        "ontario-icon-share": OntarioIconShare;
-        "ontario-icon-sort": OntarioIconSort;
-        "ontario-icon-tag": OntarioIconTag;
-        "ontario-icon-text-message": OntarioIconTextMessage;
-        "ontario-icon-timer": OntarioIconTimer;
-        "ontario-icon-transport-bicycle": OntarioIconTransportBicycle;
-        "ontario-icon-transport-bus": OntarioIconTransportBus;
-        "ontario-icon-transport-car": OntarioIconTransportCar;
-        "ontario-icon-transport-walk": OntarioIconTransportWalk;
-        "ontario-icon-tty": OntarioIconTty;
-        "ontario-icon-twitter": OntarioIconTwitter;
-        "ontario-icon-twitter-alt": OntarioIconTwitterAlt;
-        "ontario-icon-upload": OntarioIconUpload;
-        "ontario-icon-video": OntarioIconVideo;
-        "ontario-icon-visa": OntarioIconVisa;
-        "ontario-icon-vote-dislike": OntarioIconVoteDislike;
-        "ontario-icon-vote-like": OntarioIconVoteLike;
-        "ontario-icon-vpn-key": OntarioIconVpnKey;
-        "ontario-icon-wheelchair": OntarioIconWheelchair;
-        "ontario-icon-wifi": OntarioIconWifi;
-        "ontario-icon-youtube": OntarioIconYoutube;
-        "ontario-input": OntarioInput;
-        "ontario-radio-buttons": OntarioRadioButtons;
-        "ontario-textarea": OntarioTextarea;
-    }
+  interface MyComponent {
+    /**
+      * The first name
+     */
+    "first"?: string;
+    /**
+      * The last name
+     */
+    "last"?: string;
+    /**
+      * The middle name
+     */
+    "middle"?: string;
+  }
+  interface OntarioButton {
+    /**
+      * Provides more context as to what the button interaction is doing.
+      * @example <ontario-button aria-label="Click button to open map">Open</ontario button>
+     */
+    "ariaLabel"?: string;
+    /**
+      * The unique identifier of the button.
+     */
+    "elementId"?: string;
+    /**
+      * The native HTML button type the button should use.
+     */
+    "htmlType"?: HtmlType;
+    /**
+      * Text to be displayed within the button. This will override the text provided through the Element Content.
+      * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
+     */
+    "label"?: string;
+    /**
+      * The type of button to render.
+     */
+    "type"?: ButtonType;
+  }
+  interface OntarioCheckboxes {
+    /**
+      * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
+      * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkboxes"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content"  }'  > </ontario-checkboxes>
+     */
+    "hintExpander"?: HintExpander | string;
+    /**
+      * Define hint text on an element.
+     */
+    "hintText"?: string;
+    /**
+      * Determine whether the input field is required. If required, it should be set to true.
+      * @example <ontario-checkboxes ... is-required></ontario-checkboxes>
+     */
+    "isRequired"?: boolean;
+    /**
+      * The legend for the checkboxes
+     */
+    "legend"?: string;
+    /**
+      * The name for the checkboxes.
+     */
+    "name"?: string;
+    /**
+      * Emitted when a keyboard input or mouse event occurs.
+     */
+    "onChangeEvent"?: (event: CustomEvent<any>) => void;
+    /**
+      * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
+      * @example <ontario-checkboxes   legend="This is a question?"   name= "ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-checkboxes>
+     */
+    "options"?: CheckboxOption[] | string;
+  }
+  interface OntarioDropdownList {
+    /**
+      * The ID for the dropdown list.
+     */
+    "elementId"?: string;
+    /**
+      * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
+      * @example <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
+     */
+    "isEmptyStartOption"?: boolean | string;
+    /**
+      * Determine whether the dropdown list is required. If required, add `is-required` attribute. Otherwise, the `optional` flag will appear.
+      * @example <ontario-dropdown-list ... is-required></ontario-dropdown-list>
+     */
+    "isRequired"?: boolean;
+    /**
+      * The label for the Dropdown List.
+     */
+    "label"?: string;
+    /**
+      * The name for the dropdown list.
+     */
+    "name"?: string;
+    /**
+      * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset.
+      * @example <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required is-empty-start-option="Please select" options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
+     */
+    "options"?: string | DropdownOption[];
+  }
+  interface OntarioHintExpander {
+    /**
+      * Content to display as the hint, once the expander is toggled open. Please note that any content that is passed into this prop will only be displayed as a string. If you would like to add HTML content, supply child content to the component.
+      * @example <ontario-hint-expander hint="This is the hint"   <img src="https://www.jquery-az.com/html/images/banana.jpg" title="Title of image" alt="alt text here"/>   <p> Here is the content beside the image </p> </ontario-hint-expander>
+     */
+    "content"?: string;
+    /**
+      * Used to used to establish a relationship between hint text content and elements using aria-describedby.
+     */
+    "elementId"?: string;
+    /**
+      * Text to display as the hint expander question/statement
+     */
+    "hint"?: string;
+    /**
+      * Emitted when a keyboard input or mouse event occurs.
+     */
+    "onToggleExpanderEvent"?: (event: CustomEvent<any>) => void;
+  }
+  interface OntarioHintText {
+    /**
+      * Used to used to establish a relationship between hint text content and elements using aria-describedby.
+     */
+    "elementId"?: string;
+    /**
+      * Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence.
+      * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
+     */
+    "hint"?: string;
+  }
+  interface OntarioIconAccessibility {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconAccount {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconAdd {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconAddAlt {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconAlertError {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconAlertInformation {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconAlertSuccess {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconAlertWarning {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconAttach {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconBookmarkOff {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconBookmarkOn {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconCalendar {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconCamera {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconChevronDown {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconChevronLeft {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconChevronRight {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconChevronUp {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconClock {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconClose {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconCloud {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconCollapse {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconCreditCard {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconDelete {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconDocument {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconDownload {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconDropdownArrow {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconEdit {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconEmail {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconExpand {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconExport {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconFacebook {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconFacebookAlt {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconFavouriteOff {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconFavouriteOn {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconFilter {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconFlickr {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconGrid {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconHelp {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconInstagram {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconInteracEn {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconInteracEnAlt {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconInteracFr {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconInteracFrAlt {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconLinkedin {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconLinkedinAlt {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconList {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconLiveChat {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconLocationOff {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconLocationOn {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconLockOff {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconLockOn {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconMap {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconMastercard {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconMastercardAlt {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconMediaFastForward {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconMediaFastRewind {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconMediaPause {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconMediaPlay {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconMediaStop {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconMenu {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconMicrophoneOff {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconMicrophoneOn {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconMoreVertical {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconNewWindow {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconNext {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconNotification {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconPasswordHide {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconPasswordShow {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconPhone {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconPhoto {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconPinLocationOff {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconPinLocationOn {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconPrevious {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconPrint {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconRemove {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconRemoveAlt {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconReplay {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconRssFeed {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconSave {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconSearch {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconSentiment1 {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconSentiment2 {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconSentiment3 {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconSentiment4 {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconSentiment5 {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconSettings {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconShare {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconSort {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconTag {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconTextMessage {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconTimer {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconTransportBicycle {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconTransportBus {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconTransportCar {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconTransportWalk {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconTty {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconTwitter {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconTwitterAlt {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconUpload {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconVideo {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconVisa {
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconVoteDislike {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconVoteLike {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconVpnKey {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconWheelchair {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconWifi {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioIconYoutube {
+    /**
+      * Set the icon's colour.
+     */
+    "colour"?: IconColour;
+    /**
+      * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+     */
+    "iconWidth"?: number;
+  }
+  interface OntarioInput {
+    /**
+      * The aria-describedBy value if the input has hint text associated with it.
+     */
+    "describedBy"?: string;
+    /**
+      * The unique identifier of the input. If no ID is passed, one will be autogenerated.
+     */
+    "elementId"?: string;
+    /**
+      * The width of the input field. If no value is assigned, it will present as the default input width.
+     */
+    "inputWidth"?: '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default';
+    /**
+      * The text to display as label.
+     */
+    "labelCaption"?: string;
+    /**
+      * The form control with which the caption is associated.
+     */
+    "labelFor"?: string;
+    /**
+      * The type of label to render.
+     */
+    "labelType"?: 'default' | 'large' | 'heading';
+    /**
+      * The name assigned to the input.The name value is used to reference form data after a form is submitted.
+     */
+    "name"?: string;
+    /**
+      * Emitted when the input loses focus.
+     */
+    "onBlurEvent"?: (event: CustomEvent<void>) => void;
+    /**
+      * Emitted when a keyboard input occurred.
+     */
+    "onChangeEvent"?: (event: CustomEvent<KeyboardEvent>) => void;
+    /**
+      * Emitted when the input gains focus.
+     */
+    "onFocusEvent"?: (event: CustomEvent<void>) => void;
+    /**
+      * Used to define whether the input field is required or not.
+     */
+    "required"?: boolean;
+    /**
+      * The input type value.
+     */
+    "type"?: 'text' | 'tel' | 'email' | 'password';
+    /**
+      * The input content value.
+     */
+    "value"?: string;
+  }
+  interface OntarioRadioButtons {
+    /**
+      * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
+      * @example <ontario-radio-buttons   legend="This is a question?" 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }' > </ontario-radio-buttons>
+     */
+    "hintExpander"?: HintExpander | string;
+    /**
+      * Define hint text for Radio Button fieldset.
+     */
+    "hintText"?: string;
+    /**
+      * Determine whether the input field is required. If required, it should be set to true. This can be done by passing in `is-required` to the component.
+      * @example <ontario-radio-buttons ... is-required></ontario-radio-buttons>
+     */
+    "isRequired"?: boolean;
+    /**
+      * The legend for the Radio Buttons.
+     */
+    "legend"?: string;
+    /**
+      * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
+     */
+    "name"?: string;
+    /**
+      * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
+      * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-radio-buttons>
+     */
+    "options"?: string | RadioOption[];
+  }
+  interface OntarioTextarea {
+    /**
+      * The aria-describedBy value if the textarea has hint text associated with it.
+     */
+    "describedBy"?: string;
+    /**
+      * The unique identifier of the textarea. If no ID is passed, one will be autogenerated.
+     */
+    "elementId"?: string;
+    /**
+      * The text to display as label.
+     */
+    "labelCaption"?: string;
+    /**
+      * The form control with which the caption is associated.
+     */
+    "labelFor"?: string;
+    /**
+      * The type of label to render.
+     */
+    "labelType"?: 'default' | 'large' | 'heading';
+    /**
+      * The name assigned to the textarea. The name value is used to reference form data after a form is submitted.
+     */
+    "name"?: string;
+    /**
+      * Emitted when the input loses focus.
+     */
+    "onBlurEvent"?: (event: CustomEvent<void>) => void;
+    /**
+      * Emitted when a keyboard input occurred.
+     */
+    "onChangeEvent"?: (event: CustomEvent<KeyboardEvent>) => void;
+    /**
+      * Emitted when the input gains focus.
+     */
+    "onFocusEvent"?: (event: CustomEvent<void>) => void;
+    /**
+      * Used to define whether the textarea field is required or not.
+     */
+    "required"?: boolean;
+    /**
+      * The textarea content value.
+     */
+    "value"?: string;
+  }
+  interface IntrinsicElements {
+    "my-component": MyComponent;
+    "ontario-button": OntarioButton;
+    "ontario-checkboxes": OntarioCheckboxes;
+    "ontario-dropdown-list": OntarioDropdownList;
+    "ontario-hint-expander": OntarioHintExpander;
+    "ontario-hint-text": OntarioHintText;
+    "ontario-icon-accessibility": OntarioIconAccessibility;
+    "ontario-icon-account": OntarioIconAccount;
+    "ontario-icon-add": OntarioIconAdd;
+    "ontario-icon-add-alt": OntarioIconAddAlt;
+    "ontario-icon-alert-error": OntarioIconAlertError;
+    "ontario-icon-alert-information": OntarioIconAlertInformation;
+    "ontario-icon-alert-success": OntarioIconAlertSuccess;
+    "ontario-icon-alert-warning": OntarioIconAlertWarning;
+    "ontario-icon-attach": OntarioIconAttach;
+    "ontario-icon-bookmark-off": OntarioIconBookmarkOff;
+    "ontario-icon-bookmark-on": OntarioIconBookmarkOn;
+    "ontario-icon-calendar": OntarioIconCalendar;
+    "ontario-icon-camera": OntarioIconCamera;
+    "ontario-icon-chevron-down": OntarioIconChevronDown;
+    "ontario-icon-chevron-left": OntarioIconChevronLeft;
+    "ontario-icon-chevron-right": OntarioIconChevronRight;
+    "ontario-icon-chevron-up": OntarioIconChevronUp;
+    "ontario-icon-clock": OntarioIconClock;
+    "ontario-icon-close": OntarioIconClose;
+    "ontario-icon-cloud": OntarioIconCloud;
+    "ontario-icon-collapse": OntarioIconCollapse;
+    "ontario-icon-credit-card": OntarioIconCreditCard;
+    "ontario-icon-delete": OntarioIconDelete;
+    "ontario-icon-document": OntarioIconDocument;
+    "ontario-icon-download": OntarioIconDownload;
+    "ontario-icon-dropdown-arrow": OntarioIconDropdownArrow;
+    "ontario-icon-edit": OntarioIconEdit;
+    "ontario-icon-email": OntarioIconEmail;
+    "ontario-icon-expand": OntarioIconExpand;
+    "ontario-icon-export": OntarioIconExport;
+    "ontario-icon-facebook": OntarioIconFacebook;
+    "ontario-icon-facebook-alt": OntarioIconFacebookAlt;
+    "ontario-icon-favourite-off": OntarioIconFavouriteOff;
+    "ontario-icon-favourite-on": OntarioIconFavouriteOn;
+    "ontario-icon-filter": OntarioIconFilter;
+    "ontario-icon-flickr": OntarioIconFlickr;
+    "ontario-icon-grid": OntarioIconGrid;
+    "ontario-icon-help": OntarioIconHelp;
+    "ontario-icon-instagram": OntarioIconInstagram;
+    "ontario-icon-interac-en": OntarioIconInteracEn;
+    "ontario-icon-interac-en-alt": OntarioIconInteracEnAlt;
+    "ontario-icon-interac-fr": OntarioIconInteracFr;
+    "ontario-icon-interac-fr-alt": OntarioIconInteracFrAlt;
+    "ontario-icon-linkedin": OntarioIconLinkedin;
+    "ontario-icon-linkedin-alt": OntarioIconLinkedinAlt;
+    "ontario-icon-list": OntarioIconList;
+    "ontario-icon-live-chat": OntarioIconLiveChat;
+    "ontario-icon-location-off": OntarioIconLocationOff;
+    "ontario-icon-location-on": OntarioIconLocationOn;
+    "ontario-icon-lock-off": OntarioIconLockOff;
+    "ontario-icon-lock-on": OntarioIconLockOn;
+    "ontario-icon-map": OntarioIconMap;
+    "ontario-icon-mastercard": OntarioIconMastercard;
+    "ontario-icon-mastercard-alt": OntarioIconMastercardAlt;
+    "ontario-icon-media-fast-forward": OntarioIconMediaFastForward;
+    "ontario-icon-media-fast-rewind": OntarioIconMediaFastRewind;
+    "ontario-icon-media-pause": OntarioIconMediaPause;
+    "ontario-icon-media-play": OntarioIconMediaPlay;
+    "ontario-icon-media-stop": OntarioIconMediaStop;
+    "ontario-icon-menu": OntarioIconMenu;
+    "ontario-icon-microphone-off": OntarioIconMicrophoneOff;
+    "ontario-icon-microphone-on": OntarioIconMicrophoneOn;
+    "ontario-icon-more-vertical": OntarioIconMoreVertical;
+    "ontario-icon-new-window": OntarioIconNewWindow;
+    "ontario-icon-next": OntarioIconNext;
+    "ontario-icon-notification": OntarioIconNotification;
+    "ontario-icon-password-hide": OntarioIconPasswordHide;
+    "ontario-icon-password-show": OntarioIconPasswordShow;
+    "ontario-icon-phone": OntarioIconPhone;
+    "ontario-icon-photo": OntarioIconPhoto;
+    "ontario-icon-pin-location-off": OntarioIconPinLocationOff;
+    "ontario-icon-pin-location-on": OntarioIconPinLocationOn;
+    "ontario-icon-previous": OntarioIconPrevious;
+    "ontario-icon-print": OntarioIconPrint;
+    "ontario-icon-remove": OntarioIconRemove;
+    "ontario-icon-remove-alt": OntarioIconRemoveAlt;
+    "ontario-icon-replay": OntarioIconReplay;
+    "ontario-icon-rss-feed": OntarioIconRssFeed;
+    "ontario-icon-save": OntarioIconSave;
+    "ontario-icon-search": OntarioIconSearch;
+    "ontario-icon-sentiment-1": OntarioIconSentiment1;
+    "ontario-icon-sentiment-2": OntarioIconSentiment2;
+    "ontario-icon-sentiment-3": OntarioIconSentiment3;
+    "ontario-icon-sentiment-4": OntarioIconSentiment4;
+    "ontario-icon-sentiment-5": OntarioIconSentiment5;
+    "ontario-icon-settings": OntarioIconSettings;
+    "ontario-icon-share": OntarioIconShare;
+    "ontario-icon-sort": OntarioIconSort;
+    "ontario-icon-tag": OntarioIconTag;
+    "ontario-icon-text-message": OntarioIconTextMessage;
+    "ontario-icon-timer": OntarioIconTimer;
+    "ontario-icon-transport-bicycle": OntarioIconTransportBicycle;
+    "ontario-icon-transport-bus": OntarioIconTransportBus;
+    "ontario-icon-transport-car": OntarioIconTransportCar;
+    "ontario-icon-transport-walk": OntarioIconTransportWalk;
+    "ontario-icon-tty": OntarioIconTty;
+    "ontario-icon-twitter": OntarioIconTwitter;
+    "ontario-icon-twitter-alt": OntarioIconTwitterAlt;
+    "ontario-icon-upload": OntarioIconUpload;
+    "ontario-icon-video": OntarioIconVideo;
+    "ontario-icon-visa": OntarioIconVisa;
+    "ontario-icon-vote-dislike": OntarioIconVoteDislike;
+    "ontario-icon-vote-like": OntarioIconVoteLike;
+    "ontario-icon-vpn-key": OntarioIconVpnKey;
+    "ontario-icon-wheelchair": OntarioIconWheelchair;
+    "ontario-icon-wifi": OntarioIconWifi;
+    "ontario-icon-youtube": OntarioIconYoutube;
+    "ontario-input": OntarioInput;
+    "ontario-radio-buttons": OntarioRadioButtons;
+    "ontario-textarea": OntarioTextarea;
+  }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
-    export namespace JSX {
-        interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
-            "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
-            "ontario-checkboxes": LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
-            "ontario-dropdown-list": LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
-            "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
-            "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
-            "ontario-icon-accessibility": LocalJSX.OntarioIconAccessibility & JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;
-            "ontario-icon-account": LocalJSX.OntarioIconAccount & JSXBase.HTMLAttributes<HTMLOntarioIconAccountElement>;
-            "ontario-icon-add": LocalJSX.OntarioIconAdd & JSXBase.HTMLAttributes<HTMLOntarioIconAddElement>;
-            "ontario-icon-add-alt": LocalJSX.OntarioIconAddAlt & JSXBase.HTMLAttributes<HTMLOntarioIconAddAltElement>;
-            "ontario-icon-alert-error": LocalJSX.OntarioIconAlertError & JSXBase.HTMLAttributes<HTMLOntarioIconAlertErrorElement>;
-            "ontario-icon-alert-information": LocalJSX.OntarioIconAlertInformation & JSXBase.HTMLAttributes<HTMLOntarioIconAlertInformationElement>;
-            "ontario-icon-alert-success": LocalJSX.OntarioIconAlertSuccess & JSXBase.HTMLAttributes<HTMLOntarioIconAlertSuccessElement>;
-            "ontario-icon-alert-warning": LocalJSX.OntarioIconAlertWarning & JSXBase.HTMLAttributes<HTMLOntarioIconAlertWarningElement>;
-            "ontario-icon-attach": LocalJSX.OntarioIconAttach & JSXBase.HTMLAttributes<HTMLOntarioIconAttachElement>;
-            "ontario-icon-bookmark-off": LocalJSX.OntarioIconBookmarkOff & JSXBase.HTMLAttributes<HTMLOntarioIconBookmarkOffElement>;
-            "ontario-icon-bookmark-on": LocalJSX.OntarioIconBookmarkOn & JSXBase.HTMLAttributes<HTMLOntarioIconBookmarkOnElement>;
-            "ontario-icon-calendar": LocalJSX.OntarioIconCalendar & JSXBase.HTMLAttributes<HTMLOntarioIconCalendarElement>;
-            "ontario-icon-camera": LocalJSX.OntarioIconCamera & JSXBase.HTMLAttributes<HTMLOntarioIconCameraElement>;
-            "ontario-icon-chevron-down": LocalJSX.OntarioIconChevronDown & JSXBase.HTMLAttributes<HTMLOntarioIconChevronDownElement>;
-            "ontario-icon-chevron-left": LocalJSX.OntarioIconChevronLeft & JSXBase.HTMLAttributes<HTMLOntarioIconChevronLeftElement>;
-            "ontario-icon-chevron-right": LocalJSX.OntarioIconChevronRight & JSXBase.HTMLAttributes<HTMLOntarioIconChevronRightElement>;
-            "ontario-icon-chevron-up": LocalJSX.OntarioIconChevronUp & JSXBase.HTMLAttributes<HTMLOntarioIconChevronUpElement>;
-            "ontario-icon-clock": LocalJSX.OntarioIconClock & JSXBase.HTMLAttributes<HTMLOntarioIconClockElement>;
-            "ontario-icon-close": LocalJSX.OntarioIconClose & JSXBase.HTMLAttributes<HTMLOntarioIconCloseElement>;
-            "ontario-icon-cloud": LocalJSX.OntarioIconCloud & JSXBase.HTMLAttributes<HTMLOntarioIconCloudElement>;
-            "ontario-icon-collapse": LocalJSX.OntarioIconCollapse & JSXBase.HTMLAttributes<HTMLOntarioIconCollapseElement>;
-            "ontario-icon-credit-card": LocalJSX.OntarioIconCreditCard & JSXBase.HTMLAttributes<HTMLOntarioIconCreditCardElement>;
-            "ontario-icon-delete": LocalJSX.OntarioIconDelete & JSXBase.HTMLAttributes<HTMLOntarioIconDeleteElement>;
-            "ontario-icon-document": LocalJSX.OntarioIconDocument & JSXBase.HTMLAttributes<HTMLOntarioIconDocumentElement>;
-            "ontario-icon-download": LocalJSX.OntarioIconDownload & JSXBase.HTMLAttributes<HTMLOntarioIconDownloadElement>;
-            "ontario-icon-dropdown-arrow": LocalJSX.OntarioIconDropdownArrow & JSXBase.HTMLAttributes<HTMLOntarioIconDropdownArrowElement>;
-            "ontario-icon-edit": LocalJSX.OntarioIconEdit & JSXBase.HTMLAttributes<HTMLOntarioIconEditElement>;
-            "ontario-icon-email": LocalJSX.OntarioIconEmail & JSXBase.HTMLAttributes<HTMLOntarioIconEmailElement>;
-            "ontario-icon-expand": LocalJSX.OntarioIconExpand & JSXBase.HTMLAttributes<HTMLOntarioIconExpandElement>;
-            "ontario-icon-export": LocalJSX.OntarioIconExport & JSXBase.HTMLAttributes<HTMLOntarioIconExportElement>;
-            "ontario-icon-facebook": LocalJSX.OntarioIconFacebook & JSXBase.HTMLAttributes<HTMLOntarioIconFacebookElement>;
-            "ontario-icon-facebook-alt": LocalJSX.OntarioIconFacebookAlt & JSXBase.HTMLAttributes<HTMLOntarioIconFacebookAltElement>;
-            "ontario-icon-favourite-off": LocalJSX.OntarioIconFavouriteOff & JSXBase.HTMLAttributes<HTMLOntarioIconFavouriteOffElement>;
-            "ontario-icon-favourite-on": LocalJSX.OntarioIconFavouriteOn & JSXBase.HTMLAttributes<HTMLOntarioIconFavouriteOnElement>;
-            "ontario-icon-filter": LocalJSX.OntarioIconFilter & JSXBase.HTMLAttributes<HTMLOntarioIconFilterElement>;
-            "ontario-icon-flickr": LocalJSX.OntarioIconFlickr & JSXBase.HTMLAttributes<HTMLOntarioIconFlickrElement>;
-            "ontario-icon-grid": LocalJSX.OntarioIconGrid & JSXBase.HTMLAttributes<HTMLOntarioIconGridElement>;
-            "ontario-icon-help": LocalJSX.OntarioIconHelp & JSXBase.HTMLAttributes<HTMLOntarioIconHelpElement>;
-            "ontario-icon-instagram": LocalJSX.OntarioIconInstagram & JSXBase.HTMLAttributes<HTMLOntarioIconInstagramElement>;
-            "ontario-icon-interac-en": LocalJSX.OntarioIconInteracEn & JSXBase.HTMLAttributes<HTMLOntarioIconInteracEnElement>;
-            "ontario-icon-interac-en-alt": LocalJSX.OntarioIconInteracEnAlt & JSXBase.HTMLAttributes<HTMLOntarioIconInteracEnAltElement>;
-            "ontario-icon-interac-fr": LocalJSX.OntarioIconInteracFr & JSXBase.HTMLAttributes<HTMLOntarioIconInteracFrElement>;
-            "ontario-icon-interac-fr-alt": LocalJSX.OntarioIconInteracFrAlt & JSXBase.HTMLAttributes<HTMLOntarioIconInteracFrAltElement>;
-            "ontario-icon-linkedin": LocalJSX.OntarioIconLinkedin & JSXBase.HTMLAttributes<HTMLOntarioIconLinkedinElement>;
-            "ontario-icon-linkedin-alt": LocalJSX.OntarioIconLinkedinAlt & JSXBase.HTMLAttributes<HTMLOntarioIconLinkedinAltElement>;
-            "ontario-icon-list": LocalJSX.OntarioIconList & JSXBase.HTMLAttributes<HTMLOntarioIconListElement>;
-            "ontario-icon-live-chat": LocalJSX.OntarioIconLiveChat & JSXBase.HTMLAttributes<HTMLOntarioIconLiveChatElement>;
-            "ontario-icon-location-off": LocalJSX.OntarioIconLocationOff & JSXBase.HTMLAttributes<HTMLOntarioIconLocationOffElement>;
-            "ontario-icon-location-on": LocalJSX.OntarioIconLocationOn & JSXBase.HTMLAttributes<HTMLOntarioIconLocationOnElement>;
-            "ontario-icon-lock-off": LocalJSX.OntarioIconLockOff & JSXBase.HTMLAttributes<HTMLOntarioIconLockOffElement>;
-            "ontario-icon-lock-on": LocalJSX.OntarioIconLockOn & JSXBase.HTMLAttributes<HTMLOntarioIconLockOnElement>;
-            "ontario-icon-map": LocalJSX.OntarioIconMap & JSXBase.HTMLAttributes<HTMLOntarioIconMapElement>;
-            "ontario-icon-mastercard": LocalJSX.OntarioIconMastercard & JSXBase.HTMLAttributes<HTMLOntarioIconMastercardElement>;
-            "ontario-icon-mastercard-alt": LocalJSX.OntarioIconMastercardAlt & JSXBase.HTMLAttributes<HTMLOntarioIconMastercardAltElement>;
-            "ontario-icon-media-fast-forward": LocalJSX.OntarioIconMediaFastForward & JSXBase.HTMLAttributes<HTMLOntarioIconMediaFastForwardElement>;
-            "ontario-icon-media-fast-rewind": LocalJSX.OntarioIconMediaFastRewind & JSXBase.HTMLAttributes<HTMLOntarioIconMediaFastRewindElement>;
-            "ontario-icon-media-pause": LocalJSX.OntarioIconMediaPause & JSXBase.HTMLAttributes<HTMLOntarioIconMediaPauseElement>;
-            "ontario-icon-media-play": LocalJSX.OntarioIconMediaPlay & JSXBase.HTMLAttributes<HTMLOntarioIconMediaPlayElement>;
-            "ontario-icon-media-stop": LocalJSX.OntarioIconMediaStop & JSXBase.HTMLAttributes<HTMLOntarioIconMediaStopElement>;
-            "ontario-icon-menu": LocalJSX.OntarioIconMenu & JSXBase.HTMLAttributes<HTMLOntarioIconMenuElement>;
-            "ontario-icon-microphone-off": LocalJSX.OntarioIconMicrophoneOff & JSXBase.HTMLAttributes<HTMLOntarioIconMicrophoneOffElement>;
-            "ontario-icon-microphone-on": LocalJSX.OntarioIconMicrophoneOn & JSXBase.HTMLAttributes<HTMLOntarioIconMicrophoneOnElement>;
-            "ontario-icon-more-vertical": LocalJSX.OntarioIconMoreVertical & JSXBase.HTMLAttributes<HTMLOntarioIconMoreVerticalElement>;
-            "ontario-icon-new-window": LocalJSX.OntarioIconNewWindow & JSXBase.HTMLAttributes<HTMLOntarioIconNewWindowElement>;
-            "ontario-icon-next": LocalJSX.OntarioIconNext & JSXBase.HTMLAttributes<HTMLOntarioIconNextElement>;
-            "ontario-icon-notification": LocalJSX.OntarioIconNotification & JSXBase.HTMLAttributes<HTMLOntarioIconNotificationElement>;
-            "ontario-icon-password-hide": LocalJSX.OntarioIconPasswordHide & JSXBase.HTMLAttributes<HTMLOntarioIconPasswordHideElement>;
-            "ontario-icon-password-show": LocalJSX.OntarioIconPasswordShow & JSXBase.HTMLAttributes<HTMLOntarioIconPasswordShowElement>;
-            "ontario-icon-phone": LocalJSX.OntarioIconPhone & JSXBase.HTMLAttributes<HTMLOntarioIconPhoneElement>;
-            "ontario-icon-photo": LocalJSX.OntarioIconPhoto & JSXBase.HTMLAttributes<HTMLOntarioIconPhotoElement>;
-            "ontario-icon-pin-location-off": LocalJSX.OntarioIconPinLocationOff & JSXBase.HTMLAttributes<HTMLOntarioIconPinLocationOffElement>;
-            "ontario-icon-pin-location-on": LocalJSX.OntarioIconPinLocationOn & JSXBase.HTMLAttributes<HTMLOntarioIconPinLocationOnElement>;
-            "ontario-icon-previous": LocalJSX.OntarioIconPrevious & JSXBase.HTMLAttributes<HTMLOntarioIconPreviousElement>;
-            "ontario-icon-print": LocalJSX.OntarioIconPrint & JSXBase.HTMLAttributes<HTMLOntarioIconPrintElement>;
-            "ontario-icon-remove": LocalJSX.OntarioIconRemove & JSXBase.HTMLAttributes<HTMLOntarioIconRemoveElement>;
-            "ontario-icon-remove-alt": LocalJSX.OntarioIconRemoveAlt & JSXBase.HTMLAttributes<HTMLOntarioIconRemoveAltElement>;
-            "ontario-icon-replay": LocalJSX.OntarioIconReplay & JSXBase.HTMLAttributes<HTMLOntarioIconReplayElement>;
-            "ontario-icon-rss-feed": LocalJSX.OntarioIconRssFeed & JSXBase.HTMLAttributes<HTMLOntarioIconRssFeedElement>;
-            "ontario-icon-save": LocalJSX.OntarioIconSave & JSXBase.HTMLAttributes<HTMLOntarioIconSaveElement>;
-            "ontario-icon-search": LocalJSX.OntarioIconSearch & JSXBase.HTMLAttributes<HTMLOntarioIconSearchElement>;
-            "ontario-icon-sentiment-1": LocalJSX.OntarioIconSentiment1 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment1Element>;
-            "ontario-icon-sentiment-2": LocalJSX.OntarioIconSentiment2 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment2Element>;
-            "ontario-icon-sentiment-3": LocalJSX.OntarioIconSentiment3 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment3Element>;
-            "ontario-icon-sentiment-4": LocalJSX.OntarioIconSentiment4 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment4Element>;
-            "ontario-icon-sentiment-5": LocalJSX.OntarioIconSentiment5 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment5Element>;
-            "ontario-icon-settings": LocalJSX.OntarioIconSettings & JSXBase.HTMLAttributes<HTMLOntarioIconSettingsElement>;
-            "ontario-icon-share": LocalJSX.OntarioIconShare & JSXBase.HTMLAttributes<HTMLOntarioIconShareElement>;
-            "ontario-icon-sort": LocalJSX.OntarioIconSort & JSXBase.HTMLAttributes<HTMLOntarioIconSortElement>;
-            "ontario-icon-tag": LocalJSX.OntarioIconTag & JSXBase.HTMLAttributes<HTMLOntarioIconTagElement>;
-            "ontario-icon-text-message": LocalJSX.OntarioIconTextMessage & JSXBase.HTMLAttributes<HTMLOntarioIconTextMessageElement>;
-            "ontario-icon-timer": LocalJSX.OntarioIconTimer & JSXBase.HTMLAttributes<HTMLOntarioIconTimerElement>;
-            "ontario-icon-transport-bicycle": LocalJSX.OntarioIconTransportBicycle & JSXBase.HTMLAttributes<HTMLOntarioIconTransportBicycleElement>;
-            "ontario-icon-transport-bus": LocalJSX.OntarioIconTransportBus & JSXBase.HTMLAttributes<HTMLOntarioIconTransportBusElement>;
-            "ontario-icon-transport-car": LocalJSX.OntarioIconTransportCar & JSXBase.HTMLAttributes<HTMLOntarioIconTransportCarElement>;
-            "ontario-icon-transport-walk": LocalJSX.OntarioIconTransportWalk & JSXBase.HTMLAttributes<HTMLOntarioIconTransportWalkElement>;
-            "ontario-icon-tty": LocalJSX.OntarioIconTty & JSXBase.HTMLAttributes<HTMLOntarioIconTtyElement>;
-            "ontario-icon-twitter": LocalJSX.OntarioIconTwitter & JSXBase.HTMLAttributes<HTMLOntarioIconTwitterElement>;
-            "ontario-icon-twitter-alt": LocalJSX.OntarioIconTwitterAlt & JSXBase.HTMLAttributes<HTMLOntarioIconTwitterAltElement>;
-            "ontario-icon-upload": LocalJSX.OntarioIconUpload & JSXBase.HTMLAttributes<HTMLOntarioIconUploadElement>;
-            "ontario-icon-video": LocalJSX.OntarioIconVideo & JSXBase.HTMLAttributes<HTMLOntarioIconVideoElement>;
-            "ontario-icon-visa": LocalJSX.OntarioIconVisa & JSXBase.HTMLAttributes<HTMLOntarioIconVisaElement>;
-            "ontario-icon-vote-dislike": LocalJSX.OntarioIconVoteDislike & JSXBase.HTMLAttributes<HTMLOntarioIconVoteDislikeElement>;
-            "ontario-icon-vote-like": LocalJSX.OntarioIconVoteLike & JSXBase.HTMLAttributes<HTMLOntarioIconVoteLikeElement>;
-            "ontario-icon-vpn-key": LocalJSX.OntarioIconVpnKey & JSXBase.HTMLAttributes<HTMLOntarioIconVpnKeyElement>;
-            "ontario-icon-wheelchair": LocalJSX.OntarioIconWheelchair & JSXBase.HTMLAttributes<HTMLOntarioIconWheelchairElement>;
-            "ontario-icon-wifi": LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
-            "ontario-icon-youtube": LocalJSX.OntarioIconYoutube & JSXBase.HTMLAttributes<HTMLOntarioIconYoutubeElement>;
-            "ontario-input": LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
-            "ontario-radio-buttons": LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
-            "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
-        }
+  export namespace JSX {
+    interface IntrinsicElements {
+      "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+      "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
+      "ontario-checkboxes": LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
+      "ontario-dropdown-list": LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
+      "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
+      "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
+      "ontario-icon-accessibility": LocalJSX.OntarioIconAccessibility & JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;
+      "ontario-icon-account": LocalJSX.OntarioIconAccount & JSXBase.HTMLAttributes<HTMLOntarioIconAccountElement>;
+      "ontario-icon-add": LocalJSX.OntarioIconAdd & JSXBase.HTMLAttributes<HTMLOntarioIconAddElement>;
+      "ontario-icon-add-alt": LocalJSX.OntarioIconAddAlt & JSXBase.HTMLAttributes<HTMLOntarioIconAddAltElement>;
+      "ontario-icon-alert-error": LocalJSX.OntarioIconAlertError & JSXBase.HTMLAttributes<HTMLOntarioIconAlertErrorElement>;
+      "ontario-icon-alert-information": LocalJSX.OntarioIconAlertInformation & JSXBase.HTMLAttributes<HTMLOntarioIconAlertInformationElement>;
+      "ontario-icon-alert-success": LocalJSX.OntarioIconAlertSuccess & JSXBase.HTMLAttributes<HTMLOntarioIconAlertSuccessElement>;
+      "ontario-icon-alert-warning": LocalJSX.OntarioIconAlertWarning & JSXBase.HTMLAttributes<HTMLOntarioIconAlertWarningElement>;
+      "ontario-icon-attach": LocalJSX.OntarioIconAttach & JSXBase.HTMLAttributes<HTMLOntarioIconAttachElement>;
+      "ontario-icon-bookmark-off": LocalJSX.OntarioIconBookmarkOff & JSXBase.HTMLAttributes<HTMLOntarioIconBookmarkOffElement>;
+      "ontario-icon-bookmark-on": LocalJSX.OntarioIconBookmarkOn & JSXBase.HTMLAttributes<HTMLOntarioIconBookmarkOnElement>;
+      "ontario-icon-calendar": LocalJSX.OntarioIconCalendar & JSXBase.HTMLAttributes<HTMLOntarioIconCalendarElement>;
+      "ontario-icon-camera": LocalJSX.OntarioIconCamera & JSXBase.HTMLAttributes<HTMLOntarioIconCameraElement>;
+      "ontario-icon-chevron-down": LocalJSX.OntarioIconChevronDown & JSXBase.HTMLAttributes<HTMLOntarioIconChevronDownElement>;
+      "ontario-icon-chevron-left": LocalJSX.OntarioIconChevronLeft & JSXBase.HTMLAttributes<HTMLOntarioIconChevronLeftElement>;
+      "ontario-icon-chevron-right": LocalJSX.OntarioIconChevronRight & JSXBase.HTMLAttributes<HTMLOntarioIconChevronRightElement>;
+      "ontario-icon-chevron-up": LocalJSX.OntarioIconChevronUp & JSXBase.HTMLAttributes<HTMLOntarioIconChevronUpElement>;
+      "ontario-icon-clock": LocalJSX.OntarioIconClock & JSXBase.HTMLAttributes<HTMLOntarioIconClockElement>;
+      "ontario-icon-close": LocalJSX.OntarioIconClose & JSXBase.HTMLAttributes<HTMLOntarioIconCloseElement>;
+      "ontario-icon-cloud": LocalJSX.OntarioIconCloud & JSXBase.HTMLAttributes<HTMLOntarioIconCloudElement>;
+      "ontario-icon-collapse": LocalJSX.OntarioIconCollapse & JSXBase.HTMLAttributes<HTMLOntarioIconCollapseElement>;
+      "ontario-icon-credit-card": LocalJSX.OntarioIconCreditCard & JSXBase.HTMLAttributes<HTMLOntarioIconCreditCardElement>;
+      "ontario-icon-delete": LocalJSX.OntarioIconDelete & JSXBase.HTMLAttributes<HTMLOntarioIconDeleteElement>;
+      "ontario-icon-document": LocalJSX.OntarioIconDocument & JSXBase.HTMLAttributes<HTMLOntarioIconDocumentElement>;
+      "ontario-icon-download": LocalJSX.OntarioIconDownload & JSXBase.HTMLAttributes<HTMLOntarioIconDownloadElement>;
+      "ontario-icon-dropdown-arrow": LocalJSX.OntarioIconDropdownArrow & JSXBase.HTMLAttributes<HTMLOntarioIconDropdownArrowElement>;
+      "ontario-icon-edit": LocalJSX.OntarioIconEdit & JSXBase.HTMLAttributes<HTMLOntarioIconEditElement>;
+      "ontario-icon-email": LocalJSX.OntarioIconEmail & JSXBase.HTMLAttributes<HTMLOntarioIconEmailElement>;
+      "ontario-icon-expand": LocalJSX.OntarioIconExpand & JSXBase.HTMLAttributes<HTMLOntarioIconExpandElement>;
+      "ontario-icon-export": LocalJSX.OntarioIconExport & JSXBase.HTMLAttributes<HTMLOntarioIconExportElement>;
+      "ontario-icon-facebook": LocalJSX.OntarioIconFacebook & JSXBase.HTMLAttributes<HTMLOntarioIconFacebookElement>;
+      "ontario-icon-facebook-alt": LocalJSX.OntarioIconFacebookAlt & JSXBase.HTMLAttributes<HTMLOntarioIconFacebookAltElement>;
+      "ontario-icon-favourite-off": LocalJSX.OntarioIconFavouriteOff & JSXBase.HTMLAttributes<HTMLOntarioIconFavouriteOffElement>;
+      "ontario-icon-favourite-on": LocalJSX.OntarioIconFavouriteOn & JSXBase.HTMLAttributes<HTMLOntarioIconFavouriteOnElement>;
+      "ontario-icon-filter": LocalJSX.OntarioIconFilter & JSXBase.HTMLAttributes<HTMLOntarioIconFilterElement>;
+      "ontario-icon-flickr": LocalJSX.OntarioIconFlickr & JSXBase.HTMLAttributes<HTMLOntarioIconFlickrElement>;
+      "ontario-icon-grid": LocalJSX.OntarioIconGrid & JSXBase.HTMLAttributes<HTMLOntarioIconGridElement>;
+      "ontario-icon-help": LocalJSX.OntarioIconHelp & JSXBase.HTMLAttributes<HTMLOntarioIconHelpElement>;
+      "ontario-icon-instagram": LocalJSX.OntarioIconInstagram & JSXBase.HTMLAttributes<HTMLOntarioIconInstagramElement>;
+      "ontario-icon-interac-en": LocalJSX.OntarioIconInteracEn & JSXBase.HTMLAttributes<HTMLOntarioIconInteracEnElement>;
+      "ontario-icon-interac-en-alt": LocalJSX.OntarioIconInteracEnAlt & JSXBase.HTMLAttributes<HTMLOntarioIconInteracEnAltElement>;
+      "ontario-icon-interac-fr": LocalJSX.OntarioIconInteracFr & JSXBase.HTMLAttributes<HTMLOntarioIconInteracFrElement>;
+      "ontario-icon-interac-fr-alt": LocalJSX.OntarioIconInteracFrAlt & JSXBase.HTMLAttributes<HTMLOntarioIconInteracFrAltElement>;
+      "ontario-icon-linkedin": LocalJSX.OntarioIconLinkedin & JSXBase.HTMLAttributes<HTMLOntarioIconLinkedinElement>;
+      "ontario-icon-linkedin-alt": LocalJSX.OntarioIconLinkedinAlt & JSXBase.HTMLAttributes<HTMLOntarioIconLinkedinAltElement>;
+      "ontario-icon-list": LocalJSX.OntarioIconList & JSXBase.HTMLAttributes<HTMLOntarioIconListElement>;
+      "ontario-icon-live-chat": LocalJSX.OntarioIconLiveChat & JSXBase.HTMLAttributes<HTMLOntarioIconLiveChatElement>;
+      "ontario-icon-location-off": LocalJSX.OntarioIconLocationOff & JSXBase.HTMLAttributes<HTMLOntarioIconLocationOffElement>;
+      "ontario-icon-location-on": LocalJSX.OntarioIconLocationOn & JSXBase.HTMLAttributes<HTMLOntarioIconLocationOnElement>;
+      "ontario-icon-lock-off": LocalJSX.OntarioIconLockOff & JSXBase.HTMLAttributes<HTMLOntarioIconLockOffElement>;
+      "ontario-icon-lock-on": LocalJSX.OntarioIconLockOn & JSXBase.HTMLAttributes<HTMLOntarioIconLockOnElement>;
+      "ontario-icon-map": LocalJSX.OntarioIconMap & JSXBase.HTMLAttributes<HTMLOntarioIconMapElement>;
+      "ontario-icon-mastercard": LocalJSX.OntarioIconMastercard & JSXBase.HTMLAttributes<HTMLOntarioIconMastercardElement>;
+      "ontario-icon-mastercard-alt": LocalJSX.OntarioIconMastercardAlt & JSXBase.HTMLAttributes<HTMLOntarioIconMastercardAltElement>;
+      "ontario-icon-media-fast-forward": LocalJSX.OntarioIconMediaFastForward & JSXBase.HTMLAttributes<HTMLOntarioIconMediaFastForwardElement>;
+      "ontario-icon-media-fast-rewind": LocalJSX.OntarioIconMediaFastRewind & JSXBase.HTMLAttributes<HTMLOntarioIconMediaFastRewindElement>;
+      "ontario-icon-media-pause": LocalJSX.OntarioIconMediaPause & JSXBase.HTMLAttributes<HTMLOntarioIconMediaPauseElement>;
+      "ontario-icon-media-play": LocalJSX.OntarioIconMediaPlay & JSXBase.HTMLAttributes<HTMLOntarioIconMediaPlayElement>;
+      "ontario-icon-media-stop": LocalJSX.OntarioIconMediaStop & JSXBase.HTMLAttributes<HTMLOntarioIconMediaStopElement>;
+      "ontario-icon-menu": LocalJSX.OntarioIconMenu & JSXBase.HTMLAttributes<HTMLOntarioIconMenuElement>;
+      "ontario-icon-microphone-off": LocalJSX.OntarioIconMicrophoneOff & JSXBase.HTMLAttributes<HTMLOntarioIconMicrophoneOffElement>;
+      "ontario-icon-microphone-on": LocalJSX.OntarioIconMicrophoneOn & JSXBase.HTMLAttributes<HTMLOntarioIconMicrophoneOnElement>;
+      "ontario-icon-more-vertical": LocalJSX.OntarioIconMoreVertical & JSXBase.HTMLAttributes<HTMLOntarioIconMoreVerticalElement>;
+      "ontario-icon-new-window": LocalJSX.OntarioIconNewWindow & JSXBase.HTMLAttributes<HTMLOntarioIconNewWindowElement>;
+      "ontario-icon-next": LocalJSX.OntarioIconNext & JSXBase.HTMLAttributes<HTMLOntarioIconNextElement>;
+      "ontario-icon-notification": LocalJSX.OntarioIconNotification & JSXBase.HTMLAttributes<HTMLOntarioIconNotificationElement>;
+      "ontario-icon-password-hide": LocalJSX.OntarioIconPasswordHide & JSXBase.HTMLAttributes<HTMLOntarioIconPasswordHideElement>;
+      "ontario-icon-password-show": LocalJSX.OntarioIconPasswordShow & JSXBase.HTMLAttributes<HTMLOntarioIconPasswordShowElement>;
+      "ontario-icon-phone": LocalJSX.OntarioIconPhone & JSXBase.HTMLAttributes<HTMLOntarioIconPhoneElement>;
+      "ontario-icon-photo": LocalJSX.OntarioIconPhoto & JSXBase.HTMLAttributes<HTMLOntarioIconPhotoElement>;
+      "ontario-icon-pin-location-off": LocalJSX.OntarioIconPinLocationOff & JSXBase.HTMLAttributes<HTMLOntarioIconPinLocationOffElement>;
+      "ontario-icon-pin-location-on": LocalJSX.OntarioIconPinLocationOn & JSXBase.HTMLAttributes<HTMLOntarioIconPinLocationOnElement>;
+      "ontario-icon-previous": LocalJSX.OntarioIconPrevious & JSXBase.HTMLAttributes<HTMLOntarioIconPreviousElement>;
+      "ontario-icon-print": LocalJSX.OntarioIconPrint & JSXBase.HTMLAttributes<HTMLOntarioIconPrintElement>;
+      "ontario-icon-remove": LocalJSX.OntarioIconRemove & JSXBase.HTMLAttributes<HTMLOntarioIconRemoveElement>;
+      "ontario-icon-remove-alt": LocalJSX.OntarioIconRemoveAlt & JSXBase.HTMLAttributes<HTMLOntarioIconRemoveAltElement>;
+      "ontario-icon-replay": LocalJSX.OntarioIconReplay & JSXBase.HTMLAttributes<HTMLOntarioIconReplayElement>;
+      "ontario-icon-rss-feed": LocalJSX.OntarioIconRssFeed & JSXBase.HTMLAttributes<HTMLOntarioIconRssFeedElement>;
+      "ontario-icon-save": LocalJSX.OntarioIconSave & JSXBase.HTMLAttributes<HTMLOntarioIconSaveElement>;
+      "ontario-icon-search": LocalJSX.OntarioIconSearch & JSXBase.HTMLAttributes<HTMLOntarioIconSearchElement>;
+      "ontario-icon-sentiment-1": LocalJSX.OntarioIconSentiment1 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment1Element>;
+      "ontario-icon-sentiment-2": LocalJSX.OntarioIconSentiment2 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment2Element>;
+      "ontario-icon-sentiment-3": LocalJSX.OntarioIconSentiment3 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment3Element>;
+      "ontario-icon-sentiment-4": LocalJSX.OntarioIconSentiment4 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment4Element>;
+      "ontario-icon-sentiment-5": LocalJSX.OntarioIconSentiment5 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment5Element>;
+      "ontario-icon-settings": LocalJSX.OntarioIconSettings & JSXBase.HTMLAttributes<HTMLOntarioIconSettingsElement>;
+      "ontario-icon-share": LocalJSX.OntarioIconShare & JSXBase.HTMLAttributes<HTMLOntarioIconShareElement>;
+      "ontario-icon-sort": LocalJSX.OntarioIconSort & JSXBase.HTMLAttributes<HTMLOntarioIconSortElement>;
+      "ontario-icon-tag": LocalJSX.OntarioIconTag & JSXBase.HTMLAttributes<HTMLOntarioIconTagElement>;
+      "ontario-icon-text-message": LocalJSX.OntarioIconTextMessage & JSXBase.HTMLAttributes<HTMLOntarioIconTextMessageElement>;
+      "ontario-icon-timer": LocalJSX.OntarioIconTimer & JSXBase.HTMLAttributes<HTMLOntarioIconTimerElement>;
+      "ontario-icon-transport-bicycle": LocalJSX.OntarioIconTransportBicycle & JSXBase.HTMLAttributes<HTMLOntarioIconTransportBicycleElement>;
+      "ontario-icon-transport-bus": LocalJSX.OntarioIconTransportBus & JSXBase.HTMLAttributes<HTMLOntarioIconTransportBusElement>;
+      "ontario-icon-transport-car": LocalJSX.OntarioIconTransportCar & JSXBase.HTMLAttributes<HTMLOntarioIconTransportCarElement>;
+      "ontario-icon-transport-walk": LocalJSX.OntarioIconTransportWalk & JSXBase.HTMLAttributes<HTMLOntarioIconTransportWalkElement>;
+      "ontario-icon-tty": LocalJSX.OntarioIconTty & JSXBase.HTMLAttributes<HTMLOntarioIconTtyElement>;
+      "ontario-icon-twitter": LocalJSX.OntarioIconTwitter & JSXBase.HTMLAttributes<HTMLOntarioIconTwitterElement>;
+      "ontario-icon-twitter-alt": LocalJSX.OntarioIconTwitterAlt & JSXBase.HTMLAttributes<HTMLOntarioIconTwitterAltElement>;
+      "ontario-icon-upload": LocalJSX.OntarioIconUpload & JSXBase.HTMLAttributes<HTMLOntarioIconUploadElement>;
+      "ontario-icon-video": LocalJSX.OntarioIconVideo & JSXBase.HTMLAttributes<HTMLOntarioIconVideoElement>;
+      "ontario-icon-visa": LocalJSX.OntarioIconVisa & JSXBase.HTMLAttributes<HTMLOntarioIconVisaElement>;
+      "ontario-icon-vote-dislike": LocalJSX.OntarioIconVoteDislike & JSXBase.HTMLAttributes<HTMLOntarioIconVoteDislikeElement>;
+      "ontario-icon-vote-like": LocalJSX.OntarioIconVoteLike & JSXBase.HTMLAttributes<HTMLOntarioIconVoteLikeElement>;
+      "ontario-icon-vpn-key": LocalJSX.OntarioIconVpnKey & JSXBase.HTMLAttributes<HTMLOntarioIconVpnKeyElement>;
+      "ontario-icon-wheelchair": LocalJSX.OntarioIconWheelchair & JSXBase.HTMLAttributes<HTMLOntarioIconWheelchairElement>;
+      "ontario-icon-wifi": LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
+      "ontario-icon-youtube": LocalJSX.OntarioIconYoutube & JSXBase.HTMLAttributes<HTMLOntarioIconYoutubeElement>;
+      "ontario-input": LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
+      "ontario-radio-buttons": LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
+      "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
     }
+  }
 }

@@ -7,9 +7,4 @@ export interface HintExpander extends Hint {
 	 * If you would like to add HTML content, supply child content to the component.
 	 */
 	content: string;
-
-	/**
-	 * Include visually hidden text inside the label that describes to screen readers the availability of a hint expander
-	 */
-	ariaLabel?: string;
 }
