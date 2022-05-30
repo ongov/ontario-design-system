@@ -2,6 +2,9 @@ import { Component, h, Prop, State, Watch } from '@stencil/core';
 import { RadioButtons } from './radio-buttons.interface';
 import { RadioOption } from './radio-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+import { validatePropExists } from '../../utils/validation/validation-functions';
+import { ConsoleType, MessageStyle } from '../../utils/console-message/console-message.enum';
+import { printConsoleMessage } from '../../utils/console-message/console-message';
 
 @Component({
 	tag: 'ontario-radio-buttons',
@@ -128,9 +131,72 @@ export class OntarioRadioButtons implements RadioButtons {
 	 */
 	@Prop() isRequired?: boolean = false;
 
+	/*
+	 * Watch for changes in the `name` variable for validation purpose
+	 * Validate the name and make sure the name has a value.
+	 * Log error if user doesn't input a value for the name.
+	 */
+	@Watch('name')
+	validateNameContent(newValue: string) {
+		const isNameBlank = validatePropExists(newValue);
+		if (isNameBlank) {
+			printConsoleMessage([
+				{
+					message: ' name ',
+					style: MessageStyle.Code,
+				},
+				{
+					message: 'for',
+					style: MessageStyle.Regular,
+				},
+				{
+					message: ` <ontario-radio-buttons> `,
+					style: MessageStyle.Code,
+				},
+				{
+					message: `was not provided`,
+					style: MessageStyle.Regular,
+				},
+			], ConsoleType.Error);
+		}
+	}
+
+
+	/*
+	 * Watch for changes in the `legend` variable for validation purpose
+	 * Validate the legend and make sure the legend has a value.
+	 * Log error if user doesn't input a value for the legend.
+	 */
+	@Watch('legend')
+	validateLegendContent(newValue: string) {
+		const isLegendBlank = validatePropExists(newValue);
+		if (isLegendBlank) {
+			printConsoleMessage([
+				{
+					message: ' legend ',
+					style: MessageStyle.Code,
+				},
+				{
+					message: 'for',
+					style: MessageStyle.Regular,
+				},
+				{
+					message: ` <ontario-radio-buttons> `,
+					style: MessageStyle.Code,
+				},
+				{
+					message: `was not provided`,
+					style: MessageStyle.Regular,
+				},
+			], ConsoleType.Error);
+		}
+	}
+
 	componentWillLoad() {
 		this.parseOptions();
 		this.parseHintExpander();
+		this.validateNameContent(this.name);
+		this.validateLegendContent(this.legend);
 	}
 
 	render() {
