@@ -3,6 +3,7 @@ import { Component, Prop, h, Watch, State } from '@stencil/core';
 import { IconWithColour } from './icon.interface';
 import { IconSize, IconColour } from './icon.enum';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { validateValueAgainstEnum } from '../../utils/validation/validation-functions';
 
 @Component({
     tag: 'ontario-icon-grid',
@@ -63,7 +64,7 @@ export class OntarioIconGrid implements IconWithColour {
      */
     @Watch('colour')
     validateColour() {
-        this.iconColourState = (this.colour && Object.values(IconColour).find(colour => colour === this.colour.toLowerCase())) || this.warnDefaultColour();
+        this.iconColourState = (this.colour && validateValueAgainstEnum(this.colour, IconColour)) || this.warnDefaultColour();
     }
 
     /**
