@@ -50,7 +50,7 @@ export class InputCaption implements Caption {
 
 		this.isRequired = captionObject?.isRequired ?? false;
 		this.isLegend = captionObject?.isLegend ?? false;
-		this.componentTagName = componentTagName;
+		this.componentTagName = componentTagName.toLowerCase();
 		this.captionText = captionObject?.captionText ?? '';
 		this.captionType =
 			(captionObject && captionObject?.captionType && Object.values(CaptionType).find(type => type === captionObject?.captionType?.toLowerCase())) || CaptionType.Default;
