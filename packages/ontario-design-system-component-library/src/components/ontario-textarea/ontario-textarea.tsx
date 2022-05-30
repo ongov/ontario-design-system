@@ -1,8 +1,7 @@
-import { Component, Event, EventEmitter, h, Prop, State } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, State, Element } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 import { Input } from '../../utils/common.interface';
-import { Label } from '../../utils/label/label.interface';
-import { getLabelElement } from '../../utils/label/label';
+import { InputCaption } from '../../utils/input-caption/input-caption';
 
 /**
  * Ontario Textarea component properties
@@ -13,21 +12,25 @@ import { getLabelElement } from '../../utils/label/label';
 	styleUrl: 'ontario-textarea.scss',
 	shadow: true,
 })
-export class OntarioTextarea implements Input, Label {
+export class OntarioTextarea implements Input {
 	/**
-	 * The text to display as label.
+	 * The text to display as the label
+	 *
+	 * @example
+	 * <ontario-input
+	 *   caption='{
+	 *     "caption": "Address",
+	 *     "captionType": "heading",
+	 *     "isRequired": true}'
+	 *   ...>
+	 * </ontario-input>
 	 */
-	@Prop() labelCaption: string;
+	@Prop() caption: InputCaption | string;
 
 	/**
-	 * The form control with which the caption is associated.
+	 * Instantiate an InputCaption object for internal logic use
 	 */
-	@Prop({ mutable: true }) labelFor?: string;
-
-	/**
-	 * The type of label to render.
-	 */
-	@Prop({ mutable: true }) labelType: 'default' | 'large' | 'heading' = 'default';
+	@State() private captionState: InputCaption;
 
 	/**
 	 * The aria-describedBy value if the textarea has hint text associated with it.
@@ -53,6 +56,11 @@ export class OntarioTextarea implements Input, Label {
 	 * The textarea content value.
 	 */
 	@Prop({ mutable: true }) value?: string;
+
+	/**
+	 * Grant access to the host element and related DOM methods/events within the class instance.
+	 */
+	@Element() element: HTMLElement;
 
 	/**
 	 * Emitted when the input loses focus.
@@ -94,6 +102,8 @@ export class OntarioTextarea implements Input, Label {
 	}
 
 	componentWillLoad() {
+		// the `toLowerCase()` function is needed because `tagName` returns an upper-cased string
+		this.captionState = new InputCaption(this.element.tagName.toLowerCase(), this.caption);	
 		this.elementId = this.elementId ?? uuid();
 	}
 
@@ -104,7 +114,7 @@ export class OntarioTextarea implements Input, Label {
 	render() {
 		return (
 			<div>
-				{getLabelElement(this.labelType, this.getId(), this.required, this.labelCaption)}
+				{this.captionState.getCaption(this.getId())}
 				<slot name="hint-text"></slot>
 				<textarea
 					aria-describedby={this.describedBy}
