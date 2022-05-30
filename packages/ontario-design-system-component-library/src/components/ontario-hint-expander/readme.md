@@ -22,7 +22,7 @@ Example of a hint expander that includes an `aria-label` attribute, and an `elem
 
 ```html
 <ontario-hint-expander hint="This is the hint" content="This is the content" 
-aria-label="This indicates that the hint can be expanded" element-id="expander-82913`"></ontario-hint-expander>
+element-id="expander-82913`"></ontario-hint-expander>
 ```
 
 ## Accessibility
@@ -55,7 +55,6 @@ When the hint text is in it’s open state, the value in the `aria-expanded` att
 
 | Property    | Attribute    | Description                                                                                                                                                                                                                                     | Type                  | Default     |
 | ----------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
-| `ariaLabel` | `aria-label` | Include visually hidden text inside the label that describes to screen readers the availability of a hint expander                                                                                                                              | `string \| undefined` | `undefined` |
 | `content`   | `content`    | Content to display as the hint, once the expander is toggled open. Please note that any content that is passed into this prop will only be displayed as a string. If you would like to add HTML content, supply child content to the component. | `string`              | `undefined` |
 | `elementId` | `element-id` | Used to used to establish a relationship between hint text content and elements using aria-describedby.                                                                                                                                         | `string \| undefined` | `undefined` |
 | `hint`      | `hint`       | Text to display as the hint expander question/statement                                                                                                                                                                                         | `string`              | `undefined` |

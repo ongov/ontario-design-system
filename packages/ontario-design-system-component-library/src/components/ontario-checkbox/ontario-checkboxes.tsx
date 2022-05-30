@@ -48,14 +48,12 @@ export class OntarioCheckboxes implements Checkboxes {
    *     "label": "Checkbox Label",
    *     "hintExpander": {
    *			  "hint": "Hint expander",
-   * 		    "content": "This is the content",
-   *			  "aria-label": "This indicates that the hint can be expanded"
+   * 		    "content": "This is the content"
    *		 }
    *   }]'
    *   hint-expander='{
    *    "hint": "Hint expander",
-   *    "content": "This is the content, yup this is the content",
-   *    "aria-label": "This indicates that the hint can be expanded"
+   *    "content": "This is the content, yup this is the content"
       }'
 
    * >
@@ -99,8 +97,7 @@ export class OntarioCheckboxes implements Checkboxes {
    *        "label": "checkbox-2-label",
    *        "hintExpander": {
    *          "hint": "Hint expander",
-   *          "content": "This is the content",
-   *          "aria-label": "This indicates that the hint can be expanded"
+   *          "content": "This is the content"
    *        }
    *      }
    *   ]'
@@ -177,7 +174,7 @@ export class OntarioCheckboxes implements Checkboxes {
                 </label>
 
                 <div class="ontario-checkboxes__hint-expander">
-                  {checkbox.hintExpander && <ontario-hint-expander hint={checkbox.hintExpander.hint} content={checkbox.hintExpander.content} aria-label={checkbox.hintExpander.ariaLabel} input-exists></ontario-hint-expander>}
+                  {checkbox.hintExpander && <ontario-hint-expander hint={checkbox.hintExpander.hint} content={checkbox.hintExpander.content} input-exists></ontario-hint-expander>}
                 </div>
               </div>
             )}
@@ -186,7 +183,6 @@ export class OntarioCheckboxes implements Checkboxes {
               <ontario-hint-expander
                 hint={this.internalHintExpander.hint}
                 content={this.internalHintExpander.content}
-                aria-label={this.internalHintExpander.ariaLabel}
                 input-exists
               ></ontario-hint-expander>
             )}
