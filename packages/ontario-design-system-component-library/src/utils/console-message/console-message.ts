@@ -11,7 +11,7 @@ const fontSize = '12px';
 // the `background-color`, `color`, `padding` and `border-radius` values are hardcoded because
 // they are specific for console message use case
 const tagStyles = [
-	'background-color: #118847',
+	'background-color: #367A76',
 	'border: none',
 	'color: white',
 	'padding: 2px 5px',
@@ -26,7 +26,7 @@ const tagStyles = [
 const regularTextStyles = ['font-family: sans-serif', `font-size: ${fontSize}`].join(';');
 
 // styles for code in string format
-const codedTextStyles = ['font-family: monospace', `font-size: ${fontSize}`].join(';');
+const monospaceTextStyles = ['font-family: monospace', `font-size: ${fontSize}`].join(';');
 
 function addSpecifier(message: string): string {
 	const styleSpecifier = '%c';
@@ -62,7 +62,7 @@ export function printConsoleMessage(messages: ConsoleMessage[] | string, console
 	} else {
 		// push style of each message into the array of arguments in order
 		messages?.forEach((message: ConsoleMessage) => {
-			messageArray.push(message.style && message.style === MessageStyle.Code ? codedTextStyles : regularTextStyles);
+			messageArray.push(message.style && message.style === MessageStyle.Code ? monospaceTextStyles : regularTextStyles);
 		});
 	}
 
@@ -80,5 +80,66 @@ export function printConsoleMessage(messages: ConsoleMessage[] | string, console
 			break;
 		default:
 			console.log.apply(null, messageArray);
+	}
+}
+
+// build and print console message with a fluent interface design
+export class ConsoleMessageClass {
+	message: string;
+	styles: string[];
+
+	constructor() {
+		this.message = '';
+		this.styles = [];
+	}
+
+	// add the `Ontario Design System` tag to the beginning of the message
+	// the first call in the chain if a tag is required
+	addDesignSystemTag() {
+		this.message = addSpecifier(designSystemTag);
+		this.styles.push(tagStyles);
+		return this;
+	}
+
+	// build console message as regular text 
+	addRegularText(text: string) {
+		this.addText(text, regularTextStyles);
+		return this;
+	}
+
+	// build console message as monospace text
+	addMonospaceText(text: string) {
+		this.addText(text, monospaceTextStyles);
+		return this;
+	}
+
+	// print message to console depending on the `ConsoleType`
+	// the last function call in the chain
+	printMessage(consoleType = ConsoleType.Warning) {
+		const messageArray = [this.message, ...this.styles];
+
+		// pass array of arguments into the console function for printing depending on `consoleType`
+		// the `function.apply()` function handles array of arguments which allows list of arguments to be set programmatically
+		switch (consoleType) {
+			case ConsoleType.Error:
+				console.error.apply(null, messageArray);
+				break;
+			case ConsoleType.Info:
+				console.info.apply(null, messageArray);
+				break;
+			case ConsoleType.Warning:
+				console.warn.apply(null, messageArray);
+				break;
+			default:
+				console.log.apply(null, messageArray);
+		}
+	}
+
+	// add text to the `message` property and associated styles into the `styles` array
+	private addText(text: string, style: string) {
+		if (text && text?.trim().length > 0) {
+			this.message += addSpecifier(text);
+			this.styles.push(style);
+		}
 	}
 }

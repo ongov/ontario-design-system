@@ -9,7 +9,7 @@ import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
-import { IconColour } from "./components/ontario-icon/ontario-icon.enum";
+import { IconColour } from "./components/ontario-icon/icon.enum";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
     interface MyComponent {
