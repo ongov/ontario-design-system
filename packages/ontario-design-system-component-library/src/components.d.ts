@@ -54,7 +54,7 @@ export namespace Components {
     interface OntarioCheckboxes {
         /**
           * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
-          * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkboxes"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
+          * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkboxes"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content"  }'  > </ontario-checkboxes>
          */
         "hintExpander"?: HintExpander | string;
         /**
@@ -76,7 +76,7 @@ export namespace Components {
         "name": string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
-          * @example <ontario-checkboxes   legend="This is a question?"   name= "ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
+          * @example <ontario-checkboxes   legend="This is a question?"   name= "ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-checkboxes>
          */
         "options": CheckboxOption[] | string;
     }
@@ -111,12 +111,8 @@ export namespace Components {
     }
     interface OntarioHintExpander {
         /**
-          * Include visually hidden text inside the label that describes to screen readers the availability of a hint expander
-         */
-        "ariaLabel"?: string;
-        /**
           * Content to display as the hint, once the expander is toggled open. Please note that any content that is passed into this prop will only be displayed as a string. If you would like to add HTML content, supply child content to the component.
-          * @example <ontario-hint-expander hint="This is the hint" aria-label="This indicates that the hint can be expanded">   <img src="https://www.jquery-az.com/html/images/banana.jpg" title="Title of image" alt="alt text here"/>   <p> Here is the content beside the image </p> </ontario-hint-expander>
+          * @example <ontario-hint-expander hint="This is the hint"   <img src="https://www.jquery-az.com/html/images/banana.jpg" title="Title of image" alt="alt text here"/>   <p> Here is the content beside the image </p> </ontario-hint-expander>
          */
         "content": string;
         /**
@@ -1199,7 +1195,7 @@ export namespace Components {
     interface OntarioRadioButtons {
         /**
           * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
-          * @example <ontario-radio-buttons   legend="This is a question?" 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content", 		    "aria-label": "This indicates that the hint can be expanded" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content",     "aria-label": "This indicates that the hint can be expanded"   }' > </ontario-radio-buttons>
+          * @example <ontario-radio-buttons   legend="This is a question?" 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }' > </ontario-radio-buttons>
          */
         "hintExpander"?: HintExpander | string;
         /**
@@ -1221,7 +1217,7 @@ export namespace Components {
         "name": string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
-          * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-radio-buttons>
+          * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-radio-buttons>
          */
         "options": string | RadioOption[];
     }
@@ -2111,7 +2107,7 @@ declare namespace LocalJSX {
     interface OntarioCheckboxes {
         /**
           * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
-          * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkboxes"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content", 		  "aria-label": "This indicates that the hint can be expanded" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content",    "aria-label": "This indicates that the hint can be expanded"  }'  > </ontario-checkboxes>
+          * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkboxes"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content"  }'  > </ontario-checkboxes>
          */
         "hintExpander"?: HintExpander | string;
         /**
@@ -2137,7 +2133,7 @@ declare namespace LocalJSX {
         "onChangeEvent"?: (event: CustomEvent<any>) => void;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
-          * @example <ontario-checkboxes   legend="This is a question?"   name= "ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-checkboxes>
+          * @example <ontario-checkboxes   legend="This is a question?"   name= "ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-checkboxes>
          */
         "options"?: CheckboxOption[] | string;
     }
@@ -2172,12 +2168,8 @@ declare namespace LocalJSX {
     }
     interface OntarioHintExpander {
         /**
-          * Include visually hidden text inside the label that describes to screen readers the availability of a hint expander
-         */
-        "ariaLabel"?: string;
-        /**
           * Content to display as the hint, once the expander is toggled open. Please note that any content that is passed into this prop will only be displayed as a string. If you would like to add HTML content, supply child content to the component.
-          * @example <ontario-hint-expander hint="This is the hint" aria-label="This indicates that the hint can be expanded">   <img src="https://www.jquery-az.com/html/images/banana.jpg" title="Title of image" alt="alt text here"/>   <p> Here is the content beside the image </p> </ontario-hint-expander>
+          * @example <ontario-hint-expander hint="This is the hint"   <img src="https://www.jquery-az.com/html/images/banana.jpg" title="Title of image" alt="alt text here"/>   <p> Here is the content beside the image </p> </ontario-hint-expander>
          */
         "content"?: string;
         /**
@@ -3276,7 +3268,7 @@ declare namespace LocalJSX {
     interface OntarioRadioButtons {
         /**
           * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
-          * @example <ontario-radio-buttons   legend="This is a question?" 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content", 		    "aria-label": "This indicates that the hint can be expanded" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content",     "aria-label": "This indicates that the hint can be expanded"   }' > </ontario-radio-buttons>
+          * @example <ontario-radio-buttons   legend="This is a question?" 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }' > </ontario-radio-buttons>
          */
         "hintExpander"?: HintExpander | string;
         /**
@@ -3298,7 +3290,7 @@ declare namespace LocalJSX {
         "name"?: string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
-          * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content",          "aria-label": "This indicates that the hint can be expanded"        }      }   ]' > </ontario-radio-buttons>
+          * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-radio-buttons>
          */
         "options"?: string | RadioOption[];
     }
