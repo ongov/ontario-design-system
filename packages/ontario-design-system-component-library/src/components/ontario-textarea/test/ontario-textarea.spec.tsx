@@ -80,6 +80,8 @@ describe('ontario-textarea', () => {
 									name="textarea-name"
 									required="true"
 									element-id="textarea-id"
+									label-caption="Ontario Textarea"
+									label-type="default"
 								></ontario-textarea>`,
 			});
 
@@ -102,6 +104,8 @@ describe('ontario-textarea', () => {
 									name="textarea-name"
 									required="true"
 									element-id="textarea-id"
+									label-caption="Ontario Textarea"
+									label-type="default"
 								></ontario-textarea>`,
 			});
 
@@ -126,6 +130,8 @@ describe('ontario-textarea', () => {
 									name="textarea-name"
 									required="true"
 									element-id="textarea-id"
+									label-caption="Ontario Textarea"
+									label-type="default"
 								></ontario-textarea>`,
 			});
 
