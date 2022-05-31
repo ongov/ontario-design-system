@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, State, Watch, Element } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 import { Input } from '../../utils/common.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
