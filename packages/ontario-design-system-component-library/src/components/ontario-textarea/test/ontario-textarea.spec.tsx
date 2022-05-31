@@ -57,79 +57,92 @@ describe('ontario-textarea', () => {
 			expect(page.rootInstance.focused).toBe(false);
 			expect(page.rootInstance.captionState.captionText).toBe('Ontario Textarea');
 		});
+
+		expect(page.rootInstance.describedBy).toBe('textarea-hint-id');
+		expect(page.rootInstance.name).toBe('textarea-name');
+		expect(page.rootInstance.required).toBe(true);
+		expect(page.rootInstance.value).toBe('textarea value');
+		expect(page.rootInstance.elementId).toBe('textarea-id');
+		expect(page.rootInstance.focused).toBe(false);
+	});
+});
+
+describe('events/methods', () => {
+	it('should handle focus with right focused state', async () => {
+		const textarea = new OntarioTextarea();
+		textarea.handleFocus();
+		expect(textarea.focused).toBeTruthy();
 	});
 
-	describe('events/methods', () => {
-		it('should handle focus with right focused state', async () => {
-			const textarea = new OntarioTextarea();
-			textarea.handleFocus();
-			expect(textarea.focused).toBeTruthy();
-		});
+	it('should handle blur with right focused state', async () => {
+		const textarea = new OntarioTextarea();
+		textarea.focused = true;
+		textarea.handleBlur();
+		expect(textarea.focused).toBeFalsy();
+	});
 
-		it('should handle blur with right focused state', async () => {
-			const textarea = new OntarioTextarea();
-			textarea.focused = true;
-			textarea.handleBlur();
-			expect(textarea.focused).toBeFalsy();
-		});
-
-		it('should emit a keyboard event on change', async () => {
-			const page = await newSpecPage({
-				components: [OntarioTextarea],
-				html: `<ontario-textarea
+	it('should emit a keyboard event on change', async () => {
+		const page = await newSpecPage({
+			components: [OntarioTextarea],
+			html: `<ontario-textarea
 									name="textarea-name"
 									required="true"
 									element-id="textarea-id"
+									label-caption="Ontario Textarea"
+									label-type="default"
 								></ontario-textarea>`,
-			});
-
-			const emitSpy = jest.fn();
-			const leftArrowKeyCode = 37;
-			page.doc.addEventListener('changeEvent', emitSpy);
-			page.rootInstance.handleChange(
-				new KeyboardEvent('keydown', {
-					keyCode: leftArrowKeyCode,
-				}),
-			);
-			await page.waitForChanges();
-			expect(emitSpy).toHaveBeenCalled();
 		});
 
-		it('should update the textarea value on a change event', async () => {
-			const page = await newSpecPage({
-				components: [OntarioTextarea],
-				html: `<ontario-textarea
+		const emitSpy = jest.fn();
+		const leftArrowKeyCode = 37;
+		page.doc.addEventListener('changeEvent', emitSpy);
+		page.rootInstance.handleChange(
+			new KeyboardEvent('keydown', {
+				keyCode: leftArrowKeyCode,
+			}),
+		);
+		await page.waitForChanges();
+		expect(emitSpy).toHaveBeenCalled();
+	});
+
+	it('should update the textarea value on a change event', async () => {
+		const page = await newSpecPage({
+			components: [OntarioTextarea],
+			html: `<ontario-textarea
 									name="textarea-name"
 									required="true"
 									element-id="textarea-id"
+									label-caption="Ontario Textarea"
+									label-type="default"
 								></ontario-textarea>`,
-			});
-
-			const emitSpy = jest.fn();
-			const testValue = 'This is a test';
-			const leftArrowKeyCode = 37;
-			page.doc.addEventListener('changeEvent', emitSpy);
-			page.rootInstance.value = testValue;
-			page.rootInstance.handleChange(
-				new KeyboardEvent('keydown', {
-					keyCode: leftArrowKeyCode,
-				}),
-			);
-			await page.waitForChanges();
-			expect(page.rootInstance.value).toBe(testValue);
 		});
 
-		it('should return the textarea id when using the getId method', async () => {
-			const page = await newSpecPage({
-				components: [OntarioTextarea],
-				html: `<ontario-textarea
+		const emitSpy = jest.fn();
+		const testValue = 'This is a test';
+		const leftArrowKeyCode = 37;
+		page.doc.addEventListener('changeEvent', emitSpy);
+		page.rootInstance.value = testValue;
+		page.rootInstance.handleChange(
+			new KeyboardEvent('keydown', {
+				keyCode: leftArrowKeyCode,
+			}),
+		);
+		await page.waitForChanges();
+		expect(page.rootInstance.value).toBe(testValue);
+	});
+
+	it('should return the textarea id when using the getId method', async () => {
+		const page = await newSpecPage({
+			components: [OntarioTextarea],
+			html: `<ontario-textarea
 									name="textarea-name"
 									required="true"
 									element-id="textarea-id"
+									label-caption="Ontario Textarea"
+									label-type="default"
 								></ontario-textarea>`,
-			});
-
-			expect(page.rootInstance.getId()).toEqual('textarea-id');
 		});
+
+		expect(page.rootInstance.getId()).toEqual('textarea-id');
 	});
 });
