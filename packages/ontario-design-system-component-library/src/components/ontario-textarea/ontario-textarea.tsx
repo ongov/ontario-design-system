@@ -105,9 +105,9 @@ export class OntarioTextarea implements Input {
 	}
 
 	/*
-	 * Watch for changes in the `labelCaption` prop for validation purpose
-	 * Validate the labelCaption and make sure the labelCaption has a value.
-	 * Log error if user doesn't input a value for the labelCaption.
+	 * Watch for changes in the `name` prop for validation purpose
+	 * Validate the name and make sure the name has a value.
+	 * Log error if user doesn't input a value for the name.
 	 */
 	@Watch('name')
 	validateNameContent(newValue: string) {
