@@ -1,6 +1,10 @@
 import { Component, State, h, Prop, Watch, getAssetPath } from '@stencil/core';
 import { DropdownOption } from './dropdown-option.interface';
 import { Dropdown } from './dropdown.interface';
+import { v4 as uuid } from 'uuid';
+import { validatePropExists, validateObjectExists } from '../../utils/validation/validation-functions';
+import { ConsoleType, MessageStyle } from '../../utils/console-message/console-message.enum';
+import { printConsoleMessage } from '../../utils/console-message/console-message';
 
 @Component({
   tag: 'ontario-dropdown-list',
@@ -22,7 +26,7 @@ export class OntarioDropdownList implements Dropdown {
   /**
    * The ID for the dropdown list.
    */
-  @Prop() elementId: string;
+  @Prop({ mutable: true }) elementId?: string;
 
   /**
    * Each property will be passed in through an object in the options array.
@@ -64,6 +68,37 @@ export class OntarioDropdownList implements Dropdown {
     }
   }
 
+  /*
+   * Watch for changes in the `options` object for validation purpose
+   * Validate the objects and make sure they exist.
+   * Log error if user doesn't provide the options.
+   */
+  @Watch('options')
+  validateOptionsContent(newValue: object) {
+    const isOptionsBlank = validateObjectExists(newValue);
+    if (isOptionsBlank) {
+      printConsoleMessage([
+        {
+          message: ' options ',
+          style: MessageStyle.Code,
+        },
+        {
+          message: 'for',
+          style: MessageStyle.Regular,
+        },
+        {
+          message: ` <ontario-dropdown-list> `,
+          style: MessageStyle.Code,
+        },
+        {
+          message: `were not provided`,
+          style: MessageStyle.Regular,
+        },
+      ], ConsoleType.Error);
+    }
+  }
+
+
   /**
    * Determine whether the dropdown list is required.
    * If required, add `is-required` attribute.
@@ -88,15 +123,82 @@ export class OntarioDropdownList implements Dropdown {
    */
   @Prop() isEmptyStartOption?: boolean | string = false;
 
-
   private getDropdownArrow() {
     return {
       backgroundImage: `url(${getAssetPath('./assets/ontario-material-dropdown-arrow-48px.svg')})`,
     }
   }
 
+  /*
+   * Watch for changes in the `name` variable for validation purpose
+   * Validate the name and make sure the name has a value.
+   * Log error if user doesn't input a value for the name.
+   */
+  @Watch('name')
+  validateNameContent(newValue: string) {
+    const isNameBlank = validatePropExists(newValue);
+    if (isNameBlank) {
+      printConsoleMessage([
+        {
+          message: ' name ',
+          style: MessageStyle.Code,
+        },
+        {
+          message: 'for',
+          style: MessageStyle.Regular,
+        },
+        {
+          message: ` <ontario-dropdown-list> `,
+          style: MessageStyle.Code,
+        },
+        {
+          message: `was not provided`,
+          style: MessageStyle.Regular,
+        },
+      ], ConsoleType.Error);
+    }
+  }
+
+  /*
+   * Watch for changes in the `label` variable for validation purpose
+   * Validate the label and make sure the label has a value.
+   * Log error if user doesn't input a value for the label.
+   */
+  @Watch('label')
+  validateLabelContent(newValue: string) {
+    const isLabelBlank = validatePropExists(newValue);
+    if (isLabelBlank) {
+      printConsoleMessage([
+        {
+          message: ' label ',
+          style: MessageStyle.Code,
+        },
+        {
+          message: 'for',
+          style: MessageStyle.Regular,
+        },
+        {
+          message: ` <ontario-dropdown-list> `,
+          style: MessageStyle.Code,
+        },
+        {
+          message: `was not provided`,
+          style: MessageStyle.Regular,
+        },
+      ], ConsoleType.Error);
+    }
+  }
+
+  public getId(): string {
+    return this.elementId ?? '';
+  }
+
   componentWillLoad() {
     this.parseOptions();
+    this.validateNameContent(this.name);
+    this.validateLabelContent(this.label);
+    this.validateOptionsContent(this.internalOptions);
+    this.elementId = this.elementId ?? uuid();
   }
 
   render() {
@@ -111,7 +213,7 @@ export class OntarioDropdownList implements Dropdown {
 
         <select
           class="ontario-input ontario-dropdown"
-          id={this.elementId}
+          id={this.getId()}
           name={this.name}
           style={this.getDropdownArrow()}
         >
