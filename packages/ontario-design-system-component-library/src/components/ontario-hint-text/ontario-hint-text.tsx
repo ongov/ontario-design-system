@@ -27,7 +27,7 @@ export class OntarioHintText implements Hint {
 	 *
 	 * The resulting hint text will display `"Override Hint Text"`.
 	 */
-	@Prop({ mutable: true }) hint: string;
+	@Prop() hint: string;
 
 	@State() hintState: string;
 

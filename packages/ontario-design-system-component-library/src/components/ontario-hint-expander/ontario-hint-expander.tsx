@@ -19,7 +19,7 @@ export class OntarioHintExpander implements HintExpander {
   /**
    * Text to display as the hint expander question/statement
    */
-  @Prop({ mutable: true }) hint: string;
+  @Prop() hint: string;
 
   @State() hintState: string;
 
@@ -80,7 +80,6 @@ export class OntarioHintExpander implements HintExpander {
    * Validate the hint and make sure the hint has a value.
    * Log warning if user doesn't input a value for the hint.
    */
-    @Watch('hint')
     validateHint(newValue: string) {
       if (validatePropExists(newValue)) {
         const message = new ConsoleMessageClass();
@@ -117,7 +116,6 @@ export class OntarioHintExpander implements HintExpander {
    * Set `hint` using internal component logic
    */
   componentWillLoad() {
-    this.content = this.content ?? <slot />;
     this.elementId = this.elementId ?? uuid();
     this.updateHintContent();
     this.validateContent(this.content);
