@@ -1,9 +1,8 @@
-import { Component, Element, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Prop, Watch, State } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 import { HintExpander } from './hint-expander.interface';
 import { validatePropExists } from '../../utils/validation/validation-functions';
-import { ConsoleType, MessageStyle } from '../../utils/console-message/console-message.enum';
-import { printConsoleMessage } from '../../utils/console-message/console-message';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 /**
  * Ontario Design System hint expander web component
@@ -21,6 +20,18 @@ export class OntarioHintExpander implements HintExpander {
    * Text to display as the hint expander question/statement
    */
   @Prop({ mutable: true }) hint: string;
+
+  @State() hintState: string;
+
+	/*
+	 * Watch for changes in the `hint` variable for validation purposes.
+	 * If hint is not provided, set hint to Element Content (if it exists).
+	*/
+	@Watch('hint')
+	private updateHintContent() {
+		this.hintState = this.hint ?? this.host.textContent ?? '';
+		this.validateHint(this.hintState);
+	}
 
   /**
    * Content to display as the hint, once the expander is toggled open.
@@ -67,63 +78,38 @@ export class OntarioHintExpander implements HintExpander {
   /*
    * Watch for changes in the `hint` prop for validation purpose
    * Validate the hint and make sure the hint has a value.
-   * Log error if user doesn't input a value for the hint.
+   * Log warning if user doesn't input a value for the hint.
    */
-  @Watch('hint')
-  validateHintContent(newValue: string) {
-    const isHintBlank = validatePropExists(newValue);
-    if (isHintBlank) {
-      printConsoleMessage([
-        {
-          message: ' hint ',
-          style: MessageStyle.Code,
-        },
-        {
-          message: 'for',
-          style: MessageStyle.Regular,
-        },
-        {
-          message: ` <ontario-hint-expander> `,
-          style: MessageStyle.Code,
-        },
-        {
-          message: `was not provided`,
-          style: MessageStyle.Regular,
-        },
-      ], ConsoleType.Error);
+    @Watch('hint')
+    validateHint(newValue: string) {
+      if (validatePropExists(newValue)) {
+        const message = new ConsoleMessageClass();
+              message
+                  .addDesignSystemTag()
+                  .addMonospaceText(' hint ')
+                  .addRegularText('for')
+                  .addMonospaceText(' <ontario-hint-expander> ')
+                  .addRegularText('was not provided')
+                  .printMessage();
+      }
     }
-  }
 
   /*
    * Watch for changes in the `content` prop for validation purpose
    * Validate the content and make sure the content has a value.
-   * Log error if user doesn't input a value for the content or element content.
+   * Log warning if user doesn't input a value for the content or element content.
    */
   @Watch('content')
   validateContent(newValue: string) {
-    // If element content is not provided, check whether prop exists
-    if (!this.host.textContent) {
-      const isContentBlank = validatePropExists(newValue);
-      if (isContentBlank) {
-        printConsoleMessage([
-          {
-            message: ' content ',
-            style: MessageStyle.Code,
-          },
-          {
-            message: 'for',
-            style: MessageStyle.Regular,
-          },
-          {
-            message: ` <ontario-hint-expander> `,
-            style: MessageStyle.Code,
-          },
-          {
-            message: `was not provided`,
-            style: MessageStyle.Regular,
-          },
-        ], ConsoleType.Error);
-      }
+    if (validatePropExists(newValue)) {
+      const message = new ConsoleMessageClass();
+            message
+                .addDesignSystemTag()
+                .addMonospaceText(' content ')
+                .addRegularText('for')
+                .addMonospaceText(' <ontario-hint-expander> ')
+                .addRegularText('was not provided')
+                .printMessage();
     }
   }
 
@@ -133,7 +119,7 @@ export class OntarioHintExpander implements HintExpander {
   componentWillLoad() {
     this.content = this.content ?? <slot />;
     this.elementId = this.elementId ?? uuid();
-    this.validateHintContent(this.hint);
+    this.updateHintContent();
     this.validateContent(this.content);
   }
 
