@@ -63,6 +63,7 @@ export class InputCaption implements Caption {
 	getCaption = (captionFor?: string): HTMLElement => {
 		const captionContent = this.isLegend ? (
 			<legend class={this.getClass()}>
+				{this.captionType === CaptionType.Heading ? `<h1>${this.captionText}</h1>` : `${this.captionText}`};
 				{this.captionText}
 				{this.getRequiredFlagElement()}
 			</legend>
@@ -74,7 +75,7 @@ export class InputCaption implements Caption {
 		);
 
 		// with `this.captionType` already set to one of the enum values, the comparison no longer needs the `toLowerCase()` transform
-		return this.captionType === CaptionType.Heading ? <h1>{captionContent}</h1> : captionContent;
+		return this.captionType === CaptionType.Heading && !this.isLegend ? <h1>{captionContent}</h1> : captionContent;
 	};
 
 	/**
@@ -90,7 +91,7 @@ export class InputCaption implements Caption {
 	 * @returns CSS class for the label/legend.
 	 */
 	private getRequiredFlagElement(): HTMLElement {
-		return <span class="ontario-label__flag">{this.getRequiredFlagText()}</span>;
+		return <span class={this.isLegend ? "ontario-fieldset__legend__flag" : "ontario-label__flag"}>{this.getRequiredFlagText()}</span>;
 	}
 
 	/**
@@ -98,7 +99,7 @@ export class InputCaption implements Caption {
 	 * @returns CSS class for the `label` element.
 	 */
 	private getClass(): string {
-		return this.captionType === CaptionType.Large || this.captionType === CaptionType.Heading ? `ontario-label ontario-label--${this.captionType}` : `ontario-label`;
+		return this.captionType === CaptionType.Large || this.captionType === CaptionType.Heading ? (this.isLegend ? `.ontario-fieldset__legend ontario-fieldset__legend--${this.captionType}` : `ontario-label ontario-label--${this.captionType}`) : (this.isLegend ? ".ontario-fieldset__legend" : "ontario-label");
 	}
 
 	/**
