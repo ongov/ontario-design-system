@@ -6,8 +6,11 @@ export interface CheckboxOption {
    *
    * @example
    * <ontario-checkboxes
+   *   caption='{
+	 *     "captionText": "Address",
+	 *     "captionType": "heading",
+	 *     "isRequired": true}'
    *   name="ontario-checkboxes"
-   *   legend="This is a question?"
    *   hint-text="This is the hint text"
    *   options='[{
    *     "value": "checkbox-1-value",
@@ -26,8 +29,11 @@ export interface CheckboxOption {
    *
    * @example
    * <ontario-checkboxes
+   *   caption='{
+	 *     "captionText": "Address",
+	 *     "captionType": "heading",
+	 *     "isRequired": true}'
    *   name="ontario-checkboxes"
-   *   legend="This is a question?"
    *   hint-text="This is the hint text"
    *   options='[{
    *     "value": "checkbox-1-value",
