@@ -16,10 +16,8 @@ export default function ButtonExample() {
 					page unless the page has equally important calls to action.
 				</p> 
 				<div className="preview-container">
-					<div className="example-container">
-						<h5>Primary:</h5>
-						<OntarioButton type="primary">Click Me!</OntarioButton>
-					</div>
+					<h4>Primary:</h4>
+					<OntarioButton type="primary">Click Me!</OntarioButton>
 
 					<p>With the following markup:</p>
 
@@ -34,10 +32,8 @@ export default function ButtonExample() {
 				</p>
 
 				<div className="preview-container">
-					<div className="example-container">
-						<h5>Secondary:</h5>
-						<OntarioButton type="secondary">Click Me!</OntarioButton>
-					</div>
+					<h4>Secondary:</h4>
+					<OntarioButton type="secondary">Click Me!</OntarioButton>
 
 					<p>With the following markup:</p>
 
@@ -52,10 +48,8 @@ export default function ButtonExample() {
 				</p>
 
 				<div className="preview-container">
-					<div className="example-container">
-						<h5>Tertiary:</h5>
-						<OntarioButton type="tertiary">Click Me!</OntarioButton>
-					</div>
+					<h4>Tertiary:</h4>
+					<OntarioButton type="tertiary">Click Me!</OntarioButton>
 
 					<p>With the following markup:</p>
 

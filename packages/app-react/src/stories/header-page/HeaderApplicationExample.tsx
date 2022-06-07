@@ -23,27 +23,25 @@ export default function HeaderApplicationExample() {
 		<div className="ontario-row">
 			<div className="ontario-columns ontario-medium-12 ontario-large-12">
 				<div className="preview-container">
-					<div className="example-container">
-						<h5>Application Header</h5>
-						<OntarioHeader
-              type="application"
-							title-header='{
+					<h4>Application Header</h4>
+					<OntarioHeader
+						type="application"
+						title-header='{
                 "name": "Application name" ,
                 "href": "/"
               }'
-							language-Toggle-Options='{
+						language-Toggle-Options='{
                 "englishLink":"/en",
                 "frenchLink": "/fr"
               }'
-							menu-Items='[{
+						menu-Items='[{
                 "name": "Health",
                 "href": "/ontario-hint"
               },{
                 "name": "Financial Health",
                 "href": "/ontario-hint"
               }]'
-						></OntarioHeader>
-					</div>
+					></OntarioHeader>
 
 					<p>With the following markup:</p>
 

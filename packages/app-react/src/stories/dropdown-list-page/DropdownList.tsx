@@ -2,7 +2,7 @@ import React from 'react';
 import '../stories.scss';
 import DropdownListGuidance from './DropdownListGuidance';
 import DropdownListWhenToUse from './DropdownListWhenToUse';
-import DropdownListExample from './DropdownListExample';
+import DropdownListExamples from './DropdownListExample';
 import DropdownListTechnicalSpecifications from './DropdownListTechnicalSpecifications';
 
 const StoryOntarioDropdownList = () => {
@@ -10,7 +10,7 @@ const StoryOntarioDropdownList = () => {
 		<div className="page-content">
 			<DropdownListWhenToUse />
 			<DropdownListGuidance />
-			<DropdownListExample />
+			<DropdownListExamples />
 			<DropdownListTechnicalSpecifications />
 		</div>
 	);

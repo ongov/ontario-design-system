@@ -3,7 +3,7 @@ import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-sys
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-export default function DropdownListExample() {
+export default function DropdownListExamples() {
 	const dropdownListCodeExample = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList label="Do you like cats?" name="cat-dropdown" is-required
   options='[{
       "value": "dropdown-list-1",
@@ -50,7 +50,7 @@ export default function DropdownListExample() {
 		<div className="ontario-row">
 			<div className="ontario-columns ontario-medium-12 ontario-large-12">
 				<div className="preview-container">
-					<div className="example-container">
+
 						<OntarioDropdownList
 							label="Do you like cats?"
 							name="cat-dropdown"
@@ -68,7 +68,7 @@ export default function DropdownListExample() {
                 "label": "Option 3"
               }]'
 						></OntarioDropdownList>
-					</div>
+
 
 					<p>With the following markup:</p>
 
@@ -81,7 +81,7 @@ export default function DropdownListExample() {
 						because, in this case, we’re sure at least 90% of our users will live in Canada:{' '}
 					</p>
 
-					<div className="example-container">
+
 						<OntarioDropdownList
 							label="Shipping Address"
 							name="shipping-address"
@@ -99,7 +99,7 @@ export default function DropdownListExample() {
                 "label": "France"
               }]'
 						></OntarioDropdownList>
-					</div>
+
 
 					<p>With the following markup:</p>
 
@@ -109,7 +109,7 @@ export default function DropdownListExample() {
 
 					<p>In all other cases, use the default option to repeat the label – this provides additional help to users with assistive devices like screen readers.</p>
 
-					<div className="example-container">
+
 						<OntarioDropdownList
 							label="Select a language"
 							name="language-select"
@@ -126,7 +126,7 @@ export default function DropdownListExample() {
                 "label": "French"
               }]'
 						></OntarioDropdownList>
-					</div>
+
 
 					<p>With the following markup:</p>
 

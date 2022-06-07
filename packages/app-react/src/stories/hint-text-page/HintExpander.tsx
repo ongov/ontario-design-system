@@ -35,14 +35,14 @@ export default function HintExpander() {
 					<p>Hint expanders are specific to hints within forms. On standard content pages, use an accordion instead.</p>
 
 					<div className="preview-container">
-						<div className="example-container">
-							<OntarioHintExpander
-								hint="This is a hint with an expander"
-								content="This is the expanded content"
-								ariaLabel="this it the arialabel"
-								elementId="this is the element id"
-							/>
-						</div>
+						<h4>Hint expander example:</h4>
+						<OntarioHintExpander
+							hint="This is a hint with an expander"
+							content="This is the expanded content"
+							ariaLabel="this it the arialabel"
+							elementId="this is the element id"
+						/>
+
 						<p>With the following markup:</p>
 						<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
 							{hintExpanderCodeExample}

@@ -16,19 +16,17 @@ export default function PartnershipFooterCodeExample() {
 				<div className="ontario-columns ontario-medium-12 ontario-large-12">
 					<h3>Example of partnership footer</h3>
 					<div className="preview-container">
-						<div className="example-container">
-							<OntarioFooter
-								type="partnership"
-								partnership-Connection="Sponsored by Government of Ontario"
-								default-options='{
+						<OntarioFooter
+							type="partnership"
+							partnership-Connection="Sponsored by Government of Ontario"
+							default-options='{
               "accessibilityLink":"https://www.ontario.ca/page/accessibility",
               "privacyLink": "https://www.ontario.ca/page/privacy-statement",
               "contactLink": "https://www.ontario.ca/feedback/contact-us",
               "queensPrinterLink": "https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario"
 
             }'
-							></OntarioFooter>
-						</div>
+						></OntarioFooter>
 
 						<p>With the following markup:</p>
 
