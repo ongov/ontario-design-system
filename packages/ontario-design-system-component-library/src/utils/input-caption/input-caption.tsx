@@ -63,8 +63,7 @@ export class InputCaption implements Caption {
 	getCaption = (captionFor?: string): HTMLElement => {
 		const captionContent = this.isLegend ? (
 			<legend class={this.getClass()}>
-				{this.captionType === CaptionType.Heading ? `<h1>${this.captionText}</h1>` : `${this.captionText}`};
-				{this.captionText}
+				{this.captionType === CaptionType.Heading ? <h1>{this.captionText}</h1> : this.captionText}
 				{this.getRequiredFlagElement()}
 			</legend>
 		) : (
@@ -91,7 +90,7 @@ export class InputCaption implements Caption {
 	 * @returns CSS class for the label/legend.
 	 */
 	private getRequiredFlagElement(): HTMLElement {
-		return <span class={this.isLegend ? "ontario-fieldset__legend__flag" : "ontario-label__flag"}>{this.getRequiredFlagText()}</span>;
+		return <span class="ontario-label__flag">{this.getRequiredFlagText()}</span>;
 	}
 
 	/**
@@ -99,7 +98,7 @@ export class InputCaption implements Caption {
 	 * @returns CSS class for the `label` element.
 	 */
 	private getClass(): string {
-		return this.captionType === CaptionType.Large || this.captionType === CaptionType.Heading ? (this.isLegend ? `.ontario-fieldset__legend ontario-fieldset__legend--${this.captionType}` : `ontario-label ontario-label--${this.captionType}`) : (this.isLegend ? ".ontario-fieldset__legend" : "ontario-label");
+		return this.captionType === CaptionType.Large || this.captionType === CaptionType.Heading ? (this.isLegend ? `ontario-fieldset__legend ontario-fieldset__legend--${this.captionType}` : `ontario-label ontario-label--${this.captionType}`) : (this.isLegend ? "ontario-fieldset__legend" : "ontario-label");
 	}
 
 	/**

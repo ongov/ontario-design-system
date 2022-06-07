@@ -4,7 +4,7 @@
  * The following variables are defined per design specifications and
  * deviated from currently available tokens and related variations.
  */
-// 
+//
 $default-label-line-height: $line-height-default; // 1.5
 $default-label-line-height-mobile: 1.56;
 $default-label-font-size: 1.1875rem;
@@ -54,7 +54,6 @@ h1 > .ontario-label--heading {
 	@extend %h1-styles;
 }
 
-.ontario-fieldset__legend__flag,
 .ontario-label__flag {
 	font-family: $ontario-font-open-sans;
 	font-size: $ontario-font-size-standard-body-text; // 16px or 1rem
