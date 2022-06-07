@@ -162,10 +162,10 @@ export class OntarioButton implements Button {
 	 * Set `buttonId`, `label`, and `ariaLabel` using internal component logic.
 	 */
 	componentWillLoad() {
-		this.ariaLabel = this.ariaLabel ?? this.label;
 		this.updatLabelContent();
 		this.validateHtmlType();
 		this.validateType();
+		this.ariaLabel = this.ariaLabel ?? this.labelState;
 	}
 
 	render() {
