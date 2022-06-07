@@ -3,8 +3,7 @@ import { v4 as uuid } from 'uuid';
 import { Input } from '../../utils/common.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
 import { validatePropExists } from '../../utils/validation/validation-functions';
-import { ConsoleType, MessageStyle } from '../../utils/console-message/console-message.enum';
-import { printConsoleMessage } from '../../utils/console-message/console-message';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 /**
  * Ontario Textarea component properties
@@ -107,37 +106,26 @@ export class OntarioTextarea implements Input {
 	/*
 	 * Watch for changes in the `name` prop for validation purpose
 	 * Validate the name and make sure the name has a value.
-	 * Log error if user doesn't input a value for the name.
+	 * Log warning if user doesn't input a value for the name.
 	 */
 	@Watch('name')
-	validateNameContent(newValue: string) {
-		const isNameBlank = validatePropExists(newValue);
-		if (isNameBlank) {
-			printConsoleMessage([
-				{
-					message: ' name ',
-					style: MessageStyle.Code,
-				},
-				{
-					message: 'for',
-					style: MessageStyle.Regular,
-				},
-				{
-					message: ` <ontario-textarea> `,
-					style: MessageStyle.Code,
-				},
-				{
-					message: `was not provided`,
-					style: MessageStyle.Regular,
-				},
-			], ConsoleType.Error);
+	validateName(newValue: string) {
+		if (validatePropExists(newValue)) {
+			const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' name ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-textarea> ')
+					.addRegularText('was not provided')
+					.printMessage();
 		}
 	}
 
 	componentWillLoad() {
 		this.captionState = new InputCaption(this.element.tagName, this.caption);
 		this.elementId = this.elementId ?? uuid();
-		this.validateNameContent(this.name);
+		this.validateName(this.name);
 	}
 
 	private getValue(): string | number {
