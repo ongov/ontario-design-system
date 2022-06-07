@@ -2,8 +2,8 @@ import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
 import { Button } from './button.interface';
 import { ButtonType, HtmlType } from './ontario-button.enum';
 import { validatePropExists, validateValueAgainstEnum } from '../../utils/validation/validation-functions';
-import { ConsoleType, MessageStyle } from '../../utils/console-message/console-message.enum';
-import { printConsoleMessage } from '../../utils/console-message/console-message';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+
 
 @Component({
 	tag: 'ontario-button',
@@ -43,7 +43,19 @@ export class OntarioButton implements Button {
 	 *
 	 * The resulting button will have the label `"Label Text"`.
 	 */
-	@Prop({ mutable: true }) label?: string;
+	@Prop() label?: string;
+
+	@State() labelState: string;
+
+	/*
+	 * Watch for changes in the `label` variable for validation purposes.
+	 * If label is not provided, set label to Element Content (if it exists).
+	*/
+	@Watch('label')
+	private updatLabelContent() {
+		this.labelState = this.label ?? this.host.textContent ?? '';
+		this.validateLabelContent(this.labelState);
+	}
 
 	/**
 	 * Provides more context as to what the button interaction is doing.
@@ -58,181 +70,81 @@ export class OntarioButton implements Button {
 	 */
 	@Prop({ mutable: true }) elementId?: string;
 
+
 	/**
-	 * Watch for changes in the `label` variable for validation purpose
-	 * Validate the label and make sure the label has a value.
-	 * Log error if user doesn't input a value for the label or element content.
+	 * Print the label warning message
 	 */
-	@Watch('label')
 	validateLabelContent(newValue: string) {
-		// If element content is not provided, check whether prop exists
-		if (!this.host.textContent) {
-			const isLabelBlank = validatePropExists(newValue);
-			if (isLabelBlank) {
-				printConsoleMessage([
-					{
-						message: ' label ',
-						style: MessageStyle.Code,
-					},
-					{
-						message: 'for',
-						style: MessageStyle.Regular,
-					},
-					{
-						message: ` <ontario-button> `,
-						style: MessageStyle.Code,
-					},
-					{
-						message: `was not provided`,
-						style: MessageStyle.Regular,
-					},
-				], ConsoleType.Error);
-			}
+		if (validatePropExists(newValue)) {
+			const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' label ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-button> ')
+					.addRegularText('was not provided')
+					.printMessage();
 		}
 	}
 
 	/**
 	 * Watch for changes in the `type` variable for validation purpose.
-	 * If the user input doesn't match one of the enum values then return a warning message.
+	 * If the user input doesn't match one of the enum values then `type` will be set to its default (`secondary`).
 	 * If a match is found in one of the enum values then `type` will be set to the matching enum value.
 	 */
 	@Watch('type')
-	validateButtonType(newValue: string) {
-		let isTypeValid;
-		if (newValue != undefined) {
-			isTypeValid = validateValueAgainstEnum(newValue, ButtonType);
-		}
-		if (!isTypeValid && newValue != undefined) {
-			printConsoleMessage([
-				{
-					message: ' type ',
-					style: MessageStyle.Code,
-				},
-				{
-					message: 'for',
-					style: MessageStyle.Regular,
-				},
-				{
-					message: ` <ontario-button> `,
-					style: MessageStyle.Code,
-				},
-				{
-					message: `is not valid. The default type of`,
-					style: MessageStyle.Regular,
-				},
-				{
-					message: ' secondary ',
-					style: MessageStyle.Code,
-				},
-				{
-					message: 'was assumed.',
-					style: MessageStyle.Regular,
-				},
-			], ConsoleType.Warning);
-			this.typeState = ButtonType.Secondary;
-		} else if (newValue === undefined) {
-			printConsoleMessage([
-				{
-					message: ' type ',
-					style: MessageStyle.Code,
-				},
-				{
-					message: 'for',
-					style: MessageStyle.Regular,
-				},
-				{
-					message: ` <ontario-button> `,
-					style: MessageStyle.Code,
-				},
-				{
-					message: `was not provided. The default type of`,
-					style: MessageStyle.Regular,
-				},
-				{
-					message: ' secondary ',
-					style: MessageStyle.Code,
-				},
-				{
-					message: 'was assumed.',
-					style: MessageStyle.Regular,
-				},
-			], ConsoleType.Warning);
-			this.typeState = ButtonType.Secondary;
-		} else {
-			this.typeState = this.type;
-		}
+	validateType() {
+			this.typeState = (this.type && validateValueAgainstEnum(this.type, ButtonType)) || this.warnDefaultType();
+	}
+
+	/**
+	 * Print the invalid type warning message
+	 * @returns default type (secondary)
+	 */
+	private warnDefaultType() {
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addMonospaceText(' type ')
+			.addRegularText('on')
+			.addMonospaceText(' <ontario-button> ')
+			.addRegularText('was set to an invalid type; only')
+			.addMonospaceText(' primary, secondary, or tertiary ')
+			.addRegularText('are supported. The default type')
+			.addMonospaceText(' secondary ')
+			.addRegularText('is assumed.')
+			.printMessage();
+		return ButtonType.Secondary;
 	}
 
 	/**
 	 * Watch for changes in the `htmlType` variable for validation purpose.
-	 * If the user input doesn't match one of the enum values then return a warning message.
-	 * If a match is found in one of the enum values then `type` will be set to the matching enum value.
+	 * If the user input doesn't match one of the enum values then `htmlType` will be set to its default (`button`).
+	 * If a match is found in one of the enum values then `htmlType` will be set to the matching enum value.
 	 */
 	@Watch('htmlType')
-	validateHtmlType(newValue: string) {
-		let isHtmlTypeValid;
-		if (newValue != undefined) {
-			isHtmlTypeValid = validateValueAgainstEnum(newValue, HtmlType);
-		}
-		if (!isHtmlTypeValid && newValue != undefined) {
-			printConsoleMessage([
-				{
-					message: ' html-type ',
-					style: MessageStyle.Code,
-				},
-				{
-					message: 'for',
-					style: MessageStyle.Regular,
-				},
-				{
-					message: ` <ontario-button> `,
-					style: MessageStyle.Code,
-				},
-				{
-					message: `is not valid. The default type of`,
-					style: MessageStyle.Regular,
-				},
-				{
-					message: ' button ',
-					style: MessageStyle.Code,
-				},
-				{
-					message: 'was assumed.',
-					style: MessageStyle.Regular,
-				},
-			], ConsoleType.Warning);
-			this.htmlTypeState = HtmlType.Button;
-		} else if (newValue === undefined) {
-			printConsoleMessage([
-				{
-					message: ' html-type ',
-					style: MessageStyle.Code,
-				},
-				{
-					message: 'for',
-					style: MessageStyle.Regular,
-				},
-				{
-					message: ` <ontario-button> `,
-					style: MessageStyle.Code,
-				},
-				{
-					message: `was not provided. The default type of`,
-					style: MessageStyle.Regular,
-				},
-				{
-					message: ' button ',
-					style: MessageStyle.Code,
-				},
-				{
-					message: 'was assumed.',
-					style: MessageStyle.Regular,
-				},
-			], ConsoleType.Warning);
-			this.htmlTypeState = HtmlType.Button;
-		} else {
-			this.htmlTypeState = this.htmlType;
-		}
+	validateHtmlType() {
+		this.htmlTypeState = (this.htmlType && validateValueAgainstEnum(this.htmlType, HtmlType)) || this.warnDefaultHtmlType();
+	}
+
+	/**
+		* Print the invalid htmlType warning message
+		* @returns default htmlType (button)
+		*/
+	private warnDefaultHtmlType() {
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addMonospaceText(' htmlType ')
+			.addRegularText('on')
+			.addMonospaceText(' <ontario-button> ')
+			.addRegularText('was set to an invalid htmlType; only')
+			.addMonospaceText(' button, reset, or submit ')
+			.addRegularText('are supported. The default type')
+			.addMonospaceText(' button ')
+			.addRegularText('is assumed.')
+			.printMessage();
+		return HtmlType.Button;
 	}
 
 	/**
@@ -250,16 +162,16 @@ export class OntarioButton implements Button {
 	 * Set `buttonId`, `label`, and `ariaLabel` using internal component logic.
 	 */
 	componentWillLoad() {
-		this.label = this.label ?? this.host.textContent ?? '';
 		this.ariaLabel = this.ariaLabel ?? this.label;
-		this.validateButtonType(this.type)
-		this.validateHtmlType(this.htmlType)
+		this.updatLabelContent();
+		this.validateHtmlType();
+		this.validateType();
 	}
 
 	render() {
 		return (
 			<button type={this.htmlTypeState} class={this.getClass()} aria-label={this.ariaLabel} id={this.getId()}>
-				{this.label}
+				{this.labelState}
 			</button>
 		);
 	}
