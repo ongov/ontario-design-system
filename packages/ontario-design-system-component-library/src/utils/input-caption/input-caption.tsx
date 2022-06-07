@@ -35,7 +35,7 @@ export class InputCaption implements Caption {
 	 * Output a console warning message if the provided `label` type is incorrect
 	 * @param caption object containing the essential data to configure the input label
 	 */
-	constructor(componentTagName: string, caption: InputCaption | string) {
+	constructor(componentTagName: string, caption: InputCaption | string, isLegend: boolean = false) {
 		let captionObject = new Object() as InputCaption;
 
 		if (caption) {
@@ -47,7 +47,7 @@ export class InputCaption implements Caption {
 		}
 
 		this.isRequired = captionObject?.isRequired ?? false;
-		this.isLegend = captionObject?.isLegend ?? false;
+		this.isLegend = isLegend;
 		this.componentTagName = componentTagName.toLowerCase();
 		this.captionText = captionObject?.captionText ?? '';
 		this.captionType =
