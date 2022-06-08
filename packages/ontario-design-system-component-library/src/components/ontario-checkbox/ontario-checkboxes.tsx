@@ -2,6 +2,8 @@ import { Component, h, Prop, Event, EventEmitter, State, Watch } from '@stencil/
 import { CheckboxOption } from './checkbox-option.interface';
 import { Checkboxes } from './checkboxes.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+import { validateObjectExists, validatePropExists } from '../../utils/validation/validation-functions';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 /**
  * Ontario Checkbox component
@@ -137,9 +139,69 @@ export class OntarioCheckboxes implements Checkboxes {
     this.changeEvent.emit(ev as any);
   };
 
+  /*
+	 * Watch for changes in the `legend` prop for validation purpose
+	 * Validate the legend and make sure the legend has a value.
+	 * Log warning if user doesn't input a value for the legend.
+	 */
+	@Watch('legend')
+	validateLegend(newValue: string) {
+		if (validatePropExists(newValue)) {
+			const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' legend ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-checkboxes> ')
+					.addRegularText('was not provided')
+					.printMessage();
+		}
+	}
+
+  /*
+	 * Watch for changes in the `name` prop for validation purpose
+	 * Validate the name and make sure the name has a value.
+	 * Log warning if user doesn't input a value for the name.
+	 */
+	@Watch('name')
+	validateName(newValue: string) {
+		if (validatePropExists(newValue)) {
+			const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' name ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-checkboxes> ')
+					.addRegularText('was not provided')
+					.printMessage();
+		}
+	}
+
+  /*
+	 * Watch for changes in the `options` prop for validation purpose
+	 * Validate the options and make sure the options has a value.
+	 * Log warning if user doesn't input a value for the options.
+	 */
+	@Watch('options')
+	validateOptions(newValue: object) {
+		if (validateObjectExists(newValue)) {
+			const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' options ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-checkboxes> ')
+					.addRegularText('was not provided')
+					.printMessage();
+		}
+	}
+
   componentWillLoad() {
     this.parseOptions();
     this.parseHintExpander();
+    this.validateLegend(this.legend);
+    this.validateName(this.name);
+    this.validateOptions(this.internalOptions);
   }
 
   render() {
