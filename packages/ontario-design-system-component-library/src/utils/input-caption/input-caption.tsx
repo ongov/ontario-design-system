@@ -110,8 +110,7 @@ export class InputCaption implements Caption {
 	 * 5. the `captionType` property of the `caption` object is incorrect
 	 */
 	private validateCaption(caption?: InputCaption) {
-		let messageType = MessageContentType.UndefinedCaptionObject;
-		const message = new ConsoleMessageClass().addDesignSystemTag();
+		let messageType;
 
 		// undefined `caption` object
 		if (!caption || Object.keys(caption).length <= 0) {
@@ -138,14 +137,18 @@ export class InputCaption implements Caption {
 			}
 		}
 
-		if (messageType !== MessageContentType.UndefinedCaptionObject) {
-			message
+		if (messageType) {
+			const message = new ConsoleMessageClass().addDesignSystemTag();
+			
+			if (messageType !== MessageContentType.UndefinedCaptionObject) {
+				message
 				.addMonospaceText(` ${messageType === MessageContentType.EmptyCaptionText || messageType === MessageContentType.UndefinedCaptionText ? 'captionText' : 'captionType'} `)
 				.addRegularText('property of');
-		}
+			}
 
-		message.addMonospaceText(' caption ').addRegularText('object on').addMonospaceText(` ${this.componentTagName} `);
-		this.printConsoleMessage(messageType, message, this.getRequiredFlagText());
+			message.addMonospaceText(' caption ').addRegularText('object on').addMonospaceText(` ${this.componentTagName} `);
+			this.printConsoleMessage(messageType, message, this.getRequiredFlagText());
+		}
 	}
 
 	/**
