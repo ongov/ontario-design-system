@@ -193,7 +193,7 @@ export class OntarioRadioButtons implements RadioButtons {
 					<div class="ontario-radios">
 						{this.internalOptions?.map(radioOption => (
 							<div class="ontario-radios__item">
-								<input class="ontario-radios__input" id={radioOption.elementId} name={this.name} type="radio" value={radioOption.value} />
+								<input class="ontario-radios__input" id={radioOption.elementId} name={this.name} type="radio" value={radioOption.value} required={this.captionState.isRequired} />
 								<label class="ontario-radios__label" htmlFor={radioOption.elementId}>
 									{radioOption.label}
 								</label>
