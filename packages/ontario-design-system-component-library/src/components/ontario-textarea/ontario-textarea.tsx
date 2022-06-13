@@ -1,7 +1,9 @@
-import { Component, Event, EventEmitter, h, Prop, State, Element } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, State, Watch, Element } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 import { Input } from '../../utils/common.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
+import { validatePropExists } from '../../utils/validation/validation-functions';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 /**
  * Ontario Textarea component properties
@@ -101,9 +103,29 @@ export class OntarioTextarea implements Input {
 		return this.elementId ?? '';
 	}
 
+	/*
+	 * Watch for changes in the `name` prop for validation purpose
+	 * Validate the name and make sure the name has a value.
+	 * Log warning if user doesn't input a value for the name.
+	 */
+	@Watch('name')
+	validateName(newValue: string) {
+		if (validatePropExists(newValue)) {
+			const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' name ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-textarea> ')
+					.addRegularText('was not provided')
+					.printMessage();
+		}
+	}
+
 	componentWillLoad() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption);	
+		this.captionState = new InputCaption(this.element.tagName, this.caption);
 		this.elementId = this.elementId ?? uuid();
+		this.validateName(this.name);
 	}
 
 	private getValue(): string | number {
@@ -127,7 +149,7 @@ export class OntarioTextarea implements Input {
 					value={this.getValue()}
 				></textarea>
 				<slot name="hint-expander"></slot>
-			</div>
+			</div >
 		);
 	}
 }

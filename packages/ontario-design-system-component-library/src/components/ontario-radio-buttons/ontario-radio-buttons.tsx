@@ -3,9 +3,8 @@ import { RadioButtons } from './radio-buttons.interface';
 import { RadioOption } from './radio-option.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
-import { validatePropExists } from '../../utils/validation/validation-functions';
-import { ConsoleType, MessageStyle } from '../../utils/console-message/console-message.enum';
-import { printConsoleMessage } from '../../utils/console-message/console-message';
+import { validateObjectExists, validatePropExists } from '../../utils/validation/validation-functions';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 @Component({
 	tag: 'ontario-radio-buttons',
@@ -145,35 +144,34 @@ export class OntarioRadioButtons implements RadioButtons {
 	}
 
 	/*
-	 * Watch for changes in the `name` variable for validation purpose
+	 * Watch for changes in the `name` prop for validation purpose
 	 * Validate the name and make sure the name has a value.
-	 * Log error if user doesn't input a value for the name.
+	 * Log warning if user doesn't input a value for the name.
 	 */
 	@Watch('name')
-	validateNameContent(newValue: string) {
-		const isNameBlank = validatePropExists(newValue);
-		if (isNameBlank) {
-			printConsoleMessage(
-				[
-					{
-						message: ' name ',
-						style: MessageStyle.Code,
-					},
-					{
-						message: 'for',
-						style: MessageStyle.Regular,
-					},
-					{
-						message: ` <ontario-radio-buttons> `,
-						style: MessageStyle.Code,
-					},
-					{
-						message: `was not provided`,
-						style: MessageStyle.Regular,
-					},
-				],
-				ConsoleType.Error,
-			);
+	validateName(newValue: string) {
+		if (validatePropExists(newValue)) {
+			const message = new ConsoleMessageClass();
+			message.addDesignSystemTag().addMonospaceText(' name ').addRegularText('for').addMonospaceText(' <ontario-radio-buttons> ').addRegularText('was not provided').printMessage();
+		}
+	}
+
+	/*
+	 * Watch for changes in the `options` prop for validation purpose
+	 * Validate the options and make sure the options has a value.
+	 * Log warning if user doesn't input a value for the options.
+	 */
+	@Watch('options')
+	validateOptions(newValue: object) {
+		if (validateObjectExists(newValue)) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' options ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-radio-buttons> ')
+				.addRegularText('was not provided')
+				.printMessage();
 		}
 	}
 
@@ -181,7 +179,8 @@ export class OntarioRadioButtons implements RadioButtons {
 		this.captionState = new InputCaption(this.element.tagName, this.caption, true);
 		this.parseOptions();
 		this.parseHintExpander();
-		this.validateNameContent(this.name);
+		this.validateName(this.name);
+		this.validateOptions(this.internalOptions);
 	}
 
 	render() {

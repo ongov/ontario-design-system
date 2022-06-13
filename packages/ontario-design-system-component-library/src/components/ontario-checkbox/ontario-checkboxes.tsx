@@ -3,6 +3,8 @@ import { CheckboxOption } from './checkbox-option.interface';
 import { Checkboxes } from './checkboxes.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+import { validateObjectExists, validatePropExists } from '../../utils/validation/validation-functions';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 /**
  * Ontario Checkbox component
@@ -98,11 +100,11 @@ export class OntarioCheckboxes implements Checkboxes {
 	 *
 	 * @example
 	 * <ontario-checkboxes
-   *   caption='{
+	 *   caption='{
 	 *     "captionText": "Address",
 	 *     "captionType": "heading",
 	 *     "isRequired": true}'
-	 *   name= 'ontario-checkboxes',
+	 *   name= "ontario-checkboxes",
 	 *   hint-text="This is the hint text"
 	 *   options='[
 	 *     {
@@ -137,6 +139,7 @@ export class OntarioCheckboxes implements Checkboxes {
 				this.internalOptions = this.options;
 			}
 		}
+		this.validateOptions(this.internalOptions);
 	}
 
 	/**
@@ -154,10 +157,36 @@ export class OntarioCheckboxes implements Checkboxes {
 		this.changeEvent.emit(ev as any);
 	};
 
+	/*
+	 * Watch for changes in the `name` prop for validation purpose
+	 * Validate the name and make sure the name has a value.
+	 * Log warning if user doesn't input a value for the name.
+	 */
+	@Watch('name')
+	validateName(newValue: string) {
+		if (validatePropExists(newValue)) {
+			const message = new ConsoleMessageClass();
+			message.addDesignSystemTag().addMonospaceText(' name ').addRegularText('for').addMonospaceText(' <ontario-checkboxes> ').addRegularText('was not provided').printMessage();
+		}
+	}
+
+	/**
+	 * Validate the options and make sure the options has a value.
+	 * Log warning if user doesn't input a value for the options.
+	 * @param newValue object to be validated
+	 */
+	validateOptions(newValue: object) {
+		if (validateObjectExists(newValue)) {
+			const message = new ConsoleMessageClass();
+			message.addDesignSystemTag().addMonospaceText(' options ').addRegularText('for').addMonospaceText(' <ontario-checkboxes> ').addRegularText('was not provided').printMessage();
+		}
+	}
+
 	componentWillLoad() {
 		this.captionState = new InputCaption(this.element.tagName, this.caption, true);
 		this.parseOptions();
 		this.parseHintExpander();
+		this.validateName(this.name);
 	}
 
 	render() {
