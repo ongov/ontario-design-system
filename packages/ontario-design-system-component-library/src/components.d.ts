@@ -72,7 +72,7 @@ export namespace Components {
         "name": string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
-          * @example <ontario-checkboxes    caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   name= 'ontario-checkboxes',   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-checkboxes>
+          * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   name= "ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-checkboxes>
          */
         "options": CheckboxOption[] | string;
     }
@@ -2121,7 +2121,7 @@ declare namespace LocalJSX {
         "onChangeEvent"?: (event: CustomEvent<any>) => void;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
-          * @example <ontario-checkboxes    caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   name= 'ontario-checkboxes',   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-checkboxes>
+          * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   name= "ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-checkboxes>
          */
         "options"?: CheckboxOption[] | string;
     }
