@@ -104,7 +104,7 @@ export class OntarioCheckboxes implements Checkboxes {
 	 *     "captionText": "Address",
 	 *     "captionType": "heading",
 	 *     "isRequired": true}'
-	 *   name= "ontario-checkboxes",
+	 *   name="ontario-checkboxes",
 	 *   hint-text="This is the hint text"
 	 *   options='[
 	 *     {
