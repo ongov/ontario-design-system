@@ -2,6 +2,7 @@ import { Component, Event, EventEmitter, h, Prop, State, Watch, Element } from '
 import { v4 as uuid } from 'uuid';
 import { Input } from '../../utils/common.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
+import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
@@ -58,6 +59,28 @@ export class OntarioTextarea implements Input {
 	 * The textarea content value.
 	 */
 	@Prop({ mutable: true }) value?: string;
+
+	/**
+	 * Define hint text for Ontario textarea.
+	 */
+	 @Prop() hintText?: string;
+
+
+	 @Prop() hintExpander?: HintExpander | string;
+
+	/**
+	 * The hint expander options are re-assigned to the internalHintExpander array.
+	 */
+	@State() private internalHintExpander: HintExpander;
+
+	@Watch('hintExpander')
+	private parseHintExpander() {
+		const hintExpander = this.hintExpander;
+		if (hintExpander) {
+			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
+			else this.internalHintExpander = hintExpander;
+		}
+	}
 
 	/**
 	 * Grant access to the host element and related DOM methods/events within the class instance.
@@ -125,6 +148,7 @@ export class OntarioTextarea implements Input {
 	componentWillLoad() {
 		this.captionState = new InputCaption(this.element.tagName, this.caption);
 		this.elementId = this.elementId ?? uuid();
+		this.parseHintExpander();
 		this.validateName(this.name);
 	}
 
@@ -136,7 +160,9 @@ export class OntarioTextarea implements Input {
 		return (
 			<div>
 				{this.captionState.getCaption(this.getId())}
-				<slot name="hint-text"></slot>
+				{this.hintText && (
+						<ontario-hint-text hint={this.hintText}></ontario-hint-text>
+				)}
 				<textarea
 					aria-describedby={this.describedBy}
 					class="ontario-textarea"
@@ -148,7 +174,13 @@ export class OntarioTextarea implements Input {
 					required={this.required}
 					value={this.getValue()}
 				></textarea>
-				<slot name="hint-expander"></slot>
+				{this.internalHintExpander && (
+					<ontario-hint-expander
+						hint={this.internalHintExpander.hint}
+						content={this.internalHintExpander.content}
+						input-exists
+					></ontario-hint-expander>
+				)}
 			</div >
 		);
 	}

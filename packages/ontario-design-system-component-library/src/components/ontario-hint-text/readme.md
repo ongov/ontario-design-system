@@ -46,13 +46,17 @@ If we are adding hint text to our input form, then the input form should have an
 ### Used by
 
  - [ontario-checkboxes](../ontario-checkbox)
+ - [ontario-input](../ontario-input)
  - [ontario-radio-buttons](../ontario-radio-buttons)
+ - [ontario-textarea](../ontario-textarea)
 
 ### Graph
 ```mermaid
 graph TD;
   ontario-checkboxes --> ontario-hint-text
+  ontario-input --> ontario-hint-text
   ontario-radio-buttons --> ontario-hint-text
+  ontario-textarea --> ontario-hint-text
   style ontario-hint-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

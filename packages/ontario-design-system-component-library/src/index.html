@@ -50,9 +50,7 @@
 	<hr />
 
 	<!-- ontario-input components - happy paths with ontario-hint-text usage -->
-	<ontario-input name="postal" input-width="7-char-width" caption='{"captionText": "Postal Code", "captionType": "default"}'>
-		<ontario-hint-text slot="hint-text">For example, A1A 1A1</ontario-hint-test>
-	</ontario-input>
+	<ontario-input name="postal" input-width="7-char-width" caption='{"captionText": "Postal Code", "captionType": "default"}' hint-text="For example, A1A 1A1"></ontario-input>
 
 	<!-- ontario-input components - happy paths with ontario-hint-expander usage -->
 	<ontario-input name="address" caption='{"captionText": "Address", "captionType": "default"}'>
@@ -62,9 +60,18 @@
 	<hr />
 
 	<!-- `ontario-input` components - happy path examples -->
-	<ontario-textarea name="comments" caption='{"captionText": "Comments", "isRequired": true, "captionType": "HEADING"}'></ontario-textarea>
-	<ontario-textarea name="feedback" caption='{"captionText": "Feedback", "captionType": "large"}' element-id="feedback"></ontario-textarea>
-	<ontario-textarea name="response" caption='{"captionText": "What do you like about ODS?", "captionType": "default"}' element-id="response"></ontario-textarea>
+	<ontario-textarea name="comments" caption='{"captionText": "Comments", "isRequired": true, "captionType": "HEADING"}' hint-expander='{
+		"hint": "Hint expander",
+		"content": "This is the content, yup this is the content"
+	}'></ontario-textarea>
+	<ontario-textarea name="feedback" caption='{"captionText": "Feedback", "captionType": "large"}' element-id="feedback" hint-expander='{
+		"hint": "Hint expander",
+		"content": "This is the content, yup this is the content"
+	}'></ontario-textarea>
+	<ontario-textarea name="response" caption='{"captionText": "What do you like about ODS?", "captionType": "default"}' element-id="response" hint-expander='{
+		"hint": "Hint expander",
+		"content": "This is the content, yup this is the content"
+	}'></ontario-textarea>
 
 	<hr />
 

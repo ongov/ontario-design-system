@@ -53,6 +53,11 @@ export class OntarioInput implements TextInput {
 	@Prop() name: string;
 
 	/**
+	 * Define hint text for Ontario input.
+	 */
+	 @Prop() hintText?: string;
+
+	/**
 	 * Used to define whether the input field is required or not.
 	 */
 	@Prop({ mutable: true }) required: boolean = false;
@@ -127,7 +132,9 @@ export class OntarioInput implements TextInput {
 		return (
 			<div>
 				{this.captionState.getCaption(this.getId())}
-				<slot name="hint-text"></slot>
+				{this.hintText && (
+						<ontario-hint-text hint={this.hintText}></ontario-hint-text>
+				)}
 				<input
 					aria-describedby={this.describedBy}
 					class={this.getClass()}
