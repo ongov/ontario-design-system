@@ -56,7 +56,7 @@ const App = () => {
 								},
 								{
 									name: 'Icon',
-									href: generateHashPath('/ontario-dropdown-list'),
+									href: generateHashPath('/ontario-icon'),
 								},
 							]}
 						/>
