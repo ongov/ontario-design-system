@@ -1,0 +1,10 @@
+{
+	"required": {
+		"en": "required",
+		"fr": "obligatoire"
+	},
+	"optional": {
+		"en": "optional",
+		"fr": "facultative"
+	}
+}

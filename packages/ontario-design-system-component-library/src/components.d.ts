@@ -1176,6 +1176,10 @@ export namespace Components {
          */
         "inputWidth": '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default';
         /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+         */
+        "language"?: string;
+        /**
           * The name assigned to the input.The name value is used to reference form data after a form is submitted.
          */
         "name": string;
@@ -1236,6 +1240,10 @@ export namespace Components {
          */
         "elementId"?: string;
         /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+         */
+        "language"?: string;
+        /**
           * The name assigned to the textarea. The name value is used to reference form data after a form is submitted.
          */
         "name": string;
@@ -1247,6 +1255,9 @@ export namespace Components {
           * The textarea content value.
          */
         "value"?: string;
+    }
+    interface TestLanguageToggle {
+        "language": string;
     }
 }
 declare global {
@@ -1946,6 +1957,12 @@ declare global {
         prototype: HTMLOntarioTextareaElement;
         new (): HTMLOntarioTextareaElement;
     };
+    interface HTMLTestLanguageToggleElement extends Components.TestLanguageToggle, HTMLStencilElement {
+    }
+    var HTMLTestLanguageToggleElement: {
+        prototype: HTMLTestLanguageToggleElement;
+        new (): HTMLTestLanguageToggleElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "ontario-button": HTMLOntarioButtonElement;
@@ -2063,6 +2080,7 @@ declare global {
         "ontario-input": HTMLOntarioInputElement;
         "ontario-radio-buttons": HTMLOntarioRadioButtonsElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
+        "test-language-toggle": HTMLTestLanguageToggleElement;
     }
 }
 declare namespace LocalJSX {
@@ -3237,6 +3255,10 @@ declare namespace LocalJSX {
          */
         "inputWidth"?: '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default';
         /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+         */
+        "language"?: string;
+        /**
           * The name assigned to the input.The name value is used to reference form data after a form is submitted.
          */
         "name"?: string;
@@ -3309,6 +3331,10 @@ declare namespace LocalJSX {
          */
         "elementId"?: string;
         /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+         */
+        "language"?: string;
+        /**
           * The name assigned to the textarea. The name value is used to reference form data after a form is submitted.
          */
         "name"?: string;
@@ -3332,6 +3358,11 @@ declare namespace LocalJSX {
           * The textarea content value.
          */
         "value"?: string;
+    }
+    interface TestLanguageToggle {
+        "language"?: string;
+        "onHeaderLanguageToggled"?: (event: CustomEvent<string>) => void;
+        "onSetAppLanguage"?: (event: CustomEvent<string>) => void;
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
@@ -3450,6 +3481,7 @@ declare namespace LocalJSX {
         "ontario-input": OntarioInput;
         "ontario-radio-buttons": OntarioRadioButtons;
         "ontario-textarea": OntarioTextarea;
+        "test-language-toggle": TestLanguageToggle;
     }
 }
 export { LocalJSX as JSX };
@@ -3572,6 +3604,7 @@ declare module "@stencil/core" {
             "ontario-input": LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
             "ontario-radio-buttons": LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
+            "test-language-toggle": LocalJSX.TestLanguageToggle & JSXBase.HTMLAttributes<HTMLTestLanguageToggleElement>;
         }
     }
 }

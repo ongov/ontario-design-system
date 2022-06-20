@@ -1,7 +1,8 @@
-import { Component, Event, EventEmitter, h, Prop, State, Element } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, State, Listen, Element } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 import { TextInput } from './input.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
+import { default as translations } from '../../translations/global.i18n.json';
 
 /**
  * Ontario Input component
@@ -68,6 +69,12 @@ export class OntarioInput implements TextInput {
 	@Prop({ mutable: true }) value?: string;
 
 	/**
+	 * The language of the component.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+	 */
+	@Prop({ mutable: true }) language?: string = 'en';
+
+	/**
 	 * Emitted when the input loses focus.
 	 */
 	@Event() blurEvent!: EventEmitter<void>;
@@ -83,6 +90,20 @@ export class OntarioInput implements TextInput {
 	@Event() changeEvent!: EventEmitter<KeyboardEvent>;
 
 	@State() focused: boolean = false;
+
+	/**
+	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
+	 */
+	@Listen('setAppLanguage', { target: 'window' })
+	handleSetAppLanguage(event: CustomEvent<any>) {
+		this.language = event.detail;
+	}
+
+	@Listen('headerLanguageToggled', { target: 'window' })
+	handleHeaderLanguageToggled(event: CustomEvent<any>) {
+		const toggledLanguage = event.detail;
+		this.language = toggledLanguage;
+	}
 
 	/**
 	 * Grant access to the host element and related DOM methods/events within the class instance.
@@ -119,8 +140,12 @@ export class OntarioInput implements TextInput {
 	}
 
 	componentWillLoad() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption);	
+		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language);
 		this.elementId = this.elementId ?? uuid();
+	}
+
+	async componentWillUpdate() {
+		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language);
 	}
 
 	render() {

@@ -1,0 +1,9 @@
+@import '../../global.scss';
+
+button {
+	background: $ontario-colour-black;
+	color: $ontario-colour-white;
+	padding: $spacing-4;
+	margin-bottom: $spacing-4;
+	display: block;
+}
