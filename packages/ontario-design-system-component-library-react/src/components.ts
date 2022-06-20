@@ -124,3 +124,4 @@ export const OntarioIconYoutube = /*@__PURE__*/createReactComponent<JSX.OntarioI
 export const OntarioInput = /*@__PURE__*/createReactComponent<JSX.OntarioInput, HTMLOntarioInputElement>('ontario-input');
 export const OntarioRadioButtons = /*@__PURE__*/createReactComponent<JSX.OntarioRadioButtons, HTMLOntarioRadioButtonsElement>('ontario-radio-buttons');
 export const OntarioTextarea = /*@__PURE__*/createReactComponent<JSX.OntarioTextarea, HTMLOntarioTextareaElement>('ontario-textarea');
+export const TestLanguageToggle = /*@__PURE__*/createReactComponent<JSX.TestLanguageToggle, HTMLTestLanguageToggleElement>('test-language-toggle');
