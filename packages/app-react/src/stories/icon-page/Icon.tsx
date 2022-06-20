@@ -7,7 +7,7 @@ const StoryOntarioIcon = () => {
 	return (
 		<div className="page-content">
 			<IconGuidance />
-      <IconHowToUse />
+			<IconHowToUse />
 		</div>
 	);
 };
