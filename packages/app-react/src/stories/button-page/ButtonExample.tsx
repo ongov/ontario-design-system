@@ -14,8 +14,7 @@ export default function ButtonExample() {
 				<p>
 					Use a <strong>primary button</strong> to draw attention to the <strong>main action</strong> you want to help the user take. Avoid using multiple primary buttons on one
 					page unless the page has equally important calls to action.
-				</p>
-
+				</p> 
 				<div className="preview-container">
 					<div className="example-container">
 						<h5>Primary:</h5>

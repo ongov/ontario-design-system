@@ -54,6 +54,10 @@ const App = () => {
 									name: 'Text Input',
 									href: generateHashPath('/ontario-text-input'),
 								},
+								{
+									name: 'Icon',
+									href: generateHashPath('/ontario-dropdown-list'),
+								},
 							]}
 						/>
 					</div>
