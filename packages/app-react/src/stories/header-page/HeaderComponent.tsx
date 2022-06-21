@@ -10,7 +10,7 @@ const StoryOntarioHeader = () => {
 		<div className="page-content">
 			<HeaderApplication />
 			<HeaderApplicationExample />
-			<HeaderOntario/>
+			<HeaderOntario />
 			<HeaderOntarioExample />
 		</div>
 	);

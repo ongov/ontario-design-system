@@ -25,20 +25,24 @@ export default function HeaderApplicationExample() {
 				<div className="preview-container">
 					<div className="example-container">
 						<h5>Application Header</h5>
-            <OntarioHeader type="application" title-header='{
+						<OntarioHeader
+							type="application"
+							title-header='{
                 "name": "Application name" ,
                 "href": "/"
-              }' language-Toggle-Options='{
+              }'
+							language-Toggle-Options='{
                 "englishLink":"/en",
                 "frenchLink": "/fr"
-              }'  menu-Items='[{
+              }'
+							menu-Items='[{
                 "name": "Health",
                 "href": "/ontario-hint"
               },{
                 "name": "Financial Health",
                 "href": "/ontario-hint"
-              }]'>
-            </OntarioHeader>
+              }]'
+						></OntarioHeader>
 					</div>
 
 					<p>With the following markup:</p>
@@ -47,7 +51,7 @@ export default function HeaderApplicationExample() {
 						{applicationHeaderCodeExample}
 					</SyntaxHighlighter>
 
-          <hr></hr>
+					<hr></hr>
 				</div>
 			</div>
 		</div>
