@@ -4,7 +4,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function HeaderApplicationExample() {
-	const applicationHeaderCodeExample = `import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n	<OntarioHeader type="application" title-header='{
+	const applicationHeaderCodeExample = `import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioHeader type="application" title-header='{
     "name": "Application name" ,
     "href": "/"
   }' language-Toggle-Options='{
