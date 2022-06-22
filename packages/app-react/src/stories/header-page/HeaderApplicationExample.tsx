@@ -26,7 +26,7 @@ export default function HeaderApplicationExample() {
 					<div className="example-container">
 						<h5>Application Header</h5>
 						<OntarioHeader
-							type="application"
+              type="application"
 							title-header='{
                 "name": "Application name" ,
                 "href": "/"
