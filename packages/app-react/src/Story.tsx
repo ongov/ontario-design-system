@@ -9,6 +9,7 @@ import StoryOntarioIcon from './stories/icon-page/Icon';
 import StoryOntarioHeader from './stories/header-page/HeaderComponent';
 import StoryOntarioCheckbox from './stories/checkbox-page/Checkbox';
 import StoryOntarioRadioButton from './stories/radio-button-page/RadioButton';
+import StoryOntarioDropdownList from './stories/dropdown-list-page/DropdownList';
 
 const StoryRouter = () => {
 	return (
@@ -22,6 +23,7 @@ const StoryRouter = () => {
 			<Route path="/ontario-header" element={<StoryOntarioHeader />} />
 			<Route path="/ontario-checkbox" element={<StoryOntarioCheckbox />} />
 			<Route path="/ontario-radio-button" element={<StoryOntarioRadioButton />} />
+			<Route path="/ontario-dropdown-list" element={<StoryOntarioDropdownList />} />
 		</Routes>
 	);
 };
