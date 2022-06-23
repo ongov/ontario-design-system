@@ -171,7 +171,11 @@ export class OntarioInput implements TextInput {
 
 	private getClass(): string {
 		let hintExpander = this.hintExpander ? 'true' : 'false';
-		return this.inputWidth === 'default' ? `ontario-input ontario-input-hint-expander--${hintExpander}` : `ontario-input ontario-input--${this.inputWidth} ontario-input-hint-expander--${hintExpander}`;
+		if(hintExpander === 'true') {
+			return this.inputWidth === 'default' ? `ontario-input ontario-input-hint-expander--true` : `ontario-input ontario-input--${this.inputWidth} ontario-input-hint-expander--true`;
+		} else {
+			return this.inputWidth === 'default' ? `ontario-input` : `ontario-input ontario-input--${this.inputWidth}`;
+		}
 	}
 
 	public getId(): string {
