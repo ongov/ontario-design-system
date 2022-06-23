@@ -8,6 +8,7 @@ import StoryOntarioTextInput from './stories/text-input-page/TextInput';
 import StoryOntarioIcon from './stories/icon-page/Icon';
 import StoryOntarioHeader from './stories/header-page/HeaderComponent';
 import StoryOntarioCheckbox from './stories/checkbox-page/Checkbox';
+import StoryOntarioRadioButton from './stories/radio-button-page/RadioButton';
 
 const StoryRouter = () => {
 	return (
@@ -20,6 +21,7 @@ const StoryRouter = () => {
 			<Route path="/ontario-icon" element={<StoryOntarioIcon />} />
 			<Route path="/ontario-header" element={<StoryOntarioHeader />} />
 			<Route path="/ontario-checkbox" element={<StoryOntarioCheckbox />} />
+			<Route path="/ontario-radio-button" element={<StoryOntarioRadioButton />} />
 		</Routes>
 	);
 };
