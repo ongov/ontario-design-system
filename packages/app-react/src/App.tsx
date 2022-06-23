@@ -70,6 +70,10 @@ const App = () => {
 									name: 'Radio Button',
 									href: generateHashPath('/ontario-radio-button'),
 								},
+								{
+									name: 'Dropdown List',
+									href: generateHashPath('/ontario-dropdown-list'),
+								},
 							]}
 						/>
 					</div>
