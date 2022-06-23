@@ -58,6 +58,10 @@ const App = () => {
 									name: 'Icon',
 									href: generateHashPath('/ontario-icon'),
 								},
+								{
+									name: 'Header',
+									href: generateHashPath('/ontario-header'),
+								},
 							]}
 						/>
 					</div>

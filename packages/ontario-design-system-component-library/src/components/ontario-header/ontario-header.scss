@@ -205,6 +205,16 @@ $ontario-header-logo-width--mobile: 45px;
 		&:focus {
 			box-shadow: 0 0 0 $global-radius $ontario-colour-focus;
 		}
+
+		img {
+			width: $ontario-header-logo-width--mobile;
+			height: $ontario-logo-height;
+
+			@media screen and (min-width: $small-breakpoint) {
+				width: $ontario-header-logo-width;
+				height: $ontario-logo-height;
+			}
+		}
 	}
 }
 
