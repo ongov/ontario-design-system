@@ -49,12 +49,11 @@ export default function RadioButtonExample() {
 			<div className="ontario-columns ontario-medium-12 ontario-large-12">
 				<h3>Radio Buttons Example</h3>
 				<div className="preview-container">
-					<div className="example-container">
-						<OntarioRadioButtons
-							legend="Do you have cats?"
-							hint-text="This is the hint text"
-							is-required
-							options='[{
+					<OntarioRadioButtons
+						legend="Do you have cats?"
+						hint-text="This is the hint text"
+						is-required
+						options='[{
             "name": "radio",
             "value": "radio",
             "elementId": "radio-1",
@@ -89,13 +88,12 @@ export default function RadioButtonExample() {
               "label": "radio-4-label"
             }
             ]'
-							hint-expander='{
+						hint-expander='{
               "hint": "Hint expander",
               "content": "This is hint expander content",
               "aria-label": "This indicates that the hint can be expanded"
             }'
-						></OntarioRadioButtons>
-					</div>
+					></OntarioRadioButtons>
 
 					<p>With the following markup:</p>
 

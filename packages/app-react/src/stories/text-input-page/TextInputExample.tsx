@@ -5,8 +5,8 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function TextInputExample() {
 	const codeExample = `import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioInput
-	labelCaption="this is a label caption"
-	labelFor="this is a lable for"
+	labelCaption="Text Input caption"
+	labelFor="this is a label for"
 	labelType="default"
 	describedBy="described by"
 	elementId="id"
@@ -22,20 +22,18 @@ export default function TextInputExample() {
 				<div className="ontario-columns ontario-medium-12 ontario-large-12">
 					<h3>Examples</h3>
 					<div className="preview-container">
-						<div className="example-container">
-							<OntarioInput
-								labelCaption="this is a label caption"
-								labelFor="this is a lable for"
-								labelType="default"
-								describedBy="described by"
-								elementId="id"
-								inputWidth="4-char-width"
-								name="name"
-								required
-								type="text"
-								value="value"
-							/>
-						</div>
+						<OntarioInput
+							labelCaption="Text Input caption"
+							labelFor="this is a label for"
+							labelType="default"
+							describedBy="described by"
+							elementId="id"
+							inputWidth="4-char-width"
+							name="name"
+							required
+							type="text"
+							value="value"
+						/>
 
 						<p>With the following markup:</p>
 

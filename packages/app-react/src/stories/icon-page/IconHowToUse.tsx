@@ -11,10 +11,8 @@ export default function IconExample() {
 			<div className="ontario-columns ontario-medium-12 ontario-large-12">
 				<h3>How to use the icons</h3>
 				<div className="preview-container">
-					<div className="example-container">
-						<h5>Primary Icon:</h5>
-						<OntarioIconAccessibility icon-width="36" colour="grey"></OntarioIconAccessibility>
-					</div>
+					<h4>Primary Icon:</h4>
+					<OntarioIconAccessibility icon-width="36" colour="grey"></OntarioIconAccessibility>
 
 					<p>With the following markup:</p>
 
@@ -24,10 +22,8 @@ export default function IconExample() {
 				</div>
 
 				<div className="preview-container">
-					<div className="example-container">
-						<h5>Secondary Icon:</h5>
-						<OntarioIconAccount icon-width="36" colour="grey"></OntarioIconAccount>
-					</div>
+					<h4>Secondary Icon:</h4>
+					<OntarioIconAccount icon-width="36" colour="grey"></OntarioIconAccount>
 
 					<p>With the following markup:</p>
 

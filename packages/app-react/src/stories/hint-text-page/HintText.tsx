@@ -35,9 +35,9 @@ export default function HintText() {
 						</ul>
 					</p>
 					<div className="preview-container">
-						<div className="example-container">
-							<OntarioHintText hint="This is a hint" elementId="this is the element id" />
-						</div>
+						<h4>Hint text example:</h4>
+						<OntarioHintText hint="This is a hint" elementId="this is the element id" />
+
 						<p>With the following markup:</p>
 
 						<SyntaxHighlighter language="javascript" style={vscDarkPlus}>

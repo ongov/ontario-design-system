@@ -23,27 +23,25 @@ export default function HeaderOntarioExample() {
 		<div className="ontario-row">
 			<div className="ontario-columns ontario-medium-12 ontario-large-12">
 				<div className="preview-container">
-					<div className="example-container">
-						<h5>Ontario.ca Header</h5>
-						<OntarioHeader
-							type="ontario"
-							title-header='{
+					<h4>Ontario.ca Header</h4>
+					<OntarioHeader
+						type="ontario"
+						title-header='{
                 "name": "Application name" ,
                 "href": "/"
               }'
-							language-Toggle-Options='{
+						language-Toggle-Options='{
                 "englishLink":"#",
                 "frenchLink": "#"
               }'
-							menu-Items='[{
+						menu-Items='[{
                 "name": "Health",
                 "href": "#"
               },{
                 "name": "Financial Health",
                 "href": "#"
               }]'
-						></OntarioHeader>
-					</div>
+					></OntarioHeader>
 
 					<p>With the following markup:</p>
 

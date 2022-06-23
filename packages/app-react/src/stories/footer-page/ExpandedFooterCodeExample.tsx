@@ -57,18 +57,17 @@ export default function ExpandedFooterCodeExample() {
 				<div className="ontario-columns ontario-medium-12 ontario-large-12">
 					<h3>Example of default footer</h3>
 					<div className="preview-container">
-						<div className="example-container">
-							<OntarioFooter
-								type="expandedTwoColumn"
-								partnership-Connection="Sponsored by Government of Ontario"
-								default-options='{
+						<OntarioFooter
+							type="expandedTwoColumn"
+							partnership-Connection="Sponsored by Government of Ontario"
+							default-options='{
                 "accessibilityLink":"https://www.ontario.ca/page/accessibility",
                 "privacyLink": "https://www.ontario.ca/page/privacy-statement",
                 "contactLink": "https://www.ontario.ca/feedback/contact-us",
                 "queensPrinterLink": "https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario"
 
               }'
-								expanded-two-column-options='{
+							expanded-two-column-options='{
                 "firstColumn": {
                   "title": "This is my First Title",
                   "content":"this is my first content"
@@ -79,7 +78,7 @@ export default function ExpandedFooterCodeExample() {
                   "contactButtonText": "BUTTON"
                 }
               }'
-								expanded-three-column-options='{
+							expanded-three-column-options='{
                 "firstColumn": {
                   "title": "This is my First Title",
                   "content":"this is my first content"
@@ -110,8 +109,7 @@ export default function ExpandedFooterCodeExample() {
                   }
                 }
               }'
-							></OntarioFooter>
-						</div>
+						></OntarioFooter>
 
 						<p>With the following markup:</p>
 
