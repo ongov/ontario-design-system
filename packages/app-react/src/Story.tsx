@@ -7,6 +7,7 @@ import StoryOntarioTextArea from './stories/text-area-page/TextArea';
 import StoryOntarioTextInput from './stories/text-input-page/TextInput';
 import StoryOntarioIcon from './stories/icon-page/Icon';
 import StoryOntarioHeader from './stories/header-page/HeaderComponent';
+import StoryOntarioFooter from './stories/footer-page/FooterComponent';
 import StoryOntarioCheckbox from './stories/checkbox-page/Checkbox';
 import StoryOntarioRadioButton from './stories/radio-button-page/RadioButton';
 import StoryOntarioDropdownList from './stories/dropdown-list-page/DropdownList';
@@ -21,6 +22,7 @@ const StoryRouter = () => {
 			<Route path="/ontario-text-input" element={<StoryOntarioTextInput />} />
 			<Route path="/ontario-icon" element={<StoryOntarioIcon />} />
 			<Route path="/ontario-header" element={<StoryOntarioHeader />} />
+			<Route path="/ontario-footer" element={<StoryOntarioFooter />} />
 			<Route path="/ontario-checkbox" element={<StoryOntarioCheckbox />} />
 			<Route path="/ontario-radio-button" element={<StoryOntarioRadioButton />} />
 			<Route path="/ontario-dropdown-list" element={<StoryOntarioDropdownList />} />
