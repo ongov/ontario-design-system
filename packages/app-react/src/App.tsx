@@ -62,6 +62,10 @@ const App = () => {
 									name: 'Header',
 									href: generateHashPath('/ontario-header'),
 								},
+								{
+									name: 'Checkbox',
+									href: generateHashPath('/ontario-checkbox'),
+								},
 							]}
 						/>
 					</div>
