@@ -12,10 +12,10 @@ export default function HeaderOntarioExample() {
     "frenchLink": "/fr"
   }'  menu-Items='[{
     "name": "Health",
-    "href": "/ontario-hint"
+    "href": "#"
   },{
     "name": "Financial Health",
-    "href": "/ontario-hint"
+    "href": "#"
   }]'>
 </OntarioHeader>
 `;
@@ -24,7 +24,7 @@ export default function HeaderOntarioExample() {
 			<div className="ontario-columns ontario-medium-12 ontario-large-12">
 				<div className="preview-container">
 					<div className="example-container">
-						<h5>Application Header</h5>
+						<h5>Ontario.ca Header</h5>
 						<OntarioHeader
 							type="ontario"
 							title-header='{
@@ -32,15 +32,15 @@ export default function HeaderOntarioExample() {
                 "href": "/"
               }'
 							language-Toggle-Options='{
-                "englishLink":"/en",
-                "frenchLink": "/fr"
+                "englishLink":"#",
+                "frenchLink": "#"
               }'
 							menu-Items='[{
                 "name": "Health",
-                "href": "/ontario-hint"
+                "href": "#"
               },{
                 "name": "Financial Health",
-                "href": "/ontario-hint"
+                "href": "#"
               }]'
 						></OntarioHeader>
 					</div>
