@@ -6,7 +6,7 @@ import StoryOntarioHint from './stories/hint-text-page/Hint';
 import StoryOntarioTextArea from './stories/text-area-page/TextArea';
 import StoryOntarioTextInput from './stories/text-input-page/TextInput';
 import StoryOntarioIcon from './stories/icon-page/Icon';
-
+import StoryOntarioHeader from './stories/header-page/HeaderComponent';
 
 const StoryRouter = () => {
 	return (
@@ -17,6 +17,7 @@ const StoryRouter = () => {
 			<Route path="/ontario-text-area" element={<StoryOntarioTextArea />} />
 			<Route path="/ontario-text-input" element={<StoryOntarioTextInput />} />
 			<Route path="/ontario-icon" element={<StoryOntarioIcon />} />
+			<Route path="/ontario-header" element={<StoryOntarioHeader />} />
 		</Routes>
 	);
 };
