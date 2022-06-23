@@ -66,6 +66,10 @@ const App = () => {
 									name: 'Checkbox',
 									href: generateHashPath('/ontario-checkbox'),
 								},
+								{
+									name: 'Radio Button',
+									href: generateHashPath('/ontario-radio-button'),
+								},
 							]}
 						/>
 					</div>
