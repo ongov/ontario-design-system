@@ -30,7 +30,7 @@ const App = () => {
 						<OntarioHeader
 							type="application"
 							titleHeader={{
-								name: 'Design System React PoC',
+								name: 'Design System React Proof of Concept',
 								href: generateHashPath('/'),
 							}}
 							languageToggleOptions={{
