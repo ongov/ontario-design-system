@@ -9,7 +9,7 @@ describe('ontario-input', () => {
 			await page.setContent("<ontario-input name='ontario-input'></ontario-input>");
 			const component = await page.find('ontario-input');
 			const element = await page.find('ontario-input >>> input');
-
+			
 			expect(component).toHaveClass('hydrated');
 			expect(element).toHaveClass('ontario-input');
 			expect(element).toEqualAttributes({

@@ -10,7 +10,6 @@ exports[`ontario-input snapshot should render the expected html 1`] = `
           (optional)
         </span>
       </label>
-      <slot name="hint-text"></slot>
       <input class="ontario-input" id="ontario-input" name="ontario-input" type="text" value="">
       <slot name="hint-expander"></slot>
     </div>

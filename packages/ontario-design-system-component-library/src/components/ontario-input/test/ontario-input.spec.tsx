@@ -27,7 +27,6 @@ describe('ontario-input', () => {
 								Ontario Input
 								<span class="ontario-label__flag">(optional)</span>
 							</label>
-							<slot name="hint-text"></slot>
 							<input type='text' class="ontario-input" id="ontario-input" name="ontario-input" value=""></input>
 							<slot name="hint-expander"></slot>
 						</div>
