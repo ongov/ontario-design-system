@@ -1,7 +1,9 @@
 import { Component, h, Prop, Event, EventEmitter, State, Watch } from '@stencil/core';
 import { CheckboxOption } from './checkbox-option.interface';
-import { Checkbox } from './checkbox.interface';
+import { Checkboxes } from './checkboxes.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+import { validateObjectExists, validatePropExists } from '../../utils/validation/validation-functions';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 /**
  * Ontario Checkbox component
@@ -11,11 +13,16 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
   styleUrl: 'ontario-checkboxes.scss',
   shadow: true,
 })
-export class OntarioCheckboxes implements Checkbox {
+export class OntarioCheckboxes implements Checkboxes {
   /**
-   * The legend for the checkbox
+   * The legend for the checkboxes
    */
   @Prop() legend: string;
+
+  /**
+   * The name for the checkboxes.
+   */
+  @Prop() name: string;
 
   /**
    * Determine whether the input field is required.
@@ -37,20 +44,18 @@ export class OntarioCheckboxes implements Checkbox {
    * @example
    * <ontario-checkboxes
    *   legend="This is a question?"
+   *   name="ontario-checkboxes"
    *   options='[{
-   *     "name": "Checkbox 1",
    *     "value": "checkbox-1-value",
    *     "label": "Checkbox Label",
    *     "hintExpander": {
    *			  "hint": "Hint expander",
-   * 		    "content": "This is the content",
-   *			  "aria-label": "This indicates that the hint can be expanded"
+   * 		    "content": "This is the content"
    *		 }
    *   }]'
    *   hint-expander='{
    *    "hint": "Hint expander",
-   *    "content": "This is the content, yup this is the content",
-   *    "aria-label": "This indicates that the hint can be expanded"
+   *    "content": "This is the content, yup this is the content"
       }'
 
    * >
@@ -82,21 +87,19 @@ export class OntarioCheckboxes implements Checkbox {
    * @example
    * <ontario-checkboxes
    *   legend="This is a question?"
+   *   name= "ontario-checkboxes",
    *   hint-text="This is the hint text"
    *   options='[
    *     {
-   *        "name": "Checkbox 1",
    *        "value": "checkbox-1-value",
    *        "label": "Checkbox Label"
    *     },
    *     {
-   *        "name": "Checkbox-2",
    *        "value": "checkbox-2",
    *        "label": "checkbox-2-label",
    *        "hintExpander": {
    *          "hint": "Hint expander",
-   *          "content": "This is the content",
-   *          "aria-label": "This indicates that the hint can be expanded"
+   *          "content": "This is the content"
    *        }
    *      }
    *   ]'
@@ -136,9 +139,69 @@ export class OntarioCheckboxes implements Checkbox {
     this.changeEvent.emit(ev as any);
   };
 
+  /*
+	 * Watch for changes in the `legend` prop for validation purpose
+	 * Validate the legend and make sure the legend has a value.
+	 * Log warning if user doesn't input a value for the legend.
+	 */
+	@Watch('legend')
+	validateLegend(newValue: string) {
+		if (validatePropExists(newValue)) {
+			const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' legend ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-checkboxes> ')
+					.addRegularText('was not provided')
+					.printMessage();
+		}
+	}
+
+  /*
+	 * Watch for changes in the `name` prop for validation purpose
+	 * Validate the name and make sure the name has a value.
+	 * Log warning if user doesn't input a value for the name.
+	 */
+	@Watch('name')
+	validateName(newValue: string) {
+		if (validatePropExists(newValue)) {
+			const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' name ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-checkboxes> ')
+					.addRegularText('was not provided')
+					.printMessage();
+		}
+	}
+
+  /*
+	 * Watch for changes in the `options` prop for validation purpose
+	 * Validate the options and make sure the options has a value.
+	 * Log warning if user doesn't input a value for the options.
+	 */
+	@Watch('options')
+	validateOptions(newValue: object) {
+		if (validateObjectExists(newValue)) {
+			const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' options ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-checkboxes> ')
+					.addRegularText('was not provided')
+					.printMessage();
+		}
+	}
+
   componentWillLoad() {
     this.parseOptions();
     this.parseHintExpander();
+    this.validateLegend(this.legend);
+    this.validateName(this.name);
+    this.validateOptions(this.internalOptions);
   }
 
   render() {
@@ -161,19 +224,19 @@ export class OntarioCheckboxes implements Checkbox {
               <div class="ontario-checkboxes__item">
                 <input
                   class="ontario-checkboxes__input"
-                  id={checkbox.name}
-                  name={checkbox.name}
+                  id={checkbox.value}
+                  name={this.name}
                   type="checkbox"
                   value={checkbox.value}
                   checkbox-label={checkbox.label}
                   onChange={this.handleChange}
                 />
-                <label class="ontario-checkboxes__label" htmlFor={checkbox.name}>
+                <label class="ontario-checkboxes__label" htmlFor={checkbox.value}>
                   {checkbox.label}
                 </label>
 
                 <div class="ontario-checkboxes__hint-expander">
-                  {checkbox.hintExpander && <ontario-hint-expander hint={checkbox.hintExpander.hint} content={checkbox.hintExpander.content} aria-label={checkbox.hintExpander.ariaLabel} input-exists></ontario-hint-expander>}
+                  {checkbox.hintExpander && <ontario-hint-expander hint={checkbox.hintExpander.hint} content={checkbox.hintExpander.content} input-exists></ontario-hint-expander>}
                 </div>
               </div>
             )}
@@ -182,7 +245,6 @@ export class OntarioCheckboxes implements Checkbox {
               <ontario-hint-expander
                 hint={this.internalHintExpander.hint}
                 content={this.internalHintExpander.content}
-                aria-label={this.internalHintExpander.ariaLabel}
                 input-exists
               ></ontario-hint-expander>
             )}

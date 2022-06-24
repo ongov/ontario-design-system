@@ -1,29 +1,34 @@
 @import '../../global.scss';
 
 .ontario-icon svg {
-  display: inline-block;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  /* The default vertical-align is `baseline`, which leaves a few pixels of space below the icon. Using `center` prevents this. For icons shown alongside text, you may want to use a more precise value, e.g. `vertical-align: -4px` or `vertical-align: -0.15em`. */
-  vertical-align: middle;
-  /* Paths and strokes that overflow the viewBox can show in IE11. */
-  overflow: hidden;
+	display: inline-block;
+	stroke-width: 0;
+	stroke: currentColor;
+	fill: currentColor;
+	/* The default vertical-align is `baseline`, which leaves a few pixels of space below the icon. Using `center` prevents this. For icons shown alongside text, you may want to use a more precise value, e.g. `vertical-align: -4px` or `vertical-align: -0.15em`. */
+	vertical-align: middle;
+	/* Paths and strokes that overflow the viewBox can show in IE11. */
+	overflow: hidden;
 }
 
 .ontario-icon--blue svg {
-  stroke: $ontario-colour-icon-blue;
-  fill: $ontario-colour-icon-blue;
+	stroke: $ontario-colour-icon-blue;
+	fill: $ontario-colour-icon-blue;
 }
 
 .ontario-icon--grey svg {
-  stroke: $ontario-colour-icon-grey;
-  fill: $ontario-colour-icon-grey;
+	stroke: $ontario-colour-icon-grey;
+	fill: $ontario-colour-icon-grey;
 }
 
 .ontario-icon--black svg {
-  stroke: $ontario-colour-icon-black;
-  fill: $ontario-colour-icon-black;
+	stroke: $ontario-colour-icon-black;
+	fill: $ontario-colour-icon-black;
+}
+
+.ontario-icon--white svg {
+	stroke: $ontario-colour-icon-white;
+	fill: $ontario-colour-icon-white;
 }
 
 .ontario-icon--white svg {

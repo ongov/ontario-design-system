@@ -50,13 +50,13 @@ It can be confusing and frustrating for users to expect a button to trigger an a
 
 ## Properties
 
-| Property    | Attribute    | Description                                                                                               | Type                                                  | Default       |
-| ----------- | ------------ | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ------------- |
-| `ariaLabel` | `aria-label` | Overrides the default value of the `aria-label` HTML attribute.                                           | `string \| undefined`                                 | `undefined`   |
-| `buttonId`  | `button-id`  | The unique identifier of the button                                                                       | `string \| undefined`                                 | `undefined`   |
-| `htmlType`  | `html-type`  | The native HTML button type the button should use.                                                        | `"button" \| "reset" \| "submit" \| undefined`        | `'button'`    |
-| `label`     | `label`      | Text to be displayed within the button. This will override the text provided through the Element Content. | `string \| undefined`                                 | `undefined`   |
-| `type`      | `type`       | The type of button to render.                                                                             | `"primary" \| "secondary" \| "tertiary" \| undefined` | `'secondary'` |
+| Property    | Attribute    | Description                                                                                               | Type                                                                | Default     |
+| ----------- | ------------ | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------- |
+| `ariaLabel` | `aria-label` | Provides more context as to what the button interaction is doing.                                         | `string \| undefined`                                               | `undefined` |
+| `elementId` | `element-id` | The unique identifier of the button.                                                                      | `string \| undefined`                                               | `undefined` |
+| `htmlType`  | `html-type`  | The native HTML button type the button should use.                                                        | `HtmlType.Button \| HtmlType.Reset \| HtmlType.Submit`              | `undefined` |
+| `label`     | `label`      | Text to be displayed within the button. This will override the text provided through the Element Content. | `string \| undefined`                                               | `undefined` |
+| `type`      | `type`       | The type of button to render.                                                                             | `ButtonType.Primary \| ButtonType.Secondary \| ButtonType.Tertiary` | `undefined` |
 
 
 ----------------------------------------------

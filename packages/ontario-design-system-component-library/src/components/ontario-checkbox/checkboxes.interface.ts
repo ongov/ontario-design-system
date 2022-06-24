@@ -2,11 +2,17 @@ import { Base } from '../../utils/common.interface';
 import { CheckboxOption } from './checkbox-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
-export interface Checkbox extends Base {
+export interface Checkboxes extends Base {
   /**
-   * The legend for the checkbox.
+   * The legend for the checkboxes.
    */
   legend: string;
+
+  /**
+   * The name for the checkboxes.
+   */
+  name: string;
+
 
   /**
    * Define hint text on an element.
@@ -20,20 +26,18 @@ export interface Checkbox extends Base {
    * @example
    * <ontario-checkboxes
    *   legend="This is a question?"
+   *   name="ontario-checkboxes"
    *   options='[{
-   *     "name": "Checkbox 1",
    *     "value": "checkbox-1-value",
    *     "label": "Checkbox Label",
    *     "hintExpander": {
    *			  "hint": "Hint expander",
-   * 		    "content": "This is the content",
-   *			  "aria-label": "This indicates that the hint can be expanded"
+   * 		    "content": "This is the content"
    *		 }
    *   }]'
    *   hint-expander='{
    *    "hint": "Hint expander",
-   *    "content": "This is the content, yup this is the content",
-   *    "aria-label": "This indicates that the hint can be expanded"
+   *    "content": "This is the content, yup this is the content"
       }'
 
    * >
@@ -51,21 +55,19 @@ export interface Checkbox extends Base {
    * @example
    * <ontario-checkboxes
    *   legend="This is a question?"
+   *   name="ontario-checkboxes"
    *   hint-text="This is the hint text"
    *   options='[
    *     {
-   *        "name": "Checkbox 1",
    *        "value": "checkbox-1-value",
    *        "label": "Checkbox Label"
    *     },
    *     {
-   *        "name": "Checkbox-2",
    *        "value": "checkbox-2",
    *        "label": "checkbox-2-label",
    *        "hintExpander": {
    *          "hint": "Hint expander",
-   *          "content": "This is the content",
-   *          "aria-label": "This indicates that the hint can be expanded"
+   *          "content": "This is the content"
    *        }
    *      }
    *   ]'

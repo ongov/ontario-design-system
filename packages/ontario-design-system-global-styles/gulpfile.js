@@ -8,7 +8,6 @@ const { dest, series, src, task, parallel, watch } = require('gulp');
 
 const distDir = './dist';
 const styleDir = './src/sass/**';
-
 const fonts = ['./src/fonts/**'];
 
 /**

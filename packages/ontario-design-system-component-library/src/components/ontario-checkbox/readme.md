@@ -45,8 +45,7 @@ Example of a checkbox component with multiple options, a hint text for the entir
       "label": "checkbox-2-label",
       "hintExpander": {
         "hint": "Hint expander",
-        "content": "This is the content",
-        "aria-label": "This indicates that the hint can be expanded"
+        "content": "This is the content"
       }
     }
   ]'
@@ -69,7 +68,8 @@ Example of a checkbox component with multiple options, a hint text for the entir
 | `hintExpander` | `hint-expander` | Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.                                                                                                                                                                                                                                                                   | `HintExpander \| string \| undefined` | `undefined` |
 | `hintText`     | `hint-text`     | Define hint text on an element.                                                                                                                                                                                                                                                                                                                                                                    | `string \| undefined`                 | `undefined` |
 | `isRequired`   | `is-required`   | Determine whether the input field is required. If required, it should be set to true.                                                                                                                                                                                                                                                                                                              | `boolean \| undefined`                | `false`     |
-| `legend`       | `legend`        | The legend for the checkbox                                                                                                                                                                                                                                                                                                                                                                        | `string`                              | `undefined` |
+| `legend`       | `legend`        | The legend for the checkboxes                                                                                                                                                                                                                                                                                                                                                                      | `string`                              | `undefined` |
+| `name`         | `name`          | The name for the checkboxes.                                                                                                                                                                                                                                                                                                                                                                       | `string`                              | `undefined` |
 | `options`      | `options`       | Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset. | `CheckboxOption[] \| string`          | `undefined` |
 
 

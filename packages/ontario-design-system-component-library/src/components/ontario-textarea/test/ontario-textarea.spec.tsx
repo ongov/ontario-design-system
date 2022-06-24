@@ -6,7 +6,7 @@ describe('ontario-textarea', () => {
 		it('should render the expected html', async () => {
 			const page = await newSpecPage({
 				components: [OntarioTextarea],
-				html: `<ontario-textarea name="ontario-textarea" element-id="ontario-textarea" label-caption="Ontario Textarea"></ontario-textarea>`,
+				html: `<ontario-textarea name="ontario-textarea" element-id="ontario-textarea" caption='{"captionText": "Ontario Textarea"}'></ontario-textarea>`,
 			});
 
 			expect(page.root).toMatchSnapshot();
@@ -17,15 +17,17 @@ describe('ontario-textarea', () => {
 		it('should render a default textarea element', async () => {
 			const page = await newSpecPage({
 				components: [OntarioTextarea],
-				html: `<ontario-textarea name="ontario-textarea" element-id="ontario-textarea" label-caption="Ontario Textarea"></ontario-textarea>`,
+				html: `<ontario-textarea name="ontario-textarea" element-id="ontario-textarea" caption='{"captionText": "Ontario Textarea"}'></ontario-textarea>`,
 			});
 			expect(page.root).toEqualHtml(`
-				<ontario-textarea name="ontario-textarea" element-id="ontario-textarea" label-caption="Ontario Textarea">
+				<ontario-textarea name="ontario-textarea" element-id="ontario-textarea" caption='{"captionText": "Ontario Textarea"}'>
 					<mock:shadow-root>
 						<div>
 							<label htmlfor="ontario-textarea" class="ontario-label">
 								Ontario Textarea
-								<span class="ontario-label__flag">(optional)</span>
+								<span class="ontario-label__flag">
+									(optional)
+								</span>
 							</label>
 							<slot name="hint-text"></slot>
 							<textarea class="ontario-textarea" id="ontario-textarea" name="ontario-textarea" value=""></textarea>
@@ -45,17 +47,17 @@ describe('ontario-textarea', () => {
 									required="true"
 									element-id="textarea-id"
 									value="textarea value"
-									label-caption="Ontario Textarea"
+									caption='{"captionText": "Ontario Textarea", "isRequired": true}'
 								></ontario-textarea>`,
 			});
 
 			expect(page.rootInstance.describedBy).toBe('textarea-hint-id');
 			expect(page.rootInstance.name).toBe('textarea-name');
-			expect(page.rootInstance.required).toBe(true);
+			expect(page.rootInstance.captionState.isRequired).toBe(true);
 			expect(page.rootInstance.value).toBe('textarea value');
 			expect(page.rootInstance.elementId).toBe('textarea-id');
 			expect(page.rootInstance.focused).toBe(false);
-			expect(page.rootInstance.labelCaption).toBe('Ontario Textarea');
+			expect(page.rootInstance.captionState.captionText).toBe('Ontario Textarea');
 		});
 	});
 
@@ -80,6 +82,8 @@ describe('ontario-textarea', () => {
 									name="textarea-name"
 									required="true"
 									element-id="textarea-id"
+									label-caption="Ontario Textarea"
+									label-type="default"
 								></ontario-textarea>`,
 			});
 
@@ -102,6 +106,8 @@ describe('ontario-textarea', () => {
 									name="textarea-name"
 									required="true"
 									element-id="textarea-id"
+									label-caption="Ontario Textarea"
+									label-type="default"
 								></ontario-textarea>`,
 			});
 
@@ -126,6 +132,8 @@ describe('ontario-textarea', () => {
 									name="textarea-name"
 									required="true"
 									element-id="textarea-id"
+									label-caption="Ontario Textarea"
+									label-type="default"
 								></ontario-textarea>`,
 			});
 

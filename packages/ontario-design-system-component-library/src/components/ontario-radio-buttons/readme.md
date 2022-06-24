@@ -54,8 +54,7 @@ Example of a radio button component with multiple options, a hint text for the e
 			"label": "radio-2-label",
 			"hintExpander": {
 				"hint": "Hint expander",
-				"content": "This is the content, yup this is the content",
-				"aria-label": "This indicates that the hint can be expanded"
+				"content": "This is the content, yup this is the content"
 			}
 		},
 		{
@@ -65,8 +64,7 @@ Example of a radio button component with multiple options, a hint text for the e
 			"label": "radio-3-label",
 			"hintExpander": {
 				"hint": "Hint expander",
-				"content": "This is the content",
-				"aria-label": "This indicates that the hint can be expanded"
+				"content": "This is the content"
 			}
 		},
 		{
@@ -95,6 +93,7 @@ Example of a radio button component with multiple options, a hint text for the e
 | `hintText`     | `hint-text`     | Define hint text for Radio Button fieldset.                                                                                                                                                                                                                                                                                                                                                                  | `string \| undefined`                 | `undefined` |
 | `isRequired`   | `is-required`   | Determine whether the input field is required. If required, it should be set to true. This can be done by passing in `is-required` to the component.                                                                                                                                                                                                                                                         | `boolean \| undefined`                | `false`     |
 | `legend`       | `legend`        | The legend for the Radio Buttons.                                                                                                                                                                                                                                                                                                                                                                            | `string`                              | `undefined` |
+| `name`         | `name`          | The name assigned to the radio button. The name value is used to reference form data after a form is submitted.                                                                                                                                                                                                                                                                                              | `string`                              | `undefined` |
 | `options`      | `options`       | Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset. | `RadioOption[] \| string`             | `undefined` |
 
 

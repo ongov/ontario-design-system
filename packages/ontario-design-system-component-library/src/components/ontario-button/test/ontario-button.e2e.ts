@@ -14,7 +14,6 @@ describe('ontario-button', () => {
 			'aria-label': '',
 			'type': 'button',
 		});
-		expect(element).not.toHaveAttribute('id');
 	});
 
 	it('renders changes to the button', async () => {
@@ -29,7 +28,6 @@ describe('ontario-button', () => {
 			'aria-label': 'Element Content',
 			'type': 'button',
 		});
-		expect(element).not.toHaveAttribute('id');
 
 		component.setProperty('label', 'Label');
 		await page.waitForChanges();
@@ -48,9 +46,8 @@ describe('ontario-button', () => {
 			'aria-label': 'Aria Label',
 			'type': 'button',
 		});
-		expect(element).not.toHaveAttribute('id');
 
-		component.setProperty('buttonId', 'defaultButton');
+		component.setProperty('elementId', 'defaultButton');
 		await page.waitForChanges();
 		expect(element).toHaveClasses(['ontario-button', 'ontario-button--secondary']);
 		expect(element.textContent).toEqual('Label');
@@ -74,13 +71,11 @@ describe('ontario-button', () => {
 		component.setProperty('type', 'tertiary');
 		component.setProperty('htmlType', 'button');
 		component.setProperty('label', 'Back');
-		component.setProperty('ariaLabel', 'Back');
-		component.setProperty('buttonId', 'BackButton');
+		component.setProperty('elementId', 'BackButton');
 		await page.waitForChanges();
 		expect(element).toHaveClasses(['ontario-button', 'ontario-button--tertiary']);
 		expect(element.textContent).toEqual('Back');
 		expect(element).toEqualAttributes({
-			'aria-label': 'Back',
 			'type': 'button',
 			'id': 'BackButton',
 		});

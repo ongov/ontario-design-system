@@ -37,8 +37,7 @@ export interface RadioOption {
    *     "label": "Radio Option Label",
    *     "hintExpander": {
    *			  "hint": "Hint expander",
-   * 		    "content": "This is the content",
-   *			  "aria-label": "This indicates that the hint can be expanded"
+   * 		    "content": "This is the content"
    *		 }
    *   }]'
    * >
@@ -56,15 +55,13 @@ export interface RadioOption {
    * This ID must be unique to the radio option.
    *
    * @example
-   * <ontario-radio-buttons legend="Do you have cats?" hint-text="This is the hint text" is-required
+   * <ontario-radio-buttons legend="Do you have cats?" name="radio" hint-text="This is the hint text" is-required
    *  options='[{
-   *	 "name": "radio",
    *	 "value": "radio",
    *	 "elementId": "radio-1",
    *	 "label": "radio-1-label"
    *	},
    *	{
-   *		"name": "radio",
    *		"value": "radio-2",
    *		"elementId": "radio-2",
    *		"label": "radio-2-label"

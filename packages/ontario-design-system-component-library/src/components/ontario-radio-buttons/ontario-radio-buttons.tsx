@@ -2,6 +2,8 @@ import { Component, h, Prop, State, Watch } from '@stencil/core';
 import { RadioButtons } from './radio-buttons.interface';
 import { RadioOption } from './radio-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+import { validateObjectExists, validatePropExists } from '../../utils/validation/validation-functions';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 @Component({
 	tag: 'ontario-radio-buttons',
@@ -9,6 +11,12 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 	shadow: true,
 })
 export class OntarioRadioButtons implements RadioButtons {
+	/**
+	 * The name assigned to the radio button.
+	 * The name value is used to reference form data after a form is submitted.
+	 */
+	@Prop() name: string;
+
 	/**
 	 * The legend for the Radio Buttons.
 	 */
@@ -26,22 +34,21 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * @example
 	 * <ontario-radio-buttons
 	 *   legend="This is a question?"
+	 * 	 name: "Radio"
 	 *   options='[
 	 * 	   {
-	 *        "name": "Radio",
 	 *        "value": "radio-option-1",
+	 * 				"elementId": "radio-1",
 	 *        "label": "Radio Option 1 Label",
 	 *        "hintExpander": {
 	 *			    "hint": "Hint expander",
-	 * 		      "content": "This is the content",
-	 *			    "aria-label": "This indicates that the hint can be expanded"
+	 * 		      "content": "This is the content"
 	 *		    }
 	 *     }
 	 *   ]'
 	 *   hint-expander='{
 	 *     "hint": "Hint expander",
-	 *     "content": "This is the content, yup this is the content",
-	 *     "aria-label": "This indicates that the hint can be expanded"
+	 *     "content": "This is the content, yup this is the content"
 	 *   }'
 	 * >
 	 * </ontario-radio-buttons>
@@ -75,18 +82,17 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *   hint-text="This is the hint text"
 	 *   options='[
 	 *     {
-	 *        "name": "Radio",
 	 *        "value": "radio-1-value",
+	 * 				"elementId": "radio-1",
 	 *        "label": "Radio Button Label 1"
 	 *     },
 	 *     {
-	 *        "name": "Radio",
 	 *        "value": "radio-2-value",
+	 * 				"elementId": "radio-1",
 	 *        "label": "Radio Button Label 2",
 	 *        "hintExpander": {
 	 *          "hint": "Hint expander",
-	 *          "content": "This is the content",
-	 *          "aria-label": "This indicates that the hint can be expanded"
+	 *          "content": "This is the content"
 	 *        }
 	 *      }
 	 *   ]'
@@ -121,9 +127,69 @@ export class OntarioRadioButtons implements RadioButtons {
 	 */
 	@Prop() isRequired?: boolean = false;
 
+	/*
+	  * Watch for changes in the `legend` prop for validation purpose
+    * Validate the legend make sure the legend has a value.
+    * Log warning if user doesn't input a value for the legend.
+    */
+  @Watch('legend')
+  validateLegend(newValue: string) {
+    if (validatePropExists(newValue)) {
+      const message = new ConsoleMessageClass();
+        message
+          .addDesignSystemTag()
+          .addMonospaceText(' legend ')
+          .addRegularText('for')
+          .addMonospaceText(' <ontario-radio-buttons> ')
+          .addRegularText('was not provided')
+          .printMessage();
+    }
+  }
+
+  /*
+    * Watch for changes in the `name` prop for validation purpose
+    * Validate the name and make sure the name has a value.
+    * Log warning if user doesn't input a value for the name.
+    */
+  @Watch('name')
+  validateName(newValue: string) {
+    if (validatePropExists(newValue)) {
+      const message = new ConsoleMessageClass();
+        message
+          .addDesignSystemTag()
+          .addMonospaceText(' name ')
+          .addRegularText('for')
+          .addMonospaceText(' <ontario-radio-buttons> ')
+          .addRegularText('was not provided')
+          .printMessage();
+    }
+  }
+
+  /*
+    * Watch for changes in the `options` prop for validation purpose
+    * Validate the options and make sure the options has a value.
+    * Log warning if user doesn't input a value for the options.
+    */
+  @Watch('options')
+  validateOptions(newValue: object) {
+    if (validateObjectExists(newValue)) {
+      const message = new ConsoleMessageClass();
+        message
+          .addDesignSystemTag()
+          .addMonospaceText(' options ')
+          .addRegularText('for')
+          .addMonospaceText(' <ontario-radio-buttons> ')
+          .addRegularText('was not provided')
+          .printMessage();
+    }
+  }
+
 	componentWillLoad() {
 		this.parseOptions();
 		this.parseHintExpander();
+		this.validateName(this.name);
+		this.validateLegend(this.legend);
+		this.validateOptions(this.internalOptions);
 	}
 
 	render() {
@@ -146,7 +212,7 @@ export class OntarioRadioButtons implements RadioButtons {
 								<input
 									class="ontario-radios__input"
 									id={radioOption.elementId}
-									name={radioOption.name}
+									name={this.name}
 									type="radio"
 									value={radioOption.value}
 								/>
@@ -155,7 +221,7 @@ export class OntarioRadioButtons implements RadioButtons {
 								</label>
 
 								<div class="ontario-radios__hint-expander">
-									{radioOption.hintExpander && <ontario-hint-expander hint={radioOption.hintExpander.hint} content={radioOption.hintExpander.content} aria-label={radioOption.hintExpander.ariaLabel} input-exists></ontario-hint-expander>}
+									{radioOption.hintExpander && <ontario-hint-expander hint={radioOption.hintExpander.hint} content={radioOption.hintExpander.content} input-exists></ontario-hint-expander>}
 								</div>
 							</div>
 						)}
@@ -164,7 +230,6 @@ export class OntarioRadioButtons implements RadioButtons {
 							<ontario-hint-expander
 								hint={this.internalHintExpander.hint}
 								content={this.internalHintExpander.content}
-								aria-label={this.internalHintExpander.ariaLabel}
 								input-exists
 							></ontario-hint-expander>
 						)}
