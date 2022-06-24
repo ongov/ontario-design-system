@@ -170,7 +170,7 @@ export class OntarioInput implements TextInput {
 	}
 
 	private getClass(): string {
-		if(this.hintExpander) {
+		if (this.hintExpander) {
 			return this.inputWidth === 'default' ? `ontario-input ontario-input-hint-expander--true` : `ontario-input ontario-input--${this.inputWidth} ontario-input-hint-expander--true`;
 		} else {
 			return this.inputWidth === 'default' ? `ontario-input` : `ontario-input ontario-input--${this.inputWidth}`;
