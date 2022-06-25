@@ -27,9 +27,7 @@ describe('ontario-textarea', () => {
 								Ontario Textarea
 								<span class="ontario-label__flag">(optional)</span>
 							</label>
-							<slot name="hint-text"></slot>
 							<textarea class="ontario-textarea" id="ontario-textarea" name="ontario-textarea" value=""></textarea>
-							<slot name="hint-expander"></slot>
 						</div>
 					</mock:shadow-root>
 				</ontario-textarea>
