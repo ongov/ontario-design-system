@@ -25,7 +25,9 @@ describe('ontario-textarea', () => {
 						<div>
 							<label htmlfor="ontario-textarea" class="ontario-label">
 								Ontario Textarea
-								<span class="ontario-label__flag">(optional)</span>
+								<span class="ontario-label__flag">
+									(optional)
+								</span>
 							</label>
 							<textarea class="ontario-textarea" id="ontario-textarea" name="ontario-textarea" value=""></textarea>
 						</div>

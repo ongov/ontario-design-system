@@ -1,15 +1,15 @@
-import { Component, Event, EventEmitter, h, Prop, State, Watch, Element } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, State, Listen, Watch, Element } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 import { Input } from '../../utils/common.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { default as translations } from '../../translations/global.i18n.json';
 
 /**
  * Ontario Textarea component properties
  */
-
 @Component({
 	tag: 'ontario-textarea',
 	styleUrl: 'ontario-textarea.scss',
@@ -104,6 +104,20 @@ export class OntarioTextarea implements Input {
 
 	@State() focused: boolean = false;
 
+	/**
+	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the textarea component loads.
+	 */
+	@Listen('setAppLanguage', { target: 'window' })
+	handleSetAppLanguage(event: CustomEvent<any>) {
+		this.language = event.detail;
+	}
+
+	@Listen('headerLanguageToggled', { target: 'window' })
+	handleHeaderLanguageToggled(event: CustomEvent<any>) {
+		const toggledLanguage = event.detail;
+		this.language = toggledLanguage;
+	}
+
 	handleBlur = () => {
 		this.focused = false;
 	};
@@ -135,21 +149,19 @@ export class OntarioTextarea implements Input {
 	validateName(newValue: string) {
 		if (validatePropExists(newValue)) {
 			const message = new ConsoleMessageClass();
-				message
-					.addDesignSystemTag()
-					.addMonospaceText(' name ')
-					.addRegularText('for')
-					.addMonospaceText(' <ontario-textarea> ')
-					.addRegularText('was not provided')
-					.printMessage();
+			message.addDesignSystemTag().addMonospaceText(' name ').addRegularText('for').addMonospaceText(' <ontario-textarea> ').addRegularText('was not provided').printMessage();
 		}
 	}
 
 	componentWillLoad() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption);
+		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language);
 		this.elementId = this.elementId ?? uuid();
 		this.parseHintExpander();
 		this.validateName(this.name);
+	}
+
+	componentWillUpdate() {
+		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language);
 	}
 
 	private getValue(): string | number {
