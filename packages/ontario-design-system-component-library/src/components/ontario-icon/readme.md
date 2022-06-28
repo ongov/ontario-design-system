@@ -35,6 +35,19 @@ Example of a bookmark icon, where the user is is passing a colour property of 'G
 | `iconWidth` | `icon-width` | The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio. | `number`                                                                     | `IconSize.Default` |
 
 
+## Dependencies
+
+### Used by
+
+ - [ontario-footer](../ontario-footer)
+
+### Graph
+```mermaid
+graph TD;
+  ontario-footer --> ontario-icon-youtube
+  style ontario-icon-youtube fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

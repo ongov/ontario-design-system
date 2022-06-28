@@ -2,24 +2,53 @@
 <html dir="ltr" lang="en">
 
 <head>
+	<link rel="stylesheet" href="/build/ontario-design-system-components.css" />
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
 	<title>Ontario Design System - component samples</title>
-
 	<script type="module" src="/build/ontario-design-system-components.esm.js"></script>
 	<script nomodule src="/build/ontario-design-system-components.js"></script>
 </head>
 
 <body>
-	<ontario-button label="Primary" type="primary" onclick="testFunction()">Primary
-	</ontario-button>
-	<ontario-button label="Secondary" aria-label="Secondary Button" html-type="reset" id="secondaryButton">Secondary
-	</ontario-button>
-	<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary">Tertiary</ontario-button>
+	<ontario-header type="ontario" title-header='{
+					"name": "Application name" ,
+					"href": "/"
+				}' language-Toggle-Options='{
+					"englishLink":"/en",
+					"frenchLink": "/fr"
+				}' menu-Items='[{
+					"name": "Health Health HealthHealth",
+					"href": "/ontario-hint"
+				},{
+					"name": "FinancialHealth HealthHealth",
+					"href": "/ontario-hint"
+				},{
+					"name": "FinancialHealth HealthHealth",
+					"href": "/ontario-hint"
+				},{
+					"name": "FinancialHealth HealthHealth",
+					"href": "/ontario-hint"
+				},{
+					"name": "FinancialHealth HealthHealth",
+					"href": "/ontario-hint"
+				},{
+					"name": "FinancialHealth HealthHealth",
+					"href": "/ontario-hint"
+				}]'>
+	</ontario-header>
 
 	<hr />
 
-	<ontario-icon-accessibility icon-width="null" colour="GreY"></ontario-icon-accessibility>
+	<ontario-button label="Primary" aria-label="Primary Button" type="primary" onclick="testFunction()">
+		Content here will be overwritten by the value of the label property
+	</ontario-button>
+	<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">
+		Content here will be overwritten by the value of the label property
+	</ontario-button>
+	<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary"> Content here will be overwritten by the
+		value of the label property </ontario-button>
+	<ontario-icon-accessibility icon-width="36" colour="grey"></ontario-icon-accessibility>
 
 	<hr />
 
@@ -47,11 +76,8 @@
 		<ontario-input name="address-type" caption='{"captionText": "Address", "captionType": "hello"}'></ontario-input>
 	</details>
 
-	<hr />
-
-	<!-- ontario-input components - happy paths with ontario-hint-text usage -->
-	<ontario-input name="postal" input-width="7-char-width" caption='{"captionText": "Postal Code", "captionType": "default"}'>
-		<ontario-hint-text slot="hint-text">For example, A1A 1A1</ontario-hint-test>
+	<ontario-input name="postal" input-width="7-char-width" label-caption="Postal code" label-type="large">
+		<ontario-hint-text slot="hint-text">For example, A1A 1A1</ontario-hint-text>
 	</ontario-input>
 
 	<!-- ontario-input components - happy paths with ontario-hint-expander usage -->
@@ -172,6 +198,54 @@
 		<ontario-icon-visa colour="indigo" icon-width="48"></ontario-icon-visa>
 	</p>
 
+	<ontario-footer type="expandedTwoColumn" partnership-Connection="Sponsored by Government of Ontario" default-options='{
+			"accessibilityLink":"https://www.ontario.ca/page/accessibility",
+			"privacyLink": "https://www.ontario.ca/page/privacy-statement",
+			"contactLink": "https://www.ontario.ca/feedback/contact-us",
+			"queensPrinterLink": "https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario"
+
+		}' expanded-two-column-options='{
+			"firstColumn": {
+				"title": "This is my First Title",
+				"content":"this is my first content"
+			},
+			"secondColumn": {
+				"title": "This is my Second Title",
+				"content":"this is my second content",
+				"contactButtonText": "BUTTON"
+			}
+		}' expanded-three-column-options='{
+			"firstColumn": {
+				"title": "This is my First Title",
+				"content":"this is my first content"
+			},
+			"secondColumn": {
+				"title": "This is my Second Title",
+				"content":[
+					{
+						"title": "1 asdas",
+						"link": "12"
+					}
+				]
+			},
+			"thirdColumn": {
+				"title": "this is my third title",
+				"content": "this is my third content",
+				"facebook": {
+					"link": "1"
+				},
+				"twitter": {
+					"link": "2"
+				},
+				"instagram": {
+					"link": "3"
+				},
+				"youtube": {
+					"link": "4"
+				}
+			}
+		}'></ontario-footer>
+	
 	<script>
 		function testFunction() {
 			alert('HELLO WORLD!');

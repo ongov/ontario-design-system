@@ -1,0 +1,83 @@
+@import '~@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme';
+
+$ontario-5rem: 5rem;
+$ontario-50rem: 50rem;
+$ontario-40-vw: 40vw;
+
+p.ontario-lead-statement {
+	font-size: $ontario-font-size-standard-body-text;
+	@media screen and (min-width: $small-breakpoint) {
+		font-size: 1.2rem;
+	}
+	@media screen and (min-width: $medium-breakpoint) {
+		font-size: 1.375rem;
+	}
+}
+
+.platform-homepage-banner {
+	padding-top: $spacing-8;
+	padding-bottom: $spacing-8;
+	background-color: #367a76;
+	background-image: url('ds-supergraphic-element.svg');
+	background-position-x: $ontario-40-vw;
+	background-repeat: no-repeat;
+	background-size: $ontario-50rem;
+	background-position-y: -$ontario-5rem;
+	margin-bottom: $ontario-5rem;
+}
+
+.platform-homepage-banner::before {
+	background-image: url('ds-supergraphic-element.svg');
+	right: $spacing-0;
+	position: absolute;
+	background-position-x: $ontario-40-vw;
+	background-repeat: no-repeat;
+	background-size: $ontario-50rem;
+	background-position-y: -8rem;
+	width: $ontario-global-tokens-full-width;
+	height: 30rem;
+	content: '';
+	z-index: $ontario-z-index-behind-high;
+}
+
+.ontario-banner-font {
+	color: $ontario-colour-white;
+	width: $ontario-global-tokens-full-width;
+	@media screen and (min-width: $small-breakpoint) {
+		width: 70%;
+	}
+	@media screen and (min-width: $medium-breakpoint) {
+		width: 45%;
+	}
+}
+
+hr.dark {
+	border-bottom: $spacing-1 solid #1a1a1a;
+	margin: 2.5rem $spacing-0;
+}
+
+@mixin ontario-two-column-lists() {
+	column-count: 1;
+	display: block;
+
+	@media screen and (min-width: $small-breakpoint) {
+		column-count: 2;
+
+		li {
+			padding: $spacing-0;
+			margin: $spacing-0 $spacing-4 $spacing-4 $spacing-0;
+		}
+	}
+}
+
+// To be used for markdown
+.ontario-lists--two-column-list-md {
+	ul {
+		@include ontario-two-column-lists;
+	}
+}
+
+// To be used for general lists
+.ontario-lists--two-column-list {
+	@include ontario-two-column-lists;
+}

@@ -26,4 +26,8 @@ export interface Caption {
 	 * This is used for the validation warning message.
 	 */
 	componentTagName: string;
+
+	translations: any;
+
+	language: any;
 }

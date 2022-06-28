@@ -30,12 +30,16 @@ export class InputCaption implements Caption {
 	 */
 	componentTagName: string;
 
+	language: any = 'en';
+
+	translations: any;
+
 	/**
 	 * Set the class members
 	 * Output a console warning message if the provided `label` type is incorrect
 	 * @param caption object containing the essential data to configure the input label
 	 */
-	constructor(componentTagName: string, caption: InputCaption | string, isLegend: boolean = false) {
+	constructor(componentTagName: string, caption: InputCaption | string, translations: any, language: any, isLegend: boolean = false) {
 		let captionObject = new Object() as InputCaption;
 
 		if (caption) {
@@ -48,11 +52,13 @@ export class InputCaption implements Caption {
 
 		this.isRequired = captionObject?.isRequired ?? false;
 		this.isLegend = isLegend;
-		this.componentTagName = componentTagName.toLowerCase();
+		this.componentTagName = componentTagName.toLocaleLowerCase();
 		this.captionText = captionObject?.captionText ?? '';
 		this.captionType =
 			(captionObject && captionObject?.captionType && Object.values(CaptionType).find(type => type === captionObject?.captionType?.toLowerCase())) || CaptionType.Default;
 		this.validateCaption(captionObject);
+		this.translations = translations;
+		this.language = language;
 	}
 
 	/**
@@ -82,7 +88,7 @@ export class InputCaption implements Caption {
 	 * @returns `required` or `optional` flag text
 	 */
 	private getRequiredFlagText(): string {
-		return this.isRequired ? '(required)' : '(optional)';
+		return this.isRequired ? this.translations && `(${this.translations.required[this.language]})` : this.translations && `(${this.translations.optional[this.language]})`;
 	}
 
 	/**

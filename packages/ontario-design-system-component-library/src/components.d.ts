@@ -11,6 +11,11 @@ import { HintExpander } from "./components/ontario-hint-expander/hint-expander.i
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
 import { IconColour } from "./components/ontario-icon/icon.enum";
+import { DefaultOptions } from "./components/ontario-footer/footer-default-option-interface";
+import { ExpandedTwoColumnOptions } from "./components/ontario-footer/footer-expanded-two-column-option-interface";
+import { ExpandedThreeColumnOptions } from "./components/ontario-footer/footer-expanded-three-column-option-interface";
+import { headerTitle } from "./components/ontario-header/headerTitle.interface";
+import { languageToggleOptions } from "./components/ontario-header/languageToggleOptions.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
     interface MyComponent {
@@ -104,6 +109,49 @@ export namespace Components {
           * @example <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required is-empty-start-option="Please select" options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
          */
         "options": string | DropdownOption[];
+    }
+    interface OntarioFooter {
+        /**
+          * Stores the required links for all footers
+         */
+        "defaultOptions": DefaultOptions | string;
+        /**
+          * Stores the titles and content for the expanded three column footer
+         */
+        "expandedThreeColumnOptions"?: ExpandedThreeColumnOptions | string;
+        /**
+          * Stores the titles and content for the expanded two column footer
+         */
+        "expandedTwoColumnOptions"?: ExpandedTwoColumnOptions | string;
+        /**
+          * Stores the page's connection with Ontario for the partnership footer
+         */
+        "partnershipConnection"?: | 'Licensed by Government of Ontario'
+		| 'In partnership with Government of Ontario'
+		| 'Funded by Government of Ontario'
+		| 'Sponsored by Government of Ontario';
+        /**
+          * Type of footer to be rendered
+         */
+        "type": 'default' | 'partnership' | 'expandedTwoColumn' | 'expandedThreeColumn';
+    }
+    interface OntarioHeader {
+        /**
+          * The link that contains the french page
+         */
+        "languageToggleOptions": languageToggleOptions | string;
+        /**
+          * The items that will go inside the menu
+         */
+        "menuItems": headerTitle[] | string;
+        /**
+          * The title for the header
+         */
+        "titleHeader": headerTitle | string;
+        /**
+          * The type of header
+         */
+        "type"?: 'application' | 'ontario';
     }
     interface OntarioHintExpander {
         /**
@@ -296,10 +344,7 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconClose {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
+        "colour": 'black' | 'blue' | 'grey' | 'white';
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -412,10 +457,7 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconFacebook {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
+        "colour": "black" | "blue" | "grey" | "white";
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -492,10 +534,7 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconInstagram {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
+        "colour": "black" | "blue" | "grey" | "white";
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -678,10 +717,7 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconMenu {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
+        "colour": 'black' | 'blue' | 'grey' | 'white';
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1048,10 +1084,7 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconTwitter {
-        /**
-          * Set the icon's colour.
-         */
-        "colour": IconColour;
+        "colour": "black" | "blue" | "grey" | "white";
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1153,6 +1186,13 @@ export namespace Components {
          */
         "iconWidth": number;
     }
+    interface OntarioIconYoutube {
+        "colour": 'black' | 'blue' | 'grey' | 'white';
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": number;
+    }
     interface OntarioInput {
         /**
           * The text to display as the label
@@ -1171,6 +1211,10 @@ export namespace Components {
           * The width of the input field. If no value is assigned, it will present as the default input width.
          */
         "inputWidth": '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default';
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+         */
+        "language"?: string;
         /**
           * The name assigned to the input.The name value is used to reference form data after a form is submitted.
          */
@@ -1228,6 +1272,10 @@ export namespace Components {
          */
         "elementId"?: string;
         /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+         */
+        "language"?: string;
+        /**
           * The name assigned to the textarea. The name value is used to reference form data after a form is submitted.
          */
         "name": string;
@@ -1239,6 +1287,9 @@ export namespace Components {
           * The textarea content value.
          */
         "value"?: string;
+    }
+    interface TestLanguageToggle {
+        "language": string;
     }
 }
 declare global {
@@ -1265,6 +1316,18 @@ declare global {
     var HTMLOntarioDropdownListElement: {
         prototype: HTMLOntarioDropdownListElement;
         new (): HTMLOntarioDropdownListElement;
+    };
+    interface HTMLOntarioFooterElement extends Components.OntarioFooter, HTMLStencilElement {
+    }
+    var HTMLOntarioFooterElement: {
+        prototype: HTMLOntarioFooterElement;
+        new (): HTMLOntarioFooterElement;
+    };
+    interface HTMLOntarioHeaderElement extends Components.OntarioHeader, HTMLStencilElement {
+    }
+    var HTMLOntarioHeaderElement: {
+        prototype: HTMLOntarioHeaderElement;
+        new (): HTMLOntarioHeaderElement;
     };
     interface HTMLOntarioHintExpanderElement extends Components.OntarioHintExpander, HTMLStencilElement {
     }
@@ -1938,11 +2001,19 @@ declare global {
         prototype: HTMLOntarioTextareaElement;
         new (): HTMLOntarioTextareaElement;
     };
+    interface HTMLTestLanguageToggleElement extends Components.TestLanguageToggle, HTMLStencilElement {
+    }
+    var HTMLTestLanguageToggleElement: {
+        prototype: HTMLTestLanguageToggleElement;
+        new (): HTMLTestLanguageToggleElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "ontario-button": HTMLOntarioButtonElement;
         "ontario-checkboxes": HTMLOntarioCheckboxesElement;
         "ontario-dropdown-list": HTMLOntarioDropdownListElement;
+        "ontario-footer": HTMLOntarioFooterElement;
+        "ontario-header": HTMLOntarioHeaderElement;
         "ontario-hint-expander": HTMLOntarioHintExpanderElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
         "ontario-icon-accessibility": HTMLOntarioIconAccessibilityElement;
@@ -2055,6 +2126,7 @@ declare global {
         "ontario-input": HTMLOntarioInputElement;
         "ontario-radio-buttons": HTMLOntarioRadioButtonsElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
+        "test-language-toggle": HTMLTestLanguageToggleElement;
     }
 }
 declare namespace LocalJSX {
@@ -2153,6 +2225,49 @@ declare namespace LocalJSX {
           * @example <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required is-empty-start-option="Please select" options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
          */
         "options"?: string | DropdownOption[];
+    }
+    interface OntarioFooter {
+        /**
+          * Stores the required links for all footers
+         */
+        "defaultOptions"?: DefaultOptions | string;
+        /**
+          * Stores the titles and content for the expanded three column footer
+         */
+        "expandedThreeColumnOptions"?: ExpandedThreeColumnOptions | string;
+        /**
+          * Stores the titles and content for the expanded two column footer
+         */
+        "expandedTwoColumnOptions"?: ExpandedTwoColumnOptions | string;
+        /**
+          * Stores the page's connection with Ontario for the partnership footer
+         */
+        "partnershipConnection"?: | 'Licensed by Government of Ontario'
+		| 'In partnership with Government of Ontario'
+		| 'Funded by Government of Ontario'
+		| 'Sponsored by Government of Ontario';
+        /**
+          * Type of footer to be rendered
+         */
+        "type"?: 'default' | 'partnership' | 'expandedTwoColumn' | 'expandedThreeColumn';
+    }
+    interface OntarioHeader {
+        /**
+          * The link that contains the french page
+         */
+        "languageToggleOptions"?: languageToggleOptions | string;
+        /**
+          * The items that will go inside the menu
+         */
+        "menuItems"?: headerTitle[] | string;
+        /**
+          * The title for the header
+         */
+        "titleHeader"?: headerTitle | string;
+        /**
+          * The type of header
+         */
+        "type"?: 'application' | 'ontario';
     }
     interface OntarioHintExpander {
         /**
@@ -2349,10 +2464,7 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconClose {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
+        "colour"?: 'black' | 'blue' | 'grey' | 'white';
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2465,10 +2577,7 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconFacebook {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
+        "colour"?: "black" | "blue" | "grey" | "white";
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2545,10 +2654,7 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconInstagram {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
+        "colour"?: "black" | "blue" | "grey" | "white";
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2731,10 +2837,7 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconMenu {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
+        "colour"?: 'black' | 'blue' | 'grey' | 'white';
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3101,10 +3204,7 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconTwitter {
-        /**
-          * Set the icon's colour.
-         */
-        "colour"?: IconColour;
+        "colour"?: "black" | "blue" | "grey" | "white";
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3206,6 +3306,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: number;
     }
+    interface OntarioIconYoutube {
+        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: number;
+    }
     interface OntarioInput {
         /**
           * The text to display as the label
@@ -3224,6 +3331,10 @@ declare namespace LocalJSX {
           * The width of the input field. If no value is assigned, it will present as the default input width.
          */
         "inputWidth"?: '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default';
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+         */
+        "language"?: string;
         /**
           * The name assigned to the input.The name value is used to reference form data after a form is submitted.
          */
@@ -3293,6 +3404,10 @@ declare namespace LocalJSX {
          */
         "elementId"?: string;
         /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+         */
+        "language"?: string;
+        /**
           * The name assigned to the textarea. The name value is used to reference form data after a form is submitted.
          */
         "name"?: string;
@@ -3317,11 +3432,18 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface TestLanguageToggle {
+        "language"?: string;
+        "onHeaderLanguageToggled"?: (event: CustomEvent<string>) => void;
+        "onSetAppLanguage"?: (event: CustomEvent<string>) => void;
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
         "ontario-button": OntarioButton;
         "ontario-checkboxes": OntarioCheckboxes;
         "ontario-dropdown-list": OntarioDropdownList;
+        "ontario-footer": OntarioFooter;
+        "ontario-header": OntarioHeader;
         "ontario-hint-expander": OntarioHintExpander;
         "ontario-hint-text": OntarioHintText;
         "ontario-icon-accessibility": OntarioIconAccessibility;
@@ -3434,6 +3556,7 @@ declare namespace LocalJSX {
         "ontario-input": OntarioInput;
         "ontario-radio-buttons": OntarioRadioButtons;
         "ontario-textarea": OntarioTextarea;
+        "test-language-toggle": TestLanguageToggle;
     }
 }
 export { LocalJSX as JSX };
@@ -3444,6 +3567,8 @@ declare module "@stencil/core" {
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             "ontario-checkboxes": LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
             "ontario-dropdown-list": LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
+            "ontario-footer": LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;
+            "ontario-header": LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
             "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
             "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
             "ontario-icon-accessibility": LocalJSX.OntarioIconAccessibility & JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;
@@ -3556,6 +3681,7 @@ declare module "@stencil/core" {
             "ontario-input": LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
             "ontario-radio-buttons": LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
+            "test-language-toggle": LocalJSX.TestLanguageToggle & JSXBase.HTMLAttributes<HTMLTestLanguageToggleElement>;
         }
     }
 }
