@@ -10,12 +10,12 @@ import { InputCaption } from "./utils/input-caption/input-caption";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
-import { IconColour } from "./components/ontario-icon/icon.enum";
 import { DefaultOptions } from "./components/ontario-footer/footer-default-option-interface";
 import { ExpandedTwoColumnOptions } from "./components/ontario-footer/footer-expanded-two-column-option-interface";
 import { ExpandedThreeColumnOptions } from "./components/ontario-footer/footer-expanded-three-column-option-interface";
 import { headerTitle } from "./components/ontario-header/headerTitle.interface";
 import { languageToggleOptions } from "./components/ontario-header/languageToggleOptions.interface";
+import { IconColour } from "./components/ontario-icon/icon.enum";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
     interface MyComponent {
@@ -71,6 +71,10 @@ export namespace Components {
           * Define hint text on an element.
          */
         "hintText"?: string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+         */
+        "language"?: string;
         /**
           * The name for the checkboxes.
          */
@@ -344,7 +348,10 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconClose {
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        /**
+          * Set the icon's colour.
+         */
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -457,7 +464,10 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconFacebook {
-        "colour": "black" | "blue" | "grey" | "white";
+        /**
+          * Set the icon's colour.
+         */
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -534,7 +544,10 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconInstagram {
-        "colour": "black" | "blue" | "grey" | "white";
+        /**
+          * Set the icon's colour.
+         */
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -717,7 +730,10 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconMenu {
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        /**
+          * Set the icon's colour.
+         */
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1084,7 +1100,10 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconTwitter {
-        "colour": "black" | "blue" | "grey" | "white";
+        /**
+          * Set the icon's colour.
+         */
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1186,13 +1205,6 @@ export namespace Components {
          */
         "iconWidth": number;
     }
-    interface OntarioIconYoutube {
-        "colour": 'black' | 'blue' | 'grey' | 'white';
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
     interface OntarioInput {
         /**
           * The text to display as the label
@@ -1247,6 +1259,10 @@ export namespace Components {
           * Define hint text for Radio Button fieldset.
          */
         "hintText"?: string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+         */
+        "language"?: string;
         /**
           * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
          */
@@ -2184,6 +2200,10 @@ declare namespace LocalJSX {
          */
         "hintText"?: string;
         /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+         */
+        "language"?: string;
+        /**
           * The name for the checkboxes.
          */
         "name"?: string;
@@ -2464,7 +2484,10 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconClose {
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        /**
+          * Set the icon's colour.
+         */
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2577,7 +2600,10 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconFacebook {
-        "colour"?: "black" | "blue" | "grey" | "white";
+        /**
+          * Set the icon's colour.
+         */
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2654,7 +2680,10 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconInstagram {
-        "colour"?: "black" | "blue" | "grey" | "white";
+        /**
+          * Set the icon's colour.
+         */
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2837,7 +2866,10 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconMenu {
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        /**
+          * Set the icon's colour.
+         */
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3204,7 +3236,10 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconTwitter {
-        "colour"?: "black" | "blue" | "grey" | "white";
+        /**
+          * Set the icon's colour.
+         */
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3306,13 +3341,6 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: number;
     }
-    interface OntarioIconYoutube {
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
     interface OntarioInput {
         /**
           * The text to display as the label
@@ -3379,6 +3407,10 @@ declare namespace LocalJSX {
           * Define hint text for Radio Button fieldset.
          */
         "hintText"?: string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+         */
+        "language"?: string;
         /**
           * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
          */

@@ -5,6 +5,7 @@ import { InputCaption } from '../../utils/input-caption/input-caption';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 import { validateObjectExists, validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { default as translations } from '../../translations/global.i18n.json';
 
 @Component({
 	tag: 'ontario-radio-buttons',
@@ -30,6 +31,12 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * Instantiate an InputCaption object for internal logic use
 	 */
 	@State() private captionState: InputCaption;
+
+	/**
+	 * The language of the component.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+	 */
+	@Prop({ mutable: true }) language?: string = 'en';
 
 	/**
 	 * Grant access to the host element and related DOM methods/events within the class instance.
@@ -176,7 +183,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	}
 
 	componentWillLoad() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, true);
+		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, true);
 		this.parseOptions();
 		this.parseHintExpander();
 		this.validateName(this.name);
