@@ -73,6 +73,12 @@ export class OntarioTextarea implements Input {
 	 */
 	@State() private internalHintExpander: HintExpander;
 
+		/**
+	 * The language of the component.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+	 */
+		 @Prop({ mutable: true }) language?: string = 'en';
+
 	@Watch('hintExpander')
 	private parseHintExpander() {
 		const hintExpander = this.hintExpander;

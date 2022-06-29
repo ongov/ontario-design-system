@@ -14,6 +14,8 @@ import { ExpandedTwoColumnOptions } from "./components/ontario-footer/footer-exp
 import { ExpandedThreeColumnOptions } from "./components/ontario-footer/footer-expanded-three-column-option-interface";
 import { headerTitle } from "./components/ontario-header/headerTitle.interface";
 import { languageToggleOptions } from "./components/ontario-header/languageToggleOptions.interface";
+import { IconColour } from "./components/ontario-icon/icon.enum";
+import { InputCaption } from "./utils/input-caption/input-caption";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
     interface MyComponent {
@@ -346,7 +348,10 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconClose {
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        /**
+          * Set the icon's colour.
+         */
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -459,7 +464,10 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconFacebook {
-        "colour": "black" | "blue" | "grey" | "white";
+        /**
+          * Set the icon's colour.
+         */
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -536,7 +544,10 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconInstagram {
-        "colour": "black" | "blue" | "grey" | "white";
+        /**
+          * Set the icon's colour.
+         */
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -719,7 +730,10 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconMenu {
-        "colour": 'black' | 'blue' | 'grey' | 'white';
+        /**
+          * Set the icon's colour.
+         */
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1086,7 +1100,10 @@ export namespace Components {
         "iconWidth": number;
     }
     interface OntarioIconTwitter {
-        "colour": "black" | "blue" | "grey" | "white";
+        /**
+          * Set the icon's colour.
+         */
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1183,13 +1200,6 @@ export namespace Components {
           * Set the icon's colour.
          */
         "colour": IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth": number;
-    }
-    interface OntarioIconYoutube {
-        "colour": 'black' | 'blue' | 'grey' | 'white';
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2483,7 +2493,10 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconClose {
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        /**
+          * Set the icon's colour.
+         */
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2596,7 +2609,10 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconFacebook {
-        "colour"?: "black" | "blue" | "grey" | "white";
+        /**
+          * Set the icon's colour.
+         */
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2673,7 +2689,10 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconInstagram {
-        "colour"?: "black" | "blue" | "grey" | "white";
+        /**
+          * Set the icon's colour.
+         */
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -2856,7 +2875,10 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconMenu {
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
+        /**
+          * Set the icon's colour.
+         */
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3223,7 +3245,10 @@ declare namespace LocalJSX {
         "iconWidth"?: number;
     }
     interface OntarioIconTwitter {
-        "colour"?: "black" | "blue" | "grey" | "white";
+        /**
+          * Set the icon's colour.
+         */
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3320,13 +3345,6 @@ declare namespace LocalJSX {
           * Set the icon's colour.
          */
         "colour"?: IconColour;
-        /**
-          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
-         */
-        "iconWidth"?: number;
-    }
-    interface OntarioIconYoutube {
-        "colour"?: 'black' | 'blue' | 'grey' | 'white';
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
