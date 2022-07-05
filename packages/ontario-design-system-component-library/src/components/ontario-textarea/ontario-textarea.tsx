@@ -22,7 +22,7 @@ export class OntarioTextarea implements Input {
 	 * @example
 	 * <ontario-input
 	 *   caption='{
-	 *     "caption": "Address",
+	 *     "captionText": "Address",
 	 *     "captionType": "heading",
 	 *     "isRequired": true}'
 	 *   ...>

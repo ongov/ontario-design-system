@@ -1,9 +1,11 @@
-import { Component, h, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Watch, Element } from '@stencil/core';
 import { RadioButtons } from './radio-buttons.interface';
 import { RadioOption } from './radio-option.interface';
+import { InputCaption } from '../../utils/input-caption/input-caption';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 import { validateObjectExists, validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { default as translations } from '../../translations/global.i18n.json';
 
 @Component({
 	tag: 'ontario-radio-buttons',
@@ -12,15 +14,40 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 })
 export class OntarioRadioButtons implements RadioButtons {
 	/**
+	 * The text to display as the label
+	 *
+	 * @example
+	 * <ontario-radio-buttons
+	 *   caption='{
+	 *     "captionText": "Address",
+	 *     "captionType": "heading",
+	 *     "isRequired": true}'
+	 *   ...>
+	 * </ontario-radio-buttons>
+	 */
+	@Prop() caption: InputCaption | string;
+
+	/**
+	 * Instantiate an InputCaption object for internal logic use
+	 */
+	@State() private captionState: InputCaption;
+
+	/**
+	 * The language of the component.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+	 */
+	@Prop({ mutable: true }) language?: string = 'en';
+
+	/**
+	 * Grant access to the host element and related DOM methods/events within the class instance.
+	 */
+	@Element() element: HTMLElement;
+
+	/**
 	 * The name assigned to the radio button.
 	 * The name value is used to reference form data after a form is submitted.
 	 */
 	@Prop() name: string;
-
-	/**
-	 * The legend for the Radio Buttons.
-	 */
-	@Prop() legend: string;
 
 	/**
 	 * Define hint text for Radio Button fieldset.
@@ -33,7 +60,10 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *
 	 * @example
 	 * <ontario-radio-buttons
-	 *   legend="This is a question?"
+	 *   caption='{
+	 *     "captionText": "Address",
+	 *     "captionType": "heading",
+	 *     "isRequired": true}'
 	 * 	 name: "Radio"
 	 *   options='[
 	 * 	   {
@@ -78,7 +108,10 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *
 	 * @example
 	 * <ontario-radio-buttons
-	 *   legend="This is a question?"
+	 *   caption='{
+	 *     "captionText": "Address",
+	 *     "captionType": "heading",
+	 *     "isRequired": true}'
 	 *   hint-text="This is the hint text"
 	 *   options='[
 	 *     {
@@ -108,7 +141,7 @@ export class OntarioRadioButtons implements RadioButtons {
 
 	@Watch('options')
 	parseOptions() {
-		if (typeof (this.options) !== 'undefined') {
+		if (typeof this.options !== 'undefined') {
 			if (!Array.isArray(this.options)) {
 				this.internalOptions = JSON.parse(this.options);
 			} else {
@@ -117,78 +150,43 @@ export class OntarioRadioButtons implements RadioButtons {
 		}
 	}
 
-	/**
-	 * Determine whether the input field is required.
-	 * If required, it should be set to true.
-	 * This can be done by passing in `is-required` to the component.
-	 *
-	 * @example
-	 * <ontario-radio-buttons ... is-required></ontario-radio-buttons>
+	/*
+	 * Watch for changes in the `name` prop for validation purpose
+	 * Validate the name and make sure the name has a value.
+	 * Log warning if user doesn't input a value for the name.
 	 */
-	@Prop() isRequired?: boolean = false;
+	@Watch('name')
+	validateName(newValue: string) {
+		if (validatePropExists(newValue)) {
+			const message = new ConsoleMessageClass();
+			message.addDesignSystemTag().addMonospaceText(' name ').addRegularText('for').addMonospaceText(' <ontario-radio-buttons> ').addRegularText('was not provided').printMessage();
+		}
+	}
 
 	/*
-	  * Watch for changes in the `legend` prop for validation purpose
-    * Validate the legend make sure the legend has a value.
-    * Log warning if user doesn't input a value for the legend.
-    */
-  @Watch('legend')
-  validateLegend(newValue: string) {
-    if (validatePropExists(newValue)) {
-      const message = new ConsoleMessageClass();
-        message
-          .addDesignSystemTag()
-          .addMonospaceText(' legend ')
-          .addRegularText('for')
-          .addMonospaceText(' <ontario-radio-buttons> ')
-          .addRegularText('was not provided')
-          .printMessage();
-    }
-  }
-
-  /*
-    * Watch for changes in the `name` prop for validation purpose
-    * Validate the name and make sure the name has a value.
-    * Log warning if user doesn't input a value for the name.
-    */
-  @Watch('name')
-  validateName(newValue: string) {
-    if (validatePropExists(newValue)) {
-      const message = new ConsoleMessageClass();
-        message
-          .addDesignSystemTag()
-          .addMonospaceText(' name ')
-          .addRegularText('for')
-          .addMonospaceText(' <ontario-radio-buttons> ')
-          .addRegularText('was not provided')
-          .printMessage();
-    }
-  }
-
-  /*
-    * Watch for changes in the `options` prop for validation purpose
-    * Validate the options and make sure the options has a value.
-    * Log warning if user doesn't input a value for the options.
-    */
-  @Watch('options')
-  validateOptions(newValue: object) {
-    if (validateObjectExists(newValue)) {
-      const message = new ConsoleMessageClass();
-        message
-          .addDesignSystemTag()
-          .addMonospaceText(' options ')
-          .addRegularText('for')
-          .addMonospaceText(' <ontario-radio-buttons> ')
-          .addRegularText('was not provided')
-          .printMessage();
-    }
-  }
+	 * Watch for changes in the `options` prop for validation purpose
+	 * Validate the options and make sure the options has a value.
+	 * Log warning if user doesn't input a value for the options.
+	 */
+	@Watch('options')
+	validateOptions(newValue: object) {
+		if (validateObjectExists(newValue)) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' options ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-radio-buttons> ')
+				.addRegularText('was not provided')
+				.printMessage();
+		}
+	}
 
 	componentWillLoad() {
+		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, true);
 		this.parseOptions();
 		this.parseHintExpander();
 		this.validateName(this.name);
-		this.validateLegend(this.legend);
 		this.validateOptions(this.internalOptions);
 	}
 
@@ -196,46 +194,30 @@ export class OntarioRadioButtons implements RadioButtons {
 		return (
 			<div class="ontario-form-group">
 				<fieldset class="ontario-fieldset">
-					<legend class="ontario-fieldset__legend">
-						{this.legend}
-						<span class="ontario-label__flag">
-							{this.isRequired ? "(required)" : "(optional)"}
-						</span>
-					</legend>
-
-					{this.hintText && (
-						<ontario-hint-text hint={this.hintText}></ontario-hint-text>
-					)}
+					{this.captionState.getCaption()}
+					{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
 					<div class="ontario-radios">
-						{this.internalOptions?.map((radioOption) =>
+						{this.internalOptions?.map(radioOption => (
 							<div class="ontario-radios__item">
-								<input
-									class="ontario-radios__input"
-									id={radioOption.elementId}
-									name={this.name}
-									type="radio"
-									value={radioOption.value}
-								/>
+								<input class="ontario-radios__input" id={radioOption.elementId} name={this.name} type="radio" value={radioOption.value} required={this.captionState.isRequired} />
 								<label class="ontario-radios__label" htmlFor={radioOption.elementId}>
 									{radioOption.label}
 								</label>
 
 								<div class="ontario-radios__hint-expander">
-									{radioOption.hintExpander && <ontario-hint-expander hint={radioOption.hintExpander.hint} content={radioOption.hintExpander.content} input-exists></ontario-hint-expander>}
+									{radioOption.hintExpander && (
+										<ontario-hint-expander hint={radioOption.hintExpander.hint} content={radioOption.hintExpander.content} input-exists></ontario-hint-expander>
+									)}
 								</div>
 							</div>
-						)}
+						))}
 
 						{this.internalHintExpander && (
-							<ontario-hint-expander
-								hint={this.internalHintExpander.hint}
-								content={this.internalHintExpander.content}
-								input-exists
-							></ontario-hint-expander>
+							<ontario-hint-expander hint={this.internalHintExpander.hint} content={this.internalHintExpander.content} input-exists></ontario-hint-expander>
 						)}
 					</div>
 				</fieldset>
 			</div>
-		)
+		);
 	}
 }

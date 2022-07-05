@@ -1,9 +1,7 @@
 import { h } from '@stencil/core';
 import { CaptionType, MessageContentType } from './input-caption.enum';
 import { Caption } from './caption.interface';
-import { ConsoleMessage } from '../console-message/console-message.interface';
-import { ConsoleType, MessageStyle } from '../../utils/console-message/console-message.enum';
-import { printConsoleMessage } from '../../utils/console-message/console-message';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 export class InputCaption implements Caption {
 	/**
@@ -41,7 +39,7 @@ export class InputCaption implements Caption {
 	 * Output a console warning message if the provided `label` type is incorrect
 	 * @param caption object containing the essential data to configure the input label
 	 */
-	constructor(componentTagName: string, caption: InputCaption | string, translations: any, language: any) {
+	constructor(componentTagName: string, caption: InputCaption | string, translations: any, language: any, isLegend: boolean = false) {
 		let captionObject = new Object() as InputCaption;
 
 		if (caption) {
@@ -53,7 +51,7 @@ export class InputCaption implements Caption {
 		}
 
 		this.isRequired = captionObject?.isRequired ?? false;
-		this.isLegend = captionObject?.isLegend ?? false;
+		this.isLegend = isLegend;
 		this.componentTagName = componentTagName.toLocaleLowerCase();
 		this.captionText = captionObject?.captionText ?? '';
 		this.captionType =
@@ -71,7 +69,7 @@ export class InputCaption implements Caption {
 	getCaption = (captionFor?: string): HTMLElement => {
 		const captionContent = this.isLegend ? (
 			<legend class={this.getClass()}>
-				{this.captionText}
+				{this.captionType === CaptionType.Heading ? <h1>{this.captionText}</h1> : this.captionText}
 				{this.getRequiredFlagElement()}
 			</legend>
 		) : (
@@ -82,7 +80,7 @@ export class InputCaption implements Caption {
 		);
 
 		// with `this.captionType` already set to one of the enum values, the comparison no longer needs the `toLowerCase()` transform
-		return this.captionType === CaptionType.Heading ? <h1>{captionContent}</h1> : captionContent;
+		return this.captionType === CaptionType.Heading && !this.isLegend ? <h1>{captionContent}</h1> : captionContent;
 	};
 
 	/**
@@ -106,7 +104,7 @@ export class InputCaption implements Caption {
 	 * @returns CSS class for the `label` element.
 	 */
 	private getClass(): string {
-		return this.captionType === CaptionType.Large || this.captionType === CaptionType.Heading ? `ontario-label ontario-label--${this.captionType}` : `ontario-label`;
+		return this.captionType === CaptionType.Large || this.captionType === CaptionType.Heading ? (this.isLegend ? `ontario-fieldset__legend ontario-fieldset__legend--${this.captionType}` : `ontario-label ontario-label--${this.captionType}`) : (this.isLegend ? "ontario-fieldset__legend" : "ontario-label");
 	}
 
 	/**
@@ -118,29 +116,44 @@ export class InputCaption implements Caption {
 	 * 5. the `captionType` property of the `caption` object is incorrect
 	 */
 	private validateCaption(caption?: InputCaption) {
+		let messageType;
+
 		// undefined `caption` object
 		if (!caption || Object.keys(caption).length <= 0) {
-			printConsoleMessage(this.getWarningMessage(MessageContentType.UndefinedCaptionObject, this.componentTagName), ConsoleType.Warning);
+			messageType = MessageContentType.UndefinedCaptionObject;
 		} else {
 			// undefined `captionText` property
 			if (!caption.captionText) {
-				printConsoleMessage(this.getWarningMessage(MessageContentType.UndefinedCaptionText, this.componentTagName, this.getRequiredFlagText()), ConsoleType.Warning);
+				messageType = MessageContentType.UndefinedCaptionText;
 			} else {
 				// `captionText` that is empty or contains only spaces
 				if (/^\s*$/.test(caption.captionText)) {
-					printConsoleMessage(this.getWarningMessage(MessageContentType.EmptyCaptionText, this.componentTagName, this.getRequiredFlagText()), ConsoleType.Warning);
+					messageType = MessageContentType.EmptyCaptionText;
 				}
 			}
 
 			// undefined `captionType`
 			if (!caption.captionType) {
-				printConsoleMessage(this.getWarningMessage(MessageContentType.UndefinedCaptionType, this.componentTagName), ConsoleType.Warning);
+				messageType = MessageContentType.UndefinedCaptionType;
 			} else {
 				// incorrect `captionType`
 				if (!Object.values(CaptionType).includes(caption?.captionType?.toLowerCase() as CaptionType)) {
-					printConsoleMessage(this.getWarningMessage(MessageContentType.IncorrectCaptionType, this.componentTagName), ConsoleType.Warning);
+					messageType = MessageContentType.IncorrectCaptionType;
 				}
 			}
+		}
+
+		if (messageType) {
+			const message = new ConsoleMessageClass().addDesignSystemTag();
+			
+			if (messageType !== MessageContentType.UndefinedCaptionObject) {
+				message
+				.addMonospaceText(` ${messageType === MessageContentType.EmptyCaptionText || messageType === MessageContentType.UndefinedCaptionText ? 'captionText' : 'captionType'} `)
+				.addRegularText('property of');
+			}
+
+			message.addMonospaceText(' caption ').addRegularText('object on').addMonospaceText(` ${this.componentTagName} `);
+			this.printConsoleMessage(messageType, message, this.getRequiredFlagText());
 		}
 	}
 
@@ -151,36 +164,7 @@ export class InputCaption implements Caption {
 	 * @param requiredFlagText accepts a string value to be used as the required flag text and defaults to `(optional)` if not set
 	 * @returns an array of `ConsoleMessage` objects containing the message and associated styles to be printed to the console
 	 */
-	private getWarningMessage(messageType: MessageContentType, componentTagName: string, requiredFlagText: string = '(optional)'): ConsoleMessage[] {
-		let message: ConsoleMessage[] = [
-			{
-				message: ' caption ',
-				style: MessageStyle.Code,
-			},
-			{
-				message: 'object on',
-				style: MessageStyle.Regular,
-			},
-			{
-				message: ` <${componentTagName}> `,
-				style: MessageStyle.Code,
-			},
-		];
-
-		if (messageType !== MessageContentType.UndefinedCaptionObject) {
-			const problematicProperty: ConsoleMessage[] = [
-				{
-					message: ` ${messageType === MessageContentType.EmptyCaptionText || messageType === MessageContentType.UndefinedCaptionText ? 'captionText' : 'captionType'} `,
-					style: MessageStyle.Code,
-				},
-				{
-					message: 'property of',
-					style: MessageStyle.Regular,
-				},
-			];
-			message = [...problematicProperty, ...message];
-		}
-
+	private printConsoleMessage(messageType: MessageContentType, message: ConsoleMessageClass, requiredFlagText: string = '(optional)') {
 		switch (messageType) {
 			// undefinedCaptionObject example: caption object on <ontario-input> is required but not defined. A blank followed by a (optional) flag is assumed.
 			// undefinedCaptionText example: captionText property of caption object on <ontario-input> is required but not defined. A blank followed by a (optional) flag is assumed.
@@ -188,78 +172,30 @@ export class InputCaption implements Caption {
 			case MessageContentType.UndefinedCaptionObject:
 			case MessageContentType.UndefinedCaptionText:
 			case MessageContentType.EmptyCaptionText:
-				let undefinedMessage: ConsoleMessage[] = [
-					{
-						message: `${messageType === MessageContentType.EmptyCaptionText ? 'is empty or contains only spaces' : 'is required but not defined'}. A blank followed by a`,
-						style: MessageStyle.Regular,
-					},
-					{
-						message: ` ${requiredFlagText} `,
-						style: MessageStyle.Code,
-					},
-					{
-						message: 'flag is assumed.',
-						style: MessageStyle.Regular,
-					},
-				];
-				message = [...message, ...undefinedMessage];
+				message
+					.addRegularText(`${messageType === MessageContentType.EmptyCaptionText ? 'is empty or contains only spaces' : 'is required but not defined'}. A blank followed by a`)
+					.addMonospaceText(` ${requiredFlagText} `)
+					.addRegularText('flag is assumed.');
 				break;
 
 			// UndefinedCaptionType example: captionType property of caption object on <ontario-input> is not defined. The default type is assumed.
 			case MessageContentType.UndefinedCaptionType:
-				let undefinedTypeMessage: ConsoleMessage[] = [
-					{
-						message: 'is not defined. The',
-						style: MessageStyle.Regular,
-					},
-					{
-						message: ` default `,
-						style: MessageStyle.Code,
-					},
-					{
-						message: 'type is assumed.',
-						style: MessageStyle.Regular,
-					},
-				];
-				message = [...message, ...undefinedTypeMessage];
+				message.addRegularText('is not defined. The').addMonospaceText(' default ').addRegularText('type is assumed.');
 				break;
 
 			// IncorrectCaptionType example: captionType property of caption object on <ontario-input> was set to an incorrect type; only default, heading or large type is allowed. The default type is assumed.
 			case MessageContentType.IncorrectCaptionType:
-				let incorrectTypeMessage: ConsoleMessage[] = [
-					{
-						message: `was set to an incorrect type; only`,
-						style: MessageStyle.Regular,
-					},
-					{
-						message: ' default, heading, ',
-						style: MessageStyle.Code,
-					},
-					{
-						message: 'or',
-						style: MessageStyle.Regular,
-					},
-					{
-						message: ' large ',
-						style: MessageStyle.Code,
-					},
-					{
-						message: 'type is allowed. The',
-						style: MessageStyle.Regular,
-					},
-					{
-						message: ' default ',
-						style: MessageStyle.Code,
-					},
-					{
-						message: 'type is assumed.',
-						style: MessageStyle.Regular,
-					},
-				];
-				message = [...message, ...incorrectTypeMessage];
+				message
+					.addRegularText('was set to an incorrect type; only')
+					.addMonospaceText(' default, heading, ')
+					.addRegularText('or')
+					.addMonospaceText(' large ')
+					.addRegularText('type is allowed. The')
+					.addMonospaceText(' default ')
+					.addRegularText('type is assumed.');
 				break;
 		}
 
-		return message;
+		message.printMessage();
 	}
 }

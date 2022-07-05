@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.enum";
+import { InputCaption } from "./utils/input-caption/input-caption";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
@@ -15,7 +16,6 @@ import { ExpandedThreeColumnOptions } from "./components/ontario-footer/footer-e
 import { headerTitle } from "./components/ontario-header/headerTitle.interface";
 import { languageToggleOptions } from "./components/ontario-header/languageToggleOptions.interface";
 import { IconColour } from "./components/ontario-icon/icon.enum";
-import { InputCaption } from "./utils/input-caption/input-caption";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
     interface MyComponent {
@@ -58,8 +58,13 @@ export namespace Components {
     }
     interface OntarioCheckboxes {
         /**
+          * The text to display as the label
+          * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-checkboxes>
+         */
+        "caption": InputCaption | string;
+        /**
           * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
-          * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkboxes"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content"  }'  > </ontario-checkboxes>
+          * @example <ontario-checkboxes   caption='{    "captionText": "Address",    "captionType": "heading",    "isRequired": true}'   name='ontario-checkboxes'   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content"  }' > </ontario-checkboxes>
          */
         "hintExpander"?: HintExpander | string;
         /**
@@ -67,21 +72,16 @@ export namespace Components {
          */
         "hintText"?: string;
         /**
-          * Determine whether the input field is required. If required, it should be set to true.
-          * @example <ontario-checkboxes ... is-required></ontario-checkboxes>
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "isRequired"?: boolean;
-        /**
-          * The legend for the checkboxes
-         */
-        "legend": string;
+        "language"?: string;
         /**
           * The name for the checkboxes.
          */
         "name": string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
-          * @example <ontario-checkboxes   legend="This is a question?"   name= "ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-checkboxes>
+          * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   name="ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-checkboxes>
          */
         "options": CheckboxOption[] | string;
     }
@@ -1208,7 +1208,7 @@ export namespace Components {
     interface OntarioInput {
         /**
           * The text to display as the label
-          * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-input>
+          * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-input>
          */
         "caption": InputCaption | string;
         /**
@@ -1250,8 +1250,13 @@ export namespace Components {
     }
     interface OntarioRadioButtons {
         /**
+          * The text to display as the label
+          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-radio-buttons>
+         */
+        "caption": InputCaption | string;
+        /**
           * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
-          * @example <ontario-radio-buttons   legend="This is a question?" 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }' > </ontario-radio-buttons>
+          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}' 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }' > </ontario-radio-buttons>
          */
         "hintExpander"?: HintExpander | string;
         /**
@@ -1259,28 +1264,23 @@ export namespace Components {
          */
         "hintText"?: string;
         /**
-          * Determine whether the input field is required. If required, it should be set to true. This can be done by passing in `is-required` to the component.
-          * @example <ontario-radio-buttons ... is-required></ontario-radio-buttons>
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "isRequired"?: boolean;
-        /**
-          * The legend for the Radio Buttons.
-         */
-        "legend": string;
+        "language"?: string;
         /**
           * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
          */
         "name": string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
-          * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-radio-buttons>
+          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-radio-buttons>
          */
         "options": string | RadioOption[];
     }
     interface OntarioTextarea {
         /**
           * The text to display as the label
-          * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-input>
+          * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-input>
          */
         "caption": InputCaption | string;
         /**
@@ -2195,8 +2195,13 @@ declare namespace LocalJSX {
     }
     interface OntarioCheckboxes {
         /**
+          * The text to display as the label
+          * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-checkboxes>
+         */
+        "caption"?: InputCaption | string;
+        /**
           * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
-          * @example <ontario-checkboxes   legend="This is a question?"   name="ontario-checkboxes"   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content"  }'  > </ontario-checkboxes>
+          * @example <ontario-checkboxes   caption='{    "captionText": "Address",    "captionType": "heading",    "isRequired": true}'   name='ontario-checkboxes'   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content"  }' > </ontario-checkboxes>
          */
         "hintExpander"?: HintExpander | string;
         /**
@@ -2204,14 +2209,9 @@ declare namespace LocalJSX {
          */
         "hintText"?: string;
         /**
-          * Determine whether the input field is required. If required, it should be set to true.
-          * @example <ontario-checkboxes ... is-required></ontario-checkboxes>
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "isRequired"?: boolean;
-        /**
-          * The legend for the checkboxes
-         */
-        "legend"?: string;
+        "language"?: string;
         /**
           * The name for the checkboxes.
          */
@@ -2222,7 +2222,7 @@ declare namespace LocalJSX {
         "onChangeEvent"?: (event: CustomEvent<any>) => void;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
-          * @example <ontario-checkboxes   legend="This is a question?"   name= "ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-checkboxes>
+          * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   name="ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-checkboxes>
          */
         "options"?: CheckboxOption[] | string;
     }
@@ -3353,7 +3353,7 @@ declare namespace LocalJSX {
     interface OntarioInput {
         /**
           * The text to display as the label
-          * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-input>
+          * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-input>
          */
         "caption"?: InputCaption | string;
         /**
@@ -3407,8 +3407,13 @@ declare namespace LocalJSX {
     }
     interface OntarioRadioButtons {
         /**
+          * The text to display as the label
+          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-radio-buttons>
+         */
+        "caption"?: InputCaption | string;
+        /**
           * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
-          * @example <ontario-radio-buttons   legend="This is a question?" 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }' > </ontario-radio-buttons>
+          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}' 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }' > </ontario-radio-buttons>
          */
         "hintExpander"?: HintExpander | string;
         /**
@@ -3416,28 +3421,23 @@ declare namespace LocalJSX {
          */
         "hintText"?: string;
         /**
-          * Determine whether the input field is required. If required, it should be set to true. This can be done by passing in `is-required` to the component.
-          * @example <ontario-radio-buttons ... is-required></ontario-radio-buttons>
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "isRequired"?: boolean;
-        /**
-          * The legend for the Radio Buttons.
-         */
-        "legend"?: string;
+        "language"?: string;
         /**
           * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
          */
         "name"?: string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
-          * @example <ontario-radio-buttons   legend="This is a question?"   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-radio-buttons>
+          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]' > </ontario-radio-buttons>
          */
         "options"?: string | RadioOption[];
     }
     interface OntarioTextarea {
         /**
           * The text to display as the label
-          * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-input>
+          * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-input>
          */
         "caption"?: InputCaption | string;
         /**
