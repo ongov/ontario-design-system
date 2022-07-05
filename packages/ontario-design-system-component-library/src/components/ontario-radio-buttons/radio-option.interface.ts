@@ -29,7 +29,10 @@ export interface RadioOption {
    *
    * @example
    * <ontario-radio-buttons
-   *   legend="This is a question?"
+   *   caption='{
+	 *     "captionText": "Address",
+	 *     "captionType": "heading",
+	 *     "isRequired": true}'
    *   hint-text="This is the hint text"
    *   options='[{
    *     "name": "Radio",
