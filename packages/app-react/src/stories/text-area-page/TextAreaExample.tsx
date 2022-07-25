@@ -5,9 +5,9 @@ import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-
 
 export default function TextAreaExample() {
 	const codeExample = `import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioTextarea
-	label-caption="Text area caption"
-	label-for="this is a lable for"
-	label-type="default"
+	labelCaption="Text area caption"
+	labelFor="this is a lable for"
+	labelType="default"
 	describedBy="described by"
 	elementId="id"
 	name="name"
@@ -27,9 +27,9 @@ export default function TextAreaExample() {
 					</ul>
 					<div className="preview-container">
 						<OntarioTextarea
-							label-caption="Text area caption"
-							label-for="this is a lable for"
-							label-type="default"
+							labelCaption="Text area caption"
+							labelFor="this is a lable for"
+							labelType="default"
 							describedBy="described by"
 							elementId="id"
 							name="name"
