@@ -60,6 +60,7 @@ Example of a checkbox component with multiple options, a hint text for the entir
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property       | Attribute       | Description                                                                                                                                                                                                                                                                                                                                                                                        | Type                                  | Default     |
@@ -71,11 +72,13 @@ Example of a checkbox component with multiple options, a hint text for the entir
 | `name`         | `name`          | The name for the checkboxes.                                                                                                                                                                                                                                                                                                                                                                       | `string`                              | `undefined` |
 | `options`      | `options`       | Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset. | `CheckboxOption[] \| string`          | `undefined` |
 
+
 ## Events
 
 | Event         | Description                                          | Type               |
 | ------------- | ---------------------------------------------------- | ------------------ |
 | `changeEvent` | Emitted when a keyboard input or mouse event occurs. | `CustomEvent<any>` |
+
 
 ## Dependencies
 
@@ -85,7 +88,6 @@ Example of a checkbox component with multiple options, a hint text for the entir
 - [ontario-hint-expander](../ontario-hint-expander)
 
 ### Graph
-
 ```mermaid
 graph TD;
   ontario-checkboxes --> ontario-hint-text
@@ -95,6 +97,6 @@ graph TD;
   style ontario-checkboxes fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

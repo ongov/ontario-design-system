@@ -96,6 +96,8 @@ export class OntarioButton implements Button {
 		const isButtonType = (maybeType: unknown): maybeType is ButtonType => ButtonTypes.includes(maybeType as ButtonType);
 		if (isButtonType(this.type) == false) {
 			this.typeState = this.warnDefaultType();
+		} else {
+			this.typeState = this.type;
 		}
 	}
 
@@ -124,33 +126,35 @@ export class OntarioButton implements Button {
 	 * If the user input doesn't match one of the enum values then `htmlType` will be set to its default (`button`).
 	 * If a match is found in one of the enum values then `htmlType` will be set to the matching enum value.
 	 */
-	  @Watch('htmlType')
-		validateHtmlType() {
-			const isHtmlType = (maybeHtmlType: unknown): maybeHtmlType is HtmlType => HtmlTypes.includes(maybeHtmlType as HtmlType);
-			if (isHtmlType(this.type) == false) {
-				this.htmlTypeState = this.warnDefaultHtmlType();
-			}
+	@Watch('htmlType')
+	validateHtmlType() {
+		const isHtmlType = (maybeHtmlType: unknown): maybeHtmlType is HtmlType => HtmlTypes.includes(maybeHtmlType as HtmlType);
+		if (isHtmlType(this.type) == false) {
+			this.htmlTypeState = this.warnDefaultHtmlType();
+		} else {
+			this.htmlTypeState = this.htmlType;
 		}
+	}
 
 	/**
-		* Print the invalid htmlType warning message
-		* @returns default htmlType (button)
-		*/
+	 * Print the invalid htmlType warning message
+	 * @returns default htmlType (button)
+	 */
 	private warnDefaultHtmlType() {
-	  const message = new ConsoleMessageClass();
-	 	message
-	 		.addDesignSystemTag()
-	 		.addMonospaceText(' htmlType ')
-	 		.addRegularText('on')
-	 		.addMonospaceText(' <ontario-button> ')
-	 		.addRegularText('was set to an invalid htmlType; only')
-	 		.addMonospaceText(' button, reset, or submit ')
-	 		.addRegularText('are supported. The default type')
-	 		.addMonospaceText(' button ')
-	 		.addRegularText('is assumed.')
-	 		.printMessage();
-	 	return 'button';
-	 }
+	const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addMonospaceText(' htmlType ')
+			.addRegularText('on')
+			.addMonospaceText(' <ontario-button> ')
+			.addRegularText('was set to an invalid htmlType; only')
+			.addMonospaceText(' button, reset, or submit ')
+			.addRegularText('are supported. The default type')
+			.addMonospaceText(' button ')
+			.addRegularText('is assumed.')
+			.printMessage();
+		return 'button';
+	}
 
 	/**
 	 * @returns the classes of the button based of the button's `type`.

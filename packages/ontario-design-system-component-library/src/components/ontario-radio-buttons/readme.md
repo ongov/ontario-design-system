@@ -89,6 +89,7 @@ Example of a radio button component with multiple options, a hint text for the e
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property       | Attribute       | Description                                                                                                                                                                                                                                                                                                                                                                                                  | Type                                  | Default     |
@@ -100,6 +101,7 @@ Example of a radio button component with multiple options, a hint text for the e
 | `name`         | `name`          | The name assigned to the radio button. The name value is used to reference form data after a form is submitted.                                                                                                                                                                                                                                                                                              | `string`                              | `undefined` |
 | `options`      | `options`       | Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset. | `RadioOption[] \| string`             | `undefined` |
 
+
 ## Dependencies
 
 ### Depends on
@@ -108,7 +110,6 @@ Example of a radio button component with multiple options, a hint text for the e
 - [ontario-hint-expander](../ontario-hint-expander)
 
 ### Graph
-
 ```mermaid
 graph TD;
   ontario-radio-buttons --> ontario-hint-text
@@ -118,6 +119,6 @@ graph TD;
   style ontario-radio-buttons fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*
