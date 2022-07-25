@@ -1,10 +1,10 @@
 import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
 import { Button } from './button.interface';
-import { ButtonType, HtmlType } from './ontario-button.enum';
-import { validatePropExists, validateValueAgainstEnum } from '../../utils/validation/validation-functions';
+import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { ButtonType, ButtonTypes, HtmlType, HtmlTypes } from './ontario-button.types';
 
-
+const ButtonType = ['primary', 'seondary', 'tertiary'] as const;
 @Component({
 	tag: 'ontario-button',
 	styleUrl: 'ontario-button.scss',
@@ -16,7 +16,7 @@ export class OntarioButton implements Button {
 	/**
 	 * The type of button to render.
 	 */
-	@Prop() type: ButtonType;
+	@Prop() type: ButtonType = 'secondary';
 
 	/**
 	 * Mutable variable, for internal use only.
@@ -27,7 +27,7 @@ export class OntarioButton implements Button {
 	/**
 	 * The native HTML button type the button should use.
 	 */
-	@Prop() htmlType: HtmlType;
+	@Prop() htmlType: HtmlType = 'button';
 
 	/**
 	 * Mutable variable, for internal use only.
@@ -70,7 +70,6 @@ export class OntarioButton implements Button {
 	 */
 	@Prop({ mutable: true }) elementId?: string;
 
-
 	/**
 	 * Print the label warning message
 	 */
@@ -94,7 +93,10 @@ export class OntarioButton implements Button {
 	 */
 	@Watch('type')
 	validateType() {
-			this.typeState = (this.type && validateValueAgainstEnum(this.type, ButtonType)) || this.warnDefaultType();
+		const isButtonType = (maybeType: unknown): maybeType is ButtonType => ButtonTypes.includes(maybeType as ButtonType);
+		if (isButtonType(this.type) == false) {
+			this.typeState = this.warnDefaultType();
+		}
 	}
 
 	/**
@@ -114,7 +116,7 @@ export class OntarioButton implements Button {
 			.addMonospaceText(' secondary ')
 			.addRegularText('is assumed.')
 			.printMessage();
-		return ButtonType.Secondary;
+		return 'secondary';
 	}
 
 	/**
@@ -122,30 +124,33 @@ export class OntarioButton implements Button {
 	 * If the user input doesn't match one of the enum values then `htmlType` will be set to its default (`button`).
 	 * If a match is found in one of the enum values then `htmlType` will be set to the matching enum value.
 	 */
-	@Watch('htmlType')
-	validateHtmlType() {
-		this.htmlTypeState = (this.htmlType && validateValueAgainstEnum(this.htmlType, HtmlType)) || this.warnDefaultHtmlType();
-	}
+	  @Watch('htmlType')
+		validateHtmlType() {
+			const isHtmlType = (maybeHtmlType: unknown): maybeHtmlType is HtmlType => HtmlTypes.includes(maybeHtmlType as HtmlType);
+			if (isHtmlType(this.type) == false) {
+				this.htmlTypeState = this.warnDefaultHtmlType();
+			}
+		}
 
 	/**
 		* Print the invalid htmlType warning message
 		* @returns default htmlType (button)
 		*/
 	private warnDefaultHtmlType() {
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' htmlType ')
-			.addRegularText('on')
-			.addMonospaceText(' <ontario-button> ')
-			.addRegularText('was set to an invalid htmlType; only')
-			.addMonospaceText(' button, reset, or submit ')
-			.addRegularText('are supported. The default type')
-			.addMonospaceText(' button ')
-			.addRegularText('is assumed.')
-			.printMessage();
-		return HtmlType.Button;
-	}
+	  const message = new ConsoleMessageClass();
+	 	message
+	 		.addDesignSystemTag()
+	 		.addMonospaceText(' htmlType ')
+	 		.addRegularText('on')
+	 		.addMonospaceText(' <ontario-button> ')
+	 		.addRegularText('was set to an invalid htmlType; only')
+	 		.addMonospaceText(' button, reset, or submit ')
+	 		.addRegularText('are supported. The default type')
+	 		.addMonospaceText(' button ')
+	 		.addRegularText('is assumed.')
+	 		.printMessage();
+	 	return 'button';
+	 }
 
 	/**
 	 * @returns the classes of the button based of the button's `type`.

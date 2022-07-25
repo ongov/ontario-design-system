@@ -4,7 +4,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function RadioButtonExample() {
-	const radioButtonsCodeExample = `import { OntarioRadioButtons } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioRadioButtons legend="Do you have cats?" hint-text="This is the hint text" is-required options='[{
+	const radioButtonsCodeExample = `import { OntarioRadioButtons } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioRadioButtons caption="Do you have cats?" hint-text="This is the hint text" is-required options='[{
 	"name": "radio",
 	"value": "radio",
 	"elementId": "radio-1",
@@ -50,7 +50,7 @@ export default function RadioButtonExample() {
 				<h3>Radio Buttons Example</h3>
 				<div className="preview-container">
 					<OntarioRadioButtons
-						legend="Do you have cats?"
+						caption="Do you have cats?"
 						hint-text="This is the hint text"
 						is-required
 						options='[{

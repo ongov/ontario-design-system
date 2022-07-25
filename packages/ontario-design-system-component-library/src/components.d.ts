@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.enum";
+import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
 import { InputCaption } from "./utils/input-caption/input-caption";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";

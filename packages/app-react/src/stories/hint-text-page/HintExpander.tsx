@@ -8,7 +8,7 @@ export default function HintExpander() {
 <OntarioHintExpander
 	hint="This is a hint with an expander"
 	content="This is the expanded content"
-	ariaLabel="this it the arialabel"
+	aria-label="this it the arialabel"
 	elementId="this is the element id"
 />`;
 	return (
@@ -39,7 +39,7 @@ export default function HintExpander() {
 						<OntarioHintExpander
 							hint="This is a hint with an expander"
 							content="This is the expanded content"
-							ariaLabel="this it the arialabel"
+							aria-label="this it the arialabel"
 							elementId="this is the element id"
 						/>
 

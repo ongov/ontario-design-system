@@ -1,6 +1,6 @@
 # ontario-checkbox
 
-An interactive element which allows a user to select multiple items from a predefined list of options. 
+An interactive element which allows a user to select multiple items from a predefined list of options.
 
 ## User guidance
 
@@ -8,16 +8,16 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for
 
 ## Configuration
 
-Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the checkbox component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component. 
+Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the checkbox component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
 
 ## Examples
 
-Example of a bare-bones checkbox component, the legend for the checkbox fieldset is provided, as well as 1 checkbox option.  
+Example of a bare-bones checkbox component, the legend for the checkbox fieldset is provided, as well as 1 checkbox option.
 
 ```html
 <ontario-checkboxes
-  legend="This is a question?"
-  options='[{
+	caption="This is a question?"
+	options='[{
     "name": "Checkbox 1",
     "value": "checkbox-1-value",
     "label": "Checkbox Label"
@@ -26,14 +26,14 @@ Example of a bare-bones checkbox component, the legend for the checkbox fieldset
 </ontario-checkboxes>
 ```
 
-Example of a checkbox component with multiple options, a hint text for the entire fieldset, and a hint expander on the individual option. It also has the `is-required` property set to `true`. 
+Example of a checkbox component with multiple options, a hint text for the entire fieldset, and a hint expander on the individual option. It also has the `is-required` property set to `true`.
 
 ```html
 <ontario-checkboxes
-  legend="This is a question?"
-  hint-text="This is the hint text"
-  is-required
-  options='[
+	caption="This is a question?"
+	hint-text="This is the hint text"
+	is-required
+	options='[
     {
       "name": "Checkbox 1",
       "value": "checkbox-1-value",
@@ -60,7 +60,6 @@ Example of a checkbox component with multiple options, a hint text for the entir
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property       | Attribute       | Description                                                                                                                                                                                                                                                                                                                                                                                        | Type                                  | Default     |
@@ -72,13 +71,11 @@ Example of a checkbox component with multiple options, a hint text for the entir
 | `name`         | `name`          | The name for the checkboxes.                                                                                                                                                                                                                                                                                                                                                                       | `string`                              | `undefined` |
 | `options`      | `options`       | Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset. | `CheckboxOption[] \| string`          | `undefined` |
 
-
 ## Events
 
 | Event         | Description                                          | Type               |
 | ------------- | ---------------------------------------------------- | ------------------ |
 | `changeEvent` | Emitted when a keyboard input or mouse event occurs. | `CustomEvent<any>` |
-
 
 ## Dependencies
 
@@ -88,6 +85,7 @@ Example of a checkbox component with multiple options, a hint text for the entir
 - [ontario-hint-expander](../ontario-hint-expander)
 
 ### Graph
+
 ```mermaid
 graph TD;
   ontario-checkboxes --> ontario-hint-text
@@ -97,6 +95,6 @@ graph TD;
   style ontario-checkboxes fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
