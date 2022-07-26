@@ -105,7 +105,7 @@ export class OntarioButton implements Button {
 	 * Print the invalid type warning message
 	 * @returns default type (secondary)
 	 */
-	private warnDefaultType() {
+	private warnDefaultType(): ButtonType {
 		const message = new ConsoleMessageClass();
 		message
 			.addDesignSystemTag()
@@ -140,7 +140,7 @@ export class OntarioButton implements Button {
 	 * Print the invalid htmlType warning message
 	 * @returns default htmlType (button)
 	 */
-	private warnDefaultHtmlType() {
+	private warnDefaultHtmlType(): HtmlType {
 	const message = new ConsoleMessageClass();
 		message
 			.addDesignSystemTag()
