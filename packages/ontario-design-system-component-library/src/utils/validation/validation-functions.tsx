@@ -27,7 +27,7 @@ export function validateObjectExists(newValue: object): boolean {
 
 /**
  * Validate value against arrayList
- * @param value value to be compared against arrayList
+ * @param value value to be compared against keys
  * @param keys of values provided by caller
  * @returns arrayKey value if a match is found or undefined if no matches are found
  */
