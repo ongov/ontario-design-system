@@ -4,7 +4,6 @@ import { validatePropExists, validateValueAgainstArray } from '../../utils/valid
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { ButtonType, ButtonTypes, HtmlType, HtmlTypes } from './ontario-button.types';
 
-const ButtonType = ['primary', 'seondary', 'tertiary'] as const;
 @Component({
 	tag: 'ontario-button',
 	styleUrl: 'ontario-button.scss',
@@ -52,7 +51,7 @@ export class OntarioButton implements Button {
 	 * If label is not provided, set label to Element Content (if it exists).
 	*/
 	@Watch('label')
-	private updatLabelContent() {
+	private updateLabelContent() {
 		this.labelState = this.label ?? this.host.textContent ?? '';
 		this.validateLabelContent(this.labelState);
 	}
@@ -93,7 +92,7 @@ export class OntarioButton implements Button {
 	 */
 	@Watch('type')
 	validateType() {
-		const isValid = validateValueAgainstArray(this.type, ButtonTypes, ButtonType);
+		const isValid = validateValueAgainstArray(this.type, ButtonTypes);
 		if (isValid) {
 			this.typeState = this.type;
 		} else {
@@ -128,7 +127,7 @@ export class OntarioButton implements Button {
 	 */
 	@Watch('htmlType')
 	validateHtmlType() {
-		const isValid = validateValueAgainstArray(this.htmlType, HtmlTypes, HtmlType);
+		const isValid = validateValueAgainstArray(this.htmlType, HtmlTypes);
 		if (isValid) {
 			this.htmlTypeState = this.htmlType;
 		} else {
@@ -171,7 +170,7 @@ export class OntarioButton implements Button {
 	 * Set `buttonId`, `label`, and `ariaLabel` using internal component logic.
 	 */
 	componentWillLoad() {
-		this.updatLabelContent();
+		this.updateLabelContent();
 		this.validateHtmlType();
 		this.validateType();
 		this.ariaLabel = this.ariaLabel ?? this.labelState;

@@ -28,9 +28,9 @@ export function validateObjectExists(newValue: object): boolean {
 /**
  * Validate value against arrayList
  * @param value value to be compared against arrayList
- * @param arrayList of values provided by caller
+ * @param keys of values provided by caller
  * @returns arrayKey value if a match is found or undefined if no matches are found
  */
-export function validateValueAgainstArray(value: unknown, arrayList: any, arrayKey: any): value is typeof arrayKey {
-	return arrayList.includes(value as typeof arrayKey);
+ export function validateValueAgainstArray<T extends string>(value: T, keys: ReadonlyArray<string>): boolean {
+	return keys.includes(value);
 }
