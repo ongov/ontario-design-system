@@ -47,11 +47,12 @@ describe('ontario-button', () => {
 		});
 
 		component.setProperty('type', 'primary');
+		component.setProperty('htmlType', 'submit');
 		await page.waitForChanges();
 		expect(element).toHaveClasses(['ontario-button', 'ontario-button--primary']);
 		expect(element.textContent).toEqual('Element Content');
 		expect(element).toEqualAttributes({
-			'type': 'button',
+			'type': 'submit',
 			'id': 'defaultButton',
 		});
 
