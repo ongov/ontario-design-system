@@ -88,16 +88,16 @@ export class OntarioButton implements Button {
 
 	/**
 	 * Watch for changes in the `type` variable for validation purpose.
-	 * If the user input doesn't match one of the enum values then `type` will be set to its default (`secondary`).
-	 * If a match is found in one of the enum values then `type` will be set to the matching enum value.
+	 * If the user input doesn't match one of the array values then `type` will be set to its default (`secondary`).
+	 * If a match is found in one of the array values then `type` will be set to the matching array key value.
 	 */
 	@Watch('type')
 	validateType() {
-		validateValueAgainstArray(this.type, ButtonTypes, ButtonType);
-		if (belongsToArray == false) {
-			this.typeState = this.warnDefaultType();
-		} else {
+		const isValid = validateValueAgainstArray(this.type, ButtonTypes, ButtonType);
+		if (isValid) {
 			this.typeState = this.type;
+		} else {
+			this.typeState = this.warnDefaultType();
 		}
 	}
 
@@ -123,16 +123,16 @@ export class OntarioButton implements Button {
 
 	/**
 	 * Watch for changes in the `htmlType` variable for validation purpose.
-	 * If the user input doesn't match one of the enum values then `htmlType` will be set to its default (`button`).
-	 * If a match is found in one of the enum values then `htmlType` will be set to the matching enum value.
+	 * If the user input doesn't match one of the array values then `htmlType` will be set to its default (`submit`).
+	 * If a match is found in one of the array values then `htmlType` will be set to the matching array key value.
 	 */
 	@Watch('htmlType')
 	validateHtmlType() {
-		const isHtmlType = (maybeHtmlType: unknown): maybeHtmlType is HtmlType => HtmlTypes.includes(maybeHtmlType as HtmlType);
-		if (isHtmlType(this.htmlType) == false) {
-			this.htmlTypeState = this.warnDefaultHtmlType();
-		} else {
+		const isValid = validateValueAgainstArray(this.htmlType, HtmlTypes, HtmlType);
+		if (isValid) {
 			this.htmlTypeState = this.htmlType;
+		} else {
+			this.htmlTypeState = this.warnDefaultHtmlType();
 		}
 	}
 

@@ -25,14 +25,12 @@ export function validateObjectExists(newValue: object): boolean {
   return isNewValueBlank;
 }
 
-export function validateValueAgainstArray(newValue: unknown, arrayObject: Array<string>, arrayKey: any ) {
-  const belongsToArray = (newValue: unknown): newValue is typeof arrayKey => arrayObject.includes(newValue as typeof arrayKey);
-  return belongsToArray;
+/**
+ * Validate value against arrayList
+ * @param value value to be compared against arrayList
+ * @param arrayList of values provided by caller
+ * @returns arrayKey value if a match is found or undefined if no matches are found
+ */
+export function validateValueAgainstArray(value: unknown, arrayList: any, arrayKey: any): value is typeof arrayKey {
+	return arrayList.includes(value as typeof arrayKey);
 }
-
-// const isButtonType = (maybeType: unknown): maybeType is ButtonType => ButtonTypes.includes(maybeType as ButtonType);
-// if (isButtonType(this.type) == false) {
-//   this.typeState = this.warnDefaultType();
-// } else {
-//   this.typeState = this.type;
-// }
