@@ -1,6 +1,5 @@
 import { Base } from '../../utils/common.interface';
-import { ButtonType, HtmlType } from './ontario-button.enum';
-
+import { ButtonType, HtmlType } from './ontario-button.types';
 
 export interface Button extends Base {
   /**

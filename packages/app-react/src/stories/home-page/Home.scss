@@ -34,7 +34,7 @@ p.ontario-lead-statement {
 	background-repeat: no-repeat;
 	background-size: $ontario-50rem;
 	background-position-y: -8rem;
-	width: $ontario-global-tokens-full-width;
+	width: $ontario-global-tokens-width-max;
 	height: 30rem;
 	content: '';
 	z-index: $ontario-z-index-behind-high;
@@ -42,7 +42,7 @@ p.ontario-lead-statement {
 
 .ontario-banner-font {
 	color: $ontario-colour-white;
-	width: $ontario-global-tokens-full-width;
+	width: $ontario-global-tokens-width-max;
 	@media screen and (min-width: $small-breakpoint) {
 		width: 70%;
 	}

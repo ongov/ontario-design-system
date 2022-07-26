@@ -1,6 +1,6 @@
 # ontario-radio-button
 
-The ontario-radio-button is an interactive element which allows a user to select a single item from a predefined list of options. 
+The ontario-radio-button is an interactive element which allows a user to select a single item from a predefined list of options.
 
 ## User Interaction Behaviour
 
@@ -12,16 +12,16 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for
 
 ## Configuration
 
-Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the radio button component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component. 
+Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the radio button component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
 
 ## Examples
 
 Example of a bare-bones radio button component, the legend for the radio button fieldset is provided, as well as 2 radio options.
 
 ```html
-  <ontario-radio-buttons
-    legend="This is a question?"
-    options='[{
+<ontario-radio-buttons
+	caption="This is a question?"
+	options='[{
         "name": "radio",
         "value": "radio-1",
         "elementId": "radio-1",
@@ -34,14 +34,18 @@ Example of a bare-bones radio button component, the legend for the radio button 
         "label": "radio-2-label"
       }
     ]'
-  >
-  </ontario-radio-buttons>
+>
+</ontario-radio-buttons>
 ```
 
-Example of a radio button component with multiple options, a hint text for the entire fieldset, and a hint expander on the individual option. It also has the `is-required` property set to `true`. 
+Example of a radio button component with multiple options, a hint text for the entire fieldset, and a hint expander on the individual option. It also has the `is-required` property set to `true`.
 
 ```html
-	<ontario-radio-buttons legend="Do you have cats?" hint-text="This is the hint text" is-required options='[{
+<ontario-radio-buttons
+	caption="Do you have cats?"
+	hint-text="This is the hint text"
+	is-required
+	options='[{
 		"name": "radio",
 		"value": "radio",
 		"elementId": "radio-1",
@@ -73,8 +77,9 @@ Example of a radio button component with multiple options, a hint text for the e
 			"elementId": "radio-4",
 			"label": "radio-4-label"
 		}
-		]'>
-	</ontario-radio-buttons>
+		]'
+>
+</ontario-radio-buttons>
 ```
 
 ## Accessibility

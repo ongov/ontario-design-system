@@ -24,3 +24,13 @@ export function validateObjectExists(newValue: object): boolean {
   // Return true if new value is both a string and is not empty
   return isNewValueBlank;
 }
+
+/**
+ * Validate value against keys
+ * @param value value to be compared against keys
+ * @param keys of values provided by caller
+ * @returns true if a match is found or false if no matches are found
+ */
+ export function validateValueAgainstArray<T extends string>(value: T, keys: ReadonlyArray<string>): boolean {
+	return keys.includes(value);
+}
