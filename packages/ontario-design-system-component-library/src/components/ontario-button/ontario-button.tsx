@@ -1,6 +1,6 @@
 import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
 import { Button } from './button.interface';
-import { validatePropExists } from '../../utils/validation/validation-functions';
+import { validatePropExists, validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { ButtonType, ButtonTypes, HtmlType, HtmlTypes } from './ontario-button.types';
 
@@ -93,8 +93,8 @@ export class OntarioButton implements Button {
 	 */
 	@Watch('type')
 	validateType() {
-		const isButtonType = (maybeType: unknown): maybeType is ButtonType => ButtonTypes.includes(maybeType as ButtonType);
-		if (isButtonType(this.type) == false) {
+		validateValueAgainstArray(this.type, ButtonTypes, ButtonType);
+		if (belongsToArray == false) {
 			this.typeState = this.warnDefaultType();
 		} else {
 			this.typeState = this.type;
@@ -129,7 +129,7 @@ export class OntarioButton implements Button {
 	@Watch('htmlType')
 	validateHtmlType() {
 		const isHtmlType = (maybeHtmlType: unknown): maybeHtmlType is HtmlType => HtmlTypes.includes(maybeHtmlType as HtmlType);
-		if (isHtmlType(this.type) == false) {
+		if (isHtmlType(this.htmlType) == false) {
 			this.htmlTypeState = this.warnDefaultHtmlType();
 		} else {
 			this.htmlTypeState = this.htmlType;

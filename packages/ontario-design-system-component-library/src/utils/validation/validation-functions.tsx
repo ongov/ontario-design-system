@@ -24,3 +24,15 @@ export function validateObjectExists(newValue: object): boolean {
   // Return true if new value is both a string and is not empty
   return isNewValueBlank;
 }
+
+export function validateValueAgainstArray(newValue: unknown, arrayObject: Array<string>, arrayKey: any ) {
+  const belongsToArray = (newValue: unknown): newValue is typeof arrayKey => arrayObject.includes(newValue as typeof arrayKey);
+  return belongsToArray;
+}
+
+// const isButtonType = (maybeType: unknown): maybeType is ButtonType => ButtonTypes.includes(maybeType as ButtonType);
+// if (isButtonType(this.type) == false) {
+//   this.typeState = this.warnDefaultType();
+// } else {
+//   this.typeState = this.type;
+// }
