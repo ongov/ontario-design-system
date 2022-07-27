@@ -11,7 +11,7 @@ describe('ontario-input', () => {
 			const element = await page.find('ontario-input >>> input');
 			
 			expect(component).toHaveClass('hydrated');
-			expect(element).toHaveClass('ontario-input');
+			expect(element).toHaveClasses(['ontario-input', 'ontario-input-hint-expander--false']);
 			expect(element).toEqualAttributes({
 				'name': 'ontario-input'
 			});
@@ -90,48 +90,48 @@ describe('ontario-input', () => {
 		it('should render the 2-char-width class when the inputWidth prop is two characters', async () => {
 			component.setProperty('inputWidth', '2-char-width');
 			await page.waitForChanges();
-			expect(element).toHaveClasses(['ontario-input', 'ontario-input--2-char-width']);
+			expect(element).toHaveClasses(['ontario-input', 'ontario-input-hint-expander--false', 'ontario-input--2-char-width']);
 		});
 
 		it('should render the 3-char-width class when the inputWidth prop is three characters', async () => {
 			component.setProperty('inputWidth', '3-char-width');
 			await page.waitForChanges();
-			expect(element).toHaveClasses(['ontario-input', 'ontario-input--3-char-width']);
+			expect(element).toHaveClasses(['ontario-input', 'ontario-input-hint-expander--false', 'ontario-input--3-char-width']);
 		});
 
 		it('should render the 4-char-width class when the inputWidth prop is four characters', async () => {
 			component.setProperty('inputWidth', '4-char-width');
 			await page.waitForChanges();
-			expect(element).toHaveClasses(['ontario-input', 'ontario-input--4-char-width']);
+			expect(element).toHaveClasses(['ontario-input', 'ontario-input-hint-expander--false', 'ontario-input--4-char-width']);
 		});
 
 		it('should render the 5-char-width class when the inputWidth prop is five characters', async () => {
 			component.setProperty('inputWidth', '5-char-width');
 			await page.waitForChanges();
-			expect(element).toHaveClasses(['ontario-input', 'ontario-input--5-char-width']);
+			expect(element).toHaveClasses(['ontario-input', 'ontario-input-hint-expander--false', 'ontario-input--5-char-width']);
 		});
 
 		it('should render the 7-char-width class when the inputWidth prop is seven characters', async () => {
 			component.setProperty('inputWidth', '7-char-width');
 			await page.waitForChanges();
-			expect(element).toHaveClasses(['ontario-input', 'ontario-input--7-char-width']);
+			expect(element).toHaveClasses(['ontario-input', 'ontario-input-hint-expander--false', 'ontario-input--7-char-width']);
 		});
 
 		it('should render the 10-char-width class when the inputWidth prop is ten characters', async () => {
 			component.setProperty('inputWidth', '10-char-width');
 			await page.waitForChanges();
-			expect(element).toHaveClasses(['ontario-input', 'ontario-input--10-char-width']);
+			expect(element).toHaveClasses(['ontario-input', 'ontario-input-hint-expander--false', 'ontario-input--10-char-width']);
 		});
 
 		it('should render the 20-char-width class when the inputWidth prop is twenty characters', async () => {
 			component.setProperty('inputWidth', '20-char-width');
 			await page.waitForChanges();
-			expect(element).toHaveClasses(['ontario-input', 'ontario-input--20-char-width']);
+			expect(element).toHaveClasses(['ontario-input', 'ontario-input-hint-expander--false', 'ontario-input--20-char-width']);
 		});
 
 		it('should render only the `ontario-input` class when no inputWidth prop is defined', async () => {
 			await page.waitForChanges();
-			expect(element).toHaveClass('ontario-input');
+			expect(element).toHaveClasses(['ontario-input', 'ontario-input-hint-expander--false']);
 		});
 	});
 

@@ -25,6 +25,10 @@ $ontario-input-padding: 0.625rem;
 	}
 }
 
+.ontario-input-hint-expander--true {
+	margin-bottom: $spacing-4;
+}
+
 .ontario-input--2-char-width {
 	max-width: 8ex;
 }
