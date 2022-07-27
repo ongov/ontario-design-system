@@ -95,7 +95,7 @@ export class OntarioInput implements TextInput {
 	 *    "content": "This is the content"
 	 *   }'>
 	 * </ontario-input>
-     */
+   */
 	@Prop() hintExpander?: HintExpander | string;
 
 	/**
