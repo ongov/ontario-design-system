@@ -6,11 +6,11 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
 @Component({
-    tag: 'ontario-icon-more-vertical',
+    tag: 'ontario-icon-search-white',
     styleUrl: 'ontario-icon.scss',
     shadow: true,
 })
-export class OntarioIconMoreVertical implements IconWithColour {
+export class OntarioIconSearchWhite implements IconWithColour {
   /**
    * The icon width will autogenerate the height since the icons are in square format, thus preserving
    * the aspect ratio.
@@ -35,7 +35,7 @@ export class OntarioIconMoreVertical implements IconWithColour {
               .addDesignSystemTag()
               .addMonospaceText(' icon-width ')
               .addRegularText('on')
-              .addMonospaceText(' <ontario-icon-more-vertical> ')
+              .addMonospaceText(' <ontario-icon-search-white> ')
               .addRegularText(`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`)
               .addMonospaceText(' 24px ')
               .addRegularText('was assumed.')
@@ -106,7 +106,7 @@ export class OntarioIconMoreVertical implements IconWithColour {
     render() {
         return (
             <div class={`ontario-icon ontario-icon--${this.iconColourState}`} style={{ 'width': `${this.iconWidthState}px` }}>
-                <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="more-vertical"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2zm0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2zm0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2z"/></svg>
+                <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#ffffff" id="search-white"><path d="M15.5 14h-.8l-.28-.27A6.47 6.47 0 0 0 16 9.5a6.5 6.5 0 1 0-13 0A6.5 6.5 0 0 0 9.5 16a6.47 6.47 0 0 0 4.23-1.57l.27.28v.8l5 5 1.5-1.5-5-5zm-6 0C7 14 5 12 5 9.5S7 5 9.5 5 14 7 14 9.5 12 14 9.5 14z"/></svg>
             </div>
         );
     }

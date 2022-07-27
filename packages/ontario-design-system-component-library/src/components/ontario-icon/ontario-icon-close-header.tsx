@@ -6,11 +6,11 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
 @Component({
-    tag: 'ontario-icon-more-vertical',
+    tag: 'ontario-icon-close-header',
     styleUrl: 'ontario-icon.scss',
     shadow: true,
 })
-export class OntarioIconMoreVertical implements IconWithColour {
+export class OntarioIconCloseHeader implements IconWithColour {
   /**
    * The icon width will autogenerate the height since the icons are in square format, thus preserving
    * the aspect ratio.
@@ -35,7 +35,7 @@ export class OntarioIconMoreVertical implements IconWithColour {
               .addDesignSystemTag()
               .addMonospaceText(' icon-width ')
               .addRegularText('on')
-              .addMonospaceText(' <ontario-icon-more-vertical> ')
+              .addMonospaceText(' <ontario-icon-close-header> ')
               .addRegularText(`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`)
               .addMonospaceText(' 24px ')
               .addRegularText('was assumed.')
@@ -106,7 +106,7 @@ export class OntarioIconMoreVertical implements IconWithColour {
     render() {
         return (
             <div class={`ontario-icon ontario-icon--${this.iconColourState}`} style={{ 'width': `${this.iconWidthState}px` }}>
-                <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="more-vertical"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2zm0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2zm0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 24 24" id="close-header"><path d="M19 6.4L17.6 5 12 10.6 6.4 5 5 6.4l5.6 5.6L5 17.6 6.4 19l5.6-5.6 5.6 5.6 1.4-1.4-5.6-5.6L19 6.4z" fill="#ffffff"/></svg>
             </div>
         );
     }

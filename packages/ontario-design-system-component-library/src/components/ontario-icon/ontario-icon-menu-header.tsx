@@ -6,11 +6,11 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
 @Component({
-    tag: 'ontario-icon-more-vertical',
+    tag: 'ontario-icon-menu-header',
     styleUrl: 'ontario-icon.scss',
     shadow: true,
 })
-export class OntarioIconMoreVertical implements IconWithColour {
+export class OntarioIconMenuHeader implements IconWithColour {
   /**
    * The icon width will autogenerate the height since the icons are in square format, thus preserving
    * the aspect ratio.
@@ -35,7 +35,7 @@ export class OntarioIconMoreVertical implements IconWithColour {
               .addDesignSystemTag()
               .addMonospaceText(' icon-width ')
               .addRegularText('on')
-              .addMonospaceText(' <ontario-icon-more-vertical> ')
+              .addMonospaceText(' <ontario-icon-menu-header> ')
               .addRegularText(`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`)
               .addMonospaceText(' 24px ')
               .addRegularText('was assumed.')
@@ -106,7 +106,7 @@ export class OntarioIconMoreVertical implements IconWithColour {
     render() {
         return (
             <div class={`ontario-icon ontario-icon--${this.iconColourState}`} style={{ 'width': `${this.iconWidthState}px` }}>
-                <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="more-vertical"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2zm0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2zm0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 24 24" id="menu-header"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="#ffffff"/></svg>
             </div>
         );
     }
