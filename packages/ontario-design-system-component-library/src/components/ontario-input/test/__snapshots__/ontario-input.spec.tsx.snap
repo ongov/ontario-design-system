@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-input snapshot should render the expected html 1`] = `
+<ontario-input caption="{&quot;captionText&quot;: &quot;Ontario Input&quot;}" element-id="ontario-input" name="ontario-input">
+  <mock:shadow-root>
+    <div>
+      <label class="ontario-label" htmlfor="ontario-input">
+        Ontario Input
+        <span class="ontario-label__flag">
+          (optional)
+        </span>
+      </label>
+      <input class="ontario-input" id="ontario-input" name="ontario-input" type="text" value="">
+    </div>
+  </mock:shadow-root>
+</ontario-input>
+`;

@@ -30,7 +30,6 @@ describe('ontario-input', () => {
 								</span>
 							</label>
 							<input type='text' class="ontario-input" id="ontario-input" name="ontario-input" value=""></input>
-							<slot name="hint-expander"></slot>
 						</div>
 					</mock:shadow-root>
 				</ontario-input>

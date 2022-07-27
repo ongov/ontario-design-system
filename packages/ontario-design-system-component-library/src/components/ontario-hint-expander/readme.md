@@ -72,6 +72,7 @@ When the hint text is in it’s open state, the value in the `aria-expanded` att
 ### Used by
 
  - [ontario-checkboxes](../ontario-checkbox)
+ - [ontario-input](../ontario-input)
  - [ontario-radio-buttons](../ontario-radio-buttons)
  - [ontario-textarea](../ontario-textarea)
 
@@ -86,6 +87,7 @@ graph TD;
   ontario-hint-expander --> ontario-icon-chevron-up
   ontario-hint-expander --> ontario-icon-chevron-down
   ontario-checkboxes --> ontario-hint-expander
+  ontario-input --> ontario-hint-expander
   ontario-radio-buttons --> ontario-hint-expander
   ontario-textarea --> ontario-hint-expander
   style ontario-hint-expander fill:#f9f,stroke:#333,stroke-width:4px

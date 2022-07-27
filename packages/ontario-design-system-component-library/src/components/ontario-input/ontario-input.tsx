@@ -1,8 +1,9 @@
-import { Component, Event, EventEmitter, h, Prop, State, Listen, Element } from '@stencil/core';
-import { v4 as uuid } from 'uuid';
-import { TextInput } from './input.interface';
+import { Component, Event, EventEmitter, h, Prop, State, Listen, Element, Watch } from '@stencil/core';
 import { InputCaption } from '../../utils/input-caption/input-caption';
 import { default as translations } from '../../translations/global.i18n.json';
+import { v4 as uuid } from 'uuid';
+import { TextInput } from './input.interface';
+import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
 /**
  * Ontario Input component
@@ -80,6 +81,38 @@ export class OntarioInput implements TextInput {
 	@Prop({ mutable: true }) language?: string = 'en';
 
 	/**
+	 * Used to include the Hint Expander component underneath the input box.
+	 * This is passed in as an object with key-value pairs.
+	 *
+ 	 * @example
+	 * <ontario-input
+	 *   caption='{
+	 *     "caption": "Address",
+	 *     "captionType": "heading",
+	 *     "isRequired": true}'
+	 *   hint-expander='{
+	 *    "hint": "Hint expander",
+	 *    "content": "This is the content"
+	 *   }'>
+	 * </ontario-input>
+   */
+	@Prop() hintExpander?: HintExpander | string;
+
+	/**
+	 * The hint expander options are re-assigned to the internalHintExpander array.
+	 */
+	@State() private internalHintExpander: HintExpander;
+
+	@Watch('hintExpander')
+	private parseHintExpander() {
+		const hintExpander = this.hintExpander;
+		if (hintExpander) {
+			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
+			else this.internalHintExpander = hintExpander;
+		}
+	}
+
+	/**
 	 * Emitted when the input loses focus.
 	 */
 	@Event() blurEvent!: EventEmitter<void>;
@@ -137,7 +170,11 @@ export class OntarioInput implements TextInput {
 	}
 
 	private getClass(): string {
-		return this.inputWidth === 'default' ? 'ontario-input' : `ontario-input ontario-input--${this.inputWidth}`;
+		if (this.hintExpander) {
+			return this.inputWidth === 'default' ? `ontario-input ontario-input-hint-expander--true` : `ontario-input ontario-input--${this.inputWidth} ontario-input-hint-expander--true`;
+		} else {
+			return this.inputWidth === 'default' ? `ontario-input` : `ontario-input ontario-input--${this.inputWidth}`;
+		}
 	}
 
 	public getId(): string {
@@ -147,6 +184,7 @@ export class OntarioInput implements TextInput {
 	componentWillLoad() {
 		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language);
 		this.elementId = this.elementId ?? uuid();
+		this.parseHintExpander();
 	}
 
 	async componentWillUpdate() {
@@ -172,7 +210,12 @@ export class OntarioInput implements TextInput {
 					type={this.type}
 					value={this.getValue()}
 				/>
-				<slot name="hint-expander"></slot>
+				{this.internalHintExpander && (
+					<ontario-hint-expander
+						hint={this.internalHintExpander.hint}
+						content={this.internalHintExpander.content}
+					></ontario-hint-expander>
+        )}
 			</div>
 		);
 	}
