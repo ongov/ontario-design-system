@@ -87,6 +87,11 @@ export namespace Components {
     }
     interface OntarioDropdownList {
         /**
+          * The text to display as the label
+          * @example <ontario-dropdown-list   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-dropdown-list>
+         */
+        "caption": InputCaption | string;
+        /**
           * The ID for the dropdown list.
          */
         "elementId"?: string;
@@ -104,6 +109,10 @@ export namespace Components {
           * The label for the Dropdown List.
          */
         "label": string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+         */
+        "language"?: string;
         /**
           * The name for the dropdown list.
          */
@@ -2284,6 +2293,11 @@ declare namespace LocalJSX {
     }
     interface OntarioDropdownList {
         /**
+          * The text to display as the label
+          * @example <ontario-dropdown-list   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-dropdown-list>
+         */
+        "caption"?: InputCaption | string;
+        /**
           * The ID for the dropdown list.
          */
         "elementId"?: string;
@@ -2301,6 +2315,10 @@ declare namespace LocalJSX {
           * The label for the Dropdown List.
          */
         "label"?: string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+         */
+        "language"?: string;
         /**
           * The name for the dropdown list.
          */
