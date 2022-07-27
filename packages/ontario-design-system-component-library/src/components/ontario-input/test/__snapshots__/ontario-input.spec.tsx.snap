@@ -11,7 +11,7 @@ exports[`ontario-input snapshot should render the expected html 1`] = `
         </span>
       </label>
       <slot name="hint-text"></slot>
-      <input class="ontario-input ontario-input-hint-expander--false" id="ontario-input" name="ontario-input" type="text" value="">
+      <input class="ontario-input" id="ontario-input" name="ontario-input" type="text" value="">
     </div>
   </mock:shadow-root>
 </ontario-input>
