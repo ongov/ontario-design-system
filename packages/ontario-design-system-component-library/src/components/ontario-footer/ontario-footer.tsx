@@ -2,7 +2,6 @@ import { Component, Prop, h, getAssetPath, State, Watch } from '@stencil/core';
 import { ExpandedThreeColumnOptions } from './footer-expanded-three-column-option-interface';
 import { ExpandedTwoColumnOptions } from './footer-expanded-two-column-option-interface';
 import { DefaultOptions } from './footer-default-option-interface';
-import { IconColour } from '../ontario-icon/icon.enum';
 
 const enDash = '\u2013';
 
@@ -236,28 +235,28 @@ export class OntarioFooter {
 											{this.expandedThreeColumnState.thirdColumn.facebook && (
 												<li>
 													<a class="ontario-footer__link" href={this.expandedThreeColumnState?.thirdColumn?.facebook?.link} aria-label="Facebook">
-														<ontario-icon-facebook colour={IconColour.White} />
+														<ontario-icon-facebook colour="white" />
 													</a>
 												</li>
 											)}
 											{this.expandedThreeColumnState.thirdColumn.twitter && (
 												<li>
 													<a class="ontario-footer__link" href={this.expandedThreeColumnState?.thirdColumn?.twitter?.link} aria-label="Twitter">
-														<ontario-icon-twitter colour={IconColour.White} />
+														<ontario-icon-twitter colour="white" />
 													</a>
 												</li>
 											)}
 											{this.expandedThreeColumnState.thirdColumn.instagram && (
 												<li>
 													<a class="ontario-footer__link" href={this.expandedThreeColumnState?.thirdColumn?.instagram?.link} aria-label="Instagram">
-														<ontario-icon-instagram colour={IconColour.White} />
+														<ontario-icon-instagram colour="white" />
 													</a>
 												</li>
 											)}
 											{this.expandedThreeColumnState.thirdColumn.youtube && (
 												<li>
 													<a class="ontario-footer__link" href={this.expandedThreeColumnState?.thirdColumn?.youtube?.link} aria-label="Youtube">
-														<ontario-icon-youtube colour={IconColour.White} />
+														<ontario-icon-youtube colour="white" />
 													</a>
 												</li>
 											)}

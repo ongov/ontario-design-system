@@ -15,7 +15,7 @@ import { ExpandedTwoColumnOptions } from "./components/ontario-footer/footer-exp
 import { ExpandedThreeColumnOptions } from "./components/ontario-footer/footer-expanded-three-column-option-interface";
 import { headerTitle } from "./components/ontario-header/headerTitle.interface";
 import { languageToggleOptions } from "./components/ontario-header/languageToggleOptions.interface";
-import { IconColour } from "./components/ontario-icon/icon.enum";
+import { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
     interface MyComponent {
@@ -191,7 +191,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconAccount {
         /**
@@ -201,7 +201,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconAdd {
         /**
@@ -211,7 +211,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconAddAlt {
         /**
@@ -221,31 +221,31 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconAlertError {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconAlertInformation {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconAlertSuccess {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconAlertWarning {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconAttach {
         /**
@@ -255,7 +255,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconBookmarkOff {
         /**
@@ -265,7 +265,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconBookmarkOn {
         /**
@@ -275,7 +275,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconCalendar {
         /**
@@ -285,7 +285,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconCamera {
         /**
@@ -295,7 +295,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconChevronDown {
         /**
@@ -305,7 +305,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconChevronLeft {
         /**
@@ -315,7 +315,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconChevronRight {
         /**
@@ -325,7 +325,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconChevronUp {
         /**
@@ -335,7 +335,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconClock {
         /**
@@ -345,7 +345,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconClose {
         /**
@@ -355,7 +355,17 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
+    }
+    interface OntarioIconCloseHeader {
+        /**
+          * Set the icon's colour.
+         */
+        "colour": IconColour;
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": IconSize;
     }
     interface OntarioIconCloud {
         /**
@@ -365,7 +375,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconCollapse {
         /**
@@ -375,7 +385,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconCreditCard {
         /**
@@ -385,7 +395,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconDelete {
         /**
@@ -395,7 +405,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconDocument {
         /**
@@ -405,7 +415,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconDownload {
         /**
@@ -415,13 +425,13 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconDropdownArrow {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconEdit {
         /**
@@ -431,7 +441,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconEmail {
         /**
@@ -441,7 +451,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconExpand {
         /**
@@ -451,7 +461,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconExport {
         /**
@@ -461,7 +471,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconFacebook {
         /**
@@ -471,7 +481,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconFacebookAlt {
         /**
@@ -481,7 +491,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconFavouriteOff {
         /**
@@ -491,7 +501,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconFavouriteOn {
         /**
@@ -501,7 +511,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconFilter {
         /**
@@ -511,7 +521,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconFlickr {
         /**
@@ -521,7 +531,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconGrid {
         /**
@@ -531,7 +541,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconHelp {
         /**
@@ -541,7 +551,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconInstagram {
         /**
@@ -551,31 +561,31 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconInteracEn {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconInteracEnAlt {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconInteracFr {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconInteracFrAlt {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconLinkedin {
         /**
@@ -585,7 +595,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconLinkedinAlt {
         /**
@@ -595,7 +605,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconList {
         /**
@@ -605,7 +615,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconLiveChat {
         /**
@@ -615,7 +625,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconLocationOff {
         /**
@@ -625,7 +635,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconLocationOn {
         /**
@@ -635,7 +645,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconLockOff {
         /**
@@ -645,7 +655,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconLockOn {
         /**
@@ -655,7 +665,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconMap {
         /**
@@ -665,19 +675,19 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconMastercard {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconMastercardAlt {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconMediaFastForward {
         /**
@@ -687,7 +697,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconMediaFastRewind {
         /**
@@ -697,7 +707,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconMediaPause {
         /**
@@ -707,7 +717,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconMediaPlay {
         /**
@@ -717,7 +727,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconMediaStop {
         /**
@@ -727,7 +737,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconMenu {
         /**
@@ -737,7 +747,17 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
+    }
+    interface OntarioIconMenuHeader {
+        /**
+          * Set the icon's colour.
+         */
+        "colour": IconColour;
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": IconSize;
     }
     interface OntarioIconMicrophoneOff {
         /**
@@ -747,7 +767,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconMicrophoneOn {
         /**
@@ -757,7 +777,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconMoreVertical {
         /**
@@ -767,7 +787,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconNewWindow {
         /**
@@ -777,7 +797,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconNext {
         /**
@@ -787,7 +807,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconNotification {
         /**
@@ -797,7 +817,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconPasswordHide {
         /**
@@ -807,7 +827,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconPasswordShow {
         /**
@@ -817,7 +837,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconPhone {
         /**
@@ -827,7 +847,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconPhoto {
         /**
@@ -837,7 +857,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconPinLocationOff {
         /**
@@ -847,7 +867,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconPinLocationOn {
         /**
@@ -857,7 +877,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconPrevious {
         /**
@@ -867,7 +887,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconPrint {
         /**
@@ -877,7 +897,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconRemove {
         /**
@@ -887,7 +907,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconRemoveAlt {
         /**
@@ -897,7 +917,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconReplay {
         /**
@@ -907,7 +927,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconRssFeed {
         /**
@@ -917,7 +937,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconSave {
         /**
@@ -927,7 +947,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconSearch {
         /**
@@ -937,7 +957,17 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
+    }
+    interface OntarioIconSearchWhite {
+        /**
+          * Set the icon's colour.
+         */
+        "colour": IconColour;
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": IconSize;
     }
     interface OntarioIconSentiment1 {
         /**
@@ -947,7 +977,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconSentiment2 {
         /**
@@ -957,7 +987,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconSentiment3 {
         /**
@@ -967,7 +997,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconSentiment4 {
         /**
@@ -977,7 +1007,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconSentiment5 {
         /**
@@ -987,7 +1017,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconSettings {
         /**
@@ -997,7 +1027,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconShare {
         /**
@@ -1007,7 +1037,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconSort {
         /**
@@ -1017,7 +1047,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconTag {
         /**
@@ -1027,7 +1057,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconTextMessage {
         /**
@@ -1037,7 +1067,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconTimer {
         /**
@@ -1047,7 +1077,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconTransportBicycle {
         /**
@@ -1057,7 +1087,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconTransportBus {
         /**
@@ -1067,7 +1097,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconTransportCar {
         /**
@@ -1077,7 +1107,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconTransportWalk {
         /**
@@ -1087,7 +1117,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconTty {
         /**
@@ -1097,7 +1127,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconTwitter {
         /**
@@ -1107,7 +1137,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconTwitterAlt {
         /**
@@ -1117,7 +1147,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconUpload {
         /**
@@ -1127,7 +1157,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconVideo {
         /**
@@ -1137,13 +1167,13 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconVisa {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconVoteDislike {
         /**
@@ -1153,7 +1183,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconVoteLike {
         /**
@@ -1163,7 +1193,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconVpnKey {
         /**
@@ -1173,7 +1203,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconWheelchair {
         /**
@@ -1183,7 +1213,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconWifi {
         /**
@@ -1193,7 +1223,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioIconYoutube {
         /**
@@ -1203,7 +1233,7 @@ export namespace Components {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth": number;
+        "iconWidth": IconSize;
     }
     interface OntarioInput {
         /**
@@ -1485,6 +1515,12 @@ declare global {
         prototype: HTMLOntarioIconCloseElement;
         new (): HTMLOntarioIconCloseElement;
     };
+    interface HTMLOntarioIconCloseHeaderElement extends Components.OntarioIconCloseHeader, HTMLStencilElement {
+    }
+    var HTMLOntarioIconCloseHeaderElement: {
+        prototype: HTMLOntarioIconCloseHeaderElement;
+        new (): HTMLOntarioIconCloseHeaderElement;
+    };
     interface HTMLOntarioIconCloudElement extends Components.OntarioIconCloud, HTMLStencilElement {
     }
     var HTMLOntarioIconCloudElement: {
@@ -1731,6 +1767,12 @@ declare global {
         prototype: HTMLOntarioIconMenuElement;
         new (): HTMLOntarioIconMenuElement;
     };
+    interface HTMLOntarioIconMenuHeaderElement extends Components.OntarioIconMenuHeader, HTMLStencilElement {
+    }
+    var HTMLOntarioIconMenuHeaderElement: {
+        prototype: HTMLOntarioIconMenuHeaderElement;
+        new (): HTMLOntarioIconMenuHeaderElement;
+    };
     interface HTMLOntarioIconMicrophoneOffElement extends Components.OntarioIconMicrophoneOff, HTMLStencilElement {
     }
     var HTMLOntarioIconMicrophoneOffElement: {
@@ -1850,6 +1892,12 @@ declare global {
     var HTMLOntarioIconSearchElement: {
         prototype: HTMLOntarioIconSearchElement;
         new (): HTMLOntarioIconSearchElement;
+    };
+    interface HTMLOntarioIconSearchWhiteElement extends Components.OntarioIconSearchWhite, HTMLStencilElement {
+    }
+    var HTMLOntarioIconSearchWhiteElement: {
+        prototype: HTMLOntarioIconSearchWhiteElement;
+        new (): HTMLOntarioIconSearchWhiteElement;
     };
     interface HTMLOntarioIconSentiment1Element extends Components.OntarioIconSentiment1, HTMLStencilElement {
     }
@@ -2065,6 +2113,7 @@ declare global {
         "ontario-icon-chevron-up": HTMLOntarioIconChevronUpElement;
         "ontario-icon-clock": HTMLOntarioIconClockElement;
         "ontario-icon-close": HTMLOntarioIconCloseElement;
+        "ontario-icon-close-header": HTMLOntarioIconCloseHeaderElement;
         "ontario-icon-cloud": HTMLOntarioIconCloudElement;
         "ontario-icon-collapse": HTMLOntarioIconCollapseElement;
         "ontario-icon-credit-card": HTMLOntarioIconCreditCardElement;
@@ -2106,6 +2155,7 @@ declare global {
         "ontario-icon-media-play": HTMLOntarioIconMediaPlayElement;
         "ontario-icon-media-stop": HTMLOntarioIconMediaStopElement;
         "ontario-icon-menu": HTMLOntarioIconMenuElement;
+        "ontario-icon-menu-header": HTMLOntarioIconMenuHeaderElement;
         "ontario-icon-microphone-off": HTMLOntarioIconMicrophoneOffElement;
         "ontario-icon-microphone-on": HTMLOntarioIconMicrophoneOnElement;
         "ontario-icon-more-vertical": HTMLOntarioIconMoreVerticalElement;
@@ -2126,6 +2176,7 @@ declare global {
         "ontario-icon-rss-feed": HTMLOntarioIconRssFeedElement;
         "ontario-icon-save": HTMLOntarioIconSaveElement;
         "ontario-icon-search": HTMLOntarioIconSearchElement;
+        "ontario-icon-search-white": HTMLOntarioIconSearchWhiteElement;
         "ontario-icon-sentiment-1": HTMLOntarioIconSentiment1Element;
         "ontario-icon-sentiment-2": HTMLOntarioIconSentiment2Element;
         "ontario-icon-sentiment-3": HTMLOntarioIconSentiment3Element;
@@ -2341,7 +2392,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconAccount {
         /**
@@ -2351,7 +2402,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconAdd {
         /**
@@ -2361,7 +2412,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconAddAlt {
         /**
@@ -2371,31 +2422,31 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconAlertError {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconAlertInformation {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconAlertSuccess {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconAlertWarning {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconAttach {
         /**
@@ -2405,7 +2456,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconBookmarkOff {
         /**
@@ -2415,7 +2466,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconBookmarkOn {
         /**
@@ -2425,7 +2476,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconCalendar {
         /**
@@ -2435,7 +2486,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconCamera {
         /**
@@ -2445,7 +2496,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconChevronDown {
         /**
@@ -2455,7 +2506,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconChevronLeft {
         /**
@@ -2465,7 +2516,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconChevronRight {
         /**
@@ -2475,7 +2526,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconChevronUp {
         /**
@@ -2485,7 +2536,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconClock {
         /**
@@ -2495,7 +2546,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconClose {
         /**
@@ -2505,7 +2556,17 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
+    }
+    interface OntarioIconCloseHeader {
+        /**
+          * Set the icon's colour.
+         */
+        "colour"?: IconColour;
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconCloud {
         /**
@@ -2515,7 +2576,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconCollapse {
         /**
@@ -2525,7 +2586,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconCreditCard {
         /**
@@ -2535,7 +2596,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconDelete {
         /**
@@ -2545,7 +2606,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconDocument {
         /**
@@ -2555,7 +2616,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconDownload {
         /**
@@ -2565,13 +2626,13 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconDropdownArrow {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconEdit {
         /**
@@ -2581,7 +2642,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconEmail {
         /**
@@ -2591,7 +2652,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconExpand {
         /**
@@ -2601,7 +2662,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconExport {
         /**
@@ -2611,7 +2672,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconFacebook {
         /**
@@ -2621,7 +2682,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconFacebookAlt {
         /**
@@ -2631,7 +2692,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconFavouriteOff {
         /**
@@ -2641,7 +2702,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconFavouriteOn {
         /**
@@ -2651,7 +2712,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconFilter {
         /**
@@ -2661,7 +2722,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconFlickr {
         /**
@@ -2671,7 +2732,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconGrid {
         /**
@@ -2681,7 +2742,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconHelp {
         /**
@@ -2691,7 +2752,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconInstagram {
         /**
@@ -2701,31 +2762,31 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconInteracEn {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconInteracEnAlt {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconInteracFr {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconInteracFrAlt {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconLinkedin {
         /**
@@ -2735,7 +2796,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconLinkedinAlt {
         /**
@@ -2745,7 +2806,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconList {
         /**
@@ -2755,7 +2816,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconLiveChat {
         /**
@@ -2765,7 +2826,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconLocationOff {
         /**
@@ -2775,7 +2836,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconLocationOn {
         /**
@@ -2785,7 +2846,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconLockOff {
         /**
@@ -2795,7 +2856,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconLockOn {
         /**
@@ -2805,7 +2866,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconMap {
         /**
@@ -2815,19 +2876,19 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconMastercard {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconMastercardAlt {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconMediaFastForward {
         /**
@@ -2837,7 +2898,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconMediaFastRewind {
         /**
@@ -2847,7 +2908,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconMediaPause {
         /**
@@ -2857,7 +2918,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconMediaPlay {
         /**
@@ -2867,7 +2928,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconMediaStop {
         /**
@@ -2877,7 +2938,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconMenu {
         /**
@@ -2887,7 +2948,17 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
+    }
+    interface OntarioIconMenuHeader {
+        /**
+          * Set the icon's colour.
+         */
+        "colour"?: IconColour;
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconMicrophoneOff {
         /**
@@ -2897,7 +2968,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconMicrophoneOn {
         /**
@@ -2907,7 +2978,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconMoreVertical {
         /**
@@ -2917,7 +2988,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconNewWindow {
         /**
@@ -2927,7 +2998,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconNext {
         /**
@@ -2937,7 +3008,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconNotification {
         /**
@@ -2947,7 +3018,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconPasswordHide {
         /**
@@ -2957,7 +3028,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconPasswordShow {
         /**
@@ -2967,7 +3038,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconPhone {
         /**
@@ -2977,7 +3048,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconPhoto {
         /**
@@ -2987,7 +3058,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconPinLocationOff {
         /**
@@ -2997,7 +3068,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconPinLocationOn {
         /**
@@ -3007,7 +3078,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconPrevious {
         /**
@@ -3017,7 +3088,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconPrint {
         /**
@@ -3027,7 +3098,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconRemove {
         /**
@@ -3037,7 +3108,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconRemoveAlt {
         /**
@@ -3047,7 +3118,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconReplay {
         /**
@@ -3057,7 +3128,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconRssFeed {
         /**
@@ -3067,7 +3138,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconSave {
         /**
@@ -3077,7 +3148,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconSearch {
         /**
@@ -3087,7 +3158,17 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
+    }
+    interface OntarioIconSearchWhite {
+        /**
+          * Set the icon's colour.
+         */
+        "colour"?: IconColour;
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconSentiment1 {
         /**
@@ -3097,7 +3178,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconSentiment2 {
         /**
@@ -3107,7 +3188,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconSentiment3 {
         /**
@@ -3117,7 +3198,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconSentiment4 {
         /**
@@ -3127,7 +3208,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconSentiment5 {
         /**
@@ -3137,7 +3218,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconSettings {
         /**
@@ -3147,7 +3228,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconShare {
         /**
@@ -3157,7 +3238,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconSort {
         /**
@@ -3167,7 +3248,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconTag {
         /**
@@ -3177,7 +3258,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconTextMessage {
         /**
@@ -3187,7 +3268,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconTimer {
         /**
@@ -3197,7 +3278,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconTransportBicycle {
         /**
@@ -3207,7 +3288,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconTransportBus {
         /**
@@ -3217,7 +3298,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconTransportCar {
         /**
@@ -3227,7 +3308,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconTransportWalk {
         /**
@@ -3237,7 +3318,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconTty {
         /**
@@ -3247,7 +3328,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconTwitter {
         /**
@@ -3257,7 +3338,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconTwitterAlt {
         /**
@@ -3267,7 +3348,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconUpload {
         /**
@@ -3277,7 +3358,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconVideo {
         /**
@@ -3287,13 +3368,13 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconVisa {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconVoteDislike {
         /**
@@ -3303,7 +3384,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconVoteLike {
         /**
@@ -3313,7 +3394,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconVpnKey {
         /**
@@ -3323,7 +3404,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconWheelchair {
         /**
@@ -3333,7 +3414,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconWifi {
         /**
@@ -3343,7 +3424,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioIconYoutube {
         /**
@@ -3353,7 +3434,7 @@ declare namespace LocalJSX {
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
-        "iconWidth"?: number;
+        "iconWidth"?: IconSize;
     }
     interface OntarioInput {
         /**
@@ -3525,6 +3606,7 @@ declare namespace LocalJSX {
         "ontario-icon-chevron-up": OntarioIconChevronUp;
         "ontario-icon-clock": OntarioIconClock;
         "ontario-icon-close": OntarioIconClose;
+        "ontario-icon-close-header": OntarioIconCloseHeader;
         "ontario-icon-cloud": OntarioIconCloud;
         "ontario-icon-collapse": OntarioIconCollapse;
         "ontario-icon-credit-card": OntarioIconCreditCard;
@@ -3566,6 +3648,7 @@ declare namespace LocalJSX {
         "ontario-icon-media-play": OntarioIconMediaPlay;
         "ontario-icon-media-stop": OntarioIconMediaStop;
         "ontario-icon-menu": OntarioIconMenu;
+        "ontario-icon-menu-header": OntarioIconMenuHeader;
         "ontario-icon-microphone-off": OntarioIconMicrophoneOff;
         "ontario-icon-microphone-on": OntarioIconMicrophoneOn;
         "ontario-icon-more-vertical": OntarioIconMoreVertical;
@@ -3586,6 +3669,7 @@ declare namespace LocalJSX {
         "ontario-icon-rss-feed": OntarioIconRssFeed;
         "ontario-icon-save": OntarioIconSave;
         "ontario-icon-search": OntarioIconSearch;
+        "ontario-icon-search-white": OntarioIconSearchWhite;
         "ontario-icon-sentiment-1": OntarioIconSentiment1;
         "ontario-icon-sentiment-2": OntarioIconSentiment2;
         "ontario-icon-sentiment-3": OntarioIconSentiment3;
@@ -3650,6 +3734,7 @@ declare module "@stencil/core" {
             "ontario-icon-chevron-up": LocalJSX.OntarioIconChevronUp & JSXBase.HTMLAttributes<HTMLOntarioIconChevronUpElement>;
             "ontario-icon-clock": LocalJSX.OntarioIconClock & JSXBase.HTMLAttributes<HTMLOntarioIconClockElement>;
             "ontario-icon-close": LocalJSX.OntarioIconClose & JSXBase.HTMLAttributes<HTMLOntarioIconCloseElement>;
+            "ontario-icon-close-header": LocalJSX.OntarioIconCloseHeader & JSXBase.HTMLAttributes<HTMLOntarioIconCloseHeaderElement>;
             "ontario-icon-cloud": LocalJSX.OntarioIconCloud & JSXBase.HTMLAttributes<HTMLOntarioIconCloudElement>;
             "ontario-icon-collapse": LocalJSX.OntarioIconCollapse & JSXBase.HTMLAttributes<HTMLOntarioIconCollapseElement>;
             "ontario-icon-credit-card": LocalJSX.OntarioIconCreditCard & JSXBase.HTMLAttributes<HTMLOntarioIconCreditCardElement>;
@@ -3691,6 +3776,7 @@ declare module "@stencil/core" {
             "ontario-icon-media-play": LocalJSX.OntarioIconMediaPlay & JSXBase.HTMLAttributes<HTMLOntarioIconMediaPlayElement>;
             "ontario-icon-media-stop": LocalJSX.OntarioIconMediaStop & JSXBase.HTMLAttributes<HTMLOntarioIconMediaStopElement>;
             "ontario-icon-menu": LocalJSX.OntarioIconMenu & JSXBase.HTMLAttributes<HTMLOntarioIconMenuElement>;
+            "ontario-icon-menu-header": LocalJSX.OntarioIconMenuHeader & JSXBase.HTMLAttributes<HTMLOntarioIconMenuHeaderElement>;
             "ontario-icon-microphone-off": LocalJSX.OntarioIconMicrophoneOff & JSXBase.HTMLAttributes<HTMLOntarioIconMicrophoneOffElement>;
             "ontario-icon-microphone-on": LocalJSX.OntarioIconMicrophoneOn & JSXBase.HTMLAttributes<HTMLOntarioIconMicrophoneOnElement>;
             "ontario-icon-more-vertical": LocalJSX.OntarioIconMoreVertical & JSXBase.HTMLAttributes<HTMLOntarioIconMoreVerticalElement>;
@@ -3711,6 +3797,7 @@ declare module "@stencil/core" {
             "ontario-icon-rss-feed": LocalJSX.OntarioIconRssFeed & JSXBase.HTMLAttributes<HTMLOntarioIconRssFeedElement>;
             "ontario-icon-save": LocalJSX.OntarioIconSave & JSXBase.HTMLAttributes<HTMLOntarioIconSaveElement>;
             "ontario-icon-search": LocalJSX.OntarioIconSearch & JSXBase.HTMLAttributes<HTMLOntarioIconSearchElement>;
+            "ontario-icon-search-white": LocalJSX.OntarioIconSearchWhite & JSXBase.HTMLAttributes<HTMLOntarioIconSearchWhiteElement>;
             "ontario-icon-sentiment-1": LocalJSX.OntarioIconSentiment1 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment1Element>;
             "ontario-icon-sentiment-2": LocalJSX.OntarioIconSentiment2 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment2Element>;
             "ontario-icon-sentiment-3": LocalJSX.OntarioIconSentiment3 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment3Element>;

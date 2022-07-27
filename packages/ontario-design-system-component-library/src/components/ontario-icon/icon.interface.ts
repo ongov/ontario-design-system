@@ -1,4 +1,4 @@
-import { IconColour } from './icon.enum';
+import { IconColour, IconSize } from './icon.types';
 
 export interface Icon {
 	/**
@@ -6,7 +6,7 @@ export interface Icon {
 	 * the aspect ratio.
 	 * Implementation is mandatory in each icon component.
 	 */
-	iconWidth: number;
+	iconWidth: IconSize;
 
 	/**
 	 * Mutable variable, for internal use only.
@@ -54,5 +54,5 @@ export interface IconWithColour extends Icon {
 	 * Set the icon's colour based on validation result.
 	 * Implementation is only mandatory in icon components that accept a colour input from users.
 	 */
-	iconColourState: IconColour;
+	iconColourState: string;
 }
