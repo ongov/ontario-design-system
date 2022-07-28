@@ -1,2 +1,2 @@
 export * from './components';
-export { setAssetPath } from '@ontario-digital-service/ontario-design-system-component-library';
+export { setAssetPath } from '@ontario-digital-service/ontario-design-system-component-library/dist/components';
