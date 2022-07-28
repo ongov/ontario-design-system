@@ -36,10 +36,10 @@ export default function HeaderApplicationExample() {
               }'
 						menu-Items='[{
                 "name": "Health",
-                "href": "/ontario-hint"
+                "href": "#/ontario-header"
               },{
                 "name": "Financial Health",
-                "href": "/ontario-hint"
+                "href": "#/ontario-header"
               }]'
 					></OntarioHeader>
 
