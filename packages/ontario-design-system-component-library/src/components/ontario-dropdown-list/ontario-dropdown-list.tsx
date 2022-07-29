@@ -190,8 +190,13 @@ export class OntarioDropdownList implements Dropdown {
     return this.elementId ?? '';
   }
 
-  componentWillLoad() {
+  @Watch('caption')
+  private updateCaptionState() {
     this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language);
+  }
+
+  componentWillLoad() {
+    this.updateCaptionState();
     this.parseOptions();
     this.validateName(this.name);
     this.validateLabel(this.label);
@@ -200,7 +205,7 @@ export class OntarioDropdownList implements Dropdown {
   }
 
   componentWillUpdate() {
-    this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language);
+    this.updateCaptionState();
   }
 
   render() {
