@@ -2,11 +2,14 @@
 	"name": "@ontario-digital-service/ontario-design-system-component-library-react",
 	"sideEffects": false,
 	"version": "1.0.0",
-	"private": true,
+	"private": false,
 	"description": "React specific wrapper for ontario-design-system-component-library",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/ionic-team/ionic.git"
+	},
+	"publishConfig": {
+		"access": "public"
 	},
 	"scripts": {
 		"build": "npm run clean && npm run compile",
