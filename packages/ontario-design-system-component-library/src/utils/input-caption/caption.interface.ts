@@ -1,5 +1,4 @@
-import { CaptionType } from './input-caption.enum';
-
+import { CaptionType } from "./input-caption.types";
 export interface Caption {
 	/**
 	 * The text to display as the caption. Must be implemented.

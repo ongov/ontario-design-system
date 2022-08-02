@@ -1,5 +1,6 @@
 import { h } from '@stencil/core';
-import { CaptionType, MessageContentType } from './input-caption.enum';
+import { CaptionType, CaptionTypes } from './input-caption.types';
+import { MessageContentType } from './input-caption.enum';
 import { Caption } from './caption.interface';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
@@ -55,7 +56,7 @@ export class InputCaption implements Caption {
 		this.componentTagName = componentTagName.toLocaleLowerCase();
 		this.captionText = captionObject?.captionText ?? '';
 		this.captionType =
-			(captionObject && captionObject?.captionType && Object.values(CaptionType).find(type => type === captionObject?.captionType?.toLowerCase())) || CaptionType.Default;
+			(captionObject && captionObject?.captionType && CaptionTypes.find(type => type === captionObject?.captionType?.toLowerCase())) || 'default';
 		this.validateCaption(captionObject);
 		this.translations = translations;
 		this.language = language;
@@ -69,7 +70,7 @@ export class InputCaption implements Caption {
 	getCaption = (captionFor?: string): HTMLElement => {
 		const captionContent = this.isLegend ? (
 			<legend class={this.getClass()}>
-				{this.captionType === CaptionType.Heading ? <h1>{this.captionText}</h1> : this.captionText}
+				{this.captionType === 'heading' ? <h1>{this.captionText}</h1> : this.captionText}
 				{this.getRequiredFlagElement()}
 			</legend>
 		) : (
@@ -80,7 +81,7 @@ export class InputCaption implements Caption {
 		);
 
 		// with `this.captionType` already set to one of the enum values, the comparison no longer needs the `toLowerCase()` transform
-		return this.captionType === CaptionType.Heading && !this.isLegend ? <h1>{captionContent}</h1> : captionContent;
+		return this.captionType === 'heading' && !this.isLegend ? <h1>{captionContent}</h1> : captionContent;
 	};
 
 	/**
@@ -104,7 +105,7 @@ export class InputCaption implements Caption {
 	 * @returns CSS class for the `label` element.
 	 */
 	private getClass(): string {
-		return this.captionType === CaptionType.Large || this.captionType === CaptionType.Heading ? (this.isLegend ? `ontario-fieldset__legend ontario-fieldset__legend--${this.captionType}` : `ontario-label ontario-label--${this.captionType}`) : (this.isLegend ? "ontario-fieldset__legend" : "ontario-label");
+		return this.captionType === 'large' || this.captionType === 'heading' ? (this.isLegend ? `ontario-fieldset__legend ontario-fieldset__legend--${this.captionType}` : `ontario-label ontario-label--${this.captionType}`) : (this.isLegend ? "ontario-fieldset__legend" : "ontario-label");
 	}
 
 	/**
@@ -137,7 +138,7 @@ export class InputCaption implements Caption {
 				messageType = MessageContentType.UndefinedCaptionType;
 			} else {
 				// incorrect `captionType`
-				if (!Object.values(CaptionType).includes(caption?.captionType?.toLowerCase() as CaptionType)) {
+				if (!CaptionTypes.includes(caption?.captionType?.toLowerCase() as CaptionType)) {
 					messageType = MessageContentType.IncorrectCaptionType;
 				}
 			}
@@ -145,7 +146,7 @@ export class InputCaption implements Caption {
 
 		if (messageType) {
 			const message = new ConsoleMessageClass().addDesignSystemTag();
-			
+
 			if (messageType !== MessageContentType.UndefinedCaptionObject) {
 				message
 				.addMonospaceText(` ${messageType === MessageContentType.EmptyCaptionText || messageType === MessageContentType.UndefinedCaptionText ? 'captionText' : 'captionType'} `)
