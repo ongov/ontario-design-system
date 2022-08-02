@@ -1,6 +1,6 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-component-library",
-	"version": "1.0.0",
+	"version": "2.0.0-beta.1",
 	"private": false,
 	"description": "Stencil Component Starter",
 	"main": "dist/index.cjs.js",
@@ -31,7 +31,7 @@
 	},
 	"dependencies": {
 		"@stencil/core": "2.13.0",
-		"@ontario-digital-service/ontario-design-system-global-styles": "1.0.0"
+		"@ontario-digital-service/ontario-design-system-global-styles": "2.0.0-beta.1"
 	},
 	"devDependencies": {
 		"@stencil/react-output-target": "0.0.9",
