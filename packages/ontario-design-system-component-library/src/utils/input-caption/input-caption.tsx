@@ -1,5 +1,6 @@
 import { h } from '@stencil/core';
-import { CaptionType, CaptionTypes, MessageContentType, MessageContentTypes } from './input-caption.types';
+import { CaptionType, CaptionTypes } from './input-caption.types';
+import { MessageContentType } from './input-caption.enum';
 import { Caption } from './caption.interface';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
@@ -118,29 +119,27 @@ export class InputCaption implements Caption {
 	private validateCaption(caption?: InputCaption) {
 		let messageType;
 
-		const findMessageType = (message: string) => MessageContentTypes.find(type => type === message);
-
 		// undefined `caption` object
 		if (!caption || Object.keys(caption).length <= 0) {
-			messageType = findMessageType('undefinedCaptionObject');
+			messageType = MessageContentType.UndefinedCaptionObject;
 		} else {
 			// undefined `captionText` property
 			if (!caption.captionText) {
-				messageType = findMessageType('undefinedCaption');
+				messageType = MessageContentType.UndefinedCaptionText;
 			} else {
 				// `captionText` that is empty or contains only spaces
 				if (/^\s*$/.test(caption.captionText)) {
-					messageType = findMessageType('emptyCaption');
+					messageType = MessageContentType.EmptyCaptionText;
 				}
 			}
 
 			// undefined `captionType`
 			if (!caption.captionType) {
-				messageType = findMessageType('undefinedCaptionType');
+				messageType = MessageContentType.UndefinedCaptionType;
 			} else {
 				// incorrect `captionType`
 				if (!CaptionTypes.includes(caption?.captionType?.toLowerCase() as CaptionType)) {
-					messageType =  findMessageType('incorrectCaptionType');
+					messageType = MessageContentType.IncorrectCaptionType;
 				}
 			}
 		}
@@ -148,9 +147,9 @@ export class InputCaption implements Caption {
 		if (messageType) {
 			const message = new ConsoleMessageClass().addDesignSystemTag();
 
-			if (messageType !== 'undefinedCaptionObject') {
+			if (messageType !== MessageContentType.UndefinedCaptionObject) {
 				message
-				.addMonospaceText(` ${messageType === findMessageType('emptyCaption') || messageType === findMessageType('undefinedCaption') ? 'captionText' : 'captionType'} `)
+				.addMonospaceText(` ${messageType === MessageContentType.EmptyCaptionText || messageType === MessageContentType.UndefinedCaptionText ? 'captionText' : 'captionType'} `)
 				.addRegularText('property of');
 			}
 
@@ -171,22 +170,22 @@ export class InputCaption implements Caption {
 			// undefinedCaptionObject example: caption object on <ontario-input> is required but not defined. A blank followed by a (optional) flag is assumed.
 			// undefinedCaptionText example: captionText property of caption object on <ontario-input> is required but not defined. A blank followed by a (optional) flag is assumed.
 			// EmptyCaptionText example: captionText property of caption object on <ontario-input> is empty or contains only spaces. A blank followed by a (optional) flag is assumed.
-			case 'undefinedCaptionObject':
-			case 'undefinedCaption':
-			case 'emptyCaption':
+			case MessageContentType.UndefinedCaptionObject:
+			case MessageContentType.UndefinedCaptionText:
+			case MessageContentType.EmptyCaptionText:
 				message
-					.addRegularText(`${messageType === 'emptyCaption' ? 'is empty or contains only spaces' : 'is required but not defined'}. A blank followed by a`)
+					.addRegularText(`${messageType === MessageContentType.EmptyCaptionText ? 'is empty or contains only spaces' : 'is required but not defined'}. A blank followed by a`)
 					.addMonospaceText(` ${requiredFlagText} `)
 					.addRegularText('flag is assumed.');
 				break;
 
 			// UndefinedCaptionType example: captionType property of caption object on <ontario-input> is not defined. The default type is assumed.
-			case 'undefinedCaptionType':
+			case MessageContentType.UndefinedCaptionType:
 				message.addRegularText('is not defined. The').addMonospaceText(' default ').addRegularText('type is assumed.');
 				break;
 
 			// IncorrectCaptionType example: captionType property of caption object on <ontario-input> was set to an incorrect type; only default, heading or large type is allowed. The default type is assumed.
-			case 'incorrectCaptionType':
+			case MessageContentType.IncorrectCaptionType:
 				message
 					.addRegularText('was set to an incorrect type; only')
 					.addMonospaceText(' default, heading, ')
