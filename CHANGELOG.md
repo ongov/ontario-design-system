@@ -1,3 +1,10 @@
+# 2.0.0-beta.2 (2022-08-03)
+
+
+### Bug Fixes
+
+* **design-tokens:** update reference to design token variables bd233ac
+
 # 2.0.0-beta.1 (2022-08-02)
 
 
