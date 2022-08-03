@@ -1,3 +1,10 @@
+# 2.0.0-beta.4 (2022-08-03)
+
+
+### Bug Fixes
+
+* **release:** add react comp lib `src/` to package cca6034
+
 # 2.0.0-beta.3 (2022-08-03)
 
 
