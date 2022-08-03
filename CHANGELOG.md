@@ -1,3 +1,10 @@
+# 2.0.0-beta.3 (2022-08-03)
+
+
+### Bug Fixes
+
+* **release:** update files propery in package.json files a3adab2
+
 # 2.0.0-beta.2 (2022-08-03)
 
 
