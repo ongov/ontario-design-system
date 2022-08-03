@@ -26,6 +26,7 @@
 	"types": "./dist/index.d.ts",
 	"files": [
 		"dist/",
+		"src/",
 		"package.json",
 		"README.md"
 	],
