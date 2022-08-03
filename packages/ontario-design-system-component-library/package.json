@@ -16,7 +16,12 @@
 	},
 	"files": [
 		"dist/",
-		"loader/"
+		"loader/",
+		"src/",
+		"www/",
+		"LICENSE",
+		"package.json",
+		"readme.md"
 	],
 	"scripts": {
 		"build": "stencil build --docs",

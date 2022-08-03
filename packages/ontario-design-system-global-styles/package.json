@@ -16,7 +16,9 @@
 		"clean:full": "rm -rf node_modules && npm run clean"
 	},
 	"files": [
-		"dist/"
+		"dist/",
+		"package.json",
+		"README.md"
 	],
 	"authors": [
 		{
