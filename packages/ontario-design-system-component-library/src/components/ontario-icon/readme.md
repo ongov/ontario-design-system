@@ -29,10 +29,10 @@ Example of a bookmark icon, where the user is is passing a colour property of 'G
 
 ## Properties
 
-| Property    | Attribute    | Description                                                                                                         | Type                                                                         | Default            |
-| ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------ |
-| `colour`    | `colour`     | Set the icon's colour.                                                                                              | `IconColour.Black \| IconColour.Blue \| IconColour.Grey \| IconColour.White` | `IconColour.Black` |
-| `iconWidth` | `icon-width` | The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio. | `number`                                                                     | `IconSize.Default` |
+| Property    | Attribute    | Description                                                                                                         | Type                                     | Default   |
+| ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | --------- |
+| `colour`    | `colour`     | Set the icon's colour.                                                                                              | `"black" \| "blue" \| "grey" \| "white"` | `'black'` |
+| `iconWidth` | `icon-width` | The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio. | `24`                                     | `24`      |
 
 
 ## Dependencies
