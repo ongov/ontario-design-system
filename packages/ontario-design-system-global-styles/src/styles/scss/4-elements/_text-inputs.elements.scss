@@ -1,20 +1,26 @@
+@use '../1-variables/typography.variables' as typography;
+@use '../1-variables/colours.variables' as colours;
+@use '../1-variables/spacing.variables' as spacing;
+@use '../1-variables/global.variables' as global;
+@use '../2-tools/placeholder/focus.placeholders' as *;
+
 /*
 *  Text Inputs
 */
 
 .ontario-input {
-  border: $border-size-standard solid $ontario-colour-black;
-  border-radius: $global-radius;
+  border: global.$border-size-standard solid colours.$ontario-colour-black;
+  border-radius: global.$global-radius;
   box-sizing: border-box;
-  color: $ontario-colour-black;
+  color: colours.$ontario-colour-black;
   display: block;
   font-size: 1rem;
-  font-family: $ontario-font-open-sans;
-  line-height: $line-height-default;
-  margin: 0 0 $spacing-7;
-  max-width: $standard-width;
-  width: $full-width;
-  padding: 0.625rem $spacing-4;
+  font-family: typography.$ontario-font-open-sans;
+  line-height: global.$line-height-default;
+  margin: 0 0 spacing.$spacing-7;
+  max-width: global.$standard-width;
+  width: global.$full-width;
+  padding: 0.625rem spacing.$spacing-4;
   transition: $ontario-focus-transition;
 
   &:focus,

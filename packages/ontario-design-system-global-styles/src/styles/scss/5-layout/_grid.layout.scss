@@ -1,3 +1,6 @@
+@use '../2-tools/mixins/grid.mixins' as *;
+@use '../1-variables/grid.variables';
+
 @include ontario-exports("grid") {
   .ontario-row {
       @include ontario-grid-row;
@@ -33,36 +36,36 @@
   .ontario-column,
   .ontario-columns {
       @include ontario-grid-column(
-          $columns:$total-columns
+          $columns:grid.$total-columns
       );
 
       & + &:last-child {
-          float: $last-child-float;
+          float: grid.$last-child-float;
       };
 
       & + &.ontario-end {
-          float: $default-float;
+          float: grid.$default-float;
       };
   }
 
-  @media #{$small-up} {
+  @media #{grid.$small-up} {
       @include ontario-grid-html-classes(
           $size:small
       );
   }
 
-  @media #{$medium-up} {
+  @media #{grid.$medium-up} {
       @include ontario-grid-html-classes(
           $size:medium
       );
   }
 
-  @media #{$large-up} {
+  @media #{grid.$large-up} {
       @include ontario-grid-html-classes(
           $size:large
       );
 
-      @for $i from 0 through $total-columns - 1 {
+      @for $i from 0 through grid.$total-columns - 1 {
           .ontario-push-#{$i} {
               @include ontario-grid-column(
                   $push:$i,
@@ -81,13 +84,13 @@
       }
   }
 
-  @media #{$xlarge-up} {
+  @media #{grid.$xlarge-up} {
       @include ontario-grid-html-classes(
           $size:xlarge
       );
   }
 
-  @media #{$xxlarge-up} {
+  @media #{grid.$xxlarge-up} {
       @include ontario-grid-html-classes(
           $size:xxlarge
       );

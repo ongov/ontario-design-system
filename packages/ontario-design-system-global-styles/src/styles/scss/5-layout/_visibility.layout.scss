@@ -1,3 +1,6 @@
+@use '../1-variables/global.variables' as global;
+@use '../1-variables/breakpoints.variables' as breakpoints;
+
 /*
 * Visibility
 *
@@ -12,63 +15,63 @@
     visibility: hidden;
 }
 
-@media screen and (max-width: ($small-breakpoint - $pixel)) {
+@media screen and (max-width: (breakpoints.$small-breakpoint - global.$pixel)) {
     .ontario-hide-for-small-only {
         display: none;
     }
 }
 
-@media screen and (max-width: 0em), screen and (min-width: $small-breakpoint) {
+@media screen and (max-width: 0em), screen and (min-width: breakpoints.$small-breakpoint) {
     .ontario-show-for-small-only {
         display: none;
     }
 }
 
-@media print, screen and (min-width: $small-breakpoint) {
+@media print, screen and (min-width: breakpoints.$small-breakpoint) {
     .ontario-hide-for-medium {
         display: none;
     }
 }
 
-@media screen and (max-width: ($small-breakpoint - $pixel)) {
+@media screen and (max-width: (breakpoints.$small-breakpoint - global.$pixel)) {
     .ontario-show-for-medium {
         display: none;
     }
 }
 
-@media screen and (min-width: $small-breakpoint) and (max-width: ($medium-breakpoint - $pixel)) {
+@media screen and (min-width: breakpoints.$small-breakpoint) and (max-width: (breakpoints.$medium-breakpoint - global.$pixel)) {
     .ontario-hide-for-medium-only {
         display: none;
     }
 }
 
-@media screen and (max-width: ($small-breakpoint - $pixel)),
-    screen and (min-width: $medium-breakpoint) {
+@media screen and (max-width: (breakpoints.$small-breakpoint - global.$pixel)),
+    screen and (min-width: breakpoints.$medium-breakpoint) {
     .ontario-show-for-medium-only {
         display: none;
     }
 }
 
-@media print, screen and (min-width: $medium-breakpoint) {
+@media print, screen and (min-width: breakpoints.$medium-breakpoint) {
     .ontario-hide-for-large {
         display: none;
     }
 }
 
-@media screen and (max-width: ($medium-breakpoint - $pixel)) {
+@media screen and (max-width: (breakpoints.$medium-breakpoint - global.$pixel)) {
     .ontario-show-for-large {
         display: none;
     }
 }
 
-@media screen and (min-width: $medium-breakpoint) and (max-width: ($large-breakpoint - $pixel)) {
+@media screen and (min-width: breakpoints.$medium-breakpoint) and (max-width: (breakpoints.$large-breakpoint - global.$pixel)) {
     .ontario-hide-for-large-only {
         display: none;
     }
 }
 
-@media screen and (max-width: ($medium-breakpoint - $pixel)),
-    screen and (min-width: $large-breakpoint) {
+@media screen and (max-width: (breakpoints.$medium-breakpoint - global.$pixel)),
+    screen and (min-width: breakpoints.$large-breakpoint) {
     .ontario-show-for-large-only {
         display: none
     }

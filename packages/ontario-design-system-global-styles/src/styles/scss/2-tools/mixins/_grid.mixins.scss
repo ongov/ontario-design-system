@@ -1,4 +1,6 @@
 @use 'sass:math';
+@use 'sass:list';
+@use '../../1-variables/grid.variables' as grid;
 
 /*
 *  Grid mixins
@@ -52,7 +54,7 @@
 @mixin ontario-grid-row($behaviour: false) {
   // use @include ontario-grid-row(nest); to include a nested row
   @if $behaviour == nest {
-    margin: 0 math.div(-$column-gutter, 2);
+    margin: 0 list.slash(-(grid.$column-gutter), 2);
     max-width: none;
     width: auto;
   }
@@ -60,7 +62,7 @@
   // use @include ontario-grid-row(collapse); to collapsed a container row margins
   @else if $behaviour == collapse {
       margin: 0;
-      max-width: $row-width;
+      max-width: grid.$row-width;
       width: 100%;
   }
 
@@ -74,7 +76,7 @@
   // use @include ontario-grid-row; to use a container row
   @else {
       margin: 0 auto;
-      max-width: $row-width;
+      max-width: grid.$row-width;
       width: 100%;
   }
 
@@ -128,36 +130,36 @@
   // Gutter padding whenever a column isn't set to collapse
   // (use $collapse:null to do nothing)
   @else if $collapse == false {
-      padding-left: math.div($column-gutter, 2);
-      padding-right: math.div($column-gutter, 2);
+      padding-left: list.slash(grid.$column-gutter, 2);
+      padding-right: list.slash(grid.$column-gutter, 2);
       box-sizing: border-box;
   }
 
   // If a column number is given, calculate width
   @if $columns {
-      width: ontario-grid-calc($columns, $total-columns);
+      width: ontario-grid-calc($columns, grid.$total-columns);
 
       // If last column, float naturally instead of to the right
-      @if $last-column { float: $opposite-direction; }
+      @if $last-column { float: grid.$opposite-direction; }
   }
 
   // Source Ordering, adds left/right depending on which you use.
   @if $push {
-      #{$default-float}: ontario-grid-calc($push, $total-columns);
-      #{$opposite-direction}: auto;
+      #{grid.$default-float}: ontario-grid-calc($push, grid.$total-columns);
+      #{grid.$opposite-direction}: auto;
   }
   @if $pull {
-      #{$opposite-direction}: ontario-grid-calc($pull, $total-columns);
-      #{$default-float}: auto;
+      #{grid.$opposite-direction}: ontario-grid-calc($pull, grid.$total-columns);
+      #{grid.$default-float}: auto;
   }
 
   @if $float and $last-column == false {
       @if $float == left or $float == true {
-          float: $default-float;
+          float: grid.$default-float;
       }
 
       @else if $float == right {
-          float: $opposite-direction;
+          float: grid.$opposite-direction;
       }
 
       @else {
@@ -167,14 +169,14 @@
 
   // If centered, get rid of float and add appropriate margins
   @if $center {
-      margin-#{$default-float}: auto;
-      margin-#{$opposite-direction}: auto;
+      margin-#{grid.$default-float}: auto;
+      margin-#{grid.$opposite-direction}: auto;
       float: none;
   }
 
   // If offset, calculate appropriate margins
   @if $offset {
-      margin-#{$default-float}: ontario-grid-calc($offset, $total-columns) !important;
+      margin-#{grid.$default-float}: ontario-grid-calc($offset, grid.$total-columns) !important;
   }
 }
 
@@ -186,7 +188,7 @@
 ///   Name of class to use, i.e. "large" will generate .large-1, .large-2, etc.
 
 @mixin ontario-grid-html-classes($size) {
-  @for $i from 0 through $total-columns - 1 {
+  @for $i from 0 through grid.$total-columns - 1 {
       .ontario-#{$size}-push-#{$i} {
           @include ontario-grid-column(
               $push:$i,
@@ -213,7 +215,7 @@
   }
 
 
-  @for $i from 1 through $total-columns {
+  @for $i from 1 through grid.$total-columns {
       .ontario-#{$size}-#{$i} {
           @include ontario-grid-column(
               $columns:$i,
@@ -223,7 +225,7 @@
       }
   }
 
-  @for $i from 0 through $total-columns - 1 {
+  @for $i from 0 through grid.$total-columns - 1 {
       .ontario-#{$size}-offset-#{$i} {
           @include ontario-grid-column(
               $offset:$i,
@@ -234,10 +236,10 @@
   }
 
   .ontario-#{$size}-reset-order {
-      float: $default-float;
+      float: grid.$default-float;
       left: auto;
-      margin-#{$default-float}: 0;
-      margin-#{$opposite-direction}: 0;
+      margin-#{grid.$default-float}: 0;
+      margin-#{grid.$opposite-direction}: 0;
       right: auto;
   }
 
@@ -252,9 +254,9 @@
 
   .ontario-column.ontario-#{$size}-uncentered,
   .ontario-columns.ontario-#{$size}-uncentered {
-      float: $default-float;
-      margin-#{$default-float}: 0;
-      margin-#{$opposite-direction}: 0;
+      float: grid.$default-float;
+      margin-#{grid.$default-float}: 0;
+      margin-#{grid.$opposite-direction}: 0;
   }
 
   // Fighting [class*="ontario-column"] + [class*="ontario-column"]:last-child
@@ -266,12 +268,12 @@
   // Fighting ontario-.column.<previous-size>-centered:last-child
   .ontario-column.ontario-#{$size}-uncentered:last-child,
   .ontario-columns.ontario-#{$size}-uncentered:last-child {
-      float: $default-float;
+      float: grid.$default-float;
   }
 
   .ontario-column.ontario-#{$size}-uncentered.ontario-opposite,
   .ontario-columns.ontario-#{$size}-uncentered.ontario-opposite {
-      float: $opposite-direction;
+      float: grid.$opposite-direction;
   }
 
   .ontario-row {

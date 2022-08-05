@@ -1,5 +1,5 @@
 @use "sass:math";
-@import '../../global.scss';
+@use '../../global.scss';
 
 $ontario-checkboxes-size: 28px;
 $ontario-checkboxes-size-mobile: 32px;
@@ -7,21 +7,21 @@ $ontario-checkbox-border-size: 2px;
 $ontario-checkbox-box-shadow-outline: 4px;
 
 .ontario-checkboxes {
-    margin-bottom: $spacing-7;
-    max-width: $standard-width;
+    margin-bottom: global.$spacing-7;
+    max-width: global.$standard-width;
 }
 
 .ontario-checkboxes__item {
     position: relative;
-    margin: 0 0 $spacing-4;
-    padding: 0 0 0 $spacing-6;
+    margin: 0 0 global.$spacing-4;
+    padding: 0 0 0 global.$spacing-6;
     min-height: $ontario-checkboxes-size;
     box-sizing: content-box;
     &:last-of-type {
         margin: 0;
     }
-    @media screen and (max-width: $small-breakpoint) {
-        padding: 0 0 0$spacing-7;
+    @media screen and (max-width: global.$small-breakpoint) {
+        padding: 0 0 0 global.$spacing-7;
         min-height: $ontario-checkboxes-size-mobile;
     }
 }
@@ -33,30 +33,30 @@ $ontario-checkbox-box-shadow-outline: 4px;
     top: -$ontario-checkbox-border-size;
     left: -$ontario-checkbox-border-size;
     opacity: 0;
-    width: $touch-target-size;
-    height: $touch-target-size;
-    z-index: $ontario-z-index-neutral;
+    width: global.$touch-target-size;
+    height: global.$touch-target-size;
+    z-index: global.$ontario-z-index-neutral;
 
     // prevent blue default highlighting of input on android
     -webkit-tap-highlight-color: transparent;
 
-    @media screen and (max-width: $small-breakpoint) {
-        width: $touch-target-size-mobile;
-        height: $touch-target-size-mobile;
+    @media screen and (max-width: global.$small-breakpoint) {
+        width: global.$touch-target-size-mobile;
+        height: global.$touch-target-size-mobile;
     }
 }
 
 .ontario-checkboxes__label {
     display: inline-block;
     cursor: pointer;
-    line-height: $line-height-default;
+    line-height: global.$line-height-default;
     // Specific spacing required in order to visually align label with input
-    margin: $spacing-1 0;
-    padding: 0 $spacing-4;
+    margin: global.$spacing-1 0;
+    padding: 0 global.$spacing-4;
     width: auto;
     white-space: normal;
 
-    @media screen and (max-width: $small-breakpoint) {
+    @media screen and (max-width: global.$small-breakpoint) {
         // Specific spacing required in order to visually align label with input
         margin: 0.33rem 0;
     }
@@ -64,8 +64,8 @@ $ontario-checkbox-box-shadow-outline: 4px;
     // [ ] Check box styles
     &:before {
         content: "";
-        border: $ontario-checkbox-border-size solid $ontario-colour-black;
-        border-radius: $global-radius;
+        border: $ontario-checkbox-border-size solid global.$ontario-colour-black;
+        border-radius: global.$global-radius;
         position: absolute;
         top: 0;
         left: 0;
@@ -74,7 +74,7 @@ $ontario-checkbox-box-shadow-outline: 4px;
         transition: border 0.1s ease-in-out;
         display: block;
 
-        @media screen and (min-width: $small-breakpoint) {
+        @media screen and (min-width: global.$small-breakpoint) {
             width: $ontario-checkboxes-size;
             height: $ontario-checkboxes-size;
         }
@@ -94,7 +94,7 @@ $ontario-checkbox-box-shadow-outline: 4px;
         bottom: 0;
         opacity: 0;
         display: block;
-        @media screen and (max-width: $small-breakpoint) {
+        @media screen and (max-width: global.$small-breakpoint) {
             height: $ontario-checkboxes-size-mobile +
                 $ontario-checkbox-border-size;
             width: $ontario-checkboxes-size-mobile +
@@ -104,9 +104,9 @@ $ontario-checkbox-box-shadow-outline: 4px;
 }
 
 .ontario-checkboxes__input:focus + .ontario-checkboxes__label:before {
-    -moz-box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline $ontario-colour-focus;
-    -webkit-box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline $ontario-colour-focus;
-    box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline $ontario-colour-focus;
+    -moz-box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline global.$ontario-colour-focus;
+    -webkit-box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline global.$ontario-colour-focus;
+    box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline global.$ontario-colour-focus;
     outline: $ontario-checkbox-box-shadow-outline solid transparent;
     transition: all 0.1s ease-in-out;
 }
@@ -116,13 +116,13 @@ $ontario-checkbox-box-shadow-outline: 4px;
 }
 
 .ontario-checkboxes__input:checked + .ontario-checkboxes__label:before {
-    background-color: $ontario-colour-black;
+    background-color: global.$ontario-colour-black;
 }
 
 .ontario-checkboxes__hint-expander {
-  margin: $spacing-3 0 0 $spacing-2;
+  margin: global.$spacing-3 0 0 global.$spacing-2;
 
-  @media screen and (max-width: $small-breakpoint) {
-    margin-top: $spacing-4;
+  @media screen and (max-width: global.$small-breakpoint) {
+    margin-top: global.$spacing-4;
   }
 }

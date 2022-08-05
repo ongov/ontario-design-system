@@ -1,20 +1,27 @@
+@use '../1-variables/typography.variables' as typography;
+@use '../1-variables/colours.variables' as colours;
+@use '../1-variables/spacing.variables' as spacing;
+@use '../1-variables/global.variables' as global;
+@use '../1-variables/breakpoints.variables' as breakpoints;
+@use '../2-tools/placeholder/typography.placeholders' as *;
+
 /*
 *  Labels
 */
 
 .ontario-label {
 	cursor: pointer;
-	color: $ontario-colour-black;
-	font-family: $ontario-font-raleway-modified;
+	color: colours.$ontario-colour-black;
+	font-family: typography.$ontario-font-raleway-modified;
 	font-size: 1.1875rem;
 	font-weight: 700;
-	line-height: $line-height-default;
-	margin: 0 0 $spacing-4 0;
-	max-width: $narrow-width;
+	line-height: global.$line-height-default;
+	margin: 0 0 spacing.$spacing-4 0;
+	max-width: global.$narrow-width;
 	white-space: normal;
 	width: 100%;
 
-	@media screen and (max-width: $small-breakpoint) {
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		font-size: 1.125rem;
 		line-height: 1.56;
 	}
@@ -26,7 +33,7 @@
 	line-height: 1.2;
 	max-width: 26.25em;
 
-	@media screen and (max-width: $small-breakpoint) {
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		font-size: 1.4375rem;
 		line-height: 1.39;
 	}
@@ -34,12 +41,12 @@
 
 h1 > .ontario-label--heading {
 	display: inline-block;
-	margin: $spacing-0;
+	margin: spacing.$spacing-0;
 	@extend %h1-styles;
 }
 
 .ontario-label__flag {
-	font-family: $ontario-font-open-sans;
+	font-family: typography.$ontario-font-open-sans;
 	font-size: 1rem;
 	font-weight: 400;
 

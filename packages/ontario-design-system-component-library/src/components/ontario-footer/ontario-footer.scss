@@ -1,34 +1,34 @@
 @use "sass:math";
-@import '../../global.scss';
+@use '../../global.scss';
 
 .ontario-footer {
-	color: $ontario-colour-white;
-	padding: $spacing-9 $spacing-0;
-	font-family: $ontario-font-open-sans;
-	font-size: $ontario-font-size-standard-body-text;
+	color: global.$ontario-colour-white;
+	padding: global.$spacing-9 global.$spacing-0;
+	font-family: global.$ontario-font-open-sans;
+	font-size: global.$ontario-font-size-standard-body-text;
 	line-height: 1.6rem;
 }
 
 .ontario-footer .ontario-columns {
 	*:last-child {
-		margin-bottom: $spacing-0;
+		margin-bottom: global.$spacing-0;
 	}
 
-	@media screen and (max-width: $medium-breakpoint) {
-		margin-bottom: $spacing-8;
+	@media screen and (max-width: global.$medium-breakpoint) {
+		margin-bottom: global.$spacing-8;
 
 		&:last-of-type {
-			margin-bottom: $spacing-0;
+			margin-bottom: global.$spacing-0;
 		}
 	}
 }
 
 .ontario-footer__links-container {
 	list-style: none;
-	margin: $spacing-0 $spacing-0 $spacing-4 $spacing-0;
+	margin: global.$spacing-0 global.$spacing-0 global.$spacing-4 global.$spacing-0;
 
-	@media screen and (min-width: $medium-breakpoint) {
-		margin-bottom: $spacing-2;
+	@media screen and (min-width: global.$medium-breakpoint) {
+		margin-bottom: global.$spacing-2;
 	}
 
 	padding-inline-start: 0px;
@@ -39,7 +39,7 @@
 	flex-direction: column;
 	flex-wrap: wrap;
 
-	@media screen and (min-width: $small-breakpoint) {
+	@media screen and (min-width: global.$small-breakpoint) {
 		flex-direction: row;
 	}
 }
@@ -49,25 +49,25 @@
 	display: block;
 	margin: 0;
 
-	@media screen and (min-width: $small-breakpoint) {
+	@media screen and (min-width: global.$small-breakpoint) {
 		column-count: 2;
 
 		.ontario-footer__link {
 			padding: 0;
-			margin: 0 $spacing-4 $spacing-4 0;
+			margin: 0 global.$spacing-4 global.$spacing-4 0;
 		}
 	}
 }
 
 .ontario-footer__links-container li {
-	padding: $spacing-1 0;
+	padding: global.$spacing-1 0;
 }
 
 .ontario-footer__link {
-	color: $ontario-colour-white;
+	color: global.$ontario-colour-white;
 	display: inline-block;
-	padding: $spacing-2 $spacing-0;
-	margin: $spacing-0;
+	padding: global.$spacing-2 global.$spacing-0;
+	margin: global.$spacing-0;
 	text-decoration: underline;
 
 	&:hover,
@@ -78,12 +78,12 @@
 	&:visited,
 	&:active,
 	&:hover {
-		color: $ontario-colour-white;
+		color: global.$ontario-colour-white;
 	}
 
-	@media screen and (min-width: $small-breakpoint) {
+	@media screen and (min-width: global.$small-breakpoint) {
 		padding: 0;
-		margin: $spacing-0 $spacing-8 $spacing-4 $spacing-0;
+		margin: global.$spacing-0 global.$spacing-8 global.$spacing-4 global.$spacing-0;
 	}
 }
 
@@ -100,12 +100,12 @@
 .ontario-footer__links-container--social .ontario-footer__link {
 	background: transparent;
 	border-radius: 45%;
-	margin: $spacing-0 $spacing-4 $spacing-3 $spacing-0;
-	padding: $spacing-0;
+	margin: global.$spacing-0 global.$spacing-4 global.$spacing-3 global.$spacing-0;
+	padding: global.$spacing-0;
 	outline: none;
 
-	height: $spacing-8 + $spacing-2;
-	width: $spacing-8 + $spacing-2;
+	height: global.$spacing-8 + global.$spacing-2;
+	width: global.$spacing-8 + global.$spacing-2;
 
 	display: flex;
 	justify-content: center;
@@ -113,16 +113,16 @@
 
 	&:hover,
 	&:focus {
-		background-color: darken($ontario-colour-white, 100);
+		background-color: darken(global.$ontario-colour-white, 100);
 
 		.ontario-icon {
-			fill: $ontario-colour-white;
+			fill: global.$ontario-colour-white;
 		}
 	}
 
-	@media screen and (min-width: $small-breakpoint) {
-		height: $spacing-8;
-		width: $spacing-8;
+	@media screen and (min-width: global.$small-breakpoint) {
+		height: global.$spacing-8;
+		width: global.$spacing-8;
 	}
 }
 
@@ -130,31 +130,31 @@ $ontario-icon-size--social-large: 36px;
 $ontario-icon-size--social-small: 32px;
 
 .ontario-footer__links-container--social .ontario-footer__link .ontario-icon {
-	fill: $ontario-colour-white;
+	fill: global.$ontario-colour-white;
 	width: $ontario-icon-size--social-large;
 	height: $ontario-icon-size--social-large;
 
-	@media screen and (min-width: $small-breakpoint) {
+	@media screen and (min-width: global.$small-breakpoint) {
 		width: $ontario-icon-size--social-small;
 		height: $ontario-icon-size--social-small;
 	}
 }
 
 .ontario-footer__paragraph {
-	max-width: $standard-width;
-	width: $full-width;
-	margin: 0 0 $spacing-5 0;
+	max-width: global.$standard-width;
+	width: global.$full-width;
+	margin: 0 0 global.$spacing-5 0;
 
     a {
-        color: $ontario-colour-white;
-        font-weight: $ontario-font-weights-semi-bold;
+        color: global.$ontario-colour-white;
+        font-weight: global.$ontario-font-weights-semi-bold;
 
 		&:visited {
-			color: $ontario-colour-white;
+			color: global.$ontario-colour-white;
 		}
 
 		&:active {
-			color: darken($ontario-colour-white, 10);
+			color: darken(global.$ontario-colour-white, 10);
 		}
 
 		&:focus,
@@ -165,24 +165,24 @@ $ontario-icon-size--social-small: 32px;
 }
 
 .ontario-footer__ministry-logo {
-	width: $full-width;
+	width: global.$full-width;
 	max-width: 255px;
 }
 
 .ontario-button.ontario-footer__button {
-	background-color: $ontario-colour-black;
-	border: 2px solid $ontario-colour-white;
-	border-color: $ontario-colour-white;
-	color: $ontario-colour-white;
-	margin-bottom: $spacing-6;
+	background-color: global.$ontario-colour-black;
+	border: 2px solid global.$ontario-colour-white;
+	border-color: global.$ontario-colour-white;
+	color: global.$ontario-colour-white;
+	margin-bottom: global.$spacing-6;
 
 	&:hover,
 	&:focus {
-		background-color: darken($ontario-colour-white, 70);
+		background-color: darken(global.$ontario-colour-white, 70);
 	}
 
 	&:active {
-		background-color: darken($ontario-colour-white, 60);
+		background-color: darken(global.$ontario-colour-white, 60);
 	}
 }
 
@@ -192,13 +192,13 @@ $ontario-icon-size--social-small: 32px;
 	position: relative;
 
 	&:before {
-		background-color: darken($ontario-colour-white, 80);
+		background-color: darken(global.$ontario-colour-white, 80);
 		background-repeat: no-repeat;
 		content: '';
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: $full-width;
+		width: global.$full-width;
 		height: 100%;
 	}
 }
@@ -217,19 +217,19 @@ $ontario-icon-size--social-small: 32px;
 
 /* Default footer */
 .ontario-footer--default {
-	background-color: $ontario-colour-black;
-	border-bottom: $spacing-1 solid $ontario-greyscale-70;
+	background-color: global.$ontario-colour-black;
+	border-bottom: global.$spacing-1 solid global.$ontario-greyscale-70;
 
 	&:before {
 		background-size: 112.5rem;
 		background-position: calc(50vw - 73.5rem) -64rem;
 
-		@media screen and (min-width: $small-breakpoint) {
+		@media screen and (min-width: global.$small-breakpoint) {
 			background-size: 180rem;
 			background-position: calc(50vw - 120rem) -106rem;
 		}
 
-		@media screen and (min-width: $medium-breakpoint) {
+		@media screen and (min-width: global.$medium-breakpoint) {
 			background-size: 275rem;
 			background-position: calc(50vw - 187rem) -160rem;
 		}
@@ -238,13 +238,13 @@ $ontario-icon-size--social-small: 32px;
 
 /* Partnership footer */
 .ontario-footer--partnership {
-	background-color: $ontario-colour-black;
+	background-color: global.$ontario-colour-black;
 }
 
 .ontario-footer__partnership-logo-container {
 	text-align: right;
 
-	@media screen and (max-width: $small-breakpoint) {
+	@media screen and (max-width: global.$small-breakpoint) {
 		text-align: left;
 	}
 
@@ -256,10 +256,10 @@ $ontario-icon-size--social-small: 32px;
 .ontario-footer__ontario-logo {
 	display: inline-block;
 	height: 46px;
-	margin-bottom: $spacing-5;
-	margin-top: $spacing-0;
+	margin-bottom: global.$spacing-5;
+	margin-top: global.$spacing-0;
 
-	@media screen and (min-width: $medium-breakpoint) {
+	@media screen and (min-width: global.$medium-breakpoint) {
 		margin-top: -5px;
 	}
 }
@@ -267,24 +267,24 @@ $ontario-icon-size--social-small: 32px;
 /* expanded footer */
 .ontario-footer--expandedTwoColumn,
 .ontario-footer--expandedThreeColumn{
-	padding-top: $spacing-0;
-	background-color: $ontario-colour-black;
-	border-bottom: $spacing-1 solid $ontario-greyscale-70;
+	padding-top: global.$spacing-0;
+	background-color: global.$ontario-colour-black;
+	border-bottom: global.$spacing-1 solid global.$ontario-greyscale-70;
 }
 
 .ontario-footer__expanded-top-section {
-	background-color: darken($ontario-colour-white, 85);
-	padding: $spacing-9 $spacing-0;
+	background-color: darken(global.$ontario-colour-white, 85);
+	padding: global.$spacing-9 global.$spacing-0;
 
 	&:before {
 		background-size: 165rem;
 		background-position: calc(50vw - 125rem) -64rem;
 
-		@media screen and (min-width: $small-breakpoint) {
+		@media screen and (min-width: global.$small-breakpoint) {
 			background-size: 250rem;
 			background-position: calc(50vw - 195rem) -106rem;
 		}
-		@media screen and (min-width: $medium-breakpoint) {
+		@media screen and (min-width: global.$medium-breakpoint) {
 			background-size: 305rem;
 			background-position: calc(50vw - 222rem) -160rem;
 		}
@@ -300,7 +300,7 @@ $ontario-icon-size--social-small: 32px;
 	}
 
 	&:active {
-		color: darken($ontario-colour-white, 10);
+		color: darken(global.$ontario-colour-white, 10);
 	}
 }
 
@@ -309,18 +309,18 @@ $ontario-icon-size--social-small: 32px;
 }
 
 .ontario-expanded-footer__one-third-block {
-	margin-bottom: $spacing-0;
+	margin-bottom: global.$spacing-0;
 
 	&:first-of-type,
 	&:nth-child(2) {
-		margin-bottom: $spacing-8;
+		margin-bottom: global.$spacing-8;
 	}
 
-	@media screen and (min-width: $small-breakpoint) {
-		margin-bottom: $spacing-0;
+	@media screen and (min-width: global.$small-breakpoint) {
+		margin-bottom: global.$spacing-0;
 
 		&:first-of-type {
-			margin-bottom: $spacing-8;
+			margin-bottom: global.$spacing-8;
 		}
 
 		&:nth-child(2) {
@@ -328,18 +328,18 @@ $ontario-icon-size--social-small: 32px;
 		}
 	}
 
-	@media screen and (min-width: $medium-breakpoint) {
-		margin-bottom: $spacing-0;
+	@media screen and (min-width: global.$medium-breakpoint) {
+		margin-bottom: global.$spacing-0;
 
 		&:first-of-type {
-			margin-bottom: $spacing-0;
+			margin-bottom: global.$spacing-0;
 		}
 	}
 }
 
 .ontario-footer__expanded-bottom-section {
-	background-color: $ontario-colour-black;
-	padding-top: $spacing-9;
+	background-color: global.$ontario-colour-black;
+	padding-top: global.$spacing-9;
 }
 
 
@@ -347,12 +347,12 @@ $ontario-icon-size--social-small: 32px;
 // aligned to use the real <ontario-button>, if possible.
 .ontario-button {
 	border: none;
-	border-radius: $spacing-1;
+	border-radius: global.$spacing-1;
 	box-sizing: border-box;
 	box-shadow: none;
 	display: inline-block;
 	font-size: 1.125rem;
-	font-family: $ontario-font-open-sans;
+	font-family: global.$ontario-font-open-sans;
 	font-weight: 600;
 	line-height: math.div(14, 9);
 	margin: 0 (1rem + 0.75rem) 1.5rem 0;
@@ -366,10 +366,10 @@ $ontario-icon-size--social-small: 32px;
 .ontario-button:active,
 .ontario-footer__link:active,
 a:active {
-	box-shadow: 0 0 0 $spacing-1 $ontario-colour-focus;
-	outline: $spacing-1 solid transparent;
+	box-shadow: 0 0 0 global.$spacing-1 global.$ontario-colour-focus;
+	outline: global.$spacing-1 solid transparent;
 	transition: all 0.1s ease-in-out;
-	background-color: $ontario-colour-black !important;
+	background-color: global.$ontario-colour-black !important;
 }
 
 .ontario-footer-paragraph {
