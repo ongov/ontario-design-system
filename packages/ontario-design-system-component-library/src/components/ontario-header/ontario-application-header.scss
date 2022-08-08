@@ -174,9 +174,8 @@ $ontario-logo-height: 46px;
 
 .ontario-application-subheader__menu li {
 	border-radius: $global-radius;
-	margin-left: $spacing-3;
+	margin-left: $spacing-4;
 	text-align: center;
-	max-width: 155px;
 	&:hover {
 		background-color: $ontario-greyscale-60;
 		color: $ontario-colour-white;
@@ -190,13 +189,11 @@ $ontario-logo-height: 46px;
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: rem-calc(18);
 	font-weight: $ontario-font-weights-semi-bold;
-	height: auto;
 	line-height: rem-calc(23);
-	padding: $spacing-3 $spacing-2;
+	padding: $spacing-3;
 	text-decoration: none;
-	white-space: pre-line;
-	outline: none;
-	text-align: left;
+	white-space: nowrap;
+
 	&.ontario-link--active {
 		border-radius: 4px 4px 0 0;
 		border-bottom: 4px solid $ontario-colour-white;
