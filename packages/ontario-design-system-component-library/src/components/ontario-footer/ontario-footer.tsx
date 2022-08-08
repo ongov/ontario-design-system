@@ -187,13 +187,13 @@ export class OntarioFooter {
 								{this.type == 'expandedTwoColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedTwoColumnState?.firstColumn?.title}</h2>
-										<div class="ontario-footer--paragraph" innerHTML={this.expandedTwoColumnState?.firstColumn?.content} />
+										<div class="ontario-footer__paragraph" innerHTML={this.expandedTwoColumnState?.firstColumn?.content} />
 									</div>
 								)}
 								{this.type == 'expandedThreeColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedThreeColumnState?.firstColumn?.title}</h2>
-										<div class="ontario-footer--paragraph" innerHTML={this.expandedThreeColumnState?.firstColumn?.content} />
+										<div class="ontario-footer__paragraph" innerHTML={this.expandedThreeColumnState?.firstColumn?.content} />
 									</div>
 								)}
 							</div>
@@ -221,7 +221,7 @@ export class OntarioFooter {
 								{this.type == 'expandedTwoColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedTwoColumnState?.secondColumn?.title}</h2>
-										<div class="ontario-footer--paragraph" innerHTML={this.expandedTwoColumnState?.secondColumn?.content} />
+										<div class="ontario-footer__paragraph" innerHTML={this.expandedTwoColumnState?.secondColumn?.content} />
 										<a class="ontario-footer__button ontario-button ontario-margin-bottom-0-!" href={this.defaultState?.contactLink}>
 											{this.expandedTwoColumnState?.secondColumn?.contactButtonText}
 										</a>
@@ -230,7 +230,7 @@ export class OntarioFooter {
 								{this.type == 'expandedThreeColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedThreeColumnState?.thirdColumn?.title}</h2>
-										<div class="ontario-footer--paragraph" innerHTML={this.expandedThreeColumnState?.thirdColumn?.content} />
+										<div class="ontario-footer__paragraph" innerHTML={this.expandedThreeColumnState?.thirdColumn?.content} />
 										<ul class="ontario-footer__links-container ontario-footer__links-container--social">
 											{this.expandedThreeColumnState.thirdColumn.facebook && (
 												<li>
