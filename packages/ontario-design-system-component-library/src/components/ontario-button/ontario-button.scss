@@ -125,3 +125,30 @@ $ontario-button-bg-secondary: $ontario-colour-white;
 		color: $ontario-colour-link;
 	}
 }
+
+.ontario-button-colour--internalWhite {
+	background-color: $ontario-colour-white;
+}
+
+.ontario-button-colour--internalBlack {
+	background-color: $ontario-colour-black;
+
+	&:hover {
+		background-color: $ontario-greyscale-70;
+	}
+}
+
+.ontario-button-link-colour--internalWhite {
+	color: $ontario-colour-white;
+	border-color: $ontario-colour-white;
+
+	&:hover {
+		color: $ontario-colour-white;
+		border-color: $ontario-colour-white;
+	}
+}
+
+.ontario-button-link-colour--internalBlack {
+	color: $ontario-colour-black;
+	border-color: $ontario-colour-black;
+}

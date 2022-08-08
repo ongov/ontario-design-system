@@ -2,7 +2,7 @@ import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
 import { Button } from './button.interface';
 import { validatePropExists, validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { ButtonType, ButtonTypes, HtmlType, HtmlTypes } from './ontario-button.types';
+import { ButtonType, ButtonTypes, HtmlType, HtmlTypes, ButtonColour, ButtonLinkColour } from './ontario-button.types';
 
 @Component({
 	tag: 'ontario-button',
@@ -45,6 +45,16 @@ export class OntarioButton implements Button {
 	@Prop() label?: string;
 
 	@State() labelState: string;
+
+	/**
+ 	 * Set the button's colour.
+   */
+	@Prop() colour?: ButtonColour = 'internalWhite';
+
+	/**
+ 	 * Set the button's colour.
+   */
+	@Prop() linkColour?: ButtonLinkColour = 'internalBlack';
 
 	/*
 	 * Watch for changes in the `label` variable for validation purposes.
@@ -159,7 +169,7 @@ export class OntarioButton implements Button {
 	 * @returns the classes of the button based of the button's `type`.
 	 */
 	private getClass() {
-		return `ontario-button ontario-button--${this.typeState}`;
+		return `ontario-button ontario-button--${this.typeState} ontario-button-colour--${this.colour} ontario-button-link-colour--${this.linkColour}`;
 	}
 
 	public getId(): string {

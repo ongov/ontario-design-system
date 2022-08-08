@@ -50,14 +50,29 @@ It can be confusing and frustrating for users to expect a button to trigger an a
 
 ## Properties
 
-| Property    | Attribute    | Description                                                                                               | Type                                     | Default       |
-| ----------- | ------------ | --------------------------------------------------------------------------------------------------------- | ---------------------------------------- | ------------- |
-| `ariaLabel` | `aria-label` | Provides more context as to what the button interaction is doing.                                         | `string \| undefined`                    | `undefined`   |
-| `elementId` | `element-id` | The unique identifier of the button.                                                                      | `string \| undefined`                    | `undefined`   |
-| `htmlType`  | `html-type`  | The native HTML button type the button should use.                                                        | `"button" \| "reset" \| "submit"`        | `'button'`    |
-| `label`     | `label`      | Text to be displayed within the button. This will override the text provided through the Element Content. | `string \| undefined`                    | `undefined`   |
-| `type`      | `type`       | The type of button to render.                                                                             | `"primary" \| "secondary" \| "tertiary"` | `'secondary'` |
+| Property     | Attribute     | Description                                                                                               | Type                                              | Default           |
+| ------------ | ------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ----------------- |
+| `ariaLabel`  | `aria-label`  | Provides more context as to what the button interaction is doing.                                         | `string \| undefined`                             | `undefined`       |
+| `colour`     | `colour`      | Set the button's colour.                                                                                  | `"internalBlack" \| "internalWhite" \| undefined` | `'internalWhite'` |
+| `elementId`  | `element-id`  | The unique identifier of the button.                                                                      | `string \| undefined`                             | `undefined`       |
+| `htmlType`   | `html-type`   | The native HTML button type the button should use.                                                        | `"button" \| "reset" \| "submit"`                 | `'button'`        |
+| `label`      | `label`       | Text to be displayed within the button. This will override the text provided through the Element Content. | `string \| undefined`                             | `undefined`       |
+| `linkColour` | `link-colour` | Set the button's colour.                                                                                  | `"internalBlack" \| "internalWhite" \| undefined` | `'internalBlack'` |
+| `type`       | `type`        | The type of button to render.                                                                             | `"primary" \| "secondary" \| "tertiary"`          | `'secondary'`     |
 
+
+## Dependencies
+
+### Used by
+
+ - [ontario-footer](../ontario-footer)
+
+### Graph
+```mermaid
+graph TD;
+  ontario-footer --> ontario-button
+  style ontario-button fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

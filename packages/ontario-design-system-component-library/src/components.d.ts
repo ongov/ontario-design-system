@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
+import { ButtonColour, ButtonLinkColour, ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
 import { InputCaption } from "./utils/input-caption/input-caption";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
@@ -39,6 +39,10 @@ export namespace Components {
          */
         "ariaLabel"?: string;
         /**
+          * Set the button's colour.
+         */
+        "colour"?: ButtonColour;
+        /**
           * The unique identifier of the button.
          */
         "elementId"?: string;
@@ -51,6 +55,10 @@ export namespace Components {
           * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
          */
         "label"?: string;
+        /**
+          * Set the button's colour.
+         */
+        "linkColour"?: ButtonLinkColour;
         /**
           * The type of button to render.
          */
@@ -2232,6 +2240,10 @@ declare namespace LocalJSX {
          */
         "ariaLabel"?: string;
         /**
+          * Set the button's colour.
+         */
+        "colour"?: ButtonColour;
+        /**
           * The unique identifier of the button.
          */
         "elementId"?: string;
@@ -2244,6 +2256,10 @@ declare namespace LocalJSX {
           * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
          */
         "label"?: string;
+        /**
+          * Set the button's colour.
+         */
+        "linkColour"?: ButtonLinkColour;
         /**
           * The type of button to render.
          */
