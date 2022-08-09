@@ -204,10 +204,6 @@ export class OntarioDropdownList implements Dropdown {
     this.elementId = this.elementId ?? uuid();
   }
 
-  componentWillUpdate() {
-    this.updateCaptionState();
-  }
-
   render() {
     return (
       <div class="ontario-form-group">
