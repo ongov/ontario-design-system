@@ -1,5 +1,5 @@
 import { Base } from '../../utils/common.interface';
-import { ButtonType, HtmlType, ButtonColour, ButtonLinkColour } from './ontario-button.types';
+import { ButtonType, HtmlType } from './ontario-button.types';
 
 export interface Button extends Base {
   /**
@@ -34,16 +34,4 @@ export interface Button extends Base {
    * The unique identifier of the button
    */
   elementId?: string;
-
-	/**
-	 * Set the button's colour.
-	 * Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
-	 */
-	colour?: ButtonColour;
-
-  /**
-	 * Set the button's link colour.
-	 * Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
-	 */
-	linkColour?: ButtonLinkColour;
 }

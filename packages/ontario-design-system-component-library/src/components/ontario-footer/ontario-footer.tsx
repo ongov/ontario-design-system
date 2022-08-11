@@ -222,7 +222,7 @@ export class OntarioFooter {
 									<div>
 										<h2 class="ontario-h4">{this.expandedTwoColumnState?.secondColumn?.title}</h2>
 										<div class="ontario-footer--paragraph" innerHTML={this.expandedTwoColumnState?.secondColumn?.content} />
-										<ontario-button label="Secondary" aria-label="Secondary Button" colour="internalBlack"  linkColour="internalWhite" htmlType="reset" id="secondaryButton" onClick={() => window.location.href = 'mailto:design.system@ontario.ca'}>
+										<ontario-button label="Send us an email" aria-label="Secondary Button" type="internalThemeDark" htmlType="reset" id="secondaryButton" onClick={() => window.location.href = 'mailto:design.system@ontario.ca'}>
 											{this.expandedTwoColumnState?.secondColumn?.contactButtonText}
 										</ontario-button>
 									</div>
