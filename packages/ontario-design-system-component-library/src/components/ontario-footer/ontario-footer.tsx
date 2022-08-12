@@ -222,9 +222,11 @@ export class OntarioFooter {
 									<div>
 										<h2 class="ontario-h4">{this.expandedTwoColumnState?.secondColumn?.title}</h2>
 										<div class="ontario-footer--paragraph" innerHTML={this.expandedTwoColumnState?.secondColumn?.content} />
-										<ontario-button label="Send us an email" aria-label="Secondary Button" type="internalThemeDark" htmlType="reset" id="secondaryButton" onClick={() => window.location.href = 'mailto:design.system@ontario.ca'}>
-											{this.expandedTwoColumnState?.secondColumn?.contactButtonText}
-										</ontario-button>
+										<a href={this.defaultState?.contactLink}>
+											<ontario-button aria-label="Secondary Button" type="internalThemeDark" htmlType="reset" id="secondaryButton">
+												{this.expandedTwoColumnState?.secondColumn?.contactButtonText}
+											</ontario-button>
+										</a>
 									</div>
 								)}
 								{this.type == 'expandedThreeColumn' && (
