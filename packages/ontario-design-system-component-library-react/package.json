@@ -19,7 +19,7 @@
 		"compile": "npm run tsc",
 		"tsc": "tsc -p .",
 		"rollup": "rollup -c",
-		"copy:assets": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/assets/*\" dist/assets"
+		"copy:assets": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/fonts/**/*\" \"node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/assets/*\" dist/assets"
 	},
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
