@@ -1,0 +1,34 @@
+@use '../1-variables/spacing.variables' as spacing;
+
+/*
+* Spacing overrides
+*
+* This .scss loop will create margin & padding helpers classes
+*/
+
+$spacing-units: (
+	0: spacing.$spacing-0,
+	4: spacing.$spacing-1,
+	8: spacing.$spacing-2,
+	12: spacing.$spacing-3,
+	16: spacing.$spacing-4,
+	24: spacing.$spacing-5,
+	32: spacing.$spacing-6,
+	40: spacing.$spacing-7,
+	48: spacing.$spacing-8,
+	64: spacing.$spacing-9,
+);
+
+$sides: (top, bottom, left, right);
+
+@each $unit, $spacing in $spacing-units {
+	@each $side in $sides {
+		.ontario-margin-#{$side}-#{$unit}-\! {
+			margin-#{$side}: #{$spacing};
+		}
+
+		.ontario-padding-#{$side}-#{$unit}-\! {
+			padding-#{$side}: #{$spacing};
+		}
+	}
+}

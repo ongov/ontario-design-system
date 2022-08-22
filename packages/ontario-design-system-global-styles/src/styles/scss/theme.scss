@@ -31,12 +31,17 @@
 @forward './3-generics/colours.generics';
 @forward './3-generics/typography.generics';
 
-// /*** 4 - Elements ***/
-@forward './4-elements/global.elements';
-@forward './4-elements/labels.elements';
-@forward './4-elements/text-inputs.elements';
+/*** 4 - Elements ***/
+@import './4-elements/global.elements';
 
-// /*** 5 - Layout ***/
-@forward './5-layout/form.layout';
-@forward './5-layout/grid.layout';
-@forward './5-layout/visibility.layout';
+/*** 5 - Layout ***/
+@import './5-layout/grid.layout';
+
+/*** 6 - Components ***/
+@import './6-components/form.component';
+@import './6-components/labels.component';
+@import './6-components/text-inputs.component';
+
+/*** 7 - Overrides ***/
+@import './7-overrides/spacing.overrides';
+@import './7-overrides/visibility.overrides';

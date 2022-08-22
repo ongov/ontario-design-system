@@ -3,6 +3,12 @@ module.exports = {
 	ontarioColour: {
 		greyscale: {
 			white: { value: '#FFFFFF' },
+			black: { value: '#1A1A1A' },
+			greyscale5: { value: '#F2F2F2' },
+			greyscale20: { value: '#CCCCCC' },
+			greyscale40: { value: '#999999' },
+			greyscale60: { value: '#666666' },
+			greyscale70: { value: '#4D4D4D' },
 		},
 		system: {
 			link: { value: '#0066CC' },
@@ -72,6 +78,12 @@ module.exports = {
 				grey: { value: '#666666' },
 				black: { value: '#1A1A1A' },
 				white: { value: '#FFFFFF' },
+			},
+			buttonColours: {
+				secondaryHover: { value: '#E0F0FF' },
+				secondaryActive: { value: '#C2E0FF' },
+				tertiaryHover: { value: '#E8E8E8' },
+				tertiaryActive: { value: '#D1D1D1' },
 			},
 		},
 	},
