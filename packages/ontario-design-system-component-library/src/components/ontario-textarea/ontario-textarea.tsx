@@ -63,21 +63,20 @@ export class OntarioTextarea implements Input {
 	/**
 	 * Define hint text for Ontario textarea.
 	 */
-	 @Prop() hintText?: string;
+	@Prop() hintText?: string;
 
-
-	 @Prop() hintExpander?: HintExpander | string;
+	@Prop() hintExpander?: HintExpander | string;
 
 	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.
 	 */
 	@State() private internalHintExpander: HintExpander;
 
-		/**
+	/**
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
-		 @Prop({ mutable: true }) language?: string = 'en';
+	@Prop({ mutable: true }) language?: string = 'en';
 
 	@Watch('hintExpander')
 	private parseHintExpander() {
@@ -174,16 +173,18 @@ export class OntarioTextarea implements Input {
 		return this.value ?? '';
 	}
 
+	private getClass(): string {
+		return this.hintExpander ? `ontario-textarea ontario-textarea-hint-expander--true` : `ontario-textarea`;
+	}
+
 	render() {
 		return (
 			<div>
 				{this.captionState.getCaption(this.getId())}
-				{this.hintText && (
-						<ontario-hint-text hint={this.hintText}></ontario-hint-text>
-				)}
+				{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
 				<textarea
 					aria-describedby={this.describedBy}
-					class="ontario-textarea"
+					class={this.getClass()}
 					id={this.getId()}
 					name={this.name}
 					onBlur={this.handleBlur}
@@ -193,13 +194,9 @@ export class OntarioTextarea implements Input {
 					value={this.getValue()}
 				></textarea>
 				{this.internalHintExpander && (
-					<ontario-hint-expander
-						hint={this.internalHintExpander.hint}
-						content={this.internalHintExpander.content}
-						input-exists
-					></ontario-hint-expander>
+					<ontario-hint-expander hint={this.internalHintExpander.hint} content={this.internalHintExpander.content} input-exists></ontario-hint-expander>
 				)}
-			</div >
+			</div>
 		);
 	}
 }
