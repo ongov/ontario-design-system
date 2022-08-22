@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-textarea snapshot should render the expected html 1`] = `
+<ontario-textarea caption="{&quot;captionText&quot;: &quot;Ontario Textarea&quot;}" element-id="ontario-textarea" name="ontario-textarea">
+  <mock:shadow-root>
+    <div>
+      <label class="ontario-label" htmlfor="ontario-textarea">
+        Ontario Textarea
+        <span class="ontario-label__flag">
+          (optional)
+        </span>
+      </label><textarea class="ontario-textarea" id="ontario-textarea" name="ontario-textarea" value=""></textarea>
+    </div>
+  </mock:shadow-root>
+</ontario-textarea>
+`;
