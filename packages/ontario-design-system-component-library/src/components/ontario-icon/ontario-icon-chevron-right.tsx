@@ -105,7 +105,7 @@ export class OntarioIconChevronRight implements IconWithColour {
 	 */
     render() {
         return (
-            <div class={`ontario-icon ontario-icon--${this.iconColourState}`} style={{ 'width': `${this.iconWidthState}px` }}>
+            <div class={`ontario-icon ontario-icon--${this.iconColourState} ontario-icon--width-${this.iconWidthState}`} style={{ 'width': `${this.iconWidthState}px` }}>
                 <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="chevron-right"><path d="M10 6L8.6 7.4l4.58 4.6-4.58 4.6L10 18l6-6-6-6z"/></svg>
             </div>
         );
