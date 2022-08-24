@@ -105,7 +105,7 @@ export class OntarioIconUpload implements IconWithColour {
 	 */
     render() {
         return (
-            <div class={`ontario-icon ontario-icon--${this.iconColourState}`} style={{ 'width': `${this.iconWidthState}px` }}>
+            <div class={`ontario-icon ontario-icon--${this.iconColourState} ontario-icon--width-${this.iconWidthState}`} style={{ 'width': `${this.iconWidthState}px` }}>
                 <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="upload"><path d="M9 16v-6H5l7-7 7 7h-4v6H9zm-4 4v-2h14v2H5z"/></svg>
             </div>
         );
