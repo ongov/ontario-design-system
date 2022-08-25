@@ -119,7 +119,7 @@ export class ${toPascalCase(iconName)} implements ${hasColour ? 'IconWithColour'
   /**
    * Set the icon's colour.
    */
-  @Prop() colour: IconColour = 'black';
+  @Prop() colour: IconColour | string = 'black';
 
   /**
 	 * Mutable variable, for internal use only.

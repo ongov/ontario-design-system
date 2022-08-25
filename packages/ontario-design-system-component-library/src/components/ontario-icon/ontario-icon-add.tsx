@@ -50,7 +50,7 @@ export class OntarioIconAdd implements IconWithColour {
   /**
    * Set the icon's colour.
    */
-  @Prop() colour: IconColour = 'black';
+  @Prop() colour: IconColour | string = 'black';
 
   /**
 	 * Mutable variable, for internal use only.
