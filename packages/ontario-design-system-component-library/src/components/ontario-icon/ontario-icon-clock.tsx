@@ -105,7 +105,7 @@ export class OntarioIconClock implements IconWithColour {
 	 */
     render() {
         return (
-            <div class={`ontario-icon ontario-icon--${this.iconColourState}`} style={{ 'width': `${this.iconWidthState}px` }}>
+            <div class={`ontario-icon ontario-icon--${this.iconColourState} ontario-icon--width-${this.iconWidthState}`} style={{ 'width': `${this.iconWidthState}px` }}>
                 <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="clock"><path d="M12 2a10 10 0 0 0-7.071 2.929 10 10 0 0 0 0 14.142A10 10 0 0 0 12 22a10 10 0 0 0 10-10 10 10 0 0 0-2.929-7.071A10 10 0 0 0 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg>
             </div>
         );

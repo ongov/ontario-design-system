@@ -105,7 +105,7 @@ export class OntarioIconList implements IconWithColour {
 	 */
     render() {
         return (
-            <div class={`ontario-icon ontario-icon--${this.iconColourState}`} style={{ 'width': `${this.iconWidthState}px` }}>
+            <div class={`ontario-icon ontario-icon--${this.iconColourState} ontario-icon--width-${this.iconWidthState}`} style={{ 'width': `${this.iconWidthState}px` }}>
                 <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="list"><path d="M4 10.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 1 0 0-3zm0-6a1.5 1.5 0 1 0 0 3 1.5 1.5 0 1 0 0-3zm0 12c-.83 0-1.5.68-1.5 1.5A1.51 1.51 0 0 0 4 19.5 1.51 1.51 0 0 0 5.5 18c0-.82-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z"/></svg>
             </div>
         );

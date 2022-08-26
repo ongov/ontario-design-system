@@ -23,3 +23,7 @@
 		@extend %ontario-focus;
 	}
 }
+
+.ontario-textarea.ontario-textarea-hint-expander--true {
+	margin-bottom: $spacing-4;
+}

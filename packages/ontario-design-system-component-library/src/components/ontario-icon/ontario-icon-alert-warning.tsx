@@ -81,7 +81,7 @@ export class OntarioIconAlertWarning implements Icon {
 	 */
     render() {
         return (
-            <div class='ontario-icon' style={{ 'width': `${this.iconWidthState}px` }}>
+            <div class={`ontario-icon ontario-icon--width-${this.iconWidthState}`} style={{ 'width': `${this.iconWidthState}px` }}>
                 <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-warning"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" fill="#ffd440"/><path d="M11 10h2v4h-2zm0 6h2v2h-2z" fill="#000"/></svg>
             </div>
         );

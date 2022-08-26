@@ -105,7 +105,7 @@ export class OntarioIconCloud implements IconWithColour {
 	 */
     render() {
         return (
-            <div class={`ontario-icon ontario-icon--${this.iconColourState}`} style={{ 'width': `${this.iconWidthState}px` }}>
+            <div class={`ontario-icon ontario-icon--${this.iconColourState} ontario-icon--width-${this.iconWidthState}`} style={{ 'width': `${this.iconWidthState}px` }}>
                 <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="cloud"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.1 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.9 0 14c0 3.3 2.7 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
             </div>
         );
