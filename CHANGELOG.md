@@ -1,3 +1,10 @@
+# 2.0.0-beta.5 (2022-08-26)
+
+
+### Bug Fixes
+
+* **release:** update to new beta cd707f2
+
 # 2.0.0-beta.4 (2022-08-03)
 
 
