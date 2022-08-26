@@ -1,14 +1,14 @@
-@use '../2-tools/mixins/grid.mixins' as *;
-@use '../1-variables/grid.variables';
+@use '../2-tools/mixins/grid.mixins' as gridMixins;
+@use '../1-variables/grid.variables' as gridVariables;
 
-@include ontario-exports("grid") {
+@include gridMixins.ontario-exports("grid") {
   .ontario-row {
-      @include ontario-grid-row;
+      @include gridMixins.ontario-grid-row;
 
       &.ontario-row--collapse {
           > .ontario-column,
           > .ontario-columns {
-              @include ontario-grid-column(
+              @include gridMixins.ontario-grid-column(
                   $collapse:true,
                   $float:false
               );
@@ -21,12 +21,12 @@
       }
 
       .ontario-row {
-          @include ontario-grid-row(
+          @include gridMixins.ontario-grid-row(
               $behaviour:nest
           );
 
           &.ontario-row--collapse {
-              @include ontario-grid-row(
+              @include gridMixins.ontario-grid-row(
                   $behaviour:nest-collapse
               );
           }
@@ -35,39 +35,39 @@
 
   .ontario-column,
   .ontario-columns {
-      @include ontario-grid-column(
-          $columns:grid.$total-columns
+      @include gridMixins.ontario-grid-column(
+          $columns: gridVariables.$total-columns
       );
 
       & + &:last-child {
-          float: grid.$last-child-float;
+          float: gridVariables.$last-child-float;
       };
 
       & + &.ontario-end {
-          float: grid.$default-float;
+          float: gridVariables.$default-float;
       };
   }
 
-  @media #{grid.$small-up} {
-      @include ontario-grid-html-classes(
+  @media #{gridVariables.$small-up} {
+      @include gridMixins.ontario-grid-html-classes(
           $size:small
       );
   }
 
-  @media #{grid.$medium-up} {
-      @include ontario-grid-html-classes(
+  @media #{gridVariables.$medium-up} {
+      @include gridMixins.ontario-grid-html-classes(
           $size:medium
       );
   }
 
-  @media #{grid.$large-up} {
-      @include ontario-grid-html-classes(
+  @media #{gridVariables.$large-up} {
+      @include gridMixins.ontario-grid-html-classes(
           $size:large
       );
 
-      @for $i from 0 through grid.$total-columns - 1 {
+      @for $i from 0 through gridVariables.$total-columns - 1 {
           .ontario-push-#{$i} {
-              @include ontario-grid-column(
+              @include gridMixins.ontario-grid-column(
                   $push:$i,
                   $collapse:null,
                   $float:false
@@ -75,7 +75,7 @@
           }
 
           .ontario-pull-#{$i} {
-              @include ontario-grid-column(
+              @include gridMixins.ontario-grid-column(
                   $pull:$i,
                   $collapse:null,
                   $float:false
@@ -84,14 +84,14 @@
       }
   }
 
-  @media #{grid.$xlarge-up} {
-      @include ontario-grid-html-classes(
+  @media #{gridVariables.$xlarge-up} {
+      @include gridMixins.ontario-grid-html-classes(
           $size:xlarge
       );
   }
 
-  @media #{grid.$xxlarge-up} {
-      @include ontario-grid-html-classes(
+  @media #{gridVariables.$xxlarge-up} {
+      @include gridMixins.ontario-grid-html-classes(
           $size:xxlarge
       );
   }

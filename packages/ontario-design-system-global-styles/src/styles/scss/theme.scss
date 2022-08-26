@@ -32,10 +32,10 @@
 @forward './3-generics/typography.generics';
 
 /*** 4 - Elements ***/
-@import './4-elements/global.elements';
+@forward './4-elements/global.elements';
 
 /*** 5 - Layout ***/
-@import './5-layout/grid.layout';
+@forward './5-layout/grid.layout';
 
 /*** 6 - Components ***/
 @import './6-components/form.component';
