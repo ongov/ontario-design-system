@@ -38,10 +38,10 @@
 @forward './5-layout/grid.layout';
 
 /*** 6 - Components ***/
-@import './6-components/form.component';
-@import './6-components/labels.component';
-@import './6-components/text-inputs.component';
+@forward './6-components/form.component';
+@forward './6-components/labels.component';
+@forward './6-components/text-inputs.component';
 
 /*** 7 - Overrides ***/
-@import './7-overrides/spacing.overrides';
-@import './7-overrides/visibility.overrides';
+@forward './7-overrides/spacing.overrides';
+@forward './7-overrides/visibility.overrides';

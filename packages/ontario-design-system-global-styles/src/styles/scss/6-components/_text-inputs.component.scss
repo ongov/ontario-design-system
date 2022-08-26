@@ -2,7 +2,7 @@
 @use '../1-variables/colours.variables' as colours;
 @use '../1-variables/spacing.variables' as spacing;
 @use '../1-variables/global.variables' as global;
-@use '../2-tools/placeholder/focus.placeholders' as *;
+@use '../2-tools/placeholder/focus.placeholders' as focusPlaceholders;
 
 /*
 *  Text Inputs
@@ -21,7 +21,7 @@
   max-width: global.$standard-width;
   width: global.$full-width;
   padding: 0.625rem spacing.$spacing-4;
-  transition: $ontario-focus-transition;
+  transition: focusPlaceholders.$ontario-focus-transition;
 
   &:focus,
   &:active {
