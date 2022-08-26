@@ -221,7 +221,7 @@ export class OntarioFooter {
 								{this.type == 'expandedTwoColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedTwoColumnState?.secondColumn?.title}</h2>
-										<div class="ontario-footer--paragraph" innerHTML={this.expandedTwoColumnState?.secondColumn?.content} />
+										<div class="ontario-footer__paragraph" innerHTML={this.expandedTwoColumnState?.secondColumn?.content} />
 										<a href={this.defaultState?.contactLink}>
 											<ontario-button aria-label="Secondary Button" type="internalThemeDark" htmlType="reset" id="secondaryButton">
 												{this.expandedTwoColumnState?.secondColumn?.contactButtonText}
