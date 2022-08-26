@@ -1,6 +1,6 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-global-styles",
-	"version": "1.0.0",
+	"version": "2.0.0-beta.3",
 	"private": false,
 	"description": "This is a global styles package for the Ontario Design System",
 	"main": "index.css",
@@ -16,7 +16,9 @@
 		"clean:full": "rm -rf node_modules && npm run clean"
 	},
 	"files": [
-		"dist/"
+		"dist/",
+		"package.json",
+		"README.md"
 	],
 	"authors": [
 		{
@@ -38,7 +40,7 @@
 	],
 	"license": "ISC",
 	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-design-tokens": "1.0.0"
+		"@ontario-digital-service/ontario-design-system-design-tokens": "2.0.0-beta.3"
 	},
 	"devDependencies": {
 		"del": "^6.0.0",

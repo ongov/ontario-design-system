@@ -231,7 +231,7 @@ describe('ontario-footer', () => {
                     <h2 class="ontario-h4">
                       5
                     </h2>
-                    <div class="ontario-footer--paragraph">
+                    <div class="ontario-footer__paragraph">
                       6
                     </div>
                   </div>
@@ -241,7 +241,7 @@ describe('ontario-footer', () => {
                     <h2 class="ontario-h4">
                       7
                     </h2>
-                    <div class="ontario-footer--paragraph">
+                    <div class="ontario-footer__paragraph">
                       8
                     </div>
                     <a href="3">
@@ -378,7 +378,7 @@ describe('ontario-footer', () => {
                     <h2 class="ontario-h4">
                       5
                     </h2>
-                    <div class="ontario-footer--paragraph">
+                    <div class="ontario-footer__paragraph">
                       6
                     </div>
                   </div>
@@ -400,7 +400,7 @@ describe('ontario-footer', () => {
                     <h2 class="ontario-h4">
                       10
                     </h2>
-                    <div class="ontario-footer--paragraph">
+                    <div class="ontario-footer__paragraph">
                       11
                     </div>
                     <ul class="ontario-footer__links-container ontario-footer__links-container--social">

@@ -33,10 +33,15 @@
 
 /*** 4 - Elements ***/
 @import './4-elements/global.elements';
-@import './4-elements/labels.elements';
-@import './4-elements/text-inputs.elements';
 
 /*** 5 - Layout ***/
-@import './5-layout/form.layout';
 @import './5-layout/grid.layout';
-@import './5-layout/visibility.layout';
+
+/*** 6 - Components ***/
+@import './6-components/form.component';
+@import './6-components/labels.component';
+@import './6-components/text-inputs.component';
+
+/*** 7 - Overrides ***/
+@import './7-overrides/spacing.overrides';
+@import './7-overrides/visibility.overrides';

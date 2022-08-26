@@ -105,7 +105,7 @@ export class OntarioIconPhone implements IconWithColour {
 	 */
     render() {
         return (
-            <div class={`ontario-icon ontario-icon--${this.iconColourState}`} style={{ 'width': `${this.iconWidthState}px` }}>
+            <div class={`ontario-icon ontario-icon--${this.iconColourState} ontario-icon--width-${this.iconWidthState}`} style={{ 'width': `${this.iconWidthState}px` }}>
                 <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="phone"><path d="M20 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1 .24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.9-6.83l1.95-1.66a1.02 1.02 0 0 0 .24-1.02c-.37-1.1-.56-2.3-.56-3.53A1 1 0 0 0 7.65 3H4.2C3.65 3 3 3.24 3 4c0 9.3 7.73 17 17 17 .7 0 1-.63 1-1.18v-3.45a1 1 0 0 0-.99-.99z"/></svg>
             </div>
         );

@@ -1,19 +1,27 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-component-library",
-	"version": "1.0.0",
-	"private": true,
+	"version": "2.0.0-beta.3",
+	"private": false,
 	"description": "Stencil Component Starter",
 	"main": "dist/index.cjs.js",
-	"module": "dist/custom-elements/index.js",
+	"module": "dist/index.js",
 	"es2015": "dist/esm/index.mjs",
 	"es2017": "dist/esm/index.mjs",
-	"types": "dist/custom-elements/index.d.ts",
+	"types": "dist/types/index.d.ts",
 	"collection": "dist/collection/collection-manifest.json",
 	"collection:main": "dist/collection/index.js",
 	"unpkg": "dist/ontario-design-system-component-library/ontario-design-system-component-library.esm.js",
+	"publishConfig": {
+		"access": "public"
+	},
 	"files": [
 		"dist/",
-		"loader/"
+		"loader/",
+		"src/",
+		"www/",
+		"LICENSE",
+		"package.json",
+		"readme.md"
 	],
 	"scripts": {
 		"build": "stencil build --docs",
@@ -31,7 +39,7 @@
 	},
 	"dependencies": {
 		"@stencil/core": "2.13.0",
-		"@ontario-digital-service/ontario-design-system-global-styles": "1.0.0"
+		"@ontario-digital-service/ontario-design-system-global-styles": "2.0.0-beta.3"
 	},
 	"devDependencies": {
 		"@stencil/react-output-target": "0.0.9",

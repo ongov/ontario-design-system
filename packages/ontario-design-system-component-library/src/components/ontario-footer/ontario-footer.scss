@@ -140,9 +140,10 @@ $ontario-icon-size--social-small: 32px;
 	}
 }
 
-.ontario-footer p {
+.ontario-footer__paragraph {
 	max-width: $standard-width;
 	width: $full-width;
+	margin: 0 0 $spacing-5 0;
 
     a {
         color: $ontario-colour-white;

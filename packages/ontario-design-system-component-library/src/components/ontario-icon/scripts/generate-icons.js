@@ -191,7 +191,7 @@ export class ${toPascalCase(iconName)} implements ${hasColour ? 'IconWithColour'
 	 */
     render() {
         return (
-            <div class=${hasColour ? `{\`ontario-icon ontario-icon--\${this.iconColourState}\`}` : `'ontario-icon'`} style={{ 'width': \`\${this.iconWidthState}px\` }}>
+            <div class=${hasColour ? `{\`ontario-icon ontario-icon--\${this.iconColourState}\ ontario-icon--width-\${this.iconWidthState}\`}` : `{\`ontario-icon ontario-icon--width-\${this.iconWidthState}\`}`} style={{ 'width': \`\${this.iconWidthState}px\` }}>
                 ${svgElement}
             </div>
         );

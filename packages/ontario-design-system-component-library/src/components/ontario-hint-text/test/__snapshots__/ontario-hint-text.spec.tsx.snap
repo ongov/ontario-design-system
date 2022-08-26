@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-hint-text snapshot should render the expected html 1`] = `
+<ontario-hint-text element-id="idTest" hint="This is a test hint">
+  <mock:shadow-root>
+    <p class="ontario-hint" id="idTest">
+      This is a test hint
+    </p>
+  </mock:shadow-root>
+</ontario-hint-text>
+`;
