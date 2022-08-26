@@ -77,7 +77,12 @@
 		{
 			"name": "Meaghan Carrieres",
 			"email": "Meaghan.Carrieres@ontario.ca"
+		},
+		{
+			"name": "Nakib Momin",
+			"email": "nakib.momin@ontario.ca"
 		}
+
 	],
 	"license": "Apache-2.0"
 }
