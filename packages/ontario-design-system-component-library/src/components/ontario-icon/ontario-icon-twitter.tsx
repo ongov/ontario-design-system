@@ -3,7 +3,8 @@ import { Component, Prop, h, Watch, State } from '@stencil/core';
 import { IconWithColour } from './icon.interface';
 import { IconSize, IconColour, IconColours  } from './icon.types';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions'; 
+import validateColor from "validate-color";
 
 @Component({
     tag: 'ontario-icon-twitter',
@@ -58,6 +59,12 @@ export class OntarioIconTwitter implements IconWithColour {
   @State() iconColourState: string;
 
   /**
+   * Mutable variable, for internal use only.
+   * Set the icon's colour based on validation result.
+   */
+  @State() iconCustomColourState: string;
+
+  /**
    * Watch for changes in the `colour` variable for validation purpose.
    * If the user input doesn't match one of the enum values then `colour` will be set to its default (`black`).
    * If a match is found in one of the enum values then `colour` will be set to the matching enum value.
@@ -67,8 +74,12 @@ export class OntarioIconTwitter implements IconWithColour {
     const isValid = validateValueAgainstArray(this.colour, IconColours);
     if (isValid) {
       this.iconColourState = this.colour;
-    } else {
-      this.iconColourState = this.warnDefaultColour();
+    } else  {
+      if (validateColor(this.colour)) {
+        this.iconCustomColourState = this.colour;
+      } else {
+        this.iconColourState = this.warnDefaultColour();
+      }
     }
   }
 
@@ -106,7 +117,7 @@ export class OntarioIconTwitter implements IconWithColour {
     render() {
         return (
             <div class={`ontario-icon ontario-icon--${this.iconColourState} ontario-icon--width-${this.iconWidthState}`} style={{ 'width': `${this.iconWidthState}px` }}>
-                <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="twitter"><path d="M22.46 6c-.77.35-1.6.58-2.46.7a4.3 4.3 0 0 0 1.88-2.38 8.64 8.64 0 0 1-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.3a4.46 4.46 0 0 0 .11.98C8.28 9.1 5.1 7.38 3 4.8c-.37.63-.58 1.37-.58 2.15 0 1.5.75 2.8 1.9 3.56-.7 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.2a4.22 4.22 0 0 1-1.13.15c-.27 0-.54-.03-.8-.08a4.28 4.28 0 0 0 4 2.98c-1.46 1.16-3.3 1.84-5.33 1.84-.34 0-.68-.02-1.02-.06C3.44 20.3 5.7 21 8.12 21c7.88 0 12.2-6.54 12.2-12.2 0-.2 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg>
+                <svg class="svg-icon" style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}`}} role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="twitter"><path d="M22.46 6c-.77.35-1.6.58-2.46.7a4.3 4.3 0 0 0 1.88-2.38 8.64 8.64 0 0 1-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.3a4.46 4.46 0 0 0 .11.98C8.28 9.1 5.1 7.38 3 4.8c-.37.63-.58 1.37-.58 2.15 0 1.5.75 2.8 1.9 3.56-.7 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.2a4.22 4.22 0 0 1-1.13.15c-.27 0-.54-.03-.8-.08a4.28 4.28 0 0 0 4 2.98c-1.46 1.16-3.3 1.84-5.33 1.84-.34 0-.68-.02-1.02-.06C3.44 20.3 5.7 21 8.12 21c7.88 0 12.2-6.54 12.2-12.2 0-.2 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg>
             </div>
         );
     }

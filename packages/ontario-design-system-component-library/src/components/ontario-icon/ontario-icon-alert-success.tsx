@@ -2,7 +2,7 @@
 import { Component, Prop, h, Watch, State, Element } from '@stencil/core';
 import { Icon } from './icon.interface';
 import { IconSize } from './icon.types';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message'; 
 
 @Component({
     tag: 'ontario-icon-alert-success',
