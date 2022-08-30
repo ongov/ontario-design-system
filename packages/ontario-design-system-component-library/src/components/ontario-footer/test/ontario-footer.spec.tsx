@@ -244,8 +244,10 @@ describe('ontario-footer', () => {
                     <div class="ontario-footer__paragraph">
                       8
                     </div>
-                    <a class="ontario-button ontario-footer__button ontario-margin-bottom-0-!" href="3">
-                      9
+                    <a href="3">
+                      <ontario-button aria-label="Secondary Button" htmltype="reset" id="secondaryButton" type="internalThemeDark">
+                        9
+                      </ontario-button>
                     </a>
                   </div>
                 </div>

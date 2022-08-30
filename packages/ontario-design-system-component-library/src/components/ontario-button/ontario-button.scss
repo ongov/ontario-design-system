@@ -125,3 +125,27 @@ $ontario-button-bg-secondary: $ontario-colour-white;
 		color: $ontario-colour-link;
 	}
 }
+
+.ontario-button--internalThemeDark {
+	background-color: $ontario-colour-black;
+	border: $border-size-standard solid $ontario-colour-white;
+	color: $ontario-colour-white;
+
+	&:hover {
+		background-color: $ontario-greyscale-70;
+	}
+
+	&:focus {
+		background-color: $ontario-greyscale-70;
+		transition: background-color 0.2s ease-out, $ontario-focus-transition;
+	}
+
+	&:active {
+		background-color: $ontario-greyscale-70;
+		transition: background-color 0s, $ontario-focus-transition;
+	}
+
+	&:visited {
+		color: $ontario-colour-link;
+	}
+}

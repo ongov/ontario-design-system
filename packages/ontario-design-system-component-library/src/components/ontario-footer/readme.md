@@ -20,6 +20,7 @@
 
 ### Depends on
 
+- [ontario-button](../ontario-button)
 - [ontario-icon-facebook](../ontario-icon)
 - [ontario-icon-twitter](../ontario-icon)
 - [ontario-icon-instagram](../ontario-icon)
@@ -28,6 +29,7 @@
 ### Graph
 ```mermaid
 graph TD;
+  ontario-footer --> ontario-button
   ontario-footer --> ontario-icon-facebook
   ontario-footer --> ontario-icon-twitter
   ontario-footer --> ontario-icon-instagram
