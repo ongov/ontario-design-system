@@ -12,7 +12,7 @@ describe('ontario-dropdown-list', () => {
         <ontario-dropdown-list element-id="dropdown-list-1">
           <mock:shadow-root>
             <div class="ontario-form-group">
-              <label class="ontario-label" htmlFor="ontario-dropdown-list">
+              <label class="ontario-label" htmlfor="dropdown-list-1">
                 <span class="ontario-label__flag">
                   (optional)
                 </span>
@@ -29,17 +29,18 @@ describe('ontario-dropdown-list', () => {
       const page = await newSpecPage({
         components: [OntarioDropdownList],
         html: `<ontario-dropdown-list
-                  label="ontario dropdown label"
                   name="dropdown-options"
                   element-id="dropdown-list-1",
                   is-empty-start-option="Please select"
+                  caption='{"captionText": "ontario dropdown label", "isRequired": true}'
 								></ontario-dropdown-list>`,
       });
 
-      expect(page.rootInstance.label).toBe('ontario dropdown label');
       expect(page.rootInstance.name).toBe('dropdown-options');
       expect(page.rootInstance.elementId).toBe('dropdown-list-1');
-      expect(page.rootInstance.isEmptyStartOption).toBe("Please select");
+      expect(page.rootInstance.isEmptyStartOption).toBe('Please select');
+      expect(page.rootInstance.captionState.captionText).toBe('ontario dropdown label');
+      expect(page.rootInstance.captionState.isRequired).toBe(true);
     });
   });
 });

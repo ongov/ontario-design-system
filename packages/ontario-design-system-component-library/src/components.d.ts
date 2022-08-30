@@ -87,6 +87,11 @@ export namespace Components {
     }
     interface OntarioDropdownList {
         /**
+          * The text to display as the label
+          * @example <ontario-dropdown-list   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-dropdown-list>
+         */
+        "caption": InputCaption | string;
+        /**
           * The ID for the dropdown list.
          */
         "elementId"?: string;
@@ -101,16 +106,16 @@ export namespace Components {
          */
         "isRequired"?: boolean;
         /**
-          * The label for the Dropdown List.
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "label": string;
+        "language"?: string;
         /**
           * The name for the dropdown list.
          */
         "name": string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset.
-          * @example <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required is-empty-start-option="Please select" options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
+          * @example <ontario-dropdown-list    caption='{     "captionText": "Do you like cats?",     "captionType": "heading",     "isRequired": true   }'   name="cat-dropdown"   is-empty-start-option="Please select"    options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
          */
         "options": string | DropdownOption[];
     }
@@ -2284,6 +2289,11 @@ declare namespace LocalJSX {
     }
     interface OntarioDropdownList {
         /**
+          * The text to display as the label
+          * @example <ontario-dropdown-list   caption='{     "captionText": "Address",     "captionType": "heading",     "isRequired": true}'   ...> </ontario-dropdown-list>
+         */
+        "caption"?: InputCaption | string;
+        /**
           * The ID for the dropdown list.
          */
         "elementId"?: string;
@@ -2298,16 +2308,16 @@ declare namespace LocalJSX {
          */
         "isRequired"?: boolean;
         /**
-          * The label for the Dropdown List.
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "label"?: string;
+        "language"?: string;
         /**
           * The name for the dropdown list.
          */
         "name"?: string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset.
-          * @example <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required is-empty-start-option="Please select" options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
+          * @example <ontario-dropdown-list    caption='{     "captionText": "Do you like cats?",     "captionType": "heading",     "isRequired": true   }'   name="cat-dropdown"   is-empty-start-option="Please select"    options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
          */
         "options"?: string | DropdownOption[];
     }

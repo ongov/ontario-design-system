@@ -1,9 +1,11 @@
-import { Component, State, h, Prop, Watch, getAssetPath } from '@stencil/core';
+import { Component, State, Element, h, Prop, Watch, getAssetPath } from '@stencil/core';
+import { InputCaption } from '../../utils/input-caption/input-caption';
 import { DropdownOption } from './dropdown-option.interface';
 import { Dropdown } from './dropdown.interface';
 import { v4 as uuid } from 'uuid';
 import { validateObjectExists, validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { default as translations } from '../../translations/global.i18n.json';
 
 @Component({
   tag: 'ontario-dropdown-list',
@@ -13,9 +15,34 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 })
 export class OntarioDropdownList implements Dropdown {
   /**
-   * The label for the Dropdown List.
+   * The text to display as the label
+   *
+   * @example
+   * <ontario-dropdown-list
+   *   caption='{
+   *     "captionText": "Address",
+   *     "captionType": "heading",
+   *     "isRequired": true}'
+   *   ...>
+   * </ontario-dropdown-list>
    */
-  @Prop() label: string;
+  @Prop() caption: InputCaption | string;
+
+  /**
+   * Instantiate an InputCaption object for internal logic use
+   */
+  @State() private captionState: InputCaption;
+
+  /**
+   * Grant access to the host element and related DOM methods/events within the class instance.
+   */
+  @Element() element: HTMLElement;
+
+  /**
+   * The language of the component.
+   * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+   */
+  @Prop({ mutable: true }) language?: string = 'en';
 
   /**
    * The name for the dropdown list.
@@ -34,8 +61,15 @@ export class OntarioDropdownList implements Dropdown {
    * there are three dropdown options to be displayed in the fieldset.
    *
    * @example
-   * <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required
-   * is-empty-start-option="Please select" options='[{
+   * <ontario-dropdown-list 
+   *   caption='{
+   *     "captionText": "Do you like cats?",
+   *     "captionType": "heading",
+   *     "isRequired": true
+   *   }'
+   *   name="cat-dropdown"
+   *   is-empty-start-option="Please select" 
+   *   options='[{
    *     "value": "dropdown-list-1",
    *     "label": "Option 1"
    *   },
@@ -68,25 +102,6 @@ export class OntarioDropdownList implements Dropdown {
   }
 
   /*
-    * Watch for changes in the `label` prop for validation purpose
-    * Validate the label and make sure the label has a value.
-    * Log warning if user doesn't input a value for the label.
-    */
-  @Watch('label')
-  validateLabel(newValue: string) {
-    if (validatePropExists(newValue)) {
-      const message = new ConsoleMessageClass();
-        message
-          .addDesignSystemTag()
-          .addMonospaceText(' label ')
-          .addRegularText('for')
-          .addMonospaceText(' <ontario-dropdown-list> ')
-          .addRegularText('was not provided')
-          .printMessage();
-    }
-  }
-
-  /*
     * Watch for changes in the `name` prop for validation purpose
     * Validate the name and make sure the name has a value.
     * Log warning if user doesn't input a value for the name.
@@ -95,13 +110,13 @@ export class OntarioDropdownList implements Dropdown {
   validateName(newValue: string) {
     if (validatePropExists(newValue)) {
       const message = new ConsoleMessageClass();
-        message
-          .addDesignSystemTag()
-          .addMonospaceText(' name ')
-          .addRegularText('for')
-          .addMonospaceText(' <ontario-dropdown-list> ')
-          .addRegularText('was not provided')
-          .printMessage();
+      message
+        .addDesignSystemTag()
+        .addMonospaceText(' name ')
+        .addRegularText('for')
+        .addMonospaceText(' <ontario-dropdown-list> ')
+        .addRegularText('was not provided')
+        .printMessage();
     }
   }
 
@@ -114,13 +129,13 @@ export class OntarioDropdownList implements Dropdown {
   validateOptions(newValue: object) {
     if (validateObjectExists(newValue)) {
       const message = new ConsoleMessageClass();
-        message
-          .addDesignSystemTag()
-          .addMonospaceText(' options ')
-          .addRegularText('for')
-          .addMonospaceText(' <ontario-dropdown-list> ')
-          .addRegularText('was not provided')
-          .printMessage();
+      message
+        .addDesignSystemTag()
+        .addMonospaceText(' options ')
+        .addRegularText('for')
+        .addMonospaceText(' <ontario-dropdown-list> ')
+        .addRegularText('was not provided')
+        .printMessage();
     }
   }
 
@@ -158,10 +173,15 @@ export class OntarioDropdownList implements Dropdown {
     return this.elementId ?? '';
   }
 
+  @Watch('caption')
+  private updateCaptionState() {
+    this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language);
+  }
+
   componentWillLoad() {
+    this.updateCaptionState();
     this.parseOptions();
     this.validateName(this.name);
-    this.validateLabel(this.label);
     this.validateOptions(this.internalOptions);
     this.elementId = this.elementId ?? uuid();
   }
@@ -169,13 +189,7 @@ export class OntarioDropdownList implements Dropdown {
   render() {
     return (
       <div class="ontario-form-group">
-        <label class="ontario-label" htmlFor="ontario-dropdown-list">
-          {this.label}
-          <span class="ontario-label__flag">
-            {this.isRequired ? "(required)" : "(optional)"}
-          </span>
-        </label>
-
+        {this.captionState.getCaption(this.getId())}
         <select
           class="ontario-input ontario-dropdown"
           id={this.getId()}

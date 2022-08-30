@@ -186,7 +186,12 @@
 	>
 	</ontario-radio-buttons>
 
-	<ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required is-empty-start-option="Please select"
+	<ontario-dropdown-list name="cat-dropdown" is-empty-start-option="Please select"
+		caption='{
+			"captionText": "Do you like cats?",
+			"captionType": "heading",
+			"isRequired": true
+		}'
 		options='[{
 			"value": "dropdown-list-1",
 			"label": "Option 1"
