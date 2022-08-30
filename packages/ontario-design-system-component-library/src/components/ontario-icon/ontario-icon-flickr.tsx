@@ -3,7 +3,8 @@ import { Component, Prop, h, Watch, State } from '@stencil/core';
 import { IconWithColour } from './icon.interface';
 import { IconSize, IconColour, IconColours  } from './icon.types';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions'; 
+import validateColor from "validate-color";
 
 @Component({
     tag: 'ontario-icon-flickr',
@@ -49,13 +50,19 @@ export class OntarioIconFlickr implements IconWithColour {
   /**
    * Set the icon's colour.
    */
-  @Prop() colour: IconColour = 'black';
+  @Prop() colour: IconColour | string = 'black';
 
   /**
 	 * Mutable variable, for internal use only.
 	 * Set the icon's colour based on validation result.
 	 */
   @State() iconColourState: string;
+
+  /**
+   * Mutable variable, for internal use only.
+   * Set the icon's colour based on validation result.
+   */
+  @State() iconCustomColourState: string;
 
   /**
    * Watch for changes in the `colour` variable for validation purpose.
@@ -67,8 +74,12 @@ export class OntarioIconFlickr implements IconWithColour {
     const isValid = validateValueAgainstArray(this.colour, IconColours);
     if (isValid) {
       this.iconColourState = this.colour;
-    } else {
-      this.iconColourState = this.warnDefaultColour();
+    } else  {
+      if (validateColor(this.colour)) {
+        this.iconCustomColourState = this.colour;
+      } else {
+        this.iconColourState = this.warnDefaultColour();
+      }
     }
   }
 
@@ -106,7 +117,7 @@ export class OntarioIconFlickr implements IconWithColour {
     render() {
         return (
             <div class={`ontario-icon ontario-icon--${this.iconColourState} ontario-icon--width-${this.iconWidthState}`} style={{ 'width': `${this.iconWidthState}px` }}>
-                <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="flickr"><path d="M11 12C11 14.5 9 16.5 6.5 16.5C4 16.5 2 14.5 2 12C2 9.5 4 7.5 6.5 7.5C9 7.5 11 9.5 11 12ZM17.5 7.5C15 7.5 13 9.5 13 12C13 14.5 15 16.5 17.5 16.5C20 16.5 22 14.5 22 12C22 9.5 20 7.5 17.5 7.5Z"/></svg>
+                <svg class="svg-icon" style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}`}} role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="flickr"><path d="M11 12C11 14.5 9 16.5 6.5 16.5C4 16.5 2 14.5 2 12C2 9.5 4 7.5 6.5 7.5C9 7.5 11 9.5 11 12ZM17.5 7.5C15 7.5 13 9.5 13 12C13 14.5 15 16.5 17.5 16.5C20 16.5 22 14.5 22 12C22 9.5 20 7.5 17.5 7.5Z"/></svg>
             </div>
         );
     }

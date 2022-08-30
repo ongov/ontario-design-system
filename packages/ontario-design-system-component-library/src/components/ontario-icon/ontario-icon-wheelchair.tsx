@@ -3,7 +3,8 @@ import { Component, Prop, h, Watch, State } from '@stencil/core';
 import { IconWithColour } from './icon.interface';
 import { IconSize, IconColour, IconColours  } from './icon.types';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions'; 
+import validateColor from "validate-color";
 
 @Component({
     tag: 'ontario-icon-wheelchair',
@@ -49,13 +50,19 @@ export class OntarioIconWheelchair implements IconWithColour {
   /**
    * Set the icon's colour.
    */
-  @Prop() colour: IconColour = 'black';
+  @Prop() colour: IconColour | string = 'black';
 
   /**
 	 * Mutable variable, for internal use only.
 	 * Set the icon's colour based on validation result.
 	 */
   @State() iconColourState: string;
+
+  /**
+   * Mutable variable, for internal use only.
+   * Set the icon's colour based on validation result.
+   */
+  @State() iconCustomColourState: string;
 
   /**
    * Watch for changes in the `colour` variable for validation purpose.
@@ -67,8 +74,12 @@ export class OntarioIconWheelchair implements IconWithColour {
     const isValid = validateValueAgainstArray(this.colour, IconColours);
     if (isValid) {
       this.iconColourState = this.colour;
-    } else {
-      this.iconColourState = this.warnDefaultColour();
+    } else  {
+      if (validateColor(this.colour)) {
+        this.iconCustomColourState = this.colour;
+      } else {
+        this.iconColourState = this.warnDefaultColour();
+      }
     }
   }
 
@@ -106,7 +117,7 @@ export class OntarioIconWheelchair implements IconWithColour {
     render() {
         return (
             <div class={`ontario-icon ontario-icon--${this.iconColourState} ontario-icon--width-${this.iconWidthState}`} style={{ 'width': `${this.iconWidthState}px` }}>
-                <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="wheelchair"><path d="M19 13v-2c-1.54.02-3.1-.75-4.07-1.83l-1.3-1.43c-.25-.24-.4-.316-.64-.46a2.01 2.01 0 0 0-1.2-.26c-1.05.1-1.8 1.02-1.8 2.07V15c0 1.1.9 2 2 2h5v5h2v-5.5c0-1.1-.9-2-2-2h-3v-3.45c1.3 1.07 3.25 1.94 5 1.95zm-6.17 5c-.4 1.16-1.52 2-2.83 2-1.66 0-3-1.34-3-3 0-1.3.84-2.4 2-2.83V12.1A5 5 0 0 0 5 17c0 2.76 2.24 5 5 5a5 5 0 0 0 4.9-4h-2.07zM12 6a2 2 0 1 0 0-4 2 2 0 1 0 0 4z"/></svg>
+                <svg class="svg-icon" style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}`}} role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="wheelchair"><path d="M19 13v-2c-1.54.02-3.1-.75-4.07-1.83l-1.3-1.43c-.25-.24-.4-.316-.64-.46a2.01 2.01 0 0 0-1.2-.26c-1.05.1-1.8 1.02-1.8 2.07V15c0 1.1.9 2 2 2h5v5h2v-5.5c0-1.1-.9-2-2-2h-3v-3.45c1.3 1.07 3.25 1.94 5 1.95zm-6.17 5c-.4 1.16-1.52 2-2.83 2-1.66 0-3-1.34-3-3 0-1.3.84-2.4 2-2.83V12.1A5 5 0 0 0 5 17c0 2.76 2.24 5 5 5a5 5 0 0 0 4.9-4h-2.07zM12 6a2 2 0 1 0 0-4 2 2 0 1 0 0 4z"/></svg>
             </div>
         );
     }

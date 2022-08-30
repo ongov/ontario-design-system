@@ -1,5 +1,4 @@
 import { newE2EPage } from '@stencil/core/testing';
-import { IconSizes } from '../icon.types';
 
 describe('ontario-icon', () => {
   describe('render', () => {
@@ -28,7 +27,7 @@ describe('ontario-icon', () => {
 		await page.waitForChanges();
     expect(element).toHaveClasses(['ontario-icon', 'ontario-icon--white']);
 
-    component.setProperty('colour', 'yellow');
+    component.setProperty('colour', 'bluey');
 		await page.waitForChanges();
     expect(element).toHaveClasses(['ontario-icon', 'ontario-icon--black']);
 

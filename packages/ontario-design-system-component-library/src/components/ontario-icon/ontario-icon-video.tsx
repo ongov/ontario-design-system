@@ -3,7 +3,8 @@ import { Component, Prop, h, Watch, State } from '@stencil/core';
 import { IconWithColour } from './icon.interface';
 import { IconSize, IconColour, IconColours  } from './icon.types';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions'; 
+import validateColor from "validate-color";
 
 @Component({
     tag: 'ontario-icon-video',
@@ -49,13 +50,19 @@ export class OntarioIconVideo implements IconWithColour {
   /**
    * Set the icon's colour.
    */
-  @Prop() colour: IconColour = 'black';
+  @Prop() colour: IconColour | string = 'black';
 
   /**
 	 * Mutable variable, for internal use only.
 	 * Set the icon's colour based on validation result.
 	 */
   @State() iconColourState: string;
+
+  /**
+   * Mutable variable, for internal use only.
+   * Set the icon's colour based on validation result.
+   */
+  @State() iconCustomColourState: string;
 
   /**
    * Watch for changes in the `colour` variable for validation purpose.
@@ -67,8 +74,12 @@ export class OntarioIconVideo implements IconWithColour {
     const isValid = validateValueAgainstArray(this.colour, IconColours);
     if (isValid) {
       this.iconColourState = this.colour;
-    } else {
-      this.iconColourState = this.warnDefaultColour();
+    } else  {
+      if (validateColor(this.colour)) {
+        this.iconCustomColourState = this.colour;
+      } else {
+        this.iconColourState = this.warnDefaultColour();
+      }
     }
   }
 
@@ -106,7 +117,7 @@ export class OntarioIconVideo implements IconWithColour {
     render() {
         return (
             <div class={`ontario-icon ontario-icon--${this.iconColourState} ontario-icon--width-${this.iconWidthState}`} style={{ 'width': `${this.iconWidthState}px` }}>
-                <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="video"><path d="M21 3H3c-1.1 0-2 .9-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zm-5-6l-7 4V7l7 4z"/></svg>
+                <svg class="svg-icon" style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}`}} role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="video"><path d="M21 3H3c-1.1 0-2 .9-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12zm-5-6l-7 4V7l7 4z"/></svg>
             </div>
         );
     }

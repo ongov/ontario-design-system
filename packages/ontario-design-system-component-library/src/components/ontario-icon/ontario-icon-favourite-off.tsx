@@ -3,7 +3,8 @@ import { Component, Prop, h, Watch, State } from '@stencil/core';
 import { IconWithColour } from './icon.interface';
 import { IconSize, IconColour, IconColours  } from './icon.types';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions'; 
+import validateColor from "validate-color";
 
 @Component({
     tag: 'ontario-icon-favourite-off',
@@ -49,13 +50,19 @@ export class OntarioIconFavouriteOff implements IconWithColour {
   /**
    * Set the icon's colour.
    */
-  @Prop() colour: IconColour = 'black';
+  @Prop() colour: IconColour | string = 'black';
 
   /**
 	 * Mutable variable, for internal use only.
 	 * Set the icon's colour based on validation result.
 	 */
   @State() iconColourState: string;
+
+  /**
+   * Mutable variable, for internal use only.
+   * Set the icon's colour based on validation result.
+   */
+  @State() iconCustomColourState: string;
 
   /**
    * Watch for changes in the `colour` variable for validation purpose.
@@ -67,8 +74,12 @@ export class OntarioIconFavouriteOff implements IconWithColour {
     const isValid = validateValueAgainstArray(this.colour, IconColours);
     if (isValid) {
       this.iconColourState = this.colour;
-    } else {
-      this.iconColourState = this.warnDefaultColour();
+    } else  {
+      if (validateColor(this.colour)) {
+        this.iconCustomColourState = this.colour;
+      } else {
+        this.iconColourState = this.warnDefaultColour();
+      }
     }
   }
 
@@ -106,7 +117,7 @@ export class OntarioIconFavouriteOff implements IconWithColour {
     render() {
         return (
             <div class={`ontario-icon ontario-icon--${this.iconColourState} ontario-icon--width-${this.iconWidthState}`} style={{ 'width': `${this.iconWidthState}px` }}>
-                <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="favourite-off"><path d="M12.1 18.55l-.1.1-.1-.1C7.14 14.24 4 11.4 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04 1 3.57 2.36h1.86C13.46 6 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.9-3.14 5.74-7.9 10.05zM16.5 3c-1.74 0-3.4.8-4.5 2.08C10.9 3.8 9.24 3 7.5 3 4.42 3 2 5.4 2 8.5c0 3.77 3.4 6.86 8.55 11.53L12 21.35l1.45-1.32C18.6 15.36 22 12.27 22 8.5 22 5.4 19.58 3 16.5 3z"/></svg>
+                <svg class="svg-icon" style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}`}} role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="favourite-off"><path d="M12.1 18.55l-.1.1-.1-.1C7.14 14.24 4 11.4 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04 1 3.57 2.36h1.86C13.46 6 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.9-3.14 5.74-7.9 10.05zM16.5 3c-1.74 0-3.4.8-4.5 2.08C10.9 3.8 9.24 3 7.5 3 4.42 3 2 5.4 2 8.5c0 3.77 3.4 6.86 8.55 11.53L12 21.35l1.45-1.32C18.6 15.36 22 12.27 22 8.5 22 5.4 19.58 3 16.5 3z"/></svg>
             </div>
         );
     }
