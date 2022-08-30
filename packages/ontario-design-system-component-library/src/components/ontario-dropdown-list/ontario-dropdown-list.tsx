@@ -45,11 +45,6 @@ export class OntarioDropdownList implements Dropdown {
   @Prop({ mutable: true }) language?: string = 'en';
 
   /**
-   * The label for the Dropdown List.
-   */
-  @Prop() label: string;
-
-  /**
    * The name for the dropdown list.
    */
   @Prop() name: string;
@@ -66,8 +61,15 @@ export class OntarioDropdownList implements Dropdown {
    * there are three dropdown options to be displayed in the fieldset.
    *
    * @example
-   * <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" is-required
-   * is-empty-start-option="Please select" options='[{
+   * <ontario-dropdown-list 
+   *   caption='{
+   *     "captionText": "Do you like cats?",
+   *     "captionType": "heading",
+   *     "isRequired": true
+   *   }'
+   *   name="cat-dropdown"
+   *   is-empty-start-option="Please select" 
+   *   options='[{
    *     "value": "dropdown-list-1",
    *     "label": "Option 1"
    *   },
@@ -96,25 +98,6 @@ export class OntarioDropdownList implements Dropdown {
       } else {
         this.internalOptions = this.options;
       }
-    }
-  }
-
-  /*
-    * Watch for changes in the `label` prop for validation purpose
-    * Validate the label and make sure the label has a value.
-    * Log warning if user doesn't input a value for the label.
-    */
-  @Watch('label')
-  validateLabel(newValue: string) {
-    if (validatePropExists(newValue)) {
-      const message = new ConsoleMessageClass();
-      message
-        .addDesignSystemTag()
-        .addMonospaceText(' label ')
-        .addRegularText('for')
-        .addMonospaceText(' <ontario-dropdown-list> ')
-        .addRegularText('was not provided')
-        .printMessage();
     }
   }
 
@@ -199,7 +182,6 @@ export class OntarioDropdownList implements Dropdown {
     this.updateCaptionState();
     this.parseOptions();
     this.validateName(this.name);
-    this.validateLabel(this.label);
     this.validateOptions(this.internalOptions);
     this.elementId = this.elementId ?? uuid();
   }
