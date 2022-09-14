@@ -1,3 +1,4 @@
+@use "../2-tools/functions/global.functions" as globalFunctions;
 @use "../2-tools/functions/grid.functions" as gridFunctions;
 @use "./breakpoints.variables" as breakpoints;
 @use '@ontario-digital-service/ontario-design-system-design-tokens/dist/scss/variables';
@@ -27,9 +28,9 @@ $opposite-direction: variables.$ontario-text-directions-opposite-direction !defa
 $include-html-classes: variables.$ontario-grid-columns-include-html-classes !default;
 $include-html-grid-classes: $include-html-classes !default;
 
-$row-width: rem-calc(variables.$ontario-grid-columns-row-width);
+$row-width: globalFunctions.rem-calc(variables.$ontario-grid-columns-row-width);
 $total-columns: variables.$ontario-grid-columns-total-columns;
-$column-gutter: rem-calc(variables.$ontario-grid-columns-column-gutter);
+$column-gutter: globalFunctions.rem-calc(variables.$ontario-grid-columns-column-gutter);
 
 $column-count-1: variables.$ontario-grid-columns-column-count1;
 $column-count-2: variables.$ontario-grid-columns-column-count2;
@@ -55,7 +56,3 @@ $xlarge-only: '#{$screen} and (min-width:#{gridFunctions.ontario-lower-bound(bre
 
 $xxlarge-up: '#{$screen} and (min-width:#{gridFunctions.ontario-lower-bound(breakpoints.$xxlarge-range)})' !default;
 $xxlarge-only: '#{$screen} and (min-width:#{gridFunctions.ontario-lower-bound(breakpoints.$xxlarge-range)}) and (max-width:#{gridFunctions.ontario-upper-bound(breakpoints.$xxlarge-range)})' !default;
-
-// IMPORT ONCE
-// We use this to prevent styles from being loaded multiple times for components that rely on other components.
-// $modules: () !default;
