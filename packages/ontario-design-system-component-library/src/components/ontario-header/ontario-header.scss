@@ -11,6 +11,15 @@ $ontario-search-input-padding--mobile: 6.4rem;
 $ontario-header-logo-width: 180px;
 $ontario-header-logo-width--mobile: 45px;
 
+.ontario-header__container {
+	position: relative;
+	z-index: 5;
+
+	@media screen and (min-width: $medium-breakpoint) {
+		z-index: 1;
+	}
+}
+
 .ontario-icon-container {
 	display: flex;
 	align-items: center;
@@ -120,6 +129,7 @@ $ontario-header-logo-width--mobile: 45px;
 	padding: global.$spacing-2 global.$spacing-0;
 	margin: global.$spacing-0;
 	border-bottom: 1px solid global.$ontario-greyscale-20;
+
 	@media screen and (min-width: global.$medium-breakpoint) {
 		border-bottom: none;
 	}
@@ -128,6 +138,7 @@ $ontario-header-logo-width--mobile: 45px;
 .ontario-navigation li {
 	border-top: 1px solid global.$ontario-greyscale-20;
 	padding: global.$spacing-0;
+	margin-bottom: global.$spacing-0;
 
 	&:last-of-type {
 		border-bottom: 1px solid global.$ontario-greyscale-20;
@@ -141,7 +152,7 @@ $ontario-header-logo-width--mobile: 45px;
 	font-weight: global.$ontario-font-weights-semi-bold;
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	text-decoration: none;
-	padding: calc(variables.$ontario-spacing-3 - (variables.$ontario-spacing-1 / 3.25)) variables.$ontario-spacing-6;
+	padding: calc(variables.$ontario-spacing-3 - (variables.$ontario-spacing-1 / 3.25)) variables.$ontario-spacing-5;
 
 	&:hover {
 		text-decoration: underline;

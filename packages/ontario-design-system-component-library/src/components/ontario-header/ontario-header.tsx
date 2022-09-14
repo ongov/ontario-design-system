@@ -62,15 +62,19 @@ export class OntarioHeader {
 	 *			menu-Items='[{
 	 *				"name": "Hint",
 	 *				"href": "/ontario-hint"
+	 *				"linkIsActive": "false"
 	 *			},{
 	 *				"name": "Hint",
 	 *				"href": "/ontario-hint"
+	 *				"linkIsActive": "false"
 	 *			},{
 	 *				"name": "Hint",
 	 *				"href": "/ontario-hint"
+	 *				"linkIsActive": "false"
 	 *			},{
 	 *				"name": "Hint",
 	 *				"href": "/ontario-hint"
+	 *				"linkIsActive": "false"
 	 *			}]'>
 	 *	</ontario-header>
 	 */
@@ -121,10 +125,10 @@ export class OntarioHeader {
 	@State() searchToggle?: boolean = false;
 
 	/**
-	 * Assigning values to HTMLInputElement to use them as ref
+	 * Assigning values to elements to use them as ref
 	 */
-	header!: HTMLInputElement;
-	menuButton!: HTMLInputElement;
+	header!: HTMLElement;
+	menuButton!: HTMLElement;
 	searchBar!: HTMLInputElement;
 	searchButton!: HTMLInputElement;
 
@@ -184,18 +188,9 @@ export class OntarioHeader {
 	 */
 	@Listen('click', { capture: true, target: 'window' })
 	handleClick(event: any) {
-		const path = event.path || (event.composedPath && event.composedPath());
-		const overlay = path[0].className;
-		const isOverlay = typeof overlay === 'string' ? overlay.includes('ontario-overlay') : false;
-		if (this.el.contains(event.target)) {
-			/**
-			 * If the click was on the overlay, close the menu.
-			 * This code has to be inside this if statement because the overlay is part of the header.
-			 */
-			if (isOverlay && this.menuToggle) {
-				this.handleMenuToggle();
-			}
-			// If click was inside header, stop
+		// if the button is clicked, return
+		// if the button is clicked, return
+		if (event.composedPath().includes(this.menuButton)) {
 			return;
 		}
 
@@ -210,15 +205,16 @@ export class OntarioHeader {
 	 *
 	 * @param href the href of the menu item
 	 * @param name the name of the menu item
-	 * @param liClass if there is a class that is related to the <li> portion of the menu item, put it here
+	 * @param linkIsActive when set to true, this will add the classes necessary to style the link in a way that indicates to the user what the active page/link is
 	 * @param liClass if there is a class that is related to the <a> portion of the menu item, put it here
+	 * @param onClick for any custon onClick event a user might want to add to their menu links
 	 * @param onBlur when set to true, it will call the function trapMenuFocus(), otherwise nothing is done (used in lastLink)
 	 * @param tabIndex when set to true, it will set the tabindex to be -1, meaning it can't be in focus (used in items when the menu is closed)
 	 */
-	private generateMenuItem(href: string, name: string, liClass?: string, aClass?: string, onBlur?: boolean, tabIndex?: boolean) {
+	private generateMenuItem(href: string, name: string, linkIsActive: any, liClass?: string, onClick?: any, onBlur?: boolean, tabIndex?: boolean) {
 		return (
 			<li class={liClass}>
-				<a class={aClass} href={href} onBlur={onBlur ? this.trapMenuFocus : undefined} tabindex={tabIndex ? -1 : undefined}>
+				<a class={linkIsActive && `ontario-link--active`} href={href} onClick={onClick} onBlur={onBlur ? this.trapMenuFocus : undefined} tabindex={tabIndex ? -1 : undefined}>
 					{name}
 				</a>
 			</li>
@@ -235,13 +231,12 @@ export class OntarioHeader {
 				}
 				id="ontario-application-header-menu-toggler"
 				aria-label={this.menuToggle ? 'open menu' : 'close menu'}
-				data-target="megaMenu"
 				onClick={this.handleMenuToggle}
 				aria-hidden={`${this.menuToggle}`}
 				ref={el => (this.menuButton = el as HTMLInputElement)}
 			>
 				<div class="ontario-icon-container" innerHTML={this.menuToggle ? OntarioIconClose : OntarioIconMenu} />
-				<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
+				<span>Menu</span>
 			</button>
 		);
 	}
@@ -293,7 +288,7 @@ export class OntarioHeader {
 		if (this.type == 'ontario') {
 			return (
 				<div>
-					<div ref={el => (this.header = el as HTMLInputElement)}>
+					<div class="ontario-header__container" ref={el => (this.header = el as HTMLInputElement)}>
 						<header class={this.searchToggle ? 'ontario-header ontario-header--search-open' : 'ontario-header'} id="ontario-header">
 							<div class="ontario-row">
 								<div class="ontario-hide-for-small-only ontario-header__logo-container ontario-columns ontario-small-2 ontario-medium-4 ontario-large-3 ">
@@ -381,7 +376,9 @@ export class OntarioHeader {
 										*/}
 										{this.itemState?.map((item, index) => {
 											const lastLink = index + 1 === this.itemState.length;
-											return lastLink ? this.generateMenuItem(item.href, item.name, '', '', true) : this.generateMenuItem(item.href, item.name, '', '');
+											return lastLink
+												? this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler, true)
+												: this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler);
 										})}
 									</ul>
 								</div>
@@ -395,7 +392,7 @@ export class OntarioHeader {
 											This is not really necessary, but it's good practice.
 											https://www.maxability.co.in/2016/06/13/tabindex-for-accessibility-good-bad-and-ugly/
 										*/}
-										{this.itemState?.map(item => this.generateMenuItem(item.href, item.name, '', '', false, true))}
+										{this.itemState?.map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler, false, true))}
 									</ul>
 								</div>
 							</nav>
@@ -407,7 +404,7 @@ export class OntarioHeader {
 		} else {
 			return (
 				<div>
-					<div class="ontario-application-header__container" id="ontario-application-header" ref={el => (this.header = el as HTMLInputElement)}>
+					<div class="ontario-application-header-container" id="ontario-application-header" ref={el => (this.header = el as HTMLInputElement)}>
 						<div class="ontario-application-header-container">
 							<section class="ontario-application-header">
 								<div class="ontario-row">
@@ -440,7 +437,7 @@ export class OntarioHeader {
 													{/*
 														First 5 items in the itemState are shown in the header itself.
 													*/}
-													{this.itemState?.slice(0, 5).map(item => this.generateMenuItem(item.href, item.name, '', ''))}
+													{this.itemState?.slice(0, 5).map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler))}
 												</ul>
 											</div>
 											<div class="ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large">
@@ -448,7 +445,7 @@ export class OntarioHeader {
 													{/*
 														First 2 items in the itemState are shown in the header itself (tablet).
 													*/}
-													{this.itemState?.slice(0, 2).map(item => this.generateMenuItem(item.href, item.name, '', ''))}
+													{this.itemState?.slice(0, 2).map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler))}
 												</ul>
 											</div>
 											{this.itemState !== undefined && this.renderMenuButton(this.itemState.length)}
@@ -468,20 +465,22 @@ export class OntarioHeader {
 											{this.itemState?.slice(0, 2).map((item, index) => {
 												const lastLink = index + 1 === this.itemState.length - 0;
 												return lastLink
-													? this.generateMenuItem(item.href, item.name, 'ontario-show-for-small-only', '', true)
-													: this.generateMenuItem(item.href, item.name, 'ontario-show-for-small-only', '');
+													? this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-show-for-small-only', item.onClickHandler, true)
+													: this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-show-for-small-only', item.onClickHandler);
 											})}
 
 											{this.itemState?.slice(2, 5).map((item, index) => {
 												const lastLink = index + 1 === this.itemState.length - 2;
 												return lastLink
-													? this.generateMenuItem(item.href, item.name, 'ontario-hide-for-large', '', true)
-													: this.generateMenuItem(item.href, item.name, 'ontario-hide-for-large', '');
+													? this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-hide-for-large', item.onClickHandler, true)
+													: this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-hide-for-large', item.onClickHandler);
 											})}
 
 											{this.itemState?.slice(5).map((item, index) => {
 												const lastLink = index + 1 === this.itemState.length - 5;
-												return lastLink ? this.generateMenuItem(item.href, item.name, '', '', true) : this.generateMenuItem(item.href, item.name, '', '');
+												return lastLink
+													? this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler, true)
+													: this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler);
 											})}
 										</ul>
 									</div>
@@ -496,11 +495,15 @@ export class OntarioHeader {
 												This is not really necessary, but it's good practice.
 												https://www.maxability.co.in/2016/06/13/tabindex-for-accessibility-good-bad-and-ugly/
 											*/}
-											{this.itemState?.slice(0, 2).map(item => this.generateMenuItem(item.href, item.name, 'ontario-show-for-small-only', '', false, true))}
+											{this.itemState
+												?.slice(0, 2)
+												.map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-show-for-small-only', item.onClickHandler, false, true))}
 
-											{this.itemState?.slice(2, 5).map(item => this.generateMenuItem(item.href, item.name, 'ontario-hide-for-large', '', false, true))}
+											{this.itemState
+												?.slice(2, 5)
+												.map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-hide-for-large', item.onClickHandler, false, true))}
 
-											{this.itemState?.slice(5).map(item => this.generateMenuItem(item.href, item.name, '', '', false, true))}
+											{this.itemState?.slice(5).map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler, false, true))}
 										</ul>
 									</div>
 								</nav>
