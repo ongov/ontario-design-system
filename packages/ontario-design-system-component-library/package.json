@@ -38,7 +38,6 @@
 		"clean:icons": "rm -rf src/components/ontario-icon/ontario-icon-*.tsx"
 	},
 	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-global-styles": "2.0.0-beta.3",
 		"@stencil/core": "2.13.0",
 		"validate-color": "^2.2.1",
 		"@ontario-digital-service/ontario-design-system-global-styles": "2.0.0-beta.5"
