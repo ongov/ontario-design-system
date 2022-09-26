@@ -1,23 +1,22 @@
 @use '../../utils/input-caption/input-caption.scss';
-
-@import '../../global.scss';
+@use '../../global.scss' ;
 
 .ontario-textarea {
-	border: $border-size-standard solid $ontario-colour-black;
-	border-radius: $global-radius;
+	border: global.$border-size-standard solid global.$ontario-colour-black;
+	border-radius: global.$global-radius;
 	box-sizing: border-box;
-	color: $ontario-colour-black;
+	color: global.$ontario-colour-black;
 	font-size: 1rem;
-	font-family: $ontario-font-open-sans;
-	line-height: $line-height-default;
+	font-family: global.$ontario-font-open-sans;
+	line-height: global.$line-height-default;
 	display: block;
-	max-width: $standard-width;
+	max-width: global.$standard-width;
 	min-height: 144px;
-	margin: 0 0 $spacing-7;
-	padding: 0.625rem $spacing-4;
-	transition: $ontario-focus-transition;
+	margin: 0 0 global.$spacing-7;
+	padding: 0.625rem global.$spacing-4;
+	transition: global.$ontario-focus-transition;
 	white-space: pre-wrap;
-	width: $full-width;
+	width: global.$full-width;
 
 	&:focus,
 	&:active {
@@ -26,5 +25,5 @@
 }
 
 .ontario-textarea.ontario-textarea-hint-expander--true {
-	margin-bottom: $spacing-4;
+	margin-bottom: global.$spacing-4;
 }

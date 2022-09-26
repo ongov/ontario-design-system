@@ -1,8 +1,10 @@
+@use '../../1-variables/colours.variables' as colours;
+
 /* -------------------------------
     Focus placeholder variables
 --------------------------------- */
 $ontario-focus-transition: box-shadow 0.1s ease-in-out;
-$ontario-focus-box-shadow: 0 0 0 4px $ontario-colour-focus;
+$ontario-focus-box-shadow: 0 0 0 4px colours.$ontario-colour-focus;
 
 /* -------------------------------
     Focus placeholder

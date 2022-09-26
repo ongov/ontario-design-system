@@ -1,3 +1,5 @@
+@use '../1-variables/spacing.variables' as spacing;
+
 /*
 * Spacing overrides
 *
@@ -5,16 +7,16 @@
 */
 
 $spacing-units: (
-	0: $spacing-0,
-	4: $spacing-1,
-	8: $spacing-2,
-	12: $spacing-3,
-	16: $spacing-4,
-	24: $spacing-5,
-	32: $spacing-6,
-	40: $spacing-7,
-	48: $spacing-8,
-	64: $spacing-9,
+	0: spacing.$spacing-0,
+	4: spacing.$spacing-1,
+	8: spacing.$spacing-2,
+	12: spacing.$spacing-3,
+	16: spacing.$spacing-4,
+	24: spacing.$spacing-5,
+	32: spacing.$spacing-6,
+	40: spacing.$spacing-7,
+	48: spacing.$spacing-8,
+	64: spacing.$spacing-9,
 );
 
 $sides: (top, bottom, left, right);

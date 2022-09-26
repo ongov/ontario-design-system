@@ -1,11 +1,11 @@
-@import '../../global.scss';
+@use '../../global.scss';
 
 .ontario-dropdown {
-  background-color: $ontario-colour-white;
-  background-position: right $spacing-2 center;
+  background-color: global.$ontario-colour-white;
+  background-position: right global.$spacing-2 center;
   background-repeat: no-repeat;
-  background-size: $spacing-6;
-  padding-right: calc($spacing-4 * 2.25);
+  background-size: global.$spacing-6;
+  padding-right: calc(global.$spacing-4 * 2.25);
   cursor: pointer;
 }
 

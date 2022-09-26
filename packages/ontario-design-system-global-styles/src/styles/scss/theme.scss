@@ -6,42 +6,42 @@
 ----------------------------------------------------------------------------- */
 
 /*** 1 - Variables ***/
-@import './1-variables/breakpoints.variables';
-@import './1-variables/colours.variables';
-@import './1-variables/font-sizes.variables';
-@import './1-variables/font-weights.variables';
-@import './1-variables/global.variables';
-@import './1-variables/grid.variables';
-@import './1-variables/spacing.variables';
-@import './1-variables/typography.variables';
-@import './1-variables/z-index.variables';
+@forward './1-variables/breakpoints.variables';
+@forward './1-variables/colours.variables';
+@forward './1-variables/font-sizes.variables';
+@forward './1-variables/font-weights.variables';
+@forward './1-variables/global.variables';
+@forward './1-variables/grid.variables';
+@forward './1-variables/spacing.variables';
+@forward './1-variables/typography.variables';
+@forward './1-variables/z-index.variables';
 
 /*** 2 - Tools ***/
-@import './2-tools/functions/grid.functions';
-@import './2-tools/functions/global.functions';
-@import './2-tools/functions/asset-helper.functions';
+@forward './2-tools/functions/grid.functions';
+@forward './2-tools/functions/global.functions';
+@forward './2-tools/functions/asset-helper.functions';
 
-@import './2-tools/mixins/global.mixins';
-@import './2-tools/mixins/grid.mixins';
+@forward './2-tools/mixins/global.mixins';
+@forward './2-tools/mixins/grid.mixins';
 
-@import './2-tools/placeholder/focus.placeholders';
-@import './2-tools/placeholder/typography.placeholders';
+@forward './2-tools/placeholder/focus.placeholders';
+@forward './2-tools/placeholder/typography.placeholders';
 
 /*** 3 - Generics ***/
-@import './3-generics/colours.generics';
-@import './3-generics/typography.generics';
+@forward './3-generics/colours.generics';
+@forward './3-generics/typography.generics';
 
 /*** 4 - Elements ***/
-@import './4-elements/global.elements';
+@forward './4-elements/global.elements';
 
 /*** 5 - Layout ***/
-@import './5-layout/grid.layout';
+@forward './5-layout/grid.layout';
 
 /*** 6 - Components ***/
-@import './6-components/form.component';
-@import './6-components/labels.component';
-@import './6-components/text-inputs.component';
+@forward './6-components/form.component';
+@forward './6-components/labels.component';
+@forward './6-components/text-inputs.component';
 
 /*** 7 - Overrides ***/
-@import './7-overrides/spacing.overrides';
-@import './7-overrides/visibility.overrides';
+@forward './7-overrides/spacing.overrides';
+@forward './7-overrides/visibility.overrides';

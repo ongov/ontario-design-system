@@ -1,4 +1,4 @@
-@import '../../global.scss';
+@use '../../global.scss';
 
 .ontario-icon svg {
 	display: inline-block;
@@ -12,26 +12,26 @@
 }
 
 .ontario-icon--blue svg {
-	stroke: $ontario-colour-icon-blue;
-	fill: $ontario-colour-icon-blue;
+	stroke: global.$ontario-colour-icon-blue;
+	fill: global.$ontario-colour-icon-blue;
 }
 
 .ontario-icon--grey svg {
-	stroke: $ontario-colour-icon-grey;
-	fill: $ontario-colour-icon-grey;
+	stroke: global.$ontario-colour-icon-grey;
+	fill: global.$ontario-colour-icon-grey;
 }
 
 .ontario-icon--black svg {
-	stroke: $ontario-colour-icon-black;
-	fill: $ontario-colour-icon-black;
+	stroke: global.$ontario-colour-icon-black;
+	fill: global.$ontario-colour-icon-black;
 }
 
 .ontario-icon--white svg {
-	stroke: $ontario-colour-icon-white;
-	fill: $ontario-colour-icon-white;
+	stroke: global.$ontario-colour-icon-white;
+	fill: global.$ontario-colour-icon-white;
 }
 
 .ontario-icon--white svg {
-  stroke: $ontario-colour-white;
-  fill: $ontario-colour-white;
+  stroke: global.$ontario-colour-white;
+  fill: global.$ontario-colour-white;
 }

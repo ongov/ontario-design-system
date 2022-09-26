@@ -1,3 +1,9 @@
+@use '../1-variables/font-weights.variables' as fontWeights;
+@use '../1-variables/font-sizes.variables' as fontSizes;
+@use '../1-variables/typography.variables' as typography;
+@use '../1-variables/colours.variables' as colours;
+@use '../2-tools/placeholder/typography.placeholders' as typographyPlaceholders;
+
 /*
 *  Global elements
 *
@@ -12,14 +18,14 @@
 
 /* Base */
 html {
-  font-family: $ontario-font-open-sans;
-  font-size: $ontario-font-size-standard-body-text;
+  font-family: typography.$ontario-font-open-sans;
+  font-size: fontSizes.$ontario-font-size-standard-body-text;
 }
 
 body {
   line-height: 1.6;
-  background-color: $ontario-colour-white;
-  color: $ontario-colour-black;
+  background-color: colours.$ontario-colour-white;
+  color: colours.$ontario-colour-black;
   margin: 0;
 }
 
@@ -36,7 +42,7 @@ cite {
 }
 
 strong {
-  font-weight: $ontario-font-weights-bold;
+  font-weight: fontWeights.$ontario-font-weights-bold;
   line-height: inherit;
 }
 
@@ -91,9 +97,9 @@ textarea {
 
 input[type="checkbox"] + label,
 input[type="radio"] + label {
-  font-family: $ontario-font-open-sans;
-  font-size: $ontario-font-size-standard-body-text;
-  font-weight: $ontario-font-weights-normal;
+  font-family: typography.$ontario-font-open-sans;
+  font-size: fontSizes.$ontario-font-size-standard-body-text;
+  font-weight: fontWeights.$ontario-font-weights-normal;
   margin-left: 0;
   margin-right: 0;
 }
