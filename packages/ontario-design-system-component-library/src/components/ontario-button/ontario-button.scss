@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use '../../global.scss';
 
 $ontario-button-bg-primary: global.$ontario-colour-link;
@@ -14,10 +15,10 @@ $ontario-button-bg-secondary: global.$ontario-colour-white;
 	font-size: 1.125rem;
 	font-family: global.$ontario-font-open-sans;
 	font-weight: global.$ontario-font-weights-semi-bold;
-	line-height: calc(14 / 9);
-	margin: global.$spacing-0 calc(#{global.$spacing-4} + #{global.$spacing-3}) global.$spacing-5 global.$spacing-0;
+	line-height: math.div(14, 9);
+	margin: global.$spacing-0 (global.$spacing-4 + global.$spacing-3) global.$spacing-5 global.$spacing-0;
 	min-width: 10rem;
-	padding: calc((#{global.$spacing-4} + #{global.$spacing-1}) / 2) global.$spacing-5;
+	padding: math.div((global.$spacing-4 + global.$spacing-1), 2) global.$spacing-5;
 	text-align: center;
 	text-decoration: none;
 	cursor: pointer;
