@@ -49,7 +49,7 @@ $ontario-button-bg-secondary: global.$ontario-colour-white;
 
 	&:focus {
 		background-color: $ontario-button-bg-primary--hover;
-		color:global.$ontario-colour-white;
+		color: global.$ontario-colour-white;
 		transition: background-color 0.2s ease-out, global.$ontario-focus-transition;
 	}
 
@@ -127,25 +127,25 @@ $ontario-button-bg-secondary: global.$ontario-colour-white;
 }
 
 .ontario-button--internalThemeDark {
-	background-color: $ontario-colour-black;
-	border: $border-size-standard solid $ontario-colour-white;
-	color: $ontario-colour-white;
+	background-color: global.$ontario-colour-black;
+	border: global.$border-size-standard solid global.$ontario-colour-white;
+	color: global.$ontario-colour-white;
 
 	&:hover {
-		background-color: $ontario-greyscale-70;
+		background-color: global.$ontario-greyscale-70;
 	}
 
 	&:focus {
-		background-color: $ontario-greyscale-70;
-		transition: background-color 0.2s ease-out, $ontario-focus-transition;
+		background-color: global.$ontario-greyscale-70;
+		transition: background-color 0.2s ease-out, global.$ontario-focus-transition;
 	}
 
 	&:active {
-		background-color: $ontario-greyscale-70;
-		transition: background-color 0s, $ontario-focus-transition;
+		background-color: global.$ontario-greyscale-70;
+		transition: background-color 0s, global.$ontario-focus-transition;
 	}
 
 	&:visited {
-		color: $ontario-colour-link;
+		color: global.$ontario-colour-link;
 	}
 }
