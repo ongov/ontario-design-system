@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use '../../global.scss';
 
 $ontario-button-bg-primary: global.$ontario-colour-link;
@@ -14,10 +15,10 @@ $ontario-button-bg-secondary: global.$ontario-colour-white;
 	font-size: 1.125rem;
 	font-family: global.$ontario-font-open-sans;
 	font-weight: global.$ontario-font-weights-semi-bold;
-	line-height: calc(14 / 9);
-	margin: global.$spacing-0 calc(#{global.$spacing-4} + #{global.$spacing-3}) global.$spacing-5 global.$spacing-0;
+	line-height: math.div(14, 9);
+	margin: global.$spacing-0 (global.$spacing-4 + global.$spacing-3) global.$spacing-5 global.$spacing-0;
 	min-width: 10rem;
-	padding: calc((#{global.$spacing-4} + #{global.$spacing-1}) / 2) global.$spacing-5;
+	padding: math.div((global.$spacing-4 + global.$spacing-1), 2) global.$spacing-5;
 	text-align: center;
 	text-decoration: none;
 	cursor: pointer;
@@ -49,7 +50,7 @@ $ontario-button-bg-secondary: global.$ontario-colour-white;
 
 	&:focus {
 		background-color: $ontario-button-bg-primary--hover;
-		color:global.$ontario-colour-white;
+		color: global.$ontario-colour-white;
 		transition: background-color 0.2s ease-out, global.$ontario-focus-transition;
 	}
 
@@ -127,25 +128,25 @@ $ontario-button-bg-secondary: global.$ontario-colour-white;
 }
 
 .ontario-button--internalThemeDark {
-	background-color: $ontario-colour-black;
-	border: $border-size-standard solid $ontario-colour-white;
-	color: $ontario-colour-white;
+	background-color: global.$ontario-colour-black;
+	border: global.$border-size-standard solid global.$ontario-colour-white;
+	color: global.$ontario-colour-white;
 
 	&:hover {
-		background-color: $ontario-greyscale-70;
+		background-color: global.$ontario-greyscale-70;
 	}
 
 	&:focus {
-		background-color: $ontario-greyscale-70;
-		transition: background-color 0.2s ease-out, $ontario-focus-transition;
+		background-color: global.$ontario-greyscale-70;
+		transition: background-color 0.2s ease-out, global.$ontario-focus-transition;
 	}
 
 	&:active {
-		background-color: $ontario-greyscale-70;
-		transition: background-color 0s, $ontario-focus-transition;
+		background-color: global.$ontario-greyscale-70;
+		transition: background-color 0s, global.$ontario-focus-transition;
 	}
 
 	&:visited {
-		color: $ontario-colour-link;
+		color: global.$ontario-colour-link;
 	}
 }
