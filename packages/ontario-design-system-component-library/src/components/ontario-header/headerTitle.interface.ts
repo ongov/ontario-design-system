@@ -1,6 +1,6 @@
 export interface headerTitle {
 	name: string;
 	href: string;
-	linkIsActive?: any;
-	onClickHandler?: any;
+	linkIsActive?: boolean;
+	onClickHandler?: (event: Event) => void;
 }

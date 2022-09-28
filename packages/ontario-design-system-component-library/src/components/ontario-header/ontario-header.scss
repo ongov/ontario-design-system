@@ -15,7 +15,7 @@ $ontario-header-logo-width--mobile: 45px;
 	position: relative;
 	z-index: 5;
 
-	@media screen and (min-width: $medium-breakpoint) {
+	@media screen and (min-width: global.$medium-breakpoint) {
 		z-index: 1;
 	}
 }

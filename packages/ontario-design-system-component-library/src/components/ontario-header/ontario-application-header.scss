@@ -322,7 +322,7 @@ $ontario-logo-height: 46px;
 	visibility: visible;
 	transform: translateY(0);
 	transition: transform 0.4s ease-in-out;
-	@media screen and (min-width: $medium-breakpoint) {
+	@media screen and (min-width: global.$medium-breakpoint) {
 		z-index: 5;
 	}
 }
@@ -341,7 +341,7 @@ $ontario-logo-height: 46px;
 	visibility: visible;
 	transform: translateY(0);
 	transition: transform 0.4s ease-in-out;
-	@media screen and (min-width: $medium-breakpoint) {
+	@media screen and (min-width: global.$medium-breakpoint) {
 		transition: none;
 		display: block;
 	}
