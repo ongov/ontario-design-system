@@ -115,7 +115,7 @@ export namespace Components {
         "name": string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset.
-          * @example <ontario-dropdown-list    caption='{     "captionText": "Do you like cats?",     "captionType": "heading",     "isRequired": true   }'   name="cat-dropdown"   is-empty-start-option="Please select"    options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
+          * @example <ontario-dropdown-list   caption='{     "captionText": "Do you like cats?",     "captionType": "heading",     "isRequired": true   }'   name="cat-dropdown"   is-empty-start-option="Please select"   options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
          */
         "options": string | DropdownOption[];
     }
@@ -2317,7 +2317,7 @@ declare namespace LocalJSX {
         "name"?: string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset.
-          * @example <ontario-dropdown-list    caption='{     "captionText": "Do you like cats?",     "captionType": "heading",     "isRequired": true   }'   name="cat-dropdown"   is-empty-start-option="Please select"    options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
+          * @example <ontario-dropdown-list   caption='{     "captionText": "Do you like cats?",     "captionType": "heading",     "isRequired": true   }'   name="cat-dropdown"   is-empty-start-option="Please select"   options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'> </ontario-dropdown-list>
          */
         "options"?: string | DropdownOption[];
     }
