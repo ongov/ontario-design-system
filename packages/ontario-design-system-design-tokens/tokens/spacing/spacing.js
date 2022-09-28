@@ -9,6 +9,7 @@ module.exports = {
     6: { value: "2rem" },
     7: { value: "2.5rem" },
     8: { value: "3rem" },
-    9: { value: "4rem" }
+    9: { value: "4rem" },
+    10: { value: "5rem" }
   }
 }
