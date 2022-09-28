@@ -13,7 +13,7 @@ $asset-base-path: '../../..' !default;
 ///   A `url()` function leading to the asset
 
 @function asset($type, $file) {
-    @return url($asset-base-path + '/' + $type + '/' + $file);
+	@return url($asset-base-path + '/' + $type + '/' + $file);
 }
 
 /* Image asset helper */
@@ -26,7 +26,7 @@ $asset-base-path: '../../..' !default;
 /// @require {function} asset
 
 @function image($file) {
-    @return asset('images', $file);
+	@return asset('images', $file);
 }
 
 /* Font asset helper */
@@ -39,7 +39,7 @@ $asset-base-path: '../../..' !default;
 /// @require {function} asset
 
 @function font($file) {
-    @return asset('fonts', $file);
+	@return asset('fonts', $file);
 }
 
 /* Icon asset helper */
@@ -52,5 +52,5 @@ $asset-base-path: '../../..' !default;
 /// @require {function} asset
 
 @function icon($file) {
-    @return asset('icons', $file);
+	@return asset('icons', $file);
 }

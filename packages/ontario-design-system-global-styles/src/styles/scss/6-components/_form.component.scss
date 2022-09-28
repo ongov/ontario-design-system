@@ -3,56 +3,56 @@
 @use '../1-variables/spacing.variables' as spacing;
 @use '../1-variables/colours.variables' as colours;
 @use '../1-variables/breakpoints.variables' as breakpoints;
-@use '../1-variables/global.variables' as global;
+@use '../1-variables/global.variables' as globalVariables;
 
 .ontario-form-group:last-of-type {
-  margin-bottom: spacing.$spacing-8;
+	margin-bottom: spacing.$spacing-8;
 }
 
 .ontario-fieldset__legend {
-  color: colours.$ontario-colour-black;
-  font-family: typography.$ontario-font-raleway-modified;
-  font-size: 1.1875rem;
-  font-weight: fontWeights.$ontario-font-weights-bold;
-  margin: 0 0 spacing.$spacing-4 0;
-  line-height: global.$line-height-default;
-  max-width: global.$narrow-width;
-  white-space: normal;
-  width: global.$full-width;
+	color: colours.$ontario-colour-black;
+	font-family: typography.$ontario-font-raleway-modified;
+	font-size: 1.1875rem;
+	font-weight: fontWeights.$ontario-font-weights-bold;
+	margin: 0 0 spacing.$spacing-4 0;
+	line-height: globalVariables.$line-height-default;
+	max-width: globalVariables.$narrow-width;
+	white-space: normal;
+	width: globalVariables.$full-width;
 
-  @media screen and (max-width: breakpoints.$small-breakpoint) {
-      font-size: 1.125rem;
-      line-height: 1.56;
-  }
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		font-size: 1.125rem;
+		line-height: 1.56;
+	}
 }
 
 .ontario-fieldset__legend--large,
 .ontario-fieldset__legend--heading {
-  font-size: 1.75rem;
-  letter-spacing: 0.02rem;
-  line-height: 1.2;
+	font-size: 1.75rem;
+	letter-spacing: 0.02rem;
+	line-height: 1.2;
 
-  h1 {
-      display: inline-block;
-      font-size: inherit;
-      margin: 0;
-  }
+	h1 {
+		display: inline-block;
+		font-size: inherit;
+		margin: 0;
+	}
 
-  @media screen and (max-width: breakpoints.$small-breakpoint) {
-      font-size: 1.4375rem;
-      line-height: 1.39;
-  }
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		font-size: 1.4375rem;
+		line-height: 1.39;
+	}
 }
 
 .ontario-fieldset__legend-required-flag,
 .ontario-fieldset__legend-optional-flag {
-  font-family: typography.$ontario-font-open-sans;
-  font-size: 1rem;
-  font-weight: fontWeights.$ontario-font-weights-normal;
+	font-family: typography.$ontario-font-open-sans;
+	font-size: 1rem;
+	font-weight: fontWeights.$ontario-font-weights-normal;
 
-  &:before {
-    content: '\a0';
-  }
+	&:before {
+		content: '\a0';
+	}
 }
 
 .ontario-label__flag {

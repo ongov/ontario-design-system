@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 @use '@ontario-digital-service/ontario-design-system-design-tokens/dist/scss/variables';
 
 /*
@@ -20,7 +20,7 @@ $max-value: variables.$ontario-global-tokens-max-value;
 $narrower-width: variables.$ontario-global-tokens-width-narrower; // 26.25em
 $narrow-width: variables.$ontario-global-tokens-width-narrow; // 38.75em
 $standard-width: variables.$ontario-global-tokens-width-standard;
-$full-width:  variables.$ontario-global-tokens-width-max; // 100%
+$full-width: variables.$ontario-global-tokens-width-max; // 100%
 
 // Border sizes
 $border-size-standard: variables.$ontario-global-tokens-border-size; // 2px
