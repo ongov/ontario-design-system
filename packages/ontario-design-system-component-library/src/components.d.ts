@@ -1292,7 +1292,7 @@ export namespace Components {
     interface OntarioPageAlert {
         /**
           * Body for page alert. It can be string or HTML content.
-          * @example <ontario-page-alert content="Please look out for an email confirmation with your receipt and order number."> </ontario-page-alert>  or  <ontario-page-alert>  <p>ServiceOntario centres may issue either a blue licence plate or a white embossed ‘Yours to Discover’ licence  plate depending on availability. <a href="#">Learn more about replacing a licence plate</a>.</p> </ontario-page-alert>
+          * @example <ontario-page-alert content="Please look out for an email confirmation with your receipt and order number."> </ontario-page-alert>  or  <ontario-page-alert>  <p>This is a sample page alert component using slots. <a href="#">Learn more</a>.</p> </ontario-page-alert>
          */
         "content": string;
         /**
@@ -3534,7 +3534,7 @@ declare namespace LocalJSX {
     interface OntarioPageAlert {
         /**
           * Body for page alert. It can be string or HTML content.
-          * @example <ontario-page-alert content="Please look out for an email confirmation with your receipt and order number."> </ontario-page-alert>  or  <ontario-page-alert>  <p>ServiceOntario centres may issue either a blue licence plate or a white embossed ‘Yours to Discover’ licence  plate depending on availability. <a href="#">Learn more about replacing a licence plate</a>.</p> </ontario-page-alert>
+          * @example <ontario-page-alert content="Please look out for an email confirmation with your receipt and order number."> </ontario-page-alert>  or  <ontario-page-alert>  <p>This is a sample page alert component using slots. <a href="#">Learn more</a>.</p> </ontario-page-alert>
          */
         "content"?: string;
         /**

@@ -2,14 +2,13 @@
 
 Use page alerts to notify users of important information or changes on a page. There are four types of page alerts (i.e informational, warning, success and error).
 
-
 ## Usage guidance
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for current documentation guidance.
 
 ## Configuration
 
-Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the Page Alert component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component. 
+Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the Page Alert component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
 
 <!-- Auto Generated Below -->
 

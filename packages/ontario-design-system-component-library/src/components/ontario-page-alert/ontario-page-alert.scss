@@ -1,70 +1,63 @@
-@import "../../global.scss";
+@use '../../global.scss';
+
+$ontario-alert-link-focus: #6b0000;
+$ontario-alert-link-active: #280000;
 
 .ontario-alert {
-  border-width: 0 0 0 4px;
-  border-style: solid;
-  padding: $spacing-5;
-  margin: $spacing-6 0 $spacing-7 0;
+	border-width: 0 0 0 global.rem-calc(4);
+	border-style: solid;
+	padding: global.$spacing-5;
+	margin: global.$spacing-6 0 global.$spacing-7 0;
 }
 
 .ontario-alert__header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
 }
 
 .ontario-alert__header-icon {
-  display: inline-block;
-  vertical-align: top;
-  margin-right: 0.95rem;
-
-  svg {
-    width: 36px;
-    height: 36px;
-
-    @media screen and (max-width: $small-breakpoint) {
-      width: 32px;
-      height: 32px;
-    }
-  }
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 0.95rem;
 }
 
 .ontario-alert__header-title {
-  margin-bottom: $spacing-3;
-  padding-top: 2px;
+	margin-bottom:global.$spacing-3;
+	padding-top: global.rem-calc(2);
 }
 
 .ontario-alert__body {
-  margin-left: 3.25rem;
-  max-width: $standard-width;
+	margin-left: 3.25rem;
+	max-width: global.$standard-width;
 
-  @media screen and (max-width: $small-breakpoint) {
-    margin-left: 0;
-  }
+	@media screen and (max-width: global.$small-breakpoint) {
+		margin-left: 0;
+	}
 }
 
 .ontario-alert__body p {
-  margin-top: $spacing-0;
+	margin-top: global.$spacing-0;
 
-  &:last-of-type {
-    margin-bottom: $spacing-2;
-  }
+	&:last-of-type {
+		margin-bottom: global.$spacing-2;
+	}
 }
 
 .ontario-alert__body p:last-of-type + ul {
-  margin-top: $spacing-4;
+	margin-top: global.$spacing-4;
 }
 
 .ontario-alert__body ul:last-of-type {
-  margin-bottom: $spacing-2;
+	margin-bottom: global.$spacing-2;
 }
 
 .ontario-alert--error ul {
-  margin-left: 1.25rem;
+	margin-left: 1.25rem;
 }
 
 .ontario-alert--error ul:last-of-type {
-  margin-bottom: $spacing-2;
+	margin-bottom: global.$spacing-2;
 }
 
 // ---------------------
@@ -72,53 +65,37 @@
 // ---------------------
 // informational alert
 .ontario-alert--informational {
-  border-color: $ontario-colour-information;
-  background-color: $ontario-colour-information-light;
-}
-
-.ontario-alert--informational svg {
-  fill: $ontario-colour-information;
+	border-color: global.$ontario-colour-information;
+	background-color: global.$ontario-colour-information-light;
 }
 
 // warning alert
 .ontario-alert--warning {
-  border-color: $ontario-colour-warning;
-  background-color: $ontario-colour-warning-light;
-}
-
-.ontario-alert--warning svg {
-  fill: $ontario-colour-warning;
+	border-color: global.$ontario-colour-warning;
+	background-color: global.$ontario-colour-warning-light;
 }
 
 // success alert
 .ontario-alert--success {
-  border-color: $ontario-colour-success;
-  background-color: $ontario-colour-success-light;
-}
-
-.ontario-alert--success svg {
-  fill: $ontario-colour-success;
+	border-color: global.$ontario-colour-success;
+	background-color: global.$ontario-colour-success-light;
 }
 
 // error alert
 .ontario-alert--error {
-  border-color: $ontario-colour-alert;
-  background-color: $ontario-colour-alert-light;
-}
-
-.ontario-alert--error svg {
-  fill: $ontario-colour-alert;
+	border-color: global.$ontario-colour-alert;
+	background-color: global.$ontario-colour-alert-light;
 }
 
 .ontario-alert--error a {
-  color: $ontario-colour-alert;
+	color: global.$ontario-colour-alert;
 
-  &:hover,
-  &:focus {
-    color: #6B0000;
-  }
+	&:hover,
+	&:focus {
+		color: $ontario-alert-link-focus;
+	}
 
-  &:active {
-    color: #280000;
-  }
+	&:active {
+		color: $ontario-alert-link-active;
+	}
 }
