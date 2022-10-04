@@ -45,7 +45,11 @@ export class InputCaption implements Caption {
 
 		if (caption) {
 			if (typeof caption === 'string') {
-				captionObject = JSON.parse(caption) as InputCaption;
+				try {
+					captionObject = JSON.parse(caption) as InputCaption;
+				} catch {
+					captionObject = new InputCaption(componentTagName, JSON.stringify({ captionText: caption, captionType: 'default' }), translations, language, isLegend);
+				}
 			} else {
 				captionObject = caption;
 			}
@@ -55,8 +59,7 @@ export class InputCaption implements Caption {
 		this.isLegend = isLegend;
 		this.componentTagName = componentTagName.toLocaleLowerCase();
 		this.captionText = captionObject?.captionText ?? '';
-		this.captionType =
-			(captionObject && captionObject?.captionType && CaptionTypes.find(type => type === captionObject?.captionType?.toLowerCase())) || 'default';
+		this.captionType = (captionObject && captionObject?.captionType && CaptionTypes.find(type => type === captionObject?.captionType?.toLowerCase())) || 'default';
 		this.validateCaption(captionObject);
 		this.translations = translations;
 		this.language = language;
@@ -105,7 +108,13 @@ export class InputCaption implements Caption {
 	 * @returns CSS class for the `label` element.
 	 */
 	private getClass(): string {
-		return this.captionType === 'large' || this.captionType === 'heading' ? (this.isLegend ? `ontario-fieldset__legend ontario-fieldset__legend--${this.captionType}` : `ontario-label ontario-label--${this.captionType}`) : (this.isLegend ? "ontario-fieldset__legend" : "ontario-label");
+		return this.captionType === 'large' || this.captionType === 'heading'
+			? this.isLegend
+				? `ontario-fieldset__legend ontario-fieldset__legend--${this.captionType}`
+				: `ontario-label ontario-label--${this.captionType}`
+			: this.isLegend
+			? 'ontario-fieldset__legend'
+			: 'ontario-label';
 	}
 
 	/**
@@ -149,8 +158,8 @@ export class InputCaption implements Caption {
 
 			if (messageType !== MessageContentType.UndefinedCaptionObject) {
 				message
-				.addMonospaceText(` ${messageType === MessageContentType.EmptyCaptionText || messageType === MessageContentType.UndefinedCaptionText ? 'captionText' : 'captionType'} `)
-				.addRegularText('property of');
+					.addMonospaceText(` ${messageType === MessageContentType.EmptyCaptionText || messageType === MessageContentType.UndefinedCaptionText ? 'captionText' : 'captionType'} `)
+					.addRegularText('property of');
 			}
 
 			message.addMonospaceText(' caption ').addRegularText('object on').addMonospaceText(` ${this.componentTagName} `);

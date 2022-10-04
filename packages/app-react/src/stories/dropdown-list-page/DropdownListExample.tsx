@@ -4,7 +4,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function DropdownListExamples() {
-	const dropdownListCodeExample = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList label="Do you like cats?" name="cat-dropdown" is-required
+	const dropdownListCodeExample = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList caption="Do you like cats?" name="cat-dropdown" is-required
   options='[{
       "value": "dropdown-list-1",
       "label": "All categories"
@@ -18,7 +18,7 @@ export default function DropdownListExamples() {
       "label": "Option 3"
     }]'>
 </OntarioDropdownList>`;
-	const dropdownListCodeExample2 = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList label="Do you like cats?" name="cat-dropdown" is-required 
+	const dropdownListCodeExample2 = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList caption="Do you like cats?" name="cat-dropdown" is-required 
   options='[{
     "value": "dropdown-list-1",
     "label": "All categories"
@@ -32,7 +32,7 @@ export default function DropdownListExamples() {
       "label": "Option 3"
     }]'>
 </OntarioDropdownList>`;
-	const dropdownListCodeExample3 = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList label="Select a language" name="language-select"
+	const dropdownListCodeExample3 = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList caption="Select a language" name="language-select"
   options='[{
       "value": "dropdown-list-1",
       "label": "Select a language"
@@ -50,12 +50,11 @@ export default function DropdownListExamples() {
 		<div className="ontario-row">
 			<div className="ontario-columns ontario-medium-12 ontario-large-12">
 				<div className="preview-container">
-
-						<OntarioDropdownList
-							label="Do you like cats?"
-							name="cat-dropdown"
-							is-required
-							options='[{
+					<OntarioDropdownList
+						caption="Do you like cats?"
+						name="cat-dropdown"
+						is-required
+						options='[{
                 "value": "dropdown-list-1",
                 "label": "All categories"
               },
@@ -67,8 +66,7 @@ export default function DropdownListExamples() {
                 "value": "dropdown-list-3",
                 "label": "Option 3"
               }]'
-						></OntarioDropdownList>
-
+					></OntarioDropdownList>
 
 					<p>With the following markup:</p>
 
@@ -81,12 +79,11 @@ export default function DropdownListExamples() {
 						because, in this case, we’re sure at least 90% of our users will live in Canada:{' '}
 					</p>
 
-
-						<OntarioDropdownList
-							label="Shipping Address"
-							name="shipping-address"
-							is-required
-							options='[{
+					<OntarioDropdownList
+						caption="Shipping Address"
+						name="shipping-address"
+						is-required
+						options='[{
                 "value": "dropdown-list-1",
                 "label": "Canada"
               },
@@ -98,8 +95,7 @@ export default function DropdownListExamples() {
                 "value": "dropdown-list-3",
                 "label": "France"
               }]'
-						></OntarioDropdownList>
-
+					></OntarioDropdownList>
 
 					<p>With the following markup:</p>
 
@@ -109,11 +105,10 @@ export default function DropdownListExamples() {
 
 					<p>In all other cases, use the default option to repeat the label – this provides additional help to users with assistive devices like screen readers.</p>
 
-
-						<OntarioDropdownList
-							label="Select a language"
-							name="language-select"
-							options='[{
+					<OntarioDropdownList
+						caption="Select a language"
+						name="language-select"
+						options='[{
                 "value": "dropdown-list-1",
                 "label": "Select a language"
               },
@@ -125,8 +120,7 @@ export default function DropdownListExamples() {
                 "value": "dropdown-list-3",
                 "label": "French"
               }]'
-						></OntarioDropdownList>
-
+					></OntarioDropdownList>
 
 					<p>With the following markup:</p>
 
