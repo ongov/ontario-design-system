@@ -12,7 +12,6 @@ Once the component package has been installed (see Ontario Design System Compone
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property  | Attribute | Description                                                                                                                                                                                      | Type                                                   | Default           |
@@ -20,7 +19,6 @@ Once the component package has been installed (see Ontario Design System Compone
 | `content` | `content` | Body for page alert. It can be string or HTML content.                                                                                                                                           | `string`                                               | `undefined`       |
 | `heading` | `heading` | Heading for page alert                                                                                                                                                                           | `string`                                               | `undefined`       |
 | `type`    | `type`    | The type of page alert to render. If no value is provided `informational` alert would be rendered. There are four possible values for page alert (i.e informational, warning, success or error). | `"error" \| "informational" \| "success" \| "warning"` | `'informational'` |
-
 
 ## Dependencies
 
@@ -32,6 +30,7 @@ Once the component package has been installed (see Ontario Design System Compone
 - [ontario-icon-alert-error](../ontario-icon)
 
 ### Graph
+
 ```mermaid
 graph TD;
   ontario-page-alert --> ontario-icon-alert-information
@@ -41,6 +40,6 @@ graph TD;
   style ontario-page-alert fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
