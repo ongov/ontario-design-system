@@ -3,7 +3,7 @@
 .ontario-blockquote {
 	border-left: 4px solid global.$ontario-greyscale-70;
 	font-family: global.$ontario-font-raleway-modified;
-	font-size: 1.1875rem;
+	font-size: global.rem-calc(19);
 	font-weight: 400;
 	letter-spacing: 0.025rem;
 	line-height: 1.56;
@@ -13,7 +13,7 @@
 	quotes: '\201C''\201D';
 
 	@media screen and (max-width: global.$small-breakpoint) {
-		font-size: 1.125rem;
+		font-size: global.rem-calc(18);
 		letter-spacing: 0.03rem;
 		line-height: 1.5;
 		margin: global.$spacing-5 0 global.$spacing-6 0;
@@ -33,12 +33,12 @@
 }
 
 .ontario-blockquote--short {
-	font-size: 1.75rem;
+	font-size: global.rem-calc(28);
 	letter-spacing: 0.02rem;
 	line-height: 1.5;
 
 	@media screen and (max-width: global.$small-breakpoint) {
-		font-size: 1.4375rem;
+		font-size: global.rem-calc(23);
 		line-height: 1.43;
 	}
 }
@@ -46,7 +46,7 @@
 .ontario-blockquote__attribution,
 .ontario-blockquote__byline {
 	display: block;
-	font-size: 1rem;
+	font-size: global.rem-calc(16);
 	letter-spacing: 0.025rem;
 	line-height: 1.56;
 	text-align: right;
