@@ -12,7 +12,7 @@ $asset-base-path: '../../..' !default;
 /// @return {url}
 ///   A `url()` function leading to the asset
 
-@function asset($type, $file) {
+@function generateAssetUrl($type, $file) {
 	@return url($asset-base-path + '/' + $type + '/' + $file);
 }
 
@@ -25,8 +25,8 @@ $asset-base-path: '../../..' !default;
 ///   A `url()` function leading to the image
 /// @require {function} asset
 
-@function image($file) {
-	@return asset('images', $file);
+@function getImageUrl($file) {
+	@return generateAssetUrl('images', $file);
 }
 
 /* Font asset helper */
@@ -38,8 +38,8 @@ $asset-base-path: '../../..' !default;
 ///   A `url()` function leading to the font
 /// @require {function} asset
 
-@function font($file) {
-	@return asset('fonts', $file);
+@function getFontUrl($file) {
+	@return generateAssetUrl('fonts', $file);
 }
 
 /* Icon asset helper */
@@ -51,6 +51,6 @@ $asset-base-path: '../../..' !default;
 ///   A `url()` function leading to the font
 /// @require {function} asset
 
-@function icon($file) {
-	@return asset('icons', $file);
+@function getIconUrl($file) {
+	@return generateAssetUrl('icons', $file);
 }
