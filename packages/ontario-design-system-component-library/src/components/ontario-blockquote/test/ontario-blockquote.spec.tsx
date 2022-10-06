@@ -10,7 +10,7 @@ describe('ontario-blockquote', () => {
 		expect(page.root).toEqualHtml(`
       <ontario-blockquote>
         <mock:shadow-root>
-					<blockquote class="ontario-blockquote ontario-blockquote--short">
+					<blockquote class="ontario-blockquote">
 						<p></p>
 						<cite class="ontario-blockquote__attribution"></cite>
 					</blockquote>
