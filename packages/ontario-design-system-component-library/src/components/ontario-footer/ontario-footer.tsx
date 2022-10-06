@@ -51,10 +51,10 @@ export class OntarioFooter {
 	@State() private expandedThreeColumnState: ExpandedThreeColumnOptions;
 
 	private verifyDefault() {
-		if (this.defaultState && !this.defaultState.queensPrinterLink) {
-			this.defaultState.queensPrinterLink = 'https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario';
+		if (this.defaultState && !this.defaultState.printerLink) {
+			this.defaultState.printerLink = 'https://www.ontario.ca/page/copyright-information';
 		}
-		if (!this.defaultState || !this.defaultState.accessibilityLink || !this.defaultState.contactLink || !this.defaultState.privacyLink || !this.defaultState.queensPrinterLink) {
+		if (!this.defaultState || !this.defaultState.accessibilityLink || !this.defaultState.contactLink || !this.defaultState.privacyLink || !this.defaultState.printerLink) {
 			console.error('Error: defaultOptions not fully set, please review your values and ensure all required options are truthy.');
 		}
 	}
@@ -291,8 +291,8 @@ export class OntarioFooter {
 							)}
 						</ul>
 						<div class="ontario-footer__copyright">
-							<a class="ontario-footer__link" href={this.defaultState?.queensPrinterLink}>
-								&copy; Queen’s Printer for Ontario,{' '}
+							<a class="ontario-footer__link" href={this.defaultState?.printerLink}>
+								&copy; King's Printer for Ontario,{' '}
 								<span class="ontario-nbsp">
 									2012{enDash}
 									{String(new Date().getFullYear()).slice(-2)}
