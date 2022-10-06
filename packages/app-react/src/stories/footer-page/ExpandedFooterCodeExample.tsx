@@ -8,7 +8,7 @@ export default function ExpandedFooterCodeExample() {
   "accessibilityLink":"https://www.ontario.ca/page/accessibility",
   "privacyLink": "https://www.ontario.ca/page/privacy-statement",
   "contactLink": "https://www.ontario.ca/feedback/contact-us",
-  "queensPrinterLink": "https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario"
+  "printerLink": "https://www.ontario.ca/page/copyright-information"
 
 }' expanded-two-column-options='{
   "firstColumn": {
@@ -64,7 +64,7 @@ export default function ExpandedFooterCodeExample() {
                 "accessibilityLink":"https://www.ontario.ca/page/accessibility",
                 "privacyLink": "https://www.ontario.ca/page/privacy-statement",
                 "contactLink": "https://www.ontario.ca/feedback/contact-us",
-                "queensPrinterLink": "https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario"
+                "printerLink": "https://www.ontario.ca/page/copyright-information"
 
               }'
 							expanded-two-column-options='{

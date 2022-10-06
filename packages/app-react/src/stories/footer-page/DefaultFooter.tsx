@@ -16,7 +16,7 @@ export default function DefaultFooter() {
 						<ul>
 							<li>Accessibility</li>
 							<li>Privacy</li>
-							<li>Queen’s printer</li>
+							<li>King's printer</li>
 							<li>Contact us</li>
 						</ul>
 					</li>

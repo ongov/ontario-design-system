@@ -8,7 +8,7 @@ export default function PartnershipFooterCodeExample() {
 	"accessibilityLink":"https://www.ontario.ca/page/accessibility",
 	"privacyLink": "https://www.ontario.ca/page/privacy-statement",
 	"contactLink": "https://www.ontario.ca/feedback/contact-us",
-	"queensPrinterLink": "https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario"
+	"printerLink": "https://www.ontario.ca/page/copyright-information"
 }'></OntarioFooter>`;
 	return (
 		<>
@@ -23,7 +23,7 @@ export default function PartnershipFooterCodeExample() {
               "accessibilityLink":"https://www.ontario.ca/page/accessibility",
               "privacyLink": "https://www.ontario.ca/page/privacy-statement",
               "contactLink": "https://www.ontario.ca/feedback/contact-us",
-              "queensPrinterLink": "https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario"
+              "printerLink": "https://www.ontario.ca/page/copyright-information"
 
             }'
 						></OntarioFooter>

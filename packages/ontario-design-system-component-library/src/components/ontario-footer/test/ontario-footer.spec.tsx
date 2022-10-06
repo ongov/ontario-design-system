@@ -32,7 +32,7 @@ describe('ontario-footer', () => {
             </ul>
             <div class="ontario-footer__copyright">
               <a class="ontario-footer__link">
-                © Queen’s Printer for Ontario,
+                © King's Printer for Ontario,
                 <span class="ontario-nbsp">
                   2012–22
                 </span>
@@ -55,7 +55,7 @@ describe('ontario-footer', () => {
           "accessibilityLink": "1",
           "privacyLink": "2",
           "contactLink": "3",
-          "queensPrinterLink": "4"
+          "printerLink": "4"
         }'
       ></ontario-footer>`
     });
@@ -66,7 +66,7 @@ describe('ontario-footer', () => {
           "accessibilityLink": "1",
           "privacyLink": "2",
           "contactLink": "3",
-          "queensPrinterLink": "4"
+          "printerLink": "4"
         }'
       >
       <mock:shadow-root>
@@ -92,7 +92,7 @@ describe('ontario-footer', () => {
               </ul>
               <div class="ontario-footer__copyright">
                 <a class="ontario-footer__link" href="4">
-                  © Queen’s Printer for Ontario,
+                  © King's Printer for Ontario,
                   <span class="ontario-nbsp">
                     2012–22
                   </span>
@@ -115,7 +115,7 @@ describe('ontario-footer', () => {
           "accessibilityLink": "1",
           "privacyLink": "2",
           "contactLink": "3",
-          "queensPrinterLink": "4"
+          "printerLink": "4"
         }'
         partnership-Connection="Sponsored by Government of Ontario"
       ></ontario-footer>`
@@ -127,7 +127,7 @@ describe('ontario-footer', () => {
           "accessibilityLink": "1",
           "privacyLink": "2",
           "contactLink": "3",
-          "queensPrinterLink": "4"
+          "printerLink": "4"
         }'
         partnership-Connection="Sponsored by Government of Ontario"
       >
@@ -154,7 +154,7 @@ describe('ontario-footer', () => {
               </ul>
               <div class="ontario-footer__copyright">
                 <a class="ontario-footer__link" href="4">
-                  © Queen’s Printer for Ontario,
+                  © King's Printer for Ontario,
                   <span class="ontario-nbsp">
                     2012–22
                   </span>
@@ -186,7 +186,7 @@ describe('ontario-footer', () => {
           "accessibilityLink": "1",
           "privacyLink": "2",
           "contactLink": "3",
-          "queensPrinterLink": "4"
+          "printerLink": "4"
         }'
         expanded-two-column-options = '{
           "firstColumn": {
@@ -208,7 +208,7 @@ describe('ontario-footer', () => {
           "accessibilityLink": "1",
           "privacyLink": "2",
           "contactLink": "3",
-          "queensPrinterLink": "4"
+          "printerLink": "4"
         }'
         expanded-two-column-options = '{
           "firstColumn": {
@@ -269,7 +269,7 @@ describe('ontario-footer', () => {
                 </ul>
                 <div class="ontario-footer__copyright">
                   <a class="ontario-footer__link" href="4">
-                    © Queen’s Printer for Ontario,
+                    © King's Printer for Ontario,
                     <span class="ontario-nbsp">
                       2012–22
                     </span>
@@ -293,7 +293,7 @@ describe('ontario-footer', () => {
           "accessibilityLink": "1",
           "privacyLink": "2",
           "contactLink": "3",
-          "queensPrinterLink": "4"
+          "printerLink": "4"
         }'
         expanded-three-column-options = '{
           "firstColumn": {
@@ -335,7 +335,7 @@ describe('ontario-footer', () => {
           "accessibilityLink": "1",
           "privacyLink": "2",
           "contactLink": "3",
-          "queensPrinterLink": "4"
+          "printerLink": "4"
         }'
         expanded-three-column-options = '{
           "firstColumn": {
@@ -450,7 +450,7 @@ describe('ontario-footer', () => {
                 </ul>
                 <div class="ontario-footer__copyright">
                   <a class="ontario-footer__link" href="4">
-                    © Queen’s Printer for Ontario,
+                    © King's Printer for Ontario,
                     <span class="ontario-nbsp">
                       2012–22
                     </span>
