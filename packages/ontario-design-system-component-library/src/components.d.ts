@@ -35,11 +35,11 @@ export namespace Components {
     }
     interface OntarioBlockquote {
         /**
-          * Text to be displayed as the attribution (the author) of the quote.
+          * Optional text to be displayed as the attribution (the author) of the quote.
          */
-        "attribution": string;
+        "attribution"?: string;
         /**
-          * Optional text for additional information about the attribution/author.
+          * Optional text to be displayed for additional information about the attribution/author.
          */
         "byline"?: string;
         /**
@@ -2278,11 +2278,11 @@ declare namespace LocalJSX {
     }
     interface OntarioBlockquote {
         /**
-          * Text to be displayed as the attribution (the author) of the quote.
+          * Optional text to be displayed as the attribution (the author) of the quote.
          */
         "attribution"?: string;
         /**
-          * Optional text for additional information about the attribution/author.
+          * Optional text to be displayed for additional information about the attribution/author.
          */
         "byline"?: string;
         /**

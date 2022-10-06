@@ -7,12 +7,12 @@ export interface Blockquote extends Base {
 	quote: string;
 
 	/**
-	 * Text to be displayed as the attribution (the author) of the quote.
+	 * Optional text to be displayed as the attribution (the author) of the quote.
 	 */
-	attribution: string;
+	attribution?: string;
 
 	/**
-	 * Optional text for additional information about the attribution/author.
+	 * Optional text to be displayed for additional information about the attribution/author.
 	 */
 	byline?: string | undefined;
 }

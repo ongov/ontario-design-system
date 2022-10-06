@@ -12,7 +12,6 @@ describe('ontario-blockquote', () => {
         <mock:shadow-root>
 					<blockquote class="ontario-blockquote">
 						<p></p>
-						<cite class="ontario-blockquote__attribution"></cite>
 					</blockquote>
         </mock:shadow-root>
       </ontario-blockquote>

@@ -17,12 +17,12 @@ export class OntarioBlockquote implements Blockquote {
 	@Prop({ mutable: true }) quote: string;
 
 	/**
-	 * Text to be displayed as the attribution (the author) of the quote.
+	 * Optional text to be displayed as the attribution (the author) of the quote.
 	 */
-	@Prop() attribution: string;
+	@Prop() attribution?: string;
 
 	/**
-	 * Optional text for additional information about the attribution/author.
+	 * Optional text to be displayed for additional information about the attribution/author.
 	 */
 	@Prop() byline?: string;
 
@@ -50,34 +50,15 @@ export class OntarioBlockquote implements Blockquote {
 		}
 	}
 
-	/*
-	 * Watch for changes in the `attribution` prop for validation purposes.
-	 * Print the attribution warning message.
-	 */
-	@Watch('attribution')
-	validateAttributionContent() {
-		if (validatePropExists(this.attribution)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' attribution ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-blockquote> ')
-				.addRegularText('was not provided')
-				.printMessage();
-		}
-	}
-
 	componentWillLoad() {
 		this.validateQuoteLength();
-		this.validateAttributionContent();
 	}
 
 	render() {
 		return (
 			<blockquote class={this.shortQuote ? `ontario-blockquote ontario-blockquote--short` : `ontario-blockquote`}>
 				<p>{this.quote}</p>
-				<cite class="ontario-blockquote__attribution">{this.attribution}</cite>
+				{this.attribution && <cite class="ontario-blockquote__attribution">{this.attribution}</cite>}
 				{this.byline && <cite class="ontario-blockquote__byline">{this.byline}</cite>}
 			</blockquote>
 		);
