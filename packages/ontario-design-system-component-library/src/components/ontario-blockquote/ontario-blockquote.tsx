@@ -26,6 +26,8 @@ export class OntarioBlockquote implements Blockquote {
 	 */
 	@Prop() byline?: string;
 
+	@State() shortQuoteLength: number = 140;
+
 	@State() shortQuote: boolean = false;
 
 	/*
@@ -34,10 +36,10 @@ export class OntarioBlockquote implements Blockquote {
 	 * If the quote length is 140 characters or less, set the `shortQuote` state to true - this will add additonal classes for the blockquote styles.
 	 */
 	@Watch('quote')
-	validateQuoteLength() {
+	validateQuote() {
 		this.quote = this.quote ?? this.host.textContent ?? '';
 		this.validateQuoteContent(this.quote);
-		this.quote.length && this.quote.length <= 140 ? (this.shortQuote = true) : (this.shortQuote = false);
+		this.shortQuote = this.quote?.length <= this.shortQuoteLength ?? true;
 	}
 
 	/**
@@ -51,7 +53,7 @@ export class OntarioBlockquote implements Blockquote {
 	}
 
 	componentWillLoad() {
-		this.validateQuoteLength();
+		this.validateQuote();
 	}
 
 	render() {
