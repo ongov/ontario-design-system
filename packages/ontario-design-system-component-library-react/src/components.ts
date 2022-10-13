@@ -127,6 +127,7 @@ export const OntarioIconWheelchair = /*@__PURE__*/createReactComponent<JSX.Ontar
 export const OntarioIconWifi = /*@__PURE__*/createReactComponent<JSX.OntarioIconWifi, HTMLOntarioIconWifiElement>('ontario-icon-wifi');
 export const OntarioIconYoutube = /*@__PURE__*/createReactComponent<JSX.OntarioIconYoutube, HTMLOntarioIconYoutubeElement>('ontario-icon-youtube');
 export const OntarioInput = /*@__PURE__*/createReactComponent<JSX.OntarioInput, HTMLOntarioInputElement>('ontario-input');
+export const OntarioPageAlert = /*@__PURE__*/createReactComponent<JSX.OntarioPageAlert, HTMLOntarioPageAlertElement>('ontario-page-alert');
 export const OntarioRadioButtons = /*@__PURE__*/createReactComponent<JSX.OntarioRadioButtons, HTMLOntarioRadioButtonsElement>('ontario-radio-buttons');
 export const OntarioTextarea = /*@__PURE__*/createReactComponent<JSX.OntarioTextarea, HTMLOntarioTextareaElement>('ontario-textarea');
 export const TestLanguageToggle = /*@__PURE__*/createReactComponent<JSX.TestLanguageToggle, HTMLTestLanguageToggleElement>('test-language-toggle');

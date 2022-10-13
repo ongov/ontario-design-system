@@ -16,6 +16,7 @@ import { ExpandedThreeColumnOptions } from "./components/ontario-footer/footer-e
 import { headerTitle } from "./components/ontario-header/headerTitle.interface";
 import { languageToggleOptions } from "./components/ontario-header/languageToggleOptions.interface";
 import { IconColour, IconSize } from "./components/ontario-icon/icon.types";
+import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
     interface MyComponent {
@@ -1288,6 +1289,23 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface OntarioPageAlert {
+        /**
+          * Body for page alert. It can be string or HTML content.
+          * @example <ontario-page-alert content="Please look out for an email confirmation with your receipt and order number."> </ontario-page-alert>  or  <ontario-page-alert>  <p>This is a sample page alert component using slots. <a href="#">Learn more</a>.</p> </ontario-page-alert>
+         */
+        "content": string;
+        /**
+          * Heading for page alert
+          * @example <ontario-page-alert heading="Licence plates"> </ontario-page-alert>
+         */
+        "heading": string;
+        /**
+          * The type of page alert to render. If no value is provided `informational` alert would be rendered. There are four possible values for page alert (i.e informational, warning, success or error).
+          * @example <ontario-page-alert type="error"> </ontario-page-alert>
+         */
+        "type": PageAlertType;
+    }
     interface OntarioRadioButtons {
         /**
           * The text to display as the label
@@ -2072,6 +2090,12 @@ declare global {
         prototype: HTMLOntarioInputElement;
         new (): HTMLOntarioInputElement;
     };
+    interface HTMLOntarioPageAlertElement extends Components.OntarioPageAlert, HTMLStencilElement {
+    }
+    var HTMLOntarioPageAlertElement: {
+        prototype: HTMLOntarioPageAlertElement;
+        new (): HTMLOntarioPageAlertElement;
+    };
     interface HTMLOntarioRadioButtonsElement extends Components.OntarioRadioButtons, HTMLStencilElement {
     }
     var HTMLOntarioRadioButtonsElement: {
@@ -2210,6 +2234,7 @@ declare global {
         "ontario-icon-wifi": HTMLOntarioIconWifiElement;
         "ontario-icon-youtube": HTMLOntarioIconYoutubeElement;
         "ontario-input": HTMLOntarioInputElement;
+        "ontario-page-alert": HTMLOntarioPageAlertElement;
         "ontario-radio-buttons": HTMLOntarioRadioButtonsElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
         "test-language-toggle": HTMLTestLanguageToggleElement;
@@ -3506,6 +3531,23 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface OntarioPageAlert {
+        /**
+          * Body for page alert. It can be string or HTML content.
+          * @example <ontario-page-alert content="Please look out for an email confirmation with your receipt and order number."> </ontario-page-alert>  or  <ontario-page-alert>  <p>This is a sample page alert component using slots. <a href="#">Learn more</a>.</p> </ontario-page-alert>
+         */
+        "content"?: string;
+        /**
+          * Heading for page alert
+          * @example <ontario-page-alert heading="Licence plates"> </ontario-page-alert>
+         */
+        "heading"?: string;
+        /**
+          * The type of page alert to render. If no value is provided `informational` alert would be rendered. There are four possible values for page alert (i.e informational, warning, success or error).
+          * @example <ontario-page-alert type="error"> </ontario-page-alert>
+         */
+        "type"?: PageAlertType;
+    }
     interface OntarioRadioButtons {
         /**
           * The text to display as the label
@@ -3708,6 +3750,7 @@ declare namespace LocalJSX {
         "ontario-icon-wifi": OntarioIconWifi;
         "ontario-icon-youtube": OntarioIconYoutube;
         "ontario-input": OntarioInput;
+        "ontario-page-alert": OntarioPageAlert;
         "ontario-radio-buttons": OntarioRadioButtons;
         "ontario-textarea": OntarioTextarea;
         "test-language-toggle": TestLanguageToggle;
@@ -3836,6 +3879,7 @@ declare module "@stencil/core" {
             "ontario-icon-wifi": LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
             "ontario-icon-youtube": LocalJSX.OntarioIconYoutube & JSXBase.HTMLAttributes<HTMLOntarioIconYoutubeElement>;
             "ontario-input": LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
+            "ontario-page-alert": LocalJSX.OntarioPageAlert & JSXBase.HTMLAttributes<HTMLOntarioPageAlertElement>;
             "ontario-radio-buttons": LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
             "test-language-toggle": LocalJSX.TestLanguageToggle & JSXBase.HTMLAttributes<HTMLTestLanguageToggleElement>;
