@@ -1,3 +1,20 @@
+# 2.0.0-beta.6 (2022-10-14)
+
+
+### Bug Fixes
+
+* **buttons:** add missing global namespace to SASS vars 996b2e8
+* **buttons:** remove instances of CSS calc from styles 5972717
+* **global-styles:** add missing namespaces to our SASS functions 76b78ca
+* **react-poc:** change dropdown label to be caption 6779b76
+* **react-poc:** update Home.scss to use @use 5cad12a
+
+
+### Features
+
+* **@ontario-digital-service/ontario-design-system-component-library-react, @ontario-digital-service/ontario-design-system-component-library:** added Page Alert component 870d2d5
+* **input-caption:** Add support for string only captions 32cb178
+
 # 2.0.0-beta.5 (2022-08-26)
 
 
