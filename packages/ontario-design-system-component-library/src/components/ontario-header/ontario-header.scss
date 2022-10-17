@@ -40,7 +40,7 @@ $ontario-header-logo-width--mobile: 45px;
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: rem-calc(18);
 	font-weight: global.$ontario-font-weights-semi-bold;
-	height: 48px;
+	height: $standard-input-height;
 	line-height: rem-calc(23);
 	padding: global.$spacing-3 global.$spacing-4;
 	text-decoration: none;

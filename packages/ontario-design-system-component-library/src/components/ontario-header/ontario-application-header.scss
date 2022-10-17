@@ -193,6 +193,7 @@ $ontario-logo-height: 46px;
 	font-size: rem-calc(18);
 	font-weight: global.$ontario-font-weights-semi-bold;
 	line-height: rem-calc(23);
+	height: $standard-input-height;
 	padding: global.$spacing-3;
 	text-decoration: none;
 	white-space: pre-line;
@@ -202,7 +203,6 @@ $ontario-logo-height: 46px;
 	&.ontario-link--active {
 		border-radius: 4px 4px 0 0;
 		border-bottom: 4px solid global.$ontario-colour-white;
-		padding: 0.625rem global.$spacing-2;
 	}
 
 	&:hover {
