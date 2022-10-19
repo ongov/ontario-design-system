@@ -33,6 +33,20 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface OntarioBlockquote {
+        /**
+          * Optional text to be displayed as the attribution (the author) of the quote.
+         */
+        "attribution"?: string;
+        /**
+          * Optional text to be displayed for additional information about the attribution/author.
+         */
+        "byline"?: string;
+        /**
+          * Text to be displayed as the quote. Note that wrapping the quotes in quotations is not needed - this is handled through the component styles.
+         */
+        "quote": string;
+    }
     interface OntarioButton {
         /**
           * Provides more context as to what the button interaction is doing.
@@ -1382,6 +1396,12 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLOntarioBlockquoteElement extends Components.OntarioBlockquote, HTMLStencilElement {
+    }
+    var HTMLOntarioBlockquoteElement: {
+        prototype: HTMLOntarioBlockquoteElement;
+        new (): HTMLOntarioBlockquoteElement;
+    };
     interface HTMLOntarioButtonElement extends Components.OntarioButton, HTMLStencilElement {
     }
     var HTMLOntarioButtonElement: {
@@ -2116,6 +2136,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "ontario-blockquote": HTMLOntarioBlockquoteElement;
         "ontario-button": HTMLOntarioButtonElement;
         "ontario-checkboxes": HTMLOntarioCheckboxesElement;
         "ontario-dropdown-list": HTMLOntarioDropdownListElement;
@@ -2254,6 +2275,20 @@ declare namespace LocalJSX {
           * The middle name
          */
         "middle"?: string;
+    }
+    interface OntarioBlockquote {
+        /**
+          * Optional text to be displayed as the attribution (the author) of the quote.
+         */
+        "attribution"?: string;
+        /**
+          * Optional text to be displayed for additional information about the attribution/author.
+         */
+        "byline"?: string;
+        /**
+          * Text to be displayed as the quote. Note that wrapping the quotes in quotations is not needed - this is handled through the component styles.
+         */
+        "quote"?: string;
     }
     interface OntarioButton {
         /**
@@ -3632,6 +3667,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "ontario-blockquote": OntarioBlockquote;
         "ontario-button": OntarioButton;
         "ontario-checkboxes": OntarioCheckboxes;
         "ontario-dropdown-list": OntarioDropdownList;
@@ -3761,6 +3797,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "ontario-blockquote": LocalJSX.OntarioBlockquote & JSXBase.HTMLAttributes<HTMLOntarioBlockquoteElement>;
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             "ontario-checkboxes": LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
             "ontario-dropdown-list": LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;

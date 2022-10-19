@@ -42,229 +42,239 @@
 		>
 		</ontario-header>
 
-		<hr />
+		<div class="ontario-row ontario-margin-top-48-!">
+			<div class="ontario-columns ontario-small-12">
+				<ontario-button label="Primary" aria-label="Primary Button" type="primary" onclick="testFunction()">
+					Content here will be overwritten by the value of the label property
+				</ontario-button>
+				<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">
+					Content here will be overwritten by the value of the label property
+				</ontario-button>
+				<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary"> Content here will be overwritten by the value of the label property </ontario-button>
+				<ontario-icon-accessibility icon-width="48" colour="blue"></ontario-icon-accessibility>
 
-		<ontario-button label="Primary" aria-label="Primary Button" type="primary" onclick="testFunction()">
-			Content here will be overwritten by the value of the label property
-		</ontario-button>
-		<ontario-button label="Secondary" aria-label="Secondary Button" htmlType="reset" id="secondaryButton">
-			Content here will be overwritten by the value of the label property
-		</ontario-button>
-		<ontario-button label="Tertiary" aria-label="Tertiary Button" type="tertiary"> Content here will be overwritten by the value of the label property </ontario-button>
-		<ontario-icon-accessibility icon-width="48" colour="blue"></ontario-icon-accessibility>
+				<hr />
 
-		<hr />
+				<!-- `ontario-input` components - happy path examples -->
+				<ontario-input name="email" input-width="20-char-width" caption='{"captionText": "Email", "isRequired": true, "captionType": "HEADING"}'></ontario-input>
+				<ontario-input name="postal" input-width="7-char-width" caption='{"captionText": "Postal Code", "captionType": "Large"}'></ontario-input>
+				<ontario-input name="address" caption='{"captionText": "Address", "captionType": "default"}'></ontario-input>
 
-		<!-- `ontario-input` components - happy path examples -->
-		<ontario-input name="email" input-width="20-char-width" caption='{"captionText": "Email", "isRequired": true, "captionType": "HEADING"}'></ontario-input>
-		<ontario-input name="postal" input-width="7-char-width" caption='{"captionText": "Postal Code", "captionType": "Large"}'></ontario-input>
-		<ontario-input name="address" caption='{"captionText": "Address", "captionType": "default"}'></ontario-input>
+				<details>
+					<summary style="padding: 0 15px 15px 0">ontario-input components - unhappy path examples</summary>
+					<!-- `ontario-input` components - unhappy paths - undefined `caption` object -->
+					<ontario-input name="email" input-width="20-char-width"></ontario-input>
 
-		<details>
-			<summary style="padding: 0 15px 15px 0">ontario-input components - unhappy path examples</summary>
-			<!-- `ontario-input` components - unhappy paths - undefined `caption` object -->
-			<ontario-input name="email" input-width="20-char-width"></ontario-input>
+					<!-- `ontario-input` components - unhappy paths - undefined `captionText` property -->
+					<ontario-input name="postal-text" input-width="7-char-width" caption='{"captionType": "Large"}'></ontario-input>
+					<ontario-input name="address-text" caption='{"captionText": "", "captionType": "heading"}'></ontario-input>
 
-			<!-- `ontario-input` components - unhappy paths - undefined `captionText` property -->
-			<ontario-input name="postal-text" input-width="7-char-width" caption='{"captionType": "Large"}'></ontario-input>
-			<ontario-input name="address-text" caption='{"captionText": "", "captionType": "heading"}'></ontario-input>
+					<!-- `ontario-input` components - unhappy paths - empty `captionText` property or `captionText` contains only spaces -->
+					<ontario-input name="address-text" caption='{"captionText": " ", "captionType": "heading"}'></ontario-input>
 
-			<!-- `ontario-input` components - unhappy paths - empty `captionText` property or `captionText` contains only spaces -->
-			<ontario-input name="address-text" caption='{"captionText": " ", "captionType": "heading"}'></ontario-input>
+					<!-- `ontario-input` components - unhappy paths - undefined `captionType` property -->
+					<ontario-input name="postal-type" input-width="7-char-width" caption='{"captionText": "Postal"}'></ontario-input>
 
-			<!-- `ontario-input` components - unhappy paths - undefined `captionType` property -->
-			<ontario-input name="postal-type" input-width="7-char-width" caption='{"captionText": "Postal"}'></ontario-input>
+					<!-- `ontario-input` components - unhappy paths - incorrect `captionType` property -->
+					<ontario-input name="address-type" caption='{"captionText": "Address", "captionType": "hello"}'></ontario-input>
+				</details>
 
-			<!-- `ontario-input` components - unhappy paths - incorrect `captionType` property -->
-			<ontario-input name="address-type" caption='{"captionText": "Address", "captionType": "hello"}'></ontario-input>
-		</details>
+				<hr />
 
-		<hr />
+				<!-- ontario-input components - happy paths with ontario-hint-text usage -->
+				<ontario-input name="postal" input-width="7-char-width" caption='{"captionText": "Postal Code", "captionType": "default"}' hint-text="For example, A1A 1A1"></ontario-input>
 
-		<!-- ontario-input components - happy paths with ontario-hint-text usage -->
-		<ontario-input name="postal" input-width="7-char-width" caption='{"captionText": "Postal Code", "captionType": "default"}' hint-text="For example, A1A 1A1"></ontario-input>
+				<!-- ontario-input components - happy paths with ontario-hint-expander usage -->
+				<ontario-input
+					name="address"
+					caption='{"captionText": "Address", "captionType": "default"}'
+					hint-expander='{"hint": "Hint expander","content": "This is the content, yup this is the content"}'
+				>
+				</ontario-input>
 
-		<!-- ontario-input components - happy paths with ontario-hint-expander usage -->
-		<ontario-input
-			name="address"
-			caption='{"captionText": "Address", "captionType": "default"}'
-			hint-expander='{"hint": "Hint expander","content": "This is the content, yup this is the content"}'
-		>
-		</ontario-input>
+				<hr />
 
-		<hr />
+				<!-- `ontario-input` components - happy path examples -->
+				<ontario-textarea
+					name="comments"
+					caption='{"captionText": "Comments", "isRequired": true, "captionType": "HEADING"}'
+					hint-expander='{
+				"hint": "Hint expander",
+				"content": "This is the content, yup this is the content"
+			}'
+				></ontario-textarea>
+				<ontario-textarea
+					name="feedback"
+					caption='{"captionText": "Feedback", "captionType": "large"}'
+					element-id="feedback"
+					hint-expander='{
+				"hint": "Hint expander",
+				"content": "This is the content, yup this is the content"
+			}'
+				></ontario-textarea>
+				<ontario-textarea
+					name="response"
+					caption='{"captionText": "What do you like about ODS?", "captionType": "default"}'
+					element-id="response"
+					hint-expander='{
+				"hint": "Hint expander",
+				"content": "This is the content, yup this is the content"
+			}'
+				></ontario-textarea>
 
-		<!-- `ontario-input` components - happy path examples -->
-		<ontario-textarea
-			name="comments"
-			caption='{"captionText": "Comments", "isRequired": true, "captionType": "HEADING"}'
-			hint-expander='{
-		"hint": "Hint expander",
-		"content": "This is the content, yup this is the content"
-	}'
-		></ontario-textarea>
-		<ontario-textarea
-			name="feedback"
-			caption='{"captionText": "Feedback", "captionType": "large"}'
-			element-id="feedback"
-			hint-expander='{
-		"hint": "Hint expander",
-		"content": "This is the content, yup this is the content"
-	}'
-		></ontario-textarea>
-		<ontario-textarea
-			name="response"
-			caption='{"captionText": "What do you like about ODS?", "captionType": "default"}'
-			element-id="response"
-			hint-expander='{
-		"hint": "Hint expander",
-		"content": "This is the content, yup this is the content"
-	}'
-		></ontario-textarea>
+				<hr />
 
-		<hr />
-
-		<ontario-checkboxes
-			name="ontario-checkbox-group"
-			hint-text="This is the hint text"
-			caption='{
-			"captionText": "Checkbox legend",
-			"captionType": "heading",
-			"isRequired": true
-		}'
-			options='[
-			{
-				"value": "checkbox-1",
-				"label": "checkbox-1-label"
-			},
-			{
-				"value": "checkbox-2",
-				"label": "checkbox-2-label",
-				"hintExpander": {
+				<ontario-checkboxes
+					name="ontario-checkbox-group"
+					hint-text="This is the hint text"
+					caption='{
+					"captionText": "Checkbox legend",
+					"captionType": "heading",
+					"isRequired": true
+				}'
+					options='[
+					{
+						"value": "checkbox-1",
+						"label": "checkbox-1-label"
+					},
+					{
+						"value": "checkbox-2",
+						"label": "checkbox-2-label",
+						"hintExpander": {
+							"hint": "Hint expander",
+							"content": "This is the content, yup this is the content"
+						}
+					},
+					{
+						"value": "checkbox-3",
+						"label": "checkbox-3-label",
+						"hintExpander": {
+							"hint": "Hint expander",
+							"content": "This is the content"
+						}
+					},
+					{
+						"value": "checkbox-4",
+						"label": "checkbox-4-label"
+					}
+				]'
+					hint-expander='{
 					"hint": "Hint expander",
 					"content": "This is the content, yup this is the content"
-				}
-			},
-			{
-				"value": "checkbox-3",
-				"label": "checkbox-3-label",
-				"hintExpander": {
+				}'
+				>
+				</ontario-checkboxes>
+
+				<ontario-radio-buttons
+					name="radios"
+					hint-text="This is the hint text"
+					caption='{
+					"captionText": "Do you have cats?",
+					"captionType": "heading",
+					"isRequired": true
+				}'
+					options='[
+					{
+						"value": "radio",
+						"elementId": "radio-1",
+						"label": "radio-1-label"
+					},
+					{
+						"value": "radio-2",
+						"elementId": "radio-2",
+						"label": "radio-2-label",
+						"hintExpander": {
+							"hint": "Hint expander",
+							"content": "This is the content, yup this is the content"
+						}
+					},
+					{
+						"value": "radio-3",
+						"elementId": "radio-3",
+						"label": "radio-3-label",
+						"hintExpander": {
+							"hint": "Hint expander",
+							"content": "This is the content"
+						}
+					},
+					{
+						"value": "radio-4",
+						"elementId": "radio-4",
+						"label": "radio-4-label"
+					}
+				]'
+					hint-expander='{
 					"hint": "Hint expander",
-					"content": "This is the content"
-				}
-			},
-			{
-				"value": "checkbox-4",
-				"label": "checkbox-4-label"
-			}
-		]'
-			hint-expander='{
-			"hint": "Hint expander",
-			"content": "This is the content, yup this is the content"
-		}'
-		>
-		</ontario-checkboxes>
+					"content": "This is hint expander content"
+				}'
+				>
+				</ontario-radio-buttons>
 
-		<ontario-radio-buttons
-			name="radios"
-			hint-text="This is the hint text"
-			caption='{
-			"captionText": "Do you have cats?",
-			"captionType": "heading",
-			"isRequired": true
-		}'
-			options='[
-			{
-				"value": "radio",
-				"elementId": "radio-1",
-				"label": "radio-1-label"
-			},
-			{
-				"value": "radio-2",
-				"elementId": "radio-2",
-				"label": "radio-2-label",
-				"hintExpander": {
-					"hint": "Hint expander",
-					"content": "This is the content, yup this is the content"
-				}
-			},
-			{
-				"value": "radio-3",
-				"elementId": "radio-3",
-				"label": "radio-3-label",
-				"hintExpander": {
-					"hint": "Hint expander",
-					"content": "This is the content"
-				}
-			},
-			{
-				"value": "radio-4",
-				"elementId": "radio-4",
-				"label": "radio-4-label"
-			}
-		]'
-			hint-expander='{
-			"hint": "Hint expander",
-			"content": "This is hint expander content"
-		}'
-		>
-		</ontario-radio-buttons>
+				<ontario-dropdown-list
+					name="cat-dropdown"
+					is-empty-start-option="Please select"
+					caption='{
+					"captionText": "Do you like cats?",
+					"captionType": "heading",
+					"isRequired": true
+				}'
+					options='[{
+					"value": "dropdown-list-1",
+					"label": "Option 1"
+				},
+				{
+					"value": "dropdown-list-2",
+					"label": "Option 2"
+				},
+				{
+					"value": "dropdown-list-3",
+					"label": "Option 3"
+				}]'
+				>
+				</ontario-dropdown-list>
 
-		<ontario-dropdown-list
-			name="cat-dropdown"
-			is-empty-start-option="Please select"
-			caption='{
-			"captionText": "Do you like cats?",
-			"captionType": "heading",
-			"isRequired": true
-		}'
-			options='[{
-			"value": "dropdown-list-1",
-			"label": "Option 1"
-		},
-		{
-			"value": "dropdown-list-2",
-			"label": "Option 2"
-		},
-		{
-			"value": "dropdown-list-3",
-			"label": "Option 3"
-		}]'
-		>
-		</ontario-dropdown-list>
+				<ontario-hint-text hint="Which will show?">Maybe this?</ontario-hint-text>
+				<p style="background-color: black">
+					<ontario-icon-account colour="white" icon-width="48"></ontario-icon-account>
+					<ontario-icon-visa colour="indigo" icon-width="48"></ontario-icon-visa>
+				</p>
 
-		<hr />
-		<ontario-page-alert type="informational" heading="Licence plates">
-			ServiceOntario centres may issue either a blue licence plate or a white embossed ‘Yours to Discover’ licence plate depending on availability.
-			<a href="#">Learn more about replacing a licence plate</a>.
-		</ontario-page-alert>
+				<!-- Page alerts -->
+				<hr />
+				<ontario-page-alert type="informational" heading="Licence plates">
+					ServiceOntario centres may issue either a blue licence plate or a white embossed ‘Yours to Discover’ licence plate depending on availability.
+					<a href="#">Learn more about replacing a licence plate</a>.
+				</ontario-page-alert>
 
-		<ontario-page-alert type="warning" heading="Service wait times">
-			We are experiencing longer than normal wait times at this ServiceOntario centre. You can <a href="#">check out our Service Finder</a> to see if the service you need is
-			offered online or at a different centre nearby.
-		</ontario-page-alert>
+				<ontario-page-alert type="warning" heading="Service wait times">
+					We are experiencing longer than normal wait times at this ServiceOntario centre. You can <a href="#">check out our Service Finder</a> to see if the service you need is
+					offered online or at a different centre nearby.
+				</ontario-page-alert>
 
-		<ontario-page-alert
-			type="success"
-			heading="Your payment was successful and your order is now complete."
-			content="Please look out for an email confirmation with your receipt and order number. Your licence plate sticker should arrive in 2-4 weeks."
-		></ontario-page-alert>
+				<ontario-page-alert
+					type="success"
+					heading="Your payment was successful and your order is now complete."
+					content="Please look out for an email confirmation with your receipt and order number. Your licence plate sticker should arrive in 2-4 weeks."
+				></ontario-page-alert>
 
-		<ontario-page-alert type="error" heading="There is a problem">
-			Errors were found on this page:
-			<ul>
-				<li><a href="#">Your licence plate number must be a valid plate number</a></li>
-				<li><a href="#">The odometer reading must be a valid number</a></li>
-				<li><a href="#">The name field must not be empty</a></li>
-			</ul>
-		</ontario-page-alert>
-		<hr />
+				<ontario-page-alert type="error" heading="There is a problem">
+					Errors were found on this page:
+					<ul>
+						<li><a href="#">Your licence plate number must be a valid plate number</a></li>
+						<li><a href="#">The odometer reading must be a valid number</a></li>
+						<li><a href="#">The name field must not be empty</a></li>
+					</ul>
+				</ontario-page-alert>
+				<hr />
 
-		<ontario-hint-text hint="Which will show?">Maybe this?</ontario-hint-text>
-		<p style="background-color: black">
-			<ontario-icon-account colour="white" icon-width="48"></ontario-icon-account>
-			<ontario-icon-visa colour="indigo" icon-width="48"></ontario-icon-visa>
-		</p>
+				<!-- Blockquotes -->
+				<ontario-blockquote attribution="Academic partners" byline="Ontario’s Pedagogy for the Early Years"
+					>In the past few years, Ontario has gained a high level of respect for its visionary work in early education. The changes have been profound, and thoughtfully introduced.
+					The views that guide the work are articulated clearly, and express great respect for children, families, and educators. We now have a solid foundation upon which to build
+					a more coherent system.</ontario-blockquote
+				>
+			</div>
+		</div>
 
 		<ontario-footer
 			type="expandedTwoColumn"

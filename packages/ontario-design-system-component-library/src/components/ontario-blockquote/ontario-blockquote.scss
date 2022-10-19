@@ -1,0 +1,71 @@
+@use '../../global.scss';
+
+.ontario-blockquote {
+	border-left: 4px solid global.$ontario-greyscale-70;
+	font-family: global.$ontario-font-raleway-modified;
+	font-size: global.rem-calc(19);
+	font-weight: global.$ontario-font-weights-normal;
+	letter-spacing: 0.025rem;
+	line-height: 1.56;
+	max-width: global.$standard-width;
+	margin: global.$spacing-6;
+	padding: global.$spacing-5 0 global.$spacing-5 global.$spacing-5;
+	quotes: '\201C''\201D';
+
+	@media screen and (max-width: global.$small-breakpoint) {
+		font-size: global.rem-calc(18);
+		letter-spacing: 0.03rem;
+		line-height: 1.5;
+		margin: global.$spacing-5 0 global.$spacing-6 0;
+	}
+}
+
+.ontario-blockquote p {
+	margin: 0 0 global.$spacing-5 0;
+
+	&::before {
+		content: open-quote;
+	}
+
+	&::after {
+		content: close-quote;
+	}
+}
+
+.ontario-blockquote--short {
+	font-size: global.rem-calc(28);
+	letter-spacing: 0.02rem;
+	line-height: 1.5;
+
+	@media screen and (max-width: global.$small-breakpoint) {
+		font-size: global.rem-calc(23);
+		line-height: 1.43;
+	}
+}
+
+.ontario-blockquote__attribution,
+.ontario-blockquote__byline {
+	display: block;
+	font-size: global.rem-calc(16);
+	letter-spacing: 0.025rem;
+	line-height: 1.56;
+	text-align: right;
+
+	@media screen and (max-width: global.$small-breakpoint) {
+		letter-spacing: 0.03rem;
+		line-height: 1.5;
+	}
+}
+
+.ontario-blockquote__attribution {
+	font-style: normal;
+	font-weight: global.$ontario-font-weights-bold;
+
+	&::before {
+		content: '\2014 \0020';
+	}
+}
+
+html[lang='fr'] blockquote {
+	quotes: '« ' ' »';
+}
