@@ -2,7 +2,9 @@
 @use '../1-variables/font-sizes.variables' as fontSizes;
 @use '../1-variables/typography.variables' as typography;
 @use '../1-variables/colours.variables' as colours;
+@use '../1-variables/global.variables' as global;
 @use '../2-tools/placeholder/typography.placeholders' as typographyPlaceholders;
+
 
 /*
 *  Global elements
@@ -82,6 +84,87 @@ h6,
 .ontario-lead-statement {
 	@extend %lead-statement;
 }
+
+/* everything - including before and after - should inherit their box sizing */
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+main p,
+main p:not(.ontario-lead-statement),
+main dd,
+main li {
+	max-width: global.$standard-width;
+}
+
+hr {
+	border: 0;
+	padding: 0;
+	margin: 2.5rem 0;
+	border-bottom: 4px solid #cccccc;
+}
+
+a {
+	color: global.$ontario-colour-link;
+	text-decoration: underline;
+
+	&:visited {
+		color: colours.$ontario-colour-link--visited;
+	}
+
+	&:hover {
+		color: colours.$ontario-colour-link--hover;
+	}
+
+	&:active {
+		color: colours.$ontario-colour-link--active;
+	}
+
+	&:focus {
+		-moz-box-shadow: 0 0 0 4px colours.$ontario-colour-focus;
+		-webkit-box-shadow: 0 0 0 4px colours.$ontario-colour-focus;
+		box-shadow: 0 0 0 4px colours.$ontario-colour-focus;
+		outline: 4px solid transparent;
+		transition: all 0.1s ease-in-out;
+	}
+}
+
+​p {
+	margin: 0 0 1.5rem 0;
+}
+
+​p + h1,
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6,
+ul + h1,
+ul + h2,
+ul + h3,
+ul + h4,
+ul + h5,
+ul + h6,
+ol + h1,
+ol + h2,
+ol + h3,
+ol + h4,
+ol + h5,
+ol + h6,
+h1 + h2,
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6 {
+	margin-top: 2rem;
+}
+
+p code, td code, li code {
+    line-height: 2.25rem;
+}
+
 
 /* Forms */
 input[type='text'],
