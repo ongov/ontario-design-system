@@ -9,7 +9,7 @@
 /coverage
 
 # assets
-/public/assets/*
+/public/assets
 
 # production
 /build
