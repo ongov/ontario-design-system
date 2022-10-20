@@ -28,3 +28,13 @@
 		}
 	}
 }
+
+/**
+ * Mixin that adds spacing to a position and mark it as important
+ * $type is the type of spacing to use and can be either padding or margin
+ * $position is the direction to which the spacing is applied; can be top, right, bottom or left
+ * $size is the amount of px to be used as the spacing; can be 0, 4, 8, 12, 16, 24, 32, 40, 48 or 64
+ */
+@mixin ontario-spacing-important($type: padding, $position: right, $size: 16) {
+	@extend .ontario-#{$type}-#{$position}-#{$size}-\!;
+}

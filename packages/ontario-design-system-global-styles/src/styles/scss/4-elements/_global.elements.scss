@@ -11,6 +11,9 @@
 *    1.1 - Base
 *    1.2 - Typography
 *    1.3 - Forms
+*    1.4 - Horizontal Rule
+*    1.5 - Lists
+*    1.6 - Markdown Image Examples
 *
 */
 
@@ -122,4 +125,152 @@ select {
 	height: auto;
 	-webkit-appearance: none;
 	-moz-appearance: none;
+}
+
+/* Horizontal Rule */
+hr.dark {
+	border-bottom: 4px solid #1a1a1a;
+}
+
+/* Lists */
+ul,
+ol {
+	padding: 0;
+}
+
+ul {
+	margin-left: 2rem;
+}
+
+ul li {
+	padding: 0 0 0.75rem 0;
+}
+
+ol {
+	margin-left: 1.75rem;
+}
+
+ol li {
+	padding: 0 0 0.75rem 0.25rem;
+}
+
+ul li:last-child,
+ol li:last-child {
+	padding-bottom: 0;
+}
+
+ul ul,
+ol ul {
+	margin: 0.5rem 0 0.5rem 2rem;
+}
+
+ul ol,
+ol ol {
+	margin: 0.5rem 0 0.5rem 1.75rem;
+}
+
+p + ul,
+p + ol {
+	margin-top: -0.75rem;
+}
+
+@media screen and (min-width: 40em) {
+	ul {
+		margin: 0.5rem 0 1.5rem 3rem;
+	}
+
+	ol {
+		margin: 0.5rem 0 1.5rem 2.75rem;
+	}
+
+	ul ul,
+	ol ul {
+		margin: 0.5rem 0 0.5rem 3rem;
+	}
+
+	ul ol,
+	ol ol {
+		margin: 0.5rem 0 0.5rem 2.75rem;
+	}
+}
+
+/* Markdown Image Examples */
+.ontario-image-example .ontario-row .ontario-columns:first-child {
+	@include ontario-spacing-important(padding, left, $spacing-0);
+
+	@media screen and (max-width: $small-breakpoint) {
+		padding: inherit;
+	}
+}
+
+.ontario-image-example .ontario-row .ontario-columns:last-child {
+	@include ontario-spacing-important(padding, right, $spacing-0);
+
+	@media screen and (max-width: $small-breakpoint) {
+		padding: inherit;
+	}
+}
+
+.ontario-image-example-container {
+	background-color: $ontario-colour-markdown-image-background;
+	padding: $spacing-0 $spacing-4 $spacing-6 $spacing-4;
+
+	@media screen and (min-width: $small-breakpoint) {
+		padding: $spacing-0 $spacing-5 $spacing-6 $spacing-5; // 0 24px 32px 24px
+	}
+}
+
+/**
+ * The `40` numeric value is used here instead of the equivalent spacing variable because the mixin needs
+ * the exact numeric value to populate the class name
+ */
+.ontario-image-example-container__margin {
+	@include ontario-spacing-important(margin, bottom, 40);
+}
+
+/**
+ * The `24` and `16` numeric values are used here instead of the equivalent spacing variables because the mixin needs
+ * the exact numeric value to populate the class name with `$spacing-0` being the only exception
+ */
+.ontario-image-example-container__header {
+	@include ontario-spacing-important(padding, top, 24);
+	@include ontario-spacing-important(padding, bottom, 16);
+	@include ontario-spacing-important(margin, bottom, $spacing-0);
+}
+
+.ontario-image-example-container__header--default {
+	@include ontario-image-example-container(header);
+}
+
+.ontario-image-example-container__header--do {
+	@include ontario-image-example-container(do);
+}
+
+.ontario-image-example-container__header--dont {
+	@include ontario-image-example-container(dont);
+}
+
+.ontario-image-example-container__header--info {
+	@include ontario-image-example-container(info);
+}
+
+.ontario-image-example-container__hr {
+	margin: $spacing-0 $spacing-0 $spacing-5 $spacing-0;
+}
+
+.ontario-image-example-container__hr--default {
+	@include ontario-image-example-container-hr($ontario-colour-information);
+}
+
+.ontario-image-example-container__hr--do {
+	@include ontario-image-example-container-hr($ontario-colour-success);
+}
+
+.ontario-image-example-container__hr--dont {
+	@include ontario-image-example-container-hr($ontario-colour-alert);
+}
+
+.ontario-image-example-container__hr--info {
+
+@include ontario-image-example-container-hr($ontario-colour-information);
 }
