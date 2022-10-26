@@ -2,6 +2,7 @@
 @use './spacing.variables' as spacing;
 @use './global.variables' as global;
 @use './breakpoints.variables' as breakpoints;
+@use '../2-tools/functions/global.functions' as globalFunctions;
 
 /* -------------------------------
     Global typography variables
@@ -24,13 +25,13 @@ $ontario-font-weight-bold: fontWeights.$ontario-font-weights-bold;
 
 %h1-styles {
 	@extend %ontario-header-styles;
-	font-size: rem-calc(32);
+	font-size: globalFunctions.rem-calc(32);
 	letter-spacing: 0.04rem;
 	line-height: 1.29;
 	margin: spacing.$spacing-7 spacing.$spacing-0 spacing.$spacing-5 spacing.$spacing-0;
 
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
-		font-size: rem-calc(40);
+		font-size: globalFunctions.rem-calc(40);
 		letter-spacing: 0.04rem;
 		line-height: 1.2;
 	}
@@ -38,13 +39,13 @@ $ontario-font-weight-bold: fontWeights.$ontario-font-weights-bold;
 
 %h2-styles {
 	@extend %ontario-header-styles;
-	font-size: rem-calc(27);
+	font-size: globalFunctions.rem-calc(27);
 	letter-spacing: 0.03rem;
 	line-height: 1.37;
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
 
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
-		font-size: rem-calc(33);
+		font-size: globalFunctions.rem-calc(33);
 		letter-spacing: 0.02rem;
 		line-height: 1.33;
 	}
@@ -52,13 +53,13 @@ $ontario-font-weight-bold: fontWeights.$ontario-font-weights-bold;
 
 %h3-styles {
 	@extend %ontario-header-styles;
-	font-size: rem-calc(23);
+	font-size: globalFunctions.rem-calc(23);
 	letter-spacing: 0.02rem;
 	line-height: 1.39;
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
 
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
-		font-size: rem-calc(28);
+		font-size: globalFunctions.rem-calc(28);
 		letter-spacing: 0.02rem;
 		line-height: 1.43;
 	}
@@ -66,13 +67,13 @@ $ontario-font-weight-bold: fontWeights.$ontario-font-weights-bold;
 
 %h4-styles {
 	@extend %ontario-header-styles;
-	font-size: rem-calc(20);
+	font-size: globalFunctions.rem-calc(20);
 	letter-spacing: 0.03rem;
 	line-height: 1.5;
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
 
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
-		font-size: rem-calc(24);
+		font-size: globalFunctions.rem-calc(24);
 		letter-spacing: 0.0313rem;
 		line-height: 1.5;
 	}
@@ -80,13 +81,13 @@ $ontario-font-weight-bold: fontWeights.$ontario-font-weights-bold;
 
 %h5-styles {
 	@extend %ontario-header-styles;
-	font-size: rem-calc(18);
+	font-size: globalFunctions.rem-calc(18);
 	letter-spacing: 0.03rem;
 	line-height: 1.56;
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
 
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
-		font-size: rem-calc(19);
+		font-size: globalFunctions.rem-calc(19);
 		letter-spacing: 0.025rem;
 		line-height: 1.5;
 	}
@@ -94,24 +95,24 @@ $ontario-font-weight-bold: fontWeights.$ontario-font-weights-bold;
 
 %h6-styles {
 	@extend %ontario-header-styles;
-	font-size: rem-calc(16);
+	font-size: globalFunctions.rem-calc(16);
 	line-height: 1.56;
 	letter-spacing: 0.03rem;
 
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
-		font-size: rem-calc(16);
+		font-size: globalFunctions.rem-calc(16);
 		letter-spacing: 0.025rem;
 		line-height: 1.5;
 	}
 }
 
 %lead-statement {
-	font-size: rem-calc(20);
+	font-size: globalFunctions.rem-calc(20);
 	line-height: 1.6;
 	max-width: global.$full-width;
 
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
-		font-size: rem-calc(22);
+		font-size: globalFunctions.rem-calc(22);
 	}
 }
