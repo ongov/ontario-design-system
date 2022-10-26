@@ -1,12 +1,11 @@
 @use './font-weights.variables' as fontWeights;
 @use './spacing.variables' as spacing;
 @use './global.variables' as global;
+@use './breakpoints.variables' as breakpoints;
 
 /* -------------------------------
     Global typography variables
 --------------------------------- */
-
-$font-dir: '../fonts' !default;
 
 $ontario-font-open-sans: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $ontario-font-raleway-modified: 'Raleway', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -30,7 +29,7 @@ $ontario-font-weight-bold: fontWeights.$ontario-font-weights-bold;
 	line-height: 1.29;
 	margin: spacing.$spacing-7 spacing.$spacing-0 spacing.$spacing-5 spacing.$spacing-0;
 
-	@media screen and (min-width: 40em) {
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		font-size: rem-calc(40);
 		letter-spacing: 0.04rem;
 		line-height: 1.2;
@@ -44,7 +43,7 @@ $ontario-font-weight-bold: fontWeights.$ontario-font-weights-bold;
 	line-height: 1.37;
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
 
-	@media screen and (min-width: 40em) {
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		font-size: rem-calc(33);
 		letter-spacing: 0.02rem;
 		line-height: 1.33;
@@ -58,7 +57,7 @@ $ontario-font-weight-bold: fontWeights.$ontario-font-weights-bold;
 	line-height: 1.39;
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
 
-	@media screen and (min-width: 40em) {
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		font-size: rem-calc(28);
 		letter-spacing: 0.02rem;
 		line-height: 1.43;
@@ -72,7 +71,7 @@ $ontario-font-weight-bold: fontWeights.$ontario-font-weights-bold;
 	line-height: 1.5;
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
 
-	@media screen and (min-width: 40em) {
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		font-size: rem-calc(24);
 		letter-spacing: 0.0313rem;
 		line-height: 1.5;
@@ -86,7 +85,7 @@ $ontario-font-weight-bold: fontWeights.$ontario-font-weights-bold;
 	line-height: 1.56;
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
 
-	@media screen and (min-width: 40em) {
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		font-size: rem-calc(19);
 		letter-spacing: 0.025rem;
 		line-height: 1.5;
@@ -100,7 +99,7 @@ $ontario-font-weight-bold: fontWeights.$ontario-font-weights-bold;
 	letter-spacing: 0.03rem;
 
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
-	@media screen and (min-width: 40em) {
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		font-size: rem-calc(16);
 		letter-spacing: 0.025rem;
 		line-height: 1.5;
@@ -112,7 +111,7 @@ $ontario-font-weight-bold: fontWeights.$ontario-font-weights-bold;
 	line-height: 1.6;
 	max-width: global.$full-width;
 
-	@media screen and (min-width: 40em) {
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		font-size: rem-calc(22);
 	}
 }

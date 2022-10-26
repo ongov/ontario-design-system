@@ -4,6 +4,7 @@
 @use '../1-variables/colours.variables' as colours;
 @use '../1-variables/global.variables' as global;
 @use '../1-variables/spacing.variables' as spacing;
+@use '../1-variables/breakpoints.variables' as breakpoints;
 
 /*
 *  Global elements
@@ -100,8 +101,8 @@ main li {
 hr {
 	border: 0;
 	padding: 0;
-	margin: 2.5rem 0;
-	border-bottom: 4px solid #cccccc;
+	margin: spacing.$spacing-7 0;
+	border-bottom: 4px solid colours.$ontario-greyscale-20;
 }
 
 a {
@@ -252,10 +253,10 @@ ol ol {
 
 p + ul,
 p + ol {
-	margin-top: -0.75rem;
+	margin-top: calc(spacing.$spacing-3 * -1);
 }
 
-@media screen and (min-width: 40em) {
+@media screen and (min-width: breakpoints.$small-breakpoint) {
 	ul {
 		margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-5 spacing.$spacing-8;
 	}
