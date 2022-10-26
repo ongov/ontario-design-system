@@ -3,6 +3,7 @@
 @use '../1-variables/typography.variables' as typography;
 @use '../1-variables/colours.variables' as colours;
 @use '../1-variables/global.variables' as global;
+@use '../1-variables/spacing.variables' as spacing;
 
 /*
 *  Global elements
@@ -13,7 +14,6 @@
 *    1.3 - Forms
 *    1.4 - Horizontal Rule
 *    1.5 - Lists
-*    1.6 - Markdown Image Examples
 *
 */
 
@@ -130,7 +130,7 @@ a {
 }
 
 ​p {
-	margin: 0 0 1.5rem 0;
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-5 spacing.$spacing-0;
 }
 
 ​p + h1,
@@ -156,7 +156,7 @@ h2 + h3,
 h3 + h4,
 h4 + h5,
 h5 + h6 {
-	margin-top: 2rem;
+	margin-top: spacing.$spacing-6;
 }
 
 p code, td code, li code {
@@ -184,21 +184,21 @@ input[type='radio'] + label {
 	font-family: typography.$ontario-font-open-sans;
 	font-size: fontSizes.$ontario-font-size-standard-body-text;
 	font-weight: fontWeights.$ontario-font-weights-normal;
-	margin-left: 0;
-	margin-right: 0;
+	margin-left: spacing.$spacing-0;
+	margin-right: spacing.$spacing-0;
 }
 
 fieldset {
-	border: 0;
-	margin: 0;
-	padding: 0;
+	border: spacing.$spacing-0;
+	margin: spacing.$spacing-0;
+	padding: spacing.$spacing-0;
 	page-break-inside: avoid;
 }
 
 legend,
 label {
 	display: block;
-	margin: 0;
+	margin: spacing.$spacing-0;
 }
 
 select {
@@ -220,11 +220,11 @@ ol {
 }
 
 ul {
-	margin-left: 2rem;
+	margin-left: spacing.$spacing-6;
 }
 
 ul li {
-	padding: 0 0 0.75rem 0;
+	padding: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
 }
 
 ol {
@@ -232,22 +232,22 @@ ol {
 }
 
 ol li {
-	padding: 0 0 0.75rem 0.25rem;
+	padding: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-1;
 }
 
 ul li:last-child,
 ol li:last-child {
-	padding-bottom: 0;
+	padding-bottom: spacing.$spacing-0;
 }
 
 ul ul,
 ol ul {
-	margin: 0.5rem 0 0.5rem 2rem;
+	margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-2 spacing.$spacing-6;
 }
 
 ul ol,
 ol ol {
-	margin: 0.5rem 0 0.5rem 1.75rem;
+	margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-2 1.75rem;
 }
 
 p + ul,
@@ -257,20 +257,20 @@ p + ol {
 
 @media screen and (min-width: 40em) {
 	ul {
-		margin: 0.5rem 0 1.5rem 3rem;
+		margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-5 spacing.$spacing-8;
 	}
 
 	ol {
-		margin: 0.5rem 0 1.5rem 2.75rem;
+		margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-5 2.75rem;
 	}
 
 	ul ul,
 	ol ul {
-		margin: 0.5rem 0 0.5rem 3rem;
+		margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-2 spacing.$spacing-8;
 	}
 
 	ul ol,
 	ol ol {
-		margin: 0.5rem 0 0.5rem 2.75rem;
+		margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-2 2.75rem;
 	}
 }
