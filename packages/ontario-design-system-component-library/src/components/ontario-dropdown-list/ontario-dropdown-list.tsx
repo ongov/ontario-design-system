@@ -22,7 +22,8 @@ export class OntarioDropdownList implements Dropdown {
 	 *   caption='{
 	 *     "captionText": "Address",
 	 *     "captionType": "heading",
-	 *     "isRequired": true}'
+	 *   }'
+	 *   is-required="true"
 	 *   ...>
 	 * </ontario-dropdown-list>
 	 */
@@ -65,7 +66,6 @@ export class OntarioDropdownList implements Dropdown {
 	 *   caption='{
 	 *     "captionText": "Do you like cats?",
 	 *     "captionType": "heading",
-	 *     "isRequired": true
 	 *   }'
 	 *   name="cat-dropdown"
 	 *   is-empty-start-option="Please select"
@@ -80,7 +80,9 @@ export class OntarioDropdownList implements Dropdown {
 	 *   {
 	 *      "value": "dropdown-list-3",
 	 *      "label": "Option 3"
-	 *   }]'>
+	 *   }]'
+	 *   is-required="true"
+	 * >
 	 * </ontario-dropdown-list>
 	 */
 	@Prop() options: string | DropdownOption[];
@@ -134,12 +136,9 @@ export class OntarioDropdownList implements Dropdown {
 	}
 
 	/**
-	 * Determine whether the dropdown list is required.
-	 * If required, add `is-required` attribute.
-	 * Otherwise, the `optional` flag will appear.
-	 *
-	 * @example
-	 * <ontario-dropdown-list ... is-required></ontario-dropdown-list>
+	 * This is used to determine whether the dropdown list is required or not.
+	 * This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label.
+	 * If no prop is set, it will default to false (optional).
 	 */
 	@Prop() isRequired?: boolean = false;
 
@@ -169,7 +168,7 @@ export class OntarioDropdownList implements Dropdown {
 
 	@Watch('caption')
 	private updateCaptionState() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language);
+		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, false, this.isRequired);
 	}
 
 	componentWillLoad() {

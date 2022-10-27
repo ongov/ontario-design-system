@@ -22,7 +22,8 @@ export class OntarioInput implements TextInput {
 	 *   caption='{
 	 *     "captionText": "Address",
 	 *     "captionType": "heading",
-	 *     "isRequired": true}'
+	 *   }
+	 *   is-required="true"
 	 *   ...>
 	 * </ontario-input>
 	 */
@@ -57,12 +58,14 @@ export class OntarioInput implements TextInput {
 	/**
 	 * Define hint text for Ontario input.
 	 */
-	 @Prop() hintText?: string;
+	@Prop() hintText?: string;
 
 	/**
-	 * Used to define whether the input field is required or not.
+	 * This is used to determine whether the input is required or not.
+	 * This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label.
+	 * If no prop is set, it will default to false (optional).
 	 */
-	@Prop({ mutable: true }) required: boolean = false;
+	@Prop() isRequired?: boolean = false;
 
 	/**
 	 * The input type value.
@@ -84,18 +87,20 @@ export class OntarioInput implements TextInput {
 	 * Used to include the Hint Expander component underneath the input box.
 	 * This is passed in as an object with key-value pairs.
 	 *
- 	 * @example
+	 * @example
 	 * <ontario-input
 	 *   caption='{
 	 *     "caption": "Address",
 	 *     "captionType": "heading",
-	 *     "isRequired": true}'
+	 *   }
 	 *   hint-expander='{
 	 *    "hint": "Hint expander",
 	 *    "content": "This is the content"
-	 *   }'>
+	 *   }'
+	 *   is-required="true"
+	 * >
 	 * </ontario-input>
-   */
+	 */
 	@Prop() hintExpander?: HintExpander | string;
 
 	/**
@@ -171,7 +176,9 @@ export class OntarioInput implements TextInput {
 
 	private getClass(): string {
 		if (this.hintExpander) {
-			return this.inputWidth === 'default' ? `ontario-input ontario-input-hint-expander--true` : `ontario-input ontario-input--${this.inputWidth} ontario-input-hint-expander--true`;
+			return this.inputWidth === 'default'
+				? `ontario-input ontario-input-hint-expander--true`
+				: `ontario-input ontario-input--${this.inputWidth} ontario-input-hint-expander--true`;
 		} else {
 			return this.inputWidth === 'default' ? `ontario-input` : `ontario-input ontario-input--${this.inputWidth}`;
 		}
@@ -182,7 +189,7 @@ export class OntarioInput implements TextInput {
 	}
 
 	componentWillLoad() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language);
+		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, false, this.isRequired);
 		this.elementId = this.elementId ?? uuid();
 		this.parseHintExpander();
 	}
@@ -195,9 +202,7 @@ export class OntarioInput implements TextInput {
 		return (
 			<div>
 				{this.captionState.getCaption(this.getId())}
-				{this.hintText && (
-						<ontario-hint-text hint={this.hintText}></ontario-hint-text>
-				)}
+				{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
 				<input
 					aria-describedby={this.describedBy}
 					class={this.getClass()}
@@ -206,16 +211,10 @@ export class OntarioInput implements TextInput {
 					onBlur={this.handleBlur}
 					onFocus={this.handleFocus}
 					onInput={this.handleChange}
-					required={this.captionState.isRequired}
 					type={this.type}
 					value={this.getValue()}
 				/>
-				{this.internalHintExpander && (
-					<ontario-hint-expander
-						hint={this.internalHintExpander.hint}
-						content={this.internalHintExpander.content}
-					></ontario-hint-expander>
-        )}
+				{this.internalHintExpander && <ontario-hint-expander hint={this.internalHintExpander.hint} content={this.internalHintExpander.content}></ontario-hint-expander>}
 			</div>
 		);
 	}

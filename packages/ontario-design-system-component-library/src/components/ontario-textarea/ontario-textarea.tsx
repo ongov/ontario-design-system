@@ -24,7 +24,8 @@ export class OntarioTextarea implements Input {
 	 *   caption='{
 	 *     "captionText": "Address",
 	 *     "captionType": "heading",
-	 *     "isRequired": true}'
+	 *   }'
+	 *   is-required="true"
 	 *   ...>
 	 * </ontario-input>
 	 */
@@ -51,9 +52,11 @@ export class OntarioTextarea implements Input {
 	@Prop({ mutable: true }) elementId?: string;
 
 	/**
-	 * Used to define whether the textarea field is required or not.
+	 * This is used to determine whether the textarea is required or not.
+	 * This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label.
+	 * If no prop is set, it will default to false (optional).
 	 */
-	@Prop({ mutable: true }) required: boolean = false;
+	@Prop() isRequired?: boolean = false;
 
 	/**
 	 * The textarea content value.
@@ -159,14 +162,14 @@ export class OntarioTextarea implements Input {
 	}
 
 	componentWillLoad() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language);
+		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, false, this.isRequired);
 		this.elementId = this.elementId ?? uuid();
 		this.parseHintExpander();
 		this.validateName(this.name);
 	}
 
 	componentWillUpdate() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language);
+		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, false, this.isRequired);
 	}
 
 	private getValue(): string | number {
@@ -190,7 +193,6 @@ export class OntarioTextarea implements Input {
 					onBlur={this.handleBlur}
 					onFocus={this.handleFocus}
 					onInput={this.handleChange}
-					required={this.required}
 					value={this.getValue()}
 				></textarea>
 				{this.internalHintExpander && (

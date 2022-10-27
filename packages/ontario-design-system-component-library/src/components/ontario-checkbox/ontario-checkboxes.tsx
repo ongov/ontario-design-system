@@ -24,7 +24,7 @@ export class OntarioCheckboxes implements Checkboxes {
 	 *   caption='{
 	 *     "captionText": "Address",
 	 *     "captionType": "heading",
-	 *     "isRequired": true}'
+	 *   }
 	 *   ...>
 	 * </ontario-checkboxes>
 	 */
@@ -65,7 +65,7 @@ export class OntarioCheckboxes implements Checkboxes {
    *   caption='{
 	 *     "captionText": "Address",
 	 *     "captionType": "heading",
-	 *     "isRequired": true}'
+	 *   }
    *   name='ontario-checkboxes'
    *   options='[{
    *     "value": "checkbox-1-value",
@@ -79,10 +79,18 @@ export class OntarioCheckboxes implements Checkboxes {
    *    "hint": "Hint expander",
    *    "content": "This is the content, yup this is the content"
       }'
+			is-required="true"
    * >
    * </ontario-checkboxes>
    */
 	@Prop() hintExpander?: HintExpander | string;
+
+	/**
+	 * This is used to determine whether the checkbox is required or not.
+	 * This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label.
+	 * If no prop is set, it will default to false (optional).
+	 */
+	@Prop() isRequired?: boolean = false;
 
 	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.
@@ -110,7 +118,7 @@ export class OntarioCheckboxes implements Checkboxes {
 	 *   caption='{
 	 *     "captionText": "Address",
 	 *     "captionType": "heading",
-	 *     "isRequired": true}'
+	 *   }
 	 *   name="ontario-checkboxes",
 	 *   hint-text="This is the hint text"
 	 *   options='[
@@ -127,6 +135,7 @@ export class OntarioCheckboxes implements Checkboxes {
 	 *        }
 	 *      }
 	 *   ]'
+	 *   is-required="true"
 	 * >
 	 * </ontario-checkboxes>
 	 */
@@ -190,7 +199,7 @@ export class OntarioCheckboxes implements Checkboxes {
 	}
 
 	componentWillLoad() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, true);
+		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, true, this.isRequired);
 		this.parseOptions();
 		this.parseHintExpander();
 		this.validateName(this.name);

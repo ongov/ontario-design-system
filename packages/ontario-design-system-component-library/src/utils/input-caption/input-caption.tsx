@@ -40,7 +40,7 @@ export class InputCaption implements Caption {
 	 * Output a console warning message if the provided `label` type is incorrect
 	 * @param caption object containing the essential data to configure the input label
 	 */
-	constructor(componentTagName: string, caption: InputCaption | string, translations: any, language: any, isLegend: boolean = false) {
+	constructor(componentTagName: string, caption: InputCaption | string, translations: any, language: any, isLegend: boolean = false, isRequired: boolean = false) {
 		let captionObject = new Object() as InputCaption;
 
 		if (caption) {
@@ -48,14 +48,14 @@ export class InputCaption implements Caption {
 				try {
 					captionObject = JSON.parse(caption) as InputCaption;
 				} catch {
-					captionObject = new InputCaption(componentTagName, JSON.stringify({ captionText: caption, captionType: 'default' }), translations, language, isLegend);
+					captionObject = new InputCaption(componentTagName, JSON.stringify({ captionText: caption, captionType: 'default' }), translations, language, isLegend, isRequired);
 				}
 			} else {
 				captionObject = caption;
 			}
 		}
 
-		this.isRequired = captionObject?.isRequired ?? false;
+		this.isRequired = isRequired;
 		this.isLegend = isLegend;
 		this.componentTagName = componentTagName.toLocaleLowerCase();
 		this.captionText = captionObject?.captionText ?? '';

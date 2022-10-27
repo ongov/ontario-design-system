@@ -77,7 +77,7 @@
 				<hr />
 
 				<!-- `ontario-input` components - happy path examples -->
-				<ontario-input name="email" input-width="20-char-width" caption='{"captionText": "Email", "isRequired": true, "captionType": "HEADING"}'></ontario-input>
+				<ontario-input name="email" input-width="20-char-width" caption='{"captionText": "Email", "captionType": "HEADING"}' is-required="true"></ontario-input>
 				<ontario-input name="postal" input-width="7-char-width" caption='{"captionText": "Postal Code", "captionType": "Large"}'></ontario-input>
 				<ontario-input name="address" caption='{"captionText": "Address", "captionType": "default"}'></ontario-input>
 
@@ -118,7 +118,8 @@
 				<!-- `ontario-input` components - happy path examples -->
 				<ontario-textarea
 					name="comments"
-					caption='{"captionText": "Comments", "isRequired": true, "captionType": "HEADING"}'
+					caption='{"captionText": "Comments", "captionType": "HEADING"}'
+					is-required="true"
 					hint-expander='{
 				"hint": "Hint expander",
 				"content": "This is the content, yup this is the content"
@@ -150,9 +151,9 @@
 					hint-text="This is the hint text"
 					caption='{
 					"captionText": "Checkbox legend",
-					"captionType": "heading",
-					"isRequired": true
+					"captionType": "heading"
 				}'
+					is-required="true"
 					options='[
 					{
 						"value": "checkbox-1",
@@ -191,9 +192,9 @@
 					hint-text="This is the hint text"
 					caption='{
 					"captionText": "Do you have cats?",
-					"captionType": "heading",
-					"isRequired": true
+					"captionType": "heading"
 				}'
+					is-required="true"
 					options='[
 					{
 						"value": "radio",
@@ -236,9 +237,9 @@
 					is-empty-start-option="Please select"
 					caption='{
 					"captionText": "Do you like cats?",
-					"captionType": "heading",
-					"isRequired": true
+					"captionType": "heading"
 				}'
+					is-required="true"
 					options='[{
 					"value": "dropdown-list-1",
 					"label": "Option 1"
