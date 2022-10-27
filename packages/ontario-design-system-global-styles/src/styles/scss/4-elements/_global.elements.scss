@@ -209,15 +209,10 @@ select {
 	-moz-appearance: none;
 }
 
-/* Horizontal Rule */
-hr.dark {
-	border-bottom: 4px solid #1a1a1a;
-}
-
 /* Lists */
 ul,
 ol {
-	padding: 0;
+	padding: spacing.$spacing-0;
 }
 
 ul {
@@ -229,7 +224,7 @@ ul li {
 }
 
 ol {
-	margin-left: 1.75rem;
+	margin-left: calc(spacing.$spacing-3 + spacing.$spacing-4);
 }
 
 ol li {
