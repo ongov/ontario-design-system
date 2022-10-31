@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-blockquote snapshot should render the expected html 1`] = `
+<ontario-blockquote attribution="DS Tech Team" quote="This is a test quote">
+  <mock:shadow-root>
+    <blockquote class="ontario-blockquote ontario-blockquote--short">
+      <p>
+        This is a test quote
+      </p>
+      <cite class="ontario-blockquote__attribution">
+        DS Tech Team
+      </cite>
+    </blockquote>
+  </mock:shadow-root>
+</ontario-blockquote>
+`;
