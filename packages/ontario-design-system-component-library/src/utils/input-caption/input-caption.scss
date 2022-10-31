@@ -13,7 +13,7 @@ $large-label-line-height: 1.2;
 $large-label-line-height-mobile: 1.39;
 $large-label-font-size: 1.75rem;
 $large-label-font-size-mobile: 1.4375rem;
-$large-label-letter-spacing: 0.02rem;
+$large-label 0.02rem;
 
 .ontario-fieldset__legend,
 .ontario-label {
@@ -37,7 +37,7 @@ $large-label-letter-spacing: 0.02rem;
 .ontario-fieldset__legend--large,
 .ontario-label--large {
 	font-size: $large-label-font-size; // 1.75rem
-	letter-spacing: $large-label-letter-spacing; // 0.02rem
+	letter-spacing: $ontario-letter-spacing-xsmall; // 0.02rem
 	line-height: $large-label-line-height; // 1.2
 	max-width: $narrower-width; // 26.25em
 
