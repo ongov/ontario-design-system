@@ -3,6 +3,7 @@
 @use '../1-variables/spacing.variables' as spacing;
 @use '../1-variables/global.variables' as global;
 @use '../1-variables/breakpoints.variables' as breakpoints;
+@use '../1-variables/letter-spacing.variables' as letterSpacing;
 
 /*
 *  Labels
@@ -28,7 +29,7 @@
 
 .ontario-label--large {
 	font-size: 1.75rem;
-	letter-spacing:$ontario-letter-spacing-xsmall;
+	letter-spacing: letterSpacing.$ontario-letter-spacing-xsmall;
 	line-height: 1.2;
 	max-width: 26.25em;
 
