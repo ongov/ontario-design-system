@@ -1,0 +1,9 @@
+@use '@ontario-digital-service/ontario-design-system-design-tokens/dist/scss/variables';
+
+/* -------------------------------
+    Global line-height variables
+--------------------------------- */
+
+// These pixel values are based on a based rem value of 16px and can be found in packages/ontario-design-system-design-tokens/tokens/sizes/font-sizes.json
+
+$ontario-line-height-1: variables.$ontario-font-sizes-small; // 14px
