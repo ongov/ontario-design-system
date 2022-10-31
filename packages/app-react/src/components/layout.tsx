@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
-
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { OntarioHeader, OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react';
 
+interface MenuLinks {
+  name: string;
+  href: string;
+	linkIsActive: boolean;
+	onClickHandler: (e: Event) => void;
+}
+
 const Layout = ({ children }: any) => {
-	let navigate = useNavigate();
-	let location = useLocation();
+	const navigate = useNavigate();
+	const location = useLocation();
 
 	const [menuLinks, setMenuLinks] = useState([
 		{
@@ -102,7 +108,7 @@ const Layout = ({ children }: any) => {
 	]);
 
 	const determineActiveLink = (url: string) => {
-		const updatedState = menuLinks.map((link: any) => {
+		const updatedState = menuLinks.map((link: MenuLinks) => {
 			if (url === link.href) {
 				return { ...link, linkIsActive: true };
 			} else {
