@@ -13,7 +13,7 @@ export interface Caption {
 	/**
 	 * Determine whether the input field is required.
 	 */
-	isRequired?: boolean;
+	required?: boolean;
 
 	/**
 	 * Determine whether the rendered element is a `<label>` or `<legend>`.

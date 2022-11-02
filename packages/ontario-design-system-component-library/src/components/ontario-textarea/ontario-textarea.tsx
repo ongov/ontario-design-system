@@ -25,7 +25,7 @@ export class OntarioTextarea implements Input {
 	 *     "captionText": "Address",
 	 *     "captionType": "heading",
 	 *   }'
-	 *   is-required="true"
+	 *   required="true"
 	 *   ...>
 	 * </ontario-input>
 	 */
@@ -56,7 +56,7 @@ export class OntarioTextarea implements Input {
 	 * This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label.
 	 * If no prop is set, it will default to false (optional).
 	 */
-	@Prop() isRequired?: boolean = false;
+	@Prop() required?: boolean = false;
 
 	/**
 	 * The textarea content value.
@@ -162,14 +162,14 @@ export class OntarioTextarea implements Input {
 	}
 
 	componentWillLoad() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, false, this.isRequired);
+		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, false, this.required);
 		this.elementId = this.elementId ?? uuid();
 		this.parseHintExpander();
 		this.validateName(this.name);
 	}
 
 	componentWillUpdate() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, false, this.isRequired);
+		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, false, this.required);
 	}
 
 	private getValue(): string | number {
@@ -194,6 +194,7 @@ export class OntarioTextarea implements Input {
 					onFocus={this.handleFocus}
 					onInput={this.handleChange}
 					value={this.getValue()}
+					{...(!!this.required ? { required: true } : {})}
 				></textarea>
 				{this.internalHintExpander && (
 					<ontario-hint-expander hint={this.internalHintExpander.hint} content={this.internalHintExpander.content} input-exists></ontario-hint-expander>

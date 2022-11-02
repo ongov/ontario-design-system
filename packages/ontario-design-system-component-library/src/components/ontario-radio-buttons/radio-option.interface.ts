@@ -43,7 +43,7 @@ export interface RadioOption {
 	 * 		    "content": "This is the content"
 	 *		 }
 	 *   }]'
-	 *   is-required="true"
+	 *   required="true"
 	 * >
 	 * </ontario-radio-buttons>
 	 */
@@ -59,7 +59,7 @@ export interface RadioOption {
 	 * This ID must be unique to the radio option.
 	 *
 	 * @example
-	 * <ontario-radio-buttons caption="Do you have cats?" name="radio" hint-text="This is the hint text" is-required
+	 * <ontario-radio-buttons caption="Do you have cats?" name="radio" hint-text="This is the hint text" required
 	 *  options='[{
 	 *	 "value": "radio",
 	 *	 "elementId": "radio-1",

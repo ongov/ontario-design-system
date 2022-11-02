@@ -4,7 +4,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function CheckboxExample() {
-	const checkboxCodeExample = `import { OntarioCheckboxes } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioCheckboxes caption="Do you have children?" hint-text="This is the hint text" is-required options='[{
+	const checkboxCodeExample = `import { OntarioCheckboxes } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioCheckboxes caption="Do you have children?" hint-text="This is the hint text" required options='[{
 	"name": "Checkbox-1",
 	"value": "checkbox-1",
 	"label": "checkbox-1-label"
@@ -48,7 +48,7 @@ export default function CheckboxExample() {
 					<OntarioCheckboxes
 						caption="Do you have children?"
 						hint-text="This is the hint text"
-						is-required
+						required
 						options='[{
               "name": "Checkbox-1",
               "value": "checkbox-1",

@@ -22,7 +22,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *     "captionText": "Address",
 	 *     "captionType": "heading",
 	 *    }'
-	 *   is-required="true"
+	 *   required="true"
 	 *   ...>
 	 * </ontario-radio-buttons>
 	 */
@@ -81,7 +81,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *     "hint": "Hint expander",
 	 *     "content": "This is the content, yup this is the content"
 	 *   }'
-	 *   is-required="true"
+	 *   required="true"
 	 * >
 	 * </ontario-radio-buttons>
 	 */
@@ -92,7 +92,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label.
 	 * If no prop is set, it will default to false (optional).
 	 */
-	@Prop() isRequired?: boolean = false;
+	@Prop() required?: boolean = false;
 
 	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.
@@ -138,7 +138,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *        }
 	 *      }
 	 *   ]'
-	 *   is-required="true"
+	 *   required="true"
 	 * >
 	 * </ontario-radio-buttons>
 	 */
@@ -193,7 +193,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	}
 
 	componentWillLoad() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, true, this.isRequired);
+		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, true, this.required);
 		this.parseOptions();
 		this.parseHintExpander();
 		this.validateName(this.name);
@@ -209,7 +209,13 @@ export class OntarioRadioButtons implements RadioButtons {
 					<div class="ontario-radios">
 						{this.internalOptions?.map(radioOption => (
 							<div class="ontario-radios__item">
-								<input class="ontario-radios__input" id={radioOption.elementId} name={this.name} type="radio" value={radioOption.value} />
+								<input
+									class="ontario-radios__input"
+									id={radioOption.elementId}
+									name={this.name} type="radio"
+									value={radioOption.value}
+									{...(!!this.required ? { required: true } : {})}
+								/>
 								<label class="ontario-radios__label" htmlFor={radioOption.elementId}>
 									{radioOption.label}
 								</label>

@@ -23,7 +23,7 @@ export class OntarioInput implements TextInput {
 	 *     "captionText": "Address",
 	 *     "captionType": "heading",
 	 *   }
-	 *   is-required="true"
+	 *   required="true"
 	 *   ...>
 	 * </ontario-input>
 	 */
@@ -65,7 +65,7 @@ export class OntarioInput implements TextInput {
 	 * This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label.
 	 * If no prop is set, it will default to false (optional).
 	 */
-	@Prop() isRequired?: boolean = false;
+	@Prop() required?: boolean = false;
 
 	/**
 	 * The input type value.
@@ -97,7 +97,7 @@ export class OntarioInput implements TextInput {
 	 *    "hint": "Hint expander",
 	 *    "content": "This is the content"
 	 *   }'
-	 *   is-required="true"
+	 *   required="true"
 	 * >
 	 * </ontario-input>
 	 */
@@ -189,7 +189,7 @@ export class OntarioInput implements TextInput {
 	}
 
 	componentWillLoad() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, false, this.isRequired);
+		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, false, this.required);
 		this.elementId = this.elementId ?? uuid();
 		this.parseHintExpander();
 	}
@@ -213,6 +213,7 @@ export class OntarioInput implements TextInput {
 					onInput={this.handleChange}
 					type={this.type}
 					value={this.getValue()}
+					{...(!!this.required ? { required: true } : {})}
 				/>
 				{this.internalHintExpander && <ontario-hint-expander hint={this.internalHintExpander.hint} content={this.internalHintExpander.content}></ontario-hint-expander>}
 			</div>

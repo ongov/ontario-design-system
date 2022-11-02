@@ -4,7 +4,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function DropdownListExamples() {
-	const dropdownListCodeExample = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList caption="Do you like cats?" name="cat-dropdown" is-required
+	const dropdownListCodeExample = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList caption="Do you like cats?" name="cat-dropdown" required
   options='[{
       "value": "dropdown-list-1",
       "label": "All categories"
@@ -18,7 +18,7 @@ export default function DropdownListExamples() {
       "label": "Option 3"
     }]'>
 </OntarioDropdownList>`;
-	const dropdownListCodeExample2 = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList caption="Do you like cats?" name="cat-dropdown" is-required 
+	const dropdownListCodeExample2 = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList caption="Do you like cats?" name="cat-dropdown" required
   options='[{
     "value": "dropdown-list-1",
     "label": "All categories"
@@ -53,7 +53,7 @@ export default function DropdownListExamples() {
 					<OntarioDropdownList
 						caption="Do you like cats?"
 						name="cat-dropdown"
-						is-required
+						required
 						options='[{
                 "value": "dropdown-list-1",
                 "label": "All categories"
@@ -82,7 +82,7 @@ export default function DropdownListExamples() {
 					<OntarioDropdownList
 						caption="Shipping Address"
 						name="shipping-address"
-						is-required
+						required
 						options='[{
                 "value": "dropdown-list-1",
                 "label": "Canada"

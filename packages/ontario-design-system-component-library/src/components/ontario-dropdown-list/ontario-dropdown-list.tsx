@@ -23,7 +23,7 @@ export class OntarioDropdownList implements Dropdown {
 	 *     "captionText": "Address",
 	 *     "captionType": "heading",
 	 *   }'
-	 *   is-required="true"
+	 *   required="true"
 	 *   ...>
 	 * </ontario-dropdown-list>
 	 */
@@ -81,7 +81,7 @@ export class OntarioDropdownList implements Dropdown {
 	 *      "value": "dropdown-list-3",
 	 *      "label": "Option 3"
 	 *   }]'
-	 *   is-required="true"
+	 *   required="true"
 	 * >
 	 * </ontario-dropdown-list>
 	 */
@@ -140,7 +140,7 @@ export class OntarioDropdownList implements Dropdown {
 	 * This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label.
 	 * If no prop is set, it will default to false (optional).
 	 */
-	@Prop() isRequired?: boolean = false;
+	@Prop() required?: boolean = false;
 
 	/**
 	 * Whether or not the initial option displayed is empty.
@@ -168,7 +168,7 @@ export class OntarioDropdownList implements Dropdown {
 
 	@Watch('caption')
 	private updateCaptionState() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, false, this.isRequired);
+		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, false, this.required);
 	}
 
 	componentWillLoad() {
@@ -183,7 +183,13 @@ export class OntarioDropdownList implements Dropdown {
 		return (
 			<div class="ontario-form-group">
 				{this.captionState.getCaption(this.getId())}
-				<select class="ontario-input ontario-dropdown" id={this.getId()} name={this.name} style={this.getDropdownArrow()}>
+				<select
+					class="ontario-input ontario-dropdown"
+					id={this.getId()}
+					name={this.name}
+					style={this.getDropdownArrow()}
+					{...(!!this.required ? { required: true } : {})}
+				>
 					{this.isEmptyStartOption && (this.isEmptyStartOption === true ? <option>Select</option> : <option>{this.isEmptyStartOption}</option>)}
 
 					{this.internalOptions?.map(dropdown => <option value={dropdown.value}>{dropdown.label}</option>) ?? ''}

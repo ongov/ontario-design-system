@@ -16,7 +16,7 @@ export interface CheckboxOption {
 	 *     "value": "checkbox-1-value",
 	 *     "label": "Checkbox Label"
 	 *   }]'
-	 *   is-required="true"
+	 *   required="true"
 	 * >
 	 * </ontario-checkboxes>
 	 *
@@ -44,7 +44,7 @@ export interface CheckboxOption {
 	 * 		    "content": "This is the content"
 	 *		 }
 	 *   }]'
-	 *   is-required="true"
+	 *   required="true"
 	 * >
 	 * </ontario-checkboxes>
 	 */

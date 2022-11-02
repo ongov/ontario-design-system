@@ -79,17 +79,13 @@ export namespace Components {
         "caption": InputCaption | string;
         /**
           * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
-          * @example <ontario-checkboxes   caption='{    "captionText": "Address",    "captionType": "heading",  }   name='ontario-checkboxes'   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content"  }' is-required="true" > </ontario-checkboxes>
+          * @example <ontario-checkboxes   caption='{    "captionText": "Address",    "captionType": "heading",  }   name='ontario-checkboxes'   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content"  }' required="true" > </ontario-checkboxes>
          */
         "hintExpander"?: HintExpander | string;
         /**
           * Define hint text on an element.
          */
         "hintText"?: string;
-        /**
-          * This is used to determine whether the checkbox is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
-         */
-        "isRequired"?: boolean;
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
@@ -100,14 +96,18 @@ export namespace Components {
         "name": string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
-          * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",   }   name="ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]'   is-required="true" > </ontario-checkboxes>
+          * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",   }   name="ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]'   required="true" > </ontario-checkboxes>
          */
         "options": CheckboxOption[] | string;
+        /**
+          * This is used to determine whether the checkbox is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+         */
+        "required"?: boolean;
     }
     interface OntarioDropdownList {
         /**
           * The text to display as the label
-          * @example <ontario-dropdown-list   caption='{     "captionText": "Address",     "captionType": "heading",   }'   is-required="true"   ...> </ontario-dropdown-list>
+          * @example <ontario-dropdown-list   caption='{     "captionText": "Address",     "captionType": "heading",   }'   required="true"   ...> </ontario-dropdown-list>
          */
         "caption": InputCaption | string;
         /**
@@ -120,10 +120,6 @@ export namespace Components {
          */
         "isEmptyStartOption"?: boolean | string;
         /**
-          * This is used to determine whether the dropdown list is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
-         */
-        "isRequired"?: boolean;
-        /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
         "language"?: string;
@@ -133,9 +129,13 @@ export namespace Components {
         "name": string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset.
-          * @example <ontario-dropdown-list   caption='{     "captionText": "Do you like cats?",     "captionType": "heading",   }'   name="cat-dropdown"   is-empty-start-option="Please select"   options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'   is-required="true" > </ontario-dropdown-list>
+          * @example <ontario-dropdown-list   caption='{     "captionText": "Do you like cats?",     "captionType": "heading",   }'   name="cat-dropdown"   is-empty-start-option="Please select"   options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'   required="true" > </ontario-dropdown-list>
          */
         "options": string | DropdownOption[];
+        /**
+          * This is used to determine whether the dropdown list is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+         */
+        "required"?: boolean;
     }
     interface OntarioFooter {
         /**
@@ -1261,7 +1261,7 @@ export namespace Components {
     interface OntarioInput {
         /**
           * The text to display as the label
-          * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",   }   is-required="true"   ...> </ontario-input>
+          * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",   }   required="true"   ...> </ontario-input>
          */
         "caption": InputCaption | string;
         /**
@@ -1274,7 +1274,7 @@ export namespace Components {
         "elementId"?: string;
         /**
           * Used to include the Hint Expander component underneath the input box. This is passed in as an object with key-value pairs.
-          * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",   }   hint-expander='{    "hint": "Hint expander",    "content": "This is the content"   }'   is-required="true" > </ontario-input>
+          * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",   }   hint-expander='{    "hint": "Hint expander",    "content": "This is the content"   }'   required="true" > </ontario-input>
          */
         "hintExpander"?: HintExpander | string;
         /**
@@ -1286,10 +1286,6 @@ export namespace Components {
          */
         "inputWidth": '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default';
         /**
-          * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
-         */
-        "isRequired"?: boolean;
-        /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
         "language"?: string;
@@ -1297,6 +1293,10 @@ export namespace Components {
           * The name assigned to the input.The name value is used to reference form data after a form is submitted.
          */
         "name": string;
+        /**
+          * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+         */
+        "required"?: boolean;
         /**
           * The input type value.
          */
@@ -1326,22 +1326,18 @@ export namespace Components {
     interface OntarioRadioButtons {
         /**
           * The text to display as the label
-          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",    }'   is-required="true"   ...> </ontario-radio-buttons>
+          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",    }'   required="true"   ...> </ontario-radio-buttons>
          */
         "caption": InputCaption | string;
         /**
           * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
-          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }' 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }'   is-required="true" > </ontario-radio-buttons>
+          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }' 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }'   required="true" > </ontario-radio-buttons>
          */
         "hintExpander"?: HintExpander | string;
         /**
           * Define hint text for Radio Button fieldset.
          */
         "hintText"?: string;
-        /**
-          * This is used to determine whether the radio button is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
-         */
-        "isRequired"?: boolean;
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
@@ -1352,14 +1348,18 @@ export namespace Components {
         "name": string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
-          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }'   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]'   is-required="true" > </ontario-radio-buttons>
+          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }'   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]'   required="true" > </ontario-radio-buttons>
          */
         "options": string | RadioOption[];
+        /**
+          * This is used to determine whether the radio button is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+         */
+        "required"?: boolean;
     }
     interface OntarioTextarea {
         /**
           * The text to display as the label
-          * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",   }'   is-required="true"   ...> </ontario-input>
+          * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",   }'   required="true"   ...> </ontario-input>
          */
         "caption": InputCaption | string;
         /**
@@ -1376,10 +1376,6 @@ export namespace Components {
          */
         "hintText"?: string;
         /**
-          * This is used to determine whether the textarea is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
-         */
-        "isRequired"?: boolean;
-        /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
         "language"?: string;
@@ -1387,6 +1383,10 @@ export namespace Components {
           * The name assigned to the textarea. The name value is used to reference form data after a form is submitted.
          */
         "name": string;
+        /**
+          * This is used to determine whether the textarea is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+         */
+        "required"?: boolean;
         /**
           * The textarea content value.
          */
@@ -2329,17 +2329,13 @@ declare namespace LocalJSX {
         "caption"?: InputCaption | string;
         /**
           * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
-          * @example <ontario-checkboxes   caption='{    "captionText": "Address",    "captionType": "heading",  }   name='ontario-checkboxes'   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content"  }' is-required="true" > </ontario-checkboxes>
+          * @example <ontario-checkboxes   caption='{    "captionText": "Address",    "captionType": "heading",  }   name='ontario-checkboxes'   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content"  }' required="true" > </ontario-checkboxes>
          */
         "hintExpander"?: HintExpander | string;
         /**
           * Define hint text on an element.
          */
         "hintText"?: string;
-        /**
-          * This is used to determine whether the checkbox is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
-         */
-        "isRequired"?: boolean;
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
@@ -2354,14 +2350,18 @@ declare namespace LocalJSX {
         "onChangeEvent"?: (event: CustomEvent<any>) => void;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
-          * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",   }   name="ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]'   is-required="true" > </ontario-checkboxes>
+          * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",   }   name="ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]'   required="true" > </ontario-checkboxes>
          */
         "options"?: CheckboxOption[] | string;
+        /**
+          * This is used to determine whether the checkbox is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+         */
+        "required"?: boolean;
     }
     interface OntarioDropdownList {
         /**
           * The text to display as the label
-          * @example <ontario-dropdown-list   caption='{     "captionText": "Address",     "captionType": "heading",   }'   is-required="true"   ...> </ontario-dropdown-list>
+          * @example <ontario-dropdown-list   caption='{     "captionText": "Address",     "captionType": "heading",   }'   required="true"   ...> </ontario-dropdown-list>
          */
         "caption"?: InputCaption | string;
         /**
@@ -2374,10 +2374,6 @@ declare namespace LocalJSX {
          */
         "isEmptyStartOption"?: boolean | string;
         /**
-          * This is used to determine whether the dropdown list is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
-         */
-        "isRequired"?: boolean;
-        /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
         "language"?: string;
@@ -2387,9 +2383,13 @@ declare namespace LocalJSX {
         "name"?: string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset.
-          * @example <ontario-dropdown-list   caption='{     "captionText": "Do you like cats?",     "captionType": "heading",   }'   name="cat-dropdown"   is-empty-start-option="Please select"   options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'   is-required="true" > </ontario-dropdown-list>
+          * @example <ontario-dropdown-list   caption='{     "captionText": "Do you like cats?",     "captionType": "heading",   }'   name="cat-dropdown"   is-empty-start-option="Please select"   options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'   required="true" > </ontario-dropdown-list>
          */
         "options"?: string | DropdownOption[];
+        /**
+          * This is used to determine whether the dropdown list is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+         */
+        "required"?: boolean;
     }
     interface OntarioFooter {
         /**
@@ -3519,7 +3519,7 @@ declare namespace LocalJSX {
     interface OntarioInput {
         /**
           * The text to display as the label
-          * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",   }   is-required="true"   ...> </ontario-input>
+          * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",   }   required="true"   ...> </ontario-input>
          */
         "caption"?: InputCaption | string;
         /**
@@ -3532,7 +3532,7 @@ declare namespace LocalJSX {
         "elementId"?: string;
         /**
           * Used to include the Hint Expander component underneath the input box. This is passed in as an object with key-value pairs.
-          * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",   }   hint-expander='{    "hint": "Hint expander",    "content": "This is the content"   }'   is-required="true" > </ontario-input>
+          * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",   }   hint-expander='{    "hint": "Hint expander",    "content": "This is the content"   }'   required="true" > </ontario-input>
          */
         "hintExpander"?: HintExpander | string;
         /**
@@ -3543,10 +3543,6 @@ declare namespace LocalJSX {
           * The width of the input field. If no value is assigned, it will present as the default input width.
          */
         "inputWidth"?: '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default';
-        /**
-          * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
-         */
-        "isRequired"?: boolean;
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
@@ -3567,6 +3563,10 @@ declare namespace LocalJSX {
           * Emitted when the input gains focus.
          */
         "onFocusEvent"?: (event: CustomEvent<void>) => void;
+        /**
+          * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+         */
+        "required"?: boolean;
         /**
           * The input type value.
          */
@@ -3596,22 +3596,18 @@ declare namespace LocalJSX {
     interface OntarioRadioButtons {
         /**
           * The text to display as the label
-          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",    }'   is-required="true"   ...> </ontario-radio-buttons>
+          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",    }'   required="true"   ...> </ontario-radio-buttons>
          */
         "caption"?: InputCaption | string;
         /**
           * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
-          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }' 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }'   is-required="true" > </ontario-radio-buttons>
+          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }' 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }'   required="true" > </ontario-radio-buttons>
          */
         "hintExpander"?: HintExpander | string;
         /**
           * Define hint text for Radio Button fieldset.
          */
         "hintText"?: string;
-        /**
-          * This is used to determine whether the radio button is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
-         */
-        "isRequired"?: boolean;
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
@@ -3622,14 +3618,18 @@ declare namespace LocalJSX {
         "name"?: string;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
-          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }'   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]'   is-required="true" > </ontario-radio-buttons>
+          * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }'   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]'   required="true" > </ontario-radio-buttons>
          */
         "options"?: string | RadioOption[];
+        /**
+          * This is used to determine whether the radio button is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+         */
+        "required"?: boolean;
     }
     interface OntarioTextarea {
         /**
           * The text to display as the label
-          * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",   }'   is-required="true"   ...> </ontario-input>
+          * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",   }'   required="true"   ...> </ontario-input>
          */
         "caption"?: InputCaption | string;
         /**
@@ -3645,10 +3645,6 @@ declare namespace LocalJSX {
           * Define hint text for Ontario textarea.
          */
         "hintText"?: string;
-        /**
-          * This is used to determine whether the textarea is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
-         */
-        "isRequired"?: boolean;
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
@@ -3669,6 +3665,10 @@ declare namespace LocalJSX {
           * Emitted when the input gains focus.
          */
         "onFocusEvent"?: (event: CustomEvent<void>) => void;
+        /**
+          * This is used to determine whether the textarea is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+         */
+        "required"?: boolean;
         /**
           * The textarea content value.
          */

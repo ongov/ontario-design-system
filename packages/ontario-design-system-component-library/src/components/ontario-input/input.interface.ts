@@ -16,5 +16,5 @@ export interface TextInput extends Input {
 	 * This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label.
 	 * If no prop is set, it will default to false (optional).
 	 */
-	isRequired?: boolean;
+	required?: boolean;
 }

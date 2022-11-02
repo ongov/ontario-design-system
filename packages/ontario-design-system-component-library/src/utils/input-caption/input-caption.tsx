@@ -18,7 +18,7 @@ export class InputCaption implements Caption {
 	/**
 	 * Determine whether the input field is required.
 	 */
-	isRequired: boolean = false;
+	required: boolean = false;
 
 	/**
 	 * Determine whether the rendered element is a `<label>` or `<legend>`.
@@ -40,7 +40,7 @@ export class InputCaption implements Caption {
 	 * Output a console warning message if the provided `label` type is incorrect
 	 * @param caption object containing the essential data to configure the input label
 	 */
-	constructor(componentTagName: string, caption: InputCaption | string, translations: any, language: any, isLegend: boolean = false, isRequired: boolean = false) {
+	constructor(componentTagName: string, caption: InputCaption | string, translations: any, language: any, isLegend: boolean = false, required: boolean = false) {
 		let captionObject = new Object() as InputCaption;
 
 		if (caption) {
@@ -48,14 +48,14 @@ export class InputCaption implements Caption {
 				try {
 					captionObject = JSON.parse(caption) as InputCaption;
 				} catch {
-					captionObject = new InputCaption(componentTagName, JSON.stringify({ captionText: caption, captionType: 'default' }), translations, language, isLegend, isRequired);
+					captionObject = new InputCaption(componentTagName, JSON.stringify({ captionText: caption, captionType: 'default' }), translations, language, isLegend, required);
 				}
 			} else {
 				captionObject = caption;
 			}
 		}
 
-		this.isRequired = isRequired;
+		this.required = required;
 		this.isLegend = isLegend;
 		this.componentTagName = componentTagName.toLocaleLowerCase();
 		this.captionText = captionObject?.captionText ?? '';
@@ -92,7 +92,7 @@ export class InputCaption implements Caption {
 	 * @returns `required` or `optional` flag text
 	 */
 	private getRequiredFlagText(): string {
-		return this.isRequired ? this.translations && `(${this.translations.required[this.language]})` : this.translations && `(${this.translations.optional[this.language]})`;
+		return this.required ? this.translations && `(${this.translations.required[this.language]})` : this.translations && `(${this.translations.optional[this.language]})`;
 	}
 
 	/**
