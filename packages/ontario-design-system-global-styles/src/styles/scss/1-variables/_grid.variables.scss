@@ -1,7 +1,7 @@
 @use '../2-tools/functions/global.functions' as globalFunctions;
 @use '../2-tools/functions/grid.functions' as gridFunctions;
 @use './breakpoints.variables' as breakpoints;
-@use '@ontario-digital-service/ontario-design-system-design-tokens/dist/scss/variables';
+@use '@ontario-digital-service/ontario-design-system-design-tokens/dist/scss/variables' as variables;
 
 /*
 *  Global grid variables
