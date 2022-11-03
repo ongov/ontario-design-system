@@ -36,5 +36,5 @@
  * $size is the amount of px to be used as the spacing; can be 0, 4, 8, 12, 16, 24, 32, 40, 48 or 64
  */
 @mixin ontario-spacing-important($type: padding, $position: right, $size: 16) {
-	@extend .ontario-#{$type}-#{$position}-#{$size}-\!;
+	@extend .ontario-#{$type}-#{$position}-#{$size}-\! !optional;
 }
