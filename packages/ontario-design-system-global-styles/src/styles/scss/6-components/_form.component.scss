@@ -5,6 +5,7 @@
 @use '../1-variables/breakpoints.variables' as breakpoints;
 @use '../1-variables/global.variables' as globalVariables;
 @use '../1-variables/letter-spacing.variables' as letterSpacing;
+@use '../1-variables/line-heights.variables' as lineHeight;
 
 .ontario-form-group:last-of-type {
 	margin-bottom: spacing.$spacing-8;
@@ -23,7 +24,7 @@
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		font-size: 1.125rem;
-		line-height: 1.56;
+		line-height: lineHeight.$ontario-line-height-8;
 	}
 }
 
@@ -31,7 +32,7 @@
 .ontario-fieldset__legend--heading {
 	font-size: 1.75rem;
 	letter-spacing: letterSpacing.$ontario-letter-spacing-xsmall;
-	line-height: 1.2;
+	line-height: lineHeight.$ontario-line-height-1;
 
 	h1 {
 		display: inline-block;
@@ -41,7 +42,7 @@
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		font-size: 1.4375rem;
-		line-height: 1.39;
+		line-height: lineHeight.$ontario-line-height-5;
 	}
 }
 

@@ -22,7 +22,6 @@
 @mixin ontario-two-column-lists() {
 	column-count: variables.$ontario-grid-columns-column-count1;
 	display: block;
-	margin: 0;
 
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		column-count: variables.$ontario-grid-columns-column-count2;
