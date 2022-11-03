@@ -4,6 +4,7 @@
 @use './breakpoints.variables' as breakpoints;
 @use './letter-spacing.variables' as letterSpacing;
 @use '../2-tools/functions/global.functions' as globalFunctions;
+@use '../1-variables/line-heights.variables' as lineheight;
 
 /* -------------------------------
     Global typography variables
