@@ -1,3 +1,10 @@
+# 2.0.0-alpha.2 (2022-11-04)
+
+
+### Features
+
+* **@ontario-digital-service/ontario-design-system-global-styles:** updating namespaces for new release 6e08c7a
+
 # 2.0.0-alpha.1 (2022-11-01)
 
 
