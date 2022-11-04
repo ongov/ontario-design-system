@@ -1,3 +1,7 @@
+@use '@ontario-digital-service/ontario-design-system-design-tokens/dist/scss/variables' as variables;
+@use '../../1-variables/spacing.variables' as spacing;
+@use '../../1-variables/breakpoints.variables' as breakpoints;
+
 /*
 *  Global mixins
 *  Used across multiple components
@@ -16,15 +20,14 @@
 }
 
 @mixin ontario-two-column-lists() {
-	column-count: $ontario-grid-columns-column-count1;
+	column-count: variables.$ontario-grid-columns-column-count1;
 	display: block;
-	margin: 0;
 
-	@media screen and (min-width: $small-breakpoint) {
-		column-count: $ontario-grid-columns-column-count2;
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
+		column-count: variables.$ontario-grid-columns-column-count2;
 
 		li:last-child {
-			padding: 0 0 $spacing-3 0;
+			padding: 0 0 spacing.$spacing-3 0;
 		}
 	}
 }
@@ -36,5 +39,5 @@
  * $size is the amount of px to be used as the spacing; can be 0, 4, 8, 12, 16, 24, 32, 40, 48 or 64
  */
 @mixin ontario-spacing-important($type: padding, $position: right, $size: 16) {
-	@extend .ontario-#{$type}-#{$position}-#{$size}-\!;
+	@extend .ontario-#{$type}-#{$position}-#{$size}-\! !optional;
 }
