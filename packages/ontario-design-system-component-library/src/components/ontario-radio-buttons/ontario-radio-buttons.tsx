@@ -1,7 +1,8 @@
-import { Component, h, Prop, State, Watch, Element } from '@stencil/core';
+import { Component, h, Prop, State, Listen, Watch, Element } from '@stencil/core';
 import { RadioButtons } from './radio-buttons.interface';
 import { RadioOption } from './radio-option.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
+import { Caption } from '../../utils/input-caption/caption.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 import { validateObjectExists, validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
@@ -13,6 +14,11 @@ import { default as translations } from '../../translations/global.i18n.json';
 	shadow: true,
 })
 export class OntarioRadioButtons implements RadioButtons {
+	/**
+	 * Grant access to the host element and related DOM methods/events within the class instance.
+	 */
+	@Element() element: HTMLElement;
+
 	/**
 	 * The text to display as the label
 	 *
@@ -26,23 +32,13 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *   ...>
 	 * </ontario-radio-buttons>
 	 */
-	@Prop() caption: InputCaption | string;
-
-	/**
-	 * Instantiate an InputCaption object for internal logic use
-	 */
-	@State() private captionState: InputCaption;
+	@Prop() caption: Caption | string;
 
 	/**
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
 	@Prop({ mutable: true }) language?: string = 'en';
-
-	/**
-	 * Grant access to the host element and related DOM methods/events within the class instance.
-	 */
-	@Element() element: HTMLElement;
 
 	/**
 	 * The name assigned to the radio button.
@@ -95,20 +91,6 @@ export class OntarioRadioButtons implements RadioButtons {
 	@Prop() required?: boolean = false;
 
 	/**
-	 * The hint expander options are re-assigned to the internalHintExpander array.
-	 */
-	@State() private internalHintExpander: HintExpander;
-
-	@Watch('hintExpander')
-	private parseHintExpander() {
-		const hintExpander = this.hintExpander;
-		if (hintExpander) {
-			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
-			else this.internalHintExpander = hintExpander;
-		}
-	}
-
-	/**
 	 * Each property will be passed in through an object in the options array.
 	 * This can either be passed in as an object directly (if using react), or as a string in HTML.
 	 * If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option.
@@ -145,9 +127,42 @@ export class OntarioRadioButtons implements RadioButtons {
 	@Prop() options: string | RadioOption[];
 
 	/**
+	 * The hint expander options are re-assigned to the internalHintExpander array.
+	 */
+	@State() private internalHintExpander: HintExpander;
+
+	/**
 	 * The options are re-assigned to the internalOptions array.
 	 */
-	@State() internalOptions: RadioOption[];
+	@State() private internalOptions: RadioOption[];
+
+	/**
+	 * Instantiate an InputCaption object for internal logic use
+	 */
+	@State() private captionState: InputCaption;
+
+	/**
+	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
+	 */
+	@Listen('setAppLanguage', { target: 'window' })
+	handleSetAppLanguage(event: CustomEvent<any>) {
+		this.language = event.detail;
+	}
+
+	@Listen('headerLanguageToggled', { target: 'window' })
+	handleHeaderLanguageToggled(event: CustomEvent<any>) {
+		const toggledLanguage = event.detail;
+		this.language = toggledLanguage;
+	}
+
+	@Watch('hintExpander')
+	private parseHintExpander() {
+		const hintExpander = this.hintExpander;
+		if (hintExpander) {
+			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
+			else this.internalHintExpander = hintExpander;
+		}
+	}
 
 	@Watch('options')
 	parseOptions() {
@@ -192,8 +207,21 @@ export class OntarioRadioButtons implements RadioButtons {
 		}
 	}
 
+	@Watch('caption')
+	updateCaptionState(newValue: Caption | string) {
+		this.captionState = new InputCaption(this.element.tagName, newValue, translations, this.language, true, this.required);
+	}
+
+	/**
+	 * Watch for changes in the `language` to render either the English or French translations
+	 */
+	@Watch('language')
+	updateLanguage() {
+		this.updateCaptionState(this.caption);
+	}
+
 	componentWillLoad() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, true, this.required);
+		this.updateCaptionState(this.caption);
 		this.parseOptions();
 		this.parseHintExpander();
 		this.validateName(this.name);
@@ -209,13 +237,7 @@ export class OntarioRadioButtons implements RadioButtons {
 					<div class="ontario-radios">
 						{this.internalOptions?.map(radioOption => (
 							<div class="ontario-radios__item">
-								<input
-									class="ontario-radios__input"
-									id={radioOption.elementId}
-									name={this.name} type="radio"
-									value={radioOption.value}
-									{...(!!this.required ? { required: true } : {})}
-								/>
+								<input class="ontario-radios__input" id={radioOption.elementId} name={this.name} type="radio" value={radioOption.value} required={!!this.required} />
 								<label class="ontario-radios__label" htmlFor={radioOption.elementId}>
 									{radioOption.label}
 								</label>

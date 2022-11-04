@@ -1,9 +1,10 @@
 import { Component, Event, EventEmitter, h, Prop, State, Listen, Element, Watch } from '@stencil/core';
 import { InputCaption } from '../../utils/input-caption/input-caption';
-import { default as translations } from '../../translations/global.i18n.json';
+import { Caption } from '../../utils/input-caption/caption.interface';
 import { v4 as uuid } from 'uuid';
 import { TextInput } from './input.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+import { default as translations } from '../../translations/global.i18n.json';
 
 /**
  * Ontario Input component
@@ -14,6 +15,11 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 	shadow: true,
 })
 export class OntarioInput implements TextInput {
+	/**
+	 * Grant access to the host element and related DOM methods/events within the class instance.
+	 */
+	@Element() element: HTMLElement;
+
 	/**
 	 * The text to display as the label
 	 *
@@ -27,12 +33,7 @@ export class OntarioInput implements TextInput {
 	 *   ...>
 	 * </ontario-input>
 	 */
-	@Prop() caption: InputCaption | string;
-
-	/**
-	 * Instantiate an InputCaption object for internal logic use
-	 */
-	@State() private captionState: InputCaption;
+	@Prop() caption: Caption | string;
 
 	/**
 	 * The aria-describedBy value if the input has hint text associated with it.
@@ -103,19 +104,17 @@ export class OntarioInput implements TextInput {
 	 */
 	@Prop() hintExpander?: HintExpander | string;
 
+	@State() focused: boolean = false;
+
 	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.
 	 */
 	@State() private internalHintExpander: HintExpander;
 
-	@Watch('hintExpander')
-	private parseHintExpander() {
-		const hintExpander = this.hintExpander;
-		if (hintExpander) {
-			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
-			else this.internalHintExpander = hintExpander;
-		}
-	}
+	/**
+	 * Instantiate an InputCaption object for internal logic use
+	 */
+	@State() private captionState: InputCaption;
 
 	/**
 	 * Emitted when the input loses focus.
@@ -132,8 +131,6 @@ export class OntarioInput implements TextInput {
 	 */
 	@Event() changeEvent!: EventEmitter<KeyboardEvent>;
 
-	@State() focused: boolean = false;
-
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
 	 */
@@ -148,10 +145,27 @@ export class OntarioInput implements TextInput {
 		this.language = toggledLanguage;
 	}
 
+	@Watch('hintExpander')
+	private parseHintExpander() {
+		const hintExpander = this.hintExpander;
+		if (hintExpander) {
+			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
+			else this.internalHintExpander = hintExpander;
+		}
+	}
+
+	@Watch('caption')
+	private updateCaptionState(newValue: Caption | string) {
+		this.captionState = new InputCaption(this.element.tagName, newValue, translations, this.language, false, this.required);
+	}
+
 	/**
-	 * Grant access to the host element and related DOM methods/events within the class instance.
+	 * Watch for changes in the `language` to render either the English or French translations
 	 */
-	@Element() element: HTMLElement;
+	@Watch('language')
+	updateLanguage() {
+		this.updateCaptionState(this.caption);
+	}
 
 	handleBlur = () => {
 		this.focused = false;
@@ -170,6 +184,10 @@ export class OntarioInput implements TextInput {
 		this.changeEvent.emit(ev as KeyboardEvent);
 	};
 
+	public getId(): string {
+		return this.elementId ?? '';
+	}
+
 	private getValue(): string | number {
 		return this.value ?? '';
 	}
@@ -184,18 +202,10 @@ export class OntarioInput implements TextInput {
 		}
 	}
 
-	public getId(): string {
-		return this.elementId ?? '';
-	}
-
 	componentWillLoad() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, false, this.required);
+		this.updateCaptionState(this.caption);
 		this.elementId = this.elementId ?? uuid();
 		this.parseHintExpander();
-	}
-
-	async componentWillUpdate() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language);
 	}
 
 	render() {
@@ -213,7 +223,7 @@ export class OntarioInput implements TextInput {
 					onInput={this.handleChange}
 					type={this.type}
 					value={this.getValue()}
-					{...(!!this.required ? { required: true } : {})}
+					required={!!this.required}
 				/>
 				{this.internalHintExpander && <ontario-hint-expander hint={this.internalHintExpander.hint} content={this.internalHintExpander.content}></ontario-hint-expander>}
 			</div>

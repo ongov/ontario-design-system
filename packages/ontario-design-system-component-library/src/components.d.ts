@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
-import { InputCaption } from "./utils/input-caption/input-caption";
+import { Caption } from "./utils/input-caption/caption.interface";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
@@ -76,7 +76,7 @@ export namespace Components {
           * The text to display as the label
           * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",   }   ...> </ontario-checkboxes>
          */
-        "caption": InputCaption | string;
+        "caption": Caption | string;
         /**
           * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
           * @example <ontario-checkboxes   caption='{    "captionText": "Address",    "captionType": "heading",  }   name='ontario-checkboxes'   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content"  }' required="true" > </ontario-checkboxes>
@@ -109,7 +109,7 @@ export namespace Components {
           * The text to display as the label
           * @example <ontario-dropdown-list   caption='{     "captionText": "Address",     "captionType": "heading",   }'   required="true"   ...> </ontario-dropdown-list>
          */
-        "caption": InputCaption | string;
+        "caption": Caption | string;
         /**
           * The ID for the dropdown list.
          */
@@ -1263,7 +1263,7 @@ export namespace Components {
           * The text to display as the label
           * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",   }   required="true"   ...> </ontario-input>
          */
-        "caption": InputCaption | string;
+        "caption": Caption | string;
         /**
           * The aria-describedBy value if the input has hint text associated with it.
          */
@@ -1328,7 +1328,7 @@ export namespace Components {
           * The text to display as the label
           * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",    }'   required="true"   ...> </ontario-radio-buttons>
          */
-        "caption": InputCaption | string;
+        "caption": Caption | string;
         /**
           * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
           * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }' 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }'   required="true" > </ontario-radio-buttons>
@@ -1361,7 +1361,7 @@ export namespace Components {
           * The text to display as the label
           * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",   }'   required="true"   ...> </ontario-input>
          */
-        "caption": InputCaption | string;
+        "caption": Caption | string;
         /**
           * The aria-describedBy value if the textarea has hint text associated with it.
          */
@@ -2326,7 +2326,7 @@ declare namespace LocalJSX {
           * The text to display as the label
           * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",   }   ...> </ontario-checkboxes>
          */
-        "caption"?: InputCaption | string;
+        "caption"?: Caption | string;
         /**
           * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs.
           * @example <ontario-checkboxes   caption='{    "captionText": "Address",    "captionType": "heading",  }   name='ontario-checkboxes'   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content"  }' required="true" > </ontario-checkboxes>
@@ -2363,7 +2363,7 @@ declare namespace LocalJSX {
           * The text to display as the label
           * @example <ontario-dropdown-list   caption='{     "captionText": "Address",     "captionType": "heading",   }'   required="true"   ...> </ontario-dropdown-list>
          */
-        "caption"?: InputCaption | string;
+        "caption"?: Caption | string;
         /**
           * The ID for the dropdown list.
          */
@@ -3521,7 +3521,7 @@ declare namespace LocalJSX {
           * The text to display as the label
           * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",   }   required="true"   ...> </ontario-input>
          */
-        "caption"?: InputCaption | string;
+        "caption"?: Caption | string;
         /**
           * The aria-describedBy value if the input has hint text associated with it.
          */
@@ -3598,7 +3598,7 @@ declare namespace LocalJSX {
           * The text to display as the label
           * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",    }'   required="true"   ...> </ontario-radio-buttons>
          */
-        "caption"?: InputCaption | string;
+        "caption"?: Caption | string;
         /**
           * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs.
           * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }' 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }'   required="true" > </ontario-radio-buttons>
@@ -3631,7 +3631,7 @@ declare namespace LocalJSX {
           * The text to display as the label
           * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",   }'   required="true"   ...> </ontario-input>
          */
-        "caption"?: InputCaption | string;
+        "caption"?: Caption | string;
         /**
           * The aria-describedBy value if the textarea has hint text associated with it.
          */

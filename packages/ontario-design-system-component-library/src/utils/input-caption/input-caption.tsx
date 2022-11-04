@@ -1,10 +1,10 @@
 import { h } from '@stencil/core';
 import { CaptionType, CaptionTypes } from './input-caption.types';
 import { MessageContentType } from './input-caption.enum';
-import { Caption } from './caption.interface';
+import { CaptionInfo, Caption } from './caption.interface';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
-export class InputCaption implements Caption {
+export class InputCaption implements CaptionInfo {
 	/**
 	 * The text to display as caption.
 	 */
@@ -13,17 +13,17 @@ export class InputCaption implements Caption {
 	/**
 	 * The type of caption to render.
 	 */
-	captionType: CaptionType;
+	captionType?: CaptionType = 'default';
 
 	/**
 	 * Determine whether the input field is required.
 	 */
-	required: boolean = false;
+	required?: boolean = false;
 
 	/**
 	 * Determine whether the rendered element is a `<label>` or `<legend>`.
 	 */
-	isLegend: boolean = false;
+	isLegend?: boolean = false;
 
 	/**
 	 * Name of the component instantiating the class.
@@ -40,29 +40,28 @@ export class InputCaption implements Caption {
 	 * Output a console warning message if the provided `label` type is incorrect
 	 * @param caption object containing the essential data to configure the input label
 	 */
-	constructor(componentTagName: string, caption: InputCaption | string, translations: any, language: any, isLegend: boolean = false, required: boolean = false) {
-		let captionObject = new Object() as InputCaption;
+	constructor(componentTagName: string, caption: Caption | string, translations: any, language: any, isLegend: boolean = false, required: boolean = false) {
+		let captionObject: Caption;
 
-		if (caption) {
-			if (typeof caption === 'string') {
-				try {
-					captionObject = JSON.parse(caption) as InputCaption;
-				} catch {
-					captionObject = new InputCaption(componentTagName, JSON.stringify({ captionText: caption, captionType: 'default' }), translations, language, isLegend, required);
-				}
-			} else {
-				captionObject = caption;
+		if (typeof caption === 'string') {
+			try {
+				captionObject = JSON.parse(caption) as Caption;
+			} catch {
+				captionObject = { captionText: caption, captionType: 'default' };
 			}
+		} else {
+			captionObject = caption;
 		}
 
+		this.componentTagName = componentTagName.toLocaleLowerCase();
+		this.captionText = captionObject?.captionText;
+		this.captionType = (captionObject?.captionType && CaptionTypes.find(type => type === captionObject.captionType?.toLowerCase())) || 'default';
 		this.required = required;
 		this.isLegend = isLegend;
-		this.componentTagName = componentTagName.toLocaleLowerCase();
-		this.captionText = captionObject?.captionText ?? '';
-		this.captionType = (captionObject && captionObject?.captionType && CaptionTypes.find(type => type === captionObject?.captionType?.toLowerCase())) || 'default';
-		this.validateCaption(captionObject);
 		this.translations = translations;
 		this.language = language;
+
+		this.validateCaption(this);
 	}
 
 	/**
@@ -158,8 +157,10 @@ export class InputCaption implements Caption {
 
 			if (messageType !== MessageContentType.UndefinedCaptionObject) {
 				message
-					.addMonospaceText(` ${messageType === MessageContentType.EmptyCaptionText || messageType === MessageContentType.UndefinedCaptionText ? 'captionText' : 'captionType'} `)
-					.addRegularText('property of');
+					.addMonospaceText(
+						` ${messageType === MessageContentType.EmptyCaptionText || messageType === MessageContentType.UndefinedCaptionText ? 'caption or captionText' : 'captionType'} `,
+					)
+					.addRegularText('object or property of');
 			}
 
 			message.addMonospaceText(' caption ').addRegularText('object on').addMonospaceText(` ${this.componentTagName} `);

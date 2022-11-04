@@ -2,6 +2,7 @@ import { Component, Event, EventEmitter, h, Prop, State, Listen, Watch, Element 
 import { v4 as uuid } from 'uuid';
 import { Input } from '../../utils/common.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
+import { Caption } from '../../utils/input-caption/caption.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
@@ -17,6 +18,11 @@ import { default as translations } from '../../translations/global.i18n.json';
 })
 export class OntarioTextarea implements Input {
 	/**
+	 * Grant access to the host element and related DOM methods/events within the class instance.
+	 */
+	@Element() element: HTMLElement;
+
+	/**
 	 * The text to display as the label
 	 *
 	 * @example
@@ -29,12 +35,7 @@ export class OntarioTextarea implements Input {
 	 *   ...>
 	 * </ontario-input>
 	 */
-	@Prop() caption: InputCaption | string;
-
-	/**
-	 * Instantiate an InputCaption object for internal logic use
-	 */
-	@State() private captionState: InputCaption;
+	@Prop() caption: Caption | string;
 
 	/**
 	 * The aria-describedBy value if the textarea has hint text associated with it.
@@ -71,29 +72,22 @@ export class OntarioTextarea implements Input {
 	@Prop() hintExpander?: HintExpander | string;
 
 	/**
-	 * The hint expander options are re-assigned to the internalHintExpander array.
-	 */
-	@State() private internalHintExpander: HintExpander;
-
-	/**
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
 	@Prop({ mutable: true }) language?: string = 'en';
 
-	@Watch('hintExpander')
-	private parseHintExpander() {
-		const hintExpander = this.hintExpander;
-		if (hintExpander) {
-			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
-			else this.internalHintExpander = hintExpander;
-		}
-	}
+	/**
+	 * The hint expander options are re-assigned to the internalHintExpander array.
+	 */
+	@State() private internalHintExpander: HintExpander;
 
 	/**
-	 * Grant access to the host element and related DOM methods/events within the class instance.
+	 * Instantiate an InputCaption object for internal logic use
 	 */
-	@Element() element: HTMLElement;
+	@State() private captionState: InputCaption;
+
+	@State() focused: boolean = false;
 
 	/**
 	 * Emitted when the input loses focus.
@@ -110,8 +104,6 @@ export class OntarioTextarea implements Input {
 	 */
 	@Event() changeEvent!: EventEmitter<KeyboardEvent>;
 
-	@State() focused: boolean = false;
-
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the textarea component loads.
 	 */
@@ -124,6 +116,41 @@ export class OntarioTextarea implements Input {
 	handleHeaderLanguageToggled(event: CustomEvent<any>) {
 		const toggledLanguage = event.detail;
 		this.language = toggledLanguage;
+	}
+
+	@Watch('hintExpander')
+	private parseHintExpander() {
+		const hintExpander = this.hintExpander;
+		if (hintExpander) {
+			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
+			else this.internalHintExpander = hintExpander;
+		}
+	}
+
+	/*
+	 * Watch for changes in the `name` prop for validation purpose
+	 * Validate the name and make sure the name has a value.
+	 * Log warning if user doesn't input a value for the name.
+	 */
+	@Watch('name')
+	validateName(newValue: string) {
+		if (validatePropExists(newValue)) {
+			const message = new ConsoleMessageClass();
+			message.addDesignSystemTag().addMonospaceText(' name ').addRegularText('for').addMonospaceText(' <ontario-textarea> ').addRegularText('was not provided').printMessage();
+		}
+	}
+
+	@Watch('caption')
+	private updateCaptionState(newValue: Caption | string) {
+		this.captionState = new InputCaption(this.element.tagName, newValue, translations, this.language, false, this.required);
+	}
+
+	/**
+	 * Watch for changes in the `language` to render either the English or French translations
+	 */
+	@Watch('language')
+	updateLanguage() {
+		this.updateCaptionState(this.caption);
 	}
 
 	handleBlur = () => {
@@ -148,36 +175,19 @@ export class OntarioTextarea implements Input {
 		return this.elementId ?? '';
 	}
 
-	/*
-	 * Watch for changes in the `name` prop for validation purpose
-	 * Validate the name and make sure the name has a value.
-	 * Log warning if user doesn't input a value for the name.
-	 */
-	@Watch('name')
-	validateName(newValue: string) {
-		if (validatePropExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message.addDesignSystemTag().addMonospaceText(' name ').addRegularText('for').addMonospaceText(' <ontario-textarea> ').addRegularText('was not provided').printMessage();
-		}
-	}
-
-	componentWillLoad() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, false, this.required);
-		this.elementId = this.elementId ?? uuid();
-		this.parseHintExpander();
-		this.validateName(this.name);
-	}
-
-	componentWillUpdate() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, false, this.required);
-	}
-
 	private getValue(): string | number {
 		return this.value ?? '';
 	}
 
 	private getClass(): string {
 		return this.hintExpander ? `ontario-textarea ontario-textarea-hint-expander--true` : `ontario-textarea`;
+	}
+
+	componentWillLoad() {
+		this.updateCaptionState(this.caption);
+		this.elementId = this.elementId ?? uuid();
+		this.parseHintExpander();
+		this.validateName(this.name);
 	}
 
 	render() {
@@ -194,7 +204,7 @@ export class OntarioTextarea implements Input {
 					onFocus={this.handleFocus}
 					onInput={this.handleChange}
 					value={this.getValue()}
-					{...(!!this.required ? { required: true } : {})}
+					required={!!this.required}
 				></textarea>
 				{this.internalHintExpander && (
 					<ontario-hint-expander hint={this.internalHintExpander.hint} content={this.internalHintExpander.content} input-exists></ontario-hint-expander>

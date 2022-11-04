@@ -1,7 +1,8 @@
-import { Component, h, Prop, Element, Event, EventEmitter, State, Watch } from '@stencil/core';
+import { Component, h, Prop, Element, Event, EventEmitter, Listen, State, Watch } from '@stencil/core';
 import { CheckboxOption } from './checkbox-option.interface';
 import { Checkboxes } from './checkboxes.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
+import { Caption } from '../../utils/input-caption/caption.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 import { validateObjectExists, validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
@@ -17,6 +18,11 @@ import { default as translations } from '../../translations/global.i18n.json';
 })
 export class OntarioCheckboxes implements Checkboxes {
 	/**
+	 * Grant access to the host element and related DOM methods/events within the class instance.
+	 */
+	@Element() element: HTMLElement;
+
+	/**
 	 * The text to display as the label
 	 *
 	 * @example
@@ -28,23 +34,13 @@ export class OntarioCheckboxes implements Checkboxes {
 	 *   ...>
 	 * </ontario-checkboxes>
 	 */
-	@Prop() caption: InputCaption | string;
-
-	/**
-	 * Instantiate an InputCaption object for internal logic use
-	 */
-	@State() private captionState: InputCaption;
+	@Prop() caption: Caption | string;
 
 	/**
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
 	@Prop({ mutable: true }) language?: string = 'en';
-
-	/**
-	 * Grant access to the host element and related DOM methods/events within the class instance.
-	 */
-	@Element() element: HTMLElement;
 
 	/**
 	 * The name for the checkboxes.
@@ -86,27 +82,6 @@ export class OntarioCheckboxes implements Checkboxes {
 	@Prop() hintExpander?: HintExpander | string;
 
 	/**
-	 * This is used to determine whether the checkbox is required or not.
-	 * This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label.
-	 * If no prop is set, it will default to false (optional).
-	 */
-	@Prop() required?: boolean = false;
-
-	/**
-	 * The hint expander options are re-assigned to the internalHintExpander array.
-	 */
-	@State() private internalHintExpander: HintExpander;
-
-	@Watch('hintExpander')
-	private parseHintExpander() {
-		const hintExpander = this.hintExpander;
-		if (hintExpander) {
-			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
-			else this.internalHintExpander = hintExpander;
-		}
-	}
-
-	/**
 	 * Each property will be passed in through an object in the options array.
 	 * This can either be passed in as an object directly (if using react), or as a string in HTML.
 	 * If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option.
@@ -142,9 +117,54 @@ export class OntarioCheckboxes implements Checkboxes {
 	@Prop() options: CheckboxOption[] | string;
 
 	/**
+	 * This is used to determine whether the checkbox is required or not.
+	 * This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label.
+	 * If no prop is set, it will default to false (optional).
+	 */
+	@Prop() required?: boolean = false;
+
+	/**
+	 * Instantiate an InputCaption object for internal logic use
+	 */
+	@State() private captionState: InputCaption;
+
+	/**
+	 * The hint expander options are re-assigned to the internalHintExpander array.
+	 */
+	@State() private internalHintExpander: HintExpander;
+
+	/**
 	 * The options are re-assigned to the internalOptions array.
 	 */
 	@State() private internalOptions: CheckboxOption[];
+
+	/**
+	 * Emitted when a keyboard input or mouse event occurs.
+	 */
+	@Event() changeEvent!: EventEmitter<any>;
+
+	/**
+	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
+	 */
+	@Listen('setAppLanguage', { target: 'window' })
+	handleSetAppLanguage(event: CustomEvent<any>) {
+		this.language = event.detail;
+	}
+
+	@Listen('headerLanguageToggled', { target: 'window' })
+	handleHeaderLanguageToggled(event: CustomEvent<any>) {
+		const toggledLanguage = event.detail;
+		this.language = toggledLanguage;
+	}
+
+	@Watch('hintExpander')
+	private parseHintExpander() {
+		const hintExpander = this.hintExpander;
+		if (hintExpander) {
+			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
+			else this.internalHintExpander = hintExpander;
+		}
+	}
 
 	@Watch('options')
 	parseOptions() {
@@ -159,19 +179,16 @@ export class OntarioCheckboxes implements Checkboxes {
 	}
 
 	/**
-	 * Emitted when a keyboard input or mouse event occurs.
+	 * Validate the options and make sure the options has a value.
+	 * Log warning if user doesn't input a value for the options.
+	 * @param newValue object to be validated
 	 */
-	@Event() changeEvent!: EventEmitter<any>;
-
-	handleChange = (ev: Event) => {
-		const input = ev.target as HTMLInputElement | null;
-
-		if (input) {
-			input.checked = input.checked ?? '';
+	validateOptions(newValue: object) {
+		if (validateObjectExists(newValue)) {
+			const message = new ConsoleMessageClass();
+			message.addDesignSystemTag().addMonospaceText(' options ').addRegularText('for').addMonospaceText(' <ontario-checkboxes> ').addRegularText('was not provided').printMessage();
 		}
-
-		this.changeEvent.emit(ev as any);
-	};
+	}
 
 	/*
 	 * Watch for changes in the `name` prop for validation purpose
@@ -186,20 +203,31 @@ export class OntarioCheckboxes implements Checkboxes {
 		}
 	}
 
-	/**
-	 * Validate the options and make sure the options has a value.
-	 * Log warning if user doesn't input a value for the options.
-	 * @param newValue object to be validated
-	 */
-	validateOptions(newValue: object) {
-		if (validateObjectExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message.addDesignSystemTag().addMonospaceText(' options ').addRegularText('for').addMonospaceText(' <ontario-checkboxes> ').addRegularText('was not provided').printMessage();
-		}
+	@Watch('caption')
+	updateCaptionState(newValue: Caption | string) {
+		this.captionState = new InputCaption(this.element.tagName, newValue, translations, this.language, true, this.required);
 	}
 
+	/**
+	 * Watch for changes in the `language` to render either the English or French translations
+	 */
+	@Watch('language')
+	updateLanguage() {
+		this.updateCaptionState(this.caption);
+	}
+
+	handleChange = (ev: Event) => {
+		const input = ev.target as HTMLInputElement | null;
+
+		if (input) {
+			input.checked = input.checked ?? '';
+		}
+
+		this.changeEvent.emit(ev as any);
+	};
+
 	componentWillLoad() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language, true, this.required);
+		this.updateCaptionState(this.caption);
 		this.parseOptions();
 		this.parseHintExpander();
 		this.validateName(this.name);
@@ -223,7 +251,7 @@ export class OntarioCheckboxes implements Checkboxes {
 									value={checkbox.value}
 									checkbox-label={checkbox.label}
 									onChange={this.handleChange}
-									{...(!!this.required ? { required: true } : {})}
+									required={!!this.required}
 								/>
 								<label class="ontario-checkboxes__label" htmlFor={checkbox.value}>
 									{checkbox.label}
