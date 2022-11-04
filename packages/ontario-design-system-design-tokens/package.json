@@ -1,6 +1,6 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-design-tokens",
-	"version": "2.0.0-alpha.1",
+	"version": "2.0.0-alpha.2",
 	"private": false,
 	"description": "Design Tokens to be used in Ontario Design System",
 	"main": "index.js",
