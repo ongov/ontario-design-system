@@ -12,7 +12,8 @@
 		"scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js --watch scss -o css ",
 		"build": "gulp deploy",
 		"clean": "rm -rf dist",
-		"clean:full": "rm -rf node_modules && npm run clean"
+		"clean:full": "rm -rf node_modules && npm run clean",
+		"format": "prettier --write ."
 	},
 	"files": [
 		"dist/",
@@ -25,7 +26,7 @@
 			"email": "nakib.momin@ontario.ca"
 		}
 	],
-	"license": "ISC",
+	"license": "Apache-2.0",
 	"dependencies": {
 		"@ontario-digital-service/ontario-design-system-design-tokens": "2.0.0-beta.5",
 		"@ontario-digital-service/ontario-design-system-global-styles": "2.0.0-beta.5",
@@ -40,6 +41,7 @@
 		"gulp-if": "^3.0.0",
 		"gulp-sass": "^5.0.0",
 		"sass": "^1.43.4",
-		"glob": "^8.0.3"
+		"glob": "^8.0.3",
+		"prettier": "^2.5.1"
 	}
 }
