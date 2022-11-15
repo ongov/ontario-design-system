@@ -15,6 +15,7 @@ import Footer from './stories/footer-page/FooterComponent';
 import Checkbox from './stories/checkbox-page/Checkbox';
 import RadioButton from './stories/radio-button-page/RadioButton';
 import DropdownList from './stories/dropdown-list-page/DropdownList';
+import Blockquote from './stories/blockquote-page/Blockquote';
 
 const App = () => {
 	return (
@@ -146,6 +147,18 @@ const App = () => {
 					<>
 						<Layout>
 							<DropdownList />
+						</Layout>
+					</>
+				}
+			/>
+
+			{/* Blockquote */}
+			<Route
+				path="/ontario-blockquote"
+				element={
+					<>
+						<Layout>
+							<Blockquote />
 						</Layout>
 					</>
 				}
