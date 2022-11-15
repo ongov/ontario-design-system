@@ -112,18 +112,18 @@ export class OntarioDropdownList implements Dropdown {
 	/**
 	 * The options are re-assigned to the internalOptions array.
 	 */
-	@State() internalOptions: DropdownOption[];
+	@State() private internalOptions: DropdownOption[];
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
-	handleSetAppLanguage(event: CustomEvent<any>) {
+	handleSetAppLanguage(event: CustomEvent<string>) {
 		this.language = event.detail;
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<any>) {
+	handleHeaderLanguageToggled(event: CustomEvent<string>) {
 		const toggledLanguage = event.detail;
 		this.language = toggledLanguage;
 	}

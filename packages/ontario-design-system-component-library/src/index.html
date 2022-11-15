@@ -77,7 +77,7 @@
 				<hr />
 
 				<!-- `ontario-input` components - happy path examples -->
-				<ontario-input name="email" input-width="20-char-width" caption='{"captionText": "Email", "captionType": "HEADING"}' is-required="true"></ontario-input>
+				<ontario-input name="email" input-width="20-char-width" caption='{"captionText": "Email", "captionType": "HEADING"}' required="true"></ontario-input>
 				<ontario-input name="postal" input-width="7-char-width" caption='{"captionText": "Postal Code", "captionType": "Large"}'></ontario-input>
 				<ontario-input name="address" caption='{"captionText": "Address", "captionType": "default"}'></ontario-input>
 
@@ -114,7 +114,7 @@
 				<ontario-textarea
 					name="comments"
 					caption='{"captionText": "Comments", "captionType": "HEADING"}'
-					is-required="true"
+					required="true"
 					hint-expander='{
 				"hint": "Hint expander",
 				"content": "This is the content, yup this is the content"
@@ -191,7 +191,7 @@
 					"captionText": "Do you have cats?",
 					"captionType": "heading"
 				}'
-					is-required="false"
+					required="false"
 					options='[
 					{
 						"value": "radio",
@@ -238,7 +238,7 @@
 					"captionText": "Do you like cats?",
 					"captionType": "heading"
 				}'
-					is-required="true"
+					required="true"
 					options='[{
 					"value": "dropdown-list-1",
 					"label": "Option 1"

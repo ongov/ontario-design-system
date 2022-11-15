@@ -141,18 +141,18 @@ export class OntarioCheckboxes implements Checkboxes {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs.
 	 */
-	@Event() changeEvent!: EventEmitter<any>;
+	@Event() changeEvent!: EventEmitter<KeyboardEvent>;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
-	handleSetAppLanguage(event: CustomEvent<any>) {
+	handleSetAppLanguage(event: CustomEvent<string>) {
 		this.language = event.detail;
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<any>) {
+	handleHeaderLanguageToggled(event: CustomEvent<string>) {
 		const toggledLanguage = event.detail;
 		this.language = toggledLanguage;
 	}

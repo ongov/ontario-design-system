@@ -76,9 +76,9 @@ Example of a checkbox component with multiple options, a hint text for the entir
 
 ## Events
 
-| Event         | Description                                          | Type               |
-| ------------- | ---------------------------------------------------- | ------------------ |
-| `changeEvent` | Emitted when a keyboard input or mouse event occurs. | `CustomEvent<any>` |
+| Event         | Description                                          | Type                         |
+| ------------- | ---------------------------------------------------- | ---------------------------- |
+| `changeEvent` | Emitted when a keyboard input or mouse event occurs. | `CustomEvent<KeyboardEvent>` |
 
 
 ## Dependencies
