@@ -130,6 +130,7 @@ const Layout = ({ children }: any) => {
 
 	useEffect(() => {
 		determineActiveLink(location.pathname);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [location]);
 
 	return (
