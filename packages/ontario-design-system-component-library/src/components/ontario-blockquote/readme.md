@@ -26,6 +26,7 @@ This is another example of a long blockquote. The component calculates the lengt
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property      | Attribute     | Description                                                                                                                                  | Type                  | Default     |
@@ -34,6 +35,7 @@ This is another example of a long blockquote. The component calculates the lengt
 | `byline`      | `byline`      | Optional text to be displayed for additional information about the attribution/author.                                                       | `string \| undefined` | `undefined` |
 | `quote`       | `quote`       | Text to be displayed as the quote. Note that wrapping the quotes in quotations is not needed - this is handled through the component styles. | `string`              | `undefined` |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
