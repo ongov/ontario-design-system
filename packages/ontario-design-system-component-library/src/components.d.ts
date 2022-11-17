@@ -148,16 +148,9 @@ export namespace Components {
          */
         "expandedTwoColumnOptions"?: ExpandedTwoColumnOptions | string;
         /**
-          * Stores the page's connection with Ontario for the partnership footer
-         */
-        "partnershipConnection"?: | 'Licensed by Government of Ontario'
-		| 'In partnership with Government of Ontario'
-		| 'Funded by Government of Ontario'
-		| 'Sponsored by Government of Ontario';
-        /**
           * Type of footer to be rendered
          */
-        "type": 'default' | 'partnership' | 'expandedTwoColumn' | 'expandedThreeColumn';
+        "type": 'default' | 'expandedTwoColumn' | 'expandedThreeColumn';
     }
     interface OntarioHeader {
         /**
@@ -2395,16 +2388,9 @@ declare namespace LocalJSX {
          */
         "expandedTwoColumnOptions"?: ExpandedTwoColumnOptions | string;
         /**
-          * Stores the page's connection with Ontario for the partnership footer
-         */
-        "partnershipConnection"?: | 'Licensed by Government of Ontario'
-		| 'In partnership with Government of Ontario'
-		| 'Funded by Government of Ontario'
-		| 'Sponsored by Government of Ontario';
-        /**
           * Type of footer to be rendered
          */
-        "type"?: 'default' | 'partnership' | 'expandedTwoColumn' | 'expandedThreeColumn';
+        "type"?: 'default' | 'expandedTwoColumn' | 'expandedThreeColumn';
     }
     interface OntarioHeader {
         /**

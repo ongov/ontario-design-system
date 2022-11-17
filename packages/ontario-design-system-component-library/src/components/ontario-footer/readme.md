@@ -7,13 +7,12 @@
 
 ## Properties
 
-| Property                     | Attribute                       | Description                                                          | Type                                                                                                                                                                           | Default     |
-| ---------------------------- | ------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
-| `defaultOptions`             | `default-options`               | Stores the required links for all footers                            | `DefaultOptions \| string`                                                                                                                                                     | `undefined` |
-| `expandedThreeColumnOptions` | `expanded-three-column-options` | Stores the titles and content for the expanded three column footer   | `ExpandedThreeColumnOptions \| string \| undefined`                                                                                                                            | `undefined` |
-| `expandedTwoColumnOptions`   | `expanded-two-column-options`   | Stores the titles and content for the expanded two column footer     | `ExpandedTwoColumnOptions \| string \| undefined`                                                                                                                              | `undefined` |
-| `partnershipConnection`      | `partnership-connection`        | Stores the page's connection with Ontario for the partnership footer | `"Funded by Government of Ontario" \| "In partnership with Government of Ontario" \| "Licensed by Government of Ontario" \| "Sponsored by Government of Ontario" \| undefined` | `undefined` |
-| `type`                       | `type`                          | Type of footer to be rendered                                        | `"default" \| "expandedThreeColumn" \| "expandedTwoColumn" \| "partnership"`                                                                                                   | `'default'` |
+| Property                     | Attribute                       | Description                                                        | Type                                                        | Default     |
+| ---------------------------- | ------------------------------- | ------------------------------------------------------------------ | ----------------------------------------------------------- | ----------- |
+| `defaultOptions`             | `default-options`               | Stores the required links for all footers                          | `DefaultOptions \| string`                                  | `undefined` |
+| `expandedThreeColumnOptions` | `expanded-three-column-options` | Stores the titles and content for the expanded three column footer | `ExpandedThreeColumnOptions \| string \| undefined`         | `undefined` |
+| `expandedTwoColumnOptions`   | `expanded-two-column-options`   | Stores the titles and content for the expanded two column footer   | `ExpandedTwoColumnOptions \| string \| undefined`           | `undefined` |
+| `type`                       | `type`                          | Type of footer to be rendered                                      | `"default" \| "expandedThreeColumn" \| "expandedTwoColumn"` | `'default'` |
 
 
 ## Dependencies
