@@ -183,6 +183,7 @@ $navigation-max-width: 72rem;
 
 	li {
 		border-radius: global.$global-radius;
+		padding: global.$spacing-0;
 		margin: global.$spacing-0 global.$spacing-0 global.$spacing-0 global.$spacing-3;
 		text-align: center;
 	}

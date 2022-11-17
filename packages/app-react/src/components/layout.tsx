@@ -4,8 +4,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { OntarioHeader, OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react';
 
 interface MenuLinks {
-  name: string;
-  href: string;
+	name: string;
+	href: string;
 	linkIsActive: boolean;
 	onClickHandler: (e: Event) => void;
 }
@@ -105,6 +105,15 @@ const Layout = ({ children }: any) => {
 				navigate('/ontario-dropdown-list');
 			},
 		},
+		{
+			name: 'Blockquote',
+			href: '/ontario-blockquote',
+			linkIsActive: false,
+			onClickHandler: (e: Event) => {
+				e.preventDefault();
+				navigate('/ontario-blockquote');
+			},
+		},
 	]);
 
 	const determineActiveLink = (url: string) => {
@@ -121,6 +130,7 @@ const Layout = ({ children }: any) => {
 
 	useEffect(() => {
 		determineActiveLink(location.pathname);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [location]);
 
 	return (

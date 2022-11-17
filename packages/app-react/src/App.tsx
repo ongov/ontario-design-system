@@ -15,6 +15,7 @@ import Footer from './stories/footer-page/FooterComponent';
 import Checkbox from './stories/checkbox-page/Checkbox';
 import RadioButton from './stories/radio-button-page/RadioButton';
 import DropdownList from './stories/dropdown-list-page/DropdownList';
+import Blockquote from './stories/blockquote-page/Blockquote';
 
 const App = () => {
 	return (
@@ -23,11 +24,9 @@ const App = () => {
 			<Route
 				path="/"
 				element={
-					<>
-						<Layout>
-							<Home />
-						</Layout>
-					</>
+					<Layout>
+						<Home />
+					</Layout>
 				}
 			/>
 
@@ -35,11 +34,9 @@ const App = () => {
 			<Route
 				path="/ontario-button"
 				element={
-					<>
-						<Layout>
-							<Button />
-						</Layout>
-					</>
+					<Layout>
+						<Button />
+					</Layout>
 				}
 			/>
 
@@ -47,11 +44,9 @@ const App = () => {
 			<Route
 				path="/ontario-hint"
 				element={
-					<>
-						<Layout>
-							<Hint />
-						</Layout>
-					</>
+					<Layout>
+						<Hint />
+					</Layout>
 				}
 			/>
 
@@ -59,11 +54,9 @@ const App = () => {
 			<Route
 				path="/ontario-textarea"
 				element={
-					<>
-						<Layout>
-							<Textarea />
-						</Layout>
-					</>
+					<Layout>
+						<Textarea />
+					</Layout>
 				}
 			/>
 
@@ -71,11 +64,9 @@ const App = () => {
 			<Route
 				path="/ontario-text-input"
 				element={
-					<>
-						<Layout>
-							<TextInput />
-						</Layout>
-					</>
+					<Layout>
+						<TextInput />
+					</Layout>
 				}
 			/>
 
@@ -83,11 +74,9 @@ const App = () => {
 			<Route
 				path="/ontario-icon"
 				element={
-					<>
-						<Layout>
-							<Icon />
-						</Layout>
-					</>
+					<Layout>
+						<Icon />
+					</Layout>
 				}
 			/>
 
@@ -95,11 +84,9 @@ const App = () => {
 			<Route
 				path="/ontario-header"
 				element={
-					<>
-						<Layout>
-							<Header />
-						</Layout>
-					</>
+					<Layout>
+						<Header />
+					</Layout>
 				}
 			/>
 
@@ -107,11 +94,9 @@ const App = () => {
 			<Route
 				path="/ontario-footer"
 				element={
-					<>
-						<Layout>
-							<Footer />
-						</Layout>
-					</>
+					<Layout>
+						<Footer />
+					</Layout>
 				}
 			/>
 
@@ -119,11 +104,9 @@ const App = () => {
 			<Route
 				path="/ontario-checkbox"
 				element={
-					<>
-						<Layout>
-							<Checkbox />
-						</Layout>
-					</>
+					<Layout>
+						<Checkbox />
+					</Layout>
 				}
 			/>
 
@@ -131,11 +114,9 @@ const App = () => {
 			<Route
 				path="/ontario-radio-button"
 				element={
-					<>
-						<Layout>
-							<RadioButton />
-						</Layout>
-					</>
+					<Layout>
+						<RadioButton />
+					</Layout>
 				}
 			/>
 
@@ -143,11 +124,19 @@ const App = () => {
 			<Route
 				path="/ontario-dropdown-list"
 				element={
-					<>
-						<Layout>
-							<DropdownList />
-						</Layout>
-					</>
+					<Layout>
+						<DropdownList />
+					</Layout>
+				}
+			/>
+
+			{/* Blockquote */}
+			<Route
+				path="/ontario-blockquote"
+				element={
+					<Layout>
+						<Blockquote />
+					</Layout>
 				}
 			/>
 		</Routes>
