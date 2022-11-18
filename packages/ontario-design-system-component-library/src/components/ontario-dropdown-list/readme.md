@@ -12,7 +12,7 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
-Example of a dropdown list component with no `elementId` or `isEmptyStartOption` props passed. Note that by default, an ID for the `elementId` will be generated if none is provided. If no `isEmptyStartOption prop is provided, it will default to `false` and display the first option in the `options` list.
+Example of a dropdown list component with no `elementId` or `isEmptyStartOption` props passed. Note that by default, an ID for the `elementId` will be generated if none is provided. If no `isEmptyStartOption` prop is provided, it will default to `false` and display the first option in the `options` list.
 
 ```html
 <ontario-dropdown-list
