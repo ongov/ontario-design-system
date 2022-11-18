@@ -219,6 +219,7 @@ To ensure best practices, it is important to limit the number of navigation link
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property                | Attribute                 | Description                            | Type                                      | Default         |
@@ -228,6 +229,7 @@ To ensure best practices, it is important to limit the number of navigation link
 | `titleHeader`           | `title-header`            | The title for the header               | `headerTitle \| string`                   | `undefined`     |
 | `type`                  | `type`                    | The type of header                     | `"application" \| "ontario" \| undefined` | `'application'` |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
