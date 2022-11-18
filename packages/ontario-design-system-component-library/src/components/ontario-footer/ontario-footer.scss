@@ -237,8 +237,7 @@ $ontario-icon-size--social-small: 32px;
 }
 
 /* expanded footer */
-.ontario-footer--expandedTwoColumn,
-.ontario-footer--expandedThreeColumn {
+.ontario-footer--expanded {
 	padding-top: global.$spacing-0;
 	background-color: global.$ontario-colour-black;
 	border-bottom: global.$spacing-1 solid global.$ontario-greyscale-70;

@@ -42,19 +42,19 @@ export class OntarioFooter {
 
 	@Watch('defaultOptions')
 	private processDefaultOptions() {
-		this.parseDefaultOptions();
+		this.parseOptions(this.defaultOptions);
 		this.verifyDefault();
 	}
 
 	@Watch('expandedTwoColumnOptions')
 	private processExpandedTwoColumnOptions() {
-		this.parseExpandedTwoColumnOptions();
+		this.expandedTwoColumnOptions && this.parseOptions(this.expandedTwoColumnOptions);
 		this.verifyExpandedTwoColumn();
 	}
 
 	@Watch('expandedThreeColumnOptions')
 	private processExpandedThreeColumnOptions() {
-		this.parseExpandedThreeColumnOptions();
+		this.expandedThreeColumnOptions && this.parseOptions(this.expandedThreeColumnOptions);
 		this.verifyExpandedThreeColumn();
 	}
 
@@ -109,56 +109,19 @@ export class OntarioFooter {
 		}
 	}
 
-	private parseOptions(optionType: string | DefaultOptions | ExpandedTwoColumnOptions | ExpandedThreeColumnOptions) {
+	private parseOptions(optionType: any) {
 		const options = optionType;
-		let stateType;
-
-		console.log(options);
-
-		if (options === this.defaultOptions) {
-			stateType = this.defaultState;
-		} else if (options === this.expandedTwoColumnOptions) {
-			stateType = this.expandedTwoColumnState;
-		} else {
-			stateType = this.expandedThreeColumnState;
-		}
 
 		if (options) {
-			if (typeof options === 'string') {
-				stateType = JSON.parse(options);
+			const optionTypeIsString = typeof options === 'string';
+
+			if (options === this.defaultOptions) {
+				this.defaultState = optionTypeIsString ? JSON.parse(options) : options;
+			} else if (options === this.expandedTwoColumnOptions) {
+				this.expandedTwoColumnState = optionTypeIsString ? JSON.parse(options) : options;
 			} else {
-				stateType = options;
+				this.expandedThreeColumnState = optionTypeIsString ? JSON.parse(options) : options;
 			}
-		}
-
-		console.log(stateType);
-
-		return stateType;
-	}
-
-	private parseDefaultOptions() {
-		const defaultOptions = this.defaultOptions;
-		if (defaultOptions) {
-			if (typeof defaultOptions === 'string') this.defaultState = JSON.parse(defaultOptions);
-			else this.defaultState = defaultOptions;
-		}
-	}
-
-	private parseExpandedTwoColumnOptions() {
-		const expandedTwoColumnOptions = this.expandedTwoColumnOptions;
-		if (expandedTwoColumnOptions) {
-			if (typeof expandedTwoColumnOptions === 'string') {
-				this.expandedTwoColumnState = JSON.parse(expandedTwoColumnOptions);
-			} else this.expandedTwoColumnState = expandedTwoColumnOptions;
-		}
-	}
-
-	private parseExpandedThreeColumnOptions() {
-		const expandedThreeColumnOptions = this.expandedThreeColumnOptions;
-		if (expandedThreeColumnOptions) {
-			if (typeof expandedThreeColumnOptions === 'string') {
-				this.expandedThreeColumnState = JSON.parse(expandedThreeColumnOptions);
-			} else this.expandedThreeColumnState = expandedThreeColumnOptions;
 		}
 	}
 
@@ -169,8 +132,6 @@ export class OntarioFooter {
 	}
 
 	componentWillLoad() {
-		this.parseOptions(this.defaultOptions);
-
 		this.processDefaultOptions();
 		this.processExpandedTwoColumnOptions();
 		this.processExpandedThreeColumnOptions();
@@ -178,7 +139,10 @@ export class OntarioFooter {
 
 	render() {
 		return (
-			<footer class={`ontario-footer ontario-footer--${this.type}`} style={this.getBackgroundImagePath()}>
+			<footer
+				class={`ontario-footer ` + (this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn' ? 'ontario-footer--expanded' : '')}
+				style={this.getBackgroundImagePath()}
+			>
 				{(this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn') && (
 					<div class="ontario-footer__expanded-top-section">
 						<div class="ontario-row">
