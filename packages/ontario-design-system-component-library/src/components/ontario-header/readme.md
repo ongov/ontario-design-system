@@ -25,14 +25,6 @@ Example of an Ontario.ca header component. Note that the `titleHeader` prop is n
 		"englishLink": "/driving-and-roads",
 		"frenchLink" : "/fr/conduite-et-routes"
 	}'
-	title-Header='{
-		"name": "Driving and roads",
-		"href": "/driving-and-roads"
-	}'
-	language-Toggle-Options='{
-		"englishLink": "/",
-		"frenchLink" : "/fr"
-	}'
 	menu-Items='[
 		{
 			"name": "Arts and Culture",
@@ -109,6 +101,14 @@ Example of an Application header component.
 ```html
 <ontario-header
   type="application"
+	title-Header='{
+		"name": "Driving and roads",
+		"href": "/driving-and-roads"
+	}'
+	language-Toggle-Options='{
+		"englishLink": "/",
+		"frenchLink" : "/fr"
+	}'
 	menu-Items='[
 	{ 
 		"name": "Vehicle registration", 
@@ -138,7 +138,6 @@ Example of an Application header component.
 </ontario-header>
 ```
 
-
 ## Custom property types
 
 ### languageToggleOptions
@@ -152,8 +151,8 @@ language-Toggle-Options='{
 
 | **Property name** | **Type** | **Description**                   |
 | ----------------- | -------- | --------------------------------- |
-| englishLink       | string   | The URL link for the English page |
-| frenchLink        | string   | The URL link for the French page  |
+| `englishLink`       | `string`   | The URL link for the English page |
+| `frenchLink`        | `string`   | The URL link for the French page  |
 
 ### menuItems
 
@@ -192,10 +191,10 @@ menu-Items='[
 
 | **Property name** 	| **Type** 	| **Description**                                                                                                                                     	|
 |-------------------	|----------	|-----------------------------------------------------------------------------------------------------------------------------------------------------	|
-| name              	| string   	| The name of the menu item (this is what will appear as the label in the header/dropdown menu)                                                       	|
-| href              	| string   	| The URL for the menu item                                                                                                                           	|
-| linkIsActive      	| boolean  	| A boolean flag for whether or not the current menu item link is active. If set to true, active classes and styles will be applied to the menu item. 	|
-| onClickHandler    	| Function 	| An optional custom function to add to the menu item. This can be used if any additional logic should happen when the menu item is clicked.          	|
+| `name`              	| `string`   	| The name of the menu item (this is what will appear as the label in the header/dropdown menu)                                                       	|
+| `href`              	| `string`   	| The URL for the menu item                                                                                                                           	|
+| `linkIsActive`      	| `boolean`  	| A boolean flag for whether or not the current menu item link is active. If set to true, active classes and styles will be applied to the menu item. 	|
+| `onClickHandler`    	| Function 	| An optional custom function to add to the menu item. This can be used if any additional logic should happen when the menu item is clicked.          	|
 
 ### titleHeader
 
@@ -210,9 +209,8 @@ title-header='{
 
 | **Property name** 	| **Type** 	| **Description**                                                                                          	|
 |-------------------	|----------	|----------------------------------------------------------------------------------------------------------	|
-| name              	| string   	| The name of the application (this is what will appear as the label for the application sub header title) 	|
-| href              	| string   	| The URL for the application name                                                                         	|
-
+| `name`              	| `string`   	| The name of the application (this is what will appear as the label for the application sub header title) 	|
+| `href`              	| `string`   	| The URL for the application name                                                                         	|
 
 ## Accessibility
 

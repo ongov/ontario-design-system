@@ -332,7 +332,7 @@ export class OntarioHeader {
 									</button>
 								</form>
 								<div class="ontario-header__nav-right-container ontario-columns ontario-small-10 ontario-medium-8 ontario-large-3">
-									<a href="" class="ontario-header__language-toggler ontario-header-button ontario-header-button--without-outline">
+									<a href={this.languageState?.frenchLink} class="ontario-header__language-toggler ontario-header-button ontario-header-button--without-outline">
 										<abbr title="Français" class="ontario-show-for-small-only">
 											FR
 										</abbr>
