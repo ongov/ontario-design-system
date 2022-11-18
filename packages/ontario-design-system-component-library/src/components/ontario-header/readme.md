@@ -137,7 +137,6 @@ Example of an Application header component.
 ]'>
 </ontario-header>
 ```
-
 ## Custom property types
 
 ### languageToggleOptions
