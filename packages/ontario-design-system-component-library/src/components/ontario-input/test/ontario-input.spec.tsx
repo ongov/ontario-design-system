@@ -46,13 +46,12 @@ describe('ontario-input', () => {
 									value="input value"
 									type='tel'
 									input-width='7-char-width'
-									caption='{"captionText": "Ontario Input", "isRequired": true}'
+									caption='{"captionText": "Ontario Input"}'
 								></ontario-input>`,
 			});
 
 			expect(page.rootInstance.describedBy).toBe('input-hint-id');
 			expect(page.rootInstance.name).toBe('input-name');
-			expect(page.rootInstance.captionState.isRequired).toBe(true);
 			expect(page.rootInstance.value).toBe('input value');
 			expect(page.rootInstance.elementId).toBe('input-id');
 			expect(page.rootInstance.type).toBe('tel');

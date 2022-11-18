@@ -39,6 +39,12 @@ export interface Input extends Base {
 	required?: boolean;
 
 	/**
+	 * The language of the component.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+	 */
+	language?: string;
+
+	/**
 	 * The element content value.
 	 */
 	value?: string;

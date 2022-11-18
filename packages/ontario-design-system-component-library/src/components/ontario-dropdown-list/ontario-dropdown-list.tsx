@@ -1,5 +1,6 @@
-import { Component, State, Element, h, Prop, Watch, getAssetPath } from '@stencil/core';
+import { Component, State, Element, h, Prop, Listen, Watch, getAssetPath } from '@stencil/core';
 import { InputCaption } from '../../utils/input-caption/input-caption';
+import { Caption } from '../../utils/input-caption/caption.interface';
 import { DropdownOption } from './dropdown-option.interface';
 import { Dropdown } from './dropdown.interface';
 import { v4 as uuid } from 'uuid';
@@ -15,6 +16,11 @@ import { default as translations } from '../../translations/global.i18n.json';
 })
 export class OntarioDropdownList implements Dropdown {
 	/**
+	 * Grant access to the host element and related DOM methods/events within the class instance.
+	 */
+	@Element() element: HTMLElement;
+
+	/**
 	 * The text to display as the label
 	 *
 	 * @example
@@ -22,21 +28,12 @@ export class OntarioDropdownList implements Dropdown {
 	 *   caption='{
 	 *     "captionText": "Address",
 	 *     "captionType": "heading",
-	 *     "isRequired": true}'
+	 *   }'
+	 *   required="true"
 	 *   ...>
 	 * </ontario-dropdown-list>
 	 */
-	@Prop() caption: InputCaption | string;
-
-	/**
-	 * Instantiate an InputCaption object for internal logic use
-	 */
-	@State() private captionState: InputCaption;
-
-	/**
-	 * Grant access to the host element and related DOM methods/events within the class instance.
-	 */
-	@Element() element: HTMLElement;
+	@Prop() caption: Caption | string;
 
 	/**
 	 * The language of the component.
@@ -65,7 +62,6 @@ export class OntarioDropdownList implements Dropdown {
 	 *   caption='{
 	 *     "captionText": "Do you like cats?",
 	 *     "captionType": "heading",
-	 *     "isRequired": true
 	 *   }'
 	 *   name="cat-dropdown"
 	 *   is-empty-start-option="Please select"
@@ -80,25 +76,56 @@ export class OntarioDropdownList implements Dropdown {
 	 *   {
 	 *      "value": "dropdown-list-3",
 	 *      "label": "Option 3"
-	 *   }]'>
+	 *   }]'
+	 *   required="true"
+	 * >
 	 * </ontario-dropdown-list>
 	 */
 	@Prop() options: string | DropdownOption[];
 
 	/**
+	 * This is used to determine whether the dropdown list is required or not.
+	 * This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label.
+	 * If no prop is set, it will default to false (optional).
+	 */
+	@Prop() required?: boolean = false;
+
+	/**
+	 * Whether or not the initial option displayed is empty.
+	 * If set to true, it will render the default “select” text.
+	 * If set to a string, it will render the string value.
+	 *
+	 * @example
+	 * <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>
+	 *
+	 * or
+	 *
+	 * <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
+	 */
+	@Prop() isEmptyStartOption?: boolean | string = false;
+
+	/**
+	 * Instantiate an InputCaption object for internal logic use
+	 */
+	@State() private captionState: InputCaption;
+
+	/**
 	 * The options are re-assigned to the internalOptions array.
 	 */
-	@State() internalOptions: DropdownOption[];
+	@State() private internalOptions: DropdownOption[];
 
-	@Watch('options')
-	parseOptions() {
-		if (typeof this.options !== 'undefined') {
-			if (!Array.isArray(this.options)) {
-				this.internalOptions = JSON.parse(this.options);
-			} else {
-				this.internalOptions = this.options;
-			}
-		}
+	/**
+	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
+	 */
+	@Listen('setAppLanguage', { target: 'window' })
+	handleSetAppLanguage(event: CustomEvent<string>) {
+		this.language = event.detail;
+	}
+
+	@Listen('headerLanguageToggled', { target: 'window' })
+	handleHeaderLanguageToggled(event: CustomEvent<string>) {
+		const toggledLanguage = event.detail;
+		this.language = toggledLanguage;
 	}
 
 	/*
@@ -133,29 +160,33 @@ export class OntarioDropdownList implements Dropdown {
 		}
 	}
 
-	/**
-	 * Determine whether the dropdown list is required.
-	 * If required, add `is-required` attribute.
-	 * Otherwise, the `optional` flag will appear.
-	 *
-	 * @example
-	 * <ontario-dropdown-list ... is-required></ontario-dropdown-list>
-	 */
-	@Prop() isRequired?: boolean = false;
+	@Watch('options')
+	parseOptions() {
+		if (typeof this.options !== 'undefined') {
+			if (!Array.isArray(this.options)) {
+				this.internalOptions = JSON.parse(this.options);
+			} else {
+				this.internalOptions = this.options;
+			}
+		}
+	}
+
+	@Watch('caption')
+	private updateCaptionState(newValue: Caption | string) {
+		this.captionState = new InputCaption(this.element.tagName, newValue, translations, this.language, false, this.required);
+	}
 
 	/**
-	 * Whether or not the initial option displayed is empty.
-	 * If set to true, it will render the default “select” text.
-	 * If set to a string, it will render the string value.
-	 *
-	 * @example
-	 * <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>
-	 *
-	 * or
-	 *
-	 * <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
+	 * Watch for changes in the `language` to render either the English or French translations
 	 */
-	@Prop() isEmptyStartOption?: boolean | string = false;
+	@Watch('language')
+	updateLanguage() {
+		this.updateCaptionState(this.caption);
+	}
+
+	public getId(): string {
+		return this.elementId ?? '';
+	}
 
 	private getDropdownArrow() {
 		return {
@@ -163,17 +194,8 @@ export class OntarioDropdownList implements Dropdown {
 		};
 	}
 
-	public getId(): string {
-		return this.elementId ?? '';
-	}
-
-	@Watch('caption')
-	private updateCaptionState() {
-		this.captionState = new InputCaption(this.element.tagName, this.caption, translations, this.language);
-	}
-
 	componentWillLoad() {
-		this.updateCaptionState();
+		this.updateCaptionState(this.caption);
 		this.parseOptions();
 		this.validateName(this.name);
 		this.validateOptions(this.internalOptions);
@@ -184,7 +206,7 @@ export class OntarioDropdownList implements Dropdown {
 		return (
 			<div class="ontario-form-group">
 				{this.captionState.getCaption(this.getId())}
-				<select class="ontario-input ontario-dropdown" id={this.getId()} name={this.name} style={this.getDropdownArrow()}>
+				<select class="ontario-input ontario-dropdown" id={this.getId()} name={this.name} style={this.getDropdownArrow()} required={!!this.required}>
 					{this.isEmptyStartOption && (this.isEmptyStartOption === true ? <option>Select</option> : <option>{this.isEmptyStartOption}</option>)}
 
 					{this.internalOptions?.map(dropdown => <option value={dropdown.value}>{dropdown.label}</option>) ?? ''}

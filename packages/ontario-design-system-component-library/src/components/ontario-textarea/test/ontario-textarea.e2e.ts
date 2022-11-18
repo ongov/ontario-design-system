@@ -1,6 +1,4 @@
-import {
-	newE2EPage
-} from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
 
 describe('ontario-textarea', () => {
 	describe('render', () => {
@@ -13,7 +11,7 @@ describe('ontario-textarea', () => {
 			expect(component).toHaveClass('hydrated');
 			expect(element).toHaveClass('ontario-textarea');
 			expect(element).toEqualAttributes({
-				'name': 'ontario-textarea'
+				name: 'ontario-textarea',
 			});
 		});
 	});
@@ -35,7 +33,7 @@ describe('ontario-textarea', () => {
 			await page.waitForChanges();
 			expect(element).toEqualAttributes({
 				'name': 'ontario-textarea',
-				'aria-describedby': 'ontario-textarea-hint'
+				'aria-describedby': 'ontario-textarea-hint',
 			});
 		});
 
@@ -43,23 +41,16 @@ describe('ontario-textarea', () => {
 			component.setProperty('elementId', 'ontario-textarea-id');
 			await page.waitForChanges();
 			expect(element).toEqualAttributes({
-				'name': 'ontario-textarea',
-				'id': 'ontario-textarea-id'
+				name: 'ontario-textarea',
+				id: 'ontario-textarea-id',
 			});
-		})
+		});
 
 		it('renders changes to the value attribute', async () => {
 			component.setAttribute('value', 'This is a test');
 			await page.waitForChanges();
 			const value = component.getAttribute('value');
 			expect(value).toEqual('This is a test');
-		});
-
-		it('renders changes to the required attribute', async () => {
-			component.setAttribute('required', true);
-			await page.waitForChanges();
-			const required = component.getAttribute('required');
-			expect(required).toBeTruthy();
 		});
 	});
 });

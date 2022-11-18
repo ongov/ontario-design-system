@@ -1,4 +1,5 @@
-import { CaptionType } from "./input-caption.types";
+import { CaptionType } from './input-caption.types';
+
 export interface Caption {
 	/**
 	 * The text to display as the caption. Must be implemented.
@@ -8,12 +9,14 @@ export interface Caption {
 	/**
 	 * The type of caption to render. Must be implemented.
 	 */
-	captionType: CaptionType;
+	captionType?: CaptionType;
+}
 
+export interface CaptionInfo extends Caption {
 	/**
 	 * Determine whether the input field is required.
 	 */
-	isRequired?: boolean;
+	required?: boolean;
 
 	/**
 	 * Determine whether the rendered element is a `<label>` or `<legend>`.

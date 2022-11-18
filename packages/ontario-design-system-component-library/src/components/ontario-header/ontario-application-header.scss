@@ -80,8 +80,8 @@ $navigation-max-width: 72rem;
 	justify-content: flex-end;
 
 	a {
-		font-size: rem-calc(16);
-		line-height: rem-calc(22);
+		font-size: global.rem-calc(16);
+		line-height: global.rem-calc(22);
 		height: auto;
 		outline: none;
 		padding: global.$spacing-2 global.$spacing-3;
@@ -192,16 +192,17 @@ $navigation-max-width: 72rem;
 .ontario-application-subheader__menu-container a {
 	border-radius: global.$global-radius;
 	color: global.$ontario-colour-white;
+	display: inline-block;
 	font-family: global.$ontario-font-open-sans;
-	font-size: rem-calc(18);
+	font-size: global.rem-calc(18);
 	font-weight: global.$ontario-font-weights-semi-bold;
-	line-height: rem-calc(23);
 	height: $standard-input-height;
+	line-height: global.rem-calc(23);
+	outline: none;
 	padding: global.$spacing-3;
+	text-align: left;
 	text-decoration: none;
 	white-space: pre-line;
-	outline: none;
-	text-align: left;
 
 	&.ontario-link--active {
 		border-radius: global.$global-radius global.$global-radius 0 0;

@@ -45,13 +45,12 @@ describe('ontario-textarea', () => {
 									required="true"
 									element-id="textarea-id"
 									value="textarea value"
-									caption='{"captionText": "Ontario Textarea", "isRequired": true}'
+									caption='{"captionText": "Ontario Textarea"}'
 								></ontario-textarea>`,
 			});
 
 			expect(page.rootInstance.describedBy).toBe('textarea-hint-id');
 			expect(page.rootInstance.name).toBe('textarea-name');
-			expect(page.rootInstance.captionState.isRequired).toBe(true);
 			expect(page.rootInstance.value).toBe('textarea value');
 			expect(page.rootInstance.elementId).toBe('textarea-id');
 			expect(page.rootInstance.focused).toBe(false);
