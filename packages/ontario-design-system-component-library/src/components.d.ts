@@ -111,7 +111,7 @@ export namespace Components {
          */
         "caption": Caption | string;
         /**
-          * The ID for the dropdown list.
+          * The ID for the dropdown list. If no ID is provided, one will be generated.
          */
         "elementId"?: string;
         /**
@@ -2365,7 +2365,7 @@ declare namespace LocalJSX {
          */
         "caption"?: Caption | string;
         /**
-          * The ID for the dropdown list.
+          * The ID for the dropdown list. If no ID is provided, one will be generated.
          */
         "elementId"?: string;
         /**
