@@ -16,7 +16,7 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
-Example of an Ontario.ca header component. Note that the `titleHeader` prop is not required for tthis type of header.
+Example of an Ontario.ca header component. Note that the `titleHeader` prop is not required for this type of header.
 
 ```html
 <ontario-header
