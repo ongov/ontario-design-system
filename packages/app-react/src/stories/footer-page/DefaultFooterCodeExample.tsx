@@ -4,7 +4,7 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react';
 
 export default function DefaultFooterCodeExample() {
-	const defaultFooterExample = `import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioFooter type="default" partnership-Connection="Sponsored by Government of Ontario" default-options='{
+	const defaultFooterExample = `import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioFooter type="default" default-options='{
 	"accessibilityLink":"https://www.ontario.ca/page/accessibility",
 	"privacyLink": "https://www.ontario.ca/page/privacy-statement",
 	"contactLink": "https://www.ontario.ca/feedback/contact-us",
@@ -18,7 +18,6 @@ export default function DefaultFooterCodeExample() {
 					<div className="preview-container">
 						<OntarioFooter
 							type="default"
-							partnership-Connection="Sponsored by Government of Ontario"
 							default-options='{
               "accessibilityLink":"https://www.ontario.ca/page/accessibility",
               "privacyLink": "https://www.ontario.ca/page/privacy-statement",

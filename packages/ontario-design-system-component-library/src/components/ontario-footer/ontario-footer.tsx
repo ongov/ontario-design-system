@@ -140,7 +140,7 @@ export class OntarioFooter {
 	render() {
 		return (
 			<footer
-				class={`ontario-footer ` + (this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn' ? 'ontario-footer--expanded' : '')}
+				class={`ontario-footer ` + (this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn' ? 'ontario-footer--expanded' : 'ontario-footer--default')}
 				style={this.getBackgroundImagePath()}
 			>
 				{(this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn') && (

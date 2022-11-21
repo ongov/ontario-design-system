@@ -3,9 +3,7 @@ import '../stories.scss';
 import FooterGuidance from './FooterGuidance';
 import DefaultFooter from './DefaultFooter';
 import ExpandedFooter from './ExpandedFooter';
-import PartnershipFooter from './PartnershipFooter';
 import DefaultFooterCodeExample from './DefaultFooterCodeExample';
-import PartnershipFooterCodeExample from './PartnershipFooterCodeExample';
 import ExpandedFooterCodeExample from './ExpandedFooterCodeExample';
 
 const StoryOntarioFooter = () => {
@@ -14,8 +12,6 @@ const StoryOntarioFooter = () => {
 			<FooterGuidance />
 			<DefaultFooter />
 			<DefaultFooterCodeExample />
-			<PartnershipFooter />
-			<PartnershipFooterCodeExample />
 			<ExpandedFooter />
 			<ExpandedFooterCodeExample />
 		</div>

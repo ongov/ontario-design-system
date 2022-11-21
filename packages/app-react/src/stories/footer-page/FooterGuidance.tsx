@@ -17,10 +17,9 @@ export default function FooterGuidance() {
 					<li>supplementary information</li>
 				</ul>
 
-				<p>There are three footer options to choose from:</p>
+				<p>There are two footer options to choose from:</p>
 				<ul>
 					<li>default footer</li>
-					<li>partnership footer</li>
 					<li>expanded footer</li>
 				</ul>
 
