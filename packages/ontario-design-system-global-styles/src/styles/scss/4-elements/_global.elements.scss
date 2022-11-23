@@ -39,6 +39,7 @@ p {
 	font-size: inherit;
 	margin-bottom: 1.25rem;
 	text-rendering: optimizeLegibility;
+	margin: 0 0 spacing.$spacing-5 0;
 }
 
 cite {
@@ -104,6 +105,11 @@ hr {
 	padding: 0;
 	margin: spacing.$spacing-7 0;
 	border-bottom: 4px solid colours.$ontario-greyscale-20;
+}
+
+/* Horizontal Rule */
+hr.dark {
+	border-bottom: 4px solid #1a1a1a;
 }
 
 a {
