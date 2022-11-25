@@ -27,6 +27,7 @@ export interface CheckboxOption {
 	/**
 	 * Used to include the Hint Expander component underneath the Checkbox Label.
 	 * This is passed in as an object in the `options` with key-value pairs.
+	 * This is optional.
 	 *
 	 * @example
 	 * <ontario-checkboxes

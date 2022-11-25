@@ -48,13 +48,14 @@ export class OntarioCheckboxes implements Checkboxes {
 	@Prop() name: string;
 
 	/**
-	 * Define hint text on an element.
+	 * Define hint text on an element. This is optional.
 	 */
 	@Prop() hintText?: string;
 
 	/**
    * Used to include the Hint Expander component underneath the Checkbox Legend.
    * This is passed in as an object with key-value pairs.
+	 * This is optional.
    *
    * @example
    * <ontario-checkboxes
