@@ -122,7 +122,7 @@ caption='{ "captionText": "Province/territory", "captionType": "heading" }'
 | **Property name** | **Type**                        | **Description**                                                                                         |
 | ----------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `captionText`     | `string`                        | The text to display as the caption (label) for the dropdown-list. This must be implemented.             |
-| `captionType`     | "default", "large" or "heading" | The type of caption to render. This is optional - if no type is passed, the "default" type will render. |
+| `captionType`     | `"default" \| "large"\| "heading"` | The type of caption to render. This is optional - if no type is passed, the "default" type will render. |
 
 ### Options
 
