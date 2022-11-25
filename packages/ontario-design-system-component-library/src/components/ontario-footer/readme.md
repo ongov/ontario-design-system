@@ -120,10 +120,10 @@ default-options='{
 
 | **Property name** 	| **Type** 	| **Description**                                                 	|
 |-------------------	|----------	|-----------------------------------------------------------------	|
-| accessibilityLink 	| string   	| The URL for the accessibility footer link                       	|
-| privacyLink       	| string   	| The URL for the privacy footer link                             	|
-| contactLink       	| string   	| The URL for the contact us footer link                          	|
-| printerLink       	| string   	| The URL for the printer footer link. This property is optional. 	|
+| accessibilityLink 	| `string`   	| The URL for the accessibility footer link                       	|
+| privacyLink       	| `string`   	| The URL for the privacy footer link                             	|
+| contactLink       	| `string`   	| The URL for the contact us footer link                          	|
+| printerLink       	| `string`   	| The URL for the printer footer link. This property is optional. 	|
 
 ### expandedTwoColumnOptions
 
@@ -145,16 +145,16 @@ expanded-two-column-options='{
 
 | **Property name** 	| **Type** 	| **Description**                                                          	|
 |-------------------	|----------	|--------------------------------------------------------------------------	|
-| title             	| string   	| The heading title for the first column of the expanded two column footer 	|
-| content           	| string   	| The content for the first column of the expanded two column footer       	|
+| title             	| `string`   	| The heading title for the first column of the expanded two column footer 	|
+| content           	| `string`   	| The content for the first column of the expanded two column footer       	|
 
 #### secondColumn object
 
 | **Property name** 	| **Type** 	| **Description**                                                                         	|
 |-------------------	|----------	|-----------------------------------------------------------------------------------------	|
-| title             	| string   	| The heading title for the second column of the expanded two column footer               	|
-| content           	| string   	| The content for the second column of the expanded two column footer                     	|
-| contactButtonText 	| string   	| The label for the contact button in the second column of the expanded two footer column 	|
+| title             	| `string`   	| The heading title for the second column of the expanded two column footer               	|
+| content           	| `string`   	| The content for the second column of the expanded two column footer                     	|
+| contactButtonText 	| `string`   	| The label for the contact button in the second column of the expanded two footer column 	|
 
 ### expandedThreeColumnOptions
 
@@ -198,26 +198,26 @@ expanded-three-column-options='{
 
 | **Property name** 	| **Type** 	| **Description**                                                          	|
 |-------------------	|----------	|--------------------------------------------------------------------------	|
-| title             	| string   	| The heading title for the first column of the expanded three column footer 	|
-| content           	| string   	| The content for the first column of the expanded three column footer       	|
+| title             	| `string`   	| The heading title for the first column of the expanded three column footer 	|
+| content           	| `string`   	| The content for the first column of the expanded three column footer       	|
 
 #### secondColumn object
 
 | **Property name** 	| **Type** 	| **Description**                                                                                                                                                                                                                                                 	|
 |-------------------	|----------	|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| title             	| string   	| The heading title for the second column of the expanded three column footer                                                                                                                                                                                     	|
-| content           	| Array    	| The content for the second column of the expanded three column footer takes an Array of Objects, with each object representing a link.  The link object takes a `title` (string) for the label for the link, and `link` (string) for the URL value of the link. 	|
+| title             	| `string`   	| The heading title for the second column of the expanded three column footer                                                                                                                                                                                     	|
+| content           	| `Array`    	| The content for the second column of the expanded three column footer takes an Array of Objects, with each object representing a link.  The link object takes a `title` (string) for the label for the link, and `link` (string) for the URL value of the link. 	|
 
 #### thirdColumn
 
 | **Property name** 	| **Type** 	| **Description**                                                                      	|
 |-------------------	|----------	|--------------------------------------------------------------------------------------	|
-| title             	| string   	| The heading title for the third column of the expanded three column footer           	|
-| content           	| string   	| The content for the third column of the expanded three column footer                 	|
-| facebook          	| Object   	| An optional property where a `link` (string) key is passed in for the Facebook URL.  	|
-| twitter           	| Object   	| An optional property where a `link` (string) key is passed in for the Twitter URL.   	|
-| instagram         	| Object   	| An optional property where a `link` (string) key is passed in for the Instagram URL. 	|
-| youtube           	| Object   	| An optional property where a `link` (string) key is passed in for the YouTube URL.   	|
+| title             	| `string`   	| The heading title for the third column of the expanded three column footer           	|
+| content           	| `string`   	| The content for the third column of the expanded three column footer                 	|
+| facebook          	| `Object`   	| An optional property where a `link` (string) key is passed in for the Facebook URL.  	|
+| twitter           	| `Object`   	| An optional property where a `link` (string) key is passed in for the Twitter URL.   	|
+| instagram         	| `Object`   	| An optional property where a `link` (string) key is passed in for the Instagram URL. 	|
+| youtube           	| `Object`   	| An optional property where a `link` (string) key is passed in for the YouTube URL.   	|
 
 <!-- Auto Generated Below -->
 
