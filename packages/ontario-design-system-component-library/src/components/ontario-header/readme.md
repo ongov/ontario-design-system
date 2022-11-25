@@ -21,7 +21,7 @@ Example of an Ontario.ca header component. Note that the `titleHeader` prop is n
 ```html
 <ontario-header
 	type="ontario"
-	language-Toggle-Options='{
+	language-toggle-options='{
 		"englishLink": "/driving-and-roads",
 		"frenchLink" : "/fr/conduite-et-routes"
 	}'
@@ -105,7 +105,7 @@ Example of an Application header component.
 		"name": "Driving and roads",
 		"href": "/driving-and-roads"
 	}'
-	language-Toggle-Options='{
+	language-toggle-options='{
 		"englishLink": "/",
 		"frenchLink" : "/fr"
 	}'
@@ -142,7 +142,7 @@ Example of an Application header component.
 ### languageToggleOptions
 
 ```html
-language-Toggle-Options='{ 
+language-toggle-options='{ 
 	"englishLink":"/en", 
 	"frenchLink": "/fr" 
 }'
