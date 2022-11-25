@@ -61,7 +61,7 @@ The caption property is used to render the legend for the ontario-checkbox. It c
 
 ```html
 caption='{
-	"captionText": "Checkbox label",
+	"captionText": "Checkbox legend",
 	"captionType": "large"
 }'
 ```
@@ -69,7 +69,7 @@ caption='{
 | **Property name** 	| **Type**                          	| **Description**                                                                                                                                      	|
 |-------------------	|-----------------------------------	|------------------------------------------------------------------------------------------------------------------------------------------------------	|
 | captionText       	| `string`                            	| Text to display as the checkbox question                                                                                                             	|
-| captionType       	| "default" | "large" | "heading" | The type of legend to display for the checkbox question. This is optional, and if no information is provided, it will default to the "default" type. 	|
+| captionType       	| `"default" \| "large"\| "heading"` | The type of legend to display for the checkbox question. This is optional, and if no information is provided, it will default to the "default" type. 	|
 
 ### hintExpander
 

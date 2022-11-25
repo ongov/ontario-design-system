@@ -87,7 +87,7 @@ The caption property is used to render the legend for the ontario-radio-buttons.
 
 ```html
 caption='{
-	"captionText": "Radio button label",
+	"captionText": "Radio button legend",
 	"captionType": "default"
 }'
 ```
@@ -95,7 +95,7 @@ caption='{
 | **Property name** 	| **Type**                          	| **Description**                                                                                                                                      	|
 |-------------------	|-----------------------------------	|------------------------------------------------------------------------------------------------------------------------------------------------------	|
 | captionText       	| `string`                            	| Text to display as the radio button question                                                                                                             	|
-| captionType       	| "default" | "large" | "heading" | The type of legend to display for the radio button question. This is optional, and if no information is provided, it will default to the "default" type. 	|
+| captionType       	| `"default" \| "large"\| "heading"` | The type of legend to display for the radio button question. This is optional, and if no information is provided, it will default to the "default" type. 	|
 
 ### hintExpander
 

@@ -26,16 +26,19 @@ Example of a bare-bones textarea component, the user is passing the `name` which
 
 ### caption
 
-The caption property is used to render the label for the ontario textarea. It can be passed either a string or an object. If no captionType needs to be specified, it can be passed as a string.
+The caption property is used to render the legend for the ontario-textarea. It can be passed either a string or an object. If no captionType needs to be specified, it can be passed as a string.
 
 ```html
-caption='{ "captionText": "Textarea label", "captionType": "large" }'
+caption='{
+	"captionText": "Textarea label",
+	"captionType": "default"
+}'
 ```
 
-| **Property name** | **Type**  | **Description**                       |
-| ----------------- | --------- | ------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| captionText       | `string`  | Text to display as the textarea question |
-| captionType       | "default" | "large"                               | "heading" | The type of label to display for the textarea question. This is optional, and if no information is provided, it will default to the "default" type. |
+| **Property name** 	| **Type**                          	| **Description**                                                                                                                                      	|
+|-------------------	|-----------------------------------	|------------------------------------------------------------------------------------------------------------------------------------------------------	|
+| captionText       	| `string`                            	| Text to display as the radio textarea question                                                                                                             	|
+| captionType       	| `"default" \| "large"\| "heading"` | The type of legend to display for the textarea question. This is optional, and if no information is provided, it will default to the "default" type. 	|
 
 ### hintExpander
 
