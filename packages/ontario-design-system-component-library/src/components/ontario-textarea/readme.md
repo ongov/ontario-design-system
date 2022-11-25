@@ -1,12 +1,6 @@
 # ontario-textarea
 
-The ontario-textarea is a multiline version of a text input. It is often used in forms for longer-form responses, feedback or comments.
-
-It should be used when you want the user to enter more than a single line of information.
-
-## User Interaction Behaviour
-
-User enters text into the textarea component.
+Use a text area when you want the user to enter **more than** a single line of information.
 
 ## Usage guidance
 
@@ -14,7 +8,7 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca/comp
 
 ## Configuration
 
-Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the textarea component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
+Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the textarea component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for header properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.
 
 ## Examples
 
@@ -28,13 +22,38 @@ Example of a bare-bones textarea component, the user is passing the `name` which
 <ontario-textarea name="comments" id="form-comments" required="true" onBlur="exampleFunction()" />
 ```
 
+## Custom property types
+
+### caption
+
+The caption property is used to render the label for the ontario textarea. It can be passed either a string or an object. If no captionType needs to be specified, it can be passed as a string.
+
+```html
+caption='{ "captionText": "Textarea label", "captionType": "large" }'
+```
+
+| **Property name** | **Type**  | **Description**                       |
+| ----------------- | --------- | ------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| captionText       | `string`  | Text to display as the textarea question |
+| captionType       | "default" | "large"                               | "heading" | The type of label to display for the textarea question. This is optional, and if no information is provided, it will default to the "default" type. |
+
+### hintExpander
+
+This hintExpander property is used to include the Hint Expander component underneath the input label. This is passed in as an object with key-value pairs.
+
+```html
+hintExpander='{ 
+	"hint": "This is the hint expander title", 
+	"content": "This is the hint expander content - it is only visible when the hint expander title (hint) is toggled" 
+}'
+```
+
 ## Accessibility
 
 - An `id` attribute is necessary to allow the textarea to be associated with a label element
 - A `name` attribute needs to be set to be submitted to the server when the form is submitted.
 
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -50,7 +69,6 @@ Example of a bare-bones textarea component, the user is passing the `name` which
 | `required`     | `required`      | This is used to determine whether the textarea is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional). | `boolean \| undefined`                | `false`     |
 | `value`        | `value`         | The textarea content value.                                                                                                                                                                                                                    | `string \| undefined`                 | `undefined` |
 
-
 ## Events
 
 | Event         | Description                             | Type                         |
@@ -58,7 +76,6 @@ Example of a bare-bones textarea component, the user is passing the `name` which
 | `blurEvent`   | Emitted when the input loses focus.     | `CustomEvent<void>`          |
 | `changeEvent` | Emitted when a keyboard input occurred. | `CustomEvent<KeyboardEvent>` |
 | `focusEvent`  | Emitted when the input gains focus.     | `CustomEvent<void>`          |
-
 
 ## Dependencies
 
@@ -68,6 +85,7 @@ Example of a bare-bones textarea component, the user is passing the `name` which
 - [ontario-hint-expander](../ontario-hint-expander)
 
 ### Graph
+
 ```mermaid
 graph TD;
   ontario-textarea --> ontario-hint-text
@@ -77,6 +95,6 @@ graph TD;
   style ontario-textarea fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
