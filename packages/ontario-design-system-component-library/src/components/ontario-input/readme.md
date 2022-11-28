@@ -50,8 +50,8 @@ caption='{
 
 | **Property name** 	| **Type**                          	| **Description**                                                                                                                                      	|
 |-------------------	|-----------------------------------	|------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| captionText       	| `string`                            	| Text to display as the input question                                                                                                             	|
-| captionType       	| `"default" \| "large"\| "heading"` | The type of label to display for the input question. This is optional, and if no information is provided, it will default to the `default` type. 	|
+| `captionText`       	| `string`                            	| Text to display as the input question                                                                                                             	|
+| `captionType`       	| `"default" \| "large"\| "heading"` | The type of label to display for the input question. This is optional, and if no information is provided, it will default to the `default` type. 	|
 
 ### hintExpander
 
