@@ -46,7 +46,7 @@ export class OntarioHeader {
 	@Prop() languageToggleOptions: languageToggleOptions | string;
 
 	/**
-	 * The title is reassigned to headerTitle for parsing
+	 * The title is reassigned to titleHeaderState for parsing
 	 */
 	@State() titleHeaderState: headerTitle;
 
