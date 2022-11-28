@@ -47,13 +47,14 @@ export class OntarioRadioButtons implements RadioButtons {
 	@Prop() name: string;
 
 	/**
-	 * Define hint text for Radio Button fieldset.
+	 * Define hint text for Radio Button fieldset. This is optional.
 	 */
 	@Prop() hintText?: string;
 
 	/**
 	 * Used to include the Hint Expander component for the Radio Button fieldset.
 	 * This is passed in as an object with key-value pairs.
+	 * This is optional.
 	 *
 	 * @example
 	 * <ontario-radio-buttons

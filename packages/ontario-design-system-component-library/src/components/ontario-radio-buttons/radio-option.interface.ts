@@ -55,7 +55,7 @@ export interface RadioOption {
 	value: string | number;
 
 	/**
-	 * Used to used to establish a relationship between radio label and the radio input.
+	 * Used to establish a relationship between radio label and the radio input.
 	 * This ID must be unique to the radio option.
 	 *
 	 * @example

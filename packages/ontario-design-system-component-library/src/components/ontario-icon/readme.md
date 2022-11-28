@@ -1,10 +1,12 @@
 # ontario-icon
 
-Icons are a visual representation of a single and simple object, action or idea. If you need to communicate more complicated concepts, consider an illustration or infographic. 
+Use simple, easy-to-understand icons from Material Design to help guide users.
+
+Icons are a visual representation of a single and simple object, action or idea. If you need to communicate more complicated concepts, consider an illustration or infographic.
 
 ## Usage guidance
 
-Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for current documentation guidance.
+Please refer to the [Ontario Design System primary icons](https://designsystem.ontario.ca/components/detail/icons-primary.html) and [Ontario Design System secondary icons](https://designsystem.ontario.ca/components/detail/icons-secondary.html) for current documentation guidance.
 
 ## Configuration
 
@@ -12,16 +14,16 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
-Example of a bare-bones icon component, the user is referencing the Ontario Design System's accessibility icon. The default colour will display as black. 
+Example of a bare-bones icon component, the user is referencing the Ontario Design System's accessibility icon. The default colour will display as black.
 
 ```html
-	<ontario-icon-accessibility></ontario-icon-accessibility>
+<ontario-icon-accessibility></ontario-icon-accessibility>
 ```
 
-Example of a bookmark icon, where the user is is passing a colour property of 'Grey'. 
+Example of a bookmark icon, where the user is is passing a colour property of 'Grey'.
 
 ```html
-	<ontario-icon-bookmark colour="grey"> </ontario-icon-bookmark>
+<ontario-icon-bookmark colour="grey"> </ontario-icon-bookmark>
 ```
 
 <!-- Auto Generated Below -->

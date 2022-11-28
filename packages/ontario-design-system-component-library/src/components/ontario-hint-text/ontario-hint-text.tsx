@@ -28,22 +28,22 @@ export class OntarioHintText implements Hint {
 	 */
 	@Prop() hint: string;
 
+	/*
+	 * Used to used to establish a relationship between hint text content and elements using aria-describedby. This is optional -  if no ID is provided, one will be generated.
+	 */
+	@Prop({ mutable: true }) elementId?: string;
+
 	@State() hintState: string;
 
 	/*
 	 * Watch for changes in the `hint` variable for validation purposes.
 	 * If hint is not provided, set hint to Element Content (if it exists).
-	*/
+	 */
 	@Watch('hint')
 	private updateHintContent() {
 		this.hintState = this.hint ?? this.host.textContent ?? '';
 		this.validateHintContent(this.hintState);
 	}
-
-	/*
-	 * Used to used to establish a relationship between hint text content and elements using aria-describedby.
-	 */
-	@Prop({ mutable: true }) elementId?: string;
 
 	/*
 	 * Validate the hint and make sure the hint has a value.
@@ -52,16 +52,10 @@ export class OntarioHintText implements Hint {
 	validateHintContent(newValue: string) {
 		// If element content is not provided, check whether prop exists
 		if (!this.host.textContent) {
-      if (validatePropExists(newValue)) {
-        const message = new ConsoleMessageClass();
-              message
-                  .addDesignSystemTag()
-                  .addMonospaceText(' hint ')
-                  .addRegularText('for')
-                  .addMonospaceText(' <ontario-hint-text> ')
-                  .addRegularText('was not provided')
-                  .printMessage();
-      }
+			if (validatePropExists(newValue)) {
+				const message = new ConsoleMessageClass();
+				message.addDesignSystemTag().addMonospaceText(' hint ').addRegularText('for').addMonospaceText(' <ontario-hint-text> ').addRegularText('was not provided').printMessage();
+			}
 		}
 	}
 

@@ -18,21 +18,9 @@ export class OntarioButton implements Button {
 	@Prop() type: ButtonType = 'secondary';
 
 	/**
-	 * Mutable variable, for internal use only.
-	 * Set the button's type depending on validation result.
-	 */
-	@State() typeState: string;
-
-	/**
 	 * The native HTML button type the button should use.
 	 */
 	@Prop() htmlType: HtmlType = 'button';
-
-	/**
-	 * Mutable variable, for internal use only.
-	 *  Set the native HTML button type depending on validation result.
-	 */
-	@State() htmlTypeState: string;
 
 	/**
 	 * Text to be displayed within the button. This will override the text provided through the Element Content.
@@ -44,20 +32,8 @@ export class OntarioButton implements Button {
 	 */
 	@Prop() label?: string;
 
-	@State() labelState: string;
-
-	/*
-	 * Watch for changes in the `label` variable for validation purposes.
-	 * If label is not provided, set label to Element Content (if it exists).
-	*/
-	@Watch('label')
-	private updateLabelContent() {
-		this.labelState = this.label ?? this.host.textContent ?? '';
-		this.validateLabelContent(this.labelState);
-	}
-
 	/**
-	 * Provides more context as to what the button interaction is doing.
+	 * Provides more context as to what the button interaction is doing. This is optional.
 	 *
 	 * @example
 	 * <ontario-button aria-label="Click button to open map">Open</ontario button>
@@ -65,24 +41,32 @@ export class OntarioButton implements Button {
 	@Prop({ mutable: true }) ariaLabel?: string;
 
 	/**
-	 * The unique identifier of the button.
+	 * The unique identifier of the button. This is optional - if no ID is passed, one will be generated.
 	 */
 	@Prop({ mutable: true }) elementId?: string;
 
 	/**
-	 * Print the label warning message
+	 * Mutable variable, for internal use only.
+	 * Set the button's type depending on validation result.
 	 */
-	validateLabelContent(newValue: string) {
-		if (validatePropExists(newValue)) {
-			const message = new ConsoleMessageClass();
-				message
-					.addDesignSystemTag()
-					.addMonospaceText(' label ')
-					.addRegularText('for')
-					.addMonospaceText(' <ontario-button> ')
-					.addRegularText('was not provided')
-					.printMessage();
-		}
+	@State() private typeState: string;
+
+	/**
+	 * Mutable variable, for internal use only.
+	 *  Set the native HTML button type depending on validation result.
+	 */
+	@State() private htmlTypeState: string;
+
+	@State() private labelState: string;
+
+	/*
+	 * Watch for changes in the `label` variable for validation purposes.
+	 * If label is not provided, set label to Element Content (if it exists).
+	 */
+	@Watch('label')
+	private updateLabelContent() {
+		this.labelState = this.label ?? this.host.textContent ?? '';
+		this.validateLabelContent(this.labelState);
 	}
 
 	/**
@@ -97,6 +81,31 @@ export class OntarioButton implements Button {
 			this.typeState = this.type;
 		} else {
 			this.typeState = this.warnDefaultType();
+		}
+	}
+
+	/**
+	 * Watch for changes in the `htmlType` variable for validation purpose.
+	 * If the user input doesn't match one of the array values then `htmlType` will be set to its default (`submit`).
+	 * If a match is found in one of the array values then `htmlType` will be set to the matching array key value.
+	 */
+	@Watch('htmlType')
+	validateHtmlType() {
+		const isValid = validateValueAgainstArray(this.htmlType, HtmlTypes);
+		if (isValid) {
+			this.htmlTypeState = this.htmlType;
+		} else {
+			this.htmlTypeState = this.warnDefaultHtmlType();
+		}
+	}
+
+	/**
+	 * Print the label warning message
+	 */
+	validateLabelContent(newValue: string) {
+		if (validatePropExists(newValue)) {
+			const message = new ConsoleMessageClass();
+			message.addDesignSystemTag().addMonospaceText(' label ').addRegularText('for').addMonospaceText(' <ontario-button> ').addRegularText('was not provided').printMessage();
 		}
 	}
 
@@ -121,26 +130,11 @@ export class OntarioButton implements Button {
 	}
 
 	/**
-	 * Watch for changes in the `htmlType` variable for validation purpose.
-	 * If the user input doesn't match one of the array values then `htmlType` will be set to its default (`submit`).
-	 * If a match is found in one of the array values then `htmlType` will be set to the matching array key value.
-	 */
-	@Watch('htmlType')
-	validateHtmlType() {
-		const isValid = validateValueAgainstArray(this.htmlType, HtmlTypes);
-		if (isValid) {
-			this.htmlTypeState = this.htmlType;
-		} else {
-			this.htmlTypeState = this.warnDefaultHtmlType();
-		}
-	}
-
-	/**
 	 * Print the invalid htmlType warning message
 	 * @returns default htmlType (button)
 	 */
 	private warnDefaultHtmlType(): HtmlType {
-	const message = new ConsoleMessageClass();
+		const message = new ConsoleMessageClass();
 		message
 			.addDesignSystemTag()
 			.addMonospaceText(' htmlType ')
