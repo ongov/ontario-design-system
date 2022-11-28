@@ -48,6 +48,7 @@ export class OntarioDropdownList implements Dropdown {
 
 	/**
 	 * The ID for the dropdown list.
+	 * If no ID is provided, one will be generated.
 	 */
 	@Prop({ mutable: true }) elementId?: string;
 

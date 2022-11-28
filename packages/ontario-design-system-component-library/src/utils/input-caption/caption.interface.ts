@@ -7,7 +7,8 @@ export interface Caption {
 	captionText: string;
 
 	/**
-	 * The type of caption to render. Must be implemented.
+	 * The type of caption to render.
+	 * This is optional - if no type is passed, the "default" type will render.
 	 */
 	captionType?: CaptionType;
 }
