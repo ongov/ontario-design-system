@@ -97,7 +97,6 @@ Example of an Ontario.ca header component. Note that the `titleHeader` prop is n
 
 Example of an Application header component.
 
-
 ```html
 <ontario-header
   type="application"
