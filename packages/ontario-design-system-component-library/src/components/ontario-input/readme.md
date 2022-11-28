@@ -39,7 +39,7 @@ The following input component has the `input-width` property passed in, which wi
 
 ### caption
 
-The caption property is used to render the label for the ontario-input. It can be passed either a string or an object. If no captionType needs to be specified, it can be passed as a string.
+The `caption` property is used to render the label for the ontario-input. It can be passed either a string or an object. If no `captionType` needs to be specified, it can be passed as a string.
 
 ```html
 caption='{
