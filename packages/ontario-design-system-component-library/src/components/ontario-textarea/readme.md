@@ -37,8 +37,8 @@ caption='{
 
 | **Property name** 	| **Type**                          	| **Description**                                                                                                                                      	|
 |-------------------	|-----------------------------------	|------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| captionText       	| `string`                            	| Text to display as the radio textarea question                                                                                                             	|
-| captionType       	| `"default" \| "large"\| "heading"` | The type of legend to display for the textarea question. This is optional, and if no information is provided, it will default to the "default" type. 	|
+| `captionText`       	| `string`                            	| Text to display as the radio textarea question                                                                                                             	|
+| `captionType`       	| `"default" \| "large"\| "heading"` | The type of legend to display for the textarea question. This is optional, and if no information is provided, it will default to the "default" type. 	|
 
 ### hintExpander
 
