@@ -83,7 +83,7 @@ Example of a radio button component with multiple options, a hint text for the e
 
 ### caption
 
-The caption property is used to render the legend for the ontario-radio-buttons. It can be passed either a string or an object. If no captionType needs to be specified, it can be passed as a string.
+The `caption` property is used to render the legend for the ontario-radio-buttons. It can be passed either a string or an object. If no `captionType` needs to be specified, it can be passed as a string.
 
 ```html
 caption='{
@@ -95,11 +95,11 @@ caption='{
 | **Property name** 	| **Type**                          	| **Description**                                                                                                                                      	|
 |-------------------	|-----------------------------------	|------------------------------------------------------------------------------------------------------------------------------------------------------	|
 | `captionText`       	| `string`                            	| Text to display as the radio button question                                                                                                             	|
-| `captionType`       	| `"default" \| "large"\| "heading"` | The type of legend to display for the radio button question. This is optional, and if no information is provided, it will default to the "default" type. 	|
+| `captionType`       	| `"default" \| "large"\| "heading"` | The type of legend to display for the radio button question. This is optional, and if no information is provided, it will default to the `default` type. 	|
 
 ### hintExpander
 
-This hintExpander property is used to include the Hint Expander component underneath the radio button legend. This is passed in as an object with key-value pairs.
+The `hintExpander` property is used to include the Hint Expander component underneath the radio button legend. This is passed in as an object with key-value pairs.
 
 ```html
 hintExpander='{
@@ -110,7 +110,7 @@ hintExpander='{
 
 | **Property name** 	| **Type** 	| **Description**                                                                                               	|
 |-------------------	|----------	|---------------------------------------------------------------------------------------------------------------	|
-| `hint`              	| `string`   	| Text to display as the hint expander label/title. When toggled, it will display/hide the hintExpander content 	|
+| `hint`              	| `string`   	| Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content 	|
 | `content`           	| `string`   	| Text to display as the content of the hint expander                                                           	|
 
 ### options

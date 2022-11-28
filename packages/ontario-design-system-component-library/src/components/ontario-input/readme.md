@@ -55,7 +55,7 @@ caption='{
 
 ### hintExpander
 
-This `hintExpander` property is used to include the Hint Expander component underneath the input label. This is passed in as an object with key-value pairs.
+The `hintExpander` property is used to include the Hint Expander component underneath the input label. This is passed in as an object with key-value pairs.
 
 ```html
 hintExpander='{ 
@@ -66,7 +66,7 @@ hintExpander='{
 
 | **Property name** | **Type** | **Description**                                                                                               |
 | ----------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
-| `hint`              | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the hintExpander content |
+| `hint`              | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content |
 | `content`           | `string` | Text to display as the content of the hint expander                                                           |
 
 ## Accessibility
