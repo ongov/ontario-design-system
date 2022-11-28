@@ -118,7 +118,6 @@ export class OntarioHeader {
 	@Listen('click', { capture: true, target: 'window' })
 	handleClick(event: any) {
 		// if the button is clicked, return
-		// if the button is clicked, return
 		if (event.composedPath().includes(this.menuButton)) {
 			return;
 		}
