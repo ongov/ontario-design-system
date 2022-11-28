@@ -66,8 +66,8 @@ hintExpander='{
 
 | **Property name** | **Type** | **Description**                                                                                               |
 | ----------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
-| hint              | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the hintExpander content |
-| content           | `string` | Text to display as the content of the hint expander                                                           |
+| `hint`              | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the hintExpander content |
+| `content`           | `string` | Text to display as the content of the hint expander                                                           |
 
 ## Accessibility
 
