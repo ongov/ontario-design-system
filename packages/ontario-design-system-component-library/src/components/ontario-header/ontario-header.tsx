@@ -141,8 +141,11 @@ export class OntarioHeader {
 	private parseLanguage() {
 		const languageToggleOptions = this.languageToggleOptions;
 		if (languageToggleOptions) {
-			if (typeof languageToggleOptions === 'string') this.languageState = JSON.parse(languageToggleOptions);
-			else this.languageState = languageToggleOptions;
+			if (typeof languageToggleOptions === 'string') {
+				this.languageState = JSON.parse(languageToggleOptions);
+			} else {
+				this.languageState = languageToggleOptions;
+			}
 		}
 	}
 
