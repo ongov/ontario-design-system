@@ -16,6 +16,8 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
+Note that the sample `default-options` for the following examples are the same. Users should be mindful to update links (most notably, the "contactLink") based on the application that is being developed.
+
 Example of a simple (`default` type) footer component.
 
 ```html
@@ -108,6 +110,8 @@ Example of an expanded footer with three columns (`expandedThreeColumn` type). I
 ## Custom property types
 
 ### defaultOptions
+
+In most cases, the example default option links displayed below will apply to both Ontario.ca and Ontario.ca subsites. However, developers should be mindful to update the `contactLink` to reflect the correct "Contact Us" page when using this component on a subsite.
 
 ```html
 default-options='{
