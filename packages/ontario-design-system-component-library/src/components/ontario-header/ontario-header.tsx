@@ -36,23 +36,19 @@ export class OntarioHeader {
 	@Prop() titleHeader: headerTitle | string;
 
 	/**
-	 * The title is reassigned to headerTitle for parsing
-	 */
-	@State() titleHeaderState: headerTitle;
-
-	@Watch('titleHeader')
-	private parseTitleHeader() {
-		const titleHeader = this.titleHeader;
-		if (titleHeader) {
-			if (typeof titleHeader === 'string') this.titleHeaderState = JSON.parse(titleHeader);
-			else this.titleHeaderState = titleHeader;
-		}
-	}
-
-	/**
 	 * The items that will go inside the menu
 	 */
 	@Prop() menuItems: headerTitle[] | string;
+
+	/**
+	 * The link that contains the french page
+	 */
+	@Prop() languageToggleOptions: languageToggleOptions | string;
+
+	/**
+	 * The title is reassigned to titleHeaderState for parsing
+	 */
+	@State() titleHeaderState: headerTitle;
 
 	/**
 	 * The menuItems is reassigned to itemState for parsing
@@ -80,22 +76,6 @@ export class OntarioHeader {
 	 */
 	@State() private itemState: headerTitle[];
 
-	@Watch('menuItems')
-	parseMenuItems() {
-		if (typeof this.menuItems !== 'undefined') {
-			if (!Array.isArray(this.menuItems)) {
-				this.itemState = JSON.parse(this.menuItems);
-			} else {
-				this.itemState = this.menuItems;
-			}
-		}
-	}
-
-	/**
-	 * The link that contains the french page
-	 */
-	@Prop() languageToggleOptions: languageToggleOptions | string;
-
 	/**
 	 * The languageToggleOptions is reassigned to languageState for parsing
 	 *
@@ -108,15 +88,6 @@ export class OntarioHeader {
 	 *	</ontario-header>
 	 */
 	@State() languageState: languageToggleOptions;
-
-	@Watch('languageToggleOptions')
-	private parseLanguage() {
-		const languageToggleOptions = this.languageToggleOptions;
-		if (languageToggleOptions) {
-			if (typeof languageToggleOptions === 'string') this.languageState = JSON.parse(languageToggleOptions);
-			else this.languageState = languageToggleOptions;
-		}
-	}
 
 	/**
 	 * Toggler for the menu and the search button
@@ -131,6 +102,52 @@ export class OntarioHeader {
 	menuButton!: HTMLElement;
 	searchBar!: HTMLInputElement;
 	searchButton!: HTMLInputElement;
+
+	@Watch('titleHeader')
+	private parseTitleHeader() {
+		const titleHeader = this.titleHeader;
+		if (titleHeader) {
+			if (typeof titleHeader === 'string') this.titleHeaderState = JSON.parse(titleHeader);
+			else this.titleHeaderState = titleHeader;
+		}
+	}
+
+	/**
+	 * Logic to close the menu when anything outside the menu is clicked
+	 */
+	@Listen('click', { capture: true, target: 'window' })
+	handleClick(event: any) {
+		// if the button is clicked, return
+		if (event.composedPath().includes(this.menuButton)) {
+			return;
+		}
+
+		// If the click was outside the current component, do the following
+		if (this.menuToggle) this.menuToggle = !this.menuToggle;
+	}
+
+	@Watch('menuItems')
+	parseMenuItems() {
+		if (typeof this.menuItems !== 'undefined') {
+			if (!Array.isArray(this.menuItems)) {
+				this.itemState = JSON.parse(this.menuItems);
+			} else {
+				this.itemState = this.menuItems;
+			}
+		}
+	}
+
+	@Watch('languageToggleOptions')
+	private parseLanguage() {
+		const languageToggleOptions = this.languageToggleOptions;
+		if (languageToggleOptions) {
+			if (typeof languageToggleOptions === 'string') {
+				this.languageState = JSON.parse(languageToggleOptions);
+			} else {
+				this.languageState = languageToggleOptions;
+			}
+		}
+	}
 
 	/**
 	 * Logic to handle the menu toggling
@@ -147,26 +164,6 @@ export class OntarioHeader {
 		this.searchToggle = !this.searchToggle;
 	};
 
-	componentWillLoad() {
-		this.parseTitleHeader();
-		this.parseMenuItems();
-		this.parseLanguage();
-	}
-
-	/**
-	 * Handles the focus when menu/toggle button is clicked.
-	 * When search button is clicked, the search bar is in focus,
-	 * when the closed button is clicked, the search button is back into focus.
-	 * When the menu is closed, the menu button should be out of focus.
-	 */
-	componentDidUpdate() {
-		if (this.type == 'ontario') {
-			if (this.searchToggle === true) this.searchBar.focus();
-			if (this.searchToggle === false) this.searchButton.focus();
-			if (this.menuToggle === false) this.menuButton.blur();
-		}
-	}
-
 	/**
 	 * event.preventDefault(): https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
 	 * location.href: https://developer.mozilla.org/en-US/docs/Web/API/Location/href
@@ -182,21 +179,6 @@ export class OntarioHeader {
 	trapMenuFocus = () => {
 		this.menuButton.focus();
 	};
-
-	/**
-	 * Logic to close the menu when anything outside the menu is clicked
-	 */
-	@Listen('click', { capture: true, target: 'window' })
-	handleClick(event: any) {
-		// if the button is clicked, return
-		// if the button is clicked, return
-		if (event.composedPath().includes(this.menuButton)) {
-			return;
-		}
-
-		// If the click was outside the current component, do the following
-		if (this.menuToggle) this.menuToggle = !this.menuToggle;
-	}
 
 	/**
 	 * This function generates the menu items in a <li>, accordingly, to the given parameters.
@@ -284,6 +266,26 @@ export class OntarioHeader {
 		}
 	}
 
+	componentWillLoad() {
+		this.parseTitleHeader();
+		this.parseMenuItems();
+		this.parseLanguage();
+	}
+
+	/**
+	 * Handles the focus when menu/toggle button is clicked.
+	 * When search button is clicked, the search bar is in focus,
+	 * when the closed button is clicked, the search button is back into focus.
+	 * When the menu is closed, the menu button should be out of focus.
+	 */
+	componentDidUpdate() {
+		if (this.type == 'ontario') {
+			if (this.searchToggle === true) this.searchBar.focus();
+			if (this.searchToggle === false) this.searchButton.focus();
+			if (this.menuToggle === false) this.menuButton.blur();
+		}
+	}
+
 	render() {
 		if (this.type == 'ontario') {
 			return (
@@ -332,7 +334,7 @@ export class OntarioHeader {
 									</button>
 								</form>
 								<div class="ontario-header__nav-right-container ontario-columns ontario-small-10 ontario-medium-8 ontario-large-3">
-									<a href="" class="ontario-header__language-toggler ontario-header-button ontario-header-button--without-outline">
+									<a href={this.languageState?.frenchLink} class="ontario-header__language-toggler ontario-header-button ontario-header-button--without-outline">
 										<abbr title="Français" class="ontario-show-for-small-only">
 											FR
 										</abbr>

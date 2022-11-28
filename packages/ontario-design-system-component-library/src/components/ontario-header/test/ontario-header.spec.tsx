@@ -45,12 +45,10 @@ describe('ontario-header', () => {
 					"name": "Application name" ,
 					"href": "/"
 				}'
-
 				language-Toggle-Options='{
 					"englishLink":"/en",
 					"frenchLink": "/fr"
 				}'
-
 				menu-Items='[{
 					"name": "Health",
 					"href": "/ontario-hint"
@@ -300,7 +298,7 @@ describe('ontario-header', () => {
                   </button>
                 </form>
                 <div class="ontario-columns ontario-header__nav-right-container ontario-large-3 ontario-medium-8 ontario-small-10">
-                  <a class="ontario-header-button ontario-header-button--without-outline ontario-header__language-toggler" href="">
+                  <a class="ontario-header-button ontario-header-button--without-outline ontario-header__language-toggler" href="/fr">
                     <abbr class="ontario-show-for-small-only" title="Français">
                       FR
                     </abbr>
