@@ -42,7 +42,7 @@ caption='{
 
 ### hintExpander
 
-This hintExpander property is used to include the Hint Expander component underneath the input label. This is passed in as an object with key-value pairs.
+This `hintExpander` property is used to include the Hint Expander component underneath the input label. This is passed in as an object with key-value pairs.
 
 ```html
 hintExpander='{ 
