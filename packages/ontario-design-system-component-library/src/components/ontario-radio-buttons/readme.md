@@ -117,11 +117,11 @@ hintExpander='{
 
 | **Property name** 	| **Type**     	| **Description**                                                                                                                                                                                              	|
 |-------------------	|--------------	|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| name              	| string       	| Text to define the name of radio button groups with the name property (radio buttons with the same name belong to the same group). Note that the name value should be the same for all radio button options. 	|
-| value             	| string       	| Text to defines the value associated with the radio button (this is also the value that is sent on submit)                                                                                                   	|
-| label             	| string       	| Text to display as the label of the individual radio option                                                                                                                                                  	|
-| elementId         	| string       	| Text used as the ID for the radio button option. This is used to establish a relationship between radio button labels and the radio input. It must be unique to the radio option.                            	|
-| hintExpander      	| hintExpander 	| An optional hint expander to display for the individual radio button option. Information on hintExpander properties can be found in the custom property above                                                	|
+| `name`              	| `string`       	| Text to define the name of radio button groups with the name property (radio buttons with the same name belong to the same group). Note that the name value should be the same for all radio button options. 	|
+| `value`             	| `string`       	| Text to defines the value associated with the radio button (this is also the value that is sent on submit)                                                                                                   	|
+| `label`             	| `string`       	| Text to display as the label of the individual radio option                                                                                                                                                  	|
+| `elementId`         	| `string`       	| Text used as the ID for the radio button option. This is used to establish a relationship between radio button labels and the radio input. It must be unique to the radio option.                            	|
+| `hintExpander`      	| `hintExpander` 	| An optional hint expander to display for the individual radio button option. Information on `hintExpander` properties can be found in the custom property above                                                	|
 
 ## Accessibility
 
