@@ -49,15 +49,15 @@ export class OntarioButton implements Button {
 	 * Mutable variable, for internal use only.
 	 * Set the button's type depending on validation result.
 	 */
-	@State() typeState: string;
+	@State() private typeState: string;
 
 	/**
 	 * Mutable variable, for internal use only.
 	 *  Set the native HTML button type depending on validation result.
 	 */
-	@State() htmlTypeState: string;
+	@State() private htmlTypeState: string;
 
-	@State() labelState: string;
+	@State() private labelState: string;
 
 	/*
 	 * Watch for changes in the `label` variable for validation purposes.
