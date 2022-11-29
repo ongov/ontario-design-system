@@ -61,7 +61,7 @@
 @font-face {
     font-family:"Open Sans";
     font-weight: fontWeights.$ontario-font-weights-bold;
-    src: local("Open Sans Bold"),local("Open-Sans-600");
+    src: local("Open Sans Bold"),local("Open-Sans-700");
     src: assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.eot');
     src: assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.eot?#iefix') format('embedded-opentype'),
         assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.woff2') format('woff2'),
