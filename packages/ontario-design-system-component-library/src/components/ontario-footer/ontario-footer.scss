@@ -1,5 +1,8 @@
-@use "sass:math";
+@use 'sass:math';
 @use '../../global.scss';
+
+$ontario-icon-size--social-large: 36px;
+$ontario-icon-size--social-small: 32px;
 
 .ontario-footer {
 	color: global.$ontario-colour-white;
@@ -126,9 +129,6 @@
 	}
 }
 
-$ontario-icon-size--social-large: 36px;
-$ontario-icon-size--social-small: 32px;
-
 .ontario-footer__links-container--social .ontario-footer__link .ontario-icon {
 	fill: global.$ontario-colour-white;
 	width: $ontario-icon-size--social-large;
@@ -145,9 +145,9 @@ $ontario-icon-size--social-small: 32px;
 	width: global.$full-width;
 	margin: 0 0 global.$spacing-5 0;
 
-    a {
-        color: global.$ontario-colour-white;
-        font-weight: global.$ontario-font-weights-semi-bold;
+	a {
+		color: global.$ontario-colour-white;
+		font-weight: global.$ontario-font-weights-semi-bold;
 
 		&:visited {
 			color: global.$ontario-colour-white;
@@ -236,37 +236,8 @@ $ontario-icon-size--social-small: 32px;
 	}
 }
 
-/* Partnership footer */
-.ontario-footer--partnership {
-	background-color: global.$ontario-colour-black;
-}
-
-.ontario-footer__partnership-logo-container {
-	text-align: right;
-
-	@media screen and (max-width: global.$small-breakpoint) {
-		text-align: left;
-	}
-
-	p {
-		margin: 0;
-	}
-}
-
-.ontario-footer__ontario-logo {
-	display: inline-block;
-	height: 46px;
-	margin-bottom: global.$spacing-5;
-	margin-top: global.$spacing-0;
-
-	@media screen and (min-width: global.$medium-breakpoint) {
-		margin-top: -5px;
-	}
-}
-
 /* expanded footer */
-.ontario-footer--expandedTwoColumn,
-.ontario-footer--expandedThreeColumn{
+.ontario-footer--expanded {
 	padding-top: global.$spacing-0;
 	background-color: global.$ontario-colour-black;
 	border-bottom: global.$spacing-1 solid global.$ontario-greyscale-70;
@@ -341,7 +312,6 @@ $ontario-icon-size--social-small: 32px;
 	background-color: global.$ontario-colour-black;
 	padding-top: global.$spacing-9;
 }
-
 
 // Note: Styles relating to the Ontario button should be reviewed and
 // aligned to use the real <ontario-button>, if possible.
