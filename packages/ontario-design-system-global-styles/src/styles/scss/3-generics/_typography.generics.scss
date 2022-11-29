@@ -2,6 +2,38 @@
 @use '../2-tools/functions/asset-helper.functions' as assetHelperFunctions;
 
 @font-face {
+    font-family: "Courier Prime";
+    font-weight: fontWeights.$ontario-font-weights-normal;
+    font-style: normal;
+    src: local("Courier Prime"), local("Courier-prime-regular"),
+        assetHelperFunctions.getFontUrl('courier-prime-400/CourierPrime-Regular.ttf') format("truetype"),
+}
+
+@font-face {
+    font-family: "Courier Prime";
+    font-weight: fontWeights.$ontario-font-weights-normal;
+    font-style: italic;
+    src: local("Courier Prime Italic"), local("Courier-prime-italic"),
+        assetHelperFunctions.getFontUrl('courier-prime-400--italic/CourierPrime-Italic.ttf') format("truetype"),
+}
+
+@font-face {
+    font-family: "Courier Prime";
+    font-weight: fontWeights.$ontario-font-weights-bold;
+    font-style: normal;
+    src: local("Courier Prime Bold"), local("Courier-prime-bold"),
+        assetHelperFunctions.getFontUrl('courier-prime-700/CourierPrime-Bold.ttf') format("truetype"),
+}
+
+@font-face {
+    font-family: "Courier Prime";
+    font-weight: fontWeights.$ontario-font-weights-bold;
+    font-style: italic;
+    src: local("Courier Prime Bold Italic"), local("Courier-prime-bold-italic"),
+        assetHelperFunctions.getFontUrl('courier-prime-700--italic/CourierPrime-BoldItalic.ttf') format("truetype"),
+}
+
+@font-face {
 	font-family: 'Open Sans';
 	font-weight: fontWeights.$ontario-font-weights-normal;
 	font-style: normal;
@@ -24,6 +56,18 @@
 	src: assetHelperFunctions.getFontUrl('open-sans-400--italic/open-sans-400--italic.woff2') format('woff2'),
 		assetHelperFunctions.getFontUrl('open-sans-400--italic/open-sans-400--italic.woff') format('woff'),
 		assetHelperFunctions.getFontUrl('open-sans-400--italic/open-sans-400--italic.svg#OpenSans') format('svg'), local('Open Sans Italic'), local('Open-Sans-italic');
+}
+
+@font-face {
+    font-family:"Open Sans";
+    font-weight: fontWeights.$ontario-font-weights-bold;
+    src: local("Open Sans Bold"),local("Open-Sans-700");
+    src: assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.eot');
+    src: assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.eot?#iefix') format('embedded-opentype'),
+        assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.woff2') format('woff2'),
+        assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.woff') format('woff'),
+        assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.ttf') format('truetype'),
+        assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.svg');
 }
 
 @font-face {
