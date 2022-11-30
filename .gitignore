@@ -29,6 +29,5 @@ UserInterfaceState.xcuserstate
 junit.xml
 
 # Gernerated Documentation
-output.zip
-output/
+docs/
 ontario-design-system-web-components-documentation-*
