@@ -1,3 +1,10 @@
+# 2.1.0 (2022-12-01)
+
+
+### Features
+
+* **react:** Update Readme with getting started content e5b3a88
+
 # 2.0.0 (2022-12-01)
 
 

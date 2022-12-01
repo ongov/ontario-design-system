@@ -1,9 +1,9 @@
 {
 	"name": "react-app",
-	"version": "2.0.0-beta.7",
+	"version": "2.1.0",
 	"private": true,
 	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-component-library-react": "^2.0.0-beta.7",
+		"@ontario-digital-service/ontario-design-system-component-library-react": "^2.1.0",
 		"@ontario-digital-service/ontario-design-system-global-styles": "^2.0.0-beta.7",
 		"@ontario-digital-service/ontario-design-system-design-tokens": "^2.0.0-beta.7",
 		"@testing-library/jest-dom": "^5.16.1",
