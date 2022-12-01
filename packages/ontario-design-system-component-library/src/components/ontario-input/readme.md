@@ -76,6 +76,7 @@ hintExpander='{
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property       | Attribute       | Description                                                                                                                                                                                                                                 | Type                                                                                                                                        | Default     |
@@ -92,6 +93,7 @@ hintExpander='{
 | `type`         | `type`          | The input type value.                                                                                                                                                                                                                       | `"email" \| "password" \| "tel" \| "text"`                                                                                                  | `'text'`    |
 | `value`        | `value`         | The input content value.                                                                                                                                                                                                                    | `string \| undefined`                                                                                                                       | `undefined` |
 
+
 ## Events
 
 | Event         | Description                             | Type                         |
@@ -99,6 +101,7 @@ hintExpander='{
 | `blurEvent`   | Emitted when the input loses focus.     | `CustomEvent<void>`          |
 | `changeEvent` | Emitted when a keyboard input occurred. | `CustomEvent<KeyboardEvent>` |
 | `focusEvent`  | Emitted when the input gains focus.     | `CustomEvent<void>`          |
+
 
 ## Dependencies
 
@@ -108,7 +111,6 @@ hintExpander='{
 - [ontario-hint-expander](../ontario-hint-expander)
 
 ### Graph
-
 ```mermaid
 graph TD;
   ontario-input --> ontario-hint-text
@@ -118,6 +120,6 @@ graph TD;
   style ontario-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

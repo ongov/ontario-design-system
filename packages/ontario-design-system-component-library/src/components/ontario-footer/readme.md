@@ -124,10 +124,10 @@ default-options='{
 
 | **Property name** 	| **Type** 	| **Description**                                                 	|
 |-------------------	|----------	|-----------------------------------------------------------------	|
-| accessibilityLink 	| `string`   	| The URL for the accessibility footer link                       	|
-| privacyLink       	| `string`   	| The URL for the privacy footer link                             	|
-| contactLink       	| `string`   	| The URL for the contact us footer link                          	|
-| printerLink       	| `string`   	| The URL for the printer footer link. This property is optional. 	|
+| `accessibilityLink` 	| `string`   	| The URL for the accessibility footer link                       	|
+| `privacyLink`       	| `string`   	| The URL for the privacy footer link                             	|
+| `contactLink`       	| `string`   	| The URL for the contact us footer link                          	|
+| `printerLink`       	| `string`   	| The URL for the printer footer link. This property is optional. 	|
 
 ### expandedTwoColumnOptions
 
@@ -149,16 +149,16 @@ expanded-two-column-options='{
 
 | **Property name** 	| **Type** 	| **Description**                                                          	|
 |-------------------	|----------	|--------------------------------------------------------------------------	|
-| title             	| `string`   	| The heading title for the first column of the expanded two column footer 	|
-| content           	| `string`   	| The content for the first column of the expanded two column footer       	|
+| `title`             	| `string`   	| The heading title for the first column of the expanded two column footer 	|
+| `content`           	| `string`   	| The content for the first column of the expanded two column footer       	|
 
 #### secondColumn object
 
 | **Property name** 	| **Type** 	| **Description**                                                                         	|
 |-------------------	|----------	|-----------------------------------------------------------------------------------------	|
-| title             	| `string`   	| The heading title for the second column of the expanded two column footer               	|
-| content           	| `string`   	| The content for the second column of the expanded two column footer                     	|
-| contactButtonText 	| `string`   	| The label for the contact button in the second column of the expanded two footer column 	|
+| `title`             	| `string`   	| The heading title for the second column of the expanded two column footer               	|
+| `content`           	| `string`   	| The content for the second column of the expanded two column footer                     	|
+| `contactButtonText` 	| `string`   	| The label for the contact button in the second column of the expanded two footer column 	|
 
 ### expandedThreeColumnOptions
 
@@ -225,6 +225,7 @@ expanded-three-column-options='{
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property                     | Attribute                       | Description                                                        | Type                                                        | Default     |
@@ -233,6 +234,7 @@ expanded-three-column-options='{
 | `expandedThreeColumnOptions` | `expanded-three-column-options` | Stores the titles and content for the expanded three column footer | `ExpandedThreeColumnOptions \| string \| undefined`         | `undefined` |
 | `expandedTwoColumnOptions`   | `expanded-two-column-options`   | Stores the titles and content for the expanded two column footer   | `ExpandedTwoColumnOptions \| string \| undefined`           | `undefined` |
 | `type`                       | `type`                          | Type of footer to be rendered                                      | `"default" \| "expandedThreeColumn" \| "expandedTwoColumn"` | `'default'` |
+
 
 ## Dependencies
 
@@ -245,7 +247,6 @@ expanded-three-column-options='{
 - [ontario-icon-youtube](../ontario-icon)
 
 ### Graph
-
 ```mermaid
 graph TD;
   ontario-footer --> ontario-button
@@ -256,6 +257,6 @@ graph TD;
   style ontario-footer fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

@@ -63,6 +63,7 @@ hintExpander='{
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property       | Attribute       | Description                                                                                                                                                                                                                                    | Type                                  | Default     |
@@ -77,6 +78,7 @@ hintExpander='{
 | `required`     | `required`      | This is used to determine whether the textarea is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional). | `boolean \| undefined`                | `false`     |
 | `value`        | `value`         | The textarea content value.                                                                                                                                                                                                                    | `string \| undefined`                 | `undefined` |
 
+
 ## Events
 
 | Event         | Description                             | Type                         |
@@ -84,6 +86,7 @@ hintExpander='{
 | `blurEvent`   | Emitted when the input loses focus.     | `CustomEvent<void>`          |
 | `changeEvent` | Emitted when a keyboard input occurred. | `CustomEvent<KeyboardEvent>` |
 | `focusEvent`  | Emitted when the input gains focus.     | `CustomEvent<void>`          |
+
 
 ## Dependencies
 
@@ -93,7 +96,6 @@ hintExpander='{
 - [ontario-hint-expander](../ontario-hint-expander)
 
 ### Graph
-
 ```mermaid
 graph TD;
   ontario-textarea --> ontario-hint-text
@@ -103,6 +105,6 @@ graph TD;
   style ontario-textarea fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

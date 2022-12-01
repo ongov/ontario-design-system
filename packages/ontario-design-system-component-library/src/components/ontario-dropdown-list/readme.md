@@ -160,6 +160,7 @@ options='[
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property             | Attribute               | Description                                                                                                                                                                                                                                                                                                  | Type                             | Default     |
@@ -172,6 +173,7 @@ options='[
 | `options`            | `options`               | Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset. | `DropdownOption[] \| string`     | `undefined` |
 | `required`           | `required`              | This is used to determine whether the dropdown list is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).                                                          | `boolean \| undefined`           | `false`     |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
