@@ -1,9 +1,11 @@
 @use 'sass:math';
-@use '@ontario-digital-service/ontario-design-system-design-tokens/dist/scss/variables';
+@use '@ontario-digital-service/ontario-design-system-design-tokens/dist/scss/variables' as variables;
 @use '../../global.scss';
 
 $standard-input-height: 48px;
 $ontario-logo-height: 46px;
+$navigation-link-bg--hover: #e5e5e5;
+$navigation-max-width: 72rem;
 
 .ontario-icon-container {
 	display: flex;
@@ -56,8 +58,7 @@ $ontario-logo-height: 46px;
 .ontario-application-header__lang-toggle,
 .ontario-application-subheader__container,
 .ontario-application-subheader__menu-container,
-.ontario-application-subheader__menu,
-.ontario-application-header-container {
+.ontario-application-subheader__menu {
 	display: flex;
 	align-items: center;
 	outline: none;
@@ -77,9 +78,10 @@ $ontario-logo-height: 46px;
 
 .ontario-application-header__lang-toggle {
 	justify-content: flex-end;
+
 	a {
-		font-size: rem-calc(16);
-		line-height: rem-calc(22);
+		font-size: global.rem-calc(16);
+		line-height: global.rem-calc(22);
 		height: auto;
 		outline: none;
 		padding: global.$spacing-2 global.$spacing-3;
@@ -100,6 +102,11 @@ $ontario-logo-height: 46px;
 	& > .ontario-row {
 		position: relative;
 	}
+}
+
+.ontario-application-header-container {
+	position: relative;
+	z-index: 5;
 }
 
 .ontario-application-header > .ontario-row {
@@ -148,6 +155,7 @@ $ontario-logo-height: 46px;
 		font-weight: global.$ontario-font-weights-semi-bold;
 		text-decoration: none;
 		outline: none;
+
 		&:focus {
 			box-shadow: global.$ontario-focus-box-shadow;
 			transition: all 0.1s ease-in-out;
@@ -166,38 +174,44 @@ $ontario-logo-height: 46px;
 	justify-content: space-between;
 }
 
-.ontario-application-subheader__menu {
+.ontario-application-subheader__menu-container ul {
+	display: flex;
+	align-items: center;
 	list-style: none;
 	margin: global.$spacing-0;
 	padding-left: global.$spacing-0;
-	align-items: center;
-}
 
-.ontario-application-subheader__menu li {
-	border-radius: global.$global-radius;
-	margin-left: global.$spacing-4;
-	text-align: center;
-	&:hover {
-		background-color: global.$ontario-greyscale-60;
-		color: global.$ontario-colour-white;
+	li {
+		border-radius: global.$global-radius;
+		padding: global.$spacing-0;
+		margin: global.$spacing-0 global.$spacing-0 global.$spacing-0 global.$spacing-3;
+		text-align: center;
 	}
 }
 
-.ontario-application-subheader__menu a {
+.ontario-application-subheader__menu-container a {
 	border-radius: global.$global-radius;
 	color: global.$ontario-colour-white;
 	display: inline-block;
-	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size: rem-calc(18);
+	font-family: global.$ontario-font-open-sans;
+	font-size: global.rem-calc(18);
 	font-weight: global.$ontario-font-weights-semi-bold;
-	line-height: rem-calc(23);
+	height: $standard-input-height;
+	line-height: global.rem-calc(23);
+	outline: none;
 	padding: global.$spacing-3;
+	text-align: left;
 	text-decoration: none;
-	white-space: nowrap;
+	white-space: pre-line;
 
 	&.ontario-link--active {
-		border-radius: 4px 4px 0 0;
-		border-bottom: 4px solid global.$ontario-colour-white;
+		border-radius: global.$global-radius global.$global-radius 0 0;
+		border-bottom: global.$global-radius solid global.$ontario-colour-white;
+	}
+
+	&:hover {
+		background-color: global.$ontario-greyscale-60;
+		color: global.$ontario-colour-white;
 	}
 
 	&:active {
@@ -216,7 +230,7 @@ $ontario-logo-height: 46px;
 
 	@media screen and (min-width: global.$medium-breakpoint) {
 		position: relative;
-		max-width: 72rem;
+		max-width: $navigation-max-width;
 		width: auto;
 		margin: 0 auto;
 	}
@@ -245,7 +259,7 @@ $ontario-logo-height: 46px;
 
 	@media screen and (min-width: global.$medium-breakpoint) {
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-		border-radius: 4px;
+		border-radius: global.$global-radius;
 		position: absolute;
 		right: global.$spacing-3;
 		top: -0.6rem;
@@ -253,6 +267,58 @@ $ontario-logo-height: 46px;
 		max-width: 30%;
 		z-index: 3;
 		transition: none !important;
+	}
+}
+
+.ontario-application-navigation ul {
+	list-style: none;
+	padding: global.$spacing-2 global.$spacing-0;
+	margin: global.$spacing-0;
+	border-bottom: 1px solid global.$ontario-greyscale-20;
+
+	@media screen and (min-width: global.$medium-breakpoint) {
+		border-bottom: none;
+	}
+}
+
+.ontario-application-navigation li {
+	border-top: 1px solid global.$ontario-greyscale-20;
+	padding: global.$spacing-0;
+	margin-bottom: global.$spacing-0;
+
+	&:last-of-type {
+		border-bottom: 1px solid global.$ontario-greyscale-20;
+	}
+}
+
+.ontario-application-navigation a {
+	color: global.$ontario-colour-black;
+	display: block;
+	font-size: 1.125rem;
+	font-weight: global.$ontario-font-weights-semi-bold;
+	font-family: global.$ontario-font-open-sans;
+	text-decoration: none;
+	padding: calc(variables.$ontario-spacing-3 - math.div(variables.$ontario-spacing-1, 3.25)) variables.$ontario-spacing-5;
+
+	&:hover {
+		text-decoration: underline;
+		background-color: $navigation-link-bg--hover;
+	}
+
+	&:active {
+		text-decoration: underline;
+		background-color: global.$ontario-greyscale-20;
+	}
+
+	&:focus,
+	&:active {
+		@extend %ontario-focus;
+		box-shadow: global.$ontario-focus-box-shadow inset;
+	}
+
+	&.ontario-link--active {
+		border-left: 6px solid global.$ontario-colour-black;
+		background-color: global.$ontario-greyscale-5;
 	}
 }
 
@@ -282,56 +348,6 @@ $ontario-logo-height: 46px;
 	@media screen and (min-width: global.$medium-breakpoint) {
 		transition: none;
 		display: block;
-	}
-}
-
-.ontario-application-navigation ul {
-	list-style: none;
-	padding: global.$spacing-2 global.$spacing-0;
-	margin: global.$spacing-0;
-	border-bottom: 1px solid global.$ontario-greyscale-20;
-	@media screen and (min-width: global.$medium-breakpoint) {
-		border-bottom: none;
-	}
-}
-
-.ontario-application-navigation li {
-	border-top: 1px solid global.$ontario-greyscale-20;
-	padding: global.$spacing-0;
-
-	&:last-of-type {
-		border-bottom: 1px solid global.$ontario-greyscale-20;
-	}
-}
-
-.ontario-application-navigation a {
-	color: global.$ontario-colour-black;
-	display: block;
-	font-size: 1.125rem;
-	font-weight: global.$ontario-font-weights-semi-bold;
-	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	text-decoration: none;
-	padding: calc(variables.$ontario-spacing-3 - (variables.$ontario-spacing-1 / 3.25)) variables.$ontario-spacing-5;
-
-	&:hover {
-		text-decoration: underline;
-		background-color: #e5e5e5;
-	}
-
-	&:active {
-		text-decoration: underline;
-		background-color: global.$ontario-greyscale-20;
-	}
-
-	&:focus,
-	&:active {
-		@extend %ontario-focus;
-		box-shadow: global.$ontario-focus-box-shadow inset;
-	}
-
-	&.ontario-link--active {
-		border-left: 6px solid global.$ontario-colour-black;
-		background-color: global.$ontario-greyscale-5;
 	}
 }
 

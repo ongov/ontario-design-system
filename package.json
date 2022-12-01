@@ -13,6 +13,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build-libs": "lerna run --scope @ontario-digital-service/ontario-design-system* build",
+    "build-docs": "lerna run --scope @ontario-digital-service/ontario-design-system-component-library docs:assemble",
     "test:unit": "lerna run test:unit",
     "test:e2e": "lerna run test:e2e",
     "clean": "lerna run clean",

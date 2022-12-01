@@ -2,30 +2,30 @@ import { Base } from '../../utils/common.interface';
 import { DropdownOption } from './dropdown-option.interface';
 
 export interface Dropdown extends Base {
-  /**
-   * The name for the dropdown list.
-   */
-  name: string;
+	/**
+	 * The name for the dropdown list.
+	 */
+	name: string;
 
-  /**
-   * The ID for the dropdown list.
-   */
-  elementId?: string;
+	/**
+	 * The ID for the dropdown list.
+	 */
+	elementId?: string;
 
-  /**
+	/**
    * Each property will be passed in through an object in the options array.
    * This can either be passed in as an object directly (if using react), or as a string in HTML.
    * In the example below, the options are being passed in as a string and
    * there are three dropdown options to be displayed in the fieldset.
    *
    * @example
-   * <ontario-dropdown-list 
+   * <ontario-dropdown-list
    *   caption='{
    *     "captionText": "Do you like cats?",
    *     "captionType": "heading",
-   *     "isRequired": true
+
    *   }'
-   *   is-empty-start-option="Please select" 
+   *   is-empty-start-option="Please select"
    *   options='[{
    *     "value": "dropdown-list-1",
    *     "label": "Option 1"
@@ -37,32 +37,30 @@ export interface Dropdown extends Base {
    *   {
    *     "value": "dropdown-list-3",
    *     "label": "Option 3"
-   *   }]'>
+   *   }]'
+	 *   is-required="true"
+	 * >
    * </ontario-dropdown-list>
    */
-  options: string | DropdownOption[];
+	options: string | DropdownOption[];
 
-  /**
-   * Determine whether the dropdown list is required.
-   * If required, add `is-required` attribute.
-   * Otherwise, the `optional` flag will appear.
-   *
-   * @example
-   * <ontario-dropdown-list ... is-required></ontario-dropdown-list>
-   */
-  isRequired?: boolean;
-
-  /**
-   * Whether or not the initial option displayed is empty.
-   * If set to true, it will render the default “select” text.
-   * If set to a string, it will render the string value.
-   *
-   * @example
-   * <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>
-   *
-   * or
-   *
-   * <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
-   */
-  isEmptyStartOption?: boolean | string;
+	/**
+	 * This is used to determine whether the dropdown list is required or not.
+	 * This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label.
+	 * If no prop is set, it will default to false (optional).
+	 */
+	sRequired?: boolean;
+	/**
+	 * Whether or not the initial option displayed is empty.
+	 * If set to true, it will render the default “select” text.
+	 * If set to a string, it will render the string value.
+	 *
+	 * @example
+	 * <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>
+	 *
+	 * or
+	 *
+	 * <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
+	 */
+	isEmptyStartOption?: boolean | string;
 }

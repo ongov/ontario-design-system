@@ -15,7 +15,7 @@ export class OntarioFooter {
 	/**
 	 * Type of footer to be rendered
 	 */
-	@Prop() type: 'default' | 'partnership' | 'expandedTwoColumn' | 'expandedThreeColumn' = 'default';
+	@Prop() type: 'default' | 'expandedTwoColumn' | 'expandedThreeColumn' = 'default';
 
 	/**
 	 * Stores the required links for all footers
@@ -34,21 +34,29 @@ export class OntarioFooter {
 	 */
 	@Prop() expandedThreeColumnOptions?: ExpandedThreeColumnOptions | string;
 
-	/**
-	 * Stores the page's connection with Ontario for
-	 * the partnership footer
-	 */
-	@Prop() partnershipConnection?:
-		| 'Licensed by Government of Ontario'
-		| 'In partnership with Government of Ontario'
-		| 'Funded by Government of Ontario'
-		| 'Sponsored by Government of Ontario';
-
 	@State() private defaultState: DefaultOptions;
 
 	@State() private expandedTwoColumnState: ExpandedTwoColumnOptions;
 
 	@State() private expandedThreeColumnState: ExpandedThreeColumnOptions;
+
+	@Watch('defaultOptions')
+	private processDefaultOptions() {
+		this.parseOptions(this.defaultOptions);
+		this.verifyDefault();
+	}
+
+	@Watch('expandedTwoColumnOptions')
+	private processExpandedTwoColumnOptions() {
+		this.expandedTwoColumnOptions && this.parseOptions(this.expandedTwoColumnOptions);
+		this.verifyExpandedTwoColumn();
+	}
+
+	@Watch('expandedThreeColumnOptions')
+	private processExpandedThreeColumnOptions() {
+		this.expandedThreeColumnOptions && this.parseOptions(this.expandedThreeColumnOptions);
+		this.verifyExpandedThreeColumn();
+	}
 
 	private verifyDefault() {
 		if (this.defaultState && !this.defaultState.printerLink) {
@@ -56,14 +64,6 @@ export class OntarioFooter {
 		}
 		if (!this.defaultState || !this.defaultState.accessibilityLink || !this.defaultState.contactLink || !this.defaultState.privacyLink || !this.defaultState.printerLink) {
 			console.error('Error: defaultOptions not fully set, please review your values and ensure all required options are truthy.');
-		}
-	}
-
-	private verifyPartnership() {
-		if (this.type == 'partnership') {
-			if (!this.partnershipConnection) {
-				console.error('Error: A Partnership Connection has not been selected, please review your entry.');
-			}
 		}
 	}
 
@@ -109,60 +109,20 @@ export class OntarioFooter {
 		}
 	}
 
-	private parseDefaultOptions() {
-		const defaultOptions = this.defaultOptions;
-		if (defaultOptions) {
-			if (typeof defaultOptions === 'string') this.defaultState = JSON.parse(defaultOptions);
-			else this.defaultState = defaultOptions;
+	private parseOptions(optionType: any) {
+		const options = optionType;
+
+		if (options) {
+			const optionTypeIsString = typeof options === 'string';
+
+			if (options === this.defaultOptions) {
+				this.defaultState = optionTypeIsString ? JSON.parse(options) : options;
+			} else if (options === this.expandedTwoColumnOptions) {
+				this.expandedTwoColumnState = optionTypeIsString ? JSON.parse(options) : options;
+			} else {
+				this.expandedThreeColumnState = optionTypeIsString ? JSON.parse(options) : options;
+			}
 		}
-	}
-
-	private parseExpandedTwoColumnOptions() {
-		const expandedTwoColumnOptions = this.expandedTwoColumnOptions;
-		if (expandedTwoColumnOptions) {
-			if (typeof expandedTwoColumnOptions === 'string') {
-				this.expandedTwoColumnState = JSON.parse(expandedTwoColumnOptions);
-			} else this.expandedTwoColumnState = expandedTwoColumnOptions;
-		}
-	}
-
-	private parseExpandedThreeColumnOptions() {
-		const expandedThreeColumnOptions = this.expandedThreeColumnOptions;
-		if (expandedThreeColumnOptions) {
-			if (typeof expandedThreeColumnOptions === 'string') {
-				this.expandedThreeColumnState = JSON.parse(expandedThreeColumnOptions);
-			} else this.expandedThreeColumnState = expandedThreeColumnOptions;
-		}
-	}
-
-	@Watch('defaultOptions')
-	private processDefaultOptions() {
-		this.parseDefaultOptions();
-		this.verifyDefault();
-	}
-
-	@Watch('partnershipConnection')
-	private processPartnershipConnection() {
-		this.verifyPartnership();
-	}
-
-	@Watch('expandedTwoColumnOptions')
-	private processExpandedTwoColumnOptions() {
-		this.parseExpandedTwoColumnOptions();
-		this.verifyExpandedTwoColumn();
-	}
-
-	@Watch('expandedThreeColumnOptions')
-	private processExpandedThreeColumnOptions() {
-		this.parseExpandedThreeColumnOptions();
-		this.verifyExpandedThreeColumn();
-	}
-
-	componentWillLoad() {
-		this.processDefaultOptions();
-		this.processExpandedTwoColumnOptions();
-		this.processExpandedThreeColumnOptions();
-		this.processPartnershipConnection();
 	}
 
 	private getBackgroundImagePath() {
@@ -171,9 +131,18 @@ export class OntarioFooter {
 		return { '--imagePath': `url(${getAssetPath(`./assets/${backgroundImage}`)})` };
 	}
 
+	componentWillLoad() {
+		this.processDefaultOptions();
+		this.processExpandedTwoColumnOptions();
+		this.processExpandedThreeColumnOptions();
+	}
+
 	render() {
 		return (
-			<footer class={`ontario-footer ontario-footer--${this.type}`} style={this.getBackgroundImagePath()}>
+			<footer
+				class={`ontario-footer ` + (this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn' ? 'ontario-footer--expanded' : 'ontario-footer--default')}
+				style={this.getBackgroundImagePath()}
+			>
 				{(this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn') && (
 					<div class="ontario-footer__expanded-top-section">
 						<div class="ontario-row">
@@ -270,7 +239,7 @@ export class OntarioFooter {
 					</div>
 				)}
 				<div class={'ontario-row ' + (this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn' ? 'ontario-footer__expanded-bottom-section' : '')}>
-					<div class={'ontario-columns ontario-small-12 ' + (this.type == 'partnership' ? 'ontario-medium-7' : '')}>
+					<div class="ontario-columns ontario-small-12">
 						<ul class="ontario-footer__links-container ontario-footer__links-container--inline">
 							<li>
 								<a class="ontario-footer__link" href={this.defaultState?.accessibilityLink}>
@@ -300,14 +269,6 @@ export class OntarioFooter {
 							</a>
 						</div>
 					</div>
-					{this.type == 'partnership' && (
-						<div class="ontario-columns ontario-small-12 ontario-medium-5 ontario-footer__partnership-logo-container">
-							<a href="https://www.ontario.ca/page/government-ontario" class="ontario-footer__ontario-logo">
-								<img src={getAssetPath(`./assets/ontario-logo--partnership-footer.svg`)} />
-							</a>
-							<p class="ontario-margin-bottom-0-!">{this.partnershipConnection}</p>
-						</div>
-					)}
 				</div>
 			</footer>
 		);

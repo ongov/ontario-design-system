@@ -3,7 +3,8 @@
 @use '../1-variables/spacing.variables' as spacing;
 @use '../1-variables/global.variables' as global;
 @use '../1-variables/breakpoints.variables' as breakpoints;
-@use '../2-tools/placeholder/typography.placeholders' as typographyPlaceholders;
+@use '../1-variables/letter-spacing.variables' as letterSpacing;
+@use '../1-variables/line-heights.variables' as lineHeight;
 
 /*
 *  Labels
@@ -23,19 +24,19 @@
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		font-size: 1.125rem;
-		line-height: 1.56;
+		line-height: lineHeight.$ontario-line-height-8;
 	}
 }
 
 .ontario-label--large {
 	font-size: 1.75rem;
-	letter-spacing: 0.02rem;
-	line-height: 1.2;
+	letter-spacing: letterSpacing.$ontario-letter-spacing-xsmall;
+	line-height: lineHeight.$ontario-line-height-1;
 	max-width: 26.25em;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		font-size: 1.4375rem;
-		line-height: 1.39;
+		line-height: lineHeight.$ontario-line-height-5;
 	}
 }
 

@@ -14,6 +14,7 @@
 		"@types/react": "^17.0.37",
 		"@types/react-dom": "^17.0.11",
 		"@types/react-syntax-highlighter": "^13.5.2",
+		"caniuse-lite": "^1.0.30001415",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
 		"react-router-dom": "^6.2.1",
@@ -31,7 +32,9 @@
 		"eject": "react-scripts eject",
 		"clean": "rm -rf build",
 		"clean:full": "rm -rf node_modules && npm run clean",
-		"copy:assets": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/*\" public/assets"
+		"copy:images": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/images/**\" public/assets",
+		"copy:fonts": "copyfiles -E -u 6 \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/fonts/**/*\" public/assets/fonts",
+		"copy:assets": "npm run copy:images && npm run copy:fonts"
 	},
 	"homepage": "./",
 	"eslintConfig": {

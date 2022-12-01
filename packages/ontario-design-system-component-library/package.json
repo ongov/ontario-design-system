@@ -35,7 +35,8 @@
 		"clean:full": "rm -rf node_modules && npm run clean",
 		"format": "prettier --write .",
 		"generate:icons": "node src/components/ontario-icon/scripts/generate-icons.js",
-		"clean:icons": "rm -rf src/components/ontario-icon/ontario-icon-*.tsx"
+		"clean:icons": "rm -rf src/components/ontario-icon/ontario-icon-*.tsx",
+		"docs:assemble": "ts-node scripts/build-documentation-bundle.ts"
 	},
 	"dependencies": {
 		"@stencil/core": "2.13.0",
@@ -56,11 +57,14 @@
 		"jest-cli": "^26.6.3",
 		"jest-junit": "^13.0.0",
 		"jest-svg-transformer": "^1.0.0",
+		"jszip": "^3.10.1",
 		"prettier": "^2.5.1",
 		"puppeteer": "^10.0.0",
 		"stencil-inline-svg": "^1.1.0",
 		"svgson": "^5.2.1",
-		"typescript": "^4.5.5"
+		"ts-node": "^10.9.1",
+		"typescript": "^4.5.5",
+		"validate-color": "^2.2.1"
 	},
 	"authors": [
 		{

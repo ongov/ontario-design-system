@@ -45,12 +45,10 @@ describe('ontario-header', () => {
 					"name": "Application name" ,
 					"href": "/"
 				}'
-
 				language-Toggle-Options='{
 					"englishLink":"/en",
 					"frenchLink": "/fr"
 				}'
-
 				menu-Items='[{
 					"name": "Health",
 					"href": "/ontario-hint"
@@ -72,7 +70,7 @@ describe('ontario-header', () => {
 				}]'>
        <mock:shadow-root>
          <div>
-           <div class="ontario-application-header__container" id="ontario-application-header">
+           <div class="ontario-application-header-container" id="ontario-application-header">
              <div class="ontario-application-header-container">
                <section class="ontario-application-header">
                  <div class="ontario-row">
@@ -148,9 +146,9 @@ describe('ontario-header', () => {
                          </ul>
                        </div>
                        <div>
-                         <button aria-hidden="false" aria-label="close menu" class="ontario-application-navigation--closed ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" data-target="megaMenu" id="ontario-application-header-menu-toggler">
+                         <button aria-hidden="false" aria-label="close menu" class="ontario-application-navigation--closed ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-application-header-menu-toggler">
                            <div class="ontario-icon-container"></div>
-                           <span class="ontario-application-header-menu-span ontario-hide-for-small-only">
+                           <span>
                              Menu
                            </span>
                          </button>
@@ -273,7 +271,7 @@ describe('ontario-header', () => {
       >
       <mock:shadow-root>
         <div>
-          <div>
+          <div class="ontario-header__container">
             <header class="ontario-header" id="ontario-header">
               <div class="ontario-row">
                 <div class="ontario-columns ontario-header__logo-container ontario-hide-for-small-only ontario-large-3 ontario-medium-4 ontario-small-2">
@@ -300,7 +298,7 @@ describe('ontario-header', () => {
                   </button>
                 </form>
                 <div class="ontario-columns ontario-header__nav-right-container ontario-large-3 ontario-medium-8 ontario-small-10">
-                  <a class="ontario-header-button ontario-header-button--without-outline ontario-header__language-toggler" href="">
+                  <a class="ontario-header-button ontario-header-button--without-outline ontario-header__language-toggler" href="/fr">
                     <abbr class="ontario-show-for-small-only" title="Français">
                       FR
                     </abbr>
@@ -316,9 +314,9 @@ describe('ontario-header', () => {
                       </span>
                     </button>
                   </div>
-                  <button aria-hidden="false" aria-label="close menu" class="ontario-application-navigation--closed ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" data-target="megaMenu" id="ontario-application-header-menu-toggler">
+                  <button aria-hidden="false" aria-label="close menu" class="ontario-application-navigation--closed ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-application-header-menu-toggler">
                     <div class="ontario-icon-container"></div>
-                    <span class="ontario-application-header-menu-span ontario-hide-for-small-only">
+                    <span>
                       Menu
                     </span>
                   </button>

@@ -1,6 +1,4 @@
-import {
-	newE2EPage
-} from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
 
 describe('ontario-input', () => {
 	describe('render', () => {
@@ -9,11 +7,11 @@ describe('ontario-input', () => {
 			await page.setContent("<ontario-input name='ontario-input'></ontario-input>");
 			const component = await page.find('ontario-input');
 			const element = await page.find('ontario-input >>> input');
-			
+
 			expect(component).toHaveClass('hydrated');
 			expect(element).toHaveClass('ontario-input');
 			expect(element).toEqualAttributes({
-				'name': 'ontario-input'
+				name: 'ontario-input',
 			});
 		});
 	});
@@ -36,8 +34,7 @@ describe('ontario-input', () => {
 			expect(element).toEqualAttributes({
 				'name': 'ontario-input',
 				'type': 'text',
-				'aria-describedby': 'ontario-input-hint'
-
+				'aria-describedby': 'ontario-input-hint',
 			});
 		});
 
@@ -45,9 +42,9 @@ describe('ontario-input', () => {
 			component.setProperty('elementId', 'ontario-input-id');
 			await page.waitForChanges();
 			expect(element).toEqualAttributes({
-				'name': 'ontario-input',
-				'type': 'text',
-				'id': 'ontario-input-id'
+				name: 'ontario-input',
+				type: 'text',
+				id: 'ontario-input-id',
 			});
 		});
 
@@ -55,8 +52,8 @@ describe('ontario-input', () => {
 			component.setProperty('type', 'tel');
 			await page.waitForChanges();
 			expect(element).toEqualAttributes({
-				'name': 'ontario-input',
-				'type': 'tel',
+				name: 'ontario-input',
+				type: 'tel',
 			});
 		});
 
@@ -65,13 +62,6 @@ describe('ontario-input', () => {
 			await page.waitForChanges();
 			const value = component.getAttribute('value');
 			expect(value).toEqual('This is a test');
-		});
-
-		it('renders changes to the required attribute', async () => {
-			component.setAttribute('required', true);
-			await page.waitForChanges();
-			const required = component.getAttribute('required');
-			expect(required).toBeTruthy();
 		});
 	});
 

@@ -2,12 +2,12 @@ import { newSpecPage } from '@stencil/core/testing';
 import { OntarioFooter } from '../ontario-footer';
 
 describe('ontario-footer', () => {
-  it('renders', async () => {
-    const page = await newSpecPage({
-      components: [OntarioFooter],
-      html: `<ontario-footer></ontario-footer>`,
-    });
-    expect(page.root).toEqualHtml(`
+	it('renders', async () => {
+		const page = await newSpecPage({
+			components: [OntarioFooter],
+			html: `<ontario-footer></ontario-footer>`,
+		});
+		expect(page.root).toEqualHtml(`
     <ontario-footer>
     <mock:shadow-root>
       <footer class="ontario-footer ontario-footer--default" style="--imagePath: url(/assets/footer-default-supergraphic-logo.svg);">
@@ -44,11 +44,11 @@ describe('ontario-footer', () => {
     </mock:shadow-root>
     </ontario-footer>
     `);
-  });
-  it('renders default footer', async () => {
-    const page = await newSpecPage({
-      components: [OntarioFooter],
-      html: `
+	});
+	it('renders default footer', async () => {
+		const page = await newSpecPage({
+			components: [OntarioFooter],
+			html: `
       <ontario-footer
         type="default"
         default-options='{
@@ -57,10 +57,10 @@ describe('ontario-footer', () => {
           "contactLink": "3",
           "printerLink": "4"
         }'
-      ></ontario-footer>`
-    });
-    expect(page.root).toEqualHtml(
-      `<ontario-footer
+      ></ontario-footer>`,
+		});
+		expect(page.root).toEqualHtml(
+			`<ontario-footer
         type="default"
         default-options='{
           "accessibilityLink": "1",
@@ -102,84 +102,14 @@ describe('ontario-footer', () => {
           </div>
         </footer>
       </mock:shadow-root>
-    </ontario-footer>`
-    );
-  });
-  it('renders partnership footer', async () => {
-    const page = await newSpecPage({
-      components: [OntarioFooter],
-      html: `
-      <ontario-footer
-        type="partnership"
-        default-options='{
-          "accessibilityLink": "1",
-          "privacyLink": "2",
-          "contactLink": "3",
-          "printerLink": "4"
-        }'
-        partnership-Connection="Sponsored by Government of Ontario"
-      ></ontario-footer>`
-    });
-    expect(page.root).toEqualHtml(
-      `<ontario-footer
-        type="partnership"
-        default-options='{
-          "accessibilityLink": "1",
-          "privacyLink": "2",
-          "contactLink": "3",
-          "printerLink": "4"
-        }'
-        partnership-Connection="Sponsored by Government of Ontario"
-      >
-      <mock:shadow-root>
-        <footer class="ontario-footer ontario-footer--partnership" style="--imagePath: url(/assets/footer-default-supergraphic-logo.svg);">
-          <div class="ontario-row">
-            <div class="ontario-columns ontario-medium-7 ontario-small-12">
-              <ul class="ontario-footer__links-container ontario-footer__links-container--inline">
-                <li>
-                  <a class="ontario-footer__link" href="1">
-                    Accessibility
-                  </a>
-                </li>
-                <li>
-                  <a class="ontario-footer__link" href="2">
-                    Privacy
-                  </a>
-                </li>
-                <li>
-                  <a class="ontario-footer__link" href="3">
-                    Contact us
-                  </a>
-                </li>
-              </ul>
-              <div class="ontario-footer__copyright">
-                <a class="ontario-footer__link" href="4">
-                  © King's Printer for Ontario,
-                  <span class="ontario-nbsp">
-                    2012–22
-                  </span>
-                </a>
-              </div>
-            </div>
-            <div class="ontario-columns ontario-footer__partnership-logo-container ontario-medium-5 ontario-small-12">
-                <a class="ontario-footer__ontario-logo" href="https://www.ontario.ca/page/government-ontario">
-                  <img src="/assets/ontario-logo--partnership-footer.svg">
-                </a>
-                <p class="ontario-margin-bottom-0-!">
-                  Sponsored by Government of Ontario
-                </p>
-              </div>
-          </div>
-        </footer>
-      </mock:shadow-root>
-    </ontario-footer>`
-    );
-  });
+    </ontario-footer>`,
+		);
+	});
 
-  it('renders expanded two column footer', async () => {
-    const page = await newSpecPage({
-      components: [OntarioFooter],
-      html: `
+	it('renders expanded two column footer', async () => {
+		const page = await newSpecPage({
+			components: [OntarioFooter],
+			html: `
       <ontario-footer
         type="expandedTwoColumn"
         default-options='{
@@ -199,10 +129,10 @@ describe('ontario-footer', () => {
             "contactButtonText": "9"
           }
         }'
-      ></ontario-footer>`
-    });
-    expect(page.root).toEqualHtml(
-      `<ontario-footer
+      ></ontario-footer>`,
+		});
+		expect(page.root).toEqualHtml(
+			`<ontario-footer
         type="expandedTwoColumn"
         default-options='{
           "accessibilityLink": "1",
@@ -223,7 +153,7 @@ describe('ontario-footer', () => {
         }'
       >
         <mock:shadow-root>
-          <footer class="ontario-footer ontario-footer--expandedTwoColumn" style="--imagePath: url(/assets/footer-expanded-supergraphic-logo.svg);">
+          <footer class="ontario-footer ontario-footer--expanded" style="--imagePath: url(/assets/footer-expanded-supergraphic-logo.svg);">
             <div class="ontario-footer__expanded-top-section">
               <div class="ontario-row">
                 <div class="ontario-columns ontario-medium-6 ontario-small-12">
@@ -279,14 +209,14 @@ describe('ontario-footer', () => {
             </div>
           </footer>
         </mock:shadow-root>
-      </ontario-footer>`
-    );
-  });
+      </ontario-footer>`,
+		);
+	});
 
-  it('renders expanded three column footer', async () => {
-    const page = await newSpecPage({
-      components: [OntarioFooter],
-      html: `
+	it('renders expanded three column footer', async () => {
+		const page = await newSpecPage({
+			components: [OntarioFooter],
+			html: `
       <ontario-footer
         type="expandedThreeColumn"
         default-options='{
@@ -326,10 +256,10 @@ describe('ontario-footer', () => {
             }
           }
         }'
-      ></ontario-footer>`
-    });
-    expect(page.root).toEqualHtml(
-      `<ontario-footer
+      ></ontario-footer>`,
+		});
+		expect(page.root).toEqualHtml(
+			`<ontario-footer
         type="expandedThreeColumn"
         default-options='{
           "accessibilityLink": "1",
@@ -370,7 +300,7 @@ describe('ontario-footer', () => {
         }'
       >
         <mock:shadow-root>
-          <footer class="ontario-footer ontario-footer--expandedThreeColumn" style="--imagePath: url(/assets/footer-expanded-supergraphic-logo.svg);">
+          <footer class="ontario-footer ontario-footer--expanded" style="--imagePath: url(/assets/footer-expanded-supergraphic-logo.svg);">
             <div class="ontario-footer__expanded-top-section">
               <div class="ontario-row">
                 <div class="ontario-columns ontario-expanded-footer__one-third-block ontario-large-4 ontario-medium-12 ontario-small-12">
@@ -460,7 +390,7 @@ describe('ontario-footer', () => {
             </div>
           </footer>
         </mock:shadow-root>
-    </ontario-footer>`
-    );
-  });
+    </ontario-footer>`,
+		);
+	});
 });

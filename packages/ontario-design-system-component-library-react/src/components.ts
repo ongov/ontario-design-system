@@ -9,6 +9,7 @@ import { defineCustomElements } from '@ontario-digital-service/ontario-design-sy
 
 defineCustomElements();
 export const MyComponent = /*@__PURE__*/createReactComponent<JSX.MyComponent, HTMLMyComponentElement>('my-component');
+export const OntarioBlockquote = /*@__PURE__*/createReactComponent<JSX.OntarioBlockquote, HTMLOntarioBlockquoteElement>('ontario-blockquote');
 export const OntarioButton = /*@__PURE__*/createReactComponent<JSX.OntarioButton, HTMLOntarioButtonElement>('ontario-button');
 export const OntarioCheckboxes = /*@__PURE__*/createReactComponent<JSX.OntarioCheckboxes, HTMLOntarioCheckboxesElement>('ontario-checkboxes');
 export const OntarioDropdownList = /*@__PURE__*/createReactComponent<JSX.OntarioDropdownList, HTMLOntarioDropdownListElement>('ontario-dropdown-list');

@@ -4,11 +4,32 @@ Use page alerts to notify users of important information or changes on a page. T
 
 ## Usage guidance
 
-Please refer to the [Ontario Design System](https://designsystem.ontario.ca) for current documentation guidance.
+Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/page-alerts.html) for current documentation guidance.
 
 ## Configuration
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the Page Alert component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
+
+## Examples
+
+Example of a page alert with no type passed. This will default to an "informational" page alert type.
+
+```html
+<ontario-page-alert heading="Licence plates">
+	ServiceOntario centres may issue either a blue licence plate or a white embossed ‘Yours to Discover’ licence plate depending on availability.
+	<a href="#">Learn more about replacing a licence plate</a>.
+</ontario-page-alert>
+```
+
+Example of success page alert type, where the content is passed as a string rather than as HTML.
+
+```html
+<ontario-page-alert
+	type="success"
+	heading="Your payment was successful and your order is now complete."
+	content="Please look out for an email confirmation with your receipt and order number. Your licence plate sticker should arrive in 2-4 weeks."
+></ontario-page-alert>
+```
 
 <!-- Auto Generated Below -->
 

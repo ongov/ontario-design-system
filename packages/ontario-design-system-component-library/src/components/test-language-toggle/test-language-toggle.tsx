@@ -6,6 +6,8 @@ import { Component, Prop, Event, EventEmitter, h } from '@stencil/core';
 	shadow: true,
 })
 export class TestLanguageToggle {
+	@Prop({ mutable: true }) language: string;
+
 	@Event() setAppLanguage: EventEmitter<string>;
 	setAppLanguageHandler() {
 		let lang: string;
@@ -19,6 +21,8 @@ export class TestLanguageToggle {
 
 		this.language = lang;
 		this.setAppLanguage.emit(lang);
+
+		this.updateHTMLLang(lang);
 	}
 
 	@Event() headerLanguageToggled: EventEmitter<string>;
@@ -26,8 +30,23 @@ export class TestLanguageToggle {
 		const toggledLang = language === 'en' ? 'fr' : 'en';
 		this.language = toggledLang;
 		this.headerLanguageToggled.emit(toggledLang);
+
+		this.updateHTMLLang(toggledLang);
 	}
-	@Prop({ mutable: true }) language: string;
+
+	updateHTMLLang = (lang: string) => {
+		const htmlElement = document.firstElementChild;
+
+		if (htmlElement?.tagName.toLowerCase() === 'html') {
+			if (lang) {
+				htmlElement.setAttribute('lang', lang);
+			} else {
+				htmlElement.setAttribute('lang', 'en');
+			}
+		}
+
+		return;
+	};
 
 	connectedCallback() {
 		this.setAppLanguageHandler();

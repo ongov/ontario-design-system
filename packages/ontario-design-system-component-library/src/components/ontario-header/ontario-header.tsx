@@ -36,23 +36,19 @@ export class OntarioHeader {
 	@Prop() titleHeader: headerTitle | string;
 
 	/**
-	 * The title is reassigned to headerTitle for parsing
-	 */
-	@State() titleHeaderState: headerTitle;
-
-	@Watch('titleHeader')
-	private parseTitleHeader() {
-		const titleHeader = this.titleHeader;
-		if (titleHeader) {
-			if (typeof titleHeader === 'string') this.titleHeaderState = JSON.parse(titleHeader);
-			else this.titleHeaderState = titleHeader;
-		}
-	}
-
-	/**
 	 * The items that will go inside the menu
 	 */
 	@Prop() menuItems: headerTitle[] | string;
+
+	/**
+	 * The link that contains the french page
+	 */
+	@Prop() languageToggleOptions: languageToggleOptions | string;
+
+	/**
+	 * The title is reassigned to titleHeaderState for parsing
+	 */
+	@State() titleHeaderState: headerTitle;
 
 	/**
 	 * The menuItems is reassigned to itemState for parsing
@@ -62,35 +58,23 @@ export class OntarioHeader {
 	 *			menu-Items='[{
 	 *				"name": "Hint",
 	 *				"href": "/ontario-hint"
+	 *				"linkIsActive": "false"
 	 *			},{
 	 *				"name": "Hint",
 	 *				"href": "/ontario-hint"
+	 *				"linkIsActive": "false"
 	 *			},{
 	 *				"name": "Hint",
 	 *				"href": "/ontario-hint"
+	 *				"linkIsActive": "false"
 	 *			},{
 	 *				"name": "Hint",
 	 *				"href": "/ontario-hint"
+	 *				"linkIsActive": "false"
 	 *			}]'>
 	 *	</ontario-header>
 	 */
 	@State() private itemState: headerTitle[];
-
-	@Watch('menuItems')
-	parseMenuItems() {
-		if (typeof this.menuItems !== 'undefined') {
-			if (!Array.isArray(this.menuItems)) {
-				this.itemState = JSON.parse(this.menuItems);
-			} else {
-				this.itemState = this.menuItems;
-			}
-		}
-	}
-
-	/**
-	 * The link that contains the french page
-	 */
-	@Prop() languageToggleOptions: languageToggleOptions | string;
 
 	/**
 	 * The languageToggleOptions is reassigned to languageState for parsing
@@ -105,15 +89,6 @@ export class OntarioHeader {
 	 */
 	@State() languageState: languageToggleOptions;
 
-	@Watch('languageToggleOptions')
-	private parseLanguage() {
-		const languageToggleOptions = this.languageToggleOptions;
-		if (languageToggleOptions) {
-			if (typeof languageToggleOptions === 'string') this.languageState = JSON.parse(languageToggleOptions);
-			else this.languageState = languageToggleOptions;
-		}
-	}
-
 	/**
 	 * Toggler for the menu and the search button
 	 */
@@ -121,12 +96,58 @@ export class OntarioHeader {
 	@State() searchToggle?: boolean = false;
 
 	/**
-	 * Assigning values to HTMLInputElement to use them as ref
+	 * Assigning values to elements to use them as ref
 	 */
-	header!: HTMLInputElement;
-	menuButton!: HTMLInputElement;
+	header!: HTMLElement;
+	menuButton!: HTMLElement;
 	searchBar!: HTMLInputElement;
 	searchButton!: HTMLInputElement;
+
+	@Watch('titleHeader')
+	private parseTitleHeader() {
+		const titleHeader = this.titleHeader;
+		if (titleHeader) {
+			if (typeof titleHeader === 'string') this.titleHeaderState = JSON.parse(titleHeader);
+			else this.titleHeaderState = titleHeader;
+		}
+	}
+
+	/**
+	 * Logic to close the menu when anything outside the menu is clicked
+	 */
+	@Listen('click', { capture: true, target: 'window' })
+	handleClick(event: any) {
+		// if the button is clicked, return
+		if (event.composedPath().includes(this.menuButton)) {
+			return;
+		}
+
+		// If the click was outside the current component, do the following
+		if (this.menuToggle) this.menuToggle = !this.menuToggle;
+	}
+
+	@Watch('menuItems')
+	parseMenuItems() {
+		if (typeof this.menuItems !== 'undefined') {
+			if (!Array.isArray(this.menuItems)) {
+				this.itemState = JSON.parse(this.menuItems);
+			} else {
+				this.itemState = this.menuItems;
+			}
+		}
+	}
+
+	@Watch('languageToggleOptions')
+	private parseLanguage() {
+		const languageToggleOptions = this.languageToggleOptions;
+		if (languageToggleOptions) {
+			if (typeof languageToggleOptions === 'string') {
+				this.languageState = JSON.parse(languageToggleOptions);
+			} else {
+				this.languageState = languageToggleOptions;
+			}
+		}
+	}
 
 	/**
 	 * Logic to handle the menu toggling
@@ -142,26 +163,6 @@ export class OntarioHeader {
 	handleSearchToggle = () => {
 		this.searchToggle = !this.searchToggle;
 	};
-
-	componentWillLoad() {
-		this.parseTitleHeader();
-		this.parseMenuItems();
-		this.parseLanguage();
-	}
-
-	/**
-	 * Handles the focus when menu/toggle button is clicked.
-	 * When search button is clicked, the search bar is in focus,
-	 * when the closed button is clicked, the search button is back into focus.
-	 * When the menu is closed, the menu button should be out of focus.
-	 */
-	componentDidUpdate() {
-		if (this.type == 'ontario') {
-			if (this.searchToggle === true) this.searchBar.focus();
-			if (this.searchToggle === false) this.searchButton.focus();
-			if (this.menuToggle === false) this.menuButton.blur();
-		}
-	}
 
 	/**
 	 * event.preventDefault(): https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
@@ -180,45 +181,22 @@ export class OntarioHeader {
 	};
 
 	/**
-	 * Logic to close the menu when anything outside the menu is clicked
-	 */
-	@Listen('click', { capture: true, target: 'window' })
-	handleClick(event: any) {
-		const path = event.path || (event.composedPath && event.composedPath());
-		const overlay = path[0].className;
-		const isOverlay = typeof overlay === 'string' ? overlay.includes('ontario-overlay') : false;
-		if (this.el.contains(event.target)) {
-			/**
-			 * If the click was on the overlay, close the menu.
-			 * This code has to be inside this if statement because the overlay is part of the header.
-			 */
-			if (isOverlay && this.menuToggle) {
-				this.handleMenuToggle();
-			}
-			// If click was inside header, stop
-			return;
-		}
-
-		// If the click was outside the current component, do the following
-		if (this.menuToggle) this.menuToggle = !this.menuToggle;
-	}
-
-	/**
 	 * This function generates the menu items in a <li>, accordingly, to the given parameters.
 	 *
 	 * href and name are necessary, but rest are not.
 	 *
 	 * @param href the href of the menu item
 	 * @param name the name of the menu item
-	 * @param liClass if there is a class that is related to the <li> portion of the menu item, put it here
+	 * @param linkIsActive when set to true, this will add the classes necessary to style the link in a way that indicates to the user what the active page/link is
 	 * @param liClass if there is a class that is related to the <a> portion of the menu item, put it here
+	 * @param onClick for any custon onClick event a user might want to add to their menu links
 	 * @param onBlur when set to true, it will call the function trapMenuFocus(), otherwise nothing is done (used in lastLink)
 	 * @param tabIndex when set to true, it will set the tabindex to be -1, meaning it can't be in focus (used in items when the menu is closed)
 	 */
-	private generateMenuItem(href: string, name: string, liClass?: string, aClass?: string, onBlur?: boolean, tabIndex?: boolean) {
+	private generateMenuItem(href: string, name: string, linkIsActive: any, liClass?: string, onClick?: any, onBlur?: boolean, tabIndex?: boolean) {
 		return (
 			<li class={liClass}>
-				<a class={aClass} href={href} onBlur={onBlur ? this.trapMenuFocus : undefined} tabindex={tabIndex ? -1 : undefined}>
+				<a class={linkIsActive && `ontario-link--active`} href={href} onClick={onClick} onBlur={onBlur ? this.trapMenuFocus : undefined} tabindex={tabIndex ? -1 : undefined}>
 					{name}
 				</a>
 			</li>
@@ -235,13 +213,12 @@ export class OntarioHeader {
 				}
 				id="ontario-application-header-menu-toggler"
 				aria-label={this.menuToggle ? 'open menu' : 'close menu'}
-				data-target="megaMenu"
 				onClick={this.handleMenuToggle}
 				aria-hidden={`${this.menuToggle}`}
 				ref={el => (this.menuButton = el as HTMLInputElement)}
 			>
 				<div class="ontario-icon-container" innerHTML={this.menuToggle ? OntarioIconClose : OntarioIconMenu} />
-				<span class="ontario-application-header-menu-span ontario-hide-for-small-only">Menu</span>
+				<span>Menu</span>
 			</button>
 		);
 	}
@@ -289,11 +266,31 @@ export class OntarioHeader {
 		}
 	}
 
+	componentWillLoad() {
+		this.parseTitleHeader();
+		this.parseMenuItems();
+		this.parseLanguage();
+	}
+
+	/**
+	 * Handles the focus when menu/toggle button is clicked.
+	 * When search button is clicked, the search bar is in focus,
+	 * when the closed button is clicked, the search button is back into focus.
+	 * When the menu is closed, the menu button should be out of focus.
+	 */
+	componentDidUpdate() {
+		if (this.type == 'ontario') {
+			if (this.searchToggle === true) this.searchBar.focus();
+			if (this.searchToggle === false) this.searchButton.focus();
+			if (this.menuToggle === false) this.menuButton.blur();
+		}
+	}
+
 	render() {
 		if (this.type == 'ontario') {
 			return (
 				<div>
-					<div ref={el => (this.header = el as HTMLInputElement)}>
+					<div class="ontario-header__container" ref={el => (this.header = el as HTMLInputElement)}>
 						<header class={this.searchToggle ? 'ontario-header ontario-header--search-open' : 'ontario-header'} id="ontario-header">
 							<div class="ontario-row">
 								<div class="ontario-hide-for-small-only ontario-header__logo-container ontario-columns ontario-small-2 ontario-medium-4 ontario-large-3 ">
@@ -337,7 +334,7 @@ export class OntarioHeader {
 									</button>
 								</form>
 								<div class="ontario-header__nav-right-container ontario-columns ontario-small-10 ontario-medium-8 ontario-large-3">
-									<a href="" class="ontario-header__language-toggler ontario-header-button ontario-header-button--without-outline">
+									<a href={this.languageState?.frenchLink} class="ontario-header__language-toggler ontario-header-button ontario-header-button--without-outline">
 										<abbr title="Français" class="ontario-show-for-small-only">
 											FR
 										</abbr>
@@ -381,7 +378,9 @@ export class OntarioHeader {
 										*/}
 										{this.itemState?.map((item, index) => {
 											const lastLink = index + 1 === this.itemState.length;
-											return lastLink ? this.generateMenuItem(item.href, item.name, '', '', true) : this.generateMenuItem(item.href, item.name, '', '');
+											return lastLink
+												? this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler, true)
+												: this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler);
 										})}
 									</ul>
 								</div>
@@ -395,7 +394,7 @@ export class OntarioHeader {
 											This is not really necessary, but it's good practice.
 											https://www.maxability.co.in/2016/06/13/tabindex-for-accessibility-good-bad-and-ugly/
 										*/}
-										{this.itemState?.map(item => this.generateMenuItem(item.href, item.name, '', '', false, true))}
+										{this.itemState?.map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler, false, true))}
 									</ul>
 								</div>
 							</nav>
@@ -407,7 +406,7 @@ export class OntarioHeader {
 		} else {
 			return (
 				<div>
-					<div class="ontario-application-header__container" id="ontario-application-header" ref={el => (this.header = el as HTMLInputElement)}>
+					<div class="ontario-application-header-container" id="ontario-application-header" ref={el => (this.header = el as HTMLInputElement)}>
 						<div class="ontario-application-header-container">
 							<section class="ontario-application-header">
 								<div class="ontario-row">
@@ -440,7 +439,7 @@ export class OntarioHeader {
 													{/*
 														First 5 items in the itemState are shown in the header itself.
 													*/}
-													{this.itemState?.slice(0, 5).map(item => this.generateMenuItem(item.href, item.name, '', ''))}
+													{this.itemState?.slice(0, 5).map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler))}
 												</ul>
 											</div>
 											<div class="ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large">
@@ -448,7 +447,7 @@ export class OntarioHeader {
 													{/*
 														First 2 items in the itemState are shown in the header itself (tablet).
 													*/}
-													{this.itemState?.slice(0, 2).map(item => this.generateMenuItem(item.href, item.name, '', ''))}
+													{this.itemState?.slice(0, 2).map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler))}
 												</ul>
 											</div>
 											{this.itemState !== undefined && this.renderMenuButton(this.itemState.length)}
@@ -468,20 +467,22 @@ export class OntarioHeader {
 											{this.itemState?.slice(0, 2).map((item, index) => {
 												const lastLink = index + 1 === this.itemState.length - 0;
 												return lastLink
-													? this.generateMenuItem(item.href, item.name, 'ontario-show-for-small-only', '', true)
-													: this.generateMenuItem(item.href, item.name, 'ontario-show-for-small-only', '');
+													? this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-show-for-small-only', item.onClickHandler, true)
+													: this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-show-for-small-only', item.onClickHandler);
 											})}
 
 											{this.itemState?.slice(2, 5).map((item, index) => {
 												const lastLink = index + 1 === this.itemState.length - 2;
 												return lastLink
-													? this.generateMenuItem(item.href, item.name, 'ontario-hide-for-large', '', true)
-													: this.generateMenuItem(item.href, item.name, 'ontario-hide-for-large', '');
+													? this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-hide-for-large', item.onClickHandler, true)
+													: this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-hide-for-large', item.onClickHandler);
 											})}
 
 											{this.itemState?.slice(5).map((item, index) => {
 												const lastLink = index + 1 === this.itemState.length - 5;
-												return lastLink ? this.generateMenuItem(item.href, item.name, '', '', true) : this.generateMenuItem(item.href, item.name, '', '');
+												return lastLink
+													? this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler, true)
+													: this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler);
 											})}
 										</ul>
 									</div>
@@ -496,11 +497,15 @@ export class OntarioHeader {
 												This is not really necessary, but it's good practice.
 												https://www.maxability.co.in/2016/06/13/tabindex-for-accessibility-good-bad-and-ugly/
 											*/}
-											{this.itemState?.slice(0, 2).map(item => this.generateMenuItem(item.href, item.name, 'ontario-show-for-small-only', '', false, true))}
+											{this.itemState
+												?.slice(0, 2)
+												.map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-show-for-small-only', item.onClickHandler, false, true))}
 
-											{this.itemState?.slice(2, 5).map(item => this.generateMenuItem(item.href, item.name, 'ontario-hide-for-large', '', false, true))}
+											{this.itemState
+												?.slice(2, 5)
+												.map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-hide-for-large', item.onClickHandler, false, true))}
 
-											{this.itemState?.slice(5).map(item => this.generateMenuItem(item.href, item.name, '', '', false, true))}
+											{this.itemState?.slice(5).map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler, false, true))}
 										</ul>
 									</div>
 								</nav>

@@ -23,7 +23,7 @@ export interface RadioButtons extends Base {
 	 *   caption='{
 	 *     "captionText": "Address",
 	 *     "captionType": "heading",
-	 *     "isRequired": true}'
+	 *   }'
 	 *   options='[{
 	 *     "value": "radio-option-1",
 	 *     "elementId": "radio-1",
@@ -37,10 +37,18 @@ export interface RadioButtons extends Base {
 	 *    "hint": "Hint expander",
 	 *    "content": "This is the content, yup this is the content"
 	 *   }'
+	 *   required="true"
 	 * >
 	 * </ontario-radio-buttons>
 	 */
 	hintExpander?: HintExpander | string;
+
+	/**
+	 * This is used to determine whether the radio button is required or not.
+	 * This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label.
+	 * If no prop is set, it will default to false (optional).
+	 */
+	required?: boolean;
 
 	/**
 	 * Each property will be passed in through an object in the options array.
@@ -54,7 +62,7 @@ export interface RadioButtons extends Base {
 	 *   caption='{
 	 *     "captionText": "Address",
 	 *     "captionType": "heading",
-	 *     "isRequired": true}'
+	 *   }'
 	 *   hint-text="This is the hint text"
 	 *   options='[
 	 *     {
@@ -72,6 +80,7 @@ export interface RadioButtons extends Base {
 	 *        }
 	 *      }
 	 *   ]'
+	 *   required="true"
 	 * >
 	 * </ontario-radio-buttons>
 	 */

@@ -24,14 +24,7 @@ export default function TextAreaExample() {
 						<li>requests for more detail</li>
 					</ul>
 					<div className="preview-container">
-						<OntarioTextarea
-							caption="Text area caption"
-							describedBy="described by"
-							elementId="id"
-							name="name"
-							required
-							value="this is the content"
-						/>
+						<OntarioTextarea caption="Text area caption" describedBy="described by" elementId="id" name="name" required value="this is the content" />
 
 						<p>With the following markup:</p>
 
