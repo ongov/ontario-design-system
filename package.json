@@ -22,5 +22,5 @@
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "semantic-release": "semantic-release"
   },
-  "version": "2.1.0"
+  "version": "2.1.1"
 }
