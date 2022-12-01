@@ -1,3 +1,17 @@
+# 2.0.0-beta.7 (2022-12-01)
+
+
+### Bug Fixes
+
+* **docs:** update readme.md files 081f665
+
+
+### Features
+
+* **@ontario-digital-service/ontario-design-system-component-library:** Add component documentation release build script 4e17c03
+* **component-docs:** update build script to be more robust 765ea33
+* **lerna:** add lerna script to package.json to build docs 1224034
+
 # 2.0.0-beta.6 (2022-10-14)
 
 
