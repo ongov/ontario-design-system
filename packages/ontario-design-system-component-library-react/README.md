@@ -1,16 +1,21 @@
-# stencil-ds-react-template
+# Ontario Design System Component Library - React
 
-This is an example repo of building plugins.
+Follow these steps to import the Component Library - React into a React project:
 
-## Step 1.
+1. Install the NPM package.
 
-- Update the `package.json` to have the correct package name for this repo.
-- Replace `component-library` under `dependencies` with your core stencil package name.
+   ```bash
+   npm install --save @ontario-digital-service/ontario-design-system-component-library-react
+   ```
 
-## Step 2.
+1. Import the desired components from the component library.
 
-- Build your core stencil package.
+   ```tsx
+   import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react';
+   ```
 
-## Step 3.
+1. Components can then be used as regular React components.
 
-- Run build on this package.
+   ```tsx
+   <OntarioButton type="primary">Click me!</OntarioButton>
+   ```
