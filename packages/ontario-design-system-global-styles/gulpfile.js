@@ -17,6 +17,7 @@ const fonts = ['./src/fonts/**'];
  *   callback:function,
  *   [debug]:boolean
  * }} opts Configuration options
+ * 
  */
 const processSass = opts => {
 	const sassOptions = {
