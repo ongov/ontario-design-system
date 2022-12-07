@@ -1,3 +1,12 @@
+# 2.2.0-alpha.1 (2022-12-07)
+
+
+### Features
+
+* **@ontario-digital-service/ontario-design-system-global-styles:** created alpha release e7e2a42
+* **@ontario-digital-service/ontario-design-system-global-styles:** mark new alpha release 6f04d22
+* **@ontario-digital-service/ontario-design-system-global-styles:** updating namespaces for new release 6e08c7a
+
 ## 2.1.1 (2022-12-01)
 
 ### Bug Fixes
