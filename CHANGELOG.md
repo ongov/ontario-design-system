@@ -1,3 +1,48 @@
+# 2.0.0-alpha.3 (2022-11-08)
+
+
+### Features
+
+* **@ontario-digital-service/ontario-design-system-global-styles:** mark new alpha release 6f04d22
+
+# 2.0.0-alpha.2 (2022-11-04)
+
+
+### Features
+
+* **@ontario-digital-service/ontario-design-system-global-styles:** updating namespaces for new release 6e08c7a
+
+# 2.0.0-alpha.1 (2022-11-01)
+
+
+### Bug Fixes
+
+* **buttons:** add missing global namespace to SASS vars 996b2e8
+* **buttons:** remove instances of CSS calc from styles 5972717
+* **design-tokens:** update reference to design token variables bd233ac
+* **global-styles:** add missing namespaces to our SASS functions 76b78ca
+* **react-poc:** change dropdown label to be caption 6779b76
+* **react-poc:** update Home.scss to use @use 5cad12a
+* **release:** add react comp lib `src/` to package cca6034
+* **release:** update files propery in package.json files a3adab2
+* **release:** update to new beta cd707f2
+
+
+* **@ontario-digital-service/ontario-design-system-component-library:** feat{legend}!: incorporate translation into legend 721aab5
+
+
+### Features
+
+* **@ontario-digital-service/ontario-design-system-component-library-react, @ontario-digital-service/ontario-design-system-component-library:** added Page Alert component 870d2d5
+* **@ontario-digital-service/ontario-design-system-global-styles:** created alpha release e7e2a42
+* **input-caption:** Add support for string only captions 32cb178
+
+
+### BREAKING CHANGES
+
+* **@ontario-digital-service/ontario-design-system-component-library:** The `input-caption` class constructor now requires
+`translations`, `langauge` to work.
+
 # 2.0.0-beta.5 (2022-08-26)
 
 
