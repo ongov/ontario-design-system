@@ -4,8 +4,7 @@ import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.s
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
 import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
 import OntarioIconSearchWhite from '../ontario-icon/assets/ontario-icon-search-white.svg';
-import { headerTitle } from './headerTitle.interface';
-import { languageToggleOptions } from './languageToggleOptions.interface';
+import { menuItems, applicationHeaderInfo, languageToggleOptions } from './ontario-header.interface';
 
 /**
  * Ontario Header component
@@ -31,14 +30,23 @@ export class OntarioHeader {
 	@Prop() type?: 'application' | 'ontario' = 'application';
 
 	/**
-	 * The title for the header
+	 * Information pertaining to the application. This is only necessary for the 'application' header type. This includes both the application name and URL for the appllication homepage.
+	 *
+	 * @example
+	 * 	<ontario-header
+	 *		type="application"
+	 * .  application-header-info='{
+	 * 			"name": "Application name",
+	 * 			"href": "/application-homepage"
+	 *    }'
+	 *	</ontario-header>
 	 */
-	@Prop() titleHeader: headerTitle | string;
+	@Prop() applicationHeaderInfo: applicationHeaderInfo | string;
 
 	/**
 	 * The items that will go inside the menu
 	 */
-	@Prop() menuItems: headerTitle[] | string;
+	@Prop() menuItems: menuItems[] | string;
 
 	/**
 	 * The link that contains the french page
@@ -46,9 +54,9 @@ export class OntarioHeader {
 	@Prop() languageToggleOptions: languageToggleOptions | string;
 
 	/**
-	 * The title is reassigned to titleHeaderState for parsing
+	 * The application header information is reassigned to applicationHeaderInfoState for parsing
 	 */
-	@State() titleHeaderState: headerTitle;
+	@State() applicationHeaderInfoState: applicationHeaderInfo;
 
 	/**
 	 * The menuItems is reassigned to itemState for parsing
@@ -74,14 +82,14 @@ export class OntarioHeader {
 	 *			}]'>
 	 *	</ontario-header>
 	 */
-	@State() private itemState: headerTitle[];
+	@State() private itemState: menuItems[];
 
 	/**
 	 * The languageToggleOptions is reassigned to languageState for parsing
 	 *
 	 * @example
 	 * 	<ontario-header
-	 *		language-Toggle-Options='{
+	 *		language-toggle-options='{
 	 *			"englishLink":"/en",
 	 *			"frenchLink": "/fr"
 	 *		}'
@@ -103,12 +111,12 @@ export class OntarioHeader {
 	searchBar!: HTMLInputElement;
 	searchButton!: HTMLInputElement;
 
-	@Watch('titleHeader')
-	private parseTitleHeader() {
-		const titleHeader = this.titleHeader;
-		if (titleHeader) {
-			if (typeof titleHeader === 'string') this.titleHeaderState = JSON.parse(titleHeader);
-			else this.titleHeaderState = titleHeader;
+	@Watch('applicationHeaderInfo')
+	private parseapplicationHeaderInfo() {
+		const applicationHeaderInfo = this.applicationHeaderInfo;
+		if (applicationHeaderInfo) {
+			if (typeof applicationHeaderInfo === 'string') this.applicationHeaderInfoState = JSON.parse(applicationHeaderInfo);
+			else this.applicationHeaderInfoState = applicationHeaderInfo;
 		}
 	}
 
@@ -267,7 +275,7 @@ export class OntarioHeader {
 	}
 
 	componentWillLoad() {
-		this.parseTitleHeader();
+		this.parseapplicationHeaderInfo();
 		this.parseMenuItems();
 		this.parseLanguage();
 	}
@@ -431,7 +439,7 @@ export class OntarioHeader {
 								<div class="ontario-row">
 									<div class="ontario-columns ontario-small-12 ontario-application-subheader__container">
 										<p class="ontario-application-subheader__heading">
-											<a href={this.titleHeaderState?.href}>{this.titleHeaderState?.name}</a>
+											<a href={this.applicationHeaderInfoState?.href}>{this.applicationHeaderInfoState?.name}</a>
 										</p>
 										<div class="ontario-application-subheader__menu-container">
 											<div class="ontario-show-for-large">

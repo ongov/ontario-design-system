@@ -139,7 +139,7 @@ const Layout = ({ children }: any) => {
 				<div className="header">
 					<OntarioHeader
 						type="application"
-						titleHeader={{
+						applicationHeaderInfo={{
 							name: 'Design System React Proof of Concept',
 							href: '/',
 						}}

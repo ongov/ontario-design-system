@@ -4,16 +4,16 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function HeaderOntarioExample() {
-	const ontarioHeaderCodeExample = `import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioHeader type="ontario" title-header='{
-    "name": "Application name" ,
-    "href": "/"
-  }' language-Toggle-Options='{
+	const ontarioHeaderCodeExample = `import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioHeader type="ontario"
+	language-toggle-options='{
     "englishLink":"/en",
     "frenchLink": "/fr"
-  }'  menu-Items='[{
+  }'
+	menu-items='[{
     "name": "Health",
     "href": "#"
-  },{
+  },
+	{
     "name": "Financial Health",
     "href": "#"
   }]'>
@@ -26,15 +26,11 @@ export default function HeaderOntarioExample() {
 					<h4>Ontario.ca Header</h4>
 					<OntarioHeader
 						type="ontario"
-						title-header='{
-                "name": "Application name" ,
-                "href": "/"
-              }'
-						language-Toggle-Options='{
+						language-toggle-options='{
                 "englishLink":"#",
                 "frenchLink": "#"
               }'
-						menu-Items='[{
+						menu-items='[{
                 "name": "Health",
                 "href": "#"
               },{

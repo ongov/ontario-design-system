@@ -13,8 +13,7 @@ import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-opti
 import { DefaultOptions } from "./components/ontario-footer/footer-default-option-interface";
 import { ExpandedTwoColumnOptions } from "./components/ontario-footer/footer-expanded-two-column-option-interface";
 import { ExpandedThreeColumnOptions } from "./components/ontario-footer/footer-expanded-three-column-option-interface";
-import { headerTitle } from "./components/ontario-header/headerTitle.interface";
-import { languageToggleOptions } from "./components/ontario-header/languageToggleOptions.interface";
+import { applicationHeaderInfo, languageToggleOptions, menuItems } from "./components/ontario-header/ontario-header.interface";
 import { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
@@ -157,17 +156,18 @@ export namespace Components {
     }
     interface OntarioHeader {
         /**
+          * Information pertaining to the application. This is only necessary for the 'application' header type. This includes both the application name and URL for the appllication homepage.
+          * @example 	<ontario-header 	type="application" .  application-header-info='{ 			"name": "Application name", 			"href": "/application-homepage"    }' </ontario-header>
+         */
+        "applicationHeaderInfo": applicationHeaderInfo | string;
+        /**
           * The link that contains the french page
          */
         "languageToggleOptions": languageToggleOptions | string;
         /**
           * The items that will go inside the menu
          */
-        "menuItems": headerTitle[] | string;
-        /**
-          * The title for the header
-         */
-        "titleHeader": headerTitle | string;
+        "menuItems": menuItems[] | string;
         /**
           * The type of header
          */
@@ -2408,17 +2408,18 @@ declare namespace LocalJSX {
     }
     interface OntarioHeader {
         /**
+          * Information pertaining to the application. This is only necessary for the 'application' header type. This includes both the application name and URL for the appllication homepage.
+          * @example 	<ontario-header 	type="application" .  application-header-info='{ 			"name": "Application name", 			"href": "/application-homepage"    }' </ontario-header>
+         */
+        "applicationHeaderInfo"?: applicationHeaderInfo | string;
+        /**
           * The link that contains the french page
          */
         "languageToggleOptions"?: languageToggleOptions | string;
         /**
           * The items that will go inside the menu
          */
-        "menuItems"?: headerTitle[] | string;
-        /**
-          * The title for the header
-         */
-        "titleHeader"?: headerTitle | string;
+        "menuItems"?: menuItems[] | string;
         /**
           * The type of header
          */

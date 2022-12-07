@@ -221,12 +221,12 @@ To ensure best practices, it is important to limit the number of navigation link
 
 ## Properties
 
-| Property                | Attribute                 | Description                            | Type                                      | Default         |
-| ----------------------- | ------------------------- | -------------------------------------- | ----------------------------------------- | --------------- |
-| `languageToggleOptions` | `language-toggle-options` | The link that contains the french page | `languageToggleOptions \| string`         | `undefined`     |
-| `menuItems`             | `menu-items`              | The items that will go inside the menu | `headerTitle[] \| string`                 | `undefined`     |
-| `titleHeader`           | `title-header`            | The title for the header               | `headerTitle \| string`                   | `undefined`     |
-| `type`                  | `type`                    | The type of header                     | `"application" \| "ontario" \| undefined` | `'application'` |
+| Property                | Attribute                 | Description                                                                                                                                                                         | Type                                      | Default         |
+| ----------------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | --------------- |
+| `applicationHeaderInfo` | `application-header-info` | Information pertaining to the application. This is only necessary for the 'application' header type. This includes both the application name and URL for the appllication homepage. | `applicationHeaderInfo \| string`         | `undefined`     |
+| `languageToggleOptions` | `language-toggle-options` | The link that contains the french page                                                                                                                                              | `languageToggleOptions \| string`         | `undefined`     |
+| `menuItems`             | `menu-items`              | The items that will go inside the menu                                                                                                                                              | `menuItems[] \| string`                   | `undefined`     |
+| `type`                  | `type`                    | The type of header                                                                                                                                                                  | `"application" \| "ontario" \| undefined` | `'application'` |
 
 
 ----------------------------------------------
