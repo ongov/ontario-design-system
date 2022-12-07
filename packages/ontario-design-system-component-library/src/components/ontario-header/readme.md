@@ -25,7 +25,7 @@ Example of an Ontario.ca header component. Note that the `titleHeader` prop is n
 		"englishLink": "/driving-and-roads",
 		"frenchLink" : "/fr/conduite-et-routes"
 	}'
-	menu-Items='[
+	menu-items='[
 		{
 			"name": "Arts and Culture",
 			"href": "https://www.ontario.ca/page/arts-and-culture",
@@ -100,7 +100,7 @@ Example of an Application header component.
 ```html
 <ontario-header
   type="application"
-	title-Header='{
+	application-header-info='{
 		"name": "Driving and roads",
 		"href": "/driving-and-roads"
 	}'
@@ -108,7 +108,7 @@ Example of an Application header component.
 		"englishLink": "/",
 		"frenchLink" : "/fr"
 	}'
-	menu-Items='[
+	menu-items='[
 	{ 
 		"name": "Vehicle registration", 
 		"href": "/vehicle-registration",
@@ -159,7 +159,7 @@ For the Ontario.ca header, the menu items will automatically be rendered in a dr
 For Application headers, there is a default of a maximum of 5 menu links on desktop and 2 menu links on tablet displayed in the subheader. This logic is handled by the web component based on the total number of menu links passed.
 
 ```html
-menu-Items='[
+menu-items='[
 	{ 
 		"name": "Vehicle registration", 
 		"href": "/vehicle-registration",
@@ -194,12 +194,12 @@ menu-Items='[
 | `linkIsActive`      	| `boolean`  	| A boolean flag for whether or not the current menu item link is active. If set to true, active classes and styles will be applied to the menu item. 	|
 | `onClickHandler`    	| Function 	| An optional custom function to add to the menu item. This can be used if any additional logic should happen when the menu item is clicked.          	|
 
-### titleHeader
+### applicationHeaderInfo
 
 Note that this is only required for the Application header.
 
 ```html
-title-header='{
+application-header-info='{
 	"name": "Application name",
 	"href": "/"
 }'
