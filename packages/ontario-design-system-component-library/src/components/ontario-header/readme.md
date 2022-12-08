@@ -25,7 +25,7 @@ Example of an Ontario.ca header component. Note that the `titleHeader` prop is n
 		"englishLink": "/driving-and-roads",
 		"frenchLink" : "/fr/conduite-et-routes"
 	}'
-	menu-Items='[
+	menu-items='[
 		{
 			"name": "Arts and Culture",
 			"href": "https://www.ontario.ca/page/arts-and-culture",
@@ -100,7 +100,7 @@ Example of an Application header component.
 ```html
 <ontario-header
   type="application"
-	title-Header='{
+	application-header-info='{
 		"name": "Driving and roads",
 		"href": "/driving-and-roads"
 	}'
@@ -108,7 +108,7 @@ Example of an Application header component.
 		"englishLink": "/",
 		"frenchLink" : "/fr"
 	}'
-	menu-Items='[
+	menu-items='[
 	{ 
 		"name": "Vehicle registration", 
 		"href": "/vehicle-registration",
@@ -159,7 +159,7 @@ For the Ontario.ca header, the menu items will automatically be rendered in a dr
 For Application headers, there is a default of a maximum of 5 menu links on desktop and 2 menu links on tablet displayed in the subheader. This logic is handled by the web component based on the total number of menu links passed.
 
 ```html
-menu-Items='[
+menu-items='[
 	{ 
 		"name": "Vehicle registration", 
 		"href": "/vehicle-registration",
@@ -194,12 +194,12 @@ menu-Items='[
 | `linkIsActive`      	| `boolean`  	| A boolean flag for whether or not the current menu item link is active. If set to true, active classes and styles will be applied to the menu item. 	|
 | `onClickHandler`    	| Function 	| An optional custom function to add to the menu item. This can be used if any additional logic should happen when the menu item is clicked.          	|
 
-### titleHeader
+### applicationHeaderInfo
 
 Note that this is only required for the Application header.
 
 ```html
-title-header='{
+application-header-info='{
 	"name": "Application name",
 	"href": "/"
 }'
@@ -221,12 +221,12 @@ To ensure best practices, it is important to limit the number of navigation link
 
 ## Properties
 
-| Property                | Attribute                 | Description                            | Type                                      | Default         |
-| ----------------------- | ------------------------- | -------------------------------------- | ----------------------------------------- | --------------- |
-| `languageToggleOptions` | `language-toggle-options` | The link that contains the french page | `languageToggleOptions \| string`         | `undefined`     |
-| `menuItems`             | `menu-items`              | The items that will go inside the menu | `headerTitle[] \| string`                 | `undefined`     |
-| `titleHeader`           | `title-header`            | The title for the header               | `headerTitle \| string`                   | `undefined`     |
-| `type`                  | `type`                    | The type of header                     | `"application" \| "ontario" \| undefined` | `'application'` |
+| Property                | Attribute                 | Description                                                                                                                                                                         | Type                                      | Default         |
+| ----------------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | --------------- |
+| `applicationHeaderInfo` | `application-header-info` | Information pertaining to the application. This is only necessary for the 'application' header type. This includes both the application name and URL for the appllication homepage. | `applicationHeaderInfo \| string`         | `undefined`     |
+| `languageToggleOptions` | `language-toggle-options` | The link that contains the french page                                                                                                                                              | `languageToggleOptions \| string`         | `undefined`     |
+| `menuItems`             | `menu-items`              | The items that will go inside the menu                                                                                                                                              | `menuItems[] \| string`                   | `undefined`     |
+| `type`                  | `type`                    | The type of header                                                                                                                                                                  | `"application" \| "ontario" \| undefined` | `'application'` |
 
 
 ----------------------------------------------
