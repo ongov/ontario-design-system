@@ -56,7 +56,7 @@ export class OntarioHeader {
 	/**
 	 * The application header information is reassigned to applicationHeaderInfoState for parsing
 	 */
-	@State() applicationHeaderInfoState: applicationHeaderInfo;
+	@State() private applicationHeaderInfoState: applicationHeaderInfo;
 
 	/**
 	 * The menuItems is reassigned to itemState for parsing
@@ -95,7 +95,7 @@ export class OntarioHeader {
 	 *		}'
 	 *	</ontario-header>
 	 */
-	@State() languageState: languageToggleOptions;
+	@State() private languageState: languageToggleOptions;
 
 	/**
 	 * Toggler for the menu and the search button
