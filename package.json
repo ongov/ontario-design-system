@@ -4,16 +4,16 @@
 	"devDependencies": {
 		"@commitlint/cli": "^17.3.0",
 		"@commitlint/config-conventional": "^17.3.0",
-		"@semantic-release/changelog": "^6.0.1",
+		"@semantic-release/changelog": "^6.0.2",
 		"@semantic-release/commit-analyzer": "^9.0.2",
 		"@semantic-release/git": "^10.0.1",
-		"@semantic-release/gitlab": "^7.0.4",
+		"@semantic-release/gitlab": "^9.5.1",
 		"husky": "^8.0.2",
-		"lerna": "^4.0.0",
+		"lerna": "^6.1.0",
 		"prettier": "^2.8.1",
 		"pretty-quick": "^3.1.3",
-		"semantic-release": "^19.0.2",
-		"semantic-release-lerna": "^0.4.2"
+		"semantic-release": "^19.0.5",
+		"semantic-release-lerna": "^0.7.1"
 	},
 	"scripts": {
 		"bootstrap": "lerna bootstrap",
