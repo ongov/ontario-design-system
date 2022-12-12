@@ -1,10 +1,16 @@
-const autoprefixer = require('gulp-autoprefixer');
-const concat = require('gulp-concat');
-const minify = require('gulp-clean-css');
-const gulpif = require('gulp-if');
-const sass = require('gulp-sass')(require('sass'));
-const del = require('del');
-const { dest, series, src, task, parallel, watch } = require('gulp');
+import { deleteAsync } from 'del';
+
+import autoprefixer from 'gulp-autoprefixer';
+import concat from 'gulp-concat';
+import minify from 'gulp-clean-css';
+import gulpif from 'gulp-if';
+
+import gulpSass from 'gulp-sass';
+import dartSass from 'sass';
+const sass = gulpSass(dartSass);
+
+import gulp from 'gulp';
+const { dest, series, src, task, parallel, watch } = gulp;
 
 const distDir = './dist';
 const styleDir = './src/sass/**';
@@ -17,7 +23,7 @@ const fonts = ['./src/fonts/**'];
  *   callback:function,
  *   [debug]:boolean
  * }} opts Configuration options
- * 
+ *
  */
 const processSass = opts => {
 	const sassOptions = {
@@ -72,8 +78,8 @@ task('watch', done => {
 	done();
 });
 
-task('clean', done => {
-	return del(distDir);
+task('clean', async done => {
+	return await deleteAsync(distDir);
 });
 
 task('deploy', series('clean', 'fonts-move', 'sass:copy-dist', 'sass:build-minify'));
