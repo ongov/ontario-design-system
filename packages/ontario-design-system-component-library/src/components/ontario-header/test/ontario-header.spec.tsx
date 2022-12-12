@@ -7,17 +7,17 @@ describe('ontario-header', () => {
 			components: [OntarioHeader],
 			html: `<ontario-header
         type="application"
-        title-header='{
+        application-header-info='{
 					"name": "Application name" ,
 					"href": "/"
 				}'
 
-				language-Toggle-Options='{
+				language-toggle-options='{
 					"englishLink":"/en",
 					"frenchLink": "/fr"
 				}'
 
-				menu-Items='[{
+				menu-items='[{
 					"name": "Health",
 					"href": "/ontario-hint"
 				},{
@@ -41,15 +41,15 @@ describe('ontario-header', () => {
 		expect(page.root).toEqualHtml(`
     <ontario-header
         type="application"
-        title-header='{
+        application-header-info='{
 					"name": "Application name" ,
 					"href": "/"
 				}'
-				language-Toggle-Options='{
+				language-toggle-options='{
 					"englishLink":"/en",
 					"frenchLink": "/fr"
 				}'
-				menu-Items='[{
+				menu-items='[{
 					"name": "Health",
 					"href": "/ontario-hint"
 				},{
@@ -205,17 +205,11 @@ describe('ontario-header', () => {
 			components: [OntarioHeader],
 			html: `<ontario-header
         type="ontario"
-        title-header='{
-					"name": "Application name" ,
-					"href": "/"
-				}'
-
-				language-Toggle-Options='{
+				language-toggle-options='{
 					"englishLink":"/en",
 					"frenchLink": "/fr"
 				}'
-
-				menu-Items='[{
+				menu-items='[{
 					"name": "Health",
 					"href": "/ontario-hint"
 				},{
@@ -239,17 +233,11 @@ describe('ontario-header', () => {
 		expect(page.root).toEqualHtml(`
     <ontario-header
         type="ontario"
-        title-header='{
-					"name": "Application name" ,
-					"href": "/"
-				}'
-
-				language-Toggle-Options='{
+				language-toggle-options='{
 					"englishLink":"/en",
 					"frenchLink": "/fr"
 				}'
-
-				menu-Items='[{
+				menu-items='[{
 					"name": "Health",
 					"href": "/ontario-hint"
 				},{

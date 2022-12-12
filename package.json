@@ -1,26 +1,32 @@
 {
-  "name": "root",
-  "private": true,
-  "devDependencies": {
-    "@semantic-release/changelog": "^6.0.1",
-    "@semantic-release/commit-analyzer": "^9.0.2",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/gitlab": "^7.0.4",
-    "lerna": "^4.0.0",
-    "semantic-release": "^19.0.2",
-    "semantic-release-lerna": "^0.4.2"
-  },
-  "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "build-libs": "lerna run --scope @ontario-digital-service/ontario-design-system* build",
-    "build-docs": "lerna run --scope @ontario-digital-service/ontario-design-system-component-library docs:assemble",
-    "test:unit": "lerna run test:unit",
-    "test:e2e": "lerna run test:e2e",
-    "clean": "lerna run clean",
-    "clean:full": "lerna run clean:full",
-    "refresh": "npm run clean:full && npm run bootstrap && npm run build-libs",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    "semantic-release": "semantic-release"
-  },
-  "version": "2.1.1"
+	"name": "root",
+	"private": true,
+	"devDependencies": {
+		"@commitlint/cli": "^17.3.0",
+		"@commitlint/config-conventional": "^17.3.0",
+		"@semantic-release/changelog": "^6.0.1",
+		"@semantic-release/commit-analyzer": "^9.0.2",
+		"@semantic-release/git": "^10.0.1",
+		"@semantic-release/gitlab": "^7.0.4",
+		"husky": "^8.0.2",
+		"lerna": "^4.0.0",
+		"prettier": "^2.8.1",
+		"pretty-quick": "^3.1.3",
+		"semantic-release": "^19.0.2",
+		"semantic-release-lerna": "^0.4.2"
+	},
+	"scripts": {
+		"bootstrap": "lerna bootstrap",
+		"build-libs": "lerna run --scope @ontario-digital-service/ontario-design-system* build",
+		"build-docs": "lerna run --scope @ontario-digital-service/ontario-design-system-component-library docs:assemble",
+		"test:unit": "lerna run test:unit",
+		"test:e2e": "lerna run test:e2e",
+		"clean": "lerna run clean",
+		"clean:full": "lerna run clean:full",
+		"refresh": "npm run clean:full && npm run bootstrap && npm run build-libs",
+		"format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore",
+		"semantic-release": "semantic-release",
+		"prepare": "husky install"
+	},
+	"version": "2.2.0-alpha.2"
 }
