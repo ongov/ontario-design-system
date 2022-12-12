@@ -141,8 +141,8 @@ describe('ontario-header', () => {
                          </ul>
                        </div>
                        <div>
-                         <button aria-hidden="false" aria-label="close menu" class="ontario-application-navigation--closed ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-application-header-menu-toggler">
-                           <div class="ontario-icon-container"></div>
+                         <button aria-controls="ontario-navigation" aria-label="close menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-application-header-menu-toggler" type="button">
+												 	 <span class="ontario-header__icon-container"></span>
                            <span>
                              Menu
                            </span>
@@ -257,27 +257,23 @@ describe('ontario-header', () => {
           <div class="ontario-header__container">
             <header class="ontario-header" id="ontario-header">
               <div class="ontario-row">
-                <div class="ontario-columns ontario-header__logo-container ontario-hide-for-small-only ontario-large-3 ontario-medium-4 ontario-small-2">
+                <div class="ontario-columns ontario-header__logo-container ontario-large-3 ontario-medium-4 ontario-small-2">
                   <a href="https://www.ontario.ca/page/government-ontario">
                     <img alt="Government of Ontario" class="ontario-show-for-medium" src="/assets/ontario-logo--desktop.svg">
+										<img class="ontario-show-for-small-only" src="/assets/ontario-logo--mobile.svg" alt="Government of Ontario" />
                   </a>
                 </div>
-                <div class="ontario-columns ontario-header__logo-container ontario-large-3 ontario-medium-4 ontario-show-for-small-only ontario-small-2">
-                  <a href="https://www.ontario.ca/page/government-ontario">
-                    <img alt="Government of Ontario" class="ontario-show-for-small-only" src="/assets/ontario-logo--mobile.svg">
-                  </a>
-                </div>
-                <form aria-hidden="false" class="ontario-columns ontario-header__search-container ontario-large-6 ontario-large-offset-0 ontario-medium-6 ontario-medium-offset-3 ontario-small-10" id="ontario-search-form-container" name="searchForm" novalidate="">
+                <form class="ontario-columns ontario-header__search-container ontario-large-6 ontario-large-offset-0 ontario-medium-6 ontario-medium-offset-3 ontario-small-10" id="ontario-search-form-container" name="searchForm" novalidate="">
                   <label class="ontario-show-for-sr" htmlfor="ontario-search-input-field">
                     Search
                   </label>
                   <input aria-autocomplete="none" autocomplete="off" class="ontario-header__search-input ontario-input" id="ontario-search-input-field" name="search" required="" type="text">
-                  <input aria-label="Clear" class="ontario-header__search-reset" id="ontario-search-reset" type="reset" value="">
+                  <input aria-label="Clear field" class="ontario-header__search-reset" id="ontario-search-reset" type="reset" value="">
                   <button class="ontario-header__search-submit" id="ontario-search-submit" type="submit">
-                    <div class="ontario-icon-container"></div>
-                    <span class="ontario-show-for-sr">
-                      Submit
-                    </span>
+										<span class="ontario-show-for-sr">
+											Submit
+										</span>
+										<span class="ontario-header__icon-container"></span>
                   </button>
                 </form>
                 <div class="ontario-columns ontario-header__nav-right-container ontario-large-3 ontario-medium-8 ontario-small-10">
@@ -289,61 +285,59 @@ describe('ontario-header', () => {
                       Français
                     </span>
                   </a>
-                  <div class="ontario-hide-for-large">
-                    <button aria-controls="ontario-search-form-container" aria-label="open search" class="ontario-header-button ontario-header-button--without-outline ontario-header__search-toggler" id="ontario-header-search-toggler">
-                      <div class="ontario-icon-container"></div>
-                      <span class="ontario-show ontario-show-for-medium">
-                        Search
-                      </span>
-                    </button>
-                  </div>
-                  <button aria-hidden="false" aria-label="close menu" class="ontario-application-navigation--closed ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-application-header-menu-toggler">
-                    <div class="ontario-icon-container"></div>
+									<button aria-controls="ontario-search-form-container" class="ontario-header-button ontario-header-button--without-outline ontario-header__search-toggler ontario-hide-for-large" id="ontario-header-search-toggler">
+										<span class="ontario-header__icon-container"></span>
+										<span class="ontario-show ontario-show-for-medium">
+											Search
+										</span>
+									</button>
+                  <button aria-controls="ontario-navigation" aria-label="close menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-header-menu-toggler" type="button">
+										<span class="ontario-header__icon-container"></span>
                     <span>
                       Menu
                     </span>
                   </button>
                 </div>
                 <div class="ontario-columns ontario-header__search-close-container ontario-medium-3 ontario-small-2">
-                  <button aria-label="close search bar" class="ontario-header-button ontario-header-button--without-outline ontario-header__search-close" id="ontario-header-search-close">
-                    <span aria-hidden="false">
+                  <button aria-label="close search bar" class="ontario-header-button ontario-header-button--without-outline ontario-header__search-close" id="ontario-header-search-close" type="button">
+                    <span aria-hidden="true">
                       close
                     </span>
-                    <div class="ontario-icon-container"></div>
+                    <span class="ontario-header__icon-container"></span>
                   </button>
                 </div>
               </div>
             </header>
-            <nav aria-hidden="false" class="ontario-navigation" id="ontario-navigation" role="navigation">
-              <div class="ontario-navigation ontario-navigation--closed ontario-navigation__container">
+            <nav aria-hidden="true" class="ontario-navigation" id="ontario-navigation" role="navigation">
+              <div class="ontario-navigation__container">
                 <ul>
-                  <li>
-                    <a href="/ontario-hint" tabindex="-1">
+                  <li class="ontario-header-navigation__menu-item">
+                    <a href="/ontario-hint">
                       Health
                     </a>
                   </li>
-                  <li>
-                    <a href="/ontario-hint" tabindex="-1">
+                  <li class="ontario-header-navigation__menu-item">
+                    <a href="/ontario-hint">
                       Financial
                     </a>
                   </li>
-                  <li>
-                    <a href="/ontario-hint" tabindex="-1">
+                  <li class="ontario-header-navigation__menu-item">
+                    <a href="/ontario-hint">
                       Financial
                     </a>
                   </li>
-                  <li>
-                    <a href="/ontario-hint" tabindex="-1">
+                  <li class="ontario-header-navigation__menu-item">
+                    <a href="/ontario-hint">
                       Financial
                     </a>
                   </li>
-                  <li>
-                    <a href="/ontario-hint" tabindex="-1">
+                  <li class="ontario-header-navigation__menu-item">
+                    <a href="/ontario-hint">
                       Financial
                     </a>
                   </li>
-                  <li>
-                    <a href="/ontario-hint" tabindex="-1">
+                  <li class="ontario-header-navigation__menu-item">
+                    <a href="/ontario-hint">
                       Financial
                     </a>
                   </li>

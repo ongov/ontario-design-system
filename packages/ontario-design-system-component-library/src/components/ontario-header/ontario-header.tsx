@@ -1,9 +1,10 @@
 import { Component, Prop, State, Watch, h, Listen, Element, getAssetPath } from '@stencil/core';
-import OntarioIconCloseSearch from '../ontario-icon/assets/ontario-icon-close.svg';
+
 import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
 import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
 import OntarioIconSearchWhite from '../ontario-icon/assets/ontario-icon-search-white.svg';
+
 import { menuItems, applicationHeaderInfo, languageToggleOptions } from './ontario-header.interface';
 
 /**
@@ -229,18 +230,15 @@ export class OntarioHeader {
 	private showMenuButton() {
 		return (
 			<button
-				class={
-					this.menuToggle
-						? 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-application-navigation--open'
-						: 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-application-navigation--closed'
-				}
-				id="ontario-application-header-menu-toggler"
+				class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline"
+				id={this.type === 'ontario' ? 'ontario-header-menu-toggler' : 'ontario-application-header-menu-toggler'}
+				aria-controls="ontario-navigation"
 				aria-label={this.menuToggle ? 'open menu' : 'close menu'}
 				onClick={this.handleMenuToggle}
-				aria-hidden={`${this.menuToggle}`}
-				ref={(el) => (this.menuButton = el as HTMLInputElement)}
+				ref={el => (this.menuButton = el as HTMLInputElement)}
+				type="button"
 			>
-				<div class="ontario-icon-container" innerHTML={this.menuToggle ? OntarioIconClose : OntarioIconMenu} />
+				<span class="ontario-header__icon-container" innerHTML={this.menuToggle ? OntarioIconClose : OntarioIconMenu} />
 				<span>Menu</span>
 			</button>
 		);
@@ -319,32 +317,20 @@ export class OntarioHeader {
 							id="ontario-header"
 						>
 							<div class="ontario-row">
-								<div class="ontario-hide-for-small-only ontario-header__logo-container ontario-columns ontario-small-2 ontario-medium-4 ontario-large-3 ">
+								{/* Ontario header logo */}
+								<div class="ontario-header__logo-container ontario-columns ontario-small-2 ontario-medium-4 ontario-large-3">
 									<a href="https://www.ontario.ca/page/government-ontario">
-										<img
-											class="ontario-show-for-medium"
-											src={getAssetPath('./assets/ontario-logo--desktop.svg')}
-											alt="Government of Ontario"
-										/>
+										<img class="ontario-show-for-medium" src={getAssetPath('./assets/ontario-logo--desktop.svg')} alt="Government of Ontario" />
+										<img class="ontario-show-for-small-only" src={getAssetPath('./assets/ontario-logo--mobile.svg')} alt="Government of Ontario" />
 									</a>
 								</div>
 
-								<div class="ontario-show-for-small-only ontario-header__logo-container ontario-columns ontario-small-2 ontario-medium-4 ontario-large-3 ">
-									<a href="https://www.ontario.ca/page/government-ontario">
-										<img
-											class="ontario-show-for-small-only"
-											src={getAssetPath('./assets/ontario-logo--mobile.svg')}
-											alt="Government of Ontario"
-										/>
-									</a>
-								</div>
-
+								{/* Ontario header search input */}
 								<form
 									name="searchForm"
 									id="ontario-search-form-container"
 									onSubmit={this.handleSubmit}
 									class="ontario-header__search-container ontario-columns ontario-small-10 ontario-medium-offset-3 ontario-medium-6 ontario-large-offset-0 ontario-large-6"
-									aria-hidden={`${this.menuToggle}`}
 									novalidate
 								>
 									<label htmlFor="ontario-search-input-field" class="ontario-show-for-sr">
@@ -361,19 +347,14 @@ export class OntarioHeader {
 										ref={(el) => (this.searchBar = el as HTMLInputElement)}
 										onKeyDown={this.onEscapePressed}
 									/>
-									<input
-										class="ontario-header__search-reset"
-										id="ontario-search-reset"
-										type="reset"
-										value=""
-										aria-label="Clear"
-										innerHTML={OntarioIconCloseSearch}
-									></input>
+									<input class="ontario-header__search-reset" id="ontario-search-reset" type="reset" value="" aria-label="Clear field"></input>
 									<button class="ontario-header__search-submit" id="ontario-search-submit" type="submit">
-										<div class="ontario-icon-container" innerHTML={OntarioIconSearch} />
 										<span class="ontario-show-for-sr">Submit</span>
+										<span class="ontario-header__icon-container" innerHTML={OntarioIconSearch} />
 									</button>
 								</form>
+
+								{/* Ontario header language toggle + menu button */}
 								<div class="ontario-header__nav-right-container ontario-columns ontario-small-10 ontario-medium-8 ontario-large-3">
 									<a
 										href={this.languageState?.frenchLink}
@@ -384,19 +365,16 @@ export class OntarioHeader {
 										</abbr>
 										<span class="ontario-show-for-medium">Français</span>
 									</a>
-									<div class="ontario-hide-for-large">
-										<button
-											class="ontario-header__search-toggler ontario-header-button ontario-header-button--without-outline "
-											id="ontario-header-search-toggler"
-											aria-controls="ontario-search-form-container"
-											aria-label="open search"
-											onClick={this.handleSearchToggle}
-											ref={(el) => (this.searchButton = el as HTMLInputElement)}
-										>
-											<div class="ontario-icon-container" innerHTML={OntarioIconSearchWhite} />
-											<span class="ontario-show-for-medium ontario-show">Search</span>
-										</button>
-									</div>
+									<button
+										class="ontario-header__search-toggler ontario-header-button ontario-header-button--without-outline ontario-hide-for-large"
+										id="ontario-header-search-toggler"
+										aria-controls="ontario-search-form-container"
+										onClick={this.handleSearchToggle}
+										ref={el => (this.searchButton = el as HTMLInputElement)}
+									>
+										<span class="ontario-header__icon-container" innerHTML={OntarioIconSearchWhite} />
+										<span class="ontario-show-for-medium ontario-show">Search</span>
+									</button>
 									{this.showMenuButton()}
 								</div>
 								<div class="ontario-header__search-close-container ontario-columns ontario-small-2 ontario-medium-3">
@@ -404,66 +382,39 @@ export class OntarioHeader {
 										class="ontario-header__search-close ontario-header-button ontario-header-button--without-outline"
 										id="ontario-header-search-close"
 										aria-label="close search bar"
+										type="button"
 										onClick={this.handleSearchToggle}
 									>
-										<span aria-hidden={`${this.menuToggle}`}>close</span>
-										<div class="ontario-icon-container" innerHTML={OntarioIconClose} />
+										<span aria-hidden={`${!this.searchToggle}`}>close</span>
+										<span class="ontario-header__icon-container" innerHTML={OntarioIconClose} />
 									</button>
 								</div>
 							</div>
 						</header>
-						{this.menuToggle ? (
-							<nav
-								role="navigation"
-								class="ontario-navigation"
-								id="ontario-navigation"
-								aria-hidden={`${this.menuToggle}`}
-							>
-								<div class="ontario-navigation ontario-navigation__container ontario-navigation--open">
-									<ul>
-										{/*
-											Maps through all the menu items, and the last item is set to lastLink.
-											When the focus goes away from the lastLink, return the focus to the menu button
-											(only applicable pressing the "tab" key, not actually clicking away from the menu).
-										*/}
-										{this.itemState?.map((item, index) => {
-											const lastLink = index + 1 === this.itemState.length;
-											return lastLink
-												? this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler, true)
-												: this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler);
-										})}
-									</ul>
-								</div>
-							</nav>
-						) : (
-							<nav
-								role="navigation"
-								class="ontario-navigation"
-								id="ontario-navigation"
-								aria-hidden={`${this.menuToggle}`}
-							>
-								<div class="ontario-navigation ontario-navigation__container ontario-navigation--closed">
-									<ul>
-										{/*
-											When the menu is closed, all the items are set to tabindex = "-1".
-											This is not really necessary, but it's good practice.
-											https://www.maxability.co.in/2016/06/13/tabindex-for-accessibility-good-bad-and-ugly/
-										*/}
-										{this.itemState?.map((item) =>
-											this.generateMenuItem(
-												item.href,
-												item.name,
-												item.linkIsActive,
-												'',
-												item.onClickHandler,
-												false,
-												true,
-											),
-										)}
-									</ul>
-								</div>
-							</nav>
-						)}
+
+						{/* Ontario header navigation */}
+						<nav
+							role="navigation"
+							class={this.menuToggle ? 'ontario-navigation  ontario-navigation--open' : 'ontario-navigation'}
+							id="ontario-navigation"
+							aria-hidden={`${!this.menuToggle}`}
+						>
+							<div class="ontario-navigation__container">
+								<ul>
+									{/*
+										Maps through all the menu items, and the last item is set to lastLink.
+										When the focus goes away from the lastLink, return the focus to the menu button
+										(only applicable pressing the "tab" key, not actually clicking away from the menu).
+									*/}
+									{this.itemState?.map((item, index) => {
+										const lastLink = index + 1 === this.itemState.length;
+										return lastLink
+											? this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-header-navigation__menu-item', item.onClickHandler, true)
+											: this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-header-navigation__menu-item', item.onClickHandler);
+									})}
+								</ul>
+							</div>
+						</nav>
 					</div>
 					{this.menuToggle && <div class="ontario-hide-for-large ontario-overlay" />}
 				</div>
