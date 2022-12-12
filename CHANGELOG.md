@@ -1,11 +1,16 @@
-# 2.2.0-alpha.1 (2022-12-07)
-
+# 2.2.0-alpha.2 (2022-12-12)
 
 ### Features
 
-* **@ontario-digital-service/ontario-design-system-global-styles:** created alpha release e7e2a42
-* **@ontario-digital-service/ontario-design-system-global-styles:** mark new alpha release 6f04d22
-* **@ontario-digital-service/ontario-design-system-global-styles:** updating namespaces for new release 6e08c7a
+- add commit message linting tooling and configs 40f4a54
+
+# 2.2.0-alpha.1 (2022-12-07)
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-global-styles:** created alpha release e7e2a42
+- **@ontario-digital-service/ontario-design-system-global-styles:** mark new alpha release 6f04d22
+- **@ontario-digital-service/ontario-design-system-global-styles:** updating namespaces for new release 6e08c7a
 
 ## 2.1.1 (2022-12-01)
 
