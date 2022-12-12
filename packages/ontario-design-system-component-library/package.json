@@ -58,7 +58,7 @@
 		"jest-junit": "^13.0.0",
 		"jest-svg-transformer": "^1.0.0",
 		"jszip": "^3.10.1",
-		"prettier": "^2.5.1",
+		"prettier": "^2.8.1",
 		"puppeteer": "^10.0.0",
 		"stencil-inline-svg": "^1.1.0",
 		"svgson": "^5.2.1",
