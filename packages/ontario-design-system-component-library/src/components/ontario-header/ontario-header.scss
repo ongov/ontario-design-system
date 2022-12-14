@@ -32,6 +32,11 @@ $ontario-header-custom-breakpoint: 39.9375em;
 	}
 }
 
+.ontario-header__container {
+	position: relative;
+	width: 100%;
+}
+
 .ontario-header__logo-container {
 	height: global.$ontario-logo-height;
 

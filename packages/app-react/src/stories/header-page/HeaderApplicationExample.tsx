@@ -4,19 +4,40 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function HeaderApplicationExample() {
-	const applicationHeaderCodeExample = `import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioHeader type="application" application-header-info='{
-    "name": "Application name" ,
-    "href": "/"
-  }' language-toggle-options='{
-    "englishLink":"/en",
-    "frenchLink": "/fr"
-  }' menu-items='[{
-    "name": "Health",
-    "href": "/ontario-hint"
-  },{
-    "name": "Financial Health",
-    "href": "/ontario-hint"
-  }]'>
+	const applicationHeaderCodeExample = `import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioHeader
+		type="application"
+		application-header-info='{
+    	"name": "Application name" ,
+    	"href": "/"
+		}'
+		language-toggle-options='{
+    	"englishLink":"/en",
+    	"frenchLink": "/fr"
+		}'
+		application-subheader-desktop-links="3"
+		application-subheader-tablet-links="2"
+		menu-items='[
+			{
+				"name": "Link one",
+				"href": "/link-one"
+			},
+			{
+				"name": "Link two",
+				"href": "/link-two"
+			},
+			{
+				"name": "Long link three",
+				"href": "/link-three"
+			},
+			{
+				"name": "Long link four",
+				"href": "/link-four"
+			},
+			{
+				"name": "Link five",
+				"href": "/link-five"
+			}
+		]'>
 </OntarioHeader>
 `;
 	return (
@@ -33,14 +54,31 @@ export default function HeaderApplicationExample() {
 						language-toggle-options='{
                 "englishLink":"/en",
                 "frenchLink": "/fr"
-              }'
-						menu-items='[{
-                "name": "Health",
-                "href": "#/ontario-header"
-              },{
-                "name": "Financial Health",
-                "href": "#/ontario-header"
-              }]'
+            }'
+						application-subheader-desktop-links="3"
+						application-subheader-tablet-links="2"
+						menu-items='[
+							{
+								"name": "Link one",
+								"href": "/link-one"
+							},
+							{
+								"name": "Link two",
+								"href": "/link-two"
+							},
+							{
+								"name": "Long link three",
+								"href": "/link-three"
+							},
+							{
+								"name": "Long link four",
+								"href": "/link-four"
+							},
+							{
+								"name": "Link five",
+								"href": "/link-five"
+							}
+						]'
 					></OntarioHeader>
 
 					<p>With the following markup:</p>
