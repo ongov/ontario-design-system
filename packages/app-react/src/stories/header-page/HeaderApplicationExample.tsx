@@ -8,14 +8,14 @@ export default function HeaderApplicationExample() {
 		type="application"
 		application-header-info='{
     	"name": "Application name" ,
-    	"href": "/"
+    	"href": "/",
+			"maxSubheaderDesktopLinks": "3",
+			"maxSubheaderTabletLinks": "2"
 		}'
 		language-toggle-options='{
     	"englishLink":"/en",
     	"frenchLink": "/fr"
 		}'
-		application-subheader-desktop-links="3"
-		application-subheader-tablet-links="2"
 		menu-items='[
 			{
 				"name": "Link one",
@@ -49,14 +49,14 @@ export default function HeaderApplicationExample() {
 						type="application"
 						application-header-info='{
                 "name": "Application name" ,
-                "href": "/"
-              }'
+                "href": "/",
+								"maxSubheaderDesktopLinks": "3",
+								"maxSubheaderTabletLinks": "2"
+            }'
 						language-toggle-options='{
                 "englishLink":"/en",
                 "frenchLink": "/fr"
             }'
-						application-subheader-desktop-links="3"
-						application-subheader-tablet-links="2"
 						menu-items='[
 							{
 								"name": "Link one",

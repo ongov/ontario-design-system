@@ -103,7 +103,9 @@ Example of an Application header component.
 	type="application"
 	application-header-info='{
 		"name": "Driving and roads",
-		"href": "/driving-and-roads"
+		"href": "/driving-and-roads",
+		"maxSubheaderDesktopLinks": "3",
+		"maxSubheaderTabletLinks": "1"
 	}'
 	language-toggle-options='{
 		"englishLink": "/",
@@ -144,7 +146,10 @@ Example of an Application header component.
 ### languageToggleOptions
 
 ```html
-language-toggle-options='{ "englishLink":"/en", "frenchLink": "/fr" }'
+language-toggle-options='{ 
+	"englishLink": "/en", 
+	"frenchLink": "/fr" 
+}'
 ```
 
 | **Property name** | **Type** | **Description**                   |
@@ -198,13 +203,23 @@ For Application headers, there is a default of a maximum of 5 menu links on desk
 Note that this is only required for the Application header.
 
 ```html
-application-header-info='{ "name": "Application name", "href": "/" }'
+application-header-info='{
+	"name": "Application name",
+	"href": "/",
+	"maxSubheaderDesktopLinks": "4",
+	"maxSubheaderTabletLinks": "2",
+	"maxSubheaderMobileLinks": "1"
+}'
 ```
 
-| **Property name** | **Type** | **Description**                                                                                          |
-| ----------------- | -------- | -------------------------------------------------------------------------------------------------------- |
-| `name`            | `string` | The name of the application (this is what will appear as the label for the application sub header title) |
-| `href`            | `string` | The URL for the application name                                                                         |
+
+| **Property name**          | **Type** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|----------------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`                     | `string` | The name of the application (this is what will appear as the label for the application sub header title)                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `href`                     | `string` | The URL for the application name                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `maxSubheaderDesktopLinks` | `number` | The number of links to appear in the Ontario application type header's subheader on desktop size. This is optional. <br />  These links will display in the order they are described in the `menuItems` prop. For example, if the `maxSubheaderDesktopLinks` number is '4', the first four `menuItems` items will appear in the application subheader on desktop, and the rest will appear in the menu dropdown. <br/> If no dropdown item is needed, the `maxSubheaderDesktopLinks` number should match the `menuItems` items length. |
+| `maxSubheaderTabletLinks`  | `number` | The number of links to appear in the Ontario application type header's subheader on tablet size. This is optional. <br /> These links will display in the order they are described in the `menuItems` prop. For example, if the `maxSubheaderTabletLinks` number is '2', the first two `menuItems` items will appear in the application subheader on tablet, and the rest will appear in the menu dropdown. <br /> If no dropdown item is needed, the `maxSubheaderTabletLinks` number should match the `menuItems` items length.      |
+| `maxSubheaderMobileLinks`  | `number` | The number of links to appear in the Ontario application type header's subheader on mobile size. This is optional. <br />  These links will display in the order they are described in the `menuItems` prop. For example, if the `maxSubheaderMobileLinks` number is '1', the first `menuItems` item will appear in the application subheader on mobile, and the rest will appear in the menu dropdown. <br />  If no dropdown item is needed, the `maxSubheaderMobileLinks` number should match the `menuItems` items length.         |                                                                    	|
 
 ## Accessibility
 
@@ -220,15 +235,12 @@ Ontario Header component
 
 ## Properties
 
-| Property                           | Attribute                             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Type                                      | Default         |
-| ---------------------------------- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | --------------- |
-| `applicationHeaderInfo`            | `application-header-info`             | Information pertaining to the application. This is only necessary for the 'application' header type. This includes both the application name and URL for the appllication homepage.                                                                                                                                                                                                                                                                                                                                                                                                           | `applicationHeaderInfo \| string`         | `undefined`     |
-| `applicationSubheaderDesktopLinks` | `application-subheader-desktop-links` | The number of links to appear in the Ontario application type header's subheader on desktop size. This is only required for the 'application' type header.  These links will display in the order they are described in the menuItems prop. For example, if the applicationSubheaderDesktopLinks number is '4', the first four menuItems items will appear in the application subheader on desktop, and the rest will appear in the menu dropdown.  If no dropdown item is needed, the applicationSubheaderDesktopLinks number should match the menuItems items length.                       | `number`                                  | `undefined`     |
-| `applicationSubheaderMobileLinks`  | `application-subheader-mobile-links`  | The number of links to appear in the Ontario application type header's subheader on mobile size. This is only required for the 'application' type header. This is optional.  These links will display in the order they are described in the menuItems prop. For example, if the applicationSubheaderMobileLinks number is '2', the first item in the menuItems list will appear in the application subheader on desktop, and the rest will appear in the menu dropdown.  If no dropdown item is needed, the applicationSubheaderDesktopLinks number should match the menuItems items length. | `number`                                  | `undefined`     |
-| `applicationSubheaderTabletLinks`  | `application-subheader-tablet-links`  | The number of links to appear in the Ontario application type header's subheader on tablet size. This is only required for the 'application' type header.  These links will display in the order they are described in the menuItems prop. For example, if the applicationSubheaderTabletLinks number is '2', the first two menuItems items will appear in the application subheader on tablet, and the rest will appear in the menu dropdown.  If no dropdown item is needed, the applicationSubheaderTabletLinks number should match the menuItems items length.                            | `number`                                  | `undefined`     |
-| `languageToggleOptions`            | `language-toggle-options`             | The link that contains the french page                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `languageToggleOptions \| string`         | `undefined`     |
-| `menuItems`                        | `menu-items`                          | The items that will go inside the menu                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `menuItems[] \| string`                   | `undefined`     |
-| `type`                             | `type`                                | The type of header                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `"application" \| "ontario" \| undefined` | `'application'` |
+| Property                | Attribute                 | Description                                                                                                                                                                                                                                 | Type                                      | Default         |
+| ----------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | --------------- |
+| `applicationHeaderInfo` | `application-header-info` | Information pertaining to the application header. This is only necessary for the 'application' header type.  This includes the application name, URL and optional props for the number of links in the subheader, tablet, and mobile views. | `applicationHeaderInfo \| string`         | `undefined`     |
+| `languageToggleOptions` | `language-toggle-options` | The link that contains the french page                                                                                                                                                                                                      | `languageToggleOptions \| string`         | `undefined`     |
+| `menuItems`             | `menu-items`              | The items that will go inside the menu                                                                                                                                                                                                      | `menuItems[] \| string`                   | `undefined`     |
+| `type`                  | `type`                    | The type of header                                                                                                                                                                                                                          | `"application" \| "ontario" \| undefined` | `'application'` |
 
 ---
 

@@ -7,7 +7,10 @@ export interface menuItems {
 
 export interface applicationHeaderInfo {
 	name: string;
-	href: string;
+	href?: string;
+	maxSubheaderDesktopLinks?: number;
+	maxSubheaderTabletLinks?: number;
+	maxSubheaderMobileLinks?: number;
 }
 
 export interface languageToggleOptions {

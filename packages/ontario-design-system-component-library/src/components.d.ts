@@ -169,22 +169,10 @@ export namespace Components {
     }
     interface OntarioHeader {
         /**
-          * Information pertaining to the application. This is only necessary for the 'application' header type. This includes both the application name and URL for the appllication homepage.
-          * @example 	<ontario-header 	type="application" .  application-header-info='{ 			"name": "Application name", 			"href": "/application-homepage"    }' </ontario-header>
+          * Information pertaining to the application header. This is only necessary for the 'application' header type.  This includes the application name, URL and optional props for the number of links in the subheader, tablet, and mobile views.
+          * @example 	<ontario-header 	type="application" .  application-header-info='{ 			"name": "Application name", 			"href": "/application-homepage" 			"maxSubheaderDesktopLinks": "3", 			"maxSubheaderTabletLinks": "2", 			"maxSubheaderMobileLinks": "1"    }' </ontario-header>
          */
         "applicationHeaderInfo": applicationHeaderInfo | string;
-        /**
-          * The number of links to appear in the Ontario application type header's subheader on desktop size. This is only required for the 'application' type header.  These links will display in the order they are described in the menuItems prop. For example, if the applicationSubheaderDesktopLinks number is '4', the first four menuItems items will appear in the application subheader on desktop, and the rest will appear in the menu dropdown.  If no dropdown item is needed, the applicationSubheaderDesktopLinks number should match the menuItems items length.
-         */
-        "applicationSubheaderDesktopLinks": number;
-        /**
-          * The number of links to appear in the Ontario application type header's subheader on mobile size. This is only required for the 'application' type header. This is optional.  These links will display in the order they are described in the menuItems prop. For example, if the applicationSubheaderMobileLinks number is '2', the first item in the menuItems list will appear in the application subheader on desktop, and the rest will appear in the menu dropdown.  If no dropdown item is needed, the applicationSubheaderDesktopLinks number should match the menuItems items length.
-         */
-        "applicationSubheaderMobileLinks": number;
-        /**
-          * The number of links to appear in the Ontario application type header's subheader on tablet size. This is only required for the 'application' type header.  These links will display in the order they are described in the menuItems prop. For example, if the applicationSubheaderTabletLinks number is '2', the first two menuItems items will appear in the application subheader on tablet, and the rest will appear in the menu dropdown.  If no dropdown item is needed, the applicationSubheaderTabletLinks number should match the menuItems items length.
-         */
-        "applicationSubheaderTabletLinks": number;
         /**
           * The link that contains the french page
          */
@@ -2384,22 +2372,10 @@ declare namespace LocalJSX {
     }
     interface OntarioHeader {
         /**
-          * Information pertaining to the application. This is only necessary for the 'application' header type. This includes both the application name and URL for the appllication homepage.
-          * @example 	<ontario-header 	type="application" .  application-header-info='{ 			"name": "Application name", 			"href": "/application-homepage"    }' </ontario-header>
+          * Information pertaining to the application header. This is only necessary for the 'application' header type.  This includes the application name, URL and optional props for the number of links in the subheader, tablet, and mobile views.
+          * @example 	<ontario-header 	type="application" .  application-header-info='{ 			"name": "Application name", 			"href": "/application-homepage" 			"maxSubheaderDesktopLinks": "3", 			"maxSubheaderTabletLinks": "2", 			"maxSubheaderMobileLinks": "1"    }' </ontario-header>
          */
         "applicationHeaderInfo"?: applicationHeaderInfo | string;
-        /**
-          * The number of links to appear in the Ontario application type header's subheader on desktop size. This is only required for the 'application' type header.  These links will display in the order they are described in the menuItems prop. For example, if the applicationSubheaderDesktopLinks number is '4', the first four menuItems items will appear in the application subheader on desktop, and the rest will appear in the menu dropdown.  If no dropdown item is needed, the applicationSubheaderDesktopLinks number should match the menuItems items length.
-         */
-        "applicationSubheaderDesktopLinks"?: number;
-        /**
-          * The number of links to appear in the Ontario application type header's subheader on mobile size. This is only required for the 'application' type header. This is optional.  These links will display in the order they are described in the menuItems prop. For example, if the applicationSubheaderMobileLinks number is '2', the first item in the menuItems list will appear in the application subheader on desktop, and the rest will appear in the menu dropdown.  If no dropdown item is needed, the applicationSubheaderDesktopLinks number should match the menuItems items length.
-         */
-        "applicationSubheaderMobileLinks"?: number;
-        /**
-          * The number of links to appear in the Ontario application type header's subheader on tablet size. This is only required for the 'application' type header.  These links will display in the order they are described in the menuItems prop. For example, if the applicationSubheaderTabletLinks number is '2', the first two menuItems items will appear in the application subheader on tablet, and the rest will appear in the menu dropdown.  If no dropdown item is needed, the applicationSubheaderTabletLinks number should match the menuItems items length.
-         */
-        "applicationSubheaderTabletLinks"?: number;
         /**
           * The link that contains the french page
          */

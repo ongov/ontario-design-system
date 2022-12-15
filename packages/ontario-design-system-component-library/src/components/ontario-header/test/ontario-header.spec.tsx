@@ -9,14 +9,14 @@ describe('ontario-header', () => {
         type="application"
         application-header-info='{
 					"name": "Application name" ,
-					"href": "/"
+					"href": "/",
+					"maxSubheaderDesktopLinks": "3",
+					"maxSubheaderTabletLinks": "1"
 				}'
 				language-toggle-options='{
 					"englishLink":"/en",
 					"frenchLink": "/fr"
 				}'
-				application-subheader-desktop-links="3"
-				application-subheader-tablet-links="1"
 				menu-items='[{
 					"name": "Link one",
 					"href": "/link-one"
@@ -46,14 +46,14 @@ describe('ontario-header', () => {
         type="application"
         application-header-info='{
 					"name": "Application name" ,
-					"href": "/"
+					"href": "/",
+					"maxSubheaderDesktopLinks": "3",
+					"maxSubheaderTabletLinks": "1"
 				}'
 				language-toggle-options='{
 					"englishLink":"/en",
 					"frenchLink": "/fr"
 				}'
-				application-subheader-desktop-links="3"
-				application-subheader-tablet-links="1"
 				menu-items='[{
 					"name": "Link one",
 					"href": "/link-one"
