@@ -1,3 +1,10 @@
+## 2.2.1 (2022-12-16)
+
+### Bug Fixes
+
+- **component-library:** replace template readme copy with real copy d324770
+- **component-library:** update description and unpkg properties 3596a71
+
 # 2.2.0 (2022-12-12)
 
 ### Features
