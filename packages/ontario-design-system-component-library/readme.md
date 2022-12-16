@@ -2,13 +2,13 @@
 
 # Ontario Design System Web Components
 
-Web components are a set of web platform APIs that enable the creation of custom, reusable, encapsulated HTML tags to use in web pages and web apps. They allow for all logic, styles and component-specific layout to be handled in one place.
+Web Components are a set of web platform APIs that enable the creation of custom, reusable, encapsulated HTML tags to use in web pages and web apps. They allow for all logic, styles and component-specific layout to be handled in one place.
 
 They are used in a similar way to other HTML elements, like `<input>` or `<button>`, that form the building blocks of the web.
 
-The component library contains all the available Ontario Design System web components that can be used anywhere HTML and JavaScript are available.
+The component library contains all the available Ontario Design System Web Components that can be used anywhere that HTML and JavaScript are available.
 
-It also contains assets that can be copied for use with your project, such as logos and more.
+It also contains assets that can be copied for use within your project, such as logos and more.
 
 Use this package if you are working with plain HTML or any framework/tooling that does not use React.
 
@@ -36,7 +36,7 @@ Use this package if you are working with plain HTML or any framework/tooling tha
 
 ### CDN
 
-A quick and easy way to get started with the web components without having the use a package is to use the published CDN version. The CDN used in this example is Unpkg, but other CDNs should work. _Note_: The verison number should be updated to match the version of the web components you want to use, eg. here the version used is `2.2.0`.
+A quick and easy way to get started with the Web Components without having to use a package is to use the published CDN version. The CDN used in this example is Unpkg, but other CDNs should work. _Note_: The version number should be updated to match the version of the Web Components you want to use, for example, the version used here is `2.2.0`.
 
 ```html
 <script
@@ -55,17 +55,17 @@ Along with the components, the local assets (logos, fonts, etc.) need to be copi
 
 The assets in the NPM package are located at `@ontario-digital-service/ontario-design-system-component-library-react/dist/assets`, and should be copied to your public assets folder.
 
-In a standard React application this can be done in a number of ways. One way is to use the copyfiles NPM package, which you can with any operating system:
+In a standard React application this can be done in a number of ways. One way is to use the copyfiles NPM package, which you can use with any operating system:
 
 ```bash
 copyfiles -E -f "node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/*" public/assets
 ```
 
-_**Pro tip**: If using a `package.json` file, add a script to make keeping the assets up-to-date simpler, for example use a `prebuild` script top copy the assets before each build._
+_**Pro tip**: If using a `package.json` file, add a script to make keeping the assets up-to-date simpler, for example use a `prebuild` script to copy the assets before each build._
 
 ### Using the components
 
-For more information about using the components see [Using the components](https://designsystem.ontario.ca/docs/documentation/for-developers/web-components.html#using-the-components) in the [Ontario Design System Guidance](https://designsystem.ontario.ca).
+For more information about using the Web Components see [Using the components](https://designsystem.ontario.ca/docs/documentation/for-developers/web-components.html#using-the-components) in the [Ontario Design System Guidance](https://designsystem.ontario.ca).
 
 ## Getting started for Design System developers
 
