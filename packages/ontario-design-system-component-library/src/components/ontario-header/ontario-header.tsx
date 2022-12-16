@@ -5,7 +5,7 @@ import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg
 import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
 import OntarioIconSearchWhite from '../ontario-icon/assets/ontario-icon-search-white.svg';
 
-import { menuItems, applicationHeaderInfo, languageToggleOptions } from './ontario-header.interface';
+import { menuItems, applicationHeaderInfo, languageToggleOptions, ontarioMenuItems } from './ontario-header.interface';
 
 /**
  * Ontario Header component
@@ -108,6 +108,16 @@ export class OntarioHeader {
 	 */
 	@State() menuToggle: boolean = false;
 	@State() searchToggle?: boolean = false;
+
+	/**
+	 * State for Ontario Menu API response data
+	 */
+	@State() apiResponseData: ontarioMenuItems[];
+
+	/**
+	 * State for Ontario Menu API response data
+	 */
+	@State() apiResponseSuccesful: boolean;
 
 	/**
 	 * Assigning values to elements to use them as ref
@@ -213,6 +223,25 @@ export class OntarioHeader {
 	};
 
 	/**
+	 * Call to Ontario Menu API to fetch linksets to populate header component
+	 */
+	fetchOntarioMenu() {
+		fetch('https://www.ontario.ca/system/menu/main/linkset')
+			.then(response => {
+				return response.json()
+			}).then((data) => {
+				this.apiResponseSuccesful = true;
+				this.apiResponseData = data.linkset[0].item;
+			})
+			.catch(() => {
+				this.apiResponseSuccesful = false;
+				console.log(
+					'Unable to retrieve data from Ontario Menu API'
+				);
+			});
+	}
+
+	/**
 	 * This function generates the menu items in a <li>, accordingly, to the given parameters.
 	 *
 	 * href and name are necessary, but rest are not.
@@ -297,6 +326,7 @@ export class OntarioHeader {
 	}
 
 	componentWillLoad() {
+		this.fetchOntarioMenu();
 		this.parseApplicationHeaderInfo();
 		this.parseMenuItems();
 		this.parseLanguage();
@@ -410,15 +440,20 @@ export class OntarioHeader {
 						>
 							<div class="ontario-navigation__container">
 								<ul>
-									{/*
-										Maps through all the menu items, and the last item is set to lastLink.
-										When the focus goes away from the lastLink, return the focus to the menu button
-										(only applicable pressing the "tab" key, not actually clicking away from the menu).
-									*/}
-									{this.itemState?.map((item, index) => {
-										const lastLink = index + 1 === this.itemState.length ? true : false;
-										return this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', item.onClickHandler, lastLink);
-									})}
+									{/* If API call is succesful, return linkset from Ontario Menu API.
+											If API call is unsuccessful, use static menu.*/}
+									{this.apiResponseSuccesful
+										? this.apiResponseData?.map((item:ontarioMenuItems, index:number) => {
+												const lastLink = index + 1 === this.apiResponseData.length ? true : false;
+												const activeLinkRegex = item.title.replace(/\s+/g, '-').toLowerCase();
+												const linkIsActive = window.location.pathname.includes(activeLinkRegex) ? true : false;
+												return this.generateMenuItem(item.href, item.title, linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', undefined, lastLink);
+											})
+										: this.itemState?.map((item, index) => {
+												const lastLink = index + 1 === this.itemState.length ? true : false;
+												return this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', item.onClickHandler, lastLink);
+											})
+									}
 								</ul>
 							</div>
 						</nav>
