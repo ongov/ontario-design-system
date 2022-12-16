@@ -425,10 +425,7 @@ export class OntarioHeader {
 									</div>
 									<div class="ontario-columns ontario-small-6 ontario-application-header__lang-toggle">
 										<a href={this.languageState?.frenchLink} class="ontario-header-button ontario-header-button--without-outline">
-											<abbr title="Français" class="ontario-show-for-small-only">
-												FR
-											</abbr>
-											<span class="ontario-show-for-medium">Français</span>
+											Français
 										</a>
 									</div>
 								</div>

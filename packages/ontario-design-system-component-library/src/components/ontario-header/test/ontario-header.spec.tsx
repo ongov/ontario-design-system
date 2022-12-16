@@ -81,12 +81,7 @@ describe('ontario-header', () => {
                    </div>
                    <div class="ontario-application-header__lang-toggle ontario-columns ontario-small-6">
                      <a class="ontario-header-button ontario-header-button--without-outline" href="/fr">
-                       <abbr class="ontario-show-for-small-only" title="Français">
-                         FR
-                       </abbr>
-                       <span class="ontario-show-for-medium">
-                         Français
-                       </span>
+                      Français
                      </a>
                    </div>
                  </div>
