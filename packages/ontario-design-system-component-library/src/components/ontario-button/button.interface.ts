@@ -26,9 +26,9 @@ export interface Button extends Base {
 	 * Provides more context as to what the button interaction is doing. This is optional.
 	 *
 	 * @example
-	 * <ontario-button aria-label="Click button to open map">Open</ontario button>
+	 * <ontario-button aria-label-text="Click button to open map">Open</ontario button>
 	 */
-	ariaLabel?: string;
+	ariaLabelText?: string;
 
 	/**
 	 * The unique identifier of the button. This is optional - if no ID is passed, one will be generated.
