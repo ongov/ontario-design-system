@@ -32,25 +32,28 @@ If we are adding hint text to our input form, then the input form should have an
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Design System hint text web component
 
 ## Properties
 
-| Property    | Attribute    | Description                                                                                                                                                            | Type                  | Default     |
-| ----------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
-| `elementId` | `element-id` | The unique identifier of the element. This is optional - if no ID is passed, one will be generated.                                                                    | `string \| undefined` | `undefined` |
-| `hint`      | `hint`       | Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence. | `string`              | `undefined` |
-
+| Property    | Attribute    | Description                                                                                                                                                          | Type                  | Default     |
+| ----------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `elementId` | `element-id` | The unique identifier of the element. This is optional - if no ID is passed, one will be generated.                                                                  | `string \| undefined` | `undefined` |
+| `hint`      | `hint`       | Text to display as the hint text statement. Setting the hint can be done using the element content or setting the this property. This property will take precedence. | `string`              | `undefined` |
 
 ## Dependencies
 
 ### Used by
 
- - [ontario-checkboxes](../ontario-checkbox)
- - [ontario-input](../ontario-input)
- - [ontario-radio-buttons](../ontario-radio-buttons)
- - [ontario-textarea](../ontario-textarea)
+- [ontario-checkboxes](../ontario-checkbox)
+- [ontario-input](../ontario-input)
+- [ontario-radio-buttons](../ontario-radio-buttons)
+- [ontario-textarea](../ontario-textarea)
 
 ### Graph
+
 ```mermaid
 graph TD;
   ontario-checkboxes --> ontario-hint-text
@@ -60,6 +63,6 @@ graph TD;
   style ontario-hint-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

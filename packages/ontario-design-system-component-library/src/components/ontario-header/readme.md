@@ -91,7 +91,8 @@ Example of an Ontario.ca header component. Note that the `titleHeader` prop is n
 			"href": "https://www.ontario.ca/page/travel-and-recreation",
 			"linkIsActive": "false"  
 		}
-	]'>
+	]'
+>
 </ontario-header>
 ```
 
@@ -99,7 +100,7 @@ Example of an Application header component.
 
 ```html
 <ontario-header
-  type="application"
+	type="application"
 	application-header-info='{
 		"name": "Driving and roads",
 		"href": "/driving-and-roads"
@@ -133,24 +134,23 @@ Example of an Application header component.
 				alert("Menu item clicked!")
 		},  
 	}
-]'>
+]'
+>
 </ontario-header>
 ```
+
 ## Custom property types
 
 ### languageToggleOptions
 
 ```html
-language-toggle-options='{ 
-	"englishLink":"/en", 
-	"frenchLink": "/fr" 
-}'
+language-toggle-options='{ "englishLink":"/en", "frenchLink": "/fr" }'
 ```
 
 | **Property name** | **Type** | **Description**                   |
 | ----------------- | -------- | --------------------------------- |
-| `englishLink`       | `string`   | The URL link for the English page |
-| `frenchLink`        | `string`   | The URL link for the French page  |
+| `englishLink`     | `string` | The URL link for the English page |
+| `frenchLink`      | `string` | The URL link for the French page  |
 
 ### menuItems
 
@@ -159,56 +159,30 @@ For the Ontario.ca header, the menu items will automatically be rendered in a dr
 For Application headers, there is a default of a maximum of 5 menu links on desktop and 2 menu links on tablet displayed in the subheader. This logic is handled by the web component based on the total number of menu links passed.
 
 ```html
-menu-items='[
-	{ 
-		"name": "Vehicle registration", 
-		"href": "/vehicle-registration",
-		"linkIsActive": "false" 
-	},
-	{ 
-		"name": "Driver records", 
-		"href": "/driver-records",
-		"linkIsActive": "false"  
-	}, 
-	{ 
-		"name": "Accessible Parking Permits",
-		"href": "/accessible-parking-permits",
-		"linkIsActive": "false"  
-	},
-	{ 
-		"name": "Highway traveler information", 
-		"href": "/highway-traveler-information",
-		"linkIsActive": "true",
-		"onClickHandler": (e: Event) => {
-				e.preventDefault();
-				alert("Menu item clicked!")
-		},  
-	}
-]'
+menu-items='[ { "name": "Vehicle registration", "href": "/vehicle-registration", "linkIsActive": "false" }, { "name": "Driver records", "href": "/driver-records", "linkIsActive":
+"false" }, { "name": "Accessible Parking Permits", "href": "/accessible-parking-permits", "linkIsActive": "false" }, { "name": "Highway traveler information", "href":
+"/highway-traveler-information", "linkIsActive": "true", "onClickHandler": (e: Event) => { e.preventDefault(); alert("Menu item clicked!") }, } ]'
 ```
 
-| **Property name** 	| **Type** 	| **Description**                                                                                                                                     	|
-|-------------------	|----------	|-----------------------------------------------------------------------------------------------------------------------------------------------------	|
-| `name`              	| `string`   	| The name of the menu item (this is what will appear as the label in the header/dropdown menu)                                                       	|
-| `href`              	| `string`   	| The URL for the menu item                                                                                                                           	|
-| `linkIsActive`      	| `boolean`  	| A boolean flag for whether or not the current menu item link is active. If set to true, active classes and styles will be applied to the menu item. 	|
-| `onClickHandler`    	| Function 	| An optional custom function to add to the menu item. This can be used if any additional logic should happen when the menu item is clicked.          	|
+| **Property name** | **Type**  | **Description**                                                                                                                                     |
+| ----------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`            | `string`  | The name of the menu item (this is what will appear as the label in the header/dropdown menu)                                                       |
+| `href`            | `string`  | The URL for the menu item                                                                                                                           |
+| `linkIsActive`    | `boolean` | A boolean flag for whether or not the current menu item link is active. If set to true, active classes and styles will be applied to the menu item. |
+| `onClickHandler`  | Function  | An optional custom function to add to the menu item. This can be used if any additional logic should happen when the menu item is clicked.          |
 
 ### applicationHeaderInfo
 
 Note that this is only required for the Application header.
 
 ```html
-application-header-info='{
-	"name": "Application name",
-	"href": "/"
-}'
+application-header-info='{ "name": "Application name", "href": "/" }'
 ```
 
-| **Property name** 	| **Type** 	| **Description**                                                                                          	|
-|-------------------	|----------	|----------------------------------------------------------------------------------------------------------	|
-| `name`              	| `string`   	| The name of the application (this is what will appear as the label for the application sub header title) 	|
-| `href`              	| `string`   	| The URL for the application name                                                                         	|
+| **Property name** | **Type** | **Description**                                                                                          |
+| ----------------- | -------- | -------------------------------------------------------------------------------------------------------- |
+| `name`            | `string` | The name of the application (this is what will appear as the label for the application sub header title) |
+| `href`            | `string` | The URL for the application name                                                                         |
 
 ## Accessibility
 
@@ -218,6 +192,9 @@ To ensure best practices, it is important to limit the number of navigation link
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Header component
 
 ## Properties
 
@@ -228,7 +205,6 @@ To ensure best practices, it is important to limit the number of navigation link
 | `menuItems`             | `menu-items`              | The items that will go inside the menu                                                                                                                                              | `menuItems[] \| string`                   | `undefined`     |
 | `type`                  | `type`                    | The type of header                                                                                                                                                                  | `"application" \| "ontario" \| undefined` | `'application'` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

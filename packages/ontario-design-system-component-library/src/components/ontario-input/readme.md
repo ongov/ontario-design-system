@@ -15,8 +15,8 @@ Once the component package has been installed (see Ontario Design System Compone
 Example of a bare-bones input component, the `name` property is passed in for the input, which is used to reference form data after a form is submitted. The `label-caption` property is being provided, which will be displayed as the label. By default, the `label-type` will be `default`, the `input-type` will be `text`, and the input will be set to `optional`.
 
 ```html
-<ontario-input 
-	name="ontario-text-input" 
+<ontario-input
+	name="ontario-text-input"
 	caption="Ontario input"
 /></ontario-input>
 ```
@@ -24,13 +24,13 @@ Example of a bare-bones input component, the `name` property is passed in for th
 The following input component has the `input-width` property passed in, which will define the width of the input field. The `described-by` property has been passed in because the input has hint text associated with it.
 
 ```html
-<ontario-input 
-	name="ontario-text-input" 
+<ontario-input
+	name="ontario-text-input"
 	caption='{
 		"captionText": "Ontario input",
 		"captionType": "large"
-	}' 
-	input-width="10-char-width" 
+	}'
+	input-width="10-char-width"
 	describedBy="ontario-input-label-example"
 /></ontario-input>
 ```
@@ -42,32 +42,26 @@ The following input component has the `input-width` property passed in, which wi
 The `caption` property is used to render the label for the ontario-input. It can be passed either a string or an object. If no `captionType` needs to be specified, it can be passed as a string.
 
 ```html
-caption='{
-	"captionText": "Input label",
-	"captionType": "large"
-}'
+caption='{ "captionText": "Input label", "captionType": "large" }'
 ```
 
-| **Property name** 	| **Type**                          	| **Description**                                                                                                                                      	|
-|-------------------	|-----------------------------------	|------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| `captionText`       	| `string`                            	| Text to display as the input question                                                                                                             	|
-| `captionType`       	| `"default" \| "large"\| "heading"` | The type of label to display for the input question. This is optional, and if no information is provided, it will default to the `default` type. 	|
+| **Property name** | **Type**                           | **Description**                                                                                                                                  |
+| ----------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `captionText`     | `string`                           | Text to display as the input question                                                                                                            |
+| `captionType`     | `"default" \| "large"\| "heading"` | The type of label to display for the input question. This is optional, and if no information is provided, it will default to the `default` type. |
 
 ### hintExpander
 
 The `hintExpander` property is used to include the Hint Expander component underneath the input label. This is passed in as an object with key-value pairs.
 
 ```html
-hintExpander='{ 
-	"hint": "This is the hint expander title", 
-	"content": "This is the hint expander content - it is only visible when the hint expander title (hint) is toggled" 
-}'
+hintExpander='{ "hint": "This is the hint expander title", "content": "This is the hint expander content - it is only visible when the hint expander title (hint) is toggled" }'
 ```
 
-| **Property name** | **Type** | **Description**                                                                                               |
-| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
-| `hint`              | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content |
-| `content`           | `string` | Text to display as the content of the hint expander                                                           |
+| **Property name** | **Type** | **Description**                                                                                                 |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------- |
+| `hint`            | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content |
+| `content`         | `string` | Text to display as the content of the hint expander                                                             |
 
 ## Accessibility
 
@@ -76,6 +70,9 @@ hintExpander='{
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Input component
 
 ## Properties
 
@@ -93,7 +90,6 @@ hintExpander='{
 | `type`         | `type`          | The input type value.                                                                                                                                                                                                                       | `"email" \| "password" \| "tel" \| "text"`                                                                                                  | `'text'`    |
 | `value`        | `value`         | The input content value.                                                                                                                                                                                                                    | `string \| undefined`                                                                                                                       | `undefined` |
 
-
 ## Events
 
 | Event         | Description                             | Type                         |
@@ -101,7 +97,6 @@ hintExpander='{
 | `blurEvent`   | Emitted when the input loses focus.     | `CustomEvent<void>`          |
 | `changeEvent` | Emitted when a keyboard input occurred. | `CustomEvent<KeyboardEvent>` |
 | `focusEvent`  | Emitted when the input gains focus.     | `CustomEvent<void>`          |
-
 
 ## Dependencies
 
@@ -111,6 +106,7 @@ hintExpander='{
 - [ontario-hint-expander](../ontario-hint-expander)
 
 ### Graph
+
 ```mermaid
 graph TD;
   ontario-input --> ontario-hint-text
@@ -120,6 +116,6 @@ graph TD;
   style ontario-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
