@@ -1,6 +1,6 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-component-library",
-	"version": "2.2.0",
+	"version": "2.2.1",
 	"private": false,
 	"description": "Ontario Design System Component Library",
 	"main": "dist/index.cjs.js",
@@ -10,7 +10,7 @@
 	"types": "dist/types/index.d.ts",
 	"collection": "dist/collection/collection-manifest.json",
 	"collection:main": "dist/collection/index.js",
-	"unpkg": "dist/ontario-design-system-component-library/ontario-design-system-component-library.esm.js",
+	"unpkg": "dist/ontario-design-system-components/ontario-design-system-components.esm.js",
 	"publishConfig": {
 		"access": "public"
 	},
@@ -41,7 +41,7 @@
 	"dependencies": {
 		"@stencil/core": "2.20.0",
 		"validate-color": "^2.2.1",
-		"@ontario-digital-service/ontario-design-system-global-styles": "2.2.0"
+		"@ontario-digital-service/ontario-design-system-global-styles": "2.2.1"
 	},
 	"devDependencies": {
 		"@stencil/react-output-target": "0.3.1",
