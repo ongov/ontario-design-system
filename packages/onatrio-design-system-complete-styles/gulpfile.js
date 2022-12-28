@@ -7,7 +7,7 @@ const del = require('del');
 const path = require('path');
 const fs = require('fs/promises');
 const { dest, series, src, task, parallel, watch } = require('gulp');
-const glob = require('glob');
+const glob = require('glob-promise');
 
 const distDir = './dist';
 const srcDir = './src';
@@ -63,26 +63,20 @@ task('copy:component-styles', () => {
 	return src(`${dsComponentPackageDir}/src/components/**/*.scss`).pipe(dest(`${srcDir}/styles/components/`));
 });
 
-task('generate:components-import-file', (done) => {
-	glob(`${componentsDirPath}/**/*.scss`, null, async (err, files) => {
-		if (err) {
-			console.log(`Unable to scan directory: ${err}`);
-			return done();
-		}
-
-		let content = '';
-
-		files.forEach(file => {
-			content += `@forward "${file}";\n`;
-		});
-
+task('generate:components-import-file', async done => {
+	const globPattern = `${componentsDirPath}/**/*.scss`;
+	const componentSassFilePaths = await glob(globPattern, null);
+	const contentLines = componentSassFilePaths.map(filePath => `@forward "${filePath}";`);
+	if (contentLines.length > 0) {
 		try {
-			await fs.writeFile(`${styleDir}/scss/6-components/_all.component.scss`, content)
-		} catch(error) {
-			console.log(`Error writing DS component styles file ${error}`);
+			await fs.writeFile(`${styleDir}/scss/6-components/_all.component.scss`, contentLines.join('\n'));
+		} catch (error) {
+			console.error(`Error writing DS component styles file ${error}`);
+			done(error);
 		}
-		done();
-	});
+	} else console.log('No files matching', globPattern, 'within', componentsDirPath);
+
+	done();
 });
 
 task('sass:build', done => {
