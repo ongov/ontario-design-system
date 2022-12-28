@@ -159,9 +159,31 @@ For the Ontario.ca header, the menu items will automatically be rendered in a dr
 For Application headers, there is a default of a maximum of 5 menu links on desktop and 2 menu links on tablet displayed in the subheader. This logic is handled by the web component based on the total number of menu links passed.
 
 ```html
-menu-items='[ { "name": "Vehicle registration", "href": "/vehicle-registration", "linkIsActive": "false" }, { "name": "Driver records", "href": "/driver-records", "linkIsActive":
-"false" }, { "name": "Accessible Parking Permits", "href": "/accessible-parking-permits", "linkIsActive": "false" }, { "name": "Highway traveler information", "href":
-"/highway-traveler-information", "linkIsActive": "true", "onClickHandler": (e: Event) => { e.preventDefault(); alert("Menu item clicked!") }, } ]'
+<ontario-header
+	menu-items='[ 
+		{ 
+			"name": "Vehicle registration",
+			"href": "/vehicle-registration",
+			"linkIsActive": "false" 
+		}, 
+		{ 
+			"name": "Driver records",
+			"href": "/driver-records", 
+			"linkIsActive": "false" 
+		}, 
+		{ 
+			"name": "Accessible Parking Permits", 
+			"href": "/accessible-parking-permits", 
+			"linkIsActive": "false" 
+		}, 
+		{ 
+			"name": "Highway traveler information", 
+			"href": "/highway-traveler-information", 
+			"linkIsActive": "true",
+			"onClickHandler": (e: Event) => { e.preventDefault(); alert("Menu item clicked!") }
+		} 
+	]'
+></ontario-header>
 ```
 
 | **Property name** | **Type**  | **Description**                                                                                                                                     |
