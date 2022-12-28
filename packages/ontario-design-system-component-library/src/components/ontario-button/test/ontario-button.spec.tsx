@@ -52,7 +52,7 @@ it('should render a default button with label overriding the element content', a
   `);
 });
 
-it('should render a default button with the aria-label attribute being overwritten', async () => {
+it('should render a default button with the aria-label-text attribute being overwritten', async () => {
 	const page = await newSpecPage({
 		components: [OntarioButton],
 		html: `<ontario-button aria-label-text="Aria Label">Element Content</ontario-button>`,
