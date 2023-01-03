@@ -34,7 +34,7 @@ describe('ontario-footer', () => {
               <a class="ontario-footer__link">
                 © King's Printer for Ontario,
                 <span class="ontario-nbsp">
-                  2012–22
+                  2012–23
                 </span>
               </a>
             </div>
@@ -94,7 +94,7 @@ describe('ontario-footer', () => {
                 <a class="ontario-footer__link" href="4">
                   © King's Printer for Ontario,
                   <span class="ontario-nbsp">
-                    2012–22
+                    2012–23
                   </span>
                 </a>
               </div>
@@ -201,7 +201,7 @@ describe('ontario-footer', () => {
                   <a class="ontario-footer__link" href="4">
                     © King's Printer for Ontario,
                     <span class="ontario-nbsp">
-                      2012–22
+                      2012–23
                     </span>
                   </a>
                 </div>
@@ -382,7 +382,7 @@ describe('ontario-footer', () => {
                   <a class="ontario-footer__link" href="4">
                     © King's Printer for Ontario,
                     <span class="ontario-nbsp">
-                      2012–22
+                      2012–23
                     </span>
                   </a>
                 </div>
