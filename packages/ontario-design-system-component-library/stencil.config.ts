@@ -30,6 +30,11 @@ export const config: Config = {
 					warn: true,
 				},
 				{
+					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/favicons',
+					dest: 'favicons',
+					warn: true,
+				},
+				{
 					src: '**/*.i18n.json',
 					dest: 'i18n',
 				},
@@ -52,6 +57,11 @@ export const config: Config = {
 				{
 					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/fonts',
 					dest: 'fonts',
+					warn: true,
+				},
+				{
+					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/favicons',
+					dest: 'favicons',
 					warn: true,
 				},
 				{

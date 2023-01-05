@@ -9,6 +9,7 @@ const { dest, series, src, task, parallel, watch } = require('gulp');
 const distDir = './dist';
 const styleDir = './src/sass/**';
 const fonts = ['./src/fonts/**'];
+const favicons = ['./src/favicons/*'];
 
 /**
  * @param {{
@@ -17,7 +18,7 @@ const fonts = ['./src/fonts/**'];
  *   callback:function,
  *   [debug]:boolean
  * }} opts Configuration options
- * 
+ *
  */
 const processSass = opts => {
 	const sassOptions = {
@@ -67,6 +68,11 @@ task('fonts-move', done => {
 	return src(fonts, { base: './src' }).pipe(dest(distDir));
 });
 
+// Move all favicons to the dist/favicons folder
+task('favicons-move', done => {
+	return src(favicons, { base: './src'}).pipe(dest(distDir))
+})
+
 task('watch', done => {
 	watch(styleDir, { ignoreInitial: false }, parallel('sass:build-minify'));
 	done();
@@ -76,6 +82,6 @@ task('clean', done => {
 	return del(distDir);
 });
 
-task('deploy', series('clean', 'fonts-move', 'sass:copy-dist', 'sass:build-minify'));
+task('deploy', series('clean', 'fonts-move', 'favicons-move', 'sass:copy-dist', 'sass:build-minify'));
 
 task('default', series('watch'));
