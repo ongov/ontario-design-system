@@ -5,6 +5,7 @@
 	"description": "This is a global styles package for the Ontario Design System",
 	"style": "dist/styles/css/compiled/ontario-theme.min.css",
 	"sass": "dist/styles/scss/theme.scss",
+	"type": "module",
 	"publishConfig": {
 		"access": "public"
 	},
@@ -42,13 +43,13 @@
 		"@ontario-digital-service/ontario-design-system-design-tokens": "2.2.1"
 	},
 	"devDependencies": {
-		"del": "^6.0.0",
+		"del": "^7.0.0",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^8.0.0",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-if": "^3.0.0",
-		"gulp-sass": "^5.0.0",
-		"sass": "^1.43.4"
+		"gulp-sass": "^5.1.0",
+		"sass": "^1.56.2"
 	}
 }

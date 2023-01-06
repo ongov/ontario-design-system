@@ -2,8 +2,8 @@
 
 Use a hint expander when:
 
-* the hint text is long and **won’t be needed by the majority of users**
-* you want to give the user the option to see a **helpful image**, such as a picture of a driver’s licence showing where to find the licence number
+- the hint text is long and **won’t be needed by the majority of users**
+- you want to give the user the option to see a **helpful image**, such as a picture of a driver’s licence showing where to find the licence number
 
 ## Usage guidance
 
@@ -51,6 +51,9 @@ When the hint text is in it’s open state, the value in the `aria-expanded` att
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Design System hint expander web component
 
 ## Properties
 
@@ -60,22 +63,20 @@ When the hint text is in it’s open state, the value in the `aria-expanded` att
 | `elementId` | `element-id` | Used to used to establish a relationship between hint text content and elements using aria-describedby. This is optional - if no ID is passed, one will be generated.                                                                           | `string \| undefined` | `undefined` |
 | `hint`      | `hint`       | Text to display as the hint expander question/statement                                                                                                                                                                                         | `string`              | `undefined` |
 
-
 ## Events
 
 | Event                 | Description                                          | Type               |
 | --------------------- | ---------------------------------------------------- | ------------------ |
 | `toggleExpanderEvent` | Emitted when a keyboard input or mouse event occurs. | `CustomEvent<any>` |
 
-
 ## Dependencies
 
 ### Used by
 
- - [ontario-checkboxes](../ontario-checkbox)
- - [ontario-input](../ontario-input)
- - [ontario-radio-buttons](../ontario-radio-buttons)
- - [ontario-textarea](../ontario-textarea)
+- [ontario-checkboxes](../ontario-checkbox)
+- [ontario-input](../ontario-input)
+- [ontario-radio-buttons](../ontario-radio-buttons)
+- [ontario-textarea](../ontario-textarea)
 
 ### Depends on
 
@@ -83,6 +84,7 @@ When the hint text is in it’s open state, the value in the `aria-expanded` att
 - [ontario-icon-chevron-down](../ontario-icon)
 
 ### Graph
+
 ```mermaid
 graph TD;
   ontario-hint-expander --> ontario-icon-chevron-up
@@ -94,6 +96,6 @@ graph TD;
   style ontario-hint-expander fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

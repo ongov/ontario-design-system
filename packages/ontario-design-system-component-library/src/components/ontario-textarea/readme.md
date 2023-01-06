@@ -29,32 +29,26 @@ Example of a bare-bones textarea component, the user is passing the `name` which
 The `caption` property is used to render the legend for the ontario-textarea. It can be passed either a string or an object. If no `captionType` needs to be specified, it can be passed as a string.
 
 ```html
-caption='{
-	"captionText": "Textarea label",
-	"captionType": "default"
-}'
+caption='{ "captionText": "Textarea label", "captionType": "default" }'
 ```
 
-| **Property name** 	| **Type**                          	| **Description**                                                                                                                                      	|
-|-------------------	|-----------------------------------	|------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| `captionText`       	| `string`                            	| Text to display as the radio textarea question                                                                                                             	|
-| `captionType`       	| `"default" \| "large"\| "heading"` | The type of legend to display for the textarea question. This is optional, and if no information is provided, it will default to the `default` type. 	|
+| **Property name** | **Type**                           | **Description**                                                                                                                                      |
+| ----------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `captionText`     | `string`                           | Text to display as the radio textarea question                                                                                                       |
+| `captionType`     | `"default" \| "large"\| "heading"` | The type of legend to display for the textarea question. This is optional, and if no information is provided, it will default to the `default` type. |
 
 ### hintExpander
 
 The `hintExpander` property is used to include the Hint Expander component underneath the input label. This is passed in as an object with key-value pairs.
 
 ```html
-hintExpander='{ 
-	"hint": "This is the hint expander title", 
-	"content": "This is the hint expander content - it is only visible when the hint expander title (hint) is toggled" 
-}'
+hintExpander='{ "hint": "This is the hint expander title", "content": "This is the hint expander content - it is only visible when the hint expander title (hint) is toggled" }'
 ```
 
-| **Property name** | **Type** | **Description**                                                                                               |
-| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
-| `hint`              | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content |
-| `content`           | `string` | Text to display as the content of the hint expander   
+| **Property name** | **Type** | **Description**                                                                                                 |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------- |
+| `hint`            | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content |
+| `content`         | `string` | Text to display as the content of the hint expander                                                             |
 
 ## Accessibility
 
@@ -63,6 +57,9 @@ hintExpander='{
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Textarea component properties
 
 ## Properties
 
@@ -78,7 +75,6 @@ hintExpander='{
 | `required`     | `required`      | This is used to determine whether the textarea is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional). | `boolean \| undefined`                | `false`     |
 | `value`        | `value`         | The textarea content value.                                                                                                                                                                                                                    | `string \| undefined`                 | `undefined` |
 
-
 ## Events
 
 | Event         | Description                             | Type                         |
@@ -86,7 +82,6 @@ hintExpander='{
 | `blurEvent`   | Emitted when the input loses focus.     | `CustomEvent<void>`          |
 | `changeEvent` | Emitted when a keyboard input occurred. | `CustomEvent<KeyboardEvent>` |
 | `focusEvent`  | Emitted when the input gains focus.     | `CustomEvent<void>`          |
-
 
 ## Dependencies
 
@@ -96,6 +91,7 @@ hintExpander='{
 - [ontario-hint-expander](../ontario-hint-expander)
 
 ### Graph
+
 ```mermaid
 graph TD;
   ontario-textarea --> ontario-hint-text
@@ -105,6 +101,6 @@ graph TD;
   style ontario-textarea fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

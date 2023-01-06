@@ -36,9 +36,9 @@ export class OntarioButton implements Button {
 	 * Provides more context as to what the button interaction is doing. This is optional.
 	 *
 	 * @example
-	 * <ontario-button aria-label="Click button to open map">Open</ontario button>
+	 * <ontario-button aria-label-text="Click button to open map">Open</ontario button>
 	 */
-	@Prop({ mutable: true }) ariaLabel?: string;
+	@Prop({ mutable: true }) ariaLabelText?: string;
 
 	/**
 	 * The unique identifier of the button. This is optional - if no ID is passed, one will be generated.
@@ -167,12 +167,12 @@ export class OntarioButton implements Button {
 		this.updateLabelContent();
 		this.validateHtmlType();
 		this.validateType();
-		this.ariaLabel = this.ariaLabel ?? this.labelState;
+		this.ariaLabelText = this.ariaLabelText ?? this.labelState;
 	}
 
 	render() {
 		return (
-			<button type={this.htmlTypeState} class={this.getClass()} aria-label={this.ariaLabel} id={this.getId()}>
+			<button type={this.htmlTypeState} class={this.getClass()} aria-label={this.ariaLabelText} id={this.getId()}>
 				{this.labelState}
 			</button>
 		);

@@ -1,9 +1,9 @@
 export function validatePropExists(newValue: string): boolean {
-  // Check if new value that is passed in is a string and is not empty
-  const isNewValueBlank = typeof newValue !== 'string' || newValue === '';
+	// Check if new value that is passed in is a string and is not empty
+	const isNewValueBlank = typeof newValue !== 'string' || newValue === '';
 
-  // Return true if new value is both a string and is not empty
-  return isNewValueBlank;
+	// Return true if new value is both a string and is not empty
+	return isNewValueBlank;
 }
 
 /**
@@ -13,16 +13,16 @@ export function validatePropExists(newValue: string): boolean {
  * @param enumType list of enum values provided by caller
  * @returns enum value if a match is found or undefined if no matches are found
  */
-export function validateValueAgainstEnum<T extends String, E>(value: T, enumType: E): T {
-  return (Object.values(enumType).find(type => type === value.toLowerCase()));
+export function validateValueAgainstEnum<T extends String, E extends Object>(value: T, enumType: E): T {
+	return Object.values(enumType).find(type => type === value.toLowerCase());
 }
 
 export function validateObjectExists(newValue: object): boolean {
-  // Check if new value that is passed in is a string and is not empty
-  const isNewValueBlank = typeof newValue !== 'object';
+	// Check if new value that is passed in is a string and is not empty
+	const isNewValueBlank = typeof newValue !== 'object';
 
-  // Return true if new value is both a string and is not empty
-  return isNewValueBlank;
+	// Return true if new value is both a string and is not empty
+	return isNewValueBlank;
 }
 
 /**
@@ -31,6 +31,6 @@ export function validateObjectExists(newValue: object): boolean {
  * @param keys of values provided by caller
  * @returns true if a match is found or false if no matches are found
  */
- export function validateValueAgainstArray<T extends string>(value: T, keys: ReadonlyArray<string>): boolean {
+export function validateValueAgainstArray<T extends string>(value: T, keys: ReadonlyArray<string>): boolean {
 	return keys.includes(value);
 }
