@@ -21,7 +21,8 @@
 		"rollup": "rollup -c",
 		"copy:images": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/assets/**/*\" dist/assets/images",
 		"copy:fonts": "copyfiles -E -u 6 \"node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/fonts/**/*\" dist/assets/fonts",
-		"copy:assets": "npm run copy:images && npm run copy:fonts"
+		"copy:favicons": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/favicons/**/*\" dist/assets/favicons",
+		"copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts"
 	},
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
