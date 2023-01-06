@@ -52,11 +52,6 @@ p.ontario-lead-statement {
 	}
 }
 
-hr.ontario-hr--dark {
-	border-bottom: theme.$spacing-1 solid #1a1a1a;
-	margin: 2.5rem theme.$spacing-0;
-}
-
 @mixin ontario-two-column-lists() {
 	column-count: 1;
 	display: block;
