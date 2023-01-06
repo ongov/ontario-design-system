@@ -119,6 +119,7 @@ export class OntarioHeader {
 	 */
 	@State() apiResponseSuccesful: boolean;
 
+
 	/**
 	 * Assigning values to elements to use them as ref
 	 */
@@ -326,10 +327,13 @@ export class OntarioHeader {
 	}
 
 	componentWillLoad() {
-		this.fetchOntarioMenu();
 		this.parseApplicationHeaderInfo();
 		this.parseMenuItems();
 		this.parseLanguage();
+	}
+
+	ComponentWillRender() {
+		this.fetchOntarioMenu();
 	}
 
 	/**
