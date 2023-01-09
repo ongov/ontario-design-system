@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { OntarioHeader, OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react';
 
 interface MenuLinks {
-	name: string;
+	title: string;
 	href: string;
 	linkIsActive: boolean;
 	onClickHandler: (e: Event) => void;
@@ -16,7 +16,7 @@ const Layout = ({ children }: any) => {
 
 	const [menuLinks, setMenuLinks] = useState([
 		{
-			name: 'Button',
+			title: 'Button',
 			href: '/ontario-button',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -25,7 +25,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			name: 'Hint',
+			title: 'Hint',
 			href: '/ontario-hint',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -34,7 +34,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			name: 'Text Area',
+			title: 'Text Area',
 			href: '/ontario-textarea',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -43,7 +43,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			name: 'Text Input',
+			title: 'Text Input',
 			href: '/ontario-text-input',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -52,7 +52,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			name: 'Icon',
+			title: 'Icon',
 			href: '/ontario-icon',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -61,7 +61,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			name: 'Header',
+			title: 'Header',
 			href: '/ontario-header',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -70,7 +70,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			name: 'Footer',
+			title: 'Footer',
 			href: '/ontario-footer',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -79,7 +79,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			name: 'Checkbox',
+			title: 'Checkbox',
 			href: '/ontario-checkbox',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -88,7 +88,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			name: 'Radio Button',
+			title: 'Radio Button',
 			href: '/ontario-radio-button',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -97,7 +97,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			name: 'Dropdown List',
+			title: 'Dropdown List',
 			href: '/ontario-dropdown-list',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -106,7 +106,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			name: 'Blockquote',
+			title: 'Blockquote',
 			href: '/ontario-blockquote',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {

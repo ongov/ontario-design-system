@@ -8,7 +8,7 @@ export interface menuItems {
 }
 
 export interface applicationHeaderInfo {
-	name: string;
+	title: string;
 	href?: string;
 	maxSubheaderDesktopLinks?: number;
 	maxSubheaderTabletLinks?: number;

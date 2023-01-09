@@ -70,19 +70,19 @@ export class OntarioHeader {
 	 * @example
 	 * 	<ontario-header
 	 *			menu-Items='[{
-	 *				"name": "Hint",
+	 *				"title": "Hint",
 	 *				"href": "/ontario-hint"
 	 *				"linkIsActive": "false"
 	 *			},{
-	 *				"name": "Hint",
+	 *				"title": "Hint",
 	 *				"href": "/ontario-hint"
 	 *				"linkIsActive": "false"
 	 *			},{
-	 *				"name": "Hint",
+	 *				"title": "Hint",
 	 *				"href": "/ontario-hint"
 	 *				"linkIsActive": "false"
 	 *			},{
-	 *				"name": "Hint",
+	 *				"title": "Hint",
 	 *				"href": "/ontario-hint"
 	 *				"linkIsActive": "false"
 	 *			}]'>
@@ -248,26 +248,27 @@ export class OntarioHeader {
 	}
 
 	private menuToDisplay() {
+		console.log(this.apiResponseSuccesful)
 		this.generatedMenu = this.apiResponseSuccesful ? this.apiResponseData : this.itemState;
 	}
 
 	/**
 	 * This function generates the menu items in a <li>, accordingly, to the given parameters.
 	 *
-	 * href and name are necessary, but rest are not.
+	 * href and title are necessary, but rest are not.
 	 *
 	 * @param href - the href of the menu item
-	 * @param name - the name of the menu item
+	 * @param title - the title of the menu item
 	 * @param linkIsActive - when set to true, this will add the classes necessary to style the link in a way that indicates to the user what the active page/link is
 	 * @param liClass - if there is a class that is related to the <a> portion of the menu item, put it here
 	 * @param onClick - for any custon onClick event a user might want to add to their menu links
 	 * @param onBlur - when set to true, it will call the function trapMenuFocus(), otherwise nothing is done (used in lastLink)
 	 */
-	private generateMenuItem(href: string, name: string, linkIsActive: any, type: string, liClass?: string, onClick?: any, onBlur?: boolean) {
+	private generateMenuItem(href: string, title: string, linkIsActive: any, type: string, liClass?: string, onClick?: any, onBlur?: boolean) {
 		return (
 			<li class={liClass}>
 				<a class={linkIsActive && `ontario-link--active`} href={href} onClick={onClick} onBlur={onBlur ? this.trapMenuFocus : undefined} data-type={type}>
-					{name}
+					{title}
 				</a>
 			</li>
 		);
@@ -314,7 +315,7 @@ export class OntarioHeader {
 	/**
 	 * A helper function to generate navigation dropdown links with onBlur functionality. This is used for the application header.
 	 *
-	 * @param item - the menu item to be looped over (contains the name and href)
+	 * @param item - the menu item to be looped over (contains the title and href)
 	 * @param index
 	 * @param links - the number of links associated with the maxSubheader[size]Links in the application header info prop. This will determine how many links should be displayed in the dropdown.
 	 * @param viewportSize - the size of the viewport. It can be set to `desktop`, `tablet` or `mobile`.
@@ -339,11 +340,13 @@ export class OntarioHeader {
 		this.parseApplicationHeaderInfo();
 		this.parseMenuItems();
 		this.parseLanguage();
+		this.fetchOntarioMenu();
 	}
 
-	ComponentWillRender() {
+	componentWillRender() {
 		this.fetchOntarioMenu();
 		this.menuToDisplay();
+
 	}
 
 	/**
@@ -457,7 +460,7 @@ export class OntarioHeader {
 									{/* If API call is succesful, return linkset from Ontario Menu API.
 											If API call is unsuccessful, use static menu.*/}
 										{this.generatedMenu?.map((item,  index:number) => {
-												const lastLink = index + 1 === this.apiResponseData.length ? true : false;
+												const lastLink = index + 1 === this.generatedMenu.length ? true : false;
 												const activeLinkRegex = item.title.replace(/\s+/g, '-').toLowerCase();
 												const linkIsActive = window.location.pathname.includes(activeLinkRegex) ? true : false;
 												return this.generateMenuItem(item.href, item.title, linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', undefined, lastLink);
@@ -498,7 +501,7 @@ export class OntarioHeader {
 								<div class="ontario-row">
 									<div class="ontario-columns ontario-small-12 ontario-application-subheader__container">
 										<p class="ontario-application-subheader__heading">
-											<a href={this.applicationHeaderInfoState?.href}>{this.applicationHeaderInfoState?.name}</a>
+											<a href={this.applicationHeaderInfoState?.href}>{this.applicationHeaderInfoState?.title}</a>
 										</p>
 										<div class="ontario-application-subheader__menu-container">
 											{/* Desktop subheader links */}
