@@ -1,7 +1,7 @@
 import { DrupalMenuMachineName } from "./ontario-header.enum";
 
 export interface menuItems {
-	name: string;
+	title: string;
 	href: string;
 	linkIsActive?: boolean;
 	onClickHandler?: (event: Event) => void;

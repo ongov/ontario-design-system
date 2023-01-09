@@ -90,6 +90,7 @@ export class OntarioHeader {
 	 */
 	@State() private itemState: menuItems[];
 
+
 	/**
 	 * The languageToggleOptions is reassigned to languageState for parsing
 	 *
@@ -119,6 +120,10 @@ export class OntarioHeader {
 	 */
 	@State() apiResponseSuccesful: boolean;
 
+	/**
+	 * State for Ontario Menu API response data
+	 */
+	@State() private generatedMenu: ontarioMenuItems[] | menuItems[] ;
 
 	/**
 	 * Assigning values to elements to use them as ref
@@ -242,6 +247,10 @@ export class OntarioHeader {
 			});
 	}
 
+	private menuToDisplay() {
+		this.generatedMenu = this.apiResponseSuccesful ? this.apiResponseData : this.itemState;
+	}
+
 	/**
 	 * This function generates the menu items in a <li>, accordingly, to the given parameters.
 	 *
@@ -314,7 +323,7 @@ export class OntarioHeader {
 	private generateNavigationLinks(item: menuItems, index: number, links: number | undefined, viewportSize: string) {
 		const lastLink = index + 1 === (links ? this.itemState.length - links : this.itemState.length) ? true : false;
 
-		return this.generateMenuItem(item.href, item.name, item.linkIsActive, viewportSize, '', item.onClickHandler, lastLink);
+		return this.generateMenuItem(item.href, item.title, item.linkIsActive, viewportSize, '', item.onClickHandler, lastLink);
 	}
 
 	/**
@@ -334,6 +343,7 @@ export class OntarioHeader {
 
 	ComponentWillRender() {
 		this.fetchOntarioMenu();
+		this.menuToDisplay();
 	}
 
 	/**
@@ -446,18 +456,12 @@ export class OntarioHeader {
 								<ul>
 									{/* If API call is succesful, return linkset from Ontario Menu API.
 											If API call is unsuccessful, use static menu.*/}
-									{this.apiResponseSuccesful
-										? this.apiResponseData?.map((item:ontarioMenuItems, index:number) => {
+										{this.generatedMenu?.map((item,  index:number) => {
 												const lastLink = index + 1 === this.apiResponseData.length ? true : false;
 												const activeLinkRegex = item.title.replace(/\s+/g, '-').toLowerCase();
 												const linkIsActive = window.location.pathname.includes(activeLinkRegex) ? true : false;
 												return this.generateMenuItem(item.href, item.title, linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', undefined, lastLink);
-											})
-										: this.itemState?.map((item, index) => {
-												const lastLink = index + 1 === this.itemState.length ? true : false;
-												return this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', item.onClickHandler, lastLink);
-											})
-									}
+										})}
 								</ul>
 							</div>
 						</nav>
@@ -502,7 +506,7 @@ export class OntarioHeader {
 												<ul class="ontario-application-subheader__menu ontario-show-for-large">
 													{this.itemState
 														?.slice(0, this.applicationHeaderInfoState.maxSubheaderDesktopLinks)
-														.map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, 'app-desktop', '', item.onClickHandler))}
+														.map(item => this.generateMenuItem(item.href, item.title, item.linkIsActive, 'app-desktop', '', item.onClickHandler))}
 												</ul>
 											)}
 
@@ -511,7 +515,7 @@ export class OntarioHeader {
 												<ul class="ontario-application-subheader__menu ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large">
 													{this.itemState
 														?.slice(0, this.applicationHeaderInfoState.maxSubheaderTabletLinks)
-														.map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, 'app-tablet', '', item.onClickHandler))}
+														.map(item => this.generateMenuItem(item.href, item.title, item.linkIsActive, 'app-tablet', '', item.onClickHandler))}
 												</ul>
 											)}
 
@@ -520,7 +524,7 @@ export class OntarioHeader {
 												<ul class="ontario-application-subheader__menu ontario-show-for-small-only">
 													{this.itemState
 														?.slice(0, this.applicationHeaderInfoState.maxSubheaderMobileLinks)
-														.map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, 'app-mobile', '', item.onClickHandler))}
+														.map(item => this.generateMenuItem(item.href, item.title, item.linkIsActive, 'app-mobile', '', item.onClickHandler))}
 												</ul>
 											)}
 
