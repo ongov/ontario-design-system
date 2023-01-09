@@ -248,7 +248,6 @@ export class OntarioHeader {
 	}
 
 	private menuToDisplay() {
-		console.log(this.apiResponseSuccesful)
 		this.generatedMenu = this.apiResponseSuccesful ? this.apiResponseData : this.itemState;
 	}
 
