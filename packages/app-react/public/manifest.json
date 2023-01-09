@@ -1,0 +1,20 @@
+{
+	"name": "Ontario Design System Web Components",
+	"short_name": "A React POC to test the Ontario Design System Web Components",
+	"icons": [
+		{
+			"src": "./favicon-192x192.png",
+			"sizes": "192 x 192",
+			"type": "image/png"
+		},
+		{
+			"src": "./favicon-512x512.png",
+			"sizes": "512 x 512",
+			"type": "image/png"
+		}
+	],
+	"start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
