@@ -342,7 +342,7 @@ export class OntarioHeader {
 		this.fetchOntarioMenu();
 	}
 
-	componentWillRender() {
+	componentDidRender() {
 		this.fetchOntarioMenu();
 		this.menuToDisplay();
 
