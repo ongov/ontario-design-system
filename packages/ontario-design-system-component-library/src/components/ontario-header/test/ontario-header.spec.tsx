@@ -8,7 +8,7 @@ describe('ontario-header', () => {
 			html: `<ontario-header
         type="application"
         application-header-info='{
-					"name": "Application name" ,
+					"title": "Application name" ,
 					"href": "/",
 					"maxSubheaderDesktopLinks": "3",
 					"maxSubheaderTabletLinks": "1"
@@ -18,25 +18,25 @@ describe('ontario-header', () => {
 					"frenchLink": "/fr"
 				}'
 				menu-items='[{
-					"name": "Link one",
+					"title": "Link one",
 					"href": "/link-one"
 				},{
-					"name": "Link two",
+					"title": "Link two",
 					"href": "/link-two"
 				},{
-					"name": "Link three",
+					"title": "Link three",
 					"href": "/link-three"
 				},{
-					"name": "Link four",
+					"title": "Link four",
 					"href": "/link-four"
 				},{
-					"name": "Link five",
+					"title": "Link five",
 					"href": "/link-five"
 				},{
-					"name": "Link six",
+					"title": "Link six",
 					"href": "/link-six"
 				},{
-					"name": "Link seven",
+					"title": "Link seven",
 					"href": "/link-seven"
 				}]'
       ></ontario-header>`,
@@ -45,7 +45,7 @@ describe('ontario-header', () => {
     <ontario-header
         type="application"
         application-header-info='{
-					"name": "Application name" ,
+					"title": "Application name" ,
 					"href": "/",
 					"maxSubheaderDesktopLinks": "3",
 					"maxSubheaderTabletLinks": "1"
@@ -55,25 +55,25 @@ describe('ontario-header', () => {
 					"frenchLink": "/fr"
 				}'
 				menu-items='[{
-					"name": "Link one",
+					"title": "Link one",
 					"href": "/link-one"
 				},{
-					"name": "Link two",
+					"title": "Link two",
 					"href": "/link-two"
 				},{
-					"name": "Link three",
+					"title": "Link three",
 					"href": "/link-three"
 				},{
-					"name": "Link four",
+					"title": "Link four",
 					"href": "/link-four"
 				},{
-					"name": "Link five",
+					"title": "Link five",
 					"href": "/link-five"
 				},{
-					"name": "Link six",
+					"title": "Link six",
 					"href": "/link-six"
 				},{
-					"name": "Link seven",
+					"title": "Link seven",
 					"href": "/link-seven"
 				}]'>
 				<mock:shadow-root>
@@ -261,43 +261,43 @@ describe('ontario-header', () => {
 					"frenchLink": "/fr"
 				}'
 				menu-items='[{
-					"name": "Arts and Culture",
+					"title": "Arts and Culture",
 					"href": "https://www.ontario.ca/page/arts-and-culture"
 				},{
-					"name": "Business and economy",
+					"title": "Business and economy",
 					"href": "https://www.ontario.ca/page/business-and-economy"
 				},{
-					"name": "Driving and Roads",
+					"title": "Driving and Roads",
 					"href": "https://www.ontario.ca/page/driving-and-roads"
 				},{
-					"name": "Education and training",
+					"title": "Education and training",
 					"href": "https://www.ontario.ca/page/education-and-training"
 				},{
-					"name": "Environment and energy",
+					"title": "Environment and energy",
 					"href": "https://www.ontario.ca/page/environment-and-energy"
 				},{
-					"name": "Government",
+					"title": "Government",
 					"href": "https://www.ontario.ca/page/government"
 				},{
-					"name": "Health and wellness",
+					"title": "Health and wellness",
 					"href": "https://www.ontario.ca/page/health-care-ontario"
 				},{
-					"name": "Home and community",
+					"title": "Home and community",
 					"href": "https://www.ontario.ca/page/home-and-community"
 				},{
-					"name": "Jobs and employment",
+					"title": "Jobs and employment",
 					"href": "https://www.ontario.ca/page/jobs-and-employment"
 				},{
-					"name": "Law and safety",
+					"title": "Law and safety",
 					"href": "https://www.ontario.ca/page/law-and-safety"
 				},{
-					"name": "Rural and north",
+					"title": "Rural and north",
 					"href": "https://www.ontario.ca/page/rural-and-north"
 				},{
-					"name": "Taxes and benefits",
+					"title": "Taxes and benefits",
 					"href": "https://www.ontario.ca/page/taxes-and-benefits"
 				},{
-					"name": "Travel and recreation",
+					"title": "Travel and recreation",
 					"href": "https://www.ontario.ca/page/travel-and-recreation"
 				}]'
       ></ontario-header>`,
@@ -310,43 +310,43 @@ describe('ontario-header', () => {
 					"frenchLink": "/fr"
 				}'
 				menu-items='[{
-					"name": "Arts and Culture",
+					"title": "Arts and Culture",
 					"href": "https://www.ontario.ca/page/arts-and-culture"
 				},{
-					"name": "Business and economy",
+					"title": "Business and economy",
 					"href": "https://www.ontario.ca/page/business-and-economy"
 				},{
-					"name": "Driving and Roads",
+					"title": "Driving and Roads",
 					"href": "https://www.ontario.ca/page/driving-and-roads"
 				},{
-					"name": "Education and training",
+					"title": "Education and training",
 					"href": "https://www.ontario.ca/page/education-and-training"
 				},{
-					"name": "Environment and energy",
+					"title": "Environment and energy",
 					"href": "https://www.ontario.ca/page/environment-and-energy"
 				},{
-					"name": "Government",
+					"title": "Government",
 					"href": "https://www.ontario.ca/page/government"
 				},{
-					"name": "Health and wellness",
+					"title": "Health and wellness",
 					"href": "https://www.ontario.ca/page/health-care-ontario"
 				},{
-					"name": "Home and community",
+					"title": "Home and community",
 					"href": "https://www.ontario.ca/page/home-and-community"
 				},{
-					"name": "Jobs and employment",
+					"title": "Jobs and employment",
 					"href": "https://www.ontario.ca/page/jobs-and-employment"
 				},{
-					"name": "Law and safety",
+					"title": "Law and safety",
 					"href": "https://www.ontario.ca/page/law-and-safety"
 				},{
-					"name": "Rural and north",
+					"title": "Rural and north",
 					"href": "https://www.ontario.ca/page/rural-and-north"
 				},{
-					"name": "Taxes and benefits",
+					"title": "Taxes and benefits",
 					"href": "https://www.ontario.ca/page/taxes-and-benefits"
 				},{
-					"name": "Travel and recreation",
+					"title": "Travel and recreation",
 					"href": "https://www.ontario.ca/page/travel-and-recreation"
 				}]'
       >
