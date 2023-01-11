@@ -185,7 +185,13 @@ export class OntarioRadioButtons implements RadioButtons {
 	validateName(newValue: string) {
 		if (validatePropExists(newValue)) {
 			const message = new ConsoleMessageClass();
-			message.addDesignSystemTag().addMonospaceText(' name ').addRegularText('for').addMonospaceText(' <ontario-radio-buttons> ').addRegularText('was not provided').printMessage();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' name ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-radio-buttons> ')
+				.addRegularText('was not provided')
+				.printMessage();
 		}
 	}
 
@@ -210,7 +216,14 @@ export class OntarioRadioButtons implements RadioButtons {
 
 	@Watch('caption')
 	updateCaptionState(newValue: Caption | string) {
-		this.captionState = new InputCaption(this.element.tagName, newValue, translations, this.language, true, this.required);
+		this.captionState = new InputCaption(
+			this.element.tagName,
+			newValue,
+			translations,
+			this.language,
+			true,
+			this.required,
+		);
 	}
 
 	/**
@@ -236,23 +249,38 @@ export class OntarioRadioButtons implements RadioButtons {
 					{this.captionState.getCaption()}
 					{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
 					<div class="ontario-radios">
-						{this.internalOptions?.map(radioOption => (
+						{this.internalOptions?.map((radioOption) => (
 							<div class="ontario-radios__item">
-								<input class="ontario-radios__input" id={radioOption.elementId} name={this.name} type="radio" value={radioOption.value} required={!!this.required} />
+								<input
+									class="ontario-radios__input"
+									id={radioOption.elementId}
+									name={this.name}
+									type="radio"
+									value={radioOption.value}
+									required={!!this.required}
+								/>
 								<label class="ontario-radios__label" htmlFor={radioOption.elementId}>
 									{radioOption.label}
 								</label>
 
 								<div class="ontario-radios__hint-expander">
 									{radioOption.hintExpander && (
-										<ontario-hint-expander hint={radioOption.hintExpander.hint} content={radioOption.hintExpander.content} input-exists></ontario-hint-expander>
+										<ontario-hint-expander
+											hint={radioOption.hintExpander.hint}
+											content={radioOption.hintExpander.content}
+											input-exists
+										></ontario-hint-expander>
 									)}
 								</div>
 							</div>
 						))}
 
 						{this.internalHintExpander && (
-							<ontario-hint-expander hint={this.internalHintExpander.hint} content={this.internalHintExpander.content} input-exists></ontario-hint-expander>
+							<ontario-hint-expander
+								hint={this.internalHintExpander.hint}
+								content={this.internalHintExpander.content}
+								input-exists
+							></ontario-hint-expander>
 						)}
 					</div>
 				</fieldset>

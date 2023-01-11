@@ -11,7 +11,7 @@ describe('ontario-button', () => {
 		expect(element).toHaveClasses(['ontario-button', 'ontario-button--secondary']);
 		expect(element.textContent).toEqual('');
 		expect(element).toEqualAttributes({
-			'type': 'button',
+			type: 'button',
 		});
 	});
 
@@ -42,8 +42,8 @@ describe('ontario-button', () => {
 		expect(element).toHaveClasses(['ontario-button', 'ontario-button--secondary']);
 		expect(element.textContent).toEqual('Element Content');
 		expect(element).toEqualAttributes({
-			'type': 'button',
-			'id': 'defaultButton',
+			type: 'button',
+			id: 'defaultButton',
 		});
 
 		component.setProperty('type', 'primary');
@@ -52,8 +52,8 @@ describe('ontario-button', () => {
 		expect(element).toHaveClasses(['ontario-button', 'ontario-button--primary']);
 		expect(element.textContent).toEqual('Element Content');
 		expect(element).toEqualAttributes({
-			'type': 'submit',
-			'id': 'defaultButton',
+			type: 'submit',
+			id: 'defaultButton',
 		});
 
 		component.setProperty('type', 'tertiary');
@@ -64,8 +64,8 @@ describe('ontario-button', () => {
 		expect(element).toHaveClasses(['ontario-button', 'ontario-button--tertiary']);
 		expect(element.textContent).toEqual('Back');
 		expect(element).toEqualAttributes({
-			'type': 'button',
-			'id': 'BackButton',
+			type: 'button',
+			id: 'BackButton',
 		});
 	});
 

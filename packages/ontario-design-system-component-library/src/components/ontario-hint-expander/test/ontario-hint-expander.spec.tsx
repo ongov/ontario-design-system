@@ -2,12 +2,12 @@ import { newSpecPage } from '@stencil/core/testing';
 import { OntarioHintExpander } from '../ontario-hint-expander';
 
 describe('ontario-hint-expander', () => {
-  it('should render a default hint expander', async () => {
-    const page = await newSpecPage({
-      components: [OntarioHintExpander],
-      html: `<ontario-hint-expander hint="This is the hint" content="This is the content" element-id="elementId" aria-controls="hint-expander-controls">`,
-    });
-    expect(page.root).toEqualHtml(`
+	it('should render a default hint expander', async () => {
+		const page = await newSpecPage({
+			components: [OntarioHintExpander],
+			html: `<ontario-hint-expander hint="This is the hint" content="This is the content" element-id="elementId" aria-controls="hint-expander-controls">`,
+		});
+		expect(page.root).toEqualHtml(`
       <ontario-hint-expander hint="This is the hint" content="This is the content" element-id="elementId" aria-controls="hint-expander-controls">
         <mock:shadow-root>
         <div class="ontario-hint-expander__container">
@@ -28,5 +28,5 @@ describe('ontario-hint-expander', () => {
         </mock:shadow-root>
       </ontario-hint-expander>
     `);
-  });
+	});
 });

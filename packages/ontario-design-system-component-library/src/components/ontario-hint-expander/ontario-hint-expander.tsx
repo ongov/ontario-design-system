@@ -81,7 +81,9 @@ export class OntarioHintExpander implements HintExpander {
 		hintExpanderParent?.classList.toggle('ontario-expander--active');
 		let content = hintExpanderParent?.querySelector("[data-toggle='ontario-expander-content']");
 		content?.classList.toggle('ontario-expander__content--opened');
-		content?.classList.contains('ontario-expander__content--opened') ? content.setAttribute('aria-hidden', 'false') : content?.setAttribute('aria-hidden', 'true');
+		content?.classList.contains('ontario-expander__content--opened')
+			? content.setAttribute('aria-hidden', 'false')
+			: content?.setAttribute('aria-hidden', 'true');
 		hintExpanderParent?.classList.contains('ontario-expander--active')
 			? hintExpanderParent?.setAttribute('aria-expanded', 'true')
 			: hintExpanderParent?.setAttribute('aria-expanded', 'false');
@@ -97,7 +99,13 @@ export class OntarioHintExpander implements HintExpander {
 	validateHint(newValue: string) {
 		if (validatePropExists(newValue)) {
 			const message = new ConsoleMessageClass();
-			message.addDesignSystemTag().addMonospaceText(' hint ').addRegularText('for').addMonospaceText(' <ontario-hint-expander> ').addRegularText('was not provided').printMessage();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' hint ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-hint-expander> ')
+				.addRegularText('was not provided')
+				.printMessage();
 		}
 	}
 

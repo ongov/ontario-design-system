@@ -156,13 +156,26 @@ export class OntarioTextarea implements Input {
 	validateName(newValue: string) {
 		if (validatePropExists(newValue)) {
 			const message = new ConsoleMessageClass();
-			message.addDesignSystemTag().addMonospaceText(' name ').addRegularText('for').addMonospaceText(' <ontario-textarea> ').addRegularText('was not provided').printMessage();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' name ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-textarea> ')
+				.addRegularText('was not provided')
+				.printMessage();
 		}
 	}
 
 	@Watch('caption')
 	private updateCaptionState(newValue: Caption | string) {
-		this.captionState = new InputCaption(this.element.tagName, newValue, translations, this.language, false, this.required);
+		this.captionState = new InputCaption(
+			this.element.tagName,
+			newValue,
+			translations,
+			this.language,
+			false,
+			this.required,
+		);
 	}
 
 	/**
@@ -227,7 +240,11 @@ export class OntarioTextarea implements Input {
 					required={!!this.required}
 				></textarea>
 				{this.internalHintExpander && (
-					<ontario-hint-expander hint={this.internalHintExpander.hint} content={this.internalHintExpander.content} input-exists></ontario-hint-expander>
+					<ontario-hint-expander
+						hint={this.internalHintExpander.hint}
+						content={this.internalHintExpander.content}
+						input-exists
+					></ontario-hint-expander>
 				)}
 			</div>
 		);

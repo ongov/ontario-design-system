@@ -1,3 +1,15 @@
+# 2.3.0-alpha.1 (2023-01-11)
+
+### Bug Fixes
+
+- **deps:** update package dependencies to the latest versions cc27aab
+- **react-app:** upgrade main render to use React 18 API 2ad3b32
+- **utility:** fix generic type issue with enum checker 22c2e1d
+
+### Features
+
+- **ontario-button:** fix type collision on the `ariaLabel` property, renamed to `ariaLabelText` e22ff33
+
 ## 2.2.1 (2022-12-16)
 
 ### Bug Fixes

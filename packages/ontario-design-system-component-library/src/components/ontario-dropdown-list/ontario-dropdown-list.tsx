@@ -138,7 +138,13 @@ export class OntarioDropdownList implements Dropdown {
 	validateName(newValue: string) {
 		if (validatePropExists(newValue)) {
 			const message = new ConsoleMessageClass();
-			message.addDesignSystemTag().addMonospaceText(' name ').addRegularText('for').addMonospaceText(' <ontario-dropdown-list> ').addRegularText('was not provided').printMessage();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' name ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-dropdown-list> ')
+				.addRegularText('was not provided')
+				.printMessage();
 		}
 	}
 
@@ -174,7 +180,14 @@ export class OntarioDropdownList implements Dropdown {
 
 	@Watch('caption')
 	private updateCaptionState(newValue: Caption | string) {
-		this.captionState = new InputCaption(this.element.tagName, newValue, translations, this.language, false, this.required);
+		this.captionState = new InputCaption(
+			this.element.tagName,
+			newValue,
+			translations,
+			this.language,
+			false,
+			this.required,
+		);
 	}
 
 	/**
@@ -207,10 +220,17 @@ export class OntarioDropdownList implements Dropdown {
 		return (
 			<div class="ontario-form-group">
 				{this.captionState.getCaption(this.getId())}
-				<select class="ontario-input ontario-dropdown" id={this.getId()} name={this.name} style={this.getDropdownArrow()} required={!!this.required}>
-					{this.isEmptyStartOption && (this.isEmptyStartOption === true ? <option>Select</option> : <option>{this.isEmptyStartOption}</option>)}
+				<select
+					class="ontario-input ontario-dropdown"
+					id={this.getId()}
+					name={this.name}
+					style={this.getDropdownArrow()}
+					required={!!this.required}
+				>
+					{this.isEmptyStartOption &&
+						(this.isEmptyStartOption === true ? <option>Select</option> : <option>{this.isEmptyStartOption}</option>)}
 
-					{this.internalOptions?.map(dropdown => <option value={dropdown.value}>{dropdown.label}</option>) ?? ''}
+					{this.internalOptions?.map((dropdown) => <option value={dropdown.value}>{dropdown.label}</option>) ?? ''}
 				</select>
 			</div>
 		);

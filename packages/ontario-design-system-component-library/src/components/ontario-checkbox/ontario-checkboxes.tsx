@@ -187,7 +187,13 @@ export class OntarioCheckboxes implements Checkboxes {
 	validateOptions(newValue: object) {
 		if (validateObjectExists(newValue)) {
 			const message = new ConsoleMessageClass();
-			message.addDesignSystemTag().addMonospaceText(' options ').addRegularText('for').addMonospaceText(' <ontario-checkboxes> ').addRegularText('was not provided').printMessage();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' options ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-checkboxes> ')
+				.addRegularText('was not provided')
+				.printMessage();
 		}
 	}
 
@@ -200,13 +206,26 @@ export class OntarioCheckboxes implements Checkboxes {
 	validateName(newValue: string) {
 		if (validatePropExists(newValue)) {
 			const message = new ConsoleMessageClass();
-			message.addDesignSystemTag().addMonospaceText(' name ').addRegularText('for').addMonospaceText(' <ontario-checkboxes> ').addRegularText('was not provided').printMessage();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' name ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-checkboxes> ')
+				.addRegularText('was not provided')
+				.printMessage();
 		}
 	}
 
 	@Watch('caption')
 	updateCaptionState(newValue: Caption | string) {
-		this.captionState = new InputCaption(this.element.tagName, newValue, translations, this.language, true, this.required);
+		this.captionState = new InputCaption(
+			this.element.tagName,
+			newValue,
+			translations,
+			this.language,
+			true,
+			this.required,
+		);
 	}
 
 	/**
@@ -242,7 +261,7 @@ export class OntarioCheckboxes implements Checkboxes {
 					{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
 
 					<div class="ontario-checkboxes">
-						{this.internalOptions?.map(checkbox => (
+						{this.internalOptions?.map((checkbox) => (
 							<div class="ontario-checkboxes__item">
 								<input
 									class="ontario-checkboxes__input"
@@ -259,13 +278,23 @@ export class OntarioCheckboxes implements Checkboxes {
 								</label>
 
 								<div class="ontario-checkboxes__hint-expander">
-									{checkbox.hintExpander && <ontario-hint-expander hint={checkbox.hintExpander.hint} content={checkbox.hintExpander.content} input-exists></ontario-hint-expander>}
+									{checkbox.hintExpander && (
+										<ontario-hint-expander
+											hint={checkbox.hintExpander.hint}
+											content={checkbox.hintExpander.content}
+											input-exists
+										></ontario-hint-expander>
+									)}
 								</div>
 							</div>
 						))}
 
 						{this.internalHintExpander && (
-							<ontario-hint-expander hint={this.internalHintExpander.hint} content={this.internalHintExpander.content} input-exists></ontario-hint-expander>
+							<ontario-hint-expander
+								hint={this.internalHintExpander.hint}
+								content={this.internalHintExpander.content}
+								input-exists
+							></ontario-hint-expander>
 						)}
 					</div>
 				</fieldset>

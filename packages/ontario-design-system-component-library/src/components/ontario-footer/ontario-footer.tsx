@@ -62,8 +62,16 @@ export class OntarioFooter {
 		if (this.defaultState && !this.defaultState.printerLink) {
 			this.defaultState.printerLink = 'https://www.ontario.ca/page/copyright-information';
 		}
-		if (!this.defaultState || !this.defaultState.accessibilityLink || !this.defaultState.contactLink || !this.defaultState.privacyLink || !this.defaultState.printerLink) {
-			console.error('Error: defaultOptions not fully set, please review your values and ensure all required options are truthy.');
+		if (
+			!this.defaultState ||
+			!this.defaultState.accessibilityLink ||
+			!this.defaultState.contactLink ||
+			!this.defaultState.privacyLink ||
+			!this.defaultState.printerLink
+		) {
+			console.error(
+				'Error: defaultOptions not fully set, please review your values and ensure all required options are truthy.',
+			);
 		}
 	}
 
@@ -79,7 +87,9 @@ export class OntarioFooter {
 				!this.expandedTwoColumnState.secondColumn.content ||
 				!this.expandedTwoColumnState.secondColumn.contactButtonText
 			) {
-				console.error('Error: expandedTwoColumnOptions not fully set, please review your values and ensure all options are truthy.');
+				console.error(
+					'Error: expandedTwoColumnOptions not fully set, please review your values and ensure all options are truthy.',
+				);
 			}
 		}
 	}
@@ -99,12 +109,17 @@ export class OntarioFooter {
 				!this.expandedThreeColumnState.thirdColumn ||
 				!this.expandedThreeColumnState.thirdColumn.title ||
 				!this.expandedThreeColumnState.thirdColumn.content ||
-				(this.expandedThreeColumnState.thirdColumn.facebook && !this.expandedThreeColumnState.thirdColumn.facebook.link) ||
-				(this.expandedThreeColumnState.thirdColumn.twitter && !this.expandedThreeColumnState.thirdColumn.twitter.link) ||
-				(this.expandedThreeColumnState.thirdColumn.instagram && !this.expandedThreeColumnState.thirdColumn.instagram.link) ||
+				(this.expandedThreeColumnState.thirdColumn.facebook &&
+					!this.expandedThreeColumnState.thirdColumn.facebook.link) ||
+				(this.expandedThreeColumnState.thirdColumn.twitter &&
+					!this.expandedThreeColumnState.thirdColumn.twitter.link) ||
+				(this.expandedThreeColumnState.thirdColumn.instagram &&
+					!this.expandedThreeColumnState.thirdColumn.instagram.link) ||
 				(this.expandedThreeColumnState.thirdColumn.youtube && !this.expandedThreeColumnState.thirdColumn.youtube.link)
 			) {
-				console.error('Error: expandedThreeColumnOptions not fully set, please review your values and ensure all required options are truthy.');
+				console.error(
+					'Error: expandedThreeColumnOptions not fully set, please review your values and ensure all required options are truthy.',
+				);
 			}
 		}
 	}
@@ -127,7 +142,9 @@ export class OntarioFooter {
 
 	private getBackgroundImagePath() {
 		const backgroundImage =
-			this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn' ? 'footer-expanded-supergraphic-logo.svg' : 'footer-default-supergraphic-logo.svg';
+			this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn'
+				? 'footer-expanded-supergraphic-logo.svg'
+				: 'footer-default-supergraphic-logo.svg';
 		return { '--imagePath': `url(${getAssetPath(`./assets/${backgroundImage}`)})` };
 	}
 
@@ -140,7 +157,12 @@ export class OntarioFooter {
 	render() {
 		return (
 			<footer
-				class={`ontario-footer ` + (this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn' ? 'ontario-footer--expanded' : 'ontario-footer--default')}
+				class={
+					`ontario-footer ` +
+					(this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn'
+						? 'ontario-footer--expanded'
+						: 'ontario-footer--default')
+				}
 				style={this.getBackgroundImagePath()}
 			>
 				{(this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn') && (
@@ -150,19 +172,27 @@ export class OntarioFooter {
 								class={
 									'ontario-columns ontario-small-12 ' +
 									(this.type == 'expandedTwoColumn' ? 'ontario-medium-6' : '') +
-									(this.type == 'expandedThreeColumn' ? 'ontario-expanded-footer__one-third-block ontario-medium-12 ontario-large-4' : '')
+									(this.type == 'expandedThreeColumn'
+										? 'ontario-expanded-footer__one-third-block ontario-medium-12 ontario-large-4'
+										: '')
 								}
 							>
 								{this.type == 'expandedTwoColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedTwoColumnState?.firstColumn?.title}</h2>
-										<div class="ontario-footer__paragraph" innerHTML={this.expandedTwoColumnState?.firstColumn?.content} />
+										<div
+											class="ontario-footer__paragraph"
+											innerHTML={this.expandedTwoColumnState?.firstColumn?.content}
+										/>
 									</div>
 								)}
 								{this.type == 'expandedThreeColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedThreeColumnState?.firstColumn?.title}</h2>
-										<div class="ontario-footer__paragraph" innerHTML={this.expandedThreeColumnState?.firstColumn?.content} />
+										<div
+											class="ontario-footer__paragraph"
+											innerHTML={this.expandedThreeColumnState?.firstColumn?.content}
+										/>
 									</div>
 								)}
 							</div>
@@ -170,7 +200,7 @@ export class OntarioFooter {
 								<div class="ontario-columns ontario-small-12 ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block">
 									<h2 class="ontario-h4">Most visited topics</h2>
 									<ul class="ontario-footer__links-container ontario-footer__links-container--two-column-list">
-										{this.expandedThreeColumnState?.secondColumn?.content?.map(item => (
+										{this.expandedThreeColumnState?.secondColumn?.content?.map((item) => (
 											<li>
 												<a class="ontario-footer__link" href={item?.link}>
 													{item?.title}
@@ -184,15 +214,25 @@ export class OntarioFooter {
 								class={
 									'ontario-columns ontario-small-12' +
 									(this.type == 'expandedTwoColumn' ? ' ontario-medium-6' : '') +
-									(this.type == 'expandedThreeColumn' ? ' ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block' : '')
+									(this.type == 'expandedThreeColumn'
+										? ' ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block'
+										: '')
 								}
 							>
 								{this.type == 'expandedTwoColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedTwoColumnState?.secondColumn?.title}</h2>
-										<div class="ontario-footer__paragraph" innerHTML={this.expandedTwoColumnState?.secondColumn?.content} />
+										<div
+											class="ontario-footer__paragraph"
+											innerHTML={this.expandedTwoColumnState?.secondColumn?.content}
+										/>
 										<a href={this.defaultState?.contactLink}>
-											<ontario-button aria-label="Secondary Button" type="internalThemeDark" htmlType="reset" id="secondaryButton">
+											<ontario-button
+												aria-label="Secondary Button"
+												type="internalThemeDark"
+												htmlType="reset"
+												id="secondaryButton"
+											>
 												{this.expandedTwoColumnState?.secondColumn?.contactButtonText}
 											</ontario-button>
 										</a>
@@ -201,32 +241,51 @@ export class OntarioFooter {
 								{this.type == 'expandedThreeColumn' && (
 									<div>
 										<h2 class="ontario-h4">{this.expandedThreeColumnState?.thirdColumn?.title}</h2>
-										<div class="ontario-footer__paragraph" innerHTML={this.expandedThreeColumnState?.thirdColumn?.content} />
+										<div
+											class="ontario-footer__paragraph"
+											innerHTML={this.expandedThreeColumnState?.thirdColumn?.content}
+										/>
 										<ul class="ontario-footer__links-container ontario-footer__links-container--social">
 											{this.expandedThreeColumnState.thirdColumn.facebook && (
 												<li>
-													<a class="ontario-footer__link" href={this.expandedThreeColumnState?.thirdColumn?.facebook?.link} aria-label="Facebook">
+													<a
+														class="ontario-footer__link"
+														href={this.expandedThreeColumnState?.thirdColumn?.facebook?.link}
+														aria-label="Facebook"
+													>
 														<ontario-icon-facebook colour="white" />
 													</a>
 												</li>
 											)}
 											{this.expandedThreeColumnState.thirdColumn.twitter && (
 												<li>
-													<a class="ontario-footer__link" href={this.expandedThreeColumnState?.thirdColumn?.twitter?.link} aria-label="Twitter">
+													<a
+														class="ontario-footer__link"
+														href={this.expandedThreeColumnState?.thirdColumn?.twitter?.link}
+														aria-label="Twitter"
+													>
 														<ontario-icon-twitter colour="white" />
 													</a>
 												</li>
 											)}
 											{this.expandedThreeColumnState.thirdColumn.instagram && (
 												<li>
-													<a class="ontario-footer__link" href={this.expandedThreeColumnState?.thirdColumn?.instagram?.link} aria-label="Instagram">
+													<a
+														class="ontario-footer__link"
+														href={this.expandedThreeColumnState?.thirdColumn?.instagram?.link}
+														aria-label="Instagram"
+													>
 														<ontario-icon-instagram colour="white" />
 													</a>
 												</li>
 											)}
 											{this.expandedThreeColumnState.thirdColumn.youtube && (
 												<li>
-													<a class="ontario-footer__link" href={this.expandedThreeColumnState?.thirdColumn?.youtube?.link} aria-label="Youtube">
+													<a
+														class="ontario-footer__link"
+														href={this.expandedThreeColumnState?.thirdColumn?.youtube?.link}
+														aria-label="Youtube"
+													>
 														<ontario-icon-youtube colour="white" />
 													</a>
 												</li>
@@ -238,7 +297,14 @@ export class OntarioFooter {
 						</div>
 					</div>
 				)}
-				<div class={'ontario-row ' + (this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn' ? 'ontario-footer__expanded-bottom-section' : '')}>
+				<div
+					class={
+						'ontario-row ' +
+						(this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn'
+							? 'ontario-footer__expanded-bottom-section'
+							: '')
+					}
+				>
 					<div class="ontario-columns ontario-small-12">
 						<ul class="ontario-footer__links-container ontario-footer__links-container--inline">
 							<li>

@@ -48,7 +48,13 @@ export class OntarioBlockquote implements Blockquote {
 	validateQuoteContent(newValue: string) {
 		if (validatePropExists(newValue)) {
 			const message = new ConsoleMessageClass();
-			message.addDesignSystemTag().addMonospaceText(' quote ').addRegularText('for').addMonospaceText(' <ontario-blockquote> ').addRegularText('was not provided').printMessage();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' quote ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-blockquote> ')
+				.addRegularText('was not provided')
+				.printMessage();
 		}
 	}
 

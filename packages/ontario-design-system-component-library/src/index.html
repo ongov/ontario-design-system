@@ -63,14 +63,25 @@
 				<ontario-button label="Secondary" aria-label-text="Secondary Button" htmlType="reset" id="secondaryButton">
 					Content here will be overwritten by the value of the label property
 				</ontario-button>
-				<ontario-button label="Tertiary" aria-label-text="Tertiary Button" type="tertiary"> Content here will be overwritten by the value of the label property </ontario-button>
+				<ontario-button label="Tertiary" aria-label-text="Tertiary Button" type="tertiary">
+					Content here will be overwritten by the value of the label property
+				</ontario-button>
 				<ontario-icon-accessibility icon-width="48" colour="blue"></ontario-icon-accessibility>
 
 				<hr />
 
 				<!-- `ontario-input` components - happy path examples -->
-				<ontario-input name="email" input-width="20-char-width" caption='{"captionText": "Email", "captionType": "HEADING"}' required="true"></ontario-input>
-				<ontario-input name="postal" input-width="7-char-width" caption='{"captionText": "Postal Code", "captionType": "Large"}'></ontario-input>
+				<ontario-input
+					name="email"
+					input-width="20-char-width"
+					caption='{"captionText": "Email", "captionType": "HEADING"}'
+					required="true"
+				></ontario-input>
+				<ontario-input
+					name="postal"
+					input-width="7-char-width"
+					caption='{"captionText": "Postal Code", "captionType": "Large"}'
+				></ontario-input>
 				<ontario-input name="address" caption='{"captionText": "Address", "captionType": "default"}'></ontario-input>
 
 				<details>
@@ -79,26 +90,47 @@
 					<ontario-input name="email" input-width="20-char-width"></ontario-input>
 
 					<!-- `ontario-input` components - unhappy paths - undefined `captionText` property -->
-					<ontario-input name="postal-text" input-width="7-char-width" caption='{"captionType": "Large"}'></ontario-input>
+					<ontario-input
+						name="postal-text"
+						input-width="7-char-width"
+						caption='{"captionType": "Large"}'
+					></ontario-input>
 					<ontario-input name="address-text" caption='{"captionText": "", "captionType": "heading"}'></ontario-input>
 
 					<!-- `ontario-input` components - unhappy paths - empty `captionText` property or `captionText` contains only spaces -->
 					<ontario-input name="address-text" caption='{"captionText": " ", "captionType": "heading"}'></ontario-input>
 
 					<!-- `ontario-input` components - unhappy paths - undefined `captionType` property -->
-					<ontario-input name="postal-type" input-width="7-char-width" caption='{"captionText": "Postal"}'></ontario-input>
+					<ontario-input
+						name="postal-type"
+						input-width="7-char-width"
+						caption='{"captionText": "Postal"}'
+					></ontario-input>
 
 					<!-- `ontario-input` components - unhappy paths - incorrect `captionType` property -->
-					<ontario-input name="address-type" caption='{"captionText": "Address", "captionType": "hello"}'></ontario-input>
+					<ontario-input
+						name="address-type"
+						caption='{"captionText": "Address", "captionType": "hello"}'
+					></ontario-input>
 				</details>
 
 				<hr />
 
 				<!-- ontario-input components - happy paths with ontario-hint-text usage -->
-				<ontario-input name="postal" input-width="7-char-width" caption='{"captionText": "Postal Code", "captionType": "default"}' hint-text="For example, A1A 1A1"></ontario-input>
+				<ontario-input
+					name="postal"
+					input-width="7-char-width"
+					caption='{"captionText": "Postal Code", "captionType": "default"}'
+					hint-text="For example, A1A 1A1"
+				></ontario-input>
 
 				<!-- ontario-input components - happy paths with ontario-hint-expander usage -->
-				<ontario-input name="address" caption="Address" hint-expander='{"hint": "Hint expander","content": "This is the content, yup this is the content"}'> </ontario-input>
+				<ontario-input
+					name="address"
+					caption="Address"
+					hint-expander='{"hint": "Hint expander","content": "This is the content, yup this is the content"}'
+				>
+				</ontario-input>
 
 				<hr />
 
@@ -249,13 +281,15 @@
 				<!-- Page alerts -->
 				<hr />
 				<ontario-page-alert type="informational" heading="Licence plates">
-					ServiceOntario centres may issue either a blue licence plate or a white embossed ‘Yours to Discover’ licence plate depending on availability.
+					ServiceOntario centres may issue either a blue licence plate or a white embossed ‘Yours to Discover’ licence
+					plate depending on availability.
 					<a href="#">Learn more about replacing a licence plate</a>.
 				</ontario-page-alert>
 
 				<ontario-page-alert type="warning" heading="Service wait times">
-					We are experiencing longer than normal wait times at this ServiceOntario centre. You can <a href="#">check out our Service Finder</a> to see if the service you need is
-					offered online or at a different centre nearby.
+					We are experiencing longer than normal wait times at this ServiceOntario centre. You can
+					<a href="#">check out our Service Finder</a> to see if the service you need is offered online or at a
+					different centre nearby.
 				</ontario-page-alert>
 
 				<ontario-page-alert
@@ -282,9 +316,10 @@
 
 				<!-- Blockquotes -->
 				<ontario-blockquote attribution="Academic partners" byline="Ontario’s Pedagogy for the Early Years"
-					>In the past few years, Ontario has gained a high level of respect for its visionary work in early education. The changes have been profound, and thoughtfully introduced.
-					The views that guide the work are articulated clearly, and express great respect for children, families, and educators. We now have a solid foundation upon which to build
-					a more coherent system.</ontario-blockquote
+					>In the past few years, Ontario has gained a high level of respect for its visionary work in early education.
+					The changes have been profound, and thoughtfully introduced. The views that guide the work are articulated
+					clearly, and express great respect for children, families, and educators. We now have a solid foundation upon
+					which to build a more coherent system.</ontario-blockquote
 				>
 			</div>
 		</div>

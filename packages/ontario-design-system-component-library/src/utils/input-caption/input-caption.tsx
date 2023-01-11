@@ -40,7 +40,14 @@ export class InputCaption implements CaptionInfo {
 	 * Output a console warning message if the provided `label` type is incorrect
 	 * @param caption object containing the essential data to configure the input label
 	 */
-	constructor(componentTagName: string, caption: Caption | string, translations: any, language: any, isLegend: boolean = false, required: boolean = false) {
+	constructor(
+		componentTagName: string,
+		caption: Caption | string,
+		translations: any,
+		language: any,
+		isLegend: boolean = false,
+		required: boolean = false,
+	) {
 		let captionObject: Caption;
 
 		if (typeof caption === 'string') {
@@ -55,7 +62,9 @@ export class InputCaption implements CaptionInfo {
 
 		this.componentTagName = componentTagName.toLocaleLowerCase();
 		this.captionText = captionObject?.captionText;
-		this.captionType = (captionObject?.captionType && CaptionTypes.find(type => type === captionObject.captionType?.toLowerCase())) || 'default';
+		this.captionType =
+			(captionObject?.captionType && CaptionTypes.find((type) => type === captionObject.captionType?.toLowerCase())) ||
+			'default';
 		this.required = required;
 		this.isLegend = isLegend;
 		this.translations = translations;
@@ -91,7 +100,9 @@ export class InputCaption implements CaptionInfo {
 	 * @returns `required` or `optional` flag text
 	 */
 	private getRequiredFlagText(): string {
-		return this.required ? this.translations && `(${this.translations.required[this.language]})` : this.translations && `(${this.translations.optional[this.language]})`;
+		return this.required
+			? this.translations && `(${this.translations.required[this.language]})`
+			: this.translations && `(${this.translations.optional[this.language]})`;
 	}
 
 	/**
@@ -158,7 +169,12 @@ export class InputCaption implements CaptionInfo {
 			if (messageType !== MessageContentType.UndefinedCaptionObject) {
 				message
 					.addMonospaceText(
-						` ${messageType === MessageContentType.EmptyCaptionText || messageType === MessageContentType.UndefinedCaptionText ? 'caption or captionText' : 'captionType'} `,
+						` ${
+							messageType === MessageContentType.EmptyCaptionText ||
+							messageType === MessageContentType.UndefinedCaptionText
+								? 'caption or captionText'
+								: 'captionType'
+						} `,
 					)
 					.addRegularText('object or property of');
 			}
@@ -175,7 +191,11 @@ export class InputCaption implements CaptionInfo {
 	 * @param requiredFlagText accepts a string value to be used as the required flag text and defaults to `(optional)` if not set
 	 * @returns an array of `ConsoleMessage` objects containing the message and associated styles to be printed to the console
 	 */
-	private printConsoleMessage(messageType: MessageContentType, message: ConsoleMessageClass, requiredFlagText: string = '(optional)') {
+	private printConsoleMessage(
+		messageType: MessageContentType,
+		message: ConsoleMessageClass,
+		requiredFlagText: string = '(optional)',
+	) {
 		switch (messageType) {
 			// undefinedCaptionObject example: caption object on <ontario-input> is required but not defined. A blank followed by a (optional) flag is assumed.
 			// undefinedCaptionText example: captionText property of caption object on <ontario-input> is required but not defined. A blank followed by a (optional) flag is assumed.
@@ -184,7 +204,13 @@ export class InputCaption implements CaptionInfo {
 			case MessageContentType.UndefinedCaptionText:
 			case MessageContentType.EmptyCaptionText:
 				message
-					.addRegularText(`${messageType === MessageContentType.EmptyCaptionText ? 'is empty or contains only spaces' : 'is required but not defined'}. A blank followed by a`)
+					.addRegularText(
+						`${
+							messageType === MessageContentType.EmptyCaptionText
+								? 'is empty or contains only spaces'
+								: 'is required but not defined'
+						}. A blank followed by a`,
+					)
 					.addMonospaceText(` ${requiredFlagText} `)
 					.addRegularText('flag is assumed.');
 				break;

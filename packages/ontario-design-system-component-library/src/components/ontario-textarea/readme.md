@@ -42,7 +42,8 @@ caption='{ "captionText": "Textarea label", "captionType": "default" }'
 The `hintExpander` property is used to include the Hint Expander component underneath the input label. This is passed in as an object with key-value pairs.
 
 ```html
-hintExpander='{ "hint": "This is the hint expander title", "content": "This is the hint expander content - it is only visible when the hint expander title (hint) is toggled" }'
+hintExpander='{ "hint": "This is the hint expander title", "content": "This is the hint expander content - it is only
+visible when the hint expander title (hint) is toggled" }'
 ```
 
 | **Property name** | **Type** | **Description**                                                                                                 |

@@ -34,7 +34,11 @@ function addSpecifier(message: string): string {
 }
 
 // print message to console depending on the `ConsoleType`
-export function printConsoleMessage(messages: ConsoleMessage[] | string, consoleType = ConsoleType.Warning, hasDesignSystemTag = true) {
+export function printConsoleMessage(
+	messages: ConsoleMessage[] | string,
+	consoleType = ConsoleType.Warning,
+	hasDesignSystemTag = true,
+) {
 	// retrieve message from each object and concatenate them into one single string in order
 	// if `hasSystemTag` is true then the message string will being with the value stored within `designSystemTag`.
 	const message =
@@ -43,7 +47,7 @@ export function printConsoleMessage(messages: ConsoleMessage[] | string, console
 			: messages?.reduce(
 					(message: string, currentObject: ConsoleMessage) => (message += addSpecifier(currentObject.message) ?? ''),
 					hasDesignSystemTag ? addSpecifier(designSystemTag) : '',
-			);
+			  );
 
 	// array of arguments to be passed into the the console function
 	const messageArray: string[] = [];
@@ -101,7 +105,7 @@ export class ConsoleMessageClass {
 		return this;
 	}
 
-	// build console message as regular text 
+	// build console message as regular text
 	addRegularText(text: string) {
 		this.addText(text, regularTextStyles);
 		return this;
