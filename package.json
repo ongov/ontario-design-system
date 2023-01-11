@@ -24,7 +24,7 @@
 		"clean": "lerna run clean",
 		"clean:full": "lerna run clean:full",
 		"refresh": "npm run clean:full && npm run bootstrap && npm run build-libs",
-		"format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore",
+		"format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
 		"semantic-release": "semantic-release",
 		"prepare": "husky install"
 	},

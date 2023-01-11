@@ -113,6 +113,7 @@ Example of an expanded footer with three columns (`expandedThreeColumn` type). I
 
 In most cases, the example default option links displayed below will apply to both Ontario.ca and Ontario.ca subsites. However, developers should be mindful to update the `contactLink` to reflect the correct "Contact Us" page when using this component on a subsite.
 
+<!-- prettier-ignore -->
 ```html
 default-options='{
 	"accessibilityLink": "https://www.ontario.ca/page/accessibility",
@@ -122,15 +123,16 @@ default-options='{
 }'
 ```
 
-| **Property name** 	| **Type** 	| **Description**                                                 	|
-|-------------------	|----------	|-----------------------------------------------------------------	|
-| `accessibilityLink` 	| `string`   	| The URL for the accessibility footer link                       	|
-| `privacyLink`       	| `string`   	| The URL for the privacy footer link                             	|
-| `contactLink`       	| `string`   	| The URL for the contact us footer link                          	|
-| `printerLink`       	| `string`   	| The URL for the printer footer link. This property is optional. 	|
+| **Property name**   | **Type** | **Description**                                                 |
+| ------------------- | -------- | --------------------------------------------------------------- |
+| `accessibilityLink` | `string` | The URL for the accessibility footer link                       |
+| `privacyLink`       | `string` | The URL for the privacy footer link                             |
+| `contactLink`       | `string` | The URL for the contact us footer link                          |
+| `printerLink`       | `string` | The URL for the printer footer link. This property is optional. |
 
 ### expandedTwoColumnOptions
 
+<!-- prettier-ignore -->
 ```html
 expanded-two-column-options='{
 	"firstColumn": {
@@ -147,23 +149,24 @@ expanded-two-column-options='{
 
 #### firstColumn object
 
-| **Property name** 	| **Type** 	| **Description**                                                          	|
-|-------------------	|----------	|--------------------------------------------------------------------------	|
-| `title`             	| `string`   	| The heading title for the first column of the expanded two column footer 	|
-| `content`           	| `string`   	| The content for the first column of the expanded two column footer       	|
+| **Property name** | **Type** | **Description**                                                          |
+| ----------------- | -------- | ------------------------------------------------------------------------ |
+| `title`           | `string` | The heading title for the first column of the expanded two column footer |
+| `content`         | `string` | The content for the first column of the expanded two column footer       |
 
 #### secondColumn object
 
-| **Property name** 	| **Type** 	| **Description**                                                                         	|
-|-------------------	|----------	|-----------------------------------------------------------------------------------------	|
-| `title`             	| `string`   	| The heading title for the second column of the expanded two column footer               	|
-| `content`           	| `string`   	| The content for the second column of the expanded two column footer                     	|
-| `contactButtonText` 	| `string`   	| The label for the contact button in the second column of the expanded two footer column 	|
+| **Property name**   | **Type** | **Description**                                                                         |
+| ------------------- | -------- | --------------------------------------------------------------------------------------- |
+| `title`             | `string` | The heading title for the second column of the expanded two column footer               |
+| `content`           | `string` | The content for the second column of the expanded two column footer                     |
+| `contactButtonText` | `string` | The label for the contact button in the second column of the expanded two footer column |
 
 ### expandedThreeColumnOptions
 
 For the three column expanded footer, the second column will always display a list of links. These are commonly used to display popular pages a user may need to navigate to quickly. The third column will display content, and optionally display social media links related to the application.
 
+<!-- prettier-ignore -->
 ```html
 expanded-three-column-options='{
 	"firstColumn": {
@@ -200,31 +203,30 @@ expanded-three-column-options='{
 
 #### firstColumn object
 
-| **Property name** 	| **Type** 	| **Description**                                                          	|
-|-------------------	|----------	|--------------------------------------------------------------------------	|
-| title             	| `string`   	| The heading title for the first column of the expanded three column footer 	|
-| content           	| `string`   	| The content for the first column of the expanded three column footer       	|
+| **Property name** | **Type** | **Description**                                                            |
+| ----------------- | -------- | -------------------------------------------------------------------------- |
+| title             | `string` | The heading title for the first column of the expanded three column footer |
+| content           | `string` | The content for the first column of the expanded three column footer       |
 
 #### secondColumn object
 
-| **Property name** 	| **Type** 	| **Description**                                                                                                                                                                                                                                                 	|
-|-------------------	|----------	|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| title             	| `string`   	| The heading title for the second column of the expanded three column footer                                                                                                                                                                                     	|
-| content           	| `Array`    	| The content for the second column of the expanded three column footer takes an Array of Objects, with each object representing a link.  The link object takes a `title` (string) for the label for the link, and `link` (string) for the URL value of the link. 	|
+| **Property name** | **Type** | **Description**                                                                                                                                                                                                                                                |
+| ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| title             | `string` | The heading title for the second column of the expanded three column footer                                                                                                                                                                                    |
+| content           | `Array`  | The content for the second column of the expanded three column footer takes an Array of Objects, with each object representing a link. The link object takes a `title` (string) for the label for the link, and `link` (string) for the URL value of the link. |
 
 #### thirdColumn
 
-| **Property name** 	| **Type** 	| **Description**                                                                      	|
-|-------------------	|----------	|--------------------------------------------------------------------------------------	|
-| title             	| `string`   	| The heading title for the third column of the expanded three column footer           	|
-| content           	| `string`   	| The content for the third column of the expanded three column footer                 	|
-| facebook          	| `Object`   	| An optional property where a `link` (string) key is passed in for the Facebook URL.  	|
-| twitter           	| `Object`   	| An optional property where a `link` (string) key is passed in for the Twitter URL.   	|
-| instagram         	| `Object`   	| An optional property where a `link` (string) key is passed in for the Instagram URL. 	|
-| youtube           	| `Object`   	| An optional property where a `link` (string) key is passed in for the YouTube URL.   	|
+| **Property name** | **Type** | **Description**                                                                      |
+| ----------------- | -------- | ------------------------------------------------------------------------------------ |
+| title             | `string` | The heading title for the third column of the expanded three column footer           |
+| content           | `string` | The content for the third column of the expanded three column footer                 |
+| facebook          | `Object` | An optional property where a `link` (string) key is passed in for the Facebook URL.  |
+| twitter           | `Object` | An optional property where a `link` (string) key is passed in for the Twitter URL.   |
+| instagram         | `Object` | An optional property where a `link` (string) key is passed in for the Instagram URL. |
+| youtube           | `Object` | An optional property where a `link` (string) key is passed in for the YouTube URL.   |
 
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -234,7 +236,6 @@ expanded-three-column-options='{
 | `expandedThreeColumnOptions` | `expanded-three-column-options` | Stores the titles and content for the expanded three column footer | `ExpandedThreeColumnOptions \| string \| undefined`         | `undefined` |
 | `expandedTwoColumnOptions`   | `expanded-two-column-options`   | Stores the titles and content for the expanded two column footer   | `ExpandedTwoColumnOptions \| string \| undefined`           | `undefined` |
 | `type`                       | `type`                          | Type of footer to be rendered                                      | `"default" \| "expandedThreeColumn" \| "expandedTwoColumn"` | `'default'` |
-
 
 ## Dependencies
 
@@ -247,6 +248,7 @@ expanded-three-column-options='{
 - [ontario-icon-youtube](../ontario-icon)
 
 ### Graph
+
 ```mermaid
 graph TD;
   ontario-footer --> ontario-button
@@ -257,6 +259,6 @@ graph TD;
   style ontario-footer fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

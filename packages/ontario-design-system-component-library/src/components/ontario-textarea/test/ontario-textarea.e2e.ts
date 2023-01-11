@@ -4,7 +4,9 @@ describe('ontario-textarea', () => {
 	describe('render', () => {
 		it('renders', async () => {
 			const page = await newE2EPage();
-			await page.setContent("<ontario-textarea name='ontario-textarea' label-caption='Ontario Textarea' label-type='default'></ontario-textarea>");
+			await page.setContent(
+				"<ontario-textarea name='ontario-textarea' label-caption='Ontario Textarea' label-type='default'></ontario-textarea>",
+			);
 			const component = await page.find('ontario-textarea');
 			const element = await page.find('ontario-textarea >>> textarea');
 
@@ -23,7 +25,9 @@ describe('ontario-textarea', () => {
 
 		beforeEach(async () => {
 			page = await newE2EPage();
-			await page.setContent("<ontario-textarea name='ontario-textarea' label-caption='Ontario Textarea'  label-type='default'></ontario-textarea>");
+			await page.setContent(
+				"<ontario-textarea name='ontario-textarea' label-caption='Ontario Textarea'  label-type='default'></ontario-textarea>",
+			);
 			component = await page.find('ontario-textarea');
 			element = await page.find('ontario-textarea >>> textarea');
 		});
@@ -58,7 +62,9 @@ describe('ontario-textarea', () => {
 describe('events/methods', () => {
 	it('fires the onBlur event', async () => {
 		const page = await newE2EPage();
-		await page.setContent("<ontario-textarea name='ontario-textarea' label-caption='Ontario Textarea'  label-type='default'></ontario-textarea>");
+		await page.setContent(
+			"<ontario-textarea name='ontario-textarea' label-caption='Ontario Textarea'  label-type='default'></ontario-textarea>",
+		);
 		const blurEvent = await page.spyOnEvent('onBlur');
 		const component = await page.find('ontario-textarea');
 
@@ -69,7 +75,9 @@ describe('events/methods', () => {
 
 	it('fires the onFocus event', async () => {
 		const page = await newE2EPage();
-		await page.setContent("<ontario-textarea name='ontario-textarea' label-caption='Ontario Textarea'  label-type='default'></ontario-textarea>");
+		await page.setContent(
+			"<ontario-textarea name='ontario-textarea' label-caption='Ontario Textarea'  label-type='default'></ontario-textarea>",
+		);
 		const focusEvent = await page.spyOnEvent('onFocus');
 		const component = await page.find('ontario-textarea');
 
@@ -80,7 +88,9 @@ describe('events/methods', () => {
 
 	it('fires the onChange event', async () => {
 		const page = await newE2EPage();
-		await page.setContent("<ontario-textarea name='ontario-textarea' label-caption='Ontario Textarea'  label-type='default'></ontario-textarea>");
+		await page.setContent(
+			"<ontario-textarea name='ontario-textarea' label-caption='Ontario Textarea'  label-type='default'></ontario-textarea>",
+		);
 		const changeEvent = await page.spyOnEvent('onChange');
 		const component = await page.find('ontario-textarea');
 

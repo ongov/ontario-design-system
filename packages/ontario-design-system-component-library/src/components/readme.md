@@ -24,7 +24,7 @@
 | Ontario Hint Expander | `<ontario-hint-expander>` | Ontario Hint Expander | ✅     | [Link](https://docs.google.com/document/d/1SxZR3bSKVspXmr8yhWkR5FdQ8h44xIWqzI9DZzr9MFQ/edit?usp=sharing) |
 | Ontario Label         | `<ontario-label>`         | Ontario Label         | 🆕     | [Link](https://docs.google.com/document/d/1bZKYrg5hko6fXBeiVDCIOyXRLs_83GJ1-60v_qhvvqs/edit?usp=sharing) |
 | Ontario Radio Button  | `<ontario-radio-button>`  | Ontario Radio Button  | 🆕     | [Link](https://docs.google.com/document/d/1g-cwvhcijYtGHVpxamYxQO5R3n4vvUzwZDGjIc3LW1w/edit?usp=sharing) |
-| Ontario Checkbox  | `<ontario-checkbox>`      | Ontario Checkbox      | ✅     | [Link](https://docs.google.com/document/d/1ZaQ3O3Eewf5XKJA9qBHcyuvV-_dR-MzdHTajYTrpGQg/edit?usp=sharing) |
+| Ontario Checkbox      | `<ontario-checkbox>`      | Ontario Checkbox      | ✅     | [Link](https://docs.google.com/document/d/1ZaQ3O3Eewf5XKJA9qBHcyuvV-_dR-MzdHTajYTrpGQg/edit?usp=sharing) |
 | Ontario Dropdown List | `<ontario-dropdown-list>` | Ontario Dropdown List | 🆕     | [Link](https://docs.google.com/document/d/1UphVrYgt8Dos9iQHmey1Q1xJNvVNEOtWFyG3bnPcGtQ/edit?usp=sharing) |
 
 #### Compound (WIP)

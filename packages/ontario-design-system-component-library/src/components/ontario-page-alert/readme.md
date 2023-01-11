@@ -16,7 +16,8 @@ Example of a page alert with no type passed. This will default to an "informatio
 
 ```html
 <ontario-page-alert heading="Licence plates">
-	ServiceOntario centres may issue either a blue licence plate or a white embossed ‘Yours to Discover’ licence plate depending on availability.
+	ServiceOntario centres may issue either a blue licence plate or a white embossed ‘Yours to Discover’ licence plate
+	depending on availability.
 	<a href="#">Learn more about replacing a licence plate</a>.
 </ontario-page-alert>
 ```
@@ -33,7 +34,6 @@ Example of success page alert type, where the content is passed as a string rath
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property  | Attribute | Description                                                                                                                                                                                      | Type                                                   | Default           |
@@ -41,7 +41,6 @@ Example of success page alert type, where the content is passed as a string rath
 | `content` | `content` | Body for page alert. It can be string or HTML content.                                                                                                                                           | `string`                                               | `undefined`       |
 | `heading` | `heading` | Heading for page alert                                                                                                                                                                           | `string`                                               | `undefined`       |
 | `type`    | `type`    | The type of page alert to render. If no value is provided `informational` alert would be rendered. There are four possible values for page alert (i.e informational, warning, success or error). | `"error" \| "informational" \| "success" \| "warning"` | `'informational'` |
-
 
 ## Dependencies
 
@@ -53,6 +52,7 @@ Example of success page alert type, where the content is passed as a string rath
 - [ontario-icon-alert-error](../ontario-icon)
 
 ### Graph
+
 ```mermaid
 graph TD;
   ontario-page-alert --> ontario-icon-alert-information
@@ -62,6 +62,6 @@ graph TD;
   style ontario-page-alert fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

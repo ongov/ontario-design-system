@@ -1,3 +1,4 @@
+# General
 dist/
 www/
 loader/
@@ -25,6 +26,15 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 .env
 
-# These files are ignored to prevent publishing errors caused by Stencil's autoformatting conflicting with prettier
+# component-lib
 components.d.ts
-readme.md
+
+# component-lib-react
+createComponent.tsx
+createOverlayComponent.tsx
+interfaces.ts
+**/src/components.ts
+**/utils/attachProps.ts
+**/utils/index.tsx
+**/utils/case.ts
+**/utils/dev.ts

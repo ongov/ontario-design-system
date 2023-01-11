@@ -119,32 +119,16 @@ In the following example, all available props are passed through.
 caption='{ "captionText": "Province/territory", "captionType": "heading" }'
 ```
 
-| **Property name** | **Type**                        | **Description**                                                                                         |
-| ----------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `captionText`     | `string`                        | The text to display as the caption (label) for the dropdown-list. This must be implemented.             |
+| **Property name** | **Type**                           | **Description**                                                                                         |
+| ----------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `captionText`     | `string`                           | The text to display as the caption (label) for the dropdown-list. This must be implemented.             |
 | `captionType`     | `"default" \| "large"\| "heading"` | The type of caption to render. This is optional - if no type is passed, the "default" type will render. |
 
 ### Options
 
 ```html
-options='[
-  { 
-		"value": "netflix", 
-		"label": "Netflix"
-	}, 
-	{ 
-		"value": "disney-plus", 
-		"label": "Disney Plus" 
-	}, 
-	{ 
-		"value": "crave", 
-		"label": "Crave" 
-	}, 
-	{ 
-		"value": "prime", 
-		"label": "Prime Video" 
-	}
-]'
+options='[ { "value": "netflix", "label": "Netflix" }, { "value": "disney-plus", "label": "Disney Plus" }, { "value":
+"crave", "label": "Crave" }, { "value": "prime", "label": "Prime Video" } ]'
 ```
 
 | **Property name** | **Type** | **Description**                                                             |
@@ -160,7 +144,6 @@ options='[
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property             | Attribute               | Description                                                                                                                                                                                                                                                                                                  | Type                             | Default     |
@@ -173,7 +156,6 @@ options='[
 | `options`            | `options`               | Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset. | `DropdownOption[] \| string`     | `undefined` |
 | `required`           | `required`              | This is used to determine whether the dropdown list is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).                                                          | `boolean \| undefined`           | `false`     |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

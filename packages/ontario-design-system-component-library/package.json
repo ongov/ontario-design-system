@@ -24,7 +24,8 @@
 		"readme.md"
 	],
 	"scripts": {
-		"build": "stencil build --docs",
+		"build": "npm run build:stencil && npm run format",
+		"build:stencil": "stencil build --docs",
 		"start": "stencil build --dev --watch --serve",
 		"test": "stencil test --spec --e2e",
 		"test:unit": "stencil test --spec",

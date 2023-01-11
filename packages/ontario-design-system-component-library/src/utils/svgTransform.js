@@ -1,15 +1,15 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-  process(src, filePath) {
-    if (path.extname(filePath) !== ".svg") {
-      return src;
-    }
+	process(src, filePath) {
+		if (path.extname(filePath) !== '.svg') {
+			return src;
+		}
 
-    return 'module.exports = {};';
-  },
-  getCacheKey() {
-    // The output is always the same.
-    return 'svgTransform';
-  },
+		return 'module.exports = {};';
+	},
+	getCacheKey() {
+		// The output is always the same.
+		return 'svgTransform';
+	},
 };

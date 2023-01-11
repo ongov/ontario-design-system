@@ -48,8 +48,15 @@ export class OntarioInput implements TextInput {
 	/**
 	 * The width of the input field. If no value is assigned, it will present as the default input width.
 	 */
-	@Prop({ mutable: true }) inputWidth: '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default' =
-		'default';
+	@Prop({ mutable: true }) inputWidth:
+		| '2-char-width'
+		| '3-char-width'
+		| '4-char-width'
+		| '5-char-width'
+		| '7-char-width'
+		| '10-char-width'
+		| '20-char-width'
+		| 'default' = 'default';
 
 	/**
 	 * The name assigned to the input.The name value is used to reference form data after a form is submitted.
@@ -156,7 +163,14 @@ export class OntarioInput implements TextInput {
 
 	@Watch('caption')
 	private updateCaptionState(newValue: Caption | string) {
-		this.captionState = new InputCaption(this.element.tagName, newValue, translations, this.language, false, this.required);
+		this.captionState = new InputCaption(
+			this.element.tagName,
+			newValue,
+			translations,
+			this.language,
+			false,
+			this.required,
+		);
 	}
 
 	/**
@@ -225,7 +239,12 @@ export class OntarioInput implements TextInput {
 					value={this.getValue()}
 					required={!!this.required}
 				/>
-				{this.internalHintExpander && <ontario-hint-expander hint={this.internalHintExpander.hint} content={this.internalHintExpander.content}></ontario-hint-expander>}
+				{this.internalHintExpander && (
+					<ontario-hint-expander
+						hint={this.internalHintExpander.hint}
+						content={this.internalHintExpander.content}
+					></ontario-hint-expander>
+				)}
 			</div>
 		);
 	}
