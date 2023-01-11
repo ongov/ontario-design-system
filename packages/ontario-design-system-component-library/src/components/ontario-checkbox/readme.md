@@ -73,7 +73,8 @@ caption='{ "captionText": "Checkbox legend", "captionType": "large" }'
 The `hintExpander` property is used to include the Hint Expander component underneath the checkbox legend. This is passed in as an object with key-value pairs. This is optional.
 
 ```html
-hintExpander='{ "hint": "This is the hint expander title", "content": "This is the hint expander content - it is only visible when the hint expander title (hint) is toggled" }'
+hintExpander='{ "hint": "This is the hint expander title", "content": "This is the hint expander content - it is only
+visible when the hint expander title (hint) is toggled" }'
 ```
 
 | **Property name** | **Type** | **Description**                                                                                                 |
@@ -86,8 +87,9 @@ hintExpander='{ "hint": "This is the hint expander title", "content": "This is t
 The options property will render out the different checkbox inputs and their labels. These are passed in as objects with key-value pairs, inside an array.
 
 ```html
-options='[ { "value": "checkbox-option-1", "label": "Checkbox option 1" }, { "value": "checkbox-option-2", "label": "Checkbox option 2", "hintExpander": { "hint": "Hint expander
-title for checkbox option 2", "content": "Hint expander content for checkbox option 2" } }, ]'
+options='[ { "value": "checkbox-option-1", "label": "Checkbox option 1" }, { "value": "checkbox-option-2", "label":
+"Checkbox option 2", "hintExpander": { "hint": "Hint expander title for checkbox option 2", "content": "Hint expander
+content for checkbox option 2" } }, ]'
 ```
 
 | **Property name** | **Type**       | **Description**                                                                                                                                             |

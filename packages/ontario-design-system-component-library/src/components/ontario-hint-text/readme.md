@@ -21,7 +21,9 @@ Example of a bare-bones hint text component, the user is passing the `hint` dire
 Example of a hint text that includes the `hint` property, which will override the `This is a hint` text. The `element-id` property has also been added, which is used to establish a relationship between hint text content and elements using the `aria-describedby` attribute.
 
 ```html
-<ontario-hint-text hint="This hint will override the hint text provided as Element Content" element-id="hint-293849">This is a hint</ontario-hint-text>
+<ontario-hint-text hint="This hint will override the hint text provided as Element Content" element-id="hint-293849"
+	>This is a hint</ontario-hint-text
+>
 ```
 
 ## Accessibility

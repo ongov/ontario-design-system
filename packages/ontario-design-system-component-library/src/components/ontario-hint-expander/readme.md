@@ -24,7 +24,11 @@ Example of a bare-bones hint expander component, the user is passing the `hint` 
 Example of a hint expander that includes an `aria-label` attribute, and an `element-id` property which is used to establish a relationship between hint text content and elements using the `aria-describedby` attribute.
 
 ```html
-<ontario-hint-expander hint="This is the hint" content="This is the content" element-id="expander-82913`"></ontario-hint-expander>
+<ontario-hint-expander
+	hint="This is the hint"
+	content="This is the content"
+	element-id="expander-82913`"
+></ontario-hint-expander>
 ```
 
 ## Accessibility

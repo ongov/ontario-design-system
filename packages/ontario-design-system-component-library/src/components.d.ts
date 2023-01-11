@@ -13,7 +13,11 @@ import { DropdownOption } from './components/ontario-dropdown-list/dropdown-opti
 import { DefaultOptions } from './components/ontario-footer/footer-default-option-interface';
 import { ExpandedTwoColumnOptions } from './components/ontario-footer/footer-expanded-two-column-option-interface';
 import { ExpandedThreeColumnOptions } from './components/ontario-footer/footer-expanded-three-column-option-interface';
-import { applicationHeaderInfo, languageToggleOptions, menuItems } from './components/ontario-header/ontario-header.interface';
+import {
+	applicationHeaderInfo,
+	languageToggleOptions,
+	menuItems,
+} from './components/ontario-header/ontario-header.interface';
 import { IconColour, IconSize } from './components/ontario-icon/icon.types';
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
@@ -1277,7 +1281,15 @@ export namespace Components {
 		/**
 		 * The width of the input field. If no value is assigned, it will present as the default input width.
 		 */
-		inputWidth: '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default';
+		inputWidth:
+			| '2-char-width'
+			| '3-char-width'
+			| '4-char-width'
+			| '5-char-width'
+			| '7-char-width'
+			| '10-char-width'
+			| '20-char-width'
+			| 'default';
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */
@@ -3429,7 +3441,15 @@ declare namespace LocalJSX {
 		/**
 		 * The width of the input field. If no value is assigned, it will present as the default input width.
 		 */
-		inputWidth?: '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default';
+		inputWidth?:
+			| '2-char-width'
+			| '3-char-width'
+			| '4-char-width'
+			| '5-char-width'
+			| '7-char-width'
+			| '10-char-width'
+			| '20-char-width'
+			| 'default';
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */
@@ -3710,114 +3730,170 @@ declare module '@stencil/core' {
 			'ontario-header': LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
 			'ontario-hint-expander': LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
 			'ontario-hint-text': LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
-			'ontario-icon-accessibility': LocalJSX.OntarioIconAccessibility & JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;
+			'ontario-icon-accessibility': LocalJSX.OntarioIconAccessibility &
+				JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;
 			'ontario-icon-account': LocalJSX.OntarioIconAccount & JSXBase.HTMLAttributes<HTMLOntarioIconAccountElement>;
 			'ontario-icon-add': LocalJSX.OntarioIconAdd & JSXBase.HTMLAttributes<HTMLOntarioIconAddElement>;
 			'ontario-icon-add-alt': LocalJSX.OntarioIconAddAlt & JSXBase.HTMLAttributes<HTMLOntarioIconAddAltElement>;
-			'ontario-icon-alert-error': LocalJSX.OntarioIconAlertError & JSXBase.HTMLAttributes<HTMLOntarioIconAlertErrorElement>;
-			'ontario-icon-alert-information': LocalJSX.OntarioIconAlertInformation & JSXBase.HTMLAttributes<HTMLOntarioIconAlertInformationElement>;
-			'ontario-icon-alert-success': LocalJSX.OntarioIconAlertSuccess & JSXBase.HTMLAttributes<HTMLOntarioIconAlertSuccessElement>;
-			'ontario-icon-alert-warning': LocalJSX.OntarioIconAlertWarning & JSXBase.HTMLAttributes<HTMLOntarioIconAlertWarningElement>;
+			'ontario-icon-alert-error': LocalJSX.OntarioIconAlertError &
+				JSXBase.HTMLAttributes<HTMLOntarioIconAlertErrorElement>;
+			'ontario-icon-alert-information': LocalJSX.OntarioIconAlertInformation &
+				JSXBase.HTMLAttributes<HTMLOntarioIconAlertInformationElement>;
+			'ontario-icon-alert-success': LocalJSX.OntarioIconAlertSuccess &
+				JSXBase.HTMLAttributes<HTMLOntarioIconAlertSuccessElement>;
+			'ontario-icon-alert-warning': LocalJSX.OntarioIconAlertWarning &
+				JSXBase.HTMLAttributes<HTMLOntarioIconAlertWarningElement>;
 			'ontario-icon-attach': LocalJSX.OntarioIconAttach & JSXBase.HTMLAttributes<HTMLOntarioIconAttachElement>;
-			'ontario-icon-bookmark-off': LocalJSX.OntarioIconBookmarkOff & JSXBase.HTMLAttributes<HTMLOntarioIconBookmarkOffElement>;
-			'ontario-icon-bookmark-on': LocalJSX.OntarioIconBookmarkOn & JSXBase.HTMLAttributes<HTMLOntarioIconBookmarkOnElement>;
+			'ontario-icon-bookmark-off': LocalJSX.OntarioIconBookmarkOff &
+				JSXBase.HTMLAttributes<HTMLOntarioIconBookmarkOffElement>;
+			'ontario-icon-bookmark-on': LocalJSX.OntarioIconBookmarkOn &
+				JSXBase.HTMLAttributes<HTMLOntarioIconBookmarkOnElement>;
 			'ontario-icon-calendar': LocalJSX.OntarioIconCalendar & JSXBase.HTMLAttributes<HTMLOntarioIconCalendarElement>;
 			'ontario-icon-camera': LocalJSX.OntarioIconCamera & JSXBase.HTMLAttributes<HTMLOntarioIconCameraElement>;
-			'ontario-icon-chevron-down': LocalJSX.OntarioIconChevronDown & JSXBase.HTMLAttributes<HTMLOntarioIconChevronDownElement>;
-			'ontario-icon-chevron-left': LocalJSX.OntarioIconChevronLeft & JSXBase.HTMLAttributes<HTMLOntarioIconChevronLeftElement>;
-			'ontario-icon-chevron-right': LocalJSX.OntarioIconChevronRight & JSXBase.HTMLAttributes<HTMLOntarioIconChevronRightElement>;
-			'ontario-icon-chevron-up': LocalJSX.OntarioIconChevronUp & JSXBase.HTMLAttributes<HTMLOntarioIconChevronUpElement>;
+			'ontario-icon-chevron-down': LocalJSX.OntarioIconChevronDown &
+				JSXBase.HTMLAttributes<HTMLOntarioIconChevronDownElement>;
+			'ontario-icon-chevron-left': LocalJSX.OntarioIconChevronLeft &
+				JSXBase.HTMLAttributes<HTMLOntarioIconChevronLeftElement>;
+			'ontario-icon-chevron-right': LocalJSX.OntarioIconChevronRight &
+				JSXBase.HTMLAttributes<HTMLOntarioIconChevronRightElement>;
+			'ontario-icon-chevron-up': LocalJSX.OntarioIconChevronUp &
+				JSXBase.HTMLAttributes<HTMLOntarioIconChevronUpElement>;
 			'ontario-icon-clock': LocalJSX.OntarioIconClock & JSXBase.HTMLAttributes<HTMLOntarioIconClockElement>;
 			'ontario-icon-close': LocalJSX.OntarioIconClose & JSXBase.HTMLAttributes<HTMLOntarioIconCloseElement>;
-			'ontario-icon-close-header': LocalJSX.OntarioIconCloseHeader & JSXBase.HTMLAttributes<HTMLOntarioIconCloseHeaderElement>;
+			'ontario-icon-close-header': LocalJSX.OntarioIconCloseHeader &
+				JSXBase.HTMLAttributes<HTMLOntarioIconCloseHeaderElement>;
 			'ontario-icon-cloud': LocalJSX.OntarioIconCloud & JSXBase.HTMLAttributes<HTMLOntarioIconCloudElement>;
 			'ontario-icon-collapse': LocalJSX.OntarioIconCollapse & JSXBase.HTMLAttributes<HTMLOntarioIconCollapseElement>;
-			'ontario-icon-credit-card': LocalJSX.OntarioIconCreditCard & JSXBase.HTMLAttributes<HTMLOntarioIconCreditCardElement>;
+			'ontario-icon-credit-card': LocalJSX.OntarioIconCreditCard &
+				JSXBase.HTMLAttributes<HTMLOntarioIconCreditCardElement>;
 			'ontario-icon-delete': LocalJSX.OntarioIconDelete & JSXBase.HTMLAttributes<HTMLOntarioIconDeleteElement>;
 			'ontario-icon-document': LocalJSX.OntarioIconDocument & JSXBase.HTMLAttributes<HTMLOntarioIconDocumentElement>;
 			'ontario-icon-download': LocalJSX.OntarioIconDownload & JSXBase.HTMLAttributes<HTMLOntarioIconDownloadElement>;
-			'ontario-icon-dropdown-arrow': LocalJSX.OntarioIconDropdownArrow & JSXBase.HTMLAttributes<HTMLOntarioIconDropdownArrowElement>;
+			'ontario-icon-dropdown-arrow': LocalJSX.OntarioIconDropdownArrow &
+				JSXBase.HTMLAttributes<HTMLOntarioIconDropdownArrowElement>;
 			'ontario-icon-edit': LocalJSX.OntarioIconEdit & JSXBase.HTMLAttributes<HTMLOntarioIconEditElement>;
 			'ontario-icon-email': LocalJSX.OntarioIconEmail & JSXBase.HTMLAttributes<HTMLOntarioIconEmailElement>;
 			'ontario-icon-expand': LocalJSX.OntarioIconExpand & JSXBase.HTMLAttributes<HTMLOntarioIconExpandElement>;
 			'ontario-icon-export': LocalJSX.OntarioIconExport & JSXBase.HTMLAttributes<HTMLOntarioIconExportElement>;
 			'ontario-icon-facebook': LocalJSX.OntarioIconFacebook & JSXBase.HTMLAttributes<HTMLOntarioIconFacebookElement>;
-			'ontario-icon-facebook-alt': LocalJSX.OntarioIconFacebookAlt & JSXBase.HTMLAttributes<HTMLOntarioIconFacebookAltElement>;
-			'ontario-icon-favourite-off': LocalJSX.OntarioIconFavouriteOff & JSXBase.HTMLAttributes<HTMLOntarioIconFavouriteOffElement>;
-			'ontario-icon-favourite-on': LocalJSX.OntarioIconFavouriteOn & JSXBase.HTMLAttributes<HTMLOntarioIconFavouriteOnElement>;
+			'ontario-icon-facebook-alt': LocalJSX.OntarioIconFacebookAlt &
+				JSXBase.HTMLAttributes<HTMLOntarioIconFacebookAltElement>;
+			'ontario-icon-favourite-off': LocalJSX.OntarioIconFavouriteOff &
+				JSXBase.HTMLAttributes<HTMLOntarioIconFavouriteOffElement>;
+			'ontario-icon-favourite-on': LocalJSX.OntarioIconFavouriteOn &
+				JSXBase.HTMLAttributes<HTMLOntarioIconFavouriteOnElement>;
 			'ontario-icon-filter': LocalJSX.OntarioIconFilter & JSXBase.HTMLAttributes<HTMLOntarioIconFilterElement>;
 			'ontario-icon-flickr': LocalJSX.OntarioIconFlickr & JSXBase.HTMLAttributes<HTMLOntarioIconFlickrElement>;
 			'ontario-icon-grid': LocalJSX.OntarioIconGrid & JSXBase.HTMLAttributes<HTMLOntarioIconGridElement>;
 			'ontario-icon-help': LocalJSX.OntarioIconHelp & JSXBase.HTMLAttributes<HTMLOntarioIconHelpElement>;
 			'ontario-icon-instagram': LocalJSX.OntarioIconInstagram & JSXBase.HTMLAttributes<HTMLOntarioIconInstagramElement>;
-			'ontario-icon-interac-en': LocalJSX.OntarioIconInteracEn & JSXBase.HTMLAttributes<HTMLOntarioIconInteracEnElement>;
-			'ontario-icon-interac-en-alt': LocalJSX.OntarioIconInteracEnAlt & JSXBase.HTMLAttributes<HTMLOntarioIconInteracEnAltElement>;
-			'ontario-icon-interac-fr': LocalJSX.OntarioIconInteracFr & JSXBase.HTMLAttributes<HTMLOntarioIconInteracFrElement>;
-			'ontario-icon-interac-fr-alt': LocalJSX.OntarioIconInteracFrAlt & JSXBase.HTMLAttributes<HTMLOntarioIconInteracFrAltElement>;
+			'ontario-icon-interac-en': LocalJSX.OntarioIconInteracEn &
+				JSXBase.HTMLAttributes<HTMLOntarioIconInteracEnElement>;
+			'ontario-icon-interac-en-alt': LocalJSX.OntarioIconInteracEnAlt &
+				JSXBase.HTMLAttributes<HTMLOntarioIconInteracEnAltElement>;
+			'ontario-icon-interac-fr': LocalJSX.OntarioIconInteracFr &
+				JSXBase.HTMLAttributes<HTMLOntarioIconInteracFrElement>;
+			'ontario-icon-interac-fr-alt': LocalJSX.OntarioIconInteracFrAlt &
+				JSXBase.HTMLAttributes<HTMLOntarioIconInteracFrAltElement>;
 			'ontario-icon-linkedin': LocalJSX.OntarioIconLinkedin & JSXBase.HTMLAttributes<HTMLOntarioIconLinkedinElement>;
-			'ontario-icon-linkedin-alt': LocalJSX.OntarioIconLinkedinAlt & JSXBase.HTMLAttributes<HTMLOntarioIconLinkedinAltElement>;
+			'ontario-icon-linkedin-alt': LocalJSX.OntarioIconLinkedinAlt &
+				JSXBase.HTMLAttributes<HTMLOntarioIconLinkedinAltElement>;
 			'ontario-icon-list': LocalJSX.OntarioIconList & JSXBase.HTMLAttributes<HTMLOntarioIconListElement>;
 			'ontario-icon-live-chat': LocalJSX.OntarioIconLiveChat & JSXBase.HTMLAttributes<HTMLOntarioIconLiveChatElement>;
-			'ontario-icon-location-off': LocalJSX.OntarioIconLocationOff & JSXBase.HTMLAttributes<HTMLOntarioIconLocationOffElement>;
-			'ontario-icon-location-on': LocalJSX.OntarioIconLocationOn & JSXBase.HTMLAttributes<HTMLOntarioIconLocationOnElement>;
+			'ontario-icon-location-off': LocalJSX.OntarioIconLocationOff &
+				JSXBase.HTMLAttributes<HTMLOntarioIconLocationOffElement>;
+			'ontario-icon-location-on': LocalJSX.OntarioIconLocationOn &
+				JSXBase.HTMLAttributes<HTMLOntarioIconLocationOnElement>;
 			'ontario-icon-lock-off': LocalJSX.OntarioIconLockOff & JSXBase.HTMLAttributes<HTMLOntarioIconLockOffElement>;
 			'ontario-icon-lock-on': LocalJSX.OntarioIconLockOn & JSXBase.HTMLAttributes<HTMLOntarioIconLockOnElement>;
 			'ontario-icon-map': LocalJSX.OntarioIconMap & JSXBase.HTMLAttributes<HTMLOntarioIconMapElement>;
-			'ontario-icon-mastercard': LocalJSX.OntarioIconMastercard & JSXBase.HTMLAttributes<HTMLOntarioIconMastercardElement>;
-			'ontario-icon-mastercard-alt': LocalJSX.OntarioIconMastercardAlt & JSXBase.HTMLAttributes<HTMLOntarioIconMastercardAltElement>;
-			'ontario-icon-media-fast-forward': LocalJSX.OntarioIconMediaFastForward & JSXBase.HTMLAttributes<HTMLOntarioIconMediaFastForwardElement>;
-			'ontario-icon-media-fast-rewind': LocalJSX.OntarioIconMediaFastRewind & JSXBase.HTMLAttributes<HTMLOntarioIconMediaFastRewindElement>;
-			'ontario-icon-media-pause': LocalJSX.OntarioIconMediaPause & JSXBase.HTMLAttributes<HTMLOntarioIconMediaPauseElement>;
-			'ontario-icon-media-play': LocalJSX.OntarioIconMediaPlay & JSXBase.HTMLAttributes<HTMLOntarioIconMediaPlayElement>;
-			'ontario-icon-media-stop': LocalJSX.OntarioIconMediaStop & JSXBase.HTMLAttributes<HTMLOntarioIconMediaStopElement>;
+			'ontario-icon-mastercard': LocalJSX.OntarioIconMastercard &
+				JSXBase.HTMLAttributes<HTMLOntarioIconMastercardElement>;
+			'ontario-icon-mastercard-alt': LocalJSX.OntarioIconMastercardAlt &
+				JSXBase.HTMLAttributes<HTMLOntarioIconMastercardAltElement>;
+			'ontario-icon-media-fast-forward': LocalJSX.OntarioIconMediaFastForward &
+				JSXBase.HTMLAttributes<HTMLOntarioIconMediaFastForwardElement>;
+			'ontario-icon-media-fast-rewind': LocalJSX.OntarioIconMediaFastRewind &
+				JSXBase.HTMLAttributes<HTMLOntarioIconMediaFastRewindElement>;
+			'ontario-icon-media-pause': LocalJSX.OntarioIconMediaPause &
+				JSXBase.HTMLAttributes<HTMLOntarioIconMediaPauseElement>;
+			'ontario-icon-media-play': LocalJSX.OntarioIconMediaPlay &
+				JSXBase.HTMLAttributes<HTMLOntarioIconMediaPlayElement>;
+			'ontario-icon-media-stop': LocalJSX.OntarioIconMediaStop &
+				JSXBase.HTMLAttributes<HTMLOntarioIconMediaStopElement>;
 			'ontario-icon-menu': LocalJSX.OntarioIconMenu & JSXBase.HTMLAttributes<HTMLOntarioIconMenuElement>;
-			'ontario-icon-menu-header': LocalJSX.OntarioIconMenuHeader & JSXBase.HTMLAttributes<HTMLOntarioIconMenuHeaderElement>;
-			'ontario-icon-microphone-off': LocalJSX.OntarioIconMicrophoneOff & JSXBase.HTMLAttributes<HTMLOntarioIconMicrophoneOffElement>;
-			'ontario-icon-microphone-on': LocalJSX.OntarioIconMicrophoneOn & JSXBase.HTMLAttributes<HTMLOntarioIconMicrophoneOnElement>;
-			'ontario-icon-more-vertical': LocalJSX.OntarioIconMoreVertical & JSXBase.HTMLAttributes<HTMLOntarioIconMoreVerticalElement>;
-			'ontario-icon-new-window': LocalJSX.OntarioIconNewWindow & JSXBase.HTMLAttributes<HTMLOntarioIconNewWindowElement>;
+			'ontario-icon-menu-header': LocalJSX.OntarioIconMenuHeader &
+				JSXBase.HTMLAttributes<HTMLOntarioIconMenuHeaderElement>;
+			'ontario-icon-microphone-off': LocalJSX.OntarioIconMicrophoneOff &
+				JSXBase.HTMLAttributes<HTMLOntarioIconMicrophoneOffElement>;
+			'ontario-icon-microphone-on': LocalJSX.OntarioIconMicrophoneOn &
+				JSXBase.HTMLAttributes<HTMLOntarioIconMicrophoneOnElement>;
+			'ontario-icon-more-vertical': LocalJSX.OntarioIconMoreVertical &
+				JSXBase.HTMLAttributes<HTMLOntarioIconMoreVerticalElement>;
+			'ontario-icon-new-window': LocalJSX.OntarioIconNewWindow &
+				JSXBase.HTMLAttributes<HTMLOntarioIconNewWindowElement>;
 			'ontario-icon-next': LocalJSX.OntarioIconNext & JSXBase.HTMLAttributes<HTMLOntarioIconNextElement>;
-			'ontario-icon-notification': LocalJSX.OntarioIconNotification & JSXBase.HTMLAttributes<HTMLOntarioIconNotificationElement>;
-			'ontario-icon-password-hide': LocalJSX.OntarioIconPasswordHide & JSXBase.HTMLAttributes<HTMLOntarioIconPasswordHideElement>;
-			'ontario-icon-password-show': LocalJSX.OntarioIconPasswordShow & JSXBase.HTMLAttributes<HTMLOntarioIconPasswordShowElement>;
+			'ontario-icon-notification': LocalJSX.OntarioIconNotification &
+				JSXBase.HTMLAttributes<HTMLOntarioIconNotificationElement>;
+			'ontario-icon-password-hide': LocalJSX.OntarioIconPasswordHide &
+				JSXBase.HTMLAttributes<HTMLOntarioIconPasswordHideElement>;
+			'ontario-icon-password-show': LocalJSX.OntarioIconPasswordShow &
+				JSXBase.HTMLAttributes<HTMLOntarioIconPasswordShowElement>;
 			'ontario-icon-phone': LocalJSX.OntarioIconPhone & JSXBase.HTMLAttributes<HTMLOntarioIconPhoneElement>;
 			'ontario-icon-photo': LocalJSX.OntarioIconPhoto & JSXBase.HTMLAttributes<HTMLOntarioIconPhotoElement>;
-			'ontario-icon-pin-location-off': LocalJSX.OntarioIconPinLocationOff & JSXBase.HTMLAttributes<HTMLOntarioIconPinLocationOffElement>;
-			'ontario-icon-pin-location-on': LocalJSX.OntarioIconPinLocationOn & JSXBase.HTMLAttributes<HTMLOntarioIconPinLocationOnElement>;
+			'ontario-icon-pin-location-off': LocalJSX.OntarioIconPinLocationOff &
+				JSXBase.HTMLAttributes<HTMLOntarioIconPinLocationOffElement>;
+			'ontario-icon-pin-location-on': LocalJSX.OntarioIconPinLocationOn &
+				JSXBase.HTMLAttributes<HTMLOntarioIconPinLocationOnElement>;
 			'ontario-icon-previous': LocalJSX.OntarioIconPrevious & JSXBase.HTMLAttributes<HTMLOntarioIconPreviousElement>;
 			'ontario-icon-print': LocalJSX.OntarioIconPrint & JSXBase.HTMLAttributes<HTMLOntarioIconPrintElement>;
 			'ontario-icon-remove': LocalJSX.OntarioIconRemove & JSXBase.HTMLAttributes<HTMLOntarioIconRemoveElement>;
-			'ontario-icon-remove-alt': LocalJSX.OntarioIconRemoveAlt & JSXBase.HTMLAttributes<HTMLOntarioIconRemoveAltElement>;
+			'ontario-icon-remove-alt': LocalJSX.OntarioIconRemoveAlt &
+				JSXBase.HTMLAttributes<HTMLOntarioIconRemoveAltElement>;
 			'ontario-icon-replay': LocalJSX.OntarioIconReplay & JSXBase.HTMLAttributes<HTMLOntarioIconReplayElement>;
 			'ontario-icon-rss-feed': LocalJSX.OntarioIconRssFeed & JSXBase.HTMLAttributes<HTMLOntarioIconRssFeedElement>;
 			'ontario-icon-save': LocalJSX.OntarioIconSave & JSXBase.HTMLAttributes<HTMLOntarioIconSaveElement>;
 			'ontario-icon-search': LocalJSX.OntarioIconSearch & JSXBase.HTMLAttributes<HTMLOntarioIconSearchElement>;
-			'ontario-icon-search-white': LocalJSX.OntarioIconSearchWhite & JSXBase.HTMLAttributes<HTMLOntarioIconSearchWhiteElement>;
-			'ontario-icon-sentiment-1': LocalJSX.OntarioIconSentiment1 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment1Element>;
-			'ontario-icon-sentiment-2': LocalJSX.OntarioIconSentiment2 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment2Element>;
-			'ontario-icon-sentiment-3': LocalJSX.OntarioIconSentiment3 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment3Element>;
-			'ontario-icon-sentiment-4': LocalJSX.OntarioIconSentiment4 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment4Element>;
-			'ontario-icon-sentiment-5': LocalJSX.OntarioIconSentiment5 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment5Element>;
+			'ontario-icon-search-white': LocalJSX.OntarioIconSearchWhite &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSearchWhiteElement>;
+			'ontario-icon-sentiment-1': LocalJSX.OntarioIconSentiment1 &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSentiment1Element>;
+			'ontario-icon-sentiment-2': LocalJSX.OntarioIconSentiment2 &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSentiment2Element>;
+			'ontario-icon-sentiment-3': LocalJSX.OntarioIconSentiment3 &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSentiment3Element>;
+			'ontario-icon-sentiment-4': LocalJSX.OntarioIconSentiment4 &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSentiment4Element>;
+			'ontario-icon-sentiment-5': LocalJSX.OntarioIconSentiment5 &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSentiment5Element>;
 			'ontario-icon-settings': LocalJSX.OntarioIconSettings & JSXBase.HTMLAttributes<HTMLOntarioIconSettingsElement>;
 			'ontario-icon-share': LocalJSX.OntarioIconShare & JSXBase.HTMLAttributes<HTMLOntarioIconShareElement>;
 			'ontario-icon-sort': LocalJSX.OntarioIconSort & JSXBase.HTMLAttributes<HTMLOntarioIconSortElement>;
 			'ontario-icon-tag': LocalJSX.OntarioIconTag & JSXBase.HTMLAttributes<HTMLOntarioIconTagElement>;
-			'ontario-icon-text-message': LocalJSX.OntarioIconTextMessage & JSXBase.HTMLAttributes<HTMLOntarioIconTextMessageElement>;
+			'ontario-icon-text-message': LocalJSX.OntarioIconTextMessage &
+				JSXBase.HTMLAttributes<HTMLOntarioIconTextMessageElement>;
 			'ontario-icon-timer': LocalJSX.OntarioIconTimer & JSXBase.HTMLAttributes<HTMLOntarioIconTimerElement>;
-			'ontario-icon-transport-bicycle': LocalJSX.OntarioIconTransportBicycle & JSXBase.HTMLAttributes<HTMLOntarioIconTransportBicycleElement>;
-			'ontario-icon-transport-bus': LocalJSX.OntarioIconTransportBus & JSXBase.HTMLAttributes<HTMLOntarioIconTransportBusElement>;
-			'ontario-icon-transport-car': LocalJSX.OntarioIconTransportCar & JSXBase.HTMLAttributes<HTMLOntarioIconTransportCarElement>;
-			'ontario-icon-transport-walk': LocalJSX.OntarioIconTransportWalk & JSXBase.HTMLAttributes<HTMLOntarioIconTransportWalkElement>;
+			'ontario-icon-transport-bicycle': LocalJSX.OntarioIconTransportBicycle &
+				JSXBase.HTMLAttributes<HTMLOntarioIconTransportBicycleElement>;
+			'ontario-icon-transport-bus': LocalJSX.OntarioIconTransportBus &
+				JSXBase.HTMLAttributes<HTMLOntarioIconTransportBusElement>;
+			'ontario-icon-transport-car': LocalJSX.OntarioIconTransportCar &
+				JSXBase.HTMLAttributes<HTMLOntarioIconTransportCarElement>;
+			'ontario-icon-transport-walk': LocalJSX.OntarioIconTransportWalk &
+				JSXBase.HTMLAttributes<HTMLOntarioIconTransportWalkElement>;
 			'ontario-icon-tty': LocalJSX.OntarioIconTty & JSXBase.HTMLAttributes<HTMLOntarioIconTtyElement>;
 			'ontario-icon-twitter': LocalJSX.OntarioIconTwitter & JSXBase.HTMLAttributes<HTMLOntarioIconTwitterElement>;
-			'ontario-icon-twitter-alt': LocalJSX.OntarioIconTwitterAlt & JSXBase.HTMLAttributes<HTMLOntarioIconTwitterAltElement>;
+			'ontario-icon-twitter-alt': LocalJSX.OntarioIconTwitterAlt &
+				JSXBase.HTMLAttributes<HTMLOntarioIconTwitterAltElement>;
 			'ontario-icon-upload': LocalJSX.OntarioIconUpload & JSXBase.HTMLAttributes<HTMLOntarioIconUploadElement>;
 			'ontario-icon-video': LocalJSX.OntarioIconVideo & JSXBase.HTMLAttributes<HTMLOntarioIconVideoElement>;
 			'ontario-icon-visa': LocalJSX.OntarioIconVisa & JSXBase.HTMLAttributes<HTMLOntarioIconVisaElement>;
-			'ontario-icon-vote-dislike': LocalJSX.OntarioIconVoteDislike & JSXBase.HTMLAttributes<HTMLOntarioIconVoteDislikeElement>;
+			'ontario-icon-vote-dislike': LocalJSX.OntarioIconVoteDislike &
+				JSXBase.HTMLAttributes<HTMLOntarioIconVoteDislikeElement>;
 			'ontario-icon-vote-like': LocalJSX.OntarioIconVoteLike & JSXBase.HTMLAttributes<HTMLOntarioIconVoteLikeElement>;
 			'ontario-icon-vpn-key': LocalJSX.OntarioIconVpnKey & JSXBase.HTMLAttributes<HTMLOntarioIconVpnKeyElement>;
-			'ontario-icon-wheelchair': LocalJSX.OntarioIconWheelchair & JSXBase.HTMLAttributes<HTMLOntarioIconWheelchairElement>;
+			'ontario-icon-wheelchair': LocalJSX.OntarioIconWheelchair &
+				JSXBase.HTMLAttributes<HTMLOntarioIconWheelchairElement>;
 			'ontario-icon-wifi': LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
 			'ontario-icon-youtube': LocalJSX.OntarioIconYoutube & JSXBase.HTMLAttributes<HTMLOntarioIconYoutubeElement>;
 			'ontario-input': LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;

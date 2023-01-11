@@ -105,7 +105,13 @@ export class OntarioButton implements Button {
 	validateLabelContent(newValue: string) {
 		if (validatePropExists(newValue)) {
 			const message = new ConsoleMessageClass();
-			message.addDesignSystemTag().addMonospaceText(' label ').addRegularText('for').addMonospaceText(' <ontario-button> ').addRegularText('was not provided').printMessage();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' label ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-button> ')
+				.addRegularText('was not provided')
+				.printMessage();
 		}
 	}
 

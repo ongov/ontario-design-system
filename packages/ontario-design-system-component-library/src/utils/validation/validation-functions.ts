@@ -14,7 +14,7 @@ export function validatePropExists(newValue: string): boolean {
  * @returns enum value if a match is found or undefined if no matches are found
  */
 export function validateValueAgainstEnum<T extends String, E extends Object>(value: T, enumType: E): T {
-	return Object.values(enumType).find(type => type === value.toLowerCase());
+	return Object.values(enumType).find((type) => type === value.toLowerCase());
 }
 
 export function validateObjectExists(newValue: object): boolean {

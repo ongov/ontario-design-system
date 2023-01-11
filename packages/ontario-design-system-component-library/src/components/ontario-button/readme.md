@@ -21,7 +21,9 @@ Example of a bare-bones button component, the label for the button is provided. 
 Example of the button component, which includes the label, the button ID, the native HTML button type, the type of button, and the `aria-label` - which will override the default value of the 'aria-label' HTML attribute.
 
 ```html
-<ontario-button aria-label="Example" buttonId="example" htmlType="button" type="tertiary">Element Content</ontario-button>
+<ontario-button aria-label="Example" buttonId="example" htmlType="button" type="tertiary"
+	>Element Content</ontario-button
+>
 ```
 
 This is another example of a button component, where the user is passing in the label through the `label` property - overriding the 'Element Content' value, and the resulting label text will display as `Example`.
