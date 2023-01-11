@@ -19,6 +19,7 @@
 		"compile": "npm run tsc",
 		"tsc": "tsc -p .",
 		"rollup": "rollup -c",
+		"format": "prettier --write .",
 		"copy:images": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/assets/**/*\" dist/assets/images",
 		"copy:fonts": "copyfiles -E -u 6 \"node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/fonts/**/*\" dist/assets/fonts",
 		"copy:favicons": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/favicons/**/*\" dist/assets/favicons",
@@ -45,6 +46,7 @@
 		"jest": "^23.0.0",
 		"jest-dom": "^3.0.2",
 		"np": "^3.1.0",
+		"prettier": "^2.8.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"typescript": "^3.3.4000"
