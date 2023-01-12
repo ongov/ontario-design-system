@@ -1,19 +1,24 @@
-const autoprefixer = require('gulp-autoprefixer');
-const concat = require('gulp-concat');
-const minify = require('gulp-clean-css');
-const gulpif = require('gulp-if');
-const sass = require('gulp-sass')(require('sass'));
-const del = require('del');
-const path = require('path');
-const fs = require('fs/promises');
-const { dest, series, src, task, parallel, watch } = require('gulp');
-const glob = require('glob-promise');
+import { deleteAsync } from 'del';
+
+import autoprefixer from 'gulp-autoprefixer';
+import concat from 'gulp-concat';
+import minify from 'gulp-clean-css';
+import gulpif from 'gulp-if';
+import glob from 'glob-promise';
+import fs from 'fs/promises';
+
+import gulpSass from 'gulp-sass';
+import dartSass from 'sass';
+const sass = gulpSass(dartSass);
+
+import gulp from 'gulp';
+const { dest, series, src, task, parallel, watch } = gulp;
 
 const distDir = './dist';
 const srcDir = './src';
 const styleDir = './src/styles';
-const fontsDir = ['./src/fonts'];
-const componentsDirPath = path.join(__dirname, 'src/styles/components');
+const fontsDir = ['./src/fonts/**'];
+const componentsDirPath = './src/styles/components';
 const dsGlobalStylesPackageDir = 'node_modules/@ontario-digital-service/ontario-design-system-global-styles';
 const dsComponentPackageDir = 'node_modules/@ontario-digital-service/ontario-design-system-component-library';
 
@@ -25,7 +30,7 @@ const dsComponentPackageDir = 'node_modules/@ontario-digital-service/ontario-des
  *   [debug]:boolean
  * }} opts Configuration options
  */
-const processSass = opts => {
+const processSass = (opts) => {
 	const sassOptions = {
 		outputStyle: 'expanded',
 		includePaths: ['./node_modules'],
@@ -63,10 +68,10 @@ task('copy:component-styles', () => {
 	return src(`${dsComponentPackageDir}/src/components/**/*.scss`).pipe(dest(`${srcDir}/styles/components/`));
 });
 
-task('generate:components-import-file', async done => {
+task('generate:components-import-file', async (done) => {
 	const globPattern = `${componentsDirPath}/**/*.scss`;
 	const componentSassFilePaths = await glob(globPattern, null);
-	const contentLines = componentSassFilePaths.map(filePath => `@forward "${filePath}";`);
+	const contentLines = componentSassFilePaths.map((filePath) => `@forward "${filePath}";`);
 	if (contentLines.length > 0) {
 		try {
 			await fs.writeFile(`${styleDir}/scss/6-components/_all.component.scss`, contentLines.join('\n'));
@@ -79,7 +84,7 @@ task('generate:components-import-file', async done => {
 	done();
 });
 
-task('sass:build', done => {
+task('sass:build', (done) => {
 	processSass({
 		compress: false,
 		debug: false,
@@ -87,7 +92,7 @@ task('sass:build', done => {
 	});
 });
 
-task('sass:minify', done => {
+task('sass:minify', (done) => {
 	processSass({
 		compress: true,
 		callback: done,
@@ -95,27 +100,27 @@ task('sass:minify', done => {
 });
 
 task('sass:copy-dist', () => {
-	return src(`${styleDir}/scss/**/*.scss`).pipe(dest(`${distDir}/styles/scss`));
+	return src(`${styleDir}/**`).pipe(dest(`${distDir}/styles/`));
 });
 
 task('sass:build-minify', parallel('sass:build', 'sass:minify'));
 
 // Move all non-style related fonts to the dist/fonts folder
-task('fonts-move', done => {
-	return src(fontsDir).pipe(dest(distDir));
+task('fonts-move', (done) => {
+	return src(fontsDir).pipe(dest(`${distDir}/fonts`));
 });
 
-task('watch', done => {
+task('watch', (done) => {
 	watch(styleDir, { ignoreInitial: false }, parallel('sass:build-minify'));
 	done();
 });
 
-task('clean:dist', done => {
-	return del(distDir);
+task('clean:dist', async (done) => {
+	return await deleteAsync(distDir);
 });
 
-task('clean:src', done => {
-	return del(srcDir);
+task('clean:src', async (done) => {
+	return await deleteAsync(srcDir);
 });
 
 task(
