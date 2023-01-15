@@ -2292,7 +2292,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input or mouse event occurs.
          */
-        "onChangeEvent"?: (event: OntarioCheckboxesCustomEvent<KeyboardEvent>) => void;
+        "onChangeEvent"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
           * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
           * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",   }   name="ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]'   required="true" > </ontario-checkboxes>
@@ -2406,7 +2406,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input or mouse event occurs.
          */
-        "onToggleExpanderEvent"?: (event: OntarioHintExpanderCustomEvent<any>) => void;
+        "onToggleExpanderEvent"?: (event: CustomEvent<any>) => void;
     }
     interface OntarioHintText {
         /**
@@ -3536,15 +3536,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onBlurEvent"?: (event: OntarioInputCustomEvent<void>) => void;
+        "onBlurEvent"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onChangeEvent"?: (event: OntarioInputCustomEvent<KeyboardEvent>) => void;
+        "onChangeEvent"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
           * Emitted when the input gains focus.
          */
-        "onFocusEvent"?: (event: OntarioInputCustomEvent<void>) => void;
+        "onFocusEvent"?: (event: CustomEvent<void>) => void;
         /**
           * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
          */
@@ -3642,15 +3642,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onBlurEvent"?: (event: OntarioTextareaCustomEvent<void>) => void;
+        "onBlurEvent"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onChangeEvent"?: (event: OntarioTextareaCustomEvent<KeyboardEvent>) => void;
+        "onChangeEvent"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
           * Emitted when the input gains focus.
          */
-        "onFocusEvent"?: (event: OntarioTextareaCustomEvent<void>) => void;
+        "onFocusEvent"?: (event: CustomEvent<void>) => void;
         /**
           * This is used to determine whether the textarea is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
          */
@@ -3661,9 +3661,9 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface TestLanguageToggle {
-        "language"?: Language | string;
-        "onHeaderLanguageToggled"?: (event: TestLanguageToggleCustomEvent<string>) => void;
-        "onSetAppLanguage"?: (event: TestLanguageToggleCustomEvent<string>) => void;
+        "language"?: string;
+        "onHeaderLanguageToggled"?: (event: CustomEvent<string>) => void;
+        "onSetAppLanguage"?: (event: CustomEvent<string>) => void;
     }
     interface IntrinsicElements {
         "ontario-back-to-top": OntarioBackToTop;
