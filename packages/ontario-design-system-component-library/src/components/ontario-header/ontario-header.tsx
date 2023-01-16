@@ -339,7 +339,6 @@ export class OntarioHeader {
 		this.parseApplicationHeaderInfo();
 		this.parseMenuItems();
 		this.parseLanguage();
-		this.fetchOntarioMenu();
 	}
 
 	componentDidRender() {
