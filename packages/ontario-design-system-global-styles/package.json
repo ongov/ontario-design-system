@@ -1,6 +1,6 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-global-styles",
-	"version": "2.3.0-alpha.1",
+	"version": "2.3.0-alpha.2",
 	"private": false,
 	"description": "This is a global styles package for the Ontario Design System",
 	"style": "dist/styles/css/compiled/ontario-theme.min.css",
@@ -40,7 +40,7 @@
 	],
 	"license": "ISC",
 	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-design-tokens": "2.3.0-alpha.1"
+		"@ontario-digital-service/ontario-design-system-design-tokens": "2.3.0-alpha.2"
 	},
 	"devDependencies": {
 		"del": "^7.0.0",
