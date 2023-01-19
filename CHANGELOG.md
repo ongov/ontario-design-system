@@ -1,3 +1,16 @@
+# 2.3.0-alpha.2 (2023-01-18)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-complete-styles, @ontario-digital-service/ontario-design-system-component-library:** build fixes b5ef8bc
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-complete-styles, @ontario-digital-service/ontario-design-system-component-library, @ontario-digital-service/ontario-design-system-global-styles:** added ontario-design-system-complete-styles package 817bd3d
+- **@ontario-digital-service/ontario-design-system-component-library, @ontario-digital-service/ontario-design-system-global-styles:** creating a release branch 74aee17
+- **@ontario-digital-service/ontario-design-system-component-library:** creating a release branch 716cbe8
+- **@ontario-digital-service/ontario-design-system-global-styles:** creating a release branch 271c672
+
 # 2.3.0-alpha.1 (2023-01-11)
 
 ### Bug Fixes

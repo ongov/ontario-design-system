@@ -1,5 +1,5 @@
-@use '../2-tools/mixins/grid.mixins' as gridMixins;
 @use '../1-variables/grid.variables' as gridVariables;
+@use '../2-tools/mixins/grid.mixins' as gridMixins;
 
 @include gridMixins.ontario-exports('grid') {
 	.ontario-row {
