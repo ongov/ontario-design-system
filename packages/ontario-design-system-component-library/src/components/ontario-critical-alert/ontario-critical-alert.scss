@@ -1,0 +1,62 @@
+@use '../../global.scss';
+
+$ontario-critical-alert-icon-size: 28px;
+
+.ontario-critical-alert {
+	background-color: global.$ontario-colour-warning;
+	font-weight: global.$ontario-font-weights-normal;
+	margin: global.$spacing-0;
+	padding: global.$spacing-4 0;
+	position: relative;
+	z-index: 10;
+}
+
+.ontario-critical-alert__body {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.ontario-critical-alert__icon {
+	display: flex;
+
+	svg {
+		width: $ontario-critical-alert-icon-size;
+		height: $ontario-critical-alert-icon-size;
+		margin: global.$spacing-0 0.85rem global.$spacing-0 global.$spacing-0;
+	}
+}
+
+.ontario-critical-alert p {
+	margin: global.$spacing-0;
+	padding: global.$spacing-0;
+	line-height: 1.8;
+}
+
+.ontario-critical-alert a {
+	color: global.$ontario-colour-black;
+	font-weight: global.$ontario-font-weights-bold;
+
+	&:hover,
+	&:focus {
+		text-decoration: none;
+	}
+
+	&:visited {
+		color: global.$ontario-colour-black;
+	}
+}
+
+// Slotted content styles
+.ontario-critical-alert ::slotted(a) {
+	color: global.$ontario-colour-black !important;
+	font-weight: global.$ontario-font-weights-bold;
+}
+
+.ontario-critical-alert ::slotted(a:hover),
+.ontario-critical-alert ::slotted(a:focus) {
+	text-decoration: none !important;
+}
+
+.ontario-critical-alert ::slotted(a:visited) {
+	color: global.$ontario-colour-black;
+}
