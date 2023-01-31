@@ -1,3 +1,10 @@
+# 2.3.0-alpha.3 (2023-01-31)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-complete-styles:** fixed complete styles package name e8a11e9
+- **global-styles:** reorder @forwards to import them once 2068cf3
+
 # 2.3.0-alpha.2 (2023-01-18)
 
 ### Bug Fixes
