@@ -1,4 +1,4 @@
-export function validatePropExists(newValue: string): boolean {
+export function validatePropExists(newValue: string | HTMLElement): boolean {
 	// Check if new value that is passed in is a string and is not empty
 	const isNewValueBlank = typeof newValue !== 'string' || newValue === '';
 

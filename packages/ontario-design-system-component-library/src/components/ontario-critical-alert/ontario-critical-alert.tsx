@@ -10,7 +10,7 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 })
 export class OntarioCriticalAlert implements CriticalAlert {
 	/**
-	 * Content for critical alert message. It can be string or HTML content.
+	 * Content for critical alert message. It can be either a string or HTML content. The content is already wrapped in a paragraph tag, so if using HTML content, the paragraph tag can be ommitted.
 	 *
 	 * @example
 	 * <ontario-critical-alert content="COVID-19 State of emergency extended until May 12, 2020."></ontario-critical-alert>
@@ -21,7 +21,7 @@ export class OntarioCriticalAlert implements CriticalAlert {
 	 *  <a href="#">COVID-19 State of emergency</a> extended until May 12, 2020.
 	 * </ontario-critical-alert>
 	 */
-	@Prop() content: string;
+	@Prop() content: string | HTMLElement;
 
 	@Watch('content')
 	validateCriticalAlertContent() {
@@ -41,7 +41,7 @@ export class OntarioCriticalAlert implements CriticalAlert {
 	/**
 	 * Print the quote warning message
 	 */
-	validateContent(newValue: string) {
+	validateContent(newValue: string | HTMLElement) {
 		if (validatePropExists(newValue)) {
 			const message = new ConsoleMessageClass();
 			message
@@ -49,7 +49,7 @@ export class OntarioCriticalAlert implements CriticalAlert {
 				.addMonospaceText(' content ')
 				.addRegularText('for')
 				.addMonospaceText(' <ontario-critical-alert> ')
-				.addRegularText('was not provided')
+				.addRegularText('was not provided.')
 				.printMessage();
 		}
 	}
