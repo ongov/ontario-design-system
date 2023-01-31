@@ -1,6 +1,6 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-complete-styles",
-	"version": "2.3.0-alpha.2",
+	"version": "2.3.0-alpha.3",
 	"private": false,
 	"description": "This is a complete styles package for the Ontario Design System",
 	"style": "dist/styles/css/compiled/ontario-theme.min.css",
@@ -30,8 +30,8 @@
 	"license": "Apache-2.0",
 	"dependencies": {
 		"@ontario-digital-service/ontario-design-system-design-tokens": "2.3.0-alpha.2",
-		"@ontario-digital-service/ontario-design-system-global-styles": "2.3.0-alpha.2",
-		"@ontario-digital-service/ontario-design-system-component-library": "2.3.0-alpha.2"
+		"@ontario-digital-service/ontario-design-system-global-styles": "2.3.0-alpha.3",
+		"@ontario-digital-service/ontario-design-system-component-library": "2.3.0-alpha.3"
 	},
 	"devDependencies": {
 		"del": "^7.0.0",
