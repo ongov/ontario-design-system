@@ -1,5 +1,7 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Watch } from '@stencil/core';
 import { CriticalAlert } from './ontario-critical-alert.interface';
+import { validatePropExists } from '../../utils/validation/validation-functions';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 @Component({
 	tag: 'ontario-critical-alert',
@@ -16,10 +18,15 @@ export class OntarioCriticalAlert implements CriticalAlert {
 	 * or
 	 *
 	 * <ontario-critical-alert>
-	 *  <p><a href="#">COVID-19 State of emergency</a> extended until May 12, 2020. </p>
+	 *  <a href="#">COVID-19 State of emergency</a> extended until May 12, 2020.
 	 * </ontario-critical-alert>
 	 */
 	@Prop() content: string;
+
+	@Watch('content')
+	validateCriticalAlertContent() {
+		this.validateContent(this.content);
+	}
 
 	renderContent() {
 		const content = this.content;
@@ -29,6 +36,26 @@ export class OntarioCriticalAlert implements CriticalAlert {
 		}
 
 		return <slot />;
+	}
+
+	/**
+	 * Print the quote warning message
+	 */
+	validateContent(newValue: string) {
+		if (validatePropExists(newValue)) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' content ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-critical-alert> ')
+				.addRegularText('was not provided')
+				.printMessage();
+		}
+	}
+
+	componentWillLoad() {
+		this.validateCriticalAlertContent();
 	}
 
 	render() {

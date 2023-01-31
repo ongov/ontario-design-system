@@ -106,7 +106,7 @@ export namespace Components {
     interface OntarioCriticalAlert {
         /**
           * Content for critical alert message. It can be string or HTML content.
-          * @example <ontario-critical-alert content="COVID-19 State of emergency extended until May 12, 2020."></ontario-critical-alert>  or  <ontario-critical-alert>  <p><a href="#">COVID-19 State of emergency</a> extended until May 12, 2020. </p> </ontario-critical-alert>
+          * @example <ontario-critical-alert content="COVID-19 State of emergency extended until May 12, 2020."></ontario-critical-alert>  or  <ontario-critical-alert>  <a href="#">COVID-19 State of emergency</a> extended until May 12, 2020. </ontario-critical-alert>
          */
         "content": string;
     }
@@ -2399,7 +2399,7 @@ declare namespace LocalJSX {
     interface OntarioCriticalAlert {
         /**
           * Content for critical alert message. It can be string or HTML content.
-          * @example <ontario-critical-alert content="COVID-19 State of emergency extended until May 12, 2020."></ontario-critical-alert>  or  <ontario-critical-alert>  <p><a href="#">COVID-19 State of emergency</a> extended until May 12, 2020. </p> </ontario-critical-alert>
+          * @example <ontario-critical-alert content="COVID-19 State of emergency extended until May 12, 2020."></ontario-critical-alert>  or  <ontario-critical-alert>  <a href="#">COVID-19 State of emergency</a> extended until May 12, 2020. </ontario-critical-alert>
          */
         "content"?: string;
     }
