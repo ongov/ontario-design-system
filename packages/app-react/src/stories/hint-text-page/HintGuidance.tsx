@@ -13,15 +13,14 @@ export default function HintGuidance() {
 								use short and descriptive language
 							</li>
 							<li>
-								
 									help users understand what they will see <strong>before they click</strong>
-								
+
+									<ul>
+										<li>
+											for example, if the hint expander is an image of a circled permit number, the hint expander link text could say “Where is my permit number?”
+										</li>
+									</ul>
 							</li>
-							<ul>
-								<li>
-									for example, if the hint expander is an image of a circled permit number, the hint expander link text could say “Where is my permit number?”
-								</li>
-							</ul>
 						</ul>
 					</p>
 				</div>

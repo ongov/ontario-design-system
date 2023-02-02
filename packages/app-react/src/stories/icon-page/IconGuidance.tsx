@@ -54,10 +54,11 @@ export default function IconWhenToUse() {
 						</li>
 						<li>
 							used to represent <strong>“universal recognition”</strong> as opposed to “universal representation”
+
+							<ul>
+								<li>for example, a wheelchair is often used for accessibility even though it does not represent all types of disabilities</li>
+							</ul>
 						</li>
-						<ul>
-							<li>for example, a wheelchair is often used for accessibility even though it does not represent all types of disabilities</li>
-						</ul>
 						<li>
 							<strong>useful</strong>
 							<ul>

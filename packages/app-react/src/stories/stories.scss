@@ -12,14 +12,3 @@
 	padding: $spacing-5;
 	background-color: $ontario-greyscale-5;
 }
-
-hr {
-	border-bottom: $spacing-1 solid #ccc;
-    border-top: none;
-    border-left: none;
-	margin: $spacing-7 $spacing-0;
-}
-
-li {
-	@extend p;
-}
