@@ -22,20 +22,6 @@ import { IconColour, IconSize } from './components/ontario-icon/icon.types';
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 export namespace Components {
-	interface MyComponent {
-		/**
-		 * The first name
-		 */
-		first: string;
-		/**
-		 * The last name
-		 */
-		last: string;
-		/**
-		 * The middle name
-		 */
-		middle: string;
-	}
 	interface OntarioBlockquote {
 		/**
 		 * Optional text to be displayed as the attribution (the author) of the quote.
@@ -1426,11 +1412,6 @@ export interface TestLanguageToggleCustomEvent<T> extends CustomEvent<T> {
 	target: HTMLTestLanguageToggleElement;
 }
 declare global {
-	interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-	var HTMLMyComponentElement: {
-		prototype: HTMLMyComponentElement;
-		new (): HTMLMyComponentElement;
-	};
 	interface HTMLOntarioBlockquoteElement extends Components.OntarioBlockquote, HTMLStencilElement {}
 	var HTMLOntarioBlockquoteElement: {
 		prototype: HTMLOntarioBlockquoteElement;
@@ -2047,7 +2028,6 @@ declare global {
 		new (): HTMLTestLanguageToggleElement;
 	};
 	interface HTMLElementTagNameMap {
-		'my-component': HTMLMyComponentElement;
 		'ontario-blockquote': HTMLOntarioBlockquoteElement;
 		'ontario-button': HTMLOntarioButtonElement;
 		'ontario-checkboxes': HTMLOntarioCheckboxesElement;
@@ -2174,20 +2154,6 @@ declare global {
 	}
 }
 declare namespace LocalJSX {
-	interface MyComponent {
-		/**
-		 * The first name
-		 */
-		first?: string;
-		/**
-		 * The last name
-		 */
-		last?: string;
-		/**
-		 * The middle name
-		 */
-		middle?: string;
-	}
 	interface OntarioBlockquote {
 		/**
 		 * Optional text to be displayed as the attribution (the author) of the quote.
@@ -3591,7 +3557,6 @@ declare namespace LocalJSX {
 		onSetAppLanguage?: (event: TestLanguageToggleCustomEvent<string>) => void;
 	}
 	interface IntrinsicElements {
-		'my-component': MyComponent;
 		'ontario-blockquote': OntarioBlockquote;
 		'ontario-button': OntarioButton;
 		'ontario-checkboxes': OntarioCheckboxes;
@@ -3721,7 +3686,6 @@ export { LocalJSX as JSX };
 declare module '@stencil/core' {
 	export namespace JSX {
 		interface IntrinsicElements {
-			'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
 			'ontario-blockquote': LocalJSX.OntarioBlockquote & JSXBase.HTMLAttributes<HTMLOntarioBlockquoteElement>;
 			'ontario-button': LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
 			'ontario-checkboxes': LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
