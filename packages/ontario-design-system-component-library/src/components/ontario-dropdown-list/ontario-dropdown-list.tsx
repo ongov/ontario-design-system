@@ -4,6 +4,7 @@ import { Caption } from '../../utils/input-caption/caption.interface';
 import { DropdownOption } from './dropdown-option.interface';
 import { Dropdown } from './dropdown.interface';
 import { v4 as uuid } from 'uuid';
+import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 import { validateObjectExists, validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { default as translations } from '../../translations/global.i18n.json';
@@ -106,6 +107,31 @@ export class OntarioDropdownList implements Dropdown {
 	@Prop() isEmptyStartOption?: boolean | string = false;
 
 	/**
+	 * Hint text for Ontario Dropdown. This is optional.
+	 */
+	@Prop() hintText?: string;
+
+	/**
+	 * Used to include the Hint Expander component underneath the dropdown list box.
+	 * This is passed in as an object with key-value pairs. This is optional.
+	 *
+	 * @example
+	 * <ontario-dropdown-list
+	 *   caption='{
+	 *     "caption": "What province do you live in?",
+	 *     "captionType": "heading",
+	 *   }
+	 *   hint-expander='{
+	 *    "hint": "Hint expander",
+	 *    "content": "This is the content"
+	 *   }'
+	 *   required="true"
+	 * >
+	 * </ontario-dropdown-list>
+	 */
+	@Prop() hintExpander?: HintExpander | string;
+
+	/**
 	 * Instantiate an InputCaption object for internal logic use
 	 */
 	@State() private captionState: InputCaption;
@@ -114,6 +140,11 @@ export class OntarioDropdownList implements Dropdown {
 	 * The options are re-assigned to the internalOptions array.
 	 */
 	@State() private internalOptions: DropdownOption[];
+
+	/**
+	 * The hint expander options are re-assigned to the internalHintExpander array.
+	 */
+	@State() private internalHintExpander: HintExpander;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -198,6 +229,15 @@ export class OntarioDropdownList implements Dropdown {
 		this.updateCaptionState(this.caption);
 	}
 
+	@Watch('hintExpander')
+	private parseHintExpander() {
+		const hintExpander = this.hintExpander;
+		if (hintExpander) {
+			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
+			else this.internalHintExpander = hintExpander;
+		}
+	}
+
 	public getId(): string {
 		return this.elementId ?? '';
 	}
@@ -208,20 +248,28 @@ export class OntarioDropdownList implements Dropdown {
 		};
 	}
 
+	private getClass(): string {
+		return this.hintExpander
+			? `ontario-input ontario-dropdown ontario-dropdown-hint-expander--true`
+			: `ontario-input ontario-dropdown`;
+	}
+
 	componentWillLoad() {
 		this.updateCaptionState(this.caption);
 		this.parseOptions();
 		this.validateName(this.name);
 		this.validateOptions(this.internalOptions);
 		this.elementId = this.elementId ?? uuid();
+		this.parseHintExpander();
 	}
 
 	render() {
 		return (
 			<div class="ontario-form-group">
-				{this.captionState.getCaption(this.getId())}
+				{this.captionState.getCaption(this.getId(), this.internalHintExpander ? true : false)}
+				{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
 				<select
-					class="ontario-input ontario-dropdown"
+					class={this.getClass()}
 					id={this.getId()}
 					name={this.name}
 					style={this.getDropdownArrow()}
@@ -232,6 +280,12 @@ export class OntarioDropdownList implements Dropdown {
 
 					{this.internalOptions?.map((dropdown) => <option value={dropdown.value}>{dropdown.label}</option>) ?? ''}
 				</select>
+				{this.internalHintExpander && (
+					<ontario-hint-expander
+						hint={this.internalHintExpander.hint}
+						content={this.internalHintExpander.content}
+					></ontario-hint-expander>
+				)}
 			</div>
 		);
 	}

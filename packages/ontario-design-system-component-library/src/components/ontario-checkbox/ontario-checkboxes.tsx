@@ -257,7 +257,7 @@ export class OntarioCheckboxes implements Checkboxes {
 		return (
 			<div class="ontario-form-group">
 				<fieldset class="ontario-fieldset">
-					{this.captionState.getCaption()}
+					{this.captionState.getCaption('', this.internalHintExpander ? true : false)}
 					{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
 
 					<div class="ontario-checkboxes">
@@ -275,6 +275,11 @@ export class OntarioCheckboxes implements Checkboxes {
 								/>
 								<label class="ontario-checkboxes__label" htmlFor={checkbox.value}>
 									{checkbox.label}
+									{checkbox.hintExpander && (
+										<span class="ontario-show-for-sr">
+											More information on "{checkbox.label.toLowerCase()}" field is available in the next element
+										</span>
+									)}
 								</label>
 
 								<div class="ontario-checkboxes__hint-expander">

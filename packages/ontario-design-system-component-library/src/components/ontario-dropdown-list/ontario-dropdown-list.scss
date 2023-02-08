@@ -17,3 +17,7 @@
 .ontario-dropdown option {
 	font-weight: normal;
 }
+
+.ontario-dropdown.ontario-dropdown-hint-expander--true {
+	margin-bottom: global.$spacing-4;
+}

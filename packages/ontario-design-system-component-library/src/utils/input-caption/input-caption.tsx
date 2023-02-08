@@ -78,16 +78,33 @@ export class InputCaption implements CaptionInfo {
 	 * @param captionFor Set the `htmlFor` attribute
 	 * @returns element containing the caption for the input
 	 */
-	getCaption = (captionFor?: string): HTMLElement => {
+	getCaption = (captionFor?: string, hasHintExpander: boolean = false): HTMLElement => {
+		const captionName = this.captionText.toLowerCase();
+		console.log(captionName);
 		const captionContent = this.isLegend ? (
 			<legend class={this.getClass()}>
 				{this.captionType === 'heading' ? <h1>{this.captionText}</h1> : this.captionText}
 				{this.getRequiredFlagElement()}
+				{hasHintExpander && this.componentTagName === 'ontario-checkboxes' ? (
+					<span class="ontario-show-for-sr">
+						More information on {this.captionText.toLowerCase()}" field is available in the element after all checkbox
+						items
+					</span>
+				) : (
+					<span class="ontario-show-for-sr">
+						More information on "{this.captionText.toLowerCase()}" field is available in the next element
+					</span>
+				)}
 			</legend>
 		) : (
 			<label htmlFor={captionFor} class={this.getClass()}>
 				{this.captionText}
 				{this.getRequiredFlagElement()}
+				{hasHintExpander && (
+					<span class="ontario-show-for-sr">
+						More information on "{this.captionText.toLowerCase()}" field is available in the next element
+					</span>
+				)}
 			</label>
 		);
 
