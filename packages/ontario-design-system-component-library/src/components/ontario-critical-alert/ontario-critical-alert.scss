@@ -1,6 +1,9 @@
 @use '../../global.scss';
 
 $ontario-critical-alert-icon-size: 28px;
+$ontario-critical-alert-z-index: 10;
+$ontario-critical-alert-svg-margin--custom: 0.85rem;
+$ontario-critical-alert-line-height: 1.8;
 
 .ontario-critical-alert {
 	background-color: global.$ontario-colour-warning;
@@ -8,7 +11,7 @@ $ontario-critical-alert-icon-size: 28px;
 	margin: global.$spacing-0;
 	padding: global.$spacing-4 global.$spacing-0;
 	position: relative;
-	z-index: 10;
+	z-index: $ontario-critical-alert-z-index;
 }
 
 .ontario-critical-alert__body {
@@ -22,14 +25,14 @@ $ontario-critical-alert-icon-size: 28px;
 	svg {
 		width: $ontario-critical-alert-icon-size;
 		height: $ontario-critical-alert-icon-size;
-		margin: global.$spacing-0 0.85rem global.$spacing-0 global.$spacing-0;
+		margin: global.$spacing-0 $ontario-critical-alert-svg-margin--custom global.$spacing-0 global.$spacing-0;
 	}
 }
 
 .ontario-critical-alert p {
 	margin: global.$spacing-0;
 	padding: global.$spacing-0;
-	line-height: 1.8;
+	line-height: $ontario-critical-alert-line-height;
 }
 
 .ontario-critical-alert a {

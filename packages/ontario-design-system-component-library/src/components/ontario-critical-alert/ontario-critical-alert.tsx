@@ -24,8 +24,20 @@ export class OntarioCriticalAlert implements CriticalAlert {
 	@Prop() content: string | HTMLElement;
 
 	@Watch('content')
-	validateCriticalAlertContent() {
-		this.validateContent(this.content);
+	validateCriticalAlertContent(newValue: string | HTMLElement) {
+		if (validatePropExists(newValue)) {
+			/**
+			 * Print the quote warning message
+			 */
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' content ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-critical-alert> ')
+				.addRegularText('was not provided.')
+				.printMessage();
+		}
 	}
 
 	private renderContent() {
@@ -38,24 +50,8 @@ export class OntarioCriticalAlert implements CriticalAlert {
 		return <slot />;
 	}
 
-	/**
-	 * Print the quote warning message
-	 */
-	private validateContent(newValue: string | HTMLElement) {
-		if (validatePropExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' content ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-critical-alert> ')
-				.addRegularText('was not provided.')
-				.printMessage();
-		}
-	}
-
 	componentWillLoad() {
-		this.validateCriticalAlertContent();
+		this.validateCriticalAlertContent(this.content);
 	}
 
 	render() {
