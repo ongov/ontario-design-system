@@ -6,7 +6,7 @@ $ontario-critical-alert-icon-size: 28px;
 	background-color: global.$ontario-colour-warning;
 	font-weight: global.$ontario-font-weights-normal;
 	margin: global.$spacing-0;
-	padding: global.$spacing-4 0;
+	padding: global.$spacing-4 global.$spacing-0;
 	position: relative;
 	z-index: 10;
 }
