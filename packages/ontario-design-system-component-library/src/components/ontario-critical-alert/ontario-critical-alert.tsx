@@ -28,7 +28,7 @@ export class OntarioCriticalAlert implements CriticalAlert {
 		this.validateContent(this.content);
 	}
 
-	renderContent() {
+	private renderContent() {
 		const content = this.content;
 
 		if (typeof content === 'string') {
