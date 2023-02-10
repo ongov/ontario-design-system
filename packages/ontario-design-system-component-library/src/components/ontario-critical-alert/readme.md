@@ -12,7 +12,7 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
-Example of a critical alert component, where the user is explicitly passing in the content through the `content` property - this will override any HTML content passed as a child of the critical alert component, and the resulting content text passed into the `content` property will be displayed.
+One way to use the critical alert component is by explicitly passing in the content through the `content` property - this will override any HTML content passed as a child of the critical alert component (see the next example), and the resulting content text passed into the `content` property will be displayed.
 
 ```html
 <ontario-critical-alert content="This is the content for the critical alert" />
