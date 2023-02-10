@@ -41,7 +41,7 @@ export class OntarioCriticalAlert implements CriticalAlert {
 	/**
 	 * Print the quote warning message
 	 */
-	validateContent(newValue: string | HTMLElement) {
+	private validateContent(newValue: string | HTMLElement) {
 		if (validatePropExists(newValue)) {
 			const message = new ConsoleMessageClass();
 			message
