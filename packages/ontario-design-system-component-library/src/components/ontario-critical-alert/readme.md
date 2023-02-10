@@ -18,7 +18,7 @@ One way to use the critical alert component is by explicitly passing in the cont
 <ontario-critical-alert content="This is the content for the critical alert" />
 ```
 
-This is another example of a critical alert. This example passes in HTML content as the child of the critical alert rather than through the `content` property. Note that no paragraph tag is passed as the first child of the HTML content, as it is already included in the components render method.
+Alternatively, HTML content can be supplied as the child of the critical alert rather than through the `content` property. Note that no paragraph tag is passed as the first child of the HTML content, as it is already included in the components render method.
 
 ```html
 <ontario-critical-alert>
