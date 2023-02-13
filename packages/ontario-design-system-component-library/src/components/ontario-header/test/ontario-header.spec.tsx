@@ -290,7 +290,7 @@ describe('ontario-header', () => {
                     </span>
                   </a>
                   <div class="ontario-hide-for-large">
-                    <button aria-controls="ontario-search-form-container" class="ontario-header-button ontario-header-button--without-outline ontario-header__search-toggler" id="ontario-header-search-toggler">
+                    <button aria-controls="ontario-search-form-container" aria-label="open search" class="ontario-header-button ontario-header-button--without-outline ontario-header__search-toggler" id="ontario-header-search-toggler">
                       <div class="ontario-icon-container"></div>
                       <span class="ontario-show ontario-show-for-medium">
                         Search
