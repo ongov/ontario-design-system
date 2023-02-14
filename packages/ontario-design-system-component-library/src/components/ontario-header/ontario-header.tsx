@@ -4,6 +4,7 @@ import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.s
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
 import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
 import OntarioIconSearchWhite from '../ontario-icon/assets/ontario-icon-search-white.svg';
+import OntarioHeaderDefaultData from './ontario-header-default-data.json'
 
 import { menuItems, applicationHeaderInfo, languageToggleOptions, ontarioMenuItems } from './ontario-header.interface';
 
@@ -150,8 +151,8 @@ export class OntarioHeader {
 		if (this.menuToggle) this.menuToggle = !this.menuToggle;
 	}
 
-	@Watch('menuItems')
 	parseMenuItems() {
+		this.menuItems = OntarioHeaderDefaultData;
 		if (typeof this.menuItems !== 'undefined') {
 			if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
 				this.itemState = JSON.parse(this.menuItems);
@@ -159,7 +160,6 @@ export class OntarioHeader {
 				this.itemState = this.menuItems;
 			}
 		}
-
 	}
 
 	@Watch('languageToggleOptions')
@@ -218,7 +218,7 @@ export class OntarioHeader {
 	 * Call to Ontario Menu API to fetch linksets to populate header component
 	 */
 	async fetchOntarioMenu() {
-		const apiUrl = 'https://www.ontario.ca/system/menu/main/linkset';
+		const apiUrl = 'https://www.ontario.ca/system/menu/main/linksetsss';
 		const response = await fetch(apiUrl)
 			.then(response => response.json())
 			.then(json => json.linkset[0].item as ontarioMenuItems[])
@@ -321,12 +321,10 @@ export class OntarioHeader {
 		this.parseApplicationHeaderInfo();
 		this.parseMenuItems();
 		this.parseLanguage();
-		// this.fetchOntarioMenu();
 	}
 
 	componentDidRender() {
-		// this.fetchOntarioMenu();
-		console.log('hey hey hey');
+		this.fetchOntarioMenu();
 	}
 
 	/**
