@@ -118,7 +118,7 @@ export class OntarioHeader {
 	/**
 	 * State for Ontario Menu API response data
 	 */
-	@State() apiResponseSuccesful: boolean;
+	@State() apiResponseSuccesful: true;
 
 	/**
 	 * State for Ontario Menu API response data
@@ -169,11 +169,12 @@ export class OntarioHeader {
 	parseMenuItems() {
 		if (typeof this.menuItems !== 'undefined') {
 			if (!Array.isArray(this.menuItems)) {
-				this.itemState = JSON.parse(this.menuItems);
+				this.generatedMenu = JSON.parse(this.menuItems);
 			} else {
-				this.itemState = this.menuItems;
+				this.generatedMenu = this.menuItems;
 			}
 		}
+
 	}
 
 	@Watch('languageToggleOptions')
@@ -231,24 +232,17 @@ export class OntarioHeader {
 	/**
 	 * Call to Ontario Menu API to fetch linksets to populate header component
 	 */
-	fetchOntarioMenu() {
-		fetch('https://www.ontario.ca/system/menu/main/linkset')
-			.then(response => {
-				return response.json()
-			}).then((data) => {
-				this.apiResponseSuccesful = true;
-				this.apiResponseData = data.linkset[0].item;
-			})
+	async fetchOntarioMenu() {
+		const apiUrl = 'https://www.ontario.ca/system/menu/main/linkset';
+		const response = await fetch(apiUrl)
+			.then(response => response.json())
+			.then(json => json.linkset[0].item as ontarioMenuItems[])
 			.catch(() => {
-				this.apiResponseSuccesful = false;
-				console.log(
-					'Unable to retrieve data from Ontario Menu API'
-				);
+				console.error('Unable to retrieve data from Ontario Menu API');
+				return [];
 			});
-	}
 
-	private menuToDisplay() {
-		this.generatedMenu = this.apiResponseSuccesful ? this.apiResponseData : this.itemState;
+			return this.generatedMenu = response;
 	}
 
 	/**
@@ -343,7 +337,8 @@ export class OntarioHeader {
 	}
 
 	componentDidRender() {
-		this.menuToDisplay();
+		// this.fetchOntarioMenu();
+		console.log('hey hey hey');
 	}
 
 	/**
