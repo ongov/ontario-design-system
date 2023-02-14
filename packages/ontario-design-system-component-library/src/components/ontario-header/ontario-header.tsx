@@ -111,21 +111,6 @@ export class OntarioHeader {
 	@State() searchToggle?: boolean = false;
 
 	/**
-	 * State for Ontario Menu API response data
-	 */
-	@State() apiResponseData: ontarioMenuItems[];
-
-	/**
-	 * State for Ontario Menu API response data
-	 */
-	@State() apiResponseSuccesful: true;
-
-	/**
-	 * State for Ontario Menu API response data
-	 */
-	@State() private generatedMenu: ontarioMenuItems[] | menuItems[] ;
-
-	/**
 	 * Assigning values to elements to use them as ref
 	 */
 	header!: HTMLElement;
@@ -168,10 +153,10 @@ export class OntarioHeader {
 	@Watch('menuItems')
 	parseMenuItems() {
 		if (typeof this.menuItems !== 'undefined') {
-			if (!Array.isArray(this.menuItems)) {
-				this.generatedMenu = JSON.parse(this.menuItems);
+			if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
+				this.itemState = JSON.parse(this.menuItems);
 			} else {
-				this.generatedMenu = this.menuItems;
+				this.itemState = this.menuItems;
 			}
 		}
 
@@ -242,7 +227,10 @@ export class OntarioHeader {
 				return [];
 			});
 
-			return this.generatedMenu = response;
+			if (response.length > 0) {
+				this.itemState = response;
+			}
+		return;
 	}
 
 	/**
@@ -333,7 +321,7 @@ export class OntarioHeader {
 		this.parseApplicationHeaderInfo();
 		this.parseMenuItems();
 		this.parseLanguage();
-		this.fetchOntarioMenu();
+		// this.fetchOntarioMenu();
 	}
 
 	componentDidRender() {
@@ -451,8 +439,8 @@ export class OntarioHeader {
 								<ul>
 									{/* If API call is succesful, return linkset from Ontario Menu API.
 											If API call is unsuccessful, use static menu.*/}
-										{this.generatedMenu?.map((item,  index:number) => {
-												const lastLink = index + 1 === this.generatedMenu.length ? true : false;
+										{this.itemState?.map((item,  index:number) => {
+												const lastLink = index + 1 === this.itemState.length ? true : false;
 												const activeLinkRegex = item.title.replace(/\s+/g, '-').toLowerCase();
 												const linkIsActive = window.location.pathname.includes(activeLinkRegex) ? true : false;
 												return this.generateMenuItem(item.href, item.title, linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', undefined, lastLink);
