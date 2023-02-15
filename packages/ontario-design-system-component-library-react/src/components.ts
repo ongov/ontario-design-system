@@ -40,6 +40,7 @@ export const OntarioIconCloseHeader = /*@__PURE__*/createReactComponent<JSX.Onta
 export const OntarioIconCloud = /*@__PURE__*/createReactComponent<JSX.OntarioIconCloud, HTMLOntarioIconCloudElement>('ontario-icon-cloud');
 export const OntarioIconCollapse = /*@__PURE__*/createReactComponent<JSX.OntarioIconCollapse, HTMLOntarioIconCollapseElement>('ontario-icon-collapse');
 export const OntarioIconCreditCard = /*@__PURE__*/createReactComponent<JSX.OntarioIconCreditCard, HTMLOntarioIconCreditCardElement>('ontario-icon-credit-card');
+export const OntarioIconCriticalAlertWarning = /*@__PURE__*/createReactComponent<JSX.OntarioIconCriticalAlertWarning, HTMLOntarioIconCriticalAlertWarningElement>('ontario-icon-critical-alert-warning');
 export const OntarioIconDelete = /*@__PURE__*/createReactComponent<JSX.OntarioIconDelete, HTMLOntarioIconDeleteElement>('ontario-icon-delete');
 export const OntarioIconDocument = /*@__PURE__*/createReactComponent<JSX.OntarioIconDocument, HTMLOntarioIconDocumentElement>('ontario-icon-document');
 export const OntarioIconDownload = /*@__PURE__*/createReactComponent<JSX.OntarioIconDownload, HTMLOntarioIconDownloadElement>('ontario-icon-download');
