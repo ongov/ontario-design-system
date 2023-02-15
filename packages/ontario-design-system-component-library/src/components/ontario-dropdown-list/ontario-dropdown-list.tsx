@@ -266,7 +266,7 @@ export class OntarioDropdownList implements Dropdown {
 	render() {
 		return (
 			<div class="ontario-form-group">
-				{this.captionState.getCaption(this.getId(), this.internalHintExpander ? true : false)}
+				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
 				<select
 					class={this.getClass()}

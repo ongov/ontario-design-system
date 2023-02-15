@@ -246,7 +246,7 @@ export class OntarioRadioButtons implements RadioButtons {
 		return (
 			<div class="ontario-form-group">
 				<fieldset class="ontario-fieldset">
-					{this.captionState.getCaption('', this.internalHintExpander ? true : false)}
+					{this.captionState.getCaption(undefined, !!this.internalHintExpander)}
 					{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
 					<div class="ontario-radios">
 						{this.internalOptions?.map((radioOption) => (
@@ -261,11 +261,8 @@ export class OntarioRadioButtons implements RadioButtons {
 								/>
 								<label class="ontario-radios__label" htmlFor={radioOption.elementId}>
 									{radioOption.label}
-									{radioOption.hintExpander && (
-										<span class="ontario-show-for-sr">
-											More information on "{radioOption.label.toLowerCase()}" field is available in the next element
-										</span>
-									)}
+									{radioOption.hintExpander &&
+										this.captionState.getHintExpanderAccessibilityText(radioOption.label, true)}
 								</label>
 
 								<div class="ontario-radios__hint-expander">
