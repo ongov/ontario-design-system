@@ -218,7 +218,7 @@ export class OntarioHeader {
 	 * Call to Ontario Menu API to fetch linksets to populate header component
 	 */
 	async fetchOntarioMenu() {
-		const apiUrl = 'https://www.ontario.ca/system/menu/main/linksetsss';
+		const apiUrl = 'https://www.ontario.ca/system/menu/main/linkset';
 		const response = await fetch(apiUrl)
 			.then(response => response.json())
 			.then(json => json.linkset[0].item as ontarioMenuItems[])
@@ -228,7 +228,10 @@ export class OntarioHeader {
 			});
 
 			if (response.length > 0) {
-				this.itemState = response;
+				const externalMenuItems = response.map(item => {
+					return { href: item.href, title: item.title };
+				});
+				this.itemState = externalMenuItems;
 			}
 		return;
 	}
@@ -325,6 +328,7 @@ export class OntarioHeader {
 
 	componentDidRender() {
 		this.fetchOntarioMenu();
+		// console.log('hey hey hey')
 	}
 
 	/**
