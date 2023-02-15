@@ -227,7 +227,7 @@ export class OntarioHeader {
 	async fetchOntarioMenu() {
 		// If menu has already been fetched and contains dynamic menu items, do not run fetch again
 		if (!this.isDynamic) {
-			const apiUrl = 'https://www.ontario.ca/system/menu/main/linksets';
+			const apiUrl = 'https://www.ontario.ca/system/menu/main/linkset';
 			const response = await fetch(apiUrl)
 				.then(response => response.json())
 				.then(json => json.linkset[0].item as ontarioMenuItems[])
@@ -339,7 +339,6 @@ export class OntarioHeader {
 
 	componentDidRender() {
 		this.fetchOntarioMenu();
-		console.log('hey hey hey')
 	}
 
 	/**
@@ -453,9 +452,9 @@ export class OntarioHeader {
 									{/* If API call is succesful, return linkset from Ontario Menu API.
 											If API call is unsuccessful, use static menu.*/}
 										{this.itemState?.map((item,  index:number) => {
-												const lastLink = index + 1 === this.itemState.length ? true : false;
+												const lastLink = index + 1 === this.itemState.length;
 												const activeLinkRegex = item.title.replace(/\s+/g, '-').toLowerCase();
-												const linkIsActive = window.location.pathname.includes(activeLinkRegex) ? true : false;
+												const linkIsActive = window.location.pathname.includes(activeLinkRegex);
 												return this.generateMenuItem(item.href, item.title, linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', undefined, lastLink);
 										})}
 								</ul>
