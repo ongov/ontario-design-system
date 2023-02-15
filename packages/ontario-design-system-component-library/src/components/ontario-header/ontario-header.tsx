@@ -53,7 +53,7 @@ export class OntarioHeader {
 	/**
 	 * The items that will go inside the menu
 	 */
-	@Prop() menuItems: menuItems[] | string;
+	@Prop() menuItems: menuItems[] | string = OntarioHeaderDefaultData;
 
 	/**
 	 * The link that contains the french page
@@ -90,6 +90,11 @@ export class OntarioHeader {
 	 *	</ontario-header>
 	 */
 	@State() private itemState: menuItems[];
+
+/**
+	 * Check to see if menu is dynamic or static
+*/
+	@State() private isDynamic: boolean;
 
 
 	/**
@@ -151,13 +156,15 @@ export class OntarioHeader {
 		if (this.menuToggle) this.menuToggle = !this.menuToggle;
 	}
 
+	@Watch('menuItems')
 	parseMenuItems() {
-		this.menuItems = OntarioHeaderDefaultData;
 		if (typeof this.menuItems !== 'undefined') {
 			if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
 				this.itemState = JSON.parse(this.menuItems);
+				this.isDynamic = false;
 			} else {
 				this.itemState = this.menuItems;
+				this.isDynamic = false;
 			}
 		}
 	}
@@ -218,21 +225,25 @@ export class OntarioHeader {
 	 * Call to Ontario Menu API to fetch linksets to populate header component
 	 */
 	async fetchOntarioMenu() {
-		const apiUrl = 'https://www.ontario.ca/system/menu/main/linkset';
-		const response = await fetch(apiUrl)
-			.then(response => response.json())
-			.then(json => json.linkset[0].item as ontarioMenuItems[])
-			.catch(() => {
-				console.error('Unable to retrieve data from Ontario Menu API');
-				return [];
-			});
-
-			if (response.length > 0) {
-				const externalMenuItems = response.map(item => {
-					return { href: item.href, title: item.title };
+		// If menu has already been fetched and contains dynamic menu items, do not run fetch again
+		if (!this.isDynamic) {
+			const apiUrl = 'https://www.ontario.ca/system/menu/main/linksets';
+			const response = await fetch(apiUrl)
+				.then(response => response.json())
+				.then(json => json.linkset[0].item as ontarioMenuItems[])
+				.catch(() => {
+					console.error('Unable to retrieve data from Ontario Menu API');
+					return [];
 				});
-				this.itemState = externalMenuItems;
-			}
+
+				if (response.length > 0) {
+					const externalMenuItems = response.map(item => {
+						return { href: item.href, title: item.title };
+					});
+					this.itemState = externalMenuItems;
+					this.isDynamic = true;
+				}
+		}
 		return;
 	}
 
@@ -328,7 +339,7 @@ export class OntarioHeader {
 
 	componentDidRender() {
 		this.fetchOntarioMenu();
-		// console.log('hey hey hey')
+		console.log('hey hey hey')
 	}
 
 	/**
