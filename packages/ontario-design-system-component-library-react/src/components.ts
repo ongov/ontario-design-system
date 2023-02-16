@@ -11,6 +11,7 @@ defineCustomElements();
 export const OntarioBlockquote = /*@__PURE__*/createReactComponent<JSX.OntarioBlockquote, HTMLOntarioBlockquoteElement>('ontario-blockquote');
 export const OntarioButton = /*@__PURE__*/createReactComponent<JSX.OntarioButton, HTMLOntarioButtonElement>('ontario-button');
 export const OntarioCheckboxes = /*@__PURE__*/createReactComponent<JSX.OntarioCheckboxes, HTMLOntarioCheckboxesElement>('ontario-checkboxes');
+export const OntarioCriticalAlert = /*@__PURE__*/createReactComponent<JSX.OntarioCriticalAlert, HTMLOntarioCriticalAlertElement>('ontario-critical-alert');
 export const OntarioDropdownList = /*@__PURE__*/createReactComponent<JSX.OntarioDropdownList, HTMLOntarioDropdownListElement>('ontario-dropdown-list');
 export const OntarioFooter = /*@__PURE__*/createReactComponent<JSX.OntarioFooter, HTMLOntarioFooterElement>('ontario-footer');
 export const OntarioHeader = /*@__PURE__*/createReactComponent<JSX.OntarioHeader, HTMLOntarioHeaderElement>('ontario-header');
@@ -39,6 +40,7 @@ export const OntarioIconCloseHeader = /*@__PURE__*/createReactComponent<JSX.Onta
 export const OntarioIconCloud = /*@__PURE__*/createReactComponent<JSX.OntarioIconCloud, HTMLOntarioIconCloudElement>('ontario-icon-cloud');
 export const OntarioIconCollapse = /*@__PURE__*/createReactComponent<JSX.OntarioIconCollapse, HTMLOntarioIconCollapseElement>('ontario-icon-collapse');
 export const OntarioIconCreditCard = /*@__PURE__*/createReactComponent<JSX.OntarioIconCreditCard, HTMLOntarioIconCreditCardElement>('ontario-icon-credit-card');
+export const OntarioIconCriticalAlertWarning = /*@__PURE__*/createReactComponent<JSX.OntarioIconCriticalAlertWarning, HTMLOntarioIconCriticalAlertWarningElement>('ontario-icon-critical-alert-warning');
 export const OntarioIconDelete = /*@__PURE__*/createReactComponent<JSX.OntarioIconDelete, HTMLOntarioIconDeleteElement>('ontario-icon-delete');
 export const OntarioIconDocument = /*@__PURE__*/createReactComponent<JSX.OntarioIconDocument, HTMLOntarioIconDocumentElement>('ontario-icon-document');
 export const OntarioIconDownload = /*@__PURE__*/createReactComponent<JSX.OntarioIconDownload, HTMLOntarioIconDownloadElement>('ontario-icon-download');
