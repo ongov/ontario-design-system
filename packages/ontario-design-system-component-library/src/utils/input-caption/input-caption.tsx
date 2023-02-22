@@ -101,13 +101,15 @@ export class InputCaption implements CaptionInfo {
 	getHintExpanderAccessibilityText(captionText: string, hasHintExpanderOnOption: boolean = false): HTMLElement {
 		const multipleOptionsMessage = (
 			<span class="ontario-show-for-sr">
-				More information on "{captionText.toLowerCase()}" field is available in the element after all checkbox items
+				{this.translations.accessibility.moreInfo[this.language]} "{captionText.toLowerCase()}"{' '}
+				{this.translations.accessibility.checkboxHintExpander[this.language]}
 			</span>
 		);
 
 		const singleOptionMessage = (
 			<span class="ontario-show-for-sr">
-				More information on "{captionText.toLowerCase()}" field is available in the next element
+				{this.translations.accessibility.moreInfo[this.language]} "{captionText.toLowerCase()}"{' '}
+				{this.translations.accessibility.singleHintExpander[this.language]}
 			</span>
 		);
 		return this.componentTagName === 'ontario-checkboxes'
