@@ -1,0 +1,93 @@
+@use '../../global.scss';
+
+$ontario-focus-transition: box-shadow 0.1s ease-in-out;
+$ontario-icon-margin-top: 0.125rem;
+
+// Colour variables
+$ontario-colour-back-to-top--default-background: #e6e6e6;
+$ontario-colour-back-to-top--active-background: #b2b2b2;
+
+.ontario-back-to-top--default {
+	position: fixed;
+	bottom: 5%;
+	right: 2%;
+	visibility: hidden;
+	opacity: 0;
+	transition: 0.1s ease-in-out;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: global.rem-calc(48);
+	padding: global.$spacing-2 global.$spacing-4 global.$spacing-2 global.$spacing-3;
+	background: $ontario-colour-back-to-top--default-background;
+	border: global.rem-calc(2) solid global.$ontario-colour-white;
+	border-radius: global.$global-radius;
+	box-shadow: 0 global.rem-calc(2) global.rem-calc(4) rgba(global.$ontario-colour-black, 0.6);
+	box-sizing: border-box;
+	color: global.$ontario-colour-black;
+	line-height: global.rem-calc(20);
+	font-size: global.$ontario-font-size-standard-body-text;
+	font-family: global.$ontario-font-open-sans;
+	font-weight: global.$ontario-font-weights-semi-bold;
+	z-index: 10000;
+	cursor: pointer;
+
+	.ontario-icon {
+		margin: $ontario-icon-margin-top global.$spacing-2 global.$spacing-0 global.$spacing-0;
+		width: global.rem-calc(32);
+		height: global.rem-calc(32);
+	}
+
+	&:hover {
+		background-color: global.$ontario-greyscale-20;
+	}
+
+	&:focus {
+		background-color: $ontario-colour-back-to-top--default-background;
+		box-shadow: 0 0 0 global.rem-calc(4) global.$ontario-colour-focus,
+			0 global.rem-calc(3) global.rem-calc(5) global.rem-calc(3) rgba(0, 0, 0, 0.6);
+		outline: global.rem-calc(4) solid transparent;
+		transition: 0.1s ease-in-out;
+	}
+
+	&:active {
+		background-color: $ontario-colour-back-to-top--active-background;
+		box-shadow: 0 0 0 global.rem-calc(4) global.$ontario-colour-focus,
+			0 global.rem-calc(5) global.rem-calc(7) global.rem-calc(3) rgba(0, 0, 0, 0.6);
+		outline: global.rem-calc(4) solid transparent;
+		transition: background-color 0s, $ontario-focus-transition;
+	}
+
+	@media screen and (max-width: global.$medium-breakpoint) {
+		flex-direction: column;
+		height: global.rem-calc(76);
+		padding: global.rem-calc(6) global.$spacing-3 global.rem-calc(9) global.$spacing-3;
+
+		.ontario-icon {
+			margin: global.rem-calc(1) global.$spacing-0 global.$spacing-1 global.$spacing-0;
+			width: global.rem-calc(32);
+			height: global.rem-calc(32);
+		}
+	}
+
+	@media screen and (max-width: global.$small-breakpoint) {
+		display: block;
+		padding: global.$spacing-1;
+		font-size: 0;
+		width: global.rem-calc(48);
+		height: global.rem-calc(48);
+
+		.ontario-icon {
+			margin: global.$spacing-2 global.$spacing-0 global.$spacing-0 global.$spacing-0;
+
+			@-moz-document url-prefix() {
+				margin-top: $ontario-icon-margin-top;
+			}
+		}
+	}
+
+	&.active {
+		visibility: visible;
+		opacity: 1;
+	}
+}

@@ -20,5 +20,15 @@
 			"en": "field is available in the next element.",
 			"fr": "suivront au prochain élément."
 		}
+	},
+	"backToTop": {
+		"top": {
+			"en": "Top",
+			"fr": "Haut"
+		},
+		"ariaLabel": {
+			"en": "Scroll back to the top",
+			"fr": "Retour en haut de la page"
+		}
 	}
 }
