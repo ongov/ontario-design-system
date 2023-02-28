@@ -259,10 +259,10 @@ export class OntarioHeader {
 	 * @param onClick - for any custon onClick event a user might want to add to their menu links
 	 * @param onBlur - when set to true, it will call the function trapMenuFocus(), otherwise nothing is done (used in lastLink)
 	 */
-	private generateMenuItem(href: string, title: string, linkIsActive: any, type: string, liClass?: string, onClick?: any, onBlur?: boolean) {
+	private generateMenuItem(href: string, title: string, linkIsActive: boolean | undefined, type: string, liClass?: string, onClick?: any, onBlur?: boolean) {
 		return (
 			<li class={liClass}>
-				<a class={linkIsActive && `ontario-link--active`} href={href} onClick={onClick} onBlur={onBlur ? this.trapMenuFocus : undefined} data-type={type}>
+				<a class={linkIsActive === true ? `ontario-link--active` :``} href={href} onClick={onClick} onBlur={onBlur ? this.trapMenuFocus : undefined} data-type={type}>
 					{title}
 				</a>
 			</li>
