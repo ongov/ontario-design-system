@@ -5,6 +5,7 @@ import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg
 import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
 import OntarioIconSearchWhite from '../ontario-icon/assets/ontario-icon-search-white.svg';
 import OntarioHeaderDefaultData from './ontario-header-default-data.json'
+import OntarioHeaderApiConfiguration from './ontario-header-api-configuration.json'
 
 import { menuItems, applicationHeaderInfo, languageToggleOptions, ontarioMenuItems } from './ontario-header.interface';
 
@@ -220,13 +221,14 @@ export class OntarioHeader {
 		}
 	};
 
+
 	/**
 	 * Call to Ontario Menu API to fetch linksets to populate header component
 	 */
 	async fetchOntarioMenu() {
 		// If menu has already been fetched and contains dynamic menu items, do not run fetch again
 		if (!this.isDynamicMenu) {
-			const apiUrl = 'https://www.ontario.ca/system/menu/main/linkset';
+			const apiUrl = OntarioHeaderApiConfiguration[0].API_URL;
 			const response = await fetch(apiUrl)
 				.then(response => response.json())
 				.then(json => json.linkset[0].item as ontarioMenuItems[])
@@ -448,8 +450,11 @@ export class OntarioHeader {
 						>
 							<div class="ontario-navigation__container">
 								<ul>
-									{/* If API call is succesful, return linkset from Ontario Menu API.
-											If API call is unsuccessful, use static menu.*/}
+									{/*
+										Maps through all the menu items, and the last item is set to lastLink.
+										When the focus goes away from the lastLink, return the focus to the menu button
+										(only applicable pressing the "tab" key, not actually clicking away from the menu).
+									*/}
 										{this.menuItemState?.map((item,  index:number) => {
 												const lastLink = index + 1 === this.menuItemState.length;
 												const activeLinkRegex = item.title.replace(/\s+/g, '-').toLowerCase();
