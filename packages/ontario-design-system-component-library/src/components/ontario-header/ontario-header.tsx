@@ -5,7 +5,6 @@ import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg
 import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
 import OntarioIconSearchWhite from '../ontario-icon/assets/ontario-icon-search-white.svg';
 import OntarioHeaderDefaultData from './ontario-header-default-data.json'
-import OntarioHeaderApiConfiguration from './ontario-header-api-configuration.json'
 
 import { menuItems, applicationHeaderInfo, languageToggleOptions, ontarioMenuItems } from './ontario-header.interface';
 
@@ -228,7 +227,7 @@ export class OntarioHeader {
 	async fetchOntarioMenu() {
 		// If menu has already been fetched and contains dynamic menu items, do not run fetch again
 		if (!this.isDynamicMenu) {
-			const apiUrl = OntarioHeaderApiConfiguration[0].API_URL;
+			const apiUrl = process.env.ONTARIO_HEADER_API_URL as string;
 			const response = await fetch(apiUrl)
 				.then(response => response.json())
 				.then(json => json.linkset[0].item as ontarioMenuItems[])
