@@ -1501,24 +1501,24 @@ export namespace Components {
     }
 }
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioCheckboxesElement;
+	detail: T;
+	target: HTMLOntarioCheckboxesElement;
 }
 export interface OntarioHintExpanderCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioHintExpanderElement;
+	detail: T;
+	target: HTMLOntarioHintExpanderElement;
 }
 export interface OntarioInputCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioInputElement;
+	detail: T;
+	target: HTMLOntarioInputElement;
 }
 export interface OntarioTextareaCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioTextareaElement;
+	detail: T;
+	target: HTMLOntarioTextareaElement;
 }
 export interface TestLanguageToggleCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLTestLanguageToggleElement;
+	detail: T;
+	target: HTMLTestLanguageToggleElement;
 }
 declare global {
     interface HTMLOntarioAsideElement extends Components.OntarioAside, HTMLStencilElement {
