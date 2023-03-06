@@ -4,10 +4,10 @@ $ontario-focus-transition: box-shadow 0.1s ease-in-out;
 $ontario-icon-margin-top: 0.125rem;
 
 // Colour variables
-$ontario-colour-back-to-top--default-background: #e6e6e6;
+$ontario-colour-back-to-top-background: #e6e6e6;
 $ontario-colour-back-to-top--active-background: #b2b2b2;
 
-.ontario-back-to-top--default {
+.ontario-back-to-top {
 	position: fixed;
 	bottom: 5%;
 	right: 2%;
@@ -19,7 +19,7 @@ $ontario-colour-back-to-top--active-background: #b2b2b2;
 	align-items: center;
 	height: global.rem-calc(48);
 	padding: global.$spacing-2 global.$spacing-4 global.$spacing-2 global.$spacing-3;
-	background: $ontario-colour-back-to-top--default-background;
+	background: $ontario-colour-back-to-top-background;
 	border: global.rem-calc(2) solid global.$ontario-colour-white;
 	border-radius: global.$global-radius;
 	box-shadow: 0 global.rem-calc(2) global.rem-calc(4) rgba(global.$ontario-colour-black, 0.6);
@@ -43,7 +43,7 @@ $ontario-colour-back-to-top--active-background: #b2b2b2;
 	}
 
 	&:focus {
-		background-color: $ontario-colour-back-to-top--default-background;
+		background-color: $ontario-colour-back-to-top-background;
 		box-shadow: 0 0 0 global.rem-calc(4) global.$ontario-colour-focus,
 			0 global.rem-calc(3) global.rem-calc(5) global.rem-calc(3) rgba(0, 0, 0, 0.6);
 		outline: global.rem-calc(4) solid transparent;

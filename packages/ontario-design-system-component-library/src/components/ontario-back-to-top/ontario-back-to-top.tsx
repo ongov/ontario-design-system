@@ -50,7 +50,7 @@ export class OntarioBackToTop {
 	render() {
 		return (
 			<button
-				class="ontario-back-to-top--default"
+				class="ontario-back-to-top"
 				onClick={this.scrollToTop}
 				aria-label={this.translations.backToTop.ariaLabel[`${this.language}`]}
 			>
