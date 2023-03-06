@@ -20,7 +20,7 @@ import { RadioOption } from "./components/ontario-radio-buttons/radio-option.int
 export namespace Components {
     interface OntarioBackToTop {
         /**
-          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
          */
         "language"?: string;
     }
@@ -2344,7 +2344,7 @@ declare global {
 declare namespace LocalJSX {
     interface OntarioBackToTop {
         /**
-          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
          */
         "language"?: string;
     }

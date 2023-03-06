@@ -10,7 +10,7 @@ describe('ontario-back-to-top', () => {
 		expect(page.root).toEqualHtml(`
       <ontario-back-to-top>
         <mock:shadow-root>
-					<button aria-label="Scroll back to the top" class="ontario-back-to-top--default">
+					<button aria-label="Scroll back to the top" class="ontario-back-to-top">
 						<span aria-hidden="true"></span>
 						Top
 					</button>
