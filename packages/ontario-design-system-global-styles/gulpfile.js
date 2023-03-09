@@ -43,12 +43,12 @@ const processSass = (opts) => {
 		.pipe(gulpif(opts.compress, minify()))
 		.pipe(dest(`${distDir}/styles/css/compiled`));
 
-	src('./src/font-delivery-service/ontario-design-system-fonts.scss')
+	src('./src/misc/ontario-design-system-fonts.scss')
 		.pipe(sass(sassOptions).on('error', sass.logError))
 		.pipe(autoprefixer())
 		.pipe(concat(gulpif(opts.compress, 'ontario-design-system-fonts.min.css', 'ontario-design-system-fonts.css')))
 		.pipe(gulpif(opts.compress, minify()))
-		.pipe(dest(`${distDir}/fonts/`));
+		.pipe(dest(`${distDir}/misc/`));
 
 	if (opts.callback) {
 		opts.callback();
