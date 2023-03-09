@@ -26,7 +26,7 @@ const favicons = ['./src/favicons/*'];
  * }} opts Configuration options
  *
  */
-const processSass = opts => {
+const processSass = (opts) => {
 	const sassOptions = {
 		outputStyle: 'expanded',
 		includePaths: ['./node_modules'],
@@ -43,12 +43,19 @@ const processSass = opts => {
 		.pipe(gulpif(opts.compress, minify()))
 		.pipe(dest(`${distDir}/styles/css/compiled`));
 
+	src('./src/unpkg/ontario-design-system-fonts.scss')
+		.pipe(sass(sassOptions).on('error', sass.logError))
+		.pipe(autoprefixer())
+		.pipe(concat(gulpif(opts.compress, 'ontario-design-system-fonts.min.css', 'ontario-design-system-fonts.css')))
+		.pipe(gulpif(opts.compress, minify()))
+		.pipe(dest(`${distDir}/fonts/`));
+
 	if (opts.callback) {
 		opts.callback();
 	}
 };
 
-task('sass:build', done => {
+task('sass:build', (done) => {
 	processSass({
 		compress: false,
 		debug: false,
@@ -56,7 +63,7 @@ task('sass:build', done => {
 	});
 });
 
-task('sass:minify', done => {
+task('sass:minify', (done) => {
 	processSass({
 		compress: true,
 		callback: done,
@@ -70,21 +77,21 @@ task('sass:copy-dist', () => {
 task('sass:build-minify', parallel('sass:build', 'sass:minify'));
 
 // Move all non-style related fonts to the dist/fonts folder
-task('fonts-move', done => {
+task('fonts-move', (done) => {
 	return src(fonts, { base: './src' }).pipe(dest(distDir));
 });
 
 // Move all favicons to the dist/favicons folder
-task('favicons-move', done => {
-	return src(favicons, { base: './src'}).pipe(dest(distDir))
-})
+task('favicons-move', (done) => {
+	return src(favicons, { base: './src' }).pipe(dest(distDir));
+});
 
-task('watch', done => {
+task('watch', (done) => {
 	watch(styleDir, { ignoreInitial: false }, parallel('sass:build-minify'));
 	done();
 });
 
-task('clean', async done => {
+task('clean', async (done) => {
 	return await deleteAsync(distDir);
 });
 
