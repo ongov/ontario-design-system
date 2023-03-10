@@ -1,4 +1,5 @@
 import { EventEmitter } from '@stencil/core';
+import { language } from './language-types';
 
 export interface Base {
 	/**
@@ -42,7 +43,7 @@ export interface Input extends Base {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
-	language?: string;
+	language?: language;
 
 	/**
 	 * The element content value.

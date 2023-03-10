@@ -4,8 +4,14 @@ import { RadioOption } from './radio-option.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
 import { Caption } from '../../utils/input-caption/caption.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
-import { validateObjectExists, validatePropExists } from '../../utils/validation/validation-functions';
+import {
+	validateObjectExists,
+	validatePropExists,
+	validateEventLanguage,
+	validateLanguageProp,
+} from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { language } from '../../utils/language-types';
 import { default as translations } from '../../translations/global.i18n.json';
 
 @Component({
@@ -38,7 +44,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language?: string = 'en';
+	@Prop({ mutable: true }) language?: language = 'en';
 
 	/**
 	 * The name assigned to the radio button.
@@ -146,13 +152,13 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
-	handleSetAppLanguage(event: CustomEvent<string>) {
-		this.language = event.detail;
+	handleSetAppLanguage(event: CustomEvent<language>) {
+		this.language = validateEventLanguage(event);
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<string>) {
-		const toggledLanguage = event.detail;
+	handleHeaderLanguageToggled(event: CustomEvent<language>) {
+		const toggledLanguage = validateEventLanguage(event);
 		this.language = toggledLanguage;
 	}
 
@@ -240,6 +246,7 @@ export class OntarioRadioButtons implements RadioButtons {
 		this.parseHintExpander();
 		this.validateName(this.name);
 		this.validateOptions(this.internalOptions);
+		this.language = validateLanguageProp(this.language);
 	}
 
 	render() {

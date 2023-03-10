@@ -1,5 +1,7 @@
 import { Component, h, Element, Prop, Listen, State } from '@stencil/core';
 import OntarioIconArrowUp from '../ontario-icon/assets/ontario-icon-arrow-up.svg';
+import { language } from '../../utils/language-types';
+import { validateEventLanguage } from '../../utils/validation/validation-functions';
 import translations from '../../translations/global.i18n.json';
 
 @Component({
@@ -14,29 +16,31 @@ export class OntarioBackToTop {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language?: string = 'en';
+	@Prop({ mutable: true }) language?: language = 'en';
 
 	@State() translations: any = translations;
 
+	@State() displayBackToTop: boolean = false;
+
 	/**
-	 * This listens for the window Y scroll value to be above 200 pixels. Once it is, the back to top button will toggle an active class to control its visibility.
+	 * This listens for the window Y scroll value to be above 200 pixels. Once it is, the back to top button will toggle the `displayBackToTop` state which will set an active class to control the components' visibility.
 	 */
 	@Listen('scroll', { target: 'window' })
 	showBackToTopButton() {
-		this.element.shadowRoot?.children[1].classList.toggle('active', window.scrollY > 200);
+		window.scrollY > 200 ? (this.displayBackToTop = true) : (this.displayBackToTop = false);
 	}
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
-	handleSetAppLanguage(event: CustomEvent<string>) {
-		this.language = event.detail;
+	handleSetAppLanguage(event: CustomEvent<language>) {
+		this.language = validateEventLanguage(event);
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<string>) {
-		const toggledLanguage = event.detail;
+	handleHeaderLanguageToggled(event: CustomEvent<language>) {
+		const toggledLanguage = validateEventLanguage(event);
 		this.language = toggledLanguage;
 	}
 
@@ -50,7 +54,7 @@ export class OntarioBackToTop {
 	render() {
 		return (
 			<button
-				class="ontario-back-to-top"
+				class={this.displayBackToTop ? `ontario-back-to-top active` : `ontario-back-to-top`}
 				onClick={this.scrollToTop}
 				aria-label={this.translations.backToTop.ariaLabel[`${this.language}`]}
 			>
