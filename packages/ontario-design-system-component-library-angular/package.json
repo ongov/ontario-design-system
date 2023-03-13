@@ -4,9 +4,12 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
-		"build": "ng build",
+		"build": "npm run build:component-lib && npm run build:app && npm run format:stencil",
+		"build:component-lib": "ng build component-library",
+		"build:app": "ng build app-angular",
 		"watch": "ng build --watch --configuration development",
-		"test": "ng test"
+		"test": "ng test",
+		"format:stencil": "prettier --write ./projects/component-library/src/lib/stencil-generated"
 	},
 	"private": true,
 	"dependencies": {
@@ -19,6 +22,7 @@
 		"@angular/platform-browser-dynamic": "^15.2.0",
 		"@angular/router": "^15.2.0",
 		"@ontario-digital-service/ontario-design-system-component-library": "^2.3.0-alpha.3",
+		"@ontario-digital-service/ontario-design-system-global-styles": "^2.3.0-alpha.3",
 		"rxjs": "~7.8.0",
 		"tslib": "^2.3.0",
 		"zone.js": "~0.12.0"
