@@ -4,11 +4,7 @@ import { Input } from '../../utils/common.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
 import { Caption } from '../../utils/input-caption/caption.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
-import {
-	validatePropExists,
-	validateEventLanguage,
-	validateLanguageProp,
-} from '../../utils/validation/validation-functions';
+import { validatePropExists, validateLanguage } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { language } from '../../utils/language-types';
 import { default as translations } from '../../translations/global.i18n.json';
@@ -134,12 +130,12 @@ export class OntarioTextarea implements Input {
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
 	handleSetAppLanguage(event: CustomEvent<language>) {
-		this.language = validateEventLanguage(event);
+		this.language = validateLanguage(event);
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
 	handleHeaderLanguageToggled(event: CustomEvent<language>) {
-		const toggledLanguage = validateEventLanguage(event);
+		const toggledLanguage = validateLanguage(event);
 		this.language = toggledLanguage;
 	}
 
@@ -226,7 +222,7 @@ export class OntarioTextarea implements Input {
 		this.elementId = this.elementId ?? uuid();
 		this.parseHintExpander();
 		this.validateName(this.name);
-		this.language = validateLanguageProp(this.language);
+		this.language = validateLanguage(this.language);
 	}
 
 	render() {

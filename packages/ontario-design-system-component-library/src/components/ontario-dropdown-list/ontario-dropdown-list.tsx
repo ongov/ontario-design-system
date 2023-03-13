@@ -8,8 +8,7 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 import {
 	validateObjectExists,
 	validatePropExists,
-	validateEventLanguage,
-	validateLanguageProp,
+	validateLanguage,
 } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { language } from '../../utils/language-types';
@@ -157,12 +156,12 @@ export class OntarioDropdownList implements Dropdown {
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
 	handleSetAppLanguage(event: CustomEvent<language>) {
-		this.language = validateEventLanguage(event);
+		this.language = validateLanguage(event);
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
 	handleHeaderLanguageToggled(event: CustomEvent<language>) {
-		const toggledLanguage = validateEventLanguage(event);
+		const toggledLanguage = validateLanguage(event);
 		this.language = toggledLanguage;
 	}
 
@@ -266,8 +265,7 @@ export class OntarioDropdownList implements Dropdown {
 		this.validateName(this.name);
 		this.validateOptions(this.internalOptions);
 		this.elementId = this.elementId ?? uuid();
-		this.parseHintExpander();
-		this.language = validateLanguageProp(this.language);
+		this.language = validateLanguage(this.language);
 	}
 
 	render() {

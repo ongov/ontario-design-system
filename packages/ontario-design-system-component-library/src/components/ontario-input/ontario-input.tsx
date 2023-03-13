@@ -5,7 +5,7 @@ import { v4 as uuid } from 'uuid';
 import { TextInput } from './input.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 import { language } from '../../utils/language-types';
-import { validateEventLanguage, validateLanguageProp } from '../../utils/validation/validation-functions';
+import { validateLanguage } from '../../utils/validation/validation-functions';
 import { default as translations } from '../../translations/global.i18n.json';
 
 /**
@@ -145,12 +145,12 @@ export class OntarioInput implements TextInput {
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
 	handleSetAppLanguage(event: CustomEvent<language>) {
-		this.language = validateEventLanguage(event);
+		this.language = validateLanguage(event);
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
 	handleHeaderLanguageToggled(event: CustomEvent<language>) {
-		const toggledLanguage = validateEventLanguage(event);
+		const toggledLanguage = validateLanguage(event);
 		this.language = toggledLanguage;
 	}
 
@@ -222,7 +222,7 @@ export class OntarioInput implements TextInput {
 		this.updateCaptionState(this.caption);
 		this.elementId = this.elementId ?? uuid();
 		this.parseHintExpander();
-		this.language = validateLanguageProp(this.language);
+		this.language = validateLanguage(this.language);
 	}
 
 	render() {

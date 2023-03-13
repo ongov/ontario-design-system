@@ -37,16 +37,11 @@ export function validateValueAgainstArray<T extends string>(value: T, keys: Read
 	return keys.includes(value);
 }
 
-export function validateEventLanguage(event: CustomEvent<language>): language {
-	const toggledLanguage = event.detail;
-	if (toggledLanguage && (toggledLanguage === 'en' || toggledLanguage === 'fr')) return toggledLanguage;
-	else return 'en';
-}
-
-export function validateLanguageProp(language: string | undefined) {
+export function validateLanguage(language: CustomEvent<language> | string | undefined) {
 	if (language) {
-		if (language !== 'en' && language !== 'fr') return (language = 'en');
-		else return language;
+		const toggledLanguage = typeof language !== 'string' ? language.detail : language;
+		if (toggledLanguage && (toggledLanguage === 'en' || toggledLanguage === 'fr')) return toggledLanguage;
+		else return 'en';
 	}
 
 	return (language = 'en');

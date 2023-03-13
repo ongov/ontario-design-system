@@ -1,7 +1,7 @@
 import { Component, h, Element, Prop, Listen, State } from '@stencil/core';
 import OntarioIconArrowUp from '../ontario-icon/assets/ontario-icon-arrow-up.svg';
 import { language } from '../../utils/language-types';
-import { validateEventLanguage } from '../../utils/validation/validation-functions';
+import { validateLanguage } from '../../utils/validation/validation-functions';
 import translations from '../../translations/global.i18n.json';
 
 @Component({
@@ -27,7 +27,7 @@ export class OntarioBackToTop {
 	 */
 	@Listen('scroll', { target: 'window' })
 	showBackToTopButton() {
-		window.scrollY > 200 ? (this.displayBackToTop = true) : (this.displayBackToTop = false);
+		this.displayBackToTop = window.scrollY > 200;
 	}
 
 	/**
@@ -35,12 +35,12 @@ export class OntarioBackToTop {
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
 	handleSetAppLanguage(event: CustomEvent<language>) {
-		this.language = validateEventLanguage(event);
+		this.language = validateLanguage(event);
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
 	handleHeaderLanguageToggled(event: CustomEvent<language>) {
-		const toggledLanguage = validateEventLanguage(event);
+		const toggledLanguage = validateLanguage(event);
 		this.language = toggledLanguage;
 	}
 
@@ -49,6 +49,10 @@ export class OntarioBackToTop {
 	 */
 	private scrollToTop() {
 		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+	}
+
+	componentWillLoad() {
+		this.language = validateLanguage(this.language);
 	}
 
 	render() {
