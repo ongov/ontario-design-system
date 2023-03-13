@@ -73,6 +73,26 @@ export declare interface OntarioCheckboxes extends Components.OntarioCheckboxes 
 }
 
 @ProxyCmp({
+	inputs: ['content'],
+})
+@Component({
+	selector: 'ontario-critical-alert',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['content'],
+})
+export class OntarioCriticalAlert {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioCriticalAlert extends Components.OntarioCriticalAlert {}
+
+@ProxyCmp({
 	inputs: ['caption', 'elementId', 'isEmptyStartOption', 'language', 'name', 'options', 'required'],
 })
 @Component({
@@ -637,6 +657,26 @@ export class OntarioIconCreditCard {
 }
 
 export declare interface OntarioIconCreditCard extends Components.OntarioIconCreditCard {}
+
+@ProxyCmp({
+	inputs: ['colour', 'iconWidth'],
+})
+@Component({
+	selector: 'ontario-icon-critical-alert-warning',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+})
+export class OntarioIconCriticalAlertWarning {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioIconCriticalAlertWarning extends Components.OntarioIconCriticalAlertWarning {}
 
 @ProxyCmp({
 	inputs: ['colour', 'iconWidth'],
