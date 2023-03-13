@@ -226,7 +226,7 @@ export class OntarioTextarea implements Input {
 	render() {
 		return (
 			<div>
-				{this.captionState.getCaption(this.getId())}
+				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
 				<textarea
 					aria-describedby={this.describedBy}

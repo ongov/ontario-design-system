@@ -7,6 +7,10 @@
 	background-size: global.$spacing-6;
 	padding-right: calc(global.$spacing-4 * 2.25);
 	cursor: pointer;
+
+	&.ontario-dropdown-hint-expander--true {
+		margin-bottom: global.$spacing-4;
+	}
 }
 
 /* These styles are to fix differences in default styling for dropdowns in IE */

@@ -107,6 +107,15 @@ export namespace Components {
          */
         "elementId"?: string;
         /**
+          * Used to include the Hint Expander component underneath the dropdown list box. This is passed in as an object with key-value pairs. This is optional.
+          * @example <ontario-dropdown-list   caption='{     "caption": "What province do you live in?",     "captionType": "heading",   }   hint-expander='{    "hint": "Hint expander",    "content": "This is the content"   }'   required="true" > </ontario-dropdown-list>
+         */
+        "hintExpander"?: HintExpander | string;
+        /**
+          * Hint text for Ontario Dropdown. This is optional.
+         */
+        "hintText"?: string;
+        /**
           * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
           * @example <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
          */
@@ -2395,6 +2404,15 @@ declare namespace LocalJSX {
           * The ID for the dropdown list. If no ID is provided, one will be generated.
          */
         "elementId"?: string;
+        /**
+          * Used to include the Hint Expander component underneath the dropdown list box. This is passed in as an object with key-value pairs. This is optional.
+          * @example <ontario-dropdown-list   caption='{     "caption": "What province do you live in?",     "captionType": "heading",   }   hint-expander='{    "hint": "Hint expander",    "content": "This is the content"   }'   required="true" > </ontario-dropdown-list>
+         */
+        "hintExpander"?: HintExpander | string;
+        /**
+          * Hint text for Ontario Dropdown. This is optional.
+         */
+        "hintText"?: string;
         /**
           * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
           * @example <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>

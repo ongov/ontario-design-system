@@ -78,22 +78,46 @@ export class InputCaption implements CaptionInfo {
 	 * @param captionFor Set the `htmlFor` attribute
 	 * @returns element containing the caption for the input
 	 */
-	getCaption = (captionFor?: string): HTMLElement => {
+	getCaption = (captionFor?: string | undefined, hasHintExpander: boolean = false): HTMLElement => {
+		const captionText = this.captionText && this.captionText.toLowerCase();
 		const captionContent = this.isLegend ? (
 			<legend class={this.getClass()}>
 				{this.captionType === 'heading' ? <h1>{this.captionText}</h1> : this.captionText}
 				{this.getRequiredFlagElement()}
+				{hasHintExpander && this.getHintExpanderAccessibilityText(captionText, false)}
 			</legend>
 		) : (
 			<label htmlFor={captionFor} class={this.getClass()}>
 				{this.captionText}
 				{this.getRequiredFlagElement()}
+				{hasHintExpander && this.getHintExpanderAccessibilityText(captionText, false)}
 			</label>
 		);
 
 		// with `this.captionType` already set to one of the enum values, the comparison no longer needs the `toLowerCase()` transform
 		return this.captionType === 'heading' && !this.isLegend ? <h1>{captionContent}</h1> : captionContent;
 	};
+
+	getHintExpanderAccessibilityText(captionText: string, hasHintExpanderOnOption: boolean = false): HTMLElement {
+		const multipleOptionsMessage = (
+			<span class="ontario-show-for-sr">
+				{this.translations.accessibility.moreInfo[this.language]} "{captionText.toLowerCase()}"{' '}
+				{this.translations.accessibility.checkboxHintExpander[this.language]}
+			</span>
+		);
+
+		const singleOptionMessage = (
+			<span class="ontario-show-for-sr">
+				{this.translations.accessibility.moreInfo[this.language]} "{captionText.toLowerCase()}"{' '}
+				{this.translations.accessibility.singleHintExpander[this.language]}
+			</span>
+		);
+		return this.componentTagName === 'ontario-checkboxes'
+			? !hasHintExpanderOnOption
+				? multipleOptionsMessage
+				: singleOptionMessage
+			: singleOptionMessage;
+	}
 
 	/**
 	 * Determines which flag text to use between `required` and `optional`
