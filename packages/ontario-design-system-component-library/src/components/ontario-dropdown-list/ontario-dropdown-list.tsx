@@ -265,6 +265,7 @@ export class OntarioDropdownList implements Dropdown {
 		this.validateName(this.name);
 		this.validateOptions(this.internalOptions);
 		this.elementId = this.elementId ?? uuid();
+		this.parseHintExpander();
 		this.language = validateLanguage(this.language);
 	}
 
