@@ -1,10 +1,10 @@
 {
-	"name": "ontario-design-system-component-library-angular",
+	"name": "@ontario-digital-service/ontario-design-system-component-library-angular",
 	"version": "0.0.0",
 	"scripts": {
 		"ng": "ng",
-		"start": "ng serve",
-		"build": "npm run build:component-lib && npm run build:app && npm run format:stencil",
+		"start": "ng serve app-angular",
+		"build": "npm run build:component-lib && npm run format:stencil",
 		"build:component-lib": "ng build component-library",
 		"build:app": "ng build app-angular",
 		"watch": "ng build --watch --configuration development",
