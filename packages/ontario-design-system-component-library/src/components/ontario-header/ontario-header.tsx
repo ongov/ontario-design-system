@@ -53,7 +53,7 @@ export class OntarioHeader {
 	/**
 	 * The items that will go inside the menu
 	 */
-	@Prop() menuItems: menuItems[] | string = OntarioHeaderDefaultData;
+	@Prop() menuItems: menuItems[] | string;
 
 	/**
 	 * The link that contains the french page
