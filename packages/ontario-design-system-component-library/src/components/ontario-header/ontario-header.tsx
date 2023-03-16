@@ -162,7 +162,7 @@ export class OntarioHeader {
 				this.menuItemState = JSON.parse(this.menuItems);
 				this.isDynamicMenu = false;
 			} else {
-				this.menuItemState = this.menuItems;
+				this.menuItemState = OntarioHeaderDefaultData;
 				this.isDynamicMenu = false;
 			}
 		}
