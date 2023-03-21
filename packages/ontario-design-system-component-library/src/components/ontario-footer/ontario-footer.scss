@@ -6,10 +6,8 @@ $ontario-icon-size--social-small: 32px;
 
 .ontario-footer {
 	color: global.$ontario-colour-white;
+	margin-top: global.$spacing-10;
 	padding: global.$spacing-9 global.$spacing-0;
-	font-family: global.$ontario-font-open-sans;
-	font-size: global.$ontario-font-size-standard-body-text;
-	line-height: 1.6rem;
 }
 
 .ontario-footer .ontario-columns {
@@ -28,13 +26,11 @@ $ontario-icon-size--social-small: 32px;
 
 .ontario-footer__links-container {
 	list-style: none;
-	margin: global.$spacing-0 global.$spacing-0 global.$spacing-4 global.$spacing-0;
+	margin: 0 global.$spacing-0 global.$spacing-4 0;
 
 	@media screen and (min-width: global.$medium-breakpoint) {
 		margin-bottom: global.$spacing-2;
 	}
-
-	padding-inline-start: 0px;
 }
 
 .ontario-footer__links-container--inline {
@@ -46,6 +42,10 @@ $ontario-icon-size--social-small: 32px;
 		flex-direction: row;
 	}
 }
+
+/*************************************
+    Expanded footer specific styles
+**************************************/
 
 .ontario-footer__links-container--two-column-list {
 	column-count: 1;
@@ -63,7 +63,7 @@ $ontario-icon-size--social-small: 32px;
 }
 
 .ontario-footer__links-container li {
-	padding: global.$spacing-1 0;
+	padding: global.$spacing-1 global.$spacing-0;
 }
 
 .ontario-footer__link {
@@ -107,8 +107,8 @@ $ontario-icon-size--social-small: 32px;
 	padding: global.$spacing-0;
 	outline: none;
 
-	height: global.$spacing-8 + global.$spacing-2;
-	width: global.$spacing-8 + global.$spacing-2;
+	height: (global.$spacing-8 + global.$spacing-2);
+	width: (global.$spacing-8 + global.$spacing-2);
 
 	display: flex;
 	justify-content: center;
@@ -143,30 +143,26 @@ $ontario-icon-size--social-small: 32px;
 .ontario-footer__paragraph {
 	max-width: global.$standard-width;
 	width: global.$full-width;
-	margin: 0 0 global.$spacing-5 0;
-
-	a {
-		color: global.$ontario-colour-white;
-		font-weight: global.$ontario-font-weights-semi-bold;
-
-		&:visited {
-			color: global.$ontario-colour-white;
-		}
-
-		&:active {
-			color: darken(global.$ontario-colour-white, 10);
-		}
-
-		&:focus,
-		&:hover {
-			text-decoration: none;
-		}
-	}
+	margin-bottom: 1.5rem;
 }
 
-.ontario-footer__ministry-logo {
-	width: global.$full-width;
-	max-width: 255px;
+.ontario-footer__paragraph a,
+.ontario-footer__list_item a {
+	color: global.$ontario-colour-white;
+	font-weight: global.$ontario-font-weights-semi-bold;
+
+	&:visited {
+		color: global.$ontario-colour-white;
+	}
+
+	&:active {
+		color: darken(global.$ontario-colour-white, 10);
+	}
+
+	&:focus,
+	&:hover {
+		text-decoration: none;
+	}
 }
 
 .ontario-button.ontario-footer__button {

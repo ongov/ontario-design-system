@@ -40,5 +40,21 @@
 			"en": "Select",
 			"fr": "Sélectionner"
 		}
+	},
+	"Accessibility": {
+		"en": "Accessibility",
+		"fr": "Accessibilité"
+	},
+	"Privacy": {
+		"en": "Privacy",
+		"fr": "Confidentialité"
+	},
+	"ContactUs": {
+		"en": "Contact Us",
+		"fr": "Contactez-nous"
+	},
+	"Printer": {
+		"en": "&copy; King's Printer for Ontario,",
+		"fr": "&copy; Imprimeur du Roi pour l’Ontario,"
 	}
 }

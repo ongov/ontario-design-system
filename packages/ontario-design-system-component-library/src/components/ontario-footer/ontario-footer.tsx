@@ -1,9 +1,8 @@
-import { Component, Prop, h, getAssetPath, State, Watch } from '@stencil/core';
-import { ExpandedThreeColumnOptions } from './footer-expanded-three-column-option-interface';
-import { ExpandedTwoColumnOptions } from './footer-expanded-two-column-option-interface';
-import { DefaultOptions } from './footer-default-option-interface';
+import { Component, Prop, h, State, Watch, getAssetPath } from '@stencil/core';
 
-const enDash = '\u2013';
+import { FooterLinks, OntarioFooterType, ThreeColumnOptions, TwoColumnOptions } from './ontario-footer-interface';
+import { ExpandedFooterWrapper, FooterColumn, FooterSocialLinksProps, SimpleFooter } from './components';
+import { isInvalidTwoColumnOptions, isInvalidThreeColumnOptions } from './utils';
 
 @Component({
 	tag: 'ontario-footer',
@@ -14,113 +13,91 @@ const enDash = '\u2013';
 export class OntarioFooter {
 	/**
 	 * Type of footer to be rendered
+	 * Default: 'default'
 	 */
-	@Prop() type: 'default' | 'expandedTwoColumn' | 'expandedThreeColumn' = 'default';
+	@Prop() type: OntarioFooterType = 'default';
 
 	/**
 	 * Stores the required links for all footers
+	 * Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink'
 	 */
-	@Prop() defaultOptions: DefaultOptions | string;
+	@Prop() footerLinks: FooterLinks | string;
+
+	/**
+	 * Social media links to render in the footer
+	 * Available options are 'facebook', 'twitter', 'instagram' and 'youtube'
+	 */
+	@Prop() socialLinks: FooterSocialLinksProps | string;
 
 	/**
 	 * Stores the titles and content for the expanded
 	 * two column footer
 	 */
-	@Prop() expandedTwoColumnOptions?: ExpandedTwoColumnOptions | string;
+	@Prop() twoColumnOptions?: TwoColumnOptions | string;
 
 	/**
 	 * Stores the titles and content for the expanded
 	 * three column footer
 	 */
-	@Prop() expandedThreeColumnOptions?: ExpandedThreeColumnOptions | string;
+	@Prop() threeColumnOptions?: ThreeColumnOptions | string;
 
-	@State() private defaultState: DefaultOptions;
+	@State() private footerLinksState: FooterLinks;
 
-	@State() private expandedTwoColumnState: ExpandedTwoColumnOptions;
+	@State() private socialLinksState: FooterSocialLinksProps;
 
-	@State() private expandedThreeColumnState: ExpandedThreeColumnOptions;
+	@State() private twoColumnState: TwoColumnOptions;
 
-	@Watch('defaultOptions')
-	private processDefaultOptions() {
-		this.parseOptions(this.defaultOptions);
-		this.verifyDefault();
+	@State() private threeColumnState: ThreeColumnOptions;
+
+	@Watch('footerLinks')
+	private processFooterLinks() {
+		this.parseOptions(this.footerLinks);
+		this.verifyFooterLinks();
 	}
 
-	@Watch('expandedTwoColumnOptions')
-	private processExpandedTwoColumnOptions() {
-		this.expandedTwoColumnOptions && this.parseOptions(this.expandedTwoColumnOptions);
-		this.verifyExpandedTwoColumn();
+	@Watch('socialLinks')
+	private processSocialLinks() {
+		this.parseOptions(this.socialLinks);
 	}
 
-	@Watch('expandedThreeColumnOptions')
-	private processExpandedThreeColumnOptions() {
-		this.expandedThreeColumnOptions && this.parseOptions(this.expandedThreeColumnOptions);
-		this.verifyExpandedThreeColumn();
+	@Watch('twoColumnOptions')
+	private processTwoColumnOptions() {
+		this.twoColumnOptions && this.parseOptions(this.twoColumnOptions);
+		this.verifyTwoColumnOptions();
 	}
 
-	private verifyDefault() {
-		if (this.defaultState && !this.defaultState.printerLink) {
-			this.defaultState.printerLink = 'https://www.ontario.ca/page/copyright-information';
+	@Watch('threeColumnOptions')
+	private processThreeColumnOptions() {
+		this.threeColumnOptions && this.parseOptions(this.threeColumnOptions);
+		this.verifyThreeColumnOptions();
+	}
+
+	private verifyFooterLinks() {
+		if (!this.footerLinksState?.printerLink) {
+			this.footerLinksState.printerLink = 'https://www.ontario.ca/page/copyright-information';
 		}
-		if (
-			!this.defaultState ||
-			!this.defaultState.accessibilityLink ||
-			!this.defaultState.contactLink ||
-			!this.defaultState.privacyLink ||
-			!this.defaultState.printerLink
-		) {
+
+		if (!this.footerLinksState?.accessibilityLink || !this.footerLinksState?.privacyLink) {
 			console.error(
-				'Error: defaultOptions not fully set, please review your values and ensure all required options are truthy.',
+				'Error: FooterLinks not fully set, please review your values and ensure all required options are set.',
 			);
 		}
 	}
 
-	private verifyExpandedTwoColumn() {
-		if (this.type == 'expandedTwoColumn') {
-			if (
-				!this.expandedTwoColumnState ||
-				!this.expandedTwoColumnState.firstColumn ||
-				!this.expandedTwoColumnState.firstColumn.title ||
-				!this.expandedTwoColumnState.firstColumn.content ||
-				!this.expandedTwoColumnState.secondColumn ||
-				!this.expandedTwoColumnState.secondColumn.title ||
-				!this.expandedTwoColumnState.secondColumn.content ||
-				!this.expandedTwoColumnState.secondColumn.contactButtonText
-			) {
-				console.error(
-					'Error: expandedTwoColumnOptions not fully set, please review your values and ensure all options are truthy.',
-				);
-			}
+	private isTwoColumnLayout = (): boolean => this.type === 'twoColumn';
+	private isThreeColumnLayout = (): boolean => this.type === 'threeColumn';
+
+	private verifyTwoColumnOptions() {
+		if (this.isTwoColumnLayout() && isInvalidTwoColumnOptions(this.twoColumnState)) {
+			console.error('Error: twoColumnOptions not fully set, please review your values and ensure all options are set.');
 		}
 	}
 
-	private verifyExpandedThreeColumn() {
-		if (this.type == 'expandedThreeColumn') {
-			if (
-				!this.expandedThreeColumnState ||
-				!this.expandedThreeColumnState.firstColumn ||
-				!this.expandedThreeColumnState.firstColumn.title ||
-				!this.expandedThreeColumnState.firstColumn.content ||
-				!this.expandedThreeColumnState.secondColumn ||
-				!this.expandedThreeColumnState.secondColumn.title ||
-				!this.expandedThreeColumnState.secondColumn.content ||
-				!this.expandedThreeColumnState.secondColumn.content[0].title ||
-				!this.expandedThreeColumnState.secondColumn.content[0].link ||
-				!this.expandedThreeColumnState.thirdColumn ||
-				!this.expandedThreeColumnState.thirdColumn.title ||
-				!this.expandedThreeColumnState.thirdColumn.content ||
-				(this.expandedThreeColumnState.thirdColumn.facebook &&
-					!this.expandedThreeColumnState.thirdColumn.facebook.link) ||
-				(this.expandedThreeColumnState.thirdColumn.twitter &&
-					!this.expandedThreeColumnState.thirdColumn.twitter.link) ||
-				(this.expandedThreeColumnState.thirdColumn.instagram &&
-					!this.expandedThreeColumnState.thirdColumn.instagram.link) ||
-				(this.expandedThreeColumnState.thirdColumn.youtube && !this.expandedThreeColumnState.thirdColumn.youtube.link)
-			) {
-				console.error(
-					'Error: expandedThreeColumnOptions not fully set, please review your values and ensure all required options are truthy.',
-				);
-			}
+	private verifyThreeColumnOptions() {
+		if (this.isThreeColumnLayout() && isInvalidThreeColumnOptions(this.threeColumnState)) {
+			console.error(
+				'Error: threeColumnOptions not fully set, please review your values and ensure all required options are set.',
+			);
 		}
 	}
 
@@ -128,214 +105,80 @@ export class OntarioFooter {
 		const options = optionType;
 
 		if (options) {
-			const optionTypeIsString = typeof options === 'string';
+			const isString = typeof options === 'string';
 
-			if (options === this.defaultOptions) {
-				this.defaultState = optionTypeIsString ? JSON.parse(options) : options;
-			} else if (options === this.expandedTwoColumnOptions) {
-				this.expandedTwoColumnState = optionTypeIsString ? JSON.parse(options) : options;
+			if (options === this.footerLinks) {
+				this.footerLinksState = isString ? JSON.parse(options) : options;
+			} else if (options === this.socialLinks) {
+				this.socialLinksState = isString ? JSON.parse(options) : options;
+			} else if (options === this.twoColumnOptions) {
+				this.twoColumnState = isString ? JSON.parse(options) : options;
 			} else {
-				this.expandedThreeColumnState = optionTypeIsString ? JSON.parse(options) : options;
+				this.threeColumnState = isString ? JSON.parse(options) : options;
 			}
 		}
 	}
 
-	private getBackgroundImagePath() {
-		const backgroundImage =
-			this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn'
-				? 'footer-expanded-supergraphic-logo.svg'
-				: 'footer-default-supergraphic-logo.svg';
-		return { '--imagePath': `url(${getAssetPath(`./assets/${backgroundImage}`)})` };
+	private getBackgroundImage() {
+		return { '--imagePath': `url(${getAssetPath('./assets/footer-default-supergraphic-logo.svg')})` };
+	}
+
+	private getFooterLinks(): any {
+		const { accessibilityLink, privacyLink, contactLink, printerLink } = this.footerLinksState;
+
+		return {
+			accessibilityLink: {
+				href: accessibilityLink,
+				text: 'Accessibility',
+			},
+			privacyLink: {
+				href: privacyLink,
+				text: 'Privacy',
+			},
+			contactLink: {
+				href: contactLink,
+				text: 'Contact Us',
+			},
+			printerLink: {
+				href: printerLink || '',
+				text: "© King's Printer for Ontario,",
+			},
+		};
 	}
 
 	componentWillLoad() {
-		this.processDefaultOptions();
-		this.processExpandedTwoColumnOptions();
-		this.processExpandedThreeColumnOptions();
+		this.processFooterLinks();
+		this.processSocialLinks();
+		this.processTwoColumnOptions();
+		this.processThreeColumnOptions();
 	}
 
 	render() {
+		const { socialLinksState, twoColumnState, threeColumnState } = this;
+		const footerLinks = this.getFooterLinks();
+
+		if (this.isTwoColumnLayout()) {
+			return (
+				<ExpandedFooterWrapper footerLinks={footerLinks}>
+					<FooterColumn data={twoColumnState.col1} />
+					<FooterColumn data={twoColumnState.col2} socialLinks={socialLinksState} />
+				</ExpandedFooterWrapper>
+			);
+		}
+
+		if (this.isThreeColumnLayout()) {
+			return (
+				<ExpandedFooterWrapper footerLinks={footerLinks}>
+					<FooterColumn data={threeColumnState.col1} isThreeColLayout isFullWidthInMediumLayout />
+					<FooterColumn data={threeColumnState.col2} isThreeColLayout />
+					<FooterColumn data={threeColumnState.col3} socialLinks={socialLinksState} isThreeColLayout />
+				</ExpandedFooterWrapper>
+			);
+		}
+
 		return (
-			<footer
-				class={
-					`ontario-footer ` +
-					(this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn'
-						? 'ontario-footer--expanded'
-						: 'ontario-footer--default')
-				}
-				style={this.getBackgroundImagePath()}
-			>
-				{(this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn') && (
-					<div class="ontario-footer__expanded-top-section">
-						<div class="ontario-row">
-							<div
-								class={
-									'ontario-columns ontario-small-12 ' +
-									(this.type == 'expandedTwoColumn' ? 'ontario-medium-6' : '') +
-									(this.type == 'expandedThreeColumn'
-										? 'ontario-expanded-footer__one-third-block ontario-medium-12 ontario-large-4'
-										: '')
-								}
-							>
-								{this.type == 'expandedTwoColumn' && (
-									<div>
-										<h2 class="ontario-h4">{this.expandedTwoColumnState?.firstColumn?.title}</h2>
-										<div
-											class="ontario-footer__paragraph"
-											innerHTML={this.expandedTwoColumnState?.firstColumn?.content}
-										/>
-									</div>
-								)}
-								{this.type == 'expandedThreeColumn' && (
-									<div>
-										<h2 class="ontario-h4">{this.expandedThreeColumnState?.firstColumn?.title}</h2>
-										<div
-											class="ontario-footer__paragraph"
-											innerHTML={this.expandedThreeColumnState?.firstColumn?.content}
-										/>
-									</div>
-								)}
-							</div>
-							{this.type == 'expandedThreeColumn' && (
-								<div class="ontario-columns ontario-small-12 ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block">
-									<h2 class="ontario-h4">Most visited topics</h2>
-									<ul class="ontario-footer__links-container ontario-footer__links-container--two-column-list">
-										{this.expandedThreeColumnState?.secondColumn?.content?.map((item) => (
-											<li>
-												<a class="ontario-footer__link" href={item?.link}>
-													{item?.title}
-												</a>
-											</li>
-										))}
-									</ul>
-								</div>
-							)}
-							<div
-								class={
-									'ontario-columns ontario-small-12' +
-									(this.type == 'expandedTwoColumn' ? ' ontario-medium-6' : '') +
-									(this.type == 'expandedThreeColumn'
-										? ' ontario-medium-6 ontario-large-4 ontario-expanded-footer__one-third-block'
-										: '')
-								}
-							>
-								{this.type == 'expandedTwoColumn' && (
-									<div>
-										<h2 class="ontario-h4">{this.expandedTwoColumnState?.secondColumn?.title}</h2>
-										<div
-											class="ontario-footer__paragraph"
-											innerHTML={this.expandedTwoColumnState?.secondColumn?.content}
-										/>
-										<a href={this.defaultState?.contactLink}>
-											<ontario-button
-												aria-label="Secondary Button"
-												type="internalThemeDark"
-												htmlType="reset"
-												id="secondaryButton"
-											>
-												{this.expandedTwoColumnState?.secondColumn?.contactButtonText}
-											</ontario-button>
-										</a>
-									</div>
-								)}
-								{this.type == 'expandedThreeColumn' && (
-									<div>
-										<h2 class="ontario-h4">{this.expandedThreeColumnState?.thirdColumn?.title}</h2>
-										<div
-											class="ontario-footer__paragraph"
-											innerHTML={this.expandedThreeColumnState?.thirdColumn?.content}
-										/>
-										<ul class="ontario-footer__links-container ontario-footer__links-container--social">
-											{this.expandedThreeColumnState.thirdColumn.facebook && (
-												<li>
-													<a
-														class="ontario-footer__link"
-														href={this.expandedThreeColumnState?.thirdColumn?.facebook?.link}
-														aria-label="Facebook"
-													>
-														<ontario-icon-facebook colour="white" />
-													</a>
-												</li>
-											)}
-											{this.expandedThreeColumnState.thirdColumn.twitter && (
-												<li>
-													<a
-														class="ontario-footer__link"
-														href={this.expandedThreeColumnState?.thirdColumn?.twitter?.link}
-														aria-label="Twitter"
-													>
-														<ontario-icon-twitter colour="white" />
-													</a>
-												</li>
-											)}
-											{this.expandedThreeColumnState.thirdColumn.instagram && (
-												<li>
-													<a
-														class="ontario-footer__link"
-														href={this.expandedThreeColumnState?.thirdColumn?.instagram?.link}
-														aria-label="Instagram"
-													>
-														<ontario-icon-instagram colour="white" />
-													</a>
-												</li>
-											)}
-											{this.expandedThreeColumnState.thirdColumn.youtube && (
-												<li>
-													<a
-														class="ontario-footer__link"
-														href={this.expandedThreeColumnState?.thirdColumn?.youtube?.link}
-														aria-label="Youtube"
-													>
-														<ontario-icon-youtube colour="white" />
-													</a>
-												</li>
-											)}
-										</ul>
-									</div>
-								)}
-							</div>
-						</div>
-					</div>
-				)}
-				<div
-					class={
-						'ontario-row ' +
-						(this.type == 'expandedTwoColumn' || this.type == 'expandedThreeColumn'
-							? 'ontario-footer__expanded-bottom-section'
-							: '')
-					}
-				>
-					<div class="ontario-columns ontario-small-12">
-						<ul class="ontario-footer__links-container ontario-footer__links-container--inline">
-							<li>
-								<a class="ontario-footer__link" href={this.defaultState?.accessibilityLink}>
-									Accessibility
-								</a>
-							</li>
-							<li>
-								<a class="ontario-footer__link" href={this.defaultState?.privacyLink}>
-									Privacy
-								</a>
-							</li>
-							{!(this.type == 'expandedTwoColumn') && (
-								<li>
-									<a class="ontario-footer__link" href={this.defaultState?.contactLink}>
-										Contact us
-									</a>
-								</li>
-							)}
-						</ul>
-						<div class="ontario-footer__copyright">
-							<a class="ontario-footer__link" href={this.defaultState?.printerLink}>
-								&copy; King's Printer for Ontario,{' '}
-								<span class="ontario-nbsp">
-									2012{enDash}
-									{String(new Date().getFullYear()).slice(-2)}
-								</span>
-							</a>
-						</div>
-					</div>
-				</div>
+			<footer class="ontario-footer ontario-footer--default" style={this.getBackgroundImage()}>
+				<SimpleFooter {...footerLinks} />
 			</footer>
 		);
 	}
