@@ -30,7 +30,7 @@ Otherwise, a default Back to Top button can be used as following:
 
 | Property   | Attribute  | Description                                                                                                                                                                                                   | Type                        | Default |
 | ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ------- |
-| `language` | `language` | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English. | `"en" \| "fr" \| undefined` | `'en'`  |
+| `language` | `language` | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English. | `"EN" \| "FR" \| undefined` | `'EN'`  |
 
 ---
 

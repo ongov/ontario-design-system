@@ -45,7 +45,7 @@ export class OntarioDropdownList implements Dropdown {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language?: language = 'en';
+	@Prop({ mutable: true }) language?: language = 'EN';
 
 	/**
 	 * The name for the dropdown list.

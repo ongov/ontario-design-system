@@ -16,7 +16,7 @@ export class TestLanguageToggle {
 		} else if (document.documentElement.lang) {
 			lang = document.documentElement.lang;
 		} else {
-			lang = 'en';
+			lang = 'EN';
 		}
 
 		this.language = lang;
@@ -27,7 +27,7 @@ export class TestLanguageToggle {
 
 	@Event() headerLanguageToggled: EventEmitter<string>;
 	handleHeaderLanguageToggled(language: string) {
-		const toggledLang = language === 'en' ? 'fr' : 'en';
+		const toggledLang = language === 'EN' ? 'FR' : 'EN';
 		this.language = toggledLang;
 		this.headerLanguageToggled.emit(toggledLang);
 
@@ -39,9 +39,9 @@ export class TestLanguageToggle {
 
 		if (htmlElement?.tagName.toLowerCase() === 'html') {
 			if (lang) {
-				htmlElement.setAttribute('lang', lang);
+				htmlElement.setAttribute('lang', lang.toUpperCase());
 			} else {
-				htmlElement.setAttribute('lang', 'en');
+				htmlElement.setAttribute('lang', 'EN');
 			}
 		}
 
@@ -55,7 +55,7 @@ export class TestLanguageToggle {
 	render() {
 		return (
 			<button type="button" onClick={() => this.handleHeaderLanguageToggled(this.language)}>
-				{this.language === 'en' ? 'Français' : 'English'}
+				{this.language === 'EN' ? 'Français' : 'English'}
 			</button>
 		);
 	}

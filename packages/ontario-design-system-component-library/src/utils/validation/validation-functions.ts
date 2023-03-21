@@ -40,9 +40,9 @@ export function validateValueAgainstArray<T extends string>(value: T, keys: Read
 export function validateLanguage(language: CustomEvent<language> | string | undefined) {
 	if (language) {
 		const toggledLanguage = typeof language !== 'string' ? language.detail : language;
-		if (toggledLanguage && (toggledLanguage === 'en' || toggledLanguage === 'fr')) return toggledLanguage;
-		else return 'en';
+		if (toggledLanguage && (toggledLanguage === 'EN' || toggledLanguage === 'FR')) return toggledLanguage;
+		else return 'EN';
 	}
 
-	return (language = 'en');
+	return (language = 'FR');
 }

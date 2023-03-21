@@ -96,7 +96,7 @@ export class OntarioTextarea implements Input {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language?: language = 'en';
+	@Prop({ mutable: true }) language?: language = 'EN';
 
 	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.

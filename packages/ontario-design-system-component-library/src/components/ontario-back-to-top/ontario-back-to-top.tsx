@@ -16,7 +16,7 @@ export class OntarioBackToTop {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language?: language = 'en';
+	@Prop({ mutable: true }) language?: language = 'EN';
 
 	@State() translations: any = translations;
 
@@ -60,10 +60,10 @@ export class OntarioBackToTop {
 			<button
 				class={this.displayBackToTop ? `ontario-back-to-top active` : `ontario-back-to-top`}
 				onClick={this.scrollToTop}
-				aria-label={this.translations.backToTop.ariaLabel[`${this.language}`]}
+				aria-label={this.translations.backToTop.ariaLabel[`${this.language?.toLowerCase()}`]}
 			>
 				<span aria-hidden="true" innerHTML={OntarioIconArrowUp}></span>
-				{this.translations.backToTop.top[`${this.language}`]}
+				{this.translations.backToTop.top[`${this.language?.toLowerCase()}`]}
 			</button>
 		);
 	}
