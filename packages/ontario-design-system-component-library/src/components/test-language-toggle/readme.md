@@ -4,9 +4,9 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type     | Default     |
-| ---------- | ---------- | ----------- | -------- | ----------- |
-| `language` | `language` |             | `string` | `undefined` |
+| Property   | Attribute  | Description | Type     | Default |
+| ---------- | ---------- | ----------- | -------- | ------- |
+| `language` | `language` |             | `string` | `'en'`  |
 
 ## Events
 

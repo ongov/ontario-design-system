@@ -31,7 +31,7 @@ export class InputCaption implements CaptionInfo {
 	 */
 	componentTagName: string;
 
-	language: any = 'EN';
+	language: any = 'en';
 
 	translations: any;
 
@@ -101,15 +101,15 @@ export class InputCaption implements CaptionInfo {
 	getHintExpanderAccessibilityText(captionText: string, hasHintExpanderOnOption: boolean = false): HTMLElement {
 		const multipleOptionsMessage = (
 			<span class="ontario-show-for-sr">
-				{this.translations.accessibility.moreInfo[this.language.toLowerCase()]} "{captionText.toLowerCase()}"{' '}
-				{this.translations.accessibility.checkboxHintExpander[this.language.toLowerCase()]}
+				{this.translations.accessibility.moreInfo[this.language]} "{captionText.toLowerCase()}"{' '}
+				{this.translations.accessibility.checkboxHintExpander[this.language]}
 			</span>
 		);
 
 		const singleOptionMessage = (
 			<span class="ontario-show-for-sr">
-				{this.translations.accessibility.moreInfo[this.language.toLowerCase()]} "{captionText.toLowerCase()}"{' '}
-				{this.translations.accessibility.singleHintExpander[this.language.toLowerCase()]}
+				{this.translations.accessibility.moreInfo[this.language]} "{captionText.toLowerCase()}"{' '}
+				{this.translations.accessibility.singleHintExpander[this.language]}
 			</span>
 		);
 		return this.componentTagName === 'ontario-checkboxes'
@@ -125,8 +125,8 @@ export class InputCaption implements CaptionInfo {
 	 */
 	private getRequiredFlagText(): string {
 		return this.required
-			? this.translations && `(${this.translations.required[this.language.toLowerCase()]})`
-			: this.translations && `(${this.translations.optional[this.language.toLowerCase()]})`;
+			? this.translations && `(${this.translations.required[this.language]})`
+			: this.translations && `(${this.translations.optional[this.language]})`;
 	}
 
 	/**

@@ -1,4 +1,6 @@
 import { Component, Prop, Event, EventEmitter, h } from '@stencil/core';
+import { Language } from '../../utils/language-types';
+import { validateLanguage } from '../../utils/validation/validation-functions';
 
 @Component({
 	tag: 'test-language-toggle',
@@ -6,17 +8,17 @@ import { Component, Prop, Event, EventEmitter, h } from '@stencil/core';
 	shadow: true,
 })
 export class TestLanguageToggle {
-	@Prop({ mutable: true }) language: string;
+	@Prop({ mutable: true }) language: Language | string = 'en';
 
 	@Event() setAppLanguage: EventEmitter<string>;
 	setAppLanguageHandler() {
-		let lang: string;
+		let lang: string | Language;
 		if (this.language) {
 			lang = this.language;
 		} else if (document.documentElement.lang) {
 			lang = document.documentElement.lang;
 		} else {
-			lang = 'EN';
+			lang = 'en';
 		}
 
 		this.language = lang;
@@ -27,7 +29,7 @@ export class TestLanguageToggle {
 
 	@Event() headerLanguageToggled: EventEmitter<string>;
 	handleHeaderLanguageToggled(language: string) {
-		const toggledLang = language === 'EN' ? 'FR' : 'EN';
+		const toggledLang = language === 'en' ? 'fr' : 'en';
 		this.language = toggledLang;
 		this.headerLanguageToggled.emit(toggledLang);
 
@@ -41,7 +43,7 @@ export class TestLanguageToggle {
 			if (lang) {
 				htmlElement.setAttribute('lang', lang.toUpperCase());
 			} else {
-				htmlElement.setAttribute('lang', 'EN');
+				htmlElement.setAttribute('lang', 'en');
 			}
 		}
 
@@ -49,13 +51,14 @@ export class TestLanguageToggle {
 	};
 
 	connectedCallback() {
+		this.language = validateLanguage(this.language);
 		this.setAppLanguageHandler();
 	}
 
 	render() {
 		return (
 			<button type="button" onClick={() => this.handleHeaderLanguageToggled(this.language)}>
-				{this.language === 'EN' ? 'Français' : 'English'}
+				{this.language === 'en' ? 'Français' : 'English'}
 			</button>
 		);
 	}

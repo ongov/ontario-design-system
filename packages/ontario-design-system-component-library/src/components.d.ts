@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { language } from "./utils/language-types";
+import { Language } from "./utils/language-types";
 import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
 import { Caption } from "./utils/input-caption/caption.interface";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
@@ -23,7 +23,7 @@ export namespace Components {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
          */
-        "language"?: language;
+        "language"?: Language;
     }
     interface OntarioBlockquote {
         /**
@@ -81,7 +81,7 @@ export namespace Components {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: language;
+        "language"?: Language;
         /**
           * The name for the checkboxes.
          */
@@ -130,7 +130,7 @@ export namespace Components {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: language;
+        "language"?: Language;
         /**
           * The name for the dropdown list.
          */
@@ -1317,7 +1317,7 @@ export namespace Components {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: language;
+        "language"?: Language;
         /**
           * The name assigned to the input.The name value is used to reference form data after a form is submitted.
          */
@@ -1370,7 +1370,7 @@ export namespace Components {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: language;
+        "language"?: Language;
         /**
           * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
          */
@@ -1411,7 +1411,7 @@ export namespace Components {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: language;
+        "language"?: Language;
         /**
           * The name assigned to the textarea. The name value is used to reference form data after a form is submitted.
          */
@@ -1426,7 +1426,7 @@ export namespace Components {
         "value"?: string;
     }
     interface TestLanguageToggle {
-        "language": string;
+        "language": Language | string;
     }
 }
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
@@ -2347,7 +2347,7 @@ declare namespace LocalJSX {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
          */
-        "language"?: language;
+        "language"?: Language;
     }
     interface OntarioBlockquote {
         /**
@@ -2405,7 +2405,7 @@ declare namespace LocalJSX {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: language;
+        "language"?: Language;
         /**
           * The name for the checkboxes.
          */
@@ -2458,7 +2458,7 @@ declare namespace LocalJSX {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: language;
+        "language"?: Language;
         /**
           * The name for the dropdown list.
          */
@@ -3649,7 +3649,7 @@ declare namespace LocalJSX {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: language;
+        "language"?: Language;
         /**
           * The name assigned to the input.The name value is used to reference form data after a form is submitted.
          */
@@ -3714,7 +3714,7 @@ declare namespace LocalJSX {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: language;
+        "language"?: Language;
         /**
           * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
          */
@@ -3755,7 +3755,7 @@ declare namespace LocalJSX {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: language;
+        "language"?: Language;
         /**
           * The name assigned to the textarea. The name value is used to reference form data after a form is submitted.
          */
@@ -3782,7 +3782,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface TestLanguageToggle {
-        "language"?: string;
+        "language"?: Language | string;
         "onHeaderLanguageToggled"?: (event: TestLanguageToggleCustomEvent<string>) => void;
         "onSetAppLanguage"?: (event: TestLanguageToggleCustomEvent<string>) => void;
     }

@@ -6,7 +6,7 @@ import { Caption } from '../../utils/input-caption/caption.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 import { validatePropExists, validateLanguage } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { language } from '../../utils/language-types';
+import { Language } from '../../utils/language-types';
 import { default as translations } from '../../translations/global.i18n.json';
 
 /**
@@ -96,7 +96,7 @@ export class OntarioTextarea implements Input {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language?: language = 'EN';
+	@Prop({ mutable: true }) language?: Language = 'en';
 
 	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.
@@ -129,12 +129,12 @@ export class OntarioTextarea implements Input {
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the textarea component loads.
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
-	handleSetAppLanguage(event: CustomEvent<language>) {
+	handleSetAppLanguage(event: CustomEvent<Language>) {
 		this.language = validateLanguage(event);
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<language>) {
+	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
 		const toggledLanguage = validateLanguage(event);
 		this.language = toggledLanguage;
 	}
