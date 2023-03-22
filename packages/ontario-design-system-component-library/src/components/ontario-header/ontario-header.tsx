@@ -319,7 +319,7 @@ export class OntarioHeader {
 	private generateNavigationLinks(item: menuItems, index: number, links: number | undefined, viewportSize: string) {
 		const lastLink = index + 1 === (links ? this.menuItemState.length - links : this.menuItemState.length) ? true : false;
 
-		return this.generateMenuItem(item.href, item.title, item.linkIsActive, viewportSize, '', item.onClickHandler, lastLink);
+		return this.isDynamicMenu ? this.generateMenuItem(item.href, item.title, item.linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', item.onClickHandler, lastLink) : this.generateMenuItem(item.href, item.title, item.linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', viewportSize, lastLink);
 	}
 
 	/**
