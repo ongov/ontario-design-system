@@ -56,6 +56,33 @@ export class OntarioHeader {
 	@Prop() menuItems: menuItems[] | string;
 
 	/**
+	 * Option to disable fetching of the dynamic menu from the Ontario Header API
+	 *
+	 * @example
+	 * 	<ontario-header
+	 * 			disable-Dynamic-Menu="false"
+	 *			menu-Items='[{
+	 *				"title": "Hint",
+	 *				"href": "/ontario-hint"
+	 *				"linkIsActive": "false"
+	 *			},{
+	 *				"title": "Hint",
+	 *				"href": "/ontario-hint"
+	 *				"linkIsActive": "false"
+	 *			},{
+	 *				"title": "Hint",
+	 *				"href": "/ontario-hint"
+	 *				"linkIsActive": "false"
+	 *			},{
+	 *				"title": "Hint",
+	 *				"href": "/ontario-hint"
+	 *				"linkIsActive": "false"
+	 *			}]'>
+	 *	</ontario-header>
+	 */
+	@Prop() disableDynamicMenu: boolean = false;
+
+	/**
 	 * The link that contains the french page
 	 */
 	@Prop() languageToggleOptions: languageToggleOptions | string;
@@ -157,14 +184,12 @@ export class OntarioHeader {
 
 	@Watch('menuItems')
 	parseMenuItems() {
-		if (typeof this.menuItems !== 'undefined') {
-			if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
-				this.menuItemState = JSON.parse(this.menuItems);
-				this.isDynamicMenu = false;
-			} else {
-				this.menuItemState = OntarioHeaderDefaultData;
-				this.isDynamicMenu = false;
-			}
+		if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
+			this.menuItemState = JSON.parse(this.menuItems);
+			this.isDynamicMenu = false;
+		} else {
+			this.menuItemState = OntarioHeaderDefaultData;
+			this.isDynamicMenu = false;
 		}
 	}
 
@@ -319,7 +344,7 @@ export class OntarioHeader {
 	private generateNavigationLinks(item: menuItems, index: number, links: number | undefined, viewportSize: string) {
 		const lastLink = index + 1 === (links ? this.menuItemState.length - links : this.menuItemState.length) ? true : false;
 
-		return this.isDynamicMenu ? this.generateMenuItem(item.href, item.title, item.linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', item.onClickHandler, lastLink) : this.generateMenuItem(item.href, item.title, item.linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', viewportSize, lastLink);
+		return this.generateMenuItem(item.href, item.title, item.linkIsActive, viewportSize, '', item.onClickHandler, lastLink);
 	}
 
 	/**
@@ -338,7 +363,9 @@ export class OntarioHeader {
 	}
 
 	componentDidRender() {
-		this.fetchOntarioMenu();
+		if (this.disableDynamicMenu === false) {
+			this.fetchOntarioMenu();
+		}
 	}
 
 	/**
@@ -458,7 +485,7 @@ export class OntarioHeader {
 												const lastLink = index + 1 === this.menuItemState.length;
 												const activeLinkRegex = item.title.replace(/\s+/g, '-').toLowerCase();
 												const linkIsActive = window.location.pathname.includes(activeLinkRegex);
-												return this.generateMenuItem(item.href, item.title, linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', undefined, lastLink);
+												return this.isDynamicMenu ? this.generateMenuItem(item.href, item.title, item.linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', item.onClickHandler, lastLink) : this.generateMenuItem(item.href, item.title, linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', undefined, lastLink);
 										})}
 								</ul>
 							</div>

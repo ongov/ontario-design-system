@@ -174,6 +174,11 @@ export namespace Components {
          */
         "applicationHeaderInfo": applicationHeaderInfo | string;
         /**
+          * Option to disable fetching of the dynamic menu from the Ontario Header API
+          * @example 	<ontario-header 			disable-Dynamic-Menu="false" 		menu-Items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
+         */
+        "disableDynamicMenu": boolean;
+        /**
           * The link that contains the french page
          */
         "languageToggleOptions": languageToggleOptions | string;
@@ -2376,6 +2381,11 @@ declare namespace LocalJSX {
           * @example 	<ontario-header 	type="application" .  application-header-info='{ 			"name": "Application name", 			"href": "/application-homepage" 			"maxSubheaderDesktopLinks": "3", 			"maxSubheaderTabletLinks": "2", 			"maxSubheaderMobileLinks": "1"    }' </ontario-header>
          */
         "applicationHeaderInfo"?: applicationHeaderInfo | string;
+        /**
+          * Option to disable fetching of the dynamic menu from the Ontario Header API
+          * @example 	<ontario-header 			disable-Dynamic-Menu="false" 		menu-Items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
+         */
+        "disableDynamicMenu"?: boolean;
         /**
           * The link that contains the french page
          */
