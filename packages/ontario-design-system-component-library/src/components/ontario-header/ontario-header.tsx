@@ -485,8 +485,7 @@ export class OntarioHeader {
 												const lastLink = index + 1 === this.menuItemState.length;
 												const activeLinkRegex = item.title.replace(/\s+/g, '-').toLowerCase();
 												const linkIsActive = window.location.pathname.includes(activeLinkRegex);
-												return this.isDynamicMenu ? this.generateMenuItem(item.href, item.title, item.linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', item.onClickHandler, lastLink) : this.generateMenuItem(item.href, item.title, linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', undefined, lastLink);
-										})}
+												return this.isDynamicMenu ? this.generateMenuItem(item.href, item.title, linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', undefined, lastLink) : this.generateMenuItem(item.href, item.title, item.linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', item.onClickHandler, lastLink);										})}
 								</ul>
 							</div>
 						</nav>
