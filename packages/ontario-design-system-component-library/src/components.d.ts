@@ -175,7 +175,7 @@ export namespace Components {
         "applicationHeaderInfo": applicationHeaderInfo | string;
         /**
           * Option to disable fetching of the dynamic menu from the Ontario Header API
-          * @example 	<ontario-header 			disable-Dynamic-Menu="false" 		menu-Items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
+          * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
          */
         "disableDynamicMenu": boolean;
         /**
@@ -2383,7 +2383,7 @@ declare namespace LocalJSX {
         "applicationHeaderInfo"?: applicationHeaderInfo | string;
         /**
           * Option to disable fetching of the dynamic menu from the Ontario Header API
-          * @example 	<ontario-header 			disable-Dynamic-Menu="false" 		menu-Items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
+          * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
          */
         "disableDynamicMenu"?: boolean;
         /**

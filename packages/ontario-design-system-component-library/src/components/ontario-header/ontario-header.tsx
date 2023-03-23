@@ -60,8 +60,9 @@ export class OntarioHeader {
 	 *
 	 * @example
 	 * 	<ontario-header
-	 * 			disable-Dynamic-Menu="false"
-	 *			menu-Items='[{
+	 * 			type="ontario"
+	 * 			disable-dynamic-menu="false"
+	 *			menu-items='[{
 	 *				"title": "Hint",
 	 *				"href": "/ontario-hint"
 	 *				"linkIsActive": "false"
@@ -97,7 +98,9 @@ export class OntarioHeader {
 	 *
 	 * @example
 	 * 	<ontario-header
-	 *			menu-Items='[{
+	 * 			type="ontario"
+	 * 			disable-dynamic-menu="true"
+	 *			menu-items='[{
 	 *				"title": "Hint",
 	 *				"href": "/ontario-hint"
 	 *				"linkIsActive": "false"
