@@ -1,3 +1,5 @@
+import { Language } from '../language-types';
+
 export function validatePropExists(newValue: string | HTMLElement): boolean {
 	// Check if new value that is passed in is a string and is not empty
 	const isNewValueBlank = typeof newValue !== 'string' || newValue === '';
@@ -33,4 +35,14 @@ export function validateObjectExists(newValue: object): boolean {
  */
 export function validateValueAgainstArray<T extends string>(value: T, keys: ReadonlyArray<string>): boolean {
 	return keys.includes(value);
+}
+
+export function validateLanguage(language: CustomEvent<Language> | string | undefined) {
+	if (language) {
+		const toggledLanguage = typeof language !== 'string' ? language.detail : language;
+		if (toggledLanguage && (toggledLanguage === 'en' || toggledLanguage === 'fr')) return toggledLanguage;
+		else return 'en';
+	}
+
+	return 'en';
 }

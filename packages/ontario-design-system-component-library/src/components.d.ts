@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Language } from "./utils/language-types";
 import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
 import { Caption } from "./utils/input-caption/caption.interface";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
@@ -18,6 +19,12 @@ import { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export namespace Components {
+    interface OntarioBackToTop {
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+         */
+        "language"?: Language;
+    }
     interface OntarioBlockquote {
         /**
           * Optional text to be displayed as the attribution (the author) of the quote.
@@ -74,7 +81,7 @@ export namespace Components {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: string;
+        "language"?: Language;
         /**
           * The name for the checkboxes.
          */
@@ -123,7 +130,7 @@ export namespace Components {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: string;
+        "language"?: Language;
         /**
           * The name for the dropdown list.
          */
@@ -260,6 +267,16 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconAlertWarning {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth": IconSize;
+    }
+    interface OntarioIconArrowUp {
+        /**
+          * Set the icon's colour.
+         */
+        "colour": IconColour | string;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -1300,7 +1317,7 @@ export namespace Components {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: string;
+        "language"?: Language;
         /**
           * The name assigned to the input.The name value is used to reference form data after a form is submitted.
          */
@@ -1353,7 +1370,7 @@ export namespace Components {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: string;
+        "language"?: Language;
         /**
           * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
          */
@@ -1394,7 +1411,7 @@ export namespace Components {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: string;
+        "language"?: Language;
         /**
           * The name assigned to the textarea. The name value is used to reference form data after a form is submitted.
          */
@@ -1409,7 +1426,7 @@ export namespace Components {
         "value"?: string;
     }
     interface TestLanguageToggle {
-        "language": string;
+        "language": Language | string;
     }
 }
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
@@ -1433,6 +1450,12 @@ export interface TestLanguageToggleCustomEvent<T> extends CustomEvent<T> {
     target: HTMLTestLanguageToggleElement;
 }
 declare global {
+    interface HTMLOntarioBackToTopElement extends Components.OntarioBackToTop, HTMLStencilElement {
+    }
+    var HTMLOntarioBackToTopElement: {
+        prototype: HTMLOntarioBackToTopElement;
+        new (): HTMLOntarioBackToTopElement;
+    };
     interface HTMLOntarioBlockquoteElement extends Components.OntarioBlockquote, HTMLStencilElement {
     }
     var HTMLOntarioBlockquoteElement: {
@@ -1534,6 +1557,12 @@ declare global {
     var HTMLOntarioIconAlertWarningElement: {
         prototype: HTMLOntarioIconAlertWarningElement;
         new (): HTMLOntarioIconAlertWarningElement;
+    };
+    interface HTMLOntarioIconArrowUpElement extends Components.OntarioIconArrowUp, HTMLStencilElement {
+    }
+    var HTMLOntarioIconArrowUpElement: {
+        prototype: HTMLOntarioIconArrowUpElement;
+        new (): HTMLOntarioIconArrowUpElement;
     };
     interface HTMLOntarioIconAttachElement extends Components.OntarioIconAttach, HTMLStencilElement {
     }
@@ -2184,6 +2213,7 @@ declare global {
         new (): HTMLTestLanguageToggleElement;
     };
     interface HTMLElementTagNameMap {
+        "ontario-back-to-top": HTMLOntarioBackToTopElement;
         "ontario-blockquote": HTMLOntarioBlockquoteElement;
         "ontario-button": HTMLOntarioButtonElement;
         "ontario-checkboxes": HTMLOntarioCheckboxesElement;
@@ -2201,6 +2231,7 @@ declare global {
         "ontario-icon-alert-information": HTMLOntarioIconAlertInformationElement;
         "ontario-icon-alert-success": HTMLOntarioIconAlertSuccessElement;
         "ontario-icon-alert-warning": HTMLOntarioIconAlertWarningElement;
+        "ontario-icon-arrow-up": HTMLOntarioIconArrowUpElement;
         "ontario-icon-attach": HTMLOntarioIconAttachElement;
         "ontario-icon-bookmark-off": HTMLOntarioIconBookmarkOffElement;
         "ontario-icon-bookmark-on": HTMLOntarioIconBookmarkOnElement;
@@ -2312,6 +2343,12 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface OntarioBackToTop {
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+         */
+        "language"?: Language;
+    }
     interface OntarioBlockquote {
         /**
           * Optional text to be displayed as the attribution (the author) of the quote.
@@ -2368,7 +2405,7 @@ declare namespace LocalJSX {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: string;
+        "language"?: Language;
         /**
           * The name for the checkboxes.
          */
@@ -2421,7 +2458,7 @@ declare namespace LocalJSX {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: string;
+        "language"?: Language;
         /**
           * The name for the dropdown list.
          */
@@ -2562,6 +2599,16 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconAlertWarning {
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+         */
+        "iconWidth"?: IconSize;
+    }
+    interface OntarioIconArrowUp {
+        /**
+          * Set the icon's colour.
+         */
+        "colour"?: IconColour | string;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
          */
@@ -3602,7 +3649,7 @@ declare namespace LocalJSX {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: string;
+        "language"?: Language;
         /**
           * The name assigned to the input.The name value is used to reference form data after a form is submitted.
          */
@@ -3667,7 +3714,7 @@ declare namespace LocalJSX {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: string;
+        "language"?: Language;
         /**
           * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
          */
@@ -3708,7 +3755,7 @@ declare namespace LocalJSX {
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
          */
-        "language"?: string;
+        "language"?: Language;
         /**
           * The name assigned to the textarea. The name value is used to reference form data after a form is submitted.
          */
@@ -3735,11 +3782,12 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface TestLanguageToggle {
-        "language"?: string;
+        "language"?: Language | string;
         "onHeaderLanguageToggled"?: (event: TestLanguageToggleCustomEvent<string>) => void;
         "onSetAppLanguage"?: (event: TestLanguageToggleCustomEvent<string>) => void;
     }
     interface IntrinsicElements {
+        "ontario-back-to-top": OntarioBackToTop;
         "ontario-blockquote": OntarioBlockquote;
         "ontario-button": OntarioButton;
         "ontario-checkboxes": OntarioCheckboxes;
@@ -3757,6 +3805,7 @@ declare namespace LocalJSX {
         "ontario-icon-alert-information": OntarioIconAlertInformation;
         "ontario-icon-alert-success": OntarioIconAlertSuccess;
         "ontario-icon-alert-warning": OntarioIconAlertWarning;
+        "ontario-icon-arrow-up": OntarioIconArrowUp;
         "ontario-icon-attach": OntarioIconAttach;
         "ontario-icon-bookmark-off": OntarioIconBookmarkOff;
         "ontario-icon-bookmark-on": OntarioIconBookmarkOn;
@@ -3871,6 +3920,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "ontario-back-to-top": LocalJSX.OntarioBackToTop & JSXBase.HTMLAttributes<HTMLOntarioBackToTopElement>;
             "ontario-blockquote": LocalJSX.OntarioBlockquote & JSXBase.HTMLAttributes<HTMLOntarioBlockquoteElement>;
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             "ontario-checkboxes": LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
@@ -3888,6 +3938,7 @@ declare module "@stencil/core" {
             "ontario-icon-alert-information": LocalJSX.OntarioIconAlertInformation & JSXBase.HTMLAttributes<HTMLOntarioIconAlertInformationElement>;
             "ontario-icon-alert-success": LocalJSX.OntarioIconAlertSuccess & JSXBase.HTMLAttributes<HTMLOntarioIconAlertSuccessElement>;
             "ontario-icon-alert-warning": LocalJSX.OntarioIconAlertWarning & JSXBase.HTMLAttributes<HTMLOntarioIconAlertWarningElement>;
+            "ontario-icon-arrow-up": LocalJSX.OntarioIconArrowUp & JSXBase.HTMLAttributes<HTMLOntarioIconArrowUpElement>;
             "ontario-icon-attach": LocalJSX.OntarioIconAttach & JSXBase.HTMLAttributes<HTMLOntarioIconAttachElement>;
             "ontario-icon-bookmark-off": LocalJSX.OntarioIconBookmarkOff & JSXBase.HTMLAttributes<HTMLOntarioIconBookmarkOffElement>;
             "ontario-icon-bookmark-on": LocalJSX.OntarioIconBookmarkOn & JSXBase.HTMLAttributes<HTMLOntarioIconBookmarkOnElement>;

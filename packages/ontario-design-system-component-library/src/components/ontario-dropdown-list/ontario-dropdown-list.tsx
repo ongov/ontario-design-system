@@ -5,8 +5,13 @@ import { DropdownOption } from './dropdown-option.interface';
 import { Dropdown } from './dropdown.interface';
 import { v4 as uuid } from 'uuid';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
-import { validateObjectExists, validatePropExists } from '../../utils/validation/validation-functions';
+import {
+	validateObjectExists,
+	validatePropExists,
+	validateLanguage,
+} from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { Language } from '../../utils/language-types';
 import { default as translations } from '../../translations/global.i18n.json';
 
 @Component({
@@ -40,7 +45,7 @@ export class OntarioDropdownList implements Dropdown {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language?: string = 'en';
+	@Prop({ mutable: true }) language?: Language = 'en';
 
 	/**
 	 * The name for the dropdown list.
@@ -150,13 +155,13 @@ export class OntarioDropdownList implements Dropdown {
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
-	handleSetAppLanguage(event: CustomEvent<string>) {
-		this.language = event.detail;
+	handleSetAppLanguage(event: CustomEvent<Language>) {
+		this.language = validateLanguage(event);
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<string>) {
-		const toggledLanguage = event.detail;
+	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
+		const toggledLanguage = validateLanguage(event);
 		this.language = toggledLanguage;
 	}
 
@@ -261,6 +266,7 @@ export class OntarioDropdownList implements Dropdown {
 		this.validateOptions(this.internalOptions);
 		this.elementId = this.elementId ?? uuid();
 		this.parseHintExpander();
+		this.language = validateLanguage(this.language);
 	}
 
 	render() {
