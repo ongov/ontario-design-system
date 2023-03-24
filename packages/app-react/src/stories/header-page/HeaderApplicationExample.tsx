@@ -7,34 +7,34 @@ export default function HeaderApplicationExample() {
 	const applicationHeaderCodeExample = `import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioHeader
 		type="application"
 		application-header-info='{
-    	"name": "Application name" ,
-    	"href": "/",
+    		"title": "Application name" ,
+    		"href": "/",
 			"maxSubheaderDesktopLinks": "3",
 			"maxSubheaderTabletLinks": "2"
 		}'
 		language-toggle-options='{
-    	"englishLink":"/en",
-    	"frenchLink": "/fr"
+    		"englishLink":"/en",
+    		"frenchLink": "/fr"
 		}'
 		menu-items='[
 			{
-				"name": "Link one",
+				"title": "Link one",
 				"href": "/link-one"
 			},
 			{
-				"name": "Link two",
+				"title": "Link two",
 				"href": "/link-two"
 			},
 			{
-				"name": "Long link three",
+				"title": "Long link three",
 				"href": "/link-three"
 			},
 			{
-				"name": "Long link four",
+				"title": "Long link four",
 				"href": "/link-four"
 			},
 			{
-				"name": "Link five",
+				"title": "Link five",
 				"href": "/link-five"
 			}
 		]'>
@@ -48,34 +48,34 @@ export default function HeaderApplicationExample() {
 					<OntarioHeader
 						type="application"
 						application-header-info='{
-                "name": "Application name" ,
-                "href": "/",
-								"maxSubheaderDesktopLinks": "3",
-								"maxSubheaderTabletLinks": "2"
-            }'
+							"title": "Application name" ,
+							"href": "/",
+							"maxSubheaderDesktopLinks": "3",
+							"maxSubheaderTabletLinks": "2"
+            			}'
 						language-toggle-options='{
-                "englishLink":"/en",
-                "frenchLink": "/fr"
-            }'
+							"englishLink":"/en",
+							"frenchLink": "/fr"
+						}'
 						menu-items='[
 							{
-								"name": "Link one",
+								"title": "Link one",
 								"href": "/link-one"
 							},
 							{
-								"name": "Link two",
+								"title": "Link two",
 								"href": "/link-two"
 							},
 							{
-								"name": "Long link three",
+								"title": "Long link three",
 								"href": "/link-three"
 							},
 							{
-								"name": "Long link four",
+								"title": "Long link four",
 								"href": "/link-four"
 							},
 							{
-								"name": "Link five",
+								"title": "Link five",
 								"href": "/link-five"
 							}
 						]'

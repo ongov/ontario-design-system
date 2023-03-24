@@ -4,7 +4,7 @@ import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.s
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
 import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
 import OntarioIconSearchWhite from '../ontario-icon/assets/ontario-icon-search-white.svg';
-import OntarioHeaderDefaultData from './ontario-header-default-data.json'
+import OntarioHeaderDefaultData from './ontario-header-default-data.json';
 
 import { menuItems, applicationHeaderInfo, languageToggleOptions, ontarioMenuItems } from './ontario-header.interface';
 
@@ -121,9 +121,9 @@ export class OntarioHeader {
 	 */
 	@State() private menuItemState: menuItems[];
 
-/**
+	/**
 	 * Check to see if menu is dynamic or static
-*/
+	 */
 	@State() private isDynamicMenu: boolean = false;
 
 	/**
@@ -190,6 +190,9 @@ export class OntarioHeader {
 		if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
 			this.menuItemState = JSON.parse(this.menuItems);
 			this.isDynamicMenu = false;
+		} else if (Array.isArray(this.menuItems) && this.type === 'application') {
+			this.menuItemState = this.menuItems;
+			this.isDynamicMenu = false;
 		} else {
 			this.menuItemState = OntarioHeaderDefaultData;
 			this.isDynamicMenu = false;
@@ -248,7 +251,6 @@ export class OntarioHeader {
 		}
 	};
 
-
 	/**
 	 * Call to Ontario Menu API to fetch linksets to populate header component
 	 */
@@ -257,20 +259,20 @@ export class OntarioHeader {
 		if (!this.isDynamicMenu) {
 			const apiUrl = process.env.ONTARIO_HEADER_API_URL as string;
 			const response = await fetch(apiUrl)
-				.then(response => response.json())
-				.then(json => json.linkset[0].item as ontarioMenuItems[])
+				.then((response) => response.json())
+				.then((json) => json.linkset[0].item as ontarioMenuItems[])
 				.catch(() => {
 					console.error('Unable to retrieve data from Ontario Menu API');
 					return [];
 				});
 
-				if (response.length > 0) {
-					const externalMenuItems = response.map(item => {
-						return { href: item.href, title: item.title };
-					});
-					this.menuItemState = externalMenuItems;
-					this.isDynamicMenu = true;
-				}
+			if (response.length > 0) {
+				const externalMenuItems = response.map((item) => {
+					return { href: item.href, title: item.title };
+				});
+				this.menuItemState = externalMenuItems;
+				this.isDynamicMenu = true;
+			}
 		}
 		return;
 	}
@@ -287,10 +289,24 @@ export class OntarioHeader {
 	 * @param onClick - for any custon onClick event a user might want to add to their menu links
 	 * @param onBlur - when set to true, it will call the function trapMenuFocus(), otherwise nothing is done (used in lastLink)
 	 */
-	private generateMenuItem(href: string, title: string, linkIsActive: boolean | undefined, type: string, liClass?: string, onClick?: any, onBlur?: boolean) {
+	private generateMenuItem(
+		href: string,
+		title: string,
+		linkIsActive: boolean | undefined,
+		type: string,
+		liClass?: string,
+		onClick?: any,
+		onBlur?: boolean,
+	) {
 		return (
 			<li class={liClass}>
-				<a class={linkIsActive === true ? `ontario-link--active` :``} href={href} onClick={onClick} onBlur={onBlur ? this.trapMenuFocus : undefined} data-type={type}>
+				<a
+					class={linkIsActive === true ? `ontario-link--active` : ``}
+					href={href}
+					onClick={onClick}
+					onBlur={onBlur ? this.trapMenuFocus : undefined}
+					data-type={type}
+				>
 					{title}
 				</a>
 			</li>
@@ -321,12 +337,12 @@ export class OntarioHeader {
 				type="button"
 				ref={
 					viewportSize === 'desktop'
-						? el => (this.menuButtonDesktop = el as HTMLInputElement)
+						? (el) => (this.menuButtonDesktop = el as HTMLInputElement)
 						: viewportSize === 'tablet'
-						? el => (this.menuButtonTablet = el as HTMLInputElement)
+						? (el) => (this.menuButtonTablet = el as HTMLInputElement)
 						: viewportSize === 'mobile'
-						? el => (this.menuButtonMobile = el as HTMLInputElement)
-						: el => (this.menuButton = el as HTMLInputElement)
+						? (el) => (this.menuButtonMobile = el as HTMLInputElement)
+						: (el) => (this.menuButton = el as HTMLInputElement)
 				}
 			>
 				<span class="ontario-header__icon-container" innerHTML={this.menuToggle ? OntarioIconClose : OntarioIconMenu} />
@@ -345,9 +361,18 @@ export class OntarioHeader {
 	 * @returns
 	 */
 	private generateNavigationLinks(item: menuItems, index: number, links: number | undefined, viewportSize: string) {
-		const lastLink = index + 1 === (links ? this.menuItemState.length - links : this.menuItemState.length) ? true : false;
+		const lastLink =
+			index + 1 === (links ? this.menuItemState.length - links : this.menuItemState.length) ? true : false;
 
-		return this.generateMenuItem(item.href, item.title, item.linkIsActive, viewportSize, '', item.onClickHandler, lastLink);
+		return this.generateMenuItem(
+			item.href,
+			item.title,
+			item.linkIsActive,
+			viewportSize,
+			'',
+			item.onClickHandler,
+			lastLink,
+		);
 	}
 
 	/**
@@ -366,7 +391,7 @@ export class OntarioHeader {
 	}
 
 	componentDidRender() {
-		if (this.disableDynamicMenu === false) {
+		if (this.disableDynamicMenu === false && this.type === 'ontario') {
 			this.fetchOntarioMenu();
 		}
 	}
@@ -398,8 +423,16 @@ export class OntarioHeader {
 								{/* Ontario header logo */}
 								<div class="ontario-header__logo-container ontario-columns ontario-small-2 ontario-medium-4 ontario-large-3">
 									<a href="https://www.ontario.ca/page/government-ontario">
-										<img class="ontario-show-for-medium" src={getAssetPath('./assets/ontario-logo--desktop.svg')} alt="Government of Ontario" />
-										<img class="ontario-show-for-small-only" src={getAssetPath('./assets/ontario-logo--mobile.svg')} alt="Government of Ontario" />
+										<img
+											class="ontario-show-for-medium"
+											src={getAssetPath('./assets/ontario-logo--desktop.svg')}
+											alt="Government of Ontario"
+										/>
+										<img
+											class="ontario-show-for-small-only"
+											src={getAssetPath('./assets/ontario-logo--mobile.svg')}
+											alt="Government of Ontario"
+										/>
 									</a>
 								</div>
 
@@ -425,7 +458,13 @@ export class OntarioHeader {
 										ref={(el) => (this.searchBar = el as HTMLInputElement)}
 										onKeyDown={this.onEscapePressed}
 									/>
-									<input class="ontario-header__search-reset" id="ontario-search-reset" type="reset" value="" aria-label="Clear field"></input>
+									<input
+										class="ontario-header__search-reset"
+										id="ontario-search-reset"
+										type="reset"
+										value=""
+										aria-label="Clear field"
+									></input>
 									<button class="ontario-header__search-submit" id="ontario-search-submit" type="submit">
 										<span class="ontario-show-for-sr">Submit</span>
 										<span class="ontario-header__icon-container" innerHTML={OntarioIconSearch} />
@@ -448,7 +487,7 @@ export class OntarioHeader {
 										id="ontario-header-search-toggler"
 										aria-controls="ontario-search-form-container"
 										onClick={this.handleSearchToggle}
-										ref={el => (this.searchButton = el as HTMLInputElement)}
+										ref={(el) => (this.searchButton = el as HTMLInputElement)}
 									>
 										<span class="ontario-header__icon-container" innerHTML={OntarioIconSearchWhite} />
 										<span class="ontario-show-for-medium ontario-show">Search</span>
@@ -484,11 +523,30 @@ export class OntarioHeader {
 										When the focus goes away from the lastLink, return the focus to the menu button
 										(only applicable pressing the "tab" key, not actually clicking away from the menu).
 									*/}
-										{this.menuItemState?.map((item,  index:number) => {
-												const lastLink = index + 1 === this.menuItemState.length;
-												const activeLinkRegex = item.title.replace(/\s+/g, '-').toLowerCase();
-												const linkIsActive = window.location.pathname.includes(activeLinkRegex);
-												return this.isDynamicMenu ? this.generateMenuItem(item.href, item.title, linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', undefined, lastLink) : this.generateMenuItem(item.href, item.title, item.linkIsActive, 'ontario-header', 'ontario-header-navigation__menu-item', item.onClickHandler, lastLink);										})}
+									{this.menuItemState?.map((item, index: number) => {
+										const lastLink = index + 1 === this.menuItemState.length;
+										const activeLinkRegex = item.title.replace(/\s+/g, '-').toLowerCase();
+										const linkIsActive = window.location.pathname.includes(activeLinkRegex);
+										return this.isDynamicMenu
+											? this.generateMenuItem(
+													item.href,
+													item.title,
+													linkIsActive,
+													'ontario-header',
+													'ontario-header-navigation__menu-item',
+													undefined,
+													lastLink,
+											  )
+											: this.generateMenuItem(
+													item.href,
+													item.title,
+													item.linkIsActive,
+													'ontario-header',
+													'ontario-header-navigation__menu-item',
+													item.onClickHandler,
+													lastLink,
+											  );
+									})}
 								</ul>
 							</div>
 						</nav>
@@ -499,17 +557,27 @@ export class OntarioHeader {
 		} else {
 			return (
 				<div>
-					<div class="ontario-application-header-container" id="ontario-application-header" ref={el => (this.header = el as HTMLInputElement)}>
+					<div
+						class="ontario-application-header-container"
+						id="ontario-application-header"
+						ref={(el) => (this.header = el as HTMLInputElement)}
+					>
 						{/* Ontario application header black bar */}
 						<header class="ontario-application-header" id="ontario-header">
 							<div class="ontario-row">
 								<div class="ontario-columns ontario-small-6 ontario-application-header__logo">
 									<a href="https://www.ontario.ca/page/government-ontario">
-										<img src={getAssetPath('./assets/ontario-logo-application-header.svg')} alt="Government of Ontario" />
+										<img
+											src={getAssetPath('./assets/ontario-logo-application-header.svg')}
+											alt="Government of Ontario"
+										/>
 									</a>
 								</div>
 								<div class="ontario-columns ontario-small-6 ontario-application-header__lang-toggle">
-									<a href={this.languageState?.frenchLink} class="ontario-header-button ontario-header-button--without-outline">
+									<a
+										href={this.languageState?.frenchLink}
+										class="ontario-header-button ontario-header-button--without-outline"
+									>
 										<abbr title="Français" class="ontario-show-for-small-only">
 											FR
 										</abbr>
@@ -533,7 +601,16 @@ export class OntarioHeader {
 												<ul class="ontario-application-subheader__menu ontario-show-for-large">
 													{this.menuItemState
 														?.slice(0, this.applicationHeaderInfoState.maxSubheaderDesktopLinks)
-														.map(item => this.generateMenuItem(item.href, item.title, item.linkIsActive, 'app-desktop', '', item.onClickHandler))}
+														.map((item) =>
+															this.generateMenuItem(
+																item.href,
+																item.title,
+																item.linkIsActive,
+																'app-desktop',
+																'',
+																item.onClickHandler,
+															),
+														)}
 												</ul>
 											)}
 
@@ -542,7 +619,16 @@ export class OntarioHeader {
 												<ul class="ontario-application-subheader__menu ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large">
 													{this.menuItemState
 														?.slice(0, this.applicationHeaderInfoState.maxSubheaderTabletLinks)
-														.map(item => this.generateMenuItem(item.href, item.title, item.linkIsActive, 'app-tablet', '', item.onClickHandler))}
+														.map((item) =>
+															this.generateMenuItem(
+																item.href,
+																item.title,
+																item.linkIsActive,
+																'app-tablet',
+																'',
+																item.onClickHandler,
+															),
+														)}
 												</ul>
 											)}
 
@@ -551,46 +637,86 @@ export class OntarioHeader {
 												<ul class="ontario-application-subheader__menu ontario-show-for-small-only">
 													{this.menuItemState
 														?.slice(0, this.applicationHeaderInfoState.maxSubheaderMobileLinks)
-														.map(item => this.generateMenuItem(item.href, item.title, item.linkIsActive, 'app-mobile', '', item.onClickHandler))}
+														.map((item) =>
+															this.generateMenuItem(
+																item.href,
+																item.title,
+																item.linkIsActive,
+																'app-mobile',
+																'',
+																item.onClickHandler,
+															),
+														)}
 												</ul>
 											)}
 
 											{/* Render menu button if menuItemState exists, and if there are items to display in a dropdown menu */}
-											{this.menuItemState !== undefined && this.applicationHeaderInfoState.maxSubheaderDesktopLinks !== this.menuItemState.length && this.renderMenuButton('desktop')}
+											{this.menuItemState !== undefined &&
+												this.applicationHeaderInfoState.maxSubheaderDesktopLinks !== this.menuItemState.length &&
+												this.renderMenuButton('desktop')}
 
-											{this.menuItemState !== undefined && this.applicationHeaderInfoState.maxSubheaderTabletLinks !== this.menuItemState.length && this.renderMenuButton('tablet')}
+											{this.menuItemState !== undefined &&
+												this.applicationHeaderInfoState.maxSubheaderTabletLinks !== this.menuItemState.length &&
+												this.renderMenuButton('tablet')}
 
-											{this.menuItemState !== undefined && this.applicationHeaderInfoState.maxSubheaderMobileLinks !== this.menuItemState.length && this.renderMenuButton('mobile')}
+											{this.menuItemState !== undefined &&
+												this.applicationHeaderInfoState.maxSubheaderMobileLinks !== this.menuItemState.length &&
+												this.renderMenuButton('mobile')}
 										</div>
 									</div>
 								</div>
 							</section>
 							<nav
 								role="navigation"
-								class={this.menuToggle === true ? 'ontario-application-navigation ontario-navigation--open' : 'ontario-application-navigation'}
+								class={
+									this.menuToggle === true
+										? 'ontario-application-navigation ontario-navigation--open'
+										: 'ontario-application-navigation'
+								}
 								id="ontario-application-navigation"
 								aria-hidden={this.menuToggle === true ? 'false' : 'true'}
 							>
 								<div class="ontario-application-navigation__container">
 									{/* Ontario application header desktop menu dropdown links */}
 									<ul class="ontario-show-for-large">
-										{this.menuItemState?.slice(this.applicationHeaderInfoState.maxSubheaderDesktopLinks, this.menuItemState.length).map((item: any, index) => {
-											return this.generateNavigationLinks(item, index, this.applicationHeaderInfoState.maxSubheaderDesktopLinks, 'app-desktop');
-										})}
+										{this.menuItemState
+											?.slice(this.applicationHeaderInfoState.maxSubheaderDesktopLinks, this.menuItemState.length)
+											.map((item: any, index) => {
+												return this.generateNavigationLinks(
+													item,
+													index,
+													this.applicationHeaderInfoState.maxSubheaderDesktopLinks,
+													'app-desktop',
+												);
+											})}
 									</ul>
 
 									{/* Ontario application header tablet menu dropdown links */}
 									<ul class="ontario-show-for-medium ontario-hide-for-small ontario-hide-for-large">
-										{this.menuItemState?.slice(this.applicationHeaderInfoState.maxSubheaderTabletLinks, this.menuItemState.length).map((item, index) => {
-											return this.generateNavigationLinks(item, index, this.applicationHeaderInfoState.maxSubheaderTabletLinks, 'app-tablet');
-										})}
+										{this.menuItemState
+											?.slice(this.applicationHeaderInfoState.maxSubheaderTabletLinks, this.menuItemState.length)
+											.map((item, index) => {
+												return this.generateNavigationLinks(
+													item,
+													index,
+													this.applicationHeaderInfoState.maxSubheaderTabletLinks,
+													'app-tablet',
+												);
+											})}
 									</ul>
 
 									{/* Ontario application header mobile menu dropdown links */}
 									<ul class="ontario-show-for-small-only">
-										{this.menuItemState?.slice(this.applicationHeaderInfoState.maxSubheaderMobileLinks, this.menuItemState.length).map((item, index) => {
-											return this.generateNavigationLinks(item, index, this.applicationHeaderInfoState.maxSubheaderMobileLinks, 'app-mobile');
-										})}
+										{this.menuItemState
+											?.slice(this.applicationHeaderInfoState.maxSubheaderMobileLinks, this.menuItemState.length)
+											.map((item, index) => {
+												return this.generateNavigationLinks(
+													item,
+													index,
+													this.applicationHeaderInfoState.maxSubheaderMobileLinks,
+													'app-mobile',
+												);
+											})}
 									</ul>
 								</div>
 							</nav>

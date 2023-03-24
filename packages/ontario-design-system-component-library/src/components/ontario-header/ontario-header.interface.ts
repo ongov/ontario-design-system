@@ -1,4 +1,4 @@
-import { DrupalMenuMachineName } from "./ontario-header.enum";
+import { DrupalMenuMachineName } from './ontario-header.enum';
 
 export interface menuItems {
 	title: string;
@@ -21,8 +21,8 @@ export interface languageToggleOptions {
 }
 
 export interface ontarioMenuItems {
-  href: string;
-  title: string;
-	"drupal-menu-hierarchy": string[];
-  "drupal-menu-machine-name": DrupalMenuMachineName[];
+	'href': string;
+	'title': string;
+	'drupal-menu-hierarchy': string[];
+	'drupal-menu-machine-name': DrupalMenuMachineName[];
 }
