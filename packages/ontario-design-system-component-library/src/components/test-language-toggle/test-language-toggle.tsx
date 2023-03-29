@@ -41,7 +41,7 @@ export class TestLanguageToggle {
 
 		if (htmlElement?.tagName.toLowerCase() === 'html') {
 			if (lang) {
-				htmlElement.setAttribute('lang', lang.toUpperCase());
+				htmlElement.setAttribute('lang', lang);
 			} else {
 				htmlElement.setAttribute('lang', 'en');
 			}
