@@ -26,10 +26,11 @@ export default function HintExpander() {
 						</li>
 						<li>
 							you want to give the user the option to see a <strong>helpful image</strong>, such as a picture of a driver’s licence showing where to find the licence number
+
+							<ul>
+								<li>remember, you will also need text that explains the image</li>
+							</ul>
 						</li>
-						<ul>
-							<li>remember, you will also need text that explains the image</li>
-						</ul>
 					</ul>
 					<p>Hint expanders are specific to hints within forms. On standard content pages, use an accordion instead.</p>
 

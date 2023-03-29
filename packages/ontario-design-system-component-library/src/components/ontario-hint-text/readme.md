@@ -50,6 +50,7 @@ Ontario Design System hint text web component
 ### Used by
 
 - [ontario-checkboxes](../ontario-checkbox)
+- [ontario-dropdown-list](../ontario-dropdown-list)
 - [ontario-input](../ontario-input)
 - [ontario-radio-buttons](../ontario-radio-buttons)
 - [ontario-textarea](../ontario-textarea)
@@ -59,6 +60,7 @@ Ontario Design System hint text web component
 ```mermaid
 graph TD;
   ontario-checkboxes --> ontario-hint-text
+  ontario-dropdown-list --> ontario-hint-text
   ontario-input --> ontario-hint-text
   ontario-radio-buttons --> ontario-hint-text
   ontario-textarea --> ontario-hint-text

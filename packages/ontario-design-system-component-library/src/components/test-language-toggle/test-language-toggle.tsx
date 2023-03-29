@@ -1,4 +1,6 @@
 import { Component, Prop, Event, EventEmitter, h } from '@stencil/core';
+import { Language } from '../../utils/language-types';
+import { validateLanguage } from '../../utils/validation/validation-functions';
 
 @Component({
 	tag: 'test-language-toggle',
@@ -6,11 +8,11 @@ import { Component, Prop, Event, EventEmitter, h } from '@stencil/core';
 	shadow: true,
 })
 export class TestLanguageToggle {
-	@Prop({ mutable: true }) language: string;
+	@Prop({ mutable: true }) language: Language | string = 'en';
 
 	@Event() setAppLanguage: EventEmitter<string>;
 	setAppLanguageHandler() {
-		let lang: string;
+		let lang: string | Language;
 		if (this.language) {
 			lang = this.language;
 		} else if (document.documentElement.lang) {
@@ -49,6 +51,7 @@ export class TestLanguageToggle {
 	};
 
 	connectedCallback() {
+		this.language = validateLanguage(this.language);
 		this.setAppLanguageHandler();
 	}
 

@@ -8,10 +8,11 @@ import type { JSX } from '@ontario-digital-service/ontario-design-system-compone
 import { defineCustomElements } from '@ontario-digital-service/ontario-design-system-component-library/loader';
 
 defineCustomElements();
-export const MyComponent = /*@__PURE__*/createReactComponent<JSX.MyComponent, HTMLMyComponentElement>('my-component');
+export const OntarioBackToTop = /*@__PURE__*/createReactComponent<JSX.OntarioBackToTop, HTMLOntarioBackToTopElement>('ontario-back-to-top');
 export const OntarioBlockquote = /*@__PURE__*/createReactComponent<JSX.OntarioBlockquote, HTMLOntarioBlockquoteElement>('ontario-blockquote');
 export const OntarioButton = /*@__PURE__*/createReactComponent<JSX.OntarioButton, HTMLOntarioButtonElement>('ontario-button');
 export const OntarioCheckboxes = /*@__PURE__*/createReactComponent<JSX.OntarioCheckboxes, HTMLOntarioCheckboxesElement>('ontario-checkboxes');
+export const OntarioCriticalAlert = /*@__PURE__*/createReactComponent<JSX.OntarioCriticalAlert, HTMLOntarioCriticalAlertElement>('ontario-critical-alert');
 export const OntarioDropdownList = /*@__PURE__*/createReactComponent<JSX.OntarioDropdownList, HTMLOntarioDropdownListElement>('ontario-dropdown-list');
 export const OntarioFooter = /*@__PURE__*/createReactComponent<JSX.OntarioFooter, HTMLOntarioFooterElement>('ontario-footer');
 export const OntarioHeader = /*@__PURE__*/createReactComponent<JSX.OntarioHeader, HTMLOntarioHeaderElement>('ontario-header');
@@ -25,6 +26,7 @@ export const OntarioIconAlertError = /*@__PURE__*/createReactComponent<JSX.Ontar
 export const OntarioIconAlertInformation = /*@__PURE__*/createReactComponent<JSX.OntarioIconAlertInformation, HTMLOntarioIconAlertInformationElement>('ontario-icon-alert-information');
 export const OntarioIconAlertSuccess = /*@__PURE__*/createReactComponent<JSX.OntarioIconAlertSuccess, HTMLOntarioIconAlertSuccessElement>('ontario-icon-alert-success');
 export const OntarioIconAlertWarning = /*@__PURE__*/createReactComponent<JSX.OntarioIconAlertWarning, HTMLOntarioIconAlertWarningElement>('ontario-icon-alert-warning');
+export const OntarioIconArrowUp = /*@__PURE__*/createReactComponent<JSX.OntarioIconArrowUp, HTMLOntarioIconArrowUpElement>('ontario-icon-arrow-up');
 export const OntarioIconAttach = /*@__PURE__*/createReactComponent<JSX.OntarioIconAttach, HTMLOntarioIconAttachElement>('ontario-icon-attach');
 export const OntarioIconBookmarkOff = /*@__PURE__*/createReactComponent<JSX.OntarioIconBookmarkOff, HTMLOntarioIconBookmarkOffElement>('ontario-icon-bookmark-off');
 export const OntarioIconBookmarkOn = /*@__PURE__*/createReactComponent<JSX.OntarioIconBookmarkOn, HTMLOntarioIconBookmarkOnElement>('ontario-icon-bookmark-on');
@@ -40,6 +42,7 @@ export const OntarioIconCloseHeader = /*@__PURE__*/createReactComponent<JSX.Onta
 export const OntarioIconCloud = /*@__PURE__*/createReactComponent<JSX.OntarioIconCloud, HTMLOntarioIconCloudElement>('ontario-icon-cloud');
 export const OntarioIconCollapse = /*@__PURE__*/createReactComponent<JSX.OntarioIconCollapse, HTMLOntarioIconCollapseElement>('ontario-icon-collapse');
 export const OntarioIconCreditCard = /*@__PURE__*/createReactComponent<JSX.OntarioIconCreditCard, HTMLOntarioIconCreditCardElement>('ontario-icon-credit-card');
+export const OntarioIconCriticalAlertWarning = /*@__PURE__*/createReactComponent<JSX.OntarioIconCriticalAlertWarning, HTMLOntarioIconCriticalAlertWarningElement>('ontario-icon-critical-alert-warning');
 export const OntarioIconDelete = /*@__PURE__*/createReactComponent<JSX.OntarioIconDelete, HTMLOntarioIconDeleteElement>('ontario-icon-delete');
 export const OntarioIconDocument = /*@__PURE__*/createReactComponent<JSX.OntarioIconDocument, HTMLOntarioIconDocumentElement>('ontario-icon-document');
 export const OntarioIconDownload = /*@__PURE__*/createReactComponent<JSX.OntarioIconDownload, HTMLOntarioIconDownloadElement>('ontario-icon-download');

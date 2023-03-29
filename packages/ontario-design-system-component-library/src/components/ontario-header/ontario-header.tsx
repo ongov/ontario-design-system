@@ -389,6 +389,7 @@ export class OntarioHeader {
 											class="ontario-header__search-toggler ontario-header-button ontario-header-button--without-outline "
 											id="ontario-header-search-toggler"
 											aria-controls="ontario-search-form-container"
+											aria-label="open search"
 											onClick={this.handleSearchToggle}
 											ref={(el) => (this.searchButton = el as HTMLInputElement)}
 										>
