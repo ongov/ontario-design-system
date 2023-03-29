@@ -1,6 +1,6 @@
 # ontario-footer
 
-Use the simple (`default` type) footer for most applications and subsites. It includes links to accessibility, privacy, contact us and copyright information.
+Use the simple footer for most applications and subsites. It includes links to accessibility, privacy and copyright information.
 
 Use the expanded (`twoColumn` and `threeColumn` type) footer if you need an expanded version of the simple footer. It includes links to additional site-specific information.
 
@@ -44,7 +44,7 @@ Example of an expanded footer with two columns (`twoColumn` type).
 		"printerLink": "https://www.ontario.ca/page/copyright-information"
 	}'
 	two-column-options='{
-		"col1": {
+		"column1": {
 			"title": "Ontario Design System",
 			"content": [
 				{
@@ -58,7 +58,7 @@ Example of an expanded footer with two columns (`twoColumn` type).
 				}
 			]
 		},
-		"col2": {
+		"column2": {
 			"title": "Help us improve the design system",
 			"content": [
 				{
@@ -87,7 +87,7 @@ Example of an expanded footer with three columns (`threeColumn` type).
 		"printerLink": "https://www.ontario.ca/page/copyright-information"
 	}'
 	three-column-options='{
-		"col1": {
+		"column1": {
 			"title": "Ontario Design System",
 			"content": [
 				{
@@ -96,7 +96,7 @@ Example of an expanded footer with three columns (`threeColumn` type).
 				}
 			]
 		},
-		"col2": {
+		"column2": {
 			"title": "Latest release",
 			"content": [
 				{
@@ -105,7 +105,7 @@ Example of an expanded footer with three columns (`threeColumn` type).
 				}
 			]
 		},
-		"col3": {
+		"column3": {
 			"title": "Help us improve the design system",
 			"content": [
 				{
@@ -136,7 +136,7 @@ Example of footer with social media links, only `twoColumn` and `threeColumn` fo
 		"youtube": "https://www.youtube.com/ongov"
 	}'
 	three-column-options='{
-		"col1": {
+		"column1": {
 			"title": "Ontario Design System",
 			"content": [
 				{
@@ -145,7 +145,7 @@ Example of footer with social media links, only `twoColumn` and `threeColumn` fo
 				}
 			]
 		},
-		"col2": {
+		"column2": {
 			"title": "Latest release",
 			"content": [
 				{
@@ -154,7 +154,7 @@ Example of footer with social media links, only `twoColumn` and `threeColumn` fo
 				}
 			]
 		},
-		"col3": {
+		"column3": {
 			"title": "Help us improve the design system",
 			"content": [
 				{
@@ -179,12 +179,12 @@ In most cases, the example default footer links displayed below will apply to bo
 
 <!-- prettier-ignore -->
 ```html
-	footer-links='{
-		"accessibilityLink": "https://www.ontario.ca/page/accessibility",
-		"privacyLink": "https://www.ontario.ca/page/privacy-statement",
-		"contactLink": "https://www.ontario.ca/feedback/contact-us",
-		"printerLink": "https://www.ontario.ca/page/copyright-information"
-	}'
+footer-links='{
+	"accessibilityLink": "https://www.ontario.ca/page/accessibility",
+	"privacyLink": "https://www.ontario.ca/page/privacy-statement",
+	"contactLink": "https://www.ontario.ca/feedback/contact-us",
+	"printerLink": "https://www.ontario.ca/page/copyright-information"
+}'
 ```
 
 | **Property name**   | **Type** | **Description**                                                 |
@@ -196,12 +196,12 @@ In most cases, the example default footer links displayed below will apply to bo
 
 ### twoColumnOptions
 
-The columns in the twoColumn type (i.e., col1 and col2) and in the threeColumn type (i.e., col1, col2, and col3) share the same structure (i.e [FooterColumnData](#FooterColumnData)) and can be configured according to website requirments.
+The columns in the twoColumn type (i.e., `column1` and `column2`) and in the threeColumn type (i.e., `column1`, `column2`, and `column3`) share the same structure (i.e [FooterColumnData](#FooterColumnData)) and can be configured according to website requirments.
 
 <!-- prettier-ignore -->
 ```html
 two-column-options='{
-	"col1": {
+	"column1": {
 		"title": "Ontario Design System",
 		"content": [
 			{
@@ -211,12 +211,14 @@ two-column-options='{
 			{
 				"type": "list",
 				"heading": "Latest release",
+				"headingLevel": "h4",
 				"list": ["Built on: June 3, 2022", "Distribution package version 0.12.10"]
 			}
 		]
 	},
-	"col2": {
+	"column2": {
 		"title": "Help us improve the design system",
+		"headingLevel": "h3",
 		"content": [
 			{
 				"type": "html",
@@ -235,15 +237,15 @@ two-column-options='{
 
 | **Property name** | **Type**           | **Description**                                            |
 | ----------------- | ------------------ | ---------------------------------------------------------- |
-| `col1`            | `FooterColumnData` | Title, body, links or button for the first footer column.  |
-| `col2`            | `FooterColumnData` | Title, body, links or button for the second footer column. |
+| `column1`         | `FooterColumnData` | Title, body, links or button for the first footer column.  |
+| `column2`         | `FooterColumnData` | Title, body, links or button for the second footer column. |
 
 ### threeColumnOptions
 
 <!-- prettier-ignore -->
 ```html
 	three-column-options='{
-		"col1": {
+		"column1": {
 			"title": "Ontario Design System",
 			"content": [
 				{
@@ -252,7 +254,7 @@ two-column-options='{
 				}
 			]
 		},
-		"col2": {
+		"column2": {
 			"title": "Latest release",
 			"content": [
 				{
@@ -261,7 +263,7 @@ two-column-options='{
 				}
 			]
 		},
-		"col3": {
+		"column3": {
 			"title": "Help us improve the design system",
 			"content": [
 				{
@@ -281,37 +283,39 @@ two-column-options='{
 
 | **Property name** | **Type**                               | **Description**                                            |
 | ----------------- | -------------------------------------- | ---------------------------------------------------------- |
-| `col1`            | `[FooterColumnData](FooterColumnData)` | Title, body, links or button for the first footer column.  |
-| `col2`            | `[FooterColumnData](FooterColumnData)` | Title, body, links or button for the second footer column. |
-| `col3`            | `[FooterColumnData](FooterColumnData)` | Title, body, links or button for the third footer column.  |
+| `column1`         | `[FooterColumnData](FooterColumnData)` | Title, body, links or button for the first footer column.  |
+| `column2`         | `[FooterColumnData](FooterColumnData)` | Title, body, links or button for the second footer column. |
+| `column3`         | `[FooterColumnData](FooterColumnData)` | Title, body, links or button for the third footer column.  |
 
 ## Interfaces
 
 #### FooterColumnData
 
-| Property          | Type                                                    | Description                                                                                                                                                                                                                                                           |
-| ----------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| title             | string                                                  | A string that specifies the title for the footer column.                                                                                                                                                                                                              |
-| content           | Array&lt;[FooterColumnContent](FooterColumnContent)&gt; | An array of FooterColumnContent objects that specifies the content for the footer column.                                                                                                                                                                             |
-| button (optional) | { text: string, link: string }                          | An object that specifies the button for the footer column. It has the following properties: &lt;ul&gt;&lt;li&gt;text: a string that specifies the text for the button&lt;/li&gt;&lt;li&gt;link: a string that specifies the link for the button&lt;/li&gt;&lt;/ul&gt; |
+| Property            | Type                                                      | Description                                                                                                                                                                                                                                                           | Default     |
+| ------------------- | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `title`             | `string`                                                  | A string that specifies the title for the footer column.                                                                                                                                                                                                              | `undefined` |
+| `headingLevel`      | `h2 \| h3 \| h4 \| h5 \| h6` (optional)                   | The heading level for coloumn title                                                                                                                                                                                                                                   | `h1`        |
+| `content`           | `Array&lt;[FooterColumnContent](FooterColumnContent)&gt;` | An array of FooterColumnContent objects that specifies the content for the footer column.                                                                                                                                                                             | `undefined` |
+| `button` (optional) | `{ text: string, link: string }`                          | An object that specifies the button for the footer column. It has the following properties: &lt;ul&gt;&lt;li&gt;text: a string that specifies the text for the button&lt;/li&gt;&lt;li&gt;link: a string that specifies the link for the button&lt;/li&gt;&lt;/ul&gt; | `undefined` |
 
 #### FooterColumnContent
 
-| Property | Type                | Description                                    |
-| -------- | ------------------- | ---------------------------------------------- |
-| heading  | string (optional)   | The heading of the content.                    |
-| type     | FooterContentType   | The type of content.                           |
-| text     | string (optional)   | It holds the text content if the type is text. |
-| html     | string (optional)   | It holds the HTML content if the type is html. |
-| list     | string[] (optional) | It holds the list content if the type is list. |
+| Property       | Type                                    | Description                                    | Defaults    |
+| -------------- | --------------------------------------- | ---------------------------------------------- | ----------- |
+| `heading`      | `string` (optional)                     | The heading of the content.                    | `undefined` |
+| `headingLevel` | `h2 \| h3 \| h4 \| h5 \| h6` (optional) | The heading level for coloumn content title    | `h3`        |
+| `type`         | `FooterContentType`                     | The type of content.                           | `text`      |
+| `text`         | `string` (optional)                     | It holds the text content if the type is text. | `undefined` |
+| `html`         | `string` (optional)                     | It holds the HTML content if the type is html. | `undefined` |
+| `list`         | `string[]` (optional)                   | It holds the list content if the type is list. | `undefined` |
 
 ### FooterContentType
 
-| Value | Description                            |
-| ----- | -------------------------------------- |
-| text  | Indicates that the content is a text.  |
-| list  | Indicates that the content is a list.  |
-| html  | Indicates that the content is an HTML. |
+| Value  | Description                            |
+| ------ | -------------------------------------- |
+| `text` | Indicates that the content is a text.  |
+| `list` | Indicates that the content is a list.  |
+| `html` | Indicates that the content is an HTML. |
 
 <!-- Auto Generated Below -->
 

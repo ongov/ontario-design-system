@@ -1,8 +1,9 @@
 import { FunctionalComponent, h, getAssetPath } from '@stencil/core';
-import { SimpleFooter, SimpleFooterProps } from './simple-footer';
+import { SimpleFooter } from './simple-footer';
+import { SimpleFooterLinks } from '../ontario-footer-interface';
 
 export type ExpandedFooterWrapperProps = {
-	footerLinks: Omit<SimpleFooterProps, 'className'>;
+	footerLinks: SimpleFooterLinks;
 };
 
 export const ExpandedFooterWrapper: FunctionalComponent<ExpandedFooterWrapperProps> = (props, children) => {

@@ -26,7 +26,7 @@ $ontario-icon-size--social-small: 32px;
 
 .ontario-footer__links-container {
 	list-style: none;
-	margin: 0 global.$spacing-0 global.$spacing-4 0;
+	margin: global.$spacing-0 global.$spacing-0 global.$spacing-4 global.$spacing-0;
 
 	@media screen and (min-width: global.$medium-breakpoint) {
 		margin-bottom: global.$spacing-2;
@@ -50,14 +50,14 @@ $ontario-icon-size--social-small: 32px;
 .ontario-footer__links-container--two-column-list {
 	column-count: 1;
 	display: block;
-	margin: 0;
+	margin: global.$spacing-0;
 
 	@media screen and (min-width: global.$small-breakpoint) {
 		column-count: 2;
 
 		.ontario-footer__link {
-			padding: 0;
-			margin: 0 global.$spacing-4 global.$spacing-4 0;
+			padding: global.$spacing-0;
+			margin: global.$spacing-0 global.$spacing-4 global.$spacing-4 global.$spacing-0;
 		}
 	}
 }
@@ -85,13 +85,13 @@ $ontario-icon-size--social-small: 32px;
 	}
 
 	@media screen and (min-width: global.$small-breakpoint) {
-		padding: 0;
+		padding: global.$spacing-0;
 		margin: global.$spacing-0 global.$spacing-8 global.$spacing-4 global.$spacing-0;
 	}
 }
 
 .ontario-footer__copyright a {
-	margin: 0;
+	margin: global.$spacing-0;
 }
 
 .ontario-footer__links-container--social {
@@ -143,25 +143,27 @@ $ontario-icon-size--social-small: 32px;
 .ontario-footer__paragraph {
 	max-width: global.$standard-width;
 	width: global.$full-width;
-	margin-bottom: 1.5rem;
+	margin-bottom: global.$spacing-5;
 }
 
-.ontario-footer__paragraph a,
-.ontario-footer__list_item a {
-	color: global.$ontario-colour-white;
-	font-weight: global.$ontario-font-weights-semi-bold;
-
-	&:visited {
+.ontario-footer__paragraph,
+.ontario-footer__list_item {
+	a {
 		color: global.$ontario-colour-white;
-	}
+		font-weight: global.$ontario-font-weights-semi-bold;
 
-	&:active {
-		color: darken(global.$ontario-colour-white, 10);
-	}
+		&:visited {
+			color: global.$ontario-colour-white;
+		}
 
-	&:focus,
-	&:hover {
-		text-decoration: none;
+		&:active {
+			color: darken(global.$ontario-colour-white, 10);
+		}
+
+		&:focus,
+		&:hover {
+			text-decoration: none;
+		}
 	}
 }
 
@@ -180,6 +182,10 @@ $ontario-icon-size--social-small: 32px;
 	&:active {
 		background-color: darken(global.$ontario-colour-white, 60);
 	}
+}
+
+.ontario-footer__button + .ontario-footer__links-container {
+	margin-top: global.$spacing-5;
 }
 
 /* Supergraphic background */
@@ -272,7 +278,7 @@ $ontario-icon-size--social-small: 32px;
 }
 
 .ontario-footer__expanded-top-section ul {
-	margin-bottom: 0;
+	margin-bottom: global.$spacing-0;
 }
 
 .ontario-expanded-footer__one-third-block {
@@ -291,7 +297,7 @@ $ontario-icon-size--social-small: 32px;
 		}
 
 		&:nth-child(2) {
-			margin-bottom: 0;
+			margin-bottom: global.$spacing-0;
 		}
 	}
 
@@ -336,10 +342,4 @@ a:active {
 	outline: global.$spacing-1 solid transparent;
 	transition: all 0.1s ease-in-out;
 	background-color: global.$ontario-colour-black !important;
-}
-
-.ontario-footer-paragraph {
-	font-size: inherit;
-	margin-bottom: 1.25rem;
-	text-rendering: optimizeLegibility;
 }

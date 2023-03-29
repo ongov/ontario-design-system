@@ -1,13 +1,9 @@
 import { h, FunctionalComponent } from '@stencil/core';
-import { FooterLink } from '../ontario-footer-interface';
+import { SimpleFooterLinks } from '../ontario-footer-interface';
 
 const enDash = '\u2013';
 
-export type SimpleFooterProps = {
-	accessibilityLink: FooterLink;
-	privacyLink: FooterLink;
-	contactLink?: FooterLink;
-	printerLink?: FooterLink;
+type SimpleFooterProps = SimpleFooterLinks & {
 	className?: string;
 };
 
@@ -19,7 +15,7 @@ export const SimpleFooter: FunctionalComponent<SimpleFooterProps> = ({
 	className,
 }) => {
 	return (
-		<div class={`ontario-row ${className ? className : ''}`}>
+		<div class={`ontario-row ${className ?? ''}`}>
 			<div class="ontario-columns ontario-small-12">
 				<ul class="ontario-footer__links-container ontario-footer__links-container--inline">
 					<li>

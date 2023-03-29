@@ -68,7 +68,7 @@ describe('ontario-footer', () => {
 						"printerLink": "https://www.ontario.ca/page/copyright-information"
 					}'
 					two-column-options='{
-						"col1": {
+						"column1": {
 							"title": "Ontario Design System",
 							"content": [
 								{
@@ -82,7 +82,7 @@ describe('ontario-footer', () => {
 								}
 							]
 						},
-						"col2": {
+						"column2": {
 							"title": "Help us improve the design system",
 							"content": [
 								{
@@ -137,7 +137,7 @@ describe('ontario-footer', () => {
 						"printerLink": "https://www.ontario.ca/page/copyright-information"
 					}'
 					three-column-options='{
-						"col1": {
+						"column1": {
 							"title": "Ontario Design System",
 							"content": [
 								{
@@ -146,7 +146,7 @@ describe('ontario-footer', () => {
 								}
 							]
 						},
-						"col2": {
+						"column2": {
 							"title": "Latest release",
 							"content": [
 								{
@@ -155,7 +155,7 @@ describe('ontario-footer', () => {
 								}
 							]
 						},
-						"col3": {
+						"column3": {
 							"title": "Help us improve the design system",
 							"content": [
 								{

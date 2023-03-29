@@ -6,19 +6,17 @@ export type FooterColumnContentProps = {
 };
 
 export const ColumnContent: FunctionalComponent<FooterColumnContentProps> = ({ content }) => {
-	const { heading, text, html, list, type } = content;
+	const { heading, headingLevel: Heading = 'h3', text, html, list, type = 'text' } = content;
 
 	return (
 		<Fragment>
-			{heading && <h3 class="ontario-h5">{heading}</h3>}
+			{heading && <Heading class="ontario-h5">{heading}</Heading>}
 			{type === 'text' && <p>{text}</p>}
 			{type === 'html' && <div class="ontario-footer__paragraph" innerHTML={html} />}
 			{type === 'list' && !!list?.length && (
 				<ul>
 					{list.map((item: string) => (
-						<li>
-							<div class="ontario-footer__list_item" innerHTML={item}></div>
-						</li>
+						<li class="ontario-footer__list_item" innerHTML={item} />
 					))}
 				</ul>
 			)}

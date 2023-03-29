@@ -12,10 +12,20 @@ export interface FooterLinks {
 	printerLink?: string;
 }
 
+export interface SimpleFooterLinks {
+	accessibilityLink: FooterLink;
+	privacyLink: FooterLink;
+	printerLink: FooterLink;
+	contactLink?: FooterLink;
+}
+
 export type FooterContentType = 'text' | 'list' | 'html';
+
+export type HeadingLevelType = 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export interface FooterColumnContent {
 	heading?: string;
+	headingLevel?: HeadingLevelType;
 	type: FooterContentType;
 	text?: string;
 	html?: string;
@@ -24,6 +34,7 @@ export interface FooterColumnContent {
 
 export interface FooterColumnData {
 	title: string;
+	headingLevel?: HeadingLevelType;
 	content: Array<FooterColumnContent>;
 	button?: {
 		text: string;
@@ -31,10 +42,10 @@ export interface FooterColumnData {
 	};
 }
 export interface TwoColumnOptions {
-	col1: FooterColumnData;
-	col2: FooterColumnData;
+	column1: FooterColumnData;
+	column2: FooterColumnData;
 }
 
 export interface ThreeColumnOptions extends TwoColumnOptions {
-	col3: FooterColumnData;
+	column3: FooterColumnData;
 }

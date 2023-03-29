@@ -1,6 +1,12 @@
 import { Component, Prop, h, State, Watch, getAssetPath } from '@stencil/core';
 
-import { FooterLinks, OntarioFooterType, ThreeColumnOptions, TwoColumnOptions } from './ontario-footer-interface';
+import {
+	FooterLinks,
+	OntarioFooterType,
+	ThreeColumnOptions,
+	TwoColumnOptions,
+	SimpleFooterLinks,
+} from './ontario-footer-interface';
 import { ExpandedFooterWrapper, FooterColumn, FooterSocialLinksProps, SimpleFooter } from './components';
 import { isInvalidTwoColumnOptions, isInvalidThreeColumnOptions } from './utils';
 
@@ -73,10 +79,6 @@ export class OntarioFooter {
 	}
 
 	private verifyFooterLinks() {
-		if (!this.footerLinksState?.printerLink) {
-			this.footerLinksState.printerLink = 'https://www.ontario.ca/page/copyright-information';
-		}
-
 		if (!this.footerLinksState?.accessibilityLink || !this.footerLinksState?.privacyLink) {
 			console.error(
 				'Error: FooterLinks not fully set, please review your values and ensure all required options are set.',
@@ -123,10 +125,10 @@ export class OntarioFooter {
 		return { '--imagePath': `url(${getAssetPath('./assets/footer-default-supergraphic-logo.svg')})` };
 	}
 
-	private getFooterLinks(): any {
+	private getFooterLinks(): SimpleFooterLinks {
 		const { accessibilityLink, privacyLink, contactLink, printerLink } = this.footerLinksState;
 
-		return {
+		const links: SimpleFooterLinks = {
 			accessibilityLink: {
 				href: accessibilityLink,
 				text: 'Accessibility',
@@ -135,15 +137,20 @@ export class OntarioFooter {
 				href: privacyLink,
 				text: 'Privacy',
 			},
-			contactLink: {
-				href: contactLink,
-				text: 'Contact Us',
-			},
 			printerLink: {
-				href: printerLink || '',
+				href: printerLink || 'https://www.ontario.ca/page/copyright-information',
 				text: "© King's Printer for Ontario,",
 			},
 		};
+
+		if (contactLink) {
+			links['contactLink'] = {
+				href: contactLink,
+				text: 'Contact us',
+			};
+		}
+
+		return links;
 	}
 
 	componentWillLoad() {
@@ -160,8 +167,8 @@ export class OntarioFooter {
 		if (this.isTwoColumnLayout()) {
 			return (
 				<ExpandedFooterWrapper footerLinks={footerLinks}>
-					<FooterColumn data={twoColumnState.col1} />
-					<FooterColumn data={twoColumnState.col2} socialLinks={socialLinksState} />
+					<FooterColumn data={twoColumnState.column1} />
+					<FooterColumn data={twoColumnState.column2} socialLinks={socialLinksState} />
 				</ExpandedFooterWrapper>
 			);
 		}
@@ -169,9 +176,9 @@ export class OntarioFooter {
 		if (this.isThreeColumnLayout()) {
 			return (
 				<ExpandedFooterWrapper footerLinks={footerLinks}>
-					<FooterColumn data={threeColumnState.col1} isThreeColLayout isFullWidthInMediumLayout />
-					<FooterColumn data={threeColumnState.col2} isThreeColLayout />
-					<FooterColumn data={threeColumnState.col3} socialLinks={socialLinksState} isThreeColLayout />
+					<FooterColumn data={threeColumnState.column1} isThreeColLayout isFullWidthInMediumLayout />
+					<FooterColumn data={threeColumnState.column2} isThreeColLayout />
+					<FooterColumn data={threeColumnState.column3} socialLinks={socialLinksState} isThreeColLayout />
 				</ExpandedFooterWrapper>
 			);
 		}
