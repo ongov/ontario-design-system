@@ -59,8 +59,6 @@ You may run into a few errors when first using web components with your Angular 
 
 Here are a few common ones and how to fix them:
 
-<br>
-
 ### _An attribute or property cannot be resolved during compilation (NG8002)._
 
 This error arises when attempting to bind to a property that does not exist.
