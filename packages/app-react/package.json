@@ -7,7 +7,7 @@
 		"@ontario-digital-service/ontario-design-system-global-styles": "^2.3.0-alpha.3",
 		"@ontario-digital-service/ontario-design-system-design-tokens": "^2.3.0-alpha.2",
 		"@testing-library/jest-dom": "^5.16.1",
-		"@testing-library/react": "^12.1.2",
+		"@testing-library/react": "^14.0.0",
 		"@testing-library/user-event": "^13.5.0",
 		"@types/jest": "^27.0.3",
 		"@types/node": "^16.11.15",
