@@ -9,10 +9,12 @@ $ontario-header-logo-width--mobile: 45px;
 
 $ontario-header-custom-breakpoint: 39.9375em;
 
+$menu-button-icon--margin-right: 6px;
+
 .ontario-header {
 	position: relative;
 	overflow: hidden;
-	z-index: 5;
+	z-index: calc(global.$ontario-z-index-above-high + 1);
 	background-color: global.$ontario-colour-black;
 	color: global.$ontario-colour-white;
 	display: flex;
@@ -300,7 +302,7 @@ input[type='reset'].ontario-header__search-reset {
 	}
 
 	svg {
-		margin-right: 6px;
+		margin-right: $menu-button-icon--margin-right;
 
 		@media screen and (max-width: global.$xsmall-breakpoint) {
 			margin-right: global.$spacing-0;

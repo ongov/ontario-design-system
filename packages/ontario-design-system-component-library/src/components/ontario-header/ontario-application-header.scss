@@ -4,6 +4,7 @@
 $ontario-logo-height: 46px;
 $navigation-link-bg--hover: #e5e5e5;
 $navigation-max-width: 72rem;
+
 $menu-button-icon--margin-right: 6px;
 
 .ontario-application-header {
@@ -57,7 +58,7 @@ $menu-button-icon--margin-right: 6px;
 	background-color: darken(global.$ontario-colour-white, 75);
 	overflow: hidden;
 	position: relative;
-	z-index: 5;
+	z-index: calc(global.$ontario-z-index-above-high + 1);
 
 	@media screen and (min-width: global.$medium-breakpoint) {
 		z-index: global.$ontario-z-index-neutral;
@@ -243,7 +244,7 @@ $menu-button-icon--margin-right: 6px;
 		position: relative;
 		max-width: $navigation-max-width;
 		width: auto;
-		margin: 0 auto;
+		margin: global.$spacing-0 auto;
 	}
 }
 
@@ -265,7 +266,7 @@ $menu-button-icon--margin-right: 6px;
 		top: calc(100% - #{global.$spacing-2});
 		min-width: 290px; // this value is to control the min-width size the dropdown navigation list can be
 		max-width: 30%;
-		z-index: 5;
+		z-index: calc(global.$ontario-z-index-above-high + 1);
 	}
 }
 
