@@ -415,7 +415,7 @@ input[type='reset'].ontario-header__search-reset {
 		position: relative;
 		max-width: 72rem;
 		width: auto;
-		margin: 0 auto;
+		margin: global.$spacing-0 auto;
 	}
 }
 
@@ -437,7 +437,7 @@ input[type='reset'].ontario-header__search-reset {
 		top: calc(100% - #{global.$spacing-2});
 		min-width: 290px;
 		max-width: 30%;
-		z-index: 5;
+		z-index: calc(global.$ontario-z-index-above-high + 1);
 	}
 }
 
