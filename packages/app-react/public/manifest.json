@@ -1,6 +1,7 @@
 {
 	"name": "Ontario Design System Web Components",
-	"short_name": "A React POC to test the Ontario Design System Web Components",
+	"short_name": "React POC",
+	"description": "A React POC to test the Ontario Design System Web Components",
 	"icons": [
 		{
 			"src": "./assets/favicons/favicon-192x192.png",

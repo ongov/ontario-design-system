@@ -9,14 +9,14 @@ export default function ButtonExample() {
 	const tertiaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="tertiary">Click Me!</OntarioButton>`;
 	return (
 		<div className="ontario-row">
-			<div className="ontario-columns ontario-medium-12 ontario-large-12">
+			<div className="ontario-columns ontario-large-12">
 				<h3>Types of buttons</h3>
 				<p>
 					Use a <strong>primary button</strong> to draw attention to the <strong>main action</strong> you want to help
 					the user take. Avoid using multiple primary buttons on one page unless the page has equally important calls to
 					action.
 				</p>
-				<div>
+				<div className="ontario-margin-top-24-!">
 					<h4>Primary:</h4>
 					<OntarioButton type="primary">Click Me!</OntarioButton>
 
@@ -33,7 +33,7 @@ export default function ButtonExample() {
 					writer to simplify or break up the content so that it doesn’t need multiple secondary buttons.
 				</p>
 
-				<div>
+				<div className="ontario-margin-top-24-!">
 					<h4>Secondary:</h4>
 					<OntarioButton type="secondary">Click Me!</OntarioButton>
 
@@ -49,7 +49,7 @@ export default function ButtonExample() {
 					in applications. It’s okay to use more than one tertiary button on a page.
 				</p>
 
-				<div>
+				<div className="ontario-margin-top-24-!">
 					<h4>Tertiary:</h4>
 					<OntarioButton type="tertiary">Click Me!</OntarioButton>
 

@@ -15,7 +15,7 @@ export default function TextAreaExample() {
 	return (
 		<>
 			<div className="ontario-row">
-				<div className="ontario-columns ontario-medium-12 ontario-large-12">
+				<div className="ontario-columns ontario-large-12">
 					<h3>Examples</h3>
 					<p>Examples of where to use text areas include:</p>
 					<ul>
@@ -23,7 +23,7 @@ export default function TextAreaExample() {
 						<li>"tell us about yourself" sections</li>
 						<li>requests for more detail</li>
 					</ul>
-					<div>
+					<div className="ontario-margin-top-24-!">
 						<OntarioTextarea
 							caption="Text area caption"
 							describedBy="described by"

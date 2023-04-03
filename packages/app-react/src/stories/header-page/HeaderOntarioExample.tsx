@@ -21,8 +21,8 @@ export default function HeaderOntarioExample() {
 `;
 	return (
 		<div className="ontario-row">
-			<div className="ontario-columns ontario-medium-12 ontario-large-12">
-				<div>
+			<div className="ontario-columns ontario-large-12">
+				<div className="ontario-margin-top-24-!">
 					<h4>Ontario.ca Header</h4>
 					<OntarioHeader
 						type="ontario"

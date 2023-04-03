@@ -48,8 +48,8 @@ export default function DropdownListExamples() {
 </OntarioDropdownList>`;
 	return (
 		<div className="ontario-row">
-			<div className="ontario-columns ontario-medium-12 ontario-large-12">
-				<div>
+			<div className="ontario-columns ontario-large-12">
+				<div className="ontario-margin-top-24-!">
 					<OntarioDropdownList
 						caption="Do you like cats?"
 						name="cat-dropdown"

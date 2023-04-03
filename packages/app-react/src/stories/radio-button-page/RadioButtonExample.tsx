@@ -55,9 +55,9 @@ export default function RadioButtonExample() {
 </OntarioRadioButtons>`;
 	return (
 		<div className="ontario-row">
-			<div className="ontario-columns ontario-medium-12 ontario-large-12">
+			<div className="ontario-columns ontario-large-12">
 				<h3>Radio Buttons Example</h3>
-				<div>
+				<div className="ontario-margin-top-24-!">
 					<OntarioRadioButtons
 						caption="Do you have cats?"
 						hint-text="This is the hint text"

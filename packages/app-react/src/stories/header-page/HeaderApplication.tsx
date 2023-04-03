@@ -22,9 +22,9 @@ export default function HeaderApplication() {
 					<li>a place for application or subsite-specific links or a menu, if needed</li>
 				</ul>
 
-				<hr></hr>
+				<hr />
 
-				<h3>Features</h3>
+				<h2>Features</h2>
 				<p>The application header includes:</p>
 				<ul>
 					<li>
@@ -44,7 +44,7 @@ export default function HeaderApplication() {
 					</li>
 				</ul>
 
-				<hr></hr>
+				<hr />
 
 				<h3>Best practices</h3>
 				<h4>Do</h4>

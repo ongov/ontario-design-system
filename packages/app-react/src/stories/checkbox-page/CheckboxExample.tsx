@@ -10,92 +10,78 @@ export default function CheckboxExample() {
 	hint-text="This is the hint text" 
 	name="checkbox-options"
 	required
-	options='[
+	options={[
 		{
-			"name": checkbox-example",
-			"value": "checkbox-1",
-			"label": "checkbox-1-label"
+			value: "checkbox-1",
+			label: "checkbox-1-label"
 		},
 		{
-			"name": "checkbox-example",
-			"value": "checkbox-2",
-			"label": "checkbox-2-label",
-			"hintExpander": {
-				"hint": "Hint expander",
-				"content": "This is the content, yup this is the content",
-				"aria-label": "This indicates that the hint can be expanded"
+			value: "checkbox-2",
+			label: "checkbox-2-label",
+			hintExpander: {
+				hint: "Hint expander",
+				content: "This is the content, yup this is the content",
 			}
 		},
 		{
-			"name": "checkbox-example",
-			"value": "checkbox-3",
-			"label": "checkbox-3-label",
-			"hintExpander": {
-				"hint": "Hint expander",
-				"content": "This is the content",
-				"aria-label": "This indicates that the hint can be expanded"
+			value: "checkbox-3",
+			label: "checkbox-3-label",
+			hintExpander: {
+				hint: "Hint expander",
+				content: "This is the content",
 			}
 		},
 		{
-			"name": "checkbox-example",
-			"value": "checkbox-4",
-			"label": "checkbox-4-label"
+			value: "checkbox-4",
+			label: "checkbox-4-label"
 		}
-	]' 
+	]}
 	hint-expander='{
 		"hint": "Hint expander",
 		"content": "This is the content, yup this is the content",
-		"aria-label": "This indicates that the hint can be expanded"
 	}'
 >
 </OntarioCheckboxes>`;
 
 	return (
 		<div className="ontario-row">
-			<div className="ontario-columns ontario-medium-12 ontario-large-12">
+			<div className="ontario-columns ontario-large-12">
 				<h3>Checkbox Example</h3>
-				<div>
+				<div className="ontario-margin-top-24-!">
 					<OntarioCheckboxes
 						caption="Do you have children?"
 						hint-text="This is the hint text"
 						name="checkbox-example"
 						required
-						options='[
+						options={[
 							{
-								"name": "checkbox-example",
-								"value": "checkbox-1",
-								"label": "checkbox-1-label"
+								value: 'checkbox-1',
+								label: 'checkbox-1-label',
 							},
 							{
-								"name": "checkbox-example",
-								"value": "checkbox-2",
-								"label": "checkbox-2-label",
-								"hintExpander": {
-									"hint": "Hint expander",
-									"content": "This is the content, yup this is the content",
-									"aria-label": "This indicates that the hint can be expanded"
-								}
+								value: 'checkbox-2',
+								label: 'checkbox-2-label',
+								hintExpander: {
+									hint: 'Hint expander',
+									content: 'This is the content, yup this is the content',
+								},
 							},
 							{
-								"name": "checkbox-example",
-								"value": "checkbox-3",
-								"label": "checkbox-3-label",
-								"hintExpander": {
-									"hint": "Hint expander",
-									"content": "This is the content",
-									"aria-label": "This indicates that the hint can be expanded"
-								}
+								value: 'checkbox-3',
+								label: 'checkbox-3-label',
+								hintExpander: {
+									hint: 'Hint expander',
+									content: 'This is the content',
+								},
 							},
 							{
-								"name": "checkbox-example",
-								"value": "checkbox-4",
-								"label": "checkbox-4-label"
-							}
-						]'
+								value: 'checkbox-4',
+								label: 'checkbox-4-label',
+							},
+						]}
 						hint-expander='{
-							"hint": "Hint expander",
-							"content": "This is the content, yup this is the content",
-							"aria-label": "This indicates that the hint can be expanded"
+							hint: "Hint expander",
+							content: "This is the content, yup this is the content"
 						}'
 					></OntarioCheckboxes>
 

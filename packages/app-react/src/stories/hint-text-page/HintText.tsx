@@ -9,7 +9,7 @@ export default function HintText() {
 	return (
 		<>
 			<div className="ontario-row">
-				<div className="ontario-columns ontario-medium-12 ontario-large-12">
+				<div className="ontario-columns ontario-large-12">
 					<h3>Hint Text</h3>
 					<p>Use hint text when you need to:</p>
 					<ul>
@@ -32,7 +32,7 @@ export default function HintText() {
 							</ul>
 						</li>
 					</ul>
-					<div>
+					<div className="ontario-margin-top-24-!">
 						<h4>Hint text example:</h4>
 						<OntarioHintText hint="This is a hint" elementId="this is the element id" />
 

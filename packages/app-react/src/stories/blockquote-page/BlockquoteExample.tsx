@@ -9,10 +9,10 @@ export default function ButtonExample() {
 	const shortBlockquoteCodeExample = `import { OntarioBlockquote } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioBlockquote attribution="Survey respondent" quote="Access to high-quality child care is an issue that impacts our entire society."></OntarioBlockquote>`;
 	return (
 		<div className="ontario-row">
-			<div className="ontario-columns ontario-medium-12 ontario-large-12">
+			<div className="ontario-columns ontario-large-12">
 				<h2>Examples</h2>
 
-				<div>
+				<div className="ontario-margin-top-24-!">
 					<h4>Long blockquote:</h4>
 					<OntarioBlockquote attribution="Academic partners" byline="Ontario’s Pedagogy for the Early Years">
 						In the past few years, Ontario has gained a high level of respect for its visionary work in early education.
