@@ -7,7 +7,7 @@ export default function HeaderApplication() {
 				<h1>Application Header</h1>
 				<p>This header is for applications and subsites outside of the main ontario.ca website.</p>
 
-				<h3>When to use this component</h3>
+				<h2>When to use this component</h2>
 				<p>This header is used for applications or subsites that are not part of the main ontario.ca website.</p>
 				<p>The application header is used for an application or subsite that may have any of the following:</p>
 				<ul>
@@ -24,7 +24,7 @@ export default function HeaderApplication() {
 
 				<hr />
 
-				<h2>Features</h2>
+				<h3>Features</h3>
 				<p>The application header includes:</p>
 				<ul>
 					<li>
