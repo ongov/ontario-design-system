@@ -4,10 +4,11 @@ export default function FooterGuidance() {
 	return (
 		<div className="ontario-row">
 			<div className="ontario-columns ontario-medium-12 ontario-large-12">
-				<h2>Footer</h2>
+				<h1>Footer</h1>
 				<p>
-					The Ontario footer is mandatory for all web pages and applications in the Ontario ecosystem. It shows users that they are on an official Ontario site and provides
-					consistent access to accessibility, privacy, copyright, and contact links.
+					The Ontario footer is mandatory for all web pages and applications in the Ontario ecosystem. It shows users
+					that they are on an official Ontario site and provides consistent access to accessibility, privacy, copyright,
+					and contact links.
 				</p>
 
 				<h3>What’s included in the footer</h3>

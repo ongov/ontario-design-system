@@ -13,11 +13,12 @@ export default function HintExpander() {
 	return (
 		<>
 			<div className="ontario-row">
-				<div className="ontario-columns ontario-medium-12 ontario-large-12">
+				<div className="ontario-columns ontario-large-12">
 					<h3>Hint Expander</h3>
+					<p>A hint expander is a block of hint text that can be shown or hidden using a toggle.</p>
 					<p>
-						A hint expander is a block of hint text that can be shown or hidden using a toggle. <br></br>Before deciding to use a hint expander, try to{' '}
-						<strong>clarify the field label</strong> or <strong>simplify the hint text</strong> so that a hint expander isn’t needed.
+						Before deciding to use a hint expander, try to <strong>clarify the field label</strong> or{' '}
+						<strong>simplify the hint text</strong> so that a hint expander isn’t needed.
 					</p>
 					<p>Use a hint expander when:</p>
 					<ul>
@@ -25,8 +26,8 @@ export default function HintExpander() {
 							the hint text is long and <strong>won’t be needed by the majority of users</strong>
 						</li>
 						<li>
-							you want to give the user the option to see a <strong>helpful image</strong>, such as a picture of a driver’s licence showing where to find the licence number
-
+							you want to give the user the option to see a <strong>helpful image</strong>, such as a picture of a
+							driver’s licence showing where to find the licence number
 							<ul>
 								<li>remember, you will also need text that explains the image</li>
 							</ul>
@@ -34,7 +35,7 @@ export default function HintExpander() {
 					</ul>
 					<p>Hint expanders are specific to hints within forms. On standard content pages, use an accordion instead.</p>
 
-					<div className="preview-container">
+					<div className="ontario-margin-top-24-!">
 						<h4>Hint expander example:</h4>
 						<OntarioHintExpander
 							hint="This is a hint with an expander"

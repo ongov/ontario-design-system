@@ -1,5 +1,8 @@
 import React from 'react';
-import { OntarioIconAccessibility, OntarioIconAccount } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import {
+	OntarioIconAccessibility,
+	OntarioIconAccount,
+} from '@ontario-digital-service/ontario-design-system-component-library-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -8,9 +11,9 @@ export default function IconExample() {
 	const secondaryIconCodeExample = `import { OntarioIconAccount } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<ontario-icon-account icon-width="36" colour="grey"></ontario-icon-account>`;
 	return (
 		<div className="ontario-row">
-			<div className="ontario-columns ontario-medium-12 ontario-large-12">
+			<div className="ontario-columns ontario-large-12">
 				<h3>How to use the icons</h3>
-				<div className="preview-container">
+				<div className="ontario-margin-top-24-!">
 					<h4>Primary Icon:</h4>
 					<OntarioIconAccessibility icon-width="36" colour="grey"></OntarioIconAccessibility>
 
@@ -21,7 +24,7 @@ export default function IconExample() {
 					</SyntaxHighlighter>
 				</div>
 
-				<div className="preview-container">
+				<div className="ontario-margin-top-24-!">
 					<h4>Secondary Icon:</h4>
 					<OntarioIconAccount icon-width="36" colour="grey"></OntarioIconAccount>
 

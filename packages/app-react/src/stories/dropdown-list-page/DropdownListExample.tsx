@@ -48,8 +48,8 @@ export default function DropdownListExamples() {
 </OntarioDropdownList>`;
 	return (
 		<div className="ontario-row">
-			<div className="ontario-columns ontario-medium-12 ontario-large-12">
-				<div className="preview-container">
+			<div className="ontario-columns ontario-large-12">
+				<div className="ontario-margin-top-24-!">
 					<OntarioDropdownList
 						caption="Do you like cats?"
 						name="cat-dropdown"
@@ -75,8 +75,9 @@ export default function DropdownListExamples() {
 					</SyntaxHighlighter>
 
 					<p>
-						Only if you know that 90% or more of your users will choose one of the options you can put that option as the default. In this example, Canada is the default country
-						because, in this case, we’re sure at least 90% of our users will live in Canada:{' '}
+						Only if you know that 90% or more of your users will choose one of the options you can put that option as
+						the default. In this example, Canada is the default country because, in this case, we’re sure at least 90%
+						of our users will live in Canada:{' '}
 					</p>
 
 					<OntarioDropdownList
@@ -103,7 +104,10 @@ export default function DropdownListExamples() {
 						{dropdownListCodeExample2}
 					</SyntaxHighlighter>
 
-					<p>In all other cases, use the default option to repeat the label – this provides additional help to users with assistive devices like screen readers.</p>
+					<p>
+						In all other cases, use the default option to repeat the label – this provides additional help to users with
+						assistive devices like screen readers.
+					</p>
 
 					<OntarioDropdownList
 						caption="Select a language"

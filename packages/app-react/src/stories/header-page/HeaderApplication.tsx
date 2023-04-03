@@ -4,10 +4,10 @@ export default function HeaderApplication() {
 	return (
 		<div className="ontario-row">
 			<div className="ontario-columns ontario-medium-12 ontario-large-12">
-				<h2>Application Header</h2>
+				<h1>Application Header</h1>
 				<p>This header is for applications and subsites outside of the main ontario.ca website.</p>
 
-				<h3>When to use this component</h3>
+				<h2>When to use this component</h2>
 				<p>This header is used for applications or subsites that are not part of the main ontario.ca website.</p>
 				<p>The application header is used for an application or subsite that may have any of the following:</p>
 				<ul>
@@ -22,7 +22,7 @@ export default function HeaderApplication() {
 					<li>a place for application or subsite-specific links or a menu, if needed</li>
 				</ul>
 
-				<hr></hr>
+				<hr />
 
 				<h3>Features</h3>
 				<p>The application header includes:</p>
@@ -44,22 +44,31 @@ export default function HeaderApplication() {
 					</li>
 				</ul>
 
-				<hr></hr>
+				<hr />
 
 				<h3>Best practices</h3>
 				<h4>Do</h4>
 				<ul>
 					<li>limit the number of navigation links (maximum seven) and keep the labels concise</li>
-					<li>place application-specific menus or search in the secondary application bar to emphasize that the functions are not related to the enterprise ontario.ca website</li>
+					<li>
+						place application-specific menus or search in the secondary application bar to emphasize that the functions
+						are not related to the enterprise ontario.ca website
+					</li>
 					<li>link the application name in the secondary application bar to the application landing page</li>
-					<li>link the Ontario logo in the black bar to either the English or French ontario.ca landing page (depending on the language of the application page)</li>
+					<li>
+						link the Ontario logo in the black bar to either the English or French ontario.ca landing page (depending on
+						the language of the application page)
+					</li>
 					<li>ensure the language toggle is inside the black bar</li>
 					<li>ensure the language toggle switches you to the other language of the page you’re on</li>
 				</ul>
 
 				<h4>Don’t</h4>
 				<ul>
-					<li>use the application header parts separately — that is, don’t use the modified black bar or the secondary application bar separately on its own</li>
+					<li>
+						use the application header parts separately — that is, don’t use the modified black bar or the secondary
+						application bar separately on its own
+					</li>
 					<li>use the secondary application bar as an area for additional branding (logos, patterns, images)</li>
 					<li>change the secondary application bar colour</li>
 					<li>change the font size for the application name — if the name is long, the text will wrap automatically</li>

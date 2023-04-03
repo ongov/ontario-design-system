@@ -19,9 +19,9 @@ export default function TextInputExample() {
 	return (
 		<>
 			<div className="ontario-row">
-				<div className="ontario-columns ontario-medium-12 ontario-large-12">
+				<div className="ontario-columns ontario-large-12">
 					<h3>Examples</h3>
-					<div className="preview-container">
+					<div className="ontario-margin-top-24-!">
 						<OntarioInput
 							caption={{
 								captionText: 'Text Input Caption',
@@ -57,11 +57,12 @@ export default function TextInputExample() {
 					<p>Do not use a text input if:</p>
 					<ul>
 						<li>
-							you want users to enter answers that are <strong>longer than one line</strong> (instead, consider a <a href="/ontario-text-area">text area</a>)
+							you want users to enter answers that are <strong>longer than one line</strong> (instead, consider a{' '}
+							<a href="/ontario-text-area">text area</a>)
 						</li>
 						<li>
-							you want users to choose from a <strong>set list of responses</strong> such as yes or no (instead, consider{' '}
-							<a href="https://designsystem.ontario.ca/components/detail/radio-buttons.html">radio buttons</a>,{' '}
+							you want users to choose from a <strong>set list of responses</strong> such as yes or no (instead,
+							consider <a href="https://designsystem.ontario.ca/components/detail/radio-buttons.html">radio buttons</a>,{' '}
 							<a href="https://designsystem.ontario.ca/components/detail/checkboxes.html">checkboxes</a> or{' '}
 							<a href="https://designsystem.ontario.ca/components/detail/dropdown-lists.html">dropdown lists</a>)
 						</li>
