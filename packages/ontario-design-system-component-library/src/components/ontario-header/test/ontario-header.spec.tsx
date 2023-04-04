@@ -8,33 +8,36 @@ describe('ontario-header', () => {
 			html: `<ontario-header
         type="application"
         application-header-info='{
-					"name": "Application name" ,
-					"href": "/"
+					"title": "Application name" ,
+					"href": "/",
+					"maxSubheaderDesktopLinks": "3",
+					"maxSubheaderTabletLinks": "1"
 				}'
-
 				language-toggle-options='{
 					"englishLink":"/en",
 					"frenchLink": "/fr"
 				}'
-
 				menu-items='[{
-					"name": "Health",
-					"href": "/ontario-hint"
+					"title": "Link one",
+					"href": "/link-one"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Link two",
+					"href": "/link-two"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Link three",
+					"href": "/link-three"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Link four",
+					"href": "/link-four"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Link five",
+					"href": "/link-five"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Link six",
+					"href": "/link-six"
+				},{
+					"title": "Link seven",
+					"href": "/link-seven"
 				}]'
       ></ontario-header>`,
 		});
@@ -42,159 +45,212 @@ describe('ontario-header', () => {
     <ontario-header
         type="application"
         application-header-info='{
-					"name": "Application name" ,
-					"href": "/"
+					"title": "Application name" ,
+					"href": "/",
+					"maxSubheaderDesktopLinks": "3",
+					"maxSubheaderTabletLinks": "1"
 				}'
 				language-toggle-options='{
 					"englishLink":"/en",
 					"frenchLink": "/fr"
 				}'
 				menu-items='[{
-					"name": "Health",
-					"href": "/ontario-hint"
+					"title": "Link one",
+					"href": "/link-one"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Link two",
+					"href": "/link-two"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Link three",
+					"href": "/link-three"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Link four",
+					"href": "/link-four"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Link five",
+					"href": "/link-five"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Link six",
+					"href": "/link-six"
+				},{
+					"title": "Link seven",
+					"href": "/link-seven"
 				}]'>
-       <mock:shadow-root>
-         <div>
-           <div class="ontario-application-header-container" id="ontario-application-header">
-             <div class="ontario-application-header-container">
-               <section class="ontario-application-header">
-                 <div class="ontario-row">
-                   <div class="ontario-application-header__logo ontario-columns ontario-small-6">
-                     <a href="https://www.ontario.ca/page/government-ontario">
-                       <img alt="Government of Ontario" src="/assets/ontario-logo-application-header.svg">
-                     </a>
-                   </div>
-                   <div class="ontario-application-header__lang-toggle ontario-columns ontario-small-6">
-                     <a class="ontario-header-button ontario-header-button--without-outline" href="/fr">
-                      Français
-                     </a>
-                   </div>
-                 </div>
-               </section>
-             </div>
-             <div class="ontario-application-subheader-menu__container">
-               <section class="ontario-application-subheader">
-                 <div class="ontario-row">
-                   <div class="ontario-application-subheader__container ontario-columns ontario-small-12">
-                     <p class="ontario-application-subheader__heading">
-                       <a href="/">
-                         Application name
-                       </a>
-                     </p>
-                     <div class="ontario-application-subheader__menu-container">
-                       <div class="ontario-show-for-large">
-                         <ul class="ontario-application-subheader__menu">
-                           <li>
-                             <a href="/ontario-hint">
-                               Health
-                             </a>
-                           </li>
-                           <li>
-                             <a href="/ontario-hint">
-                               Financial
-                             </a>
-                           </li>
-                           <li>
-                             <a href="/ontario-hint">
-                               Financial
-                             </a>
-                           </li>
-                           <li>
-                             <a href="/ontario-hint">
-                               Financial
-                             </a>
-                           </li>
-                           <li>
-                             <a href="/ontario-hint">
-                               Financial
-                             </a>
-                           </li>
-                         </ul>
-                       </div>
-                       <div class="ontario-hide-for-large ontario-hide-for-small ontario-show-for-medium">
-                         <ul class="ontario-application-subheader__menu">
-                           <li>
-                             <a href="/ontario-hint">
-                               Health
-                             </a>
-                           </li>
-                           <li>
-                             <a href="/ontario-hint">
-                               Financial
-                             </a>
-                           </li>
-                         </ul>
-                       </div>
-                       <div>
-                         <button aria-hidden="false" aria-label="close menu" class="ontario-application-navigation--closed ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-application-header-menu-toggler">
-                           <div class="ontario-icon-container"></div>
-                           <span>
-                             Menu
-                           </span>
-                         </button>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-               </section>
-               <nav aria-hidden="false" class="ontario-application-navigation" id="ontario-application-navigation" role="navigation">
-                 <div class="ontario-application-navigation ontario-application-navigation__container ontario-navigation--closed">
-                   <ul>
-                     <li class="ontario-show-for-small-only">
-                       <a href="/ontario-hint" tabindex="-1">
-                         Health
-                       </a>
-                     </li>
-                     <li class="ontario-show-for-small-only">
-                       <a href="/ontario-hint" tabindex="-1">
-                         Financial
-                       </a>
-                     </li>
-                     <li class="ontario-hide-for-large">
-                       <a href="/ontario-hint" tabindex="-1">
-                         Financial
-                       </a>
-                     </li>
-                     <li class="ontario-hide-for-large">
-                       <a href="/ontario-hint" tabindex="-1">
-                         Financial
-                       </a>
-                     </li>
-                     <li class="ontario-hide-for-large">
-                       <a href="/ontario-hint" tabindex="-1">
-                         Financial
-                       </a>
-                     </li>
-                     <li>
-                       <a href="/ontario-hint" tabindex="-1">
-                         Financial
-                       </a>
-                     </li>
-                   </ul>
-                 </div>
-               </nav>
-             </div>
-           </div>
-         </div>
-       </mock:shadow-root>
-     </ontario-header>
+				<mock:shadow-root>
+					<div>
+						<div class="ontario-application-header-container" id="ontario-application-header">
+							<header class="ontario-application-header" id="ontario-header">
+								<div class="ontario-row">
+									<div class="ontario-application-header__logo ontario-columns ontario-small-6">
+										<a href="https://www.ontario.ca/page/government-ontario">
+											<img alt="Government of Ontario" src="/assets/ontario-logo-application-header.svg">
+										</a>
+									</div>
+									<div class="ontario-application-header__lang-toggle ontario-columns ontario-small-6">
+										<a class="ontario-header-button ontario-header-button--without-outline" href="/fr">
+											<abbr class="ontario-show-for-small-only" title="Français">
+												FR
+											</abbr>
+											<span class="ontario-show-for-medium">
+												Français
+											</span>
+										</a>
+									</div>
+								</div>
+							</header>
+							<div class="ontario-application-subheader-menu__container">
+								<section class="ontario-application-subheader">
+									<div class="ontario-row">
+										<div class="ontario-application-subheader__container ontario-columns ontario-small-12">
+											<p class="ontario-application-subheader__heading">
+												<a href="/">
+													Application name
+												</a>
+											</p>
+											<div class="ontario-application-subheader__menu-container">
+												<ul class="ontario-application-subheader__menu ontario-show-for-large">
+                          <li>
+														<a data-type="app-desktop" href="/link-one">
+															Link one
+														</a>
+													</li>
+													<li>
+														<a data-type="app-desktop" href="/link-two">
+															Link two
+														</a>
+													</li>
+													<li>
+														<a data-type="app-desktop" href="/link-three">
+															Link three
+														</a>
+													</li>
+												</ul>
+												<ul class="ontario-application-subheader__menu ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large">
+													<li>
+														<a data-type="app-tablet" href="/link-one">
+															Link one
+														</a>
+													</li>
+												</ul>
+												<button class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-show-for-large" id="ontario-application-header-menu-toggler" aria-controls="ontario-navigation" aria-label="close menu" type="button">
+													<span class="ontario-header__icon-container"></span>
+													<span>Menu</span>
+												</button>
+												<button class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large" id="ontario-application-header-menu-toggler" aria-controls="ontario-navigation" aria-label="close menu" type="button">
+													<span class="ontario-header__icon-container"></span>
+													<span>Menu</span>
+												</button>
+												<button class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-show-for-small-only" id="ontario-application-header-menu-toggler" aria-controls="ontario-navigation" aria-label="close menu" type="button">
+													<span class="ontario-header__icon-container"></span>
+													<span>Menu</span>
+												</button>
+											</div>
+										</div>
+									</div>
+              </section>
+							<nav aria-hidden="true" class="ontario-application-navigation" id="ontario-application-navigation" role="navigation">
+								<div class="ontario-application-navigation__container">
+									<ul class="ontario-show-for-large">
+										<li>
+											<a data-type="app-desktop" href="/link-four">
+												Link four
+											</a>
+										</li>
+										<li>
+											<a data-type="app-desktop" href="/link-five">
+												Link five
+											</a>
+										</li>
+										<li>
+											<a data-type="app-desktop" href="/link-six">
+												Link six
+											</a>
+										</li>
+										<li>
+											<a data-type="app-desktop" href="/link-seven">
+												Link seven
+											</a>
+										</li>
+									</ul>
+									<ul class="ontario-show-for-medium ontario-hide-for-small ontario-hide-for-large">
+									<li>
+										<a data-type="app-tablet" href="/link-two">
+											Link two
+										</a>
+									</li>
+									<li>
+										<a data-type="app-tablet" href="/link-three">
+											Link three
+										</a>
+									</li>
+										<li>
+											<a data-type="app-tablet" href="/link-four">
+												Link four
+											</a>
+										</li>
+										<li>
+											<a data-type="app-tablet" href="/link-five">
+												Link five
+											</a>
+										</li>
+										<li>
+											<a data-type="app-tablet" href="/link-six">
+												Link six
+											</a>
+										</li>
+										<li>
+											<a data-type="app-tablet" href="/link-seven">
+												Link seven
+											</a>
+										</li>
+									</ul>
+									<ul class="ontario-show-for-small-only">
+									<li>
+											<a data-type="app-mobile" href="/link-one">
+												Link one
+											</a>
+									</li>
+									<li>
+										<a data-type="app-mobile" href="/link-two">
+											Link two
+										</a>
+									</li>
+									<li>
+										<a data-type="app-mobile" href="/link-three">
+											Link three
+										</a>
+									</li>
+										<li>
+											<a data-type="app-mobile" href="/link-four">
+												Link four
+											</a>
+										</li>
+										<li>
+											<a data-type="app-mobile" href="/link-five">
+												Link five
+											</a>
+										</li>
+										<li>
+											<a data-type="app-mobile" href="/link-six">
+												Link six
+											</a>
+										</li>
+										<li>
+											<a data-type="app-mobile" href="/link-seven">
+												Link seven
+											</a>
+										</li>
+									</ul>
+								</div>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</mock:shadow-root>
+		</ontario-header>
     `);
 	});
+
 	it('should render ontario header', async () => {
 		const page = await newSpecPage({
 			components: [OntarioHeader],
@@ -205,23 +261,44 @@ describe('ontario-header', () => {
 					"frenchLink": "/fr"
 				}'
 				menu-items='[{
-					"name": "Health",
-					"href": "/ontario-hint"
+					"title": "Arts and Culture",
+					"href": "https://www.ontario.ca/page/arts-and-culture"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Business and economy",
+					"href": "https://www.ontario.ca/page/business-and-economy"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Driving and Roads",
+					"href": "https://www.ontario.ca/page/driving-and-roads"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Education and training",
+					"href": "https://www.ontario.ca/page/education-and-training"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Environment and energy",
+					"href": "https://www.ontario.ca/page/environment-and-energy"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Government",
+					"href": "https://www.ontario.ca/page/government"
+				},{
+					"title": "Health and wellness",
+					"href": "https://www.ontario.ca/page/health-care-ontario"
+				},{
+					"title": "Home and community",
+					"href": "https://www.ontario.ca/page/home-and-community"
+				},{
+					"title": "Jobs and employment",
+					"href": "https://www.ontario.ca/page/jobs-and-employment"
+				},{
+					"title": "Law and safety",
+					"href": "https://www.ontario.ca/page/law-and-safety"
+				},{
+					"title": "Rural and north",
+					"href": "https://www.ontario.ca/page/rural-and-north"
+				},{
+					"title": "Taxes and benefits",
+					"href": "https://www.ontario.ca/page/taxes-and-benefits"
+				},{
+					"title": "Travel and recreation",
+					"href": "https://www.ontario.ca/page/travel-and-recreation"
 				}]'
       ></ontario-header>`,
 		});
@@ -233,23 +310,44 @@ describe('ontario-header', () => {
 					"frenchLink": "/fr"
 				}'
 				menu-items='[{
-					"name": "Health",
-					"href": "/ontario-hint"
+					"title": "Arts and Culture",
+					"href": "https://www.ontario.ca/page/arts-and-culture"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Business and economy",
+					"href": "https://www.ontario.ca/page/business-and-economy"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Driving and Roads",
+					"href": "https://www.ontario.ca/page/driving-and-roads"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Education and training",
+					"href": "https://www.ontario.ca/page/education-and-training"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Environment and energy",
+					"href": "https://www.ontario.ca/page/environment-and-energy"
 				},{
-					"name": "Financial",
-					"href": "/ontario-hint"
+					"title": "Government",
+					"href": "https://www.ontario.ca/page/government"
+				},{
+					"title": "Health and wellness",
+					"href": "https://www.ontario.ca/page/health-care-ontario"
+				},{
+					"title": "Home and community",
+					"href": "https://www.ontario.ca/page/home-and-community"
+				},{
+					"title": "Jobs and employment",
+					"href": "https://www.ontario.ca/page/jobs-and-employment"
+				},{
+					"title": "Law and safety",
+					"href": "https://www.ontario.ca/page/law-and-safety"
+				},{
+					"title": "Rural and north",
+					"href": "https://www.ontario.ca/page/rural-and-north"
+				},{
+					"title": "Taxes and benefits",
+					"href": "https://www.ontario.ca/page/taxes-and-benefits"
+				},{
+					"title": "Travel and recreation",
+					"href": "https://www.ontario.ca/page/travel-and-recreation"
 				}]'
       >
       <mock:shadow-root>
@@ -257,27 +355,23 @@ describe('ontario-header', () => {
           <div class="ontario-header__container">
             <header class="ontario-header" id="ontario-header">
               <div class="ontario-row">
-                <div class="ontario-columns ontario-header__logo-container ontario-hide-for-small-only ontario-large-3 ontario-medium-4 ontario-small-2">
+                <div class="ontario-columns ontario-header__logo-container ontario-large-3 ontario-medium-4 ontario-small-2">
                   <a href="https://www.ontario.ca/page/government-ontario">
                     <img alt="Government of Ontario" class="ontario-show-for-medium" src="/assets/ontario-logo--desktop.svg">
+										<img class="ontario-show-for-small-only" src="/assets/ontario-logo--mobile.svg" alt="Government of Ontario" />
                   </a>
                 </div>
-                <div class="ontario-columns ontario-header__logo-container ontario-large-3 ontario-medium-4 ontario-show-for-small-only ontario-small-2">
-                  <a href="https://www.ontario.ca/page/government-ontario">
-                    <img alt="Government of Ontario" class="ontario-show-for-small-only" src="/assets/ontario-logo--mobile.svg">
-                  </a>
-                </div>
-                <form aria-hidden="false" class="ontario-columns ontario-header__search-container ontario-large-6 ontario-large-offset-0 ontario-medium-6 ontario-medium-offset-3 ontario-small-10" id="ontario-search-form-container" name="searchForm" novalidate="">
+                <form class="ontario-columns ontario-header__search-container ontario-large-6 ontario-large-offset-0 ontario-medium-6 ontario-medium-offset-3 ontario-small-10" id="ontario-search-form-container" name="searchForm" novalidate="">
                   <label class="ontario-show-for-sr" htmlfor="ontario-search-input-field">
                     Search
                   </label>
                   <input aria-autocomplete="none" autocomplete="off" class="ontario-header__search-input ontario-input" id="ontario-search-input-field" name="search" required="" type="text">
-                  <input aria-label="Clear" class="ontario-header__search-reset" id="ontario-search-reset" type="reset" value="">
+                  <input aria-label="Clear field" class="ontario-header__search-reset" id="ontario-search-reset" type="reset" value="">
                   <button class="ontario-header__search-submit" id="ontario-search-submit" type="submit">
-                    <div class="ontario-icon-container"></div>
-                    <span class="ontario-show-for-sr">
-                      Submit
-                    </span>
+										<span class="ontario-show-for-sr">
+											Submit
+										</span>
+										<span class="ontario-header__icon-container"></span>
                   </button>
                 </form>
                 <div class="ontario-columns ontario-header__nav-right-container ontario-large-3 ontario-medium-8 ontario-small-10">
@@ -289,65 +383,72 @@ describe('ontario-header', () => {
                       Français
                     </span>
                   </a>
-                  <div class="ontario-hide-for-large">
-                    <button aria-controls="ontario-search-form-container" aria-label="open search" class="ontario-header-button ontario-header-button--without-outline ontario-header__search-toggler" id="ontario-header-search-toggler">
-                      <div class="ontario-icon-container"></div>
-                      <span class="ontario-show ontario-show-for-medium">
-                        Search
-                      </span>
-                    </button>
-                  </div>
-                  <button aria-hidden="false" aria-label="close menu" class="ontario-application-navigation--closed ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-application-header-menu-toggler">
-                    <div class="ontario-icon-container"></div>
+									<button aria-controls="ontario-search-form-container" class="ontario-header-button ontario-header-button--without-outline ontario-header__search-toggler ontario-hide-for-large" id="ontario-header-search-toggler">
+										<span class="ontario-header__icon-container"></span>
+										<span class="ontario-show ontario-show-for-medium">
+											Search
+										</span>
+									</button>
+                  <button aria-controls="ontario-navigation" aria-label="close menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-header-menu-toggler" type="button">
+										<span class="ontario-header__icon-container"></span>
                     <span>
                       Menu
                     </span>
                   </button>
                 </div>
                 <div class="ontario-columns ontario-header__search-close-container ontario-medium-3 ontario-small-2">
-                  <button aria-label="close search bar" class="ontario-header-button ontario-header-button--without-outline ontario-header__search-close" id="ontario-header-search-close">
-                    <span aria-hidden="false">
+                  <button aria-label="close search bar" class="ontario-header-button ontario-header-button--without-outline ontario-header__search-close" id="ontario-header-search-close" type="button">
+                    <span aria-hidden="true">
                       close
                     </span>
-                    <div class="ontario-icon-container"></div>
+                    <span class="ontario-header__icon-container"></span>
                   </button>
                 </div>
               </div>
             </header>
-            <nav aria-hidden="false" class="ontario-navigation" id="ontario-navigation" role="navigation">
-              <div class="ontario-navigation ontario-navigation--closed ontario-navigation__container">
-                <ul>
-                  <li>
-                    <a href="/ontario-hint" tabindex="-1">
-                      Health
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/ontario-hint" tabindex="-1">
-                      Financial
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/ontario-hint" tabindex="-1">
-                      Financial
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/ontario-hint" tabindex="-1">
-                      Financial
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/ontario-hint" tabindex="-1">
-                      Financial
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/ontario-hint" tabindex="-1">
-                      Financial
-                    </a>
-                  </li>
-                </ul>
+            <nav aria-hidden="true" class="ontario-navigation" id="ontario-navigation" role="navigation">
+              <div class="ontario-navigation__container">
+								<ul>
+									<li class="ontario-header-navigation__menu-item">
+										<a data-type="ontario-header" href="https://www.ontario.ca/page/arts-and-culture">Arts and Culture</a>
+									</li>
+									<li class="ontario-header-navigation__menu-item">
+										<a data-type="ontario-header" href="https://www.ontario.ca/page/business-and-economy">Business and economy</a>
+									</li>
+									<li class="ontario-header-navigation__menu-item">
+										<a data-type="ontario-header" href="https://www.ontario.ca/page/driving-and-roads">Driving and Roads</a>
+									</li>
+									<li class="ontario-header-navigation__menu-item">
+										<a data-type="ontario-header" href="https://www.ontario.ca/page/education-and-training">Education and training</a>
+									</li>
+									<li class="ontario-header-navigation__menu-item">
+										<a data-type="ontario-header" href="https://www.ontario.ca/page/environment-and-energy">Environment and energy</a>
+									</li>
+									<li class="ontario-header-navigation__menu-item">
+										<a data-type="ontario-header" href="https://www.ontario.ca/page/government">Government</a>
+									</li>
+									<li class="ontario-header-navigation__menu-item">
+										<a data-type="ontario-header" href="https://www.ontario.ca/page/health-care-ontario">Health and wellness</a>
+									</li>
+									<li class="ontario-header-navigation__menu-item">
+										<a data-type="ontario-header" href="https://www.ontario.ca/page/home-and-community">Home and community</a>
+									</li>
+									<li class="ontario-header-navigation__menu-item">
+										<a data-type="ontario-header" href="https://www.ontario.ca/page/jobs-and-employment">Jobs and employment</a>
+									</li>
+									<li class="ontario-header-navigation__menu-item">
+										<a data-type="ontario-header" href="https://www.ontario.ca/page/law-and-safety">Law and safety</a>
+									</li>
+									<li class="ontario-header-navigation__menu-item">
+										<a data-type="ontario-header" href="https://www.ontario.ca/page/rural-and-north">Rural and north</a>
+									</li>
+									<li class="ontario-header-navigation__menu-item">
+										<a data-type="ontario-header" href="https://www.ontario.ca/page/taxes-and-benefits">Taxes and benefits</a>
+									</li>
+									<li class="ontario-header-navigation__menu-item">
+										<a data-type="ontario-header" href="https://www.ontario.ca/page/travel-and-recreation">Travel and recreation</a>
+									</li>
+								</ul>
               </div>
             </nav>
           </div>
