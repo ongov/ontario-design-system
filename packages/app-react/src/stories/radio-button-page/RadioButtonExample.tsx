@@ -1,117 +1,72 @@
 import React from 'react';
+
 import { OntarioRadioButtons } from '@ontario-digital-service/ontario-design-system-component-library-react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+import CodeHighlighter from '../../components/code-highlighter';
 
 export default function RadioButtonExample() {
 	const radioButtonsCodeExample = `import { OntarioRadioButtons } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n
 <OntarioRadioButtons 
-	caption="Do you have cats?" 
-	hint-text="This is the hint text
-	name="radio-example" 
-	required 
-	options='[
+	caption="Radio legend"
+	name="radio-example"
+	required
+	options={[
 		{
-			"name": "radio-example",
-			"value": "radio",
-			"elementId": "radio-1",
-			"label": "radio-1-label"
+			name: "radio-example",
+			value: "option-1",
+			elementId: "option-1",
+			label: "Option 1"
 		},
 		{
-			"name": "radio-example",
-			"value": "radio-2",
-			"elementId": "radio-2",
-			"label": "radio-2-label",
-			"hintExpander": {
-				"hint": "Hint expander",
-				"content": "This is the content, yup this is the content",
-				"aria-label": "This indicates that the hint can be expanded"
-			}
+			name: "radio-example",
+			value: "option-2",
+			elementId: "option-2",
+			label: "Option 2"
 		},
 		{
-			"name": "radio-example",
-			"value": "radio-3",
-			"elementId": "radio-3",
-			"label": "radio-3-label",
-			"hintExpander": {
-				"hint": "Hint expander",
-				"content": "This is the content",
-				"aria-label": "This indicates that the hint can be expanded"
-			}
+			name: "radio-example",
+			value: "option-3",
+			elementId: "option-3",
+			label: "Option 3"
 		},
-		{
-			"name": "radio-example",
-			"value": "radio-4",
-			"elementId": "radio-4",
-			"label": "radio-4-label"
-		}
-	]' 
-	hint-expander='{
-		"hint": "Hint expander",
-		"content": "This is hint expander content",
-		"aria-label": "This indicates that the hint can be expanded"
-	}'
+	]}
 >
 </OntarioRadioButtons>`;
 	return (
 		<div className="ontario-row">
 			<div className="ontario-columns ontario-large-12">
-				<h3>Radio Buttons Example</h3>
-				<div className="ontario-margin-top-24-!">
-					<OntarioRadioButtons
-						caption="Do you have cats?"
-						hint-text="This is the hint text"
-						name="radio-example"
-						required
-						options='[
-							{
-								"name": "radio-example",
-								"value": "radio",
-								"elementId": "radio-1",
-								"label": "radio-1-label"
-							},
-							{
-								"name": "radio-example",
-								"value": "radio-2",
-								"elementId": "radio-2",
-								"label": "radio-2-label",
-								"hintExpander": {
-									"hint": "Hint expander",
-									"content": "This is the content, yup this is the content",
-									"aria-label": "This indicates that the hint can be expanded"
-								}
-							},
-							{
-								"name": "radio-example",
-								"value": "radio-3",
-								"elementId": "radio-3",
-								"label": "radio-3-label",
-								"hintExpander": {
-									"hint": "Hint expander",
-									"content": "This is the content",
-									"aria-label": "This indicates that the hint can be expanded"
-								}
-							},
-							{
-								"name": "radio-example",
-								"value": "radio-4",
-								"elementId": "radio-4",
-								"label": "radio-4-label"
-							}
-            			]'
-						hint-expander='{
-							"hint": "Hint expander",
-							"content": "This is hint expander content",
-							"aria-label": "This indicates that the hint can be expanded"
-						}'
-					></OntarioRadioButtons>
+				<h2>Example</h2>
+				<OntarioRadioButtons
+					caption="Radio legend"
+					name="radio-example"
+					required
+					options={[
+						{
+							name: 'radio-example',
+							value: 'option-1',
+							elementId: 'option-1',
+							label: 'Option 1',
+						},
+						{
+							name: 'radio-example',
+							value: 'option-2',
+							elementId: 'option-2',
+							label: 'Option 2',
+						},
+						{
+							name: 'radio-example',
+							value: 'option-3',
+							elementId: 'option-3',
+							label: 'Option 3',
+						},
+					]}
+				></OntarioRadioButtons>
 
-					<p>With the following markup:</p>
+				<p>With the following markup:</p>
 
-					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-						{radioButtonsCodeExample}
-					</SyntaxHighlighter>
-				</div>
+				<CodeHighlighter codeExample={radioButtonsCodeExample} />
+
+				<hr />
 			</div>
 		</div>
 	);

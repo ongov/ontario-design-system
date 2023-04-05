@@ -1,137 +1,228 @@
 import React from 'react';
+
 import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+import CodeHighlighter from '../../components/code-highlighter';
 
 export default function DropdownListExamples() {
-	const dropdownListCodeExample = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList caption="Do you like cats?" name="cat-dropdown" required
-  options='[{
-      "value": "dropdown-list-1",
-      "label": "All categories"
+	const dropdownListCodeExample = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList 
+  caption="Province/territory"
+  name="province-selection"
+  is-empty-start-option="Select"
+  required
+  options={[
+    {
+      value: "AB",
+      label: "Alberta"
     },
     {
-      "value": "dropdown-list-2",
-      "label": "Option 2"
+      value: "BC",
+      label: "British Columbia"
     },
     {
-      "value": "dropdown-list-3",
-      "label": "Option 3"
-    }]'>
+      value: "MB",
+      label: "Manitoba"
+    },
+    {
+      value: "NB",
+      label: "New Brunswick"
+    },
+    {
+      value: "NL",
+      label: "Newfoundland and Labrador"
+    },
+    {
+      value: "NS",
+      label: "Nova Scotia"
+    },
+    {
+      value: "ON",
+      label: "Ontario"
+    },
+    {
+      value: "QC",
+      label: "Quebec"
+    },
+    {
+      value: "SK",
+      label: "Saskatchewan"
+    },
+    {
+      value: "NT",
+      label: "Northwest Territories"
+    },
+    {
+      value: "NU",
+      label: "Nunavut"
+    },
+    {
+      value: "YT",
+      label: "Yukon"
+    }
+  ]}
+>
 </OntarioDropdownList>`;
-	const dropdownListCodeExample2 = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList caption="Do you like cats?" name="cat-dropdown" required
-  options='[{
-    "value": "dropdown-list-1",
-    "label": "All categories"
+
+	const dropdownListCodeExample2 = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList 
+  caption="Country" 
+  name="country" 
+  required
+  options={[
+    {
+      value: "canada",
+      label: "Canada"
     },
     {
-      "value": "dropdown-list-2",
-      "label": "Option 2"
+      value: "italy",
+      label: "Italy"
     },
     {
-      "value": "dropdown-list-3",
-      "label": "Option 3"
-    }]'>
+      value: "france",
+      label: "France"
+    }
+  ]}
+>
 </OntarioDropdownList>`;
-	const dropdownListCodeExample3 = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList caption="Select a language" name="language-select"
-  options='[{
-      "value": "dropdown-list-1",
-      "label": "Select a language"
+
+	const dropdownListCodeExample3 = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList 
+  caption="Select a language" 
+  name="language-select"
+  is-empty-start="Select a language"
+  options={[
+    {
+      value: "english",
+      label: "English"
     },
     {
-      "value": "dropdown-list-2",
-      "label": "English"
-    },
-    {
-      "value": "dropdown-list-3",
-      "label": "French"
-    }]'>
+      value: "french",
+      label: "French"
+    }
+  ]}
+>
 </OntarioDropdownList>`;
+
 	return (
 		<div className="ontario-row">
 			<div className="ontario-columns ontario-large-12">
-				<div className="ontario-margin-top-24-!">
-					<OntarioDropdownList
-						caption="Do you like cats?"
-						name="cat-dropdown"
-						required
-						options='[{
-                "value": "dropdown-list-1",
-                "label": "All categories"
-              },
-              {
-                "value": "dropdown-list-2",
-                "label": "Option 2"
-              },
-              {
-                "value": "dropdown-list-3",
-                "label": "Option 3"
-              }]'
-					></OntarioDropdownList>
+				<h2>Examples</h2>
 
-					<p>With the following markup:</p>
+				<OntarioDropdownList
+					caption="Province/territory"
+					name="province-selection"
+					is-empty-start-option="Select"
+					required
+					options={[
+						{
+							value: 'AB',
+							label: 'Alberta',
+						},
+						{
+							value: 'BC',
+							label: 'British Columbia',
+						},
+						{
+							value: 'MB',
+							label: 'Manitoba',
+						},
+						{
+							value: 'NB',
+							label: 'New Brunswick',
+						},
+						{
+							value: 'NL',
+							label: 'Newfoundland and Labrador',
+						},
+						{
+							value: 'NS',
+							label: 'Nova Scotia',
+						},
+						{
+							value: 'ON',
+							label: 'Ontario',
+						},
+						{
+							value: 'QC',
+							label: 'Quebec',
+						},
+						{
+							value: 'SK',
+							label: 'Saskatchewan',
+						},
+						{
+							value: 'NT',
+							label: 'Northwest Territories',
+						},
+						{
+							value: 'NU',
+							label: 'Nunavut',
+						},
+						{
+							value: 'YT',
+							label: 'Yukon',
+						},
+					]}
+				></OntarioDropdownList>
 
-					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-						{dropdownListCodeExample}
-					</SyntaxHighlighter>
+				<p>With the following markup:</p>
 
-					<p>
-						Only if you know that 90% or more of your users will choose one of the options you can put that option as
-						the default. In this example, Canada is the default country because, in this case, we’re sure at least 90%
-						of our users will live in Canada:{' '}
-					</p>
+				<CodeHighlighter codeExample={dropdownListCodeExample} />
 
-					<OntarioDropdownList
-						caption="Shipping Address"
-						name="shipping-address"
-						required
-						options='[{
-                "value": "dropdown-list-1",
-                "label": "Canada"
-              },
-              {
-                "value": "dropdown-list-2",
-                "label": "Italy"
-              },
-              {
-                "value": "dropdown-list-3",
-                "label": "France"
-              }]'
-					></OntarioDropdownList>
+				<p className="ontario-margin-top-24-!">
+					Only if you know that 90% or more of your users will choose one of the options you can put that option as the
+					default. In this example, Canada is the default country because, in this case, we’re sure at least 90% of our
+					users will live in Canada:{' '}
+				</p>
 
-					<p>With the following markup:</p>
+				<OntarioDropdownList
+					caption="Country"
+					name="country"
+					required
+					options={[
+						{
+							value: 'canada',
+							label: 'Canada',
+						},
+						{
+							value: 'italy',
+							label: 'Italy',
+						},
+						{
+							value: 'france',
+							label: 'France',
+						},
+					]}
+				></OntarioDropdownList>
 
-					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-						{dropdownListCodeExample2}
-					</SyntaxHighlighter>
+				<p>With the following markup:</p>
 
-					<p>
-						In all other cases, use the default option to repeat the label – this provides additional help to users with
-						assistive devices like screen readers.
-					</p>
+				<CodeHighlighter codeExample={dropdownListCodeExample2} />
 
-					<OntarioDropdownList
-						caption="Select a language"
-						name="language-select"
-						options='[{
-                "value": "dropdown-list-1",
-                "label": "Select a language"
-              },
-              {
-                "value": "dropdown-list-2",
-                "label": "English"
-              },
-              {
-                "value": "dropdown-list-3",
-                "label": "French"
-              }]'
-					></OntarioDropdownList>
+				<p className="ontario-margin-top-24-!">
+					In all other cases, use the default option to repeat the label – this provides additional help to users with
+					assistive devices like screen readers.
+				</p>
 
-					<p>With the following markup:</p>
+				<OntarioDropdownList
+					caption="Select a language"
+					name="language-select"
+					is-empty-start="Select a language"
+					options={[
+						{
+							value: 'english',
+							label: 'English',
+						},
+						{
+							value: 'french',
+							label: 'French',
+						},
+					]}
+				></OntarioDropdownList>
 
-					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-						{dropdownListCodeExample3}
-					</SyntaxHighlighter>
-				</div>
+				<p>With the following markup:</p>
+
+				<CodeHighlighter codeExample={dropdownListCodeExample3} />
+
+				<hr />
 			</div>
 		</div>
 	);

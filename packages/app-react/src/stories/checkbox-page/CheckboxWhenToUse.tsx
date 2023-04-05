@@ -4,16 +4,14 @@ export default function CheckboxWhenToUse() {
 	return (
 		<>
 			<div className="ontario-row">
-				<div className="ontario-columns ontario-medium-12 ontario-large-12">
-					<h1 className="ontario-h1">Checkbox</h1>
-					<p className="ontario-lead-statement">Use checkboxes when you want the user to select one or more options from a list.</p>
-				</div>
-			</div>
-			<div className="ontario-row">
-				<div className="ontario-columns ontario-medium-12 ontario-large-12">
+				<div className="ontario-columns ontario-large-12">
+					<h1>Checkboxes</h1>
+					<p className="ontario-lead-statement">
+						Use checkboxes when you want the user to select one or more options from a list.
+					</p>
+
 					<h2>When to use this component</h2>
 					<p>Use checkboxes when you want the user to:</p>
-
 					<ul>
 						<li>
 							select <strong>more than one option</strong> from a list
