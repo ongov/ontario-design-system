@@ -6,7 +6,7 @@ import {
 } from '../../utils/callout-aside/callout-aside.interface';
 import {
 	isValidHighlightColour,
-	generateComponent,
+	generateCalloutAside,
 	isValidHeadingLevel,
 } from '../../utils/callout-aside/callout-aside-helpers';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
@@ -25,17 +25,17 @@ export class OntarioCallout implements CalloutAside {
 	/**
 	 * Text or HTML to be displayed as the heading of the callout.
 	 */
-	@Prop() headingContent: string;
+	@Prop() headingContent: string | HTMLElement;
 
 	/**
 	 * Optional text to be displayed as the content for the callout component. If a string is passed, it will automatically be nested in a paragraph tag.
 	 *
-	 * HTML content can also be passed as the child/children of the callout component if additional/different elements for the content are needed.
+	 * HTML content can also be passed as either the child/children of the callout component if additional/different elements for the content are needed, or through the `content` prop.
 	 *
 	 * @example
 	 * <ontario-callout headingType='h3' headingContent='This is the callout heading'><p>This is the first sentence of the callout content.</p><p>This is the second sentence of the callout content.</p></ontario-callout>
 	 */
-	@Prop() content?: string;
+	@Prop() content?: string | HTMLElement;
 
 	/**
 	 * Optional prop to choose the border colour of the callout. If none is passed, the default colour will be teal.
@@ -48,14 +48,12 @@ export class OntarioCallout implements CalloutAside {
 	 */
 	@Watch('headingType')
 	validateHeadingType() {
-		const validHeadingLevel = isValidHeadingLevel(this.headingType);
-
-		if (validHeadingLevel) return this.headingType;
+		if (isValidHeadingLevel(this.headingType)) return this.headingType;
 
 		const message = new ConsoleMessageClass();
 		return message
 			.addDesignSystemTag()
-			.addMonospaceText(' headingType ')
+			.addMonospaceText(` headingType ${this.headingType} `)
 			.addRegularText('for')
 			.addMonospaceText(' <ontario-callout> ')
 			.addRegularText('is not a valid type. Please ensure your heading type matches one of the headingType types.')
@@ -84,13 +82,12 @@ export class OntarioCallout implements CalloutAside {
 	@Watch('highlightColour')
 	validateHighlightColour() {
 		if (this.highlightColour) {
-			const validHighlightColour = isValidHighlightColour(this.highlightColour);
-			if (validHighlightColour) return this.highlightColour;
+			if (isValidHighlightColour(this.highlightColour)) return this.highlightColour;
 			else {
 				const message = new ConsoleMessageClass();
 				message
 					.addDesignSystemTag()
-					.addMonospaceText(' highlightColour ')
+					.addMonospaceText(` highlightColour ${this.highlightColour} `)
 					.addRegularText('for')
 					.addMonospaceText(' <ontario-callout> ')
 					.addRegularText(
@@ -98,12 +95,10 @@ export class OntarioCallout implements CalloutAside {
 					)
 					.printMessage();
 			}
-
-			return (this.highlightColour = 'teal');
 		}
 
 		// if no highlight colour is passed, return 'teal'
-		return (this.highlightColour = 'teal');
+		return 'teal';
 	}
 
 	componentWillLoad() {
@@ -113,12 +108,6 @@ export class OntarioCallout implements CalloutAside {
 	}
 
 	render() {
-		return generateComponent(
-			'callout',
-			this.headingType,
-			this.headingContent,
-			this.content ?? this.content,
-			this.highlightColour ?? this.highlightColour,
-		);
+		return generateCalloutAside('callout', this.headingType, this.headingContent, this.content, this.highlightColour);
 	}
 }

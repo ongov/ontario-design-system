@@ -19,14 +19,14 @@ export interface CalloutAside extends Base {
 	/**
 	 * Text to be displayed as the heading of the callout/aside.
 	 */
-	headingContent: string;
+	headingContent: string | HTMLElement;
 
 	/**
 	 * Optional text to be displayed as the content for the callout/aside component. If a string is passed, it will automatically be nested in a paragraph tag.
 	 *
 	 * HTML content can also be passed as the child/children of the callout/aside component if additional/different elements for the content are needed.
 	 */
-	content?: string;
+	content?: string | HTMLElement;
 
 	/**
 	 * Optional prop to choose the border colour of the callout/aside. If none is passed, the default colour will be teal.

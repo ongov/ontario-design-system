@@ -37,8 +37,8 @@ $highlight-colours: (
 	'purple': colours.$ontario-colour-dark-purple,
 );
 
-@each $color-name, $hex in $highlight-colours {
-	.ontario-border-highlight--#{$color-name} {
+@each $colour-name, $hex in $highlight-colours {
+	.ontario-border-highlight--#{$colour-name} {
 		border-color: $hex !important;
 	}
 }
