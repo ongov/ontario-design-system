@@ -103,7 +103,7 @@ You can import the entire global styles package by including the following impor
 
 This will give you access to the complete global styles package, and will load in all of our generic element and layout styles, as well as fonts and favicon files.
 
-#### 2. Importing specific styles
+#### 2. Import specific styles
 
 You can be more granular by explicitly importing specific styles from our global styles package. For example, if you only require our global variables, you can include the following 'use' rule to import specific styles:
 
