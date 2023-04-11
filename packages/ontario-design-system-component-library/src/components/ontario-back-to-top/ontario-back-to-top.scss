@@ -1,6 +1,5 @@
 @use '../../global.scss';
 
-$ontario-focus-transition: box-shadow 0.1s ease-in-out;
 $ontario-icon-margin-top: 0.125rem;
 
 // Colour variables
@@ -55,7 +54,7 @@ $ontario-colour-back-to-top--active-background: #b2b2b2;
 		box-shadow: 0 0 0 global.rem-calc(4) global.$ontario-colour-focus,
 			0 global.rem-calc(5) global.rem-calc(7) global.rem-calc(3) rgba(0, 0, 0, 0.6);
 		outline: global.rem-calc(4) solid transparent;
-		transition: background-color 0s, $ontario-focus-transition;
+		transition: background-color 0s, global.$ontario-focus-transition;
 	}
 
 	@media screen and (max-width: global.$medium-breakpoint) {
