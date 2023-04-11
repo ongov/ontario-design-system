@@ -5,7 +5,7 @@ $ontario-logo-height: 46px;
 $navigation-link-bg--hover: #e5e5e5;
 $navigation-max-width: 72rem;
 
-$menu-button-icon--margin-right: 6px;
+$ontario-application-header-menu-button-icon--margin-right: 6px;
 
 .ontario-application-header {
 	background-color: global.$ontario-colour-black;
@@ -114,7 +114,7 @@ $menu-button-icon--margin-right: 6px;
 	}
 
 	svg {
-		margin-right: $menu-button-icon--margin-right;
+		margin-right: $ontario-application-header-menu-button-icon--margin-right;
 
 		@media screen and (max-width: global.$xsmall-breakpoint) {
 			margin-right: global.$spacing-0;

@@ -9,7 +9,7 @@ $ontario-header-logo-width--mobile: 45px;
 
 $ontario-header-custom-breakpoint: 39.9375em;
 
-$menu-button-icon--margin-right: 6px;
+$ontario-header-menu-button-icon--margin-right: 6px;
 
 .ontario-header {
 	position: relative;
@@ -302,7 +302,7 @@ input[type='reset'].ontario-header__search-reset {
 	}
 
 	svg {
-		margin-right: $menu-button-icon--margin-right;
+		margin-right: $ontario-header-menu-button-icon--margin-right;
 
 		@media screen and (max-width: global.$xsmall-breakpoint) {
 			margin-right: global.$spacing-0;
