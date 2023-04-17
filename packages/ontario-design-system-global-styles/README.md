@@ -109,7 +109,7 @@ You can be more granular by explicitly importing specific styles from our global
 
 `@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;`
 
-The @use rule loads mixins, functions, and variables from other Sass stylesheets, and combines CSS from multiple stylesheets together. In your SCSS, you would then reference one of these variables by including the namespace, followed by the variable you intend to use. For example:
+The `@use` rule loads mixins, functions, and variables from other Sass stylesheets, and combines CSS from multiple stylesheets together. In your SCSS, you would then reference one of these variables by including the namespace, followed by the variable you intend to use. For example:
 
 ```
 .platform-banner {
