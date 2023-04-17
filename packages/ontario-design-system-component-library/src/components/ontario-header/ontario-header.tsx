@@ -512,7 +512,7 @@ export class OntarioHeader {
 						{/* Ontario header navigation */}
 						<nav
 							role="navigation"
-							class={this.menuToggle ? 'ontario-navigation  ontario-navigation--open' : 'ontario-navigation'}
+							class={this.menuToggle ? 'ontario-navigation ontario-navigation--open' : 'ontario-navigation'}
 							id="ontario-navigation"
 						>
 							<div class="ontario-navigation__container">
