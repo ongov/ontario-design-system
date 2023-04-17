@@ -105,7 +105,7 @@ This will give you access to the complete global styles package, and will load i
 
 #### 2. Import specific styles
 
-You can be more granular by explicitly importing specific styles from our global styles package. For example, if you only require our global variables, you can include the following `use` rule to import specific styles:
+You can be more granular by explicitly importing specific styles from our global styles package. For example, if you only require our global variables, you can include the following [`@use`](https://sass-lang.com/documentation/at-rules/use) rule to import specific styles:
 
 `@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;`
 
