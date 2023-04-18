@@ -132,15 +132,15 @@ describe('ontario-header', () => {
 														</a>
 													</li>
 												</ul>
-												<button class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-show-for-large" id="ontario-application-header-menu-toggler" aria-controls="ontario-navigation" aria-label="close menu" type="button">
+												<button class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-show-for-large" id="ontario-application-header-menu-toggler" aria-controls="ontario-navigation" aria-label="open menu" type="button">
 													<span class="ontario-header__icon-container"></span>
 													<span>Menu</span>
 												</button>
-												<button class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large" id="ontario-application-header-menu-toggler" aria-controls="ontario-navigation" aria-label="close menu" type="button">
+												<button class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large" id="ontario-application-header-menu-toggler" aria-controls="ontario-navigation" aria-label="open menu" type="button">
 													<span class="ontario-header__icon-container"></span>
 													<span>Menu</span>
 												</button>
-												<button class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-show-for-small-only" id="ontario-application-header-menu-toggler" aria-controls="ontario-navigation" aria-label="close menu" type="button">
+												<button class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-show-for-small-only" id="ontario-application-header-menu-toggler" aria-controls="ontario-navigation" aria-label="open menu" type="button">
 													<span class="ontario-header__icon-container"></span>
 													<span>Menu</span>
 												</button>
@@ -148,7 +148,7 @@ describe('ontario-header', () => {
 										</div>
 									</div>
               </section>
-							<nav aria-hidden="true" class="ontario-application-navigation" id="ontario-application-navigation" role="navigation">
+							<nav class="ontario-application-navigation" id="ontario-application-navigation" role="navigation">
 								<div class="ontario-application-navigation__container">
 									<ul class="ontario-show-for-large">
 										<li>
@@ -389,7 +389,7 @@ describe('ontario-header', () => {
 											Search
 										</span>
 									</button>
-                  <button aria-controls="ontario-navigation" aria-label="close menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-header-menu-toggler" type="button">
+                  <button aria-controls="ontario-navigation" aria-label="open menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-header-menu-toggler" type="button">
 										<span class="ontario-header__icon-container"></span>
                     <span>
                       Menu
@@ -406,7 +406,7 @@ describe('ontario-header', () => {
                 </div>
               </div>
             </header>
-            <nav aria-hidden="true" class="ontario-navigation" id="ontario-navigation" role="navigation">
+            <nav class="ontario-navigation" id="ontario-navigation" role="navigation">
               <div class="ontario-navigation__container">
 								<ul>
 									<li class="ontario-header-navigation__menu-item">
