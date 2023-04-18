@@ -332,7 +332,7 @@ export class OntarioHeader {
 				}
 				id={this.type === 'ontario' ? 'ontario-header-menu-toggler' : 'ontario-application-header-menu-toggler'}
 				aria-controls="ontario-navigation"
-				aria-label={this.menuToggle ? 'open menu' : 'close menu'}
+				aria-label={this.menuToggle ? 'close menu' : 'open menu'}
 				onClick={this.handleMenuToggle}
 				type="button"
 				ref={
@@ -512,9 +512,8 @@ export class OntarioHeader {
 						{/* Ontario header navigation */}
 						<nav
 							role="navigation"
-							class={this.menuToggle ? 'ontario-navigation  ontario-navigation--open' : 'ontario-navigation'}
+							class={this.menuToggle ? 'ontario-navigation ontario-navigation--open' : 'ontario-navigation'}
 							id="ontario-navigation"
-							aria-hidden={`${!this.menuToggle}`}
 						>
 							<div class="ontario-navigation__container">
 								<ul>
@@ -674,7 +673,6 @@ export class OntarioHeader {
 										: 'ontario-application-navigation'
 								}
 								id="ontario-application-navigation"
-								aria-hidden={this.menuToggle === true ? 'false' : 'true'}
 							>
 								<div class="ontario-application-navigation__container">
 									{/* Ontario application header desktop menu dropdown links */}
