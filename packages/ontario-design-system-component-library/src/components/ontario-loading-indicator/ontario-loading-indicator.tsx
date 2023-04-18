@@ -109,7 +109,7 @@ export class OntarioLoadingIndicator {
 						? `ontario-loading-indicator__overlay`
 						: `ontario-loading-indicator__overlay--within-container`
 				}
-				aria-hidden={this.isLoadingState.toString()}
+				aria-hidden={this.isLoadingState === true ? 'false' : 'true'}
 				role="alert"
 				aria-live="assertive"
 			>
