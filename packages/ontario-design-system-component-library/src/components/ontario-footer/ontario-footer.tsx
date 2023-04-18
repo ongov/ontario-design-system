@@ -1,4 +1,4 @@
-import { Component, Prop, h, State, Watch, getAssetPath } from '@stencil/core';
+import { Component, Prop, h, State, Watch, Listen, getAssetPath } from '@stencil/core';
 
 import {
 	FooterLinks,
@@ -9,6 +9,9 @@ import {
 } from './ontario-footer-interface';
 import { ExpandedFooterWrapper, FooterColumn, FooterSocialLinksProps, SimpleFooter } from './components';
 import { isInvalidTwoColumnOptions, isInvalidThreeColumnOptions } from './utils';
+import { Language } from '../../utils/language-types';
+import { validateLanguage } from '../../utils/validation/validation-functions';
+import translations from '../../translations/global.i18n.json';
 
 @Component({
 	tag: 'ontario-footer',
@@ -17,6 +20,13 @@ import { isInvalidTwoColumnOptions, isInvalidThreeColumnOptions } from './utils'
 	assetsDirs: ['assets'],
 })
 export class OntarioFooter {
+	/**
+	 * The language of the component. This is used for translations, and is by default
+	 * set through event listeners checking for a language property from the header.
+	 * Default to English.
+	 */
+	@Prop({ mutable: true }) language: Language = 'en';
+
 	/**
 	 * Type of footer to be rendered
 	 * Default: 'default'
@@ -47,6 +57,8 @@ export class OntarioFooter {
 	 */
 	@Prop() threeColumnOptions?: ThreeColumnOptions | string;
 
+	@State() translations: any = translations;
+
 	@State() private footerLinksState: FooterLinks;
 
 	@State() private socialLinksState: FooterSocialLinksProps;
@@ -54,6 +66,21 @@ export class OntarioFooter {
 	@State() private twoColumnState: TwoColumnOptions;
 
 	@State() private threeColumnState: ThreeColumnOptions;
+
+	/**
+	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is
+	 * connected to the DOM. It is used for the initial language when the input component loads.
+	 */
+	@Listen('setAppLanguage', { target: 'window' })
+	handleSetAppLanguage(event: CustomEvent<Language>) {
+		this.language = validateLanguage(event);
+	}
+
+	@Listen('headerLanguageToggled', { target: 'window' })
+	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
+		const toggledLanguage = validateLanguage(event);
+		this.language = toggledLanguage;
+	}
 
 	@Watch('footerLinks')
 	private processFooterLinks() {
@@ -126,27 +153,28 @@ export class OntarioFooter {
 	}
 
 	private getFooterLinks(): SimpleFooterLinks {
-		const { accessibilityLink, privacyLink, contactLink, printerLink } = this.footerLinksState;
+		const { language, translations, footerLinksState } = this;
+		const { accessibilityLink, privacyLink, contactLink, printerLink } = footerLinksState;
 
 		const links: SimpleFooterLinks = {
 			accessibilityLink: {
 				href: accessibilityLink,
-				text: 'Accessibility',
+				text: translations.Accessibility[language],
 			},
 			privacyLink: {
 				href: privacyLink,
-				text: 'Privacy',
+				text: translations.Privacy[language],
 			},
 			printerLink: {
-				href: printerLink || 'https://www.ontario.ca/page/copyright-information',
-				text: "© King's Printer for Ontario,",
+				href: printerLink ?? translations.Printer.link[language],
+				text: translations.Printer.text[language],
 			},
 		};
 
 		if (contactLink) {
 			links['contactLink'] = {
 				href: contactLink,
-				text: 'Contact us',
+				text: translations.ContactUs[language],
 			};
 		}
 
@@ -158,6 +186,8 @@ export class OntarioFooter {
 		this.processSocialLinks();
 		this.processTwoColumnOptions();
 		this.processThreeColumnOptions();
+
+		this.language = validateLanguage(this.language);
 	}
 
 	render() {

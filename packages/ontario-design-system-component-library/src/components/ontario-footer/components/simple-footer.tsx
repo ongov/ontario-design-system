@@ -38,7 +38,7 @@ export const SimpleFooter: FunctionalComponent<SimpleFooterProps> = ({
 				</ul>
 				<div class="ontario-footer__copyright">
 					<a class="ontario-footer__link" href={printerLink?.href}>
-						{printerLink?.text}{' '}
+						&copy; {printerLink?.text}{' '}
 						<span class="ontario-nbsp">
 							2012{enDash}
 							{String(new Date().getFullYear()).slice(-2)}
