@@ -2,6 +2,8 @@ import { Component, Prop, Watch } from '@stencil/core';
 import {
 	CalloutAside,
 	HeadingLevelOptions,
+	HeadingContentType,
+	HeadingContentTypes,
 	HighlightColourOptions,
 } from '../../utils/callout-aside/callout-aside.interface';
 import {
@@ -9,6 +11,7 @@ import {
 	generateCalloutAside,
 	isValidHeadingLevel,
 } from '../../utils/callout-aside/callout-aside-helpers';
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 @Component({
@@ -23,19 +26,24 @@ export class OntarioCallout implements CalloutAside {
 	@Prop({ mutable: true }) headingType: HeadingLevelOptions;
 
 	/**
-	 * Text or HTML to be displayed as the heading of the callout.
+	 * The type of the heading content. If no prop is passed, it will default to string.
 	 */
-	@Prop() headingContent: string | HTMLElement;
+	@Prop({ mutable: true }) headingContentType: HeadingContentType;
+
+	/**
+	 * Text or HTML to be displayed as the heading of the callout. If the heading content needs to be displayed as HTML, the `headingContentType` needs to be set to html.
+	 */
+	@Prop() headingContent: string;
 
 	/**
 	 * Optional text to be displayed as the content for the callout component. If a string is passed, it will automatically be nested in a paragraph tag.
 	 *
-	 * HTML content can also be passed as either the child/children of the callout component if additional/different elements for the content are needed, or through the `content` prop.
+	 * HTML content can also be passed as the child/children of the callout component if additional/different elements for the content are needed.
 	 *
 	 * @example
 	 * <ontario-callout headingType='h3' headingContent='This is the callout heading'><p>This is the first sentence of the callout content.</p><p>This is the second sentence of the callout content.</p></ontario-callout>
 	 */
-	@Prop() content?: string | HTMLElement;
+	@Prop() content?: string;
 
 	/**
 	 * Optional prop to choose the border colour of the callout. If none is passed, the default colour will be teal.
@@ -58,6 +66,21 @@ export class OntarioCallout implements CalloutAside {
 			.addMonospaceText(' <ontario-callout> ')
 			.addRegularText('is not a valid type. Please ensure your heading type matches one of the headingType types.')
 			.printMessage();
+	}
+
+	/**
+	 * Watch for changes in the `headingContentType` variable for validation purpose.
+	 * If the user input doesn't match one of the array values then `headingContentType` will be set to its default (`string`).
+	 * If a match is found in one of the array values then `headingContentType` will be set to the matching array key value.
+	 */
+	@Watch('headingContentType')
+	validateHeadingContentType() {
+		const isValid = validateValueAgainstArray(this.headingContentType, HeadingContentTypes);
+		if (isValid) {
+			return this.headingContentType;
+		} else {
+			return this.warnDefaultType();
+		}
 	}
 
 	@Watch('headingContent')
@@ -101,13 +124,41 @@ export class OntarioCallout implements CalloutAside {
 		return 'teal';
 	}
 
+	/**
+	 * Print the invalid type warning message.
+	 * @returns default type ('string')
+	 */
+	private warnDefaultType() {
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addMonospaceText(' headingContentType ')
+			.addRegularText('on')
+			.addMonospaceText(' <ontario-callout> ')
+			.addRegularText('was set to an invalid type; only')
+			.addMonospaceText(' string or html ')
+			.addRegularText('are supported. The default type')
+			.addMonospaceText(' string ')
+			.addRegularText('is assumed.')
+			.printMessage();
+		return (this.headingContentType = 'string');
+	}
+
 	componentWillLoad() {
 		this.validateHighlightColour();
 		this.validateHeadingContent();
 		this.validateHeadingType();
+		this.validateHeadingContentType();
 	}
 
 	render() {
-		return generateCalloutAside('callout', this.headingType, this.headingContent, this.content, this.highlightColour);
+		return generateCalloutAside(
+			'callout',
+			this.headingType,
+			this.headingContentType,
+			this.headingContent,
+			this.content,
+			this.highlightColour,
+		);
 	}
 }

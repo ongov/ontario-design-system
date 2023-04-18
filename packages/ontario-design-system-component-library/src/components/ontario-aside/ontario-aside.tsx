@@ -2,6 +2,8 @@ import { Component, Prop, Watch } from '@stencil/core';
 import {
 	CalloutAside,
 	HeadingLevelOptions,
+	HeadingContentType,
+	HeadingContentTypes,
 	HighlightColourOptions,
 } from '../../utils/callout-aside/callout-aside.interface';
 import {
@@ -9,6 +11,7 @@ import {
 	generateCalloutAside,
 	isValidHeadingLevel,
 } from '../../utils/callout-aside/callout-aside-helpers';
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 @Component({
@@ -23,19 +26,24 @@ export class OntarioAside implements CalloutAside {
 	@Prop({ mutable: true }) headingType: HeadingLevelOptions;
 
 	/**
+	 * The type of the heading content. If no prop is passed, it will default to string.
+	 */
+	@Prop({ mutable: true }) headingContentType: HeadingContentType;
+
+	/**
 	 * Text or HTML to be displayed as the heading of the aside.
 	 */
-	@Prop() headingContent: string | HTMLElement;
+	@Prop() headingContent: string;
 
 	/**
 	 * Optional text to be displayed as the content for the aside component. If a string is passed, it will automatically be nested in a paragraph tag.
 	 *
-	 * HTML content can also be passed as the either child/children of the aside component if additional/different elements for the content are needed, or through the `content` prop.
+	 * HTML content can also be passed as the child/children of the aside component if additional/different elements for the content are needed.
 	 *
 	 * @example
 	 * <ontario-aside headingType='h3' headingContent='This is the aside heading'><p>This is the first sentence of the aside content.</p><p>This is the second sentence of the aside content.</p></ontario-aside>
 	 */
-	@Prop() content?: string | HTMLElement;
+	@Prop() content?: string;
 
 	/**
 	 * Optional prop to choose the border colour of the aside. If none is passed, the default colour will be teal.
@@ -55,9 +63,24 @@ export class OntarioAside implements CalloutAside {
 			.addDesignSystemTag()
 			.addMonospaceText(` headingType ${this.headingType} `)
 			.addRegularText('for')
-			.addMonospaceText(' <ontario-callout> ')
+			.addMonospaceText(' <ontario-aside> ')
 			.addRegularText('is not a valid type. Please ensure your heading type matches one of the headingType types.')
 			.printMessage();
+	}
+
+	/**
+	 * Watch for changes in the `headingContentType` variable for validation purpose.
+	 * If the user input doesn't match one of the array values then `headingContentType` will be set to its default (`string`).
+	 * If a match is found in one of the array values then `headingContentType` will be set to the matching array key value.
+	 */
+	@Watch('headingContentType')
+	validateHeadingContentType() {
+		const isValid = validateValueAgainstArray(this.headingContentType, HeadingContentTypes);
+		if (isValid) {
+			return this.headingContentType;
+		} else {
+			return this.warnDefaultType();
+		}
 	}
 
 	@Watch('headingContent')
@@ -101,13 +124,41 @@ export class OntarioAside implements CalloutAside {
 		return 'teal';
 	}
 
+	/**
+	 * Print the invalid type warning message.
+	 * @returns default type ('string')
+	 */
+	private warnDefaultType() {
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addMonospaceText(' headingContentType ')
+			.addRegularText('on')
+			.addMonospaceText(' <ontario-aside> ')
+			.addRegularText('was set to an invalid type; only')
+			.addMonospaceText(' string or html ')
+			.addRegularText('are supported. The default type')
+			.addMonospaceText(' string ')
+			.addRegularText('is assumed.')
+			.printMessage();
+		return (this.headingContentType = 'string');
+	}
+
 	componentWillLoad() {
 		this.validateHighlightColour();
 		this.validateHeadingContent();
 		this.validateHeadingType();
+		this.validateHeadingContentType();
 	}
 
 	render() {
-		return generateCalloutAside('aside', this.headingType, this.headingContent, this.content, this.highlightColour);
+		return generateCalloutAside(
+			'aside',
+			this.headingType,
+			this.headingContentType,
+			this.headingContent,
+			this.content,
+			this.highlightColour,
+		);
 	}
 }

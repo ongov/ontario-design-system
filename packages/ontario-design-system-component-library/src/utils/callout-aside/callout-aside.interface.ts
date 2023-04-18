@@ -10,6 +10,10 @@ export type HighlightColourOptions = typeof HighlightColours[number];
 
 export type CalloutAsideType = 'callout' | 'aside';
 
+export type HeadingContentType = 'string' | 'html';
+
+export const HeadingContentTypes = ['string', 'html'] as const;
+
 export interface CalloutAside extends Base {
 	/**
 	 * The heading level of the callout/aside heading.
@@ -17,9 +21,14 @@ export interface CalloutAside extends Base {
 	headingType: HeadingLevelOptions;
 
 	/**
+	 * The type of the heading content. If no prop is passed, it will default to string.
+	 */
+	headingContentType: HeadingContentType;
+
+	/**
 	 * Text to be displayed as the heading of the callout/aside.
 	 */
-	headingContent: string | HTMLElement;
+	headingContent: string;
 
 	/**
 	 * Optional text to be displayed as the content for the callout/aside component. If a string is passed, it will automatically be nested in a paragraph tag.
