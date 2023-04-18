@@ -17,7 +17,8 @@ export const config: Config = {
 		inlineSvg(),
 		dotEnvPlugin(),
 	],
-	globalStyle: './src/global.scss',
+	globalStyle:
+		'./node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme.scss',
 	globalScript: './src/global.ts',
 	buildEs5: 'prod',
 	outputTargets: [

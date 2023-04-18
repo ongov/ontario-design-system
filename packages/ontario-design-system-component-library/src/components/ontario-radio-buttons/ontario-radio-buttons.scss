@@ -1,15 +1,35 @@
 @use 'sass:math';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as
+	globalVariables;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
+	spacing;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
+	colours;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables'
+	as breakpoints;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as
+	typography;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as
+	zIndex;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as
+	fontSizes;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables'
+	as lineheight;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables'
+	as fontWeights;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders'
+	as placeholders;
 @use '../../global.scss';
 
 $ontario-radios-size: 32px;
 $ontario-radios-size-mobile: 36px;
-$ontario-input-offset: math.div((global.$touch-target-size - $ontario-radios-size), 2);
+$ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-radios-size), 2);
 
 .ontario-radios__item {
 	position: relative;
 	display: block;
-	margin: 0 0 global.$spacing-4;
-	padding: 0 global.$spacing-6 0;
+	margin: 0 0 spacing.$spacing-4;
+	padding: 0 spacing.$spacing-6 0;
 }
 
 .ontario-radios__input {
@@ -19,13 +39,13 @@ $ontario-input-offset: math.div((global.$touch-target-size - $ontario-radios-siz
 	opacity: 0;
 	top: $ontario-input-offset * -1;
 	left: $ontario-input-offset * -1;
-	width: global.$touch-target-size;
-	height: global.$touch-target-size;
-	z-index: global.$ontario-z-index-neutral;
+	width: globalVariables.$touch-target-size;
+	height: globalVariables.$touch-target-size;
+	z-index: zIndex.$ontario-z-index-neutral;
 
-	@media screen and (max-width: global.$small-breakpoint) {
-		width: global.$touch-target-size-mobile;
-		height: global.$touch-target-size-mobile;
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		width: globalVariables.$touch-target-size-mobile;
+		height: globalVariables.$touch-target-size-mobile;
 		top: $ontario-input-offset * -0.75;
 		left: $ontario-input-offset * -0.75;
 	}
@@ -33,31 +53,31 @@ $ontario-input-offset: math.div((global.$touch-target-size - $ontario-radios-siz
 
 .ontario-radios__label {
 	cursor: pointer;
-	color: global.$ontario-colour-black;
+	color: colours.$ontario-colour-black;
 	display: inline-block;
-	font-family: global.$ontario-font-raleway-modified;
-	font-size: global.$ontario-font-size-standard-body-text;
-	font-weight: global.$ontario-font-weights-bold;
-	line-height: global.$line-height-default;
+	font-family: typography.$ontario-font-raleway-modified;
+	font-size: fontSizes.$ontario-font-size-standard-body-text;
+	font-weight: fontWeights.$ontario-font-weights-bold;
+	line-height: globalVariables.$line-height-default;
 	// Specific spacing required in order to visually align label with input
 	margin: 0.2rem 0;
-	max-width: global.$narrow-width;
-	padding: 0 global.$spacing-3;
+	max-width: globalVariables.$narrow-width;
+	padding: 0 spacing.$spacing-3;
 	// remove 300ms pause on mobile
 	touch-action: manipulation;
 	white-space: normal;
 	width: auto;
 	white-space: normal;
 
-	@media screen and (max-width: global.$small-breakpoint) {
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		// Specific spacing required in order to visually align label with input
 		margin: 0.3rem 0;
-		padding: 0 global.$spacing-4;
+		padding: 0 spacing.$spacing-4;
 	}
 
 	&:before {
 		content: '';
-		border: global.$border-size-standard solid global.$ontario-colour-black;
+		border: globalVariables.$border-size-standard solid colours.$ontario-colour-black;
 		border-radius: 50%;
 		box-sizing: border-box;
 		position: absolute;
@@ -67,7 +87,7 @@ $ontario-input-offset: math.div((global.$touch-target-size - $ontario-radios-siz
 		height: $ontario-radios-size;
 		transition: border 0.1s ease-in-out;
 
-		@media screen and (max-width: global.$small-breakpoint) {
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
 			width: $ontario-radios-size-mobile;
 			height: $ontario-radios-size-mobile;
 		}
@@ -76,22 +96,22 @@ $ontario-input-offset: math.div((global.$touch-target-size - $ontario-radios-siz
 	&:after {
 		content: '';
 		border-radius: 50%;
-		border: 10px solid global.$ontario-colour-black;
+		border: 10px solid colours.$ontario-colour-black;
 		position: absolute;
 		top: 0;
 		left: 0;
 		transform: translate($ontario-input-offset * 3, $ontario-input-offset * 3);
 		opacity: 0;
 
-		@media screen and (max-width: global.$small-breakpoint) {
-			border: 12px solid global.$ontario-colour-black;
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
+			border: 12px solid colours.$ontario-colour-black;
 		}
 	}
 }
 
 .ontario-radios__input:focus + .ontario-radios__label:before {
-	-moz-box-shadow: global.$ontario-focus-box-shadow;
-	-webkit-box-shadow: global.$ontario-colour-focus;
+	-moz-box-shadow: placeholders.$ontario-focus-box-shadow;
+	-webkit-box-shadow: colours.$ontario-colour-focus;
 	@extend %ontario-focus;
 }
 
@@ -100,9 +120,9 @@ $ontario-input-offset: math.div((global.$touch-target-size - $ontario-radios-siz
 }
 
 .ontario-radios__hint-expander {
-	margin: global.$spacing-3 0 0 global.$spacing-2;
+	margin: spacing.$spacing-3 0 0 spacing.$spacing-2;
 
-	@media screen and (max-width: global.$small-breakpoint) {
-		margin-top: global.$spacing-4;
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		margin-top: spacing.$spacing-4;
 	}
 }

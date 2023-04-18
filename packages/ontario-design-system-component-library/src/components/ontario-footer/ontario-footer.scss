@@ -1,5 +1,5 @@
 @use 'sass:math';
-@use '../../global.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme.scss' as global;
 
 $ontario-icon-size--social-large: 36px;
 $ontario-icon-size--social-small: 32px;

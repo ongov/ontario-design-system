@@ -1,22 +1,32 @@
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as
+	globalVariables;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
+	spacing;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
+	colours;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as
+	typography;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders'
+	as focusPlaceholders;
 @use '../../utils/input-caption/input-caption.scss';
 @use '../../global.scss';
 
 .ontario-textarea {
-	border: global.$border-size-standard solid global.$ontario-colour-black;
-	border-radius: global.$global-radius;
+	border: globalVariables.$border-size-standard solid colours.$ontario-colour-black;
+	border-radius: globalVariables.$global-radius;
 	box-sizing: border-box;
-	color: global.$ontario-colour-black;
+	color: colours.$ontario-colour-black;
 	font-size: 1rem;
-	font-family: global.$ontario-font-open-sans;
-	line-height: global.$line-height-default;
+	font-family: typography.$ontario-font-open-sans;
+	line-height: globalVariables.$line-height-default;
 	display: block;
-	max-width: global.$standard-width;
+	max-width: globalVariables.$standard-width;
 	min-height: 144px;
-	margin: 0 0 global.$spacing-7;
-	padding: 0.625rem global.$spacing-4;
-	transition: global.$ontario-focus-transition;
+	margin: 0 0 spacing.$spacing-7;
+	padding: 0.625rem spacing.$spacing-4;
+	transition: focusPlaceholders.$ontario-focus-transition;
 	white-space: pre-wrap;
-	width: global.$full-width;
+	width: globalVariables.$full-width;
 
 	&:focus,
 	&:active {
@@ -25,5 +35,5 @@
 }
 
 .ontario-textarea.ontario-textarea-hint-expander--true {
-	margin-bottom: global.$spacing-4;
+	margin-bottom: spacing.$spacing-4;
 }

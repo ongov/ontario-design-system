@@ -1,3 +1,9 @@
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
+	spacing;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
+	colours;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables'
+	as fontWeights;
 @use '../../global.scss';
 
 $ontario-critical-alert-icon-size: 28px;
@@ -6,10 +12,10 @@ $ontario-critical-alert-svg-margin--custom: 0.85rem;
 $ontario-critical-alert-line-height: 1.8;
 
 .ontario-critical-alert {
-	background-color: global.$ontario-colour-warning;
-	font-weight: global.$ontario-font-weights-normal;
-	margin: global.$spacing-0;
-	padding: global.$spacing-4 global.$spacing-0;
+	background-color: colours.$ontario-colour-warning;
+	font-weight: fontWeights.$ontario-font-weights-normal;
+	margin: spacing.$spacing-0;
+	padding: spacing.$spacing-4 spacing.$spacing-0;
 	position: relative;
 	z-index: $ontario-critical-alert-z-index;
 }
@@ -25,19 +31,19 @@ $ontario-critical-alert-line-height: 1.8;
 	svg {
 		width: $ontario-critical-alert-icon-size;
 		height: $ontario-critical-alert-icon-size;
-		margin: global.$spacing-0 $ontario-critical-alert-svg-margin--custom global.$spacing-0 global.$spacing-0;
+		margin: spacing.$spacing-0 $ontario-critical-alert-svg-margin--custom spacing.$spacing-0 spacing.$spacing-0;
 	}
 }
 
 .ontario-critical-alert p {
-	margin: global.$spacing-0;
-	padding: global.$spacing-0;
+	margin: spacing.$spacing-0;
+	padding: spacing.$spacing-0;
 	line-height: $ontario-critical-alert-line-height;
 }
 
 .ontario-critical-alert a {
-	color: global.$ontario-colour-black;
-	font-weight: global.$ontario-font-weights-bold;
+	color: colours.$ontario-colour-black;
+	font-weight: fontWeights.$ontario-font-weights-bold;
 
 	&:hover,
 	&:focus {
@@ -45,14 +51,14 @@ $ontario-critical-alert-line-height: 1.8;
 	}
 
 	&:visited {
-		color: global.$ontario-colour-black;
+		color: colours.$ontario-colour-black;
 	}
 }
 
 // Slotted content styles
 .ontario-critical-alert ::slotted(a) {
-	color: global.$ontario-colour-black !important;
-	font-weight: global.$ontario-font-weights-bold;
+	color: colours.$ontario-colour-black !important;
+	font-weight: fontWeights.$ontario-font-weights-bold;
 }
 
 .ontario-critical-alert ::slotted(a:hover),
@@ -61,5 +67,5 @@ $ontario-critical-alert-line-height: 1.8;
 }
 
 .ontario-critical-alert ::slotted(a:visited) {
-	color: global.$ontario-colour-black;
+	color: colours.$ontario-colour-black;
 }
