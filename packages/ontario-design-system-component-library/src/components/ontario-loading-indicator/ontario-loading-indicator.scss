@@ -6,6 +6,8 @@
 	typography;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables'
 	as fontWeights;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables'
+	as lineHeights;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions'
 	as globalFunctions;
 
@@ -13,6 +15,7 @@ $offset: 1, 200;
 $duration: 1.5s;
 $spinner-size: 3rem;
 $dasharray: 89, 200;
+$loading-indicator-z-index: 9999;
 
 .ontario-loading-indicator__overlay,
 .ontario-loading-indicator__overlay--within-container {
@@ -23,7 +26,7 @@ $dasharray: 89, 200;
 	top: 0;
 	bottom: 0;
 	background-color: rgba(colours.$ontario-colour-white, 0.7);
-	z-index: 9999;
+	z-index: $loading-indicator-z-index;
 
 	&[aria-hidden='false'] {
 		display: block;
@@ -53,7 +56,7 @@ $dasharray: 89, 200;
 		color: colours.$ontario-greyscale-70;
 		font-family: typography.$ontario-font-raleway-modified;
 		font-size: globalFunctions.rem-calc(16);
-		line-height: 1.5;
+		line-height: lineHeights.$ontario-line-height-7;
 		font-weight: fontWeights.$ontario-font-weights-bold;
 		word-spacing: 0.025rem;
 		margin: spacing.$spacing-3 spacing.$spacing-0 spacing.$spacing-0;
