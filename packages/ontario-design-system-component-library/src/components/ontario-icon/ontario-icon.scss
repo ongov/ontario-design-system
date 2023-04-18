@@ -1,4 +1,5 @@
-@use '../../global.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
+	colours;
 
 .ontario-icon svg {
 	display: inline-block;
@@ -12,26 +13,26 @@
 }
 
 .ontario-icon--blue svg {
-	stroke: global.$ontario-colour-icon-blue;
-	fill: global.$ontario-colour-icon-blue;
+	stroke: colours.$ontario-colour-icon-blue;
+	fill: colours.$ontario-colour-icon-blue;
 }
 
 .ontario-icon--grey svg {
-	stroke: global.$ontario-colour-icon-grey;
-	fill: global.$ontario-colour-icon-grey;
+	stroke: colours.$ontario-colour-icon-grey;
+	fill: colours.$ontario-colour-icon-grey;
 }
 
 .ontario-icon--black svg {
-	stroke: global.$ontario-colour-icon-black;
-	fill: global.$ontario-colour-icon-black;
+	stroke: colours.$ontario-colour-icon-black;
+	fill: colours.$ontario-colour-icon-black;
 }
 
 .ontario-icon--white svg {
-	stroke: global.$ontario-colour-icon-white;
-	fill: global.$ontario-colour-icon-white;
+	stroke: colours.$ontario-colour-icon-white;
+	fill: colours.$ontario-colour-icon-white;
 }
 
 .ontario-icon--white svg {
-	stroke: global.$ontario-colour-white;
-	fill: global.$ontario-colour-white;
+	stroke: colours.$ontario-colour-white;
+	fill: colours.$ontario-colour-white;
 }

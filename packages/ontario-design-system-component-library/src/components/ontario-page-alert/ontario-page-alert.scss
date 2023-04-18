@@ -1,13 +1,23 @@
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as
+	globalVariables;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
+	spacing;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
+	colours;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables'
+	as breakpoints;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions'
+	as globalFunctions;
 @use '../../global.scss';
 
 $ontario-alert-link-focus: #6b0000;
 $ontario-alert-link-active: #280000;
 
 .ontario-alert {
-	border-width: 0 0 0 global.rem-calc(4);
+	border-width: 0 0 0 globalFunctions.rem-calc(4);
 	border-style: solid;
-	padding: global.$spacing-5;
-	margin: global.$spacing-6 0 global.$spacing-7 0;
+	padding: spacing.$spacing-5;
+	margin: spacing.$spacing-6 0 spacing.$spacing-7 0;
 }
 
 .ontario-alert__header {
@@ -23,33 +33,33 @@ $ontario-alert-link-active: #280000;
 }
 
 .ontario-alert__header-title {
-	margin-bottom: global.$spacing-3;
-	padding-top: global.rem-calc(2);
+	margin-bottom: spacing.$spacing-3;
+	padding-top: globalFunctions.rem-calc(2);
 }
 
 .ontario-alert__body {
 	margin-left: 3.25rem;
-	max-width: global.$standard-width;
+	max-width: globalVariables.$standard-width;
 
-	@media screen and (max-width: global.$small-breakpoint) {
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		margin-left: 0;
 	}
 }
 
 .ontario-alert__body p {
-	margin-top: global.$spacing-0;
+	margin-top: spacing.$spacing-0;
 
 	&:last-of-type {
-		margin-bottom: global.$spacing-2;
+		margin-bottom: spacing.$spacing-2;
 	}
 }
 
 .ontario-alert__body p:last-of-type + ul {
-	margin-top: global.$spacing-4;
+	margin-top: spacing.$spacing-4;
 }
 
 .ontario-alert__body ul:last-of-type {
-	margin-bottom: global.$spacing-2;
+	margin-bottom: spacing.$spacing-2;
 }
 
 .ontario-alert--error ul {
@@ -57,7 +67,7 @@ $ontario-alert-link-active: #280000;
 }
 
 .ontario-alert--error ul:last-of-type {
-	margin-bottom: global.$spacing-2;
+	margin-bottom: spacing.$spacing-2;
 }
 
 // ---------------------
@@ -65,30 +75,30 @@ $ontario-alert-link-active: #280000;
 // ---------------------
 // informational alert
 .ontario-alert--informational {
-	border-color: global.$ontario-colour-information;
-	background-color: global.$ontario-colour-information-light;
+	border-color: colours.$ontario-colour-information;
+	background-color: colours.$ontario-colour-information-light;
 }
 
 // warning alert
 .ontario-alert--warning {
-	border-color: global.$ontario-colour-warning;
-	background-color: global.$ontario-colour-warning-light;
+	border-color: colours.$ontario-colour-warning;
+	background-color: colours.$ontario-colour-warning-light;
 }
 
 // success alert
 .ontario-alert--success {
-	border-color: global.$ontario-colour-success;
-	background-color: global.$ontario-colour-success-light;
+	border-color: colours.$ontario-colour-success;
+	background-color: colours.$ontario-colour-success-light;
 }
 
 // error alert
 .ontario-alert--error {
-	border-color: global.$ontario-colour-alert;
-	background-color: global.$ontario-colour-alert-light;
+	border-color: colours.$ontario-colour-alert;
+	background-color: colours.$ontario-colour-alert-light;
 }
 
 .ontario-alert--error a {
-	color: global.$ontario-colour-alert;
+	color: colours.$ontario-colour-alert;
 
 	&:hover,
 	&:focus {
