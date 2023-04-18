@@ -1,3 +1,20 @@
+# 2.3.0-alpha.4 (2023-04-18)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library:** added missing aria-label for search button 59eff8d
+- **@ontario-digital-service/ontario-design-system-component-library:** addresses MR feedback 3c7c66c
+- **@ontario-digital-service/ontario-design-system-component-library:** duplicate SASS variable error with back-to-top component b8b7a76
+- **@ontario-digital-service/ontario-design-system-component-library:** remove stray toUpperCase from language toggle 875de73
+- **@ontario-digital-service/ontario-design-system-component-library:** updates language type to be uppercase EN/FR 84b2bad
+- **component-library:** remove my-component sample component as it is no longer relevant eb4aa16
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-component-library:** adds validation functions for language prop, runs refresh to update README files ff2f82d
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes according to MR review 4535ac5
+- **@ontario-digital-service/ontario-design-system-global-styles:** add fonts only css 0ce4b73
+
 # 2.3.0-alpha.3 (2023-01-31)
 
 ### Bug Fixes

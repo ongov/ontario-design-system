@@ -1,11 +1,11 @@
 {
 	"name": "react-app",
-	"version": "2.3.0-alpha.3",
+	"version": "2.3.0-alpha.4",
 	"private": true,
 	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-component-library-react": "^2.3.0-alpha.3",
-		"@ontario-digital-service/ontario-design-system-global-styles": "^2.3.0-alpha.3",
-		"@ontario-digital-service/ontario-design-system-design-tokens": "^2.3.0-alpha.2",
+		"@ontario-digital-service/ontario-design-system-component-library-react": "^2.3.0-alpha.4",
+		"@ontario-digital-service/ontario-design-system-global-styles": "^2.3.0-alpha.4",
+		"@ontario-digital-service/ontario-design-system-design-tokens": "^2.3.0-alpha.4",
 		"@testing-library/jest-dom": "^5.16.1",
 		"@testing-library/react": "^14.0.0",
 		"@testing-library/user-event": "^13.5.0",

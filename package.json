@@ -29,5 +29,5 @@
 		"semantic-release": "semantic-release",
 		"prepare": "husky install"
 	},
-	"version": "2.3.0-alpha.3"
+	"version": "2.3.0-alpha.4"
 }
