@@ -2,24 +2,37 @@
 	"name": "@ontario-digital-service/ontario-design-system-global-styles",
 	"version": "2.3.0-alpha.4",
 	"private": false,
-	"description": "This is a global styles package for the Ontario Design System",
-	"style": "dist/styles/css/compiled/ontario-theme.min.css",
-	"sass": "dist/styles/scss/theme.scss",
+	"description": "Includes the Ontario Design System global styles that are used for more generic elements and layouts, as well as fonts and favicon files.",
+	"license": "Apache-2.0",
 	"type": "module",
-	"publishConfig": {
-		"access": "public"
-	},
-	"scripts": {
-		"scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js --watch scss -o css ",
-		"build": "gulp deploy",
-		"clean": "rm -rf dist",
-		"clean:full": "rm -rf node_modules && npm run clean"
-	},
+	"style": "dist/styles/css/compiled/ontario-theme.min.css",
 	"files": [
 		"dist/",
 		"package.json",
 		"README.md"
 	],
+	"scripts": {
+		"build": "gulp deploy",
+		"clean": "rm -rf dist",
+		"clean:full": "rm -rf node_modules && npm run clean",
+		"scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js --watch scss -o css "
+	},
+	"dependencies": {
+		"@ontario-digital-service/ontario-design-system-design-tokens": "2.3.0-alpha.4"
+	},
+	"devDependencies": {
+		"del": "^7.0.0",
+		"gulp": "^4.0.2",
+		"gulp-autoprefixer": "^8.0.0",
+		"gulp-clean-css": "^4.3.0",
+		"gulp-concat": "^2.6.1",
+		"gulp-if": "^3.0.0",
+		"gulp-sass": "^5.1.0",
+		"sass": "^1.56.2"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"authors": [
 		{
 			"name": "Scott Morris",
@@ -38,18 +51,5 @@
 			"email": "Meaghan.Carrieres@ontario.ca"
 		}
 	],
-	"license": "ISC",
-	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-design-tokens": "2.3.0-alpha.4"
-	},
-	"devDependencies": {
-		"del": "^7.0.0",
-		"gulp": "^4.0.2",
-		"gulp-autoprefixer": "^8.0.0",
-		"gulp-clean-css": "^4.3.0",
-		"gulp-concat": "^2.6.1",
-		"gulp-if": "^3.0.0",
-		"gulp-sass": "^5.1.0",
-		"sass": "^1.56.2"
-	}
+	"sass": "dist/styles/scss/theme.scss"
 }

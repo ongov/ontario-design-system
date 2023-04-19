@@ -2,24 +2,27 @@
 	"name": "@ontario-digital-service/ontario-design-system-design-tokens",
 	"version": "2.3.0-alpha.4",
 	"private": false,
-	"description": "Design Tokens to be used in Ontario Design System",
+	"description": "Design Tokens defining the base values within the Ontario Design System",
+	"license": "Apache-2.0",
 	"main": "index.js",
 	"style": "dist/css/_variables.css",
-	"sass": "dist/scss/_variables.scss",
-	"publishConfig": {
-		"access": "public"
-	},
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"build": "node build.js",
-		"clean": "rm -rf dist",
-		"clean:full": "rm -rf node_modules && npm run clean"
-	},
 	"files": [
 		"dist/{css,scss}/",
 		"package.json",
 		"README.md"
 	],
+	"scripts": {
+		"build": "node build.js",
+		"clean": "rm -rf dist",
+		"clean:full": "rm -rf node_modules && npm run clean",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"devDependencies": {
+		"style-dictionary": "^3.7.1"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"authors": [
 		{
 			"name": "Scott Morris",
@@ -42,8 +45,5 @@
 			"email": "Nakib.Momin@ontario.ca"
 		}
 	],
-	"license": "ISC",
-	"devDependencies": {
-		"style-dictionary": "^3.7.1"
-	}
+	"sass": "dist/scss/_variables.scss"
 }

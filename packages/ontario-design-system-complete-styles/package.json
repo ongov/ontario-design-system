@@ -2,48 +2,48 @@
 	"name": "@ontario-digital-service/ontario-design-system-complete-styles",
 	"version": "2.3.0-alpha.4",
 	"private": false,
-	"description": "This is a complete styles package for the Ontario Design System",
-	"style": "dist/styles/css/compiled/ontario-theme.min.css",
-	"sass": "dist/styles/scss/theme.scss",
+	"description": "Complete styles package for the Ontario Design System containing all SASS and CSS for use independently of the Component Library.",
+	"license": "Apache-2.0",
 	"type": "module",
-	"publishConfig": {
-		"access": "public"
-	},
-	"scripts": {
-		"scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js --watch scss -o css",
-		"build": "gulp deploy",
-		"clean": "rm -rf dist",
-		"clean:full": "rm -rf node_modules && npm run clean",
-		"format": "prettier --write ."
-	},
+	"style": "dist/styles/css/compiled/ontario-theme.min.css",
 	"files": [
 		"dist/",
 		"package.json",
 		"README.md"
 	],
-	"authors": [
-		{
-			"name": "Nakib Momin",
-			"email": "nakib.momin@ontario.ca"
-		}
-	],
-	"license": "Apache-2.0",
+	"scripts": {
+		"build": "gulp deploy",
+		"clean": "rm -rf dist",
+		"clean:full": "rm -rf node_modules && npm run clean",
+		"format": "prettier --write .",
+		"scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js --watch scss -o css"
+	},
 	"dependencies": {
+		"@ontario-digital-service/ontario-design-system-component-library": "2.3.0-alpha.4",
 		"@ontario-digital-service/ontario-design-system-design-tokens": "2.3.0-alpha.4",
-		"@ontario-digital-service/ontario-design-system-global-styles": "2.3.0-alpha.4",
-		"@ontario-digital-service/ontario-design-system-component-library": "2.3.0-alpha.4"
+		"@ontario-digital-service/ontario-design-system-global-styles": "2.3.0-alpha.4"
 	},
 	"devDependencies": {
 		"del": "^7.0.0",
+		"glob": "^8.0.3",
+		"glob-promise": "^6.0.0",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^8.0.0",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-if": "^3.0.0",
 		"gulp-sass": "^5.1.0",
-		"sass": "^1.56.2",
-		"glob": "^8.0.3",
-		"glob-promise": "^6.0.0",
-		"prettier": "^2.5.1"
-	}
+		"prettier": "^2.5.1",
+		"sass": "^1.56.2"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"authors": [
+		{
+			"name": "Nakib Momin",
+			"email": "nakib.momin@ontario.ca"
+		}
+	],
+	"sass": "dist/styles/scss/theme.scss"
 }

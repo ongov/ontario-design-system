@@ -2,10 +2,36 @@
 	"name": "react-app",
 	"version": "2.3.0-alpha.4",
 	"private": true,
+	"homepage": "./",
+	"scripts": {
+		"prebuild": "npm run copy:assets",
+		"build": "react-scripts build",
+		"clean": "rm -rf build",
+		"clean:full": "rm -rf node_modules && npm run clean",
+		"copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts",
+		"copy:favicons": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/favicons/**\" public/assets/favicons",
+		"copy:fonts": "copyfiles -E -u 6 \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/fonts/**/*\" public/assets/fonts",
+		"copy:images": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/images/**\" public/assets",
+		"eject": "react-scripts eject",
+		"start": "npm run build && react-scripts start",
+		"test": "react-scripts test"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	],
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
 	"dependencies": {
 		"@ontario-digital-service/ontario-design-system-component-library-react": "^2.3.0-alpha.4",
-		"@ontario-digital-service/ontario-design-system-global-styles": "^2.3.0-alpha.4",
 		"@ontario-digital-service/ontario-design-system-design-tokens": "^2.3.0-alpha.4",
+		"@ontario-digital-service/ontario-design-system-global-styles": "^2.3.0-alpha.4",
 		"@testing-library/jest-dom": "^5.16.1",
 		"@testing-library/react": "^14.0.0",
 		"@testing-library/user-event": "^13.5.0",
@@ -24,37 +50,9 @@
 		"typescript": "^4.5.4",
 		"web-vitals": "^2.1.2"
 	},
-	"scripts": {
-		"start": "npm run build && react-scripts start",
-		"prebuild": "npm run copy:assets",
-		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject",
-		"clean": "rm -rf build",
-		"clean:full": "rm -rf node_modules && npm run clean",
-		"copy:images": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/images/**\" public/assets",
-		"copy:favicons": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/favicons/**\" public/assets/favicons",
-		"copy:fonts": "copyfiles -E -u 6 \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/fonts/**/*\" public/assets/fonts",
-		"copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts"
+	"devDependencies": {
+		"copyfiles": "^2.4.1"
 	},
-	"homepage": "./",
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		]
-	},
-	"browserslist": [
-		">0.2%",
-		"not dead",
-		"not ie <= 11",
-		"not op_mini all"
-	],
-	"development": [
-		"last 1 chrome version",
-		"last 1 firefox version",
-		"last 1 safari version"
-	],
 	"authors": [
 		{
 			"name": "Scott Morris",
@@ -73,7 +71,9 @@
 			"email": "Meaghan.Carrieres@ontario.ca"
 		}
 	],
-	"devDependencies": {
-		"copyfiles": "^2.4.1"
-	}
+	"development": [
+		"last 1 chrome version",
+		"last 1 firefox version",
+		"last 1 safari version"
+	]
 }
