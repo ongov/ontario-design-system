@@ -42,9 +42,10 @@ export class OntarioLoadingIndicator {
 	@State() translations: any = translations;
 
 	/**
-	 * Mutable variable, for internal use only.
+	 * Mutable variables, for internal use only.
 	 */
 	@State() private isLoadingState: boolean;
+	@State() private typeState: 'small' | 'large';
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -67,11 +68,13 @@ export class OntarioLoadingIndicator {
 	 */
 	@Watch('type')
 	validateType() {
+		console.log('yo mama');
 		const isValid = validateValueAgainstArray(this.type, ['large', 'small']);
 		if (isValid) {
-			return this.type;
+			return (this.typeState = this.type);
 		} else {
-			return this.warnDefaultType();
+			this.warnDefaultType();
+			return (this.typeState = 'large');
 		}
 	}
 
@@ -92,7 +95,6 @@ export class OntarioLoadingIndicator {
 			.addMonospaceText(' large ')
 			.addRegularText('is assumed.')
 			.printMessage();
-		return (this.type = 'large');
 	}
 
 	componentWillLoad() {
@@ -102,7 +104,7 @@ export class OntarioLoadingIndicator {
 	}
 
 	render() {
-		return this.type === 'large' ? (
+		return this.typeState === 'large' ? (
 			<div
 				class={
 					this.fullScreenOverlay
@@ -117,7 +119,7 @@ export class OntarioLoadingIndicator {
 					<svg class="ontario-loading-indicator__spinner" viewBox="25 25 50 50" xmlns="http://www.w3.org/2000/svg">
 						<circle cx="50" cy="50" r="20" fill="none" stroke-width="4" />
 					</svg>
-					{this.message ? <p>{this.message}</p> : <p>{this.translations.loading[`${this.language}`]}</p>}
+					<p>{this.message ?? this.translations.loading[`${this.language}`]}</p>
 				</div>
 			</div>
 		) : (
