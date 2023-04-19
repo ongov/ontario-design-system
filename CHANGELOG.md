@@ -1,3 +1,9 @@
+# 2.3.0-alpha.5 (2023-04-19)
+
+### Bug Fixes
+
+- **package.json:** clean up and standardise package.json files 0ca6341
+
 # 2.3.0-alpha.4 (2023-04-18)
 
 ### Bug Fixes
