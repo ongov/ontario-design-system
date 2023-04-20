@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-component-library-react';
 
@@ -7,11 +7,51 @@ import CodeHighlighter from '../../components/code-highlighter';
 export default function TextAreaExample() {
 	const codeExample = `import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n
 <OntarioTextarea
-	caption="Label"
-	elementId="textarea"
+	caption='{
+		"captionText": "Label",
+		"captionType": "default"
+	}'
+	element-id="textarea"
 	name="textarea"
 	required
+	hint-text="Example hint text for the textarea"
+	described-by="textarea-hint-text"
+	hint-expander='{
+		"content": "This is the example content for the textarea hint expander",
+		"hint": "Example hint expander for the textarea",
+		"elementId": "textarea-hint-expander"
+	}'
+	onBlur={textareaOnBlur}
+	onChange={textareaOnChange}
 />`;
+
+	const componentRef = useRef<any>(null);
+
+	useEffect(() => {
+		const component = componentRef.current;
+		if (component) {
+			component.addEventListener('changeEvent', textareaOnChange);
+		}
+
+		return () => {
+			if (component) {
+				component.removeEventListener('changeEvent', textareaOnChange);
+			}
+		};
+	}, [componentRef]);
+
+	const handleEvent = (e: any) => {
+		// this should be updated to output the selected value
+		console.log(e);
+	};
+
+	const textareaOnBlur = () => {
+		console.log('Textarea is losing focus');
+	};
+
+	const textareaOnChange = (e: any) => {
+		console.log(e.target.value);
+	};
 
 	return (
 		<>
@@ -25,7 +65,24 @@ export default function TextAreaExample() {
 						<li>requests for more detail</li>
 					</ul>
 					<div className="ontario-margin-top-24-!">
-						<OntarioTextarea caption="Label" elementId="textarea" name="textarea" required />
+						<OntarioTextarea
+							ref={componentRef}
+							caption='{
+								"captionText": "Label",
+								"captionType": "default"
+							}'
+							element-id="textarea"
+							name="textarea"
+							required
+							hint-text="Example hint text for the textarea"
+							described-by="textarea-hint-text"
+							hint-expander='{
+								"content": "This is the example content for the textarea hint expander",
+								"hint": "Example hint expander for the textarea",
+								"elementId": "textarea-hint-expander"
+							}'
+							onBlur={textareaOnBlur}
+						/>
 
 						<p>With the following markup:</p>
 

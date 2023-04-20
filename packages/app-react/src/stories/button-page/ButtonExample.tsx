@@ -5,9 +5,14 @@ import { OntarioButton } from '@ontario-digital-service/ontario-design-system-co
 import CodeHighlighter from '../../components/code-highlighter';
 
 export default function ButtonExample() {
-	const primaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="primary">Click Me!</OntarioButton>`;
-	const secondaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="secondary">Click Me!</OntarioButton>`;
-	const tertiaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="tertiary">Click Me!</OntarioButton>`;
+	const primaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="primary" label="Primary button" aria-label-text="This is a clickable primary button"></OntarioButton>`;
+	const secondaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="secondary" element-id="secondary-button">Secondary button</OntarioButton>`;
+	const tertiaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="tertiary" label="Tertiary button" onClick={onButtonClick}></OntarioButton>`;
+
+	const onButtonClick = () => {
+		alert('Tertiary button clicked!');
+	};
+
 	return (
 		<div className="ontario-row">
 			<div className="ontario-columns ontario-large-12">
@@ -20,7 +25,11 @@ export default function ButtonExample() {
 
 				<div className="ontario-margin-top-24-!">
 					<h3 className="ontario-h4">Primary</h3>
-					<OntarioButton type="primary">Click Me!</OntarioButton>
+					<OntarioButton
+						type="primary"
+						label="Primary button"
+						aria-label-text="This is a clickable primary button"
+					></OntarioButton>
 
 					<p>With the following markup:</p>
 
@@ -35,7 +44,9 @@ export default function ButtonExample() {
 
 				<div className="ontario-margin-top-24-!">
 					<h3 className="ontario-h4">Secondary</h3>
-					<OntarioButton type="secondary">Click Me!</OntarioButton>
+					<OntarioButton type="secondary" element-id="secondary-button">
+						Secondary button
+					</OntarioButton>
 
 					<p>With the following markup:</p>
 
@@ -49,7 +60,7 @@ export default function ButtonExample() {
 
 				<div className="ontario-margin-top-24-!">
 					<h3 className="ontario-h4">Tertiary</h3>
-					<OntarioButton type="tertiary">Click Me!</OntarioButton>
+					<OntarioButton type="tertiary" label="Tertiary button" onClick={onButtonClick}></OntarioButton>
 
 					<p>With the following markup:</p>
 
