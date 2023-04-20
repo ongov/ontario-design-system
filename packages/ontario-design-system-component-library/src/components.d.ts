@@ -1387,6 +1387,28 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface OntarioLoadingIndicator {
+        /**
+          * A boolean value to determine whether the loading indicator overlay covers the full page or not. By default, this is set to true. If set to false, the loading indicator overlay will be positioned absoltely relative to its container. Note that this will only work if the containing element has a style rule specifying it to be positioned relatively.
+         */
+        "fullScreenOverlay"?: boolean;
+        /**
+          * A boolean value to determine whether or not the loading indicator is loading (i.e: is visible) or not.
+         */
+        "isLoading": boolean;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+         */
+        "language"?: Language;
+        /**
+          * The message that tells the user what is happening or why the user is waiting. If no message prop is passed, it will default to "Loading". Translations for this default message are included.
+         */
+        "message"?: string;
+        /**
+          * The type of loading indicator to render.
+         */
+        "type": 'small' | 'large';
+    }
     interface OntarioPageAlert {
         /**
           * Body for page alert. It can be string or HTML content.
@@ -2252,6 +2274,12 @@ declare global {
         prototype: HTMLOntarioInputElement;
         new (): HTMLOntarioInputElement;
     };
+    interface HTMLOntarioLoadingIndicatorElement extends Components.OntarioLoadingIndicator, HTMLStencilElement {
+    }
+    var HTMLOntarioLoadingIndicatorElement: {
+        prototype: HTMLOntarioLoadingIndicatorElement;
+        new (): HTMLOntarioLoadingIndicatorElement;
+    };
     interface HTMLOntarioPageAlertElement extends Components.OntarioPageAlert, HTMLStencilElement {
     }
     var HTMLOntarioPageAlertElement: {
@@ -2402,6 +2430,7 @@ declare global {
         "ontario-icon-wifi": HTMLOntarioIconWifiElement;
         "ontario-icon-youtube": HTMLOntarioIconYoutubeElement;
         "ontario-input": HTMLOntarioInputElement;
+        "ontario-loading-indicator": HTMLOntarioLoadingIndicatorElement;
         "ontario-page-alert": HTMLOntarioPageAlertElement;
         "ontario-radio-buttons": HTMLOntarioRadioButtonsElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
@@ -3796,6 +3825,28 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface OntarioLoadingIndicator {
+        /**
+          * A boolean value to determine whether the loading indicator overlay covers the full page or not. By default, this is set to true. If set to false, the loading indicator overlay will be positioned absoltely relative to its container. Note that this will only work if the containing element has a style rule specifying it to be positioned relatively.
+         */
+        "fullScreenOverlay"?: boolean;
+        /**
+          * A boolean value to determine whether or not the loading indicator is loading (i.e: is visible) or not.
+         */
+        "isLoading"?: boolean;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+         */
+        "language"?: Language;
+        /**
+          * The message that tells the user what is happening or why the user is waiting. If no message prop is passed, it will default to "Loading". Translations for this default message are included.
+         */
+        "message"?: string;
+        /**
+          * The type of loading indicator to render.
+         */
+        "type"?: 'small' | 'large';
+    }
     interface OntarioPageAlert {
         /**
           * Body for page alert. It can be string or HTML content.
@@ -4029,6 +4080,7 @@ declare namespace LocalJSX {
         "ontario-icon-wifi": OntarioIconWifi;
         "ontario-icon-youtube": OntarioIconYoutube;
         "ontario-input": OntarioInput;
+        "ontario-loading-indicator": OntarioLoadingIndicator;
         "ontario-page-alert": OntarioPageAlert;
         "ontario-radio-buttons": OntarioRadioButtons;
         "ontario-textarea": OntarioTextarea;
@@ -4164,6 +4216,7 @@ declare module "@stencil/core" {
             "ontario-icon-wifi": LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
             "ontario-icon-youtube": LocalJSX.OntarioIconYoutube & JSXBase.HTMLAttributes<HTMLOntarioIconYoutubeElement>;
             "ontario-input": LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
+            "ontario-loading-indicator": LocalJSX.OntarioLoadingIndicator & JSXBase.HTMLAttributes<HTMLOntarioLoadingIndicatorElement>;
             "ontario-page-alert": LocalJSX.OntarioPageAlert & JSXBase.HTMLAttributes<HTMLOntarioPageAlertElement>;
             "ontario-radio-buttons": LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
