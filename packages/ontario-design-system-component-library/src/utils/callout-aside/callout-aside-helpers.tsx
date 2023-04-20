@@ -79,10 +79,15 @@ export const generateCalloutAside = (
 ) => {
 	const contentIsString = typeof content === 'string';
 
-	return (
+	return type === 'callout' ? (
 		<div class={generateClasses(type, highlightColour)}>
 			{generateHeading(type, headingType, headingContentType, headingContent)}
 			{contentIsString ? <p>{content}</p> : <slot />}
 		</div>
+	) : (
+		<aside class={generateClasses(type, highlightColour)}>
+			{generateHeading(type, headingType, headingContentType, headingContent)}
+			{contentIsString ? <p>{content}</p> : <slot />}
+		</aside>
 	);
 };
