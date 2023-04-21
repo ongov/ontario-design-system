@@ -4,12 +4,11 @@
 	spacing;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
 	colours;
-@use '../../global.scss';
 
 .ontario-hint {
 	color: colours.$ontario-greyscale-70;
 	display: inline-block;
-	margin: 0 0 spacing.$spacing-4 0;
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-4 spacing.$spacing-0;
 	width: globalVariables.$full-width;
 	max-width: globalVariables.$standard-width;
 }
