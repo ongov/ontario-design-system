@@ -1,4 +1,4 @@
-import { E2EElement, newE2EPage } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
 import { mockBTTContent } from './mock-page-content';
 
 describe('ontario-back-to-top', () => {
@@ -34,12 +34,10 @@ describe('ontario-back-to-top', () => {
 		expect(styles?.visibility).toBe('visible');
 	});
 
-	// These tests won't work!!
-	xit('should trigger the window to scroll back to the top of the page when clicked', async () => {
+	it('should trigger the window to scroll back to the top of the page when clicked', async () => {
 		const page = await newE2EPage();
 		await page.setContent(mockBTTContent);
-		const component = await page.find('ontario-back-to-top');
-		const element = await page.find('ontario-back-to-top >>> button');
+		const delay = (miliseconds: number) => new Promise((resolve) => setTimeout(resolve, miliseconds));
 
 		// scroll down the page
 		await page.evaluate(async () => {
@@ -48,40 +46,30 @@ describe('ontario-back-to-top', () => {
 			await delay(100);
 		});
 
-		// Simulate a click on the element
-		await component.click();
-		// await element.click();
-
+		// wait for the scroll event to trigger and update the component's state
 		await page.waitForChanges();
+		const element = await page.find('ontario-back-to-top >>> button');
 
-		console.log(element.className);
+		// click the button
+		await element.click();
 
-		////////////////////////
-		//// Other attempts ////
-		///////////////////////
+		// Wait for the scroll animation to complete
+		await delay(500);
 
-		// const element = await page.evaluateHandle(async (mockBTTContent) => {
-		// 	const el = document.createElement('div');
-		// 	el.innerHTML = mockBTTContent;
+		const pageDetails = await page.evaluate(() => {
+			const component = window.document.getElementsByTagName('ontario-back-to-top')[0];
 
-		// 	const delay = (miliseconds: number) => new Promise((resolve) => setTimeout(resolve, miliseconds));
-		// 	window.scrollTo(0, 500);
-		// 	await delay(100);
+			return {
+				scrollY: window.scrollY,
+				element: component.shadowRoot?.firstElementChild,
+				elementClassName: component.shadowRoot?.firstElementChild?.className,
+			};
+		});
 
-		// 	return el;
-		// }, mockBTTContent);
+		expect(pageDetails.scrollY).toEqual(0);
+		expect(pageDetails.elementClassName).toEqual('ontario-back-to-top');
 
-		// const component = element.$eval('ontario-back-to-top', (el) => el);
-
-		// await page.evaluate(async (component) => {
-		// 	(await component).click();
-		// }, component);
-
-		// const classNames = await page.evaluate(
-		// 	(el) => el.shadowRoot?.querySelector('button')?.textContent,
-		// 	element
-		// );
-
-		// console.log(classNames)
+		const styles = await element.getComputedStyle();
+		expect(styles.visibility).toBe('hidden');
 	});
 });

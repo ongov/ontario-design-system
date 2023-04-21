@@ -2,6 +2,15 @@ import { newSpecPage } from '@stencil/core/testing';
 import { OntarioBackToTop } from '../ontario-back-to-top';
 
 describe('ontario-back-to-top', () => {
+	it('should render the expected html', async () => {
+		const page = await newSpecPage({
+			components: [OntarioBackToTop],
+			html: `<ontario-back-to-top></ontario-back-to-top>`,
+		});
+
+		expect(page.root).toMatchSnapshot();
+	});
+
 	it('renders', async () => {
 		const page = await newSpecPage({
 			components: [OntarioBackToTop],
