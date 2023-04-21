@@ -8,7 +8,7 @@
 	as breakpoints;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions'
 	as globalFunctions;
-@use '../../global.scss';
+@forward '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
 
 $ontario-alert-link-focus: #6b0000;
 $ontario-alert-link-active: #280000;
@@ -17,7 +17,7 @@ $ontario-alert-link-active: #280000;
 	border-width: 0 0 0 globalFunctions.rem-calc(4);
 	border-style: solid;
 	padding: spacing.$spacing-5;
-	margin: spacing.$spacing-6 0 spacing.$spacing-7 0;
+	margin: spacing.$spacing-6 spacing.$spacing-0 spacing.$spacing-7 spacing.$spacing-0;
 }
 
 .ontario-alert__header {
@@ -42,7 +42,7 @@ $ontario-alert-link-active: #280000;
 	max-width: globalVariables.$standard-width;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
-		margin-left: 0;
+		margin-left: spacing.$spacing-0;
 	}
 }
 

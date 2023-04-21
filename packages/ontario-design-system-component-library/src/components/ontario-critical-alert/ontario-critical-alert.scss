@@ -4,7 +4,7 @@
 	colours;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables'
 	as fontWeights;
-@use '../../global.scss';
+@use '../../styles/grid.scss';
 
 $ontario-critical-alert-icon-size: 28px;
 $ontario-critical-alert-z-index: 10;

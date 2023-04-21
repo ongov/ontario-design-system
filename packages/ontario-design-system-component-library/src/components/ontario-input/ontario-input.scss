@@ -8,8 +8,10 @@
 	typography;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders'
 	as focusPlaceholders;
-@use '../../utils/input-caption/input-caption.scss';
-@use '../../global.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as
+	fontSizes;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
+@use '../../styles/form.scss';
 
 $ontario-input-padding: 0.625rem;
 
@@ -19,7 +21,7 @@ $ontario-input-padding: 0.625rem;
 	box-sizing: border-box;
 	color: colours.$ontario-colour-black;
 	display: block;
-	font-size: 1rem;
+	font-size: fontSizes.$ontario-font-size-standard-body-text;
 	font-family: typography.$ontario-font-open-sans;
 	line-height: globalVariables.$line-height-default;
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-7;

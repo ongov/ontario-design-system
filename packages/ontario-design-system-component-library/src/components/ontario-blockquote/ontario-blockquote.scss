@@ -9,7 +9,7 @@
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as
 	typography;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables'
-	as lineheight;
+	as lineHeights;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables'
 	as fontWeights;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions'
@@ -21,7 +21,7 @@
 	font-size: globalFunctions.rem-calc(19);
 	font-weight: fontWeights.$ontario-font-weights-normal;
 	letter-spacing: 0.025rem;
-	line-height: 1.56;
+	line-height: lineHeights.$ontario-line-height-8;
 	max-width: globalVariables.$standard-width;
 	margin: spacing.$spacing-6;
 	padding: spacing.$spacing-5 0 spacing.$spacing-5 spacing.$spacing-5;
@@ -30,13 +30,13 @@
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		font-size: globalFunctions.rem-calc(18);
 		letter-spacing: 0.03rem;
-		line-height: 1.5;
-		margin: spacing.$spacing-5 0 spacing.$spacing-6 0;
+		line-height: lineHeights.$ontario-line-height-7;
+		margin: spacing.$spacing-5 spacing.$spacing-0 spacing.$spacing-6 spacing.$spacing-0;
 	}
 }
 
 .ontario-blockquote p {
-	margin: 0 0 spacing.$spacing-5 0;
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-5 spacing.$spacing-0;
 
 	&::before {
 		content: open-quote;
@@ -50,11 +50,11 @@
 .ontario-blockquote--short {
 	font-size: globalFunctions.rem-calc(28);
 	letter-spacing: 0.02rem;
-	line-height: 1.5;
+	line-height: lineHeights.$ontario-line-height-7;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		font-size: globalFunctions.rem-calc(23);
-		line-height: 1.43;
+		line-height: lineHeights.$ontario-line-height-6;
 	}
 }
 
@@ -63,12 +63,12 @@
 	display: block;
 	font-size: globalFunctions.rem-calc(16);
 	letter-spacing: 0.025rem;
-	line-height: 1.56;
+	line-height: lineHeights.$ontario-line-height-8;
 	text-align: right;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		letter-spacing: 0.03rem;
-		line-height: 1.5;
+		line-height: lineHeights.$ontario-line-height-7;
 	}
 }
 

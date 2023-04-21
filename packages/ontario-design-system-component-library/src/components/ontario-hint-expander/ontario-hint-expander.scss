@@ -10,7 +10,10 @@
 	typography;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders'
 	as placeholders;
-@use '../../global.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as
+	fontSizes;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables'
+	as fontWeights;
 
 .ontario-hint-expander__container {
 	max-width: globalVariables.$standard-width;
@@ -24,11 +27,11 @@
 	display: flex;
 	align-items: center;
 	font-family: typography.$ontario-font-open-sans;
-	font-weight: 400;
-	font-size: 1rem;
+	font-weight: fontWeights.$ontario-font-weights-normal;
+	font-size: fontSizes.$ontario-font-size-standard-body-text;
 	text-align: left;
-	margin: 0 0 spacing.$spacing-4 0;
-	padding: 0 spacing.$spacing-1 0 0;
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-4 spacing.$spacing-0;
+	padding: spacing.$spacing-0 spacing.$spacing-1 spacing.$spacing-0 spacing.$spacing-0;
 
 	&-icon--close {
 		display: none;
@@ -64,10 +67,10 @@
 	background-color: colours.$ontario-greyscale-5;
 	display: none;
 	padding: spacing.$spacing-4 spacing.$spacing-4 spacing.$spacing-4 calc(#{spacing.$spacing-4} + #{spacing.$spacing-1});
-	margin: 0 0 spacing.$spacing-4 spacing.$spacing-1;
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-4 spacing.$spacing-1;
 
 	& *:last-child {
-		margin-bottom: 0;
+		margin-bottom: spacing.$spacing-0;
 	}
 
 	& img {
@@ -94,7 +97,7 @@
 }
 
 .ontario-hint-expander__checkbox-exists-true {
-	margin: spacing.$spacing-3 0 0 spacing.$spacing-2;
+	margin: spacing.$spacing-3 spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-2;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		margin-top: spacing.$spacing-4;

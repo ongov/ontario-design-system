@@ -9,7 +9,10 @@
 	as breakpoints;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as
 	zIndex;
-@use '../../global.scss';
+
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/6-components/_form.component.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
 
 $ontario-checkboxes-size: 28px;
 $ontario-checkboxes-size-mobile: 32px;

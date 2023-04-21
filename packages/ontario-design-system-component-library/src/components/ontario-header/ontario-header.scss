@@ -17,7 +17,11 @@
 	as focusPlaceholders;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as
 	zIndex;
-@use '../../global.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables'
+	as lineHeights;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/5-layout/_grid.layout.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
 
 $ontario-search-input-padding: 7.2rem;
 $ontario-search-input-padding--mobile: 6.4rem;
@@ -29,12 +33,14 @@ $ontario-header-custom-breakpoint: 39.9375em;
 
 $ontario-header-menu-button-icon--margin-right: 6px;
 
+$ontario-navigation-container-min-width: 290px;
+
 .ontario-header__container {
 	position: relative;
-	z-index: 5;
+	z-index: calc(zIndex.$ontario-z-index-above-high + 1);
 
 	@media screen and (min-width: breakpoints.$medium-breakpoint) {
-		z-index: 1;
+		z-index: zIndex.$ontario-z-index-above-low;
 	}
 }
 
@@ -93,33 +99,7 @@ $ontario-header-menu-button-icon--margin-right: 6px;
 		position: relative;
 		max-width: 72rem;
 		width: auto;
-		margin: 0 auto;
-	}
-}
-
-.ontario-navigation__container {
-	background: colours.$ontario-colour-white;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	z-index: zIndex.$ontario-z-index-above-high;
-
-	@media screen and (min-width: breakpoints.$small-breakpoint) {
-		background: colours.$ontario-colour-white;
-		position: absolute;
-		z-index: zIndex.$ontario-z-index-above-high;
-	}
-
-	@media screen and (min-width: breakpoints.$medium-breakpoint) {
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-		border-radius: 4px;
-		position: absolute;
-		right: spacing.$spacing-3;
-		top: -0.6rem;
-		min-width: 290px;
-		max-width: 30%;
-		z-index: 5;
-		transition: none !important;
+		margin: spacing.$spacing-0 auto;
 	}
 }
 
@@ -130,7 +110,7 @@ $ontario-header-menu-button-icon--margin-right: 6px;
 	transition: transform 0.3s ease-in-out, visibility 0.1s ease;
 	width: 100%;
 	visibility: hidden;
-	z-index: 4;
+	z-index: zIndex.$ontario-z-index-above-high;
 }
 
 .nav-ul-opened {
@@ -138,7 +118,7 @@ $ontario-header-menu-button-icon--margin-right: 6px;
 	transform: translateY(0);
 	transition: transform 0.4s ease-in-out;
 	@media screen and (min-width: breakpoints.$medium-breakpoint) {
-		z-index: 5;
+		z-index: calc(zIndex.$ontario-z-index-above-high + 1);
 	}
 }
 
@@ -253,18 +233,18 @@ $ontario-header-menu-button-icon--margin-right: 6px;
 	transform: translateY(0);
 	transition: transform 0.4s ease-in-out;
 	@media screen and (min-width: breakpoints.$medium-breakpoint) {
-		z-index: 5;
+		z-index: calc(zIndex.$ontario-z-index-above-high + 1);
 	}
 }
 
 .ontario-navigation__container.ontario-navigation--closed {
-	background: white;
+	background: colours.$ontario-colour-white;
 	position: absolute;
 	transform: translateY(-100%);
 	transition: transform 0.3s ease-in-out, visibility 0.1s ease;
 	width: 100%;
 	visibility: hidden;
-	z-index: 4;
+	z-index: zIndex.$ontario-z-index-above-high;
 }
 
 .ontario-header-button.ontario-navigation--open {
@@ -382,7 +362,7 @@ $ontario-header-menu-button-icon--margin-right: 6px;
 	font-weight: fontWeights.$ontario-font-weights-semi-bold;
 	font-size: 1.125rem;
 	height: 100%;
-	line-height: 1.56;
+	line-height: lineHeights.$ontario-line-height-8;
 
 	position: absolute;
 	right: spacing.$spacing-4;
@@ -466,10 +446,8 @@ input[type='reset'].ontario-header__search-reset {
 	box-shadow: none;
 	color: colours.$ontario-colour-white;
 	cursor: pointer;
-
 	display: flex;
 	align-items: center;
-
 	font-size: 1.125rem;
 	font-weight: fontWeights.$ontario-font-weights-semi-bold;
 	font-family: typography.$ontario-font-open-sans;
@@ -554,7 +532,7 @@ input[type='reset'].ontario-header__search-reset {
 		margin-right: $ontario-header-menu-button-icon--margin-right;
 
 		@media screen and (max-width: breakpoints.$xsmall-breakpoint) {
-			margin-right: 0;
+			margin-right: spacing.$spacing-0;
 		}
 	}
 }
@@ -690,7 +668,7 @@ input[type='reset'].ontario-header__search-reset {
 		position: absolute;
 		right: spacing.$spacing-4;
 		top: calc(100% - #{spacing.$spacing-2});
-		min-width: 290px;
+		min-width: $ontario-navigation-container-min-width;
 		max-width: 30%;
 		z-index: calc(zIndex.$ontario-z-index-above-high + 1);
 	}

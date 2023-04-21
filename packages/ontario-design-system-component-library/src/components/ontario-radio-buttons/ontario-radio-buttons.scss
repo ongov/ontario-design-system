@@ -19,7 +19,9 @@
 	as fontWeights;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders'
 	as placeholders;
-@use '../../global.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/6-components/_form.component.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
 
 $ontario-radios-size: 32px;
 $ontario-radios-size-mobile: 36px;
@@ -28,13 +30,13 @@ $ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-r
 .ontario-radios__item {
 	position: relative;
 	display: block;
-	margin: 0 0 spacing.$spacing-4;
-	padding: 0 spacing.$spacing-6 0;
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-4;
+	padding: spacing.$spacing-0 spacing.$spacing-6 spacing.$spacing-0;
 }
 
 .ontario-radios__input {
 	cursor: pointer;
-	margin: 0;
+	margin: spacing.$spacing-0;
 	position: absolute;
 	opacity: 0;
 	top: $ontario-input-offset * -1;
@@ -62,7 +64,7 @@ $ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-r
 	// Specific spacing required in order to visually align label with input
 	margin: 0.2rem 0;
 	max-width: globalVariables.$narrow-width;
-	padding: 0 spacing.$spacing-3;
+	padding: spacing.$spacing-0 spacing.$spacing-3;
 	// remove 300ms pause on mobile
 	touch-action: manipulation;
 	white-space: normal;
@@ -71,8 +73,8 @@ $ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-r
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		// Specific spacing required in order to visually align label with input
-		margin: 0.3rem 0;
-		padding: 0 spacing.$spacing-4;
+		margin: 0.3rem spacing.$spacing-0;
+		padding: spacing.$spacing-0 spacing.$spacing-4;
 	}
 
 	&:before {
@@ -120,7 +122,7 @@ $ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-r
 }
 
 .ontario-radios__hint-expander {
-	margin: spacing.$spacing-3 0 0 spacing.$spacing-2;
+	margin: spacing.$spacing-3 spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-2;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		margin-top: spacing.$spacing-4;
