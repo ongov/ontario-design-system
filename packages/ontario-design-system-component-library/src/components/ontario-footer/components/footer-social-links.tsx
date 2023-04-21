@@ -20,28 +20,28 @@ export const FooterSocialLinks: FunctionalComponent<FooterSocialLinksProps> = ({
 			{facebook && (
 				<li>
 					<a class="ontario-footer__link" href={facebook} aria-label="Facebook">
-						<ontario-icon-facebook colour="white" iconWidth={ICON_WIDTH} />
+						<ontario-icon-facebook colour="white" icon-width={ICON_WIDTH} />
 					</a>
 				</li>
 			)}
 			{twitter && (
 				<li>
 					<a class="ontario-footer__link" href={twitter} aria-label="Twitter">
-						<ontario-icon-twitter colour="white" iconWidth={ICON_WIDTH} />
+						<ontario-icon-twitter colour="white" icon-width={ICON_WIDTH} />
 					</a>
 				</li>
 			)}
 			{instagram && (
 				<li>
 					<a class="ontario-footer__link" href={instagram} aria-label="Instagram">
-						<ontario-icon-instagram colour="white" iconWidth={ICON_WIDTH} />
+						<ontario-icon-instagram colour="white" icon-width={ICON_WIDTH} />
 					</a>
 				</li>
 			)}
 			{youtube && (
 				<li>
 					<a class="ontario-footer__link" href={youtube} aria-label="Youtube">
-						<ontario-icon-youtube colour="white" iconWidth={ICON_WIDTH} />
+						<ontario-icon-youtube colour="white" icon-width={ICON_WIDTH} />
 					</a>
 				</li>
 			)}

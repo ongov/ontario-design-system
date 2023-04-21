@@ -12,9 +12,8 @@ import { Caption } from "./utils/input-caption/caption.interface";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
-import { DefaultOptions } from "./components/ontario-footer/footer-default-option-interface";
-import { ExpandedTwoColumnOptions } from "./components/ontario-footer/footer-expanded-two-column-option-interface";
-import { ExpandedThreeColumnOptions } from "./components/ontario-footer/footer-expanded-three-column-option-interface";
+import { FooterLinks, OntarioFooterType, ThreeColumnOptions, TwoColumnOptions } from "./components/ontario-footer/ontario-footer-interface";
+import { FooterSocialLinksProps } from "./components/ontario-footer/components";
 import { applicationHeaderInfo, languageToggleOptions, menuItems } from "./components/ontario-header/ontario-header.interface";
 import { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
@@ -194,21 +193,29 @@ export namespace Components {
     }
     interface OntarioFooter {
         /**
-          * Stores the required links for all footers
+          * Stores the required links for all footers Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink'
          */
-        "defaultOptions": DefaultOptions | string;
+        "footerLinks": FooterLinks | string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. Default to English.
+         */
+        "language": Language;
+        /**
+          * Social media links to render in the footer Available options are 'facebook', 'twitter', 'instagram' and 'youtube'
+         */
+        "socialLinks": FooterSocialLinksProps | string;
         /**
           * Stores the titles and content for the expanded three column footer
          */
-        "expandedThreeColumnOptions"?: ExpandedThreeColumnOptions | string;
+        "threeColumnOptions"?: ThreeColumnOptions | string;
         /**
           * Stores the titles and content for the expanded two column footer
          */
-        "expandedTwoColumnOptions"?: ExpandedTwoColumnOptions | string;
+        "twoColumnOptions"?: TwoColumnOptions | string;
         /**
-          * Type of footer to be rendered
+          * Type of footer to be rendered Default: 'default'
          */
-        "type": 'default' | 'expandedTwoColumn' | 'expandedThreeColumn';
+        "type": OntarioFooterType;
     }
     interface OntarioHeader {
         /**
@@ -2613,21 +2620,29 @@ declare namespace LocalJSX {
     }
     interface OntarioFooter {
         /**
-          * Stores the required links for all footers
+          * Stores the required links for all footers Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink'
          */
-        "defaultOptions"?: DefaultOptions | string;
+        "footerLinks"?: FooterLinks | string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. Default to English.
+         */
+        "language"?: Language;
+        /**
+          * Social media links to render in the footer Available options are 'facebook', 'twitter', 'instagram' and 'youtube'
+         */
+        "socialLinks"?: FooterSocialLinksProps | string;
         /**
           * Stores the titles and content for the expanded three column footer
          */
-        "expandedThreeColumnOptions"?: ExpandedThreeColumnOptions | string;
+        "threeColumnOptions"?: ThreeColumnOptions | string;
         /**
           * Stores the titles and content for the expanded two column footer
          */
-        "expandedTwoColumnOptions"?: ExpandedTwoColumnOptions | string;
+        "twoColumnOptions"?: TwoColumnOptions | string;
         /**
-          * Type of footer to be rendered
+          * Type of footer to be rendered Default: 'default'
          */
-        "type"?: 'default' | 'expandedTwoColumn' | 'expandedThreeColumn';
+        "type"?: OntarioFooterType;
     }
     interface OntarioHeader {
         /**

@@ -9,10 +9,20 @@ describe('ontario-footer', () => {
       <ontario-footer
         type="default"
         footer-links='{
-          "accessibilityLink": "https://www.ontario.ca/page/accessibility",
-          "privacyLink": "https://www.ontario.ca/page/privacy-statement",
-          "contactLink": "https://www.ontario.ca/feedback/contact-us",
-          "printerLink": "https://www.ontario.ca/page/copyright-information"
+          "accessibilityLink": {
+            "text": "Accessibility",
+            "href": "https://www.ontario.ca/page/accessibility"
+          },
+          "privacyLink": {
+            "href": "https://www.ontario.ca/page/privacy-statement"
+          },
+          "contactLink": {
+            "text": "Contact",
+            "href": "https://www.ontario.ca/feedback/contact-us"
+          },
+          "printerLink": {
+            "href": "https://www.ontario.ca/page/copyright-information"
+          }
         }'
       ></ontario-footer>
       `,
@@ -22,10 +32,20 @@ describe('ontario-footer', () => {
       <ontario-footer
         type="default"
         footer-links='{
-          "accessibilityLink": "https://www.ontario.ca/page/accessibility",
-          "privacyLink": "https://www.ontario.ca/page/privacy-statement",
-          "contactLink": "https://www.ontario.ca/feedback/contact-us",
-          "printerLink": "https://www.ontario.ca/page/copyright-information"
+          "accessibilityLink": {
+            "text": "Accessibility",
+            "href": "https://www.ontario.ca/page/accessibility"
+          },
+          "privacyLink": {
+            "href": "https://www.ontario.ca/page/privacy-statement"
+          },
+          "contactLink": {
+            "text": "Contact",
+            "href": "https://www.ontario.ca/feedback/contact-us"
+          },
+          "printerLink": {
+            "href": "https://www.ontario.ca/page/copyright-information"
+          }
         }'
       >
         <mock:shadow-root>
@@ -35,7 +55,7 @@ describe('ontario-footer', () => {
                 <ul class="ontario-footer__links-container ontario-footer__links-container--inline">
                   <li><a class="ontario-footer__link" href="https://www.ontario.ca/page/accessibility">Accessibility</a></li>
                   <li><a class="ontario-footer__link" href="https://www.ontario.ca/page/privacy-statement">Privacy</a></li>
-                  <li><a class="ontario-footer__link" href="https://www.ontario.ca/feedback/contact-us">Contact us</a></li>
+                  <li><a class="ontario-footer__link" href="https://www.ontario.ca/feedback/contact-us">Contact</a></li>
                 </ul>
                 <div class="ontario-footer__copyright">
                   <a class="ontario-footer__link" href="https://www.ontario.ca/page/copyright-information">© King's Printer for Ontario, <span class="ontario-nbsp">2012–23</span></a>
@@ -55,10 +75,20 @@ describe('ontario-footer', () => {
       <ontario-footer
         type="twoColumn"
         footer-links='{
-          "accessibilityLink": "https://www.ontario.ca/page/accessibility",
-          "privacyLink": "https://www.ontario.ca/page/privacy-statement",
-          "contactLink": "https://www.ontario.ca/feedback/contact-us",
-          "printerLink": "https://www.ontario.ca/page/copyright-information"
+          "accessibilityLink": {
+            "text": "Accessibility",
+            "href": "https://www.ontario.ca/page/accessibility"
+          },
+          "privacyLink": {
+            "href": "https://www.ontario.ca/page/privacy-statement"
+          },
+          "contactLink": {
+            "text": "Contact",
+            "href": "https://www.ontario.ca/feedback/contact-us"
+          },
+          "printerLink": {
+            "href": "https://www.ontario.ca/page/copyright-information"
+          }
         }'
         two-column-options='{
           "column1": {
@@ -96,10 +126,20 @@ describe('ontario-footer', () => {
       <ontario-footer
         type="twoColumn"
         footer-links='{
-          "accessibilityLink": "https://www.ontario.ca/page/accessibility",
-          "privacyLink": "https://www.ontario.ca/page/privacy-statement",
-          "contactLink": "https://www.ontario.ca/feedback/contact-us",
-          "printerLink": "https://www.ontario.ca/page/copyright-information"
+          "accessibilityLink": {
+            "text": "Accessibility",
+            "href": "https://www.ontario.ca/page/accessibility"
+          },
+          "privacyLink": {
+            "href": "https://www.ontario.ca/page/privacy-statement"
+          },
+          "contactLink": {
+            "text": "Contact",
+            "href": "https://www.ontario.ca/feedback/contact-us"
+          },
+          "printerLink": {
+            "href": "https://www.ontario.ca/page/copyright-information"
+          }
         }'
         two-column-options='{
           "column1": {
@@ -158,7 +198,7 @@ describe('ontario-footer', () => {
                 <ul class="ontario-footer__links-container ontario-footer__links-container--inline">
                   <li><a class="ontario-footer__link" href="https://www.ontario.ca/page/accessibility">Accessibility</a></li>
                   <li><a class="ontario-footer__link" href="https://www.ontario.ca/page/privacy-statement">Privacy</a></li>
-                  <li><a class="ontario-footer__link" href="https://www.ontario.ca/feedback/contact-us">Contact us</a></li>
+                  <li><a class="ontario-footer__link" href="https://www.ontario.ca/feedback/contact-us">Contact</a></li>
                 </ul>
                 <div class="ontario-footer__copyright">
                   <a class="ontario-footer__link" href="https://www.ontario.ca/page/copyright-information">© King's Printer for Ontario, <span class="ontario-nbsp">2012–23</span></a>
@@ -178,10 +218,20 @@ describe('ontario-footer', () => {
       <ontario-footer
         type="twoColumn"
         footer-links='{
-          "accessibilityLink": "https://www.ontario.ca/page/accessibility",
-          "privacyLink": "https://www.ontario.ca/page/privacy-statement",
-          "contactLink": "https://www.ontario.ca/feedback/contact-us",
-          "printerLink": "https://www.ontario.ca/page/copyright-information"
+          "accessibilityLink": {
+            "text": "Accessibility",
+            "href": "https://www.ontario.ca/page/accessibility"
+          },
+          "privacyLink": {
+            "href": "https://www.ontario.ca/page/privacy-statement"
+          },
+          "contactLink": {
+            "text": "Contact",
+            "href": "https://www.ontario.ca/feedback/contact-us"
+          },
+          "printerLink": {
+            "href": "https://www.ontario.ca/page/copyright-information"
+          }
         }'
         social-links='{
           "facebook": "https://www.facebook.com/ONgov",
@@ -225,10 +275,20 @@ describe('ontario-footer', () => {
       <ontario-footer
         type="twoColumn"
         footer-links='{
-          "accessibilityLink": "https://www.ontario.ca/page/accessibility",
-          "privacyLink": "https://www.ontario.ca/page/privacy-statement",
-          "contactLink": "https://www.ontario.ca/feedback/contact-us",
-          "printerLink": "https://www.ontario.ca/page/copyright-information"
+          "accessibilityLink": {
+            "text": "Accessibility",
+            "href": "https://www.ontario.ca/page/accessibility"
+          },
+          "privacyLink": {
+            "href": "https://www.ontario.ca/page/privacy-statement"
+          },
+          "contactLink": {
+            "text": "Contact",
+            "href": "https://www.ontario.ca/feedback/contact-us"
+          },
+          "printerLink": {
+            "href": "https://www.ontario.ca/page/copyright-information"
+          }
         }'
         social-links='{
           "facebook": "https://www.facebook.com/ONgov",
@@ -287,16 +347,16 @@ describe('ontario-footer', () => {
                   </a>
                   <ul class="ontario-footer__links-container ontario-footer__links-container--social">
                     <li>
-                      <a class="ontario-footer__link" href="https://www.facebook.com/ONgov" aria-label="Facebook"><ontario-icon-facebook colour="white" iconwidth="32"></ontario-icon-facebook></a>
+                      <a class="ontario-footer__link" href="https://www.facebook.com/ONgov" aria-label="Facebook"><ontario-icon-facebook colour="white" icon-width="32"></ontario-icon-facebook></a>
                     </li>
                     <li>
-                      <a class="ontario-footer__link" href="https://twitter.com/ONgov" aria-label="Twitter"><ontario-icon-twitter colour="white" iconwidth="32"></ontario-icon-twitter></a>
+                      <a class="ontario-footer__link" href="https://twitter.com/ONgov" aria-label="Twitter"><ontario-icon-twitter colour="white" icon-width="32"></ontario-icon-twitter></a>
                     </li>
                     <li>
-                      <a class="ontario-footer__link" href="https://www.instagram.com/ongov" aria-label="Instagram"><ontario-icon-instagram colour="white" iconwidth="32"></ontario-icon-instagram></a>
+                      <a class="ontario-footer__link" href="https://www.instagram.com/ongov" aria-label="Instagram"><ontario-icon-instagram colour="white" icon-width="32"></ontario-icon-instagram></a>
                     </li>
                     <li>
-                      <a class="ontario-footer__link" href="https://www.youtube.com/ongov" aria-label="Youtube"><ontario-icon-youtube colour="white" iconwidth="32"></ontario-icon-youtube></a>
+                      <a class="ontario-footer__link" href="https://www.youtube.com/ongov" aria-label="Youtube"><ontario-icon-youtube colour="white" icon-width="32"></ontario-icon-youtube></a>
                     </li>
                   </ul>
                 </div>
@@ -307,7 +367,7 @@ describe('ontario-footer', () => {
                 <ul class="ontario-footer__links-container ontario-footer__links-container--inline">
                   <li><a class="ontario-footer__link" href="https://www.ontario.ca/page/accessibility">Accessibility</a></li>
                   <li><a class="ontario-footer__link" href="https://www.ontario.ca/page/privacy-statement">Privacy</a></li>
-                  <li><a class="ontario-footer__link" href="https://www.ontario.ca/feedback/contact-us">Contact us</a></li>
+                  <li><a class="ontario-footer__link" href="https://www.ontario.ca/feedback/contact-us">Contact</a></li>
                 </ul>
                 <div class="ontario-footer__copyright">
                   <a class="ontario-footer__link" href="https://www.ontario.ca/page/copyright-information">© King's Printer for Ontario, <span class="ontario-nbsp">2012–23</span></a>
@@ -327,10 +387,20 @@ describe('ontario-footer', () => {
       <ontario-footer
         type="threeColumn"
         footer-links='{
-          "accessibilityLink": "https://www.ontario.ca/page/accessibility",
-          "privacyLink": "https://www.ontario.ca/page/privacy-statement",
-          "contactLink": "https://www.ontario.ca/feedback/contact-us",
-          "printerLink": "https://www.ontario.ca/page/copyright-information"
+          "accessibilityLink": {
+            "text": "Accessibility",
+            "href": "https://www.ontario.ca/page/accessibility"
+          },
+          "privacyLink": {
+            "href": "https://www.ontario.ca/page/privacy-statement"
+          },
+          "contactLink": {
+            "text": "Contact",
+            "href": "https://www.ontario.ca/feedback/contact-us"
+          },
+          "printerLink": {
+            "href": "https://www.ontario.ca/page/copyright-information"
+          }
         }'
         social-links='{
           "facebook": "https://www.facebook.com/ONgov",
@@ -378,10 +448,20 @@ describe('ontario-footer', () => {
       <ontario-footer
         type="threeColumn"
         footer-links='{
-          "accessibilityLink": "https://www.ontario.ca/page/accessibility",
-          "privacyLink": "https://www.ontario.ca/page/privacy-statement",
-          "contactLink": "https://www.ontario.ca/feedback/contact-us",
-          "printerLink": "https://www.ontario.ca/page/copyright-information"
+          "accessibilityLink": {
+            "text": "Accessibility",
+            "href": "https://www.ontario.ca/page/accessibility"
+          },
+          "privacyLink": {
+            "href": "https://www.ontario.ca/page/privacy-statement"
+          },
+          "contactLink": {
+            "text": "Contact",
+            "href": "https://www.ontario.ca/feedback/contact-us"
+          },
+          "printerLink": {
+            "href": "https://www.ontario.ca/page/copyright-information"
+          }
         }'
         social-links='{
           "facebook": "https://www.facebook.com/ONgov",
@@ -446,16 +526,16 @@ describe('ontario-footer', () => {
                   </a>
                   <ul class="ontario-footer__links-container ontario-footer__links-container--social">
                     <li>
-                      <a class="ontario-footer__link" href="https://www.facebook.com/ONgov" aria-label="Facebook"><ontario-icon-facebook colour="white" iconwidth="32"></ontario-icon-facebook></a>
+                      <a class="ontario-footer__link" href="https://www.facebook.com/ONgov" aria-label="Facebook"><ontario-icon-facebook colour="white" icon-width="32"></ontario-icon-facebook></a>
                     </li>
                     <li>
-                      <a class="ontario-footer__link" href="https://twitter.com/ONgov" aria-label="Twitter"><ontario-icon-twitter colour="white" iconwidth="32"></ontario-icon-twitter></a>
+                      <a class="ontario-footer__link" href="https://twitter.com/ONgov" aria-label="Twitter"><ontario-icon-twitter colour="white" icon-width="32"></ontario-icon-twitter></a>
                     </li>
                     <li>
-                      <a class="ontario-footer__link" href="https://www.instagram.com/ongov" aria-label="Instagram"><ontario-icon-instagram colour="white" iconwidth="32"></ontario-icon-instagram></a>
+                      <a class="ontario-footer__link" href="https://www.instagram.com/ongov" aria-label="Instagram"><ontario-icon-instagram colour="white" icon-width="32"></ontario-icon-instagram></a>
                     </li>
                     <li>
-                      <a class="ontario-footer__link" href="https://www.youtube.com/ongov" aria-label="Youtube"><ontario-icon-youtube colour="white" iconwidth="32"></ontario-icon-youtube></a>
+                      <a class="ontario-footer__link" href="https://www.youtube.com/ongov" aria-label="Youtube"><ontario-icon-youtube colour="white" icon-width="32"></ontario-icon-youtube></a>
                     </li>
                   </ul>
                 </div>
@@ -466,7 +546,7 @@ describe('ontario-footer', () => {
                 <ul class="ontario-footer__links-container ontario-footer__links-container--inline">
                   <li><a class="ontario-footer__link" href="https://www.ontario.ca/page/accessibility">Accessibility</a></li>
                   <li><a class="ontario-footer__link" href="https://www.ontario.ca/page/privacy-statement">Privacy</a></li>
-                  <li><a class="ontario-footer__link" href="https://www.ontario.ca/feedback/contact-us">Contact us</a></li>
+                  <li><a class="ontario-footer__link" href="https://www.ontario.ca/feedback/contact-us">Contact</a></li>
                 </ul>
                 <div class="ontario-footer__copyright">
                   <a class="ontario-footer__link" href="https://www.ontario.ca/page/copyright-information">© King's Printer for Ontario, <span class="ontario-nbsp">2012–23</span></a>

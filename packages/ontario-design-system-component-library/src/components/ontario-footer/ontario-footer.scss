@@ -146,6 +146,7 @@ $ontario-icon-size--social-small: 32px;
 	margin-bottom: global.$spacing-5;
 }
 
+.ontario-footer p,
 .ontario-footer__paragraph,
 .ontario-footer__list_item {
 	a {
@@ -173,6 +174,20 @@ $ontario-icon-size--social-small: 32px;
 	border-color: global.$ontario-colour-white;
 	color: global.$ontario-colour-white;
 	margin-bottom: global.$spacing-6;
+	border-radius: global.$spacing-1;
+	box-sizing: border-box;
+	box-shadow: none;
+	display: inline-block;
+	font-size: 1.125rem;
+	font-family: global.$ontario-font-open-sans;
+	font-weight: 600;
+	line-height: math.div(14, 9);
+	margin: 0 (1rem + 0.75rem) 1.5rem 0;
+	min-width: 10rem;
+	padding: 0.625rem 1.5rem;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
 
 	&:hover,
 	&:focus {
@@ -181,6 +196,9 @@ $ontario-icon-size--social-small: 32px;
 
 	&:active {
 		background-color: darken(global.$ontario-colour-white, 60);
+		box-shadow: 0 0 0 global.$spacing-1 global.$ontario-colour-focus;
+		outline: global.$spacing-1 solid transparent;
+		transition: all 0.1s ease-in-out;
 	}
 }
 
@@ -315,27 +333,6 @@ $ontario-icon-size--social-small: 32px;
 	padding-top: global.$spacing-9;
 }
 
-// Note: Styles relating to the Ontario button should be reviewed and
-// aligned to use the real <ontario-button>, if possible.
-.ontario-button {
-	border: none;
-	border-radius: global.$spacing-1;
-	box-sizing: border-box;
-	box-shadow: none;
-	display: inline-block;
-	font-size: 1.125rem;
-	font-family: global.$ontario-font-open-sans;
-	font-weight: 600;
-	line-height: math.div(14, 9);
-	margin: 0 (1rem + 0.75rem) 1.5rem 0;
-	min-width: 10rem;
-	padding: 0.625rem 1.5rem;
-	text-align: center;
-	text-decoration: none;
-	cursor: pointer;
-}
-
-.ontario-button:active,
 .ontario-footer__link:active,
 a:active {
 	box-shadow: 0 0 0 global.$spacing-1 global.$ontario-colour-focus;

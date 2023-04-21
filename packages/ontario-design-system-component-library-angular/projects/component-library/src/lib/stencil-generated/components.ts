@@ -193,14 +193,14 @@ export class OntarioDropdownList {
 export declare interface OntarioDropdownList extends Components.OntarioDropdownList {}
 
 @ProxyCmp({
-	inputs: ['defaultOptions', 'expandedThreeColumnOptions', 'expandedTwoColumnOptions', 'type'],
+	inputs: ['footerLinks', 'language', 'socialLinks', 'threeColumnOptions', 'twoColumnOptions', 'type'],
 })
 @Component({
 	selector: 'ontario-footer',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['defaultOptions', 'expandedThreeColumnOptions', 'expandedTwoColumnOptions', 'type'],
+	inputs: ['footerLinks', 'language', 'socialLinks', 'threeColumnOptions', 'twoColumnOptions', 'type'],
 })
 export class OntarioFooter {
 	protected el: HTMLElement;

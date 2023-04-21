@@ -12,7 +12,7 @@ export const ColumnContent: FunctionalComponent<FooterColumnContentProps> = ({ c
 		<Fragment>
 			{heading && <Heading class="ontario-h5">{heading}</Heading>}
 			{type === 'text' && <p>{text}</p>}
-			{type === 'html' && <div class="ontario-footer__paragraph" innerHTML={html} />}
+			{type === 'html' && <div class="ontario-footer__paragraph" innerHTML={html as string} />}
 			{type === 'list' && !!list?.length && (
 				<ul>
 					{list.map((item: string) => (

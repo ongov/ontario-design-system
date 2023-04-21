@@ -59,20 +59,6 @@ It can be confusing and frustrating for users to expect a button to trigger an a
 | `label`         | `label`           | Text to be displayed within the button. This will override the text provided through the Element Content. | `string \| undefined`                                           | `undefined`   |
 | `type`          | `type`            | The type of button to render.                                                                             | `"internalThemeDark" \| "primary" \| "secondary" \| "tertiary"` | `'secondary'` |
 
-## Dependencies
-
-### Used by
-
-- [ontario-footer](../ontario-footer)
-
-### Graph
-
-```mermaid
-graph TD;
-  ontario-footer --> ontario-button
-  style ontario-button fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ---
 
 _Built with [StencilJS](https://stenciljs.com/)_

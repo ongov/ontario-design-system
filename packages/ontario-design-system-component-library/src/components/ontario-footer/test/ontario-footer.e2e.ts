@@ -12,10 +12,20 @@ describe('ontario-footer', () => {
 				<ontario-footer
 					type="default"
 					footer-links='{
-						"accessibilityLink": "https://www.ontario.ca/page/accessibility",
-						"privacyLink": "https://www.ontario.ca/page/privacy-statement",
-						"contactLink": "https://www.ontario.ca/feedback/contact-us",
-						"printerLink": "https://www.ontario.ca/page/copyright-information"
+						"accessibilityLink": {
+							"text": "Accessibility",
+							"href": "https://www.ontario.ca/page/accessibility"
+						},
+						"privacyLink": {
+							"href": "https://www.ontario.ca/page/privacy-statement"
+						},
+						"contactLink": {
+							"text": "Contact",
+							"href": "https://www.ontario.ca/feedback/contact-us"
+						},
+						"printerLink": {
+							"href": "https://www.ontario.ca/page/copyright-information"
+						}
 					}'
 				></ontario-footer>
 			`);
@@ -62,10 +72,20 @@ describe('ontario-footer', () => {
 				<ontario-footer
 					type="twoColumn"
 					footer-links='{
-						"accessibilityLink": "https://www.ontario.ca/page/accessibility",
-						"privacyLink": "https://www.ontario.ca/page/privacy-statement",
-						"contactLink": "https://www.ontario.ca/feedback/contact-us",
-						"printerLink": "https://www.ontario.ca/page/copyright-information"
+						"accessibilityLink": {
+							"text": "Accessibility",
+							"href": "https://www.ontario.ca/page/accessibility"
+						},
+						"privacyLink": {
+							"href": "https://www.ontario.ca/page/privacy-statement"
+						},
+						"contactLink": {
+							"text": "Contact",
+							"href": "https://www.ontario.ca/feedback/contact-us"
+						},
+						"printerLink": {
+							"href": "https://www.ontario.ca/page/copyright-information"
+						}
 					}'
 					two-column-options='{
 						"column1": {
@@ -131,10 +151,20 @@ describe('ontario-footer', () => {
 				<ontario-footer
 					type="threeColumn"
 					footer-links='{
-						"accessibilityLink": "https://www.ontario.ca/page/accessibility",
-						"privacyLink": "https://www.ontario.ca/page/privacy-statement",
-						"contactLink": "https://www.ontario.ca/feedback/contact-us",
-						"printerLink": "https://www.ontario.ca/page/copyright-information"
+						"accessibilityLink": {
+							"text": "Accessibility",
+							"href": "https://www.ontario.ca/page/accessibility"
+						},
+						"privacyLink": {
+							"href": "https://www.ontario.ca/page/privacy-statement"
+						},
+						"contactLink": {
+							"text": "Contact",
+							"href": "https://www.ontario.ca/feedback/contact-us"
+						},
+						"printerLink": {
+							"href": "https://www.ontario.ca/page/copyright-information"
+						}
 					}'
 					three-column-options='{
 						"column1": {

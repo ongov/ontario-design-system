@@ -24,10 +24,20 @@ Example of a simple (`default` type) footer component.
 <ontario-footer
 	type="default"
 	footer-links='{
-		"accessibilityLink": "https://www.ontario.ca/page/accessibility",
-		"privacyLink": "https://www.ontario.ca/page/privacy-statement",
-		"contactLink": "https://www.ontario.ca/feedback/contact-us",
-		"printerLink": "https://www.ontario.ca/page/copyright-information"
+		"accessibilityLink": {
+			"text": "Accessibility",
+			"href": "https://www.ontario.ca/page/accessibility"
+		},
+		"privacyLink": {
+			"href": "https://www.ontario.ca/page/privacy-statement"
+		},
+		"contactLink": {
+			"text": "Contact",
+			"href": "https://www.ontario.ca/feedback/contact-us"
+		},
+		"printerLink": {
+			"href": "https://www.ontario.ca/page/copyright-information"
+		}
 	}'
 ></ontario-footer>
 ```
@@ -38,10 +48,20 @@ Example of an expanded footer with two columns (`twoColumn` type).
 <ontario-footer
 	type="twoColumn"
 	footer-links='{
-		"accessibilityLink": "https://www.ontario.ca/page/accessibility",
-		"privacyLink": "https://www.ontario.ca/page/privacy-statement",
-		"contactLink": "https://www.ontario.ca/feedback/contact-us",
-		"printerLink": "https://www.ontario.ca/page/copyright-information"
+		"accessibilityLink": {
+			"text": "Accessibility",
+			"href": "https://www.ontario.ca/page/accessibility"
+		},
+		"privacyLink": {
+			"href": "https://www.ontario.ca/page/privacy-statement"
+		},
+		"contactLink": {
+			"text": "Contact",
+			"href": "https://www.ontario.ca/feedback/contact-us"
+		},
+		"printerLink": {
+			"href": "https://www.ontario.ca/page/copyright-information"
+		}
 	}'
 	two-column-options='{
 		"column1": {
@@ -81,10 +101,20 @@ Example of an expanded footer with three columns (`threeColumn` type).
 <ontario-footer
 	type="expandedThreeColumn"
 	footer-links='{
-		"accessibilityLink": "https://www.ontario.ca/page/accessibility",
-		"privacyLink": "https://www.ontario.ca/page/privacy-statement",
-		"contactLink": "https://www.ontario.ca/feedback/contact-us",
-		"printerLink": "https://www.ontario.ca/page/copyright-information"
+		"accessibilityLink": {
+			"text": "Accessibility",
+			"href": "https://www.ontario.ca/page/accessibility"
+		},
+		"privacyLink": {
+			"href": "https://www.ontario.ca/page/privacy-statement"
+		},
+		"contactLink": {
+			"text": "Contact",
+			"href": "https://www.ontario.ca/feedback/contact-us"
+		},
+		"printerLink": {
+			"href": "https://www.ontario.ca/page/copyright-information"
+		}
 	}'
 	three-column-options='{
 		"column1": {
@@ -124,10 +154,20 @@ Example of footer with social media links, only `twoColumn` and `threeColumn` fo
 <ontario-footer
 	type="expandedThreeColumn"
 	footer-links='{
-		"accessibilityLink": "https://www.ontario.ca/page/accessibility",
-		"privacyLink": "https://www.ontario.ca/page/privacy-statement",
-		"contactLink": "https://www.ontario.ca/feedback/contact-us",
-		"printerLink": "https://www.ontario.ca/page/copyright-information"
+		"accessibilityLink": {
+			"text": "Accessibility",
+			"href": "https://www.ontario.ca/page/accessibility"
+		},
+		"privacyLink": {
+			"href": "https://www.ontario.ca/page/privacy-statement"
+		},
+		"contactLink": {
+			"text": "Contact",
+			"href": "https://www.ontario.ca/feedback/contact-us"
+		},
+		"printerLink": {
+			"href": "https://www.ontario.ca/page/copyright-information"
+		}
 	}'
 	social-links='{
 		"facebook": "https://www.facebook.com/ONgov",
@@ -180,19 +220,38 @@ In most cases, the example default footer links displayed below will apply to bo
 <!-- prettier-ignore -->
 ```html
 footer-links='{
-	"accessibilityLink": "https://www.ontario.ca/page/accessibility",
-	"privacyLink": "https://www.ontario.ca/page/privacy-statement",
-	"contactLink": "https://www.ontario.ca/feedback/contact-us",
-	"printerLink": "https://www.ontario.ca/page/copyright-information"
+	"accessibilityLink": {
+		"text": "Accessibility",
+		"href": "https://www.ontario.ca/page/accessibility"
+	},
+	"privacyLink": {
+		"href": "https://www.ontario.ca/page/privacy-statement"
+	},
+	"contactLink": {
+		"text": "Contact",
+		"href": "https://www.ontario.ca/feedback/contact-us"
+	},
+	"printerLink": {
+		"href": "https://www.ontario.ca/page/copyright-information"
+	}
 }'
 ```
 
-| **Property name**   | **Type** | **Description**                                                 |
-| ------------------- | -------- | --------------------------------------------------------------- |
-| `accessibilityLink` | `string` | The URL for the accessibility footer link                       |
-| `privacyLink`       | `string` | The URL for the privacy footer link                             |
-| `contactLink`       | `string` | The URL for the contact us footer link                          |
-| `printerLink`       | `string` | The URL for the printer footer link. This property is optional. |
+| **Property name**   | **Type**                           | **Description**                                                          | Required |
+| ------------------- | ---------------------------------- | ------------------------------------------------------------------------ | -------- |
+| `accessibilityLink` | `[FooterLinkType](FooterLinkType)` | The URL and text for the accessibility footer link                       | NO       |
+| `privacyLink`       | `[FooterLinkType](FooterLinkType)` | The URL and text for the privacy footer link                             | NO       |
+| `contactLink`       | `[FooterLinkType](FooterLinkType)` | The URL and text for the contact us footer link                          | NO       |
+| `printerLink`       | `[FooterLinkType](FooterLinkType)` | The URL and text for the printer footer link. This property is optional. | NO       |
+
+### FooterLinkType
+
+| Value  | Description                | Required |
+| ------ | -------------------------- | -------- |
+| `text` | Text for footer link item. | NO       |
+| `href` | URL for footer link item.  | YES      |
+
+Note: `href` is optional for printerLink
 
 ### twoColumnOptions
 
@@ -235,10 +294,10 @@ two-column-options='{
 
 #### twoColumn object
 
-| **Property name** | **Type**           | **Description**                                            |
-| ----------------- | ------------------ | ---------------------------------------------------------- |
-| `column1`         | `FooterColumnData` | Title, body, links or button for the first footer column.  |
-| `column2`         | `FooterColumnData` | Title, body, links or button for the second footer column. |
+| **Property name** | **Type**                                | **Description**                                            |
+| ----------------- | --------------------------------------- | ---------------------------------------------------------- |
+| `column1`         | `[FooterColumnData](#FooterColumnData)` | Title, body, links or button for the first footer column.  |
+| `column2`         | `[FooterColumnData](#FooterColumnData)` | Title, body, links or button for the second footer column. |
 
 ### threeColumnOptions
 
@@ -300,14 +359,14 @@ two-column-options='{
 
 #### FooterColumnContent
 
-| Property       | Type                                    | Description                                    | Defaults    |
-| -------------- | --------------------------------------- | ---------------------------------------------- | ----------- |
-| `heading`      | `string` (optional)                     | The heading of the content.                    | `undefined` |
-| `headingLevel` | `h2 \| h3 \| h4 \| h5 \| h6` (optional) | The heading level for coloumn content title    | `h3`        |
-| `type`         | `FooterContentType`                     | The type of content.                           | `text`      |
-| `text`         | `string` (optional)                     | It holds the text content if the type is text. | `undefined` |
-| `html`         | `string` (optional)                     | It holds the HTML content if the type is html. | `undefined` |
-| `list`         | `string[]` (optional)                   | It holds the list content if the type is list. | `undefined` |
+| Property       | Type                                    | Description                                    | Defaults                                       |
+| -------------- | --------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ----------- |
+| `heading`      | `string` (optional)                     | The heading of the content.                    | `undefined`                                    |
+| `headingLevel` | `h2 \| h3 \| h4 \| h5 \| h6` (optional) | The heading level for coloumn content title    | `h3`                                           |
+| `type`         | `FooterContentType`                     | The type of content.                           | `text`                                         |
+| `text`         | `string` (optional)                     | It holds the text content if the type is text. | `undefined`                                    |
+| `html`         | `string`                                | `HTMLElement` (optional)                       | It holds the HTML content if the type is html. | `undefined` |
+| `list`         | `string[]` (optional)                   | It holds the list content if the type is list. | `undefined`                                    |
 
 ### FooterContentType
 
@@ -321,13 +380,14 @@ two-column-options='{
 
 ## Properties
 
-| Property             | Attribute              | Description                                                                                                                         | Type                                                                                                                                           | Default     |
-| -------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `footerLinks`        | `footer-links`         | Stores the required links for all footers Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink' | `FooterLinks \| string`                                                                                                                        | `undefined` |
-| `socialLinks`        | `social-links`         | Social media links to render in the footer Available options are 'facebook', 'twitter', 'instagram' and 'youtube'                   | `string \| { facebook?: string \| undefined; twitter?: string \| undefined; instagram?: string \| undefined; youtube?: string \| undefined; }` | `undefined` |
-| `threeColumnOptions` | `three-column-options` | Stores the titles and content for the expanded three column footer                                                                  | `ThreeColumnOptions \| string \| undefined`                                                                                                    | `undefined` |
-| `twoColumnOptions`   | `two-column-options`   | Stores the titles and content for the expanded two column footer                                                                    | `TwoColumnOptions \| string \| undefined`                                                                                                      | `undefined` |
-| `type`               | `type`                 | Type of footer to be rendered Default: 'default'                                                                                    | `"default" \| "threeColumn" \| "twoColumn"`                                                                                                    | `'default'` |
+| Property             | Attribute              | Description                                                                                                                                                                       | Type                                                                                                                                           | Default     |
+| -------------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `footerLinks`        | `footer-links`         | Stores the required links for all footers Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink'                                               | `FooterLinks \| string`                                                                                                                        | `undefined` |
+| `language`           | `language`             | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. Default to English. | `"en" \| "fr"`                                                                                                                                 | `'en'`      |
+| `socialLinks`        | `social-links`         | Social media links to render in the footer Available options are 'facebook', 'twitter', 'instagram' and 'youtube'                                                                 | `string \| { facebook?: string \| undefined; twitter?: string \| undefined; instagram?: string \| undefined; youtube?: string \| undefined; }` | `undefined` |
+| `threeColumnOptions` | `three-column-options` | Stores the titles and content for the expanded three column footer                                                                                                                | `ThreeColumnOptions \| string \| undefined`                                                                                                    | `undefined` |
+| `twoColumnOptions`   | `two-column-options`   | Stores the titles and content for the expanded two column footer                                                                                                                  | `TwoColumnOptions \| string \| undefined`                                                                                                      | `undefined` |
+| `type`               | `type`                 | Type of footer to be rendered Default: 'default'                                                                                                                                  | `"default" \| "threeColumn" \| "twoColumn"`                                                                                                    | `'default'` |
 
 ---
 

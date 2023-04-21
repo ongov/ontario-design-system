@@ -11,6 +11,8 @@ import { ExpandedFooterWrapper, FooterColumn, FooterSocialLinksProps, SimpleFoot
 import { isInvalidTwoColumnOptions, isInvalidThreeColumnOptions } from './utils';
 import { Language } from '../../utils/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import translations from '../../translations/global.i18n.json';
 
 @Component({
@@ -85,7 +87,6 @@ export class OntarioFooter {
 	@Watch('footerLinks')
 	private processFooterLinks() {
 		this.parseOptions(this.footerLinks);
-		this.verifyFooterLinks();
 	}
 
 	@Watch('socialLinks')
@@ -105,37 +106,44 @@ export class OntarioFooter {
 		this.verifyThreeColumnOptions();
 	}
 
-	private verifyFooterLinks() {
-		if (!this.footerLinksState?.accessibilityLink || !this.footerLinksState?.privacyLink) {
-			console.error(
-				'Error: FooterLinks not fully set, please review your values and ensure all required options are set.',
-			);
-		}
-	}
-
 	private isTwoColumnLayout = (): boolean => this.type === 'twoColumn';
 	private isThreeColumnLayout = (): boolean => this.type === 'threeColumn';
 
 	private verifyTwoColumnOptions() {
 		if (this.isTwoColumnLayout() && isInvalidTwoColumnOptions(this.twoColumnState)) {
-			console.error('Error: twoColumnOptions not fully set, please review your values and ensure all options are set.');
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' twoColumnOptions ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-footer> ')
+				.addRegularText('were not fully set. Please review your values and ensure all options are set.')
+				.printMessage();
 		}
 	}
 
 	private verifyThreeColumnOptions() {
 		if (this.isThreeColumnLayout() && isInvalidThreeColumnOptions(this.threeColumnState)) {
-			console.error(
-				'Error: threeColumnOptions not fully set, please review your values and ensure all required options are set.',
-			);
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' threeColumnOptions ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-footer> ')
+				.addRegularText('were not fully set. Please review your values and ensure all options are set.')
+				.printMessage();
 		}
 	}
 
 	private parseOptions(optionType: any) {
 		const options = optionType;
+		const isString = typeof options === 'string';
 
-		if (options) {
-			const isString = typeof options === 'string';
+		if (!options) {
+			return;
+		}
 
+		try {
 			if (options === this.footerLinks) {
 				this.footerLinksState = isString ? JSON.parse(options) : options;
 			} else if (options === this.socialLinks) {
@@ -145,6 +153,17 @@ export class OntarioFooter {
 			} else {
 				this.threeColumnState = isString ? JSON.parse(options) : options;
 			}
+		} catch (error) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addRegularText(' failed to parse props for ')
+				.addMonospaceText('<ontario-footer>')
+				.addRegularText(' in ')
+				.addMonospaceText('parseOptions()')
+				.addRegularText(' method \n ')
+				.addMonospaceText(error.stack)
+				.printMessage(ConsoleType.Error);
 		}
 	}
 
@@ -158,23 +177,23 @@ export class OntarioFooter {
 
 		const links: SimpleFooterLinks = {
 			accessibilityLink: {
-				href: accessibilityLink,
-				text: translations.Accessibility[language],
+				href: accessibilityLink?.href ?? translations.accessibilityLink.link[language],
+				text: accessibilityLink?.text ?? translations.accessibilityLink.text[language],
 			},
 			privacyLink: {
-				href: privacyLink,
-				text: translations.Privacy[language],
+				href: privacyLink?.href ?? translations.privacyLink.link[language],
+				text: privacyLink?.text ?? translations.privacyLink.text[language],
 			},
 			printerLink: {
-				href: printerLink ?? translations.Printer.link[language],
-				text: translations.Printer.text[language],
+				href: printerLink?.href ?? translations.printerLink.link[language],
+				text: printerLink?.text ?? translations.printerLink.text[language],
 			},
 		};
 
 		if (contactLink) {
 			links['contactLink'] = {
-				href: contactLink,
-				text: translations.ContactUs[language],
+				href: contactLink.href,
+				text: contactLink.text ?? translations.contactUs[language],
 			};
 		}
 
