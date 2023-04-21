@@ -54,7 +54,13 @@ export class OntarioHintText implements Hint {
 		if (!this.host.textContent) {
 			if (validatePropExists(newValue)) {
 				const message = new ConsoleMessageClass();
-				message.addDesignSystemTag().addMonospaceText(' hint ').addRegularText('for').addMonospaceText(' <ontario-hint-text> ').addRegularText('was not provided').printMessage();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' hint ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-hint-text> ')
+					.addRegularText('was not provided')
+					.printMessage();
 			}
 		}
 	}

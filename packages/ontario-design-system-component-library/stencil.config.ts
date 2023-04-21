@@ -7,7 +7,10 @@ export const config: Config = {
 	namespace: 'ontario-design-system-components',
 	plugins: [
 		sass({
-			includePaths: ['./node_modules', './node_modules/@ontario-digital-service/ontario-design-system-global-styles/node_modules'],
+			includePaths: [
+				'./node_modules',
+				'./node_modules/@ontario-digital-service/ontario-design-system-global-styles/node_modules',
+			],
 		}),
 		inlineSvg(),
 	],
@@ -27,6 +30,11 @@ export const config: Config = {
 				{
 					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/fonts',
 					dest: 'fonts',
+					warn: true,
+				},
+				{
+					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/favicons',
+					dest: 'favicons',
 					warn: true,
 				},
 				{
@@ -52,6 +60,11 @@ export const config: Config = {
 				{
 					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/fonts',
 					dest: 'fonts',
+					warn: true,
+				},
+				{
+					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/favicons',
+					dest: 'favicons',
 					warn: true,
 				},
 				{

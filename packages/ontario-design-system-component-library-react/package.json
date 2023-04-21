@@ -1,28 +1,10 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-component-library-react",
-	"sideEffects": false,
-	"version": "2.2.1",
+	"version": "2.3.0-alpha.5",
 	"private": false,
 	"description": "React specific wrapper for ontario-design-system-component-library",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/ionic-team/ionic.git"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"scripts": {
-		"build": "npm run clean && npm run compile",
-		"postbuild": "npm run copy:assets",
-		"clean": "rm -rf dist",
-		"clean:full": "rm -rf node_modules && npm run clean",
-		"compile": "npm run tsc",
-		"tsc": "tsc -p .",
-		"rollup": "rollup -c",
-		"copy:images": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/assets/**/*\" dist/assets/images",
-		"copy:fonts": "copyfiles -E -u 6 \"node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/fonts/**/*\" dist/assets/fonts",
-		"copy:assets": "npm run copy:images && npm run copy:fonts"
-	},
+	"license": "Apache-2.0",
+	"sideEffects": false,
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -32,25 +14,19 @@
 		"package.json",
 		"README.md"
 	],
-	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-component-library": "^2.2.1"
-	},
-	"devDependencies": {
-		"@types/jest": "23.3.9",
-		"@types/node": "^15.12.2",
-		"@types/react": "16.7.6",
-		"@types/react-dom": "16.0.9",
-		"copyfiles": "^2.4.1",
-		"jest": "^23.0.0",
-		"jest-dom": "^3.0.2",
-		"np": "^3.1.0",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"typescript": "^3.3.4000"
-	},
-	"peerDependencies": {
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"postbuild": "npm run copy:assets",
+		"clean": "rm -rf dist",
+		"clean:full": "rm -rf node_modules && npm run clean",
+		"compile": "npm run tsc",
+		"copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts",
+		"copy:favicons": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/favicons/**/*\" dist/assets/favicons",
+		"copy:fonts": "copyfiles -E -u 6 \"node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/fonts/**/*\" dist/assets/fonts",
+		"copy:images": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/assets/**/*\" dist/assets/images",
+		"format": "prettier --write .",
+		"rollup": "rollup -c",
+		"tsc": "tsc -p ."
 	},
 	"jest": {
 		"preset": "ts-jest",
@@ -59,6 +35,30 @@
 			"node_modules",
 			"dist"
 		]
+	},
+	"dependencies": {
+		"@ontario-digital-service/ontario-design-system-component-library": "^2.3.0-alpha.5"
+	},
+	"devDependencies": {
+		"@types/jest": "23.3.9",
+		"@types/node": "^15.12.2",
+		"@types/react": "18.0.26",
+		"@types/react-dom": "18.0.9",
+		"copyfiles": "^2.4.1",
+		"jest": "^23.0.0",
+		"jest-dom": "^3.0.2",
+		"np": "^3.1.0",
+		"prettier": "^2.8.1",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"typescript": "^3.3.4000"
+	},
+	"peerDependencies": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"publishConfig": {
+		"access": "public"
 	},
 	"authors": [
 		{

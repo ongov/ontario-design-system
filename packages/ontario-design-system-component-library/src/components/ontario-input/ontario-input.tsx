@@ -4,6 +4,8 @@ import { Caption } from '../../utils/input-caption/caption.interface';
 import { v4 as uuid } from 'uuid';
 import { TextInput } from './input.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+import { Language } from '../../utils/language-types';
+import { validateLanguage } from '../../utils/validation/validation-functions';
 import { default as translations } from '../../translations/global.i18n.json';
 
 /**
@@ -48,8 +50,15 @@ export class OntarioInput implements TextInput {
 	/**
 	 * The width of the input field. If no value is assigned, it will present as the default input width.
 	 */
-	@Prop({ mutable: true }) inputWidth: '2-char-width' | '3-char-width' | '4-char-width' | '5-char-width' | '7-char-width' | '10-char-width' | '20-char-width' | 'default' =
-		'default';
+	@Prop({ mutable: true }) inputWidth:
+		| '2-char-width'
+		| '3-char-width'
+		| '4-char-width'
+		| '5-char-width'
+		| '7-char-width'
+		| '10-char-width'
+		| '20-char-width'
+		| 'default' = 'default';
 
 	/**
 	 * The name assigned to the input.The name value is used to reference form data after a form is submitted.
@@ -82,7 +91,7 @@ export class OntarioInput implements TextInput {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language?: string = 'en';
+	@Prop({ mutable: true }) language?: Language = 'en';
 
 	/**
 	 * Used to include the Hint Expander component underneath the input box.
@@ -135,13 +144,13 @@ export class OntarioInput implements TextInput {
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
-	handleSetAppLanguage(event: CustomEvent<string>) {
-		this.language = event.detail;
+	handleSetAppLanguage(event: CustomEvent<Language>) {
+		this.language = validateLanguage(event);
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<string>) {
-		const toggledLanguage = event.detail;
+	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
+		const toggledLanguage = validateLanguage(event);
 		this.language = toggledLanguage;
 	}
 
@@ -156,7 +165,14 @@ export class OntarioInput implements TextInput {
 
 	@Watch('caption')
 	private updateCaptionState(newValue: Caption | string) {
-		this.captionState = new InputCaption(this.element.tagName, newValue, translations, this.language, false, this.required);
+		this.captionState = new InputCaption(
+			this.element.tagName,
+			newValue,
+			translations,
+			this.language,
+			false,
+			this.required,
+		);
 	}
 
 	/**
@@ -206,12 +222,13 @@ export class OntarioInput implements TextInput {
 		this.updateCaptionState(this.caption);
 		this.elementId = this.elementId ?? uuid();
 		this.parseHintExpander();
+		this.language = validateLanguage(this.language);
 	}
 
 	render() {
 		return (
 			<div>
-				{this.captionState.getCaption(this.getId())}
+				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
 				<input
 					aria-describedby={this.describedBy}
@@ -225,7 +242,12 @@ export class OntarioInput implements TextInput {
 					value={this.getValue()}
 					required={!!this.required}
 				/>
-				{this.internalHintExpander && <ontario-hint-expander hint={this.internalHintExpander.hint} content={this.internalHintExpander.content}></ontario-hint-expander>}
+				{this.internalHintExpander && (
+					<ontario-hint-expander
+						hint={this.internalHintExpander.hint}
+						content={this.internalHintExpander.content}
+					></ontario-hint-expander>
+				)}
 			</div>
 		);
 	}

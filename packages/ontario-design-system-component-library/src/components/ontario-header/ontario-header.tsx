@@ -115,7 +115,8 @@ export class OntarioHeader {
 	private parseapplicationHeaderInfo() {
 		const applicationHeaderInfo = this.applicationHeaderInfo;
 		if (applicationHeaderInfo) {
-			if (typeof applicationHeaderInfo === 'string') this.applicationHeaderInfoState = JSON.parse(applicationHeaderInfo);
+			if (typeof applicationHeaderInfo === 'string')
+				this.applicationHeaderInfoState = JSON.parse(applicationHeaderInfo);
 			else this.applicationHeaderInfoState = applicationHeaderInfo;
 		}
 	}
@@ -201,10 +202,24 @@ export class OntarioHeader {
 	 * @param onBlur when set to true, it will call the function trapMenuFocus(), otherwise nothing is done (used in lastLink)
 	 * @param tabIndex when set to true, it will set the tabindex to be -1, meaning it can't be in focus (used in items when the menu is closed)
 	 */
-	private generateMenuItem(href: string, name: string, linkIsActive: any, liClass?: string, onClick?: any, onBlur?: boolean, tabIndex?: boolean) {
+	private generateMenuItem(
+		href: string,
+		name: string,
+		linkIsActive: any,
+		liClass?: string,
+		onClick?: any,
+		onBlur?: boolean,
+		tabIndex?: boolean,
+	) {
 		return (
 			<li class={liClass}>
-				<a class={linkIsActive && `ontario-link--active`} href={href} onClick={onClick} onBlur={onBlur ? this.trapMenuFocus : undefined} tabindex={tabIndex ? -1 : undefined}>
+				<a
+					class={linkIsActive && `ontario-link--active`}
+					href={href}
+					onClick={onClick}
+					onBlur={onBlur ? this.trapMenuFocus : undefined}
+					tabindex={tabIndex ? -1 : undefined}
+				>
 					{name}
 				</a>
 			</li>
@@ -223,7 +238,7 @@ export class OntarioHeader {
 				aria-label={this.menuToggle ? 'open menu' : 'close menu'}
 				onClick={this.handleMenuToggle}
 				aria-hidden={`${this.menuToggle}`}
-				ref={el => (this.menuButton = el as HTMLInputElement)}
+				ref={(el) => (this.menuButton = el as HTMLInputElement)}
 			>
 				<div class="ontario-icon-container" innerHTML={this.menuToggle ? OntarioIconClose : OntarioIconMenu} />
 				<span>Menu</span>
@@ -298,18 +313,29 @@ export class OntarioHeader {
 		if (this.type == 'ontario') {
 			return (
 				<div>
-					<div class="ontario-header__container" ref={el => (this.header = el as HTMLInputElement)}>
-						<header class={this.searchToggle ? 'ontario-header ontario-header--search-open' : 'ontario-header'} id="ontario-header">
+					<div class="ontario-header__container" ref={(el) => (this.header = el as HTMLInputElement)}>
+						<header
+							class={this.searchToggle ? 'ontario-header ontario-header--search-open' : 'ontario-header'}
+							id="ontario-header"
+						>
 							<div class="ontario-row">
 								<div class="ontario-hide-for-small-only ontario-header__logo-container ontario-columns ontario-small-2 ontario-medium-4 ontario-large-3 ">
 									<a href="https://www.ontario.ca/page/government-ontario">
-										<img class="ontario-show-for-medium" src={getAssetPath('./assets/ontario-logo--desktop.svg')} alt="Government of Ontario" />
+										<img
+											class="ontario-show-for-medium"
+											src={getAssetPath('./assets/ontario-logo--desktop.svg')}
+											alt="Government of Ontario"
+										/>
 									</a>
 								</div>
 
 								<div class="ontario-show-for-small-only ontario-header__logo-container ontario-columns ontario-small-2 ontario-medium-4 ontario-large-3 ">
 									<a href="https://www.ontario.ca/page/government-ontario">
-										<img class="ontario-show-for-small-only" src={getAssetPath('./assets/ontario-logo--mobile.svg')} alt="Government of Ontario" />
+										<img
+											class="ontario-show-for-small-only"
+											src={getAssetPath('./assets/ontario-logo--mobile.svg')}
+											alt="Government of Ontario"
+										/>
 									</a>
 								</div>
 
@@ -332,17 +358,27 @@ export class OntarioHeader {
 										aria-autocomplete="none"
 										class="ontario-input ontario-header__search-input"
 										required={true}
-										ref={el => (this.searchBar = el as HTMLInputElement)}
+										ref={(el) => (this.searchBar = el as HTMLInputElement)}
 										onKeyDown={this.onEscapePressed}
 									/>
-									<input class="ontario-header__search-reset" id="ontario-search-reset" type="reset" value="" aria-label="Clear" innerHTML={OntarioIconCloseSearch}></input>
+									<input
+										class="ontario-header__search-reset"
+										id="ontario-search-reset"
+										type="reset"
+										value=""
+										aria-label="Clear"
+										innerHTML={OntarioIconCloseSearch}
+									></input>
 									<button class="ontario-header__search-submit" id="ontario-search-submit" type="submit">
 										<div class="ontario-icon-container" innerHTML={OntarioIconSearch} />
 										<span class="ontario-show-for-sr">Submit</span>
 									</button>
 								</form>
 								<div class="ontario-header__nav-right-container ontario-columns ontario-small-10 ontario-medium-8 ontario-large-3">
-									<a href={this.languageState?.frenchLink} class="ontario-header__language-toggler ontario-header-button ontario-header-button--without-outline">
+									<a
+										href={this.languageState?.frenchLink}
+										class="ontario-header__language-toggler ontario-header-button ontario-header-button--without-outline"
+									>
 										<abbr title="Français" class="ontario-show-for-small-only">
 											FR
 										</abbr>
@@ -353,8 +389,9 @@ export class OntarioHeader {
 											class="ontario-header__search-toggler ontario-header-button ontario-header-button--without-outline "
 											id="ontario-header-search-toggler"
 											aria-controls="ontario-search-form-container"
+											aria-label="open search"
 											onClick={this.handleSearchToggle}
-											ref={el => (this.searchButton = el as HTMLInputElement)}
+											ref={(el) => (this.searchButton = el as HTMLInputElement)}
 										>
 											<div class="ontario-icon-container" innerHTML={OntarioIconSearchWhite} />
 											<span class="ontario-show-for-medium ontario-show">Search</span>
@@ -376,7 +413,12 @@ export class OntarioHeader {
 							</div>
 						</header>
 						{this.menuToggle ? (
-							<nav role="navigation" class="ontario-navigation" id="ontario-navigation" aria-hidden={`${this.menuToggle}`}>
+							<nav
+								role="navigation"
+								class="ontario-navigation"
+								id="ontario-navigation"
+								aria-hidden={`${this.menuToggle}`}
+							>
 								<div class="ontario-navigation ontario-navigation__container ontario-navigation--open">
 									<ul>
 										{/*
@@ -394,7 +436,12 @@ export class OntarioHeader {
 								</div>
 							</nav>
 						) : (
-							<nav role="navigation" class="ontario-navigation" id="ontario-navigation" aria-hidden={`${this.menuToggle}`}>
+							<nav
+								role="navigation"
+								class="ontario-navigation"
+								id="ontario-navigation"
+								aria-hidden={`${this.menuToggle}`}
+							>
 								<div class="ontario-navigation ontario-navigation__container ontario-navigation--closed">
 									<ul>
 										{/*
@@ -402,7 +449,17 @@ export class OntarioHeader {
 											This is not really necessary, but it's good practice.
 											https://www.maxability.co.in/2016/06/13/tabindex-for-accessibility-good-bad-and-ugly/
 										*/}
-										{this.itemState?.map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler, false, true))}
+										{this.itemState?.map((item) =>
+											this.generateMenuItem(
+												item.href,
+												item.name,
+												item.linkIsActive,
+												'',
+												item.onClickHandler,
+												false,
+												true,
+											),
+										)}
 									</ul>
 								</div>
 							</nav>
@@ -414,21 +471,28 @@ export class OntarioHeader {
 		} else {
 			return (
 				<div>
-					<div class="ontario-application-header-container" id="ontario-application-header" ref={el => (this.header = el as HTMLInputElement)}>
+					<div
+						class="ontario-application-header-container"
+						id="ontario-application-header"
+						ref={(el) => (this.header = el as HTMLInputElement)}
+					>
 						<div class="ontario-application-header-container">
 							<section class="ontario-application-header">
 								<div class="ontario-row">
 									<div class="ontario-columns ontario-small-6 ontario-application-header__logo">
 										<a href="https://www.ontario.ca/page/government-ontario">
-											<img src={getAssetPath('./assets/ontario-logo-application-header.svg')} alt="Government of Ontario" />
+											<img
+												src={getAssetPath('./assets/ontario-logo-application-header.svg')}
+												alt="Government of Ontario"
+											/>
 										</a>
 									</div>
 									<div class="ontario-columns ontario-small-6 ontario-application-header__lang-toggle">
-										<a href={this.languageState?.frenchLink} class="ontario-header-button ontario-header-button--without-outline">
-											<abbr title="Français" class="ontario-show-for-small-only">
-												FR
-											</abbr>
-											<span class="ontario-show-for-medium">Français</span>
+										<a
+											href={this.languageState?.frenchLink}
+											class="ontario-header-button ontario-header-button--without-outline"
+										>
+											Français
 										</a>
 									</div>
 								</div>
@@ -447,7 +511,11 @@ export class OntarioHeader {
 													{/*
 														First 5 items in the itemState are shown in the header itself.
 													*/}
-													{this.itemState?.slice(0, 5).map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler))}
+													{this.itemState
+														?.slice(0, 5)
+														.map((item) =>
+															this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler),
+														)}
 												</ul>
 											</div>
 											<div class="ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large">
@@ -455,7 +523,11 @@ export class OntarioHeader {
 													{/*
 														First 2 items in the itemState are shown in the header itself (tablet).
 													*/}
-													{this.itemState?.slice(0, 2).map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler))}
+													{this.itemState
+														?.slice(0, 2)
+														.map((item) =>
+															this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler),
+														)}
 												</ul>
 											</div>
 											{this.itemState !== undefined && this.renderMenuButton(this.itemState.length)}
@@ -464,7 +536,12 @@ export class OntarioHeader {
 								</div>
 							</section>
 							{this.menuToggle ? (
-								<nav role="navigation" class="ontario-application-navigation" id="ontario-application-navigation" aria-hidden={`${this.menuToggle}`}>
+								<nav
+									role="navigation"
+									class="ontario-application-navigation"
+									id="ontario-application-navigation"
+									aria-hidden={`${this.menuToggle}`}
+								>
 									<div class="ontario-application-navigation ontario-application-navigation__container ontario-navigation--open">
 										<ul class={this.renderMenuUl(this.itemState.length)}>
 											{/*
@@ -475,28 +552,66 @@ export class OntarioHeader {
 											{this.itemState?.slice(0, 2).map((item, index) => {
 												const lastLink = index + 1 === this.itemState.length - 0;
 												return lastLink
-													? this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-show-for-small-only', item.onClickHandler, true)
-													: this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-show-for-small-only', item.onClickHandler);
+													? this.generateMenuItem(
+															item.href,
+															item.name,
+															item.linkIsActive,
+															'ontario-show-for-small-only',
+															item.onClickHandler,
+															true,
+													  )
+													: this.generateMenuItem(
+															item.href,
+															item.name,
+															item.linkIsActive,
+															'ontario-show-for-small-only',
+															item.onClickHandler,
+													  );
 											})}
 
 											{this.itemState?.slice(2, 5).map((item, index) => {
 												const lastLink = index + 1 === this.itemState.length - 2;
 												return lastLink
-													? this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-hide-for-large', item.onClickHandler, true)
-													: this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-hide-for-large', item.onClickHandler);
+													? this.generateMenuItem(
+															item.href,
+															item.name,
+															item.linkIsActive,
+															'ontario-hide-for-large',
+															item.onClickHandler,
+															true,
+													  )
+													: this.generateMenuItem(
+															item.href,
+															item.name,
+															item.linkIsActive,
+															'ontario-hide-for-large',
+															item.onClickHandler,
+													  );
 											})}
 
 											{this.itemState?.slice(5).map((item, index) => {
 												const lastLink = index + 1 === this.itemState.length - 5;
 												return lastLink
-													? this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler, true)
+													? this.generateMenuItem(
+															item.href,
+															item.name,
+															item.linkIsActive,
+															'',
+															item.onClickHandler,
+															true,
+													  )
 													: this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler);
 											})}
 										</ul>
 									</div>
 								</nav>
 							) : (
-								<nav role="navigation" class="ontario-application-navigation" id="ontario-application-navigation" aria-hidden={`${this.menuToggle}`}>
+								<nav
+									role="navigation"
+									class="ontario-application-navigation"
+									id="ontario-application-navigation"
+									aria-hidden={`${this.menuToggle}`}
+								>
 									<div class="ontario-application-navigation ontario-application-navigation__container ontario-navigation--closed">
 										<ul>
 											{/*
@@ -507,13 +622,45 @@ export class OntarioHeader {
 											*/}
 											{this.itemState
 												?.slice(0, 2)
-												.map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-show-for-small-only', item.onClickHandler, false, true))}
+												.map((item) =>
+													this.generateMenuItem(
+														item.href,
+														item.name,
+														item.linkIsActive,
+														'ontario-show-for-small-only',
+														item.onClickHandler,
+														false,
+														true,
+													),
+												)}
 
 											{this.itemState
 												?.slice(2, 5)
-												.map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, 'ontario-hide-for-large', item.onClickHandler, false, true))}
+												.map((item) =>
+													this.generateMenuItem(
+														item.href,
+														item.name,
+														item.linkIsActive,
+														'ontario-hide-for-large',
+														item.onClickHandler,
+														false,
+														true,
+													),
+												)}
 
-											{this.itemState?.slice(5).map(item => this.generateMenuItem(item.href, item.name, item.linkIsActive, '', item.onClickHandler, false, true))}
+											{this.itemState
+												?.slice(5)
+												.map((item) =>
+													this.generateMenuItem(
+														item.href,
+														item.name,
+														item.linkIsActive,
+														'',
+														item.onClickHandler,
+														false,
+														true,
+													),
+												)}
 										</ul>
 									</div>
 								</nav>

@@ -31,7 +31,9 @@ describe('ontario-page-alert', () => {
 
 	it('renders warning page alert', async () => {
 		const page = await newE2EPage();
-		await page.setContent('<ontario-page-alert type="warning" heading="This is warning page alert"></ontario-page-alert>');
+		await page.setContent(
+			'<ontario-page-alert type="warning" heading="This is warning page alert"></ontario-page-alert>',
+		);
 
 		const component = await page.find('ontario-page-alert');
 		const element = await page.find('ontario-page-alert >>> div');
@@ -45,7 +47,9 @@ describe('ontario-page-alert', () => {
 
 	it('renders success page alert', async () => {
 		const page = await newE2EPage();
-		await page.setContent('<ontario-page-alert type="success" heading="This is success page alert"></ontario-page-alert>');
+		await page.setContent(
+			'<ontario-page-alert type="success" heading="This is success page alert"></ontario-page-alert>',
+		);
 
 		const component = await page.find('ontario-page-alert');
 		const element = await page.find('ontario-page-alert >>> div');

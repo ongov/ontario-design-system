@@ -1,6 +1,5 @@
 @use './font-weights.variables' as fontWeights;
 @use './spacing.variables' as spacing;
-@use './global.variables' as global;
 @use './breakpoints.variables' as breakpoints;
 @use './letter-spacing.variables' as letterSpacing;
 @use '../2-tools/functions/global.functions' as globalFunctions;
@@ -12,6 +11,8 @@
 
 $ontario-font-open-sans: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $ontario-font-raleway-modified: 'Raleway', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$ontario-max-width-large: 70rem;
+$ontario-max-width-standard: 48rem;
 
 %ontario-header-styles {
 	font-style: normal;
@@ -28,6 +29,7 @@ $ontario-font-raleway-modified: 'Raleway', 'Open Sans', 'Helvetica Neue', Helvet
 	letter-spacing: letterSpacing.$ontario-letter-spacing-xlarge;
 	line-height: lineHeight.$ontario-line-height-2;
 	margin: spacing.$spacing-7 spacing.$spacing-0 spacing.$spacing-5 spacing.$spacing-0;
+	max-width: $ontario-max-width-large;
 
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		font-size: globalFunctions.rem-calc(40);
@@ -42,6 +44,7 @@ $ontario-font-raleway-modified: 'Raleway', 'Open Sans', 'Helvetica Neue', Helvet
 	letter-spacing: letterSpacing.$ontario-letter-spacing-medium;
 	line-height: lineHeight.$ontario-line-height-4;
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
+	max-width: $ontario-max-width-standard;
 
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		font-size: globalFunctions.rem-calc(33);
@@ -56,6 +59,7 @@ $ontario-font-raleway-modified: 'Raleway', 'Open Sans', 'Helvetica Neue', Helvet
 	letter-spacing: letterSpacing.$ontario-letter-spacing-xsmall;
 	line-height: lineHeight.$ontario-line-height-5;
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
+	max-width: $ontario-max-width-standard;
 
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		font-size: globalFunctions.rem-calc(28);
@@ -70,6 +74,7 @@ $ontario-font-raleway-modified: 'Raleway', 'Open Sans', 'Helvetica Neue', Helvet
 	letter-spacing: letterSpacing.$ontario-letter-spacing-medium;
 	line-height: lineHeight.$ontario-line-height-7;
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
+	max-width: $ontario-max-width-standard;
 
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		font-size: globalFunctions.rem-calc(24);
@@ -84,6 +89,7 @@ $ontario-font-raleway-modified: 'Raleway', 'Open Sans', 'Helvetica Neue', Helvet
 	letter-spacing: letterSpacing.$ontario-letter-spacing-medium;
 	line-height: lineHeight.$ontario-line-height-8;
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
+	max-width: $ontario-max-width-standard;
 
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		font-size: globalFunctions.rem-calc(19);
@@ -97,6 +103,7 @@ $ontario-font-raleway-modified: 'Raleway', 'Open Sans', 'Helvetica Neue', Helvet
 	font-size: globalFunctions.rem-calc(16);
 	line-height: lineHeight.$ontario-line-height-8;
 	letter-spacing: letterSpacing.$ontario-letter-spacing-medium;
+	max-width: $ontario-max-width-standard;
 
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
@@ -109,7 +116,7 @@ $ontario-font-raleway-modified: 'Raleway', 'Open Sans', 'Helvetica Neue', Helvet
 %lead-statement {
 	font-size: globalFunctions.rem-calc(20);
 	line-height: 1.6;
-	max-width: global.$full-width;
+	max-width: $ontario-max-width-large;
 
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		font-size: globalFunctions.rem-calc(22);

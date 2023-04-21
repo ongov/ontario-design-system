@@ -4,8 +4,9 @@ import { Input } from '../../utils/common.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
 import { Caption } from '../../utils/input-caption/caption.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
-import { validatePropExists } from '../../utils/validation/validation-functions';
+import { validatePropExists, validateLanguage } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { Language } from '../../utils/language-types';
 import { default as translations } from '../../translations/global.i18n.json';
 
 /**
@@ -95,7 +96,7 @@ export class OntarioTextarea implements Input {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language?: string = 'en';
+	@Prop({ mutable: true }) language?: Language = 'en';
 
 	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.
@@ -128,13 +129,13 @@ export class OntarioTextarea implements Input {
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the textarea component loads.
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
-	handleSetAppLanguage(event: CustomEvent<string>) {
-		this.language = event.detail;
+	handleSetAppLanguage(event: CustomEvent<Language>) {
+		this.language = validateLanguage(event);
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<string>) {
-		const toggledLanguage = event.detail;
+	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
+		const toggledLanguage = validateLanguage(event);
 		this.language = toggledLanguage;
 	}
 
@@ -156,13 +157,26 @@ export class OntarioTextarea implements Input {
 	validateName(newValue: string) {
 		if (validatePropExists(newValue)) {
 			const message = new ConsoleMessageClass();
-			message.addDesignSystemTag().addMonospaceText(' name ').addRegularText('for').addMonospaceText(' <ontario-textarea> ').addRegularText('was not provided').printMessage();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' name ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-textarea> ')
+				.addRegularText('was not provided')
+				.printMessage();
 		}
 	}
 
 	@Watch('caption')
 	private updateCaptionState(newValue: Caption | string) {
-		this.captionState = new InputCaption(this.element.tagName, newValue, translations, this.language, false, this.required);
+		this.captionState = new InputCaption(
+			this.element.tagName,
+			newValue,
+			translations,
+			this.language,
+			false,
+			this.required,
+		);
 	}
 
 	/**
@@ -208,12 +222,13 @@ export class OntarioTextarea implements Input {
 		this.elementId = this.elementId ?? uuid();
 		this.parseHintExpander();
 		this.validateName(this.name);
+		this.language = validateLanguage(this.language);
 	}
 
 	render() {
 		return (
 			<div>
-				{this.captionState.getCaption(this.getId())}
+				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
 				<textarea
 					aria-describedby={this.describedBy}
@@ -227,7 +242,11 @@ export class OntarioTextarea implements Input {
 					required={!!this.required}
 				></textarea>
 				{this.internalHintExpander && (
-					<ontario-hint-expander hint={this.internalHintExpander.hint} content={this.internalHintExpander.content} input-exists></ontario-hint-expander>
+					<ontario-hint-expander
+						hint={this.internalHintExpander.hint}
+						content={this.internalHintExpander.content}
+						input-exists
+					></ontario-hint-expander>
 				)}
 			</div>
 		);

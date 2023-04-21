@@ -1,5 +1,6 @@
 import { Base } from '../../utils/common.interface';
 import { DropdownOption } from './dropdown-option.interface';
+import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
 export interface Dropdown extends Base {
 	/**
@@ -63,4 +64,29 @@ export interface Dropdown extends Base {
 	 * <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
 	 */
 	isEmptyStartOption?: boolean | string;
+
+	/**
+	 * Hint text for Ontario Dropdown. This is optional.
+	 */
+	hintText?: string;
+
+	/**
+	 * Used to include the Hint Expander component underneath the dropdown list box.
+	 * This is passed in as an object with key-value pairs. This is optional.
+	 *
+	 * @example
+	 * <ontario-dropdown-list
+	 *   caption='{
+	 *     "caption": "What province do you live in?",
+	 *     "captionType": "heading",
+	 *   }
+	 *   hint-expander='{
+	 *    "hint": "Hint expander",
+	 *    "content": "This is the content"
+	 *   }'
+	 *   required="true"
+	 * >
+	 * </ontario-dropdown-list>
+	 */
+	hintExpander?: HintExpander | string;
 }

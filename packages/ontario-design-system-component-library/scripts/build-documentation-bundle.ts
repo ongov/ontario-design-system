@@ -18,11 +18,11 @@ class Documentation {
 
 		const fileInfos = filePaths
 			// Filter out files not within the src directory; keep main project readme.md
-			.filter(filePath => {
+			.filter((filePath) => {
 				const lowercasePath = filePath.toLocaleLowerCase();
 				return lowercasePath.startsWith('src') || lowercasePath === 'readme.md';
 			})
-			.map(filePath => {
+			.map((filePath) => {
 				const filePathInfo = pathParse(filePath);
 
 				// Expecting the folder path to be 'src/components/<component-name>/readme.md
@@ -37,12 +37,14 @@ class Documentation {
 
 		console.log(
 			'Files to compress:',
-			fileInfos.map(fileInfo => `${fileInfo.originalFilePath} -> ${fileInfo.newFileName}`),
+			fileInfos.map((fileInfo) => `${fileInfo.originalFilePath} -> ${fileInfo.newFileName}`),
 		);
 
 		const zipFile = this.createZipFile();
 		console.log('Adding files to zip file');
-		await Promise.all(fileInfos.map(fileInfo => this.addFileToZipFile(zipFile, fileInfo.newFileName, fileInfo.originalFilePath)));
+		await Promise.all(
+			fileInfos.map((fileInfo) => this.addFileToZipFile(zipFile, fileInfo.newFileName, fileInfo.originalFilePath)),
+		);
 
 		console.log('Writing zip file to disk:', outputFileName);
 		await this.writeZipFileToDisk(zipFile, outputFileName);
@@ -92,9 +94,9 @@ class Documentation {
 		return new Promise<Buffer>((resolve, reject) => {
 			const _buf = Array<any>();
 
-			stream.on('data', chunk => _buf.push(chunk));
+			stream.on('data', (chunk) => _buf.push(chunk));
 			stream.on('end', () => resolve(Buffer.concat(_buf)));
-			stream.on('error', err => reject(`error converting stream - ${err}`));
+			stream.on('error', (err) => reject(`error converting stream - ${err}`));
 		});
 	}
 }

@@ -6,5 +6,29 @@
 	"optional": {
 		"en": "optional",
 		"fr": "facultative"
+	},
+	"accessibility": {
+		"moreInfo": {
+			"en": "More information on",
+			"fr": "Des renseignements supplémentaires sur"
+		},
+		"checkboxHintExpander": {
+			"en": "is available after the last checkbox item.",
+			"fr": "suivront à la dernière case à cocher."
+		},
+		"singleHintExpander": {
+			"en": "field is available in the next element.",
+			"fr": "suivront au prochain élément."
+		}
+	},
+	"backToTop": {
+		"top": {
+			"en": "Top",
+			"fr": "Haut"
+		},
+		"ariaLabel": {
+			"en": "Scroll back to the top",
+			"fr": "Retour en haut de la page"
+		}
 	}
 }

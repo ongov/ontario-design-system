@@ -1,16 +1,12 @@
 # test-language-toggle
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
-| Property   | Attribute  | Description | Type     | Default     |
-| ---------- | ---------- | ----------- | -------- | ----------- |
-| `language` | `language` |             | `string` | `undefined` |
-
+| Property   | Attribute  | Description | Type     | Default |
+| ---------- | ---------- | ----------- | -------- | ------- |
+| `language` | `language` |             | `string` | `'en'`  |
 
 ## Events
 
@@ -19,7 +15,6 @@
 | `headerLanguageToggled` |             | `CustomEvent<string>` |
 | `setAppLanguage`        |             | `CustomEvent<string>` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

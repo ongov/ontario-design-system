@@ -1,90 +1,90 @@
 @use '../../global.scss';
 
 .ontario-hint-expander__container {
-  max-width: global.$standard-width;
+	max-width: global.$standard-width;
 }
 
 .ontario-hint-expander__button {
-  color: global.$ontario-colour-link;
-  cursor: pointer;
-  background: none;
-  border: none;
-  display: flex;
-  align-items: center;
-  font-family: global.$ontario-font-open-sans;
-  font-weight: 400;
-  font-size: 1rem;
-  text-align: left;
-  margin: 0 0 global.$spacing-4 0;
-  padding: 0 global.$spacing-1 0 0;
+	color: global.$ontario-colour-link;
+	cursor: pointer;
+	background: none;
+	border: none;
+	display: flex;
+	align-items: center;
+	font-family: global.$ontario-font-open-sans;
+	font-weight: 400;
+	font-size: 1rem;
+	text-align: left;
+	margin: 0 0 global.$spacing-4 0;
+	padding: 0 global.$spacing-1 0 0;
 
-  &-icon--close {
-      display: none;
-      margin-right: global.$spacing-1;
-  }
+	&-icon--close {
+		display: none;
+		margin-right: global.$spacing-1;
+	}
 
-  &-icon--open {
-      display: inline-block;
-      margin-right: global.$spacing-1;
-  }
+	&-icon--open {
+		display: inline-block;
+		margin-right: global.$spacing-1;
+	}
 
-  &:hover {
-      color: global.$ontario-colour-link--hover;
-  }
+	&:hover {
+		color: global.$ontario-colour-link--hover;
+	}
 
-  &:active {
-      color: global.$ontario-colour-link--active;
-  }
+	&:active {
+		color: global.$ontario-colour-link--active;
+	}
 
-  &:focus,
-  &:active {
-      @extend %ontario-focus;
-  }
+	&:focus,
+	&:active {
+		@extend %ontario-focus;
+	}
 
-  & > * {
-    pointer-events: none;
-  }
+	& > * {
+		pointer-events: none;
+	}
 }
 
 .ontario-hint-expander__content {
-  border-left: 4px solid global.$ontario-greyscale-20;
-  color: global.$ontario-colour-black;
-  background-color: global.$ontario-greyscale-5;
-  display: none;
-  padding: global.$spacing-4 global.$spacing-4 global.$spacing-4 calc(#{global.$spacing-4} + #{global.$spacing-1});
-  margin: 0 0 global.$spacing-4 global.$spacing-1;
+	border-left: 4px solid global.$ontario-greyscale-20;
+	color: global.$ontario-colour-black;
+	background-color: global.$ontario-greyscale-5;
+	display: none;
+	padding: global.$spacing-4 global.$spacing-4 global.$spacing-4 calc(#{global.$spacing-4} + #{global.$spacing-1});
+	margin: 0 0 global.$spacing-4 global.$spacing-1;
 
-  & *:last-child {
-      margin-bottom: 0;
-  }
+	& *:last-child {
+		margin-bottom: 0;
+	}
 
-  & img {
-      width: global.$full-width;
+	& img {
+		width: global.$full-width;
 
-      @media screen and (min-width: global.$small-breakpoint) {
-          width: 50%;
-      }
-  }
+		@media screen and (min-width: global.$small-breakpoint) {
+			width: 50%;
+		}
+	}
 }
 
 .ontario-hint-expander__content.ontario-expander__content--opened {
-  display: block;
+	display: block;
 }
 
 .ontario-hint-expander__container.ontario-expander--active {
-  .ontario-hint-expander__button-icon--close {
-      display: inline-block;
-  }
+	.ontario-hint-expander__button-icon--close {
+		display: inline-block;
+	}
 
-  .ontario-hint-expander__button-icon--open {
-      display: none;
-  }
+	.ontario-hint-expander__button-icon--open {
+		display: none;
+	}
 }
 
 .ontario-hint-expander__checkbox-exists-true {
-  margin: global.$spacing-3 0 0 global.$spacing-2;
+	margin: global.$spacing-3 0 0 global.$spacing-2;
 
-  @media screen and (max-width: global.$small-breakpoint) {
-      margin-top:global.$spacing-4;
-  }
+	@media screen and (max-width: global.$small-breakpoint) {
+		margin-top: global.$spacing-4;
+	}
 }

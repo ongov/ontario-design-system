@@ -1,14 +1,19 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
-  ],
-  "start_url": ".",
+	"name": "Ontario Design System Web Components",
+	"short_name": "A React POC to test the Ontario Design System Web Components",
+	"icons": [
+		{
+			"src": "./favicon-192x192.png",
+			"sizes": "192 x 192",
+			"type": "image/png"
+		},
+		{
+			"src": "./favicon-512x512.png",
+			"sizes": "512 x 512",
+			"type": "image/png"
+		}
+	],
+	"start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

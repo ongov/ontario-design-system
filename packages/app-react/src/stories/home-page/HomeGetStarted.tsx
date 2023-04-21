@@ -6,7 +6,7 @@ export default function HomeGetStarted() {
 		<>
 			<div className="ontario-row">
 				<div className="ontario-columns  ontario-medium-12 ontario-large-12">
-					<hr className="dark" />
+					<hr className="ontario-hr--dark" />
 				</div>
 				<div className="ontario-columns  ontario-medium-12 ontario-large-12">
 					<h2>Get started</h2>

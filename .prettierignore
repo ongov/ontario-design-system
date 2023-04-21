@@ -1,0 +1,40 @@
+# General
+dist/
+www/
+loader/
+
+*~
+*.sw[mnpcod]
+*.log
+*.lock
+*.tmp
+*.tmp.*
+log.txt
+*.sublime-project
+*.sublime-workspace
+
+.stencil/
+.idea/
+.vscode/
+.sass-cache/
+.versions/
+node_modules/
+$RECYCLE.BIN/
+
+.DS_Store
+Thumbs.db
+UserInterfaceState.xcuserstate
+.env
+
+# component-lib
+components.d.ts
+
+# component-lib-react
+createComponent.tsx
+createOverlayComponent.tsx
+interfaces.ts
+**/src/components.ts
+**/utils/attachProps.ts
+**/utils/index.tsx
+**/utils/case.ts
+**/utils/dev.ts

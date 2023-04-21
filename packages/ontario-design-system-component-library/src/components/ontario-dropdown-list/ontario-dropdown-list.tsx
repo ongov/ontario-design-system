@@ -4,8 +4,14 @@ import { Caption } from '../../utils/input-caption/caption.interface';
 import { DropdownOption } from './dropdown-option.interface';
 import { Dropdown } from './dropdown.interface';
 import { v4 as uuid } from 'uuid';
-import { validateObjectExists, validatePropExists } from '../../utils/validation/validation-functions';
+import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+import {
+	validateObjectExists,
+	validatePropExists,
+	validateLanguage,
+} from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { Language } from '../../utils/language-types';
 import { default as translations } from '../../translations/global.i18n.json';
 
 @Component({
@@ -39,7 +45,7 @@ export class OntarioDropdownList implements Dropdown {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language?: string = 'en';
+	@Prop({ mutable: true }) language?: Language = 'en';
 
 	/**
 	 * The name for the dropdown list.
@@ -106,6 +112,31 @@ export class OntarioDropdownList implements Dropdown {
 	@Prop() isEmptyStartOption?: boolean | string = false;
 
 	/**
+	 * Hint text for Ontario Dropdown. This is optional.
+	 */
+	@Prop() hintText?: string;
+
+	/**
+	 * Used to include the Hint Expander component underneath the dropdown list box.
+	 * This is passed in as an object with key-value pairs. This is optional.
+	 *
+	 * @example
+	 * <ontario-dropdown-list
+	 *   caption='{
+	 *     "caption": "What province do you live in?",
+	 *     "captionType": "heading",
+	 *   }
+	 *   hint-expander='{
+	 *    "hint": "Hint expander",
+	 *    "content": "This is the content"
+	 *   }'
+	 *   required="true"
+	 * >
+	 * </ontario-dropdown-list>
+	 */
+	@Prop() hintExpander?: HintExpander | string;
+
+	/**
 	 * Instantiate an InputCaption object for internal logic use
 	 */
 	@State() private captionState: InputCaption;
@@ -116,16 +147,21 @@ export class OntarioDropdownList implements Dropdown {
 	@State() private internalOptions: DropdownOption[];
 
 	/**
+	 * The hint expander options are re-assigned to the internalHintExpander array.
+	 */
+	@State() private internalHintExpander: HintExpander;
+
+	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
-	handleSetAppLanguage(event: CustomEvent<string>) {
-		this.language = event.detail;
+	handleSetAppLanguage(event: CustomEvent<Language>) {
+		this.language = validateLanguage(event);
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<string>) {
-		const toggledLanguage = event.detail;
+	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
+		const toggledLanguage = validateLanguage(event);
 		this.language = toggledLanguage;
 	}
 
@@ -138,7 +174,13 @@ export class OntarioDropdownList implements Dropdown {
 	validateName(newValue: string) {
 		if (validatePropExists(newValue)) {
 			const message = new ConsoleMessageClass();
-			message.addDesignSystemTag().addMonospaceText(' name ').addRegularText('for').addMonospaceText(' <ontario-dropdown-list> ').addRegularText('was not provided').printMessage();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' name ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-dropdown-list> ')
+				.addRegularText('was not provided')
+				.printMessage();
 		}
 	}
 
@@ -174,7 +216,14 @@ export class OntarioDropdownList implements Dropdown {
 
 	@Watch('caption')
 	private updateCaptionState(newValue: Caption | string) {
-		this.captionState = new InputCaption(this.element.tagName, newValue, translations, this.language, false, this.required);
+		this.captionState = new InputCaption(
+			this.element.tagName,
+			newValue,
+			translations,
+			this.language,
+			false,
+			this.required,
+		);
 	}
 
 	/**
@@ -183,6 +232,15 @@ export class OntarioDropdownList implements Dropdown {
 	@Watch('language')
 	updateLanguage() {
 		this.updateCaptionState(this.caption);
+	}
+
+	@Watch('hintExpander')
+	private parseHintExpander() {
+		const hintExpander = this.hintExpander;
+		if (hintExpander) {
+			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
+			else this.internalHintExpander = hintExpander;
+		}
 	}
 
 	public getId(): string {
@@ -195,23 +253,45 @@ export class OntarioDropdownList implements Dropdown {
 		};
 	}
 
+	private getClass(): string {
+		return this.hintExpander
+			? `ontario-input ontario-dropdown ontario-dropdown-hint-expander--true`
+			: `ontario-input ontario-dropdown`;
+	}
+
 	componentWillLoad() {
 		this.updateCaptionState(this.caption);
 		this.parseOptions();
 		this.validateName(this.name);
 		this.validateOptions(this.internalOptions);
 		this.elementId = this.elementId ?? uuid();
+		this.parseHintExpander();
+		this.language = validateLanguage(this.language);
 	}
 
 	render() {
 		return (
 			<div class="ontario-form-group">
-				{this.captionState.getCaption(this.getId())}
-				<select class="ontario-input ontario-dropdown" id={this.getId()} name={this.name} style={this.getDropdownArrow()} required={!!this.required}>
-					{this.isEmptyStartOption && (this.isEmptyStartOption === true ? <option>Select</option> : <option>{this.isEmptyStartOption}</option>)}
+				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
+				{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
+				<select
+					class={this.getClass()}
+					id={this.getId()}
+					name={this.name}
+					style={this.getDropdownArrow()}
+					required={!!this.required}
+				>
+					{this.isEmptyStartOption &&
+						(this.isEmptyStartOption === true ? <option>Select</option> : <option>{this.isEmptyStartOption}</option>)}
 
-					{this.internalOptions?.map(dropdown => <option value={dropdown.value}>{dropdown.label}</option>) ?? ''}
+					{this.internalOptions?.map((dropdown) => <option value={dropdown.value}>{dropdown.label}</option>) ?? ''}
 				</select>
+				{this.internalHintExpander && (
+					<ontario-hint-expander
+						hint={this.internalHintExpander.hint}
+						content={this.internalHintExpander.content}
+					></ontario-hint-expander>
+				)}
 			</div>
 		);
 	}
