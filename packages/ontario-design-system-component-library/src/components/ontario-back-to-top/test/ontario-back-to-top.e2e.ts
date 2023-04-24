@@ -6,9 +6,9 @@ describe('ontario-back-to-top', () => {
 		const page = await newE2EPage();
 		await page.setContent('<ontario-back-to-top></ontario-back-to-top>');
 		const element = await page.find('ontario-back-to-top >>> button');
-		const styles = element.getComputedStyle();
+		const styles = await element.getComputedStyle();
 
-		expect((await styles)?.visibility).toBe('hidden');
+		expect(styles.visibility).toBe('hidden');
 		expect(element).toHaveClass('ontario-back-to-top');
 		expect(element).not.toHaveClass('active');
 	});
@@ -18,13 +18,11 @@ describe('ontario-back-to-top', () => {
 		await page.setContent(mockBTTContent);
 
 		// scroll down the page
-
 		// this method was taken from: https://github.com/microsoft/playwright/issues/4302#issuecomment-1132919529
 		// setting delay function and calling it after setting the scrollTo was the only way to successfully get the scroll to work
 		await page.evaluate(async () => {
-			const delay = (miliseconds: number) => new Promise((resolve) => setTimeout(resolve, miliseconds));
 			window.scrollTo(0, 500);
-			await delay(100);
+			await new Promise((resolve) => setTimeout(resolve, 100));
 		});
 
 		const element = await page.find('ontario-back-to-top >>> button');
@@ -37,13 +35,11 @@ describe('ontario-back-to-top', () => {
 	it('should trigger the window to scroll back to the top of the page when clicked', async () => {
 		const page = await newE2EPage();
 		await page.setContent(mockBTTContent);
-		const delay = (miliseconds: number) => new Promise((resolve) => setTimeout(resolve, miliseconds));
 
 		// scroll down the page
 		await page.evaluate(async () => {
-			const delay = (miliseconds: number) => new Promise((resolve) => setTimeout(resolve, miliseconds));
 			window.scrollTo(0, 500);
-			await delay(100);
+			await new Promise((resolve) => setTimeout(resolve, 100));
 		});
 
 		// wait for the scroll event to trigger and update the component's state
@@ -54,7 +50,7 @@ describe('ontario-back-to-top', () => {
 		await element.click();
 
 		// Wait for the scroll animation to complete
-		await delay(500);
+		await new Promise((resolve) => setTimeout(resolve, 500));
 
 		const pageDetails = await page.evaluate(() => {
 			const component = window.document.getElementsByTagName('ontario-back-to-top')[0];
