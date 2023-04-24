@@ -3,7 +3,7 @@ import React from 'react';
 export default function DefaultFooter() {
 	return (
 		<div className="ontario-row">
-			<div className="ontario-columns ontario-medium-12 ontario-large-12">
+			<div className="ontario-columns ontario-large-12">
 				<h3>Default footer</h3>
 				<p>
 					The <strong>default footer</strong> should include:
