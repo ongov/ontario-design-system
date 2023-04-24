@@ -16,7 +16,7 @@ const Layout = ({ children }: any) => {
 
 	const [menuLinks, setMenuLinks] = useState([
 		{
-			title: 'Button',
+			title: 'Buttons',
 			href: '/ontario-button',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -25,7 +25,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			title: 'Hint',
+			title: 'Hint text',
 			href: '/ontario-hint',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -34,7 +34,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			title: 'Text Area',
+			title: 'Textarea',
 			href: '/ontario-textarea',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -52,7 +52,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			title: 'Icon',
+			title: 'Icons',
 			href: '/ontario-icon',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -61,7 +61,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			title: 'Header',
+			title: 'Headers',
 			href: '/ontario-header',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -70,7 +70,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			title: 'Footer',
+			title: 'Footers',
 			href: '/ontario-footer',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -79,7 +79,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			title: 'Checkbox',
+			title: 'Checkboxes',
 			href: '/ontario-checkbox',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -88,7 +88,7 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
-			title: 'Radio Button',
+			title: 'Radio Buttons',
 			href: '/ontario-radio-button',
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
@@ -138,7 +138,7 @@ const Layout = ({ children }: any) => {
 			<OntarioHeader
 				type="application"
 				applicationHeaderInfo={{
-					name: 'Design System React Proof of Concept',
+					title: 'Design System React Proof of Concept',
 					href: '/',
 				}}
 				languageToggleOptions={{

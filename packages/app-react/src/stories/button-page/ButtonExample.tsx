@@ -1,30 +1,39 @@
 import React from 'react';
+
 import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+import CodeHighlighter from '../../components/code-highlighter';
 
 export default function ButtonExample() {
-	const primaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="primary">Click Me!</OntarioButton>`;
-	const secondaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="secondary">Click Me!</OntarioButton>`;
-	const tertiaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="tertiary">Click Me!</OntarioButton>`;
+	const primaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="primary" label="Primary button" aria-label-text="This is a clickable primary button"></OntarioButton>`;
+	const secondaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="secondary" element-id="secondary-button">Secondary button</OntarioButton>`;
+	const tertiaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="tertiary" label="Tertiary button" onClick={onButtonClick}></OntarioButton>`;
+
+	const onButtonClick = () => {
+		alert('Tertiary button clicked!');
+	};
+
 	return (
 		<div className="ontario-row">
 			<div className="ontario-columns ontario-large-12">
-				<h3>Types of buttons</h3>
+				<h2>Types of buttons</h2>
 				<p>
 					Use a <strong>primary button</strong> to draw attention to the <strong>main action</strong> you want to help
 					the user take. Avoid using multiple primary buttons on one page unless the page has equally important calls to
 					action.
 				</p>
+
 				<div className="ontario-margin-top-24-!">
-					<h4>Primary:</h4>
-					<OntarioButton type="primary">Click Me!</OntarioButton>
+					<h3 className="ontario-h4">Primary</h3>
+					<OntarioButton
+						type="primary"
+						label="Primary button"
+						aria-label-text="This is a clickable primary button"
+					></OntarioButton>
 
 					<p>With the following markup:</p>
 
-					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-						{primaryButtonCodeExample}
-					</SyntaxHighlighter>
+					<CodeHighlighter codeExample={primaryButtonCodeExample} />
 				</div>
 
 				<p>
@@ -34,14 +43,14 @@ export default function ButtonExample() {
 				</p>
 
 				<div className="ontario-margin-top-24-!">
-					<h4>Secondary:</h4>
-					<OntarioButton type="secondary">Click Me!</OntarioButton>
+					<h3 className="ontario-h4">Secondary</h3>
+					<OntarioButton type="secondary" element-id="secondary-button">
+						Secondary button
+					</OntarioButton>
 
 					<p>With the following markup:</p>
 
-					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-						{secondaryButtonCodeExample}
-					</SyntaxHighlighter>
+					<CodeHighlighter codeExample={secondaryButtonCodeExample} />
 				</div>
 
 				<p>
@@ -50,14 +59,12 @@ export default function ButtonExample() {
 				</p>
 
 				<div className="ontario-margin-top-24-!">
-					<h4>Tertiary:</h4>
-					<OntarioButton type="tertiary">Click Me!</OntarioButton>
+					<h3 className="ontario-h4">Tertiary</h3>
+					<OntarioButton type="tertiary" label="Tertiary button" onClick={onButtonClick}></OntarioButton>
 
 					<p>With the following markup:</p>
 
-					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-						{tertiaryButtonCodeExample}
-					</SyntaxHighlighter>
+					<CodeHighlighter codeExample={tertiaryButtonCodeExample} />
 				</div>
 			</div>
 		</div>

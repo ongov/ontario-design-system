@@ -1,22 +1,63 @@
-import React from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import React, { useRef, useEffect } from 'react';
+
 import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-component-library-react';
 
+import CodeHighlighter from '../../components/code-highlighter';
+
 export default function TextAreaExample() {
-	const codeExample = `import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioTextarea
-	caption="Text area caption"
-	describedBy="described by"
-	elementId="id"
-	name="name"
+	const codeExample = `import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n
+<OntarioTextarea
+	caption='{
+		"captionText": "Label",
+		"captionType": "default"
+	}'
+	element-id="textarea"
+	name="textarea"
 	required
-	value="value"
+	hint-text="Example hint text for the textarea"
+	described-by="textarea-hint-text"
+	hint-expander='{
+		"content": "This is the example content for the textarea hint expander",
+		"hint": "Example hint expander for the textarea",
+		"elementId": "textarea-hint-expander"
+	}'
+	onBlur={textareaOnBlur}
+	onChange={textareaOnChange}
 />`;
+
+	const componentRef = useRef<any>(null);
+
+	useEffect(() => {
+		const component = componentRef.current;
+		if (component) {
+			component.addEventListener('changeEvent', textareaOnChange);
+		}
+
+		return () => {
+			if (component) {
+				component.removeEventListener('changeEvent', textareaOnChange);
+			}
+		};
+	}, [componentRef]);
+
+	const handleEvent = (e: any) => {
+		// this should be updated to output the selected value
+		console.log(e);
+	};
+
+	const textareaOnBlur = () => {
+		console.log('Textarea is losing focus');
+	};
+
+	const textareaOnChange = (e: any) => {
+		console.log(e.target.value);
+	};
+
 	return (
 		<>
 			<div className="ontario-row">
 				<div className="ontario-columns ontario-large-12">
-					<h3>Examples</h3>
+					<h2>Example</h2>
 					<p>Examples of where to use text areas include:</p>
 					<ul>
 						<li>comments and user feedback</li>
@@ -25,19 +66,27 @@ export default function TextAreaExample() {
 					</ul>
 					<div className="ontario-margin-top-24-!">
 						<OntarioTextarea
-							caption="Text area caption"
-							describedBy="described by"
-							elementId="id"
-							name="name"
+							ref={componentRef}
+							caption='{
+								"captionText": "Label",
+								"captionType": "default"
+							}'
+							element-id="textarea"
+							name="textarea"
 							required
-							value="this is the content"
+							hint-text="Example hint text for the textarea"
+							described-by="textarea-hint-text"
+							hint-expander='{
+								"content": "This is the example content for the textarea hint expander",
+								"hint": "Example hint expander for the textarea",
+								"elementId": "textarea-hint-expander"
+							}'
+							onBlur={textareaOnBlur}
 						/>
 
 						<p>With the following markup:</p>
 
-						<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-							{codeExample}
-						</SyntaxHighlighter>
+						<CodeHighlighter codeExample={codeExample} />
 					</div>
 				</div>
 			</div>
