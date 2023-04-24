@@ -68,7 +68,6 @@ export class OntarioLoadingIndicator {
 	 */
 	@Watch('type')
 	validateType() {
-		console.log('yo mama');
 		const isValid = validateValueAgainstArray(this.type, ['large', 'small']);
 		if (isValid) {
 			return (this.typeState = this.type);
