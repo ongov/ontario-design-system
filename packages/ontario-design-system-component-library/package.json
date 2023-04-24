@@ -1,19 +1,13 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-component-library",
-	"version": "2.3.0-alpha.3",
+	"version": "2.3.0",
 	"private": false,
 	"description": "Ontario Design System Component Library",
+	"license": "Apache-2.0",
 	"main": "dist/index.cjs.js",
-	"module": "dist/index.js",
-	"es2015": "dist/esm/index.mjs",
-	"es2017": "dist/esm/index.mjs",
-	"types": "dist/types/index.d.ts",
-	"collection": "dist/collection/collection-manifest.json",
-	"collection:main": "dist/collection/index.js",
 	"unpkg": "dist/ontario-design-system-components/ontario-design-system-components.esm.js",
-	"publishConfig": {
-		"access": "public"
-	},
+	"module": "dist/index.js",
+	"types": "dist/types/index.d.ts",
 	"files": [
 		"dist/",
 		"loader/",
@@ -26,23 +20,23 @@
 	"scripts": {
 		"build": "npm run build:stencil && npm run format",
 		"build:stencil": "stencil build --docs",
-		"start": "stencil build --dev --watch --serve",
-		"test": "stencil test --spec --e2e",
-		"test:unit": "stencil test --spec",
-		"test:e2e": "stencil test --e2e",
-		"test.watch": "stencil test --spec --e2e --watchAll",
-		"generate": "stencil generate",
 		"clean": "rm -rf dist loader www",
 		"clean:full": "rm -rf node_modules && npm run clean",
-		"format": "prettier --write .",
-		"generate:icons": "node src/components/ontario-icon/scripts/generate-icons.js",
 		"clean:icons": "rm -rf src/components/ontario-icon/ontario-icon-*.tsx",
-		"docs:assemble": "ts-node scripts/build-documentation-bundle.ts"
+		"docs:assemble": "ts-node scripts/build-documentation-bundle.ts",
+		"format": "prettier --write .",
+		"generate": "stencil generate",
+		"generate:icons": "node src/components/ontario-icon/scripts/generate-icons.js",
+		"start": "stencil build --dev --watch --serve",
+		"test": "stencil test --spec --e2e",
+		"test.watch": "stencil test --spec --e2e --watchAll",
+		"test:e2e": "stencil test --e2e",
+		"test:unit": "stencil test --spec"
 	},
 	"dependencies": {
+		"@ontario-digital-service/ontario-design-system-global-styles": "2.3.0",
 		"@stencil/core": "2.20.0",
-		"validate-color": "^2.2.1",
-		"@ontario-digital-service/ontario-design-system-global-styles": "2.3.0-alpha.3"
+		"validate-color": "^2.2.1"
 	},
 	"devDependencies": {
 		"@stencil/react-output-target": "0.3.1",
@@ -70,6 +64,9 @@
 		"validate-color": "^2.2.1",
 		"rollup-plugin-dotenv": "^0.4.1"
 	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"authors": [
 		{
 			"name": "Scott Morris",
@@ -92,5 +89,8 @@
 			"email": "nakib.momin@ontario.ca"
 		}
 	],
-	"license": "Apache-2.0"
+	"collection": "dist/collection/collection-manifest.json",
+	"collection:main": "dist/collection/index.js",
+	"es2015": "dist/esm/index.mjs",
+	"es2017": "dist/esm/index.mjs"
 }

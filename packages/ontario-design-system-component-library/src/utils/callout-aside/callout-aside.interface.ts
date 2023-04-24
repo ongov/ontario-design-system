@@ -2,11 +2,11 @@ import { Base } from '../../utils/common.interface';
 
 export const HeadingLevel = ['h2', 'h3', 'h4', 'h5', 'h6'] as const;
 
-export type HeadingLevelOptions = typeof HeadingLevel[number];
+export type HeadingLevelOptions = (typeof HeadingLevel)[number];
 
 export const HighlightColours = ['teal', 'gold', 'yellow', 'taupe', 'green', 'lime', 'sky', 'blue', 'purple'] as const;
 
-export type HighlightColourOptions = typeof HighlightColours[number];
+export type HighlightColourOptions = (typeof HighlightColours)[number];
 
 export type CalloutAsideType = 'callout' | 'aside';
 
