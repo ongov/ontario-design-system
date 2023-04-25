@@ -28,11 +28,11 @@ export default function TextInputExample() {
 	name="20-char-input"
 	required={false}	
 	type="text"
-	hint-expander='{
-		"content": "This is the example content for the 20 character width input",
-		"hint": "Example hint expander for the 20 character width input",
-		"elementId": "20-char-width-hint-expander"
-	}'
+	hint-expander={{
+		content: "This is the example content for the 20 character width input",
+		hint: "Example hint expander for the 20 character width input",
+		elementId: "20-char-width-hint-expander"
+	}}
 />`;
 
 	const DefaultInputExample = `import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioInput
@@ -100,11 +100,11 @@ export default function TextInputExample() {
 						name="20-char-input"
 						required={false}
 						type="text"
-						hint-expander='{
-							"content": "This is the example content for the 20 character width input",
-							"hint": "Example hint expander for the 20 character width input",
-							"elementId": "20-char-width-hint-expander"
-						}'
+						hint-expander={{
+							content: 'This is the example content for the 20 character width input',
+							hint: 'Example hint expander for the 20 character width input',
+							elementId: '20-char-width-hint-expander',
+						}}
 					/>
 
 					<p>With the following markup:</p>

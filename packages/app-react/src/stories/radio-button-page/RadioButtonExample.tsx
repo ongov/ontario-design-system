@@ -35,11 +35,11 @@ export default function RadioButtonExample() {
 			label: "Option 3"
 		},
 	]}
-	hint-expander='{
-		"content": "This is the example content for the radio button group hint expander.",
-		"hint": "Example hint expander for the radio button group",
-		"elementId": "radio-button-group-hint-expander"
-	}'
+	hint-expander={{
+		content: "This is the example content for the radio button group hint expander.",
+		hint: "Example hint expander for the radio button group",
+		elementId: "radio-button-group-hint-expander"
+	}}
 >
 </OntarioRadioButtons>`;
 	return (
@@ -75,11 +75,11 @@ export default function RadioButtonExample() {
 							label: 'Option 3',
 						},
 					]}
-					hint-expander='{
-						"content": "This is the example content for the radio button group hint expander.",
-						"hint": "Example hint expander for the radio button group",
-						"elementId": "radio-button-group-hint-expander"
-					}'
+					hint-expander={{
+						content: 'This is the example content for the radio button group hint expander.',
+						hint: 'Example hint expander for the radio button group',
+						elementId: 'radio-button-group-hint-expander',
+					}}
 				></OntarioRadioButtons>
 
 				<p>With the following markup:</p>

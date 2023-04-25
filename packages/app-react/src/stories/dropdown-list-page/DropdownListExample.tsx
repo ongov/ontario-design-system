@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react';
+import React from 'react';
 
 import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react';
 
@@ -66,10 +66,10 @@ export default function DropdownListExamples() {
 </OntarioDropdownList>`;
 
 	const dropdownListCodeExample2 = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList 
-  caption='{
-	"captionText": "Country",
-	"captionType": "default"
-  }'
+  caption={{
+	captionText: "Country",
+	captionType: "default"
+  }}
   name="country" 
   required
   options={[
@@ -93,11 +93,11 @@ export default function DropdownListExamples() {
   caption="Select a language" 
   name="language-select"
   is-empty-start="Select a language"
-  hint-expander='{
-	"content": "If you speak both languages, please select the language you consider to be your first language.",
-	"hint": "What if I speak both languages?",
-	"elementId": "dropdown-list-language"
-  }'
+  hint-expander={{
+	content: "If you speak both languages, please select the language you consider to be your first language.",
+	hint: "What if I speak both languages?",
+	elementId: "dropdown-list-language"
+  }}
   options={[
     {
       value: "english",
@@ -186,10 +186,10 @@ export default function DropdownListExamples() {
 				</p>
 
 				<OntarioDropdownList
-					caption='{
-						"captionText": "Country",
-						"captionType": "default"
-					}'
+					caption={{
+						captionText: 'Country',
+						captionType: 'default',
+					}}
 					name="country"
 					required
 					options={[
@@ -221,11 +221,11 @@ export default function DropdownListExamples() {
 					caption="Select a language"
 					name="language-select"
 					is-empty-start="Select a language"
-					hint-expander='{
-						"content": "If you speak both languages, please select the language you consider to be your first language.",
-						"hint": "What if I speak both languages?",
-						"elementId": "dropdown-list-language"
-					}'
+					hint-expander={{
+						content: 'If you speak both languages, please select the language you consider to be your first language.',
+						hint: 'What if I speak both languages?',
+						elementId: 'dropdown-list-language',
+					}}
 					options={[
 						{
 							value: 'english',
