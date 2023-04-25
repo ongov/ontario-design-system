@@ -3,8 +3,9 @@ import React from 'react';
 export default function HeaderApplication() {
 	return (
 		<div className="ontario-row">
-			<div className="ontario-columns ontario-medium-12 ontario-large-12">
-				<h1>Application Header</h1>
+			<div className="ontario-columns ontario-large-12">
+				<h1>Headers</h1>
+				<h2>Application Header</h2>
 				<p>This header is for applications and subsites outside of the main ontario.ca website.</p>
 
 				<h2>When to use this component</h2>
@@ -16,13 +17,12 @@ export default function HeaderApplication() {
 					<li>its own search</li>
 					<li>user accounts or its own login system</li>
 				</ul>
+
 				<p>This header applies Ontario branding to your product while providing:</p>
 				<ul>
 					<li>a clear application or subsite identity</li>
 					<li>a place for application or subsite-specific links or a menu, if needed</li>
 				</ul>
-
-				<hr />
 
 				<h3>Features</h3>
 				<p>The application header includes:</p>
@@ -43,8 +43,6 @@ export default function HeaderApplication() {
 						</ul>
 					</li>
 				</ul>
-
-				<hr />
 
 				<h3>Best practices</h3>
 				<h4>Do</h4>

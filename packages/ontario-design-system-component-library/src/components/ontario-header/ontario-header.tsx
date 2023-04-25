@@ -39,7 +39,7 @@ export class OntarioHeader {
 	 * @example
 	 * 	<ontario-header
 	 *		type="application"
-	 * .  application-header-info='{
+	 *      application-header-info='{
 	 * 			"name": "Application name",
 	 * 			"href": "/application-homepage"
 	 * 			"maxSubheaderDesktopLinks": "3",

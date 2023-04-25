@@ -40,11 +40,6 @@ export default function TextAreaExample() {
 		};
 	}, [componentRef]);
 
-	const handleEvent = (e: any) => {
-		// this should be updated to output the selected value
-		console.log(e);
-	};
-
 	const textareaOnBlur = () => {
 		console.log('Textarea is losing focus');
 	};
