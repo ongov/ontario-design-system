@@ -6,13 +6,13 @@ import CodeHighlighter from '../../components/code-highlighter';
 export default function ExpandedFooterCodeExample() {
 	const expandedFooterExample = `import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioFooter 
   type="expandedThreeColumn"
-  default-options={{
+  defaultOptions={{
     accessibilityLink: "https://www.ontario.ca/page/accessibility",
     privacyLink: "https://www.ontario.ca/page/privacy-statement",
     contactLink: "https://www.ontario.ca/feedback/contact-us",
     printerLink: "https://www.ontario.ca/page/copyright-information"
   }}
-  expanded-three-column-options={{
+  expandedThreeColumnOptions={{
     firstColumn: {
       title: "Ontario Design System",
       content: "The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services."
@@ -68,13 +68,13 @@ export default function ExpandedFooterCodeExample() {
 					<div className="ontario-margin-top-24-!">
 						<OntarioFooter
 							type="expandedThreeColumn"
-							default-options={{
+							defaultOptions={{
 								accessibilityLink: 'https://www.ontario.ca/page/accessibility',
 								privacyLink: 'https://www.ontario.ca/page/privacy-statement',
 								contactLink: 'https://www.ontario.ca/feedback/contact-us',
 								printerLink: 'https://www.ontario.ca/page/copyright-information',
 							}}
-							expanded-three-column-options={{
+							expandedThreeColumnOptions={{
 								firstColumn: {
 									title: 'Ontario Design System',
 									content:

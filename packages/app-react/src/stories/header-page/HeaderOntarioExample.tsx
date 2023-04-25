@@ -6,7 +6,7 @@ import CodeHighlighter from '../../components/code-highlighter';
 export default function HeaderOntarioExample() {
 	const ontarioHeaderCodeExample = `import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioHeader
 	type="ontario"
-	language-toggle-options={{
+	languageToggleOptions={{
 		englishLink: "/en",
 		frenchLink: "/fr"
 	}}
@@ -20,7 +20,7 @@ export default function HeaderOntarioExample() {
 					<h2>Example</h2>
 					<OntarioHeader
 						type="ontario"
-						language-toggle-options={{
+						languageToggleOptions={{
 							englishLink: '/en',
 							frenchLink: '/fr',
 						}}

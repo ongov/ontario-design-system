@@ -10,12 +10,12 @@ export default function TextAreaExample() {
 		captionText: "Label",
 		captionType: "default"
 	}}
-	element-id="textarea"
+	elementId="textarea"
 	name="textarea"
 	required
-	hint-text="Example hint text for the textarea"
-	described-by="textarea-hint-text"
-	hint-expander={
+	hintText="Example hint text for the textarea"
+	describedBy="textarea-hint-text"
+	hintExpander={
 		content: "This is the example content for the textarea hint expander",
 		hint: "Example hint expander for the textarea",
 		elementId: "textarea-hint-expander"
@@ -65,12 +65,12 @@ export default function TextAreaExample() {
 								captionText: 'Label',
 								captionType: 'default',
 							}}
-							element-id="textarea"
+							elementId="textarea"
 							name="textarea"
 							required
-							hint-text="Example hint text for the textarea"
-							described-by="textarea-hint-text"
-							hint-expander={{
+							hintText="Example hint text for the textarea"
+							describedBy="textarea-hint-text"
+							hintExpander={{
 								content: 'This is the example content for the textarea hint expander',
 								hint: 'Example hint expander for the textarea',
 								elementId: 'textarea-hint-expander',

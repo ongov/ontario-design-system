@@ -8,7 +8,7 @@ export default function HintExpander() {
 <OntarioHintExpander
 	hint="Example hint expander hint text"
 	content="Example hint expander hint content"
-	element-id="hint-expander-id"
+	elementId="hint-expander-id"
 />`;
 	return (
 		<div className="ontario-row">
@@ -39,7 +39,7 @@ export default function HintExpander() {
 					<OntarioHintExpander
 						hint="Example hint expander hint text"
 						content="Example hint expander hint content"
-						element-id="hint-expander-id"
+						elementId="hint-expander-id"
 					/>
 
 					<p>With the following markup:</p>

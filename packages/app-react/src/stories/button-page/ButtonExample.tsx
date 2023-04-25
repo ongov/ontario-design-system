@@ -5,8 +5,8 @@ import { OntarioButton } from '@ontario-digital-service/ontario-design-system-co
 import CodeHighlighter from '../../components/code-highlighter';
 
 export default function ButtonExample() {
-	const primaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="primary" label="Primary button" aria-label-text="This is a clickable primary button"></OntarioButton>`;
-	const secondaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="secondary" element-id="secondary-button">Secondary button</OntarioButton>`;
+	const primaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="primary" label="Primary button" ariaLabelText="This is a clickable primary button"></OntarioButton>`;
+	const secondaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="secondary" elementId="secondary-button">Secondary button</OntarioButton>`;
 	const tertiaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="tertiary" label="Tertiary button" onClick={onButtonClick}></OntarioButton>`;
 
 	const onButtonClick = () => {
@@ -28,7 +28,7 @@ export default function ButtonExample() {
 					<OntarioButton
 						type="primary"
 						label="Primary button"
-						aria-label-text="This is a clickable primary button"
+						ariaLabelText="This is a clickable primary button"
 					></OntarioButton>
 
 					<p>With the following markup:</p>
@@ -44,7 +44,7 @@ export default function ButtonExample() {
 
 				<div className="ontario-margin-top-24-!">
 					<h3 className="ontario-h4">Secondary</h3>
-					<OntarioButton type="secondary" element-id="secondary-button">
+					<OntarioButton type="secondary" elementId="secondary-button">
 						Secondary button
 					</OntarioButton>
 

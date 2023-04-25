@@ -8,9 +8,9 @@ export default function DropdownListExamples() {
 	const dropdownListCodeExample = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList 
   caption="Province/territory"
   name="province-selection"
-  element-id="province-territory"
-  is-empty-start-option="Select"
-  hint-text="Select the province or territory where you reside"
+  elementId="province-territory"
+  isEmptyStartOption="Select"
+  hintText="Select the province or territory where you reside"
   required
   options={[
     {
@@ -92,8 +92,8 @@ export default function DropdownListExamples() {
 	const dropdownListCodeExample3 = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList 
   caption="Select a language" 
   name="language-select"
-  is-empty-start="Select a language"
-  hint-expander={{
+  isEmptyStartOption="Select a language"
+  hintExpander={{
 	content: "If you speak both languages, please select the language you consider to be your first language.",
 	hint: "What if I speak both languages?",
 	elementId: "dropdown-list-language"
@@ -119,8 +119,8 @@ export default function DropdownListExamples() {
 				<OntarioDropdownList
 					caption="Province/territory"
 					name="province-selection"
-					element-id="province-territory"
-					is-empty-start-option="Select"
+					elementId="province-territory"
+					isEmptyStartOption="Select"
 					hint-text="Select the province or territory where you reside"
 					required
 					options={[
@@ -220,8 +220,8 @@ export default function DropdownListExamples() {
 				<OntarioDropdownList
 					caption="Select a language"
 					name="language-select"
-					is-empty-start="Select a language"
-					hint-expander={{
+					isEmptyStartOption="Select a language"
+					hintExpander={{
 						content: 'If you speak both languages, please select the language you consider to be your first language.',
 						hint: 'What if I speak both languages?',
 						elementId: 'dropdown-list-language',

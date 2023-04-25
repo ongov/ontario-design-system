@@ -35,8 +35,8 @@ export default function CheckboxExample() {
 			label: "Option 4"
 		}
 	]}
-	hint-text="Example hint text for the checkbox"
-	hint-expander={{
+	hintText="Example hint text for the checkbox"
+	hintExpander={{
 		content: "This is the example content for the checkbox group hint expander.",
 		hint: "Example hint expander for the checkbox group",
 		elementId: "checkbox-group-hint-expander"
@@ -98,8 +98,8 @@ export default function CheckboxExample() {
 								label: 'Option 4',
 							},
 						]}
-						hint-text="Example hint text for the checkbox"
-						hint-expander={{
+						hintText="Example hint text for the checkbox"
+						hintExpander={{
 							content: 'This is the example content for the checkbox group hint expander.',
 							hint: 'Example hint expander for the checkbox group',
 							elementId: 'checkbox-group-hint-expander',

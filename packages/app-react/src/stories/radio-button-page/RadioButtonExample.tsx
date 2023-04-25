@@ -10,7 +10,7 @@ export default function RadioButtonExample() {
 	caption="Radio legend"
 	name="radio-example"
 	required={false}
-	hint-text="Example hint text for radio buttons"
+	hintText="Example hint text for radio buttons"
 	options={[
 		{
 			name: "radio-example",
@@ -35,7 +35,7 @@ export default function RadioButtonExample() {
 			label: "Option 3"
 		},
 	]}
-	hint-expander={{
+	hintExpander={{
 		content: "This is the example content for the radio button group hint expander.",
 		hint: "Example hint expander for the radio button group",
 		elementId: "radio-button-group-hint-expander"
@@ -50,7 +50,7 @@ export default function RadioButtonExample() {
 					caption="Radio legend"
 					name="radio-example"
 					required={false}
-					hint-text="Example hint text for radio buttons"
+					hintText="Example hint text for radio buttons"
 					options={[
 						{
 							name: 'radio-example',
@@ -75,7 +75,7 @@ export default function RadioButtonExample() {
 							label: 'Option 3',
 						},
 					]}
-					hint-expander={{
+					hintExpander={{
 						content: 'This is the example content for the radio button group hint expander.',
 						hint: 'Example hint expander for the radio button group',
 						elementId: 'radio-button-group-hint-expander',
