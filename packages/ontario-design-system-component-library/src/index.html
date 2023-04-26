@@ -151,41 +151,45 @@
 
 				<ontario-checkboxes
 					name="ontario-checkbox-group"
-					hint-text="This is the hint text"
 					caption='{
 						"captionText": "Checkbox legend",
 						"captionType": "heading"
 					}'
+					hint-text="Example checkbox hint text"
 					required
 					options='[
 						{
-							"value": "checkbox-1",
-							"label": "Checkbox 1 label"
+							"value": "checkbox-1-value",
+							"label": "Checkbox 1 label",
+							"elementId": "checkbox-1"
 						},
 						{
-							"value": "checkbox-2",
+							"value": "checkbox-2-value",
 							"label": "Checkbox 2 label",
+							"elementId": "checkbox-2",
 							"hintExpander": {
-								"hint": "Hint expander",
-								"content": "This is the content, yup this is the content"
+								"hint": "Example hint expander for checkbox 2",
+								"content": "Example hint expander content for checkbox 2"
 							}
 						},
 						{
-							"value": "checkbox-3",
+							"value": "checkbox-3-value",
 							"label": "Checkbox 3 label",
+							"elementId": "checkbox-3",
 							"hintExpander": {
-								"hint": "Hint expander",
-								"content": "This is the content"
+								"hint": "Example hint expander for checkbox 3",
+								"content": "Example hint expander content for checkbox 3"
 							}
 						},
 						{
-							"value": "Checkbox 4 label",
-							"label": "checkbox-4-label"
+							"value": "checkbox-4-value",
+							"label": "Checkbox 4 label",
+							"elementId": "checkbox-4"
 						}
 					]'
 					hint-expander='{
-						"hint": "Hint expander",
-						"content": "This is the content, yup this is the content"
+						"hint": "Example hint expander for checkbox group",
+						"content": "Example hint expander content for checkbox group"
 					}'
 				>
 				</ontario-checkboxes>

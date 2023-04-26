@@ -1,8 +1,23 @@
 import { Base } from '../../utils/common.interface';
+import { Caption } from '../../utils/input-caption/caption.interface';
 import { CheckboxOption } from './checkbox-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
 export interface Checkboxes extends Base {
+	/**
+	 * The text to display for the checkbox legend.
+	 *
+	 * @example
+	 * <ontario-checkboxes
+	 *   caption='{
+	 *     "captionText": "Checkbox legend",
+	 *     "captionType": "heading",
+	 *   }
+	 *   ...>
+	 * </ontario-checkboxes>
+	 */
+	caption: Caption | string;
+
 	/**
 	 * The name for the checkboxes.
 	 */
@@ -14,32 +29,31 @@ export interface Checkboxes extends Base {
 	hintText?: string;
 
 	/**
-   * Used to include the Hint Expander component underneath the Checkbox Legend.
-   * This is passed in as an object with key-value pairs.
-   *
-   * @example
-   * <ontario-checkboxes
-   *   caption='{
-	 *     "captionText": "Address",
+	 * Used to include the Hint Expander component underneath the Checkbox group.
+	 * This is passed in as an object with key-value pairs.
+	 *
+	 * @example
+	 * <ontario-checkboxes
+	 *   caption='{
+	 *     "captionText": "Checkbox legend",
 	 *     "captionType": "heading",
+	 *   }
+	 *   name='ontario-checkboxes'
+	 *   options='[
+	 *		{
+	 *			"value": "checkbox-1-value",
+	 *			"label": "Checkbox 1 label",
+	 *			"elementId": "checkbox-1"
+	 *		}
+	 *   }]'
+	 *   hint-expander='{
+	 *    "hint": "Example hint expander for checkbox group",
+	 *    "content": "Example hint expander content for checkbox group"
 	 *   }'
-   *   name='ontario-checkboxes'
-   *   options='[{
-   *     "value": "checkbox-1-value",
-   *     "label": "Checkbox Label",
-   *     "hintExpander": {
-   *			  "hint": "Hint expander",
-   * 		    "content": "This is the content"
-   *		 }
-   *   }]'
-   *   hint-expander='{
-   *    "hint": "Hint expander",
-   *    "content": "This is the content, yup this is the content"
-      }'
-			required="true"
-   * >
-   * </ontario-checkboxes>
-   */
+	 *   required="true"
+	 * >
+	 * </ontario-checkboxes>
+	 */
 	hintExpander?: HintExpander | string;
 
 	/**
@@ -59,28 +73,30 @@ export interface Checkboxes extends Base {
 	 * @example
 	 * <ontario-checkboxes
 	 *   caption='{
-	 *     "caption": "Address",
-	 *     "captionType": "heading",
-	 *   }'
-	 *   name='ontario-checkboxes'
-	 *   hint-text="This is the hint text"
+	 *		"captionText": "Checkbox legend",
+	 *		"captionType": "heading",
+	 *   }
+	 *   name="ontario-checkboxes",
+	 *   hint-text="Example checkbox hint text"
 	 *   options='[
-	 *     {
-	 *        "value": "checkbox-1-value",
-	 *        "label": "Checkbox Label"
+	 *		{
+	 *			"value": "checkbox-1-value",
+	 *			"label": "Checkbox 1 label"
+	 *			"elementId": "checkbox-1"
 	 *     },
 	 *     {
-	 *        "value": "checkbox-2",
-	 *        "label": "checkbox-2-label",
-	 *        "hintExpander": {
-	 *          "hint": "Hint expander",
-	 *          "content": "This is the content"
+	 *        "value": "checkbox-2-value",
+	 *        "label": "Checkbox 2 label",
+	 * 		  "elementId": "checkbox-2",
+	 *	      "hintExpander": {
+	 *				"hint": "Example hint expander for checkbox 2",
+	 *              "content": "Example hint expander content for checkbox 2"
 	 *        }
 	 *      }
 	 *   ]'
 	 *   required="true"
 	 * >
-	 * </ontario-checkbox>
+	 * </ontario-checkboxes>
 	 */
 	options: string | CheckboxOption[];
 }

@@ -15,24 +15,28 @@ export default function CheckboxExample() {
 	required
 	options={[
 		{
-			value: "checkbox-1",
-			label: "Option 1"
+			value: 'checkbox-1-value',
+			label: 'Option 1',
+			elementId: "checkbox-1"
 		},
 		{
-			value: "checkbox-2",
-			label: "Option 2",
+			value: 'checkbox-2-value',
+			label: 'Option 2',
+			elementId: "checkbox-2",
 			hintExpander: {
-				content: "This is the example content for the Option 2 checkbox option.",
-				hint: "Example hint expander for Option 2 checkbox option"
-			}
+				content: 'This is the example content for the Option 2 checkbox option.',
+				hint: 'Example hint expander for Option 2 checkbox option',
+			},
 		},
 		{
-			value: "checkbox-3",
-			label: "Option 3",
+			value: 'checkbox-3-value',
+			label: 'Option 3',
+			elementId: "checkbox-3"
 		},
 		{
-			value: "checkbox-4",
-			label: "Option 4"
+			value: 'checkbox-4-value',
+			label: 'Option 4',
+			elementId: "checkbox-4"
 		}
 	]}
 	hintText="Example hint text for the checkbox"
@@ -78,24 +82,28 @@ export default function CheckboxExample() {
 						required
 						options={[
 							{
-								value: 'checkbox-1',
+								value: 'checkbox-1-value',
 								label: 'Option 1',
+								elementId: 'checkbox-1',
 							},
 							{
-								value: 'checkbox-2',
+								value: 'checkbox-2-value',
 								label: 'Option 2',
+								elementId: 'checkbox-2',
 								hintExpander: {
 									content: 'This is the example content for the Option 2 checkbox option.',
 									hint: 'Example hint expander for Option 2 checkbox option',
 								},
 							},
 							{
-								value: 'checkbox-3',
+								value: 'checkbox-3-value',
 								label: 'Option 3',
+								elementId: 'checkbox-3',
 							},
 							{
-								value: 'checkbox-4',
+								value: 'checkbox-4-value',
 								label: 'Option 4',
+								elementId: 'checkbox-4',
 							},
 						]}
 						hintText="Example hint text for the checkbox"
