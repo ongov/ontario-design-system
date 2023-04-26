@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch } from '@stencil/core';
+import { Component, h, Prop, Watch, Element } from '@stencil/core';
 import { CriticalAlert } from './ontario-critical-alert.interface';
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
@@ -10,6 +10,8 @@ import OntarioIconCriticalAlertWarning from '../ontario-icon/assets/ontario-icon
 	shadow: true,
 })
 export class OntarioCriticalAlert implements CriticalAlert {
+	@Element() host: HTMLElement;
+
 	/**
 	 * Content for critical alert message. It can be either a string or HTML content. The content is already wrapped in a paragraph tag, so if using HTML content, the paragraph tag can be ommitted.
 	 *
@@ -26,18 +28,21 @@ export class OntarioCriticalAlert implements CriticalAlert {
 
 	@Watch('content')
 	validateCriticalAlertContent(newValue: string | HTMLElement) {
-		if (validatePropExists(newValue)) {
-			/**
-			 * Print the quote warning message
-			 */
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' content ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-critical-alert> ')
-				.addRegularText('was not provided.')
-				.printMessage();
+		// if no slot is passed, run the `validatePropExists` function
+		if (!this.host.textContent) {
+			if (validatePropExists(newValue)) {
+				/**
+				 * Print the quote warning message
+				 */
+				const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' content ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-critical-alert> ')
+					.addRegularText('was not provided.')
+					.printMessage();
+			}
 		}
 	}
 
