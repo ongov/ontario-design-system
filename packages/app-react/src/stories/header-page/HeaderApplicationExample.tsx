@@ -8,7 +8,7 @@ export default function HeaderApplicationExample() {
 	type="application"
 	applicationHeaderInfo={{
 		title: "Application name",
-		href : "/",
+		href: "/",
 		maxSubheaderDesktopLinks: 3,
 		maxSubheaderTabletLinks: 2
 	}}
