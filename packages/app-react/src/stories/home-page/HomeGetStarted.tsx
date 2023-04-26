@@ -12,7 +12,7 @@ export default function HomeGetStarted() {
 			<div className="ontario-columns ontario-large-6 ontario-margin-top-24-!">
 				<h3 className="ontario-h4">For designers</h3>
 				If you're creating mockups and prototypes,{' '}
-				<a href="https://sb-designsystem.ontariogovernment.ca/alex/docs/documentation/for-designers.html">
+				<a href="https://designsystem.ontario.ca/docs/documentation/for-designers.html">
 					get the Ontario Design System fonts and prototyping kit
 				</a>
 				.
@@ -20,7 +20,7 @@ export default function HomeGetStarted() {
 			<div className="ontario-columns ontario-large-6 ontario-margin-top-24-!">
 				<h3 className="ontario-h4">For developers</h3>
 				If you're coding the website,{' '}
-				<a href="https://sb-designsystem.ontariogovernment.ca/alex/docs/documentation/for-developers.html">
+				<a href="https://designsystem.ontario.ca/docs/documentation/for-developers/getting-started.html">
 					learn how to install the distribution package and create custom components
 				</a>
 				.

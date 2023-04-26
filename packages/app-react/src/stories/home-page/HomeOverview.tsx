@@ -28,7 +28,7 @@ export default function HomeOverview() {
 			<div className="ontario-connect ontario-aside ontario-columns ontario-small-11 ontario-medium-11 ontario-large-3">
 				<h3 className="ontario-h5">Connect with us</h3>
 				<p>
-					<a href="https://sb-designsystem.ontariogovernment.ca/alex/docs/help-feedback.html#attend-a-drop-in-session">
+					<a href="https://designsystem.ontario.ca/docs/help-feedback.html#attend-a-drop-in-session">
 						Join our drop-in sessions
 					</a>{' '}
 					to talk shop or get help.{' '}
