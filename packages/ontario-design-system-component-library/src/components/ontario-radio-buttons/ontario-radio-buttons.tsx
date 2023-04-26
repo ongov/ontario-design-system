@@ -73,10 +73,10 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *   options='[
 	 * 	   {
 	 *        "value": "radio-option-1",
-	 * 				"elementId": "radio-1",
+	 * 		  "elementId": "radio-1",
 	 *        "label": "Radio Option 1 Label",
 	 *        "hintExpander": {
-	 *			    "hint": "Hint expander",
+	 *			  "hint": "Hint expander",
 	 * 		      "content": "This is the content"
 	 *		    }
 	 *     }
@@ -115,12 +115,12 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *   options='[
 	 *     {
 	 *        "value": "radio-1-value",
-	 * 				"elementId": "radio-1",
+	 * 		  "elementId": "radio-1",
 	 *        "label": "Radio Button Label 1"
 	 *     },
 	 *     {
 	 *        "value": "radio-2-value",
-	 * 				"elementId": "radio-1",
+	 * 		  "elementId": "radio-1",
 	 *        "label": "Radio Button Label 2",
 	 *        "hintExpander": {
 	 *          "hint": "Hint expander",

@@ -34,15 +34,27 @@
 				<ontario-input
 					name="email"
 					input-width="20-char-width"
-					caption='{"captionText": "Email", "captionType": "HEADING"}'
+					caption='{
+						"captionText": "Email", 
+						"captionType": "HEADING"
+					}'
 					required="true"
 				></ontario-input>
 				<ontario-input
 					name="postal"
 					input-width="7-char-width"
-					caption='{"captionText": "Postal Code", "captionType": "Large"}'
+					caption='{
+						"captionText": "Postal Code", 
+						"captionType": "Large"
+					}'
 				></ontario-input>
-				<ontario-input name="address" caption='{"captionText": "Address", "captionType": "default"}'></ontario-input>
+				<ontario-input
+					name="address"
+					caption='{
+					"captionText": "Address", 
+					"captionType": "default"
+				}'
+				></ontario-input>
 
 				<details>
 					<summary style="padding: 0 15px 15px 0">ontario-input components - unhappy path examples</summary>
@@ -80,7 +92,10 @@
 				<ontario-input
 					name="postal"
 					input-width="7-char-width"
-					caption='{"captionText": "Postal Code", "captionType": "default"}'
+					caption='{
+						"captionText": "Postal Code", 
+						"captionType": "default"
+					}'
 					hint-text="For example, A1A 1A1"
 				></ontario-input>
 
@@ -88,7 +103,10 @@
 				<ontario-input
 					name="address"
 					caption="Address"
-					hint-expander='{"hint": "Hint expander","content": "This is the content, yup this is the content"}'
+					hint-expander='{
+						"hint": "Hint expander",
+						"content": "This is the content, yup this is the content"
+					}'
 				>
 				</ontario-input>
 
@@ -97,27 +115,36 @@
 				<!-- `ontario-input` components - happy path examples -->
 				<ontario-textarea
 					name="comments"
-					caption='{"captionText": "Comments", "captionType": "HEADING"}'
+					caption='{
+						"captionText": "Comments",
+						"captionType": "HEADING"
+					}'
 					required="true"
 					hint-expander='{
-				"hint": "Hint expander",
-				"content": "This is the content, yup this is the content"
-			}'
+						"hint": "Hint expander",
+						"content": "This is the content, yup this is the content"
+					}'
 				></ontario-textarea>
 				<ontario-textarea
 					name="feedback"
-					caption='{"captionText": "Feedback", "captionType": "large"}'
+					caption='{
+						"captionText": "Feedback", 
+						"captionType": "large"
+					}'
 					element-id="feedback"
 					hint-text="Please provide any additional information you think would be useful for us to improve our services."
 				></ontario-textarea>
 				<ontario-textarea
 					name="response"
-					caption='{"captionText": "What do you like about ODS?", "captionType": "default"}'
+					caption='{
+						"captionText": "What do you like about ODS?", 
+						"captionType": "default"
+					}'
 					element-id="response"
 					hint-expander='{
-				"hint": "Hint expander",
-				"content": "This is the content, yup this is the content"
-			}'
+						"hint": "Hint expander",
+						"content": "This is the content, yup this is the content"
+					}'
 				></ontario-textarea>
 
 				<hr />
@@ -126,40 +153,40 @@
 					name="ontario-checkbox-group"
 					hint-text="This is the hint text"
 					caption='{
-					"captionText": "Checkbox legend",
-					"captionType": "heading"
-				}'
+						"captionText": "Checkbox legend",
+						"captionType": "heading"
+					}'
 					required
 					options='[
-					{
-						"value": "checkbox-1",
-						"label": "checkbox-1-label"
-					},
-					{
-						"value": "checkbox-2",
-						"label": "checkbox-2-label",
-						"hintExpander": {
-							"hint": "Hint expander",
-							"content": "This is the content, yup this is the content"
+						{
+							"value": "checkbox-1",
+							"label": "Checkbox 1 label"
+						},
+						{
+							"value": "checkbox-2",
+							"label": "Checkbox 2 label",
+							"hintExpander": {
+								"hint": "Hint expander",
+								"content": "This is the content, yup this is the content"
+							}
+						},
+						{
+							"value": "checkbox-3",
+							"label": "Checkbox 3 label",
+							"hintExpander": {
+								"hint": "Hint expander",
+								"content": "This is the content"
+							}
+						},
+						{
+							"value": "Checkbox 4 label",
+							"label": "checkbox-4-label"
 						}
-					},
-					{
-						"value": "checkbox-3",
-						"label": "checkbox-3-label",
-						"hintExpander": {
-							"hint": "Hint expander",
-							"content": "This is the content"
-						}
-					},
-					{
-						"value": "checkbox-4",
-						"label": "checkbox-4-label"
-					}
-				]'
+					]'
 					hint-expander='{
-					"hint": "Hint expander",
-					"content": "This is the content, yup this is the content"
-				}'
+						"hint": "Hint expander",
+						"content": "This is the content, yup this is the content"
+					}'
 				>
 				</ontario-checkboxes>
 
@@ -169,44 +196,44 @@
 					name="radios"
 					hint-text="This is the hint text"
 					caption='{
-					"captionText": "Do you have cats?",
-					"captionType": "heading"
-				}'
+						"captionText": "Do you have cats?",
+						"captionType": "heading"
+					}'
 					required="false"
 					options='[
-					{
-						"value": "radio",
-						"elementId": "radio-1",
-						"label": "radio-1-label"
-					},
-					{
-						"value": "radio-2",
-						"elementId": "radio-2",
-						"label": "radio-2-label",
-						"hintExpander": {
-							"hint": "Hint expander",
-							"content": "This is the content, yup this is the content"
+						{
+							"value": "radio",
+							"elementId": "radio-1",
+							"label": "Radio 1 label"
+						},
+						{
+							"value": "radio-2",
+							"elementId": "radio-2",
+							"label": "Radio 2 label",
+							"hintExpander": {
+								"hint": "Hint expander",
+								"content": "This is the content, yup this is the content"
+							}
+						},
+						{
+							"value": "radio-3",
+							"elementId": "radio-3",
+							"label": "Radio 3 label",
+							"hintExpander": {
+								"hint": "Hint expander",
+								"content": "This is the content"
+							}
+						},
+						{
+							"value": "radio-4",
+							"elementId": "radio-4",
+							"label": "Radio 4 label"
 						}
-					},
-					{
-						"value": "radio-3",
-						"elementId": "radio-3",
-						"label": "radio-3-label",
-						"hintExpander": {
-							"hint": "Hint expander",
-							"content": "This is the content"
-						}
-					},
-					{
-						"value": "radio-4",
-						"elementId": "radio-4",
-						"label": "radio-4-label"
-					}
-				]'
+					]'
 					hint-expander='{
-					"hint": "Hint expander",
-					"content": "This is hint expander content"
-				}'
+						"hint": "Hint expander",
+						"content": "This is hint expander content"
+					}'
 				>
 				</ontario-radio-buttons>
 
@@ -216,22 +243,24 @@
 					name="cat-dropdown"
 					is-empty-start-option="Please select"
 					caption='{
-					"captionText": "Do you like cats?",
-					"captionType": "heading"
-				}'
+						"captionText": "Do you like cats?",
+						"captionType": "heading"
+					}'
 					required="true"
-					options='[{
-					"value": "dropdown-list-1",
-					"label": "Option 1"
-				},
-				{
-					"value": "dropdown-list-2",
-					"label": "Option 2"
-				},
-				{
-					"value": "dropdown-list-3",
-					"label": "Option 3"
-				}]'
+					options='[
+						{
+							"value": "dropdown-list-1",
+							"label": "Option 1"
+						},
+						{
+							"value": "dropdown-list-2",
+							"label": "Option 2"
+						},
+						{
+							"value": "dropdown-list-3",
+							"label": "Option 3"
+						}
+					]'
 				>
 				</ontario-dropdown-list>
 

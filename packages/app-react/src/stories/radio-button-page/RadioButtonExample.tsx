@@ -13,7 +13,6 @@ export default function RadioButtonExample() {
 	hintText="Example hint text for radio buttons"
 	options={[
 		{
-			name: "radio-example",
 			value: "option-1",
 			elementId: "option-1",
 			label: "Option 1",
@@ -23,13 +22,11 @@ export default function RadioButtonExample() {
 			}
 		},
 		{
-			name: "radio-example",
 			value: "option-2",
 			elementId: "option-2",
 			label: "Option 2"
 		},
 		{
-			name: "radio-example",
 			value: "option-3",
 			elementId: "option-3",
 			label: "Option 3"
@@ -53,7 +50,6 @@ export default function RadioButtonExample() {
 					hintText="Example hint text for radio buttons"
 					options={[
 						{
-							name: 'radio-example',
 							value: 'option-1',
 							elementId: 'option-1',
 							label: 'Option 1',
@@ -63,13 +59,11 @@ export default function RadioButtonExample() {
 							},
 						},
 						{
-							name: 'radio-example',
 							value: 'option-2',
 							elementId: 'option-2',
 							label: 'Option 2',
 						},
 						{
-							name: 'radio-example',
 							value: 'option-3',
 							elementId: 'option-3',
 							label: 'Option 3',

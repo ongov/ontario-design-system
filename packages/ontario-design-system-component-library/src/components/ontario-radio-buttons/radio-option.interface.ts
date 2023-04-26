@@ -2,14 +2,6 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
 export interface RadioOption {
 	/**
-	 * The name assigned to the radio button.
-	 * The name value is used to reference form data after a form is submitted.
-	 * Please note that if you have multiple radio button options, the name must
-	 * the same for all options in a fieldset.
-	 */
-	name: string;
-
-	/**
 	 * Text to display as the radio button's label
 	 *
 	 * Setting the radio label can be done using the element content or setting
