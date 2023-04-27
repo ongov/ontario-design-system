@@ -27,6 +27,8 @@ export class OntarioCheckboxes implements Checkboxes {
 	 */
 	@Element() element: HTMLElement;
 
+	hintTextRef: HTMLOntarioHintTextElement | undefined;
+
 	/**
 	 * The text to display as the label
 	 *
@@ -128,6 +130,11 @@ export class OntarioCheckboxes implements Checkboxes {
 	 * If no prop is set, it will default to false (optional).
 	 */
 	@Prop() required?: boolean = false;
+
+	/**
+	 * Used for the `aria-describedby` value of the checkbox fieldset. This will match with the id of the hint text.
+	 */
+	@State() hintTextId: string | null | undefined;
 
 	/**
 	 * Instantiate an InputCaption object for internal logic use
@@ -251,6 +258,10 @@ export class OntarioCheckboxes implements Checkboxes {
 		this.changeEvent.emit(ev as any);
 	};
 
+	async componentDidLoad() {
+		this.hintTextId = await this.hintTextRef?.getHintTextId();
+	}
+
 	componentWillLoad() {
 		this.updateCaptionState(this.caption);
 		this.parseOptions();
@@ -262,9 +273,11 @@ export class OntarioCheckboxes implements Checkboxes {
 	render() {
 		return (
 			<div class="ontario-form-group">
-				<fieldset class="ontario-fieldset">
+				<fieldset class="ontario-fieldset" aria-describedby={this.hintTextId}>
 					{this.captionState.getCaption(undefined, !!this.internalHintExpander)}
-					{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
+					{this.hintText && (
+						<ontario-hint-text hint={this.hintText} ref={(el) => (this.hintTextRef = el)}></ontario-hint-text>
+					)}
 
 					<div class="ontario-checkboxes">
 						{this.internalOptions?.map((checkbox) => (

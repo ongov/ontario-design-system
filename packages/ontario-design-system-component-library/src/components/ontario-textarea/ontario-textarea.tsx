@@ -23,6 +23,8 @@ export class OntarioTextarea implements Input {
 	 */
 	@Element() element: HTMLElement;
 
+	hintTextRef: HTMLOntarioHintTextElement | undefined;
+
 	/**
 	 * The text to display as the label
 	 *
@@ -37,11 +39,6 @@ export class OntarioTextarea implements Input {
 	 * </ontario-input>
 	 */
 	@Prop() caption: Caption | string;
-
-	/**
-	 * The aria-describedBy value if the textarea has hint text associated with it. This is optional.
-	 */
-	@Prop() describedBy?: string;
 
 	/**
 	 * The name assigned to the textarea. The name value is used to reference form data after a form is submitted.
@@ -97,6 +94,11 @@ export class OntarioTextarea implements Input {
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
 	@Prop({ mutable: true }) language?: Language = 'en';
+
+	/**
+	 * Used for the `aria-describedby` value of the textarea. This will match with the id of the hint text.
+	 */
+	@State() hintTextId: string | null | undefined;
 
 	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.
@@ -217,6 +219,10 @@ export class OntarioTextarea implements Input {
 		return this.hintExpander ? `ontario-textarea ontario-textarea-hint-expander--true` : `ontario-textarea`;
 	}
 
+	async componentDidLoad() {
+		this.hintTextId = await this.hintTextRef?.getHintTextId();
+	}
+
 	componentWillLoad() {
 		this.updateCaptionState(this.caption);
 		this.elementId = this.elementId ?? uuid();
@@ -229,9 +235,11 @@ export class OntarioTextarea implements Input {
 		return (
 			<div>
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
-				{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
+				{this.hintText && (
+					<ontario-hint-text hint={this.hintText} ref={(el) => (this.hintTextRef = el)}></ontario-hint-text>
+				)}
 				<textarea
-					aria-describedby={this.describedBy}
+					aria-describedby={this.hintTextId}
 					class={this.getClass()}
 					id={this.getId()}
 					name={this.name}

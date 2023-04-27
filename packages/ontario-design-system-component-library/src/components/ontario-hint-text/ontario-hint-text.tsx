@@ -1,4 +1,4 @@
-import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
+import { Component, Prop, Element, h, Watch, State, Method } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 import { Hint } from '../../utils/common.interface';
 import { validatePropExists } from '../../utils/validation/validation-functions';
@@ -67,6 +67,11 @@ export class OntarioHintText implements Hint {
 
 	public getId(): string {
 		return this.elementId ?? '';
+	}
+
+	@Method()
+	async getHintTextId() {
+		return this.elementId;
 	}
 
 	/**
