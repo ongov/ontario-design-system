@@ -21,7 +21,7 @@ Example of a bare-bones input component, the `name` property is passed in for th
 /></ontario-input>
 ```
 
-The following input component has the `input-width` property passed in, which will define the width of the input field. The `described-by` property has been passed in because the input has hint text associated with it.
+The following input component has the `input-width` property passed in, which will define the width of the input field.
 
 ```html
 <ontario-input
@@ -31,7 +31,6 @@ The following input component has the `input-width` property passed in, which wi
 		"captionType": "large"
 	}'
 	input-width="10-char-width"
-	describedBy="ontario-input-label-example"
 /></ontario-input>
 ```
 

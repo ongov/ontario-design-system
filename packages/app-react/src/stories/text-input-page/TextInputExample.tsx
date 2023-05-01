@@ -15,7 +15,6 @@ export default function TextInputExample() {
 	required
 	type="text"
 	hintText="Example hint text for the 4 character width input"
-	describedBy="4-char-input-hint"
 />`;
 
 	const TwentyCharInputExample = `import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioInput
@@ -81,7 +80,6 @@ export default function TextInputExample() {
 						required
 						type="text"
 						hintText="Example hint text for the 4 character width input"
-						described-by="4-char-input-hint"
 					/>
 
 					<p>With the following markup:</p>

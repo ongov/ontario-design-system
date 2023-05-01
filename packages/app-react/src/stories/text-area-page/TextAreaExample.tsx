@@ -14,7 +14,6 @@ export default function TextAreaExample() {
 	name="textarea"
 	required
 	hintText="Example hint text for the textarea"
-	describedBy="textarea-hint-text"
 	hintExpander={
 		content: "This is the example content for the textarea hint expander",
 		hint: "Example hint expander for the textarea",
@@ -69,7 +68,6 @@ export default function TextAreaExample() {
 							name="textarea"
 							required
 							hintText="Example hint text for the textarea"
-							describedBy="textarea-hint-text"
 							hintExpander={{
 								content: 'This is the example content for the textarea hint expander',
 								hint: 'Example hint expander for the textarea',
