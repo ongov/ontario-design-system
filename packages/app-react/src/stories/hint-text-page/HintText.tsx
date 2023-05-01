@@ -5,7 +5,7 @@ import CodeHighlighter from '../../components/code-highlighter';
 
 export default function HintText() {
 	const hintTextCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react';
-	\n\n<OntarioHintText hint="Example hint text" element-id="hint-id" />`;
+	\n\n<OntarioHintText hint="Example hint text" elementId="hint-id" />`;
 	return (
 		<div className="ontario-row">
 			<div className="ontario-columns ontario-large-12">
@@ -34,7 +34,7 @@ export default function HintText() {
 
 				<div className="ontario-margin-top-24-!">
 					<h3>Example</h3>
-					<OntarioHintText hint="Example hint text" element-id="hint-id" />
+					<OntarioHintText hint="Example hint text" elementId="hint-id" />
 
 					<p>With the following markup:</p>
 

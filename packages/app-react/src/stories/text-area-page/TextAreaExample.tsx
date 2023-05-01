@@ -5,22 +5,21 @@ import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-
 import CodeHighlighter from '../../components/code-highlighter';
 
 export default function TextAreaExample() {
-	const codeExample = `import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n
-<OntarioTextarea
-	caption='{
-		"captionText": "Label",
-		"captionType": "default"
-	}'
-	element-id="textarea"
+	const codeExample = `import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioTextarea
+	caption={{
+		captionText: "Label",
+		captionType: "default"
+	}}
+	elementId="textarea"
 	name="textarea"
 	required
-	hint-text="Example hint text for the textarea"
-	described-by="textarea-hint-text"
-	hint-expander='{
-		"content": "This is the example content for the textarea hint expander",
-		"hint": "Example hint expander for the textarea",
-		"elementId": "textarea-hint-expander"
-	}'
+	hintText="Example hint text for the textarea"
+	describedBy="textarea-hint-text"
+	hintExpander={
+		content: "This is the example content for the textarea hint expander",
+		hint: "Example hint expander for the textarea",
+		elementId: "textarea-hint-expander"
+	}}
 	onBlur={textareaOnBlur}
 	onChange={textareaOnChange}
 />`;
@@ -62,20 +61,20 @@ export default function TextAreaExample() {
 					<div className="ontario-margin-top-24-!">
 						<OntarioTextarea
 							ref={componentRef}
-							caption='{
-								"captionText": "Label",
-								"captionType": "default"
-							}'
-							element-id="textarea"
+							caption={{
+								captionText: 'Label',
+								captionType: 'default',
+							}}
+							elementId="textarea"
 							name="textarea"
 							required
-							hint-text="Example hint text for the textarea"
-							described-by="textarea-hint-text"
-							hint-expander='{
-								"content": "This is the example content for the textarea hint expander",
-								"hint": "Example hint expander for the textarea",
-								"elementId": "textarea-hint-expander"
-							}'
+							hintText="Example hint text for the textarea"
+							describedBy="textarea-hint-text"
+							hintExpander={{
+								content: 'This is the example content for the textarea hint expander',
+								hint: 'Example hint expander for the textarea',
+								elementId: 'textarea-hint-expander',
+							}}
 							onBlur={textareaOnBlur}
 						/>
 

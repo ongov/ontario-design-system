@@ -14,8 +14,8 @@ export default function TextInputExample() {
 	name="4-char-input"
 	required
 	type="text"
-	hint-text="Example hint text for the 4 character width input"
-	described-by="4-char-input-hint"
+	hintText="Example hint text for the 4 character width input"
+	describedBy="4-char-input-hint"
 />`;
 
 	const TwentyCharInputExample = `import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioInput
@@ -28,11 +28,11 @@ export default function TextInputExample() {
 	name="20-char-input"
 	required={false}	
 	type="text"
-	hint-expander='{
-		"content": "This is the example content for the 20 character width input",
-		"hint": "Example hint expander for the 20 character width input",
-		"elementId": "20-char-width-hint-expander"
-	}'
+	hintExpander={{
+		content: "This is the example content for the 20 character width input",
+		hint: "Example hint expander for the 20 character width input",
+		elementId: "20-char-width-hint-expander"
+	}}
 />`;
 
 	const DefaultInputExample = `import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioInput
@@ -62,7 +62,7 @@ export default function TextInputExample() {
 	}, [componentRef]);
 
 	const defaultInputOnFocus = () => {
-		alert('Default input has focus');
+		console.log('Default input has focus');
 	};
 
 	return (
@@ -80,7 +80,7 @@ export default function TextInputExample() {
 						name="4-char-input"
 						required
 						type="text"
-						hint-text="Example hint text for the 4 character width input"
+						hintText="Example hint text for the 4 character width input"
 						described-by="4-char-input-hint"
 					/>
 
@@ -100,11 +100,11 @@ export default function TextInputExample() {
 						name="20-char-input"
 						required={false}
 						type="text"
-						hint-expander='{
-							"content": "This is the example content for the 20 character width input",
-							"hint": "Example hint expander for the 20 character width input",
-							"elementId": "20-char-width-hint-expander"
-						}'
+						hintExpander={{
+							content: 'This is the example content for the 20 character width input',
+							hint: 'Example hint expander for the 20 character width input',
+							elementId: '20-char-width-hint-expander',
+						}}
 					/>
 
 					<p>With the following markup:</p>
