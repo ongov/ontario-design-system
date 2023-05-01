@@ -21,7 +21,7 @@ ontario-page-alert {
 
 ontario-page-alert[type='error'] {
 	ul {
-		margin-left: calc(spacing.$spacing-2) + calc(spacing.$spacing-4);
+		margin-left: (spacing.$spacing-2 + spacing.$spacing-4);
 
 		&:last-of-type {
 			margin-bottom: spacing.$spacing-2;
