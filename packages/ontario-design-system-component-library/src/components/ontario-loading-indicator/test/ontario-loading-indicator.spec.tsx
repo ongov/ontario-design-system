@@ -2,6 +2,15 @@ import { newSpecPage } from '@stencil/core/testing';
 import { OntarioLoadingIndicator } from '../ontario-loading-indicator';
 
 describe('ontario-loading-indicator', () => {
+	it('should render the expected html', async () => {
+		const page = await newSpecPage({
+			components: [OntarioLoadingIndicator],
+			html: `<ontario-loading-indicator></ontario-loading-indicator>`,
+		});
+
+		expect(page.root).toMatchSnapshot();
+	});
+
 	it('renders', async () => {
 		const page = await newSpecPage({
 			components: [OntarioLoadingIndicator],
