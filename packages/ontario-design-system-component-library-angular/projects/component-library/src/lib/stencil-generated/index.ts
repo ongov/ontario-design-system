@@ -1,8 +1,11 @@
 import * as d from './components';
 
 export const DIRECTIVES = [
+	d.OntarioAside,
+	d.OntarioBackToTop,
 	d.OntarioBlockquote,
 	d.OntarioButton,
+	d.OntarioCallout,
 	d.OntarioCheckboxes,
 	d.OntarioCriticalAlert,
 	d.OntarioDropdownList,
@@ -18,6 +21,7 @@ export const DIRECTIVES = [
 	d.OntarioIconAlertInformation,
 	d.OntarioIconAlertSuccess,
 	d.OntarioIconAlertWarning,
+	d.OntarioIconArrowUp,
 	d.OntarioIconAttach,
 	d.OntarioIconBookmarkOff,
 	d.OntarioIconBookmarkOn,
@@ -122,6 +126,7 @@ export const DIRECTIVES = [
 	d.OntarioIconWifi,
 	d.OntarioIconYoutube,
 	d.OntarioInput,
+	d.OntarioLoadingIndicator,
 	d.OntarioPageAlert,
 	d.OntarioRadioButtons,
 	d.OntarioTextarea,

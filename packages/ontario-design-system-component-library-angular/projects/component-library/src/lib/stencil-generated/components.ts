@@ -7,6 +7,46 @@ import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 import { Components } from '@ontario-digital-service/ontario-design-system-component-library';
 
 @ProxyCmp({
+	inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
+})
+@Component({
+	selector: 'ontario-aside',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
+})
+export class OntarioAside {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioAside extends Components.OntarioAside {}
+
+@ProxyCmp({
+	inputs: ['language'],
+})
+@Component({
+	selector: 'ontario-back-to-top',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['language'],
+})
+export class OntarioBackToTop {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioBackToTop extends Components.OntarioBackToTop {}
+
+@ProxyCmp({
 	inputs: ['attribution', 'byline', 'quote'],
 })
 @Component({
@@ -45,6 +85,26 @@ export class OntarioButton {
 }
 
 export declare interface OntarioButton extends Components.OntarioButton {}
+
+@ProxyCmp({
+	inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
+})
+@Component({
+	selector: 'ontario-callout',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
+})
+export class OntarioCallout {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioCallout extends Components.OntarioCallout {}
 
 @ProxyCmp({
 	inputs: ['caption', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required'],
@@ -93,14 +153,34 @@ export class OntarioCriticalAlert {
 export declare interface OntarioCriticalAlert extends Components.OntarioCriticalAlert {}
 
 @ProxyCmp({
-	inputs: ['caption', 'elementId', 'isEmptyStartOption', 'language', 'name', 'options', 'required'],
+	inputs: [
+		'caption',
+		'elementId',
+		'hintExpander',
+		'hintText',
+		'isEmptyStartOption',
+		'language',
+		'name',
+		'options',
+		'required',
+	],
 })
 @Component({
 	selector: 'ontario-dropdown-list',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['caption', 'elementId', 'isEmptyStartOption', 'language', 'name', 'options', 'required'],
+	inputs: [
+		'caption',
+		'elementId',
+		'hintExpander',
+		'hintText',
+		'isEmptyStartOption',
+		'language',
+		'name',
+		'options',
+		'required',
+	],
 })
 export class OntarioDropdownList {
 	protected el: HTMLElement;
@@ -133,14 +213,14 @@ export class OntarioFooter {
 export declare interface OntarioFooter extends Components.OntarioFooter {}
 
 @ProxyCmp({
-	inputs: ['applicationHeaderInfo', 'languageToggleOptions', 'menuItems', 'type'],
+	inputs: ['applicationHeaderInfo', 'disableDynamicMenu', 'languageToggleOptions', 'menuItems', 'type'],
 })
 @Component({
 	selector: 'ontario-header',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['applicationHeaderInfo', 'languageToggleOptions', 'menuItems', 'type'],
+	inputs: ['applicationHeaderInfo', 'disableDynamicMenu', 'languageToggleOptions', 'menuItems', 'type'],
 })
 export class OntarioHeader {
 	protected el: HTMLElement;
@@ -357,6 +437,26 @@ export class OntarioIconAlertWarning {
 }
 
 export declare interface OntarioIconAlertWarning extends Components.OntarioIconAlertWarning {}
+
+@ProxyCmp({
+	inputs: ['colour', 'iconWidth'],
+})
+@Component({
+	selector: 'ontario-icon-arrow-up',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+})
+export class OntarioIconArrowUp {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioIconArrowUp extends Components.OntarioIconArrowUp {}
 
 @ProxyCmp({
 	inputs: ['colour', 'iconWidth'],
@@ -2475,6 +2575,26 @@ export declare interface OntarioInput extends Components.OntarioInput {
 	 */
 	changeEvent: EventEmitter<CustomEvent<KeyboardEvent>>;
 }
+
+@ProxyCmp({
+	inputs: ['fullScreenOverlay', 'isLoading', 'language', 'message', 'type'],
+})
+@Component({
+	selector: 'ontario-loading-indicator',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['fullScreenOverlay', 'isLoading', 'language', 'message', 'type'],
+})
+export class OntarioLoadingIndicator {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioLoadingIndicator extends Components.OntarioLoadingIndicator {}
 
 @ProxyCmp({
 	inputs: ['content', 'heading', 'type'],
