@@ -49,9 +49,13 @@ Ontario Design System hint text web component
 
 ### `getHintTextId() => Promise<string | undefined>`
 
+This method returns the ontario-hint-text id. It is used to make sure the hint text and `aria-describedby` value of other form components match when the internal hint text props are used.
+
 #### Returns
 
 Type: `Promise<string | undefined>`
+
+Promise<string | undefined>
 
 ## Dependencies
 
