@@ -1,5 +1,5 @@
 {
-	"name": "component-library",
+	"name": "angular-component-library",
 	"version": "0.0.1",
 	"peerDependencies": {
 		"@angular/common": "^15.2.0",

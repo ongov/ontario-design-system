@@ -260,6 +260,7 @@ export declare interface OntarioHintExpander extends Components.OntarioHintExpan
 
 @ProxyCmp({
 	inputs: ['elementId', 'hint'],
+	methods: ['getHintTextId'],
 })
 @Component({
 	selector: 'ontario-hint-text',
@@ -2521,7 +2522,6 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
 @ProxyCmp({
 	inputs: [
 		'caption',
-		'describedBy',
 		'elementId',
 		'hintExpander',
 		'hintText',
@@ -2540,7 +2540,6 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
 	inputs: [
 		'caption',
-		'describedBy',
 		'elementId',
 		'hintExpander',
 		'hintText',
@@ -2637,14 +2636,14 @@ export class OntarioRadioButtons {
 export declare interface OntarioRadioButtons extends Components.OntarioRadioButtons {}
 
 @ProxyCmp({
-	inputs: ['caption', 'describedBy', 'elementId', 'hintExpander', 'hintText', 'language', 'name', 'required', 'value'],
+	inputs: ['caption', 'elementId', 'hintExpander', 'hintText', 'language', 'name', 'required', 'value'],
 })
 @Component({
 	selector: 'ontario-textarea',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['caption', 'describedBy', 'elementId', 'hintExpander', 'hintText', 'language', 'name', 'required', 'value'],
+	inputs: ['caption', 'elementId', 'hintExpander', 'hintText', 'language', 'name', 'required', 'value'],
 })
 export class OntarioTextarea {
 	protected el: HTMLElement;

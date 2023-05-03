@@ -40,7 +40,7 @@ The assets in the NPM package are located at `@ontario-digital-service/ontario-d
 In a standard Angular application this can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package, which you can with any operating system:
 
 ```bash
-copyfiles -E -f "node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/assets/*" src/assets
+copyfiles -E -f "node_modules/@ontario-digital-service/ontario-design-system-component-library-angular/dist/assets/*" src/assets
 ```
 
 Another way is to add scripts to copy the assets in your `package.json` file. For example:
