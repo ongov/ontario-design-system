@@ -255,6 +255,11 @@ export namespace Components {
          */
         "elementId"?: string;
         /**
+          * This method returns the ontario-hint-text id. It is used to make sure the hint text and `aria-describedby` value of other form components match when the internal hint text props are used.
+          * @returns Promise<string | undefined>
+         */
+        "getHintTextId": () => Promise<string | undefined>;
+        /**
           * Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence.
           * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
          */
@@ -1339,10 +1344,6 @@ export namespace Components {
          */
         "caption": Caption | string;
         /**
-          * The aria-describedBy value if the input has hint text associated with it.
-         */
-        "describedBy"?: string;
-        /**
           * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
          */
         "elementId"?: string;
@@ -1465,10 +1466,6 @@ export namespace Components {
           * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",   }'   required="true"   ...> </ontario-input>
          */
         "caption": Caption | string;
-        /**
-          * The aria-describedBy value if the textarea has hint text associated with it. This is optional.
-         */
-        "describedBy"?: string;
         /**
           * The unique identifier of the textarea. This is optional - if no ID is passed, one will be generated.
          */
@@ -3765,10 +3762,6 @@ declare namespace LocalJSX {
          */
         "caption"?: Caption | string;
         /**
-          * The aria-describedBy value if the input has hint text associated with it.
-         */
-        "describedBy"?: string;
-        /**
           * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
          */
         "elementId"?: string;
@@ -3903,10 +3896,6 @@ declare namespace LocalJSX {
           * @example <ontario-input   caption='{     "captionText": "Address",     "captionType": "heading",   }'   required="true"   ...> </ontario-input>
          */
         "caption"?: Caption | string;
-        /**
-          * The aria-describedBy value if the textarea has hint text associated with it. This is optional.
-         */
-        "describedBy"?: string;
         /**
           * The unique identifier of the textarea. This is optional - if no ID is passed, one will be generated.
          */

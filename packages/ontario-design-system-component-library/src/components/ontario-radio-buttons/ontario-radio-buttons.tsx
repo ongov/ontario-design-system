@@ -24,6 +24,8 @@ export class OntarioRadioButtons implements RadioButtons {
 	 */
 	@Element() element: HTMLElement;
 
+	hintTextRef: HTMLOntarioHintTextElement | undefined;
+
 	/**
 	 * The text to display as the label
 	 *
@@ -133,6 +135,11 @@ export class OntarioRadioButtons implements RadioButtons {
 	@Prop() options: string | RadioOption[];
 
 	/**
+	 * Used for the `aria-describedby` value of the radio button fieldset. This will match with the id of the hint text.
+	 */
+	@State() hintTextId: string | null | undefined;
+
+	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.
 	 */
 	@State() private internalHintExpander: HintExpander;
@@ -239,6 +246,10 @@ export class OntarioRadioButtons implements RadioButtons {
 		this.updateCaptionState(this.caption);
 	}
 
+	async componentDidLoad() {
+		this.hintTextId = await this.hintTextRef?.getHintTextId();
+	}
+
 	componentWillLoad() {
 		this.updateCaptionState(this.caption);
 		this.parseOptions();
@@ -251,9 +262,11 @@ export class OntarioRadioButtons implements RadioButtons {
 	render() {
 		return (
 			<div class="ontario-form-group">
-				<fieldset class="ontario-fieldset">
+				<fieldset class="ontario-fieldset" aria-describedby={this.hintTextId}>
 					{this.captionState.getCaption(undefined, !!this.internalHintExpander)}
-					{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
+					{this.hintText && (
+						<ontario-hint-text hint={this.hintText} ref={(el) => (this.hintTextRef = el)}></ontario-hint-text>
+					)}
 					<div class="ontario-radios">
 						{this.internalOptions?.map((radioOption) => (
 							<div class="ontario-radios__item">

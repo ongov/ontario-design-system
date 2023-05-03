@@ -22,6 +22,8 @@ export class OntarioInput implements TextInput {
 	 */
 	@Element() element: HTMLElement;
 
+	hintTextRef: HTMLOntarioHintTextElement | undefined;
+
 	/**
 	 * The text to display as the label
 	 *
@@ -36,11 +38,6 @@ export class OntarioInput implements TextInput {
 	 * </ontario-input>
 	 */
 	@Prop() caption: Caption | string;
-
-	/**
-	 * The aria-describedBy value if the input has hint text associated with it.
-	 */
-	@Prop() describedBy?: string;
 
 	/**
 	 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
@@ -112,6 +109,11 @@ export class OntarioInput implements TextInput {
 	 * </ontario-input>
 	 */
 	@Prop() hintExpander?: HintExpander | string;
+
+	/**
+	 * Used for the `aria-describedby` value of the input. This will match with the id of the hint text.
+	 */
+	@State() hintTextId: string | null | undefined;
 
 	@State() focused: boolean = false;
 
@@ -218,6 +220,10 @@ export class OntarioInput implements TextInput {
 		}
 	}
 
+	async componentDidLoad() {
+		this.hintTextId = await this.hintTextRef?.getHintTextId();
+	}
+
 	componentWillLoad() {
 		this.updateCaptionState(this.caption);
 		this.elementId = this.elementId ?? uuid();
@@ -229,9 +235,11 @@ export class OntarioInput implements TextInput {
 		return (
 			<div>
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
-				{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
+				{this.hintText && (
+					<ontario-hint-text hint={this.hintText} ref={(el) => (this.hintTextRef = el)}></ontario-hint-text>
+				)}
 				<input
-					aria-describedby={this.describedBy}
+					aria-describedby={this.hintTextId}
 					class={this.getClass()}
 					id={this.getId()}
 					name={this.name}
