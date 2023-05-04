@@ -24,13 +24,15 @@ export interface Checkboxes extends Base {
 	name: string;
 
 	/**
-	 * Define hint text on an element.
+	 * Used to include the ontario-hint-text component for the checkbox group.
+	 * This is optional.
 	 */
 	hintText?: string;
 
 	/**
-	 * Used to include the Hint Expander component underneath the Checkbox group.
+	 * Used to include the ontario-hint-expander component for the checkbox group.
 	 * This is passed in as an object with key-value pairs.
+	 * This is optional.
 	 *
 	 * @example
 	 * <ontario-checkboxes
@@ -41,14 +43,14 @@ export interface Checkboxes extends Base {
 	 *   name='ontario-checkboxes'
 	 *   options='[
 	 *		{
-	 *			"value": "checkbox-1-value",
-	 *			"label": "Checkbox 1 label",
+	 *			"value": "checkbox-option-1",
+	 *			"label": "Checkbox option 1 label",
 	 *			"elementId": "checkbox-1"
 	 *		}
 	 *   }]'
 	 *   hint-expander='{
-	 *    "hint": "Example hint expander for checkbox group",
-	 *    "content": "Example hint expander content for checkbox group"
+	 *    "hint": "Hint expander for the checkbox group",
+	 *    "content": "Example hint expander content for the checkbox group"
 	 *   }'
 	 *   required="true"
 	 * >
@@ -77,20 +79,20 @@ export interface Checkboxes extends Base {
 	 *		"captionType": "heading",
 	 *   }
 	 *   name="ontario-checkboxes",
-	 *   hint-text="Example checkbox hint text"
+	 *   hint-text="Hint text for the checkbox group."
 	 *   options='[
 	 *		{
-	 *			"value": "checkbox-1-value",
-	 *			"label": "Checkbox 1 label"
+	 *			"value": "checkbox-option-1",
+	 *			"label": "Checkbox option 1 label"
 	 *			"elementId": "checkbox-1"
 	 *     },
 	 *     {
-	 *        "value": "checkbox-2-value",
-	 *        "label": "Checkbox 2 label",
+	 *        "value": "checkbox-option-2",
+	 *        "label": "Checkbox option 2 label",
 	 * 		  "elementId": "checkbox-2",
 	 *	      "hintExpander": {
-	 *				"hint": "Example hint expander for checkbox 2",
-	 *              "content": "Example hint expander content for checkbox 2"
+	 *				"hint": "Hint expander for checkbox option 2",
+	 *              "content": "Example hint expander content for checkbox option 2"
 	 *        }
 	 *      }
 	 *   ]'

@@ -12,40 +12,52 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
-Example of a bare-bones checkbox component, the legend for the checkbox fieldset is provided, as well as 1 checkbox option.
+Example of a bare-bones checkbox component, the legend for the checkbox fieldset is provided, as well as 2 checkbox options.
 
 ```html
 <ontario-checkboxes
-	caption="This is a question?"
-	options='[{
-    "name": "Checkbox 1",
-    "value": "checkbox-1-value",
-    "label": "Checkbox Label"
-  }]'
+	caption="Checkbox legend"
+	name="checkboxes"
+	options='[
+    {
+      "value": "checkbox-option-1",
+      "label": "Checkbox option 1 label",
+      "elementId": "checkbox-1"
+    },
+    {
+      "value": "checkbox-option-2",
+      "label": "Checkbox option 2 label",
+      "elementId": "checkbox-2"
+    }
+  ]'
 >
 </ontario-checkboxes>
 ```
 
-Example of a checkbox component with multiple options, a hint text for the entire fieldset, and a hint expander on the individual option. It also has the `is-required` property set to `true`.
+Example of a checkbox component with multiple options, a hint text and hint expander for the entire checkbox group, and a hint expander on an individual option. It also has the `required` property set to `true`.
 
 ```html
 <ontario-checkboxes
-	caption="This is a question?"
-	hint-text="This is the hint text"
-	is-required
+	caption='{
+		"captionText": "Checkbox legend",
+		"captionType": "large" 
+	}'
+	name="checkboxes"
+	hint-text="THint text for the radio button group"
+	required="true"
 	options='[
     {
-      "name": "Checkbox 1",
-      "value": "checkbox-1-value",
-      "label": "Checkbox Label"
+      "value": "checkbox-option-1",
+      "label": "Checkbox option 1 label",
+      "elementId": "checkbox-1"
     },
     {
-      "name": "Checkbox-2",
-      "value": "checkbox-2",
-      "label": "checkbox-2-label",
+      "value": "checkbox-option-2",
+      "label": "Checkbox option 2 label",
+      "elementId": "checkbox-2",
       "hintExpander": {
-        "hint": "Hint expander",
-        "content": "This is the content"
+        "hint": "Hint expander for checkbox option 2",
+        "content": "Example hint expander content for checkbox option 2"
       }
     }
   ]'
@@ -87,15 +99,16 @@ visible when the hint expander title (hint) is toggled" }'
 The options property will render out the different checkbox inputs and their labels. These are passed in as objects with key-value pairs, inside an array.
 
 ```html
-options='[ { "value": "checkbox-option-1", "label": "Checkbox option 1" }, { "value": "checkbox-option-2", "label":
-"Checkbox option 2", "hintExpander": { "hint": "Hint expander title for checkbox option 2", "content": "Hint expander
-content for checkbox option 2" } }, ]'
+options='[ { "value": "checkbox-option-1", "label": "Checkbox option 1 label", "elementId": "checkbox-1" }, { "value":
+"checkbox-option-2", "label": "Checkbox option 2 label", "elementId": "checkbox-2", "hintExpander": { "hint": "Hint
+expander for checkbox option 2", "content": "Example hint expander content for checkbox option 2" } }, ]'
 ```
 
 | **Property name** | **Type**       | **Description**                                                                                                                                             |
 | ----------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `value`           | `string`       | Text to defines the value associated with the input (this is also the value that is sent on submit)                                                         |
 | `label`           | `string`       | Text to display as the label of the individual checkbox option                                                                                              |
+| `elementId`       | `string`       | Text used to establish a relationship between checkbox option label and the checkbox option input. This ID must be unique to the checkbox option.           |
 | `hintExpander`    | `hintExpander` | An optional hint expander to display for the individual checkbox option. Information on `hintExpander` properties can be found in the custom property above |
 
 ## Accessibility
@@ -113,9 +126,9 @@ Ontario Checkbox component
 
 | Property       | Attribute       | Description                                                                                                                                                                                                                                                                                                                                                                                        | Type                                  | Default     |
 | -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | ----------- |
-| `caption`      | `caption`       | The text to display as the label                                                                                                                                                                                                                                                                                                                                                                   | `Caption \| string`                   | `undefined` |
-| `hintExpander` | `hint-expander` | Used to include the hint expander component underneath the checkbox group. This is passed in as an object with key-value pairs. This is optional.                                                                                                                                                                                                                                                  | `HintExpander \| string \| undefined` | `undefined` |
-| `hintText`     | `hint-text`     | Define hint text on an element. This is optional.                                                                                                                                                                                                                                                                                                                                                  | `string \| undefined`                 | `undefined` |
+| `caption`      | `caption`       | The text to display for the checkbox legend.                                                                                                                                                                                                                                                                                                                                                       | `Caption \| string`                   | `undefined` |
+| `hintExpander` | `hint-expander` | Used to include the ontario-hint-expander component for the checkbox group. This is passed in as an object with key-value pairs. This is optional.                                                                                                                                                                                                                                                 | `HintExpander \| string \| undefined` | `undefined` |
+| `hintText`     | `hint-text`     | Used to include the ontario-hint-text component for the checkbox group. This is optional.                                                                                                                                                                                                                                                                                                          | `string \| undefined`                 | `undefined` |
 | `language`     | `language`      | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.                                                                                                                                                                                       | `"en" \| "fr" \| undefined`           | `'en'`      |
 | `name`         | `name`          | The name for the checkboxes.                                                                                                                                                                                                                                                                                                                                                                       | `string`                              | `undefined` |
 | `options`      | `options`       | Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset. | `CheckboxOption[] \| string`          | `undefined` |
