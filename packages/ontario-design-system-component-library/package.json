@@ -39,6 +39,7 @@
 		"validate-color": "^2.2.1"
 	},
 	"devDependencies": {
+		"@stencil/angular-output-target": "^0.5.0",
 		"@stencil/react-output-target": "0.3.1",
 		"@stencil/sass": "^2.0.1",
 		"@types/jest": "^27.0.3",
