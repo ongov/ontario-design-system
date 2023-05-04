@@ -10,15 +10,15 @@ export default function RadioButtonExample() {
 	caption="Radio legend"
 	name="radio-example"
 	required={false}
-	hintText="Hint text for the radio button group"
+	hintText="Hint text for the radio button group."
 	options={[
 		{
 			value: "radio-option-1",
 			elementId: "radio-1",
-			label: "Raio option 1 label",
+			label: "Radio option 1 label",
 			hintExpander: {
-				content: "Example hint expander content for radio option 1",
 				hint: "Hint expander for radio option 1"
+				content: "Example hint expander content for radio option 1.",
 			}
 		},
 		{
@@ -33,8 +33,8 @@ export default function RadioButtonExample() {
 		},
 	]}
 	hintExpander={{
-		content: "Example hint expander content for the radio button group",
 		hint: "Hint expander for the radio button group",
+		content: "Example hint expander content for the radio button group.",
 	}}
 >
 </OntarioRadioButtons>`;
@@ -46,15 +46,15 @@ export default function RadioButtonExample() {
 					caption="Radio legend"
 					name="radio-example"
 					required={false}
-					hintText="Hint text for the radio button group"
+					hintText="Hint text for the radio button group."
 					options={[
 						{
 							value: 'radio-option-1',
 							elementId: 'radio-1',
-							label: 'Raio option 1 label',
+							label: 'Radio option 1 label',
 							hintExpander: {
-								content: 'Example hint expander content for radio option 1',
 								hint: 'Hint expander for radio option 1',
+								content: 'Example hint expander content for radio option 1.',
 							},
 						},
 						{
@@ -69,8 +69,8 @@ export default function RadioButtonExample() {
 						},
 					]}
 					hintExpander={{
-						content: 'Example hint expander content for the radio button group',
 						hint: 'Hint expander for the radio button group',
+						content: 'Example hint expander content for the radio button group.',
 					}}
 				></OntarioRadioButtons>
 

@@ -43,7 +43,7 @@ Example of a radio button component with multiple options, a hint text and hint 
 		"captionType": "large" 
 	}'
 	name="radios"
-	hint-text="Hint text for the radio button group"
+	hint-text="Hint text for the radio button group."
 	required="true"
 	options='[
 		{
@@ -57,7 +57,7 @@ Example of a radio button component with multiple options, a hint text and hint 
 			"label": "Radio option 2 label",
 			"hintExpander": {
 				"hint": "Hint expander for radio option 2",
-				"content": "Example hint expander content for radio option 2"
+				"content": "Example hint expander content for radio option 2."
 			}
 		},
 		{
@@ -66,7 +66,7 @@ Example of a radio button component with multiple options, a hint text and hint 
 			"label": "Radio option 3 label",
 			"hintExpander": {
 				"hint": "Hint expander for radio option 3",
-				"content": "Example hint expander content for radio option 3"
+				"content": "Example hint expander content for radio option 3."
 			}
 		},
 		{
@@ -77,7 +77,7 @@ Example of a radio button component with multiple options, a hint text and hint 
 	]'
 	hint-expander='{
 		"hint": "Hint expander for the radio button group",
-	    "content": "Example hint expander content for the radio button group"
+	    "content": "Example hint expander content for the radio button group."
 	}'
 >
 </ontario-radio-buttons>
@@ -114,18 +114,16 @@ visible when the hint expander title (hint) is toggled" }'
 
 ### options
 
-| **Property name** | **Type**       | **Description**                                                                                                                                                                                              |
-| ----------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `name`            | `string`       | Text to define the name of radio button groups with the name property (radio buttons with the same name belong to the same group). Note that the name value should be the same for all radio button options. |
-| `value`           | `string`       | Text to defines the value associated with the radio button (this is also the value that is sent on submit)                                                                                                   |
-| `label`           | `string`       | Text to display as the label of the individual radio option                                                                                                                                                  |
-| `elementId`       | `string`       | Text used as the ID for the radio button option. This is used to establish a relationship between radio button labels and the radio input. It must be unique to the radio option.                            |
-| `hintExpander`    | `hintExpander` | An optional hint expander to display for the individual radio button option. Information on `hintExpander` properties can be found in the custom property above                                              |
+| **Property name** | **Type**       | **Description**                                                                                                                                                                   |
+| ----------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`           | `string`       | Text to defines the value associated with the radio button (this is also the value that is sent on submit)                                                                        |
+| `label`           | `string`       | Text to display as the label of the individual radio option                                                                                                                       |
+| `elementId`       | `string`       | Text used as the ID for the radio button option. This is used to establish a relationship between radio button labels and the radio input. It must be unique to the radio option. |
+| `hintExpander`    | `hintExpander` | An optional hint expander to display for the individual radio button option. Information on `hintExpander` properties can be found in the custom property above                   |
 
 ## Accessibility
 
 - Do not pre-select radio buttons (there should be no checked attribute by default on the radio button)
-- All radio buttons in a group should have the same `name` value to associate them as a group of options
 
 <!-- Auto Generated Below -->
 
@@ -133,7 +131,7 @@ visible when the hint expander title (hint) is toggled" }'
 
 | Property       | Attribute       | Description                                                                                                                                                                                                                                                                                                                                                                                            | Type                                  | Default     |
 | -------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------- | ----------- |
-| `caption`      | `caption`       | The text to display as the label                                                                                                                                                                                                                                                                                                                                                                       | `Caption \| string`                   | `undefined` |
+| `caption`      | `caption`       | The text to display for the radio button legend.                                                                                                                                                                                                                                                                                                                                                       | `Caption \| string`                   | `undefined` |
 | `hintExpander` | `hint-expander` | Used to include the ontario-hint-expander component for the radio button group. This is passed in as an object with key-value pairs. This is optional.                                                                                                                                                                                                                                                 | `HintExpander \| string \| undefined` | `undefined` |
 | `hintText`     | `hint-text`     | Used to include the ontario-hint-text component for radio button group. This is optional.                                                                                                                                                                                                                                                                                                              | `string \| undefined`                 | `undefined` |
 | `language`     | `language`      | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.                                                                                                                                                                                           | `"en" \| "fr" \| undefined`           | `'en'`      |

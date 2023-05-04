@@ -1,8 +1,23 @@
 import { Base } from '../../utils/common.interface';
 import { RadioOption } from './radio-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+import { Caption } from '../../utils/input-caption/caption.interface';
 
 export interface RadioButtons extends Base {
+	/**
+	 * The text to display for the radio button legend.
+	 *
+	 * @example
+	 * <ontario-radio-buttons
+	 *   caption='{
+	 *     "captionText": "Radio legend",
+	 *     "captionType": "heading",
+	 *   }
+	 *   ...>
+	 * </ontario-radio-buttons>
+	 */
+	caption: Caption | string;
+
 	/**
 	 * The name assigned to the radio button.
 	 * The name value is used to reference form data after a form is submitted.
@@ -10,32 +25,37 @@ export interface RadioButtons extends Base {
 	name: string;
 
 	/**
-	 * Define hint text on an element.
+	 * Used to include the ontario-hint-text component for radio button group.
+	 * This is optional.
 	 */
 	hintText?: string;
 
 	/**
-	 * Used to include the Hint Expander component underneath the Radio Button Legend.
+	 * Used to include the ontario-hint-expander component for the radio button group.
 	 * This is passed in as an object with key-value pairs.
+	 * This is optional.
 	 *
 	 * @example
 	 * <ontario-radio-buttons
 	 *   caption='{
-	 *     "captionText": "Address",
+	 *     "captionText": "Radio legend",
 	 *     "captionType": "heading",
 	 *   }'
-	 *   options='[{
-	 *     "value": "radio-option-1",
-	 *     "elementId": "radio-1",
-	 *     "label": "Radio Option 1 Label",
-	 *     "hintExpander": {
-	 *			  "hint": "Hint expander",
-	 * 		    "content": "This is the content"
-	 *		 }
-	 *   }]'
+	 * 	 name="radios"
+	 *   options='[
+	 * 	   {
+	 *        "value": "radio-option-1",
+	 * 		  "elementId": "radio-1",
+	 *        "label": "Radio option 1 label",
+	 *        "hintExpander": {
+	 *			  "hint": "Hint expander for radio option 1",
+	 * 		      "content": "Example hint expander content for radio option 1."
+	 *		  }
+	 *     }
+	 *   ]'
 	 *   hint-expander='{
-	 *    "hint": "Hint expander",
-	 *    "content": "This is the content, yup this is the content"
+	 *     "hint": "Hint expander for the radio button group",
+	 *     "content": "Example hint expander content for the radio button group."
 	 *   }'
 	 *   required="true"
 	 * >
@@ -54,30 +74,30 @@ export interface RadioButtons extends Base {
 	 * Each property will be passed in through an object in the options array.
 	 * This can either be passed in as an object directly (if using react), or as a string in HTML.
 	 * If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option.
-	 * In the example below, the options are being passed in as a string and
-	 * there are two radio buttons to be displayed in the fieldset.
+	 * In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
 	 *
 	 * @example
 	 * <ontario-radio-buttons
 	 *   caption='{
-	 *     "captionText": "Address",
+	 *     "captionText": "Radio legend",
 	 *     "captionType": "heading",
 	 *   }'
-	 *   hint-text="This is the hint text"
+	 *   name="radios"
+	 *   hint-text="Hint text for the radio button group."
 	 *   options='[
 	 *     {
-	 *        "value": "radio-1-value",
-	 *        "elementId": "radio-1",
-	 *        "label": "Radio Button Label 1"
+	 *        "value": "radio-option-1",
+	 * 		  "elementId": "radio-1",
+	 *        "label": "Radio option 1 label"
 	 *     },
 	 *     {
-	 *        "value": "radio-2-value",
-	 *        "elementId": "radio-1",
-	 *        "label": "Radio Button Label 2",
+	 *        "value": "radio-option-2",
+	 * 		  "elementId": "radio-2",
+	 *        "label": "Radio option 2 label",
 	 *        "hintExpander": {
-	 *          "hint": "Hint expander",
-	 *          "content": "This is the content"
-	 *        }
+	 *			  "hint": "Hint expander for radio option 2",
+	 * 		      "content": "Example hint expander content for radio option 2."
+	 *		  }
 	 *      }
 	 *   ]'
 	 *   required="true"

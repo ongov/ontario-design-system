@@ -2,37 +2,92 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
 export interface RadioOption {
 	/**
-	 * Text to display as the radio button's label
-	 *
-	 * Setting the radio label can be done using the element content or setting
-	 * the property. This property will take precedence.
-	 *
-	 * @example
-	 * <ontario-radio-button radioLabel="Override Radio Label">Radio Label</ontario-radio-button>
-	 *
-	 * The resulting radio label text will display "Override Radio label".
-	 *
-	 */
-	label: string;
-
-	/**
-	 * Used to include the Hint Expander component underneath the Radio Button Label.
-	 * This is passed in as an object in the `options` with key-value pairs.
+	 * The text to display as checkbox option label.
 	 *
 	 * @example
 	 * <ontario-radio-buttons
 	 *   caption='{
-	 *     "captionText": "Address",
+	 *     "captionText": "Radio legend",
+	 *     "captionType": "heading",
+	 *   }
+	 *   name="ontario-radios"
+	 *   hint-text="Hint text for the radio group."
+	 *   options='[{
+	 *     "label": "Radio option 1 label"
+	 *   }]'
+	 *   required="true"
+	 * >
+	 * </ontario-radio-buttons>
+	 *
+	 * The resulting label will show `"Radio option 1 label"`.
+	 */
+	label: string;
+
+	/**
+	 * The radio option value.
+	 *
+	 * @example
+	 * <ontario-radio-buttons
+	 *   caption='{
+	 *     "captionText": "Radio legend",
+	 *     "captionType": "heading",
+	 *   }
+	 *   name="ontario-radios"
+	 *   hint-text="Hint text for the radio group."
+	 *   options='[{
+	 *     "value": "radio-option-1"
+	 *   }]'
+	 *   required="true"
+	 * >
+	 * </ontario-radio-buttons>
+	 *
+	 * The resulting value will be `"radio-option-1"`.
+	 */
+
+	value: string | number;
+
+	/**
+	 * Used to establish a relationship between radio option label and the radio option input.
+	 * This ID must be unique to the radio option.
+	 *
+	 * @example
+	 * <ontario-radio-buttons
+	 * 	caption="Radio legend"
+	 *  name="ontario-radios"
+	 *  hint-text="Hint text for the radio group."
+	 *  required="true"
+	 *  options='[{
+	 *	 "value": "radio-option-1",
+	 *	 "elementId": "radio-1",
+	 *	 "label": "Radio option 1 label"
+	 *	},
+	 *	{
+	 *		"value": "radio-option-2",
+	 *		"elementId": "radio-2",
+	 *		"label": "Radio option 2 label"
+	 *  }
+	 */
+	elementId: string;
+
+	/**
+	 * Used to include the ontario-hint-expander component underneath the radio option.
+	 * This is passed in as an object in the `options` with key-value pairs.
+	 * This is optional.
+	 *
+	 * @example
+	 * <ontario-radio-buttons
+	 *   caption='{
+	 *     "captionText": "Radio legend",
 	 *     "captionType": "heading",
 	 *   }'
-	 *   hint-text="This is the hint text"
+	 *   hint-text="Hint text for the radio group."
 	 *   options='[{
-	 *     "name": "Radio",
 	 *     "value": "radio-option-1",
-	 *     "label": "Radio Option Label",
+	 *     "label": "Radio option 1 label",
+	 *     "elementId": "radio-1",
 	 *     "hintExpander": {
-	 *			  "hint": "Hint expander",
-	 * 		    "content": "This is the content"
+	 *			"hint": "Hint expander for radio option 1",
+	 * 		    "content": "Example hint expander content for radio option 1."
 	 *		 }
 	 *   }]'
 	 *   required="true"
@@ -40,28 +95,4 @@ export interface RadioOption {
 	 * </ontario-radio-buttons>
 	 */
 	hintExpander?: HintExpander;
-
-	/**
-	 ** The radio button content value.
-	 */
-	value: string | number;
-
-	/**
-	 * Used to establish a relationship between radio label and the radio input.
-	 * This ID must be unique to the radio option.
-	 *
-	 * @example
-	 * <ontario-radio-buttons caption="Do you have cats?" name="radio" hint-text="This is the hint text" required
-	 *  options='[{
-	 *	 "value": "radio",
-	 *	 "elementId": "radio-1",
-	 *	 "label": "radio-1-label"
-	 *	},
-	 *	{
-	 *		"value": "radio-2",
-	 *		"elementId": "radio-2",
-	 *		"label": "radio-2-label"
-	 *  }
-	 */
-	elementId: string;
 }

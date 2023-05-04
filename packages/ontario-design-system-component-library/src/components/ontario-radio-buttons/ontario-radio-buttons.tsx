@@ -27,7 +27,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	hintTextRef: HTMLOntarioHintTextElement | undefined;
 
 	/**
-	 * The text to display as the label
+	 * The text to display for the radio button legend.
 	 *
 	 * @example
 	 * <ontario-radio-buttons
@@ -78,13 +78,13 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *        "label": "Radio option 1 label",
 	 *        "hintExpander": {
 	 *			  "hint": "Hint expander for radio option 1",
-	 * 		      "content": "Example hint expander content for radio option 1"
+	 * 		      "content": "Example hint expander content for radio option 1."
 	 *		  }
 	 *     }
 	 *   ]'
 	 *   hint-expander='{
 	 *     "hint": "Hint expander for the radio button group",
-	 *     "content": "Example hint expander content for the radio button group"
+	 *     "content": "Example hint expander content for the radio button group."
 	 *   }'
 	 *   required="true"
 	 * >
@@ -103,8 +103,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * Each property will be passed in through an object in the options array.
 	 * This can either be passed in as an object directly (if using react), or as a string in HTML.
 	 * If there are multiple radio buttons in a group, each radio button will be displayed as an option.
-	 * In the example below, the options are being passed in as a string and
-	 * there are two radio buttons to be displayed in the group.
+	 * In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the group.
 	 *
 	 * @example
 	 * <ontario-radio-buttons
@@ -113,7 +112,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *     "captionType": "heading",
 	 *   }'
 	 *   name="radios"
-	 *   hint-text="Hint text for the radio button group"
+	 *   hint-text="Hint text for the radio button group."
 	 *   options='[
 	 *     {
 	 *        "value": "radio-option-1",
@@ -126,7 +125,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 *        "label": "Radio option 2 label",
 	 *        "hintExpander": {
 	 *			  "hint": "Hint expander for radio option 2",
-	 * 		      "content": "Example hint expander content for radio option 2"
+	 * 		      "content": "Example hint expander content for radio option 2."
 	 *		  }
 	 *      }
 	 *   ]'
