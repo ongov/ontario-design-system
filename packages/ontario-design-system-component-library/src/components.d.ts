@@ -1438,17 +1438,17 @@ export namespace Components {
 	}
 	interface OntarioRadioButtons {
 		/**
-		 * The text to display as the label
-		 * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",    }'   required="true"   ...> </ontario-radio-buttons>
+		 * The text to display for the radio button legend.
+		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",    }'   required="true"   ...> </ontario-radio-buttons>
 		 */
 		caption: Caption | string;
 		/**
-		 * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs. This is optional.
-		 * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }' 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }'   required="true" > </ontario-radio-buttons>
+		 * Used to include the ontario-hint-expander component for the radio button group. This is passed in as an object with key-value pairs. This is optional.
+		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }' 	 name="radios"   options='[ 	   {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 1", 		      "content": "Example hint expander content for radio option 1." 	  }     }   ]'   hint-expander='{     "hint": "Hint expander for the radio button group",     "content": "Example hint expander content for the radio button group."   }'   required="true" > </ontario-radio-buttons>
 		 */
 		hintExpander?: HintExpander | string;
 		/**
-		 * Define hint text for Radio Button fieldset. This is optional.
+		 * Used to include the ontario-hint-text component for radio button group. This is optional.
 		 */
 		hintText?: string;
 		/**
@@ -1460,8 +1460,8 @@ export namespace Components {
 		 */
 		name: string;
 		/**
-		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
-		 * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }'   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]'   required="true" > </ontario-radio-buttons>
+		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a group, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the group.
+		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }'   name="radios"   hint-text="Hint text for the radio button group."   options='[     {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label"     },     {        "value": "radio-option-2", 		  "elementId": "radio-2",        "label": "Radio option 2 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 2", 		      "content": "Example hint expander content for radio option 2." 	  }      }   ]'   required="true" > </ontario-radio-buttons>
 		 */
 		options: string | RadioOption[];
 		/**
@@ -3741,17 +3741,17 @@ declare namespace LocalJSX {
 	}
 	interface OntarioRadioButtons {
 		/**
-		 * The text to display as the label
-		 * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",    }'   required="true"   ...> </ontario-radio-buttons>
+		 * The text to display for the radio button legend.
+		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",    }'   required="true"   ...> </ontario-radio-buttons>
 		 */
 		caption?: Caption | string;
 		/**
-		 * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs. This is optional.
-		 * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }' 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }'   required="true" > </ontario-radio-buttons>
+		 * Used to include the ontario-hint-expander component for the radio button group. This is passed in as an object with key-value pairs. This is optional.
+		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }' 	 name="radios"   options='[ 	   {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 1", 		      "content": "Example hint expander content for radio option 1." 	  }     }   ]'   hint-expander='{     "hint": "Hint expander for the radio button group",     "content": "Example hint expander content for the radio button group."   }'   required="true" > </ontario-radio-buttons>
 		 */
 		hintExpander?: HintExpander | string;
 		/**
-		 * Define hint text for Radio Button fieldset. This is optional.
+		 * Used to include the ontario-hint-text component for radio button group. This is optional.
 		 */
 		hintText?: string;
 		/**
@@ -3763,8 +3763,8 @@ declare namespace LocalJSX {
 		 */
 		name?: string;
 		/**
-		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
-		 * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }'   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]'   required="true" > </ontario-radio-buttons>
+		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a group, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the group.
+		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }'   name="radios"   hint-text="Hint text for the radio button group."   options='[     {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label"     },     {        "value": "radio-option-2", 		  "elementId": "radio-2",        "label": "Radio option 2 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 2", 		      "content": "Example hint expander content for radio option 2." 	  }      }   ]'   required="true" > </ontario-radio-buttons>
 		 */
 		options?: string | RadioOption[];
 		/**

@@ -10,35 +10,31 @@ export default function RadioButtonExample() {
 	caption="Radio legend"
 	name="radio-example"
 	required={false}
-	hintText="Example hint text for radio buttons"
+	hintText="Hint text for the radio button group."
 	options={[
 		{
-			name: "radio-example",
-			value: "option-1",
-			elementId: "option-1",
-			label: "Option 1",
+			value: "radio-option-1",
+			elementId: "radio-1",
+			label: "Radio option 1 label",
 			hintExpander: {
-				content: "This is the example content for the Option 1 radio option.",
-				hint: "Example hint expander for Option 1 radio option option"
+				hint: "Hint expander for radio option 1"
+				content: "Example hint expander content for radio option 1.",
 			}
 		},
 		{
-			name: "radio-example",
-			value: "option-2",
-			elementId: "option-2",
-			label: "Option 2"
+			value: "radio-option-2",
+			elementId: "radio-2",
+			label: "Radio option 2 label"
 		},
 		{
-			name: "radio-example",
-			value: "option-3",
-			elementId: "option-3",
-			label: "Option 3"
+			value: "radio-option-3",
+			elementId: "radio-3",
+			label: "Radio option 3 label"
 		},
 	]}
 	hintExpander={{
-		content: "This is the example content for the radio button group hint expander.",
-		hint: "Example hint expander for the radio button group",
-		elementId: "radio-button-group-hint-expander"
+		hint: "Hint expander for the radio button group",
+		content: "Example hint expander content for the radio button group.",
 	}}
 >
 </OntarioRadioButtons>`;
@@ -50,35 +46,31 @@ export default function RadioButtonExample() {
 					caption="Radio legend"
 					name="radio-example"
 					required={false}
-					hintText="Example hint text for radio buttons"
+					hintText="Hint text for the radio button group."
 					options={[
 						{
-							name: 'radio-example',
-							value: 'option-1',
-							elementId: 'option-1',
-							label: 'Option 1',
+							value: 'radio-option-1',
+							elementId: 'radio-1',
+							label: 'Radio option 1 label',
 							hintExpander: {
-								content: 'This is the example content for the Option 1 radio option.',
-								hint: 'Example hint expander for Option 1 radio option option',
+								hint: 'Hint expander for radio option 1',
+								content: 'Example hint expander content for radio option 1.',
 							},
 						},
 						{
-							name: 'radio-example',
-							value: 'option-2',
-							elementId: 'option-2',
-							label: 'Option 2',
+							value: 'radio-option-2',
+							elementId: 'radio-2',
+							label: 'Radio option 2 label',
 						},
 						{
-							name: 'radio-example',
-							value: 'option-3',
-							elementId: 'option-3',
-							label: 'Option 3',
+							value: 'radio-option-3',
+							elementId: 'radio-3',
+							label: 'Radio option 3 label',
 						},
 					]}
 					hintExpander={{
-						content: 'This is the example content for the radio button group hint expander.',
-						hint: 'Example hint expander for the radio button group',
-						elementId: 'radio-button-group-hint-expander',
+						hint: 'Hint expander for the radio button group',
+						content: 'Example hint expander content for the radio button group.',
 					}}
 				></OntarioRadioButtons>
 
