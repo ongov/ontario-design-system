@@ -15,31 +15,34 @@ export default function CheckboxExample() {
 	required
 	options={[
 		{
-			value: "checkbox-1",
-			label: "Option 1"
+			value: 'checkbox-option-1',
+			label: 'Checkbox option 1 label',
+			elementId: "checkbox-1"
 		},
 		{
-			value: "checkbox-2",
-			label: "Option 2",
+			value: 'checkbox-option-2',
+			label: 'Checkbox option 2 label',
+			elementId: "checkbox-2",
 			hintExpander: {
-				content: "This is the example content for the Option 2 checkbox option.",
-				hint: "Example hint expander for Option 2 checkbox option"
-			}
+				hint: 'Hint expander for checkbox option 2',
+				content: 'Example hint expander content for checkbox option 2.'
+			},
 		},
 		{
-			value: "checkbox-3",
-			label: "Option 3",
+			value: 'checkbox-option-3',
+			label: 'Checkbox option 3 label',
+			elementId: "checkbox-3"
 		},
 		{
-			value: "checkbox-4",
-			label: "Option 4"
+			value: 'checkbox-option-4',
+			label: 'Checkbox option 4 label',
+			elementId: "checkbox-4"
 		}
 	]}
-	hintText="Example hint text for the checkbox"
+	hintText="Hint text for the checkbox group."
 	hintExpander={{
-		content: "This is the example content for the checkbox group hint expander.",
-		hint: "Example hint expander for the checkbox group",
-		elementId: "checkbox-group-hint-expander"
+		hint: "Hint expander for the checkbox group",
+		content: "Example hint expander content for the checkbox group."
 	}}
 ></OntarioCheckboxes>`;
 
@@ -78,31 +81,34 @@ export default function CheckboxExample() {
 						required
 						options={[
 							{
-								value: 'checkbox-1',
-								label: 'Option 1',
+								value: 'checkbox-option-1',
+								label: 'Checkbox option 1 label',
+								elementId: 'checkbox-1',
 							},
 							{
-								value: 'checkbox-2',
-								label: 'Option 2',
+								value: 'checkbox-option-2',
+								label: 'Checkbox option 2 label',
+								elementId: 'checkbox-2',
 								hintExpander: {
-									content: 'This is the example content for the Option 2 checkbox option.',
-									hint: 'Example hint expander for Option 2 checkbox option',
+									hint: 'Hint expander for checkbox option 2',
+									content: 'Example hint expander content for checkbox option 2.',
 								},
 							},
 							{
-								value: 'checkbox-3',
-								label: 'Option 3',
+								value: 'checkbox-option-3',
+								label: 'Checkbox option 3 label',
+								elementId: 'checkbox-3',
 							},
 							{
-								value: 'checkbox-4',
-								label: 'Option 4',
+								value: 'checkbox-option-4',
+								label: 'Checkbox option 4 label',
+								elementId: 'checkbox-4',
 							},
 						]}
-						hintText="Example hint text for the checkbox"
+						hintText="Hint text for the checkbox group."
 						hintExpander={{
-							content: 'This is the example content for the checkbox group hint expander.',
-							hint: 'Example hint expander for the checkbox group',
-							elementId: 'checkbox-group-hint-expander',
+							hint: 'Hint expander for the checkbox group',
+							content: 'Example hint expander content for the checkbox group.',
 						}}
 					></OntarioCheckboxes>
 
