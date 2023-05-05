@@ -11,6 +11,7 @@ import {
 	validateLanguage,
 } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { hasMultipleTrueValues } from '../../utils/helper/utils';
 import { Language } from '../../utils/language-types';
 import { default as translations } from '../../translations/global.i18n.json';
 
@@ -29,15 +30,15 @@ export class OntarioDropdownList implements Dropdown {
 	hintTextRef: HTMLOntarioHintTextElement | undefined;
 
 	/**
-	 * The text to display as the label
+	 * The text to display for the dropdown list label.
 	 *
 	 * @example
 	 * <ontario-dropdown-list
+	 *   name="ontario-dropdown-list"
 	 *   caption='{
-	 *     "captionText": "Address",
+	 *     "captionText": "Label",
 	 *     "captionType": "heading",
 	 *   }'
-	 *   required="true"
 	 *   ...>
 	 * </ontario-dropdown-list>
 	 */
@@ -63,30 +64,30 @@ export class OntarioDropdownList implements Dropdown {
 	/**
 	 * Each property will be passed in through an object in the options array.
 	 * This can either be passed in as an object directly (if using react), or as a string in HTML.
-	 * In the example below, the options are being passed in as a string and
-	 * there are three dropdown options to be displayed in the fieldset.
+	 * In the example below, the options are being passed in as a string and there are three dropdown options displayed.
 	 *
 	 * @example
 	 * <ontario-dropdown-list
 	 *   caption='{
-	 *     "captionText": "Do you like cats?",
+	 *     "captionText": "Label",
 	 *     "captionType": "heading",
 	 *   }'
-	 *   name="cat-dropdown"
-	 *   is-empty-start-option="Please select"
-	 *   options='[{
-	 *     "value": "dropdown-list-1",
-	 *     "label": "Option 1"
-	 *   },
-	 *   {
-	 *     "value": "dropdown-list-2",
-	 *     "label": "Option 2"
-	 *   },
-	 *   {
-	 *      "value": "dropdown-list-3",
-	 *      "label": "Option 3"
-	 *   }]'
-	 *   required="true"
+	 *   name="ontario-dropdown-list"
+	 *   options='[
+	 *     {
+	 *       "value": "dropdown-option-1",
+	 *       "label": "Option 1",
+	 *       "selected": "true"
+	 *     },
+	 *     {
+	 *       "value": "dropdown-option-2",
+	 *       "label": "Option 2"
+	 *     },
+	 *     {
+	 *       "value": "dropdown-option-3",
+	 *       "label": "Option 3"
+	 *     }
+	 *   ]'
 	 * >
 	 * </ontario-dropdown-list>
 	 */
@@ -105,7 +106,7 @@ export class OntarioDropdownList implements Dropdown {
 	 * If set to a string, it will render the string value.
 	 *
 	 * @example
-	 * <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>
+	 * <ontario-dropdown-list is-empty-start-option="true"></ontario-dropdown-list>
 	 *
 	 * or
 	 *
@@ -114,7 +115,8 @@ export class OntarioDropdownList implements Dropdown {
 	@Prop() isEmptyStartOption?: boolean | string = false;
 
 	/**
-	 * Hint text for Ontario Dropdown. This is optional.
+	 * Used to include the ontario-hint-text component for the dropdown list.
+	 * This is optional.
 	 */
 	@Prop() hintText?: string;
 
@@ -128,11 +130,26 @@ export class OntarioDropdownList implements Dropdown {
 	 *     "caption": "What province do you live in?",
 	 *     "captionType": "heading",
 	 *   }
+	 *   name="ontario-dropdown-list"
+	 *   options='[
+	 *     {
+	 *       "value": "dropdown-option-1",
+	 *       "label": "Option 1",
+	 *       "selected": "true"
+	 *     },
+	 *     {
+	 *       "value": "dropdown-option-2",
+	 *       "label": "Option 2"
+	 *     },
+	 *     {
+	 *       "value": "dropdown-option-3",
+	 *       "label": "Option 3"
+	 *     }
+	 *   ]'
 	 *   hint-expander='{
-	 *    "hint": "Hint expander",
-	 *    "content": "This is the content"
+	 *    "hint": "Hint expander for the dropdown list",
+	 *    "content": "Example hint expander content for the dropdown list."
 	 *   }'
-	 *   required="true"
 	 * >
 	 * </ontario-dropdown-list>
 	 */
@@ -157,6 +174,8 @@ export class OntarioDropdownList implements Dropdown {
 	 * The hint expander options are re-assigned to the internalHintExpander array.
 	 */
 	@State() private internalHintExpander: HintExpander;
+
+	@State() translations: any = translations;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -219,6 +238,9 @@ export class OntarioDropdownList implements Dropdown {
 				this.internalOptions = this.options;
 			}
 		}
+
+		// Check selected status of options
+		this.validateSelectedOption(this.internalOptions);
 	}
 
 	@Watch('caption')
@@ -234,7 +256,7 @@ export class OntarioDropdownList implements Dropdown {
 	}
 
 	/**
-	 * Watch for changes in the `language` to render either the English or French translations
+	 * Watch for changes in the `language` to render either the english or french translations
 	 */
 	@Watch('language')
 	updateLanguage() {
@@ -252,6 +274,28 @@ export class OntarioDropdownList implements Dropdown {
 
 	public getId(): string {
 		return this.elementId ?? '';
+	}
+
+	private validateSelectedOption(options: DropdownOption[]) {
+		options.map((singleOption) => {
+			// if no selected key is passed, set a default key to false
+			if (!singleOption.hasOwnProperty('selected')) {
+				singleOption.selected = false;
+			}
+		});
+
+		if (hasMultipleTrueValues(options, 'selected')) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' There are duplicate truthy `selected` values ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-dropdown-list> ')
+				.addRegularText('options. Please update options so only one truthy `selected` value exists.')
+				.printMessage();
+		}
+
+		return (this.internalOptions = options);
 	}
 
 	private getDropdownArrow() {
@@ -296,9 +340,17 @@ export class OntarioDropdownList implements Dropdown {
 					required={!!this.required}
 				>
 					{this.isEmptyStartOption &&
-						(this.isEmptyStartOption === true ? <option>Select</option> : <option>{this.isEmptyStartOption}</option>)}
+						(this.isEmptyStartOption === true || this.isEmptyStartOption === 'true' ? (
+							<option>{this.translations.dropdownList.select[`${this.language}`]}</option>
+						) : (
+							<option>{this.isEmptyStartOption}</option>
+						))}
 
-					{this.internalOptions?.map((dropdown) => <option value={dropdown.value}>{dropdown.label}</option>) ?? ''}
+					{this.internalOptions?.map((dropdown) => (
+						<option value={dropdown.value} selected={dropdown.selected}>
+							{dropdown.label}
+						</option>
+					)) ?? ''}
 				</select>
 				{this.internalHintExpander && (
 					<ontario-hint-expander

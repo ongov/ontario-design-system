@@ -15,6 +15,8 @@
 		</ontario-critical-alert>
 		<ontario-header type="ontario"></ontario-header>
 
+		<test-language-toggle lang="en"></test-language-toggle>
+
 		<div class="ontario-row ontario-margin-top-48-!">
 			<div class="ontario-columns ontario-small-12">
 				<ontario-button label="Primary" aria-label-text="Primary Button" type="primary" onclick="testFunction()">
@@ -240,24 +242,24 @@
 				<hr />
 
 				<ontario-dropdown-list
-					name="cat-dropdown"
-					is-empty-start-option="Please select"
+					name="dropdown"
 					caption='{
-						"captionText": "Do you like cats?",
+						"captionText": "Label",
 						"captionType": "heading"
 					}'
-					required="true"
+					required
 					options='[
 						{
-							"value": "dropdown-list-1",
-							"label": "Option 1"
+							"value": "dropdown-option-1",
+							"label": "Option 1",
+							"selected": true
 						},
 						{
-							"value": "dropdown-list-2",
+							"value": "dropdown-option-2",
 							"label": "Option 2"
 						},
 						{
-							"value": "dropdown-list-3",
+							"value": "dropdown-option-3",
 							"label": "Option 3"
 						}
 					]'
