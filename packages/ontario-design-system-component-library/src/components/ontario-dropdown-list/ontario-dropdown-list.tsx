@@ -295,7 +295,7 @@ export class OntarioDropdownList implements Dropdown {
 				.printMessage();
 		}
 
-		return (this.internalOptions = options);
+		return options;
 	}
 
 	private getDropdownArrow() {
