@@ -21,7 +21,7 @@ Example of a bare-bones input component, the `name` property is passed in for th
 /></ontario-input>
 ```
 
-The following input component has the `input-width` property passed in, which will define the width of the input field. The `described-by` property has been passed in because the input has hint text associated with it.
+The following input component has the `input-width` property passed in, which will define the width of the input field.
 
 ```html
 <ontario-input
@@ -31,7 +31,6 @@ The following input component has the `input-width` property passed in, which wi
 		"captionType": "large"
 	}'
 	input-width="10-char-width"
-	describedBy="ontario-input-label-example"
 /></ontario-input>
 ```
 
@@ -80,7 +79,6 @@ Ontario Input component
 | Property       | Attribute       | Description                                                                                                                                                                                                                                 | Type                                                                                                                                        | Default     |
 | -------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | `caption`      | `caption`       | The text to display as the label                                                                                                                                                                                                            | `Caption \| string`                                                                                                                         | `undefined` |
-| `describedBy`  | `described-by`  | The aria-describedBy value if the input has hint text associated with it.                                                                                                                                                                   | `string \| undefined`                                                                                                                       | `undefined` |
 | `elementId`    | `element-id`    | The unique identifier of the input. This is optional - if no ID is passed, one will be generated.                                                                                                                                           | `string \| undefined`                                                                                                                       | `undefined` |
 | `hintExpander` | `hint-expander` | Used to include the Hint Expander component underneath the input box. This is passed in as an object with key-value pairs. This is optional.                                                                                                | `HintExpander \| string \| undefined`                                                                                                       | `undefined` |
 | `hintText`     | `hint-text`     | Define hint text for Ontario input. This is optional.                                                                                                                                                                                       | `string \| undefined`                                                                                                                       | `undefined` |

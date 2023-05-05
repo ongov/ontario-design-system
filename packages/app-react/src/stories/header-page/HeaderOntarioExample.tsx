@@ -1,49 +1,34 @@
 import React from 'react';
 import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+import CodeHighlighter from '../../components/code-highlighter';
 
 export default function HeaderOntarioExample() {
-	const ontarioHeaderCodeExample = `import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioHeader type="ontario"
-	language-toggle-options='{
-    "englishLink":"/en",
-    "frenchLink": "/fr"
-  }'
-	menu-items='[{
-    "name": "Health",
-    "href": "#"
-  },
-	{
-    "name": "Financial Health",
-    "href": "#"
-  }]'>
+	const ontarioHeaderCodeExample = `import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioHeader
+	type="ontario"
+	languageToggleOptions={{
+		englishLink: "/en",
+		frenchLink: "/fr"
+	}}
+	>
 </OntarioHeader>
 `;
 	return (
 		<div className="ontario-row">
-			<div className="ontario-columns ontario-medium-12 ontario-large-12">
-				<div className="preview-container">
-					<h4>Ontario.ca Header</h4>
+			<div className="ontario-columns ontario-large-12">
+				<div className="ontario-margin-top-24-!">
+					<h2>Example</h2>
 					<OntarioHeader
 						type="ontario"
-						language-toggle-options='{
-                "englishLink":"#",
-                "frenchLink": "#"
-              }'
-						menu-items='[{
-                "name": "Health",
-                "href": "#"
-              },{
-                "name": "Financial Health",
-                "href": "#"
-              }]'
+						languageToggleOptions={{
+							englishLink: '/en',
+							frenchLink: '/fr',
+						}}
 					></OntarioHeader>
 
 					<p>With the following markup:</p>
 
-					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-						{ontarioHeaderCodeExample}
-					</SyntaxHighlighter>
+					<CodeHighlighter codeExample={ontarioHeaderCodeExample} />
 				</div>
 			</div>
 		</div>

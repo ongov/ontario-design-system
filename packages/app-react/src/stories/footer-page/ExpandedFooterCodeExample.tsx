@@ -1,120 +1,132 @@
 import React from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react';
 
-export default function ExpandedFooterCodeExample() {
-	const expandedFooterExample = `import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioFooter type="expandedTwoColumn" default-options='{
-  "accessibilityLink":"https://www.ontario.ca/page/accessibility",
-  "privacyLink": "https://www.ontario.ca/page/privacy-statement",
-  "contactLink": "https://www.ontario.ca/feedback/contact-us",
-  "printerLink": "https://www.ontario.ca/page/copyright-information"
+import CodeHighlighter from '../../components/code-highlighter';
 
-}' expanded-two-column-options='{
-  "firstColumn": {
-    "title": "This is my First Title",
-    "content":"this is my first content"
-  },
-  "secondColumn": {
-    "title": "This is my Second Title",
-    "content":"this is my second content",
-    "contactButtonText": "BUTTON"
-  }
-}' expanded-three-column-options='{
-  "firstColumn": {
-    "title": "This is my First Title",
-    "content":"this is my first content"
-  },
-  "secondColumn": {
-    "title": "This is my Second Title",
-    "content":[
-      {
-        "title": "1 asdas",
-        "link": "12"
+export default function ExpandedFooterCodeExample() {
+	const expandedFooterExample = `import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioFooter 
+  type="expandedThreeColumn"
+  defaultOptions={{
+    accessibilityLink: "https://www.ontario.ca/page/accessibility",
+    privacyLink: "https://www.ontario.ca/page/privacy-statement",
+    contactLink: "https://www.ontario.ca/feedback/contact-us",
+    printerLink: "https://www.ontario.ca/page/copyright-information"
+  }}
+  expandedThreeColumnOptions={{
+    firstColumn: {
+      title: "Ontario Design System",
+      content: "The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services."
+    },
+    secondColumn: {
+      title: "Most visited pages",
+      content: [
+        {
+          title: "For designers",
+          link: "#"
+        },
+        {
+          title: "For developers",
+          link: "#"
+        },
+        {
+          title: "Colours",
+          link: "#"
+        },
+        {
+          title: "Fonts and typography",
+          link: "#"
+        },
+        {
+          title: "Grid",
+          link: "#"
+        }
+      ]
+    },
+    thirdColumn: {
+      title: "Help us improve the design system",
+      content: "You can check our help and feedback page if you do not see the component you need.",
+      facebook: {
+        link: "#"
+      },
+      twitter: {
+        link: "#"
+      },
+      instagram: {
+        link: "#"
+      },
+      youtube: {
+        link: "#"
       }
-    ]
-  },
-  "thirdColumn": {
-    "title": "this is my third title",
-    "content": "this is my third content",
-    "facebook": {
-      "link": "1"
-    },
-    "twitter": {
-      "link": "2"
-    },
-    "instagram": {
-      "link": "3"
-    },
-    "youtube": {
-      "link": "4"
     }
-  }
-}'></OntarioFooter>`;
+  }}
+></OntarioFooter>`;
 	return (
 		<>
 			<div className="ontario-row">
-				<div className="ontario-columns ontario-medium-12 ontario-large-12">
-					<h3>Example of default footer</h3>
-					<div className="preview-container">
+				<div className="ontario-columns ontario-large-12">
+					<h4>Example</h4>
+					<div className="ontario-margin-top-24-!">
 						<OntarioFooter
-							type="expandedTwoColumn"
-							default-options='{
-                "accessibilityLink":"https://www.ontario.ca/page/accessibility",
-                "privacyLink": "https://www.ontario.ca/page/privacy-statement",
-                "contactLink": "https://www.ontario.ca/feedback/contact-us",
-                "printerLink": "https://www.ontario.ca/page/copyright-information"
-
-              }'
-							expanded-two-column-options='{
-                "firstColumn": {
-                  "title": "This is my First Title",
-                  "content":"this is my first content"
-                },
-                "secondColumn": {
-                  "title": "This is my Second Title",
-                  "content":"this is my second content",
-                  "contactButtonText": "BUTTON"
-                }
-              }'
-							expanded-three-column-options='{
-                "firstColumn": {
-                  "title": "This is my First Title",
-                  "content":"this is my first content"
-                },
-                "secondColumn": {
-                  "title": "This is my Second Title",
-                  "content":[
-                    {
-                      "title": "1 asdas",
-                      "link": "12"
-                    }
-                  ]
-                },
-                "thirdColumn": {
-                  "title": "this is my third title",
-                  "content": "this is my third content",
-                  "facebook": {
-                    "link": "1"
-                  },
-                  "twitter": {
-                    "link": "2"
-                  },
-                  "instagram": {
-                    "link": "3"
-                  },
-                  "youtube": {
-                    "link": "4"
-                  }
-                }
-              }'
+							type="expandedThreeColumn"
+							defaultOptions={{
+								accessibilityLink: 'https://www.ontario.ca/page/accessibility',
+								privacyLink: 'https://www.ontario.ca/page/privacy-statement',
+								contactLink: 'https://www.ontario.ca/feedback/contact-us',
+								printerLink: 'https://www.ontario.ca/page/copyright-information',
+							}}
+							expandedThreeColumnOptions={{
+								firstColumn: {
+									title: 'Ontario Design System',
+									content:
+										'The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services.',
+								},
+								secondColumn: {
+									title: 'Most visited pages',
+									content: [
+										{
+											title: 'For designers',
+											link: '#',
+										},
+										{
+											title: 'For developers',
+											link: '#',
+										},
+										{
+											title: 'Colours',
+											link: '#',
+										},
+										{
+											title: 'Fonts and typography',
+											link: '#',
+										},
+										{
+											title: 'Grid',
+											link: '#',
+										},
+									],
+								},
+								thirdColumn: {
+									title: 'Help us improve the design system',
+									content: 'You can check our help and feedback page if you do not see the component you need.',
+									facebook: {
+										link: '#',
+									},
+									twitter: {
+										link: '#',
+									},
+									instagram: {
+										link: '#',
+									},
+									youtube: {
+										link: '#',
+									},
+								},
+							}}
 						></OntarioFooter>
 
 						<p>With the following markup:</p>
 
-						<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-							{expandedFooterExample}
-						</SyntaxHighlighter>
+						<CodeHighlighter codeExample={expandedFooterExample} />
 					</div>
 				</div>
 			</div>

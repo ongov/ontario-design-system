@@ -26,6 +26,8 @@ export class OntarioDropdownList implements Dropdown {
 	 */
 	@Element() element: HTMLElement;
 
+	hintTextRef: HTMLOntarioHintTextElement | undefined;
+
 	/**
 	 * The text to display as the label
 	 *
@@ -135,6 +137,11 @@ export class OntarioDropdownList implements Dropdown {
 	 * </ontario-dropdown-list>
 	 */
 	@Prop() hintExpander?: HintExpander | string;
+
+	/**
+	 * Used for the `aria-describedby` value of the dropdown list. This will match with the id of the hint text.
+	 */
+	@State() hintTextId: string | null | undefined;
 
 	/**
 	 * Instantiate an InputCaption object for internal logic use
@@ -259,6 +266,10 @@ export class OntarioDropdownList implements Dropdown {
 			: `ontario-input ontario-dropdown`;
 	}
 
+	async componentDidLoad() {
+		this.hintTextId = await this.hintTextRef?.getHintTextId();
+	}
+
 	componentWillLoad() {
 		this.updateCaptionState(this.caption);
 		this.parseOptions();
@@ -273,9 +284,12 @@ export class OntarioDropdownList implements Dropdown {
 		return (
 			<div class="ontario-form-group">
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
-				{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
+				{this.hintText && (
+					<ontario-hint-text hint={this.hintText} ref={(el) => (this.hintTextRef = el)}></ontario-hint-text>
+				)}
 				<select
 					class={this.getClass()}
+					aria-describedby={this.hintTextId}
 					id={this.getId()}
 					name={this.name}
 					style={this.getDropdownArrow()}

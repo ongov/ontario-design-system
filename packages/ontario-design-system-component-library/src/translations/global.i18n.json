@@ -30,5 +30,9 @@
 			"en": "Scroll back to the top",
 			"fr": "Retour en haut de la page"
 		}
+	},
+	"loading": {
+		"en": "Loading",
+		"fr": "Chargement"
 	}
 }

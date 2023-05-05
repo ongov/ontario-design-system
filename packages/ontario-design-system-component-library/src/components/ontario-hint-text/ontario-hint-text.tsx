@@ -1,4 +1,4 @@
-import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
+import { Component, Prop, Element, h, Watch, State, Method } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 import { Hint } from '../../utils/common.interface';
 import { validatePropExists } from '../../utils/validation/validation-functions';
@@ -67,6 +67,16 @@ export class OntarioHintText implements Hint {
 
 	public getId(): string {
 		return this.elementId ?? '';
+	}
+
+	/**
+	 * This method returns the ontario-hint-text id. It is used to make sure the hint text and `aria-describedby` value of other form components match when the internal hint text props are used.
+	 *
+	 * @returns Promise<string | undefined>
+	 */
+	@Method()
+	async getHintTextId(): Promise<string | undefined> {
+		return this.elementId;
 	}
 
 	/**

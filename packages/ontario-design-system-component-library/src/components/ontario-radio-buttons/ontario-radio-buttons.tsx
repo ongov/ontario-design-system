@@ -24,13 +24,15 @@ export class OntarioRadioButtons implements RadioButtons {
 	 */
 	@Element() element: HTMLElement;
 
+	hintTextRef: HTMLOntarioHintTextElement | undefined;
+
 	/**
-	 * The text to display as the label
+	 * The text to display for the radio button legend.
 	 *
 	 * @example
 	 * <ontario-radio-buttons
 	 *   caption='{
-	 *     "captionText": "Address",
+	 *     "captionText": "Radio legend",
 	 *     "captionType": "heading",
 	 *    }'
 	 *   required="true"
@@ -52,36 +54,37 @@ export class OntarioRadioButtons implements RadioButtons {
 	@Prop() name: string;
 
 	/**
-	 * Define hint text for Radio Button fieldset. This is optional.
+	 * Used to include the ontario-hint-text component for radio button group.
+	 * This is optional.
 	 */
 	@Prop() hintText?: string;
 
 	/**
-	 * Used to include the Hint Expander component for the Radio Button fieldset.
+	 * Used to include the ontario-hint-expander component for the radio button group.
 	 * This is passed in as an object with key-value pairs.
 	 * This is optional.
 	 *
 	 * @example
 	 * <ontario-radio-buttons
 	 *   caption='{
-	 *     "captionText": "Address",
+	 *     "captionText": "Radio legend",
 	 *     "captionType": "heading",
 	 *   }'
-	 * 	 name: "Radio"
+	 * 	 name="radios"
 	 *   options='[
 	 * 	   {
 	 *        "value": "radio-option-1",
-	 * 				"elementId": "radio-1",
-	 *        "label": "Radio Option 1 Label",
+	 * 		  "elementId": "radio-1",
+	 *        "label": "Radio option 1 label",
 	 *        "hintExpander": {
-	 *			    "hint": "Hint expander",
-	 * 		      "content": "This is the content"
-	 *		    }
+	 *			  "hint": "Hint expander for radio option 1",
+	 * 		      "content": "Example hint expander content for radio option 1."
+	 *		  }
 	 *     }
 	 *   ]'
 	 *   hint-expander='{
-	 *     "hint": "Hint expander",
-	 *     "content": "This is the content, yup this is the content"
+	 *     "hint": "Hint expander for the radio button group",
+	 *     "content": "Example hint expander content for the radio button group."
 	 *   }'
 	 *   required="true"
 	 * >
@@ -99,31 +102,31 @@ export class OntarioRadioButtons implements RadioButtons {
 	/**
 	 * Each property will be passed in through an object in the options array.
 	 * This can either be passed in as an object directly (if using react), or as a string in HTML.
-	 * If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option.
-	 * In the example below, the options are being passed in as a string and
-	 * there are two radio buttons to be displayed in the fieldset.
+	 * If there are multiple radio buttons in a group, each radio button will be displayed as an option.
+	 * In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the group.
 	 *
 	 * @example
 	 * <ontario-radio-buttons
 	 *   caption='{
-	 *     "captionText": "Address",
+	 *     "captionText": "Radio legend",
 	 *     "captionType": "heading",
 	 *   }'
-	 *   hint-text="This is the hint text"
+	 *   name="radios"
+	 *   hint-text="Hint text for the radio button group."
 	 *   options='[
 	 *     {
-	 *        "value": "radio-1-value",
-	 * 				"elementId": "radio-1",
-	 *        "label": "Radio Button Label 1"
+	 *        "value": "radio-option-1",
+	 * 		  "elementId": "radio-1",
+	 *        "label": "Radio option 1 label"
 	 *     },
 	 *     {
-	 *        "value": "radio-2-value",
-	 * 				"elementId": "radio-1",
-	 *        "label": "Radio Button Label 2",
+	 *        "value": "radio-option-2",
+	 * 		  "elementId": "radio-2",
+	 *        "label": "Radio option 2 label",
 	 *        "hintExpander": {
-	 *          "hint": "Hint expander",
-	 *          "content": "This is the content"
-	 *        }
+	 *			  "hint": "Hint expander for radio option 2",
+	 * 		      "content": "Example hint expander content for radio option 2."
+	 *		  }
 	 *      }
 	 *   ]'
 	 *   required="true"
@@ -131,6 +134,11 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * </ontario-radio-buttons>
 	 */
 	@Prop() options: string | RadioOption[];
+
+	/**
+	 * Used for the `aria-describedby` value of the radio button group. This will match with the id of the hint text.
+	 */
+	@State() hintTextId: string | null | undefined;
 
 	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.
@@ -239,6 +247,10 @@ export class OntarioRadioButtons implements RadioButtons {
 		this.updateCaptionState(this.caption);
 	}
 
+	async componentDidLoad() {
+		this.hintTextId = await this.hintTextRef?.getHintTextId();
+	}
+
 	componentWillLoad() {
 		this.updateCaptionState(this.caption);
 		this.parseOptions();
@@ -251,9 +263,11 @@ export class OntarioRadioButtons implements RadioButtons {
 	render() {
 		return (
 			<div class="ontario-form-group">
-				<fieldset class="ontario-fieldset">
+				<fieldset class="ontario-fieldset" aria-describedby={this.hintTextId}>
 					{this.captionState.getCaption(undefined, !!this.internalHintExpander)}
-					{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
+					{this.hintText && (
+						<ontario-hint-text hint={this.hintText} ref={(el) => (this.hintTextRef = el)}></ontario-hint-text>
+					)}
 					<div class="ontario-radios">
 						{this.internalOptions?.map((radioOption) => (
 							<div class="ontario-radios__item">

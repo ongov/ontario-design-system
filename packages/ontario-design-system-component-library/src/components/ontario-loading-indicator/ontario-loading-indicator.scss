@@ -1,0 +1,100 @@
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
+	spacing;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
+	colours;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as
+	typography;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables'
+	as fontWeights;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables'
+	as lineHeights;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions'
+	as globalFunctions;
+
+$offset: 1, 200;
+$duration: 1.5s;
+$spinner-size: 3rem;
+$dasharray: 89, 200;
+$loading-indicator-z-index: 9999;
+
+.ontario-loading-indicator__overlay,
+.ontario-loading-indicator__overlay--within-container {
+	position: fixed;
+	width: 100%;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: rgba(colours.$ontario-colour-white, 0.7);
+	z-index: $loading-indicator-z-index;
+
+	&[aria-hidden='false'] {
+		display: block;
+	}
+
+	&[aria-hidden='true'] {
+		display: none;
+	}
+}
+
+.ontario-loading-indicator__overlay--within-container {
+	position: absolute;
+}
+
+.ontario-loading-indicator {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 100%;
+	height: 100%;
+
+	p {
+		color: colours.$ontario-greyscale-70;
+		font-family: typography.$ontario-font-raleway-modified;
+		font-size: globalFunctions.rem-calc(16);
+		line-height: lineHeights.$ontario-line-height-7;
+		font-weight: fontWeights.$ontario-font-weights-bold;
+		word-spacing: 0.025rem;
+		margin: spacing.$spacing-3 spacing.$spacing-0 spacing.$spacing-0;
+	}
+}
+
+.ontario-loading-indicator__spinner {
+	animation: rotator $duration linear infinite;
+	width: $spinner-size;
+	height: $spinner-size;
+	overflow: visible;
+
+	circle {
+		stroke-dasharray: $offset;
+		stroke-dashoffset: 0;
+		stroke-linecap: round;
+		stroke: colours.$ontario-greyscale-70;
+		animation: dash $duration ease-in-out infinite;
+	}
+}
+
+@keyframes rotator {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes dash {
+	0% {
+		stroke-dasharray: $offset;
+		stroke-dashoffset: 0;
+	}
+	50% {
+		stroke-dasharray: $dasharray;
+		stroke-dashoffset: -35px;
+	}
+	100% {
+		stroke-dasharray: $dasharray;
+		stroke-dashoffset: -124px;
+	}
+}

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-aside snapshot should render the expected html 1`] = `
+<ontario-aside heading-content="Quick fact:" heading-content-type="string" heading-type="h3" highlight-colour="gold">
+  <mock:shadow-root>
+    <aside class="ontario-aside ontario-border-highlight--gold">
+      <h3 class="ontario-aside__title ontario-h5">
+        Quick fact:
+      </h3>
+      <slot></slot>
+    </aside>
+  </mock:shadow-root>
+  As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions.
+</ontario-aside>
+`;

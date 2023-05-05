@@ -32,15 +32,6 @@ describe('ontario-textarea', () => {
 			element = await page.find('ontario-textarea >>> textarea');
 		});
 
-		it('renders changes to the aria-describedby property', async () => {
-			component.setProperty('describedBy', 'ontario-textarea-hint');
-			await page.waitForChanges();
-			expect(element).toEqualAttributes({
-				'name': 'ontario-textarea',
-				'aria-describedby': 'ontario-textarea-hint',
-			});
-		});
-
 		it('renders changes to the id property', async () => {
 			component.setProperty('elementId', 'ontario-textarea-id');
 			await page.waitForChanges();

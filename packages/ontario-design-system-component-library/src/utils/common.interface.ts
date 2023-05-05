@@ -25,11 +25,6 @@ export interface Base {
 
 export interface Input extends Base {
 	/**
-	 * The aria-describedBy value if the element has hint text associated with it.
-	 */
-	describedBy?: string;
-
-	/**
 	 * The name assigned to the element. The name value is used to reference form data after a form is submitted.
 	 */
 	name: string;

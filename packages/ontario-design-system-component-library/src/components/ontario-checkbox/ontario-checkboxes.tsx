@@ -27,13 +27,15 @@ export class OntarioCheckboxes implements Checkboxes {
 	 */
 	@Element() element: HTMLElement;
 
+	hintTextRef: HTMLOntarioHintTextElement | undefined;
+
 	/**
-	 * The text to display as the label
+	 * The text to display for the checkbox legend.
 	 *
 	 * @example
 	 * <ontario-checkboxes
 	 *   caption='{
-	 *     "captionText": "Address",
+	 *     "captionText": "Checkbox legend",
 	 *     "captionType": "heading",
 	 *   }
 	 *   ...>
@@ -53,38 +55,38 @@ export class OntarioCheckboxes implements Checkboxes {
 	@Prop() name: string;
 
 	/**
-	 * Define hint text on an element. This is optional.
+	 * Used to include the ontario-hint-text component for the checkbox group.
+	 * This is optional.
 	 */
 	@Prop() hintText?: string;
 
 	/**
-   * Used to include the Hint Expander component underneath the Checkbox Legend.
-   * This is passed in as an object with key-value pairs.
+	 * Used to include the ontario-hint-expander component for the checkbox group.
+	 * This is passed in as an object with key-value pairs.
 	 * This is optional.
-   *
-   * @example
-   * <ontario-checkboxes
-   *   caption='{
-	 *     "captionText": "Address",
+	 *
+	 * @example
+	 * <ontario-checkboxes
+	 *   caption='{
+	 *     "captionText": "Checkbox legend",
 	 *     "captionType": "heading",
 	 *   }
-   *   name='ontario-checkboxes'
-   *   options='[{
-   *     "value": "checkbox-1-value",
-   *     "label": "Checkbox Label",
-   *     "hintExpander": {
-   *			  "hint": "Hint expander",
-   * 		    "content": "This is the content"
-   *		 }
-   *   }]'
-   *   hint-expander='{
-   *    "hint": "Hint expander",
-   *    "content": "This is the content, yup this is the content"
-      }'
-			required="true"
-   * >
-   * </ontario-checkboxes>
-   */
+	 *   name='ontario-checkboxes'
+	 *   options='[
+	 *		{
+	 *			"value": "checkbox-option-1",
+	 *			"label": "Checkbox option 1 label",
+	 *			"elementId": "checkbox-1"
+	 *		}
+	 *   }]'
+	 *   hint-expander='{
+	 *    "hint": "Hint expander for the checkbox group",
+	 *    "content": "Example hint expander content for the checkbox group"
+	 *   }'
+	 *   required="true"
+	 * >
+	 * </ontario-checkboxes>
+	 */
 	@Prop() hintExpander?: HintExpander | string;
 
 	/**
@@ -97,22 +99,24 @@ export class OntarioCheckboxes implements Checkboxes {
 	 * @example
 	 * <ontario-checkboxes
 	 *   caption='{
-	 *     "captionText": "Address",
-	 *     "captionType": "heading",
+	 *		"captionText": "Checkbox legend",
+	 *		"captionType": "heading",
 	 *   }
 	 *   name="ontario-checkboxes",
-	 *   hint-text="This is the hint text"
+	 *   hint-text="Hint text for the checkbox group."
 	 *   options='[
-	 *     {
-	 *        "value": "checkbox-1-value",
-	 *        "label": "Checkbox Label"
+	 *		{
+	 *			"value": "checkbox-option-1",
+	 *			"label": "Checkbox option 1 label"
+	 *			"elementId": "checkbox-1"
 	 *     },
 	 *     {
-	 *        "value": "checkbox-2",
-	 *        "label": "checkbox-2-label",
-	 *        "hintExpander": {
-	 *          "hint": "Hint expander",
-	 *          "content": "This is the content"
+	 *        "value": "checkbox-option-2",
+	 *        "label": "Checkbox option 2 label",
+	 * 		  "elementId": "checkbox-2",
+	 *	      "hintExpander": {
+	 *				"hint": "Hint expander for checkbox option 2",
+	 *              "content": "Example hint expander content for checkbox option 2"
 	 *        }
 	 *      }
 	 *   ]'
@@ -128,6 +132,11 @@ export class OntarioCheckboxes implements Checkboxes {
 	 * If no prop is set, it will default to false (optional).
 	 */
 	@Prop() required?: boolean = false;
+
+	/**
+	 * Used for the `aria-describedby` value of the checkbox fieldset. This will match with the id of the hint text.
+	 */
+	@State() hintTextId: string | null | undefined;
 
 	/**
 	 * Instantiate an InputCaption object for internal logic use
@@ -251,6 +260,10 @@ export class OntarioCheckboxes implements Checkboxes {
 		this.changeEvent.emit(ev as any);
 	};
 
+	async componentDidLoad() {
+		this.hintTextId = await this.hintTextRef?.getHintTextId();
+	}
+
 	componentWillLoad() {
 		this.updateCaptionState(this.caption);
 		this.parseOptions();
@@ -262,16 +275,18 @@ export class OntarioCheckboxes implements Checkboxes {
 	render() {
 		return (
 			<div class="ontario-form-group">
-				<fieldset class="ontario-fieldset">
+				<fieldset class="ontario-fieldset" aria-describedby={this.hintTextId}>
 					{this.captionState.getCaption(undefined, !!this.internalHintExpander)}
-					{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
+					{this.hintText && (
+						<ontario-hint-text hint={this.hintText} ref={(el) => (this.hintTextRef = el)}></ontario-hint-text>
+					)}
 
 					<div class="ontario-checkboxes">
 						{this.internalOptions?.map((checkbox) => (
 							<div class="ontario-checkboxes__item">
 								<input
 									class="ontario-checkboxes__input"
-									id={checkbox.value}
+									id={checkbox.elementId}
 									name={this.name}
 									type="checkbox"
 									value={checkbox.value}
@@ -279,7 +294,7 @@ export class OntarioCheckboxes implements Checkboxes {
 									onChange={this.handleChange}
 									required={!!this.required}
 								/>
-								<label class="ontario-checkboxes__label" htmlFor={checkbox.value}>
+								<label class="ontario-checkboxes__label" htmlFor={checkbox.elementId}>
 									{checkbox.label}
 									{checkbox.hintExpander && this.captionState.getHintExpanderAccessibilityText(checkbox.label, true)}
 								</label>

@@ -28,16 +28,6 @@ describe('ontario-input', () => {
 			element = await page.find('ontario-input >>> input');
 		});
 
-		it('renders changes to the aria-describedby property', async () => {
-			component.setProperty('describedBy', 'ontario-input-hint');
-			await page.waitForChanges();
-			expect(element).toEqualAttributes({
-				'name': 'ontario-input',
-				'type': 'text',
-				'aria-describedby': 'ontario-input-hint',
-			});
-		});
-
 		it('renders changes to the id property', async () => {
 			component.setProperty('elementId', 'ontario-input-id');
 			await page.waitForChanges();

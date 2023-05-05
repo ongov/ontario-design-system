@@ -1,74 +1,135 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+import CodeHighlighter from '../../components/code-highlighter';
 
 export default function TextInputExample() {
-	const codeExample = `import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioInput
+	const FourCharInputExample = `import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioInput
 	caption={{
-		captionText: "Text Input caption",
+		captionText: "4 character width",
 		captionType: "default"
 	}}
-	elementId="react-poc-input-id"
+	elementId="4-char-input-id"
 	inputWidth="4-char-width"
-	name="name"
+	name="4-char-input"
 	required
 	type="text"
-	value="value"
+	hintText="Example hint text for the 4 character width input"
 />`;
+
+	const TwentyCharInputExample = `import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioInput
+	caption={{
+		captionText: "20 character width",
+		captionType: "default"
+	}}
+	elementId="20-char-input-id"
+	inputWidth="20-char-width"
+	name="20-char-input"
+	required={false}	
+	type="text"
+	hintExpander={{
+		content: "This is the example content for the 20 character width input",
+		hint: "Example hint expander for the 20 character width input",
+		elementId: "20-char-width-hint-expander"
+	}}
+/>`;
+
+	const DefaultInputExample = `import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioInput
+	caption={{
+		captionText: "Default width input",
+		captionType: "large"
+	}}
+	elementId="default-input"
+	name="default-input"	
+	type="text"
+	onFocus={defaultInputOnFocus}
+/>`;
+
+	const componentRef = useRef<any>(null);
+
+	useEffect(() => {
+		const component = componentRef.current;
+		if (component) {
+			component.addEventListener('focusEvent', defaultInputOnFocus);
+		}
+
+		return () => {
+			if (component) {
+				component.removeEventListener('focusEvent', defaultInputOnFocus);
+			}
+		};
+	}, [componentRef]);
+
+	const defaultInputOnFocus = () => {
+		console.log('Default input has focus');
+	};
+
 	return (
-		<>
-			<div className="ontario-row">
-				<div className="ontario-columns ontario-medium-12 ontario-large-12">
-					<h3>Examples</h3>
-					<div className="preview-container">
-						<OntarioInput
-							caption={{
-								captionText: 'Text Input Caption',
-								captionType: 'default',
-							}}
-							elementId="react-poc-input-id"
-							inputWidth="4-char-width"
-							name="react-poc-input"
-							required
-							type="text"
-						/>
+		<div className="ontario-row">
+			<div className="ontario-columns ontario-large-12">
+				<h3>Examples</h3>
+				<div className="ontario-margin-top-24-!">
+					<OntarioInput
+						caption={{
+							captionText: '4 character width',
+							captionType: 'default',
+						}}
+						elementId="4-char-input-id"
+						inputWidth="4-char-width"
+						name="4-char-input"
+						required
+						type="text"
+						hintText="Example hint text for the 4 character width input"
+					/>
 
-						<p>With the following markup:</p>
+					<p>With the following markup:</p>
 
-						<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-							{codeExample}
-						</SyntaxHighlighter>
-					</div>
-
-					<p>Use a text input if:</p>
-					<ul>
-						<li>
-							you want the user to enter <strong>no more than a single line</strong> of information
-						</li>
-						<li>
-							you need <strong>unique information</strong> from the user such as their name or phone number
-						</li>
-						<li>
-							it’s <strong>faster for the user</strong> to write out an answer rather than choose from a list
-						</li>
-					</ul>
-
-					<p>Do not use a text input if:</p>
-					<ul>
-						<li>
-							you want users to enter answers that are <strong>longer than one line</strong> (instead, consider a <a href="/ontario-text-area">text area</a>)
-						</li>
-						<li>
-							you want users to choose from a <strong>set list of responses</strong> such as yes or no (instead, consider{' '}
-							<a href="https://designsystem.ontario.ca/components/detail/radio-buttons.html">radio buttons</a>,{' '}
-							<a href="https://designsystem.ontario.ca/components/detail/checkboxes.html">checkboxes</a> or{' '}
-							<a href="https://designsystem.ontario.ca/components/detail/dropdown-lists.html">dropdown lists</a>)
-						</li>
-					</ul>
-					<hr />
+					<CodeHighlighter codeExample={FourCharInputExample} />
 				</div>
+
+				<div className="ontario-margin-top-24-!">
+					<OntarioInput
+						caption={{
+							captionText: '20 character width',
+							captionType: 'default',
+						}}
+						elementId="20-char-input-id"
+						inputWidth="20-char-width"
+						name="20-char-input"
+						required={false}
+						type="text"
+						hintExpander={{
+							content: 'This is the example content for the 20 character width input',
+							hint: 'Example hint expander for the 20 character width input',
+							elementId: '20-char-width-hint-expander',
+						}}
+					/>
+
+					<p>With the following markup:</p>
+
+					<CodeHighlighter codeExample={TwentyCharInputExample} />
+				</div>
+
+				<div className="ontario-margin-top-24-!">
+					<OntarioInput
+						ref={componentRef}
+						caption={{
+							captionText: 'Default width input',
+							captionType: 'large',
+						}}
+						elementId="default-input"
+						name="default-input"
+						type="text"
+						onFocus={defaultInputOnFocus}
+					/>
+
+					<p>With the following markup:</p>
+
+					<CodeHighlighter codeExample={DefaultInputExample} />
+				</div>
+
+				<hr />
 			</div>
-		</>
+		</div>
 	);
 }

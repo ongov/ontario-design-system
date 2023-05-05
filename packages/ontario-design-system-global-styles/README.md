@@ -93,6 +93,31 @@ A variant or extension of the Block. The modifier defines the look, state and be
 
 ## Configuration
 
+There are two ways to consume the global styles package:
+
+#### 1. Import everything
+
+You can import the entire global styles package by including the following import statement:
+
+`@import "@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme.scss";`
+
+This will give you access to the complete global styles package, and will load in all of our generic element and layout styles, as well as fonts and favicon files.
+
+#### 2. Import specific styles
+
+You can be more granular by explicitly importing specific styles from our global styles package. For example, if you only require our global variables, you can include the following [`@use`](https://sass-lang.com/documentation/at-rules/use) rule to import specific styles:
+
+`@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;`
+
+The `@use` rule loads mixins, functions, and variables from other Sass stylesheets, and combines CSS from multiple stylesheets together. In your SCSS, you would then reference one of these variables by including the namespace, followed by the variable you intend to use. For example:
+
+```
+.platform-banner {
+	width: globalVariables.$full-width;
+	max-width: globalVariables.$full-width;
+}
+```
+
 ## References
 
 - BEM naming convention (http://getbem.com/)

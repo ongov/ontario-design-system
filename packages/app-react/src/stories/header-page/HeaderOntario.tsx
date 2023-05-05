@@ -3,7 +3,7 @@ import React from 'react';
 export default function HeaderOntario() {
 	return (
 		<div className="ontario-row">
-			<div className="ontario-columns ontario-medium-12 ontario-large-12">
+			<div className="ontario-columns ontario-large-12">
 				<h2>Ontario Header</h2>
 				<p>This header is mandatory for all pages that are part of the main ontario.ca website.</p>
 
@@ -13,9 +13,10 @@ export default function HeaderOntario() {
 					<li>created on the ontario.ca content management system</li>
 					<li>integrated into the main ontario.ca website environment</li>
 				</ul>
-				<p>The use of this header is very specific. In most cases, if you’re creating an application or subsite, you should use the application header.</p>
-
-				<hr></hr>
+				<p>
+					The use of this header is very specific. In most cases, if you’re creating an application or subsite, you
+					should use the application header.
+				</p>
 
 				<h3>Features</h3>
 				<p>The ontario.ca header includes:</p>
@@ -27,14 +28,18 @@ export default function HeaderOntario() {
 					<li>ontario.ca menu</li>
 				</ul>
 
-				<p>The search and menu in this header connect to pages that are part of the information architecture of the main ontario.ca website.</p>
-
-				<hr></hr>
+				<p>
+					The search and menu in this header connect to pages that are part of the information architecture of the main
+					ontario.ca website.
+				</p>
 
 				<h3>Best practices</h3>
 				<h4>Do</h4>
 				<ul>
-					<li>link the Ontario logo in the black bar to either the English or French ontario.ca landing page (depending on the language of the page)</li>
+					<li>
+						link the Ontario logo in the black bar to either the English or French ontario.ca landing page (depending on
+						the language of the page)
+					</li>
 					<li>ensure the language toggle is inside the black bar</li>
 					<li>ensure the language toggle switches you to the other language of the page you’re on</li>
 				</ul>

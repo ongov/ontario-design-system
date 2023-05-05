@@ -40,17 +40,15 @@ describe('ontario-input', () => {
 			const page = await newSpecPage({
 				components: [OntarioInput],
 				html: `<ontario-input
-									described-by="input-hint-id"
-									name="input-name"
-									element-id="input-id"
-									value="input value"
-									type='tel'
-									input-width='7-char-width'
-									caption='{"captionText": "Ontario Input"}'
-								></ontario-input>`,
+					name="input-name"
+					element-id="input-id"
+					value="input value"
+					type='tel'
+					input-width='7-char-width'
+					caption='{"captionText": "Ontario Input"}'
+				></ontario-input>`,
 			});
 
-			expect(page.rootInstance.describedBy).toBe('input-hint-id');
 			expect(page.rootInstance.name).toBe('input-name');
 			expect(page.rootInstance.value).toBe('input value');
 			expect(page.rootInstance.elementId).toBe('input-id');
@@ -79,9 +77,9 @@ describe('ontario-input', () => {
 			const page = await newSpecPage({
 				components: [OntarioInput],
 				html: `<ontario-input
-									name="input-name"
-									element-id="input-id"
-								></ontario-input>`,
+					name="input-name"
+					element-id="input-id"
+				></ontario-input>`,
 			});
 
 			const emitSpy = jest.fn();
@@ -100,9 +98,9 @@ describe('ontario-input', () => {
 			const page = await newSpecPage({
 				components: [OntarioInput],
 				html: `<ontario-input
-									name="input-name"
-									element-id="input-id"
-								></ontario-input>`,
+					name="input-name"
+					element-id="input-id"
+				></ontario-input>`,
 			});
 
 			const emitSpy = jest.fn();
@@ -123,9 +121,9 @@ describe('ontario-input', () => {
 			const page = await newSpecPage({
 				components: [OntarioInput],
 				html: `<ontario-input
-									name="input-name"
-									element-id="input-id"
-								></ontario-input>`,
+					name="input-name"
+					element-id="input-id"
+				></ontario-input>`,
 			});
 
 			expect(page.rootInstance.getId()).toEqual('input-id');

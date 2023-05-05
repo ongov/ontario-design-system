@@ -1,6 +1,7 @@
 {
 	"name": "Application name",
-	"short_name": "Application description",
+	"short_name": "App name",
+	"description": "Application description",
 	"icons": [
 		{
 			"src": "./favicon-192x192.png",
