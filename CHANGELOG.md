@@ -1,3 +1,9 @@
+# 2.4.0-alpha.2 (2023-05-05)
+
+### Bug Fixes
+
+- **angular-component-library:** move package readme contents to main angular workspace readme f8ce678
+
 # 2.4.0-alpha.1 (2023-05-05)
 
 ### Bug Fixes
