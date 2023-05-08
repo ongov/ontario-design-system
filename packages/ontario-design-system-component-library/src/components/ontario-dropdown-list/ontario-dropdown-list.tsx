@@ -277,14 +277,16 @@ export class OntarioDropdownList implements Dropdown {
 	}
 
 	private validateSelectedOption(options: DropdownOption[]) {
-		options.map((singleOption) => {
+		const selected = 'selected';
+
+		options.forEach((singleOption) => {
 			// if no selected key is passed, set a default key to false
-			if (!singleOption.hasOwnProperty('selected')) {
+			if (!singleOption.hasOwnProperty(selected)) {
 				singleOption.selected = false;
 			}
 		});
 
-		if (hasMultipleTrueValues(options, 'selected')) {
+		if (hasMultipleTrueValues(options, selected)) {
 			const message = new ConsoleMessageClass();
 			message
 				.addDesignSystemTag()

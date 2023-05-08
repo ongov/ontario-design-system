@@ -2,7 +2,7 @@ export function format(first: string | undefined, middle: string | undefined, la
 	return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
 }
 
-export const hasMultipleTrueValues = <T>(arr: T[], key: keyof T): boolean => {
+export function hasMultipleTrueValues<T>(arr: T[], key: keyof T): boolean {
 	let count = 0;
 
 	for (const obj of arr) {
@@ -15,4 +15,4 @@ export const hasMultipleTrueValues = <T>(arr: T[], key: keyof T): boolean => {
 	}
 
 	return false;
-};
+}
