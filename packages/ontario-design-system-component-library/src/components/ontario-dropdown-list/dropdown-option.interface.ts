@@ -1,32 +1,40 @@
 export interface DropdownOption {
 	/**
-	 * The text to display as label.
+	 * The text to display as the dropdown list option label.
 	 *
 	 * @example
-	 * <ontario-dropdown-list label="Do you like cats?" name="cat-dropdown" required
-	 * is-empty-start-option="Please select" options='[{
-	 *     "value": "dropdown-list-1",
-	 *     "label": "Option 1"
-	 *   },
-	 *   {
-	 *     "value": "dropdown-list-2",
-	 *     "label": "Option 2"
-	 *   },
-	 *   {
-	 *      "value": "dropdown-list-3",
-	 *      "label": "Option 3"
-	 *   }]'>
+	 * <ontario-dropdown-list
+	 * 	label="Label"
+	 * 	name="ontario-dropdown-list"
+	 *  required
+	 * 	options='[
+	 * 	  {
+	 *      "value": "dropdown-option-1",
+	 *      "label": "Option 1"
+	 *    },
+	 *    {
+	 *      "value": "dropdown-option-2",
+	 *      "label": "Option 2"
+	 *    },
+	 *    {
+	 *       "value": "dropdown-option-3",
+	 *       "label": "Option 3"
+	 *     }
+	 *  ]'
+	 * >
 	 * </ontario-dropdown-list>
-	 *
-	 * The resulting text for the first dropdown option will show `"Option 1"`.
-	 * The resulting text for the first dropdown option will show `"Option 2"`.
-	 * The resulting text for the first dropdown option will show `"Option 3"`.
 	 */
 	label: string;
 
 	/**
-	 * The dropdown option content value.
+	 * The dropdown list option value.
 	 * Each value must be unique to the option.
 	 */
 	value: string;
+
+	/**
+	 * A boolean value to determine whether or not the dropdown list option is pre-selected.
+	 * If no selected value is set, it will be set to false.
+	 */
+	selected?: boolean;
 }
