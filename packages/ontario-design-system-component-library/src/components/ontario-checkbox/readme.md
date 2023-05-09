@@ -43,7 +43,7 @@ Example of a checkbox component with multiple options, a hint text and hint expa
 		"captionType": "large" 
 	}'
 	name="checkboxes"
-	hint-text="Hint text for the radio button group"
+	hint-text="Hint text for the checkbox group"
 	required
 	options='[
     {
