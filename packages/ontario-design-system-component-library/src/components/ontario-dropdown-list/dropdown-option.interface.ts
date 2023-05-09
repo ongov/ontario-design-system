@@ -6,7 +6,7 @@ export interface DropdownOption {
 	 * <ontario-dropdown-list
 	 * 	label="Label"
 	 * 	name="ontario-dropdown-list"
-	 *  required="true"
+	 *  required
 	 * 	options='[
 	 * 	  {
 	 *      "value": "dropdown-option-1",

@@ -21,7 +21,7 @@ Example of a dropdown list component with no `elementId` or `isEmptyStartOption`
 		"captionText": "Select a streaming service",
 		"captionType": "default"
 	}'
-	required="true"
+	required
 	options='[{
 			"value": "netflix",
 			"label": "Netflix"
@@ -55,7 +55,7 @@ In the following example, all available props are passed through.
 		"captionText": "Province/territory",
 		"captionType": "heading"
 	}'
-	required="true"
+	required
 	options='[{
 			"value": "alberta",
 			"label": "Alberta"
