@@ -1,1 +1,33 @@
-<ontario-button type="primary">Button</ontario-button>
+<ontario-header
+	type="application"
+	application-header-info='{
+		"title": "Angular proof of concept" ,
+		"href": "/",
+		"maxSubheaderDesktopLinks": "3",
+		"maxSubheaderTabletLinks": "1"
+	}'
+	language-toggle-options='{
+		"englishLink": "/driving-and-roads",
+		"frenchLink" : "/fr/conduite-et-routes"
+	}'
+	disable-dynamic-menu="true"
+	menu-items='[{
+		"title": "Frame One",
+		"href": "/frameone"
+	},
+	{
+		"title": "Frame Two",
+		"href": "/frametwo"
+	},
+	{
+		"title": "Frame three",
+		"href": "/framethree"
+	}]'
+>
+</ontario-header>
+
+<div class="container ontario-row ontario-margin-top-20-! ontario-margin-bottom-20-!">
+	  <router-outlet></router-outlet>
+</div>
+
+<ontario-footer></ontario-footer>
