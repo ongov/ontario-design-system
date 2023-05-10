@@ -85,6 +85,12 @@ module.exports = {
 				tertiaryHover: { value: '#E8E8E8' },
 				tertiaryActive: { value: '#D1D1D1' },
 			},
+			serviceOntarioHeader: {
+				brandGreen: { value: '#03713D' },
+				focus: { value: '#42C7FF' },
+				hover: { value: '#048B4B' },
+				active: { value: '#024122' },
+			},
 		},
 	},
 };
