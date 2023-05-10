@@ -11,4 +11,12 @@
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-4 spacing.$spacing-0;
 	width: globalVariables.$full-width;
 	max-width: globalVariables.$standard-width;
+
+	p {
+		margin-bottom: spacing.$spacing-4;
+	}
+
+	p:last-of-type {
+		margin-bottom: spacing.$spacing-0;
+	}
 }

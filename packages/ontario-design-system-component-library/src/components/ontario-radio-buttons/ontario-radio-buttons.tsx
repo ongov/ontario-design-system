@@ -1,6 +1,9 @@
 import { Component, h, Prop, State, Listen, Watch, Element } from '@stencil/core';
+
 import { RadioButtons } from './radio-buttons.interface';
 import { RadioOption } from './radio-option.interface';
+
+import { Hint } from '../../utils/common.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
 import { Caption } from '../../utils/input-caption/caption.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
@@ -11,6 +14,7 @@ import {
 } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { Language } from '../../utils/language-types';
+
 import { default as translations } from '../../translations/global.i18n.json';
 
 @Component({
@@ -57,7 +61,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * Used to include the ontario-hint-text component for radio button group.
 	 * This is optional.
 	 */
-	@Prop() hintText?: string;
+	@Prop() hintText?: string | Hint;
 
 	/**
 	 * Used to include the ontario-hint-expander component for the radio button group.
@@ -141,6 +145,11 @@ export class OntarioRadioButtons implements RadioButtons {
 	@State() hintTextId: string | null | undefined;
 
 	/**
+	 * The hint text options are re-assigned to the internalHintText array.
+	 */
+	@State() private internalHintText: Hint;
+
+	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.
 	 */
 	@State() private internalHintExpander: HintExpander;
@@ -167,6 +176,27 @@ export class OntarioRadioButtons implements RadioButtons {
 	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
 		const toggledLanguage = validateLanguage(event);
 		this.language = toggledLanguage;
+	}
+
+	@Watch('hintText')
+	private parseHintText() {
+		let hintTextObject: Hint;
+
+		if (this.hintText) {
+			if (typeof this.hintText === 'string') {
+				try {
+					hintTextObject = JSON.parse(this.hintText) as Hint;
+				} catch {
+					hintTextObject = { hint: this.hintText, hintContentType: 'string' };
+				}
+				return (this.internalHintText = hintTextObject);
+			} else {
+				hintTextObject = this.hintText;
+				return (this.internalHintText = hintTextObject);
+			}
+		}
+
+		return;
 	}
 
 	@Watch('hintExpander')
@@ -254,6 +284,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	componentWillLoad() {
 		this.updateCaptionState(this.caption);
 		this.parseOptions();
+		this.parseHintText();
 		this.parseHintExpander();
 		this.validateName(this.name);
 		this.validateOptions(this.internalOptions);
@@ -265,8 +296,12 @@ export class OntarioRadioButtons implements RadioButtons {
 			<div class="ontario-form-group">
 				<fieldset class="ontario-fieldset" aria-describedby={this.hintTextId}>
 					{this.captionState.getCaption(undefined, !!this.internalHintExpander)}
-					{this.hintText && (
-						<ontario-hint-text hint={this.hintText} ref={(el) => (this.hintTextRef = el)}></ontario-hint-text>
+					{this.internalHintText && (
+						<ontario-hint-text
+							hint={this.internalHintText.hint}
+							hintContentType={this.internalHintText.hintContentType}
+							ref={(el) => (this.hintTextRef = el)}
+						></ontario-hint-text>
 					)}
 					<div class="ontario-radios">
 						{this.internalOptions?.map((radioOption) => (
@@ -290,6 +325,7 @@ export class OntarioRadioButtons implements RadioButtons {
 										<ontario-hint-expander
 											hint={radioOption.hintExpander.hint}
 											content={radioOption.hintExpander.content}
+											hintContentType={radioOption.hintExpander.hintContentType}
 											input-exists
 										></ontario-hint-expander>
 									)}
@@ -301,6 +337,7 @@ export class OntarioRadioButtons implements RadioButtons {
 							<ontario-hint-expander
 								hint={this.internalHintExpander.hint}
 								content={this.internalHintExpander.content}
+								hintContentType={this.internalHintExpander.hintContentType}
 								input-exists
 							></ontario-hint-expander>
 						)}

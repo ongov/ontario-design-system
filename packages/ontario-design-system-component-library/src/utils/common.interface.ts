@@ -74,7 +74,17 @@ export interface Input extends Base {
 
 export interface Hint extends Base {
 	/**
-	 * Text to display as the hint.
+	 * The content type of the hint.
+	 * If no prop is passed, it will default to a string.
+	 * If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
+	 */
+	hintContentType?: 'string' | 'html';
+
+	/**
+	 * Text to display as the hint text statement.
+	 *
+	 * Setting the hint can be done using the element content or setting the
+	 * this property.  This property will take precedence.
 	 */
 	hint: string;
 }

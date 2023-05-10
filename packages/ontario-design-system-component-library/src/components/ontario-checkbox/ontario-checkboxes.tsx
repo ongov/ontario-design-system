@@ -1,9 +1,12 @@
 import { Component, h, Prop, Element, Event, EventEmitter, Listen, State, Watch } from '@stencil/core';
+
 import { CheckboxOption } from './checkbox-option.interface';
 import { Checkboxes } from './checkboxes.interface';
+import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+
+import { Hint } from '../../utils/common.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
 import { Caption } from '../../utils/input-caption/caption.interface';
-import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 import {
 	validateObjectExists,
 	validatePropExists,
@@ -11,6 +14,7 @@ import {
 } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { Language } from '../../utils/language-types';
+
 import { default as translations } from '../../translations/global.i18n.json';
 
 /**
@@ -58,7 +62,7 @@ export class OntarioCheckboxes implements Checkboxes {
 	 * Used to include the ontario-hint-text component for the checkbox group.
 	 * This is optional.
 	 */
-	@Prop() hintText?: string;
+	@Prop({ mutable: true }) hintText?: string | Hint;
 
 	/**
 	 * Used to include the ontario-hint-expander component for the checkbox group.
@@ -144,6 +148,11 @@ export class OntarioCheckboxes implements Checkboxes {
 	@State() private captionState: InputCaption;
 
 	/**
+	 * The hint text options are re-assigned to the internalHintText array.
+	 */
+	@State() private internalHintText: Hint;
+
+	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.
 	 */
 	@State() private internalHintExpander: HintExpander;
@@ -170,6 +179,27 @@ export class OntarioCheckboxes implements Checkboxes {
 	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
 		const toggledLanguage = validateLanguage(event);
 		this.language = toggledLanguage;
+	}
+
+	@Watch('hintText')
+	private parseHintText() {
+		let hintTextObject: Hint;
+
+		if (this.hintText) {
+			if (typeof this.hintText === 'string') {
+				try {
+					hintTextObject = JSON.parse(this.hintText) as Hint;
+				} catch {
+					hintTextObject = { hint: this.hintText, hintContentType: 'string' };
+				}
+				return (this.internalHintText = hintTextObject);
+			} else {
+				hintTextObject = this.hintText;
+				return (this.internalHintText = hintTextObject);
+			}
+		}
+
+		return;
 	}
 
 	@Watch('hintExpander')
@@ -268,6 +298,7 @@ export class OntarioCheckboxes implements Checkboxes {
 		this.updateCaptionState(this.caption);
 		this.parseOptions();
 		this.parseHintExpander();
+		this.parseHintText();
 		this.validateName(this.name);
 		this.language = validateLanguage(this.language);
 	}
@@ -277,10 +308,13 @@ export class OntarioCheckboxes implements Checkboxes {
 			<div class="ontario-form-group">
 				<fieldset class="ontario-fieldset" aria-describedby={this.hintTextId}>
 					{this.captionState.getCaption(undefined, !!this.internalHintExpander)}
-					{this.hintText && (
-						<ontario-hint-text hint={this.hintText} ref={(el) => (this.hintTextRef = el)}></ontario-hint-text>
+					{this.internalHintText && (
+						<ontario-hint-text
+							hint={this.internalHintText.hint}
+							hintContentType={this.internalHintText.hintContentType}
+							ref={(el) => (this.hintTextRef = el)}
+						></ontario-hint-text>
 					)}
-
 					<div class="ontario-checkboxes">
 						{this.internalOptions?.map((checkbox) => (
 							<div class="ontario-checkboxes__item">
@@ -304,6 +338,7 @@ export class OntarioCheckboxes implements Checkboxes {
 										<ontario-hint-expander
 											hint={checkbox.hintExpander.hint}
 											content={checkbox.hintExpander.content}
+											hintContentType={checkbox.hintExpander.hintContentType}
 											input-exists
 										></ontario-hint-expander>
 									)}
@@ -315,6 +350,7 @@ export class OntarioCheckboxes implements Checkboxes {
 							<ontario-hint-expander
 								hint={this.internalHintExpander.hint}
 								content={this.internalHintExpander.content}
+								hintContentType={this.internalHintExpander.hintContentType}
 								input-exists
 							></ontario-hint-expander>
 						)}

@@ -1,6 +1,7 @@
-import { Base } from '../../utils/common.interface';
 import { RadioOption } from './radio-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+
+import { Base, Hint } from '../../utils/common.interface';
 import { Caption } from '../../utils/input-caption/caption.interface';
 
 export interface RadioButtons extends Base {
@@ -28,7 +29,7 @@ export interface RadioButtons extends Base {
 	 * Used to include the ontario-hint-text component for radio button group.
 	 * This is optional.
 	 */
-	hintText?: string;
+	hintText?: string | Hint;
 
 	/**
 	 * Used to include the ontario-hint-expander component for the radio button group.
