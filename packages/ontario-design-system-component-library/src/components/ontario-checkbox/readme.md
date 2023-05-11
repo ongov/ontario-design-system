@@ -34,7 +34,7 @@ Example of a bare-bones checkbox component, the legend for the checkbox fieldset
 </ontario-checkboxes>
 ```
 
-Example of a checkbox component with multiple options, a hint text and hint expander for the entire checkbox group, and a hint expander on an individual option. It also has the `required` property set to `true`.
+Example of a checkbox component with multiple options, a hint text and hint expander for the entire checkbox group, and a hint expander on an individual option. It also has the `required` property set.
 
 ```html
 <ontario-checkboxes
@@ -43,8 +43,8 @@ Example of a checkbox component with multiple options, a hint text and hint expa
 		"captionType": "large" 
 	}'
 	name="checkboxes"
-	hint-text="THint text for the radio button group"
-	required="true"
+	hint-text="Hint text for the checkbox group"
+	required
 	options='[
     {
       "value": "checkbox-option-1",

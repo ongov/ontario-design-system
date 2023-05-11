@@ -9,8 +9,7 @@ export default function DropdownListExamples() {
   caption="Province/territory"
   name="province-selection"
   elementId="province-territory"
-  isEmptyStartOption="Select"
-  hintText="Select the province or territory where you reside"
+  hintText="Select the province or territory where you reside."
   required
   options={[
     {
@@ -39,7 +38,8 @@ export default function DropdownListExamples() {
     },
     {
       value: "ON",
-      label: "Ontario"
+      label: "Ontario",
+	  selected: true
     },
     {
       value: "QC",
@@ -120,8 +120,7 @@ export default function DropdownListExamples() {
 					caption="Province/territory"
 					name="province-selection"
 					elementId="province-territory"
-					isEmptyStartOption="Select"
-					hint-text="Select the province or territory where you reside"
+					hint-text="Select the province or territory where you reside."
 					required
 					options={[
 						{
@@ -151,6 +150,7 @@ export default function DropdownListExamples() {
 						{
 							value: 'ON',
 							label: 'Ontario',
+							selected: true,
 						},
 						{
 							value: 'QC',

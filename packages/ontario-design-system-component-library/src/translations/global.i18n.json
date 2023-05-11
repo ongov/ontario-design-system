@@ -34,5 +34,45 @@
 	"loading": {
 		"en": "Loading",
 		"fr": "Chargement"
+	},
+	"dropdownList": {
+		"select": {
+			"en": "Select",
+			"fr": "Sélectionner"
+		}
+	},
+	"contactUs": {
+		"en": "Contact us",
+		"fr": "Contactez-nous"
+	},
+	"accessibilityLink": {
+		"text": {
+			"en": "Accessibility",
+			"fr": "Accessibilité"
+		},
+		"link": {
+			"en": "https://www.ontario.ca/page/accessibility",
+			"fr": "https://www.ontario.ca/fr/page/accessibilite"
+		}
+	},
+	"privacyLink": {
+		"text": {
+			"en": "Privacy",
+			"fr": "Confidentialité"
+		},
+		"link": {
+			"en": "https://www.ontario.ca/page/privacy-statement",
+			"fr": "https://www.ontario.ca/fr/page/declaration-concernant-la-protection-de-la-vie-privee"
+		}
+	},
+	"printerLink": {
+		"text": {
+			"en": "King's Printer for Ontario,",
+			"fr": "Imprimeur du Roi pour l’Ontario,"
+		},
+		"link": {
+			"en": "https://www.ontario.ca/page/copyright-information",
+			"fr": "https://www.ontario.ca/fr/page/droits-dauteur"
+		}
 	}
 }

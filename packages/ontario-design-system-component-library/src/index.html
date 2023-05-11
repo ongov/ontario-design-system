@@ -240,24 +240,24 @@
 				<hr />
 
 				<ontario-dropdown-list
-					name="cat-dropdown"
-					is-empty-start-option="Please select"
+					name="dropdown"
 					caption='{
-						"captionText": "Do you like cats?",
+						"captionText": "Label",
 						"captionType": "heading"
 					}'
-					required="true"
+					required
 					options='[
 						{
-							"value": "dropdown-list-1",
-							"label": "Option 1"
+							"value": "dropdown-option-1",
+							"label": "Option 1",
+							"selected": true
 						},
 						{
-							"value": "dropdown-list-2",
+							"value": "dropdown-option-2",
 							"label": "Option 2"
 						},
 						{
-							"value": "dropdown-list-3",
+							"value": "dropdown-option-3",
 							"label": "Option 3"
 						}
 					]'
@@ -343,52 +343,88 @@
 		</div>
 
 		<ontario-footer
-			type="expandedTwoColumn"
-			default-options='{
-				"accessibilityLink":"https://www.ontario.ca/page/accessibility",
-				"privacyLink": "https://www.ontario.ca/page/privacy-statement",
-				"contactLink": "https://www.ontario.ca/feedback/contact-us",
-				"printerLink": "https://www.ontario.ca/page/copyright-information"
-			}'
-			expanded-two-column-options='{
-				"firstColumn": {
-					"title": "This is my First Title",
-					"content":"this is my first content"
+			type="threeColumn"
+			footer-links='{
+				"accessibilityLink": {
+					"text": "Accessibility",
+					"href": "https://www.ontario.ca/page/accessibility"
 				},
-				"secondColumn": {
-					"title": "This is my Second Title",
-					"content":"this is my second content",
-					"contactButtonText": "BUTTON"
+				"privacyLink": {
+					"href": "https://www.ontario.ca/page/privacy-statement"
+				},
+				"contactLink": {
+					"text": "Contact us",
+					"href": "https://www.ontario.ca/feedback/contact-us"
+				},
+				"printerLink": {
+					"href": "https://www.ontario.ca/page/copyright-information"
 				}
 			}'
-			expanded-three-column-options='{
-				"firstColumn": {
-					"title": "This is my First Title",
-					"content":"this is my first content"
-				},
-				"secondColumn": {
-					"title": "This is my Second Title",
-					"content":[
+			social-links='{
+				"facebook": "https://www.facebook.com/ONgov",
+				"instagram": "https://www.instagram.com/ongov",
+				"twitter": "https://twitter.com/ONgov",
+				"youtube": "https://www.youtube.com/ongov"
+			}'
+			two-column-options='{
+				"column1": {
+					"title": "Ontario Design System",
+					"content": [
 						{
-							"title": "1 asdas",
-							"link": "12"
+							"type": "text",
+							"text": "The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services."
+						},
+						{
+							"type": "list",
+							"heading": "Latest release",
+							"list": ["Built on: June 3, 2022", "Distribution package version 0.12.10"]
 						}
 					]
 				},
-				"thirdColumn": {
-					"title": "this is my third title",
-					"content": "this is my third content",
-					"facebook": {
-						"link": "1"
-					},
-					"twitter": {
-						"link": "2"
-					},
-					"instagram": {
-						"link": "3"
-					},
-					"youtube": {
-						"link": "4"
+				"column2": {
+					"title": "Help us improve the design system",
+					"content": [
+						{
+							"type": "html",
+							"html": "You can check our <a href=#>help and feedback page</a> if you don&#8217;t see the component you need."
+						}
+					],
+					"button": {
+						"text": "Send us an email",
+						"link": "#"
+					}
+				}
+			}'
+			three-column-options='{
+				"column1": {
+					"title": "Ontario Design System",
+					"content": [
+						{
+							"type": "text",
+							"text": "The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services."
+						}
+					]
+				},
+				"column2": {
+					"title": "Latest release",
+					"content": [
+						{
+							"type": "list",
+							"list": ["Built on: June 3, 2022", "Distribution package version 0.12.10"]
+						}
+					]
+				},
+				"column3": {
+					"title": "Help us improve the design system",
+					"content": [
+						{
+							"type": "html",
+							"html": "You can check our <a href=#>help and feedback page</a> if you don&#8217;t see the component you need."
+						}
+					],
+					"button": {
+						"text": "Send us an email",
+						"link": "#"
 					}
 				}
 			}'
