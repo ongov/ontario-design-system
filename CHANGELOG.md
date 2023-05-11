@@ -1,3 +1,21 @@
+# 2.4.0-alpha.3 (2023-05-11)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** allow passing footer link labels e551d63
+- **@ontario-digital-service/ontario-design-system-component-library:** adds selected key to dropdown list options props 6e5243e
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes according to MR review 2a63efd
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes broken tests eb664e0
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes typo for checkbox readme a2c77f1
+- **@ontario-digital-service/ontario-design-system-component-library:** review comment fixes 4d8c781
+- **@ontario-digital-service/ontario-design-system-component-library:** updates branch according to code review 89e672e
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-component-library:** added language support e2647fb
+- **@ontario-digital-service/ontario-design-system-design-tokens, @ontario-digital-service/ontario-design-system-global-styles:** add new tokens for service ontario header 2bf65cd
+- **@ontario-digital-service/ontario-design-system-design-tokens, @ontario-digital-service/ontario-design-system-global-styles:** remove green from brand name 60478ae
+
 # 2.4.0-alpha.2 (2023-05-05)
 
 ### Bug Fixes
