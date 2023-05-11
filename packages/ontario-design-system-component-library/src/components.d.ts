@@ -13,7 +13,7 @@ import {
 import { Language } from './utils/language-types';
 import { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
 import { Caption } from './utils/input-caption/caption.interface';
-import { Hint } from './utils/common.interface';
+import { Hint, HintContentType } from './utils/common.interface';
 import { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
 import { CheckboxOption } from './components/ontario-checkbox/checkbox-option.interface';
 import { DropdownOption } from './components/ontario-dropdown-list/dropdown-option.interface';
@@ -272,7 +272,7 @@ export namespace Components {
 		/**
 		 * The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
 		 */
-		hintContentType?: 'string' | 'html';
+		hintContentType?: HintContentType;
 	}
 	interface OntarioHintText {
 		/**
@@ -292,7 +292,7 @@ export namespace Components {
 		/**
 		 * The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
 		 */
-		hintContentType?: 'string' | 'html';
+		hintContentType?: HintContentType;
 	}
 	interface OntarioIconAccessibility {
 		/**
@@ -2580,7 +2580,7 @@ declare namespace LocalJSX {
 		/**
 		 * The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
 		 */
-		hintContentType?: 'string' | 'html';
+		hintContentType?: HintContentType;
 		/**
 		 * Emitted when a keyboard input or mouse event occurs.
 		 */
@@ -2599,7 +2599,7 @@ declare namespace LocalJSX {
 		/**
 		 * The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
 		 */
-		hintContentType?: 'string' | 'html';
+		hintContentType?: HintContentType;
 	}
 	interface OntarioIconAccessibility {
 		/**

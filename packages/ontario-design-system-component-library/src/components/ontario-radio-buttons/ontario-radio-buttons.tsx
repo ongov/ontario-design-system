@@ -14,6 +14,7 @@ import {
 } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { Language } from '../../utils/language-types';
+import { constructHintTextObject } from '../../utils/hints/hints';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
@@ -180,23 +181,10 @@ export class OntarioRadioButtons implements RadioButtons {
 
 	@Watch('hintText')
 	private parseHintText() {
-		let hintTextObject: Hint;
-
 		if (this.hintText) {
-			if (typeof this.hintText === 'string') {
-				try {
-					hintTextObject = JSON.parse(this.hintText) as Hint;
-				} catch {
-					hintTextObject = { hint: this.hintText, hintContentType: 'string' };
-				}
-				return (this.internalHintText = hintTextObject);
-			} else {
-				hintTextObject = this.hintText;
-				return (this.internalHintText = hintTextObject);
-			}
+			const hintTextObject = constructHintTextObject(this.hintText);
+			this.internalHintText = hintTextObject;
 		}
-
-		return;
 	}
 
 	@Watch('hintExpander')

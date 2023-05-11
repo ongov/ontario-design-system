@@ -88,3 +88,5 @@ export interface Hint extends Base {
 	 */
 	hint: string;
 }
+
+export type HintContentType = 'string' | 'html';

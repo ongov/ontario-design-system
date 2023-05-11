@@ -9,6 +9,7 @@ import { InputCaption } from '../../utils/input-caption/input-caption';
 import { Caption } from '../../utils/input-caption/caption.interface';
 import { Language } from '../../utils/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
+import { constructHintTextObject } from '../../utils/hints/hints';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
@@ -167,23 +168,10 @@ export class OntarioInput implements TextInput {
 
 	@Watch('hintText')
 	private parseHintText() {
-		let hintTextObject: Hint;
-
 		if (this.hintText) {
-			if (typeof this.hintText === 'string') {
-				try {
-					hintTextObject = JSON.parse(this.hintText) as Hint;
-				} catch {
-					hintTextObject = { hint: this.hintText, hintContentType: 'string' };
-				}
-				return (this.internalHintText = hintTextObject);
-			} else {
-				hintTextObject = this.hintText;
-				return (this.internalHintText = hintTextObject);
-			}
+			const hintTextObject = constructHintTextObject(this.hintText);
+			this.internalHintText = hintTextObject;
 		}
-
-		return;
 	}
 
 	@Watch('hintExpander')

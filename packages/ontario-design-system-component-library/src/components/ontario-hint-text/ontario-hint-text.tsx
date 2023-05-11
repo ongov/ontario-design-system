@@ -1,7 +1,7 @@
 import { Component, Prop, Element, h, Watch, State, Method } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
-import { Hint } from '../../utils/common.interface';
+import { Hint, HintContentType } from '../../utils/common.interface';
 
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
@@ -22,7 +22,7 @@ export class OntarioHintText implements Hint {
 	 * If no prop is passed, it will default to a string.
 	 * If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
 	 */
-	@Prop({ mutable: true }) hintContentType?: 'string' | 'html' = 'string';
+	@Prop({ mutable: true }) hintContentType?: HintContentType = 'string';
 
 	/**
 	 * Text to display as the hint text statement.
