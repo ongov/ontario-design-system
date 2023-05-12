@@ -99,7 +99,7 @@ Example of an expanded footer with three columns (`threeColumn` type).
 
 ```html
 <ontario-footer
-	type="expandedThreeColumn"
+	type="threeColumn"
 	footer-links='{
 		"accessibilityLink": {
 			"text": "Accessibility",
@@ -152,7 +152,7 @@ Example of footer with social media links, only `twoColumn` and `threeColumn` fo
 
 ```html
 <ontario-footer
-	type="expandedThreeColumn"
+	type="threeColumn"
 	footer-links='{
 		"accessibilityLink": {
 			"text": "Accessibility",
