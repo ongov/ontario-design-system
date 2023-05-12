@@ -1,15 +1,20 @@
-@use '../../global.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
+	spacing;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
+	colours;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
 
 .ontario-dropdown {
-	background-color: global.$ontario-colour-white;
-	background-position: right global.$spacing-2 center;
+	background-color: colours.$ontario-colour-white;
+	background-position: right spacing.$spacing-2 center;
 	background-repeat: no-repeat;
-	background-size: global.$spacing-6;
-	padding-right: calc(global.$spacing-4 * 2.25);
+	background-size: spacing.$spacing-6;
+	padding-right: (spacing.$spacing-4 * 2.25);
 	cursor: pointer;
 
 	&.ontario-dropdown-hint-expander--true {
-		margin-bottom: global.$spacing-4;
+		margin-bottom: spacing.$spacing-4;
 	}
 }
 

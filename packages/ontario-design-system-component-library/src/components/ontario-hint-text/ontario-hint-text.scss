@@ -1,9 +1,14 @@
-@use '../../global.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as
+	globalVariables;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
+	spacing;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
+	colours;
 
 .ontario-hint {
-	color: global.$ontario-greyscale-70;
+	color: colours.$ontario-greyscale-70;
 	display: inline-block;
-	margin: 0 0 global.$spacing-4 0;
-	width: global.$full-width;
-	max-width: global.$standard-width;
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-4 spacing.$spacing-0;
+	width: globalVariables.$full-width;
+	max-width: globalVariables.$standard-width;
 }
