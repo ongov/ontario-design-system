@@ -2434,6 +2434,18 @@ declare namespace LocalJSX {
 		 */
 		caption?: Caption | string;
 		/**
+		 * Used to add a custom function to the checkbox onBlur event.
+		 */
+		customOnBlur?: Function;
+		/**
+		 * Used to add a custom function to the checkbox onChange event.
+		 */
+		customOnChange?: Function;
+		/**
+		 * Used to add a custom function to the checkbox onFocus event.
+		 */
+		customOnFocus?: Function;
+		/**
 		 * Used to include the ontario-hint-expander component for the checkbox group. This is passed in as an object with key-value pairs. This is optional.
 		 * @example <ontario-checkboxes   caption='{     "captionText": "Checkbox legend",     "captionType": "heading",   }   name='ontario-checkboxes'   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label", 		"elementId": "checkbox-1" 	}   }]'   hint-expander='{    "hint": "Hint expander for the checkbox group",    "content": "Example hint expander content for the checkbox group"   }'   required="true" > </ontario-checkboxes>
 		 */
@@ -3782,6 +3794,18 @@ declare namespace LocalJSX {
 		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",    }'   required="true"   ...> </ontario-radio-buttons>
 		 */
 		caption?: Caption | string;
+		/**
+		 * Used to add a custom function to the radio input onBlur event.
+		 */
+		customOnBlur?: Function;
+		/**
+		 * Used to add a custom function to the radio input onChange event.
+		 */
+		customOnChange?: Function;
+		/**
+		 * Used to add a custom function to the radio input onFocus event.
+		 */
+		customOnFocus?: Function;
 		/**
 		 * Used to include the ontario-hint-expander component for the radio button group. This is passed in as an object with key-value pairs. This is optional.
 		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }' 	 name="radios"   options='[ 	   {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 1", 		      "content": "Example hint expander content for radio option 1." 	  }     }   ]'   hint-expander='{     "hint": "Hint expander for the radio button group",     "content": "Example hint expander content for the radio button group."   }'   required="true" > </ontario-radio-buttons>
