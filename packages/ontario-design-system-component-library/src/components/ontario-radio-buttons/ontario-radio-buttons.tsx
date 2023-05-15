@@ -14,6 +14,12 @@ import {
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { Language } from '../../utils/language-types';
 import { constructHintTextObject } from '../../utils/hints/hints';
+import {
+	InputFocusBlurEvent,
+	RadioAndCheckboxChangeEvent,
+	EventType,
+} from '../../utils/events/event-handler.interface';
+import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
@@ -182,17 +188,17 @@ export class OntarioRadioButtons implements RadioButtons {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a radio option has been changed.
 	 */
-	@Event({ eventName: 'radioOnChange' }) radioOnChange: EventEmitter;
+	@Event({ eventName: 'radioOnChange' }) radioOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a radio option has lost focus.
 	 */
-	@Event({ eventName: 'radioOnBlur' }) radioOnBlur: EventEmitter;
+	@Event({ eventName: 'radioOnBlur' }) radioOnBlur: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a radio option has gained focus.
 	 */
-	@Event({ eventName: 'radioOnFocus' }) radioOnFocus: EventEmitter;
+	@Event({ eventName: 'radioOnFocus' }) radioOnFocus: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -294,33 +300,25 @@ export class OntarioRadioButtons implements RadioButtons {
 		this.updateCaptionState(this.caption);
 	}
 
-	handleEvent = (ev: Event, eventType: string) => {
+	handleEvent = (ev: Event, eventType: EventType) => {
 		const input = ev.target as HTMLInputElement | null;
 
 		if (input) {
 			input.checked = input.checked ?? '';
 		}
 
-		if (eventType === 'change') {
-			this.radioOnChange.emit({
-				checked: input?.checked,
-				id: input?.id,
-				value: input?.value,
-			});
-
-			this.customOnChange && this.customOnChange(ev);
-		}
-
-		if (eventType === 'blur') {
-			this.radioOnBlur.emit({ id: input?.id });
-
-			this.customOnBlur && this.customOnBlur(ev);
-		}
-
-		if (eventType === 'focus') {
-			this.radioOnFocus.emit({ id: input?.id });
-			this.customOnFocus && this.customOnFocus(ev);
-		}
+		handleInputEvent(
+			ev,
+			eventType,
+			input,
+			this.radioOnChange,
+			this.radioOnFocus,
+			this.radioOnBlur,
+			'radio',
+			this.customOnChange,
+			this.customOnFocus,
+			this.customOnBlur,
+		);
 	};
 
 	async componentDidLoad() {
@@ -359,9 +357,9 @@ export class OntarioRadioButtons implements RadioButtons {
 									type="radio"
 									value={radioOption.value}
 									required={!!this.required}
-									onChange={(e) => this.handleEvent(e, 'change')}
-									onBlur={(e) => this.handleEvent(e, 'blur')}
-									onFocus={(e) => this.handleEvent(e, 'focus')}
+									onChange={(e) => this.handleEvent(e, EventType.Change)}
+									onBlur={(e) => this.handleEvent(e, EventType.Blur)}
+									onFocus={(e) => this.handleEvent(e, EventType.Focus)}
 								/>
 								<label class="ontario-radios__label" htmlFor={radioOption.elementId}>
 									{radioOption.label}

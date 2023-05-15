@@ -139,11 +139,11 @@ Ontario Checkbox component
 
 ## Events
 
-| Event              | Description                                                                                  | Type               |
-| ------------------ | -------------------------------------------------------------------------------------------- | ------------------ |
-| `checkboxOnBlur`   | Emitted when a keyboard input event occurs when a checkbox option has lost focus.            | `CustomEvent<any>` |
-| `checkboxOnChange` | Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed. | `CustomEvent<any>` |
-| `checkboxOnFocus`  | Emitted when a keyboard input event occurs when a checkbox option has gained focus.          | `CustomEvent<any>` |
+| Event              | Description                                                                                  | Type                                                            |
+| ------------------ | -------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `checkboxOnBlur`   | Emitted when a keyboard input event occurs when a checkbox option has lost focus.            | `CustomEvent<{ focused: boolean; id: string; value: string; }>` |
+| `checkboxOnChange` | Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed. | `CustomEvent<{ checked: boolean; id: string; value: string; }>` |
+| `checkboxOnFocus`  | Emitted when a keyboard input event occurs when a checkbox option has gained focus.          | `CustomEvent<{ focused: boolean; id: string; value: string; }>` |
 
 ## Dependencies
 

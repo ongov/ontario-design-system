@@ -1,8 +1,12 @@
-import { Base, Hint } from '../../utils/common.interface';
-import { Caption } from '../../utils/input-caption/caption.interface';
+import { EventEmitter } from '@stencil/core';
+
 import { CheckboxOption } from './checkbox-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+
+import { Base, Hint } from '../../utils/common.interface';
+import { Caption } from '../../utils/input-caption/caption.interface';
 import { Language } from '../../utils/language-types';
+import { InputFocusBlurEvent, RadioAndCheckboxChangeEvent } from '../../utils/events/event-handler.interface';
 
 export interface Checkboxes extends Base {
 	/**
@@ -123,4 +127,19 @@ export interface Checkboxes extends Base {
 	 * Used to add a custom function to the checkbox onFocus event.
 	 */
 	customOnFocus?: Function;
+
+	/**
+	 * Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed.
+	 */
+	checkboxOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
+
+	/**
+	 * Emitted when a keyboard input event occurs when a checkbox option has lost focus.
+	 */
+	checkboxOnBlur: EventEmitter<InputFocusBlurEvent>;
+
+	/**
+	 * Emitted when a keyboard input event occurs when a checkbox option has gained focus.
+	 */
+	checkboxOnFocus: EventEmitter<InputFocusBlurEvent>;
 }

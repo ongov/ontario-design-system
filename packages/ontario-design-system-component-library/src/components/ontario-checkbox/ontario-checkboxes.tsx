@@ -15,6 +15,12 @@ import {
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { Language } from '../../utils/language-types';
 import { constructHintTextObject } from '../../utils/hints/hints';
+import {
+	InputFocusBlurEvent,
+	RadioAndCheckboxChangeEvent,
+	EventType,
+} from '../../utils/events/event-handler.interface';
+import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
@@ -181,17 +187,17 @@ export class OntarioCheckboxes implements Checkboxes {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed.
 	 */
-	@Event({ eventName: 'checkboxOnChange' }) checkboxOnChange: EventEmitter;
+	@Event({ eventName: 'checkboxOnChange' }) checkboxOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has lost focus.
 	 */
-	@Event({ eventName: 'checkboxOnBlur' }) checkboxOnBlur: EventEmitter;
+	@Event({ eventName: 'checkboxOnBlur' }) checkboxOnBlur: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has gained focus.
 	 */
-	@Event({ eventName: 'checkboxOnFocus' }) checkboxOnFocus: EventEmitter;
+	@Event({ eventName: 'checkboxOnFocus' }) checkboxOnFocus: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -293,32 +299,25 @@ export class OntarioCheckboxes implements Checkboxes {
 		this.updateCaptionState(this.caption);
 	}
 
-	handleEvent = (ev: Event, eventType: string) => {
+	handleEvent = (ev: Event, eventType: EventType) => {
 		const input = ev.target as HTMLInputElement | null;
 
 		if (input) {
 			input.checked = input.checked ?? '';
 		}
 
-		if (eventType === 'change') {
-			this.checkboxOnChange.emit({
-				checked: input?.checked,
-				id: input?.id,
-				value: input?.value,
-			});
-			this.customOnChange && this.customOnChange(ev);
-		}
-
-		if (eventType === 'blur') {
-			this.checkboxOnBlur.emit({ id: input?.id });
-
-			this.customOnBlur && this.customOnBlur(ev);
-		}
-
-		if (eventType === 'focus') {
-			this.checkboxOnFocus.emit({ id: input?.id });
-			this.customOnFocus && this.customOnFocus(ev);
-		}
+		handleInputEvent(
+			ev,
+			eventType,
+			input,
+			this.checkboxOnChange,
+			this.checkboxOnFocus,
+			this.checkboxOnBlur,
+			'checkbox',
+			this.customOnChange,
+			this.customOnFocus,
+			this.customOnBlur,
+		);
 	};
 
 	async componentDidLoad() {
@@ -355,9 +354,9 @@ export class OntarioCheckboxes implements Checkboxes {
 									name={this.name}
 									type="checkbox"
 									value={checkbox.value}
-									onChange={(e) => this.handleEvent(e, 'change')}
-									onBlur={(e) => this.handleEvent(e, 'blur')}
-									onFocus={(e) => this.handleEvent(e, 'focus')}
+									onChange={(e) => this.handleEvent(e, EventType.Change)}
+									onBlur={(e) => this.handleEvent(e, EventType.Blur)}
+									onFocus={(e) => this.handleEvent(e, EventType.Focus)}
 									required={!!this.required}
 								/>
 								<label class="ontario-checkboxes__label" htmlFor={checkbox.elementId}>
