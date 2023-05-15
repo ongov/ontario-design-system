@@ -307,8 +307,7 @@ export class OntarioRadioButtons implements RadioButtons {
 				id: input?.id,
 				value: input?.value,
 			});
-			console.log(input?.id);
-			console.log(input?.checked);
+
 			this.customOnChange && this.customOnChange(ev);
 		}
 
