@@ -173,7 +173,7 @@ export class OntarioFooter {
 
 	private getFooterLinks(): SimpleFooterLinks {
 		const { language, translations, footerLinksState } = this;
-		const { accessibilityLink, privacyLink, contactLink, printerLink } = footerLinksState;
+		const { accessibilityLink, privacyLink, contactLink, printerLink } = footerLinksState ?? {};
 
 		const links: SimpleFooterLinks = {
 			accessibilityLink: {
