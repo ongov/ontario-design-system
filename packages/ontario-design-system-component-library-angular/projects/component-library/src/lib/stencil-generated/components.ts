@@ -233,14 +233,14 @@ export class OntarioHeader {
 export declare interface OntarioHeader extends Components.OntarioHeader {}
 
 @ProxyCmp({
-	inputs: ['content', 'elementId', 'hint'],
+	inputs: ['content', 'elementId', 'hint', 'hintContentType'],
 })
 @Component({
 	selector: 'ontario-hint-expander',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['content', 'elementId', 'hint'],
+	inputs: ['content', 'elementId', 'hint', 'hintContentType'],
 })
 export class OntarioHintExpander {
 	protected el: HTMLElement;
@@ -259,7 +259,7 @@ export declare interface OntarioHintExpander extends Components.OntarioHintExpan
 }
 
 @ProxyCmp({
-	inputs: ['elementId', 'hint'],
+	inputs: ['elementId', 'hint', 'hintContentType'],
 	methods: ['getHintTextId'],
 })
 @Component({
@@ -267,7 +267,7 @@ export declare interface OntarioHintExpander extends Components.OntarioHintExpan
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['elementId', 'hint'],
+	inputs: ['elementId', 'hint', 'hintContentType'],
 })
 export class OntarioHintText {
 	protected el: HTMLElement;

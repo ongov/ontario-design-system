@@ -1,10 +1,13 @@
 import { Component, State, Element, h, Prop, Listen, Watch, getAssetPath } from '@stencil/core';
-import { InputCaption } from '../../utils/input-caption/input-caption';
-import { Caption } from '../../utils/input-caption/caption.interface';
+import { v4 as uuid } from 'uuid';
+
 import { DropdownOption } from './dropdown-option.interface';
 import { Dropdown } from './dropdown.interface';
-import { v4 as uuid } from 'uuid';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+
+import { Hint } from '../../utils/common.interface';
+import { InputCaption } from '../../utils/input-caption/input-caption';
+import { Caption } from '../../utils/input-caption/caption.interface';
 import {
 	validateObjectExists,
 	validatePropExists,
@@ -13,6 +16,8 @@ import {
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { hasMultipleTrueValues } from '../../utils/helper/utils';
 import { Language } from '../../utils/language-types';
+import { constructHintTextObject } from '../../utils/hints/hints';
+
 import { default as translations } from '../../translations/global.i18n.json';
 
 @Component({
@@ -118,7 +123,7 @@ export class OntarioDropdownList implements Dropdown {
 	 * Used to include the ontario-hint-text component for the dropdown list.
 	 * This is optional.
 	 */
-	@Prop() hintText?: string;
+	@Prop() hintText?: string | Hint;
 
 	/**
 	 * Used to include the Hint Expander component underneath the dropdown list box.
@@ -169,6 +174,11 @@ export class OntarioDropdownList implements Dropdown {
 	 * The options are re-assigned to the internalOptions array.
 	 */
 	@State() private internalOptions: DropdownOption[];
+
+	/**
+	 * The hint text options are re-assigned to the internalHintText array.
+	 */
+	@State() private internalHintText: Hint;
 
 	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.
@@ -255,6 +265,14 @@ export class OntarioDropdownList implements Dropdown {
 		);
 	}
 
+	@Watch('hintText')
+	private parseHintText() {
+		if (this.hintText) {
+			const hintTextObject = constructHintTextObject(this.hintText);
+			this.internalHintText = hintTextObject;
+		}
+	}
+
 	/**
 	 * Watch for changes in the `language` to render either the english or french translations
 	 */
@@ -322,6 +340,7 @@ export class OntarioDropdownList implements Dropdown {
 		this.validateName(this.name);
 		this.validateOptions(this.internalOptions);
 		this.elementId = this.elementId ?? uuid();
+		this.parseHintText();
 		this.parseHintExpander();
 		this.language = validateLanguage(this.language);
 	}
@@ -330,8 +349,12 @@ export class OntarioDropdownList implements Dropdown {
 		return (
 			<div class="ontario-form-group">
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
-				{this.hintText && (
-					<ontario-hint-text hint={this.hintText} ref={(el) => (this.hintTextRef = el)}></ontario-hint-text>
+				{this.internalHintText && (
+					<ontario-hint-text
+						hint={this.internalHintText.hint}
+						hintContentType={this.internalHintText.hintContentType}
+						ref={(el) => (this.hintTextRef = el)}
+					></ontario-hint-text>
 				)}
 				<select
 					class={this.getClass()}
@@ -358,6 +381,7 @@ export class OntarioDropdownList implements Dropdown {
 					<ontario-hint-expander
 						hint={this.internalHintExpander.hint}
 						content={this.internalHintExpander.content}
+						hintContentType={this.internalHintExpander.hintContentType}
 					></ontario-hint-expander>
 				)}
 			</div>

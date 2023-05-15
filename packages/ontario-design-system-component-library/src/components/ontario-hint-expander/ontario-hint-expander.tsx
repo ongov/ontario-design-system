@@ -1,6 +1,9 @@
 import { Component, Element, Event, EventEmitter, h, Prop, Watch, State } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
+
 import { HintExpander } from './hint-expander.interface';
+import { HintContentType } from '../../utils/common.interface';
+
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
@@ -14,6 +17,13 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 })
 export class OntarioHintExpander implements HintExpander {
 	@Element() host: HTMLElement;
+
+	/**
+	 * The content type of the hint.
+	 * If no prop is passed, it will default to a string.
+	 * If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
+	 */
+	@Prop({ mutable: true }) hintContentType?: HintContentType = 'string';
 
 	/**
 	 * Text to display as the hint expander question/statement
@@ -44,6 +54,28 @@ export class OntarioHintExpander implements HintExpander {
 	 * Emitted when a keyboard input or mouse event occurs.
 	 */
 	@Event() toggleExpanderEvent!: EventEmitter<any>;
+
+	/**
+	 * Watch for changes to the `hintContentType` prop for validation purposes.
+	 * If none is provided, or the wrong type is provided, it will default to `string`.
+	 */
+	@Watch('hintContentType')
+	private checkHintContentType() {
+		if (this.hintContentType !== 'string' && this.hintContentType !== 'html') {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' hintContentType ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-hint-text> ')
+				.addRegularText('was not one of the permitted types. A default type of `string` will be applied.')
+				.printMessage();
+
+			return (this.hintContentType = 'string');
+		}
+
+		return this.hintContentType;
+	}
 
 	/*
 	 * Watch for changes in the `hint` variable for validation purposes.
@@ -115,6 +147,7 @@ export class OntarioHintExpander implements HintExpander {
 	componentWillLoad() {
 		this.elementId = this.elementId ?? uuid();
 		this.updateHintContent();
+		this.checkHintContentType();
 		this.validateContent(this.content);
 	}
 
@@ -148,7 +181,7 @@ export class OntarioHintExpander implements HintExpander {
 					aria-hidden="true"
 					data-toggle="ontario-expander-content"
 				>
-					{this.content}
+					{this.hintContentType === 'string' ? this.content : <span innerHTML={this.content}></span>}
 				</div>
 			</div>
 		);
