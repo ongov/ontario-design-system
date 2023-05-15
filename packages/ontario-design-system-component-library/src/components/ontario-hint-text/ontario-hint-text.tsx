@@ -1,6 +1,8 @@
 import { Component, Prop, Element, h, Watch, State, Method } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
-import { Hint } from '../../utils/common.interface';
+
+import { Hint, HintContentType } from '../../utils/common.interface';
+
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
@@ -14,6 +16,13 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 })
 export class OntarioHintText implements Hint {
 	@Element() host: HTMLElement;
+
+	/**
+	 * The content type of the hint.
+	 * If no prop is passed, it will default to a string.
+	 * If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
+	 */
+	@Prop({ mutable: true }) hintContentType?: HintContentType = 'string';
 
 	/**
 	 * Text to display as the hint text statement.
@@ -35,8 +44,30 @@ export class OntarioHintText implements Hint {
 
 	@State() hintState: string;
 
+	/**
+	 * Watch for changes to the `hintContentType` prop for validation purposes.
+	 * If none is provided, or the wrong type is provided, it will default to `string`.
+	 */
+	@Watch('hintContentType')
+	private checkHintContentType() {
+		if (this.hintContentType !== 'string' && this.hintContentType !== 'html') {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' hintContentType ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-hint-text> ')
+				.addRegularText('was not one of the permitted types. A default type of `string` will be applied.')
+				.printMessage();
+
+			return (this.hintContentType = 'string');
+		}
+
+		return this.hintContentType;
+	}
+
 	/*
-	 * Watch for changes in the `hint` variable for validation purposes.
+	 * Watch for changes in the `hint` prop for validation purposes.
 	 * If hint is not provided, set hint to Element Content (if it exists).
 	 */
 	@Watch('hint')
@@ -84,14 +115,17 @@ export class OntarioHintText implements Hint {
 	 */
 	componentWillLoad() {
 		this.updateHintContent();
+		this.checkHintContentType();
 		this.elementId = this.elementId ?? uuid();
 	}
 
 	render() {
-		return (
+		return this.hintContentType === 'string' ? (
 			<p id={this.getId()} class="ontario-hint">
 				{this.hintState}
 			</p>
+		) : (
+			<div id={this.getId()} class="ontario-hint" innerHTML={this.hintState}></div>
 		);
 	}
 }

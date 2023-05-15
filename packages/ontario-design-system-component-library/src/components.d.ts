@@ -13,6 +13,7 @@ import {
 import { Language } from './utils/language-types';
 import { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
 import { Caption } from './utils/input-caption/caption.interface';
+import { Hint, HintContentType } from './utils/common.interface';
 import { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
 import { CheckboxOption } from './components/ontario-checkbox/checkbox-option.interface';
 import { DropdownOption } from './components/ontario-dropdown-list/dropdown-option.interface';
@@ -136,7 +137,7 @@ export namespace Components {
 		/**
 		 * Used to include the ontario-hint-text component for the checkbox group. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */
@@ -180,7 +181,7 @@ export namespace Components {
 		/**
 		 * Used to include the ontario-hint-text component for the dropdown list. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
 		 * @example <ontario-dropdown-list is-empty-start-option="true"></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
@@ -268,6 +269,10 @@ export namespace Components {
 		 * Text to display as the hint expander question/statement
 		 */
 		hint: string;
+		/**
+		 * The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
+		 */
+		hintContentType?: HintContentType;
 	}
 	interface OntarioHintText {
 		/**
@@ -284,6 +289,10 @@ export namespace Components {
 		 * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
 		 */
 		hint: string;
+		/**
+		 * The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
+		 */
+		hintContentType?: HintContentType;
 	}
 	interface OntarioIconAccessibility {
 		/**
@@ -1375,7 +1384,7 @@ export namespace Components {
 		/**
 		 * Define hint text for Ontario input. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * The width of the input field. If no value is assigned, it will present as the default input width.
 		 */
@@ -1462,7 +1471,7 @@ export namespace Components {
 		/**
 		 * Used to include the ontario-hint-text component for radio button group. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */
@@ -1499,7 +1508,7 @@ export namespace Components {
 		/**
 		 * Define hint text for Ontario textarea. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */
@@ -2432,7 +2441,7 @@ declare namespace LocalJSX {
 		/**
 		 * Used to include the ontario-hint-text component for the checkbox group. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */
@@ -2480,7 +2489,7 @@ declare namespace LocalJSX {
 		/**
 		 * Used to include the ontario-hint-text component for the dropdown list. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
 		 * @example <ontario-dropdown-list is-empty-start-option="true"></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
@@ -2569,6 +2578,10 @@ declare namespace LocalJSX {
 		 */
 		hint?: string;
 		/**
+		 * The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
+		 */
+		hintContentType?: HintContentType;
+		/**
 		 * Emitted when a keyboard input or mouse event occurs.
 		 */
 		onToggleExpanderEvent?: (event: OntarioHintExpanderCustomEvent<any>) => void;
@@ -2583,6 +2596,10 @@ declare namespace LocalJSX {
 		 * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
 		 */
 		hint?: string;
+		/**
+		 * The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
+		 */
+		hintContentType?: HintContentType;
 	}
 	interface OntarioIconAccessibility {
 		/**
@@ -3674,7 +3691,7 @@ declare namespace LocalJSX {
 		/**
 		 * Define hint text for Ontario input. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * The width of the input field. If no value is assigned, it will present as the default input width.
 		 */
@@ -3773,7 +3790,7 @@ declare namespace LocalJSX {
 		/**
 		 * Used to include the ontario-hint-text component for radio button group. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */
@@ -3810,7 +3827,7 @@ declare namespace LocalJSX {
 		/**
 		 * Define hint text for Ontario textarea. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */

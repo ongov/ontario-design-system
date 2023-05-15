@@ -132,7 +132,10 @@
 						"captionType": "large"
 					}'
 					element-id="feedback"
-					hint-text="Please provide any additional information you think would be useful for us to improve our services."
+					hint-text='{
+						"hint": "<p>Please provide any additional information you think would be useful for us to improve our services.</p><p>We welcome all feedback, both constructive or otherwise.</p>",
+						"hintContentType": "html"
+					}'
 				></ontario-textarea>
 				<ontario-textarea
 					name="response"
@@ -189,7 +192,8 @@
 					]'
 					hint-expander='{
 						"hint": "Hint expander for the checkbox group",
-						"content": "Example hint expander content for the checkbox group."
+						"content": "<p>Example hint expander content for the checkbox group.</p><p>It has multiple lines.</p>",
+						"hintContentType": "html"
 					}'
 				>
 				</ontario-checkboxes>

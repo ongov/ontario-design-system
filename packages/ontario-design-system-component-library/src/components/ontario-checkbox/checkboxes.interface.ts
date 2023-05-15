@@ -1,4 +1,4 @@
-import { Base } from '../../utils/common.interface';
+import { Base, Hint } from '../../utils/common.interface';
 import { Caption } from '../../utils/input-caption/caption.interface';
 import { CheckboxOption } from './checkbox-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
@@ -27,7 +27,7 @@ export interface Checkboxes extends Base {
 	 * Used to include the ontario-hint-text component for the checkbox group.
 	 * This is optional.
 	 */
-	hintText?: string;
+	hintText?: string | Hint;
 
 	/**
 	 * Used to include the ontario-hint-expander component for the checkbox group.

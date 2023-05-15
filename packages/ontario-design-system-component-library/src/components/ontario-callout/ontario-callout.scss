@@ -4,7 +4,7 @@
 	colours;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as
 	globalVariables;
-@forward '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/4-elements/global.elements';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/4-elements/global.elements';
 
 .ontario-callout {
 	border-left: spacing.$spacing-1 solid colours.$ontario-colour-dark-teal;

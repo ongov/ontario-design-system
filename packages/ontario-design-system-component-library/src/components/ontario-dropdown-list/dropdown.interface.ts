@@ -1,4 +1,4 @@
-import { Base } from '../../utils/common.interface';
+import { Base, Hint } from '../../utils/common.interface';
 import { DropdownOption } from './dropdown-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
@@ -70,7 +70,7 @@ export interface Dropdown extends Base {
 	 * Used to include the ontario-hint-text component for the dropdown list.
 	 * This is optional.
 	 */
-	hintText?: string;
+	hintText?: string | Hint;
 
 	/**
 	 * Used to include the Hint Expander component underneath the dropdown list box.

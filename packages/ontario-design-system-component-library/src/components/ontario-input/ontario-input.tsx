@@ -1,11 +1,16 @@
 import { Component, Event, EventEmitter, h, Prop, State, Listen, Element, Watch } from '@stencil/core';
-import { InputCaption } from '../../utils/input-caption/input-caption';
-import { Caption } from '../../utils/input-caption/caption.interface';
 import { v4 as uuid } from 'uuid';
+
 import { TextInput } from './input.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+
+import { Hint } from '../../utils/common.interface';
+import { InputCaption } from '../../utils/input-caption/input-caption';
+import { Caption } from '../../utils/input-caption/caption.interface';
 import { Language } from '../../utils/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
+import { constructHintTextObject } from '../../utils/hints/hints';
+
 import { default as translations } from '../../translations/global.i18n.json';
 
 /**
@@ -65,7 +70,7 @@ export class OntarioInput implements TextInput {
 	/**
 	 * Define hint text for Ontario input. This is optional.
 	 */
-	@Prop() hintText?: string;
+	@Prop() hintText?: string | Hint;
 
 	/**
 	 * This is used to determine whether the input is required or not.
@@ -118,6 +123,11 @@ export class OntarioInput implements TextInput {
 	@State() focused: boolean = false;
 
 	/**
+	 * The hint text options are re-assigned to the internalHintText array.
+	 */
+	@State() private internalHintText: Hint;
+
+	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.
 	 */
 	@State() private internalHintExpander: HintExpander;
@@ -154,6 +164,14 @@ export class OntarioInput implements TextInput {
 	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
 		const toggledLanguage = validateLanguage(event);
 		this.language = toggledLanguage;
+	}
+
+	@Watch('hintText')
+	private parseHintText() {
+		if (this.hintText) {
+			const hintTextObject = constructHintTextObject(this.hintText);
+			this.internalHintText = hintTextObject;
+		}
 	}
 
 	@Watch('hintExpander')
@@ -227,6 +245,7 @@ export class OntarioInput implements TextInput {
 	componentWillLoad() {
 		this.updateCaptionState(this.caption);
 		this.elementId = this.elementId ?? uuid();
+		this.parseHintText();
 		this.parseHintExpander();
 		this.language = validateLanguage(this.language);
 	}
@@ -235,8 +254,12 @@ export class OntarioInput implements TextInput {
 		return (
 			<div>
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
-				{this.hintText && (
-					<ontario-hint-text hint={this.hintText} ref={(el) => (this.hintTextRef = el)}></ontario-hint-text>
+				{this.internalHintText && (
+					<ontario-hint-text
+						hint={this.internalHintText.hint}
+						hintContentType={this.internalHintText.hintContentType}
+						ref={(el) => (this.hintTextRef = el)}
+					></ontario-hint-text>
 				)}
 				<input
 					aria-describedby={this.hintTextId}
@@ -254,6 +277,7 @@ export class OntarioInput implements TextInput {
 					<ontario-hint-expander
 						hint={this.internalHintExpander.hint}
 						content={this.internalHintExpander.content}
+						hintContentType={this.internalHintExpander.hintContentType}
 					></ontario-hint-expander>
 				)}
 			</div>
