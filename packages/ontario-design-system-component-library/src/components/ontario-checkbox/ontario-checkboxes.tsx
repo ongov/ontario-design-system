@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Event, EventEmitter, Listen, State, Watch } from '@stencil/core';
+import { Component, h, Prop, Element, Event, Listen, State, Watch } from '@stencil/core';
 
 import { CheckboxOption } from './checkbox-option.interface';
 import { Checkboxes } from './checkboxes.interface';
@@ -187,17 +187,17 @@ export class OntarioCheckboxes implements Checkboxes {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed.
 	 */
-	@Event({ eventName: 'checkboxOnChange' }) checkboxOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
+	@Event({ eventName: 'checkboxOnChange' }) checkboxOnChange: RadioAndCheckboxChangeEvent;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has lost focus.
 	 */
-	@Event({ eventName: 'checkboxOnBlur' }) checkboxOnBlur: EventEmitter<InputFocusBlurEvent>;
+	@Event({ eventName: 'checkboxOnBlur' }) checkboxOnBlur: InputFocusBlurEvent;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has gained focus.
 	 */
-	@Event({ eventName: 'checkboxOnFocus' }) checkboxOnFocus: EventEmitter<InputFocusBlurEvent>;
+	@Event({ eventName: 'checkboxOnFocus' }) checkboxOnFocus: InputFocusBlurEvent;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.

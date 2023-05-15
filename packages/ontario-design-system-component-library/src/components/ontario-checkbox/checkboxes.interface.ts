@@ -1,5 +1,3 @@
-import { EventEmitter } from '@stencil/core';
-
 import { CheckboxOption } from './checkbox-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
@@ -131,15 +129,15 @@ export interface Checkboxes extends Base {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed.
 	 */
-	checkboxOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
+	checkboxOnChange: RadioAndCheckboxChangeEvent;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has lost focus.
 	 */
-	checkboxOnBlur: EventEmitter<InputFocusBlurEvent>;
+	checkboxOnBlur: InputFocusBlurEvent;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has gained focus.
 	 */
-	checkboxOnFocus: EventEmitter<InputFocusBlurEvent>;
+	checkboxOnFocus: InputFocusBlurEvent;
 }

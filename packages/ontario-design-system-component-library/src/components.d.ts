@@ -16,7 +16,6 @@ import { Caption } from './utils/input-caption/caption.interface';
 import { Hint, HintContentType } from './utils/common.interface';
 import { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
 import { CheckboxOption } from './components/ontario-checkbox/checkbox-option.interface';
-import { CheckboxChangeEvent, CheckboxFocusBlurEvent } from './components/ontario-checkbox/checkboxes.interface';
 import { DropdownOption } from './components/ontario-dropdown-list/dropdown-option.interface';
 import {
 	FooterLinks,
@@ -33,7 +32,6 @@ import {
 import { IconColour, IconSize } from './components/ontario-icon/icon.types';
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
-import { RadioChangeEvent, RadioFocusBlurEvent } from './components/ontario-radio-buttons/radio-buttons.interface';
 export namespace Components {
 	interface OntarioAside {
 		/**
@@ -2495,15 +2493,15 @@ declare namespace LocalJSX {
 		/**
 		 * Emitted when a keyboard input event occurs when a checkbox option has lost focus.
 		 */
-		onCheckboxOnBlur?: (event: OntarioCheckboxesCustomEvent<CheckboxFocusBlurEvent>) => void;
+		onCheckboxOnBlur?: (event: OntarioCheckboxesCustomEvent<any>) => void;
 		/**
 		 * Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed.
 		 */
-		onCheckboxOnChange?: (event: OntarioCheckboxesCustomEvent<CheckboxChangeEvent>) => void;
+		onCheckboxOnChange?: (event: OntarioCheckboxesCustomEvent<any>) => void;
 		/**
 		 * Emitted when a keyboard input event occurs when a checkbox option has gained focus.
 		 */
-		onCheckboxOnFocus?: (event: OntarioCheckboxesCustomEvent<CheckboxFocusBlurEvent>) => void;
+		onCheckboxOnFocus?: (event: OntarioCheckboxesCustomEvent<any>) => void;
 		/**
 		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
 		 * @example <ontario-checkboxes   caption='{ 	"captionText": "Checkbox legend", 	"captionType": "heading",   }   name="ontario-checkboxes",   hint-text="Hint text for the checkbox group."   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label" 		"elementId": "checkbox-1"     },     {        "value": "checkbox-option-2",        "label": "Checkbox option 2 label", 		  "elementId": "checkbox-2",       "hintExpander": { 			"hint": "Hint expander for checkbox option 2",              "content": "Example hint expander content for checkbox option 2"        }      }   ]'   required="true" > </ontario-checkboxes>
@@ -3864,15 +3862,15 @@ declare namespace LocalJSX {
 		/**
 		 * Emitted when a keyboard input event occurs when a radio option has lost focus.
 		 */
-		onRadioOnBlur?: (event: OntarioRadioButtonsCustomEvent<RadioFocusBlurEvent>) => void;
+		onRadioOnBlur?: (event: OntarioRadioButtonsCustomEvent<any>) => void;
 		/**
 		 * Emitted when a keyboard input or mouse event occurs when a radio option has been changed.
 		 */
-		onRadioOnChange?: (event: OntarioRadioButtonsCustomEvent<RadioChangeEvent>) => void;
+		onRadioOnChange?: (event: OntarioRadioButtonsCustomEvent<any>) => void;
 		/**
 		 * Emitted when a keyboard input event occurs when a radio option has gained focus.
 		 */
-		onRadioOnFocus?: (event: OntarioRadioButtonsCustomEvent<RadioFocusBlurEvent>) => void;
+		onRadioOnFocus?: (event: OntarioRadioButtonsCustomEvent<any>) => void;
 		/**
 		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a group, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the group.
 		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }'   name="radios"   hint-text="Hint text for the radio button group."   options='[     {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label"     },     {        "value": "radio-option-2", 		  "elementId": "radio-2",        "label": "Radio option 2 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 2", 		      "content": "Example hint expander content for radio option 2." 	  }      }   ]'   required="true" > </ontario-radio-buttons>
