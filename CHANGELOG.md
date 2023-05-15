@@ -1,3 +1,14 @@
+# 2.4.0-alpha.4 (2023-05-15)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** fix for angular component library 337e88a
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** update hint and hint expander props 03cf633
+- **@ontario-digital-service/ontario-design-system-component-library-angular:** fix for angular component library 88b29b7
+- **@ontario-digital-service/ontario-design-system-component-library:** review comment fix ba834b9
+- **@ontario-digital-service/ontario-design-system-component-library:** review comment fix 75435cf
+- **@ontario-digital-service/ontario-design-system-component-library:** updates branch according to MR suggestions 8961193
+
 # 2.4.0-alpha.3 (2023-05-11)
 
 ### Bug Fixes
