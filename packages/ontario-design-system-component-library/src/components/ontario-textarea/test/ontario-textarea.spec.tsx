@@ -40,16 +40,14 @@ describe('ontario-textarea', () => {
 			const page = await newSpecPage({
 				components: [OntarioTextarea],
 				html: `<ontario-textarea
-									described-by="textarea-hint-id"
-									name="textarea-name"
-									required="true"
-									element-id="textarea-id"
-									value="textarea value"
-									caption='{"captionText": "Ontario Textarea"}'
-								></ontario-textarea>`,
+					name="textarea-name"
+					required="true"
+					element-id="textarea-id"
+					value="textarea value"
+					caption='{"captionText": "Ontario Textarea"}'
+				></ontario-textarea>`,
 			});
 
-			expect(page.rootInstance.describedBy).toBe('textarea-hint-id');
 			expect(page.rootInstance.name).toBe('textarea-name');
 			expect(page.rootInstance.value).toBe('textarea value');
 			expect(page.rootInstance.elementId).toBe('textarea-id');
@@ -76,12 +74,12 @@ describe('ontario-textarea', () => {
 			const page = await newSpecPage({
 				components: [OntarioTextarea],
 				html: `<ontario-textarea
-									name="textarea-name"
-									required="true"
-									element-id="textarea-id"
-									label-caption="Ontario Textarea"
-									label-type="default"
-								></ontario-textarea>`,
+					name="textarea-name"
+					required="true"
+					element-id="textarea-id"
+					label-caption="Ontario Textarea"
+					label-type="default"
+				></ontario-textarea>`,
 			});
 
 			const emitSpy = jest.fn();
@@ -100,12 +98,12 @@ describe('ontario-textarea', () => {
 			const page = await newSpecPage({
 				components: [OntarioTextarea],
 				html: `<ontario-textarea
-									name="textarea-name"
-									required="true"
-									element-id="textarea-id"
-									label-caption="Ontario Textarea"
-									label-type="default"
-								></ontario-textarea>`,
+					name="textarea-name"
+					required="true"
+					element-id="textarea-id"
+					label-caption="Ontario Textarea"
+					label-type="default"
+				></ontario-textarea>`,
 			});
 
 			const emitSpy = jest.fn();
@@ -126,12 +124,12 @@ describe('ontario-textarea', () => {
 			const page = await newSpecPage({
 				components: [OntarioTextarea],
 				html: `<ontario-textarea
-									name="textarea-name"
-									required="true"
-									element-id="textarea-id"
-									label-caption="Ontario Textarea"
-									label-type="default"
-								></ontario-textarea>`,
+					name="textarea-name"
+					required="true"
+					element-id="textarea-id"
+					label-caption="Ontario Textarea"
+					label-type="default"
+				></ontario-textarea>`,
 			});
 
 			expect(page.rootInstance.getId()).toEqual('textarea-id');

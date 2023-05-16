@@ -1,12 +1,16 @@
 import { Component, Event, EventEmitter, h, Prop, State, Listen, Watch, Element } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
-import { Input } from '../../utils/common.interface';
+
+import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+
+import { Hint, Input } from '../../utils/common.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
 import { Caption } from '../../utils/input-caption/caption.interface';
-import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 import { validatePropExists, validateLanguage } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { Language } from '../../utils/language-types';
+import { constructHintTextObject } from '../../utils/hints/hints';
+
 import { default as translations } from '../../translations/global.i18n.json';
 
 /**
@@ -23,6 +27,8 @@ export class OntarioTextarea implements Input {
 	 */
 	@Element() element: HTMLElement;
 
+	hintTextRef: HTMLOntarioHintTextElement | undefined;
+
 	/**
 	 * The text to display as the label
 	 *
@@ -37,11 +43,6 @@ export class OntarioTextarea implements Input {
 	 * </ontario-input>
 	 */
 	@Prop() caption: Caption | string;
-
-	/**
-	 * The aria-describedBy value if the textarea has hint text associated with it. This is optional.
-	 */
-	@Prop() describedBy?: string;
 
 	/**
 	 * The name assigned to the textarea. The name value is used to reference form data after a form is submitted.
@@ -68,7 +69,7 @@ export class OntarioTextarea implements Input {
 	/**
 	 * Define hint text for Ontario textarea. This is optional.
 	 */
-	@Prop() hintText?: string;
+	@Prop() hintText?: string | Hint;
 
 	/**
 	 * Used to include the Hint Expander component for the textarea.
@@ -97,6 +98,16 @@ export class OntarioTextarea implements Input {
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
 	@Prop({ mutable: true }) language?: Language = 'en';
+
+	/**
+	 * Used for the `aria-describedby` value of the textarea. This will match with the id of the hint text.
+	 */
+	@State() hintTextId: string | null | undefined;
+
+	/**
+	 * The hint text options are re-assigned to the internalHintText array.
+	 */
+	@State() private internalHintText: Hint;
 
 	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.
@@ -137,6 +148,14 @@ export class OntarioTextarea implements Input {
 	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
 		const toggledLanguage = validateLanguage(event);
 		this.language = toggledLanguage;
+	}
+
+	@Watch('hintText')
+	private parseHintText() {
+		if (this.hintText) {
+			const hintTextObject = constructHintTextObject(this.hintText);
+			this.internalHintText = hintTextObject;
+		}
 	}
 
 	@Watch('hintExpander')
@@ -217,9 +236,14 @@ export class OntarioTextarea implements Input {
 		return this.hintExpander ? `ontario-textarea ontario-textarea-hint-expander--true` : `ontario-textarea`;
 	}
 
+	async componentDidLoad() {
+		this.hintTextId = await this.hintTextRef?.getHintTextId();
+	}
+
 	componentWillLoad() {
 		this.updateCaptionState(this.caption);
 		this.elementId = this.elementId ?? uuid();
+		this.parseHintText();
 		this.parseHintExpander();
 		this.validateName(this.name);
 		this.language = validateLanguage(this.language);
@@ -229,9 +253,15 @@ export class OntarioTextarea implements Input {
 		return (
 			<div>
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
-				{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
+				{this.internalHintText && (
+					<ontario-hint-text
+						hint={this.internalHintText.hint}
+						hintContentType={this.internalHintText.hintContentType}
+						ref={(el) => (this.hintTextRef = el)}
+					></ontario-hint-text>
+				)}
 				<textarea
-					aria-describedby={this.describedBy}
+					aria-describedby={this.hintTextId}
 					class={this.getClass()}
 					id={this.getId()}
 					name={this.name}
@@ -245,6 +275,7 @@ export class OntarioTextarea implements Input {
 					<ontario-hint-expander
 						hint={this.internalHintExpander.hint}
 						content={this.internalHintExpander.content}
+						hintContentType={this.internalHintExpander.hintContentType}
 						input-exists
 					></ontario-hint-expander>
 				)}

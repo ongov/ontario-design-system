@@ -1,9 +1,12 @@
 import { Component, h, Prop, Element, Event, EventEmitter, Listen, State, Watch } from '@stencil/core';
+
 import { CheckboxOption } from './checkbox-option.interface';
 import { Checkboxes } from './checkboxes.interface';
+import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+
+import { Hint } from '../../utils/common.interface';
 import { InputCaption } from '../../utils/input-caption/input-caption';
 import { Caption } from '../../utils/input-caption/caption.interface';
-import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 import {
 	validateObjectExists,
 	validatePropExists,
@@ -11,6 +14,8 @@ import {
 } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { Language } from '../../utils/language-types';
+import { constructHintTextObject } from '../../utils/hints/hints';
+
 import { default as translations } from '../../translations/global.i18n.json';
 
 /**
@@ -27,13 +32,15 @@ export class OntarioCheckboxes implements Checkboxes {
 	 */
 	@Element() element: HTMLElement;
 
+	hintTextRef: HTMLOntarioHintTextElement | undefined;
+
 	/**
-	 * The text to display as the label
+	 * The text to display for the checkbox legend.
 	 *
 	 * @example
 	 * <ontario-checkboxes
 	 *   caption='{
-	 *     "captionText": "Address",
+	 *     "captionText": "Checkbox legend",
 	 *     "captionType": "heading",
 	 *   }
 	 *   ...>
@@ -53,38 +60,38 @@ export class OntarioCheckboxes implements Checkboxes {
 	@Prop() name: string;
 
 	/**
-	 * Define hint text on an element. This is optional.
+	 * Used to include the ontario-hint-text component for the checkbox group.
+	 * This is optional.
 	 */
-	@Prop() hintText?: string;
+	@Prop({ mutable: true }) hintText?: string | Hint;
 
 	/**
-   * Used to include the Hint Expander component underneath the Checkbox Legend.
-   * This is passed in as an object with key-value pairs.
+	 * Used to include the ontario-hint-expander component for the checkbox group.
+	 * This is passed in as an object with key-value pairs.
 	 * This is optional.
-   *
-   * @example
-   * <ontario-checkboxes
-   *   caption='{
-	 *     "captionText": "Address",
+	 *
+	 * @example
+	 * <ontario-checkboxes
+	 *   caption='{
+	 *     "captionText": "Checkbox legend",
 	 *     "captionType": "heading",
 	 *   }
-   *   name='ontario-checkboxes'
-   *   options='[{
-   *     "value": "checkbox-1-value",
-   *     "label": "Checkbox Label",
-   *     "hintExpander": {
-   *			  "hint": "Hint expander",
-   * 		    "content": "This is the content"
-   *		 }
-   *   }]'
-   *   hint-expander='{
-   *    "hint": "Hint expander",
-   *    "content": "This is the content, yup this is the content"
-      }'
-			required="true"
-   * >
-   * </ontario-checkboxes>
-   */
+	 *   name='ontario-checkboxes'
+	 *   options='[
+	 *		{
+	 *			"value": "checkbox-option-1",
+	 *			"label": "Checkbox option 1 label",
+	 *			"elementId": "checkbox-1"
+	 *		}
+	 *   }]'
+	 *   hint-expander='{
+	 *    "hint": "Hint expander for the checkbox group",
+	 *    "content": "Example hint expander content for the checkbox group"
+	 *   }'
+	 *   required="true"
+	 * >
+	 * </ontario-checkboxes>
+	 */
 	@Prop() hintExpander?: HintExpander | string;
 
 	/**
@@ -97,22 +104,24 @@ export class OntarioCheckboxes implements Checkboxes {
 	 * @example
 	 * <ontario-checkboxes
 	 *   caption='{
-	 *     "captionText": "Address",
-	 *     "captionType": "heading",
+	 *		"captionText": "Checkbox legend",
+	 *		"captionType": "heading",
 	 *   }
 	 *   name="ontario-checkboxes",
-	 *   hint-text="This is the hint text"
+	 *   hint-text="Hint text for the checkbox group."
 	 *   options='[
-	 *     {
-	 *        "value": "checkbox-1-value",
-	 *        "label": "Checkbox Label"
+	 *		{
+	 *			"value": "checkbox-option-1",
+	 *			"label": "Checkbox option 1 label"
+	 *			"elementId": "checkbox-1"
 	 *     },
 	 *     {
-	 *        "value": "checkbox-2",
-	 *        "label": "checkbox-2-label",
-	 *        "hintExpander": {
-	 *          "hint": "Hint expander",
-	 *          "content": "This is the content"
+	 *        "value": "checkbox-option-2",
+	 *        "label": "Checkbox option 2 label",
+	 * 		  "elementId": "checkbox-2",
+	 *	      "hintExpander": {
+	 *				"hint": "Hint expander for checkbox option 2",
+	 *              "content": "Example hint expander content for checkbox option 2"
 	 *        }
 	 *      }
 	 *   ]'
@@ -130,9 +139,19 @@ export class OntarioCheckboxes implements Checkboxes {
 	@Prop() required?: boolean = false;
 
 	/**
+	 * Used for the `aria-describedby` value of the checkbox fieldset. This will match with the id of the hint text.
+	 */
+	@State() hintTextId: string | null | undefined;
+
+	/**
 	 * Instantiate an InputCaption object for internal logic use
 	 */
 	@State() private captionState: InputCaption;
+
+	/**
+	 * The hint text options are re-assigned to the internalHintText array.
+	 */
+	@State() private internalHintText: Hint;
 
 	/**
 	 * The hint expander options are re-assigned to the internalHintExpander array.
@@ -161,6 +180,14 @@ export class OntarioCheckboxes implements Checkboxes {
 	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
 		const toggledLanguage = validateLanguage(event);
 		this.language = toggledLanguage;
+	}
+
+	@Watch('hintText')
+	private parseHintText() {
+		if (this.hintText) {
+			const hintTextObject = constructHintTextObject(this.hintText);
+			this.internalHintText = hintTextObject;
+		}
 	}
 
 	@Watch('hintExpander')
@@ -251,10 +278,15 @@ export class OntarioCheckboxes implements Checkboxes {
 		this.changeEvent.emit(ev as any);
 	};
 
+	async componentDidLoad() {
+		this.hintTextId = await this.hintTextRef?.getHintTextId();
+	}
+
 	componentWillLoad() {
 		this.updateCaptionState(this.caption);
 		this.parseOptions();
 		this.parseHintExpander();
+		this.parseHintText();
 		this.validateName(this.name);
 		this.language = validateLanguage(this.language);
 	}
@@ -262,16 +294,21 @@ export class OntarioCheckboxes implements Checkboxes {
 	render() {
 		return (
 			<div class="ontario-form-group">
-				<fieldset class="ontario-fieldset">
+				<fieldset class="ontario-fieldset" aria-describedby={this.hintTextId}>
 					{this.captionState.getCaption(undefined, !!this.internalHintExpander)}
-					{this.hintText && <ontario-hint-text hint={this.hintText}></ontario-hint-text>}
-
+					{this.internalHintText && (
+						<ontario-hint-text
+							hint={this.internalHintText.hint}
+							hintContentType={this.internalHintText.hintContentType}
+							ref={(el) => (this.hintTextRef = el)}
+						></ontario-hint-text>
+					)}
 					<div class="ontario-checkboxes">
 						{this.internalOptions?.map((checkbox) => (
 							<div class="ontario-checkboxes__item">
 								<input
 									class="ontario-checkboxes__input"
-									id={checkbox.value}
+									id={checkbox.elementId}
 									name={this.name}
 									type="checkbox"
 									value={checkbox.value}
@@ -279,7 +316,7 @@ export class OntarioCheckboxes implements Checkboxes {
 									onChange={this.handleChange}
 									required={!!this.required}
 								/>
-								<label class="ontario-checkboxes__label" htmlFor={checkbox.value}>
+								<label class="ontario-checkboxes__label" htmlFor={checkbox.elementId}>
 									{checkbox.label}
 									{checkbox.hintExpander && this.captionState.getHintExpanderAccessibilityText(checkbox.label, true)}
 								</label>
@@ -289,6 +326,7 @@ export class OntarioCheckboxes implements Checkboxes {
 										<ontario-hint-expander
 											hint={checkbox.hintExpander.hint}
 											content={checkbox.hintExpander.content}
+											hintContentType={checkbox.hintExpander.hintContentType}
 											input-exists
 										></ontario-hint-expander>
 									)}
@@ -300,6 +338,7 @@ export class OntarioCheckboxes implements Checkboxes {
 							<ontario-hint-expander
 								hint={this.internalHintExpander.hint}
 								content={this.internalHintExpander.content}
+								hintContentType={this.internalHintExpander.hintContentType}
 								input-exists
 							></ontario-hint-expander>
 						)}

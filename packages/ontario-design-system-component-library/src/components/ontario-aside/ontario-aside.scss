@@ -1,0 +1,51 @@
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
+	spacing;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
+	colours;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as
+	globalVariables;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables'
+	as breakpoints;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/4-elements/global.elements';
+
+.ontario-aside {
+	border-left: spacing.$spacing-1 solid colours.$ontario-colour-dark-teal;
+	padding: spacing.$spacing-5;
+	margin: spacing.$spacing-6 spacing.$spacing-0 spacing.$spacing-7 spacing.$spacing-6;
+
+	* {
+		max-width: globalVariables.$standard-width;
+
+		&:last-child {
+			margin-bottom: spacing.$spacing-2;
+		}
+	}
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		.ontario-aside {
+			margin: spacing.$spacing-6 spacing.$spacing-0 spacing.$spacing-7 spacing.$spacing-4;
+		}
+	}
+}
+
+.ontario-aside__title {
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-4;
+}
+
+$highlight-colours: (
+	'teal': colours.$ontario-colour-dark-teal,
+	'gold': colours.$ontario-colour-dark-gold,
+	'yellow': colours.$ontario-colour-dark-yellow,
+	'taupe': colours.$ontario-colour-dark-taupe,
+	'green': colours.$ontario-colour-dark-green,
+	'lime': colours.$ontario-colour-dark-lime,
+	'sky': colours.$ontario-colour-dark-sky,
+	'blue': colours.$ontario-colour-dark-blue,
+	'purple': colours.$ontario-colour-dark-purple,
+);
+
+@each $colour-name, $hex in $highlight-colours {
+	.ontario-border-highlight--#{$colour-name} {
+		border-color: $hex !important;
+	}
+}

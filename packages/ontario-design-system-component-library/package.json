@@ -1,6 +1,6 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-component-library",
-	"version": "2.3.0",
+	"version": "2.4.0-alpha.4",
 	"private": false,
 	"description": "Ontario Design System Component Library",
 	"license": "Apache-2.0",
@@ -34,16 +34,18 @@
 		"test:unit": "stencil test --spec"
 	},
 	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-global-styles": "2.3.0",
+		"@ontario-digital-service/ontario-design-system-global-styles": "2.4.0-alpha.3",
 		"@stencil/core": "2.20.0",
 		"validate-color": "^2.2.1"
 	},
 	"devDependencies": {
+		"@stencil/angular-output-target": "^0.5.0",
 		"@stencil/react-output-target": "0.3.1",
 		"@stencil/sass": "^2.0.1",
 		"@types/jest": "^27.0.3",
 		"@types/puppeteer": "^5.4.7",
 		"@types/uuid": "^9.0.0",
+		"@types/node": "^18.14.2",
 		"babel-jest": "^29.3.1",
 		"fs-extra": "^11.1.0",
 		"glob": "^8.0.3",
@@ -52,6 +54,7 @@
 		"jest-cli": "^27.4.5",
 		"jest-junit": "^15.0.0",
 		"jest-svg-transformer": "^1.0.0",
+		"json-loader": "^0.5.7",
 		"jszip": "^3.10.1",
 		"prettier": "^2.8.1",
 		"puppeteer": "^19.4.0",
@@ -59,7 +62,8 @@
 		"svgson": "^5.2.1",
 		"ts-node": "^10.9.1",
 		"typescript": "^4.9.4",
-		"validate-color": "^2.2.1"
+		"validate-color": "^2.2.1",
+		"rollup-plugin-dotenv": "^0.4.1"
 	},
 	"publishConfig": {
 		"access": "public"

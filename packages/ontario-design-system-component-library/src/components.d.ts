@@ -5,15 +5,25 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
+import {
+	HeadingContentType,
+	HeadingLevelOptions,
+	HighlightColourOptions,
+} from './utils/callout-aside/callout-aside.interface';
 import { Language } from './utils/language-types';
 import { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
 import { Caption } from './utils/input-caption/caption.interface';
+import { Hint, HintContentType } from './utils/common.interface';
 import { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
 import { CheckboxOption } from './components/ontario-checkbox/checkbox-option.interface';
 import { DropdownOption } from './components/ontario-dropdown-list/dropdown-option.interface';
-import { DefaultOptions } from './components/ontario-footer/footer-default-option-interface';
-import { ExpandedTwoColumnOptions } from './components/ontario-footer/footer-expanded-two-column-option-interface';
-import { ExpandedThreeColumnOptions } from './components/ontario-footer/footer-expanded-three-column-option-interface';
+import {
+	FooterLinks,
+	OntarioFooterType,
+	ThreeColumnOptions,
+	TwoColumnOptions,
+} from './components/ontario-footer/ontario-footer-interface';
+import { FooterSocialLinksProps } from './components/ontario-footer/components';
 import {
 	applicationHeaderInfo,
 	languageToggleOptions,
@@ -23,6 +33,29 @@ import { IconColour, IconSize } from './components/ontario-icon/icon.types';
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 export namespace Components {
+	interface OntarioAside {
+		/**
+		 * Optional text to be displayed as the content for the aside component. If a string is passed, it will automatically be nested in a paragraph tag.  HTML content can also be passed as the child/children of the aside component if additional/different elements for the content are needed.
+		 * @example <ontario-aside headingType='h3' headingContent='This is the aside heading'><p>This is the first sentence of the aside content.</p><p>This is the second sentence of the aside content.</p></ontario-aside>
+		 */
+		content?: string;
+		/**
+		 * Text or HTML to be displayed as the heading of the aside.
+		 */
+		headingContent: string;
+		/**
+		 * The type of the heading content. If no prop is passed, it will default to string.
+		 */
+		headingContentType: HeadingContentType;
+		/**
+		 * The heading level of the aside heading.
+		 */
+		headingType: HeadingLevelOptions;
+		/**
+		 * Optional prop to choose the border colour of the aside. If none is passed, the default colour will be teal.
+		 */
+		highlightColour?: HighlightColourOptions;
+	}
 	interface OntarioBackToTop {
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
@@ -67,21 +100,44 @@ export namespace Components {
 		 */
 		type: ButtonType;
 	}
+	interface OntarioCallout {
+		/**
+		 * Optional text to be displayed as the content for the callout component. If a string is passed, it will automatically be nested in a paragraph tag.  HTML content can also be passed as the child/children of the callout component if additional/different elements for the content are needed.
+		 * @example <ontario-callout headingType='h3' headingContent='This is the callout heading'><p>This is the first sentence of the callout content.</p><p>This is the second sentence of the callout content.</p></ontario-callout>
+		 */
+		content?: string;
+		/**
+		 * Text or HTML to be displayed as the heading of the callout. If the heading content needs to be displayed as HTML, the `headingContentType` needs to be set to html.
+		 */
+		headingContent: string;
+		/**
+		 * The type of the heading content. If no prop is passed, it will default to string.
+		 */
+		headingContentType: HeadingContentType;
+		/**
+		 * The heading level of the callout heading.
+		 */
+		headingType: HeadingLevelOptions;
+		/**
+		 * Optional prop to choose the border colour of the callout. If none is passed, the default colour will be teal.
+		 */
+		highlightColour?: HighlightColourOptions;
+	}
 	interface OntarioCheckboxes {
 		/**
-		 * The text to display as the label
-		 * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",   }   ...> </ontario-checkboxes>
+		 * The text to display for the checkbox legend.
+		 * @example <ontario-checkboxes   caption='{     "captionText": "Checkbox legend",     "captionType": "heading",   }   ...> </ontario-checkboxes>
 		 */
 		caption: Caption | string;
 		/**
-		 * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs. This is optional.
-		 * @example <ontario-checkboxes   caption='{    "captionText": "Address",    "captionType": "heading",  }   name='ontario-checkboxes'   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content"  }' required="true" > </ontario-checkboxes>
+		 * Used to include the ontario-hint-expander component for the checkbox group. This is passed in as an object with key-value pairs. This is optional.
+		 * @example <ontario-checkboxes   caption='{     "captionText": "Checkbox legend",     "captionType": "heading",   }   name='ontario-checkboxes'   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label", 		"elementId": "checkbox-1" 	}   }]'   hint-expander='{    "hint": "Hint expander for the checkbox group",    "content": "Example hint expander content for the checkbox group"   }'   required="true" > </ontario-checkboxes>
 		 */
 		hintExpander?: HintExpander | string;
 		/**
-		 * Define hint text on an element. This is optional.
+		 * Used to include the ontario-hint-text component for the checkbox group. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */
@@ -92,7 +148,7 @@ export namespace Components {
 		name: string;
 		/**
 		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
-		 * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",   }   name="ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]'   required="true" > </ontario-checkboxes>
+		 * @example <ontario-checkboxes   caption='{ 	"captionText": "Checkbox legend", 	"captionType": "heading",   }   name="ontario-checkboxes",   hint-text="Hint text for the checkbox group."   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label" 		"elementId": "checkbox-1"     },     {        "value": "checkbox-option-2",        "label": "Checkbox option 2 label", 		  "elementId": "checkbox-2",       "hintExpander": { 			"hint": "Hint expander for checkbox option 2",              "content": "Example hint expander content for checkbox option 2"        }      }   ]'   required="true" > </ontario-checkboxes>
 		 */
 		options: CheckboxOption[] | string;
 		/**
@@ -109,8 +165,8 @@ export namespace Components {
 	}
 	interface OntarioDropdownList {
 		/**
-		 * The text to display as the label
-		 * @example <ontario-dropdown-list   caption='{     "captionText": "Address",     "captionType": "heading",   }'   required="true"   ...> </ontario-dropdown-list>
+		 * The text to display for the dropdown list label.
+		 * @example <ontario-dropdown-list   name="ontario-dropdown-list"   caption='{     "captionText": "Label",     "captionType": "heading",   }'   ...> </ontario-dropdown-list>
 		 */
 		caption: Caption | string;
 		/**
@@ -119,16 +175,16 @@ export namespace Components {
 		elementId?: string;
 		/**
 		 * Used to include the Hint Expander component underneath the dropdown list box. This is passed in as an object with key-value pairs. This is optional.
-		 * @example <ontario-dropdown-list   caption='{     "caption": "What province do you live in?",     "captionType": "heading",   }   hint-expander='{    "hint": "Hint expander",    "content": "This is the content"   }'   required="true" > </ontario-dropdown-list>
+		 * @example <ontario-dropdown-list   caption='{     "caption": "What province do you live in?",     "captionType": "heading",   }   name="ontario-dropdown-list"   options='[     {       "value": "dropdown-option-1",       "label": "Option 1",       "selected": "true"     },     {       "value": "dropdown-option-2",       "label": "Option 2"     },     {       "value": "dropdown-option-3",       "label": "Option 3"     }   ]'   hint-expander='{    "hint": "Hint expander for the dropdown list",    "content": "Example hint expander content for the dropdown list."   }' > </ontario-dropdown-list>
 		 */
 		hintExpander?: HintExpander | string;
 		/**
-		 * Hint text for Ontario Dropdown. This is optional.
+		 * Used to include the ontario-hint-text component for the dropdown list. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
-		 * @example <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
+		 * @example <ontario-dropdown-list is-empty-start-option="true"></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
 		 */
 		isEmptyStartOption?: boolean | string;
 		/**
@@ -140,8 +196,8 @@ export namespace Components {
 		 */
 		name: string;
 		/**
-		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset.
-		 * @example <ontario-dropdown-list   caption='{     "captionText": "Do you like cats?",     "captionType": "heading",   }'   name="cat-dropdown"   is-empty-start-option="Please select"   options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'   required="true" > </ontario-dropdown-list>
+		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options displayed.
+		 * @example <ontario-dropdown-list   caption='{     "captionText": "Label",     "captionType": "heading",   }'   name="ontario-dropdown-list"   options='[     {       "value": "dropdown-option-1",       "label": "Option 1",       "selected": "true"     },     {       "value": "dropdown-option-2",       "label": "Option 2"     },     {       "value": "dropdown-option-3",       "label": "Option 3"     }   ]' > </ontario-dropdown-list>
 		 */
 		options: string | DropdownOption[];
 		/**
@@ -151,28 +207,41 @@ export namespace Components {
 	}
 	interface OntarioFooter {
 		/**
-		 * Stores the required links for all footers
+		 * Stores the required links for all footers Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink'
 		 */
-		defaultOptions: DefaultOptions | string;
+		footerLinks: FooterLinks | string;
+		/**
+		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. Default to English.
+		 */
+		language: Language;
+		/**
+		 * Social media links to render in the footer Available options are 'facebook', 'twitter', 'instagram' and 'youtube'
+		 */
+		socialLinks: FooterSocialLinksProps | string;
 		/**
 		 * Stores the titles and content for the expanded three column footer
 		 */
-		expandedThreeColumnOptions?: ExpandedThreeColumnOptions | string;
+		threeColumnOptions?: ThreeColumnOptions | string;
 		/**
 		 * Stores the titles and content for the expanded two column footer
 		 */
-		expandedTwoColumnOptions?: ExpandedTwoColumnOptions | string;
+		twoColumnOptions?: TwoColumnOptions | string;
 		/**
-		 * Type of footer to be rendered
+		 * Type of footer to be rendered Default: 'default'
 		 */
-		type: 'default' | 'expandedTwoColumn' | 'expandedThreeColumn';
+		type: OntarioFooterType;
 	}
 	interface OntarioHeader {
 		/**
-		 * Information pertaining to the application. This is only necessary for the 'application' header type. This includes both the application name and URL for the appllication homepage.
-		 * @example 	<ontario-header 	type="application" .  application-header-info='{ 			"name": "Application name", 			"href": "/application-homepage"    }' </ontario-header>
+		 * Information pertaining to the application header. This is only necessary for the 'application' header type.  This includes the application name, URL and optional props for the number of links in the subheader, tablet, and mobile views.
+		 * @example 	<ontario-header 	type="application"      application-header-info='{ 			"name": "Application name", 			"href": "/application-homepage" 			"maxSubheaderDesktopLinks": "3", 			"maxSubheaderTabletLinks": "2", 			"maxSubheaderMobileLinks": "1"    }' </ontario-header>
 		 */
 		applicationHeaderInfo: applicationHeaderInfo | string;
+		/**
+		 * Option to disable fetching of the dynamic menu from the Ontario Header API
+		 * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
+		 */
+		disableDynamicMenu: boolean;
 		/**
 		 * The link that contains the french page
 		 */
@@ -200,6 +269,10 @@ export namespace Components {
 		 * Text to display as the hint expander question/statement
 		 */
 		hint: string;
+		/**
+		 * The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
+		 */
+		hintContentType?: HintContentType;
 	}
 	interface OntarioHintText {
 		/**
@@ -207,10 +280,19 @@ export namespace Components {
 		 */
 		elementId?: string;
 		/**
+		 * This method returns the ontario-hint-text id. It is used to make sure the hint text and `aria-describedby` value of other form components match when the internal hint text props are used.
+		 * @returns Promise<string | undefined>
+		 */
+		getHintTextId: () => Promise<string | undefined>;
+		/**
 		 * Text to display as the hint text statement.  Setting the hint can be done using the element content or setting the this property.  This property will take precedence.
 		 * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
 		 */
 		hint: string;
+		/**
+		 * The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
+		 */
+		hintContentType?: HintContentType;
 	}
 	interface OntarioIconAccessibility {
 		/**
@@ -1291,10 +1373,6 @@ export namespace Components {
 		 */
 		caption: Caption | string;
 		/**
-		 * The aria-describedBy value if the input has hint text associated with it.
-		 */
-		describedBy?: string;
-		/**
 		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
 		 */
 		elementId?: string;
@@ -1306,7 +1384,7 @@ export namespace Components {
 		/**
 		 * Define hint text for Ontario input. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * The width of the input field. If no value is assigned, it will present as the default input width.
 		 */
@@ -1340,6 +1418,28 @@ export namespace Components {
 		 */
 		value?: string;
 	}
+	interface OntarioLoadingIndicator {
+		/**
+		 * A boolean value to determine whether the loading indicator overlay covers the full page or not. By default, this is set to true. If set to false, the loading indicator overlay will be positioned absoltely relative to its container. Note that this will only work if the containing element has a style rule specifying it to be positioned relatively.
+		 */
+		fullScreenOverlay?: boolean;
+		/**
+		 * A boolean value to determine whether or not the loading indicator is loading (i.e: is visible) or not.
+		 */
+		isLoading: boolean;
+		/**
+		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+		 */
+		language?: Language;
+		/**
+		 * The message that tells the user what is happening or why the user is waiting. If no message prop is passed, it will default to "Loading". Translations for this default message are included.
+		 */
+		message?: string;
+		/**
+		 * The type of loading indicator to render.
+		 */
+		type: 'small' | 'large';
+	}
 	interface OntarioPageAlert {
 		/**
 		 * Body for page alert. It can be string or HTML content.
@@ -1359,19 +1459,19 @@ export namespace Components {
 	}
 	interface OntarioRadioButtons {
 		/**
-		 * The text to display as the label
-		 * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",    }'   required="true"   ...> </ontario-radio-buttons>
+		 * The text to display for the radio button legend.
+		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",    }'   required="true"   ...> </ontario-radio-buttons>
 		 */
 		caption: Caption | string;
 		/**
-		 * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs. This is optional.
-		 * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }' 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }'   required="true" > </ontario-radio-buttons>
+		 * Used to include the ontario-hint-expander component for the radio button group. This is passed in as an object with key-value pairs. This is optional.
+		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }' 	 name="radios"   options='[ 	   {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 1", 		      "content": "Example hint expander content for radio option 1." 	  }     }   ]'   hint-expander='{     "hint": "Hint expander for the radio button group",     "content": "Example hint expander content for the radio button group."   }'   required="true" > </ontario-radio-buttons>
 		 */
 		hintExpander?: HintExpander | string;
 		/**
-		 * Define hint text for Radio Button fieldset. This is optional.
+		 * Used to include the ontario-hint-text component for radio button group. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */
@@ -1381,8 +1481,8 @@ export namespace Components {
 		 */
 		name: string;
 		/**
-		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
-		 * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }'   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]'   required="true" > </ontario-radio-buttons>
+		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a group, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the group.
+		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }'   name="radios"   hint-text="Hint text for the radio button group."   options='[     {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label"     },     {        "value": "radio-option-2", 		  "elementId": "radio-2",        "label": "Radio option 2 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 2", 		      "content": "Example hint expander content for radio option 2." 	  }      }   ]'   required="true" > </ontario-radio-buttons>
 		 */
 		options: string | RadioOption[];
 		/**
@@ -1397,10 +1497,6 @@ export namespace Components {
 		 */
 		caption: Caption | string;
 		/**
-		 * The aria-describedBy value if the textarea has hint text associated with it. This is optional.
-		 */
-		describedBy?: string;
-		/**
 		 * The unique identifier of the textarea. This is optional - if no ID is passed, one will be generated.
 		 */
 		elementId?: string;
@@ -1412,7 +1508,7 @@ export namespace Components {
 		/**
 		 * Define hint text for Ontario textarea. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */
@@ -1455,6 +1551,11 @@ export interface TestLanguageToggleCustomEvent<T> extends CustomEvent<T> {
 	target: HTMLTestLanguageToggleElement;
 }
 declare global {
+	interface HTMLOntarioAsideElement extends Components.OntarioAside, HTMLStencilElement {}
+	var HTMLOntarioAsideElement: {
+		prototype: HTMLOntarioAsideElement;
+		new (): HTMLOntarioAsideElement;
+	};
 	interface HTMLOntarioBackToTopElement extends Components.OntarioBackToTop, HTMLStencilElement {}
 	var HTMLOntarioBackToTopElement: {
 		prototype: HTMLOntarioBackToTopElement;
@@ -1469,6 +1570,11 @@ declare global {
 	var HTMLOntarioButtonElement: {
 		prototype: HTMLOntarioButtonElement;
 		new (): HTMLOntarioButtonElement;
+	};
+	interface HTMLOntarioCalloutElement extends Components.OntarioCallout, HTMLStencilElement {}
+	var HTMLOntarioCalloutElement: {
+		prototype: HTMLOntarioCalloutElement;
+		new (): HTMLOntarioCalloutElement;
 	};
 	interface HTMLOntarioCheckboxesElement extends Components.OntarioCheckboxes, HTMLStencilElement {}
 	var HTMLOntarioCheckboxesElement: {
@@ -2072,6 +2178,11 @@ declare global {
 		prototype: HTMLOntarioInputElement;
 		new (): HTMLOntarioInputElement;
 	};
+	interface HTMLOntarioLoadingIndicatorElement extends Components.OntarioLoadingIndicator, HTMLStencilElement {}
+	var HTMLOntarioLoadingIndicatorElement: {
+		prototype: HTMLOntarioLoadingIndicatorElement;
+		new (): HTMLOntarioLoadingIndicatorElement;
+	};
 	interface HTMLOntarioPageAlertElement extends Components.OntarioPageAlert, HTMLStencilElement {}
 	var HTMLOntarioPageAlertElement: {
 		prototype: HTMLOntarioPageAlertElement;
@@ -2093,9 +2204,11 @@ declare global {
 		new (): HTMLTestLanguageToggleElement;
 	};
 	interface HTMLElementTagNameMap {
+		'ontario-aside': HTMLOntarioAsideElement;
 		'ontario-back-to-top': HTMLOntarioBackToTopElement;
 		'ontario-blockquote': HTMLOntarioBlockquoteElement;
 		'ontario-button': HTMLOntarioButtonElement;
+		'ontario-callout': HTMLOntarioCalloutElement;
 		'ontario-checkboxes': HTMLOntarioCheckboxesElement;
 		'ontario-critical-alert': HTMLOntarioCriticalAlertElement;
 		'ontario-dropdown-list': HTMLOntarioDropdownListElement;
@@ -2216,6 +2329,7 @@ declare global {
 		'ontario-icon-wifi': HTMLOntarioIconWifiElement;
 		'ontario-icon-youtube': HTMLOntarioIconYoutubeElement;
 		'ontario-input': HTMLOntarioInputElement;
+		'ontario-loading-indicator': HTMLOntarioLoadingIndicatorElement;
 		'ontario-page-alert': HTMLOntarioPageAlertElement;
 		'ontario-radio-buttons': HTMLOntarioRadioButtonsElement;
 		'ontario-textarea': HTMLOntarioTextareaElement;
@@ -2223,6 +2337,29 @@ declare global {
 	}
 }
 declare namespace LocalJSX {
+	interface OntarioAside {
+		/**
+		 * Optional text to be displayed as the content for the aside component. If a string is passed, it will automatically be nested in a paragraph tag.  HTML content can also be passed as the child/children of the aside component if additional/different elements for the content are needed.
+		 * @example <ontario-aside headingType='h3' headingContent='This is the aside heading'><p>This is the first sentence of the aside content.</p><p>This is the second sentence of the aside content.</p></ontario-aside>
+		 */
+		content?: string;
+		/**
+		 * Text or HTML to be displayed as the heading of the aside.
+		 */
+		headingContent?: string;
+		/**
+		 * The type of the heading content. If no prop is passed, it will default to string.
+		 */
+		headingContentType?: HeadingContentType;
+		/**
+		 * The heading level of the aside heading.
+		 */
+		headingType?: HeadingLevelOptions;
+		/**
+		 * Optional prop to choose the border colour of the aside. If none is passed, the default colour will be teal.
+		 */
+		highlightColour?: HighlightColourOptions;
+	}
 	interface OntarioBackToTop {
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
@@ -2267,21 +2404,44 @@ declare namespace LocalJSX {
 		 */
 		type?: ButtonType;
 	}
+	interface OntarioCallout {
+		/**
+		 * Optional text to be displayed as the content for the callout component. If a string is passed, it will automatically be nested in a paragraph tag.  HTML content can also be passed as the child/children of the callout component if additional/different elements for the content are needed.
+		 * @example <ontario-callout headingType='h3' headingContent='This is the callout heading'><p>This is the first sentence of the callout content.</p><p>This is the second sentence of the callout content.</p></ontario-callout>
+		 */
+		content?: string;
+		/**
+		 * Text or HTML to be displayed as the heading of the callout. If the heading content needs to be displayed as HTML, the `headingContentType` needs to be set to html.
+		 */
+		headingContent?: string;
+		/**
+		 * The type of the heading content. If no prop is passed, it will default to string.
+		 */
+		headingContentType?: HeadingContentType;
+		/**
+		 * The heading level of the callout heading.
+		 */
+		headingType?: HeadingLevelOptions;
+		/**
+		 * Optional prop to choose the border colour of the callout. If none is passed, the default colour will be teal.
+		 */
+		highlightColour?: HighlightColourOptions;
+	}
 	interface OntarioCheckboxes {
 		/**
-		 * The text to display as the label
-		 * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",   }   ...> </ontario-checkboxes>
+		 * The text to display for the checkbox legend.
+		 * @example <ontario-checkboxes   caption='{     "captionText": "Checkbox legend",     "captionType": "heading",   }   ...> </ontario-checkboxes>
 		 */
 		caption?: Caption | string;
 		/**
-		 * Used to include the Hint Expander component underneath the Checkbox Legend. This is passed in as an object with key-value pairs. This is optional.
-		 * @example <ontario-checkboxes   caption='{    "captionText": "Address",    "captionType": "heading",  }   name='ontario-checkboxes'   options='[{     "value": "checkbox-1-value",     "label": "Checkbox Label",     "hintExpander": { 		  "hint": "Hint expander", 		    "content": "This is the content" 	 }   }]'   hint-expander='{    "hint": "Hint expander",    "content": "This is the content, yup this is the content"  }' required="true" > </ontario-checkboxes>
+		 * Used to include the ontario-hint-expander component for the checkbox group. This is passed in as an object with key-value pairs. This is optional.
+		 * @example <ontario-checkboxes   caption='{     "captionText": "Checkbox legend",     "captionType": "heading",   }   name='ontario-checkboxes'   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label", 		"elementId": "checkbox-1" 	}   }]'   hint-expander='{    "hint": "Hint expander for the checkbox group",    "content": "Example hint expander content for the checkbox group"   }'   required="true" > </ontario-checkboxes>
 		 */
 		hintExpander?: HintExpander | string;
 		/**
-		 * Define hint text on an element. This is optional.
+		 * Used to include the ontario-hint-text component for the checkbox group. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */
@@ -2296,7 +2456,7 @@ declare namespace LocalJSX {
 		onChangeEvent?: (event: OntarioCheckboxesCustomEvent<KeyboardEvent>) => void;
 		/**
 		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
-		 * @example <ontario-checkboxes   caption='{     "captionText": "Address",     "captionType": "heading",   }   name="ontario-checkboxes",   hint-text="This is the hint text"   options='[     {        "value": "checkbox-1-value",        "label": "Checkbox Label"     },     {        "value": "checkbox-2",        "label": "checkbox-2-label",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]'   required="true" > </ontario-checkboxes>
+		 * @example <ontario-checkboxes   caption='{ 	"captionText": "Checkbox legend", 	"captionType": "heading",   }   name="ontario-checkboxes",   hint-text="Hint text for the checkbox group."   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label" 		"elementId": "checkbox-1"     },     {        "value": "checkbox-option-2",        "label": "Checkbox option 2 label", 		  "elementId": "checkbox-2",       "hintExpander": { 			"hint": "Hint expander for checkbox option 2",              "content": "Example hint expander content for checkbox option 2"        }      }   ]'   required="true" > </ontario-checkboxes>
 		 */
 		options?: CheckboxOption[] | string;
 		/**
@@ -2313,8 +2473,8 @@ declare namespace LocalJSX {
 	}
 	interface OntarioDropdownList {
 		/**
-		 * The text to display as the label
-		 * @example <ontario-dropdown-list   caption='{     "captionText": "Address",     "captionType": "heading",   }'   required="true"   ...> </ontario-dropdown-list>
+		 * The text to display for the dropdown list label.
+		 * @example <ontario-dropdown-list   name="ontario-dropdown-list"   caption='{     "captionText": "Label",     "captionType": "heading",   }'   ...> </ontario-dropdown-list>
 		 */
 		caption?: Caption | string;
 		/**
@@ -2323,16 +2483,16 @@ declare namespace LocalJSX {
 		elementId?: string;
 		/**
 		 * Used to include the Hint Expander component underneath the dropdown list box. This is passed in as an object with key-value pairs. This is optional.
-		 * @example <ontario-dropdown-list   caption='{     "caption": "What province do you live in?",     "captionType": "heading",   }   hint-expander='{    "hint": "Hint expander",    "content": "This is the content"   }'   required="true" > </ontario-dropdown-list>
+		 * @example <ontario-dropdown-list   caption='{     "caption": "What province do you live in?",     "captionType": "heading",   }   name="ontario-dropdown-list"   options='[     {       "value": "dropdown-option-1",       "label": "Option 1",       "selected": "true"     },     {       "value": "dropdown-option-2",       "label": "Option 2"     },     {       "value": "dropdown-option-3",       "label": "Option 3"     }   ]'   hint-expander='{    "hint": "Hint expander for the dropdown list",    "content": "Example hint expander content for the dropdown list."   }' > </ontario-dropdown-list>
 		 */
 		hintExpander?: HintExpander | string;
 		/**
-		 * Hint text for Ontario Dropdown. This is optional.
+		 * Used to include the ontario-hint-text component for the dropdown list. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * Whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
-		 * @example <ontario-dropdown-list is-empty-start-option></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
+		 * @example <ontario-dropdown-list is-empty-start-option="true"></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
 		 */
 		isEmptyStartOption?: boolean | string;
 		/**
@@ -2344,8 +2504,8 @@ declare namespace LocalJSX {
 		 */
 		name?: string;
 		/**
-		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options to be displayed in the fieldset.
-		 * @example <ontario-dropdown-list   caption='{     "captionText": "Do you like cats?",     "captionType": "heading",   }'   name="cat-dropdown"   is-empty-start-option="Please select"   options='[{     "value": "dropdown-list-1",     "label": "Option 1"   },   {     "value": "dropdown-list-2",     "label": "Option 2"   },   {      "value": "dropdown-list-3",      "label": "Option 3"   }]'   required="true" > </ontario-dropdown-list>
+		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options displayed.
+		 * @example <ontario-dropdown-list   caption='{     "captionText": "Label",     "captionType": "heading",   }'   name="ontario-dropdown-list"   options='[     {       "value": "dropdown-option-1",       "label": "Option 1",       "selected": "true"     },     {       "value": "dropdown-option-2",       "label": "Option 2"     },     {       "value": "dropdown-option-3",       "label": "Option 3"     }   ]' > </ontario-dropdown-list>
 		 */
 		options?: string | DropdownOption[];
 		/**
@@ -2355,28 +2515,41 @@ declare namespace LocalJSX {
 	}
 	interface OntarioFooter {
 		/**
-		 * Stores the required links for all footers
+		 * Stores the required links for all footers Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink'
 		 */
-		defaultOptions?: DefaultOptions | string;
+		footerLinks?: FooterLinks | string;
+		/**
+		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. Default to English.
+		 */
+		language?: Language;
+		/**
+		 * Social media links to render in the footer Available options are 'facebook', 'twitter', 'instagram' and 'youtube'
+		 */
+		socialLinks?: FooterSocialLinksProps | string;
 		/**
 		 * Stores the titles and content for the expanded three column footer
 		 */
-		expandedThreeColumnOptions?: ExpandedThreeColumnOptions | string;
+		threeColumnOptions?: ThreeColumnOptions | string;
 		/**
 		 * Stores the titles and content for the expanded two column footer
 		 */
-		expandedTwoColumnOptions?: ExpandedTwoColumnOptions | string;
+		twoColumnOptions?: TwoColumnOptions | string;
 		/**
-		 * Type of footer to be rendered
+		 * Type of footer to be rendered Default: 'default'
 		 */
-		type?: 'default' | 'expandedTwoColumn' | 'expandedThreeColumn';
+		type?: OntarioFooterType;
 	}
 	interface OntarioHeader {
 		/**
-		 * Information pertaining to the application. This is only necessary for the 'application' header type. This includes both the application name and URL for the appllication homepage.
-		 * @example 	<ontario-header 	type="application" .  application-header-info='{ 			"name": "Application name", 			"href": "/application-homepage"    }' </ontario-header>
+		 * Information pertaining to the application header. This is only necessary for the 'application' header type.  This includes the application name, URL and optional props for the number of links in the subheader, tablet, and mobile views.
+		 * @example 	<ontario-header 	type="application"      application-header-info='{ 			"name": "Application name", 			"href": "/application-homepage" 			"maxSubheaderDesktopLinks": "3", 			"maxSubheaderTabletLinks": "2", 			"maxSubheaderMobileLinks": "1"    }' </ontario-header>
 		 */
 		applicationHeaderInfo?: applicationHeaderInfo | string;
+		/**
+		 * Option to disable fetching of the dynamic menu from the Ontario Header API
+		 * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
+		 */
+		disableDynamicMenu?: boolean;
 		/**
 		 * The link that contains the french page
 		 */
@@ -2405,6 +2578,10 @@ declare namespace LocalJSX {
 		 */
 		hint?: string;
 		/**
+		 * The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
+		 */
+		hintContentType?: HintContentType;
+		/**
 		 * Emitted when a keyboard input or mouse event occurs.
 		 */
 		onToggleExpanderEvent?: (event: OntarioHintExpanderCustomEvent<any>) => void;
@@ -2419,6 +2596,10 @@ declare namespace LocalJSX {
 		 * @example <ontario-hint-text hint="Override Hint Text">Hint Text</ontario-button>  The resulting hint text will display `"Override Hint Text"`.
 		 */
 		hint?: string;
+		/**
+		 * The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
+		 */
+		hintContentType?: HintContentType;
 	}
 	interface OntarioIconAccessibility {
 		/**
@@ -3499,10 +3680,6 @@ declare namespace LocalJSX {
 		 */
 		caption?: Caption | string;
 		/**
-		 * The aria-describedBy value if the input has hint text associated with it.
-		 */
-		describedBy?: string;
-		/**
 		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
 		 */
 		elementId?: string;
@@ -3514,7 +3691,7 @@ declare namespace LocalJSX {
 		/**
 		 * Define hint text for Ontario input. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * The width of the input field. If no value is assigned, it will present as the default input width.
 		 */
@@ -3560,6 +3737,28 @@ declare namespace LocalJSX {
 		 */
 		value?: string;
 	}
+	interface OntarioLoadingIndicator {
+		/**
+		 * A boolean value to determine whether the loading indicator overlay covers the full page or not. By default, this is set to true. If set to false, the loading indicator overlay will be positioned absoltely relative to its container. Note that this will only work if the containing element has a style rule specifying it to be positioned relatively.
+		 */
+		fullScreenOverlay?: boolean;
+		/**
+		 * A boolean value to determine whether or not the loading indicator is loading (i.e: is visible) or not.
+		 */
+		isLoading?: boolean;
+		/**
+		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+		 */
+		language?: Language;
+		/**
+		 * The message that tells the user what is happening or why the user is waiting. If no message prop is passed, it will default to "Loading". Translations for this default message are included.
+		 */
+		message?: string;
+		/**
+		 * The type of loading indicator to render.
+		 */
+		type?: 'small' | 'large';
+	}
 	interface OntarioPageAlert {
 		/**
 		 * Body for page alert. It can be string or HTML content.
@@ -3579,19 +3778,19 @@ declare namespace LocalJSX {
 	}
 	interface OntarioRadioButtons {
 		/**
-		 * The text to display as the label
-		 * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",    }'   required="true"   ...> </ontario-radio-buttons>
+		 * The text to display for the radio button legend.
+		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",    }'   required="true"   ...> </ontario-radio-buttons>
 		 */
 		caption?: Caption | string;
 		/**
-		 * Used to include the Hint Expander component for the Radio Button fieldset. This is passed in as an object with key-value pairs. This is optional.
-		 * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }' 	 name: "Radio"   options='[ 	   {        "value": "radio-option-1", 				"elementId": "radio-1",        "label": "Radio Option 1 Label",        "hintExpander": { 		    "hint": "Hint expander", 		      "content": "This is the content" 	    }     }   ]'   hint-expander='{     "hint": "Hint expander",     "content": "This is the content, yup this is the content"   }'   required="true" > </ontario-radio-buttons>
+		 * Used to include the ontario-hint-expander component for the radio button group. This is passed in as an object with key-value pairs. This is optional.
+		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }' 	 name="radios"   options='[ 	   {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 1", 		      "content": "Example hint expander content for radio option 1." 	  }     }   ]'   hint-expander='{     "hint": "Hint expander for the radio button group",     "content": "Example hint expander content for the radio button group."   }'   required="true" > </ontario-radio-buttons>
 		 */
 		hintExpander?: HintExpander | string;
 		/**
-		 * Define hint text for Radio Button fieldset. This is optional.
+		 * Used to include the ontario-hint-text component for radio button group. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */
@@ -3601,8 +3800,8 @@ declare namespace LocalJSX {
 		 */
 		name?: string;
 		/**
-		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
-		 * @example <ontario-radio-buttons   caption='{     "captionText": "Address",     "captionType": "heading",   }'   hint-text="This is the hint text"   options='[     {        "value": "radio-1-value", 				"elementId": "radio-1",        "label": "Radio Button Label 1"     },     {        "value": "radio-2-value", 				"elementId": "radio-1",        "label": "Radio Button Label 2",        "hintExpander": {          "hint": "Hint expander",          "content": "This is the content"        }      }   ]'   required="true" > </ontario-radio-buttons>
+		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a group, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the group.
+		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }'   name="radios"   hint-text="Hint text for the radio button group."   options='[     {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label"     },     {        "value": "radio-option-2", 		  "elementId": "radio-2",        "label": "Radio option 2 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 2", 		      "content": "Example hint expander content for radio option 2." 	  }      }   ]'   required="true" > </ontario-radio-buttons>
 		 */
 		options?: string | RadioOption[];
 		/**
@@ -3617,10 +3816,6 @@ declare namespace LocalJSX {
 		 */
 		caption?: Caption | string;
 		/**
-		 * The aria-describedBy value if the textarea has hint text associated with it. This is optional.
-		 */
-		describedBy?: string;
-		/**
 		 * The unique identifier of the textarea. This is optional - if no ID is passed, one will be generated.
 		 */
 		elementId?: string;
@@ -3632,7 +3827,7 @@ declare namespace LocalJSX {
 		/**
 		 * Define hint text for Ontario textarea. This is optional.
 		 */
-		hintText?: string;
+		hintText?: string | Hint;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */
@@ -3668,9 +3863,11 @@ declare namespace LocalJSX {
 		onSetAppLanguage?: (event: TestLanguageToggleCustomEvent<string>) => void;
 	}
 	interface IntrinsicElements {
+		'ontario-aside': OntarioAside;
 		'ontario-back-to-top': OntarioBackToTop;
 		'ontario-blockquote': OntarioBlockquote;
 		'ontario-button': OntarioButton;
+		'ontario-callout': OntarioCallout;
 		'ontario-checkboxes': OntarioCheckboxes;
 		'ontario-critical-alert': OntarioCriticalAlert;
 		'ontario-dropdown-list': OntarioDropdownList;
@@ -3791,6 +3988,7 @@ declare namespace LocalJSX {
 		'ontario-icon-wifi': OntarioIconWifi;
 		'ontario-icon-youtube': OntarioIconYoutube;
 		'ontario-input': OntarioInput;
+		'ontario-loading-indicator': OntarioLoadingIndicator;
 		'ontario-page-alert': OntarioPageAlert;
 		'ontario-radio-buttons': OntarioRadioButtons;
 		'ontario-textarea': OntarioTextarea;
@@ -3801,9 +3999,11 @@ export { LocalJSX as JSX };
 declare module '@stencil/core' {
 	export namespace JSX {
 		interface IntrinsicElements {
+			'ontario-aside': LocalJSX.OntarioAside & JSXBase.HTMLAttributes<HTMLOntarioAsideElement>;
 			'ontario-back-to-top': LocalJSX.OntarioBackToTop & JSXBase.HTMLAttributes<HTMLOntarioBackToTopElement>;
 			'ontario-blockquote': LocalJSX.OntarioBlockquote & JSXBase.HTMLAttributes<HTMLOntarioBlockquoteElement>;
 			'ontario-button': LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
+			'ontario-callout': LocalJSX.OntarioCallout & JSXBase.HTMLAttributes<HTMLOntarioCalloutElement>;
 			'ontario-checkboxes': LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
 			'ontario-critical-alert': LocalJSX.OntarioCriticalAlert & JSXBase.HTMLAttributes<HTMLOntarioCriticalAlertElement>;
 			'ontario-dropdown-list': LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
@@ -3981,6 +4181,8 @@ declare module '@stencil/core' {
 			'ontario-icon-wifi': LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
 			'ontario-icon-youtube': LocalJSX.OntarioIconYoutube & JSXBase.HTMLAttributes<HTMLOntarioIconYoutubeElement>;
 			'ontario-input': LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
+			'ontario-loading-indicator': LocalJSX.OntarioLoadingIndicator &
+				JSXBase.HTMLAttributes<HTMLOntarioLoadingIndicatorElement>;
 			'ontario-page-alert': LocalJSX.OntarioPageAlert & JSXBase.HTMLAttributes<HTMLOntarioPageAlertElement>;
 			'ontario-radio-buttons': LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
 			'ontario-textarea': LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;

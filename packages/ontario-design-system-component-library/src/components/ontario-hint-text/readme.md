@@ -40,10 +40,23 @@ Ontario Design System hint text web component
 
 ## Properties
 
-| Property    | Attribute    | Description                                                                                                                                                          | Type                  | Default     |
-| ----------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
-| `elementId` | `element-id` | The unique identifier of the element. This is optional - if no ID is passed, one will be generated.                                                                  | `string \| undefined` | `undefined` |
-| `hint`      | `hint`       | Text to display as the hint text statement. Setting the hint can be done using the element content or setting the this property. This property will take precedence. | `string`              | `undefined` |
+| Property          | Attribute           | Description                                                                                                                                                                       | Type                              | Default     |
+| ----------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | ----------- |
+| `elementId`       | `element-id`        | The unique identifier of the element. This is optional - if no ID is passed, one will be generated.                                                                               | `string \| undefined`             | `undefined` |
+| `hint`            | `hint`              | Text to display as the hint text statement. Setting the hint can be done using the element content or setting the this property. This property will take precedence.              | `string`                          | `undefined` |
+| `hintContentType` | `hint-content-type` | The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`. | `"html" \| "string" \| undefined` | `'string'`  |
+
+## Methods
+
+### `getHintTextId() => Promise<string | undefined>`
+
+This method returns the ontario-hint-text id. It is used to make sure the hint text and `aria-describedby` value of other form components match when the internal hint text props are used.
+
+#### Returns
+
+Type: `Promise<string | undefined>`
+
+Promise<string | undefined>
 
 ## Dependencies
 

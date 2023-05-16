@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-back-to-top should render the expected html 1`] = `
+<ontario-back-to-top>
+  <mock:shadow-root>
+    <button aria-label="Scroll back to the top" class="ontario-back-to-top">
+      <span aria-hidden="true"></span>
+      Top
+    </button>
+  </mock:shadow-root>
+</ontario-back-to-top>
+`;

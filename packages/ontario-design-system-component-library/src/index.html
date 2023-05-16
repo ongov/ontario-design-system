@@ -13,50 +13,7 @@
 		<ontario-critical-alert>
 			<a href="https://designsystem.ontario.ca/">Ontario Design System</a> web components now available!!!
 		</ontario-critical-alert>
-		<ontario-header
-			type="ontario"
-			menu-Items='[{
-					"name": "Arts and Culture",
-					"href": "https://www.ontario.ca/page/arts-and-culture"
-				},{
-					"name": "Business and economy",
-					"href": "https://www.ontario.ca/page/business-and-economy"
-				},{
-					"name": "Driving and Roads",
-					"href": "https://www.ontario.ca/page/driving-and-roads"
-				},{
-					"name": "Education and training",
-					"href": "https://www.ontario.ca/page/education-and-training"
-				},{
-					"name": "Environment and energy",
-					"href": "https://www.ontario.ca/page/environment-and-energy"
-				},{
-					"name": "Government",
-					"href": "https://www.ontario.ca/page/government"
-				},{
-					"name": "Health and wellness",
-					"href": "https://www.ontario.ca/page/health-care-ontario"
-				},{
-					"name": "Home and community",
-					"href": "https://www.ontario.ca/page/home-and-community"
-				},{
-					"name": "Jobs and employment",
-					"href": "https://www.ontario.ca/page/jobs-and-employment"
-				},{
-					"name": "Law and safety",
-					"href": "https://www.ontario.ca/page/law-and-safety"
-				},{
-					"name": "Rural and north",
-					"href": "https://www.ontario.ca/page/rural-and-north"
-				},{
-					"name": "Taxes and benefits",
-					"href": "https://www.ontario.ca/page/taxes-and-benefits"
-				},{
-					"name": "Travel and recreation",
-					"href": "https://www.ontario.ca/page/travel-and-recreation"
-				}]'
-		>
-		</ontario-header>
+		<ontario-header type="ontario"></ontario-header>
 
 		<div class="ontario-row ontario-margin-top-48-!">
 			<div class="ontario-columns ontario-small-12">
@@ -77,15 +34,27 @@
 				<ontario-input
 					name="email"
 					input-width="20-char-width"
-					caption='{"captionText": "Email", "captionType": "HEADING"}'
+					caption='{
+						"captionText": "Email", 
+						"captionType": "HEADING"
+					}'
 					required="true"
 				></ontario-input>
 				<ontario-input
 					name="postal"
 					input-width="7-char-width"
-					caption='{"captionText": "Postal Code", "captionType": "Large"}'
+					caption='{
+						"captionText": "Postal Code", 
+						"captionType": "Large"
+					}'
 				></ontario-input>
-				<ontario-input name="address" caption='{"captionText": "Address", "captionType": "default"}'></ontario-input>
+				<ontario-input
+					name="address"
+					caption='{
+					"captionText": "Address", 
+					"captionType": "default"
+				}'
+				></ontario-input>
 
 				<details>
 					<summary style="padding: 0 15px 15px 0">ontario-input components - unhappy path examples</summary>
@@ -123,7 +92,10 @@
 				<ontario-input
 					name="postal"
 					input-width="7-char-width"
-					caption='{"captionText": "Postal Code", "captionType": "default"}'
+					caption='{
+						"captionText": "Postal Code", 
+						"captionType": "default"
+					}'
 					hint-text="For example, A1A 1A1"
 				></ontario-input>
 
@@ -131,7 +103,10 @@
 				<ontario-input
 					name="address"
 					caption="Address"
-					hint-expander='{"hint": "Hint expander","content": "This is the content, yup this is the content"}'
+					hint-expander='{
+						"hint": "Hint expander",
+						"content": "This is the content, yup this is the content"
+					}'
 				>
 				</ontario-input>
 
@@ -140,72 +115,86 @@
 				<!-- `ontario-input` components - happy path examples -->
 				<ontario-textarea
 					name="comments"
-					caption='{"captionText": "Comments", "captionType": "HEADING"}'
+					caption='{
+						"captionText": "Comments",
+						"captionType": "HEADING"
+					}'
 					required="true"
 					hint-expander='{
-				"hint": "Hint expander",
-				"content": "This is the content, yup this is the content"
-			}'
+						"hint": "Hint expander",
+						"content": "This is the content, yup this is the content"
+					}'
 				></ontario-textarea>
 				<ontario-textarea
 					name="feedback"
-					caption='{"captionText": "Feedback", "captionType": "large"}'
+					caption='{
+						"captionText": "Feedback", 
+						"captionType": "large"
+					}'
 					element-id="feedback"
-					hint-expander='{
-				"hint": "Hint expander",
-				"content": "This is the content, yup this is the content"
-			}'
+					hint-text='{
+						"hint": "<p>Please provide any additional information you think would be useful for us to improve our services.</p><p>We welcome all feedback, both constructive or otherwise.</p>",
+						"hintContentType": "html"
+					}'
 				></ontario-textarea>
 				<ontario-textarea
 					name="response"
-					caption='{"captionText": "What do you like about ODS?", "captionType": "default"}'
+					caption='{
+						"captionText": "What do you like about ODS?", 
+						"captionType": "default"
+					}'
 					element-id="response"
 					hint-expander='{
-				"hint": "Hint expander",
-				"content": "This is the content, yup this is the content"
-			}'
+						"hint": "Hint expander",
+						"content": "This is the content, yup this is the content"
+					}'
 				></ontario-textarea>
 
 				<hr />
 
 				<ontario-checkboxes
 					name="ontario-checkbox-group"
-					hint-text="This is the hint text"
 					caption='{
-					"captionText": "Checkbox legend",
-					"captionType": "heading"
-				}'
+						"captionText": "Checkbox legend",
+						"captionType": "heading"
+					}'
+					hint-text="Hint text for the checkbox group."
 					required
 					options='[
-					{
-						"value": "checkbox-1",
-						"label": "checkbox-1-label"
-					},
-					{
-						"value": "checkbox-2",
-						"label": "checkbox-2-label",
-						"hintExpander": {
-							"hint": "Hint expander",
-							"content": "This is the content, yup this is the content"
+						{
+							"value": "checkbox-option-1",
+							"label": "Checkbox option 1 label",
+							"elementId": "checkbox-1"
+						},
+						{
+							"value": "checkbox-option-2",
+							"label": "Checkbox option 2 label",
+							"elementId": "checkbox-2",
+							"hintExpander": {
+								"hint": "Hint expander for checkbox option 2",
+								"content": "Example hint expander content for checkbox option 2."
+							}
+						},
+						{
+							"value": "checkbox-option-3",
+							"label": "Checkbox option 3 label",
+							"elementId": "checkbox-3",
+							"hintExpander": {
+								"hint": "Hint expander for checkbox option 3",
+								"content": "Example hint expander content for checkbox option 3."
+							}
+						},
+						{
+							"value": "checkbox-option-4",
+							"label": "Checkbox option 4 label",
+							"elementId": "checkbox-4"
 						}
-					},
-					{
-						"value": "checkbox-3",
-						"label": "checkbox-3-label",
-						"hintExpander": {
-							"hint": "Hint expander",
-							"content": "This is the content"
-						}
-					},
-					{
-						"value": "checkbox-4",
-						"label": "checkbox-4-label"
-					}
-				]'
+					]'
 					hint-expander='{
-					"hint": "Hint expander",
-					"content": "This is the content, yup this is the content"
-				}'
+						"hint": "Hint expander for the checkbox group",
+						"content": "<p>Example hint expander content for the checkbox group.</p><p>It has multiple lines.</p>",
+						"hintContentType": "html"
+					}'
 				>
 				</ontario-checkboxes>
 
@@ -213,71 +202,69 @@
 
 				<ontario-radio-buttons
 					name="radios"
-					hint-text="This is the hint text"
+					hint-text="Hint text for the radio button group."
 					caption='{
-					"captionText": "Do you have cats?",
-					"captionType": "heading"
-				}'
+						"captionText": "Radio legend",
+						"captionType": "heading"
+					}'
 					required="false"
 					options='[
-					{
-						"value": "radio",
-						"elementId": "radio-1",
-						"label": "radio-1-label"
-					},
-					{
-						"value": "radio-2",
-						"elementId": "radio-2",
-						"label": "radio-2-label",
-						"hintExpander": {
-							"hint": "Hint expander",
-							"content": "This is the content, yup this is the content"
+						{
+							"value": "radio-option-1",
+							"elementId": "radio-1",
+							"label": "Radio option 1 label"
+						},
+						{
+							"value": "radio-option-2",
+							"elementId": "radio-2",
+							"label": "Radio option 2 label",
+							"hintExpander": {
+								"hint": "Hint expander for radio option 2",
+								"content": "Example hint expander content for radio option 2."
+							}
+						},
+						{
+							"value": "radio-option-3",
+							"elementId": "radio-3",
+							"label": "Radio option 3 label"
+						},
+						{
+							"value": "radio-option-4",
+							"elementId": "radio-4",
+							"label": "Radio option 4 label"
 						}
-					},
-					{
-						"value": "radio-3",
-						"elementId": "radio-3",
-						"label": "radio-3-label",
-						"hintExpander": {
-							"hint": "Hint expander",
-							"content": "This is the content"
-						}
-					},
-					{
-						"value": "radio-4",
-						"elementId": "radio-4",
-						"label": "radio-4-label"
-					}
-				]'
+					]'
 					hint-expander='{
-					"hint": "Hint expander",
-					"content": "This is hint expander content"
-				}'
+						"hint": "Hint expander for the radio button group",
+						"content": "Example hint expander content for the radio button group."
+					}'
 				>
 				</ontario-radio-buttons>
 
 				<hr />
 
 				<ontario-dropdown-list
-					name="cat-dropdown"
-					is-empty-start-option="Please select"
+					name="dropdown"
 					caption='{
-					"captionText": "Do you like cats?",
-					"captionType": "heading"
-				}'
-					required="true"
-					options='[{
-					"value": "dropdown-list-1",
-					"label": "Option 1"
-				},
-				{
-					"value": "dropdown-list-2",
-					"label": "Option 2"
-				},
-				{
-					"value": "dropdown-list-3",
-					"label": "Option 3"
-				}]'
+						"captionText": "Label",
+						"captionType": "heading"
+					}'
+					required
+					options='[
+						{
+							"value": "dropdown-option-1",
+							"label": "Option 1",
+							"selected": true
+						},
+						{
+							"value": "dropdown-option-2",
+							"label": "Option 2"
+						},
+						{
+							"value": "dropdown-option-3",
+							"label": "Option 3"
+						}
+					]'
 				>
 				</ontario-dropdown-list>
 
@@ -324,56 +311,124 @@
 					clearly, and express great respect for children, families, and educators. We now have a solid foundation upon
 					which to build a more coherent system.</ontario-blockquote
 				>
+
+				<!-- Asides -->
+				<ontario-aside
+					heading-type="h2"
+					heading-content-type="string"
+					heading-content="Quick fact:"
+					highlight-colour="gold"
+					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
+				>
+				</ontario-aside>
+
+				<!-- Callouts -->
+				<ontario-callout
+					heading-type="h3"
+					heading-content-type="string"
+					heading-content="Get notified"
+					highlight-colour="purple"
+				>
+					<p>
+						<a href="#">Sign up for email reminders</a> and we’ll notify you 60 and 30 days before your licence expires.
+					</p>
+				</ontario-callout>
+			</div>
+		</div>
+
+		<div class="ontario-row">
+			<div class="ontario-columns ontario-small-12">
+				<p>Loading indicator example</p>
+				<!-- Loading indicator -->
+				<div style="position: relative; height: 25vh">
+					<ontario-loading-indicator is-loading="true" full-screen-overlay="false" />
+				</div>
 			</div>
 		</div>
 
 		<ontario-footer
-			type="expandedTwoColumn"
-			default-options='{
-				"accessibilityLink":"https://www.ontario.ca/page/accessibility",
-				"privacyLink": "https://www.ontario.ca/page/privacy-statement",
-				"contactLink": "https://www.ontario.ca/feedback/contact-us",
-				"printerLink": "https://www.ontario.ca/page/copyright-information"
-			}'
-			expanded-two-column-options='{
-				"firstColumn": {
-					"title": "This is my First Title",
-					"content":"this is my first content"
+			type="threeColumn"
+			footer-links='{
+				"accessibilityLink": {
+					"text": "Accessibility",
+					"href": "https://www.ontario.ca/page/accessibility"
 				},
-				"secondColumn": {
-					"title": "This is my Second Title",
-					"content":"this is my second content",
-					"contactButtonText": "BUTTON"
+				"privacyLink": {
+					"href": "https://www.ontario.ca/page/privacy-statement"
+				},
+				"contactLink": {
+					"text": "Contact us",
+					"href": "https://www.ontario.ca/feedback/contact-us"
+				},
+				"printerLink": {
+					"href": "https://www.ontario.ca/page/copyright-information"
 				}
 			}'
-			expanded-three-column-options='{
-				"firstColumn": {
-					"title": "This is my First Title",
-					"content":"this is my first content"
-				},
-				"secondColumn": {
-					"title": "This is my Second Title",
-					"content":[
+			social-links='{
+				"facebook": "https://www.facebook.com/ONgov",
+				"instagram": "https://www.instagram.com/ongov",
+				"twitter": "https://twitter.com/ONgov",
+				"youtube": "https://www.youtube.com/ongov"
+			}'
+			two-column-options='{
+				"column1": {
+					"title": "Ontario Design System",
+					"content": [
 						{
-							"title": "1 asdas",
-							"link": "12"
+							"type": "text",
+							"text": "The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services."
+						},
+						{
+							"type": "list",
+							"heading": "Latest release",
+							"list": ["Built on: June 3, 2022", "Distribution package version 0.12.10"]
 						}
 					]
 				},
-				"thirdColumn": {
-					"title": "this is my third title",
-					"content": "this is my third content",
-					"facebook": {
-						"link": "1"
-					},
-					"twitter": {
-						"link": "2"
-					},
-					"instagram": {
-						"link": "3"
-					},
-					"youtube": {
-						"link": "4"
+				"column2": {
+					"title": "Help us improve the design system",
+					"content": [
+						{
+							"type": "html",
+							"html": "You can check our <a href=#>help and feedback page</a> if you don&#8217;t see the component you need."
+						}
+					],
+					"button": {
+						"text": "Send us an email",
+						"link": "#"
+					}
+				}
+			}'
+			three-column-options='{
+				"column1": {
+					"title": "Ontario Design System",
+					"content": [
+						{
+							"type": "text",
+							"text": "The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services."
+						}
+					]
+				},
+				"column2": {
+					"title": "Latest release",
+					"content": [
+						{
+							"type": "list",
+							"list": ["Built on: June 3, 2022", "Distribution package version 0.12.10"]
+						}
+					]
+				},
+				"column3": {
+					"title": "Help us improve the design system",
+					"content": [
+						{
+							"type": "html",
+							"html": "You can check our <a href=#>help and feedback page</a> if you don&#8217;t see the component you need."
+						}
+					],
+					"button": {
+						"text": "Send us an email",
+						"link": "#"
 					}
 				}
 			}'

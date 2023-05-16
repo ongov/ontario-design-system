@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-callout snapshot should render the expected html 1`] = `
+<ontario-callout heading-content="Get notified" heading-content-type="string" heading-type="h3" highlight-colour="gold">
+  <mock:shadow-root>
+    <div class="ontario-border-highlight--gold ontario-callout">
+      <h3 class="ontario-callout__title ontario-h5">
+        Get notified
+      </h3>
+      <slot></slot>
+    </div>
+  </mock:shadow-root>
+  <p>
+    <a href="#">
+      Sign up for email reminders
+    </a>
+    and we’ll notify you 60 and 30 days before your licence expires.
+  </p>
+</ontario-callout>
+`;

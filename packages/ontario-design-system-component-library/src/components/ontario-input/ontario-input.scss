@@ -1,22 +1,34 @@
-@use '../../utils/input-caption/input-caption.scss';
-@use '../../global.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as
+	globalVariables;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
+	spacing;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
+	colours;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as
+	typography;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders'
+	as focusPlaceholders;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as
+	fontSizes;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
+@use '../../styles/form.scss';
 
 $ontario-input-padding: 0.625rem;
 
 .ontario-input {
-	border: global.$border-size-standard solid global.$ontario-colour-black;
-	border-radius: global.$global-radius;
+	border: globalVariables.$border-size-standard solid colours.$ontario-colour-black;
+	border-radius: globalVariables.$global-radius;
 	box-sizing: border-box;
-	color: global.$ontario-colour-black;
+	color: colours.$ontario-colour-black;
 	display: block;
-	font-size: 1rem;
-	font-family: global.$ontario-font-open-sans;
-	line-height: global.$line-height-default;
-	margin: global.$spacing-0 global.$spacing-0 global.$spacing-7;
-	max-width: global.$standard-width;
-	padding: $ontario-input-padding global.$spacing-4;
-	transition: global.$ontario-focus-transition;
-	width: global.$full-width;
+	font-size: fontSizes.$ontario-font-size-standard-body-text;
+	font-family: typography.$ontario-font-open-sans;
+	line-height: globalVariables.$line-height-default;
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-7;
+	max-width: globalVariables.$standard-width;
+	padding: $ontario-input-padding spacing.$spacing-4;
+	transition: focusPlaceholders.$ontario-focus-transition;
+	width: globalVariables.$full-width;
 
 	&:focus,
 	&:active {
@@ -25,7 +37,7 @@ $ontario-input-padding: 0.625rem;
 }
 
 .ontario-input-hint-expander--true {
-	margin-bottom: global.$spacing-4;
+	margin-bottom: spacing.$spacing-4;
 }
 
 .ontario-input--2-char-width {

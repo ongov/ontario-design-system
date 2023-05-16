@@ -8,9 +8,11 @@ import type { JSX } from '@ontario-digital-service/ontario-design-system-compone
 import { defineCustomElements } from '@ontario-digital-service/ontario-design-system-component-library/loader';
 
 defineCustomElements();
+export const OntarioAside = /*@__PURE__*/createReactComponent<JSX.OntarioAside, HTMLOntarioAsideElement>('ontario-aside');
 export const OntarioBackToTop = /*@__PURE__*/createReactComponent<JSX.OntarioBackToTop, HTMLOntarioBackToTopElement>('ontario-back-to-top');
 export const OntarioBlockquote = /*@__PURE__*/createReactComponent<JSX.OntarioBlockquote, HTMLOntarioBlockquoteElement>('ontario-blockquote');
 export const OntarioButton = /*@__PURE__*/createReactComponent<JSX.OntarioButton, HTMLOntarioButtonElement>('ontario-button');
+export const OntarioCallout = /*@__PURE__*/createReactComponent<JSX.OntarioCallout, HTMLOntarioCalloutElement>('ontario-callout');
 export const OntarioCheckboxes = /*@__PURE__*/createReactComponent<JSX.OntarioCheckboxes, HTMLOntarioCheckboxesElement>('ontario-checkboxes');
 export const OntarioCriticalAlert = /*@__PURE__*/createReactComponent<JSX.OntarioCriticalAlert, HTMLOntarioCriticalAlertElement>('ontario-critical-alert');
 export const OntarioDropdownList = /*@__PURE__*/createReactComponent<JSX.OntarioDropdownList, HTMLOntarioDropdownListElement>('ontario-dropdown-list');
@@ -131,6 +133,7 @@ export const OntarioIconWheelchair = /*@__PURE__*/createReactComponent<JSX.Ontar
 export const OntarioIconWifi = /*@__PURE__*/createReactComponent<JSX.OntarioIconWifi, HTMLOntarioIconWifiElement>('ontario-icon-wifi');
 export const OntarioIconYoutube = /*@__PURE__*/createReactComponent<JSX.OntarioIconYoutube, HTMLOntarioIconYoutubeElement>('ontario-icon-youtube');
 export const OntarioInput = /*@__PURE__*/createReactComponent<JSX.OntarioInput, HTMLOntarioInputElement>('ontario-input');
+export const OntarioLoadingIndicator = /*@__PURE__*/createReactComponent<JSX.OntarioLoadingIndicator, HTMLOntarioLoadingIndicatorElement>('ontario-loading-indicator');
 export const OntarioPageAlert = /*@__PURE__*/createReactComponent<JSX.OntarioPageAlert, HTMLOntarioPageAlertElement>('ontario-page-alert');
 export const OntarioRadioButtons = /*@__PURE__*/createReactComponent<JSX.OntarioRadioButtons, HTMLOntarioRadioButtonsElement>('ontario-radio-buttons');
 export const OntarioTextarea = /*@__PURE__*/createReactComponent<JSX.OntarioTextarea, HTMLOntarioTextareaElement>('ontario-textarea');

@@ -1,55 +1,102 @@
 import React from 'react';
 import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+import CodeHighlighter from '../../components/code-highlighter';
 
 export default function HeaderApplicationExample() {
-	const applicationHeaderCodeExample = `import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioHeader type="application" application-header-info='{
-    "name": "Application name" ,
-    "href": "/"
-  }' language-toggle-options='{
-    "englishLink":"/en",
-    "frenchLink": "/fr"
-  }' menu-items='[{
-    "name": "Health",
-    "href": "/ontario-hint"
-  },{
-    "name": "Financial Health",
-    "href": "/ontario-hint"
-  }]'>
+	const applicationHeaderCodeExample = `import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioHeader
+	type="application"
+	applicationHeaderInfo={{
+		title: "Application name",
+		href: "/",
+		maxSubheaderDesktopLinks: 3,
+		maxSubheaderTabletLinks: 2
+	}}
+	languageToggleOptions={{
+		englishLink: '/en',
+		frenchLink: '/fr',
+	}}
+	menuItems={[
+		{
+			title: 'Link one',
+			href: '/link-one',
+			linkIsActive: true,
+		},
+		{
+			title: 'Link two',
+			href: '/link-two',
+			linkIsActive: false,
+		},
+		{
+			title: 'Long link three',
+			href: '/link-three',
+			linkIsActive: false,
+		},
+		{
+			title: 'Long link four',
+			href: '/link-four',
+			linkIsActive: false,
+		},
+		{
+			title: 'Link five',
+			href: '/link-five',
+			linkIsActive: false,
+		}
+	]}
 </OntarioHeader>
 `;
+
 	return (
 		<div className="ontario-row">
-			<div className="ontario-columns ontario-medium-12 ontario-large-12">
-				<div className="preview-container">
-					<h4>Application Header</h4>
+			<div className="ontario-columns ontario-large-12">
+				<div className="ontario-margin-top-24-!">
+					<h2>Example</h2>
 					<OntarioHeader
 						type="application"
-						application-header-info='{
-                "name": "Application name" ,
-                "href": "/"
-              }'
-						language-toggle-options='{
-                "englishLink":"/en",
-                "frenchLink": "/fr"
-              }'
-						menu-items='[{
-                "name": "Health",
-                "href": "#/ontario-header"
-              },{
-                "name": "Financial Health",
-                "href": "#/ontario-header"
-              }]'
+						applicationHeaderInfo={{
+							title: 'Application name',
+							href: '/',
+							maxSubheaderDesktopLinks: 3,
+							maxSubheaderTabletLinks: 2,
+						}}
+						languageToggleOptions={{
+							englishLink: '/en',
+							frenchLink: '/fr',
+						}}
+						menuItems={[
+							{
+								title: 'Link one',
+								href: '/link-one',
+								linkIsActive: true,
+							},
+							{
+								title: 'Link two',
+								href: '/link-two',
+								linkIsActive: false,
+							},
+							{
+								title: 'Long link three',
+								href: '/link-three',
+								linkIsActive: false,
+							},
+							{
+								title: 'Long link four',
+								href: '/link-four',
+								linkIsActive: false,
+							},
+							{
+								title: 'Link five',
+								href: '/link-five',
+								linkIsActive: false,
+							},
+						]}
 					></OntarioHeader>
 
 					<p>With the following markup:</p>
 
-					<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-						{applicationHeaderCodeExample}
-					</SyntaxHighlighter>
+					<CodeHighlighter codeExample={applicationHeaderCodeExample} />
 
-					<hr></hr>
+					<hr />
 				</div>
 			</div>
 		</div>

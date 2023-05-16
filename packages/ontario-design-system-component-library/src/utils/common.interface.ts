@@ -25,11 +25,6 @@ export interface Base {
 
 export interface Input extends Base {
 	/**
-	 * The aria-describedBy value if the element has hint text associated with it.
-	 */
-	describedBy?: string;
-
-	/**
 	 * The name assigned to the element. The name value is used to reference form data after a form is submitted.
 	 */
 	name: string;
@@ -79,7 +74,19 @@ export interface Input extends Base {
 
 export interface Hint extends Base {
 	/**
-	 * Text to display as the hint.
+	 * The content type of the hint.
+	 * If no prop is passed, it will default to a string.
+	 * If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
+	 */
+	hintContentType?: 'string' | 'html';
+
+	/**
+	 * Text to display as the hint text statement.
+	 *
+	 * Setting the hint can be done using the element content or setting the
+	 * this property.  This property will take precedence.
 	 */
 	hint: string;
 }
+
+export type HintContentType = 'string' | 'html';

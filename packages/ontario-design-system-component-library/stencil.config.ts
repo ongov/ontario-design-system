@@ -1,7 +1,9 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { reactOutputTarget } from '@stencil/react-output-target';
+import { angularOutputTarget } from '@stencil/angular-output-target';
 import { inlineSvg } from 'stencil-inline-svg';
+import dotEnvPlugin from 'rollup-plugin-dotenv';
 
 export const config: Config = {
 	namespace: 'ontario-design-system-components',
@@ -13,6 +15,7 @@ export const config: Config = {
 			],
 		}),
 		inlineSvg(),
+		dotEnvPlugin(),
 	],
 	globalStyle: './src/global.scss',
 	globalScript: './src/global.ts',
@@ -22,6 +25,13 @@ export const config: Config = {
 			componentCorePackage: '@ontario-digital-service/ontario-design-system-component-library',
 			proxiesFile: '../ontario-design-system-component-library-react/src/components.ts',
 			includeDefineCustomElements: true,
+		}),
+		angularOutputTarget({
+			componentCorePackage: '@ontario-digital-service/ontario-design-system-component-library',
+			directivesProxyFile:
+				'../ontario-design-system-component-library-angular/projects/component-library/src/lib/stencil-generated/components.ts',
+			directivesArrayFile:
+				'../ontario-design-system-component-library-angular/projects/component-library/src/lib/stencil-generated/index.ts',
 		}),
 		{
 			type: 'dist',

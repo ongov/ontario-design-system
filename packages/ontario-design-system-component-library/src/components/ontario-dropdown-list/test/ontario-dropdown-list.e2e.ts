@@ -19,7 +19,13 @@ describe('ontario-dropdown-list', () => {
 		beforeEach(async () => {
 			page = await newE2EPage();
 			await page.setContent(
-				"<ontario-dropdown-list label='Do you like cats?' name='cat-dropdown' is-empty-start-option='Please select'></ontario-dropdown-list>",
+				`<ontario-dropdown-list
+                  name="dropdown-options"
+                  element-id="dropdown-list",
+                  is-empty-start-option="Please select"
+                  caption='{"captionText": "Label"}'
+				  options='[{ "value": "dropdown-option-1", "label": "Option 1" }]'
+				></ontario-dropdown-list>`,
 			);
 			component = await page.find('ontario-dropdown-list');
 			element = await page.find('ontario-dropdown-list >>> select');
