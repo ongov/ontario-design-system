@@ -29,6 +29,7 @@ Example of a simple (`default` type) footer component.
 			"href": "https://www.ontario.ca/page/accessibility"
 		},
 		"privacyLink": {
+			"text": "Privacy",
 			"href": "https://www.ontario.ca/page/privacy-statement"
 		},
 		"contactLink": {
@@ -36,6 +37,7 @@ Example of a simple (`default` type) footer component.
 			"href": "https://www.ontario.ca/feedback/contact-us"
 		},
 		"printerLink": {
+			"text": "Printer",
 			"href": "https://www.ontario.ca/page/copyright-information"
 		}
 	}'
@@ -47,6 +49,7 @@ Example of an expanded footer with two columns (`twoColumn` type).
 ```html
 <ontario-footer
 	type="twoColumn"
+	top-margin="false"
 	footer-links='{
 		"accessibilityLink": {
 			"text": "Accessibility",
@@ -386,6 +389,7 @@ two-column-options='{
 | `language`           | `language`             | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. Default to English. | `"en" \| "fr"`                                                                                                                                 | `'en'`      |
 | `socialLinks`        | `social-links`         | Social media links to render in the footer Available options are 'facebook', 'twitter', 'instagram' and 'youtube'                                                                 | `string \| { facebook?: string \| undefined; twitter?: string \| undefined; instagram?: string \| undefined; youtube?: string \| undefined; }` | `undefined` |
 | `threeColumnOptions` | `three-column-options` | Stores the titles and content for the expanded three column footer                                                                                                                | `ThreeColumnOptions \| string \| undefined`                                                                                                    | `undefined` |
+| `topMargin`          | `top-margin`           | Top margin for the footer. By default its set to true, which adds margin top of 5rem. If set to false, it sets top margin to zero. Default: 'true'                                | `boolean`                                                                                                                                      | `true`      |
 | `twoColumnOptions`   | `two-column-options`   | Stores the titles and content for the expanded two column footer                                                                                                                  | `TwoColumnOptions \| string \| undefined`                                                                                                      | `undefined` |
 | `type`               | `type`                 | Type of footer to be rendered Default: 'default'                                                                                                                                  | `"default" \| "threeColumn" \| "twoColumn"`                                                                                                    | `'default'` |
 

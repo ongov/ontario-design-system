@@ -59,6 +59,13 @@ export class OntarioFooter {
 	 */
 	@Prop() threeColumnOptions?: ThreeColumnOptions | string;
 
+	/**
+	 * Top margin for the footer. By default its set to true, which adds margin top of 5rem.
+	 * If set to false, it sets top margin to zero.
+	 * Default: 'true'
+	 */
+	@Prop() topMargin: boolean = true;
+
 	@State() translations: any = translations;
 
 	@State() private footerLinksState: FooterLinks;
@@ -171,6 +178,16 @@ export class OntarioFooter {
 		return { '--imagePath': `url(${getAssetPath('./assets/footer-default-supergraphic-logo.svg')})` };
 	}
 
+	private getFooterClasses() {
+		let classes = 'ontario-footer ontario-footer--default';
+
+		if (!this.topMargin) {
+			classes = `${classes}  ontario-margin-top-0-!`;
+		}
+
+		return classes;
+	}
+
 	private getFooterLinks(): SimpleFooterLinks {
 		const { language, translations, footerLinksState } = this;
 		const { accessibilityLink, privacyLink, contactLink, printerLink } = footerLinksState ?? {};
@@ -210,12 +227,12 @@ export class OntarioFooter {
 	}
 
 	render() {
-		const { socialLinksState, twoColumnState, threeColumnState } = this;
+		const { socialLinksState, twoColumnState, threeColumnState, topMargin } = this;
 		const footerLinks = this.getFooterLinks();
 
 		if (this.isTwoColumnLayout()) {
 			return (
-				<ExpandedFooterWrapper footerLinks={footerLinks}>
+				<ExpandedFooterWrapper footerLinks={footerLinks} topMargin={topMargin}>
 					<FooterColumn data={twoColumnState.column1} />
 					<FooterColumn data={twoColumnState.column2} socialLinks={socialLinksState} />
 				</ExpandedFooterWrapper>
@@ -224,7 +241,7 @@ export class OntarioFooter {
 
 		if (this.isThreeColumnLayout()) {
 			return (
-				<ExpandedFooterWrapper footerLinks={footerLinks}>
+				<ExpandedFooterWrapper footerLinks={footerLinks} topMargin={topMargin}>
 					<FooterColumn data={threeColumnState.column1} isThreeColLayout isFullWidthInMediumLayout />
 					<FooterColumn data={threeColumnState.column2} isThreeColLayout />
 					<FooterColumn data={threeColumnState.column3} socialLinks={socialLinksState} isThreeColLayout />
@@ -233,7 +250,7 @@ export class OntarioFooter {
 		}
 
 		return (
-			<footer class="ontario-footer ontario-footer--default" style={this.getBackgroundImage()}>
+			<footer class={this.getFooterClasses()} style={this.getBackgroundImage()}>
 				<SimpleFooter {...footerLinks} />
 			</footer>
 		);

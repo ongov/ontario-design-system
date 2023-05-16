@@ -235,6 +235,10 @@ export namespace Components {
 		 */
 		threeColumnOptions?: ThreeColumnOptions | string;
 		/**
+		 * Top margin for the footer. By default its set to true, which adds margin top of 5rem. If set to false, it sets top margin to zero. Default: 'true'
+		 */
+		topMargin: boolean;
+		/**
 		 * Stores the titles and content for the expanded two column footer
 		 */
 		twoColumnOptions?: TwoColumnOptions | string;
@@ -2578,6 +2582,10 @@ declare namespace LocalJSX {
 		 * Stores the titles and content for the expanded three column footer
 		 */
 		threeColumnOptions?: ThreeColumnOptions | string;
+		/**
+		 * Top margin for the footer. By default its set to true, which adds margin top of 5rem. If set to false, it sets top margin to zero. Default: 'true'
+		 */
+		topMargin?: boolean;
 		/**
 		 * Stores the titles and content for the expanded two column footer
 		 */
