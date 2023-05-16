@@ -130,6 +130,18 @@ export namespace Components {
 		 */
 		caption: Caption | string;
 		/**
+		 * Used to add a custom function to the checkbox onBlur event.
+		 */
+		customOnBlur?: Function;
+		/**
+		 * Used to add a custom function to the checkbox onChange event.
+		 */
+		customOnChange?: Function;
+		/**
+		 * Used to add a custom function to the checkbox onFocus event.
+		 */
+		customOnFocus?: Function;
+		/**
 		 * Used to include the ontario-hint-expander component for the checkbox group. This is passed in as an object with key-value pairs. This is optional.
 		 * @example <ontario-checkboxes   caption='{     "captionText": "Checkbox legend",     "captionType": "heading",   }   name='ontario-checkboxes'   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label", 		"elementId": "checkbox-1" 	}   }]'   hint-expander='{    "hint": "Hint expander for the checkbox group",    "content": "Example hint expander content for the checkbox group"   }'   required="true" > </ontario-checkboxes>
 		 */
@@ -1464,6 +1476,18 @@ export namespace Components {
 		 */
 		caption: Caption | string;
 		/**
+		 * Used to add a custom function to the radio input onBlur event.
+		 */
+		customOnBlur?: Function;
+		/**
+		 * Used to add a custom function to the radio input onChange event.
+		 */
+		customOnChange?: Function;
+		/**
+		 * Used to add a custom function to the radio input onFocus event.
+		 */
+		customOnFocus?: Function;
+		/**
 		 * Used to include the ontario-hint-expander component for the radio button group. This is passed in as an object with key-value pairs. This is optional.
 		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }' 	 name="radios"   options='[ 	   {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 1", 		      "content": "Example hint expander content for radio option 1." 	  }     }   ]'   hint-expander='{     "hint": "Hint expander for the radio button group",     "content": "Example hint expander content for the radio button group."   }'   required="true" > </ontario-radio-buttons>
 		 */
@@ -1541,6 +1565,10 @@ export interface OntarioHintExpanderCustomEvent<T> extends CustomEvent<T> {
 export interface OntarioInputCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioInputElement;
+}
+export interface OntarioRadioButtonsCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioRadioButtonsElement;
 }
 export interface OntarioTextareaCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
@@ -2434,6 +2462,18 @@ declare namespace LocalJSX {
 		 */
 		caption?: Caption | string;
 		/**
+		 * Used to add a custom function to the checkbox onBlur event.
+		 */
+		customOnBlur?: Function;
+		/**
+		 * Used to add a custom function to the checkbox onChange event.
+		 */
+		customOnChange?: Function;
+		/**
+		 * Used to add a custom function to the checkbox onFocus event.
+		 */
+		customOnFocus?: Function;
+		/**
 		 * Used to include the ontario-hint-expander component for the checkbox group. This is passed in as an object with key-value pairs. This is optional.
 		 * @example <ontario-checkboxes   caption='{     "captionText": "Checkbox legend",     "captionType": "heading",   }   name='ontario-checkboxes'   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label", 		"elementId": "checkbox-1" 	}   }]'   hint-expander='{    "hint": "Hint expander for the checkbox group",    "content": "Example hint expander content for the checkbox group"   }'   required="true" > </ontario-checkboxes>
 		 */
@@ -2451,9 +2491,17 @@ declare namespace LocalJSX {
 		 */
 		name?: string;
 		/**
-		 * Emitted when a keyboard input or mouse event occurs.
+		 * Emitted when a keyboard input event occurs when a checkbox option has lost focus.
 		 */
-		onChangeEvent?: (event: OntarioCheckboxesCustomEvent<KeyboardEvent>) => void;
+		onCheckboxOnBlur?: (event: OntarioCheckboxesCustomEvent<any>) => void;
+		/**
+		 * Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed.
+		 */
+		onCheckboxOnChange?: (event: OntarioCheckboxesCustomEvent<any>) => void;
+		/**
+		 * Emitted when a keyboard input event occurs when a checkbox option has gained focus.
+		 */
+		onCheckboxOnFocus?: (event: OntarioCheckboxesCustomEvent<any>) => void;
 		/**
 		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
 		 * @example <ontario-checkboxes   caption='{ 	"captionText": "Checkbox legend", 	"captionType": "heading",   }   name="ontario-checkboxes",   hint-text="Hint text for the checkbox group."   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label" 		"elementId": "checkbox-1"     },     {        "value": "checkbox-option-2",        "label": "Checkbox option 2 label", 		  "elementId": "checkbox-2",       "hintExpander": { 			"hint": "Hint expander for checkbox option 2",              "content": "Example hint expander content for checkbox option 2"        }      }   ]'   required="true" > </ontario-checkboxes>
@@ -3783,6 +3831,18 @@ declare namespace LocalJSX {
 		 */
 		caption?: Caption | string;
 		/**
+		 * Used to add a custom function to the radio input onBlur event.
+		 */
+		customOnBlur?: Function;
+		/**
+		 * Used to add a custom function to the radio input onChange event.
+		 */
+		customOnChange?: Function;
+		/**
+		 * Used to add a custom function to the radio input onFocus event.
+		 */
+		customOnFocus?: Function;
+		/**
 		 * Used to include the ontario-hint-expander component for the radio button group. This is passed in as an object with key-value pairs. This is optional.
 		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }' 	 name="radios"   options='[ 	   {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 1", 		      "content": "Example hint expander content for radio option 1." 	  }     }   ]'   hint-expander='{     "hint": "Hint expander for the radio button group",     "content": "Example hint expander content for the radio button group."   }'   required="true" > </ontario-radio-buttons>
 		 */
@@ -3799,6 +3859,18 @@ declare namespace LocalJSX {
 		 * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
 		 */
 		name?: string;
+		/**
+		 * Emitted when a keyboard input event occurs when a radio option has lost focus.
+		 */
+		onRadioOnBlur?: (event: OntarioRadioButtonsCustomEvent<any>) => void;
+		/**
+		 * Emitted when a keyboard input or mouse event occurs when a radio option has been changed.
+		 */
+		onRadioOnChange?: (event: OntarioRadioButtonsCustomEvent<any>) => void;
+		/**
+		 * Emitted when a keyboard input event occurs when a radio option has gained focus.
+		 */
+		onRadioOnFocus?: (event: OntarioRadioButtonsCustomEvent<any>) => void;
 		/**
 		 * Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a group, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the group.
 		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }'   name="radios"   hint-text="Hint text for the radio button group."   options='[     {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label"     },     {        "value": "radio-option-2", 		  "elementId": "radio-2",        "label": "Radio option 2 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 2", 		      "content": "Example hint expander content for radio option 2." 	  }      }   ]'   required="true" > </ontario-radio-buttons>

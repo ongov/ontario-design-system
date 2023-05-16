@@ -3,6 +3,8 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
 import { Base, Hint } from '../../utils/common.interface';
 import { Caption } from '../../utils/input-caption/caption.interface';
+import { Language } from '../../utils/language-types';
+import { RadioAndCheckboxChangeEvent, InputFocusBlurEvent } from '../../utils/events/event-handler.interface';
 
 export interface RadioButtons extends Base {
 	/**
@@ -18,6 +20,12 @@ export interface RadioButtons extends Base {
 	 * </ontario-radio-buttons>
 	 */
 	caption: Caption | string;
+
+	/**
+	 * The language of the component.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+	 */
+	language?: Language;
 
 	/**
 	 * The name assigned to the radio button.
@@ -106,4 +114,34 @@ export interface RadioButtons extends Base {
 	 * </ontario-radio-buttons>
 	 */
 	options: string | RadioOption[];
+
+	/**
+	 * Used to add a custom function to the radio input onChange event.
+	 */
+	customOnChange?: Function;
+
+	/**
+	 * Used to add a custom function to the radio input onBlur event.
+	 */
+	customOnBlur?: Function;
+
+	/**
+	 * Used to add a custom function to the radio input onFocus event.
+	 */
+	customOnFocus?: Function;
+
+	/**
+	 * Emitted when a keyboard input or mouse event occurs when a radio option has been changed.
+	 */
+	radioOnChange: RadioAndCheckboxChangeEvent;
+
+	/**
+	 * Emitted when a keyboard input event occurs when a radio option has lost focus.
+	 */
+	radioOnBlur: InputFocusBlurEvent;
+
+	/**
+	 * Emitted when a keyboard input event occurs when a radio option has gained focus.
+	 */
+	radioOnFocus: InputFocusBlurEvent;
 }

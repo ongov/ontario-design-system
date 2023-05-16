@@ -107,29 +107,59 @@ export class OntarioCallout {
 export declare interface OntarioCallout extends Components.OntarioCallout {}
 
 @ProxyCmp({
-	inputs: ['caption', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required'],
+	inputs: [
+		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
+		'hintExpander',
+		'hintText',
+		'language',
+		'name',
+		'options',
+		'required',
+	],
 })
 @Component({
 	selector: 'ontario-checkboxes',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['caption', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required'],
+	inputs: [
+		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
+		'hintExpander',
+		'hintText',
+		'language',
+		'name',
+		'options',
+		'required',
+	],
 })
 export class OntarioCheckboxes {
 	protected el: HTMLElement;
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['changeEvent']);
+		proxyOutputs(this, this.el, ['checkboxOnChange', 'checkboxOnBlur', 'checkboxOnFocus']);
 	}
 }
 
 export declare interface OntarioCheckboxes extends Components.OntarioCheckboxes {
 	/**
-	 * Emitted when a keyboard input or mouse event occurs.
+	 * Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed.
 	 */
-	changeEvent: EventEmitter<CustomEvent<KeyboardEvent>>;
+	checkboxOnChange: EventEmitter<CustomEvent<any>>;
+	/**
+	 * Emitted when a keyboard input event occurs when a checkbox option has lost focus.
+	 */
+	checkboxOnBlur: EventEmitter<CustomEvent<any>>;
+	/**
+	 * Emitted when a keyboard input event occurs when a checkbox option has gained focus.
+	 */
+	checkboxOnFocus: EventEmitter<CustomEvent<any>>;
 }
 
 @ProxyCmp({
@@ -2616,24 +2646,60 @@ export class OntarioPageAlert {
 export declare interface OntarioPageAlert extends Components.OntarioPageAlert {}
 
 @ProxyCmp({
-	inputs: ['caption', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required'],
+	inputs: [
+		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
+		'hintExpander',
+		'hintText',
+		'language',
+		'name',
+		'options',
+		'required',
+	],
 })
 @Component({
 	selector: 'ontario-radio-buttons',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['caption', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required'],
+	inputs: [
+		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
+		'hintExpander',
+		'hintText',
+		'language',
+		'name',
+		'options',
+		'required',
+	],
 })
 export class OntarioRadioButtons {
 	protected el: HTMLElement;
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
+		proxyOutputs(this, this.el, ['radioOnChange', 'radioOnBlur', 'radioOnFocus']);
 	}
 }
 
-export declare interface OntarioRadioButtons extends Components.OntarioRadioButtons {}
+export declare interface OntarioRadioButtons extends Components.OntarioRadioButtons {
+	/**
+	 * Emitted when a keyboard input or mouse event occurs when a radio option has been changed.
+	 */
+	radioOnChange: EventEmitter<CustomEvent<any>>;
+	/**
+	 * Emitted when a keyboard input event occurs when a radio option has lost focus.
+	 */
+	radioOnBlur: EventEmitter<CustomEvent<any>>;
+	/**
+	 * Emitted when a keyboard input event occurs when a radio option has gained focus.
+	 */
+	radioOnFocus: EventEmitter<CustomEvent<any>>;
+}
 
 @ProxyCmp({
 	inputs: ['caption', 'elementId', 'hintExpander', 'hintText', 'language', 'name', 'required', 'value'],
