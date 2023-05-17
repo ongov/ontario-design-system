@@ -4,17 +4,20 @@ import { SimpleFooterLinks } from '../ontario-footer-interface';
 
 export type ExpandedFooterWrapperProps = {
 	footerLinks: SimpleFooterLinks;
+	topMargin: boolean;
 };
 
 export const ExpandedFooterWrapper: FunctionalComponent<ExpandedFooterWrapperProps> = (props, children) => {
+	const { topMargin, footerLinks } = props;
 	const style = { '--imagePath': `url(${getAssetPath('./assets/footer-expanded-supergraphic-logo.svg')})` };
+	const marginClass = !topMargin ? 'ontario-margin-top-0-!' : '';
 
 	return (
-		<footer class="ontario-footer ontario-footer--expanded" style={style}>
+		<footer class={`ontario-footer ontario-footer--expanded ${marginClass}`} style={style}>
 			<div class="ontario-footer__expanded-top-section">
 				<div class="ontario-row">{children}</div>
 			</div>
-			<SimpleFooter {...props.footerLinks} className="ontario-footer__expanded-bottom-section" />
+			<SimpleFooter {...footerLinks} className="ontario-footer__expanded-bottom-section" />
 		</footer>
 	);
 };

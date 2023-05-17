@@ -1,3 +1,91 @@
+# 2.4.0 (2023-05-16)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** adds fixes according to code review e258375
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** allow passing footer link labels e551d63
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** fix for angular component library 337e88a
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** update hint and hint expander props 03cf633
+- **@ontario-digital-service/ontario-design-system-component-library-angular:** fix for angular component library 88b29b7
+- **@ontario-digital-service/ontario-design-system-component-library-angular:** removes breaking space in rEADME d1fe3f4
+- **@ontario-digital-service/ontario-design-system-component-library, @ontario-digital-service/ontario-design-system-global-styles:** adds ontario-page-alert styles to global styles package to target slots 50c4ce8
+- **@ontario-digital-service/ontario-design-system-component-library:** adds changes to loading indicator component based on MR review 5b52937
+- **@ontario-digital-service/ontario-design-system-component-library:** adds check to see if slot is passed before running validation for critical alert content prop a126261
+- **@ontario-digital-service/ontario-design-system-component-library:** adds id prop to checkbox options props, updates checkbox examples in app-react and index.html 6e3ed28
+- **@ontario-digital-service/ontario-design-system-component-library:** adds missing fixes from MR review 1b7d837
+- **@ontario-digital-service/ontario-design-system-component-library:** adds selected key to dropdown list options props 6e5243e
+- **@ontario-digital-service/ontario-design-system-component-library:** app-react bugs pt 2 1292f07
+- **@ontario-digital-service/ontario-design-system-component-library:** changes according to MR review 125d14e
+- **@ontario-digital-service/ontario-design-system-component-library:** fix for how html is rendered in callout/aside components 617e39e
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes according to MR review 2a63efd
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes according to MR review 0abf571
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes according to MR review aa23a6c
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes according to MR review 16c1918
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes broken test for loading indicator component 62bf349
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes broken tests eb664e0
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes errors and warnings from app-react POC 830cfd6
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes examples + props in radio interfaces 065f4fe
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes for remaining component pages for react app fc4149d
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes incorrect links, re-runs build 120c62a
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes MR conflicts 7370775
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes typo for checkbox readme a2c77f1
+- **@ontario-digital-service/ontario-design-system-component-library:** rebase with develop 0d0e650
+- **@ontario-digital-service/ontario-design-system-component-library:** rebases with develop 98e65f8
+- **@ontario-digital-service/ontario-design-system-component-library:** rebases with develop bce6caa
+- **@ontario-digital-service/ontario-design-system-component-library:** remove references to describedBy prop in app-react + README files 3b3aab9
+- **@ontario-digital-service/ontario-design-system-component-library:** removes console log ae11bc5
+- **@ontario-digital-service/ontario-design-system-component-library:** removes name prop from radio buttons options prop, updates app-react radio buttons page bc351c9
+- **@ontario-digital-service/ontario-design-system-component-library:** review comment fix ba834b9
+- **@ontario-digital-service/ontario-design-system-component-library:** review comment fix 75435cf
+- **@ontario-digital-service/ontario-design-system-component-library:** review comment fixes 4d8c781
+- **@ontario-digital-service/ontario-design-system-component-library:** update form web components to generate the same id as the hint text for aria-describedby value bfa8bc0
+- **@ontario-digital-service/ontario-design-system-component-library:** updates according to MR review 2d56b38
+- **@ontario-digital-service/ontario-design-system-component-library:** updates aria hidden value to not use toString 1d649ec
+- **@ontario-digital-service/ontario-design-system-component-library:** updates branch according to code review 89e672e
+- **@ontario-digital-service/ontario-design-system-component-library:** updates branch according to MR suggestions 8961193
+- **@ontario-digital-service/ontario-design-system-component-library:** updates broken e2e back to top tests dd628bd
+- **@ontario-digital-service/ontario-design-system-component-library:** updates checkbox options + descriptions 2b68b9c
+- **@ontario-digital-service/ontario-design-system-component-library:** updates package-lock.json file 1dfaec5
+- **@ontario-digital-service/ontario-design-system-component-library:** updates README files for callouts and asides 8d1211a
+- **@ontario-digital-service/ontario-design-system-component-library:** updates with develop, fixes broken application header in react app d8ce640
+- **@ontario-digital-service/ontario-design-system-global-styles:** adds page alert scss file 8585226
+- **@ontario-digital-service/ontario-design-system-global-styles:** updaets from code review, adds work for DS-1483 01ae369
+- **@ontario-digital-service/ontario-design-system-global-styles:** updates calculated styles fbffc9a
+- adds @nrwl optional dependencies 2918762
+- **angular-component-library:** move package readme contents to main angular workspace readme f8ce678
+- fixes incorrect heading order in HeaderApplication file 0622379
+- passes objects as props to react app cae5b18
+- **test:** ran refresh b9bab7f
+- **test:** resolve issues with header unit tests 389b894
+- updates prop options for modified components a6bdc8d
+- updates react app components to use objects as props c732702
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** added foundational npm package for angular 67468af
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** adds publishing requirements for angular component library, updates component library README 877a408
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** rebased with develop ff4745f
+- **@ontario-digital-service/ontario-design-system-component-library-react, @ontario-digital-service/ontario-design-system-component-library, @ontario-digital-service/ontario-design-system-global-styles:** adds callout + aside components to component library 8b7c99a
+- **@ontario-digital-service/ontario-design-system-component-library-react, @ontario-digital-service/ontario-design-system-component-library:** adds loading indicator component fc0d4cf
+- **@ontario-digital-service/ontario-design-system-component-library:** add prop to disable dynamic menu 08d7a99
+- **@ontario-digital-service/ontario-design-system-component-library:** added language support e2647fb
+- **@ontario-digital-service/ontario-design-system-component-library:** adding tests e2e614b
+- **@ontario-digital-service/ontario-design-system-component-library:** adds unit and e2e test for callouts and asides e8232fb
+- **@ontario-digital-service/ontario-design-system-component-library:** adds unit and e2e tests for ontario-loading-indicator component cc40799
+- **@ontario-digital-service/ontario-design-system-component-library:** remove default for menuItems prop 79f89bc
+- **@ontario-digital-service/ontario-design-system-component-library:** set default data in parsed items 952b49e
+- **@ontario-digital-service/ontario-design-system-component-library:** testing new fetch 4b97af6
+- **@ontario-digital-service/ontario-design-system-component-library:** update examples 0317457
+- **@ontario-digital-service/ontario-design-system-component-library:** update generate link functionality to account for dynamic menu a01cd12
+- **@ontario-digital-service/ontario-design-system-component-library:** update ternary for generating navigation links 9ae0558
+- **@ontario-digital-service/ontario-design-system-component-library:** wip a1d023d
+- **@ontario-digital-service/ontario-design-system-design-tokens, @ontario-digital-service/ontario-design-system-global-styles:** add new tokens for service ontario header 2bf65cd
+- **@ontario-digital-service/ontario-design-system-design-tokens, @ontario-digital-service/ontario-design-system-global-styles:** remove green from brand name 60478ae
+- **@ontario-digital-service/ontario-design-system-global-styles:** adds swap font-display to font-face declarations in global-styles package 8987f06
+- **@ontario-digital-service/ontario-design-system-global-styles:** update configuration steps for global styles package d07a352
+- **@ontario-digital-service/ontario-design-system-global-styles:** update tense of verb c130047
+- **@ontario-digital-service/ontario-design-system-global-styles:** updated based on nakibs mr feedback bedb20a
+
 # 2.4.0-alpha.4 (2023-05-15)
 
 ### Bug Fixes

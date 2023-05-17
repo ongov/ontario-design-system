@@ -7,6 +7,7 @@ import CodeHighlighter from '../../components/code-highlighter';
 export default function CheckboxExample() {
 	const checkboxCodeExample = `import { OntarioCheckboxes } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n
 <OntarioCheckboxes 
+	ref={componentRef}
 	caption={{
 		captionText: "Checkbox legend",
 		captionType: "large"
@@ -44,6 +45,7 @@ export default function CheckboxExample() {
 		hint: "Hint expander for the checkbox group",
 		content: "Example hint expander content for the checkbox group."
 	}}
+	customOnChange={(ev: any) => handleCheckboxOnChange(ev)}
 ></OntarioCheckboxes>`;
 
 	const componentRef = useRef<any>(null);
@@ -51,19 +53,23 @@ export default function CheckboxExample() {
 	useEffect(() => {
 		const component = componentRef.current;
 		if (component) {
-			component.addEventListener('changeEvent', handleEvent);
+			component.addEventListener('checkboxOnChange', handleEvent);
 		}
 
 		return () => {
 			if (component) {
-				component.removeEventListener('changeEvent', handleEvent);
+				component.removeEventListener('checkboxOnChange', handleEvent);
 			}
 		};
 	}, [componentRef]);
 
 	const handleEvent = (e: any) => {
 		// this should be updated to output the selected value
-		console.log(e);
+		console.log(e.detail);
+	};
+
+	const handleCheckboxOnChange = (ev: any) => {
+		console.log(`${ev.target.value} was clicked`);
 	};
 
 	return (
@@ -110,6 +116,7 @@ export default function CheckboxExample() {
 							hint: 'Hint expander for the checkbox group',
 							content: 'Example hint expander content for the checkbox group.',
 						}}
+						customOnChange={(ev: any) => handleCheckboxOnChange(ev)}
 					></OntarioCheckboxes>
 
 					<p>With the following markup:</p>
