@@ -1,3 +1,14 @@
+## 2.4.1-alpha.1 (2023-05-17)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** fixed footer margin and heading class 5724c7f
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** updates events for radio button and checkbox component 26ac007
+- **@ontario-digital-service/ontario-design-system-component-library:** fixed remaining footer component bugs d9568ec
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes according to MR review 8424490
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes broken build 15800f9
+- **@ontario-digital-service/ontario-design-system-component-library:** remove console logs ea55c20
+
 # 2.4.0 (2023-05-16)
 
 ### Bug Fixes
