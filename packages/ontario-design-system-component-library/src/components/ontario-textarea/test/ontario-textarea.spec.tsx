@@ -51,25 +51,11 @@ describe('ontario-textarea', () => {
 			expect(page.rootInstance.name).toBe('textarea-name');
 			expect(page.rootInstance.value).toBe('textarea value');
 			expect(page.rootInstance.elementId).toBe('textarea-id');
-			expect(page.rootInstance.focused).toBe(false);
 			expect(page.rootInstance.captionState.captionText).toBe('Ontario Textarea');
 		});
 	});
 
 	describe('events/methods', () => {
-		it('should handle focus with right focused state', async () => {
-			const textarea = new OntarioTextarea();
-			textarea.handleFocus();
-			expect(textarea.focused).toBeTruthy();
-		});
-
-		it('should handle blur with right focused state', async () => {
-			const textarea = new OntarioTextarea();
-			textarea.focused = true;
-			textarea.handleBlur();
-			expect(textarea.focused).toBeFalsy();
-		});
-
 		it('should emit a keyboard event on change', async () => {
 			const page = await newSpecPage({
 				components: [OntarioTextarea],
@@ -77,18 +63,18 @@ describe('ontario-textarea', () => {
 					name="textarea-name"
 					required="true"
 					element-id="textarea-id"
-					label-caption="Ontario Textarea"
-					label-type="default"
+					caption="Ontario Textarea"
 				></ontario-textarea>`,
 			});
 
 			const emitSpy = jest.fn();
 			const leftArrowKeyCode = 37;
-			page.doc.addEventListener('changeEvent', emitSpy);
-			page.rootInstance.handleChange(
+			page.doc.addEventListener('inputOnChange', emitSpy);
+			page.rootInstance.handleEvent(
 				new KeyboardEvent('keydown', {
 					keyCode: leftArrowKeyCode,
 				}),
+				'change',
 			);
 			await page.waitForChanges();
 			expect(emitSpy).toHaveBeenCalled();
@@ -101,20 +87,20 @@ describe('ontario-textarea', () => {
 					name="textarea-name"
 					required="true"
 					element-id="textarea-id"
-					label-caption="Ontario Textarea"
-					label-type="default"
+					caption="Ontario Textarea"
 				></ontario-textarea>`,
 			});
 
 			const emitSpy = jest.fn();
 			const testValue = 'This is a test';
 			const leftArrowKeyCode = 37;
-			page.doc.addEventListener('changeEvent', emitSpy);
+			page.doc.addEventListener('inputOnChange', emitSpy);
 			page.rootInstance.value = testValue;
-			page.rootInstance.handleChange(
+			page.rootInstance.handleEvent(
 				new KeyboardEvent('keydown', {
 					keyCode: leftArrowKeyCode,
 				}),
+				'change',
 			);
 			await page.waitForChanges();
 			expect(page.rootInstance.value).toBe(testValue);
@@ -127,8 +113,7 @@ describe('ontario-textarea', () => {
 					name="textarea-name"
 					required="true"
 					element-id="textarea-id"
-					label-caption="Ontario Textarea"
-					label-type="default"
+					caption="Ontario Textarea"
 				></ontario-textarea>`,
 			});
 
