@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop, State, Listen, Element, Watch } from '@stencil/core';
+import { Component, Event, h, Prop, State, Listen, Element, Watch } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
 import { TextInput } from './input.interface';
@@ -10,6 +10,8 @@ import { Caption } from '../../utils/input-caption/caption.interface';
 import { Language } from '../../utils/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import { constructHintTextObject } from '../../utils/hints/hints';
+import { InputFocusBlurEvent, EventType, InputChangeEvent } from '../../utils/events/event-handler.interface';
+import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
@@ -120,7 +122,20 @@ export class OntarioInput implements TextInput {
 	 */
 	@State() hintTextId: string | null | undefined;
 
-	@State() focused: boolean = false;
+	/**
+	 * Used to add a custom function to the textarea onChange event.
+	 */
+	@Prop() customOnChange?: Function;
+
+	/**
+	 * Used to add a custom function to the textarea onBlur event.
+	 */
+	@Prop() customOnBlur?: Function;
+
+	/**
+	 * Used to add a custom function to the textarea onFocus event.
+	 */
+	@Prop() customOnFocus?: Function;
 
 	/**
 	 * The hint text options are re-assigned to the internalHintText array.
@@ -138,19 +153,19 @@ export class OntarioInput implements TextInput {
 	@State() private captionState: InputCaption;
 
 	/**
-	 * Emitted when the input loses focus.
+	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 	 */
-	@Event() blurEvent!: EventEmitter<void>;
+	@Event({ eventName: 'inputOnChange' }) inputOnChange: InputChangeEvent;
 
 	/**
-	 * Emitted when the input gains focus.
+	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
-	@Event() focusEvent!: EventEmitter<void>;
+	@Event({ eventName: 'inputOnBlur' }) inputOnBlur: InputFocusBlurEvent;
 
 	/**
-	 * Emitted when a keyboard input occurred.
+	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
-	@Event() changeEvent!: EventEmitter<KeyboardEvent>;
+	@Event({ eventName: 'inputOnFocus' }) inputOnFocus: InputFocusBlurEvent;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -203,21 +218,21 @@ export class OntarioInput implements TextInput {
 		this.updateCaptionState(this.caption);
 	}
 
-	handleBlur = () => {
-		this.focused = false;
-	};
-
-	handleFocus = () => {
-		this.focused = true;
-	};
-
-	handleChange = (ev: Event) => {
+	handleEvent = (ev: Event, eventType: EventType) => {
 		const input = ev.target as HTMLInputElement | null;
 
-		if (input) {
-			this.value = input.value ?? '';
-		}
-		this.changeEvent.emit(ev as KeyboardEvent);
+		handleInputEvent(
+			ev,
+			eventType,
+			input,
+			this.inputOnChange,
+			this.inputOnFocus,
+			this.inputOnBlur,
+			'input',
+			this.customOnChange,
+			this.customOnFocus,
+			this.customOnBlur,
+		);
 	};
 
 	public getId(): string {
@@ -266,9 +281,9 @@ export class OntarioInput implements TextInput {
 					class={this.getClass()}
 					id={this.getId()}
 					name={this.name}
-					onBlur={this.handleBlur}
-					onFocus={this.handleFocus}
-					onInput={this.handleChange}
+					onInput={(e) => this.handleEvent(e, EventType.Change)}
+					onBlur={(e) => this.handleEvent(e, EventType.Blur)}
+					onFocus={(e) => this.handleEvent(e, EventType.Focus)}
 					type={this.type}
 					value={this.getValue()}
 					required={!!this.required}

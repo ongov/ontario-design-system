@@ -1,6 +1,8 @@
-import { Base, Hint } from '../../utils/common.interface';
 import { DropdownOption } from './dropdown-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
+
+import { Base, Hint } from '../../utils/common.interface';
+import { InputFocusBlurEvent, InputChangeEvent } from '../../utils/events/event-handler.interface';
 
 export interface Dropdown extends Base {
 	/**
@@ -106,4 +108,34 @@ export interface Dropdown extends Base {
 	 * </ontario-dropdown-list>
 	 */
 	hintExpander?: HintExpander | string;
+
+	/**
+	 * Used to add a custom function to the dropdown onChange event.
+	 */
+	customOnChange?: Function;
+
+	/**
+	 * Used to add a custom function to the dropdown onBlur event.
+	 */
+	customOnBlur?: Function;
+
+	/**
+	 * Used to add a custom function to the dropdown onFocus event.
+	 */
+	customOnFocus?: Function;
+
+	/**
+	 * Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed.
+	 */
+	dropdownOnChange: InputChangeEvent;
+
+	/**
+	 * Emitted when a keyboard input event occurs when a dropdown list has lost focus.
+	 */
+	dropdownOnBlur: InputFocusBlurEvent;
+
+	/**
+	 * Emitted when a keyboard input event occurs when a dropdown list has gained focus.
+	 */
+	dropdownOnFocus: InputFocusBlurEvent;
 }

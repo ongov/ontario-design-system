@@ -185,6 +185,9 @@ export declare interface OntarioCriticalAlert extends Components.OntarioCritical
 @ProxyCmp({
 	inputs: [
 		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
 		'elementId',
 		'hintExpander',
 		'hintText',
@@ -202,6 +205,9 @@ export declare interface OntarioCriticalAlert extends Components.OntarioCritical
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
 	inputs: [
 		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
 		'elementId',
 		'hintExpander',
 		'hintText',
@@ -217,10 +223,24 @@ export class OntarioDropdownList {
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
+		proxyOutputs(this, this.el, ['dropdownOnChange', 'dropdownOnBlur', 'dropdownOnFocus']);
 	}
 }
 
-export declare interface OntarioDropdownList extends Components.OntarioDropdownList {}
+export declare interface OntarioDropdownList extends Components.OntarioDropdownList {
+	/**
+	 * Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed.
+	 */
+	dropdownOnChange: EventEmitter<CustomEvent<any>>;
+	/**
+	 * Emitted when a keyboard input event occurs when a dropdown list has lost focus.
+	 */
+	dropdownOnBlur: EventEmitter<CustomEvent<any>>;
+	/**
+	 * Emitted when a keyboard input event occurs when a dropdown list has gained focus.
+	 */
+	dropdownOnFocus: EventEmitter<CustomEvent<any>>;
+}
 
 @ProxyCmp({
 	inputs: ['footerLinks', 'language', 'socialLinks', 'threeColumnOptions', 'topMargin', 'twoColumnOptions', 'type'],
@@ -2552,6 +2572,9 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
 @ProxyCmp({
 	inputs: [
 		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
 		'elementId',
 		'hintExpander',
 		'hintText',
@@ -2570,6 +2593,9 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
 	inputs: [
 		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
 		'elementId',
 		'hintExpander',
 		'hintText',
@@ -2586,23 +2612,23 @@ export class OntarioInput {
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['blurEvent', 'focusEvent', 'changeEvent']);
+		proxyOutputs(this, this.el, ['inputOnChange', 'inputOnBlur', 'inputOnFocus']);
 	}
 }
 
 export declare interface OntarioInput extends Components.OntarioInput {
 	/**
-	 * Emitted when the input loses focus.
+	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 	 */
-	blurEvent: EventEmitter<CustomEvent<void>>;
+	inputOnChange: EventEmitter<CustomEvent<any>>;
 	/**
-	 * Emitted when the input gains focus.
+	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
-	focusEvent: EventEmitter<CustomEvent<void>>;
+	inputOnBlur: EventEmitter<CustomEvent<any>>;
 	/**
-	 * Emitted when a keyboard input occurred.
+	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
-	changeEvent: EventEmitter<CustomEvent<KeyboardEvent>>;
+	inputOnFocus: EventEmitter<CustomEvent<any>>;
 }
 
 @ProxyCmp({
@@ -2702,37 +2728,61 @@ export declare interface OntarioRadioButtons extends Components.OntarioRadioButt
 }
 
 @ProxyCmp({
-	inputs: ['caption', 'elementId', 'hintExpander', 'hintText', 'language', 'name', 'required', 'value'],
+	inputs: [
+		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
+		'elementId',
+		'hintExpander',
+		'hintText',
+		'language',
+		'name',
+		'required',
+		'value',
+	],
 })
 @Component({
 	selector: 'ontario-textarea',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['caption', 'elementId', 'hintExpander', 'hintText', 'language', 'name', 'required', 'value'],
+	inputs: [
+		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
+		'elementId',
+		'hintExpander',
+		'hintText',
+		'language',
+		'name',
+		'required',
+		'value',
+	],
 })
 export class OntarioTextarea {
 	protected el: HTMLElement;
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['blurEvent', 'focusEvent', 'changeEvent']);
+		proxyOutputs(this, this.el, ['inputOnChange', 'inputOnBlur', 'inputOnFocus']);
 	}
 }
 
 export declare interface OntarioTextarea extends Components.OntarioTextarea {
 	/**
-	 * Emitted when the input loses focus.
+	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 	 */
-	blurEvent: EventEmitter<CustomEvent<void>>;
+	inputOnChange: EventEmitter<CustomEvent<any>>;
 	/**
-	 * Emitted when the input gains focus.
+	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
-	focusEvent: EventEmitter<CustomEvent<void>>;
+	inputOnBlur: EventEmitter<CustomEvent<any>>;
 	/**
-	 * Emitted when a keyboard input occurred.
+	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
-	changeEvent: EventEmitter<CustomEvent<KeyboardEvent>>;
+	inputOnFocus: EventEmitter<CustomEvent<any>>;
 }
 
 @ProxyCmp({
