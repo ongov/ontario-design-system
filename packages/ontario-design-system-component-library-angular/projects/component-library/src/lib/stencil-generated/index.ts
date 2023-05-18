@@ -9,6 +9,7 @@ export const DIRECTIVES = [
 	d.OntarioCheckboxes,
 	d.OntarioCriticalAlert,
 	d.OntarioDropdownList,
+	d.OntarioFieldset,
 	d.OntarioFooter,
 	d.OntarioHeader,
 	d.OntarioHintExpander,
