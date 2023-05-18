@@ -22,7 +22,7 @@ describe('ontario-textarea', () => {
 			expect(page.root).toEqualHtml(`
 				<ontario-textarea name="ontario-textarea" element-id="ontario-textarea" caption='{"captionText": "Ontario Textarea"}'>
 					<mock:shadow-root>
-						<div>
+						<div class="ontario-form-group">
 							<label htmlfor="ontario-textarea" class="ontario-label">
 								Ontario Textarea
 								<span class="ontario-label__flag">

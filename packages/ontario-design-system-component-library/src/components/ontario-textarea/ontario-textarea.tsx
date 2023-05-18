@@ -265,7 +265,7 @@ export class OntarioTextarea implements Input {
 
 	render() {
 		return (
-			<div>
+			<div class="ontario-form-group">
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.internalHintText && (
 					<ontario-hint-text

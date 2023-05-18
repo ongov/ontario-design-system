@@ -3,7 +3,7 @@
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
 	colours;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
+@use '../../styles/form.scss';
 
 .ontario-dropdown {
 	background-color: colours.$ontario-colour-white;
