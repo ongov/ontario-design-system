@@ -202,11 +202,11 @@ $ontario-icon-size--social-small: 32px;
 	text-decoration: none;
 	cursor: pointer;
 
-	&:hover,
-	&:focus {
+	&:hover {
 		background-color: darken(colours.$ontario-colour-white, 70);
 	}
 
+	&:focus,
 	&:active {
 		background-color: darken(colours.$ontario-colour-white, 60);
 		box-shadow: 0 0 0 spacing.$spacing-1 colours.$ontario-colour-focus;
@@ -344,12 +344,4 @@ $ontario-icon-size--social-small: 32px;
 .ontario-footer__expanded-bottom-section {
 	background-color: colours.$ontario-colour-black;
 	padding-top: spacing.$spacing-9;
-}
-
-.ontario-footer__link:active,
-a:active {
-	box-shadow: 0 0 0 spacing.$spacing-1 colours.$ontario-colour-focus;
-	outline: spacing.$spacing-1 solid transparent;
-	transition: all 0.1s ease-in-out;
-	background-color: colours.$ontario-colour-black !important;
 }
