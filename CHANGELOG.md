@@ -1,3 +1,12 @@
+## 2.4.1-alpha.2 (2023-05-23)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** adds events and custom event listeners for dropdown, textarea and text input components 73b2bfe
+- **@ontario-digital-service/ontario-design-system-component-library:** added components.d.s and package-lock.json changes aa46c48
+- **@ontario-digital-service/ontario-design-system-component-library:** removed conflicting footer link styles ba9d8d8
+- **@ontario-digital-service/ontario-design-system-global-styles:** removed duplicate line-height variable d5876d0
+
 ## 2.4.1-alpha.1 (2023-05-17)
 
 ### Bug Fixes
