@@ -1,5 +1,5 @@
-import { EventEmitter } from '@stencil/core';
 import { Language } from './language-types';
+import { InputChangeEvent, InputFocusBlurEvent } from './events/event-handler.interface';
 
 export interface Base {
 	/**
@@ -46,30 +46,34 @@ export interface Input extends Base {
 	value?: string;
 
 	/**
-	 * Determines if the element is focused.
+	 * Used to add a custom function to the input onChange event.
 	 */
-	focused?: boolean;
+	customOnChange?: Function;
 
 	/**
-	 * Emitted when a keyboard input occurred.
+	 * Used to add a custom function to the input onBlur event.
 	 */
-	changeEvent?: EventEmitter<KeyboardEvent>;
+	customOnBlur?: Function;
 
 	/**
-	 * Emitted when the input loses focus.
+	 * Used to add a custom function to the input onFocus event.
 	 */
-	blurEvent?: EventEmitter<void>;
+	customOnFocus?: Function;
 
 	/**
-	 * Emitted when the input gains focus.
+	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 	 */
-	focusEvent?: EventEmitter<void>;
+	inputOnChange: InputChangeEvent;
 
-	handleBlur?: () => void;
+	/**
+	 * Emitted when a keyboard input event occurs when an input has lost focus.
+	 */
+	inputOnBlur: InputFocusBlurEvent;
 
-	handleFocus?: () => void;
-
-	handleChange?: (event: Event) => void;
+	/**
+	 * Emitted when a keyboard input event occurs when an input has gained focus.
+	 */
+	inputOnFocus: InputFocusBlurEvent;
 }
 
 export interface Hint extends Base {

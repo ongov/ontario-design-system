@@ -119,10 +119,10 @@ describe('ontario-input', () => {
 		it('fires the onBlur event', async () => {
 			const page = await newE2EPage();
 			await page.setContent("<ontario-input name='ontario-input'></ontario-input>");
-			const blurEvent = await page.spyOnEvent('onBlur');
+			const blurEvent = await page.spyOnEvent('inputOnBlur');
 			const component = await page.find('ontario-input');
 
-			component.triggerEvent('onBlur');
+			component.triggerEvent('inputOnBlur');
 			await page.waitForChanges();
 			expect(blurEvent).toHaveReceivedEventTimes(1);
 		});
@@ -130,10 +130,10 @@ describe('ontario-input', () => {
 		it('fires the onFocus event', async () => {
 			const page = await newE2EPage();
 			await page.setContent("<ontario-input name='ontario-input'></ontario-input>");
-			const focusEvent = await page.spyOnEvent('onFocus');
+			const focusEvent = await page.spyOnEvent('inputOnFocus');
 			const component = await page.find('ontario-input');
 
-			component.triggerEvent('onFocus');
+			component.triggerEvent('inputOnFocus');
 			await page.waitForChanges();
 			expect(focusEvent).toHaveReceivedEventTimes(1);
 		});
@@ -141,10 +141,10 @@ describe('ontario-input', () => {
 		it('fires the onChange event', async () => {
 			const page = await newE2EPage();
 			await page.setContent("<ontario-input name='ontario-input'></ontario-input>");
-			const changeEvent = await page.spyOnEvent('onChange');
+			const changeEvent = await page.spyOnEvent('inputOnChange');
 			const component = await page.find('ontario-input');
 
-			component.triggerEvent('onChange');
+			component.triggerEvent('inputOnChange');
 			await page.waitForChanges();
 			expect(changeEvent).toHaveReceivedEventTimes(1);
 		});

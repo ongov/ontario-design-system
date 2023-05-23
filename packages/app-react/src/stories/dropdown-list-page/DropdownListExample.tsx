@@ -62,6 +62,7 @@ export default function DropdownListExamples() {
       label: "Yukon"
     }
   ]}
+  customOnChange={(e: any) => handleChange(e)}
 >
 </OntarioDropdownList>`;
 
@@ -110,6 +111,10 @@ export default function DropdownListExamples() {
   ]}
 >
 </OntarioDropdownList>`;
+
+	const handleChange = (e: any) => {
+		console.log(`The province/territory was changed to ${e.currentTarget.value}`);
+	};
 
 	return (
 		<div className="ontario-row">
@@ -173,6 +178,7 @@ export default function DropdownListExamples() {
 							label: 'Yukon',
 						},
 					]}
+					customOnChange={(e: any) => handleChange(e)}
 				></OntarioDropdownList>
 
 				<p>With the following markup:</p>

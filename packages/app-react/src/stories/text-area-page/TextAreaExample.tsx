@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 
 import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-component-library-react';
 
@@ -19,31 +19,11 @@ export default function TextAreaExample() {
 		hint: "Example hint expander for the textarea",
 		elementId: "textarea-hint-expander"
 	}}
-	onBlur={textareaOnBlur}
-	onChange={textareaOnChange}
+	customOnBlur={(e: any) => textareaOnBlur(e)}
 />`;
 
-	const componentRef = useRef<any>(null);
-
-	useEffect(() => {
-		const component = componentRef.current;
-		if (component) {
-			component.addEventListener('changeEvent', textareaOnChange);
-		}
-
-		return () => {
-			if (component) {
-				component.removeEventListener('changeEvent', textareaOnChange);
-			}
-		};
-	}, [componentRef]);
-
-	const textareaOnBlur = () => {
-		console.log('Textarea is losing focus');
-	};
-
-	const textareaOnChange = (e: any) => {
-		console.log(e.target.value);
+	const textareaOnBlur = (e: any) => {
+		console.log(`The value of the textarea is: ${e.target.value}`);
 	};
 
 	return (
@@ -59,7 +39,6 @@ export default function TextAreaExample() {
 					</ul>
 					<div className="ontario-margin-top-24-!">
 						<OntarioTextarea
-							ref={componentRef}
 							caption={{
 								captionText: 'Label',
 								captionType: 'default',
@@ -73,7 +52,7 @@ export default function TextAreaExample() {
 								hint: 'Example hint expander for the textarea',
 								elementId: 'textarea-hint-expander',
 							}}
-							onBlur={textareaOnBlur}
+							customOnBlur={(e: any) => textareaOnBlur(e)}
 						/>
 
 						<p>With the following markup:</p>

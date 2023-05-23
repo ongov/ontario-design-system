@@ -54,25 +54,11 @@ describe('ontario-input', () => {
 			expect(page.rootInstance.elementId).toBe('input-id');
 			expect(page.rootInstance.type).toBe('tel');
 			expect(page.rootInstance.inputWidth).toBe('7-char-width');
-			expect(page.rootInstance.focused).toBe(false);
 			expect(page.rootInstance.captionState.captionText).toBe('Ontario Input');
 		});
 	});
 
 	describe('events/methods', () => {
-		it('should handle focus with right focused state', async () => {
-			const input = new OntarioInput();
-			input.handleFocus();
-			expect(input.focused).toBeTruthy();
-		});
-
-		it('should handle blur with right focused state', async () => {
-			const input = new OntarioInput();
-			input.focused = true;
-			input.handleBlur();
-			expect(input.focused).toBeFalsy();
-		});
-
 		it('should emit a keyboard event on change', async () => {
 			const page = await newSpecPage({
 				components: [OntarioInput],
@@ -84,11 +70,12 @@ describe('ontario-input', () => {
 
 			const emitSpy = jest.fn();
 			const leftArrowKeyCode = 37;
-			page.doc.addEventListener('changeEvent', emitSpy);
-			page.rootInstance.handleChange(
+			page.doc.addEventListener('inputOnChange', emitSpy);
+			page.rootInstance.handleEvent(
 				new KeyboardEvent('keydown', {
 					keyCode: leftArrowKeyCode,
 				}),
+				'change',
 			);
 			await page.waitForChanges();
 			expect(emitSpy).toHaveBeenCalled();
@@ -106,12 +93,13 @@ describe('ontario-input', () => {
 			const emitSpy = jest.fn();
 			const testValue = 'This is a test';
 			const leftArrowKeyCode = 37;
-			page.doc.addEventListener('changeEvent', emitSpy);
+			page.doc.addEventListener('inputOnChange', emitSpy);
 			page.rootInstance.value = testValue;
-			page.rootInstance.handleChange(
+			page.rootInstance.handleEvent(
 				new KeyboardEvent('keydown', {
 					keyCode: leftArrowKeyCode,
 				}),
+				'change',
 			);
 			await page.waitForChanges();
 			expect(page.rootInstance.value).toBe(testValue);
