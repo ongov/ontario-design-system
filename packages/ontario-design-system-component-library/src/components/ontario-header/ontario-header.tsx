@@ -1,5 +1,7 @@
 import { Component, Prop, State, Watch, h, Listen, Element, getAssetPath } from '@stencil/core';
 
+import { Input } from '../../utils/input/input';
+
 import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
 import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
@@ -447,24 +449,24 @@ export class OntarioHeader {
 									<label htmlFor="ontario-search-input-field" class="ontario-show-for-sr">
 										Search
 									</label>
-									<input
-										type="text"
-										name="search"
-										id="ontario-search-input-field"
-										autoComplete="off"
+									<Input
+										inputType="text"
+										inputName="search"
+										inputId="ontario-search-input-field"
+										inputAutoComplete="off"
 										aria-autocomplete="none"
-										class="ontario-input ontario-header__search-input"
-										required={true}
-										ref={(el) => (this.searchBar = el as HTMLInputElement)}
-										onKeyDown={this.onEscapePressed}
-									/>
-									<input
-										class="ontario-header__search-reset"
-										id="ontario-search-reset"
-										type="reset"
-										value=""
+										inputClass="ontario-input ontario-header__search-input"
+										isRequired={true}
+										inputRef={(el) => (this.searchBar = el as HTMLInputElement)}
+										inputOnKeyDown={this.onEscapePressed}
+									></Input>
+									<Input
+										inputClass="ontario-header__search-reset"
+										inputId="ontario-search-reset"
+										inputType="reset"
+										inputValue=""
 										aria-label="Clear field"
-									></input>
+									></Input>
 									<button class="ontario-header__search-submit" id="ontario-search-submit" type="submit">
 										<span class="ontario-show-for-sr">Submit</span>
 										<span class="ontario-header__icon-container" innerHTML={OntarioIconSearch} />

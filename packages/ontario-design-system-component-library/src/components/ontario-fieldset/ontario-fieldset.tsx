@@ -82,6 +82,8 @@ export class OntarioFieldset implements Fieldset {
 				return `ontario-fieldset__legend ontario-fieldset__legend--large`;
 			case 'heading':
 				return `ontario-fieldset__legend ontario-fieldset__legend--heading`;
+			default:
+				return `ontario-fieldset__legend`;
 		}
 	}
 

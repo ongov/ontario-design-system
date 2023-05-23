@@ -1,6 +1,7 @@
 import { Component, Event, h, Prop, State, Listen, Element, Watch } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
+import { Input } from '../../utils/input/input';
 import { TextInput } from './input.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
@@ -120,7 +121,7 @@ export class OntarioInput implements TextInput {
 	/**
 	 * Used for the `aria-describedby` value of the input. This will match with the id of the hint text.
 	 */
-	@State() hintTextId: string | null | undefined;
+	@State() hintTextId: string | undefined;
 
 	/**
 	 * Used to add a custom function to the textarea onChange event.
@@ -276,18 +277,18 @@ export class OntarioInput implements TextInput {
 						ref={(el) => (this.hintTextRef = el)}
 					></ontario-hint-text>
 				)}
-				<input
-					aria-describedby={this.hintTextId}
-					class={this.getClass()}
-					id={this.getId()}
-					name={this.name}
-					onInput={(e) => this.handleEvent(e, EventType.Change)}
-					onBlur={(e) => this.handleEvent(e, EventType.Blur)}
-					onFocus={(e) => this.handleEvent(e, EventType.Focus)}
-					type={this.type}
-					value={this.getValue()}
-					required={!!this.required}
-				/>
+				<Input
+					aria-describedBy={this.hintTextId}
+					inputClass={this.getClass()}
+					inputId={this.getId()}
+					inputName={this.name}
+					inputOnInput={(e) => this.handleEvent(e, EventType.Change)}
+					inputOnBlur={(e) => this.handleEvent(e, EventType.Blur)}
+					inputOnFocus={(e) => this.handleEvent(e, EventType.Focus)}
+					inputType={this.type}
+					inputValue={this.getValue()}
+					isRequired={!!this.required}
+				></Input>
 				{this.internalHintExpander && (
 					<ontario-hint-expander
 						hint={this.internalHintExpander.hint}

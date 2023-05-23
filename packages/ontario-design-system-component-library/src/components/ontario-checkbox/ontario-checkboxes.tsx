@@ -1,5 +1,6 @@
 import { Component, h, Prop, Element, Event, Listen, State, Watch } from '@stencil/core';
 
+import { Input } from '../../utils/input/input';
 import { CheckboxOption } from './checkbox-option.interface';
 import { Checkboxes } from './checkboxes.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
@@ -348,17 +349,17 @@ export class OntarioCheckboxes implements Checkboxes {
 					<div class="ontario-checkboxes">
 						{this.internalOptions?.map((checkbox) => (
 							<div class="ontario-checkboxes__item">
-								<input
-									class="ontario-checkboxes__input"
-									id={checkbox.elementId}
-									name={this.name}
-									type="checkbox"
-									value={checkbox.value}
-									onChange={(e) => this.handleEvent(e, EventType.Change)}
-									onBlur={(e) => this.handleEvent(e, EventType.Blur)}
-									onFocus={(e) => this.handleEvent(e, EventType.Focus)}
-									required={!!this.required}
-								/>
+								<Input
+									inputClass="ontario-checkboxes__input"
+									inputId={checkbox.elementId}
+									inputName={this.name}
+									inputType="checkbox"
+									inputValue={checkbox.value}
+									isRequired={!!this.required}
+									inputOnChange={(e) => this.handleEvent(e, EventType.Change)}
+									inputOnBlur={(e) => this.handleEvent(e, EventType.Blur)}
+									inputOnFocus={(e) => this.handleEvent(e, EventType.Focus)}
+								></Input>
 								<label class="ontario-checkboxes__label" htmlFor={checkbox.elementId}>
 									{checkbox.label}
 									{checkbox.hintExpander && this.captionState.getHintExpanderAccessibilityText(checkbox.label, true)}

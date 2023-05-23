@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-fieldset snapshot should render the expected html 1`] = `
+<ontario-fieldset legend="What is your delivery address?" legend-size="heading">
+  <mock:shadow-root>
+    <div class="ontario-form-group">
+      <fieldset class="ontario-fieldset">
+        <legend class="ontario-fieldset__legend ontario-fieldset__legend--heading">
+          <h1>
+            What is your delivery address?
+          </h1>
+        </legend>
+        <slot></slot>
+      </fieldset>
+    </div>
+  </mock:shadow-root>
+</ontario-fieldset>
+`;
