@@ -1,4 +1,4 @@
-import { Hint } from '../common.interface';
+import { Hint } from '../../common/common.interface';
 
 export const constructHintTextObject = (hintText: string | Hint) => {
 	let hintTextObject: Hint = { hint: '', hintContentType: 'string' };

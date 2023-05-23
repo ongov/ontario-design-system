@@ -1,9 +1,9 @@
 import { CheckboxOption } from './checkbox-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
-import { Base, Hint } from '../../utils/common.interface';
-import { Caption } from '../../utils/input-caption/caption.interface';
-import { Language } from '../../utils/language-types';
+import { Base, Hint } from '../../utils/common/common.interface';
+import { Caption } from '../../utils/common/input-caption/caption.interface';
+import { Language } from '../../utils/common/language-types';
 import { InputFocusBlurEvent, RadioAndCheckboxChangeEvent } from '../../utils/events/event-handler.interface';
 
 export interface Checkboxes extends Base {

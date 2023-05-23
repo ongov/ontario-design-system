@@ -2,10 +2,10 @@ import { Component, h, Prop, State, Event, Listen, Watch, Element } from '@stenc
 import { RadioButtons } from './radio-buttons.interface';
 import { RadioOption } from './radio-option.interface';
 
-import { Input } from '../../utils/input/input';
-import { Hint } from '../../utils/common.interface';
-import { InputCaption } from '../../utils/input-caption/input-caption';
-import { Caption } from '../../utils/input-caption/caption.interface';
+import { Input } from '../../utils/common/input/input';
+import { Hint } from '../../utils/common/common.interface';
+import { InputCaption } from '../../utils/common/input-caption/input-caption';
+import { Caption } from '../../utils/common/input-caption/caption.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 import {
 	validateObjectExists,
@@ -13,8 +13,8 @@ import {
 	validateLanguage,
 } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { Language } from '../../utils/language-types';
-import { constructHintTextObject } from '../../utils/hints/hints';
+import { Language } from '../../utils/common/language-types';
+import { constructHintTextObject } from '../../utils/components/hints/hints';
 import {
 	InputFocusBlurEvent,
 	RadioAndCheckboxChangeEvent,
@@ -352,15 +352,15 @@ export class OntarioRadioButtons implements RadioButtons {
 						{this.internalOptions?.map((radioOption) => (
 							<div class="ontario-radios__item">
 								<Input
-									inputClass="ontario-radios__input"
-									inputId={radioOption.elementId}
-									inputName={this.name}
-									inputType="radio"
-									inputValue={radioOption.value}
-									isRequired={!!this.required}
-									inputOnChange={(e) => this.handleEvent(e, EventType.Change)}
-									inputOnBlur={(e) => this.handleEvent(e, EventType.Blur)}
-									inputOnFocus={(e) => this.handleEvent(e, EventType.Focus)}
+									className="ontario-radios__input"
+									id={radioOption.elementId}
+									name={this.name}
+									type="radio"
+									value={radioOption.value}
+									required={!!this.required}
+									onChange={(e) => this.handleEvent(e, EventType.Change)}
+									onBlur={(e) => this.handleEvent(e, EventType.Blur)}
+									onFocus={(e) => this.handleEvent(e, EventType.Focus)}
 								></Input>
 								<label class="ontario-radios__label" htmlFor={radioOption.elementId}>
 									{radioOption.label}

@@ -1,5 +1,5 @@
 import { Language } from './language-types';
-import { InputChangeEvent, InputFocusBlurEvent } from './events/event-handler.interface';
+import { InputChangeEvent, InputFocusBlurEvent } from '../events/event-handler.interface';
 
 export interface Base {
 	/**

@@ -1,16 +1,16 @@
 import { Component, Event, h, Prop, State, Listen, Element, Watch } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
-import { Input } from '../../utils/input/input';
+import { Input } from '../../utils/common/input/input';
 import { TextInput } from './input.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
-import { Hint } from '../../utils/common.interface';
-import { InputCaption } from '../../utils/input-caption/input-caption';
-import { Caption } from '../../utils/input-caption/caption.interface';
-import { Language } from '../../utils/language-types';
+import { Hint } from '../../utils/common/common.interface';
+import { InputCaption } from '../../utils/common/input-caption/input-caption';
+import { Caption } from '../../utils/common/input-caption/caption.interface';
+import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
-import { constructHintTextObject } from '../../utils/hints/hints';
+import { constructHintTextObject } from '../../utils/components/hints/hints';
 import { InputFocusBlurEvent, EventType, InputChangeEvent } from '../../utils/events/event-handler.interface';
 import { handleInputEvent } from '../../utils/events/event-handler';
 
@@ -279,15 +279,15 @@ export class OntarioInput implements TextInput {
 				)}
 				<Input
 					aria-describedBy={this.hintTextId}
-					inputClass={this.getClass()}
-					inputId={this.getId()}
-					inputName={this.name}
-					inputOnInput={(e) => this.handleEvent(e, EventType.Change)}
-					inputOnBlur={(e) => this.handleEvent(e, EventType.Blur)}
-					inputOnFocus={(e) => this.handleEvent(e, EventType.Focus)}
-					inputType={this.type}
-					inputValue={this.getValue()}
-					isRequired={!!this.required}
+					className={this.getClass()}
+					id={this.getId()}
+					name={this.name}
+					onInput={(e) => this.handleEvent(e, EventType.Change)}
+					onBlur={(e) => this.handleEvent(e, EventType.Blur)}
+					onFocus={(e) => this.handleEvent(e, EventType.Focus)}
+					type={this.type}
+					value={this.getValue()}
+					required={!!this.required}
 				></Input>
 				{this.internalHintExpander && (
 					<ontario-hint-expander

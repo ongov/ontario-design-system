@@ -1,4 +1,4 @@
-import { Hint } from '../../utils/common.interface';
+import { Hint } from '../../utils/common/common.interface';
 
 export interface HintExpander extends Hint {
 	/**

@@ -1,4 +1,4 @@
-import { CaptionType } from '../../utils/input-caption/input-caption.types';
+import { CaptionType } from '../../utils/common/input-caption/input-caption.types';
 
 export interface Fieldset {
 	/**

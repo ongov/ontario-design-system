@@ -1,4 +1,4 @@
-import { Input } from '../../utils/common.interface';
+import { Input } from '../../utils/common/common.interface';
 
 export interface TextInput extends Input {
 	/**

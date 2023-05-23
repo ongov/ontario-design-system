@@ -5,15 +5,15 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { HeadingContentType, HeadingLevelOptions, HighlightColourOptions } from "./utils/callout-aside/callout-aside.interface";
-import { Language } from "./utils/language-types";
+import { HeadingContentType, HeadingLevelOptions, HighlightColourOptions } from "./utils/components/callout-aside/callout-aside.interface";
+import { Language } from "./utils/common/language-types";
 import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
-import { Caption } from "./utils/input-caption/caption.interface";
-import { Hint, HintContentType } from "./utils/common.interface";
+import { Caption } from "./utils/common/input-caption/caption.interface";
+import { Hint, HintContentType } from "./utils/common/common.interface";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
-import { CaptionType } from "./utils/input-caption/input-caption.types";
+import { CaptionType } from "./utils/common/input-caption/input-caption.types";
 import { FooterLinks, OntarioFooterType, ThreeColumnOptions, TwoColumnOptions } from "./components/ontario-footer/ontario-footer-interface";
 import { FooterSocialLinksProps } from "./components/ontario-footer/components";
 import { applicationHeaderInfo, languageToggleOptions, menuItems } from "./components/ontario-header/ontario-header.interface";

@@ -5,12 +5,12 @@ import {
 	HeadingContentType,
 	HeadingContentTypes,
 	HighlightColourOptions,
-} from '../../utils/callout-aside/callout-aside.interface';
+} from '../../utils/components/callout-aside/callout-aside.interface';
 import {
 	isValidHighlightColour,
 	generateCalloutAside,
 	isValidHeadingLevel,
-} from '../../utils/callout-aside/callout-aside-helpers';
+} from '../../utils/components/callout-aside/callout-aside-helpers';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 

@@ -2,7 +2,7 @@ import { Component, h, Prop, Watch } from '@stencil/core';
 
 import { Fieldset } from './ontario-fieldset.interface';
 
-import { CaptionType, CaptionTypes } from '../../utils/input-caption/input-caption.types';
+import { CaptionType, CaptionTypes } from '../../utils/common/input-caption/input-caption.types';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { validatePropExists, validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
