@@ -20,7 +20,7 @@ export class OntarioFieldset implements Fieldset {
 	/**
 	 * The size of the fieldset legend. If no prop is passed, it will be to `default`.
 	 */
-	@Prop({ mutable: true }) legendSize: CaptionType;
+	@Prop({ mutable: true }) legendSize: CaptionType = 'default';
 
 	/**
 	 * Watch for changes to the legendSize prop.
@@ -76,12 +76,11 @@ export class OntarioFieldset implements Fieldset {
 
 	private getClass() {
 		switch (this.legendSize) {
-			case 'default':
-				return `ontario-fieldset__legend`;
 			case 'large':
 				return `ontario-fieldset__legend ontario-fieldset__legend--large`;
 			case 'heading':
 				return `ontario-fieldset__legend ontario-fieldset__legend--heading`;
+			case 'default':
 			default:
 				return `ontario-fieldset__legend`;
 		}

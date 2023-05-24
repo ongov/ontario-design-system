@@ -8,7 +8,7 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca/comp
 
 ## Configuration
 
-Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the blockquote component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
+Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the fieldset component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
 
 ## Examples
 
@@ -32,7 +32,7 @@ Example of a fieldset component.
 | Property     | Attribute     | Description                                                                     | Type                                | Default     |
 | ------------ | ------------- | ------------------------------------------------------------------------------- | ----------------------------------- | ----------- |
 | `legend`     | `legend`      | The text value used for the legend of the fieldset.                             | `string`                            | `undefined` |
-| `legendSize` | `legend-size` | The size of the fieldset legend. If no prop is passed, it will be to `default`. | `"default" \| "heading" \| "large"` | `undefined` |
+| `legendSize` | `legend-size` | The size of the fieldset legend. If no prop is passed, it will be to `default`. | `"default" \| "heading" \| "large"` | `'default'` |
 
 ---
 
