@@ -1,4 +1,4 @@
-import { Base } from '../../utils/common.interface';
+import { Base } from '../../common/common.interface';
 
 export const HeadingLevel = ['h2', 'h3', 'h4', 'h5', 'h6'] as const;
 

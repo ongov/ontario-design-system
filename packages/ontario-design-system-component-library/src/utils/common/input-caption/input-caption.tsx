@@ -2,7 +2,7 @@ import { h } from '@stencil/core';
 import { CaptionType, CaptionTypes } from './input-caption.types';
 import { MessageContentType } from './input-caption.enum';
 import { CaptionInfo, Caption } from './caption.interface';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { ConsoleMessageClass } from '../../console-message/console-message';
 
 export class InputCaption implements CaptionInfo {
 	/**

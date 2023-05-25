@@ -1,4 +1,4 @@
-import { Base } from '../../utils/common.interface';
+import { Base } from '../../utils/common/common.interface';
 
 export interface Blockquote extends Base {
 	/**

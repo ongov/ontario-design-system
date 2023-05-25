@@ -16,6 +16,7 @@ export const OntarioCallout = /*@__PURE__*/createReactComponent<JSX.OntarioCallo
 export const OntarioCheckboxes = /*@__PURE__*/createReactComponent<JSX.OntarioCheckboxes, HTMLOntarioCheckboxesElement>('ontario-checkboxes');
 export const OntarioCriticalAlert = /*@__PURE__*/createReactComponent<JSX.OntarioCriticalAlert, HTMLOntarioCriticalAlertElement>('ontario-critical-alert');
 export const OntarioDropdownList = /*@__PURE__*/createReactComponent<JSX.OntarioDropdownList, HTMLOntarioDropdownListElement>('ontario-dropdown-list');
+export const OntarioFieldset = /*@__PURE__*/createReactComponent<JSX.OntarioFieldset, HTMLOntarioFieldsetElement>('ontario-fieldset');
 export const OntarioFooter = /*@__PURE__*/createReactComponent<JSX.OntarioFooter, HTMLOntarioFooterElement>('ontario-footer');
 export const OntarioHeader = /*@__PURE__*/createReactComponent<JSX.OntarioHeader, HTMLOntarioHeaderElement>('ontario-header');
 export const OntarioHintExpander = /*@__PURE__*/createReactComponent<JSX.OntarioHintExpander, HTMLOntarioHintExpanderElement>('ontario-hint-expander');

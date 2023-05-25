@@ -22,7 +22,7 @@ describe('ontario-input', () => {
 			expect(page.root).toEqualHtml(`
 				<ontario-input element-id="ontario-input" caption='{"captionText": "Ontario Input"}' name="ontario-input">
 					<mock:shadow-root>
-						<div>
+						<div class="ontario-form-group">
 							<label class="ontario-label" htmlfor="ontario-input">
 								Ontario Input
 								<span class="ontario-label__flag">

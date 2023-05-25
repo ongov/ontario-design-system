@@ -1,7 +1,7 @@
 import { DropdownOption } from './dropdown-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
-import { Base, Hint } from '../../utils/common.interface';
+import { Base, Hint } from '../../utils/common/common.interface';
 import { InputFocusBlurEvent, InputChangeEvent } from '../../utils/events/event-handler.interface';
 
 export interface Dropdown extends Base {

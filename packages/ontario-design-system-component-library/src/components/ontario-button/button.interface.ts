@@ -1,4 +1,4 @@
-import { Base } from '../../utils/common.interface';
+import { Base } from '../../utils/common/common.interface';
 import { ButtonType, HtmlType } from './ontario-button.types';
 
 export interface Button extends Base {

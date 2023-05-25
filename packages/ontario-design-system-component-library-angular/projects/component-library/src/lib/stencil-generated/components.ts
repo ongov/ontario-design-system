@@ -243,6 +243,26 @@ export declare interface OntarioDropdownList extends Components.OntarioDropdownL
 }
 
 @ProxyCmp({
+	inputs: ['legend', 'legendSize'],
+})
+@Component({
+	selector: 'ontario-fieldset',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['legend', 'legendSize'],
+})
+export class OntarioFieldset {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioFieldset extends Components.OntarioFieldset {}
+
+@ProxyCmp({
 	inputs: ['footerLinks', 'language', 'socialLinks', 'threeColumnOptions', 'topMargin', 'twoColumnOptions', 'type'],
 })
 @Component({

@@ -1,7 +1,7 @@
 import { Component, Prop, Element, h, Watch, State, Method } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
-import { Hint, HintContentType } from '../../utils/common.interface';
+import { Hint, HintContentType } from '../../utils/common/common.interface';
 
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';

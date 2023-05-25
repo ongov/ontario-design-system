@@ -9,14 +9,15 @@ import {
 	HeadingContentType,
 	HeadingLevelOptions,
 	HighlightColourOptions,
-} from './utils/callout-aside/callout-aside.interface';
-import { Language } from './utils/language-types';
+} from './utils/components/callout-aside/callout-aside.interface';
+import { Language } from './utils/common/language-types';
 import { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
-import { Caption } from './utils/input-caption/caption.interface';
-import { Hint, HintContentType } from './utils/common.interface';
+import { Caption } from './utils/common/input-caption/caption.interface';
+import { Hint, HintContentType } from './utils/common/common.interface';
 import { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
 import { CheckboxOption } from './components/ontario-checkbox/checkbox-option.interface';
 import { DropdownOption } from './components/ontario-dropdown-list/dropdown-option.interface';
+import { CaptionType } from './utils/common/input-caption/input-caption.types';
 import {
 	FooterLinks,
 	OntarioFooterType,
@@ -228,6 +229,16 @@ export namespace Components {
 		 * This is used to determine whether the dropdown list is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
 		 */
 		required?: boolean;
+	}
+	interface OntarioFieldset {
+		/**
+		 * The text value used for the legend of the fieldset.
+		 */
+		legend: string;
+		/**
+		 * The size of the fieldset legend. If no prop is passed, it will be to `default`.
+		 */
+		legendSize: CaptionType;
 	}
 	interface OntarioFooter {
 		/**
@@ -1663,6 +1674,11 @@ declare global {
 		prototype: HTMLOntarioDropdownListElement;
 		new (): HTMLOntarioDropdownListElement;
 	};
+	interface HTMLOntarioFieldsetElement extends Components.OntarioFieldset, HTMLStencilElement {}
+	var HTMLOntarioFieldsetElement: {
+		prototype: HTMLOntarioFieldsetElement;
+		new (): HTMLOntarioFieldsetElement;
+	};
 	interface HTMLOntarioFooterElement extends Components.OntarioFooter, HTMLStencilElement {}
 	var HTMLOntarioFooterElement: {
 		prototype: HTMLOntarioFooterElement;
@@ -2284,6 +2300,7 @@ declare global {
 		'ontario-checkboxes': HTMLOntarioCheckboxesElement;
 		'ontario-critical-alert': HTMLOntarioCriticalAlertElement;
 		'ontario-dropdown-list': HTMLOntarioDropdownListElement;
+		'ontario-fieldset': HTMLOntarioFieldsetElement;
 		'ontario-footer': HTMLOntarioFooterElement;
 		'ontario-header': HTMLOntarioHeaderElement;
 		'ontario-hint-expander': HTMLOntarioHintExpanderElement;
@@ -2628,6 +2645,16 @@ declare namespace LocalJSX {
 		 * This is used to determine whether the dropdown list is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
 		 */
 		required?: boolean;
+	}
+	interface OntarioFieldset {
+		/**
+		 * The text value used for the legend of the fieldset.
+		 */
+		legend?: string;
+		/**
+		 * The size of the fieldset legend. If no prop is passed, it will be to `default`.
+		 */
+		legendSize?: CaptionType;
 	}
 	interface OntarioFooter {
 		/**
@@ -4039,6 +4066,7 @@ declare namespace LocalJSX {
 		'ontario-checkboxes': OntarioCheckboxes;
 		'ontario-critical-alert': OntarioCriticalAlert;
 		'ontario-dropdown-list': OntarioDropdownList;
+		'ontario-fieldset': OntarioFieldset;
 		'ontario-footer': OntarioFooter;
 		'ontario-header': OntarioHeader;
 		'ontario-hint-expander': OntarioHintExpander;
@@ -4175,6 +4203,7 @@ declare module '@stencil/core' {
 			'ontario-checkboxes': LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
 			'ontario-critical-alert': LocalJSX.OntarioCriticalAlert & JSXBase.HTMLAttributes<HTMLOntarioCriticalAlertElement>;
 			'ontario-dropdown-list': LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
+			'ontario-fieldset': LocalJSX.OntarioFieldset & JSXBase.HTMLAttributes<HTMLOntarioFieldsetElement>;
 			'ontario-footer': LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;
 			'ontario-header': LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
 			'ontario-hint-expander': LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;

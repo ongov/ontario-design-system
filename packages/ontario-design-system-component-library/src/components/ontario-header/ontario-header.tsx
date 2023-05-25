@@ -1,5 +1,7 @@
 import { Component, Prop, State, Watch, h, Listen, Element, getAssetPath } from '@stencil/core';
 
+import { Input } from '../../utils/common/input/input';
+
 import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
 import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
@@ -447,24 +449,24 @@ export class OntarioHeader {
 									<label htmlFor="ontario-search-input-field" class="ontario-show-for-sr">
 										Search
 									</label>
-									<input
+									<Input
 										type="text"
 										name="search"
 										id="ontario-search-input-field"
 										autoComplete="off"
 										aria-autocomplete="none"
-										class="ontario-input ontario-header__search-input"
+										className="ontario-input ontario-header__search-input"
 										required={true}
 										ref={(el) => (this.searchBar = el as HTMLInputElement)}
 										onKeyDown={this.onEscapePressed}
-									/>
-									<input
-										class="ontario-header__search-reset"
+									></Input>
+									<Input
+										className="ontario-header__search-reset"
 										id="ontario-search-reset"
 										type="reset"
 										value=""
 										aria-label="Clear field"
-									></input>
+									></Input>
 									<button class="ontario-header__search-submit" id="ontario-search-submit" type="submit">
 										<span class="ontario-show-for-sr">Submit</span>
 										<span class="ontario-header__icon-container" innerHTML={OntarioIconSearch} />

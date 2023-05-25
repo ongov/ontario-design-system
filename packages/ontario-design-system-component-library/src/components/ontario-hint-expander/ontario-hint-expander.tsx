@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, h, Prop, Watch, State } from '
 import { v4 as uuid } from 'uuid';
 
 import { HintExpander } from './hint-expander.interface';
-import { HintContentType } from '../../utils/common.interface';
+import { HintContentType } from '../../utils/common/common.interface';
 
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';

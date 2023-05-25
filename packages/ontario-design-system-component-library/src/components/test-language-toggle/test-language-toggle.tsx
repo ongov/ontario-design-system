@@ -1,5 +1,5 @@
 import { Component, Prop, Event, EventEmitter, h } from '@stencil/core';
-import { Language } from '../../utils/language-types';
+import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 
 @Component({

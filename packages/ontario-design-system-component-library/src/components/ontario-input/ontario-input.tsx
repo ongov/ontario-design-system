@@ -1,15 +1,16 @@
 import { Component, Event, h, Prop, State, Listen, Element, Watch } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
+import { Input } from '../../utils/common/input/input';
 import { TextInput } from './input.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
-import { Hint } from '../../utils/common.interface';
-import { InputCaption } from '../../utils/input-caption/input-caption';
-import { Caption } from '../../utils/input-caption/caption.interface';
-import { Language } from '../../utils/language-types';
+import { Hint } from '../../utils/common/common.interface';
+import { InputCaption } from '../../utils/common/input-caption/input-caption';
+import { Caption } from '../../utils/common/input-caption/caption.interface';
+import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
-import { constructHintTextObject } from '../../utils/hints/hints';
+import { constructHintTextObject } from '../../utils/components/hints/hints';
 import { InputFocusBlurEvent, EventType, InputChangeEvent } from '../../utils/events/event-handler.interface';
 import { handleInputEvent } from '../../utils/events/event-handler';
 
@@ -120,7 +121,7 @@ export class OntarioInput implements TextInput {
 	/**
 	 * Used for the `aria-describedby` value of the input. This will match with the id of the hint text.
 	 */
-	@State() hintTextId: string | null | undefined;
+	@State() hintTextId: string | undefined;
 
 	/**
 	 * Used to add a custom function to the textarea onChange event.
@@ -267,7 +268,7 @@ export class OntarioInput implements TextInput {
 
 	render() {
 		return (
-			<div>
+			<div class="ontario-form-group">
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.internalHintText && (
 					<ontario-hint-text
@@ -276,9 +277,9 @@ export class OntarioInput implements TextInput {
 						ref={(el) => (this.hintTextRef = el)}
 					></ontario-hint-text>
 				)}
-				<input
-					aria-describedby={this.hintTextId}
-					class={this.getClass()}
+				<Input
+					aria-describedBy={this.hintTextId}
+					className={this.getClass()}
 					id={this.getId()}
 					name={this.name}
 					onInput={(e) => this.handleEvent(e, EventType.Change)}
@@ -287,7 +288,7 @@ export class OntarioInput implements TextInput {
 					type={this.type}
 					value={this.getValue()}
 					required={!!this.required}
-				/>
+				></Input>
 				{this.internalHintExpander && (
 					<ontario-hint-expander
 						hint={this.internalHintExpander.hint}
