@@ -18,7 +18,7 @@ export class OntarioFieldset implements Fieldset {
 	@Prop({ mutable: true }) legend: string;
 
 	/**
-	 * The size of the fieldset legend. If no prop is passed, it will be to `default`.
+	 * The size of the fieldset legend. If no prop is passed, it will be `default`.
 	 */
 	@Prop({ mutable: true }) legendSize: CaptionType = 'default';
 
