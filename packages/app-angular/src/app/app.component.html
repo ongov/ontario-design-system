@@ -1,1 +1,47 @@
-<router-outlet></router-outlet>
+<ontario-header
+	type="application"
+	application-header-info='{
+		"title": "Angular proof of concept" ,
+		"href": "/frameone",
+		"maxSubheaderDesktopLinks": "2",
+		"maxSubheaderTabletLinks": "0"
+	}'
+	language-toggle-options='{
+		"englishLink": "/driving-and-roads",
+		"frenchLink" : "/fr/conduite-et-routes"
+	}'
+	disable-dynamic-menu="true"
+	menu-items='[{
+		"title": "Home",
+		"href": "/frameone"
+	},
+	{
+		"title": "Register",
+		"href": "/frametwo"
+	}]'
+>
+</ontario-header>
+
+<div class="container ontario-row ontario-margin-top-20-! ontario-margin-bottom-20-!">
+	  <router-outlet></router-outlet>
+</div>
+
+<ontario-footer
+	type="default"
+	footer-links='{
+		"accessibilityLink": {
+			"text": "Accessibility",
+			"href": "https://www.ontario.ca/page/accessibility"
+		},
+		"privacyLink": {
+			"href": "https://www.ontario.ca/page/privacy-statement"
+		},
+		"contactLink": {
+			"text": "Contact",
+			"href": "https://www.ontario.ca/feedback/contact-us"
+		},
+		"printerLink": {
+			"href": "https://www.ontario.ca/page/copyright-information"
+		}
+	}'
+></ontario-footer>

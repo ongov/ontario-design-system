@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayoutComponent } from './layout.component';
+import { FramesixComponent } from './framesix.component';
 
-describe('LayoutComponent', () => {
-	let component: LayoutComponent;
-	let fixture: ComponentFixture<LayoutComponent>;
+describe('FramesixComponent', () => {
+	let component: FramesixComponent;
+	let fixture: ComponentFixture<FramesixComponent>;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [LayoutComponent],
+			declarations: [FramesixComponent],
 		}).compileComponents();
 
-		fixture = TestBed.createComponent(LayoutComponent);
+		fixture = TestBed.createComponent(FramesixComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

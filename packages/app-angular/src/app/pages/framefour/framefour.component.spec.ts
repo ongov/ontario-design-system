@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FrameOneComponent } from './frame-one.component';
+import { FramefourComponent } from './framefour.component';
 
-describe('FrameOneComponent', () => {
-	let component: FrameOneComponent;
-	let fixture: ComponentFixture<FrameOneComponent>;
+describe('FramefourComponent', () => {
+	let component: FramefourComponent;
+	let fixture: ComponentFixture<FramefourComponent>;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [FrameOneComponent],
+			declarations: [FramefourComponent],
 		}).compileComponents();
 
-		fixture = TestBed.createComponent(FrameOneComponent);
+		fixture = TestBed.createComponent(FramefourComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

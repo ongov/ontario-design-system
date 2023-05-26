@@ -29,7 +29,7 @@ export default function DefaultFooterCodeExample() {
 			<div className="ontario-columns ontario-large-12">
 				<h4>Example</h4>
 				<div className="ontario-margin-top-24-!">
-					<OntarioFooter
+					{/* <OntarioFooter
 						type="default"
 						footerLinks={{
 							accessibilityLink: {
@@ -48,7 +48,7 @@ export default function DefaultFooterCodeExample() {
 								href: 'https://www.ontario.ca/page/copyright-information',
 							},
 						}}
-					></OntarioFooter>
+					></OntarioFooter> */}
 
 					<p>With the following markup:</p>
 

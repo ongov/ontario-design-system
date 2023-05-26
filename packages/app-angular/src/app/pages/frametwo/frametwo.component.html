@@ -1,0 +1,39 @@
+<div class="ontario-step-indicator">
+	<div class="ontario-row">
+		<div class="ontario-columns ontario-small-12">
+			<div class="ontario-step-indicator--without-back-button">
+				<span class="ontario-h4">Step&nbsp;1 of&nbsp;4</span>
+			</div>
+			<hr />
+		</div>
+	</div>
+</div>
+
+<h2>Create an account</h2>
+
+<ontario-input
+	caption='{
+    "captionText": "Email address"
+  }'
+	required="true"
+>
+</ontario-input>
+
+<ontario-input
+	caption='{
+    "captionText": "Create your PIN"
+  }'
+	type="password"
+	required="true"
+	hint-text="Enter 6 to 12 numbers."
+>
+</ontario-input>
+<ontario-hint-expander hint="Tips for creating a strong PIN"> </ontario-hint-expander>
+
+<ontario-button
+	type="primary"
+	label="Continue"
+	aria-label-text="Continue"
+	onclick="window.location.href='/framethree';"
+>
+</ontario-button>
