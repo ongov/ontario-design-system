@@ -149,24 +149,29 @@ const Layout = ({ children }: any) => {
 			/>
 			<main>{children}</main>
 			<OntarioFooter
-				type="expandedTwoColumn"
-				defaultOptions={{
-					accessibilityLink: 'https://www.ontario.ca/page/accessibility',
-					privacyLink: 'https://www.ontario.ca/page/privacy-statement',
-					contactLink: 'https://www.ontario.ca/feedback/contact-us',
-					printerLink: 'https://www.ontario.ca/page/copyright-information-c-queens-printer-ontario',
-				}}
-				expandedTwoColumnOptions={{
-					firstColumn: {
+				type="twoColumn"
+				twoColumnOptions={{
+					column1: {
 						title: 'Ontario Design System React PoC',
-						content:
-							'The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services.',
+						content: [
+							{
+								type: 'text',
+								text: 'The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services.',
+							},
+						],
 					},
-					secondColumn: {
+					column2: {
 						title: 'Help us improve the design system',
-						content:
-							'You can check our <a style="color: #FFF" href="https://designsystem.ontario.ca/docs/help-feedback.html"><strong>help and feedback page</strong></a> if you don’t see the component you need.',
-						contactButtonText: 'Send us an email',
+						content: [
+							{
+								type: 'html',
+								html: 'You can check our <a style="color: #FFF" href="https://designsystem.ontario.ca/docs/help-feedback.html"><strong>help and feedback page</strong></a> if you don’t see the component you need.',
+							},
+						],
+						button: {
+							text: 'Send us an email',
+							link: 'mailto:design.system@ontario.ca',
+						},
 					},
 				}}
 			/>
