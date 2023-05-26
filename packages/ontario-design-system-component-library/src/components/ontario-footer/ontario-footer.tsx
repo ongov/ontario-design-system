@@ -9,10 +9,12 @@ import {
 } from './ontario-footer-interface';
 import { ExpandedFooterWrapper, FooterColumn, FooterSocialLinksProps, SimpleFooter } from './components';
 import { isInvalidTwoColumnOptions, isInvalidThreeColumnOptions } from './utils';
+
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { ConsoleType } from '../../utils/console-message/console-message.enum';
+
 import translations from '../../translations/global.i18n.json';
 
 @Component({
@@ -23,46 +25,41 @@ import translations from '../../translations/global.i18n.json';
 })
 export class OntarioFooter {
 	/**
-	 * The language of the component. This is used for translations, and is by default
-	 * set through event listeners checking for a language property from the header.
-	 * Default to English.
+	 * The language of the component.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
 	 */
 	@Prop({ mutable: true }) language: Language = 'en';
 
 	/**
-	 * Type of footer to be rendered
-	 * Default: 'default'
+	 * The type of footer to be rendered. If no prop is provided, it will default to the 'default' type.
 	 */
 	@Prop() type: OntarioFooterType = 'default';
 
 	/**
-	 * Stores the required links for all footers
+	 * A prop that stores the required links for all footers.
 	 * Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink'
 	 */
 	@Prop() footerLinks: FooterLinks | string;
 
 	/**
-	 * Social media links to render in the footer
+	 * Social media links to render in the footer.
 	 * Available options are 'facebook', 'twitter', 'instagram' and 'youtube'
 	 */
 	@Prop() socialLinks: FooterSocialLinksProps | string;
 
 	/**
-	 * Stores the titles and content for the expanded
-	 * two column footer
+	 * Stores the titles and content for the expanded two column footer.
 	 */
 	@Prop() twoColumnOptions?: TwoColumnOptions | string;
 
 	/**
-	 * Stores the titles and content for the expanded
-	 * three column footer
+	 * Stores the titles and content for the expanded three column footer.
 	 */
 	@Prop() threeColumnOptions?: ThreeColumnOptions | string;
 
 	/**
-	 * Top margin for the footer. By default its set to true, which adds margin top of 5rem.
-	 * If set to false, it sets top margin to zero.
-	 * Default: 'true'
+	 * Top margin for the footer. By default, this prop is set to true, which adds a margin top value of 5rem.
+	 * If set to false, the top margin value will be set to zero.
 	 */
 	@Prop() topMargin: boolean = true;
 

@@ -9,31 +9,26 @@ import { Hint } from '../../utils/common/common.interface';
 import { InputCaption } from '../../utils/common/input-caption/input-caption';
 import { Caption } from '../../utils/common/input-caption/caption.interface';
 import { Language } from '../../utils/common/language-types';
-import { validateLanguage } from '../../utils/validation/validation-functions';
+import { validateLanguage, validatePropExists } from '../../utils/validation/validation-functions';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
 import { InputFocusBlurEvent, EventType, InputChangeEvent } from '../../utils/events/event-handler.interface';
 import { handleInputEvent } from '../../utils/events/event-handler';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
-/**
- * Ontario Input component
- */
 @Component({
 	tag: 'ontario-input',
 	styleUrl: 'ontario-input.scss',
 	shadow: true,
 })
 export class OntarioInput implements TextInput {
-	/**
-	 * Grant access to the host element and related DOM methods/events within the class instance.
-	 */
 	@Element() element: HTMLElement;
 
 	hintTextRef: HTMLOntarioHintTextElement | undefined;
 
 	/**
-	 * The text to display as the label
+	 * The text to display as the input label
 	 *
 	 * @example
 	 * <ontario-input
@@ -53,7 +48,7 @@ export class OntarioInput implements TextInput {
 	@Prop({ mutable: true }) elementId?: string;
 
 	/**
-	 * The width of the input field. If no value is assigned, it will present as the default input width.
+	 * The width of the input field. If no value is assigned, it will present as the `default` input width.
 	 */
 	@Prop({ mutable: true }) inputWidth:
 		| '2-char-width'
@@ -66,12 +61,13 @@ export class OntarioInput implements TextInput {
 		| 'default' = 'default';
 
 	/**
-	 * The name assigned to the input.The name value is used to reference form data after a form is submitted.
+	 * The name assigned to the input. The name value is used to reference form data after a form is submitted.
 	 */
 	@Prop() name: string;
 
 	/**
-	 * Define hint text for Ontario input. This is optional.
+	 * Used to include the ontario-hint-text component for the input.
+	 * This is optional.
 	 */
 	@Prop() hintText?: string | Hint;
 
@@ -84,23 +80,29 @@ export class OntarioInput implements TextInput {
 
 	/**
 	 * The input type value.
+	 *
+	 * If no `type` is provided, it will default to 'text'.
 	 */
 	@Prop({ mutable: true }) type: 'text' | 'tel' | 'email' | 'password' = 'text';
 
 	/**
 	 * The input content value.
+	 *
+	 * This is optional.
 	 */
 	@Prop({ mutable: true }) value?: string;
 
 	/**
 	 * The language of the component.
-	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
 	 */
 	@Prop({ mutable: true }) language?: Language = 'en';
 
 	/**
-	 * Used to include the Hint Expander component underneath the input box.
-	 * This is passed in as an object with key-value pairs. This is optional.
+	 * Used to include the ontario-hint-expander component for the input component.
+	 * This is passed in as an object with key-value pairs.
+	 *
+	 * This is optional.
 	 *
 	 * @example
 	 * <ontario-input
@@ -182,6 +184,31 @@ export class OntarioInput implements TextInput {
 		this.language = toggledLanguage;
 	}
 
+	/*
+	 * Watch for changes in the `name` prop for validation purposes.
+	 *
+	 * Validate the `name` and make sure the `name` prop has a value.
+	 * Log a warning if user doesn't input a value for the `name`.
+	 */
+	@Watch('name')
+	validateName(newValue: string) {
+		if (validatePropExists(newValue)) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' name ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-input> ')
+				.addRegularText('was not provided')
+				.printMessage();
+		}
+	}
+
+	/**
+	 * Watch for changes to the `hintText` prop.
+	 *
+	 * If a `hintText` prop is passed, the `constructHintTextObject` function will convert it to the correct format, and set the result to the `internalHintText` state.
+	 */
 	@Watch('hintText')
 	private parseHintText() {
 		if (this.hintText) {
@@ -190,6 +217,11 @@ export class OntarioInput implements TextInput {
 		}
 	}
 
+	/**
+	 * Watch for changes to the `hintExpander` prop.
+	 *
+	 * If a `hintExpander` prop is passed, it will be parsed (if it is a string), and the result will be set to the `internalHintExpander` state.
+	 */
 	@Watch('hintExpander')
 	private parseHintExpander() {
 		const hintExpander = this.hintExpander;
@@ -199,6 +231,12 @@ export class OntarioInput implements TextInput {
 		}
 	}
 
+	/**
+	 * Watch for changes to the `caption` prop.
+	 *
+	 * The caption will be run through the InputCaption constructor to convert it to the correct format, and set the result to the `captionState` state.
+	 * @param newValue: Caption | string
+	 */
 	@Watch('caption')
 	private updateCaptionState(newValue: Caption | string) {
 		this.captionState = new InputCaption(
@@ -212,13 +250,16 @@ export class OntarioInput implements TextInput {
 	}
 
 	/**
-	 * Watch for changes in the `language` to render either the English or French translations
+	 * Watch for changes in the `language` prop to render either the English or French translations
 	 */
 	@Watch('language')
 	updateLanguage() {
 		this.updateCaptionState(this.caption);
 	}
 
+	/**
+	 * Function to handle input events and the information pertaining to the input to emit.
+	 */
 	handleEvent = (ev: Event, eventType: EventType) => {
 		const input = ev.target as HTMLInputElement | null;
 
@@ -254,6 +295,9 @@ export class OntarioInput implements TextInput {
 		}
 	}
 
+	/**
+	 * If a `hintText` prop is passed, the id generated from it will be set to the internal `hintTextId` state to match with the input `aria-describedBy` attribute.
+	 */
 	async componentDidLoad() {
 		this.hintTextId = await this.hintTextRef?.getHintTextId();
 	}
@@ -263,6 +307,7 @@ export class OntarioInput implements TextInput {
 		this.elementId = this.elementId ?? uuid();
 		this.parseHintText();
 		this.parseHintExpander();
+		this.validateName(this.name);
 		this.language = validateLanguage(this.language);
 	}
 

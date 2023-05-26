@@ -16,7 +16,7 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
-Example of an Ontario.ca header component. Note that the `titleHeader` prop is not required for this type of header.
+Example of an Ontario.ca header component.
 
 ```html
 <ontario-header
@@ -101,6 +101,7 @@ Example of an Application header component.
 ```html
 <ontario-header
 	type="application"
+	disable-dynamic-menu="true"
 	application-header-info='{
 		"name": "Driving and roads",
 		"href": "/driving-and-roads",
@@ -220,10 +221,6 @@ application-header-info='{ "name": "Application name", "href": "/", "maxSubheade
 To ensure best practices, it is important to limit the number of navigation links passed to the `menuItems` property. We recommend a maximum of seven links, and to keep the labels for these links concise.
 
 <!-- Auto Generated Below -->
-
-## Overview
-
-Ontario Header component
 
 ## Properties
 

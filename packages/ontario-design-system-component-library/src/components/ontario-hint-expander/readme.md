@@ -15,13 +15,13 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
-Example of a bare-bones hint expander component, the user is passing the `hint` that will be displayed as the question/statement, and the `content` is what is displayed once the hint expander is expanded.
+Example of a bare-bones hint expander component where the user is passing the `hint` that will be displayed as the question/statement. The`content` is what is displayed once the hint expander is expanded.
 
 ```html
 <ontario-hint-expander hint="This is the hint" content="This is the content"></ontario-hint-expander>
 ```
 
-Example of a hint expander that includes an `aria-label` attribute, and an `element-id` property which is used to establish a relationship between hint text content and elements using the `aria-describedby` attribute.
+Example of a hint expander that includes an `element-id` property - this is used to establish a relationship between hint text content and elements using the `aria-describedby` attribute.
 
 ```html
 <ontario-hint-expander
@@ -37,7 +37,7 @@ Example of a hint expander that includes an `aria-label` attribute, and an `elem
 
 In order for hint expanders to have meaningful sequence, they should be added after the associated form element so the user can understand the context of the information.
 
-Since the hint expander information is after the form element, add text in the associated label (only visible to screen readers) to let the user know there is additional context below.
+Since the hint expander information comes after the form element, add text in the associated label (only visible to screen readers) to let the user know there is additional context below.
 
 #### Example:
 
@@ -49,15 +49,7 @@ Since the hint expander information is after the form element, add text in the a
 </legend>
 ```
 
-### Aria-expanded
-
-When the hint text is in it’s open state, the value in the `aria-expanded` attribute should update to `true`, and when the hint text is in it’s closed state, the value should update to `false`. This gives screen readers an indication that the hint text is either expanded or collapsed.
-
 <!-- Auto Generated Below -->
-
-## Overview
-
-Ontario Design System hint expander web component
 
 ## Properties
 

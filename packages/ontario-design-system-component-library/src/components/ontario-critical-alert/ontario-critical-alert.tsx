@@ -1,8 +1,10 @@
 import { Component, h, Prop, Watch, Element } from '@stencil/core';
+
 import { CriticalAlert } from './ontario-critical-alert.interface';
+import OntarioIconCriticalAlertWarning from '../ontario-icon/assets/ontario-icon-critical-alert-warning.svg';
+
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import OntarioIconCriticalAlertWarning from '../ontario-icon/assets/ontario-icon-critical-alert-warning.svg';
 
 @Component({
 	tag: 'ontario-critical-alert',
@@ -13,7 +15,7 @@ export class OntarioCriticalAlert implements CriticalAlert {
 	@Element() host: HTMLElement;
 
 	/**
-	 * Content for critical alert message. It can be either a string or HTML content. The content is already wrapped in a paragraph tag, so if using HTML content, the paragraph tag can be ommitted.
+	 * Content for critical alert message. It can be either string or HTML content. The content is already wrapped in a paragraph tag, so if using HTML content, the paragraph tag can be ommitted.
 	 *
 	 * @example
 	 * <ontario-critical-alert content="COVID-19 State of emergency extended until May 12, 2020."></ontario-critical-alert>
@@ -26,6 +28,13 @@ export class OntarioCriticalAlert implements CriticalAlert {
 	 */
 	@Prop() content: string | HTMLElement;
 
+	/**
+	 * Watch for changes to the `content` prop value.
+	 *
+	 * If no `content` prop was passed, or no host element textContent exists, a warning message will be printed.
+	 *
+	 * @param newValue string | HTMLElement
+	 */
 	@Watch('content')
 	validateCriticalAlertContent(newValue: string | HTMLElement) {
 		// if no slot is passed, run the `validatePropExists` function

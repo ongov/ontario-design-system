@@ -12,7 +12,7 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
-Example of a blockquote component, where the user is explicitly passing in a quote through the `quote` property - this will override the `Quote Content` value, and the resulting quote text passed into the `quote` property will be displayed.
+Example of a blockquote component where the user is explicitly passing in a quote through the `quote` property - this will override the `Quote Content` value, and the resulting quote text passed into the `quote` property will be displayed.
 
 ```html
 <ontario-blockquote
@@ -37,11 +37,11 @@ This is another example of a long blockquote. The component calculates the lengt
 
 ## Properties
 
-| Property      | Attribute     | Description                                                                                                                                  | Type                  | Default     |
-| ------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
-| `attribution` | `attribution` | Optional text to be displayed as the attribution (the author) of the quote.                                                                  | `string \| undefined` | `undefined` |
-| `byline`      | `byline`      | Optional text to be displayed for additional information about the attribution/author.                                                       | `string \| undefined` | `undefined` |
-| `quote`       | `quote`       | Text to be displayed as the quote. Note that wrapping the quotes in quotations is not needed - this is handled through the component styles. | `string`              | `undefined` |
+| Property      | Attribute     | Description                                                                                                                                 | Type                  | Default     |
+| ------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `attribution` | `attribution` | Optional text to be displayed as the attribution (the author) of the quote.                                                                 | `string \| undefined` | `undefined` |
+| `byline`      | `byline`      | Optional text to be displayed for additional information about the attribution/author.                                                      | `string \| undefined` | `undefined` |
+| `quote`       | `quote`       | Text to be displayed as the quote. Note that wrapping the quotes in quotations is not needed - this is handled through the component styles | `string`              | `undefined` |
 
 ---
 

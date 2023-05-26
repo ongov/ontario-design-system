@@ -1,8 +1,10 @@
 import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
+
 import { Button } from './button.interface';
+import { ButtonType, ButtonTypes, HtmlType, HtmlTypes } from './ontario-button.types';
+
 import { validatePropExists, validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { ButtonType, ButtonTypes, HtmlType, HtmlTypes } from './ontario-button.types';
 
 @Component({
 	tag: 'ontario-button',
@@ -14,16 +16,20 @@ export class OntarioButton implements Button {
 
 	/**
 	 * The type of button to render.
+	 *
+	 * If no type is passed, it will default to 'secondary'.
 	 */
 	@Prop() type: ButtonType = 'secondary';
 
 	/**
 	 * The native HTML button type the button should use.
+	 *
+	 * If no htmlType is passed, it will default to 'button'.
 	 */
 	@Prop() htmlType: HtmlType = 'button';
 
 	/**
-	 * Text to be displayed within the button. This will override the text provided through the Element Content.
+	 * Text to be displayed within the button. This will override the text provided through the host element textContent.
 	 *
 	 * @example
 	 * <ontario-button label="Label Text">Text</ontario-button>
@@ -33,7 +39,9 @@ export class OntarioButton implements Button {
 	@Prop() label?: string;
 
 	/**
-	 * Provides more context as to what the button interaction is doing. This is optional.
+	 * Provides more context as to what the button interaction is doing. This should only be used for accessibility purposes, if the button interaction requires more description than what the text provides.
+	 *
+	 *  This is optional.
 	 *
 	 * @example
 	 * <ontario-button aria-label-text="Click button to open map">Open</ontario button>
@@ -53,15 +61,16 @@ export class OntarioButton implements Button {
 
 	/**
 	 * Mutable variable, for internal use only.
-	 *  Set the native HTML button type depending on validation result.
+	 * Set the native HTML button type depending on validation result.
 	 */
 	@State() private htmlTypeState: string;
 
 	@State() private labelState: string;
 
 	/*
-	 * Watch for changes in the `label` variable for validation purposes.
-	 * If label is not provided, set label to Element Content (if it exists).
+	 * Watch for changes to the `label` property for validation purposes.
+	 *
+	 * If  no `label` prop is provided, the `label` prop will be set to the host element textContent (if it exists).
 	 */
 	@Watch('label')
 	private updateLabelContent() {
@@ -70,7 +79,8 @@ export class OntarioButton implements Button {
 	}
 
 	/**
-	 * Watch for changes in the `type` variable for validation purpose.
+	 * Watch for changes to the `type` property for validation purposes.
+	 *
 	 * If the user input doesn't match one of the array values then `type` will be set to its default (`secondary`).
 	 * If a match is found in one of the array values then `type` will be set to the matching array key value.
 	 */
@@ -85,7 +95,8 @@ export class OntarioButton implements Button {
 	}
 
 	/**
-	 * Watch for changes in the `htmlType` variable for validation purpose.
+	 *  Watch for changes to the `htmlType` property for validation purposes.
+	 *
 	 * If the user input doesn't match one of the array values then `htmlType` will be set to its default (`submit`).
 	 * If a match is found in one of the array values then `htmlType` will be set to the matching array key value.
 	 */
@@ -100,7 +111,7 @@ export class OntarioButton implements Button {
 	}
 
 	/**
-	 * Print the label warning message
+	 * Print the missing `label` prop warning message
 	 */
 	validateLabelContent(newValue: string) {
 		if (validatePropExists(newValue)) {
@@ -116,7 +127,7 @@ export class OntarioButton implements Button {
 	}
 
 	/**
-	 * Print the invalid type warning message
+	 * Print the invalid `type` prop warning message
 	 * @returns default type (secondary)
 	 */
 	private warnDefaultType(): ButtonType {
@@ -136,7 +147,7 @@ export class OntarioButton implements Button {
 	}
 
 	/**
-	 * Print the invalid htmlType warning message
+	 * Print the invalid `htmlType` warning message
 	 * @returns default htmlType (button)
 	 */
 	private warnDefaultHtmlType(): HtmlType {
