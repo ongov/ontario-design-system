@@ -9,95 +9,97 @@
 	</div>
 </div>
 
-<h2>Contact information</h2>
+<div class="ontario-margin-top-32-! ontario-margin-bottom-80-!">
+	<h2>Contact information</h2>
 
-<ontario-radio-buttons
-	caption="How would you like to be contacted"
-	name="radios"
-	required
-	options='[
-		{
-			"value": "email",
-			"elementId": "email",
-			"label": "Email"
-		},
-		{
-			"value": "text",
-			"elementId": "text",
-			"label": "SMS/text"
-		},
-    {
-			"value": "mail",
-			"elementId": "mail",
-			"label": "Standard mail"
-		}
-  ]'
->
-</ontario-radio-buttons>
+	<ontario-radio-buttons
+		caption="How would you like to be contacted"
+		name="radios"
+		required
+		options='[
+      {
+        "value": "email",
+        "elementId": "email",
+        "label": "Email"
+      },
+      {
+        "value": "text",
+        "elementId": "text",
+        "label": "SMS/text"
+      },
+      {
+        "value": "mail",
+        "elementId": "mail",
+        "label": "Standard mail"
+      }
+    ]'
+	>
+	</ontario-radio-buttons>
 
-<ontario-dropdown-list
-	name="provinces-territories"
-	is-empty-start-option="Ontario"
-	caption='{
-		"captionText": "Province/territory",
-		"captionType": "default"
-	}'
-	required
-	options='[{
-			"value": "alberta",
-			"label": "Alberta"
-		},
-		{
-			"value": "british-columbia",
-			"label": "British Columbia"
-		},
-		{
-			"value": "manitoba",
-			"label": "Manitoba"
-		},
-		{
-			"value": "new-brunswick",
-			"label": "New Brunswick"
-		},
-		{
-			"value": "newfoundland-and-labrador",
-			"label": "Newfoundland and Labrador"
-		},
-		{
-			"value": "nova-scotia",
-			"label": "Nova Scotia"
-		},
-		{
-			"value": "ontario",
-			"label": "Ontario",
-			"selected": true
-		},
-		{
-			"value": "prince-edward-island",
-			"label": "Prince Edward Island"
-		},
-		{
-			"value": "quebec",
-			"label": "Quebec"
-		},
-		{
-			"value": "saskatchewan",
-			"label": "Saskatchewan"
-		},
-		{
-			"value": "northwest-territories",
-			"label": "Northwest Territories"
-		},
-		{
-			"value": "nunavut",
-			"label": "Nunavut"
-		},
-		{
-			"value": "yukon",
-			"label": "Yukon"
-		}]'
->
-</ontario-dropdown-list>
+	<ontario-dropdown-list
+		name="provinces-territories"
+		is-empty-start-option="Ontario"
+		caption='{
+      "captionText": "Province/territory",
+      "captionType": "large"
+    }'
+		required
+		options='[{
+        "value": "alberta",
+        "label": "Alberta"
+      },
+      {
+        "value": "british-columbia",
+        "label": "British Columbia"
+      },
+      {
+        "value": "manitoba",
+        "label": "Manitoba"
+      },
+      {
+        "value": "new-brunswick",
+        "label": "New Brunswick"
+      },
+      {
+        "value": "newfoundland-and-labrador",
+        "label": "Newfoundland and Labrador"
+      },
+      {
+        "value": "nova-scotia",
+        "label": "Nova Scotia"
+      },
+      {
+        "value": "ontario",
+        "label": "Ontario",
+        "selected": true
+      },
+      {
+        "value": "prince-edward-island",
+        "label": "Prince Edward Island"
+      },
+      {
+        "value": "quebec",
+        "label": "Quebec"
+      },
+      {
+        "value": "saskatchewan",
+        "label": "Saskatchewan"
+      },
+      {
+        "value": "northwest-territories",
+        "label": "Northwest Territories"
+      },
+      {
+        "value": "nunavut",
+        "label": "Nunavut"
+      },
+      {
+        "value": "yukon",
+        "label": "Yukon"
+      }]'
+	>
+	</ontario-dropdown-list>
 
-<ontario-button type="primary" label="Next" aria-label-text="Continue" onclick="window.location.href='/framefour';">
-</ontario-button>
+	<ontario-button type="primary" label="Next" aria-label-text="Continue" onclick="window.location.href='/framefour';">
+	</ontario-button>
+</div>

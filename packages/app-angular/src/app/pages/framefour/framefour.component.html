@@ -9,37 +9,39 @@
 	</div>
 </div>
 
-<ontario-checkboxes
-	caption='{
-		"captionText": "Describe your role",
-		"captionType": "large"
-	}'
-	name="checkboxes"
-	hint-text="Select all the options that are relevant to you"
-	options='[
-    {
-      "value": "checkbox-option-1",
-      "label": "I do development",
-      "elementId": "checkbox-1"
-    },
-    {
-      "value": "checkbox-option-2",
-      "label": "I do design",
-      "elementId": "checkbox-2"
-    },
-    {
-      "value": "checkbox-option-3",
-      "label": "I work to HTML/CSS",
-      "elementId": "checkbox-3"
-    },
-    {
-      "value": "checkbox-option-4",
-      "label": "Other",
-      "elementId": "checkbox-4"
-    }
-  ]'
->
-</ontario-checkboxes>
+<div class="ontario-margin-top-32-! ontario-margin-bottom-80-!">
+	<ontario-checkboxes
+		caption='{
+      "captionText": "Describe your role",
+      "captionType": "large"
+    }'
+		name="checkboxes"
+		hint-text="Select all the options that are relevant to you"
+		options='[
+      {
+        "value": "checkbox-option-1",
+        "label": "I do development",
+        "elementId": "checkbox-1"
+      },
+      {
+        "value": "checkbox-option-2",
+        "label": "I do design",
+        "elementId": "checkbox-2"
+      },
+      {
+        "value": "checkbox-option-3",
+        "label": "I work to HTML/CSS",
+        "elementId": "checkbox-3"
+      },
+      {
+        "value": "checkbox-option-4",
+        "label": "Other",
+        "elementId": "checkbox-4"
+      }
+    ]'
+	>
+	</ontario-checkboxes>
 
-<ontario-button type="primary" label="Next" aria-label-text="Continue" onclick="window.location.href='/framefive';">
-</ontario-button>
+	<ontario-button type="primary" label="Next" aria-label-text="Continue" onclick="window.location.href='/framefive';">
+	</ontario-button>
+</div>
