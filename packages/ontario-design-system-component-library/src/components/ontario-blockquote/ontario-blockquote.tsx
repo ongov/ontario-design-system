@@ -4,7 +4,6 @@ import { Blockquote } from './blockquote.interface';
 
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { translateTextContent } from '../../utils/common/translations/translation-helpers';
 
 @Component({
 	tag: 'ontario-blockquote',
@@ -74,7 +73,16 @@ export class OntarioBlockquote implements Blockquote {
 	 * This helper is used to help load translations for any slots + text content passed in by the user.
 	 */
 	componentDidLoad() {
-		translateTextContent(this.validateQuote, this.host);
+		const observer = new MutationObserver((mutations) => {
+			mutations.forEach((mutation) => {
+				if (mutation.type === 'attributes') {
+					this.validateQuote();
+				}
+			});
+		});
+
+		const options = { attributes: true };
+		observer.observe(this.host, options);
 	}
 
 	render() {

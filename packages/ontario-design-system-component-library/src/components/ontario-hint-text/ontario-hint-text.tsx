@@ -5,7 +5,6 @@ import { Hint, HintContentType } from '../../utils/common/common.interface';
 
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { translateTextContent } from '../../utils/common/translations/translation-helpers';
 
 @Component({
 	tag: 'ontario-hint-text',
@@ -120,7 +119,16 @@ export class OntarioHintText implements Hint {
 	 * This helper is used to help load translations for any slots + text content passed in by the user.
 	 */
 	componentDidLoad() {
-		translateTextContent(this.updateHintContent, this.host);
+		const observer = new MutationObserver((mutations) => {
+			mutations.forEach((mutation) => {
+				if (mutation.type === 'attributes') {
+					this.updateHintContent();
+				}
+			});
+		});
+
+		const options = { attributes: true };
+		observer.observe(this.host, options);
 	}
 
 	render() {
