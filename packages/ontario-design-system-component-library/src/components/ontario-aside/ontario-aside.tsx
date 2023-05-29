@@ -32,7 +32,7 @@ export class OntarioAside implements CalloutAside {
 	@Prop({ mutable: true }) headingContentType: HeadingContentType;
 
 	/**
-	 * Text or HTML to be displayed as the heading of the aside. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to html.
+	 * Text or HTML to be displayed as the heading of the aside. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to `html`.
 	 */
 	@Prop() headingContent: string;
 

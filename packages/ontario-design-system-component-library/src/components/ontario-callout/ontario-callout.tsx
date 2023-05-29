@@ -32,7 +32,7 @@ export class OntarioCallout implements CalloutAside {
 	@Prop({ mutable: true }) headingContentType: HeadingContentType = 'string';
 
 	/**
-	 * Text or HTML to be displayed as the heading of the callout. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to html.
+	 * Text or HTML to be displayed as the heading of the callout. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to `html`.
 	 */
 	@Prop() headingContent: string;
 

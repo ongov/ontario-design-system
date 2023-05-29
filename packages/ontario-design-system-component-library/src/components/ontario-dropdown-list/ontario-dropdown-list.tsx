@@ -109,7 +109,7 @@ export class OntarioDropdownList implements Dropdown {
 
 	/**
 	 * This prop is used to determine whether or not the initial option displayed is empty.
-	 * If set to true, it will render the default “select” text.
+	 * If set to `true`, it will render the default “select” text.
 	 * If set to a string, it will render the string value.
 	 *
 	 * @example

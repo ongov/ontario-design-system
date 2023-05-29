@@ -58,8 +58,8 @@ export class OntarioFooter {
 	@Prop() threeColumnOptions?: ThreeColumnOptions | string;
 
 	/**
-	 * Top margin for the footer. By default, this prop is set to true, which adds a margin top value of 5rem.
-	 * If set to false, the top margin value will be set to zero.
+	 * Top margin for the footer. By default, this prop is set to `true`, which adds a margin top value of `5rem`.
+	 * If set to `false`, the top margin value will be set to zero.
 	 */
 	@Prop() topMargin: boolean = true;
 
