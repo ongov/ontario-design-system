@@ -29,7 +29,7 @@ export class OntarioCallout implements CalloutAside {
 	/**
 	 * The type of the heading content. If no prop is passed, it will default to `string`.
 	 */
-	@Prop({ mutable: true }) headingContentType: HeadingContentType;
+	@Prop({ mutable: true }) headingContentType: HeadingContentType = 'string';
 
 	/**
 	 * Text or HTML to be displayed as the heading of the callout. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to html.
