@@ -4,6 +4,7 @@ import { Blockquote } from './blockquote.interface';
 
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { translateTextContent } from '../../utils/common/translations/translation-helpers';
 
 @Component({
 	tag: 'ontario-blockquote',
@@ -34,6 +35,8 @@ export class OntarioBlockquote implements Blockquote {
 
 	@State() shortQuote: boolean = false;
 
+	@State() private quoteState: string;
+
 	/*
 	 * Watch for changes in the `quote` prop for validation purposes.
 	 *
@@ -42,9 +45,9 @@ export class OntarioBlockquote implements Blockquote {
 	 */
 	@Watch('quote')
 	validateQuote() {
-		this.quote = this.quote ?? this.host.textContent ?? '';
-		this.validateQuoteContent(this.quote);
-		this.shortQuote = this.quote?.length <= this.shortQuoteLength ?? true;
+		this.quoteState = this.quote ?? this.host.textContent ?? '';
+		this.validateQuoteContent(this.quoteState);
+		this.shortQuote = this.quoteState?.length <= this.shortQuoteLength ?? true;
 	}
 
 	/**
@@ -67,10 +70,17 @@ export class OntarioBlockquote implements Blockquote {
 		this.validateQuote();
 	}
 
+	/**
+	 * This helper is used to help load translations for any slots + text content passed in by the user.
+	 */
+	componentDidLoad() {
+		translateTextContent(this.validateQuote, this.host);
+	}
+
 	render() {
 		return (
 			<blockquote class={this.shortQuote ? `ontario-blockquote ontario-blockquote--short` : `ontario-blockquote`}>
-				<p>{this.quote}</p>
+				<p>{this.quoteState}</p>
 				{this.attribution && <cite class="ontario-blockquote__attribution">{this.attribution}</cite>}
 				{this.byline && <cite class="ontario-blockquote__byline">{this.byline}</cite>}
 			</blockquote>

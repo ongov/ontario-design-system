@@ -5,6 +5,7 @@ import { ButtonType, ButtonTypes, HtmlType, HtmlTypes } from './ontario-button.t
 
 import { validatePropExists, validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { translateTextContent } from '../../utils/common/translations/translation-helpers';
 
 @Component({
 	tag: 'ontario-button',
@@ -185,6 +186,13 @@ export class OntarioButton implements Button {
 		this.validateHtmlType();
 		this.validateType();
 		this.ariaLabelText = this.ariaLabelText ?? this.labelState;
+	}
+
+	/**
+	 * This helper is used to help load translations for any slots + text content passed in by the user.
+	 */
+	componentDidLoad() {
+		translateTextContent(this.updateLabelContent, this.host);
 	}
 
 	render() {
