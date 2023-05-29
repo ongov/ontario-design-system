@@ -27,7 +27,7 @@ export class OntarioCallout implements CalloutAside {
 	@Prop({ mutable: true }) headingType: HeadingLevelOptions;
 
 	/**
-	 * The type of the heading content. If no prop is passed, it will default to string.
+	 * The type of the heading content. If no prop is passed, it will default to `string`.
 	 */
 	@Prop({ mutable: true }) headingContentType: HeadingContentType;
 
