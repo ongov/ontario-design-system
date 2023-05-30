@@ -127,9 +127,9 @@ export const DIRECTIVES = [
 	d.OntarioIconWifi,
 	d.OntarioIconYoutube,
 	d.OntarioInput,
+	d.OntarioLanguageToggle,
 	d.OntarioLoadingIndicator,
 	d.OntarioPageAlert,
 	d.OntarioRadioButtons,
 	d.OntarioTextarea,
-	d.TestLanguageToggle,
 ];

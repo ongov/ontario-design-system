@@ -43,8 +43,17 @@ export default function HeaderApplicationExample() {
 			linkIsActive: false,
 		}
 	]}
+	customLanguageToggleFunction={languageToggle}
 </OntarioHeader>
 `;
+
+	const languageToggle = (e: any) => {
+		e.preventDefault();
+
+		e.currentTarget.textContent === 'Français'
+			? console.log('The current language is French')
+			: console.log('The current language is English');
+	};
 
 	return (
 		<div className="ontario-row">
@@ -90,6 +99,7 @@ export default function HeaderApplicationExample() {
 								linkIsActive: false,
 							},
 						]}
+						customLanguageToggleFunction={languageToggle}
 					></OntarioHeader>
 
 					<p>With the following markup:</p>

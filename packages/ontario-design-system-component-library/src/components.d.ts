@@ -236,7 +236,7 @@ export namespace Components {
 		 */
 		legend: string;
 		/**
-		 * The size of the fieldset legend. If no prop is passed, it will be to `default`.
+		 * The size of the fieldset legend. If no prop is passed, it will be `default`.
 		 */
 		legendSize: CaptionType;
 	}
@@ -277,20 +277,28 @@ export namespace Components {
 		 */
 		applicationHeaderInfo: applicationHeaderInfo | string;
 		/**
+		 * A custom function to pass to the language toggle button.
+		 */
+		customLanguageToggleFunction?: Function;
+		/**
 		 * Option to disable fetching of the dynamic menu from the Ontario Header API
 		 * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
 		 */
 		disableDynamicMenu: boolean;
 		/**
-		 * The link that contains the french page
+		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */
-		languageToggleOptions: languageToggleOptions | string;
+		language?: Language;
+		/**
+		 * The link that contains the french and english pages when the language button is toggled.
+		 */
+		languageToggleOptions?: languageToggleOptions | string;
 		/**
 		 * The items that will go inside the menu
 		 */
 		menuItems: menuItems[] | string;
 		/**
-		 * The type of header
+		 * The type of header.
 		 */
 		type?: 'application' | 'ontario';
 	}
@@ -1469,6 +1477,21 @@ export namespace Components {
 		 */
 		value?: string;
 	}
+	interface OntarioLanguageToggle {
+		/**
+		 * A custom function to pass to the language toggle button.  This is optional.
+		 */
+		customLanguageToggleFunction?: Function;
+		language: Language | string;
+		/**
+		 * The size of the language toggle button.  If no prop is passed, it will be set to the `default` size.
+		 */
+		size?: 'default' | 'small';
+		/**
+		 * The URL to change to when the language toggle button is clicked.  This is optional.
+		 */
+		url?: string;
+	}
 	interface OntarioLoadingIndicator {
 		/**
 		 * A boolean value to determine whether the loading indicator overlay covers the full page or not. By default, this is set to true. If set to false, the loading indicator overlay will be positioned absoltely relative to its container. Note that this will only work if the containing element has a style rule specifying it to be positioned relatively.
@@ -1601,9 +1624,6 @@ export namespace Components {
 		 */
 		value?: string;
 	}
-	interface TestLanguageToggle {
-		language: Language | string;
-	}
 }
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
@@ -1621,6 +1641,10 @@ export interface OntarioInputCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioInputElement;
 }
+export interface OntarioLanguageToggleCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioLanguageToggleElement;
+}
 export interface OntarioRadioButtonsCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioRadioButtonsElement;
@@ -1628,10 +1652,6 @@ export interface OntarioRadioButtonsCustomEvent<T> extends CustomEvent<T> {
 export interface OntarioTextareaCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioTextareaElement;
-}
-export interface TestLanguageToggleCustomEvent<T> extends CustomEvent<T> {
-	detail: T;
-	target: HTMLTestLanguageToggleElement;
 }
 declare global {
 	interface HTMLOntarioAsideElement extends Components.OntarioAside, HTMLStencilElement {}
@@ -2266,6 +2286,11 @@ declare global {
 		prototype: HTMLOntarioInputElement;
 		new (): HTMLOntarioInputElement;
 	};
+	interface HTMLOntarioLanguageToggleElement extends Components.OntarioLanguageToggle, HTMLStencilElement {}
+	var HTMLOntarioLanguageToggleElement: {
+		prototype: HTMLOntarioLanguageToggleElement;
+		new (): HTMLOntarioLanguageToggleElement;
+	};
 	interface HTMLOntarioLoadingIndicatorElement extends Components.OntarioLoadingIndicator, HTMLStencilElement {}
 	var HTMLOntarioLoadingIndicatorElement: {
 		prototype: HTMLOntarioLoadingIndicatorElement;
@@ -2285,11 +2310,6 @@ declare global {
 	var HTMLOntarioTextareaElement: {
 		prototype: HTMLOntarioTextareaElement;
 		new (): HTMLOntarioTextareaElement;
-	};
-	interface HTMLTestLanguageToggleElement extends Components.TestLanguageToggle, HTMLStencilElement {}
-	var HTMLTestLanguageToggleElement: {
-		prototype: HTMLTestLanguageToggleElement;
-		new (): HTMLTestLanguageToggleElement;
 	};
 	interface HTMLElementTagNameMap {
 		'ontario-aside': HTMLOntarioAsideElement;
@@ -2418,11 +2438,11 @@ declare global {
 		'ontario-icon-wifi': HTMLOntarioIconWifiElement;
 		'ontario-icon-youtube': HTMLOntarioIconYoutubeElement;
 		'ontario-input': HTMLOntarioInputElement;
+		'ontario-language-toggle': HTMLOntarioLanguageToggleElement;
 		'ontario-loading-indicator': HTMLOntarioLoadingIndicatorElement;
 		'ontario-page-alert': HTMLOntarioPageAlertElement;
 		'ontario-radio-buttons': HTMLOntarioRadioButtonsElement;
 		'ontario-textarea': HTMLOntarioTextareaElement;
-		'test-language-toggle': HTMLTestLanguageToggleElement;
 	}
 }
 declare namespace LocalJSX {
@@ -2652,7 +2672,7 @@ declare namespace LocalJSX {
 		 */
 		legend?: string;
 		/**
-		 * The size of the fieldset legend. If no prop is passed, it will be to `default`.
+		 * The size of the fieldset legend. If no prop is passed, it will be `default`.
 		 */
 		legendSize?: CaptionType;
 	}
@@ -2693,12 +2713,20 @@ declare namespace LocalJSX {
 		 */
 		applicationHeaderInfo?: applicationHeaderInfo | string;
 		/**
+		 * A custom function to pass to the language toggle button.
+		 */
+		customLanguageToggleFunction?: Function;
+		/**
 		 * Option to disable fetching of the dynamic menu from the Ontario Header API
 		 * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
 		 */
 		disableDynamicMenu?: boolean;
 		/**
-		 * The link that contains the french page
+		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+		 */
+		language?: Language;
+		/**
+		 * The link that contains the french and english pages when the language button is toggled.
 		 */
 		languageToggleOptions?: languageToggleOptions | string;
 		/**
@@ -2706,7 +2734,7 @@ declare namespace LocalJSX {
 		 */
 		menuItems?: menuItems[] | string;
 		/**
-		 * The type of header
+		 * The type of header.
 		 */
 		type?: 'application' | 'ontario';
 	}
@@ -3896,6 +3924,29 @@ declare namespace LocalJSX {
 		 */
 		value?: string;
 	}
+	interface OntarioLanguageToggle {
+		/**
+		 * A custom function to pass to the language toggle button.  This is optional.
+		 */
+		customLanguageToggleFunction?: Function;
+		language?: Language | string;
+		/**
+		 * An event that emits to other components that the language toggle button has been toggled.
+		 */
+		onHeaderLanguageToggled?: (event: OntarioLanguageToggleCustomEvent<string>) => void;
+		/**
+		 * An event to set the Document's HTML lang property, and emit the toggled language to other components.
+		 */
+		onSetAppLanguage?: (event: OntarioLanguageToggleCustomEvent<string>) => void;
+		/**
+		 * The size of the language toggle button.  If no prop is passed, it will be set to the `default` size.
+		 */
+		size?: 'default' | 'small';
+		/**
+		 * The URL to change to when the language toggle button is clicked.  This is optional.
+		 */
+		url?: string;
+	}
 	interface OntarioLoadingIndicator {
 		/**
 		 * A boolean value to determine whether the loading indicator overlay covers the full page or not. By default, this is set to true. If set to false, the loading indicator overlay will be positioned absoltely relative to its container. Note that this will only work if the containing element has a style rule specifying it to be positioned relatively.
@@ -4052,11 +4103,6 @@ declare namespace LocalJSX {
 		 */
 		value?: string;
 	}
-	interface TestLanguageToggle {
-		language?: Language | string;
-		onHeaderLanguageToggled?: (event: TestLanguageToggleCustomEvent<string>) => void;
-		onSetAppLanguage?: (event: TestLanguageToggleCustomEvent<string>) => void;
-	}
 	interface IntrinsicElements {
 		'ontario-aside': OntarioAside;
 		'ontario-back-to-top': OntarioBackToTop;
@@ -4184,11 +4230,11 @@ declare namespace LocalJSX {
 		'ontario-icon-wifi': OntarioIconWifi;
 		'ontario-icon-youtube': OntarioIconYoutube;
 		'ontario-input': OntarioInput;
+		'ontario-language-toggle': OntarioLanguageToggle;
 		'ontario-loading-indicator': OntarioLoadingIndicator;
 		'ontario-page-alert': OntarioPageAlert;
 		'ontario-radio-buttons': OntarioRadioButtons;
 		'ontario-textarea': OntarioTextarea;
-		'test-language-toggle': TestLanguageToggle;
 	}
 }
 export { LocalJSX as JSX };
@@ -4378,12 +4424,13 @@ declare module '@stencil/core' {
 			'ontario-icon-wifi': LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
 			'ontario-icon-youtube': LocalJSX.OntarioIconYoutube & JSXBase.HTMLAttributes<HTMLOntarioIconYoutubeElement>;
 			'ontario-input': LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
+			'ontario-language-toggle': LocalJSX.OntarioLanguageToggle &
+				JSXBase.HTMLAttributes<HTMLOntarioLanguageToggleElement>;
 			'ontario-loading-indicator': LocalJSX.OntarioLoadingIndicator &
 				JSXBase.HTMLAttributes<HTMLOntarioLoadingIndicatorElement>;
 			'ontario-page-alert': LocalJSX.OntarioPageAlert & JSXBase.HTMLAttributes<HTMLOntarioPageAlertElement>;
 			'ontario-radio-buttons': LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
 			'ontario-textarea': LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
-			'test-language-toggle': LocalJSX.TestLanguageToggle & JSXBase.HTMLAttributes<HTMLTestLanguageToggleElement>;
 		}
 	}
 }
