@@ -87,7 +87,7 @@ describe('ontario-header', () => {
 										</a>
 									</div>
 									<div class="ontario-application-header__lang-toggle ontario-columns ontario-small-6">
-										<ontario-language-toggle size="small" url="/en"></ontario-language-toggle>
+										<ontario-language-toggle size="small" url="/fr"></ontario-language-toggle>
 									</div>
 								</div>
 							</header>
@@ -368,7 +368,7 @@ describe('ontario-header', () => {
 									</button>
 								</form>
 								<div class="ontario-columns ontario-header__nav-right-container ontario-large-3 ontario-medium-8 ontario-small-10">
-									<ontario-language-toggle size="default" url="/en"></ontario-language-toggle>
+									<ontario-language-toggle size="default" url="/fr"></ontario-language-toggle>
 									<button aria-controls="ontario-search-form-container" class="ontario-header-button ontario-header-button--without-outline ontario-header__search-toggler ontario-hide-for-large" id="ontario-header-search-toggler">
 										<span class="ontario-header__icon-container"></span>
 										<span class="ontario-show ontario-show-for-medium">
