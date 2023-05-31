@@ -1,9 +1,10 @@
-import { Component, Prop, State, Event, EventEmitter, h, Fragment } from '@stencil/core';
+import { Component, Prop, State, Event, EventEmitter, Watch, h, Fragment } from '@stencil/core';
 
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 
 import { default as translations } from '../../translations/global.i18n.json';
+import { validate } from 'uuid';
 
 @Component({
 	tag: 'ontario-language-toggle',
@@ -11,7 +12,7 @@ import { default as translations } from '../../translations/global.i18n.json';
 	shadow: true,
 })
 export class OntarioLanguageToggle {
-	@Prop({ mutable: true }) language: Language | string = 'en';
+	@Prop({ mutable: true }) language: Language | string;
 
 	/**
 	 * The size of the language toggle button.
@@ -60,12 +61,22 @@ export class OntarioLanguageToggle {
 	 * An event that emits to other components that the language toggle button has been toggled.
 	 */
 	@Event() headerLanguageToggled: EventEmitter<string>;
-	handleHeaderLanguageToggled(language: string) {
+	handleHeaderLanguageToggled(language: string, e?: Event) {
 		const toggledLang = language === 'en' ? 'fr' : 'en';
 		this.language = toggledLang;
 		this.headerLanguageToggled.emit(toggledLang);
 
 		this.updateHTMLLang(toggledLang);
+
+		if (this.customLanguageToggleFunction) {
+			this.customLanguageToggleFunction(e);
+		}
+	}
+
+	@Watch('language')
+	updateLanguage() {
+		this.language = validateLanguage(this.language);
+		this.setAppLanguageHandler();
 	}
 
 	updateHTMLLang = (lang: string) => {
@@ -100,12 +111,7 @@ export class OntarioLanguageToggle {
 				}
 				href={this.url ? this.url : '#'}
 				aria-label={this.translations.languageToggle.ariaLabel[`${this.language}`]}
-				onClick={(e) => {
-					this.handleHeaderLanguageToggled(this.language);
-					if (this.customLanguageToggleFunction) {
-						this.customLanguageToggleFunction(e);
-					}
-				}}
+				onClick={(e) => this.handleHeaderLanguageToggled(this.language, e)}
 			>
 				{this.size === 'small' ? (
 					<span>{lang}</span>
