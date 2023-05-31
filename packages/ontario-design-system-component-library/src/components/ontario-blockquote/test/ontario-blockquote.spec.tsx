@@ -1,5 +1,8 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { OntarioBlockquote } from '../ontario-blockquote';
+import { mutationObserverMock } from '../../../utils/helper/mutation-observer.mock';
+
+global.MutationObserver = mutationObserverMock;
 
 describe('ontario-blockquote', () => {
 	describe('snapshot', () => {

@@ -1,5 +1,8 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { OntarioButton } from '../ontario-button';
+import { mutationObserverMock } from '../../../utils/helper/mutation-observer.mock';
+
+global.MutationObserver = mutationObserverMock;
 
 it('should render a default button', async () => {
 	const page = await newSpecPage({
