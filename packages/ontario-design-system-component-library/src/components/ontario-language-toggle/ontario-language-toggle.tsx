@@ -4,7 +4,6 @@ import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 
 import { default as translations } from '../../translations/global.i18n.json';
-import { validate } from 'uuid';
 
 @Component({
 	tag: 'ontario-language-toggle',
