@@ -74,5 +74,11 @@
 			"en": "https://www.ontario.ca/page/copyright-information",
 			"fr": "https://www.ontario.ca/fr/page/droits-dauteur"
 		}
+	},
+	"languageToggle": {
+		"ariaLabel": {
+			"en": "Switch language to French",
+			"fr": "Changer la langue en anglais"
+		}
 	}
 }

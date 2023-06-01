@@ -283,14 +283,30 @@ export class OntarioFooter {
 export declare interface OntarioFooter extends Components.OntarioFooter {}
 
 @ProxyCmp({
-	inputs: ['applicationHeaderInfo', 'disableDynamicMenu', 'languageToggleOptions', 'menuItems', 'type'],
+	inputs: [
+		'applicationHeaderInfo',
+		'customLanguageToggle',
+		'disableDynamicMenu',
+		'language',
+		'languageToggleOptions',
+		'menuItems',
+		'type',
+	],
 })
 @Component({
 	selector: 'ontario-header',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['applicationHeaderInfo', 'disableDynamicMenu', 'languageToggleOptions', 'menuItems', 'type'],
+	inputs: [
+		'applicationHeaderInfo',
+		'customLanguageToggle',
+		'disableDynamicMenu',
+		'language',
+		'languageToggleOptions',
+		'menuItems',
+		'type',
+	],
 })
 export class OntarioHeader {
 	protected el: HTMLElement;
@@ -2652,6 +2668,36 @@ export declare interface OntarioInput extends Components.OntarioInput {
 }
 
 @ProxyCmp({
+	inputs: ['customLanguageToggle', 'language', 'size', 'url'],
+})
+@Component({
+	selector: 'ontario-language-toggle',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['customLanguageToggle', 'language', 'size', 'url'],
+})
+export class OntarioLanguageToggle {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+		proxyOutputs(this, this.el, ['setAppLanguage', 'headerLanguageToggled']);
+	}
+}
+
+export declare interface OntarioLanguageToggle extends Components.OntarioLanguageToggle {
+	/**
+	 * An event to set the Document's HTML lang property, and emit the toggled language to other components.
+	 */
+	setAppLanguage: EventEmitter<CustomEvent<string>>;
+	/**
+	 * An event that emits to other components that the language toggle button has been toggled.
+	 */
+	headerLanguageToggled: EventEmitter<CustomEvent<string>>;
+}
+
+@ProxyCmp({
 	inputs: ['fullScreenOverlay', 'isLoading', 'language', 'message', 'type'],
 })
 @Component({
@@ -2803,29 +2849,4 @@ export declare interface OntarioTextarea extends Components.OntarioTextarea {
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
 	inputOnFocus: EventEmitter<CustomEvent<any>>;
-}
-
-@ProxyCmp({
-	inputs: ['language'],
-})
-@Component({
-	selector: 'test-language-toggle',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['language'],
-})
-export class TestLanguageToggle {
-	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-		c.detach();
-		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['setAppLanguage', 'headerLanguageToggled']);
-	}
-}
-
-export declare interface TestLanguageToggle extends Components.TestLanguageToggle {
-	setAppLanguage: EventEmitter<CustomEvent<string>>;
-
-	headerLanguageToggled: EventEmitter<CustomEvent<string>>;
 }

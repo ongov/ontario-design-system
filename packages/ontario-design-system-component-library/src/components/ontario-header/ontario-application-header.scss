@@ -244,6 +244,7 @@ $ontario-application-header-menu-button-icon--margin-right: 6px;
 }
 
 .ontario-application-subheader__menu-container a {
+	box-sizing: border-box;
 	border-radius: globalVariables.$global-radius;
 	color: colours.$ontario-colour-white;
 	display: inline-block;

@@ -29,10 +29,10 @@ Example of a fieldset component.
 
 ## Properties
 
-| Property     | Attribute     | Description                                                                     | Type                                | Default     |
-| ------------ | ------------- | ------------------------------------------------------------------------------- | ----------------------------------- | ----------- |
-| `legend`     | `legend`      | The text value used for the legend of the fieldset.                             | `string`                            | `undefined` |
-| `legendSize` | `legend-size` | The size of the fieldset legend. If no prop is passed, it will be to `default`. | `"default" \| "heading" \| "large"` | `'default'` |
+| Property     | Attribute     | Description                                                                  | Type                                | Default     |
+| ------------ | ------------- | ---------------------------------------------------------------------------- | ----------------------------------- | ----------- |
+| `legend`     | `legend`      | The text value used for the legend of the fieldset.                          | `string`                            | `undefined` |
+| `legendSize` | `legend-size` | The size of the fieldset legend. If no prop is passed, it will be `default`. | `"default" \| "heading" \| "large"` | `'default'` |
 
 ---
 

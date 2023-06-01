@@ -1,6 +1,7 @@
 import { Component, Prop, State, Watch, h, Listen, Element, getAssetPath } from '@stencil/core';
 
 import { Input } from '../../utils/common/input/input';
+import { menuItems, applicationHeaderInfo, languageToggleOptions, ontarioMenuItems } from './ontario-header.interface';
 
 import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
@@ -8,7 +9,8 @@ import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
 import OntarioIconSearchWhite from '../ontario-icon/assets/ontario-icon-search-white.svg';
 import OntarioHeaderDefaultData from './ontario-header-default-data.json';
 
-import { menuItems, applicationHeaderInfo, languageToggleOptions, ontarioMenuItems } from './ontario-header.interface';
+import { Language } from '../../utils/common/language-types';
+import { validateLanguage } from '../../utils/validation/validation-functions';
 
 /**
  * Ontario Header component
@@ -24,12 +26,12 @@ import { menuItems, applicationHeaderInfo, languageToggleOptions, ontarioMenuIte
 })
 export class OntarioHeader {
 	/**
-	 * The HTML Element for the header
+	 * The HTML Element for the header.
 	 */
 	@Element() el: HTMLElement;
 
 	/**
-	 * The type of header
+	 * The type of header.
 	 */
 	@Prop() type?: 'application' | 'ontario' = 'application';
 
@@ -86,9 +88,20 @@ export class OntarioHeader {
 	@Prop() disableDynamicMenu: boolean = false;
 
 	/**
-	 * The link that contains the french page
+	 * The link that contains the french and english pages when the language button is toggled.
 	 */
-	@Prop() languageToggleOptions: languageToggleOptions | string;
+	@Prop() languageToggleOptions?: languageToggleOptions | string;
+
+	/**
+	 * A custom function to pass to the language toggle button.
+	 */
+	@Prop() customLanguageToggle?: Function;
+
+	/**
+	 * The language of the component.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+	 */
+	@Prop({ mutable: true }) language?: Language = 'en';
 
 	/**
 	 * The application header information is reassigned to applicationHeaderInfoState for parsing
@@ -168,25 +181,6 @@ export class OntarioHeader {
 		}
 	}
 
-	/**
-	 * Logic to close the menu when anything outside the menu is clicked
-	 */
-	@Listen('click', { capture: true, target: 'window' })
-	handleClick(event: any) {
-		// if the button is clicked, return
-		if (
-			event.composedPath().includes(this.menuButton) ||
-			event.composedPath().includes(this.menuButtonDesktop) ||
-			event.composedPath().includes(this.menuButtonTablet) ||
-			event.composedPath().includes(this.menuButtonMobile)
-		) {
-			return;
-		}
-
-		// If the click was outside the current component, do the following
-		if (this.menuToggle) this.menuToggle = !this.menuToggle;
-	}
-
 	@Watch('menuItems')
 	parseMenuItems() {
 		if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
@@ -211,6 +205,33 @@ export class OntarioHeader {
 				this.languageState = languageToggleOptions;
 			}
 		}
+	}
+
+	/**
+	 * Logic to close the menu when anything outside the menu is clicked
+	 */
+	@Listen('click', { capture: true, target: 'window' })
+	handleClick(event: any) {
+		// if the button is clicked, return
+		if (
+			event.composedPath().includes(this.menuButton) ||
+			event.composedPath().includes(this.menuButtonDesktop) ||
+			event.composedPath().includes(this.menuButtonTablet) ||
+			event.composedPath().includes(this.menuButtonMobile)
+		) {
+			return;
+		}
+
+		// If the click was outside the current component, do the following
+		if (this.menuToggle) this.menuToggle = !this.menuToggle;
+	}
+
+	/**
+	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
+	 */
+	@Listen('setAppLanguage', { target: 'window' })
+	handleSetAppLanguage(event: CustomEvent<Language>) {
+		this.language = validateLanguage(event);
 	}
 
 	/**
@@ -475,15 +496,11 @@ export class OntarioHeader {
 
 								{/* Ontario header language toggle + menu button */}
 								<div class="ontario-header__nav-right-container ontario-columns ontario-small-10 ontario-medium-8 ontario-large-3">
-									<a
-										href={this.languageState?.frenchLink}
-										class="ontario-header__language-toggler ontario-header-button ontario-header-button--without-outline"
-									>
-										<abbr title="Français" class="ontario-show-for-small-only">
-											FR
-										</abbr>
-										<span class="ontario-show-for-medium">Français</span>
-									</a>
+									<ontario-language-toggle
+										url={this.language === 'en' ? this.languageState?.frenchLink : this.languageState?.englishLink}
+										size="default"
+										customLanguageToggle={this.customLanguageToggle}
+									></ontario-language-toggle>
 									<button
 										class="ontario-header__search-toggler ontario-header-button ontario-header-button--without-outline ontario-hide-for-large"
 										id="ontario-header-search-toggler"
@@ -575,15 +592,11 @@ export class OntarioHeader {
 									</a>
 								</div>
 								<div class="ontario-columns ontario-small-6 ontario-application-header__lang-toggle">
-									<a
-										href={this.languageState?.frenchLink}
-										class="ontario-header-button ontario-header-button--without-outline"
-									>
-										<abbr title="Français" class="ontario-show-for-small-only">
-											FR
-										</abbr>
-										<span class="ontario-show-for-medium">Français</span>
-									</a>
+									<ontario-language-toggle
+										size="small"
+										url={this.language === 'en' ? this.languageState?.frenchLink : this.languageState?.englishLink}
+										customLanguageToggle={this.customLanguageToggle}
+									></ontario-language-toggle>
 								</div>
 							</div>
 						</header>

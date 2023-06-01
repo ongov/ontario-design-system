@@ -112,31 +112,32 @@ Example of an Application header component.
 		"frenchLink" : "/fr"
 	}'
 	menu-items='[
-	{ 
-		"name": "Vehicle registration", 
-		"href": "/vehicle-registration",
-		"linkIsActive": "false" 
-	},
-	{ 
-		"name": "Driver records", 
-		"href": "/driver-records",
-		"linkIsActive": "false"  
-	}, 
-	{ 
-		"name": "Accessible Parking Permits",
-		"href": "/accessible-parking-permits",
-		"linkIsActive": "false"  
-	},
-	{ 
-		"name": "Highway traveler information", 
-		"href": "/highway-traveler-information",
-		"linkIsActive": "true",
-		"onClickHandler": (e: Event) => {
-				e.preventDefault();
-				alert("Menu item clicked!")
-		},  
-	}
-]'
+		{ 
+			"name": "Vehicle registration", 
+			"href": "/vehicle-registration",
+			"linkIsActive": "false" 
+		},
+		{ 
+			"name": "Driver records", 
+			"href": "/driver-records",
+			"linkIsActive": "false"  
+		}, 
+		{ 
+			"name": "Accessible Parking Permits",
+			"href": "/accessible-parking-permits",
+			"linkIsActive": "false"  
+		},
+		{ 
+			"name": "Highway traveler information", 
+			"href": "/highway-traveler-information",
+			"linkIsActive": "true",
+			"onClickHandler": (e: Event) => {
+					e.preventDefault();
+					alert("Menu item clicked!")
+			},  
+		}
+	]'
+	custom-language-toggle-function="{testFunction()}"
 >
 </ontario-header>
 ```
@@ -226,13 +227,29 @@ Ontario Header component
 
 ## Properties
 
-| Property                | Attribute                 | Description                                                                                                                                                                                                                                | Type                                      | Default         |
-| ----------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------- | --------------- |
-| `applicationHeaderInfo` | `application-header-info` | Information pertaining to the application header. This is only necessary for the 'application' header type. This includes the application name, URL and optional props for the number of links in the subheader, tablet, and mobile views. | `applicationHeaderInfo \| string`         | `undefined`     |
-| `disableDynamicMenu`    | `disable-dynamic-menu`    | Option to disable fetching of the dynamic menu from the Ontario Header API                                                                                                                                                                 | `boolean`                                 | `false`         |
-| `languageToggleOptions` | `language-toggle-options` | The link that contains the french page                                                                                                                                                                                                     | `languageToggleOptions \| string`         | `undefined`     |
-| `menuItems`             | `menu-items`              | The items that will go inside the menu                                                                                                                                                                                                     | `menuItems[] \| string`                   | `undefined`     |
-| `type`                  | `type`                    | The type of header                                                                                                                                                                                                                         | `"application" \| "ontario" \| undefined` | `'application'` |
+| Property                | Attribute                 | Description                                                                                                                                                                                                                                | Type                                           | Default         |
+| ----------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------- | --------------- |
+| `applicationHeaderInfo` | `application-header-info` | Information pertaining to the application header. This is only necessary for the 'application' header type. This includes the application name, URL and optional props for the number of links in the subheader, tablet, and mobile views. | `applicationHeaderInfo \| string`              | `undefined`     |
+| `customLanguageToggle`  | --                        | A custom function to pass to the language toggle button.                                                                                                                                                                                   | `Function \| undefined`                        | `undefined`     |
+| `disableDynamicMenu`    | `disable-dynamic-menu`    | Option to disable fetching of the dynamic menu from the Ontario Header API                                                                                                                                                                 | `boolean`                                      | `false`         |
+| `language`              | `language`                | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.                               | `"en" \| "fr" \| undefined`                    | `'en'`          |
+| `languageToggleOptions` | `language-toggle-options` | The link that contains the french and english pages when the language button is toggled.                                                                                                                                                   | `languageToggleOptions \| string \| undefined` | `undefined`     |
+| `menuItems`             | `menu-items`              | The items that will go inside the menu                                                                                                                                                                                                     | `menuItems[] \| string`                        | `undefined`     |
+| `type`                  | `type`                    | The type of header.                                                                                                                                                                                                                        | `"application" \| "ontario" \| undefined`      | `'application'` |
+
+## Dependencies
+
+### Depends on
+
+- [ontario-language-toggle](../ontario-language-toggle)
+
+### Graph
+
+```mermaid
+graph TD;
+  ontario-header --> ontario-language-toggle
+  style ontario-header fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ---
 
