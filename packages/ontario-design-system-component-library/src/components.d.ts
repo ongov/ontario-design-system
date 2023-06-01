@@ -41,7 +41,7 @@ export namespace Components {
 		 */
 		content?: string;
 		/**
-		 * Text or HTML to be displayed as the heading of the aside. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to html.
+		 * Text or HTML to be displayed as the heading of the aside. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to `html`.
 		 */
 		headingContent: string;
 		/**
@@ -108,11 +108,11 @@ export namespace Components {
 		 */
 		content?: string;
 		/**
-		 * Text or HTML to be displayed as the heading of the callout. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to html.
+		 * Text or HTML to be displayed as the heading of the callout. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to `html`.
 		 */
 		headingContent: string;
 		/**
-		 * The type of the heading content. If no prop is passed, it will default to string.
+		 * The type of the heading content. If no prop is passed, it will default to `string`.
 		 */
 		headingContentType: HeadingContentType;
 		/**
@@ -208,7 +208,7 @@ export namespace Components {
 		 */
 		hintText?: string | Hint;
 		/**
-		 * This prop is used to determine whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
+		 * This prop is used to determine whether or not the initial option displayed is empty. If set to `true`, it will render the default “select” text. If set to a string, it will render the string value.
 		 * @example <ontario-dropdown-list is-empty-start-option="true"></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
 		 */
 		isEmptyStartOption?: boolean | string;
@@ -258,7 +258,7 @@ export namespace Components {
 		 */
 		threeColumnOptions?: ThreeColumnOptions | string;
 		/**
-		 * Top margin for the footer. By default, this prop is set to true, which adds a margin top value of 5rem. If set to false, the top margin value will be set to zero.
+		 * Top margin for the footer. By default, this prop is set to `true`, which adds a margin top value of `5rem`. If set to `false`, the top margin value will be set to zero.
 		 */
 		topMargin: boolean;
 		/**
@@ -2454,7 +2454,7 @@ declare namespace LocalJSX {
 		 */
 		content?: string;
 		/**
-		 * Text or HTML to be displayed as the heading of the aside. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to html.
+		 * Text or HTML to be displayed as the heading of the aside. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to `html`.
 		 */
 		headingContent?: string;
 		/**
@@ -2521,11 +2521,11 @@ declare namespace LocalJSX {
 		 */
 		content?: string;
 		/**
-		 * Text or HTML to be displayed as the heading of the callout. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to html.
+		 * Text or HTML to be displayed as the heading of the callout. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to `html`.
 		 */
 		headingContent?: string;
 		/**
-		 * The type of the heading content. If no prop is passed, it will default to string.
+		 * The type of the heading content. If no prop is passed, it will default to `string`.
 		 */
 		headingContentType?: HeadingContentType;
 		/**
@@ -2633,7 +2633,7 @@ declare namespace LocalJSX {
 		 */
 		hintText?: string | Hint;
 		/**
-		 * This prop is used to determine whether or not the initial option displayed is empty. If set to true, it will render the default “select” text. If set to a string, it will render the string value.
+		 * This prop is used to determine whether or not the initial option displayed is empty. If set to `true`, it will render the default “select” text. If set to a string, it will render the string value.
 		 * @example <ontario-dropdown-list is-empty-start-option="true"></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
 		 */
 		isEmptyStartOption?: boolean | string;
@@ -2695,7 +2695,7 @@ declare namespace LocalJSX {
 		 */
 		threeColumnOptions?: ThreeColumnOptions | string;
 		/**
-		 * Top margin for the footer. By default, this prop is set to true, which adds a margin top value of 5rem. If set to false, the top margin value will be set to zero.
+		 * Top margin for the footer. By default, this prop is set to `true`, which adds a margin top value of `5rem`. If set to `false`, the top margin value will be set to zero.
 		 */
 		topMargin?: boolean;
 		/**
