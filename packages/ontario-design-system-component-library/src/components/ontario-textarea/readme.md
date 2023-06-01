@@ -12,14 +12,14 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
-Example of a bare-bones textarea component, the user is passing the `name` which is the value used to reference form data after a form is submitted. The `id` is also being passed in as the unique identifier of the textarea.
+Example of a bare-bones textarea component where the user is passing the `name` which is the value used to reference form data after a form is submitted. The `elementId` is also being passed in as the unique identifier of the textarea.
 
 ```html
-<ontario-textarea name="comments" id="form-comments" />
+<ontario-textarea name="comments" element-id="form-comments" />
 ```
 
 ```html
-<ontario-textarea name="comments" id="form-comments" required="true" onBlur="exampleFunction()" />
+<ontario-textarea name="comments" element-id="form-comments" required="true" onBlur="exampleFunction()" />
 ```
 
 ## Custom property types
@@ -58,22 +58,18 @@ visible when the hint expander title (hint) is toggled" }'
 
 <!-- Auto Generated Below -->
 
-## Overview
-
-Ontario Textarea component properties
-
 ## Properties
 
 | Property         | Attribute       | Description                                                                                                                                                                                                                                    | Type                                  | Default     |
 | ---------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | ----------- |
-| `caption`        | `caption`       | The text to display as the label                                                                                                                                                                                                               | `Caption \| string`                   | `undefined` |
+| `caption`        | `caption`       | The text to display as the textarea label.                                                                                                                                                                                                     | `Caption \| string`                   | `undefined` |
 | `customOnBlur`   | --              | Used to add a custom function to the textarea onBlur event.                                                                                                                                                                                    | `Function \| undefined`               | `undefined` |
 | `customOnChange` | --              | Used to add a custom function to the textarea onChange event.                                                                                                                                                                                  | `Function \| undefined`               | `undefined` |
 | `customOnFocus`  | --              | Used to add a custom function to the textarea onFocus event.                                                                                                                                                                                   | `Function \| undefined`               | `undefined` |
 | `elementId`      | `element-id`    | The unique identifier of the textarea. This is optional - if no ID is passed, one will be generated.                                                                                                                                           | `string \| undefined`                 | `undefined` |
-| `hintExpander`   | `hint-expander` | Used to include the Hint Expander component for the textarea. This is passed in as an object with key-value pairs. This is optional.                                                                                                           | `HintExpander \| string \| undefined` | `undefined` |
-| `hintText`       | `hint-text`     | Define hint text for Ontario textarea. This is optional.                                                                                                                                                                                       | `Hint \| string \| undefined`         | `undefined` |
-| `language`       | `language`      | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.                                   | `"en" \| "fr" \| undefined`           | `'en'`      |
+| `hintExpander`   | `hint-expander` | Used to include the ontario-hint-expander component for the textarea component. This is passed in as an object with key-value pairs. This is optional.                                                                                         | `HintExpander \| string \| undefined` | `undefined` |
+| `hintText`       | `hint-text`     | Used to include the ontario-hint-text component for the textarea. This is optional.                                                                                                                                                            | `Hint \| string \| undefined`         | `undefined` |
+| `language`       | `language`      | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.                            | `"en" \| "fr" \| undefined`           | `'en'`      |
 | `name`           | `name`          | The name assigned to the textarea. The name value is used to reference form data after a form is submitted.                                                                                                                                    | `string`                              | `undefined` |
 | `required`       | `required`      | This is used to determine whether the textarea is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional). | `boolean \| undefined`                | `false`     |
 | `value`          | `value`         | The textarea content value.                                                                                                                                                                                                                    | `string \| undefined`                 | `undefined` |

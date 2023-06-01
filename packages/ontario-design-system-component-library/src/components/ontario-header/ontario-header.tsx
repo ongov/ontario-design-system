@@ -12,9 +12,6 @@ import OntarioHeaderDefaultData from './ontario-header-default-data.json';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 
-/**
- * Ontario Header component
- */
 @Component({
 	tag: 'ontario-header',
 	styleUrls: {
@@ -25,9 +22,6 @@ import { validateLanguage } from '../../utils/validation/validation-functions';
 	assetsDirs: ['./assets'],
 })
 export class OntarioHeader {
-	/**
-	 * The HTML Element for the header.
-	 */
 	@Element() el: HTMLElement;
 
 	/**
@@ -38,7 +32,7 @@ export class OntarioHeader {
 	/**
 	 * Information pertaining to the application header. This is only necessary for the 'application' header type.
 	 *
-	 * This includes the application name, URL and optional props for the number of links in the subheader, tablet, and mobile views.
+	 * This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.
 	 *
 	 * @example
 	 * 	<ontario-header
@@ -55,7 +49,7 @@ export class OntarioHeader {
 	@Prop() applicationHeaderInfo: applicationHeaderInfo | string;
 
 	/**
-	 * The items that will go inside the menu
+	 * The items that will go inside the menu.
 	 */
 	@Prop() menuItems: menuItems[] | string;
 
@@ -88,7 +82,17 @@ export class OntarioHeader {
 	@Prop() disableDynamicMenu: boolean = false;
 
 	/**
-	 * The link that contains the french and english pages when the language button is toggled.
+	 * Information pertaining to the language toggle links.
+	 *
+	 * @example
+	 * <ontario-header
+	 * 	language-toggle-options='{
+	 *    "englishLink": "/en",
+	 *    "frenchLink": "/fr"
+	 *  }'
+	 *  ...
+	 * >
+	 * </ontario-header>
 	 */
 	@Prop() languageToggleOptions?: languageToggleOptions | string;
 

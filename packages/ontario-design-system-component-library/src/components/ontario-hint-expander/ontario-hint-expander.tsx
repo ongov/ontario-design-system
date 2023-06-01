@@ -7,9 +7,6 @@ import { HintContentType } from '../../utils/common/common.interface';
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
-/**
- * Ontario Design System hint expander web component
- */
 @Component({
 	tag: 'ontario-hint-expander',
 	styleUrl: 'ontario-hint-expander.scss',
@@ -78,8 +75,8 @@ export class OntarioHintExpander implements HintExpander {
 	}
 
 	/*
-	 * Watch for changes in the `hint` variable for validation purposes.
-	 * If hint is not provided, set hint to Element Content (if it exists).
+	 * Watch for changes in the `hint` prop for validation purposes.
+	 * If no `hint` prop is provided, the `hint` will be set to the host element textContent (if it exists).
 	 */
 	@Watch('hint')
 	private updateHintContent() {
@@ -88,9 +85,10 @@ export class OntarioHintExpander implements HintExpander {
 	}
 
 	/*
-	 * Watch for changes in the `content` prop for validation purpose
-	 * Validate the content and make sure the content has a value.
-	 * Log warning if user doesn't input a value for the content or element content.
+	 * Watch for changes to the `content` prop for validation purposes.
+	 *
+	 * Validate the `content` and make sure the `content` has a value.
+	 * Log a warning if user doesn't input a value for the `content` or element content.
 	 */
 	@Watch('content')
 	validateContent(newValue: string) {
@@ -124,9 +122,10 @@ export class OntarioHintExpander implements HintExpander {
 	};
 
 	/*
-	 * Watch for changes in the `hint` prop for validation purpose
-	 * Validate the hint and make sure the hint has a value.
-	 * Log warning if user doesn't input a value for the hint.
+	 * Watch for changes in the `hint` prop for validation purposes.
+	 *
+	 * Validate the `hint` and make sure the `hint` has a value.
+	 * Log a warning if user doesn't input a value for the `hint`.
 	 */
 	validateHint(newValue: string) {
 		if (validatePropExists(newValue)) {

@@ -36,7 +36,7 @@ export interface Input extends Base {
 
 	/**
 	 * The language of the component.
-	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
 	 */
 	language?: Language;
 

@@ -26,7 +26,7 @@ export interface CalloutAside extends Base {
 	headingContentType: HeadingContentType;
 
 	/**
-	 * Text to be displayed as the heading of the callout/aside.
+	 * Text or HTML to be displayed as the heading of the callout/aside. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to `html`.
 	 */
 	headingContent: string;
 

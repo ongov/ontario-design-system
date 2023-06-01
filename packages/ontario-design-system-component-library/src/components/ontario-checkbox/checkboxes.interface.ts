@@ -23,12 +23,12 @@ export interface Checkboxes extends Base {
 
 	/**
 	 * The language of the component.
-	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
 	 */
 	language?: Language;
 
 	/**
-	 * The name for the checkboxes.
+	 * The name for the checkboxes. The name value is used to reference form data after a form is submitted.
 	 */
 	name: string;
 
@@ -41,6 +41,7 @@ export interface Checkboxes extends Base {
 	/**
 	 * Used to include the ontario-hint-expander component for the checkbox group.
 	 * This is passed in as an object with key-value pairs.
+	 *
 	 * This is optional.
 	 *
 	 * @example
@@ -68,11 +69,13 @@ export interface Checkboxes extends Base {
 	hintExpander?: HintExpander | string;
 
 	/**
+	 * The options for the checkbox group.
+	 *
 	 * Each property will be passed in through an object in the options array.
 	 * This can either be passed in as an object directly (if using react), or as a string in HTML.
 	 * If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option.
-	 * In the example below, the options are being passed in as a string and
-	 * there are two checkboxes to be displayed in the fieldset.
+	 *
+	 * In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
 	 *
 	 * @example
 	 * <ontario-checkboxes

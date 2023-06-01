@@ -1,4 +1,5 @@
 import { Component, Prop, Watch } from '@stencil/core';
+
 import {
 	CalloutAside,
 	HeadingLevelOptions,
@@ -26,12 +27,12 @@ export class OntarioCallout implements CalloutAside {
 	@Prop({ mutable: true }) headingType: HeadingLevelOptions;
 
 	/**
-	 * The type of the heading content. If no prop is passed, it will default to string.
+	 * The type of the heading content. If no prop is passed, it will default to `string`.
 	 */
-	@Prop({ mutable: true }) headingContentType: HeadingContentType;
+	@Prop({ mutable: true }) headingContentType: HeadingContentType = 'string';
 
 	/**
-	 * Text or HTML to be displayed as the heading of the callout. If the heading content needs to be displayed as HTML, the `headingContentType` needs to be set to html.
+	 * Text or HTML to be displayed as the heading of the callout. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to `html`.
 	 */
 	@Prop() headingContent: string;
 
@@ -51,8 +52,8 @@ export class OntarioCallout implements CalloutAside {
 	@Prop({ mutable: true }) highlightColour?: HighlightColourOptions = 'teal';
 
 	/**
-	 * Watch for changes to the headingType prop.
-	 * This is for validation purposes to make sure the headingType matches one of the HeadingLevelOptions.
+	 * Watch for changes to the `headingType` prop.
+	 * This is for validation purposes to make sure the `headingType` matches one of the `HeadingLevelOptions`.
 	 */
 	@Watch('headingType')
 	validateHeadingType() {
@@ -69,7 +70,8 @@ export class OntarioCallout implements CalloutAside {
 	}
 
 	/**
-	 * Watch for changes in the `headingContentType` variable for validation purpose.
+	 * Watch for changes in the `headingContentType` variable for validation purposes.
+	 *
 	 * If the user input doesn't match one of the array values then `headingContentType` will be set to its default (`string`).
 	 * If a match is found in one of the array values then `headingContentType` will be set to the matching array key value.
 	 */
@@ -83,6 +85,11 @@ export class OntarioCallout implements CalloutAside {
 		}
 	}
 
+	/**
+	 * Watch for changes in the `headingContent` prop for validation purposes.
+	 *
+	 * If no `headingContent` value is provided, a warning message will be printed.
+	 */
 	@Watch('headingContent')
 	validateHeadingContent() {
 		if (!this.headingContent) {
@@ -98,9 +105,9 @@ export class OntarioCallout implements CalloutAside {
 	}
 
 	/**
-	 * Watch for changes to the highlightColour prop.
+	 * Watch for changes to the `highlightColour` prop.
 	 *
-	 * If no highlightColour is passed, or if the highlightColour does not match the highlightColour options, a default value of 'teal' will be applied.
+	 * If no `highlightColour` is passed, or if the `highlightColour` does not match the `highlightColour` options, a default value of 'teal' will be applied.
 	 */
 	@Watch('highlightColour')
 	validateHighlightColour() {
@@ -125,7 +132,7 @@ export class OntarioCallout implements CalloutAside {
 	}
 
 	/**
-	 * Print the invalid type warning message.
+	 * Print the invalid `type` warning message.
 	 * @returns default type ('string')
 	 */
 	private warnDefaultType() {
