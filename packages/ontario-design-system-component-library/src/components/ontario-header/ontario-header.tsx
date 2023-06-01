@@ -95,7 +95,7 @@ export class OntarioHeader {
 	/**
 	 * A custom function to pass to the language toggle button.
 	 */
-	@Prop() customLanguageToggleFunction?: Function;
+	@Prop() customLanguageToggle?: Function;
 
 	/**
 	 * The language of the component.
@@ -499,7 +499,7 @@ export class OntarioHeader {
 									<ontario-language-toggle
 										url={this.language === 'en' ? this.languageState?.frenchLink : this.languageState?.englishLink}
 										size="default"
-										customLanguageToggleFunction={this.customLanguageToggleFunction}
+										customLanguageToggle={this.customLanguageToggle}
 									></ontario-language-toggle>
 									<button
 										class="ontario-header__search-toggler ontario-header-button ontario-header-button--without-outline ontario-hide-for-large"
@@ -595,7 +595,7 @@ export class OntarioHeader {
 									<ontario-language-toggle
 										size="small"
 										url={this.language === 'en' ? this.languageState?.frenchLink : this.languageState?.englishLink}
-										customLanguageToggleFunction={this.customLanguageToggleFunction}
+										customLanguageToggle={this.customLanguageToggle}
 									></ontario-language-toggle>
 								</div>
 							</div>

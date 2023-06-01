@@ -43,7 +43,7 @@ export default function HeaderApplicationExample() {
 			linkIsActive: false,
 		}
 	]}
-	customLanguageToggleFunction={languageToggle}
+	customLanguageToggle={languageToggle}
 </OntarioHeader>
 `;
 
@@ -99,7 +99,7 @@ export default function HeaderApplicationExample() {
 								linkIsActive: false,
 							},
 						]}
-						customLanguageToggleFunction={languageToggle}
+						customLanguageToggle={languageToggle}
 					></OntarioHeader>
 
 					<p>With the following markup:</p>

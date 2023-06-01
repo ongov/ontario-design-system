@@ -32,7 +32,7 @@ export class OntarioLanguageToggle {
 	 *
 	 * This is optional.
 	 */
-	@Prop() customLanguageToggleFunction?: Function;
+	@Prop() customLanguageToggle?: Function;
 
 	@State() translations: any = translations;
 
@@ -67,8 +67,8 @@ export class OntarioLanguageToggle {
 
 		this.updateHTMLLang(toggledLang);
 
-		if (this.customLanguageToggleFunction) {
-			this.customLanguageToggleFunction(e);
+		if (this.customLanguageToggle) {
+			this.customLanguageToggle(e);
 		}
 	}
 
@@ -93,8 +93,7 @@ export class OntarioLanguageToggle {
 	};
 
 	connectedCallback() {
-		this.language = validateLanguage(this.language);
-		this.setAppLanguageHandler();
+		this.updateLanguage();
 	}
 
 	render() {

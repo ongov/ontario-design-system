@@ -285,7 +285,7 @@ export declare interface OntarioFooter extends Components.OntarioFooter {}
 @ProxyCmp({
 	inputs: [
 		'applicationHeaderInfo',
-		'customLanguageToggleFunction',
+		'customLanguageToggle',
 		'disableDynamicMenu',
 		'language',
 		'languageToggleOptions',
@@ -300,7 +300,7 @@ export declare interface OntarioFooter extends Components.OntarioFooter {}
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
 	inputs: [
 		'applicationHeaderInfo',
-		'customLanguageToggleFunction',
+		'customLanguageToggle',
 		'disableDynamicMenu',
 		'language',
 		'languageToggleOptions',
@@ -2668,14 +2668,14 @@ export declare interface OntarioInput extends Components.OntarioInput {
 }
 
 @ProxyCmp({
-	inputs: ['customLanguageToggleFunction', 'language', 'size', 'url'],
+	inputs: ['customLanguageToggle', 'language', 'size', 'url'],
 })
 @Component({
 	selector: 'ontario-language-toggle',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['customLanguageToggleFunction', 'language', 'size', 'url'],
+	inputs: ['customLanguageToggle', 'language', 'size', 'url'],
 })
 export class OntarioLanguageToggle {
 	protected el: HTMLElement;

@@ -10,12 +10,12 @@ It is used in the ontario-header component.
 
 ## Properties
 
-| Property                       | Attribute  | Description                                                                                         | Type                                | Default     |
-| ------------------------------ | ---------- | --------------------------------------------------------------------------------------------------- | ----------------------------------- | ----------- |
-| `customLanguageToggleFunction` | --         | A custom function to pass to the language toggle button. This is optional.                          | `Function \| undefined`             | `undefined` |
-| `language`                     | `language` |                                                                                                     | `string`                            | `undefined` |
-| `size`                         | `size`     | The size of the language toggle button. If no prop is passed, it will be set to the `default` size. | `"default" \| "small" \| undefined` | `'default'` |
-| `url`                          | `url`      | The URL to change to when the language toggle button is clicked. This is optional.                  | `string \| undefined`               | `undefined` |
+| Property               | Attribute  | Description                                                                                         | Type                                | Default     |
+| ---------------------- | ---------- | --------------------------------------------------------------------------------------------------- | ----------------------------------- | ----------- |
+| `customLanguageToggle` | --         | A custom function to pass to the language toggle button. This is optional.                          | `Function \| undefined`             | `undefined` |
+| `language`             | `language` |                                                                                                     | `string`                            | `undefined` |
+| `size`                 | `size`     | The size of the language toggle button. If no prop is passed, it will be set to the `default` size. | `"default" \| "small" \| undefined` | `'default'` |
+| `url`                  | `url`      | The URL to change to when the language toggle button is clicked. This is optional.                  | `string \| undefined`               | `undefined` |
 
 ## Events
 
