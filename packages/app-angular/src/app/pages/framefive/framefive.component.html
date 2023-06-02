@@ -1,18 +1,12 @@
-<div class="ontario-margin-top-32-! ontario-margin-bottom-80-!">
+<div>
 	<ontario-textarea
 		name="ontario-textarea"
-		hint-text="Do not include personal or financial information like your Social insurance number or credit card details."
+		hint-text="Do not include personal or financial information like your Social Insurance number or credit card details."
 		caption='{
-      "captionText": "Enter additional details",
-      "captionType": "large"
-    }'
+			"captionText": "Enter additional details",
+			"captionType": "heading"
+		}'
 	></ontario-textarea>
 
-	<ontario-button
-		type="primary"
-		label="Create account"
-		aria-label-text="Continue"
-		onclick="window.location.href='/framesix';"
-	>
-	</ontario-button>
+	<ontario-button type="primary" label="Create account" routerLink="/framesix"> </ontario-button>
 </div>

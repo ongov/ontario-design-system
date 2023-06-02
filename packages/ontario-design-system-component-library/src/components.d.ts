@@ -236,7 +236,7 @@ export namespace Components {
 		 */
 		legend: string;
 		/**
-		 * The size of the fieldset legend. If no prop is passed, it will be to `default`.
+		 * The size of the fieldset legend. If no prop is passed, it will be `default`.
 		 */
 		legendSize: CaptionType;
 	}
@@ -2652,7 +2652,7 @@ declare namespace LocalJSX {
 		 */
 		legend?: string;
 		/**
-		 * The size of the fieldset legend. If no prop is passed, it will be to `default`.
+		 * The size of the fieldset legend. If no prop is passed, it will be `default`.
 		 */
 		legendSize?: CaptionType;
 	}

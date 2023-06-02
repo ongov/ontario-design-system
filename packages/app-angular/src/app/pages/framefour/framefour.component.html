@@ -1,36 +1,36 @@
-<div class="ontario-margin-top-32-! ontario-margin-bottom-80-!">
+<div>
 	<ontario-checkboxes
 		caption='{
       "captionText": "Describe your role",
-      "captionType": "large"
+      "captionType": "heading"
     }'
-		name="checkboxes"
-		hint-text="Select all the options that are relevant to you"
+		name="describe-role"
+		hint-text="Select all the options that are relevant to you."
 		options='[
       {
-        "value": "checkbox-option-1",
+        "value": "development",
         "label": "I do development",
-        "elementId": "checkbox-1"
+        "elementId": "development"
       },
       {
-        "value": "checkbox-option-2",
+        "value": "design",
         "label": "I do design",
-        "elementId": "checkbox-2"
+        "elementId": "design"
       },
       {
-        "value": "checkbox-option-3",
-        "label": "I work to HTML/CSS",
-        "elementId": "checkbox-3"
+        "value": "html-css",
+        "label": "I work with HTML/CSS",
+        "elementId": "html-css"
       },
       {
-        "value": "checkbox-option-4",
+        "value": "other",
         "label": "Other",
-        "elementId": "checkbox-4"
+        "elementId": "other"
       }
     ]'
 	>
 	</ontario-checkboxes>
 
-	<ontario-button type="primary" label="Next" aria-label-text="Continue" onclick="window.location.href='/framefive';">
+	<ontario-button type="primary" label="Next" aria-label-text="Continue to next question" routerLink="/framefive">
 	</ontario-button>
 </div>

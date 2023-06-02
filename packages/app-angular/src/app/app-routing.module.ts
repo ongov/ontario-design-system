@@ -9,6 +9,7 @@ import { FramefiveComponent } from './pages/framefive/framefive.component';
 import { FramesixComponent } from './pages/framesix/framesix.component';
 
 const routes: Routes = [
+	{ path: '', redirectTo: 'frameone', pathMatch: 'full' },
 	{ path: 'frameone', component: FrameoneComponent },
 	{ path: 'frametwo', component: FrametwoComponent },
 	{ path: 'framethree', component: FramethreeComponent },

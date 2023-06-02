@@ -25,8 +25,7 @@
 						"inlineStyleLanguage": "scss",
 						"assets": ["src/favicon.ico", "src/assets"],
 						"styles": [
-							"node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme.scss",
-							"src/styles.scss"
+							"node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme.scss"
 						],
 						"scripts": []
 					},
@@ -82,7 +81,6 @@
 						"tsConfig": "tsconfig.spec.json",
 						"inlineStyleLanguage": "scss",
 						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["src/styles.scss"],
 						"scripts": []
 					}
 				}

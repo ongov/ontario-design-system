@@ -1,6 +1,5 @@
-<div class="ontario-margin-top-32-! ontario-margin-bottom-80-!">
-	<h2>Contact information</h2>
-
+<div>
+	<h1>Contact information</h1>
 	<ontario-radio-buttons
 		caption="How would you like to be contacted"
 		name="radios"
@@ -27,7 +26,6 @@
 
 	<ontario-dropdown-list
 		name="provinces-territories"
-		is-empty-start-option="Ontario"
 		caption='{
       "captionText": "Province/territory",
       "captionType": "large"
@@ -89,6 +87,6 @@
 	>
 	</ontario-dropdown-list>
 
-	<ontario-button type="primary" label="Next" aria-label-text="Continue" onclick="window.location.href='/framefour';">
+	<ontario-button type="primary" label="Next" aria-label-text="Continue to next question" routerLink="/framefour">
 	</ontario-button>
 </div>
