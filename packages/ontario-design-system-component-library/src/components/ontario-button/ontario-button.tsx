@@ -187,6 +187,22 @@ export class OntarioButton implements Button {
 		this.ariaLabelText = this.ariaLabelText ?? this.labelState;
 	}
 
+	/**
+	 * This helper is used to help load translations for any slots + text content passed in by the user.
+	 */
+	componentDidLoad() {
+		const observer = new MutationObserver((mutations) => {
+			mutations.forEach((mutation) => {
+				if (mutation.type === 'attributes') {
+					this.updateLabelContent();
+				}
+			});
+		});
+
+		const options = { attributes: true };
+		observer.observe(this.host, options);
+	}
+
 	render() {
 		return (
 			<button type={this.htmlTypeState} class={this.getClass()} aria-label={this.ariaLabelText} id={this.getId()}>

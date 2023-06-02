@@ -150,6 +150,22 @@ export class OntarioHintExpander implements HintExpander {
 		this.validateContent(this.content);
 	}
 
+	/**
+	 * This helper is used to help load translations for any slots + text content passed in by the user.
+	 */
+	componentDidLoad() {
+		const observer = new MutationObserver((mutations) => {
+			mutations.forEach((mutation) => {
+				if (mutation.type === 'attributes') {
+					this.updateHintContent();
+				}
+			});
+		});
+
+		const options = { attributes: true };
+		observer.observe(this.host, options);
+	}
+
 	public getId(): string {
 		return this.elementId ?? '';
 	}

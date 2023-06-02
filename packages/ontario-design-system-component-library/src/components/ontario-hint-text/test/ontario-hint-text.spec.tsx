@@ -1,5 +1,8 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { OntarioHintText } from '../ontario-hint-text';
+import { mutationObserverMock } from '../../../utils/tests/mutation-observer.mock';
+
+global.MutationObserver = mutationObserverMock;
 
 describe('ontario-hint-text', () => {
 	describe('snapshot', () => {

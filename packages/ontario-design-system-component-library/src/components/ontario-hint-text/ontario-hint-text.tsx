@@ -115,6 +115,22 @@ export class OntarioHintText implements Hint {
 		this.elementId = this.elementId ?? uuid();
 	}
 
+	/**
+	 * This helper is used to help load translations for any slots + text content passed in by the user.
+	 */
+	componentDidLoad() {
+		const observer = new MutationObserver((mutations) => {
+			mutations.forEach((mutation) => {
+				if (mutation.type === 'attributes') {
+					this.updateHintContent();
+				}
+			});
+		});
+
+		const options = { attributes: true };
+		observer.observe(this.host, options);
+	}
+
 	render() {
 		return this.hintContentType === 'string' ? (
 			<p id={this.getId()} class="ontario-hint">
