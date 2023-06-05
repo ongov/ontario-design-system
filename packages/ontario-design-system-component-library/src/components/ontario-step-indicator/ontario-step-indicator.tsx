@@ -12,7 +12,9 @@ export class OntarioStepIndicator {
 	@Element() host: HTMLElement;
 
 	/**
-	 * Shows back button depending on which step the user is on.
+	 * A boolean value to determine whether or not the back button is displayed for the step indicator.
+         * 
+         * This is optional. If no prop is passed, it will default to `false`.
 	 */
 	@Prop() showBackButton?: boolean = false;
 
@@ -22,12 +24,12 @@ export class OntarioStepIndicator {
 	@Prop() backButtonLink?: string;
 
 	/**
-	 * Lets user know which step the current page is on.
+	 * A number value to indicate which step the user is currently on.
 	 */
 	@Prop() currentStep?: number;
 
 	/**
-	 * Number of steps that the form has.
+	 * A number value to indicate to the user the total number of steps the form has.
 	 */
 	@Prop() numberOfSteps?: number;
 
