@@ -13,8 +13,8 @@ export class OntarioStepIndicator {
 
 	/**
 	 * A boolean value to determine whether or not the back button is displayed for the step indicator.
-         * 
-         * This is optional. If no prop is passed, it will default to `false`.
+	 *
+	 * This is optional. If no prop is passed, it will default to `false`.
 	 */
 	@Prop() showBackButton?: boolean = false;
 
@@ -34,8 +34,9 @@ export class OntarioStepIndicator {
 	@Prop() numberOfSteps?: number;
 
 	/**
-	 * Percentage of the form that has been completed.
+	 * A number value to indicate to the user the percentage of the form that has been completed.
 	 */
+
 	@Prop() percentageComplete?: number;
 
 	/**
