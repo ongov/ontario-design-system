@@ -37,16 +37,6 @@ export function validateValueAgainstArray<T extends string>(value: T, keys: Read
 	return keys.includes(value);
 }
 
-/**
- * Validate value against type
- * @param value value to be compared against keys
- * @param type of value
- * @returns true if a match is found or false if no matches are found
- */
-export function validateValueAgainstType<T extends string>(value: T, keys: ReadonlyArray<string>): boolean {
-	return keys.includes(value);
-}
-
 export function validateLanguage(language: CustomEvent<Language> | string | undefined) {
 	if (language) {
 		const toggledLanguage = typeof language !== 'string' ? language.detail : language;
