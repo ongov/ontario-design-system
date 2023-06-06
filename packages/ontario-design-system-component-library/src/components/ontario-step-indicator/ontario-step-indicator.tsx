@@ -1,5 +1,5 @@
 import { Component, Prop, Element, h, State, Listen } from '@stencil/core';
-import { Language } from '../../utils/common/language/language-types';
+import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import translations from '../../translations/global.i18n.json';
 
