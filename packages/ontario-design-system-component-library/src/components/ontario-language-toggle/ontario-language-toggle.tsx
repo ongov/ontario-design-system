@@ -61,11 +61,11 @@ export class OntarioLanguageToggle {
 	 */
 	@Event() headerLanguageToggled: EventEmitter<string>;
 	handleHeaderLanguageToggled(language: string, e?: Event) {
-		const toggledLang = language === 'en' ? 'fr' : 'en';
-		this.language = toggledLang;
-		this.headerLanguageToggled.emit(toggledLang);
+		const toggledLanguage = language === 'en' ? 'fr' : 'en';
+		this.language = toggledLanguage;
+		this.headerLanguageToggled.emit(toggledLanguage);
 
-		this.updateHTMLLang(toggledLang);
+		this.updateHTMLLang(toggledLanguage);
 
 		if (this.customLanguageToggle) {
 			this.customLanguageToggle(e);
@@ -97,8 +97,8 @@ export class OntarioLanguageToggle {
 	}
 
 	render() {
-		const lang = this.language === 'en' ? 'Français' : 'English';
-		const abbreviatedLang = this.language === 'en' ? 'FR' : 'EN';
+		const language = this.language === 'en' ? 'Français' : 'English';
+		const abbreviatedLanguage = this.language === 'en' ? 'FR' : 'EN';
 
 		return (
 			<a
@@ -112,13 +112,13 @@ export class OntarioLanguageToggle {
 				onClick={(e) => this.handleHeaderLanguageToggled(this.language, e)}
 			>
 				{this.size === 'small' ? (
-					<span>{lang}</span>
+					<span>{language}</span>
 				) : (
 					<Fragment>
-						<abbr title={lang} class="ontario-show-for-small-only">
-							{abbreviatedLang}
+						<abbr title={language} class="ontario-show-for-small-only">
+							{abbreviatedLanguage}
 						</abbr>
-						<span class="ontario-show-for-medium">{lang}</span>
+						<span class="ontario-show-for-medium">{language}</span>
 					</Fragment>
 				)}
 			</a>
