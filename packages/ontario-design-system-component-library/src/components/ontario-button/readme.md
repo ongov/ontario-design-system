@@ -59,20 +59,6 @@ It can be confusing and frustrating for users to expect a button to trigger an a
 | `label`         | `label`           | Text to be displayed within the button. This will override the text provided through the host element textContent.                                                                                                        | `string \| undefined`                                           | `undefined`   |
 | `type`          | `type`            | The type of button to render. If no type is passed, it will default to 'secondary'.                                                                                                                                       | `"internalThemeDark" \| "primary" \| "secondary" \| "tertiary"` | `'secondary'` |
 
-## Dependencies
-
-### Used by
-
-- [ontario-step-indicator](../ontario-step-indicator)
-
-### Graph
-
-```mermaid
-graph TD;
-  ontario-step-indicator --> ontario-button
-  style ontario-button fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ---
 
 _Built with [StencilJS](https://stenciljs.com/)_
