@@ -14,7 +14,7 @@ export class OntarioStepIndicator {
 	/**
 	 * Shows back button depending on which step the user is on.
 	 */
-	@Prop() showBackButton: boolean = false;
+	@Prop() showBackButton?: boolean = false;
 
 	/**
 	 * Link for the back button onClick function.
