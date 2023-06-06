@@ -40,6 +40,7 @@
 						<li><a href="#radio-buttons">Radio buttons</a></li>
 						<li><a href="#textareas">Textareas</a></li>
 						<li><a href="#text-inputs">Text inputs</a></li>
+						<li><a href="#step-indicator">Step indicator</a></li>
 					</ol>
 					<hr />
 
@@ -416,7 +417,7 @@
 						<ontario-textarea
 							name="feedback"
 							caption='{
-								"captionText": "Feedback", 
+								"captionText": "Feedback",
 								"captionType": "large"
 							}'
 							element-id="feedback"
@@ -428,7 +429,7 @@
 						<ontario-textarea
 							name="response"
 							caption='{
-								"captionText": "What do you like about ODS?", 
+								"captionText": "What do you like about ODS?",
 								"captionType": "default"
 							}'
 							element-id="response"
@@ -444,7 +445,7 @@
 							name="email"
 							input-width="20-char-width"
 							caption='{
-								"captionText": "Email", 
+								"captionText": "Email",
 								"captionType": "HEADING"
 							}'
 							required="true"
@@ -453,7 +454,7 @@
 							name="postal"
 							input-width="7-char-width"
 							caption='{
-								"captionText": "Postal Code", 
+								"captionText": "Postal Code",
 								"captionType": "default"
 							}'
 							hint-text="For example, A1A 1A1"
@@ -466,6 +467,17 @@
 								"content": "This is the content, yup this is the content"
 							}'
 						></ontario-input>
+					</div>
+					<hr />
+
+					<!-- Step Indicator -->
+					<div>
+						<h2 id="step-indicator">Step Indicator</h2>
+						<ontario-step-indicator
+							show-back-button="true"
+							back-button-URL="https://designsystem.ontario.ca/"
+							percentage-complete="70"
+						></ontario-step-indicator>
 					</div>
 				</div>
 			</div>

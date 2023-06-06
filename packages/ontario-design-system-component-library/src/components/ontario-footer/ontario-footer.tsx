@@ -9,7 +9,6 @@ import {
 } from './ontario-footer-interface';
 import { ExpandedFooterWrapper, FooterColumn, FooterSocialLinksProps, SimpleFooter } from './components';
 import { isInvalidTwoColumnOptions, isInvalidThreeColumnOptions } from './utils';
-
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';

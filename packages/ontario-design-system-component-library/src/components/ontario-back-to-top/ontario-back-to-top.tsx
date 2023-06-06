@@ -1,7 +1,6 @@
 import { Component, h, Element, Prop, Listen, State } from '@stencil/core';
 
 import OntarioIconArrowUp from '../ontario-icon/assets/ontario-icon-arrow-up.svg';
-
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 

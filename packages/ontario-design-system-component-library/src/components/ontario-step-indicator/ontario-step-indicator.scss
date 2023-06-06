@@ -1,0 +1,61 @@
+@use 'sass:math';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as
+	globalVariables;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
+	spacing;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables'
+	as breakpoints;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
+@use '../ontario-button/ontario-button.scss';
+
+$ontario-icon-size: 24px;
+
+.ontario-step-indicator .ontario-step-indicator--with-back-button--false,
+.ontario-step-indicator .ontario-step-indicator--with-back-button--true {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.ontario-step-indicator .ontario-step-indicator--with-back-button--false {
+	justify-content: flex-end;
+}
+
+.ontario-step-indicator .ontario-h4 {
+	margin: (spacing.$spacing-4 + math.div(spacing.$spacing-1, 2)) 0;
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		margin: spacing.$spacing-4 0;
+		text-align: right;
+	}
+}
+
+/**
+* Tertiary button defaults are overridden to achieve the mini-button specifications
+* width is unset in small screen size to remove unnecessary space being added to the button
+* min-width and max-width are set for small screen size to ensure the "back" button doesn't break and protrude into the text to the right
+*/
+.ontario-step-indicator .ontario-button.ontario-button--tertiary {
+	display: flex;
+	align-items: center;
+	margin: spacing.$spacing-3 spacing.$spacing-0;
+	padding-left: spacing.$spacing-2;
+	padding-right: spacing.$spacing-4;
+	min-width: spacing.$spacing-8;
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		width: unset;
+	}
+
+	.ontario-icon {
+		margin: spacing.$spacing-0 math.div(spacing.$spacing-3, 2) spacing.$spacing-0 spacing.$spacing-0;
+		padding: spacing.$spacing-0;
+		min-width: $ontario-icon-size;
+		min-height: $ontario-icon-size;
+	}
+}
+
+.ontario-step-indicator hr {
+	padding: spacing.$spacing-0;
+	margin: spacing.$spacing-0;
+}
