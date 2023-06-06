@@ -36,7 +36,6 @@
 	"dependencies": {
 		"@ontario-digital-service/ontario-design-system-global-styles": "2.4.0",
 		"@stencil/core": "2.20.0",
-		"prop-types": "^15.8.1",
 		"validate-color": "^2.2.1"
 	},
 	"devDependencies": {
