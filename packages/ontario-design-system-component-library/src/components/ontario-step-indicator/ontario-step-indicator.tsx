@@ -1,4 +1,7 @@
-import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
+import { Component, Prop, Element, h, State, Listen } from '@stencil/core';
+import { Language } from '../../utils/common/language-types';
+import { validateLanguage } from '../../utils/validation/validation-functions';
+import translations from '../../translations/global.i18n.json';
 
 @Component({
 	tag: 'ontario-step-indicator',
@@ -11,12 +14,7 @@ export class OntarioStepIndicator {
 	/**
 	 * Shows back button depending on which step the user is on.
 	 */
-	@Prop() showBackbutton: boolean = false;
-
-	/**
-	 * The link for where the back button should lead.
-	 */
-	@Prop() backButtonlink: string;
+	@Prop() showBackButton: boolean = false;
 
 	/**
 	 * Lets user know which step the current page is on.
@@ -26,7 +24,7 @@ export class OntarioStepIndicator {
 	/**
 	 * Number of steps that the form has.
 	 */
-	@Prop() numberOfStep?: number = 5;
+	@Prop() numberOfSteps?: number = 5;
 
 	/**
 	 * Display the text in percentage format.
@@ -39,37 +37,74 @@ export class OntarioStepIndicator {
 	@Prop() percentageComplete?: number = 0;
 
 	/**
-	 * @returns the classes of the button based of the button's `type`.
+	 * The language of the component.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 	 */
-	private getClass() {
-		return `ontario-step-indicator--with-back-button--${this.showBackbutton}`;
+	@Prop({ mutable: true }) language?: Language = 'en';
+
+	@State() translations: any = translations;
+
+	/**
+	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
+	 */
+	@Listen('setAppLanguage', { target: 'window' })
+	handleSetAppLanguage(event: CustomEvent<Language>) {
+		this.language = validateLanguage(event);
 	}
 
-	componentWillLoad() {}
+	@Listen('headerLanguageToggled', { target: 'window' })
+	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
+		const toggledLanguage = validateLanguage(event);
+		this.language = toggledLanguage;
+	}
+
+	/**
+	 * Capture the text that indicates where the user is within the form journey.
+	 */
+	private captureStepIndicatorText() {
+		if (this.isPercentage) {
+			return `${this.percentageComplete}&nbsp;% complete`;
+		} else {
+			return `Step&nbsp;${this.currentStep} of&nbsp;${this.numberOfSteps}`;
+		}
+	}
+
+	componentWillLoad() {
+		this.captureStepIndicatorText();
+		this.language = validateLanguage(this.language);
+	}
+
 	render() {
-		return (
-			<div class="ontario-step-indicator">
-				<div class="ontario-row">
-					<div class="ontario-columns ontario-small-12">
-						<div class={this.getClass()}>
-							<button class="ontario-button ontario-button--tertiary">
-								<svg
-									class="ontario-icon"
-									aria-hidden="true"
-									focusable="false"
-									viewBox="0 0 24 24"
-									preserveAspectRatio="xMidYMid meet"
-								>
-									<use href="#ontario-icon-chevron-left"></use>
-								</svg>
-								Back
-							</button>
-							<span class="ontario-h4">Step&nbsp;2 of&nbsp;5</span>
+		if (this.showBackButton == true) {
+			return (
+				<div class="ontario-step-indicator">
+					<div class="ontario-row">
+						<div class="ontario-columns ontario-small-12">
+							<div class="ontario-step-indicator--with-back-button--true">
+								<button class="ontario-button ontario-button--tertiary">
+									<ontario-icon-chevron-left colour="blue"></ontario-icon-chevron-left>
+									{this.translations.stepIndicator.back[`${this.language}`]}
+								</button>
+								<span class="ontario-h4" innerHTML={this.captureStepIndicatorText()}></span>
+							</div>
+							<hr />
 						</div>
-						<hr />
 					</div>
 				</div>
-			</div>
-		);
+			);
+		} else {
+			return (
+				<div class="ontario-step-indicator">
+					<div class="ontario-row">
+						<div class="ontario-columns ontario-small-12">
+							<div class="ontario-step-indicator--with-back-button--false">
+								<span class="ontario-h4" innerHTML={this.captureStepIndicatorText()}></span>
+							</div>
+							<hr />
+						</div>
+					</div>
+				</div>
+			);
+		}
 	}
 }

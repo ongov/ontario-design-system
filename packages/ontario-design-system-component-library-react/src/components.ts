@@ -138,4 +138,5 @@ export const OntarioLanguageToggle = /*@__PURE__*/createReactComponent<JSX.Ontar
 export const OntarioLoadingIndicator = /*@__PURE__*/createReactComponent<JSX.OntarioLoadingIndicator, HTMLOntarioLoadingIndicatorElement>('ontario-loading-indicator');
 export const OntarioPageAlert = /*@__PURE__*/createReactComponent<JSX.OntarioPageAlert, HTMLOntarioPageAlertElement>('ontario-page-alert');
 export const OntarioRadioButtons = /*@__PURE__*/createReactComponent<JSX.OntarioRadioButtons, HTMLOntarioRadioButtonsElement>('ontario-radio-buttons');
+export const OntarioStepIndicator = /*@__PURE__*/createReactComponent<JSX.OntarioStepIndicator, HTMLOntarioStepIndicatorElement>('ontario-step-indicator');
 export const OntarioTextarea = /*@__PURE__*/createReactComponent<JSX.OntarioTextarea, HTMLOntarioTextareaElement>('ontario-textarea');

@@ -80,5 +80,11 @@
 			"en": "Switch language to French",
 			"fr": "Changer la langue en anglais"
 		}
+	},
+	"stepIndicator": {
+		"back": {
+			"en": "Back",
+			"fr": "Retour"
+		}
 	}
 }
