@@ -85,6 +85,18 @@
 		"back": {
 			"en": "Back",
 			"fr": "Retour"
+		},
+		"step": {
+			"en": "Step",
+			"fr": "Étape"
+		},
+		"of": {
+			"en": "of",
+			"fr": "sur"
+		},
+		"complete": {
+			"en": "complete",
+			"fr": "complet"
 		}
 	}
 }

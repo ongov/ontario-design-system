@@ -17,24 +17,29 @@ export class OntarioStepIndicator {
 	@Prop() showBackButton: boolean = false;
 
 	/**
+	 * Link for the back button onClick function.
+	 */
+	@Prop() backButtonLink?: string;
+
+	/**
 	 * Lets user know which step the current page is on.
 	 */
-	@Prop() currentStep?: number = 1;
+	@Prop() currentStep?: number;
 
 	/**
 	 * Number of steps that the form has.
 	 */
-	@Prop() numberOfSteps?: number = 5;
-
-	/**
-	 * Display the text in percentage format.
-	 */
-	@Prop() isPercentage?: boolean = false;
+	@Prop() numberOfSteps?: number;
 
 	/**
 	 * Percentage of the form that has been completed.
 	 */
-	@Prop() percentageComplete?: number = 0;
+	@Prop() percentageComplete?: number;
+
+	/**
+	 * Used to add a custom function to the back button onClick event.
+	 */
+	@Prop() customOnClick?: Function;
 
 	/**
 	 * The language of the component.
@@ -58,53 +63,46 @@ export class OntarioStepIndicator {
 		this.language = toggledLanguage;
 	}
 
-	/**
-	 * Capture the text that indicates where the user is within the form journey.
-	 */
-	private captureStepIndicatorText() {
-		if (this.isPercentage) {
-			return `${this.percentageComplete}&nbsp;% complete`;
-		} else {
-			return `Step&nbsp;${this.currentStep} of&nbsp;${this.numberOfSteps}`;
-		}
-	}
-
 	componentWillLoad() {
-		this.captureStepIndicatorText();
 		this.language = validateLanguage(this.language);
 	}
 
 	render() {
-		if (this.showBackButton == true) {
-			return (
-				<div class="ontario-step-indicator">
-					<div class="ontario-row">
-						<div class="ontario-columns ontario-small-12">
-							<div class="ontario-step-indicator--with-back-button--true">
-								<button class="ontario-button ontario-button--tertiary">
+		return (
+			<div class="ontario-step-indicator">
+				<div class="ontario-row">
+					<div class="ontario-columns ontario-small-12">
+						<div class={`ontario-step-indicator--with-back-button--${this.showBackButton}`}>
+							{this.showBackButton === true && this.customOnClick && !this.backButtonLink && (
+								<button
+									class="ontario-button ontario-button--tertiary"
+									onClick={(e) => this.customOnClick && this.customOnClick(e)}
+								>
 									<ontario-icon-chevron-left colour="blue"></ontario-icon-chevron-left>
 									{this.translations.stepIndicator.back[`${this.language}`]}
 								</button>
-								<span class="ontario-h4" innerHTML={this.captureStepIndicatorText()}></span>
-							</div>
-							<hr />
+							)}
+							{this.showBackButton === true && !this.customOnClick && this.backButtonLink && (
+								<a class="ontario-button ontario-button--tertiary" href={this.backButtonLink}>
+									<ontario-icon-chevron-left colour="blue"></ontario-icon-chevron-left>
+									{this.translations.stepIndicator.back[`${this.language}`]}
+								</a>
+							)}
+							{this.percentageComplete ? (
+								<span class="ontario-h4">
+									{this.percentageComplete}&nbsp;% {this.translations.stepIndicator.complete[`${this.language}`]}
+								</span>
+							) : (
+								<span class="ontario-h4">
+									{this.translations.stepIndicator.step[`${this.language}`]}&nbsp; {this.currentStep}{' '}
+									{this.translations.stepIndicator.of[`${this.language}`]}&nbsp; {this.numberOfSteps}
+								</span>
+							)}
 						</div>
+						<hr />
 					</div>
 				</div>
-			);
-		} else {
-			return (
-				<div class="ontario-step-indicator">
-					<div class="ontario-row">
-						<div class="ontario-columns ontario-small-12">
-							<div class="ontario-step-indicator--with-back-button--false">
-								<span class="ontario-h4" innerHTML={this.captureStepIndicatorText()}></span>
-							</div>
-							<hr />
-						</div>
-					</div>
-				</div>
-			);
-		}
+			</div>
+		);
 	}
 }

@@ -2794,14 +2794,32 @@ export declare interface OntarioRadioButtons extends Components.OntarioRadioButt
 }
 
 @ProxyCmp({
-	inputs: ['currentStep', 'isPercentage', 'language', 'numberOfSteps', 'percentageComplete', 'showBackButton'],
+	inputs: [
+		'backButtonLink',
+		'currentStep',
+		'customOnClick',
+		'isPercentage',
+		'language',
+		'numberOfSteps',
+		'percentageComplete',
+		'showBackButton',
+	],
 })
 @Component({
 	selector: 'ontario-step-indicator',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['currentStep', 'isPercentage', 'language', 'numberOfSteps', 'percentageComplete', 'showBackButton'],
+	inputs: [
+		'backButtonLink',
+		'currentStep',
+		'customOnClick',
+		'isPercentage',
+		'language',
+		'numberOfSteps',
+		'percentageComplete',
+		'showBackButton',
+	],
 })
 export class OntarioStepIndicator {
 	protected el: HTMLElement;

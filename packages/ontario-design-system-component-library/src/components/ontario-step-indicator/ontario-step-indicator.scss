@@ -5,8 +5,8 @@
 	spacing;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables'
 	as breakpoints;
-@forward '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
-@forward '../ontario-button/ontario-button.scss';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
+@use '../ontario-button/ontario-button.scss';
 
 $ontario-icon-size: 24px;
 
