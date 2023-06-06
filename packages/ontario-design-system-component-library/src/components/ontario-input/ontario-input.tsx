@@ -8,7 +8,7 @@ import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 import { Hint } from '../../utils/common/common.interface';
 import { InputCaption } from '../../utils/common/input-caption/input-caption';
 import { Caption } from '../../utils/common/input-caption/caption.interface';
-import { Language } from '../../utils/common/language-types';
+import { Language } from '../../utils/common/language/language-types';
 import { validateLanguage, validatePropExists } from '../../utils/validation/validation-functions';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
 import { InputFocusBlurEvent, EventType, InputChangeEvent } from '../../utils/events/event-handler.interface';

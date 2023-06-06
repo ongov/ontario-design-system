@@ -23,7 +23,8 @@
 		// these options are overrides used only by ts-node
 		"compilerOptions": {
 			"module": "commonjs",
-			"target": "esnext"
+			"target": "esnext",
+			"experimentalDecorators": true
 		}
 	}
 }

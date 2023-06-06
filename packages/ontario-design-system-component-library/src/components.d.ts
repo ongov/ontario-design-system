@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HeadingContentType, HeadingLevelOptions, HighlightColourOptions } from "./utils/components/callout-aside/callout-aside.interface";
-import { Language } from "./utils/common/language-types";
+import { Language } from "./utils/common/language/language-types";
 import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
 import { Caption } from "./utils/common/input-caption/caption.interface";
 import { Hint, HintContentType } from "./utils/common/common.interface";

@@ -13,7 +13,7 @@ import {
 	validateLanguage,
 } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { Language } from '../../utils/common/language-types';
+import { Language } from '../../utils/common/language/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
 import {
 	InputFocusBlurEvent,

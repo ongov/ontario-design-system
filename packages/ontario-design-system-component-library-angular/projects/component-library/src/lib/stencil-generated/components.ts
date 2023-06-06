@@ -2795,10 +2795,9 @@ export declare interface OntarioRadioButtons extends Components.OntarioRadioButt
 
 @ProxyCmp({
 	inputs: [
-		'backButtonLink',
+		'backButtonURL',
 		'currentStep',
 		'customOnClick',
-		'isPercentage',
 		'language',
 		'numberOfSteps',
 		'percentageComplete',
@@ -2811,10 +2810,9 @@ export declare interface OntarioRadioButtons extends Components.OntarioRadioButt
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
 	inputs: [
-		'backButtonLink',
+		'backButtonURL',
 		'currentStep',
 		'customOnClick',
-		'isPercentage',
 		'language',
 		'numberOfSteps',
 		'percentageComplete',

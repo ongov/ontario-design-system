@@ -1,5 +1,5 @@
 import { Component, Prop, Element, h, State, Listen } from '@stencil/core';
-import { Language } from '../../utils/common/language-types';
+import { Language } from '../../utils/common/language/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import translations from '../../translations/global.i18n.json';
 
@@ -19,9 +19,12 @@ export class OntarioStepIndicator {
 	@Prop() showBackButton?: boolean = false;
 
 	/**
-	 * Link for the back button onClick function.
+	 * URL for the back element to set a path for where the link will lead.
+	 *
+	 * If a URL is passed in, the back element will display as an anchor tag.
+	 * The back element will require either the backButtonURL prop or the customOnClick prop to be passed in order for the back element to display.
 	 */
-	@Prop() backButtonLink?: string;
+	@Prop() backButtonUrl?: string;
 
 	/**
 	 * A number value to indicate which step the user is currently on.
@@ -41,6 +44,9 @@ export class OntarioStepIndicator {
 
 	/**
 	 * Used to add a custom function to the back button onClick event.
+	 *
+	 * If this function is passed in, the back element will display as a button.
+	 * The back element will require either the backButtonURL prop or the customOnClick prop to be passed in order for the back element to display.
 	 */
 	@Prop() customOnClick?: Function;
 
@@ -49,8 +55,6 @@ export class OntarioStepIndicator {
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 	 */
 	@Prop({ mutable: true }) language?: Language = 'en';
-
-	@State() translations: any = translations;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -66,6 +70,8 @@ export class OntarioStepIndicator {
 		this.language = toggledLanguage;
 	}
 
+	@State() translations: any = translations;
+
 	componentWillLoad() {
 		this.language = validateLanguage(this.language);
 	}
@@ -76,7 +82,7 @@ export class OntarioStepIndicator {
 				<div class="ontario-row">
 					<div class="ontario-columns ontario-small-12">
 						<div class={`ontario-step-indicator--with-back-button--${this.showBackButton}`}>
-							{this.showBackButton === true && this.customOnClick && !this.backButtonLink && (
+							{this.showBackButton === true && this.customOnClick && !this.backButtonUrl && (
 								<button
 									class="ontario-button ontario-button--tertiary"
 									onClick={(e) => this.customOnClick && this.customOnClick(e)}
@@ -85,8 +91,8 @@ export class OntarioStepIndicator {
 									{this.translations.stepIndicator.back[`${this.language}`]}
 								</button>
 							)}
-							{this.showBackButton === true && !this.customOnClick && this.backButtonLink && (
-								<a class="ontario-button ontario-button--tertiary" href={this.backButtonLink}>
+							{this.showBackButton === true && !this.customOnClick && this.backButtonUrl && (
+								<a class="ontario-button ontario-button--tertiary" href={this.backButtonUrl}>
 									<ontario-icon-chevron-left colour="blue"></ontario-icon-chevron-left>
 									{this.translations.stepIndicator.back[`${this.language}`]}
 								</a>

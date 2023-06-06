@@ -1,6 +1,5 @@
 import { Component, h, Prop, Listen, State, Watch } from '@stencil/core';
-
-import { Language } from '../../utils/common/language-types';
+import { Language } from '../../utils/common/language/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';

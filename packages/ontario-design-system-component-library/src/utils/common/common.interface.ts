@@ -1,4 +1,4 @@
-import { Language } from './language-types';
+import { Language } from './language/language-types';
 import { InputChangeEvent, InputFocusBlurEvent } from '../events/event-handler.interface';
 
 export interface Base {
