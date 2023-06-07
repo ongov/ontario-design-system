@@ -1,3 +1,49 @@
+# 2.5.0-alpha.1 (2023-06-07)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** fixes according to MR review 3391c2d
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** fixes according to MR review 8f9852d
+- **@ontario-digital-service/ontario-design-system-component-library:** adds composable input element bbb911c
+- **@ontario-digital-service/ontario-design-system-component-library:** adds helper function to translate slots and textContent 3be6cd4
+- **@ontario-digital-service/ontario-design-system-component-library:** adds mockMutationObserver in utils to import into component tests that use it e8116a9
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes broken tests 0c353b5
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes componentDidLoad function caef125
+- **@ontario-digital-service/ontario-design-system-component-library:** moves mock observer into test folder within utils 41e72c0
+- **@ontario-digital-service/ontario-design-system-component-library:** moves util functions around in new folders, updates input functional component props 473d9eb
+- **@ontario-digital-service/ontario-design-system-component-library:** rebases with develop 10116b3
+- **@ontario-digital-service/ontario-design-system-component-library:** removes default language, adds watch to changes in langauge prop 9f88652
+- **@ontario-digital-service/ontario-design-system-component-library:** removes extra \* ed4bb74
+- **@ontario-digital-service/ontario-design-system-component-library:** removes unused uuid import 8f3af5c
+- **@ontario-digital-service/ontario-design-system-component-library:** resolve merge conflicts 7d117b4
+- **@ontario-digital-service/ontario-design-system-component-library:** updates according to MR review b1679fd
+- **@ontario-digital-service/ontario-design-system-component-library:** updates branch to fix MR review discussions bfa6634
+- **@ontario-digital-service/ontario-design-system-component-library:** updates examples for READMEs with broken formatting, updates general component README file 77cf00a
+- fixes broken formatting for ontario-button readme example 1bfb75c
+- updated footer in react poc 25690c8
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library-react, @ontario-digital-service/ontario-design-system-component-library:** adds ontario-language-toggle component d8176ad
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library-react, @ontario-digital-service/ontario-design-system-component-library:** fix merge conflicts coming from develop 4da363e
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** fix merge conflicts coming from develop 9fbc051
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** fix merge conflicts coming from develop 366d66e
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** fix merge conflicts coming from develop 0b63336
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** fix merge conflicts coming from develop 7f3043f
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** resolve merge coflicts 294baa7
+- **@ontario-digital-service/ontario-design-system-component-library-angular:** added more frames 87d9c36
+- **@ontario-digital-service/ontario-design-system-component-library:** fix merge conflicts coming from develop 58fd0f8
+- **@ontario-digital-service/ontario-design-system-component-library:** fix merge conflicts coming from develop db7ba7e
+- **@ontario-digital-service/ontario-design-system-component-library:** fixed build errors 51c56c7
+- **@ontario-digital-service/ontario-design-system-component-library:** fixed merge conflicts 7e83f25
+- **@ontario-digital-service/ontario-design-system-component-library:** initial foundation for step indicator 60b20e7
+- **@ontario-digital-service/ontario-design-system-component-library:** remove unit tests for this branch e125b90
+- **@ontario-digital-service/ontario-design-system-component-library:** resolve merge coflicts 32c3f89
+- **@ontario-digital-service/ontario-design-system-component-library:** update based on mr feedback 557c94d
+- **@ontario-digital-service/ontario-design-system-component-library:** updates based on MR 51e6937
+- remove the step indicator from the frames 85a484c
+- resolve merge coflicts 966f319
+
 ## 2.4.1-alpha.2 (2023-05-23)
 
 ### Bug Fixes
