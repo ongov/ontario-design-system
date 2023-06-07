@@ -1,0 +1,71 @@
+@use 'sass:math';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
+	spacing;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as
+	globalVariables;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
+	colours;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as
+	typography;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables'
+	as fontWeights;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions'
+	as globalFunctions;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders'
+	as focusPlaceholders;
+
+@forward '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
+
+.ontario-language-toggler {
+	background-color: colours.$ontario-colour-black;
+	border: none;
+	border-radius: globalVariables.$global-radius;
+	box-sizing: border-box;
+	box-shadow: none;
+	color: colours.$ontario-colour-white;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	font-size: 1.125rem;
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	font-family: typography.$ontario-font-open-sans;
+	height: globalVariables.$standard-input-height;
+	line-height: math.div(14, 9);
+	text-align: center;
+	text-decoration: none;
+
+	&:hover {
+		background-color: colours.$ontario-greyscale-70;
+	}
+
+	&:active {
+		background-color: colours.$ontario-greyscale-60;
+		color: colours.$ontario-colour-white;
+	}
+
+	&:focus {
+		background-color: colours.$ontario-greyscale-70;
+		color: colours.$ontario-colour-white;
+		@extend %ontario-focus;
+	}
+
+	&:visited {
+		color: colours.$ontario-colour-white;
+	}
+
+	abbr[title] {
+		text-decoration: none;
+	}
+}
+
+.ontario-language-toggler--default {
+	padding: spacing.$spacing-3;
+}
+
+.ontario-language-toggler--small {
+	font-size: globalFunctions.rem-calc(16);
+	line-height: globalFunctions.rem-calc(22);
+	height: auto;
+	outline: none;
+	padding: spacing.$spacing-2 spacing.$spacing-3;
+}

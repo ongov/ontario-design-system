@@ -23,7 +23,7 @@ Example of a bare-bones icon component, the user is referencing the Ontario Desi
 Example of a bookmark icon, where the user is is passing a colour property of 'Grey'.
 
 ```html
-<ontario-icon-bookmark colour="grey"> </ontario-icon-bookmark>
+<ontario-icon-bookmark colour="grey"></ontario-icon-bookmark>
 ```
 
 <!-- Auto Generated Below -->

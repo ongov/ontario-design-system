@@ -8,8 +8,9 @@ import { PageAlert, PageAlertType } from './ontario-page-alert.interface';
 })
 export class OntarioPageAlert implements PageAlert {
 	/**
-	 * The type of page alert to render. If no value is provided `informational` alert would be rendered.
-	 * There are four possible values for page alert (i.e informational, warning, success or error).
+	 * The type of page alert to render. If no value is provided, the `informational` type alert would be rendered.
+	 *
+	 * There are four possible values for page alert: `informational`, `warning`, `success` or `error`.
 	 *
 	 * @example
 	 * <ontario-page-alert type="error">
@@ -18,7 +19,7 @@ export class OntarioPageAlert implements PageAlert {
 	@Prop() type: PageAlertType = 'informational';
 
 	/**
-	 * Heading for page alert
+	 * The heading for the page alert.
 	 *
 	 * @example
 	 * <ontario-page-alert heading="Licence plates">
@@ -27,7 +28,7 @@ export class OntarioPageAlert implements PageAlert {
 	@Prop() heading: string;
 
 	/**
-	 * Body for page alert. It can be string or HTML content.
+	 * The main content for the page alert. This can be rendered as either string or HTML content.
 	 *
 	 * @example
 	 * <ontario-page-alert content="Please look out for an email confirmation with your receipt and order number.">

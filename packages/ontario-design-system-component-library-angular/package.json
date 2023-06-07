@@ -12,6 +12,8 @@
 		"build": "npm run build:component-lib && npm run format:stencil",
 		"build:component-lib": "ng build component-library",
 		"build:app": "ng build app-angular",
+		"clean": "rm -rf build",
+		"clean:full": "rm -rf node_modules && npm run clean",
 		"watch": "ng build --watch --configuration development",
 		"test": "ng test",
 		"format:stencil": "prettier --write ./projects/component-library/src/lib/stencil-generated",

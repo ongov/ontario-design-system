@@ -1,7 +1,9 @@
 import { Component, h, Element, Prop, Listen, State } from '@stencil/core';
+
 import OntarioIconArrowUp from '../ontario-icon/assets/ontario-icon-arrow-up.svg';
-import { Language } from '../../utils/language-types';
+import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
+
 import translations from '../../translations/global.i18n.json';
 
 @Component({
@@ -14,7 +16,7 @@ export class OntarioBackToTop {
 
 	/**
 	 * The language of the component.
-	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language prop is passed, it will default to English.
 	 */
 	@Prop({ mutable: true }) language?: Language = 'en';
 
@@ -25,7 +27,7 @@ export class OntarioBackToTop {
 	@State() private scrollYValue: number = 200;
 
 	/**
-	 * This listens for the window Y scroll value to be above 200 pixels. Once it is, the back to top button will toggle the `displayBackToTop` state which will set an active class to control the components' visibility.
+	 * This listens for the window Y scroll value to be above 200 pixels. Once it is, the Back to Top button will toggle the `displayBackToTop` state which will set an active class to control the components' visibility.
 	 */
 	@Listen('scroll', { target: 'window' })
 	showBackToTopButton() {
@@ -47,7 +49,7 @@ export class OntarioBackToTop {
 	}
 
 	/**
-	 * Scroll to top functionality when the back to top button is clicked
+	 * Scroll to top functionality when the Back to Top button is clicked
 	 */
 	private scrollToTop() {
 		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });

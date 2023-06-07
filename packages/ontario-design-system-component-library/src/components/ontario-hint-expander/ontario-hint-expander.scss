@@ -69,6 +69,10 @@
 	padding: spacing.$spacing-4 spacing.$spacing-4 spacing.$spacing-4 calc(#{spacing.$spacing-4} + #{spacing.$spacing-1});
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-4 spacing.$spacing-1;
 
+	& *:first-child {
+		margin-top: spacing.$spacing-0;
+	}
+
 	& *:last-child {
 		margin-bottom: spacing.$spacing-0;
 	}

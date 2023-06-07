@@ -4,13 +4,24 @@ import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-co
 import CodeHighlighter from '../../components/code-highlighter';
 
 export default function DefaultFooterCodeExample() {
-	const defaultFooterExample = `import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioFooter 
+	const defaultFooterExample = `import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioFooter
 	type="default"
-	defaultOptions={{
-		accessibilityLink: "https://www.ontario.ca/page/accessibility",
-		privacyLink: "https://www.ontario.ca/page/privacy-statement",
-		contactLink: "https://www.ontario.ca/feedback/contact-us",
-		printerLink: "https://www.ontario.ca/page/copyright-information"
+	footerLinks={{
+		accessibilityLink: {
+			text: 'Accessibility',
+			href: 'https://www.ontario.ca/page/accessibility'
+		},
+		privacyLink: {
+			text: 'Privacy',
+			href: 'https://www.ontario.ca/page/privacy-statement'
+		},
+		contactLink: {
+			text: 'Contact us',
+			href: 'https://www.ontario.ca/feedback/contact-us'
+		},
+		printerLink: {
+			href: 'https://www.ontario.ca/page/copyright-information'
+		}
 	}}
 ></OntarioFooter>`;
 	return (
@@ -20,11 +31,22 @@ export default function DefaultFooterCodeExample() {
 				<div className="ontario-margin-top-24-!">
 					<OntarioFooter
 						type="default"
-						defaultOptions={{
-							accessibilityLink: 'https://www.ontario.ca/page/accessibility',
-							privacyLink: 'https://www.ontario.ca/page/privacy-statement',
-							contactLink: 'https://www.ontario.ca/feedback/contact-us',
-							printerLink: 'https://www.ontario.ca/page/copyright-information',
+						footerLinks={{
+							accessibilityLink: {
+								text: 'Accessibility',
+								href: 'https://www.ontario.ca/page/accessibility',
+							},
+							privacyLink: {
+								text: 'Privacy',
+								href: 'https://www.ontario.ca/page/privacy-statement',
+							},
+							contactLink: {
+								text: 'Contact us',
+								href: 'https://www.ontario.ca/feedback/contact-us',
+							},
+							printerLink: {
+								href: 'https://www.ontario.ca/page/copyright-information',
+							},
 						}}
 					></OntarioFooter>
 
