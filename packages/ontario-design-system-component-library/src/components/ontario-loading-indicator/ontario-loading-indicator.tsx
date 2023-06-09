@@ -61,8 +61,7 @@ export class OntarioLoadingIndicator {
 
 	@Listen('headerLanguageToggled', { target: 'window' })
 	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		const toggledLanguage = validateLanguage(event);
-		this.language = toggledLanguage;
+		this.language = validateLanguage(event);
 	}
 
 	/**
