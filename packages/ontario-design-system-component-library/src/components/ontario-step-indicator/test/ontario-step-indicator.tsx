@@ -8,9 +8,9 @@ describe('ontario-step-indicator', () => {
 			html: `<ontario-step-indicator></ontario-step-indicator>`,
 		});
 		expect(page.root).toEqualHtml(`
-      <ontario-step-indicator>
-        <mock:shadow-root>
-          <div class="ontario-row">
+			<ontario-step-indicator>
+				<mock:shadow-root>
+					<div class="ontario-row">
 						<div class="class="ontario-columns ontario-small-12">
 							<div class="ontario-step-indicator--with-back-button--false">
 								<span class="ontario-h4">
@@ -19,8 +19,8 @@ describe('ontario-step-indicator', () => {
 							</div>
 						</div>
 					</div>
-        </mock:shadow-root>
-      </ontario-step-indicator>
+				</mock:shadow-root>
+			</ontario-step-indicator>
     `);
 	});
 
