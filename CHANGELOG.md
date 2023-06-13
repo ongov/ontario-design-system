@@ -1,3 +1,9 @@
+# 2.5.0-alpha.2 (2023-06-13)
+
+### Bug Fixes
+
+- **language event handlers:** refactor code to be consistant 9b5c0df
+
 # 2.5.0-alpha.1 (2023-06-07)
 
 ### Bug Fixes
