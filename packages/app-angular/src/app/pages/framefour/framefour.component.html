@@ -1,0 +1,36 @@
+<div>
+	<ontario-checkboxes
+		caption='{
+      "captionText": "Describe your role",
+      "captionType": "heading"
+    }'
+		name="describe-role"
+		hint-text="Select all the options that are relevant to you."
+		options='[
+      {
+        "value": "development",
+        "label": "I do development",
+        "elementId": "development"
+      },
+      {
+        "value": "design",
+        "label": "I do design",
+        "elementId": "design"
+      },
+      {
+        "value": "html-css",
+        "label": "I work with HTML/CSS",
+        "elementId": "html-css"
+      },
+      {
+        "value": "other",
+        "label": "Other",
+        "elementId": "other"
+      }
+    ]'
+	>
+	</ontario-checkboxes>
+
+	<ontario-button type="primary" label="Next" aria-label-text="Continue to next question" routerLink="/framefive">
+	</ontario-button>
+</div>

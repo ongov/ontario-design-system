@@ -1,5 +1,8 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { OntarioHintExpander } from '../ontario-hint-expander';
+import { mutationObserverMock } from '../../../utils/tests/mutation-observer.mock';
+
+global.MutationObserver = mutationObserverMock;
 
 describe('ontario-hint-expander', () => {
 	it('should render a default hint expander', async () => {

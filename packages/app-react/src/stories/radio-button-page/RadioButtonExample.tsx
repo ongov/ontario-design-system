@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import { OntarioRadioButtons } from '@ontario-digital-service/ontario-design-system-component-library-react';
 
@@ -7,6 +7,7 @@ import CodeHighlighter from '../../components/code-highlighter';
 export default function RadioButtonExample() {
 	const radioButtonsCodeExample = `import { OntarioRadioButtons } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n
 <OntarioRadioButtons 
+	ref={componentRef}
 	caption="Radio legend"
 	name="radio-example"
 	required={false}
@@ -36,13 +37,40 @@ export default function RadioButtonExample() {
 		hint: "Hint expander for the radio button group",
 		content: "Example hint expander content for the radio button group.",
 	}}
+	customOnChange={(ev: any) => handleRadioOnChange(ev)}
 >
 </OntarioRadioButtons>`;
+
+	const componentRef = useRef<any>(null);
+
+	useEffect(() => {
+		const component = componentRef.current;
+		if (component) {
+			component.addEventListener('radioOnChange', handleEvent);
+		}
+
+		return () => {
+			if (component) {
+				component.removeEventListener('radioOnChange', handleEvent);
+			}
+		};
+	}, [componentRef]);
+
+	const handleEvent = (e: any) => {
+		// this should be updated to output the selected value
+		console.log(e.detail);
+	};
+
+	const handleRadioOnChange = (ev: any) => {
+		console.log(`${ev.target.value} was clicked`);
+	};
+
 	return (
 		<div className="ontario-row">
 			<div className="ontario-columns ontario-large-12">
 				<h2>Example</h2>
 				<OntarioRadioButtons
+					ref={componentRef}
 					caption="Radio legend"
 					name="radio-example"
 					required={false}
@@ -72,6 +100,7 @@ export default function RadioButtonExample() {
 						hint: 'Hint expander for the radio button group',
 						content: 'Example hint expander content for the radio button group.',
 					}}
+					customOnChange={(ev: any) => handleRadioOnChange(ev)}
 				></OntarioRadioButtons>
 
 				<p>With the following markup:</p>

@@ -8,7 +8,7 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca/comp
 
 ## Configuration
 
-Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the Page Alert component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
+Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the page alert component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
 
 ## Examples
 
@@ -36,11 +36,11 @@ Example of success page alert type, where the content is passed as a string rath
 
 ## Properties
 
-| Property  | Attribute | Description                                                                                                                                                                                      | Type                                                   | Default           |
-| --------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------ | ----------------- |
-| `content` | `content` | Body for page alert. It can be string or HTML content.                                                                                                                                           | `string`                                               | `undefined`       |
-| `heading` | `heading` | Heading for page alert                                                                                                                                                                           | `string`                                               | `undefined`       |
-| `type`    | `type`    | The type of page alert to render. If no value is provided `informational` alert would be rendered. There are four possible values for page alert (i.e informational, warning, success or error). | `"error" \| "informational" \| "success" \| "warning"` | `'informational'` |
+| Property  | Attribute | Description                                                                                                                                                                                                   | Type                                                   | Default           |
+| --------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | ----------------- |
+| `content` | `content` | The main content for the page alert. This can be rendered as either string or HTML content.                                                                                                                   | `string`                                               | `undefined`       |
+| `heading` | `heading` | The heading for the page alert.                                                                                                                                                                               | `string`                                               | `undefined`       |
+| `type`    | `type`    | The type of page alert to render. If no value is provided, the `informational` type alert would be rendered. There are four possible values for page alert: `informational`, `warning`, `success` or `error`. | `"error" \| "informational" \| "success" \| "warning"` | `'informational'` |
 
 ## Dependencies
 

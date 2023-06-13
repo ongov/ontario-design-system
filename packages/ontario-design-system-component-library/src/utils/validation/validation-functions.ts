@@ -1,4 +1,4 @@
-import { Language } from '../language-types';
+import { Language } from '../common/language-types';
 
 export function validatePropExists(newValue: string | HTMLElement): boolean {
 	// Check if new value that is passed in is a string and is not empty

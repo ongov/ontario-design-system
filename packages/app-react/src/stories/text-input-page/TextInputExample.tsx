@@ -32,6 +32,7 @@ export default function TextInputExample() {
 		hint: "Example hint expander for the 20 character width input",
 		elementId: "20-char-width-hint-expander"
 	}}
+	customOnBlur={(e: any) => inputOnBlur(e)}
 />`;
 
 	const DefaultInputExample = `import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioInput
@@ -62,6 +63,12 @@ export default function TextInputExample() {
 
 	const defaultInputOnFocus = () => {
 		console.log('Default input has focus');
+	};
+
+	const inputOnBlur = (e: any) => {
+		if (e.target.value) {
+			console.log(`The input value is: ${e.target.value}`);
+		}
 	};
 
 	return (
@@ -103,6 +110,7 @@ export default function TextInputExample() {
 							hint: 'Example hint expander for the 20 character width input',
 							elementId: '20-char-width-hint-expander',
 						}}
+						customOnBlur={(e: any) => inputOnBlur(e)}
 					/>
 
 					<p>With the following markup:</p>

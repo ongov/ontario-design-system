@@ -14,9 +14,13 @@
 
 	p {
 		margin-bottom: spacing.$spacing-4;
-	}
 
-	p:last-of-type {
-		margin-bottom: spacing.$spacing-0;
+		&:first-of-type {
+			margin-top: spacing.$spacing-0;
+		}
+
+		&:last-of-type {
+			margin-bottom: spacing.$spacing-0;
+		}
 	}
 }

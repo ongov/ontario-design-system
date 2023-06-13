@@ -30,9 +30,9 @@ Alternatively, HTML content can be supplied as the child of the critical alert r
 
 ## Properties
 
-| Property  | Attribute | Description                                                                                                                                                                                    | Type                    | Default     |
-| --------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | ----------- |
-| `content` | `content` | Content for critical alert message. It can be either a string or HTML content. The content is already wrapped in a paragraph tag, so if using HTML content, the paragraph tag can be ommitted. | `HTMLElement \| string` | `undefined` |
+| Property  | Attribute | Description                                                                                                                                                                                  | Type                    | Default     |
+| --------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | ----------- |
+| `content` | `content` | Content for critical alert message. It can be either string or HTML content. The content is already wrapped in a paragraph tag, so if using HTML content, the paragraph tag can be ommitted. | `HTMLElement \| string` | `undefined` |
 
 ---
 

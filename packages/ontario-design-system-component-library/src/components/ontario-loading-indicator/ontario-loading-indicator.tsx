@@ -1,8 +1,9 @@
 import { Component, h, Prop, Listen, State, Watch } from '@stencil/core';
-import { Language } from '../../utils/language-types';
+import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+
 import translations from '../../translations/global.i18n.json';
 
 @Component({
@@ -24,18 +25,21 @@ export class OntarioLoadingIndicator {
 	/**
 	 * The message that tells the user what is happening or why the user is waiting.
 	 * If no message prop is passed, it will default to "Loading". Translations for this default message are included.
+	 *
+	 * This is optional.
 	 */
 	@Prop() message?: string;
 
 	/**
-	 * A boolean value to determine whether the loading indicator overlay covers the full page or not. By default, this is set to true.
-	 * If set to false, the loading indicator overlay will be positioned absoltely relative to its container. Note that this will only work if the containing element has a style rule specifying it to be positioned relatively.
+	 * A boolean value to determine whether the loading indicator overlay covers the full page or not. By default, this is set to `true`.
+	 *
+	 * If set to `false`, the loading indicator overlay will be positioned absolutely relative to its container. Note that this will only work if the containing element has a style rule specifying it to be positioned relatively.
 	 */
 	@Prop() fullScreenOverlay?: boolean = true;
 
 	/**
 	 * The language of the component.
-	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
 	 */
 	@Prop({ mutable: true }) language?: Language = 'en';
 
@@ -57,12 +61,12 @@ export class OntarioLoadingIndicator {
 
 	@Listen('headerLanguageToggled', { target: 'window' })
 	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		const toggledLanguage = validateLanguage(event);
-		this.language = toggledLanguage;
+		this.language = validateLanguage(event);
 	}
 
 	/**
-	 * Watch for changes in the `type` variable for validation purpose.
+	 * Watch for changes in the `type` variable for validation purposes.
+	 *
 	 * If the user input doesn't match one of the array values then `type` will be set to its default (`large`).
 	 * If a match is found in one of the array values then `type` will be set to the matching array key value.
 	 */
@@ -78,7 +82,7 @@ export class OntarioLoadingIndicator {
 	}
 
 	/**
-	 * Print the invalid type warning message.
+	 * Print the invalid `type` warning message.
 	 * @returns default type ('large')
 	 */
 	private warnDefaultType() {

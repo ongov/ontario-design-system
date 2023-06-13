@@ -1,36 +1,32 @@
-import { Component, Event, EventEmitter, h, Prop, State, Listen, Watch, Element } from '@stencil/core';
+import { Component, Event, h, Prop, State, Listen, Watch, Element } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
-import { Hint, Input } from '../../utils/common.interface';
-import { InputCaption } from '../../utils/input-caption/input-caption';
-import { Caption } from '../../utils/input-caption/caption.interface';
+import { Hint, Input } from '../../utils/common/common.interface';
+import { InputCaption } from '../../utils/common/input-caption/input-caption';
+import { Caption } from '../../utils/common/input-caption/caption.interface';
 import { validatePropExists, validateLanguage } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { Language } from '../../utils/language-types';
-import { constructHintTextObject } from '../../utils/hints/hints';
+import { Language } from '../../utils/common/language-types';
+import { constructHintTextObject } from '../../utils/components/hints/hints';
+import { InputFocusBlurEvent, EventType, InputChangeEvent } from '../../utils/events/event-handler.interface';
+import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
-/**
- * Ontario Textarea component properties
- */
 @Component({
 	tag: 'ontario-textarea',
 	styleUrl: 'ontario-textarea.scss',
 	shadow: true,
 })
 export class OntarioTextarea implements Input {
-	/**
-	 * Grant access to the host element and related DOM methods/events within the class instance.
-	 */
 	@Element() element: HTMLElement;
 
 	hintTextRef: HTMLOntarioHintTextElement | undefined;
 
 	/**
-	 * The text to display as the label
+	 * The text to display as the textarea label.
 	 *
 	 * @example
 	 * <ontario-input
@@ -67,13 +63,16 @@ export class OntarioTextarea implements Input {
 	@Prop({ mutable: true }) value?: string;
 
 	/**
-	 * Define hint text for Ontario textarea. This is optional.
+	 * Used to include the ontario-hint-text component for the textarea.
+	 * This is optional.
+
 	 */
 	@Prop() hintText?: string | Hint;
 
 	/**
-	 * Used to include the Hint Expander component for the textarea.
+	 * Used to include the ontario-hint-expander component for the textarea component.
 	 * This is passed in as an object with key-value pairs.
+	 *
 	 * This is optional.
 	 *
 	 * @example
@@ -95,9 +94,24 @@ export class OntarioTextarea implements Input {
 
 	/**
 	 * The language of the component.
-	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
 	 */
 	@Prop({ mutable: true }) language?: Language = 'en';
+
+	/**
+	 * Used to add a custom function to the textarea onChange event.
+	 */
+	@Prop() customOnChange?: Function;
+
+	/**
+	 * Used to add a custom function to the textarea onBlur event.
+	 */
+	@Prop() customOnBlur?: Function;
+
+	/**
+	 * Used to add a custom function to the textarea onFocus event.
+	 */
+	@Prop() customOnFocus?: Function;
 
 	/**
 	 * Used for the `aria-describedby` value of the textarea. This will match with the id of the hint text.
@@ -119,22 +133,20 @@ export class OntarioTextarea implements Input {
 	 */
 	@State() private captionState: InputCaption;
 
-	@State() focused: boolean = false;
+	/**
+	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
+	 */
+	@Event({ eventName: 'inputOnChange' }) inputOnChange: InputChangeEvent;
 
 	/**
-	 * Emitted when the input loses focus.
+	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
-	@Event() blurEvent!: EventEmitter<void>;
+	@Event({ eventName: 'inputOnBlur' }) inputOnBlur: InputFocusBlurEvent;
 
 	/**
-	 * Emitted when the input gains focus.
+	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
-	@Event() focusEvent!: EventEmitter<void>;
-
-	/**
-	 * Emitted when a keyboard input occurred.
-	 */
-	@Event() changeEvent!: EventEmitter<KeyboardEvent>;
+	@Event({ eventName: 'inputOnFocus' }) inputOnFocus: InputFocusBlurEvent;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the textarea component loads.
@@ -146,10 +158,14 @@ export class OntarioTextarea implements Input {
 
 	@Listen('headerLanguageToggled', { target: 'window' })
 	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		const toggledLanguage = validateLanguage(event);
-		this.language = toggledLanguage;
+		this.language = validateLanguage(event);
 	}
 
+	/**
+	 * Watch for changes to the `hintText` prop.
+	 *
+	 * If a `hintText` prop is passed, the `constructHintTextObject` function will convert it to the correct format, and set the result to the `internalHintText` state.
+	 */
 	@Watch('hintText')
 	private parseHintText() {
 		if (this.hintText) {
@@ -158,6 +174,11 @@ export class OntarioTextarea implements Input {
 		}
 	}
 
+	/**
+	 * Watch for changes to the `hintExpander` prop.
+	 *
+	 * If a `hintExpander` prop is passed, it will be parsed (if it is a string), and the result will be set to the `internalHintExpander` state.
+	 */
 	@Watch('hintExpander')
 	private parseHintExpander() {
 		const hintExpander = this.hintExpander;
@@ -168,9 +189,10 @@ export class OntarioTextarea implements Input {
 	}
 
 	/*
-	 * Watch for changes in the `name` prop for validation purpose
-	 * Validate the name and make sure the name has a value.
-	 * Log warning if user doesn't input a value for the name.
+	 * Watch for changes in the `name` prop for validation purposes.
+	 *
+	 * Validate the `name` and make sure the `name` prop has a value.
+	 * Log a warning if user doesn't input a value for the `name`.
 	 */
 	@Watch('name')
 	validateName(newValue: string) {
@@ -186,6 +208,12 @@ export class OntarioTextarea implements Input {
 		}
 	}
 
+	/**
+	 * Watch for changes to the `caption` prop.
+	 *
+	 * The caption will be run through the InputCaption constructor to convert it to the correct format, and set the result to the `captionState` state.
+	 * @param newValue: Caption | string
+	 */
 	@Watch('caption')
 	private updateCaptionState(newValue: Caption | string) {
 		this.captionState = new InputCaption(
@@ -199,29 +227,31 @@ export class OntarioTextarea implements Input {
 	}
 
 	/**
-	 * Watch for changes in the `language` to render either the English or French translations
+	 * Watch for changes to the `language` prop to render either the English or French translations
 	 */
 	@Watch('language')
 	updateLanguage() {
 		this.updateCaptionState(this.caption);
 	}
 
-	handleBlur = () => {
-		this.focused = false;
-	};
+	/**
+	 * Function to handle textarea events and the information pertaining to the textarea to emit.
+	 */
+	handleEvent = (ev: Event, eventType: EventType) => {
+		const input = ev.target as HTMLTextAreaElement | null;
 
-	handleFocus = () => {
-		this.focused = true;
-	};
-
-	handleChange = (ev: Event) => {
-		const textarea = ev.target as HTMLInputElement | null;
-
-		if (textarea) {
-			this.value = textarea.value ?? '';
-		}
-
-		this.changeEvent.emit(ev as KeyboardEvent);
+		handleInputEvent(
+			ev,
+			eventType,
+			input,
+			this.inputOnChange,
+			this.inputOnFocus,
+			this.inputOnBlur,
+			'input',
+			this.customOnChange,
+			this.customOnFocus,
+			this.customOnBlur,
+		);
 	};
 
 	public getId(): string {
@@ -236,6 +266,9 @@ export class OntarioTextarea implements Input {
 		return this.hintExpander ? `ontario-textarea ontario-textarea-hint-expander--true` : `ontario-textarea`;
 	}
 
+	/**
+	 * If a `hintText` prop is passed, the id generated from it will be set to the internal `hintTextId` state to match with the textarea `aria-describedBy` attribute.
+	 */
 	async componentDidLoad() {
 		this.hintTextId = await this.hintTextRef?.getHintTextId();
 	}
@@ -251,7 +284,7 @@ export class OntarioTextarea implements Input {
 
 	render() {
 		return (
-			<div>
+			<div class="ontario-form-group">
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.internalHintText && (
 					<ontario-hint-text
@@ -265,10 +298,10 @@ export class OntarioTextarea implements Input {
 					class={this.getClass()}
 					id={this.getId()}
 					name={this.name}
-					onBlur={this.handleBlur}
-					onFocus={this.handleFocus}
-					onInput={this.handleChange}
 					value={this.getValue()}
+					onInput={(e) => this.handleEvent(e, EventType.Change)}
+					onBlur={(e) => this.handleEvent(e, EventType.Blur)}
+					onFocus={(e) => this.handleEvent(e, EventType.Focus)}
 					required={!!this.required}
 				></textarea>
 				{this.internalHintExpander && (

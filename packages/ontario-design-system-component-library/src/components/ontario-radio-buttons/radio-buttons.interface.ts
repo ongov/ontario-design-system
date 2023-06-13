@@ -1,8 +1,10 @@
 import { RadioOption } from './radio-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
-import { Base, Hint } from '../../utils/common.interface';
-import { Caption } from '../../utils/input-caption/caption.interface';
+import { Base, Hint } from '../../utils/common/common.interface';
+import { Caption } from '../../utils/common/input-caption/caption.interface';
+import { Language } from '../../utils/common/language-types';
+import { RadioAndCheckboxChangeEvent, InputFocusBlurEvent } from '../../utils/events/event-handler.interface';
 
 export interface RadioButtons extends Base {
 	/**
@@ -20,8 +22,13 @@ export interface RadioButtons extends Base {
 	caption: Caption | string;
 
 	/**
-	 * The name assigned to the radio button.
-	 * The name value is used to reference form data after a form is submitted.
+	 * The language of the component.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
+	 */
+	language?: Language;
+
+	/**
+	 * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
 	 */
 	name: string;
 
@@ -34,6 +41,7 @@ export interface RadioButtons extends Base {
 	/**
 	 * Used to include the ontario-hint-expander component for the radio button group.
 	 * This is passed in as an object with key-value pairs.
+	 *
 	 * This is optional.
 	 *
 	 * @example
@@ -72,9 +80,12 @@ export interface RadioButtons extends Base {
 	required?: boolean;
 
 	/**
+	 * The options for the radio button group.
+	 *
 	 * Each property will be passed in through an object in the options array.
 	 * This can either be passed in as an object directly (if using react), or as a string in HTML.
 	 * If there are multiple radio buttons in a fieldset, each radio button will be displayed as an option.
+	 *
 	 * In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the fieldset.
 	 *
 	 * @example
@@ -106,4 +117,34 @@ export interface RadioButtons extends Base {
 	 * </ontario-radio-buttons>
 	 */
 	options: string | RadioOption[];
+
+	/**
+	 * Used to add a custom function to the radio input onChange event.
+	 */
+	customOnChange?: Function;
+
+	/**
+	 * Used to add a custom function to the radio input onBlur event.
+	 */
+	customOnBlur?: Function;
+
+	/**
+	 * Used to add a custom function to the radio input onFocus event.
+	 */
+	customOnFocus?: Function;
+
+	/**
+	 * Emitted when a keyboard input or mouse event occurs when a radio option has been changed.
+	 */
+	radioOnChange: RadioAndCheckboxChangeEvent;
+
+	/**
+	 * Emitted when a keyboard input event occurs when a radio option has lost focus.
+	 */
+	radioOnBlur: InputFocusBlurEvent;
+
+	/**
+	 * Emitted when a keyboard input event occurs when a radio option has gained focus.
+	 */
+	radioOnFocus: InputFocusBlurEvent;
 }

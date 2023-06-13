@@ -1,13 +1,15 @@
-import { Input } from '../../utils/common.interface';
+import { Input } from '../../utils/common/common.interface';
 
 export interface TextInput extends Input {
 	/**
-	 * The width of the input field. If no value is assigned, it will present as the default input width.
+	 * The width of the input field. If no value is assigned, it will present as the `default` input width.
 	 */
 	inputWidth?: string;
 
 	/**
 	 * The input type value.
+	 *
+	 * If no `type` is provided, it will default to 'text'.
 	 */
 	type?: string;
 

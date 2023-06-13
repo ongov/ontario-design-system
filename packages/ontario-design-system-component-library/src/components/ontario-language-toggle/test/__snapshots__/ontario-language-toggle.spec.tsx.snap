@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-language-toggle snapshot should render the expected html 1`] = `
+<ontario-language-toggle>
+  <mock:shadow-root>
+    <a aria-label="Switch language to French" class="ontario-language-toggler ontario-language-toggler--default" href="#">
+      <abbr class="ontario-show-for-small-only" title="Français">
+        FR
+      </abbr>
+      <span class="ontario-show-for-medium">
+        Français
+      </span>
+    </a>
+  </mock:shadow-root>
+</ontario-language-toggle>
+`;
