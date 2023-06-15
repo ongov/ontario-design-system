@@ -735,6 +735,23 @@
 						></ontario-input>
 					</div>
 					<hr />
+					<!-- Date Input -->
+					<ontario-date-input
+						placeholder='{
+							"day": "DD",
+							"month": "MM",
+							"year": "YYYY"
+						}'
+						min-year="500"
+						max-year="1000"
+						required="true"
+						date-options='["day", "month", "year"]'
+						hint-text="For example 2000 03 01"
+						caption='{
+							"captionText": "Exact Date",
+							"captionType": "default"
+						}'
+					></ontario-date-input>
 
 					<!-- Step Indicator -->
 					<div>

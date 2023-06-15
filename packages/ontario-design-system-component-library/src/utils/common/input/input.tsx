@@ -8,6 +8,8 @@ export type InputProps = {
 	type: string;
 	value?: string | number;
 	required?: boolean;
+	inputMode?: string;
+	placeholder?: string;
 	onKeyDown?: ((event: Event) => void) | undefined;
 	onInput?: ((event: Event) => void) | undefined;
 	onChange?: ((event: Event) => void) | undefined;
@@ -21,6 +23,7 @@ export const Input: FunctionalComponent<InputProps> = ({
 	className,
 	id,
 	name,
+	placeholder,
 	type,
 	value,
 	required,
@@ -30,6 +33,7 @@ export const Input: FunctionalComponent<InputProps> = ({
 	onBlur,
 	onFocus,
 	ref,
+	inputMode,
 	...props
 }) => {
 	return (
@@ -40,12 +44,14 @@ export const Input: FunctionalComponent<InputProps> = ({
 			name={name}
 			type={type}
 			value={value}
+			placeholder={placeholder}
 			required={!!required}
 			onKeyDown={onKeyDown}
 			onInput={onInput}
 			onChange={onChange}
 			onBlur={onBlur}
 			onFocus={onFocus}
+			inputMode={inputMode}
 			ref={ref}
 			{...props}
 		/>
