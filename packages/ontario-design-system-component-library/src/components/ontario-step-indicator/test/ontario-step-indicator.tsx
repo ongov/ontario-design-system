@@ -28,7 +28,7 @@ describe('ontario-step-indicator', () => {
 		const page = await newSpecPage({
 			components: [OntarioStepIndicator],
 			html: `<ontario-step-indicator show-back-button="true"
-			back-button-URL="https://designsystem.ontario.ca/"></ontario-step-indicator>`,
+			back-button-url="https://designsystem.ontario.ca/"></ontario-step-indicator>`,
 		});
 		expect(page.root).toEqualHtml(`
       <ontario-step-indicator>
@@ -71,7 +71,7 @@ describe('ontario-step-indicator', () => {
 	it('it should render percentage', async () => {
 		const page = await newSpecPage({
 			components: [OntarioStepIndicator],
-			html: `<ontario-step-indicator percentage-complete=""70></ontario-step-indicator>`,
+			html: `<ontario-step-indicator percentage-complete="70"></ontario-step-indicator>`,
 		});
 		expect(page.root).toEqualHtml(`
       <ontario-step-indicator>
