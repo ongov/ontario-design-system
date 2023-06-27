@@ -13,12 +13,13 @@
 	as fontWeights;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders'
 	as placeholders;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders'
+	as focusPlaceholders;
 
 $ontario-button-bg-primary: colours.$ontario-colour-link;
 $ontario-button-bg-primary--hover: colours.$ontario-colour-link--hover;
 $ontario-button-bg-primary--active: colours.$ontario-colour-link--active;
 $ontario-button-bg-secondary: colours.$ontario-colour-white;
-$ontario-focus-transition: box-shadow 0.1s ease-in-out;
 
 .ontario-button {
 	border: none;
@@ -65,13 +66,13 @@ $ontario-focus-transition: box-shadow 0.1s ease-in-out;
 	&:focus {
 		background-color: $ontario-button-bg-primary--hover;
 		color: colours.$ontario-colour-white;
-		transition: background-color 0.2s ease-out, $ontario-focus-transition;
+		transition: background-color 0.2s ease-out, focusPlaceholders.$ontario-focus-transition;
 	}
 
 	&:active {
 		background-color: $ontario-button-bg-primary--active;
 		color: colours.$ontario-colour-white;
-		transition: background-color 0s, $ontario-focus-transition;
+		transition: background-color 0s, focusPlaceholders.$ontario-focus-transition;
 	}
 
 	&:visited {
@@ -96,14 +97,14 @@ $ontario-focus-transition: box-shadow 0.1s ease-in-out;
 		background-color: colours.$ontario-colour-button-secondary--hover;
 		border-color: colours.$ontario-colour-link--hover;
 		color: colours.$ontario-colour-link--hover;
-		transition: background-color 0.2s ease-out, $ontario-focus-transition;
+		transition: background-color 0.2s ease-out, focusPlaceholders.$ontario-focus-transition;
 	}
 
 	&:active {
 		background-color: colours.$ontario-colour-button-secondary--active;
 		border-color: colours.$ontario-colour-link--active;
 		color: colours.$ontario-colour-link--active;
-		transition: background-color 0s, $ontario-focus-transition;
+		transition: background-color 0s, focusPlaceholders.$ontario-focus-transition;
 	}
 
 	&:visited {
@@ -126,14 +127,14 @@ $ontario-focus-transition: box-shadow 0.1s ease-in-out;
 		background-color: colours.$ontario-colour-button-tertiary--hover;
 		color: colours.$ontario-colour-link--hover;
 		text-decoration: underline;
-		transition: background-color 0.2s ease-out, $ontario-focus-transition;
+		transition: background-color 0.2s ease-out, focusPlaceholders.$ontario-focus-transition;
 	}
 
 	&:active {
 		background-color: colours.$ontario-colour-button-tertiary--active;
 		color: colours.$ontario-colour-link--active;
 		text-decoration: underline;
-		transition: background-color 0s, $ontario-focus-transition;
+		transition: background-color 0s, focusPlaceholders.$ontario-focus-transition;
 	}
 
 	&:visited {
@@ -152,12 +153,12 @@ $ontario-focus-transition: box-shadow 0.1s ease-in-out;
 
 	&:focus {
 		background-color: colours.$ontario-greyscale-70;
-		transition: background-color 0.2s ease-out, $ontario-focus-transition;
+		transition: background-color 0.2s ease-out, focusPlaceholders.$ontario-focus-transition;
 	}
 
 	&:active {
 		background-color: colours.$ontario-greyscale-70;
-		transition: background-color 0s, $ontario-focus-transition;
+		transition: background-color 0s, focusPlaceholders.$ontario-focus-transition;
 	}
 
 	&:visited {

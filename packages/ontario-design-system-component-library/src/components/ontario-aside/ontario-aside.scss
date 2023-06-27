@@ -32,7 +32,7 @@
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-4;
 }
 
-$highlight-colours: (
+$aside-highlight-colours: (
 	'teal': colours.$ontario-colour-dark-teal,
 	'gold': colours.$ontario-colour-dark-gold,
 	'yellow': colours.$ontario-colour-dark-yellow,
@@ -44,7 +44,7 @@ $highlight-colours: (
 	'purple': colours.$ontario-colour-dark-purple,
 );
 
-@each $colour-name, $hex in $highlight-colours {
+@each $colour-name, $hex in $aside-highlight-colours {
 	.ontario-border-highlight--#{$colour-name} {
 		border-color: $hex !important;
 	}
