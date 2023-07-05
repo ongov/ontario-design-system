@@ -589,10 +589,7 @@ export class OntarioHeader {
 							<div class="ontario-row">
 								<div class="ontario-columns ontario-small-6 ontario-application-header__logo">
 									<a href="https://www.ontario.ca/page/government-ontario">
-										<img
-											src={getAssetPath('./assets/ontario-logo-application-header.svg')}
-											alt="Government of Ontario"
-										/>
+										<img src={getAssetPath('./assets/ontario-logo--desktop.svg')} alt="Government of Ontario" />
 									</a>
 								</div>
 								<div class="ontario-columns ontario-small-6 ontario-application-header__lang-toggle">
