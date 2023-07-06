@@ -1,0 +1,29 @@
+/**
+    These styles are to fix issues with the missing assets from the web component styles. 
+**/
+.ontario-dropdown {
+	background-image: url('../../../assets/ontario-material-dropdown-arrow-48px.svg');
+}
+
+.ontario-footer--default:before {
+	background-image: url('../../../assets/footer-default-supergraphic-logo.svg');
+}
+
+.ontario-footer__expanded-top-section:before {
+	background-image: url('../../../assets/footer-expanded-supergraphic-logo.svg');
+}
+
+.ontario-application-subheader .ontario-header-button svg {
+	width: 2rem;
+	height: 2rem;
+	margin-bottom: 0;
+}
+
+.ontario-application-subheader .ontario-header-button:last-of-type,
+.ontario-navigation--open .ontario-application-subheader .ontario-header-button:first-of-type {
+	display: none;
+}
+
+.ontario-navigation--open .ontario-application-subheader .ontario-header-button:last-of-type {
+	display: flex;
+}
