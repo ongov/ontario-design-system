@@ -60,6 +60,10 @@ task('copy:component-global-styles', () => {
 	return src(`${dsComponentPackageDir}/src/global.scss`).pipe(dest(`${srcDir}/styles`));
 });
 
+task('copy:component-common-styles', () => {
+	return src(`${dsComponentPackageDir}/src/styles/**/*.scss`).pipe(dest(`${srcDir}/styles/styles`));
+});
+
 task('copy:component-utils', () => {
 	return src(`${dsComponentPackageDir}/src/utils/**/*.scss`).pipe(dest(`${srcDir}/styles/utils`));
 });
@@ -131,6 +135,7 @@ task(
 		'copy:ds-global-styles',
 		'copy:component-styles',
 		'copy:component-global-styles',
+		'copy:component-common-styles',
 		'copy:component-utils',
 		'generate:components-import-file',
 		'fonts-move',
