@@ -146,10 +146,6 @@
 			"en": "Exact date",
 			"fr": "Dates exactes"
 		},
-		"hintText": {
-			"en": "For example: 1990 3 15",
-			"fr": "Par exemple : 1990 3 15"
-		},
 		"day": {
 			"label": {
 				"en": "Day",
@@ -178,18 +174,6 @@
 			"accessibility": {
 				"en": "1 or 2 digits",
 				"fr": "1 ou 2 chiffres"
-			}
-		},
-		"placeholder": {
-			"en": {
-				"day": "DD",
-				"month": "MM",
-				"year": "YYYY"
-			},
-			"fr": {
-				"day": "JJ",
-				"month": "MM",
-				"year": "AAAA"
 			}
 		},
 		"error": {

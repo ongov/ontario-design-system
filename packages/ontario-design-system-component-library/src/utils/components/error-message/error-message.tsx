@@ -10,7 +10,7 @@ export const ErrorMessage: FunctionalComponent<ErrorMessageProps> = ({ message, 
 	const hideError = !error || isEmpty(message);
 
 	return (
-		<div class={`ontario-error-messaging ${hideError ? 'ontario-error__hidden' : ''}`}>
+		<div role="alert" class={`ontario-error-messaging ${hideError ? 'ontario-error__hidden' : ''}`}>
 			<ontario-icon-alert-error></ontario-icon-alert-error>
 			<div class="ontario-error-messaging__content">{message}</div>
 		</div>

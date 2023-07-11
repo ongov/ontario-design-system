@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Element, Watch, Event, Prop, h, State, Listen } from '@stencil/core';
+import { v4 as uuid } from 'uuid';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import { translations, Translations } from '../../translations';
@@ -26,17 +27,17 @@ export class OntarioDateInput {
 	@Prop({ mutable: true }) language?: Language = 'en';
 
 	/**
-	 * A boolean value to determine whether or not the date input is required
+	 * A boolean value to determine whether or not the date input is required.
 	 *
 	 * This is optional. If no prop is passed, it will default to `false`.
 	 */
 	@Prop() required?: boolean = false;
 
 	/**
-	 * An object value use to set Placeholder text for the day, month, and year input field. You can override all three input fields (i.e day, month, year)
-	 * of the date component or none.
+	 * An object value used to set the placeholder text for the day, month and year input fields. Any combination of the three input fields (i.e day, month, year)
+	 * of the date component can be overridden.
 	 *
-	 * This is optional. If no prop is passed, it will use the default placeholder text `{ day: 'DD', month: 'MM', year: 'YYYY' }`
+	 * This is optional. If no prop is passed, it will not display any placeholder text.
 	 */
 	@Prop() placeholder?: DateInputPlaceholder | string;
 
@@ -56,6 +57,11 @@ export class OntarioDateInput {
 	@Prop() caption: Caption | string;
 
 	/**
+	 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
+	 */
+	@Prop({ mutable: true }) elementId?: string;
+
+	/**
 	 * A number value indicating minimum value allowed for year input field of the date component.
 	 *
 	 * This is optional. If no prop is passed, it will default to `1`.
@@ -70,18 +76,26 @@ export class OntarioDateInput {
 	@Prop() maxYear?: number;
 
 	/**
-	 * A string value explaining the date format. This is optional.
+	 * Used to include the ontario-hint-text component for the date input group.
+	 *
+	 * This is optional.
 	 */
 	@Prop() hintText?: string;
 
 	/**
-	 * Use to display certain date options. Example: day and month or month and year
-	 * This is optional
+	 * An array value used to display date options. For example, only the day and month fields can be displayed by
+	 * specifying the dateOptions as '["day", "month"]', etc.
+	 *
+	 * This is optional. If no prop for `dateOptions` is passed, it will default to '["day", "month", "year"]'.
 	 */
 	@Prop() dateOptions?: string | Array<DateInputFieldType> = ['day', 'month', 'year'];
 
 	/**
-	 * A string value explaining the date format. This is optional.
+	 * A function used to override internal date validation logic, which takes three arguments (i.e day, month and year) and returns
+	 * an object of type `DateValidatorReturnType`
+	 *
+	 * This is optional. If no prop for `dateValidator` is passed, it will default to internal validation function to validate
+	 * the date input.
 	 */
 	@Prop() dateValidator?: (day: string, month: string, year: string) => DateValidatorReturnType;
 
@@ -273,11 +287,6 @@ export class OntarioDateInput {
 		this.inputOnBlur.emit(fieldType);
 	};
 
-	private getPlaceholderText() {
-		const defaultPlaceholder = translations.dateInput.placeholder[this.language as Language];
-		return this.placeholderState ?? defaultPlaceholder;
-	}
-
 	private getLanguage(): Language {
 		return this.language ?? 'en';
 	}
@@ -289,9 +298,22 @@ export class OntarioDateInput {
 		return this.caption ?? { captionText, captionType: 'default' };
 	}
 
-	private getHintText(): string {
-		const language = this.getLanguage();
-		return this.hintText ?? translations.dateInput.hintText[language];
+	private getId(): string {
+		return this.elementId ?? '';
+	}
+
+	private getHintTextId(): string {
+		return `date-input-hint-${this.getId()}`;
+	}
+
+	private getInputIds() {
+		const id = this.getId();
+
+		const dayId = `day-${id}`;
+		const monthId = `month-${id}`;
+		const yearId = `year-${id}`;
+
+		return { dayId, monthId, yearId };
 	}
 
 	componentWillLoad() {
@@ -299,29 +321,35 @@ export class OntarioDateInput {
 		this.processDateOptions();
 
 		this.updateCaptionState(this.getCaption());
+		this.elementId = this.elementId ?? uuid();
 
 		this.language = validateLanguage(this.language) as Language;
 	}
 
 	render() {
-		const { dateOptionsState, required, translations } = this;
+		const { dateOptionsState, required, translations, hintText, placeholderState } = this;
 		const language = this.getLanguage();
 		const dateStrings = translations.dateInput;
-		const placeholderText = this.getPlaceholderText();
+		const placeholderText = placeholderState ?? {};
 		const { dayVisible, monthVisible, yearVisible } = getVisibleDateFields(dateOptionsState);
+		const { dayId, monthId, yearId } = this.getInputIds();
+		const hintTextId = this.getHintTextId();
 
 		return (
 			<div class="ontario-form-group">
-				<fieldset role="group" class="ontario-fieldset" aria-describedBy="date-input-hint">
+				<fieldset role="group" class="ontario-fieldset">
 					{this.captionState.getCaption()}
-					<p id="date-input-hint" class="ontario-hint">
-						{this.getHintText()}
-					</p>
+					{!!hintText && (
+						<p id={hintTextId} class="ontario-hint">
+							{hintText}
+						</p>
+					)}
 					<ErrorMessage message={this.errorMessage} error={this.isInvalidDate()} />
 					<div class="ontario-date__group">
-						{dayVisible && (
+						{yearVisible && (
 							<Input
-								id="year"
+								id={yearId}
+								type="year"
 								label={dateStrings.year.label[language]}
 								accessibilityLabel={dateStrings.year.accessibility[language]}
 								required={!!required}
@@ -330,11 +358,13 @@ export class OntarioDateInput {
 								onInput={this.handleDateChanged}
 								onBlur={this.handleDateBlur}
 								onFocus={this.handleDateFocus}
+								ariaDescribedBy={hintTextId}
 							/>
 						)}
 						{monthVisible && (
 							<Input
-								id="month"
+								id={monthId}
+								type="month"
 								label={dateStrings.month.label[language]}
 								accessibilityLabel={dateStrings.month.accessibility[language]}
 								required={!!required}
@@ -343,11 +373,13 @@ export class OntarioDateInput {
 								onInput={this.handleDateChanged}
 								onBlur={this.handleDateBlur}
 								onFocus={this.handleDateFocus}
+								ariaDescribedBy={hintTextId}
 							/>
 						)}
-						{yearVisible && (
+						{dayVisible && (
 							<Input
-								id="day"
+								id={dayId}
+								type="day"
 								label={dateStrings.day.label[language]}
 								accessibilityLabel={dateStrings.day.accessibility[language]}
 								required={!!required}
@@ -356,6 +388,7 @@ export class OntarioDateInput {
 								onInput={this.handleDateChanged}
 								onBlur={this.handleDateBlur}
 								onFocus={this.handleDateFocus}
+								ariaDescribedBy={hintTextId}
 							/>
 						)}
 					</div>

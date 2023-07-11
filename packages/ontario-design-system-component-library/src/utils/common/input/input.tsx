@@ -10,6 +10,8 @@ export type InputProps = {
 	required?: boolean;
 	inputMode?: string;
 	placeholder?: string;
+	ariaInvalid?: boolean;
+	ariaDescribedBy?: string;
 	onKeyDown?: ((event: Event) => void) | undefined;
 	onInput?: ((event: Event) => void) | undefined;
 	onChange?: ((event: Event) => void) | undefined;
@@ -32,6 +34,8 @@ export const Input: FunctionalComponent<InputProps> = ({
 	onChange,
 	onBlur,
 	onFocus,
+	ariaInvalid,
+	ariaDescribedBy,
 	ref,
 	inputMode,
 	...props
@@ -53,6 +57,8 @@ export const Input: FunctionalComponent<InputProps> = ({
 			onFocus={onFocus}
 			inputMode={inputMode}
 			ref={ref}
+			aria-invalid={ariaInvalid}
+			aria-describedby={ariaDescribedBy}
 			{...props}
 		/>
 	);

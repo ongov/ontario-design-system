@@ -9,19 +9,19 @@ describe('ontario-date-input', () => {
 
 		beforeEach(async () => {
 			page = await newE2EPage();
-			await page.setContent('<ontario-date-input></ontario-date-input>');
+			await page.setContent('<ontario-date-input element-id="date-id-example"></ontario-date-input>');
 
 			component = await page.find('ontario-date-input');
 			fieldSet = await page.find('ontario-date-input >>> fieldset');
 			inputFields = await page.findAll('ontario-date-input >>> input');
 		});
 
-		it('should all thre date input fields (i.e day, month and year)', async () => {
+		it('should all three date input fields (i.e day, month and year)', async () => {
 			expect(component).toHaveClass('hydrated');
 			expect(inputFields.length).toEqual(3);
-			expect(inputFields[0].id).toEqual('year');
-			expect(inputFields[1].id).toEqual('month');
-			expect(inputFields[2].id).toEqual('day');
+			expect(inputFields[0].id).toEqual('year-date-id-example');
+			expect(inputFields[1].id).toEqual('month-date-id-example');
+			expect(inputFields[2].id).toEqual('day-date-id-example');
 		});
 
 		it('should render error message in hidden state', async () => {

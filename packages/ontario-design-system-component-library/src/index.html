@@ -41,6 +41,7 @@
 						<li><a href="#tables">Tables</a></li>
 						<li><a href="#textareas">Textareas</a></li>
 						<li><a href="#text-inputs">Text inputs</a></li>
+						<li><a href="#date-input">Date input</a></li>
 						<li><a href="#step-indicator">Step indicator</a></li>
 					</ol>
 					<hr />
@@ -735,23 +736,29 @@
 						></ontario-input>
 					</div>
 					<hr />
+
 					<!-- Date Input -->
-					<ontario-date-input
-						placeholder='{
-							"day": "DD",
-							"month": "MM",
-							"year": "YYYY"
-						}'
-						min-year="500"
-						max-year="1000"
-						required="true"
-						date-options='["day", "month", "year"]'
-						hint-text="For example 2000 03 01"
-						caption='{
-							"captionText": "Exact Date",
-							"captionType": "default"
-						}'
-					></ontario-date-input>
+					<div>
+						<h2 id="date-input">Date Input</h2>
+						<ontario-date-input
+							element-id="date-input-example-id"
+							placeholder='{
+								"day": "DD",
+								"month": "MM",
+								"year": "YYYY"
+							}'
+							min-year="500"
+							max-year="1000"
+							required="true"
+							date-options='["day", "month", "year"]'
+							hint-text="For example 2000 03 01"
+							caption='{
+								"captionText": "Exact Date",
+								"captionType": "default"
+							}'
+						></ontario-date-input>
+					</div>
+					<hr />
 
 					<!-- Step Indicator -->
 					<div>

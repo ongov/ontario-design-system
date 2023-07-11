@@ -3,7 +3,8 @@ import { DateInputFieldType } from '../ontario-date-input-interface';
 import { Input as CommonInput } from '../../../utils/common/input/input';
 
 export type InputProps = {
-	id: DateInputFieldType;
+	id: string;
+	type: DateInputFieldType;
 	label: string;
 	accessibilityLabel: string;
 	error?: boolean;
@@ -12,30 +13,33 @@ export type InputProps = {
 	onFocus: (fieldType: DateInputFieldType) => void;
 	placeholder?: string;
 	required?: boolean;
+	ariaDescribedBy?: string;
 };
 
 export const Input: FunctionalComponent<InputProps> = ({
 	id,
+	type,
 	label,
 	accessibilityLabel,
 	placeholder,
 	onInput,
 	onFocus,
 	onBlur,
+	ariaDescribedBy,
 	error = false,
 	required = false,
 }) => {
 	const handleInputChange = (event: Event) => {
 		const newValue = (event.target as HTMLInputElement)?.value ?? '';
-		onInput(newValue, id);
+		onInput(newValue, type);
 	};
 
 	const handleInputFocus = () => {
-		onFocus(id);
+		onFocus(type);
 	};
 
 	const handleInputBlur = () => {
-		onBlur(id);
+		onBlur(type);
 	};
 
 	return (
@@ -54,6 +58,8 @@ export const Input: FunctionalComponent<InputProps> = ({
 				onInput={handleInputChange}
 				onFocus={handleInputFocus}
 				onBlur={handleInputBlur}
+				ariaInvalid={error}
+				ariaDescribedBy={ariaDescribedBy}
 			/>
 		</div>
 	);
