@@ -59,7 +59,7 @@ This can be done in a number of ways. One way is to use the [copyfiles](https://
 copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/scripts/**\" public/scripts
 ```
 
-Another way is to add scripts to copy the assets in your `package.json` file. For example:
+Another way is to add scripts to copy the assets automatically in your `package.json` file. For example:
 
 ```json
 "copy:assets": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/scripts/**\" public/scripts",
