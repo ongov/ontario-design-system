@@ -110,7 +110,7 @@
 
 // Fractal component style coverage ↓
 .ontario-input + .ontario-hint-expander__container {
-	margin-top: calc(-1 * spacing.$spacing-5) !important;
+	margin-top: -1 * spacing.$spacing-5 !important;
 }
 
 .ontario-checkboxes__item .ontario-hint-expander__container,
