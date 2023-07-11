@@ -8,6 +8,7 @@ import glob from 'glob-promise';
 import fs from 'fs/promises';
 
 import gulpSass from 'gulp-sass';
+import flatten from 'gulp-flatten';
 import dartSass from 'sass';
 const sass = gulpSass(dartSass);
 
@@ -125,10 +126,14 @@ task('fonts-move', (done) => {
 // Move all necessary component assets to the dist/assets folder
 task('assets-move', (done) => {
 	return src([
-		`${dsComponentPackageDir}/src/components/ontario-dropdown-list/assets/**`,
-		`${dsComponentPackageDir}/src/components/ontario-footer/assets/**`,
-		`${dsComponentPackageDir}/src/components/ontario-header/assets/**`,
-	]).pipe(dest(`${distDir}/assets`));
+		// `${dsComponentPackageDir}/src/components/ontario-dropdown-list/assets/**`,
+		// `${dsComponentPackageDir}/src/components/ontario-footer/assets/**`,
+		// `${dsComponentPackageDir}/src/components/ontario-header/assets/**`,
+		`${dsComponentPackageDir}/src/components/**/assets/**`,
+		`!${dsComponentPackageDir}/src/components/ontario-icon/assets/**`,
+	])
+		.pipe(flatten())
+		.pipe(dest(`${distDir}/assets`));
 });
 
 // Move all Fractal scripts to the dist/scripts folder

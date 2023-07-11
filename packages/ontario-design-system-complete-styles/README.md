@@ -35,7 +35,7 @@ Certain components - such as the header HTML - will likely require updating for 
 
 You may want to move the local assets into your project so that they are available for bundling upon building your SPA application.
 
-This can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package, which you can with any operating system:
+This can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package, which can be used with any operating system:
 
 ```bash
 copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/assets/**\" public/assets
@@ -53,7 +53,7 @@ Certain components in the Ontario Design System distribution package require JS 
 
 You may want to move these scripts into your project so that they are available for bundling upon building your SPA application.
 
-This can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package, which you can with any operating system:
+This can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package, which can be used with any operating system:
 
 ```bash
 copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/scripts/**\" public/scripts
