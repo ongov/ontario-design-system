@@ -1,3 +1,16 @@
+# 2.5.0-alpha.3 (2023-07-11)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-complete-styles, @ontario-digital-service/ontario-design-system-component-library:** fixed missing styles for complete-style package 445c7c6
+- **@ontario-digital-service/ontario-design-system-component-library:** adds missing styles for ontario logo in application header 2829ef3
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-component-library:** update indentation 26445a9
+- **@ontario-digital-service/ontario-design-system-component-library:** update tests f4a8ef5
+- **@ontario-digital-service/ontario-design-system-component-library:** update tests based on mr feedback 206e34d
+
 # 2.5.0-alpha.2 (2023-06-13)
 
 ### Bug Fixes
