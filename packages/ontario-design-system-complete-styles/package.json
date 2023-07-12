@@ -20,8 +20,8 @@
 	},
 	"dependencies": {
 		"@ontario-digital-service/ontario-design-system-component-library": "2.5.0-alpha.3",
-		"@ontario-digital-service/ontario-design-system-design-tokens": "2.4.1-alpha.1",
-		"@ontario-digital-service/ontario-design-system-global-styles": "2.4.1-alpha.2"
+		"@ontario-digital-service/ontario-design-system-design-tokens": "2.5.0",
+		"@ontario-digital-service/ontario-design-system-global-styles": "2.5.0"
 	},
 	"devDependencies": {
 		"del": "^7.0.0",
