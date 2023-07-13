@@ -1,0 +1,372 @@
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
+	spacing;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
+	colours;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables'
+	as breakpoints;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as
+	fontSizes;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables'
+	as fontWeights;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables'
+	as lineHeights;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions'
+	as globalFunctions;
+
+$ontario-table-caption-background: #0000001a;
+$ontario-table-total: #0077a056;
+$ontario-table-subtotal: #007b9e1d;
+$ontario-table-highlight: #e191003c;
+$ontario-table-row-divider: #0000004d;
+$ontario-table-zebra-striping: #0000000d;
+$ontario-table-shadow--cover: rgba(255, 255, 255, 0);
+$ontario-table-shadow--black: rgba(0, 0, 0, 0.2);
+$ontario-table-shadow--clear: rgba(252, 0, 0, 0);
+
+$ontario-table-scroller--height: 20px;
+
+.ontario-table-container {
+	position: relative;
+	margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-7;
+}
+
+.ontario-table-div {
+	background: linear-gradient(to right, colours.$ontario-colour-white 30%, $ontario-table-shadow--cover),
+		linear-gradient(to right, $ontario-table-shadow--cover, colours.$ontario-colour-white 70%) 0 100%,
+		linear-gradient(to right, $ontario-table-shadow--black 0%, $ontario-table-shadow--clear 100.01%),
+		linear-gradient(to left, $ontario-table-shadow--black 0%, $ontario-table-shadow--clear 100.01%);
+	background-repeat: no-repeat;
+	background-size: globalFunctions.rem-calc(40) 100%, globalFunctions.rem-calc(40) 100%,
+		globalFunctions.rem-calc(14) 100%, globalFunctions.rem-calc(14) 100%;
+	background-position: 0 0, 100%, 0 0, 100%;
+	background-attachment: local, local, scroll, scroll;
+	overflow-x: auto;
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		overflow-x: scroll;
+	}
+}
+
+.ontario-table-scroll--wrapper {
+	height: $ontario-table-scroller--height;
+	overflow-x: auto;
+	overflow-y: hidden;
+	display: block;
+}
+
+.ontario-table-container table {
+	border-collapse: collapse;
+	display: table;
+	font-size: globalFunctions.rem-calc(17);
+	font-weight: fontWeights.$ontario-font-weights-normal;
+	line-height: globalFunctions.rem-calc(26);
+
+	&.ontario-table--full-container-width {
+		display: table;
+		width: 100% !important;
+	}
+
+	&.ontario-table--zebra-stripes-enabled {
+		tbody {
+			tr:nth-child(even) {
+				background-color: $ontario-table-zebra-striping;
+			}
+		}
+	}
+
+	&:not(.ontario-table--no-zebra-stripes) {
+		tbody {
+			tr:first-child:nth-last-child(n + 6),
+			tr:first-child:nth-last-child(n + 6) ~ tr {
+				&:nth-child(even) {
+					background-color: $ontario-table-zebra-striping;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		font-size: fontSizes.$ontario-font-size-standard-body-text;
+	}
+}
+
+.ontario-table-container caption {
+	background-color: $ontario-table-caption-background;
+	display: table-caption;
+	font-size: globalFunctions.rem-calc(22);
+	font-weight: fontWeights.$ontario-font-weights-bold;
+	line-height: globalFunctions.rem-calc(35);
+	padding: globalFunctions.rem-calc(18) spacing.$spacing-4 globalFunctions.rem-calc(18) spacing.$spacing-5;
+	text-align: left;
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		font-size: fontSizes.$ontario-font-size-large;
+		line-height: globalFunctions.rem-calc(30);
+		padding-left: spacing.$spacing-4;
+	}
+}
+
+.ontario-table-container table thead {
+	border: solid;
+	border-width: globalFunctions.rem-calc(3) 0;
+	border-color: colours.$ontario-colour-black;
+	vertical-align: text-top;
+
+	th {
+		font-size: globalFunctions.rem-calc(18);
+		line-height: lineHeights.$ontario-line-height-7;
+		margin: spacing.$spacing-0;
+		padding: calc(spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-4
+			calc(spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-5;
+		text-align: left;
+		text-size-adjust: none;
+		-webkit-text-size-adjust: none;
+
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
+			font-size: fontSizes.$ontario-font-size-standard-body-text;
+			line-height: globalFunctions.rem-calc(21);
+			padding: spacing.$spacing-5 spacing.$spacing-2 spacing.$spacing-5 spacing.$spacing-4;
+		}
+	}
+
+	th.ontario-table-cell--numeric {
+		padding: calc(spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-5
+			calc(spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-4;
+		text-align: right;
+
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
+			padding: spacing.$spacing-5 spacing.$spacing-4 spacing.$spacing-5 spacing.$spacing-2;
+		}
+	}
+}
+
+.ontario-table-container table tbody {
+	font-size: fontSizes.$ontario-font-size-standard-body-text;
+	vertical-align: text-top;
+
+	tr {
+		border: solid;
+		border-width: globalFunctions.rem-calc(1) 0;
+		border-color: $ontario-table-row-divider;
+	}
+
+	tr:last-child {
+		border-width: globalFunctions.rem-calc(3) 0;
+		border-top-width: 0;
+		border-color: colours.$ontario-colour-black;
+	}
+
+	tr.ontario-table-row--highlight {
+		background-color: $ontario-table-highlight !important;
+
+		th {
+			padding-left: spacing.$spacing-5;
+			display: flex;
+			position: relative;
+
+			img.ontario-table--highlight-indicator {
+				// Width of yellow triangle svg
+				width: globalFunctions.rem-calc(8);
+				position: absolute;
+				// Distance from top of svg to top of container
+				top: globalFunctions.rem-calc(24);
+				left: 0;
+			}
+		}
+	}
+
+	tr.ontario-table-row--subtotal {
+		background-color: $ontario-table-subtotal !important;
+	}
+}
+
+.ontario-table-container tbody th,
+.ontario-table-container tfoot th,
+.ontario-table-container table td {
+	padding: globalFunctions.rem-calc(19) spacing.$spacing-4 globalFunctions.rem-calc(19) spacing.$spacing-5;
+	text-align: left;
+	letter-spacing: globalFunctions.rem-calc(0.4);
+}
+
+.ontario-table-container tbody th,
+.ontario-table-container tfoot th {
+	font-weight: fontWeights.$ontario-font-weights-bold;
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		font-size: fontSizes.$ontario-font-size-standard-body-text;
+		line-height: globalFunctions.rem-calc(26);
+		padding-right: spacing.$spacing-2;
+		padding-left: spacing.$spacing-4;
+	}
+}
+
+.ontario-table-container table td {
+	img {
+		vertical-align: top;
+
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
+			max-width: none !important;
+		}
+	}
+
+	&.ontario-table-cell--numeric {
+		font-family: 'Courier Prime', Courier, 'Courier New', monospace;
+		font-size: globalFunctions.rem-calc(17);
+		padding: globalFunctions.rem-calc(19) spacing.$spacing-5 globalFunctions.rem-calc(19) spacing.$spacing-4;
+		text-align: right;
+
+		strong {
+			font-family: 'Courier Prime', Courier, 'Courier New', monospace;
+		}
+	}
+}
+
+.ontario-table-container tbody tr.ontario-table-row--subtotal,
+.ontario-table-container tfoot tr {
+	border: solid;
+	border-width: globalFunctions.rem-calc(3) 0;
+	font-size: fontSizes.$ontario-font-size-standard-body-text;
+	border-color: colours.$ontario-colour-black;
+
+	th {
+		padding: globalFunctions.rem-calc(23) spacing.$spacing-4 globalFunctions.rem-calc(23) spacing.$spacing-5;
+	}
+
+	td {
+		font-weight: fontWeights.$ontario-font-weights-bold;
+		padding: globalFunctions.rem-calc(23) spacing.$spacing-4 globalFunctions.rem-calc(23) spacing.$spacing-5;
+	}
+}
+
+.ontario-table-container tfoot {
+	vertical-align: text-top;
+
+	tr {
+		background-color: $ontario-table-total !important;
+	}
+}
+
+// Column classes
+.ontario-table-header--column-span-1 {
+	//Equivalent to 1 grid columns
+	min-width: 8.33333vw;
+}
+
+.ontario-table-header--column-span-2 {
+	//Equivalent to 2 grid columns
+	min-width: 16.66666vw;
+}
+
+.ontario-table-header--column-span-3 {
+	//Equivalent to 3 grid columns
+	min-width: 25vw;
+}
+
+.ontario-table-header--column-span-4 {
+	//Equivalent to 4 grid columns
+	min-width: 33.33333vw;
+}
+
+.ontario-table-header--column-span-5 {
+	//Equivalent to 5 grid columns
+	min-width: 41.66666vw;
+}
+
+.ontario-table-header--column-span-6 {
+	//Equivalent to 6 grid columns
+	min-width: 50vw;
+}
+
+.ontario-table-header--column-span-7 {
+	//Equivalent to 7 grid columns
+	min-width: 58.33333vw;
+}
+
+.ontario-table-header--column-span-8 {
+	//Equivalent to 8 grid columns
+	min-width: 66.66666vw;
+}
+
+.ontario-table-header--column-span-9 {
+	//Equivalent to 9 grid columns
+	min-width: 75vw;
+}
+
+.ontario-table-header--column-span-10 {
+	//Equivalent to 10 grid columns
+	min-width: 83.33333vw;
+}
+
+.ontario-table-header--column-span-11 {
+	//Equivalent to 11 grid columns
+	min-width: 91.66666vw;
+}
+
+.ontario-table-header--column-span-12 {
+	//Equivalent to 12 grid columns
+	min-width: 100vw;
+}
+
+// Condensed tables
+.ontario-table-container .ontario-table--condensed {
+	td {
+		padding: spacing.$spacing-3 spacing.$spacing-4 spacing.$spacing-3 spacing.$spacing-5;
+		text-align: left;
+	}
+
+	td.ontario-table-cell--numeric {
+		padding: spacing.$spacing-3 spacing.$spacing-5 spacing.$spacing-3 spacing.$spacing-4;
+		font-size: globalFunctions.rem-calc(17);
+		text-align: right;
+	}
+
+	tbody th,
+	tfoot th {
+		padding: spacing.$spacing-3 spacing.$spacing-4 spacing.$spacing-3 spacing.$spacing-5;
+	}
+
+	tr.ontario-table-row--highlight th img.ontario-table--highlight-indicator {
+		top: globalFunctions.rem-calc(17);
+	}
+
+	tr.ontario-table-row--subtotal,
+	tfoot tr {
+		th,
+		td {
+			padding: spacing.$spacing-4 spacing.$spacing-4 spacing.$spacing-4 spacing.$spacing-5;
+		}
+
+		td.ontario-table-cell--numeric {
+			text-align: right;
+			padding: spacing.$spacing-4 spacing.$spacing-5 spacing.$spacing-4 spacing.$spacing-4;
+		}
+	}
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		td {
+			padding: spacing.$spacing-3 spacing.$spacing-2 spacing.$spacing-3 spacing.$spacing-4;
+			font-size: fontSizes.$ontario-font-size-standard-body-text;
+		}
+
+		td.ontario-table-cell--numeric {
+			padding: spacing.$spacing-3 spacing.$spacing-4 spacing.$spacing-3 spacing.$spacing-2;
+		}
+
+		tbody th {
+			padding: spacing.$spacing-3 spacing.$spacing-2 spacing.$spacing-3 spacing.$spacing-4;
+		}
+
+		tr.ontario-table-row--subtotal,
+		tfoot tr {
+			th,
+			td {
+				padding: spacing.$spacing-4 spacing.$spacing-2 spacing.$spacing-4 spacing.$spacing-4;
+			}
+
+			td.ontario-table-cell--numeric {
+				text-align: right;
+				padding: spacing.$spacing-4 spacing.$spacing-4 spacing.$spacing-4 spacing.$spacing-2;
+			}
+		}
+	}
+}
