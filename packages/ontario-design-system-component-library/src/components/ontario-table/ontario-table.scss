@@ -130,8 +130,8 @@ $ontario-table-scroller--height: 20px;
 	}
 
 	th.ontario-table-cell--numeric {
-		padding: calc(spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-5
-			calc(spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-4;
+		padding: (spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-5
+			(spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-4;
 		text-align: right;
 
 		@media screen and (max-width: breakpoints.$small-breakpoint) {
