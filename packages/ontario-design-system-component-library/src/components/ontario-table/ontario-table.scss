@@ -116,8 +116,8 @@ $ontario-table-scroller--height: 20px;
 		font-size: globalFunctions.rem-calc(18);
 		line-height: lineHeights.$ontario-line-height-7;
 		margin: spacing.$spacing-0;
-		padding: calc(spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-4
-			calc(spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-5;
+		padding: (spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-4
+			(spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-5;
 		text-align: left;
 		text-size-adjust: none;
 		-webkit-text-size-adjust: none;
