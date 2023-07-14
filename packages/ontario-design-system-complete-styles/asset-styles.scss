@@ -4,15 +4,15 @@ $asset-path: '../../..';
     These styles are to fix issues with the missing assets/conflicting issues from the web component styles. 
 **/
 .ontario-dropdown {
-	background-image: url(`${asset-path}/assets/ontario-material-dropdown-arrow-48px.svg`);
+	background-image: url(#{$asset-path + '/assets/ontario-material-dropdown-arrow-48px.svg'});
 }
 
 .ontario-footer--default:before {
-	background-image: url(`${asset-path}/assets/footer-default-supergraphic-logo.svg`);
+	background-image: url(#{$asset-path + '/assets/footer-default-supergraphic-logo.svg'});
 }
 
 .ontario-footer__expanded-top-section:before {
-	background-image: url(`${asset-path}/assets/footer-expanded-supergraphic-logo.svg`);
+	background-image: url(#{$asset-path + '/assets/footer-expanded-supergraphic-logo.svg'});
 }
 
 .ontario-application-subheader .ontario-header-button svg {
