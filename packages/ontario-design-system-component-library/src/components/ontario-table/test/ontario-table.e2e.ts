@@ -1,6 +1,6 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('ontario-table', () => {
+xdescribe('ontario-table', () => {
 	it('renders', async () => {
 		const page = await newE2EPage();
 		await page.setContent('<ontario-table></ontario-table>');

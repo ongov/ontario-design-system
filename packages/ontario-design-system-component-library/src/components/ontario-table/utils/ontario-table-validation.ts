@@ -2,6 +2,7 @@ import { TableColumnOptions, TableRowOptions } from '../table.interface';
 
 import { ConsoleMessageClass } from '../../../utils/console-message/console-message';
 import { ConsoleType } from '../../../utils/console-message/console-message.enum';
+import { minimumGridColumns, maximumGridColumns } from '../../../utils/common/common.variables';
 
 export function validateTableColumns(columns: TableColumnOptions[]): boolean {
 	for (const column of columns) {
@@ -33,7 +34,7 @@ export function validateTableColumns(columns: TableColumnOptions[]): boolean {
 			return false; // Invalid type for 'type' key
 		}
 
-		if (column.colSpan && !(column.colSpan >= 1 && column.colSpan <= 12)) {
+		if (column.colSpan && !(column.colSpan >= minimumGridColumns && column.colSpan <= maximumGridColumns)) {
 			const message = new ConsoleMessageClass();
 			message
 				.addDesignSystemTag()

@@ -10,6 +10,8 @@
 	as fontWeights;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables'
 	as lineHeights;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as
+	typography;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions'
 	as globalFunctions;
 
@@ -116,8 +118,8 @@ $ontario-table-scroller--height: 20px;
 		font-size: globalFunctions.rem-calc(18);
 		line-height: lineHeights.$ontario-line-height-7;
 		margin: spacing.$spacing-0;
-		padding: (spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-4
-			(spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-5;
+		padding: (spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-4 (spacing.$spacing-5 + spacing.$spacing-1)
+			spacing.$spacing-5;
 		text-align: left;
 		text-size-adjust: none;
 		-webkit-text-size-adjust: none;
@@ -130,8 +132,8 @@ $ontario-table-scroller--height: 20px;
 	}
 
 	th.ontario-table-cell--numeric {
-		padding: (spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-5
-			(spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-4;
+		padding: (spacing.$spacing-5 + spacing.$spacing-1) spacing.$spacing-5 (spacing.$spacing-5 + spacing.$spacing-1)
+			spacing.$spacing-4;
 		text-align: right;
 
 		@media screen and (max-width: breakpoints.$small-breakpoint) {
@@ -210,13 +212,13 @@ $ontario-table-scroller--height: 20px;
 	}
 
 	&.ontario-table-cell--numeric {
-		font-family: 'Courier Prime', Courier, 'Courier New', monospace;
+		font-family: typography.$ontario-font-courier-prime;
 		font-size: globalFunctions.rem-calc(17);
 		padding: globalFunctions.rem-calc(19) spacing.$spacing-5 globalFunctions.rem-calc(19) spacing.$spacing-4;
 		text-align: right;
 
 		strong {
-			font-family: 'Courier Prime', Courier, 'Courier New', monospace;
+			font-family: typography.$ontario-font-courier-prime;
 		}
 	}
 }

@@ -12,6 +12,7 @@ import { extractValuesByKey, organizeObjectKeys, removeObjectsBySpecificKey } fr
 	tag: 'ontario-table',
 	styleUrl: 'ontario-table.scss',
 	shadow: true,
+	assetsDirs: ['./assets'],
 })
 export class OntarioTable implements Table {
 	@Element() element: HTMLElement;
