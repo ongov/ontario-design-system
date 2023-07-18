@@ -33,36 +33,37 @@ The styles will automatically be linked to the fonts and assets (for most compon
 
 Certain components - such as the header HTML - will likely require updating for the images (Ontario logos) to point to the correct asset directory within this package.
 
-You may want to move the local assets into your project so that they are available for bundling upon building your SPA application.
+### Scripts
+
+Certain components in the Ontario Design System distribution package require JavaScript scripts for their functionality to work. These scripts are included in the complete styles package under `dist/scripts`.
+
+These scripts can also be ported over to your projects public assets for use.
+
+### Incorporating assets into your project
+
+You may want to move the assets mentioned above into your project so that they are available for bundling upon building your SPA application.
 
 This can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package, which can be used with any operating system:
 
 ```bash
 copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/assets/**\" public/assets
+
+copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/favicons/**\" public/favicons
+
+copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/fonts/**\" public/fonts
+
+copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/scripts/**\" public/scripts
 ```
 
 Another way is to add scripts to copy the assets in your `package.json` file. For example:
 
 ```json
-"copy:assets": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/assets/**\" public/assets",
-```
-
-### Scripts
-
-Certain components in the Ontario Design System distribution package require JS scripts for their functionality to work. These scripts are included in the complete styles package under `dist/scripts`.
-
-You may want to move these scripts into your project so that they are available for bundling upon building your SPA application.
-
-This can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package, which can be used with any operating system:
-
-```bash
-copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/scripts/**\" public/scripts
-```
-
-Another way is to add scripts to copy the assets automatically in your `package.json` file. For example:
-
-```json
-"copy:assets": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/scripts/**\" public/scripts",
+"prebuild": "npm run copy:assets",
+"copy:images": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/assets/**\" public/assets",
+"copy:favicons": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/favicons/**\" public/favicons",
+"copy:fonts": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/fonts/**\" public/fonts",
+"copy:scripts": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/scripts/**\" public/scripts",
+"copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts && npm run copy:scripts"
 ```
 
 ---
