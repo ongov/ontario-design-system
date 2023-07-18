@@ -21,7 +21,8 @@
 	"dependencies": {
 		"@ontario-digital-service/ontario-design-system-component-library": "2.6.0",
 		"@ontario-digital-service/ontario-design-system-design-tokens": "2.6.0",
-		"@ontario-digital-service/ontario-design-system-global-styles": "2.6.0"
+		"@ontario-digital-service/ontario-design-system-global-styles": "2.6.0",
+		"gulp-flatten": "^0.4.0"
 	},
 	"devDependencies": {
 		"del": "^7.0.0",

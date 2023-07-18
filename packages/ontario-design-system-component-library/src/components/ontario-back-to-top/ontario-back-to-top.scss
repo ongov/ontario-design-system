@@ -23,7 +23,9 @@ $ontario-icon-margin-top: 0.125rem;
 $ontario-colour-back-to-top-background: #e6e6e6;
 $ontario-colour-back-to-top--active-background: #b2b2b2;
 
-.ontario-back-to-top {
+.ontario-back-to-top,
+// Fractal component style coverage ↓
+.ontario-back-to-top--default {
 	position: fixed;
 	bottom: 5%;
 	right: 2%;

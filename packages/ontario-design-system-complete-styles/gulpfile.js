@@ -8,6 +8,7 @@ import glob from 'glob-promise';
 import fs from 'fs/promises';
 
 import gulpSass from 'gulp-sass';
+import flatten from 'gulp-flatten';
 import dartSass from 'sass';
 const sass = gulpSass(dartSass);
 
@@ -75,10 +76,18 @@ task('copy:component-styles', () => {
 task('generate:components-import-file', async (done) => {
 	const globPattern = `${componentsDirPath}/**/*.scss`;
 	const componentSassFilePaths = await glob(globPattern, null);
-	const contentLines = componentSassFilePaths.map((filePath) => `@forward "${filePath}";`);
+	const contentLines = componentSassFilePaths.map((filePath) => {
+		const paths = filePath.replace(/.*?\/.*?\/s.*?\//, '');
+		return `@forward "./../../${paths}";`;
+	});
+
+	const assetStyles = await fs.readFile('./asset-styles.scss', 'utf8');
+
 	if (contentLines.length > 0) {
 		try {
-			await fs.writeFile(`${styleDir}/scss/6-components/_all.component.scss`, contentLines.join('\n'));
+			const allComponentFilePath = `${styleDir}/scss/6-components/_all.component.scss`;
+			const newContent = contentLines.join('\n') + '\n\n' + assetStyles;
+			await fs.writeFile(allComponentFilePath, newContent);
 		} catch (error) {
 			console.error(`Error writing DS component styles file ${error}`);
 			done(error);
@@ -114,6 +123,29 @@ task('fonts-move', (done) => {
 	return src(fontsDir).pipe(dest(`${distDir}/fonts`));
 });
 
+// Move all necessary component assets to the dist/assets folder
+task('assets-move', (done) => {
+	return src([
+		// `${dsComponentPackageDir}/src/components/ontario-dropdown-list/assets/**`,
+		// `${dsComponentPackageDir}/src/components/ontario-footer/assets/**`,
+		// `${dsComponentPackageDir}/src/components/ontario-header/assets/**`,
+		`${dsComponentPackageDir}/src/components/**/assets/**`,
+		`!${dsComponentPackageDir}/src/components/ontario-icon/assets/**`,
+	])
+		.pipe(flatten())
+		.pipe(dest(`${distDir}/assets`));
+});
+
+// Move all Fractal scripts to the dist/scripts folder
+task('scripts-move', (done) => {
+	return src('./scripts/**').pipe(dest(`${distDir}/scripts`));
+});
+
+// Move favicons to the dist/favicons folder
+task('favicons-move', (done) => {
+	return src(`${dsGlobalStylesPackageDir}/src/favicons/**`).pipe(dest(`${distDir}/favicons`));
+});
+
 task('watch', (done) => {
 	watch(styleDir, { ignoreInitial: false }, parallel('sass:build-minify'));
 	done();
@@ -139,6 +171,9 @@ task(
 		'copy:component-utils',
 		'generate:components-import-file',
 		'fonts-move',
+		'assets-move',
+		'scripts-move',
+		'favicons-move',
 		'sass:copy-dist',
 		'sass:build-minify',
 		'clean:src',

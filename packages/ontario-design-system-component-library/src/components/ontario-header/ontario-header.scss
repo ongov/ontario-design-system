@@ -753,3 +753,25 @@ input[type='reset'].ontario-header__search-reset {
 	display: flex;
 	align-items: center;
 }
+
+// Fractal component style coverage ↓
+.ontario-navigation .ontario-header-button {
+	visibility: hidden;
+	position: absolute;
+	right: spacing.$spacing-4;
+	z-index: 6;
+
+	svg {
+		width: 2rem;
+		height: 2rem;
+		margin-bottom: 0;
+	}
+}
+
+.ontario-navigation--open .ontario-navigation .ontario-header-button {
+	visibility: visible;
+}
+
+.ontario-header + .ontario-navigation .ontario-header-button {
+	top: -4.35rem;
+}
