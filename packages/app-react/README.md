@@ -1,4 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# **React Component Library POC**
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses the [Ontario Design System React component library](#https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-component-library-react) package.
+
+The purpose of this project is to test the React web components library functionality and styles. It is loosely based off of the [Ontario Design System guidance site](#https://designsystem.ontario.ca/), with more of a focus on the web components, their properties and how they work. It is not meant to be treated as official documentation for the web components or their libraries.
+
+Local assets are copied over via scripts using the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package as outlined in the Ontario Design System React component library README instructions.
 
 ## Available Scripts
 
@@ -12,11 +18,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
 Builds the app for production to the `build` folder.<br>
@@ -26,30 +27,3 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Deploying to a Design System Sandbox
-
-Using a Design System sandbox this application can be deployed and tested or shared with others externally.
-
-- `PUBLIC_URL` _(optional)_ – The URL to base the file paths off of. By default React assumes everything is at the root (`/`) or is set via the `homepage` property in the `package.json` file. Setting this option overrides that. Eg. `https://site.ca/poc`
-
-```bash
-PUBLIC_URL=urlToSandbox npm run build && aws s3 sync --delete build s3://s3Bucket/poc
-```
-Where `s3Bucket` is the path to the S3 bucket to deploy to.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
