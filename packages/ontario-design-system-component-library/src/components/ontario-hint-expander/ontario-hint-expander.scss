@@ -107,3 +107,22 @@
 		margin-top: spacing.$spacing-4;
 	}
 }
+
+// Fractal component style coverage ↓
+.ontario-input + .ontario-hint-expander__container {
+	margin-top: -1 * spacing.$spacing-5 !important;
+}
+
+.ontario-checkboxes__item .ontario-hint-expander__container,
+.ontario-radios__item .ontario-hint-expander__container {
+	margin-left: spacing.$spacing-2;
+}
+
+.ontario-checkboxes__label + .ontario-hint-expander__container,
+.ontario-radios__label + .ontario-hint-expander__container {
+	margin-top: spacing.$spacing-3;
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		margin-top: spacing.$spacing-4;
+	}
+}

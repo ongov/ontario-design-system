@@ -1,14 +1,19 @@
 # Ontario Design System Complete Style Package
 
 - [Introduction](#introduction)
-- [Architecture](#architecture)
-- [Naming Convention](#naming-convention)
-- [Configuration](#configuration)
-- [References](#references)
+- [Installation](#installation)
+- [How to use this package](#how-to-use-this-package)
+- [Known issues](#known-issues)
+
+---
 
 ## Introduction
 
-The `ontario-design-system-complete-styles` package can be used instead of `ontario-design-system-components` if you just want to use the component styles. It includes the Ontario Design System global styles which are used for more generic elements and layouts and Ontario Design System components styles that are used for styling the design system components.
+The `ontario-design-system-complete-styles` package can be used in place of the component library packages if there is a need to still support HTML components from the Ontario Design System distribution package. This can be helpful for a SPA project that is transitioning to supporting the web components packages, or still needs to support HTML components but will utilize npm to control the styles.
+
+The complete styles package includes the Ontario Design System global styles, along with component styles, assets, fonts, favicons and scripts that will provide all the necessary styles and functionality of the Ontario Design System.
+
+---
 
 ## Installation
 
@@ -16,90 +21,70 @@ The `ontario-design-system-complete-styles` package can be used instead of `onta
 npm install --save @ontario-digital-service/ontario-design-system-complete-styles
 ```
 
-## Architecture
+---
 
-For this package, we are using Harry Roberts' [Inverted Triangle CSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/) (ITCSS) method of organizing code. The inverted triangle organizes code along three axes:
+## How to use this package
 
-- Generic to explicit
-- Low specificity to high specificity
-- Far-reaching to localized
+### Styles & Assets
 
-That means that styles that appear in the beginning of the project tend to be general styles that affect large pieces of the DOM, while styles that appear later target very specific elements in explicit ways.
+To incorporate the Design System global and component styles into your project, you can either import CSS from the `dist/css/compiled` folder, or SCSS under `dist/styles/scss/theme.scss`.
 
-In ITCSS, there is a concept of breaking down the CSS into layers. With the top layer holding the most general styles, and the bottom layer holding more specific styles. For the global styles package, we have broken the structure into the following layers:
+The styles will automatically be linked to the fonts and assets (for most components).
 
-#### Variables:
+Certain components - such as the header HTML - will likely require updating for the images (Ontario logos) to point to the correct asset directory within this package.
 
-Since this layer contains all the variables that will be used in the SCSS partials, it needs to be the first partial to be imported into the style sheet. This includes settings for vendor frameworks like Foundation. If you would like to define variables for re-use in a specific component, please keep it local to that component file, for ease of future maintenance.
-It is worth noting that the values in our variables are using Design Tokens, which are defined in the Global Design Token package. Please check that package for more information.
-The variables layer holds the following folders: Breakpoints, Colours, Global, Grid, Spacing, Typography.
+### Scripts
 
-_Note: These files should not generate any CSS_
+Certain components in the Ontario Design System distribution package require JavaScript scripts for their functionality to work. These scripts are included in the complete styles package under `dist/scripts`.
 
-#### Tools:
+These scripts can also be ported over to your projects public assets for use.
 
-This layer will include globally available functions, mixins, and placeholders that we might want to use throughout our SCSS partials. They should not be specific to one component.
-The tools layer holds the following folders: Functions, Mixins, Placeholders
+### Incorporating assets into your project
 
-_Note: These files should not generate any CSS_
+You may want to move the assets mentioned above into your project so that they are available for bundling upon building your SPA application.
 
-#### Generics:
+This can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package, which can be used with any operating system:
 
-Load in font-face declarations, any CSS resets, and colours.
-The Generics layer holds the following folders: Colours, Typography, Resets.
+```bash
+copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/assets/**\" public/assets
 
-#### Elements:
+copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/favicons/**\" public/favicons
 
-This includes all base HTML elements (such as paragraph elements, headings, anchors, inputs, etc). These should only be element-level selectors, not classes or ids.
+copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/fonts/**\" public/fonts
 
-The Elements layer holds the following folders: Generic.
+copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/scripts/**\" public/scripts
+```
 
-#### Layout:
+Another way is to add scripts to copy the assets in your `package.json` file. For example:
 
-Non-structured design patterns, such as wrappers, containers, layout systems, typography, and media. Selectors here should have at most one class. This includes things like the grid and spacing. An object should be non-styling elements (ex. Border, padding, text-align, cursor, etc).
-The Layout layer holds the following folders: Grid, Spacing.
+```json
+"prebuild": "npm run copy:assets",
+"copy:images": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/assets/**\" public/assets",
+"copy:favicons": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/favicons/**\" public/favicons",
+"copy:fonts": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/fonts/**\" public/fonts",
+"copy:scripts": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/scripts/**\" public/scripts",
+"copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts && npm run copy:scripts"
+```
 
-These layers can then be imported to the theme.css file based on order of specificity.
+---
 
-#### Components:
+## Known issues
 
-This layer holds component specific styles. Example: Buttons, Inputs, Header, Footer etc.
+There are a few limitations to the complete styles project that we are working to resolve. These include:
 
-## Naming convention
+### Broken SVGs
 
-The Global Styles Package, we are using the Block Element Modifier (BEM) methodology, which is used for naming CSS classes and variables. It works by breaking all classes in a codebase down into one of three groups:
+We are still working to fix how component SVGs work in SPA frameworks. A current workaround to this may be to download the SVG's needed for certain components from the [Ontario Design System Icons page]() and paste that SVG code into your HTML as needed.
 
-#### Block
+### Broken scripts
 
-Sole root of the component and they are independent
+The `back-to-top` and `ontario-expand-collapse` scripts were developed as a sample to fit the needs of a static HTML page. For now, you will need to customize the JavaScript code to fit within the constraints of your project.
 
-##### Example
+### Missing styles
 
-`.ontario-header`, `.ontario-site-nav`, `.ontario-image`, etc.
+There are also a few missing component styles in the complete styles package. We are still working on building parity between the Ontario Design System distribution package and our web components packages. These missing component styles currently include:
 
-#### Element
-
-A component part of the Block. An element can only have one parent block, and can’t be used independently outside of that block.
-
-##### Example
-
-`.ontario-footer__notice-links`, `.ontario-panel__image`, `.ontario-fact-block__heading`
-
-#### Modifier
-
-A variant or extension of the Block. The modifier defines the look, state and behaviour of a block or an element. It contains only additional styles that change the original block implementation in some way. This allows you to set the appearance of a universal block only once, and add only those features that differ from the original block code into the modifier styles.
-
-##### Example
-
-`.ontario-form-label--required`, `.ontario-form-input__button--clear`.
-
-​​The basic BEM convention goes: `.block-name__element-name--modifier-state`, with double underscores denoting relationships between elements, and double hyphens indicating variants and states.
-
-## Configuration
-
-## References
-
-- BEM naming convention (http://getbem.com/)
-- SASS compiler (https://sass-lang.com/)
-- ITCSS architecture (https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)
-- Design Tokens (https://css-tricks.com/what-are-design-tokens/)
+- Tables
+- Accordions
+- Date Inputs
+- Error states
