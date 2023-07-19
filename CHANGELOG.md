@@ -1,3 +1,16 @@
+# 2.7.0-alpha.1 (2023-07-19)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-complete-styles, @ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** updates package.lock files, adds variable for asset-styles in complete styles package 4d5e138
+- **@ontario-digital-service/ontario-design-system-complete-styles, @ontario-digital-service/ontario-design-system-component-library:** updates complete-styles package to include missing and broken assets 5853344
+- **@ontario-digital-service/ontario-design-system-complete-styles:** adds missing packages 80dcb32
+- **@ontario-digital-service/ontario-design-system-complete-styles:** fixes from MR review d710ca4
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-complete-styles, @ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library-react, @ontario-digital-service/ontario-design-system-component-library, @ontario-digital-service/ontario-design-system-design-tokens, @ontario-digital-service/ontario-design-system-global-styles:** updates package.lock files 03c844b
+
 # 2.6.0 (2023-07-13)
 
 ### Bug Fixes

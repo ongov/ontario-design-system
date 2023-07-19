@@ -1,6 +1,6 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-design-tokens",
-	"version": "2.6.0",
+	"version": "2.7.0-alpha.1",
 	"private": false,
 	"description": "Design Tokens defining the base values within the Ontario Design System",
 	"license": "Apache-2.0",
