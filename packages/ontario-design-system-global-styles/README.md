@@ -1,4 +1,4 @@
-# **Ontario Design System Global Styles Package**
+# Ontario Design System Global Styles Package
 
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
@@ -6,13 +6,13 @@
 - [Naming Convention](#naming-convention)
 - [References](#references)
 
-## **Introduction**
+## Introduction
 
 The Ontario Design System global styles package is required to use the Ontario Design System components.
 
 It includes the Ontario Design System global styles that are used for more generic elements and layouts, as well as font assets and favicons.
 
-## **Installation and usage**
+## Installation and usage
 
 To install the Ontario Design System global styles package, run the following command:
 
@@ -20,11 +20,11 @@ To install the Ontario Design System global styles package, run the following co
 npm install --save @ontario-digital-service/ontario-design-system-global-styles
 ```
 
-### **Using the global styles package**
+### Using the global styles package
 
 There are two ways to consume the Ontario Design System global styles package:
 
-#### **1. Import everything**
+#### 1. Import everything
 
 You can import the entire global styles package by including the following import statements.
 
@@ -42,7 +42,7 @@ You can import the entire global styles package by including the following impor
 
 This will give you access to the complete package, and will load in all layers of the project, as defined in our [architecture section](#architecture).
 
-#### **2. Import specific styles**
+#### 2. Import specific styles
 
 Alternatively, you can be more granular by explicitly importing specific styles from the package instead. Note that this can only be done if using SCSS.
 
@@ -61,7 +61,7 @@ The `@use` rule loads mixins, functions, and variables from other Sass styleshee
 }
 ```
 
-## **Architecture**
+## Architecture
 
 For this package, we are using Harry Roberts' [Inverted Triangle CSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/) (ITCSS) method of organizing code. The inverted triangle organizes code along three axes:
 
@@ -73,7 +73,7 @@ That means that styles that appear in the beginning of the project tend to be ge
 
 In ITCSS, there is a concept of breaking down the CSS into layers, with the top layer holding the most general styles, and the bottom layer holding more specific styles. For the global styles package, we have broken the structure into the following layers:
 
-### **Variables:**
+### Variables:
 
 This layer contains all variables that will be used throughought the SCSS partials. For that reason, it needs to be the first partial to be imported into the theme style sheet.
 
@@ -83,33 +83,33 @@ The variables layer holds the following folders for the following variables: bre
 
 **_Note: These files should not generate any CSS_**
 
-### **Tools:**
+### Tools:
 
 This layer will include globally available functions, mixins, and placeholders that we use throughout our SCSS partials. These are not specific to one component.
 
 **_Note: These files should not generate any CSS_**
 
-### **Generics:**
+### Generics:
 
 This layer loads in font-face declarations, any CSS resets, and colours.
 
-### **Elements:**
+### Elements:
 
 This layer includes all base HTML elements (such as paragraph elements, headings, anchors, inputs, etc). These only include element-level selectors, not classes or ids.
 
-### **Layout:**
+### Layout:
 
 This layer includes styles for non-structured design patterns, such as wrappers, containers, layout systems, typography, and media. Selectors here have one class at most.
 
-### **Components:**
+### Components:
 
 This layer includes design patterns and UI pieces necessary for components. Note that the styles for components in this section are generic. To include specific styles for components, it is better to use the [Ontario Design System Component Library](https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-component-library) or [Ontario Design System complete styles](https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-complete-styles) packages.
 
-### **Overrides:**
+### Overrides:
 
 This layer includes helper classes that should override all other patterns for specific behaviours. It currently includes classes for spacing and visibility overrides.
 
-## **Naming convention**
+## Naming convention
 
 The Ontario Design System global styles package uses the Block Element Modifier (BEM) methodology for naming CSS classes and variables.
 
@@ -124,7 +124,7 @@ The basic BEM convention goes: `.block-name__element-name--modifier-state`, with
 - A Modifier defines the look, state and behaviour of a block or an element. It contains only additional styles that change the original block implementation in some way. This allows you to set the appearance of a universal block only once, and add only those features that differ from the original block code into the modifier styles.
   - _Example_: `.ontario-input--2-char-width`, `.ontario-fieldset__legend--heading`. etc.
 
-## **References**
+## References
 
 - BEM naming convention (http://getbem.com/)
 - SASS compiler (https://sass-lang.com/)

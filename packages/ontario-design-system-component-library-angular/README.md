@@ -1,14 +1,14 @@
-# **Ontario Design System Component Library - Angular Package**
+# Ontario Design System Component Library - Angular Package
 
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
 - [Debugging FAQs](#debugging-faqs)
 
-## **Introduction**
+## Introduction
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/).
 
-## **Installation and usage**
+## Installation and usage
 
 To find documentation on individual web components in this component library, please download and refer to our [component documentation](https://designsystem.ontario.ca/docs/documentation/for-developers/web-components.html#component-documentation).
 
@@ -31,7 +31,7 @@ To use the Ontario Design System Angular component library, follow these steps:
    export class AppModule {}
    ```
 
-### **Usage**
+### Usage
 
 You can now use the Angular Components in your component template files.
 
@@ -39,7 +39,7 @@ You can now use the Angular Components in your component template files.
 <ontario-button type="primary">Primary Button</ontario-button>
 ```
 
-### **Local assets**
+### Local assets
 
 Along with the components, the local assets (logos, fonts, etc.) need to be copied into your project so that they are available for bundling upon building your Angular application.
 
@@ -61,7 +61,7 @@ Another way is to add scripts to copy the assets in your `package.json` file. Fo
 "copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts"
 ```
 
-## **Debugging FAQs**
+## Debugging FAQs
 
 You may run into a few errors when first using the Ontario Design System Angular web components library with your Angular project.
 

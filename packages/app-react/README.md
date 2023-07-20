@@ -1,4 +1,4 @@
-# **React Component Library POC**
+# React Component Library POC
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses the [Ontario Design System React component library](#https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-component-library-react) package.
 

@@ -1,13 +1,13 @@
-# **Ontario Design System Component Library - React Package**
+# Ontario Design System Component Library - React Package
 
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
 
-## **Introduction**
+## Introduction
 
 This library was generated using Stencil's React output target dependency. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/).
 
-## **Installation and usage**
+## Installation and usage
 
 To find documentation on individual web components in this component library, please download and refer to our [component documentation](https://designsystem.ontario.ca/docs/documentation/for-developers/web-components.html#component-documentation).
 
@@ -26,7 +26,7 @@ To use the Ontario Design System React component library, follow these steps:
    import { OntarioBlockquote } from '@ontario-digital-service/ontario-design-system-component-library-react';
    ```
 
-### **Usage**
+### Usage
 
 You can now use the React components in your component and template files.
 
@@ -41,7 +41,7 @@ You can now use the React components in your component and template files.
 ></OntarioBlockquote>
 ```
 
-### **Local assets**
+### Local assets
 
 Along with the components, the local assets (logos, fonts, etc.) need to be copied into your project so that they are available for bundling upon building your React application.
 

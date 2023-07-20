@@ -1,4 +1,4 @@
-# **Ontario Design System Design Tokens Package**
+# Ontario Design System Design Tokens Package
 
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
@@ -6,17 +6,17 @@
 - [Tooling](#tooling)
 - [References](#references)
 
-## **Introduction**
+## Introduction
 
 The Ontario Design System design tokens package includes all of the design tokens that are used for generic variables, elements and layouts in Design System styles.
 
 It forms the base of the the Ontario Design System NPM packages, but can also be used to access the design tokens directly in projects not using these packages.
 
-### **What is a design token?**
+### What is a design token?
 
 [Design tokens](https://css-tricks.com/what-are-design-tokens/) are an agnostic way to store variables (such as typography, colours and spacing) so that your design system can be shared across platforms like iOS, Android and websites.
 
-## **Installation and usage**
+## Installation and usage
 
 The Ontario Design System design tokens package can be installed by running the following command in your terminal:
 
@@ -24,21 +24,21 @@ The Ontario Design System design tokens package can be installed by running the 
 npm install --save @ontario-digital-service/ontario-design-system-design-tokens
 ```
 
-### **Using the design tokens package**
+### Using the design tokens package
 
 After installing the package, any styles that you have in your stylesheet should be able to reference any of the values from the `variables.scss` file in the `ontario-design-system-design-tokens` package.
 
 If you are using [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), you can reference any of the CSS variables outlined in the `variables.css` file.
 
-#### **Format types**
+#### Format types
 
 Formats define the output of your created files. For example, to use your styles in CSS, you use the `css/variables` format. This will create a CSS file containing the variables from your style dictionary. All of the different format types and how to output them are outlined here: https://amzn.github.io/style-dictionary/#/formats.
 
 For the Ontario Design System design tokens package, the tokens are configured to output both SCSS and CSS variables.
 
-### **Configuring design tokens in your project**
+### Configuring design tokens in your project
 
-#### **Adding a new design token**
+#### Adding a new design token
 
 If you want to add a new design token specific to your project, you must go into one of the correct sub-folders, and include the token in JSON format. This means that the token will need a name, and a value.
 
@@ -73,7 +73,7 @@ For this package, we have a `tokens`` folder that holds sub-folders for differen
 - **_Weights_**: This includes design tokens for font-weights.
 - **_Z-index_**: This includes design tokens for z-index values.
 
-## **Tooling**
+## Tooling
 
 ### Building the design tokens with Style Dictionary
 
