@@ -21,7 +21,7 @@ Use this package if you are working with plain HTML or any framework/tooling tha
 
 ## Installation and usage
 
-There are two ways to install the Ontario Design System component library package into your project: through [NPM](#installing-the-npm-package) or through [CDN](#cdn).
+There are two ways to install the Ontario Design System component library package into your project: through [NPM](#installing-the-npm-package) or through a [CDN](#cdn).
 
 ### Installing the NPM package
 
