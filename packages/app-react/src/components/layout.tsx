@@ -140,6 +140,9 @@ const Layout = ({ children }: any) => {
 				applicationHeaderInfo={{
 					title: 'Design System React Proof of Concept',
 					href: '/',
+					maxSubheaderDesktopLinks: 3,
+					maxSubheaderMobileLinks: 2,
+					maxSubheaderTabletLinks: 2,
 				}}
 				languageToggleOptions={{
 					englishLink: '#',
