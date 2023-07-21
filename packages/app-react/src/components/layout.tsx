@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { OntarioHeader, OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { generateHashPath } from '../utils/url';
 
 interface MenuLinks {
 	title: string;
@@ -17,7 +18,7 @@ const Layout = ({ children }: any) => {
 	const [menuLinks, setMenuLinks] = useState([
 		{
 			title: 'Buttons',
-			href: '/ontario-button',
+			href: generateHashPath('/ontario-button'),
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
 				e.preventDefault();
@@ -26,7 +27,7 @@ const Layout = ({ children }: any) => {
 		},
 		{
 			title: 'Hint text',
-			href: '/ontario-hint',
+			href: generateHashPath('/ontario-hint'),
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
 				e.preventDefault();
@@ -35,7 +36,7 @@ const Layout = ({ children }: any) => {
 		},
 		{
 			title: 'Textarea',
-			href: '/ontario-textarea',
+			href: generateHashPath('/ontario-textarea'),
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
 				e.preventDefault();
@@ -44,7 +45,7 @@ const Layout = ({ children }: any) => {
 		},
 		{
 			title: 'Text Input',
-			href: '/ontario-text-input',
+			href: generateHashPath('/ontario-text-input'),
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
 				e.preventDefault();
@@ -53,7 +54,7 @@ const Layout = ({ children }: any) => {
 		},
 		{
 			title: 'Icons',
-			href: '/ontario-icon',
+			href: generateHashPath('/ontario-icon'),
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
 				e.preventDefault();
@@ -62,7 +63,7 @@ const Layout = ({ children }: any) => {
 		},
 		{
 			title: 'Headers',
-			href: '/ontario-header',
+			href: generateHashPath('/ontario-header'),
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
 				e.preventDefault();
@@ -71,7 +72,7 @@ const Layout = ({ children }: any) => {
 		},
 		{
 			title: 'Footers',
-			href: '/ontario-footer',
+			href: generateHashPath('/ontario-footer'),
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
 				e.preventDefault();
@@ -80,7 +81,7 @@ const Layout = ({ children }: any) => {
 		},
 		{
 			title: 'Checkboxes',
-			href: '/ontario-checkbox',
+			href: generateHashPath('/ontario-checkbox'),
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
 				e.preventDefault();
@@ -89,7 +90,7 @@ const Layout = ({ children }: any) => {
 		},
 		{
 			title: 'Radio Buttons',
-			href: '/ontario-radio-button',
+			href: generateHashPath('/ontario-radio-button'),
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
 				e.preventDefault();
@@ -98,7 +99,7 @@ const Layout = ({ children }: any) => {
 		},
 		{
 			title: 'Dropdown List',
-			href: '/ontario-dropdown-list',
+			href: generateHashPath('/ontario-dropdown-list'),
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
 				e.preventDefault();
@@ -107,7 +108,7 @@ const Layout = ({ children }: any) => {
 		},
 		{
 			title: 'Blockquote',
-			href: '/ontario-blockquote',
+			href: generateHashPath('/ontario-blockquote'),
 			linkIsActive: false,
 			onClickHandler: (e: Event) => {
 				e.preventDefault();
@@ -139,7 +140,7 @@ const Layout = ({ children }: any) => {
 				type="application"
 				applicationHeaderInfo={{
 					title: 'Design System React Proof of Concept',
-					href: '/',
+					href: generateHashPath('/'),
 					maxSubheaderDesktopLinks: 3,
 					maxSubheaderMobileLinks: 2,
 					maxSubheaderTabletLinks: 2,
