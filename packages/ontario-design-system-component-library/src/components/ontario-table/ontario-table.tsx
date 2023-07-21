@@ -110,7 +110,7 @@ export class OntarioTable implements Table {
 	}
 
 	// Parse the tableColumn & tableData options if they are strings
-	// Transform the data and stores in respective state objects
+	// Transforms the data and stores it in respective state objects
 	private parseOptions(options: any) {
 		const isString = typeof options === 'string';
 
