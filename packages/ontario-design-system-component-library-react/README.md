@@ -2,6 +2,7 @@
 
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
+- [Support](#support)
 
 ## Introduction
 
@@ -62,3 +63,7 @@ Another way is to add scripts to copy the assets in your `package.json` file. Fo
 "copy:fonts": "copyfiles -E -u 6 \"node_modules/@ontario-digital-service/ontario-design-system-component-library-react/dist/component-library/assets/fonts/**/*\" src/assets/fonts",
 "copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts"
 ```
+
+## Support
+
+Contact us at [design.system@ontario.ca](mailto:design.system@ontario.ca) for assistance with this package.

@@ -3,6 +3,7 @@
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
 - [Debugging FAQs](#debugging-faqs)
+- [Support](#support)
 
 ## Introduction
 
@@ -97,3 +98,7 @@ To fix this issue, add mappings to the angular library in the `tsconfig.json` fi
     },
  }
 ```
+
+## Support
+
+Contact us at [design.system@ontario.ca](mailto:design.system@ontario.ca) for assistance with this package.

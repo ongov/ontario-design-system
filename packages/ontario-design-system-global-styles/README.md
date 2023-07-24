@@ -4,6 +4,7 @@
 - [Installation and usage](#installation-and-usage)
 - [Architecture](#architecture)
 - [Naming Convention](#naming-convention)
+- [Support](#support)
 - [References](#references)
 
 ## Introduction
@@ -31,13 +32,13 @@ You can import the entire global styles package by including the following impor
 **SCSS:**
 
 ```bash
-@import "@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme.scss";
+@forward "@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme.scss";
 ```
 
 **CSS:**
 
 ```bash
-@import "@ontario-digital-service/ontario-design-system-global-styles/dist/styles/css/compiled/ontario-theme.css";
+@forward "@ontario-digital-service/ontario-design-system-global-styles/dist/styles/css/compiled/ontario-theme.css";
 ```
 
 This will give you access to the complete package, and will load in all layers of the project, as defined in our [architecture section](#architecture).
@@ -122,7 +123,12 @@ The basic BEM convention goes: `.block-name__element-name--modifier-state`, with
 - Elements are children of blocks. An element can only have one parent block, and can’t be used independently outside of that block.
   - _Example_: `.ontario-fieldset__legend`, `.ontario-label__flag`, etc.
 - A Modifier defines the look, state and behaviour of a block or an element. It contains only additional styles that change the original block implementation in some way. This allows you to set the appearance of a universal block only once, and add only those features that differ from the original block code into the modifier styles.
+
   - _Example_: `.ontario-input--2-char-width`, `.ontario-fieldset__legend--heading`. etc.
+
+  ## Support
+
+Contact us at [design.system@ontario.ca](mailto:design.system@ontario.ca) for assistance with this package.
 
 ## References
 

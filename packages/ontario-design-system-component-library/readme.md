@@ -5,6 +5,8 @@
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
 - [Component documentation](#component-documentation)
+- [Getting started for Design System developers](#getting-started-for-design-system-developers)
+- [Support](#support)
 - [References](#references)
 
 ## Introduction
@@ -123,6 +125,30 @@ After installing the necessary styles and web components package, components can
 ## Component documentation
 
 For more information about using the Ontario Design System component library package web components, see [Using the components](https://designsystem.ontario.ca/docs/documentation/for-developers/web-components.html#using-the-components) in the [Ontario Design System Guidance](https://designsystem.ontario.ca).
+
+## Getting started for Design System developers
+
+To run the components in development mode, run:
+
+```bash
+npm start
+```
+
+To build the component for production, run:
+
+```bash
+npm run build
+```
+
+To run the unit tests for the components, run:
+
+```bash
+npm run test
+```
+
+## Support
+
+Contact us at [design.system@ontario.ca](mailto:design.system@ontario.ca) for assistance with this package.
 
 ## References
 

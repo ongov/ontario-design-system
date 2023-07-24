@@ -4,6 +4,7 @@
 - [Installation and usage](#installation-and-usage)
 - [Architecture](#architecture)
 - [Tooling](#tooling)
+- [Support](#support)
 - [References](#references)
 
 ## Introduction
@@ -78,6 +79,10 @@ For this package, we have a `tokens`` folder that holds sub-folders for differen
 ### Building the design tokens with Style Dictionary
 
 [Style Dictionary](https://amzn.github.io/style-dictionary/) is a build system that allows you to define styles once, in a way for any platform or language to consume. It is a single place to create and edit your styles, with a single command exports these rules to all the places you need them - iOS, Android, CSS, JS, HTML, sketch files, style documentation, etc. It is available as a CLI through NPM, but can also be used like any normal node module if you want to extend its functionality.
+
+## Support
+
+Contact us at [design.system@ontario.ca](mailto:design.system@ontario.ca) for assistance with this package.
 
 ## References
 

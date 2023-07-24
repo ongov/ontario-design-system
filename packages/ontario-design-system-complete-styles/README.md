@@ -3,6 +3,7 @@
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
 - [Known issues](#known-issues)
+- [Support](#support)
 
 ## Introduction
 
@@ -81,3 +82,7 @@ There are also a few missing component styles in the complete styles package. We
 - Accordions
 - Date Inputs
 - Error states
+
+## Support
+
+Contact us at [design.system@ontario.ca](mailto:design.system@ontario.ca) for assistance with this package.
