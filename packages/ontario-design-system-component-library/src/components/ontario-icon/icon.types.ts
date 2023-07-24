@@ -1,4 +1,4 @@
-export const IconColours = ['black', 'blue', 'grey', 'white'] as const;
+export const IconColours = ['black', 'blue', 'grey', 'white', 'inherit'] as const;
 export const IconSizes = [24, 32] as const;
 
 export type IconColour = (typeof IconColours)[number];
