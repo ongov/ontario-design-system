@@ -99,6 +99,20 @@ To fix this issue, add mappings to the angular library in the `tsconfig.json` fi
  }
 ```
 
+### _Typescript compiler issues_
+
+You may encounter errors building the component library if your compiler options `lib` is set to a version below ES2022.
+
+If this is the case, you can add the following to your _tsconfig.json_ file:
+
+```json
+"complierOptions": {
+   "skipLibCheck": true
+}
+```
+
+Adding this will skip the type checking of the Angular component library declaration files. This can save time during compilation at the expense of type-system accuracy.
+
 ## Support
 
 Contact us at [design.system@ontario.ca](mailto:design.system@ontario.ca) for assistance with this package.
