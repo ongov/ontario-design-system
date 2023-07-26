@@ -48,15 +48,13 @@ export class OntarioStepIndicator {
 	 * If this function is passed in, the back element will display as a button.
 	 * The back element will require either the backButtonURL prop or the customOnClick prop to be passed in order for the back element to display.
 	 */
-	@Prop({ mutable: true }) customOnClick?: string | Function;
+	@Prop() customOnClick?: Function;
 
 	/**
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 	 */
 	@Prop({ mutable: true }) language?: Language = 'en';
-
-	@State() translations: any = translations;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -71,20 +69,14 @@ export class OntarioStepIndicator {
 		this.language = validateLanguage(event);
 	}
 
-	private handleBackButtonClick = (e: Event) => {
-		// Call the custom function when needed
-		if (typeof this.customOnClick === 'function') {
-			this.customOnClick(e);
-		}
+	@State() translations: any = translations;
+
+	private handleCustomOnClick = (e: Event) => {
+		this.customOnClick && this.customOnClick(e);
 	};
 
 	componentWillLoad() {
 		this.language = validateLanguage(this.language);
-
-		// Convert the string representation back to a function
-		if (this.customOnClick && typeof this.customOnClick === 'string') {
-			this.customOnClick = new Function(`return ${this.customOnClick}`)();
-		}
 	}
 
 	render() {
@@ -93,16 +85,13 @@ export class OntarioStepIndicator {
 				<div class="ontario-row">
 					<div class="ontario-columns ontario-small-12">
 						<div class={`ontario-step-indicator--with-back-button--${this.showBackButton}`}>
-							{this.showBackButton === true && this.customOnClick && !this.backButtonUrl && (
-								<button
-									class="ontario-button ontario-button--tertiary"
-									onClick={(e) => this.customOnClick && this.handleBackButtonClick(e)}
-								>
+							{this.showBackButton === true && !this.backButtonUrl && (
+								<button class="ontario-button ontario-button--tertiary" onClick={(e) => this.handleCustomOnClick(e)}>
 									<ontario-icon-chevron-left colour="blue"></ontario-icon-chevron-left>
 									{this.translations.stepIndicator.back[`${this.language}`]}
 								</button>
 							)}
-							{this.showBackButton === true && !this.customOnClick && this.backButtonUrl && (
+							{this.showBackButton === true && this.backButtonUrl && (
 								<a class="ontario-button ontario-button--tertiary" href={this.backButtonUrl}>
 									<ontario-icon-chevron-left colour="blue"></ontario-icon-chevron-left>
 									{this.translations.stepIndicator.back[`${this.language}`]}
@@ -110,7 +99,9 @@ export class OntarioStepIndicator {
 							)}
 							{this.percentageComplete ? (
 								<span class="ontario-h4">
-									{this.percentageComplete}&nbsp;% {this.translations.stepIndicator.complete[`${this.language}`]}
+									{this.percentageComplete}
+									{this.language === 'en' ? '%' : <span>&nbsp;%</span>}{' '}
+									{this.translations.stepIndicator.complete[`${this.language}`]}
 								</span>
 							) : (
 								<span class="ontario-h4">
