@@ -48,13 +48,15 @@ export class OntarioStepIndicator {
 	 * If this function is passed in, the back element will display as a button.
 	 * The back element will require either the backButtonURL prop or the customOnClick prop to be passed in order for the back element to display.
 	 */
-	@Prop() customOnClick?: Function;
+	@Prop({ mutable: true }) customOnClick?: string | Function;
 
 	/**
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 	 */
 	@Prop({ mutable: true }) language?: Language = 'en';
+
+	@State() translations: any = translations;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -69,10 +71,20 @@ export class OntarioStepIndicator {
 		this.language = validateLanguage(event);
 	}
 
-	@State() translations: any = translations;
+	private handleBackButtonClick = (e: Event) => {
+		// Call the custom function when needed
+		if (typeof this.customOnClick === 'function') {
+			this.customOnClick(e);
+		}
+	};
 
 	componentWillLoad() {
 		this.language = validateLanguage(this.language);
+
+		// Convert the string representation back to a function
+		if (this.customOnClick && typeof this.customOnClick === 'string') {
+			this.customOnClick = new Function(`return ${this.customOnClick}`)();
+		}
 	}
 
 	render() {
@@ -84,7 +96,7 @@ export class OntarioStepIndicator {
 							{this.showBackButton === true && this.customOnClick && !this.backButtonUrl && (
 								<button
 									class="ontario-button ontario-button--tertiary"
-									onClick={(e) => this.customOnClick && this.customOnClick(e)}
+									onClick={(e) => this.customOnClick && this.handleBackButtonClick(e)}
 								>
 									<ontario-icon-chevron-left colour="blue"></ontario-icon-chevron-left>
 									{this.translations.stepIndicator.back[`${this.language}`]}
@@ -102,8 +114,8 @@ export class OntarioStepIndicator {
 								</span>
 							) : (
 								<span class="ontario-h4">
-									{this.translations.stepIndicator.step[`${this.language}`]}&nbsp; {this.currentStep}{' '}
-									{this.translations.stepIndicator.of[`${this.language}`]}&nbsp; {this.numberOfSteps}
+									{this.translations.stepIndicator.step[`${this.language}`]}&nbsp;{this.currentStep}{' '}
+									{this.translations.stepIndicator.of[`${this.language}`]}&nbsp;{this.numberOfSteps}
 								</span>
 							)}
 						</div>
