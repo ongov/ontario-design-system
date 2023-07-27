@@ -19,7 +19,12 @@ The Ontario Design System component library package contains all the available O
 
 The package also makes use of the [Ontario Design System global styles package](https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-global-styles) for global styles and assets necessary for the Ontario Design System look and feel.
 
-Use this package if you are working with plain HTML or any framework/tooling that does not use a SPA framework.
+### Note:
+
+Use this package if you are working with plain HTML or any framework/tooling that does not use a SPA framework. To use the Ontario Design System Web components for either Angular or React, please review instructions in the respective packages:
+
+- [Ontario Design System Angular component library](https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-component-library-angular)
+- [Ontario Design System React component library](https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-component-library-react)
 
 ## Installation and usage
 
