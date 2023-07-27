@@ -2830,6 +2830,26 @@ export class OntarioStepIndicator {
 export declare interface OntarioStepIndicator extends Components.OntarioStepIndicator {}
 
 @ProxyCmp({
+	inputs: ['caption', 'condensed', 'fullWidth', 'tableColumns', 'tableData', 'zebraStripes'],
+})
+@Component({
+	selector: 'ontario-table',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['caption', 'condensed', 'fullWidth', 'tableColumns', 'tableData', 'zebraStripes'],
+})
+export class OntarioTable {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioTable extends Components.OntarioTable {}
+
+@ProxyCmp({
 	inputs: [
 		'caption',
 		'customOnBlur',

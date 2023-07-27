@@ -11,6 +11,7 @@
 
 $ontario-font-open-sans: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $ontario-font-raleway-modified: 'Raleway', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$ontario-font-courier-prime: 'Courier Prime', Courier, 'Courier New', monospace;
 $ontario-max-width-large: 70rem;
 $ontario-max-width-standard: 48rem;
 
@@ -108,7 +109,7 @@ $ontario-max-width-standard: 48rem;
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		font-size: globalFunctions.rem-calc(16);
-		letter-spacing: letterSpacing.$ontario-letter-spacing-small;;
+		letter-spacing: letterSpacing.$ontario-letter-spacing-small;
 		line-height: lineHeight.$ontario-line-height-7;
 	}
 }
