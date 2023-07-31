@@ -1,0 +1,769 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-table snapshot - 3 columns (non-numeric) should render the expected html 1`] = `
+<ontario-table caption="Marriage certificate: cost and delivery" table-columns="[
+						{ &quot;title&quot;: &quot;Type of service&quot;, &quot;key&quot;: &quot;service&quot; },
+						{ &quot;title&quot;: &quot;Processing and delivery&quot;, &quot;key&quot;: &quot;processing&quot; },
+						{ &quot;title&quot;: &quot;Cost&quot;, &quot;key&quot;: &quot;cost&quot;, &quot;type&quot;: &quot;numeric&quot; }
+					]" table-data="[
+						{
+							&quot;data&quot; : {
+								&quot;service&quot;: &quot;Regular service (online)&quot;,
+								&quot;processing&quot;: &quot;15 business days plus delivery by Canada Post&quot;,
+								&quot;cost&quot;: &quot;$15&quot;
+							}
+						},
+						{
+							&quot;data&quot; : {
+								&quot;service&quot;: &quot;Premium service (online)&quot;,
+								&quot;cost&quot;: &quot;$45&quot;,
+								&quot;processing&quot;: &quot;5 business days including delivery by courier&quot;
+							}
+						},
+						{
+							&quot;data&quot; : {
+								&quot;processing&quot;: &quot;5 business days including delivery by courier (proof of urgency is required)&quot;,
+								&quot;service&quot;: &quot;Emergency service (in-person)&quot;,
+								&quot;cost&quot;: &quot;$45&quot;
+							}
+						}
+					]">
+  <mock:shadow-root>
+    <div class="ontario-table-container">
+      <div class="ontario-table-scroll--wrapper">
+        <div class="ontario-table-scroll--div" style="visibility: visible; height: 20px; width: undefinedpx;"></div>
+      </div>
+      <div class="ontario-table-div">
+        <table>
+          <caption>
+            Marriage certificate: cost and delivery
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">
+                Type of service
+              </th>
+              <th scope="col">
+                Processing and delivery
+              </th>
+              <th class="ontario-table-cell--numeric" data-type="numeric" scope="col">
+                Cost
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                Regular service (online)
+              </th>
+              <td>
+                15 business days plus delivery by Canada Post
+              </td>
+              <td class="ontario-table-cell--numeric">
+                $15
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Premium service (online)
+              </th>
+              <td>
+                5 business days including delivery by courier
+              </td>
+              <td class="ontario-table-cell--numeric">
+                $45
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Emergency service (in-person)
+              </th>
+              <td>
+                5 business days including delivery by courier (proof of urgency is required)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                $45
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </mock:shadow-root>
+</ontario-table>
+`;
+
+exports[`ontario-table snapshot - 5 columns (numeric) should render the expected html 1`] = `
+<ontario-table caption="Number of engagement sessions by business area from 2016–2020" table-columns="[
+						{ &quot;title&quot;: &quot;Business area&quot;, &quot;key&quot;: &quot;business&quot; },
+						{ &quot;title&quot;: &quot;April 2016 – March 2017&quot;, &quot;key&quot;: &quot;date1&quot;, &quot;type&quot;: &quot;numeric&quot; },
+						{ &quot;title&quot;: &quot;April 2017 - March 2018&quot;, &quot;key&quot;: &quot;date2&quot;, &quot;type&quot;: &quot;numeric&quot; },
+						{ &quot;title&quot;: &quot;April 2018 - March 2019&quot;, &quot;key&quot;: &quot;date3&quot;, &quot;type&quot;: &quot;numeric&quot; },
+						{ &quot;title&quot;: &quot;April 2019 - March 2020&quot;, &quot;key&quot;: &quot;date4&quot;, &quot;type&quot;: &quot;numeric&quot; }
+					]" table-data="[
+						{
+							&quot;data&quot; : {
+								&quot;business&quot;: &quot;Aggregates and petroleum&quot;,
+								&quot;date1&quot;: &quot;35&quot;,
+								&quot;date2&quot;: &quot;32&quot;,
+								&quot;date3&quot;: &quot;45&quot;,
+								&quot;date4&quot;: &quot;71&quot;
+							}
+						},
+						{
+							&quot;data&quot; : {
+								&quot;business&quot;: &quot;Fish and wildlife&quot;,
+								&quot;date1&quot;: &quot;162&quot;,
+								&quot;date2&quot;: &quot;240&quot;,
+								&quot;date3&quot;: &quot;178&quot;,
+								&quot;date4&quot;: &quot;162&quot;
+							}
+						},
+						{
+							&quot;data&quot;: {
+								&quot;business&quot;: &quot;Forestry&quot;,
+								&quot;date1&quot;: &quot;182&quot;,
+								&quot;date2&quot;: &quot;170&quot;,
+								&quot;date3&quot;: &quot;235&quot;,
+								&quot;date4&quot;: &quot;242&quot;
+							},
+							&quot;highlight&quot;: &quot;true&quot;
+						},
+						{
+							&quot;data&quot;: {
+								&quot;business&quot;: &quot;Lands and water&quot;,
+								&quot;date1&quot;: &quot;79&quot;,
+								&quot;date2&quot;: &quot;101&quot;,
+								&quot;date3&quot;: &quot;42&quot;,
+								&quot;date4&quot;: &quot;70&quot;
+							}
+						},
+						{
+							&quot;data&quot;: {
+								&quot;business&quot;: &quot;General&quot;,
+								&quot;date1&quot;: &quot;56&quot;,
+								&quot;date2&quot;: &quot;37&quot;,
+								&quot;date3&quot;: &quot;64&quot;,
+								&quot;date4&quot;: &quot;46&quot;
+							}
+						},
+						{ 
+							&quot;data&quot;: {
+								&quot;business&quot;: &quot;Total row&quot;,
+								&quot;date1&quot;: &quot;514&quot;,
+								&quot;date2&quot;: &quot;580&quot;,
+								&quot;date3&quot;: &quot;564&quot;,
+								&quot;date4&quot;: &quot;591&quot;
+							},
+							&quot;footer&quot;: true
+						}
+					]" zebra-stripes="enabled">
+  <mock:shadow-root>
+    <div class="ontario-table-container">
+      <div class="ontario-table-scroll--wrapper">
+        <div class="ontario-table-scroll--div" style="visibility: visible; height: 20px; width: undefinedpx;"></div>
+      </div>
+      <div class="ontario-table-div">
+        <table class="ontario-table--zebra-stripes-enabled">
+          <caption>
+            Number of engagement sessions by business area from 2016–2020
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">
+                Business area
+              </th>
+              <th class="ontario-table-cell--numeric" data-type="numeric" scope="col">
+                April 2016 – March 2017
+              </th>
+              <th class="ontario-table-cell--numeric" data-type="numeric" scope="col">
+                April 2017 - March 2018
+              </th>
+              <th class="ontario-table-cell--numeric" data-type="numeric" scope="col">
+                April 2018 - March 2019
+              </th>
+              <th class="ontario-table-cell--numeric" data-type="numeric" scope="col">
+                April 2019 - March 2020
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                Aggregates and petroleum
+              </th>
+              <td class="ontario-table-cell--numeric">
+                35
+              </td>
+              <td class="ontario-table-cell--numeric">
+                32
+              </td>
+              <td class="ontario-table-cell--numeric">
+                45
+              </td>
+              <td class="ontario-table-cell--numeric">
+                71
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Fish and wildlife
+              </th>
+              <td class="ontario-table-cell--numeric">
+                162
+              </td>
+              <td class="ontario-table-cell--numeric">
+                240
+              </td>
+              <td class="ontario-table-cell--numeric">
+                178
+              </td>
+              <td class="ontario-table-cell--numeric">
+                162
+              </td>
+            </tr>
+            <tr class="ontario-table-row--highlight">
+              <th scope="row">
+                Forestry
+                <img class="ontario-table--highlight-indicator" src="/assets/highlight-indicator.svg">
+              </th>
+              <td class="ontario-table-cell--numeric">
+                182
+              </td>
+              <td class="ontario-table-cell--numeric">
+                170
+              </td>
+              <td class="ontario-table-cell--numeric">
+                235
+              </td>
+              <td class="ontario-table-cell--numeric">
+                242
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Lands and water
+              </th>
+              <td class="ontario-table-cell--numeric">
+                79
+              </td>
+              <td class="ontario-table-cell--numeric">
+                101
+              </td>
+              <td class="ontario-table-cell--numeric">
+                42
+              </td>
+              <td class="ontario-table-cell--numeric">
+                70
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                General
+              </th>
+              <td class="ontario-table-cell--numeric">
+                56
+              </td>
+              <td class="ontario-table-cell--numeric">
+                37
+              </td>
+              <td class="ontario-table-cell--numeric">
+                64
+              </td>
+              <td class="ontario-table-cell--numeric">
+                46
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row">
+                Total row
+              </th>
+              <td class="ontario-table-cell--numeric">
+                514
+              </td>
+              <td class="ontario-table-cell--numeric">
+                580
+              </td>
+              <td class="ontario-table-cell--numeric">
+                564
+              </td>
+              <td class="ontario-table-cell--numeric">
+                591
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </mock:shadow-root>
+</ontario-table>
+`;
+
+exports[`ontario-table snapshot - 7 columns (numeric and condensed) should render the expected html 1`] = `
+<ontario-table caption="Operating expense" condensed="true" table-columns="[
+						{ &quot;title&quot;: &quot;Votes/Programs&quot;, &quot;key&quot;: &quot;program&quot;, &quot;colSpan&quot;: 2 },
+						{ &quot;title&quot;: &quot;Estimates 2020-21 $&quot;, &quot;key&quot;: &quot;column1&quot;, &quot;type&quot;: &quot;numeric&quot; },
+						{ &quot;title&quot;: &quot;Change from estimates 2019-20 $&quot;, &quot;key&quot;: &quot;column2&quot;, &quot;type&quot;: &quot;numeric&quot; },
+						{ &quot;title&quot;: &quot;Change from estimates 2019-20 %&quot;, &quot;key&quot;: &quot;column3&quot;, &quot;type&quot;: &quot;numeric&quot; },
+						{ &quot;title&quot;: &quot;Estimates 2019-20 $&quot;, &quot;key&quot;: &quot;column4&quot;, &quot;type&quot;: &quot;numeric&quot; },
+						{ &quot;title&quot;: &quot;Interim actuals 2019-20 $&quot;, &quot;key&quot;: &quot;column5&quot;, &quot;type&quot;: &quot;numeric&quot; },
+						{ &quot;title&quot;: &quot;Actuals 2018-19 $&quot;, &quot;key&quot;: &quot;column6&quot;, &quot;type&quot;: &quot;numeric&quot;}
+					]" table-data="[
+						{
+							&quot;data&quot; : {
+								&quot;program&quot;: &quot;Ministry administration&quot;,
+								&quot;column1&quot;: &quot;16,147,000&quot;,
+								&quot;column6&quot;: &quot;20,683,313&quot;,
+								&quot;column2&quot;: &quot;1,388,600&quot;,
+								&quot;column3&quot;: &quot;9.4&quot;,
+								&quot;column4&quot;: &quot;14,758,400&quot;,
+								&quot;column5&quot;: &quot;17,470,200&quot;
+							}
+						},
+						{
+							&quot;data&quot; : {
+								&quot;program&quot;: &quot;Postsecondary education&quot;,
+								&quot;column1&quot;: &quot;6,455,038,100&quot;,
+								&quot;column4&quot;: &quot;6,586,779,600&quot;,
+								&quot;column2&quot;: &quot;(131,741,500)&quot;,
+								&quot;column3&quot;: &quot;(2.0)&quot;,
+								&quot;column5&quot;: &quot;6,491,779,600&quot;,
+								&quot;column6&quot;: &quot;7,398,858,795&quot;
+							}
+						},
+						{
+							&quot;data&quot; : {
+								&quot;program&quot;: &quot;Research program&quot;,
+								&quot;column1&quot;: &quot;187,399,200&quot;,
+								&quot;column2&quot;: &quot;(1,290,400)&quot;,
+								&quot;column3&quot;: &quot;(0.7)&quot;,
+								&quot;column4&quot;: &quot;188,689,600&quot;,
+								&quot;column5&quot;: &quot;188,689,600&quot;,
+								&quot;column6&quot;: &quot;174,629,399&quot;
+							}
+						},
+						{
+							&quot;data&quot; : {
+								&quot;program&quot;: &quot;Total operating expense to be voted&quot;,
+								&quot;column1&quot;: &quot;6,658,584,300&quot;,
+								&quot;column2&quot;: &quot;(131,643,300)&quot;,
+								&quot;column3&quot;: &quot;(1.9)&quot;,
+								&quot;column4&quot;: &quot;6,790,227,600&quot;,
+								&quot;column5&quot;: &quot;6,697,939,400&quot;,
+								&quot;column6&quot;: &quot;7,594,171,507&quot;
+							}
+						},
+						{
+							&quot;data&quot; : {
+								&quot;program&quot;: &quot;Statutory appropriations&quot;,
+								&quot;column1&quot;: &quot;55,106,014&quot;,
+								&quot;column2&quot;: &quot;0&quot;,
+								&quot;column3&quot;: &quot;0&quot;,
+								&quot;column4&quot;: &quot;55,106,014&quot;,
+								&quot;column5&quot;: &quot;55,106,014&quot;,
+								&quot;column6&quot;: &quot;36,264,081&quot;
+							}
+						},
+						{ 
+							&quot;data&quot; : {
+								&quot;program&quot;: &quot;Ministry total operating expense&quot;,
+								&quot;column1&quot;: &quot;6,713,690,314&quot;,
+								&quot;column2&quot;: &quot;(131,643,300)&quot;,
+								&quot;column3&quot;: &quot;(1.9)&quot;,
+								&quot;column4&quot;: &quot;6,845,333,614&quot;,
+								&quot;column5&quot;: &quot;6,753,045,414&quot;,
+								&quot;column6&quot;: &quot;7,630,435,588&quot;
+							},
+							&quot;subtotal&quot;: &quot;true&quot;
+						},
+						{
+							&quot;data&quot; : {
+								&quot;program&quot;: &quot;Consolidation &amp; other Adjustments - Colleges&quot;,
+								&quot;column1&quot;: &quot;3,504,321,700&quot;,
+								&quot;column2&quot;: &quot;210,997,500&quot;,
+								&quot;column3&quot;: &quot;6.4&quot;,
+								&quot;column4&quot;: &quot;3,293,324,200&quot;,
+								&quot;column5&quot;: &quot;3,269,671,700&quot;,
+								&quot;column6&quot;: &quot;2,961,027,351&quot;
+							}
+						},
+						{
+							&quot;data&quot; : {
+								&quot;program&quot;: &quot;Operating expense adjustment - Student assistance interest expense reclassification&quot;,
+								&quot;column1&quot;: &quot;(48,979,900)&quot;,
+								&quot;column2&quot;: &quot;0&quot;,
+								&quot;column3&quot;: &quot;0&quot;,
+								&quot;column4&quot;: &quot;(48,979,900)&quot;,
+								&quot;column5&quot;: &quot;(48,979,900)&quot;,
+								&quot;column6&quot;: &quot;(33,055,246)&quot;
+							}
+						},
+						{
+							&quot;data&quot; : {
+								&quot;program&quot;: &quot;Consolidation &amp; other adjustments - Hospitals&quot;,
+								&quot;column1&quot;: &quot;(9,886,600)&quot;,
+								&quot;column2&quot;: &quot;5,107,400&quot;,
+								&quot;column3&quot;: &quot;123&quot;,
+								&quot;column4&quot;: &quot;(14,994,000)&quot;,
+								&quot;column5&quot;: &quot;(15,005,000)&quot;,
+								&quot;column6&quot;: &quot;(15,193,844)&quot;
+							}
+						},
+						{
+							&quot;data&quot; : {
+								&quot;program&quot;: &quot;Consolidation &amp; other adjustments - Hospitals&quot;,
+								&quot;column1&quot;: &quot;(9,886,600)&quot;,
+								&quot;column2&quot;: &quot;5,107,400&quot;,
+								&quot;column3&quot;: &quot;150&quot;,
+								&quot;column4&quot;: &quot;(14,994,000)&quot;,
+								&quot;column5&quot;: &quot;(15,005,000)&quot;,
+								&quot;column6&quot;: &quot;(15,193,844)&quot;
+							}
+						},
+						{
+							&quot;data&quot; : {
+								&quot;program&quot;: &quot;Consolidation &amp; other adjustments - General real estate portfolio&quot;,
+								&quot;column1&quot;: &quot;(5,904,600)&quot;,
+								&quot;column2&quot;: &quot;(5,686,900)&quot;,
+								&quot;column3&quot;: &quot;172&quot;,
+								&quot;column4&quot;: &quot;(217,700)&quot;,
+								&quot;column5&quot;: &quot;(15,005,000)&quot;,
+								&quot;column6&quot;: &quot;(189,337)&quot;
+							}
+						},
+						{
+							&quot;data&quot; : {
+								&quot;program&quot;: &quot;Total including consolidation &amp; other adjustments&quot;,
+								&quot;column1&quot;: &quot;10,153,240,914&quot;,
+								&quot;column2&quot;: &quot;78,774,700&quot;,
+								&quot;column3&quot;: &quot;0.80&quot;,
+								&quot;column4&quot;: &quot;10,074,466,214&quot;,
+								&quot;column5&quot;: &quot;9,958,732,214&quot;,
+								&quot;column6&quot;: &quot;10,543,024,512&quot;
+							},
+							&quot;footer&quot;: true
+						}
+					]">
+  <mock:shadow-root>
+    <div class="ontario-table-container">
+      <div class="ontario-table-scroll--wrapper">
+        <div class="ontario-table-scroll--div" style="visibility: visible; height: 20px; width: undefinedpx;"></div>
+      </div>
+      <div class="ontario-table-div">
+        <table class="ontario-table--condensed">
+          <caption>
+            Operating expense
+          </caption>
+          <thead>
+            <tr>
+              <th class="ontario-table-header--column-span-2" scope="col">
+                Votes/Programs
+              </th>
+              <th class="ontario-table-cell--numeric" data-type="numeric" scope="col">
+                Estimates 2020-21 $
+              </th>
+              <th class="ontario-table-cell--numeric" data-type="numeric" scope="col">
+                Change from estimates 2019-20 $
+              </th>
+              <th class="ontario-table-cell--numeric" data-type="numeric" scope="col">
+                Change from estimates 2019-20 %
+              </th>
+              <th class="ontario-table-cell--numeric" data-type="numeric" scope="col">
+                Estimates 2019-20 $
+              </th>
+              <th class="ontario-table-cell--numeric" data-type="numeric" scope="col">
+                Interim actuals 2019-20 $
+              </th>
+              <th class="ontario-table-cell--numeric" data-type="numeric" scope="col">
+                Actuals 2018-19 $
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                Ministry administration
+              </th>
+              <td class="ontario-table-cell--numeric">
+                16,147,000
+              </td>
+              <td class="ontario-table-cell--numeric">
+                1,388,600
+              </td>
+              <td class="ontario-table-cell--numeric">
+                9.4
+              </td>
+              <td class="ontario-table-cell--numeric">
+                14,758,400
+              </td>
+              <td class="ontario-table-cell--numeric">
+                17,470,200
+              </td>
+              <td class="ontario-table-cell--numeric">
+                20,683,313
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Postsecondary education
+              </th>
+              <td class="ontario-table-cell--numeric">
+                6,455,038,100
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (131,741,500)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (2.0)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                6,586,779,600
+              </td>
+              <td class="ontario-table-cell--numeric">
+                6,491,779,600
+              </td>
+              <td class="ontario-table-cell--numeric">
+                7,398,858,795
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Research program
+              </th>
+              <td class="ontario-table-cell--numeric">
+                187,399,200
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (1,290,400)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (0.7)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                188,689,600
+              </td>
+              <td class="ontario-table-cell--numeric">
+                188,689,600
+              </td>
+              <td class="ontario-table-cell--numeric">
+                174,629,399
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Total operating expense to be voted
+              </th>
+              <td class="ontario-table-cell--numeric">
+                6,658,584,300
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (131,643,300)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (1.9)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                6,790,227,600
+              </td>
+              <td class="ontario-table-cell--numeric">
+                6,697,939,400
+              </td>
+              <td class="ontario-table-cell--numeric">
+                7,594,171,507
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Statutory appropriations
+              </th>
+              <td class="ontario-table-cell--numeric">
+                55,106,014
+              </td>
+              <td class="ontario-table-cell--numeric">
+                0
+              </td>
+              <td class="ontario-table-cell--numeric">
+                0
+              </td>
+              <td class="ontario-table-cell--numeric">
+                55,106,014
+              </td>
+              <td class="ontario-table-cell--numeric">
+                55,106,014
+              </td>
+              <td class="ontario-table-cell--numeric">
+                36,264,081
+              </td>
+            </tr>
+            <tr class="ontario-table-row--subtotal">
+              <th scope="row">
+                Ministry total operating expense
+              </th>
+              <td class="ontario-table-cell--numeric">
+                6,713,690,314
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (131,643,300)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (1.9)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                6,845,333,614
+              </td>
+              <td class="ontario-table-cell--numeric">
+                6,753,045,414
+              </td>
+              <td class="ontario-table-cell--numeric">
+                7,630,435,588
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Consolidation &amp; other Adjustments - Colleges
+              </th>
+              <td class="ontario-table-cell--numeric">
+                3,504,321,700
+              </td>
+              <td class="ontario-table-cell--numeric">
+                210,997,500
+              </td>
+              <td class="ontario-table-cell--numeric">
+                6.4
+              </td>
+              <td class="ontario-table-cell--numeric">
+                3,293,324,200
+              </td>
+              <td class="ontario-table-cell--numeric">
+                3,269,671,700
+              </td>
+              <td class="ontario-table-cell--numeric">
+                2,961,027,351
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Operating expense adjustment - Student assistance interest expense reclassification
+              </th>
+              <td class="ontario-table-cell--numeric">
+                (48,979,900)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                0
+              </td>
+              <td class="ontario-table-cell--numeric">
+                0
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (48,979,900)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (48,979,900)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (33,055,246)
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Consolidation &amp; other adjustments - Hospitals
+              </th>
+              <td class="ontario-table-cell--numeric">
+                (9,886,600)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                5,107,400
+              </td>
+              <td class="ontario-table-cell--numeric">
+                123
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (14,994,000)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (15,005,000)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (15,193,844)
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Consolidation &amp; other adjustments - Hospitals
+              </th>
+              <td class="ontario-table-cell--numeric">
+                (9,886,600)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                5,107,400
+              </td>
+              <td class="ontario-table-cell--numeric">
+                150
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (14,994,000)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (15,005,000)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (15,193,844)
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Consolidation &amp; other adjustments - General real estate portfolio
+              </th>
+              <td class="ontario-table-cell--numeric">
+                (5,904,600)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (5,686,900)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                172
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (217,700)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (15,005,000)
+              </td>
+              <td class="ontario-table-cell--numeric">
+                (189,337)
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row">
+                Total including consolidation &amp; other adjustments
+              </th>
+              <td class="ontario-table-cell--numeric">
+                10,153,240,914
+              </td>
+              <td class="ontario-table-cell--numeric">
+                78,774,700
+              </td>
+              <td class="ontario-table-cell--numeric">
+                0.80
+              </td>
+              <td class="ontario-table-cell--numeric">
+                10,074,466,214
+              </td>
+              <td class="ontario-table-cell--numeric">
+                9,958,732,214
+              </td>
+              <td class="ontario-table-cell--numeric">
+                10,543,024,512
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </mock:shadow-root>
+</ontario-table>
+`;
