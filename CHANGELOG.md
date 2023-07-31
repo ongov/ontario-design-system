@@ -1,3 +1,19 @@
+# 2.7.0-alpha.2 (2023-07-31)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library, @ontario-digital-service/ontario-design-system-global-styles:** updates heading styles for fieldset legends, updates component lib index file for accessibility 5ad58d8
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes back button custom on click functionality in step indicator 4b8ddcd
+- **@ontario-digital-service/ontario-design-system-component-library:** updates icon colour options, updates hint expander colour and test a3af8ef
+- swithch app to using HashRouter ef0faba
+- update header links to expose some from the menu e1bbcb4
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-component-library:** adds table component to web component library b7629cc
+- **@ontario-digital-service/ontario-design-system-component-library:** adds translations + updates menu accessibility text for ontario-header web component d0bdf0e
+- **@ontario-digital-service/ontario-design-system-component-library:** update loading indicator watch state b04a716
+
 # 2.7.0-alpha.1 (2023-07-19)
 
 ### Bug Fixes
