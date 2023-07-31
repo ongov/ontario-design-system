@@ -350,6 +350,10 @@ export class OntarioHeader {
 	 * @param viewportSize - the size of the screen where the function is being called. It can either be set to `desktop`, `tablet` or `mobile`. This dictates the classes used on the menu button, as well as the ref to keep the focus trapped when the menu is open.
 	 */
 	private renderMenuButton(viewportSize: string) {
+		if (!this.isMenuVisible()) {
+			return;
+		}
+
 		return (
 			<button
 				class={
@@ -417,6 +421,10 @@ export class OntarioHeader {
 		if (event.key === 'Escape') {
 			event.path[0].value = '';
 		}
+	}
+
+	private isMenuVisible() {
+		return this.menuItemState?.length > 0;
 	}
 
 	componentWillLoad() {
