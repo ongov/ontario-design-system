@@ -12,6 +12,8 @@ import OntarioHeaderDefaultData from './ontario-header-default-data.json';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 
+import translations from '../../translations/global.i18n.json';
+
 @Component({
 	tag: 'ontario-header',
 	styleUrls: {
@@ -175,6 +177,8 @@ export class OntarioHeader {
 	searchBar!: HTMLInputElement;
 	searchButton!: HTMLInputElement;
 
+	@State() translations: any = translations;
+
 	@Watch('applicationHeaderInfo')
 	private parseApplicationHeaderInfo() {
 		const applicationHeaderInfo = this.applicationHeaderInfo;
@@ -259,7 +263,7 @@ export class OntarioHeader {
 	 */
 	handleSubmit = (event: any) => {
 		event.preventDefault();
-		location.href = `https://www.ontario.ca/search/search-results?query=${event.target[0].value}`;
+		location.href = `${this.translations.header.ontarioSearchURL[`${this.language}`]}${event.target[0].value}`;
 	};
 
 	/**
@@ -359,7 +363,11 @@ export class OntarioHeader {
 				}
 				id={this.type === 'ontario' ? 'ontario-header-menu-toggler' : 'ontario-application-header-menu-toggler'}
 				aria-controls="ontario-navigation"
-				aria-label={this.menuToggle ? 'close menu' : 'open menu'}
+				aria-label={
+					this.menuToggle
+						? this.translations.header.closeMenu[`${this.language}`]
+						: this.translations.header.openMenu[`${this.language}`]
+				}
 				onClick={this.handleMenuToggle}
 				type="button"
 				ref={
@@ -449,16 +457,16 @@ export class OntarioHeader {
 							<div class="ontario-row">
 								{/* Ontario header logo */}
 								<div class="ontario-header__logo-container ontario-columns ontario-small-2 ontario-medium-4 ontario-large-3">
-									<a href="https://www.ontario.ca/page/government-ontario">
+									<a href={this.translations.header.logoLink[`${this.language}`]}>
 										<img
 											class="ontario-show-for-medium"
 											src={getAssetPath('./assets/ontario-logo--desktop.svg')}
-											alt="Government of Ontario"
+											alt={this.translations.header.logoAltText[`${this.language}`]}
 										/>
 										<img
 											class="ontario-show-for-small-only"
 											src={getAssetPath('./assets/ontario-logo--mobile.svg')}
-											alt="Government of Ontario"
+											alt={this.translations.header.logoAltText[`${this.language}`]}
 										/>
 									</a>
 								</div>
@@ -472,7 +480,7 @@ export class OntarioHeader {
 									novalidate
 								>
 									<label htmlFor="ontario-search-input-field" class="ontario-show-for-sr">
-										Search
+										{this.translations.header.search[`${this.language}`]}
 									</label>
 									<Input
 										type="text"
@@ -490,10 +498,10 @@ export class OntarioHeader {
 										id="ontario-search-reset"
 										type="reset"
 										value=""
-										aria-label="Clear field"
+										aria-label={this.translations.header.clearSearchField[`${this.language}`]}
 									></Input>
 									<button class="ontario-header__search-submit" id="ontario-search-submit" type="submit">
-										<span class="ontario-show-for-sr">Submit</span>
+										<span class="ontario-show-for-sr">{this.translations.header.submit[`${this.language}`]}</span>
 										<span class="ontario-header__icon-container" innerHTML={OntarioIconSearch} />
 									</button>
 								</form>
@@ -504,6 +512,7 @@ export class OntarioHeader {
 										url={this.language === 'en' ? this.languageState?.frenchLink : this.languageState?.englishLink}
 										size="default"
 										customLanguageToggle={this.customLanguageToggle}
+										language={this.language}
 									></ontario-language-toggle>
 									<button
 										class="ontario-header__search-toggler ontario-header-button ontario-header-button--without-outline ontario-hide-for-large"
@@ -513,7 +522,9 @@ export class OntarioHeader {
 										ref={(el) => (this.searchButton = el as HTMLInputElement)}
 									>
 										<span class="ontario-header__icon-container" innerHTML={OntarioIconSearchWhite} />
-										<span class="ontario-show-for-medium ontario-show">Search</span>
+										<span class="ontario-show-for-medium ontario-show">
+											{this.translations.header.search[`${this.language}`]}
+										</span>
 									</button>
 									{this.renderMenuButton('ontario-header')}
 								</div>
@@ -521,11 +532,13 @@ export class OntarioHeader {
 									<button
 										class="ontario-header__search-close ontario-header-button ontario-header-button--without-outline"
 										id="ontario-header-search-close"
-										aria-label="close search bar"
+										aria-label={this.translations.header.closeSearch[`${this.language}`]}
 										type="button"
 										onClick={this.handleSearchToggle}
 									>
-										<span aria-hidden={`${!this.searchToggle}`}>close</span>
+										<span aria-hidden={`${!this.searchToggle}`}>
+											{this.translations.header.close[`${this.language}`]}
+										</span>
 										<span class="ontario-header__icon-container" innerHTML={OntarioIconClose} />
 									</button>
 								</div>
@@ -588,8 +601,11 @@ export class OntarioHeader {
 						<header class="ontario-application-header" id="ontario-header">
 							<div class="ontario-row">
 								<div class="ontario-columns ontario-small-6 ontario-application-header__logo">
-									<a href="https://www.ontario.ca/page/government-ontario">
-										<img src={getAssetPath('./assets/ontario-logo--desktop.svg')} alt="Government of Ontario" />
+									<a href={this.translations.header.logoLink[`${this.language}`]}>
+										<img
+											src={getAssetPath('./assets/ontario-logo--desktop.svg')}
+											alt={this.translations.header.logoAltText[`${this.language}`]}
+										/>
 									</a>
 								</div>
 								<div class="ontario-columns ontario-small-6 ontario-application-header__lang-toggle">
@@ -597,6 +613,7 @@ export class OntarioHeader {
 										size="small"
 										url={this.language === 'en' ? this.languageState?.frenchLink : this.languageState?.englishLink}
 										customLanguageToggle={this.customLanguageToggle}
+										language={this.language}
 									></ontario-language-toggle>
 								</div>
 							</div>

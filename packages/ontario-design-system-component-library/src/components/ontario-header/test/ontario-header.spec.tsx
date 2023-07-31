@@ -83,11 +83,11 @@ describe('ontario-header', () => {
 								<div class="ontario-row">
 									<div class="ontario-application-header__logo ontario-columns ontario-small-6">
 										<a href="https://www.ontario.ca/page/government-ontario">
-											<img alt="Government of Ontario" src="/assets/ontario-logo--desktop.svg">
+											<img alt="Ontario.ca homepage" src="/assets/ontario-logo--desktop.svg">
 										</a>
 									</div>
 									<div class="ontario-application-header__lang-toggle ontario-columns ontario-small-6">
-										<ontario-language-toggle size="small" url="/fr"></ontario-language-toggle>
+										<ontario-language-toggle language="en" size="small" url="/fr"></ontario-language-toggle>
 									</div>
 								</div>
 							</header>
@@ -125,15 +125,15 @@ describe('ontario-header', () => {
 														</a>
 													</li>
 												</ul>
-												<button class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-show-for-large" id="ontario-application-header-menu-toggler" aria-controls="ontario-navigation" aria-label="open menu" type="button">
+												<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler ontario-show-for-large" id="ontario-application-header-menu-toggler" type="button">
 													<span class="ontario-header__icon-container"></span>
 													<span>Menu</span>
 												</button>
-												<button class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large" id="ontario-application-header-menu-toggler" aria-controls="ontario-navigation" aria-label="open menu" type="button">
+												<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler ontario-hide-for-large ontario-hide-for-small ontario-show-for-medium" id="ontario-application-header-menu-toggler" type="button">
 													<span class="ontario-header__icon-container"></span>
 													<span>Menu</span>
 												</button>
-												<button class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-show-for-small-only" id="ontario-application-header-menu-toggler" aria-controls="ontario-navigation" aria-label="open menu" type="button">
+												<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler ontario-show-for-small-only" id="ontario-application-header-menu-toggler" type="button">
 													<span class="ontario-header__icon-container"></span>
 													<span>Menu</span>
 												</button>
@@ -350,8 +350,8 @@ describe('ontario-header', () => {
 							<div class="ontario-row">
 								<div class="ontario-columns ontario-header__logo-container ontario-large-3 ontario-medium-4 ontario-small-2">
 									<a href="https://www.ontario.ca/page/government-ontario">
-										<img alt="Government of Ontario" class="ontario-show-for-medium" src="/assets/ontario-logo--desktop.svg">
-										<img class="ontario-show-for-small-only" src="/assets/ontario-logo--mobile.svg" alt="Government of Ontario" />
+										<img alt="Ontario.ca homepage" class="ontario-show-for-medium" src="/assets/ontario-logo--desktop.svg">
+										<img alt="Ontario.ca homepage" class="ontario-show-for-small-only" src="/assets/ontario-logo--mobile.svg">
 									</a>
 								</div>
 								<form class="ontario-columns ontario-header__search-container ontario-large-6 ontario-large-offset-0 ontario-medium-6 ontario-medium-offset-3 ontario-small-10" id="ontario-search-form-container" name="searchForm" novalidate="">
@@ -368,14 +368,14 @@ describe('ontario-header', () => {
 									</button>
 								</form>
 								<div class="ontario-columns ontario-header__nav-right-container ontario-large-3 ontario-medium-8 ontario-small-10">
-									<ontario-language-toggle size="default" url="/fr"></ontario-language-toggle>
+									<ontario-language-toggle language="en" size="default" url="/fr"></ontario-language-toggle>
 									<button aria-controls="ontario-search-form-container" class="ontario-header-button ontario-header-button--without-outline ontario-header__search-toggler ontario-hide-for-large" id="ontario-header-search-toggler">
 										<span class="ontario-header__icon-container"></span>
 										<span class="ontario-show ontario-show-for-medium">
 											Search
 										</span>
 									</button>
-									<button aria-controls="ontario-navigation" aria-label="open menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-header-menu-toggler" type="button">
+									<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-header-menu-toggler" type="button">
 										<span class="ontario-header__icon-container"></span>
 										<span>
 											Menu
@@ -383,7 +383,7 @@ describe('ontario-header', () => {
 									</button>
 								</div>
 								<div class="ontario-columns ontario-header__search-close-container ontario-medium-3 ontario-small-2">
-									<button aria-label="close search bar" class="ontario-header-button ontario-header-button--without-outline ontario-header__search-close" id="ontario-header-search-close" type="button">
+									<button aria-label="Close search bar" class="ontario-header-button ontario-header-button--without-outline ontario-header__search-close" id="ontario-header-search-close" type="button">
 										<span aria-hidden="true">
 											close
 										</span>

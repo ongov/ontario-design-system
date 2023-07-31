@@ -3,7 +3,7 @@
 exports[`ontario-language-toggle snapshot should render the expected html 1`] = `
 <ontario-language-toggle>
   <mock:shadow-root>
-    <a aria-label="Switch language to French" class="ontario-language-toggler ontario-language-toggler--default" href="#">
+    <a aria-label="Click to switch language to French" class="ontario-language-toggler ontario-language-toggler--default" href="#">
       <abbr class="ontario-show-for-small-only" title="Français">
         FR
       </abbr>
