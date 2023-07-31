@@ -59,11 +59,12 @@ export class OntarioLanguageToggle {
 	/**
 	 * An event that emits to other components that the language toggle button has been toggled.
 	 */
-	@Event() headerLanguageToggled: EventEmitter<string>;
+	@Event() headerLanguageToggled: EventEmitter<{ currentLanguage: string; toggledLanguage: string }>;
 	handleHeaderLanguageToggled(language: string, e?: Event) {
 		const toggledLanguage = language === 'en' ? 'fr' : 'en';
 		this.language = toggledLanguage;
-		this.headerLanguageToggled.emit(toggledLanguage);
+
+		this.headerLanguageToggled.emit({ currentLanguage: language, toggledLanguage });
 
 		this.updateHTMLLang(toggledLanguage);
 
