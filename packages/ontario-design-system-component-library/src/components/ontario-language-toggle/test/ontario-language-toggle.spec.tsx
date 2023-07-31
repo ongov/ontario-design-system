@@ -22,7 +22,7 @@ describe('ontario-language-toggle', () => {
 		expect(page.root).toEqualHtml(`
 			<ontario-language-toggle>
 				<mock:shadow-root>
-					<a aria-label="Switch language to French" class="ontario-language-toggler ontario-language-toggler--default" href="#">
+					<a aria-label="Click to switch language to French" class="ontario-language-toggler ontario-language-toggler--default" href="#">
 						<abbr class="ontario-show-for-small-only" title="Français">
 							FR
 						</abbr>
@@ -54,7 +54,7 @@ describe('ontario-language-toggle', () => {
 		expect(page.root).toEqualHtml(`
 			<ontario-language-toggle size="small" url="/en" language="fr">
 				<mock:shadow-root>
-					<a aria-label="Changer la langue en anglais" class="ontario-language-toggler ontario-language-toggler--small" href="/en">
+					<a aria-label="Cliquez pour changer de langue en anglais" class="ontario-language-toggler ontario-language-toggler--small" href="/en">
 						<span>
 							English
 						</span>

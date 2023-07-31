@@ -20,8 +20,8 @@ describe('ontario-hint-expander', () => {
             aria-expanded="false"
             data-toggle="ontario-collapse"
           >
-            <span class="ontario-hint-expander__button-icon--close ontario-icon"><ontario-icon-chevron-up></ontario-icon-chevron-up></span>
-            <span class="ontario-hint-expander__button-icon--open"><ontario-icon-chevron-down></ontario-icon-chevron-down></span>
+            <span class="ontario-hint-expander__button-icon--close ontario-icon"><ontario-icon-chevron-up colour="inherit"></ontario-icon-chevron-up></span>
+            <span class="ontario-hint-expander__button-icon--open"><ontario-icon-chevron-down colour="inherit"></ontario-icon-chevron-down></span>
             This is the hint
           </button>
           <div class="ontario-hint-expander__content" id="hint-expander-content-elementId" aria-labelledby="hint-expander-button-elementId" aria-hidden="true" data-toggle="ontario-expander-content">

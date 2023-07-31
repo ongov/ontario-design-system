@@ -1,12 +1,19 @@
-# Ontario Design System Component Library - Angular
+# Ontario Design System Component Library - Angular Package
+
+- [Introduction](#introduction)
+- [Installation and usage](#installation-and-usage)
+- [Debugging FAQs](#debugging-faqs)
+- [Support](#support)
+
+## Introduction
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/).
 
-## Using the Angular Component Library
+## Installation and usage
 
 To find documentation on individual web components in this component library, please download and refer to our [component documentation](https://designsystem.ontario.ca/docs/documentation/for-developers/web-components.html#component-documentation).
 
-To use the Angular Component Library, follow these steps:
+To use the Ontario Design System Angular component library, follow these steps:
 
 1. Install the NPM package.
 
@@ -25,13 +32,15 @@ To use the Angular Component Library, follow these steps:
    export class AppModule {}
    ```
 
-3. You can now use the Angular Components in your component template files.
+### Usage
 
-   ```html
-   <ontario-button type="primary">Primary Button</ontario-button>
-   ```
+You can now use the Angular Components in your component template files.
 
-## Local assets
+```html
+<ontario-button type="primary">Primary Button</ontario-button>
+```
+
+### Local assets
 
 Along with the components, the local assets (logos, fonts, etc.) need to be copied into your project so that they are available for bundling upon building your Angular application.
 
@@ -55,7 +64,7 @@ Another way is to add scripts to copy the assets in your `package.json` file. Fo
 
 ## Debugging FAQs
 
-You may run into a few errors when first using web components with your Angular project.
+You may run into a few errors when first using the Ontario Design System Angular web components library with your Angular project.
 
 Here are a few common ones and how to fix them:
 
@@ -89,3 +98,21 @@ To fix this issue, add mappings to the angular library in the `tsconfig.json` fi
     },
  }
 ```
+
+### _Typescript compiler issues_
+
+You may encounter errors building the component library if your compiler options `lib` is set to a version below ES2022.
+
+If this is the case, you can add the following to your _tsconfig.json_ file:
+
+```json
+"complierOptions": {
+   "skipLibCheck": true
+}
+```
+
+Adding this will skip the type checking of the Angular component library declaration files. This can save time during compilation at the expense of type-system accuracy.
+
+## Support
+
+Contact us at [design.system@ontario.ca](mailto:design.system@ontario.ca) for assistance with this package.

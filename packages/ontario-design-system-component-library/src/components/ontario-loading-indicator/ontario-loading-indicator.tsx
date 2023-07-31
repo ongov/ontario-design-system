@@ -65,6 +65,14 @@ export class OntarioLoadingIndicator {
 	}
 
 	/**
+	 * Watch for changes in the `isLoading` prop.
+	 */
+	@Watch('isLoading')
+	isLoadingChanged(newIsLoading: boolean) {
+		this.isLoadingState = newIsLoading;
+	}
+
+	/**
 	 * Watch for changes in the `type` variable for validation purposes.
 	 *
 	 * If the user input doesn't match one of the array values then `type` will be set to its default (`large`).

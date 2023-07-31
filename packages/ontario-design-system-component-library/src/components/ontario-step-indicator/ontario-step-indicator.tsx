@@ -71,6 +71,10 @@ export class OntarioStepIndicator {
 
 	@State() translations: any = translations;
 
+	private handleCustomOnClick = (e: Event) => {
+		this.customOnClick && this.customOnClick(e);
+	};
+
 	componentWillLoad() {
 		this.language = validateLanguage(this.language);
 	}
@@ -81,16 +85,13 @@ export class OntarioStepIndicator {
 				<div class="ontario-row">
 					<div class="ontario-columns ontario-small-12">
 						<div class={`ontario-step-indicator--with-back-button--${this.showBackButton}`}>
-							{this.showBackButton === true && this.customOnClick && !this.backButtonUrl && (
-								<button
-									class="ontario-button ontario-button--tertiary"
-									onClick={(e) => this.customOnClick && this.customOnClick(e)}
-								>
+							{this.showBackButton === true && !this.backButtonUrl && (
+								<button class="ontario-button ontario-button--tertiary" onClick={(e) => this.handleCustomOnClick(e)}>
 									<ontario-icon-chevron-left colour="blue"></ontario-icon-chevron-left>
 									{this.translations.stepIndicator.back[`${this.language}`]}
 								</button>
 							)}
-							{this.showBackButton === true && !this.customOnClick && this.backButtonUrl && (
+							{this.showBackButton === true && this.backButtonUrl && (
 								<a class="ontario-button ontario-button--tertiary" href={this.backButtonUrl}>
 									<ontario-icon-chevron-left colour="blue"></ontario-icon-chevron-left>
 									{this.translations.stepIndicator.back[`${this.language}`]}
@@ -98,12 +99,14 @@ export class OntarioStepIndicator {
 							)}
 							{this.percentageComplete ? (
 								<span class="ontario-h4">
-									{this.percentageComplete}&nbsp;% {this.translations.stepIndicator.complete[`${this.language}`]}
+									{this.percentageComplete}
+									{this.language === 'en' ? '%' : <span>&nbsp;%</span>}{' '}
+									{this.translations.stepIndicator.complete[`${this.language}`]}
 								</span>
 							) : (
 								<span class="ontario-h4">
-									{this.translations.stepIndicator.step[`${this.language}`]}&nbsp; {this.currentStep}{' '}
-									{this.translations.stepIndicator.of[`${this.language}`]}&nbsp; {this.numberOfSteps}
+									{this.translations.stepIndicator.step[`${this.language}`]}&nbsp;{this.currentStep}{' '}
+									{this.translations.stepIndicator.of[`${this.language}`]}&nbsp;{this.numberOfSteps}
 								</span>
 							)}
 						</div>

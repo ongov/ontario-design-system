@@ -30,20 +30,23 @@
 
 .ontario-fieldset__legend--large,
 .ontario-fieldset__legend--heading {
-	font-size: 1.75rem;
 	letter-spacing: letterSpacing.$ontario-letter-spacing-xsmall;
 	line-height: lineHeight.$ontario-line-height-1;
 
 	h1 {
 		display: inline-block;
-		font-size: inherit;
-		margin: 0;
+		margin: spacing.$spacing-0;
+		@extend %h1-styles;
 	}
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		font-size: 1.4375rem;
 		line-height: lineHeight.$ontario-line-height-5;
 	}
+}
+
+.ontario-fieldset__legend--large {
+	font-size: 1.75rem;
 }
 
 .ontario-fieldset__legend-required-flag,

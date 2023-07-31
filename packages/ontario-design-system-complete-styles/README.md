@@ -1,41 +1,37 @@
 # Ontario Design System Complete Style Package
 
 - [Introduction](#introduction)
-- [Installation](#installation)
-- [How to use this package](#how-to-use-this-package)
+- [Installation and usage](#installation-and-usage)
 - [Known issues](#known-issues)
-
----
+- [Support](#support)
 
 ## Introduction
 
-The `ontario-design-system-complete-styles` package can be used in place of the component library packages if there is a need to still support HTML components from the Ontario Design System distribution package. This can be helpful for a SPA project that is transitioning to supporting the web components packages, or still needs to support HTML components but will utilize npm to control the styles.
+The Ontario Design System complete styles package can be used in place of the Ontario Design System component library packages if there is a need to still support HTML components from the [Ontario Design System distribution package](https://designsystem.ontario.ca/docs/documentation/for-developers/getting-started.html#about-the-distribution-package). This can be helpful for a SPA project that is transitioning to supporting the web components packages, or still needs to support HTML components but will utilize npm to control the styles.
 
-The complete styles package includes the Ontario Design System global styles, along with component styles, assets, fonts, favicons and scripts that will provide all the necessary styles and functionality of the Ontario Design System.
+The complete styles package includes the [Ontario Design System global styles](https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-global-styles), along with component styles, assets, fonts, favicons and scripts that will provide all the necessary styles and functionality of the Ontario Design System.
 
----
+## Installation and usage
 
-## Installation
+To install the Ontario Design System complete styles package, run the following command:
 
 ```bash
 npm install --save @ontario-digital-service/ontario-design-system-complete-styles
 ```
 
----
+### How to use this package
 
-## How to use this package
+#### Styles & Assets
 
-### Styles & Assets
-
-To incorporate the Design System global and component styles into your project, you can either import CSS from the `dist/css/compiled` folder, or SCSS under `dist/styles/scss/theme.scss`.
+To incorporate the Ontario Design System global and component styles into your project, you can either import CSS from the `dist/css/compiled` folder, or SCSS under `dist/styles/scss/theme.scss`.
 
 The styles will automatically be linked to the fonts and assets (for most components).
 
 Certain components - such as the header HTML - will likely require updating for the images (Ontario logos) to point to the correct asset directory within this package.
 
-### Scripts
+#### Scripts
 
-Certain components in the Ontario Design System distribution package require JavaScript scripts for their functionality to work. These scripts are included in the complete styles package under `dist/scripts`.
+Certain components in the [Ontario Design System distribution package](https://designsystem.ontario.ca/docs/documentation/for-developers/getting-started.html#about-the-distribution-package) require JavaScript scripts for their functionality to work. These scripts are included in the complete styles package under `dist/scripts`.
 
 These scripts can also be ported over to your projects public assets for use.
 
@@ -66,8 +62,6 @@ Another way is to add scripts to copy the assets in your `package.json` file. Fo
 "copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts && npm run copy:scripts"
 ```
 
----
-
 ## Known issues
 
 There are a few limitations to the complete styles project that we are working to resolve. These include:
@@ -88,3 +82,7 @@ There are also a few missing component styles in the complete styles package. We
 - Accordions
 - Date Inputs
 - Error states
+
+## Support
+
+Contact us at [design.system@ontario.ca](mailto:design.system@ontario.ca) for assistance with this package.
