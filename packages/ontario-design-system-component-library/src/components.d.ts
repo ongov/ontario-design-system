@@ -4006,7 +4006,9 @@ declare namespace LocalJSX {
 		/**
 		 * An event that emits to other components that the language toggle button has been toggled.
 		 */
-		onHeaderLanguageToggled?: (event: OntarioLanguageToggleCustomEvent<string>) => void;
+		onHeaderLanguageToggled?: (
+			event: OntarioLanguageToggleCustomEvent<{ currentLanguage: string; toggledLanguage: string }>,
+		) => void;
 		/**
 		 * An event to set the Document's HTML lang property, and emit the toggled language to other components.
 		 */
