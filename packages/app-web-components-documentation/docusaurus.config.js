@@ -18,7 +18,7 @@ const config = {
 
 	// GitHub pages deployment config.
 	// If you aren't using GitHub pages, you don't need these.
-	organizationName: 'Governemtn of Ontario', // Usually your GitHub org/user name.
+	organizationName: 'Government of Ontario', // Usually your GitHub org/user name.
 	projectName: 'ods-web-components', // Usually your repo name.
 
 	onBrokenLinks: 'throw',
@@ -42,6 +42,7 @@ const config = {
 			({
 				docs: {
 					sidebarPath: require.resolve('./sidebars.js'),
+					routeBasePath: '/',
 					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
 					// editUrl:
@@ -54,7 +55,6 @@ const config = {
 			}),
 		],
 	],
-
 	themeConfig:
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
@@ -65,59 +65,7 @@ const config = {
 				respectPrefersColorScheme: true,
 			},
 			navbar: {
-				logo: {
-					alt: 'ontario.ca',
-					src: 'img/logo.svg',
-				},
-				items: [
-					{
-						type: 'docSidebar',
-						sidebarId: 'tutorialSidebar',
-						position: 'left',
-						label: 'Documentation',
-					},
-				],
-			},
-			footer: {
-				style: 'dark',
-				links: [
-					{
-						title: 'Docs',
-						items: [
-							{
-								label: 'Tutorial',
-								to: '/docs/intro',
-							},
-						],
-					},
-					{
-						title: 'Help us improve the design system',
-						items: [
-							{
-								label: 'Help and feedback',
-								href: 'https://designsystem.ontario.ca/docs/help-feedback.html',
-							},
-							{
-								label: 'Email us',
-								href: 'mailto:design.system@ontario.ca',
-							},
-						],
-					},
-					{
-						title: 'More',
-						items: [
-							{
-								label: 'Blog',
-								to: '/blog',
-							},
-							{
-								label: 'GitHub',
-								href: 'https://github.com/facebook/docusaurus',
-							},
-						],
-					},
-				],
-				copyright: `© King's Printer for Ontario, 2012–23`,
+				title: 'Ontario DS Web Component Docs',
 			},
 			prism: {
 				theme: lightCodeTheme,
