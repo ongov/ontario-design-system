@@ -24,7 +24,7 @@
 		"clean:full": "rm -rf node_modules && npm run clean",
 		"clean:icons": "rm -rf src/components/ontario-icon/ontario-icon-*.tsx",
 		"docs:assemble": "ts-node scripts/build-documentation-bundle.ts",
-		"docs:copy:readme": "shx cp readme.md ../app-web-components-documentation/docs/01-readme.md",
+		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f readme.md -p \"---\nslug: /\n---\n\" -df ../app-web-components-documentation/docs/01-readme.md",
 		"format": "prettier --write .",
 		"generate": "stencil generate",
 		"generate:icons": "node src/components/ontario-icon/scripts/generate-icons.js",
@@ -36,8 +36,7 @@
 	},
 	"dependencies": {
 		"@ontario-digital-service/ontario-design-system-global-styles": "2.6.0",
-		"@stencil/core": "2.20.0",
-		"validate-color": "^2.2.1"
+		"@stencil/core": "2.20.0"
 	},
 	"devDependencies": {
 		"@stencil/angular-output-target": "^0.5.0",
