@@ -299,13 +299,13 @@ export class OntarioTable implements Table {
 										? `ontario-table-row--highlight`
 										: rowData.subtotal
 										? `ontario-table-row--subtotal`
-										: ``;
+										: undefined;
 
 									return this.generateTableDataHTML('tableData', rowData, columns, rowClass);
 								})}
 							</tbody>
 						)}
-						{this.tableFooterState && (
+						{!!this.tableFooterState.length && (
 							<tfoot>
 								{this.tableFooterState.map((footerData) => {
 									return this.generateTableDataHTML('tableData', footerData, columns, undefined);
