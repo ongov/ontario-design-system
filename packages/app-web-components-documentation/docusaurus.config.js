@@ -65,7 +65,7 @@ const config = {
 				respectPrefersColorScheme: true,
 			},
 			navbar: {
-				title: 'Ontario DS Web Component Docs',
+				title: 'Ontario Design System Web Component Docs',
 			},
 			prism: {
 				theme: lightCodeTheme,
