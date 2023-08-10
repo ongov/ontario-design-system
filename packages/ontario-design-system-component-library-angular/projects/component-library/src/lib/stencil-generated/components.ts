@@ -2694,7 +2694,7 @@ export declare interface OntarioLanguageToggle extends Components.OntarioLanguag
 	/**
 	 * An event that emits to other components that the language toggle button has been toggled.
 	 */
-	headerLanguageToggled: EventEmitter<CustomEvent<string>>;
+	headerLanguageToggled: EventEmitter<CustomEvent<{ currentLanguage: string; toggledLanguage: string }>>;
 }
 
 @ProxyCmp({
