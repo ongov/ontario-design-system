@@ -1,3 +1,10 @@
+# 2.7.0-alpha.3 (2023-08-10)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library:** fixed header showing empty menu 635ca12
+- **@ontario-digital-service/ontario-design-system-component-library:** showing menu button based on allowed sub header links 6ac6cd2
+
 # 2.7.0-alpha.2 (2023-07-31)
 
 ### Bug Fixes
