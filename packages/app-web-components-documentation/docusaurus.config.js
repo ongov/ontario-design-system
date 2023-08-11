@@ -14,7 +14,7 @@ const config = {
 	url: 'https://designsystem.ontario.ca/',
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
-	baseUrl: '/web-components-docs',
+	baseUrl: '/developer-docs',
 
 	// GitHub pages deployment config.
 	// If you aren't using GitHub pages, you don't need these.
