@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
+import { Accordion } from './components/ontario-accordion/accordion.interface';
 import {
 	HeadingContentType,
 	HeadingLevelOptions,
@@ -35,6 +36,13 @@ import { PageAlertType } from './components/ontario-page-alert/ontario-page-aler
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 import { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
 export namespace Components {
+	interface OntarioAccordion {
+		AccordionData: Record<string, Accordion>;
+		ariaLabelText: string;
+		elementId: string;
+		label: string;
+		title: string;
+	}
 	interface OntarioAside {
 		/**
 		 * Optional text to be displayed as the content for the aside component. If a string is passed, it will automatically be nested in a paragraph tag.  HTML content can also be passed as the child/children of the aside component if additional/different elements for the content are needed.
@@ -1714,6 +1722,11 @@ export interface OntarioTextareaCustomEvent<T> extends CustomEvent<T> {
 	target: HTMLOntarioTextareaElement;
 }
 declare global {
+	interface HTMLOntarioAccordionElement extends Components.OntarioAccordion, HTMLStencilElement {}
+	var HTMLOntarioAccordionElement: {
+		prototype: HTMLOntarioAccordionElement;
+		new (): HTMLOntarioAccordionElement;
+	};
 	interface HTMLOntarioAsideElement extends Components.OntarioAside, HTMLStencilElement {}
 	var HTMLOntarioAsideElement: {
 		prototype: HTMLOntarioAsideElement;
@@ -2382,6 +2395,7 @@ declare global {
 		new (): HTMLOntarioTextareaElement;
 	};
 	interface HTMLElementTagNameMap {
+		'ontario-accordion': HTMLOntarioAccordionElement;
 		'ontario-aside': HTMLOntarioAsideElement;
 		'ontario-back-to-top': HTMLOntarioBackToTopElement;
 		'ontario-blockquote': HTMLOntarioBlockquoteElement;
@@ -2518,6 +2532,13 @@ declare global {
 	}
 }
 declare namespace LocalJSX {
+	interface OntarioAccordion {
+		AccordionData?: Record<string, Accordion>;
+		ariaLabelText?: string;
+		elementId?: string;
+		label?: string;
+		title?: string;
+	}
 	interface OntarioAside {
 		/**
 		 * Optional text to be displayed as the content for the aside component. If a string is passed, it will automatically be nested in a paragraph tag.  HTML content can also be passed as the child/children of the aside component if additional/different elements for the content are needed.
@@ -4237,6 +4258,7 @@ declare namespace LocalJSX {
 		value?: string;
 	}
 	interface IntrinsicElements {
+		'ontario-accordion': OntarioAccordion;
 		'ontario-aside': OntarioAside;
 		'ontario-back-to-top': OntarioBackToTop;
 		'ontario-blockquote': OntarioBlockquote;
@@ -4376,6 +4398,7 @@ export { LocalJSX as JSX };
 declare module '@stencil/core' {
 	export namespace JSX {
 		interface IntrinsicElements {
+			'ontario-accordion': LocalJSX.OntarioAccordion & JSXBase.HTMLAttributes<HTMLOntarioAccordionElement>;
 			'ontario-aside': LocalJSX.OntarioAside & JSXBase.HTMLAttributes<HTMLOntarioAsideElement>;
 			'ontario-back-to-top': LocalJSX.OntarioBackToTop & JSXBase.HTMLAttributes<HTMLOntarioBackToTopElement>;
 			'ontario-blockquote': LocalJSX.OntarioBlockquote & JSXBase.HTMLAttributes<HTMLOntarioBlockquoteElement>;
