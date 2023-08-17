@@ -1,4 +1,4 @@
-# Ontario Design System Web Components
+# Ontario Design System Web Component Inventory
 
 ## Components
 
