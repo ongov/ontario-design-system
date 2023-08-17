@@ -23,4 +23,12 @@
 			margin-bottom: spacing.$spacing-0;
 		}
 	}
+
+	// Fractal component style coverage ↓
+	// This is a fix to prevent auto-detection of phone numbers in Firefox & Safari on iPhone devices
+	a[x-apple-data-detectors] {
+		color: inherit;
+		cursor: none;
+		text-decoration: none;
+	}
 }

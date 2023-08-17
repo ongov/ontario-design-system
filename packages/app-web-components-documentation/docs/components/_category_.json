@@ -1,0 +1,8 @@
+{
+	"label": "Web Component API Docs",
+	"position": 4,
+	"link": {
+		"type": "generated-index",
+		"description": "Learn more about each component by following the links on this page or within the sidebar."
+	}
+}

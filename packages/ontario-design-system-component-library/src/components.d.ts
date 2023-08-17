@@ -33,6 +33,7 @@ import {
 import { IconColour, IconSize } from './components/ontario-icon/icon.types';
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
+import { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
 export namespace Components {
 	interface OntarioAside {
 		/**
@@ -1607,6 +1608,34 @@ export namespace Components {
 		 */
 		showBackButton?: boolean;
 	}
+	interface OntarioTable {
+		/**
+		 * Specifies the caption (or title) of the table.  This is optional.
+		 */
+		caption?: string | undefined;
+		/**
+		 * Used to specify whether or not table data in cells should have reduced top and bottom padding. This is useful for pages with multiple data-heavy tables such as a budget or financial data.  This is optional. By default it will be set to “false”.
+		 */
+		condensed?: boolean | undefined;
+		/**
+		 * Used to specify whether or not the table should extend the full width of its container.  This is optional. By default, it will be set to “false”
+		 */
+		fullWidth?: boolean | undefined;
+		/**
+		 * Used to define the columns of the table.
+		 * @example ; <ontario-table table-columns='[ { "title": "Type of service", "key": "service" }, { "title": "Processing and delivery", "key": "processing" }, { "title": "Cost", "key": "cost", "type": "numeric" } ]' > </ontario-table>
+		 */
+		tableColumns: string | TableColumnOptions[];
+		/**
+		 * Used to define the table body data. Note that the keys passed to the `data` object in the tableData should match the keys of the columns defined in the tableColumns prop.
+		 * @example <ontario-table  table-data='[    {      "data": {        "service": "Regular service (online)",        "processing": "15 business days plus delivery by Canada Post",        "cost": "$15"      }    },    {      "data": {        "service": "Premium service (online)",        "cost": "$45",        "processing": "5 business days including delivery by courier"      }    }  ]' > </ontario-table>
+		 */
+		tableData: string | TableRowOptions[];
+		/**
+		 * Indicates whether or not the table data should have alternate row zebra striping.  This is optional. By default, zebra striping will be added when the table rows extend 5 rows. If zebra striping is needed to table rows less than 5 rows, the prop should be set to “enabled”. If no zebra stripes are needed, it should be set to “disabled”.  The default will be set to “auto”.
+		 */
+		zebraStripes?: 'auto' | 'disabled' | 'enabled' | undefined;
+	}
 	interface OntarioTextarea {
 		/**
 		 * The text to display as the textarea label.
@@ -2342,6 +2371,11 @@ declare global {
 		prototype: HTMLOntarioStepIndicatorElement;
 		new (): HTMLOntarioStepIndicatorElement;
 	};
+	interface HTMLOntarioTableElement extends Components.OntarioTable, HTMLStencilElement {}
+	var HTMLOntarioTableElement: {
+		prototype: HTMLOntarioTableElement;
+		new (): HTMLOntarioTableElement;
+	};
 	interface HTMLOntarioTextareaElement extends Components.OntarioTextarea, HTMLStencilElement {}
 	var HTMLOntarioTextareaElement: {
 		prototype: HTMLOntarioTextareaElement;
@@ -2479,6 +2513,7 @@ declare global {
 		'ontario-page-alert': HTMLOntarioPageAlertElement;
 		'ontario-radio-buttons': HTMLOntarioRadioButtonsElement;
 		'ontario-step-indicator': HTMLOntarioStepIndicatorElement;
+		'ontario-table': HTMLOntarioTableElement;
 		'ontario-textarea': HTMLOntarioTextareaElement;
 	}
 }
@@ -3971,7 +4006,9 @@ declare namespace LocalJSX {
 		/**
 		 * An event that emits to other components that the language toggle button has been toggled.
 		 */
-		onHeaderLanguageToggled?: (event: OntarioLanguageToggleCustomEvent<string>) => void;
+		onHeaderLanguageToggled?: (
+			event: OntarioLanguageToggleCustomEvent<{ currentLanguage: string; toggledLanguage: string }>,
+		) => void;
 		/**
 		 * An event to set the Document's HTML lang property, and emit the toggled language to other components.
 		 */
@@ -4110,6 +4147,34 @@ declare namespace LocalJSX {
 		 * A boolean value to determine whether or not the back button is displayed for the step indicator.  This is optional. If no prop is passed, it will default to `false`.
 		 */
 		showBackButton?: boolean;
+	}
+	interface OntarioTable {
+		/**
+		 * Specifies the caption (or title) of the table.  This is optional.
+		 */
+		caption?: string | undefined;
+		/**
+		 * Used to specify whether or not table data in cells should have reduced top and bottom padding. This is useful for pages with multiple data-heavy tables such as a budget or financial data.  This is optional. By default it will be set to “false”.
+		 */
+		condensed?: boolean | undefined;
+		/**
+		 * Used to specify whether or not the table should extend the full width of its container.  This is optional. By default, it will be set to “false”
+		 */
+		fullWidth?: boolean | undefined;
+		/**
+		 * Used to define the columns of the table.
+		 * @example ; <ontario-table table-columns='[ { "title": "Type of service", "key": "service" }, { "title": "Processing and delivery", "key": "processing" }, { "title": "Cost", "key": "cost", "type": "numeric" } ]' > </ontario-table>
+		 */
+		tableColumns?: string | TableColumnOptions[];
+		/**
+		 * Used to define the table body data. Note that the keys passed to the `data` object in the tableData should match the keys of the columns defined in the tableColumns prop.
+		 * @example <ontario-table  table-data='[    {      "data": {        "service": "Regular service (online)",        "processing": "15 business days plus delivery by Canada Post",        "cost": "$15"      }    },    {      "data": {        "service": "Premium service (online)",        "cost": "$45",        "processing": "5 business days including delivery by courier"      }    }  ]' > </ontario-table>
+		 */
+		tableData?: string | TableRowOptions[];
+		/**
+		 * Indicates whether or not the table data should have alternate row zebra striping.  This is optional. By default, zebra striping will be added when the table rows extend 5 rows. If zebra striping is needed to table rows less than 5 rows, the prop should be set to “enabled”. If no zebra stripes are needed, it should be set to “disabled”.  The default will be set to “auto”.
+		 */
+		zebraStripes?: 'auto' | 'disabled' | 'enabled' | undefined;
 	}
 	interface OntarioTextarea {
 		/**
@@ -4303,6 +4368,7 @@ declare namespace LocalJSX {
 		'ontario-page-alert': OntarioPageAlert;
 		'ontario-radio-buttons': OntarioRadioButtons;
 		'ontario-step-indicator': OntarioStepIndicator;
+		'ontario-table': OntarioTable;
 		'ontario-textarea': OntarioTextarea;
 	}
 }
@@ -4500,6 +4566,7 @@ declare module '@stencil/core' {
 			'ontario-page-alert': LocalJSX.OntarioPageAlert & JSXBase.HTMLAttributes<HTMLOntarioPageAlertElement>;
 			'ontario-radio-buttons': LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
 			'ontario-step-indicator': LocalJSX.OntarioStepIndicator & JSXBase.HTMLAttributes<HTMLOntarioStepIndicatorElement>;
+			'ontario-table': LocalJSX.OntarioTable & JSXBase.HTMLAttributes<HTMLOntarioTableElement>;
 			'ontario-textarea': LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
 		}
 	}

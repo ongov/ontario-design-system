@@ -31,7 +31,7 @@ $ontario-application-header-menu-button-icon--margin-right: 6px;
 	align-items: center;
 	background-color: colours.$ontario-colour-black;
 	color: colours.$ontario-colour-white;
-	height: 3.125rem;
+	height: 3.125rem !important;
 	position: relative;
 	z-index: calc(zIndex.$ontario-z-index-above-high + 1);
 

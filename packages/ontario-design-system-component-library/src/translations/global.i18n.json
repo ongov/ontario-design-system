@@ -77,8 +77,8 @@
 	},
 	"languageToggle": {
 		"ariaLabel": {
-			"en": "Switch language to French",
-			"fr": "Changer la langue en anglais"
+			"en": "Click to switch language to French",
+			"fr": "Cliquez pour changer de langue en anglais"
 		}
 	},
 	"stepIndicator": {
@@ -97,6 +97,48 @@
 		"complete": {
 			"en": "complete",
 			"fr": "complet"
+		}
+	},
+	"header": {
+		"ontarioSearchURL": {
+			"en": "https://www.ontario.ca/search/search-results?query=",
+			"fr": "https://www.ontario.ca/fr/recherche/resultats-de-recherche/?query="
+		},
+		"logoLink": {
+			"en": "https://www.ontario.ca/page/government-ontario",
+			"fr": "https://www.ontario.ca/fr/page/gouvernement-de-lontario"
+		},
+		"logoAltText": {
+			"en": "Ontario.ca homepage",
+			"fr": "Page d’accueil Ontario.ca"
+		},
+		"clearSearchField": {
+			"en": "Clear field",
+			"fr": "Vider le champ"
+		},
+		"submit": {
+			"en": "Submit",
+			"fr": "Soumission"
+		},
+		"search": {
+			"en": "Search",
+			"fr": "Rechercher"
+		},
+		"openMenu": {
+			"en": "Show navigation menu",
+			"fr": "Ouvrir le menu de navigation"
+		},
+		"closeMenu": {
+			"en": "Hide navigation menu",
+			"fr": "Fermer le menu de navigation"
+		},
+		"close": {
+			"en": "close",
+			"fr": "fermer"
+		},
+		"closeSearch": {
+			"en": "Close search bar",
+			"fr": "Fermer la barre de recherche"
 		}
 	}
 }
