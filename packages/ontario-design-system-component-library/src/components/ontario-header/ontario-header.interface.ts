@@ -1,13 +1,13 @@
 import { DrupalMenuMachineName } from './ontario-header.enum';
 
-export interface menuItems {
+export interface MenuItem {
 	title: string;
 	href: string;
 	linkIsActive?: boolean;
 	onClickHandler?: (event: Event) => void;
 }
 
-export interface applicationHeaderInfo {
+export interface ApplicationHeaderInfo {
 	title: string;
 	href?: string;
 	maxSubheaderDesktopLinks?: number;
@@ -15,12 +15,12 @@ export interface applicationHeaderInfo {
 	maxSubheaderMobileLinks?: number;
 }
 
-export interface languageToggleOptions {
+export interface LanguageToggleOptions {
 	englishLink: string;
 	frenchLink: string;
 }
 
-export interface ontarioMenuItems {
+export interface OntarioMenuItems {
 	'href': string;
 	'title': string;
 	'drupal-menu-hierarchy': string[];

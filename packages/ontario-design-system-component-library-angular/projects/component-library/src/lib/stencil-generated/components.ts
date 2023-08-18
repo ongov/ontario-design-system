@@ -227,19 +227,22 @@ export class OntarioDropdownList {
 	}
 }
 
+import type { InputChangeEvent as IOntarioDropdownListInputChangeEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+import type { InputFocusBlurEvent as IOntarioDropdownListInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+
 export declare interface OntarioDropdownList extends Components.OntarioDropdownList {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed.
 	 */
-	dropdownOnChange: EventEmitter<CustomEvent<any>>;
+	dropdownOnChange: EventEmitter<CustomEvent<IOntarioDropdownListInputChangeEvent>>;
 	/**
 	 * Emitted when a keyboard input event occurs when a dropdown list has lost focus.
 	 */
-	dropdownOnBlur: EventEmitter<CustomEvent<any>>;
+	dropdownOnBlur: EventEmitter<CustomEvent<IOntarioDropdownListInputFocusBlurEvent>>;
 	/**
 	 * Emitted when a keyboard input event occurs when a dropdown list has gained focus.
 	 */
-	dropdownOnFocus: EventEmitter<CustomEvent<any>>;
+	dropdownOnFocus: EventEmitter<CustomEvent<IOntarioDropdownListInputFocusBlurEvent>>;
 }
 
 @ProxyCmp({
@@ -2652,19 +2655,22 @@ export class OntarioInput {
 	}
 }
 
+import type { InputChangeEvent as IOntarioInputInputChangeEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+import type { InputFocusBlurEvent as IOntarioInputInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+
 export declare interface OntarioInput extends Components.OntarioInput {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 	 */
-	inputOnChange: EventEmitter<CustomEvent<any>>;
+	inputOnChange: EventEmitter<CustomEvent<IOntarioInputInputChangeEvent>>;
 	/**
 	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
-	inputOnBlur: EventEmitter<CustomEvent<any>>;
+	inputOnBlur: EventEmitter<CustomEvent<IOntarioInputInputFocusBlurEvent>>;
 	/**
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
-	inputOnFocus: EventEmitter<CustomEvent<any>>;
+	inputOnFocus: EventEmitter<CustomEvent<IOntarioInputInputFocusBlurEvent>>;
 }
 
 @ProxyCmp({
@@ -2778,19 +2784,22 @@ export class OntarioRadioButtons {
 	}
 }
 
+import type { RadioAndCheckboxChangeEvent as IOntarioRadioButtonsRadioAndCheckboxChangeEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+import type { InputFocusBlurEvent as IOntarioRadioButtonsInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+
 export declare interface OntarioRadioButtons extends Components.OntarioRadioButtons {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a radio option has been changed.
 	 */
-	radioOnChange: EventEmitter<CustomEvent<any>>;
+	radioOnChange: EventEmitter<CustomEvent<IOntarioRadioButtonsRadioAndCheckboxChangeEvent>>;
 	/**
 	 * Emitted when a keyboard input event occurs when a radio option has lost focus.
 	 */
-	radioOnBlur: EventEmitter<CustomEvent<any>>;
+	radioOnBlur: EventEmitter<CustomEvent<IOntarioRadioButtonsInputFocusBlurEvent>>;
 	/**
 	 * Emitted when a keyboard input event occurs when a radio option has gained focus.
 	 */
-	radioOnFocus: EventEmitter<CustomEvent<any>>;
+	radioOnFocus: EventEmitter<CustomEvent<IOntarioRadioButtonsInputFocusBlurEvent>>;
 }
 
 @ProxyCmp({
@@ -2892,17 +2901,20 @@ export class OntarioTextarea {
 	}
 }
 
+import type { InputChangeEvent as IOntarioTextareaInputChangeEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+import type { InputFocusBlurEvent as IOntarioTextareaInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+
 export declare interface OntarioTextarea extends Components.OntarioTextarea {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 	 */
-	inputOnChange: EventEmitter<CustomEvent<any>>;
+	inputOnChange: EventEmitter<CustomEvent<IOntarioTextareaInputChangeEvent>>;
 	/**
 	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
-	inputOnBlur: EventEmitter<CustomEvent<any>>;
+	inputOnBlur: EventEmitter<CustomEvent<IOntarioTextareaInputFocusBlurEvent>>;
 	/**
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
-	inputOnFocus: EventEmitter<CustomEvent<any>>;
+	inputOnFocus: EventEmitter<CustomEvent<IOntarioTextareaInputFocusBlurEvent>>;
 }

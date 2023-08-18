@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Event, Listen, Watch, Element } from '@stencil/core';
+import { Component, h, Prop, State, Event, Listen, Watch, Element, EventEmitter } from '@stencil/core';
 import { RadioButtons } from './radio-buttons.interface';
 import { RadioOption } from './radio-option.interface';
 
@@ -149,17 +149,17 @@ export class OntarioRadioButtons implements RadioButtons {
 	/**
 	 * Used to add a custom function to the radio input onChange event.
 	 */
-	@Prop() customOnChange?: Function;
+	@Prop() customOnChange?: (event: globalThis.Event) => never;
 
 	/**
 	 * Used to add a custom function to the radio input onBlur event.
 	 */
-	@Prop() customOnBlur?: Function;
+	@Prop() customOnBlur?: (event: globalThis.Event) => never;
 
 	/**
 	 * Used to add a custom function to the radio input onFocus event.
 	 */
-	@Prop() customOnFocus?: Function;
+	@Prop() customOnFocus?: (event: globalThis.Event) => never;
 
 	/**
 	 * Used for the `aria-describedby` value of the radio button group. This will match with the id of the hint text.
@@ -189,17 +189,17 @@ export class OntarioRadioButtons implements RadioButtons {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a radio option has been changed.
 	 */
-	@Event({ eventName: 'radioOnChange' }) radioOnChange: RadioAndCheckboxChangeEvent;
+	@Event({ eventName: 'radioOnChange' }) radioOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a radio option has lost focus.
 	 */
-	@Event({ eventName: 'radioOnBlur' }) radioOnBlur: InputFocusBlurEvent;
+	@Event({ eventName: 'radioOnBlur' }) radioOnBlur: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a radio option has gained focus.
 	 */
-	@Event({ eventName: 'radioOnFocus' }) radioOnFocus: InputFocusBlurEvent;
+	@Event({ eventName: 'radioOnFocus' }) radioOnFocus: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
