@@ -1,54 +1,118 @@
-[
-	{
-		"title": "Arts and Culture",
-		"href": "https://www.ontario.ca/page/arts-and-culture"
-	},
-	{
-		"title": "Business and economy",
-		"href": "https://www.ontario.ca/page/business-and-economy"
-	},
-	{
-		"title": "Driving and Roads",
-		"href": "https://www.ontario.ca/page/driving-and-roads"
-	},
-	{
-		"title": "Education and training",
-		"href": "https://www.ontario.ca/page/education-and-training"
-	},
-	{
-		"title": "Environment and energy",
-		"href": "https://www.ontario.ca/page/environment-and-energy"
-	},
-	{
-		"title": "Government",
-		"href": "https://www.ontario.ca/page/government"
-	},
-	{
-		"title": "Health and wellness",
-		"href": "https://www.ontario.ca/page/health-care-ontario"
-	},
-	{
-		"title": "Home and community",
-		"href": "https://www.ontario.ca/page/home-and-community"
-	},
-	{
-		"title": "Jobs and employment",
-		"href": "https://www.ontario.ca/page/jobs-and-employment"
-	},
-	{
-		"title": "Law and safety",
-		"href": "https://www.ontario.ca/page/law-and-safety"
-	},
-	{
-		"title": "Rural and north",
-		"href": "https://www.ontario.ca/page/rural-and-north"
-	},
-	{
-		"title": "Taxes and benefits",
-		"href": "https://www.ontario.ca/page/taxes-and-benefits"
-	},
-	{
-		"title": "Travel and recreation",
-		"href": "https://www.ontario.ca/page/travel-and-recreation"
-	}
-]
+{
+	"en": [
+		{
+			"title": "Arts and Culture",
+			"href": "https://www.ontario.ca/page/arts-and-culture"
+		},
+		{
+			"title": "Business and economy",
+			"href": "https://www.ontario.ca/page/business-and-economy"
+		},
+		{
+			"title": "COVID-19",
+			"href": "https://www.ontario.ca/page/covid-19-coronavirus"
+		},
+		{
+			"title": "Driving and Roads",
+			"href": "https://www.ontario.ca/page/driving-and-roads"
+		},
+		{
+			"title": "Education and training",
+			"href": "https://www.ontario.ca/page/education-and-training"
+		},
+		{
+			"title": "Environment and energy",
+			"href": "https://www.ontario.ca/page/environment-and-energy"
+		},
+		{
+			"title": "Government",
+			"href": "https://www.ontario.ca/page/government"
+		},
+		{
+			"title": "Health and wellness",
+			"href": "https://www.ontario.ca/page/health-care-ontario"
+		},
+		{
+			"title": "Home and community",
+			"href": "https://www.ontario.ca/page/home-and-community"
+		},
+		{
+			"title": "Jobs and employment",
+			"href": "https://www.ontario.ca/page/jobs-and-employment"
+		},
+		{
+			"title": "Law and safety",
+			"href": "https://www.ontario.ca/page/law-and-safety"
+		},
+		{
+			"title": "Rural and north",
+			"href": "https://www.ontario.ca/page/rural-and-north"
+		},
+		{
+			"title": "Taxes and benefits",
+			"href": "https://www.ontario.ca/page/taxes-and-benefits"
+		},
+		{
+			"title": "Travel and recreation",
+			"href": "https://www.ontario.ca/page/travel-and-recreation"
+		}
+	],
+	"fr": [
+		{
+			"title": "Affaires et économie",
+			"href": "https://www.ontario.ca/fr/page/affaires-et-economie"
+		},
+		{
+			"title": "Arts et culture",
+			"href": "https://www.ontario.ca/fr/page/arts-et-culture"
+		},
+		{
+			"title": "Conduite et routes",
+			"href": "https://www.ontario.ca/fr/page/conduite-et-routes"
+		},
+		{
+			"title": "COVID-19",
+			"href": "https://www.ontario.ca/fr/page/covid-19-le-coronavirus"
+		},
+		{
+			"title": "Domicile et communauté",
+			"href": "https://www.ontario.ca/fr/page/domicile-et-communaute"
+		},
+		{
+			"title": "Éducation et formation",
+			"href": "https://www.ontario.ca/fr/page/education-et-formation"
+		},
+		{
+			"title": "Environnement et énergie",
+			"href": "https://www.ontario.ca/fr/page/environnement-et-energie"
+		},
+		{
+			"title": "Gouvernement",
+			"href": "https://www.ontario.ca/fr/page/gouvernement"
+		},
+		{
+			"title": "Impôts et avantages fiscaux",
+			"href": "https://www.ontario.ca/fr/page/impots-et-avantages-fiscaux"
+		},
+		{
+			"title": "Lois et sécurité",
+			"href": "https://www.ontario.ca/fr/page/lois-et-securite"
+		},
+		{
+			"title": "Régions rurales et du Nord",
+			"href": "https://www.ontario.ca/fr/page/regions-rurales-et-du-nord"
+		},
+		{
+			"title": "Santé et bien-être",
+			"href": "https://www.ontario.ca/fr/page/les-soins-de-sante-en-ontario"
+		},
+		{
+			"title": "Travail et emploi",
+			"href": "https://www.ontario.ca/fr/page/travail-et-emploi"
+		},
+		{
+			"title": "Voyage et loisirs",
+			"href": "https://www.ontario.ca/fr/page/voyage-et-loisirs"
+		}
+	]
+}
