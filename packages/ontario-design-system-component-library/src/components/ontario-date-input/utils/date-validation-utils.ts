@@ -55,6 +55,9 @@ type GetDateErrorArg = {
 	errorMessages: Translations['dateInput']['error']['en'];
 	minYear?: number;
 	maxYear?: number;
+	dayVisible: boolean;
+	monthVisible: boolean;
+	yearVisible: boolean;
 };
 /**
  * Helper function to get error message for birthdate validation
@@ -66,6 +69,9 @@ export const getDateErrorMessage = ({
 	errorMessages,
 	minYear,
 	maxYear,
+	dayVisible,
+	monthVisible,
+	yearVisible,
 }: GetDateErrorArg): DateValidatorReturnType => {
 	const {
 		emptyDay,
@@ -85,6 +91,9 @@ export const getDateErrorMessage = ({
 	let monthInvalid = false;
 	let yearInvalid = false;
 
+	const isDayEmpty = dayVisible && isEmpty(dayValue);
+	const isMonthEmpty = monthVisible && isEmpty(monthValue);
+	const isYearEmpty = yearVisible && isEmpty(yearValue);
 	/*
 	 *  If one ore more fields are valid but others are empty:
 	 *  1 field empty:
@@ -96,34 +105,37 @@ export const getDateErrorMessage = ({
 	 *  Year and day empty - “Enter the year and day.”
 	 *  Year and month empty - “Enter the year and month.”
 	 */
-	if (isEmpty(dayValue) && isEmpty(monthValue) && isEmpty(yearValue)) {
+	if (isDayEmpty && isMonthEmpty && isYearEmpty) {
 		error = invalidDate;
 		dayInvalid = true;
 		monthInvalid = true;
 		yearInvalid = true;
-	} else if (isEmpty(dayValue) && isEmpty(monthValue)) {
+	} else if (isDayEmpty && isMonthEmpty) {
 		error = emptyDayAndMonth;
 		dayInvalid = true;
 		monthInvalid = true;
-	} else if (isEmpty(dayValue) && isEmpty(yearValue)) {
+	} else if (isDayEmpty && isYearEmpty) {
 		error = emptyDayAndYear;
 		dayInvalid = true;
 		yearInvalid = true;
-	} else if (isEmpty(monthValue) && isEmpty(yearValue)) {
+	} else if (isMonthEmpty && isYearEmpty) {
 		error = emptyMonthAndYear;
 		yearInvalid = true;
 		monthInvalid = true;
-	} else if (isEmpty(dayValue)) {
+	} else if (isDayEmpty) {
 		error = emptyDay;
 		dayInvalid = true;
-	} else if (isEmpty(monthValue)) {
+	} else if (isMonthEmpty) {
 		error = emptyMonth;
 		monthInvalid = true;
-	} else if (isEmpty(yearValue)) {
+	} else if (isYearEmpty) {
 		error = emptyYear;
 		yearInvalid = true;
 	}
 
+	const isDayInvalid = dayVisible && isInvalidDay(dayValue);
+	const isMonthInvalid = monthVisible && isInvalidMonth(monthValue);
+	const isYearInvalid = yearVisible && isInvalidYear(yearValue, minYear, maxYear);
 	/*
 	 *  If only one error, specify where the error occurs
 	 *  E.g. “Enter a valid day.”, “Enter a valid month.” Or “Enter a valid year.”
@@ -131,30 +143,30 @@ export const getDateErrorMessage = ({
 	 *  If one or more fields are invalid but the others are empty say: “Enter a valid date.”
 	 */
 	if (isEmpty(error)) {
-		if (isInvalidDay(dayValue) && isInvalidMonth(monthValue) && isInvalidYear(yearValue, minYear, maxYear)) {
+		if (isDayInvalid && isMonthInvalid && isYearInvalid) {
 			error = invalidDate;
 			dayInvalid = true;
 			monthInvalid = true;
 			yearInvalid = true;
-		} else if (isInvalidDay(dayValue) && isInvalidMonth(monthValue)) {
+		} else if (isDayInvalid && isMonthInvalid) {
 			error = invalidDate;
 			dayInvalid = true;
 			monthInvalid = true;
-		} else if (isInvalidDay(dayValue) && isInvalidYear(yearValue, minYear, maxYear)) {
+		} else if (isDayInvalid && isYearInvalid) {
 			error = invalidDate;
 			dayInvalid = true;
 			yearInvalid = true;
-		} else if (isInvalidMonth(monthValue) && isInvalidYear(yearValue, minYear, maxYear)) {
+		} else if (isMonthInvalid && isYearInvalid) {
 			error = invalidDate;
 			monthInvalid = true;
 			yearInvalid = true;
-		} else if (isInvalidYear(yearValue, minYear, maxYear)) {
+		} else if (isYearInvalid) {
 			error = invalidYear;
 			yearInvalid = true;
-		} else if (isInvalidMonth(monthValue)) {
+		} else if (isMonthInvalid) {
 			error = invalidMonth;
 			monthInvalid = true;
-		} else if (isInvalidDay(dayValue)) {
+		} else if (isDayInvalid) {
 			error = invalidDay;
 			dayInvalid = true;
 		}

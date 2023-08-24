@@ -132,7 +132,8 @@ export class OntarioDateInput {
 
 	@Listen('blur', { capture: true })
 	handleComponentBlur() {
-		const { day, month, year, minYear, maxYear, dateValidator } = this;
+		const { day, month, year, minYear, maxYear, dateValidator, dateOptionsState } = this;
+		const { dayVisible, monthVisible, yearVisible } = getVisibleDateFields(dateOptionsState);
 
 		// if user has not interacted with the component, skip validation
 		if (!this.isDateTyped) {
@@ -148,6 +149,9 @@ export class OntarioDateInput {
 					errorMessages,
 					minYear,
 					maxYear,
+					dayVisible,
+					monthVisible,
+					yearVisible,
 			  });
 
 		this.dayInvalid = dayInvalid;
