@@ -1,4 +1,8 @@
-import { Component, Prop, Element, State, h } from '@stencil/core';
+import { Component, Prop, Element, State, h, Watch } from '@stencil/core';
+import { Caption } from '../../utils/common/input-caption/caption.interface';
+import { Language } from '../../utils/common/language-types';
+import OntarioIconChevronDown from '../ontario-icon/assets/ontario-icon-chevron-down.svg';
+import OntarioIconChevronUp from '../ontario-icon/assets/ontario-icon-chevron-up.svg';
 import { Accordion } from './accordion.interface';
 
 @Component({
@@ -8,26 +12,58 @@ import { Accordion } from './accordion.interface';
 })
 export class OntarioAccordion {
 	@Element() host: HTMLElement;
-	@Prop() title: string = 'Accordion Title';
-	@Prop() AccordionData: Record<string, Accordion>;
+
+	@Prop() caption: Caption | string;
+
+	/**
+	 * The language of the component.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
+	 */
+	@Prop({ mutable: true }) language?: Language = 'en';
+
+	@Prop() name: string = 'Accordion Title';
+
 	@Prop() label: string = 'Expand/Collapse';
+
 	@Prop() ariaLabelText: string = 'Expand or collapse the accordion';
+
 	@Prop() elementId: string = 'accordion';
 
-	@State() private expandedAccordion: string = '';
+	@Prop() accordionData: string | Accordion[];
+
+	@State() private internalAccordionData: Accordion[] = [];
 
 	private toggleAccordion(label: string) {
-		this.expandedAccordion = this.expandedAccordion === label ? '' : label;
+		this.internalAccordionData = this.internalAccordionData.map((accordion) => ({
+			...accordion,
+			isOpen: accordion.label === label ? !accordion.isOpen : false,
+		}));
+	}
+
+	/**
+	 * Watch for changes to the `accordionData` prop.
+	 *
+	 * If an `options` prop is passed, it will be parsed (if it is a string), and the result will be set to the `internalAccordionData` state. The result will be run through a validation function.
+	 */
+	@Watch('accordionData')
+	parseAccordionData() {
+		if (typeof this.accordionData !== 'undefined') {
+			if (!Array.isArray(this.accordionData)) {
+				this.internalAccordionData = JSON.parse(this.accordionData);
+			} else {
+				this.internalAccordionData = this.accordionData;
+			}
+		}
 	}
 
 	componentWillLoad() {
-		// Initialize the accordion content here
+		this.parseAccordionData();
 	}
 
 	render() {
 		return (
 			<div>
-				<h2>{this.title}</h2>
+				<h2>{this.name}</h2>
 				<div class="ontario-accordions__container">
 					<div class="ontario-accordion__controls">
 						<button class="ontario-accordion__button--expand-all" aria-expanded="false">
@@ -35,60 +71,40 @@ export class OntarioAccordion {
 							<span class="ontario-accordion--expand-close-all">Collapse all</span>
 						</button>
 					</div>
-					{Object.keys(this.AccordionData).map((key, index) => {
-						const accordion = this.AccordionData[key] as Accordion;
-						return (
-							<div class="ontario-accordion" id={`accordion-${index + 1}`}>
-								<h3 class="ontario-accordion-heading">
-									<button
-										class="ontario-accordion__button"
-										id={`accordion-button-id-${index + 1}`}
-										aria-controls={`accordion-content-${index + 1}`}
-										aria-expanded={this.expandedAccordion === accordion.label ? 'true' : 'false'}
-										data-toggle="ontario-collapse"
-										onClick={() => this.toggleAccordion(accordion.label)}
-									>
-										<span class="ontario-accordion__button-icon--close">
-											<svg
-												class="ontario-icon"
-												aria-hidden="true"
-												focusable="false"
-												viewBox="0 0 24 24"
-												preserveAspectRatio="xMidYMid meet"
-											>
-												<use href="#ontario-icon-chevron-up"></use>
-											</svg>
-										</span>
-										<span class="ontario-accordion__button-icon--open">
-											<svg
-												class="ontario-icon"
-												aria-hidden="true"
-												focusable="false"
-												viewBox="0 0 24 24"
-												preserveAspectRatio="xMidYMid meet"
-											>
-												<use href="#ontario-icon-chevron-down"></use>
-											</svg>
-										</span>
-										{accordion.label}
-									</button>
-								</h3>
-								<section
-									class="ontario-accordion__content"
-									id={`accordion-content-${index + 1}`}
-									aria-labelledby={`accordion-button-id-${index + 1}`}
-									aria-hidden="true"
-									data-toggle="ontario-expander-content"
+
+					{this.internalAccordionData?.map((accordion, index) => (
+						<div class={`ontario-accordion ${accordion.isOpen ? 'open' : ''}`} key={`accordion-${index}`}>
+							<h3 class="ontario-accordion-heading">
+								<button
+									class="ontario-accordion__button"
+									aria-expanded={accordion.isOpen ? 'true' : 'false'}
+									data-toggle="ontario-collapse"
+									onClick={() => this.toggleAccordion(accordion.label)}
 								>
-									<ul>
-										{accordion.content.map((item: string, itemIndex: number) => (
+									<span
+										class="ontario-accordion__button-icon--close"
+										innerHTML={accordion.isOpen ? OntarioIconChevronUp : OntarioIconChevronDown}
+									></span>
+									{accordion.label}
+								</button>
+							</h3>
+							<section
+								class="ontario-accordion__content"
+								aria-hidden={!accordion.isOpen}
+								data-toggle="ontario-expander-content"
+							>
+								<ul>
+									{Array.isArray(accordion.content) ? (
+										accordion.content.map((item, itemIndex) => (
 											<li key={`accordion-${index + 1}-item-${itemIndex + 1}`}>{item}</li>
-										))}
-									</ul>
-								</section>
-							</div>
-						);
-					})}
+										))
+									) : (
+										<li>{accordion.content}</li>
+									)}
+								</ul>
+							</section>
+						</div>
+					))}
 				</div>
 			</div>
 		);
