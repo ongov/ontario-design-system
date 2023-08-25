@@ -13,10 +13,6 @@ export class OntarioAccordion {
 
 	@Prop() caption: Caption | string;
 
-	/**
-	 * The language of the component.
-	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
-	 */
 	@Prop({ mutable: true }) language?: Language = 'en';
 
 	@Prop() name: string = 'Accordion Title';
@@ -38,24 +34,195 @@ export class OntarioAccordion {
 		}));
 	}
 
-	/**
-	 * Watch for changes to the `accordionData` prop.
-	 *
-	 * If an `options` prop is passed, it will be parsed (if it is a string), and the result will be set to the `internalAccordionData` state. The result will be run through a validation function.
-	 */
 	@Watch('accordionData')
 	parseAccordionData() {
 		if (typeof this.accordionData !== 'undefined') {
-			if (!Array.isArray(this.accordionData)) {
-				this.internalAccordionData = JSON.parse(this.accordionData);
-			} else {
-				this.internalAccordionData = this.accordionData;
-			}
+			this.internalAccordionData = Array.isArray(this.accordionData)
+				? this.accordionData
+				: JSON.parse(this.accordionData);
 		}
 	}
 
 	componentWillLoad() {
 		this.parseAccordionData();
+		this.initializeAccordionFunctionality();
+	}
+
+	private findElement<T>(arr: T[], callback: (item: T) => boolean): T | undefined {
+		for (let i = 0; i < arr.length; i++) {
+			const match = callback(arr[i]);
+			if (match) {
+				return arr[i];
+			}
+		}
+		return undefined;
+	}
+
+	private openAllAccordions(item: HTMLElement, content: HTMLElement[]) {
+		item.classList.remove('ontario-expander--active');
+		item.classList.add('ontario-expander--active');
+		item.firstElementChild?.setAttribute('aria-expanded', 'true');
+
+		content.forEach((contentItem) => {
+			contentItem.classList.remove('ontario-expander__content--opened');
+			contentItem.classList.add('ontario-expander__content--opened');
+
+			contentItem.setAttribute('aria-hidden', 'false');
+		});
+	}
+
+	private closeAllAccordions(item: HTMLElement, content: HTMLElement[]) {
+		item.classList.remove('ontario-expander--active');
+		item.firstElementChild?.setAttribute('aria-expanded', 'false');
+
+		content.forEach((contentItem) => {
+			contentItem.classList.remove('ontario-expander__content--opened');
+
+			contentItem.setAttribute('aria-hidden', 'true');
+		});
+	}
+
+	initializeAccordionFunctionality() {
+		const expandableItems = Array.from(this.host.querySelectorAll("[data-toggle='ontario-collapse']")) as HTMLElement[];
+
+		const expandAllButtons = Array.from(
+			this.host.querySelectorAll('.ontario-accordion__button--expand-all'),
+		) as HTMLButtonElement[]; // Use HTMLButtonElement type
+
+		const accordionLinks = Array.from(this.host.querySelectorAll('.ontario-accordion-link')) as HTMLAnchorElement[];
+
+		this.toggleExpander(expandableItems);
+		this.toggleAllAccordions(expandAllButtons);
+		this.toggleExpanderByLink(accordionLinks);
+	}
+
+	private toggleExpandAllButton(accordionExpandAllButton: HTMLButtonElement) {
+		const controlsContainer = accordionExpandAllButton.closest('.ontario-accordion__controls');
+
+		if (controlsContainer) {
+			controlsContainer.classList.toggle('ontario-accordion__controls--active');
+
+			const isExpanded = controlsContainer.classList.contains('ontario-accordion__controls--active');
+			accordionExpandAllButton.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+		}
+	}
+
+	private allAccordionsOpenCheck() {
+		const openExpanders = this.host.shadowRoot?.querySelectorAll('.ontario-expander--active');
+		const accordionContainers = this.host.shadowRoot?.querySelectorAll('.ontario-accordion');
+
+		if (openExpanders && accordionContainers && openExpanders.length === accordionContainers.length) {
+			const accordionExpandAllButton = this.host.shadowRoot?.querySelector(
+				'.ontario-accordion__button--expand-all',
+			) as HTMLButtonElement;
+			if (accordionExpandAllButton) {
+				this.toggleExpandAllButton(accordionExpandAllButton);
+			}
+		}
+
+		if (openExpanders && openExpanders.length === 0) {
+			const accordionExpandAllButton = this.host.shadowRoot?.querySelector(
+				'.ontario-accordion__button--expand-all',
+			) as HTMLButtonElement;
+			if (accordionExpandAllButton) {
+				accordionExpandAllButton.setAttribute('aria-expanded', 'false');
+				const controlsContainer = accordionExpandAllButton.closest('.ontario-accordion__controls');
+				if (controlsContainer) {
+					controlsContainer.classList.remove('ontario-accordion__controls--active');
+				}
+			}
+		}
+	}
+
+	private toggleExpander(expanders: HTMLElement[]) {
+		expanders.forEach((item) => {
+			item.addEventListener('click', () => {
+				const parentContainer = item.parentNode as HTMLElement | null;
+				if (!parentContainer) {
+					return; // Return early if parent container is null
+				}
+
+				parentContainer.classList.toggle('ontario-expander--active');
+				const content = parentContainer.parentNode?.querySelector("[data-toggle='ontario-expander-content']");
+
+				if (!content) {
+					return; // Return early if content is null
+				}
+
+				content.classList.toggle('ontario-expander__content--opened');
+				content.classList.contains('ontario-expander__content--opened')
+					? content.setAttribute('aria-hidden', 'false')
+					: content.setAttribute('aria-hidden', 'true');
+
+				const expanderButton = item as HTMLButtonElement;
+				expanderButton.getAttribute('aria-expanded') === 'true'
+					? expanderButton.setAttribute('aria-expanded', 'false')
+					: expanderButton.setAttribute('aria-expanded', 'true');
+
+				// if expander is an accordion
+				const accordionExpandAllButtons = this.host.shadowRoot?.querySelectorAll(
+					'.ontario-accordion__button--expand-all',
+				);
+				if (accordionExpandAllButtons?.length) {
+					this.allAccordionsOpenCheck();
+				}
+			});
+		});
+	}
+
+	private toggleExpanderByLink(links: HTMLAnchorElement[]) {
+		const accordions = Array.from(document.querySelectorAll('.ontario-accordion')) as HTMLElement[];
+
+		links.forEach((link) => {
+			link.addEventListener('click', () => {
+				const id = link.hash.substring(1);
+
+				const relatedAccordion = this.findElement(accordions, (accordion) => {
+					return accordion.id === id;
+				}) as HTMLElement;
+
+				relatedAccordion.classList.add('ontario-expander--active');
+
+				window.setTimeout(() => {
+					const firstButton = relatedAccordion.querySelector('.ontario-accordion__button') as HTMLButtonElement | null;
+					if (firstButton) {
+						firstButton.focus();
+					}
+				}, 0);
+
+				const content = relatedAccordion.querySelector("[data-toggle='ontario-expander-content']") as HTMLElement;
+
+				content.classList.add('ontario-expander__content--opened');
+				content.setAttribute('aria-hidden', 'false');
+				relatedAccordion.setAttribute('aria-expanded', 'true');
+			});
+		});
+	}
+
+	private toggleAllAccordions(expandAllButton: HTMLButtonElement[]) {
+		expandAllButton.forEach((button) => {
+			button.addEventListener('click', () => {
+				const accordionContainer = button.parentElement!.parentElement! as HTMLElement;
+				const accordionExpandAllButton = button;
+				const accordionItems = Array.from(
+					accordionContainer.querySelectorAll('.ontario-accordion-heading'),
+				) as HTMLElement[];
+
+				this.toggleExpandAllButton(accordionExpandAllButton);
+
+				accordionItems.forEach((item) => {
+					const content = Array.from(
+						item.parentElement!.querySelectorAll("[data-toggle='ontario-expander-content']"),
+					) as HTMLElement[];
+
+					if (accordionExpandAllButton.parentElement!.classList.contains('ontario-accordion__controls--active')) {
+						this.openAllAccordions(item, content);
+					} else {
+						this.closeAllAccordions(item, content);
+					}
+				});
+			});
+		});
 	}
 
 	render() {
