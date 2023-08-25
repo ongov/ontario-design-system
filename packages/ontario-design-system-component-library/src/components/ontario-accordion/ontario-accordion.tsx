@@ -1,8 +1,6 @@
 import { Component, Prop, Element, State, h, Watch } from '@stencil/core';
 import { Caption } from '../../utils/common/input-caption/caption.interface';
 import { Language } from '../../utils/common/language-types';
-import OntarioIconChevronDown from '../ontario-icon/assets/ontario-icon-chevron-down.svg';
-import OntarioIconChevronUp from '../ontario-icon/assets/ontario-icon-chevron-up.svg';
 import { Accordion } from './accordion.interface';
 
 @Component({
@@ -81,10 +79,12 @@ export class OntarioAccordion {
 									data-toggle="ontario-collapse"
 									onClick={() => this.toggleAccordion(accordion.label)}
 								>
-									<span
-										class="ontario-accordion__button-icon--close"
-										innerHTML={accordion.isOpen ? OntarioIconChevronUp : OntarioIconChevronDown}
-									></span>
+									<span class="ontario-accordion__button-icon--close">
+										<ontario-icon-chevron-up colour="blue"></ontario-icon-chevron-up>
+									</span>
+									<span class="ontario-accordion__button-icon--open">
+										<ontario-icon-chevron-down colour="blue"></ontario-icon-chevron-down>
+									</span>
 									{accordion.label}
 								</button>
 							</h3>
