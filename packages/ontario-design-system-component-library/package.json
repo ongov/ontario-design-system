@@ -39,8 +39,8 @@
 		"@stencil/core": "^4.1.0"
 	},
 	"devDependencies": {
-		"@stencil/angular-output-target": "^0.5.0",
-		"@stencil/react-output-target": "0.3.1",
+		"@stencil/angular-output-target": "^0.8.1",
+		"@stencil/react-output-target": "0.5.3",
 		"@stencil/sass": "^2.0.1",
 		"@types/jest": "^27.0.3",
 		"@types/node": "^18.14.2",
