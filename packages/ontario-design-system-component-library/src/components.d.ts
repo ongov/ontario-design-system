@@ -34,6 +34,35 @@ import { IconColour, IconSize } from './components/ontario-icon/icon.types';
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 import { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
+export {
+	HeadingContentType,
+	HeadingLevelOptions,
+	HighlightColourOptions,
+} from './utils/components/callout-aside/callout-aside.interface';
+export { Language } from './utils/common/language-types';
+export { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
+export { Caption } from './utils/common/input-caption/caption.interface';
+export { Hint, HintContentType } from './utils/common/common.interface';
+export { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
+export { CheckboxOption } from './components/ontario-checkbox/checkbox-option.interface';
+export { DropdownOption } from './components/ontario-dropdown-list/dropdown-option.interface';
+export { CaptionType } from './utils/common/input-caption/input-caption.types';
+export {
+	FooterLinks,
+	OntarioFooterType,
+	ThreeColumnOptions,
+	TwoColumnOptions,
+} from './components/ontario-footer/ontario-footer-interface';
+export { FooterSocialLinksProps } from './components/ontario-footer/components';
+export {
+	applicationHeaderInfo,
+	languageToggleOptions,
+	menuItems,
+} from './components/ontario-header/ontario-header.interface';
+export { IconColour, IconSize } from './components/ontario-icon/icon.types';
+export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
+export { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
+export { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
 export namespace Components {
 	interface OntarioAside {
 		/**
