@@ -51,6 +51,11 @@ export { Hint, HintContentType } from './utils/common/common.interface';
 export { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
 export { CheckboxOption } from './components/ontario-checkbox/checkbox-option.interface';
 export { DropdownOption } from './components/ontario-dropdown-list/dropdown-option.interface';
+export {
+	InputChangeEvent,
+	InputFocusBlurEvent,
+	RadioAndCheckboxChangeEvent,
+} from './utils/events/event-handler.interface';
 export { CaptionType } from './utils/common/input-caption/input-caption.types';
 export {
 	FooterLinks,
@@ -60,9 +65,9 @@ export {
 } from './components/ontario-footer/ontario-footer-interface';
 export { FooterSocialLinksProps } from './components/ontario-footer/components';
 export {
-	applicationHeaderInfo,
-	languageToggleOptions,
-	menuItems,
+	ApplicationHeaderInfo,
+	LanguageToggleOptions,
+	MenuItem,
 } from './components/ontario-header/ontario-header.interface';
 export { IconColour, IconSize } from './components/ontario-icon/icon.types';
 export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
