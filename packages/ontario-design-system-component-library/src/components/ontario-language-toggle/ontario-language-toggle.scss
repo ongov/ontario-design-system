@@ -63,8 +63,8 @@
 }
 
 .ontario-language-toggler--small {
-	font-size: globalFunctions.rem-calc(16);
-	line-height: globalFunctions.rem-calc(22);
+	font-size: globalFunctions.px-to-rem(16);
+	line-height: globalFunctions.px-to-rem(22);
 	height: auto;
 	outline: none;
 	padding: spacing.$spacing-2 spacing.$spacing-3;
