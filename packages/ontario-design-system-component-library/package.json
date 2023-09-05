@@ -35,6 +35,7 @@
 		"test:unit": "stencil test --spec"
 	},
 	"dependencies": {
+		"@ontario-digital-service/ontario-design-system-complete-styles": "^2.7.0",
 		"@ontario-digital-service/ontario-design-system-global-styles": "2.6.0",
 		"@stencil/core": "2.20.0"
 	},

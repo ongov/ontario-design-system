@@ -5,11 +5,11 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Caption } from "./utils/common/input-caption/caption.interface";
-import { Language } from "./utils/common/language-types";
 import { Accordion } from "./components/ontario-accordion/accordion.interface";
 import { HeadingContentType, HeadingLevelOptions, HighlightColourOptions } from "./utils/components/callout-aside/callout-aside.interface";
+import { Language } from "./utils/common/language-types";
 import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
+import { Caption } from "./utils/common/input-caption/caption.interface";
 import { Hint, HintContentType } from "./utils/common/common.interface";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
@@ -26,10 +26,8 @@ export namespace Components {
     interface OntarioAccordion {
         "accordionData": string | Accordion[];
         "ariaLabelText": string;
-        "caption": Caption | string;
-        "elementId": string;
+        "isOpen": boolean;
         "label": string;
-        "language"?: Language;
         "name": string;
     }
     interface OntarioAside {
@@ -2655,10 +2653,8 @@ declare namespace LocalJSX {
     interface OntarioAccordion {
         "accordionData"?: string | Accordion[];
         "ariaLabelText"?: string;
-        "caption"?: Caption | string;
-        "elementId"?: string;
+        "isOpen"?: boolean;
         "label"?: string;
-        "language"?: Language;
         "name"?: string;
     }
     interface OntarioAside {
