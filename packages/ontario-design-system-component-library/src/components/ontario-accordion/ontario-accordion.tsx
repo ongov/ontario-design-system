@@ -9,23 +9,57 @@ import { Accordion } from './accordion.interface';
 export class OntarioAccordion {
 	@Element() host: HTMLElement;
 
-	@Prop() name: string = 'Accordion Title';
+	/**
+	 * The title of the accordion component.
+	 */
+	@Prop() title: string = 'Accordion Title';
 
-	@Prop() label: string = 'Expand/Collapse';
+	/**
+	 * The label for the 'Expand all' button.
+	 */
+	@Prop() openLabel: string = 'Expand All';
 
+	/**
+	 * The label for the 'Close all' button.
+	 */
+	@Prop() closeLabel: string = 'Collapse All';
+
+	/**
+	 * The alt text for the expand/close button.
+	 */
 	@Prop() ariaLabelText: string = 'Expand or collapse the accordion';
 
+	/**
+	 * Used to include individual accordion data for the accordion component.
+	 * This is passed in as an array of objects with key-value pairs.
+	 * 
+	 * The `content` is expecting an array of strings to populate the <ul> element within each individual accordion. 
+	 *
+	 * 	<ontario-accordion
+	 *		title="My Accordion"
+	 *		label="Expand/Collapse"
+	 *		accordion-data='[
+	 *			{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
+	 *			{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
+	 *		]'
+		></ontario-accordion>
+	 */
 	@Prop() accordionData: string | Accordion[];
-
-	@State() private internalAccordionData: Accordion[] = [];
-
-	@State() private openAccordionIndexes: number[] = []; // Track which accordions are open
 
 	@Prop() isOpen: boolean = false;
 
-	componentWillLoad() {
-		this.parseAccordionData();
-	}
+	/**
+	 * The label for the expand/collapse button.
+	 * This is internal and udpdated dynamically.
+	 */
+	@State() private label: string;
+
+	@State() private internalAccordionData: Accordion[] = [];
+
+	/**
+	 * This state tracks which accordions are open.
+	 */
+	@State() private openAccordionIndexes: number[] = [];
 
 	private parseAccordionData() {
 		if (typeof this.accordionData !== 'undefined') {
@@ -39,10 +73,10 @@ export class OntarioAccordion {
 
 		if (allClosed) {
 			// All accordions are initially closed, set label to "Expand all"
-			this.label = 'Expand all';
+			this.label = this.openLabel;
 		} else {
 			// At least one accordion is open, set label to "Collapse all"
-			this.label = 'Collapse all';
+			this.label = this.closeLabel;
 		}
 	}
 
@@ -63,11 +97,11 @@ export class OntarioAccordion {
 		if (this.openAccordionIndexes.length === this.internalAccordionData.length) {
 			// All accordions are open, close all
 			this.openAccordionIndexes = [];
-			this.label = 'Expand all'; // Update the label to "Expand all"
+			this.label = this.openLabel; // Update the label to "Expand all"
 		} else {
 			// At least one accordion is closed, open all
 			this.openAccordionIndexes = this.internalAccordionData.map((_, index) => index);
-			this.label = 'Collapse all'; // Update the label to "Collapse all"
+			this.label = this.closeLabel; // Update the label to "Collapse all"
 		}
 	}
 
@@ -75,17 +109,21 @@ export class OntarioAccordion {
 	private updateLabel() {
 		if (this.openAccordionIndexes.length === this.internalAccordionData.length) {
 			// All accordions are open, set label to "Collapse all"
-			this.label = 'Collapse all';
+			this.label = this.closeLabel;
 		} else {
 			// At least one accordion is closed, set label to "Expand all"
-			this.label = 'Expand all';
+			this.label = this.openLabel;
 		}
+	}
+
+	componentWillLoad() {
+		this.parseAccordionData();
 	}
 
 	render() {
 		return (
 			<div>
-				<h2>{this.name}</h2>
+				<h2>{this.title}</h2>
 				<div class="ontario-accordions__container">
 					<div class="ontario-accordion__controls">
 						<button

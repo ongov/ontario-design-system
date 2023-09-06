@@ -24,11 +24,27 @@ import { RadioOption } from "./components/ontario-radio-buttons/radio-option.int
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
 export namespace Components {
     interface OntarioAccordion {
+        /**
+          * Used to include individual accordion data for the accordion component. This is passed in as an array of objects with key-value pairs.  The `content` is expecting an array of strings to populate the <ul> element within each individual accordion.   	<ontario-accordion 	title="My Accordion" 	label="Expand/Collapse" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
+         */
         "accordionData": string | Accordion[];
+        /**
+          * The alt text for the expand/close button.
+         */
         "ariaLabelText": string;
+        /**
+          * The label for the 'Close all' button.
+         */
+        "closeLabel": string;
         "isOpen": boolean;
-        "label": string;
-        "name": string;
+        /**
+          * The label for the 'Expand all' button.
+         */
+        "openLabel": string;
+        /**
+          * The title of the accordion component.
+         */
+        "title": string;
     }
     interface OntarioAside {
         /**
@@ -2651,11 +2667,27 @@ declare global {
 }
 declare namespace LocalJSX {
     interface OntarioAccordion {
+        /**
+          * Used to include individual accordion data for the accordion component. This is passed in as an array of objects with key-value pairs.  The `content` is expecting an array of strings to populate the <ul> element within each individual accordion.   	<ontario-accordion 	title="My Accordion" 	label="Expand/Collapse" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
+         */
         "accordionData"?: string | Accordion[];
+        /**
+          * The alt text for the expand/close button.
+         */
         "ariaLabelText"?: string;
+        /**
+          * The label for the 'Close all' button.
+         */
+        "closeLabel"?: string;
         "isOpen"?: boolean;
-        "label"?: string;
-        "name"?: string;
+        /**
+          * The label for the 'Expand all' button.
+         */
+        "openLabel"?: string;
+        /**
+          * The title of the accordion component.
+         */
+        "title"?: string;
     }
     interface OntarioAside {
         /**

@@ -4,15 +4,13 @@
 
 ## Properties
 
-| Property        | Attribute         | Description | Type                        | Default                              |
-| --------------- | ----------------- | ----------- | --------------------------- | ------------------------------------ |
-| `accordionData` | `accordion-data`  |             | `Accordion[] \| string`     | `undefined`                          |
-| `ariaLabelText` | `aria-label-text` |             | `string`                    | `'Expand or collapse the accordion'` |
-| `caption`       | `caption`         |             | `Caption \| string`         | `undefined`                          |
-| `elementId`     | `element-id`      |             | `string`                    | `'accordion'`                        |
-| `label`         | `label`           |             | `string`                    | `'Expand/Collapse'`                  |
-| `language`      | `language`        |             | `"en" \| "fr" \| undefined` | `'en'`                               |
-| `name`          | `name`            |             | `string`                    | `'Accordion Title'`                  |
+| Property        | Attribute         | Description | Type                    | Default                              |
+| --------------- | ----------------- | ----------- | ----------------------- | ------------------------------------ |
+| `accordionData` | `accordion-data`  |             | `Accordion[] \| string` | `undefined`                          |
+| `ariaLabelText` | `aria-label-text` |             | `string`                | `'Expand or collapse the accordion'` |
+| `isOpen`        | `is-open`         |             | `boolean`               | `false`                              |
+| `label`         | `label`           |             | `string`                | `'Expand/Collapse'`                  |
+| `name`          | `name`            |             | `string`                | `'Accordion Title'`                  |
 
 ## Dependencies
 

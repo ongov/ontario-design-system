@@ -7,14 +7,14 @@ import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 import { Components } from '@ontario-digital-service/ontario-design-system-component-library';
 
 @ProxyCmp({
-	inputs: ['accordionData', 'ariaLabelText', 'caption', 'elementId', 'label', 'language', 'name'],
+	inputs: ['accordionData', 'ariaLabelText', 'isOpen', 'label', 'name'],
 })
 @Component({
 	selector: 'ontario-accordion',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['accordionData', 'ariaLabelText', 'caption', 'elementId', 'label', 'language', 'name'],
+	inputs: ['accordionData', 'ariaLabelText', 'isOpen', 'label', 'name'],
 })
 export class OntarioAccordion {
 	protected el: HTMLElement;
