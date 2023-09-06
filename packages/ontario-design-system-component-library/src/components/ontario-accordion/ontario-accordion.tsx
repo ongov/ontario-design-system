@@ -16,11 +16,29 @@ export class OntarioAccordion {
 
 	/**
 	 * The label for the 'Expand all' button.
+	 *  <ontario-accordion
+	 *		title="My Accordion"
+	 *		open-label="Expand all"
+	 *		close-label="Collapse all"
+	 *		accordion-data='[
+	 *			{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
+	 *			{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
+	 *		]'
+		></ontario-accordion>
 	 */
 	@Prop() openLabel: string = 'Expand All';
 
 	/**
-	 * The label for the 'Close all' button.
+	 * The label for the 'Collapse all' button.
+	 *  <ontario-accordion
+	 *		title="My Accordion"
+	 *		open-label="Expand all"
+	 *		close-label="Collapse all"
+	 *		accordion-data='[
+	 *			{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
+	 *			{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
+	 *		]'
+		></ontario-accordion>
 	 */
 	@Prop() closeLabel: string = 'Collapse All';
 
@@ -37,7 +55,6 @@ export class OntarioAccordion {
 	 *
 	 * 	<ontario-accordion
 	 *		title="My Accordion"
-	 *		label="Expand/Collapse"
 	 *		accordion-data='[
 	 *			{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
 	 *			{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}

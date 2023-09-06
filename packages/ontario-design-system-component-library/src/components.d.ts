@@ -25,7 +25,7 @@ import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/
 export namespace Components {
     interface OntarioAccordion {
         /**
-          * Used to include individual accordion data for the accordion component. This is passed in as an array of objects with key-value pairs.  The `content` is expecting an array of strings to populate the <ul> element within each individual accordion.   	<ontario-accordion 	title="My Accordion" 	label="Expand/Collapse" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
+          * Used to include individual accordion data for the accordion component. This is passed in as an array of objects with key-value pairs.  The `content` is expecting an array of strings to populate the <ul> element within each individual accordion.   	<ontario-accordion 	title="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
          */
         "accordionData": string | Accordion[];
         /**
@@ -33,12 +33,12 @@ export namespace Components {
          */
         "ariaLabelText": string;
         /**
-          * The label for the 'Close all' button.
+          * The label for the 'Collapse all' button.  <ontario-accordion 	title="My Accordion" 	open-label="Expand all" 	close-label="Collapse all" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
          */
         "closeLabel": string;
         "isOpen": boolean;
         /**
-          * The label for the 'Expand all' button.
+          * The label for the 'Expand all' button.  <ontario-accordion 	title="My Accordion" 	open-label="Expand all" 	close-label="Collapse all" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
          */
         "openLabel": string;
         /**
@@ -2668,7 +2668,7 @@ declare global {
 declare namespace LocalJSX {
     interface OntarioAccordion {
         /**
-          * Used to include individual accordion data for the accordion component. This is passed in as an array of objects with key-value pairs.  The `content` is expecting an array of strings to populate the <ul> element within each individual accordion.   	<ontario-accordion 	title="My Accordion" 	label="Expand/Collapse" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
+          * Used to include individual accordion data for the accordion component. This is passed in as an array of objects with key-value pairs.  The `content` is expecting an array of strings to populate the <ul> element within each individual accordion.   	<ontario-accordion 	title="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
          */
         "accordionData"?: string | Accordion[];
         /**
@@ -2676,12 +2676,12 @@ declare namespace LocalJSX {
          */
         "ariaLabelText"?: string;
         /**
-          * The label for the 'Close all' button.
+          * The label for the 'Collapse all' button.  <ontario-accordion 	title="My Accordion" 	open-label="Expand all" 	close-label="Collapse all" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
          */
         "closeLabel"?: string;
         "isOpen"?: boolean;
         /**
-          * The label for the 'Expand all' button.
+          * The label for the 'Expand all' button.  <ontario-accordion 	title="My Accordion" 	open-label="Expand all" 	close-label="Collapse all" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
          */
         "openLabel"?: string;
         /**
