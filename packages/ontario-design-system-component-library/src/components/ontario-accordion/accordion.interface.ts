@@ -7,7 +7,7 @@ export interface Accordion extends Base {
 	label: string;
 
 	/**
-	 * The content is expecting an array of strings to populate the <ul> element within each individual accordion.
+	 * The content is expecting an array of strings to populate the `<ul>` element within each individual accordion.
 	 */
 	content: string[];
 

@@ -16,6 +16,8 @@ export class OntarioAccordion {
 
 	/**
 	 * The label for the 'Expand all' button.
+	 *
+	 * ```
 	 *  <ontario-accordion
 	 *		title="My Accordion"
 	 *		open-label="Expand all"
@@ -24,12 +26,15 @@ export class OntarioAccordion {
 	 *			{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
 	 *			{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
 	 *		]'
-		></ontario-accordion>
+	 *	></ontario-accordion>
+	 * ```
 	 */
 	@Prop() openLabel: string = 'Expand All';
 
 	/**
 	 * The label for the 'Collapse all' button.
+	 *
+	 * ```
 	 *  <ontario-accordion
 	 *		title="My Accordion"
 	 *		open-label="Expand all"
@@ -38,7 +43,8 @@ export class OntarioAccordion {
 	 *			{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
 	 *			{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
 	 *		]'
-		></ontario-accordion>
+	 *	></ontario-accordion>
+	 * ```
 	 */
 	@Prop() closeLabel: string = 'Collapse All';
 
@@ -50,16 +56,18 @@ export class OntarioAccordion {
 	/**
 	 * Used to include individual accordion data for the accordion component.
 	 * This is passed in as an array of objects with key-value pairs.
-	 * 
-	 * The `content` is expecting an array of strings to populate the <ul> element within each individual accordion. 
 	 *
+	 * The `content` is expecting an array of strings to populate the `<ul>` element within each individual accordion.
+	 *
+	 * ```
 	 * 	<ontario-accordion
 	 *		title="My Accordion"
 	 *		accordion-data='[
 	 *			{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
 	 *			{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
 	 *		]'
-		></ontario-accordion>
+	 * ```
+	 *	></ontario-accordion>
 	 */
 	@Prop() accordionData: string | Accordion[];
 
