@@ -105,8 +105,8 @@ $ontario-application-header-menu-button-icon--margin-right: 6px;
 	justify-content: flex-end;
 
 	a {
-		font-size: globalFunctions.rem-calc(16);
-		line-height: globalFunctions.rem-calc(22);
+		font-size: globalFunctions.px-to-rem(16);
+		line-height: globalFunctions.px-to-rem(22);
 		height: auto;
 		outline: none;
 		padding: spacing.$spacing-2 spacing.$spacing-3;
@@ -250,10 +250,10 @@ $ontario-application-header-menu-button-icon--margin-right: 6px;
 	color: colours.$ontario-colour-white;
 	display: inline-block;
 	font-family: typography.$ontario-font-open-sans;
-	font-size: globalFunctions.rem-calc(18);
+	font-size: globalFunctions.px-to-rem(18);
 	font-weight: fontWeights.$ontario-font-weights-semi-bold;
 	height: globalVariables.$standard-input-height;
-	line-height: globalFunctions.rem-calc(23);
+	line-height: globalFunctions.px-to-rem(23);
 	outline: none;
 	padding: spacing.$spacing-3;
 	text-align: left;

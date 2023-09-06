@@ -14,7 +14,7 @@ $ontario-alert-link-focus: #6b0000;
 $ontario-alert-link-active: #280000;
 
 .ontario-alert {
-	border-width: 0 0 0 globalFunctions.rem-calc(4);
+	border-width: 0 0 0 globalFunctions.px-to-rem(4);
 	border-style: solid;
 	padding: spacing.$spacing-5;
 	margin: spacing.$spacing-6 spacing.$spacing-0 spacing.$spacing-7 spacing.$spacing-0;
@@ -34,7 +34,7 @@ $ontario-alert-link-active: #280000;
 
 .ontario-alert__header-title {
 	margin-bottom: spacing.$spacing-3;
-	padding-top: globalFunctions.rem-calc(2);
+	padding-top: globalFunctions.px-to-rem(2);
 }
 
 .ontario-alert__body {

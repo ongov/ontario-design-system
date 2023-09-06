@@ -35,15 +35,15 @@ $ontario-colour-back-to-top--active-background: #b2b2b2;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: globalFunctions.rem-calc(48);
+	height: globalFunctions.px-to-rem(48);
 	padding: spacing.$spacing-2 spacing.$spacing-4 spacing.$spacing-2 spacing.$spacing-3;
 	background: $ontario-colour-back-to-top-background;
-	border: globalFunctions.rem-calc(2) solid colours.$ontario-colour-white;
+	border: globalFunctions.px-to-rem(2) solid colours.$ontario-colour-white;
 	border-radius: globalVariables.$global-radius;
-	box-shadow: 0 globalFunctions.rem-calc(2) globalFunctions.rem-calc(4) rgba(colours.$ontario-colour-black, 0.6);
+	box-shadow: 0 globalFunctions.px-to-rem(2) globalFunctions.px-to-rem(4) rgba(colours.$ontario-colour-black, 0.6);
 	box-sizing: border-box;
 	color: colours.$ontario-colour-black;
-	line-height: globalFunctions.rem-calc(20);
+	line-height: globalFunctions.px-to-rem(20);
 	font-size: fontSizes.$ontario-font-size-standard-body-text;
 	font-family: typography.$ontario-font-open-sans;
 	font-weight: fontWeights.$ontario-font-weights-semi-bold;
@@ -52,8 +52,8 @@ $ontario-colour-back-to-top--active-background: #b2b2b2;
 
 	.ontario-icon {
 		margin: $ontario-icon-margin-top spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-0;
-		width: globalFunctions.rem-calc(32);
-		height: globalFunctions.rem-calc(32);
+		width: globalFunctions.px-to-rem(32);
+		height: globalFunctions.px-to-rem(32);
 	}
 
 	&:hover {
@@ -62,29 +62,29 @@ $ontario-colour-back-to-top--active-background: #b2b2b2;
 
 	&:focus {
 		background-color: $ontario-colour-back-to-top-background;
-		box-shadow: 0 0 0 globalFunctions.rem-calc(4) colours.$ontario-colour-focus,
-			0 globalFunctions.rem-calc(3) globalFunctions.rem-calc(5) globalFunctions.rem-calc(3) rgba(0, 0, 0, 0.6);
-		outline: globalFunctions.rem-calc(4) solid transparent;
+		box-shadow: 0 0 0 globalFunctions.px-to-rem(4) colours.$ontario-colour-focus,
+			0 globalFunctions.px-to-rem(3) globalFunctions.px-to-rem(5) globalFunctions.px-to-rem(3) rgba(0, 0, 0, 0.6);
+		outline: globalFunctions.px-to-rem(4) solid transparent;
 		transition: 0.1s ease-in-out;
 	}
 
 	&:active {
 		background-color: $ontario-colour-back-to-top--active-background;
-		box-shadow: 0 0 0 globalFunctions.rem-calc(4) colours.$ontario-colour-focus,
-			0 globalFunctions.rem-calc(5) globalFunctions.rem-calc(7) globalFunctions.rem-calc(3) rgba(0, 0, 0, 0.6);
-		outline: globalFunctions.rem-calc(4) solid transparent;
+		box-shadow: 0 0 0 globalFunctions.px-to-rem(4) colours.$ontario-colour-focus,
+			0 globalFunctions.px-to-rem(5) globalFunctions.px-to-rem(7) globalFunctions.px-to-rem(3) rgba(0, 0, 0, 0.6);
+		outline: globalFunctions.px-to-rem(4) solid transparent;
 		transition: background-color 0s, focusPlaceholders.$ontario-focus-transition;
 	}
 
 	@media screen and (max-width: breakpoints.$medium-breakpoint) {
 		flex-direction: column;
-		height: globalFunctions.rem-calc(76);
-		padding: globalFunctions.rem-calc(6) spacing.$spacing-3 globalFunctions.rem-calc(9) spacing.$spacing-3;
+		height: globalFunctions.px-to-rem(76);
+		padding: globalFunctions.px-to-rem(6) spacing.$spacing-3 globalFunctions.px-to-rem(9) spacing.$spacing-3;
 
 		.ontario-icon {
-			margin: globalFunctions.rem-calc(1) spacing.$spacing-0 spacing.$spacing-1 spacing.$spacing-0;
-			width: globalFunctions.rem-calc(32);
-			height: globalFunctions.rem-calc(32);
+			margin: globalFunctions.px-to-rem(1) spacing.$spacing-0 spacing.$spacing-1 spacing.$spacing-0;
+			width: globalFunctions.px-to-rem(32);
+			height: globalFunctions.px-to-rem(32);
 		}
 	}
 
@@ -92,8 +92,8 @@ $ontario-colour-back-to-top--active-background: #b2b2b2;
 		display: block;
 		padding: spacing.$spacing-1;
 		font-size: 0;
-		width: globalFunctions.rem-calc(48);
-		height: globalFunctions.rem-calc(48);
+		width: globalFunctions.px-to-rem(48);
+		height: globalFunctions.px-to-rem(48);
 
 		.ontario-icon {
 			margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0;

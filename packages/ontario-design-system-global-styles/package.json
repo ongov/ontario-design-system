@@ -1,6 +1,6 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-global-styles",
-	"version": "2.6.0",
+	"version": "2.7.0",
 	"private": false,
 	"description": "Includes the Ontario Design System global styles that are used for more generic elements and layouts, as well as fonts and favicon files.",
 	"license": "Apache-2.0",
@@ -18,7 +18,7 @@
 		"scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js --watch scss -o css "
 	},
 	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-design-tokens": "2.6.0"
+		"@ontario-digital-service/ontario-design-system-design-tokens": "2.7.0"
 	},
 	"devDependencies": {
 		"del": "^7.0.0",

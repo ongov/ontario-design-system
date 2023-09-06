@@ -32,7 +32,7 @@ export class OntarioLanguageToggle {
 	 *
 	 * This is optional.
 	 */
-	@Prop() customLanguageToggle?: Function;
+	@Prop() customLanguageToggle?: (event: globalThis.Event) => never;
 
 	@State() translations: any = translations;
 
@@ -60,7 +60,7 @@ export class OntarioLanguageToggle {
 	 * An event that emits to other components that the language toggle button has been toggled.
 	 */
 	@Event() headerLanguageToggled: EventEmitter<{ currentLanguage: string; toggledLanguage: string }>;
-	handleHeaderLanguageToggled(language: string, e?: Event) {
+	handleHeaderLanguageToggled(language: string, e?: globalThis.Event) {
 		const toggledLanguage = language === 'en' ? 'fr' : 'en';
 		this.language = toggledLanguage;
 

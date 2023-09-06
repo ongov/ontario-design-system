@@ -1,3 +1,62 @@
+# 2.7.0 (2023-08-17)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-complete-styles, @ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** updates package.lock files, adds variable for asset-styles in complete styles package 4d5e138
+- **@ontario-digital-service/ontario-design-system-complete-styles, @ontario-digital-service/ontario-design-system-component-library:** updates complete-styles package to include missing and broken assets 5853344
+- **@ontario-digital-service/ontario-design-system-complete-styles:** adds missing packages 80dcb32
+- **@ontario-digital-service/ontario-design-system-complete-styles:** fixes from MR review d710ca4
+- **@ontario-digital-service/ontario-design-system-component-library, @ontario-digital-service/ontario-design-system-global-styles:** updates heading styles for fieldset legends, updates component lib index file for accessibility 5ad58d8
+- **@ontario-digital-service/ontario-design-system-component-library:** fixed header showing empty menu 635ca12
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes back button custom on click functionality in step indicator 4b8ddcd
+- **@ontario-digital-service/ontario-design-system-component-library:** showing menu button based on allowed sub header links 6ac6cd2
+- **@ontario-digital-service/ontario-design-system-component-library:** updates icon colour options, updates hint expander colour and test a3af8ef
+- swithch app to using HashRouter ef0faba
+- update header links to expose some from the menu e1bbcb4
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-complete-styles, @ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library-react, @ontario-digital-service/ontario-design-system-component-library, @ontario-digital-service/ontario-design-system-design-tokens, @ontario-digital-service/ontario-design-system-global-styles:** updates package.lock files 03c844b
+- **@ontario-digital-service/ontario-design-system-component-library:** adds table component to web component library b7629cc
+- **@ontario-digital-service/ontario-design-system-component-library:** adds translations + updates menu accessibility text for ontario-header web component d0bdf0e
+- **@ontario-digital-service/ontario-design-system-component-library:** update loading indicator watch state b04a716
+
+# 2.7.0-alpha.3 (2023-08-10)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library:** fixed header showing empty menu 635ca12
+- **@ontario-digital-service/ontario-design-system-component-library:** showing menu button based on allowed sub header links 6ac6cd2
+
+# 2.7.0-alpha.2 (2023-07-31)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library, @ontario-digital-service/ontario-design-system-global-styles:** updates heading styles for fieldset legends, updates component lib index file for accessibility 5ad58d8
+- **@ontario-digital-service/ontario-design-system-component-library:** fixes back button custom on click functionality in step indicator 4b8ddcd
+- **@ontario-digital-service/ontario-design-system-component-library:** updates icon colour options, updates hint expander colour and test a3af8ef
+- swithch app to using HashRouter ef0faba
+- update header links to expose some from the menu e1bbcb4
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-component-library:** adds table component to web component library b7629cc
+- **@ontario-digital-service/ontario-design-system-component-library:** adds translations + updates menu accessibility text for ontario-header web component d0bdf0e
+- **@ontario-digital-service/ontario-design-system-component-library:** update loading indicator watch state b04a716
+
+# 2.7.0-alpha.1 (2023-07-19)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-complete-styles, @ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** updates package.lock files, adds variable for asset-styles in complete styles package 4d5e138
+- **@ontario-digital-service/ontario-design-system-complete-styles, @ontario-digital-service/ontario-design-system-component-library:** updates complete-styles package to include missing and broken assets 5853344
+- **@ontario-digital-service/ontario-design-system-complete-styles:** adds missing packages 80dcb32
+- **@ontario-digital-service/ontario-design-system-complete-styles:** fixes from MR review d710ca4
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-complete-styles, @ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library-react, @ontario-digital-service/ontario-design-system-component-library, @ontario-digital-service/ontario-design-system-design-tokens, @ontario-digital-service/ontario-design-system-global-styles:** updates package.lock files 03c844b
+
 # 2.6.0 (2023-07-13)
 
 ### Bug Fixes

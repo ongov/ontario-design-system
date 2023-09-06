@@ -4,24 +4,17 @@ export enum EventType {
 	Focus = 'focus',
 }
 
-export type RadioAndCheckboxChangeEvent = {
-	checked: boolean;
-	id: string;
-	value: string;
-	emit: any;
-};
-
 export type InputChangeEvent = {
-	id: string;
-	value: string;
-	emit: any;
+	id?: string;
+	value?: string;
 };
 
-export type InputFocusBlurEvent = {
+export type RadioAndCheckboxChangeEvent = InputChangeEvent & {
+	checked: boolean;
+};
+
+export type InputFocusBlurEvent = InputChangeEvent & {
 	focused: boolean;
-	id: string;
-	value: string;
-	emit: any;
 };
 
 export type InputType = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | null;
