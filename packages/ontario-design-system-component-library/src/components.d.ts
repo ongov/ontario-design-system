@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Accordion } from "./components/ontario-accordion/accordion.interface";
 import { HeadingContentType, HeadingLevelOptions, HighlightColourOptions } from "./utils/components/callout-aside/callout-aside.interface";
 import { Language } from "./utils/common/language-types";
 import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
@@ -22,6 +23,7 @@ import { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
+export { Accordion } from "./components/ontario-accordion/accordion.interface";
 export { HeadingContentType, HeadingLevelOptions, HighlightColourOptions } from "./utils/components/callout-aside/callout-aside.interface";
 export { Language } from "./utils/common/language-types";
 export { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
@@ -40,6 +42,32 @@ export { PageAlertType } from "./components/ontario-page-alert/ontario-page-aler
 export { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
 export namespace Components {
+    interface OntarioAccordion {
+        /**
+          * Used to include individual accordion data for the accordion component. This is passed in as an array of objects with key-value pairs.  The `content` is expecting an array of strings to populate the `<ul>` element within each individual accordion.
+          * @example 	<ontario-accordion 	name="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
+         */
+        "accordionData": string | Accordion[];
+        /**
+          * The alt text for the expand/close button.
+         */
+        "ariaLabelText": string;
+        /**
+          * The label for the 'Collapse all' button.
+          * @example  <ontario-accordion 	name="My Accordion" 	open-label="Expand all" 	close-label="Collapse all" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
+         */
+        "closeLabel": string;
+        "isOpen": boolean;
+        /**
+          * The name of the accordion component.  This is not optional.
+         */
+        "name": string;
+        /**
+          * The label for the 'Expand all' button.
+          * @example  <ontario-accordion 	name="My Accordion" 	open-label="Expand all" 	close-label="Collapse all" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
+         */
+        "openLabel": string;
+    }
     interface OntarioAside {
         /**
           * Optional text to be displayed as the content for the aside component. If a string is passed, it will automatically be nested in a paragraph tag.  HTML content can also be passed as the child/children of the aside component if additional/different elements for the content are needed.
@@ -1718,6 +1746,12 @@ export interface OntarioTextareaCustomEvent<T> extends CustomEvent<T> {
     target: HTMLOntarioTextareaElement;
 }
 declare global {
+    interface HTMLOntarioAccordionElement extends Components.OntarioAccordion, HTMLStencilElement {
+    }
+    var HTMLOntarioAccordionElement: {
+        prototype: HTMLOntarioAccordionElement;
+        new (): HTMLOntarioAccordionElement;
+    };
     interface HTMLOntarioAsideElement extends Components.OntarioAside, HTMLStencilElement {
     }
     var HTMLOntarioAsideElement: {
@@ -2517,6 +2551,7 @@ declare global {
         new (): HTMLOntarioTextareaElement;
     };
     interface HTMLElementTagNameMap {
+        "ontario-accordion": HTMLOntarioAccordionElement;
         "ontario-aside": HTMLOntarioAsideElement;
         "ontario-back-to-top": HTMLOntarioBackToTopElement;
         "ontario-blockquote": HTMLOntarioBlockquoteElement;
@@ -2653,6 +2688,32 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface OntarioAccordion {
+        /**
+          * Used to include individual accordion data for the accordion component. This is passed in as an array of objects with key-value pairs.  The `content` is expecting an array of strings to populate the `<ul>` element within each individual accordion.
+          * @example 	<ontario-accordion 	name="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
+         */
+        "accordionData"?: string | Accordion[];
+        /**
+          * The alt text for the expand/close button.
+         */
+        "ariaLabelText"?: string;
+        /**
+          * The label for the 'Collapse all' button.
+          * @example  <ontario-accordion 	name="My Accordion" 	open-label="Expand all" 	close-label="Collapse all" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
+         */
+        "closeLabel"?: string;
+        "isOpen"?: boolean;
+        /**
+          * The name of the accordion component.  This is not optional.
+         */
+        "name"?: string;
+        /**
+          * The label for the 'Expand all' button.
+          * @example  <ontario-accordion 	name="My Accordion" 	open-label="Expand all" 	close-label="Collapse all" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
+         */
+        "openLabel"?: string;
+    }
     interface OntarioAside {
         /**
           * Optional text to be displayed as the content for the aside component. If a string is passed, it will automatically be nested in a paragraph tag.  HTML content can also be passed as the child/children of the aside component if additional/different elements for the content are needed.
@@ -4369,6 +4430,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface IntrinsicElements {
+        "ontario-accordion": OntarioAccordion;
         "ontario-aside": OntarioAside;
         "ontario-back-to-top": OntarioBackToTop;
         "ontario-blockquote": OntarioBlockquote;
@@ -4508,6 +4570,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "ontario-accordion": LocalJSX.OntarioAccordion & JSXBase.HTMLAttributes<HTMLOntarioAccordionElement>;
             "ontario-aside": LocalJSX.OntarioAside & JSXBase.HTMLAttributes<HTMLOntarioAsideElement>;
             "ontario-back-to-top": LocalJSX.OntarioBackToTop & JSXBase.HTMLAttributes<HTMLOntarioBackToTopElement>;
             "ontario-blockquote": LocalJSX.OntarioBlockquote & JSXBase.HTMLAttributes<HTMLOntarioBlockquoteElement>;

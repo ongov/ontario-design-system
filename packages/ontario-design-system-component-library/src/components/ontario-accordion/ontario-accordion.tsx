@@ -29,7 +29,7 @@ export class OntarioAccordion {
 	 *			{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
 	 *		]'
 	 *	></ontario-accordion>
-	 * 
+	 *
 	 */
 	@Prop() openLabel: string = 'Expand All';
 
@@ -46,7 +46,7 @@ export class OntarioAccordion {
 	 *			{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
 	 *		]'
 	 *	></ontario-accordion>
-	 * 
+	 *
 	 */
 	@Prop() closeLabel: string = 'Collapse All';
 
