@@ -2,6 +2,19 @@
 	"name": "ds-web-component-docs",
 	"version": "2.7.0",
 	"private": true,
+	"scripts": {
+		"docusaurus": "docusaurus",
+		"start": "docusaurus start",
+		"build": "docusaurus build",
+		"swizzle": "docusaurus swizzle",
+		"deploy": "docusaurus deploy",
+		"clear": "docusaurus clear",
+		"serve": "docusaurus serve",
+		"write-translations": "docusaurus write-translations",
+		"write-heading-ids": "docusaurus write-heading-ids",
+		"clean": "rm -rf docs/0* docs/components/ontario*",
+		"clean:full": "rm -rf node_modules && npm run clean"
+	},
 	"dependencies": {
 		"@docusaurus/core": "2.4.1",
 		"@docusaurus/preset-classic": "2.4.1",
