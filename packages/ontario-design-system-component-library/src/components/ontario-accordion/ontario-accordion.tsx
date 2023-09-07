@@ -10,16 +10,18 @@ export class OntarioAccordion {
 	@Element() host: HTMLElement;
 
 	/**
-	 * The title of the accordion component.
+	 * The name of the accordion component.
+	 *
+	 * This is not optional.
 	 */
-	@Prop() title: string = 'Accordion Title';
+	@Prop() name: string;
 
 	/**
 	 * The label for the 'Expand all' button.
 	 *
 	 * ```
 	 *  <ontario-accordion
-	 *		title="My Accordion"
+	 *		name="My Accordion"
 	 *		open-label="Expand all"
 	 *		close-label="Collapse all"
 	 *		accordion-data='[
@@ -36,7 +38,7 @@ export class OntarioAccordion {
 	 *
 	 * ```
 	 *  <ontario-accordion
-	 *		title="My Accordion"
+	 *		name="My Accordion"
 	 *		open-label="Expand all"
 	 *		close-label="Collapse all"
 	 *		accordion-data='[
@@ -61,7 +63,7 @@ export class OntarioAccordion {
 	 *
 	 * ```
 	 * 	<ontario-accordion
-	 *		title="My Accordion"
+	 *		name="My Accordion"
 	 *		accordion-data='[
 	 *			{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
 	 *			{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
@@ -148,7 +150,7 @@ export class OntarioAccordion {
 	render() {
 		return (
 			<div>
-				<h2>{this.title}</h2>
+				<h2>{this.name}</h2>
 				<div class="ontario-accordions__container">
 					<div class="ontario-accordion__controls">
 						<button
