@@ -167,19 +167,22 @@ export class OntarioCheckboxes {
 	}
 }
 
+import type { RadioAndCheckboxChangeEvent as IOntarioCheckboxesRadioAndCheckboxChangeEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+import type { InputFocusBlurEvent as IOntarioCheckboxesInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+
 export declare interface OntarioCheckboxes extends Components.OntarioCheckboxes {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed.
 	 */
-	checkboxOnChange: EventEmitter<CustomEvent<any>>;
+	checkboxOnChange: EventEmitter<CustomEvent<IOntarioCheckboxesRadioAndCheckboxChangeEvent>>;
 	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has lost focus.
 	 */
-	checkboxOnBlur: EventEmitter<CustomEvent<any>>;
+	checkboxOnBlur: EventEmitter<CustomEvent<IOntarioCheckboxesInputFocusBlurEvent>>;
 	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has gained focus.
 	 */
-	checkboxOnFocus: EventEmitter<CustomEvent<any>>;
+	checkboxOnFocus: EventEmitter<CustomEvent<IOntarioCheckboxesInputFocusBlurEvent>>;
 }
 
 @ProxyCmp({
