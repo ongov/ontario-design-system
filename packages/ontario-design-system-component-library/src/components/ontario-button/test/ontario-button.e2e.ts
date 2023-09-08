@@ -28,7 +28,7 @@ describe('ontario-button', () => {
 			'type': 'button',
 		});
 
-		component.setProperty('ariaLabel', 'Aria Label');
+		component.setProperty('ariaLabelText', 'Aria Label');
 		await page.waitForChanges();
 		expect(element).toHaveClasses(['ontario-button', 'ontario-button--secondary']);
 		expect(element.textContent).toEqual('Element Content');
