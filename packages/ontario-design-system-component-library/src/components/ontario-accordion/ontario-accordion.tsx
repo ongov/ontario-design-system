@@ -59,14 +59,14 @@ export class OntarioAccordion {
 	 * Used to include individual accordion data for the accordion component.
 	 * This is passed in as an array of objects with key-value pairs.
 	 *
-	 * The `content` is expecting an array of strings to populate the `<ul>` element within each individual accordion.
+	 * The `content` is expecting a string, that can either be written as HTML or a just a plain string, depending on the accordionContentType.
 	 *
 	 * @example
 	 * 	<ontario-accordion
 	 *		name="My Accordion"
 	 *		accordion-data='[
-	 *			{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
-	 *			{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
+	 *			{"label": "Accordion 1", "content": "This is a string"},
+	 *			{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"}
 	 *		]'
 	 *	></ontario-accordion>
 	 */
@@ -195,15 +195,11 @@ export class OntarioAccordion {
 								aria-hidden={!this.openAccordionIndexes.includes(index)}
 								data-toggle="ontario-expander-content"
 							>
-								<ul>
-									{Array.isArray(accordion.content) ? (
-										accordion.content.map((item, itemIndex) => (
-											<li key={`accordion-${index + 1}-item-${itemIndex + 1}`}>{item}</li>
-										))
-									) : (
-										<li>{accordion.content}</li>
-									)}
-								</ul>
+								{accordion.accordionContentType === 'html' ? (
+									<div innerHTML={accordion.content}></div> // Render HTML content
+								) : (
+									<div>{accordion.content}</div>
+								)}
 							</section>
 						</div>
 					))}

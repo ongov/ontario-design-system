@@ -8,22 +8,22 @@ describe('ontario-accordion', () => {
 			html: `<ontario-accordion></ontario-accordion>`,
 		});
 		expect(page.root).toEqualHtml(`
-      <ontario-accordion>
-        <mock:shadow-root>
-		    <div>
-		    	<h2></h2>
-				<div class="ontario-accordions__container">
-					<div class="ontario-accordion__controls">
-						<button aria-expanded="true" class="ontario-accordion__button--expand-all">
-							<span class="ontario-accordion--expand-open-all">
-							Expand All
-							</span>
-	            	   	</button>
-	         		</div>
-		        </div>
-		    </div>
-        </mock:shadow-root>
-      </ontario-accordion>
+			<ontario-accordion>
+				<mock:shadow-root>
+					<div>
+						<h2></h2>
+						<div class="ontario-accordions__container">
+							<div class="ontario-accordion__controls">
+								<button aria-expanded="true" class="ontario-accordion__button--expand-all">
+									<span class="ontario-accordion--expand-open-all">
+									Expand All
+									</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</mock:shadow-root>
+			</ontario-accordion>
     `);
 	});
 });

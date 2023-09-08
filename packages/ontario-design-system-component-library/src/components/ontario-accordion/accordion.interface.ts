@@ -7,9 +7,17 @@ export interface Accordion extends Base {
 	label: string;
 
 	/**
-	 * The content is expecting an array of strings to populate the `<ul>` element within each individual accordion.
+	 * The content type of the accordion.
+	 * If no prop is passed, it will default to a string.
+	 * If the accordion requires multiple lines or HTML, the `accordionContentType` prop should be set to `html`.
 	 */
-	content: string[];
+
+	accordionContentType: 'string' | 'html';
+
+	/**
+	 * The content that is passed into each accordion.
+	 */
+	content: string;
 
 	/**
 	 * A boolean to track whether the accordion is expanded or collapsed.
