@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ExpandCollapseButtonDetails } from "./components/ontario-accordion/expandCollapseButtonDetails.interface";
 import { Accordion } from "./components/ontario-accordion/accordion.interface";
 import { HeadingContentType, HeadingLevelOptions, HighlightColourOptions } from "./utils/components/callout-aside/callout-aside.interface";
 import { Language } from "./utils/common/language-types";
@@ -23,6 +24,7 @@ import { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
+export { ExpandCollapseButtonDetails } from "./components/ontario-accordion/expandCollapseButtonDetails.interface";
 export { Accordion } from "./components/ontario-accordion/accordion.interface";
 export { HeadingContentType, HeadingLevelOptions, HighlightColourOptions } from "./utils/components/callout-aside/callout-aside.interface";
 export { Language } from "./utils/common/language-types";
@@ -48,20 +50,7 @@ export namespace Components {
           * @example 	<ontario-accordion 	name="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": "This is a string"}, 		{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"} 	]' ></ontario-accordion>
          */
         "accordionData": string | Accordion[];
-        /**
-          * The alt text for the expand/close button.
-         */
-        "ariaLabelText": string;
-        /**
-          * The label for the 'Collapse all' button.
-          * @example  <ontario-accordion 	name="My Accordion" 	expand-all-sections-label="Expand all" 	close-all-sections-label="Collapse all" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
-         */
-        "closeAllSectionsLabel": string;
-        /**
-          * The label for the 'Expand all' button.
-          * @example  <ontario-accordion 	name="My Accordion" 	expand-all-sections-label="Expand all" 	close-all-sections-label="Collapse all" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
-         */
-        "expandAllSectionsLabel": string;
+        "expandCollapseButton": ExpandCollapseButtonDetails;
         "isOpen": boolean;
         /**
           * The name of the accordion component.  This is not optional.
@@ -2694,20 +2683,7 @@ declare namespace LocalJSX {
           * @example 	<ontario-accordion 	name="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": "This is a string"}, 		{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"} 	]' ></ontario-accordion>
          */
         "accordionData"?: string | Accordion[];
-        /**
-          * The alt text for the expand/close button.
-         */
-        "ariaLabelText"?: string;
-        /**
-          * The label for the 'Collapse all' button.
-          * @example  <ontario-accordion 	name="My Accordion" 	expand-all-sections-label="Expand all" 	close-all-sections-label="Collapse all" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
-         */
-        "closeAllSectionsLabel"?: string;
-        /**
-          * The label for the 'Expand all' button.
-          * @example  <ontario-accordion 	name="My Accordion" 	expand-all-sections-label="Expand all" 	close-all-sections-label="Collapse all" 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
-         */
-        "expandAllSectionsLabel"?: string;
+        "expandCollapseButton"?: ExpandCollapseButtonDetails;
         "isOpen"?: boolean;
         /**
           * The name of the accordion component.  This is not optional.

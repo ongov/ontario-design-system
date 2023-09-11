@@ -1,5 +1,6 @@
 import { Component, Prop, Element, State, h } from '@stencil/core';
 import { Accordion } from './accordion.interface';
+import { ExpandCollapseButtonDetails } from './expandCollapseButtonDetails.interface';
 
 @Component({
 	tag: 'ontario-accordion',
@@ -16,44 +17,11 @@ export class OntarioAccordion {
 	 */
 	@Prop() name: string;
 
-	/**
-	 * The label for the 'Expand all' button.
-	 *
-	 * @example
-	 *  <ontario-accordion
-	 *		name="My Accordion"
-	 *		expand-all-sections-label="Expand all"
-	 *		close-all-sections-label="Collapse all"
-	 *		accordion-data='[
-	 *			{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
-	 *			{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
-	 *		]'
-	 *	></ontario-accordion>
-	 *
-	 */
-	@Prop() expandAllSectionsLabel: string = 'Expand All';
-
-	/**
-	 * The label for the 'Collapse all' button.
-	 *
-	 * @example
-	 *  <ontario-accordion
-	 *		name="My Accordion"
-	 *		expand-all-sections-label="Expand all"
-	 *		close-all-sections-label="Collapse all"
-	 *		accordion-data='[
-	 *			{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
-	 *			{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
-	 *		]'
-	 *	></ontario-accordion>
-	 *
-	 */
-	@Prop() closeAllSectionsLabel: string = 'Collapse All';
-
-	/**
-	 * The alt text for the expand/close button.
-	 */
-	@Prop() ariaLabelText: string = 'Expand or collapse the accordion';
+	@Prop() expandCollapseButton: ExpandCollapseButtonDetails = {
+		expandAllSectionsLabel: 'Expand All',
+		closeAllSectionsLabel: 'Collapse All',
+		ariaLabelText: 'Expand or collapse the accordion',
+	};
 
 	/**
 	 * Used to include individual accordion data for the accordion component.
@@ -94,16 +62,8 @@ export class OntarioAccordion {
 				: JSON.parse(this.accordionData);
 		}
 
-		// Check if all accordions are initially open or closed
-		const allClosed = this.internalAccordionData.every((_, index) => !this.openAccordionIndexes.includes(index));
-
-		if (allClosed) {
-			// All accordions are initially closed, set label to "Expand all"
-			this.expandCollapseLabel = this.expandAllSectionsLabel;
-		} else {
-			// At least one accordion is open, set label to "Collapse all"
-			this.expandCollapseLabel = this.closeAllSectionsLabel;
-		}
+		// Initialize the label based on the initial accordion state
+		this.updateLabel();
 	}
 
 	// Toggle the accordion state when it's clicked
@@ -123,22 +83,23 @@ export class OntarioAccordion {
 		if (this.openAccordionIndexes.length === this.internalAccordionData.length) {
 			// All accordions are open, close all
 			this.openAccordionIndexes = [];
-			this.expandCollapseLabel = this.expandAllSectionsLabel; // Update the label to "Expand all"
 		} else {
 			// At least one accordion is closed, open all
 			this.openAccordionIndexes = this.internalAccordionData.map((_, index) => index);
-			this.expandCollapseLabel = this.closeAllSectionsLabel; // Update the label to "Collapse all"
 		}
+		this.updateLabel();
 	}
 
-	// Check if all accordions are expanded or collapsed and update the label
+	// Update the label based on the current accordion state
 	private updateLabel() {
-		if (this.openAccordionIndexes.length === this.internalAccordionData.length) {
+		const allOpen = this.internalAccordionData.every((_, index) => this.openAccordionIndexes.includes(index));
+
+		if (allOpen) {
 			// All accordions are open, set label to "Collapse all"
-			this.expandCollapseLabel = this.closeAllSectionsLabel;
+			this.expandCollapseLabel = this.expandCollapseButton.closeAllSectionsLabel;
 		} else {
 			// At least one accordion is closed, set label to "Expand all"
-			this.expandCollapseLabel = this.expandAllSectionsLabel;
+			this.expandCollapseLabel = this.expandCollapseButton.expandAllSectionsLabel;
 		}
 	}
 
@@ -175,7 +136,7 @@ export class OntarioAccordion {
 									aria-expanded={this.openAccordionIndexes.includes(index) ? 'true' : 'false'}
 									data-toggle="ontario-collapse"
 									onClick={() => this.toggleAccordion(index)}
-									aria-label={this.ariaLabelText}
+									aria-label={this.expandCollapseButton.ariaLabelText}
 								>
 									<span class="ontario-accordion__button-icon--close">
 										<ontario-icon-chevron-up colour="blue"></ontario-icon-chevron-up>
