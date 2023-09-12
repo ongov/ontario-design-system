@@ -1,6 +1,9 @@
-import { Component, Prop, Element, State, h } from '@stencil/core';
+import { Component, Prop, Element, State, h, Listen } from '@stencil/core';
 import { Accordion } from './accordion.interface';
 import { ExpandCollapseButtonDetails } from './expandCollapseButtonDetails.interface';
+import { Language } from '../../utils/common/language-types';
+import { validateLanguage } from '../../utils/validation/validation-functions';
+import translations from '../../translations/global.i18n.json';
 
 @Component({
 	tag: 'ontario-accordion',
@@ -41,6 +44,27 @@ export class OntarioAccordion {
 	@Prop() accordionData: string | Accordion[];
 
 	@Prop() isOpen: boolean = false;
+
+	/**
+	 * The language of the component.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+	 */
+	@Prop({ mutable: true }) language?: Language = 'en';
+
+	/**
+	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
+	 */
+	@Listen('setAppLanguage', { target: 'window' })
+	handleSetAppLanguage(event: CustomEvent<Language>) {
+		this.language = validateLanguage(event);
+	}
+
+	@Listen('headerLanguageToggled', { target: 'window' })
+	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
+		this.language = validateLanguage(event);
+	}
+
+	@State() translations: any = translations;
 
 	/**
 	 * The label for the expand/collapse button.
@@ -96,15 +120,16 @@ export class OntarioAccordion {
 
 		if (allOpen) {
 			// All accordions are open, set label to "Collapse all"
-			this.expandCollapseLabel = this.expandCollapseButton.closeAllSectionsLabel;
+			this.expandCollapseLabel = 'collapse';
 		} else {
 			// At least one accordion is closed, set label to "Expand all"
-			this.expandCollapseLabel = this.expandCollapseButton.expandAllSectionsLabel;
+			this.expandCollapseLabel = 'expand';
 		}
 	}
 
 	componentWillLoad() {
 		this.parseAccordionData();
+		this.language = validateLanguage(this.language);
 	}
 
 	render() {
@@ -118,7 +143,13 @@ export class OntarioAccordion {
 							onClick={() => this.toggleAll()}
 							aria-expanded={this.openAccordionIndexes.length === this.internalAccordionData.length ? 'true' : 'false'}
 						>
-							<span class="ontario-accordion--expand-open-all">{this.expandCollapseLabel}</span>
+							<span class="ontario-accordion--expand-open-all">
+								{this.expandCollapseLabel === 'expand' ? (
+									<div>{this.translations.accordion.expand[`${this.language}`]}</div>
+								) : (
+									<div>{this.translations.accordion.close[`${this.language}`]}</div>
+								)}
+							</span>
 						</button>
 					</div>
 					{this.internalAccordionData?.map((accordion, index) => (
