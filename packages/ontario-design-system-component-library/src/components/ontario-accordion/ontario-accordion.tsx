@@ -43,6 +43,9 @@ export class OntarioAccordion {
 	 */
 	@Prop() accordionData: string | Accordion[];
 
+	/**
+	 * Used to show whether the accordion is opened or closed.
+	 */
 	@Prop() isOpen: boolean = false;
 
 	/**
