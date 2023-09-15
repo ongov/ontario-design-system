@@ -10,6 +10,10 @@
 
 $ontario-icon-size: 24px;
 
+.ontario-step-indicator {
+	margin-bottom: spacing.$spacing-7;
+}
+
 .ontario-step-indicator .ontario-step-indicator--with-back-button--false,
 .ontario-step-indicator .ontario-step-indicator--with-back-button--true,
 // Fractal component style coverage ↓
