@@ -18,17 +18,17 @@ Example of an accordion component, where the user is explicitly passing in conte
 <ontario-accordion
 	title="My Accordion"
 	expand-collapse-button='{
-		expandAllSectionsLabel="Expand All",
-		collapseAllSectionsLabel="Collapse All"
+		"expandAllSectionsLabel": "Expand All",
+		"collapseAllSectionsLabel": "Collapse All"
 	}'
 	accordion-data='[
-	    {"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
-	    {"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
+	    {"label": "Accordion 1", "content": "This is a string"},
+		{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"}
 	]'
 ></ontario-accordion>
 ```
 
-This is another example of an accordion. This time, the content is passed as a child of the `ontario-aside` component, which allows for HTML content to be passed. A `highlightColour` option is also passed.
+This is another example of an accordion. This time, the content is passed as a child of the `ontario-aside` component, which allows for HTML content to be passed.
 
 ## Custom property types
 
@@ -48,8 +48,10 @@ accordion-data='[ {"label": "Accordion 1", "content": "Text Context"}, {"label":
 
 ### ExpandCollapseButtonDetails
 
+By default, the component uses our recommended values for the Expand/Collapse button label, which will automatically match the language the component is in. However, if custom values for this button are required they can be set via the `expandCollapseButton` property.
+
 ```ts
-expand-collapse-button='{ expandAllSectionsLabel="Expand All", collapseAllSectionsLabel="Collapse All" }'
+expand-collapse-button='{ "expandAllSectionsLabel": "Expand All", "collapseAllSectionsLabel": "Collapse All" }'
 ```
 
 | Property                   | Description                              | Type     |
