@@ -27,8 +27,8 @@ export class OntarioAccordion {
 	 *  <ontario-accordion
 	 *		name="My Accordion"
 	 *		expand-collapse-button='{
-	 *			expandAllSectionsLabel="Expand All",
-	 *			collapseAllSectionsLabel="Collapse All"
+	 *			"expandAllSectionsLabel": "Expand All",
+	 *			"collapseAllSectionsLabel": "Collapse All"
 	 *		}'
 	 *		accordion-data='[
 	 *			{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},

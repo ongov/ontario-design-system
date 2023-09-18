@@ -52,7 +52,7 @@ export namespace Components {
         "accordionData": string | Accordion[];
         /**
           * Custom Expand/Collapse button text.
-          * @example  <ontario-accordion 	name="My Accordion" 	expand-collapse-button='{ 		expandAllSectionsLabel="Expand All", 		collapseAllSectionsLabel="Collapse All" 	}' 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
+          * @example  <ontario-accordion 	name="My Accordion" 	expand-collapse-button='{ 			"expandAllSectionsLabel": "Expand All", 			"collapseAllSectionsLabel": "Collapse All" 		}' 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
          */
         "expandCollapseButton"?: string | ExpandCollapseButtonDetails;
         /**
@@ -2696,7 +2696,7 @@ declare namespace LocalJSX {
         "accordionData"?: string | Accordion[];
         /**
           * Custom Expand/Collapse button text.
-          * @example  <ontario-accordion 	name="My Accordion" 	expand-collapse-button='{ 		expandAllSectionsLabel="Expand All", 		collapseAllSectionsLabel="Collapse All" 	}' 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
+          * @example  <ontario-accordion 	name="My Accordion" 	expand-collapse-button='{ 			"expandAllSectionsLabel": "Expand All", 			"collapseAllSectionsLabel": "Collapse All" 		}' 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
          */
         "expandCollapseButton"?: string | ExpandCollapseButtonDetails;
         /**
