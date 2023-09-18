@@ -5,8 +5,10 @@ export interface ExpandCollapseButtonDetails {
 	 * @example
 	 *  <ontario-accordion
 	 *		name="My Accordion"
-	 *		expand-all-sections-label="Expand all"
-	 *		close-all-sections-label="Collapse all"
+	 *		expand-collapse-button='{
+	 *			expandAllSectionsLabel="Expand All",
+	 *			collapseAllSectionsLabel="Collapse All"
+	 *		}'
 	 *		accordion-data='[
 	 *			{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
 	 *			{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
@@ -22,8 +24,10 @@ export interface ExpandCollapseButtonDetails {
 	 * @example
 	 *  <ontario-accordion
 	 *		name="My Accordion"
-	 *		expand-all-sections-label="Expand all"
-	 *		close-all-sections-label="Collapse all"
+	 *		expand-collapse-button='{
+	 *			expandAllSectionsLabel="Expand All",
+	 *			collapseAllSectionsLabel="Collapse All"
+	 *		}'
 	 *		accordion-data='[
 	 *			{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
 	 *			{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
@@ -31,7 +35,7 @@ export interface ExpandCollapseButtonDetails {
 	 *	></ontario-accordion>
 	 *
 	 */
-	closeAllSectionsLabel: string;
+	collapseAllSectionsLabel: string;
 
 	/**
 	 * The alt text for the expand/close button.

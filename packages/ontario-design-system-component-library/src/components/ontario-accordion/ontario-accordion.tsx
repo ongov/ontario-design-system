@@ -1,4 +1,4 @@
-import { Component, Prop, Element, State, h, Listen } from '@stencil/core';
+import { Component, Prop, Element, State, h, Listen, Watch } from '@stencil/core';
 import { Accordion } from './accordion.interface';
 import { ExpandCollapseButtonDetails } from './expandCollapseButtonDetails.interface';
 import { Language } from '../../utils/common/language-types';
@@ -20,11 +20,23 @@ export class OntarioAccordion {
 	 */
 	@Prop() name: string;
 
-	@Prop() expandCollapseButton: ExpandCollapseButtonDetails = {
-		expandAllSectionsLabel: 'Expand All',
-		closeAllSectionsLabel: 'Collapse All',
-		ariaLabelText: 'Expand or collapse the accordion',
-	};
+	/**
+	 * Custom Expand/Collapse button text.
+	 *
+	 * @example
+	 *  <ontario-accordion
+	 *		name="My Accordion"
+	 *		expand-collapse-button='{
+	 *			expandAllSectionsLabel="Expand All",
+	 *			collapseAllSectionsLabel="Collapse All"
+	 *		}'
+	 *		accordion-data='[
+	 *			{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
+	 *			{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
+	 *		]'
+	 *	></ontario-accordion>
+	 */
+	@Prop() expandCollapseButton?: string | ExpandCollapseButtonDetails;
 
 	/**
 	 * Used to include individual accordion data for the accordion component.
@@ -73,7 +85,9 @@ export class OntarioAccordion {
 	 * The label for the expand/collapse button.
 	 * This is internal and udpdated dynamically.
 	 */
-	@State() private expandCollapseLabel: string;
+	@State() private expandCollapseLabel: 'expand' | 'collapse';
+
+	@State() private internalExpandCollapseLabelDetails: ExpandCollapseButtonDetails;
 
 	@State() private internalAccordionData: Accordion[] = [];
 
@@ -82,6 +96,7 @@ export class OntarioAccordion {
 	 */
 	@State() private openAccordionIndexes: number[] = [];
 
+	@Watch('accordionData')
 	private parseAccordionData() {
 		if (typeof this.accordionData !== 'undefined') {
 			this.internalAccordionData = Array.isArray(this.accordionData)
@@ -91,6 +106,16 @@ export class OntarioAccordion {
 
 		// Initialize the label based on the initial accordion state
 		this.updateLabel();
+	}
+
+	@Watch('expandCollapseButton')
+	private parseExpandCollaseButtonDetails() {
+		if (typeof this.expandCollapseButton !== 'undefined') {
+			this.internalExpandCollapseLabelDetails =
+				typeof this.expandCollapseButton === 'string'
+					? JSON.parse(this.expandCollapseButton)
+					: this.expandCollapseButton;
+		}
 	}
 
 	// Toggle the accordion state when it's clicked
@@ -132,6 +157,7 @@ export class OntarioAccordion {
 
 	componentWillLoad() {
 		this.parseAccordionData();
+		this.parseExpandCollaseButtonDetails();
 		this.language = validateLanguage(this.language);
 	}
 
@@ -145,12 +171,19 @@ export class OntarioAccordion {
 							class="ontario-accordion__button--expand-all"
 							onClick={() => this.toggleAll()}
 							aria-expanded={this.openAccordionIndexes.length === this.internalAccordionData.length ? 'true' : 'false'}
+							aria-label={this.internalExpandCollapseLabelDetails.ariaLabelText}
 						>
 							<span class="ontario-accordion--expand-open-all">
 								{this.expandCollapseLabel === 'expand' ? (
-									<div>{this.translations.accordion.expand[`${this.language}`]}</div>
+									<div>
+										{this.internalExpandCollapseLabelDetails?.expandAllSectionsLabel ??
+											this.translations.accordion.expand[`${this.language}`]}
+									</div>
 								) : (
-									<div>{this.translations.accordion.close[`${this.language}`]}</div>
+									<div>
+										{this.internalExpandCollapseLabelDetails?.collapseAllSectionsLabel ??
+											this.translations.accordion.collapse[`${this.language}`]}
+									</div>
 								)}
 							</span>
 						</button>
@@ -170,7 +203,7 @@ export class OntarioAccordion {
 									aria-expanded={this.openAccordionIndexes.includes(index) ? 'true' : 'false'}
 									data-toggle="ontario-collapse"
 									onClick={() => this.toggleAccordion(index)}
-									aria-label={this.expandCollapseButton.ariaLabelText}
+									aria-label={accordion.ariaLabelText}
 								>
 									<span class="ontario-accordion__button-icon--close">
 										<ontario-icon-chevron-up colour="blue"></ontario-icon-chevron-up>

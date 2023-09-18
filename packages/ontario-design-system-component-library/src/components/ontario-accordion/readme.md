@@ -17,27 +17,58 @@ Example of an accordion component, where the user is explicitly passing in conte
 ```html
 <ontario-accordion
 	title="My Accordion"
-	open-label="Expand all"
-	close-label="Collapse all"
+	expand-collapse-button='{
+		expandAllSectionsLabel="Expand All",
+		collapseAllSectionsLabel="Collapse All"
+	}'
 	accordion-data='[
 	    {"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
 	    {"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
-	  ]'
+	]'
 ></ontario-accordion>
 ```
 
-This is another example of an acc. This time, the content is passed as a child of the `ontario-aside` component, which allows for HTML content to be passed. A `highlightColour` option is also passed.
+This is another example of an accordion. This time, the content is passed as a child of the `ontario-aside` component, which allows for HTML content to be passed. A `highlightColour` option is also passed.
+
+## Custom property types
+
+### Accordion
+
+```ts
+accordion-data='[ {"label": "Accordion 1", "content": "Text Context"}, {"label": "Accordion 2", "content": "Text Content"}]'
+```
+
+| Property               | Description                                                                                                                                   | Type                 | Default  |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | -------- |
+| `label`                | The label for the individual accordion button.                                                                                                | `string`             |          |
+| `accordionContentType` | The content type of the accordion. If the accordion requires multiple lines or HTML, the `accordionContentType` prop should be set to `html`. | `'string' \| 'html'` | `string` |
+| `content`              | The content that is passed into each accordion.                                                                                               | `string`             |
+| `isOpen`               | A boolean to track whether the accordion is expanded or collapsed.                                                                            | `string`             |
+| `ariaLabelText`        | Custom Aria Label text for the section.                                                                                                       | `string`             |
+
+### ExpandCollapseButtonDetails
+
+```ts
+expand-collapse-button='{ expandAllSectionsLabel="Expand All", collapseAllSectionsLabel="Collapse All" }'
+```
+
+| Property                   | Description                              | Type     |
+| -------------------------- | ---------------------------------------- | -------- |
+| `expandAllSectionsLabel`   | The label for the 'Expand all' button.   | `string` |
+| `collapseAllSectionsLabel` | The label for the 'Collapse all' button. | `string` |
+| `ariaLabelText`            | Alt text for the expand/close button.    | `string` |
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property               | Attribute        | Description                                                                                                                                                                                                                                                                    | Type                          | Default                                                                                                                               |
-| ---------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `accordionData`        | `accordion-data` | Used to include individual accordion data for the accordion component. This is passed in as an array of objects with key-value pairs. The `content` is expecting a string, that can either be written as HTML or a just a plain string, depending on the accordionContentType. | `Accordion[] \| string`       | `undefined`                                                                                                                           |
-| `expandCollapseButton` | --               |                                                                                                                                                                                                                                                                                | `ExpandCollapseButtonDetails` | `{ 		expandAllSectionsLabel: 'Expand All', 		closeAllSectionsLabel: 'Collapse All', 		ariaLabelText: 'Expand or collapse the accordion', 	}` |
-| `isOpen`               | `is-open`        |                                                                                                                                                                                                                                                                                | `boolean`                     | `false`                                                                                                                               |
-| `name`                 | `name`           | The name of the accordion component. This is not optional.                                                                                                                                                                                                                     | `string`                      | `undefined`                                                                                                                           |
+| Property               | Attribute                | Description                                                                                                                                                                                                                                                                    | Type                                                 | Default     |
+| ---------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- | ----------- |
+| `accordionData`        | `accordion-data`         | Used to include individual accordion data for the accordion component. This is passed in as an array of objects with key-value pairs. The `content` is expecting a string, that can either be written as HTML or a just a plain string, depending on the accordionContentType. | `Accordion[] \| string`                              | `undefined` |
+| `expandCollapseButton` | `expand-collapse-button` | Custom Expand/Collapse button text.                                                                                                                                                                                                                                            | `ExpandCollapseButtonDetails \| string \| undefined` | `undefined` |
+| `isOpen`               | `is-open`                | Used to show whether the accordion is opened or closed.                                                                                                                                                                                                                        | `boolean`                                            | `false`     |
+| `language`             | `language`               | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.                                                                  | `"en" \| "fr" \| undefined`                          | `'en'`      |
+| `name`                 | `name`                   | The name of the accordion component. This is not optional.                                                                                                                                                                                                                     | `string`                                             | `undefined` |
 
 ## Dependencies
 

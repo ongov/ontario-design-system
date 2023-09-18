@@ -149,6 +149,10 @@
 		"collapse": {
 			"en": "Collapse all",
 			"fr": "Réduire tout"
+		},
+		"expandCollapseAriaLabel": {
+			"en": "Expand or collapse the accordion",
+			"fr": "Agrandissez ou réduisez l'accordéon"
 		}
 	}
 }

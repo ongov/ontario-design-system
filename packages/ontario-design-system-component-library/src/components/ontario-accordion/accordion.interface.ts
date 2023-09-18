@@ -23,4 +23,9 @@ export interface Accordion extends Base {
 	 * A boolean to track whether the accordion is expanded or collapsed.
 	 */
 	isOpen: boolean;
+
+	/**
+	 * Custom Aria Label text for the section.
+	 */
+	ariaLabelText: string;
 }
