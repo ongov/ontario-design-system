@@ -171,7 +171,7 @@ export class OntarioAccordion {
 							class="ontario-accordion__button--expand-all"
 							onClick={() => this.toggleAll()}
 							aria-expanded={this.openAccordionIndexes.length === this.internalAccordionData.length ? 'true' : 'false'}
-							aria-label={this.internalExpandCollapseLabelDetails.ariaLabelText}
+							aria-label={this.internalExpandCollapseLabelDetails?.ariaLabelText}
 						>
 							<span class="ontario-accordion--expand-open-all">
 								{this.expandCollapseLabel === 'expand' ? (

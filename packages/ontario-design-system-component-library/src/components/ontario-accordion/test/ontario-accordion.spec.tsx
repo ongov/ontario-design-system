@@ -16,7 +16,7 @@ describe('ontario-accordion', () => {
 							<div class="ontario-accordion__controls">
 								<button aria-expanded="true" class="ontario-accordion__button--expand-all">
 									<span class="ontario-accordion--expand-open-all">
-									Expand All
+										<div>Collapse all</div>
 									</span>
 								</button>
 							</div>
