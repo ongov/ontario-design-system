@@ -109,7 +109,7 @@ export class OntarioAccordion {
 	}
 
 	@Watch('expandCollapseButton')
-	private parseExpandCollaseButtonDetails() {
+	private parseExpandCollapseButtonDetails() {
 		if (typeof this.expandCollapseButton !== 'undefined') {
 			this.internalExpandCollapseLabelDetails =
 				typeof this.expandCollapseButton === 'string'
@@ -157,7 +157,7 @@ export class OntarioAccordion {
 
 	componentWillLoad() {
 		this.parseAccordionData();
-		this.parseExpandCollaseButtonDetails();
+		this.parseExpandCollapseButtonDetails();
 		this.language = validateLanguage(this.language);
 	}
 
