@@ -1,7 +1,13 @@
 import { Component, Prop, State, Watch, h, Listen, Element, getAssetPath } from '@stencil/core';
 
 import { Input } from '../../utils/common/input/input';
-import { MenuItem, ApplicationHeaderInfo, LanguageToggleOptions, OntarioMenuItems } from './ontario-header.interface';
+import {
+	MenuItem,
+	ApplicationHeaderInfo,
+	LanguageToggleOptions,
+	OntarioMenuItems,
+	OntarioHeaderTypes,
+} from './ontario-header.interface';
 
 import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
@@ -19,6 +25,7 @@ import translations from '../../translations/global.i18n.json';
 	styleUrls: {
 		ontario: 'ontario-header.scss',
 		application: 'ontario-application-header.scss',
+		service: 'ontario-service-header.scss',
 	},
 	shadow: true,
 	assetsDirs: ['./assets'],
@@ -29,7 +36,7 @@ export class OntarioHeader {
 	/**
 	 * The type of header.
 	 */
-	@Prop() type?: 'application' | 'ontario' = 'application';
+	@Prop() type?: OntarioHeaderTypes = 'application';
 
 	/**
 	 * Information pertaining to the application header. This is only necessary for the 'application' header type.
@@ -40,8 +47,8 @@ export class OntarioHeader {
 	 * 	<ontario-header
 	 *		type="application"
 	 *      application-header-info='{
-	 * 			"name": "Application name",
-	 * 			"href": "/application-homepage"
+	 * 			"title": "Application name",
+	 * 			"href": "/application-homepage",
 	 * 			"maxSubheaderDesktopLinks": "3",
 	 * 			"maxSubheaderTabletLinks": "2",
 	 * 			"maxSubheaderMobileLinks": "1"
@@ -476,6 +483,8 @@ export class OntarioHeader {
 	}
 
 	render() {
+		const isService = this.type === 'service';
+
 		if (this.type == 'ontario') {
 			return (
 				<div>
@@ -651,16 +660,31 @@ export class OntarioHeader {
 
 						{/* Ontario application header subhearder */}
 						<div class="ontario-application-subheader-menu__container">
-							<section class="ontario-application-subheader">
+							<section class={`ontario-application-subheader ${isService ? 'ontario-service-subheader' : ''}`}>
 								<div class="ontario-row">
 									<div class="ontario-columns ontario-small-12 ontario-application-subheader__container">
-										<p class="ontario-application-subheader__heading">
-											<a href={this.applicationHeaderInfoState?.href}>{this.applicationHeaderInfoState?.title}</a>
-										</p>
+										{!isService ? (
+											<p class="ontario-application-subheader__heading">
+												<a href={this.applicationHeaderInfoState?.href}>{this.applicationHeaderInfoState?.title}</a>
+											</p>
+										) : (
+											<a href={this.applicationHeaderInfoState?.href} class="ontario-service-subheader__link">
+												<div class="ontario-service-subheader__heading-container">
+													<p class="ontario-service-subheader__heading">
+														{this.translations.header.serviceOntario[`${this.language}`]}
+													</p>
+													<p class="ontario-service-subheader__description">{this.applicationHeaderInfoState?.title}</p>
+												</div>
+											</a>
+										)}
 										<div class="ontario-application-subheader__menu-container">
 											{/* Desktop subheader links */}
 											{this.applicationHeaderInfoState.maxSubheaderDesktopLinks && (
-												<ul class="ontario-application-subheader__menu ontario-show-for-large">
+												<ul
+													class={`${
+														isService ? 'ontario-service-subheader__menu' : 'ontario-application-subheader__menu'
+													} ontario-show-for-large`}
+												>
 													{this.menuItemState
 														?.slice(0, this.applicationHeaderInfoState.maxSubheaderDesktopLinks)
 														.map((item) =>
