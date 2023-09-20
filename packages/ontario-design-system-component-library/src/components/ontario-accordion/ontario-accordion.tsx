@@ -74,11 +74,18 @@ export class OntarioAccordion {
 		this.language = validateLanguage(event);
 	}
 
+	/**
+	 * Handle the language being toggled from the `<ontario-header>`.
+	 * @param event Event object passed when the event is fired.
+	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
 	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
 		this.language = validateLanguage(event);
 	}
 
+	/**
+	 * Store the translation dictionary for use within the component.
+	 */
 	@State() translations: any = translations;
 
 	/**
@@ -87,8 +94,14 @@ export class OntarioAccordion {
 	 */
 	@State() private expandCollapseLabel: 'expand' | 'collapse';
 
+	/**
+	 * Internal state of the expand/collapse label information.
+	 */
 	@State() private internalExpandCollapseLabelDetails: ExpandCollapseButtonDetails;
 
+	/**
+	 * Internal state containing the parsed Accordion Data
+	 */
 	@State() private internalAccordionData: Accordion[] = [];
 
 	/**
@@ -96,6 +109,9 @@ export class OntarioAccordion {
 	 */
 	@State() private openAccordionIndexes: number[] = [];
 
+	/**
+	 * Parse Accordion data, this is used to handle JSON strings from HTML.
+	 */
 	@Watch('accordionData')
 	private parseAccordionData() {
 		if (typeof this.accordionData !== 'undefined') {
@@ -108,6 +124,9 @@ export class OntarioAccordion {
 		this.updateLabel();
 	}
 
+	/**
+	 * Parse Expand/Collapse Button Details, this is used to handle JSON strings from HTML.
+	 */
 	@Watch('expandCollapseButton')
 	private parseExpandCollapseButtonDetails() {
 		if (typeof this.expandCollapseButton !== 'undefined') {
@@ -130,7 +149,9 @@ export class OntarioAccordion {
 		this.updateLabel();
 	}
 
-	// Toggle all accordions open/close
+	/**
+	 * Toggle all accordions open/close
+	 */
 	private toggleAll() {
 		if (this.openAccordionIndexes.length === this.internalAccordionData.length) {
 			// All accordions are open, close all
@@ -142,7 +163,9 @@ export class OntarioAccordion {
 		this.updateLabel();
 	}
 
-	// Update the label based on the current accordion state
+	/**
+	 * Update the label based on the current accordion state
+	 */
 	private updateLabel() {
 		const allOpen = this.internalAccordionData.every((_, index) => this.openAccordionIndexes.includes(index));
 
