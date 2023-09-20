@@ -1,0 +1,164 @@
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as
+	globalVariables;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
+	spacing;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
+	colours;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables'
+	as breakpoints;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders'
+	as placeholders;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as
+	typography;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as
+	fontSizes;
+
+.ontario-accordions__container {
+	max-width: globalVariables.$standard-width;
+	width: globalVariables.$full-width;
+}
+
+.ontario-accordion {
+	border-top: 2px solid colours.$ontario-greyscale-20;
+
+	&:last-of-type {
+		border-bottom: 2px solid colours.$ontario-greyscale-20;
+	}
+}
+
+.ontario-accordion__controls {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.ontario-accordion__button,
+.ontario-accordion__button--expand-all {
+	background: none;
+	border: 0;
+	box-sizing: border-box;
+}
+
+.ontario-accordion__button--expand-all {
+	font-size: fontSizes.$ontario-font-size-standard-body-text;
+	margin-bottom: spacing.$spacing-2;
+	color: colours.$ontario-colour-link;
+	cursor: pointer;
+
+	&:focus,
+	&:hover {
+		color: colours.$ontario-colour-link--hover;
+		text-decoration: underline;
+	}
+
+	&:focus {
+		@extend %ontario-focus;
+	}
+
+	&:active {
+		color: colours.$ontario-colour-link--active;
+		text-decoration: underline;
+	}
+}
+
+.ontario-accordion--expand-close-all {
+	display: none;
+}
+
+.ontario-accordion__controls--active {
+	.ontario-accordion--expand-close-all {
+		display: block;
+	}
+
+	.ontario-accordion--expand-open-all {
+		display: none;
+	}
+}
+
+.ontario-accordion__button {
+	display: flex;
+	align-items: flex-start;
+	color: colours.$ontario-colour-link;
+	cursor: pointer;
+	padding: spacing.$spacing-3 spacing.$spacing-2;
+	text-align: left;
+	width: globalVariables.$full-width;
+	@extend %h4-styles;
+	margin-bottom: spacing.$spacing-0;
+
+	.ontario-accordion__button-icon--close,
+	.ontario-accordion__button-icon--open {
+		margin-right: spacing.$spacing-2;
+	}
+
+	.ontario-icon {
+		width: 1.75rem;
+		height: 1.75rem;
+	}
+
+	&:focus,
+	&:hover {
+		background-color: colours.$ontario-greyscale-5;
+		color: colours.$ontario-colour-link--hover;
+	}
+
+	&:focus {
+		@extend %ontario-focus;
+		box-shadow: 0 0 0 4px colours.$ontario-colour-focus inset;
+	}
+
+	&:active {
+		color: colours.$ontario-colour-link--active;
+	}
+}
+
+.ontario-accordion__content {
+	display: none;
+	padding: spacing.$spacing-3 spacing.$spacing-3 spacing.$spacing-6 spacing.$spacing-3;
+	margin-left: spacing.$spacing-0;
+
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
+		margin-left: spacing.$spacing-6;
+	}
+
+	* {
+		margin-top: spacing.$spacing-0;
+		max-width: globalVariables.$standard-width;
+		width: globalVariables.$full-width;
+	}
+
+	ul,
+	ol {
+		max-width: calc(100% - spacing.$spacing-8);
+	}
+
+	& > :last-child {
+		margin-bottom: spacing.$spacing-0;
+	}
+}
+
+.ontario-accordion__button-icon--close,
+.ontario-expander--active .ontario-accordion__button-icon--open {
+	display: none;
+}
+
+.ontario-expander--active ~ .ontario-accordion__content,
+.ontario-expander--active .ontario-accordion__button-icon--close {
+	display: block;
+}
+
+.ontario-accordions__container {
+	.ontario-h1,
+	.ontario-h2,
+	.ontario-h3,
+	.ontario-h4,
+	.ontario-h5,
+	p,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: spacing.$spacing-0;
+	}
+}

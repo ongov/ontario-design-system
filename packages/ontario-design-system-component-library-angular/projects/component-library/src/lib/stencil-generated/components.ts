@@ -7,6 +7,26 @@ import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 import { Components } from '@ontario-digital-service/ontario-design-system-component-library';
 
 @ProxyCmp({
+	inputs: ['accordionData', 'expandCollapseButton', 'isOpen', 'language', 'name'],
+})
+@Component({
+	selector: 'ontario-accordion',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['accordionData', 'expandCollapseButton', 'isOpen', 'language', 'name'],
+})
+export class OntarioAccordion {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioAccordion extends Components.OntarioAccordion {}
+
+@ProxyCmp({
 	inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
 })
 @Component({
