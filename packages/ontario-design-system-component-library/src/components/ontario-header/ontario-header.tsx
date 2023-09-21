@@ -679,14 +679,14 @@ export class OntarioHeader {
 										)}
 										<div class="ontario-application-subheader__menu-container">
 											{/* Desktop subheader links */}
-											{this.applicationHeaderInfoState.maxSubheaderDesktopLinks && (
+											{this.applicationHeaderInfoState?.maxSubheaderDesktopLinks && (
 												<ul
 													class={`${
 														isService ? 'ontario-service-subheader__menu' : 'ontario-application-subheader__menu'
 													} ontario-show-for-large`}
 												>
 													{this.menuItemState
-														?.slice(0, this.applicationHeaderInfoState.maxSubheaderDesktopLinks)
+														?.slice(0, this.applicationHeaderInfoState?.maxSubheaderDesktopLinks)
 														.map((item) =>
 															this.generateMenuItem(
 																item.href,
@@ -701,10 +701,10 @@ export class OntarioHeader {
 											)}
 
 											{/* Tablet subheader links */}
-											{this.applicationHeaderInfoState.maxSubheaderTabletLinks && (
+											{this.applicationHeaderInfoState?.maxSubheaderTabletLinks && (
 												<ul class="ontario-application-subheader__menu ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large">
 													{this.menuItemState
-														?.slice(0, this.applicationHeaderInfoState.maxSubheaderTabletLinks)
+														?.slice(0, this.applicationHeaderInfoState?.maxSubheaderTabletLinks)
 														.map((item) =>
 															this.generateMenuItem(
 																item.href,
@@ -719,7 +719,7 @@ export class OntarioHeader {
 											)}
 
 											{/* Desktop subheader links */}
-											{this.applicationHeaderInfoState.maxSubheaderMobileLinks && (
+											{this.applicationHeaderInfoState?.maxSubheaderMobileLinks && (
 												<ul class="ontario-application-subheader__menu ontario-show-for-small-only">
 													{this.menuItemState
 														?.slice(0, this.applicationHeaderInfoState.maxSubheaderMobileLinks)
@@ -738,15 +738,15 @@ export class OntarioHeader {
 
 											{/* Render menu button if menuItemState exists, and if there are items to display in a dropdown menu */}
 											{this.menuItemState !== undefined &&
-												this.applicationHeaderInfoState.maxSubheaderDesktopLinks !== this.menuItemState.length &&
+												this.applicationHeaderInfoState?.maxSubheaderDesktopLinks !== this.menuItemState.length &&
 												this.renderMenuButton('desktop')}
 
 											{this.menuItemState !== undefined &&
-												this.applicationHeaderInfoState.maxSubheaderTabletLinks !== this.menuItemState.length &&
+												this.applicationHeaderInfoState?.maxSubheaderTabletLinks !== this.menuItemState.length &&
 												this.renderMenuButton('tablet')}
 
 											{this.menuItemState !== undefined &&
-												this.applicationHeaderInfoState.maxSubheaderMobileLinks !== this.menuItemState.length &&
+												this.applicationHeaderInfoState?.maxSubheaderMobileLinks !== this.menuItemState.length &&
 												this.renderMenuButton('mobile')}
 										</div>
 									</div>
@@ -765,12 +765,12 @@ export class OntarioHeader {
 									{/* Ontario application header desktop menu dropdown links */}
 									<ul class="ontario-show-for-large">
 										{this.menuItemState
-											?.slice(this.applicationHeaderInfoState.maxSubheaderDesktopLinks, this.menuItemState.length)
+											?.slice(this.applicationHeaderInfoState?.maxSubheaderDesktopLinks, this.menuItemState.length)
 											.map((item: any, index) => {
 												return this.generateNavigationLinks(
 													item,
 													index,
-													this.applicationHeaderInfoState.maxSubheaderDesktopLinks,
+													this.applicationHeaderInfoState?.maxSubheaderDesktopLinks,
 													'app-desktop',
 												);
 											})}
@@ -779,12 +779,12 @@ export class OntarioHeader {
 									{/* Ontario application header tablet menu dropdown links */}
 									<ul class="ontario-show-for-medium ontario-hide-for-small ontario-hide-for-large">
 										{this.menuItemState
-											?.slice(this.applicationHeaderInfoState.maxSubheaderTabletLinks, this.menuItemState.length)
+											?.slice(this.applicationHeaderInfoState?.maxSubheaderTabletLinks, this.menuItemState.length)
 											.map((item, index) => {
 												return this.generateNavigationLinks(
 													item,
 													index,
-													this.applicationHeaderInfoState.maxSubheaderTabletLinks,
+													this.applicationHeaderInfoState?.maxSubheaderTabletLinks,
 													'app-tablet',
 												);
 											})}
@@ -793,12 +793,12 @@ export class OntarioHeader {
 									{/* Ontario application header mobile menu dropdown links */}
 									<ul class="ontario-show-for-small-only">
 										{this.menuItemState
-											?.slice(this.applicationHeaderInfoState.maxSubheaderMobileLinks, this.menuItemState.length)
+											?.slice(this.applicationHeaderInfoState?.maxSubheaderMobileLinks, this.menuItemState.length)
 											.map((item, index) => {
 												return this.generateNavigationLinks(
 													item,
 													index,
-													this.applicationHeaderInfoState.maxSubheaderMobileLinks,
+													this.applicationHeaderInfoState?.maxSubheaderMobileLinks,
 													'app-mobile',
 												);
 											})}
