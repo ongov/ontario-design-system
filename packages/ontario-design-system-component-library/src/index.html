@@ -28,6 +28,7 @@
 
 					<h2>On this page</h2>
 					<ol>
+						<li><a href="#accordion">Accordion</a></li>
 						<li><a href="#blockquotes">Blockquotes</a></li>
 						<li><a href="#buttons">Buttons</a></li>
 						<li><a href="#callout-aside">Callouts and Asides</a></li>
@@ -45,6 +46,24 @@
 						<li><a href="#step-indicator">Step indicator</a></li>
 					</ol>
 					<hr />
+
+					<!-- Accordion -->
+					<div>
+						<h2 id="accordion">Accordion</h2>
+						<ontario-accordion
+							name="My Accordion"
+							expand-collapse-button='{
+								"expandAllSectionsLabel": "Expand All",
+								"collapseAllSectionsLabel": "Collapse All"
+							}'
+							accordion-data='[
+								{"label": "Accordion 1", "content": "This is a string"},
+								{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"},
+								{"label": "Accordion 3", "accordionContentType": "html", "content": "<p>Some <em>sample</em> <strong>text</strong> <s>with</s> <u>lots </u><span style=\"font-size:24px\">of</span> <strong><em><u><s>formating</s></u></em></strong>!</p>"}
+							]'
+						></ontario-accordion>
+						<hr />
+					</div>
 
 					<!-- Blockquotes -->
 					<div>
@@ -498,7 +517,7 @@
 										"date4": "46"
 									}
 								},
-								{ 
+								{
 									"data": {
 										"business": "Total row",
 										"date1": "514",
@@ -581,7 +600,7 @@
 										"column6": "36,264,081"
 									}
 								},
-								{ 
+								{
 									"data" : {
 										"program": "Ministry total operating expense",
 										"column1": "6,713,690,314",

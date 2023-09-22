@@ -18,7 +18,7 @@
 .ontario-blockquote {
 	border-left: 4px solid colours.$ontario-greyscale-70;
 	font-family: typography.$ontario-font-raleway-modified;
-	font-size: globalFunctions.rem-calc(19);
+	font-size: globalFunctions.px-to-rem(19);
 	font-weight: fontWeights.$ontario-font-weights-normal;
 	letter-spacing: 0.025rem;
 	line-height: lineHeights.$ontario-line-height-8;
@@ -28,7 +28,7 @@
 	quotes: '\201C''\201D';
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
-		font-size: globalFunctions.rem-calc(18);
+		font-size: globalFunctions.px-to-rem(18);
 		letter-spacing: 0.03rem;
 		line-height: lineHeights.$ontario-line-height-7;
 		margin: spacing.$spacing-5 spacing.$spacing-0 spacing.$spacing-6 spacing.$spacing-0;
@@ -48,12 +48,12 @@
 }
 
 .ontario-blockquote--short {
-	font-size: globalFunctions.rem-calc(28);
+	font-size: globalFunctions.px-to-rem(28);
 	letter-spacing: 0.02rem;
 	line-height: lineHeights.$ontario-line-height-7;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
-		font-size: globalFunctions.rem-calc(23);
+		font-size: globalFunctions.px-to-rem(23);
 		line-height: lineHeights.$ontario-line-height-6;
 	}
 }
@@ -61,7 +61,7 @@
 .ontario-blockquote__attribution,
 .ontario-blockquote__byline {
 	display: block;
-	font-size: globalFunctions.rem-calc(16);
+	font-size: globalFunctions.px-to-rem(16);
 	letter-spacing: 0.025rem;
 	line-height: lineHeights.$ontario-line-height-8;
 	text-align: right;

@@ -49,11 +49,11 @@ There are two ways to install the Ontario Design System component library packag
    />
    <script
    	type="module"
-   	src="node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-component-library/ontario-design-system-component-library.esm.js"
+   	src="node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/ontario-design-system-components.esm.js"
    ></script>
    <script
    	nomodule
-   	src="node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-component-library/ontario-design-system-component-library.js"
+   	src="node_modules/@ontario-digital-service/ontario-design-system-component-library/dist/ontario-design-system-components/ontario-design-system-components.js"
    ></script>
    ```
 
@@ -61,20 +61,20 @@ There are two ways to install the Ontario Design System component library packag
 
 A quick and easy way to get started with the Web Components without having to use a package is to use the published CDN version. The CDN used in this example is Unpkg, but other CDNs should work.
 
-_Note_: The version number should be updated to match the version of the Web Components you want to use, for example, the version used here is `2.2.0`.
+_Note_: The version number should be updated to match the version of the Web Components you want to use, for example, the version used here is `2.7.0`.
 
 ```html
 <link
 	rel="stylesheet"
-	href="https://unpkg.com/@ontario-digital-service/ontario-design-system-global-styles@2.2.0/dist/styles/css/compiled/ontario-theme.css"
+	href="https://unpkg.com/@ontario-digital-service/ontario-design-system-global-styles@2.7.0/dist/styles/css/compiled/ontario-theme.css"
 />
 <script
 	type="module"
-	src="https://unpkg.com/@ontario-digital-service/ontario-design-system-component-library@2.2.0/dist/ontario-design-system-components/ontario-design-system-components.esm.js"
+	src="https://unpkg.com/@ontario-digital-service/ontario-design-system-component-library@2.7.0/dist/ontario-design-system-components/ontario-design-system-components.esm.js"
 ></script>
 <script
 	nomodule
-	src="https://unpkg.com/@ontario-digital-service/ontario-design-system-component-library@2.2.0/dist/ontario-design-system-components/ontario-design-system-components.js"
+	src="https://unpkg.com/@ontario-digital-service/ontario-design-system-component-library@2.7.0/dist/ontario-design-system-components/ontario-design-system-components.js"
 ></script>
 ```
 

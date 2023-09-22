@@ -1,7 +1,7 @@
 import { Component, Prop, State, Watch, h, Listen, Element, getAssetPath } from '@stencil/core';
 
 import { Input } from '../../utils/common/input/input';
-import { menuItems, applicationHeaderInfo, languageToggleOptions, ontarioMenuItems } from './ontario-header.interface';
+import { MenuItem, ApplicationHeaderInfo, LanguageToggleOptions, OntarioMenuItems } from './ontario-header.interface';
 
 import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
@@ -48,12 +48,12 @@ export class OntarioHeader {
 	 *    }'
 	 *	</ontario-header>
 	 */
-	@Prop() applicationHeaderInfo: applicationHeaderInfo | string;
+	@Prop() applicationHeaderInfo: ApplicationHeaderInfo | string;
 
 	/**
 	 * The items that will go inside the menu.
 	 */
-	@Prop() menuItems: menuItems[] | string;
+	@Prop() menuItems: MenuItem[] | string;
 
 	/**
 	 * Option to disable fetching of the dynamic menu from the Ontario Header API
@@ -96,12 +96,12 @@ export class OntarioHeader {
 	 * >
 	 * </ontario-header>
 	 */
-	@Prop() languageToggleOptions?: languageToggleOptions | string;
+	@Prop() languageToggleOptions?: LanguageToggleOptions | string;
 
 	/**
 	 * A custom function to pass to the language toggle button.
 	 */
-	@Prop() customLanguageToggle?: Function;
+	@Prop() customLanguageToggle?: (event: globalThis.Event) => never;
 
 	/**
 	 * The language of the component.
@@ -112,7 +112,7 @@ export class OntarioHeader {
 	/**
 	 * The application header information is reassigned to applicationHeaderInfoState for parsing
 	 */
-	@State() private applicationHeaderInfoState: applicationHeaderInfo;
+	@State() private applicationHeaderInfoState: ApplicationHeaderInfo;
 
 	/**
 	 * The menuItems is reassigned to itemState for parsing
@@ -140,7 +140,7 @@ export class OntarioHeader {
 	 *			}]'>
 	 *	</ontario-header>
 	 */
-	@State() private menuItemState: menuItems[];
+	@State() private menuItemState: MenuItem[];
 
 	/**
 	 * Check to see if menu is dynamic or static
@@ -158,7 +158,7 @@ export class OntarioHeader {
 	 *		}'
 	 *	</ontario-header>
 	 */
-	@State() private languageState: languageToggleOptions;
+	@State() private languageState: LanguageToggleOptions;
 
 	/**
 	 * Toggler for the menu and the search button
@@ -291,7 +291,7 @@ export class OntarioHeader {
 			const apiUrl = process.env.ONTARIO_HEADER_API_URL as string;
 			const response = await fetch(apiUrl)
 				.then((response) => response.json())
-				.then((json) => json.linkset[0].item as ontarioMenuItems[])
+				.then((json) => json.linkset[0].item as OntarioMenuItems[])
 				.catch(() => {
 					console.error('Unable to retrieve data from Ontario Menu API');
 					return [];
@@ -399,7 +399,7 @@ export class OntarioHeader {
 	 * @param viewportSize - the size of the viewport. It can be set to `desktop`, `tablet` or `mobile`.
 	 * @returns
 	 */
-	private generateNavigationLinks(item: menuItems, index: number, links: number | undefined, viewportSize: string) {
+	private generateNavigationLinks(item: MenuItem, index: number, links: number | undefined, viewportSize: string) {
 		const lastLink =
 			index + 1 === (links ? this.menuItemState.length - links : this.menuItemState.length) ? true : false;
 
