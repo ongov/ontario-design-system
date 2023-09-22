@@ -32,6 +32,10 @@ $ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-r
 	display: block;
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-4;
 	padding: spacing.$spacing-0 spacing.$spacing-6 spacing.$spacing-0;
+
+	&:last-of-type {
+		margin-bottom: spacing.$spacing-0;
+	}
 }
 
 .ontario-radios__input {

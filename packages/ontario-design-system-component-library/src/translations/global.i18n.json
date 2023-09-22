@@ -140,5 +140,19 @@
 			"en": "Close search bar",
 			"fr": "Fermer la barre de recherche"
 		}
+	},
+	"accordion": {
+		"expand": {
+			"en": "Expand all",
+			"fr": "Agrandir tout"
+		},
+		"collapse": {
+			"en": "Collapse all",
+			"fr": "Réduire tout"
+		},
+		"expandCollapseAriaLabel": {
+			"en": "Expand or collapse the accordion",
+			"fr": "Agrandissez ou réduisez l'accordéon"
+		}
 	}
 }

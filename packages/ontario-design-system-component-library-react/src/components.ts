@@ -8,6 +8,7 @@ import type { JSX } from '@ontario-digital-service/ontario-design-system-compone
 import { defineCustomElements } from '@ontario-digital-service/ontario-design-system-component-library/loader';
 
 defineCustomElements();
+export const OntarioAccordion = /*@__PURE__*/createReactComponent<JSX.OntarioAccordion, HTMLOntarioAccordionElement>('ontario-accordion');
 export const OntarioAside = /*@__PURE__*/createReactComponent<JSX.OntarioAside, HTMLOntarioAsideElement>('ontario-aside');
 export const OntarioBackToTop = /*@__PURE__*/createReactComponent<JSX.OntarioBackToTop, HTMLOntarioBackToTopElement>('ontario-back-to-top');
 export const OntarioBlockquote = /*@__PURE__*/createReactComponent<JSX.OntarioBlockquote, HTMLOntarioBlockquoteElement>('ontario-blockquote');

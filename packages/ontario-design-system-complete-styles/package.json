@@ -1,6 +1,6 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-complete-styles",
-	"version": "2.7.0-alpha.3",
+	"version": "2.7.0",
 	"private": false,
 	"description": "Complete styles package for the Ontario Design System containing all SASS and CSS for use independently of the Component Library.",
 	"license": "Apache-2.0",
@@ -19,9 +19,9 @@
 		"scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js --watch scss -o css"
 	},
 	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-component-library": "2.7.0-alpha.3",
-		"@ontario-digital-service/ontario-design-system-design-tokens": "2.7.0-alpha.2",
-		"@ontario-digital-service/ontario-design-system-global-styles": "2.7.0-alpha.2",
+		"@ontario-digital-service/ontario-design-system-component-library": "2.7.0",
+		"@ontario-digital-service/ontario-design-system-design-tokens": "2.7.0",
+		"@ontario-digital-service/ontario-design-system-global-styles": "2.7.0",
 		"gulp-flatten": "^0.4.0"
 	},
 	"devDependencies": {

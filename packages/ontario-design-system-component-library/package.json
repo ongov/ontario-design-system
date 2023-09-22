@@ -1,6 +1,6 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-component-library",
-	"version": "2.7.0-alpha.3",
+	"version": "2.7.0",
 	"private": false,
 	"description": "Ontario Design System Component Library",
 	"license": "Apache-2.0",
@@ -35,12 +35,12 @@
 		"test:unit": "stencil test --spec"
 	},
 	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-global-styles": "2.7.0-alpha.2",
-		"@stencil/core": "2.20.0"
+		"@ontario-digital-service/ontario-design-system-global-styles": "2.7.0",
+		"@stencil/core": "^4.1.0"
 	},
 	"devDependencies": {
-		"@stencil/angular-output-target": "^0.5.0",
-		"@stencil/react-output-target": "0.3.1",
+		"@stencil/angular-output-target": "^0.8.1",
+		"@stencil/react-output-target": "0.5.3",
 		"@stencil/sass": "^2.0.1",
 		"@types/jest": "^27.0.3",
 		"@types/node": "^18.14.2",
