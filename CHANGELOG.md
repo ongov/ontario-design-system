@@ -1,3 +1,25 @@
+# 3.0.0-alpha.1 (2023-09-22)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** update event function signature to match the types expected a18275f
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** update event signatures on ontario-checkboxes ed3afae
+- **global-styles:** add px-to-rem function and mark rem-calc deprecated ea8124b
+- **web-components:** update readme script links to point to correct paths b896904
+
+- **@ontario-digital-service/ontario-design-system-component-library:** feat!: upgrade to Stencil v4.1.0 1d6a1a9, closes /github.com/ionic-team/stencil/blob/main/BREAKING_CHANGES.md#stencil-v400
+- **@ontario-digital-service/ontario-design-system-component-library:** feat!: upgrade to Stencil v3.0.0 cdc25c8, closes /github.com/ionic-team/stencil/blob/main/BREAKING_CHANGES.md#stencil-v300
+
+### BREAKING CHANGES
+
+- **@ontario-digital-service/ontario-design-system-component-library:** Upgrading StencilJS next major version, v4.1.0.
+
+Although there is not a big change in Stencil it might have unforeseen side-effects.
+
+- **@ontario-digital-service/ontario-design-system-component-library:** Upgrading StencilJS next major version.
+
+Although there is not a big change in Stencil it might have unforeseen side-effects.
+
 # 2.7.0 (2023-08-17)
 
 ### Bug Fixes
