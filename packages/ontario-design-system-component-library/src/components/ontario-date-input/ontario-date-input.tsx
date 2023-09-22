@@ -64,7 +64,7 @@ export class OntarioDateInput {
 	/**
 	 * A number value indicating minimum value allowed for year input field of the date component.
 	 *
-	 * This is optional. If no prop is passed, it will default to `1`.
+	 * This is optional. If no prop is passed, it will default to `999`.
 	 */
 	@Prop() minYear?: number;
 

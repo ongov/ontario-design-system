@@ -16,7 +16,7 @@ describe('ontario-date-input', () => {
 			inputFields = await page.findAll('ontario-date-input >>> input');
 		});
 
-		it('should all three date input fields (i.e day, month and year)', async () => {
+		it('should render all three date input fields (i.e day, month and year)', async () => {
 			expect(component).toHaveClass('hydrated');
 			expect(inputFields.length).toEqual(3);
 			expect(inputFields[0].id).toEqual('year-date-id-example');

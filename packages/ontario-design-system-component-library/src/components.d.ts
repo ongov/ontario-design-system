@@ -243,7 +243,7 @@ export namespace Components {
          */
         "maxYear"?: number;
         /**
-          * A number value indicating minimum value allowed for year input field of the date component.  This is optional. If no prop is passed, it will default to `1`.
+          * A number value indicating minimum value allowed for year input field of the date component.  This is optional. If no prop is passed, it will default to `999`.
          */
         "minYear"?: number;
         /**
@@ -2953,7 +2953,7 @@ declare namespace LocalJSX {
          */
         "maxYear"?: number;
         /**
-          * A number value indicating minimum value allowed for year input field of the date component.  This is optional. If no prop is passed, it will default to `1`.
+          * A number value indicating minimum value allowed for year input field of the date component.  This is optional. If no prop is passed, it will default to `999`.
          */
         "minYear"?: number;
         /**
