@@ -40,8 +40,8 @@
 	justify-content: flex-end;
 
 	a {
-		font-size: globalFunctions.rem-calc(16);
-		line-height: globalFunctions.rem-calc(22);
+		font-size: globalFunctions.px-to-rem(16);
+		line-height: globalFunctions.px-to-rem(22);
 		height: auto;
 		padding: spacing.$spacing-2 spacing.$spacing-3;
 	}
@@ -154,17 +154,17 @@
 	color: colours.$ontario-colour-white;
 	display: block;
 	font-family: typography.$ontario-font-open-sans;
-	font-size: globalFunctions.rem-calc(18);
+	font-size: globalFunctions.px-to-rem(18);
 	font-weight: fontWeights.$ontario-font-weights-semi-bold;
 	height: globalVariables.$standard-input-height;
-	line-height: globalFunctions.rem-calc(23);
+	line-height: globalFunctions.px-to-rem(23);
 	padding: spacing.$spacing-3;
 	text-decoration: none;
 	white-space: nowrap;
 
 	&.ontario-link--active {
 		border-radius: globalVariables.$global-radius globalVariables.$global-radius 0 0;
-		border-bottom: globalFunctions.rem-calc(4) solid colours.$ontario-colour-white;
+		border-bottom: globalFunctions.px-to-rem(4) solid colours.$ontario-colour-white;
 	}
 
 	&:hover {

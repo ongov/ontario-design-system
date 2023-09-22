@@ -27,4 +27,4 @@ export interface OntarioMenuItems {
 	'drupal-menu-machine-name': DrupalMenuMachineName[];
 }
 
-export type OntarioHeaderTypes = 'application' | 'ontario' | 'service';
+export type OntarioHeaderType = 'application' | 'ontario' | 'serviceOntario';

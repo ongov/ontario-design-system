@@ -6,7 +6,7 @@ import {
 	ApplicationHeaderInfo,
 	LanguageToggleOptions,
 	OntarioMenuItems,
-	OntarioHeaderTypes,
+	OntarioHeaderType,
 } from './ontario-header.interface';
 
 import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
@@ -25,7 +25,7 @@ import translations from '../../translations/global.i18n.json';
 	styleUrls: {
 		ontario: 'ontario-header.scss',
 		application: 'ontario-application-header.scss',
-		service: 'ontario-service-header.scss',
+		serviceOntario: 'service-ontario-header.scss',
 	},
 	shadow: true,
 	assetsDirs: ['./assets'],
@@ -36,7 +36,7 @@ export class OntarioHeader {
 	/**
 	 * The type of header.
 	 */
-	@Prop() type?: OntarioHeaderTypes = 'application';
+	@Prop() type?: OntarioHeaderType = 'application';
 
 	/**
 	 * Information pertaining to the application header. This is only necessary for the 'application' header type.
@@ -44,16 +44,16 @@ export class OntarioHeader {
 	 * This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.
 	 *
 	 * @example
-	 * 	<ontario-header
-	 *		type="application"
-	 *      application-header-info='{
-	 * 			"title": "Application name",
-	 * 			"href": "/application-homepage",
-	 * 			"maxSubheaderDesktopLinks": "3",
-	 * 			"maxSubheaderTabletLinks": "2",
-	 * 			"maxSubheaderMobileLinks": "1"
-	 *    }'
-	 *	</ontario-header>
+	 *  <ontario-header
+	 *    type="application"
+	 *    application-header-info='{
+	 *      "title": "Application name",
+	 *      "href": "/application-homepage",
+	 *      "maxSubheaderDesktopLinks": "3",
+	 *      "maxSubheaderTabletLinks": "2",
+	 *      "maxSubheaderMobileLinks": "1"
+	 *    }'>
+	 *  </ontario-header>
 	 */
 	@Prop() applicationHeaderInfo: ApplicationHeaderInfo | string;
 
@@ -483,7 +483,7 @@ export class OntarioHeader {
 	}
 
 	render() {
-		const isService = this.type === 'service';
+		const isServiceOntarioType = this.type === 'serviceOntario';
 
 		if (this.type == 'ontario') {
 			return (
@@ -660,10 +660,12 @@ export class OntarioHeader {
 
 						{/* Ontario application header subhearder */}
 						<div class="ontario-application-subheader-menu__container">
-							<section class={`ontario-application-subheader ${isService ? 'ontario-service-subheader' : ''}`}>
+							<section
+								class={`ontario-application-subheader ${isServiceOntarioType ? 'ontario-service-subheader' : ''}`}
+							>
 								<div class="ontario-row">
 									<div class="ontario-columns ontario-small-12 ontario-application-subheader__container">
-										{!isService ? (
+										{!isServiceOntarioType ? (
 											<p class="ontario-application-subheader__heading">
 												<a href={this.applicationHeaderInfoState?.href}>{this.applicationHeaderInfoState?.title}</a>
 											</p>
@@ -682,7 +684,9 @@ export class OntarioHeader {
 											{this.applicationHeaderInfoState?.maxSubheaderDesktopLinks && (
 												<ul
 													class={`${
-														isService ? 'ontario-service-subheader__menu' : 'ontario-application-subheader__menu'
+														isServiceOntarioType
+															? 'ontario-service-subheader__menu'
+															: 'ontario-application-subheader__menu'
 													} ontario-show-for-large`}
 												>
 													{this.menuItemState

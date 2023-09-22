@@ -444,7 +444,7 @@ describe('ontario-header', () => {
 		const page = await newSpecPage({
 			components: [OntarioHeader],
 			html: `<ontario-header
-				type="service"
+				type="serviceOntario"
 				application-header-info='{
 					"title": "Application name",
 					"href": "/",
@@ -482,7 +482,7 @@ describe('ontario-header', () => {
 
 		expect(page.root).toEqualHtml(`
     		<ontario-header
-        	type="service"
+        	type="serviceOntario"
 					application-header-info='{
 					"title": "Application name",
 					"href": "/",

@@ -13,7 +13,17 @@
 		<ontario-critical-alert>
 			<a href="https://designsystem.ontario.ca/">Ontario Design System</a> web components now available!!!
 		</ontario-critical-alert>
-		<ontario-header type="ontario"></ontario-header>
+		<ontario-header
+			type="serviceOntario"
+			application-header-info='{
+				"title": "Application name",
+				"href": "/application-homepage",
+				"maxSubheaderDesktopLinks": "3",
+				"maxSubheaderTabletLinks": "2",
+				"maxSubheaderMobileLinks": "1"
+			}'
+		>
+		</ontario-header>
 
 		<main>
 			<div class="ontario-row">
@@ -311,7 +321,7 @@
 							<ontario-button onclick="activateHeaderType('application')">
 								Activate the Application Header
 							</ontario-button>
-							<ontario-button onclick="activateHeaderType('service')">
+							<ontario-button onclick="activateHeaderType('serviceOntario')">
 								Activate the ServiceOntario Header
 							</ontario-button>
 						</div>
