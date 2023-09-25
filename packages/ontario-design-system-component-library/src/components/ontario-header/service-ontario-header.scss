@@ -1,0 +1,235 @@
+@use 'sass:math';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as
+	globalVariables;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
+	spacing;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
+	colours;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables'
+	as breakpoints;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as
+	typography;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions'
+	as globalFunctions;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables'
+	as fontWeights;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as
+	zIndex;
+@use './ontario-application-header.scss';
+
+.ontario-service-header {
+	height: 3.125rem;
+	z-index: calc(zIndex.$ontario-z-index-above-high + 1);
+}
+
+.ontario-service-header__logo,
+.ontario-service-header__logo a,
+.ontario-service-header__lang-toggle,
+.ontario-service-subheader__container,
+.ontario-service-subheader__menu-container,
+.ontario-service-subheader__menu {
+	display: flex;
+}
+
+.ontario-service-header__logo img {
+	width: 100px;
+	height: 25px;
+}
+
+.ontario-service-header__lang-toggle {
+	justify-content: flex-end;
+
+	a {
+		font-size: globalFunctions.px-to-rem(16);
+		line-height: globalFunctions.px-to-rem(22);
+		height: auto;
+		padding: spacing.$spacing-2 spacing.$spacing-3;
+	}
+}
+
+.ontario-service-subheader {
+	padding: spacing.$spacing-4 spacing.$spacing-0;
+	background-color: colours.$ontario-colour-service-ontario-header-brand;
+	overflow: hidden;
+	position: relative;
+	z-index: calc(zIndex.$ontario-z-index-above-high + 1);
+
+	@media screen and (min-width: breakpoints.$medium-breakpoint) {
+		z-index: zIndex.$ontario-z-index-neutral;
+	}
+
+	& > .ontario-row {
+		position: relative;
+	}
+}
+
+.ontario-service-subheader .ontario-header-button {
+	display: flex;
+
+	&:last-of-type {
+		display: none;
+	}
+}
+
+.ontario-service-subheader .ontario-header-button {
+	background-color: colours.$ontario-colour-service-ontario-header-brand;
+
+	.ontario-icon {
+		width: 2rem;
+		height: 2rem;
+		margin-bottom: spacing.$spacing-0;
+	}
+
+	&:hover {
+		background-color: colours.$ontario-colour-service-ontario-header-hover;
+	}
+
+	&:active {
+		background-color: colours.$ontario-colour-service-ontario-header-active;
+	}
+
+	&:focus {
+		box-shadow: 0 0 0 4px colours.$ontario-colour-service-ontario-header-focus;
+	}
+}
+.ontario-service-subheader__link {
+	text-decoration: none;
+}
+
+.ontario-service-subheader__heading-container {
+	a & {
+		color: colours.$ontario-colour-white;
+		font-weight: fontWeights.$ontario-font-weights-semi-bold;
+		text-decoration: none;
+
+		&:hover,
+		&:active,
+		&:visited {
+			color: colours.$ontario-colour-white;
+			text-decoration: underline;
+		}
+
+		&:focus {
+			box-shadow: 0 0 0 4px colours.$ontario-colour-service-ontario-header-focus;
+		}
+	}
+}
+
+.ontario-service-subheader__heading {
+	@extend %h3-styles;
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	padding: spacing.$spacing-0 spacing.$spacing-0 math.div(spacing.$spacing-1, 2) spacing.$spacing-0;
+	margin-bottom: spacing.$spacing-0;
+	text-decoration: none;
+}
+
+.ontario-service-subheader__description {
+	padding: math.div(spacing.$spacing-1, 2) spacing.$spacing-0 spacing.$spacing-1 spacing.$spacing-0;
+	@extend %h5-styles;
+	margin-bottom: spacing.$spacing-0;
+	color: colours.$ontario-colour-white;
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	text-decoration: none;
+}
+
+.ontario-service-subheader__container {
+	align-items: center;
+	justify-content: space-between;
+}
+
+.ontario-service-subheader__menu {
+	list-style: none;
+	margin: spacing.$spacing-0;
+	padding-left: spacing.$spacing-0;
+	align-items: center;
+}
+
+.ontario-service-subheader__menu li {
+	padding: spacing.$spacing-0;
+	margin-left: spacing.$spacing-4;
+}
+
+.ontario-service-subheader__menu a {
+	border-radius: globalVariables.$global-radius;
+	color: colours.$ontario-colour-white;
+	display: block;
+	font-family: typography.$ontario-font-open-sans;
+	font-size: globalFunctions.px-to-rem(18);
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	height: globalVariables.$standard-input-height;
+	line-height: globalFunctions.px-to-rem(23);
+	padding: spacing.$spacing-3;
+	text-decoration: none;
+	white-space: nowrap;
+
+	&.ontario-link--active {
+		border-radius: globalVariables.$global-radius globalVariables.$global-radius 0 0;
+		border-bottom: globalFunctions.px-to-rem(4) solid colours.$ontario-colour-white;
+	}
+
+	&:hover {
+		color: colours.$ontario-colour-white;
+		background-color: colours.$ontario-colour-service-ontario-header-hover;
+	}
+
+	&:active {
+		color: colours.$ontario-colour-white;
+		background-color: colours.$ontario-colour-service-ontario-header-active;
+	}
+
+	&:focus {
+		box-shadow: 0 0 0 4px colours.$ontario-colour-service-ontario-header-focus;
+	}
+}
+
+.ontario-overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(colours.$ontario-colour-black, 0.6);
+	width: 100%;
+	height: 100%;
+	z-index: zIndex.$ontario-z-index-above-medium;
+}
+
+.ontario-navigation--open {
+	.ontario-service-subheader .ontario-header-button:first-of-type {
+		display: none;
+	}
+
+	.ontario-service-subheader .ontario-header-button:last-of-type {
+		display: flex;
+	}
+
+	@media screen and (max-width: breakpoints.$medium-breakpoint) {
+		.ontario-service-subheader-menu__container {
+			position: relative;
+			z-index: calc(zIndex.$ontario-z-index-above-medium + 1);
+		}
+	}
+
+	.ontario-overlay {
+		display: block;
+
+		@media screen and (min-width: breakpoints.$medium-breakpoint) {
+			display: none;
+		}
+	}
+}
+
+.ontario-colour-service-ontario-header-brand {
+	background-color: colours.$ontario-colour-service-ontario-header-brand;
+}
+
+.ontario-colour-service-ontario-header-focus {
+	background-color: colours.$ontario-colour-service-ontario-header-focus;
+}
+
+.ontario-colour-service-ontario-header-hover {
+	background-color: colours.$ontario-colour-service-ontario-header-hover;
+}
+
+.ontario-colour-service-ontario-header-active {
+	background-color: colours.$ontario-colour-service-ontario-header-active;
+}

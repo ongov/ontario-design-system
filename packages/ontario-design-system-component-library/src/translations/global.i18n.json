@@ -124,6 +124,10 @@
 			"en": "Search",
 			"fr": "Rechercher"
 		},
+		"serviceOntario": {
+			"en": "ServiceOntario",
+			"fr": "ServiceOntario"
+		},
 		"openMenu": {
 			"en": "Show navigation menu",
 			"fr": "Ouvrir le menu de navigation"
