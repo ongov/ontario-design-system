@@ -72,6 +72,30 @@ Example of passing custom date validation function to modify validation logic or
 
 ## Custom property types
 
+### DateValidatorReturnType
+
+The `dateValidator` function returns `DateValidatorReturnType` for custom date input validation. Below is example of dateValidator function.
+
+```html
+<script>
+	function handleDateValidation(day, month, year) {
+		return {
+			errorMessage: 'Invalid Error',
+			dayInvalid: true,
+			monthInvalid: false,
+			yearInvalid: false,
+		};
+	}
+</script>
+```
+
+| Property       | Type      | Description                                | Required |
+| -------------- | --------- | ------------------------------------------ | -------- |
+| `errorMessage` | `string`  | Error message to display for invalid date. | NO       |
+| `dayInvalid`   | `boolean` | Indicate if day is invalid                 | YES      |
+| `monthInvalid` | `boolean` | Indicate if month is invalid               | YES      |
+| `yearInvalid`  | `boolean` | Indicate if year is invalid                | YES      |
+
 ### caption
 
 The `caption` property is used to render the label for the ontario-input. It can be passed either a string or an object. If no `captionType` needs to be specified, it can be passed as a string.
