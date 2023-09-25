@@ -36,6 +36,7 @@ import {
 	ApplicationHeaderInfo,
 	LanguageToggleOptions,
 	MenuItem,
+	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 import { IconColour, IconSize } from './components/ontario-icon/icon.types';
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
@@ -72,6 +73,7 @@ export {
 	ApplicationHeaderInfo,
 	LanguageToggleOptions,
 	MenuItem,
+	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 export { IconColour, IconSize } from './components/ontario-icon/icon.types';
 export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
@@ -341,7 +343,7 @@ export namespace Components {
 	interface OntarioHeader {
 		/**
 		 * Information pertaining to the application header. This is only necessary for the 'application' header type.  This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.
-		 * @example 	<ontario-header 	type="application"      application-header-info='{ 			"name": "Application name", 			"href": "/application-homepage" 			"maxSubheaderDesktopLinks": "3", 			"maxSubheaderTabletLinks": "2", 			"maxSubheaderMobileLinks": "1"    }' </ontario-header>
+		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage",      "maxSubheaderDesktopLinks": "3",      "maxSubheaderTabletLinks": "2",      "maxSubheaderMobileLinks": "1"    }'>  </ontario-header>
 		 */
 		applicationHeaderInfo: ApplicationHeaderInfo | string;
 		/**
@@ -369,7 +371,7 @@ export namespace Components {
 		/**
 		 * The type of header.
 		 */
-		type?: 'application' | 'ontario';
+		type?: OntarioHeaderType;
 	}
 	interface OntarioHintExpander {
 		/**
@@ -2878,7 +2880,7 @@ declare namespace LocalJSX {
 	interface OntarioHeader {
 		/**
 		 * Information pertaining to the application header. This is only necessary for the 'application' header type.  This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.
-		 * @example 	<ontario-header 	type="application"      application-header-info='{ 			"name": "Application name", 			"href": "/application-homepage" 			"maxSubheaderDesktopLinks": "3", 			"maxSubheaderTabletLinks": "2", 			"maxSubheaderMobileLinks": "1"    }' </ontario-header>
+		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage",      "maxSubheaderDesktopLinks": "3",      "maxSubheaderTabletLinks": "2",      "maxSubheaderMobileLinks": "1"    }'>  </ontario-header>
 		 */
 		applicationHeaderInfo?: ApplicationHeaderInfo | string;
 		/**
@@ -2906,7 +2908,7 @@ declare namespace LocalJSX {
 		/**
 		 * The type of header.
 		 */
-		type?: 'application' | 'ontario';
+		type?: OntarioHeaderType;
 	}
 	interface OntarioHintExpander {
 		/**

@@ -13,7 +13,17 @@
 		<ontario-critical-alert>
 			<a href="https://designsystem.ontario.ca/">Ontario Design System</a> web components now available!!!
 		</ontario-critical-alert>
-		<ontario-header type="ontario"></ontario-header>
+		<ontario-header
+			type="serviceOntario"
+			application-header-info='{
+				"title": "Application name",
+				"href": "/application-homepage",
+				"maxSubheaderDesktopLinks": "3",
+				"maxSubheaderTabletLinks": "2",
+				"maxSubheaderMobileLinks": "1"
+			}'
+		>
+		</ontario-header>
 
 		<main>
 			<div class="ontario-row">
@@ -35,6 +45,7 @@
 						<li><a href="#checkboxes">Checkboxes</a></li>
 						<li><a href="#dropdown-lists">Dropdown lists</a></li>
 						<li><a href="#fieldsets">Fieldsets</a></li>
+						<li><a href="#header">Header</a></li>
 						<li><a href="#icons">Icons</a></li>
 						<li><a href="#loading-indicator">Loading indicator</a></li>
 						<li><a href="#page-alerts">Page alerts</a></li>
@@ -298,6 +309,22 @@
 								input-width="7-char-width"
 							></ontario-input>
 						</ontario-fieldset>
+						<hr />
+					</div>
+
+					<!-- Buttons -->
+					<div>
+						<h2 id="header">Header</h2>
+						<div>
+							<h3 class="ontario-h4">Change the page header</h3>
+							<ontario-button onclick="activateHeaderType('ontario')">Activate the Ontario.ca Header</ontario-button>
+							<ontario-button onclick="activateHeaderType('application')">
+								Activate the Application Header
+							</ontario-button>
+							<ontario-button onclick="activateHeaderType('serviceOntario')">
+								Activate the ServiceOntario Header
+							</ontario-button>
+						</div>
 						<hr />
 					</div>
 
@@ -861,6 +888,11 @@
 		<script>
 			function testFunction() {
 				alert('HELLO WORLD!');
+			}
+
+			function activateHeaderType(headerType) {
+				const ontarioHeaderElement = document.querySelector('ontario-header');
+				ontarioHeaderElement.type = headerType;
 			}
 		</script>
 	</body>

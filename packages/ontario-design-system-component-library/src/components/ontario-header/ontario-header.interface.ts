@@ -26,3 +26,5 @@ export interface OntarioMenuItems {
 	'drupal-menu-hierarchy': string[];
 	'drupal-menu-machine-name': DrupalMenuMachineName[];
 }
+
+export type OntarioHeaderType = 'application' | 'ontario' | 'serviceOntario';
