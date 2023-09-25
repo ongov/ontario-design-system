@@ -36,7 +36,7 @@ Example of date input component
 Example of passing custom date validation function to modify validation logic or providing custom error strings.
 
 ```html
-<ontario-date-input date-validator="handleDateValidation()"></ontario-date-input>
+<ontario-date-input></ontario-date-input>
 
 <script>
 	function handleDateValidation(day, month, year) {
@@ -45,10 +45,19 @@ Example of passing custom date validation function to modify validation logic or
 		let monthInvalid = false;
 		let yearInvalid = false;
 
-		if (day <= 0 && month <= 0; && year <= 0) {
+		if (day <= 0) {
 			dayInvalid = true;
+		}
+
+		if (month <= 0) {
 			monthInvalid = true;
+		}
+
+		if (year <= 0) {
 			yearInvalid = true;
+		}
+
+		if (dayInvalid || monthInvalid || yearInvalid) {
 			error = 'Invalid date.';
 		}
 
@@ -56,6 +65,8 @@ Example of passing custom date validation function to modify validation logic or
 
 		return { errorMessage: error, dayInvalid, monthInvalid, yearInvalid };
 	}
+
+	document.querySelector('ontario-date-input').dateValidator = handleDateValidation;
 </script>
 ```
 
