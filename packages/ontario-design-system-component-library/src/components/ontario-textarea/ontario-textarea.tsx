@@ -101,17 +101,17 @@ export class OntarioTextarea implements Input {
 	/**
 	 * Used to add a custom function to the textarea onChange event.
 	 */
-	@Prop() customOnChange?: (event: globalThis.Event) => never;
+	@Prop() customOnChange?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the textarea onBlur event.
 	 */
-	@Prop() customOnBlur?: (event: globalThis.Event) => never;
+	@Prop() customOnBlur?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the textarea onFocus event.
 	 */
-	@Prop() customOnFocus?: (event: globalThis.Event) => never;
+	@Prop() customOnFocus?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used for the `aria-describedby` value of the textarea. This will match with the id of the hint text.

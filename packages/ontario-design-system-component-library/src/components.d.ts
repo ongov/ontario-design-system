@@ -203,15 +203,15 @@ export namespace Components {
 		/**
 		 * Used to add a custom function to the checkbox onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the checkbox onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the checkbox onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * Used to include the ontario-hint-expander component for the checkbox group. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-checkboxes   caption='{     "captionText": "Checkbox legend",     "captionType": "heading",   }   name='ontario-checkboxes'   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label", 		"elementId": "checkbox-1" 	}   }]'   hint-expander='{    "hint": "Hint expander for the checkbox group",    "content": "Example hint expander content for the checkbox group"   }'   required="true" > </ontario-checkboxes>
@@ -255,15 +255,15 @@ export namespace Components {
 		/**
 		 * Used to add a custom function to the dropdown onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the dropdown onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the dropdown onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * The ID for the dropdown list. If no ID is provided, one will be generated.
 		 */
@@ -349,7 +349,7 @@ export namespace Components {
 		/**
 		 * A custom function to pass to the language toggle button.
 		 */
-		customLanguageToggle?: (event: globalThis.Event) => never;
+		customLanguageToggle?: (event: globalThis.Event) => void;
 		/**
 		 * Option to disable fetching of the dynamic menu from the Ontario Header API
 		 * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
@@ -1493,15 +1493,15 @@ export namespace Components {
 		/**
 		 * Used to add a custom function to the textarea onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the textarea onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the textarea onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
 		 */
@@ -1552,7 +1552,7 @@ export namespace Components {
 		/**
 		 * A custom function to pass to the language toggle button.  This is optional.
 		 */
-		customLanguageToggle?: (event: globalThis.Event) => never;
+		customLanguageToggle?: (event: globalThis.Event) => void;
 		language: Language | string;
 		/**
 		 * The size of the language toggle button.  If no prop is passed, it will be set to the `default` size.
@@ -1611,15 +1611,15 @@ export namespace Components {
 		/**
 		 * Used to add a custom function to the radio input onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the radio input onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the radio input onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * Used to include the ontario-hint-expander component for the radio button group. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }' 	 name="radios"   options='[ 	   {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 1", 		      "content": "Example hint expander content for radio option 1." 	  }     }   ]'   hint-expander='{     "hint": "Hint expander for the radio button group",     "content": "Example hint expander content for the radio button group."   }'   required="true" > </ontario-radio-buttons>
@@ -1659,7 +1659,7 @@ export namespace Components {
 		/**
 		 * Used to add a custom function to the back button onClick event.  If this function is passed in, the back element will display as a button. The back element will require either the backButtonURL prop or the customOnClick prop to be passed in order for the back element to display.
 		 */
-		customOnClick?: (event: globalThis.Event) => never;
+		customOnClick?: (event: globalThis.Event) => void;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 		 */
@@ -1714,15 +1714,15 @@ export namespace Components {
 		/**
 		 * Used to add a custom function to the textarea onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the textarea onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the textarea onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * The unique identifier of the textarea. This is optional - if no ID is passed, one will be generated.
 		 */
@@ -2716,15 +2716,15 @@ declare namespace LocalJSX {
 		/**
 		 * Used to add a custom function to the checkbox onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the checkbox onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the checkbox onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * Used to include the ontario-hint-expander component for the checkbox group. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-checkboxes   caption='{     "captionText": "Checkbox legend",     "captionType": "heading",   }   name='ontario-checkboxes'   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label", 		"elementId": "checkbox-1" 	}   }]'   hint-expander='{    "hint": "Hint expander for the checkbox group",    "content": "Example hint expander content for the checkbox group"   }'   required="true" > </ontario-checkboxes>
@@ -2780,15 +2780,15 @@ declare namespace LocalJSX {
 		/**
 		 * Used to add a custom function to the dropdown onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the dropdown onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the dropdown onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * The ID for the dropdown list. If no ID is provided, one will be generated.
 		 */
@@ -2886,7 +2886,7 @@ declare namespace LocalJSX {
 		/**
 		 * A custom function to pass to the language toggle button.
 		 */
-		customLanguageToggle?: (event: globalThis.Event) => never;
+		customLanguageToggle?: (event: globalThis.Event) => void;
 		/**
 		 * Option to disable fetching of the dynamic menu from the Ontario Header API
 		 * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
@@ -4029,15 +4029,15 @@ declare namespace LocalJSX {
 		/**
 		 * Used to add a custom function to the textarea onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the textarea onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the textarea onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
 		 */
@@ -4100,7 +4100,7 @@ declare namespace LocalJSX {
 		/**
 		 * A custom function to pass to the language toggle button.  This is optional.
 		 */
-		customLanguageToggle?: (event: globalThis.Event) => never;
+		customLanguageToggle?: (event: globalThis.Event) => void;
 		language?: Language | string;
 		/**
 		 * An event that emits to other components that the language toggle button has been toggled.
@@ -4169,15 +4169,15 @@ declare namespace LocalJSX {
 		/**
 		 * Used to add a custom function to the radio input onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the radio input onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the radio input onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * Used to include the ontario-hint-expander component for the radio button group. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }' 	 name="radios"   options='[ 	   {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 1", 		      "content": "Example hint expander content for radio option 1." 	  }     }   ]'   hint-expander='{     "hint": "Hint expander for the radio button group",     "content": "Example hint expander content for the radio button group."   }'   required="true" > </ontario-radio-buttons>
@@ -4229,7 +4229,7 @@ declare namespace LocalJSX {
 		/**
 		 * Used to add a custom function to the back button onClick event.  If this function is passed in, the back element will display as a button. The back element will require either the backButtonURL prop or the customOnClick prop to be passed in order for the back element to display.
 		 */
-		customOnClick?: (event: globalThis.Event) => never;
+		customOnClick?: (event: globalThis.Event) => void;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 		 */
@@ -4284,15 +4284,15 @@ declare namespace LocalJSX {
 		/**
 		 * Used to add a custom function to the textarea onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the textarea onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the textarea onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * The unique identifier of the textarea. This is optional - if no ID is passed, one will be generated.
 		 */
