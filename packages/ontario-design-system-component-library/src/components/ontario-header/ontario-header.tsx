@@ -108,7 +108,7 @@ export class OntarioHeader {
 	/**
 	 * A custom function to pass to the language toggle button.
 	 */
-	@Prop() customLanguageToggle?: (event: globalThis.Event) => never;
+	@Prop() customLanguageToggle?: (event: globalThis.Event) => void;
 
 	/**
 	 * The language of the component.
