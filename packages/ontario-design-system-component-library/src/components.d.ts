@@ -23,6 +23,11 @@ import {
 	InputFocusBlurEvent,
 	RadioAndCheckboxChangeEvent,
 } from './utils/events/event-handler.interface';
+import {
+	DateInputFieldType,
+	DateInputPlaceholder,
+	DateValidatorReturnType,
+} from './components/ontario-date-input/ontario-date-input-interface';
 import { DropdownOption } from './components/ontario-dropdown-list/dropdown-option.interface';
 import { CaptionType } from './utils/common/input-caption/input-caption.types';
 import {
@@ -60,6 +65,11 @@ export {
 	InputFocusBlurEvent,
 	RadioAndCheckboxChangeEvent,
 } from './utils/events/event-handler.interface';
+export {
+	DateInputFieldType,
+	DateInputPlaceholder,
+	DateValidatorReturnType,
+} from './components/ontario-date-input/ontario-date-input-interface';
 export { DropdownOption } from './components/ontario-dropdown-list/dropdown-option.interface';
 export { CaptionType } from './utils/common/input-caption/input-caption.types';
 export {
@@ -245,6 +255,49 @@ export namespace Components {
 		 * @example <ontario-critical-alert content="COVID-19 State of emergency extended until May 12, 2020."></ontario-critical-alert>  or  <ontario-critical-alert>  <a href="#">COVID-19 State of emergency</a> extended until May 12, 2020. </ontario-critical-alert>
 		 */
 		content: string | HTMLElement;
+	}
+	interface OntarioDateInput {
+		/**
+		 * The text to display as the input label
+		 * @example <ontario-date-input   caption='{     "captionText": "Exact Date",     "captionType": "heading",   }   required="true"   ...> </ontario-date-input>
+		 */
+		caption: Caption | string;
+		/**
+		 * An array value used to display date options. For example, only the day and month fields can be displayed by specifying the dateOptions as '["day", "month"]', etc.  This is optional. If no prop for `dateOptions` is passed, it will default to '["day", "month", "year"]'.
+		 */
+		dateOptions?: string | Array<DateInputFieldType>;
+		/**
+		 * A function used to override internal date validation logic, which takes three arguments (i.e day, month and year) and returns an object of type `DateValidatorReturnType`  This is optional. If no prop for `dateValidator` is passed, it will default to internal validation function to validate the date input.
+		 */
+		dateValidator?: (day: string, month: string, year: string) => DateValidatorReturnType;
+		/**
+		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
+		 */
+		elementId?: string;
+		/**
+		 * Used to include the ontario-hint-text component for the date input group.  This is optional.
+		 */
+		hintText?: string;
+		/**
+		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+		 */
+		language?: Language;
+		/**
+		 * A number value indicating maximum value allowed for year input field of the date component.  This is optional. If no prop is passed, it will default to `9999`.
+		 */
+		maxYear?: number;
+		/**
+		 * A number value indicating minimum value allowed for year input field of the date component.  This is optional. If no prop is passed, it will default to `999`.
+		 */
+		minYear?: number;
+		/**
+		 * An object value used to set the placeholder text for the day, month and year input fields. Any combination of the three input fields (i.e day, month, year) of the date component can be overridden.  This is optional. If no prop is passed, it will not display any placeholder text.
+		 */
+		placeholder?: DateInputPlaceholder | string;
+		/**
+		 * A boolean value to determine whether or not the date input is required.  This is optional. If no prop is passed, it will default to `false`.
+		 */
+		required?: boolean;
 	}
 	interface OntarioDropdownList {
 		/**
@@ -1758,6 +1811,10 @@ export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioCheckboxesElement;
 }
+export interface OntarioDateInputCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioDateInputElement;
+}
 export interface OntarioDropdownListCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioDropdownListElement;
@@ -1822,6 +1879,11 @@ declare global {
 	var HTMLOntarioCriticalAlertElement: {
 		prototype: HTMLOntarioCriticalAlertElement;
 		new (): HTMLOntarioCriticalAlertElement;
+	};
+	interface HTMLOntarioDateInputElement extends Components.OntarioDateInput, HTMLStencilElement {}
+	var HTMLOntarioDateInputElement: {
+		prototype: HTMLOntarioDateInputElement;
+		new (): HTMLOntarioDateInputElement;
 	};
 	interface HTMLOntarioDropdownListElement extends Components.OntarioDropdownList, HTMLStencilElement {}
 	var HTMLOntarioDropdownListElement: {
@@ -2464,6 +2526,7 @@ declare global {
 		'ontario-callout': HTMLOntarioCalloutElement;
 		'ontario-checkboxes': HTMLOntarioCheckboxesElement;
 		'ontario-critical-alert': HTMLOntarioCriticalAlertElement;
+		'ontario-date-input': HTMLOntarioDateInputElement;
 		'ontario-dropdown-list': HTMLOntarioDropdownListElement;
 		'ontario-fieldset': HTMLOntarioFieldsetElement;
 		'ontario-footer': HTMLOntarioFooterElement;
@@ -2770,6 +2833,66 @@ declare namespace LocalJSX {
 		 * @example <ontario-critical-alert content="COVID-19 State of emergency extended until May 12, 2020."></ontario-critical-alert>  or  <ontario-critical-alert>  <a href="#">COVID-19 State of emergency</a> extended until May 12, 2020. </ontario-critical-alert>
 		 */
 		content?: string | HTMLElement;
+	}
+	interface OntarioDateInput {
+		/**
+		 * The text to display as the input label
+		 * @example <ontario-date-input   caption='{     "captionText": "Exact Date",     "captionType": "heading",   }   required="true"   ...> </ontario-date-input>
+		 */
+		caption?: Caption | string;
+		/**
+		 * An array value used to display date options. For example, only the day and month fields can be displayed by specifying the dateOptions as '["day", "month"]', etc.  This is optional. If no prop for `dateOptions` is passed, it will default to '["day", "month", "year"]'.
+		 */
+		dateOptions?: string | Array<DateInputFieldType>;
+		/**
+		 * A function used to override internal date validation logic, which takes three arguments (i.e day, month and year) and returns an object of type `DateValidatorReturnType`  This is optional. If no prop for `dateValidator` is passed, it will default to internal validation function to validate the date input.
+		 */
+		dateValidator?: (day: string, month: string, year: string) => DateValidatorReturnType;
+		/**
+		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
+		 */
+		elementId?: string;
+		/**
+		 * Used to include the ontario-hint-text component for the date input group.  This is optional.
+		 */
+		hintText?: string;
+		/**
+		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+		 */
+		language?: Language;
+		/**
+		 * A number value indicating maximum value allowed for year input field of the date component.  This is optional. If no prop is passed, it will default to `9999`.
+		 */
+		maxYear?: number;
+		/**
+		 * A number value indicating minimum value allowed for year input field of the date component.  This is optional. If no prop is passed, it will default to `999`.
+		 */
+		minYear?: number;
+		/**
+		 * Emitted when a keyboard input event occurs when an input has lost focus.
+		 */
+		onInputOnBlur?: (event: OntarioDateInputCustomEvent<'day' | 'month' | 'year'>) => void;
+		/**
+		 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
+		 */
+		onInputOnChange?: (
+			event: OntarioDateInputCustomEvent<{
+				value: string;
+				fieldType: 'day' | 'month' | 'year';
+			}>,
+		) => void;
+		/**
+		 * Emitted when a keyboard input event occurs when an input has gained focus.
+		 */
+		onInputOnFocus?: (event: OntarioDateInputCustomEvent<'day' | 'month' | 'year'>) => void;
+		/**
+		 * An object value used to set the placeholder text for the day, month and year input fields. Any combination of the three input fields (i.e day, month, year) of the date component can be overridden.  This is optional. If no prop is passed, it will not display any placeholder text.
+		 */
+		placeholder?: DateInputPlaceholder | string;
+		/**
+		 * A boolean value to determine whether or not the date input is required.  This is optional. If no prop is passed, it will default to `false`.
+		 */
+		required?: boolean;
 	}
 	interface OntarioDropdownList {
 		/**
@@ -4344,6 +4467,7 @@ declare namespace LocalJSX {
 		'ontario-callout': OntarioCallout;
 		'ontario-checkboxes': OntarioCheckboxes;
 		'ontario-critical-alert': OntarioCriticalAlert;
+		'ontario-date-input': OntarioDateInput;
 		'ontario-dropdown-list': OntarioDropdownList;
 		'ontario-fieldset': OntarioFieldset;
 		'ontario-footer': OntarioFooter;
@@ -4484,6 +4608,7 @@ declare module '@stencil/core' {
 			'ontario-callout': LocalJSX.OntarioCallout & JSXBase.HTMLAttributes<HTMLOntarioCalloutElement>;
 			'ontario-checkboxes': LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
 			'ontario-critical-alert': LocalJSX.OntarioCriticalAlert & JSXBase.HTMLAttributes<HTMLOntarioCriticalAlertElement>;
+			'ontario-date-input': LocalJSX.OntarioDateInput & JSXBase.HTMLAttributes<HTMLOntarioDateInputElement>;
 			'ontario-dropdown-list': LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
 			'ontario-fieldset': LocalJSX.OntarioFieldset & JSXBase.HTMLAttributes<HTMLOntarioFieldsetElement>;
 			'ontario-footer': LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;

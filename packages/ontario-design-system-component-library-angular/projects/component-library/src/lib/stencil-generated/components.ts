@@ -208,6 +208,60 @@ export declare interface OntarioCriticalAlert extends Components.OntarioCritical
 @ProxyCmp({
 	inputs: [
 		'caption',
+		'dateOptions',
+		'dateValidator',
+		'hintText',
+		'language',
+		'maxYear',
+		'minYear',
+		'placeholder',
+		'required',
+	],
+})
+@Component({
+	selector: 'ontario-date-input',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: [
+		'caption',
+		'dateOptions',
+		'dateValidator',
+		'hintText',
+		'language',
+		'maxYear',
+		'minYear',
+		'placeholder',
+		'required',
+	],
+})
+export class OntarioDateInput {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+		proxyOutputs(this, this.el, ['inputOnChange', 'inputOnBlur', 'inputOnFocus']);
+	}
+}
+
+export declare interface OntarioDateInput extends Components.OntarioDateInput {
+	/**
+	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
+	 */
+	inputOnChange: EventEmitter<CustomEvent<{ value: string; fieldType: 'day' | 'month' | 'year' }>>;
+	/**
+	 * Emitted when a keyboard input event occurs when an input has lost focus.
+	 */
+	inputOnBlur: EventEmitter<CustomEvent<'day' | 'month' | 'year'>>;
+	/**
+	 * Emitted when a keyboard input event occurs when an input has gained focus.
+	 */
+	inputOnFocus: EventEmitter<CustomEvent<'day' | 'month' | 'year'>>;
+}
+
+@ProxyCmp({
+	inputs: [
+		'caption',
 		'customOnBlur',
 		'customOnChange',
 		'customOnFocus',
