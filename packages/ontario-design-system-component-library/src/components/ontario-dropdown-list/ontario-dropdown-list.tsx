@@ -167,17 +167,17 @@ export class OntarioDropdownList implements Dropdown {
 	/**
 	 * Used to add a custom function to the dropdown onChange event.
 	 */
-	@Prop() customOnChange?: (event: globalThis.Event) => never;
+	@Prop() customOnChange?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the dropdown onBlur event.
 	 */
-	@Prop() customOnBlur?: (event: globalThis.Event) => never;
+	@Prop() customOnBlur?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the dropdown onFocus event.
 	 */
-	@Prop() customOnFocus?: (event: globalThis.Event) => never;
+	@Prop() customOnFocus?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used for the `aria-describedby` value of the dropdown list. This will match with the id of the hint text.

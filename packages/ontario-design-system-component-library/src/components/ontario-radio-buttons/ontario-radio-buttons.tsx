@@ -149,17 +149,17 @@ export class OntarioRadioButtons implements RadioButtons {
 	/**
 	 * Used to add a custom function to the radio input onChange event.
 	 */
-	@Prop() customOnChange?: (event: globalThis.Event) => never;
+	@Prop() customOnChange?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the radio input onBlur event.
 	 */
-	@Prop() customOnBlur?: (event: globalThis.Event) => never;
+	@Prop() customOnBlur?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the radio input onFocus event.
 	 */
-	@Prop() customOnFocus?: (event: globalThis.Event) => never;
+	@Prop() customOnFocus?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used for the `aria-describedby` value of the radio button group. This will match with the id of the hint text.

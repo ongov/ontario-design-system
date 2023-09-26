@@ -31,7 +31,7 @@ $ontario-icon-size: 24px;
 }
 
 .ontario-step-indicator .ontario-h4 {
-	margin: (spacing.$spacing-4 + math.div(spacing.$spacing-1, 2)) 0;
+	margin: (spacing.$spacing-4 + spacing.$spacing-1) 0;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		margin: spacing.$spacing-4 0;

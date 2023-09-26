@@ -119,17 +119,17 @@ export interface Checkboxes extends Base {
 	/**
 	 * Used to add a custom function to the checkbox onChange event.
 	 */
-	customOnChange?: (event: globalThis.Event) => never;
+	customOnChange?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the checkbox onBlur event.
 	 */
-	customOnBlur?: (event: globalThis.Event) => never;
+	customOnBlur?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the checkbox onFocus event.
 	 */
-	customOnFocus?: (event: globalThis.Event) => never;
+	customOnFocus?: (event: globalThis.Event) => void;
 
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed.

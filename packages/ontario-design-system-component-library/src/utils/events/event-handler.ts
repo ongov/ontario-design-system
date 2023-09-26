@@ -15,9 +15,9 @@ export const handleInputEvent = (
 	inputFocusEvent: EventEmitter<InputFocusBlurEvent>,
 	inputBlurEvent: EventEmitter<InputFocusBlurEvent>,
 	type?: string,
-	customChangeFunction?: (event: Event) => never,
-	customFocusFunction?: (event: Event) => never,
-	customBlurFunction?: (event: Event) => never,
+	customChangeFunction?: (event: Event) => void,
+	customFocusFunction?: (event: Event) => void,
+	customBlurFunction?: (event: Event) => void,
 ) => {
 	if (eventType === 'change') {
 		if (type === 'radio' || type === 'checkbox') {
