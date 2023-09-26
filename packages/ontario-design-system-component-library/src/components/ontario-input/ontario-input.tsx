@@ -128,17 +128,17 @@ export class OntarioInput implements TextInput {
 	/**
 	 * Used to add a custom function to the textarea onChange event.
 	 */
-	@Prop() customOnChange?: (event: globalThis.Event) => never;
+	@Prop() customOnChange?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the textarea onBlur event.
 	 */
-	@Prop() customOnBlur?: (event: globalThis.Event) => never;
+	@Prop() customOnBlur?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the textarea onFocus event.
 	 */
-	@Prop() customOnFocus?: (event: globalThis.Event) => never;
+	@Prop() customOnFocus?: (event: globalThis.Event) => void;
 
 	/**
 	 * The hint text options are re-assigned to the internalHintText array.

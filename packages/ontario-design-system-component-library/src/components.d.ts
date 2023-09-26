@@ -23,6 +23,11 @@ import {
 	InputFocusBlurEvent,
 	RadioAndCheckboxChangeEvent,
 } from './utils/events/event-handler.interface';
+import {
+	DateInputFieldType,
+	DateInputPlaceholder,
+	DateValidatorReturnType,
+} from './components/ontario-date-input/ontario-date-input-interface';
 import { DropdownOption } from './components/ontario-dropdown-list/dropdown-option.interface';
 import { CaptionType } from './utils/common/input-caption/input-caption.types';
 import {
@@ -36,6 +41,7 @@ import {
 	ApplicationHeaderInfo,
 	LanguageToggleOptions,
 	MenuItem,
+	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 import { IconColour, IconSize } from './components/ontario-icon/icon.types';
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
@@ -59,6 +65,11 @@ export {
 	InputFocusBlurEvent,
 	RadioAndCheckboxChangeEvent,
 } from './utils/events/event-handler.interface';
+export {
+	DateInputFieldType,
+	DateInputPlaceholder,
+	DateValidatorReturnType,
+} from './components/ontario-date-input/ontario-date-input-interface';
 export { DropdownOption } from './components/ontario-dropdown-list/dropdown-option.interface';
 export { CaptionType } from './utils/common/input-caption/input-caption.types';
 export {
@@ -72,6 +83,7 @@ export {
 	ApplicationHeaderInfo,
 	LanguageToggleOptions,
 	MenuItem,
+	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 export { IconColour, IconSize } from './components/ontario-icon/icon.types';
 export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
@@ -201,15 +213,15 @@ export namespace Components {
 		/**
 		 * Used to add a custom function to the checkbox onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the checkbox onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the checkbox onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * Used to include the ontario-hint-expander component for the checkbox group. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-checkboxes   caption='{     "captionText": "Checkbox legend",     "captionType": "heading",   }   name='ontario-checkboxes'   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label", 		"elementId": "checkbox-1" 	}   }]'   hint-expander='{    "hint": "Hint expander for the checkbox group",    "content": "Example hint expander content for the checkbox group"   }'   required="true" > </ontario-checkboxes>
@@ -244,6 +256,49 @@ export namespace Components {
 		 */
 		content: string | HTMLElement;
 	}
+	interface OntarioDateInput {
+		/**
+		 * The text to display as the input label
+		 * @example <ontario-date-input   caption='{     "captionText": "Exact Date",     "captionType": "heading",   }   required="true"   ...> </ontario-date-input>
+		 */
+		caption: Caption | string;
+		/**
+		 * An array value used to display date options. For example, only the day and month fields can be displayed by specifying the dateOptions as '["day", "month"]', etc.  This is optional. If no prop for `dateOptions` is passed, it will default to '["day", "month", "year"]'.
+		 */
+		dateOptions?: string | Array<DateInputFieldType>;
+		/**
+		 * A function used to override internal date validation logic, which takes three arguments (i.e day, month and year) and returns an object of type `DateValidatorReturnType`  This is optional. If no prop for `dateValidator` is passed, it will default to internal validation function to validate the date input.
+		 */
+		dateValidator?: (day: string, month: string, year: string) => DateValidatorReturnType;
+		/**
+		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
+		 */
+		elementId?: string;
+		/**
+		 * Used to include the ontario-hint-text component for the date input group.  This is optional.
+		 */
+		hintText?: string;
+		/**
+		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+		 */
+		language?: Language;
+		/**
+		 * A number value indicating maximum value allowed for year input field of the date component.  This is optional. If no prop is passed, it will default to `9999`.
+		 */
+		maxYear?: number;
+		/**
+		 * A number value indicating minimum value allowed for year input field of the date component.  This is optional. If no prop is passed, it will default to `999`.
+		 */
+		minYear?: number;
+		/**
+		 * An object value used to set the placeholder text for the day, month and year input fields. Any combination of the three input fields (i.e day, month, year) of the date component can be overridden.  This is optional. If no prop is passed, it will not display any placeholder text.
+		 */
+		placeholder?: DateInputPlaceholder | string;
+		/**
+		 * A boolean value to determine whether or not the date input is required.  This is optional. If no prop is passed, it will default to `false`.
+		 */
+		required?: boolean;
+	}
 	interface OntarioDropdownList {
 		/**
 		 * The text to display for the dropdown list label.
@@ -253,15 +308,15 @@ export namespace Components {
 		/**
 		 * Used to add a custom function to the dropdown onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the dropdown onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the dropdown onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * The ID for the dropdown list. If no ID is provided, one will be generated.
 		 */
@@ -341,13 +396,13 @@ export namespace Components {
 	interface OntarioHeader {
 		/**
 		 * Information pertaining to the application header. This is only necessary for the 'application' header type.  This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.
-		 * @example 	<ontario-header 	type="application"      application-header-info='{ 			"name": "Application name", 			"href": "/application-homepage" 			"maxSubheaderDesktopLinks": "3", 			"maxSubheaderTabletLinks": "2", 			"maxSubheaderMobileLinks": "1"    }' </ontario-header>
+		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage",      "maxSubheaderDesktopLinks": "3",      "maxSubheaderTabletLinks": "2",      "maxSubheaderMobileLinks": "1"    }'>  </ontario-header>
 		 */
 		applicationHeaderInfo: ApplicationHeaderInfo | string;
 		/**
 		 * A custom function to pass to the language toggle button.
 		 */
-		customLanguageToggle?: (event: globalThis.Event) => never;
+		customLanguageToggle?: (event: globalThis.Event) => void;
 		/**
 		 * Option to disable fetching of the dynamic menu from the Ontario Header API
 		 * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
@@ -369,7 +424,7 @@ export namespace Components {
 		/**
 		 * The type of header.
 		 */
-		type?: 'application' | 'ontario';
+		type?: OntarioHeaderType;
 	}
 	interface OntarioHintExpander {
 		/**
@@ -1491,15 +1546,15 @@ export namespace Components {
 		/**
 		 * Used to add a custom function to the textarea onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the textarea onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the textarea onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
 		 */
@@ -1550,7 +1605,7 @@ export namespace Components {
 		/**
 		 * A custom function to pass to the language toggle button.  This is optional.
 		 */
-		customLanguageToggle?: (event: globalThis.Event) => never;
+		customLanguageToggle?: (event: globalThis.Event) => void;
 		language: Language | string;
 		/**
 		 * The size of the language toggle button.  If no prop is passed, it will be set to the `default` size.
@@ -1609,15 +1664,15 @@ export namespace Components {
 		/**
 		 * Used to add a custom function to the radio input onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the radio input onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the radio input onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * Used to include the ontario-hint-expander component for the radio button group. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }' 	 name="radios"   options='[ 	   {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 1", 		      "content": "Example hint expander content for radio option 1." 	  }     }   ]'   hint-expander='{     "hint": "Hint expander for the radio button group",     "content": "Example hint expander content for the radio button group."   }'   required="true" > </ontario-radio-buttons>
@@ -1657,7 +1712,7 @@ export namespace Components {
 		/**
 		 * Used to add a custom function to the back button onClick event.  If this function is passed in, the back element will display as a button. The back element will require either the backButtonURL prop or the customOnClick prop to be passed in order for the back element to display.
 		 */
-		customOnClick?: (event: globalThis.Event) => never;
+		customOnClick?: (event: globalThis.Event) => void;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 		 */
@@ -1712,15 +1767,15 @@ export namespace Components {
 		/**
 		 * Used to add a custom function to the textarea onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the textarea onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the textarea onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * The unique identifier of the textarea. This is optional - if no ID is passed, one will be generated.
 		 */
@@ -1755,6 +1810,10 @@ export namespace Components {
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioCheckboxesElement;
+}
+export interface OntarioDateInputCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioDateInputElement;
 }
 export interface OntarioDropdownListCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
@@ -1820,6 +1879,11 @@ declare global {
 	var HTMLOntarioCriticalAlertElement: {
 		prototype: HTMLOntarioCriticalAlertElement;
 		new (): HTMLOntarioCriticalAlertElement;
+	};
+	interface HTMLOntarioDateInputElement extends Components.OntarioDateInput, HTMLStencilElement {}
+	var HTMLOntarioDateInputElement: {
+		prototype: HTMLOntarioDateInputElement;
+		new (): HTMLOntarioDateInputElement;
 	};
 	interface HTMLOntarioDropdownListElement extends Components.OntarioDropdownList, HTMLStencilElement {}
 	var HTMLOntarioDropdownListElement: {
@@ -2462,6 +2526,7 @@ declare global {
 		'ontario-callout': HTMLOntarioCalloutElement;
 		'ontario-checkboxes': HTMLOntarioCheckboxesElement;
 		'ontario-critical-alert': HTMLOntarioCriticalAlertElement;
+		'ontario-date-input': HTMLOntarioDateInputElement;
 		'ontario-dropdown-list': HTMLOntarioDropdownListElement;
 		'ontario-fieldset': HTMLOntarioFieldsetElement;
 		'ontario-footer': HTMLOntarioFooterElement;
@@ -2714,15 +2779,15 @@ declare namespace LocalJSX {
 		/**
 		 * Used to add a custom function to the checkbox onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the checkbox onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the checkbox onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * Used to include the ontario-hint-expander component for the checkbox group. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-checkboxes   caption='{     "captionText": "Checkbox legend",     "captionType": "heading",   }   name='ontario-checkboxes'   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label", 		"elementId": "checkbox-1" 	}   }]'   hint-expander='{    "hint": "Hint expander for the checkbox group",    "content": "Example hint expander content for the checkbox group"   }'   required="true" > </ontario-checkboxes>
@@ -2769,6 +2834,66 @@ declare namespace LocalJSX {
 		 */
 		content?: string | HTMLElement;
 	}
+	interface OntarioDateInput {
+		/**
+		 * The text to display as the input label
+		 * @example <ontario-date-input   caption='{     "captionText": "Exact Date",     "captionType": "heading",   }   required="true"   ...> </ontario-date-input>
+		 */
+		caption?: Caption | string;
+		/**
+		 * An array value used to display date options. For example, only the day and month fields can be displayed by specifying the dateOptions as '["day", "month"]', etc.  This is optional. If no prop for `dateOptions` is passed, it will default to '["day", "month", "year"]'.
+		 */
+		dateOptions?: string | Array<DateInputFieldType>;
+		/**
+		 * A function used to override internal date validation logic, which takes three arguments (i.e day, month and year) and returns an object of type `DateValidatorReturnType`  This is optional. If no prop for `dateValidator` is passed, it will default to internal validation function to validate the date input.
+		 */
+		dateValidator?: (day: string, month: string, year: string) => DateValidatorReturnType;
+		/**
+		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
+		 */
+		elementId?: string;
+		/**
+		 * Used to include the ontario-hint-text component for the date input group.  This is optional.
+		 */
+		hintText?: string;
+		/**
+		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+		 */
+		language?: Language;
+		/**
+		 * A number value indicating maximum value allowed for year input field of the date component.  This is optional. If no prop is passed, it will default to `9999`.
+		 */
+		maxYear?: number;
+		/**
+		 * A number value indicating minimum value allowed for year input field of the date component.  This is optional. If no prop is passed, it will default to `999`.
+		 */
+		minYear?: number;
+		/**
+		 * Emitted when a keyboard input event occurs when an input has lost focus.
+		 */
+		onInputOnBlur?: (event: OntarioDateInputCustomEvent<'day' | 'month' | 'year'>) => void;
+		/**
+		 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
+		 */
+		onInputOnChange?: (
+			event: OntarioDateInputCustomEvent<{
+				value: string;
+				fieldType: 'day' | 'month' | 'year';
+			}>,
+		) => void;
+		/**
+		 * Emitted when a keyboard input event occurs when an input has gained focus.
+		 */
+		onInputOnFocus?: (event: OntarioDateInputCustomEvent<'day' | 'month' | 'year'>) => void;
+		/**
+		 * An object value used to set the placeholder text for the day, month and year input fields. Any combination of the three input fields (i.e day, month, year) of the date component can be overridden.  This is optional. If no prop is passed, it will not display any placeholder text.
+		 */
+		placeholder?: DateInputPlaceholder | string;
+		/**
+		 * A boolean value to determine whether or not the date input is required.  This is optional. If no prop is passed, it will default to `false`.
+		 */
+		required?: boolean;
+	}
 	interface OntarioDropdownList {
 		/**
 		 * The text to display for the dropdown list label.
@@ -2778,15 +2903,15 @@ declare namespace LocalJSX {
 		/**
 		 * Used to add a custom function to the dropdown onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the dropdown onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the dropdown onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * The ID for the dropdown list. If no ID is provided, one will be generated.
 		 */
@@ -2878,13 +3003,13 @@ declare namespace LocalJSX {
 	interface OntarioHeader {
 		/**
 		 * Information pertaining to the application header. This is only necessary for the 'application' header type.  This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.
-		 * @example 	<ontario-header 	type="application"      application-header-info='{ 			"name": "Application name", 			"href": "/application-homepage" 			"maxSubheaderDesktopLinks": "3", 			"maxSubheaderTabletLinks": "2", 			"maxSubheaderMobileLinks": "1"    }' </ontario-header>
+		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage",      "maxSubheaderDesktopLinks": "3",      "maxSubheaderTabletLinks": "2",      "maxSubheaderMobileLinks": "1"    }'>  </ontario-header>
 		 */
 		applicationHeaderInfo?: ApplicationHeaderInfo | string;
 		/**
 		 * A custom function to pass to the language toggle button.
 		 */
-		customLanguageToggle?: (event: globalThis.Event) => never;
+		customLanguageToggle?: (event: globalThis.Event) => void;
 		/**
 		 * Option to disable fetching of the dynamic menu from the Ontario Header API
 		 * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
@@ -2906,7 +3031,7 @@ declare namespace LocalJSX {
 		/**
 		 * The type of header.
 		 */
-		type?: 'application' | 'ontario';
+		type?: OntarioHeaderType;
 	}
 	interface OntarioHintExpander {
 		/**
@@ -4027,15 +4152,15 @@ declare namespace LocalJSX {
 		/**
 		 * Used to add a custom function to the textarea onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the textarea onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the textarea onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
 		 */
@@ -4098,7 +4223,7 @@ declare namespace LocalJSX {
 		/**
 		 * A custom function to pass to the language toggle button.  This is optional.
 		 */
-		customLanguageToggle?: (event: globalThis.Event) => never;
+		customLanguageToggle?: (event: globalThis.Event) => void;
 		language?: Language | string;
 		/**
 		 * An event that emits to other components that the language toggle button has been toggled.
@@ -4167,15 +4292,15 @@ declare namespace LocalJSX {
 		/**
 		 * Used to add a custom function to the radio input onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the radio input onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the radio input onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * Used to include the ontario-hint-expander component for the radio button group. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }' 	 name="radios"   options='[ 	   {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 1", 		      "content": "Example hint expander content for radio option 1." 	  }     }   ]'   hint-expander='{     "hint": "Hint expander for the radio button group",     "content": "Example hint expander content for the radio button group."   }'   required="true" > </ontario-radio-buttons>
@@ -4227,7 +4352,7 @@ declare namespace LocalJSX {
 		/**
 		 * Used to add a custom function to the back button onClick event.  If this function is passed in, the back element will display as a button. The back element will require either the backButtonURL prop or the customOnClick prop to be passed in order for the back element to display.
 		 */
-		customOnClick?: (event: globalThis.Event) => never;
+		customOnClick?: (event: globalThis.Event) => void;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 		 */
@@ -4282,15 +4407,15 @@ declare namespace LocalJSX {
 		/**
 		 * Used to add a custom function to the textarea onBlur event.
 		 */
-		customOnBlur?: (event: globalThis.Event) => never;
+		customOnBlur?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the textarea onChange event.
 		 */
-		customOnChange?: (event: globalThis.Event) => never;
+		customOnChange?: (event: globalThis.Event) => void;
 		/**
 		 * Used to add a custom function to the textarea onFocus event.
 		 */
-		customOnFocus?: (event: globalThis.Event) => never;
+		customOnFocus?: (event: globalThis.Event) => void;
 		/**
 		 * The unique identifier of the textarea. This is optional - if no ID is passed, one will be generated.
 		 */
@@ -4342,6 +4467,7 @@ declare namespace LocalJSX {
 		'ontario-callout': OntarioCallout;
 		'ontario-checkboxes': OntarioCheckboxes;
 		'ontario-critical-alert': OntarioCriticalAlert;
+		'ontario-date-input': OntarioDateInput;
 		'ontario-dropdown-list': OntarioDropdownList;
 		'ontario-fieldset': OntarioFieldset;
 		'ontario-footer': OntarioFooter;
@@ -4482,6 +4608,7 @@ declare module '@stencil/core' {
 			'ontario-callout': LocalJSX.OntarioCallout & JSXBase.HTMLAttributes<HTMLOntarioCalloutElement>;
 			'ontario-checkboxes': LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
 			'ontario-critical-alert': LocalJSX.OntarioCriticalAlert & JSXBase.HTMLAttributes<HTMLOntarioCriticalAlertElement>;
+			'ontario-date-input': LocalJSX.OntarioDateInput & JSXBase.HTMLAttributes<HTMLOntarioDateInputElement>;
 			'ontario-dropdown-list': LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
 			'ontario-fieldset': LocalJSX.OntarioFieldset & JSXBase.HTMLAttributes<HTMLOntarioFieldsetElement>;
 			'ontario-footer': LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;

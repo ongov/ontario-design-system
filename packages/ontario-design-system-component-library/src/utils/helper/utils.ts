@@ -56,3 +56,12 @@ export function removeObjectsBySpecificKey<T>(objects: T[], key: keyof T, value:
 	});
 	return [filteredObjects, removedObjects];
 }
+
+export function isNumber(str: string): boolean {
+	const pattern = /^\d+\.?\d*$/;
+	return pattern.test(str);
+}
+
+export function isEmpty(str: string | undefined | null): boolean {
+	return !str || str?.length <= 0;
+}

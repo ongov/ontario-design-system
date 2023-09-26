@@ -32,7 +32,7 @@ export class OntarioLanguageToggle {
 	 *
 	 * This is optional.
 	 */
-	@Prop() customLanguageToggle?: (event: globalThis.Event) => never;
+	@Prop() customLanguageToggle?: (event: globalThis.Event) => void;
 
 	@State() translations: any = translations;
 
