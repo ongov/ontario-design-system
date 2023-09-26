@@ -1,3 +1,20 @@
+# 3.0.0-alpha.2 (2023-09-26)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library:** added DateValidatorReturnType to readme 74540ea
+- **@ontario-digital-service/ontario-design-system-component-library:** review comment fixes 43d0d47
+- **@ontario-digital-service/ontario-design-system-component-library:** review comment fixes 8a1f520
+- **@ontario-digital-service/ontario-design-system-component-library:** review comment fixes for date-input component 3bd4251
+- **@ontario-digital-service/ontario-design-system-component-library:** update all event signatures to return void to be compatible with React e775f88
+- **@ontario-digital-service/ontario-design-system-component-library:** updated date validation logic 3f1a96d
+- **@ontario-digital-service/ontario-design-system-component-library:** updated dateValidator example f0bbbbb
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library-react, @ontario-digital-service/ontario-design-system-component-library:** added date input component c247722
+- **@ontario-digital-service/ontario-design-system-component-library:** added service ontario header 606bd99
+
 # 3.0.0-alpha.1 (2023-09-22)
 
 ### Bug Fixes
