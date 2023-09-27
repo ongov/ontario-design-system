@@ -19,6 +19,7 @@ import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 
 import translations from '../../translations/global.i18n.json';
+import config from '../../config.json';
 
 @Component({
 	tag: 'ontario-header',
@@ -300,8 +301,8 @@ export class OntarioHeader {
 		// If menu has already been fetched and contains dynamic menu items, do not run fetch again
 		if (!this.isDynamicMenu) {
 			const apiUrl = isEnglish
-				? (process.env.ONTARIO_HEADER_API_URL_EN as string)
-				: (process.env.ONTARIO_HEADER_API_URL_FR as string);
+				? (config.ONTARIO_HEADER_API_URL_EN as string)
+				: (config.ONTARIO_HEADER_API_URL_FR as string);
 
 			const response = await fetch(apiUrl)
 				.then((response) => response.json())
