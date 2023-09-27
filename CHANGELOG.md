@@ -1,3 +1,37 @@
+# 3.0.0 (2023-09-27)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** update event function signature to match the types expected a18275f
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** update event signatures on ontario-checkboxes ed3afae
+- **@ontario-digital-service/ontario-design-system-component-library:** added DateValidatorReturnType to readme 74540ea
+- **@ontario-digital-service/ontario-design-system-component-library:** review comment fixes 43d0d47
+- **@ontario-digital-service/ontario-design-system-component-library:** review comment fixes 8a1f520
+- **@ontario-digital-service/ontario-design-system-component-library:** review comment fixes for date-input component 3bd4251
+- **@ontario-digital-service/ontario-design-system-component-library:** update all event signatures to return void to be compatible with React e775f88
+- **@ontario-digital-service/ontario-design-system-component-library:** updated date validation logic 3f1a96d
+- **@ontario-digital-service/ontario-design-system-component-library:** updated dateValidator example f0bbbbb
+- **global-styles:** add px-to-rem function and mark rem-calc deprecated ea8124b
+- **web-components:** update readme script links to point to correct paths b896904
+
+- **@ontario-digital-service/ontario-design-system-component-library:** feat!: upgrade to Stencil v4.1.0 1d6a1a9, closes /github.com/ionic-team/stencil/blob/main/BREAKING_CHANGES.md#stencil-v400
+- **@ontario-digital-service/ontario-design-system-component-library:** feat!: upgrade to Stencil v3.0.0 cdc25c8, closes /github.com/ionic-team/stencil/blob/main/BREAKING_CHANGES.md#stencil-v300
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library-react, @ontario-digital-service/ontario-design-system-component-library:** added date input component c247722
+- **@ontario-digital-service/ontario-design-system-component-library:** added service ontario header 606bd99
+
+### BREAKING CHANGES
+
+- **@ontario-digital-service/ontario-design-system-component-library:** Upgrading StencilJS next major version, v4.1.0.
+
+Although there is not a big change in Stencil it might have unforeseen side-effects.
+
+- **@ontario-digital-service/ontario-design-system-component-library:** Upgrading StencilJS next major version.
+
+Although there is not a big change in Stencil it might have unforeseen side-effects.
+
 # 3.0.0-alpha.2 (2023-09-26)
 
 ### Bug Fixes
