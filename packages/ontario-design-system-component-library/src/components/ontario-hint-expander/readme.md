@@ -62,9 +62,9 @@ Since the hint expander information comes after the form element, add text in th
 
 ## Events
 
-| Event                 | Description                                          | Type               |
-| --------------------- | ---------------------------------------------------- | ------------------ |
-| `toggleExpanderEvent` | Emitted when a keyboard input or mouse event occurs. | `CustomEvent<any>` |
+| Event                 | Description                                          | Type                                       |
+| --------------------- | ---------------------------------------------------- | ------------------------------------------ |
+| `toggleExpanderEvent` | Emitted when a keyboard input or mouse event occurs. | `CustomEvent<KeyboardEvent \| MouseEvent>` |
 
 ## Dependencies
 
