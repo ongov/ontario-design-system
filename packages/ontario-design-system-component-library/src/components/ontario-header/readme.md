@@ -4,11 +4,15 @@ Use the `ontario` type header for all pages that are part of the main ontario.ca
 
 Use the `applicaton` type header for applications and subsites outside of the main ontario.ca website.
 
+Use the `serviceOntario` type header for ServiceOntario sites/apps. This type is for use by ServiceOntario teams only.
+
 ## Usage guidance
 
 Please refer to the [Ontario Design System Ontario.ca header](https://designsystem.ontario.ca/components/detail/ontario-header.html) for current documentation guidance for the Ontario.ca header.
 
 Please refer to the [Ontario Design System Application header](https://designsystem.ontario.ca/components/detail/application-header.html) for current documentation guidance for the Application header.
+
+Please refer to the [Ontario Design System ServiceOntario header](https://designsystem.ontario.ca/components/detail/service-ontario-header.html) for current documentation guidance for the ServiceOntario header.
 
 ## Configuration
 
@@ -197,16 +201,16 @@ For Application headers, there is a default of a maximum of 5 menu links on desk
 ></ontario-header>
 ```
 
-| **Property name** | **Type**  | **Description**                                                                                                                                     |
-| ----------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `title`           | `string`  | The title of the menu item (this is what will appear as the label in the header/dropdown menu)                                                      |
-| `href`            | `string`  | The URL for the menu item                                                                                                                           |
-| `linkIsActive`    | `boolean` | A boolean flag for whether or not the current menu item link is active. If set to true, active classes and styles will be applied to the menu item. |
-| `onClickHandler`  | Function  | An optional custom function to add to the menu item. This can be used if any additional logic should happen when the menu item is clicked.          |
+| **Property name** | **Type**                 | **Description**                                                                                                                                     |
+| ----------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `title`           | `string`                 | The title of the menu item (this is what will appear as the label in the header/dropdown menu)                                                      |
+| `href`            | `string`                 | The URL for the menu item                                                                                                                           |
+| `linkIsActive`    | `boolean`                | A boolean flag for whether or not the current menu item link is active. If set to true, active classes and styles will be applied to the menu item. |
+| `onClickHandler`  | `(event: Event) => void` | An optional custom function to add to the menu item. This can be used if any additional logic should happen when the menu item is clicked.          |
 
 ### applicationHeaderInfo
 
-Note that this is only required for the Application header.
+Note that this is only required for the Application and ServiceOntario header types.
 
 ```html
 application-header-info='{ "title": "Application name", "href": "/", "maxSubheaderDesktopLinks": "4",
