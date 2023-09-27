@@ -8,6 +8,7 @@ import type { JSX } from '@ontario-digital-service/ontario-design-system-compone
 import { defineCustomElements } from '@ontario-digital-service/ontario-design-system-component-library/loader';
 
 defineCustomElements();
+export const OntarioAccordion = /*@__PURE__*/createReactComponent<JSX.OntarioAccordion, HTMLOntarioAccordionElement>('ontario-accordion');
 export const OntarioAside = /*@__PURE__*/createReactComponent<JSX.OntarioAside, HTMLOntarioAsideElement>('ontario-aside');
 export const OntarioBackToTop = /*@__PURE__*/createReactComponent<JSX.OntarioBackToTop, HTMLOntarioBackToTopElement>('ontario-back-to-top');
 export const OntarioBlockquote = /*@__PURE__*/createReactComponent<JSX.OntarioBlockquote, HTMLOntarioBlockquoteElement>('ontario-blockquote');
@@ -15,6 +16,7 @@ export const OntarioButton = /*@__PURE__*/createReactComponent<JSX.OntarioButton
 export const OntarioCallout = /*@__PURE__*/createReactComponent<JSX.OntarioCallout, HTMLOntarioCalloutElement>('ontario-callout');
 export const OntarioCheckboxes = /*@__PURE__*/createReactComponent<JSX.OntarioCheckboxes, HTMLOntarioCheckboxesElement>('ontario-checkboxes');
 export const OntarioCriticalAlert = /*@__PURE__*/createReactComponent<JSX.OntarioCriticalAlert, HTMLOntarioCriticalAlertElement>('ontario-critical-alert');
+export const OntarioDateInput = /*@__PURE__*/createReactComponent<JSX.OntarioDateInput, HTMLOntarioDateInputElement>('ontario-date-input');
 export const OntarioDropdownList = /*@__PURE__*/createReactComponent<JSX.OntarioDropdownList, HTMLOntarioDropdownListElement>('ontario-dropdown-list');
 export const OntarioFieldset = /*@__PURE__*/createReactComponent<JSX.OntarioFieldset, HTMLOntarioFieldsetElement>('ontario-fieldset');
 export const OntarioFooter = /*@__PURE__*/createReactComponent<JSX.OntarioFooter, HTMLOntarioFooterElement>('ontario-footer');

@@ -48,7 +48,7 @@ export class OntarioStepIndicator {
 	 * If this function is passed in, the back element will display as a button.
 	 * The back element will require either the backButtonURL prop or the customOnClick prop to be passed in order for the back element to display.
 	 */
-	@Prop() customOnClick?: Function;
+	@Prop() customOnClick?: (event: globalThis.Event) => void;
 
 	/**
 	 * The language of the component.
@@ -71,7 +71,7 @@ export class OntarioStepIndicator {
 
 	@State() translations: any = translations;
 
-	private handleCustomOnClick = (e: Event) => {
+	private handleCustomOnClick = (e: globalThis.Event) => {
 		this.customOnClick && this.customOnClick(e);
 	};
 

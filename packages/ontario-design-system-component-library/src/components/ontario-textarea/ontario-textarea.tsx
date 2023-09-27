@@ -1,4 +1,4 @@
-import { Component, Event, h, Prop, State, Listen, Watch, Element } from '@stencil/core';
+import { Component, Event, h, Prop, State, Listen, Watch, Element, EventEmitter } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
@@ -101,17 +101,17 @@ export class OntarioTextarea implements Input {
 	/**
 	 * Used to add a custom function to the textarea onChange event.
 	 */
-	@Prop() customOnChange?: Function;
+	@Prop() customOnChange?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the textarea onBlur event.
 	 */
-	@Prop() customOnBlur?: Function;
+	@Prop() customOnBlur?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the textarea onFocus event.
 	 */
-	@Prop() customOnFocus?: Function;
+	@Prop() customOnFocus?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used for the `aria-describedby` value of the textarea. This will match with the id of the hint text.
@@ -136,17 +136,17 @@ export class OntarioTextarea implements Input {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 	 */
-	@Event({ eventName: 'inputOnChange' }) inputOnChange: InputChangeEvent;
+	@Event({ eventName: 'inputOnChange' }) inputOnChange: EventEmitter<InputChangeEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
-	@Event({ eventName: 'inputOnBlur' }) inputOnBlur: InputFocusBlurEvent;
+	@Event({ eventName: 'inputOnBlur' }) inputOnBlur: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
-	@Event({ eventName: 'inputOnFocus' }) inputOnFocus: InputFocusBlurEvent;
+	@Event({ eventName: 'inputOnFocus' }) inputOnFocus: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the textarea component loads.

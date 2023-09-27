@@ -1,7 +1,13 @@
 import { Component, Prop, State, Watch, h, Listen, Element, getAssetPath } from '@stencil/core';
 
 import { Input } from '../../utils/common/input/input';
-import { menuItems, applicationHeaderInfo, languageToggleOptions, ontarioMenuItems } from './ontario-header.interface';
+import {
+	MenuItem,
+	ApplicationHeaderInfo,
+	LanguageToggleOptions,
+	OntarioMenuItems,
+	OntarioHeaderType,
+} from './ontario-header.interface';
 
 import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
@@ -19,6 +25,7 @@ import translations from '../../translations/global.i18n.json';
 	styleUrls: {
 		ontario: 'ontario-header.scss',
 		application: 'ontario-application-header.scss',
+		serviceOntario: 'service-ontario-header.scss',
 	},
 	shadow: true,
 	assetsDirs: ['./assets'],
@@ -29,7 +36,7 @@ export class OntarioHeader {
 	/**
 	 * The type of header.
 	 */
-	@Prop() type?: 'application' | 'ontario' = 'application';
+	@Prop() type?: OntarioHeaderType = 'application';
 
 	/**
 	 * Information pertaining to the application header. This is only necessary for the 'application' header type.
@@ -37,23 +44,23 @@ export class OntarioHeader {
 	 * This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.
 	 *
 	 * @example
-	 * 	<ontario-header
-	 *		type="application"
-	 *      application-header-info='{
-	 * 			"name": "Application name",
-	 * 			"href": "/application-homepage"
-	 * 			"maxSubheaderDesktopLinks": "3",
-	 * 			"maxSubheaderTabletLinks": "2",
-	 * 			"maxSubheaderMobileLinks": "1"
-	 *    }'
-	 *	</ontario-header>
+	 *  <ontario-header
+	 *    type="application"
+	 *    application-header-info='{
+	 *      "title": "Application name",
+	 *      "href": "/application-homepage",
+	 *      "maxSubheaderDesktopLinks": "3",
+	 *      "maxSubheaderTabletLinks": "2",
+	 *      "maxSubheaderMobileLinks": "1"
+	 *    }'>
+	 *  </ontario-header>
 	 */
-	@Prop() applicationHeaderInfo: applicationHeaderInfo | string;
+	@Prop() applicationHeaderInfo: ApplicationHeaderInfo | string;
 
 	/**
 	 * The items that will go inside the menu.
 	 */
-	@Prop() menuItems: menuItems[] | string;
+	@Prop() menuItems: MenuItem[] | string;
 
 	/**
 	 * Option to disable fetching of the dynamic menu from the Ontario Header API
@@ -96,12 +103,12 @@ export class OntarioHeader {
 	 * >
 	 * </ontario-header>
 	 */
-	@Prop() languageToggleOptions?: languageToggleOptions | string;
+	@Prop() languageToggleOptions?: LanguageToggleOptions | string;
 
 	/**
 	 * A custom function to pass to the language toggle button.
 	 */
-	@Prop() customLanguageToggle?: Function;
+	@Prop() customLanguageToggle?: (event: globalThis.Event) => void;
 
 	/**
 	 * The language of the component.
@@ -112,7 +119,7 @@ export class OntarioHeader {
 	/**
 	 * The application header information is reassigned to applicationHeaderInfoState for parsing
 	 */
-	@State() private applicationHeaderInfoState: applicationHeaderInfo;
+	@State() private applicationHeaderInfoState: ApplicationHeaderInfo;
 
 	/**
 	 * The menuItems is reassigned to itemState for parsing
@@ -140,7 +147,7 @@ export class OntarioHeader {
 	 *			}]'>
 	 *	</ontario-header>
 	 */
-	@State() private menuItemState: menuItems[];
+	@State() private menuItemState: MenuItem[];
 
 	/**
 	 * Check to see if menu is dynamic or static
@@ -158,7 +165,7 @@ export class OntarioHeader {
 	 *		}'
 	 *	</ontario-header>
 	 */
-	@State() private languageState: languageToggleOptions;
+	@State() private languageState: LanguageToggleOptions;
 
 	/**
 	 * Toggler for the menu and the search button
@@ -291,7 +298,7 @@ export class OntarioHeader {
 			const apiUrl = process.env.ONTARIO_HEADER_API_URL as string;
 			const response = await fetch(apiUrl)
 				.then((response) => response.json())
-				.then((json) => json.linkset[0].item as ontarioMenuItems[])
+				.then((json) => json.linkset[0].item as OntarioMenuItems[])
 				.catch(() => {
 					console.error('Unable to retrieve data from Ontario Menu API');
 					return [];
@@ -399,7 +406,7 @@ export class OntarioHeader {
 	 * @param viewportSize - the size of the viewport. It can be set to `desktop`, `tablet` or `mobile`.
 	 * @returns
 	 */
-	private generateNavigationLinks(item: menuItems, index: number, links: number | undefined, viewportSize: string) {
+	private generateNavigationLinks(item: MenuItem, index: number, links: number | undefined, viewportSize: string) {
 		const lastLink =
 			index + 1 === (links ? this.menuItemState.length - links : this.menuItemState.length) ? true : false;
 
@@ -476,6 +483,8 @@ export class OntarioHeader {
 	}
 
 	render() {
+		const isServiceOntarioType = this.type === 'serviceOntario';
+
 		if (this.type == 'ontario') {
 			return (
 				<div>
@@ -651,18 +660,37 @@ export class OntarioHeader {
 
 						{/* Ontario application header subhearder */}
 						<div class="ontario-application-subheader-menu__container">
-							<section class="ontario-application-subheader">
+							<section
+								class={`ontario-application-subheader ${isServiceOntarioType ? 'ontario-service-subheader' : ''}`}
+							>
 								<div class="ontario-row">
 									<div class="ontario-columns ontario-small-12 ontario-application-subheader__container">
-										<p class="ontario-application-subheader__heading">
-											<a href={this.applicationHeaderInfoState?.href}>{this.applicationHeaderInfoState?.title}</a>
-										</p>
+										{!isServiceOntarioType ? (
+											<p class="ontario-application-subheader__heading">
+												<a href={this.applicationHeaderInfoState?.href}>{this.applicationHeaderInfoState?.title}</a>
+											</p>
+										) : (
+											<a href={this.applicationHeaderInfoState?.href} class="ontario-service-subheader__link">
+												<div class="ontario-service-subheader__heading-container">
+													<p class="ontario-service-subheader__heading">
+														{this.translations.header.serviceOntario[`${this.language}`]}
+													</p>
+													<p class="ontario-service-subheader__description">{this.applicationHeaderInfoState?.title}</p>
+												</div>
+											</a>
+										)}
 										<div class="ontario-application-subheader__menu-container">
 											{/* Desktop subheader links */}
-											{this.applicationHeaderInfoState.maxSubheaderDesktopLinks && (
-												<ul class="ontario-application-subheader__menu ontario-show-for-large">
+											{this.applicationHeaderInfoState?.maxSubheaderDesktopLinks && (
+												<ul
+													class={`${
+														isServiceOntarioType
+															? 'ontario-service-subheader__menu'
+															: 'ontario-application-subheader__menu'
+													} ontario-show-for-large`}
+												>
 													{this.menuItemState
-														?.slice(0, this.applicationHeaderInfoState.maxSubheaderDesktopLinks)
+														?.slice(0, this.applicationHeaderInfoState?.maxSubheaderDesktopLinks)
 														.map((item) =>
 															this.generateMenuItem(
 																item.href,
@@ -677,10 +705,10 @@ export class OntarioHeader {
 											)}
 
 											{/* Tablet subheader links */}
-											{this.applicationHeaderInfoState.maxSubheaderTabletLinks && (
+											{this.applicationHeaderInfoState?.maxSubheaderTabletLinks && (
 												<ul class="ontario-application-subheader__menu ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large">
 													{this.menuItemState
-														?.slice(0, this.applicationHeaderInfoState.maxSubheaderTabletLinks)
+														?.slice(0, this.applicationHeaderInfoState?.maxSubheaderTabletLinks)
 														.map((item) =>
 															this.generateMenuItem(
 																item.href,
@@ -695,7 +723,7 @@ export class OntarioHeader {
 											)}
 
 											{/* Desktop subheader links */}
-											{this.applicationHeaderInfoState.maxSubheaderMobileLinks && (
+											{this.applicationHeaderInfoState?.maxSubheaderMobileLinks && (
 												<ul class="ontario-application-subheader__menu ontario-show-for-small-only">
 													{this.menuItemState
 														?.slice(0, this.applicationHeaderInfoState.maxSubheaderMobileLinks)
@@ -714,15 +742,15 @@ export class OntarioHeader {
 
 											{/* Render menu button if menuItemState exists, and if there are items to display in a dropdown menu */}
 											{this.menuItemState !== undefined &&
-												this.applicationHeaderInfoState.maxSubheaderDesktopLinks !== this.menuItemState.length &&
+												this.applicationHeaderInfoState?.maxSubheaderDesktopLinks !== this.menuItemState.length &&
 												this.renderMenuButton('desktop')}
 
 											{this.menuItemState !== undefined &&
-												this.applicationHeaderInfoState.maxSubheaderTabletLinks !== this.menuItemState.length &&
+												this.applicationHeaderInfoState?.maxSubheaderTabletLinks !== this.menuItemState.length &&
 												this.renderMenuButton('tablet')}
 
 											{this.menuItemState !== undefined &&
-												this.applicationHeaderInfoState.maxSubheaderMobileLinks !== this.menuItemState.length &&
+												this.applicationHeaderInfoState?.maxSubheaderMobileLinks !== this.menuItemState.length &&
 												this.renderMenuButton('mobile')}
 										</div>
 									</div>
@@ -741,12 +769,12 @@ export class OntarioHeader {
 									{/* Ontario application header desktop menu dropdown links */}
 									<ul class="ontario-show-for-large">
 										{this.menuItemState
-											?.slice(this.applicationHeaderInfoState.maxSubheaderDesktopLinks, this.menuItemState.length)
+											?.slice(this.applicationHeaderInfoState?.maxSubheaderDesktopLinks, this.menuItemState.length)
 											.map((item: any, index) => {
 												return this.generateNavigationLinks(
 													item,
 													index,
-													this.applicationHeaderInfoState.maxSubheaderDesktopLinks,
+													this.applicationHeaderInfoState?.maxSubheaderDesktopLinks,
 													'app-desktop',
 												);
 											})}
@@ -755,12 +783,12 @@ export class OntarioHeader {
 									{/* Ontario application header tablet menu dropdown links */}
 									<ul class="ontario-show-for-medium ontario-hide-for-small ontario-hide-for-large">
 										{this.menuItemState
-											?.slice(this.applicationHeaderInfoState.maxSubheaderTabletLinks, this.menuItemState.length)
+											?.slice(this.applicationHeaderInfoState?.maxSubheaderTabletLinks, this.menuItemState.length)
 											.map((item, index) => {
 												return this.generateNavigationLinks(
 													item,
 													index,
-													this.applicationHeaderInfoState.maxSubheaderTabletLinks,
+													this.applicationHeaderInfoState?.maxSubheaderTabletLinks,
 													'app-tablet',
 												);
 											})}
@@ -769,12 +797,12 @@ export class OntarioHeader {
 									{/* Ontario application header mobile menu dropdown links */}
 									<ul class="ontario-show-for-small-only">
 										{this.menuItemState
-											?.slice(this.applicationHeaderInfoState.maxSubheaderMobileLinks, this.menuItemState.length)
+											?.slice(this.applicationHeaderInfoState?.maxSubheaderMobileLinks, this.menuItemState.length)
 											.map((item, index) => {
 												return this.generateNavigationLinks(
 													item,
 													index,
-													this.applicationHeaderInfoState.maxSubheaderMobileLinks,
+													this.applicationHeaderInfoState?.maxSubheaderMobileLinks,
 													'app-mobile',
 												);
 											})}

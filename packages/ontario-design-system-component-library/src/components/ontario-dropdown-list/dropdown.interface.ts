@@ -1,3 +1,5 @@
+import { EventEmitter } from '@stencil/core';
+
 import { DropdownOption } from './dropdown-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
@@ -141,30 +143,30 @@ export interface Dropdown extends Base {
 	/**
 	 * Used to add a custom function to the dropdown onChange event.
 	 */
-	customOnChange?: Function;
+	customOnChange?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the dropdown onBlur event.
 	 */
-	customOnBlur?: Function;
+	customOnBlur?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the dropdown onFocus event.
 	 */
-	customOnFocus?: Function;
+	customOnFocus?: (event: globalThis.Event) => void;
 
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed.
 	 */
-	dropdownOnChange: InputChangeEvent;
+	dropdownOnChange: EventEmitter<InputChangeEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a dropdown list has lost focus.
 	 */
-	dropdownOnBlur: InputFocusBlurEvent;
+	dropdownOnBlur: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a dropdown list has gained focus.
 	 */
-	dropdownOnFocus: InputFocusBlurEvent;
+	dropdownOnFocus: EventEmitter<InputFocusBlurEvent>;
 }

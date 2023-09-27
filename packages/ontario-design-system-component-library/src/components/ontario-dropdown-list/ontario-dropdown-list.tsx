@@ -1,4 +1,4 @@
-import { Component, State, Element, h, Prop, Event, Listen, Watch, getAssetPath } from '@stencil/core';
+import { Component, State, Element, h, Prop, Event, Listen, Watch, getAssetPath, EventEmitter } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
 import { DropdownOption } from './dropdown-option.interface';
@@ -167,17 +167,17 @@ export class OntarioDropdownList implements Dropdown {
 	/**
 	 * Used to add a custom function to the dropdown onChange event.
 	 */
-	@Prop() customOnChange?: Function;
+	@Prop() customOnChange?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the dropdown onBlur event.
 	 */
-	@Prop() customOnBlur?: Function;
+	@Prop() customOnBlur?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the dropdown onFocus event.
 	 */
-	@Prop() customOnFocus?: Function;
+	@Prop() customOnFocus?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used for the `aria-describedby` value of the dropdown list. This will match with the id of the hint text.
@@ -209,17 +209,17 @@ export class OntarioDropdownList implements Dropdown {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed.
 	 */
-	@Event({ eventName: 'dropdownOnChange' }) dropdownOnChange: InputChangeEvent;
+	@Event({ eventName: 'dropdownOnChange' }) dropdownOnChange: EventEmitter<InputChangeEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a dropdown list has lost focus.
 	 */
-	@Event({ eventName: 'dropdownOnBlur' }) dropdownOnBlur: InputFocusBlurEvent;
+	@Event({ eventName: 'dropdownOnBlur' }) dropdownOnBlur: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a dropdown list has gained focus.
 	 */
-	@Event({ eventName: 'dropdownOnFocus' }) dropdownOnFocus: InputFocusBlurEvent;
+	@Event({ eventName: 'dropdownOnFocus' }) dropdownOnFocus: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.

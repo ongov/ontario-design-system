@@ -13,7 +13,17 @@
 		<ontario-critical-alert>
 			<a href="https://designsystem.ontario.ca/">Ontario Design System</a> web components now available!!!
 		</ontario-critical-alert>
-		<ontario-header type="ontario"></ontario-header>
+		<ontario-header
+			type="serviceOntario"
+			application-header-info='{
+				"title": "Application name",
+				"href": "/application-homepage",
+				"maxSubheaderDesktopLinks": "3",
+				"maxSubheaderTabletLinks": "2",
+				"maxSubheaderMobileLinks": "1"
+			}'
+		>
+		</ontario-header>
 
 		<main>
 			<div class="ontario-row">
@@ -28,12 +38,14 @@
 
 					<h2>On this page</h2>
 					<ol>
+						<li><a href="#accordion">Accordion</a></li>
 						<li><a href="#blockquotes">Blockquotes</a></li>
 						<li><a href="#buttons">Buttons</a></li>
 						<li><a href="#callout-aside">Callouts and Asides</a></li>
 						<li><a href="#checkboxes">Checkboxes</a></li>
 						<li><a href="#dropdown-lists">Dropdown lists</a></li>
 						<li><a href="#fieldsets">Fieldsets</a></li>
+						<li><a href="#header">Header</a></li>
 						<li><a href="#icons">Icons</a></li>
 						<li><a href="#loading-indicator">Loading indicator</a></li>
 						<li><a href="#page-alerts">Page alerts</a></li>
@@ -41,9 +53,28 @@
 						<li><a href="#tables">Tables</a></li>
 						<li><a href="#textareas">Textareas</a></li>
 						<li><a href="#text-inputs">Text inputs</a></li>
+						<li><a href="#date-input">Date input</a></li>
 						<li><a href="#step-indicator">Step indicator</a></li>
 					</ol>
 					<hr />
+
+					<!-- Accordion -->
+					<div>
+						<h2 id="accordion">Accordion</h2>
+						<ontario-accordion
+							name="My Accordion"
+							expand-collapse-button='{
+								"expandAllSectionsLabel": "Expand All",
+								"collapseAllSectionsLabel": "Collapse All"
+							}'
+							accordion-data='[
+								{"label": "Accordion 1", "content": "This is a string"},
+								{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"},
+								{"label": "Accordion 3", "accordionContentType": "html", "content": "<p>Some <em>sample</em> <strong>text</strong> <s>with</s> <u>lots </u><span style=\"font-size:24px\">of</span> <strong><em><u><s>formating</s></u></em></strong>!</p>"}
+							]'
+						></ontario-accordion>
+						<hr />
+					</div>
 
 					<!-- Blockquotes -->
 					<div>
@@ -282,6 +313,22 @@
 						<hr />
 					</div>
 
+					<!-- Buttons -->
+					<div>
+						<h2 id="header">Header</h2>
+						<div>
+							<h3 class="ontario-h4">Change the page header</h3>
+							<ontario-button onclick="activateHeaderType('ontario')">Activate the Ontario.ca Header</ontario-button>
+							<ontario-button onclick="activateHeaderType('application')">
+								Activate the Application Header
+							</ontario-button>
+							<ontario-button onclick="activateHeaderType('serviceOntario')">
+								Activate the ServiceOntario Header
+							</ontario-button>
+						</div>
+						<hr />
+					</div>
+
 					<!-- Icons -->
 					<div>
 						<h2 id="icons">Icons</h2>
@@ -497,7 +544,7 @@
 										"date4": "46"
 									}
 								},
-								{ 
+								{
 									"data": {
 										"business": "Total row",
 										"date1": "514",
@@ -580,7 +627,7 @@
 										"column6": "36,264,081"
 									}
 								},
-								{ 
+								{
 									"data" : {
 										"program": "Ministry total operating expense",
 										"column1": "6,713,690,314",
@@ -736,6 +783,29 @@
 					</div>
 					<hr />
 
+					<!-- Date Input -->
+					<div>
+						<h2 id="date-input">Date Input</h2>
+						<ontario-date-input
+							element-id="date-input-example-id"
+							placeholder='{
+								"day": "DD",
+								"month": "MM",
+								"year": "YYYY"
+							}'
+							min-year="999"
+							max-year="9999"
+							required="true"
+							date-options='["day", "month", "year"]'
+							hint-text="For example 2000 03 01"
+							caption='{
+								"captionText": "Exact Date",
+								"captionType": "default"
+							}'
+						></ontario-date-input>
+					</div>
+					<hr />
+
 					<!-- Step Indicator -->
 					<div>
 						<h2 id="step-indicator">Step Indicator</h2>
@@ -842,6 +912,11 @@
 		<script>
 			function testFunction() {
 				alert('HELLO WORLD!');
+			}
+
+			function activateHeaderType(headerType) {
+				const ontarioHeaderElement = document.querySelector('ontario-header');
+				ontarioHeaderElement.type = headerType;
 			}
 		</script>
 	</body>

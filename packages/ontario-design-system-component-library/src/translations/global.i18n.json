@@ -124,6 +124,10 @@
 			"en": "Search",
 			"fr": "Rechercher"
 		},
+		"serviceOntario": {
+			"en": "ServiceOntario",
+			"fr": "ServiceOntario"
+		},
 		"openMenu": {
 			"en": "Show navigation menu",
 			"fr": "Ouvrir le menu de navigation"
@@ -139,6 +143,82 @@
 		"closeSearch": {
 			"en": "Close search bar",
 			"fr": "Fermer la barre de recherche"
+		}
+	},
+	"dateInput": {
+		"caption": {
+			"en": "Exact date",
+			"fr": "Dates exactes"
+		},
+		"day": {
+			"label": {
+				"en": "Day",
+				"fr": "Jour"
+			},
+			"accessibility": {
+				"en": "4 digits",
+				"fr": "4 chiffres"
+			}
+		},
+		"month": {
+			"label": {
+				"en": "Month",
+				"fr": "Mois"
+			},
+			"accessibility": {
+				"en": "1 or 2 digits",
+				"fr": "1 ou 2 chiffres"
+			}
+		},
+		"year": {
+			"label": {
+				"en": "Year",
+				"fr": "Année"
+			},
+			"accessibility": {
+				"en": "1 or 2 digits",
+				"fr": "1 ou 2 chiffres"
+			}
+		},
+		"error": {
+			"en": {
+				"emptyDay": "Enter the day.",
+				"emptyMonth": "Enter the month.",
+				"emptyYear": "Enter the year.",
+				"emptyDayAndMonth": "Enter the month and day.",
+				"emptyDayAndYear": "Enter the year and day.",
+				"emptyMonthAndYear": "Enter the year and month.",
+				"invalidDate": "Enter a valid date.",
+				"invalidDay": "Enter a valid day.",
+				"invalidMonth": "Enter a valid month.",
+				"invalidYear": "Enter a valid year."
+			},
+			"fr": {
+				"emptyDay": "Saisissez le jour.",
+				"emptyMonth": "Saisissez le mois.",
+				"emptyYear": "Saisissez l’année.",
+				"emptyDayAndMonth": "Saisissez le mois et le jour.",
+				"emptyDayAndYear": "Saisissez l’année et le jour.",
+				"emptyMonthAndYear": "Saisissez l’année et le mois.",
+				"invalidDate": "Saisissez une date valide.",
+				"invalidDay": "Saisissez un jour valide.",
+				"invalidMonth": "Saisissez un mois valide.",
+				"invalidYear": "Saisissez une année valide."
+			}
+		}
+	},
+	"accordion": {
+		"expand": {
+			"en": "Expand all",
+			"fr": "Agrandir tout"
+		},
+		"collapse": {
+			"en": "Collapse all",
+			"fr": "Réduire tout"
+		},
+		"expandCollapseAriaLabel": {
+			"en": "Expand or collapse the accordion",
+			"fr": "Agrandissez ou réduisez l'accordéon"
 		}
 	}
 }

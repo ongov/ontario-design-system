@@ -1,3 +1,5 @@
+import { EventEmitter } from '@stencil/core';
+
 import { RadioOption } from './radio-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
@@ -121,30 +123,30 @@ export interface RadioButtons extends Base {
 	/**
 	 * Used to add a custom function to the radio input onChange event.
 	 */
-	customOnChange?: Function;
+	customOnChange?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the radio input onBlur event.
 	 */
-	customOnBlur?: Function;
+	customOnBlur?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the radio input onFocus event.
 	 */
-	customOnFocus?: Function;
+	customOnFocus?: (event: globalThis.Event) => void;
 
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a radio option has been changed.
 	 */
-	radioOnChange: RadioAndCheckboxChangeEvent;
+	radioOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a radio option has lost focus.
 	 */
-	radioOnBlur: InputFocusBlurEvent;
+	radioOnBlur: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a radio option has gained focus.
 	 */
-	radioOnFocus: InputFocusBlurEvent;
+	radioOnFocus: EventEmitter<InputFocusBlurEvent>;
 }

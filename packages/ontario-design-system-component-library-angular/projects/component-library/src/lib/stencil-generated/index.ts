@@ -1,6 +1,7 @@
 import * as d from './components';
 
 export const DIRECTIVES = [
+	d.OntarioAccordion,
 	d.OntarioAside,
 	d.OntarioBackToTop,
 	d.OntarioBlockquote,
@@ -8,6 +9,7 @@ export const DIRECTIVES = [
 	d.OntarioCallout,
 	d.OntarioCheckboxes,
 	d.OntarioCriticalAlert,
+	d.OntarioDateInput,
 	d.OntarioDropdownList,
 	d.OntarioFieldset,
 	d.OntarioFooter,

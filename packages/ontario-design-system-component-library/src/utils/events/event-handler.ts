@@ -1,17 +1,23 @@
 import { EventEmitter } from '@stencil/core';
-import { InputType, EventType } from './event-handler.interface';
+import {
+	InputType,
+	EventType,
+	InputFocusBlurEvent,
+	InputChangeEvent,
+	RadioAndCheckboxChangeEvent,
+} from './event-handler.interface';
 
 export const handleInputEvent = (
 	ev: Event,
 	eventType: EventType,
 	input: InputType,
-	inputChangeEvent: EventEmitter,
-	inputFocusEvent: EventEmitter,
-	inputBlurEvent: EventEmitter,
+	inputChangeEvent: EventEmitter<InputChangeEvent | RadioAndCheckboxChangeEvent>,
+	inputFocusEvent: EventEmitter<InputFocusBlurEvent>,
+	inputBlurEvent: EventEmitter<InputFocusBlurEvent>,
 	type?: string,
-	customChangeFunction?: Function,
-	customFocusFunction?: Function,
-	customBlurFunction?: Function,
+	customChangeFunction?: (event: Event) => void,
+	customFocusFunction?: (event: Event) => void,
+	customBlurFunction?: (event: Event) => void,
 ) => {
 	if (eventType === 'change') {
 		if (type === 'radio' || type === 'checkbox') {

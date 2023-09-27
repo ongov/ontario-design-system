@@ -1,4 +1,4 @@
-import { Component, Event, h, Prop, State, Listen, Element, Watch } from '@stencil/core';
+import { Component, Event, h, Prop, State, Listen, Element, Watch, EventEmitter } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
 import { Input } from '../../utils/common/input/input';
@@ -128,17 +128,17 @@ export class OntarioInput implements TextInput {
 	/**
 	 * Used to add a custom function to the textarea onChange event.
 	 */
-	@Prop() customOnChange?: Function;
+	@Prop() customOnChange?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the textarea onBlur event.
 	 */
-	@Prop() customOnBlur?: Function;
+	@Prop() customOnBlur?: (event: globalThis.Event) => void;
 
 	/**
 	 * Used to add a custom function to the textarea onFocus event.
 	 */
-	@Prop() customOnFocus?: Function;
+	@Prop() customOnFocus?: (event: globalThis.Event) => void;
 
 	/**
 	 * The hint text options are re-assigned to the internalHintText array.
@@ -158,17 +158,17 @@ export class OntarioInput implements TextInput {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 	 */
-	@Event({ eventName: 'inputOnChange' }) inputOnChange: InputChangeEvent;
+	@Event({ eventName: 'inputOnChange' }) inputOnChange: EventEmitter<InputChangeEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
-	@Event({ eventName: 'inputOnBlur' }) inputOnBlur: InputFocusBlurEvent;
+	@Event({ eventName: 'inputOnBlur' }) inputOnBlur: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
-	@Event({ eventName: 'inputOnFocus' }) inputOnFocus: InputFocusBlurEvent;
+	@Event({ eventName: 'inputOnFocus' }) inputOnFocus: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
