@@ -1,5 +1,68 @@
 # ontario-step-indicator
 
+Use a step indicator to show a user’s progress as they move through a multi-step form.
+
+## Usage guidance
+
+Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/step-indicator.html) for current documentation guidance.
+
+## Configuration
+
+Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the button component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
+
+## Examples
+
+### Enabling the back button
+
+By default the step indicator doesn't display the back button. This can be enabled by setting `show-back-button` to `true`. See the code examples for how this is used.
+
+### Progress reporting
+
+Progress reported by the step indicator can be displayed in either a percentage or as the number of completed steps.
+
+#### Using a percentage
+
+To use a percentage as the reported progress, set the `percentage-complete` attribute to the percentage the user has completed the form.
+
+```html
+<ontario-step-indicator
+	show-back-button="true"
+	back-button-url="https://designsystem.ontario.ca/"
+	percentage-complete="70"
+></ontario-step-indicator>
+```
+
+#### Using steps
+
+To output the step the user is currently on and the total number of steps, set the `current-step` and the `number-of-steps` to the appropriate values.
+
+```html
+<ontario-step-indicator
+	show-back-button="true"
+	back-button-url="https://designsystem.ontario.ca/"
+	current-step="4"
+	number-of-steps="5"
+></ontario-step-indicator>
+```
+
+### Custom back button function
+
+The simplest use of the back button is to provide, via the `back-button-url` attribute, a URL to navigate the user to when the back button is clicked. This isn't always sufficient to cover all use cases of the component so the component can also make use of a custom back button function, registered via the `customOnClick` property using JavaScript, to perform any custom actions within your application/site.
+
+```html
+<ontario-step-indicator show-back-button="true" percentage-complete="70"></ontario-step-indicator>
+
+<script>
+	function handleBackButton(event) {
+		event.preventDefault();
+		// Additional logic here
+	}
+
+	const ontarioStepIndicator = document.querySelector('ontario-step-indicator');
+	ontarioStepIndicator.customOnClick = handleBackButton;
+</script>
+```
+
 <!-- Auto Generated Below -->
 
 ## Properties
