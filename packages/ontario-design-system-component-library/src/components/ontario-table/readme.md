@@ -168,12 +168,12 @@ Used to define the columns of the table.
 </ontario-table>
 ```
 
-| **Property name** | **Type**                                                                   | **Description**                                                                                                                                                                                          |
-| ----------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `title`           | `string`                                                                   | The text for the column.                                                                                                                                                                                 |
-| `key`             | `string \| number`                                                         | The unique key of the column. This will be the reference point for the table data rows.                                                                                                                  |
-| `type`            | `"string" \| "numeric" \| undefined`                                       | The type of display for the data that falls under this column. This can either be set to `"string"` or `"numeric"`.<br /> This is optional. If no prop is passed, the default will be set to `"string"`. |
-| `colspan`         | `1 \| 2 \| 3 \| 4 \| 5 \| 6 \| 7 \| 8 \| 9 \| 10 \| 11 \| 12 \| undefined` | The width of the column. The number values are equivalent to the grid column width values <br /> This is optional. By default the column width will fit its max content.                                 |
+| Property name | Type                                                                       | Default     | Description                                                                                                                                                                                              |
+| ------------- | -------------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `title`       | `string`                                                                   |             | The text for the column.                                                                                                                                                                                 |
+| `key`         | `string \| number`                                                         |             | The unique key of the column. This will be the reference point for the table data rows.                                                                                                                  |
+| `type`        | `"string" \| "numeric" \| undefined`                                       | `string`    | The type of display for the data that falls under this column. This can either be set to `"string"` or `"numeric"`.<br /> This is optional. If no prop is passed, the default will be set to `"string"`. |
+| `colspan`     | `1 \| 2 \| 3 \| 4 \| 5 \| 6 \| 7 \| 8 \| 9 \| 10 \| 11 \| 12 \| undefined` | `undefined` | The width of the column. The number values are equivalent to the grid column width values <br /> This is optional. By default the column width will fit its max content.                                 |
 
 ### TableRowOptions
 
@@ -200,12 +200,12 @@ Used to define the table body data. Note that the keys passed to the `data` obje
 ></ontario-table>
 ```
 
-| **Property name** | **Type**                                          | **Description**                                                                                                                                                            |
-| ----------------- | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `data`            | `{[key: string]: string \| number \| undefined;}` | The data to input into the table rows. <br /> The keys for the data objects passed in should reflect the respective keys of the [TableColumnOptions](#tablecolumnoptions). |
-| `highlight`       | `boolean \| undefined`                            | A boolean value to indicate whether or not the row should be highlighted. <br />This is optional. If no prop is passed, it will default to `false`.                        |
-| `subtotal`        | `boolean \| undefined`                            | A boolean value to indicate whether or not the row should be styled as a subtotal. <br />This is optional. If no prop is passed, it will default to `false`.               |
-| `footer`          | `boolean \| undefined`                            | A boolean value to indicate whether or not the row should be coded as a table footer. <br /> This is optional. If no prop is passed, it will default to `false`.           |
+| Property name | Type                                              | Default | Description                                                                                                                                                                |
+| ------------- | ------------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data`        | `{[key: string]: string \| number \| undefined;}` |         | The data to input into the table rows. <br /> The keys for the data objects passed in should reflect the respective keys of the [TableColumnOptions](#tablecolumnoptions). |
+| `highlight`   | `boolean \| undefined`                            | `false` | A boolean value to indicate whether or not the row should be highlighted. <br />This is optional. If no prop is passed, it will default to `false`.                        |
+| `subtotal`    | `boolean \| undefined`                            | `false` | A boolean value to indicate whether or not the row should be styled as a subtotal. <br />This is optional. If no prop is passed, it will default to `false`.               |
+| `footer`      | `boolean \| undefined`                            | `false` | A boolean value to indicate whether or not the row should be coded as a table footer. <br /> This is optional. If no prop is passed, it will default to `false`.           |
 
 <!-- Auto Generated Below -->
 
