@@ -18,6 +18,8 @@ Example of a bare-bones textarea component where the user is passing the `name` 
 <ontario-textarea name="comments" element-id="form-comments" />
 ```
 
+To mark a textarea as required, add the `required` attribute to the component.
+
 ```html
 <ontario-textarea name="comments" element-id="form-comments" required="true" onBlur="exampleFunction()" />
 ```
@@ -32,28 +34,28 @@ The `caption` property is used to render the legend for the ontario-textarea. It
 caption='{ "captionText": "Textarea label", "captionType": "default" }'
 ```
 
-| **Property name** | **Type**                           | **Description**                                                                                                                                      |
-| ----------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `captionText`     | `string`                           | Text to display as the radio textarea question                                                                                                       |
-| `captionType`     | `"default" \| "large"\| "heading"` | The type of legend to display for the textarea question. This is optional, and if no information is provided, it will default to the `default` type. |
+| Property name | Type                               | Default   | Description                                                                                                                                          |
+| ------------- | ---------------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `captionText` | `string`                           |           | Text to display as the radio textarea question                                                                                                       |
+| `captionType` | `"default" \| "large"\| "heading"` | `default` | The type of legend to display for the textarea question. This is optional, and if no information is provided, it will default to the `default` type. |
 
 ### hintExpander
 
 The `hintExpander` property is used to include the Hint Expander component underneath the input label. This is passed in as an object with key-value pairs.
 
+<!-- prettier-ignore -->
 ```html
-hintExpander='{ "hint": "This is the hint expander title", "content": "This is the hint expander content - it is only
-visible when the hint expander title (hint) is toggled" }'
+hintExpander='{ "hint": "This is the hint expander title", "content": "This is the hint expander content - it is only visible when the hint expander title (hint) is toggled" }'
 ```
 
-| **Property name** | **Type** | **Description**                                                                                                 |
-| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------- |
-| `hint`            | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content |
-| `content`         | `string` | Text to display as the content of the hint expander                                                             |
+| Property name | Type     | Description                                                                                                     |
+| ------------- | -------- | --------------------------------------------------------------------------------------------------------------- |
+| `hint`        | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content |
+| `content`     | `string` | Text to display as the content of the hint expander                                                             |
 
 ## Accessibility
 
-- An `id` attribute is necessary to allow the textarea to be associated with a label element
+- An `element-id` attribute is necessary to allow the textarea to be associated with a label element
 - A `name` attribute needs to be set to be submitted to the server when the form is submitted.
 
 <!-- Auto Generated Below -->
