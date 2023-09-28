@@ -410,12 +410,14 @@ export class OntarioRadioButtons implements RadioButtons {
 						))}
 
 						{this.internalHintExpander && (
-							<ontario-hint-expander
-								hint={this.internalHintExpander.hint}
-								content={this.internalHintExpander.content}
-								hintContentType={this.internalHintExpander.hintContentType}
-								input-exists
-							></ontario-hint-expander>
+							<div class="ontario-radios__hint-expander">
+								<ontario-hint-expander
+									hint={this.internalHintExpander.hint}
+									content={this.internalHintExpander.content}
+									hintContentType={this.internalHintExpander.hintContentType}
+									input-exists
+								></ontario-hint-expander>
+							</div>
 						)}
 					</div>
 				</fieldset>

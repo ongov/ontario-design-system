@@ -404,12 +404,14 @@ export class OntarioCheckboxes implements Checkboxes {
 						))}
 
 						{this.internalHintExpander && (
-							<ontario-hint-expander
-								hint={this.internalHintExpander.hint}
-								content={this.internalHintExpander.content}
-								hintContentType={this.internalHintExpander.hintContentType}
-								input-exists
-							></ontario-hint-expander>
+							<div class="ontario-checkboxes__hint-expander">
+								<ontario-hint-expander
+									hint={this.internalHintExpander.hint}
+									content={this.internalHintExpander.content}
+									hintContentType={this.internalHintExpander.hintContentType}
+									input-exists
+								></ontario-hint-expander>
+							</div>
 						)}
 					</div>
 				</fieldset>
