@@ -15,10 +15,7 @@ Once the component package has been installed (see Ontario Design System Compone
 Example of a bare-bones input component, the `name` property is passed in for the input, which is used to reference form data after a form is submitted. The `caption` property is being provided, which will be displayed as the label. By default, the `inputWidth` will be `default`, the `type` will be `text`, and the input will be set to `optional`.
 
 ```html
-<ontario-input
-	name="ontario-text-input"
-	caption="Ontario input"
-/></ontario-input>
+<ontario-input name="ontario-text-input" caption="Ontario input"></ontario-input>
 ```
 
 The following input component example has the `inputWidth` property passed in, which will define the width of the input field.
@@ -31,7 +28,7 @@ The following input component example has the `inputWidth` property passed in, w
 		"captionType": "large"
 	}'
 	input-width="10-char-width"
-/></ontario-input>
+></ontario-input>
 ```
 
 ## Custom property types
@@ -65,7 +62,7 @@ visible when the hint expander title (hint) is toggled" }'
 
 ## Accessibility
 
-- An `id` attribute is necessary to allow the input to be associated with a label element
+- An `element-id` attribute is necessary to allow the input to be associated with a label element
 - A `name` attribute needs to be set to be submitted to the server when the form is submitted.
 
 <!-- Auto Generated Below -->

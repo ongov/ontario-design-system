@@ -809,10 +809,24 @@
 					<!-- Step Indicator -->
 					<div>
 						<h2 id="step-indicator">Step Indicator</h2>
+						<h3>Percentage</h3>
 						<ontario-step-indicator
 							show-back-button="true"
 							back-button-url="https://designsystem.ontario.ca/"
 							percentage-complete="70"
+						></ontario-step-indicator>
+						<h3>Steps</h3>
+						<ontario-step-indicator
+							show-back-button="true"
+							back-button-url="https://designsystem.ontario.ca/"
+							current-step="4"
+							number-of-steps="5"
+						></ontario-step-indicator>
+						<h3>No back button</h3>
+						<ontario-step-indicator
+							show-back-button="false"
+							current-step="4"
+							number-of-steps="5"
 						></ontario-step-indicator>
 					</div>
 				</div>

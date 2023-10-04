@@ -423,7 +423,7 @@ export declare interface OntarioHintExpander extends Components.OntarioHintExpan
 	/**
 	 * Emitted when a keyboard input or mouse event occurs.
 	 */
-	toggleExpanderEvent: EventEmitter<CustomEvent<any>>;
+	toggleExpanderEvent: EventEmitter<CustomEvent<MouseEvent | KeyboardEvent>>;
 }
 
 @ProxyCmp({
