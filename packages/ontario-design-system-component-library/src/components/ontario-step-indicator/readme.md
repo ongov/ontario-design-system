@@ -8,7 +8,7 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca/comp
 
 ## Configuration
 
-Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the button component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
+Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the step indicator component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
 
 ## Examples
 
