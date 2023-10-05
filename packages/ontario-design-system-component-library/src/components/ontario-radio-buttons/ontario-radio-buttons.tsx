@@ -396,26 +396,28 @@ export class OntarioRadioButtons implements RadioButtons {
 										this.captionState.getHintExpanderAccessibilityText(radioOption.label, true)}
 								</label>
 
-								<div class="ontario-radios__hint-expander">
-									{radioOption.hintExpander && (
+								{radioOption.hintExpander && (
+									<div class="ontario-radios__hint-expander">
 										<ontario-hint-expander
 											hint={radioOption.hintExpander.hint}
 											content={radioOption.hintExpander.content}
 											hintContentType={radioOption.hintExpander.hintContentType}
 											input-exists
 										></ontario-hint-expander>
-									)}
-								</div>
+									</div>
+								)}
 							</div>
 						))}
 
 						{this.internalHintExpander && (
-							<ontario-hint-expander
-								hint={this.internalHintExpander.hint}
-								content={this.internalHintExpander.content}
-								hintContentType={this.internalHintExpander.hintContentType}
-								input-exists
-							></ontario-hint-expander>
+							<div class="ontario-radios__hint-expander">
+								<ontario-hint-expander
+									hint={this.internalHintExpander.hint}
+									content={this.internalHintExpander.content}
+									hintContentType={this.internalHintExpander.hintContentType}
+									input-exists
+								></ontario-hint-expander>
+							</div>
 						)}
 					</div>
 				</fieldset>

@@ -390,26 +390,28 @@ export class OntarioCheckboxes implements Checkboxes {
 									{checkbox.hintExpander && this.captionState.getHintExpanderAccessibilityText(checkbox.label, true)}
 								</label>
 
-								<div class="ontario-checkboxes__hint-expander">
-									{checkbox.hintExpander && (
+								{checkbox.hintExpander && (
+									<div class="ontario-checkboxes__hint-expander">
 										<ontario-hint-expander
 											hint={checkbox.hintExpander.hint}
 											content={checkbox.hintExpander.content}
 											hintContentType={checkbox.hintExpander.hintContentType}
 											input-exists
 										></ontario-hint-expander>
-									)}
-								</div>
+									</div>
+								)}
 							</div>
 						))}
 
 						{this.internalHintExpander && (
-							<ontario-hint-expander
-								hint={this.internalHintExpander.hint}
-								content={this.internalHintExpander.content}
-								hintContentType={this.internalHintExpander.hintContentType}
-								input-exists
-							></ontario-hint-expander>
+							<div class="ontario-checkboxes__hint-expander">
+								<ontario-hint-expander
+									hint={this.internalHintExpander.hint}
+									content={this.internalHintExpander.content}
+									hintContentType={this.internalHintExpander.hintContentType}
+									input-exists
+								></ontario-hint-expander>
+							</div>
 						)}
 					</div>
 				</fieldset>
