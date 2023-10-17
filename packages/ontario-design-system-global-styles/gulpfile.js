@@ -1,12 +1,12 @@
 import { deleteAsync } from 'del';
-
+import fs from 'fs';
 import autoprefixer from 'gulp-autoprefixer';
 import concat from 'gulp-concat';
 import minify from 'gulp-clean-css';
 import gulpif from 'gulp-if';
 
 import gulpSass from 'gulp-sass';
-import dartSass from 'sass';
+import * as dartSass from 'sass';
 const sass = gulpSass(dartSass);
 
 import gulp from 'gulp';
@@ -16,6 +16,9 @@ const distDir = './dist';
 const styleDir = './src/sass/**';
 const fonts = ['./src/fonts/**'];
 const favicons = ['./src/favicons/*'];
+const dsTokensPath =
+	'./node_modules/@ontario-digital-service/ontario-design-system-design-tokens/dist/scss/_variables.scss';
+const dsTokensDestPath = `${distDir}/styles/scss/1-variables/_tokens.variables.scss`;
 
 /**
  * @param {{
@@ -74,6 +77,12 @@ task('sass:copy-dist', () => {
 	return src('src/styles/scss/**/*.scss').pipe(dest('dist/styles/scss'));
 });
 
+// Replace node_module reference of tokens file with actual token declaration
+task('sass:copy-tokens', (done) => {
+	fs.copyFileSync(dsTokensPath, dsTokensDestPath);
+	done();
+});
+
 task('sass:build-minify', parallel('sass:build', 'sass:minify'));
 
 // Move all non-style related fonts to the dist/fonts folder
@@ -95,6 +104,9 @@ task('clean', async (done) => {
 	return await deleteAsync(distDir);
 });
 
-task('deploy', series('clean', 'fonts-move', 'favicons-move', 'sass:copy-dist', 'sass:build-minify'));
+task(
+	'deploy',
+	series('clean', 'fonts-move', 'favicons-move', 'sass:copy-dist', 'sass:copy-tokens', 'sass:build-minify'),
+);
 
 task('default', series('watch'));

@@ -1,6 +1,6 @@
 @use 'sass:math';
 @use 'sass:list';
-@use '@ontario-digital-service/ontario-design-system-design-tokens/dist/scss/variables' as designTokenVariables;
+@use '../../1-variables/tokens.variables' as designTokenVariables;
 
 /*
 *  Grid functions
