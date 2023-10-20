@@ -209,17 +209,17 @@ export class OntarioDropdownList implements Dropdown {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed.
 	 */
-	@Event({ eventName: 'dropdownOnChange' }) dropdownOnChange: EventEmitter<InputInteractionEvent>;
+	@Event() dropdownOnChange: EventEmitter<InputInteractionEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a dropdown list has lost focus.
 	 */
-	@Event({ eventName: 'dropdownOnBlur' }) dropdownOnBlur: EventEmitter<InputFocusBlurEvent>;
+	@Event() dropdownOnBlur: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a dropdown list has gained focus.
 	 */
-	@Event({ eventName: 'dropdownOnFocus' }) dropdownOnFocus: EventEmitter<InputFocusBlurEvent>;
+	@Event() dropdownOnFocus: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -359,10 +359,12 @@ export class OntarioDropdownList implements Dropdown {
 			this.dropdownOnChange,
 			this.dropdownOnFocus,
 			this.dropdownOnBlur,
+			undefined,
 			'dropdown',
 			this.customOnChange,
 			this.customOnFocus,
 			this.customOnBlur,
+			undefined,
 			this.element,
 		);
 	}

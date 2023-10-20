@@ -11,7 +11,12 @@ import { Caption } from '../../utils/common/input-caption/caption.interface';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage, validatePropExists } from '../../utils/validation/validation-functions';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
-import { InputFocusBlurEvent, EventType, InputInteractionEvent } from '../../utils/events/event-handler.interface';
+import {
+	InputFocusBlurEvent,
+	EventType,
+	InputInteractionEvent,
+	InputInputEvent,
+} from '../../utils/events/event-handler.interface';
 import { handleInputEvent } from '../../utils/events/event-handler';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
@@ -126,6 +131,11 @@ export class OntarioInput implements TextInput {
 	@State() hintTextId: string | undefined;
 
 	/**
+	 * Used to add a custom function to the textarea inInput  event.
+	 */
+	@Prop() customOnInput?: (event: globalThis.Event) => void;
+
+	/**
 	 * Used to add a custom function to the textarea onChange event.
 	 */
 	@Prop() customOnChange?: (event: globalThis.Event) => void;
@@ -156,19 +166,24 @@ export class OntarioInput implements TextInput {
 	@State() private captionState: InputCaption;
 
 	/**
+	 * Emitted when a input  occurs when an input has been changed.
+	 */
+	@Event() inputOnInput: EventEmitter<InputInputEvent>;
+
+	/**
 	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 	 */
-	@Event({ eventName: 'inputOnChange' }) inputOnChange: EventEmitter<InputInteractionEvent>;
+	@Event() inputOnChange: EventEmitter<InputInteractionEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
-	@Event({ eventName: 'inputOnBlur' }) inputOnBlur: EventEmitter<InputFocusBlurEvent>;
+	@Event() inputOnBlur: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
-	@Event({ eventName: 'inputOnFocus' }) inputOnFocus: EventEmitter<InputFocusBlurEvent>;
+	@Event() inputOnFocus: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -269,10 +284,12 @@ export class OntarioInput implements TextInput {
 			this.inputOnChange,
 			this.inputOnFocus,
 			this.inputOnBlur,
+			this.inputOnInput,
 			'input',
 			this.customOnChange,
 			this.customOnFocus,
 			this.customOnBlur,
+			this.customOnInput,
 			this.element,
 		);
 	}

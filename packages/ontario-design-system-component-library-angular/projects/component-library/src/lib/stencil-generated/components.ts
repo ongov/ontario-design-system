@@ -2693,6 +2693,7 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
 		'customOnBlur',
 		'customOnChange',
 		'customOnFocus',
+		'customOnInput',
 		'elementId',
 		'hintExpander',
 		'hintText',
@@ -2714,6 +2715,7 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
 		'customOnBlur',
 		'customOnChange',
 		'customOnFocus',
+		'customOnInput',
 		'elementId',
 		'hintExpander',
 		'hintText',
@@ -2730,14 +2732,19 @@ export class OntarioInput {
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['inputOnChange', 'inputOnBlur', 'inputOnFocus']);
+		proxyOutputs(this, this.el, ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus']);
 	}
 }
 
+import type { InputInputEvent as IOntarioInputInputInputEvent } from '@ontario-digital-service/ontario-design-system-component-library';
 import type { InputInteractionEvent as IOntarioInputInputInteractionEvent } from '@ontario-digital-service/ontario-design-system-component-library';
 import type { InputFocusBlurEvent as IOntarioInputInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
 
 export declare interface OntarioInput extends Components.OntarioInput {
+	/**
+	 * Emitted when a input  occurs when an input has been changed.
+	 */
+	inputOnInput: EventEmitter<CustomEvent<IOntarioInputInputInputEvent>>;
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 	 */
@@ -2943,6 +2950,7 @@ export declare interface OntarioTable extends Components.OntarioTable {}
 		'customOnBlur',
 		'customOnChange',
 		'customOnFocus',
+		'customOnInput',
 		'elementId',
 		'hintExpander',
 		'hintText',
@@ -2962,6 +2970,7 @@ export declare interface OntarioTable extends Components.OntarioTable {}
 		'customOnBlur',
 		'customOnChange',
 		'customOnFocus',
+		'customOnInput',
 		'elementId',
 		'hintExpander',
 		'hintText',
@@ -2976,14 +2985,19 @@ export class OntarioTextarea {
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['inputOnChange', 'inputOnBlur', 'inputOnFocus']);
+		proxyOutputs(this, this.el, ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus']);
 	}
 }
 
+import type { InputInputEvent as IOntarioTextareaInputInputEvent } from '@ontario-digital-service/ontario-design-system-component-library';
 import type { InputInteractionEvent as IOntarioTextareaInputInteractionEvent } from '@ontario-digital-service/ontario-design-system-component-library';
 import type { InputFocusBlurEvent as IOntarioTextareaInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
 
 export declare interface OntarioTextarea extends Components.OntarioTextarea {
+	/**
+	 * Emitted when a input event occurs when an input has been changed.
+	 */
+	inputOnInput: EventEmitter<CustomEvent<IOntarioTextareaInputInputEvent>>;
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 	 */

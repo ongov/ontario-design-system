@@ -340,10 +340,12 @@ export class OntarioRadioButtons implements RadioButtons {
 			this.radioOnChange,
 			this.radioOnFocus,
 			this.radioOnBlur,
+			undefined,
 			'radio',
 			this.customOnChange,
 			this.customOnFocus,
 			this.customOnBlur,
+			undefined,
 			this.element,
 		);
 	}

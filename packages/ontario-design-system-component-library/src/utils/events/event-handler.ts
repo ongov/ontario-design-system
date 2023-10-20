@@ -5,6 +5,7 @@ import {
 	InputFocusBlurEvent,
 	InputInteractionEvent,
 	RadioAndCheckboxChangeEvent,
+	InputInputEvent,
 } from './event-handler.interface';
 
 export const handleInputEvent = (
@@ -14,14 +15,22 @@ export const handleInputEvent = (
 	inputChangeEvent: EventEmitter<InputInteractionEvent | RadioAndCheckboxChangeEvent>,
 	inputFocusEvent: EventEmitter<InputFocusBlurEvent>,
 	inputBlurEvent: EventEmitter<InputFocusBlurEvent>,
+	inputInputEvent?: EventEmitter<InputInputEvent>,
 	type?: string,
 	customChangeFunction?: (event: Event) => void,
 	customFocusFunction?: (event: Event) => void,
 	customBlurFunction?: (event: Event) => void,
+	customInputFunction?: (event: Event) => void,
 	hostElement?: HTMLElement,
 ) => {
 	if (eventType === EventType.Input) {
-		// Add code for custom on focus function?
+		inputInputEvent?.emit({
+			id: input?.id,
+			value: (event as InputEvent).data ?? undefined,
+			inputType: (event as InputEvent).inputType,
+		});
+
+		customInputFunction && customInputFunction(event);
 	}
 
 	if (eventType === EventType.Change) {
@@ -41,6 +50,7 @@ export const handleInputEvent = (
 		}
 
 		customChangeFunction && customChangeFunction(event);
+
 		// Note: Change events don't have composable set to true and don't cross the ShadowDOM boundary.
 		// This will emit an event so the normal `onChange` event pattern is maintained.
 		hostElement && emitEvent(hostElement, eventType, event);

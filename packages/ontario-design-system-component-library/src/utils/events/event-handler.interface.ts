@@ -10,6 +10,10 @@ export type InputInteractionEvent = {
 	value?: string;
 };
 
+export type InputInputEvent = InputInteractionEvent & {
+	inputType?: string;
+};
+
 export type RadioAndCheckboxChangeEvent = InputInteractionEvent & {
 	checked: boolean;
 };

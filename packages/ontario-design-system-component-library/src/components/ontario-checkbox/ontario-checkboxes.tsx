@@ -185,17 +185,17 @@ export class OntarioCheckboxes implements Checkboxes {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed.
 	 */
-	@Event({ eventName: 'checkboxOnChange' }) checkboxOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
+	@Event() checkboxOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has lost focus.
 	 */
-	@Event({ eventName: 'checkboxOnBlur' }) checkboxOnBlur: EventEmitter<InputFocusBlurEvent>;
+	@Event() checkboxOnBlur: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has gained focus.
 	 */
-	@Event({ eventName: 'checkboxOnFocus' }) checkboxOnFocus: EventEmitter<InputFocusBlurEvent>;
+	@Event() checkboxOnFocus: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -336,10 +336,12 @@ export class OntarioCheckboxes implements Checkboxes {
 			this.checkboxOnChange,
 			this.checkboxOnFocus,
 			this.checkboxOnBlur,
+			undefined,
 			'checkbox',
 			this.customOnChange,
 			this.customOnFocus,
 			this.customOnBlur,
+			undefined,
 			this.element,
 		);
 	}
