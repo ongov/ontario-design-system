@@ -40,3 +40,16 @@ describe('ontario-dropdown-list', () => {
 		});
 	});
 });
+
+describe('events', () => {
+	it('fires the onChange event', async () => {
+		const page = await newE2EPage();
+		await page.setContent('<ontario-dropdown-list></ontario-dropdown-list>');
+		const changeEvent = await page.spyOnEvent('change');
+		const component = await page.find('ontario-dropdown-list');
+
+		component.triggerEvent('change');
+		await page.waitForChanges();
+		expect(changeEvent).toHaveReceivedEventTimes(1);
+	});
+});
