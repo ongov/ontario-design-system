@@ -10,7 +10,7 @@ import { validatePropExists, validateLanguage } from '../../utils/validation/val
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
-import { InputFocusBlurEvent, EventType, InputChangeEvent } from '../../utils/events/event-handler.interface';
+import { InputFocusBlurEvent, EventType, InputInteractionEvent } from '../../utils/events/event-handler.interface';
 import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
@@ -136,7 +136,7 @@ export class OntarioTextarea implements Input {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 	 */
-	@Event({ eventName: 'inputOnChange' }) inputOnChange: EventEmitter<InputChangeEvent>;
+	@Event({ eventName: 'inputOnChange' }) inputOnChange: EventEmitter<InputInteractionEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when an input has lost focus.
@@ -237,11 +237,11 @@ export class OntarioTextarea implements Input {
 	/**
 	 * Function to handle textarea events and the information pertaining to the textarea to emit.
 	 */
-	handleEvent = (ev: Event, eventType: EventType) => {
-		const input = ev.target as HTMLTextAreaElement | null;
+	private handleEvent(event: Event, eventType: EventType) {
+		const input = event.target as HTMLTextAreaElement | null;
 
 		handleInputEvent(
-			ev,
+			event,
 			eventType,
 			input,
 			this.inputOnChange,
@@ -251,8 +251,9 @@ export class OntarioTextarea implements Input {
 			this.customOnChange,
 			this.customOnFocus,
 			this.customOnBlur,
+			this.element,
 		);
-	};
+	}
 
 	public getId(): string {
 		return this.elementId ?? '';
@@ -299,7 +300,8 @@ export class OntarioTextarea implements Input {
 					id={this.getId()}
 					name={this.name}
 					value={this.getValue()}
-					onInput={(e) => this.handleEvent(e, EventType.Change)}
+					onInput={(e) => this.handleEvent(e, EventType.Input)}
+					onChange={(e) => this.handleEvent(e, EventType.Change)}
 					onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 					onFocus={(e) => this.handleEvent(e, EventType.Focus)}
 					required={!!this.required}

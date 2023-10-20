@@ -306,14 +306,14 @@ export class OntarioDropdownList {
 	}
 }
 
-import type { InputChangeEvent as IOntarioDropdownListInputChangeEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+import type { InputInteractionEvent as IOntarioDropdownListInputInteractionEvent } from '@ontario-digital-service/ontario-design-system-component-library';
 import type { InputFocusBlurEvent as IOntarioDropdownListInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
 
 export declare interface OntarioDropdownList extends Components.OntarioDropdownList {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed.
 	 */
-	dropdownOnChange: EventEmitter<CustomEvent<IOntarioDropdownListInputChangeEvent>>;
+	dropdownOnChange: EventEmitter<CustomEvent<IOntarioDropdownListInputInteractionEvent>>;
 	/**
 	 * Emitted when a keyboard input event occurs when a dropdown list has lost focus.
 	 */
@@ -2734,14 +2734,14 @@ export class OntarioInput {
 	}
 }
 
-import type { InputChangeEvent as IOntarioInputInputChangeEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+import type { InputInteractionEvent as IOntarioInputInputInteractionEvent } from '@ontario-digital-service/ontario-design-system-component-library';
 import type { InputFocusBlurEvent as IOntarioInputInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
 
 export declare interface OntarioInput extends Components.OntarioInput {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 	 */
-	inputOnChange: EventEmitter<CustomEvent<IOntarioInputInputChangeEvent>>;
+	inputOnChange: EventEmitter<CustomEvent<IOntarioInputInputInteractionEvent>>;
 	/**
 	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
@@ -2980,14 +2980,14 @@ export class OntarioTextarea {
 	}
 }
 
-import type { InputChangeEvent as IOntarioTextareaInputChangeEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+import type { InputInteractionEvent as IOntarioTextareaInputInteractionEvent } from '@ontario-digital-service/ontario-design-system-component-library';
 import type { InputFocusBlurEvent as IOntarioTextareaInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
 
 export declare interface OntarioTextarea extends Components.OntarioTextarea {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 	 */
-	inputOnChange: EventEmitter<CustomEvent<IOntarioTextareaInputChangeEvent>>;
+	inputOnChange: EventEmitter<CustomEvent<IOntarioTextareaInputInteractionEvent>>;
 	/**
 	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */

@@ -89,9 +89,9 @@ visible when the hint expander title (hint) is toggled" }'
 
 | Event           | Description                                                                         | Type                                                                      |
 | --------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `inputOnBlur`   | Emitted when a keyboard input event occurs when an input has lost focus.            | `CustomEvent<InputChangeEvent & { focused: boolean; }>`                   |
+| `inputOnBlur`   | Emitted when a keyboard input event occurs when an input has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`              |
 | `inputOnChange` | Emitted when a keyboard input or mouse event occurs when an input has been changed. | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>` |
-| `inputOnFocus`  | Emitted when a keyboard input event occurs when an input has gained focus.          | `CustomEvent<InputChangeEvent & { focused: boolean; }>`                   |
+| `inputOnFocus`  | Emitted when a keyboard input event occurs when an input has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`              |
 
 ## Dependencies
 

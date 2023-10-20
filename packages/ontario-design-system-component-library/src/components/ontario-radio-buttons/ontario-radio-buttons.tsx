@@ -326,15 +326,15 @@ export class OntarioRadioButtons implements RadioButtons {
 	/**
 	 * Function to handle radio buttons events and the information pertaining to the radio buttons to emit.
 	 */
-	handleEvent = (ev: Event, eventType: EventType) => {
-		const input = ev.target as HTMLInputElement | null;
+	private handleEvent(event: Event, eventType: EventType) {
+		const input = event.target as HTMLInputElement | null;
 
 		if (input) {
 			input.checked = input.checked ?? '';
 		}
 
 		handleInputEvent(
-			ev,
+			event,
 			eventType,
 			input,
 			this.radioOnChange,
@@ -344,8 +344,9 @@ export class OntarioRadioButtons implements RadioButtons {
 			this.customOnChange,
 			this.customOnFocus,
 			this.customOnBlur,
+			this.element,
 		);
-	};
+	}
 
 	/**
 	 * If a `hintText` prop is passed, the id generated from it will be set to the internal `hintTextId` state to match with the fieldset `aria-describedBy` attribute.

@@ -168,9 +168,9 @@ options='[ { "value": "netflix", "label": "Netflix" }, { "value": "disney-plus",
 
 | Event              | Description                                                                                | Type                                                                      |
 | ------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
-| `dropdownOnBlur`   | Emitted when a keyboard input event occurs when a dropdown list has lost focus.            | `CustomEvent<InputChangeEvent & { focused: boolean; }>`                   |
+| `dropdownOnBlur`   | Emitted when a keyboard input event occurs when a dropdown list has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`              |
 | `dropdownOnChange` | Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed. | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>` |
-| `dropdownOnFocus`  | Emitted when a keyboard input event occurs when a dropdown list has gained focus.          | `CustomEvent<InputChangeEvent & { focused: boolean; }>`                   |
+| `dropdownOnFocus`  | Emitted when a keyboard input event occurs when a dropdown list has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`              |
 
 ## Dependencies
 
