@@ -4,7 +4,7 @@ import { DropdownOption } from './dropdown-option.interface';
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
 
 import { Base, Hint } from '../../utils/common/common.interface';
-import { InputFocusBlurEvent, InputChangeEvent } from '../../utils/events/event-handler.interface';
+import { InputFocusBlurEvent, InputInteractionEvent } from '../../utils/events/event-handler.interface';
 import { Caption } from '../../utils/common/input-caption/caption.interface';
 import { Language } from '../../utils/common/language-types';
 
@@ -158,7 +158,7 @@ export interface Dropdown extends Base {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed.
 	 */
-	dropdownOnChange: EventEmitter<InputChangeEvent>;
+	dropdownOnChange: EventEmitter<InputInteractionEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a dropdown list has lost focus.

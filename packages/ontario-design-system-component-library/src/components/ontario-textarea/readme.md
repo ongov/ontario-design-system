@@ -68,6 +68,7 @@ hintExpander='{ "hint": "This is the hint expander title", "content": "This is t
 | `customOnBlur`   | --              | Used to add a custom function to the textarea onBlur event.                                                                                                                                                                                    | `((event: Event) => void) \| undefined` | `undefined` |
 | `customOnChange` | --              | Used to add a custom function to the textarea onChange event.                                                                                                                                                                                  | `((event: Event) => void) \| undefined` | `undefined` |
 | `customOnFocus`  | --              | Used to add a custom function to the textarea onFocus event.                                                                                                                                                                                   | `((event: Event) => void) \| undefined` | `undefined` |
+| `customOnInput`  | --              | Used to add a custom function to the textarea onInput event.                                                                                                                                                                                   | `((event: Event) => void) \| undefined` | `undefined` |
 | `elementId`      | `element-id`    | The unique identifier of the textarea. This is optional - if no ID is passed, one will be generated.                                                                                                                                           | `string \| undefined`                   | `undefined` |
 | `hintExpander`   | `hint-expander` | Used to include the ontario-hint-expander component for the textarea component. This is passed in as an object with key-value pairs. This is optional.                                                                                         | `HintExpander \| string \| undefined`   | `undefined` |
 | `hintText`       | `hint-text`     | Used to include the ontario-hint-text component for the textarea. This is optional.                                                                                                                                                            | `Hint \| string \| undefined`           | `undefined` |
@@ -78,11 +79,12 @@ hintExpander='{ "hint": "This is the hint expander title", "content": "This is t
 
 ## Events
 
-| Event           | Description                                                                         | Type                                                                      |
-| --------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `inputOnBlur`   | Emitted when a keyboard input event occurs when an input has lost focus.            | `CustomEvent<InputChangeEvent & { focused: boolean; }>`                   |
-| `inputOnChange` | Emitted when a keyboard input or mouse event occurs when an input has been changed. | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>` |
-| `inputOnFocus`  | Emitted when a keyboard input event occurs when an input has gained focus.          | `CustomEvent<InputChangeEvent & { focused: boolean; }>`                   |
+| Event           | Description                                                                         | Type                                                                        |
+| --------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `inputOnBlur`   | Emitted when a keyboard input event occurs when an input has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
+| `inputOnChange` | Emitted when a keyboard input or mouse event occurs when an input has been changed. | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>`   |
+| `inputOnFocus`  | Emitted when a keyboard input event occurs when an input has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
+| `inputOnInput`  | Emitted when a input event occurs when an input has been changed.                   | `CustomEvent<InputInteractionEvent & { inputType?: string \| undefined; }>` |
 
 ## Dependencies
 

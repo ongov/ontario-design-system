@@ -185,17 +185,17 @@ export class OntarioCheckboxes implements Checkboxes {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed.
 	 */
-	@Event({ eventName: 'checkboxOnChange' }) checkboxOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
+	@Event() checkboxOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has lost focus.
 	 */
-	@Event({ eventName: 'checkboxOnBlur' }) checkboxOnBlur: EventEmitter<InputFocusBlurEvent>;
+	@Event() checkboxOnBlur: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has gained focus.
 	 */
-	@Event({ eventName: 'checkboxOnFocus' }) checkboxOnFocus: EventEmitter<InputFocusBlurEvent>;
+	@Event() checkboxOnFocus: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -322,26 +322,29 @@ export class OntarioCheckboxes implements Checkboxes {
 	/**
 	 * Function to handle checkbox events and the information pertaining to the checkbox to emit.
 	 */
-	handleEvent = (ev: globalThis.Event, eventType: EventType) => {
-		const input = ev.target as HTMLInputElement | null;
+	private handleEvent(event: globalThis.Event, eventType: EventType) {
+		const input = event.target as HTMLInputElement | null;
 
 		if (input) {
 			input.checked = input.checked ?? '';
 		}
 
 		handleInputEvent(
-			ev,
+			event,
 			eventType,
 			input,
 			this.checkboxOnChange,
 			this.checkboxOnFocus,
 			this.checkboxOnBlur,
+			undefined,
 			'checkbox',
 			this.customOnChange,
 			this.customOnFocus,
 			this.customOnBlur,
+			undefined,
+			this.element,
 		);
-	};
+	}
 
 	/**
 	 * If a `hintText` prop is passed, the id generated from it will be set to the internal `hintTextId` state to match with the fieldset `aria-describedBy` attribute.

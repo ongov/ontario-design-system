@@ -47,7 +47,7 @@ describe('ontario-textarea', () => {
 });
 
 describe('events/methods', () => {
-	it('fires the onBlur event', async () => {
+	it('fires the inputOnBlur event', async () => {
 		const page = await newE2EPage();
 		await page.setContent("<ontario-textarea name='ontario-textarea' caption='Ontario Textarea'></ontario-textarea>");
 		const blurEvent = await page.spyOnEvent('inputOnBlur');
@@ -58,7 +58,7 @@ describe('events/methods', () => {
 		expect(blurEvent).toHaveReceivedEventTimes(1);
 	});
 
-	it('fires the onFocus event', async () => {
+	it('fires the inputOnFocus event', async () => {
 		const page = await newE2EPage();
 		await page.setContent("<ontario-textarea name='ontario-textarea' caption='Ontario Textarea'></ontario-textarea>");
 		const focusEvent = await page.spyOnEvent('inputOnFocus');
@@ -69,13 +69,24 @@ describe('events/methods', () => {
 		expect(focusEvent).toHaveReceivedEventTimes(1);
 	});
 
-	it('fires the onChange event', async () => {
+	it('fires the inputOnChange event', async () => {
 		const page = await newE2EPage();
 		await page.setContent("<ontario-textarea name='ontario-textarea' caption='Ontario Textarea'></ontario-textarea>");
 		const changeEvent = await page.spyOnEvent('inputOnChange');
 		const component = await page.find('ontario-textarea');
 
 		component.triggerEvent('inputOnChange');
+		await page.waitForChanges();
+		expect(changeEvent).toHaveReceivedEventTimes(1);
+	});
+
+	it('fires the onChange event', async () => {
+		const page = await newE2EPage();
+		await page.setContent("<ontario-textarea name='ontario-textarea' caption='Ontario Textarea'></ontario-textarea>");
+		const changeEvent = await page.spyOnEvent('change');
+		const component = await page.find('ontario-textarea');
+
+		component.triggerEvent('change');
 		await page.waitForChanges();
 		expect(changeEvent).toHaveReceivedEventTimes(1);
 	});

@@ -150,3 +150,16 @@ describe('ontario-input', () => {
 		});
 	});
 });
+
+describe('events', () => {
+	it('fires the onChange event', async () => {
+		const page = await newE2EPage();
+		await page.setContent("<ontario-input name='ontario-input'></ontario-input>");
+		const changeEvent = await page.spyOnEvent('change');
+		const component = await page.find('ontario-input');
+
+		component.triggerEvent('change');
+		await page.waitForChanges();
+		expect(changeEvent).toHaveReceivedEventTimes(1);
+	});
+});
