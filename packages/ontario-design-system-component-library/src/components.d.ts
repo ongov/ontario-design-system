@@ -1558,7 +1558,7 @@ export namespace Components {
 		 */
 		customOnFocus?: (event: globalThis.Event) => void;
 		/**
-		 * Used to add a custom function to the textarea inInput  event.
+		 * Used to add a custom function to the textarea onInput  event.
 		 */
 		customOnInput?: (event: globalThis.Event) => void;
 		/**
@@ -4172,7 +4172,7 @@ declare namespace LocalJSX {
 		 */
 		customOnFocus?: (event: globalThis.Event) => void;
 		/**
-		 * Used to add a custom function to the textarea inInput  event.
+		 * Used to add a custom function to the textarea onInput  event.
 		 */
 		customOnInput?: (event: globalThis.Event) => void;
 		/**

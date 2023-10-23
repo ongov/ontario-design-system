@@ -131,7 +131,7 @@ export class OntarioInput implements TextInput {
 	@State() hintTextId: string | undefined;
 
 	/**
-	 * Used to add a custom function to the textarea inInput  event.
+	 * Used to add a custom function to the textarea onInput  event.
 	 */
 	@Prop() customOnInput?: (event: globalThis.Event) => void;
 
