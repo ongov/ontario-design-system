@@ -1,12 +1,22 @@
+<ontario-step-indicator
+	current-step="4"
+	number-of-steps="4"
+	show-back-button="true"
+	[customOnClick]="handleBackNavigation.bind(this)"
+	language="{{ lang }}"
+></ontario-step-indicator>
+
 <div>
 	<ontario-textarea
-		name="ontario-textarea"
-		hint-text="Do not include personal or financial information like your Social Insurance Number or credit card details."
-		caption='{
-			"captionText": "Enter additional details",
-			"captionType": "heading"
-		}'
+		name="additional-details"
+		hintText="{{ 'form.questions.additionalDetails.hint' | translate }}"
+		[caption]="{
+			captionText: getTranslation().additionalDetailsLabel,
+			captionType: 'heading'
+		}"
+		language="{{ lang }}"
 	></ontario-textarea>
 
-	<ontario-button type="primary" label="Create account" routerLink="/framesix"> </ontario-button>
+	<ontario-button type="primary" label="{{ 'form.buttons.createAccount' | translate }}" [routerLink]="getRoute()">
+	</ontario-button>
 </div>

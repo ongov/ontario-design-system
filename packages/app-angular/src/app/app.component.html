@@ -1,46 +1,42 @@
 <div class="ontario-container">
 	<ontario-header
 		type="application"
-		application-header-info='{
-			"title": "Angular proof of concept" ,
-			"href": "/frameone",
-			"maxSubheaderDesktopLinks": 2
-		}'
+		[applicationHeaderInfo]="{
+			title: getTranslation().appName,
+			href: getRoute().home,
+			maxSubheaderDesktopLinks: 2
+		}"
 		disable-dynamic-menu="true"
-		menu-items='[{
-			"title": "Home",
-			"href": "/frameone"
-		},
-		{
-			"title": "Register",
-			"href": "/frametwo"
-		}]'
+		[menuItems]="[
+			{
+				title: getTranslation().menuItemOne,
+				href: getRoute().home,
+				linkIsActive: getRoute().homeIsActive
+			},
+			{
+				title: getTranslation().menuItemTwo,
+				href: getRoute().register,
+				linkIsActive: getRoute().registerIsActive
+			}
+		]"
+		[customLanguageToggle]="useLanguage"
 	>
 	</ontario-header>
 
 	<main>
-		<div class="ontario-row">
-			<div class="ontario-columns ontario-small-12">  <router-outlet></router-outlet></div>
+		<div class="ontario-columns ontario-small-12">
+			<router-outlet></router-outlet>
 		</div>
 	</main>
-
-	<ontario-footer
-		type="default"
-		footer-links='{
-			"accessibilityLink": {
-				"text": "Accessibility",
-				"href": "https://www.ontario.ca/page/accessibility"
-			},
-			"privacyLink": {
-				"href": "https://www.ontario.ca/page/privacy-statement"
-			},
-			"contactLink": {
-				"text": "Contact",
-				"href": "https://www.ontario.ca/feedback/contact-us"
-			},
-			"printerLink": {
-				"href": "https://www.ontario.ca/page/copyright-information"
-			}
-		}'
-	></ontario-footer>
+	<div class="ontario-footer-wrapper">
+		<ontario-footer
+			type="default"
+			[footerLinks]="{
+				contactLink: {
+					text: getTranslation().contactUs,
+					href: getTranslation().contactUsLink
+				}
+			}"
+		></ontario-footer>
+	</div>
 </div>
