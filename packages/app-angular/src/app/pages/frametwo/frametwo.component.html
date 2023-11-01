@@ -1,30 +1,31 @@
-<div>
-	<h1>Create an account</h1>
-	<ontario-input
-		caption='{
-			"captionText": "Email address"
-		}'
-		required="true"
-		input-width="20-char-width"
-	>
-	</ontario-input>
+<ontario-step-indicator current-step="1" number-of-steps="4" language="{{ lang }}"></ontario-step-indicator>
 
-	<ontario-input
-		caption='{
-			"captionText": "Create your PIN"
-		}'
-		type="password"
-		required="true"
-		input-width="20-char-width"
-		hint-text="Enter 6 to 12 numbers."
-		hint-expander='{
-			"hint": "Tips for creating a strong PIN",
-			"hintContentType": "html",
-			"content": "<p>Follow these tipes to create a strong PIN:</p><ul><li><b>Make your PIN unique</b> (for exampple, do not re-use a number you use for your bank card)<li><b>Do no tuse easy-to-guess personal numbers such as dates</b> (for example, a birthday) or a phone number</li><li><b>Do not use numbers in an obvious sequence</b> (such as 123456 or 246810)</li><li><b>Do not repeat a sequence of numbers</b> (such as 555666 or 121212)</li></ul>"
-		}'
-	>
-	</ontario-input>
+<div class="ontario-margin-top-40-!">
+	<ontario-fieldset legend-size="heading" legend="{{ 'form.questions.createAccount.legend' | translate }}">
+		<ontario-input
+			caption="{{ 'form.questions.createAccount.emailLabel' | translate }}"
+			required="true"
+			name="email-address"
+			input-width="20-char-width"
+			language="{{ lang }}"
+		></ontario-input>
 
-	<ontario-button type="primary" label="Continue" aria-label-text="Continue to next question" routerLink="/framethree">
-	</ontario-button>
+		<ontario-input
+			caption="{{ 'form.questions.createAccount.PINLabel' | translate }}"
+			type="password"
+			input-width="20-char-width"
+			required="true"
+			name="PIN"
+			hintText="{{ 'form.questions.createAccount.PINHintText' | translate }}"
+			[hintExpander]="{
+				hint: getTranslation().PINHintExpanderLabel,
+				hintContentType: 'html',
+				content: getTranslation().PINHintExpanderContent
+			}"
+			language="{{ lang }}"
+		>
+		</ontario-input>
+	</ontario-fieldset>
 </div>
+
+<ontario-button type="primary" label="{{ 'form.buttons.next' | translate }}" [routerLink]="getRoute()"></ontario-button>
