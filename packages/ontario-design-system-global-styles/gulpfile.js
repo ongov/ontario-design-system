@@ -1,5 +1,5 @@
 import { deleteAsync } from 'del';
-import fs from 'fs';
+import fs from 'fs/promises';
 import autoprefixer from 'gulp-autoprefixer';
 import concat from 'gulp-concat';
 import minify from 'gulp-clean-css';
@@ -78,9 +78,8 @@ task('sass:copy-dist', () => {
 });
 
 // Replace node_module reference of tokens file with actual token declaration
-task('sass:copy-tokens', (done) => {
-	fs.copyFileSync(dsTokensPath, dsTokensDestPath);
-	done();
+task('sass:copy-tokens', () => {
+	return fs.copyFile(dsTokensPath, dsTokensDestPath);
 });
 
 task('sass:build-minify', parallel('sass:build', 'sass:minify'));
