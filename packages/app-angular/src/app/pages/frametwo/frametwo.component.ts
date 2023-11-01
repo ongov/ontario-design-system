@@ -6,7 +6,7 @@ import { getLanguage, isEnglish } from 'src/utils/get-language.utils';
 	selector: 'app-frame-two',
 	templateUrl: './frametwo.component.html',
 })
-export class FrametwoComponent {
+export class FrameTwoComponent {
 	public lang = getLanguage();
 
 	constructor(private translateService: TranslateService) {}

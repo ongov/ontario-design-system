@@ -8,7 +8,7 @@ import { handleBackButtonNavigationOnClick } from 'src/utils/routing.utils';
 	selector: 'app-framethree',
 	templateUrl: './framethree.component.html',
 })
-export class FramethreeComponent {
+export class FrameThreeComponent {
 	public lang = getLanguage();
 
 	constructor(private translateService: TranslateService, private router: Router) {}

@@ -5,12 +5,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FrameoneComponent } from './pages//frameone/frameone.component';
-import { FrametwoComponent } from './pages/frametwo/frametwo.component';
-import { FramethreeComponent } from './pages/framethree/framethree.component';
-import { FramefourComponent } from './pages/framefour/framefour.component';
-import { FramefiveComponent } from './pages/framefive/framefive.component';
-import { FramesixComponent } from './pages/framesix/framesix.component';
+import { FrameOneComponent } from './pages//frameone/frameone.component';
+import { FrameTwoComponent } from './pages/frametwo/frametwo.component';
+import { FrameThreeComponent } from './pages/framethree/framethree.component';
+import { FrameFourComponent } from './pages/framefour/framefour.component';
+import { FrameFiveComponent } from './pages/framefive/framefive.component';
+import { FrameSixComponent } from './pages/framesix/framesix.component';
 
 // import ngx-translate and the http loader
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -21,12 +21,12 @@ import { createTranslateLoader } from './translation.config';
 @NgModule({
 	declarations: [
 		AppComponent,
-		FrameoneComponent,
-		FrametwoComponent,
-		FramethreeComponent,
-		FramefourComponent,
-		FramefiveComponent,
-		FramesixComponent,
+		FrameOneComponent,
+		FrameTwoComponent,
+		FrameThreeComponent,
+		FrameFourComponent,
+		FrameFiveComponent,
+		FrameSixComponent,
 	],
 	imports: [
 		ComponentLibraryModule,

@@ -6,7 +6,7 @@ import { isEnglish } from 'src/utils/get-language.utils';
 	selector: 'app-frame-one',
 	templateUrl: './frameone.component.html',
 })
-export class FrameoneComponent {
+export class FrameOneComponent {
 	constructor(private translateService: TranslateService) {}
 
 	getRoute(): string {

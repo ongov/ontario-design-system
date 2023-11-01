@@ -6,7 +6,7 @@ import { getLanguage, isEnglish } from 'src/utils/get-language.utils';
 	selector: 'app-framesix',
 	templateUrl: './framesix.component.html',
 })
-export class FramesixComponent {
+export class FrameSixComponent {
 	isLoading: boolean = false;
 	public lang = getLanguage();
 

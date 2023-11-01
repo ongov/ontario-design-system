@@ -9,7 +9,7 @@ import { handleBackButtonNavigationOnClick } from 'src/utils/routing.utils';
 	selector: 'app-framefour',
 	templateUrl: './framefour.component.html',
 })
-export class FramefourComponent {
+export class FrameFourComponent {
 	public lang = getLanguage();
 
 	constructor(private translateService: TranslateService, private router: Router) {}

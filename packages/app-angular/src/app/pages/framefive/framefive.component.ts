@@ -9,7 +9,7 @@ import { handleBackButtonNavigationOnClick } from 'src/utils/routing.utils';
 	selector: 'app-framefive',
 	templateUrl: './framefive.component.html',
 })
-export class FramefiveComponent {
+export class FrameFiveComponent {
 	public lang = getLanguage();
 
 	constructor(private translateService: TranslateService, private router: Router) {}
