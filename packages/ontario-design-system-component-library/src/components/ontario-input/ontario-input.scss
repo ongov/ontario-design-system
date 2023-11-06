@@ -12,6 +12,7 @@
 	fontSizes;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
 @use '../../styles/form.scss';
+@forward '../../utils/components/error-message/error-message';
 
 $ontario-input-padding: 0.625rem;
 
@@ -66,4 +67,10 @@ $ontario-input-padding: 0.625rem;
 
 .ontario-input--20-char-width {
 	max-width: 41ex;
+}
+
+.ontario-input--error {
+	input {
+		border: 0.125rem solid colours.$ontario-colour-alert;
+	}
 }
