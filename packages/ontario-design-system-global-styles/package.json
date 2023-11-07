@@ -17,9 +17,6 @@
 		"clean:full": "rm -rf node_modules && npm run clean",
 		"scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js --watch scss -o css "
 	},
-	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-design-tokens": "3.0.0"
-	},
 	"devDependencies": {
 		"del": "^7.0.0",
 		"gulp": "^4.0.2",
@@ -28,7 +25,8 @@
 		"gulp-concat": "^2.6.1",
 		"gulp-if": "^3.0.0",
 		"gulp-sass": "^5.1.0",
-		"sass": "^1.56.2"
+		"sass": "^1.56.2",
+		"@ontario-digital-service/ontario-design-system-design-tokens": "3.0.0"
 	},
 	"publishConfig": {
 		"access": "public"

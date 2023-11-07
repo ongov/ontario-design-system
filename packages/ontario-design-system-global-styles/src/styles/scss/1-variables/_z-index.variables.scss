@@ -1,4 +1,4 @@
-@use '@ontario-digital-service/ontario-design-system-design-tokens/dist/scss/variables' as variables;
+@use './tokens.variables' as variables;
 
 $ontario-z-index-auto: variables.$ontario-z-index-auto; // auto
 $ontario-z-index-inherit: variables.$ontario-z-index-inherit; // inherit
