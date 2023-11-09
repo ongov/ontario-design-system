@@ -207,6 +207,11 @@ export class OntarioDropdownList implements Dropdown {
 	@State() translations: any = translations;
 
 	/**
+	 * State to store the users selected value
+	 */
+	@State() private selectedValue: string | null = null;
+
+	/**
 	 * Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed.
 	 */
 	@Event() dropdownOnChange: EventEmitter<InputInteractionEvent>;
@@ -350,23 +355,30 @@ export class OntarioDropdownList implements Dropdown {
 	 * Function to handle dropdown list events and the information pertaining to the dropdown list to emit.
 	 */
 	private handleEvent(event: Event, eventType: EventType) {
-		const input = event.target as HTMLSelectElement | null;
+		const select = event.target as HTMLSelectElement | null;
 
-		handleInputEvent(
-			event,
-			eventType,
-			input,
-			this.dropdownOnChange,
-			this.dropdownOnFocus,
-			this.dropdownOnBlur,
-			undefined,
-			'dropdown',
-			this.customOnChange,
-			this.customOnFocus,
-			this.customOnBlur,
-			undefined,
-			this.element,
-		);
+		if (select) {
+			if (eventType === EventType.Change) {
+				this.selectedValue = select.value;
+				localStorage.setItem('selectedDropdownValue', this.selectedValue);
+			}
+
+			handleInputEvent(
+				event,
+				eventType,
+				select,
+				this.dropdownOnChange,
+				this.dropdownOnFocus,
+				this.dropdownOnBlur,
+				undefined,
+				'dropdown',
+				this.customOnChange,
+				this.customOnFocus,
+				this.customOnBlur,
+				undefined,
+				this.element,
+			);
+		}
 	}
 
 	public getId(): string {
@@ -422,6 +434,11 @@ export class OntarioDropdownList implements Dropdown {
 	 */
 	async componentDidLoad() {
 		this.hintTextId = await this.hintTextRef?.getHintTextId();
+
+		const storedValue = localStorage.getItem('selectedDropdownValue');
+		if (storedValue) {
+			this.selectedValue = storedValue;
+		}
 	}
 
 	componentWillLoad() {
@@ -465,7 +482,7 @@ export class OntarioDropdownList implements Dropdown {
 						))}
 
 					{this.internalOptions?.map((dropdown) => (
-						<option value={dropdown.value} selected={dropdown.selected}>
+						<option value={dropdown.value} selected={dropdown.value === this.selectedValue}>
 							{dropdown.label}
 						</option>
 					)) ?? ''}

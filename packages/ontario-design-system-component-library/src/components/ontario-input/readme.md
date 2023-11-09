@@ -88,12 +88,13 @@ visible when the hint expander title (hint) is toggled" }'
 
 ## Events
 
-| Event           | Description                                                                         | Type                                                                        |
-| --------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `inputOnBlur`   | Emitted when a keyboard input event occurs when an input has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
-| `inputOnChange` | Emitted when a keyboard input or mouse event occurs when an input has been changed. | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>`   |
-| `inputOnFocus`  | Emitted when a keyboard input event occurs when an input has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
-| `inputOnInput`  | Emitted when a input occurs when an input has been changed.                         | `CustomEvent<InputInteractionEvent & { inputType?: string \| undefined; }>` |
+| Event              | Description                                                                         | Type                                                                        |
+| ------------------ | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `inputOnBlur`      | Emitted when a keyboard input event occurs when an input has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
+| `inputOnChange`    | Emitted when a keyboard input or mouse event occurs when an input has been changed. | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>`   |
+| `inputOnFocus`     | Emitted when a keyboard input event occurs when an input has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
+| `inputOnInput`     | Emitted when a input occurs when an input has been changed.                         | `CustomEvent<InputInteractionEvent & { inputType?: string \| undefined; }>` |
+| `inputValueChange` | Emitted when a input value change occurs.                                           | `CustomEvent<string>`                                                       |
 
 ## Dependencies
 

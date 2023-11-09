@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ComponentLibraryModule } from '@ontario-digital-service/ontario-design-system-component-library-angular/dist/component-library';
 import { RouterModule, Routes } from '@angular/router';
+import { FormValueChangesDirective } from './directives/formValue.directives';
+import { FormsModule } from '@angular/forms';
+import { OntarioInputValueAccessor, OntarioTextareaValueAccessor } from './directives/customValueAccessors.directives';
+import { TemporaryStorageService } from './services/temporary-storage.services';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,13 +31,16 @@ import { createTranslateLoader } from './translation.config';
 		FrameFourComponent,
 		FrameFiveComponent,
 		FrameSixComponent,
+		FormValueChangesDirective,
+		OntarioInputValueAccessor,
+		OntarioTextareaValueAccessor,
 	],
 	imports: [
 		ComponentLibraryModule,
 		BrowserModule,
 		AppRoutingModule,
 		RouterModule,
-		// ngx-translate and the loader module
+		FormsModule,
 		HttpClientModule,
 		TranslateModule.forRoot({
 			defaultLanguage: 'en',
@@ -49,7 +56,7 @@ import { createTranslateLoader } from './translation.config';
 			enableTitleTranslate: true,
 		}),
 	],
-	providers: [],
+	providers: [TemporaryStorageService],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

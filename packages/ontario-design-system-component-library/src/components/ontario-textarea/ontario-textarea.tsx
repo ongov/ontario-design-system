@@ -17,6 +17,7 @@ import {
 	InputInputEvent,
 } from '../../utils/events/event-handler.interface';
 import { handleInputEvent } from '../../utils/events/event-handler';
+import { CommonInputEvents } from '../../utils/events/input-events.interface';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
@@ -25,7 +26,7 @@ import { default as translations } from '../../translations/global.i18n.json';
 	styleUrl: 'ontario-textarea.scss',
 	shadow: true,
 })
-export class OntarioTextarea implements Input {
+export class OntarioTextarea implements Input, CommonInputEvents {
 	@Element() element: HTMLElement;
 
 	hintTextRef: HTMLOntarioHintTextElement | undefined;
@@ -142,6 +143,11 @@ export class OntarioTextarea implements Input {
 	 * Instantiate an InputCaption object for internal logic use
 	 */
 	@State() private captionState: InputCaption;
+
+	/**
+	 * Emitted when a input value change occurs.
+	 */
+	@Event() inputValueChange: EventEmitter<string>;
 
 	/**
 	 * Emitted when a input event occurs when an input has been changed.
@@ -317,7 +323,7 @@ export class OntarioTextarea implements Input {
 					id={this.getId()}
 					name={this.name}
 					value={this.getValue()}
-					onInput={(e) => this.handleEvent(e, EventType.Input)}
+					onInput={(e: any) => this.inputValueChange?.emit(e.target.value)}
 					onChange={(e) => this.handleEvent(e, EventType.Change)}
 					onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 					onFocus={(e) => this.handleEvent(e, EventType.Focus)}

@@ -187,6 +187,11 @@ export class OntarioRadioButtons implements RadioButtons {
 	@State() private captionState: InputCaption;
 
 	/**
+	 * State to store the users selected value
+	 */
+	@State() selectedValue: string;
+
+	/**
 	 * Emitted when a keyboard input or mouse event occurs when a radio option has been changed.
 	 */
 	@Event({ eventName: 'radioOnChange' }) radioOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
@@ -333,6 +338,11 @@ export class OntarioRadioButtons implements RadioButtons {
 			input.checked = input.checked ?? '';
 		}
 
+		if (eventType === EventType.Change) {
+			this.selectedValue = input.value;
+			localStorage.setItem('selectedRadioValue', this.selectedValue); // Store the selected value in localStorage
+		}
+
 		handleInputEvent(
 			event,
 			eventType,
@@ -355,6 +365,11 @@ export class OntarioRadioButtons implements RadioButtons {
 	 */
 	async componentDidLoad() {
 		this.hintTextId = await this.hintTextRef?.getHintTextId();
+
+		const storedValue = localStorage.getItem('selectedRadioValue');
+		if (storedValue) {
+			this.selectedValue = storedValue;
+		}
 	}
 
 	componentWillLoad() {
@@ -389,6 +404,7 @@ export class OntarioRadioButtons implements RadioButtons {
 									type="radio"
 									value={radioOption.value}
 									required={!!this.required}
+									{...(radioOption.value === this.selectedValue ? { checked: true } : {})}
 									onChange={(e) => this.handleEvent(e, EventType.Change)}
 									onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 									onFocus={(e) => this.handleEvent(e, EventType.Focus)}

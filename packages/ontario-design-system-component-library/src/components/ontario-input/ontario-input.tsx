@@ -19,6 +19,7 @@ import {
 } from '../../utils/events/event-handler.interface';
 import { handleInputEvent } from '../../utils/events/event-handler';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { CommonInputEvents } from '../../utils/events/input-events.interface';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
@@ -27,7 +28,7 @@ import { default as translations } from '../../translations/global.i18n.json';
 	styleUrl: 'ontario-input.scss',
 	shadow: true,
 })
-export class OntarioInput implements TextInput {
+export class OntarioInput implements TextInput, CommonInputEvents {
 	@Element() element: HTMLElement;
 
 	hintTextRef: HTMLOntarioHintTextElement | undefined;
@@ -164,6 +165,11 @@ export class OntarioInput implements TextInput {
 	 * Instantiate an InputCaption object for internal logic use
 	 */
 	@State() private captionState: InputCaption;
+
+	/**
+	 * Emitted when a input value change occurs.
+	 */
+	@Event() inputValueChange: EventEmitter<string>;
 
 	/**
 	 * Emitted when a input  occurs when an input has been changed.
@@ -344,7 +350,7 @@ export class OntarioInput implements TextInput {
 					className={this.getClass()}
 					id={this.getId()}
 					name={this.name}
-					onInput={(e) => this.handleEvent(e, EventType.Input)}
+					onInput={(e: any) => this.inputValueChange?.emit(e.target.value)}
 					onChange={(e) => this.handleEvent(e, EventType.Change)}
 					onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 					onFocus={(e) => this.handleEvent(e, EventType.Focus)}

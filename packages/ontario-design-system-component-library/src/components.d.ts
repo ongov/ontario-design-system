@@ -4225,6 +4225,10 @@ declare namespace LocalJSX {
 		 */
 		onInputOnInput?: (event: OntarioInputCustomEvent<InputInputEvent>) => void;
 		/**
+		 * Emitted when a input value change occurs.
+		 */
+		onInputValueChange?: (event: OntarioInputCustomEvent<string>) => void;
+		/**
 		 * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
 		 */
 		required?: boolean;
@@ -4475,6 +4479,10 @@ declare namespace LocalJSX {
 		 * Emitted when a input event occurs when an input has been changed.
 		 */
 		onInputOnInput?: (event: OntarioTextareaCustomEvent<InputInputEvent>) => void;
+		/**
+		 * Emitted when a input value change occurs.
+		 */
+		onInputValueChange?: (event: OntarioTextareaCustomEvent<string>) => void;
 		/**
 		 * This is used to determine whether the textarea is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
 		 */
