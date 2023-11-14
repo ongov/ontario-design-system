@@ -2695,12 +2695,16 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
 		'customOnFocus',
 		'customOnInput',
 		'elementId',
+		'enableLiveValidation',
+		'errorMessage',
 		'hintExpander',
 		'hintText',
+		'inputValidator',
 		'inputWidth',
 		'language',
 		'name',
 		'required',
+		'requiredValidationMessage',
 		'type',
 		'value',
 	],
@@ -2717,12 +2721,16 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
 		'customOnFocus',
 		'customOnInput',
 		'elementId',
+		'enableLiveValidation',
+		'errorMessage',
 		'hintExpander',
 		'hintText',
+		'inputValidator',
 		'inputWidth',
 		'language',
 		'name',
 		'required',
+		'requiredValidationMessage',
 		'type',
 		'value',
 	],
@@ -2732,7 +2740,7 @@ export class OntarioInput {
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus']);
+		proxyOutputs(this, this.el, ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred']);
 	}
 }
 
@@ -2757,6 +2765,10 @@ export declare interface OntarioInput extends Components.OntarioInput {
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
 	inputOnFocus: EventEmitter<CustomEvent<IOntarioInputInputFocusBlurEvent>>;
+	/**
+	 * Emitted when an error message is reported to the component.
+	 */
+	inputErrorOccurred: EventEmitter<CustomEvent<{ inputId: string; errorMessage: string }>>;
 }
 
 @ProxyCmp({
