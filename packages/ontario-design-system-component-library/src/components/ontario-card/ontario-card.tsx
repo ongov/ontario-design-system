@@ -87,7 +87,7 @@ export class OntarioCard {
 	 * If a match is found in one of the array values then `cardType` will be set to the matching array key value.
 	 */
 	@Watch('cardType')
-	validateType() {
+	validateCardType() {
 		const isValid = validateValueAgainstArray(this.cardType, CardTypes);
 		if (isValid) {
 			this.cardTypeState = this.cardType;
@@ -188,12 +188,9 @@ export class OntarioCard {
 		return `ontario-card__container ontario-card-type--${this.cardTypeState} ontario-card--cards-per-row-${this.cardsPerRowState}`;
 	}
 
-	/**
-	 * Set `buttonId`, `label`, and `ariaLabel` using internal component logic.
-	 */
 	componentWillLoad() {
 		this.validateCardsPerRow();
-		this.validateType();
+		this.validateCardType();
 		this.validateHeaderType();
 		this.determineHeaderStyle();
 		this.parseCards();
