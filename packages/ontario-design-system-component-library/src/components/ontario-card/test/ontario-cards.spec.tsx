@@ -10,12 +10,7 @@ describe('ontario-card', () => {
 		expect(page.root).toEqualHtml(`
       <ontario-card>
         <mock:shadow-root>
-					<ul class="
-						ontario-card--cards-per-row-3
-						ontario-card-type--basic
-						ontario-card__container
-					">
-					</ul>
+					<ul class="ontario-card--cards-per-row-3 ontario-card-type--basic ontario-card__container"></ul>
         </mock:shadow-root>
       </ontario-card>
     `);
