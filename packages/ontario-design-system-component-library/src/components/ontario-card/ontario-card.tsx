@@ -68,7 +68,7 @@ export class OntarioCard {
 	 * Mutable variable, for internal use only.
 	 * Set number of cards per row depending on validation result.
 	 */
-	@State() cardsPerRowState: number;
+	@State() private cardsPerRowState: number;
 
 	/**
 	 * Parse cards data, this is used to handle JSON strings from HTML.

@@ -4,15 +4,19 @@ export interface Card extends Base {
 	/**
 	 * Text to be displayed within the header.
 	 */
-	label?: string;
+	label: string;
 
 	/**
 	 * Image to be displayed within the card image container.
+	 *
+	 * This is optional.
 	 */
 	image?: string;
 
 	/**
 	 * Text to be displayed within the card description container.
+	 *
+	 * This is optional.
 	 */
 	description?: string;
 
