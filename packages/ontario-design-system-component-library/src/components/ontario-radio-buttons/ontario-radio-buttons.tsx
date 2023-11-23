@@ -336,11 +336,11 @@ export class OntarioRadioButtons implements RadioButtons {
 
 		if (input) {
 			input.checked = input.checked ?? '';
-		}
 
-		if (eventType === EventType.Change) {
-			this.selectedValue = input.value;
-			localStorage.setItem('selectedRadioValue', this.selectedValue); // Store the selected value in localStorage
+			if (eventType === EventType.Change) {
+				this.selectedValue = input.value;
+				localStorage.setItem('selectedRadioValue', this.selectedValue); // Store the selected value in localStorage
+			}
 		}
 
 		handleInputEvent(
