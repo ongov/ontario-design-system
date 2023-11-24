@@ -1514,7 +1514,7 @@ export namespace Components {
          */
         "customOnFocus"?: (event: globalThis.Event) => void;
         /**
-          * Used to add a custom function to the input onInput  event.
+          * Used to add a custom function to the input onInput event.
          */
         "customOnInput"?: (event: globalThis.Event) => void;
         /**
@@ -4275,7 +4275,7 @@ declare namespace LocalJSX {
          */
         "customOnFocus"?: (event: globalThis.Event) => void;
         /**
-          * Used to add a custom function to the input onInput  event.
+          * Used to add a custom function to the input onInput event.
          */
         "customOnInput"?: (event: globalThis.Event) => void;
         /**

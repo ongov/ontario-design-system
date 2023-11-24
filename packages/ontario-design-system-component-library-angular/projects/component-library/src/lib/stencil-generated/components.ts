@@ -2790,6 +2790,8 @@ export class OntarioLanguageToggle {
 	}
 }
 
+import type { HeaderLanguageToggleEventDetails as IOntarioLanguageToggleHeaderLanguageToggleEventDetails } from '@ontario-digital-service/ontario-design-system-component-library';
+
 export declare interface OntarioLanguageToggle extends Components.OntarioLanguageToggle {
 	/**
 	 * An event to set the Document's HTML lang property, and emit the toggled language to other components.
@@ -2798,7 +2800,7 @@ export declare interface OntarioLanguageToggle extends Components.OntarioLanguag
 	/**
 	 * An event that emits to other components that the language toggle button has been toggled.
 	 */
-	headerLanguageToggled: EventEmitter<CustomEvent<{ currentLanguage: string; toggledLanguage: string }>>;
+	headerLanguageToggled: EventEmitter<CustomEvent<IOntarioLanguageToggleHeaderLanguageToggleEventDetails>>;
 }
 
 @ProxyCmp({

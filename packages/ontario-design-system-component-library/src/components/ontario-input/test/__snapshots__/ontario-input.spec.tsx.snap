@@ -10,6 +10,10 @@ exports[`ontario-input snapshot should render the expected html 1`] = `
           (optional)
         </span>
       </label>
+      <div class="ontario-error-messaging ontario-error__hidden" role="alert">
+        <ontario-icon-alert-error></ontario-icon-alert-error>
+        <div class="ontario-error-messaging__content"></div>
+      </div>
       <input class="ontario-input" id="ontario-input" name="ontario-input" type="text" value="">
     </div>
   </mock:shadow-root>
