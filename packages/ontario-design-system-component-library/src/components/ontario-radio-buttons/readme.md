@@ -147,7 +147,7 @@ visible when the hint expander title (hint) is toggled" }'
 | Event           | Description                                                                               | Type                                                         |
 | --------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | `radioOnBlur`   | Emitted when a keyboard input event occurs when a radio option has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
-| `radioOnChange` | Emitted when a keyboard input or mouse event occurs when a radio option has been changed. | `CustomEvent<InputInteractionEvent & { checked: boolean; }>` |
+| `radioOnChange` | Emitted when a keyboard input or mouse event occurs when a radio option has been changed. | `CustomEvent<RadioAndCheckboxChangeEvent>`                   |
 | `radioOnFocus`  | Emitted when a keyboard input event occurs when a radio option has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
 
 ## Dependencies

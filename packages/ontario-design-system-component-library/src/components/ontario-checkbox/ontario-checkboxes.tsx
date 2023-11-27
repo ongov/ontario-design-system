@@ -183,6 +183,11 @@ export class OntarioCheckboxes implements Checkboxes {
 	@State() private internalOptions: CheckboxOption[];
 
 	/**
+	 * State to hold the input ID and whether it has been checked
+	 */
+	@State() private checkboxStates: Record<string, boolean> = {};
+
+	/**
 	 * Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed.
 	 */
 	@Event() checkboxOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
@@ -322,11 +327,12 @@ export class OntarioCheckboxes implements Checkboxes {
 	/**
 	 * Function to handle checkbox events and the information pertaining to the checkbox to emit.
 	 */
-	private handleEvent(event: globalThis.Event, eventType: EventType) {
+	private handleEvent(event: Event, eventType: EventType) {
 		const input = event.target as HTMLInputElement | null;
 
-		if (input) {
-			input.checked = input.checked ?? '';
+		if (input && input.type === 'checkbox') {
+			const isChecked = input.checked ?? false;
+			this.updateCheckboxStates(input, isChecked);
 		}
 
 		handleInputEvent(
@@ -347,10 +353,33 @@ export class OntarioCheckboxes implements Checkboxes {
 	}
 
 	/**
-	 * If a `hintText` prop is passed, the id generated from it will be set to the internal `hintTextId` state to match with the fieldset `aria-describedBy` attribute.
+	 * Function to update the state of the checkboxes.
 	 */
+	private updateCheckboxStates(input: HTMLInputElement, isChecked: boolean) {
+		this.checkboxStates[input.id] = isChecked;
+		this.saveCheckboxStates();
+	}
+
+	/**
+	 * Function to save the state of the checkboxes.
+	 */
+	private saveCheckboxStates() {
+		localStorage.setItem('checkboxStates', JSON.stringify(this.checkboxStates));
+	}
+
+	/**
+	 * Function to load the stored checkbo states from local storage. x
+	 */
+	private loadCheckboxStates() {
+		const storedCheckboxStates = localStorage.getItem('checkboxStates');
+		if (storedCheckboxStates) {
+			this.checkboxStates = JSON.parse(storedCheckboxStates);
+		}
+	}
+
 	async componentDidLoad() {
 		this.hintTextId = await this.hintTextRef?.getHintTextId();
+		this.loadCheckboxStates(); // Load checkbox states on component load
 	}
 
 	componentWillLoad() {
@@ -384,6 +413,7 @@ export class OntarioCheckboxes implements Checkboxes {
 									type="checkbox"
 									value={checkbox.value}
 									required={!!this.required}
+									checked={this.checkboxStates[checkbox.elementId] ?? false}
 									onChange={(e) => this.handleEvent(e, EventType.Change)}
 									onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 									onFocus={(e) => this.handleEvent(e, EventType.Focus)}

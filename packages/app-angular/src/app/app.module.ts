@@ -4,7 +4,11 @@ import { ComponentLibraryModule } from '@ontario-digital-service/ontario-design-
 import { RouterModule, Routes } from '@angular/router';
 import { FormValueChangesDirective } from './directives/formValue.directives';
 import { FormsModule } from '@angular/forms';
-import { OntarioInputValueAccessor, OntarioTextareaValueAccessor } from './directives/customValueAccessors.directives';
+import {
+	OntarioInputValueAccessor,
+	OntarioTextareaValueAccessor,
+	OntarioCheckboxesValueAccessor,
+} from './directives/customValueAccessors.directives';
 import { TemporaryStorageService } from './services/temporary-storage.services';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,6 +38,7 @@ import { createTranslateLoader } from './translation.config';
 		FormValueChangesDirective,
 		OntarioInputValueAccessor,
 		OntarioTextareaValueAccessor,
+		OntarioCheckboxesValueAccessor,
 	],
 	imports: [
 		ComponentLibraryModule,
