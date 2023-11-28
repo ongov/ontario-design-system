@@ -59,7 +59,6 @@ export class OntarioTextareaValueAccessor extends BaseCustomValueAccessor {
 export class OntarioCheckboxesValueAccessor extends BaseCustomValueAccessor {
 	@HostListener('checkboxOnChange', ['$event.detail'])
 	_handleChange(event: any) {
-		console.log('this is coming from custom value' + event);
 		this.onChange(event.detail); // Assuming the emitted data contains the checkbox state
 	}
 
