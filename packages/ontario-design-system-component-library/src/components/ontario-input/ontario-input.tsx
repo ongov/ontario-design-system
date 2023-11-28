@@ -350,7 +350,13 @@ export class OntarioInput implements TextInput, CommonInputEvents {
 					className={this.getClass()}
 					id={this.getId()}
 					name={this.name}
-					onInput={(e: any) => this.inputValueChange?.emit(e.target.value)}
+					onInput={(e) => {
+						const inputElement = e.target as HTMLInputElement | null;
+
+						if (inputElement && inputElement.value !== undefined) {
+							this.inputValueChange?.emit(inputElement.value);
+						}
+					}}
 					onChange={(e) => this.handleEvent(e, EventType.Change)}
 					onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 					onFocus={(e) => this.handleEvent(e, EventType.Focus)}

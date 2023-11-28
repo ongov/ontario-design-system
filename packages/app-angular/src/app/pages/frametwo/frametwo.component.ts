@@ -33,7 +33,7 @@ export class FrameTwoComponent implements OnInit {
 	}
 
 	public async restoreFromTemporaryStorage(): Promise<void> {
-		var cachedFormData = await this.temporaryStorageService.get<NewAccountFormData>('registrationData');
+		const cachedFormData = await this.temporaryStorageService.get<NewAccountFormData>('registrationData');
 		if (cachedFormData) {
 			Object.assign(this.formData, cachedFormData);
 		}

@@ -9,6 +9,7 @@ import { TemporaryStorageService } from '../../services/temporary-storage.servic
 interface NewAccountFormData {
 	additionalDetails: string;
 }
+
 @Component({
 	selector: 'app-framefive',
 	templateUrl: './framefive.component.html',
@@ -47,7 +48,7 @@ export class FrameFiveComponent implements OnInit {
 	}
 
 	public async restoreFromTemporaryStorage(): Promise<void> {
-		var cachedFormData = await this.temporaryStorageService.get<NewAccountFormData>('registrationData');
+		const cachedFormData = await this.temporaryStorageService.get<NewAccountFormData>('registrationData');
 		if (cachedFormData) {
 			Object.assign(this.formData, cachedFormData);
 		}
