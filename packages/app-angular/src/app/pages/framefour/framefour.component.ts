@@ -17,7 +17,9 @@ export class FrameFourComponent implements OnInit {
 
 	ngOnInit() {
 		// Initialize checkbox states from localStorage on component load
-		this.loadCheckboxStates();
+		document.addEventListener('checkboxChange', (event: Event) => {
+			this.handleCheckboxChange(event as CustomEvent); // Cast the event to CustomEvent
+		});
 	}
 
 	getTranslation() {
@@ -36,8 +38,12 @@ export class FrameFourComponent implements OnInit {
 
 	// Function to handle any changes in the Checkbox
 	handleCheckboxChange(event: any) {
-		this.checkboxStates[event.detail.id] = event.detail.checked;
-		this.saveCheckboxStates();
+		// Check if the event has detail property
+		if (event.detail) {
+			const { id, checked } = event.detail;
+			this.checkboxStates[id] = checked;
+			this.saveCheckboxStates();
+		}
 	}
 
 	// Function to handle the custom click event for the back button
@@ -53,13 +59,5 @@ export class FrameFourComponent implements OnInit {
 
 	private saveCheckboxStates() {
 		localStorage.setItem('checkboxStates', JSON.stringify(this.checkboxStates));
-	}
-
-	private loadCheckboxStates() {
-		const storedCheckboxStates = localStorage.getItem('checkboxStates');
-
-		if (storedCheckboxStates) {
-			this.checkboxStates = JSON.parse(storedCheckboxStates);
-		}
 	}
 }

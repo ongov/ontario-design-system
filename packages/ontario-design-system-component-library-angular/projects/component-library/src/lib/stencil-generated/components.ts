@@ -163,7 +163,7 @@ export class OntarioCheckboxes {
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['checkboxOnChange', 'checkboxOnBlur', 'checkboxOnFocus']);
+		proxyOutputs(this, this.el, ['checkboxOnChange', 'checkboxChange', 'checkboxOnBlur', 'checkboxOnFocus']);
 	}
 }
 
@@ -175,6 +175,8 @@ export declare interface OntarioCheckboxes extends Components.OntarioCheckboxes 
 	 * Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed.
 	 */
 	checkboxOnChange: EventEmitter<CustomEvent<IOntarioCheckboxesRadioAndCheckboxChangeEvent>>;
+
+	checkboxChange: EventEmitter<CustomEvent<{ id: string; checked: boolean }>>;
 	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has lost focus.
 	 */

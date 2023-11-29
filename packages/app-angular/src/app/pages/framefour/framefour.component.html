@@ -15,7 +15,7 @@
 		name="describe-role"
 		hintText="{{ 'form.questions.describeRole.hint' | translate }}"
 		[options]="getTranslation().describeRoleOptions"
-		(checkboxOnChange)="handleCheckboxChange($event)"
+		(checkboxChange)="handleCheckboxChange($event)"
 		language="{{ lang }}"
 	></ontario-checkboxes>
 

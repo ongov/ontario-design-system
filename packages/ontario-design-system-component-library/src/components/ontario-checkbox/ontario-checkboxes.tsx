@@ -192,6 +192,8 @@ export class OntarioCheckboxes implements Checkboxes {
 	 */
 	@Event() checkboxOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
 
+	@Event() checkboxChange: EventEmitter<{ id: string; checked: boolean }>;
+
 	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has lost focus.
 	 */
@@ -357,14 +359,18 @@ export class OntarioCheckboxes implements Checkboxes {
 	 */
 	private updateCheckboxStates(input: HTMLInputElement, isChecked: boolean) {
 		this.checkboxStates[input.id] = isChecked;
-		this.saveCheckboxStates();
-	}
 
-	/**
-	 * Function to save the state of the checkboxes.
-	 */
-	private saveCheckboxStates() {
-		localStorage.setItem('checkboxStates', JSON.stringify(this.checkboxStates));
+		const checkboxChangeEvent = new CustomEvent('checkboxChange', {
+			detail: {
+				id: input.id,
+				checked: isChecked,
+			},
+			bubbles: true,
+			composed: true,
+		});
+
+		this.checkboxChange.emit({ id: input.id, checked: isChecked }); // Emit the Angular event
+		this.element.dispatchEvent(checkboxChangeEvent);
 	}
 
 	/**
