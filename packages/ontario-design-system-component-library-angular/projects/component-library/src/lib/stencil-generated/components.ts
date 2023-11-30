@@ -2872,7 +2872,7 @@ export class OntarioRadioButtons {
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['radioOnChange', 'radioOnBlur', 'radioOnFocus']);
+		proxyOutputs(this, this.el, ['selectedRadioChange', 'radioOnChange', 'radioOnBlur', 'radioOnFocus']);
 	}
 }
 
@@ -2880,6 +2880,7 @@ import type { RadioAndCheckboxChangeEvent as IOntarioRadioButtonsRadioAndCheckbo
 import type { InputFocusBlurEvent as IOntarioRadioButtonsInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
 
 export declare interface OntarioRadioButtons extends Components.OntarioRadioButtons {
+	selectedRadioChange: EventEmitter<CustomEvent<string>>;
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a radio option has been changed.
 	 */

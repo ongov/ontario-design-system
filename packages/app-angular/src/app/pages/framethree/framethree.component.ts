@@ -10,6 +10,7 @@ import { handleBackButtonNavigationOnClick } from 'src/utils/routing.utils';
 })
 export class FrameThreeComponent {
 	public lang = getLanguage();
+	selectedRadioValue: string = '';
 
 	constructor(private translateService: TranslateService, private router: Router) {}
 
@@ -38,5 +39,42 @@ export class FrameThreeComponent {
 			},
 			this.router,
 		);
+	}
+
+	ngOnInit() {
+		console.log('ngOnInit called');
+
+		const storedValue = localStorage.getItem('selectedRadioValue');
+
+		if (storedValue) {
+			console.log('Stored value found:', storedValue);
+			this.selectedRadioValue = storedValue;
+		} else {
+			console.log('No stored value found');
+		}
+	}
+
+	handleSelectedRadioChange(event: Event) {
+		const customEvent = event as CustomEvent<any>;
+
+		if (customEvent.detail) {
+			console.log('Selected value changed:', customEvent.detail);
+
+			// Handle the selected radio button value here
+
+			// Update the component's state
+			this.selectedRadioValue = customEvent.detail;
+
+			// Update local storage
+			localStorage.setItem('selectedRadioValue', customEvent.detail);
+		}
+	}
+
+	private loadSelectedRadioValue() {
+		// Load the selected radio value from localStorage
+		const storedValue = localStorage.getItem('selectedRadioValue');
+		if (storedValue) {
+			this.selectedRadioValue = storedValue;
+		}
 	}
 }

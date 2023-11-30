@@ -67,3 +67,25 @@ export class OntarioCheckboxesValueAccessor extends BaseCustomValueAccessor {
 		this.onTouched();
 	}
 }
+
+@Directive({
+	selector: 'ontario-radio-buttons',
+	providers: [
+		{
+			provide: NG_VALUE_ACCESSOR,
+			useExisting: OntarioRadioButtonsValueAccessor,
+			multi: true,
+		},
+	],
+})
+export class OntarioRadioButtonsValueAccessor extends BaseCustomValueAccessor {
+	@HostListener('selectedRadioChange', ['$event.detail'])
+	_handleChange(event: any) {
+		this.onChange(event.detail);
+	}
+
+	@HostListener('radioOnBlur', ['$event'])
+	_handleBlurEvent(event: any) {
+		this.onTouched();
+	}
+}

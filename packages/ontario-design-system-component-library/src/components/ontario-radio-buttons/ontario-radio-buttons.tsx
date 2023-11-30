@@ -191,6 +191,8 @@ export class OntarioRadioButtons implements RadioButtons {
 	 */
 	@State() selectedValue: string;
 
+	@Event({ eventName: 'selectedRadioChange' }) selectedRadioChange: EventEmitter<string>;
+
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a radio option has been changed.
 	 */
@@ -339,7 +341,7 @@ export class OntarioRadioButtons implements RadioButtons {
 
 			if (eventType === EventType.Change) {
 				this.selectedValue = input.value;
-				localStorage.setItem('selectedRadioValue', this.selectedValue); // Store the selected value in localStorage
+				this.selectedRadioChange.emit(this.selectedValue); // Emit the selected value
 			}
 		}
 
@@ -359,17 +361,11 @@ export class OntarioRadioButtons implements RadioButtons {
 			this.element,
 		);
 	}
-
 	/**
 	 * If a `hintText` prop is passed, the id generated from it will be set to the internal `hintTextId` state to match with the fieldset `aria-describedBy` attribute.
 	 */
 	async componentDidLoad() {
 		this.hintTextId = await this.hintTextRef?.getHintTextId();
-
-		const storedValue = localStorage.getItem('selectedRadioValue');
-		if (storedValue) {
-			this.selectedValue = storedValue;
-		}
 	}
 
 	componentWillLoad() {
@@ -404,7 +400,7 @@ export class OntarioRadioButtons implements RadioButtons {
 									type="radio"
 									value={radioOption.value}
 									required={!!this.required}
-									{...(radioOption.value === this.selectedValue ? { checked: true } : {})}
+									checked={this.selectedValue === radioOption.value} // Update this line
 									onChange={(e) => this.handleEvent(e, EventType.Change)}
 									onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 									onFocus={(e) => this.handleEvent(e, EventType.Focus)}
