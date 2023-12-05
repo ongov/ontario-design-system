@@ -15,10 +15,7 @@ Once the component package has been installed (see Ontario Design System Compone
 Example of a bare-bones input component, the `name` property is passed in for the input, which is used to reference form data after a form is submitted. The `caption` property is being provided, which will be displayed as the label. By default, the `inputWidth` will be `default`, the `type` will be `text`, and the input will be set to `optional`.
 
 ```html
-<ontario-input
-	name="ontario-text-input"
-	caption="Ontario input"
-/></ontario-input>
+<ontario-input name="ontario-text-input" caption="Ontario input"></ontario-input>
 ```
 
 The following input component example has the `inputWidth` property passed in, which will define the width of the input field.
@@ -31,7 +28,7 @@ The following input component example has the `inputWidth` property passed in, w
 		"captionType": "large"
 	}'
 	input-width="10-char-width"
-/></ontario-input>
+></ontario-input>
 ```
 
 ## Custom property types
@@ -65,7 +62,7 @@ visible when the hint expander title (hint) is toggled" }'
 
 ## Accessibility
 
-- An `id` attribute is necessary to allow the input to be associated with a label element
+- An `element-id` attribute is necessary to allow the input to be associated with a label element
 - A `name` attribute needs to be set to be submitted to the server when the form is submitted.
 
 <!-- Auto Generated Below -->
@@ -78,6 +75,7 @@ visible when the hint expander title (hint) is toggled" }'
 | `customOnBlur`   | --              | Used to add a custom function to the textarea onBlur event.                                                                                                                                                                                 | `((event: Event) => void) \| undefined`                                                                                                     | `undefined` |
 | `customOnChange` | --              | Used to add a custom function to the textarea onChange event.                                                                                                                                                                               | `((event: Event) => void) \| undefined`                                                                                                     | `undefined` |
 | `customOnFocus`  | --              | Used to add a custom function to the textarea onFocus event.                                                                                                                                                                                | `((event: Event) => void) \| undefined`                                                                                                     | `undefined` |
+| `customOnInput`  | --              | Used to add a custom function to the textarea onInput event.                                                                                                                                                                                | `((event: Event) => void) \| undefined`                                                                                                     | `undefined` |
 | `elementId`      | `element-id`    | The unique identifier of the input. This is optional - if no ID is passed, one will be generated.                                                                                                                                           | `string \| undefined`                                                                                                                       | `undefined` |
 | `hintExpander`   | `hint-expander` | Used to include the ontario-hint-expander component for the input component. This is passed in as an object with key-value pairs. This is optional.                                                                                         | `HintExpander \| string \| undefined`                                                                                                       | `undefined` |
 | `hintText`       | `hint-text`     | Used to include the ontario-hint-text component for the input. This is optional.                                                                                                                                                            | `Hint \| string \| undefined`                                                                                                               | `undefined` |
@@ -90,11 +88,12 @@ visible when the hint expander title (hint) is toggled" }'
 
 ## Events
 
-| Event           | Description                                                                         | Type                                                                      |
-| --------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `inputOnBlur`   | Emitted when a keyboard input event occurs when an input has lost focus.            | `CustomEvent<InputChangeEvent & { focused: boolean; }>`                   |
-| `inputOnChange` | Emitted when a keyboard input or mouse event occurs when an input has been changed. | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>` |
-| `inputOnFocus`  | Emitted when a keyboard input event occurs when an input has gained focus.          | `CustomEvent<InputChangeEvent & { focused: boolean; }>`                   |
+| Event           | Description                                                                         | Type                                                                        |
+| --------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `inputOnBlur`   | Emitted when a keyboard input event occurs when an input has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
+| `inputOnChange` | Emitted when a keyboard input or mouse event occurs when an input has been changed. | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>`   |
+| `inputOnFocus`  | Emitted when a keyboard input event occurs when an input has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
+| `inputOnInput`  | Emitted when a input occurs when an input has been changed.                         | `CustomEvent<InputInteractionEvent & { inputType?: string \| undefined; }>` |
 
 ## Dependencies
 

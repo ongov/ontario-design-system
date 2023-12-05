@@ -1,4 +1,4 @@
-@use '@ontario-digital-service/ontario-design-system-design-tokens/dist/scss/variables' as variables;
+@use './tokens.variables' as variables;
 
 /*** 1 - Breakpoint sizes for media queries ***/
 // Note: much of this is based on Foundation 5's 12 column grid system, with breakpoints tweaked.

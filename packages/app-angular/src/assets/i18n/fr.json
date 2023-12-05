@@ -1,0 +1,180 @@
+{
+	"routes": {
+		"/get-started": "/fr/demarrer",
+		"/create-account": "/fr/creer-compte",
+		"/contact-information": "/fr/coordonnees",
+		"/describe-role": "/fr/decrivez-role",
+		"/additional-details": "/fr/details-supplementaires",
+		"/account-creation": "/fr/creation-de-compte",
+		"/fr/demarrer": "/get-started",
+		"/fr/creer-compte": "/create-account",
+		"/fr/coordonnees": "/contact-information",
+		"/fr/decrivez-role": "/describe-role",
+		"/fr/details-supplementaires": "/additional-details",
+		"/fr/creation-de-compte": "/account-creation"
+	},
+	"header": {
+		"appName": "Preuve de concept avec Angular",
+		"menuItems": {
+			"home": "Page d'accueil",
+			"register": "Enregistrer"
+		}
+	},
+	"footer": {
+		"contactUs": {
+			"text": "Contactez-nous",
+			"link": "https://www.ontario.ca/fr/commentaires/pour-nous-joindre?id=7471&nid=7583"
+		}
+	},
+	"homepage": {
+		"heading": "Comment démarrer une preuve de concept avec Angular en utilisant le Système de conception",
+		"leadStatement": "Créez un compte en quatre étapes simples pour vous aider àdémarrer vos applications depreuve de concept avec Angular.",
+		"main": {
+			"heading": "Démarrer",
+			"description": "Démarrer une preuve de concept avec Angular peut être excitant, mais il peut être difficile de savoir par où commencer. Répondez à quelques questions simples et nous créerons un compte personnalisé pour vous a fin de commencer votre par cours d’application avec Angular.",
+			"callout": {
+				"heading": "Dernière mise à jour : 1ᵉʳ mai 2023",
+				"content": "Version 1.1"
+			},
+			"button": {
+				"label": "Démarrer"
+			}
+		}
+	},
+	"form": {
+		"questions": {
+			"createAccount": {
+				"legend": "Créer un compte",
+				"emailLabel": "Adresse électronique",
+				"PINLabel": "Créez votre code NIP",
+				"PINHintText": "Saisissez de 6 à 12 chiffres.",
+				"PINHintExpanderLabel": "Conseils pour la création d’un NIP fort",
+				"PINHintExpanderContent": "<p>Suivez ces conseils pour créer un NIP fort&nbsp;:</p><ul><li><b>Faites en sorte que votre NIP soit unique</b>  (p. ex. ne réutilisez pas le numéro que vous utilisez pour votre carte bancaire)</li><li><b>N’utilisez pas de numéros personnels faciles à deviner, tels que des dates</b>  (p. ex. un anniversaire) ou un numéro de téléphone</li><li><b>Ne pas utiliser de chiffres dans une séquence évidente</b>  (p. ex. 123456 ou 246810)</li><li><b>Ne répétez pas une séquence de chiffres</b>  (comme 555666 ou 121212)</li></ul>"
+			},
+			"contactInformation": {
+				"legend": "Coordonnées",
+				"contactType": {
+					"label": "De quelle manière souhaitez-vous être contacté?",
+					"options": [
+						{
+							"value": "email",
+							"label": "Courriel",
+							"elementId": "email"
+						},
+						{
+							"value": "text",
+							"label": "SMS/text",
+							"elementId": "text"
+						},
+						{
+							"value": "mail",
+							"label": "Courrier traditionnel",
+							"elementId": "mail"
+						}
+					]
+				},
+				"provinceTerritory": {
+					"label": "Province/territoire",
+					"options": [
+						{
+							"value": "alberta",
+							"label": "Alberta"
+						},
+						{
+							"value": "british-columbia",
+							"label": "Colombie-Britannique"
+						},
+						{
+							"value": "manitoba",
+							"label": "Manitoba"
+						},
+						{
+							"value": "new-brunswick",
+							"label": "Nouveau-Brunswick"
+						},
+						{
+							"value": "newfoundland-and-labrador",
+							"label": "Terre-Neuve-et-Labrador"
+						},
+						{
+							"value": "nova-scotia",
+							"label": "Nouvelle-Écosse"
+						},
+						{
+							"value": "ontario",
+							"label": "Ontario",
+							"selected": true
+						},
+						{
+							"value": "prince-edward-island",
+							"label": "Île-du-Prince-Édouard"
+						},
+						{
+							"value": "quebec",
+							"label": "Quebec"
+						},
+						{
+							"value": "saskatchewan",
+							"label": "Saskatchewan"
+						},
+						{
+							"value": "northwest-territories",
+							"label": "Territoires du Nord-Ouest"
+						},
+						{
+							"value": "nunavut",
+							"label": "Nunavut"
+						},
+						{
+							"value": "yukon",
+							"label": "Yukon"
+						}
+					]
+				}
+			},
+			"describeRole": {
+				"label": "Décrivez votre rôle",
+				"hint": "Sélectionnez toutes les options qui vous concernent.",
+				"options": [
+					{
+						"value": "development",
+						"label": "Je suis responsable du développement",
+						"elementId": "development"
+					},
+					{
+						"value": "design",
+						"label": "Je suis responsable de la conception",
+						"elementId": "design"
+					},
+					{
+						"value": "html-css",
+						"label": "Je travaille avec le langage HTML/la feuille de style en cascade",
+						"elementId": "html-css"
+					},
+					{
+						"value": "other",
+						"label": "Autre",
+						"elementId": "other"
+					}
+				]
+			},
+			"additionalDetails": {
+				"label": "Saisissez des détails supplémentaires",
+				"hint": "N’incluez pas de renseignements personnels ou financiers tels que votre numéro d’assurance sociale ou les détails de votre carte de crédit."
+			}
+		},
+		"buttons": {
+			"next": "Suivant",
+			"createAccount": "Créer un compte",
+			"createAnotherAccount": "Créer un autre compte"
+		}
+	},
+	"successPage": {
+		"callout": {
+			"heading": "La création de votre compte a réussi!",
+			"content": "<p>Numéro de référence du compte&nbsp;: <b>840-221.</b></p><p>Vous recevrez un courriel de confirmation avec le nom d’utilisateur de votre compte.</p>"
+		},
+		"returnLine": "Vous pouvez maintenant revenir à la",
+		"returnLineLink": "page de connexion"
+	}
+}

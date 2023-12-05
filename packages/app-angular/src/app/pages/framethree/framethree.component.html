@@ -1,92 +1,30 @@
-<div>
-	<h1>Contact information</h1>
-	<ontario-radio-buttons
-		caption="How would you like to be contacted"
-		name="radios"
-		required
-		options='[
-      {
-        "value": "email",
-        "elementId": "email",
-        "label": "Email"
-      },
-      {
-        "value": "text",
-        "elementId": "text",
-        "label": "SMS/text"
-      },
-      {
-        "value": "mail",
-        "elementId": "mail",
-        "label": "Standard mail"
-      }
-    ]'
-	>
-	</ontario-radio-buttons>
+<ontario-step-indicator
+	current-step="2"
+	number-of-steps="4"
+	show-back-button="true"
+	[customOnClick]="handleBackNavigation.bind(this)"
+	language="{{ lang }}"
+></ontario-step-indicator>
 
-	<ontario-dropdown-list
-		name="provinces-territories"
-		caption='{
-      "captionText": "Province/territory",
-      "captionType": "large"
-    }'
-		required
-		options='[{
-        "value": "alberta",
-        "label": "Alberta"
-      },
-      {
-        "value": "british-columbia",
-        "label": "British Columbia"
-      },
-      {
-        "value": "manitoba",
-        "label": "Manitoba"
-      },
-      {
-        "value": "new-brunswick",
-        "label": "New Brunswick"
-      },
-      {
-        "value": "newfoundland-and-labrador",
-        "label": "Newfoundland and Labrador"
-      },
-      {
-        "value": "nova-scotia",
-        "label": "Nova Scotia"
-      },
-      {
-        "value": "ontario",
-        "label": "Ontario",
-        "selected": true
-      },
-      {
-        "value": "prince-edward-island",
-        "label": "Prince Edward Island"
-      },
-      {
-        "value": "quebec",
-        "label": "Quebec"
-      },
-      {
-        "value": "saskatchewan",
-        "label": "Saskatchewan"
-      },
-      {
-        "value": "northwest-territories",
-        "label": "Northwest Territories"
-      },
-      {
-        "value": "nunavut",
-        "label": "Nunavut"
-      },
-      {
-        "value": "yukon",
-        "label": "Yukon"
-      }]'
-	>
-	</ontario-dropdown-list>
-
-	<ontario-button type="primary" label="Next" aria-label-text="Continue to next question" routerLink="/framefour">
-	</ontario-button>
+<div class="ontario-margin-top-40-!">
+	<ontario-fieldset legend-size="heading" legend="{{ 'form.questions.contactInformation.legend' | translate }}">
+		<ontario-radio-buttons
+			caption="{{ 'form.questions.contactInformation.contactType.label' | translate }}"
+			name="contact-type"
+			required
+			[options]="getTranslation().contactTypeOptions"
+			language="{{ lang }}"
+		>
+		</ontario-radio-buttons>
+		<ontario-dropdown-list
+			name="province-territory"
+			caption="{{ 'form.questions.contactInformation.provinceTerritory.label' | translate }}"
+			required
+			[options]="getTranslation().provinceTerritoryOptions"
+			language="{{ lang }}"
+		>
+		</ontario-dropdown-list>
+	</ontario-fieldset>
 </div>
+
+<ontario-button type="primary" label="{{ 'form.buttons.next' | translate }}" [routerLink]="getRoute()"></ontario-button>

@@ -17,7 +17,7 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 import { hasMultipleTrueValues } from '../../utils/helper/utils';
 import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
-import { InputFocusBlurEvent, EventType, InputChangeEvent } from '../../utils/events/event-handler.interface';
+import { InputFocusBlurEvent, EventType, InputInteractionEvent } from '../../utils/events/event-handler.interface';
 import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
@@ -209,17 +209,17 @@ export class OntarioDropdownList implements Dropdown {
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed.
 	 */
-	@Event({ eventName: 'dropdownOnChange' }) dropdownOnChange: EventEmitter<InputChangeEvent>;
+	@Event() dropdownOnChange: EventEmitter<InputInteractionEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a dropdown list has lost focus.
 	 */
-	@Event({ eventName: 'dropdownOnBlur' }) dropdownOnBlur: EventEmitter<InputFocusBlurEvent>;
+	@Event() dropdownOnBlur: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when a dropdown list has gained focus.
 	 */
-	@Event({ eventName: 'dropdownOnFocus' }) dropdownOnFocus: EventEmitter<InputFocusBlurEvent>;
+	@Event() dropdownOnFocus: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -349,22 +349,25 @@ export class OntarioDropdownList implements Dropdown {
 	/**
 	 * Function to handle dropdown list events and the information pertaining to the dropdown list to emit.
 	 */
-	handleEvent = (ev: Event, eventType: EventType) => {
-		const input = ev.target as HTMLSelectElement | null;
+	private handleEvent(event: Event, eventType: EventType) {
+		const input = event.target as HTMLSelectElement | null;
 
 		handleInputEvent(
-			ev,
+			event,
 			eventType,
 			input,
 			this.dropdownOnChange,
 			this.dropdownOnFocus,
 			this.dropdownOnBlur,
+			undefined,
 			'dropdown',
 			this.customOnChange,
 			this.customOnFocus,
 			this.customOnBlur,
+			undefined,
+			this.element,
 		);
-	};
+	}
 
 	public getId(): string {
 		return this.elementId ?? '';
