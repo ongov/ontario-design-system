@@ -19,6 +19,7 @@ import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 
 import translations from '../../translations/global.i18n.json';
+import config from '../../config.json';
 
 @Component({
 	tag: 'ontario-header',
@@ -198,6 +199,8 @@ export class OntarioHeader {
 
 	@Watch('menuItems')
 	parseMenuItems() {
+		const isEnglish = this.language === 'en';
+
 		if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
 			this.menuItemState = JSON.parse(this.menuItems);
 			this.isDynamicMenu = false;
@@ -205,7 +208,7 @@ export class OntarioHeader {
 			this.menuItemState = this.menuItems;
 			this.isDynamicMenu = false;
 		} else {
-			this.menuItemState = OntarioHeaderDefaultData;
+			this.menuItemState = isEnglish ? OntarioHeaderDefaultData.en : OntarioHeaderDefaultData.fr;
 			this.isDynamicMenu = false;
 		}
 	}
@@ -293,9 +296,14 @@ export class OntarioHeader {
 	 * Call to Ontario Menu API to fetch linksets to populate header component
 	 */
 	async fetchOntarioMenu() {
+		const isEnglish = this.language === 'en';
+
 		// If menu has already been fetched and contains dynamic menu items, do not run fetch again
 		if (!this.isDynamicMenu) {
-			const apiUrl = process.env.ONTARIO_HEADER_API_URL as string;
+			const apiUrl = isEnglish
+				? (config.ONTARIO_HEADER_API_URL_EN as string)
+				: (config.ONTARIO_HEADER_API_URL_FR as string);
+
 			const response = await fetch(apiUrl)
 				.then((response) => response.json())
 				.then((json) => json.linkset[0].item as OntarioMenuItems[])
