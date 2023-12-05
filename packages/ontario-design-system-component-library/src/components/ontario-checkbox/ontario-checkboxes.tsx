@@ -66,6 +66,8 @@ export class OntarioCheckboxes implements Checkboxes {
 	 */
 	@Prop({ mutable: true }) hintText?: string | Hint;
 
+	@Prop() checked: boolean;
+
 	/**
 	 * Used to include the ontario-hint-expander component for the checkbox group.
 	 * This is passed in as an object with key-value pairs.
@@ -358,7 +360,10 @@ export class OntarioCheckboxes implements Checkboxes {
 	 * Function to update the state of the checkboxes.
 	 */
 	private updateCheckboxStates(input: HTMLInputElement, isChecked: boolean) {
-		this.checkboxStates[input.id] = isChecked;
+		this.checkboxStates = {
+			...this.checkboxStates,
+			[input.id]: isChecked,
+		};
 
 		const checkboxChangeEvent = new CustomEvent('checkboxChange', {
 			detail: {
@@ -373,19 +378,8 @@ export class OntarioCheckboxes implements Checkboxes {
 		this.element.dispatchEvent(checkboxChangeEvent);
 	}
 
-	/**
-	 * Function to load the stored checkbo states from local storage. x
-	 */
-	private loadCheckboxStates() {
-		const storedCheckboxStates = localStorage.getItem('checkboxStates');
-		if (storedCheckboxStates) {
-			this.checkboxStates = JSON.parse(storedCheckboxStates);
-		}
-	}
-
 	async componentDidLoad() {
 		this.hintTextId = await this.hintTextRef?.getHintTextId();
-		this.loadCheckboxStates(); // Load checkbox states on component load
 	}
 
 	componentWillLoad() {
@@ -419,7 +413,7 @@ export class OntarioCheckboxes implements Checkboxes {
 									type="checkbox"
 									value={checkbox.value}
 									required={!!this.required}
-									checked={this.checkboxStates[checkbox.elementId] ?? false}
+									checked={!!checkbox.checked}
 									onChange={(e) => this.handleEvent(e, EventType.Change)}
 									onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 									onFocus={(e) => this.handleEvent(e, EventType.Focus)}

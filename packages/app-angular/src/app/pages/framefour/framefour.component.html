@@ -9,13 +9,12 @@
 <div class="ontario-margin-top-40-!">
 	<ontario-checkboxes
 		[caption]="{
-			captionText: getTranslation().describeRoleLabel,
+			captionText: getTranslation().describeRole.label,
 			captionType: 'heading'
 		}"
 		name="describe-role"
 		hintText="{{ 'form.questions.describeRole.hint' | translate }}"
-		[options]="getTranslation().describeRoleOptions"
-		(checkboxChange)="handleCheckboxChange($event)"
+		[options]="generateOptions()"
 		language="{{ lang }}"
 	></ontario-checkboxes>
 

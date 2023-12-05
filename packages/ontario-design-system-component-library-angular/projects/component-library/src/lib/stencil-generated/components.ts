@@ -129,6 +129,7 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 @ProxyCmp({
 	inputs: [
 		'caption',
+		'checked',
 		'customOnBlur',
 		'customOnChange',
 		'customOnFocus',
@@ -147,6 +148,7 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
 	inputs: [
 		'caption',
+		'checked',
 		'customOnBlur',
 		'customOnChange',
 		'customOnFocus',

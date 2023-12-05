@@ -212,6 +212,7 @@ export namespace Components {
 		 * @example <ontario-checkboxes   caption='{     "captionText": "Checkbox legend",     "captionType": "heading",   }   ...> </ontario-checkboxes>
 		 */
 		caption: Caption | string;
+		checked: boolean;
 		/**
 		 * Used to add a custom function to the checkbox onBlur event.
 		 */
@@ -2786,6 +2787,7 @@ declare namespace LocalJSX {
 		 * @example <ontario-checkboxes   caption='{     "captionText": "Checkbox legend",     "captionType": "heading",   }   ...> </ontario-checkboxes>
 		 */
 		caption?: Caption | string;
+		checked?: boolean;
 		/**
 		 * Used to add a custom function to the checkbox onBlur event.
 		 */

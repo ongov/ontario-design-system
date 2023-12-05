@@ -1,9 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 import { getLanguage, isEnglish } from 'src/utils/get-language.utils';
 import { handleBackButtonNavigationOnClick } from 'src/utils/routing.utils';
+
+interface CheckboxOption {
+	value: string;
+	label: string;
+	elementId: string;
+	checked: boolean;
+}
+
+// Assuming a type for describeRole options
+interface DescribeRoleOption {
+	value: string;
+	label: string;
+	elementId: string;
+}
+
+// Assuming a type for describeRole
+interface DescribeRole {
+	label: string;
+	options: DescribeRoleOption[];
+}
+
+// Assuming a type for the entire translation object
+interface Translation {
+	describeRole: DescribeRole;
+}
 
 @Component({
 	selector: 'app-framefour',
@@ -11,24 +36,91 @@ import { handleBackButtonNavigationOnClick } from 'src/utils/routing.utils';
 })
 export class FrameFourComponent implements OnInit {
 	public lang = getLanguage();
-	private checkboxStates: Record<string, boolean> = {};
+	public checkboxStates: Record<string, boolean> = {};
+	private boundHandleCheckboxChange = this.handleCheckboxChange.bind(this);
 
-	constructor(private translateService: TranslateService, private router: Router) {}
+	constructor(
+		private translateService: TranslateService,
+		private router: Router,
+		private changeDetectorRef: ChangeDetectorRef,
+		private ngZone: NgZone,
+	) {}
 
 	ngOnInit() {
-		// Initialize checkbox states from localStorage on component load
+		try {
+			const storedCheckboxStates = localStorage.getItem('checkboxStates');
+			this.checkboxStates = storedCheckboxStates ? JSON.parse(storedCheckboxStates) : {};
+
+			// Manually trigger change detection
+			this.changeDetectorRef.detectChanges();
+		} catch (error) {
+			console.error('Error retrieving checkbox states from localStorage:', error);
+		}
+
 		document.addEventListener('checkboxChange', (event: Event) => {
-			this.handleCheckboxChange(event as CustomEvent); // Cast the event to CustomEvent
+			this.ngZone.run(() => {
+				this.handleCheckboxChange(event as CustomEvent);
+			});
+		});
+
+		document.addEventListener('checkboxChange', this.handleCheckboxChange.bind(this));
+	}
+
+	loadCheckboxStates() {
+		const storedCheckboxStates = localStorage.getItem('checkboxStates');
+		this.checkboxStates = storedCheckboxStates ? JSON.parse(storedCheckboxStates) : {};
+	}
+
+	handleCheckboxChange(event: any) {
+		if (event.detail) {
+			const { id, checked } = event.detail;
+			this.ngZone.run(() => {
+				this.checkboxStates = { ...this.checkboxStates, [id]: checked };
+				this.saveCheckboxStates();
+			});
+		}
+	}
+
+	generateOptions(): CheckboxOption[] {
+		const translation: Translation = this.getTranslation();
+		const describeRoleOptions: DescribeRoleOption[] = translation?.describeRole?.options || [];
+
+		if (!Array.isArray(describeRoleOptions)) {
+			return [];
+		}
+
+		return describeRoleOptions.map((option) => {
+			return {
+				value: option.value,
+				label: option.label,
+				elementId: option.elementId,
+				checked: this.checkboxStates[option.elementId] ?? false,
+			};
 		});
 	}
 
-	getTranslation() {
+	saveCheckboxStates() {
+		localStorage.setItem('checkboxStates', JSON.stringify(this.checkboxStates));
+
+		// Manually trigger change detection after saving checkbox states
+		this.changeDetectorRef.detectChanges();
+	}
+
+	getCheckboxState(id: string): boolean {
+		return this.checkboxStates[id] || false;
+	}
+
+	getTranslation(): Translation {
 		const describeRoleLabel = this.translateService.instant('form.questions.describeRole.label');
-		const describeRoleOptions = this.translateService.instant('form.questions.describeRole.options');
+		const describeRoleOptions: DescribeRoleOption[] = this.translateService.instant(
+			'form.questions.describeRole.options',
+		);
 
 		return {
-			describeRoleLabel,
-			describeRoleOptions,
+			describeRole: {
+				label: describeRoleLabel,
+				options: describeRoleOptions,
+			},
 		};
 	}
 
@@ -36,17 +128,6 @@ export class FrameFourComponent implements OnInit {
 		return isEnglish() ? '/additional-details' : '/fr/details-supplementaires';
 	}
 
-	// Function to handle any changes in the Checkbox
-	handleCheckboxChange(event: any) {
-		// Check if the event has detail property
-		if (event.detail) {
-			const { id, checked } = event.detail;
-			this.checkboxStates[id] = checked;
-			this.saveCheckboxStates();
-		}
-	}
-
-	// Function to handle the custom click event for the back button
 	handleBackNavigation() {
 		handleBackButtonNavigationOnClick(
 			{
@@ -55,9 +136,5 @@ export class FrameFourComponent implements OnInit {
 			},
 			this.router,
 		);
-	}
-
-	private saveCheckboxStates() {
-		localStorage.setItem('checkboxStates', JSON.stringify(this.checkboxStates));
 	}
 }
