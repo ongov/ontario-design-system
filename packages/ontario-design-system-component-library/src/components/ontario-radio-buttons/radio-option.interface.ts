@@ -95,4 +95,6 @@ export interface RadioOption {
 	 * </ontario-radio-buttons>
 	 */
 	hintExpander?: HintExpander;
+
+	checked?: boolean;
 }

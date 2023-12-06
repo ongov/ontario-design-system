@@ -360,7 +360,7 @@ export class OntarioDropdownList implements Dropdown {
 		if (select) {
 			if (eventType === EventType.Change) {
 				this.selectedValue = select.value;
-				localStorage.setItem('selectedDropdownValue', this.selectedValue);
+				// Remove local storage logic from here
 			}
 
 			handleInputEvent(
@@ -434,11 +434,6 @@ export class OntarioDropdownList implements Dropdown {
 	 */
 	async componentDidLoad() {
 		this.hintTextId = await this.hintTextRef?.getHintTextId();
-
-		const storedValue = localStorage.getItem('selectedDropdownValue');
-		if (storedValue) {
-			this.selectedValue = storedValue;
-		}
 	}
 
 	componentWillLoad() {
