@@ -205,7 +205,7 @@ export class OntarioInput implements TextInput {
 	@State() private captionState: InputCaption;
 
 	/**
-	 * Track in the input has been interacted with, for validating if the input
+	 * Track if the input has been interacted with, for validating if the input
 	 * is in error if it is a `required` input.
 	 */
 	@State() private hasBeenInteractedWith: boolean = false;
@@ -242,7 +242,7 @@ export class OntarioInput implements TextInput {
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
-	 * @param event The language that has been selected
+	 * @param event The language that has been selected.
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
 	handleSetAppLanguage(event: CustomEvent<Language>) {
@@ -251,7 +251,7 @@ export class OntarioInput implements TextInput {
 
 	/**
 	 * Handles an update to the language should the user request a language update from the language toggle.
-	 * @param event The language that has been selected
+	 * @param event The language that has been selected.
 	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
 	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
