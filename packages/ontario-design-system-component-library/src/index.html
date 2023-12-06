@@ -232,14 +232,27 @@
 					</div>
 
 					<!-- Fieldsets -->
+					<script>
+						window.onload = () => {
+							const addressLine1 = document.getElementById('address-line-1');
+							addressLine1.inputValidator = async (value) => {
+								if (value === 'error') return { errorMessage: "You entered 'error'" };
+							};
+							addressLine1.addEventListener('inputErrorOccurred', (event) => {
+								console.log('errorOccurred:', event);
+							});
+						};
+					</script>
 					<div>
 						<h2 id="fieldsets">Fieldsets</h2>
 						<ontario-fieldset legend-size="large" legend="What is your delivery address?">
 							<ontario-input
+								id="address-line-1"
 								caption="Address line 1"
 								required
 								name="address-line-1"
 								hint-text="Street and number or P.O. box."
+								enable-live-validation
 							></ontario-input>
 							<ontario-input
 								caption="Address line 2"
@@ -304,10 +317,12 @@
 								]'
 							></ontario-dropdown-list>
 							<ontario-input
+								id="post-code"
 								caption="Postal code"
 								required
 								name="postal-code"
 								input-width="7-char-width"
+								enable-live-validation
 							></ontario-input>
 						</ontario-fieldset>
 						<hr />
