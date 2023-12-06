@@ -15,6 +15,7 @@
 @forward '../../utils/components/error-message/error-message';
 
 $ontario-input-padding: 0.625rem;
+$ontario-input-border-width: 0.125rem;
 
 .ontario-input {
 	border: globalVariables.$border-size-standard solid colours.$ontario-colour-black;
@@ -71,6 +72,6 @@ $ontario-input-padding: 0.625rem;
 
 .ontario-input--error {
 	input {
-		border: 0.125rem solid colours.$ontario-colour-alert;
+		border: $ontario-input-border-width solid colours.$ontario-colour-alert;
 	}
 }

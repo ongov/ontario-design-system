@@ -205,8 +205,8 @@ export class OntarioInput implements TextInput {
 	@State() private captionState: InputCaption;
 
 	/**
-	 * Track if the input has been interacted with, for validating if the input
-	 * is in error if it is a `required` input.
+	 * Track if the input has been interacted with, used to validate if
+	 * a `required` field is in error.
 	 */
 	@State() private hasBeenInteractedWith: boolean = false;
 
