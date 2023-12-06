@@ -1,28 +1,119 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { getLanguage, isEnglish } from 'src/utils/get-language.utils';
 import { handleBackButtonNavigationOnClick } from 'src/utils/routing.utils';
 
+interface RadioButtonOption {
+	value: string;
+	label: string;
+	elementId: string;
+	checked: boolean;
+}
+
+interface Translation {
+	contactType: {
+		label: string;
+		options: RadioButtonOption[];
+	};
+	provinceTerritoryOptions: RadioButtonOption[];
+}
+
 @Component({
 	selector: 'app-framethree',
 	templateUrl: './framethree.component.html',
 })
-export class FrameThreeComponent {
+export class FrameThreeComponent implements OnInit {
 	public lang = getLanguage();
-	selectedRadioValue: string = '';
+	public selectedRadioValue: string = '';
+	public radioOptions: Record<string, RadioButtonOption> = {};
 
-	constructor(private translateService: TranslateService, private router: Router) {}
+	constructor(
+		private translateService: TranslateService,
+		private router: Router,
+		private changeDetectorRef: ChangeDetectorRef,
+		private ngZone: NgZone,
+	) {}
 
-	getTranslation() {
+	ngOnInit() {
+		const storedValue = localStorage.getItem('selectedRadioValue');
+
+		if (storedValue) {
+			this.selectedRadioValue = storedValue;
+		}
+	}
+
+	loadRadioOptions() {
+		const storedRadioOptions = localStorage.getItem('radioOptions');
+		this.radioOptions = storedRadioOptions ? JSON.parse(storedRadioOptions) : {};
+	}
+
+	handleRadioChange(event: Event) {
+		const customEvent = event as CustomEvent<any>;
+
+		if (customEvent.detail) {
+			// Update the component's state
+			this.selectedRadioValue = customEvent.detail;
+
+			// Update local storage
+			localStorage.setItem('selectedRadioValue', this.selectedRadioValue);
+		}
+	}
+
+	loadSelectedRadioValue() {
+		// Load the selected radio value from localStorage
+		const storedValue = localStorage.getItem('selectedRadioValue');
+		if (storedValue) {
+			this.selectedRadioValue = storedValue;
+		}
+	}
+
+	generateRadioOptions(): RadioButtonOption[] {
+		const translation: Translation = this.getTranslation();
+		const contactTypeOptions: RadioButtonOption[] = translation?.contactType?.options || [];
+
+		if (!Array.isArray(contactTypeOptions)) {
+			return [];
+		}
+
+		const radioOptions = contactTypeOptions.map((option) => {
+			return {
+				value: option.value,
+				label: option.label,
+				elementId: option.elementId,
+				checked: this.selectedRadioValue === option.value,
+			};
+		});
+
+		return radioOptions;
+	}
+
+	saveRadioOptions() {
+		localStorage.setItem('radioOptions', JSON.stringify(this.radioOptions));
+
+		// Manually trigger change detection after saving radio options
+		this.changeDetectorRef.detectChanges();
+	}
+
+	getSelectedRadioValue() {
+		// Get the selected radio value based on the saved options
+		const selectedOption = Object.values(this.radioOptions).find((option) => option.checked);
+		return selectedOption?.value || '';
+	}
+
+	getProvinceTerritoryOptions() {
+		return this.translateService.instant('form.questions.contactInformation.provinceTerritory.options');
+	}
+
+	getTranslation(): Translation {
 		const contactTypeOptions = this.translateService.instant('form.questions.contactInformation.contactType.options');
-		const provinceTerritoryOptions = this.translateService.instant(
-			'form.questions.contactInformation.provinceTerritory.options',
-		);
 
 		return {
-			contactTypeOptions,
-			provinceTerritoryOptions,
+			contactType: {
+				label: this.translateService.instant('form.questions.contactInformation.contactType.label'),
+				options: contactTypeOptions,
+			},
+			provinceTerritoryOptions: this.getProvinceTerritoryOptions(),
 		};
 	}
 
@@ -30,7 +121,6 @@ export class FrameThreeComponent {
 		return isEnglish() ? '/describe-role' : '/fr/decrivez-role';
 	}
 
-	// Function to handle the custom click event for the back button
 	handleBackNavigation() {
 		handleBackButtonNavigationOnClick(
 			{
@@ -39,42 +129,5 @@ export class FrameThreeComponent {
 			},
 			this.router,
 		);
-	}
-
-	ngOnInit() {
-		console.log('ngOnInit called');
-
-		const storedValue = localStorage.getItem('selectedRadioValue');
-
-		if (storedValue) {
-			console.log('Stored value found:', storedValue);
-			this.selectedRadioValue = storedValue;
-		} else {
-			console.log('No stored value found');
-		}
-	}
-
-	handleSelectedRadioChange(event: Event) {
-		const customEvent = event as CustomEvent<any>;
-
-		if (customEvent.detail) {
-			console.log('Selected value changed:', customEvent.detail);
-
-			// Handle the selected radio button value here
-
-			// Update the component's state
-			this.selectedRadioValue = customEvent.detail;
-
-			// Update local storage
-			localStorage.setItem('selectedRadioValue', customEvent.detail);
-		}
-	}
-
-	private loadSelectedRadioValue() {
-		// Load the selected radio value from localStorage
-		const storedValue = localStorage.getItem('selectedRadioValue');
-		if (storedValue) {
-			this.selectedRadioValue = storedValue;
-		}
 	}
 }

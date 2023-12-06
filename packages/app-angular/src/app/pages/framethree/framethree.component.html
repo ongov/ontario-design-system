@@ -12,9 +12,9 @@
 			caption="{{ 'form.questions.contactInformation.contactType.label' | translate }}"
 			name="contact-type"
 			required
-			[options]="getTranslation().contactTypeOptions"
 			language="{{ lang }}"
-			(selectedRadioChange)="handleSelectedRadioChange($event)"
+			[options]="generateRadioOptions()"
+			(selectedRadioChange)="handleRadioChange($event)"
 		>
 		</ontario-radio-buttons>
 		<ontario-dropdown-list
