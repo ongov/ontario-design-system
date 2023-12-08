@@ -1,3 +1,27 @@
+# 3.1.0-alpha.1 (2023-12-08)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** emit change events from input components 3b2302c
+- **@ontario-digital-service/ontario-design-system-component-library:** added config for header link api 28cb9b6
+- **@ontario-digital-service/ontario-design-system-component-library:** added hint-expander container bb97823
+- **@ontario-digital-service/ontario-design-system-component-library:** empty hint-expander container 10f739b
+- **@ontario-digital-service/ontario-design-system-component-library:** update typo 1dda24b
+- **@ontario-digital-service/ontario-design-system-global-styles:** add design tokens in global styles distribution package ebae02d
+- **@ontario-digital-service/ontario-design-system-global-styles:** review comments changes fa4bd86
+- **ontario-header:** add information about serviceOntario header type to readme 47dc2b8
+- **ontario-hint-expender:** add type information to emitted toggleExpanderEvent be56364
+- **ontario-hint-text:** clean up HTML example formatting a63f718
+- **ontario-input:** clean up HTML examples' formatting 794eb67
+- **ontario-step-indicator:** add documentation and usage examples d48577c
+- **ontario-table:** update custom prop type docs with defaults 3da7134
+- **ontario-textarea:** add default column to custom prop type tables e9b4e24
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library, @ontario-digital-service/ontario-design-system-global-styles:** angular poc environment ddc6fe8
+- **@ontario-digital-service/ontario-design-system-component-library:** fetch dynamic french menu for header 01b1713
+
 # 3.0.0 (2023-09-27)
 
 ### Bug Fixes
