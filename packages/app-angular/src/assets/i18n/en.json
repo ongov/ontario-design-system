@@ -1,0 +1,180 @@
+{
+	"routes": {
+		"/get-started": "/fr/demarrer",
+		"/create-account": "/fr/creer-compte",
+		"/contact-information": "/fr/coordonnees",
+		"/describe-role": "/fr/decrivez-role",
+		"/additional-details": "/fr/details-supplementaires",
+		"/account-creation": "/fr/creation-de-compte",
+		"/fr/demarrer": "/get-started",
+		"/fr/creer-compte": "/create-account",
+		"/fr/coordonnees": "/contact-information",
+		"/fr/decrivez-role": "/describe-role",
+		"/fr/details-supplementaires": "/additional-details",
+		"/fr/creation-de-compte": "/account-creation"
+	},
+	"header": {
+		"appName": "Angular proof of concept",
+		"menuItems": {
+			"home": "Home",
+			"register": "Register"
+		}
+	},
+	"footer": {
+		"contactUs": {
+			"text": "Contact us",
+			"link": "https://www.ontario.ca/feedback/contact-us"
+		}
+	},
+	"homepage": {
+		"heading": "How to start an Angular POC with the Design System",
+		"leadStatement": "Create an account in 4 simple steps to help start your Angular proof of concept applications.",
+		"main": {
+			"heading": "Getting started",
+			"description": "Starting an Angular POC can be exciting, but it can be hard to know where to begin. Answer a few simple questions and we will create a custom account for you to begin your Angular application journey.",
+			"callout": {
+				"heading": "Last updated: May 1, 2023",
+				"content": "Version 1.1"
+			},
+			"button": {
+				"label": "Get started"
+			}
+		}
+	},
+	"form": {
+		"questions": {
+			"createAccount": {
+				"legend": "Create an account",
+				"emailLabel": "Email address",
+				"PINLabel": "Create your PIN",
+				"PINHintText": "Enter 6 to 12 numbers.",
+				"PINHintExpanderLabel": "Tips for creating a strong PIN",
+				"PINHintExpanderContent": "<p>Follow these tips to create a strong PIN:</p><ul><li><b>Make your PIN unique</b>  (for example, do not re-use a number you use for your bank card)</li><li><b>Do not use easy-to-guess personal numbers such as dates</b>  (for example, a birthday) or a phone number</li><li><b>Do not use numbers in an obvious sequence</b>  (such as 123456 or 246810)</li><li><b>Do not repeat a sequence of numbers</b>  (such as 555666 or 121212)</li></ul>"
+			},
+			"contactInformation": {
+				"legend": "Contact information",
+				"contactType": {
+					"label": "How would you like to be contacted?",
+					"options": [
+						{
+							"value": "email",
+							"label": "Email",
+							"elementId": "email"
+						},
+						{
+							"value": "text",
+							"label": "SMS/text",
+							"elementId": "text"
+						},
+						{
+							"value": "mail",
+							"label": "Standard mail",
+							"elementId": "mail"
+						}
+					]
+				},
+				"provinceTerritory": {
+					"label": "Province/Territory",
+					"options": [
+						{
+							"value": "alberta",
+							"label": "Alberta"
+						},
+						{
+							"value": "british-columbia",
+							"label": "British Columbia"
+						},
+						{
+							"value": "manitoba",
+							"label": "Manitoba"
+						},
+						{
+							"value": "new-brunswick",
+							"label": "New Brunswick"
+						},
+						{
+							"value": "newfoundland-and-labrador",
+							"label": "Newfoundland and Labrador"
+						},
+						{
+							"value": "nova-scotia",
+							"label": "Nova Scotia"
+						},
+						{
+							"value": "ontario",
+							"label": "Ontario",
+							"selected": true
+						},
+						{
+							"value": "prince-edward-island",
+							"label": "Prince Edward Island"
+						},
+						{
+							"value": "quebec",
+							"label": "Quebec"
+						},
+						{
+							"value": "saskatchewan",
+							"label": "Saskatchewan"
+						},
+						{
+							"value": "northwest-territories",
+							"label": "Northwest Territories"
+						},
+						{
+							"value": "nunavut",
+							"label": "Nunavut"
+						},
+						{
+							"value": "yukon",
+							"label": "Yukon"
+						}
+					]
+				}
+			},
+			"describeRole": {
+				"label": "Describe your role",
+				"hint": "Select all the options that are relevant for you.",
+				"options": [
+					{
+						"value": "development",
+						"label": "I do development",
+						"elementId": "development"
+					},
+					{
+						"value": "design",
+						"label": "I do design",
+						"elementId": "design"
+					},
+					{
+						"value": "html-css",
+						"label": "I work with HTML/CSS",
+						"elementId": "html-css"
+					},
+					{
+						"value": "other",
+						"label": "Other",
+						"elementId": "other"
+					}
+				]
+			},
+			"additionalDetails": {
+				"label": "Enter additional details",
+				"hint": "Do not include personal or financial information like your Social Insurance number or credit card details."
+			}
+		},
+		"buttons": {
+			"next": "Next",
+			"createAccount": "Create account",
+			"createAnotherAccount": "Create another account"
+		}
+	},
+	"successPage": {
+		"callout": {
+			"heading": "Your account creation was succesful!",
+			"content": "<p>Account reference number: <b>840-221.</b></p><p>Please look out for an email confirmation with your account username.</p>"
+		},
+		"returnLine": "You can now return to the",
+		"returnLineLink": "log in page"
+	}
+}

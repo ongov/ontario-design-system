@@ -2,8 +2,8 @@
 	"name": "angular-component-library",
 	"version": "0.0.1",
 	"peerDependencies": {
-		"@angular/common": "^15.2.0",
-		"@angular/core": "^15.2.0",
+		"@angular/common": "^15.2.9",
+		"@angular/core": "^15.2.9",
 		"@ontario-digital-service/ontario-design-system-component-library": "^2.3.0-alpha.3"
 	},
 	"dependencies": {

@@ -326,26 +326,29 @@ export class OntarioRadioButtons implements RadioButtons {
 	/**
 	 * Function to handle radio buttons events and the information pertaining to the radio buttons to emit.
 	 */
-	handleEvent = (ev: Event, eventType: EventType) => {
-		const input = ev.target as HTMLInputElement | null;
+	private handleEvent(event: Event, eventType: EventType) {
+		const input = event.target as HTMLInputElement | null;
 
 		if (input) {
 			input.checked = input.checked ?? '';
 		}
 
 		handleInputEvent(
-			ev,
+			event,
 			eventType,
 			input,
 			this.radioOnChange,
 			this.radioOnFocus,
 			this.radioOnBlur,
+			undefined,
 			'radio',
 			this.customOnChange,
 			this.customOnFocus,
 			this.customOnBlur,
+			undefined,
+			this.element,
 		);
-	};
+	}
 
 	/**
 	 * If a `hintText` prop is passed, the id generated from it will be set to the internal `hintTextId` state to match with the fieldset `aria-describedBy` attribute.
@@ -396,26 +399,28 @@ export class OntarioRadioButtons implements RadioButtons {
 										this.captionState.getHintExpanderAccessibilityText(radioOption.label, true)}
 								</label>
 
-								<div class="ontario-radios__hint-expander">
-									{radioOption.hintExpander && (
+								{radioOption.hintExpander && (
+									<div class="ontario-radios__hint-expander">
 										<ontario-hint-expander
 											hint={radioOption.hintExpander.hint}
 											content={radioOption.hintExpander.content}
 											hintContentType={radioOption.hintExpander.hintContentType}
 											input-exists
 										></ontario-hint-expander>
-									)}
-								</div>
+									</div>
+								)}
 							</div>
 						))}
 
 						{this.internalHintExpander && (
-							<ontario-hint-expander
-								hint={this.internalHintExpander.hint}
-								content={this.internalHintExpander.content}
-								hintContentType={this.internalHintExpander.hintContentType}
-								input-exists
-							></ontario-hint-expander>
+							<div class="ontario-radios__hint-expander">
+								<ontario-hint-expander
+									hint={this.internalHintExpander.hint}
+									content={this.internalHintExpander.content}
+									hintContentType={this.internalHintExpander.hintContentType}
+									input-exists
+								></ontario-hint-expander>
+							</div>
 						)}
 					</div>
 				</fieldset>

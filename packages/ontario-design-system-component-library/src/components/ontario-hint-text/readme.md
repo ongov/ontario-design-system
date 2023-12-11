@@ -23,8 +23,8 @@ Example of a hint text that includes the `hint` property, which will override th
 ```html
 <ontario-hint-text hint="This hint will override the hint text provided as element content" element-id="hint-293849">
 	This is a hint
-	<ontario-hint-text></ontario-hint-text
-></ontario-hint-text>
+	<ontario-hint-text></ontario-hint-text>
+</ontario-hint-text>
 ```
 
 <!-- Auto Generated Below -->

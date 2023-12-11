@@ -1,11 +1,25 @@
 <div>
-	<h1 class="ontario-show-for-sr">Your account creation was successful</h1>
-	<ontario-page-alert type="success" heading="Your account creation was successful">
-		<p>Account reference number: <b>840 221</b></p>
-		<p>Please look out for an email confirmation with your account username</p>
-	</ontario-page-alert>
+	<!-- Loading indicator active -->
+	<div *ngIf="isLoading">
+		<ontario-loading-indicator [isLoading]="isLoading" language="{{ lang }}"></ontario-loading-indicator>
+	</div>
 
-	<p><a href="#">Sign up for email reminders</a> and we’ll notify you 60 and 30 days before your licence expires.</p>
+	<!-- Loading indicator inactive -->
+	<div *ngIf="!isLoading">
+		<h1 class="ontario-show-for-sr" aria-live="polite" role="alert">{{ 'successPage.callout.heading' | translate }}</h1>
+		<ontario-page-alert type="success" heading="{{ 'successPage.callout.heading' | translate }}">
+			<span innerHTML="{{ 'successPage.callout.content' | translate }}"></span>
+		</ontario-page-alert>
+		<p>
+			{{ 'successPage.returnLine' | translate }}
+			<a [routerLink]="getRoute().login">{{ 'successPage.returnLineLink' | translate }}</a
+			>.
+		</p>
 
-	<ontario-button type="secondary" label="Create another account" routerLink="/frametwo"> </ontario-button>
+		<ontario-button
+			type="secondary"
+			label="{{ 'form.buttons.createAnotherAccount' | translate }}"
+			[routerLink]="getRoute().createAccount"
+		></ontario-button>
+	</div>
 </div>

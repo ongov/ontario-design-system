@@ -18,6 +18,8 @@ Example of a bare-bones textarea component where the user is passing the `name` 
 <ontario-textarea name="comments" element-id="form-comments" />
 ```
 
+To mark a textarea as required, add the `required` attribute to the component.
+
 ```html
 <ontario-textarea name="comments" element-id="form-comments" required="true" onBlur="exampleFunction()" />
 ```
@@ -32,28 +34,28 @@ The `caption` property is used to render the legend for the ontario-textarea. It
 caption='{ "captionText": "Textarea label", "captionType": "default" }'
 ```
 
-| **Property name** | **Type**                           | **Description**                                                                                                                                      |
-| ----------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `captionText`     | `string`                           | Text to display as the radio textarea question                                                                                                       |
-| `captionType`     | `"default" \| "large"\| "heading"` | The type of legend to display for the textarea question. This is optional, and if no information is provided, it will default to the `default` type. |
+| Property name | Type                               | Default   | Description                                                                                                                                          |
+| ------------- | ---------------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `captionText` | `string`                           |           | Text to display as the radio textarea question                                                                                                       |
+| `captionType` | `"default" \| "large"\| "heading"` | `default` | The type of legend to display for the textarea question. This is optional, and if no information is provided, it will default to the `default` type. |
 
 ### hintExpander
 
 The `hintExpander` property is used to include the Hint Expander component underneath the input label. This is passed in as an object with key-value pairs.
 
+<!-- prettier-ignore -->
 ```html
-hintExpander='{ "hint": "This is the hint expander title", "content": "This is the hint expander content - it is only
-visible when the hint expander title (hint) is toggled" }'
+hintExpander='{ "hint": "This is the hint expander title", "content": "This is the hint expander content - it is only visible when the hint expander title (hint) is toggled" }'
 ```
 
-| **Property name** | **Type** | **Description**                                                                                                 |
-| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------- |
-| `hint`            | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content |
-| `content`         | `string` | Text to display as the content of the hint expander                                                             |
+| Property name | Type     | Description                                                                                                     |
+| ------------- | -------- | --------------------------------------------------------------------------------------------------------------- |
+| `hint`        | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content |
+| `content`     | `string` | Text to display as the content of the hint expander                                                             |
 
 ## Accessibility
 
-- An `id` attribute is necessary to allow the textarea to be associated with a label element
+- An `element-id` attribute is necessary to allow the textarea to be associated with a label element
 - A `name` attribute needs to be set to be submitted to the server when the form is submitted.
 
 <!-- Auto Generated Below -->
@@ -66,6 +68,7 @@ visible when the hint expander title (hint) is toggled" }'
 | `customOnBlur`   | --              | Used to add a custom function to the textarea onBlur event.                                                                                                                                                                                    | `((event: Event) => void) \| undefined` | `undefined` |
 | `customOnChange` | --              | Used to add a custom function to the textarea onChange event.                                                                                                                                                                                  | `((event: Event) => void) \| undefined` | `undefined` |
 | `customOnFocus`  | --              | Used to add a custom function to the textarea onFocus event.                                                                                                                                                                                   | `((event: Event) => void) \| undefined` | `undefined` |
+| `customOnInput`  | --              | Used to add a custom function to the textarea onInput event.                                                                                                                                                                                   | `((event: Event) => void) \| undefined` | `undefined` |
 | `elementId`      | `element-id`    | The unique identifier of the textarea. This is optional - if no ID is passed, one will be generated.                                                                                                                                           | `string \| undefined`                   | `undefined` |
 | `hintExpander`   | `hint-expander` | Used to include the ontario-hint-expander component for the textarea component. This is passed in as an object with key-value pairs. This is optional.                                                                                         | `HintExpander \| string \| undefined`   | `undefined` |
 | `hintText`       | `hint-text`     | Used to include the ontario-hint-text component for the textarea. This is optional.                                                                                                                                                            | `Hint \| string \| undefined`           | `undefined` |
@@ -76,11 +79,12 @@ visible when the hint expander title (hint) is toggled" }'
 
 ## Events
 
-| Event           | Description                                                                         | Type                                                                      |
-| --------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `inputOnBlur`   | Emitted when a keyboard input event occurs when an input has lost focus.            | `CustomEvent<InputChangeEvent & { focused: boolean; }>`                   |
-| `inputOnChange` | Emitted when a keyboard input or mouse event occurs when an input has been changed. | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>` |
-| `inputOnFocus`  | Emitted when a keyboard input event occurs when an input has gained focus.          | `CustomEvent<InputChangeEvent & { focused: boolean; }>`                   |
+| Event           | Description                                                                         | Type                                                                        |
+| --------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `inputOnBlur`   | Emitted when a keyboard input event occurs when an input has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
+| `inputOnChange` | Emitted when a keyboard input or mouse event occurs when an input has been changed. | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>`   |
+| `inputOnFocus`  | Emitted when a keyboard input event occurs when an input has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
+| `inputOnInput`  | Emitted when a input event occurs when an input has been changed.                   | `CustomEvent<InputInteractionEvent & { inputType?: string \| undefined; }>` |
 
 ## Dependencies
 

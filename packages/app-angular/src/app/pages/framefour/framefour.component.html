@@ -1,36 +1,27 @@
-<div>
+<ontario-step-indicator
+	current-step="3"
+	number-of-steps="4"
+	show-back-button="true"
+	[customOnClick]="handleBackNavigation.bind(this)"
+	language="{{ lang }}"
+></ontario-step-indicator>
+
+<div class="ontario-margin-top-40-!">
 	<ontario-checkboxes
-		caption='{
-      "captionText": "Describe your role",
-      "captionType": "heading"
-    }'
+		[caption]="{
+			captionText: getTranslation().describeRoleLabel,
+			captionType: 'heading'
+		}"
 		name="describe-role"
-		hint-text="Select all the options that are relevant to you."
-		options='[
-      {
-        "value": "development",
-        "label": "I do development",
-        "elementId": "development"
-      },
-      {
-        "value": "design",
-        "label": "I do design",
-        "elementId": "design"
-      },
-      {
-        "value": "html-css",
-        "label": "I work with HTML/CSS",
-        "elementId": "html-css"
-      },
-      {
-        "value": "other",
-        "label": "Other",
-        "elementId": "other"
-      }
-    ]'
+		hintText="{{ 'form.questions.describeRole.hint' | translate }}"
+		[options]="getTranslation().describeRoleOptions"
+		language="{{ lang }}"
 	>
 	</ontario-checkboxes>
 
-	<ontario-button type="primary" label="Next" aria-label-text="Continue to next question" routerLink="/framefive">
-	</ontario-button>
+	<ontario-button
+		type="primary"
+		label="{{ 'form.buttons.next' | translate }}"
+		[routerLink]="getRoute()"
+	></ontario-button>
 </div>

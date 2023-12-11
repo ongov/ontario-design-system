@@ -19,8 +19,9 @@ import { Hint, HintContentType } from './utils/common/common.interface';
 import { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
 import { CheckboxOption } from './components/ontario-checkbox/checkbox-option.interface';
 import {
-	InputChangeEvent,
 	InputFocusBlurEvent,
+	InputInputEvent,
+	InputInteractionEvent,
 	RadioAndCheckboxChangeEvent,
 } from './utils/events/event-handler.interface';
 import {
@@ -61,8 +62,9 @@ export { Hint, HintContentType } from './utils/common/common.interface';
 export { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
 export { CheckboxOption } from './components/ontario-checkbox/checkbox-option.interface';
 export {
-	InputChangeEvent,
 	InputFocusBlurEvent,
+	InputInputEvent,
+	InputInteractionEvent,
 	RadioAndCheckboxChangeEvent,
 } from './utils/events/event-handler.interface';
 export {
@@ -1556,6 +1558,10 @@ export namespace Components {
 		 */
 		customOnFocus?: (event: globalThis.Event) => void;
 		/**
+		 * Used to add a custom function to the textarea onInput  event.
+		 */
+		customOnInput?: (event: globalThis.Event) => void;
+		/**
 		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
 		 */
 		elementId?: string;
@@ -1776,6 +1782,10 @@ export namespace Components {
 		 * Used to add a custom function to the textarea onFocus event.
 		 */
 		customOnFocus?: (event: globalThis.Event) => void;
+		/**
+		 * Used to add a custom function to the textarea onInput event.
+		 */
+		customOnInput?: (event: globalThis.Event) => void;
 		/**
 		 * The unique identifier of the textarea. This is optional - if no ID is passed, one will be generated.
 		 */
@@ -2945,7 +2955,7 @@ declare namespace LocalJSX {
 		/**
 		 * Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed.
 		 */
-		onDropdownOnChange?: (event: OntarioDropdownListCustomEvent<InputChangeEvent>) => void;
+		onDropdownOnChange?: (event: OntarioDropdownListCustomEvent<InputInteractionEvent>) => void;
 		/**
 		 * Emitted when a keyboard input event occurs when a dropdown list has gained focus.
 		 */
@@ -3054,7 +3064,7 @@ declare namespace LocalJSX {
 		/**
 		 * Emitted when a keyboard input or mouse event occurs.
 		 */
-		onToggleExpanderEvent?: (event: OntarioHintExpanderCustomEvent<any>) => void;
+		onToggleExpanderEvent?: (event: OntarioHintExpanderCustomEvent<MouseEvent | KeyboardEvent>) => void;
 	}
 	interface OntarioHintText {
 		/**
@@ -4162,6 +4172,10 @@ declare namespace LocalJSX {
 		 */
 		customOnFocus?: (event: globalThis.Event) => void;
 		/**
+		 * Used to add a custom function to the textarea onInput  event.
+		 */
+		customOnInput?: (event: globalThis.Event) => void;
+		/**
 		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
 		 */
 		elementId?: string;
@@ -4201,11 +4215,15 @@ declare namespace LocalJSX {
 		/**
 		 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 		 */
-		onInputOnChange?: (event: OntarioInputCustomEvent<InputChangeEvent>) => void;
+		onInputOnChange?: (event: OntarioInputCustomEvent<InputInteractionEvent>) => void;
 		/**
 		 * Emitted when a keyboard input event occurs when an input has gained focus.
 		 */
 		onInputOnFocus?: (event: OntarioInputCustomEvent<InputFocusBlurEvent>) => void;
+		/**
+		 * Emitted when a input  occurs when an input has been changed.
+		 */
+		onInputOnInput?: (event: OntarioInputCustomEvent<InputInputEvent>) => void;
 		/**
 		 * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
 		 */
@@ -4417,6 +4435,10 @@ declare namespace LocalJSX {
 		 */
 		customOnFocus?: (event: globalThis.Event) => void;
 		/**
+		 * Used to add a custom function to the textarea onInput event.
+		 */
+		customOnInput?: (event: globalThis.Event) => void;
+		/**
 		 * The unique identifier of the textarea. This is optional - if no ID is passed, one will be generated.
 		 */
 		elementId?: string;
@@ -4444,11 +4466,15 @@ declare namespace LocalJSX {
 		/**
 		 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 		 */
-		onInputOnChange?: (event: OntarioTextareaCustomEvent<InputChangeEvent>) => void;
+		onInputOnChange?: (event: OntarioTextareaCustomEvent<InputInteractionEvent>) => void;
 		/**
 		 * Emitted when a keyboard input event occurs when an input has gained focus.
 		 */
 		onInputOnFocus?: (event: OntarioTextareaCustomEvent<InputFocusBlurEvent>) => void;
+		/**
+		 * Emitted when a input event occurs when an input has been changed.
+		 */
+		onInputOnInput?: (event: OntarioTextareaCustomEvent<InputInputEvent>) => void;
 		/**
 		 * This is used to determine whether the textarea is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
 		 */
