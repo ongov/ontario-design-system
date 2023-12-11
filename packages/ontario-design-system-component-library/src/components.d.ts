@@ -45,6 +45,7 @@ import {
 	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 import { IconColour, IconSize } from './components/ontario-icon/icon.types';
+import { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 import { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
@@ -88,6 +89,7 @@ export {
 	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 export { IconColour, IconSize } from './components/ontario-icon/icon.types';
+export { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
 export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 export { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 export { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
@@ -1546,25 +1548,33 @@ export namespace Components {
 		 */
 		caption: Caption | string;
 		/**
-		 * Used to add a custom function to the textarea onBlur event.
+		 * Used to add a custom function to the input onBlur event.
 		 */
 		customOnBlur?: (event: globalThis.Event) => void;
 		/**
-		 * Used to add a custom function to the textarea onChange event.
+		 * Used to add a custom function to the input onChange event.
 		 */
 		customOnChange?: (event: globalThis.Event) => void;
 		/**
-		 * Used to add a custom function to the textarea onFocus event.
+		 * Used to add a custom function to the input onFocus event.
 		 */
 		customOnFocus?: (event: globalThis.Event) => void;
 		/**
-		 * Used to add a custom function to the textarea onInput  event.
+		 * Used to add a custom function to the input onInput event.
 		 */
 		customOnInput?: (event: globalThis.Event) => void;
 		/**
 		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
 		 */
 		elementId?: string;
+		/**
+		 * Enable live validation on the input.  Custom live validation can be performed using an `inputValidator` validation function.  It will also validate the `required` state if no errors are returned from the `inputValidator`.  Please set a `requiredValidationMessage` to report concisely to the end user what they are required to set.
+		 */
+		enableLiveValidation: boolean;
+		/**
+		 * Set this to display an
+		 */
+		errorMessage?: string;
 		/**
 		 * Used to include the ontario-hint-expander component for the input component. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",   }   hint-expander='{    "hint": "Hint expander",    "content": "This is the content"   }'   required="true" > </ontario-input>
@@ -1574,6 +1584,10 @@ export namespace Components {
 		 * Used to include the ontario-hint-text component for the input. This is optional.
 		 */
 		hintText?: string | Hint;
+		/**
+		 * Validate the validity of the input value `onBlur`.  This `async` function should return a result to trigger an error message.  Returning `undefined` or `null` will clear it.
+		 */
+		inputValidator?: (value?: string) => Promise<{ errorMessage?: string } | null | undefined>;
 		/**
 		 * The width of the input field. If no value is assigned, it will present as the `default` input width.
 		 */
@@ -1595,9 +1609,14 @@ export namespace Components {
 		 */
 		name: string;
 		/**
-		 * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+		 * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  _Please add a validation messaging using `requiredValidationMessage` if setting this property._
+		 * @example <ontario-input 	id="address-line-1" 	caption="Address line 1" 	required 	required-validation-message="Please enter an address, including street number and street name" 	name="address-line-1" 	hint-text="Street and number or P.O. box." ></ontario-input>
 		 */
 		required?: boolean;
+		/**
+		 * Custom error message to display if a required field is not filled out.  _Please add a custom message when setting an input as required_.
+		 */
+		requiredValidationMessage: string;
 		/**
 		 * The input type value.  If no `type` is provided, it will default to 'text'.
 		 */
@@ -4160,25 +4179,33 @@ declare namespace LocalJSX {
 		 */
 		caption?: Caption | string;
 		/**
-		 * Used to add a custom function to the textarea onBlur event.
+		 * Used to add a custom function to the input onBlur event.
 		 */
 		customOnBlur?: (event: globalThis.Event) => void;
 		/**
-		 * Used to add a custom function to the textarea onChange event.
+		 * Used to add a custom function to the input onChange event.
 		 */
 		customOnChange?: (event: globalThis.Event) => void;
 		/**
-		 * Used to add a custom function to the textarea onFocus event.
+		 * Used to add a custom function to the input onFocus event.
 		 */
 		customOnFocus?: (event: globalThis.Event) => void;
 		/**
-		 * Used to add a custom function to the textarea onInput  event.
+		 * Used to add a custom function to the input onInput event.
 		 */
 		customOnInput?: (event: globalThis.Event) => void;
 		/**
 		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
 		 */
 		elementId?: string;
+		/**
+		 * Enable live validation on the input.  Custom live validation can be performed using an `inputValidator` validation function.  It will also validate the `required` state if no errors are returned from the `inputValidator`.  Please set a `requiredValidationMessage` to report concisely to the end user what they are required to set.
+		 */
+		enableLiveValidation?: boolean;
+		/**
+		 * Set this to display an
+		 */
+		errorMessage?: string;
 		/**
 		 * Used to include the ontario-hint-expander component for the input component. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",   }   hint-expander='{    "hint": "Hint expander",    "content": "This is the content"   }'   required="true" > </ontario-input>
@@ -4188,6 +4215,10 @@ declare namespace LocalJSX {
 		 * Used to include the ontario-hint-text component for the input. This is optional.
 		 */
 		hintText?: string | Hint;
+		/**
+		 * Validate the validity of the input value `onBlur`.  This `async` function should return a result to trigger an error message.  Returning `undefined` or `null` will clear it.
+		 */
+		inputValidator?: (value?: string) => Promise<{ errorMessage?: string } | null | undefined>;
 		/**
 		 * The width of the input field. If no value is assigned, it will present as the `default` input width.
 		 */
@@ -4209,6 +4240,10 @@ declare namespace LocalJSX {
 		 */
 		name?: string;
 		/**
+		 * Emitted when an error message is reported to the component.
+		 */
+		onInputErrorOccurred?: (event: OntarioInputCustomEvent<{ inputId: string; errorMessage: string }>) => void;
+		/**
 		 * Emitted when a keyboard input event occurs when an input has lost focus.
 		 */
 		onInputOnBlur?: (event: OntarioInputCustomEvent<InputFocusBlurEvent>) => void;
@@ -4225,9 +4260,14 @@ declare namespace LocalJSX {
 		 */
 		onInputOnInput?: (event: OntarioInputCustomEvent<InputInputEvent>) => void;
 		/**
-		 * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+		 * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  _Please add a validation messaging using `requiredValidationMessage` if setting this property._
+		 * @example <ontario-input 	id="address-line-1" 	caption="Address line 1" 	required 	required-validation-message="Please enter an address, including street number and street name" 	name="address-line-1" 	hint-text="Street and number or P.O. box." ></ontario-input>
 		 */
 		required?: boolean;
+		/**
+		 * Custom error message to display if a required field is not filled out.  _Please add a custom message when setting an input as required_.
+		 */
+		requiredValidationMessage?: string;
 		/**
 		 * The input type value.  If no `type` is provided, it will default to 'text'.
 		 */
@@ -4246,9 +4286,7 @@ declare namespace LocalJSX {
 		/**
 		 * An event that emits to other components that the language toggle button has been toggled.
 		 */
-		onHeaderLanguageToggled?: (
-			event: OntarioLanguageToggleCustomEvent<{ currentLanguage: string; toggledLanguage: string }>,
-		) => void;
+		onHeaderLanguageToggled?: (event: OntarioLanguageToggleCustomEvent<HeaderLanguageToggleEventDetails>) => void;
 		/**
 		 * An event to set the Document's HTML lang property, and emit the toggled language to other components.
 		 */
