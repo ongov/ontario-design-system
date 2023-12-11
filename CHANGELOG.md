@@ -1,3 +1,13 @@
+# 3.2.0-alpha.1 (2023-12-11)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library:** refactor error messaging SASS to make it reusable 62e3caf
+
+### Features
+
+- **ontario-input:** add error messaging and live validation to input e1641fa
+
 # 3.1.0 (2023-12-11)
 
 ### Bug Fixes
