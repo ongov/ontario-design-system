@@ -145,6 +145,12 @@
 			"fr": "Fermer la barre de recherche"
 		}
 	},
+	"input": {
+		"requiredFieldError": {
+			"en": "This is a required field.",
+			"fr": "Ce champ est obligatoire."
+		}
+	},
 	"dateInput": {
 		"caption": {
 			"en": "Exact date",
