@@ -294,7 +294,7 @@ export class OntarioDropdownList implements Dropdown {
 			}
 		}
 
-		// Check selected status of options
+		// Check selected status of options and set the selectedValue
 		this.validateSelectedOption(this.internalOptions);
 	}
 
@@ -358,9 +358,15 @@ export class OntarioDropdownList implements Dropdown {
 		const select = event.target as HTMLSelectElement | null;
 
 		if (select) {
-			if (eventType === EventType.Change) {
+			if (eventType === EventType.Change && select.value) {
 				this.selectedValue = select.value;
-				// Remove local storage logic from here
+				console.log('coming from component', this.selectedValue);
+
+				// Emit the change event with the selected value
+				this.dropdownOnChange.emit({
+					value: this.selectedValue,
+					// You can include additional data in the event payload if needed
+				});
 			}
 
 			handleInputEvent(

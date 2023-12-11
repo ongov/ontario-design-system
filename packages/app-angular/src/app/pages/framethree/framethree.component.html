@@ -21,10 +21,10 @@
 			name="province-territory"
 			caption="{{ 'form.questions.contactInformation.provinceTerritory.label' | translate }}"
 			required
-			[options]="getTranslation().provinceTerritoryOptions"
+			[options]="generateDropdownOptions()"
 			language="{{ lang }}"
-		>
-		</ontario-dropdown-list>
+			(change)="handleDropdownChange($event)"
+		></ontario-dropdown-list>
 	</ontario-fieldset>
 </div>
 
