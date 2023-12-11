@@ -31,3 +31,6 @@ junit.xml
 # Gernerated Documentation
 docs/
 ontario-design-system-web-components-documentation-*
+
+# Component Library Ignored Items
+packages/ontario-design-system-component-library/src/config.json
