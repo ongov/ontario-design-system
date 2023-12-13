@@ -191,6 +191,13 @@ export class OntarioRadioButtons implements RadioButtons {
 	 */
 	@State() selectedValue: string;
 
+	/**
+	 * EventEmitter for changes in the selected radio button.
+	 * Emits a string representing the identifier or value of the newly selected radio button.
+	 *
+	 * This event is triggered when the selected radio button within the component changes.
+	 * The emitted string corresponds to the identifier or value of the newly selected radio button.
+	 */
 	@Event({ eventName: 'selectedRadioChange' }) selectedRadioChange: EventEmitter<string>;
 
 	/**
@@ -400,7 +407,7 @@ export class OntarioRadioButtons implements RadioButtons {
 									type="radio"
 									value={radioOption.value}
 									required={!!this.required}
-									checked={!!radioOption.checked} // Update this line
+									checked={!!radioOption.checked}
 									onChange={(e) => this.handleEvent(e, EventType.Change)}
 									onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 									onFocus={(e) => this.handleEvent(e, EventType.Focus)}

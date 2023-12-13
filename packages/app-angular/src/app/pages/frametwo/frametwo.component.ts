@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { getLanguage, isEnglish } from 'src/utils/get-language.utils';
+import { StorageUtilsService } from '../../services/storage-utils.services'; // Update the path
+import { isEnglish, getLanguage } from 'src/utils/get-language.utils';
 import { TemporaryStorageService } from '../../services/temporary-storage.services';
 
 interface NewAccountFormData {
@@ -16,7 +17,7 @@ export class FrameTwoComponent implements OnInit {
 	public lang = getLanguage();
 	public formData: NewAccountFormData = { email: '', pin: '' };
 
-	constructor(private translateService: TranslateService, private temporaryStorageService: TemporaryStorageService) {}
+	constructor(private translateService: TranslateService, private storageUtilsService: StorageUtilsService) {}
 
 	getTranslation() {
 		const PINHintExpanderLabel = this.translateService.instant('form.questions.createAccount.PINHintExpanderLabel');
@@ -33,14 +34,11 @@ export class FrameTwoComponent implements OnInit {
 	}
 
 	public async restoreFromTemporaryStorage(): Promise<void> {
-		const cachedFormData = await this.temporaryStorageService.get<NewAccountFormData>('registrationData');
-		if (cachedFormData) {
-			Object.assign(this.formData, cachedFormData);
-		}
+		await this.storageUtilsService.restoreFromTemporaryStorage(this.formData);
 	}
 
 	public saveToTemporaryStorage(): void {
-		this.temporaryStorageService.set('registrationData', this.formData);
+		this.storageUtilsService.saveToTemporaryStorage(this.formData);
 	}
 
 	ngOnInit(): void {

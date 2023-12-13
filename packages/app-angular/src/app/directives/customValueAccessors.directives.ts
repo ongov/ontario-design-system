@@ -1,5 +1,5 @@
-import { Directive, HostListener, EventEmitter, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Directive, HostListener } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseCustomValueAccessor } from './baseCustomValueAccessor.directives';
 
 @Directive({
@@ -19,7 +19,7 @@ export class OntarioInputValueAccessor extends BaseCustomValueAccessor {
 	}
 
 	@HostListener('onBlur', ['$event.target'])
-	_handleBlurEvent(el: any) {
+	_handleBlurEvent() {
 		this.onTouched();
 	}
 }
@@ -41,13 +41,13 @@ export class OntarioTextareaValueAccessor extends BaseCustomValueAccessor {
 	}
 
 	@HostListener('onBlur', ['$event.target'])
-	_handleBlurEvent(el: any) {
+	_handleBlurEvent() {
 		this.onTouched();
 	}
 }
 
 @Directive({
-	selector: 'ontario-checkboxes', // Adjust the selector as needed
+	selector: 'ontario-checkboxes',
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
@@ -63,7 +63,7 @@ export class OntarioCheckboxesValueAccessor extends BaseCustomValueAccessor {
 	}
 
 	@HostListener('checkboxOnBlur', ['$event'])
-	_handleBlurEvent(event: any) {
+	_handleBlurEvent() {
 		this.onTouched();
 	}
 }
@@ -85,7 +85,7 @@ export class OntarioRadioButtonsValueAccessor extends BaseCustomValueAccessor {
 	}
 
 	@HostListener('radioOnBlur', ['$event'])
-	_handleBlurEvent(event: any) {
+	_handleBlurEvent() {
 		this.onTouched();
 	}
 }

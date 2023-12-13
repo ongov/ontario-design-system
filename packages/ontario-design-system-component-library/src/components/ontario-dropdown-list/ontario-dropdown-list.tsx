@@ -207,11 +207,6 @@ export class OntarioDropdownList implements Dropdown {
 	@State() translations: any = translations;
 
 	/**
-	 * State to store the users selected value
-	 */
-	@State() private selectedValue: string | null = null;
-
-	/**
 	 * Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed.
 	 */
 	@Event() dropdownOnChange: EventEmitter<InputInteractionEvent>;
@@ -355,36 +350,23 @@ export class OntarioDropdownList implements Dropdown {
 	 * Function to handle dropdown list events and the information pertaining to the dropdown list to emit.
 	 */
 	private handleEvent(event: Event, eventType: EventType) {
-		const select = event.target as HTMLSelectElement | null;
+		const input = event.target as HTMLSelectElement | null;
 
-		if (select) {
-			if (eventType === EventType.Change && select.value) {
-				this.selectedValue = select.value;
-				console.log('coming from component', this.selectedValue);
-
-				// Emit the change event with the selected value
-				this.dropdownOnChange.emit({
-					value: this.selectedValue,
-					// You can include additional data in the event payload if needed
-				});
-			}
-
-			handleInputEvent(
-				event,
-				eventType,
-				select,
-				this.dropdownOnChange,
-				this.dropdownOnFocus,
-				this.dropdownOnBlur,
-				undefined,
-				'dropdown',
-				this.customOnChange,
-				this.customOnFocus,
-				this.customOnBlur,
-				undefined,
-				this.element,
-			);
-		}
+		handleInputEvent(
+			event,
+			eventType,
+			input,
+			this.dropdownOnChange,
+			this.dropdownOnFocus,
+			this.dropdownOnBlur,
+			undefined,
+			'dropdown',
+			this.customOnChange,
+			this.customOnFocus,
+			this.customOnBlur,
+			undefined,
+			this.element,
+		);
 	}
 
 	public getId(): string {
@@ -483,7 +465,7 @@ export class OntarioDropdownList implements Dropdown {
 						))}
 
 					{this.internalOptions?.map((dropdown) => (
-						<option value={dropdown.value} selected={dropdown.value === this.selectedValue}>
+						<option value={dropdown.value} selected={dropdown.selected}>
 							{dropdown.label}
 						</option>
 					)) ?? ''}

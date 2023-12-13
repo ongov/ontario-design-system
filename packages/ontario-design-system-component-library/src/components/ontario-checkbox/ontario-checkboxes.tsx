@@ -66,8 +66,6 @@ export class OntarioCheckboxes implements Checkboxes {
 	 */
 	@Prop({ mutable: true }) hintText?: string | Hint;
 
-	@Prop() checked: boolean;
-
 	/**
 	 * Used to include the ontario-hint-expander component for the checkbox group.
 	 * This is passed in as an object with key-value pairs.
@@ -194,6 +192,11 @@ export class OntarioCheckboxes implements Checkboxes {
 	 */
 	@Event() checkboxOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
 
+	/**
+	 * EventEmitter for checkbox state changes.
+	 * Emits an object with the `id` representing the identifier of the checkbox
+	 * and `checked` indicating the new state of the checkbox (true if checked, false if unchecked).
+	 */
 	@Event() checkboxChange: EventEmitter<{ id: string; checked: boolean }>;
 
 	/**
@@ -357,7 +360,12 @@ export class OntarioCheckboxes implements Checkboxes {
 	}
 
 	/**
-	 * Function to update the state of the checkboxes.
+	 * Updates the state of a checkbox and emits corresponding events.
+	 *
+	 * @param input - The HTMLInputElement representing the checkbox.
+	 * @param isChecked - A boolean indicating whether the checkbox is checked or unchecked.
+	 *
+	 * This method updates the internal state of checkboxes and emits both Angular and Custom events:
 	 */
 	private updateCheckboxStates(input: HTMLInputElement, isChecked: boolean) {
 		this.checkboxStates = {

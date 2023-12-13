@@ -144,12 +144,12 @@ visible when the hint expander title (hint) is toggled" }'
 
 ## Events
 
-| Event                 | Description                                                                               | Type                                                         |
-| --------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| `radioOnBlur`         | Emitted when a keyboard input event occurs when a radio option has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
-| `radioOnChange`       | Emitted when a keyboard input or mouse event occurs when a radio option has been changed. | `CustomEvent<RadioAndCheckboxChangeEvent>`                   |
-| `radioOnFocus`        | Emitted when a keyboard input event occurs when a radio option has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
-| `selectedRadioChange` |                                                                                           | `CustomEvent<string>`                                        |
+| Event                 | Description                                                                                                                                                                                                                                                                                                                       | Type                                                         |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| `radioOnBlur`         | Emitted when a keyboard input event occurs when a radio option has lost focus.                                                                                                                                                                                                                                                    | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
+| `radioOnChange`       | Emitted when a keyboard input or mouse event occurs when a radio option has been changed.                                                                                                                                                                                                                                         | `CustomEvent<RadioAndCheckboxChangeEvent>`                   |
+| `radioOnFocus`        | Emitted when a keyboard input event occurs when a radio option has gained focus.                                                                                                                                                                                                                                                  | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
+| `selectedRadioChange` | EventEmitter for changes in the selected radio button. Emits a string representing the identifier or value of the newly selected radio button. This event is triggered when the selected radio button within the component changes. The emitted string corresponds to the identifier or value of the newly selected radio button. | `CustomEvent<string>`                                        |
 
 ## Dependencies
 

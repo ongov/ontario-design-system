@@ -129,7 +129,6 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 @ProxyCmp({
 	inputs: [
 		'caption',
-		'checked',
 		'customOnBlur',
 		'customOnChange',
 		'customOnFocus',
@@ -148,7 +147,6 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
 	inputs: [
 		'caption',
-		'checked',
 		'customOnBlur',
 		'customOnChange',
 		'customOnFocus',
@@ -177,7 +175,11 @@ export declare interface OntarioCheckboxes extends Components.OntarioCheckboxes 
 	 * Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed.
 	 */
 	checkboxOnChange: EventEmitter<CustomEvent<IOntarioCheckboxesRadioAndCheckboxChangeEvent>>;
-
+	/**
+   * EventEmitter for checkbox state changes.
+Emits an object with the `id` representing the identifier of the checkbox
+and `checked` indicating the new state of the checkbox (true if checked, false if unchecked).
+   */
 	checkboxChange: EventEmitter<CustomEvent<{ id: string; checked: boolean }>>;
 	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has lost focus.
@@ -2882,6 +2884,13 @@ import type { RadioAndCheckboxChangeEvent as IOntarioRadioButtonsRadioAndCheckbo
 import type { InputFocusBlurEvent as IOntarioRadioButtonsInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
 
 export declare interface OntarioRadioButtons extends Components.OntarioRadioButtons {
+	/**
+   * EventEmitter for changes in the selected radio button.
+Emits a string representing the identifier or value of the newly selected radio button.
+
+This event is triggered when the selected radio button within the component changes.
+The emitted string corresponds to the identifier or value of the newly selected radio button.
+   */
 	selectedRadioChange: EventEmitter<CustomEvent<string>>;
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a radio option has been changed.
