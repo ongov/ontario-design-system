@@ -23,24 +23,21 @@ export const handleInputEvent = (
 	customInputFunction?: (event: Event) => void,
 	hostElement?: HTMLElement,
 ) => {
-	if (eventType === EventType.Input) {
+	const emitInputEvent = () => {
 		inputInputEvent?.emit({
 			id: input?.id,
 			value: (event as InputEvent).data ?? undefined,
 			inputType: (event as InputEvent).inputType,
 		});
 
-		customInputFunction && customInputFunction(event);
-	}
+		customInputFunction?.(event);
+	};
 
-	if (eventType === EventType.Change) {
+	const emitChangeEvent = () => {
 		if (type === 'radio' || type === 'checkbox') {
 			if (input instanceof HTMLInputElement) {
-				inputChangeEvent.emit({
-					checked: input?.checked,
-					id: input?.id,
-					value: input?.value,
-				});
+				const isChecked = input?.checked ?? false;
+				updateCheckboxStates(input, isChecked, hostElement);
 			}
 		} else {
 			inputChangeEvent.emit({
@@ -49,31 +46,46 @@ export const handleInputEvent = (
 			});
 		}
 
-		customChangeFunction && customChangeFunction(event);
+		customChangeFunction?.(event);
 
 		// Note: Change events don't have composable set to true and don't cross the ShadowDOM boundary.
 		// This will emit an event so the normal `onChange` event pattern is maintained.
 		hostElement && emitEvent(hostElement, eventType, event);
-	}
+	};
 
-	if (eventType === EventType.Focus) {
+	const emitFocusEvent = () => {
 		inputFocusEvent.emit({
 			id: input?.id,
 			focused: true,
 			value: input?.value,
 		});
 
-		customFocusFunction && customFocusFunction(event);
-	}
+		customFocusFunction?.(event);
+	};
 
-	if (eventType === EventType.Blur) {
+	const emitBlurEvent = () => {
 		inputBlurEvent.emit({
 			id: input?.id,
 			focused: false,
 			value: input?.value,
 		});
 
-		customBlurFunction && customBlurFunction(event);
+		customBlurFunction?.(event);
+	};
+
+	switch (eventType) {
+		case EventType.Input:
+			emitInputEvent();
+			break;
+		case EventType.Change:
+			emitChangeEvent();
+			break;
+		case EventType.Focus:
+			emitFocusEvent();
+			break;
+		case EventType.Blur:
+			emitBlurEvent();
+			break;
 	}
 };
 
@@ -86,4 +98,26 @@ export const handleInputEvent = (
  */
 export const emitEvent = (element: HTMLElement, name: string, detail?: any) => {
 	element.dispatchEvent(new CustomEvent(name, { composed: true, bubbles: true, detail }));
+};
+
+/**
+ * Updates the state of a checkbox and emits corresponding events.
+ *
+ * @param input - The HTMLInputElement representing the checkbox.
+ * @param isChecked - A boolean indicating whether the checkbox is checked or unchecked.
+ *
+ * This method updates the internal state of checkboxes and emits both Angular and Custom events:
+ */
+export const updateCheckboxStates = (input: HTMLInputElement, isChecked: boolean, hostElement?: HTMLElement) => {
+	const checkboxChangeEvent = new CustomEvent('checkboxChange', {
+		detail: {
+			id: input.id,
+			checked: isChecked,
+		},
+		bubbles: true,
+		composed: true,
+	});
+
+	input.dispatchEvent(checkboxChangeEvent);
+	hostElement && emitEvent(hostElement, 'checkboxChange', { id: input.id, checked: isChecked });
 };

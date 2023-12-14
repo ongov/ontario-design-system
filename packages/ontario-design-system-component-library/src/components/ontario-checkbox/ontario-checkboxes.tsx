@@ -21,7 +21,7 @@ import {
 	RadioAndCheckboxChangeEvent,
 	EventType,
 } from '../../utils/events/event-handler.interface';
-import { handleInputEvent } from '../../utils/events/event-handler';
+import { handleInputEvent, updateCheckboxStates } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
@@ -183,11 +183,6 @@ export class OntarioCheckboxes implements Checkboxes {
 	@State() private internalOptions: CheckboxOption[];
 
 	/**
-	 * State to hold the input ID and whether it has been checked
-	 */
-	@State() private checkboxStates: Record<string, boolean> = {};
-
-	/**
 	 * Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed.
 	 */
 	@Event() checkboxOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
@@ -338,52 +333,24 @@ export class OntarioCheckboxes implements Checkboxes {
 		const input = event.target as HTMLInputElement | null;
 
 		if (input && input.type === 'checkbox') {
-			const isChecked = input.checked ?? false;
-			this.updateCheckboxStates(input, isChecked);
+			updateCheckboxStates(input, input.checked ?? false, this.element);
+
+			handleInputEvent(
+				event,
+				eventType,
+				input,
+				this.checkboxOnChange,
+				this.checkboxOnFocus,
+				this.checkboxOnBlur,
+				undefined,
+				'checkbox',
+				this.customOnChange,
+				this.customOnFocus,
+				this.customOnBlur,
+				undefined,
+				this.element,
+			);
 		}
-
-		handleInputEvent(
-			event,
-			eventType,
-			input,
-			this.checkboxOnChange,
-			this.checkboxOnFocus,
-			this.checkboxOnBlur,
-			undefined,
-			'checkbox',
-			this.customOnChange,
-			this.customOnFocus,
-			this.customOnBlur,
-			undefined,
-			this.element,
-		);
-	}
-
-	/**
-	 * Updates the state of a checkbox and emits corresponding events.
-	 *
-	 * @param input - The HTMLInputElement representing the checkbox.
-	 * @param isChecked - A boolean indicating whether the checkbox is checked or unchecked.
-	 *
-	 * This method updates the internal state of checkboxes and emits both Angular and Custom events:
-	 */
-	private updateCheckboxStates(input: HTMLInputElement, isChecked: boolean) {
-		this.checkboxStates = {
-			...this.checkboxStates,
-			[input.id]: isChecked,
-		};
-
-		const checkboxChangeEvent = new CustomEvent('checkboxChange', {
-			detail: {
-				id: input.id,
-				checked: isChecked,
-			},
-			bubbles: true,
-			composed: true,
-		});
-
-		this.checkboxChange.emit({ id: input.id, checked: isChecked }); // Emit the Angular event
-		this.element.dispatchEvent(checkboxChangeEvent);
 	}
 
 	async componentDidLoad() {
