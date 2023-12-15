@@ -108,6 +108,7 @@ export const emitEvent = (element: HTMLElement, name: string, detail?: any) => {
  *
  * This method updates the internal state of checkboxes and emits both Angular and Custom events:
  */
+
 export const updateCheckboxStates = (input: HTMLInputElement, isChecked: boolean, hostElement?: HTMLElement) => {
 	const checkboxChangeEvent = new CustomEvent('checkboxChange', {
 		detail: {
