@@ -33,12 +33,22 @@ export const handleInputEvent = (
 		customInputFunction?.(event);
 	};
 
-	const emitChangeEvent = () => {
-		if (type === 'radio' || type === 'checkbox') {
-			if (input instanceof HTMLInputElement) {
-				const isChecked = input?.checked ?? false;
-				updateCheckboxStates(input, isChecked, hostElement);
-			}
+	const emitChangeEvent = (inputType: string) => {
+		if (input instanceof HTMLInputElement) {
+			const isChecked = input?.checked ?? false;
+			const changeEvent = new CustomEvent(`${inputType}Change`, {
+				detail: {
+					id: input.id,
+					value: input.value,
+					checked: isChecked,
+				},
+				bubbles: true,
+				composed: true,
+			});
+
+			input.dispatchEvent(changeEvent);
+			hostElement &&
+				emitEvent(hostElement, `${inputType}Change`, { id: input.id, value: input.value, checked: isChecked });
 		} else {
 			inputChangeEvent.emit({
 				id: input?.id,

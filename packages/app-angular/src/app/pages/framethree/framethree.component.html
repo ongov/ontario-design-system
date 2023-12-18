@@ -17,14 +17,6 @@
 			(selectedRadioChange)="handleRadioChange($event)"
 		>
 		</ontario-radio-buttons>
-		<ontario-dropdown-list
-			name="province-territory"
-			caption="{{ 'form.questions.contactInformation.provinceTerritory.label' | translate }}"
-			required
-			[options]="generateDropdownOptions()"
-			language="{{ lang }}"
-			(change)="handleDropdownChange($event)"
-		></ontario-dropdown-list>
 	</ontario-fieldset>
 </div>
 

@@ -12,20 +12,17 @@ interface CheckboxOption {
 	checked: boolean;
 }
 
-// Assuming a type for describeRole options
 interface DescribeRoleOption {
 	value: string;
 	label: string;
 	elementId: string;
 }
 
-// Assuming a type for describeRole
 interface DescribeRole {
 	label: string;
 	options: DescribeRoleOption[];
 }
 
-// Assuming a type for the entire translation object
 interface Translation {
 	describeRole: DescribeRole;
 }
@@ -128,6 +125,7 @@ export class FrameFourComponent implements OnInit {
 		return isEnglish() ? '/additional-details' : '/fr/details-supplementaires';
 	}
 
+	// Function to handle the custom click event for the back button
 	handleBackNavigation() {
 		handleBackButtonNavigationOnClick(
 			{

@@ -329,10 +329,10 @@ export class OntarioCheckboxes implements Checkboxes {
 	/**
 	 * Function to handle checkbox events and the information pertaining to the checkbox to emit.
 	 */
-	private handleEvent(event: Event, eventType: EventType) {
+	private handleEvent(event: globalThis.Event, eventType: EventType) {
 		const input = event.target as HTMLInputElement | null;
 
-		if (input && input.type === 'checkbox') {
+		if (input && (input.type === 'checkbox' || input.type === 'radio')) {
 			updateCheckboxStates(input, input.checked ?? false, this.element);
 
 			handleInputEvent(
@@ -343,7 +343,7 @@ export class OntarioCheckboxes implements Checkboxes {
 				this.checkboxOnFocus,
 				this.checkboxOnBlur,
 				undefined,
-				'checkbox',
+				input.type,
 				this.customOnChange,
 				this.customOnFocus,
 				this.customOnBlur,

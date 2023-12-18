@@ -22,10 +22,6 @@ interface Translation {
 		label: string;
 		options: RadioButtonOption[];
 	};
-	provinceTerritory: {
-		label: string;
-		options: DropdownOption[];
-	};
 }
 
 @Component({
@@ -36,8 +32,6 @@ export class FrameThreeComponent implements OnInit {
 	public lang = getLanguage();
 	public selectedRadioValue: string = '';
 	public radioOptions: Record<string, RadioButtonOption> = {};
-	public selectedDropdownValue: string = '';
-	public dropdownOptions: Record<string, DropdownOption> = {};
 
 	constructor(
 		private translateService: TranslateService,
@@ -48,29 +42,15 @@ export class FrameThreeComponent implements OnInit {
 
 	ngOnInit() {
 		const storedRadioValue = localStorage.getItem('selectedRadioValue');
-		const storedDropdownValue = localStorage.getItem('selectedDropdownValue');
 
 		if (storedRadioValue) {
 			this.selectedRadioValue = storedRadioValue;
 		}
-
-		if (storedDropdownValue) {
-			this.selectedDropdownValue = storedDropdownValue;
-		}
-
-		// Log the dropdown value and options
-		console.log('Dropdown Value on Page Refresh:', this.selectedDropdownValue);
-		console.log('Dropdown Options on Page Refresh:', this.dropdownOptions);
 	}
 
 	loadRadioOptions() {
 		const storedRadioOptions = localStorage.getItem('radioOptions');
 		this.radioOptions = storedRadioOptions ? JSON.parse(storedRadioOptions) : {};
-	}
-
-	loadDropdownOptions() {
-		const storedDropdownOptions = localStorage.getItem('dropdownOptions');
-		this.dropdownOptions = storedDropdownOptions ? JSON.parse(storedDropdownOptions) : [];
 	}
 
 	handleRadioChange(event: Event) {
@@ -86,28 +66,11 @@ export class FrameThreeComponent implements OnInit {
 		}
 	}
 
-	handleDropdownChange(event: Event) {
-		const customEvent = event as CustomEvent<string>;
-
-		if (customEvent.detail) {
-			this.selectedDropdownValue = customEvent.detail;
-			localStorage.setItem('selectedDropdownValue', this.selectedDropdownValue);
-		}
-	}
-
 	loadSelectedRadioValue() {
 		// Load the selected radio value from localStorage
 		const storedRadioValue = localStorage.getItem('selectedRadioValue');
 		if (storedRadioValue) {
 			this.selectedRadioValue = storedRadioValue;
-		}
-	}
-
-	loadSelectedDropdownValue() {
-		// Load the selected dropdown value from localStorage
-		const storedDropdownValue = localStorage.getItem('selectedDropdownValue');
-		if (storedDropdownValue) {
-			this.selectedDropdownValue = storedDropdownValue;
 		}
 	}
 
@@ -131,39 +94,10 @@ export class FrameThreeComponent implements OnInit {
 		return radioOptions;
 	}
 
-	generateDropdownOptions(): DropdownOption[] {
-		const translation: Translation = this.getTranslation();
-		const dropdownOptions: DropdownOption[] = translation?.provinceTerritory?.options || [];
-
-		if (!Array.isArray(dropdownOptions)) {
-			return [];
-		}
-
-		const mappedOptions = dropdownOptions.map((option) => {
-			const isSelected = this.selectedDropdownValue === option.value;
-			return {
-				value: option.value,
-				label: option.label,
-				selected: isSelected,
-			};
-		});
-
-		// this.changeDetectorRef.detectChanges();
-
-		return mappedOptions;
-	}
-
 	saveRadioOptions() {
 		localStorage.setItem('radioOptions', JSON.stringify(this.radioOptions));
 
 		// Manually trigger change detection after saving radio options
-		this.changeDetectorRef.detectChanges();
-	}
-
-	saveDropdownOptions() {
-		localStorage.setItem('dropdownOptions', JSON.stringify(this.dropdownOptions));
-
-		// Manually trigger change detection after saving dropdown options
 		this.changeDetectorRef.detectChanges();
 	}
 
@@ -173,27 +107,13 @@ export class FrameThreeComponent implements OnInit {
 		return selectedOption?.value || '';
 	}
 
-	getSelectedDropdownValue() {
-		const selectedOption = Object.values(this.dropdownOptions).find((option) => option.selected);
-
-		// Get the selected dropdown value based on the saved options
-		return selectedOption?.value || '';
-	}
-
 	getTranslation(): Translation {
 		const contactTypeOptions = this.translateService.instant('form.questions.contactInformation.contactType.options');
-		const dropdownOptions = this.translateService.instant(
-			'form.questions.contactInformation.provinceTerritory.options',
-		); // Adjust the translation key
 
 		return {
 			contactType: {
 				label: this.translateService.instant('form.questions.contactInformation.contactType.label'),
 				options: contactTypeOptions,
-			},
-			provinceTerritory: {
-				label: this.translateService.instant('form.questions.contactInformation.provinceTerritory.options'),
-				options: dropdownOptions,
 			},
 		};
 	}
@@ -202,6 +122,7 @@ export class FrameThreeComponent implements OnInit {
 		return isEnglish() ? '/describe-role' : '/fr/decrivez-role';
 	}
 
+	// Function to handle the custom click event for the back button
 	handleBackNavigation() {
 		handleBackButtonNavigationOnClick(
 			{

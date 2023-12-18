@@ -20,7 +20,7 @@ import {
 	RadioAndCheckboxChangeEvent,
 	EventType,
 } from '../../utils/events/event-handler.interface';
-import { handleInputEvent } from '../../utils/events/event-handler';
+import { handleInputEvent, updateCheckboxStates } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
@@ -340,33 +340,28 @@ export class OntarioRadioButtons implements RadioButtons {
 	/**
 	 * Function to handle radio buttons events and the information pertaining to the radio buttons to emit.
 	 */
-	private handleEvent(event: Event, eventType: EventType) {
+	private handleEvent(event: globalThis.Event, eventType: EventType) {
 		const input = event.target as HTMLInputElement | null;
 
-		if (input) {
-			input.checked = input.checked ?? '';
+		if (input && (input.type === 'checkbox' || input.type === 'radio')) {
+			updateCheckboxStates(input, input.checked ?? false, this.element);
 
-			if (eventType === EventType.Change) {
-				this.selectedValue = input.value;
-				this.selectedRadioChange.emit(this.selectedValue); // Emit the selected value
-			}
+			handleInputEvent(
+				event,
+				eventType,
+				input,
+				this.radioOnChange,
+				this.radioOnFocus,
+				this.radioOnBlur,
+				undefined,
+				input.type,
+				this.customOnChange,
+				this.customOnFocus,
+				this.customOnBlur,
+				undefined,
+				this.element,
+			);
 		}
-
-		handleInputEvent(
-			event,
-			eventType,
-			input,
-			this.radioOnChange,
-			this.radioOnFocus,
-			this.radioOnBlur,
-			undefined,
-			'radio',
-			this.customOnChange,
-			this.customOnFocus,
-			this.customOnBlur,
-			undefined,
-			this.element,
-		);
 	}
 	/**
 	 * If a `hintText` prop is passed, the id generated from it will be set to the internal `hintTextId` state to match with the fieldset `aria-describedBy` attribute.
