@@ -278,6 +278,14 @@ export class OntarioTextarea implements Input, CommonInputEvents {
 		);
 	}
 
+	private handleTextInputEvent(e: Event) {
+		const inputElement = e.target as HTMLInputElement | null;
+
+		if (inputElement && inputElement.value !== undefined) {
+			this.inputValueChange?.emit(inputElement.value);
+		}
+	}
+
 	public getId(): string {
 		return this.elementId ?? '';
 	}
@@ -323,13 +331,7 @@ export class OntarioTextarea implements Input, CommonInputEvents {
 					id={this.getId()}
 					name={this.name}
 					value={this.getValue()}
-					onInput={(e) => {
-						const inputElement = e.target as HTMLInputElement | null;
-
-						if (inputElement && inputElement.value !== undefined) {
-							this.inputValueChange?.emit(inputElement.value);
-						}
-					}}
+					onInput={(e) => this.handleTextInputEvent(e)}
 					onChange={(e) => this.handleEvent(e, EventType.Change)}
 					onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 					onFocus={(e) => this.handleEvent(e, EventType.Focus)}
