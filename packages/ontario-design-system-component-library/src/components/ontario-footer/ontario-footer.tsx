@@ -27,7 +27,7 @@ export class OntarioFooter {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language: Language = 'en';
+	@Prop({ mutable: true }) language: Language;
 
 	/**
 	 * The type of footer to be rendered. If no prop is provided, it will default to the 'default' type.
@@ -78,7 +78,9 @@ export class OntarioFooter {
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
 	handleSetAppLanguage(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+		if (!this.language) {
+			this.language = validateLanguage(event);
+		}
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
