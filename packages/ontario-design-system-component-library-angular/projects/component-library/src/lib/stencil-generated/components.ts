@@ -27,6 +27,46 @@ export class OntarioAccordion {
 export declare interface OntarioAccordion extends Components.OntarioAccordion {}
 
 @ProxyCmp({
+	inputs: ['accordionContentType', 'ariaLabelText', 'content', 'elementId', 'isOpen', 'label'],
+})
+@Component({
+	selector: 'ontario-accordion-section',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['accordionContentType', 'ariaLabelText', 'content', 'elementId', 'isOpen', 'label'],
+})
+export class OntarioAccordionSection {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioAccordionSection extends Components.OntarioAccordionSection {}
+
+@ProxyCmp({
+	inputs: ['accordionData', 'expandCollapseButton', 'isOpen', 'language', 'name'],
+})
+@Component({
+	selector: 'ontario-accordion-two',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['accordionData', 'expandCollapseButton', 'isOpen', 'language', 'name'],
+})
+export class OntarioAccordionTwo {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioAccordionTwo extends Components.OntarioAccordionTwo {}
+
+@ProxyCmp({
 	inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
 })
 @Component({

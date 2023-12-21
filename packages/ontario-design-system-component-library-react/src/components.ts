@@ -9,6 +9,8 @@ import { defineCustomElements } from '@ontario-digital-service/ontario-design-sy
 
 defineCustomElements();
 export const OntarioAccordion = /*@__PURE__*/createReactComponent<JSX.OntarioAccordion, HTMLOntarioAccordionElement>('ontario-accordion');
+export const OntarioAccordionSection = /*@__PURE__*/createReactComponent<JSX.OntarioAccordionSection, HTMLOntarioAccordionSectionElement>('ontario-accordion-section');
+export const OntarioAccordionTwo = /*@__PURE__*/createReactComponent<JSX.OntarioAccordionTwo, HTMLOntarioAccordionTwoElement>('ontario-accordion-two');
 export const OntarioAside = /*@__PURE__*/createReactComponent<JSX.OntarioAside, HTMLOntarioAsideElement>('ontario-aside');
 export const OntarioBackToTop = /*@__PURE__*/createReactComponent<JSX.OntarioBackToTop, HTMLOntarioBackToTopElement>('ontario-back-to-top');
 export const OntarioBlockquote = /*@__PURE__*/createReactComponent<JSX.OntarioBlockquote, HTMLOntarioBlockquoteElement>('ontario-blockquote');

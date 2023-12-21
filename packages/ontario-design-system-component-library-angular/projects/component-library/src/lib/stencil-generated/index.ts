@@ -2,6 +2,8 @@ import * as d from './components';
 
 export const DIRECTIVES = [
 	d.OntarioAccordion,
+	d.OntarioAccordionSection,
+	d.OntarioAccordionTwo,
 	d.OntarioAside,
 	d.OntarioBackToTop,
 	d.OntarioBlockquote,
