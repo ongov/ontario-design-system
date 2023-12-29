@@ -5,10 +5,10 @@ describe('ontario-date-input', () => {
 	it('renders deafult state', async () => {
 		const page = await newSpecPage({
 			components: [OntarioDateInput],
-			html: `<ontario-date-input element-id="date-id-example"></ontario-date-input>`,
+			html: `<ontario-date-input language="en" element-id="date-id-example"></ontario-date-input>`,
 		});
 		expect(page.root).toEqualHtml(`
-			<ontario-date-input element-id="date-id-example">
+			<ontario-date-input element-id="date-id-example" language="en">
 				<mock:shadow-root>
 					<div class="ontario-form-group">
 						<fieldset class="ontario-fieldset" role="group">
