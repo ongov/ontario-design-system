@@ -1,3 +1,10 @@
+## 3.2.1-alpha.1 (2023-12-29)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library:** avoid overriding language through events if lang is passed as prop 6e4d5b7
+- **@ontario-digital-service/ontario-design-system-component-library:** fixed unit tests b484da4
+
 # 3.2.0 (2023-12-11)
 
 ### Bug Fixes
