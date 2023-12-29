@@ -1,3 +1,13 @@
+# 4.0.0-alpha.1 (2023-12-29)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library:** disable es5 production build 8453a6c
+
+### BREAKING CHANGES
+
+- **@ontario-digital-service/ontario-design-system-component-library:** remove es5 support from the build
+
 ## 3.2.1-alpha.1 (2023-12-29)
 
 ### Bug Fixes
