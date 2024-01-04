@@ -1,3 +1,9 @@
+# 4.0.0-alpha.2 (2024-01-04)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library:** fix footer tests for the year 2024 967c66f
+
 # 4.0.0-alpha.1 (2023-12-29)
 
 ### Bug Fixes
