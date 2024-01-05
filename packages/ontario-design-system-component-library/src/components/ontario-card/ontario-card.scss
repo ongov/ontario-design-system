@@ -18,22 +18,10 @@
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as
 	typography;
 
-.ontario-card__container {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	margin: spacing.$spacing-0;
-
-	@media screen and (max-width: breakpoints.$small-breakpoint) {
-		flex-direction: column;
-	}
-}
-
 .ontario-card {
 	box-shadow: 0rem 0.1875rem 0.5rem 0.0625rem rgba(0, 0, 0, 0.4);
 	border-radius: globalVariables.$global-radius;
 	margin: spacing.$spacing-0 spacing.$spacing-7 spacing.$spacing-7 spacing.$spacing-0;
-	max-width: 50%;
 	padding: spacing.$spacing-0;
 	list-style-type: none;
 	transition: all 0.3s ease-in-out;
@@ -55,36 +43,6 @@
 		background-color: colours.$ontario-greyscale-5;
 	}
 
-	.ontario-card--cards-per-row-4 & {
-		width: calc(25% - 2rem);
-		&:nth-child(4n) {
-			margin-right: spacing.$spacing-0;
-		}
-	}
-
-	.ontario-card--cards-per-row-3 & {
-		width: calc(33.3% - 1.75rem);
-		&:nth-child(3n) {
-			margin-right: spacing.$spacing-0;
-		}
-	}
-
-	.ontario-card--cards-per-row-2 & {
-		width: calc(50% - 1.25rem);
-		&:nth-child(2n) {
-			margin-right: spacing.$spacing-0;
-		}
-	}
-
-	@media screen and (max-width: breakpoints.$medium-breakpoint) {
-		.ontario-card--cards-per-row-4 & {
-			width: calc(50% - 1.25rem);
-			&:nth-child(2n) {
-				margin-right: spacing.$spacing-0;
-			}
-		}
-	}
-
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		margin-bottom: spacing.$spacing-8;
 		width: 100% !important; // to override the specificity of the widths listed for the card-rows
@@ -92,9 +50,8 @@
 	}
 }
 
-.ontario-card--position-horizontal {
+.ontario-card__card-type--horizontal {
 	display: flex;
-	width: 50%;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		width: 100%;
@@ -123,7 +80,7 @@
 	}
 }
 
-.ontario-card--position-horizontal__image-right {
+.ontario-card__image-right {
 	flex-direction: row-reverse;
 }
 
@@ -139,27 +96,27 @@
 		text-decoration-color: colours.$ontario-colour-black;
 	}
 
-	.ontario-card--light & {
+	.ontario-card__header-type--light & {
 		background-color: colours.$ontario-greyscale-5;
 		padding-top: spacing.$spacing-4;
 		padding-bottom: spacing.$spacing-4;
 		border-radius: globalVariables.$global-radius globalVariables.$global-radius 0 0;
 	}
 
-	.ontario-card--dark & {
+	.ontario-card__header-type--dark & {
 		background-color: colours.$ontario-colour-black;
 		padding-top: spacing.$spacing-4;
 		padding-bottom: spacing.$spacing-4;
 		border-radius: globalVariables.$global-radius globalVariables.$global-radius 0 0;
 	}
 
-	.ontario-card--dark:hover & {
+	.ontario-card__header-type--dark:hover & {
 		text-decoration-line: underline;
 		text-decoration-color: colours.$ontario-colour-white;
 	}
 
 	.ontario-card--image-true & {
-		border-radius: 0;
+		border-radius: 0 !important;
 	}
 
 	.ontario-card--no-description & {
@@ -172,7 +129,7 @@
 		text-decoration: none;
 		outline: none;
 
-		.ontario-card--dark & {
+		.ontario-card__header-type--dark & {
 			color: colours.$ontario-colour-white;
 		}
 
@@ -202,11 +159,11 @@
 }
 
 .ontario-card__text-container {
-	.ontario-card--position-horizontal & {
+	.ontario-card__card-type--horizontal & {
 		width: 66.6%;
 	}
 
-	.ontario-card--image--one-fourth & {
+	.ontario-card__image-size-one-fourth & {
 		width: 75%;
 	}
 
@@ -219,20 +176,24 @@
 	margin: spacing.$spacing-0;
 	padding: spacing.$spacing-2 spacing.$spacing-5 spacing.$spacing-5 spacing.$spacing-5;
 
+	p {
+		margin-top: spacing.$spacing-0;
+	}
+
 	p:last-of-type {
 		margin-bottom: spacing.$spacing-0;
 	}
 
-	.ontario-card--light &,
-	.ontario-card--dark & {
+	.ontario-card__header-type--light &,
+	.ontario-card__header-type--dark & {
 		padding-top: spacing.$spacing-4;
 	}
 
 	@media screen and (max-width: breakpoints.$medium-breakpoint) {
 		padding: spacing.$spacing-2 spacing.$spacing-4 spacing.$spacing-5 spacing.$spacing-4;
 
-		.ontario-card--light &,
-		.ontario-card--dark & {
+		.ontario-card__header-type--light &,
+		.ontario-card__header-type--dark & {
 			padding-top: spacing.$spacing-4;
 		}
 	}
@@ -243,11 +204,11 @@
 		margin-bottom: -#{spacing.$spacing-2};
 	}
 
-	.ontario-card--position-horizontal & {
+	.ontario-card__card-type--horizontal & {
 		width: 33.3%;
 	}
 
-	.ontario-card--image--one-fourth & {
+	.ontario-card__image-size-one-fourth & {
 		width: 25%;
 	}
 }
@@ -263,12 +224,12 @@
 		border-top-right-radius: globalVariables.$global-radius;
 	}
 
-	.ontario-card--position-horizontal__image-right & {
+	.ontario-card__image-right & {
 		border-top-right-radius: globalVariables.$global-radius;
 		border-bottom-right-radius: globalVariables.$global-radius;
 	}
 
-	.ontario-card--position-horizontal__image-left & {
+	.ontario-card__image-left & {
 		border-top-left-radius: globalVariables.$global-radius;
 		border-bottom-left-radius: globalVariables.$global-radius;
 	}

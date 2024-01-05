@@ -43,5 +43,8 @@
 		"@nrwl/nx-linux-x64-musl": "15.8.9",
 		"@nrwl/nx-win32-arm64-msvc": "15.8.9",
 		"@nrwl/nx-win32-x64-msvc": "15.8.9"
+	},
+	"dependencies": {
+		"@stencil/core": "^3.4.2"
 	}
 }

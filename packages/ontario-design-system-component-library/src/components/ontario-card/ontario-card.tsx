@@ -1,6 +1,12 @@
-import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
-import { Card } from './card.interface';
-import { CardType, CardTypes, HeaderType, HeaderTypes, CardsPerRow } from './ontario-card-types';
+import { Component, Prop, Element, h, State, Watch } from '@stencil/core';
+import {
+	CardType,
+	CardTypes,
+	HeaderType,
+	HeaderTypes,
+	HorizontalImagePositionType,
+	HorizontalImageSizeType,
+} from './ontario-card-types';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
@@ -13,39 +19,97 @@ export class OntarioCard {
 	@Element() host: HTMLElement;
 
 	/**
-	 * Used to include individual cards for the card component.
-	 * This is passed in as an array of objects with key-value pairs.
+	 * Text to be displayed within the header.
 	 *
 	 * @example
-	 * 	<ontario-card
-	 * 		card-type="basic"
-	 * 		header-type="default"
-	 *		cards='[
-	 *			{"label": "Card 1", "description": "This is a string"},
-	 *			{"label": "Card 2", "description": "This is a string"}
-	 *		]'
-	 *	></ontario-card>
+	 *	<ontario-card
+	 *		header-type="dark"
+	 *		card-type="horizontal"
+	 *		label="Card Title 1"
+	 *		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+	 *	>
 	 */
-	@Prop() cards: string | Card[];
+	@Prop() label: string;
+
+	/**
+	 * Image to be displayed within the card image container.
+	 *
+	 * This is optional.
+	 */
+	@Prop() image?: string;
+
+	/**
+	 * Text to be displayed within the card description container.
+	 *
+	 * This is optional.
+	 */
+	@Prop() description?: string;
+
+	/**
+	 * Action link for when the card is clicked.
+	 *
+	 * This is optional.
+	 */
+	@Prop() cardLink?: string;
 
 	/**
 	 * The type of card to render.
 	 *
 	 * If no type is passed, it will default to 'basic'.
+	 *
 	 */
 	@Prop() cardType: CardType = 'basic';
 
 	/**
 	 * The type of header to render.
+	 *
+	 * If no type is passed, it will default to 'default'.
 	 */
-	@Prop() headerType: HeaderType;
+	@Prop() headerType: HeaderType = 'default';
 
 	/**
-	 * The number of cards to display per row.
+	 * The position of the image when the card-type is set to 'horizontal'.
 	 *
-	 * If no number is passed, it will default to 3.
+	 * This prop is only necessry when the card-type is set to 'horizontal'.
+	 *
+	 * @example
+	 * 	<ontario-card
+	 *		card-type="horizontal"
+	 *		label="Card Title 1"
+	 *		image="https://picsum.photos/200/300"
+	 *		horizontal-image-position-type="left"
+	 *		horizontal-image-size-type="one-fourth"
+	 *	  description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+	 *	>
+	 *	</ontario-card>
 	 */
-	@Prop() cardsPerRow: CardsPerRow = 3;
+	@Prop() horizontalImagePositionType?: HorizontalImagePositionType = 'left';
+
+	/**
+	 * The size of the image when the card-type is set to 'horizontal'.
+	 *
+	 * This prop is only necessry when the card-type is set to 'horizontal'.
+	 *
+	 * @example
+	 * 	<ontario-card
+	 *		card-type="horizontal"
+	 *		label="Card Title 1"
+	 *		image="https://picsum.photos/200/300"
+	 *		horizontal-image-position-type="left"
+	 *		horizontal-image-size-type="one-fourth"
+	 *	  description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+	 *	>
+	 *	</ontario-card>
+	 */
+	@Prop() horizontalImageSizeType?: HorizontalImageSizeType = 'one-third';
+
+	/**
+	 * Provides more context as to what the card interaction is doing. This should only be used for accessibility purposes, if the card interaction requires more * * description than what the text provides.
+	 *
+	 * This is optional.
+	 *
+	 */
+	@Prop() ariaLabelText?: string;
 
 	/**
 	 * Mutable variable, for internal use only.
@@ -58,27 +122,6 @@ export class OntarioCard {
 	 * Set the card's header type depending on validation result.
 	 */
 	@State() private headerTypeState: string;
-
-	/**
-	 * Internal state containing the parsed Cards.
-	 */
-	@State() private internalCards: Card[] = [];
-
-	/**
-	 * Mutable variable, for internal use only.
-	 * Set number of cards per row depending on validation result.
-	 */
-	@State() private cardsPerRowState: number;
-
-	/**
-	 * Parse cards data, this is used to handle JSON strings from HTML.
-	 */
-	@Watch('cards')
-	private parseCards() {
-		if (typeof this.cards !== 'undefined') {
-			this.internalCards = Array.isArray(this.cards) ? this.cards : JSON.parse(this.cards);
-		}
-	}
 
 	/**
 	 * Watch for changes to the `cardType` property for validation purposes.
@@ -113,34 +156,6 @@ export class OntarioCard {
 	}
 
 	/**
-	 * Watch for changes to the `cardsPerRow` property for validation purposes.
-	 *
-	 * If the user input is not a number or is a negative number then `cardsPerRow` will be set to its default (3).
-	 */
-	@Watch('cardsPerRow')
-	validateCardsPerRow() {
-		if (isNaN(this.cardsPerRow) || (!isNaN(this.cardsPerRow) && this.cardsPerRow <= 0)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' cards-per-row ')
-				.addRegularText('on')
-				.addMonospaceText(' <ontario-card> ')
-				.addRegularText(
-					`${
-						isNaN(this.cardsPerRow) ? 'was set to a non-numeric value' : 'was set to a negative number'
-					}; only a positive number is allowed. The default number of cards per row: `,
-				)
-				.addMonospaceText(' 3 ')
-				.addRegularText('was assumed.')
-				.printMessage();
-			this.cardsPerRowState = 3;
-		} else {
-			this.cardsPerRowState = this.cardsPerRow;
-		}
-	}
-
-	/**
 	 * Print the invalid `cardType` prop warning message.
 	 * @returns default type (basic).
 	 */
@@ -161,79 +176,54 @@ export class OntarioCard {
 	}
 
 	/**
-	 * Determines the header style based on the headerType.
-	 */
-	private determineHeaderStyle() {
-		switch (this.headerTypeState) {
-			case 'default':
-				this.headerTypeState = 'default';
-				break;
-			case 'darkAccent':
-				this.headerTypeState = 'dark';
-				break;
-			case 'accent':
-				this.headerTypeState = 'light';
-				break;
-			default:
-				this.headerTypeState = 'default'; // Set a default value in case of an unknown state
-		}
-
-		return this.headerTypeState;
-	}
-
-	/**
-	 * @returns the classes of the ontario cards based off the `cardType` and number of cards per row.
+	 * @returns the classes of the ontario cards based off the `cardType` and `headerType`.
 	 */
 	private getClass() {
-		return `ontario-card__container ontario-card-type--${this.cardTypeState} ontario-card--cards-per-row-${this.cardsPerRowState}`;
+		if (this.cardTypeState === 'horizontal') {
+			return `ontario-card ontario-card__card-type--horizontal ontario-card__image-${this.horizontalImagePositionType} ontario-card__image-size-${this.horizontalImageSizeType}`;
+		} else {
+			// Return other classes when cardTypeState is not 'horizontal'
+			return `ontario-card ontario-card__header-type--${this.headerTypeState} ontario-card__card-type--${this.cardTypeState}`;
+		}
+	}
+
+	private getHref() {
+		return this.cardLink ? this.cardLink : '#';
 	}
 
 	componentWillLoad() {
-		this.validateCardsPerRow();
 		this.validateCardType();
 		this.validateHeaderType();
-		this.determineHeaderStyle();
-		this.parseCards();
 	}
-
-	/**
-	 * This helper is used to help load translations for any slots + text content passed in by the user.
-	 */
-	componentDidLoad() {}
 
 	render() {
 		return (
-			<ul class={this.getClass()}>
-				{this.internalCards?.map((card) => (
-					<li
-						class={`ontario-card
-								ontario-card--${this.headerTypeState}
-								${this.cardTypeState === 'horizontal' ? 'ontario-card--position-horizontal' : 'ontario-card--position-vertical'}
-							`}
-					>
-						{card.image && (
-							<div class="ontario-card__image-container">
-								<img class="ontario-card__image" src={card.image} />
-							</div>
-						)}
-						<div
-							class={`
-									ontario-card__text-container
-									${card.image ? 'ontario-card--image-true' : ''}
-								`}
-						>
-							<h2 class="ontario-card__heading">
-								<a href="#">{card.label}</a>
-							</h2>
-							{card.description && (
-								<div class="ontario-card__description">
-									<p>{card.description}</p>
-								</div>
-							)}
+			<li class={this.getClass()}>
+				{this.image && (
+					<div class="ontario-card__image-container">
+						<a href={this.getHref()} aria-label={this.ariaLabelText}>
+							<img class="ontario-card__image" src={this.image} />
+						</a>
+					</div>
+				)}
+				<div
+					class={`
+										ontario-card__text-container
+										${this.image ? 'ontario-card--image-true' : ''}
+									`}
+				>
+					<h2 class="ontario-card__heading">
+						<a href={this.getHref()} aria-label={this.ariaLabelText}>
+							{this.label}
+						</a>
+					</h2>
+					{this.description && (
+						<div class="ontario-card__description">
+							<p>{this.description}</p>
 						</div>
-					</li>
-				))}
-			</ul>
+					)}
+				</div>
+			</li>
 		);
 	}
 }

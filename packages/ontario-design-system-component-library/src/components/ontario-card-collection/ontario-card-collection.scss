@@ -1,0 +1,40 @@
+@use 'sass:math';
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
+	spacing;
+@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables'
+	as breakpoints;
+
+.ontario-card-collection__container {
+	display: flex;
+}
+
+.ontario-card-collecton--cards-per-row-4 ::slotted(ontario-card) {
+	width: calc(25% - 2rem);
+
+	&:nth-child(4n) {
+		margin-right: spacing.$spacing-0;
+	}
+
+	@media screen and (max-width: breakpoints.$medium-breakpoint) {
+		width: calc(50% - 1.25rem);
+		&:nth-child(2n) {
+			margin-right: spacing.$spacing-0;
+		}
+	}
+}
+
+.ontario-card-collecton--cards-per-row-3 ::slotted(ontario-card) {
+	width: calc(33.3% - 1.75rem);
+
+	&:nth-child(3n) {
+		margin-right: spacing.$spacing-0;
+	}
+}
+
+.ontario-card-collecton--cards-per-row-2 ::slotted(ontario-card) {
+	width: calc(50% - 1.25rem);
+
+	&:nth-child(2n) {
+		margin-right: spacing.$spacing-0;
+	}
+}
