@@ -7,6 +7,7 @@ export const DIRECTIVES = [
 	d.OntarioBlockquote,
 	d.OntarioButton,
 	d.OntarioCallout,
+	d.OntarioCard,
 	d.OntarioCheckboxes,
 	d.OntarioCriticalAlert,
 	d.OntarioDateInput,

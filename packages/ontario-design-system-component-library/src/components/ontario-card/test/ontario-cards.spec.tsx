@@ -1,10 +1,10 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { OntarioCards } from '../ontario-card';
+import { OntarioCard } from '../ontario-card';
 
 describe('ontario-cards', () => {
 	it('renders', async () => {
 		const page = await newSpecPage({
-			components: [OntarioCards],
+			components: [OntarioCard],
 			html: `<ontario-cards></ontario-cards>`,
 		});
 		expect(page.root).toEqualHtml(`

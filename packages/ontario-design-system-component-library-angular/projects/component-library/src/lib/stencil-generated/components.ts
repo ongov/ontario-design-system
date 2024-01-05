@@ -127,6 +127,26 @@ export class OntarioCallout {
 export declare interface OntarioCallout extends Components.OntarioCallout {}
 
 @ProxyCmp({
+	inputs: ['cardType', 'cards', 'cardsPerRow', 'headerType'],
+})
+@Component({
+	selector: 'ontario-card',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['cardType', 'cards', 'cardsPerRow', 'headerType'],
+})
+export class OntarioCard {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioCard extends Components.OntarioCard {}
+
+@ProxyCmp({
 	inputs: [
 		'caption',
 		'customOnBlur',

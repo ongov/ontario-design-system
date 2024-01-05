@@ -1,8 +1,7 @@
 import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
-
-import { CardType, CardTypes, HeaderType, HeaderTypes, CardsPerRow, CardsPerRowValues } from './ontario-card-types';
-
-import { validatePropExists, validateValueAgainstArray } from '../../utils/validation/validation-functions';
+import { Card } from './card.interface';
+import { CardType, CardTypes, HeaderType, HeaderTypes, CardsPerRow } from './ontario-card-types';
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 @Component({
@@ -14,6 +13,22 @@ export class OntarioCard {
 	@Element() host: HTMLElement;
 
 	/**
+	 * Used to include individual cards for the card component.
+	 * This is passed in as an array of objects with key-value pairs.
+	 *
+	 * @example
+	 * 	<ontario-card
+	 * 		card-type="basic"
+	 * 		header-type="default"
+	 *		cards='[
+	 *			{"label": "Card 1", "description": "This is a string"},
+	 *			{"label": "Card 2", "description": "This is a string"}
+	 *		]'
+	 *	></ontario-card>
+	 */
+	@Prop() cards: string | Card[];
+
+	/**
 	 * The type of card to render.
 	 *
 	 * If no type is passed, it will default to 'basic'.
@@ -21,86 +36,55 @@ export class OntarioCard {
 	@Prop() cardType: CardType = 'basic';
 
 	/**
-	 * The type of card to render.
-	 *
-	 * If no type is passed, it will default to 'basic'.
+	 * The type of header to render.
 	 */
-	@Prop() headerType: HeaderType = 'default';
+	@Prop() headerType: HeaderType;
 
 	/**
-	 * The type of card to render.
+	 * The number of cards to display per row.
 	 *
-	 * If no type is passed, it will default to 'basic'.
+	 * If no number is passed, it will default to 3.
 	 */
 	@Prop() cardsPerRow: CardsPerRow = 3;
 
 	/**
-	 * Text to be displayed within the button. This will override the text provided through the host element textContent.
-	 *
-	 * @example
-	 * <ontario-button label="Label Text">Text</ontario-button>
-	 *
-	 * The resulting button will have the label `"Label Text"`.
-	 */
-	@Prop() title?: string;
-
-	/**
-	 * Text to be displayed within the button. This will override the text provided through the host element textContent.
-	 *
-	 * @example
-	 * <ontario-button label="Label Text">Text</ontario-button>
-	 *
-	 * The resulting button will have the label `"Label Text"`.
-	 */
-	@Prop() description?: string;
-
-	/**
-	 * Provides more context as to what the button interaction is doing. This should only be used for accessibility purposes, if the button interaction requires more description than what the text provides.
-	 *
-	 *  This is optional.
-	 *
-	 * @example
-	 * <ontario-button aria-label-text="Click button to open map">Open</ontario button>
-	 */
-	@Prop({ mutable: true }) ariaTitleText?: string;
-
-	/**
-	 * The unique identifier of the button. This is optional - if no ID is passed, one will be generated.
-	 */
-	@Prop({ mutable: true }) elementId?: string;
-
-	/**
 	 * Mutable variable, for internal use only.
-	 * Set the button's type depending on validation result.
+	 * Set the card's type depending on validation result.
 	 */
 	@State() private cardTypeState: string;
 
+	/**
+	 * Mutable variable, for internal use only.
+	 * Set the card's header type depending on validation result.
+	 */
 	@State() private headerTypeState: string;
 
-	@State() private titleState: string;
+	/**
+	 * Internal state containing the parsed Cards.
+	 */
+	@State() private internalCards: Card[] = [];
 
 	/**
 	 * Mutable variable, for internal use only.
-	 * Set the icon's width depending on validation result.
+	 * Set number of cards per row depending on validation result.
 	 */
 	@State() cardsPerRowState: number;
 
-	/*
-	 * Watch for changes to the `label` property for validation purposes.
-	 *
-	 * If  no `label` prop is provided, the `label` prop will be set to the host element textContent (if it exists).
+	/**
+	 * Parse cards data, this is used to handle JSON strings from HTML.
 	 */
-	@Watch('title')
-	private updateTitleContent() {
-		this.titleState = this.title ?? this.host.textContent ?? '';
-		this.validateTitleContent(this.titleState);
+	@Watch('cards')
+	private parseCards() {
+		if (typeof this.cards !== 'undefined') {
+			this.internalCards = Array.isArray(this.cards) ? this.cards : JSON.parse(this.cards);
+		}
 	}
 
 	/**
-	 * Watch for changes to the `type` property for validation purposes.
+	 * Watch for changes to the `cardType` property for validation purposes.
 	 *
-	 * If the user input doesn't match one of the array values then `type` will be set to its default (`secondary`).
-	 * If a match is found in one of the array values then `type` will be set to the matching array key value.
+	 * If the user input doesn't match one of the array values then `cardType` will be set to its default (`basic`).
+	 * If a match is found in one of the array values then `cardType` will be set to the matching array key value.
 	 */
 	@Watch('cardType')
 	validateType() {
@@ -113,10 +97,25 @@ export class OntarioCard {
 	}
 
 	/**
-	 * Watch for changes to the `type` property for validation purposes.
+	 * Watch for changes to the `headerType` property for validation purposes.
 	 *
-	 * If the user input doesn't match one of the array values then `type` will be set to its default (`secondary`).
-	 * If a match is found in one of the array values then `type` will be set to the matching array key value.
+	 * If the user input doesn't match one of the array values then `headerType` will be set to its default (`default`).
+	 * If a match is found in one of the array values then `headerType` will be set to the matching array key value.
+	 */
+	@Watch('headerType')
+	validateHeaderType() {
+		const isValid = validateValueAgainstArray(this.headerType, HeaderTypes);
+		if (isValid) {
+			this.headerTypeState = this.headerType;
+		} else {
+			this.headerTypeState = this.headerType;
+		}
+	}
+
+	/**
+	 * Watch for changes to the `cardsPerRow` property for validation purposes.
+	 *
+	 * If the user input is not a number or is a negative number then `cardsPerRow` will be set to its default (3).
 	 */
 	@Watch('cardsPerRow')
 	validateCardsPerRow() {
@@ -126,7 +125,7 @@ export class OntarioCard {
 				.addDesignSystemTag()
 				.addMonospaceText(' cards-per-row ')
 				.addRegularText('on')
-				.addMonospaceText(' <ontario-cardy> ')
+				.addMonospaceText(' <ontario-card> ')
 				.addRegularText(
 					`${
 						isNaN(this.cardsPerRow) ? 'was set to a non-numeric value' : 'was set to a negative number'
@@ -142,40 +141,8 @@ export class OntarioCard {
 	}
 
 	/**
-	 * Watch for changes to the `type` property for validation purposes.
-	 *
-	 * If the user input doesn't match one of the array values then `type` will be set to its default (`secondary`).
-	 * If a match is found in one of the array values then `type` will be set to the matching array key value.
-	 */
-	@Watch('headerType')
-	validateHeaderType() {
-		const isValid = validateValueAgainstArray(this.headerType, HeaderTypes);
-		if (isValid) {
-			this.headerTypeState = this.headerType;
-		} else {
-			this.headerTypeState = this.warnDefaultType();
-		}
-	}
-
-	/**
-	 * Print the missing `label` prop warning message
-	 */
-	validateTitleContent(newValue: string) {
-		if (validatePropExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' title ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-card> ')
-				.addRegularText('was not provided')
-				.printMessage();
-		}
-	}
-
-	/**
-	 * Print the invalid `type` prop warning message
-	 * @returns default type (secondary)
+	 * Print the invalid `cardType` prop warning message.
+	 * @returns default type (basic).
 	 */
 	private warnDefaultType(): CardType {
 		const message = new ConsoleMessageClass();
@@ -185,7 +152,7 @@ export class OntarioCard {
 			.addRegularText('on')
 			.addMonospaceText(' <ontario-card> ')
 			.addRegularText('was set to an invalid type; only')
-			.addMonospaceText(' basic, image, title, horizontal ')
+			.addMonospaceText(' basic, image, label, horizontal ')
 			.addRegularText('are supported. The default type')
 			.addMonospaceText(' basic ')
 			.addRegularText('is assumed.')
@@ -194,24 +161,42 @@ export class OntarioCard {
 	}
 
 	/**
-	 * @returns the classes of the button based of the button's `type`.
+	 * Determines the header style based on the headerType.
 	 */
-	private getClass() {
-		return `ontario-card ontario-card-type--${this.cardTypeState} ontario-card__cards-per-row--${this.cardTypeState}`;
+	private determineHeaderStyle() {
+		switch (this.headerTypeState) {
+			case 'default':
+				this.headerTypeState = 'default';
+				break;
+			case 'darkAccent':
+				this.headerTypeState = 'dark';
+				break;
+			case 'accent':
+				this.headerTypeState = 'light';
+				break;
+			default:
+				this.headerTypeState = 'default'; // Set a default value in case of an unknown state
+		}
+
+		return this.headerTypeState;
 	}
 
-	public getId(): string {
-		return this.elementId ?? '';
+	/**
+	 * @returns the classes of the ontario cards based off the `cardType` and number of cards per row.
+	 */
+	private getClass() {
+		return `ontario-card__container ontario-card-type--${this.cardTypeState} ontario-card--cards-per-row-${this.cardsPerRowState}`;
 	}
 
 	/**
 	 * Set `buttonId`, `label`, and `ariaLabel` using internal component logic.
 	 */
 	componentWillLoad() {
-		this.updateTitleContent();
+		this.validateCardsPerRow();
 		this.validateType();
 		this.validateHeaderType();
-		this.ariaTitleText = this.ariaTitleText ?? this.titleState;
+		this.determineHeaderStyle();
+		this.parseCards();
 	}
 
 	/**
@@ -221,9 +206,37 @@ export class OntarioCard {
 
 	render() {
 		return (
-			<button type={this.htmlTypeState} class={this.getClass()} aria-label={this.ariaLabelText} id={this.getId()}>
-				{this.labelState}
-			</button>
+			<ul class={this.getClass()}>
+				{this.internalCards?.map((card) => (
+					<li
+						class={`ontario-card
+								ontario-card--${this.headerTypeState}
+								${this.cardTypeState === 'horizontal' ? 'ontario-card--position-horizontal' : 'ontario-card--position-vertical'}
+							`}
+					>
+						{card.image && (
+							<div class="ontario-card__image-container">
+								<img class="ontario-card__image" src={card.image} />
+							</div>
+						)}
+						<div
+							class={`
+									ontario-card__text-container
+									${card.image ? 'ontario-card--image-true' : ''}
+								`}
+						>
+							<h2 class="ontario-card__heading">
+								<a href="#">{card.label}</a>
+							</h2>
+							{card.description && (
+								<div class="ontario-card__description">
+									<p>{card.description}</p>
+								</div>
+							)}
+						</div>
+					</li>
+				))}
+			</ul>
 		);
 	}
 }

@@ -1,43 +1,35 @@
 import { Base } from '../../utils/common/common.interface';
-import { CardType, HeaderType } from './ontario-card-types';
 
 export interface Card extends Base {
 	/**
-	 * The type of button to render.
-	 *
-	 * If no type is passed, it will default to 'secondary'.
+	 * Text to be displayed within the header.
 	 */
-	type: CardType;
+	label?: string;
 
 	/**
-	 * The type of header to render.
-	 *
-	 * If no type is passed, it will default to 'default'.
+	 * Image to be displayed within the card image container.
 	 */
-	headerType: HeaderType;
+	image?: string;
 
 	/**
-	 * Text to be displayed within the button. This will override the text provided through the host element textContent.
+	 * Text to be displayed within the card description container.
+	 */
+	description?: string;
+
+	/**
+	 * Provides more context as to what the card interaction is doing. This should only be used for accessibility purposes, if the card interaction requires more description than what the text provides.
+	 *
+	 * This is optional.
 	 *
 	 * @example
-	 * <ontario-button label="Label Text">Text</ontario-button>
-	 *
-	 * The resulting button will have the label `"Label Text"`.
+	 * 	<ontario-card
+	 * 		card-type="basic"
+	 * 		header-type="default"
+	 *		cards='[
+	 *			{"label": "Card 1", "aria-label-text": "Clicking this card will lead to the contact page", "description": "This is a string"},
+	 *			{"label": "Card 2", "description": "This is a string"}
+	 *		]'
+	 *	></ontario-card>
 	 */
-	title?: string;
-
-	/**
-	 * Provides more context as to what the button interaction is doing. This should only be used for accessibility purposes, if the button interaction requires more description than what the text provides.
-	 *
-	 *  This is optional.
-	 *
-	 * @example
-	 * <ontario-button aria-label-text="Click button to open map">Open</ontario button>
-	 */
-	ariaTitleText?: string;
-
-	/**
-	 * The unique identifier of the button. This is optional - if no ID is passed, one will be generated.
-	 */
-	elementId?: string;
+	ariaLabelText?: string;
 }
