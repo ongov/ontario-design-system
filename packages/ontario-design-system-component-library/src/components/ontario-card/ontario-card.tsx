@@ -135,7 +135,7 @@ export class OntarioCard {
 		if (isValid) {
 			this.cardTypeState = this.cardType;
 		} else {
-			this.cardTypeState = this.warnDefaultType();
+			this.cardTypeState = this.warnDefaultCardType();
 		}
 	}
 
@@ -151,7 +151,7 @@ export class OntarioCard {
 		if (isValid) {
 			this.headerTypeState = this.headerType;
 		} else {
-			this.headerTypeState = this.headerType;
+			this.headerTypeState = this.warnDefaultHeaderType();
 		}
 	}
 
@@ -159,7 +159,7 @@ export class OntarioCard {
 	 * Print the invalid `cardType` prop warning message.
 	 * @returns default type (basic).
 	 */
-	private warnDefaultType(): CardType {
+	private warnDefaultCardType(): CardType {
 		const message = new ConsoleMessageClass();
 		message
 			.addDesignSystemTag()
@@ -173,6 +173,26 @@ export class OntarioCard {
 			.addRegularText('is assumed.')
 			.printMessage();
 		return 'basic';
+	}
+
+	/**
+	 * Print the invalid `headerType` prop warning message.
+	 * @returns default type (default).
+	 */
+	private warnDefaultHeaderType(): HeaderType {
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addMonospaceText(' header-type ')
+			.addRegularText('on')
+			.addMonospaceText(' <ontario-card> ')
+			.addRegularText('was set to an invalid type; only')
+			.addMonospaceText(' default, light, dark')
+			.addRegularText('are supported. The default type')
+			.addMonospaceText(' default ')
+			.addRegularText('is assumed.')
+			.printMessage();
+		return 'default';
 	}
 
 	/**
