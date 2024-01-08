@@ -9,9 +9,15 @@ describe('ontario-card', () => {
 		});
 		expect(page.root).toEqualHtml(`
       <ontario-card>
-        <mock:shadow-root>
-					<ul class="ontario-card--cards-per-row-3 ontario-card-type--basic ontario-card__container"></ul>
-        </mock:shadow-root>
+				<mock:shadow-root>
+					<li class="ontario-card ontario-card__card-type--basic ontario-card__header-type--default">
+						<div class="ontario-card__text-container">
+							<h2 class="ontario-card__heading">
+								<a href="#"></a>
+							</h2>
+						</div>
+					</li>
+				</mock:shadow-root>
       </ontario-card>
     `);
 	});
