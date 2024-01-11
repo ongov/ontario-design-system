@@ -201,7 +201,7 @@
 
 .ontario-card__image-container {
 	.ontario-card--position-vertical & {
-		margin-bottom: -#{spacing.$spacing-2};
+		margin-bottom: spacing.$spacing-2 * -1;
 	}
 
 	.ontario-card__card-type--horizontal & {

@@ -226,12 +226,7 @@ export class OntarioCard {
 						</a>
 					</div>
 				)}
-				<div
-					class={`
-										ontario-card__text-container
-										${this.image ? 'ontario-card--image-true' : ''}
-									`}
-				>
+				<div class={`ontario-card__text-container ${this.image ? 'ontario-card--image-true' : ''}`}>
 					<h2 class="ontario-card__heading">
 						<a href={this.getHref()} aria-label={this.ariaLabelText}>
 							{this.label}
