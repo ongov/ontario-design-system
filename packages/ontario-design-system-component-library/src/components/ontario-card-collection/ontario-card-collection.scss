@@ -6,6 +6,7 @@
 
 .ontario-card-collection__container {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .ontario-card-collecton--cards-per-row-4 ::slotted(ontario-card) {
