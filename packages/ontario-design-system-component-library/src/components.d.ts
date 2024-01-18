@@ -14,6 +14,13 @@ import {
 	HighlightColourOptions,
 } from './utils/components/callout-aside/callout-aside.interface';
 import { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
+import {
+	CardType,
+	HeaderType,
+	HorizontalImagePositionType,
+	HorizontalImageSizeType,
+} from './components/ontario-card/ontario-card-types';
+import { CardsPerRow } from './components/ontario-card-collection/ontario-collection-card-types';
 import { Caption } from './utils/common/input-caption/caption.interface';
 import { Hint, HintContentType } from './utils/common/common.interface';
 import { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
@@ -58,6 +65,13 @@ export {
 	HighlightColourOptions,
 } from './utils/components/callout-aside/callout-aside.interface';
 export { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
+export {
+	CardType,
+	HeaderType,
+	HorizontalImagePositionType,
+	HorizontalImageSizeType,
+} from './components/ontario-card/ontario-card-types';
+export { CardsPerRow } from './components/ontario-card-collection/ontario-collection-card-types';
 export { Caption } from './utils/common/input-caption/caption.interface';
 export { Hint, HintContentType } from './utils/common/common.interface';
 export { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
@@ -207,6 +221,53 @@ export namespace Components {
 		 * Optional prop to choose the border colour of the callout. If none is passed, the default colour will be teal.
 		 */
 		highlightColour?: HighlightColourOptions;
+	}
+	interface OntarioCard {
+		/**
+		 * Provides more context as to what the card interaction is doing. This should only be used for accessibility purposes, if the card interaction requires more * * description than what the text provides.  This is optional.
+		 */
+		ariaLabelText?: string;
+		/**
+		 * Action link for when the card is clicked.  This is optional.
+		 */
+		cardLink?: string;
+		/**
+		 * The type of card to render.  If no type is passed, it will default to 'basic'.
+		 */
+		cardType: CardType;
+		/**
+		 * Text to be displayed within the card description container.  This is optional.
+		 */
+		description?: string;
+		/**
+		 * The type of header to render.  If no type is passed, it will default to 'default'.
+		 */
+		headerType: HeaderType;
+		/**
+		 * The position of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
+		 * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
+		 */
+		horizontalImagePositionType?: HorizontalImagePositionType;
+		/**
+		 * The size of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
+		 * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
+		 */
+		horizontalImageSizeType?: HorizontalImageSizeType;
+		/**
+		 * Image to be displayed within the card image container.  This is optional.
+		 */
+		image?: string;
+		/**
+		 * Text to be displayed within the header.
+		 * @example <ontario-card 	header-type="dark" 	card-type="horizontal" 	label="Card Title 1" 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" >
+		 */
+		label: string;
+	}
+	interface OntarioCardCollection {
+		/**
+		 * The number of cards to display per row.  If no number is passed, it will default to 3.
+		 */
+		cardsPerRow: CardsPerRow;
 	}
 	interface OntarioCheckboxes {
 		/**
@@ -1899,6 +1960,16 @@ declare global {
 		prototype: HTMLOntarioCalloutElement;
 		new (): HTMLOntarioCalloutElement;
 	};
+	interface HTMLOntarioCardElement extends Components.OntarioCard, HTMLStencilElement {}
+	var HTMLOntarioCardElement: {
+		prototype: HTMLOntarioCardElement;
+		new (): HTMLOntarioCardElement;
+	};
+	interface HTMLOntarioCardCollectionElement extends Components.OntarioCardCollection, HTMLStencilElement {}
+	var HTMLOntarioCardCollectionElement: {
+		prototype: HTMLOntarioCardCollectionElement;
+		new (): HTMLOntarioCardCollectionElement;
+	};
 	interface HTMLOntarioCheckboxesElement extends Components.OntarioCheckboxes, HTMLStencilElement {}
 	var HTMLOntarioCheckboxesElement: {
 		prototype: HTMLOntarioCheckboxesElement;
@@ -2553,6 +2624,8 @@ declare global {
 		'ontario-blockquote': HTMLOntarioBlockquoteElement;
 		'ontario-button': HTMLOntarioButtonElement;
 		'ontario-callout': HTMLOntarioCalloutElement;
+		'ontario-card': HTMLOntarioCardElement;
+		'ontario-card-collection': HTMLOntarioCardCollectionElement;
 		'ontario-checkboxes': HTMLOntarioCheckboxesElement;
 		'ontario-critical-alert': HTMLOntarioCriticalAlertElement;
 		'ontario-date-input': HTMLOntarioDateInputElement;
@@ -2798,6 +2871,53 @@ declare namespace LocalJSX {
 		 * Optional prop to choose the border colour of the callout. If none is passed, the default colour will be teal.
 		 */
 		highlightColour?: HighlightColourOptions;
+	}
+	interface OntarioCard {
+		/**
+		 * Provides more context as to what the card interaction is doing. This should only be used for accessibility purposes, if the card interaction requires more * * description than what the text provides.  This is optional.
+		 */
+		ariaLabelText?: string;
+		/**
+		 * Action link for when the card is clicked.  This is optional.
+		 */
+		cardLink?: string;
+		/**
+		 * The type of card to render.  If no type is passed, it will default to 'basic'.
+		 */
+		cardType?: CardType;
+		/**
+		 * Text to be displayed within the card description container.  This is optional.
+		 */
+		description?: string;
+		/**
+		 * The type of header to render.  If no type is passed, it will default to 'default'.
+		 */
+		headerType?: HeaderType;
+		/**
+		 * The position of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
+		 * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
+		 */
+		horizontalImagePositionType?: HorizontalImagePositionType;
+		/**
+		 * The size of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
+		 * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
+		 */
+		horizontalImageSizeType?: HorizontalImageSizeType;
+		/**
+		 * Image to be displayed within the card image container.  This is optional.
+		 */
+		image?: string;
+		/**
+		 * Text to be displayed within the header.
+		 * @example <ontario-card 	header-type="dark" 	card-type="horizontal" 	label="Card Title 1" 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" >
+		 */
+		label?: string;
+	}
+	interface OntarioCardCollection {
+		/**
+		 * The number of cards to display per row.  If no number is passed, it will default to 3.
+		 */
+		cardsPerRow?: CardsPerRow;
 	}
 	interface OntarioCheckboxes {
 		/**
@@ -4529,6 +4649,8 @@ declare namespace LocalJSX {
 		'ontario-blockquote': OntarioBlockquote;
 		'ontario-button': OntarioButton;
 		'ontario-callout': OntarioCallout;
+		'ontario-card': OntarioCard;
+		'ontario-card-collection': OntarioCardCollection;
 		'ontario-checkboxes': OntarioCheckboxes;
 		'ontario-critical-alert': OntarioCriticalAlert;
 		'ontario-date-input': OntarioDateInput;
@@ -4670,6 +4792,9 @@ declare module '@stencil/core' {
 			'ontario-blockquote': LocalJSX.OntarioBlockquote & JSXBase.HTMLAttributes<HTMLOntarioBlockquoteElement>;
 			'ontario-button': LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
 			'ontario-callout': LocalJSX.OntarioCallout & JSXBase.HTMLAttributes<HTMLOntarioCalloutElement>;
+			'ontario-card': LocalJSX.OntarioCard & JSXBase.HTMLAttributes<HTMLOntarioCardElement>;
+			'ontario-card-collection': LocalJSX.OntarioCardCollection &
+				JSXBase.HTMLAttributes<HTMLOntarioCardCollectionElement>;
 			'ontario-checkboxes': LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
 			'ontario-critical-alert': LocalJSX.OntarioCriticalAlert & JSXBase.HTMLAttributes<HTMLOntarioCriticalAlertElement>;
 			'ontario-date-input': LocalJSX.OntarioDateInput & JSXBase.HTMLAttributes<HTMLOntarioDateInputElement>;
