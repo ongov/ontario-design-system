@@ -19,7 +19,6 @@ import {
 } from '../../utils/events/event-handler.interface';
 import { handleInputEvent } from '../../utils/events/event-handler';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { CommonInputEvents } from '../../utils/events/input-events.interface';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
@@ -28,7 +27,7 @@ import { default as translations } from '../../translations/global.i18n.json';
 	styleUrl: 'ontario-input.scss',
 	shadow: true,
 })
-export class OntarioInput implements TextInput, CommonInputEvents {
+export class OntarioInput implements TextInput {
 	@Element() element: HTMLElement;
 
 	hintTextRef: HTMLOntarioHintTextElement | undefined;
@@ -167,11 +166,6 @@ export class OntarioInput implements TextInput, CommonInputEvents {
 	@State() private captionState: InputCaption;
 
 	/**
-	 * Emitted when a input value change occurs.
-	 */
-	@Event() inputValueChange: EventEmitter<string>;
-
-	/**
 	 * Emitted when a input  occurs when an input has been changed.
 	 */
 	@Event() inputOnInput: EventEmitter<InputInputEvent>;
@@ -283,10 +277,10 @@ export class OntarioInput implements TextInput, CommonInputEvents {
 	private handleEvent(event: globalThis.Event, eventType: EventType) {
 		const input = event.target as HTMLInputElement | null;
 
-		if (eventType === EventType.Input && input) {
-			const inputValue = input.value;
-			this.inputValueChange?.emit(inputValue);
-		}
+		// if (eventType === EventType.Input && input) {
+		// 	const inputValue = input.value;
+		// 	this.inputValueChange?.emit(inputValue);
+		// }
 
 		handleInputEvent(
 			event,

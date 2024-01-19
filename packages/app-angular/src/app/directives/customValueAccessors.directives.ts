@@ -13,7 +13,7 @@ import { BaseCustomValueAccessor } from './baseCustomValueAccessor.directives';
 	],
 })
 export class OntarioInputValueAccessor extends BaseCustomValueAccessor {
-	@HostListener('inputValueChange', ['$event.detail'])
+	@HostListener('inputOnChange', ['$event.detail'])
 	_handleChange(value: string) {
 		this.onChange(value);
 	}
@@ -35,7 +35,7 @@ export class OntarioInputValueAccessor extends BaseCustomValueAccessor {
 	],
 })
 export class OntarioTextareaValueAccessor extends BaseCustomValueAccessor {
-	@HostListener('inputValueChange', ['$event.detail'])
+	@HostListener('inputOnChange', ['$event.detail'])
 	_handleChange(value: string) {
 		this.onChange(value);
 	}
