@@ -8,13 +8,6 @@ interface RadioButtonOption {
 	value: string;
 	label: string;
 	elementId: string;
-	checked: boolean;
-}
-
-interface DropdownOption {
-	value: string;
-	label: string;
-	selected: boolean;
 }
 
 interface Translation {
@@ -31,7 +24,7 @@ interface Translation {
 export class FrameThreeComponent implements OnInit {
 	public lang = getLanguage();
 	public selectedRadioValue: string = '';
-	public radioOptions: Record<string, RadioButtonOption> = {};
+	public radioOptions: RadioButtonOption[] = [];
 
 	constructor(
 		private translateService: TranslateService,
@@ -41,37 +34,50 @@ export class FrameThreeComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		const storedRadioValue = localStorage.getItem('selectedRadioValue');
+		this.loadRadioOptions();
+		this.loadSelectedRadioValue();
+		this.changeDetectorRef.detectChanges();
 
-		if (storedRadioValue) {
-			this.selectedRadioValue = storedRadioValue;
-		}
+		// Listen for the custom radioOnChange event
+		document.addEventListener('radioOnChange', (event: Event) => {
+			this.ngZone.run(() => {
+				this.handleRadioChange(event as CustomEvent);
+			});
+		});
 	}
 
 	loadRadioOptions() {
-		const storedRadioOptions = localStorage.getItem('radioOptions');
-		this.radioOptions = storedRadioOptions ? JSON.parse(storedRadioOptions) : {};
+		const translation: Translation = this.getTranslation();
+		this.radioOptions = translation?.contactType?.options || [];
 	}
 
-	handleRadioChange(event: Event) {
-		const customEvent = event as CustomEvent<any>;
-		console.log('custom event detail', customEvent);
-
-		if (customEvent.detail) {
-			// Update the component's state
-			this.selectedRadioValue = customEvent.detail;
-
-			// Update local storage
-			localStorage.setItem('selectedRadioValue', this.selectedRadioValue);
+	handleRadioChange(event: CustomEvent) {
+		if (event) {
+			const { id } = event.detail;
+			this.ngZone.run(() => {
+				this.updateRadioOptionState(id);
+			});
 		}
 	}
 
+	updateRadioOptionState(id: string) {
+		this.selectedRadioValue = id;
+		this.saveSelectedRadioValue();
+	}
+
 	loadSelectedRadioValue() {
-		// Load the selected radio value from localStorage
 		const storedRadioValue = localStorage.getItem('selectedRadioValue');
 		if (storedRadioValue) {
 			this.selectedRadioValue = storedRadioValue;
 		}
+	}
+
+	saveSelectedRadioValue() {
+		localStorage.setItem('selectedRadioValue', this.selectedRadioValue);
+	}
+
+	getSelectedRadioValue() {
+		return this.selectedRadioValue;
 	}
 
 	generateRadioOptions(): RadioButtonOption[] {
@@ -82,7 +88,7 @@ export class FrameThreeComponent implements OnInit {
 			return [];
 		}
 
-		const radioOptions = contactTypeOptions.map((option) => {
+		this.radioOptions = contactTypeOptions.map((option) => {
 			return {
 				value: option.value,
 				label: option.label,
@@ -91,20 +97,7 @@ export class FrameThreeComponent implements OnInit {
 			};
 		});
 
-		return radioOptions;
-	}
-
-	saveRadioOptions() {
-		localStorage.setItem('radioOptions', JSON.stringify(this.radioOptions));
-
-		// Manually trigger change detection after saving radio options
-		this.changeDetectorRef.detectChanges();
-	}
-
-	getSelectedRadioValue() {
-		// Get the selected radio value based on the saved options
-		const selectedOption = Object.values(this.radioOptions).find((option) => option.checked);
-		return selectedOption?.value || '';
+		return this.radioOptions;
 	}
 
 	getTranslation(): Translation {

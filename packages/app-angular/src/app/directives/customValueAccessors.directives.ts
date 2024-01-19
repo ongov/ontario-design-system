@@ -59,7 +59,7 @@ export class OntarioTextareaValueAccessor extends BaseCustomValueAccessor {
 export class OntarioCheckboxesValueAccessor extends BaseCustomValueAccessor {
 	@HostListener('checkboxOnChange', ['$event.detail'])
 	_handleChange(event: any) {
-		this.onChange(event.detail); // Assuming the emitted data contains the checkbox state
+		this.onChange(event);
 	}
 
 	@HostListener('checkboxOnBlur', ['$event'])
@@ -79,7 +79,7 @@ export class OntarioCheckboxesValueAccessor extends BaseCustomValueAccessor {
 	],
 })
 export class OntarioRadioButtonsValueAccessor extends BaseCustomValueAccessor {
-	@HostListener('selectedRadioChange', ['$event.detail'])
+	@HostListener('radioOnChange', ['$event.detail'])
 	_handleChange(event: any) {
 		this.onChange(event.detail);
 	}

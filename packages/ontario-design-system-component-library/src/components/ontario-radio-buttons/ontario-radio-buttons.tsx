@@ -20,7 +20,7 @@ import {
 	RadioAndCheckboxChangeEvent,
 	EventType,
 } from '../../utils/events/event-handler.interface';
-import { handleInputEvent, updateCheckboxStates } from '../../utils/events/event-handler';
+import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
@@ -53,7 +53,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language?: Language = 'en';
+	@Prop({ mutable: true }) language?: Language;
 
 	/**
 	 * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
@@ -187,20 +187,6 @@ export class OntarioRadioButtons implements RadioButtons {
 	@State() private captionState: InputCaption;
 
 	/**
-	 * State to store the users selected value
-	 */
-	@State() selectedValue: string;
-
-	/**
-	 * EventEmitter for changes in the selected radio button.
-	 * Emits a string representing the identifier or value of the newly selected radio button.
-	 *
-	 * This event is triggered when the selected radio button within the component changes.
-	 * The emitted string corresponds to the identifier or value of the newly selected radio button.
-	 */
-	@Event({ eventName: 'selectedRadioChange' }) selectedRadioChange: EventEmitter<string>;
-
-	/**
 	 * Emitted when a keyboard input or mouse event occurs when a radio option has been changed.
 	 */
 	@Event({ eventName: 'radioOnChange' }) radioOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
@@ -220,7 +206,9 @@ export class OntarioRadioButtons implements RadioButtons {
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
 	handleSetAppLanguage(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+		if (!this.language) {
+			this.language = validateLanguage(event);
+		}
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
@@ -340,29 +328,30 @@ export class OntarioRadioButtons implements RadioButtons {
 	/**
 	 * Function to handle radio buttons events and the information pertaining to the radio buttons to emit.
 	 */
-	private handleEvent(event: globalThis.Event, eventType: EventType) {
+	private handleEvent(event: Event, eventType: EventType) {
 		const input = event.target as HTMLInputElement | null;
 
-		if (input && (input.type === 'checkbox' || input.type === 'radio')) {
-			updateCheckboxStates(input, input.checked ?? false, this.element);
-
-			handleInputEvent(
-				event,
-				eventType,
-				input,
-				this.radioOnChange,
-				this.radioOnFocus,
-				this.radioOnBlur,
-				undefined,
-				input.type,
-				this.customOnChange,
-				this.customOnFocus,
-				this.customOnBlur,
-				undefined,
-				this.element,
-			);
+		if (input) {
+			input.checked = input.checked ?? '';
 		}
+
+		handleInputEvent(
+			event,
+			eventType,
+			input,
+			this.radioOnChange,
+			this.radioOnFocus,
+			this.radioOnBlur,
+			undefined,
+			'radio',
+			this.customOnChange,
+			this.customOnFocus,
+			this.customOnBlur,
+			undefined,
+			this.element,
+		);
 	}
+
 	/**
 	 * If a `hintText` prop is passed, the id generated from it will be set to the internal `hintTextId` state to match with the fieldset `aria-describedBy` attribute.
 	 */

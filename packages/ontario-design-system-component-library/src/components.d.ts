@@ -2816,10 +2816,6 @@ declare namespace LocalJSX {
 		 */
 		name?: string;
 		/**
-		 * EventEmitter for checkbox state changes. Emits an object with the `id` representing the identifier of the checkbox and `checked` indicating the new state of the checkbox (true if checked, false if unchecked).
-		 */
-		onCheckboxChange?: (event: OntarioCheckboxesCustomEvent<{ id: string; checked: boolean }>) => void;
-		/**
 		 * Emitted when a keyboard input event occurs when a checkbox option has lost focus.
 		 */
 		onCheckboxOnBlur?: (event: OntarioCheckboxesCustomEvent<InputFocusBlurEvent>) => void;
@@ -4356,10 +4352,6 @@ declare namespace LocalJSX {
 		 * Emitted when a keyboard input event occurs when a radio option has gained focus.
 		 */
 		onRadioOnFocus?: (event: OntarioRadioButtonsCustomEvent<InputFocusBlurEvent>) => void;
-		/**
-		 * EventEmitter for changes in the selected radio button. Emits a string representing the identifier or value of the newly selected radio button.  This event is triggered when the selected radio button within the component changes. The emitted string corresponds to the identifier or value of the newly selected radio button.
-		 */
-		onSelectedRadioChange?: (event: OntarioRadioButtonsCustomEvent<string>) => void;
 		/**
 		 * The options for the radio button group.  Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a group, each radio button will be displayed as an option.  In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the group.
 		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }'   name="radios"   hint-text="Hint text for the radio button group."   options='[     {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label"     },     {        "value": "radio-option-2", 		  "elementId": "radio-2",        "label": "Radio option 2 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 2", 		      "content": "Example hint expander content for radio option 2." 	  }      }   ]'   required="true" > </ontario-radio-buttons>

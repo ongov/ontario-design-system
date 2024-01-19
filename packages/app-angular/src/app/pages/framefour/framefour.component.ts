@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, NgZone, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -34,7 +34,6 @@ interface Translation {
 export class FrameFourComponent implements OnInit {
 	public lang = getLanguage();
 	public checkboxStates: Record<string, boolean> = {};
-	private boundHandleCheckboxChange = this.handleCheckboxChange.bind(this);
 
 	constructor(
 		private translateService: TranslateService,
@@ -44,38 +43,38 @@ export class FrameFourComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		try {
-			const storedCheckboxStates = localStorage.getItem('checkboxStates');
-			this.checkboxStates = storedCheckboxStates ? JSON.parse(storedCheckboxStates) : {};
+		this.loadCheckboxStates();
+		this.changeDetectorRef.detectChanges();
 
-			// Manually trigger change detection
-			this.changeDetectorRef.detectChanges();
-		} catch (error) {
-			console.error('Error retrieving checkbox states from localStorage:', error);
-		}
-
-		document.addEventListener('checkboxChange', (event: Event) => {
+		document.addEventListener('checkboxOnChange', (event: Event) => {
 			this.ngZone.run(() => {
-				this.handleCheckboxChange(event as CustomEvent);
+				this.handleCheckboxOnChange(event as CustomEvent);
 			});
 		});
-
-		document.addEventListener('checkboxChange', this.handleCheckboxChange.bind(this));
 	}
 
 	loadCheckboxStates() {
 		const storedCheckboxStates = localStorage.getItem('checkboxStates');
-		this.checkboxStates = storedCheckboxStates ? JSON.parse(storedCheckboxStates) : {};
+
+		try {
+			this.checkboxStates = storedCheckboxStates ? JSON.parse(storedCheckboxStates) : {};
+		} catch (error) {
+			console.error('Error parsing storedCheckboxStates:', error);
+		}
 	}
 
-	handleCheckboxChange(event: any) {
-		if (event.detail) {
+	handleCheckboxOnChange(event: any) {
+		if (event) {
 			const { id, checked } = event.detail;
 			this.ngZone.run(() => {
-				this.checkboxStates = { ...this.checkboxStates, [id]: checked };
-				this.saveCheckboxStates();
+				this.updateCheckboxState(id, checked);
 			});
 		}
+	}
+
+	updateCheckboxState(id: string, checked: boolean) {
+		this.checkboxStates = { ...this.checkboxStates, [id]: checked };
+		this.saveCheckboxStates();
 	}
 
 	generateOptions(): CheckboxOption[] {
@@ -86,7 +85,7 @@ export class FrameFourComponent implements OnInit {
 			return [];
 		}
 
-		return describeRoleOptions.map((option) => {
+		const options = describeRoleOptions.map((option) => {
 			return {
 				value: option.value,
 				label: option.label,
@@ -94,10 +93,16 @@ export class FrameFourComponent implements OnInit {
 				checked: this.checkboxStates[option.elementId] ?? false,
 			};
 		});
+
+		return options;
 	}
 
 	saveCheckboxStates() {
-		localStorage.setItem('checkboxStates', JSON.stringify(this.checkboxStates));
+		try {
+			localStorage.setItem('checkboxStates', JSON.stringify(this.checkboxStates));
+		} catch (error) {
+			console.error('Error saving checkbox states to localStorage:', error);
+		}
 
 		// Manually trigger change detection after saving checkbox states
 		this.changeDetectorRef.detectChanges();

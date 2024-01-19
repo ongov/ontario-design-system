@@ -8,6 +8,7 @@ import {
 	OntarioInputValueAccessor,
 	OntarioTextareaValueAccessor,
 	OntarioCheckboxesValueAccessor,
+	OntarioRadioButtonsValueAccessor,
 } from './directives/customValueAccessors.directives';
 import { TemporaryStorageService } from './services/temporary-storage.services';
 
@@ -39,6 +40,7 @@ import { createTranslateLoader } from './translation.config';
 		OntarioInputValueAccessor,
 		OntarioTextareaValueAccessor,
 		OntarioCheckboxesValueAccessor,
+		OntarioRadioButtonsValueAccessor,
 	],
 	imports: [
 		ComponentLibraryModule,

@@ -163,7 +163,7 @@ export class OntarioCheckboxes {
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['checkboxOnChange', 'checkboxChange', 'checkboxOnBlur', 'checkboxOnFocus']);
+		proxyOutputs(this, this.el, ['checkboxOnChange', 'checkboxOnBlur', 'checkboxOnFocus']);
 	}
 }
 
@@ -175,12 +175,6 @@ export declare interface OntarioCheckboxes extends Components.OntarioCheckboxes 
 	 * Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed.
 	 */
 	checkboxOnChange: EventEmitter<CustomEvent<IOntarioCheckboxesRadioAndCheckboxChangeEvent>>;
-	/**
-   * EventEmitter for checkbox state changes.
-Emits an object with the `id` representing the identifier of the checkbox
-and `checked` indicating the new state of the checkbox (true if checked, false if unchecked).
-   */
-	checkboxChange: EventEmitter<CustomEvent<{ id: string; checked: boolean }>>;
 	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has lost focus.
 	 */
@@ -2876,7 +2870,7 @@ export class OntarioRadioButtons {
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['selectedRadioChange', 'radioOnChange', 'radioOnBlur', 'radioOnFocus']);
+		proxyOutputs(this, this.el, ['radioOnChange', 'radioOnBlur', 'radioOnFocus']);
 	}
 }
 
@@ -2884,14 +2878,6 @@ import type { RadioAndCheckboxChangeEvent as IOntarioRadioButtonsRadioAndCheckbo
 import type { InputFocusBlurEvent as IOntarioRadioButtonsInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
 
 export declare interface OntarioRadioButtons extends Components.OntarioRadioButtons {
-	/**
-   * EventEmitter for changes in the selected radio button.
-Emits a string representing the identifier or value of the newly selected radio button.
-
-This event is triggered when the selected radio button within the component changes.
-The emitted string corresponds to the identifier or value of the newly selected radio button.
-   */
-	selectedRadioChange: EventEmitter<CustomEvent<string>>;
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when a radio option has been changed.
 	 */

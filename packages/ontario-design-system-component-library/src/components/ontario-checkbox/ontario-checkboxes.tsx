@@ -21,7 +21,7 @@ import {
 	RadioAndCheckboxChangeEvent,
 	EventType,
 } from '../../utils/events/event-handler.interface';
-import { handleInputEvent, updateCheckboxStates } from '../../utils/events/event-handler';
+import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
@@ -53,7 +53,7 @@ export class OntarioCheckboxes implements Checkboxes {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language?: Language = 'en';
+	@Prop({ mutable: true }) language?: Language;
 
 	/**
 	 * The name for the checkboxes. The name value is used to reference form data after a form is submitted.
@@ -188,13 +188,6 @@ export class OntarioCheckboxes implements Checkboxes {
 	@Event() checkboxOnChange: EventEmitter<RadioAndCheckboxChangeEvent>;
 
 	/**
-	 * EventEmitter for checkbox state changes.
-	 * Emits an object with the `id` representing the identifier of the checkbox
-	 * and `checked` indicating the new state of the checkbox (true if checked, false if unchecked).
-	 */
-	@Event() checkboxChange: EventEmitter<{ id: string; checked: boolean }>;
-
-	/**
 	 * Emitted when a keyboard input event occurs when a checkbox option has lost focus.
 	 */
 	@Event() checkboxOnBlur: EventEmitter<InputFocusBlurEvent>;
@@ -209,7 +202,9 @@ export class OntarioCheckboxes implements Checkboxes {
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
 	handleSetAppLanguage(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+		if (!this.language) {
+			this.language = validateLanguage(event);
+		}
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
@@ -332,27 +327,30 @@ export class OntarioCheckboxes implements Checkboxes {
 	private handleEvent(event: globalThis.Event, eventType: EventType) {
 		const input = event.target as HTMLInputElement | null;
 
-		if (input && (input.type === 'checkbox' || input.type === 'radio')) {
-			updateCheckboxStates(input, input.checked ?? false, this.element);
-
-			handleInputEvent(
-				event,
-				eventType,
-				input,
-				this.checkboxOnChange,
-				this.checkboxOnFocus,
-				this.checkboxOnBlur,
-				undefined,
-				input.type,
-				this.customOnChange,
-				this.customOnFocus,
-				this.customOnBlur,
-				undefined,
-				this.element,
-			);
+		if (input) {
+			input.checked = input.checked ?? '';
 		}
+
+		handleInputEvent(
+			event,
+			eventType,
+			input,
+			this.checkboxOnChange,
+			this.checkboxOnFocus,
+			this.checkboxOnBlur,
+			undefined,
+			'checkbox',
+			this.customOnChange,
+			this.customOnFocus,
+			this.customOnBlur,
+			undefined,
+			this.element,
+		);
 	}
 
+	/**
+	 * If a `hintText` prop is passed, the id generated from it will be set to the internal `hintTextId` state to match with the fieldset `aria-describedBy` attribute.
+	 */
 	async componentDidLoad() {
 		this.hintTextId = await this.hintTextRef?.getHintTextId();
 	}
