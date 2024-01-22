@@ -277,11 +277,6 @@ export class OntarioInput implements TextInput {
 	private handleEvent(event: globalThis.Event, eventType: EventType) {
 		const input = event.target as HTMLInputElement | null;
 
-		// if (eventType === EventType.Input && input) {
-		// 	const inputValue = input.value;
-		// 	this.inputValueChange?.emit(inputValue);
-		// }
-
 		handleInputEvent(
 			event,
 			eventType,

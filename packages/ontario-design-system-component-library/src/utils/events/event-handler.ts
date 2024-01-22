@@ -75,6 +75,7 @@ export const handleInputEvent = (
 
 		customBlurFunction && customBlurFunction(event);
 	}
+	console.log('handleEvent:', eventType, event);
 };
 
 /**

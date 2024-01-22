@@ -138,7 +138,7 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 | Event              | Description                                                                                  | Type                                                         |
 | ------------------ | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | `checkboxOnBlur`   | Emitted when a keyboard input event occurs when a checkbox option has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
-| `checkboxOnChange` | Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed. | `CustomEvent<RadioAndCheckboxChangeEvent>`                   |
+| `checkboxOnChange` | Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed. | `CustomEvent<InputInteractionEvent & { checked: boolean; }>` |
 | `checkboxOnFocus`  | Emitted when a keyboard input event occurs when a checkbox option has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
 
 ## Dependencies

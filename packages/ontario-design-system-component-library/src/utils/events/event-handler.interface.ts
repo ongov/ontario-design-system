@@ -14,11 +14,9 @@ export type InputInputEvent = InputInteractionEvent & {
 	inputType?: string;
 };
 
-export interface RadioAndCheckboxChangeEvent {
+export type RadioAndCheckboxChangeEvent = InputInteractionEvent & {
 	checked: boolean;
-	checkboxStates: Record<string, boolean>;
-	input: HTMLInputElement;
-}
+};
 
 export type InputFocusBlurEvent = InputInteractionEvent & {
 	focused: boolean;

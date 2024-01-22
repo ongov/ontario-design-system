@@ -272,14 +272,6 @@ export class OntarioTextarea implements Input {
 		);
 	}
 
-	// private handleTextInputEvent(e: Event) {
-	// 	const inputElement = e.target as HTMLInputElement | null;
-
-	// 	if (inputElement && inputElement.value !== undefined) {
-	// 		this.inputValueChange?.emit(inputElement.value);
-	// 	}
-	// }
-
 	public getId(): string {
 		return this.elementId ?? '';
 	}
