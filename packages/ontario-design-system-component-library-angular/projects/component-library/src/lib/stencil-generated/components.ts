@@ -128,6 +128,66 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 
 @ProxyCmp({
 	inputs: [
+		'ariaLabelText',
+		'cardLink',
+		'cardType',
+		'description',
+		'headerType',
+		'horizontalImagePositionType',
+		'horizontalImageSizeType',
+		'image',
+		'label',
+	],
+})
+@Component({
+	selector: 'ontario-card',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: [
+		'ariaLabelText',
+		'cardLink',
+		'cardType',
+		'description',
+		'headerType',
+		'horizontalImagePositionType',
+		'horizontalImageSizeType',
+		'image',
+		'label',
+	],
+})
+export class OntarioCard {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioCard extends Components.OntarioCard {}
+
+@ProxyCmp({
+	inputs: ['cardsPerRow'],
+})
+@Component({
+	selector: 'ontario-card-collection',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['cardsPerRow'],
+})
+export class OntarioCardCollection {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioCardCollection extends Components.OntarioCardCollection {}
+
+@ProxyCmp({
+	inputs: [
 		'caption',
 		'customOnBlur',
 		'customOnChange',
@@ -2695,12 +2755,16 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
 		'customOnFocus',
 		'customOnInput',
 		'elementId',
+		'enableLiveValidation',
+		'errorMessage',
 		'hintExpander',
 		'hintText',
+		'inputValidator',
 		'inputWidth',
 		'language',
 		'name',
 		'required',
+		'requiredValidationMessage',
 		'type',
 		'value',
 	],
@@ -2717,12 +2781,16 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
 		'customOnFocus',
 		'customOnInput',
 		'elementId',
+		'enableLiveValidation',
+		'errorMessage',
 		'hintExpander',
 		'hintText',
+		'inputValidator',
 		'inputWidth',
 		'language',
 		'name',
 		'required',
+		'requiredValidationMessage',
 		'type',
 		'value',
 	],
@@ -2732,7 +2800,7 @@ export class OntarioInput {
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus']);
+		proxyOutputs(this, this.el, ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred']);
 	}
 }
 
@@ -2757,6 +2825,10 @@ export declare interface OntarioInput extends Components.OntarioInput {
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
 	inputOnFocus: EventEmitter<CustomEvent<IOntarioInputInputFocusBlurEvent>>;
+	/**
+	 * Emitted when an error message is reported to the component.
+	 */
+	inputErrorOccurred: EventEmitter<CustomEvent<{ inputId: string; errorMessage: string }>>;
 }
 
 @ProxyCmp({
@@ -2778,6 +2850,8 @@ export class OntarioLanguageToggle {
 	}
 }
 
+import type { HeaderLanguageToggleEventDetails as IOntarioLanguageToggleHeaderLanguageToggleEventDetails } from '@ontario-digital-service/ontario-design-system-component-library';
+
 export declare interface OntarioLanguageToggle extends Components.OntarioLanguageToggle {
 	/**
 	 * An event to set the Document's HTML lang property, and emit the toggled language to other components.
@@ -2786,7 +2860,7 @@ export declare interface OntarioLanguageToggle extends Components.OntarioLanguag
 	/**
 	 * An event that emits to other components that the language toggle button has been toggled.
 	 */
-	headerLanguageToggled: EventEmitter<CustomEvent<{ currentLanguage: string; toggledLanguage: string }>>;
+	headerLanguageToggled: EventEmitter<CustomEvent<IOntarioLanguageToggleHeaderLanguageToggleEventDetails>>;
 }
 
 @ProxyCmp({

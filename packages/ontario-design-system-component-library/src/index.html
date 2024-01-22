@@ -42,6 +42,7 @@
 						<li><a href="#blockquotes">Blockquotes</a></li>
 						<li><a href="#buttons">Buttons</a></li>
 						<li><a href="#callout-aside">Callouts and Asides</a></li>
+						<li><a href="#card">Card Collection and Card</a></li>
 						<li><a href="#checkboxes">Checkboxes</a></li>
 						<li><a href="#dropdown-lists">Dropdown lists</a></li>
 						<li><a href="#fieldsets">Fieldsets</a></li>
@@ -150,6 +151,34 @@
 						<hr />
 					</div>
 
+					<!-- Card -->
+					<div>
+						<h2 id="card">Card Collection & Card</h2>
+						<div>
+							<ontario-card-collection cards-per-row="2">
+								<ontario-card
+									card-type="horizontal"
+									label="Card Title 1"
+									image="https://picsum.photos/200/300"
+									card-link="https://google.ca"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-fourth"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+								>
+								</ontario-card>
+								<ontario-card
+									card-type="horizontal"
+									label="Card Title 2"
+									image="https://picsum.photos/200/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-fourth"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+								>
+								</ontario-card>
+							</ontario-card-collection>
+						</div>
+					</div>
+
 					<!-- Checkboxes -->
 					<div>
 						<h2 id="checkboxes">Checkboxes</h2>
@@ -232,14 +261,27 @@
 					</div>
 
 					<!-- Fieldsets -->
+					<script>
+						window.onload = () => {
+							const addressLine1 = document.getElementById('address-line-1');
+							addressLine1.inputValidator = async (value) => {
+								if (value === 'error') return { errorMessage: "You entered 'error'" };
+							};
+							addressLine1.addEventListener('inputErrorOccurred', (event) => {
+								console.log('errorOccurred:', event);
+							});
+						};
+					</script>
 					<div>
 						<h2 id="fieldsets">Fieldsets</h2>
 						<ontario-fieldset legend-size="large" legend="What is your delivery address?">
 							<ontario-input
+								id="address-line-1"
 								caption="Address line 1"
 								required
 								name="address-line-1"
 								hint-text="Street and number or P.O. box."
+								enable-live-validation
 							></ontario-input>
 							<ontario-input
 								caption="Address line 2"
@@ -304,10 +346,12 @@
 								]'
 							></ontario-dropdown-list>
 							<ontario-input
+								id="post-code"
 								caption="Postal code"
 								required
 								name="postal-code"
 								input-width="7-char-width"
+								enable-live-validation
 							></ontario-input>
 						</ontario-fieldset>
 						<hr />

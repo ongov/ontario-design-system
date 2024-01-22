@@ -14,6 +14,13 @@ import {
 	HighlightColourOptions,
 } from './utils/components/callout-aside/callout-aside.interface';
 import { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
+import {
+	CardType,
+	HeaderType,
+	HorizontalImagePositionType,
+	HorizontalImageSizeType,
+} from './components/ontario-card/ontario-card-types';
+import { CardsPerRow } from './components/ontario-card-collection/ontario-collection-card-types';
 import { Caption } from './utils/common/input-caption/caption.interface';
 import { Hint, HintContentType } from './utils/common/common.interface';
 import { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
@@ -45,6 +52,7 @@ import {
 	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 import { IconColour, IconSize } from './components/ontario-icon/icon.types';
+import { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 import { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
@@ -57,6 +65,13 @@ export {
 	HighlightColourOptions,
 } from './utils/components/callout-aside/callout-aside.interface';
 export { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
+export {
+	CardType,
+	HeaderType,
+	HorizontalImagePositionType,
+	HorizontalImageSizeType,
+} from './components/ontario-card/ontario-card-types';
+export { CardsPerRow } from './components/ontario-card-collection/ontario-collection-card-types';
 export { Caption } from './utils/common/input-caption/caption.interface';
 export { Hint, HintContentType } from './utils/common/common.interface';
 export { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
@@ -88,6 +103,7 @@ export {
 	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 export { IconColour, IconSize } from './components/ontario-icon/icon.types';
+export { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
 export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 export { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 export { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
@@ -205,6 +221,53 @@ export namespace Components {
 		 * Optional prop to choose the border colour of the callout. If none is passed, the default colour will be teal.
 		 */
 		highlightColour?: HighlightColourOptions;
+	}
+	interface OntarioCard {
+		/**
+		 * Provides more context as to what the card interaction is doing. This should only be used for accessibility purposes, if the card interaction requires more * * description than what the text provides.  This is optional.
+		 */
+		ariaLabelText?: string;
+		/**
+		 * Action link for when the card is clicked.  This is optional.
+		 */
+		cardLink?: string;
+		/**
+		 * The type of card to render.  If no type is passed, it will default to 'basic'.
+		 */
+		cardType: CardType;
+		/**
+		 * Text to be displayed within the card description container.  This is optional.
+		 */
+		description?: string;
+		/**
+		 * The type of header to render.  If no type is passed, it will default to 'default'.
+		 */
+		headerType: HeaderType;
+		/**
+		 * The position of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
+		 * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
+		 */
+		horizontalImagePositionType?: HorizontalImagePositionType;
+		/**
+		 * The size of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
+		 * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
+		 */
+		horizontalImageSizeType?: HorizontalImageSizeType;
+		/**
+		 * Image to be displayed within the card image container.  This is optional.
+		 */
+		image?: string;
+		/**
+		 * Text to be displayed within the header.
+		 * @example <ontario-card 	header-type="dark" 	card-type="horizontal" 	label="Card Title 1" 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" >
+		 */
+		label: string;
+	}
+	interface OntarioCardCollection {
+		/**
+		 * The number of cards to display per row.  If no number is passed, it will default to 3.
+		 */
+		cardsPerRow: CardsPerRow;
 	}
 	interface OntarioCheckboxes {
 		/**
@@ -1546,25 +1609,33 @@ export namespace Components {
 		 */
 		caption: Caption | string;
 		/**
-		 * Used to add a custom function to the textarea onBlur event.
+		 * Used to add a custom function to the input onBlur event.
 		 */
 		customOnBlur?: (event: globalThis.Event) => void;
 		/**
-		 * Used to add a custom function to the textarea onChange event.
+		 * Used to add a custom function to the input onChange event.
 		 */
 		customOnChange?: (event: globalThis.Event) => void;
 		/**
-		 * Used to add a custom function to the textarea onFocus event.
+		 * Used to add a custom function to the input onFocus event.
 		 */
 		customOnFocus?: (event: globalThis.Event) => void;
 		/**
-		 * Used to add a custom function to the textarea onInput  event.
+		 * Used to add a custom function to the input onInput event.
 		 */
 		customOnInput?: (event: globalThis.Event) => void;
 		/**
 		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
 		 */
 		elementId?: string;
+		/**
+		 * Enable live validation on the input.  Custom live validation can be performed using an `inputValidator` validation function.  It will also validate the `required` state if no errors are returned from the `inputValidator`.  Please set a `requiredValidationMessage` to report concisely to the end user what they are required to set.
+		 */
+		enableLiveValidation: boolean;
+		/**
+		 * Set this to display an
+		 */
+		errorMessage?: string;
 		/**
 		 * Used to include the ontario-hint-expander component for the input component. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",   }   hint-expander='{    "hint": "Hint expander",    "content": "This is the content"   }'   required="true" > </ontario-input>
@@ -1574,6 +1645,10 @@ export namespace Components {
 		 * Used to include the ontario-hint-text component for the input. This is optional.
 		 */
 		hintText?: string | Hint;
+		/**
+		 * Validate the validity of the input value `onBlur`.  This `async` function should return a result to trigger an error message.  Returning `undefined` or `null` will clear it.
+		 */
+		inputValidator?: (value?: string) => Promise<{ errorMessage?: string } | null | undefined>;
 		/**
 		 * The width of the input field. If no value is assigned, it will present as the `default` input width.
 		 */
@@ -1595,9 +1670,14 @@ export namespace Components {
 		 */
 		name: string;
 		/**
-		 * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+		 * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  _Please add a validation messaging using `requiredValidationMessage` if setting this property._
+		 * @example <ontario-input 	id="address-line-1" 	caption="Address line 1" 	required 	required-validation-message="Please enter an address, including street number and street name" 	name="address-line-1" 	hint-text="Street and number or P.O. box." ></ontario-input>
 		 */
 		required?: boolean;
+		/**
+		 * Custom error message to display if a required field is not filled out.  _Please add a custom message when setting an input as required_.
+		 */
+		requiredValidationMessage: string;
 		/**
 		 * The input type value.  If no `type` is provided, it will default to 'text'.
 		 */
@@ -1879,6 +1959,16 @@ declare global {
 	var HTMLOntarioCalloutElement: {
 		prototype: HTMLOntarioCalloutElement;
 		new (): HTMLOntarioCalloutElement;
+	};
+	interface HTMLOntarioCardElement extends Components.OntarioCard, HTMLStencilElement {}
+	var HTMLOntarioCardElement: {
+		prototype: HTMLOntarioCardElement;
+		new (): HTMLOntarioCardElement;
+	};
+	interface HTMLOntarioCardCollectionElement extends Components.OntarioCardCollection, HTMLStencilElement {}
+	var HTMLOntarioCardCollectionElement: {
+		prototype: HTMLOntarioCardCollectionElement;
+		new (): HTMLOntarioCardCollectionElement;
 	};
 	interface HTMLOntarioCheckboxesElement extends Components.OntarioCheckboxes, HTMLStencilElement {}
 	var HTMLOntarioCheckboxesElement: {
@@ -2534,6 +2624,8 @@ declare global {
 		'ontario-blockquote': HTMLOntarioBlockquoteElement;
 		'ontario-button': HTMLOntarioButtonElement;
 		'ontario-callout': HTMLOntarioCalloutElement;
+		'ontario-card': HTMLOntarioCardElement;
+		'ontario-card-collection': HTMLOntarioCardCollectionElement;
 		'ontario-checkboxes': HTMLOntarioCheckboxesElement;
 		'ontario-critical-alert': HTMLOntarioCriticalAlertElement;
 		'ontario-date-input': HTMLOntarioDateInputElement;
@@ -2779,6 +2871,53 @@ declare namespace LocalJSX {
 		 * Optional prop to choose the border colour of the callout. If none is passed, the default colour will be teal.
 		 */
 		highlightColour?: HighlightColourOptions;
+	}
+	interface OntarioCard {
+		/**
+		 * Provides more context as to what the card interaction is doing. This should only be used for accessibility purposes, if the card interaction requires more * * description than what the text provides.  This is optional.
+		 */
+		ariaLabelText?: string;
+		/**
+		 * Action link for when the card is clicked.  This is optional.
+		 */
+		cardLink?: string;
+		/**
+		 * The type of card to render.  If no type is passed, it will default to 'basic'.
+		 */
+		cardType?: CardType;
+		/**
+		 * Text to be displayed within the card description container.  This is optional.
+		 */
+		description?: string;
+		/**
+		 * The type of header to render.  If no type is passed, it will default to 'default'.
+		 */
+		headerType?: HeaderType;
+		/**
+		 * The position of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
+		 * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
+		 */
+		horizontalImagePositionType?: HorizontalImagePositionType;
+		/**
+		 * The size of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
+		 * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
+		 */
+		horizontalImageSizeType?: HorizontalImageSizeType;
+		/**
+		 * Image to be displayed within the card image container.  This is optional.
+		 */
+		image?: string;
+		/**
+		 * Text to be displayed within the header.
+		 * @example <ontario-card 	header-type="dark" 	card-type="horizontal" 	label="Card Title 1" 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" >
+		 */
+		label?: string;
+	}
+	interface OntarioCardCollection {
+		/**
+		 * The number of cards to display per row.  If no number is passed, it will default to 3.
+		 */
+		cardsPerRow?: CardsPerRow;
 	}
 	interface OntarioCheckboxes {
 		/**
@@ -4160,25 +4299,33 @@ declare namespace LocalJSX {
 		 */
 		caption?: Caption | string;
 		/**
-		 * Used to add a custom function to the textarea onBlur event.
+		 * Used to add a custom function to the input onBlur event.
 		 */
 		customOnBlur?: (event: globalThis.Event) => void;
 		/**
-		 * Used to add a custom function to the textarea onChange event.
+		 * Used to add a custom function to the input onChange event.
 		 */
 		customOnChange?: (event: globalThis.Event) => void;
 		/**
-		 * Used to add a custom function to the textarea onFocus event.
+		 * Used to add a custom function to the input onFocus event.
 		 */
 		customOnFocus?: (event: globalThis.Event) => void;
 		/**
-		 * Used to add a custom function to the textarea onInput  event.
+		 * Used to add a custom function to the input onInput event.
 		 */
 		customOnInput?: (event: globalThis.Event) => void;
 		/**
 		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
 		 */
 		elementId?: string;
+		/**
+		 * Enable live validation on the input.  Custom live validation can be performed using an `inputValidator` validation function.  It will also validate the `required` state if no errors are returned from the `inputValidator`.  Please set a `requiredValidationMessage` to report concisely to the end user what they are required to set.
+		 */
+		enableLiveValidation?: boolean;
+		/**
+		 * Set this to display an
+		 */
+		errorMessage?: string;
 		/**
 		 * Used to include the ontario-hint-expander component for the input component. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",   }   hint-expander='{    "hint": "Hint expander",    "content": "This is the content"   }'   required="true" > </ontario-input>
@@ -4188,6 +4335,10 @@ declare namespace LocalJSX {
 		 * Used to include the ontario-hint-text component for the input. This is optional.
 		 */
 		hintText?: string | Hint;
+		/**
+		 * Validate the validity of the input value `onBlur`.  This `async` function should return a result to trigger an error message.  Returning `undefined` or `null` will clear it.
+		 */
+		inputValidator?: (value?: string) => Promise<{ errorMessage?: string } | null | undefined>;
 		/**
 		 * The width of the input field. If no value is assigned, it will present as the `default` input width.
 		 */
@@ -4209,6 +4360,10 @@ declare namespace LocalJSX {
 		 */
 		name?: string;
 		/**
+		 * Emitted when an error message is reported to the component.
+		 */
+		onInputErrorOccurred?: (event: OntarioInputCustomEvent<{ inputId: string; errorMessage: string }>) => void;
+		/**
 		 * Emitted when a keyboard input event occurs when an input has lost focus.
 		 */
 		onInputOnBlur?: (event: OntarioInputCustomEvent<InputFocusBlurEvent>) => void;
@@ -4225,9 +4380,14 @@ declare namespace LocalJSX {
 		 */
 		onInputOnInput?: (event: OntarioInputCustomEvent<InputInputEvent>) => void;
 		/**
-		 * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+		 * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  _Please add a validation messaging using `requiredValidationMessage` if setting this property._
+		 * @example <ontario-input 	id="address-line-1" 	caption="Address line 1" 	required 	required-validation-message="Please enter an address, including street number and street name" 	name="address-line-1" 	hint-text="Street and number or P.O. box." ></ontario-input>
 		 */
 		required?: boolean;
+		/**
+		 * Custom error message to display if a required field is not filled out.  _Please add a custom message when setting an input as required_.
+		 */
+		requiredValidationMessage?: string;
 		/**
 		 * The input type value.  If no `type` is provided, it will default to 'text'.
 		 */
@@ -4246,9 +4406,7 @@ declare namespace LocalJSX {
 		/**
 		 * An event that emits to other components that the language toggle button has been toggled.
 		 */
-		onHeaderLanguageToggled?: (
-			event: OntarioLanguageToggleCustomEvent<{ currentLanguage: string; toggledLanguage: string }>,
-		) => void;
+		onHeaderLanguageToggled?: (event: OntarioLanguageToggleCustomEvent<HeaderLanguageToggleEventDetails>) => void;
 		/**
 		 * An event to set the Document's HTML lang property, and emit the toggled language to other components.
 		 */
@@ -4491,6 +4649,8 @@ declare namespace LocalJSX {
 		'ontario-blockquote': OntarioBlockquote;
 		'ontario-button': OntarioButton;
 		'ontario-callout': OntarioCallout;
+		'ontario-card': OntarioCard;
+		'ontario-card-collection': OntarioCardCollection;
 		'ontario-checkboxes': OntarioCheckboxes;
 		'ontario-critical-alert': OntarioCriticalAlert;
 		'ontario-date-input': OntarioDateInput;
@@ -4632,6 +4792,9 @@ declare module '@stencil/core' {
 			'ontario-blockquote': LocalJSX.OntarioBlockquote & JSXBase.HTMLAttributes<HTMLOntarioBlockquoteElement>;
 			'ontario-button': LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
 			'ontario-callout': LocalJSX.OntarioCallout & JSXBase.HTMLAttributes<HTMLOntarioCalloutElement>;
+			'ontario-card': LocalJSX.OntarioCard & JSXBase.HTMLAttributes<HTMLOntarioCardElement>;
+			'ontario-card-collection': LocalJSX.OntarioCardCollection &
+				JSXBase.HTMLAttributes<HTMLOntarioCardCollectionElement>;
 			'ontario-checkboxes': LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
 			'ontario-critical-alert': LocalJSX.OntarioCriticalAlert & JSXBase.HTMLAttributes<HTMLOntarioCriticalAlertElement>;
 			'ontario-date-input': LocalJSX.OntarioDateInput & JSXBase.HTMLAttributes<HTMLOntarioDateInputElement>;

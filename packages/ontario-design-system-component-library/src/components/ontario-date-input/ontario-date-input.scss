@@ -8,6 +8,7 @@
 	globalVariables;
 @use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
 @use '../../styles/form.scss';
+@forward '../../utils/components/error-message/error-message';
 
 .ontario-date__group {
 	display: flex;
@@ -31,24 +32,4 @@
 	input {
 		border: 0.125rem solid colours.$ontario-colour-alert;
 	}
-}
-
-.ontario-error-messaging {
-	display: flex;
-	align-items: flex-start;
-	margin: (spacing.$spacing-1 * -1) spacing.$spacing-0 spacing.$spacing-2 spacing.$spacing-0;
-	color: colours.$ontario-colour-dark-red;
-	max-width: globalVariables.$standard-width;
-}
-
-.ontario-error-messaging__content {
-	margin-left: spacing.$spacing-2;
-}
-
-.ontario-input__error {
-	border-color: colours.$ontario-colour-dark-red !important;
-}
-
-.ontario-error__hidden {
-	display: none;
 }
