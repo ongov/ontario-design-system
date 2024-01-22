@@ -7,6 +7,7 @@ export type InputProps = {
 	name?: string;
 	type: string;
 	value?: string | number;
+	checked?: boolean;
 	required?: boolean;
 	inputMode?: string;
 	placeholder?: string;
@@ -28,6 +29,7 @@ export const Input: FunctionalComponent<InputProps> = ({
 	placeholder,
 	type,
 	value,
+	checked,
 	required,
 	onKeyDown,
 	onInput,
@@ -48,6 +50,7 @@ export const Input: FunctionalComponent<InputProps> = ({
 			name={name}
 			type={type}
 			value={value}
+			checked={checked}
 			placeholder={placeholder}
 			required={!!required}
 			onKeyDown={onKeyDown}

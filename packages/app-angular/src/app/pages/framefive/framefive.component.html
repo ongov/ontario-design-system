@@ -7,15 +7,18 @@
 ></ontario-step-indicator>
 
 <div>
-	<ontario-textarea
-		name="additional-details"
-		hintText="{{ 'form.questions.additionalDetails.hint' | translate }}"
-		[caption]="{
-			captionText: getTranslation().additionalDetailsLabel,
-			captionType: 'heading'
-		}"
-		language="{{ lang }}"
-	></ontario-textarea>
+	<form (valueChanges)="saveToTemporaryStorage()">
+		<ontario-textarea
+			name="additionalDetails"
+			hintText="{{ 'form.questions.additionalDetails.hint' | translate }}"
+			[caption]="{
+				captionText: getTranslation().additionalDetailsLabel,
+				captionType: 'heading'
+			}"
+			language="{{ lang }}"
+			[(ngModel)]="formData.additionalDetails"
+		></ontario-textarea>
+	</form>
 
 	<ontario-button type="primary" label="{{ 'form.buttons.createAccount' | translate }}" [routerLink]="getRoute()">
 	</ontario-button>

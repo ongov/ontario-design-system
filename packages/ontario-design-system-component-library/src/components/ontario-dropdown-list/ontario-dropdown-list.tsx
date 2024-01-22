@@ -291,7 +291,7 @@ export class OntarioDropdownList implements Dropdown {
 			}
 		}
 
-		// Check selected status of options
+		// Check selected status of options and set the selectedValue
 		this.validateSelectedOption(this.internalOptions);
 	}
 

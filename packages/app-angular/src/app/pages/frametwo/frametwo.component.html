@@ -1,31 +1,34 @@
 <ontario-step-indicator current-step="1" number-of-steps="4" language="{{ lang }}"></ontario-step-indicator>
 
 <div class="ontario-margin-top-40-!">
-	<ontario-fieldset legend-size="heading" legend="{{ 'form.questions.createAccount.legend' | translate }}">
-		<ontario-input
-			caption="{{ 'form.questions.createAccount.emailLabel' | translate }}"
-			required="true"
-			name="email-address"
-			input-width="20-char-width"
-			language="{{ lang }}"
-		></ontario-input>
-
-		<ontario-input
-			caption="{{ 'form.questions.createAccount.PINLabel' | translate }}"
-			type="password"
-			input-width="20-char-width"
-			required="true"
-			name="PIN"
-			hintText="{{ 'form.questions.createAccount.PINHintText' | translate }}"
-			[hintExpander]="{
-				hint: getTranslation().PINHintExpanderLabel,
-				hintContentType: 'html',
-				content: getTranslation().PINHintExpanderContent
-			}"
-			language="{{ lang }}"
-		>
-		</ontario-input>
-	</ontario-fieldset>
+	<form (valueChanges)="saveToTemporaryStorage()">
+		<ontario-fieldset legend-size="heading" legend="{{ 'form.questions.createAccount.legend' | translate }}">
+			<ontario-input
+				caption="{{ 'form.questions.createAccount.emailLabel' | translate }}"
+				required="true"
+				name="email"
+				input-width="20-char-width"
+				language="{{ lang }}"
+				[(ngModel)]="formData.email"
+			></ontario-input>
+			<ontario-input
+				caption="{{ 'form.questions.createAccount.PINLabel' | translate }}"
+				type="password"
+				input-width="20-char-width"
+				required="true"
+				name="pin"
+				hintText="{{ 'form.questions.createAccount.PINHintText' | translate }}"
+				[hintExpander]="{
+					hint: getTranslation().PINHintExpanderLabel,
+					hintContentType: 'html',
+					content: getTranslation().PINHintExpanderContent
+				}"
+				language="{{ lang }}"
+				[(ngModel)]="formData.pin"
+			>
+			</ontario-input>
+		</ontario-fieldset>
+	</form>
 </div>
 
 <ontario-button type="primary" label="{{ 'form.buttons.next' | translate }}" [routerLink]="getRoute()"></ontario-button>
