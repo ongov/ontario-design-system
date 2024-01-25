@@ -3,6 +3,7 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const googleTagManagerCode = process.env.DOCUSAURUS_GTM_ID ?? 'GTM-12345';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -51,6 +52,9 @@ const config = {
 				blog: false,
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),
+				},
+				googleTagManager: {
+					containerId: googleTagManagerCode,
 				},
 			}),
 		],
