@@ -28,9 +28,9 @@ Otherwise, a default Back to Top button can be used as follows:
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                                                                                                              | Type                        | Default |
-| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- | ------- |
-| `language` | `language` | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language prop is passed, it will default to English. | `"en" \| "fr" \| undefined` | `'en'`  |
+| Property   | Attribute  | Description                                                                                                                                                                                                              | Type                        | Default     |
+| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- | ----------- |
+| `language` | `language` | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language prop is passed, it will default to English. | `"en" \| "fr" \| undefined` | `undefined` |
 
 ---
 
