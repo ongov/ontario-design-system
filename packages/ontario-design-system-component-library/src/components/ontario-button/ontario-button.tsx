@@ -1,5 +1,3 @@
-'use client';
-
 import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
 
 import { Button } from './button.interface';
