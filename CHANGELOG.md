@@ -1,3 +1,9 @@
+# 4.0.0-alpha.3 (2024-01-30)
+
+### Reverts
+
+- **@ontario-digital-service/ontario-design-system-component-library:** Revert "chore: add 'use client' to button to see how it works in NextJS" d961089
+
 # 4.0.0-alpha.2 (2024-01-04)
 
 ### Bug Fixes
