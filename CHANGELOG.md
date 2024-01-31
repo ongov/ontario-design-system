@@ -1,3 +1,32 @@
+# 4.0.0-alpha.3 (2024-01-30)
+
+### Reverts
+
+- **@ontario-digital-service/ontario-design-system-component-library:** Revert "chore: add 'use client' to button to see how it works in NextJS" d961089
+
+# 4.0.0-alpha.2 (2024-01-04)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library:** fix footer tests for the year 2024 967c66f
+
+# 4.0.0-alpha.1 (2023-12-29)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library:** disable es5 production build 8453a6c
+
+### BREAKING CHANGES
+
+- **@ontario-digital-service/ontario-design-system-component-library:** remove es5 support from the build
+
+## 3.2.1-alpha.1 (2023-12-29)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library:** avoid overriding language through events if lang is passed as prop 6e4d5b7
+- **@ontario-digital-service/ontario-design-system-component-library:** fixed unit tests b484da4
+
 # 3.2.0 (2023-12-11)
 
 ### Bug Fixes
