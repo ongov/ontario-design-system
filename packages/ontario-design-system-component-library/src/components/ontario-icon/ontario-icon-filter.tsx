@@ -54,7 +54,7 @@ export class OntarioIconFilter implements IconWithColour {
 	/**
 	 * Set the icon's colour.
 	 */
-	@Prop() colour: IconColour | string = 'black';
+	@Prop() colour: IconColour = 'black';
 
 	/**
 	 * Mutable variable, for internal use only.
