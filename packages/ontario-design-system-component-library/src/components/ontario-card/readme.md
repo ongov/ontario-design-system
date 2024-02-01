@@ -1,5 +1,51 @@
 # ontario-card
 
+Use a card to provide an entry point to information on a different page.
+
+## Usage guidance
+
+Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/cards.html) for current documentation guidance. This component needs to be used in conjunction with the `ontario-card-collection` component. Please reference the [`ontario-card-collection`](../ontario-card-collection/) readme for further details.
+
+## Configuration
+
+Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the `ontario-card` component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
+
+## Examples
+
+Example of a bare-bones `ontario-card` component where the `label` and `description` for the card is provided. The default card type will be `basic`, and default header type will be `default`.
+
+```html
+<ontario-card label="Card Title" description="Lorem Ipsum Lorem Ipsum"></ontario-card>
+```
+
+Example of an `ontario-card` component with an image, which includes the `cardType`, `headerType`, `image`, `label` and `description` properties.
+
+```html
+<ontario-card
+	card-type="image"
+	header-type="light"
+	label="Card Title"
+	image="https://picsum.photos/200/300"
+	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+>
+</ontario-card>
+```
+
+This is another example of an `ontario-card` component, where the user is passing in the horizontal card-type. This will
+require more properties, including the `horizontalImagePositionType` and the `horizontalImageSizeType`.
+
+```html
+<ontario-card
+	card-type="horizontal"
+	label="Card Title"
+	image="https://picsum.photos/200/300"
+	horizontal-image-position-type="left"
+	horizontal-image-size-type="one-fourth"
+	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+>
+</ontario-card>
+```
+
 <!-- Auto Generated Below -->
 
 ## Properties
