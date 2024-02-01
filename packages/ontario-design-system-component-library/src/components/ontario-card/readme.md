@@ -4,7 +4,7 @@ Use a card to provide an entry point to information on a different page.
 
 ## Usage guidance
 
-Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/cards.html) for current documentation guidance.
+Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/cards.html) for current documentation guidance. This component needs to be used in conjunction with the card-collection component.
 
 ## Configuration
 
