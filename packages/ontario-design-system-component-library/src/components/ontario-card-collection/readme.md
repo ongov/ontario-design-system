@@ -4,7 +4,7 @@ Use a card-collection to encapsulate the card components.
 
 ## Usage Guidance
 
-The `ontario-card-collection` component should be used in conjunction with the card component. Please reference the [`ontario-card`](../ontario-card/) readme for further details.
+The `ontario-card-collection` component should be used in conjunction with the `ontario-card` component. Please reference the [`ontario-card`](../ontario-card/) readme for further details.
 
 ## Configuration
 
