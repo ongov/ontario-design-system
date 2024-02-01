@@ -4,15 +4,15 @@ Use a card-collection to encapsulate the card components.
 
 ## Usage Guidance
 
-The card-collection component should be used in conjunction with the card component. Please reference the card readme for further details.
+The `ontario-card-collection` component should be used in conjunction with the card component. Please reference the [`ontario-card`](../ontario-card/) readme for further details.
 
 ## Configuration
 
-Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the card-collection component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
+Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the `ontario-card-collection` component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
 
 ## Examples
 
-Example of a bare-bones card-collection component, with a `cardsPerRow` property.
+Example of a bare-bones `ontario-card-collection` component, with a `cardsPerRow` property.
 
 ```html
 <ontario-card-collection cards-per-row="2">
