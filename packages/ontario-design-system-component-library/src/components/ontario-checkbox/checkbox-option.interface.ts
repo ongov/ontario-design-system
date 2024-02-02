@@ -98,4 +98,10 @@ export interface CheckboxOption {
 	 * </ontario-checkboxes>
 	 */
 	hintExpander?: HintExpander;
+
+	/**
+	 * Used to maintain the state of whether or not the option is checked.
+	 * This is for internal use only.
+	 */
+	checked?: boolean;
 }

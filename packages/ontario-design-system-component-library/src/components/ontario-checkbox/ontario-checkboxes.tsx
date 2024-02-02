@@ -386,6 +386,7 @@ export class OntarioCheckboxes implements Checkboxes {
 									type="checkbox"
 									value={checkbox.value}
 									required={!!this.required}
+									checked={!!checkbox.checked}
 									onChange={(e) => this.handleEvent(e, EventType.Change)}
 									onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 									onFocus={(e) => this.handleEvent(e, EventType.Focus)}

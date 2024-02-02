@@ -47,7 +47,7 @@ export interface IconWithColour extends Icon {
 	 * Note that the `keyof typeof` syntax is not necessary to use the enum as a type with StencilJS component.
 	 * Implementation is only mandatory in icon components that accept a colour input from users.
 	 */
-	colour: IconColour | string;
+	colour: IconColour;
 
 	/**
 	 * Mutable variable, for internal use only.
