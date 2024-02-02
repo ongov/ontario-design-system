@@ -1,6 +1,6 @@
 {
 	"name": "react-app",
-	"version": "4.0.0-alpha.3",
+	"version": "4.0.0-alpha.4",
 	"private": true,
 	"homepage": "./",
 	"scripts": {
@@ -29,7 +29,7 @@
 		]
 	},
 	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-component-library-react": "^4.0.0-alpha.3",
+		"@ontario-digital-service/ontario-design-system-component-library-react": "^4.0.0-alpha.4",
 		"@ontario-digital-service/ontario-design-system-design-tokens": "^3.2.1-alpha.1",
 		"@ontario-digital-service/ontario-design-system-global-styles": "^3.2.1-alpha.1",
 		"@testing-library/jest-dom": "^5.16.1",
