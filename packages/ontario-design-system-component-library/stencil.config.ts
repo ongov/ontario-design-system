@@ -19,7 +19,7 @@ export const config: Config = {
 	],
 	globalStyle: './src/global.scss',
 	globalScript: './src/global.ts',
-	buildEs5: 'prod',
+	buildEs5: false,
 	outputTargets: [
 		reactOutputTarget({
 			componentCorePackage: '@ontario-digital-service/ontario-design-system-component-library',

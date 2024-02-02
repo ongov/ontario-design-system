@@ -128,6 +128,66 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 
 @ProxyCmp({
 	inputs: [
+		'ariaLabelText',
+		'cardLink',
+		'cardType',
+		'description',
+		'headerType',
+		'horizontalImagePositionType',
+		'horizontalImageSizeType',
+		'image',
+		'label',
+	],
+})
+@Component({
+	selector: 'ontario-card',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: [
+		'ariaLabelText',
+		'cardLink',
+		'cardType',
+		'description',
+		'headerType',
+		'horizontalImagePositionType',
+		'horizontalImageSizeType',
+		'image',
+		'label',
+	],
+})
+export class OntarioCard {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioCard extends Components.OntarioCard {}
+
+@ProxyCmp({
+	inputs: ['cardsPerRow'],
+})
+@Component({
+	selector: 'ontario-card-collection',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['cardsPerRow'],
+})
+export class OntarioCardCollection {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioCardCollection extends Components.OntarioCardCollection {}
+
+@ProxyCmp({
+	inputs: [
 		'caption',
 		'customOnBlur',
 		'customOnChange',

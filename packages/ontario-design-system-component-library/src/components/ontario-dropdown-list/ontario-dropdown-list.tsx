@@ -52,7 +52,7 @@ export class OntarioDropdownList implements Dropdown {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language?: Language = 'en';
+	@Prop({ mutable: true }) language?: Language;
 
 	/**
 	 * The name for the dropdown list. The name value is used to reference form data after a form is submitted.
@@ -226,7 +226,9 @@ export class OntarioDropdownList implements Dropdown {
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
 	handleSetAppLanguage(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+		if (!this.language) {
+			this.language = validateLanguage(event);
+		}
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
@@ -289,7 +291,7 @@ export class OntarioDropdownList implements Dropdown {
 			}
 		}
 
-		// Check selected status of options
+		// Check selected status of options and set the selectedValue
 		this.validateSelectedOption(this.internalOptions);
 	}
 

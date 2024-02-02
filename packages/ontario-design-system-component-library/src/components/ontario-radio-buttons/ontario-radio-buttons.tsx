@@ -53,7 +53,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language?: Language = 'en';
+	@Prop({ mutable: true }) language?: Language;
 
 	/**
 	 * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
@@ -206,7 +206,9 @@ export class OntarioRadioButtons implements RadioButtons {
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
 	handleSetAppLanguage(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+		if (!this.language) {
+			this.language = validateLanguage(event);
+		}
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
@@ -389,6 +391,7 @@ export class OntarioRadioButtons implements RadioButtons {
 									type="radio"
 									value={radioOption.value}
 									required={!!this.required}
+									checked={!!radioOption.checked}
 									onChange={(e) => this.handleEvent(e, EventType.Change)}
 									onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 									onFocus={(e) => this.handleEvent(e, EventType.Focus)}

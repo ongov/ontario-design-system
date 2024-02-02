@@ -53,7 +53,7 @@ export class OntarioCheckboxes implements Checkboxes {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language?: Language = 'en';
+	@Prop({ mutable: true }) language?: Language;
 
 	/**
 	 * The name for the checkboxes. The name value is used to reference form data after a form is submitted.
@@ -202,7 +202,9 @@ export class OntarioCheckboxes implements Checkboxes {
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
 	handleSetAppLanguage(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+		if (!this.language) {
+			this.language = validateLanguage(event);
+		}
 	}
 
 	@Listen('headerLanguageToggled', { target: 'window' })
@@ -384,6 +386,7 @@ export class OntarioCheckboxes implements Checkboxes {
 									type="checkbox"
 									value={checkbox.value}
 									required={!!this.required}
+									checked={!!checkbox.checked}
 									onChange={(e) => this.handleEvent(e, EventType.Change)}
 									onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 									onFocus={(e) => this.handleEvent(e, EventType.Focus)}
