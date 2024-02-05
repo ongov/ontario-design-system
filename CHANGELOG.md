@@ -1,3 +1,35 @@
+# 4.0.0 (2024-02-02)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library:** add additional icon sizes, 16 and 48 2311f4b
+- **@ontario-digital-service/ontario-design-system-component-library:** avoid overriding language through events if lang is passed as prop 6e4d5b7
+- **@ontario-digital-service/ontario-design-system-component-library:** disable es5 production build 8453a6c
+- **@ontario-digital-service/ontario-design-system-component-library:** fix footer tests for the year 2024 967c66f
+- **@ontario-digital-service/ontario-design-system-component-library:** fixed unit tests b484da4
+- **@ontario-digital-service/ontario-design-system-component-library:** remove the open string type from IconColours on the icons d323137
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-component-library:** update styles to flex wrap card-collection 4dcf380
+- **developer-docs:** add Google Tag Manager plugin to inject Google Analytics into Docusaurus 6eccd18
+
+### BREAKING CHANGES
+
+- **@ontario-digital-service/ontario-design-system-component-library:** remove es5 support from the build
+
+# 4.0.0-alpha.4 (2024-02-02)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-component-library:** add additional icon sizes, 16 and 48 2311f4b
+- **@ontario-digital-service/ontario-design-system-component-library:** remove the open string type from IconColours on the icons d323137
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-component-library:** update styles to flex wrap card-collection 4dcf380
+- **developer-docs:** add Google Tag Manager plugin to inject Google Analytics into Docusaurus 6eccd18
+
 # 4.0.0-alpha.3 (2024-01-30)
 
 ### Reverts

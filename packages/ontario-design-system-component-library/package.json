@@ -1,6 +1,6 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-component-library",
-	"version": "4.0.0-alpha.3",
+	"version": "4.0.0",
 	"private": false,
 	"description": "Ontario Design System Component Library",
 	"license": "Apache-2.0",
@@ -40,7 +40,7 @@
 		"test:unit": "stencil test --spec"
 	},
 	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-global-styles": "3.2.1-alpha.1",
+		"@ontario-digital-service/ontario-design-system-global-styles": "4.0.0",
 		"@stencil/core": "^4.1.0",
 		"dotenv": "^16.3.1"
 	},
