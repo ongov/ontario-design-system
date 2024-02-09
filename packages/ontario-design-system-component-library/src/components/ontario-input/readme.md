@@ -1,3 +1,5 @@
+import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-input
 
 Use a text input when you want the user to enter no more than a single line of information.
@@ -18,6 +20,8 @@ Example of a bare-bones input component, the `name` property is passed in for th
 <ontario-input name="ontario-text-input" caption="Ontario input"></ontario-input>
 ```
 
+<OntarioInput name="ontario-text-input" caption="Ontario input"></OntarioInput>
+
 The following input component example has the `inputWidth` property passed in, which will define the width of the input field.
 
 ```html
@@ -30,6 +34,17 @@ The following input component example has the `inputWidth` property passed in, w
 	input-width="10-char-width"
 ></ontario-input>
 ```
+
+<div>
+	<OntarioInput
+		name="ontario-text-input"
+		caption='{
+			"captionText": "Ontario input",
+			"captionType": "large"
+		}'
+		input-width="10-char-width"> 
+	</OntarioInput>
+</div>
 
 ## Error messaging
 
@@ -99,15 +114,16 @@ For example,
 ></ontario-input>
 ```
 
-will display the message, _Enter your first name_, should the required validation fail.
-
-```
-First Name (required)
-❗ Enter your first name
-┌──────────────┐
-│              │
-└──────────────┘
-```
+<div>
+	<OntarioInput
+		id="first-name"
+		name="first-name"
+		caption="First Name"
+		required
+		enable-live-validation
+		required-validation-message="Enter your first name">
+	</OntarioInput>
+</div>
 
 ### Learn more
 

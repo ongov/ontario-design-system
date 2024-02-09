@@ -1,3 +1,5 @@
+import { OntarioStepIndicator } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-step-indicator
 
 Use a step indicator to show a user’s progress as they move through a multi-step form.
@@ -11,6 +13,37 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca/comp
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the step indicator component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
 
 ## Examples
+
+### Percentage
+
+<div>
+	<OntarioStepIndicator
+		show-back-button="true"
+		back-button-url="https://designsystem.ontario.ca/"
+		percentage-complete="70">
+	</OntarioStepIndicator>
+</div>
+
+### Steps
+
+<div>
+	<OntarioStepIndicator
+		show-back-button="true"
+		back-button-url="https://designsystem.ontario.ca/"
+		current-step="4"
+		number-of-steps="5">
+	</OntarioStepIndicator>
+</div>
+
+### No back button
+
+<div>
+	<OntarioStepIndicator
+		show-back-button="false"
+		current-step="4"
+		number-of-steps="5">
+	</OntarioStepIndicator>
+</div>
 
 ### Enabling the back button
 

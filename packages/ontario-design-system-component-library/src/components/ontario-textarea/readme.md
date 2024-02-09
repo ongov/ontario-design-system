@@ -1,3 +1,5 @@
+import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-textarea
 
 Use a text area when you want the user to enter **more than** a single line of information.
@@ -18,11 +20,19 @@ Example of a bare-bones textarea component where the user is passing the `name` 
 <ontario-textarea name="comments" element-id="form-comments" />
 ```
 
+<OntarioTextarea name="comments" element-id="form-comments" />
+
+_Example of optional textarea._
+
 To mark a textarea as required, add the `required` attribute to the component.
 
 ```html
 <ontario-textarea name="comments" element-id="form-comments" required="true" onBlur="exampleFunction()" />
 ```
+
+<OntarioTextarea name="comments" element-id="form-comments" required="true" />
+
+_Example of required textarea._
 
 ## Custom property types
 

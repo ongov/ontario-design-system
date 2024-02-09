@@ -32,5 +32,8 @@ junit.xml
 docs/
 ontario-design-system-web-components-documentation-*
 
+# Gernerated static assets
+packages/app-web-components-documentation/static/assets
+
 # Component Library Ignored Items
 packages/ontario-design-system-component-library/src/config.json
