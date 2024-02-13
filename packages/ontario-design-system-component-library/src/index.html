@@ -56,6 +56,7 @@
 						<li><a href="#text-inputs">Text inputs</a></li>
 						<li><a href="#date-input">Date input</a></li>
 						<li><a href="#step-indicator">Step indicator</a></li>
+						<li><a href="#form">Form example</a></li>
 					</ol>
 					<hr />
 
@@ -155,20 +156,67 @@
 					<div>
 						<h2 id="card">Card Collection & Card</h2>
 						<div>
-							<ontario-card-collection cards-per-row="2">
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card-collection cards-per-row="2">
+									<ontario-card
+										card-type="horizonal"
+										label="Card Title 1"
+										image="https://picsum.photos/200/300"
+										card-link="https://google.ca"
+										horizontal-image-position-type="left"
+										horizontal-image-size-type="one-fourth"
+										description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									>
+									</ontario-card>
+									<ontario-card
+										card-type="horizonal"
+										label="Card Title 2"
+										image="https://picsum.photos/200/300"
+										horizontal-image-position-type="left"
+										horizontal-image-size-type="one-fourth"
+										description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									>
+									</ontario-card>
+								</ontario-card-collection>
 								<ontario-card
-									card-type="horizontal"
-									label="Card Title 1"
+									card-type="basic"
+									label="Card Title 3"
 									image="https://picsum.photos/200/300"
-									card-link="https://google.ca"
 									horizontal-image-position-type="left"
 									horizontal-image-size-type="one-fourth"
 									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 								>
 								</ontario-card>
 								<ontario-card
-									card-type="horizontal"
-									label="Card Title 2"
+									card-type="basic"
+									label="Card Title 4"
+									image="https://picsum.photos/200/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-fourth"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+								>
+								</ontario-card>
+								<ontario-card
+									card-type="basic"
+									label="Card Title 5"
+									image="https://picsum.photos/200/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-fourth"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+								>
+								</ontario-card>
+								<ontario-card
+									card-type="basic"
+									label="Card Title 6"
+									image="https://picsum.photos/200/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-fourth"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+								>
+								</ontario-card>
+								<ontario-card
+									card-type="basic"
+									label="Card Title 7"
 									image="https://picsum.photos/200/300"
 									horizontal-image-position-type="left"
 									horizontal-image-size-type="one-fourth"
@@ -262,7 +310,8 @@
 
 					<!-- Fieldsets -->
 					<script>
-						window.onload = () => {
+						window.addEventListener('load', () => {
+							console.log('Loaded Address Event Listener');
 							const addressLine1 = document.getElementById('address-line-1');
 							addressLine1.inputValidator = async (value) => {
 								if (value === 'error') return { errorMessage: "You entered 'error'" };
@@ -270,7 +319,7 @@
 							addressLine1.addEventListener('inputErrorOccurred', (event) => {
 								console.log('errorOccurred:', event);
 							});
-						};
+						});
 					</script>
 					<div>
 						<h2 id="fieldsets">Fieldsets</h2>
@@ -872,6 +921,177 @@
 							current-step="4"
 							number-of-steps="5"
 						></ontario-step-indicator>
+					</div>
+					<div>
+						<!-- Form -->
+						<form id="sample-form">
+							<h2 id="form">Form example</h2>
+							<ontario-fieldset legend-size="large" legend="What is your delivery address?">
+								<ontario-input
+									id="delivery-address-form-line-1"
+									caption="Address line 1"
+									required
+									name="delivery-address-form-line-1"
+									hint-text="Street and number or P.O. box."
+									enable-live-validation
+									required-validation-message="Please enter your address"
+								></ontario-input>
+								<ontario-input
+									caption="Address line 2"
+									name="delivery-address-form-line-2"
+									hint-text="Apartment, suite, unit, building, etc."
+								></ontario-input>
+								<ontario-dropdown-list
+									caption="Province/territory"
+									name="delivery-address-form-province-selection-form"
+									element-id="delivery-address-form-province-territory"
+									required
+									is-empty-start-option="true"
+									options='[
+									{
+										"value": "ON",
+										"label": "Ontario"
+									},
+									{
+										"value": "QC",
+										"label": "Quebec"
+									},
+									{
+										"value": "SK",
+										"label": "Saskatchewan"
+									}
+								]'
+								></ontario-dropdown-list>
+								<ontario-checkboxes
+									name="delivery-address-form-options"
+									caption="Options"
+									hint-text="Select all delivery options that apply"
+									options='[
+										{
+											"value": "signature",
+											"label": "Signature",
+											"elementId": "checkbox-1"
+										},
+										{
+											"value": "gift-wrap",
+											"label": "Gift Wrap",
+											"elementId": "checkbox-2",
+											"hintExpander": {
+												"hint": "What is gift wrapping?",
+												"content": "Have your package wrapped in pretty paper."
+											}
+										},
+										{
+											"value": "high-5",
+											"label": "High Five",
+											"elementId": "checkbox-3",
+											"hintExpander": {
+												"hint": "What is a high five",
+												"content": "Life is short, show both your and the driver some appreciation with a high five."
+											}
+										}
+									]'
+								>
+								</ontario-checkboxes>
+								<ontario-radio-buttons
+									name="delivery-address-form-notification"
+									hint-text="Let the driver know how to notify you."
+									caption="Notification"
+									required="false"
+									options='[
+											{
+												"value": "knock",
+												"elementId": "radio-1",
+												"label": "Knock on door",
+												"hintExpander": {
+													"hint": "What is this option?",
+													"content": "The driver will knock on your door to let you know the delivery has arrived."
+												}
+											},
+											{
+												"value": "text",
+												"elementId": "radio-2",
+												"label": "Text message"
+											},
+
+											{
+												"value": "phone",
+												"elementId": "radio-3",
+												"label": "Phone call"
+											}
+										]'
+									hint-expander='{
+										"hint": "What is a notification?",
+										"content": "Let our driver know how best to notify you of your package being delivered."
+									}'
+								>
+								</ontario-radio-buttons>
+								<ontario-date-input
+									element-id="delivery-address-form-delivery-date"
+									name="delivery-address-form-delivery-date"
+									placeholder='{
+										"day": "DD",
+										"month": "MM",
+										"year": "YYYY"
+									}'
+									min-year="999"
+									max-year="9999"
+									required="true"
+									date-options='["day", "month", "year"]'
+									hint-text="For example 2000 03 01"
+									caption="Delivery date"
+								></ontario-date-input>
+								<ontario-textarea
+									name="delivery-address-form-delivery-notes"
+									caption="Delivery notes"
+									hint-expander='{
+										"hint": "What are delivery notes?",
+										"content": "Delivery notes can include things like door codes, etc."
+									}'
+								></ontario-textarea>
+							</ontario-fieldset>
+							<ontario-button type="primary" html-type="submit">Submit</ontario-button>
+						</form>
+						<h2 style="display: none" id="form-results">Form Results</h2>
+						<div id="form-results-data"></div>
+						<script>
+							window.addEventListener('load', () => {
+								console.log('Loaded Form Event Listener');
+								const form = document.getElementById('sample-form');
+								const formResults = document.getElementById('form-results');
+								const formResultsDataDisplay = document.getElementById('form-results-data');
+								form.addEventListener('submit', (event) => {
+									// Avoid an actual submission
+									event.preventDefault();
+
+									// Get the data from the form to be submitted
+									const formData = new FormData(event.target);
+									const formResultsArray = [...formData.entries()];
+
+									if (validateForm()) return;
+
+									// Display the form data
+									formResults.style.display = 'block';
+									console.log('Form Content:', formResultsArray);
+									const formResultsHtml = formResultsArray.map((x) => `<li><strong>${x[0]}</strong>: ${x[1]}</li>`);
+									formResultsDataDisplay.innerHTML = `<p class="ontario-columns ontario-small-12"><ul>\n${formResultsHtml.join(
+										'\n',
+									)}\n</ul></p>`;
+								});
+
+								const validateForm = () => {
+									let error = false;
+									const address1 = document.getElementById('delivery-address-form-line-1');
+									if (address1.value == undefined || address1.value == '') {
+										address1.errorMessage = 'Please enter your address';
+										address1.scrollIntoView();
+										error = true;
+									}
+
+									return error;
+								};
+							});
+						</script>
 					</div>
 				</div>
 			</div>

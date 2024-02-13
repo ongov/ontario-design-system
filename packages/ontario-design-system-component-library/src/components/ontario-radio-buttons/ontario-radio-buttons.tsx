@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Event, Listen, Watch, Element, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, State, Event, Listen, Watch, Element, EventEmitter, AttachInternals } from '@stencil/core';
 import { RadioButtons } from './radio-buttons.interface';
 import { RadioOption } from './radio-option.interface';
 
@@ -28,9 +28,11 @@ import { default as translations } from '../../translations/global.i18n.json';
 	tag: 'ontario-radio-buttons',
 	styleUrl: 'ontario-radio-buttons.scss',
 	shadow: true,
+	formAssociated: true,
 })
 export class OntarioRadioButtons implements RadioButtons {
 	@Element() element: HTMLElement;
+	@AttachInternals() internals: ElementInternals;
 
 	hintTextRef: HTMLOntarioHintTextElement | undefined;
 
@@ -331,9 +333,25 @@ export class OntarioRadioButtons implements RadioButtons {
 	private handleEvent(event: Event, eventType: EventType) {
 		const input = event.target as HTMLInputElement | null;
 
-		if (input) {
-			input.checked = input.checked ?? '';
-		}
+		// Reset all internalOptions checked states
+		const changedOption = this.internalOptions
+			.map((x) => {
+				x.checked = false;
+				return x;
+			})
+			.find((x) => x.value === input?.value);
+		// Set the new checked state for the selected value
+		if (changedOption) changedOption.checked = !changedOption?.checked;
+
+		// Set the value within the form
+		this.internals.setFormValue(
+			this.internalOptions
+				.filter((x) => !!x.checked)
+				.reduce((formData, currentValue) => {
+					formData.append(this.name, currentValue.value);
+					return formData;
+				}, new FormData()),
+		);
 
 		handleInputEvent(
 			event,

@@ -1,4 +1,4 @@
-import { Component, Event, h, Prop, State, Listen, Watch, Element, EventEmitter } from '@stencil/core';
+import { Component, Event, h, Prop, State, Listen, Watch, Element, EventEmitter, AttachInternals } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
@@ -24,9 +24,11 @@ import { default as translations } from '../../translations/global.i18n.json';
 	tag: 'ontario-textarea',
 	styleUrl: 'ontario-textarea.scss',
 	shadow: true,
+	formAssociated: true,
 })
 export class OntarioTextarea implements Input {
 	@Element() element: HTMLElement;
+	@AttachInternals() internals: ElementInternals;
 
 	hintTextRef: HTMLOntarioHintTextElement | undefined;
 
@@ -256,6 +258,8 @@ export class OntarioTextarea implements Input {
 	 */
 	private handleEvent(event: Event, eventType: EventType) {
 		const input = event.target as HTMLTextAreaElement | null;
+
+		this.internals.setFormValue(input?.value ?? '');
 
 		handleInputEvent(
 			event,

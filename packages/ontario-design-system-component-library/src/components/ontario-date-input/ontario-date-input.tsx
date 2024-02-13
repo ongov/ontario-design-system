@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Element, Watch, Event, Prop, h, State, Listen } from '@stencil/core';
+import { Component, EventEmitter, Element, Watch, Event, Prop, h, State, Listen, AttachInternals } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
@@ -17,9 +17,11 @@ import { emitEvent } from '../../utils/events/event-handler';
 	tag: 'ontario-date-input',
 	styleUrl: 'ontario-date-input.scss',
 	shadow: true,
+	formAssociated: true,
 })
 export class OntarioDateInput {
 	@Element() element: HTMLElement;
+	@AttachInternals() internals: ElementInternals;
 
 	/**
 	 * The language of the component.
@@ -298,6 +300,14 @@ export class OntarioDateInput {
 
 		// update date state
 		this.updateDateState(value, fieldType);
+
+		// TODO: verify are all the values numbers?
+		if (this.year && this.month && this.day) {
+			const desiredDate = new Date(
+				Date.UTC(parseInt(this.year), parseInt(this.month) - 1, parseInt(this.day), 0, 0, 0, 0),
+			);
+			this.internals.setFormValue(desiredDate.toISOString());
+		}
 	};
 
 	private handleDateInput = (value: string, fieldType: DateInputFieldType) => {

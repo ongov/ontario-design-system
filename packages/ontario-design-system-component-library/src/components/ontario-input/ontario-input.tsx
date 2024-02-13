@@ -1,4 +1,4 @@
-import { Component, Event, h, Prop, State, Listen, Element, Watch, EventEmitter } from '@stencil/core';
+import { Component, Event, h, Prop, State, Listen, Element, Watch, EventEmitter, AttachInternals } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
 import { Input } from '../../utils/common/input/input';
@@ -28,9 +28,11 @@ import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-even
 	tag: 'ontario-input',
 	styleUrl: 'ontario-input.scss',
 	shadow: true,
+	formAssociated: true,
 })
 export class OntarioInput implements TextInput {
 	@Element() element: HTMLElement;
+	@AttachInternals() internals: ElementInternals;
 
 	hintTextRef: HTMLOntarioHintTextElement | undefined;
 
@@ -378,6 +380,8 @@ export class OntarioInput implements TextInput {
 
 		// Update the component value to match the value of the input element.
 		this.value = input?.value;
+
+		this.internals.setFormValue(this.value ?? '');
 
 		handleInputEvent(
 			event,
