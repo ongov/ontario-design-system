@@ -1978,7 +1978,59 @@ declare global {
 		prototype: HTMLOntarioCardCollectionElement;
 		new (): HTMLOntarioCardCollectionElement;
 	};
-	interface HTMLOntarioCheckboxesElement extends Components.OntarioCheckboxes, HTMLStencilElement {}
+	interface HTMLOntarioCheckboxesElementEventMap {
+		checkboxOnChange: RadioAndCheckboxChangeEvent;
+		checkboxOnBlur: InputFocusBlurEvent;
+		checkboxOnFocus: InputFocusBlurEvent;
+	}
+	interface HTMLOntarioCheckboxesElement extends Components.OntarioCheckboxes, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioCheckboxesElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioCheckboxesElement,
+				ev: OntarioCheckboxesCustomEvent<HTMLOntarioCheckboxesElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioCheckboxesElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioCheckboxesElement,
+				ev: OntarioCheckboxesCustomEvent<HTMLOntarioCheckboxesElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
 	var HTMLOntarioCheckboxesElement: {
 		prototype: HTMLOntarioCheckboxesElement;
 		new (): HTMLOntarioCheckboxesElement;
@@ -1988,12 +2040,119 @@ declare global {
 		prototype: HTMLOntarioCriticalAlertElement;
 		new (): HTMLOntarioCriticalAlertElement;
 	};
-	interface HTMLOntarioDateInputElement extends Components.OntarioDateInput, HTMLStencilElement {}
+	interface HTMLOntarioDateInputElementEventMap {
+		inputOnChange: {
+			value: string;
+			fieldType: 'day' | 'month' | 'year';
+		};
+		inputOnBlur: 'day' | 'month' | 'year';
+		inputOnFocus: 'day' | 'month' | 'year';
+	}
+	interface HTMLOntarioDateInputElement extends Components.OntarioDateInput, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioDateInputElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioDateInputElement,
+				ev: OntarioDateInputCustomEvent<HTMLOntarioDateInputElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioDateInputElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioDateInputElement,
+				ev: OntarioDateInputCustomEvent<HTMLOntarioDateInputElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
 	var HTMLOntarioDateInputElement: {
 		prototype: HTMLOntarioDateInputElement;
 		new (): HTMLOntarioDateInputElement;
 	};
-	interface HTMLOntarioDropdownListElement extends Components.OntarioDropdownList, HTMLStencilElement {}
+	interface HTMLOntarioDropdownListElementEventMap {
+		dropdownOnChange: InputInteractionEvent;
+		dropdownOnBlur: InputFocusBlurEvent;
+		dropdownOnFocus: InputFocusBlurEvent;
+	}
+	interface HTMLOntarioDropdownListElement extends Components.OntarioDropdownList, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioDropdownListElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioDropdownListElement,
+				ev: OntarioDropdownListCustomEvent<HTMLOntarioDropdownListElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioDropdownListElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioDropdownListElement,
+				ev: OntarioDropdownListCustomEvent<HTMLOntarioDropdownListElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
 	var HTMLOntarioDropdownListElement: {
 		prototype: HTMLOntarioDropdownListElement;
 		new (): HTMLOntarioDropdownListElement;
@@ -2013,7 +2172,57 @@ declare global {
 		prototype: HTMLOntarioHeaderElement;
 		new (): HTMLOntarioHeaderElement;
 	};
-	interface HTMLOntarioHintExpanderElement extends Components.OntarioHintExpander, HTMLStencilElement {}
+	interface HTMLOntarioHintExpanderElementEventMap {
+		toggleExpanderEvent: MouseEvent | KeyboardEvent;
+	}
+	interface HTMLOntarioHintExpanderElement extends Components.OntarioHintExpander, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioHintExpanderElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioHintExpanderElement,
+				ev: OntarioHintExpanderCustomEvent<HTMLOntarioHintExpanderElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioHintExpanderElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioHintExpanderElement,
+				ev: OntarioHintExpanderCustomEvent<HTMLOntarioHintExpanderElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
 	var HTMLOntarioHintExpanderElement: {
 		prototype: HTMLOntarioHintExpanderElement;
 		new (): HTMLOntarioHintExpanderElement;
@@ -2585,12 +2794,111 @@ declare global {
 		prototype: HTMLOntarioIconYoutubeElement;
 		new (): HTMLOntarioIconYoutubeElement;
 	};
-	interface HTMLOntarioInputElement extends Components.OntarioInput, HTMLStencilElement {}
+	interface HTMLOntarioInputElementEventMap {
+		inputOnInput: InputInputEvent;
+		inputOnChange: InputInteractionEvent;
+		inputOnBlur: InputFocusBlurEvent;
+		inputOnFocus: InputFocusBlurEvent;
+		inputErrorOccurred: { inputId: string; errorMessage: string };
+	}
+	interface HTMLOntarioInputElement extends Components.OntarioInput, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioInputElementEventMap>(
+			type: K,
+			listener: (this: HTMLOntarioInputElement, ev: OntarioInputCustomEvent<HTMLOntarioInputElementEventMap[K]>) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioInputElementEventMap>(
+			type: K,
+			listener: (this: HTMLOntarioInputElement, ev: OntarioInputCustomEvent<HTMLOntarioInputElementEventMap[K]>) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
 	var HTMLOntarioInputElement: {
 		prototype: HTMLOntarioInputElement;
 		new (): HTMLOntarioInputElement;
 	};
-	interface HTMLOntarioLanguageToggleElement extends Components.OntarioLanguageToggle, HTMLStencilElement {}
+	interface HTMLOntarioLanguageToggleElementEventMap {
+		setAppLanguage: string;
+		headerLanguageToggled: HeaderLanguageToggleEventDetails;
+	}
+	interface HTMLOntarioLanguageToggleElement extends Components.OntarioLanguageToggle, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioLanguageToggleElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioLanguageToggleElement,
+				ev: OntarioLanguageToggleCustomEvent<HTMLOntarioLanguageToggleElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioLanguageToggleElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioLanguageToggleElement,
+				ev: OntarioLanguageToggleCustomEvent<HTMLOntarioLanguageToggleElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
 	var HTMLOntarioLanguageToggleElement: {
 		prototype: HTMLOntarioLanguageToggleElement;
 		new (): HTMLOntarioLanguageToggleElement;
@@ -2605,7 +2913,59 @@ declare global {
 		prototype: HTMLOntarioPageAlertElement;
 		new (): HTMLOntarioPageAlertElement;
 	};
-	interface HTMLOntarioRadioButtonsElement extends Components.OntarioRadioButtons, HTMLStencilElement {}
+	interface HTMLOntarioRadioButtonsElementEventMap {
+		radioOnChange: RadioAndCheckboxChangeEvent;
+		radioOnBlur: InputFocusBlurEvent;
+		radioOnFocus: InputFocusBlurEvent;
+	}
+	interface HTMLOntarioRadioButtonsElement extends Components.OntarioRadioButtons, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioRadioButtonsElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioRadioButtonsElement,
+				ev: OntarioRadioButtonsCustomEvent<HTMLOntarioRadioButtonsElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioRadioButtonsElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioRadioButtonsElement,
+				ev: OntarioRadioButtonsCustomEvent<HTMLOntarioRadioButtonsElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
 	var HTMLOntarioRadioButtonsElement: {
 		prototype: HTMLOntarioRadioButtonsElement;
 		new (): HTMLOntarioRadioButtonsElement;
@@ -2620,7 +2980,60 @@ declare global {
 		prototype: HTMLOntarioTableElement;
 		new (): HTMLOntarioTableElement;
 	};
-	interface HTMLOntarioTextareaElement extends Components.OntarioTextarea, HTMLStencilElement {}
+	interface HTMLOntarioTextareaElementEventMap {
+		inputOnInput: InputInputEvent;
+		inputOnChange: InputInteractionEvent;
+		inputOnBlur: InputFocusBlurEvent;
+		inputOnFocus: InputFocusBlurEvent;
+	}
+	interface HTMLOntarioTextareaElement extends Components.OntarioTextarea, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioTextareaElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioTextareaElement,
+				ev: OntarioTextareaCustomEvent<HTMLOntarioTextareaElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioTextareaElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioTextareaElement,
+				ev: OntarioTextareaCustomEvent<HTMLOntarioTextareaElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
 	var HTMLOntarioTextareaElement: {
 		prototype: HTMLOntarioTextareaElement;
 		new (): HTMLOntarioTextareaElement;
