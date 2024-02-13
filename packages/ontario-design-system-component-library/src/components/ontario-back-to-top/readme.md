@@ -1,3 +1,5 @@
+import { OntarioBackToTop } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-back-to-top
 
 Use a Back to Top button to help users quickly navigate to the top of a long page.
@@ -18,11 +20,23 @@ By default, the Back to Top button will have its language set to English ('en').
 <ontario-back-to-top language="fr" />
 ```
 
+<div style={{height: '75px'}}>
+    <div class="ontario-back-to-top">
+       <OntarioBackToTop language="fr" style={{position: 'inherit', bottom: '50%', right:'65%'}}/>
+    </div>
+</div>
+
 Otherwise, a default Back to Top button can be used as follows:
 
 ```html
 <ontario-back-to-top />
 ```
+
+<div class="ontario-back-to-top'">
+    <div>
+        <OntarioBackToTop style={{position: 'inherit', bottom: '50%', right:'65%', visbility:'visible'}}/>
+    </div>
+</div>
 
 <!-- Auto Generated Below -->
 

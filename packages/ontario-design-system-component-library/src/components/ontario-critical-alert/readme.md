@@ -1,3 +1,5 @@
+import { OntarioCriticalAlert } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-critical-alert
 
 Use a critical alert banner to bring a user’s attention to a significant situation, such as a site-wide service disruption or other critical information that will impact most users.
@@ -18,6 +20,8 @@ One way to use the critical alert component is by explicitly passing in the cont
 <ontario-critical-alert content="This is the content for the critical alert" />
 ```
 
+<OntarioCriticalAlert content="This is the content for the critical alert" />
+
 Alternatively, HTML content can be supplied as the child of the critical alert rather than through the `content` property. Note that no paragraph tag is passed as the first child of the HTML content, as it is already included in the components render method.
 
 ```html
@@ -25,6 +29,10 @@ Alternatively, HTML content can be supplied as the child of the critical alert r
 	<a href="https://designsystem.ontario.ca/">Ontario Design System</a> web components now available!!!
 </ontario-critical-alert>
 ```
+
+<OntarioCriticalAlert>
+	<a href="https://designsystem.ontario.ca/">Ontario Design System</a> web components now available!!!
+</OntarioCriticalAlert>
 
 <!-- Auto Generated Below -->
 

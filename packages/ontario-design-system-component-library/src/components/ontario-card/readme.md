@@ -1,3 +1,5 @@
+import { OntarioCard } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-card
 
 Use a card to provide an entry point to information on a different page.
@@ -18,6 +20,8 @@ Example of a bare-bones `ontario-card` component where the `label` and `descript
 <ontario-card label="Card Title" description="Lorem Ipsum Lorem Ipsum"></ontario-card>
 ```
 
+<OntarioCard label="Card Title" description="Lorem Ipsum Lorem Ipsum"></OntarioCard>
+
 Example of an `ontario-card` component with an image, which includes the `cardType`, `headerType`, `image`, `label` and `description` properties.
 
 ```html
@@ -30,6 +34,16 @@ Example of an `ontario-card` component with an image, which includes the `cardTy
 >
 </ontario-card>
 ```
+
+<div>
+	<OntarioCard
+		card-type="image"
+		header-type="light"
+		label="Card Title"
+		image="https://picsum.photos/200/300"
+		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+	></OntarioCard>
+</div>
 
 This is another example of an `ontario-card` component, where the user is passing in the horizontal card-type. This will
 require more properties, including the `horizontalImagePositionType` and the `horizontalImageSizeType`.
@@ -45,6 +59,17 @@ require more properties, including the `horizontalImagePositionType` and the `ho
 >
 </ontario-card>
 ```
+
+<div>
+	<OntarioCard
+		card-type="horizontal"
+		label="Card Title"
+		image="https://picsum.photos/200/300"
+		horizontal-image-position-type="left"
+		horizontal-image-size-type="one-fourth"
+		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+	></OntarioCard>
+</div>
 
 <!-- Auto Generated Below -->
 

@@ -1,3 +1,6 @@
+import { OntarioCardCollection } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioCard } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-card-collection
 
 Use a card-collection to encapsulate the card components.
@@ -37,6 +40,28 @@ Example of a bare-bones `ontario-card-collection` component, with a `cardsPerRow
 	</ontario-card>
 </ontario-card-collection>
 ```
+
+<OntarioCardCollection cards-per-row="2">
+	<OntarioCard
+		card-type="horizontal"
+		label="Card Title 1"
+		image="https://picsum.photos/200/300"
+		card-link="https://google.ca"
+		horizontal-image-position-type="left"
+		horizontal-image-size-type="one-fourth"
+		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+	>
+	</OntarioCard>
+	<OntarioCard
+		card-type="horizontal"
+		label="Card Title 2"
+		image="https://picsum.photos/200/300"
+		horizontal-image-position-type="left"
+		horizontal-image-size-type="one-fourth"
+		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+	>
+	</OntarioCard>
+</OntarioCardCollection>
 
 <!-- Auto Generated Below -->
 

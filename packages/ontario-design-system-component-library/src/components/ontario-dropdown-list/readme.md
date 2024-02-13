@@ -1,3 +1,5 @@
+import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-dropdown-list
 
 Only use a dropdown (select) list if you cannot use other form components to capture the user’s information.
@@ -41,6 +43,33 @@ Example of a dropdown list component with no `elementId` or `isEmptyStartOption`
 >
 </ontario-dropdown-list>
 ```
+
+<div>
+	<OntarioDropdownList
+		name="streaming-service"
+		caption='{
+			"captionText": "Select a streaming service",
+			"captionType": "default"
+		}'
+		required
+		options='[{
+			"value": "netflix",
+			"label": "Netflix"
+		},
+		{
+			"value": "disney-plus",
+			"label": "Disney Plus"
+		},
+		{
+			"value": "crave",
+			"label": "Crave"
+		},
+		{
+			"value": "prime",
+			"label": "Prime Video"
+		}]'
+	></OntarioDropdownList>
+</div>
 
 In the following example, all available props are passed through.
 
@@ -112,6 +141,74 @@ In the following example, all available props are passed through.
 >
 </ontario-dropdown-list>
 ```
+
+<div>
+	<OntarioDropdownList
+		name="provinces-territories"
+		is-empty-start-option="Select"
+		element-id="provinces-territories"
+		language="en"
+		hint-text="Select the province or territory you currently live in."
+		caption='{
+			"captionText": "Province/territory",
+			"captionType": "heading"
+		}'
+		required
+		options='[{
+			"value": "alberta",
+			"label": "Alberta"
+		},
+		{
+			"value": "british-columbia",
+			"label": "British Columbia"
+		},
+		{
+			"value": "manitoba",
+			"label": "Manitoba"
+		},
+		{
+			"value": "new-brunswick",
+			"label": "New Brunswick"
+		},
+		{
+			"value": "newfoundland-and-labrador",
+			"label": "Newfoundland and Labrador"
+		},
+		{
+			"value": "nova-scotia",
+			"label": "Nova Scotia"
+		},
+		{
+			"value": "ontario",
+			"label": "Ontario"
+			"selected": true
+		},
+		{
+			"value": "prince-edward-island",
+			"label": "Prince Edward Island"
+		},
+		{
+			"value": "quebec",
+			"label": "Quebec"
+		},
+		{
+			"value": "saskatchewan",
+			"label": "Saskatchewan"
+		},
+		{
+			"value": "northwest-territories",
+			"label": "Northwest Territories"
+		},
+		{
+			"value": "nunavut",
+			"label": "Nunavut"
+		},
+		{
+			"value": "yukon",
+			"label": "Yukon"
+		}]'
+	></OntarioDropdownList>
+</div>
 
 ## Custom property types
 
