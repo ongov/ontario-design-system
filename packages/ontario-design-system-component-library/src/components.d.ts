@@ -328,7 +328,7 @@ export namespace Components {
 		 */
 		caption: Caption | string;
 		/**
-		 * An array value used to display date options. For example, only the day and month fields can be displayed by specifying the dateOptions as '["day", "month"]', etc.  This is optional. If no prop for `dateOptions` is passed, it will default to '["day", "month", "year"]'.
+		 * An array value used to display date options. For example, only the day and month fields can be displayed by specifying the dateOptions as `["day", "month"]`, etc.  This is optional. If no prop for `dateOptions` is passed, it will default to `["day", "month", "year"]`.
 		 */
 		dateOptions?: string | Array<DateInputFieldType>;
 		/**
@@ -2990,7 +2990,7 @@ declare namespace LocalJSX {
 		 */
 		caption?: Caption | string;
 		/**
-		 * An array value used to display date options. For example, only the day and month fields can be displayed by specifying the dateOptions as '["day", "month"]', etc.  This is optional. If no prop for `dateOptions` is passed, it will default to '["day", "month", "year"]'.
+		 * An array value used to display date options. For example, only the day and month fields can be displayed by specifying the dateOptions as `["day", "month"]`, etc.  This is optional. If no prop for `dateOptions` is passed, it will default to `["day", "month", "year"]`.
 		 */
 		dateOptions?: string | Array<DateInputFieldType>;
 		/**
@@ -3018,11 +3018,15 @@ declare namespace LocalJSX {
 		 */
 		minYear?: number;
 		/**
+		 * Emitted when an error message is reported to the component.
+		 */
+		onInputErrorOccurred?: (event: OntarioDateInputCustomEvent<{ inputId: string; errorMessage: string }>) => void;
+		/**
 		 * Emitted when a keyboard input event occurs when an input has lost focus.
 		 */
 		onInputOnBlur?: (event: OntarioDateInputCustomEvent<'day' | 'month' | 'year'>) => void;
 		/**
-		 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
+		 * Emitted when a `change` event occurs within the component.
 		 */
 		onInputOnChange?: (
 			event: OntarioDateInputCustomEvent<{
@@ -3034,6 +3038,15 @@ declare namespace LocalJSX {
 		 * Emitted when a keyboard input event occurs when an input has gained focus.
 		 */
 		onInputOnFocus?: (event: OntarioDateInputCustomEvent<'day' | 'month' | 'year'>) => void;
+		/**
+		 * Emitted when an `input` event occurs within the component.
+		 */
+		onInputOnInput?: (
+			event: OntarioDateInputCustomEvent<{
+				value: string;
+				fieldType: 'day' | 'month' | 'year';
+			}>,
+		) => void;
 		/**
 		 * An object value used to set the placeholder text for the day, month and year input fields. Any combination of the three input fields (i.e day, month, year) of the date component can be overridden.  This is optional. If no prop is passed, it will not display any placeholder text.
 		 */
