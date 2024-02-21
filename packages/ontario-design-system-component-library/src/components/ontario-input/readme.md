@@ -46,6 +46,28 @@ The following input component example has the `inputWidth` property passed in, w
 	</OntarioInput>
 </div>
 
+### Forms
+
+The `ontario-input` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as an `<input type="text">`.
+
+```html
+<form>
+	<!-- Add an ontario-input -->
+	<ontario-input
+		id="input-1"
+		caption="What is your name?"
+		required
+		name="input-1"
+		hint-text="Enter your full name"
+	></ontario-input>
+
+	<!-- Submit the form with a submit button -->
+	<ontario-button type="primary" html-type="submit">Submit</ontario-button>
+</form>
+```
+
+Remember to set the `name` attribute as this is used to identify the field when submitting the form.
+
 ## Error messaging
 
 ### Setting an error message
@@ -141,10 +163,10 @@ The `caption` property is used to render the label for the ontario-input. It can
 caption='{ "captionText": "Input label", "captionType": "large" }'
 ```
 
-| **Property name** | **Type**                           | **Description**                                                                                                                                  |
-| ----------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `captionText`     | `string`                           | Text to display as the input question                                                                                                            |
-| `captionType`     | `"default" \| "large"\| "heading"` | The type of label to display for the input question. This is optional, and if no information is provided, it will default to the `default` type. |
+| Property name | Type                               | Description                                                                                                                                      |
+| ------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `captionText` | `string`                           | Text to display as the input question                                                                                                            |
+| `captionType` | `"default" \| "large"\| "heading"` | The type of label to display for the input question. This is optional, and if no information is provided, it will default to the `default` type. |
 
 ### hintExpander
 
@@ -155,10 +177,10 @@ hintExpander='{ "hint": "This is the hint expander title", "content": "This is t
 visible when the hint expander title (hint) is toggled" }'
 ```
 
-| **Property name** | **Type** | **Description**                                                                                                 |
-| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------- |
-| `hint`            | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content |
-| `content`         | `string` | Text to display as the content of the hint expander                                                             |
+| Property name | Type     | Description                                                                                                     |
+| ------------- | -------- | --------------------------------------------------------------------------------------------------------------- |
+| `hint`        | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content |
+| `content`     | `string` | Text to display as the content of the hint expander                                                             |
 
 ## Accessibility
 

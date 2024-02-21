@@ -91,6 +91,38 @@ Example of passing custom date validation function to modify validation logic or
 </script>
 ```
 
+### Forms
+
+The `ontario-date-input` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API.
+
+The `ontario-date-input` returns an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formatted date with a time component of `00:00:00Z`, or midnight UTC, eg. `2024-02-20T00:00:00.000Z`, combining the _year_, _month_, and _day_ fields together. _It has to be noted that the input only supports numerical values within any of the fields._
+
+```html
+<form>
+	<!-- Add an ontario-date-input -->
+	<ontario-date-input
+		element-id="date-input-1"
+		name="date-input-1"
+		placeholder='{
+			"day": "DD",
+			"month": "MM",
+			"year": "YYYY"
+		}'
+		min-year="999"
+		max-year="9999"
+		required
+		date-options='["day", "month", "year"]'
+		hint-text="For example 2000 03 01"
+		caption="Enter a date"
+	></ontario-date-input>
+
+	<!-- Submit the form with a submit button -->
+	<ontario-button type="primary" html-type="submit">Submit</ontario-button>
+</form>
+```
+
+Remember to set the `name` attribute as this is used to identify the field when submitting the form.
+
 ## Custom property types
 
 ### DateValidatorReturnType

@@ -2041,12 +2041,17 @@ declare global {
 		new (): HTMLOntarioCriticalAlertElement;
 	};
 	interface HTMLOntarioDateInputElementEventMap {
+		inputOnInput: {
+			value: string;
+			fieldType: 'day' | 'month' | 'year';
+		};
 		inputOnChange: {
 			value: string;
 			fieldType: 'day' | 'month' | 'year';
 		};
 		inputOnBlur: 'day' | 'month' | 'year';
 		inputOnFocus: 'day' | 'month' | 'year';
+		inputErrorOccurred: { inputId: string; errorMessage: string };
 	}
 	interface HTMLOntarioDateInputElement extends Components.OntarioDateInput, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioDateInputElementEventMap>(
