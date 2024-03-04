@@ -166,10 +166,11 @@ h5 + h6 {
 	margin-top: spacing.$spacing-6;
 }
 
-p code, td code, li code {
-    line-height: 2.25rem;
+p code,
+td code,
+li code {
+	line-height: 2.25rem;
 }
-
 
 /* Forms */
 input[type='text'],
@@ -235,11 +236,6 @@ ol {
 
 ol li {
 	padding: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-1;
-}
-
-ul li:last-child,
-ol li:last-child {
-	padding-bottom: spacing.$spacing-0;
 }
 
 ul ul,
