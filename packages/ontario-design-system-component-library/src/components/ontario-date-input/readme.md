@@ -1,3 +1,5 @@
+import { OntarioDateInput } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-date-input
 
 Use this component for user-friendly date input and display.
@@ -32,6 +34,25 @@ Example of date input component
 	}'
 ></ontario-date-input>
 ```
+
+<div>
+	<OntarioDateInput
+		placeholder='{
+			"day": "DD",
+			"month": "MM",
+			"year": "YYYY"
+		}'
+		min-year="500"
+		max-year="1000"
+		required="true"
+		date-options='["day", "month", "year"]'
+		hint-text="For example 2000 03 01"
+		caption='{
+			"captionText": "Exact Date",
+			"captionType": "default"
+		}'
+	></OntarioDateInput>
+</div>
 
 Example of passing custom date validation function to modify validation logic or providing custom error strings.
 

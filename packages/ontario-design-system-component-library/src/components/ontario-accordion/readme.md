@@ -1,3 +1,5 @@
+import { OntarioAccordion } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-accordion
 
 Use accordions to provide a show/hide option for sections of content on complex pages.
@@ -27,6 +29,20 @@ Example of an accordion component, where the user is explicitly passing in conte
 	]'
 ></ontario-accordion>
 ```
+
+<div>
+	<OntarioAccordion
+		title="My Accordion"
+		expand-collapse-button='{
+			"expandAllSectionsLabel": "Expand All",
+			"collapseAllSectionsLabel": "Collapse All"
+		}'
+		accordion-data='[
+			{"label": "Accordion 1", "content": "This is a string"},
+			{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"}
+		]'
+	></OntarioAccordion>
+</div>
 
 This is another example of an accordion. This time, the content is passed as a child of the `ontario-aside` component, which allows for HTML content to be passed.
 
