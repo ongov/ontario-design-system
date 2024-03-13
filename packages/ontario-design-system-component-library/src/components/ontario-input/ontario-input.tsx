@@ -381,7 +381,7 @@ export class OntarioInput implements TextInput {
 		// Update the component value to match the value of the input element.
 		this.value = input?.value;
 
-		this.internals.setFormValue(this.value ?? '');
+		this.internals?.setFormValue?.(this.value ?? '');
 
 		handleInputEvent(
 			event,

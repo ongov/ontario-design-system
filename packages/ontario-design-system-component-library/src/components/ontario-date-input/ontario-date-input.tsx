@@ -306,7 +306,7 @@ export class OntarioDateInput {
 			const desiredDate = new Date(
 				Date.UTC(parseInt(this.year), parseInt(this.month) - 1, parseInt(this.day), 0, 0, 0, 0),
 			);
-			this.internals.setFormValue(desiredDate.toISOString());
+			this.internals?.setFormValue?.(desiredDate.toISOString());
 		}
 	};
 

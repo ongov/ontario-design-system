@@ -368,7 +368,7 @@ export class OntarioDropdownList implements Dropdown {
 	private handleEvent(event: Event, eventType: EventType) {
 		const input = event.target as HTMLSelectElement | null;
 
-		this.internals.setFormValue(input?.value ?? '');
+		this.internals?.setFormValue?.(input?.value ?? '');
 
 		handleInputEvent(
 			event,

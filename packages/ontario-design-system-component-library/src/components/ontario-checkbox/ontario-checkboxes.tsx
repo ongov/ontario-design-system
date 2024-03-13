@@ -338,7 +338,7 @@ export class OntarioCheckboxes implements Checkboxes {
 		if (changedOption) changedOption.checked = !changedOption?.checked;
 
 		// Set the value within the form
-		this.internals.setFormValue(
+		this.internals?.setFormValue?.(
 			this.internalOptions
 				.filter((x) => !!x.checked)
 				.reduce((formData, currentValue) => {

@@ -259,7 +259,7 @@ export class OntarioTextarea implements Input {
 	private handleEvent(event: Event, eventType: EventType) {
 		const input = event.target as HTMLTextAreaElement | null;
 
-		this.internals.setFormValue(input?.value ?? '');
+		this.internals?.setFormValue?.(input?.value ?? '');
 
 		handleInputEvent(
 			event,
