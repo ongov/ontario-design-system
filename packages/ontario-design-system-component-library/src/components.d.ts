@@ -465,6 +465,10 @@ export namespace Components {
 		 */
 		applicationHeaderInfo: ApplicationHeaderInfo | string;
 		/**
+		 * The logo src of header
+		 */
+		assetBasePath: string;
+		/**
 		 * A custom function to pass to the language toggle button.
 		 */
 		customLanguageToggle?: (event: globalThis.Event) => void;
@@ -3155,6 +3159,10 @@ declare namespace LocalJSX {
 		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage",      "maxSubheaderDesktopLinks": "3",      "maxSubheaderTabletLinks": "2",      "maxSubheaderMobileLinks": "1"    }'>  </ontario-header>
 		 */
 		applicationHeaderInfo?: ApplicationHeaderInfo | string;
+		/**
+		 * The logo src of header
+		 */
+		assetBasePath?: string;
 		/**
 		 * A custom function to pass to the language toggle button.
 		 */

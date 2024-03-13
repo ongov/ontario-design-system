@@ -1,3 +1,5 @@
+import { OntarioLoadingIndicator } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-loading-indicator
 
 Use a loading indicator to let users know when an application or page element needs more time to process an action.
@@ -18,6 +20,14 @@ Example of a bare-bones loading indicator, where the default message of "Loading
 <ontario-loading-indicator is-loading="true"></ontario-loading-indicator>
 ```
 
+<div class="ontario-row">
+    <div class="ontario-columns ontario-small-12">
+        <div style={{position: 'relative', height: '25vh', zIndex:'1'}}>
+            <OntarioLoadingIndicator is-loading="true" full-screen-overlay="false"></OntarioLoadingIndicator>
+        </div>
+    </div>
+</div>
+
 Example of a loading indicator that does not have a full screen overlay. The containing element is positioned relatively.
 There is also a custom message passed to display as the loading content.
 
@@ -30,6 +40,14 @@ There is also a custom message passed to display as the loading content.
 	</div>
 </div>
 ```
+
+<div class="ontario-row">
+    <div class="ontario-columns ontario-small-12">
+        <div style={{position: 'relative', height: '25vh', zIndex:'1'}}>
+            <OntarioLoadingIndicator is-loading="true" full-screen-overlay="false" message="Calculating" />
+        </div>
+    </div>
+</div>
 
 <!-- Auto Generated Below -->
 

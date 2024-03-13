@@ -1,3 +1,5 @@
+import { OntarioPageAlert } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-page-alert
 
 Use page alerts to notify users of important information or changes on a page. There are four types of page alerts (i.e informational, warning, success and error).
@@ -22,6 +24,14 @@ Example of a page alert with no type passed. This will default to an "informatio
 </ontario-page-alert>
 ```
 
+<div>
+	<OntarioPageAlert heading="Licence plates">
+		ServiceOntario centres may issue either a blue licence plate or a white embossed ‘Yours to Discover’ licence plate
+		depending on availability.
+		<a href="#">Learn more about replacing a licence plate</a>.
+	</OntarioPageAlert>
+</div>
+
 Example of success page alert type, where the content is passed as a string rather than as HTML.
 
 ```html
@@ -31,6 +41,14 @@ Example of success page alert type, where the content is passed as a string rath
 	content="Please look out for an email confirmation with your receipt and order number. Your licence plate sticker should arrive in 2-4 weeks."
 ></ontario-page-alert>
 ```
+
+<div>
+	<OntarioPageAlert
+		type="success"
+		heading="Your payment was successful and your order is now complete."
+		content="Please look out for an email confirmation with your receipt and order number. Your licence plate sticker should arrive in 2-4 weeks."> 
+	</OntarioPageAlert>
+</div>
 
 <!-- Auto Generated Below -->
 
