@@ -44,8 +44,6 @@ Example of an accordion component, where the user is explicitly passing in conte
 	></OntarioAccordion>
 </div>
 
-This is another example of an accordion. This time, the content is passed as a child of the `ontario-aside` component, which allows for HTML content to be passed.
-
 ## Custom property types
 
 ### Accordion

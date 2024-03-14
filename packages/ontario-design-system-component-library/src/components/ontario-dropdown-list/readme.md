@@ -111,7 +111,7 @@ In the following example, all available props are passed through.
 		},
 		{
 			"value": "ontario",
-			"label": "Ontario"
+			"label": "Ontario",
 			"selected": true
 		},
 		{
@@ -180,7 +180,7 @@ In the following example, all available props are passed through.
 		},
 		{
 			"value": "ontario",
-			"label": "Ontario"
+			"label": "Ontario",
 			"selected": true
 		},
 		{

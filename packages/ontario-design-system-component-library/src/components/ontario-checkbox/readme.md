@@ -1,6 +1,6 @@
 import { OntarioCheckboxes } from '@ontario-digital-service/ontario-design-system-component-library-react';
 
-# ontario-checkbox
+# ontario-checkboxes
 
 Use checkboxes when you want the user to select one or more options from a list.
 

@@ -17,10 +17,10 @@ Once the component package has been installed (see Ontario Design System Compone
 One way to use the critical alert component is by explicitly passing in the content through the `content` property - this will override any HTML content passed as a child of the critical alert component (see the next example), and the resulting content text passed into the `content` property will be displayed.
 
 ```html
-<ontario-critical-alert content="This is the content for the critical alert" />
+<ontario-critical-alert content="This is the content for the critical alert"> </ontario-critical-alert>
 ```
 
-<OntarioCriticalAlert content="This is the content for the critical alert" />
+<OntarioCriticalAlert content="This is the content for the critical alert"> </OntarioCriticalAlert>
 
 Alternatively, HTML content can be supplied as the child of the critical alert rather than through the `content` property. Note that no paragraph tag is passed as the first child of the HTML content, as it is already included in the components render method.
 
