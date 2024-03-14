@@ -238,6 +238,16 @@ ol li {
 	padding: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-1;
 }
 
+ul li:last-child,
+ol li:last-child {
+	padding-bottom: spacing.$spacing-0;
+}
+
+ul[class*='columns-'] li:last-child,
+ol[class*='columns-'] li:last-child {
+	padding-bottom: spacing.$spacing-3;
+}
+
 ul ul,
 ol ul {
 	margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-2 spacing.$spacing-6;
