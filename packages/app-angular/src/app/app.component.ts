@@ -39,6 +39,10 @@ export class AppComponent implements OnInit {
 		const appName = this.translate.instant('header.appName');
 		const menuItemOne = this.translate.instant('header.menuItems.home');
 		const menuItemTwo = this.translate.instant('header.menuItems.register');
+		const accessibility = this.translate.instant('footer.accessibility.text');
+		const accessibilityLink = this.translate.instant('footer.accessibility.link');
+		const privacy = this.translate.instant('footer.privacy.text');
+		const privacyLink = this.translate.instant('footer.privacy.link');
 		const contactUs = this.translate.instant('footer.contactUs.text');
 		const contactUsLink = this.translate.instant('footer.contactUs.link');
 
@@ -46,6 +50,10 @@ export class AppComponent implements OnInit {
 			appName,
 			menuItemOne,
 			menuItemTwo,
+			accessibility,
+			accessibilityLink,
+			privacy,
+			privacyLink,
 			contactUs,
 			contactUsLink,
 		};
@@ -58,12 +66,14 @@ export class AppComponent implements OnInit {
 	getRoute() {
 		const getStarted = isEnglish() ? 'get-started' : 'fr/demarrer';
 		const register = isEnglish() ? 'create-account' : 'fr/creer-compte';
+		const homeIsActive = window.location.hash.includes(getStarted);
+		const registerIsActive = window.location.hash.includes(register);
 
 		return {
 			home: isAngularPOCEnvironment() ? this.urlGenerator.generateAppUrl(getStarted) : `/#/${getStarted}`,
 			register: isAngularPOCEnvironment() ? this.urlGenerator.generateAppUrl(register) : `/#/${register}`,
-			homeIsActive: window.location.hash.includes(this.urlGenerator.generateAppUrl(getStarted)),
-			registerIsActive: window.location.hash.includes(this.urlGenerator.generateAppUrl(register)),
+			homeIsActive,
+			registerIsActive,
 		};
 	}
 

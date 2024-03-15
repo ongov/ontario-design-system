@@ -4,7 +4,9 @@
 		[applicationHeaderInfo]="{
 			title: getTranslation().appName,
 			href: getRoute().home,
-			maxSubheaderDesktopLinks: 2
+			maxSubheaderDesktopLinks: 2,
+      maxSubheaderMobileLinks: 2,
+      maxSubheaderTabletLinks: 2,
 		}"
 		disable-dynamic-menu="true"
 		[menuItems]="[
@@ -34,6 +36,14 @@
 		<ontario-footer
 			type="default"
 			[footerLinks]="{
+				accessibilityLink: {
+					text: getTranslation().accessibility,
+					href: getTranslation().accessibilityLink
+				},
+				PrivacyLink: {
+					text: getTranslation().privacy,
+					href: getTranslation().privacyLink
+				},
 				contactLink: {
 					text: getTranslation().contactUs,
 					href: getTranslation().contactUsLink

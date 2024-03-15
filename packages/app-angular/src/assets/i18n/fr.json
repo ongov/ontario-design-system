@@ -21,6 +21,14 @@
 		}
 	},
 	"footer": {
+		"accessibility": {
+			"text": "Accessibilité",
+			"link": "https://www.ontario.ca/fr/page/accessibilite"
+		},
+		"privacy": {
+			"text": "Confidentialité",
+			"link": "https://www.ontario.ca/fr/page/declaration-concernant-la-protection-de-la-vie-privee"
+		},
 		"contactUs": {
 			"text": "Contactez-nous",
 			"link": "https://www.ontario.ca/fr/commentaires/pour-nous-joindre?id=7471&nid=7583"
