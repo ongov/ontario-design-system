@@ -1,3 +1,6 @@
+import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # ontario-header
 
 Use the `ontario` type header for all pages that are part of the main ontario.ca website. This header is mandatory.
@@ -99,6 +102,51 @@ Example of an Ontario.ca header component.
 >
 </ontario-header>
 ```
+
+<div>
+	<OntarioHeader
+		assetBasePath = {useBaseUrl('/assets')}
+		type="application"
+		disable-dynamic-menu="true"
+		application-header-info='{
+		"title": "Driving and roads",
+		"href": "/driving-and-roads",
+		"maxSubheaderDesktopLinks": "3",
+		"maxSubheaderTabletLinks": "1"
+		}'
+		language-toggle-options='{
+		"englishLink": "/",
+		"frenchLink" : "/fr"
+		}'
+		menu-items='[
+		{
+		"title": "Vehicle registration",
+		"href": "/vehicle-registration",
+		"linkIsActive": "false"
+		},
+		{
+		"title": "Driver records",
+		"href": "/driver-records",
+		"linkIsActive": "false"
+		},
+		{
+		"title": "Accessible Parking Permits",
+		"href": "/accessible-parking-permits",
+		"linkIsActive": "false"
+		},
+		{
+		"title": "Highway traveler information",
+		"href": "/highway-traveler-information",
+		"linkIsActive": "true",
+		"onClickHandler": (e: Event) => {
+		e.preventDefault();
+		alert("Menu item clicked!")
+		},
+		}
+		]'
+		custom-language-toggle="{changeLanguage}">
+	 </OntarioHeader>
+</div>
 
 Example of an Application header component.
 
@@ -238,6 +286,7 @@ To ensure best practices, it is important to limit the number of navigation link
 | Property                | Attribute                 | Description                                                                                                                                                                                                                                            | Type                                                          | Default         |
 | ----------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------- | --------------- |
 | `applicationHeaderInfo` | `application-header-info` | Information pertaining to the application header. This is only necessary for the 'application' header type. This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views. | `ApplicationHeaderInfo \| string`                             | `undefined`     |
+| `assetBasePath`         | `asset-base-path`         | The logo src of header                                                                                                                                                                                                                                 | `string`                                                      | `undefined`     |
 | `customLanguageToggle`  | --                        | A custom function to pass to the language toggle button.                                                                                                                                                                                               | `((event: Event) => void) \| undefined`                       | `undefined`     |
 | `disableDynamicMenu`    | `disable-dynamic-menu`    | Option to disable fetching of the dynamic menu from the Ontario Header API                                                                                                                                                                             | `boolean`                                                     | `false`         |
 | `language`              | `language`                | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.                                           | `"en" \| "fr" \| undefined`                                   | `'en'`          |

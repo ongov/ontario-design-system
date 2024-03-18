@@ -35,6 +35,10 @@ export class OntarioHeader {
 	@Element() el: HTMLElement;
 
 	/**
+	 * The logo src of header
+	 */
+	@Prop() assetBasePath: string;
+	/**
 	 * The type of header.
 	 */
 	@Prop() type?: OntarioHeaderType = 'application';
@@ -324,6 +328,15 @@ export class OntarioHeader {
 	}
 
 	/**
+	 * Generate a link to the given image based on the base asset path.
+	 * @param imageName Name of the image to build the path to
+	 * @returns Path to image with asset path
+	 */
+	private getImageAssetSrcPath(imageName: string): string {
+		return `${this.assetBasePath ? this.assetBasePath : getAssetPath('./assets')}/${imageName}`;
+	}
+
+	/**
 	 * This function generates the menu items in a <li>, accordingly, to the given parameters.
 	 *
 	 * href and title are necessary, but rest are not.
@@ -507,12 +520,12 @@ export class OntarioHeader {
 									<a href={this.translations.header.logoLink[`${this.language}`]}>
 										<img
 											class="ontario-show-for-medium"
-											src={getAssetPath('./assets/ontario-logo--desktop.svg')}
+											src={this.getImageAssetSrcPath('ontario-logo--desktop.svg')}
 											alt={this.translations.header.logoAltText[`${this.language}`]}
 										/>
 										<img
 											class="ontario-show-for-small-only"
-											src={getAssetPath('./assets/ontario-logo--mobile.svg')}
+											src={this.getImageAssetSrcPath('ontario-logo--mobile.svg')}
 											alt={this.translations.header.logoAltText[`${this.language}`]}
 										/>
 									</a>
@@ -650,7 +663,7 @@ export class OntarioHeader {
 								<div class="ontario-columns ontario-small-6 ontario-application-header__logo">
 									<a href={this.translations.header.logoLink[`${this.language}`]}>
 										<img
-											src={getAssetPath('./assets/ontario-logo--desktop.svg')}
+											src={this.getImageAssetSrcPath('ontario-logo--desktop.svg')}
 											alt={this.translations.header.logoAltText[`${this.language}`]}
 										/>
 									</a>

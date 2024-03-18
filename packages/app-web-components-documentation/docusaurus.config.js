@@ -11,6 +11,8 @@ const config = {
 	tagline: 'Web Components',
 	favicon: 'img/favicon.ico',
 
+	staticDirectories: ['static'],
+
 	// Set the production url of your site here
 	url: 'https://designsystem.ontario.ca/',
 	// Set the /<baseUrl>/ pathname under which your site is served

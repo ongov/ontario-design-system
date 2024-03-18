@@ -1,3 +1,5 @@
+import { OntarioCallout } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-callout
 
 Use callouts to highlight in-page content.
@@ -23,13 +25,38 @@ Example of a callout component, where the user is explicitly passing in content 
 ></ontario-callout>
 ```
 
+<div>
+	<OntarioCallout
+		heading-type="h2"
+		heading-content-type="html"
+		heading-content="<a href='#'>This is a callout heading that is a link</a>"
+		content="This is the content for the callout component."
+	></OntarioCallout>
+</div>
+
 This is another example of an callout. This time, the content is passed as a child of the `ontario-callout` component, which allows for HTML content to be passed. A `highlightColour` option is also passed.
 
 ```html
-<ontario-callout heading-type="h4" heading-content-type="string" heading-content="This is a callout heading" highlight-colour="gold">
-    <p><a href="#">Sign up for email reminders</a> and we’ll notify you 60 and 30 days before your licence expires.</p>
-</ontario-aside>
+<ontario-callout
+	heading-type="h4"
+	heading-content-type="string"
+	heading-content="This is a callout heading"
+	highlight-colour="gold"
+>
+	<p><a href="#">Sign up for email reminders</a> and we’ll notify you 60 and 30 days before your licence expires.</p>
+</ontario-callout>
 ```
+
+<div>
+	<OntarioCallout 
+		heading-type="h4" 
+		heading-content-type="string" 
+		heading-content="This is a callout heading" 
+		highlight-colour="gold"
+	>
+		<p><a href="#">Sign up for email reminders</a> and we’ll notify you 60 and 30 days before your licence expires.</p>
+	</OntarioCallout>
+</div>
 
 <!-- Auto Generated Below -->
 

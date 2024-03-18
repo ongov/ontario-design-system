@@ -1,3 +1,7 @@
+import { OntarioIconAccessibility } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioIconBookmarkOff } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioIconBookmarkOn } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-icon
 
 Use simple, easy-to-understand icons from Material Design to help guide users.
@@ -20,11 +24,17 @@ Example of a bare-bones icon component, the user is referencing the Ontario Desi
 <ontario-icon-accessibility></ontario-icon-accessibility>
 ```
 
+<OntarioIconAccessibility></OntarioIconAccessibility>
+
 Example of a bookmark icon, where the user is is passing a colour property of 'Grey'.
 
 ```html
-<ontario-icon-bookmark colour="grey"></ontario-icon-bookmark>
+<ontario-icon-bookmark-off colour="grey" icon-width="32"></ontario-icon-bookmark-off>
+<ontario-icon-bookmark-on colour="grey" icon-width="32"></ontario-icon-bookmark-on>
 ```
+
+<OntarioIconBookmarkOff colour="grey" icon-width="32"></OntarioIconBookmarkOff>
+<OntarioIconBookmarkOn colour="grey" icon-width="32"></OntarioIconBookmarkOn>
 
 <!-- Auto Generated Below -->
 

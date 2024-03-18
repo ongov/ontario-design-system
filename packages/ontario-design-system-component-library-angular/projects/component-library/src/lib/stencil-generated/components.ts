@@ -435,6 +435,7 @@ export declare interface OntarioFooter extends Components.OntarioFooter {}
 @ProxyCmp({
 	inputs: [
 		'applicationHeaderInfo',
+		'assetBasePath',
 		'customLanguageToggle',
 		'disableDynamicMenu',
 		'language',
@@ -450,6 +451,7 @@ export declare interface OntarioFooter extends Components.OntarioFooter {}
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
 	inputs: [
 		'applicationHeaderInfo',
+		'assetBasePath',
 		'customLanguageToggle',
 		'disableDynamicMenu',
 		'language',
