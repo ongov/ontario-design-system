@@ -1,4 +1,4 @@
-# Ontario Design System Design Tokens Package
+# Ontario Design System Design Tokens
 
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)

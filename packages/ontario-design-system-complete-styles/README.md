@@ -1,4 +1,4 @@
-# Ontario Design System Complete Style Package
+# Ontario Design System Complete Style
 
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
@@ -68,7 +68,7 @@ There are a few limitations to the complete styles project that we are working t
 
 ### Broken SVGs
 
-We are still working to fix how component SVGs work in SPA frameworks. A current workaround to this may be to download the SVG's needed for certain components from the [Ontario Design System Icons page]() and paste that SVG code into your HTML as needed.
+We are still working to fix how component SVGs work in SPA frameworks. A current workaround to this may be to download the SVG's needed for certain components from the [Ontario Design System Icons page](https://designsystem.ontario.ca/components/detail/icons-primary.html) and paste that SVG code into your HTML as needed.
 
 ### Broken scripts
 

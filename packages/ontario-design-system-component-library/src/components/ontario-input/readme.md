@@ -160,7 +160,9 @@ visible when the hint expander title (hint) is toggled" }'
 | `hint`            | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content |
 | `content`         | `string` | Text to display as the content of the hint expander                                                             |
 
-## Accessibility - An `element-id` attribute is necessary to allow the input to be associated with a label element -
+## Accessibility
+
+An `element-id` attribute is necessary to allow the input to be associated with a label element
 
 A `name` attribute needs to be set to be submitted to the server when the form is submitted.
 
