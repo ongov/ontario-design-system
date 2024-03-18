@@ -1,3 +1,15 @@
+# 4.1.0-alpha.1 (2024-03-18)
+
+### Bug Fixes
+
+- **OntarioDateInput:** add custom inputOnChange event ef80b9a
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library:** adds web-component examples de083e9
+- **@ontario-digital-service/ontario-design-system-component-library:** add component examples to component documentation 8cb7fea
+- update package version 007ea21
+
 # 4.0.0 (2024-02-02)
 
 ### Bug Fixes
