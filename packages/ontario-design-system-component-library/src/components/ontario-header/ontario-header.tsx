@@ -505,7 +505,6 @@ export class OntarioHeader {
 
 	render() {
 		const isServiceOntarioType = this.type === 'serviceOntario';
-		console.log('src', this.assetBasePath);
 
 		if (this.type == 'ontario') {
 			return (
