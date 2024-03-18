@@ -1,3 +1,5 @@
+import { OntarioAside } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-aside
 
 Use asides to highlight in-page content.
@@ -23,6 +25,15 @@ Example of an aside component, where the user is explicitly passing in content t
 ></ontario-aside>
 ```
 
+<div>
+	<OntarioAside
+		heading-type="h2"
+		heading-content-type="html"
+		heading-content="<a href='#'>This is an aside heading that is a link</a>"
+		content="This is the content for the aside component."
+	></OntarioAside>
+</div>
+
 This is another example of an aside. This time, the content is passed as a child of the `ontario-aside` component, which allows for HTML content to be passed. A `highlightColour` option is also passed.
 
 ```html
@@ -36,9 +47,24 @@ This is another example of an aside. This time, the content is passed as a child
 		As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of
 		global emissions.
 	</p>
-	<p><a href="#">Learn more about Canada's globale missions.</a></p>
+	<p><a href="#">Learn more about Canada's global missions.</a></p>
 </ontario-aside>
 ```
+
+<div>
+	<OntarioAside
+		heading-type="h4"
+		heading-content-type="string"
+		heading-content="This is an aside heading"
+		highlight-colour="purple"
+	>
+		<p>
+		As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of
+		global emissions.
+		</p>
+		<p><a href="#">Learn more about Canada's global missions.</a></p>
+	</OntarioAside>
+</div>
 
 <!-- Auto Generated Below -->
 

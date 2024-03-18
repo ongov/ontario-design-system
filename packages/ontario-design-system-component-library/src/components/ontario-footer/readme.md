@@ -1,3 +1,5 @@
+import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-footer
 
 Use the simple footer for most applications and subsites. It includes links to accessibility, privacy and copyright information.
@@ -43,6 +45,32 @@ Example of a simple (`default` type) footer component.
 	}'
 ></ontario-footer>
 ```
+
+### Simple (`default` type) footer
+
+<div>
+	<OntarioFooter
+		type="default"
+		footer-links='{
+			"accessibilityLink": {
+				"text": "Accessibility",
+				"href": "https://www.ontario.ca/page/accessibility"
+			},
+			"privacyLink": {
+				"text": "Privacy",
+				"href": "https://www.ontario.ca/page/privacy-statement"
+			},
+			"contactLink": {
+				"text": "Contact",
+				"href": "https://www.ontario.ca/feedback/contact-us"
+			},
+			"printerLink": {
+				"text": "Printer",
+				"href": "https://www.ontario.ca/page/copyright-information"
+			}
+		}'> 
+	</OntarioFooter>
+</div>
 
 Example of an expanded footer with two columns (`twoColumn` type).
 
@@ -98,6 +126,60 @@ Example of an expanded footer with two columns (`twoColumn` type).
 ></ontario-footer>
 ```
 
+### Expanded footer (two columns)
+
+<div>
+	<OntarioFooter
+		type="twoColumn"
+		top-margin="false"
+		footer-links='{
+			"accessibilityLink": {
+				"text": "Accessibility",
+				"href": "https://www.ontario.ca/page/accessibility"
+			},
+			"privacyLink": {
+				"href": "https://www.ontario.ca/page/privacy-statement"
+			},
+			"contactLink": {
+				"text": "Contact",
+				"href": "https://www.ontario.ca/feedback/contact-us"
+			},
+			"printerLink": {
+				"href": "https://www.ontario.ca/page/copyright-information"
+			}
+		}'
+		two-column-options='{
+			"column1": {
+				"title": "Ontario Design System",
+				"content": [
+					{
+						"type": "text",
+						"text": "The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services."
+					},
+					{
+						"type": "list",
+						"heading": "Latest release",
+						"list": ["Built on: June 3, 2022", "Distribution package version 0.12.10"]
+					}
+				]
+			},
+			"column2": {
+				"title": "Help us improve the design system",
+				"content": [
+					{
+						"type": "html",
+						"html": "You can check our <a href=#>help and feedback page</a> if you don&#8217;t see the component you need."
+					}
+				],
+				"button": {
+					"text": "Send us an email",
+					"link": "#"
+				}
+			}
+		}'> 
+	</OntarioFooter>
+</div>
+
 Example of an expanded footer with three columns (`threeColumn` type).
 
 ```html
@@ -150,6 +232,59 @@ Example of an expanded footer with three columns (`threeColumn` type).
 	}'
 ></ontario-footer>
 ```
+
+### Expanded footer(3 columns)
+
+<div>
+	<OntarioFooter
+		type="threeColumn"
+		footer-links='{
+			"accessibilityLink": {
+				"text": "Accessibility",
+				"href": "https://www.ontario.ca/page/accessibility"
+			},
+			"privacyLink": {
+				"href": "https://www.ontario.ca/page/privacy-statement"
+			},
+			"contactLink": {
+				"text": "Contact",
+				"href": "https://www.ontario.ca/feedback/contact-us"
+			},
+			"printerLink": {
+				"href": "https://www.ontario.ca/page/copyright-information"
+			}
+		}'
+		three-column-options='{
+			"column1": {
+				"title": "Ontario Design System",
+				"content": [
+					{
+						"type": "text",
+						"text": "The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services."
+					}
+				]
+			},
+			"column2": {
+				"title": "Latest release",
+				"content": [
+					{
+						"type": "list",
+						"list": ["Built on: June 3, 2022", "Distribution package version 0.12.10"]
+					}
+				]
+			},
+			"column3": {
+				"title": "Help us improve the design system",
+				"content": [
+					{
+						"type": "html",
+						"html": "You can check our <a href=#>help and feedback page</a> if you don&#8217;t see the component you need."
+					}
+				]
+			}
+		}'>
+	</OntarioFooter>
+</div>
 
 Example of footer with social media links, only `twoColumn` and `threeColumn` footer types support social media link.
 
@@ -213,6 +348,69 @@ Example of footer with social media links, only `twoColumn` and `threeColumn` fo
 	}'
 ></ontario-footer>
 ```
+
+### Footer with social media links
+
+<div>
+	<OntarioFooter
+		type="threeColumn"
+		footer-links='{
+			"accessibilityLink": {
+				"text": "Accessibility",
+				"href": "https://www.ontario.ca/page/accessibility"
+			},
+			"privacyLink": {
+				"href": "https://www.ontario.ca/page/privacy-statement"
+			},
+			"contactLink": {
+				"text": "Contact",
+				"href": "https://www.ontario.ca/feedback/contact-us"
+			},
+			"printerLink": {
+				"href": "https://www.ontario.ca/page/copyright-information"
+			}
+		}'
+		social-links='{
+			"facebook": "https://www.facebook.com/ONgov",
+			"instagram": "https://www.instagram.com/ongov",
+			"twitter": "https://twitter.com/ONgov",
+			"youtube": "https://www.youtube.com/ongov"
+		}'
+		three-column-options='{
+			"column1": {
+				"title": "Ontario Design System",
+				"content": [
+					{
+						"type": "text",
+						"text": "The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services."
+					}
+				]
+			},
+			"column2": {
+				"title": "Latest release",
+				"content": [
+					{
+						"type": "list",
+						"list": ["Built on: June 3, 2022", "Distribution package version 0.12.10"]
+					}
+				]
+			},
+			"column3": {
+				"title": "Help us improve the design system",
+				"content": [
+					{
+						"type": "html",
+						"html": "You can check our <a href=#>help and feedback page</a> if you don&#8217;t see the component you need."
+					}
+				],
+				"button": {
+					"text": "Send us an email",
+					"link": "#"
+				}
+			}
+		}'> 
+	</OntarioFooter>
+</div>
 
 ## Custom property types
 

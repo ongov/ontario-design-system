@@ -9,6 +9,7 @@ export type InputProps = {
 	accessibilityLabel: string;
 	error?: boolean;
 	onInput: (value: string, fieldType: DateInputFieldType) => void;
+	onChange: (value: string, fieldType: DateInputFieldType) => void;
 	onBlur: (fieldType: DateInputFieldType) => void;
 	onFocus: (fieldType: DateInputFieldType) => void;
 	placeholder?: string;
@@ -23,15 +24,21 @@ export const Input: FunctionalComponent<InputProps> = ({
 	accessibilityLabel,
 	placeholder,
 	onInput,
+	onChange,
 	onFocus,
 	onBlur,
 	ariaDescribedBy,
 	error = false,
 	required = false,
 }) => {
-	const handleInputChange = (event: Event) => {
+	const handleInputInput = (event: Event) => {
 		const newValue = (event.target as HTMLInputElement)?.value ?? '';
 		onInput(newValue, type);
+	};
+
+	const handleInputChange = (event: Event) => {
+		const newValue = (event.target as HTMLInputElement)?.value ?? '';
+		onChange(newValue, type);
 	};
 
 	const handleInputFocus = () => {
@@ -55,7 +62,8 @@ export const Input: FunctionalComponent<InputProps> = ({
 				id={id}
 				required={!!required}
 				placeholder={placeholder}
-				onInput={handleInputChange}
+				onInput={handleInputInput}
+				onChange={handleInputChange}
 				onFocus={handleInputFocus}
 				onBlur={handleInputBlur}
 				ariaInvalid={error}

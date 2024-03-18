@@ -1,6 +1,6 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-component-library-angular",
-	"version": "4.0.0-alpha.4",
+	"version": "4.0.0",
 	"description": "Angular specific wrapper for ontario-design-system-component-library",
 	"private": false,
 	"publishConfig": {
@@ -42,8 +42,8 @@
 		"@angular/platform-browser": "^15.2.9",
 		"@angular/platform-browser-dynamic": "^15.2.9",
 		"@angular/router": "^15.2.9",
-		"@ontario-digital-service/ontario-design-system-component-library": "4.0.0-alpha.4",
-		"@ontario-digital-service/ontario-design-system-global-styles": "3.2.1-alpha.1",
+		"@ontario-digital-service/ontario-design-system-component-library": "4.0.0",
+		"@ontario-digital-service/ontario-design-system-global-styles": "4.0.0",
 		"copyfiles": "^2.4.1",
 		"rxjs": "~7.8.0",
 		"tslib": "^2.3.0",

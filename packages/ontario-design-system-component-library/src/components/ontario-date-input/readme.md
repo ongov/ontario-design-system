@@ -1,3 +1,5 @@
+import { OntarioDateInput } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-date-input
 
 Use this component for user-friendly date input and display.
@@ -32,6 +34,25 @@ Example of date input component
 	}'
 ></ontario-date-input>
 ```
+
+<div>
+	<OntarioDateInput
+		placeholder='{
+			"day": "DD",
+			"month": "MM",
+			"year": "YYYY"
+		}'
+		min-year="500"
+		max-year="1000"
+		required="true"
+		date-options='["day", "month", "year"]'
+		hint-text="For example 2000 03 01"
+		caption='{
+			"captionText": "Exact Date",
+			"captionType": "default"
+		}'
+	></OntarioDateInput>
+</div>
 
 Example of passing custom date validation function to modify validation logic or providing custom error strings.
 
@@ -111,7 +132,7 @@ caption='{ "captionText": "Exact Date", "captionType": "heading" }'
 | Property        | Attribute      | Description                                                                                                                                                                                                                                                                                                       | Type                                                                                                             | Default                    |
 | --------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------------------------- |
 | `caption`       | `caption`      | The text to display as the input label                                                                                                                                                                                                                                                                            | `Caption \| string`                                                                                              | `undefined`                |
-| `dateOptions`   | `date-options` | An array value used to display date options. For example, only the day and month fields can be displayed by specifying the dateOptions as '["day", "month"]', etc. This is optional. If no prop for `dateOptions` is passed, it will default to '["day", "month", "year"]'.                                       | `DateInputFieldType[] \| string \| undefined`                                                                    | `['day', 'month', 'year']` |
+| `dateOptions`   | `date-options` | An array value used to display date options. For example, only the day and month fields can be displayed by specifying the dateOptions as `["day", "month"]`, etc. This is optional. If no prop for `dateOptions` is passed, it will default to `["day", "month", "year"]`.                                       | `DateInputFieldType[] \| string \| undefined`                                                                    | `['day', 'month', 'year']` |
 | `dateValidator` | --             | A function used to override internal date validation logic, which takes three arguments (i.e day, month and year) and returns an object of type `DateValidatorReturnType` This is optional. If no prop for `dateValidator` is passed, it will default to internal validation function to validate the date input. | `((day: string, month: string, year: string) => DateValidatorReturnType) \| undefined`                           | `undefined`                |
 | `elementId`     | `element-id`   | The unique identifier of the input. This is optional - if no ID is passed, one will be generated.                                                                                                                                                                                                                 | `string \| undefined`                                                                                            | `undefined`                |
 | `hintText`      | `hint-text`    | Used to include the ontario-hint-text component for the date input group. This is optional.                                                                                                                                                                                                                       | `string \| undefined`                                                                                            | `undefined`                |
@@ -123,11 +144,13 @@ caption='{ "captionText": "Exact Date", "captionType": "heading" }'
 
 ## Events
 
-| Event           | Description                                                                         | Type                                                                     |
-| --------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `inputOnBlur`   | Emitted when a keyboard input event occurs when an input has lost focus.            | `CustomEvent<"day" \| "month" \| "year">`                                |
-| `inputOnChange` | Emitted when a keyboard input or mouse event occurs when an input has been changed. | `CustomEvent<{ value: string; fieldType: "day" \| "month" \| "year"; }>` |
-| `inputOnFocus`  | Emitted when a keyboard input event occurs when an input has gained focus.          | `CustomEvent<"day" \| "month" \| "year">`                                |
+| Event                | Description                                                                | Type                                                                     |
+| -------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `inputErrorOccurred` | Emitted when an error message is reported to the component.                | `CustomEvent<{ inputId: string; errorMessage: string; }>`                |
+| `inputOnBlur`        | Emitted when a keyboard input event occurs when an input has lost focus.   | `CustomEvent<"day" \| "month" \| "year">`                                |
+| `inputOnChange`      | Emitted when a `change` event occurs within the component.                 | `CustomEvent<{ value: string; fieldType: "day" \| "month" \| "year"; }>` |
+| `inputOnFocus`       | Emitted when a keyboard input event occurs when an input has gained focus. | `CustomEvent<"day" \| "month" \| "year">`                                |
+| `inputOnInput`       | Emitted when an `input` event occurs within the component.                 | `CustomEvent<{ value: string; fieldType: "day" \| "month" \| "year"; }>` |
 
 ## Dependencies
 

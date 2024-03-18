@@ -11,6 +11,7 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { InputCaption } from '../../utils/common/input-caption/input-caption';
 import { Caption } from '../../utils/common/input-caption/caption.interface';
+import { emitEvent } from '../../utils/events/event-handler';
 
 @Component({
 	tag: 'ontario-date-input',
@@ -84,9 +85,9 @@ export class OntarioDateInput {
 
 	/**
 	 * An array value used to display date options. For example, only the day and month fields can be displayed by
-	 * specifying the dateOptions as '["day", "month"]', etc.
+	 * specifying the dateOptions as `["day", "month"]`, etc.
 	 *
-	 * This is optional. If no prop for `dateOptions` is passed, it will default to '["day", "month", "year"]'.
+	 * This is optional. If no prop for `dateOptions` is passed, it will default to `["day", "month", "year"]`.
 	 */
 	@Prop() dateOptions?: string | Array<DateInputFieldType> = ['day', 'month', 'year'];
 
@@ -100,9 +101,17 @@ export class OntarioDateInput {
 	@Prop() dateValidator?: (day: string, month: string, year: string) => DateValidatorReturnType;
 
 	/**
-	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
+	 * Emitted when an `input` event occurs within the component.
 	 */
-	@Event({ eventName: 'inputOnChange' }) inputOnChange: EventEmitter<{
+	@Event() inputOnInput: EventEmitter<{
+		value: string;
+		fieldType: 'day' | 'month' | 'year';
+	}>;
+
+	/**
+	 * Emitted when a `change` event occurs within the component.
+	 */
+	@Event() inputOnChange: EventEmitter<{
 		value: string;
 		fieldType: 'day' | 'month' | 'year';
 	}>;
@@ -110,12 +119,23 @@ export class OntarioDateInput {
 	/**
 	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
-	@Event({ eventName: 'inputOnBlur' }) inputOnBlur: EventEmitter<'day' | 'month' | 'year'>;
+	@Event() inputOnBlur: EventEmitter<'day' | 'month' | 'year'>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
-	@Event({ eventName: 'inputOnFocus' }) inputOnFocus: EventEmitter<'day' | 'month' | 'year'>;
+	@Event() inputOnFocus: EventEmitter<'day' | 'month' | 'year'>;
+
+	/**
+	 * Emitted when an error message is reported to the component.
+	 */
+	@Event() inputErrorOccurred: EventEmitter<{ inputId: string; errorMessage: string }>;
+
+	@Watch('errorMessage')
+	broadcastInputErrorOccurredEvent() {
+		// Emit event to notify anyone who wants to listen for errors occurring
+		this.inputErrorOccurred.emit({ inputId: this.getId(), errorMessage: this.errorMessage ?? '' });
+	}
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -267,7 +287,7 @@ export class OntarioDateInput {
 		}
 	};
 
-	private handleDateChanged = (value: string, fieldType: DateInputFieldType) => {
+	private handleDateUpdates = (value: string, fieldType: DateInputFieldType) => {
 		// set boolean indicating user interaction with the component for validation
 		if (!this.isDateTyped) {
 			this.isDateTyped = true;
@@ -278,9 +298,23 @@ export class OntarioDateInput {
 
 		// update date state
 		this.updateDateState(value, fieldType);
+	};
+
+	private handleDateInput = (value: string, fieldType: DateInputFieldType) => {
+		this.handleDateUpdates(value, fieldType);
+
+		// emit date change event
+		this.inputOnInput.emit({ value, fieldType });
+	};
+
+	private handleDateChanged = (value: string, fieldType: DateInputFieldType) => {
+		this.handleDateUpdates(value, fieldType);
 
 		// emit date change event
 		this.inputOnChange.emit({ value, fieldType });
+
+		// emit change event
+		emitEvent(this.element, 'change', { value, fieldType });
 	};
 
 	private handleDateFocus = (fieldType: DateInputFieldType) => {
@@ -361,7 +395,8 @@ export class OntarioDateInput {
 								required={!!required}
 								error={this.yearInvalid}
 								placeholder={placeholderText.year}
-								onInput={this.handleDateChanged}
+								onInput={this.handleDateInput}
+								onChange={this.handleDateChanged}
 								onBlur={this.handleDateBlur}
 								onFocus={this.handleDateFocus}
 								ariaDescribedBy={hintTextId}
@@ -376,7 +411,8 @@ export class OntarioDateInput {
 								required={!!required}
 								error={this.monthInvalid}
 								placeholder={placeholderText.month}
-								onInput={this.handleDateChanged}
+								onInput={this.handleDateInput}
+								onChange={this.handleDateChanged}
 								onBlur={this.handleDateBlur}
 								onFocus={this.handleDateFocus}
 								ariaDescribedBy={hintTextId}
@@ -391,7 +427,8 @@ export class OntarioDateInput {
 								required={!!required}
 								error={this.dayInvalid}
 								placeholder={placeholderText.day}
-								onInput={this.handleDateChanged}
+								onInput={this.handleDateInput}
+								onChange={this.handleDateChanged}
 								onBlur={this.handleDateBlur}
 								onFocus={this.handleDateFocus}
 								ariaDescribedBy={hintTextId}
