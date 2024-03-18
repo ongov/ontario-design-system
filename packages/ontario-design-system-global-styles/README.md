@@ -1,4 +1,4 @@
-# Ontario Design System Global Styles Package
+# Ontario Design System Global Styles
 
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
