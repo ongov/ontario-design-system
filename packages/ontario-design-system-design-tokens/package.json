@@ -12,10 +12,11 @@
 		"README.md"
 	],
 	"scripts": {
-		"build": "node build.js",
+		"build": "node build.js && npm run docs:copy:readme",
 		"clean": "rm -rf dist",
 		"clean:full": "rm -rf node_modules && npm run clean",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: Design Tokens\n---\n\" -df ../app-web-components-documentation/docs/04-readme-design-tokens.md"
 	},
 	"devDependencies": {
 		"style-dictionary": "^3.7.1"
