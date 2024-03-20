@@ -35,10 +35,6 @@ export class OntarioHeader {
 	@Element() el: HTMLElement;
 
 	/**
-	 * The logo src of header
-	 */
-	@Prop() assetBasePath: string;
-	/**
 	 * The type of header.
 	 */
 	@Prop() type?: OntarioHeaderType = 'application';
@@ -120,6 +116,11 @@ export class OntarioHeader {
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
 	@Prop({ mutable: true }) language?: Language = 'en';
+
+	/**
+	 * The base path to an assets folder containing the Design System assets
+	 */
+	@Prop() assetBasePath: string;
 
 	/**
 	 * The application header information is reassigned to applicationHeaderInfoState for parsing
@@ -345,7 +346,7 @@ export class OntarioHeader {
 	 * @param title - the title of the menu item
 	 * @param linkIsActive - when set to true, this will add the classes necessary to style the link in a way that indicates to the user what the active page/link is
 	 * @param liClass - if there is a class that is related to the <a> portion of the menu item, put it here
-	 * @param onClick - for any custon onClick event a user might want to add to their menu links
+	 * @param onClick - for any custom onClick event a user might want to add to their menu links
 	 * @param onBlur - when set to true, it will call the function trapMenuFocus(), otherwise nothing is done (used in lastLink)
 	 */
 	private generateMenuItem(

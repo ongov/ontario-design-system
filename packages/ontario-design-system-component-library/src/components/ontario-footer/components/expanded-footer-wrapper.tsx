@@ -5,11 +5,12 @@ import { SimpleFooterLinks } from '../ontario-footer-interface';
 export type ExpandedFooterWrapperProps = {
 	footerLinks: SimpleFooterLinks;
 	topMargin: boolean;
+	backgroundImagePath: string;
 };
 
 export const ExpandedFooterWrapper: FunctionalComponent<ExpandedFooterWrapperProps> = (props, children) => {
-	const { topMargin, footerLinks } = props;
-	const style = { '--imagePath': `url(${getAssetPath('./assets/footer-expanded-supergraphic-logo.svg')})` };
+	const { topMargin, footerLinks, backgroundImagePath } = props;
+	const style = { '--imagePath': backgroundImagePath };
 	const marginClass = !topMargin ? 'ontario-margin-top-0-!' : '';
 
 	return (
