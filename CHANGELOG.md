@@ -1,3 +1,13 @@
+# 4.1.0-alpha.2 (2024-03-20)
+
+### Bug Fixes
+
+- **@ontario-digital-service/ontario-design-system-global-styles:** updated global styles to include edge case for columns 249d1c6
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-global-styles:** fix multi comlumn list layout issue 33dec9d
+
 # 4.1.0-alpha.1 (2024-03-18)
 
 ### Bug Fixes
