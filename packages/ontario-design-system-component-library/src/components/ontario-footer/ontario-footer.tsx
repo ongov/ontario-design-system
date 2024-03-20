@@ -62,6 +62,11 @@ export class OntarioFooter {
 	 */
 	@Prop() topMargin: boolean = true;
 
+	/**
+	 * The base path to an assets folder containing the Design System assets
+	 */
+	@Prop() assetBasePath: string;
+
 	@State() translations: any = translations;
 
 	@State() private footerLinksState: FooterLinks;
@@ -112,6 +117,7 @@ export class OntarioFooter {
 
 	private isTwoColumnLayout = (): boolean => this.type === 'twoColumn';
 	private isThreeColumnLayout = (): boolean => this.type === 'threeColumn';
+	private isExpandedLayout = (): boolean => this.isTwoColumnLayout() || this.isThreeColumnLayout();
 
 	private verifyTwoColumnOptions() {
 		if (this.isTwoColumnLayout() && isInvalidTwoColumnOptions(this.twoColumnState)) {
@@ -171,8 +177,25 @@ export class OntarioFooter {
 		}
 	}
 
-	private getBackgroundImage() {
-		return { '--imagePath': `url(${getAssetPath('./assets/footer-default-supergraphic-logo.svg')})` };
+	/**
+	 * Generate a link to the given image based on the base asset path.
+	 * @param imageName Name of the image to build the path to
+	 * @returns Path to image with asset path
+	 */
+	private getImageAssetSrcPath(imageName: string): string {
+		return `${this.assetBasePath ? this.assetBasePath : getAssetPath('./assets')}/${imageName}`;
+	}
+
+	/**
+	 * Generate CSS url to the background image
+	 * @returns path to the background image
+	 */
+	private getBackgroundImagePath(): string {
+		const supergraphicLogoFile = this.isExpandedLayout()
+			? 'footer-expanded-supergraphic-logo.svg'
+			: 'footer-default-supergraphic-logo.svg';
+
+		return `url(${this.getImageAssetSrcPath(supergraphicLogoFile)})`;
 	}
 
 	private getFooterClasses() {
@@ -229,7 +252,11 @@ export class OntarioFooter {
 
 		if (this.isTwoColumnLayout()) {
 			return (
-				<ExpandedFooterWrapper footerLinks={footerLinks} topMargin={topMargin}>
+				<ExpandedFooterWrapper
+					footerLinks={footerLinks}
+					topMargin={topMargin}
+					backgroundImagePath={this.getBackgroundImagePath()}
+				>
 					<FooterColumn data={twoColumnState.column1} />
 					<FooterColumn data={twoColumnState.column2} socialLinks={socialLinksState} />
 				</ExpandedFooterWrapper>
@@ -238,7 +265,11 @@ export class OntarioFooter {
 
 		if (this.isThreeColumnLayout()) {
 			return (
-				<ExpandedFooterWrapper footerLinks={footerLinks} topMargin={topMargin}>
+				<ExpandedFooterWrapper
+					footerLinks={footerLinks}
+					topMargin={topMargin}
+					backgroundImagePath={this.getBackgroundImagePath()}
+				>
 					<FooterColumn data={threeColumnState.column1} isThreeColLayout isFullWidthInMediumLayout />
 					<FooterColumn data={threeColumnState.column2} isThreeColLayout />
 					<FooterColumn data={threeColumnState.column3} socialLinks={socialLinksState} isThreeColLayout />
@@ -247,7 +278,7 @@ export class OntarioFooter {
 		}
 
 		return (
-			<footer class={this.getFooterClasses()} style={this.getBackgroundImage()}>
+			<footer class={this.getFooterClasses()} style={{ '--imagePath': this.getBackgroundImagePath() }}>
 				<SimpleFooter {...footerLinks} />
 			</footer>
 		);

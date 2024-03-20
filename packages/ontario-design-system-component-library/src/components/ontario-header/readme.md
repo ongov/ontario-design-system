@@ -105,7 +105,7 @@ Example of an Ontario.ca header component.
 
 <div>
 	<OntarioHeader
-		assetBasePath = {useBaseUrl('/assets')}
+		asset-base-path={useBaseUrl('/assets')}
 		type="application"
 		disable-dynamic-menu="true"
 		application-header-info='{
@@ -286,7 +286,7 @@ To ensure best practices, it is important to limit the number of navigation link
 | Property                | Attribute                 | Description                                                                                                                                                                                                                                            | Type                                                          | Default         |
 | ----------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------- | --------------- |
 | `applicationHeaderInfo` | `application-header-info` | Information pertaining to the application header. This is only necessary for the 'application' header type. This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views. | `ApplicationHeaderInfo \| string`                             | `undefined`     |
-| `assetBasePath`         | `asset-base-path`         | The logo src of header                                                                                                                                                                                                                                 | `string`                                                      | `undefined`     |
+| `assetBasePath`         | `asset-base-path`         | The base path to an assets folder containing the Design System assets                                                                                                                                                                                  | `string`                                                      | `undefined`     |
 | `customLanguageToggle`  | --                        | A custom function to pass to the language toggle button.                                                                                                                                                                                               | `((event: Event) => void) \| undefined`                       | `undefined`     |
 | `disableDynamicMenu`    | `disable-dynamic-menu`    | Option to disable fetching of the dynamic menu from the Ontario Header API                                                                                                                                                                             | `boolean`                                                     | `false`         |
 | `language`              | `language`                | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.                                           | `"en" \| "fr" \| undefined`                                   | `'en'`          |
