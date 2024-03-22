@@ -1,14 +1,11 @@
 import React from 'react';
-import {
-	OntarioIconAccessibility,
-	OntarioIconAccount,
-} from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioIconAccessibility, OntarioIconAccount } from '@ongov/ontario-design-system-component-library-react';
 
 import CodeHighlighter from '../../components/code-highlighter';
 
 export default function IconExample() {
-	const primaryIconCodeExample = `import { OntarioIconAccessibility } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioIconAccessibility icon-width="36" colour="blue"></OntarioIconAccessibility>`;
-	const secondaryIconCodeExample = `import { OntarioIconAccount } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<ontario-icon-account icon-width="36" colour="grey"></ontario-icon-account>`;
+	const primaryIconCodeExample = `import { OntarioIconAccessibility } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioIconAccessibility icon-width="36" colour="blue"></OntarioIconAccessibility>`;
+	const secondaryIconCodeExample = `import { OntarioIconAccount } from '@ongov/ontario-design-system-component-library-react'; \n\n<ontario-icon-account icon-width="36" colour="grey"></ontario-icon-account>`;
 	return (
 		<div className="ontario-row">
 			<div className="ontario-columns ontario-large-12">

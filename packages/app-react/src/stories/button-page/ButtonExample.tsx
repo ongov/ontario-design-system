@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioButton } from '@ongov/ontario-design-system-component-library-react';
 
 import CodeHighlighter from '../../components/code-highlighter';
 
 export default function ButtonExample() {
-	const primaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="primary" label="Primary button" ariaLabelText="This is a clickable primary button"></OntarioButton>`;
-	const secondaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="secondary" elementId="secondary-button">Secondary button</OntarioButton>`;
-	const tertiaryButtonCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioButton type="tertiary" label="Tertiary button" onClick={onButtonClick}></OntarioButton>`;
+	const primaryButtonCodeExample = `import { OntarioButton } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioButton type="primary" label="Primary button" ariaLabelText="This is a clickable primary button"></OntarioButton>`;
+	const secondaryButtonCodeExample = `import { OntarioButton } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioButton type="secondary" elementId="secondary-button">Secondary button</OntarioButton>`;
+	const tertiaryButtonCodeExample = `import { OntarioButton } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioButton type="tertiary" label="Tertiary button" onClick={onButtonClick}></OntarioButton>`;
 
 	const onButtonClick = () => {
 		alert('Tertiary button clicked!');

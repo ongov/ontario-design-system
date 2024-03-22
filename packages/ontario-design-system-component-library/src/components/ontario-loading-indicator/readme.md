@@ -1,4 +1,4 @@
-import { OntarioLoadingIndicator } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioLoadingIndicator } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-loading-indicator
 

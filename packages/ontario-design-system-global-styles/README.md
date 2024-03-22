@@ -1,11 +1,5 @@
 # Ontario Design System Global Styles
 
-> **Package moved to `@ongov` namespace**
->
-> This npm package has moved to a new namespace, the `@ontario-digital-service/ontario-design-system-complete-styles` has moved to [`@ongov/ontario-design-system-complete-styles`](https://www.npmjs.com/package/@ongov/ontario-design-system-complete-styles). Package names are not changing - just the namespace.
->
-> Please make sure to update your projects to the new versions of the packages under `@ongov` so you will continue to receive updates. Packages under `@ontario-digital-service` will no longer be updated.
-
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
 - [Architecture](#architecture)
@@ -24,7 +18,7 @@ It includes the Ontario Design System global styles that are used for more gener
 To install the Ontario Design System global styles package, run the following command:
 
 ```bash
-npm install --save @ontario-digital-service/ontario-design-system-global-styles
+npm install --save @ongov/ontario-design-system-global-styles
 ```
 
 ### Using the global styles package
@@ -38,13 +32,13 @@ You can import the entire global styles package by including the following impor
 **SCSS:**
 
 ```bash
-@forward "@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme.scss";
+@forward "@ongov/ontario-design-system-global-styles/dist/styles/scss/theme.scss";
 ```
 
 **CSS:**
 
 ```bash
-@forward "@ontario-digital-service/ontario-design-system-global-styles/dist/styles/css/compiled/ontario-theme.css";
+@forward "@ongov/ontario-design-system-global-styles/dist/styles/css/compiled/ontario-theme.css";
 ```
 
 This will give you access to the complete package, and will load in all layers of the project, as defined in our [architecture section](#architecture).
@@ -56,7 +50,7 @@ Alternatively, you can be more granular by explicitly importing specific styles 
 For example, if you only require our global variables, you can include the following [`@use`](https://sass-lang.com/documentation/at-rules/use) rule to import specific styles:
 
 ```bash
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
 ```
 
 The `@use` rule loads mixins, functions, and variables from other Sass stylesheets, and combines CSS from multiple stylesheets together. In your SCSS, you would then reference one of these variables by including the namespace, followed by the variable you intend to use. For example:
@@ -84,7 +78,7 @@ In ITCSS, there is a concept of breaking down the CSS into layers, with the top 
 
 This layer contains all variables that will be used throughought the SCSS partials. For that reason, it needs to be the first partial to be imported into the theme style sheet.
 
-It is worth noting that the values in our variables are using tokens from the [Ontario Design Tokens Design Tokens package](https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-design-tokens). Please check that package for more information.
+It is worth noting that the values in our variables are using tokens from the [Ontario Design Tokens Design Tokens package](https://www.npmjs.com/package/@ongov/ontario-design-system-design-tokens). Please check that package for more information.
 
 The variables layer holds the following folders for the following variables: breakpoints, colours, font sizes, font weights, global, grid, letter spacing, line heights, spacing, typography and z-index helper variables.
 
@@ -110,7 +104,7 @@ This layer includes styles for non-structured design patterns, such as wrappers,
 
 ### Components:
 
-This layer includes design patterns and UI pieces necessary for components. Note that the styles for components in this section are generic. To include specific styles for components, it is better to use the [Ontario Design System Component Library](https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-component-library) or [Ontario Design System complete styles](https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-complete-styles) packages.
+This layer includes design patterns and UI pieces necessary for components. Note that the styles for components in this section are generic. To include specific styles for components, it is better to use the [Ontario Design System Component Library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library) or [Ontario Design System complete styles](https://www.npmjs.com/package/@ongov/ontario-design-system-complete-styles) packages.
 
 ### Overrides:
 

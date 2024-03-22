@@ -1,4 +1,4 @@
-import { OntarioCallout } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioCallout } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-callout
 

@@ -1,4 +1,4 @@
-import { OntarioTable } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioTable } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-table
 

@@ -1,4 +1,4 @@
-import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioTextarea } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-textarea
 

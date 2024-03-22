@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from 'react';
-import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioInput } from '@ongov/ontario-design-system-component-library-react';
 
 import CodeHighlighter from '../../components/code-highlighter';
 
 export default function TextInputExample() {
-	const FourCharInputExample = `import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioInput
+	const FourCharInputExample = `import { OntarioInput } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioInput
 	caption={{
 		captionText: "4 character width",
 		captionType: "default"
@@ -17,7 +17,7 @@ export default function TextInputExample() {
 	hintText="Example hint text for the 4 character width input"
 />`;
 
-	const TwentyCharInputExample = `import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioInput
+	const TwentyCharInputExample = `import { OntarioInput } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioInput
 	caption={{
 		captionText: "20 character width",
 		captionType: "default"
@@ -35,7 +35,7 @@ export default function TextInputExample() {
 	customOnBlur={(e: any) => inputOnBlur(e)}
 />`;
 
-	const DefaultInputExample = `import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioInput
+	const DefaultInputExample = `import { OntarioInput } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioInput
 	caption={{
 		captionText: "Default width input",
 		captionType: "large"
