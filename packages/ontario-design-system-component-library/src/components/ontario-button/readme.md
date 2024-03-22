@@ -1,4 +1,4 @@
-import { OntarioButton} from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioButton} from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-button
 
@@ -25,9 +25,9 @@ Example of a bare-bones button component where the `label` for the button is pro
 Example of a button component, which includes the `label`, `elementId`, `htmlType`, `type` and `ariaLabelText` properties.
 
 ```html
-<ontario-button aria-label-text="Example aria label text" element-id="button-id" html-type="button" type="tertiary"
-	>Element Content</ontario-button
->
+<ontario-button aria-label-text="Example aria label text" element-id="button-id" html-type="button" type="tertiary">
+	Element Content
+</ontario-button>
 ```
 
 <OntarioButton aria-label-text="Example aria label text" element-id="button-id" html-type="button" type="tertiary">

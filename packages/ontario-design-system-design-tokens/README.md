@@ -1,11 +1,5 @@
 # Ontario Design System Design Tokens
 
-> **Package moved to `@ongov` namespace**
->
-> This npm package has moved to a new namespace, the `@ontario-digital-service/ontario-design-system-design-tokens` has moved to [`@ongov/ontario-design-system-design-tokens`](https://www.npmjs.com/package/@ongov/ontario-design-system-design-tokens). Package names are not changing - just the namespace.
->
-> Please make sure to update your projects to the new versions of the packages under `@ongov` so you will continue to receive updates. Packages under `@ontario-digital-service` will no longer be updated.
-
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
 - [Architecture](#architecture)
@@ -28,7 +22,7 @@ It forms the base of the the Ontario Design System NPM packages, but can also be
 The Ontario Design System design tokens package can be installed by running the following command in your terminal:
 
 ```bash
-npm install --save @ontario-digital-service/ontario-design-system-design-tokens
+npm install --save @ongov/ontario-design-system-design-tokens
 ```
 
 ### Using the design tokens package

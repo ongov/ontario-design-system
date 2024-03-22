@@ -1,6 +1,6 @@
 # Ontario Design System Component Library - Angular
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/).
+This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/).
 
 ## Using the Angular Component Library
 
@@ -11,13 +11,13 @@ To use the Angular Component Library, follow these steps:
 1. Install the NPM package.
 
    ```bash
-   npm install --save @ontario-digital-service/ontario-design-system-component-library-angular
+   npm install --save @ongov/ontario-design-system-component-library-angular
    ```
 
 2. Import the `ComponentLibraryModule`, or whichever specific component you wish to use into your root module. The `ComponentLibraryModule` import will include all the Ontario Design System web components.
 
    ```ts
-   import { ComponentLibraryModule } from '@ontario-digital-service/ontario-design-system-component-library-angular/dist/component-library';
+   import { ComponentLibraryModule } from '@ongov/ontario-design-system-component-library-angular/dist/component-library';
 
    @NgModule({
    	imports: [ComponentLibraryModule],
@@ -35,21 +35,21 @@ To use the Angular Component Library, follow these steps:
 
 Along with the components, the local assets (logos, fonts, etc.) need to be copied into your project so that they are available for bundling upon building your Angular application.
 
-The assets in the NPM package are located at `@ontario-digital-service/ontario-design-system-component-library-angular/dist/assets`, and should be copied to your public assets folder.
+The assets in the NPM package are located at `@ongov/ontario-design-system-component-library-angular/dist/assets`, and should be copied to your public assets folder.
 
 In a standard Angular application this can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package, which you can with any operating system:
 
 ```bash
-copyfiles -E -f "node_modules/@ontario-digital-service/ontario-design-system-component-library-angular/dist/assets/*" src/assets
+copyfiles -E -f "node_modules/@ongov/ontario-design-system-component-library-angular/dist/assets/*" src/assets
 ```
 
 Another way is to add scripts to copy the assets in your `package.json` file. For example:
 
 ```json
 "prebuild": "npm run copy:assets",
-"copy:images": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-angular/dist/component-library/assets/images/**\" src/assets",
-"copy:favicons": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-angular/dist/component-library/assets/favicons/**\" src/assets/favicons",
-"copy:fonts": "copyfiles -E -u 6 \"node_modules/@ontario-digital-service/ontario-design-system-component-library-angular/dist/component-library/assets/fonts/**/*\" src/assets/fonts",
+"copy:images": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-component-library-angular/dist/component-library/assets/images/**\" src/assets",
+"copy:favicons": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-component-library-angular/dist/component-library/assets/favicons/**\" src/assets/favicons",
+"copy:fonts": "copyfiles -E -u 6 \"node_modules/@ongov/ontario-design-system-component-library-angular/dist/component-library/assets/fonts/**/*\" src/assets/fonts",
 "copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts"
 ```
 

@@ -1,4 +1,4 @@
-import { OntarioHintText } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioHintText } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-hint-text
 

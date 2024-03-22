@@ -1,4 +1,4 @@
-import { OntarioAccordion } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioAccordion } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-accordion
 

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioTextarea } from '@ongov/ontario-design-system-component-library-react';
 
 import CodeHighlighter from '../../components/code-highlighter';
 
 export default function TextAreaExample() {
-	const codeExample = `import { OntarioTextarea } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioTextarea
+	const codeExample = `import { OntarioTextarea } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioTextarea
 	caption={{
 		captionText: "Label",
 		captionType: "default"

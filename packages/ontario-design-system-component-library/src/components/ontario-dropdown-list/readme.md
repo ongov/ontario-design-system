@@ -1,4 +1,4 @@
-import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioDropdownList } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-dropdown-list
 

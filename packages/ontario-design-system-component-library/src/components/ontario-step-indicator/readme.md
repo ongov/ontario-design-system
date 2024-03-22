@@ -1,4 +1,4 @@
-import { OntarioStepIndicator } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioStepIndicator } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-step-indicator
 

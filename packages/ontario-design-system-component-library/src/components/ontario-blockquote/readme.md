@@ -1,4 +1,4 @@
-import { OntarioBlockquote } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioBlockquote } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-blockquote
 
