@@ -1,4 +1,5 @@
 import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # ontario-footer
 
@@ -68,7 +69,8 @@ Example of a simple (`default` type) footer component.
 				"text": "Printer",
 				"href": "https://www.ontario.ca/page/copyright-information"
 			}
-		}'> 
+		}'
+		asset-base-path={useBaseUrl('/assets')}> 
 	</OntarioFooter>
 </div>
 
@@ -176,7 +178,8 @@ Example of an expanded footer with two columns (`twoColumn` type).
 					"link": "#"
 				}
 			}
-		}'> 
+		}'
+		asset-base-path={useBaseUrl('/assets')}> 
 	</OntarioFooter>
 </div>
 
@@ -282,7 +285,8 @@ Example of an expanded footer with three columns (`threeColumn` type).
 					}
 				]
 			}
-		}'>
+		}'
+		asset-base-path={useBaseUrl('/assets')}>
 	</OntarioFooter>
 </div>
 
@@ -408,7 +412,8 @@ Example of footer with social media links, only `twoColumn` and `threeColumn` fo
 					"link": "#"
 				}
 			}
-		}'> 
+		}'
+		asset-base-path={useBaseUrl('/assets')}>
 	</OntarioFooter>
 </div>
 
@@ -583,6 +588,7 @@ two-column-options='{
 
 | Property             | Attribute              | Description                                                                                                                                                                                                         | Type                                                                                                                                           | Default     |
 | -------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `assetBasePath`      | `asset-base-path`      | The base path to an assets folder containing the Design System assets                                                                                                                                               | `string`                                                                                                                                       | `undefined` |
 | `footerLinks`        | `footer-links`         | A prop that stores the required links for all footers. Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink'                                                                    | `FooterLinks \| string`                                                                                                                        | `undefined` |
 | `language`           | `language`             | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English. | `"en" \| "fr"`                                                                                                                                 | `undefined` |
 | `socialLinks`        | `social-links`         | Social media links to render in the footer. Available options are 'facebook', 'twitter', 'instagram' and 'youtube'                                                                                                  | `string \| { facebook?: string \| undefined; twitter?: string \| undefined; instagram?: string \| undefined; youtube?: string \| undefined; }` | `undefined` |
