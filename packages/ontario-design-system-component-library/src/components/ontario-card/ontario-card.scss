@@ -90,6 +90,7 @@
 	border-radius: globalVariables.$global-radius globalVariables.$global-radius 0 0;
 	padding: (spacing.$spacing-5 - spacing.$spacing-1) spacing.$spacing-5 spacing.$spacing-2 spacing.$spacing-5;
 	transition: text-decoration 0.3s ease-in-out;
+	background-color: colours.$ontario-colour-white;
 
 	.ontario-card:hover & {
 		text-decoration-line: underline;
@@ -113,10 +114,6 @@
 	.ontario-card__header-type--dark:hover & {
 		text-decoration-line: underline;
 		text-decoration-color: colours.$ontario-colour-white;
-	}
-
-	.ontario-card--image-true & {
-		border-radius: 0 !important;
 	}
 
 	.ontario-card--no-description & {
@@ -175,6 +172,9 @@
 .ontario-card__description {
 	margin: spacing.$spacing-0;
 	padding: spacing.$spacing-2 spacing.$spacing-5 spacing.$spacing-5 spacing.$spacing-5;
+	background-color: colours.$ontario-colour-white;
+	border-bottom-left-radius: globalVariables.$global-radius;
+	border-bottom-right-radius: globalVariables.$global-radius;
 
 	p {
 		margin-top: spacing.$spacing-0;
