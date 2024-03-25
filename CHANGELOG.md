@@ -1,3 +1,9 @@
+# 4.1.0-alpha.3 (2024-03-25)
+
+### Bug Fixes
+
+- **ontario-footer:** add assetBasePath to allow custom asset paths 2303da1
+
 # 4.1.0-alpha.2 (2024-03-20)
 
 ### Bug Fixes
