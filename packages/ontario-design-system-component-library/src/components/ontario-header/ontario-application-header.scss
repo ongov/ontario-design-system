@@ -1,25 +1,17 @@
 @use 'sass:math';
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as
-	globalVariables;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
-	spacing;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
-	colours;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables'
-	as breakpoints;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as
-	typography;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions'
-	as globalFunctions;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables'
-	as fontWeights;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders'
-	as focusPlaceholders;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as
-	zIndex;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/5-layout/_grid.layout.scss';
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
+@use '@o@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
+	focusPlaceholders;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/5-layout/_grid.layout.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
 
 $navigation-link-bg--hover: #e5e5e5;
 $navigation-max-width: 72rem;
@@ -147,6 +139,7 @@ $ontario-application-header-menu-button-icon--margin-right: 6px;
 .ontario-application-subheader .ontario-header-button,
 .ontario-application-navigation .ontario-header-button {
 	background-color: colours.$ontario-greyscale-70;
+
 	&:hover {
 		background-color: colours.$ontario-greyscale-60;
 	}
@@ -160,6 +153,7 @@ $ontario-application-header-menu-button-icon--margin-right: 6px;
 	&:hover {
 		background-color: colours.$ontario-greyscale-70;
 	}
+
 	&:focus {
 		box-shadow: focusPlaceholders.$ontario-focus-box-shadow;
 		outline: 4px solid transparent;
@@ -182,6 +176,7 @@ $ontario-application-header-menu-button-icon--margin-right: 6px;
 			box-shadow: focusPlaceholders.$ontario-focus-box-shadow;
 			transition: all 0.1s ease-in-out;
 		}
+
 		&:hover,
 		&:active,
 		&:visited {
@@ -382,6 +377,7 @@ $ontario-application-header-menu-button-icon--margin-right: 6px;
 	visibility: visible;
 	transform: translateY(0);
 	transition: transform 0.4s ease-in-out;
+
 	@media screen and (min-width: breakpoints.$medium-breakpoint) {
 		z-index: calc(zIndex.$ontario-z-index-above-high + 1);
 	}
@@ -401,6 +397,7 @@ $ontario-application-header-menu-button-icon--margin-right: 6px;
 	visibility: visible;
 	transform: translateY(0);
 	transition: transform 0.4s ease-in-out;
+
 	@media screen and (min-width: breakpoints.$medium-breakpoint) {
 		transition: none;
 		display: block;
@@ -421,6 +418,7 @@ $ontario-application-header-menu-button-icon--margin-right: 6px;
 	&:hover {
 		background-color: colours.$ontario-greyscale-60;
 	}
+
 	&:active {
 		background-color: colours.$ontario-colour-black;
 	}
@@ -456,6 +454,7 @@ $ontario-application-header-menu-button-icon--margin-right: 6px;
 	&:focus {
 		@extend %ontario-focus;
 	}
+
 	&:hover,
 	&:focus,
 	&:visited {

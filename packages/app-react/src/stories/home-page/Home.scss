@@ -1,5 +1,5 @@
-@use '~@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/theme';
-@use '~@ontario-digital-service/ontario-design-system-design-tokens/dist/scss/variables' as designTokenVariables;
+@use '~@ongov/ontario-design-system-global-styles/dist/styles/scss/theme';
+@use '~@ongov/ontario-design-system-design-tokens/dist/scss/variables' as designTokenVariables;
 
 $ontario-5rem: 5rem;
 $ontario-50rem: 50rem;
@@ -7,9 +7,11 @@ $ontario-40-vw: 40vw;
 
 p.ontario-lead-statement {
 	font-size: theme.$ontario-font-size-standard-body-text;
+
 	@media screen and (min-width: theme.$small-breakpoint) {
 		font-size: 1.2rem;
 	}
+
 	@media screen and (min-width: theme.$medium-breakpoint) {
 		font-size: 1.375rem;
 	}
@@ -44,9 +46,11 @@ p.ontario-lead-statement {
 .ontario-banner-font {
 	color: theme.$ontario-colour-white;
 	width: designTokenVariables.$ontario-global-tokens-width-max;
+
 	@media screen and (min-width: theme.$small-breakpoint) {
 		width: 70%;
 	}
+
 	@media screen and (min-width: theme.$medium-breakpoint) {
 		width: 45%;
 	}
