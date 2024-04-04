@@ -1,6 +1,6 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-component-library",
-	"version": "4.1.0-alpha.3",
+	"version": "4.1.0-alpha.4",
 	"private": false,
 	"description": "Ontario Design System Component Library",
 	"license": "Apache-2.0",
@@ -41,7 +41,7 @@
 		"postinstall": "echo 'WARNING: @ontario-digital-service/ontario-design-system-component-library has moved to @ongov/ontario-design-system-component-library. Please update your dependencies to the new namespace.'"
 	},
 	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-global-styles": "4.1.0-alpha.2",
+		"@ontario-digital-service/ontario-design-system-global-styles": "4.1.0-alpha.4",
 		"@stencil/core": "^4.1.0",
 		"dotenv": "^16.3.1"
 	},

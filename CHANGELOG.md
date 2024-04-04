@@ -1,3 +1,9 @@
+# 4.1.0-alpha.4 (2024-04-04)
+
+### Features
+
+- **@ontario-digital-service/ontario-design-system-complete-styles, @ontario-digital-service/ontario-design-system-component-library-angular, @ontario-digital-service/ontario-design-system-component-library-react, @ontario-digital-service/ontario-design-system-component-library, @ontario-digital-service/ontario-design-system-design-tokens, @ontario-digital-service/ontario-design-system-global-styles:** adds note about changes to package namespace in README files db051a3
+
 # 4.1.0-alpha.3 (2024-03-25)
 
 ### Bug Fixes
