@@ -1,6 +1,6 @@
 {
 	"name": "app-angular",
-	"version": "4.1.0-alpha.4",
+	"version": "4.1.0",
 	"scripts": {
 		"ng": "ng",
 		"start": "npm run clean:full && npm i && ng serve",
@@ -28,9 +28,9 @@
 		"@angular/router": "^15.2.9",
 		"@ngx-translate/core": "^14.0.0",
 		"@ngx-translate/http-loader": "^7.0.0",
-		"@ontario-digital-service/ontario-design-system-component-library-angular": "^4.1.0-alpha.4",
-		"@ontario-digital-service/ontario-design-system-global-styles": "^4.1.0-alpha.4",
-		"@ontario-digital-service/ontario-design-system-design-tokens": "^4.1.0-alpha.4",
+		"@ontario-digital-service/ontario-design-system-component-library-angular": "^4.1.0",
+		"@ontario-digital-service/ontario-design-system-global-styles": "^4.1.0",
+		"@ontario-digital-service/ontario-design-system-design-tokens": "^4.1.0",
 		"@uirouter/angular": "^11.1.0",
 		"copyfiles": "^2.4.1",
 		"ngx-translate-routes": "^1.4.1",
