@@ -1,3 +1,5 @@
+import { OntarioHintText } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-hint-text
 
 Use hint text to help users understand how to complete fields in a form. When adding hint text, the first choice should always be to display hint text without using a hint expander.
@@ -18,6 +20,8 @@ Example of a bare-bones hint text component where the user is passing the `hint`
 <ontario-hint-text>This is a hint</ontario-hint-text>
 ```
 
+<OntarioHintText>This is a hint</OntarioHintText>
+
 Example of a hint text that includes the `hint` property, which will override the `This is a hint` text. The `element-id` property has also been added, which is used to establish a relationship between hint text content and elements using the `aria-describedby` attribute.
 
 ```html
@@ -26,6 +30,12 @@ Example of a hint text that includes the `hint` property, which will override th
 	<ontario-hint-text></ontario-hint-text>
 </ontario-hint-text>
 ```
+
+<div>
+  <OntarioHintText hint="This hint will override the hint text provided as element content" element-id="hint-293849">
+	  This is a hint
+  </OntarioHintText>
+</div>
 
 <!-- Auto Generated Below -->
 

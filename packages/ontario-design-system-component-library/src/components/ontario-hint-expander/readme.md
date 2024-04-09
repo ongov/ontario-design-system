@@ -1,3 +1,5 @@
+import { OntarioHintExpander } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-hint-expander
 
 Use a hint expander when:
@@ -21,15 +23,25 @@ Example of a bare-bones hint expander component where the user is passing the `h
 <ontario-hint-expander hint="This is the hint" content="This is the content"></ontario-hint-expander>
 ```
 
+<OntarioHintExpander hint="This is the hint" content="This is the content"></OntarioHintExpander>
+
 Example of a hint expander that includes an `element-id` property - this is used to establish a relationship between hint text content and elements using the `aria-describedby` attribute.
 
 ```html
 <ontario-hint-expander
 	hint="This is the hint"
 	content="This is the content"
-	element-id="expander-82913`"
+	element-id="expander-82913"
 ></ontario-hint-expander>
 ```
+
+<div>
+  <OntarioHintExpander
+    hint="This is the hint"
+    content="This is the content"
+    element-id="expander-82913">
+  </OntarioHintExpander>
+</div>
 
 ## Accessibility
 

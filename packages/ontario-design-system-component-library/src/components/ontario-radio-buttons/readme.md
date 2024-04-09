@@ -1,3 +1,5 @@
+import { OntarioRadioButtons } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-radio-button
 
 Use radio buttons when you want the user to select only one option from a list.
@@ -33,6 +35,25 @@ Example of a bare-bones radio button component, the legend for the radio button 
 >
 </ontario-radio-buttons>
 ```
+
+<div>
+	<OntarioRadioButtons
+		caption="Radio legend"
+		name="radios"
+		options='[
+			{
+				"value": "radio-option-1",
+				"elementId": "radio-1",
+				"label": "Radio option 1 label"
+			},
+			{
+				"value": "radio-option-2",
+				"elementId": "radio-2",
+				"label": "Radio option 2 label"
+			}
+	]'>
+	</OntarioRadioButtons>
+</div>
 
 Example of a radio button component with multiple options, a hint text and hint expander for the entire radio group, and a hint expander on individual options. It also has the `required` property set to `true`.
 
@@ -82,6 +103,52 @@ Example of a radio button component with multiple options, a hint text and hint 
 >
 </ontario-radio-buttons>
 ```
+
+<div>
+	<OntarioRadioButtons
+		caption='{
+			"captionText": "Radio legend",
+			"captionType": "large" 
+		}'
+		name="radios"
+		hint-text="Hint text for the radio button group."
+		required="true"
+		options='[
+			{
+				"value": "radio-option-1",
+				"elementId": "radio-1",
+				"label": "Radio option 1 label"
+			},
+			{
+				"value": "radio-option-2",
+				"elementId": "radio-2",
+				"label": "Radio option 2 label",
+				"hintExpander": {
+					"hint": "Hint expander for radio option 2",
+					"content": "Example hint expander content for radio option 2."
+				}
+			},
+			{
+				"value": "radio-option-3",
+				"elementId": "radio-3",
+				"label": "Radio option 3 label",
+				"hintExpander": {
+					"hint": "Hint expander for radio option 3",
+					"content": "Example hint expander content for radio option 3."
+				}
+			},
+			{
+				"value": "radio-option-4",
+				"elementId": "radio-4",
+				"label": "Radio option 4 label"
+			}
+		]'
+		hint-expander='{
+			"hint": "Hint expander for the radio button group",
+			"content": "Example hint expander content for the radio button group."
+		}'> 
+	</OntarioRadioButtons>
+</div>
 
 ## Custom property types
 

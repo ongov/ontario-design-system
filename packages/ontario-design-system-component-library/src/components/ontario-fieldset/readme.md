@@ -1,3 +1,6 @@
+import { OntarioFieldset} from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioTextarea} from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-fieldset
 
 Use the fieldset element to group related form elements.
@@ -24,6 +27,12 @@ Example of a fieldset component.
     <ontario-radio-buttons ...></ontario-radio-buttons>
 </ontario-aside>
 ```
+
+<OntarioFieldset
+	legend="What is your delivery address?"
+	level-size="heading">
+<OntarioTextarea>...</OntarioTextarea>
+</OntarioFieldset>
 
 <!-- Auto Generated Below -->
 

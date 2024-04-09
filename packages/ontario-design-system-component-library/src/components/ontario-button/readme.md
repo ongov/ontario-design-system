@@ -1,3 +1,5 @@
+import { OntarioButton} from '@ontario-digital-service/ontario-design-system-component-library-react';
+
 # ontario-button
 
 Use buttons to help the user carry out an important action such as starting a transaction or agreeing to a purchase.
@@ -18,6 +20,8 @@ Example of a bare-bones button component where the `label` for the button is pro
 <ontario-button>Element Content</ontario-button>
 ```
 
+<OntarioButton>Element Content</OntarioButton>
+
 Example of a button component, which includes the `label`, `elementId`, `htmlType`, `type` and `ariaLabelText` properties.
 
 ```html
@@ -26,11 +30,17 @@ Example of a button component, which includes the `label`, `elementId`, `htmlTyp
 >
 ```
 
+<OntarioButton aria-label-text="Example aria label text" element-id="button-id" html-type="button" type="tertiary">
+	Element Content
+</OntarioButton>
+
 This is another example of a button component, where the user is passing in the label through the `label` property - overriding the 'Element Content' value. The resulting label text will display as `Example`.
 
 ```html
 <ontario-button label="Example" html-type="submit" type="primary">Element Content</ontario-button>
 ```
+
+<OntarioButton label="Example" html-type="submit" type="primary">Element Content</OntarioButton>
 
 An example of how to pass in an `onclick` function to the button component.
 

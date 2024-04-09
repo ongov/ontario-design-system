@@ -1,4 +1,6 @@
-# ontario-checkbox
+import { OntarioCheckboxes } from '@ontario-digital-service/ontario-design-system-component-library-react';
+
+# ontario-checkboxes
 
 Use checkboxes when you want the user to select one or more options from a list.
 
@@ -34,6 +36,25 @@ Example of a bare-bones checkbox component, the legend for the checkbox fieldset
 </ontario-checkboxes>
 ```
 
+<div>
+  <OntarioCheckboxes
+    caption="Checkbox legend"
+    name="checkboxes"
+    options='[
+      {
+        "value": "checkbox-option-1",
+        "label": "Checkbox option 1 label",
+        "elementId": "checkbox-1"
+      },
+      {
+        "value": "checkbox-option-2",
+        "label": "Checkbox option 2 label",
+        "elementId": "checkbox-2"
+      }
+    ]'
+  ></OntarioCheckboxes>
+</div>
+
 Example of a checkbox component with multiple options, a hint text and hint expander for the entire checkbox group, and a hint expander on an individual option. It also has the `required` property set.
 
 ```html
@@ -64,6 +85,34 @@ Example of a checkbox component with multiple options, a hint text and hint expa
 >
 </ontario-checkboxes>
 ```
+
+<div>
+  <OntarioCheckboxes
+    caption='{
+      "captionText": "Checkbox legend",
+      "captionType": "large"
+    }'
+    name="checkboxes"
+    hint-text="Hint text for the checkbox group"
+    required
+    options='[
+      {
+        "value": "checkbox-option-1",
+        "label": "Checkbox option 1 label",
+        "elementId": "checkbox-1"
+      },
+      {
+        "value": "checkbox-option-2",
+        "label": "Checkbox option 2 label",
+        "elementId": "checkbox-2",
+        "hintExpander": {
+          "hint": "Hint expander for checkbox option 2",
+          "content": "Example hint expander content for checkbox option 2"
+        }
+      }
+    ]'
+  ></OntarioCheckboxes>
+</div>
 
 ## Custom property types
 

@@ -302,13 +302,17 @@ export class OntarioDateInput {
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['inputOnChange', 'inputOnBlur', 'inputOnFocus']);
+		proxyOutputs(this, this.el, ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred']);
 	}
 }
 
 export declare interface OntarioDateInput extends Components.OntarioDateInput {
 	/**
-	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
+	 * Emitted when an `input` event occurs within the component.
+	 */
+	inputOnInput: EventEmitter<CustomEvent<{ value: string; fieldType: 'day' | 'month' | 'year' }>>;
+	/**
+	 * Emitted when a `change` event occurs within the component.
 	 */
 	inputOnChange: EventEmitter<CustomEvent<{ value: string; fieldType: 'day' | 'month' | 'year' }>>;
 	/**
@@ -319,6 +323,10 @@ export declare interface OntarioDateInput extends Components.OntarioDateInput {
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
 	inputOnFocus: EventEmitter<CustomEvent<'day' | 'month' | 'year'>>;
+	/**
+	 * Emitted when an error message is reported to the component.
+	 */
+	inputErrorOccurred: EventEmitter<CustomEvent<{ inputId: string; errorMessage: string }>>;
 }
 
 @ProxyCmp({
@@ -405,14 +413,32 @@ export class OntarioFieldset {
 export declare interface OntarioFieldset extends Components.OntarioFieldset {}
 
 @ProxyCmp({
-	inputs: ['footerLinks', 'language', 'socialLinks', 'threeColumnOptions', 'topMargin', 'twoColumnOptions', 'type'],
+	inputs: [
+		'assetBasePath',
+		'footerLinks',
+		'language',
+		'socialLinks',
+		'threeColumnOptions',
+		'topMargin',
+		'twoColumnOptions',
+		'type',
+	],
 })
 @Component({
 	selector: 'ontario-footer',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['footerLinks', 'language', 'socialLinks', 'threeColumnOptions', 'topMargin', 'twoColumnOptions', 'type'],
+	inputs: [
+		'assetBasePath',
+		'footerLinks',
+		'language',
+		'socialLinks',
+		'threeColumnOptions',
+		'topMargin',
+		'twoColumnOptions',
+		'type',
+	],
 })
 export class OntarioFooter {
 	protected el: HTMLElement;
@@ -427,6 +453,7 @@ export declare interface OntarioFooter extends Components.OntarioFooter {}
 @ProxyCmp({
 	inputs: [
 		'applicationHeaderInfo',
+		'assetBasePath',
 		'customLanguageToggle',
 		'disableDynamicMenu',
 		'language',
@@ -442,6 +469,7 @@ export declare interface OntarioFooter extends Components.OntarioFooter {}
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
 	inputs: [
 		'applicationHeaderInfo',
+		'assetBasePath',
 		'customLanguageToggle',
 		'disableDynamicMenu',
 		'language',

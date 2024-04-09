@@ -118,6 +118,11 @@ export class OntarioHeader {
 	@Prop({ mutable: true }) language?: Language = 'en';
 
 	/**
+	 * The base path to an assets folder containing the Design System assets
+	 */
+	@Prop() assetBasePath: string;
+
+	/**
 	 * The application header information is reassigned to applicationHeaderInfoState for parsing
 	 */
 	@State() private applicationHeaderInfoState: ApplicationHeaderInfo;
@@ -324,6 +329,15 @@ export class OntarioHeader {
 	}
 
 	/**
+	 * Generate a link to the given image based on the base asset path.
+	 * @param imageName Name of the image to build the path to
+	 * @returns Path to image with asset path
+	 */
+	private getImageAssetSrcPath(imageName: string): string {
+		return `${this.assetBasePath ? this.assetBasePath : getAssetPath('./assets')}/${imageName}`;
+	}
+
+	/**
 	 * This function generates the menu items in a <li>, accordingly, to the given parameters.
 	 *
 	 * href and title are necessary, but rest are not.
@@ -332,7 +346,7 @@ export class OntarioHeader {
 	 * @param title - the title of the menu item
 	 * @param linkIsActive - when set to true, this will add the classes necessary to style the link in a way that indicates to the user what the active page/link is
 	 * @param liClass - if there is a class that is related to the <a> portion of the menu item, put it here
-	 * @param onClick - for any custon onClick event a user might want to add to their menu links
+	 * @param onClick - for any custom onClick event a user might want to add to their menu links
 	 * @param onBlur - when set to true, it will call the function trapMenuFocus(), otherwise nothing is done (used in lastLink)
 	 */
 	private generateMenuItem(
@@ -507,12 +521,12 @@ export class OntarioHeader {
 									<a href={this.translations.header.logoLink[`${this.language}`]}>
 										<img
 											class="ontario-show-for-medium"
-											src={getAssetPath('./assets/ontario-logo--desktop.svg')}
+											src={this.getImageAssetSrcPath('ontario-logo--desktop.svg')}
 											alt={this.translations.header.logoAltText[`${this.language}`]}
 										/>
 										<img
 											class="ontario-show-for-small-only"
-											src={getAssetPath('./assets/ontario-logo--mobile.svg')}
+											src={this.getImageAssetSrcPath('ontario-logo--mobile.svg')}
 											alt={this.translations.header.logoAltText[`${this.language}`]}
 										/>
 									</a>
@@ -650,7 +664,7 @@ export class OntarioHeader {
 								<div class="ontario-columns ontario-small-6 ontario-application-header__logo">
 									<a href={this.translations.header.logoLink[`${this.language}`]}>
 										<img
-											src={getAssetPath('./assets/ontario-logo--desktop.svg')}
+											src={this.getImageAssetSrcPath('ontario-logo--desktop.svg')}
 											alt={this.translations.header.logoAltText[`${this.language}`]}
 										/>
 									</a>
