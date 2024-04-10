@@ -1,4 +1,10 @@
-# Ontario Design System Global Styles Package
+# Ontario Design System Global Styles
+
+> **Package moved to `@ongov` namespace**
+>
+> This npm package has moved to a new namespace, the `@ontario-digital-service/ontario-design-system-complete-styles` has moved to [`@ongov/ontario-design-system-complete-styles`](https://www.npmjs.com/package/@ongov/ontario-design-system-complete-styles). Package names are not changing - just the namespace.
+>
+> Please make sure to update your projects to the new versions of the packages under `@ongov` so you will continue to receive updates. Packages under `@ontario-digital-service` will no longer be updated.
 
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)

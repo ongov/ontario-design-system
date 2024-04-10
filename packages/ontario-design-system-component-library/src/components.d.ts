@@ -430,6 +430,10 @@ export namespace Components {
 	}
 	interface OntarioFooter {
 		/**
+		 * The base path to an assets folder containing the Design System assets
+		 */
+		assetBasePath: string;
+		/**
 		 * A prop that stores the required links for all footers. Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink'
 		 */
 		footerLinks: FooterLinks | string;
@@ -465,7 +469,7 @@ export namespace Components {
 		 */
 		applicationHeaderInfo: ApplicationHeaderInfo | string;
 		/**
-		 * The logo src of header
+		 * The base path to an assets folder containing the Design System assets
 		 */
 		assetBasePath: string;
 		/**
@@ -3138,6 +3142,10 @@ declare namespace LocalJSX {
 	}
 	interface OntarioFooter {
 		/**
+		 * The base path to an assets folder containing the Design System assets
+		 */
+		assetBasePath?: string;
+		/**
 		 * A prop that stores the required links for all footers. Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink'
 		 */
 		footerLinks?: FooterLinks | string;
@@ -3173,7 +3181,7 @@ declare namespace LocalJSX {
 		 */
 		applicationHeaderInfo?: ApplicationHeaderInfo | string;
 		/**
-		 * The logo src of header
+		 * The base path to an assets folder containing the Design System assets
 		 */
 		assetBasePath?: string;
 		/**

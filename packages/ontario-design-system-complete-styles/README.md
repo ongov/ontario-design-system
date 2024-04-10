@@ -1,4 +1,10 @@
-# Ontario Design System Complete Style Package
+# Ontario Design System Complete Style
+
+> **Package moved to `@ongov` namespace**
+>
+> This npm package has moved to a new namespace, the `@ontario-digital-service/ontario-design-system-complete-styles` has moved to [`@ongov/ontario-design-system-complete-styles`](https://www.npmjs.com/package/@ongov/ontario-design-system-complete-styles). Package names are not changing - just the namespace.
+>
+> Please make sure to update your projects to the new versions of the packages under `@ongov` so you will continue to receive updates. Packages under `@ontario-digital-service` will no longer be updated.
 
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
@@ -68,7 +74,7 @@ There are a few limitations to the complete styles project that we are working t
 
 ### Broken SVGs
 
-We are still working to fix how component SVGs work in SPA frameworks. A current workaround to this may be to download the SVG's needed for certain components from the [Ontario Design System Icons page]() and paste that SVG code into your HTML as needed.
+We are still working to fix how component SVGs work in SPA frameworks. A current workaround to this may be to download the SVG's needed for certain components from the [Ontario Design System Icons page](https://designsystem.ontario.ca/components/detail/icons-primary.html) and paste that SVG code into your HTML as needed.
 
 ### Broken scripts
 

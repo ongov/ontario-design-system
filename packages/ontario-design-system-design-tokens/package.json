@@ -1,6 +1,6 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-design-tokens",
-	"version": "4.0.0",
+	"version": "4.1.0",
 	"private": false,
 	"description": "Design Tokens defining the base values within the Ontario Design System",
 	"license": "Apache-2.0",
@@ -12,10 +12,12 @@
 		"README.md"
 	],
 	"scripts": {
-		"build": "node build.js",
+		"build": "node build.js && npm run docs:copy:readme",
 		"clean": "rm -rf dist",
 		"clean:full": "rm -rf node_modules && npm run clean",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: Design Tokens\n---\n\" -df ../app-web-components-documentation/docs/04-readme-design-tokens.md",
+		"postinstall": "echo 'WARNING: @ontario-digital-service/ontario-design-system-complete-styles has moved to @ongov/ontario-design-system-complete-styles. Please update your dependencies to the new namespace.'"
 	},
 	"devDependencies": {
 		"style-dictionary": "^3.7.1"

@@ -1,6 +1,6 @@
 {
 	"name": "@ontario-digital-service/ontario-design-system-component-library-react",
-	"version": "4.0.0",
+	"version": "4.1.0",
 	"private": false,
 	"description": "React specific wrapper for ontario-design-system-component-library",
 	"license": "Apache-2.0",
@@ -27,7 +27,8 @@
 		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: React Component Library\n---\n\" -df ../app-web-components-documentation/docs/03-readme-react.md",
 		"format": "prettier --write .",
 		"rollup": "rollup -c",
-		"tsc": "tsc -p ."
+		"tsc": "tsc -p .",
+		"postinstall": "echo 'WARNING: @ontario-digital-service/ontario-design-system-component-library-react has moved to @ongov/ontario-design-system-component-library-react. Please update your dependencies to the new namespace.'"
 	},
 	"jest": {
 		"preset": "ts-jest",
@@ -38,7 +39,7 @@
 		]
 	},
 	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-component-library": "^4.0.0"
+		"@ontario-digital-service/ontario-design-system-component-library": "^4.1.0"
 	},
 	"devDependencies": {
 		"@types/jest": "23.3.9",
