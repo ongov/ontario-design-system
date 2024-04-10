@@ -57,6 +57,7 @@
 						<li><a href="#text-inputs">Text inputs</a></li>
 						<li><a href="#date-input">Date input</a></li>
 						<li><a href="#step-indicator">Step indicator</a></li>
+						<li><a href="#search-box">Search Box</a></li>
 						<li><a href="#form">Form example</a></li>
 					</ol>
 					<hr />
@@ -937,6 +938,36 @@
 							number-of-steps="5"
 						></ontario-step-indicator>
 					</div>
+					<hr />
+
+					<!-- Search box -->
+					<script>
+						window.addEventListener('load', () => {
+							console.log('Loaded Search Box Event Listener');
+							const searchBox = document.getElementById('ontario-search-box');
+							searchBox.performSearch = async ($value) => {
+								console.log('Performing search with value:', $value);
+							};
+
+							searchBox.addEventListener('searchOnSubmit', (event) => {
+								console.log('Search Event:', event);
+							});
+						});
+					</script>
+
+					<div>
+						<h2 id="search-box">Search box</h2>
+						<ontario-search-box
+							id="ontario-search-box"
+							caption='{
+							"captionText": "Search directory",
+							"captionType": "default"
+						}'
+							hint-text="Search by employee name or organization name."
+						></ontario-search-box>
+					</div>
+
+					<hr />
 					<div>
 						<!-- Form -->
 						<form id="sample-form">
