@@ -1,4 +1,4 @@
-import { OntarioRadioButtons } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioRadioButtons } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-radio-button
 

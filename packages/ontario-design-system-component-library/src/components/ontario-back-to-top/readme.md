@@ -1,4 +1,4 @@
-import { OntarioBackToTop } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioBackToTop } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-back-to-top
 

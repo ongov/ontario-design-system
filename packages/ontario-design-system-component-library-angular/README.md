@@ -2,12 +2,6 @@
 
 ![Built With Stencil](https://img.shields.io/badge/-Built%20With%20Stencil-16161d.svg?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjIuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI%2BCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI%2BCgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9Cjwvc3R5bGU%2BCjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MjQuNywzNzMuOWMwLDM3LjYtNTUuMSw2OC42LTkyLjcsNjguNkgxODAuNGMtMzcuOSwwLTkyLjctMzAuNy05Mi43LTY4LjZ2LTMuNmgzMzYuOVYzNzMuOXoiLz4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTQyNC43LDI5Mi4xSDE4MC40Yy0zNy42LDAtOTIuNy0zMS05Mi43LTY4LjZ2LTMuNkgzMzJjMzcuNiwwLDkyLjcsMzEsOTIuNyw2OC42VjI5Mi4xeiIvPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDI0LjcsMTQxLjdIODcuN3YtMy42YzAtMzcuNiw1NC44LTY4LjYsOTIuNy02OC42SDMzMmMzNy45LDAsOTIuNywzMC43LDkyLjcsNjguNlYxNDEuN3oiLz4KPC9zdmc%2BCg%3D%3D&colorA=16161d&style=flat-square)
 
-> **Package moved to `@ongov` namespace**
->
-> This npm package has moved to a new namespace, the `@ontario-digital-service/ontario-design-system-component-library-angular` has moved to [`@ongov/ontario-design-system-component-library-angular`](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-angular). Package names are not changing - just the namespace.
->
-> Please make sure to update your projects to the new versions of the packages under `@ongov` so you will continue to receive updates. Packages under `@ontario-digital-service` will no longer be updated.
-
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
 - [Debugging FAQs](#debugging-faqs)
@@ -15,7 +9,7 @@
 
 ## Introduction
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/). For more information, [find it on NPM](https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-component-library-angular).
+This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/). For more information, [find it on NPM](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-angular).
 
 ## Installation and usage
 
@@ -26,13 +20,13 @@ To use the Ontario Design System Angular component library, follow these steps:
 1. Install the NPM package.
 
    ```bash
-   npm install --save @ontario-digital-service/ontario-design-system-component-library-angular
+   npm install --save @ongov/ontario-design-system-component-library-angular
    ```
 
 2. Import the `ComponentLibraryModule`, or whichever specific component you wish to use into your root module. The `ComponentLibraryModule` import will include all the Ontario Design System web components.
 
    ```ts
-   import { ComponentLibraryModule } from '@ontario-digital-service/ontario-design-system-component-library-angular/dist/component-library';
+   import { ComponentLibraryModule } from '@ongov/ontario-design-system-component-library-angular/dist/component-library';
 
    @NgModule({
    	imports: [ComponentLibraryModule],
@@ -52,21 +46,21 @@ You can now use the Angular Components in your component template files.
 
 Along with the components, the local assets (logos, fonts, etc.) need to be copied into your project so that they are available for bundling upon building your Angular application.
 
-The assets in the NPM package are located at `@ontario-digital-service/ontario-design-system-component-library-angular/dist/assets`, and should be copied to your public assets folder.
+The assets in the NPM package are located at `@ongov/ontario-design-system-component-library-angular/dist/assets`, and should be copied to your public assets folder.
 
 In a standard Angular application this can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package, which you can with any operating system:
 
 ```bash
-copyfiles -E -f "node_modules/@ontario-digital-service/ontario-design-system-component-library-angular/dist/assets/*" src/assets
+copyfiles -E -f "node_modules/@ongov/ontario-design-system-component-library-angular/dist/assets/*" src/assets
 ```
 
 Another way is to add scripts to copy the assets in your `package.json` file. For example:
 
 ```json
 "prebuild": "npm run copy:assets",
-"copy:images": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-angular/dist/component-library/assets/images/**\" src/assets",
-"copy:favicons": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-component-library-angular/dist/component-library/assets/favicons/**\" src/assets/favicons",
-"copy:fonts": "copyfiles -E -u 6 \"node_modules/@ontario-digital-service/ontario-design-system-component-library-angular/dist/component-library/assets/fonts/**/*\" src/assets/fonts",
+"copy:images": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-component-library-angular/dist/component-library/assets/images/**\" src/assets",
+"copy:favicons": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-component-library-angular/dist/component-library/assets/favicons/**\" src/assets/favicons",
+"copy:fonts": "copyfiles -E -u 6 \"node_modules/@ongov/ontario-design-system-component-library-angular/dist/component-library/assets/fonts/**/*\" src/assets/fonts",
 "copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts"
 ```
 

@@ -1,4 +1,4 @@
-import { OntarioAside } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioAside } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-aside
 

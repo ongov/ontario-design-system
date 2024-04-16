@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 
-import { OntarioRadioButtons } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioRadioButtons } from '@ongov/ontario-design-system-component-library-react';
 
 import CodeHighlighter from '../../components/code-highlighter';
 
 export default function RadioButtonExample() {
-	const radioButtonsCodeExample = `import { OntarioRadioButtons } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n
+	const radioButtonsCodeExample = `import { OntarioRadioButtons } from '@ongov/ontario-design-system-component-library-react'; \n
 <OntarioRadioButtons 
 	ref={componentRef}
 	caption="Radio legend"

@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 
-import { OntarioCheckboxes } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioCheckboxes } from '@ongov/ontario-design-system-component-library-react';
 
 import CodeHighlighter from '../../components/code-highlighter';
 
 export default function CheckboxExample() {
-	const checkboxCodeExample = `import { OntarioCheckboxes } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n
+	const checkboxCodeExample = `import { OntarioCheckboxes } from '@ongov/ontario-design-system-component-library-react'; \n\n
 <OntarioCheckboxes 
 	ref={componentRef}
 	caption={{

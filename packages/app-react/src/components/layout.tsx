@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-import { OntarioHeader, OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioHeader, OntarioFooter } from '@ongov/ontario-design-system-component-library-react';
 import { generateHashPath } from '../utils/url';
 
 interface MenuLinks {

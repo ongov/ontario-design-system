@@ -1,4 +1,4 @@
-import { OntarioPageAlert } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioPageAlert } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-page-alert
 

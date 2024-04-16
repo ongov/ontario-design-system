@@ -1,27 +1,18 @@
 @use 'sass:math';
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as
-	globalVariables;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
-	spacing;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
-	colours;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables'
-	as breakpoints;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as
-	typography;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions'
-	as globalFunctions;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables'
-	as fontWeights;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders'
-	as focusPlaceholders;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as
-	zIndex;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables'
-	as lineHeights;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/5-layout/_grid.layout.scss';
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
+	focusPlaceholders;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables' as lineHeights;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/5-layout/_grid.layout.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
 
 $ontario-search-input-padding: 7.2rem;
 $ontario-search-input-padding--mobile: 6.4rem;
@@ -52,6 +43,7 @@ $ontario-navigation-container-min-width: 290px;
 .ontario-icon-container-reset {
 	display: flex;
 	align-items: center;
+
 	svg {
 		fill: colours.$ontario-colour-black;
 	}
@@ -117,6 +109,7 @@ $ontario-navigation-container-min-width: 290px;
 	visibility: visible;
 	transform: translateY(0);
 	transition: transform 0.4s ease-in-out;
+
 	@media screen and (min-width: breakpoints.$medium-breakpoint) {
 		z-index: calc(zIndex.$ontario-z-index-above-high + 1);
 	}
@@ -212,6 +205,7 @@ $ontario-navigation-container-min-width: 290px;
 		display: inline-flex;
 		height: 100%;
 		outline: none;
+
 		&:focus {
 			box-shadow: 0 0 0 globalVariables.$global-radius colours.$ontario-colour-focus;
 		}
@@ -232,6 +226,7 @@ $ontario-navigation-container-min-width: 290px;
 	visibility: visible;
 	transform: translateY(0);
 	transition: transform 0.4s ease-in-out;
+
 	@media screen and (min-width: breakpoints.$medium-breakpoint) {
 		z-index: calc(zIndex.$ontario-z-index-above-high + 1);
 	}
@@ -251,6 +246,7 @@ $ontario-navigation-container-min-width: 290px;
 	&:hover {
 		background-color: colours.$ontario-greyscale-60;
 	}
+
 	&:active {
 		background-color: colours.$ontario-colour-black;
 	}
@@ -264,6 +260,7 @@ $ontario-navigation-container-min-width: 290px;
 
 .ontario-header__logo-container {
 	height: globalVariables.$ontario-logo-height;
+
 	svg {
 		width: $ontario-header-logo-width--mobile;
 		height: globalVariables.$ontario-logo-height;
@@ -313,6 +310,7 @@ $ontario-navigation-container-min-width: 290px;
 		& ~ .ontario-header__search-submit {
 			background-color: colours.$ontario-colour-link;
 			color: colours.$ontario-colour-white;
+
 			svg {
 				fill: colours.$ontario-colour-white;
 			}
@@ -371,6 +369,7 @@ $ontario-navigation-container-min-width: 290px;
 
 	padding-left: spacing.$spacing-3;
 	padding-right: spacing.$spacing-3;
+
 	svg {
 		fill: colours.$ontario-colour-black;
 	}
@@ -378,6 +377,7 @@ $ontario-navigation-container-min-width: 290px;
 	&:hover {
 		background-color: colours.$ontario-colour-link--hover;
 		color: colours.$ontario-colour-white;
+
 		svg {
 			fill: colours.$ontario-colour-white;
 		}
@@ -388,6 +388,7 @@ $ontario-navigation-container-min-width: 290px;
 		box-shadow: 0 0 0 globalVariables.$global-radius colours.$ontario-colour-focus;
 		background-color: colours.$ontario-colour-link--hover;
 		color: colours.$ontario-colour-white;
+
 		svg {
 			fill: colours.$ontario-colour-white;
 		}
@@ -396,6 +397,7 @@ $ontario-navigation-container-min-width: 290px;
 	&:active {
 		background-color: colours.$ontario-colour-link--active;
 		color: colours.$ontario-colour-white;
+
 		svg {
 			fill: colours.$ontario-colour-white;
 		}
@@ -475,9 +477,11 @@ input[type='reset'].ontario-header__search-reset {
 	&:hover {
 		background-color: colours.$ontario-greyscale-70;
 	}
+
 	&:active {
 		background-color: colours.$ontario-greyscale-60;
 	}
+
 	&:focus {
 		background-color: colours.$ontario-greyscale-70;
 	}

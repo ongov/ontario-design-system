@@ -1,4 +1,4 @@
-import { OntarioInput } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioInput } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-input
 

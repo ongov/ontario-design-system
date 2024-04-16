@@ -1,4 +1,4 @@
-import { OntarioDateInput } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioDateInput } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-date-input
 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { DIRECTIVES } from './stencil-generated';
-import { defineCustomElements } from '@ontario-digital-service/ontario-design-system-component-library/loader';
+import { defineCustomElements } from '@ongov/ontario-design-system-component-library/loader';
 
 defineCustomElements(window);
 

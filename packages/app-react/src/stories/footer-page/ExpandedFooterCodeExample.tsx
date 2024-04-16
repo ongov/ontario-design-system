@@ -1,10 +1,10 @@
 import React from 'react';
-import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioFooter } from '@ongov/ontario-design-system-component-library-react';
 
 import CodeHighlighter from '../../components/code-highlighter';
 
 export default function ExpandedFooterCodeExample() {
-	const expandedFooterExample = `import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioFooter
+	const expandedFooterExample = `import { OntarioFooter } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioFooter
   type="threeColumn"
 	socialLinks={{
 		facebook: '#',
