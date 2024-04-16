@@ -210,6 +210,46 @@ In the following example, all available props are passed through.
 	></OntarioDropdownList>
 </div>
 
+### Forms
+
+The `ontario-dropdown-list` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as an `<select>`.
+
+```html
+<form>
+	<!-- Add an ontario-dropdown-list -->
+	<ontario-dropdown-list
+		name="dropdown-1"
+		is-empty-start-option="Select"
+		element-id="dropdown-1"
+		caption="Dropdown"
+		required
+		options='[{
+			"value": "alberta",
+			"label": "Alberta"
+		},
+		{
+			"value": "ontario",
+			"label": "Ontario"
+			"selected": true
+		},
+		{
+			"value": "quebec",
+			"label": "Quebec"
+		},
+		{
+			"value": "nunavut",
+			"label": "Nunavut"
+		}]'
+	>
+	</ontario-dropdown-list>
+
+	<!-- Submit the form with a submit button -->
+	<ontario-button type="primary" html-type="submit">Submit</ontario-button>
+</form>
+```
+
+Remember to set the `name` attribute as this is used to identify the field when submitting the form.
+
 ## Custom property types
 
 ### Caption
@@ -218,10 +258,10 @@ In the following example, all available props are passed through.
 caption='{ "captionText": "Province/territory", "captionType": "heading" }'
 ```
 
-| **Property name** | **Type**                           | **Description**                                                                                         |
-| ----------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `captionText`     | `string`                           | The text to display as the caption (label) for the dropdown-list. This must be implemented.             |
-| `captionType`     | `"default" \| "large"\| "heading"` | The type of caption to render. This is optional - if no type is passed, the "default" type will render. |
+| Property name | Type                               | Description                                                                                             |
+| ------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `captionText` | `string`                           | The text to display as the caption (label) for the dropdown-list. This must be implemented.             |
+| `captionType` | `"default" \| "large"\| "heading"` | The type of caption to render. This is optional - if no type is passed, the "default" type will render. |
 
 ### Options
 
@@ -230,11 +270,11 @@ options='[ { "value": "netflix", "label": "Netflix" }, { "value": "disney-plus",
 "crave", "label": "Crave" }, { "value": "prime", "label": "Prime Video" } ]'
 ```
 
-| **Property name** | **Type**  | **Description**                                                                                                                             |
-| ----------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `value`           | `string`  | The dropdown option content value. Each value must be unique to the option.                                                                 |
-| `label`           | `string`  | The text to display as the dropdown option label.                                                                                           |
-| `selected`        | `boolean` | A boolean value to determine whether or not the dropdown list option is pre-selected. If no selected value is set, it will be set to false. |
+| Property name | Type      | Description                                                                                                                                 |
+| ------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`       | `string`  | The dropdown option content value. Each value must be unique to the option.                                                                 |
+| `label`       | `string`  | The text to display as the dropdown option label.                                                                                           |
+| `selected`    | `boolean` | A boolean value to determine whether or not the dropdown list option is pre-selected. If no selected value is set, it will be set to false. |
 
 ## Accessibility
 

@@ -17,10 +17,10 @@ Once the component package has been installed (see Ontario Design System Compone
 Example of a bare-bones textarea component where the user is passing the `name` which is the value used to reference form data after a form is submitted. The `elementId` is also being passed in as the unique identifier of the textarea.
 
 ```html
-<ontario-textarea caption="Comments" name="comments" element-id="form-comments" />
+<ontario-textarea caption="Comments" name="comments" element-id="form-comments"></ontario-textarea>
 ```
 
-<OntarioTextarea caption="Comments" name="comments" element-id="form-comments" />
+<OntarioTextarea caption="Comments" name="comments" element-id="form-comments"></OntarioTextarea>
 
 To mark a textarea as required, add the `required` attribute to the component.
 
@@ -31,10 +31,26 @@ To mark a textarea as required, add the `required` attribute to the component.
 	element-id="form-comments"
 	required="true"
 	onBlur="exampleFunction()"
-/>
+></ontario-textarea>
 ```
 
-<OntarioTextarea caption="Comments" name="comments" element-id="form-comments" required="true" />
+<OntarioTextarea caption="Comments" name="comments" element-id="form-comments" required="true"></OntarioTextarea>
+
+### Forms
+
+The `ontario-textarea` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as a `<textarea>`.
+
+```html
+<form>
+	<!-- Add an ontario-textarea -->
+	<ontario-textarea name="textarea-1" caption="Text area"></ontario-textarea>
+
+	<!-- Submit the form with a submit button -->
+	<ontario-button type="primary" html-type="submit">Submit</ontario-button>
+</form>
+```
+
+Remember to set the `name` attribute as this is used to identify the field when submitting the form.
 
 ## Custom property types
 

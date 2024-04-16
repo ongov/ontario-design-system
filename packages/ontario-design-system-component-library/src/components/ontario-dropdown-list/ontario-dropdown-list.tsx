@@ -1,4 +1,16 @@
-import { Component, State, Element, h, Prop, Event, Listen, Watch, getAssetPath, EventEmitter } from '@stencil/core';
+import {
+	Component,
+	State,
+	Element,
+	h,
+	Prop,
+	Event,
+	Listen,
+	Watch,
+	getAssetPath,
+	EventEmitter,
+	AttachInternals,
+} from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
 import { DropdownOption } from './dropdown-option.interface';
@@ -26,10 +38,12 @@ import { default as translations } from '../../translations/global.i18n.json';
 	tag: 'ontario-dropdown-list',
 	styleUrl: 'ontario-dropdown-list.scss',
 	shadow: true,
+	formAssociated: true,
 	assetsDirs: ['./assets'],
 })
 export class OntarioDropdownList implements Dropdown {
 	@Element() element: HTMLElement;
+	@AttachInternals() internals: ElementInternals;
 
 	hintTextRef: HTMLOntarioHintTextElement | undefined;
 
@@ -353,6 +367,8 @@ export class OntarioDropdownList implements Dropdown {
 	 */
 	private handleEvent(event: Event, eventType: EventType) {
 		const input = event.target as HTMLSelectElement | null;
+
+		this.internals?.setFormValue?.(input?.value ?? '');
 
 		handleInputEvent(
 			event,

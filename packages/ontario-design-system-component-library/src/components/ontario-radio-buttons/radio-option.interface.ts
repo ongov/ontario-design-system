@@ -44,7 +44,7 @@ export interface RadioOption {
 	 * The resulting value will be `"radio-option-1"`.
 	 */
 
-	value: string | number;
+	value: string;
 
 	/**
 	 * Used to establish a relationship between radio option label and the radio option input.
