@@ -9,10 +9,7 @@ export const config: Config = {
 	namespace: 'ontario-design-system-components',
 	plugins: [
 		sass({
-			includePaths: [
-				'./node_modules',
-				'./node_modules/@ontario-digital-service/ontario-design-system-global-styles/node_modules',
-			],
+			includePaths: ['./node_modules', './node_modules/@ongov/ontario-design-system-global-styles/node_modules'],
 		}),
 		inlineSvg(),
 		dotEnvPlugin(),
@@ -22,12 +19,12 @@ export const config: Config = {
 	buildEs5: false,
 	outputTargets: [
 		reactOutputTarget({
-			componentCorePackage: '@ontario-digital-service/ontario-design-system-component-library',
+			componentCorePackage: '@ongov/ontario-design-system-component-library',
 			proxiesFile: '../ontario-design-system-component-library-react/src/components.ts',
 			includeDefineCustomElements: true,
 		}),
 		angularOutputTarget({
-			componentCorePackage: '@ontario-digital-service/ontario-design-system-component-library',
+			componentCorePackage: '@ongov/ontario-design-system-component-library',
 			directivesProxyFile:
 				'../ontario-design-system-component-library-angular/projects/component-library/src/lib/stencil-generated/components.ts',
 			directivesArrayFile:
@@ -38,12 +35,12 @@ export const config: Config = {
 			esmLoaderPath: '../loader',
 			copy: [
 				{
-					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/fonts',
+					src: '../node_modules/@ongov/ontario-design-system-global-styles/dist/fonts',
 					dest: 'fonts',
 					warn: true,
 				},
 				{
-					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/favicons',
+					src: '../node_modules/@ongov/ontario-design-system-global-styles/dist/favicons',
 					dest: 'favicons',
 					warn: true,
 				},
@@ -72,12 +69,12 @@ export const config: Config = {
 			serviceWorker: null, // disable service workers
 			copy: [
 				{
-					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/fonts',
+					src: '../node_modules/@ongov/ontario-design-system-global-styles/dist/fonts',
 					dest: 'fonts',
 					warn: true,
 				},
 				{
-					src: '../node_modules/@ontario-digital-service/ontario-design-system-global-styles/dist/favicons',
+					src: '../node_modules/@ongov/ontario-design-system-global-styles/dist/favicons',
 					dest: 'favicons',
 					warn: true,
 				},

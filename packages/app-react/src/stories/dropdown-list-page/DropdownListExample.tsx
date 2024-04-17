@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioDropdownList } from '@ongov/ontario-design-system-component-library-react';
 
 import CodeHighlighter from '../../components/code-highlighter';
 
 export default function DropdownListExamples() {
-	const dropdownListCodeExample = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList 
+	const dropdownListCodeExample = `import { OntarioDropdownList } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList 
   caption="Province/territory"
   name="province-selection"
   elementId="province-territory"
@@ -66,7 +66,7 @@ export default function DropdownListExamples() {
 >
 </OntarioDropdownList>`;
 
-	const dropdownListCodeExample2 = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList 
+	const dropdownListCodeExample2 = `import { OntarioDropdownList } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList 
   caption={{
 	captionText: "Country",
 	captionType: "default"
@@ -90,7 +90,7 @@ export default function DropdownListExamples() {
 >
 </OntarioDropdownList>`;
 
-	const dropdownListCodeExample3 = `import { OntarioDropdownList } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList 
+	const dropdownListCodeExample3 = `import { OntarioDropdownList } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList 
   caption="Select a language" 
   name="language-select"
   isEmptyStartOption="Select a language"

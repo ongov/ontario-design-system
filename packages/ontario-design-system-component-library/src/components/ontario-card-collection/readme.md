@@ -1,5 +1,5 @@
-import { OntarioCardCollection } from '@ontario-digital-service/ontario-design-system-component-library-react';
-import { OntarioCard } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioCardCollection } from '@ongov/ontario-design-system-component-library-react';
+import { OntarioCard } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-card-collection
 

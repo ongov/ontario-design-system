@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ComponentLibraryModule } from '@ontario-digital-service/ontario-design-system-component-library-angular/dist/component-library';
+import { ComponentLibraryModule } from '@ongov/ontario-design-system-component-library-angular/dist/component-library';
 import { RouterModule } from '@angular/router';
 import { FormValueChangesDirective } from './directives/formValue.directives';
 import { FormsModule } from '@angular/forms';

@@ -1,6 +1,6 @@
 {
-	"name": "@ontario-digital-service/ontario-design-system-component-library",
-	"version": "4.1.0-alpha.4",
+	"name": "@ongov/ontario-design-system-component-library",
+	"version": "4.1.0",
 	"private": false,
 	"description": "Ontario Design System Component Library",
 	"license": "Apache-2.0",
@@ -37,18 +37,17 @@
 		"pretest:e2e": "npm run build:config",
 		"test:e2e": "stencil test --e2e",
 		"pretest:unit": "npm run build:config",
-		"test:unit": "stencil test --spec",
-		"postinstall": "echo 'WARNING: @ontario-digital-service/ontario-design-system-component-library has moved to @ongov/ontario-design-system-component-library. Please update your dependencies to the new namespace.'"
+		"test:unit": "stencil test --spec"
 	},
 	"dependencies": {
-		"@ontario-digital-service/ontario-design-system-global-styles": "4.1.0-alpha.4",
-		"@stencil/core": "^4.1.0",
+		"@ongov/ontario-design-system-global-styles": "4.1.0",
+		"@stencil/core": "^4.12.2",
 		"dotenv": "^16.3.1"
 	},
 	"devDependencies": {
-		"@stencil/angular-output-target": "^0.8.1",
+		"@stencil/angular-output-target": "^0.8.4",
 		"@stencil/react-output-target": "0.5.3",
-		"@stencil/sass": "^2.0.1",
+		"@stencil/sass": "^3.0.9",
 		"@types/jest": "^27.0.3",
 		"@types/node": "^18.14.2",
 		"@types/puppeteer": "^5.4.7",

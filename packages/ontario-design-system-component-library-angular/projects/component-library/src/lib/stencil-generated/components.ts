@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Even
 
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
-import { Components } from '@ontario-digital-service/ontario-design-system-component-library';
+import { Components } from '@ongov/ontario-design-system-component-library';
 
 @ProxyCmp({
 	inputs: ['accordionData', 'expandCollapseButton', 'isOpen', 'language', 'name'],
@@ -227,8 +227,8 @@ export class OntarioCheckboxes {
 	}
 }
 
-import type { RadioAndCheckboxChangeEvent as IOntarioCheckboxesRadioAndCheckboxChangeEvent } from '@ontario-digital-service/ontario-design-system-component-library';
-import type { InputFocusBlurEvent as IOntarioCheckboxesInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+import type { RadioAndCheckboxChangeEvent as IOntarioCheckboxesRadioAndCheckboxChangeEvent } from '@ongov/ontario-design-system-component-library';
+import type { InputFocusBlurEvent as IOntarioCheckboxesInputFocusBlurEvent } from '@ongov/ontario-design-system-component-library';
 
 export declare interface OntarioCheckboxes extends Components.OntarioCheckboxes {
 	/**
@@ -374,8 +374,8 @@ export class OntarioDropdownList {
 	}
 }
 
-import type { InputInteractionEvent as IOntarioDropdownListInputInteractionEvent } from '@ontario-digital-service/ontario-design-system-component-library';
-import type { InputFocusBlurEvent as IOntarioDropdownListInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+import type { InputInteractionEvent as IOntarioDropdownListInputInteractionEvent } from '@ongov/ontario-design-system-component-library';
+import type { InputFocusBlurEvent as IOntarioDropdownListInputFocusBlurEvent } from '@ongov/ontario-design-system-component-library';
 
 export declare interface OntarioDropdownList extends Components.OntarioDropdownList {
 	/**
@@ -2832,9 +2832,9 @@ export class OntarioInput {
 	}
 }
 
-import type { InputInputEvent as IOntarioInputInputInputEvent } from '@ontario-digital-service/ontario-design-system-component-library';
-import type { InputInteractionEvent as IOntarioInputInputInteractionEvent } from '@ontario-digital-service/ontario-design-system-component-library';
-import type { InputFocusBlurEvent as IOntarioInputInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+import type { InputInputEvent as IOntarioInputInputInputEvent } from '@ongov/ontario-design-system-component-library';
+import type { InputInteractionEvent as IOntarioInputInputInteractionEvent } from '@ongov/ontario-design-system-component-library';
+import type { InputFocusBlurEvent as IOntarioInputInputFocusBlurEvent } from '@ongov/ontario-design-system-component-library';
 
 export declare interface OntarioInput extends Components.OntarioInput {
 	/**
@@ -2878,7 +2878,7 @@ export class OntarioLanguageToggle {
 	}
 }
 
-import type { HeaderLanguageToggleEventDetails as IOntarioLanguageToggleHeaderLanguageToggleEventDetails } from '@ontario-digital-service/ontario-design-system-component-library';
+import type { HeaderLanguageToggleEventDetails as IOntarioLanguageToggleHeaderLanguageToggleEventDetails } from '@ongov/ontario-design-system-component-library';
 
 export declare interface OntarioLanguageToggle extends Components.OntarioLanguageToggle {
 	/**
@@ -2972,8 +2972,8 @@ export class OntarioRadioButtons {
 	}
 }
 
-import type { RadioAndCheckboxChangeEvent as IOntarioRadioButtonsRadioAndCheckboxChangeEvent } from '@ontario-digital-service/ontario-design-system-component-library';
-import type { InputFocusBlurEvent as IOntarioRadioButtonsInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+import type { RadioAndCheckboxChangeEvent as IOntarioRadioButtonsRadioAndCheckboxChangeEvent } from '@ongov/ontario-design-system-component-library';
+import type { InputFocusBlurEvent as IOntarioRadioButtonsInputFocusBlurEvent } from '@ongov/ontario-design-system-component-library';
 
 export declare interface OntarioRadioButtons extends Components.OntarioRadioButtons {
 	/**
@@ -3091,9 +3091,9 @@ export class OntarioTextarea {
 	}
 }
 
-import type { InputInputEvent as IOntarioTextareaInputInputEvent } from '@ontario-digital-service/ontario-design-system-component-library';
-import type { InputInteractionEvent as IOntarioTextareaInputInteractionEvent } from '@ontario-digital-service/ontario-design-system-component-library';
-import type { InputFocusBlurEvent as IOntarioTextareaInputFocusBlurEvent } from '@ontario-digital-service/ontario-design-system-component-library';
+import type { InputInputEvent as IOntarioTextareaInputInputEvent } from '@ongov/ontario-design-system-component-library';
+import type { InputInteractionEvent as IOntarioTextareaInputInteractionEvent } from '@ongov/ontario-design-system-component-library';
+import type { InputFocusBlurEvent as IOntarioTextareaInputFocusBlurEvent } from '@ongov/ontario-design-system-component-library';
 
 export declare interface OntarioTextarea extends Components.OntarioTextarea {
 	/**

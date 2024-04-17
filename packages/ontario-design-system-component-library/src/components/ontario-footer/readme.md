@@ -1,4 +1,4 @@
-import { OntarioFooter } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioFooter } from '@ongov/ontario-design-system-component-library-react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # ontario-footer

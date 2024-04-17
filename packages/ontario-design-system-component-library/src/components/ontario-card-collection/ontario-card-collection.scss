@@ -1,8 +1,6 @@
 @use 'sass:math';
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
-	spacing;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables'
-	as breakpoints;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
 
 .ontario-card-collection__container {
 	display: flex;
@@ -18,6 +16,7 @@
 
 	@media screen and (max-width: breakpoints.$medium-breakpoint) {
 		width: calc(50% - 1.25rem);
+
 		&:nth-child(2n) {
 			margin-right: spacing.$spacing-0;
 		}

@@ -1,6 +1,6 @@
 # React Component Library POC
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses the [Ontario Design System React component library](#https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-component-library-react) package.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses the [Ontario Design System React component library](#https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-react) package.
 
 The purpose of this project is to test the React web components library functionality and styles. It is loosely based off of the [Ontario Design System guidance site](#https://designsystem.ontario.ca/), with more of a focus on the web components, their properties and how they work. It is not meant to be treated as official documentation for the web components or their libraries.
 

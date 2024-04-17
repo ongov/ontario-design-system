@@ -1,6 +1,6 @@
 {
-	"name": "@ontario-digital-service/ontario-design-system-global-styles",
-	"version": "4.1.0-alpha.4",
+	"name": "@ongov/ontario-design-system-global-styles",
+	"version": "4.1.0",
 	"private": false,
 	"description": "Includes the Ontario Design System global styles that are used for more generic elements and layouts, as well as fonts and favicon files.",
 	"license": "Apache-2.0",
@@ -16,8 +16,7 @@
 		"clean": "rm -rf dist",
 		"clean:full": "rm -rf node_modules && npm run clean",
 		"scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js --watch scss -o css",
-		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: Global Styles\n---\n\" -df ../app-web-components-documentation/docs/05-readme-global-styles.md",
-		"postinstall": "echo 'WARNING: @ontario-digital-service/ontario-design-system-complete-styles has moved to @ongov/ontario-design-system-complete-styles. Please update your dependencies to the new namespace.'"
+		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: Global Styles\n---\n\" -df ../app-web-components-documentation/docs/05-readme-global-styles.md"
 	},
 	"devDependencies": {
 		"del": "^7.0.0",
@@ -28,7 +27,7 @@
 		"gulp-if": "^3.0.0",
 		"gulp-sass": "^5.1.0",
 		"sass": "^1.56.2",
-		"@ontario-digital-service/ontario-design-system-design-tokens": "4.1.0-alpha.4"
+		"@ongov/ontario-design-system-design-tokens": "4.1.0"
 	},
 	"publishConfig": {
 		"access": "public"

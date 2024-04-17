@@ -1,11 +1,5 @@
 # Ontario Design System Complete Style
 
-> **Package moved to `@ongov` namespace**
->
-> This npm package has moved to a new namespace, the `@ontario-digital-service/ontario-design-system-complete-styles` has moved to [`@ongov/ontario-design-system-complete-styles`](https://www.npmjs.com/package/@ongov/ontario-design-system-complete-styles). Package names are not changing - just the namespace.
->
-> Please make sure to update your projects to the new versions of the packages under `@ongov` so you will continue to receive updates. Packages under `@ontario-digital-service` will no longer be updated.
-
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
 - [Known issues](#known-issues)
@@ -15,14 +9,14 @@
 
 The Ontario Design System complete styles package can be used in place of the Ontario Design System component library packages if there is a need to still support HTML components from the [Ontario Design System distribution package](https://designsystem.ontario.ca/docs/documentation/for-developers/getting-started.html#about-the-distribution-package). This can be helpful for a SPA project that is transitioning to supporting the web components packages, or still needs to support HTML components but will utilize npm to control the styles.
 
-The complete styles package includes the [Ontario Design System global styles](https://www.npmjs.com/package/@ontario-digital-service/ontario-design-system-global-styles), along with component styles, assets, fonts, favicons and scripts that will provide all the necessary styles and functionality of the Ontario Design System.
+The complete styles package includes the [Ontario Design System global styles](https://www.npmjs.com/package/@ongov/ontario-design-system-global-styles), along with component styles, assets, fonts, favicons and scripts that will provide all the necessary styles and functionality of the Ontario Design System.
 
 ## Installation and usage
 
 To install the Ontario Design System complete styles package, run the following command:
 
 ```bash
-npm install --save @ontario-digital-service/ontario-design-system-complete-styles
+npm install --save @ongov/ontario-design-system-complete-styles
 ```
 
 ### How to use this package
@@ -48,23 +42,23 @@ You may want to move the assets mentioned above into your project so that they a
 This can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package, which can be used with any operating system:
 
 ```bash
-copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/assets/**\" public/assets
+copyfiles -E -f \"node_modules/@ongov/ontario-design-system-complete-styles/dist/assets/**\" public/assets
 
-copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/favicons/**\" public/favicons
+copyfiles -E -f \"node_modules/@ongov/ontario-design-system-complete-styles/dist/favicons/**\" public/favicons
 
-copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/fonts/**\" public/fonts
+copyfiles -E -f \"node_modules/@ongov/ontario-design-system-complete-styles/dist/fonts/**\" public/fonts
 
-copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/scripts/**\" public/scripts
+copyfiles -E -f \"node_modules/@ongov/ontario-design-system-complete-styles/dist/scripts/**\" public/scripts
 ```
 
 Another way is to add scripts to copy the assets in your `package.json` file. For example:
 
 ```json
 "prebuild": "npm run copy:assets",
-"copy:images": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/assets/**\" public/assets",
-"copy:favicons": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/favicons/**\" public/favicons",
-"copy:fonts": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/fonts/**\" public/fonts",
-"copy:scripts": "copyfiles -E -f \"node_modules/@ontario-digital-service/ontario-design-system-complete-styles/dist/scripts/**\" public/scripts",
+"copy:images": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-complete-styles/dist/assets/**\" public/assets",
+"copy:favicons": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-complete-styles/dist/favicons/**\" public/favicons",
+"copy:fonts": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-complete-styles/dist/fonts/**\" public/fonts",
+"copy:scripts": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-complete-styles/dist/scripts/**\" public/scripts",
 "copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts && npm run copy:scripts"
 ```
 

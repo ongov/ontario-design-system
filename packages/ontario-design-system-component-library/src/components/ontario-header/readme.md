@@ -1,4 +1,4 @@
-import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioHeader } from '@ongov/ontario-design-system-component-library-react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # ontario-header

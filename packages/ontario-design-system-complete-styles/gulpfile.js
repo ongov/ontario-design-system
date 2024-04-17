@@ -20,8 +20,8 @@ const srcDir = './src';
 const styleDir = './src/styles';
 const fontsDir = ['./src/fonts/**'];
 const componentsDirPath = './src/styles/components';
-const dsGlobalStylesPackageDir = 'node_modules/@ontario-digital-service/ontario-design-system-global-styles';
-const dsComponentPackageDir = 'node_modules/@ontario-digital-service/ontario-design-system-component-library';
+const dsGlobalStylesPackageDir = 'node_modules/@ongov/ontario-design-system-global-styles';
+const dsComponentPackageDir = 'node_modules/@ongov/ontario-design-system-component-library';
 
 /**
  * @param {{
