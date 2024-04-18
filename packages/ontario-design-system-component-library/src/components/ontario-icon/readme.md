@@ -1,6 +1,6 @@
-import { OntarioIconAccessibility } from '@ontario-digital-service/ontario-design-system-component-library-react';
-import { OntarioIconBookmarkOff } from '@ontario-digital-service/ontario-design-system-component-library-react';
-import { OntarioIconBookmarkOn } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioIconAccessibility } from '@ongov/ontario-design-system-component-library-react';
+import { OntarioIconBookmarkOff } from '@ongov/ontario-design-system-component-library-react';
+import { OntarioIconBookmarkOn } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-icon
 

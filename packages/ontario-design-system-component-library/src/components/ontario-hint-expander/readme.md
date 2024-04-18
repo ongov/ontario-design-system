@@ -1,4 +1,4 @@
-import { OntarioHintExpander } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioHintExpander } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-hint-expander
 

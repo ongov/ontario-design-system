@@ -1,4 +1,4 @@
-import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
+import { Component, Prop, Element, h, Watch, State, AttachInternals } from '@stencil/core';
 
 import { Button } from './button.interface';
 import { ButtonType, ButtonTypes, HtmlType, HtmlTypes } from './ontario-button.types';
@@ -10,9 +10,11 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 	tag: 'ontario-button',
 	styleUrl: 'ontario-button.scss',
 	shadow: true,
+	formAssociated: true,
 })
 export class OntarioButton implements Button {
 	@Element() host: HTMLElement;
+	@AttachInternals() internals: ElementInternals;
 
 	/**
 	 * The type of button to render.
@@ -66,6 +68,11 @@ export class OntarioButton implements Button {
 	@State() private htmlTypeState: string;
 
 	@State() private labelState: string;
+
+	/**
+	 * A reference to the internal button element.
+	 */
+	private buttonRef: HTMLButtonElement;
 
 	/*
 	 * Watch for changes to the `label` property for validation purposes.
@@ -187,10 +194,8 @@ export class OntarioButton implements Button {
 		this.ariaLabelText = this.ariaLabelText ?? this.labelState;
 	}
 
-	/**
-	 * This helper is used to help load translations for any slots + text content passed in by the user.
-	 */
 	componentDidLoad() {
+		// Used to help load translations for any slots + text content passed in by the user.
 		const observer = new MutationObserver((mutations) => {
 			mutations.forEach((mutation) => {
 				if (mutation.type === 'attributes') {
@@ -201,11 +206,24 @@ export class OntarioButton implements Button {
 
 		const options = { attributes: true };
 		observer.observe(this.host, options);
+
+		// Add a click event listener to handle submitting a form
+		if (this.htmlTypeState === 'submit') {
+			const { form } = this.internals;
+			// Based off a comment within this bug about preventDefault(): https://bugzilla.mozilla.org/show_bug.cgi?id=1370630
+			this.buttonRef.addEventListener('click', () => form?.dispatchEvent(new Event('submit', { cancelable: true })));
+		}
 	}
 
 	render() {
 		return (
-			<button type={this.htmlTypeState} class={this.getClass()} aria-label={this.ariaLabelText} id={this.getId()}>
+			<button
+				ref={(el) => (this.buttonRef = el as HTMLButtonElement)}
+				type={this.htmlTypeState}
+				class={this.getClass()}
+				aria-label={this.ariaLabelText}
+				id={this.getId()}
+			>
 				{this.labelState}
 			</button>
 		);

@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Event, EventEmitter, Listen, State, Watch } from '@stencil/core';
+import { Component, h, Prop, Element, Event, EventEmitter, Listen, State, Watch, AttachInternals } from '@stencil/core';
 
 import { Input } from '../../utils/common/input/input';
 import { CheckboxOption } from './checkbox-option.interface';
@@ -29,9 +29,11 @@ import { default as translations } from '../../translations/global.i18n.json';
 	tag: 'ontario-checkboxes',
 	styleUrl: 'ontario-checkboxes.scss',
 	shadow: true,
+	formAssociated: true,
 })
 export class OntarioCheckboxes implements Checkboxes {
 	@Element() element: HTMLElement;
+	@AttachInternals() internals: ElementInternals;
 
 	hintTextRef: HTMLOntarioHintTextElement | undefined;
 
@@ -330,6 +332,20 @@ export class OntarioCheckboxes implements Checkboxes {
 		if (input) {
 			input.checked = input.checked ?? '';
 		}
+
+		// Update internalOptions checked state
+		const changedOption = this.internalOptions.find((x) => x.value === input?.value);
+		if (changedOption) changedOption.checked = !changedOption?.checked;
+
+		// Set the value within the form
+		this.internals?.setFormValue?.(
+			this.internalOptions
+				.filter((x) => !!x.checked)
+				.reduce((formData, currentValue) => {
+					formData.append(this.name, currentValue.value);
+					return formData;
+				}, new FormData()),
+		);
 
 		handleInputEvent(
 			event,

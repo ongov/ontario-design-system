@@ -1,10 +1,10 @@
 import React from 'react';
-import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioHeader } from '@ongov/ontario-design-system-component-library-react';
 
 import CodeHighlighter from '../../components/code-highlighter';
 
 export default function HeaderOntarioExample() {
-	const ontarioHeaderCodeExample = `import { OntarioHeader } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n<OntarioHeader
+	const ontarioHeaderCodeExample = `import { OntarioHeader } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioHeader
 	type="ontario"
 	languageToggleOptions={{
 		englishLink: "/en",

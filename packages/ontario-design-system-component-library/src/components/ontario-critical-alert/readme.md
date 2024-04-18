@@ -1,4 +1,4 @@
-import { OntarioCriticalAlert } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioCriticalAlert } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-critical-alert
 

@@ -1,6 +1,6 @@
-import { OntarioRadioButtons } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioRadioButtons } from '@ongov/ontario-design-system-component-library-react';
 
-# ontario-radio-button
+# ontario-radio-buttons
 
 Use radio buttons when you want the user to select only one option from a list.
 
@@ -150,20 +150,58 @@ Example of a radio button component with multiple options, a hint text and hint 
 	</OntarioRadioButtons>
 </div>
 
+### Forms
+
+The `ontario-radio-buttons` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as a a group of `<input type="radio">` elements.
+
+```html
+<form>
+	<!-- Add ontario-radio-buttons -->
+	<ontario-radio-buttons
+		name="radio-buttons-1"
+		caption="Radio buttons"
+		options='[
+			{
+				"value": "radio-option-1",
+				"elementId": "radio-1",
+				"label": "Radio option 1 label",
+			},
+			{
+				"value": "radio-option-2",
+				"elementId": "radio-2",
+				"label": "Radio option 2 label"
+			},
+
+			{
+				"value": "radio-option-3",
+				"elementId": "radio-3",
+				"label": "Radio option 3 label"
+			}
+		]'
+	>
+	</ontario-radio-buttons>
+
+	<!-- Submit the form with a submit button -->
+	<ontario-button type="primary" html-type="submit">Submit</ontario-button>
+</form>
+```
+
+Remember to set the `name` attribute as this is used to identify the field when submitting the form.
+
 ## Custom property types
 
 ### caption
 
-The `caption` property is used to render the legend for the ontario-radio-buttons. It can be passed either a string or an object. If no `captionType` needs to be specified, it can be passed as a string.
+The `caption` property is used to render the legend for the `ontario-radio-buttons`. It can be passed either a string or an object. If no `captionType` needs to be specified, it can be passed as a string.
 
 ```html
 caption='{ "captionText": "Radio button legend", "captionType": "default" }'
 ```
 
-| **Property name** | **Type**                           | **Description**                                                                                                                                          |
-| ----------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `captionText`     | `string`                           | Text to display as the radio button question                                                                                                             |
-| `captionType`     | `"default" \| "large"\| "heading"` | The type of legend to display for the radio button question. This is optional, and if no information is provided, it will default to the `default` type. |
+| Property name | Type                               | Description                                                                                                                                              |
+| ------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `captionText` | `string`                           | Text to display as the radio button question                                                                                                             |
+| `captionType` | `"default" \| "large"\| "heading"` | The type of legend to display for the radio button question. This is optional, and if no information is provided, it will default to the `default` type. |
 
 ### hintExpander
 
@@ -174,19 +212,19 @@ hintExpander='{ "hint": "This is the hint expander title", "content": "This is t
 visible when the hint expander title (hint) is toggled" }'
 ```
 
-| **Property name** | **Type** | **Description**                                                                                                 |
-| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------- |
-| `hint`            | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content |
-| `content`         | `string` | Text to display as the content of the hint expander                                                             |
+| Property name | Type     | Description                                                                                                     |
+| ------------- | -------- | --------------------------------------------------------------------------------------------------------------- |
+| `hint`        | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content |
+| `content`     | `string` | Text to display as the content of the hint expander                                                             |
 
 ### options
 
-| **Property name** | **Type**       | **Description**                                                                                                                                                                   |
-| ----------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `value`           | `string`       | Text to defines the value associated with the radio button (this is also the value that is sent on submit)                                                                        |
-| `label`           | `string`       | Text to display as the label of the individual radio option                                                                                                                       |
-| `elementId`       | `string`       | Text used as the ID for the radio button option. This is used to establish a relationship between radio button labels and the radio input. It must be unique to the radio option. |
-| `hintExpander`    | `hintExpander` | An optional hint expander to display for the individual radio button option. Information on `hintExpander` properties can be found in the custom property above                   |
+| Property name  | Type           | Description                                                                                                                                                                       |
+| -------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`        | `string`       | Text to defines the value associated with the radio button (this is also the value that is sent on submit)                                                                        |
+| `label`        | `string`       | Text to display as the label of the individual radio option                                                                                                                       |
+| `elementId`    | `string`       | Text used as the ID for the radio button option. This is used to establish a relationship between radio button labels and the radio input. It must be unique to the radio option. |
+| `hintExpander` | `hintExpander` | An optional hint expander to display for the individual radio button option. Information on `hintExpander` properties can be found in the custom property above                   |
 
 ## Accessibility
 

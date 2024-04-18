@@ -1,10 +1,10 @@
 import React from 'react';
-import { OntarioHintExpander } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioHintExpander } from '@ongov/ontario-design-system-component-library-react';
 
 import CodeHighlighter from '../../components/code-highlighter';
 
 export default function HintExpander() {
-	const hintExpanderCodeExample = `import { OntarioButton } from '@ontario-digital-service/ontario-design-system-component-library-react'; \n\n
+	const hintExpanderCodeExample = `import { OntarioButton } from '@ongov/ontario-design-system-component-library-react'; \n\n
 <OntarioHintExpander
 	hint="Example hint expander hint text"
 	content="Example hint expander hint content"

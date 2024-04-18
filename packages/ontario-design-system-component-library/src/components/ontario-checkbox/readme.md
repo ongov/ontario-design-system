@@ -1,4 +1,4 @@
-import { OntarioCheckboxes } from '@ontario-digital-service/ontario-design-system-component-library-react';
+import { OntarioCheckboxes } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-checkboxes
 
@@ -114,6 +114,39 @@ Example of a checkbox component with multiple options, a hint text and hint expa
   ></OntarioCheckboxes>
 </div>
 
+### Forms
+
+The `ontario-checkboxes` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as a a group of `<input type="checkbox">` elements.
+
+```html
+<form>
+	<!-- Add ontario-checkboxes -->
+	<ontario-checkboxes
+		caption="Checkboxes"
+		name="checkboxes-1"
+		required
+		options='[
+      {
+        "value": "checkbox-option-1",
+        "label": "Checkbox option 1 label",
+        "elementId": "checkbox-1"
+      },
+      {
+        "value": "checkbox-option-2",
+        "label": "Checkbox option 2 label",
+        "elementId": "checkbox-2"
+      }
+    ]'
+	>
+	</ontario-checkboxes>
+
+	<!-- Submit the form with a submit button -->
+	<ontario-button type="primary" html-type="submit">Submit</ontario-button>
+</form>
+```
+
+Remember to set the `name` attribute as this is used to identify the field when submitting the form.
+
 ## Custom property types
 
 ### caption
@@ -124,10 +157,10 @@ The `caption` property is used to render the legend for the ontario-checkbox. It
 caption='{ "captionText": "Checkbox legend", "captionType": "large" }'
 ```
 
-| **Property name** | **Type**                           | **Description**                                                                                                                                      |
-| ----------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `captionText`     | `string`                           | Text to display as the checkbox question                                                                                                             |
-| `captionType`     | `"default" \| "large"\| "heading"` | The type of legend to display for the checkbox question. This is optional, and if no information is provided, it will default to the `default` type. |
+| Property name | Type                               | Description                                                                                                                                          |
+| ------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `captionText` | `string`                           | Text to display as the checkbox question                                                                                                             |
+| `captionType` | `"default" \| "large"\| "heading"` | The type of legend to display for the checkbox question. This is optional, and if no information is provided, it will default to the `default` type. |
 
 ### hintExpander
 
@@ -138,10 +171,10 @@ hintExpander='{ "hint": "This is the hint expander title", "content": "This is t
 visible when the hint expander title (hint) is toggled" }'
 ```
 
-| **Property name** | **Type** | **Description**                                                                                                 |
-| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------- |
-| `hint`            | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content |
-| `content`         | `string` | Text to display as the content of the hint expander                                                             |
+| Property name | Type     | Description                                                                                                     |
+| ------------- | -------- | --------------------------------------------------------------------------------------------------------------- |
+| `hint`        | `string` | Text to display as the hint expander label/title. When toggled, it will display/hide the `hintExpander` content |
+| `content`     | `string` | Text to display as the content of the hint expander                                                             |
 
 ### options
 
@@ -153,12 +186,12 @@ options='[ { "value": "checkbox-option-1", "label": "Checkbox option 1 label", "
 expander for checkbox option 2", "content": "Example hint expander content for checkbox option 2" } }, ]'
 ```
 
-| **Property name** | **Type**       | **Description**                                                                                                                                             |
-| ----------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `value`           | `string`       | Text to defines the value associated with the input (this is also the value that is sent on submit)                                                         |
-| `label`           | `string`       | Text to display as the label of the individual checkbox option                                                                                              |
-| `elementId`       | `string`       | Text used to establish a relationship between checkbox option label and the checkbox option input. This ID must be unique to the checkbox option.           |
-| `hintExpander`    | `hintExpander` | An optional hint expander to display for the individual checkbox option. Information on `hintExpander` properties can be found in the custom property above |
+| Property name  | Type           | Description                                                                                                                                                 |
+| -------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`        | `string`       | Text to defines the value associated with the input (this is also the value that is sent on submit)                                                         |
+| `label`        | `string`       | Text to display as the label of the individual checkbox option                                                                                              |
+| `elementId`    | `string`       | Text used to establish a relationship between checkbox option label and the checkbox option input. This ID must be unique to the checkbox option.           |
+| `hintExpander` | `hintExpander` | An optional hint expander to display for the individual checkbox option. Information on `hintExpander` properties can be found in the custom property above |
 
 ## Accessibility
 

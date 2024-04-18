@@ -1,18 +1,13 @@
 @use 'sass:math';
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as
-	globalVariables;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as
-	spacing;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as
-	colours;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables'
-	as breakpoints;
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as
-	zIndex;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
 
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/6-components/_form.component.scss';
-@use '@ontario-digital-service/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_form.component.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
 
 $ontario-checkboxes-size: 28px;
 $ontario-checkboxes-size-mobile: 32px;
@@ -30,9 +25,11 @@ $ontario-checkbox-box-shadow-outline: 4px;
 	padding: 0 0 0 spacing.$spacing-6;
 	min-height: $ontario-checkboxes-size;
 	box-sizing: content-box;
+
 	&:last-of-type {
 		margin: 0;
 	}
+
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		padding: 0 0 0 spacing.$spacing-7;
 		min-height: $ontario-checkboxes-size-mobile;
@@ -107,6 +104,7 @@ $ontario-checkbox-box-shadow-outline: 4px;
 		bottom: 0;
 		opacity: 0;
 		display: block;
+
 		@media screen and (max-width: breakpoints.$small-breakpoint) {
 			height: $ontario-checkboxes-size-mobile + $ontario-checkbox-border-size;
 			width: $ontario-checkboxes-size-mobile + $ontario-checkbox-border-size;
