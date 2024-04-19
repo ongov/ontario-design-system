@@ -32,6 +32,10 @@
 		"contactUs": {
 			"text": "Contactez-nous",
 			"link": "https://www.ontario.ca/fr/commentaires/pour-nous-joindre?id=7471&nid=7583"
+		},
+		"printerLink": {
+			"text": "© Imprimeur du Roi pour l’Ontario",
+			"link": "https://www.ontario.ca/fr/commentaires/pour-nous-joindre?id=7471&nid=7583"
 		}
 	},
 	"homepage": {
