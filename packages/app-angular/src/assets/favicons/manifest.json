@@ -1,7 +1,7 @@
 {
-	"name": "Application name",
-	"short_name": "App name",
-	"description": "Application description",
+	"name": "Angular proof of concept",
+	"short_name": "Angular POC",
+	"description": "An Angular POC to test the Ontario Design System Web Components",
 	"icons": [
 		{
 			"src": "./favicon-192x192.png",
