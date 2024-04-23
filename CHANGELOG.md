@@ -1,3 +1,43 @@
+# 4.2.0 (2024-04-18)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library:** adds background-colour and border-radius for cards d8a9b8a
+- **@ongov/ontario-design-system-component-library:** changed-header-width-to-match-card 1733743
+- **@ongov/ontario-design-system-component-library:** fixed typo d2113a7
+- **@ongov/ontario-design-system-global-styles:** updated global styles to include edge case for columns 3ee2e29
+- **ontario-footer:** add assetBasePath to allow custom asset paths 414a83e
+
+### Features
+
+- **@ongov/ontario-design-system-complete-styles, @ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library, @ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** adds note about changes to package namespace in README files d068527
+- **@ongov/ontario-design-system-complete-styles, @ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library, @ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** update the namespaces across the entire repo 26a6b77
+- **@ongov/ontario-design-system-complete-styles, @ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library, @ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** update the namespaces across the entire repo 75811a2
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** updated sass files to reference new namespace e287af4
+- **@ongov/ontario-design-system-component-library:** add native form support to the form elements 0de149f
+- **@ongov/ontario-design-system-global-styles:** fix multi comlumn list layout issue 3488a4c
+- **component-library:** upgrade to Stencil 4.12.2 3d0da0f
+
+# 4.2.0-alpha.1 (2024-04-17)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library:** adds background-colour and border-radius for cards d8a9b8a
+- **@ongov/ontario-design-system-component-library:** changed-header-width-to-match-card 1733743
+- **@ongov/ontario-design-system-component-library:** fixed typo d2113a7
+- **@ongov/ontario-design-system-global-styles:** updated global styles to include edge case for columns 3ee2e29
+- **ontario-footer:** add assetBasePath to allow custom asset paths 414a83e
+
+### Features
+
+- **@ongov/ontario-design-system-complete-styles, @ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library, @ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** adds note about changes to package namespace in README files d068527
+- **@ongov/ontario-design-system-complete-styles, @ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library, @ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** update the namespaces across the entire repo 26a6b77
+- **@ongov/ontario-design-system-complete-styles, @ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library, @ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** update the namespaces across the entire repo 75811a2
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** updated sass files to reference new namespace e287af4
+- **@ongov/ontario-design-system-component-library:** add native form support to the form elements 0de149f
+- **@ongov/ontario-design-system-global-styles:** fix multi comlumn list layout issue 3488a4c
+- **component-library:** upgrade to Stencil 4.12.2 3d0da0f
+
 # 4.1.0 (2024-04-09)
 
 ### Bug Fixes
