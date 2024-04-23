@@ -1,4 +1,4 @@
-import { FunctionalComponent, h, getAssetPath } from '@stencil/core';
+import { FunctionalComponent, h } from '@stencil/core';
 import { SimpleFooter } from './simple-footer';
 import { SimpleFooterLinks } from '../ontario-footer-interface';
 

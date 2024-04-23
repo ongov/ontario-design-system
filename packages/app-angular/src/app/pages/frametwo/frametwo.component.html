@@ -27,8 +27,11 @@
 				[(ngModel)]="formData.pin"
 			>
 			</ontario-input>
+			<ontario-button
+				type="primary"
+				label="{{ 'form.buttons.next' | translate }}"
+				[routerLink]="getRoute()"
+			></ontario-button>
 		</ontario-fieldset>
 	</form>
 </div>
-
-<ontario-button type="primary" label="{{ 'form.buttons.next' | translate }}" [routerLink]="getRoute()"></ontario-button>

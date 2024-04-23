@@ -1,25 +1,23 @@
-<div class="ontario-margin-bottom-80-!">
-	<!-- Loading indicator active -->
-	<div *ngIf="isLoading" style="height: 100vh">
-		<ontario-loading-indicator [isLoading]="isLoading" language="{{ lang }}"></ontario-loading-indicator>
-	</div>
+<!-- Loading indicator active -->
+<div *ngIf="isLoading" style="height: 100vh">
+	<ontario-loading-indicator [isLoading]="isLoading" language="{{ lang }}"></ontario-loading-indicator>
+</div>
 
-	<!-- Loading indicator inactive -->
-	<div *ngIf="!isLoading">
-		<h1 class="ontario-show-for-sr" aria-live="polite" role="alert">{{ 'successPage.callout.heading' | translate }}</h1>
-		<ontario-page-alert type="success" heading="{{ 'successPage.callout.heading' | translate }}">
-			<span innerHTML="{{ 'successPage.callout.content' | translate }}"></span>
-		</ontario-page-alert>
-		<p>
-			{{ 'successPage.returnLine' | translate }}
-			<a [routerLink]="getRoute().login">{{ 'successPage.returnLineLink' | translate }}</a
-			>.
-		</p>
+<!-- Loading indicator inactive -->
+<div *ngIf="!isLoading">
+	<h1 class="ontario-show-for-sr" aria-live="polite" role="alert">{{ 'successPage.callout.heading' | translate }}</h1>
+	<ontario-page-alert type="success" heading="{{ 'successPage.callout.heading' | translate }}">
+		<span innerHTML="{{ 'successPage.callout.content' | translate }}"></span>
+	</ontario-page-alert>
+	<p>
+		{{ 'successPage.returnLine' | translate }}
+		<a [routerLink]="getRoute().login">{{ 'successPage.returnLineLink' | translate }}</a
+		>.
+	</p>
 
-		<ontario-button
-			type="primary"
-			label="{{ 'form.buttons.createAnotherAccount' | translate }}"
-			[routerLink]="getRoute().createAccount"
-		></ontario-button>
-	</div>
+	<ontario-button
+		type="primary"
+		label="{{ 'form.buttons.createAnotherAccount' | translate }}"
+		[routerLink]="getRoute().createAccount"
+	></ontario-button>
 </div>

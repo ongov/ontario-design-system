@@ -16,7 +16,10 @@
 			[options]="generateRadioOptions()"
 		>
 		</ontario-radio-buttons>
+		<ontario-button
+			type="primary"
+			label="{{ 'form.buttons.next' | translate }}"
+			[routerLink]="getRoute()"
+		></ontario-button>
 	</ontario-fieldset>
 </div>
-
-<ontario-button type="primary" label="{{ 'form.buttons.next' | translate }}" [routerLink]="getRoute()"></ontario-button>
