@@ -21,6 +21,14 @@
 		}
 	},
 	"footer": {
+		"accessibility": {
+			"text": "Accessibility",
+			"link": "https://www.ontario.ca/page/accessibility"
+		},
+		"confidentiality": {
+			"text": "Confidentiality",
+			"link": "https://www.ontario.ca/page/privacy-statement"
+		},
 		"contactUs": {
 			"text": "Contact us",
 			"link": "https://www.ontario.ca/feedback/contact-us"
@@ -160,7 +168,7 @@
 			},
 			"additionalDetails": {
 				"label": "Enter additional details",
-				"hint": "Do not include personal or financial information like your Social Insurance number or credit card details."
+				"hint": "Do not include personal or financial information like your Social Insurance Number or credit card details."
 			}
 		},
 		"buttons": {
@@ -171,10 +179,10 @@
 	},
 	"successPage": {
 		"callout": {
-			"heading": "Your account creation was succesful!",
+			"heading": "Your account creation was successful!",
 			"content": "<p>Account reference number: <b>840-221.</b></p><p>Please look out for an email confirmation with your account username.</p>"
 		},
 		"returnLine": "You can now return to the",
-		"returnLineLink": "log in page"
+		"returnLineLink": "home page"
 	}
 }
