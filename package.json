@@ -6,6 +6,7 @@
 		"bootstrap": "lerna bootstrap",
 		"build-docs": "lerna run --scope ds-web-component-docs build",
 		"build-libs": "lerna run --scope @ongov/ontario-design-system* build",
+		"build-angular-app": "lerna run --scope app-angular build",
 		"clean": "lerna run clean",
 		"clean:full": "lerna run clean:full",
 		"format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
