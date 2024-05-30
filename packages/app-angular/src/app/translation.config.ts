@@ -8,5 +8,5 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 export function isAngularPOCEnvironment() {
-	return environment.translationPath.includes('/angularpoc/');
+	return environment.translationPath.includes('/form-demo-angular/');
 }

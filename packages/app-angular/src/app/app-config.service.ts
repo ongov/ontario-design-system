@@ -4,5 +4,5 @@ import { Injectable } from '@angular/core';
 	providedIn: 'root',
 })
 export class AppConfigService {
-	public baseUrlSegment = '/angularpoc';
+	public baseUrlSegment = '/form-demo-angular';
 }

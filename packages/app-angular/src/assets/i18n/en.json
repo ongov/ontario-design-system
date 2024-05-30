@@ -14,7 +14,7 @@
 		"/fr/creation-de-compte": "/account-creation"
 	},
 	"header": {
-		"appName": "Angular proof of concept",
+		"appName": "Ontario Design System Angular demo",
 		"menuItems": {
 			"home": "Home",
 			"register": "Register"
