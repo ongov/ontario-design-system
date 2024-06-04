@@ -1,0 +1,49 @@
+# Environment Vars: Can't be passed to `with` statements: https://github.com/orgs/community/discussions/26671
+
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: ['master', 'alpha', 'beta']
+  pull_request: # Trigger on pull request events
+
+# TODO
+# Look into caching NPM packages - https://github.com/actions/cache/blob/main/examples.md#node---npm
+
+jobs:
+  test: # Job defined in a separate file (test.yml)
+    needs: []
+    uses: ./.github/workflows/test.yml
+    with:
+      node-version: 20
+
+  build: # Job defined in a separate file (build.yml)
+    needs: ['test'] # No dependencies on other jobs
+    uses: ./.github/workflows/build.yml # Path to the reusable workflow file
+    with:
+      node-version: 20
+      build-artifacts-name: 'build-artifacts'
+
+  # app-docs
+  app-docs: # Job defined in a separate file (publish.yml)
+    needs: ['build'] # No dependencies on other jobs
+    uses: ./.github/workflows/app-docs.yml # Path to the reusable workflow file
+    with:
+      node-version: 20
+      build-artifacts-name: ${{ needs.build.outputs.build-artefacts-name }}
+    secrets: inherit
+
+  # app-angular (Coming soon)
+
+  publish-packages: # Job defined in a separate file (publish.yml)
+    needs: ['build'] # No dependencies on other jobs
+    uses: ./.github/workflows/publish-packages.yml # Path to the reusable workflow file
+    if: ${{ github.ref == 'refs/heads/master' && github.ref == 'refs/heads/alpha' && github.ref == 'refs/heads/beta' }}
+    with:
+      node-version: 20
+      build-artifacts-name: ${{ needs.build.outputs.build-artefacts-name }}
+    secrets: inherit
+# Flow
+# build --> publish
+#       |-> build-docs ----> publish
+#       |-> build-angular -> publish

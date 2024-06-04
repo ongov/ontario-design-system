@@ -1,0 +1,52 @@
+# Notes
+# - Look into node_module caching between steps
+
+name: Test
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: true
+        type: number
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repo
+      - uses: actions/checkout@v4
+
+      # Setup Node.js
+      - name: Use Node.js ${{ inputs.node-version }} # Pass this in as a parameter
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      # Perhaps the next two steps can be performed before this workflow is triggered
+      # Install node_modules
+      - name: Install base node_modules
+        run: npm ci
+
+      # Install node_modules in all packages
+      - name: Initialise all package node_modules
+        run: npm run bootstrap
+
+      # Run unit tests
+      - name: Run Unit Tests
+        run: npm run test:unit
+
+      # Return test report to GitHub - does this work?
+      # - name: Download build artifacts
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: build-artifacts # Artifact name (must match upload name)
+      #     path: ./dist
+
+      # - name: Use downloaded artifacts
+      #   run: |
+      #     # Access downloaded artifacts in the workspace at `/github/workflow/`
+      #     # You can use them in your test scripts here (e.g., copy, unpack, etc.)
+      #     cp -r /github/workflow/build-artifacts/ .
