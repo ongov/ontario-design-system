@@ -19,6 +19,7 @@ import {
 import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
+import { ErrorMessage } from '../../utils/components/error-message/error-message';
 
 @Component({
 	tag: 'ontario-textarea',
@@ -106,6 +107,11 @@ export class OntarioTextarea implements Input {
 	@Prop({ mutable: true }) language?: Language;
 
 	/**
+	 * Set this to display an error message
+	 */
+	@Prop({ mutable: true }) errorMessage?: string;
+
+	/**
 	 * Used to add a custom function to the textarea onInput event.
 	 */
 	@Prop() customOnInput?: (event: globalThis.Event) => void;
@@ -164,6 +170,11 @@ export class OntarioTextarea implements Input {
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
 	@Event() inputOnFocus: EventEmitter<InputFocusBlurEvent>;
+
+	/**
+	 * Emitted when an error message is reported to the component.
+	 */
+	@Event() inputErrorOccurred: EventEmitter<{ inputId: string; errorMessage: string }>;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the textarea component loads.
@@ -253,6 +264,12 @@ export class OntarioTextarea implements Input {
 		this.updateCaptionState(this.caption);
 	}
 
+	@Watch('errorMessage')
+	broadcastInputErrorOccurredEvent() {
+		// Emit event to notify anyone who wants to listen for errors occurring
+		this.inputErrorOccurred.emit({ inputId: this.getId(), errorMessage: this.errorMessage ?? '' });
+	}
+
 	/**
 	 * Function to handle textarea events and the information pertaining to the textarea to emit.
 	 */
@@ -307,8 +324,9 @@ export class OntarioTextarea implements Input {
 	}
 
 	render() {
+		const error = !!this.errorMessage;
 		return (
-			<div class="ontario-form-group">
+			<div class={`ontario-form-group ${error ? 'ontario-textarea--error' : ''}`}>
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.internalHintText && (
 					<ontario-hint-text
@@ -317,6 +335,7 @@ export class OntarioTextarea implements Input {
 						ref={(el) => (this.hintTextRef = el)}
 					></ontario-hint-text>
 				)}
+				<ErrorMessage message={this.errorMessage} error={error} />
 				<textarea
 					aria-describedby={this.hintTextId}
 					class={this.getClass()}

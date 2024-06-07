@@ -8,7 +8,6 @@ describe('ontario-textarea', () => {
 				components: [OntarioTextarea],
 				html: `<ontario-textarea name="ontario-textarea" element-id="ontario-textarea" caption='{"captionText": "Ontario Textarea"}'></ontario-textarea>`,
 			});
-
 			expect(page.root).toMatchSnapshot();
 		});
 	});
@@ -29,6 +28,10 @@ describe('ontario-textarea', () => {
 									(optional)
 								</span>
 							</label>
+							<div class="ontario-error-messaging ontario-error__hidden" role="alert">
+								<ontario-icon-alert-error></ontario-icon-alert-error>
+								<div class="ontario-error-messaging__content"></div>
+							</div>
 							<textarea class="ontario-textarea" id="ontario-textarea" name="ontario-textarea" value=""></textarea>
 						</div>
 					</mock:shadow-root>

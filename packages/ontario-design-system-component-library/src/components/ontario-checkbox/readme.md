@@ -208,6 +208,7 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 | `customOnBlur`   | --              | Used to add a custom function to the checkbox onBlur event.                                                                                                                                                                                                                                                                                                                                                                            | `((event: Event) => void) \| undefined` | `undefined` |
 | `customOnChange` | --              | Used to add a custom function to the checkbox onChange event.                                                                                                                                                                                                                                                                                                                                                                          | `((event: Event) => void) \| undefined` | `undefined` |
 | `customOnFocus`  | --              | Used to add a custom function to the checkbox onFocus event.                                                                                                                                                                                                                                                                                                                                                                           | `((event: Event) => void) \| undefined` | `undefined` |
+| `errorMessage`   | `error-message` | Set this to display an error message                                                                                                                                                                                                                                                                                                                                                                                                   | `string \| undefined`                   | `undefined` |
 | `hintExpander`   | `hint-expander` | Used to include the ontario-hint-expander component for the checkbox group. This is passed in as an object with key-value pairs. This is optional.                                                                                                                                                                                                                                                                                     | `HintExpander \| string \| undefined`   | `undefined` |
 | `hintText`       | `hint-text`     | Used to include the ontario-hint-text component for the checkbox group. This is optional.                                                                                                                                                                                                                                                                                                                                              | `Hint \| string \| undefined`           | `undefined` |
 | `language`       | `language`      | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.                                                                                                                                                                                                                    | `"en" \| "fr" \| undefined`             | `undefined` |
@@ -217,11 +218,12 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 
 ## Events
 
-| Event              | Description                                                                                  | Type                                                         |
-| ------------------ | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| `checkboxOnBlur`   | Emitted when a keyboard input event occurs when a checkbox option has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
-| `checkboxOnChange` | Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed. | `CustomEvent<InputInteractionEvent & { checked: boolean; }>` |
-| `checkboxOnFocus`  | Emitted when a keyboard input event occurs when a checkbox option has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
+| Event                | Description                                                                                  | Type                                                         |
+| -------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| `checkboxOnBlur`     | Emitted when a keyboard input event occurs when a checkbox option has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
+| `checkboxOnChange`   | Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed. | `CustomEvent<InputInteractionEvent & { checked: boolean; }>` |
+| `checkboxOnFocus`    | Emitted when a keyboard input event occurs when a checkbox option has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
+| `inputErrorOccurred` | Emitted when an error message is reported to the component.                                  | `CustomEvent<{ errorMessage: string; }>`                     |
 
 ## Dependencies
 
@@ -229,6 +231,7 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 
 - [ontario-hint-text](../ontario-hint-text)
 - [ontario-hint-expander](../ontario-hint-expander)
+- [ontario-icon-alert-error](../ontario-icon)
 
 ### Graph
 
@@ -236,6 +239,7 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 graph TD;
   ontario-checkboxes --> ontario-hint-text
   ontario-checkboxes --> ontario-hint-expander
+  ontario-checkboxes --> ontario-icon-alert-error
   ontario-hint-expander --> ontario-icon-chevron-up
   ontario-hint-expander --> ontario-icon-chevron-down
   style ontario-checkboxes fill:#f9f,stroke:#333,stroke-width:4px

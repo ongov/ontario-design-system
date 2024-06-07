@@ -7,6 +7,9 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as fontSizes;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
 @use '../../styles/form.scss';
+@forward '../../utils/components/error-message/error-message';
+
+$ontario-textarea-border-width: 0.125rem;
 
 .ontario-textarea {
 	border: globalVariables.$border-size-standard solid colours.$ontario-colour-black;
@@ -33,4 +36,10 @@
 
 .ontario-textarea.ontario-textarea-hint-expander--true {
 	margin-bottom: spacing.$spacing-4;
+}
+
+.ontario-textarea--error {
+	textarea {
+		border: $ontario-textarea-border-width solid colours.$ontario-colour-alert;
+	}
 }
