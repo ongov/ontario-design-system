@@ -1,14 +1,21 @@
 {
-	"branches": ["master", {"name": "beta", "prerelease": true}, {"name": "alpha", "prerelease": true}],
+	"branches": ["master", { "name": "beta", "prerelease": true }, { "name": "alpha", "prerelease": true }],
 	"plugins": [
 		"@semantic-release/commit-analyzer",
 		["semantic-release-lerna", { "generateNotes": true, "latch": "none" }],
-		"@semantic-release/gitlab",
+		"@semantic-release/github",
 		"@semantic-release/changelog",
 		[
 			"@semantic-release/git",
 			{
-				"assets": ["CHANGELOG.md", "lerna.json", "package.json", "package-lock.json", "packages/*/package.json", "packages/*/package-lock.json"],
+				"assets": [
+					"CHANGELOG.md",
+					"lerna.json",
+					"package.json",
+					"package-lock.json",
+					"packages/*/package.json",
+					"packages/*/package-lock.json"
+				],
 				"message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
 			}
 		]

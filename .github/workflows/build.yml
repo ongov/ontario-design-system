@@ -1,0 +1,50 @@
+name: Build
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: true
+        type: number
+      build-artifacts-name:
+        required: true
+        type: string
+    outputs: # https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
+      build-artifacts-name:
+        description: 'Name of the artifacts archive of the built libraries'
+        value: ${{ inputs.build-artifacts-name }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repo
+      - uses: actions/checkout@v4
+
+      # Setup Node.js
+      - name: Use Node.js ${{ inputs.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      # Install node_modules
+      - name: Install dependencies
+        run: npm ci
+
+      # Install node_modules in all packages
+      - name: Initialise all package node_modules
+        run: npm run bootstrap
+
+      - name: Build the project
+        run: npm run build-libs --if-present
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.build-artifacts-name }} # Artifact name
+          compression-level: 9 # Best compression
+          path: | # Collect all package artifacts
+            packages/**/*
+            !**/node_modules/**/*
