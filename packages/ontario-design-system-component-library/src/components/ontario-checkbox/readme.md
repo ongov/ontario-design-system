@@ -147,6 +147,60 @@ The `ontario-checkboxes` supports integration with native HTML `<form>` elements
 
 Remember to set the `name` attribute as this is used to identify the field when submitting the form.
 
+## Event model
+
+Each event emitted by the component uses the [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) type to emit a custom event to help communicate what the component is doing. To access the data emitted by the component within the `CustomEvent` type use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail) property.
+
+Eg. To access the value of any change made to this component from the `checkboxOnChange` event, use the following code to wire up to listen for the the `checkboxOnChange` event.
+
+```html
+<ontario-checkboxes
+	caption="Checkboxes"
+	id="checkboxes-1"
+	name="checkboxes-1"
+	required
+	options='[
+      {
+        "value": "checkbox-option-1",
+        "label": "Checkbox option 1 label",
+        "elementId": "checkbox-1"
+      },
+      {
+        "value": "checkbox-option-2",
+        "label": "Checkbox option 2 label",
+        "elementId": "checkbox-2"
+      }
+    ]'
+>
+</ontario-checkboxes>
+<script>
+	// Note: this waits for the page and components to load before
+	// locating the component.
+	window.onload = () => {
+		const checkboxes1 = document.getElementById('checkboxes-1');
+		checkboxes1.addEventListener('checkboxOnChange', (event) => {
+			console.log('OnChange detail:', event.detail);
+		});
+	};
+</script>
+```
+
+If the first checkbox is checked within `checkboxes-1`, the value of `event.detail` is the object emitted along with the `checkboxOnChange` event.
+
+```js
+{ checked: true, id: "checkbox-1", value: "checkbox-option-1" }
+```
+
+See the [Events](#events) table to learn more about the available custom events from the component and what the type of `CustomEvent.detail` will be.
+
+### Native `change` events
+
+The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
+
+The native `change` event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
+
+When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
+
 ## Custom property types
 
 ### caption
