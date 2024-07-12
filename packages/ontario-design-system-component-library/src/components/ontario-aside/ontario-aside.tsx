@@ -24,17 +24,17 @@ export class OntarioAside implements CalloutAside {
 	/**
 	 * The heading level of the aside heading.
 	 */
-	@Prop({ mutable: true }) headingType: HeadingLevelOptions;
+	@Prop({ mutable: true }) headingType?: HeadingLevelOptions;
 
 	/**
 	 * The type of the heading content. If no prop is passed, it will default to string.
 	 */
-	@Prop({ mutable: true }) headingContentType: HeadingContentType;
+	@Prop({ mutable: true }) headingContentType: HeadingContentType = 'string';
 
 	/**
 	 * Text or HTML to be displayed as the heading of the aside. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to `html`.
 	 */
-	@Prop() headingContent: string;
+	@Prop() headingContent?: string;
 
 	/**
 	 * Optional text to be displayed as the content for the aside component. If a string is passed, it will automatically be nested in a paragraph tag.
@@ -58,16 +58,18 @@ export class OntarioAside implements CalloutAside {
 	 */
 	@Watch('headingType')
 	validateHeadingType() {
-		if (isValidHeadingLevel(this.headingType)) return this.headingType;
+		if (!!this.headingType) {
+			if (isValidHeadingLevel(this.headingType)) return this.headingType;
 
-		const message = new ConsoleMessageClass();
-		return message
-			.addDesignSystemTag()
-			.addMonospaceText(` headingType ${this.headingType} `)
-			.addRegularText('for')
-			.addMonospaceText(' <ontario-aside> ')
-			.addRegularText('is not a valid type. Please ensure your heading type matches one of the headingType types.')
-			.printMessage();
+			const message = new ConsoleMessageClass();
+			return message
+				.addDesignSystemTag()
+				.addMonospaceText(` headingType ${this.headingType} `)
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-aside> ')
+				.addRegularText('is not a valid type. Please ensure your heading type matches one of the headingType types.')
+				.printMessage();
+		}
 	}
 
 	/**
@@ -83,25 +85,6 @@ export class OntarioAside implements CalloutAside {
 			return this.headingContentType;
 		} else {
 			return this.warnDefaultType();
-		}
-	}
-
-	/**
-	 * Watch for changes in the `headingContent` prop for validation purposes.
-	 *
-	 * If no `headingContent` value is provided, a warning message will be printed.
-	 */
-	@Watch('headingContent')
-	validateHeadingContent() {
-		if (!this.headingContent) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' headingContent ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-aside> ')
-				.addRegularText('was not provided.')
-				.printMessage();
 		}
 	}
 
@@ -154,7 +137,6 @@ export class OntarioAside implements CalloutAside {
 
 	componentWillLoad() {
 		this.validateHighlightColour();
-		this.validateHeadingContent();
 		this.validateHeadingType();
 		this.validateHeadingContentType();
 	}
@@ -162,8 +144,8 @@ export class OntarioAside implements CalloutAside {
 	render() {
 		return generateCalloutAside(
 			'aside',
-			this.headingType,
 			this.headingContentType,
+			this.headingType,
 			this.headingContent,
 			this.content,
 			this.highlightColour,

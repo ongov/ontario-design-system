@@ -18,7 +18,7 @@ export interface CalloutAside extends Base {
 	/**
 	 * The heading level of the callout/aside heading.
 	 */
-	headingType: HeadingLevelOptions;
+	headingType?: HeadingLevelOptions;
 
 	/**
 	 * The type of the heading content. If no prop is passed, it will default to string.
@@ -28,7 +28,7 @@ export interface CalloutAside extends Base {
 	/**
 	 * Text or HTML to be displayed as the heading of the callout/aside. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to `html`.
 	 */
-	headingContent: string;
+	headingContent?: string;
 
 	/**
 	 * Optional text to be displayed as the content for the callout/aside component. If a string is passed, it will automatically be nested in a paragraph tag.
