@@ -1,5 +1,6 @@
 @use 'sass:math';
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
@@ -11,10 +12,10 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
 @forward '../../utils/components/error-message/error-message';
 
-$ontario-checkboxes-size: 28px;
-$ontario-checkboxes-size-mobile: 32px;
-$ontario-checkbox-border-size: 2px;
-$ontario-checkbox-box-shadow-outline: 4px;
+$ontario-checkboxes-size: globalFunctions.px-to-rem(28);
+$ontario-checkboxes-size-mobile: globalFunctions.px-to-rem(32);
+$ontario-checkbox-border-size: globalFunctions.px-to-rem(2);
+$ontario-checkbox-box-shadow-outline: globalFunctions.px-to-rem(4);
 $ontario-input-border-width: 0.125rem;
 
 :host {

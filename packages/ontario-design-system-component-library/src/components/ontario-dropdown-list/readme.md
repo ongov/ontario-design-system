@@ -293,6 +293,7 @@ options='[ { "value": "netflix", "label": "Netflix" }, { "value": "disney-plus",
 | `customOnChange`     | --                      | Used to add a custom function to the dropdown onChange event.                                                                                                                                                                                                                                                       | `((event: Event) => void) \| undefined` | `undefined` |
 | `customOnFocus`      | --                      | Used to add a custom function to the dropdown onFocus event.                                                                                                                                                                                                                                                        | `((event: Event) => void) \| undefined` | `undefined` |
 | `elementId`          | `element-id`            | The ID for the dropdown list. If no ID is provided, one will be generated.                                                                                                                                                                                                                                          | `string \| undefined`                   | `undefined` |
+| `errorMessage`       | `error-message`         | Set this to display an error message                                                                                                                                                                                                                                                                                | `string \| undefined`                   | `undefined` |
 | `hintExpander`       | `hint-expander`         | Used to include the ontario-hint-expander component for the dropdown list component. This is passed in as an object with key-value pairs. This is optional.                                                                                                                                                         | `HintExpander \| string \| undefined`   | `undefined` |
 | `hintText`           | `hint-text`             | Used to include the ontario-hint-text component for the dropdown list. This is optional.                                                                                                                                                                                                                            | `Hint \| string \| undefined`           | `undefined` |
 | `isEmptyStartOption` | `is-empty-start-option` | This prop is used to determine whether or not the initial option displayed is empty. If set to `true`, it will render the default “select” text. If set to a string, it will render the string value.                                                                                                               | `boolean \| string \| undefined`        | `false`     |
@@ -303,11 +304,12 @@ options='[ { "value": "netflix", "label": "Netflix" }, { "value": "disney-plus",
 
 ## Events
 
-| Event              | Description                                                                                | Type                                                                      |
-| ------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
-| `dropdownOnBlur`   | Emitted when a keyboard input event occurs when a dropdown list has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`              |
-| `dropdownOnChange` | Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed. | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>` |
-| `dropdownOnFocus`  | Emitted when a keyboard input event occurs when a dropdown list has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`              |
+| Event                | Description                                                                                | Type                                                                      |
+| -------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| `dropdownOnBlur`     | Emitted when a keyboard input event occurs when a dropdown list has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`              |
+| `dropdownOnChange`   | Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed. | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>` |
+| `dropdownOnFocus`    | Emitted when a keyboard input event occurs when a dropdown list has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`              |
+| `inputErrorOccurred` | Emitted when an error message is reported to the component.                                | `CustomEvent<{ errorMessage: string; }>`                                  |
 
 ## Dependencies
 
@@ -315,6 +317,7 @@ options='[ { "value": "netflix", "label": "Netflix" }, { "value": "disney-plus",
 
 - [ontario-hint-text](../ontario-hint-text)
 - [ontario-hint-expander](../ontario-hint-expander)
+- [ontario-icon-alert-error](../ontario-icon)
 
 ### Graph
 
@@ -322,6 +325,7 @@ options='[ { "value": "netflix", "label": "Netflix" }, { "value": "disney-plus",
 graph TD;
   ontario-dropdown-list --> ontario-hint-text
   ontario-dropdown-list --> ontario-hint-expander
+  ontario-dropdown-list --> ontario-icon-alert-error
   ontario-hint-expander --> ontario-icon-chevron-up
   ontario-hint-expander --> ontario-icon-chevron-down
   style ontario-dropdown-list fill:#f9f,stroke:#333,stroke-width:4px

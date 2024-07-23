@@ -342,6 +342,7 @@ export declare interface OntarioDateInput extends Components.OntarioDateInput {
 		'customOnChange',
 		'customOnFocus',
 		'elementId',
+		'errorMessage',
 		'hintExpander',
 		'hintText',
 		'isEmptyStartOption',
@@ -362,6 +363,7 @@ export declare interface OntarioDateInput extends Components.OntarioDateInput {
 		'customOnChange',
 		'customOnFocus',
 		'elementId',
+		'errorMessage',
 		'hintExpander',
 		'hintText',
 		'isEmptyStartOption',
@@ -376,7 +378,7 @@ export class OntarioDropdownList {
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['dropdownOnChange', 'dropdownOnBlur', 'dropdownOnFocus']);
+		proxyOutputs(this, this.el, ['dropdownOnChange', 'dropdownOnBlur', 'dropdownOnFocus', 'inputErrorOccurred']);
 	}
 }
 
@@ -396,6 +398,10 @@ export declare interface OntarioDropdownList extends Components.OntarioDropdownL
 	 * Emitted when a keyboard input event occurs when a dropdown list has gained focus.
 	 */
 	dropdownOnFocus: EventEmitter<CustomEvent<IOntarioDropdownListInputFocusBlurEvent>>;
+	/**
+	 * Emitted when an error message is reported to the component.
+	 */
+	inputErrorOccurred: EventEmitter<CustomEvent<{ errorMessage: string }>>;
 }
 
 @ProxyCmp({
