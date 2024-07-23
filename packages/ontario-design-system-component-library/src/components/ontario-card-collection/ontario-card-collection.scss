@@ -6,7 +6,8 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
-	margin: 0;
+	margin: spacing.$spacing-0;
+	padding: spacing.$spacing-0;
 }
 
 .ontario-card-collecton--cards-per-row-4 ::slotted(ontario-card) {
