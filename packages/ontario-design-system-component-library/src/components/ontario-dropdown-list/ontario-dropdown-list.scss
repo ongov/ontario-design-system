@@ -2,6 +2,9 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
 @use '../../styles/form.scss';
+@forward '../../utils/components/error-message/error-message';
+
+$ontario-dropdown-border-width: 0.125rem;
 
 .ontario-dropdown {
 	background-color: colours.$ontario-colour-white;
@@ -23,4 +26,10 @@
 
 .ontario-dropdown option {
 	font-weight: normal;
+}
+
+.ontario-dropdown--error {
+	select {
+		border: $ontario-dropdown-border-width solid colours.$ontario-colour-alert;
+	}
 }

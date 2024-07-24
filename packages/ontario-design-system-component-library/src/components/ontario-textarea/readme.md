@@ -98,6 +98,7 @@ hintExpander='{ "hint": "This is the hint expander title", "content": "This is t
 | `customOnFocus`  | --              | Used to add a custom function to the textarea onFocus event.                                                                                                                                                                                   | `((event: Event) => void) \| undefined` | `undefined` |
 | `customOnInput`  | --              | Used to add a custom function to the textarea onInput event.                                                                                                                                                                                   | `((event: Event) => void) \| undefined` | `undefined` |
 | `elementId`      | `element-id`    | The unique identifier of the textarea. This is optional - if no ID is passed, one will be generated.                                                                                                                                           | `string \| undefined`                   | `undefined` |
+| `errorMessage`   | `error-message` | Set this to display an error message                                                                                                                                                                                                           | `string \| undefined`                   | `undefined` |
 | `hintExpander`   | `hint-expander` | Used to include the ontario-hint-expander component for the textarea component. This is passed in as an object with key-value pairs. This is optional.                                                                                         | `HintExpander \| string \| undefined`   | `undefined` |
 | `hintText`       | `hint-text`     | Used to include the ontario-hint-text component for the textarea. This is optional.                                                                                                                                                            | `Hint \| string \| undefined`           | `undefined` |
 | `language`       | `language`      | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.                            | `"en" \| "fr" \| undefined`             | `undefined` |
@@ -107,12 +108,13 @@ hintExpander='{ "hint": "This is the hint expander title", "content": "This is t
 
 ## Events
 
-| Event           | Description                                                                         | Type                                                                        |
-| --------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `inputOnBlur`   | Emitted when a keyboard input event occurs when an input has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
-| `inputOnChange` | Emitted when a keyboard input or mouse event occurs when an input has been changed. | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>`   |
-| `inputOnFocus`  | Emitted when a keyboard input event occurs when an input has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
-| `inputOnInput`  | Emitted when a input event occurs when an input has been changed.                   | `CustomEvent<InputInteractionEvent & { inputType?: string \| undefined; }>` |
+| Event                | Description                                                                         | Type                                                                        |
+| -------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `inputErrorOccurred` | Emitted when an error message is reported to the component.                         | `CustomEvent<{ inputId: string; errorMessage: string; }>`                   |
+| `inputOnBlur`        | Emitted when a keyboard input event occurs when an input has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
+| `inputOnChange`      | Emitted when a keyboard input or mouse event occurs when an input has been changed. | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>`   |
+| `inputOnFocus`       | Emitted when a keyboard input event occurs when an input has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
+| `inputOnInput`       | Emitted when a input event occurs when an input has been changed.                   | `CustomEvent<InputInteractionEvent & { inputType?: string \| undefined; }>` |
 
 ## Dependencies
 
@@ -120,6 +122,7 @@ hintExpander='{ "hint": "This is the hint expander title", "content": "This is t
 
 - [ontario-hint-text](../ontario-hint-text)
 - [ontario-hint-expander](../ontario-hint-expander)
+- [ontario-icon-alert-error](../ontario-icon)
 
 ### Graph
 
@@ -127,6 +130,7 @@ hintExpander='{ "hint": "This is the hint expander title", "content": "This is t
 graph TD;
   ontario-textarea --> ontario-hint-text
   ontario-textarea --> ontario-hint-expander
+  ontario-textarea --> ontario-icon-alert-error
   ontario-hint-expander --> ontario-icon-chevron-up
   ontario-hint-expander --> ontario-icon-chevron-down
   style ontario-textarea fill:#f9f,stroke:#333,stroke-width:4px

@@ -192,6 +192,7 @@ export declare interface OntarioCardCollection extends Components.OntarioCardCol
 		'customOnBlur',
 		'customOnChange',
 		'customOnFocus',
+		'errorMessage',
 		'hintExpander',
 		'hintText',
 		'language',
@@ -210,6 +211,7 @@ export declare interface OntarioCardCollection extends Components.OntarioCardCol
 		'customOnBlur',
 		'customOnChange',
 		'customOnFocus',
+		'errorMessage',
 		'hintExpander',
 		'hintText',
 		'language',
@@ -223,7 +225,7 @@ export class OntarioCheckboxes {
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['checkboxOnChange', 'checkboxOnBlur', 'checkboxOnFocus']);
+		proxyOutputs(this, this.el, ['checkboxOnChange', 'checkboxOnBlur', 'checkboxOnFocus', 'inputErrorOccurred']);
 	}
 }
 
@@ -243,6 +245,10 @@ export declare interface OntarioCheckboxes extends Components.OntarioCheckboxes 
 	 * Emitted when a keyboard input event occurs when a checkbox option has gained focus.
 	 */
 	checkboxOnFocus: EventEmitter<CustomEvent<IOntarioCheckboxesInputFocusBlurEvent>>;
+	/**
+	 * Emitted when an error message is reported to the component.
+	 */
+	inputErrorOccurred: EventEmitter<CustomEvent<{ errorMessage: string }>>;
 }
 
 @ProxyCmp({
@@ -336,6 +342,7 @@ export declare interface OntarioDateInput extends Components.OntarioDateInput {
 		'customOnChange',
 		'customOnFocus',
 		'elementId',
+		'errorMessage',
 		'hintExpander',
 		'hintText',
 		'isEmptyStartOption',
@@ -356,6 +363,7 @@ export declare interface OntarioDateInput extends Components.OntarioDateInput {
 		'customOnChange',
 		'customOnFocus',
 		'elementId',
+		'errorMessage',
 		'hintExpander',
 		'hintText',
 		'isEmptyStartOption',
@@ -370,7 +378,7 @@ export class OntarioDropdownList {
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['dropdownOnChange', 'dropdownOnBlur', 'dropdownOnFocus']);
+		proxyOutputs(this, this.el, ['dropdownOnChange', 'dropdownOnBlur', 'dropdownOnFocus', 'inputErrorOccurred']);
 	}
 }
 
@@ -390,6 +398,10 @@ export declare interface OntarioDropdownList extends Components.OntarioDropdownL
 	 * Emitted when a keyboard input event occurs when a dropdown list has gained focus.
 	 */
 	dropdownOnFocus: EventEmitter<CustomEvent<IOntarioDropdownListInputFocusBlurEvent>>;
+	/**
+	 * Emitted when an error message is reported to the component.
+	 */
+	inputErrorOccurred: EventEmitter<CustomEvent<{ errorMessage: string }>>;
 }
 
 @ProxyCmp({
@@ -2937,6 +2949,7 @@ export declare interface OntarioPageAlert extends Components.OntarioPageAlert {}
 		'customOnBlur',
 		'customOnChange',
 		'customOnFocus',
+		'errorMessage',
 		'hintExpander',
 		'hintText',
 		'language',
@@ -2955,6 +2968,7 @@ export declare interface OntarioPageAlert extends Components.OntarioPageAlert {}
 		'customOnBlur',
 		'customOnChange',
 		'customOnFocus',
+		'errorMessage',
 		'hintExpander',
 		'hintText',
 		'language',
@@ -2968,7 +2982,7 @@ export class OntarioRadioButtons {
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['radioOnChange', 'radioOnBlur', 'radioOnFocus']);
+		proxyOutputs(this, this.el, ['radioOnChange', 'radioOnBlur', 'radioOnFocus', 'inputErrorOccurred']);
 	}
 }
 
@@ -2988,6 +3002,10 @@ export declare interface OntarioRadioButtons extends Components.OntarioRadioButt
 	 * Emitted when a keyboard input event occurs when a radio option has gained focus.
 	 */
 	radioOnFocus: EventEmitter<CustomEvent<IOntarioRadioButtonsInputFocusBlurEvent>>;
+	/**
+	 * Emitted when an error message is reported to the component.
+	 */
+	inputErrorOccurred: EventEmitter<CustomEvent<{ errorMessage: string }>>;
 }
 
 @ProxyCmp({
@@ -3054,6 +3072,7 @@ export declare interface OntarioTable extends Components.OntarioTable {}
 		'customOnFocus',
 		'customOnInput',
 		'elementId',
+		'errorMessage',
 		'hintExpander',
 		'hintText',
 		'language',
@@ -3074,6 +3093,7 @@ export declare interface OntarioTable extends Components.OntarioTable {}
 		'customOnFocus',
 		'customOnInput',
 		'elementId',
+		'errorMessage',
 		'hintExpander',
 		'hintText',
 		'language',
@@ -3087,7 +3107,7 @@ export class OntarioTextarea {
 	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus']);
+		proxyOutputs(this, this.el, ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred']);
 	}
 }
 
@@ -3112,4 +3132,8 @@ export declare interface OntarioTextarea extends Components.OntarioTextarea {
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
 	inputOnFocus: EventEmitter<CustomEvent<IOntarioTextareaInputFocusBlurEvent>>;
+	/**
+	 * Emitted when an error message is reported to the component.
+	 */
+	inputErrorOccurred: EventEmitter<CustomEvent<{ inputId: string; errorMessage: string }>>;
 }

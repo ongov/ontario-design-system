@@ -33,6 +33,7 @@ import { InputFocusBlurEvent, EventType, InputInteractionEvent } from '../../uti
 import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
+import { ErrorMessage } from '../../utils/components/error-message/error-message';
 
 @Component({
 	tag: 'ontario-dropdown-list',
@@ -179,6 +180,11 @@ export class OntarioDropdownList implements Dropdown {
 	@Prop() hintExpander?: HintExpander | string;
 
 	/**
+	 * Set this to display an error message
+	 */
+	@Prop({ mutable: true }) errorMessage?: string;
+
+	/**
 	 * Used to add a custom function to the dropdown onChange event.
 	 */
 	@Prop() customOnChange?: (event: globalThis.Event) => void;
@@ -234,6 +240,11 @@ export class OntarioDropdownList implements Dropdown {
 	 * Emitted when a keyboard input event occurs when a dropdown list has gained focus.
 	 */
 	@Event() dropdownOnFocus: EventEmitter<InputFocusBlurEvent>;
+
+	/**
+	 * Emitted when an error message is reported to the component.
+	 */
+	@Event() inputErrorOccurred: EventEmitter<{ errorMessage: string }>;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -362,6 +373,12 @@ export class OntarioDropdownList implements Dropdown {
 		}
 	}
 
+	@Watch('errorMessage')
+	broadcastInputErrorOccurredEvent() {
+		// Emit event to notify anyone who wants to listen for errors occurring
+		this.inputErrorOccurred.emit({ errorMessage: this.errorMessage ?? '' });
+	}
+
 	/**
 	 * Function to handle dropdown list events and the information pertaining to the dropdown list to emit.
 	 */
@@ -454,8 +471,9 @@ export class OntarioDropdownList implements Dropdown {
 	}
 
 	render() {
+		const error = !!this.errorMessage;
 		return (
-			<div class="ontario-form-group">
+			<div class={`ontario-form-group ${error ? 'ontario-dropdown--error' : ''}`}>
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.internalHintText && (
 					<ontario-hint-text
@@ -464,6 +482,7 @@ export class OntarioDropdownList implements Dropdown {
 						ref={(el) => (this.hintTextRef = el)}
 					></ontario-hint-text>
 				)}
+				<ErrorMessage message={this.errorMessage} error={error} />
 				<select
 					class={this.getClass()}
 					aria-describedby={this.hintTextId}

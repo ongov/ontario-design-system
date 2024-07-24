@@ -17,7 +17,12 @@ describe('ontario-radio-buttons', () => {
                     (optional)
                   </span>
                 </legend>
-              <div class="ontario-radios"></div>
+              <div class="ontario-radios">
+                <div class="ontario-error-messaging ontario-error__hidden" role="alert">
+                  <ontario-icon-alert-error></ontario-icon-alert-error>
+                  <div class="ontario-error-messaging__content"></div>
+                </div>
+              </div>
             </fieldset>
           </div>
         </mock:shadow-root>

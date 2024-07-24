@@ -23,6 +23,7 @@ import {
 import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
+import { ErrorMessage } from '../../utils/components/error-message/error-message';
 
 @Component({
 	tag: 'ontario-radio-buttons',
@@ -50,7 +51,6 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * </ontario-radio-buttons>
 	 */
 	@Prop() caption: Caption | string;
-
 	/**
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
@@ -149,6 +149,11 @@ export class OntarioRadioButtons implements RadioButtons {
 	@Prop() options: string | RadioOption[];
 
 	/**
+	 * Set this to display an error message
+	 */
+	@Prop({ mutable: true }) errorMessage?: string;
+
+	/**
 	 * Used to add a custom function to the radio input onChange event.
 	 */
 	@Prop() customOnChange?: (event: globalThis.Event) => void;
@@ -202,6 +207,11 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * Emitted when a keyboard input event occurs when a radio option has gained focus.
 	 */
 	@Event({ eventName: 'radioOnFocus' }) radioOnFocus: EventEmitter<InputFocusBlurEvent>;
+
+	/**
+	 * Emitted when an error message is reported to the component.
+	 */
+	@Event() inputErrorOccurred: EventEmitter<{ errorMessage: string }>;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -327,6 +337,12 @@ export class OntarioRadioButtons implements RadioButtons {
 		this.updateCaptionState(this.caption);
 	}
 
+	@Watch('errorMessage')
+	broadcastInputErrorOccurredEvent() {
+		// Emit event to notify anyone who wants to listen for errors occurring
+		this.inputErrorOccurred.emit({ errorMessage: this.errorMessage ?? '' });
+	}
+
 	/**
 	 * Function to handle radio buttons events and the information pertaining to the radio buttons to emit.
 	 */
@@ -388,8 +404,9 @@ export class OntarioRadioButtons implements RadioButtons {
 	}
 
 	render() {
+		const error = !!this.errorMessage;
 		return (
-			<div class="ontario-form-group">
+			<div class={`ontario-form-group ${error ? 'ontario-input--error' : ''}`}>
 				<fieldset class="ontario-fieldset" aria-describedby={this.hintTextId}>
 					{this.captionState.getCaption(undefined, !!this.internalHintExpander)}
 					{this.internalHintText && (
@@ -399,7 +416,9 @@ export class OntarioRadioButtons implements RadioButtons {
 							ref={(el) => (this.hintTextRef = el)}
 						></ontario-hint-text>
 					)}
+
 					<div class="ontario-radios">
+						<ErrorMessage message={this.errorMessage} error={error} />
 						{this.internalOptions?.map((radioOption) => (
 							<div class="ontario-radios__item">
 								<Input
