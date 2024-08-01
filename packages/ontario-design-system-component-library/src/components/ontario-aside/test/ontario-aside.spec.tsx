@@ -97,6 +97,45 @@ describe('ontario-aside', () => {
 		`);
 	});
 
+	it('should render html in the heading content if the headingContentType prop is set to `html`', async () => {
+		const page = await newSpecPage({
+			components: [OntarioAside],
+			html: `<ontario-aside heading-content-type="html" heading-content="<a href='#'>Quick fact:</a>"><p>As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions.</p></ontario-aside>`,
+		});
+
+		expect(page.root).toEqualHtml(`
+			<ontario-aside heading-content-type="html" heading-content="<a href='#'>Quick fact:</a>" heading-content="Quick fact:">
+				<mock:shadow-root>
+					<aside class="ontario-aside ontario-border-highlight--teal">
+						<h2 class="ontario-aside__title ontario-h5">
+							<a href="#">Quick fact:</a>
+						</h2>
+						<slot></slot>
+					</aside>
+				</mock:shadow-root>
+				<p>As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions.</p>
+			</ontario-aside>
+		`);
+	});
+
+	it('should not render the heading if headingContent prop is set to `undefined`', async () => {
+		const page = await newSpecPage({
+			components: [OntarioAside],
+			html: `<ontario-aside><p>As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions.</p></ontario-aside>`,
+		});
+
+		expect(page.root).toEqualHtml(`
+			<ontario-aside>
+				<mock:shadow-root>
+					<aside class="ontario-aside ontario-border-highlight--teal">
+						<slot></slot>
+					</aside>
+				</mock:shadow-root>
+				<p>As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions.</p>
+			</ontario-aside>
+		`);
+	});
+
 	it('should reflect attributes/props being set', async () => {
 		const page = await newSpecPage({
 			components: [OntarioAside],

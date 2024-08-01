@@ -105,6 +105,26 @@ describe('ontario-callout', () => {
 		`);
 	});
 
+	it('should not render the heading if headingContent prop is set to `undefined`', async () => {
+		const page = await newSpecPage({
+			components: [OntarioCallout],
+			html: `<ontario-callout ><p><a href="#">Sign up for email reminders</a> and we’ll notify you 60 and 30 days before your licence expires.</p></ontario-callout>`,
+		});
+
+		expect(page.root).toEqualHtml(`
+			<ontario-callout >
+				<mock:shadow-root>
+					<div class="ontario-callout ontario-border-highlight--teal">
+						<slot></slot>
+					</div>
+				</mock:shadow-root>
+				<p>
+					<a href="#">Sign up for email reminders</a> and we’ll notify you 60 and 30 days before your licence expires.
+				</p>
+			</ontario-callout>
+		`);
+	});
+
 	it('should reflect attributes/props being set', async () => {
 		const page = await newSpecPage({
 			components: [OntarioCallout],
