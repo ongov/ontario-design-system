@@ -17,6 +17,10 @@ describe('ontario-checkbox', () => {
                   (optional)
                 </span>
               </legend>
+              <div class="ontario-error-messaging ontario-error__hidden" role="alert">
+								<ontario-icon-alert-error></ontario-icon-alert-error>
+								<div class="ontario-error-messaging__content"></div>
+							</div>
               <div class="ontario-checkboxes"></div>
             </fieldset>
           </div>

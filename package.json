@@ -1,11 +1,12 @@
 {
 	"name": "root",
-	"version": "4.2.0-alpha.1",
+	"version": "4.2.0",
 	"private": true,
 	"scripts": {
 		"bootstrap": "lerna bootstrap",
 		"build-docs": "lerna run --scope ds-web-component-docs build",
 		"build-libs": "lerna run --scope @ongov/ontario-design-system* build",
+		"build-angular-app": "lerna run --scope app-angular build",
 		"clean": "lerna run clean",
 		"clean:full": "lerna run clean:full",
 		"format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
@@ -21,7 +22,7 @@
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/commit-analyzer": "^9.0.2",
 		"@semantic-release/git": "^10.0.1",
-		"@semantic-release/gitlab": "^12.0.1",
+		"@semantic-release/github": "^10.0.5",
 		"@semantic-release/npm": "^9.0.2",
 		"bash-color": "^0.0.4",
 		"commander": "^11.0.0",

@@ -26,6 +26,10 @@ $ontario-header-menu-button-icon--margin-right: 6px;
 
 $ontario-navigation-container-min-width: 290px;
 
+:host {
+	--header-search-reset: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTE5IDYuNEwxNy42IDUgMTIgMTAuNiA2LjQgNSA1IDYuNGw1LjYgNS42TDUgMTcuNiA2LjQgMTlsNS42LTUuNiA1LjYgNS42IDEuNC0xLjQtNS42LTUuNkwxOSA2LjR6IiBmaWxsPSIjMDAwIi8+PC9zdmc+);
+}
+
 .ontario-header__container {
 	position: relative;
 	z-index: calc(zIndex.$ontario-z-index-above-high + 1);
@@ -419,7 +423,7 @@ input[type='reset'].ontario-header__search-reset {
 	color: colours.$ontario-colour-black;
 	margin: spacing.$spacing-0;
 	padding: spacing.$spacing-2;
-	background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTE5IDYuNEwxNy42IDUgMTIgMTAuNiA2LjQgNSA1IDYuNGw1LjYgNS42TDUgMTcuNiA2LjQgMTlsNS42LTUuNiA1LjYgNS42IDEuNC0xLjQtNS42LTUuNkwxOSA2LjR6IiBmaWxsPSIjMDAwIi8+PC9zdmc+);
+	background-image: var(--header-search-reset);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-color: transparent;

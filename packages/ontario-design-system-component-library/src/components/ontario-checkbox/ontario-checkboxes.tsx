@@ -24,6 +24,7 @@ import {
 import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
+import { ErrorMessage } from '../../utils/components/error-message/error-message';
 
 @Component({
 	tag: 'ontario-checkboxes',
@@ -145,6 +146,11 @@ export class OntarioCheckboxes implements Checkboxes {
 	@Prop() required?: boolean = false;
 
 	/**
+	 * Set this to display an error message
+	 */
+	@Prop({ mutable: true }) errorMessage?: string;
+
+	/**
 	 * Used to add a custom function to the checkbox onChange event.
 	 */
 	@Prop() customOnChange?: (event: globalThis.Event) => void;
@@ -198,6 +204,11 @@ export class OntarioCheckboxes implements Checkboxes {
 	 * Emitted when a keyboard input event occurs when a checkbox option has gained focus.
 	 */
 	@Event() checkboxOnFocus: EventEmitter<InputFocusBlurEvent>;
+
+	/**
+	 * Emitted when an error message is reported to the component.
+	 */
+	@Event() inputErrorOccurred: EventEmitter<{ errorMessage: string }>;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -323,6 +334,12 @@ export class OntarioCheckboxes implements Checkboxes {
 		this.updateCaptionState(this.caption);
 	}
 
+	@Watch('errorMessage')
+	broadcastInputErrorOccurredEvent() {
+		// Emit event to notify anyone who wants to listen for errors occurring
+		this.inputErrorOccurred.emit({ errorMessage: this.errorMessage ?? '' });
+	}
+
 	/**
 	 * Function to handle checkbox events and the information pertaining to the checkbox to emit.
 	 */
@@ -363,7 +380,6 @@ export class OntarioCheckboxes implements Checkboxes {
 			this.element,
 		);
 	}
-
 	/**
 	 * If a `hintText` prop is passed, the id generated from it will be set to the internal `hintTextId` state to match with the fieldset `aria-describedBy` attribute.
 	 */
@@ -381,8 +397,9 @@ export class OntarioCheckboxes implements Checkboxes {
 	}
 
 	render() {
+		const error = !!this.errorMessage;
 		return (
-			<div class="ontario-form-group">
+			<div class={`ontario-form-group ${error ? 'ontario-input--error' : ''}`}>
 				<fieldset class="ontario-fieldset" aria-describedby={this.hintTextId}>
 					{this.captionState.getCaption(undefined, !!this.internalHintExpander)}
 					{this.internalHintText && (
@@ -392,6 +409,7 @@ export class OntarioCheckboxes implements Checkboxes {
 							ref={(el) => (this.hintTextRef = el)}
 						></ontario-hint-text>
 					)}
+					<ErrorMessage message={this.errorMessage} error={error} />
 					<div class="ontario-checkboxes">
 						{this.internalOptions?.map((checkbox) => (
 							<div class="ontario-checkboxes__item">

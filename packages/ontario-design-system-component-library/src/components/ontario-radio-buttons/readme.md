@@ -240,6 +240,7 @@ visible when the hint expander title (hint) is toggled" }'
 | `customOnBlur`   | --              | Used to add a custom function to the radio input onBlur event.                                                                                                                                                                                                                                                                                                                                                                                 | `((event: Event) => void) \| undefined` | `undefined` |
 | `customOnChange` | --              | Used to add a custom function to the radio input onChange event.                                                                                                                                                                                                                                                                                                                                                                               | `((event: Event) => void) \| undefined` | `undefined` |
 | `customOnFocus`  | --              | Used to add a custom function to the radio input onFocus event.                                                                                                                                                                                                                                                                                                                                                                                | `((event: Event) => void) \| undefined` | `undefined` |
+| `errorMessage`   | `error-message` | Set this to display an error message                                                                                                                                                                                                                                                                                                                                                                                                           | `string \| undefined`                   | `undefined` |
 | `hintExpander`   | `hint-expander` | Used to include the ontario-hint-expander component for the radio button group. This is passed in as an object with key-value pairs. This is optional.                                                                                                                                                                                                                                                                                         | `HintExpander \| string \| undefined`   | `undefined` |
 | `hintText`       | `hint-text`     | Used to include the ontario-hint-text component for radio button group. This is optional.                                                                                                                                                                                                                                                                                                                                                      | `Hint \| string \| undefined`           | `undefined` |
 | `language`       | `language`      | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.                                                                                                                                                                                                                            | `"en" \| "fr" \| undefined`             | `undefined` |
@@ -249,11 +250,12 @@ visible when the hint expander title (hint) is toggled" }'
 
 ## Events
 
-| Event           | Description                                                                               | Type                                                         |
-| --------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| `radioOnBlur`   | Emitted when a keyboard input event occurs when a radio option has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
-| `radioOnChange` | Emitted when a keyboard input or mouse event occurs when a radio option has been changed. | `CustomEvent<InputInteractionEvent & { checked: boolean; }>` |
-| `radioOnFocus`  | Emitted when a keyboard input event occurs when a radio option has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
+| Event                | Description                                                                               | Type                                                         |
+| -------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| `inputErrorOccurred` | Emitted when an error message is reported to the component.                               | `CustomEvent<{ errorMessage: string; }>`                     |
+| `radioOnBlur`        | Emitted when a keyboard input event occurs when a radio option has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
+| `radioOnChange`      | Emitted when a keyboard input or mouse event occurs when a radio option has been changed. | `CustomEvent<InputInteractionEvent & { checked: boolean; }>` |
+| `radioOnFocus`       | Emitted when a keyboard input event occurs when a radio option has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
 
 ## Dependencies
 
@@ -261,6 +263,7 @@ visible when the hint expander title (hint) is toggled" }'
 
 - [ontario-hint-text](../ontario-hint-text)
 - [ontario-hint-expander](../ontario-hint-expander)
+- [ontario-icon-alert-error](../ontario-icon)
 
 ### Graph
 
@@ -268,6 +271,7 @@ visible when the hint expander title (hint) is toggled" }'
 graph TD;
   ontario-radio-buttons --> ontario-hint-text
   ontario-radio-buttons --> ontario-hint-expander
+  ontario-radio-buttons --> ontario-icon-alert-error
   ontario-hint-expander --> ontario-icon-chevron-up
   ontario-hint-expander --> ontario-icon-chevron-down
   style ontario-radio-buttons fill:#f9f,stroke:#333,stroke-width:4px
