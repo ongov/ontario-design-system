@@ -20,6 +20,28 @@
 - update base url to be a constant aefd901
 - updates based on QA feedback ec45cbb
 
+# 4.3.0-alpha.1 (2024-08-07)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library:** convert headingContent and headingType to optional in OntarioCallout and OntarioAside 7aaf331
+- **@ongov/ontario-design-system-component-library:** ontario card height is now the same for all cards regardless of individual card content length 8c3e95a
+- **@ongov/ontario-design-system-component-library:** ontario-card-collection\_\_container now has padding set to 0 c83e311
+
+### Features
+
+- **@ongov/ontario-design-system-component-library:** final qa fixes 928645f
+- **@ongov/ontario-design-system-component-library:** fixes for poc 1638cb7
+- **@ongov/ontario-design-system-global-styles:** move form styles from \_text_input.component.scss 5ee2679
+- fix build error 5ccded9
+- fix build error 4a2c3d4
+- fix manifest json fbd8fc7
+- remove margin top 2ff51bd
+- update angular page titles 9715eda
+- update angular title for content 6725ca3
+- update base url to be a constant aefd901
+- updates based on QA feedback ec45cbb
+
 # 4.2.0 (2024-04-18)
 
 ### Bug Fixes
