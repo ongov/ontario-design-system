@@ -22,7 +22,7 @@
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/commit-analyzer": "^9.0.2",
 		"@semantic-release/git": "^10.0.1",
-		"@semantic-release/github": "^10.0.5",
+		"@semantic-release/gitlab": "^12.0.1",
 		"@semantic-release/npm": "^9.0.2",
 		"bash-color": "^0.0.4",
 		"commander": "^11.0.0",
