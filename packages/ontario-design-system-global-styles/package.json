@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-global-styles",
-	"version": "4.2.0",
+	"version": "4.3.0-alpha.1",
 	"private": false,
 	"description": "Includes the Ontario Design System global styles that are used for more generic elements and layouts, as well as fonts and favicon files.",
 	"license": "Apache-2.0",
@@ -27,7 +27,7 @@
 		"gulp-if": "^3.0.0",
 		"gulp-sass": "^5.1.0",
 		"sass": "^1.56.2",
-		"@ongov/ontario-design-system-design-tokens": "4.2.0"
+		"@ongov/ontario-design-system-design-tokens": "4.3.0-alpha.1"
 	},
 	"publishConfig": {
 		"access": "public"
