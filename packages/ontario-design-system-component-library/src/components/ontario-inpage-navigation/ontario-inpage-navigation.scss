@@ -1,3 +1,79 @@
-:host {
-	display: block;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as fontSizes;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+
+.ontario-page-navigation {
+	border-top: 3px solid colours.$ontario-colour-black;
+	border-bottom: 3px solid colours.$ontario-greyscale-20;
+	padding: spacing.$spacing-0;
+	max-width: 46rem;
+}
+
+.ontario-page-navigation--no-top-border {
+	border-top: none;
+}
+
+.ontario-page-navigation--full {
+	border-top: 3px solid colours.$ontario-colour-black;
+	max-width: 100%;
+}
+
+.ontario-page-navigation-content {
+	padding: spacing.$spacing-7 spacing.$spacing-0;
+	max-width: 46rem;
+}
+
+.ontario-page-navigation-content--full {
+	padding-top: spacing.$spacing-7;
+	max-width: 100%;
+}
+
+.ontario-page-navigation-header {
+	@extend %h3-styles;
+	margin-bottom: spacing.$spacing-0;
+}
+
+.ontario-page-navigation-list {
+	padding: spacing.$spacing-0;
+	padding-left: spacing.$spacing-4 + globalFunctions.px-to-rem(4);
+	margin: spacing.$spacing-0;
+	margin-top: spacing.$spacing-4;
+	list-style-type: disc;
+}
+
+.ontario-page-navigation-list__item {
+	padding-bottom: spacing.$spacing-4 + globalFunctions.px-to-rem(4);
+	padding-left: spacing.$spacing-0;
+
+	& > a.ontario-page-navigation-item__link {
+		font-family: typography.$ontario-font-open-sans;
+		font-size: globalFunctions.px-to-rem(18);
+		line-height: globalFunctions.px-to-rem(25.6);
+		font-weight: fontWeights.$ontario-font-weights-semi-bold;
+		font-style: normal;
+		margin-left: spacing.$spacing-0;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+// Two Column Layout
+.ontario-page-navigation-columns {
+	display: flex;
+	flex-direction: row;
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		flex-direction: column;
+	}
+}
+
+.ontario-page-navigation-col {
+	flex: 1;
 }
