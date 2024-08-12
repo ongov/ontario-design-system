@@ -9,6 +9,7 @@ import { ExpandCollapseButtonDetails } from "./components/ontario-accordion/expa
 import { Accordion } from "./components/ontario-accordion/accordion.interface";
 import { Language } from "./utils/common/language-types";
 import { HeadingContentType, HeadingLevelOptions, HighlightColourOptions } from "./utils/components/callout-aside/callout-aside.interface";
+import { BadgeColour } from "./components/ontario-badge/ontario-badge.types";
 import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
 import { CardType, HeaderType, HorizontalImagePositionType, HorizontalImageSizeType } from "./components/ontario-card/ontario-card-types";
 import { CardsPerRow } from "./components/ontario-card-collection/ontario-collection-card-types";
@@ -32,6 +33,7 @@ export { ExpandCollapseButtonDetails } from "./components/ontario-accordion/expa
 export { Accordion } from "./components/ontario-accordion/accordion.interface";
 export { Language } from "./utils/common/language-types";
 export { HeadingContentType, HeadingLevelOptions, HighlightColourOptions } from "./utils/components/callout-aside/callout-aside.interface";
+export { BadgeColour } from "./components/ontario-badge/ontario-badge.types";
 export { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
 export { CardType, HeaderType, HorizontalImagePositionType, HorizontalImageSizeType } from "./components/ontario-card/ontario-card-types";
 export { CardsPerRow } from "./components/ontario-card-collection/ontario-collection-card-types";
@@ -104,6 +106,21 @@ export namespace Components {
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language prop is passed, it will default to English.
          */
         "language"?: Language;
+    }
+    interface OntarioBadge {
+        /**
+          * An aria label for screen readers.  Used to provide more context to screen readers if necessary.  This property is optional.
+          * @example <ontario-badge aria-label-text="This training is currently in progress.">In progress</ontario-badge>
+         */
+        "ariaLabelText"?: string;
+        /**
+          * The colour of the badge.
+         */
+        "colour": BadgeColour;
+        /**
+          * The label for the badge.  Offical guidance is to keep the label length within 15 characters.
+         */
+        "label": string;
     }
     interface OntarioBlockquote {
         /**
@@ -1915,6 +1932,12 @@ declare global {
         prototype: HTMLOntarioBackToTopElement;
         new (): HTMLOntarioBackToTopElement;
     };
+    interface HTMLOntarioBadgeElement extends Components.OntarioBadge, HTMLStencilElement {
+    }
+    var HTMLOntarioBadgeElement: {
+        prototype: HTMLOntarioBadgeElement;
+        new (): HTMLOntarioBadgeElement;
+    };
     interface HTMLOntarioBlockquoteElement extends Components.OntarioBlockquote, HTMLStencilElement {
     }
     var HTMLOntarioBlockquoteElement: {
@@ -2839,6 +2862,7 @@ declare global {
         "ontario-accordion": HTMLOntarioAccordionElement;
         "ontario-aside": HTMLOntarioAsideElement;
         "ontario-back-to-top": HTMLOntarioBackToTopElement;
+        "ontario-badge": HTMLOntarioBadgeElement;
         "ontario-blockquote": HTMLOntarioBlockquoteElement;
         "ontario-button": HTMLOntarioButtonElement;
         "ontario-callout": HTMLOntarioCalloutElement;
@@ -3028,6 +3052,21 @@ declare namespace LocalJSX {
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language prop is passed, it will default to English.
          */
         "language"?: Language;
+    }
+    interface OntarioBadge {
+        /**
+          * An aria label for screen readers.  Used to provide more context to screen readers if necessary.  This property is optional.
+          * @example <ontario-badge aria-label-text="This training is currently in progress.">In progress</ontario-badge>
+         */
+        "ariaLabelText"?: string;
+        /**
+          * The colour of the badge.
+         */
+        "colour"?: BadgeColour;
+        /**
+          * The label for the badge.  Offical guidance is to keep the label length within 15 characters.
+         */
+        "label"?: string;
     }
     interface OntarioBlockquote {
         /**
@@ -4912,6 +4951,7 @@ declare namespace LocalJSX {
         "ontario-accordion": OntarioAccordion;
         "ontario-aside": OntarioAside;
         "ontario-back-to-top": OntarioBackToTop;
+        "ontario-badge": OntarioBadge;
         "ontario-blockquote": OntarioBlockquote;
         "ontario-button": OntarioButton;
         "ontario-callout": OntarioCallout;
@@ -5055,6 +5095,7 @@ declare module "@stencil/core" {
             "ontario-accordion": LocalJSX.OntarioAccordion & JSXBase.HTMLAttributes<HTMLOntarioAccordionElement>;
             "ontario-aside": LocalJSX.OntarioAside & JSXBase.HTMLAttributes<HTMLOntarioAsideElement>;
             "ontario-back-to-top": LocalJSX.OntarioBackToTop & JSXBase.HTMLAttributes<HTMLOntarioBackToTopElement>;
+            "ontario-badge": LocalJSX.OntarioBadge & JSXBase.HTMLAttributes<HTMLOntarioBadgeElement>;
             "ontario-blockquote": LocalJSX.OntarioBlockquote & JSXBase.HTMLAttributes<HTMLOntarioBlockquoteElement>;
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             "ontario-callout": LocalJSX.OntarioCallout & JSXBase.HTMLAttributes<HTMLOntarioCalloutElement>;

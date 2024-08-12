@@ -1,0 +1,71 @@
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as fontSizes;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+
+.ontario-badge__container {
+	display: flex;
+	flex-direction: column;
+	gap: spacing.$spacing-7;
+	align-items: flex-start;
+	padding: spacing.$spacing-5 spacing.$spacing-4;
+}
+
+.ontario-badge__label {
+	display: block;
+	text-align: left;
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	margin-bottom: spacing.$spacing-3;
+	font-size: fontSizes.$ontario-font-size-small;
+	color: colours.$ontario-greyscale-70;
+}
+
+.ontario-badge {
+	display: inline-block;
+	background-color: colours.$ontario-colour-information-light;
+	color: colours.$ontario-greyscale-70;
+	padding: spacing.$spacing-1 spacing.$spacing-2;
+	font-family: typography.$ontario-font-raleway-modified;
+	font-size: fontSizes.$ontario-font-size-standard-body-text;
+	font-weight: fontWeights.$ontario-font-weights-bold;
+	line-height: globalFunctions.px-to-rem(25);
+	letter-spacing: 0.03rem;
+	text-transform: uppercase;
+}
+
+.ontario-badge--default-light {
+	background-color: colours.$ontario-colour-information-light;
+	color: colours.$ontario-greyscale-70;
+}
+
+.ontario-badge--default-heavy {
+	background-color: colours.$ontario-colour-information;
+	color: colours.$ontario-colour-white;
+}
+
+.ontario-badge--neutral-light {
+	background-color: colours.$ontario-greyscale-5;
+	color: colours.$ontario-greyscale-70;
+}
+
+.ontario-badge--neutral-heavy {
+	background-color: colours.$ontario-colour-black;
+	color: colours.$ontario-colour-white;
+}
+
+.ontario-badge--alert-heavy {
+	background-color: colours.$ontario-colour-alert;
+	color: colours.$ontario-colour-white;
+}
+
+.ontario-badge--warning-heavy {
+	background-color: colours.$ontario-colour-warning;
+	color: colours.$ontario-colour-black;
+}
+
+.ontario-badge--success-heavy {
+	background-color: colours.$ontario-colour-success;
+	color: colours.$ontario-colour-white;
+}
