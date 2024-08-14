@@ -463,9 +463,11 @@
 					<!-- In-page Navigation -->
 					<div>
 						<h2 id="inpage-navigation">In-page Navigation</h2>
-						<div style="position: relative; height: 25vh">
-							<ontario-inpage-navigation />
-						</div>
+						<ontario-inpage-navigation heading="On this page heading" />
+						<hr />
+						<ontario-inpage-navigation
+							nav-items='[["Link 01", "#"], ["Link 02", "#"], ["Link 03", "#"], ["Link 04", "#"], ["Link 05", "#"]]'
+						></ontario-inpage-navigation>
 						<hr />
 					</div>
 

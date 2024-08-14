@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element } from '@stencil/core';
+import { Component, h, Prop, Element, Watch, State } from '@stencil/core';
 
 @Component({
 	tag: 'ontario-inpage-navigation',
@@ -18,24 +18,55 @@ export class OntarioInpageNavigation {
 	/**
 	 * The 2d array for navigation links, link text to display and the linked section id href.
 	 *
-	 * If the array items are passsed, the navigation list will populate with the passed link text and href. Else, the default navigation items will be used.
+	 * If the array items are passed, the navigation list will populate with the passed link text and href. Else, the default navigation items will be used.
 	 */
-	@Prop() navItems?: [string, string][] = [
-		['About the program', '#'],
-		['Eligibility', '#'],
-		['Available funding', '#'],
-		['Program guide', '#'],
-		['Contact us', '#'],
-	];
+	@Prop() navItems?: string;
+
+	@State() parsedNavItems: [string, string][] = [];
+
+	@Watch('navItems')
+	parseNavItems(newValue: string) {
+		if (newValue) {
+			try {
+				console.log('Parsing navItems:', newValue);
+				const parsed = JSON.parse(newValue);
+				if (Array.isArray(parsed) && parsed.every((item) => Array.isArray(item) && item.length === 2)) {
+					this.parsedNavItems = parsed;
+				} else {
+					throw new Error('Invalid format');
+				}
+			} catch (e) {
+				console.error('Failed to parse navItems:', e);
+				this.setDefaultNavItems();
+			}
+		} else {
+			this.setDefaultNavItems();
+		}
+	}
+
+	setDefaultNavItems() {
+		this.parsedNavItems = [
+			['About the program', '#'],
+			['Eligibility', '#'],
+			['Available funding', '#'],
+			['Program guide', '#'],
+			['Contact us', '#'],
+		];
+	}
+
+	componentWillLoad() {
+		this.parseNavItems(this.navItems || '');
+	}
 
 	/**
 	 * The boolean value for changing the list from one column to two.
 	 *
-	 * By default the links will appear in one columne, in case the user passes the value `true`, the list items will appear in two columns.
+	 * By default the links will appear in one column, in case the user passes the value `true`, the list items will appear in two columns.
 	 */
 	@Prop() columns?: boolean = false;
 
 	render() {
+		console.log('Rendering with parsedNavItems:', this.parsedNavItems);
 		return (
 			<div class="ontario-inpage-navigation">
 				<nav aria-labelledby="inpage-nav-title">
@@ -50,8 +81,8 @@ export class OntarioInpageNavigation {
 										Skip this page navigation
 									</a>
 									<ol class="ontario-page-navigation-list">
-										{this.navItems?.map(([text, href]) => (
-											<li class="ontario-page-navigation-list__item">
+										{this.parsedNavItems.map(([text, href]) => (
+											<li key={text} class="ontario-page-navigation-list__item">
 												<a class="ontario-page-navigation-item__link" href={href}>
 													{text}
 												</a>
