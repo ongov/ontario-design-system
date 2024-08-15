@@ -137,6 +137,7 @@ export const OntarioIconVpnKey = /*@__PURE__*/createReactComponent<JSX.OntarioIc
 export const OntarioIconWheelchair = /*@__PURE__*/createReactComponent<JSX.OntarioIconWheelchair, HTMLOntarioIconWheelchairElement>('ontario-icon-wheelchair');
 export const OntarioIconWifi = /*@__PURE__*/createReactComponent<JSX.OntarioIconWifi, HTMLOntarioIconWifiElement>('ontario-icon-wifi');
 export const OntarioIconYoutube = /*@__PURE__*/createReactComponent<JSX.OntarioIconYoutube, HTMLOntarioIconYoutubeElement>('ontario-icon-youtube');
+export const OntarioInPageNavigation = /*@__PURE__*/createReactComponent<JSX.OntarioInPageNavigation, HTMLOntarioInPageNavigationElement>('ontario-in-page-navigation');
 export const OntarioInput = /*@__PURE__*/createReactComponent<JSX.OntarioInput, HTMLOntarioInputElement>('ontario-input');
 export const OntarioLanguageToggle = /*@__PURE__*/createReactComponent<JSX.OntarioLanguageToggle, HTMLOntarioLanguageToggleElement>('ontario-language-toggle');
 export const OntarioLoadingIndicator = /*@__PURE__*/createReactComponent<JSX.OntarioLoadingIndicator, HTMLOntarioLoadingIndicatorElement>('ontario-loading-indicator');

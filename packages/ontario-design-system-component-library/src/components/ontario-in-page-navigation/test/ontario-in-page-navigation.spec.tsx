@@ -1,10 +1,10 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { OntarioInpageNavigation } from '../ontario-inpage-navigation';
+import { OntarioInPageNavigation } from '../ontario-in-page-navigation';
 
 describe('ontario-inpage-navigation', () => {
 	it('renders', async () => {
 		const page = await newSpecPage({
-			components: [OntarioInpageNavigation],
+			components: [OntarioInPageNavigation],
 			html: `<ontario-inpage-navigation></ontario-inpage-navigation>`,
 		});
 		expect(page.root).toEqualHtml(`

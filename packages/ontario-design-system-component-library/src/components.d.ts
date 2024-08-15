@@ -52,6 +52,7 @@ import {
 	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 import { IconColour, IconSize } from './components/ontario-icon/icon.types';
+import { NavigationItem } from './components/ontario-in-page-navigation/ontario-in-page-navigation.types';
 import { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
@@ -103,6 +104,7 @@ export {
 	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 export { IconColour, IconSize } from './components/ontario-icon/icon.types';
+export { NavigationItem } from './components/ontario-in-page-navigation/ontario-in-page-navigation.types';
 export { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
 export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 export { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
@@ -1618,6 +1620,20 @@ export namespace Components {
 		 */
 		iconWidth: IconSize;
 	}
+	interface OntarioInPageNavigation {
+		/**
+		 * The string for the inpage navigation heading.  If a string is passed, the h2 tag will be populated with the passed string. Else, the default string "On this page" will be used for the heading.
+		 */
+		heading?: string;
+		/**
+		 * The 2d array for navigation links, link text to display and the linked section id href.  If the array items are passed, the navigation list will populate with the passed link text and href. Else, the default navigation items will be used.
+		 */
+		items?: Array<NavigationItem> | string;
+		/**
+		 * The boolean value for changing the list from one column to two.  By default the links will appear in one column, in case the user passes the value `true`, the list items will appear in two columns.
+		 */
+		twoColumns?: boolean;
+	}
 	interface OntarioInput {
 		/**
 		 * The text to display as the input label
@@ -2817,6 +2833,11 @@ declare global {
 		prototype: HTMLOntarioIconYoutubeElement;
 		new (): HTMLOntarioIconYoutubeElement;
 	};
+	interface HTMLOntarioInPageNavigationElement extends Components.OntarioInPageNavigation, HTMLStencilElement {}
+	var HTMLOntarioInPageNavigationElement: {
+		prototype: HTMLOntarioInPageNavigationElement;
+		new (): HTMLOntarioInPageNavigationElement;
+	};
 	interface HTMLOntarioInputElementEventMap {
 		inputOnInput: InputInputEvent;
 		inputOnChange: InputInteractionEvent;
@@ -3193,6 +3214,7 @@ declare global {
 		'ontario-icon-wheelchair': HTMLOntarioIconWheelchairElement;
 		'ontario-icon-wifi': HTMLOntarioIconWifiElement;
 		'ontario-icon-youtube': HTMLOntarioIconYoutubeElement;
+		'ontario-in-page-navigation': HTMLOntarioInPageNavigationElement;
 		'ontario-input': HTMLOntarioInputElement;
 		'ontario-language-toggle': HTMLOntarioLanguageToggleElement;
 		'ontario-loading-indicator': HTMLOntarioLoadingIndicatorElement;
@@ -4775,6 +4797,20 @@ declare namespace LocalJSX {
 		 */
 		iconWidth?: IconSize;
 	}
+	interface OntarioInPageNavigation {
+		/**
+		 * The string for the inpage navigation heading.  If a string is passed, the h2 tag will be populated with the passed string. Else, the default string "On this page" will be used for the heading.
+		 */
+		heading?: string;
+		/**
+		 * The 2d array for navigation links, link text to display and the linked section id href.  If the array items are passed, the navigation list will populate with the passed link text and href. Else, the default navigation items will be used.
+		 */
+		items?: Array<NavigationItem> | string;
+		/**
+		 * The boolean value for changing the list from one column to two.  By default the links will appear in one column, in case the user passes the value `true`, the list items will appear in two columns.
+		 */
+		twoColumns?: boolean;
+	}
 	interface OntarioInput {
 		/**
 		 * The text to display as the input label
@@ -5271,6 +5307,7 @@ declare namespace LocalJSX {
 		'ontario-icon-wheelchair': OntarioIconWheelchair;
 		'ontario-icon-wifi': OntarioIconWifi;
 		'ontario-icon-youtube': OntarioIconYoutube;
+		'ontario-in-page-navigation': OntarioInPageNavigation;
 		'ontario-input': OntarioInput;
 		'ontario-language-toggle': OntarioLanguageToggle;
 		'ontario-loading-indicator': OntarioLoadingIndicator;
@@ -5472,6 +5509,8 @@ declare module '@stencil/core' {
 				JSXBase.HTMLAttributes<HTMLOntarioIconWheelchairElement>;
 			'ontario-icon-wifi': LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
 			'ontario-icon-youtube': LocalJSX.OntarioIconYoutube & JSXBase.HTMLAttributes<HTMLOntarioIconYoutubeElement>;
+			'ontario-in-page-navigation': LocalJSX.OntarioInPageNavigation &
+				JSXBase.HTMLAttributes<HTMLOntarioInPageNavigationElement>;
 			'ontario-input': LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
 			'ontario-language-toggle': LocalJSX.OntarioLanguageToggle &
 				JSXBase.HTMLAttributes<HTMLOntarioLanguageToggleElement>;
