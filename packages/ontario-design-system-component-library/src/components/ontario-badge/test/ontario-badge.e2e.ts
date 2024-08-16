@@ -1,65 +1,105 @@
-// import { newE2EPage } from '@stencil/core/testing';
+import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 
-// describe('ontario-callout', () => {
-// 	it('renders', async () => {
-// 		const page = await newE2EPage();
-// 		await page.setContent('<ontario-callout></ontario-callout>');
-// 		const component = await page.find('ontario-callout');
-// 		const element = await page.find('ontario-callout >>> div');
+describe('ontario-badge', () => {
+	it('renders', async () => {
+		const page = await newE2EPage();
+		await page.setContent('<ontario-badge></ontario-badge>');
+		const component = await page.find('ontario-badge');
+		const element = await page.find('ontario-badge >>> span');
 
-// 		expect(component).toHaveClass('hydrated');
-// 		expect(element).toHaveClasses(['ontario-callout', 'ontario-border-highlight--teal']);
-// 	});
+		expect(component).toHaveClass('hydrated');
+		expect(element).toHaveClasses(['ontario-badge', 'ontario-badge--default-heavy']);
+	});
 
-// 	describe('render changes', () => {
-// 		let page: any;
-// 		let component: any;
-// 		let element: any;
+	describe('render prop changes', () => {
+		let page: E2EPage;
+		let component: E2EElement;
+		let element: E2EElement;
 
-// 		beforeEach(async () => {
-// 			page = await newE2EPage();
-// 			await page.setContent('<ontario-callout></ontario-callout>');
-// 			component = await page.find('ontario-callout');
-// 			element = await page.find('ontario-callout >>> div');
-// 		});
+		beforeEach(async () => {
+			page = await newE2EPage();
+			await page.setContent('<ontario-badge></ontario-badge>');
+			component = await page.find('ontario-badge');
+			element = await page.find('ontario-badge >>> span');
+		});
 
-// 		it('renders changes to the headingType property', async () => {
-// 			component.setProperty('headingType', 'h3');
-// 			await page.waitForChanges();
+		it('renders changes to the class names when the colour prop is changed', async () => {
+			component.setProperty('colour', 'light-teal');
+			await page.waitForChanges();
 
-// 			expect(element.firstChild.nodeName).toBe('H3');
+			expect(element).toHaveClasses(['ontario-badge', 'ontario-badge--default-light']);
 
-// 			component.setProperty('headingType', 'h4');
-// 			await page.waitForChanges();
-// 			expect(element.firstChild.nodeName).toBe('H4');
-// 		});
+			component.setProperty('colour', 'black');
+			await page.waitForChanges();
 
-// 		it('renders changes to the class names when the highlightColor is changed', async () => {
-// 			component.setProperty('highlightColour', 'gold');
-// 			await page.waitForChanges();
+			expect(element).toHaveClasses(['ontario-badge', 'ontario-badge--neutral-heavy']);
+		});
 
-// 			expect(element).toHaveClasses(['ontario-callout', 'ontario-border-highlight--gold']);
+		/*
+		 * TODO: Haven't found an ideal way yet to test the aria-label-text property and how
+		 * it should create an aria-label attribute on the element.
+		 */
+		// it('renders changes to the aria-label-text property', async () => {
+		// component.setProperty('aria-label-text', 'This is aria label text.');
+		// await page.waitForChanges();
 
-// 			component.setProperty('highlightColour', 'lime');
-// 			await page.waitForChanges();
+		// expect(element.getAttribute("ariaLabel")).toBe("This is aria label text.");
 
-// 			expect(element).toHaveClasses(['ontario-callout', 'ontario-border-highlight--lime']);
-// 		});
+		// expect(element).toHaveAttribute('aria-label');
 
-// 		it('renders changes to the HTML through the headingContentType property', async () => {
-// 			component.setProperty('headingContentType', 'string');
-// 			component.setProperty('headingContent', 'Get notified');
-// 			await page.waitForChanges();
+		// let v = await page.$eval(element, (element: { hasAttribute: (arg0: string) => any; }) => element.hasAttribute("aria-label"))
+		// expect(v).toBe(true);
+		// let el: any;
+		// let value = await page.evaluate(element => element ? element.getAttribute("aria-label") : null, el);
+		// expect(value).toBe(true);
 
-// 			const heading = await page.find('ontario-callout >>> h2');
+		// element.hasAttribute("aria-label").toBe(true);
+		// expect(hasAriaLabelAttribute).toBe(true);
+		// await page.evaluate(`${element}.getAttribute("data-Color")`)
 
-// 			expect(heading).toEqualHtml('<h2 class="ontario-callout__title ontario-h5">Get notified</h2>');
+		// expect(element.getAttribute('aria-label')).toBe('This is aria label text.');
+		// });
+	});
 
-// 			component.setProperty('headingContentType', 'html');
-// 			component.setProperty('headingContent', '<a href="#">Get notified</a>');
-// 			await page.waitForChanges();
+	describe('render text content changes', () => {
+		let page: E2EPage;
 
-// 			expect(heading).toEqualHtml('<h2 class="ontario-callout__title ontario-h5"><a href="#">Get notified</a></h2>');
-// 		});
-// 	});
-// });
+		beforeEach(async () => {
+			page = await newE2EPage();
+		});
+
+		it('renders changes to the component content when the host textContent is changed', async () => {
+			await page.setContent('<ontario-badge>Not started</ontario-badge>');
+			const element = await page.find('ontario-badge >>> span');
+
+			expect(element).toEqualText('Not started');
+		});
+
+		it('renders changes to the component content when the label prop is changed', async () => {
+			await page.setContent('<ontario-badge></ontario-badge>');
+			const component = await page.find('ontario-badge');
+			const element = await page.find('ontario-badge >>> span');
+
+			component.setProperty('label', 'Completed');
+			await page.waitForChanges();
+
+			expect(element).toEqualText('Completed');
+
+			component.setProperty('label', 'In progress');
+			await page.waitForChanges();
+
+			expect(element).toEqualText('In progress');
+		});
+
+		it('renders label content as priority even if host textContent is set', async () => {
+			await page.setContent('<ontario-badge>Not started</ontario-badge>');
+			const component = await page.find('ontario-badge');
+			const element = await page.find('ontario-badge >>> span');
+
+			component.setProperty('label', 'In progress');
+			await page.waitForChanges();
+
+			expect(element).toEqualText('In progress');
+		});
+	});
+});
