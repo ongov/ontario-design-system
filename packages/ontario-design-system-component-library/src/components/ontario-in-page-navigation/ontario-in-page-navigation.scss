@@ -5,6 +5,9 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
+@use '../../styles/form.scss';
+@forward '../../utils/components/error-message/error-message';
 
 .ontario-page-navigation {
 	border-top: 3px solid colours.$ontario-colour-black;
@@ -66,14 +69,18 @@
 
 // Two Column Layout
 .ontario-page-navigation-columns {
-	display: flex;
-	flex-direction: row;
+	columns: 2;
+	column-gap: 1rem;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
-		flex-direction: column;
+		columns: 1;
 	}
 }
 
-.ontario-page-navigation-col {
-	flex: 1;
+.breakpoint {
+	break-before: column; // Will add this class only if the user updates the choice using two-column prop
 }
+
+// .ontario-page-navigation-col {
+// 	flex: 1;
+// }
