@@ -1,3 +1,9 @@
+# 4.3.0-alpha.2 (2024-08-19)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library:** stacking all cards in one column on small breakpoints 67958f1
+
 # 4.3.0-alpha.1 (2024-08-07)
 
 ### Bug Fixes
