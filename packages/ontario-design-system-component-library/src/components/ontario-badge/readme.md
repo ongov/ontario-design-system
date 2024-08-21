@@ -2,7 +2,9 @@ import { OntarioBadge } from '@ongov/ontario-design-system-component-library-rea
 
 # ontario-badge
 
-Use callouts to highlight in-page content.
+Use badges to indicate the status of a page or section.
+
+Do not use a badge to bring a user’s attention to important content.
 
 ## Usage guidance
 
@@ -14,43 +16,41 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
-Example of a badge component, where the user is explicitly passing in content through the `content` property.
+Example of a badge component, where the user is explicitly passing in content through the `label` property.
 
 ```html
-<ontario-badge content="Not started"></ontario-badge>
+<ontario-badge label="Not started"></ontario-badge>
 ```
 
 <div>
-	<OntarioCallout
-		content="Not started"
-	></OntarioCallout>
+	<OntarioBadge
+		label="Not started"
+	></OntarioBadge>
 </div>
 
 This is another example of a badge. This time, the content is passed as a child of the `ontario-badge` component. A `colour` option is also passed.
 
 ```html
-<ontario-callout color="lightTeal"> Completed </ontario-callout>
+<ontario-callout color="light-teal">Completed</ontario-callout>
 ```
 
 <div>
-	<OntarioCallout
-		color="lightTeal"
+	<OntarioBadge
+		color="light-teal"
 	>
 		Completed
-	</OntarioCallout>
+	</OntarioBadge>
 </div>
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property             | Attribute              | Description                                                                                                                                                                                                                                                                                    | Type                                                                                                       | Default     |
-| -------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ----------- |
-| `content`            | `content`              | Optional text to be displayed as the content for the callout component. If a string is passed, it will automatically be nested in a paragraph tag. HTML content can also be passed as the child/children of the callout component if additional/different elements for the content are needed. | `string \| undefined`                                                                                      | `undefined` |
-| `headingContent`     | `heading-content`      | Text or HTML to be displayed as the heading of the callout. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to `html`.                                                                                                                            | `string`                                                                                                   | `undefined` |
-| `headingContentType` | `heading-content-type` | The type of the heading content. If no prop is passed, it will default to `string`.                                                                                                                                                                                                            | `"html" \| "string"`                                                                                       | `'string'`  |
-| `headingType`        | `heading-type`         | The heading level of the callout heading.                                                                                                                                                                                                                                                      | `"h2" \| "h3" \| "h4" \| "h5" \| "h6"`                                                                     | `undefined` |
-| `highlightColour`    | `highlight-colour`     | Optional prop to choose the border colour of the callout. If none is passed, the default colour will be teal.                                                                                                                                                                                  | `"blue" \| "gold" \| "green" \| "lime" \| "purple" \| "sky" \| "taupe" \| "teal" \| "yellow" \| undefined` | `'teal'`    |
+| Property        | Attribute         | Description                                                                                                               | Type                                                                          | Default     |
+| --------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------- |
+| `ariaLabelText` | `aria-label-text` | An aria label for screen readers. Used to provide more context to screen readers if necessary. This property is optional. | `string \| undefined`                                                         | `undefined` |
+| `colour`        | `colour`          | The colour of the badge.                                                                                                  | `"black" \| "green" \| "grey" \| "light-teal" \| "red" \| "teal" \| "yellow"` | `'teal'`    |
+| `label`         | `label`           | The label for the badge. Offical guidance is to keep the label length within 15 characters.                               | `string`                                                                      | `undefined` |
 
 ---
 

@@ -110,11 +110,9 @@ export class OntarioBadge {
 
 	render() {
 		return (
-			// <div class="ontario-badge__container">
 			<span class={`ontario-badge ${BadgeColourToClass[this.colour]}`} aria-label={this.ariaLabelText}>
 				{this.getBadgeLabel()}
 			</span>
-			// </div>
 		);
 	}
 }
