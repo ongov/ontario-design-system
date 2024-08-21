@@ -4,6 +4,7 @@ export const DIRECTIVES = [
 	d.OntarioAccordion,
 	d.OntarioAside,
 	d.OntarioBackToTop,
+	d.OntarioBadge,
 	d.OntarioBlockquote,
 	d.OntarioButton,
 	d.OntarioCallout,
