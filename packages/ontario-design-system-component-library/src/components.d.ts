@@ -1725,7 +1725,10 @@ export namespace Components {
 		 * A custom function to pass to the language toggle button.  This is optional.
 		 */
 		customLanguageToggle?: (event: globalThis.Event) => void;
-		language: Language | string;
+		/**
+		 * The language of the component.  In most cases, the language toggle should be the source of truth for determining the site language.  Only pass a language value here if necessary.
+		 */
+		language: Language;
 		/**
 		 * The size of the language toggle button.  If no prop is passed, it will be set to the `default` size.
 		 */
@@ -2893,7 +2896,7 @@ declare global {
 		new (): HTMLOntarioInputElement;
 	};
 	interface HTMLOntarioLanguageToggleElementEventMap {
-		setAppLanguage: string;
+		setAppLanguage: Language;
 		headerLanguageToggled: HeaderLanguageToggleEventDetails;
 	}
 	interface HTMLOntarioLanguageToggleElement extends Components.OntarioLanguageToggle, HTMLStencilElement {
@@ -4923,15 +4926,20 @@ declare namespace LocalJSX {
 		 * A custom function to pass to the language toggle button.  This is optional.
 		 */
 		customLanguageToggle?: (event: globalThis.Event) => void;
-		language?: Language | string;
+		/**
+		 * The language of the component.  In most cases, the language toggle should be the source of truth for determining the site language.  Only pass a language value here if necessary.
+		 */
+		language?: Language;
 		/**
 		 * An event that emits to other components that the language toggle button has been toggled.
+		 * @param oldLanguage - The language prior to the language toggle being pressed.
+		 * @param event - event that triggered the function (e.g. onclick).
 		 */
 		onHeaderLanguageToggled?: (event: OntarioLanguageToggleCustomEvent<HeaderLanguageToggleEventDetails>) => void;
 		/**
 		 * An event to set the Document's HTML lang property, and emit the toggled language to other components.
 		 */
-		onSetAppLanguage?: (event: OntarioLanguageToggleCustomEvent<string>) => void;
+		onSetAppLanguage?: (event: OntarioLanguageToggleCustomEvent<Language>) => void;
 		/**
 		 * The size of the language toggle button.  If no prop is passed, it will be set to the `default` size.
 		 */

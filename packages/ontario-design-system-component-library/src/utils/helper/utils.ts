@@ -82,3 +82,18 @@ export function isEmpty(str: string | undefined | null): boolean {
 export function retrieveEnumKeys(enumObject: object): string[] {
 	return Object.keys(enumObject).filter(isNumber);
 }
+
+/**
+ * Prints an array as a comma delimited list, with the last element being preceded by a conjunction.
+ * As per ontario.ca content guidelines, there is no Oxford comma.
+ *
+ * @param {Array<any>} arr - The array that you wish to print.
+ * @param {string} conjunctionType - and/or | Whether you want the sentence to end with 'and value.' or 'or value.'
+ *
+ * @returns {string}
+ */
+export function printArray(arr: Array<any>, conjunctionType: 'and' | 'or' = 'and'): string {
+	return [...arr].reduce(
+		(text, value, i, array) => text + (i < array.length - 1 ? ', ' : ` ${conjunctionType} `) + value,
+	);
+}

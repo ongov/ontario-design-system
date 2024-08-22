@@ -115,7 +115,7 @@ export class OntarioHeader {
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
-	@Prop({ mutable: true }) language?: Language = 'en';
+	@Prop({ mutable: true }) language?: Language | string = 'en';
 
 	/**
 	 * The base path to an assets folder containing the Design System assets
@@ -254,7 +254,11 @@ export class OntarioHeader {
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
 	handleSetAppLanguage(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+		if (document.documentElement.lang) {
+			this.language = document.documentElement.lang;
+		} else {
+			this.language = validateLanguage(event);
+		}
 	}
 
 	/**
@@ -573,7 +577,6 @@ export class OntarioHeader {
 										url={this.language === 'en' ? this.languageState?.frenchLink : this.languageState?.englishLink}
 										size="default"
 										customLanguageToggle={this.customLanguageToggle}
-										language={this.language}
 									></ontario-language-toggle>
 									<button
 										class="ontario-header__search-toggler ontario-header-button ontario-header-button--without-outline ontario-hide-for-large"
@@ -674,7 +677,6 @@ export class OntarioHeader {
 										size="small"
 										url={this.language === 'en' ? this.languageState?.frenchLink : this.languageState?.englishLink}
 										customLanguageToggle={this.customLanguageToggle}
-										language={this.language}
 									></ontario-language-toggle>
 								</div>
 							</div>

@@ -81,6 +81,10 @@
 			"fr": "Cliquez pour changer de langue en anglais"
 		}
 	},
+	"siteLanguage": {
+		"english": "English",
+		"french": "Français"
+	},
 	"stepIndicator": {
 		"back": {
 			"en": "Back",

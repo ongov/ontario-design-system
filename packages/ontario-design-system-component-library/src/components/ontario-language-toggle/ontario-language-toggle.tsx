@@ -1,10 +1,12 @@
 import { Component, Prop, State, Event, EventEmitter, Watch, h, Fragment } from '@stencil/core';
 
-import { Language } from '../../utils/common/language-types';
-import { validateLanguage } from '../../utils/validation/validation-functions';
+import { supportedLanguages, Language } from '../../utils/common/language-types';
 
 import { default as translations } from '../../translations/global.i18n.json';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printArray } from '../../utils/helper/utils';
 
 @Component({
 	tag: 'ontario-language-toggle',
@@ -12,7 +14,29 @@ import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-even
 	shadow: true,
 })
 export class OntarioLanguageToggle {
-	@Prop({ mutable: true }) language: Language | string;
+	/**
+	 * The language of the component.
+	 *
+	 * In most cases, the language toggle should be the source of truth for determining the site language.
+	 *
+	 * Only pass a language value here if necessary.
+	 */
+	@Prop({ mutable: true }) language: Language;
+
+	@State() languageState: Language;
+
+	@Watch('language')
+	/**
+	 * Updates the language and languageState props when changes to the language prop are detected.
+	 */
+	updateLanguage() {
+		if (!validateValueAgainstArray(this.language, supportedLanguages)) {
+			this.showLanguageWarning(this.language);
+			this.language = 'en';
+		}
+		this.languageState = this.language;
+		this.setAppLanguageHandler();
+	}
 
 	/**
 	 * The size of the language toggle button.
@@ -38,89 +62,124 @@ export class OntarioLanguageToggle {
 	@State() translations: any = translations;
 
 	/**
+	 * Prints a warning message to the console about using an incorrect language for the component.
+	 *
+	 * @param {string} lang - The incorrect language that was received.
+	 * @param {string} type - prop/document | Where the incorrect language is coming from.
+	 */
+	showLanguageWarning(lang: string, type: 'prop' | 'document' = 'prop') {
+		const propOrDocumentMessage =
+			type === 'prop' ? `The language prop value of ${lang} ` : `The HTML document lang attribute value of ${lang} `;
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addRegularText(propOrDocumentMessage)
+			.addRegularText('is not a valid language value for the ')
+			.addMonospaceText(' <ontario-language-toggle> ')
+			.addRegularText(`component. Valid language values are ${printArray([...supportedLanguages])}. `)
+			.addRegularText('A default language value of `en` will be applied.')
+			.printMessage();
+	}
+
+	/**
 	 * An event to set the Document's HTML lang property, and emit the toggled language to other components.
 	 */
-	@Event() setAppLanguage: EventEmitter<string>;
+	@Event() setAppLanguage: EventEmitter<Language>;
 	setAppLanguageHandler() {
-		let lang: string | Language;
-		if (this.language) {
-			lang = this.language;
-		} else if (document.documentElement.lang) {
-			lang = document.documentElement.lang;
-		} else {
-			lang = 'en';
+		if (!this.languageState) {
+			if (document?.documentElement.lang) {
+				if (validateValueAgainstArray(document.documentElement.lang, supportedLanguages)) {
+					this.languageState = document.documentElement.lang as Language;
+				} else {
+					this.showLanguageWarning(document.documentElement.lang, 'document');
+					this.languageState = 'en';
+				}
+			} else {
+				this.languageState = 'en';
+			}
 		}
 
-		this.language = lang;
-		this.setAppLanguage.emit(lang);
-
-		this.updateHTMLLang(lang);
+		this.setAppLanguage.emit(this.languageState);
+		this.updateHTMLLang();
 	}
 
 	/**
 	 * An event that emits to other components that the language toggle button has been toggled.
+	 *
+	 * @param {Language} oldLanguage - The language prior to the language toggle being pressed.
+	 * @param {globalThis.Event} event - event that triggered the function (e.g. onclick).
 	 */
 	@Event() headerLanguageToggled: EventEmitter<HeaderLanguageToggleEventDetails>;
-	handleHeaderLanguageToggled(language: string, event?: globalThis.Event) {
-		const toggledLanguage = language === 'en' ? 'fr' : 'en';
-		this.language = toggledLanguage;
+	handleHeaderLanguageToggled(oldLanguage: Language, event?: globalThis.Event) {
+		this.languageState = oldLanguage === 'en' ? 'fr' : 'en';
 
-		this.headerLanguageToggled.emit({ oldLanguage: language, newLanguage: toggledLanguage });
+		this.headerLanguageToggled.emit({ oldLanguage: oldLanguage, newLanguage: this.languageState });
 
-		this.updateHTMLLang(toggledLanguage);
+		this.updateHTMLLang();
 
 		if (this.customLanguageToggle && event) {
 			this.customLanguageToggle(event);
 		}
 	}
 
-	@Watch('language')
-	updateLanguage() {
-		this.language = validateLanguage(this.language);
+	/**
+	 * Returns abbreviated text for the opposite language.
+	 *
+	 * @returns {Language}
+	 */
+	getOppositeLanguageAbbrievation(): Language {
+		return this.languageState === 'en' ? 'fr' : 'en';
+	}
+
+	/**
+	 * Returns full word text for the opposite language.
+	 *
+	 * @returns {string}
+	 */
+	getOppositeLanguageFullWord(): string {
+		return this.languageState === 'en' ? this.translations.siteLanguage.fr : this.translations.siteLanguage.en;
+	}
+
+	/*
+	 * Update the <html> lang attribute based on component language state.
+	 */
+	updateHTMLLang = () => {
+		const htmlElement = document.getElementsByTagName('html')[0];
+
+		if (htmlElement) {
+			htmlElement.setAttribute('lang', this.languageState);
+		}
+	};
+
+	/*
+	 * Component life cycle hook.
+	 */
+	connectedCallback() {
 		this.setAppLanguageHandler();
 	}
 
-	updateHTMLLang = (lang: string) => {
-		const htmlElement = document.firstElementChild;
-
-		if (htmlElement?.tagName.toLowerCase() === 'html') {
-			if (lang) {
-				htmlElement.setAttribute('lang', lang);
-			} else {
-				htmlElement.setAttribute('lang', 'en');
-			}
-		}
-
-		return;
-	};
-
-	connectedCallback() {
-		this.updateLanguage();
-	}
-
 	render() {
-		const language = this.language === 'en' ? 'Français' : 'English';
-		const abbreviatedLanguage = this.language === 'en' ? 'FR' : 'EN';
-
 		return (
 			<a
+				aria-label={this.translations.languageToggle.ariaLabel[`${this.languageState}`]}
 				class={
 					this.size === 'default'
 						? 'ontario-language-toggler ontario-language-toggler--default'
 						: 'ontario-language-toggler ontario-language-toggler--small'
 				}
 				href={this.url ? this.url : '#'}
-				aria-label={this.translations.languageToggle.ariaLabel[`${this.language}`]}
-				onClick={(e) => this.handleHeaderLanguageToggled(this.language, e)}
+				hreflang={this.getOppositeLanguageAbbrievation()}
+				lang={this.getOppositeLanguageAbbrievation()}
+				onClick={(e) => this.handleHeaderLanguageToggled(this.languageState, e)}
 			>
 				{this.size === 'small' ? (
-					<span>{language}</span>
+					<span>{this.getOppositeLanguageFullWord()}</span>
 				) : (
 					<Fragment>
-						<abbr title={language} class="ontario-show-for-small-only">
-							{abbreviatedLanguage}
+						<abbr title={this.getOppositeLanguageFullWord()} class="ontario-show-for-small-only">
+							{this.getOppositeLanguageAbbrievation().toUpperCase()}
 						</abbr>
-						<span class="ontario-show-for-medium">{language}</span>
+						<span class="ontario-show-for-medium">{this.getOppositeLanguageFullWord()}</span>
 					</Fragment>
 				)}
 			</a>
