@@ -133,6 +133,12 @@ describe('ontario-header', () => {
 													<span class="ontario-header__icon-container"></span>
 													<span>Menu</span>
 												</button>
+												<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler ontario-show-for-small-only" id="ontario-application-header-menu-toggler" type="button">
+                         <span class="ontario-header__icon-container"></span>
+                         <span>
+                           Menu
+                         </span>
+                       </button>
 											</div>
 										</div>
 									</div>
@@ -576,6 +582,12 @@ describe('ontario-header', () => {
 													<span class="ontario-header__icon-container"></span>
 													<span>Menu</span>
 												</button>
+												<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler ontario-show-for-small-only" id="ontario-application-header-menu-toggler" type="button">
+                         <span class="ontario-header__icon-container"></span>
+                         <span>
+                           Menu
+                         </span>
+                       </button>
 											</div>
 										</div>
 									</div>
