@@ -464,15 +464,15 @@ export class OntarioHeader {
 		}
 
 		if (viewportSize === 'mobile') {
-			return maxSubheaderMobileLinks && numOfMenuItems - maxSubheaderMobileLinks > 0;
+			return numOfMenuItems - (maxSubheaderMobileLinks ?? 0) > 0;
 		}
 
 		if (viewportSize === 'tablet') {
-			return maxSubheaderTabletLinks && numOfMenuItems - maxSubheaderTabletLinks > 0;
+			return numOfMenuItems - (maxSubheaderTabletLinks ?? 0) > 0;
 		}
 
 		if (viewportSize === 'desktop') {
-			return maxSubheaderDesktopLinks && numOfMenuItems - maxSubheaderDesktopLinks > 0;
+			return numOfMenuItems - (maxSubheaderDesktopLinks ?? 0) > 0;
 		}
 
 		return true;
@@ -680,7 +680,7 @@ export class OntarioHeader {
 							</div>
 						</header>
 
-						{/* Ontario application header subhearder */}
+						{/* Ontario application header subheader */}
 						<div class="ontario-application-subheader-menu__container">
 							<section
 								class={`ontario-application-subheader ${isServiceOntarioType ? 'ontario-service-subheader' : ''}`}
@@ -703,7 +703,7 @@ export class OntarioHeader {
 										)}
 										<div class="ontario-application-subheader__menu-container">
 											{/* Desktop subheader links */}
-											{this.applicationHeaderInfoState?.maxSubheaderDesktopLinks && (
+											{!!this.applicationHeaderInfoState?.maxSubheaderDesktopLinks && (
 												<ul
 													class={`${
 														isServiceOntarioType
@@ -727,7 +727,7 @@ export class OntarioHeader {
 											)}
 
 											{/* Tablet subheader links */}
-											{this.applicationHeaderInfoState?.maxSubheaderTabletLinks && (
+											{!!this.applicationHeaderInfoState?.maxSubheaderTabletLinks && (
 												<ul class="ontario-application-subheader__menu ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large">
 													{this.menuItemState
 														?.slice(0, this.applicationHeaderInfoState?.maxSubheaderTabletLinks)
@@ -744,8 +744,8 @@ export class OntarioHeader {
 												</ul>
 											)}
 
-											{/* Desktop subheader links */}
-											{this.applicationHeaderInfoState?.maxSubheaderMobileLinks && (
+											{/* Mobile subheader links */}
+											{!!this.applicationHeaderInfoState?.maxSubheaderMobileLinks && (
 												<ul class="ontario-application-subheader__menu ontario-show-for-small-only">
 													{this.menuItemState
 														?.slice(0, this.applicationHeaderInfoState.maxSubheaderMobileLinks)
