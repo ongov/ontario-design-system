@@ -171,7 +171,6 @@ The `ontario-radio-buttons` supports integration with native HTML `<form>` eleme
 				"elementId": "radio-2",
 				"label": "Radio option 2 label"
 			},
-
 			{
 				"value": "radio-option-3",
 				"elementId": "radio-3",
@@ -187,6 +186,59 @@ The `ontario-radio-buttons` supports integration with native HTML `<form>` eleme
 ```
 
 Remember to set the `name` attribute as this is used to identify the field when submitting the form.
+
+## Event model
+
+Each event emitted by the component uses the [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) type to emit a custom event to help communicate what the component is doing. To access the data emitted by the component within the `CustomEvent` type use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail) property.
+
+Eg. To access the value of any change made to this component from the `radioOnChange` event, use the following code to wire up to listen for the the `radioOnChange` event.
+
+```html
+<ontario-radio-buttons
+	id="radio-buttons-1"
+	name="radio-buttons-1"
+	caption="Radio buttons"
+	options='[
+		{
+			"value": "radio-option-1",
+			"elementId": "radio-1",
+			"label": "Radio option 1 label"
+		},
+		{
+			"value": "radio-option-2",
+			"elementId": "radio-2",
+			"label": "Radio option 2 label"
+		}
+	]'
+>
+</ontario-radio-buttons>
+<script>
+	// Note: this waits for the page and components to load before
+	// locating the component.
+	window.onload = () => {
+		const radioButtons1 = document.getElementById('radio-buttons-1');
+		radioButtons1.addEventListener('radioOnChange', (event) => {
+			console.log('OnChange detail:', event.detail);
+		});
+	};
+</script>
+```
+
+If the first radio button is selected within `radio-buttons-1`, the value of `event.detail` is the object emitted along with the `radioOnChange` event.
+
+```js
+{ checked: true, id: "radio-1", value: "radio-option-1" }
+```
+
+See the [Events](#events) table to learn more about the available custom events from the component and what the type of `CustomEvent.detail` will be.
+
+### Native `change` events
+
+The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
+
+The native `change` event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
+
+When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
 
 ## Custom property types
 
