@@ -84,6 +84,15 @@
 }
 
 @font-face {
+	font-family: 'Open Sans';
+	font-weight: fontWeights.$ontario-font-weights-bold;
+	font-style: italic;
+	font-display: swap;
+	src: local('Open Sans Bold Italic'), local('Open-Sans-bold-italic'),
+		assetHelperFunctions.getFontUrl('open-sans-700--italic/open-sans-700--italic.ttf') format('truetype');
+}
+
+@font-face {
 	font-family: 'Raleway';
 	font-weight: fontWeights.$ontario-font-weights-normal;
 	font-style: normal;
