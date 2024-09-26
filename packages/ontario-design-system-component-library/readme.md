@@ -57,6 +57,8 @@ There are two ways to install the Ontario Design System component library packag
    ></script>
    ```
 
+_Note_: When working with bundlers, like [Vite](https://vitejs.dev/), the component library and framework specific versions should work out of the box.
+
 ### CDN
 
 A quick and easy way to get started with the Web Components without having to use a package is to use the published CDN version. The CDN used in this example is Unpkg, but other CDNs should work.
