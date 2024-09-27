@@ -59,9 +59,11 @@ export class OntarioBadge {
 	 * Watch for changes to the `colour` prop.
 	 *
 	 * If no `colour` is passed, or if the `colour` does not match the `colour` options, a default value of 'teal' will be applied.
+	 *
+	 * @returns {BadgeColour}
 	 */
 	@Watch('colour')
-	validateColour() {
+	validateColour(): BadgeColour {
 		if (this.colour) {
 			if (validateValueAgainstArray(this.colour, BadgeColours)) {
 				return this.colour;
@@ -98,9 +100,9 @@ export class OntarioBadge {
 	 *
 	 * The label prop takes priority.
 	 *
-	 * @returns {string}
+	 * @returns {string | null}
 	 */
-	getBadgeLabel() {
+	getBadgeLabel(): string | null {
 		const badgeLabel = this.label ? this.label : this.host.textContent;
 		return badgeLabel;
 	}
