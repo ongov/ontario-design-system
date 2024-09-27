@@ -8,7 +8,7 @@ Do not use a badge to bring a user’s attention to important content.
 
 ## Usage guidance
 
-Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/badges.html) for current documentation guidance for callouts.
+Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/badges.html) for current documentation guidance for badges.
 
 ## Configuration
 
@@ -31,12 +31,12 @@ Example of a badge component, where the user is explicitly passing in content th
 This is another example of a badge. This time, the content is passed as a child of the `ontario-badge` component. A `colour` option is also passed.
 
 ```html
-<ontario-callout color="light-teal">Completed</ontario-callout>
+<ontario-badge colour="light-teal">Completed</ontario-badge>
 ```
 
 <div>
 	<OntarioBadge
-		color="light-teal"
+		colour="light-teal"
 	>
 		Completed
 	</OntarioBadge>
