@@ -2,6 +2,7 @@ import { Component, Prop, Element, h, Watch, AttachInternals } from '@stencil/co
 
 import { BadgeColour, BadgeColours, BadgeColourToClass } from './ontario-badge.types';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
 @Component({
 	tag: 'ontario-badge',
@@ -62,8 +63,9 @@ export class OntarioBadge {
 	@Watch('colour')
 	validateColour() {
 		if (this.colour) {
-			if (BadgeColours.includes(this.colour)) return this.colour;
-			else {
+			if (validateValueAgainstArray(this.colour, BadgeColours)) {
+				return this.colour;
+			} else {
 				const message = new ConsoleMessageClass();
 				message
 					.addDesignSystemTag()
