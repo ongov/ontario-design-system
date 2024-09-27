@@ -66,6 +66,9 @@ export class OntarioBackToTop {
 
 export declare interface OntarioBackToTop extends Components.OntarioBackToTop {}
 
+@ProxyCmp({
+	inputs: ['ariaLabelText', 'colour', 'label'],
+})
 @Component({
 	selector: 'ontario-badge',
 	changeDetection: ChangeDetectionStrategy.OnPush,
