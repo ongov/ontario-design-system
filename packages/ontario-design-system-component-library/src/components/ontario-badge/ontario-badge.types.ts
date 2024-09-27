@@ -1,4 +1,4 @@
-export const BadgeColours = ['teal', 'light-teal', 'black', 'grey', 'red', 'yellow', 'green'] as const;
+import { retrieveEnumKeys } from '../../utils/helper/utils';
 
 export enum BadgeColourToClass {
 	teal = 'ontario-badge--default-heavy',
@@ -10,4 +10,6 @@ export enum BadgeColourToClass {
 	green = 'ontario-badge--success-heavy',
 }
 
-export type BadgeColour = (typeof BadgeColours)[number];
+export const BadgeColours = retrieveEnumKeys(BadgeColourToClass);
+
+export type BadgeColour = keyof typeof BadgeColourToClass;
