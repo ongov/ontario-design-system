@@ -1,3 +1,22 @@
+# 4.3.0-alpha.3 (2024-10-01)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** added new bold italic open sans font 599e21a
+- **@ongov/ontario-design-system-component-library:** document how to use events with form components 2acd311
+- **@ongov/ontario-design-system-component-library:** readme updates to component name and properties e5af8b1
+- **@ongov/ontario-design-system-component-library:** web components now have import injection support 83e4c8e
+- **@ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** small breakpoint styling error in heading regarding language toggle and logo adbc8b2
+- **@ongov/ontario-design-system-global-styles:** moved local font to the end of declaration 62e487a
+- **ontario-button:** update submit method to requestSubmit() c113b20
+- **ontario-header:** fix OntarioHeader emitting `0` when max links set to zero de9bdaa
+- tablet and mobile subheader links now collapse into a menu button b888a36
+
+### Features
+
+- **@ongov/ontario-design-system-component-library:** implement ontario-badge as a web component 14bfdef
+- **@ongov/ontario-design-system-global-styles:** add hyphenation support for labels and fieldsets df759f3
+
 # 4.3.0-alpha.2 (2024-08-19)
 
 ### Bug Fixes
