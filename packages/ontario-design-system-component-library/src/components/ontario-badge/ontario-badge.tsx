@@ -12,6 +12,7 @@ import { validateValueAgainstArray } from '../../utils/validation/validation-fun
 export class OntarioBadge {
 	@Element() host: HTMLElement;
 	@AttachInternals() internals: ElementInternals;
+
 	/**
 	 * The colour of the badge.
 	 */
