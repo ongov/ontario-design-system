@@ -39,6 +39,7 @@
 					<h2>On this page</h2>
 					<ol>
 						<li><a href="#accordion">Accordion</a></li>
+						<li><a href="#badges">Badges</a></li>
 						<li><a href="#blockquotes">Blockquotes</a></li>
 						<li><a href="#buttons">Buttons</a></li>
 						<li><a href="#callout-aside">Callouts and Asides</a></li>
@@ -78,6 +79,16 @@
 						<hr />
 					</div>
 
+					<!-- Badges -->
+					<div>
+						<h2 id="badges">Badges</h2>
+						<ontario-badge>Default</ontario-badge>
+						<ontario-badge colour="light-teal">Default light</ontario-badge>
+						<ontario-badge colour="black">Neutral</ontario-badge>
+						<ontario-badge colour="grey">Neutral light</ontario-badge>
+						<hr />
+					</div>
+
 					<!-- Blockquotes -->
 					<div>
 						<h2 id="blockquotes">Blockquotes</h2>
@@ -95,26 +106,15 @@
 						<h2 id="buttons">Buttons</h2>
 						<div>
 							<h3 class="ontario-h4">Primary button</h3>
-							<ontario-button label="Primary" aria-label-text="Primary Button" type="primary" onclick="testFunction()">
-								Content here will be overwritten by the value of the label property
-							</ontario-button>
+							<ontario-button aria-label-text="Primary Button" type="primary"> Primary </ontario-button>
 						</div>
 						<div>
 							<h3 class="ontario-h4">Secondary button</h3>
-							<ontario-button
-								label="Secondary"
-								aria-label-text="Secondary Button"
-								htmlType="reset"
-								id="secondaryButton"
-							>
-								Content here will be overwritten by the value of the label property
-							</ontario-button>
+							<ontario-button aria-label-text="Secondary Button" htmlType="reset"> Secondary </ontario-button>
 						</div>
 						<div>
 							<h3 class="ontario-h4">Tertiary button</h3>
-							<ontario-button label="Tertiary" aria-label-text="Tertiary Button" type="tertiary">
-								Content here will be overwritten by the value of the label property
-							</ontario-button>
+							<ontario-button aria-label-text="Tertiary Button" type="tertiary"> Tertiary </ontario-button>
 						</div>
 
 						<hr />

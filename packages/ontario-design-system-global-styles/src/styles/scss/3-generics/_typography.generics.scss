@@ -74,13 +74,21 @@
 	font-family: 'Open Sans';
 	font-weight: fontWeights.$ontario-font-weights-bold;
 	font-display: swap;
-	src: local('Open Sans Bold'), local('Open-Sans-700');
-	src: assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.eot');
-	src: assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.eot?#iefix') format('embedded-opentype'),
+	src: assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.eot'),
+		assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.eot?#iefix') format('embedded-opentype'),
 		assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.woff2') format('woff2'),
 		assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.woff') format('woff'),
 		assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.ttf') format('truetype'),
-		assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.svg');
+		assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.svg'), local('Open Sans Bold'), local('Open-Sans-700');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-weight: fontWeights.$ontario-font-weights-bold;
+	font-style: italic;
+	font-display: swap;
+	src: assetHelperFunctions.getFontUrl('open-sans-700--italic/open-sans-700--italic.ttf') format('truetype'),
+		local('Open Sans Bold Italic'), local('Open-Sans-bold-italic');
 }
 
 @font-face {

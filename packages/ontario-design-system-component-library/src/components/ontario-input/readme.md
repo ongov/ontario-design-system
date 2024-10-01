@@ -68,6 +68,44 @@ The `ontario-input` supports integration with native HTML `<form>` elements. Thi
 
 Remember to set the `name` attribute as this is used to identify the field when submitting the form.
 
+## Event model
+
+Each event emitted by the component uses the [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) type to emit a custom event to help communicate what the component is doing. To access the data emitted by the component within the `CustomEvent` type use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail) property.
+
+Eg. To access the value of any input entered into this component from the `inputOnInput` event, use the following code to wire up to listen for the the `inputOnInput` event.
+
+```html
+<ontario-input id="input-1" name="input-1" caption="What is your name?" required></ontario-input>
+<script>
+	// Note: this waits for the page and components to load before
+	// locating the component.
+	window.onload = () => {
+		const input1 = document.getElementById('input-1');
+		input1.addEventListener('inputOnInput', (event) => {
+			console.log('OnInput detail:', event.detail);
+		});
+	};
+</script>
+```
+
+If the letter `i` is typed into `input-1`, the value of `event.detail` is the object emitted along with the `inputOnInput` event.
+
+```js
+{ id: "5d5d9012-3773-41c5-910b-851956b3fad7", value: "i", inputType: "insertText" }
+```
+
+See the [Events](#events) table to learn more about the available custom events from the component and what the type of `CustomEvent.detail` will be.
+
+### Native `input` and `change` events
+
+The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
+
+Events, such as the native `input` event, deliver data from inside of the component and flow up the event stack as expected.
+
+This isn't the case for the native `change` event, this event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
+
+When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
+
 ## Error messaging
 
 ### Setting an error message
@@ -82,7 +120,7 @@ An error message can be displayed on an input by setting the `errorMessage` prop
 	window.onload = () => {
 		const input1 = document.getElementById('input-1');
 		input1.addEventListener('inputErrorOccurred', (event) => {
-			console.log('errorMessage:', event.details.errorMessage);
+			console.log('errorMessage:', event.detail.errorMessage);
 		});
 	};
 </script>

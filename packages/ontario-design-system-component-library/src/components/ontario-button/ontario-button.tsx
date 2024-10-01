@@ -72,6 +72,7 @@ export class OntarioButton implements Button {
 	/**
 	 * A reference to the internal button element.
 	 */
+
 	private buttonRef: HTMLButtonElement;
 
 	/*
@@ -94,11 +95,7 @@ export class OntarioButton implements Button {
 	@Watch('type')
 	validateType() {
 		const isValid = validateValueAgainstArray(this.type, ButtonTypes);
-		if (isValid) {
-			this.typeState = this.type;
-		} else {
-			this.typeState = this.warnDefaultType();
-		}
+		this.typeState = isValid ? this.type : this.warnDefaultType();
 	}
 
 	/**
@@ -110,11 +107,7 @@ export class OntarioButton implements Button {
 	@Watch('htmlType')
 	validateHtmlType() {
 		const isValid = validateValueAgainstArray(this.htmlType, HtmlTypes);
-		if (isValid) {
-			this.htmlTypeState = this.htmlType;
-		} else {
-			this.htmlTypeState = this.warnDefaultHtmlType();
-		}
+		this.htmlTypeState = isValid ? this.htmlType : this.warnDefaultHtmlType();
 	}
 
 	/**
@@ -209,9 +202,10 @@ export class OntarioButton implements Button {
 
 		// Add a click event listener to handle submitting a form
 		if (this.htmlTypeState === 'submit') {
-			const { form } = this.internals;
-			// Based off a comment within this bug about preventDefault(): https://bugzilla.mozilla.org/show_bug.cgi?id=1370630
-			this.buttonRef.addEventListener('click', () => form?.dispatchEvent(new Event('submit', { cancelable: true })));
+			this.buttonRef.addEventListener('click', () => {
+				const { form } = this.internals;
+				form?.requestSubmit();
+			});
 		}
 	}
 
