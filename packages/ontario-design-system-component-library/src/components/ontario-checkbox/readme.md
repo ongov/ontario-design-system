@@ -147,6 +147,60 @@ The `ontario-checkboxes` supports integration with native HTML `<form>` elements
 
 Remember to set the `name` attribute as this is used to identify the field when submitting the form.
 
+## Event model
+
+Each event emitted by the component uses the [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) type to emit a custom event to help communicate what the component is doing. To access the data emitted by the component within the `CustomEvent` type use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail) property.
+
+Eg. To access the value of any change made to this component from the `checkboxOnChange` event, use the following code to wire up to listen for the the `checkboxOnChange` event.
+
+```html
+<ontario-checkboxes
+	caption="Checkboxes"
+	id="checkboxes-1"
+	name="checkboxes-1"
+	required
+	options='[
+      {
+        "value": "checkbox-option-1",
+        "label": "Checkbox option 1 label",
+        "elementId": "checkbox-1"
+      },
+      {
+        "value": "checkbox-option-2",
+        "label": "Checkbox option 2 label",
+        "elementId": "checkbox-2"
+      }
+    ]'
+>
+</ontario-checkboxes>
+<script>
+	// Note: this waits for the page and components to load before
+	// locating the component.
+	window.onload = () => {
+		const checkboxes1 = document.getElementById('checkboxes-1');
+		checkboxes1.addEventListener('checkboxOnChange', (event) => {
+			console.log('OnChange detail:', event.detail);
+		});
+	};
+</script>
+```
+
+If the first checkbox is checked within `checkboxes-1`, the value of `event.detail` is the object emitted along with the `checkboxOnChange` event.
+
+```js
+{ checked: true, id: "checkbox-1", value: "checkbox-option-1" }
+```
+
+See the [Events](#events) table to learn more about the available custom events from the component and what the type of `CustomEvent.detail` will be.
+
+### Native `change` events
+
+The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
+
+The native `change` event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
+
+When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
+
 ## Custom property types
 
 ### caption
@@ -208,6 +262,7 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 | `customOnBlur`   | --              | Used to add a custom function to the checkbox onBlur event.                                                                                                                                                                                                                                                                                                                                                                            | `((event: Event) => void) \| undefined` | `undefined` |
 | `customOnChange` | --              | Used to add a custom function to the checkbox onChange event.                                                                                                                                                                                                                                                                                                                                                                          | `((event: Event) => void) \| undefined` | `undefined` |
 | `customOnFocus`  | --              | Used to add a custom function to the checkbox onFocus event.                                                                                                                                                                                                                                                                                                                                                                           | `((event: Event) => void) \| undefined` | `undefined` |
+| `errorMessage`   | `error-message` | Set this to display an error message                                                                                                                                                                                                                                                                                                                                                                                                   | `string \| undefined`                   | `undefined` |
 | `hintExpander`   | `hint-expander` | Used to include the ontario-hint-expander component for the checkbox group. This is passed in as an object with key-value pairs. This is optional.                                                                                                                                                                                                                                                                                     | `HintExpander \| string \| undefined`   | `undefined` |
 | `hintText`       | `hint-text`     | Used to include the ontario-hint-text component for the checkbox group. This is optional.                                                                                                                                                                                                                                                                                                                                              | `Hint \| string \| undefined`           | `undefined` |
 | `language`       | `language`      | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.                                                                                                                                                                                                                    | `"en" \| "fr" \| undefined`             | `undefined` |
@@ -217,11 +272,12 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 
 ## Events
 
-| Event              | Description                                                                                  | Type                                                         |
-| ------------------ | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| `checkboxOnBlur`   | Emitted when a keyboard input event occurs when a checkbox option has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
-| `checkboxOnChange` | Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed. | `CustomEvent<InputInteractionEvent & { checked: boolean; }>` |
-| `checkboxOnFocus`  | Emitted when a keyboard input event occurs when a checkbox option has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
+| Event                | Description                                                                                  | Type                                                         |
+| -------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| `checkboxOnBlur`     | Emitted when a keyboard input event occurs when a checkbox option has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
+| `checkboxOnChange`   | Emitted when a keyboard input or mouse event occurs when a checkbox option has been changed. | `CustomEvent<InputInteractionEvent & { checked: boolean; }>` |
+| `checkboxOnFocus`    | Emitted when a keyboard input event occurs when a checkbox option has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
+| `inputErrorOccurred` | Emitted when an error message is reported to the component.                                  | `CustomEvent<{ errorMessage: string; }>`                     |
 
 ## Dependencies
 
@@ -229,6 +285,7 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 
 - [ontario-hint-text](../ontario-hint-text)
 - [ontario-hint-expander](../ontario-hint-expander)
+- [ontario-icon-alert-error](../ontario-icon)
 
 ### Graph
 
@@ -236,6 +293,7 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 graph TD;
   ontario-checkboxes --> ontario-hint-text
   ontario-checkboxes --> ontario-hint-expander
+  ontario-checkboxes --> ontario-icon-alert-error
   ontario-hint-expander --> ontario-icon-chevron-up
   ontario-hint-expander --> ontario-icon-chevron-down
   style ontario-checkboxes fill:#f9f,stroke:#333,stroke-width:4px

@@ -229,7 +229,7 @@ The `ontario-dropdown-list` supports integration with native HTML `<form>` eleme
 		},
 		{
 			"value": "ontario",
-			"label": "Ontario"
+			"label": "Ontario",
 			"selected": true
 		},
 		{
@@ -249,6 +249,57 @@ The `ontario-dropdown-list` supports integration with native HTML `<form>` eleme
 ```
 
 Remember to set the `name` attribute as this is used to identify the field when submitting the form.
+
+## Event model
+
+Each event emitted by the component uses the [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) type to emit a custom event to help communicate what the component is doing. To access the data emitted by the component within the `CustomEvent` type use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail) property.
+
+Eg. To access the value of any change made to this component from the `dropdownOnChange` event, use the following code to wire up to listen for the the `dropdownOnChange` event.
+
+```html
+<ontario-dropdown-list
+	name="dropdown-1"
+	id="dropdown-1"
+	is-empty-start-option="Select"
+	element-id="dropdown-1"
+	caption="Dropdown"
+	required
+	options='[{
+			"value": "ontario",
+			"label": "Ontario"
+		},
+		{
+			"value": "quebec",
+			"label": "Quebec"
+		}]'
+></ontario-dropdown-list>
+<script>
+	// Note: this waits for the page and components to load before
+	// locating the component.
+	window.onload = () => {
+		const dropdown1 = document.getElementById('dropdown-1');
+		dropdown1.addEventListener('dropdownOnChange', (event) => {
+			console.log('OnChange detail:', event.detail);
+		});
+	};
+</script>
+```
+
+If an option is selected from `dropdown-1`, the value of `event.detail` is the object emitted along with the `dropdownOnChange` event.
+
+```js
+{ id: "dropdown-1", value: "ontario" }
+```
+
+See the [Events](#events) table to learn more about the available custom events from the component and what the type of `CustomEvent.detail` will be.
+
+### Native `change` events
+
+The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
+
+The native `change` event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
+
+When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
 
 ## Custom property types
 
@@ -293,6 +344,7 @@ options='[ { "value": "netflix", "label": "Netflix" }, { "value": "disney-plus",
 | `customOnChange`     | --                      | Used to add a custom function to the dropdown onChange event.                                                                                                                                                                                                                                                       | `((event: Event) => void) \| undefined` | `undefined` |
 | `customOnFocus`      | --                      | Used to add a custom function to the dropdown onFocus event.                                                                                                                                                                                                                                                        | `((event: Event) => void) \| undefined` | `undefined` |
 | `elementId`          | `element-id`            | The ID for the dropdown list. If no ID is provided, one will be generated.                                                                                                                                                                                                                                          | `string \| undefined`                   | `undefined` |
+| `errorMessage`       | `error-message`         | Set this to display an error message                                                                                                                                                                                                                                                                                | `string \| undefined`                   | `undefined` |
 | `hintExpander`       | `hint-expander`         | Used to include the ontario-hint-expander component for the dropdown list component. This is passed in as an object with key-value pairs. This is optional.                                                                                                                                                         | `HintExpander \| string \| undefined`   | `undefined` |
 | `hintText`           | `hint-text`             | Used to include the ontario-hint-text component for the dropdown list. This is optional.                                                                                                                                                                                                                            | `Hint \| string \| undefined`           | `undefined` |
 | `isEmptyStartOption` | `is-empty-start-option` | This prop is used to determine whether or not the initial option displayed is empty. If set to `true`, it will render the default “select” text. If set to a string, it will render the string value.                                                                                                               | `boolean \| string \| undefined`        | `false`     |
@@ -303,11 +355,12 @@ options='[ { "value": "netflix", "label": "Netflix" }, { "value": "disney-plus",
 
 ## Events
 
-| Event              | Description                                                                                | Type                                                                      |
-| ------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
-| `dropdownOnBlur`   | Emitted when a keyboard input event occurs when a dropdown list has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`              |
-| `dropdownOnChange` | Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed. | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>` |
-| `dropdownOnFocus`  | Emitted when a keyboard input event occurs when a dropdown list has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`              |
+| Event                | Description                                                                                | Type                                                                      |
+| -------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| `dropdownOnBlur`     | Emitted when a keyboard input event occurs when a dropdown list has lost focus.            | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`              |
+| `dropdownOnChange`   | Emitted when a keyboard input or mouse event occurs when a dropdown list has been changed. | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>` |
+| `dropdownOnFocus`    | Emitted when a keyboard input event occurs when a dropdown list has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`              |
+| `inputErrorOccurred` | Emitted when an error message is reported to the component.                                | `CustomEvent<{ errorMessage: string; }>`                                  |
 
 ## Dependencies
 
@@ -315,6 +368,7 @@ options='[ { "value": "netflix", "label": "Netflix" }, { "value": "disney-plus",
 
 - [ontario-hint-text](../ontario-hint-text)
 - [ontario-hint-expander](../ontario-hint-expander)
+- [ontario-icon-alert-error](../ontario-icon)
 
 ### Graph
 
@@ -322,6 +376,7 @@ options='[ { "value": "netflix", "label": "Netflix" }, { "value": "disney-plus",
 graph TD;
   ontario-dropdown-list --> ontario-hint-text
   ontario-dropdown-list --> ontario-hint-expander
+  ontario-dropdown-list --> ontario-icon-alert-error
   ontario-hint-expander --> ontario-icon-chevron-up
   ontario-hint-expander --> ontario-icon-chevron-down
   style ontario-dropdown-list fill:#f9f,stroke:#333,stroke-width:4px

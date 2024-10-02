@@ -57,11 +57,28 @@ export function removeObjectsBySpecificKey<T>(objects: T[], key: keyof T, value:
 	return [filteredObjects, removedObjects];
 }
 
-export function isNumber(str: string): boolean {
-	const pattern = /^\d+\.?\d*$/;
-	return pattern.test(str);
+/**
+ * Takes an input value and determines whether or not it is a number.
+ *
+ * @param {string | number} value - The value you would like to test against.
+ *
+ * @returns {boolean}
+ */
+export function isNumber(value: string | number): boolean {
+	return isNaN(Number(value)) === true;
 }
 
 export function isEmpty(str: string | undefined | null): boolean {
 	return !str || str?.length <= 0;
+}
+
+/**
+ * Retrieves the keys from an enum and lists them in an array.
+ *
+ * @param {object} enumObject - The enum you wish to get the keys of.
+ *
+ * @returns {string[]}
+ */
+export function retrieveEnumKeys(enumObject: object): string[] {
+	return Object.keys(enumObject).filter(isNumber);
 }

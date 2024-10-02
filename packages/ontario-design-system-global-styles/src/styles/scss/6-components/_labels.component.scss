@@ -21,6 +21,7 @@
 	max-width: global.$narrow-width;
 	white-space: normal;
 	width: 100%;
+	hyphens: auto;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		font-size: 1.125rem;

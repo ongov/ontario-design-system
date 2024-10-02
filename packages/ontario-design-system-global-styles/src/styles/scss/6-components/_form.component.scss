@@ -7,6 +7,11 @@
 @use '../1-variables/letter-spacing.variables' as letterSpacing;
 @use '../1-variables/line-heights.variables' as lineHeight;
 
+//for general forms
+.ontario-form-group:last-of-type {
+	margin-bottom: 2.5rem;
+}
+
 .ontario-form-group:last-of-type {
 	margin-bottom: spacing.$spacing-8;
 }
@@ -21,6 +26,7 @@
 	max-width: globalVariables.$narrow-width;
 	white-space: normal;
 	width: globalVariables.$full-width;
+	hyphens: auto;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		font-size: 1.125rem;

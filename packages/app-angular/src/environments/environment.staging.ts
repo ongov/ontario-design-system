@@ -1,4 +1,7 @@
+import { AppConstants } from '../app/app.constants';
+
 export const environment = {
 	staging: true,
-	translationPath: '/angularpoc/assets/i18n/',
+	prod: false,
+	translationPath: `${AppConstants.BASE_URL_SEGMENT}/assets/i18n/`,
 };

@@ -1,3 +1,72 @@
+# 4.3.0-alpha.3 (2024-10-01)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** added new bold italic open sans font 599e21a
+- **@ongov/ontario-design-system-component-library:** document how to use events with form components 2acd311
+- **@ongov/ontario-design-system-component-library:** readme updates to component name and properties e5af8b1
+- **@ongov/ontario-design-system-component-library:** web components now have import injection support 83e4c8e
+- **@ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** small breakpoint styling error in heading regarding language toggle and logo adbc8b2
+- **@ongov/ontario-design-system-global-styles:** moved local font to the end of declaration 62e487a
+- **ontario-button:** update submit method to requestSubmit() c113b20
+- **ontario-header:** fix OntarioHeader emitting `0` when max links set to zero de9bdaa
+- tablet and mobile subheader links now collapse into a menu button b888a36
+
+### Features
+
+- **@ongov/ontario-design-system-component-library:** implement ontario-badge as a web component 14bfdef
+- **@ongov/ontario-design-system-global-styles:** add hyphenation support for labels and fieldsets df759f3
+
+# 4.3.0-alpha.2 (2024-08-19)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library:** stacking all cards in one column on small breakpoints 67958f1
+
+# 4.3.0-alpha.1 (2024-08-07)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library:** convert headingContent and headingType to optional in OntarioCallout and OntarioAside 7aaf331
+- **@ongov/ontario-design-system-component-library:** ontario card height is now the same for all cards regardless of individual card content length 8c3e95a
+- **@ongov/ontario-design-system-component-library:** ontario-card-collection\_\_container now has padding set to 0 c83e311
+
+### Features
+
+- **@ongov/ontario-design-system-component-library:** final qa fixes 928645f
+- **@ongov/ontario-design-system-component-library:** fixes for poc 1638cb7
+- **@ongov/ontario-design-system-global-styles:** move form styles from \_text_input.component.scss 5ee2679
+- fix build error 5ccded9
+- fix build error 4a2c3d4
+- fix manifest json fbd8fc7
+- remove margin top 2ff51bd
+- update angular page titles 9715eda
+- update angular title for content 6725ca3
+- update base url to be a constant aefd901
+- updates based on QA feedback ec45cbb
+
+# 4.3.0-alpha.1 (2024-08-07)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library:** convert headingContent and headingType to optional in OntarioCallout and OntarioAside 7aaf331
+- **@ongov/ontario-design-system-component-library:** ontario card height is now the same for all cards regardless of individual card content length 8c3e95a
+- **@ongov/ontario-design-system-component-library:** ontario-card-collection\_\_container now has padding set to 0 c83e311
+
+### Features
+
+- **@ongov/ontario-design-system-component-library:** final qa fixes 928645f
+- **@ongov/ontario-design-system-component-library:** fixes for poc 1638cb7
+- **@ongov/ontario-design-system-global-styles:** move form styles from \_text_input.component.scss 5ee2679
+- fix build error 5ccded9
+- fix build error 4a2c3d4
+- fix manifest json fbd8fc7
+- remove margin top 2ff51bd
+- update angular page titles 9715eda
+- update angular title for content 6725ca3
+- update base url to be a constant aefd901
+- updates based on QA feedback ec45cbb
+
 # 4.2.0 (2024-04-18)
 
 ### Bug Fixes

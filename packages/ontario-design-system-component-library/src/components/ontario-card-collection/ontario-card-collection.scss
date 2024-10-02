@@ -5,6 +5,9 @@
 .ontario-card-collection__container {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: flex-start;
+	margin: spacing.$spacing-0;
+	padding: spacing.$spacing-0;
 }
 
 .ontario-card-collecton--cards-per-row-4 ::slotted(ontario-card) {
@@ -21,6 +24,10 @@
 			margin-right: spacing.$spacing-0;
 		}
 	}
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		width: calc(100% - 0.5rem);
+	}
 }
 
 .ontario-card-collecton--cards-per-row-3 ::slotted(ontario-card) {
@@ -29,6 +36,10 @@
 	&:nth-child(3n) {
 		margin-right: spacing.$spacing-0;
 	}
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		width: calc(100% - 0.5rem);
+	}
 }
 
 .ontario-card-collecton--cards-per-row-2 ::slotted(ontario-card) {
@@ -36,5 +47,9 @@
 
 	&:nth-child(2n) {
 		margin-right: spacing.$spacing-0;
+	}
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		width: calc(100% - 0.5rem);
 	}
 }

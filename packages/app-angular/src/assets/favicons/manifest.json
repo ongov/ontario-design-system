@@ -1,6 +1,6 @@
 {
-	"name": "Angular proof of concept",
-	"short_name": "Angular POC",
+	"name": "Ontario Design System Angular demo",
+	"short_name": "Form demo Angular",
 	"description": "An Angular POC to test the Ontario Design System Web Components",
 	"icons": [
 		{

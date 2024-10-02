@@ -13,10 +13,13 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_form.component.scss';
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
+@forward '../../utils/components/error-message/error-message';
 
 $ontario-radios-size: 32px;
 $ontario-radios-size-mobile: 36px;
 $ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-radios-size), 2);
+$ontario-input-border-width: 0.125rem;
 
 .ontario-radios__item {
 	position: relative;

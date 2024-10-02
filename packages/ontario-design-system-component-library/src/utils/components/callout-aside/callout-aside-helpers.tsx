@@ -23,7 +23,7 @@ const generateClasses = (type: CalloutAsideType, highlightColor?: HighlightColou
 
 const generateHeading = (
 	type: CalloutAsideType,
-	headingType: HeadingLevelOptions,
+	headingType: HeadingLevelOptions | undefined,
 	headingContentType: HeadingContentType,
 	headingContent: string,
 ) => {
@@ -71,9 +71,9 @@ const generateHeading = (
 
 export const generateCalloutAside = (
 	type: CalloutAsideType,
-	headingType: HeadingLevelOptions,
 	headingContentType: HeadingContentType,
-	headingContent: string,
+	headingType?: HeadingLevelOptions,
+	headingContent?: string,
 	content?: string | HTMLElement,
 	highlightColour?: HighlightColourOptions,
 ) => {
@@ -81,13 +81,13 @@ export const generateCalloutAside = (
 
 	return type === 'callout' ? (
 		<div class={generateClasses(type, highlightColour)}>
-			{generateHeading(type, headingType, headingContentType, headingContent)}
+			{headingContent ? generateHeading(type, headingType, headingContentType, headingContent) : ''}
 			{contentIsString ? <p>{content}</p> : <slot />}
 		</div>
 	) : (
 		<aside class={generateClasses(type, highlightColour)}>
-			{generateHeading(type, headingType, headingContentType, headingContent)}
-			{contentIsString ? <p>{content}</p> : <slot />}
+			{headingContent ? generateHeading(type, headingType, headingContentType, headingContent) : ''}
+			{contentIsString ? content ? <p>{content}</p> : '' : <slot />}
 		</aside>
 	);
 };

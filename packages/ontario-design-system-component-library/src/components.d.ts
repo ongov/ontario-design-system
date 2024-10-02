@@ -13,6 +13,7 @@ import {
 	HeadingLevelOptions,
 	HighlightColourOptions,
 } from './utils/components/callout-aside/callout-aside.interface';
+import { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 import { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
 import {
 	CardType,
@@ -64,6 +65,7 @@ export {
 	HeadingLevelOptions,
 	HighlightColourOptions,
 } from './utils/components/callout-aside/callout-aside.interface';
+export { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 export { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
 export {
 	CardType,
@@ -141,7 +143,7 @@ export namespace Components {
 		/**
 		 * Text or HTML to be displayed as the heading of the aside. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to `html`.
 		 */
-		headingContent: string;
+		headingContent?: string;
 		/**
 		 * The type of the heading content. If no prop is passed, it will default to string.
 		 */
@@ -149,7 +151,7 @@ export namespace Components {
 		/**
 		 * The heading level of the aside heading.
 		 */
-		headingType: HeadingLevelOptions;
+		headingType?: HeadingLevelOptions;
 		/**
 		 * Optional prop to choose the border colour of the aside. If none is passed, the default colour will be teal.
 		 */
@@ -160,6 +162,21 @@ export namespace Components {
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language prop is passed, it will default to English.
 		 */
 		language?: Language;
+	}
+	interface OntarioBadge {
+		/**
+		 * An aria label for screen readers.  Used to provide more context to screen readers if necessary.  This property is optional.
+		 * @example <ontario-badge aria-label-text="This training is currently in progress.">In progress</ontario-badge>
+		 */
+		ariaLabelText?: string;
+		/**
+		 * The colour of the badge.
+		 */
+		colour: BadgeColour;
+		/**
+		 * The label for the badge.  Offical guidance is to keep the label length within 15 characters.
+		 */
+		label: string;
 	}
 	interface OntarioBlockquote {
 		/**
@@ -208,7 +225,7 @@ export namespace Components {
 		/**
 		 * Text or HTML to be displayed as the heading of the callout. If the heading content should be displayed as HTML, the `headingContentType` needs to be set to `html`.
 		 */
-		headingContent: string;
+		headingContent?: string;
 		/**
 		 * The type of the heading content. If no prop is passed, it will default to `string`.
 		 */
@@ -216,7 +233,7 @@ export namespace Components {
 		/**
 		 * The heading level of the callout heading.
 		 */
-		headingType: HeadingLevelOptions;
+		headingType?: HeadingLevelOptions;
 		/**
 		 * Optional prop to choose the border colour of the callout. If none is passed, the default colour will be teal.
 		 */
@@ -287,6 +304,10 @@ export namespace Components {
 		 * Used to add a custom function to the checkbox onFocus event.
 		 */
 		customOnFocus?: (event: globalThis.Event) => void;
+		/**
+		 * Set this to display an error message
+		 */
+		errorMessage?: string;
 		/**
 		 * Used to include the ontario-hint-expander component for the checkbox group. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-checkboxes   caption='{     "captionText": "Checkbox legend",     "captionType": "heading",   }   name='ontario-checkboxes'   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label", 		"elementId": "checkbox-1" 	}   }]'   hint-expander='{    "hint": "Hint expander for the checkbox group",    "content": "Example hint expander content for the checkbox group"   }'   required="true" > </ontario-checkboxes>
@@ -386,6 +407,10 @@ export namespace Components {
 		 * The ID for the dropdown list. If no ID is provided, one will be generated.
 		 */
 		elementId?: string;
+		/**
+		 * Set this to display an error message
+		 */
+		errorMessage?: string;
 		/**
 		 * Used to include the ontario-hint-expander component for the dropdown list component. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-dropdown-list   caption='{     "caption": "What province do you live in?",     "captionType": "heading",   }   name="ontario-dropdown-list"   options='[     {       "value": "dropdown-option-1",       "label": "Option 1",       "selected": "true"     },     {       "value": "dropdown-option-2",       "label": "Option 2"     },     {       "value": "dropdown-option-3",       "label": "Option 3"     }   ]'   hint-expander='{    "hint": "Hint expander for the dropdown list",    "content": "Example hint expander content for the dropdown list."   }' > </ontario-dropdown-list>
@@ -1768,6 +1793,10 @@ export namespace Components {
 		 */
 		customOnFocus?: (event: globalThis.Event) => void;
 		/**
+		 * Set this to display an error message
+		 */
+		errorMessage?: string;
+		/**
 		 * Used to include the ontario-hint-expander component for the radio button group. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }' 	 name="radios"   options='[ 	   {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 1", 		      "content": "Example hint expander content for radio option 1." 	  }     }   ]'   hint-expander='{     "hint": "Hint expander for the radio button group",     "content": "Example hint expander content for the radio button group."   }'   required="true" > </ontario-radio-buttons>
 		 */
@@ -1879,6 +1908,10 @@ export namespace Components {
 		 */
 		elementId?: string;
 		/**
+		 * Set this to display an error message
+		 */
+		errorMessage?: string;
+		/**
 		 * Used to include the ontario-hint-expander component for the textarea component. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-textarea   caption='{     "captionText": "What are your thoughts",     "captionType": "heading",   }' 	 name: "textarea"   hint-expander='{     "hint": "This is the hint expander",     "content": "This is the content for the hint expander"   }'   required="true" > </ontario-textarea>
 		 */
@@ -1953,6 +1986,11 @@ declare global {
 		prototype: HTMLOntarioBackToTopElement;
 		new (): HTMLOntarioBackToTopElement;
 	};
+	interface HTMLOntarioBadgeElement extends Components.OntarioBadge, HTMLStencilElement {}
+	var HTMLOntarioBadgeElement: {
+		prototype: HTMLOntarioBadgeElement;
+		new (): HTMLOntarioBadgeElement;
+	};
 	interface HTMLOntarioBlockquoteElement extends Components.OntarioBlockquote, HTMLStencilElement {}
 	var HTMLOntarioBlockquoteElement: {
 		prototype: HTMLOntarioBlockquoteElement;
@@ -1982,6 +2020,7 @@ declare global {
 		checkboxOnChange: RadioAndCheckboxChangeEvent;
 		checkboxOnBlur: InputFocusBlurEvent;
 		checkboxOnFocus: InputFocusBlurEvent;
+		inputErrorOccurred: { errorMessage: string };
 	}
 	interface HTMLOntarioCheckboxesElement extends Components.OntarioCheckboxes, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioCheckboxesElementEventMap>(
@@ -2109,6 +2148,7 @@ declare global {
 		dropdownOnChange: InputInteractionEvent;
 		dropdownOnBlur: InputFocusBlurEvent;
 		dropdownOnFocus: InputFocusBlurEvent;
+		inputErrorOccurred: { errorMessage: string };
 	}
 	interface HTMLOntarioDropdownListElement extends Components.OntarioDropdownList, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioDropdownListElementEventMap>(
@@ -2922,6 +2962,7 @@ declare global {
 		radioOnChange: RadioAndCheckboxChangeEvent;
 		radioOnBlur: InputFocusBlurEvent;
 		radioOnFocus: InputFocusBlurEvent;
+		inputErrorOccurred: { errorMessage: string };
 	}
 	interface HTMLOntarioRadioButtonsElement extends Components.OntarioRadioButtons, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioRadioButtonsElementEventMap>(
@@ -2990,6 +3031,7 @@ declare global {
 		inputOnChange: InputInteractionEvent;
 		inputOnBlur: InputFocusBlurEvent;
 		inputOnFocus: InputFocusBlurEvent;
+		inputErrorOccurred: { inputId: string; errorMessage: string };
 	}
 	interface HTMLOntarioTextareaElement extends Components.OntarioTextarea, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioTextareaElementEventMap>(
@@ -3047,6 +3089,7 @@ declare global {
 		'ontario-accordion': HTMLOntarioAccordionElement;
 		'ontario-aside': HTMLOntarioAsideElement;
 		'ontario-back-to-top': HTMLOntarioBackToTopElement;
+		'ontario-badge': HTMLOntarioBadgeElement;
 		'ontario-blockquote': HTMLOntarioBlockquoteElement;
 		'ontario-button': HTMLOntarioButtonElement;
 		'ontario-callout': HTMLOntarioCalloutElement;
@@ -3237,6 +3280,21 @@ declare namespace LocalJSX {
 		 */
 		language?: Language;
 	}
+	interface OntarioBadge {
+		/**
+		 * An aria label for screen readers.  Used to provide more context to screen readers if necessary.  This property is optional.
+		 * @example <ontario-badge aria-label-text="This training is currently in progress.">In progress</ontario-badge>
+		 */
+		ariaLabelText?: string;
+		/**
+		 * The colour of the badge.
+		 */
+		colour?: BadgeColour;
+		/**
+		 * The label for the badge.  Offical guidance is to keep the label length within 15 characters.
+		 */
+		label?: string;
+	}
 	interface OntarioBlockquote {
 		/**
 		 * Optional text to be displayed as the attribution (the author) of the quote.
@@ -3364,6 +3422,10 @@ declare namespace LocalJSX {
 		 */
 		customOnFocus?: (event: globalThis.Event) => void;
 		/**
+		 * Set this to display an error message
+		 */
+		errorMessage?: string;
+		/**
 		 * Used to include the ontario-hint-expander component for the checkbox group. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-checkboxes   caption='{     "captionText": "Checkbox legend",     "captionType": "heading",   }   name='ontario-checkboxes'   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label", 		"elementId": "checkbox-1" 	}   }]'   hint-expander='{    "hint": "Hint expander for the checkbox group",    "content": "Example hint expander content for the checkbox group"   }'   required="true" > </ontario-checkboxes>
 		 */
@@ -3392,6 +3454,10 @@ declare namespace LocalJSX {
 		 * Emitted when a keyboard input event occurs when a checkbox option has gained focus.
 		 */
 		onCheckboxOnFocus?: (event: OntarioCheckboxesCustomEvent<InputFocusBlurEvent>) => void;
+		/**
+		 * Emitted when an error message is reported to the component.
+		 */
+		onInputErrorOccurred?: (event: OntarioCheckboxesCustomEvent<{ errorMessage: string }>) => void;
 		/**
 		 * The options for the checkbox group.  Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option.  In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset.
 		 * @example <ontario-checkboxes   caption='{ 	"captionText": "Checkbox legend", 	"captionType": "heading",   }   name="ontario-checkboxes",   hint-text="Hint text for the checkbox group."   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label" 		"elementId": "checkbox-1"     },     {        "value": "checkbox-option-2",        "label": "Checkbox option 2 label", 		  "elementId": "checkbox-2",       "hintExpander": { 			"hint": "Hint expander for checkbox option 2",              "content": "Example hint expander content for checkbox option 2"        }      }   ]'   required="true" > </ontario-checkboxes>
@@ -3505,6 +3571,10 @@ declare namespace LocalJSX {
 		 */
 		elementId?: string;
 		/**
+		 * Set this to display an error message
+		 */
+		errorMessage?: string;
+		/**
 		 * Used to include the ontario-hint-expander component for the dropdown list component. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-dropdown-list   caption='{     "caption": "What province do you live in?",     "captionType": "heading",   }   name="ontario-dropdown-list"   options='[     {       "value": "dropdown-option-1",       "label": "Option 1",       "selected": "true"     },     {       "value": "dropdown-option-2",       "label": "Option 2"     },     {       "value": "dropdown-option-3",       "label": "Option 3"     }   ]'   hint-expander='{    "hint": "Hint expander for the dropdown list",    "content": "Example hint expander content for the dropdown list."   }' > </ontario-dropdown-list>
 		 */
@@ -3538,6 +3608,10 @@ declare namespace LocalJSX {
 		 * Emitted when a keyboard input event occurs when a dropdown list has gained focus.
 		 */
 		onDropdownOnFocus?: (event: OntarioDropdownListCustomEvent<InputFocusBlurEvent>) => void;
+		/**
+		 * Emitted when an error message is reported to the component.
+		 */
+		onInputErrorOccurred?: (event: OntarioDropdownListCustomEvent<{ errorMessage: string }>) => void;
 		/**
 		 * The options for dropdown list.  Each option will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML.  In the example below, the options are being passed in as a string and there are three dropdown options displayed.
 		 * @example <ontario-dropdown-list   caption='{     "captionText": "Label",     "captionType": "heading",   }'   name="ontario-dropdown-list"   options='[     {       "value": "dropdown-option-1",       "label": "Option 1",       "selected": "true"     },     {       "value": "dropdown-option-2",       "label": "Option 2"     },     {       "value": "dropdown-option-3",       "label": "Option 3"     }   ]' > </ontario-dropdown-list>
@@ -4925,6 +4999,10 @@ declare namespace LocalJSX {
 		 */
 		customOnFocus?: (event: globalThis.Event) => void;
 		/**
+		 * Set this to display an error message
+		 */
+		errorMessage?: string;
+		/**
 		 * Used to include the ontario-hint-expander component for the radio button group. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }' 	 name="radios"   options='[ 	   {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 1", 		      "content": "Example hint expander content for radio option 1." 	  }     }   ]'   hint-expander='{     "hint": "Hint expander for the radio button group",     "content": "Example hint expander content for the radio button group."   }'   required="true" > </ontario-radio-buttons>
 		 */
@@ -4941,6 +5019,10 @@ declare namespace LocalJSX {
 		 * The name assigned to the radio button. The name value is used to reference form data after a form is submitted.
 		 */
 		name?: string;
+		/**
+		 * Emitted when an error message is reported to the component.
+		 */
+		onInputErrorOccurred?: (event: OntarioRadioButtonsCustomEvent<{ errorMessage: string }>) => void;
 		/**
 		 * Emitted when a keyboard input event occurs when a radio option has lost focus.
 		 */
@@ -5048,6 +5130,10 @@ declare namespace LocalJSX {
 		 */
 		elementId?: string;
 		/**
+		 * Set this to display an error message
+		 */
+		errorMessage?: string;
+		/**
 		 * Used to include the ontario-hint-expander component for the textarea component. This is passed in as an object with key-value pairs.  This is optional.
 		 * @example <ontario-textarea   caption='{     "captionText": "What are your thoughts",     "captionType": "heading",   }' 	 name: "textarea"   hint-expander='{     "hint": "This is the hint expander",     "content": "This is the content for the hint expander"   }'   required="true" > </ontario-textarea>
 		 */
@@ -5064,6 +5150,10 @@ declare namespace LocalJSX {
 		 * The name assigned to the textarea. The name value is used to reference form data after a form is submitted.
 		 */
 		name?: string;
+		/**
+		 * Emitted when an error message is reported to the component.
+		 */
+		onInputErrorOccurred?: (event: OntarioTextareaCustomEvent<{ inputId: string; errorMessage: string }>) => void;
 		/**
 		 * Emitted when a keyboard input event occurs when an input has lost focus.
 		 */
@@ -5093,6 +5183,7 @@ declare namespace LocalJSX {
 		'ontario-accordion': OntarioAccordion;
 		'ontario-aside': OntarioAside;
 		'ontario-back-to-top': OntarioBackToTop;
+		'ontario-badge': OntarioBadge;
 		'ontario-blockquote': OntarioBlockquote;
 		'ontario-button': OntarioButton;
 		'ontario-callout': OntarioCallout;
@@ -5236,6 +5327,7 @@ declare module '@stencil/core' {
 			'ontario-accordion': LocalJSX.OntarioAccordion & JSXBase.HTMLAttributes<HTMLOntarioAccordionElement>;
 			'ontario-aside': LocalJSX.OntarioAside & JSXBase.HTMLAttributes<HTMLOntarioAsideElement>;
 			'ontario-back-to-top': LocalJSX.OntarioBackToTop & JSXBase.HTMLAttributes<HTMLOntarioBackToTopElement>;
+			'ontario-badge': LocalJSX.OntarioBadge & JSXBase.HTMLAttributes<HTMLOntarioBadgeElement>;
 			'ontario-blockquote': LocalJSX.OntarioBlockquote & JSXBase.HTMLAttributes<HTMLOntarioBlockquoteElement>;
 			'ontario-button': LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
 			'ontario-callout': LocalJSX.OntarioCallout & JSXBase.HTMLAttributes<HTMLOntarioCalloutElement>;

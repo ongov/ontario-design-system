@@ -2,7 +2,9 @@ import { Component, Renderer2, OnInit, NgZone, ChangeDetectorRef } from '@angula
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { AppConfigService } from './app-config.service';
 import { UrlGeneratorService } from './url-generator.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
 
 import { getLanguage, isEnglish } from '../utils/get-language.utils';
 
@@ -25,6 +27,7 @@ export class AppComponent implements OnInit {
 		private cdr: ChangeDetectorRef,
 		private urlGenerator: UrlGeneratorService,
 		private appConfigService: AppConfigService,
+		private titleService: Title,
 	) {
 		translate.setDefaultLang('en');
 		translate.use('en');
@@ -39,6 +42,10 @@ export class AppComponent implements OnInit {
 		const appName = this.translate.instant('header.appName');
 		const menuItemOne = this.translate.instant('header.menuItems.home');
 		const menuItemTwo = this.translate.instant('header.menuItems.register');
+		const accessibility = this.translate.instant('footer.accessibility.text');
+		const accessibilityLink = this.translate.instant('footer.accessibility.link');
+		const privacy = this.translate.instant('footer.privacy.text');
+		const privacyLink = this.translate.instant('footer.privacy.link');
 		const contactUs = this.translate.instant('footer.contactUs.text');
 		const contactUsLink = this.translate.instant('footer.contactUs.link');
 
@@ -46,6 +53,10 @@ export class AppComponent implements OnInit {
 			appName,
 			menuItemOne,
 			menuItemTwo,
+			accessibility,
+			accessibilityLink,
+			privacy,
+			privacyLink,
 			contactUs,
 			contactUsLink,
 		};
@@ -58,12 +69,14 @@ export class AppComponent implements OnInit {
 	getRoute() {
 		const getStarted = isEnglish() ? 'get-started' : 'fr/demarrer';
 		const register = isEnglish() ? 'create-account' : 'fr/creer-compte';
+		const homeIsActive = window.location.hash.includes(getStarted);
+		const registerIsActive = window.location.hash.includes(register);
 
 		return {
 			home: isAngularPOCEnvironment() ? this.urlGenerator.generateAppUrl(getStarted) : `/#/${getStarted}`,
 			register: isAngularPOCEnvironment() ? this.urlGenerator.generateAppUrl(register) : `/#/${register}`,
-			homeIsActive: window.location.hash.includes(this.urlGenerator.generateAppUrl(getStarted)),
-			registerIsActive: window.location.hash.includes(this.urlGenerator.generateAppUrl(register)),
+			homeIsActive,
+			registerIsActive,
 		};
 	}
 
@@ -85,6 +98,25 @@ export class AppComponent implements OnInit {
 		});
 	};
 
+	updateTitleFromRoute() {
+		const route = this.router.routerState.snapshot.root;
+		const title = this.getTitleFromRoute(route);
+		if (title) {
+			this.titleService.setTitle(this.translate.instant(title));
+		}
+	}
+
+	getTitleFromRoute(route: any): string | null {
+		let title = null;
+		while (route) {
+			if (route.data && route.data.title) {
+				title = route.data.title;
+			}
+			route = route.firstChild;
+		}
+		return title;
+	}
+
 	ngOnInit() {
 		const lang = this.getLanguageFromURL();
 
@@ -92,8 +124,16 @@ export class AppComponent implements OnInit {
 		this.translate.setDefaultLang(lang);
 		this.translate.use(lang);
 
-		// update the header language prop
+		// Update the header language prop
 		const header = document.getElementsByTagName('ontario-header')[0];
 		this.renderer.setProperty(header, 'language', lang);
+
+		// Listen for route changes
+		this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
+			this.updateTitleFromRoute();
+		});
+
+		// Initial title update
+		this.updateTitleFromRoute();
 	}
 }

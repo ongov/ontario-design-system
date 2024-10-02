@@ -17,6 +17,10 @@ describe('ontario-dropdown-list', () => {
 							(optional)
 							</span>
 						</label>
+						<div class="ontario-error-messaging ontario-error__hidden" role="alert">
+								<ontario-icon-alert-error></ontario-icon-alert-error>
+								<div class="ontario-error-messaging__content"></div>
+							</div>
 						<select class="ontario-dropdown ontario-input" id="dropdown-list" style="background-image: url(/assets/ontario-material-dropdown-arrow-48px.svg);">
 							<option value="dropdown-option-1">Option 1</option>
 						</select>
