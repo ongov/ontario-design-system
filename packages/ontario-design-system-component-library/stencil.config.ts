@@ -89,6 +89,9 @@ export const config: Config = {
 			],
 		},
 	],
+	extras: {
+		enableImportInjection: true,
+	},
 	testing: {
 		transform: {
 			'^.+\\.svg$': '<rootDir>/src/utils/svgTransform.js',
