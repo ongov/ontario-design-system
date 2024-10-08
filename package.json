@@ -6,7 +6,7 @@
 		"packages/*"
 	],
 	"scripts": {
-		"bootstrap": "npm install",
+		"bootstrap": "echo 'Already bootstrapped; continue'",
 		"build-docs": "lerna run --scope ds-web-component-docs build",
 		"build-libs": "lerna run --scope @ongov/ontario-design-system* build",
 		"build-angular-app": "lerna run --scope app-angular build",
