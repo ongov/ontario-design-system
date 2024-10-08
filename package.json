@@ -2,8 +2,11 @@
 	"name": "root",
 	"version": "4.2.0",
 	"private": true,
+	"workspaces": [
+		"packages/*"
+	],
 	"scripts": {
-		"bootstrap": "lerna bootstrap",
+		"bootstrap": "npm install",
 		"build-docs": "lerna run --scope ds-web-component-docs build",
 		"build-libs": "lerna run --scope @ongov/ontario-design-system* build",
 		"build-angular-app": "lerna run --scope app-angular build",
