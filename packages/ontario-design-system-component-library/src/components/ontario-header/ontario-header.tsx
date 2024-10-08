@@ -259,6 +259,7 @@ export class OntarioHeader {
 		} else {
 			this.language = validateLanguage(event);
 		}
+		this.parseMenuItems();
 	}
 
 	/**
@@ -418,7 +419,7 @@ export class OntarioHeader {
 				}
 			>
 				<span class="ontario-header__icon-container" innerHTML={this.menuToggle ? OntarioIconClose : OntarioIconMenu} />
-				<span>Menu</span>
+				<span>Menu: {this.language}</span>
 			</button>
 		);
 	}
