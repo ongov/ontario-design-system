@@ -21,7 +21,7 @@ export class OntarioLanguageToggle {
 	 *
 	 * Only pass a language value here if necessary.
 	 */
-	@Prop({ mutable: true }) language: Language;
+	@Prop({ mutable: true }) language?: Language;
 
 	@State() languageState: Language;
 
@@ -30,11 +30,13 @@ export class OntarioLanguageToggle {
 	 * Updates the language and languageState props when changes to the language prop are detected.
 	 */
 	updateLanguage() {
-		if (!validateValueAgainstArray(this.language, supportedLanguages)) {
-			this.showLanguageWarning(this.language);
-			this.language = 'en';
+		if (this.language) {
+			if (!validateValueAgainstArray(this.language, supportedLanguages)) {
+				this.showLanguageWarning(this.language);
+				this.language = 'en';
+			}
+			this.languageState = this.language;
 		}
-		this.languageState = this.language;
 		this.setAppLanguageHandler();
 	}
 
@@ -87,7 +89,9 @@ export class OntarioLanguageToggle {
 	@Event() setAppLanguage: EventEmitter<Language>;
 	setAppLanguageHandler() {
 		if (!this.languageState) {
-			if (document?.documentElement.lang) {
+			if (this.language) {
+				this.languageState = this.language;
+			} else if (document?.documentElement.lang) {
 				if (validateValueAgainstArray(document.documentElement.lang, supportedLanguages)) {
 					this.languageState = document.documentElement.lang as Language;
 				} else {
@@ -161,7 +165,7 @@ export class OntarioLanguageToggle {
 	render() {
 		return (
 			<a
-				aria-label={this.translations.languageToggle.ariaLabel[`${this.languageState}`]}
+				aria-label={this.translations.languageToggle.ariaLabel[`${this.getOppositeLanguageAbbrievation()}`]}
 				class={
 					this.size === 'default'
 						? 'ontario-language-toggler ontario-language-toggler--default'

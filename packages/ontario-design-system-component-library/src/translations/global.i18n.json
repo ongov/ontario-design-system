@@ -173,8 +173,8 @@
 	},
 	"languageToggle": {
 		"ariaLabel": {
-			"en": "Click to switch language to French",
-			"fr": "Cliquez pour changer de langue en anglais"
+			"en": "Click to switch the language to English",
+			"fr": "Cliquez pour changer la langue en français"
 		}
 	},
 	"loading": {
