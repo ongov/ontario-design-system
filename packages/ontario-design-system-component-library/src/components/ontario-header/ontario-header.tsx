@@ -250,16 +250,22 @@ export class OntarioHeader {
 	}
 
 	/**
-	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
+	 * This listens for the `setAppLanguage` event sent from the language toggle when it is is connected to the DOM.
+	 * It is used for the initial language when the input component loads.
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
-	handleSetAppLanguage(event: CustomEvent<Language>) {
-		if (document.documentElement.lang) {
-			this.language = document.documentElement.lang;
-		} else {
-			this.language = validateLanguage(event);
-		}
+	handleSetAppLanguage(event: CustomEvent<Language> | Language) {
+		this.language = validateLanguage(event);
 		this.parseMenuItems();
+	}
+
+	/**
+	 * This listens for the `headerLanguageToggled` event sent from the language toggle when it is is connected to the DOM.
+	 * It is used for changing the component language after the language toggle has been activated.
+	 */
+	@Listen('headerLanguageToggled', { target: 'window' })
+	handleLanguageToggle(event: CustomEvent<{ oldLanguage: Language; newLanguage: Language }>) {
+		this.handleSetAppLanguage(event.detail.newLanguage);
 	}
 
 	/**
@@ -419,7 +425,7 @@ export class OntarioHeader {
 				}
 			>
 				<span class="ontario-header__icon-container" innerHTML={this.menuToggle ? OntarioIconClose : OntarioIconMenu} />
-				<span>Menu: {this.language}</span>
+				<span>Menu</span>
 			</button>
 		);
 	}
