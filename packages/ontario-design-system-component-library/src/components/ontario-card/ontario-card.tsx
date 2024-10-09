@@ -199,12 +199,14 @@ export class OntarioCard {
 	 * @returns the classes of the ontario cards based off the `cardType` and `headerType`.
 	 */
 	private getClass() {
-		if (this.cardTypeState === 'horizontal') {
-			return `ontario-card ontario-card__card-type--horizontal ontario-card__image-${this.horizontalImagePositionType} ontario-card__image-size-${this.horizontalImageSizeType}`;
-		} else {
-			// Return other classes when cardTypeState is not 'horizontal'
-			return `ontario-card ontario-card__header-type--${this.headerTypeState} ontario-card__card-type--${this.cardTypeState}`;
-		}
+		const baseClass =
+			this.cardTypeState === 'horizontal'
+				? `ontario-card ontario-card__card-type--horizontal ontario-card__image-${this.horizontalImagePositionType} ontario-card__image-size-${this.horizontalImageSizeType}`
+				: `ontario-card ontario-card__header-type--${this.headerTypeState} ontario-card__card-type--${this.cardTypeState}`;
+
+		const descriptionClass = this.description ? '' : ' ontario-card__description-false';
+
+		return `${baseClass}${descriptionClass}`;
 	}
 
 	private getHref() {
