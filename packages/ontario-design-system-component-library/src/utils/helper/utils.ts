@@ -97,3 +97,16 @@ export function printArray(arr: Array<any>, conjunctionType: 'and' | 'or' = 'and
 		(text, value, i, array) => text + (i < array.length - 1 ? ', ' : ` ${conjunctionType} `) + value,
 	);
 }
+
+/**
+ * Grabs the HTML element of the page.
+ *
+ * More targetted than document.documentElement as the documentElement could
+ * in theory be any element that is the top level. e.g. <div> if the page is not
+ * set up to be semantically correct.
+ *
+ * @returns {HTMLElement}
+ */
+export function getRootHTMLElement() {
+	return document.getElementsByTagName('html')[0];
+}

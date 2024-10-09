@@ -6,7 +6,7 @@ import { default as translations } from '../../translations/global.i18n.json';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { printArray } from '../../utils/helper/utils';
+import { printArray, getRootHTMLElement } from '../../utils/helper/utils';
 
 @Component({
 	tag: 'ontario-language-toggle',
@@ -25,6 +25,8 @@ export class OntarioLanguageToggle {
 
 	@State() languageState: Language;
 
+	@State() oppositeLanguageLabel: { fullWord: string; abbreviation: Language } | undefined = undefined;
+
 	@Watch('language')
 	/**
 	 * Updates the language and languageState props when changes to the language prop are detected.
@@ -33,7 +35,7 @@ export class OntarioLanguageToggle {
 		if (this.language) {
 			if (!validateValueAgainstArray(this.language, supportedLanguages)) {
 				this.showLanguageWarning(this.language);
-				this.language = 'en';
+				this.language = this.translations.siteLanguage.abbreviation.en as Language;
 			}
 			this.languageState = this.language;
 		}
@@ -79,7 +81,7 @@ export class OntarioLanguageToggle {
 			.addRegularText('is not a valid language value for the ')
 			.addMonospaceText(' <ontario-language-toggle> ')
 			.addRegularText(`component. Valid language values are ${printArray([...supportedLanguages])}. `)
-			.addRegularText('A default language value of `en` will be applied.')
+			.addRegularText(`A default language value of ${this.translations.siteLanguage.abbreviation.en} will be applied.`)
 			.printMessage();
 	}
 
@@ -91,19 +93,25 @@ export class OntarioLanguageToggle {
 		if (!this.languageState) {
 			if (this.language) {
 				this.languageState = this.language;
-			} else if (document?.documentElement.lang) {
-				if (validateValueAgainstArray(document.documentElement.lang, supportedLanguages)) {
-					this.languageState = document.documentElement.lang as Language;
+			} else if (getRootHTMLElement() && getRootHTMLElement().lang) {
+				if (validateValueAgainstArray(getRootHTMLElement().lang, supportedLanguages)) {
+					this.languageState = getRootHTMLElement().lang as Language;
 				} else {
-					this.showLanguageWarning(document.documentElement.lang, 'document');
-					this.languageState = 'en';
+					this.showLanguageWarning(getRootHTMLElement().lang, 'document');
+					this.languageState = this.translations.siteLanguage.abbreviation.en;
 				}
 			} else {
-				this.languageState = 'en';
+				this.languageState = this.translations.siteLanguage.abbreviation.en;
 			}
 		}
 
 		this.setAppLanguage.emit(this.languageState);
+
+		this.oppositeLanguageLabel = {
+			fullWord: this.getOppositeLanguageFullWord(),
+			abbreviation: this.getOppositeLanguageAbbrievation(),
+		};
+
 		this.updateHTMLLang();
 	}
 
@@ -115,7 +123,10 @@ export class OntarioLanguageToggle {
 	 */
 	@Event() headerLanguageToggled: EventEmitter<HeaderLanguageToggleEventDetails>;
 	handleHeaderLanguageToggled(oldLanguage: Language, event?: globalThis.Event) {
-		this.languageState = oldLanguage === 'en' ? 'fr' : 'en';
+		this.languageState =
+			oldLanguage === this.translations.siteLanguage.abbreviation.en
+				? this.translations.siteLanguage.abbreviation.fr
+				: this.translations.siteLanguage.abbreviation.en;
 
 		this.headerLanguageToggled.emit({ oldLanguage: oldLanguage, newLanguage: this.languageState });
 
@@ -132,7 +143,9 @@ export class OntarioLanguageToggle {
 	 * @returns {Language}
 	 */
 	getOppositeLanguageAbbrievation(): Language {
-		return this.languageState === 'en' ? 'fr' : 'en';
+		return this.languageState === this.translations.siteLanguage.abbreviation.en
+			? this.translations.siteLanguage.abbreviation.fr
+			: this.translations.siteLanguage.abbreviation.en;
 	}
 
 	/**
@@ -141,14 +154,16 @@ export class OntarioLanguageToggle {
 	 * @returns {string}
 	 */
 	getOppositeLanguageFullWord(): string {
-		return this.languageState === 'en' ? this.translations.siteLanguage.fr : this.translations.siteLanguage.en;
+		return this.languageState === this.translations.siteLanguage.abbreviation.en
+			? this.translations.siteLanguage.fullWord.fr
+			: this.translations.siteLanguage.fullWord.en;
 	}
 
 	/*
 	 * Update the <html> lang attribute based on component language state.
 	 */
 	updateHTMLLang = () => {
-		const htmlElement = document.getElementsByTagName('html')[0];
+		const htmlElement = getRootHTMLElement();
 
 		if (htmlElement) {
 			htmlElement.setAttribute('lang', this.languageState);
@@ -162,28 +177,54 @@ export class OntarioLanguageToggle {
 		this.setAppLanguageHandler();
 	}
 
+	componentDidLoad() {
+		// Used to help load translations for any slots + text content passed in by the user.
+		const observer = new MutationObserver((mutations) => {
+			mutations.forEach((mutation) => {
+				switch (mutation.type) {
+					case 'attributes':
+						switch (mutation.attributeName) {
+							case 'lang':
+								this.oppositeLanguageLabel = {
+									fullWord: this.getOppositeLanguageFullWord(),
+									abbreviation: this.getOppositeLanguageAbbrievation(),
+								};
+								break;
+						}
+						break;
+				}
+			});
+		});
+
+		const options = { attributes: true };
+
+		if (getRootHTMLElement()) {
+			observer.observe(getRootHTMLElement(), options);
+		}
+	}
+
 	render() {
 		return (
 			<a
-				aria-label={this.translations.languageToggle.ariaLabel[`${this.getOppositeLanguageAbbrievation()}`]}
+				aria-label={this.translations.languageToggle.ariaLabel[`${this.oppositeLanguageLabel?.abbreviation}`]}
 				class={
 					this.size === 'default'
 						? 'ontario-language-toggler ontario-language-toggler--default'
 						: 'ontario-language-toggler ontario-language-toggler--small'
 				}
 				href={this.url ? this.url : '#'}
-				hreflang={this.getOppositeLanguageAbbrievation()}
-				lang={this.getOppositeLanguageAbbrievation()}
+				hreflang={this.oppositeLanguageLabel?.abbreviation}
+				lang={this.oppositeLanguageLabel?.abbreviation}
 				onClick={(e) => this.handleHeaderLanguageToggled(this.languageState, e)}
 			>
 				{this.size === 'small' ? (
-					<span>{this.getOppositeLanguageFullWord()}</span>
+					<span>{this.oppositeLanguageLabel?.fullWord}</span>
 				) : (
 					<Fragment>
-						<abbr title={this.getOppositeLanguageFullWord()} class="ontario-show-for-small-only">
-							{this.getOppositeLanguageAbbrievation().toUpperCase()}
+						<abbr title={this.oppositeLanguageLabel?.fullWord} class="ontario-show-for-small-only">
+							{this.oppositeLanguageLabel?.abbreviation.toUpperCase()}
 						</abbr>
-						<span class="ontario-show-for-medium">{this.getOppositeLanguageFullWord()}</span>
+						<span class="ontario-show-for-medium">{this.oppositeLanguageLabel?.fullWord}</span>
 					</Fragment>
 				)}
 			</a>

@@ -1,5 +1,8 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { OntarioLanguageToggle } from '../ontario-language-toggle';
+import { mutationObserverMock } from '../../../utils/tests/mutation-observer.mock';
+
+global.MutationObserver = mutationObserverMock;
 
 describe('ontario-language-toggle', () => {
 	describe('snapshot', () => {

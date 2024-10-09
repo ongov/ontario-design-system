@@ -224,8 +224,14 @@
 		}
 	},
 	"siteLanguage": {
-		"en": "English",
-		"fr": "Français"
+		"fullWord": {
+			"en": "English",
+			"fr": "Français"
+		},
+		"abbreviation": {
+			"en": "en",
+			"fr": "fr"
+		}
 	},
 	"required": {
 		"en": "required",
