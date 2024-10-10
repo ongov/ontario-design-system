@@ -2,10 +2,10 @@
 
 exports[`ontario-hint-text snapshot should render the expected html 1`] = `
 <ontario-hint-text element-id="idTest" hint="This is a test hint">
-  <mock:shadow-root>
+  <template shadowrootmode="open">
     <p class="ontario-hint" id="idTest">
       This is a test hint
     </p>
-  </mock:shadow-root>
+  </template>
 </ontario-hint-text>
 `;
