@@ -509,7 +509,7 @@ export namespace Components {
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */
-		language?: Language | string;
+		language?: Language;
 		/**
 		 * Information pertaining to the language toggle links.
 		 * @example <ontario-header 	language-toggle-options='{    "englishLink": "/en",    "frenchLink": "/fr"  }'  ... > </ontario-header>
@@ -3691,7 +3691,7 @@ declare namespace LocalJSX {
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 */
-		language?: Language | string;
+		language?: Language;
 		/**
 		 * Information pertaining to the language toggle links.
 		 * @example <ontario-header 	language-toggle-options='{    "englishLink": "/en",    "frenchLink": "/fr"  }'  ... > </ontario-header>
