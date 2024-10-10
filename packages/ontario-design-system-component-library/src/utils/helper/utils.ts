@@ -107,6 +107,6 @@ export function printArray(arr: Array<any>, conjunctionType: 'and' | 'or' = 'and
  *
  * @returns {HTMLElement}
  */
-export function getRootHTMLElement() {
+export function getRootHTMLElement(): HTMLElement {
 	return document.getElementsByTagName('html')[0];
 }
