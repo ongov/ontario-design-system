@@ -23,25 +23,6 @@ export class OntarioLanguageToggle {
 	 */
 	@Prop({ mutable: true }) language?: Language;
 
-	@State() languageState: Language;
-
-	@State() oppositeLanguageLabel: { fullWord: string; abbreviation: Language } | undefined = undefined;
-
-	@Watch('language')
-	/**
-	 * Updates the language and languageState props when changes to the language prop are detected.
-	 */
-	updateLanguage() {
-		if (this.language) {
-			if (!validateValueAgainstArray(this.language, supportedLanguages)) {
-				this.showLanguageWarning(this.language);
-				this.language = this.translations.siteLanguage.abbreviation.en as Language;
-			}
-			this.languageState = this.language;
-		}
-		this.setAppLanguageHandler();
-	}
-
 	/**
 	 * The size of the language toggle button.
 	 *
@@ -66,12 +47,51 @@ export class OntarioLanguageToggle {
 	@State() translations: any = translations;
 
 	/**
+	 * Internal state used as the source of truth for component language.
+	 */
+	@State() private languageState: Language;
+
+	/**
+	 * Internal state used to render the text on the language toggle UI.
+	 */
+	@State() private oppositeLanguageLabel: { fullWord: string; abbreviation: Language } | undefined = undefined;
+
+	/**
+	 * Updates the language and languageState props when changes to the language prop are detected.
+	 */
+	@Watch('language')
+	updateLanguage() {
+		if (this.language) {
+			if (!validateValueAgainstArray(this.language, supportedLanguages)) {
+				this.showLanguageWarning(this.language);
+				this.language = this.translations.siteLanguage.abbreviation.en as Language;
+			}
+			this.languageState = this.language;
+		}
+		this.setAppLanguageHandler();
+	}
+
+	/**
+	 * Event that fires during the setAppLanguageHandler() method.
+	 *
+	 * The event contains the current language (after language logic has already occurred).
+	 */
+	@Event() setAppLanguage: EventEmitter<Language>;
+
+	/**
+	 * Event that fires when the language toggle is pressed/clicked.
+	 *
+	 * The event contains the oldLanguage along with the newLanguage.
+	 */
+	@Event() headerLanguageToggled: EventEmitter<HeaderLanguageToggleEventDetails>;
+
+	/**
 	 * Prints a warning message to the console about using an incorrect language for the component.
 	 *
 	 * @param {string} lang - The incorrect language that was received.
 	 * @param {string} type - prop/document | Where the incorrect language is coming from.
 	 */
-	showLanguageWarning(lang: string, type: 'prop' | 'document' = 'prop') {
+	private showLanguageWarning(lang: string, type: 'prop' | 'document' = 'prop') {
 		const propOrDocumentMessage =
 			type === 'prop' ? `The language prop value of ${lang} ` : `The HTML document lang attribute value of ${lang} `;
 		const message = new ConsoleMessageClass();
@@ -86,14 +106,20 @@ export class OntarioLanguageToggle {
 	}
 
 	/**
-	 * An event to set the Document's HTML lang property, and emit the toggled language to other components.
+	 * This function sets the languageState (if not already set) by looking at the following factors:
+	 * language prop value, <html> tag lang attribute, or defaults to "en".
+	 *
+	 * It also emits the setAppLanguage() event, updates the component language label, and
+	 * updates the <html> tag lang attribute with the languageState value.
+	 *
+	 * It gets called by the connectedCallback() component lifecycle hook, and by the
+	 * updateLanguage() method, which is fired on the watch for the language prop.
 	 */
-	@Event() setAppLanguage: EventEmitter<Language>;
-	setAppLanguageHandler() {
+	private setAppLanguageHandler() {
 		if (!this.languageState) {
 			if (this.language) {
 				this.languageState = this.language;
-			} else if (getRootHTMLElement() && getRootHTMLElement().lang) {
+			} else if (getRootHTMLElement()?.lang) {
 				if (validateValueAgainstArray(getRootHTMLElement().lang, supportedLanguages)) {
 					this.languageState = getRootHTMLElement().lang as Language;
 				} else {
@@ -121,8 +147,7 @@ export class OntarioLanguageToggle {
 	 * @param {Language} oldLanguage - The language prior to the language toggle being pressed.
 	 * @param {globalThis.Event} event - event that triggered the function (e.g. onclick).
 	 */
-	@Event() headerLanguageToggled: EventEmitter<HeaderLanguageToggleEventDetails>;
-	handleHeaderLanguageToggled(oldLanguage: Language, event?: globalThis.Event) {
+	private handleHeaderLanguageToggled(oldLanguage: Language, event?: globalThis.Event) {
 		this.languageState =
 			oldLanguage === this.translations.siteLanguage.abbreviation.en
 				? this.translations.siteLanguage.abbreviation.fr
@@ -142,7 +167,7 @@ export class OntarioLanguageToggle {
 	 *
 	 * @returns {Language}
 	 */
-	getOppositeLanguageAbbrievation(): Language {
+	private getOppositeLanguageAbbrievation(): Language {
 		return this.languageState === this.translations.siteLanguage.abbreviation.en
 			? this.translations.siteLanguage.abbreviation.fr
 			: this.translations.siteLanguage.abbreviation.en;
@@ -153,16 +178,16 @@ export class OntarioLanguageToggle {
 	 *
 	 * @returns {string}
 	 */
-	getOppositeLanguageFullWord(): string {
+	private getOppositeLanguageFullWord(): string {
 		return this.languageState === this.translations.siteLanguage.abbreviation.en
 			? this.translations.siteLanguage.fullWord.fr
 			: this.translations.siteLanguage.fullWord.en;
 	}
 
 	/*
-	 * Update the <html> lang attribute based on component language state.
+	 * Updates the <html> lang attribute based on component languageState.
 	 */
-	updateHTMLLang = () => {
+	private updateHTMLLang = () => {
 		const htmlElement = getRootHTMLElement();
 
 		if (htmlElement) {
@@ -170,15 +195,29 @@ export class OntarioLanguageToggle {
 		}
 	};
 
-	/*
+	/**
 	 * Component life cycle hook.
+	 *
+	 * https://stenciljs.com/docs/component-lifecycle#connectedcallback
 	 */
 	connectedCallback() {
 		this.setAppLanguageHandler();
 	}
 
+	/**
+	 * Component life cycle hook.
+	 *
+	 * https://stenciljs.com/docs/component-lifecycle#componentdidload
+	 */
 	componentDidLoad() {
-		// Used to help load translations for any slots + text content passed in by the user.
+		/**
+		 * Creates a MutationObserver (a type of watch) on the <html> tag lang attribute.
+		 *
+		 * When changes occur, the oppositeLanguageLabel state variable regenerates.
+		 *
+		 * This is to act as a form of callback and create a subtle delay between page content
+		 * updating and the language toggle label updating.
+		 */
 		const observer = new MutationObserver((mutations) => {
 			mutations.forEach((mutation) => {
 				switch (mutation.type) {
@@ -196,9 +235,11 @@ export class OntarioLanguageToggle {
 			});
 		});
 
-		const options = { attributes: true };
-
+		/**
+		 * Only create/trigger the MutationObserver if the <html> element exists.
+		 */
 		if (getRootHTMLElement()) {
+			const options = { attributes: true };
 			observer.observe(getRootHTMLElement(), options);
 		}
 	}

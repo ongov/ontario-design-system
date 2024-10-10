@@ -19,10 +19,10 @@ It is used in the ontario-header component.
 
 ## Events
 
-| Event                   | Description                                                                                           | Type                                            |
-| ----------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| `headerLanguageToggled` | An event that emits to other components that the language toggle button has been toggled.             | `CustomEvent<HeaderLanguageToggleEventDetails>` |
-| `setAppLanguage`        | An event to set the Document's HTML lang property, and emit the toggled language to other components. | `CustomEvent<"en" \| "fr">`                     |
+| Event                   | Description                                                                                                                                      | Type                                            |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------- |
+| `headerLanguageToggled` | Event that fires when the language toggle is pressed/clicked. The event contains the oldLanguage along with the newLanguage.                     | `CustomEvent<HeaderLanguageToggleEventDetails>` |
+| `setAppLanguage`        | Event that fires during the setAppLanguageHandler() method. The event contains the current language (after language logic has already occurred). | `CustomEvent<"en" \| "fr">`                     |
 
 ## Dependencies
 
