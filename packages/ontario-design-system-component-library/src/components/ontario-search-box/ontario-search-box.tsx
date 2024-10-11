@@ -292,7 +292,7 @@ export class OntarioSearchBox {
 				class="ontario-search__container ontario-columns ontario-small-10 ontario-medium-offset-3 ontario-medium-6 ontario-large-offset-0 ontario-large-6"
 				novalidate
 			>
-				{this.captionState.getCaption(this.getId())}
+				{this.captionState.getCaption(this.getId(), false, true) /* Note the _required_ text is disabled */}
 				{this.internalHintText && (
 					<ontario-hint-text
 						hint={this.internalHintText.hint}

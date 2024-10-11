@@ -1826,7 +1826,7 @@ export namespace Components {
 	interface OntarioSearchBox {
 		/**
 		 * The text to display as the input label
-		 * @example <ontario-search-box       caption='{ "captionText": "Search directory", "captionType": "default" }' required = "true" > </ontario-search-box>
+		 * @example <ontario-search-box      caption='{ 		"captionText": "Search directory", 		"captionType": "default" 		}' 	required = "true" > </ontario-search-box>
 		 */
 		caption: Caption | string;
 		/**
@@ -1859,7 +1859,7 @@ export namespace Components {
 		language?: Language;
 		/**
 		 * This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted.
-		 * @example <ontario-search-box id="ontario-search-box" caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
+		 * @example <ontario-search-box   id="ontario-search-box"   caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
 		 */
 		performSearch?: (value?: string) => Promise<void>;
 		/**
@@ -5160,7 +5160,7 @@ declare namespace LocalJSX {
 	interface OntarioSearchBox {
 		/**
 		 * The text to display as the input label
-		 * @example <ontario-search-box       caption='{ "captionText": "Search directory", "captionType": "default" }' required = "true" > </ontario-search-box>
+		 * @example <ontario-search-box      caption='{ 		"captionText": "Search directory", 		"captionType": "default" 		}' 	required = "true" > </ontario-search-box>
 		 */
 		caption?: Caption | string;
 		/**
@@ -5214,7 +5214,7 @@ declare namespace LocalJSX {
 		onSearchOnSubmit?: (event: OntarioSearchBoxCustomEvent<string>) => void;
 		/**
 		 * This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted.
-		 * @example <ontario-search-box id="ontario-search-box" caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
+		 * @example <ontario-search-box   id="ontario-search-box"   caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
 		 */
 		performSearch?: (value?: string) => Promise<void>;
 		/**
