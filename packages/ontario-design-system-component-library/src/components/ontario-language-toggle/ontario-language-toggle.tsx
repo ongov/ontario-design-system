@@ -98,13 +98,8 @@ export class OntarioLanguageToggle {
 		const defaultLang = this.translations.siteLanguage.abbreviation.en;
 		const rootLang = getRootHTMLElement()?.lang;
 
-		/**
-		 * If languageState is not set, set it equal to the following cadence:
-		 *
-		 * - language prop value
-		 * - <html> tag lang attribute
-		 * - or default to "en"
-		 */
+		// If languageState is not set, set it equal to the following cadence:
+		// language prop value, <html> tag lang attribute, or default to "en"
 		if (!this.languageState) {
 			if (this.language) {
 				this.languageState = this.language;
@@ -244,9 +239,7 @@ export class OntarioLanguageToggle {
 			});
 		});
 
-		/**
-		 * Only create/trigger the MutationObserver if the <html> element exists.
-		 */
+		// Only create/trigger the MutationObserver if the <html> element exists.
 		if (getRootHTMLElement()) {
 			const options = { attributes: true };
 			observer.observe(getRootHTMLElement(), options);
