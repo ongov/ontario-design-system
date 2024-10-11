@@ -2910,16 +2910,21 @@ export class OntarioLanguageToggle {
 	}
 }
 
+import type { Language as IOntarioLanguageToggleLanguage } from '@ongov/ontario-design-system-component-library';
 import type { HeaderLanguageToggleEventDetails as IOntarioLanguageToggleHeaderLanguageToggleEventDetails } from '@ongov/ontario-design-system-component-library';
 
 export declare interface OntarioLanguageToggle extends Components.OntarioLanguageToggle {
 	/**
-	 * An event to set the Document's HTML lang property, and emit the toggled language to other components.
-	 */
-	setAppLanguage: EventEmitter<CustomEvent<string>>;
+   * Event that fires during the setAppLanguageHandler() method.
+
+The event contains the current language (after language logic has already occurred).
+   */
+	setAppLanguage: EventEmitter<CustomEvent<IOntarioLanguageToggleLanguage>>;
 	/**
-	 * An event that emits to other components that the language toggle button has been toggled.
-	 */
+   * Event that fires when the language toggle is pressed/clicked.
+
+The event contains the oldLanguage along with the newLanguage.
+   */
 	headerLanguageToggled: EventEmitter<CustomEvent<IOntarioLanguageToggleHeaderLanguageToggleEventDetails>>;
 }
 
