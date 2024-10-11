@@ -18,7 +18,11 @@ import { Components } from '@ongov/ontario-design-system-component-library';
 })
 export class OntarioAccordion {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -38,7 +42,11 @@ export declare interface OntarioAccordion extends Components.OntarioAccordion {}
 })
 export class OntarioAside {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -58,7 +66,11 @@ export declare interface OntarioAside extends Components.OntarioAside {}
 })
 export class OntarioBackToTop {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -78,7 +90,11 @@ export declare interface OntarioBackToTop extends Components.OntarioBackToTop {}
 })
 export class OntarioBadge {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -98,7 +114,11 @@ export declare interface OntarioBadge extends Components.OntarioBadge {}
 })
 export class OntarioBlockquote {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -118,7 +138,11 @@ export declare interface OntarioBlockquote extends Components.OntarioBlockquote 
 })
 export class OntarioButton {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -138,7 +162,11 @@ export declare interface OntarioButton extends Components.OntarioButton {}
 })
 export class OntarioCallout {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -178,7 +206,11 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 })
 export class OntarioCard {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -198,7 +230,11 @@ export declare interface OntarioCard extends Components.OntarioCard {}
 })
 export class OntarioCardCollection {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -242,7 +278,11 @@ export declare interface OntarioCardCollection extends Components.OntarioCardCol
 })
 export class OntarioCheckboxes {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 		proxyOutputs(this, this.el, ['checkboxOnChange', 'checkboxOnBlur', 'checkboxOnFocus', 'inputErrorOccurred']);
@@ -283,7 +323,11 @@ export declare interface OntarioCheckboxes extends Components.OntarioCheckboxes 
 })
 export class OntarioCriticalAlert {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -325,7 +369,11 @@ export declare interface OntarioCriticalAlert extends Components.OntarioCritical
 })
 export class OntarioDateInput {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 		proxyOutputs(this, this.el, ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred']);
@@ -395,7 +443,11 @@ export declare interface OntarioDateInput extends Components.OntarioDateInput {
 })
 export class OntarioDropdownList {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 		proxyOutputs(this, this.el, ['dropdownOnChange', 'dropdownOnBlur', 'dropdownOnFocus', 'inputErrorOccurred']);
@@ -436,7 +488,11 @@ export declare interface OntarioDropdownList extends Components.OntarioDropdownL
 })
 export class OntarioFieldset {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -474,7 +530,11 @@ export declare interface OntarioFieldset extends Components.OntarioFieldset {}
 })
 export class OntarioFooter {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -512,7 +572,11 @@ export declare interface OntarioFooter extends Components.OntarioFooter {}
 })
 export class OntarioHeader {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -532,7 +596,11 @@ export declare interface OntarioHeader extends Components.OntarioHeader {}
 })
 export class OntarioHintExpander {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 		proxyOutputs(this, this.el, ['toggleExpanderEvent']);
@@ -559,7 +627,11 @@ export declare interface OntarioHintExpander extends Components.OntarioHintExpan
 })
 export class OntarioHintText {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -579,7 +651,11 @@ export declare interface OntarioHintText extends Components.OntarioHintText {}
 })
 export class OntarioIconAccessibility {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -599,7 +675,11 @@ export declare interface OntarioIconAccessibility extends Components.OntarioIcon
 })
 export class OntarioIconAccount {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -619,7 +699,11 @@ export declare interface OntarioIconAccount extends Components.OntarioIconAccoun
 })
 export class OntarioIconAdd {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -639,7 +723,11 @@ export declare interface OntarioIconAdd extends Components.OntarioIconAdd {}
 })
 export class OntarioIconAddAlt {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -659,7 +747,11 @@ export declare interface OntarioIconAddAlt extends Components.OntarioIconAddAlt 
 })
 export class OntarioIconAlertError {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -679,7 +771,11 @@ export declare interface OntarioIconAlertError extends Components.OntarioIconAle
 })
 export class OntarioIconAlertInformation {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -699,7 +795,11 @@ export declare interface OntarioIconAlertInformation extends Components.OntarioI
 })
 export class OntarioIconAlertSuccess {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -719,7 +819,11 @@ export declare interface OntarioIconAlertSuccess extends Components.OntarioIconA
 })
 export class OntarioIconAlertWarning {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -739,7 +843,11 @@ export declare interface OntarioIconAlertWarning extends Components.OntarioIconA
 })
 export class OntarioIconArrowUp {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -759,7 +867,11 @@ export declare interface OntarioIconArrowUp extends Components.OntarioIconArrowU
 })
 export class OntarioIconAttach {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -779,7 +891,11 @@ export declare interface OntarioIconAttach extends Components.OntarioIconAttach 
 })
 export class OntarioIconBookmarkOff {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -799,7 +915,11 @@ export declare interface OntarioIconBookmarkOff extends Components.OntarioIconBo
 })
 export class OntarioIconBookmarkOn {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -819,7 +939,11 @@ export declare interface OntarioIconBookmarkOn extends Components.OntarioIconBoo
 })
 export class OntarioIconCalendar {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -839,7 +963,11 @@ export declare interface OntarioIconCalendar extends Components.OntarioIconCalen
 })
 export class OntarioIconCamera {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -859,7 +987,11 @@ export declare interface OntarioIconCamera extends Components.OntarioIconCamera 
 })
 export class OntarioIconChevronDown {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -879,7 +1011,11 @@ export declare interface OntarioIconChevronDown extends Components.OntarioIconCh
 })
 export class OntarioIconChevronLeft {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -899,7 +1035,11 @@ export declare interface OntarioIconChevronLeft extends Components.OntarioIconCh
 })
 export class OntarioIconChevronRight {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -919,7 +1059,11 @@ export declare interface OntarioIconChevronRight extends Components.OntarioIconC
 })
 export class OntarioIconChevronUp {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -939,7 +1083,11 @@ export declare interface OntarioIconChevronUp extends Components.OntarioIconChev
 })
 export class OntarioIconClock {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -959,7 +1107,11 @@ export declare interface OntarioIconClock extends Components.OntarioIconClock {}
 })
 export class OntarioIconClose {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -979,7 +1131,11 @@ export declare interface OntarioIconClose extends Components.OntarioIconClose {}
 })
 export class OntarioIconCloseHeader {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -999,7 +1155,11 @@ export declare interface OntarioIconCloseHeader extends Components.OntarioIconCl
 })
 export class OntarioIconCloud {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1019,7 +1179,11 @@ export declare interface OntarioIconCloud extends Components.OntarioIconCloud {}
 })
 export class OntarioIconCollapse {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1039,7 +1203,11 @@ export declare interface OntarioIconCollapse extends Components.OntarioIconColla
 })
 export class OntarioIconCreditCard {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1059,7 +1227,11 @@ export declare interface OntarioIconCreditCard extends Components.OntarioIconCre
 })
 export class OntarioIconCriticalAlertWarning {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1079,7 +1251,11 @@ export declare interface OntarioIconCriticalAlertWarning extends Components.Onta
 })
 export class OntarioIconDelete {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1099,7 +1275,11 @@ export declare interface OntarioIconDelete extends Components.OntarioIconDelete 
 })
 export class OntarioIconDocument {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1119,7 +1299,11 @@ export declare interface OntarioIconDocument extends Components.OntarioIconDocum
 })
 export class OntarioIconDownload {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1139,7 +1323,11 @@ export declare interface OntarioIconDownload extends Components.OntarioIconDownl
 })
 export class OntarioIconDropdownArrow {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1159,7 +1347,11 @@ export declare interface OntarioIconDropdownArrow extends Components.OntarioIcon
 })
 export class OntarioIconEdit {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1179,7 +1371,11 @@ export declare interface OntarioIconEdit extends Components.OntarioIconEdit {}
 })
 export class OntarioIconEmail {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1199,7 +1395,11 @@ export declare interface OntarioIconEmail extends Components.OntarioIconEmail {}
 })
 export class OntarioIconExpand {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1219,7 +1419,11 @@ export declare interface OntarioIconExpand extends Components.OntarioIconExpand 
 })
 export class OntarioIconExport {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1239,7 +1443,11 @@ export declare interface OntarioIconExport extends Components.OntarioIconExport 
 })
 export class OntarioIconFacebook {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1259,7 +1467,11 @@ export declare interface OntarioIconFacebook extends Components.OntarioIconFaceb
 })
 export class OntarioIconFacebookAlt {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1279,7 +1491,11 @@ export declare interface OntarioIconFacebookAlt extends Components.OntarioIconFa
 })
 export class OntarioIconFavouriteOff {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1299,7 +1515,11 @@ export declare interface OntarioIconFavouriteOff extends Components.OntarioIconF
 })
 export class OntarioIconFavouriteOn {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1319,7 +1539,11 @@ export declare interface OntarioIconFavouriteOn extends Components.OntarioIconFa
 })
 export class OntarioIconFilter {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1339,7 +1563,11 @@ export declare interface OntarioIconFilter extends Components.OntarioIconFilter 
 })
 export class OntarioIconFlickr {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1359,7 +1587,11 @@ export declare interface OntarioIconFlickr extends Components.OntarioIconFlickr 
 })
 export class OntarioIconGrid {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1379,7 +1611,11 @@ export declare interface OntarioIconGrid extends Components.OntarioIconGrid {}
 })
 export class OntarioIconHelp {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1399,7 +1635,11 @@ export declare interface OntarioIconHelp extends Components.OntarioIconHelp {}
 })
 export class OntarioIconInstagram {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1419,7 +1659,11 @@ export declare interface OntarioIconInstagram extends Components.OntarioIconInst
 })
 export class OntarioIconInteracEn {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1439,7 +1683,11 @@ export declare interface OntarioIconInteracEn extends Components.OntarioIconInte
 })
 export class OntarioIconInteracEnAlt {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1459,7 +1707,11 @@ export declare interface OntarioIconInteracEnAlt extends Components.OntarioIconI
 })
 export class OntarioIconInteracFr {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1479,7 +1731,11 @@ export declare interface OntarioIconInteracFr extends Components.OntarioIconInte
 })
 export class OntarioIconInteracFrAlt {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1499,7 +1755,11 @@ export declare interface OntarioIconInteracFrAlt extends Components.OntarioIconI
 })
 export class OntarioIconLinkedin {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1519,7 +1779,11 @@ export declare interface OntarioIconLinkedin extends Components.OntarioIconLinke
 })
 export class OntarioIconLinkedinAlt {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1539,7 +1803,11 @@ export declare interface OntarioIconLinkedinAlt extends Components.OntarioIconLi
 })
 export class OntarioIconList {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1559,7 +1827,11 @@ export declare interface OntarioIconList extends Components.OntarioIconList {}
 })
 export class OntarioIconLiveChat {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1579,7 +1851,11 @@ export declare interface OntarioIconLiveChat extends Components.OntarioIconLiveC
 })
 export class OntarioIconLocationOff {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1599,7 +1875,11 @@ export declare interface OntarioIconLocationOff extends Components.OntarioIconLo
 })
 export class OntarioIconLocationOn {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1619,7 +1899,11 @@ export declare interface OntarioIconLocationOn extends Components.OntarioIconLoc
 })
 export class OntarioIconLockOff {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1639,7 +1923,11 @@ export declare interface OntarioIconLockOff extends Components.OntarioIconLockOf
 })
 export class OntarioIconLockOn {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1659,7 +1947,11 @@ export declare interface OntarioIconLockOn extends Components.OntarioIconLockOn 
 })
 export class OntarioIconMap {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1679,7 +1971,11 @@ export declare interface OntarioIconMap extends Components.OntarioIconMap {}
 })
 export class OntarioIconMastercard {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1699,7 +1995,11 @@ export declare interface OntarioIconMastercard extends Components.OntarioIconMas
 })
 export class OntarioIconMastercardAlt {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1719,7 +2019,11 @@ export declare interface OntarioIconMastercardAlt extends Components.OntarioIcon
 })
 export class OntarioIconMediaFastForward {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1739,7 +2043,11 @@ export declare interface OntarioIconMediaFastForward extends Components.OntarioI
 })
 export class OntarioIconMediaFastRewind {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1759,7 +2067,11 @@ export declare interface OntarioIconMediaFastRewind extends Components.OntarioIc
 })
 export class OntarioIconMediaPause {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1779,7 +2091,11 @@ export declare interface OntarioIconMediaPause extends Components.OntarioIconMed
 })
 export class OntarioIconMediaPlay {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1799,7 +2115,11 @@ export declare interface OntarioIconMediaPlay extends Components.OntarioIconMedi
 })
 export class OntarioIconMediaStop {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1819,7 +2139,11 @@ export declare interface OntarioIconMediaStop extends Components.OntarioIconMedi
 })
 export class OntarioIconMenu {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1839,7 +2163,11 @@ export declare interface OntarioIconMenu extends Components.OntarioIconMenu {}
 })
 export class OntarioIconMenuHeader {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1859,7 +2187,11 @@ export declare interface OntarioIconMenuHeader extends Components.OntarioIconMen
 })
 export class OntarioIconMicrophoneOff {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1879,7 +2211,11 @@ export declare interface OntarioIconMicrophoneOff extends Components.OntarioIcon
 })
 export class OntarioIconMicrophoneOn {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1899,7 +2235,11 @@ export declare interface OntarioIconMicrophoneOn extends Components.OntarioIconM
 })
 export class OntarioIconMoreVertical {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1919,7 +2259,11 @@ export declare interface OntarioIconMoreVertical extends Components.OntarioIconM
 })
 export class OntarioIconNewWindow {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1939,7 +2283,11 @@ export declare interface OntarioIconNewWindow extends Components.OntarioIconNewW
 })
 export class OntarioIconNext {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1959,7 +2307,11 @@ export declare interface OntarioIconNext extends Components.OntarioIconNext {}
 })
 export class OntarioIconNotification {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1979,7 +2331,11 @@ export declare interface OntarioIconNotification extends Components.OntarioIconN
 })
 export class OntarioIconPasswordHide {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -1999,7 +2355,11 @@ export declare interface OntarioIconPasswordHide extends Components.OntarioIconP
 })
 export class OntarioIconPasswordShow {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2019,7 +2379,11 @@ export declare interface OntarioIconPasswordShow extends Components.OntarioIconP
 })
 export class OntarioIconPhone {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2039,7 +2403,11 @@ export declare interface OntarioIconPhone extends Components.OntarioIconPhone {}
 })
 export class OntarioIconPhoto {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2059,7 +2427,11 @@ export declare interface OntarioIconPhoto extends Components.OntarioIconPhoto {}
 })
 export class OntarioIconPinLocationOff {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2079,7 +2451,11 @@ export declare interface OntarioIconPinLocationOff extends Components.OntarioIco
 })
 export class OntarioIconPinLocationOn {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2099,7 +2475,11 @@ export declare interface OntarioIconPinLocationOn extends Components.OntarioIcon
 })
 export class OntarioIconPrevious {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2119,7 +2499,11 @@ export declare interface OntarioIconPrevious extends Components.OntarioIconPrevi
 })
 export class OntarioIconPrint {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2139,7 +2523,11 @@ export declare interface OntarioIconPrint extends Components.OntarioIconPrint {}
 })
 export class OntarioIconRemove {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2159,7 +2547,11 @@ export declare interface OntarioIconRemove extends Components.OntarioIconRemove 
 })
 export class OntarioIconRemoveAlt {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2179,7 +2571,11 @@ export declare interface OntarioIconRemoveAlt extends Components.OntarioIconRemo
 })
 export class OntarioIconReplay {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2199,7 +2595,11 @@ export declare interface OntarioIconReplay extends Components.OntarioIconReplay 
 })
 export class OntarioIconRssFeed {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2219,7 +2619,11 @@ export declare interface OntarioIconRssFeed extends Components.OntarioIconRssFee
 })
 export class OntarioIconSave {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2239,7 +2643,11 @@ export declare interface OntarioIconSave extends Components.OntarioIconSave {}
 })
 export class OntarioIconSearch {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2259,7 +2667,11 @@ export declare interface OntarioIconSearch extends Components.OntarioIconSearch 
 })
 export class OntarioIconSearchWhite {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2279,7 +2691,11 @@ export declare interface OntarioIconSearchWhite extends Components.OntarioIconSe
 })
 export class OntarioIconSentiment1 {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2299,7 +2715,11 @@ export declare interface OntarioIconSentiment1 extends Components.OntarioIconSen
 })
 export class OntarioIconSentiment2 {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2319,7 +2739,11 @@ export declare interface OntarioIconSentiment2 extends Components.OntarioIconSen
 })
 export class OntarioIconSentiment3 {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2339,7 +2763,11 @@ export declare interface OntarioIconSentiment3 extends Components.OntarioIconSen
 })
 export class OntarioIconSentiment4 {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2359,7 +2787,11 @@ export declare interface OntarioIconSentiment4 extends Components.OntarioIconSen
 })
 export class OntarioIconSentiment5 {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2379,7 +2811,11 @@ export declare interface OntarioIconSentiment5 extends Components.OntarioIconSen
 })
 export class OntarioIconSettings {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2399,7 +2835,11 @@ export declare interface OntarioIconSettings extends Components.OntarioIconSetti
 })
 export class OntarioIconShare {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2419,7 +2859,11 @@ export declare interface OntarioIconShare extends Components.OntarioIconShare {}
 })
 export class OntarioIconSort {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2439,7 +2883,11 @@ export declare interface OntarioIconSort extends Components.OntarioIconSort {}
 })
 export class OntarioIconTag {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2459,7 +2907,11 @@ export declare interface OntarioIconTag extends Components.OntarioIconTag {}
 })
 export class OntarioIconTextMessage {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2479,7 +2931,11 @@ export declare interface OntarioIconTextMessage extends Components.OntarioIconTe
 })
 export class OntarioIconTimer {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2499,7 +2955,11 @@ export declare interface OntarioIconTimer extends Components.OntarioIconTimer {}
 })
 export class OntarioIconTransportBicycle {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2519,7 +2979,11 @@ export declare interface OntarioIconTransportBicycle extends Components.OntarioI
 })
 export class OntarioIconTransportBus {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2539,7 +3003,11 @@ export declare interface OntarioIconTransportBus extends Components.OntarioIconT
 })
 export class OntarioIconTransportCar {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2559,7 +3027,11 @@ export declare interface OntarioIconTransportCar extends Components.OntarioIconT
 })
 export class OntarioIconTransportWalk {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2579,7 +3051,11 @@ export declare interface OntarioIconTransportWalk extends Components.OntarioIcon
 })
 export class OntarioIconTty {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2599,7 +3075,11 @@ export declare interface OntarioIconTty extends Components.OntarioIconTty {}
 })
 export class OntarioIconTwitter {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2619,7 +3099,11 @@ export declare interface OntarioIconTwitter extends Components.OntarioIconTwitte
 })
 export class OntarioIconTwitterAlt {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2639,7 +3123,11 @@ export declare interface OntarioIconTwitterAlt extends Components.OntarioIconTwi
 })
 export class OntarioIconUpload {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2659,7 +3147,11 @@ export declare interface OntarioIconUpload extends Components.OntarioIconUpload 
 })
 export class OntarioIconVideo {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2679,7 +3171,11 @@ export declare interface OntarioIconVideo extends Components.OntarioIconVideo {}
 })
 export class OntarioIconVisa {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2699,7 +3195,11 @@ export declare interface OntarioIconVisa extends Components.OntarioIconVisa {}
 })
 export class OntarioIconVoteDislike {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2719,7 +3219,11 @@ export declare interface OntarioIconVoteDislike extends Components.OntarioIconVo
 })
 export class OntarioIconVoteLike {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2739,7 +3243,11 @@ export declare interface OntarioIconVoteLike extends Components.OntarioIconVoteL
 })
 export class OntarioIconVpnKey {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2759,7 +3267,11 @@ export declare interface OntarioIconVpnKey extends Components.OntarioIconVpnKey 
 })
 export class OntarioIconWheelchair {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2779,7 +3291,11 @@ export declare interface OntarioIconWheelchair extends Components.OntarioIconWhe
 })
 export class OntarioIconWifi {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2799,7 +3315,11 @@ export declare interface OntarioIconWifi extends Components.OntarioIconWifi {}
 })
 export class OntarioIconYoutube {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2857,7 +3377,11 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
 })
 export class OntarioInput {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 		proxyOutputs(this, this.el, ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred']);
@@ -2903,7 +3427,11 @@ export declare interface OntarioInput extends Components.OntarioInput {
 })
 export class OntarioLanguageToggle {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 		proxyOutputs(this, this.el, ['setAppLanguage', 'headerLanguageToggled']);
@@ -2935,7 +3463,11 @@ export declare interface OntarioLanguageToggle extends Components.OntarioLanguag
 })
 export class OntarioLoadingIndicator {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2955,7 +3487,11 @@ export declare interface OntarioLoadingIndicator extends Components.OntarioLoadi
 })
 export class OntarioPageAlert {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -2999,7 +3535,11 @@ export declare interface OntarioPageAlert extends Components.OntarioPageAlert {}
 })
 export class OntarioRadioButtons {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 		proxyOutputs(this, this.el, ['radioOnChange', 'radioOnBlur', 'radioOnFocus', 'inputErrorOccurred']);
@@ -3056,7 +3596,11 @@ export declare interface OntarioRadioButtons extends Components.OntarioRadioButt
 })
 export class OntarioStepIndicator {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -3076,7 +3620,11 @@ export declare interface OntarioStepIndicator extends Components.OntarioStepIndi
 })
 export class OntarioTable {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 	}
@@ -3124,7 +3672,11 @@ export declare interface OntarioTable extends Components.OntarioTable {}
 })
 export class OntarioTextarea {
 	protected el: HTMLElement;
-	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
 		c.detach();
 		this.el = r.nativeElement;
 		proxyOutputs(this, this.el, ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred']);

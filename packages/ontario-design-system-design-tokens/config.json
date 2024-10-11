@@ -1,27 +1,25 @@
 {
-  "source": [
-    "tokens/**/*.js"
-  ],
-  "platforms": {
-    "scss": {
-      "transformGroup": "scss",
-      "buildPath": "dist/scss/",
-      "files": [
-        {
-          "destination": "_variables.scss",
-          "format": "scss/variables"
-        }
-      ]
-    },
-    "css": {
-      "transformGroup": "css",
-      "buildPath": "dist/css/",
-      "files": [
-        {
-          "destination": "_variables.css",
-          "format": "css/variables"
-        }
-      ]
-    }
-  }
+	"source": ["tokens/**/*.js"],
+	"platforms": {
+		"scss": {
+			"transformGroup": "scss",
+			"buildPath": "dist/scss/",
+			"files": [
+				{
+					"destination": "_variables.scss",
+					"format": "scss/variables"
+				}
+			]
+		},
+		"css": {
+			"transformGroup": "css",
+			"buildPath": "dist/css/",
+			"files": [
+				{
+					"destination": "_variables.css",
+					"format": "css/variables"
+				}
+			]
+		}
+	}
 }

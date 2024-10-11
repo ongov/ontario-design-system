@@ -27,10 +27,10 @@ export class FrameSixComponent {
 			? {
 					createAccount: '/create-account',
 					login: '/get-started',
-			  }
+				}
 			: {
 					createAccount: '/fr/creer-compte',
 					login: '/fr/demarrer',
-			  };
+				};
 	}
 }
