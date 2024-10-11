@@ -16,7 +16,7 @@ const distDir = './dist';
 const styleDir = './src/sass/**';
 const fonts = ['./src/fonts/**'];
 const favicons = ['./src/favicons/*'];
-const dsTokensPath = './node_modules/@ongov/ontario-design-system-design-tokens/dist/scss/_variables.scss';
+const dsTokensPath = '../ontario-design-system-design-tokens/dist/scss/_variables.scss';
 const dsTokensDestPath = `${distDir}/styles/scss/1-variables/_tokens.variables.scss`;
 
 /**
