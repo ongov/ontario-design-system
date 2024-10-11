@@ -285,6 +285,7 @@ export class OntarioSearchBox {
 	};
 
 	render() {
+		const searchInputFieldId: string = 'ontario-search-input-field';
 		return (
 			<form
 				name="searchForm"
@@ -292,7 +293,7 @@ export class OntarioSearchBox {
 				class="ontario-search__container ontario-columns ontario-small-10 ontario-medium-offset-3 ontario-medium-6 ontario-large-offset-0 ontario-large-6"
 				novalidate
 			>
-				{this.captionState.getCaption(this.getId(), false, true) /* Note the _required_ text is disabled */}
+				{this.captionState.getCaption(searchInputFieldId, false, true) /* Note the _required_ text is disabled */}
 				{this.internalHintText && (
 					<ontario-hint-text
 						hint={this.internalHintText.hint}
@@ -306,7 +307,7 @@ export class OntarioSearchBox {
 						aria-describedBy={this.hintTextId}
 						type="search"
 						name="search"
-						id="ontario-search-input-field"
+						id={searchInputFieldId}
 						autoComplete="off"
 						aria-autocomplete="none"
 						className="ontario-search__input ontario-input"
