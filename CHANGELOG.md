@@ -1,3 +1,13 @@
+## 4.3.1-alpha.1 (2024-10-11)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library:** card title consistent height when one title is longer than the other one in a collection e404fdf
+- **@ongov/ontario-design-system-component-library:** ds-1974 language toggle label flips to early 2f1a8e1
+- **@ongov/ontario-design-system-component-library:** fixed unit test to account for a card without a description 2a7d4cf
+- **@ongov/ontario-design-system-component-library:** header menu items now respect intial page load language coming from language toggle 0ee32be
+- **@ongov/ontario-design-system-component-library:** updates to header event listeners 65761c7
+
 # 4.3.0 (2024-10-02)
 
 ### Bug Fixes
