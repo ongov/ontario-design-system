@@ -250,11 +250,22 @@ export class OntarioHeader {
 	}
 
 	/**
-	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
+	 * This listens for the `setAppLanguage` event sent from the language toggle when it is is connected to the DOM.
+	 * It is used for the initial language when the input component loads.
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
-	handleSetAppLanguage(event: CustomEvent<Language>) {
+	handleSetAppLanguage(event: CustomEvent<Language> | Language) {
 		this.language = validateLanguage(event);
+		this.parseMenuItems();
+	}
+
+	/**
+	 * This listens for the `headerLanguageToggled` event sent from the language toggle when it is is connected to the DOM.
+	 * It is used for changing the component language after the language toggle has been activated.
+	 */
+	@Listen('headerLanguageToggled', { target: 'window' })
+	handleLanguageToggle(event: CustomEvent<{ oldLanguage: Language; newLanguage: Language }>) {
+		this.handleSetAppLanguage(event.detail.newLanguage);
 	}
 
 	/**
@@ -573,7 +584,6 @@ export class OntarioHeader {
 										url={this.language === 'en' ? this.languageState?.frenchLink : this.languageState?.englishLink}
 										size="default"
 										customLanguageToggle={this.customLanguageToggle}
-										language={this.language}
 									></ontario-language-toggle>
 									<button
 										class="ontario-header__search-toggler ontario-header-button ontario-header-button--without-outline ontario-hide-for-large"
@@ -674,7 +684,6 @@ export class OntarioHeader {
 										size="small"
 										url={this.language === 'en' ? this.languageState?.frenchLink : this.languageState?.englishLink}
 										customLanguageToggle={this.customLanguageToggle}
-										language={this.language}
 									></ontario-language-toggle>
 								</div>
 							</div>

@@ -14,6 +14,7 @@
 			<a href="https://designsystem.ontario.ca/">Ontario Design System</a> web components now available!!!
 		</ontario-critical-alert>
 		<ontario-header
+			id="ontarioHeader"
 			type="serviceOntario"
 			application-header-info='{
 				"title": "Application name",
@@ -21,6 +22,10 @@
 				"maxSubheaderDesktopLinks": "3",
 				"maxSubheaderTabletLinks": "2",
 				"maxSubheaderMobileLinks": "1"
+			}'
+			language-toggle-options='{
+				"englishLink": "/",
+				"frenchLink" : "/french.html"
 			}'
 		>
 		</ontario-header>
@@ -1203,6 +1208,20 @@
 		<ontario-back-to-top />
 
 		<script>
+			const changeLanguage = (e) => {
+				e.preventDefault();
+				let header = document.getElementById('ontarioHeader');
+				header.customLanguageToggle = () => {
+					setTimeout(() => {
+						window.location.href = '/french.html';
+						console.log(header);
+						console.log('Lang switch');
+					}, 5000);
+				};
+			};
+
+			window.addEventListener('load', changeLanguage);
+
 			function testFunction() {
 				alert('HELLO WORLD!');
 			}
