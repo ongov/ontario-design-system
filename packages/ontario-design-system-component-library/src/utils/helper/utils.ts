@@ -1,3 +1,5 @@
+import { Conjunction } from './utils-types';
+
 export function format(first: string | undefined, middle: string | undefined, last: string | undefined): string {
 	return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
 }
@@ -88,11 +90,11 @@ export function retrieveEnumKeys(enumObject: object): string[] {
  * As per ontario.ca content guidelines, there is no Oxford comma.
  *
  * @param {Array<any>} arr - The array that you wish to print.
- * @param {string} conjunctionType - and/or | Whether you want the sentence to end with 'and value.' or 'or value.'
+ * @param {Conjunction} conjunctionType - Whether you want the sentence to end with 'and value.' or 'or value.'
  *
  * @returns {string}
  */
-export function printArray(arr: Array<any>, conjunctionType: 'and' | 'or' = 'and'): string {
+export function printArray(arr: Array<any>, conjunctionType: Conjunction = 'and'): string {
 	return [...arr].reduce(
 		(text, value, i, array) => text + (i < array.length - 1 ? ', ' : ` ${conjunctionType} `) + value,
 	);
