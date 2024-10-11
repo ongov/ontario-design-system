@@ -86,28 +86,7 @@ export class OntarioLanguageToggle {
 	@Event() headerLanguageToggled: EventEmitter<HeaderLanguageToggleEventDetails>;
 
 	/**
-	 * Prints a warning message to the console about using an incorrect language for the component.
-	 *
-	 * @param {string} lang - The incorrect language that was received.
-	 * @param {string} type - prop/document | Where the incorrect language is coming from.
-	 */
-	private showLanguageWarning(lang: string, type: 'prop' | 'document' = 'prop') {
-		const propOrDocumentMessage =
-			type === 'prop' ? `The language prop value of ${lang} ` : `The HTML document lang attribute value of ${lang} `;
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addRegularText(propOrDocumentMessage)
-			.addRegularText('is not a valid language value for the ')
-			.addMonospaceText(' <ontario-language-toggle> ')
-			.addRegularText(`component. Valid language values are ${printArray([...supportedLanguages])}. `)
-			.addRegularText(`A default language value of ${this.translations.siteLanguage.abbreviation.en} will be applied.`)
-			.printMessage();
-	}
-
-	/**
-	 * This function sets the languageState (if not already set) by looking at the following factors:
-	 * language prop value, <html> tag lang attribute, or defaults to "en".
+	 * This function sets the languageState (if not already set).
 	 *
 	 * It also emits the setAppLanguage() event, updates the component language label, and
 	 * updates the <html> tag lang attribute with the languageState value.
@@ -116,18 +95,28 @@ export class OntarioLanguageToggle {
 	 * updateLanguage() method, which is fired on the watch for the language prop.
 	 */
 	private setAppLanguageHandler() {
+		const defaultLang = this.translations.siteLanguage.abbreviation.en;
+		const rootLang = getRootHTMLElement()?.lang;
+
+		/**
+		 * If languageState is not set, set it equal to the following cadence:
+		 *
+		 * - language prop value
+		 * - <html> tag lang attribute
+		 * - or default to "en"
+		 */
 		if (!this.languageState) {
 			if (this.language) {
 				this.languageState = this.language;
-			} else if (getRootHTMLElement()?.lang) {
-				if (validateValueAgainstArray(getRootHTMLElement().lang, supportedLanguages)) {
-					this.languageState = getRootHTMLElement().lang as Language;
+			} else if (rootLang) {
+				if (validateValueAgainstArray(rootLang, supportedLanguages)) {
+					this.languageState = rootLang as Language;
 				} else {
-					this.showLanguageWarning(getRootHTMLElement().lang, 'document');
-					this.languageState = this.translations.siteLanguage.abbreviation.en;
+					this.showLanguageWarning(rootLang, 'document');
+					this.languageState = defaultLang;
 				}
 			} else {
-				this.languageState = this.translations.siteLanguage.abbreviation.en;
+				this.languageState = defaultLang;
 			}
 		}
 
@@ -160,6 +149,26 @@ export class OntarioLanguageToggle {
 		if (this.customLanguageToggle && event) {
 			this.customLanguageToggle(event);
 		}
+	}
+
+	/**
+	 * Prints a warning message to the console about using an incorrect language for the component.
+	 *
+	 * @param {string} lang - The incorrect language that was received.
+	 * @param {string} type - prop/document | Where the incorrect language is coming from.
+	 */
+	private showLanguageWarning(lang: string, type: 'prop' | 'document' = 'prop') {
+		const propOrDocumentMessage =
+			type === 'prop' ? `The language prop value of ${lang} ` : `The HTML document lang attribute value of ${lang} `;
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addRegularText(propOrDocumentMessage)
+			.addRegularText('is not a valid language value for the ')
+			.addMonospaceText(' <ontario-language-toggle> ')
+			.addRegularText(`component. Valid language values are ${printArray([...supportedLanguages])}. `)
+			.addRegularText(`A default language value of ${this.translations.siteLanguage.abbreviation.en} will be applied.`)
+			.printMessage();
 	}
 
 	/**
