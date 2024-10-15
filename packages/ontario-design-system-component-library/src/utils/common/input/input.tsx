@@ -18,7 +18,8 @@ export type InputProps = {
 	onChange?: ((event: Event) => void) | undefined;
 	onBlur?: ((event: Event) => void) | undefined;
 	onFocus?: ((event: Event) => void) | undefined;
-	ref?: (el: any) => HTMLElement;
+	onClick?: ((event: Event) => void) | undefined;
+	ref?: (el: HTMLInputElement) => HTMLElement;
 };
 
 export const Input: FunctionalComponent<InputProps> = ({
@@ -36,6 +37,7 @@ export const Input: FunctionalComponent<InputProps> = ({
 	onChange,
 	onBlur,
 	onFocus,
+	onClick,
 	ariaInvalid,
 	ariaDescribedBy,
 	ref,
@@ -58,6 +60,7 @@ export const Input: FunctionalComponent<InputProps> = ({
 			onChange={onChange}
 			onBlur={onBlur}
 			onFocus={onFocus}
+			onClick={onClick}
 			inputMode={inputMode}
 			ref={ref}
 			aria-invalid={ariaInvalid}
