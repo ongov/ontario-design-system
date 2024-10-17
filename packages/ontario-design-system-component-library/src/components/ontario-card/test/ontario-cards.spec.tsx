@@ -10,7 +10,7 @@ describe('ontario-card', () => {
 		expect(page.root).toEqualHtml(`
       <ontario-card>
 				<mock:shadow-root>
-					<li class="ontario-card ontario-card--position-vertical ontario-card__card-type--basic ontario-card__header-type--default ontario-card__description-false">
+					<li class="ontario-card ontario-card--position-vertical ontario-card__card-type--basic ontario-card__description-false">
 						<div class="ontario-card__text-container">
 							<h2 class="ontario-card__heading">
 								<a href="#"></a>

@@ -4,8 +4,6 @@ import {
 	CardTypes,
 	HeaderColour,
 	HeaderColours,
-	HeaderType,
-	HeaderTypes,
 	HorizontalImagePositionType,
 	HorizontalImageSizeType,
 } from './ontario-card-types';
@@ -62,13 +60,6 @@ export class OntarioCard {
 	 *
 	 */
 	@Prop() cardType: CardType = 'basic';
-
-	/**
-	 * The type of header to render.
-	 *
-	 * If no type is passed, it will default to 'default'.
-	 */
-	@Prop() headerType: HeaderType = 'default';
 
 	/**
 	 * Set the card's header colour.
@@ -128,12 +119,6 @@ export class OntarioCard {
 	@State() private cardTypeState: string;
 
 	/**
-	 * Mutable variable, for internal use only.
-	 * Set the card's header type depending on validation result.
-	 */
-	@State() private headerTypeState: string;
-
-	/**
 	 * Watch for changes to the `cardType` property for validation purposes.
 	 *
 	 * If the user input doesn't match one of the array values then `cardType` will be set to its default (`basic`).
@@ -146,22 +131,6 @@ export class OntarioCard {
 			this.cardTypeState = this.cardType;
 		} else {
 			this.cardTypeState = this.warnDefaultCardType();
-		}
-	}
-
-	/**
-	 * Watch for changes to the `headerType` property for validation purposes.
-	 *
-	 * If the user input doesn't match one of the array values then `headerType` will be set to its default (`default`).
-	 * If a match is found in one of the array values then `headerType` will be set to the matching array key value.
-	 */
-	@Watch('headerType')
-	validateHeaderType() {
-		const isValid = validateValueAgainstArray(this.headerType, HeaderTypes);
-		if (isValid) {
-			this.headerTypeState = this.headerType;
-		} else {
-			this.headerTypeState = this.warnDefaultHeaderType();
 		}
 	}
 
@@ -206,28 +175,6 @@ export class OntarioCard {
 	}
 
 	/**
-	 * Print the invalid `headerType` prop warning message and return
-	 * the default value of 'default'.
-	 *
-	 * @returns {string}
-	 */
-	private warnDefaultHeaderType(): HeaderType {
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' header-type ')
-			.addRegularText('on')
-			.addMonospaceText(' <ontario-card> ')
-			.addRegularText('was set to an invalid type; only ')
-			.addMonospaceText(printArray([...HeaderTypes]))
-			.addRegularText(' are supported. The default type')
-			.addMonospaceText(' default ')
-			.addRegularText('is assumed.')
-			.printMessage();
-		return 'default';
-	}
-
-	/**
 	 * Print the invalid `headerColour` prop warning message.
 	 *
 	 * This function does not return a value.
@@ -255,7 +202,7 @@ export class OntarioCard {
 		const baseClass =
 			this.cardTypeState === 'horizontal'
 				? `ontario-card ontario-card__card-type--horizontal ontario-card__image-${this.horizontalImagePositionType} ontario-card__image-size-${this.horizontalImageSizeType}`
-				: `ontario-card ontario-card__header-type--${this.headerTypeState} ontario-card__card-type--${this.cardTypeState} ontario-card--position-vertical`;
+				: `ontario-card ontario-card__card-type--${this.cardTypeState} ontario-card--position-vertical`;
 
 		const descriptionClass = this.description ? '' : ' ontario-card__description-false';
 
@@ -297,7 +244,7 @@ export class OntarioCard {
 	 */
 	componentWillLoad() {
 		this.validateCardType();
-		this.validateHeaderType();
+		this.validateHeaderColour();
 	}
 
 	render() {
