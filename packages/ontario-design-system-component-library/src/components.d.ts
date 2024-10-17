@@ -17,6 +17,7 @@ import { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 import { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
 import {
 	CardType,
+	HeaderColour,
 	HeaderType,
 	HorizontalImagePositionType,
 	HorizontalImageSizeType,
@@ -69,6 +70,7 @@ export { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 export { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
 export {
 	CardType,
+	HeaderColour,
 	HeaderType,
 	HorizontalImagePositionType,
 	HorizontalImageSizeType,
@@ -256,6 +258,10 @@ export namespace Components {
 		 * Text to be displayed within the card description container.  This is optional.
 		 */
 		description?: string;
+		/**
+		 * Set the card's header colour.  This is optional.
+		 */
+		headerColour?: HeaderColour;
 		/**
 		 * The type of header to render.  If no type is passed, it will default to 'default'.
 		 */
@@ -3488,6 +3494,10 @@ declare namespace LocalJSX {
 		 * Text to be displayed within the card description container.  This is optional.
 		 */
 		description?: string;
+		/**
+		 * Set the card's header colour.  This is optional.
+		 */
+		headerColour?: HeaderColour;
 		/**
 		 * The type of header to render.  If no type is passed, it will default to 'default'.
 		 */

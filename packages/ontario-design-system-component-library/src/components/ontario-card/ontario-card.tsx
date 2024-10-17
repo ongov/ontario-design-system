@@ -2,6 +2,8 @@ import { Component, Prop, Element, h, State, Watch } from '@stencil/core';
 import {
 	CardType,
 	CardTypes,
+	HeaderColour,
+	HeaderColours,
 	HeaderType,
 	HeaderTypes,
 	HorizontalImagePositionType,
@@ -9,6 +11,7 @@ import {
 } from './ontario-card-types';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printArray } from '../../utils/helper/utils';
 
 @Component({
 	tag: 'ontario-card',
@@ -66,6 +69,13 @@ export class OntarioCard {
 	 * If no type is passed, it will default to 'default'.
 	 */
 	@Prop() headerType: HeaderType = 'default';
+
+	/**
+	 * Set the card's header colour.
+	 *
+	 * This is optional.
+	 */
+	@Prop() headerColour?: HeaderColour;
 
 	/**
 	 * The position of the image when the card-type is set to 'horizontal'.
@@ -156,8 +166,28 @@ export class OntarioCard {
 	}
 
 	/**
-	 * Print the invalid `cardType` prop warning message.
-	 * @returns default type (basic).
+	 * Watch for changes to the `headerColour` property for validation purposes.
+	 *
+	 * If the user input doesn't match one of the array values then `headerColour` will be set to its default (`white`).
+	 * If a match is found in one of the array values then `headerColour` will be set to the matching array key value.
+	 */
+	@Watch('headerColour')
+	validateHeaderColour() {
+		if (this.headerColour) {
+			const isValid = validateValueAgainstArray(this.headerColour, HeaderColours);
+
+			if (!isValid) {
+				this.warnDefaultHeaderColourType();
+				this.headerColour = '';
+			}
+		}
+	}
+
+	/**
+	 * Print the invalid `cardType` prop warning message and return
+	 * the default value of `basic`.
+	 *
+	 * @returns {string}
 	 */
 	private warnDefaultCardType(): CardType {
 		const message = new ConsoleMessageClass();
@@ -166,9 +196,9 @@ export class OntarioCard {
 			.addMonospaceText(' card-type ')
 			.addRegularText('on')
 			.addMonospaceText(' <ontario-card> ')
-			.addRegularText('was set to an invalid type; only')
-			.addMonospaceText(' basic, image, label, horizontal ')
-			.addRegularText('are supported. The default type')
+			.addRegularText('was set to an invalid type; only ')
+			.addMonospaceText(printArray([...CardTypes]))
+			.addRegularText(' are supported. The default type')
 			.addMonospaceText(' basic ')
 			.addRegularText('is assumed.')
 			.printMessage();
@@ -176,8 +206,10 @@ export class OntarioCard {
 	}
 
 	/**
-	 * Print the invalid `headerType` prop warning message.
-	 * @returns default type (default).
+	 * Print the invalid `headerType` prop warning message and return
+	 * the default value of 'default'.
+	 *
+	 * @returns {string}
 	 */
 	private warnDefaultHeaderType(): HeaderType {
 		const message = new ConsoleMessageClass();
@@ -186,9 +218,9 @@ export class OntarioCard {
 			.addMonospaceText(' header-type ')
 			.addRegularText('on')
 			.addMonospaceText(' <ontario-card> ')
-			.addRegularText('was set to an invalid type; only')
-			.addMonospaceText(' default, light, dark')
-			.addRegularText('are supported. The default type')
+			.addRegularText('was set to an invalid type; only ')
+			.addMonospaceText(printArray([...HeaderTypes]))
+			.addRegularText(' are supported. The default type')
 			.addMonospaceText(' default ')
 			.addRegularText('is assumed.')
 			.printMessage();
@@ -196,23 +228,73 @@ export class OntarioCard {
 	}
 
 	/**
-	 * @returns the classes of the ontario cards based off the `cardType` and `headerType`.
+	 * Print the invalid `headerColour` prop warning message.
+	 *
+	 * This function does not return a value.
 	 */
-	private getClass() {
+	private warnDefaultHeaderColourType() {
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addMonospaceText(' Header Colour ')
+			.addRegularText('on')
+			.addMonospaceText(' <ontario-card> ')
+			.addRegularText('was set to an invalid type; only ')
+			.addMonospaceText(printArray([...HeaderColours]))
+			.addRegularText(' are supported. ')
+			.addRegularText('No colour is assumed as the default.')
+			.printMessage();
+	}
+
+	/**
+	 * Returns the top level classes of the card.
+	 *
+	 * @returns {string}
+	 */
+	private getCardClasses(): string {
 		const baseClass =
 			this.cardTypeState === 'horizontal'
 				? `ontario-card ontario-card__card-type--horizontal ontario-card__image-${this.horizontalImagePositionType} ontario-card__image-size-${this.horizontalImageSizeType}`
-				: `ontario-card ontario-card__header-type--${this.headerTypeState} ontario-card__card-type--${this.cardTypeState}`;
+				: `ontario-card ontario-card__header-type--${this.headerTypeState} ontario-card__card-type--${this.cardTypeState} ontario-card--position-vertical`;
 
 		const descriptionClass = this.description ? '' : ' ontario-card__description-false';
 
-		return `${baseClass}${descriptionClass}`;
+		const backgroundClass =
+			this.headerColour && !this.description ? `ontario-card__background--${this.headerColour}` : '';
+
+		return `${baseClass} ${descriptionClass} ${backgroundClass}`;
 	}
 
-	private getHref() {
+	/**
+	 * Returns the heading classes of the card.
+	 *
+	 * @returns {string}
+	 */
+	private getCardHeadingClasses(): string {
+		const baseClass = 'ontario-card__heading';
+
+		const backgroundClass =
+			this.headerColour && validateValueAgainstArray(this.headerColour, HeaderColours)
+				? `ontario-card__heading--${this.headerColour}`
+				: '';
+
+		return `${baseClass} ${backgroundClass}`;
+	}
+
+	/**
+	 * Returns the url that the card links to.
+	 *
+	 * @returns {string}
+	 */
+	private getHref(): string {
 		return this.cardLink ? this.cardLink : '#';
 	}
 
+	/**
+	 * Component life cycle hook.
+	 *
+	 * https://stenciljs.com/docs/component-lifecycle#connectedcallback
+	 */
 	componentWillLoad() {
 		this.validateCardType();
 		this.validateHeaderType();
@@ -220,7 +302,7 @@ export class OntarioCard {
 
 	render() {
 		return (
-			<li class={this.getClass()}>
+			<li class={this.getCardClasses()}>
 				{this.image && (
 					<div class="ontario-card__image-container">
 						<a href={this.getHref()} aria-label={this.ariaLabelText}>
@@ -229,7 +311,7 @@ export class OntarioCard {
 					</div>
 				)}
 				<div class={`ontario-card__text-container ${this.image ? 'ontario-card--image-true' : ''}`}>
-					<h2 class="ontario-card__heading">
+					<h2 class={this.getCardHeadingClasses()}>
 						<a href={this.getHref()} aria-label={this.ariaLabelText}>
 							{this.label}
 						</a>
