@@ -20,7 +20,7 @@ Example of a bare-bones `ontario-card-collection` component, with a `cardsPerRow
 ```html
 <ontario-card-collection cards-per-row="2">
 	<ontario-card
-		card-type="horizontal"
+		layout="horizontal"
 		label="Card Title 1"
 		image="https://picsum.photos/200/300"
 		card-link="https://google.ca"
@@ -30,7 +30,7 @@ Example of a bare-bones `ontario-card-collection` component, with a `cardsPerRow
 	>
 	</ontario-card>
 	<ontario-card
-		card-type="horizontal"
+		layout="horizontal"
 		label="Card Title 2"
 		image="https://picsum.photos/200/300"
 		horizontal-image-position-type="left"
@@ -43,7 +43,7 @@ Example of a bare-bones `ontario-card-collection` component, with a `cardsPerRow
 
 <OntarioCardCollection cards-per-row="2">
 	<OntarioCard
-		card-type="horizontal"
+		layout="horizontal"
 		label="Card Title 1"
 		image="https://picsum.photos/200/300"
 		card-link="https://google.ca"
@@ -53,7 +53,7 @@ Example of a bare-bones `ontario-card-collection` component, with a `cardsPerRow
 	>
 	</OntarioCard>
 	<OntarioCard
-		card-type="horizontal"
+		layout="horizontal"
 		label="Card Title 2"
 		image="https://picsum.photos/200/300"
 		horizontal-image-position-type="left"
