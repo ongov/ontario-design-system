@@ -37,7 +37,7 @@ Example of an `ontario-card` component with an image, which includes the `header
 <div>
 	<OntarioCard
 		label="Card Title"
-		header-colour="sky"
+		headerColour="sky"
 		image="https://picsum.photos/200/300"
 		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 	></OntarioCard>
@@ -62,8 +62,8 @@ This is another example of an `ontario-card` component with a horizontal layout 
 		layout="horizontal"
 		label="Card Title"
 		image="https://picsum.photos/200/300"
-		horizontal-image-position-type="left"
-		horizontal-image-size-type="one-fourth"
+		horizontalImagePositionType="left"
+		horizontalImageSizeType="one-fourth"
 		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 	></OntarioCard>
 </div>

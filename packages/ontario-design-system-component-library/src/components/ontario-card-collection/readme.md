@@ -46,9 +46,9 @@ Example of a bare-bones `ontario-card-collection` component, with a `cardsPerRow
 		layout="horizontal"
 		label="Card Title 1"
 		image="https://picsum.photos/200/300"
-		card-link="https://google.ca"
-		horizontal-image-position-type="left"
-		horizontal-image-size-type="one-fourth"
+		cardLink="https://google.ca"
+		horizontalImagePositionType="left"
+		horizontalImageSizeType="one-fourth"
 		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 	>
 	</OntarioCard>
@@ -56,8 +56,8 @@ Example of a bare-bones `ontario-card-collection` component, with a `cardsPerRow
 		layout="horizontal"
 		label="Card Title 2"
 		image="https://picsum.photos/200/300"
-		horizontal-image-position-type="left"
-		horizontal-image-size-type="one-fourth"
+		horizontalImagePositionType="left"
+		horizontalImageSizeType="one-fourth"
 		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 	>
 	</OntarioCard>
