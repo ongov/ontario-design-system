@@ -146,7 +146,7 @@ export class OntarioCard {
 			const isValid = validateValueAgainstArray(this.headerColour, HeaderColours);
 
 			if (!isValid) {
-				this.warnDefaultHeaderColourType();
+				this.warnDefaultHeaderColour();
 				this.headerColour = '';
 			}
 		}
@@ -179,14 +179,14 @@ export class OntarioCard {
 	 *
 	 * This function does not return a value.
 	 */
-	private warnDefaultHeaderColourType() {
+	private warnDefaultHeaderColour() {
 		const message = new ConsoleMessageClass();
 		message
 			.addDesignSystemTag()
-			.addMonospaceText(' Header Colour ')
+			.addMonospaceText(' header-colour ')
 			.addRegularText('on')
 			.addMonospaceText(' <ontario-card> ')
-			.addRegularText('was set to an invalid type; only ')
+			.addRegularText('was set to an invalid colour; only ')
 			.addMonospaceText(printArray([...HeaderColours]))
 			.addRegularText(' are supported. ')
 			.addRegularText('No colour is assumed as the default.')
