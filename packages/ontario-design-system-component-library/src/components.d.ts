@@ -16,10 +16,10 @@ import {
 import { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 import { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
 import {
-	CardType,
-	HeaderType,
+	HeaderColour,
 	HorizontalImagePositionType,
 	HorizontalImageSizeType,
+	Layout,
 } from './components/ontario-card/ontario-card-types';
 import { CardsPerRow } from './components/ontario-card-collection/ontario-collection-card-types';
 import { Caption } from './utils/common/input-caption/caption.interface';
@@ -68,10 +68,10 @@ export {
 export { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 export { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
 export {
-	CardType,
-	HeaderType,
+	HeaderColour,
 	HorizontalImagePositionType,
 	HorizontalImageSizeType,
+	Layout,
 } from './components/ontario-card/ontario-card-types';
 export { CardsPerRow } from './components/ontario-card-collection/ontario-collection-card-types';
 export { Caption } from './utils/common/input-caption/caption.interface';
@@ -249,17 +249,13 @@ export namespace Components {
 		 */
 		cardLink?: string;
 		/**
-		 * The type of card to render.  If no type is passed, it will default to 'basic'.
-		 */
-		cardType: CardType;
-		/**
 		 * Text to be displayed within the card description container.  This is optional.
 		 */
 		description?: string;
 		/**
-		 * The type of header to render.  If no type is passed, it will default to 'default'.
+		 * Set the card's header colour.  This is optional.
 		 */
-		headerType: HeaderType;
+		headerColour?: HeaderColour;
 		/**
 		 * The position of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
 		 * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
@@ -279,6 +275,10 @@ export namespace Components {
 		 * @example <ontario-card 	header-type="dark" 	card-type="horizontal" 	label="Card Title 1" 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" >
 		 */
 		label: string;
+		/**
+		 * The layout oritnetation of the card.  If no type is passed, it will default to 'vertical'.
+		 */
+		layout?: Layout;
 	}
 	interface OntarioCardCollection {
 		/**
@@ -1826,6 +1826,54 @@ export namespace Components {
 		 */
 		required?: boolean;
 	}
+	interface OntarioSearchBox {
+		/**
+		 * The text to display as the input label
+		 * @example <ontario-search-box      caption='{ 		"captionText": "Search directory", 		"captionType": "default" 		}' 	required = "true" > </ontario-search-box>
+		 */
+		caption: Caption | string;
+		/**
+		 * Used to add a custom function to the input onBlur event.
+		 */
+		customOnBlur?: (event: globalThis.Event) => void;
+		/**
+		 * Used to add a custom function to the input onChange event.
+		 */
+		customOnChange?: (event: globalThis.Event) => void;
+		/**
+		 * Used to add a custom function to the input onFocus event.
+		 */
+		customOnFocus?: (event: globalThis.Event) => void;
+		/**
+		 * Used to add a custom function to the input onInput event.
+		 */
+		customOnInput?: (event: globalThis.Event) => void;
+		/**
+		 * The unique identifier of the search-box component. This is optional - if no ID is passed, one will be generated.
+		 */
+		elementId?: string;
+		/**
+		 * Used to include the ontario-hint-text component for the search-box. This is optional.
+		 */
+		hintText?: string | Hint;
+		/**
+		 * The language of the component. This is used for translations. If none is passed, it will default to English.
+		 */
+		language?: Language;
+		/**
+		 * This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted.
+		 * @example <ontario-search-box   id="ontario-search-box"   caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
+		 */
+		performSearch?: (value?: string) => Promise<void>;
+		/**
+		 * This is used to determine whether the dropdown list is required or not. This prop gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+		 */
+		required?: boolean;
+		/**
+		 * The value of the search term. This is optional.
+		 */
+		value?: string;
+	}
 	interface OntarioStepIndicator {
 		/**
 		 * URL for the back element to set a path for where the link will lead.  If a URL is passed in, the back element will display as an anchor tag. The back element will require either the backButtonURL prop or the customOnClick prop to be passed in order for the back element to display.
@@ -1968,6 +2016,10 @@ export interface OntarioLanguageToggleCustomEvent<T> extends CustomEvent<T> {
 export interface OntarioRadioButtonsCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioRadioButtonsElement;
+}
+export interface OntarioSearchBoxCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioSearchBoxElement;
 }
 export interface OntarioTextareaCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
@@ -3019,6 +3071,65 @@ declare global {
 		prototype: HTMLOntarioRadioButtonsElement;
 		new (): HTMLOntarioRadioButtonsElement;
 	};
+	interface HTMLOntarioSearchBoxElementEventMap {
+		searchOnSubmit: string;
+		inputOnInput: InputInputEvent;
+		inputOnChange: InputInteractionEvent;
+		inputOnBlur: InputFocusBlurEvent;
+		inputOnFocus: InputFocusBlurEvent;
+	}
+	interface HTMLOntarioSearchBoxElement extends Components.OntarioSearchBox, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioSearchBoxElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioSearchBoxElement,
+				ev: OntarioSearchBoxCustomEvent<HTMLOntarioSearchBoxElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioSearchBoxElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioSearchBoxElement,
+				ev: OntarioSearchBoxCustomEvent<HTMLOntarioSearchBoxElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
+	var HTMLOntarioSearchBoxElement: {
+		prototype: HTMLOntarioSearchBoxElement;
+		new (): HTMLOntarioSearchBoxElement;
+	};
 	interface HTMLOntarioStepIndicatorElement extends Components.OntarioStepIndicator, HTMLStencilElement {}
 	var HTMLOntarioStepIndicatorElement: {
 		prototype: HTMLOntarioStepIndicatorElement;
@@ -3224,6 +3335,7 @@ declare global {
 		'ontario-loading-indicator': HTMLOntarioLoadingIndicatorElement;
 		'ontario-page-alert': HTMLOntarioPageAlertElement;
 		'ontario-radio-buttons': HTMLOntarioRadioButtonsElement;
+		'ontario-search-box': HTMLOntarioSearchBoxElement;
 		'ontario-step-indicator': HTMLOntarioStepIndicatorElement;
 		'ontario-table': HTMLOntarioTableElement;
 		'ontario-textarea': HTMLOntarioTextareaElement;
@@ -3369,17 +3481,13 @@ declare namespace LocalJSX {
 		 */
 		cardLink?: string;
 		/**
-		 * The type of card to render.  If no type is passed, it will default to 'basic'.
-		 */
-		cardType?: CardType;
-		/**
 		 * Text to be displayed within the card description container.  This is optional.
 		 */
 		description?: string;
 		/**
-		 * The type of header to render.  If no type is passed, it will default to 'default'.
+		 * Set the card's header colour.  This is optional.
 		 */
-		headerType?: HeaderType;
+		headerColour?: HeaderColour;
 		/**
 		 * The position of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
 		 * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
@@ -3399,6 +3507,10 @@ declare namespace LocalJSX {
 		 * @example <ontario-card 	header-type="dark" 	card-type="horizontal" 	label="Card Title 1" 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" >
 		 */
 		label?: string;
+		/**
+		 * The layout oritnetation of the card.  If no type is passed, it will default to 'vertical'.
+		 */
+		layout?: Layout;
 	}
 	interface OntarioCardCollection {
 		/**
@@ -5051,6 +5163,75 @@ declare namespace LocalJSX {
 		 */
 		required?: boolean;
 	}
+	interface OntarioSearchBox {
+		/**
+		 * The text to display as the input label
+		 * @example <ontario-search-box      caption='{ 		"captionText": "Search directory", 		"captionType": "default" 		}' 	required = "true" > </ontario-search-box>
+		 */
+		caption?: Caption | string;
+		/**
+		 * Used to add a custom function to the input onBlur event.
+		 */
+		customOnBlur?: (event: globalThis.Event) => void;
+		/**
+		 * Used to add a custom function to the input onChange event.
+		 */
+		customOnChange?: (event: globalThis.Event) => void;
+		/**
+		 * Used to add a custom function to the input onFocus event.
+		 */
+		customOnFocus?: (event: globalThis.Event) => void;
+		/**
+		 * Used to add a custom function to the input onInput event.
+		 */
+		customOnInput?: (event: globalThis.Event) => void;
+		/**
+		 * The unique identifier of the search-box component. This is optional - if no ID is passed, one will be generated.
+		 */
+		elementId?: string;
+		/**
+		 * Used to include the ontario-hint-text component for the search-box. This is optional.
+		 */
+		hintText?: string | Hint;
+		/**
+		 * The language of the component. This is used for translations. If none is passed, it will default to English.
+		 */
+		language?: Language;
+		/**
+		 * Emitted when a keyboard input event occurs when an input has lost focus.
+		 */
+		onInputOnBlur?: (event: OntarioSearchBoxCustomEvent<InputFocusBlurEvent>) => void;
+		/**
+		 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
+		 */
+		onInputOnChange?: (event: OntarioSearchBoxCustomEvent<InputInteractionEvent>) => void;
+		/**
+		 * Emitted when a keyboard input event occurs when an input has gained focus.
+		 */
+		onInputOnFocus?: (event: OntarioSearchBoxCustomEvent<InputFocusBlurEvent>) => void;
+		/**
+		 * Emitted when a input  occurs when an input has been changed.
+		 */
+		onInputOnInput?: (event: OntarioSearchBoxCustomEvent<InputInputEvent>) => void;
+		/**
+		 * Emitted when the search is submitted. Below is an example on how to hook into the event to get the event details.
+		 * @example <script> 	document.getElementById('ontario-search-box').addEventListener('searchOnSubmit', (event) => {  		const searchValue = event.detail; 		console.log('Search submitted with value:', searchValue);   }; 	</script>
+		 */
+		onSearchOnSubmit?: (event: OntarioSearchBoxCustomEvent<string>) => void;
+		/**
+		 * This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted.
+		 * @example <ontario-search-box   id="ontario-search-box"   caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
+		 */
+		performSearch?: (value?: string) => Promise<void>;
+		/**
+		 * This is used to determine whether the dropdown list is required or not. This prop gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+		 */
+		required?: boolean;
+		/**
+		 * The value of the search term. This is optional.
+		 */
+		value?: string;
+	}
 	interface OntarioStepIndicator {
 		/**
 		 * URL for the back element to set a path for where the link will lead.  If a URL is passed in, the back element will display as an anchor tag. The back element will require either the backButtonURL prop or the customOnClick prop to be passed in order for the back element to display.
@@ -5321,6 +5502,7 @@ declare namespace LocalJSX {
 		'ontario-loading-indicator': OntarioLoadingIndicator;
 		'ontario-page-alert': OntarioPageAlert;
 		'ontario-radio-buttons': OntarioRadioButtons;
+		'ontario-search-box': OntarioSearchBox;
 		'ontario-step-indicator': OntarioStepIndicator;
 		'ontario-table': OntarioTable;
 		'ontario-textarea': OntarioTextarea;
@@ -5525,6 +5707,7 @@ declare module '@stencil/core' {
 				JSXBase.HTMLAttributes<HTMLOntarioLoadingIndicatorElement>;
 			'ontario-page-alert': LocalJSX.OntarioPageAlert & JSXBase.HTMLAttributes<HTMLOntarioPageAlertElement>;
 			'ontario-radio-buttons': LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
+			'ontario-search-box': LocalJSX.OntarioSearchBox & JSXBase.HTMLAttributes<HTMLOntarioSearchBoxElement>;
 			'ontario-step-indicator': LocalJSX.OntarioStepIndicator & JSXBase.HTMLAttributes<HTMLOntarioStepIndicatorElement>;
 			'ontario-table': LocalJSX.OntarioTable & JSXBase.HTMLAttributes<HTMLOntarioTableElement>;
 			'ontario-textarea': LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;

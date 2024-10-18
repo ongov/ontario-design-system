@@ -20,9 +20,9 @@ Example of a bare-bones `ontario-card-collection` component, with a `cardsPerRow
 ```html
 <ontario-card-collection cards-per-row="2">
 	<ontario-card
-		card-type="horizontal"
+		layout="horizontal"
 		label="Card Title 1"
-		image="https://picsum.photos/200/300"
+		image="https://picsum.photos/300/225"
 		card-link="https://google.ca"
 		horizontal-image-position-type="left"
 		horizontal-image-size-type="one-fourth"
@@ -30,9 +30,9 @@ Example of a bare-bones `ontario-card-collection` component, with a `cardsPerRow
 	>
 	</ontario-card>
 	<ontario-card
-		card-type="horizontal"
+		layout="horizontal"
 		label="Card Title 2"
-		image="https://picsum.photos/200/300"
+		image="https://picsum.photos/300/225"
 		horizontal-image-position-type="left"
 		horizontal-image-size-type="one-fourth"
 		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
@@ -43,21 +43,21 @@ Example of a bare-bones `ontario-card-collection` component, with a `cardsPerRow
 
 <OntarioCardCollection cards-per-row="2">
 	<OntarioCard
-		card-type="horizontal"
+		layout="horizontal"
 		label="Card Title 1"
-		image="https://picsum.photos/200/300"
-		card-link="https://google.ca"
-		horizontal-image-position-type="left"
-		horizontal-image-size-type="one-fourth"
+		image="https://picsum.photos/300/225"
+		cardLink="https://google.ca"
+		horizontalImagePositionType="left"
+		horizontalImageSizeType="one-fourth"
 		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 	>
 	</OntarioCard>
 	<OntarioCard
-		card-type="horizontal"
+		layout="horizontal"
 		label="Card Title 2"
-		image="https://picsum.photos/200/300"
-		horizontal-image-position-type="left"
-		horizontal-image-size-type="one-fourth"
+		image="https://picsum.photos/300/225"
+		horizontalImagePositionType="left"
+		horizontalImageSizeType="one-fourth"
 		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 	>
 	</OntarioCard>

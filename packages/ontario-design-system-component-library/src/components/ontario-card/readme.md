@@ -14,7 +14,7 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
-Example of a bare-bones `ontario-card` component where the `label` and `description` for the card is provided. The default card type will be `basic`, and default header type will be `default`.
+Example of a bare-bones `ontario-card` component where the `label` and `description` for the card is provided.
 
 ```html
 <ontario-card label="Card Title" description="Lorem Ipsum Lorem Ipsum"></ontario-card>
@@ -22,14 +22,13 @@ Example of a bare-bones `ontario-card` component where the `label` and `descript
 
 <OntarioCard label="Card Title" description="Lorem Ipsum Lorem Ipsum"></OntarioCard>
 
-Example of an `ontario-card` component with an image, which includes the `cardType`, `headerType`, `image`, `label` and `description` properties.
+Example of an `ontario-card` component with an image, which includes the `headerColour`, `image`, `label` and `description` properties.
 
 ```html
 <ontario-card
-	card-type="image"
-	header-type="light"
 	label="Card Title"
-	image="https://picsum.photos/200/300"
+	header-colour="sky"
+	image="https://picsum.photos/300/225"
 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 >
 </ontario-card>
@@ -37,22 +36,20 @@ Example of an `ontario-card` component with an image, which includes the `cardTy
 
 <div>
 	<OntarioCard
-		card-type="image"
-		header-type="light"
 		label="Card Title"
-		image="https://picsum.photos/200/300"
+		headerColour="sky"
+		image="https://picsum.photos/300/225"
 		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 	></OntarioCard>
 </div>
 
-This is another example of an `ontario-card` component, where the user is passing in the horizontal card-type. This will
-require more properties, including the `horizontalImagePositionType` and the `horizontalImageSizeType`.
+This is another example of an `ontario-card` component with a horizontal layout containing an image. This will require more properties, including the `horizontalImagePositionType` and the `horizontalImageSizeType`.
 
 ```html
 <ontario-card
-	card-type="horizontal"
+	layout="horizontal"
 	label="Card Title"
-	image="https://picsum.photos/200/300"
+	image="https://picsum.photos/300/225"
 	horizontal-image-position-type="left"
 	horizontal-image-size-type="one-fourth"
 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
@@ -62,30 +59,63 @@ require more properties, including the `horizontalImagePositionType` and the `ho
 
 <div>
 	<OntarioCard
-		card-type="horizontal"
+		layout="horizontal"
 		label="Card Title"
-		image="https://picsum.photos/200/300"
-		horizontal-image-position-type="left"
-		horizontal-image-size-type="one-fourth"
+		image="https://picsum.photos/300/225"
+		horizontalImagePositionType="left"
+		horizontalImageSizeType="one-fourth"
 		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 	></OntarioCard>
 </div>
+
+## Custom property types
+
+### headerColour
+
+The `header-colour` property supports a wide range of values, including:
+
+- `dark-accent`
+- `light-accent`
+- `light-gold`
+- `light-yellow`
+- `light-taupe`
+- `light-green`
+- `light-lime`
+- `light-teal`
+- `light-sky`
+- `light-blue`
+- `light-purple`
+- `light-orange`
+- `light-red`
+- `light-magenta`
+- `gold`
+- `yellow`
+- `taupe`
+- `green`
+- `lime`
+- `teal`
+- `sky`
+- `blue`
+- `purple`
+- `orange`
+- `red`
+- `magenta`
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property                      | Attribute                        | Description                                                                                                                                                                                                                 | Type                                            | Default       |
-| ----------------------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ------------- |
-| `ariaLabelText`               | `aria-label-text`                | Provides more context as to what the card interaction is doing. This should only be used for accessibility purposes, if the card interaction requires more \* \* description than what the text provides. This is optional. | `string \| undefined`                           | `undefined`   |
-| `cardLink`                    | `card-link`                      | Action link for when the card is clicked. This is optional.                                                                                                                                                                 | `string \| undefined`                           | `undefined`   |
-| `cardType`                    | `card-type`                      | The type of card to render. If no type is passed, it will default to 'basic'.                                                                                                                                               | `"basic" \| "horizontal" \| "image" \| "title"` | `'basic'`     |
-| `description`                 | `description`                    | Text to be displayed within the card description container. This is optional.                                                                                                                                               | `string \| undefined`                           | `undefined`   |
-| `headerType`                  | `header-type`                    | The type of header to render. If no type is passed, it will default to 'default'.                                                                                                                                           | `"dark" \| "default" \| "light"`                | `'default'`   |
-| `horizontalImagePositionType` | `horizontal-image-position-type` | The position of the image when the card-type is set to 'horizontal'. This prop is only necessry when the card-type is set to 'horizontal'.                                                                                  | `"left" \| "right" \| undefined`                | `'left'`      |
-| `horizontalImageSizeType`     | `horizontal-image-size-type`     | The size of the image when the card-type is set to 'horizontal'. This prop is only necessry when the card-type is set to 'horizontal'.                                                                                      | `"one-fourth" \| "one-third" \| undefined`      | `'one-third'` |
-| `image`                       | `image`                          | Image to be displayed within the card image container. This is optional.                                                                                                                                                    | `string \| undefined`                           | `undefined`   |
-| `label`                       | `label`                          | Text to be displayed within the header.                                                                                                                                                                                     | `string`                                        | `undefined`   |
+| Property                      | Attribute                        | Description                                                                                                                                                                                                                 | Type                                       | Default       |
+| ----------------------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------- |
+| `ariaLabelText`               | `aria-label-text`                | Provides more context as to what the card interaction is doing. This should only be used for accessibility purposes, if the card interaction requires more \* \* description than what the text provides. This is optional. | `string \| undefined`                      | `undefined`   |
+| `cardLink`                    | `card-link`                      | Action link for when the card is clicked. This is optional.                                                                                                                                                                 | `string \| undefined`                      | `undefined`   |
+| `description`                 | `description`                    | Text to be displayed within the card description container. This is optional.                                                                                                                                               | `string \| undefined`                      | `undefined`   |
+| `headerColour`                | `header-colour`                  | Set the card's header colour. This is optional.                                                                                                                                                                             | `string \| undefined`                      | `undefined`   |
+| `horizontalImagePositionType` | `horizontal-image-position-type` | The position of the image when the card-type is set to 'horizontal'. This prop is only necessry when the card-type is set to 'horizontal'.                                                                                  | `"left" \| "right" \| undefined`           | `'left'`      |
+| `horizontalImageSizeType`     | `horizontal-image-size-type`     | The size of the image when the card-type is set to 'horizontal'. This prop is only necessry when the card-type is set to 'horizontal'.                                                                                      | `"one-fourth" \| "one-third" \| undefined` | `'one-third'` |
+| `image`                       | `image`                          | Image to be displayed within the card image container. This is optional.                                                                                                                                                    | `string \| undefined`                      | `undefined`   |
+| `label`                       | `label`                          | Text to be displayed within the header.                                                                                                                                                                                     | `string`                                   | `undefined`   |
+| `layout`                      | `layout`                         | The layout oritnetation of the card. If no type is passed, it will default to 'vertical'.                                                                                                                                   | `"horizontal" \| "vertical" \| undefined`  | `'vertical'`  |
 
 ---
 

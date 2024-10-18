@@ -16,7 +16,6 @@ $ontario-checkboxes-size: globalFunctions.px-to-rem(28);
 $ontario-checkboxes-size-mobile: globalFunctions.px-to-rem(32);
 $ontario-checkbox-border-size: globalFunctions.px-to-rem(2);
 $ontario-checkbox-box-shadow-outline: globalFunctions.px-to-rem(4);
-$ontario-input-border-width: 0.125rem;
 
 :host {
 	--checkbox-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M0 2.667C0 1.194 1.194 0 2.667 0h18.667C22.806 0 24 1.194 24 2.667v18.667C24 22.806 22.806 24 21.333 24H2.667C1.194 24 0 22.806 0 21.333V2.667z' fill='%231a1a1a'/%3E%3Cpath d='M2.667 12.616l6.667 6.718 12-12.092-1.88-1.908L9.333 15.53l-4.787-4.8-1.88 1.894z' fill='%23fff'/%3E%3C/svg%3E");
