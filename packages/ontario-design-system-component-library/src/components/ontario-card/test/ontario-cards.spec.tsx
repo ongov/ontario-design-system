@@ -7,18 +7,32 @@ describe('ontario-card', () => {
 			components: [OntarioCard],
 			html: `<ontario-card></ontario-card>`,
 		});
-		expect(page.root).toEqualHtml(`
-      <ontario-card>
-				<mock:shadow-root>
-					<li class="ontario-card ontario-card__card-type--basic ontario-card__header-type--default ontario-card__description-false">
-						<div class="ontario-card__text-container">
-							<h2 class="ontario-card__heading">
-								<a href="#"></a>
-							</h2>
-						</div>
-					</li>
-				</mock:shadow-root>
-      </ontario-card>
-    `);
+		expect(page.root).toMatchSnapshot();
 	});
+
+	it('should render a label', async () => {
+		const page = await newSpecPage({
+			components: [OntarioCard],
+			html: `<ontario-card label="Card Title 1"></ontario-card>`,
+		});
+		expect(page.root).toMatchSnapshot();
+	});
+
+	it('should render a header colour on the label', async () => {
+		const page = await newSpecPage({
+			components: [OntarioCard],
+			html: `<ontario-card label="Card Title 1" header-colour="sky"></ontario-card>`,
+		});
+		expect(page.root).toMatchSnapshot();
+	});
+
+	it('should render a description', async () => {
+		const page = await newSpecPage({
+			components: [OntarioCard],
+			html: `<ontario-card description="Lorem ipsum"></ontario-card>`,
+		});
+		expect(page.root).toMatchSnapshot();
+	});
+
+	// Don't think we can test images unless we point to a local path
 });
