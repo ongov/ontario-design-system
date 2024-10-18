@@ -175,6 +175,7 @@ $ontario-card-heading-colours: (
 	.ontario-card__background--#{$colour-name} {
 		background-color: $colour-value;
 	}
+
 	.ontario-card__heading--#{$colour-name} {
 		background-color: $colour-value;
 		padding-top: spacing.$spacing-4;

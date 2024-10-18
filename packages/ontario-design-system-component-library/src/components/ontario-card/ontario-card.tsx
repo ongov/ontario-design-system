@@ -131,7 +131,8 @@ export class OntarioCard {
 			if (isValid) {
 				this.layoutState = this.layout;
 			} else {
-				this.layoutState = this.warnDefaultLayout();
+				this.warnDefaultLayout();
+				this.layoutState = 'vertical';
 			}
 		}
 	}
@@ -139,7 +140,7 @@ export class OntarioCard {
 	/**
 	 * Watch for changes to the `headerColour` property for validation purposes.
 	 *
-	 * If the user input doesn't match one of the array values then `headerColour` will be set to its default (`white`).
+	 * If the user input doesn't match one of the array values then `headerColour` will be kept empty ('').
 	 * If a match is found in one of the array values then `headerColour` will be set to the matching array key value.
 	 */
 	@Watch('headerColour')
@@ -155,12 +156,9 @@ export class OntarioCard {
 	}
 
 	/**
-	 * Print the invalid `layout` prop warning message and return
-	 * the default value of `vertical`.
-	 *
-	 * @returns {string}
+	 * Print the invalid `layout` prop warning message.
 	 */
-	private warnDefaultLayout(): Layout {
+	private warnDefaultLayout() {
 		const message = new ConsoleMessageClass();
 		message
 			.addDesignSystemTag()
@@ -173,13 +171,10 @@ export class OntarioCard {
 			.addMonospaceText(' vertical ')
 			.addRegularText('is assumed.')
 			.printMessage();
-		return 'vertical';
 	}
 
 	/**
 	 * Print the invalid `headerColour` prop warning message.
-	 *
-	 * This function does not return a value.
 	 */
 	private warnDefaultHeaderColour() {
 		const message = new ConsoleMessageClass();
@@ -211,7 +206,7 @@ export class OntarioCard {
 		const backgroundClass =
 			this.headerColour && !this.description ? `ontario-card__background--${this.headerColour}` : '';
 
-		return `${baseClass} ${descriptionClass} ${backgroundClass}`;
+		return `${baseClass} ${descriptionClass} ${backgroundClass}`.trim();
 	}
 
 	/**
@@ -227,7 +222,7 @@ export class OntarioCard {
 				? `ontario-card__heading--${this.headerColour}`
 				: '';
 
-		return `${baseClass} ${backgroundClass}`;
+		return `${baseClass} ${backgroundClass}`.trim();
 	}
 
 	/**
