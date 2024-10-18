@@ -16,10 +16,10 @@ import {
 import { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 import { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
 import {
-	CardType,
 	HeaderColour,
 	HorizontalImagePositionType,
 	HorizontalImageSizeType,
+	Layout,
 } from './components/ontario-card/ontario-card-types';
 import { CardsPerRow } from './components/ontario-card-collection/ontario-collection-card-types';
 import { Caption } from './utils/common/input-caption/caption.interface';
@@ -68,10 +68,10 @@ export {
 export { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 export { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
 export {
-	CardType,
 	HeaderColour,
 	HorizontalImagePositionType,
 	HorizontalImageSizeType,
+	Layout,
 } from './components/ontario-card/ontario-card-types';
 export { CardsPerRow } from './components/ontario-card-collection/ontario-collection-card-types';
 export { Caption } from './utils/common/input-caption/caption.interface';
@@ -249,10 +249,6 @@ export namespace Components {
 		 */
 		cardLink?: string;
 		/**
-		 * The type of card to render.  If no type is passed, it will default to 'basic'.
-		 */
-		cardType: CardType;
-		/**
 		 * Text to be displayed within the card description container.  This is optional.
 		 */
 		description?: string;
@@ -279,6 +275,10 @@ export namespace Components {
 		 * @example <ontario-card 	header-type="dark" 	card-type="horizontal" 	label="Card Title 1" 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" >
 		 */
 		label: string;
+		/**
+		 * The layout oritnetation of the card.  If no type is passed, it will default to 'vertical'.
+		 */
+		layout?: Layout;
 	}
 	interface OntarioCardCollection {
 		/**
@@ -3481,10 +3481,6 @@ declare namespace LocalJSX {
 		 */
 		cardLink?: string;
 		/**
-		 * The type of card to render.  If no type is passed, it will default to 'basic'.
-		 */
-		cardType?: CardType;
-		/**
 		 * Text to be displayed within the card description container.  This is optional.
 		 */
 		description?: string;
@@ -3511,6 +3507,10 @@ declare namespace LocalJSX {
 		 * @example <ontario-card 	header-type="dark" 	card-type="horizontal" 	label="Card Title 1" 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" >
 		 */
 		label?: string;
+		/**
+		 * The layout oritnetation of the card.  If no type is passed, it will default to 'vertical'.
+		 */
+		layout?: Layout;
 	}
 	interface OntarioCardCollection {
 		/**

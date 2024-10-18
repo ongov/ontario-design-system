@@ -1,11 +1,11 @@
 import { Component, Prop, Element, h, State, Watch } from '@stencil/core';
 import {
-	CardType,
-	CardTypes,
 	HeaderColour,
 	HeaderColours,
 	HorizontalImagePositionType,
 	HorizontalImageSizeType,
+	Layout,
+	Layouts,
 } from './ontario-card-types';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
@@ -54,12 +54,12 @@ export class OntarioCard {
 	@Prop() cardLink?: string;
 
 	/**
-	 * The type of card to render.
+	 * The layout oritnetation of the card.
 	 *
-	 * If no type is passed, it will default to 'basic'.
+	 * If no type is passed, it will default to 'vertical'.
 	 *
 	 */
-	@Prop() cardType: CardType = 'basic';
+	@Prop() layout?: Layout = 'vertical';
 
 	/**
 	 * Set the card's header colour.
@@ -114,23 +114,25 @@ export class OntarioCard {
 
 	/**
 	 * Mutable variable, for internal use only.
-	 * Set the card's type depending on validation result.
+	 * Set the card's layout depending on validation result.
 	 */
-	@State() private cardTypeState: string;
+	@State() private layoutState: string;
 
 	/**
-	 * Watch for changes to the `cardType` property for validation purposes.
+	 * Watch for changes to the `layout` property for validation purposes.
 	 *
-	 * If the user input doesn't match one of the array values then `cardType` will be set to its default (`basic`).
-	 * If a match is found in one of the array values then `cardType` will be set to the matching array key value.
+	 * If the user input doesn't match one of the array values then `layout` will be set to its default (`vertical`).
+	 * If a match is found in one of the array values then `layoutState` will be set to the matching array key value.
 	 */
-	@Watch('cardType')
-	validateCardType() {
-		const isValid = validateValueAgainstArray(this.cardType, CardTypes);
-		if (isValid) {
-			this.cardTypeState = this.cardType;
-		} else {
-			this.cardTypeState = this.warnDefaultCardType();
+	@Watch('layout')
+	validateLayout() {
+		if (this.layout) {
+			const isValid = validateValueAgainstArray(this.layout, Layouts);
+			if (isValid) {
+				this.layoutState = this.layout;
+			} else {
+				this.layoutState = this.warnDefaultLayout();
+			}
 		}
 	}
 
@@ -153,25 +155,25 @@ export class OntarioCard {
 	}
 
 	/**
-	 * Print the invalid `cardType` prop warning message and return
-	 * the default value of `basic`.
+	 * Print the invalid `layout` prop warning message and return
+	 * the default value of `vertical`.
 	 *
 	 * @returns {string}
 	 */
-	private warnDefaultCardType(): CardType {
+	private warnDefaultLayout(): Layout {
 		const message = new ConsoleMessageClass();
 		message
 			.addDesignSystemTag()
-			.addMonospaceText(' card-type ')
+			.addMonospaceText(' layout ')
 			.addRegularText('on')
 			.addMonospaceText(' <ontario-card> ')
-			.addRegularText('was set to an invalid type; only ')
-			.addMonospaceText(printArray([...CardTypes]))
-			.addRegularText(' are supported. The default type')
-			.addMonospaceText(' basic ')
+			.addRegularText('was set to an invalid layout; only ')
+			.addMonospaceText(printArray([...Layouts]))
+			.addRegularText(' are supported. The default layout')
+			.addMonospaceText(' vertical ')
 			.addRegularText('is assumed.')
 			.printMessage();
-		return 'basic';
+		return 'vertical';
 	}
 
 	/**
@@ -200,9 +202,9 @@ export class OntarioCard {
 	 */
 	private getCardClasses(): string {
 		const baseClass =
-			this.cardTypeState === 'horizontal'
-				? `ontario-card ontario-card__card-type--horizontal ontario-card__image-${this.horizontalImagePositionType} ontario-card__image-size-${this.horizontalImageSizeType}`
-				: `ontario-card ontario-card__card-type--${this.cardTypeState} ontario-card--position-vertical`;
+			this.layoutState === 'horizontal'
+				? `ontario-card ontario-card__card-type--${this.layoutState} ontario-card__image-${this.horizontalImagePositionType} ontario-card__image-size-${this.horizontalImageSizeType}`
+				: `ontario-card ontario-card__card-type--basic ontario-card--position-${this.layoutState}`;
 
 		const descriptionClass = this.description ? '' : ' ontario-card__description-false';
 
@@ -243,7 +245,7 @@ export class OntarioCard {
 	 * https://stenciljs.com/docs/component-lifecycle#connectedcallback
 	 */
 	componentWillLoad() {
-		this.validateCardType();
+		this.validateLayout();
 		this.validateHeaderColour();
 	}
 

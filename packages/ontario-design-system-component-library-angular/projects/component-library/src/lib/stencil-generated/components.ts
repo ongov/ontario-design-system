@@ -150,13 +150,13 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 	inputs: [
 		'ariaLabelText',
 		'cardLink',
-		'cardType',
 		'description',
 		'headerColour',
 		'horizontalImagePositionType',
 		'horizontalImageSizeType',
 		'image',
 		'label',
+		'layout',
 	],
 })
 @Component({
@@ -167,13 +167,13 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 	inputs: [
 		'ariaLabelText',
 		'cardLink',
-		'cardType',
 		'description',
 		'headerColour',
 		'horizontalImagePositionType',
 		'horizontalImageSizeType',
 		'image',
 		'label',
+		'layout',
 	],
 })
 export class OntarioCard {
