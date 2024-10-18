@@ -99,6 +99,7 @@
 	padding: (spacing.$spacing-5 - spacing.$spacing-1) spacing.$spacing-5 spacing.$spacing-2 spacing.$spacing-5;
 	transition: text-decoration 0.3s ease-in-out;
 	background-color: colours.$ontario-colour-white;
+	max-width: none;
 
 	.ontario-card:hover & {
 		text-decoration-line: underline;
