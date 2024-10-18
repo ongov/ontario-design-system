@@ -14,7 +14,7 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ## Examples
 
-Example of a bare-bones `ontario-card` component where the `label` and `description` for the card is provided. The default card type will be `basic`, and default header type will be `default`.
+Example of a bare-bones `ontario-card` component where the `label` and `description` for the card is provided.
 
 ```html
 <ontario-card label="Card Title" description="Lorem Ipsum Lorem Ipsum"></ontario-card>
@@ -22,13 +22,12 @@ Example of a bare-bones `ontario-card` component where the `label` and `descript
 
 <OntarioCard label="Card Title" description="Lorem Ipsum Lorem Ipsum"></OntarioCard>
 
-Example of an `ontario-card` component with an image, which includes the `cardType`, `headerType`, `image`, `label` and `description` properties.
+Example of an `ontario-card` component with an image, which includes the `headerColour`, `image`, `label` and `description` properties.
 
 ```html
 <ontario-card
-	card-type="image"
-	header-type="light"
 	label="Card Title"
+	header-colour="sky"
 	image="https://picsum.photos/200/300"
 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 >
@@ -37,20 +36,18 @@ Example of an `ontario-card` component with an image, which includes the `cardTy
 
 <div>
 	<OntarioCard
-		card-type="image"
-		header-type="light"
 		label="Card Title"
+		header-colour="sky"
 		image="https://picsum.photos/200/300"
 		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 	></OntarioCard>
 </div>
 
-This is another example of an `ontario-card` component, where the user is passing in the horizontal card-type. This will
-require more properties, including the `horizontalImagePositionType` and the `horizontalImageSizeType`.
+This is another example of an `ontario-card` component with a horizontal layout containing an image. This will require more properties, including the `horizontalImagePositionType` and the `horizontalImageSizeType`.
 
 ```html
 <ontario-card
-	card-type="horizontal"
+	layout="horizontal"
 	label="Card Title"
 	image="https://picsum.photos/200/300"
 	horizontal-image-position-type="left"
@@ -62,7 +59,7 @@ require more properties, including the `horizontalImagePositionType` and the `ho
 
 <div>
 	<OntarioCard
-		card-type="horizontal"
+		layout="horizontal"
 		label="Card Title"
 		image="https://picsum.photos/200/300"
 		horizontal-image-position-type="left"
@@ -70,6 +67,39 @@ require more properties, including the `horizontalImagePositionType` and the `ho
 		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 	></OntarioCard>
 </div>
+
+## Custom property types
+
+### headerColour
+
+The `header-colour` property supports a wide range of values, including:
+
+- `dark-accent`
+- `light-accent`
+- `light-gold`
+- `light-yellow`
+- `light-taupe`
+- `light-green`
+- `light-lime`
+- `light-teal`
+- `light-sky`
+- `light-blue`
+- `light-purple`
+- `light-orange`
+- `light-red`
+- `light-magenta`
+- `gold`
+- `yellow`
+- `taupe`
+- `green`
+- `lime`
+- `teal`
+- `sky`
+- `blue`
+- `purple`
+- `orange`
+- `red`
+- `magenta`
 
 <!-- Auto Generated Below -->
 
