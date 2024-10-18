@@ -19,7 +19,6 @@
 $ontario-radios-size: 32px;
 $ontario-radios-size-mobile: 36px;
 $ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-radios-size), 2);
-$ontario-input-border-width: 0.125rem;
 
 .ontario-radios__item {
 	position: relative;
