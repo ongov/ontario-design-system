@@ -1461,24 +1461,6 @@
 		<ontario-back-to-top />
 
 		<script>
-			const changeLanguage = (e) => {
-				e.preventDefault();
-				let header = document.getElementById('ontarioHeader');
-				header.customLanguageToggle = () => {
-					setTimeout(() => {
-						window.location.href = '/french.html';
-						console.log(header);
-						console.log('Lang switch');
-					}, 5000);
-				};
-			};
-
-			window.addEventListener('load', changeLanguage);
-
-			function testFunction() {
-				alert('HELLO WORLD!');
-			}
-
 			function activateHeaderType(headerType) {
 				const ontarioHeaderElement = document.querySelector('ontario-header');
 				ontarioHeaderElement.type = headerType;
