@@ -1,3 +1,24 @@
+# 5.0.0-alpha.1 (2024-10-21)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-complete-styles, @ongov/ontario-design-system-component-library:** added missing smoth scroll script from complete styles package 0f545e7
+- **@ongov/ontario-design-system-component-library:** update styles so mobile menu button appears 80557a3
+- **input-caption:** add special case to handle disabling the "required" label text internally c5a7136
+
+- **@ongov/ontario-design-system-component-library:** feat(ontario-card)!: remove headerType prop as it is replaced by headerColour d797223
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library:** feat(ontario-card)!: added layout prop b721250
+
+### Features
+
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library:** ontario-card header supports ds colour options 3ec917a
+- **ontario-search-box:** add component to library b2756b6
+
+### BREAKING CHANGES
+
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library:** `card-type` prop is now deprecated. Use `layout` prop instead.
+- **@ongov/ontario-design-system-component-library:** `headerType` prop has been deprecated. Use the `headerColour` prop instead.
+
 ## 4.3.1-alpha.1 (2024-10-11)
 
 ### Bug Fixes
