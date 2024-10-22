@@ -11,6 +11,7 @@ const sass = gulpSass(dartSass);
 
 import gulp from 'gulp';
 const { dest, series, src, task, parallel, watch } = gulp;
+
 const distDir = './dist';
 const styleDir = './src/sass/**';
 const fonts = ['./src/fonts/**'];
