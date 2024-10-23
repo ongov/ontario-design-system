@@ -12,7 +12,7 @@
 		"README.md"
 	],
 	"scripts": {
-		"build": "node build.js && npm run docs:copy:readme",
+		"build": "node build.mjs && npm run docs:copy:readme",
 		"clean": "rm -rf dist",
 		"clean:full": "rm -rf node_modules && npm run clean",
 		"test": "echo \"Error: no test specified\" && exit 1",
