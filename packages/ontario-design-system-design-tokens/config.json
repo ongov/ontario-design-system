@@ -20,6 +20,16 @@
 					"format": "css/variables"
 				}
 			]
+		},
+		"js": {
+			"transformGroup": "js",
+			"buildPath": "dist/js/",
+			"files": [
+				{
+					"destination": "tokens.js",
+					"format": "javascript/module"
+				}
+			]
 		}
 	}
 }
