@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".", // This must be specified if "paths" is.
+		"paths": {
+			"@ongov/*": ["packages/*"]
+		},
+		"target": "es6",
+		"module": "commonjs",
+		"esModuleInterop": true,
+		"skipLibCheck": true, // Skip type checking of all declaration files
+		"strict": true // Enable all strict type-checking options
+	},
+	"include": ["packages/**/*"],
+	"exclude": ["node_modules"]
+}
