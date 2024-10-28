@@ -17,7 +17,7 @@
 	max-width: globalVariables.$standard-width;
 	margin: spacing.$spacing-6;
 	padding: spacing.$spacing-5 0 spacing.$spacing-5 spacing.$spacing-5;
-	quotes: '\201C''\201D';
+	quotes: '\201C' '\201D';
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		font-size: globalFunctions.px-to-rem(18);

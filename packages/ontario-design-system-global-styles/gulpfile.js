@@ -16,7 +16,7 @@ const distDir = './dist';
 const styleDir = './src/sass/**';
 const fonts = ['./src/fonts/**'];
 const favicons = ['./src/favicons/*'];
-const dsTokensPath = './node_modules/@ongov/ontario-design-system-design-tokens/dist/scss/_variables.scss';
+const dsTokensPath = '../ontario-design-system-design-tokens/dist/scss/_variables.scss';
 const dsTokensDestPath = `${distDir}/styles/scss/1-variables/_tokens.variables.scss`;
 
 /**
@@ -31,26 +31,26 @@ const dsTokensDestPath = `${distDir}/styles/scss/1-variables/_tokens.variables.s
 const processSass = (opts) => {
 	const sassOptions = {
 		outputStyle: 'expanded',
-		includePaths: ['./node_modules'],
+		includePaths: ['../../node_modules'],
 	};
 
 	if (opts.debug) {
 		sassOptions.sourceComments = true;
 	}
 
-	src('./src/styles/scss/theme.scss')
+	src('./src/styles/scss/theme.scss', { sourcemaps: opts.sourcemaps })
 		.pipe(sass(sassOptions).on('error', sass.logError))
 		.pipe(autoprefixer())
 		.pipe(concat(gulpif(opts.compress, 'ontario-theme.min.css', 'ontario-theme.css')))
 		.pipe(gulpif(opts.compress, minify()))
-		.pipe(dest(`${distDir}/styles/css/compiled`));
+		.pipe(dest(`${distDir}/styles/css/compiled`, { sourcemaps: '.' }));
 
-	src('./src/misc/ontario-design-system-fonts.scss')
+	src('./src/misc/ontario-design-system-fonts.scss', { sourcemaps: opts.sourcemaps })
 		.pipe(sass(sassOptions).on('error', sass.logError))
 		.pipe(autoprefixer())
 		.pipe(concat(gulpif(opts.compress, 'ontario-design-system-fonts.min.css', 'ontario-design-system-fonts.css')))
 		.pipe(gulpif(opts.compress, minify()))
-		.pipe(dest(`${distDir}/misc/`));
+		.pipe(dest(`${distDir}/misc/`, { sourcemaps: '.' }));
 
 	if (opts.callback) {
 		opts.callback();
@@ -61,6 +61,7 @@ task('sass:build', (done) => {
 	processSass({
 		compress: false,
 		debug: false,
+		sourcemaps: true,
 		callback: done,
 	});
 });
@@ -68,6 +69,7 @@ task('sass:build', (done) => {
 task('sass:minify', (done) => {
 	processSass({
 		compress: true,
+		sourcemaps: false,
 		callback: done,
 	});
 });
@@ -84,12 +86,12 @@ task('sass:copy-tokens', () => {
 task('sass:build-minify', parallel('sass:build', 'sass:minify'));
 
 // Move all non-style related fonts to the dist/fonts folder
-task('fonts-move', (done) => {
+task('fonts-move', () => {
 	return src(fonts, { base: './src' }).pipe(dest(distDir));
 });
 
 // Move all favicons to the dist/favicons folder
-task('favicons-move', (done) => {
+task('favicons-move', () => {
 	return src(favicons, { base: './src' }).pipe(dest(distDir));
 });
 
@@ -98,7 +100,7 @@ task('watch', (done) => {
 	done();
 });
 
-task('clean', async (done) => {
+task('clean', async () => {
 	return await deleteAsync(distDir);
 });
 

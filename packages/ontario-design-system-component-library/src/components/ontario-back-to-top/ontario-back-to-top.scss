@@ -54,7 +54,8 @@ $ontario-colour-back-to-top--active-background: #b2b2b2;
 
 	&:focus {
 		background-color: $ontario-colour-back-to-top-background;
-		box-shadow: 0 0 0 globalFunctions.px-to-rem(4) colours.$ontario-colour-focus,
+		box-shadow:
+			0 0 0 globalFunctions.px-to-rem(4) colours.$ontario-colour-focus,
 			0 globalFunctions.px-to-rem(3) globalFunctions.px-to-rem(5) globalFunctions.px-to-rem(3) rgba(0, 0, 0, 0.6);
 		outline: globalFunctions.px-to-rem(4) solid transparent;
 		transition: 0.1s ease-in-out;
@@ -62,10 +63,13 @@ $ontario-colour-back-to-top--active-background: #b2b2b2;
 
 	&:active {
 		background-color: $ontario-colour-back-to-top--active-background;
-		box-shadow: 0 0 0 globalFunctions.px-to-rem(4) colours.$ontario-colour-focus,
+		box-shadow:
+			0 0 0 globalFunctions.px-to-rem(4) colours.$ontario-colour-focus,
 			0 globalFunctions.px-to-rem(5) globalFunctions.px-to-rem(7) globalFunctions.px-to-rem(3) rgba(0, 0, 0, 0.6);
 		outline: globalFunctions.px-to-rem(4) solid transparent;
-		transition: background-color 0s, focusPlaceholders.$ontario-focus-transition;
+		transition:
+			background-color 0s,
+			focusPlaceholders.$ontario-focus-transition;
 	}
 
 	@media screen and (max-width: breakpoints.$medium-breakpoint) {

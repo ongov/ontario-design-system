@@ -9,7 +9,7 @@ import fs from 'fs/promises';
 
 import gulpSass from 'gulp-sass';
 import flatten from 'gulp-flatten';
-import dartSass from 'sass';
+import * as dartSass from 'sass';
 const sass = gulpSass(dartSass);
 
 import gulp from 'gulp';
@@ -20,8 +20,8 @@ const srcDir = './src';
 const styleDir = './src/styles';
 const fontsDir = ['./src/fonts/**'];
 const componentsDirPath = './src/styles/components';
-const dsGlobalStylesPackageDir = 'node_modules/@ongov/ontario-design-system-global-styles';
-const dsComponentPackageDir = 'node_modules/@ongov/ontario-design-system-component-library';
+const dsGlobalStylesPackageDir = '../ontario-design-system-global-styles';
+const dsComponentPackageDir = '../ontario-design-system-component-library';
 
 /**
  * @param {{
@@ -34,19 +34,19 @@ const dsComponentPackageDir = 'node_modules/@ongov/ontario-design-system-compone
 const processSass = (opts) => {
 	const sassOptions = {
 		outputStyle: 'expanded',
-		includePaths: ['./node_modules'],
+		includePaths: ['../../node_modules'],
 	};
 
 	if (opts.debug) {
 		sassOptions.sourceComments = true;
 	}
 
-	src('./src/styles/scss/theme.scss')
+	src('./src/styles/scss/theme.scss', { sourcemaps: opts.sourcemaps })
 		.pipe(sass(sassOptions).on('error', sass.logError))
 		.pipe(autoprefixer())
 		.pipe(concat(gulpif(opts.compress, 'ontario-theme.min.css', 'ontario-theme.css')))
 		.pipe(gulpif(opts.compress, minify()))
-		.pipe(dest(`${distDir}/styles/css/compiled`));
+		.pipe(dest(`${distDir}/styles/css/compiled`, { sourcemaps: '.' }));
 
 	if (opts.callback) {
 		opts.callback();
@@ -119,12 +119,12 @@ task('sass:copy-dist', () => {
 task('sass:build-minify', parallel('sass:build', 'sass:minify'));
 
 // Move all non-style related fonts to the dist/fonts folder
-task('fonts-move', (done) => {
+task('fonts-move', () => {
 	return src(fontsDir).pipe(dest(`${distDir}/fonts`));
 });
 
 // Move all necessary component assets to the dist/assets folder
-task('assets-move', (done) => {
+task('assets-move', () => {
 	return src([
 		// `${dsComponentPackageDir}/src/components/ontario-dropdown-list/assets/**`,
 		// `${dsComponentPackageDir}/src/components/ontario-footer/assets/**`,
@@ -137,12 +137,12 @@ task('assets-move', (done) => {
 });
 
 // Move all Fractal scripts to the dist/scripts folder
-task('scripts-move', (done) => {
+task('scripts-move', () => {
 	return src('./scripts/**').pipe(dest(`${distDir}/scripts`));
 });
 
 // Move favicons to the dist/favicons folder
-task('favicons-move', (done) => {
+task('favicons-move', () => {
 	return src(`${dsGlobalStylesPackageDir}/src/favicons/**`).pipe(dest(`${distDir}/favicons`));
 });
 
@@ -151,11 +151,11 @@ task('watch', (done) => {
 	done();
 });
 
-task('clean:dist', async (done) => {
+task('clean:dist', async () => {
 	return await deleteAsync(distDir);
 });
 
-task('clean:src', async (done) => {
+task('clean:src', async () => {
 	return await deleteAsync(srcDir);
 });
 

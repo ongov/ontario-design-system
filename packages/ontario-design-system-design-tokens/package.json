@@ -7,7 +7,7 @@
 	"main": "index.js",
 	"style": "dist/css/_variables.css",
 	"files": [
-		"dist/{css,scss}/",
+		"dist/",
 		"package.json",
 		"README.md"
 	],
