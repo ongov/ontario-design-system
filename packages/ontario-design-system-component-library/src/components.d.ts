@@ -29,6 +29,7 @@ import { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.i
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
+import { TaskStatuses } from "./components/ontario-task/ontario-task-statuses";
 export { ExpandCollapseButtonDetails } from "./components/ontario-accordion/expandCollapseButtonDetails.interface";
 export { Accordion } from "./components/ontario-accordion/accordion.interface";
 export { Language } from "./utils/common/language-types";
@@ -53,6 +54,7 @@ export { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.i
 export { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 export { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
+export { TaskStatuses } from "./components/ontario-task/ontario-task-statuses";
 export namespace Components {
     interface OntarioAccordion {
         /**
@@ -1876,10 +1878,30 @@ export namespace Components {
         "zebraStripes"?: 'auto' | 'disabled' | 'enabled' | undefined;
     }
     interface OntarioTask {
-        "badgeLabel"?: string;
+        /**
+          * Disables the task link when set to `true`.  Default is `false`, meaning the link will be active if provided.
+         */
+        "deactivateLink": boolean;
+        /**
+          * Provides an optional hint or description for the task.  This is optional.
+         */
         "hint"?: string;
+        /**
+          * Specifies the label of the task.  This is required to provide the name of the task.
+         */
         "label": string;
+        /**
+          * Defines the language for the component, either 'en' or 'fr'.  Default is 'en'.
+         */
+        "language": 'en' | 'fr';
+        /**
+          * Specifies an optional link associated with the task.  If provided, clicking the task will navigate to this URL.
+         */
         "link"?: string;
+        /**
+          * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`.
+         */
+        "taskStatus": TaskStatuses;
     }
     interface OntarioTaskList {
     }
@@ -5043,10 +5065,30 @@ declare namespace LocalJSX {
         "zebraStripes"?: 'auto' | 'disabled' | 'enabled' | undefined;
     }
     interface OntarioTask {
-        "badgeLabel"?: string;
+        /**
+          * Disables the task link when set to `true`.  Default is `false`, meaning the link will be active if provided.
+         */
+        "deactivateLink"?: boolean;
+        /**
+          * Provides an optional hint or description for the task.  This is optional.
+         */
         "hint"?: string;
+        /**
+          * Specifies the label of the task.  This is required to provide the name of the task.
+         */
         "label"?: string;
+        /**
+          * Defines the language for the component, either 'en' or 'fr'.  Default is 'en'.
+         */
+        "language"?: 'en' | 'fr';
+        /**
+          * Specifies an optional link associated with the task.  If provided, clicking the task will navigate to this URL.
+         */
         "link"?: string;
+        /**
+          * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`.
+         */
+        "taskStatus"?: TaskStatuses;
     }
     interface OntarioTaskList {
     }
