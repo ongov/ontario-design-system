@@ -1883,17 +1883,17 @@ export namespace Components {
          */
         "deactivateLink": boolean;
         /**
-          * Provides an optional hint or description for the task.  This is optional.
+          * Used to include the ontario-hint-text component for the task.  This is optional.
          */
-        "hint"?: string;
+        "hintText"?: string | Hint;
         /**
           * Specifies the label of the task.  This is required to provide the name of the task.
          */
         "label": string;
         /**
-          * Defines the language for the component, either 'en' or 'fr'.  Default is 'en'.
+          * The language of the component.  This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
          */
-        "language": 'en' | 'fr';
+        "language"?: Language;
         /**
           * Specifies an optional link associated with the task.  If provided, clicking the task will navigate to this URL.
          */
@@ -5070,17 +5070,17 @@ declare namespace LocalJSX {
          */
         "deactivateLink"?: boolean;
         /**
-          * Provides an optional hint or description for the task.  This is optional.
+          * Used to include the ontario-hint-text component for the task.  This is optional.
          */
-        "hint"?: string;
+        "hintText"?: string | Hint;
         /**
           * Specifies the label of the task.  This is required to provide the name of the task.
          */
         "label"?: string;
         /**
-          * Defines the language for the component, either 'en' or 'fr'.  Default is 'en'.
+          * The language of the component.  This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
          */
-        "language"?: 'en' | 'fr';
+        "language"?: Language;
         /**
           * Specifies an optional link associated with the task.  If provided, clicking the task will navigate to this URL.
          */
