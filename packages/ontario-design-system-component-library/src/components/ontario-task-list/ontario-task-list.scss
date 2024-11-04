@@ -1,3 +1,5 @@
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+
 .ontario-task-list {
-	border-top: 1px solid #ccc;
+	border-top: 2px solid colours.$ontario-greyscale-20;
 }
