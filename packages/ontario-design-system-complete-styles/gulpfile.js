@@ -1,16 +1,13 @@
-import del from 'del';
+import { rimraf } from 'rimraf';
 
-import autoprefixer from 'gulp-autoprefixer';
 import concat from 'gulp-concat';
 import minify from 'gulp-clean-css';
 import gulpif from 'gulp-if';
 import glob from 'glob';
-import fs from 'fs/promises';
+import { promises as fs } from 'fs';
 
-import gulpSass from 'gulp-sass';
 import flatten from 'gulp-flatten';
-import * as dartSass from 'sass';
-const sass = gulpSass(dartSass);
+import * as sass from 'sass';
 
 import gulp from 'gulp';
 const { dest, series, src, task, parallel, watch } = gulp;
@@ -25,25 +22,25 @@ const dsComponentPackageDir = '../ontario-design-system-component-library';
 
 /**
  * @param {{
- *   compress:boolean,
- *   sourcemaps:boolean,
- *   callback:function,
- *   [debug]:boolean
+ *   compress: boolean,
+ *   sourcemaps: boolean,
+ *   callback: function,
+ *   [debug]: boolean
  * }} opts Configuration options
  */
-const processSass = (opts) => {
+const processSass = async (opts) => {
 	const sassOptions = {
-		outputStyle: 'expanded',
-		includePaths: ['../../node_modules'],
+		style: 'expanded',
+		loadPaths: ['../../node_modules'],
 	};
 
 	if (opts.debug) {
-		sassOptions.sourceComments = true;
+		sassOptions.sourceMap = true;
 	}
 
-	src('./src/styles/scss/theme.scss', { sourcemaps: opts.sourcemaps })
-		.pipe(sass(sassOptions).on('error', sass.logError))
-		.pipe(autoprefixer())
+	sass.compile('./src/styles/scss/theme.scss', sassOptions);
+
+	const stream = src('./src/styles/scss/theme.scss', { sourcemaps: opts.sourcemaps })
 		.pipe(gulpif(opts.compress, concat('ontario-theme.min.css'), concat('ontario-theme.css')))
 		.pipe(gulpif(opts.compress, minify()))
 		.pipe(dest(`${distDir}/styles/css/compiled`, { sourcemaps: '.' }));
@@ -51,6 +48,8 @@ const processSass = (opts) => {
 	if (opts.callback) {
 		opts.callback();
 	}
+
+	return stream;
 };
 
 task('copy:ds-global-styles', () => {
@@ -97,16 +96,16 @@ task('generate:components-import-file', async (done) => {
 	done();
 });
 
-task('sass:build', (done) => {
-	processSass({
+task('sass:build', async (done) => {
+	await processSass({
 		compress: false,
 		debug: false,
 		callback: done,
 	});
 });
 
-task('sass:minify', (done) => {
-	processSass({
+task('sass:minify', async (done) => {
+	await processSass({
 		compress: true,
 		callback: done,
 	});
@@ -152,11 +151,11 @@ task('watch', (done) => {
 });
 
 task('clean:dist', async () => {
-	return await del(distDir);
+	return rimraf(distDir);
 });
 
 task('clean:src', async () => {
-	return await del(srcDir);
+	return rimraf(srcDir);
 });
 
 task(
