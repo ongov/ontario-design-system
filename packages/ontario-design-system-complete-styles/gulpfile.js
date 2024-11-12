@@ -1,4 +1,4 @@
-import { deleteAsync } from 'del';
+import del from 'del';
 
 import autoprefixer from 'gulp-autoprefixer';
 import concat from 'gulp-concat';
@@ -152,11 +152,11 @@ task('watch', (done) => {
 });
 
 task('clean:dist', async () => {
-	return await deleteAsync(distDir);
+	return await del(distDir);
 });
 
 task('clean:src', async () => {
-	return await deleteAsync(srcDir);
+	return await del(srcDir);
 });
 
 task(
