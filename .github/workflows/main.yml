@@ -32,11 +32,13 @@ jobs:
 
   # app-angular (Coming soon)
 
-  publish-packages: # Job defined in a separate file (publish.yml)
+  publish-packages: # Job defined in a separate file (publish-packages.yml)
     needs: ['build']
     uses: ./.github/workflows/publish-packages.yml # Path to the reusable workflow file
-    if: ${{ github.ref == 'refs/heads/master' && github.ref == 'refs/heads/alpha' && github.ref == 'refs/heads/beta' }}
+    if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
     with:
       node-version: 20
       build-artifacts-name: ${{ needs.build.outputs.build-artifacts-name }}
     secrets: inherit
+    permissions:
+      contents: write

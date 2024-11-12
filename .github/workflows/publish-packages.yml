@@ -39,12 +39,8 @@ jobs:
           name: ${{ inputs.build-artifacts-name }} # Artifact name (must match upload name)
           path: ./packages
 
-      - name: Write .npmrc file
-        env:
-          NPM_TOKEN: secrets.NPM_TOKEN
-        run: echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
-
       - name: Publish packages
         env:
-          GH_TOKEN: secrets.GH_TOKEN
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm run semantic-release
