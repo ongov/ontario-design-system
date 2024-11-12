@@ -4,7 +4,7 @@ import autoprefixer from 'gulp-autoprefixer';
 import concat from 'gulp-concat';
 import minify from 'gulp-clean-css';
 import gulpif from 'gulp-if';
-import glob from 'glob-promise';
+import glob from 'glob';
 import fs from 'fs/promises';
 
 import gulpSass from 'gulp-sass';

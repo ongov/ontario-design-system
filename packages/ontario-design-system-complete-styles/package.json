@@ -28,7 +28,6 @@
 	"devDependencies": {
 		"del": "^7.0.0",
 		"glob": "^8.0.3",
-		"glob-promise": "^6.0.0",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^8.0.0",
 		"gulp-clean-css": "^4.3.0",
