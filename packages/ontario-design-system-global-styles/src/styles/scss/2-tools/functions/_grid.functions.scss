@@ -17,7 +17,7 @@
 		@return 0;
 	}
 
-	@return nth($range, 1);
+	@return list.nth($range, 1);
 }
 
 /*** 2 - Upper-bound ***/
@@ -27,7 +27,7 @@
 		@return designTokenVariables.$ontario-global-tokens-max-value;
 	}
 
-	@return nth($range, 2);
+	@return list.nth($range, 2);
 }
 
 /*** 3 - Grid calc ***/

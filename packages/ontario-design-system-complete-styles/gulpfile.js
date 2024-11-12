@@ -44,7 +44,7 @@ const processSass = (opts) => {
 	src('./src/styles/scss/theme.scss', { sourcemaps: opts.sourcemaps })
 		.pipe(sass(sassOptions).on('error', sass.logError))
 		.pipe(autoprefixer())
-		.pipe(concat(gulpif(opts.compress, 'ontario-theme.min.css', 'ontario-theme.css')))
+		.pipe(gulpif(opts.compress, concat('ontario-theme.min.css'), concat('ontario-theme.css')))
 		.pipe(gulpif(opts.compress, minify()))
 		.pipe(dest(`${distDir}/styles/css/compiled`, { sourcemaps: '.' }));
 
@@ -75,7 +75,7 @@ task('copy:component-styles', () => {
 
 task('generate:components-import-file', async (done) => {
 	const globPattern = `${componentsDirPath}/**/*.scss`;
-	const componentSassFilePaths = await glob(globPattern, null);
+	const componentSassFilePaths = await glob(globPattern);
 	const contentLines = componentSassFilePaths.map((filePath) => {
 		const paths = filePath.replace(/.*?\/.*?\/s.*?\//, '');
 		return `@forward "./../../${paths}";`;
