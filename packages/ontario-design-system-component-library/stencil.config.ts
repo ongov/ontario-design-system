@@ -43,12 +43,12 @@ export const config: Config = {
 			esmLoaderPath: '../loader',
 			copy: [
 				{
-					src: '../node_modules/@ongov/ontario-design-system-global-styles/dist/fonts',
+					src: './node_modules/@ongov/ontario-design-system-global-styles/dist/fonts',
 					dest: 'fonts',
 					warn: true,
 				},
 				{
-					src: '../node_modules/@ongov/ontario-design-system-global-styles/dist/favicons',
+					src: './node_modules/@ongov/ontario-design-system-global-styles/dist/favicons',
 					dest: 'favicons',
 					warn: true,
 				},
@@ -77,12 +77,12 @@ export const config: Config = {
 			serviceWorker: null, // disable service workers
 			copy: [
 				{
-					src: '../node_modules/@ongov/ontario-design-system-global-styles/dist/fonts',
+					src: './node_modules/@ongov/ontario-design-system-global-styles/dist/fonts',
 					dest: 'fonts',
 					warn: true,
 				},
 				{
-					src: '../node_modules/@ongov/ontario-design-system-global-styles/dist/favicons',
+					src: './node_modules/@ongov/ontario-design-system-global-styles/dist/favicons',
 					dest: 'favicons',
 					warn: true,
 				},
