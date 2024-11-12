@@ -1,13 +1,11 @@
-import del from 'del';
+import rimraf from 'rimraf';
 import fs from 'fs/promises';
 import autoprefixer from 'gulp-autoprefixer';
 import concat from 'gulp-concat';
 import minify from 'gulp-clean-css';
 import gulpif from 'gulp-if';
 
-import gulpSass from 'gulp-sass';
-import * as dartSass from 'sass';
-const sass = gulpSass(dartSass);
+import * as sass from 'sass';
 
 import gulp from 'gulp';
 const { dest, series, src, task, parallel, watch } = gulp;
@@ -38,23 +36,33 @@ const processSass = (opts) => {
 		sassOptions.sourceComments = true;
 	}
 
-	src('./src/styles/scss/theme.scss', { sourcemaps: opts.sourcemaps })
-		.pipe(sass(sassOptions).on('error', sass.logError))
+	// Compile the theme.scss file
+	sass.compile('./src/styles/scss/theme.scss', sassOptions);
+
+	// Transform and output the theme.scss file
+	const themeStream = src('./src/styles/scss/theme.scss', { sourcemaps: opts.sourcemaps })
 		.pipe(autoprefixer())
-		.pipe(concat(gulpif(opts.compress, 'ontario-theme.min.css', 'ontario-theme.css')))
+		.pipe(gulpif(opts.compress, concat('ontario-theme.min.css'), concat('ontario-theme.css')))
 		.pipe(gulpif(opts.compress, minify()))
 		.pipe(dest(`${distDir}/styles/css/compiled`, { sourcemaps: '.' }));
 
-	src('./src/misc/ontario-design-system-fonts.scss', { sourcemaps: opts.sourcemaps })
-		.pipe(sass(sassOptions).on('error', sass.logError))
+	// Compile the fonts.scss file
+	sass.compile('./src/misc/ontario-design-system-fonts.scss', sassOptions);
+
+	// Transform and output the fonts.scss file
+	const fontsStream = src('./src/misc/ontario-design-system-fonts.scss', { sourcemaps: opts.sourcemaps })
 		.pipe(autoprefixer())
-		.pipe(concat(gulpif(opts.compress, 'ontario-design-system-fonts.min.css', 'ontario-design-system-fonts.css')))
+		.pipe(
+			gulpif(opts.compress, concat('ontario-design-system-fonts.min.css'), concat('ontario-design-system-fonts.css')),
+		)
 		.pipe(gulpif(opts.compress, minify()))
 		.pipe(dest(`${distDir}/misc/`, { sourcemaps: '.' }));
 
 	if (opts.callback) {
 		opts.callback();
 	}
+
+	return [themeStream, fontsStream];
 };
 
 task('sass:build', (done) => {
@@ -101,7 +109,7 @@ task('watch', (done) => {
 });
 
 task('clean', async () => {
-	return await del(distDir);
+	return await rimraf(distDir);
 });
 
 task(

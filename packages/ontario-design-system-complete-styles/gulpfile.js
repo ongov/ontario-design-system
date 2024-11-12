@@ -1,9 +1,8 @@
-import { rimraf } from 'rimraf';
-
+import rimraf from 'rimraf';
 import concat from 'gulp-concat';
 import minify from 'gulp-clean-css';
 import gulpif from 'gulp-if';
-import glob from 'glob';
+import { glob } from 'glob';
 import { promises as fs } from 'fs';
 
 import flatten from 'gulp-flatten';
@@ -154,11 +153,11 @@ task('watch', (done) => {
 });
 
 task('clean:dist', async () => {
-	return rimraf(distDir);
+	return await rimraf(distDir);
 });
 
 task('clean:src', async () => {
-	return rimraf(srcDir);
+	return await rimraf(srcDir);
 });
 
 task(
