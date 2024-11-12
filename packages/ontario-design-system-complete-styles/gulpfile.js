@@ -77,7 +77,8 @@ task('generate:components-import-file', async (done) => {
 	const componentSassFilePaths = await glob(globPattern);
 	const contentLines = componentSassFilePaths.map((filePath) => {
 		const paths = filePath.replace(/.*?\/.*?\/s.*?\//, '');
-		return `@forward "./../../${paths}";`;
+		// return `@forward "./../../${paths}";`
+		return `@forward "../../../../${paths}";`;
 	});
 
 	const assetStyles = await fs.readFile('./asset-styles.scss', 'utf8');
@@ -91,7 +92,9 @@ task('generate:components-import-file', async (done) => {
 			console.error(`Error writing DS component styles file ${error}`);
 			done(error);
 		}
-	} else console.log('No files matching', globPattern, 'within', componentsDirPath);
+	} else {
+		console.log('No files matching', globPattern, 'within', componentsDirPath);
+	}
 
 	done();
 });
@@ -174,7 +177,8 @@ task(
 		'scripts-move',
 		'favicons-move',
 		'sass:copy-dist',
-		'sass:build-minify',
+		'sass:build',
+		'sass:minify',
 		'clean:src',
 	),
 );
