@@ -4,6 +4,7 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { inlineSvg } from 'stencil-inline-svg';
 import dotEnvPlugin from 'rollup-plugin-dotenv';
+import path from 'path';
 
 export const config: Config = {
 	namespace: 'ontario-design-system-components',
@@ -43,12 +44,12 @@ export const config: Config = {
 			esmLoaderPath: '../loader',
 			copy: [
 				{
-					src: './node_modules/@ongov/ontario-design-system-global-styles/dist/fonts',
+					src: path.resolve(__dirname, '../../node_modules/@ongov/ontario-design-system-global-styles/dist/fonts'),
 					dest: 'fonts',
 					warn: true,
 				},
 				{
-					src: './node_modules/@ongov/ontario-design-system-global-styles/dist/favicons',
+					src: path.resolve(__dirname, '../../node_modules/@ongov/ontario-design-system-global-styles/dist/favicons'),
 					dest: 'favicons',
 					warn: true,
 				},
@@ -77,12 +78,12 @@ export const config: Config = {
 			serviceWorker: null, // disable service workers
 			copy: [
 				{
-					src: './node_modules/@ongov/ontario-design-system-global-styles/dist/fonts',
+					src: path.resolve(__dirname, '../../node_modules/@ongov/ontario-design-system-global-styles/dist/fonts'),
 					dest: 'fonts',
 					warn: true,
 				},
 				{
-					src: './node_modules/@ongov/ontario-design-system-global-styles/dist/favicons',
+					src: path.resolve(__dirname, '../../node_modules/@ongov/ontario-design-system-global-styles/dist/favicons'),
 					dest: 'favicons',
 					warn: true,
 				},
