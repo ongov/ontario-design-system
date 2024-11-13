@@ -1,20 +1,20 @@
 import React from 'react';
 
-import type { StyleReactProps } from '../interfaces.js';
+import type { StyleReactProps } from '../interfaces.ts';
 
 export type StencilReactExternalProps<PropType, ElementType> = PropType &
   Omit<React.HTMLAttributes<ElementType>, 'style'> &
   StyleReactProps;
 
-// This will be replaced with React.ForwardedRef when react-output-target is upgraded to React v17
-export type StencilReactForwardedRef<T> = ((instance: T | null) => void) | React.MutableRefObject<T | null> | null;
+export type StencilReactForwardedRef<T> = React.ForwardedRef<T>;
 
-export const setRef = (ref: StencilReactForwardedRef<any> | React.Ref<any> | undefined, value: any) => {
+// Set value to unknown to avoid circular dependency
+export const setRef = (ref: StencilReactForwardedRef<any> | React.Ref<any> | undefined, refValue: unknown) => {
   if (typeof ref === 'function') {
-    ref(value);
+    ref(refValue);
   } else if (ref != null) {
     // Cast as a MutableRef so we can assign current
-    (ref as React.MutableRefObject<any>).current = value;
+    (ref as React.MutableRefObject<any>).current = refValue;
   }
 };
 
@@ -29,9 +29,11 @@ export const mergeRefs = (
 };
 
 export const createForwardRef = <PropType, ElementType>(ReactComponent: any, displayName: string) => {
-  const forwardRef = (
-    props: StencilReactExternalProps<PropType, ElementType>,
-    ref: StencilReactForwardedRef<ElementType>
+  // This is a workaround for TypeScript not supporting forwardRef with generics
+  // and with default props at the same time
+  const forwardRef: React.ForwardRefRenderFunction<ElementType, React.PropsWithoutRef<StencilReactExternalProps<PropType, ElementType>>> = (
+    props,
+    ref
   ) => {
     return <ReactComponent {...props} forwardedRef={ref} />;
   };
