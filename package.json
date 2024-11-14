@@ -17,7 +17,8 @@
 		"refresh": "npm run clean:full && npm install && npm run build-libs",
 		"semantic-release": "semantic-release",
 		"test:e2e": "lerna run test:e2e",
-		"test:unit": "lerna run test:unit"
+		"test:unit": "lerna run test:unit",
+		"check:outdated": "ts-node ./scripts/check-outdated.ts"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.5.0",

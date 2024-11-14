@@ -76,7 +76,6 @@ task('generate:components-import-file', async (done) => {
 	const componentSassFilePaths = await glob(globPattern);
 	const contentLines = componentSassFilePaths.map((filePath) => {
 		const paths = filePath.replace(/.*?\/.*?\/s.*?\//, '');
-		// return `@forward "./../../${paths}";`
 		return `@forward "../../../../${paths}";`;
 	});
 
