@@ -257,6 +257,10 @@
 			"fr": "Terminé"
 		}
 	},
+	"newWindow": {
+		"en": "opens in a new window",
+		"fr": "s'ouvre dans une nouvelle fenêtre"
+	},
 	"required": {
 		"en": "required",
 		"fr": "obligatoire"
