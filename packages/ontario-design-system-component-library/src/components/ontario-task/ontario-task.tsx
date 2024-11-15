@@ -5,6 +5,7 @@ import { validateLanguage, validateValueAgainstArray } from '../../utils/validat
 import { Hint } from '../../utils/common/common.interface';
 import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
+import translations from '../../translations/global.i18n.json';
 
 @Component({
 	tag: 'ontario-task',
@@ -141,19 +142,7 @@ export class OntarioTask {
 	 * Provides a translated task status string based on the current language.
 	 */
 	private getTranslatedTaskStatus(): string {
-		const translations: Record<'en' | 'fr', Record<TaskStatus, string>> = {
-			en: {
-				notStarted: 'Not Started',
-				inProgress: 'In Progress',
-				completed: 'Completed',
-			},
-			fr: {
-				notStarted: 'Pas commencé',
-				inProgress: 'En cours',
-				completed: 'Terminé',
-			},
-		};
-		return translations[this.language === 'fr' ? 'fr' : 'en'][this.taskStatusState];
+		return translations.taskStatus[this.taskStatusState][this.language === 'fr' ? 'fr' : 'en'];
 	}
 
 	/**

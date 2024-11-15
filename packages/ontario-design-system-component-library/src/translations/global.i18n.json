@@ -243,6 +243,20 @@
 			"fr": "fr"
 		}
 	},
+	"taskStatus": {
+		"notStarted": {
+			"en": "Not Started",
+			"fr": "Pas commencé"
+		},
+		"inProgress": {
+			"en": "In Progress",
+			"fr": "En cours"
+		},
+		"completed": {
+			"en": "Completed",
+			"fr": "Terminé"
+		}
+	},
 	"required": {
 		"en": "required",
 		"fr": "obligatoire"
