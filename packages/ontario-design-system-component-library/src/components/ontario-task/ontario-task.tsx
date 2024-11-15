@@ -204,7 +204,7 @@ export class OntarioTask {
 						target="_blank"
 						rel="noopener noreferrer"
 						class="ontario-task__link"
-						aria-label={`${this.label} (opens in a new window) ${this.taskStatus}`}
+						aria-label={`${this.label} ${translations.newWindow[this.language || 'en']}`}
 					>
 						{this.renderTaskContent()}
 						{this.renderHintText()}
