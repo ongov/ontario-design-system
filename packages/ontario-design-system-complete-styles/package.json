@@ -25,6 +25,7 @@
 		"@ongov/ontario-design-system-global-styles": "4.3.0"
 	},
 	"devDependencies": {
+		"rimraf": "^6.0.1",
 		"glob": "^11.0.0",
 		"gulp": "^5.0.0",
 		"gulp-autoprefixer": "^9.0.0",
