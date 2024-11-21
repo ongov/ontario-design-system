@@ -1,6 +1,10 @@
 {
 	"compilerOptions": {
 		"allowUnreachableCode": false,
+		"paths": {
+			"@ongov/*": ["packages/*"]
+		},
+		"baseUrl": ".",
 		"allowSyntheticDefaultImports": true,
 		"declaration": true,
 		"emitDecoratorMetadata": true,

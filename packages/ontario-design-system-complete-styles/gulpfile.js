@@ -1,4 +1,4 @@
-import rimraf from 'rimraf';
+import { rimraf } from 'rimraf';
 import concat from 'gulp-concat';
 import minify from 'gulp-clean-css';
 import gulpif from 'gulp-if';

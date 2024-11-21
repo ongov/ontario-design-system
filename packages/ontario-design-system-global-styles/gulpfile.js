@@ -1,4 +1,4 @@
-import rimraf from 'rimraf';
+import { rimraf } from 'rimraf';
 import fs from 'fs/promises';
 import autoprefixer from 'gulp-autoprefixer';
 import concat from 'gulp-concat';
