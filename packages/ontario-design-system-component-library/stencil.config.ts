@@ -10,10 +10,7 @@ export const config: Config = {
 	namespace: 'ontario-design-system-components',
 	plugins: [
 		sass({
-			includePaths: [
-				'../../node_modules',
-				'../../node_modules/@ongov/ontario-design-system-global-styles/node_modules',
-			],
+			includePaths: ['../../node_modules'],
 		}),
 		inlineSvg(),
 		dotEnvPlugin(),
