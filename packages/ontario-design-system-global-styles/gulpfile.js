@@ -36,11 +36,13 @@ const processSass = (opts) => {
 		sassOptions.sourceComments = true;
 	}
 
+	const themeFilePath = './src/styles/scss/theme.scss';
+
 	// Compile the theme.scss file
-	sass.compile('./src/styles/scss/theme.scss', sassOptions);
+	sass.compile(themeFilePath, sassOptions);
 
 	// Transform and output the theme.scss file
-	const themeStream = src('./src/styles/scss/theme.scss', { sourcemaps: opts.sourcemaps })
+	const themeStream = src(themeFilePath, { sourcemaps: opts.sourcemaps })
 		.pipe(autoprefixer())
 		.pipe(gulpif(opts.compress, concat('ontario-theme.min.css'), concat('ontario-theme.css')))
 		.pipe(gulpif(opts.compress, minify()))
