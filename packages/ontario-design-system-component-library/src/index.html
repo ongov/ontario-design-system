@@ -14,6 +14,7 @@
 			<a href="https://designsystem.ontario.ca/">Ontario Design System</a> web components now available!!!
 		</ontario-critical-alert>
 		<ontario-header
+			id="ontarioHeader"
 			type="serviceOntario"
 			application-header-info='{
 				"title": "Application name",
@@ -21,6 +22,10 @@
 				"maxSubheaderDesktopLinks": "3",
 				"maxSubheaderTabletLinks": "2",
 				"maxSubheaderMobileLinks": "1"
+			}'
+			language-toggle-options='{
+				"englishLink": "/",
+				"frenchLink" : "/french.html"
 			}'
 		>
 		</ontario-header>
@@ -57,6 +62,7 @@
 						<li><a href="#text-inputs">Text inputs</a></li>
 						<li><a href="#date-input">Date input</a></li>
 						<li><a href="#step-indicator">Step indicator</a></li>
+						<li><a href="#search-box">Search Box</a></li>
 						<li><a href="#form">Form example</a></li>
 					</ol>
 					<hr />
@@ -171,40 +177,280 @@
 					<div>
 						<h2 id="card">Card Collection & Card</h2>
 						<div>
+							<h3>Basic cards (no images)</h3>
 							<ontario-card-collection cards-per-row="4">
-								<ontario-card-collection cards-per-row="2">
-									<ontario-card
-										card-type="horizonal"
-										label="Card Title 1"
-										image="https://picsum.photos/200/300"
-										card-link="https://google.ca"
-										horizontal-image-position-type="left"
-										horizontal-image-size-type="one-fourth"
-										description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
-									>
-									</ontario-card>
-									<ontario-card
-										card-type="horizonal"
-										label="Card Title 2"
-										image="https://picsum.photos/200/300"
-										horizontal-image-position-type="left"
-										horizontal-image-size-type="one-fourth"
-										description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
-									>
-									</ontario-card>
-								</ontario-card-collection>
 								<ontario-card
-									card-type="basic"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									label="Card Title 1"
+								>
+								</ontario-card>
+								<ontario-card
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									header-colour="sky"
+									label="Card Title 2"
+								>
+								</ontario-card>
+								<ontario-card label="Card Title 3"> </ontario-card>
+								<ontario-card header-colour="sky" label="Card Title 4"> </ontario-card>
+							</ontario-card-collection>
+
+							<h3>Basic cards with 4:3 images</h3>
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/300/225"
+									label="Card Title 1"
+								>
+								</ontario-card>
+								<ontario-card
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/300/225"
+									header-colour="sky"
+									label="Card Title 2"
+								>
+								</ontario-card>
+								<ontario-card image="https://picsum.photos/300/225" label="Card Title 3"> </ontario-card>
+								<ontario-card header-colour="sky" image="https://picsum.photos/300/225" label="Card Title 4">
+								</ontario-card>
+							</ontario-card-collection>
+
+							<h3>Basic cards with 16:9 images</h3>
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/300/169"
+									label="Card Title 1"
+								>
+								</ontario-card>
+								<ontario-card
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/300/169"
+									header-colour="sky"
+									label="Card Title 2"
+								>
+								</ontario-card>
+								<ontario-card image="https://picsum.photos/300/169" label="Card Title 3"> </ontario-card>
+								<ontario-card header-colour="sky" image="https://picsum.photos/300/169" label="Card Title 4">
+								</ontario-card>
+							</ontario-card-collection>
+
+							<h3>Basic cards with 2:1 images</h3>
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/300/150"
+									label="Card Title 1"
+								>
+								</ontario-card>
+								<ontario-card
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/300/150"
+									header-colour="sky"
+									label="Card Title 2"
+								>
+								</ontario-card>
+								<ontario-card image="https://picsum.photos/300/150" label="Card Title 3"> </ontario-card>
+								<ontario-card header-colour="sky" image="https://picsum.photos/300/150" label="Card Title 4">
+								</ontario-card>
+							</ontario-card-collection>
+
+							<h3>Horizontal cards with left align 9:16 images (one-fourth size)</h3>
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card
+									layout="horizontal"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-fourth"
+									label="Card Title 1"
+								>
+								</ontario-card>
+								<ontario-card
+									layout="horizontal"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/169/300"
+									header-colour="sky"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-fourth"
+									label="Card Title 2"
+								>
+								</ontario-card>
+								<ontario-card
+									layout="horizontal"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-fourth"
+									label="Card Title 3"
+								>
+								</ontario-card>
+								<ontario-card
+									layout="horizontal"
+									header-colour="sky"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-fourth"
+									label="Card Title 4"
+								>
+								</ontario-card>
+							</ontario-card-collection>
+
+							<h3>Horizontal cards with left align 9:16 images (one-third size)</h3>
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card
+									layout="horizontal"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-third"
+									label="Card Title 1"
+								>
+								</ontario-card>
+								<ontario-card
+									layout="horizontal"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/169/300"
+									header-colour="sky"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-third"
+									label="Card Title 2"
+								>
+								</ontario-card>
+								<ontario-card
+									layout="horizontal"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-third"
+									label="Card Title 3"
+								>
+								</ontario-card>
+								<ontario-card
+									layout="horizontal"
+									header-colour="sky"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-third"
+									label="Card Title 4"
+								>
+								</ontario-card>
+							</ontario-card-collection>
+
+							<h3>Horizontal cards with right align 9:16 images (one-fourth size)</h3>
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card
+									layout="horizontal"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="right"
+									horizontal-image-size-type="one-fourth"
+									label="Card Title 1"
+								>
+								</ontario-card>
+								<ontario-card
+									layout="horizontal"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/169/300"
+									header-colour="sky"
+									horizontal-image-position-type="right"
+									horizontal-image-size-type="one-fourth"
+									label="Card Title 2"
+								>
+								</ontario-card>
+								<ontario-card
+									layout="horizontal"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="right"
+									horizontal-image-size-type="one-fourth"
+									label="Card Title 3"
+								>
+								</ontario-card>
+								<ontario-card
+									layout="horizontal"
+									header-colour="sky"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="right"
+									horizontal-image-size-type="one-fourth"
+									label="Card Title 4"
+								>
+								</ontario-card>
+							</ontario-card-collection>
+
+							<h3>Horizontal cards with right align 9:16 images (one-third size)</h3>
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card
+									layout="horizontal"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="right"
+									horizontal-image-size-type="one-third"
+									label="Card Title 1"
+								>
+								</ontario-card>
+								<ontario-card
+									layout="horizontal"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/169/300"
+									header-colour="sky"
+									horizontal-image-position-type="right"
+									horizontal-image-size-type="one-third"
+									label="Card Title 2"
+								>
+								</ontario-card>
+								<ontario-card
+									layout="horizontal"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="right"
+									horizontal-image-size-type="one-third"
+									label="Card Title 3"
+								>
+								</ontario-card>
+								<ontario-card
+									layout="horizontal"
+									header-colour="sky"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="right"
+									horizontal-image-size-type="one-third"
+									label="Card Title 4"
+								>
+								</ontario-card>
+							</ontario-card-collection>
+
+							<h3>Edge cases</h3>
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card
+									header-colour="orange"
+									label="Card Title 1 Card Title 1 Card Title 1"
+									image="https://picsum.photos/200/300"
+								>
+								</ontario-card>
+								<ontario-card
+									header-colour="sky"
+									label="Card Title 2"
+									image="https://picsum.photos/200/300"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+								>
+								</ontario-card>
+								<ontario-card
 									label="Card Title 3"
 									image="https://picsum.photos/200/300"
-									horizontal-image-position-type="left"
-									horizontal-image-size-type="one-fourth"
 									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 								>
 								</ontario-card>
+							</ontario-card-collection>
+
+							<ontario-card-collection cards-per-row="4">
 								<ontario-card
-									card-type="basic"
-									label="Card Title 4"
+									layout="horizontal"
+									header-colour="orange"
+									label="Card Title 1 Card Title 1 Card Title 1"
+									image="https://picsum.photos/200/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-third"
+								>
+								</ontario-card>
+								<ontario-card
+									layout="horizontal"
+									header-colour="sky"
+									label="Card Title 2"
 									image="https://picsum.photos/200/300"
 									horizontal-image-position-type="left"
 									horizontal-image-size-type="one-fourth"
@@ -212,26 +458,8 @@
 								>
 								</ontario-card>
 								<ontario-card
-									card-type="basic"
-									label="Card Title 5"
-									image="https://picsum.photos/200/300"
-									horizontal-image-position-type="left"
-									horizontal-image-size-type="one-fourth"
-									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
-								>
-								</ontario-card>
-								<ontario-card
-									card-type="basic"
-									label="Card Title 6"
-									image="https://picsum.photos/200/300"
-									horizontal-image-position-type="left"
-									horizontal-image-size-type="one-fourth"
-									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
-								>
-								</ontario-card>
-								<ontario-card
-									card-type="basic"
-									label="Card Title 7"
+									layout="horizontal"
+									label="Card Title 3"
 									image="https://picsum.photos/200/300"
 									horizontal-image-position-type="left"
 									horizontal-image-size-type="one-fourth"
@@ -937,6 +1165,36 @@
 							number-of-steps="5"
 						></ontario-step-indicator>
 					</div>
+					<hr />
+
+					<!-- Search box -->
+					<script>
+						window.addEventListener('load', () => {
+							console.log('Loaded Search Box Event Listener');
+							const searchBox = document.getElementById('ontario-search-box');
+							searchBox.performSearch = async ($value) => {
+								console.log('Performing search with value:', $value);
+							};
+
+							searchBox.addEventListener('searchOnSubmit', (event) => {
+								console.log('Search Event:', event);
+							});
+						});
+					</script>
+
+					<div>
+						<h2 id="search-box">Search box</h2>
+						<ontario-search-box
+							id="ontario-search-box"
+							caption='{
+							"captionText": "Search directory",
+							"captionType": "default"
+						}'
+							hint-text="Search by employee name or organization name."
+						></ontario-search-box>
+					</div>
+
+					<hr />
 					<div>
 						<!-- Form -->
 						<form id="sample-form">
@@ -1203,10 +1461,6 @@
 		<ontario-back-to-top />
 
 		<script>
-			function testFunction() {
-				alert('HELLO WORLD!');
-			}
-
 			function activateHeaderType(headerType) {
 				const ontarioHeaderElement = document.querySelector('ontario-header');
 				ontarioHeaderElement.type = headerType;

@@ -178,13 +178,13 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 	inputs: [
 		'ariaLabelText',
 		'cardLink',
-		'cardType',
 		'description',
-		'headerType',
+		'headerColour',
 		'horizontalImagePositionType',
 		'horizontalImageSizeType',
 		'image',
 		'label',
+		'layout',
 	],
 })
 @Component({
@@ -195,13 +195,13 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 	inputs: [
 		'ariaLabelText',
 		'cardLink',
-		'cardType',
 		'description',
-		'headerType',
+		'headerColour',
 		'horizontalImagePositionType',
 		'horizontalImageSizeType',
 		'image',
 		'label',
+		'layout',
 	],
 })
 export class OntarioCard {
@@ -3438,16 +3438,21 @@ export class OntarioLanguageToggle {
 	}
 }
 
+import type { Language as IOntarioLanguageToggleLanguage } from '@ongov/ontario-design-system-component-library';
 import type { HeaderLanguageToggleEventDetails as IOntarioLanguageToggleHeaderLanguageToggleEventDetails } from '@ongov/ontario-design-system-component-library';
 
 export declare interface OntarioLanguageToggle extends Components.OntarioLanguageToggle {
 	/**
-	 * An event to set the Document's HTML lang property, and emit the toggled language to other components.
-	 */
-	setAppLanguage: EventEmitter<CustomEvent<string>>;
+   * Event that fires during the setAppLanguageHandler() method.
+
+The event contains the current language (after language logic has already occurred).
+   */
+	setAppLanguage: EventEmitter<CustomEvent<IOntarioLanguageToggleLanguage>>;
 	/**
-	 * An event that emits to other components that the language toggle button has been toggled.
-	 */
+   * Event that fires when the language toggle is pressed/clicked.
+
+The event contains the oldLanguage along with the newLanguage.
+   */
 	headerLanguageToggled: EventEmitter<CustomEvent<IOntarioLanguageToggleHeaderLanguageToggleEventDetails>>;
 }
 
@@ -3566,6 +3571,86 @@ export declare interface OntarioRadioButtons extends Components.OntarioRadioButt
 	 * Emitted when an error message is reported to the component.
 	 */
 	inputErrorOccurred: EventEmitter<CustomEvent<{ errorMessage: string }>>;
+}
+
+@ProxyCmp({
+	inputs: [
+		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
+		'customOnInput',
+		'elementId',
+		'hintText',
+		'language',
+		'performSearch',
+		'required',
+		'value',
+	],
+})
+@Component({
+	selector: 'ontario-search-box',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: [
+		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
+		'customOnInput',
+		'elementId',
+		'hintText',
+		'language',
+		'performSearch',
+		'required',
+		'value',
+	],
+})
+export class OntarioSearchBox {
+	protected el: HTMLElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+		proxyOutputs(this, this.el, ['searchOnSubmit', 'inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus']);
+	}
+}
+
+import type { InputInputEvent as IOntarioSearchBoxInputInputEvent } from '@ongov/ontario-design-system-component-library';
+import type { InputInteractionEvent as IOntarioSearchBoxInputInteractionEvent } from '@ongov/ontario-design-system-component-library';
+import type { InputFocusBlurEvent as IOntarioSearchBoxInputFocusBlurEvent } from '@ongov/ontario-design-system-component-library';
+
+export declare interface OntarioSearchBox extends Components.OntarioSearchBox {
+	/**
+   * Emitted when the search is submitted.
+Below is an example on how to hook into the event to get the event details. @example <script>
+	document.getElementById('ontario-search-box').addEventListener('searchOnSubmit', (event) => {
+ 		const searchValue = event.detail;
+		console.log('Search submitted with value:', searchValue);
+  };
+	</script>
+   */
+	searchOnSubmit: EventEmitter<CustomEvent<string>>;
+	/**
+	 * Emitted when a input  occurs when an input has been changed.
+	 */
+	inputOnInput: EventEmitter<CustomEvent<IOntarioSearchBoxInputInputEvent>>;
+	/**
+	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
+	 */
+	inputOnChange: EventEmitter<CustomEvent<IOntarioSearchBoxInputInteractionEvent>>;
+	/**
+	 * Emitted when a keyboard input event occurs when an input has lost focus.
+	 */
+	inputOnBlur: EventEmitter<CustomEvent<IOntarioSearchBoxInputFocusBlurEvent>>;
+	/**
+	 * Emitted when a keyboard input event occurs when an input has gained focus.
+	 */
+	inputOnFocus: EventEmitter<CustomEvent<IOntarioSearchBoxInputFocusBlurEvent>>;
 }
 
 @ProxyCmp({

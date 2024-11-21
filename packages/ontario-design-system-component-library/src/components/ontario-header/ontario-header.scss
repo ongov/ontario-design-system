@@ -14,8 +14,8 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
 
-$ontario-search-input-padding: 7.2rem;
-$ontario-search-input-padding--mobile: 6.4rem;
+$ontario-search-padding: 7.2rem;
+$ontario-search-padding--mobile: 6.4rem;
 
 $ontario-header-logo-width: 180px;
 $ontario-header-logo-width--mobile: 45px;
@@ -308,7 +308,7 @@ $ontario-navigation-container-min-width: 290px;
 	margin-bottom: spacing.$spacing-0;
 	height: globalVariables.$standard-input-height;
 	padding-left: spacing.$spacing-3;
-	padding-right: $ontario-search-input-padding;
+	padding-right: $ontario-search-padding;
 
 	&:invalid + input[type='reset'] {
 		display: none;
@@ -350,7 +350,7 @@ $ontario-navigation-container-min-width: 290px;
 
 	@media screen and (min-width: breakpoints.$small-breakpoint) and (max-width: breakpoints.$medium-breakpoint) {
 		padding-left: spacing.$spacing-4;
-		padding-right: $ontario-search-input-padding--mobile;
+		padding-right: $ontario-search-padding--mobile;
 	}
 }
 

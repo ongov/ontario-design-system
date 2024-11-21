@@ -95,6 +95,10 @@ export const config: Config = {
 					src: 'translations/*.i18n.json',
 					dest: 'i18n',
 				},
+				{
+					src: 'french.html',
+					dest: 'french.html',
+				},
 			],
 		},
 	],

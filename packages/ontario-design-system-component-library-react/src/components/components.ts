@@ -12,12 +12,14 @@ import {
 	type InputFocusBlurEvent,
 	type InputInputEvent,
 	type InputInteractionEvent,
+	type Language,
 	type OntarioCheckboxesCustomEvent,
 	type OntarioDropdownListCustomEvent,
 	type OntarioHintExpanderCustomEvent,
 	type OntarioInputCustomEvent,
 	type OntarioLanguageToggleCustomEvent,
 	type OntarioRadioButtonsCustomEvent,
+	type OntarioSearchBoxCustomEvent,
 	type OntarioTextareaCustomEvent,
 	type RadioAndCheckboxChangeEvent,
 } from '@ongov/ontario-design-system-component-library';
@@ -561,6 +563,10 @@ import {
 	OntarioRadioButtons as OntarioRadioButtonsElement,
 	defineCustomElement as defineOntarioRadioButtons,
 } from '@ongov/ontario-design-system-component-library/dist/components/ontario-radio-buttons.js';
+import {
+	OntarioSearchBox as OntarioSearchBoxElement,
+	defineCustomElement as defineOntarioSearchBox,
+} from '@ongov/ontario-design-system-component-library/dist/components/ontario-search-box.js';
 import {
 	OntarioStepIndicator as OntarioStepIndicatorElement,
 	defineCustomElement as defineOntarioStepIndicator,
@@ -2280,7 +2286,7 @@ export const OntarioInput: StencilReactComponent<OntarioInputElement, OntarioInp
 	});
 
 type OntarioLanguageToggleEvents = {
-	onSetAppLanguage: EventName<CustomEvent<string>>;
+	onSetAppLanguage: EventName<OntarioLanguageToggleCustomEvent<Language>>;
 	onHeaderLanguageToggled: EventName<OntarioLanguageToggleCustomEvent<HeaderLanguageToggleEventDetails>>;
 };
 
@@ -2343,6 +2349,30 @@ export const OntarioRadioButtons: StencilReactComponent<OntarioRadioButtonsEleme
 			onInputErrorOccurred: 'inputErrorOccurred',
 		} as OntarioRadioButtonsEvents,
 		defineCustomElement: defineOntarioRadioButtons,
+	});
+
+type OntarioSearchBoxEvents = {
+	onSearchOnSubmit: EventName<CustomEvent<string>>;
+	onInputOnInput: EventName<OntarioSearchBoxCustomEvent<InputInputEvent>>;
+	onInputOnChange: EventName<OntarioSearchBoxCustomEvent<InputInteractionEvent>>;
+	onInputOnBlur: EventName<OntarioSearchBoxCustomEvent<InputFocusBlurEvent>>;
+	onInputOnFocus: EventName<OntarioSearchBoxCustomEvent<InputFocusBlurEvent>>;
+};
+
+export const OntarioSearchBox: StencilReactComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents> =
+	/*@__PURE__*/ createComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents>({
+		tagName: 'ontario-search-box',
+		elementClass: OntarioSearchBoxElement,
+		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+		react: React,
+		events: {
+			onSearchOnSubmit: 'searchOnSubmit',
+			onInputOnInput: 'inputOnInput',
+			onInputOnChange: 'inputOnChange',
+			onInputOnBlur: 'inputOnBlur',
+			onInputOnFocus: 'inputOnFocus',
+		} as OntarioSearchBoxEvents,
+		defineCustomElement: defineOntarioSearchBox,
 	});
 
 type OntarioStepIndicatorEvents = NonNullable<unknown>;
