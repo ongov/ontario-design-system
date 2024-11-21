@@ -127,9 +127,6 @@ task('fonts-move', () => {
 // Move all necessary component assets to the dist/assets folder
 task('assets-move', () => {
 	return src([
-		// `${dsComponentPackageDir}/src/components/ontario-dropdown-list/assets/**`,
-		// `${dsComponentPackageDir}/src/components/ontario-footer/assets/**`,
-		// `${dsComponentPackageDir}/src/components/ontario-header/assets/**`,
 		`${dsComponentPackageDir}/src/components/**/assets/**`,
 		`!${dsComponentPackageDir}/src/components/ontario-icon/assets/**`,
 	])
