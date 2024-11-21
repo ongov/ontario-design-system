@@ -37,9 +37,10 @@ const processSass = async (opts) => {
 		sassOptions.sourceMap = true;
 	}
 
-	sass.compile('./src/styles/scss/theme.scss', sassOptions);
+	const themeFilePath = './src/styles/scss/theme.scss';
+	sass.compile(themeFilePath, sassOptions);
 
-	const stream = src('./src/styles/scss/theme.scss', { sourcemaps: opts.sourcemaps })
+	const stream = src(themeFilePath, { sourcemaps: opts.sourcemaps })
 		.pipe(gulpif(opts.compress, concat('ontario-theme.min.css'), concat('ontario-theme.css')))
 		.pipe(gulpif(opts.compress, minify()))
 		.pipe(dest(`${distDir}/styles/css/compiled`, { sourcemaps: '.' }));
