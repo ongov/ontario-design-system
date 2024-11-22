@@ -25,17 +25,18 @@
 		"@ongov/ontario-design-system-global-styles": "4.3.0"
 	},
 	"devDependencies": {
-		"rimraf": "^6.0.1",
 		"glob": "^11.0.0",
 		"gulp": "^5.0.0",
 		"gulp-autoprefixer": "^9.0.0",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-concat": "^2.6.1",
-		"gulp-if": "^3.0.0",
 		"gulp-flatten": "^0.4.0",
+		"gulp-if": "^3.0.0",
 		"gulp-sass": "^5.1.0",
 		"prettier": "^3.3.3",
-		"sass": "^1.80.6"
+		"rimraf": "^6.0.1",
+		"sass": "^1.80.6",
+		"through2": "^4.0.2"
 	},
 	"publishConfig": {
 		"access": "public"

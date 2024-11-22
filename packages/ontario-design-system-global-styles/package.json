@@ -19,15 +19,16 @@
 		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: Global Styles\n---\n\" -df ../app-web-components-documentation/docs/05-readme-global-styles.md"
 	},
 	"devDependencies": {
-		"rimraf": "^6.0.1",
+		"@ongov/ontario-design-system-design-tokens": "4.3.0",
 		"gulp": "^5.0.0",
 		"gulp-autoprefixer": "^9.0.0",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-if": "^3.0.0",
 		"gulp-sass": "^5.1.0",
+		"rimraf": "^6.0.1",
 		"sass": "^1.80.6",
-		"@ongov/ontario-design-system-design-tokens": "4.3.0"
+		"through2": "^4.0.2"
 	},
 	"publishConfig": {
 		"access": "public"
@@ -50,5 +51,8 @@
 			"email": "Meaghan.Carrieres@ontario.ca"
 		}
 	],
-	"sass": "dist/styles/scss/theme.scss"
+	"sass": "dist/styles/scss/theme.scss",
+	"dependencies": {
+		"through2": "^4.0.2"
+	}
 }

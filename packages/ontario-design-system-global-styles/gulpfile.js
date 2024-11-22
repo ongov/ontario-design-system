@@ -4,18 +4,12 @@ import autoprefixer from 'gulp-autoprefixer';
 import concat from 'gulp-concat';
 import minify from 'gulp-clean-css';
 import gulpif from 'gulp-if';
-
 import * as sass from 'sass';
-
 import gulp from 'gulp';
-const { dest, series, src, task, parallel, watch } = gulp;
+import through2 from 'through2';
+import paths from './paths-constants.js'; // Import paths object
 
-const distDir = './dist';
-const styleDir = './src/sass/**';
-const fonts = ['./src/fonts/**'];
-const favicons = ['./src/favicons/*'];
-const dsTokensPath = '../ontario-design-system-design-tokens/dist/scss/_variables.scss';
-const dsTokensDestPath = `${distDir}/styles/scss/1-variables/_tokens.variables.scss`;
+const { dest, series, src, task, parallel, watch } = gulp;
 
 /**
  * @param {{
@@ -28,90 +22,103 @@ const dsTokensDestPath = `${distDir}/styles/scss/1-variables/_tokens.variables.s
  */
 const processSass = (opts) => {
 	const sassOptions = {
-		outputStyle: 'expanded',
+		outputStyle: opts.compress ? 'compressed' : 'expanded',
 		includePaths: ['../../node_modules'],
 	};
 
-	if (opts.debug) {
-		sassOptions.sourceComments = true;
-	}
+	return [
+		src(paths.styles.theme, { sourcemaps: opts.sourcemaps })
+			.pipe(
+				through2.obj((file, _, cb) => {
+					try {
+						if (file.isBuffer()) {
+							const result = sass.compile(file.path, sassOptions);
+							file.contents = Buffer.from(result.css); // Replace file buffer with compiled CSS
+						}
+						cb(null, file);
+					} catch (err) {
+						console.error('Sass Compilation Error:', err);
+						cb(err);
+					}
+				}),
+			)
+			.pipe(autoprefixer())
+			.pipe(gulpif(opts.compress, concat('ontario-theme.min.css'), concat('ontario-theme.css')))
+			.pipe(gulpif(opts.compress, minify()))
+			.pipe(dest(paths.output.theme, { sourcemaps: opts.sourcemaps ? '.' : false })),
 
-	const themeFilePath = './src/styles/scss/theme.scss';
-
-	// Compile the theme.scss file
-	sass.compile(themeFilePath, sassOptions);
-
-	// Transform and output the theme.scss file
-	const themeStream = src(themeFilePath, { sourcemaps: opts.sourcemaps })
-		.pipe(autoprefixer())
-		.pipe(gulpif(opts.compress, concat('ontario-theme.min.css'), concat('ontario-theme.css')))
-		.pipe(gulpif(opts.compress, minify()))
-		.pipe(dest(`${distDir}/styles/css/compiled`, { sourcemaps: '.' }));
-
-	// Compile the fonts.scss file
-	sass.compile('./src/misc/ontario-design-system-fonts.scss', sassOptions);
-
-	// Transform and output the fonts.scss file
-	const fontsStream = src('./src/misc/ontario-design-system-fonts.scss', { sourcemaps: opts.sourcemaps })
-		.pipe(autoprefixer())
-		.pipe(
-			gulpif(opts.compress, concat('ontario-design-system-fonts.min.css'), concat('ontario-design-system-fonts.css')),
-		)
-		.pipe(gulpif(opts.compress, minify()))
-		.pipe(dest(`${distDir}/misc/`, { sourcemaps: '.' }));
-
-	if (opts.callback) {
-		opts.callback();
-	}
-
-	return [themeStream, fontsStream];
+		src(paths.styles.fonts, { sourcemaps: opts.sourcemaps })
+			.pipe(
+				through2.obj((file, _, cb) => {
+					try {
+						if (file.isBuffer()) {
+							const result = sass.compile(file.path, sassOptions);
+							file.contents = Buffer.from(result.css); // Replace file buffer with compiled CSS
+						}
+						cb(null, file);
+					} catch (err) {
+						console.error('Sass Compilation Error:', err);
+						cb(err);
+					}
+				}),
+			)
+			.pipe(autoprefixer())
+			.pipe(
+				gulpif(opts.compress, concat('ontario-design-system-fonts.min.css'), concat('ontario-design-system-fonts.css')),
+			)
+			.pipe(gulpif(opts.compress, minify()))
+			.pipe(dest(paths.output.fonts, { sourcemaps: opts.sourcemaps ? '.' : false })),
+	];
 };
+
+// Tasks
 
 task('sass:build', (done) => {
 	processSass({
 		compress: false,
 		debug: false,
 		sourcemaps: true,
-		callback: done,
 	});
+	done();
 });
 
 task('sass:minify', (done) => {
 	processSass({
 		compress: true,
+		debug: false,
 		sourcemaps: false,
-		callback: done,
 	});
+	done();
 });
 
 task('sass:copy-dist', () => {
-	return src('src/styles/scss/**/*.scss').pipe(dest('dist/styles/scss'));
+	return src(paths.styles.scss).pipe(dest(paths.styles.output));
 });
 
 // Replace node_module reference of tokens file with actual token declaration
 task('sass:copy-tokens', () => {
-	return fs.copyFile(dsTokensPath, dsTokensDestPath);
+	return fs.copyFile(paths.dsTokens.src, paths.dsTokens.dest);
 });
 
 task('sass:build-minify', parallel('sass:build', 'sass:minify'));
 
 // Move all non-style related fonts to the dist/fonts folder
 task('fonts-move', () => {
-	return src(fonts, { base: './src' }).pipe(dest(distDir));
+	return src(paths.fonts, { base: paths.srcDir }).pipe(dest(paths.distDir));
 });
 
 // Move all favicons to the dist/favicons folder
 task('favicons-move', () => {
-	return src(favicons, { base: './src' }).pipe(dest(distDir));
+	return src(paths.favicons, { base: paths.srcDir }).pipe(dest(paths.output.favicons));
 });
 
 task('watch', (done) => {
-	watch(styleDir, { ignoreInitial: false }, parallel('sass:build-minify'));
+	watch(paths.styles.dir, { ignoreInitial: false }, parallel('sass:build-minify'));
 	done();
 });
 
 task('clean', async () => {
-	return await rimraf(distDir);
+	return await rimraf(paths.distDir);
 });
 
 task(

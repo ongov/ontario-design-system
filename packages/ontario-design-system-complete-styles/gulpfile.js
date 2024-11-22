@@ -4,78 +4,80 @@ import minify from 'gulp-clean-css';
 import gulpif from 'gulp-if';
 import { glob } from 'glob';
 import { promises as fs } from 'fs';
-
 import flatten from 'gulp-flatten';
 import * as sass from 'sass';
-
 import gulp from 'gulp';
+import through2 from 'through2';
+import paths from './paths-constants.js';
+
 const { dest, series, src, task, parallel, watch } = gulp;
 
-const distDir = './dist';
-const srcDir = './src';
-const styleDir = './src/styles';
-const fontsDir = ['./src/fonts/**'];
-const componentsDirPath = './src/styles/components';
-const dsGlobalStylesPackageDir = '../ontario-design-system-global-styles';
-const dsComponentPackageDir = '../ontario-design-system-component-library';
-
 /**
- * @param {{
- *   compress: boolean,
- *   sourcemaps: boolean,
- *   callback: function,
- *   [debug]: boolean
- * }} opts Configuration options
+ * Utility: Compile Sass using Dart Sass.
+ * @param {string} input - Input Sass file path.
+ * @param {string} outputFile - Output CSS file name.
+ * @param {object} options - Sass options.
  */
-const processSass = async (opts) => {
+const compileSass = (input, outputFile, options) => {
 	const sassOptions = {
-		style: 'expanded',
+		style: options.compress ? 'compressed' : 'expanded',
 		loadPaths: ['../../node_modules'],
 	};
 
-	if (opts.debug) {
-		sassOptions.sourceMap = true;
-	}
-
-	const themeFilePath = './src/styles/scss/theme.scss';
-	sass.compile(themeFilePath, sassOptions);
-
-	const stream = src(themeFilePath, { sourcemaps: opts.sourcemaps })
-		.pipe(gulpif(opts.compress, concat('ontario-theme.min.css'), concat('ontario-theme.css')))
-		.pipe(gulpif(opts.compress, minify()))
-		.pipe(dest(`${distDir}/styles/css/compiled`, { sourcemaps: '.' }));
-
-	if (opts.callback) {
-		opts.callback();
-	}
-
-	return stream;
+	return src(input, { sourcemaps: options.sourcemaps })
+		.pipe(
+			through2.obj((file, _, cb) => {
+				try {
+					if (file.isBuffer()) {
+						const result = sass.compile(file.path, sassOptions);
+						file.contents = Buffer.from(result.css);
+					}
+					cb(null, file);
+				} catch (err) {
+					console.error('Sass Compilation Error:', err);
+					cb(err);
+				}
+			}),
+		)
+		.pipe(gulpif(options.compress, concat(`${outputFile}.min.css`), concat(`${outputFile}.css`)))
+		.pipe(gulpif(options.compress, minify()))
+		.pipe(dest(paths.output.theme, { sourcemaps: options.sourcemaps ? '.' : false }));
 };
 
+task('clean:dist', async () => {
+	return await rimraf(paths.distDir);
+});
+
+task('clean:src', async () => {
+	return await rimraf(paths.srcDir);
+});
+
 task('copy:ds-global-styles', () => {
-	return src(`${dsGlobalStylesPackageDir}/src/**`).pipe(dest(srcDir));
+	return src(paths.dsGlobalStyles.src).pipe(dest(paths.srcDir));
 });
 
 task('copy:component-global-styles', () => {
-	return src(`${dsComponentPackageDir}/src/global.scss`).pipe(dest(`${srcDir}/styles`));
+	return src(paths.dsComponentLibrary.globalStyles).pipe(dest(paths.styles.dir));
 });
 
 task('copy:component-common-styles', () => {
-	return src(`${dsComponentPackageDir}/src/styles/**/*.scss`).pipe(dest(`${srcDir}/styles/styles`));
+	return src(paths.dsComponentLibrary.commonStyles).pipe(dest(paths.styles.styles));
 });
 
 task('copy:component-utils', () => {
-	return src(`${dsComponentPackageDir}/src/utils/**/*.scss`).pipe(dest(`${srcDir}/styles/utils`));
+	return src(paths.dsComponentLibrary.utils).pipe(dest(paths.styles.utils));
 });
 
 task('copy:component-styles', () => {
-	return src(`${dsComponentPackageDir}/src/components/**/*.scss`).pipe(dest(`${srcDir}/styles/components/`));
+	return src(paths.dsComponentLibrary.components).pipe(dest(paths.styles.components));
 });
 
 task('generate:components-import-file', async (done) => {
-	const globPattern = `${componentsDirPath}/**/*.scss`;
+	const globPattern = paths.components.scss;
 	const componentSassFilePaths = await glob(globPattern);
 	const contentLines = componentSassFilePaths.map((filePath) => {
+		// Remove the path up to the component name
+		// e.g. from 'src/styles/components/ontario-button/ontario-button.scss' to 'ontario-button/ontario-button.scss'
 		const paths = filePath.replace(/.*?\/.*?\/s.*?\//, '');
 		return `@forward "../../../../${paths}";`;
 	});
@@ -84,77 +86,57 @@ task('generate:components-import-file', async (done) => {
 
 	if (contentLines.length > 0) {
 		try {
-			const allComponentFilePath = `${styleDir}/scss/6-components/_all.component.scss`;
 			const newContent = contentLines.join('\n') + '\n\n' + assetStyles;
-			await fs.writeFile(allComponentFilePath, newContent);
+			await fs.writeFile(paths.files.componentsImport, newContent);
 		} catch (error) {
 			console.error(`Error writing DS component styles file ${error}`);
 			done(error);
 		}
 	} else {
-		console.log('No files matching', globPattern, 'within', componentsDirPath);
+		console.warn('No files matching', globPattern, 'within', paths.components.dir);
 	}
 
 	done();
 });
 
 task('sass:build', async (done) => {
-	await processSass({
+	compileSass(paths.files.theme, 'ontario-theme', {
 		compress: false,
-		debug: false,
-		callback: done,
+		sourcemaps: true,
 	});
+	done();
 });
 
 task('sass:minify', async (done) => {
-	await processSass({
+	compileSass(paths.files.theme, 'ontario-theme', {
 		compress: true,
-		callback: done,
+		sourcemaps: false,
 	});
+	done();
 });
 
 task('sass:copy-dist', () => {
-	return src(`${styleDir}/**`).pipe(dest(`${distDir}/styles/`));
+	return src(paths.styles.all).pipe(dest(paths.output.styles));
 });
-
-task('sass:build-minify', parallel('sass:build', 'sass:minify'));
 
 // Move all non-style related fonts to the dist/fonts folder
 task('fonts-move', () => {
-	return src(fontsDir).pipe(dest(`${distDir}/fonts`));
+	return src(paths.fonts).pipe(dest(paths.output.fonts));
 });
 
 // Move all necessary component assets to the dist/assets folder
 task('assets-move', () => {
-	return src([
-		`${dsComponentPackageDir}/src/components/**/assets/**`,
-		`!${dsComponentPackageDir}/src/components/ontario-icon/assets/**`,
-	])
-		.pipe(flatten())
-		.pipe(dest(`${distDir}/assets`));
+	return src(paths.dsComponentLibrary.assets).pipe(flatten()).pipe(dest(paths.output.assets));
 });
 
 // Move all Fractal scripts to the dist/scripts folder
 task('scripts-move', () => {
-	return src('./scripts/**').pipe(dest(`${distDir}/scripts`));
+	return src(paths.scripts).pipe(dest(paths.output.scripts));
 });
 
 // Move favicons to the dist/favicons folder
 task('favicons-move', () => {
-	return src(`${dsGlobalStylesPackageDir}/src/favicons/**`).pipe(dest(`${distDir}/favicons`));
-});
-
-task('watch', (done) => {
-	watch(styleDir, { ignoreInitial: false }, parallel('sass:build-minify'));
-	done();
-});
-
-task('clean:dist', async () => {
-	return await rimraf(distDir);
-});
-
-task('clean:src', async () => {
-	return await rimraf(srcDir);
+	return src(paths.dsGlobalStyles.favicons).pipe(dest(paths.output.favicons));
 });
 
 task(
@@ -178,5 +160,10 @@ task(
 		'clean:src',
 	),
 );
+
+task('watch', (done) => {
+	watch(paths.styles.dir, { ignoreInitial: false }, parallel('sass:build-minify'));
+	done();
+});
 
 task('default', series('watch'));
