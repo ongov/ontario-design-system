@@ -5,10 +5,12 @@ import gulpif from 'gulp-if';
 import { glob } from 'glob';
 import { promises as fs } from 'fs';
 import flatten from 'gulp-flatten';
-import * as sass from 'sass';
+import * as dartSass from 'sass';
 import gulp from 'gulp';
-import through2 from 'through2';
+import gulpSass from 'gulp-sass';
 import paths from './paths-constants.js';
+
+const sass = gulpSass(dartSass);
 
 const { dest, series, src, task, parallel, watch } = gulp;
 
@@ -25,20 +27,7 @@ const compileSass = (input, outputFile, options) => {
 	};
 
 	return src(input, { sourcemaps: options.sourcemaps })
-		.pipe(
-			through2.obj((file, _, cb) => {
-				try {
-					if (file.isBuffer()) {
-						const result = sass.compile(file.path, sassOptions);
-						file.contents = Buffer.from(result.css);
-					}
-					cb(null, file);
-				} catch (err) {
-					console.error('Sass Compilation Error:', err);
-					cb(err);
-				}
-			}),
-		)
+		.pipe(sass(sassOptions).on('error', sass.logError))
 		.pipe(gulpif(options.compress, concat(`${outputFile}.min.css`), concat(`${outputFile}.css`)))
 		.pipe(gulpif(options.compress, minify()))
 		.pipe(dest(paths.output.theme, { sourcemaps: options.sourcemaps ? '.' : false }));

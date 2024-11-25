@@ -27,8 +27,7 @@
 		"gulp-if": "^3.0.0",
 		"gulp-sass": "^5.1.0",
 		"rimraf": "^6.0.1",
-		"sass": "^1.80.6",
-		"through2": "^4.0.2"
+		"sass": "^1.80.6"
 	},
 	"publishConfig": {
 		"access": "public"
@@ -51,8 +50,5 @@
 			"email": "Meaghan.Carrieres@ontario.ca"
 		}
 	],
-	"sass": "dist/styles/scss/theme.scss",
-	"dependencies": {
-		"through2": "^4.0.2"
-	}
+	"sass": "dist/styles/scss/theme.scss"
 }
