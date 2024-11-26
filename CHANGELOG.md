@@ -1,3 +1,10 @@
+# 5.0.0-alpha.2 (2024-11-26)
+
+### Bug Fixes
+
+- remove prod flag 3fb2b06
+- updated production flag to point to the proper environment file 335c580
+
 # 5.0.0-alpha.1 (2024-10-21)
 
 ### Bug Fixes
