@@ -3166,6 +3166,44 @@ export class OntarioTable {
 export declare interface OntarioTable extends Components.OntarioTable {}
 
 @ProxyCmp({
+	inputs: ['badgeLabel', 'hint', 'label', 'link'],
+})
+@Component({
+	selector: 'ontario-task',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['badgeLabel', 'hint', 'label', 'link'],
+})
+export class OntarioTask {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioTask extends Components.OntarioTask {}
+
+@ProxyCmp({})
+@Component({
+	selector: 'ontario-task-list',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: [],
+})
+export class OntarioTaskList {
+	protected el: HTMLElement;
+	constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioTaskList extends Components.OntarioTaskList {}
+
+@ProxyCmp({
 	inputs: [
 		'caption',
 		'customOnBlur',
