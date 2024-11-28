@@ -144,7 +144,8 @@ export class OntarioTask {
 	 * Provides a translated task status string based on the current language.
 	 */
 	private getTranslatedTaskStatus(): string {
-		return translations.taskStatus[this.taskStatusState][this.language === 'fr' ? 'fr' : 'en'];
+		const resolvedLanguage = validateLanguage(this.language);
+		return translations.taskStatus[this.taskStatusState][resolvedLanguage];
 	}
 
 	/**
@@ -181,7 +182,7 @@ export class OntarioTask {
 						class="ontario-task__badge"
 						role="status"
 						aria-label={`${
-							translations.taskStatus.taskStatus[this.language || 'en']
+							translations.taskStatus.taskStatus[validateLanguage(this.language)]
 						} ${this.getTranslatedTaskStatus()} (${this.taskStatusState})`}
 						colour={this.getBadgeColour()}
 					>
@@ -212,7 +213,7 @@ export class OntarioTask {
 						target="_blank"
 						rel="noopener noreferrer"
 						class="ontario-task__link"
-						aria-label={`${this.label} ${translations.newWindow[this.language || 'en']}`}
+						aria-label={`${this.label} ${translations.newWindow[validateLanguage(this.language)]}`}
 					>
 						{this.renderTaskContent()}
 						{this.renderHintText()}
