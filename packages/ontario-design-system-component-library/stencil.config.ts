@@ -8,6 +8,7 @@ import path from 'path';
 
 export const config: Config = {
 	namespace: 'ontario-design-system-components',
+	sourceMap: true,
 	plugins: [
 		sass({
 			includePaths: ['../../node_modules'],
