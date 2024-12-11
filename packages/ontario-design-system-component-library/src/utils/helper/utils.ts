@@ -83,7 +83,8 @@ export function isEmpty(str: string | undefined | null): boolean {
  * @returns {string[]}
  */
 export function retrieveEnumKeys(enumObject: object): string[] {
-	return Object.keys(enumObject).filter(isNumber);
+	if (enumObject === undefined || enumObject === null) return new Array<string>(0);
+	return Object.keys(enumObject).filter((key) => !isNumber(key));
 }
 
 /**
