@@ -67,7 +67,8 @@ export function removeObjectsBySpecificKey<T>(objects: T[], key: keyof T, value:
  * @returns {boolean}
  */
 export function isNumber(value: string | number): boolean {
-	return isNaN(Number(value)) === true;
+	if (value === undefined || value === null) return false;
+	return isNaN(Number(value)) === false;
 }
 
 export function isEmpty(str: string | undefined | null): boolean {

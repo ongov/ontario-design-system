@@ -1,5 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { OntarioDateInput } from '../ontario-date-input';
+import { isInvalidYear } from '../utils';
 
 describe('ontario-date-input', () => {
 	it('renders deafult state', async () => {
@@ -118,5 +119,80 @@ describe('ontario-date-input', () => {
 				</mock:shadow-root>
 			</ontario-date-input>
 		`);
+	});
+});
+
+describe('date-validation-utils', () => {
+	it('is invalid year value - undefined string', () => {
+		// Note: Type system doesn't like `undefined` as `any` lets us force it for testing purposes
+		const value: any = undefined;
+
+		const isInvalidYearResult = isInvalidYear(value);
+		expect(isInvalidYearResult).toEqual(true);
+	});
+
+	it('is invalid year value - null string', () => {
+		// Note: Type system doesn't like `null` as `any` lets us force it for testing purposes
+		const value: any = null;
+
+		const isInvalidYearResult = isInvalidYear(value);
+		expect(isInvalidYearResult).toEqual(true);
+	});
+
+	it('is invalid year value - empty string', () => {
+		const value = ''; // Empty string
+
+		const isInvalidYearResult = isInvalidYear(value);
+		expect(isInvalidYearResult).toEqual(true);
+	});
+
+	it('is invalid year value - written out number', () => {
+		const value = 'two-thousand';
+
+		const isInvalidYearResult = isInvalidYear(value);
+		expect(isInvalidYearResult).toEqual(true);
+	});
+
+	it('is valid year value', () => {
+		const value = '2000';
+
+		const isValidYear = !isInvalidYear(value);
+		expect(isValidYear).toEqual(true);
+	});
+
+	it('is valid year when in range', () => {
+		const value = '2000';
+		const minYear = 1;
+		const maxYear = 9999;
+
+		const isValidYear = !isInvalidYear(value, minYear, maxYear);
+		expect(isValidYear).toEqual(true);
+	});
+
+	it('is valid year when in range but is minYear', () => {
+		const value = '2000';
+		const minYear = 2000;
+		const maxYear = 9999;
+
+		const isValidYear = !isInvalidYear(value, minYear, maxYear);
+		expect(isValidYear).toEqual(true);
+	});
+
+	it('is valid year when in range but is maxYear', () => {
+		const value = '2000';
+		const minYear = 1;
+		const maxYear = 2000;
+
+		const isValidYear = !isInvalidYear(value, minYear, maxYear);
+		expect(isValidYear).toEqual(true);
+	});
+
+	it('is invalid year when out of range', () => {
+		const value = '2000';
+		const minYear = 1;
+		const maxYear = 1999;
+
+		const isValidYear = !isInvalidYear(value, minYear, maxYear);
+		expect(isValidYear).toEqual(false);
 	});
 });
