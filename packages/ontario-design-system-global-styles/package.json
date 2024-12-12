@@ -19,7 +19,7 @@
 		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: Global Styles\n---\n\" -df ../app-web-components-documentation/docs/05-readme-global-styles.md"
 	},
 	"devDependencies": {
-		"@ongov/ontario-design-system-design-tokens": "4.3.0",
+		"@ongov/ontario-design-system-design-tokens": "4.3.1-alpha.1",
 		"gulp": "^5.0.0",
 		"gulp-autoprefixer": "^9.0.0",
 		"gulp-clean-css": "^4.3.0",

@@ -35,8 +35,6 @@ export const createOverlayComponent = <OverlayComponent extends object, OverlayT
 
   type Props = OverlayComponent & ReactOverlayProps;
 
-  // let isDismissing = false;
-
   const Overlay = React.forwardRef<OverlayType, Props>((props, forwardedRef) => {
     const { isOpen, children, onDidDismiss, onDidPresent, onWillDismiss, onWillPresent, ...cProps } = props;
     const [overlay, setOverlay] = useState<OverlayType | undefined>(undefined);

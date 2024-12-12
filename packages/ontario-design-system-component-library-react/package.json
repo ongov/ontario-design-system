@@ -39,7 +39,8 @@
 		]
 	},
 	"dependencies": {
-		"@ongov/ontario-design-system-component-library": "^5.0.0-alpha.1"
+		"@ongov/ontario-design-system-component-library": "^5.0.0-alpha.1",
+		"@stencil/react-output-target": "^0.7.4"
 	},
 	"devDependencies": {
 		"@testing-library/jest-dom": "^6.6.2",
