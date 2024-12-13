@@ -13,7 +13,7 @@ import translations from '../../translations/global.i18n.json';
 	shadow: true,
 })
 export class OntarioTask {
-	hintTextRef: HTMLOntarioHintTextElement | undefined;
+	hintTextRef?: HTMLOntarioHintTextElement;
 
 	/**
 	 * Specifies the label of the task.
