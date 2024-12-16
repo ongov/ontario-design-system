@@ -35,17 +35,31 @@ const isInvalidMonth = (value: string) => {
 	return month < MONTH_MIN_VALUE || month > MONTH_MAX_VALUE;
 };
 
-/*
- * Year field should be a number, not negative, at length at least 4 digits
+/**
+ * Valid value year against minimum and maximum year range (defaulted if not provided.)
+ *
+ * Year field should be a number and not written out; it has no concept of positive and negative.
+ *
+ * Suggestion:
+ * - `< 0` B.C.E.
+ * - `>= 0` A.C.E.
+ *
+ * @param value value to check for validity
+ * @param minYear minimum valid year to validate against
+ * @param maxYear maximum valid year to validate against
  */
-const isInvalidYear = (value: string, minYear: number = YEAR_MIN_VALUE, maxYear: number = YEAR_MAX_VALUE) => {
+export const isInvalidYear = (
+	value: string | number,
+	minYear: number = YEAR_MIN_VALUE,
+	maxYear: number = YEAR_MAX_VALUE,
+) => {
 	if (!isNumber(value)) {
 		return true;
 	}
 
 	const year = Number(value);
 
-	return year <= minYear || year > maxYear;
+	return year < minYear || year > maxYear;
 };
 
 type GetDateErrorArg = {
