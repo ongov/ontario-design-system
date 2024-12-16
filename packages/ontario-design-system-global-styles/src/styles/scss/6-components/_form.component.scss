@@ -8,15 +8,6 @@
 @use '../1-variables/line-heights.variables' as lineHeight;
 @use '../1-variables/typography.variables';
 
-//for general forms
-.ontario-form-group:last-of-type {
-	margin-bottom: 2.5rem;
-}
-
-.ontario-form-group:last-of-type {
-	margin-bottom: spacing.$spacing-8;
-}
-
 .ontario-fieldset__legend {
 	color: colours.$ontario-colour-black;
 	font-family: fonts.$ontario-font-raleway;
