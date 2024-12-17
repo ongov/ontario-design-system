@@ -1,3 +1,11 @@
+# 5.0.0-alpha.3 (2024-12-17)
+
+### Bug Fixes
+
+- **grid.mixins:** declare $modules before use 1c7791f
+- **utils:** isNumber function validation inverted 37637b6
+- **utils:** update `retrieveEnumKeys` function 325d3af
+
 # 5.0.0-alpha.2 (2024-11-26)
 
 ### Bug Fixes
