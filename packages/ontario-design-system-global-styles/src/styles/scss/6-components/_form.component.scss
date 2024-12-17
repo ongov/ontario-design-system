@@ -7,6 +7,15 @@
 @use '../1-variables/letter-spacing.variables' as letterSpacing;
 @use '../1-variables/line-heights.variables' as lineHeight;
 
+//for general forms
+.ontario-form-group:last-of-type {
+	margin-bottom: 2.5rem;
+}
+
+.ontario-form-group:last-of-type {
+	margin-bottom: spacing.$spacing-8;
+}
+
 .ontario-fieldset__legend {
 	color: colours.$ontario-colour-black;
 	font-family: typography.$ontario-font-raleway-modified;
