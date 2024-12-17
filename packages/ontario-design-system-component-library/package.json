@@ -41,12 +41,12 @@
 	},
 	"dependencies": {
 		"@ongov/ontario-design-system-global-styles": "4.3.1-alpha.1",
-		"@stencil/core": "^4.22.1",
+		"@stencil/core": "^4.23.0",
 		"dotenv": "^16.4.5"
 	},
 	"devDependencies": {
-		"@stencil/angular-output-target": "^0.9.0",
-		"@stencil/react-output-target": "0.7.4",
+		"@stencil/angular-output-target": "^0.10.1",
+		"@stencil/react-output-target": "0.8.0",
 		"@stencil/sass": "^3.0.12",
 		"@types/jest": "^29.5.3",
 		"@types/node": "^22.7.5",
@@ -61,8 +61,8 @@
 		"jest-svg-transformer": "^1.0.0",
 		"json-loader": "^0.5.7",
 		"jszip": "^3.10.1",
-		"prettier": "^3.3.3",
-		"puppeteer": "^23.5.3",
+		"prettier": "^3.4.2",
+		"puppeteer": "^23.10.4",
 		"rollup-plugin-dotenv": "^0.5.1",
 		"shx": "^0.3.4",
 		"stencil-inline-svg": "^1.1.0",

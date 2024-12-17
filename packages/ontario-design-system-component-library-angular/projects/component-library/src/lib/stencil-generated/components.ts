@@ -17,7 +17,7 @@ import { Components } from '@ongov/ontario-design-system-component-library';
 	inputs: ['accordionData', 'expandCollapseButton', 'isOpen', 'language', 'name'],
 })
 export class OntarioAccordion {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioAccordionElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -41,7 +41,7 @@ export declare interface OntarioAccordion extends Components.OntarioAccordion {}
 	inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
 })
 export class OntarioAside {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioAsideElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -65,7 +65,7 @@ export declare interface OntarioAside extends Components.OntarioAside {}
 	inputs: ['language'],
 })
 export class OntarioBackToTop {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioBackToTopElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -89,7 +89,7 @@ export declare interface OntarioBackToTop extends Components.OntarioBackToTop {}
 	inputs: ['ariaLabelText', 'colour', 'label'],
 })
 export class OntarioBadge {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioBadgeElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -113,7 +113,7 @@ export declare interface OntarioBadge extends Components.OntarioBadge {}
 	inputs: ['attribution', 'byline', 'quote'],
 })
 export class OntarioBlockquote {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioBlockquoteElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -137,7 +137,7 @@ export declare interface OntarioBlockquote extends Components.OntarioBlockquote 
 	inputs: ['ariaLabelText', 'elementId', 'htmlType', 'label', 'type'],
 })
 export class OntarioButton {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioButtonElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -161,7 +161,7 @@ export declare interface OntarioButton extends Components.OntarioButton {}
 	inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
 })
 export class OntarioCallout {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioCalloutElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -205,7 +205,7 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 	],
 })
 export class OntarioCard {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioCardElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -229,7 +229,7 @@ export declare interface OntarioCard extends Components.OntarioCard {}
 	inputs: ['cardsPerRow'],
 })
 export class OntarioCardCollection {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioCardCollectionElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -277,7 +277,7 @@ export declare interface OntarioCardCollection extends Components.OntarioCardCol
 	],
 })
 export class OntarioCheckboxes {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioCheckboxesElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -322,7 +322,7 @@ export declare interface OntarioCheckboxes extends Components.OntarioCheckboxes 
 	inputs: ['content'],
 })
 export class OntarioCriticalAlert {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioCriticalAlertElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -368,7 +368,7 @@ export declare interface OntarioCriticalAlert extends Components.OntarioCritical
 	],
 })
 export class OntarioDateInput {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioDateInputElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -442,7 +442,7 @@ export declare interface OntarioDateInput extends Components.OntarioDateInput {
 	],
 })
 export class OntarioDropdownList {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioDropdownListElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -487,7 +487,7 @@ export declare interface OntarioDropdownList extends Components.OntarioDropdownL
 	inputs: ['legend', 'legendSize'],
 })
 export class OntarioFieldset {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioFieldsetElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -529,7 +529,7 @@ export declare interface OntarioFieldset extends Components.OntarioFieldset {}
 	],
 })
 export class OntarioFooter {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioFooterElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -571,7 +571,7 @@ export declare interface OntarioFooter extends Components.OntarioFooter {}
 	],
 })
 export class OntarioHeader {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioHeaderElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -595,7 +595,7 @@ export declare interface OntarioHeader extends Components.OntarioHeader {}
 	inputs: ['content', 'elementId', 'hint', 'hintContentType'],
 })
 export class OntarioHintExpander {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioHintExpanderElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -626,7 +626,7 @@ export declare interface OntarioHintExpander extends Components.OntarioHintExpan
 	inputs: ['elementId', 'hint', 'hintContentType'],
 })
 export class OntarioHintText {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioHintTextElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -650,7 +650,7 @@ export declare interface OntarioHintText extends Components.OntarioHintText {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconAccessibility {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconAccessibilityElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -674,7 +674,7 @@ export declare interface OntarioIconAccessibility extends Components.OntarioIcon
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconAccount {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconAccountElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -698,7 +698,7 @@ export declare interface OntarioIconAccount extends Components.OntarioIconAccoun
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconAdd {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconAddElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -722,7 +722,7 @@ export declare interface OntarioIconAdd extends Components.OntarioIconAdd {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconAddAlt {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconAddAltElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -746,7 +746,7 @@ export declare interface OntarioIconAddAlt extends Components.OntarioIconAddAlt 
 	inputs: ['iconWidth'],
 })
 export class OntarioIconAlertError {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconAlertErrorElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -770,7 +770,7 @@ export declare interface OntarioIconAlertError extends Components.OntarioIconAle
 	inputs: ['iconWidth'],
 })
 export class OntarioIconAlertInformation {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconAlertInformationElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -794,7 +794,7 @@ export declare interface OntarioIconAlertInformation extends Components.OntarioI
 	inputs: ['iconWidth'],
 })
 export class OntarioIconAlertSuccess {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconAlertSuccessElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -818,7 +818,7 @@ export declare interface OntarioIconAlertSuccess extends Components.OntarioIconA
 	inputs: ['iconWidth'],
 })
 export class OntarioIconAlertWarning {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconAlertWarningElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -842,7 +842,7 @@ export declare interface OntarioIconAlertWarning extends Components.OntarioIconA
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconArrowUp {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconArrowUpElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -866,7 +866,7 @@ export declare interface OntarioIconArrowUp extends Components.OntarioIconArrowU
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconAttach {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconAttachElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -890,7 +890,7 @@ export declare interface OntarioIconAttach extends Components.OntarioIconAttach 
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconBookmarkOff {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconBookmarkOffElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -914,7 +914,7 @@ export declare interface OntarioIconBookmarkOff extends Components.OntarioIconBo
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconBookmarkOn {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconBookmarkOnElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -938,7 +938,7 @@ export declare interface OntarioIconBookmarkOn extends Components.OntarioIconBoo
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconCalendar {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconCalendarElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -962,7 +962,7 @@ export declare interface OntarioIconCalendar extends Components.OntarioIconCalen
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconCamera {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconCameraElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -986,7 +986,7 @@ export declare interface OntarioIconCamera extends Components.OntarioIconCamera 
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconChevronDown {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconChevronDownElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1010,7 +1010,7 @@ export declare interface OntarioIconChevronDown extends Components.OntarioIconCh
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconChevronLeft {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconChevronLeftElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1034,7 +1034,7 @@ export declare interface OntarioIconChevronLeft extends Components.OntarioIconCh
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconChevronRight {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconChevronRightElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1058,7 +1058,7 @@ export declare interface OntarioIconChevronRight extends Components.OntarioIconC
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconChevronUp {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconChevronUpElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1082,7 +1082,7 @@ export declare interface OntarioIconChevronUp extends Components.OntarioIconChev
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconClock {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconClockElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1106,7 +1106,7 @@ export declare interface OntarioIconClock extends Components.OntarioIconClock {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconClose {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconCloseElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1130,7 +1130,7 @@ export declare interface OntarioIconClose extends Components.OntarioIconClose {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconCloseHeader {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconCloseHeaderElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1154,7 +1154,7 @@ export declare interface OntarioIconCloseHeader extends Components.OntarioIconCl
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconCloud {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconCloudElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1178,7 +1178,7 @@ export declare interface OntarioIconCloud extends Components.OntarioIconCloud {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconCollapse {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconCollapseElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1202,7 +1202,7 @@ export declare interface OntarioIconCollapse extends Components.OntarioIconColla
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconCreditCard {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconCreditCardElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1226,7 +1226,7 @@ export declare interface OntarioIconCreditCard extends Components.OntarioIconCre
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconCriticalAlertWarning {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconCriticalAlertWarningElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1250,7 +1250,7 @@ export declare interface OntarioIconCriticalAlertWarning extends Components.Onta
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconDelete {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconDeleteElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1274,7 +1274,7 @@ export declare interface OntarioIconDelete extends Components.OntarioIconDelete 
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconDocument {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconDocumentElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1298,7 +1298,7 @@ export declare interface OntarioIconDocument extends Components.OntarioIconDocum
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconDownload {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconDownloadElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1322,7 +1322,7 @@ export declare interface OntarioIconDownload extends Components.OntarioIconDownl
 	inputs: ['iconWidth'],
 })
 export class OntarioIconDropdownArrow {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconDropdownArrowElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1346,7 +1346,7 @@ export declare interface OntarioIconDropdownArrow extends Components.OntarioIcon
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconEdit {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconEditElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1370,7 +1370,7 @@ export declare interface OntarioIconEdit extends Components.OntarioIconEdit {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconEmail {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconEmailElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1394,7 +1394,7 @@ export declare interface OntarioIconEmail extends Components.OntarioIconEmail {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconExpand {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconExpandElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1418,7 +1418,7 @@ export declare interface OntarioIconExpand extends Components.OntarioIconExpand 
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconExport {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconExportElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1442,7 +1442,7 @@ export declare interface OntarioIconExport extends Components.OntarioIconExport 
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconFacebook {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconFacebookElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1466,7 +1466,7 @@ export declare interface OntarioIconFacebook extends Components.OntarioIconFaceb
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconFacebookAlt {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconFacebookAltElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1490,7 +1490,7 @@ export declare interface OntarioIconFacebookAlt extends Components.OntarioIconFa
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconFavouriteOff {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconFavouriteOffElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1514,7 +1514,7 @@ export declare interface OntarioIconFavouriteOff extends Components.OntarioIconF
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconFavouriteOn {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconFavouriteOnElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1538,7 +1538,7 @@ export declare interface OntarioIconFavouriteOn extends Components.OntarioIconFa
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconFilter {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconFilterElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1562,7 +1562,7 @@ export declare interface OntarioIconFilter extends Components.OntarioIconFilter 
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconFlickr {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconFlickrElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1586,7 +1586,7 @@ export declare interface OntarioIconFlickr extends Components.OntarioIconFlickr 
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconGrid {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconGridElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1610,7 +1610,7 @@ export declare interface OntarioIconGrid extends Components.OntarioIconGrid {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconHelp {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconHelpElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1634,7 +1634,7 @@ export declare interface OntarioIconHelp extends Components.OntarioIconHelp {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconInstagram {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconInstagramElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1658,7 +1658,7 @@ export declare interface OntarioIconInstagram extends Components.OntarioIconInst
 	inputs: ['iconWidth'],
 })
 export class OntarioIconInteracEn {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconInteracEnElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1682,7 +1682,7 @@ export declare interface OntarioIconInteracEn extends Components.OntarioIconInte
 	inputs: ['iconWidth'],
 })
 export class OntarioIconInteracEnAlt {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconInteracEnAltElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1706,7 +1706,7 @@ export declare interface OntarioIconInteracEnAlt extends Components.OntarioIconI
 	inputs: ['iconWidth'],
 })
 export class OntarioIconInteracFr {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconInteracFrElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1730,7 +1730,7 @@ export declare interface OntarioIconInteracFr extends Components.OntarioIconInte
 	inputs: ['iconWidth'],
 })
 export class OntarioIconInteracFrAlt {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconInteracFrAltElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1754,7 +1754,7 @@ export declare interface OntarioIconInteracFrAlt extends Components.OntarioIconI
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconLinkedin {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconLinkedinElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1778,7 +1778,7 @@ export declare interface OntarioIconLinkedin extends Components.OntarioIconLinke
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconLinkedinAlt {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconLinkedinAltElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1802,7 +1802,7 @@ export declare interface OntarioIconLinkedinAlt extends Components.OntarioIconLi
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconList {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconListElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1826,7 +1826,7 @@ export declare interface OntarioIconList extends Components.OntarioIconList {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconLiveChat {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconLiveChatElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1850,7 +1850,7 @@ export declare interface OntarioIconLiveChat extends Components.OntarioIconLiveC
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconLocationOff {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconLocationOffElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1874,7 +1874,7 @@ export declare interface OntarioIconLocationOff extends Components.OntarioIconLo
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconLocationOn {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconLocationOnElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1898,7 +1898,7 @@ export declare interface OntarioIconLocationOn extends Components.OntarioIconLoc
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconLockOff {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconLockOffElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1922,7 +1922,7 @@ export declare interface OntarioIconLockOff extends Components.OntarioIconLockOf
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconLockOn {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconLockOnElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1946,7 +1946,7 @@ export declare interface OntarioIconLockOn extends Components.OntarioIconLockOn 
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconMap {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconMapElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1970,7 +1970,7 @@ export declare interface OntarioIconMap extends Components.OntarioIconMap {}
 	inputs: ['iconWidth'],
 })
 export class OntarioIconMastercard {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconMastercardElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -1994,7 +1994,7 @@ export declare interface OntarioIconMastercard extends Components.OntarioIconMas
 	inputs: ['iconWidth'],
 })
 export class OntarioIconMastercardAlt {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconMastercardAltElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2018,7 +2018,7 @@ export declare interface OntarioIconMastercardAlt extends Components.OntarioIcon
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconMediaFastForward {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconMediaFastForwardElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2042,7 +2042,7 @@ export declare interface OntarioIconMediaFastForward extends Components.OntarioI
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconMediaFastRewind {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconMediaFastRewindElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2066,7 +2066,7 @@ export declare interface OntarioIconMediaFastRewind extends Components.OntarioIc
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconMediaPause {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconMediaPauseElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2090,7 +2090,7 @@ export declare interface OntarioIconMediaPause extends Components.OntarioIconMed
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconMediaPlay {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconMediaPlayElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2114,7 +2114,7 @@ export declare interface OntarioIconMediaPlay extends Components.OntarioIconMedi
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconMediaStop {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconMediaStopElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2138,7 +2138,7 @@ export declare interface OntarioIconMediaStop extends Components.OntarioIconMedi
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconMenu {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconMenuElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2162,7 +2162,7 @@ export declare interface OntarioIconMenu extends Components.OntarioIconMenu {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconMenuHeader {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconMenuHeaderElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2186,7 +2186,7 @@ export declare interface OntarioIconMenuHeader extends Components.OntarioIconMen
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconMicrophoneOff {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconMicrophoneOffElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2210,7 +2210,7 @@ export declare interface OntarioIconMicrophoneOff extends Components.OntarioIcon
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconMicrophoneOn {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconMicrophoneOnElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2234,7 +2234,7 @@ export declare interface OntarioIconMicrophoneOn extends Components.OntarioIconM
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconMoreVertical {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconMoreVerticalElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2258,7 +2258,7 @@ export declare interface OntarioIconMoreVertical extends Components.OntarioIconM
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconNewWindow {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconNewWindowElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2282,7 +2282,7 @@ export declare interface OntarioIconNewWindow extends Components.OntarioIconNewW
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconNext {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconNextElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2306,7 +2306,7 @@ export declare interface OntarioIconNext extends Components.OntarioIconNext {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconNotification {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconNotificationElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2330,7 +2330,7 @@ export declare interface OntarioIconNotification extends Components.OntarioIconN
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconPasswordHide {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconPasswordHideElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2354,7 +2354,7 @@ export declare interface OntarioIconPasswordHide extends Components.OntarioIconP
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconPasswordShow {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconPasswordShowElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2378,7 +2378,7 @@ export declare interface OntarioIconPasswordShow extends Components.OntarioIconP
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconPhone {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconPhoneElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2402,7 +2402,7 @@ export declare interface OntarioIconPhone extends Components.OntarioIconPhone {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconPhoto {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconPhotoElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2426,7 +2426,7 @@ export declare interface OntarioIconPhoto extends Components.OntarioIconPhoto {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconPinLocationOff {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconPinLocationOffElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2450,7 +2450,7 @@ export declare interface OntarioIconPinLocationOff extends Components.OntarioIco
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconPinLocationOn {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconPinLocationOnElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2474,7 +2474,7 @@ export declare interface OntarioIconPinLocationOn extends Components.OntarioIcon
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconPrevious {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconPreviousElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2498,7 +2498,7 @@ export declare interface OntarioIconPrevious extends Components.OntarioIconPrevi
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconPrint {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconPrintElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2522,7 +2522,7 @@ export declare interface OntarioIconPrint extends Components.OntarioIconPrint {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconRemove {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconRemoveElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2546,7 +2546,7 @@ export declare interface OntarioIconRemove extends Components.OntarioIconRemove 
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconRemoveAlt {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconRemoveAltElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2570,7 +2570,7 @@ export declare interface OntarioIconRemoveAlt extends Components.OntarioIconRemo
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconReplay {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconReplayElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2594,7 +2594,7 @@ export declare interface OntarioIconReplay extends Components.OntarioIconReplay 
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconRssFeed {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconRssFeedElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2618,7 +2618,7 @@ export declare interface OntarioIconRssFeed extends Components.OntarioIconRssFee
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconSave {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconSaveElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2642,7 +2642,7 @@ export declare interface OntarioIconSave extends Components.OntarioIconSave {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconSearch {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconSearchElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2666,7 +2666,7 @@ export declare interface OntarioIconSearch extends Components.OntarioIconSearch 
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconSearchWhite {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconSearchWhiteElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2690,7 +2690,7 @@ export declare interface OntarioIconSearchWhite extends Components.OntarioIconSe
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconSentiment1 {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconSentiment1Element;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2714,7 +2714,7 @@ export declare interface OntarioIconSentiment1 extends Components.OntarioIconSen
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconSentiment2 {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconSentiment2Element;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2738,7 +2738,7 @@ export declare interface OntarioIconSentiment2 extends Components.OntarioIconSen
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconSentiment3 {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconSentiment3Element;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2762,7 +2762,7 @@ export declare interface OntarioIconSentiment3 extends Components.OntarioIconSen
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconSentiment4 {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconSentiment4Element;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2786,7 +2786,7 @@ export declare interface OntarioIconSentiment4 extends Components.OntarioIconSen
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconSentiment5 {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconSentiment5Element;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2810,7 +2810,7 @@ export declare interface OntarioIconSentiment5 extends Components.OntarioIconSen
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconSettings {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconSettingsElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2834,7 +2834,7 @@ export declare interface OntarioIconSettings extends Components.OntarioIconSetti
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconShare {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconShareElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2858,7 +2858,7 @@ export declare interface OntarioIconShare extends Components.OntarioIconShare {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconSort {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconSortElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2882,7 +2882,7 @@ export declare interface OntarioIconSort extends Components.OntarioIconSort {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconTag {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconTagElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2906,7 +2906,7 @@ export declare interface OntarioIconTag extends Components.OntarioIconTag {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconTextMessage {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconTextMessageElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2930,7 +2930,7 @@ export declare interface OntarioIconTextMessage extends Components.OntarioIconTe
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconTimer {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconTimerElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2954,7 +2954,7 @@ export declare interface OntarioIconTimer extends Components.OntarioIconTimer {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconTransportBicycle {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconTransportBicycleElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -2978,7 +2978,7 @@ export declare interface OntarioIconTransportBicycle extends Components.OntarioI
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconTransportBus {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconTransportBusElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3002,7 +3002,7 @@ export declare interface OntarioIconTransportBus extends Components.OntarioIconT
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconTransportCar {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconTransportCarElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3026,7 +3026,7 @@ export declare interface OntarioIconTransportCar extends Components.OntarioIconT
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconTransportWalk {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconTransportWalkElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3050,7 +3050,7 @@ export declare interface OntarioIconTransportWalk extends Components.OntarioIcon
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconTty {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconTtyElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3074,7 +3074,7 @@ export declare interface OntarioIconTty extends Components.OntarioIconTty {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconTwitter {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconTwitterElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3098,7 +3098,7 @@ export declare interface OntarioIconTwitter extends Components.OntarioIconTwitte
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconTwitterAlt {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconTwitterAltElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3122,7 +3122,7 @@ export declare interface OntarioIconTwitterAlt extends Components.OntarioIconTwi
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconUpload {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconUploadElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3146,7 +3146,7 @@ export declare interface OntarioIconUpload extends Components.OntarioIconUpload 
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconVideo {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconVideoElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3170,7 +3170,7 @@ export declare interface OntarioIconVideo extends Components.OntarioIconVideo {}
 	inputs: ['iconWidth'],
 })
 export class OntarioIconVisa {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconVisaElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3194,7 +3194,7 @@ export declare interface OntarioIconVisa extends Components.OntarioIconVisa {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconVoteDislike {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconVoteDislikeElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3218,7 +3218,7 @@ export declare interface OntarioIconVoteDislike extends Components.OntarioIconVo
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconVoteLike {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconVoteLikeElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3242,7 +3242,7 @@ export declare interface OntarioIconVoteLike extends Components.OntarioIconVoteL
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconVpnKey {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconVpnKeyElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3266,7 +3266,7 @@ export declare interface OntarioIconVpnKey extends Components.OntarioIconVpnKey 
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconWheelchair {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconWheelchairElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3290,7 +3290,7 @@ export declare interface OntarioIconWheelchair extends Components.OntarioIconWhe
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconWifi {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconWifiElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3314,7 +3314,7 @@ export declare interface OntarioIconWifi extends Components.OntarioIconWifi {}
 	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconYoutube {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioIconYoutubeElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3376,7 +3376,7 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
 	],
 })
 export class OntarioInput {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioInputElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3426,7 +3426,7 @@ export declare interface OntarioInput extends Components.OntarioInput {
 	inputs: ['customLanguageToggle', 'language', 'size', 'url'],
 })
 export class OntarioLanguageToggle {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioLanguageToggleElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3467,7 +3467,7 @@ The event contains the oldLanguage along with the newLanguage.
 	inputs: ['fullScreenOverlay', 'isLoading', 'language', 'message', 'type'],
 })
 export class OntarioLoadingIndicator {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioLoadingIndicatorElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3491,7 +3491,7 @@ export declare interface OntarioLoadingIndicator extends Components.OntarioLoadi
 	inputs: ['content', 'heading', 'type'],
 })
 export class OntarioPageAlert {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioPageAlertElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3539,7 +3539,7 @@ export declare interface OntarioPageAlert extends Components.OntarioPageAlert {}
 	],
 })
 export class OntarioRadioButtons {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioRadioButtonsElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3608,7 +3608,7 @@ export declare interface OntarioRadioButtons extends Components.OntarioRadioButt
 	],
 })
 export class OntarioSearchBox {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioSearchBoxElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3680,7 +3680,7 @@ Below is an example on how to hook into the event to get the event details. @exa
 	],
 })
 export class OntarioStepIndicator {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioStepIndicatorElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3704,7 +3704,7 @@ export declare interface OntarioStepIndicator extends Components.OntarioStepIndi
 	inputs: ['caption', 'condensed', 'fullWidth', 'tableColumns', 'tableData', 'zebraStripes'],
 })
 export class OntarioTable {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioTableElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3756,7 +3756,7 @@ export declare interface OntarioTable extends Components.OntarioTable {}
 	],
 })
 export class OntarioTextarea {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioTextareaElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,

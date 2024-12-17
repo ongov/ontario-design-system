@@ -19,7 +19,7 @@
 		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: Design Tokens\n---\n\" -df ../app-web-components-documentation/docs/04-readme-design-tokens.md"
 	},
 	"devDependencies": {
-		"style-dictionary": "^4.1.3"
+		"style-dictionary": "^4.3.0"
 	},
 	"publishConfig": {
 		"access": "public"

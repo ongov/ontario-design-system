@@ -128,6 +128,13 @@ task('favicons-move', () => {
 	return src(paths.dsGlobalStyles.favicons).pipe(dest(paths.output.favicons));
 });
 
+task('sass:build-minify', parallel('sass:build', 'sass:minify'));
+
+task('watch', (done) => {
+	watch(paths.styles.dir, { ignoreInitial: false }, parallel('sass:build-minify'));
+	done();
+});
+
 task(
 	'deploy',
 	series(
@@ -144,15 +151,9 @@ task(
 		'scripts-move',
 		'favicons-move',
 		'sass:copy-dist',
-		'sass:build',
-		'sass:minify',
+		'sass:build-minify',
 		'clean:src',
 	),
 );
-
-task('watch', (done) => {
-	watch(paths.styles.dir, { ignoreInitial: false }, parallel('sass:build-minify'));
-	done();
-});
 
 task('default', series('watch'));
