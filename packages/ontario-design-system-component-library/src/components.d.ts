@@ -1904,22 +1904,8 @@ export namespace Components {
         "taskStatus": TaskStatus;
     }
     interface OntarioTaskList {
-        /**
-          * The number of completed tasks.
-         */
-        "completedTasks": number;
-        /**
-          * Specifies the label of the task list group.  This is required to provide the name of the task list group.
-         */
         "label": string;
-        /**
-          * The language of the component.  This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
-         */
         "language"?: Language;
-        /**
-          * The total number of tasks.
-         */
-        "totalTasks": number;
     }
     interface OntarioTextarea {
         /**
@@ -5107,22 +5093,8 @@ declare namespace LocalJSX {
         "taskStatus"?: TaskStatus;
     }
     interface OntarioTaskList {
-        /**
-          * The number of completed tasks.
-         */
-        "completedTasks"?: number;
-        /**
-          * Specifies the label of the task list group.  This is required to provide the name of the task list group.
-         */
         "label"?: string;
-        /**
-          * The language of the component.  This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
-         */
         "language"?: Language;
-        /**
-          * The total number of tasks.
-         */
-        "totalTasks"?: number;
     }
     interface OntarioTextarea {
         /**

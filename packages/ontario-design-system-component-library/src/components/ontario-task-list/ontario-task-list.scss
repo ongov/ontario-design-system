@@ -1,5 +1,6 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
 
 .ontario-task-list {
-	border-top: 2px solid colours.$ontario-greyscale-20;
+	border-top: globalFunctions.px-to-rem(2) solid colours.$ontario-greyscale-20;
 }

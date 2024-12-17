@@ -5,7 +5,7 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
 
 .ontario-task {
-	border-bottom: 2px solid colours.$ontario-greyscale-20;
+	border-bottom: globalFunctions.px-to-rem(2) solid colours.$ontario-greyscale-20;
 	padding: globalFunctions.px-to-rem(19) spacing.$spacing-0;
 
 	&__content {
