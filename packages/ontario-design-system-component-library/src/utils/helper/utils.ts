@@ -67,7 +67,8 @@ export function removeObjectsBySpecificKey<T>(objects: T[], key: keyof T, value:
  * @returns {boolean}
  */
 export function isNumber(value: string | number): boolean {
-	return isNaN(Number(value)) === true;
+	if (value === undefined || value === null) return false;
+	return isNaN(Number(value)) === false;
 }
 
 export function isEmpty(str: string | undefined | null): boolean {
@@ -82,7 +83,8 @@ export function isEmpty(str: string | undefined | null): boolean {
  * @returns {string[]}
  */
 export function retrieveEnumKeys(enumObject: object): string[] {
-	return Object.keys(enumObject).filter(isNumber);
+	if (enumObject === undefined || enumObject === null) return new Array<string>(0);
+	return Object.keys(enumObject).filter((key) => !isNumber(key));
 }
 
 /**
