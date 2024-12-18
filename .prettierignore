@@ -31,7 +31,6 @@ components.d.ts
 
 # component-lib-react
 createComponent.tsx
-createOverlayComponent.tsx
 interfaces.ts
 **/src/components.ts
 **/utils/attachProps.ts
