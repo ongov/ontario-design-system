@@ -1,7 +1,7 @@
 import React from 'react';
-
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Prism, SyntaxHighlighterProps } from 'react-syntax-highlighter';
+const SyntaxHighlighter = Prism as any as React.FC<SyntaxHighlighterProps>;
 
 interface CodeHighlighterProps {
 	codeExample: string;
