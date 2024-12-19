@@ -14,10 +14,10 @@
 		"declaration": false,
 		"downlevelIteration": true,
 		"experimentalDecorators": true,
-		"moduleResolution": "bundler",
+		"moduleResolution": "nodenext",
 		"importHelpers": true,
 		"target": "ES2022",
-		"module": "ES2022",
+		"module": "nodenext",
 		"useDefineForClassFields": false,
 		"lib": ["ES2022", "dom"],
 		"paths": {
