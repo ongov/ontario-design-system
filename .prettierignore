@@ -37,3 +37,5 @@ interfaces.ts
 **/utils/index.tsx
 **/utils/case.ts
 **/utils/dev.ts
+
+/.nx/workspace-data
