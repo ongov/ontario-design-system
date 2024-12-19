@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { StorageUtilsService } from '../../services/storage-utils.services'; // Update the path
-import { isEnglish, getLanguage } from 'src/utils/get-language.utils';
-import { handleBackButtonNavigationOnClick } from 'src/utils/routing.utils';
-import { TemporaryStorageService } from '../../services/temporary-storage.services';
+import { StorageUtilsService } from '../../services/storage-utils.services.js'; // Update the path
+import { isEnglish, getLanguage } from 'src/utils/get-language.utils.js';
+import { handleBackButtonNavigationOnClick } from 'src/utils/routing.utils.js';
+import { TemporaryStorageService } from '../../services/temporary-storage.services.js';
 
 interface NewAccountFormData {
 	additionalDetails: string;

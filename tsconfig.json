@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@ongov/*": ["packages/*"]
+		},
+		"target": "es6",
+		"module": "commonjs",
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"strict": true
+	},
+	"include": ["packages/**/*"],
+	"exclude": ["node_modules"]
+}

@@ -1,8 +1,10 @@
-import * as glob from 'glob-promise';
+// load using import
+import { glob } from 'glob';
+
 import * as JSZip from 'jszip';
 import { join as pathJoin, sep as pathSeparator, parse as pathParse } from 'path';
 import { PathLike, promises as fs } from 'fs';
-import { Stream } from 'stream';
+import { Readable } from 'stream';
 
 const exitCodeFailed = -1;
 const ignoreItems: Array<string> = ['node_modules/**'];
@@ -71,11 +73,16 @@ class Documentation {
 		}
 
 		const stream = zipFile.generateNodeStream({ type: 'nodebuffer', streamFiles: true });
-		try {
-			await fs.writeFile(zipFilePath, await this.stream2buffer(stream));
-		} catch (e) {
-			this.handleError(e, true);
-		}
+
+		// Need to cast ReadableStream to Readable now that NodeJS 16.5.0 has been released
+		// Because JSZip's generateNodeStream() returns a ReadableStream, not a Readable
+		// but fs.writeFile() expects a Readable
+		// https://stackoverflow.com/a/67729663
+		const buffer = await this.stream2buffer(stream as Readable);
+		await fs
+			.writeFile(zipFilePath, buffer)
+			.then(() => console.log('Zip file written to disk:', zipFilePath))
+			.catch((e) => this.handleError(e, true));
 	}
 
 	static handleError(error: Error, fatal: boolean = false): void {
@@ -90,7 +97,7 @@ class Documentation {
 	 * @param stream Stream to convert
 	 * @returns A buffer of the stream passed in
 	 */
-	static async stream2buffer(stream: Stream): Promise<Buffer> {
+	static async stream2buffer(stream: Readable): Promise<Buffer> {
 		return new Promise<Buffer>((resolve, reject) => {
 			const _buf = Array<any>();
 

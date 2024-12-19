@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { getLanguage, isEnglish } from 'src/utils/get-language.utils';
+import { getLanguage, isEnglish } from 'src/utils/get-language.utils.js';
 
 @Component({
 	selector: 'app-framesix',
@@ -27,10 +27,10 @@ export class FrameSixComponent {
 			? {
 					createAccount: '/create-account',
 					login: '/get-started',
-			  }
+				}
 			: {
 					createAccount: '/fr/creer-compte',
 					login: '/fr/demarrer',
-			  };
+				};
 	}
 }

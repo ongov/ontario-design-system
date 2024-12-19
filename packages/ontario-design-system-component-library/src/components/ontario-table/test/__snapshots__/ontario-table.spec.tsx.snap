@@ -28,7 +28,7 @@ exports[`ontario-table snapshot - 3 columns (non-numeric) should render the expe
 							}
 						}
 					]">
-  <mock:shadow-root>
+  <template shadowrootmode="open">
     <div class="ontario-table-container">
       <div class="ontario-table-scroll--wrapper">
         <div class="ontario-table-scroll--div" style="visibility: visible; height: 20px; width: undefinedpx;"></div>
@@ -89,7 +89,7 @@ exports[`ontario-table snapshot - 3 columns (non-numeric) should render the expe
         </table>
       </div>
     </div>
-  </mock:shadow-root>
+  </template>
 </ontario-table>
 `;
 
@@ -158,7 +158,7 @@ exports[`ontario-table snapshot - 5 columns (numeric) should render the expected
 							&quot;footer&quot;: true
 						}
 					]" zebra-stripes="enabled">
-  <mock:shadow-root>
+  <template shadowrootmode="open">
     <div class="ontario-table-container">
       <div class="ontario-table-scroll--wrapper">
         <div class="ontario-table-scroll--div" style="visibility: visible; height: 20px; width: undefinedpx;"></div>
@@ -297,7 +297,7 @@ exports[`ontario-table snapshot - 5 columns (numeric) should render the expected
         </table>
       </div>
     </div>
-  </mock:shadow-root>
+  </template>
 </ontario-table>
 `;
 
@@ -446,7 +446,7 @@ exports[`ontario-table snapshot - 7 columns (numeric and condensed) should rende
 							&quot;footer&quot;: true
 						}
 					]">
-  <mock:shadow-root>
+  <template shadowrootmode="open">
     <div class="ontario-table-container">
       <div class="ontario-table-scroll--wrapper">
         <div class="ontario-table-scroll--div" style="visibility: visible; height: 20px; width: undefinedpx;"></div>
@@ -764,6 +764,6 @@ exports[`ontario-table snapshot - 7 columns (numeric and condensed) should rende
         </table>
       </div>
     </div>
-  </mock:shadow-root>
+  </template>
 </ontario-table>
 `;

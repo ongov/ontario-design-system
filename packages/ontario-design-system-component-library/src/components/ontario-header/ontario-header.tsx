@@ -400,10 +400,10 @@ export class OntarioHeader {
 					viewportSize === 'desktop'
 						? 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-show-for-large'
 						: viewportSize === 'tablet'
-						? 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large'
-						: viewportSize === 'mobile'
-						? 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-show-for-small-only'
-						: 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline'
+							? 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large'
+							: viewportSize === 'mobile'
+								? 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-show-for-small-only'
+								: 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline'
 				}
 				id={this.type === 'ontario' ? 'ontario-header-menu-toggler' : 'ontario-application-header-menu-toggler'}
 				aria-controls="ontario-navigation"
@@ -418,10 +418,10 @@ export class OntarioHeader {
 					viewportSize === 'desktop'
 						? (el) => (this.menuButtonDesktop = el as HTMLInputElement)
 						: viewportSize === 'tablet'
-						? (el) => (this.menuButtonTablet = el as HTMLInputElement)
-						: viewportSize === 'mobile'
-						? (el) => (this.menuButtonMobile = el as HTMLInputElement)
-						: (el) => (this.menuButton = el as HTMLInputElement)
+							? (el) => (this.menuButtonTablet = el as HTMLInputElement)
+							: viewportSize === 'mobile'
+								? (el) => (this.menuButtonMobile = el as HTMLInputElement)
+								: (el) => (this.menuButton = el as HTMLInputElement)
 				}
 			>
 				<span class="ontario-header__icon-container" innerHTML={this.menuToggle ? OntarioIconClose : OntarioIconMenu} />
@@ -642,7 +642,7 @@ export class OntarioHeader {
 													'ontario-header-navigation__menu-item',
 													undefined,
 													lastLink,
-											  )
+												)
 											: this.generateMenuItem(
 													item.href,
 													item.title,
@@ -651,7 +651,7 @@ export class OntarioHeader {
 													'ontario-header-navigation__menu-item',
 													item.onClickHandler,
 													lastLink,
-											  );
+												);
 									})}
 								</ul>
 							</div>

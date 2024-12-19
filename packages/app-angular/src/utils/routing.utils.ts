@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 
-import { getLanguage } from './get-language.utils';
+import { getLanguage } from './get-language.utils.js';
 
 export interface LocationObject {
 	en: string;

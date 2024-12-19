@@ -60,13 +60,17 @@ $ontario-button-bg-secondary: colours.$ontario-colour-white;
 	&:focus {
 		background-color: $ontario-button-bg-primary--hover;
 		color: colours.$ontario-colour-white;
-		transition: background-color 0.2s ease-out, focusPlaceholders.$ontario-focus-transition;
+		transition:
+			background-color 0.2s ease-out,
+			focusPlaceholders.$ontario-focus-transition;
 	}
 
 	&:active {
 		background-color: $ontario-button-bg-primary--active;
 		color: colours.$ontario-colour-white;
-		transition: background-color 0s, focusPlaceholders.$ontario-focus-transition;
+		transition:
+			background-color 0s,
+			focusPlaceholders.$ontario-focus-transition;
 	}
 
 	&:visited {
@@ -91,14 +95,18 @@ $ontario-button-bg-secondary: colours.$ontario-colour-white;
 		background-color: colours.$ontario-colour-button-secondary--hover;
 		border-color: colours.$ontario-colour-link--hover;
 		color: colours.$ontario-colour-link--hover;
-		transition: background-color 0.2s ease-out, focusPlaceholders.$ontario-focus-transition;
+		transition:
+			background-color 0.2s ease-out,
+			focusPlaceholders.$ontario-focus-transition;
 	}
 
 	&:active {
 		background-color: colours.$ontario-colour-button-secondary--active;
 		border-color: colours.$ontario-colour-link--active;
 		color: colours.$ontario-colour-link--active;
-		transition: background-color 0s, focusPlaceholders.$ontario-focus-transition;
+		transition:
+			background-color 0s,
+			focusPlaceholders.$ontario-focus-transition;
 	}
 
 	&:visited {
@@ -121,14 +129,18 @@ $ontario-button-bg-secondary: colours.$ontario-colour-white;
 		background-color: colours.$ontario-colour-button-tertiary--hover;
 		color: colours.$ontario-colour-link--hover;
 		text-decoration: underline;
-		transition: background-color 0.2s ease-out, focusPlaceholders.$ontario-focus-transition;
+		transition:
+			background-color 0.2s ease-out,
+			focusPlaceholders.$ontario-focus-transition;
 	}
 
 	&:active {
 		background-color: colours.$ontario-colour-button-tertiary--active;
 		color: colours.$ontario-colour-link--active;
 		text-decoration: underline;
-		transition: background-color 0s, focusPlaceholders.$ontario-focus-transition;
+		transition:
+			background-color 0s,
+			focusPlaceholders.$ontario-focus-transition;
 	}
 
 	&:visited {
@@ -147,12 +159,16 @@ $ontario-button-bg-secondary: colours.$ontario-colour-white;
 
 	&:focus {
 		background-color: colours.$ontario-greyscale-70;
-		transition: background-color 0.2s ease-out, focusPlaceholders.$ontario-focus-transition;
+		transition:
+			background-color 0.2s ease-out,
+			focusPlaceholders.$ontario-focus-transition;
 	}
 
 	&:active {
 		background-color: colours.$ontario-greyscale-70;
-		transition: background-color 0s, focusPlaceholders.$ontario-focus-transition;
+		transition:
+			background-color 0s,
+			focusPlaceholders.$ontario-focus-transition;
 	}
 
 	&:visited {

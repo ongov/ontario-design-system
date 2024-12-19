@@ -1,7 +1,7 @@
 module.exports = {
-  ontarioTextDirections: {
-    textDirection: { value: "ltr" },
-    defaultFloat: { value: "left" },
-    oppositeDirection: { value: "right" }
-  }
-}
+	ontarioTextDirections: {
+		textDirection: { value: 'ltr' },
+		defaultFloat: { value: 'left' },
+		oppositeDirection: { value: 'right' },
+	},
+};

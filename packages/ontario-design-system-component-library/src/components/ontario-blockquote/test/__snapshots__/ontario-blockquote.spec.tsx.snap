@@ -2,7 +2,7 @@
 
 exports[`ontario-blockquote snapshot should render the expected html 1`] = `
 <ontario-blockquote attribution="DS Tech Team" quote="This is a test quote">
-  <mock:shadow-root>
+  <template shadowrootmode="open">
     <blockquote class="ontario-blockquote ontario-blockquote--short">
       <p>
         This is a test quote
@@ -11,6 +11,6 @@ exports[`ontario-blockquote snapshot should render the expected html 1`] = `
         DS Tech Team
       </cite>
     </blockquote>
-  </mock:shadow-root>
+  </template>
 </ontario-blockquote>
 `;

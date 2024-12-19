@@ -387,7 +387,9 @@ $ontario-application-header-menu-button-icon--margin-right: 6px;
 	background: colours.$ontario-colour-white;
 	position: absolute;
 	transform: translateY(-100%);
-	transition: transform 0.3s ease-in-out, visibility 0.1s ease;
+	transition:
+		transform 0.3s ease-in-out,
+		visibility 0.1s ease;
 	width: 100%;
 	visibility: hidden;
 	z-index: zIndex.$ontario-z-index-above-high;
@@ -528,7 +530,9 @@ $ontario-application-header-menu-button-icon--margin-right: 6px;
 	background: colours.$ontario-colour-white;
 	position: absolute;
 	transform: translateY(-100%);
-	transition: transform 0.3s ease-in-out, visibility 0.1s ease;
+	transition:
+		transform 0.3s ease-in-out,
+		visibility 0.1s ease;
 	width: 100%;
 	visibility: hidden;
 	z-index: zIndex.$ontario-z-index-above-high;

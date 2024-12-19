@@ -1,14 +1,19 @@
 {
 	"compilerOptions": {
 		"allowUnreachableCode": false,
+		"paths": {
+			"@ongov/*": ["packages/*"]
+		},
+		"baseUrl": ".",
 		"allowSyntheticDefaultImports": true,
 		"declaration": true,
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"esModuleInterop": true,
-		"lib": ["dom", "es2015"],
-		"module": "es2015",
-		"moduleResolution": "node",
+		"lib": ["dom", "es2022"],
+		"target": "ES2022",
+		"module": "ES2022",
+		"moduleResolution": "bundler",
 		"noImplicitAny": true,
 		"noImplicitReturns": true,
 		"noUnusedLocals": true,
@@ -17,10 +22,10 @@
 		"removeComments": false,
 		"sourceMap": true,
 		"jsx": "react",
-		"target": "es2015"
+		"types": ["node", "jest", "react", "react-dom"]
 	},
 	"include": ["src/**/*.ts", "src/**/*.tsx"],
-	"exclude": ["**/__tests__/**"],
+	"exclude": ["**/__tests__/**", "**/@types/jasmine/**"],
 	"compileOnSave": false,
 	"buildOnSave": false
 }

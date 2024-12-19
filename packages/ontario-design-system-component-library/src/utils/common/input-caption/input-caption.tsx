@@ -153,8 +153,8 @@ export class InputCaption implements CaptionInfo {
 				? `ontario-fieldset__legend ontario-fieldset__legend--${this.captionType}`
 				: `ontario-label ontario-label--${this.captionType}`
 			: this.isLegend
-			? 'ontario-fieldset__legend'
-			: 'ontario-label';
+				? 'ontario-fieldset__legend'
+				: 'ontario-label';
 	}
 
 	/**

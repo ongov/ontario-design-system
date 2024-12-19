@@ -2,44 +2,44 @@
 
 exports[`ontario-badge should override the host textContent with label prop output on the span element 1`] = `
 <ontario-badge label="completed">
-  <mock:shadow-root>
+  <template shadowrootmode="open">
     <span class="ontario-badge ontario-badge--default-heavy">
       completed
     </span>
-  </mock:shadow-root>
+  </template>
   In progress
 </ontario-badge>
 `;
 
 exports[`ontario-badge should render the aria-label attribute on the span element 1`] = `
 <ontario-badge aria-label-text="This course is currently in progress.">
-  <mock:shadow-root>
+  <template shadowrootmode="open">
     <span aria-label="This course is currently in progress." class="ontario-badge ontario-badge--default-heavy">
       In progress
     </span>
-  </mock:shadow-root>
+  </template>
   In progress
 </ontario-badge>
 `;
 
 exports[`ontario-badge should render the expected base html 1`] = `
 <ontario-badge>
-  <mock:shadow-root>
+  <template shadowrootmode="open">
     <span class="ontario-badge ontario-badge--default-heavy">
       In progress
     </span>
-  </mock:shadow-root>
+  </template>
   In progress
 </ontario-badge>
 `;
 
 exports[`ontario-badge should render with the ontario-badge--default-light class on the span element 1`] = `
 <ontario-badge colour="light-teal">
-  <mock:shadow-root>
+  <template shadowrootmode="open">
     <span class="ontario-badge ontario-badge--default-light">
       In progress
     </span>
-  </mock:shadow-root>
+  </template>
   In progress
 </ontario-badge>
 `;
