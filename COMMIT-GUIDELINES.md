@@ -12,10 +12,10 @@ Commit messages are the messages that accompany a commit and help to document th
 
 This project follows the [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) commit message structure. It is automatically linted using a [Husky](https://typicode.github.io/husky/) pre-commit script that validates the message format, ensuring that it follows the Conventional Commit structure along with a few rules (based off the [@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional) rule set):
 
-- subjects start with a lower case character,
-- subject lines are not longer than 100 characters,
-- body lines are not longer than 100 characters (paragraphs can be made by adding single new lines),
-- there are spaces between the subject and the body and the body and the footer created with new lines,
+- subjects start with a lower case character
+- subject lines are not longer than 100 characters
+- body lines are not longer than 100 characters (paragraphs can be made by adding single new lines)
+- there are spaces between the subject and the body and the body and the footer created with new lines
 
 These rules help to keep messages concise and on topic.
 
@@ -23,16 +23,16 @@ Messages can be short and sweet, or more verbose to capture what happened in the
 
 It is recommended that commit messages:
 
-- Use the present tense ("add feature" not "added feature").
-- Use the imperative mood ("move cursor to..." not "moves cursor to...").
+- use the present tense ("add feature" not "added feature")
+- use the imperative mood ("move cursor to..." not "moves cursor to...")
 
-### General tip for writing commit messages
+### General tips for writing commit messages
 
 1. **Be Concise**: Keep your commit messages brief and to the point. Avoid unnecessary details.
-1. **Focus on the Why**: Explain why the change was made, not just what was changed. This helps others understand the context.
-1. **Avoid Vague Language**: Be specific about what the commit does. Avoid terms like "fixed stuff" or "updated code".
-1. **Use Consistent Formatting**: Stick to the agreed-upon format for commit messages to maintain consistency.
-1. **Review Before Committing**: Take a moment to review your commit message before finalizing it. Ensure it accurately reflects the changes made.
+2. **Focus on the Why**: Explain why the change was made, not just what was changed. This helps others understand the context.
+3. **Avoid Vague Language**: Be specific about what the commit does. Avoid terms like "fixed stuff" or "updated code".
+4. **Use Consistent Formatting**: Stick to the agreed-upon format for commit messages to maintain consistency.
+5. **Review Before Committing**: Take a moment to review your commit message before finalizing it. Ensure it accurately reflects the changes made.
 
 ## Semantic versioning
 
@@ -57,13 +57,13 @@ The commit messages are not only consumed by humans, they are also consumed by t
 
 The two relevant prefixes are `fix` and `feat`. Commits with these prefixes should have clean messages about what they are fixing or what feature is being added, respectively. Each commit specifies the weight and impact of the commit on the project.
 
-Commits prefixed with `fix` are considered bug fixes, and so they are deemed to have little impact on the project, are backwards compatible with the previous version, and aren't going to cause any breaking changes. These commits trigger a patch version to be generated, which is version increment of `0.0.1` in the semantic versioning scheme.
+Commits prefixed with `fix` are considered bug fixes, and so they are deemed to have little impact on the project, are backwards compatible with the previous version, and aren't going to cause any breaking changes. These commits trigger a patch version to be generated, which is a version increment of `0.0.1` in the semantic versioning scheme.
 
 Commits prefixed with `feat` are considered features, which introduce new functionality into the project, such as a new component, new style change, or other significant change. These commits are backwards compatible as well and trigger a version increment of `0.1.0`.
 
-Not every commit needs to start with `fix` or `feat` within a branch, only the ones that have changes worth calling out in our `CHANGELOG.md` file. Commits can be prefixed with other prefixes: `build:`, `chore:`, `ci:`, `docs:`, `style:`, `refactor:`, `perf:`, `test:`. These are more suited for smaller parts of a larger update or commits that are being made that should not impact the version number, example project documentation updates.
+Not every commit needs to start with `fix` or `feat` within a branch, only the ones that have changes worth calling out in our `CHANGELOG.md` file. Commits can be prefixed with other prefixes: `build:`, `chore:`, `ci:`, `docs:`, `style:`, `refactor:`, `perf:`, or `test:`. These are more suited for smaller parts of a larger update or commits that are being made that should not impact the version number, for example project documentation updates.
 
-The changelog can be found within the [CHANGELOG.md](https://github.com/ongov/ontario-design-system/blob/develop/CHANGELOG.md) file, which a running history of all changes made in each release. The changelog version entries look like the following example:
+The changelog can be found within the [CHANGELOG.md](https://github.com/ongov/ontario-design-system/blob/develop/CHANGELOG.md) file, which is a running history of all changes made in each release. The changelog version entries look like the following example:
 
 ```
 # 5.0.0-alpha.3 (2024-12-17)
@@ -77,17 +77,19 @@ The changelog can be found within the [CHANGELOG.md](https://github.com/ongov/on
 
 #### Breaking changes
 
-A breaking change is a change that is significant enough to cause an incompatibility with the current state of the packages. This could be a removed component property, a set of styles that work differently, or a hole host of different changes.
+A breaking change is a change that is significant enough to cause an incompatibility with the current state of the packages. This could be a removed component property, a set of styles that work differently, or a whole host of different changes.
 
 Breaking changes are denoted in the footer of the commit by starting it with `BREAKING CHANGE:` followed by a message about what the breaking change impacts.
 
 It is highly recommended to add a clear reason for the breaking change and what actions need to be taken when upgrading to the newer version. See the example under [Breaking change](#breaking-change) for an idea of how to communicate the change.
 
-It is important to note: Breaking changes can be added to any commit irregardless of the commit prefix, they are not just relegated to `fix` or `feat` commit prefixes as those aren't always relevant when introducing a breaking change.
+**It is important to note**: Breaking changes can be added to any commit regardless of the commit prefix, they are not just relegated to `fix` or `feat` commit prefixes as those aren't always relevant when introducing a breaking change.
+
+The Conventional Commit structure also allows for an exclamation mark (`!`) to be added before the `:` in the subject. This pattern isn't respected by this projects tooling but it can help commits that contain breaking changes stand out when reviewing the commit subjects.
 
 ## Examples
 
-Good commit messages go along way in creating and maintaining a high quality project. They tell the story of how it grew and evolved overtime. They also help when investigating where things happened, should you ever have to go back in time. Commit messages are almost as important as high quality documentation and code comments.
+Good commit messages go a long way in creating and maintaining a high quality project. They tell the story of how it grew and evolved over time. They also help when investigating where things happened, should you ever have to go back in time. Commit messages are almost as important as high quality documentation and code comments.
 
 ### Base structure
 
@@ -131,7 +133,7 @@ Commits can have body text span multiple lines as paragraphs using new lines:
 ```
 fix(utils): update retrieveEnumKeys function
 
-Updates to `isNumeric` invalided the logic this function was using,
+Updates to `isNumber` invalided the logic this function was using,
 inverting it restores intended functionality.
 
 - Add unit tests to validate different types of enum cases as well as
@@ -152,10 +154,8 @@ BREAKING CHANGE: `card-type` prop is now deprecated. Use `layout` prop instead.
 
 ### Commits with just a prefix
 
-Sometimes commits span more than a single scope but contain a number of changes within the same theme, or action, or the scope is ambiguous. When this happens it is recommended to break the commits down by scope, but in the case the commits impact multiple scopes the same commit message rules apply but the scope can be emitted.
+Sometimes commits can span more than a single scope but contain a number of changes within the same theme or action, or the scope is ambiguous. When this happens, it is recommended to break the commits down by scope. However, in cases where the commits impact multiple scopes, the scope can be omitted. All other commit message rules still apply.
 
 ```
 ci: update triggers for deploy/publish jobs
 ```
-
-G
