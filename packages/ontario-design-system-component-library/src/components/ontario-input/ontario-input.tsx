@@ -442,7 +442,7 @@ export class OntarioInput implements TextInput {
 	render() {
 		const error = !!this.errorMessage;
 		return (
-			<div class={`ontario-form-group ${error ? 'ontario-input--error' : ''}`}>
+			<div class={error ? 'ontario-input--error' : ''}>
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.internalHintText && (
 					<ontario-hint-text

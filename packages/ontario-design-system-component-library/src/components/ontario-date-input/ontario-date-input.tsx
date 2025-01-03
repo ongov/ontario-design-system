@@ -386,7 +386,7 @@ export class OntarioDateInput {
 		const hintTextId = this.getHintTextId();
 
 		return (
-			<div class="ontario-form-group">
+			<div>
 				<fieldset role="group" class="ontario-fieldset">
 					{this.captionState.getCaption()}
 					{!!hintText && (
