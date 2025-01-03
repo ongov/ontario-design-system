@@ -462,7 +462,7 @@ export class OntarioDropdownList implements Dropdown {
 	render() {
 		const error = !!this.errorMessage;
 		return (
-			<div class={`ontario-form-group ${error ? 'ontario-dropdown--error' : ''}`}>
+			<div class={error ? 'ontario-dropdown--error' : ''}>
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.internalHintText && (
 					<ontario-hint-text
