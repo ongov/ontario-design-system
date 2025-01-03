@@ -10,7 +10,7 @@ describe('ontario-checkbox', () => {
 		expect(page.root).toEqualHtml(`
       <ontario-checkboxes>
         <mock:shadow-root>
-          <div class="ontario-form-group">
+          <div>
             <fieldset class="ontario-fieldset">
               <legend class="ontario-fieldset__legend">
                 <span class="ontario-label__flag">

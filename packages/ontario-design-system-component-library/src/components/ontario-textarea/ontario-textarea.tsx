@@ -330,7 +330,7 @@ export class OntarioTextarea implements Input {
 	render() {
 		const error = !!this.errorMessage;
 		return (
-			<div class={`ontario-form-group ${error ? 'ontario-textarea--error' : ''}`}>
+			<div class={error ? 'ontario-textarea--error' : ''}>
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.internalHintText && (
 					<ontario-hint-text

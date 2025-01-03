@@ -431,7 +431,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	render() {
 		const error = !!this.errorMessage;
 		return (
-			<div class={`ontario-form-group ${error ? 'ontario-input--error' : ''}`}>
+			<div class={error ? 'ontario-input--error' : ''}>
 				<fieldset class="ontario-fieldset" aria-describedby={this.hintTextId}>
 					{this.captionState.getCaption(undefined, !!this.internalHintExpander)}
 					{this.internalHintText && (

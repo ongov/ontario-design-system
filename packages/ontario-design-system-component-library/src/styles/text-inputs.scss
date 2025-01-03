@@ -1,12 +1,9 @@
-@use '../1-variables/fonts.variables' as fonts;
-@use '../1-variables/colours.variables' as colours;
-@use '../1-variables/spacing.variables' as spacing;
-@use '../1-variables/global.variables' as global;
-@use '../2-tools/placeholder/focus.placeholders' as focusPlaceholders;
-
-/*
-*  Text Inputs
-*/
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as global;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
+	focusPlaceholders;
 
 .ontario-input {
 	border: global.$border-size-standard solid colours.$ontario-colour-black;
@@ -55,9 +52,4 @@
 
 .ontario-input--20-char-width {
 	max-width: 41ex;
-}
-
-//for general forms
-.ontario-form-group:last-of-type {
-	margin-bottom: 2.5rem;
 }

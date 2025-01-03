@@ -14,6 +14,10 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_form.component.scss';
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
+
+@use '../../styles/fieldsets.scss';
+@use '../../styles/labels.scss';
+@use '../../styles/text-inputs.scss';
 @forward '../../utils/components/error-message/error-message';
 
 $ontario-radios-size: 32px;

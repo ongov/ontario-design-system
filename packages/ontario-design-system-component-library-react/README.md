@@ -22,7 +22,13 @@ To use the Ontario Design System React component library, follow these steps:
    npm install --save @ongov/ontario-design-system-component-library-react
    ```
 
-2. Import the desired components from the component library.
+2. Import the theme file into your project’s entry point.
+
+   ```tsx
+   import '@ongov/ontario-design-system-component-library-react/dist/theme.scss';
+   ```
+
+3. Import the desired components from the component library.
 
    ```tsx
    import { OntarioButton } from '@ongov/ontario-design-system-component-library-react';
