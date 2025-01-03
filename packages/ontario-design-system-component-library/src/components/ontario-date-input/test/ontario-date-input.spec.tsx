@@ -11,7 +11,7 @@ describe('ontario-date-input', () => {
 		expect(page.root).toEqualHtml(`
 			<ontario-date-input element-id="date-id-example" language="en">
 				<mock:shadow-root>
-					<div class="ontario-form-group">
+					<div>
 						<fieldset class="ontario-fieldset" role="group">
 							<legend class="ontario-fieldset__legend">
 								Exact date
@@ -79,7 +79,7 @@ describe('ontario-date-input', () => {
 		expect(page.root).toEqualHtml(`
 			<ontario-date-input element-id="date-id-example" caption="{ &quot;captionText&quot;: &quot;Enter Date&quot;, &quot;captionType&quot;: &quot;default&quot; }" date-options="[&quot;month&quot;, &quot;year&quot;]" hint-text="Example 1990 12" max-year="1000" min-year="500" placeholder="{ &quot;day&quot;: &quot;D&quot;, &quot;month&quot;: &quot;M&quot;, &quot;year&quot;: &quot;YY&quot; }" required="true">
 				<mock:shadow-root>
-					<div class="ontario-form-group">
+					<div>
 						<fieldset class="ontario-fieldset" role="group">
 							<legend class="ontario-fieldset__legend">
 								Enter Date
