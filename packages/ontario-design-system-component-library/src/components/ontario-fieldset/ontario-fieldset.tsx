@@ -88,14 +88,10 @@ export class OntarioFieldset implements Fieldset {
 
 	render() {
 		return (
-			<div class="ontario-form-group">
-				<fieldset class="ontario-fieldset">
-					<legend class={this.getClass()}>
-						{this.legendSize === 'heading' ? <h1>{this.legend}</h1> : this.legend}
-					</legend>
-					<slot />
-				</fieldset>
-			</div>
+			<fieldset class="ontario-fieldset">
+				<legend class={this.getClass()}>{this.legendSize === 'heading' ? <h1>{this.legend}</h1> : this.legend}</legend>
+				<slot />
+			</fieldset>
 		);
 	}
 }
