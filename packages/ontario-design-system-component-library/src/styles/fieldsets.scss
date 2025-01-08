@@ -1,11 +1,11 @@
-@use '../1-variables/font-weights.variables' as fontWeights;
-@use '../1-variables/typography.variables' as typography;
-@use '../1-variables/spacing.variables' as spacing;
-@use '../1-variables/colours.variables' as colours;
-@use '../1-variables/breakpoints.variables' as breakpoints;
-@use '../1-variables/global.variables' as globalVariables;
-@use '../1-variables/letter-spacing.variables' as letterSpacing;
-@use '../1-variables/line-heights.variables' as lineHeight;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/letter-spacing.variables' as letterSpacing;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables' as lineHeight;
 
 .ontario-fieldset__legend {
 	color: colours.$ontario-colour-black;
@@ -48,16 +48,6 @@
 
 .ontario-fieldset__legend-required-flag,
 .ontario-fieldset__legend-optional-flag {
-	font-family: typography.$ontario-font-open-sans;
-	font-size: 1rem;
-	font-weight: fontWeights.$ontario-font-weights-normal;
-
-	&:before {
-		content: '\a0';
-	}
-}
-
-.ontario-label__flag {
 	font-family: typography.$ontario-font-open-sans;
 	font-size: 1rem;
 	font-weight: fontWeights.$ontario-font-weights-normal;
