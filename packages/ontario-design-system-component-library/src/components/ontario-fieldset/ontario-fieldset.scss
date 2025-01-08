@@ -1,2 +1,6 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_form.component.scss';
+
+@use '../../styles/fieldsets.scss';
+@use '../../styles/labels.scss';
+@use '../../styles/text-inputs.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';

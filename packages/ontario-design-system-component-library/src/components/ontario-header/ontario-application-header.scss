@@ -10,7 +10,7 @@
 	focusPlaceholders;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/5-layout/_grid.layout.scss';
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
+@use '../../styles/text-inputs.scss';
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
 
 $navigation-link-bg--hover: #e5e5e5;

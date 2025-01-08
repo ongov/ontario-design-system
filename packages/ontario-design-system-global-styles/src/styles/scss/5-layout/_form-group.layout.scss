@@ -3,5 +3,5 @@
 //for general forms
 @warn "The `ontario-form-group` class will be deprecated and replaced with a vertical spacing component in future.";
 .ontario-form-group:last-of-type {
-	margin-bottom: 2.5rem;
+	margin-bottom: spacing.$spacing-8;
 }

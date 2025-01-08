@@ -5,8 +5,9 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
-@use '../../styles/grid.scss';
-@use '../../styles/common.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/5-layout/_grid.layout.scss';
+@forward '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/spacing.overrides.scss';
 
 $ontario-icon-size--social-large: 36px;
 $ontario-icon-size--social-small: 32px;
