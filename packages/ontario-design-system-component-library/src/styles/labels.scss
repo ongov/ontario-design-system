@@ -1,14 +1,10 @@
-@use '../1-variables/typography.variables' as typography;
-@use '../1-variables/colours.variables' as colours;
-@use '../1-variables/spacing.variables' as spacing;
-@use '../1-variables/global.variables' as global;
-@use '../1-variables/breakpoints.variables' as breakpoints;
-@use '../1-variables/letter-spacing.variables' as letterSpacing;
-@use '../1-variables/line-heights.variables' as lineHeight;
-
-/*
-*  Labels
-*/
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as global;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/letter-spacing.variables' as letterSpacing;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables' as lineHeight;
 
 .ontario-label {
 	cursor: pointer;
