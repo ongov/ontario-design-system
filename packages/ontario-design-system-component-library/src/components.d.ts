@@ -1883,6 +1883,10 @@ export namespace Components {
          */
         "deactivateLink": boolean;
         /**
+          * Indicates whether the task has an error.
+         */
+        "hasError": boolean;
+        /**
           * Used to include the ontario-hint-text component for the task.  This is optional.
          */
         "hintText"?: string | Hint;
@@ -1904,7 +1908,13 @@ export namespace Components {
         "taskStatus": TaskStatus;
     }
     interface OntarioTaskList {
+        /**
+          * The label prop used for the task list heading.
+         */
         "label": string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+         */
         "language"?: Language;
     }
     interface OntarioTextarea {
@@ -5072,6 +5082,10 @@ declare namespace LocalJSX {
          */
         "deactivateLink"?: boolean;
         /**
+          * Indicates whether the task has an error.
+         */
+        "hasError"?: boolean;
+        /**
           * Used to include the ontario-hint-text component for the task.  This is optional.
          */
         "hintText"?: string | Hint;
@@ -5093,7 +5107,13 @@ declare namespace LocalJSX {
         "taskStatus"?: TaskStatus;
     }
     interface OntarioTaskList {
+        /**
+          * The label prop used for the task list heading.
+         */
         "label"?: string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+         */
         "language"?: Language;
     }
     interface OntarioTextarea {

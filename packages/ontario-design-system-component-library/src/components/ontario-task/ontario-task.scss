@@ -21,6 +21,7 @@
 	&__label {
 		text-align: left;
 		margin: spacing.$spacing-0;
+		font-size: globalFunctions.px-to-rem(19);
 
 		@media screen and (max-width: breakpoints.$small-breakpoint) {
 			margin-bottom: spacing.$spacing-2;
@@ -46,6 +47,12 @@
 	&__hint-text--true {
 		margin-bottom: spacing.$spacing-2;
 	}
+
+	&--error {
+		padding-left: spacing.$spacing-4;
+		border-left: globalFunctions.px-to-rem(4) solid colours.$ontario-colour-alert;
+		margin-left: globalFunctions.px-to-rem(-2);
+	}
 }
 
 ontario-hint-text::part(hint-text) {
@@ -53,5 +60,12 @@ ontario-hint-text::part(hint-text) {
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		margin-top: spacing.$spacing-2;
+	}
+}
+
+.ontario-task__link {
+	.ontario-task__label {
+		text-decoration: underline;
+		color: colours.$ontario-colour-link;
 	}
 }

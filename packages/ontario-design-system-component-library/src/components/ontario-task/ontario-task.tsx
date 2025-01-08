@@ -60,6 +60,11 @@ export class OntarioTask {
 	@Prop() taskStatus: TaskStatus;
 
 	/**
+	 * Indicates whether the task has an error.
+	 * */
+	@Prop() hasError: boolean = false;
+
+	/**
 	 * Used for the `aria-describedby` value of the task's label. This will match with the id of the hint text.
 	 */
 	@State() private hintTextId: string | null | undefined;
@@ -178,6 +183,13 @@ export class OntarioTask {
 	}
 
 	/**
+	 * Computes the classes for the `<article>` element.
+	 */
+	private getArticleClass(): string {
+		return ['ontario-task', this.hasError && 'ontario-task--error'].filter(Boolean).join(' ');
+	}
+
+	/**
 	 * Renders the task label and status content.
 	 */
 	private renderTaskContent() {
@@ -227,7 +239,12 @@ export class OntarioTask {
 		);
 
 		return (
-			<article class="ontario-task" role="group" aria-labelledby="task-label" aria-describedby={this.hintTextId}>
+			<article
+				class={this.getArticleClass()}
+				role="group"
+				aria-labelledby="task-label"
+				aria-describedby={this.hintTextId}
+			>
 				{isLinkActive ? (
 					<a
 						href={this.link}
