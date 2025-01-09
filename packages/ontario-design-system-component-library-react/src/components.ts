@@ -146,4 +146,6 @@ export const OntarioRadioButtons = /*@__PURE__*/createReactComponent<JSX.Ontario
 export const OntarioSearchBox = /*@__PURE__*/createReactComponent<JSX.OntarioSearchBox, HTMLOntarioSearchBoxElement>('ontario-search-box');
 export const OntarioStepIndicator = /*@__PURE__*/createReactComponent<JSX.OntarioStepIndicator, HTMLOntarioStepIndicatorElement>('ontario-step-indicator');
 export const OntarioTable = /*@__PURE__*/createReactComponent<JSX.OntarioTable, HTMLOntarioTableElement>('ontario-table');
+export const OntarioTask = /*@__PURE__*/createReactComponent<JSX.OntarioTask, HTMLOntarioTaskElement>('ontario-task');
+export const OntarioTaskList = /*@__PURE__*/createReactComponent<JSX.OntarioTaskList, HTMLOntarioTaskListElement>('ontario-task-list');
 export const OntarioTextarea = /*@__PURE__*/createReactComponent<JSX.OntarioTextarea, HTMLOntarioTextareaElement>('ontario-textarea');
