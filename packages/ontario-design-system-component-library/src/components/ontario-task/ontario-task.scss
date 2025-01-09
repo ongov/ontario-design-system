@@ -3,6 +3,9 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
+	placeholders;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
 
 .ontario-task {
 	border-bottom: globalFunctions.px-to-rem(2) solid colours.$ontario-greyscale-20;
@@ -14,7 +17,8 @@
 		align-items: center;
 
 		@media screen and (max-width: breakpoints.$small-breakpoint) {
-			display: block;
+			flex-direction: column;
+			align-items: flex-start;
 		}
 	}
 
@@ -22,6 +26,8 @@
 		text-align: left;
 		margin: spacing.$spacing-0;
 		font-size: globalFunctions.px-to-rem(19);
+		font-weight: fontWeights.$ontario-font-weights-semi-bold;
+		display: inline-block;
 
 		@media screen and (max-width: breakpoints.$small-breakpoint) {
 			margin-bottom: spacing.$spacing-2;
@@ -39,7 +45,7 @@
 
 	&__link {
 		display: block;
-		text-decoration: underline;
+		text-decoration: none;
 		color: colours.$ontario-colour-link;
 		font-weight: normal;
 	}
@@ -53,13 +59,11 @@
 		border-left: globalFunctions.px-to-rem(4) solid colours.$ontario-colour-alert;
 		margin-left: globalFunctions.px-to-rem(-2);
 	}
-}
 
-ontario-hint-text::part(hint-text) {
-	margin: spacing.$spacing-0;
-
-	@media screen and (max-width: breakpoints.$small-breakpoint) {
-		margin-top: spacing.$spacing-2;
+	.ontario-badge {
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
+			margin-top: spacing.$spacing-2;
+		}
 	}
 }
 
@@ -67,5 +71,29 @@ ontario-hint-text::part(hint-text) {
 	.ontario-task__label {
 		text-decoration: underline;
 		color: colours.$ontario-colour-link;
+	}
+}
+
+.ontario-task__link:focus {
+	outline: none;
+	box-shadow: none;
+
+	.ontario-task__label {
+		@extend %ontario-focus;
+		box-shadow: 0 0 0 4px colours.$ontario-colour-focus inset;
+	}
+}
+
+.ontario-task:has(.ontario-task__link) {
+	&:hover {
+		background-color: colours.$ontario-greyscale-5;
+	}
+}
+
+ontario-hint-text::part(hint-text) {
+	margin: spacing.$spacing-0;
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		margin-top: spacing.$spacing-2;
 	}
 }
