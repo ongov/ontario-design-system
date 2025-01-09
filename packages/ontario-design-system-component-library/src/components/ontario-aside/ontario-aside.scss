@@ -12,7 +12,8 @@
 	* {
 		max-width: globalVariables.$standard-width;
 
-		&:last-child {
+		&:last-child,
+		&:last-of-type {
 			margin-bottom: spacing.$spacing-2;
 		}
 	}

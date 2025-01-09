@@ -52,6 +52,10 @@ export const config: Config = {
 					src: 'translations/*.i18n.json',
 					dest: 'i18n',
 				},
+				{
+					src: '../src/global.scss',
+					dest: 'scss/theme.scss',
+				},
 			],
 		},
 		{
@@ -89,6 +93,10 @@ export const config: Config = {
 				{
 					src: 'french.html',
 					dest: 'french.html',
+				},
+				{
+					src: '../src/global.scss',
+					dest: 'scss/theme.scss',
 				},
 			],
 		},
