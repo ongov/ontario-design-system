@@ -11,6 +11,7 @@ export interface FooterLinks {
 	privacyLink?: Partial<FooterLink>;
 	contactLink?: FooterLink;
 	printerLink?: Partial<FooterLink>;
+	termsOfUseLink?: FooterLink;
 }
 
 // Internal interface for SimpleFooter Component
@@ -19,6 +20,7 @@ export interface SimpleFooterLinks {
 	privacyLink: Required<FooterLink>;
 	printerLink: Required<FooterLink>;
 	contactLink?: Required<FooterLink>;
+	termsOfUseLink?: Required<FooterLink>;
 }
 
 export type FooterContentType = 'text' | 'list' | 'html';
