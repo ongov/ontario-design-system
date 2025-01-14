@@ -23,6 +23,16 @@
 			"fr": "Accessibilité"
 		}
 	},
+	"termsOfUse": {
+		"link": {
+			"en": "https://www.ontario.ca/page/terms-use",
+			"fr": "https://www.ontario.ca/fr/page/conditions-dutilisation"
+		},
+		"text": {
+			"en": "Terms of Use",
+			"fr": "Conditions d’utilisation"
+		}
+	},
 	"accordion": {
 		"collapse": {
 			"en": "Collapse all",

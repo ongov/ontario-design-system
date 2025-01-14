@@ -36,7 +36,7 @@ export class OntarioFooter {
 
 	/**
 	 * A prop that stores the required links for all footers.
-	 * Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink'
+	 * Available options are 'accessibilityLink', 'privacyLink', 'contactLink','termsOfUseLink' and 'printerLink'
 	 */
 	@Prop() footerLinks: FooterLinks | string;
 
@@ -210,7 +210,7 @@ export class OntarioFooter {
 
 	private getFooterLinks(): SimpleFooterLinks {
 		const { language, translations, footerLinksState } = this;
-		const { accessibilityLink, privacyLink, contactLink, printerLink } = footerLinksState ?? {};
+		const { accessibilityLink, privacyLink, contactLink, termsOfUseLink, printerLink } = footerLinksState ?? {};
 
 		const links: SimpleFooterLinks = {
 			accessibilityLink: {
@@ -231,6 +231,13 @@ export class OntarioFooter {
 			links['contactLink'] = {
 				href: contactLink.href,
 				text: contactLink.text ?? translations.contactUs[language],
+			};
+		}
+
+		if (termsOfUseLink) {
+			links['termsOfUseLink'] = {
+				href: termsOfUseLink.href,
+				text: termsOfUseLink.text ?? translations.termsOfUse[language],
 			};
 		}
 
