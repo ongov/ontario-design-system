@@ -9,11 +9,21 @@ on:
       build-artifacts-name:
         required: true
         type: string
+    outputs: # https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
+      new-tag-version: # Fix naming?
+        description: 'Tag version number of the next released version'
+        value: ${{ jobs.get-version-number.outputs.new-tag-version }}
+      build-artifacts-docs-name:
+        description: 'Name of the documentation build artifacts package'
+        value: ${{ jobs.build-documentation-app.outputs.build-artifacts-docs-name }}
 
 jobs:
-  build-documentation-app:
+  # add job to get version number using semantic-release --dry-run
+  get-version-number:
     needs: []
     runs-on: ubuntu-latest
+    outputs:
+      new-tag-version: ${{ steps.get-tag-version.outputs.new-tag-version }}
     steps:
       - uses: actions/checkout@v4
 
@@ -36,13 +46,57 @@ jobs:
       - name: Bootstrap packages
         run: npm run bootstrap
 
+      - name: Dry run to get the next release version
+        id: get-tag-version
+        run: |
+          export NEXT_TAG_VERSION=$(npx semantic-release --dry-run | grep 'The next release version is' | sed -E 's/.* ([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+(-[[:alnum:]]+\.[[:digit:]]+)?)$/\1/')
+          echo "new-tag-version=${NEXT_TAG_VERSION}" >> $GITHUB_OUTPUT
+
+  build-documentation-app:
+    needs: ['get-version-number']
+    runs-on: ubuntu-latest
+    if: ${{ success() && needs.get-version-number.outputs != ''}}
+    outputs:
+      build-artifacts-docs-name: ${{ steps.get-build-artifacts-docs-name.outputs.name }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ inputs.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.build-artifacts-name }} # Artifact name (must match upload name)
+          path: ./packages
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Bootstrap packages
+        run: npm run bootstrap)
+
+      - name: Cut a version
+        if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
+        env:
+          TAG_NAME: ${{ needs.get-version-number.outputs.new-tag-version}}
+        run: npm run docusaurus docs:version $TAG_NAME
+
       - name: Build the documentation site
         run: npm run build-docs
+
+      - name: Set docs build artifact name
+        id: get-build-artifacts-docs-name
+        run: echo 'name=build-artifacts-docs' >> $GITHUB_OUTPUT
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build-artifacts-docs # Artifact name
+          name: ${{ steps.get-build-artifacts-docs-name.outputs.name}} # Artifact name
           compression-level: 9 # Best compression
           path: | # Path to the artifacts directory
             packages/app-web-components-documentation
@@ -56,7 +110,7 @@ jobs:
       AWS_ACCESS_KEY_ID: secrets.AWS_S3_PROD_ACCESS_KEY
       AWS_SECRET_ACCESS_KEY: secrets.AWS_S3_PROD_ACCESS_SECRET
       DOCS_ENDPOINT: vars.DOCS_ENDPOINT_PROD
-    if: ${{ success() && github.ref == 'refs/heads/master' }}
+    if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
     steps:
       - uses: actions/checkout@v4
 

@@ -1,0 +1,64 @@
+name: Cleanup
+
+on:
+  workflow_call:
+    inputs:
+      build-artifacts-docs-name:
+        required: true
+        type: string
+      tag-version:
+        required: true
+        type: string
+
+jobs:
+  commit-docs:
+    # needs publish-packages & publish docs (app-docs)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download docs artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.build-artifacts-docs-name }} # Artifact name (must match upload name)
+          path: ./packages
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+
+      - name: Commit ${{ inputs.tag-version }} documentation back to ${{ steps.extract_branch.outputs.branch }}
+        uses: EndBug/add-and-commit@v9.1.4
+        with:
+          message: 'docs(fix-me): Add documentation for ${{ inputs.tag-version }}'
+
+  open-pr:
+    needs: ['commit-docs']
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+
+      # Add step to get the changelog?
+
+      - name: Create Pull Request
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const base = 'develop';
+            const head = '${{ steps.extract_branch.outputs.branch}}';
+            const title = 'Merge ${{ inputs.tag-version }} of ${{ steps.extract_branch.outputs.branch}} into develop';
+            const body = 'This PR was created automatically after the CI pipeline finished.';
+
+            await github.pulls.create({
+              owner,
+              repo,
+              title,
+              head,
+              base,
+              body,
+            });

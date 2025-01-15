@@ -42,3 +42,11 @@ jobs:
     secrets: inherit
     permissions:
       contents: write
+
+  clean-up: # Job defined in a separate file (cleanup.yml)
+    needs: ['app-docs', 'publish-packages']
+    uses: ./.github/workflows/cleanup.yml # Path to the reusable workflow file
+    if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
+    with:
+      build-artifacts-docs-name: ${{ needs.app-docs.outputs.build-artifacts-docs-name }}
+      tag-version: ${{ needs.app-docs.outputs.new-tag-version }}
