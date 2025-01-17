@@ -1,3 +1,9 @@
+# 5.0.0-alpha.4 (2025-01-17)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-complete-styles, @ongov/ontario-design-system-component-library:** deduplicate SASS variable naming conflict c839558
+
 # 5.0.0-alpha.3 (2024-12-17)
 
 ### Bug Fixes
