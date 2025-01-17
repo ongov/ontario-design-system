@@ -12,16 +12,16 @@ Commit messages are the messages that accompany a commit and help to document th
 
 This project follows the [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) commit message structure. It is automatically linted using a [Husky](https://typicode.github.io/husky/) pre-commit script that validates the message format, ensuring that it follows the Conventional Commit structure along with a few rules (based off the [@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional) rule set):
 
-- subjects start with a lower case character
-- subject lines are not longer than 100 characters
-- body lines are not longer than 100 characters (paragraphs can be made by adding single new lines)
-- there are spaces between the subject and the body and the body and the footer created with new lines
+- subjects must start with a lower case character
+- subject lines must not be longer than 100 characters
+- body lines must not be longer than 100 characters (paragraphs can be made by adding single new lines)
+- new lines must exist between the subject and the body, as well as the body and the footer
 
-These rules help to keep messages concise and on topic.
+These rules keep messages concise and relevant.
 
 Messages can be short and sweet, or more verbose to capture what happened in the commit and why it happened.
 
-It is recommended that commit messages:
+Commit messages should:
 
 - use the present tense ("add feature" not "added feature")
 - use the imperative mood ("move cursor to..." not "moves cursor to...")
@@ -53,7 +53,7 @@ The third digit is the _Patch_ version, which is incremented when there are back
 
 ### Changelog generation
 
-The commit messages are not only consumed by humans, they are also consumed by the project's tooling when publishing our packages upon release. The project uses [semantic-release](https://github.com/semantic-release/semantic-release) to automatically version the packages, create a changelog for each release, and publish the packages to npm. It does this by tracking the Conventional Commit prefixes on each commit to decide its impact.
+The commit messages are not only consumed by humans, they are also consumed by the project's tooling when publishing our packages upon release. The project uses [semantic-release](https://github.com/semantic-release/semantic-release) to automatically version the packages, create a changelog for each release, and publish the packages to npm by tracking the Conventional Commit prefixes on each commit to decide its impact.
 
 The two relevant prefixes are `fix` and `feat`. Commits with these prefixes should have clean messages about what they are fixing or what feature is being added, respectively. Each commit specifies the weight and impact of the commit on the project.
 
@@ -61,7 +61,7 @@ Commits prefixed with `fix` are considered bug fixes, and so they are deemed to 
 
 Commits prefixed with `feat` are considered features, which introduce new functionality into the project, such as a new component, new style change, or other significant change. These commits are backwards compatible as well and trigger a version increment of `0.1.0`.
 
-Not every commit needs to start with `fix` or `feat` within a branch, only the ones that have changes worth calling out in our `CHANGELOG.md` file. Commits can be prefixed with other prefixes: `build:`, `chore:`, `ci:`, `docs:`, `style:`, `refactor:`, `perf:`, or `test:`. These are more suited for smaller parts of a larger update or commits that are being made that should not impact the version number, for example project documentation updates.
+Not every commit needs to start with `fix` or `feat` within a branch, only the ones that have changes worth calling out in our `CHANGELOG.md` file. Commits can be prefixed with other prefixes: `build:`, `chore:`, `ci:`, `docs:`, `style:`, `refactor:`, `perf:`, or `test:`. These are more suited for smaller parts of a larger update or commits that are being made that should not impact the version number, for example project documentation updates. The other prefixes have particular meanings, such as commits prefixed with `docs` are documentation only changes, commits prefixed with `refactor` are code changes that neither fix a bug nor add a feature, and commit prefixed with `ci` are code changes within the CI/CD workflow files.
 
 The changelog can be found within the [CHANGELOG.md](https://github.com/ongov/ontario-design-system/blob/develop/CHANGELOG.md) file, which is a running history of all changes made in each release. The changelog version entries look like the following example:
 
@@ -75,21 +75,29 @@ The changelog can be found within the [CHANGELOG.md](https://github.com/ongov/on
 - **utils:** update `retrieveEnumKeys` function 325d3af
 ```
 
+This example was made from three different commit message subjects:
+
+- (1c7791f) fix(grid.mixins): declare $modules before use
+- (37637b6) fix(utils): isNumber function validation inverted
+- (325d3af) fix(utils): update `retrieveEnumKeys` function
+
+The `type` is parsed into a section within the release version, the `(scope)` indicates what was impacted, and the `subject` describes the specific change within that scope.
+
 #### Breaking changes
 
 A breaking change is a change that is significant enough to cause an incompatibility with the current state of the packages. This could be a removed component property, a set of styles that work differently, or a whole host of different changes.
 
 Breaking changes are denoted in the footer of the commit by starting it with `BREAKING CHANGE:` followed by a message about what the breaking change impacts.
 
-It is highly recommended to add a clear reason for the breaking change and what actions need to be taken when upgrading to the newer version. See the example under [Breaking change](#breaking-change) for an idea of how to communicate the change.
+Breaking change commits must include a clear reason for the breaking change and what actions need to be taken when upgrading to the newer version. See the example under [Breaking change](#breaking-change) for an idea of how to communicate the change.
 
 **It is important to note**: Breaking changes can be added to any commit regardless of the commit prefix, they are not just relegated to `fix` or `feat` commit prefixes as those aren't always relevant when introducing a breaking change.
 
-The Conventional Commit structure also allows for an exclamation mark (`!`) to be added before the `:` in the subject. This pattern isn't respected by this projects tooling but it can help commits that contain breaking changes stand out when reviewing the commit subjects.
+The Conventional Commit structure also allows for an exclamation mark (`!`) to be added before the `:` in the subject. This pattern isn't respected by this projects tooling but it helps commits that contain breaking changes stand out when reviewing the commit subjects.
 
 ## Examples
 
-Good commit messages go a long way in creating and maintaining a high quality project. They tell the story of how it grew and evolved over time. They also help when investigating where things happened, should you ever have to go back in time. Commit messages are almost as important as high quality documentation and code comments.
+Good commit messages are important for creating and maintaining a high quality project. They tell the story of how the project grew and evolved over time. They also help when investigating where things happened, should you ever have to go back in time. Commit messages are as important as high quality documentation and code comments.
 
 ### Base structure
 
@@ -151,6 +159,8 @@ feat(ontario-card)!: added layout prop
 
 BREAKING CHANGE: `card-type` prop is now deprecated. Use `layout` prop instead.
 ```
+
+_Note_: It is a best practice to include an exclamation mark (`!`) after your commit `type(scope)`. This is not used as an identifier by the changelog tooling (instead the `BREAKING CHANGE` footer identifier is leveraged), but it can be used as a further identifier to the reader that the change is of a breaking nature when reviewing the subjects.
 
 ### Commits with just a prefix
 
