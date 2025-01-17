@@ -41,16 +41,12 @@ const processSass = (opts) => {
 		sassOptions.sourceComments = true;
 	}
 
-	src('./src/styles/scss/theme.scss')
+	return src('./src/styles/scss/theme.scss')
 		.pipe(sass(sassOptions).on('error', sass.logError))
 		.pipe(autoprefixer())
 		.pipe(concat(gulpif(opts.compress, 'ontario-theme.min.css', 'ontario-theme.css')))
 		.pipe(gulpif(opts.compress, minify()))
 		.pipe(dest(`${distDir}/styles/css/compiled`));
-
-	if (opts.callback) {
-		opts.callback();
-	}
 };
 
 task('copy:ds-global-styles', () => {
@@ -98,17 +94,15 @@ task('generate:components-import-file', async (done) => {
 });
 
 task('sass:build', (done) => {
-	processSass({
+	return processSass({
 		compress: false,
 		debug: false,
-		callback: done,
 	});
 });
 
 task('sass:minify', (done) => {
-	processSass({
+	return processSass({
 		compress: true,
-		callback: done,
 	});
 });
 
