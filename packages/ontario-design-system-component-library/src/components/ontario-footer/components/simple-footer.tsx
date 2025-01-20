@@ -13,6 +13,7 @@ export const SimpleFooter: FunctionalComponent<SimpleFooterProps> = ({
 	contactLink,
 	printerLink,
 	className,
+	termsOfUseLink,
 }) => {
 	return (
 		<div class={`ontario-row ${className ?? ''}`}>
@@ -32,6 +33,13 @@ export const SimpleFooter: FunctionalComponent<SimpleFooterProps> = ({
 						<li>
 							<a class="ontario-footer__link" href={contactLink?.href}>
 								{contactLink?.text}
+							</a>
+						</li>
+					)}
+					{termsOfUseLink && (
+						<li>
+							<a class="ontario-footer__link" href={termsOfUseLink?.href}>
+								{termsOfUseLink?.text}
 							</a>
 						</li>
 					)}

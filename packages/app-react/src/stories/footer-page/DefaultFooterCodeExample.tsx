@@ -19,6 +19,10 @@ export default function DefaultFooterCodeExample() {
 			text: 'Contact us',
 			href: 'https://www.ontario.ca/feedback/contact-us'
 		},
+		termsOfUseLink: {
+			text: 'Terms of use',
+			href: 'https://www.ontario.ca/page/terms-use'
+		},
 		printerLink: {
 			href: 'https://www.ontario.ca/page/copyright-information'
 		}
