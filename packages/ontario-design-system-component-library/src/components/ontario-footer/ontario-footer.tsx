@@ -228,14 +228,14 @@ export class OntarioFooter {
 		};
 
 		if (contactLink) {
-			links['contactLink'] = {
+			links.contactLink = {
 				href: contactLink.href,
 				text: contactLink.text ?? translations.contactUs[language],
 			};
 		}
 
 		if (termsOfUseLink) {
-			links['termsOfUseLink'] = {
+			links.termsOfUseLink = {
 				href: termsOfUseLink.href,
 				text: termsOfUseLink.text ?? translations.termsOfUse[language],
 			};

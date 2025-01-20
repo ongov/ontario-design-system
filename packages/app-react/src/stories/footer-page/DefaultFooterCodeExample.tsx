@@ -21,7 +21,7 @@ export default function DefaultFooterCodeExample() {
 		},
 		termsOfUseLink: {
 			text: 'Terms of use',
-			href: 'https://www.ontario.ca/feedback/contact-us'
+			href: 'https://www.ontario.ca/page/terms-use'
 		},
 		printerLink: {
 			href: 'https://www.ontario.ca/page/copyright-information'
