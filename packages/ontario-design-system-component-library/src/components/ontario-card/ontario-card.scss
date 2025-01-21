@@ -13,7 +13,7 @@
 .ontario-card {
 	box-shadow: 0rem 0.1875rem 0.5rem 0.0625rem rgba(0, 0, 0, 0.4);
 	border-radius: globalVariables.$global-radius;
-	margin: spacing.$spacing-0 spacing.$spacing-7 spacing.$spacing-7 spacing.$spacing-0;
+	margin-bottom: spacing.$spacing-7;
 	padding: spacing.$spacing-0;
 	/*
 	 * Required for cards to stay the same height regardless of content size.
@@ -108,7 +108,11 @@
 
 	.ontario-card--image-true & {
 		border-radius: 0;
-		@at-root .ontario-card__card-type--horizontal & {
+		@at-root .ontario-card__image-right & {
+			border-radius: globalVariables.$global-radius 0 0 0;
+		}
+
+		@at-root .ontario-card__image-left & {
 			border-radius: 0 globalVariables.$global-radius 0 0;
 		}
 	}
@@ -186,7 +190,7 @@ $ontario-card-heading-colours: (
 
 .ontario-card__text-container {
 	.ontario-card__card-type--horizontal & {
-		width: 66.6%;
+		width: math.percentage(math.div(2, 3));
 	}
 
 	.ontario-card__image-size-one-fourth & {
