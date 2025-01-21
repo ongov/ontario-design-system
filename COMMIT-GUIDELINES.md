@@ -34,6 +34,8 @@ Commit messages should:
 4. **Use Consistent Formatting**: Stick to the agreed-upon format for commit messages to maintain consistency.
 5. **Review Before Committing**: Take a moment to review your commit message before finalizing it. Ensure it accurately reflects the changes made.
 
+Do not be afraid to breakup files across multiple commits they they thematically do not fall into one unit.
+
 ## Semantic versioning
 
 Semantic versioning is a way of versioning software that follows a structured version numbering convention. It helps identify the significance between versions and is always forward facing, meaning versions are always moving into the future.
@@ -61,7 +63,7 @@ Commits prefixed with `fix` are considered bug fixes, and so they are deemed to 
 
 Commits prefixed with `feat` are considered features, which introduce new functionality into the project, such as a new component, new style change, or other significant change. These commits are backwards compatible as well and trigger a version increment of `0.1.0`.
 
-Not every commit needs to start with `fix` or `feat` within a branch, only the ones that have changes worth calling out in our `CHANGELOG.md` file. Commits can be prefixed with other prefixes: `build:`, `chore:`, `ci:`, `docs:`, `style:`, `refactor:`, `perf:`, or `test:`. These are more suited for smaller parts of a larger update or commits that are being made that should not impact the version number, for example project documentation updates. The other prefixes have particular meanings, such as commits prefixed with `docs` are documentation only changes, commits prefixed with `refactor` are code changes that neither fix a bug nor add a feature, and commit prefixed with `ci` are code changes within the CI/CD workflow files.
+Not every commit needs to start with `fix` or `feat` within a branch, only the ones that have changes worth calling out in our `CHANGELOG.md` file. See [Non `feat` or `fix` commit prefixes](#non-feat-or-fix-commit-prefixes) for more information.
 
 The changelog can be found within the [CHANGELOG.md](https://github.com/ongov/ontario-design-system/blob/develop/CHANGELOG.md) file, which is a running history of all changes made in each release. The changelog version entries look like the following example:
 
@@ -93,7 +95,22 @@ Breaking change commits must include a clear reason for the breaking change and 
 
 **It is important to note**: Breaking changes can be added to any commit regardless of the commit prefix, they are not just relegated to `fix` or `feat` commit prefixes as those aren't always relevant when introducing a breaking change.
 
-The Conventional Commit structure also allows for an exclamation mark (`!`) to be added before the `:` in the subject. This pattern isn't respected by this projects tooling but it helps commits that contain breaking changes stand out when reviewing the commit subjects.
+The Conventional Commit structure also allows for an exclamation mark (`!`) to be added before the colon (`:`) in the subject. This pattern isn't respected by this projects tooling but it helps commits that contain breaking changes stand out when reviewing the commit subjects.
+
+### Non `feat` or `fix` commit prefixes
+
+Commits can be prefixed with other prefixes other than `feat:` and `fix:`, as mentioned in [Changelog generation](#changelog-generation). These additional types are: `build:`, `chore:`, `ci:`, `docs:`, `style:`, `refactor:`, `perf:`, or `test:`. These are more suited for smaller parts of a larger update or commits that are being made that should not impact the version number, for example project documentation updates.
+
+The other prefixes have particular meanings:
+
+- `build:` Changes that affect the project build process, build system, or external dependencies (e.g. npm, gulp).
+- `chore:` Routine tasks that don't modify source code or tests (e.g. updating package versions, configuration changes)
+- `ci:` Changes to Continuous Integration (CI) workflow configuration files and scripts
+- `docs:` Documentation-only changes (e.g. updating README, adding comments).
+- `style:` Changes that do not affect the meaning of the code (e.g. formatting, missing semi-colons, whitespace)
+- `refactor:` Changes that neither fix a bug nor add a feature (e.g. code restructuring, renaming variables)
+- `perf:` Changes that relate to performance and neither fix a bug nor add a feature
+- `test:` Adding or updating tests (e.g. unit tests, integration tests)
 
 ## Examples
 
