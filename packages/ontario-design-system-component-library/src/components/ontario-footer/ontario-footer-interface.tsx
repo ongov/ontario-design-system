@@ -1,26 +1,26 @@
 export type OntarioFooterType = 'default' | 'twoColumn' | 'threeColumn';
 
 export interface FooterLink {
-	text?: string;
+	text: string;
 	href: string;
 }
 
 // External interface to be passed to the Footer component
 export interface FooterLinks {
-	accessibilityLink?: Partial<FooterLink>;
-	privacyLink?: Partial<FooterLink>;
+	accessibilityLink?: FooterLink;
+	privacyLink?: FooterLink;
 	contactLink?: FooterLink;
-	printerLink?: Partial<FooterLink>;
+	printerLink?: FooterLink;
 	termsOfUseLink?: FooterLink;
 }
 
 // Internal interface for SimpleFooter Component
 export interface SimpleFooterLinks {
-	accessibilityLink: Required<FooterLink>;
-	privacyLink: Required<FooterLink>;
-	printerLink: Required<FooterLink>;
-	contactLink?: Required<FooterLink>;
-	termsOfUseLink?: Required<FooterLink>;
+	accessibilityLink: FooterLink;
+	privacyLink: FooterLink;
+	printerLink: FooterLink;
+	contactLink?: FooterLink;
+	termsOfUseLink?: FooterLink;
 }
 
 export type FooterContentType = 'text' | 'list' | 'html';
