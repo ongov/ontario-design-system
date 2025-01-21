@@ -5,51 +5,35 @@
 .ontario-card-collection__container {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: flex-start;
+	justify-content: space-between;
 	margin: spacing.$spacing-0;
 	padding: spacing.$spacing-0;
 }
 
 .ontario-card-collecton--cards-per-row-4 ::slotted(ontario-card) {
-	width: calc(25% - 2rem);
-
-	&:nth-child(4n) {
-		margin-right: spacing.$spacing-0;
-	}
+	width: calc(25% - 1.5rem);
 
 	@media screen and (max-width: breakpoints.$medium-breakpoint) {
-		width: calc(50% - 1.25rem);
-
-		&:nth-child(2n) {
-			margin-right: spacing.$spacing-0;
-		}
+		width: calc(50% - 1rem);
 	}
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
-		width: calc(100% - 0.5rem);
+		width: 100%;
 	}
 }
 
 .ontario-card-collecton--cards-per-row-3 ::slotted(ontario-card) {
-	width: calc(33.3% - 1.75rem);
-
-	&:nth-child(3n) {
-		margin-right: spacing.$spacing-0;
-	}
+	width: calc(33.3% - 1.25rem);
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
-		width: calc(100% - 0.5rem);
+		width: 100;
 	}
 }
 
 .ontario-card-collecton--cards-per-row-2 ::slotted(ontario-card) {
-	width: calc(50% - 1.25rem);
-
-	&:nth-child(2n) {
-		margin-right: spacing.$spacing-0;
-	}
+	width: calc(50% - 1rem);
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
-		width: calc(100% - 0.5rem);
+		width: 100%;
 	}
 }
