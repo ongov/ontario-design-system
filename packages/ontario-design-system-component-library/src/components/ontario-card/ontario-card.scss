@@ -190,7 +190,7 @@ $ontario-card-heading-colours: (
 
 .ontario-card__text-container {
 	.ontario-card__card-type--horizontal & {
-		width: 66.66%;
+		width: math.percentage(math.div(2, 3));
 	}
 
 	.ontario-card__image-size-one-fourth & {
