@@ -437,18 +437,23 @@ footer-links='{
 		"text": "Contact",
 		"href": "https://www.ontario.ca/feedback/contact-us"
 	},
+	"termsOfUseLink": {
+		"text": "Terms of use",
+		"href": "https://www.ontario.ca/page/terms-use"
+	},
 	"printerLink": {
 		"href": "https://www.ontario.ca/page/copyright-information"
 	}
 }'
 ```
 
-| **Property name**   | **Type**                           | **Description**                                                          | Required |
-| ------------------- | ---------------------------------- | ------------------------------------------------------------------------ | -------- |
-| `accessibilityLink` | `[FooterLinkType](FooterLinkType)` | The URL and text for the accessibility footer link                       | NO       |
-| `privacyLink`       | `[FooterLinkType](FooterLinkType)` | The URL and text for the privacy footer link                             | NO       |
-| `contactLink`       | `[FooterLinkType](FooterLinkType)` | The URL and text for the contact us footer link                          | NO       |
-| `printerLink`       | `[FooterLinkType](FooterLinkType)` | The URL and text for the printer footer link. This property is optional. | NO       |
+| **Property name**   | **Type**                            | **Description**                                                          | Required |
+| ------------------- | ----------------------------------- | ------------------------------------------------------------------------ | -------- |
+| `accessibilityLink` | [`FooterLinkType`](#footerlinktype) | The URL and text for the accessibility footer link                       | NO       |
+| `privacyLink`       | [`FooterLinkType`](#footerlinktype) | The URL and text for the privacy footer link                             | NO       |
+| `contactLink`       | [`FooterLinkType`](#footerlinktype) | The URL and text for the contact us footer link                          | NO       |
+| `termsOfUseLink`    | [`FooterLinkType`](#footerlinktype) | The URL and text for the terms of use footer link                        | NO       |
+| `printerLink`       | [`FooterLinkType`](#footerlinktype) | The URL and text for the printer footer link. This property is optional. | NO       |
 
 ### FooterLinkType
 
@@ -589,7 +594,7 @@ two-column-options='{
 | Property             | Attribute              | Description                                                                                                                                                                                                         | Type                                                                                                                                           | Default     |
 | -------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | `assetBasePath`      | `asset-base-path`      | The base path to an assets folder containing the Design System assets                                                                                                                                               | `string`                                                                                                                                       | `undefined` |
-| `footerLinks`        | `footer-links`         | A prop that stores the required links for all footers. Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink'                                                                    | `FooterLinks \| string`                                                                                                                        | `undefined` |
+| `footerLinks`        | `footer-links`         | A prop that stores the required links for all footers. Available options are 'accessibilityLink', 'privacyLink', 'contactLink','termsOfUseLink' and 'printerLink'                                                   | `FooterLinks \| string`                                                                                                                        | `undefined` |
 | `language`           | `language`             | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English. | `"en" \| "fr"`                                                                                                                                 | `undefined` |
 | `socialLinks`        | `social-links`         | Social media links to render in the footer. Available options are 'facebook', 'twitter', 'instagram' and 'youtube'                                                                                                  | `string \| { facebook?: string \| undefined; twitter?: string \| undefined; instagram?: string \| undefined; youtube?: string \| undefined; }` | `undefined` |
 | `threeColumnOptions` | `three-column-options` | Stores the titles and content for the expanded three column footer.                                                                                                                                                 | `ThreeColumnOptions \| string \| undefined`                                                                                                    | `undefined` |
