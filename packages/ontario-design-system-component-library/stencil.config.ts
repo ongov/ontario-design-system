@@ -4,6 +4,7 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { inlineSvg } from 'stencil-inline-svg';
 import dotEnvPlugin from 'rollup-plugin-dotenv';
+import copy from 'rollup-plugin-copy';
 
 export const config: Config = {
 	namespace: 'ontario-design-system-components',
@@ -13,6 +14,18 @@ export const config: Config = {
 		}),
 		inlineSvg(),
 		dotEnvPlugin(),
+		copy({
+			targets: [
+				{
+					src: './src/styles/component-slots.scss',
+					dest: '../ontario-design-system-component-library-react/src/styles/',
+				},
+				{
+					src: './src/styles/component-slots.scss',
+					dest: '../ontario-design-system-component-library-angular/src/styles/',
+				},
+			],
+		}),
 	],
 	globalStyle: './src/global.scss',
 	globalScript: './src/global.ts',

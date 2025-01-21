@@ -65,6 +65,7 @@
 		"jszip": "^3.10.1",
 		"prettier": "^2.8.1",
 		"puppeteer": "^19.4.0",
+		"rollup-plugin-copy": "^3.5.0",
 		"rollup-plugin-dotenv": "^0.4.1",
 		"shx": "^0.3.4",
 		"stencil-inline-svg": "^1.1.0",
