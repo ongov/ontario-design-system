@@ -15,6 +15,18 @@ export const config: Config = {
 		}),
 		inlineSvg(),
 		dotEnvPlugin(),
+		copy({
+			targets: [
+				{
+					src: './src/styles/component-slots.scss',
+					dest: '../ontario-design-system-component-library-react/src/styles/',
+				},
+				{
+					src: './src/styles/component-slots.scss',
+					dest: '../ontario-design-system-component-library-angular/src/styles/',
+				},
+			],
+		}),
 	],
 	globalStyle: './src/global.scss',
 	globalScript: './src/global.ts',

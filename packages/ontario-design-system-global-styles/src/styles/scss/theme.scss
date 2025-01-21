@@ -45,19 +45,7 @@
 @forward './5-layout/form-group.layout';
 
 /*** 6 - Components ***/
-/* 
- * Styles for slotted elements (i.e. files with the `slot` extension) for the web components must be defined in the global styles stylesheet. 
- * This is because scoped styles within a StencilJS component (or any Shadow DOM component) cannot directly 
- * target content projected into slots using the `::slotted` pseudo-element. 
- * 
- * The `::slotted` pseudo-element only applies to the first-level child elements of a slot, 
- * and deeper descendant styles cannot be applied from within the Shadow DOM. 
- * As a result, any additional styling for slotted content must be applied in the global stylesheet 
- * outside the Shadow DOM scope. 
- */
 @forward './6-components/buttons.component';
-@forward './6-components/callouts-asides.slots';
-@forward './6-components/page-alerts.slots';
 @forward './6-components/all.component';
 
 /*** 7 - Overrides *å**/
