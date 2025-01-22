@@ -17,11 +17,19 @@ export const config: Config = {
 		copy({
 			targets: [
 				{
-					src: './src/styles/component-slots.scss',
+					src: './src/global.scss',
+					dest: '../ontario-design-system-component-library-react/src/',
+				},
+				{
+					src: './src/styles/slotted-styles',
 					dest: '../ontario-design-system-component-library-react/src/styles/',
 				},
 				{
-					src: './src/styles/component-slots.scss',
+					src: './src/global.scss',
+					dest: '../ontario-design-system-component-library-angular/src/',
+				},
+				{
+					src: './src/styles/slotted-styles',
 					dest: '../ontario-design-system-component-library-angular/src/styles/',
 				},
 			],

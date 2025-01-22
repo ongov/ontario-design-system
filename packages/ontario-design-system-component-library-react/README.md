@@ -29,6 +29,12 @@ To use the Ontario Design System React component library, follow these steps:
    import { OntarioBlockquote } from '@ongov/ontario-design-system-component-library-react';
    ```
 
+3. Note that if you are using components that utilize slots (e.g., inserting HTML or text directly into the component instead of passing it through props), ensure you import the global styles into your project. This is necessary for the styles to be applied correctly.
+
+   ```tsx
+   import '@ongov/ontario-design-system-component-library-react/src/global.scss';
+   ```
+
 ### Usage
 
 You can now use the React components in your component and template files.

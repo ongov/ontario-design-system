@@ -1,18 +1,6 @@
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
 
-// callouts + asides
-ontario-aside *,
-ontario-callout * {
-	max-width: globalVariables.$standard-width;
-
-	&:last-of-type {
-		margin-bottom: spacing.$spacing-2;
-	}
-}
-
-// page alerts
 ontario-page-alert {
 	p {
 		margin-top: spacing.$spacing-0;

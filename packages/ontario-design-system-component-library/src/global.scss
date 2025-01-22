@@ -8,11 +8,12 @@
  * style direct children of slots, it does not support deeper descendant styling.
  * 
  * To ensure styling for slotted content works, these styles are defined in a 
- * separate global stylesheet (i.e: `styles/component-slots.scss`) and included in the build process via the `globalStyle` config
+ * separate global stylesheet (i.e: `styles/slotted-styles`) and included in the build process via the `globalStyle` config
  * option. This approach ensures:
  * 
  * 1. Slotted elements are styled automatically without requiring consumers to add additional classes or external styles.
  * 2. All styles are centralized within the component library for better maintainability.
  * 
  */
-@forward './styles/component-slots.scss';
+@forward './styles/slotted-styles/callouts-asides';
+@forward './styles/slotted-styles/page-alerts';
