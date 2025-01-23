@@ -153,6 +153,19 @@ This fix handles validating numbers are numbers and not numbers are `NaN`.
 JIRA: DS-1234
 ```
 
+```
+docs(commit-guidelines): add commit guidelines documentation
+
+This documentation outlines recommendations for the commit style,
+what tools use the commits to make decisions,
+as well as illustrates some examples of commit messages.
+
+The configuration update for `commitlint` adds a new help path to aid in
+surfacing these practices when performing Git commits.
+
+JIRA: DS-2107
+```
+
 Commits can have body text span multiple lines as paragraphs using new lines:
 
 ```
