@@ -24,6 +24,7 @@
 	transition: all 0.3s ease-in-out;
 	position: relative;
 	cursor: pointer;
+	background: colours.$ontario-colour-white;
 
 	&:hover {
 		box-shadow: 0rem 0.375rem 0.75rem 0.125rem rgba(0, 0, 0, 0.35);
