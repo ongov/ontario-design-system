@@ -34,11 +34,11 @@ Commit messages should:
 4. **Use Consistent Formatting**: Stick to the agreed-upon format for commit messages to maintain consistency.
 5. **Review Before Committing**: Take a moment to review your commit message before finalizing it. Ensure it accurately reflects the changes made.
 
-Do not be afraid to breakup files across multiple commits they they thematically do not fall into one unit.
+Do not be afraid to break up files across multiple commits if they thematically do not fall into one unit.
 
 ## Semantic versioning
 
-Semantic versioning is a way of versioning software that follows a structured version numbering convention. It helps identify the significance between versions and is always forward facing, meaning versions are always moving into the future.
+Semantic versioning is a way of versioning software that follows a structured version numbering convention. It helps determine the significance of changes between versions and ensures that version numbers always increase over time.
 
 The semantic versioning scheme uses three digits to construct the version number. For example, say we had version `5.2.6`:
 
@@ -59,9 +59,9 @@ The commit messages are not only consumed by humans, they are also consumed by t
 
 The two relevant prefixes are `fix` and `feat`. Commits with these prefixes should have clean messages about what they are fixing or what feature is being added, respectively. Each commit specifies the weight and impact of the commit on the project.
 
-Commits prefixed with `fix` are considered bug fixes, and so they are deemed to have little impact on the project, are backwards compatible with the previous version, and aren't going to cause any breaking changes. These commits trigger a patch version to be generated, which is a version increment of `0.0.1` in the semantic versioning scheme.
+Commits prefixed with `fix` are considered bug fixes. They are deemed to have little impact on the project, are backward-compatible with the previous version, and do not cause any breaking changes. These commits trigger a patch version increment of 0.0.1 in the semantic versioning scheme.
 
-Commits prefixed with `feat` are considered features, which introduce new functionality into the project, such as a new component, new style change, or other significant change. These commits are backwards compatible as well and trigger a version increment of `0.1.0`.
+Commits prefixed with `feat` are considered features, which introduce new functionality into the project, such as a new component, new style change, or other significant change. These commits are backward-compatible as well and trigger a version increment of `0.1.0`.
 
 Not every commit needs to start with `fix` or `feat` within a branch, only the ones that have changes worth calling out in our `CHANGELOG.md` file. See [Non `feat` or `fix` commit prefixes](#non-feat-or-fix-commit-prefixes) for more information.
 
@@ -87,7 +87,7 @@ The `type` is parsed into a section within the release version, the `(scope)` in
 
 #### Breaking changes
 
-A breaking change is a change that is significant enough to cause an incompatibility with the current state of the packages. This could be a removed component property, a set of styles that work differently, or a whole host of different changes.
+A breaking change is a change significant enough to cause an incompatibility with the current state of the package(s). This could be the removal of a component property, a modification to existing styles, or various other impactful changes.
 
 Breaking changes are denoted in the footer of the commit by starting it with `BREAKING CHANGE:` followed by a message about what the breaking change impacts.
 
