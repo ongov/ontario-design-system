@@ -1,0 +1,11 @@
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+
+ontario-aside *,
+ontario-callout * {
+	max-width: globalVariables.$standard-width;
+
+	&:last-of-type {
+		margin-bottom: spacing.$spacing-2;
+	}
+}
