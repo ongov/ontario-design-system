@@ -15,26 +15,6 @@ export const config: Config = {
 		}),
 		inlineSvg(),
 		dotEnvPlugin(),
-		copy({
-			targets: [
-				{
-					src: './src/global.scss',
-					dest: '../ontario-design-system-component-library-react/src/',
-				},
-				{
-					src: './src/styles/slotted-styles',
-					dest: '../ontario-design-system-component-library-react/src/styles/',
-				},
-				{
-					src: './src/global.scss',
-					dest: '../ontario-design-system-component-library-angular/src/',
-				},
-				{
-					src: './src/styles/slotted-styles',
-					dest: '../ontario-design-system-component-library-angular/src/styles/',
-				},
-			],
-		}),
 	],
 	globalStyle: './src/global.scss',
 	globalScript: './src/global.ts',
@@ -81,7 +61,11 @@ export const config: Config = {
 				},
 				{
 					src: '../src/global.scss',
-					dest: 'scss/theme.scss',
+					dest: 'theme.scss',
+				},
+				{
+					src: '../src/styles/slotted-styles',
+					dest: 'styles/slotted-styles',
 				},
 			],
 		},
