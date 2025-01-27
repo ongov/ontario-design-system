@@ -459,7 +459,7 @@ export namespace Components {
 		 */
 		assetBasePath: string;
 		/**
-		 * A prop that stores the required links for all footers. Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink'
+		 * A prop that stores the required links for all footers. Available options are 'accessibilityLink', 'privacyLink', 'contactLink','termsOfUseLink' and 'printerLink'
 		 */
 		footerLinks: FooterLinks | string;
 		/**
@@ -3753,7 +3753,7 @@ declare namespace LocalJSX {
 		 */
 		assetBasePath?: string;
 		/**
-		 * A prop that stores the required links for all footers. Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink'
+		 * A prop that stores the required links for all footers. Available options are 'accessibilityLink', 'privacyLink', 'contactLink','termsOfUseLink' and 'printerLink'
 		 */
 		footerLinks?: FooterLinks | string;
 		/**
