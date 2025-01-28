@@ -31,7 +31,7 @@
 				ontario-radio-buttons:not(:last-child),
 				ontario-button:not(:last-child),
 				ontario-date-input:not(:last-child) {
-					margin-bottom: (#{$child-spacing-variable});
+					margin-bottom: $child-spacing-variable;
 					display: block;
 				}
 
@@ -43,7 +43,7 @@
 				ontario-radio-buttons:last-child,
 				ontario-button:last-child,
 				ontario-date-input:last-child {
-					margin-bottom: calc(#{$child-spacing-variable}) + (#{$parent-spacing});
+					margin-bottom: $child-spacing-variable + $parent-spacing;
 					display: block;
 				}
 			}
