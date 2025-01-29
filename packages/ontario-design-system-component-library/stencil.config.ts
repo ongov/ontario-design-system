@@ -11,7 +11,7 @@ export const config: Config = {
 	sourceMap: true,
 	plugins: [
 		sass({
-			includePaths: ['../../node_modules'],
+			includePaths: ['./node_modules'],
 		}),
 		inlineSvg(),
 		dotEnvPlugin(),
@@ -42,12 +42,12 @@ export const config: Config = {
 			esmLoaderPath: '../loader',
 			copy: [
 				{
-					src: path.resolve(__dirname, '../../node_modules/@ongov/ontario-design-system-global-styles/dist/fonts'),
+					src: path.resolve(__dirname, './node_modules/@ongov/ontario-design-system-global-styles/dist/fonts'),
 					dest: 'fonts',
 					warn: true,
 				},
 				{
-					src: path.resolve(__dirname, '../../node_modules/@ongov/ontario-design-system-global-styles/dist/favicons'),
+					src: path.resolve(__dirname, './node_modules/@ongov/ontario-design-system-global-styles/dist/favicons'),
 					dest: 'favicons',
 					warn: true,
 				},
@@ -76,12 +76,12 @@ export const config: Config = {
 			serviceWorker: null, // disable service workers
 			copy: [
 				{
-					src: path.resolve(__dirname, '../../node_modules/@ongov/ontario-design-system-global-styles/dist/fonts'),
+					src: path.resolve(__dirname, './node_modules/@ongov/ontario-design-system-global-styles/dist/fonts'),
 					dest: 'fonts',
 					warn: true,
 				},
 				{
-					src: path.resolve(__dirname, '../../node_modules/@ongov/ontario-design-system-global-styles/dist/favicons'),
+					src: path.resolve(__dirname, './node_modules/@ongov/ontario-design-system-global-styles/dist/favicons'),
 					dest: 'favicons',
 					warn: true,
 				},

@@ -25,7 +25,7 @@ const { dest, series, src, task, parallel, watch } = gulp;
 const processSass = (opts) => {
 	const sassOptions = {
 		outputStyle: opts.compress ? 'compressed' : 'expanded',
-		includePaths: ['../../node_modules'],
+		includePaths: ['./node_modules'],
 	};
 
 	return [

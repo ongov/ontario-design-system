@@ -23,7 +23,7 @@ const { dest, series, src, task, parallel, watch } = gulp;
 const compileSass = (input, outputFile, options) => {
 	const sassOptions = {
 		style: options.compress ? 'compressed' : 'expanded',
-		loadPaths: ['../../node_modules'],
+		loadPaths: ['./node_modules'],
 	};
 
 	return src(input, { sourcemaps: options.sourcemaps })
@@ -68,7 +68,7 @@ task('generate:components-import-file', async (done) => {
 		// Remove the path up to the component name
 		// e.g. from 'src/styles/components/ontario-button/ontario-button.scss' to 'ontario-button/ontario-button.scss'
 		const paths = filePath.replace(/.*?\/.*?\/s.*?\//, '');
-		return `@forward "../../../../${paths}";`;
+		return `@forward "./${paths}";`;
 	});
 
 	const assetStyles = await fs.readFile('./asset-styles.scss', 'utf8');

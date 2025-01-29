@@ -21,7 +21,7 @@
 		"useDefineForClassFields": false,
 		"lib": ["ES2022", "dom"],
 		"paths": {
-			"@angular/*": ["../../node_modules/@angular/*"]
+			"@angular/*": ["./node_modules/@angular/*"]
 		},
 		"types": ["jasmine"]
 	},
