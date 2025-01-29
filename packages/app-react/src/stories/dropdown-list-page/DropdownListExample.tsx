@@ -122,6 +122,9 @@ export default function DropdownListExamples() {
 				<h2>Examples</h2>
 
 				<OntarioDropdownList
+					placeholder=""
+					onPointerEnterCapture={() => {}}
+					onPointerLeaveCapture={() => {}}
 					caption="Province/territory"
 					name="province-selection"
 					elementId="province-territory"
@@ -192,6 +195,9 @@ export default function DropdownListExamples() {
 				</p>
 
 				<OntarioDropdownList
+					placeholder=""
+					onPointerEnterCapture={() => {}}
+					onPointerLeaveCapture={() => {}}
 					caption={{
 						captionText: 'Country',
 						captionType: 'default',
@@ -224,6 +230,9 @@ export default function DropdownListExamples() {
 				</p>
 
 				<OntarioDropdownList
+					placeholder=""
+					onPointerEnterCapture={() => {}}
+					onPointerLeaveCapture={() => {}}
 					caption="Select a language"
 					name="language-select"
 					isEmptyStartOption="Select a language"

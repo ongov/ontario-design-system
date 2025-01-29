@@ -30,6 +30,9 @@ export default function DefaultFooterCodeExample() {
 				<h4>Example</h4>
 				<div className="ontario-margin-top-24-!">
 					<OntarioFooter
+						placeholder=""
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
 						type="default"
 						footerLinks={{
 							accessibilityLink: {

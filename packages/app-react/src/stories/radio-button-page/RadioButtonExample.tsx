@@ -70,6 +70,9 @@ export default function RadioButtonExample() {
 			<div className="ontario-columns ontario-large-12">
 				<h2>Example</h2>
 				<OntarioRadioButtons
+					placeholder=""
+					onPointerEnterCapture={() => {}}
+					onPointerLeaveCapture={() => {}}
 					ref={componentRef}
 					caption="Radio legend"
 					name="radio-example"

@@ -34,7 +34,13 @@ export default function HintText() {
 
 				<div className="ontario-margin-top-24-!">
 					<h3>Example</h3>
-					<OntarioHintText hint="Example hint text" elementId="hint-id" />
+					<OntarioHintText
+						hint="Example hint text"
+						elementId="hint-id"
+						placeholder=""
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
+					/>
 
 					<p>With the following markup:</p>
 

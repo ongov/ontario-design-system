@@ -39,6 +39,9 @@ export default function TextAreaExample() {
 					</ul>
 					<div className="ontario-margin-top-24-!">
 						<OntarioTextarea
+							placeholder=""
+							onPointerEnterCapture={() => {}}
+							onPointerLeaveCapture={() => {}}
 							caption={{
 								captionText: 'Label',
 								captionType: 'default',

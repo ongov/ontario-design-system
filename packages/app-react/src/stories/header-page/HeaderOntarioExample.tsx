@@ -24,6 +24,9 @@ export default function HeaderOntarioExample() {
 							englishLink: '/en',
 							frenchLink: '/fr',
 						}}
+						placeholder={''}
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
 					></OntarioHeader>
 
 					<p>With the following markup:</p>

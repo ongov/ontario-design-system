@@ -77,6 +77,9 @@ export default function TextInputExample() {
 				<h3>Examples</h3>
 				<div className="ontario-margin-top-24-!">
 					<OntarioInput
+						placeholder=""
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
 						caption={{
 							captionText: '4 character width',
 							captionType: 'default',
@@ -96,6 +99,9 @@ export default function TextInputExample() {
 
 				<div className="ontario-margin-top-24-!">
 					<OntarioInput
+						placeholder=""
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
 						caption={{
 							captionText: '20 character width',
 							captionType: 'default',
@@ -120,6 +126,9 @@ export default function TextInputExample() {
 
 				<div className="ontario-margin-top-24-!">
 					<OntarioInput
+						placeholder=""
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
 						ref={componentRef}
 						caption={{
 							captionText: 'Default width input',
