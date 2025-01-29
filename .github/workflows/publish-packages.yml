@@ -27,11 +27,11 @@ jobs:
 
       # Install node_modules
       - name: Install dependencies
-        run: npm ci
+        run: pnpm ci
 
       # Install node_modules in all packages
       - name: Initialise all package node_modules
-        run: npm run bootstrap
+        run: pnpm run bootstrap
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
@@ -43,4 +43,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm run semantic-release
+        run: pnpm run semantic-release

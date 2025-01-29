@@ -6,7 +6,6 @@
 		"packages/*"
 	],
 	"scripts": {
-		"bootstrap": "echo 'Already bootstrapped; continue'",
 		"build-docs": "lerna run --scope ds-web-component-docs build",
 		"build-libs": "lerna run --scope @ongov/ontario-design-system* build",
 		"build-angular-app": "lerna run --scope app-angular build",
@@ -14,11 +13,10 @@
 		"clean:full": "lerna run clean:full",
 		"format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
 		"prepare": "husky install",
-		"refresh": "npm run clean:full && npm install && npm run build-libs",
+		"refresh": "pnpm run clean && pnpm install && pnpm run build-libs",
 		"semantic-release": "semantic-release",
 		"test:e2e": "lerna run test:e2e",
-		"test:unit": "lerna run test:unit",
-		"check:outdated": "ts-node ./scripts/check-outdated.ts"
+		"test:unit": "lerna run test:unit"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.5.0",
@@ -28,10 +26,11 @@
 		"@semantic-release/git": "^10.0.1",
 		"@semantic-release/github": "^11.0.0",
 		"@semantic-release/npm": "^12.0.1",
+		"@types/node": "^22.10.10",
 		"bash-color": "^0.0.4",
 		"commander": "^11.0.0",
 		"husky": "^8.0.2",
-		"lerna": "^8.1.8",
+		"lerna": "^8.1.9",
 		"prettier": "^3.3.3",
 		"pretty-quick": "^4.0.0",
 		"semantic-release": "^24.1.2",
@@ -47,6 +46,8 @@
 		"@nrwl/nx-linux-x64-gnu": "15.9.3",
 		"@nrwl/nx-linux-x64-musl": "15.9.3",
 		"@nrwl/nx-win32-arm64-msvc": "15.9.3",
-		"@nrwl/nx-win32-x64-msvc": "15.9.3"
-	}
+		"@nrwl/nx-win32-x64-msvc": "15.9.3",
+		"bl": "^6.0.18"
+	},
+	"packageManager": "pnpm@8.15.4+sha512.0bd3a9be9eb0e9a692676deec00a303ba218ba279d99241475616b398dbaeedd11146f92c2843458f557b1d127e09d4c171e105bdcd6b61002b39685a8016b9e"
 }

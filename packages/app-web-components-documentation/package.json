@@ -4,13 +4,13 @@
 	"private": true,
 	"scripts": {
 		"docusaurus": "docusaurus",
-		"prestart": "npm run copy:assets",
+		"prestart": "pnpm run copy:assets",
 		"start": "docusaurus start",
 		"copy:images": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/images/**\" static/assets",
 		"copy:favicons": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/favicons/**\" static/assets/favicons",
 		"copy:fonts": "copyfiles -E -u 6 \"node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/fonts/**/*\" static/assets/fonts",
-		"copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts",
-		"prebuild": "npm run copy:assets",
+		"copy:assets": "pnpm run copy:images && pnpm run copy:favicons && pnpm run copy:fonts",
+		"prebuild": "pnpm run copy:assets",
 		"build": "docusaurus build",
 		"swizzle": "docusaurus swizzle",
 		"deploy": "docusaurus deploy",
@@ -19,7 +19,7 @@
 		"write-translations": "docusaurus write-translations",
 		"write-heading-ids": "docusaurus write-heading-ids",
 		"clean": "rm -rf docs/0* docs/components/ontario*",
-		"clean:full": "rm -rf node_modules && npm run clean"
+		"clean:full": "rm -rf node_modules && pnpm run clean"
 	},
 	"dependencies": {
 		"@docusaurus/core": "2.4.1",

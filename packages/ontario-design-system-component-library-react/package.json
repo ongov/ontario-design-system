@@ -16,12 +16,12 @@
 		"README.md"
 	],
 	"scripts": {
-		"build": "npm run clean && npm run compile && npm run docs:copy:readme",
-		"postbuild": "npm run copy:assets",
+		"build": "pnpm run clean && pnpm run compile && pnpm run docs:copy:readme",
+		"postbuild": "pnpm run copy:assets",
 		"clean": "rm -rf dist",
-		"clean:full": "rm -rf node_modules && npm run clean",
-		"compile": "npm run tsc",
-		"copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts",
+		"clean:full": "rm -rf node_modules && pnpm run clean",
+		"compile": "pnpm run tsc",
+		"copy:assets": "pnpm run copy:images && pnpm run copy:favicons && pnpm run copy:fonts",
 		"copy:favicons": "copyfiles -E -f \"../../node_modules/@ongov/ontario-design-system-component-library/dist/ontario-design-system-components/favicons/**/*\" dist/assets/favicons",
 		"copy:fonts": "copyfiles -E -u 6 \"../../node_modules/@ongov/ontario-design-system-component-library/dist/ontario-design-system-components/fonts/**/*\" dist/assets/fonts",
 		"copy:images": "copyfiles -E -f \"../../node_modules/@ongov/ontario-design-system-component-library/dist/ontario-design-system-components/assets/**/*\" dist/assets/images",
@@ -32,7 +32,9 @@
 	},
 	"jest": {
 		"preset": "ts-jest",
-		"setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
+		"setupFilesAfterEnv": [
+			"<rootDir>/jest.setup.js"
+		],
 		"testPathIgnorePatterns": [
 			"node_modules",
 			"dist"
@@ -56,8 +58,8 @@
 		"typescript": "^5.6.3"
 	},
 	"peerDependencies": {
-		"react": ">^18.3.0",
-		"react-dom": ">^18.3.0"
+		"react": "^18.3.0",
+		"react-dom": "^18.3.0"
 	},
 	"publishConfig": {
 		"access": "public"

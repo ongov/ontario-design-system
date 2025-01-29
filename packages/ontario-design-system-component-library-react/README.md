@@ -16,10 +16,10 @@ To find documentation on individual web components in this component library, pl
 
 To use the Ontario Design System React component library, follow these steps:
 
-1. Install the NPM package.
+1. Install the pnpm package.
 
    ```bash
-   npm install --save @ongov/ontario-design-system-component-library-react
+   pnpm install --save @ongov/ontario-design-system-component-library-react
    ```
 
 2. Import the desired components from the component library.
@@ -48,9 +48,9 @@ You can now use the React components in your component and template files.
 
 Along with the components, the local assets (logos, fonts, etc.) need to be copied into your project so that they are available for bundling upon building your React application.
 
-The assets in the NPM package are located at `@ongov/ontario-design-system-component-library-react/dist/assets`, and should be copied to your public assets folder.
+The assets in the pnpm package are located at `@ongov/ontario-design-system-component-library-react/dist/assets`, and should be copied to your public assets folder.
 
-In a standard React application this can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package, which you can with any operating system:
+In a standard React application this can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) pnpm package, which you can with any operating system:
 
 ```bash
 copyfiles -E -f "node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/*" src/assets
@@ -59,11 +59,11 @@ copyfiles -E -f "node_modules/@ongov/ontario-design-system-component-library-rea
 Another way is to add scripts to copy the assets in your `package.json` file. For example:
 
 ```json
-"prebuild": "npm run copy:assets",
+"prebuild": "pnpm run copy:assets",
 "copy:images": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-component-library-react/dist/component-library/assets/images/**\" src/assets",
 "copy:favicons": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-component-library-react/dist/component-library/assets/favicons/**\" src/assets/favicons",
 "copy:fonts": "copyfiles -E -u 6 \"node_modules/@ongov/ontario-design-system-component-library-react/dist/component-library/assets/fonts/**/*\" src/assets/fonts",
-"copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts"
+"copy:assets": "pnpm run copy:images && pnpm run copy:favicons && pnpm run copy:fonts"
 ```
 
 ## Support

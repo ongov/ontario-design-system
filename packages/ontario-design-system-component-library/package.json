@@ -18,12 +18,12 @@
 		"readme.md"
 	],
 	"scripts": {
-		"prebuild": "npm run build:config",
-		"build": "npm run build:stencil && npm run format && npm run docs:copy:readme",
+		"prebuild": "pnpm run build:config",
+		"build": "pnpm run build:stencil && pnpm run format && pnpm run docs:copy:readme",
 		"build:stencil": "stencil build --docs",
 		"build:config": "ts-node scripts/build-config.ts",
 		"clean": "rm -rf dist loader www",
-		"clean:full": "rm -rf node_modules && npm run clean",
+		"clean:full": "rm -rf node_modules && pnpm run clean",
 		"clean:icons": "rm -rf src/components/ontario-icon/ontario-icon-*.tsx",
 		"docs:assemble": "ts-node scripts/build-documentation-bundle.ts",
 		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f readme.md -p \"---\nslug: /\n---\n\" -df ../app-web-components-documentation/docs/01-readme.md",
@@ -31,12 +31,12 @@
 		"generate": "stencil generate",
 		"generate:icons": "node src/components/ontario-icon/scripts/generate-icons.js",
 		"start": "stencil build --dev --watch --serve",
-		"pretest": "npm run build:config",
+		"pretest": "pnpm run build:config",
 		"test": "stencil test --spec --e2e",
 		"test.watch": "stencil test --spec --e2e --watchAll",
-		"pretest:e2e": "npm run build:config",
+		"pretest:e2e": "pnpm run build:config",
 		"test:e2e": "stencil test --e2e",
-		"pretest:unit": "npm run build:config",
+		"pretest:unit": "pnpm run build:config",
 		"test:unit": "stencil test --spec"
 	},
 	"dependencies": {
@@ -45,6 +45,8 @@
 		"dotenv": "^16.4.5"
 	},
 	"devDependencies": {
+		"@types/react": "^19.0.8",
+		"@types/react-dom": "^19.0.3",
 		"@stencil/angular-output-target": "^0.10.1",
 		"@stencil/react-output-target": "0.8.0",
 		"@stencil/sass": "^3.0.12",
