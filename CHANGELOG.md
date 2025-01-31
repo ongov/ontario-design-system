@@ -1,3 +1,16 @@
+# 5.0.0-alpha.5 (2025-01-27)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library:** added gap style rule and remove space-between 5a5b8ba
+- **@ongov/ontario-design-system-component-library:** added terms of use link prop 1352fa3
+- **@ongov/ontario-design-system-component-library:** added white colour to the background of the card to avoid bleed-through ad61ba2
+- **@ongov/ontario-design-system-component-library:** remove partial and required properties f29ac98
+- **@ongov/ontario-design-system-component-library:** updated border radius on horizontal cards along with width ffafa6b
+- **@ongov/ontario-design-system-component-library:** updated how we access property && updated link example for terms of use a40aa5b
+- **@ongov/ontario-design-system-component-library:** updated scss to more accurately compute 66.66 eafc5be
+- **@ongov/ontario-design-system-component-library:** updated width for 3 cards per row b930d8f
+
 # 5.0.0-alpha.4 (2025-01-17)
 
 ### Bug Fixes
