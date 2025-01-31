@@ -30,7 +30,7 @@ To use the Ontario Design System Angular component library, follow these steps:
   ```json
   "build": {
      "options": {
-        "styles": [node_modules/@ongov/ontario-design-system-component-library-angular/dist/theme.scss]
+        "styles": ["node_modules/@ongov/ontario-design-system-component-library-angular/dist/styles/theme.scss"]
      }
   }
   ```
@@ -38,7 +38,7 @@ To use the Ontario Design System Angular component library, follow these steps:
 - Forward the theme in your main stylesheet:
 
   ```scss
-  @use '@ongov/ontario-design-system-component-library-angular/dist/theme.scss';
+  @forward '@ongov/ontario-design-system-component-library-angular/dist/component-library/styles/theme.scss';
   ```
 
 3. Import the `ComponentLibraryModule`, or whichever specific component you wish to use into your root module. The `ComponentLibraryModule` import will include all the Ontario Design System web components.
