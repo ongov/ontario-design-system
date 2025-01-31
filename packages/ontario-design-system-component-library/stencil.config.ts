@@ -60,8 +60,8 @@ export const config: Config = {
 					dest: 'i18n',
 				},
 				{
-					src: '../src/global.scss',
-					dest: 'theme.scss',
+					src: '../src/styles/theme.scss',
+					dest: 'styles/theme.scss',
 				},
 				{
 					src: '../src/styles/slotted-styles',
