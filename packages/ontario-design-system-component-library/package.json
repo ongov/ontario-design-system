@@ -18,10 +18,11 @@
 		"readme.md"
 	],
 	"scripts": {
-		"prebuild": "pnpm run build:config",
+		"prebuild": "pnpm run build:config && pnpm run build:theme",
 		"build": "pnpm run build:stencil && pnpm run format && pnpm run docs:copy:readme",
 		"build:stencil": "stencil build --docs",
 		"build:config": "ts-node scripts/build-config.ts",
+		"build:theme": "ts-node scripts/build-theme-scss.ts",
 		"clean": "rm -rf dist loader www",
 		"clean:full": "rm -rf node_modules && pnpm run clean",
 		"clean:icons": "rm -rf src/components/ontario-icon/ontario-icon-*.tsx",
