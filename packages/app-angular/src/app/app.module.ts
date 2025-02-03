@@ -14,7 +14,7 @@ import { TemporaryStorageService } from './services/temporary-storage.services.j
 
 import { AppRoutingModule } from './app-routing.module.js';
 import { AppComponent } from './app.component.js';
-import { FrameOneComponent } from './pages//frameone/frameone.component.js';
+import { FrameOneComponent } from './pages/frameone/frameone.component.js';
 import { FrameTwoComponent } from './pages/frametwo/frametwo.component.js';
 import { FrameThreeComponent } from './pages/framethree/framethree.component.js';
 import { FrameFourComponent } from './pages/framefour/framefour.component.js';

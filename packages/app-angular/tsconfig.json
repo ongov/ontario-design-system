@@ -15,9 +15,9 @@
 		"downlevelIteration": true,
 		"experimentalDecorators": true,
 		"moduleResolution": "node",
+		"module": "esnext",
 		"importHelpers": true,
 		"target": "ES2022",
-		"module": "esnext",
 		"useDefineForClassFields": false,
 		"lib": ["ES2022", "dom"],
 		"paths": {
