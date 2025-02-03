@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 // Configuration
-const sourceFolder: string = path.join(__dirname, '../src/styles/slotted-styles');
+const slottedStyleSourceFolder: string = path.join(__dirname, '../src/styles/slotted-styles');
 const outputFolder: string = path.join(__dirname, '../src/styles');
 const outputFile: string = path.join(outputFolder, 'theme.scss');
 
@@ -18,7 +18,7 @@ let scssContent: string =
 	`@forward '@ongov/ontario-design-system-global-styles/dist/styles/scss/theme.scss';\n\n`;
 
 // Get all .scss files from the source folder
-const scssFiles: string[] = fs.readdirSync(sourceFolder).filter((file: string) => file.endsWith('.scss'));
+const scssFiles: string[] = fs.readdirSync(slottedStyleSourceFolder).filter((file: string) => file.endsWith('.scss'));
 
 if (scssFiles.length === 0) {
 	console.error('No SCSS files found in the source folder.');
@@ -27,7 +27,9 @@ if (scssFiles.length === 0) {
 
 // Add imports for each file
 scssFiles.forEach((file: string) => {
-	const relativePath: string = `./${path.relative(outputFolder, path.join(sourceFolder, file)).replace(/\\/g, '/')}`;
+	const relativePath: string = `./${path
+		.relative(outputFolder, path.join(slottedStyleSourceFolder, file))
+		.replace(/\\/g, '/')}`;
 	scssContent += `@use '${relativePath}';\n`;
 });
 
