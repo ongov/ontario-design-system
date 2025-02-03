@@ -25,21 +25,21 @@ To use the Ontario Design System Angular component library, follow these steps:
 
 2. Add the theme file into your project. This can be done two main ways:
 
-- Add the theme to the build styles in your projects `angular.json` file:
+   - Add the theme to the build styles in your projects `angular.json` file:
 
-  ```json
-  "build": {
-     "options": {
-        "styles": ["node_modules/@ongov/ontario-design-system-component-library-angular/dist/styles/theme.scss"]
+     ```json
+     "build": {
+        "options": {
+           "styles": ["node_modules/@ongov/ontario-design-system-component-library-angular/dist/styles/theme.scss"]
+        }
      }
-  }
-  ```
+     ```
 
-- Forward the theme in your main stylesheet:
+   - Forward the theme in your main stylesheet:
 
-  ```scss
-  @forward '@ongov/ontario-design-system-component-library-angular/dist/component-library/styles/theme.scss';
-  ```
+     ```scss
+     @forward '@ongov/ontario-design-system-component-library-angular/dist/component-library/styles/theme.scss';
+     ```
 
 3. Import the `ComponentLibraryModule`, or whichever specific component you wish to use into your root module. The `ComponentLibraryModule` import will include all the Ontario Design System web components.
 
