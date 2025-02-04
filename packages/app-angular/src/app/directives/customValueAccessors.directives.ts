@@ -1,6 +1,6 @@
 import { Directive, HostListener } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BaseCustomValueAccessor } from './baseCustomValueAccessor.directives.js';
+import { BaseCustomValueAccessor } from './baseCustomValueAccessor.directives';
 
 @Directive({
 	selector: 'ontario-input',

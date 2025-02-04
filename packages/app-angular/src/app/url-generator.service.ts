@@ -1,4 +1,4 @@
-import { AppConfigService } from './app-config.service.js';
+import { AppConfigService } from './app-config.service';
 import { Injectable } from '@angular/core';
 
 @Injectable({

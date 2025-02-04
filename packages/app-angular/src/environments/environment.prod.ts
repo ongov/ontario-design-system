@@ -1,4 +1,4 @@
-import { AppConstants } from '../app/app.constants.js';
+import { AppConstants } from '../app/app.constants';
 
 export const environment = {
 	staging: false,

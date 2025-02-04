@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { AbstractTemporaryStorageService } from './abstract-temporary-storage.services.js';
+import { AbstractTemporaryStorageService } from './abstract-temporary-storage.services';
 
 interface StorageWrapper {
 	get<T>(key: string): Promise<T | null>;

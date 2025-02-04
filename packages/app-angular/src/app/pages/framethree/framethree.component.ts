@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { getLanguage, isEnglish } from 'src/utils/get-language.utils.js';
-import { handleBackButtonNavigationOnClick } from 'src/utils/routing.utils.js';
+import { getLanguage, isEnglish } from 'src/utils/get-language.utils';
+import { handleBackButtonNavigationOnClick } from 'src/utils/routing.utils';
 
 interface RadioButtonOption {
 	value: string;

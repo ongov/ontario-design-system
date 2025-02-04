@@ -1,12 +1,12 @@
 import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FrameOneComponent } from './pages/frameone/frameone.component.js';
-import { FrameTwoComponent } from './pages/frametwo/frametwo.component.js';
-import { FrameThreeComponent } from './pages/framethree/framethree.component.js';
-import { FrameFourComponent } from './pages/framefour/framefour.component.js';
-import { FrameFiveComponent } from './pages/framefive/framefive.component.js';
-import { FrameSixComponent } from './pages/framesix/framesix.component.js';
+import { FrameOneComponent } from './pages/frameone/frameone.component';
+import { FrameTwoComponent } from './pages/frametwo/frametwo.component';
+import { FrameThreeComponent } from './pages/framethree/framethree.component';
+import { FrameFourComponent } from './pages/framefour/framefour.component';
+import { FrameFiveComponent } from './pages/framefive/framefive.component';
+import { FrameSixComponent } from './pages/framesix/framesix.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: 'get-started', pathMatch: 'full' },

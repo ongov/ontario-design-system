@@ -1,14 +1,14 @@
 import { Component, Renderer2, OnInit, NgZone, ChangeDetectorRef } from '@angular/core';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
-import { AppConfigService } from './app-config.service.js';
-import { UrlGeneratorService } from './url-generator.service.js';
+import { AppConfigService } from './app-config.service';
+import { UrlGeneratorService } from './url-generator.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 
-import { getLanguage, isEnglish } from '../utils/get-language.utils.js';
+import { getLanguage, isEnglish } from '../utils/get-language.utils';
 
-import { isAngularPOCEnvironment } from './translation.config.js';
+import { isAngularPOCEnvironment } from './translation.config';
 
 @Component({
 	selector: 'app-root',

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TemporaryStorageService } from '../services/temporary-storage.services.js';
+import { TemporaryStorageService } from '../services/temporary-storage.services';
 
 @Injectable({
 	providedIn: 'root',

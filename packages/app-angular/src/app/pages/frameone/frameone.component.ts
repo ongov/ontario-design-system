@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { isEnglish } from 'src/utils/get-language.utils.js';
+import { isEnglish } from 'src/utils/get-language.utils';
 
 @Component({
 	selector: 'app-frame-one',
