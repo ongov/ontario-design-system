@@ -21,8 +21,7 @@ let scssContent: string =
 const scssFiles: string[] = fs.readdirSync(slottedStyleSourceFolder).filter((file: string) => file.endsWith('.scss'));
 
 if (scssFiles.length === 0) {
-	console.error('No SCSS files found in the source folder.');
-	process.exit(1);
+	console.warn('No SCSS files found in the source folder.');
 }
 
 // Add imports for each file
