@@ -194,7 +194,7 @@ _Note_: It is a best practice to include an exclamation mark (`!`) after your co
 
 ### Commits with just a prefix
 
-Sometimes commits can span more than a single scope but contain a number of changes within the same theme or action, or the scope is ambiguous. When this happens, it is recommended to break the commits down by scope. However, in cases where the commits impact multiple scopes, the scope can be omitted. All other commit message rules still apply.
+Commits will occasionally span more than a single scope but contain a number of changes within the same theme or action, or the scope is ambiguous. When this happens, it is recommended to break the commits down by scope. However, in cases where the commits impact multiple scopes, the scope can be omitted. All other commit message rules still apply.
 
 ```
 ci: update triggers for deploy/publish jobs
