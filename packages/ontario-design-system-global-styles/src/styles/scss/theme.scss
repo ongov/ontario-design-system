@@ -29,6 +29,7 @@
 @forward './1-variables/line-heights.variables';
 
 /*** 2 - Tools - Mixins and placeholders ***/
+@forward './2-tools/mixins/form-spacing.mixins';
 @forward './2-tools/mixins/global.mixins';
 @forward './2-tools/mixins/grid.mixins';
 
