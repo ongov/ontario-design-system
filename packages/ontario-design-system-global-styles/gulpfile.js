@@ -82,12 +82,14 @@ task('sass:build-minify', parallel('sass:build', 'sass:minify'));
 
 // Move all non-style related fonts to the dist/fonts folder
 task('fonts-move', () => {
-	return src(paths.fonts, { base: paths.srcDir }).pipe(dest(paths.distDir));
+	// return src(paths.fonts, { base: paths.srcDir }).pipe(dest(paths.distDir));
+	return fs.cp('./src/fonts', './dist/fonts', { recursive: true });
 });
 
 // Move all favicons to the dist/favicons folder
 task('favicons-move', () => {
-	return src(paths.favicons, { base: paths.srcDir }).pipe(dest(paths.output.favicons));
+	// return src(paths.favicons, { base: paths.srcDir }).pipe(dest(paths.output.favicons));
+	return fs.cp('./src/favicons', './dist/favicons', { recursive: true });
 });
 
 task('watch', (done) => {
