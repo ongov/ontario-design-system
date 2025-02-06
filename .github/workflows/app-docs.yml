@@ -31,7 +31,7 @@ jobs:
           path: ./packages
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build the documentation site
         run: pnpm run build-docs
@@ -44,6 +44,7 @@ jobs:
           path: | # Path to the artifacts directory
             packages/app-web-components-documentation
             !**/node_modules/**/*
+          if-no-files-found: error # Fail if no files are found
 
   publish-documentation-app:
     needs: ['build-documentation-app']
@@ -69,9 +70,6 @@ jobs:
         with:
           name: build-artifacts-docs # Artifact name (must match upload name)
           path: .
-
-      # - name: Install dependencies
-      #   run: pnpm install
 
       - name: Deploy documentation app
         run: aws s3 sync packages/app-web-components-documentation/build s3://${S3_DEPLOY_BUCKET}/${DOCS_ENDPOINT}/ --delete

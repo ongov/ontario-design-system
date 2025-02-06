@@ -21,6 +21,12 @@ jobs:
       # Checkout the repo
       - uses: actions/checkout@v4
 
+      # Install pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       # Setup Node.js
       - name: Use Node.js ${{ inputs.node-version }}
         uses: actions/setup-node@v4
@@ -29,13 +35,13 @@ jobs:
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
 
-      # Install dependencies
+      # Install dependencies with lockfile verification
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       # Build the project
       - name: Build the project
-        run: pnpm run build-libs --if-present
+        run: pnpm run build-libs
 
       # Upload build artifacts
       - name: Upload build artifacts
