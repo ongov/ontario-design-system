@@ -17,6 +17,7 @@ const paths = {
 	output: {
 		theme: './dist/styles/css/compiled',
 		fonts: './dist/misc/',
+		fontsDist: './dist/fonts/',
 		styles: './dist/styles/',
 		favicons: './dist/favicons',
 	},
