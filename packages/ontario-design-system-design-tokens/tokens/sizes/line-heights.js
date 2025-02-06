@@ -9,5 +9,5 @@ module.exports = {
 		6: { value: '1.43' },
 		7: { value: '1.5' },
 		8: { value: '1.56' },
-	}
+	},
 };

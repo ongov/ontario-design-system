@@ -150,6 +150,10 @@ const Layout = ({ children }: any) => {
 					frenchLink: '#',
 				}}
 				menuItems={menuLinks}
+				// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+				placeholder=""
+				onPointerEnterCapture={() => {}}
+				onPointerLeaveCapture={() => {}}
 			/>
 			<main>{children}</main>
 			<OntarioFooter
@@ -178,6 +182,10 @@ const Layout = ({ children }: any) => {
 						},
 					},
 				}}
+				// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+				placeholder={''}
+				onPointerEnterCapture={() => {}}
+				onPointerLeaveCapture={() => {}}
 			/>
 		</>
 	);

@@ -49,6 +49,9 @@ export default function ExpandedFooterCodeExample() {
 					<h4>Example</h4>
 					<div className="ontario-margin-top-24-!">
 						<OntarioFooter
+							placeholder=""
+							onPointerEnterCapture={() => {}}
+							onPointerLeaveCapture={() => {}}
 							type="threeColumn"
 							socialLinks={{
 								facebook: '#',

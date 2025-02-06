@@ -26,8 +26,8 @@ Using [Lerna](https://github.com/lerna/lerna), this project is made up of multip
 The fastest way to hit the ground running is to run,
 
 ```bash
-npm install # Install install the root packages
-npm run refresh # Ready the project for development
+pnpm install # Install the root packages
+pnpm run refresh # Ready the project for development
 ```
 
 _Note_: The `refresh` script encompass cleaning, bootstrapping, and building of all the core Ontario Design System npm packages within the repository.
@@ -41,17 +41,7 @@ Firstly, Lerna needs to be installed at the root level of the project.
 At the repository root run,
 
 ```bash
-npm install
-```
-
-### Bootstrapping Project Packages
-
-Next, each repository needs to be bootstrapped to setup and link all the dependencies.
-
-While at repository root run,
-
-```bash
-npm run bootstrap
+pnpm install
 ```
 
 ### Building `ontario-design-system` Packages
@@ -61,7 +51,7 @@ The `ontario-design-system` packages are all designed to be published as npm pac
 Simply run at the root of the repository,
 
 ```bash
-npm run build-libs
+pnpm run build-libs
 ```
 
 This will build the packages that are marked as public and prep them for use with any app.
@@ -83,7 +73,7 @@ Wanting to build and test within one of the framework applications? Running the 
 The library can be built independently by running,
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ### `ontario-design-system-global-styles`
@@ -97,7 +87,7 @@ Wanting to build and test within one of the framework applications? Running the 
 The library can be built independently by running,
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ### `ontario-design-system-component-library`
@@ -113,7 +103,7 @@ Wanting to build and test within one of the framework applications? Running the 
 The library can be built independently by running,
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 #### Component Development
@@ -123,7 +113,7 @@ The project contains an HTML file called `index.html` that is immediately loaded
 A development server can be run by running,
 
 ```bash
-npm run start
+pnpm run start
 ```
 
 ##### Generating a New Component
@@ -155,7 +145,7 @@ Wanting to build and test within one of the framework applications? Running the 
 The library can be built independently by running,
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ### `ontario-design-system-component-library-angular`
@@ -171,7 +161,7 @@ Wanting to build and test within one of the framework applications? Running the 
 The library can be built independently by running,
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ### `app-react`
@@ -183,7 +173,7 @@ A React frontend to show off the whole process, from `ontario-design-system-comp
 The application can be run in development by running,
 
 ```bash
-npm run start
+pnpm run start
 ```
 
 #### Building the App for Production
@@ -191,7 +181,7 @@ npm run start
 The application can be build for production by running,
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ### `app-angular`
@@ -203,7 +193,7 @@ A Angular frontend to show off the whole process, from `ontario-design-system-co
 The application can be run in development by running,
 
 ```bash
-npm run start
+pnpm run start
 ```
 
 #### Building the App for Production
@@ -211,7 +201,7 @@ npm run start
 The application can be build for production by running,
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ### `app-web-components-documentation`
@@ -227,7 +217,7 @@ To update the documentation, simply rebuild the libraries and then re-run the de
 The application can be run in development by running,
 
 ```bash
-npm run start
+pnpm run start
 ```
 
 This will start a development server that can be used to test out changes to the documentation.
@@ -237,7 +227,7 @@ This will start a development server that can be used to test out changes to the
 The application can be build for production by running,
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ## Package/Project Clean-up
@@ -251,7 +241,7 @@ The `clean` script is used to clean up any build artefacts that might be produce
 In any project, or at the root of the repository run,
 
 ```bash
-npm run clean
+pnpm run clean
 ```
 
 If run at the root of the repository Lerna will execute each package's `clean` script, allowing the entire project to be cleaned up.
@@ -263,7 +253,7 @@ The `clean:full` script is used to clean any build artefacts as well as nuke the
 In any project, or at the root of the repository run,
 
 ```bash
-npm run clean:full
+pnpm run clean:full
 ```
 
 If run at root this will run the `clean:full` script on each package, which will clean build artefacts and nuke the `node_modules` directory. _The root level `node_modules` directory will not be touched._ This makes sure that Lerna is left around.

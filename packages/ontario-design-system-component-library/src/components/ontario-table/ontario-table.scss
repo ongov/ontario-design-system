@@ -28,14 +28,22 @@ $ontario-table-caption-custom-spacing: spacing.$spacing-4 + math.div(spacing.$sp
 }
 
 .ontario-table-div {
-	background: linear-gradient(to right, colours.$ontario-colour-white 30%, $ontario-table-shadow--cover),
+	background:
+		linear-gradient(to right, colours.$ontario-colour-white 30%, $ontario-table-shadow--cover),
 		linear-gradient(to right, $ontario-table-shadow--cover, colours.$ontario-colour-white 70%) 0 100%,
 		linear-gradient(to right, $ontario-table-shadow--black 0%, $ontario-table-shadow--clear 100.01%),
 		linear-gradient(to left, $ontario-table-shadow--black 0%, $ontario-table-shadow--clear 100.01%);
 	background-repeat: no-repeat;
-	background-size: globalFunctions.px-to-rem(40) 100%, globalFunctions.px-to-rem(40) 100%,
-		globalFunctions.px-to-rem(14) 100%, globalFunctions.px-to-rem(14) 100%;
-	background-position: 0 0, 100%, 0 0, 100%;
+	background-size:
+		globalFunctions.px-to-rem(40) 100%,
+		globalFunctions.px-to-rem(40) 100%,
+		globalFunctions.px-to-rem(14) 100%,
+		globalFunctions.px-to-rem(14) 100%;
+	background-position:
+		0 0,
+		100%,
+		0 0,
+		100%;
 	background-attachment: local, local, scroll, scroll;
 	overflow-x: auto;
 

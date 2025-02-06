@@ -103,7 +103,9 @@ $ontario-navigation-container-min-width: 290px;
 	background: white;
 	position: absolute;
 	transform: translateY(-100%);
-	transition: transform 0.3s ease-in-out, visibility 0.1s ease;
+	transition:
+		transform 0.3s ease-in-out,
+		visibility 0.1s ease;
 	width: 100%;
 	visibility: hidden;
 	z-index: zIndex.$ontario-z-index-above-high;
@@ -240,7 +242,9 @@ $ontario-navigation-container-min-width: 290px;
 	background: colours.$ontario-colour-white;
 	position: absolute;
 	transform: translateY(-100%);
-	transition: transform 0.3s ease-in-out, visibility 0.1s ease;
+	transition:
+		transform 0.3s ease-in-out,
+		visibility 0.1s ease;
 	width: 100%;
 	visibility: hidden;
 	z-index: zIndex.$ontario-z-index-above-high;
@@ -664,7 +668,9 @@ input[type='reset'].ontario-header__search-reset {
 	background: colours.$ontario-colour-white;
 	position: absolute;
 	transform: translateY(-100%);
-	transition: transform 0.3s ease-in-out, visibility 0.1s ease;
+	transition:
+		transform 0.3s ease-in-out,
+		visibility 0.1s ease;
 	width: 100%;
 	visibility: hidden;
 	z-index: zIndex.$ontario-z-index-above-high;

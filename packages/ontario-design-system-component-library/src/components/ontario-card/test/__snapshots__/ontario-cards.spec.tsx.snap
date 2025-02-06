@@ -2,7 +2,7 @@
 
 exports[`ontario-card renders 1`] = `
 <ontario-card>
-  <mock:shadow-root>
+  <template shadowrootmode="open">
     <li class="ontario-card ontario-card--position-vertical ontario-card__card-type--basic ontario-card__description-false">
       <div class="ontario-card__text-container">
         <h2 class="ontario-card__heading">
@@ -10,13 +10,13 @@ exports[`ontario-card renders 1`] = `
         </h2>
       </div>
     </li>
-  </mock:shadow-root>
+  </template>
 </ontario-card>
 `;
 
 exports[`ontario-card should render a description 1`] = `
 <ontario-card description="Lorem ipsum">
-  <mock:shadow-root>
+  <template shadowrootmode="open">
     <li class="ontario-card ontario-card--position-vertical ontario-card__card-type--basic">
       <div class="ontario-card__text-container">
         <h2 class="ontario-card__heading">
@@ -29,13 +29,13 @@ exports[`ontario-card should render a description 1`] = `
         </div>
       </div>
     </li>
-  </mock:shadow-root>
+  </template>
 </ontario-card>
 `;
 
 exports[`ontario-card should render a header colour on the label 1`] = `
 <ontario-card header-colour="sky" label="Card Title 1">
-  <mock:shadow-root>
+  <template shadowrootmode="open">
     <li class="ontario-card ontario-card--position-vertical ontario-card__background--sky ontario-card__card-type--basic ontario-card__description-false">
       <div class="ontario-card__text-container">
         <h2 class="ontario-card__heading ontario-card__heading--sky">
@@ -45,13 +45,13 @@ exports[`ontario-card should render a header colour on the label 1`] = `
         </h2>
       </div>
     </li>
-  </mock:shadow-root>
+  </template>
 </ontario-card>
 `;
 
 exports[`ontario-card should render a label 1`] = `
 <ontario-card label="Card Title 1">
-  <mock:shadow-root>
+  <template shadowrootmode="open">
     <li class="ontario-card ontario-card--position-vertical ontario-card__card-type--basic ontario-card__description-false">
       <div class="ontario-card__text-container">
         <h2 class="ontario-card__heading">
@@ -61,6 +61,6 @@ exports[`ontario-card should render a label 1`] = `
         </h2>
       </div>
     </li>
-  </mock:shadow-root>
+  </template>
 </ontario-card>
 `;

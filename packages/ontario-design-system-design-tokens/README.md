@@ -22,7 +22,7 @@ It forms the base of the the Ontario Design System NPM packages, but can also be
 The Ontario Design System design tokens package can be installed by running the following command in your terminal:
 
 ```bash
-npm install --save @ongov/ontario-design-system-design-tokens
+pnpm install --save @ongov/ontario-design-system-design-tokens
 ```
 
 ### Using the design tokens package

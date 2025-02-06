@@ -2,7 +2,7 @@
 
 exports[`ontario-loading-indicator should render the expected html 1`] = `
 <ontario-loading-indicator>
-  <mock:shadow-root>
+  <template shadowrootmode="open">
     <div aria-hidden="true" aria-live="assertive" class="ontario-loading-indicator__overlay" role="alert">
       <div class="ontario-loading-indicator">
         <svg class="ontario-loading-indicator__spinner" viewBox="25 25 50 50" xmlns="http://www.w3.org/2000/svg">
@@ -13,6 +13,6 @@ exports[`ontario-loading-indicator should render the expected html 1`] = `
         </p>
       </div>
     </div>
-  </mock:shadow-root>
+  </template>
 </ontario-loading-indicator>
 `;

@@ -17,7 +17,10 @@ export class FrameTwoComponent implements OnInit {
 	public lang = getLanguage();
 	public formData: NewAccountFormData = { email: '', pin: '' };
 
-	constructor(private translateService: TranslateService, private storageUtilsService: StorageUtilsService) {}
+	constructor(
+		private translateService: TranslateService,
+		private storageUtilsService: StorageUtilsService,
+	) {}
 
 	getTranslation() {
 		const PINHintExpanderLabel = this.translateService.instant('form.questions.createAccount.PINHintExpanderLabel');
