@@ -44,16 +44,6 @@ At the repository root run,
 pnpm install
 ```
 
-### Bootstrapping Project Packages
-
-Next, each repository needs to be bootstrapped to setup and link all the dependencies.
-
-While at repository root run,
-
-```bash
-pnpm run bootstrap
-```
-
 ### Building `ontario-design-system` Packages
 
 The `ontario-design-system` packages are all designed to be published as npm packages. In order to do any development, or to just build the project in general, the packages have to be built/updated before they can be used.
