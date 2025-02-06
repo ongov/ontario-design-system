@@ -8,8 +8,8 @@ const paths = {
 		theme: './src/styles/scss/theme.scss',
 		fonts: './src/misc/ontario-design-system-fonts.scss',
 	},
-	fonts: './src/fonts/**',
-	favicons: './src/favicons/*',
+	fonts: './src/fonts',
+	favicons: './src/favicons',
 	dsTokens: {
 		src: '../ontario-design-system-design-tokens/dist/scss/_variables.scss',
 		dest: './dist/styles/scss/1-variables/_tokens.variables.scss',
