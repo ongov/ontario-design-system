@@ -26,6 +26,10 @@ const compileSass = (input, outputFile, options) => {
 		loadPaths: ['./node_modules'],
 	};
 
+	if (opts.debug) {
+		sassOptions.sourceComments = true;
+	}
+
 	return src(input, { sourcemaps: options.sourcemaps })
 		.pipe(sass(sassOptions).on('error', sass.logError))
 		.pipe(gulpif(options.compress, concat(`${outputFile}.min.css`), concat(`${outputFile}.css`)))
