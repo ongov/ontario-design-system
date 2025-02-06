@@ -24,6 +24,7 @@ export default function DefaultFooterCodeExample() {
 			href: 'https://www.ontario.ca/page/terms-use'
 		},
 		printerLink: {
+			text: 'Printer',
 			href: 'https://www.ontario.ca/page/copyright-information'
 		}
 	}}
@@ -52,6 +53,7 @@ export default function DefaultFooterCodeExample() {
 								href: 'https://www.ontario.ca/feedback/contact-us',
 							},
 							printerLink: {
+								text: 'printer',
 								href: 'https://www.ontario.ca/page/copyright-information',
 							},
 						}}

@@ -26,7 +26,7 @@ const compileSass = (input, outputFile, options) => {
 		loadPaths: ['./node_modules'],
 	};
 
-	if (opts.debug) {
+	if (options.debug) {
 		sassOptions.sourceComments = true;
 	}
 
