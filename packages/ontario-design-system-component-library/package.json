@@ -18,7 +18,7 @@
 		"readme.md"
 	],
 	"scripts": {
-		"prebuild": "pnpm run build:config",
+		"prebuild": "pnpm run build:config && pnpm run build:theme",
 		"build": "pnpm run build:stencil && pnpm run format && pnpm run docs:copy:readme",
 		"build:stencil": "stencil build --docs",
 		"build:config": "ts-node scripts/build-config.ts",
