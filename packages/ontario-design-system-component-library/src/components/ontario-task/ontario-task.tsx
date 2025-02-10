@@ -1,7 +1,7 @@
 import { h, Component, Prop, Watch, State, Listen } from '@stencil/core';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { TaskStatuses } from './ontario-task-statuses';
-import { validateLanguage } from '../../utils/validation/validation-functions';
+import { TaskStatuses, TaskStatus, BadgeColors } from './ontario-task-statuses';
+import { validateLanguage, validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { Hint } from '../../utils/common/common.interface';
 import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
@@ -20,13 +20,6 @@ export class OntarioTask {
 	 * This is required to provide the name of the task.
 	 */
 	@Prop() label: string;
-
-	/**
-	 * Defines the status of the task, with default set to 'NotStarted'.
-	 *
-	 * Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`.
-	 */
-	@Prop() taskStatus: TaskStatuses = TaskStatuses.NotStarted;
 
 	/**
 	 * Specifies an optional link associated with the task.
@@ -57,7 +50,14 @@ export class OntarioTask {
 	@Prop() hintText?: string | Hint;
 
 	/**
-	 * Used for the `aria-describedby` value of the task. This will match with the id of the hint text.
+	 * Defines the status of the task, with default set to 'NotStarted'.
+	 *
+	 * Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`.
+	 */
+	@Prop() taskStatus: TaskStatus;
+
+	/**
+	 * Used for the `aria-describedby` value of the task's label. This will match with the id of the hint text.
 	 */
 	@State() hintTextId: string | null | undefined;
 
@@ -67,25 +67,42 @@ export class OntarioTask {
 	@State() private internalHintText: Hint;
 
 	/**
-	 * Watches for changes to `taskStatus` to validate its value.
+	 * Mutable variable, for internal use only.
 	 *
-	 * If `taskStatus` is invalid, resets to default 'NotStarted' and logs a warning.
+	 * Set the task's status state depending on validation result.
+	 */
+	@State() private taskStatusState: TaskStatus;
+
+	/**
+	 * Watch for changes in `taskStatus` prop to validate its value.
 	 */
 	@Watch('taskStatus')
 	validateTaskStatus() {
-		this.taskStatus = this.normalizeStatus(this.taskStatus);
-		const validStatuses = Object.values(TaskStatuses);
-
-		if (!validStatuses.includes(this.taskStatus)) {
-			this.warnDefaultTaskStatus();
-			this.taskStatus = TaskStatuses.NotStarted;
-		}
+		const isValidStatus = validateValueAgainstArray(this.taskStatus, TaskStatuses);
+		this.taskStatusState = isValidStatus ? this.taskStatus : this.warnDefaultTaskStatus();
 	}
 
 	/**
-	 * Watch for changes to the `hintText` prop.
-	 *
-	 * If a `hintText` prop is passed, the `constructHintTextObject` function will convert it to the correct format, and set the result to the `internalHintText` state.
+	 * Display a console warning if `taskStatus` is invalid and set to a default value.
+	 */
+	private warnDefaultTaskStatus(): TaskStatus {
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addMonospaceText(' taskStatus ')
+			.addRegularText('on')
+			.addMonospaceText(' <ontario-task> ')
+			.addRegularText('was set to an invalid taskStatus; only ')
+			.addMonospaceText(TaskStatuses.join(', '))
+			.addRegularText(' are supported. The default taskStatus ')
+			.addMonospaceText('notStarted')
+			.addRegularText(' is assumed.')
+			.printMessage();
+		return 'notStarted';
+	}
+
+	/**
+	 * Watch for changes in `hintText` prop and parse it if available.
 	 */
 	@Watch('hintText')
 	private parseHintText() {
@@ -96,7 +113,7 @@ export class OntarioTask {
 	}
 
 	/**
-	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the textarea component loads.
+	 * Listen for app language settings on the window to update the component language.
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
 	handleSetAppLanguage(event: CustomEvent<Language>) {
@@ -105,66 +122,43 @@ export class OntarioTask {
 		}
 	}
 
+	/**
+	 * Listen for header language toggling events to update the language dynamically.
+	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
 	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
 		this.language = validateLanguage(event);
 	}
 
 	/**
-	 * Normalizes the `taskStatus` value, allowing flexible input.
-	 *
-	 * Converts status strings to lowercase without spaces for easier comparison.
+	 * Determines the badge color based on the current `taskStatusState`.
 	 */
-	private normalizeStatus(status: string): TaskStatuses {
-		const normalizedStatus = status.toLowerCase().replace(/\s/g, '');
-		if (normalizedStatus.includes('complete')) return TaskStatuses.Completed;
-		if (normalizedStatus.includes('progress')) return TaskStatuses.InProgress;
-		return TaskStatuses.NotStarted;
-	}
-
-	/**
-	 * Determines the badge color based on the current task status.
-	 *
-	 * Returns one of 'light-teal', 'grey', or 'black'.
-	 */
-	private badgeColors: Record<TaskStatuses, string> = {
-		[TaskStatuses.Completed]: 'black',
-		[TaskStatuses.InProgress]: 'light-teal',
-		[TaskStatuses.NotStarted]: 'grey',
-	};
-
 	private getBadgeColor(): 'black' | 'light-teal' | 'grey' {
-		return this.badgeColors[this.normalizeStatus(this.taskStatus)] as 'black' | 'light-teal' | 'grey';
+		return BadgeColors[this.taskStatusState];
 	}
 
 	/**
-	 * Provides a translated string for the current task status.
-	 *
-	 * Returns status label in either French or English based on the `language` prop.
+	 * Provides a translated task status string based on the current language.
 	 */
 	private getTranslatedTaskStatus(): string {
-		const normalizedStatus = this.normalizeStatus(this.taskStatus);
-
-		const translations: Record<'en' | 'fr', Record<TaskStatuses, string>> = {
+		const translations: Record<'en' | 'fr', Record<TaskStatus, string>> = {
 			en: {
-				[TaskStatuses.Completed]: 'Completed',
-				[TaskStatuses.InProgress]: 'In Progress',
-				[TaskStatuses.NotStarted]: 'Not Started',
+				notStarted: 'Not Started',
+				inProgress: 'In Progress',
+				completed: 'Completed',
 			},
 			fr: {
-				[TaskStatuses.Completed]: 'Terminé',
-				[TaskStatuses.InProgress]: 'En cours',
-				[TaskStatuses.NotStarted]: 'Pas commencé',
+				notStarted: 'Pas commencé',
+				inProgress: 'En cours',
+				completed: 'Terminé',
 			},
 		};
-
-		if ((this.language === 'en' || this.language === 'fr') && translations[this.language][normalizedStatus]) {
-			return translations[this.language][normalizedStatus];
-		}
-
-		return translations[this.language === 'fr' ? 'fr' : 'en'][TaskStatuses.NotStarted];
+		return translations[this.language === 'fr' ? 'fr' : 'en'][this.taskStatusState];
 	}
 
+	/**
+	 * Renders hint text if available.
+	 */
 	private renderHintText() {
 		if (this.internalHintText) {
 			return (
@@ -178,17 +172,20 @@ export class OntarioTask {
 		return null;
 	}
 
+	/**
+	 * Renders the task label and status content.
+	 */
 	private renderTaskContent() {
 		return (
 			<div class="ontario-task__content">
 				<h2 id="task-label" class="ontario-task__label" aria-label={this.label}>
 					{this.label}
 				</h2>
-				{this.taskStatus && (
+				{this.taskStatusState && (
 					<ontario-badge
 						class="ontario-task__badge"
 						role="status"
-						aria-label={`Task status: ${this.getTranslatedTaskStatus()} ${this.taskStatus}`}
+						aria-label={`Task status: ${this.getTranslatedTaskStatus()} (${this.taskStatusState})`}
 						colour={this.getBadgeColor()}
 					>
 						{this.getTranslatedTaskStatus()}
@@ -198,26 +195,6 @@ export class OntarioTask {
 		);
 	}
 
-	/**
-	 * Logs a warning message if an invalid task status is provided.
-	 *
-	 * Notifies the user that the default 'NotStarted' status is used instead.
-	 */
-	private warnDefaultTaskStatus() {
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' taskStatus ')
-			.addRegularText('on')
-			.addMonospaceText(' <ontario-task> ')
-			.addRegularText('was set to an invalid taskStatus; only ')
-			.addMonospaceText(Object.values(TaskStatuses).join(', '))
-			.addRegularText(' are supported. The default taskStatus ')
-			.addMonospaceText('NotStarted')
-			.addRegularText(' is assumed.')
-			.printMessage();
-	}
-
 	async componentDidLoad() {
 		this.hintTextId = await this.hintTextRef?.getHintTextId();
 	}
@@ -225,6 +202,7 @@ export class OntarioTask {
 	componentWillLoad() {
 		this.parseHintText();
 		this.language = validateLanguage(this.language);
+		this.validateTaskStatus();
 	}
 
 	render() {
