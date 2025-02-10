@@ -1,4 +1,4 @@
-import { h, Component, Prop, Watch, State, Listen } from '@stencil/core';
+import { h, Component, Prop, Watch, State, Listen, Element, Fragment } from '@stencil/core';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { TaskStatuses, TaskStatus, TaskBadgeColour, TaskToBadgeColour } from './ontario-task-statuses';
 import { validateLanguage, validateValueAgainstArray } from '../../utils/validation/validation-functions';
@@ -13,6 +13,8 @@ import translations from '../../translations/global.i18n.json';
 	shadow: true,
 })
 export class OntarioTask {
+	@Element() el: HTMLElement;
+
 	hintTextRef?: HTMLOntarioHintTextElement;
 
 	/**
@@ -60,7 +62,7 @@ export class OntarioTask {
 	/**
 	 * Used for the `aria-describedby` value of the task's label. This will match with the id of the hint text.
 	 */
-	@State() hintTextId: string | null | undefined;
+	@State() private hintTextId: string | null | undefined;
 
 	/**
 	 * The hint text options are re-assigned to the internalHintText array.
@@ -84,7 +86,13 @@ export class OntarioTask {
 	}
 
 	/**
-	 * Display a console warning if `taskStatus` is invalid and set to a default value.
+	 * Logs a warning to the console if the `taskStatus` prop is set to an invalid value.
+	 *
+	 * This function informs developers that the provided `taskStatus` is not recognized
+	 * and resets the status to the default value of `'notStarted'`. The warning message
+	 * specifies the valid task statuses to help guide correct usage.
+	 *
+	 * @returns The default task status `'notStarted'`.
 	 */
 	private warnAndGetDefaultTaskStatus(): TaskStatus {
 		const message = new ConsoleMessageClass();
@@ -124,7 +132,8 @@ export class OntarioTask {
 	}
 
 	/**
-	 * Listen for header language toggling events to update the language dynamically.
+	 * This listens for the `headerLanguageToggled` event sent from the language toggle when it is is connected to the DOM.
+	 * It is used for changing the component language after the language toggle has been activated.
 	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
 	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
@@ -165,7 +174,7 @@ export class OntarioTask {
 	}
 
 	private getClass(): string {
-		return this.hintText ? `ontario-task__label ontario-task__hint-text--true` : `ontario-task__label`;
+		return ['ontario-task__label', this.hintText && 'ontario-task__hint-text--true'].filter(Boolean).join(' ');
 	}
 
 	/**
@@ -194,17 +203,29 @@ export class OntarioTask {
 	}
 
 	async componentDidLoad() {
-		this.hintTextId = await this.hintTextRef?.getHintTextId();
+		const hintId = await this.hintTextRef?.getHintTextId();
+		this.hintTextId = hintId || 'default-hint-id'; // Fallback to a default value
+		this.el.setAttribute('data-task-status', this.getTranslatedTaskStatus());
 	}
 
 	componentWillLoad() {
 		this.parseHintText();
 		this.language = validateLanguage(this.language);
 		this.validateTaskStatus();
+
+		this.hintTextId = 'default-hint-id';
 	}
 
 	render() {
 		const isLinkActive = this.link && !this.deactivateLink;
+
+		const taskContent = (
+			<Fragment>
+				{this.renderTaskContent()}
+				{this.renderHintText()}
+			</Fragment>
+		);
+
 		return (
 			<article class="ontario-task" role="group" aria-labelledby="task-label" aria-describedby={this.hintTextId}>
 				{isLinkActive ? (
@@ -215,14 +236,10 @@ export class OntarioTask {
 						class="ontario-task__link"
 						aria-label={`${this.label} ${translations.newWindow[validateLanguage(this.language)]}`}
 					>
-						{this.renderTaskContent()}
-						{this.renderHintText()}
+						{taskContent}
 					</a>
 				) : (
-					<div>
-						{this.renderTaskContent()}
-						{this.renderHintText()}
-					</div>
+					<div>{taskContent}</div>
 				)}
 			</article>
 		);

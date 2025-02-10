@@ -1,13 +1,16 @@
-export const TaskStatuses = ['notStarted', 'inProgress', 'completed', 'cannotStartYet', 'error', 'optional'] as const;
-export type TaskStatus = (typeof TaskStatuses)[number];
-
+// Define a single map for task statuses and their corresponding badge colours
 export const TaskToBadgeColour = {
-	notStarted: 'light-teal',
+	notStarted: 'lightTeal',
 	inProgress: 'teal',
 	completed: 'white',
-	cannotStartYet: 'dark-grey',
+	cannotStartYet: 'darkGrey',
 	error: 'red',
 	optional: 'grey',
 } as const;
 
-export type TaskBadgeColour = (typeof TaskToBadgeColour)[keyof typeof TaskToBadgeColour];
+// Derive the TaskStatuses from the keys of TaskToBadgeColour
+export type TaskStatus = keyof typeof TaskToBadgeColour;
+export const TaskStatuses = Object.keys(TaskToBadgeColour) as TaskStatus[];
+
+// Define the type for badge colours
+export type TaskBadgeColour = (typeof TaskToBadgeColour)[TaskStatus];

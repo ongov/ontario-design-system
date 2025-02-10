@@ -3745,13 +3745,15 @@ export class OntarioTask {
 
 export declare interface OntarioTask extends Components.OntarioTask {}
 
-@ProxyCmp({})
+@ProxyCmp({
+	inputs: ['label', 'language'],
+})
 @Component({
 	selector: 'ontario-task-list',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: [],
+	inputs: ['label', 'language'],
 })
 export class OntarioTaskList {
 	protected el: HTMLElement;
