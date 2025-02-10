@@ -6,37 +6,6 @@ settings:
 
 importers:
   .:
-    optionalDependencies:
-      '@nrwl/nx-darwin-arm64':
-        specifier: 15.9.3
-        version: 15.9.3
-      '@nrwl/nx-darwin-x64':
-        specifier: 15.9.3
-        version: 15.9.3
-      '@nrwl/nx-linux-arm-gnueabihf':
-        specifier: 15.9.3
-        version: 15.9.3
-      '@nrwl/nx-linux-arm64-gnu':
-        specifier: 15.9.3
-        version: 15.9.3
-      '@nrwl/nx-linux-arm64-musl':
-        specifier: 15.9.3
-        version: 15.9.3
-      '@nrwl/nx-linux-x64-gnu':
-        specifier: 15.9.3
-        version: 15.9.3
-      '@nrwl/nx-linux-x64-musl':
-        specifier: 15.9.3
-        version: 15.9.3
-      '@nrwl/nx-win32-arm64-msvc':
-        specifier: 15.9.3
-        version: 15.9.3
-      '@nrwl/nx-win32-x64-msvc':
-        specifier: 15.9.3
-        version: 15.9.3
-      bl:
-        specifier: ^6.0.18
-        version: 6.0.18
     devDependencies:
       '@commitlint/cli':
         specifier: ^19.5.0
@@ -89,6 +58,37 @@ importers:
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@22.10.10)(typescript@5.7.3)
+    optionalDependencies:
+      '@nrwl/nx-darwin-arm64':
+        specifier: 15.9.3
+        version: 15.9.3
+      '@nrwl/nx-darwin-x64':
+        specifier: 15.9.3
+        version: 15.9.3
+      '@nrwl/nx-linux-arm-gnueabihf':
+        specifier: 15.9.3
+        version: 15.9.3
+      '@nrwl/nx-linux-arm64-gnu':
+        specifier: 15.9.3
+        version: 15.9.3
+      '@nrwl/nx-linux-arm64-musl':
+        specifier: 15.9.3
+        version: 15.9.3
+      '@nrwl/nx-linux-x64-gnu':
+        specifier: 15.9.3
+        version: 15.9.3
+      '@nrwl/nx-linux-x64-musl':
+        specifier: 15.9.3
+        version: 15.9.3
+      '@nrwl/nx-win32-arm64-msvc':
+        specifier: 15.9.3
+        version: 15.9.3
+      '@nrwl/nx-win32-x64-msvc':
+        specifier: 15.9.3
+        version: 15.9.3
+      bl:
+        specifier: ^6.0.18
+        version: 6.0.18
 
   packages/app-angular:
     dependencies:
@@ -194,7 +194,7 @@ importers:
         version: 4.3.1-alpha.1
       '@ongov/ontario-design-system-global-styles':
         specifier: 5.0.0-alpha.3
-        version: 5.0.0-alpha.3
+        version: link:../ontario-design-system-global-styles
       '@testing-library/jest-dom':
         specifier: ^6.6.3
         version: 6.6.3
@@ -298,13 +298,13 @@ importers:
     dependencies:
       '@ongov/ontario-design-system-component-library':
         specifier: 5.0.0-alpha.5
-        version: 5.0.0-alpha.5
+        version: link:../ontario-design-system-component-library
       '@ongov/ontario-design-system-design-tokens':
         specifier: 4.3.1-alpha.1
-        version: 4.3.1-alpha.1
+        version: link:../ontario-design-system-design-tokens
       '@ongov/ontario-design-system-global-styles':
         specifier: 5.0.0-alpha.3
-        version: 5.0.0-alpha.3
+        version: link:../ontario-design-system-global-styles
     devDependencies:
       glob:
         specifier: ^11.0.0
@@ -344,7 +344,7 @@ importers:
     dependencies:
       '@ongov/ontario-design-system-global-styles':
         specifier: 5.0.0-alpha.3
-        version: 5.0.0-alpha.3
+        version: link:../ontario-design-system-global-styles
       '@stencil/core':
         specifier: ^4.23.0
         version: 4.25.1
@@ -462,10 +462,10 @@ importers:
         version: 18.2.13(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.13(@angular/animations@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1)
       '@ongov/ontario-design-system-component-library':
         specifier: 5.0.0-alpha.5
-        version: 5.0.0-alpha.5
+        version: link:../ontario-design-system-component-library
       '@ongov/ontario-design-system-global-styles':
         specifier: 5.0.0-alpha.3
-        version: 5.0.0-alpha.3
+        version: link:../ontario-design-system-global-styles
       copyfiles:
         specifier: ^2.4.1
         version: 2.4.1
@@ -510,8 +510,8 @@ importers:
   packages/ontario-design-system-component-library-react:
     dependencies:
       '@ongov/ontario-design-system-component-library':
-        specifier: ^5.0.0-alpha.5
-        version: 5.0.0-alpha.5
+        specifier: 5.0.0-alpha.5
+        version: link:../ontario-design-system-component-library
       '@stencil/react-output-target':
         specifier: ^0.7.4
         version: 0.7.4(@stencil/core@4.25.1)(@types/react@18.3.12)(react@18.3.1)
@@ -563,7 +563,7 @@ importers:
     devDependencies:
       '@ongov/ontario-design-system-design-tokens':
         specifier: 4.3.1-alpha.1
-        version: 4.3.1-alpha.1
+        version: link:../ontario-design-system-design-tokens
       gulp:
         specifier: ^5.0.0
         version: 5.0.0
