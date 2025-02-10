@@ -1,6 +1,10 @@
-import { h, Component, Prop, Watch } from '@stencil/core';
+import { h, Component, Prop, Watch, State, Listen } from '@stencil/core';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { TaskStatuses } from './ontario-task-statuses';
+import { validateLanguage } from '../../utils/validation/validation-functions';
+import { Hint } from '../../utils/common/common.interface';
+import { Language } from '../../utils/common/language-types';
+import { constructHintTextObject } from '../../utils/components/hints/hints';
 
 @Component({
 	tag: 'ontario-task',
@@ -8,19 +12,14 @@ import { TaskStatuses } from './ontario-task-statuses';
 	shadow: true,
 })
 export class OntarioTask {
+	hintTextRef: HTMLOntarioHintTextElement | undefined;
+
 	/**
 	 * Specifies the label of the task.
 	 *
 	 * This is required to provide the name of the task.
 	 */
 	@Prop() label: string;
-
-	/**
-	 * Provides an optional hint or description for the task.
-	 *
-	 * This is optional.
-	 */
-	@Prop() hint?: string;
 
 	/**
 	 * Defines the status of the task, with default set to 'NotStarted'.
@@ -44,11 +43,28 @@ export class OntarioTask {
 	@Prop() deactivateLink: boolean = false;
 
 	/**
-	 * Defines the language for the component, either 'en' or 'fr'.
+	 * The language of the component.
 	 *
-	 * Default is 'en'.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
 	 */
-	@Prop() language: 'en' | 'fr' = 'en';
+	@Prop({ mutable: true }) language?: Language;
+
+	/**
+	 * Used to include the ontario-hint-text component for the task.
+	 *
+	 * This is optional.
+	 */
+	@Prop() hintText?: string | Hint;
+
+	/**
+	 * Used for the `aria-describedby` value of the task. This will match with the id of the hint text.
+	 */
+	@State() hintTextId: string | null | undefined;
+
+	/**
+	 * The hint text options are re-assigned to the internalHintText array.
+	 */
+	@State() private internalHintText: Hint;
 
 	/**
 	 * Watches for changes to `taskStatus` to validate its value.
@@ -64,6 +80,34 @@ export class OntarioTask {
 			this.warnDefaultTaskStatus();
 			this.taskStatus = TaskStatuses.NotStarted;
 		}
+	}
+
+	/**
+	 * Watch for changes to the `hintText` prop.
+	 *
+	 * If a `hintText` prop is passed, the `constructHintTextObject` function will convert it to the correct format, and set the result to the `internalHintText` state.
+	 */
+	@Watch('hintText')
+	private parseHintText() {
+		if (this.hintText) {
+			const hintTextObject = constructHintTextObject(this.hintText);
+			this.internalHintText = hintTextObject;
+		}
+	}
+
+	/**
+	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the textarea component loads.
+	 */
+	@Listen('setAppLanguage', { target: 'window' })
+	handleSetAppLanguage(event: CustomEvent<Language>) {
+		if (!this.language) {
+			this.language = validateLanguage(event);
+		}
+	}
+
+	@Listen('headerLanguageToggled', { target: 'window' })
+	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
+		this.language = validateLanguage(event);
 	}
 
 	/**
@@ -83,19 +127,14 @@ export class OntarioTask {
 	 *
 	 * Returns one of 'light-teal', 'grey', or 'black'.
 	 */
-	private getBadgeColor(): 'light-teal' | 'grey' | 'black' {
-		const normalizedStatus = this.normalizeStatus(this.taskStatus);
+	private badgeColors: Record<TaskStatuses, string> = {
+		[TaskStatuses.Completed]: 'black',
+		[TaskStatuses.InProgress]: 'light-teal',
+		[TaskStatuses.NotStarted]: 'grey',
+	};
 
-		switch (normalizedStatus) {
-			case TaskStatuses.Completed:
-				return 'black';
-			case TaskStatuses.InProgress:
-				return 'light-teal';
-			case TaskStatuses.NotStarted:
-				return 'grey';
-			default:
-				return 'grey';
-		}
+	private getBadgeColor(): 'black' | 'light-teal' | 'grey' {
+		return this.badgeColors[this.normalizeStatus(this.taskStatus)] as 'black' | 'light-teal' | 'grey';
 	}
 
 	/**
@@ -106,13 +145,57 @@ export class OntarioTask {
 	private getTranslatedTaskStatus(): string {
 		const normalizedStatus = this.normalizeStatus(this.taskStatus);
 
-		const translations: Record<TaskStatuses, string> = {
-			[TaskStatuses.Completed]: this.language === 'fr' ? 'Terminé' : 'Completed',
-			[TaskStatuses.InProgress]: this.language === 'fr' ? 'En cours' : 'In Progress',
-			[TaskStatuses.NotStarted]: this.language === 'fr' ? 'Pas commencé' : 'Not Started',
+		const translations: Record<'en' | 'fr', Record<TaskStatuses, string>> = {
+			en: {
+				[TaskStatuses.Completed]: 'Completed',
+				[TaskStatuses.InProgress]: 'In Progress',
+				[TaskStatuses.NotStarted]: 'Not Started',
+			},
+			fr: {
+				[TaskStatuses.Completed]: 'Terminé',
+				[TaskStatuses.InProgress]: 'En cours',
+				[TaskStatuses.NotStarted]: 'Pas commencé',
+			},
 		};
 
-		return translations[normalizedStatus] || translations[TaskStatuses.NotStarted];
+		if ((this.language === 'en' || this.language === 'fr') && translations[this.language][normalizedStatus]) {
+			return translations[this.language][normalizedStatus];
+		}
+
+		return translations[this.language === 'fr' ? 'fr' : 'en'][TaskStatuses.NotStarted];
+	}
+
+	private renderHintText() {
+		if (this.internalHintText) {
+			return (
+				<ontario-hint-text
+					hint={this.internalHintText.hint}
+					hintContentType={this.internalHintText.hintContentType}
+					ref={(el) => (this.hintTextRef = el)}
+				></ontario-hint-text>
+			);
+		}
+		return null;
+	}
+
+	private renderTaskContent() {
+		return (
+			<div class="ontario-task__content">
+				<h2 id="task-label" class="ontario-task__label" aria-label={this.label}>
+					{this.label}
+				</h2>
+				{this.taskStatus && (
+					<ontario-badge
+						class="ontario-task__badge"
+						role="status"
+						aria-label={`Task status: ${this.getTranslatedTaskStatus()} ${this.taskStatus}`}
+						colour={this.getBadgeColor()}
+					>
+						{this.getTranslatedTaskStatus()}
+					</ontario-badge>
+				)}
+			</div>
+		);
 	}
 
 	/**
@@ -135,10 +218,19 @@ export class OntarioTask {
 			.printMessage();
 	}
 
+	async componentDidLoad() {
+		this.hintTextId = await this.hintTextRef?.getHintTextId();
+	}
+
+	componentWillLoad() {
+		this.parseHintText();
+		this.language = validateLanguage(this.language);
+	}
+
 	render() {
 		const isLinkActive = this.link && !this.deactivateLink;
 		return (
-			<article class="ontario-task" role="group" aria-labelledby="task-label" aria-describedby="task-hint">
+			<article class="ontario-task" role="group" aria-labelledby="task-label" aria-describedby={this.hintTextId}>
 				{isLinkActive ? (
 					<a
 						href={this.link}
@@ -147,49 +239,13 @@ export class OntarioTask {
 						class="ontario-task__link"
 						aria-label={`${this.label} (opens in a new window) ${this.taskStatus}`}
 					>
-						<div class="ontario-task__content">
-							<h2 id="task-label" class="ontario-task__label">
-								{this.label}
-							</h2>
-							{this.taskStatus && (
-								<ontario-badge
-									class="ontario-task__badge"
-									role="status"
-									aria-label={`Task status: ${this.getTranslatedTaskStatus()} ${this.taskStatus}`}
-									colour={this.getBadgeColor()}
-								>
-									{this.getTranslatedTaskStatus()}
-								</ontario-badge>
-							)}
-						</div>
-						{this.hint && (
-							<aside id="task-hint" class="ontario-task__hint" role="note">
-								{this.hint}
-							</aside>
-						)}
+						{this.renderTaskContent()}
+						{this.renderHintText()}
 					</a>
 				) : (
 					<div>
-						<div class="ontario-task__content">
-							<h2 id="task-label" class="ontario-task__label" aria-label={this.label}>
-								{this.label}
-							</h2>
-							{this.taskStatus && (
-								<ontario-badge
-									class="ontario-task__badge"
-									role="status"
-									aria-label={`Task status: ${this.getTranslatedTaskStatus()} ${this.taskStatus}`}
-									colour={this.getBadgeColor()}
-								>
-									{this.getTranslatedTaskStatus()}
-								</ontario-badge>
-							)}
-						</div>
-						{this.hint && (
-							<aside id="task-hint" class="ontario-task__hint" role="note">
-								{this.hint}
-							</aside>
-						)}
+						{this.renderTaskContent()}
+						{this.renderHintText()}
 					</div>
 				)}
 			</article>
