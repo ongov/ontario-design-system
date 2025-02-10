@@ -1,21 +1,30 @@
 @use 'sass:math';
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
 
 .ontario-task {
-	padding: spacing.$spacing-2 spacing.$spacing-0;
 	border-bottom: 2px solid colours.$ontario-greyscale-20;
+	padding: globalFunctions.px-to-rem(19) spacing.$spacing-0;
 
 	&__content {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
+			display: block;
+		}
 	}
 
 	&__label {
-		font-weight: bold;
 		text-align: left;
 		margin: spacing.$spacing-0;
+
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
+			margin-bottom: spacing.$spacing-2;
+		}
 
 		a {
 			text-decoration: none;
@@ -26,14 +35,23 @@
 			}
 		}
 	}
+
+	&__link {
+		display: block;
+		text-decoration: underline;
+		color: colours.$ontario-colour-link;
+		font-weight: normal;
+	}
+
+	&__hint-text--true {
+		margin-bottom: spacing.$spacing-2;
+	}
 }
 
-.ontario-task:focus .ontario-task__label {
-	border: 2px solid red;
-}
+ontario-hint-text::part(hint-text) {
+	margin: spacing.$spacing-0;
 
-.ontario-task__link {
-	display: block;
-	text-decoration: none;
-	color: inherit;
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		margin-top: spacing.$spacing-2;
+	}
 }

@@ -8,6 +8,8 @@ export enum BadgeColourToClass {
 	red = 'ontario-badge--alert-heavy',
 	yellow = 'ontario-badge--warning-heavy',
 	green = 'ontario-badge--success-heavy',
+	white = 'ontario-badge--white',
+	'dark-grey' = 'ontario-badge--grey',
 }
 
 export const BadgeColours = retrieveEnumKeys(BadgeColourToClass);

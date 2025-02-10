@@ -1,6 +1,6 @@
 import { h, Component, Prop, Watch, State, Listen } from '@stencil/core';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { TaskStatuses, TaskStatus, BadgeColors } from './ontario-task-statuses';
+import { TaskStatuses, TaskStatus, TaskBadgeColour, TaskToBadgeColour } from './ontario-task-statuses';
 import { validateLanguage, validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { Hint } from '../../utils/common/common.interface';
 import { Language } from '../../utils/common/language-types';
@@ -80,13 +80,13 @@ export class OntarioTask {
 	@Watch('taskStatus')
 	validateTaskStatus() {
 		const isValidStatus = validateValueAgainstArray(this.taskStatus, TaskStatuses);
-		this.taskStatusState = isValidStatus ? this.taskStatus : this.warnDefaultTaskStatus();
+		this.taskStatusState = isValidStatus ? this.taskStatus : this.warnAndGetDefaultTaskStatus();
 	}
 
 	/**
 	 * Display a console warning if `taskStatus` is invalid and set to a default value.
 	 */
-	private warnDefaultTaskStatus(): TaskStatus {
+	private warnAndGetDefaultTaskStatus(): TaskStatus {
 		const message = new ConsoleMessageClass();
 		message
 			.addDesignSystemTag()
@@ -132,10 +132,12 @@ export class OntarioTask {
 	}
 
 	/**
-	 * Determines the badge color based on the current `taskStatusState`.
+	 * Determines the badge colour based on the current `taskStatusState`.
+	 *
+	 * @returns {TaskBadgeColour}
 	 */
-	private getBadgeColor(): 'black' | 'light-teal' | 'grey' {
-		return BadgeColors[this.taskStatusState];
+	private getBadgeColour(): TaskBadgeColour {
+		return TaskToBadgeColour[this.taskStatusState] || 'grey';
 	}
 
 	/**
@@ -161,21 +163,27 @@ export class OntarioTask {
 		return null;
 	}
 
+	private getClass(): string {
+		return this.hintText ? `ontario-task__label ontario-task__hint-text--true` : `ontario-task__label`;
+	}
+
 	/**
 	 * Renders the task label and status content.
 	 */
 	private renderTaskContent() {
 		return (
 			<div class="ontario-task__content">
-				<h2 id="task-label" class="ontario-task__label" aria-label={this.label}>
+				<h3 id="task-label" class={this.getClass()}>
 					{this.label}
-				</h2>
+				</h3>
 				{this.taskStatusState && (
 					<ontario-badge
 						class="ontario-task__badge"
 						role="status"
-						aria-label={`Task status: ${this.getTranslatedTaskStatus()} (${this.taskStatusState})`}
-						colour={this.getBadgeColor()}
+						aria-label={`${
+							translations.taskStatus.taskStatus[this.language || 'en']
+						} ${this.getTranslatedTaskStatus()} (${this.taskStatusState})`}
+						colour={this.getBadgeColour()}
 					>
 						{this.getTranslatedTaskStatus()}
 					</ontario-badge>
