@@ -29,6 +29,7 @@ import { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.i
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
+import { TaskStatuses } from "./components/ontario-task/ontario-task-statuses";
 export { ExpandCollapseButtonDetails } from "./components/ontario-accordion/expandCollapseButtonDetails.interface";
 export { Accordion } from "./components/ontario-accordion/accordion.interface";
 export { Language } from "./utils/common/language-types";
@@ -53,6 +54,7 @@ export { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.i
 export { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 export { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
+export { TaskStatuses } from "./components/ontario-task/ontario-task-statuses";
 export namespace Components {
     interface OntarioAccordion {
         /**
