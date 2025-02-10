@@ -73,7 +73,7 @@
 .ontario-badge--white {
 	background-color: colours.$ontario-colour-white;
 	color: colours.$ontario-greyscale-70;
-	border: 1px solid colours.$ontario-greyscale-70;
+	border: globalFunctions.px-to-rem(1) solid colours.$ontario-greyscale-70;
 }
 
 .ontario-badge--grey {

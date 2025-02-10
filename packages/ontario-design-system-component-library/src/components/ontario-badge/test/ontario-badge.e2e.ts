@@ -24,7 +24,7 @@ describe('ontario-badge', () => {
 		});
 
 		it('renders changes to the class names when the colour prop is changed', async () => {
-			component.setProperty('colour', 'light-teal');
+			component.setProperty('colour', 'lightTeal');
 			await page.waitForChanges();
 
 			expect(element).toHaveClasses(['ontario-badge', 'ontario-badge--default-light']);

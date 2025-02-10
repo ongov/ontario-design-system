@@ -59,6 +59,12 @@ Type: `Promise<string | undefined>`
 
 Promise<string | undefined>
 
+## Shadow Parts
+
+| Part          | Description |
+| ------------- | ----------- |
+| `"hint-text"` |             |
+
 ## Dependencies
 
 ### Used by
