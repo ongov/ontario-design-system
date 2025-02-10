@@ -1053,7 +1053,7 @@
 					<div>
 						<h2 id="tasks">Tasks</h2>
 
-						<ontario-task-list>
+						<ontario-task-list completed-tasks="2" total-tasks="4" language="fr">
 							<ontario-task
 								label="Task 1"
 								hint-text="A hint for task 1"
@@ -1071,8 +1071,12 @@
 								language="en"
 							>
 							</ontario-task>
-							<ontario-task label="Task 3" task-status="not started" language="en"> </ontario-task>
+							<ontario-task label="Task 3" task-status="notStarted" language="en"> </ontario-task>
+							<ontario-task label="Task 4" task-status="optional" language="en"> </ontario-task>
+							<ontario-task label="Task 5" task-status="error" language="en"> </ontario-task>
+							<ontario-task label="Task 6" task-status="cannotStartYet" language="en"> </ontario-task>
 						</ontario-task-list>
+						<hr />
 					</div>
 
 					<!-- Textareas -->
