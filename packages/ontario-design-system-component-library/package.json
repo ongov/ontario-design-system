@@ -42,16 +42,17 @@
 	"dependencies": {
 		"@ongov/ontario-design-system-global-styles": "5.0.0-alpha.3",
 		"@stencil/core": "^4.23.0",
-		"dotenv": "^16.4.5"
+		"dotenv": "^16.4.5",
+		"uuid": "^11.0.5"
 	},
 	"devDependencies": {
-		"@types/react": "^19.0.8",
-		"@types/react-dom": "^19.0.3",
 		"@stencil/angular-output-target": "^0.10.1",
 		"@stencil/react-output-target": "0.8.0",
 		"@stencil/sass": "^3.0.12",
 		"@types/jest": "^29.5.3",
 		"@types/node": "^22.7.5",
+		"@types/react": "^19.0.8",
+		"@types/react-dom": "^19.0.3",
 		"@types/uuid": "^10.0.0",
 		"babel-jest": "^29.7.0",
 		"copyfiles": "^2.4.1",

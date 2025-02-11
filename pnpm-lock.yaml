@@ -124,13 +124,13 @@ importers:
         version: 7.0.0(@angular/common@15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@ngx-translate/core@14.0.0(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(rxjs@7.8.1)
       '@ongov/ontario-design-system-component-library-angular':
         specifier: ^5.0.0-alpha.5
-        version: 5.0.0-alpha.5
+        version: link:../ontario-design-system-component-library-angular
       '@ongov/ontario-design-system-design-tokens':
         specifier: ^4.3.1-alpha.1
-        version: 4.3.1-alpha.1
+        version: link:../ontario-design-system-design-tokens
       '@ongov/ontario-design-system-global-styles':
         specifier: ^5.0.0-alpha.3
-        version: 5.0.0-alpha.3
+        version: link:../ontario-design-system-global-styles
       '@uirouter/angular':
         specifier: ^11.1.0
         version: 11.1.0(@angular/common@15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(@uirouter/core@6.1.1)(@uirouter/rx@1.0.0(@uirouter/core@6.1.1)(rxjs@7.8.1))
@@ -188,10 +188,10 @@ importers:
     dependencies:
       '@ongov/ontario-design-system-component-library-react':
         specifier: ^5.0.0-alpha.5
-        version: 5.0.0-alpha.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: link:../ontario-design-system-component-library-react
       '@ongov/ontario-design-system-design-tokens':
         specifier: ^4.3.1-alpha.1
-        version: 4.3.1-alpha.1
+        version: link:../ontario-design-system-design-tokens
       '@ongov/ontario-design-system-global-styles':
         specifier: 5.0.0-alpha.3
         version: link:../ontario-design-system-global-styles
@@ -273,7 +273,7 @@ importers:
         version: 1.6.22(react@17.0.2)
       '@ongov/ontario-design-system-component-library-react':
         specifier: ^5.0.0-alpha.5
-        version: 5.0.0-alpha.5(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
+        version: link:../ontario-design-system-component-library-react
       clsx:
         specifier: ^1.2.1
         version: 1.2.1
@@ -351,6 +351,9 @@ importers:
       dotenv:
         specifier: ^16.4.5
         version: 16.4.7
+      uuid:
+        specifier: ^11.0.5
+        version: 11.0.5
     devDependencies:
       '@stencil/angular-output-target':
         specifier: ^0.10.1
@@ -4462,29 +4465,6 @@ packages:
   '@octokit/types@9.3.2':
     resolution:
       { integrity: sha512-D4iHGTdAnEEVsB8fl95m1hiz7D5YiRdQ9b/OEb3BYRVwbLsGHcRVPz+u+BgRLNk0Q0/4iZCBqDN96j2XNxfXrA== }
-
-  '@ongov/ontario-design-system-component-library-angular@5.0.0-alpha.5':
-    resolution:
-      { integrity: sha512-Y7Y5JUyGHR9hnS7qlzJbcSgWBUWhs/lmDYeXQ7S90gv6P+l6C60duqUM+7Tm4AK1QM5BXy9Ygpn6wPu51704ew== }
-
-  '@ongov/ontario-design-system-component-library-react@5.0.0-alpha.5':
-    resolution:
-      { integrity: sha512-bPWuSqyuit2/qYdnOZ/ABQ4lQhYjiuh6TQpTnCMZ7AfyfuvvI539ZUWtWlomhvlrZFNqPsV5Z1IMa5vHt3CuAg== }
-    peerDependencies:
-      react: ^18.2.0
-      react-dom: ^18.2.0
-
-  '@ongov/ontario-design-system-component-library@5.0.0-alpha.5':
-    resolution:
-      { integrity: sha512-02sb4mKLI7azXzTghcmwa/leVOdyQr4sKwGlgCafnJQzrtv0MI3R8Wad12diyRnGFgDAzGU5X7sXSZvARGg6mg== }
-
-  '@ongov/ontario-design-system-design-tokens@4.3.1-alpha.1':
-    resolution:
-      { integrity: sha512-IEF+TljJxRVEzcSGM7pTo+HbzwT8e6a+YD/8ll1ogWDumwTbweT1XrrTkusgfhLwiHy0CGSbLxYlwwJjLOW1hQ== }
-
-  '@ongov/ontario-design-system-global-styles@5.0.0-alpha.3':
-    resolution:
-      { integrity: sha512-9rTgUBPZthnrV3bw8vitzNanztRoChRa6COkWTQ8c5OdimyDpQZrbSle90vp39c4PUajwra6FH96Y7Ft4zVXYg== }
 
   '@parcel/watcher-android-arm64@2.5.1':
     resolution:
@@ -16758,6 +16738,11 @@ packages:
       { integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ== }
     hasBin: true
 
+  uuid@11.0.5:
+    resolution:
+      { integrity: sha512-508e6IcKLrhxKdBbcA2b4KQZlLVp2+J5UwQ6F7Drckkc5N9ZJwFa4TgWtsww9UG8fGHbm6gbV19TdM5pQ4GaIA== }
+    hasBin: true
+
   uuid@8.3.2:
     resolution:
       { integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg== }
@@ -17538,10 +17523,6 @@ packages:
     resolution:
       { integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g== }
 
-  zone.js@0.12.0:
-    resolution:
-      { integrity: sha512-XtC+I5dXU14HrzidAKBNMqneIVUykLEAA1x+v4KVrd6AUPWlwYORF8KgsVqvgdHiKZ4BkxxjvYi/ksEixTPR0Q== }
-
   zone.js@0.14.10:
     resolution:
       { integrity: sha512-YGAhaO7J5ywOXW6InXNlLmfU194F8lVgu7bRntUF3TiG8Y3nBK0x1UJJuHUP/e8IyihkjCYqhCScpSwnlaSRkQ== }
@@ -18150,12 +18131,6 @@ snapshots:
       tslib: 2.8.1
     optionalDependencies:
       '@angular/core': 18.2.13(rxjs@7.8.1)(zone.js@0.14.10)
-
-  '@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.12.0)':
-    dependencies:
-      rxjs: 7.8.1
-      tslib: 2.8.1
-      zone.js: 0.12.0
 
   '@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10)':
     dependencies:
@@ -23607,45 +23582,6 @@ snapshots:
   '@octokit/types@9.3.2':
     dependencies:
       '@octokit/openapi-types': 18.1.1
-
-  '@ongov/ontario-design-system-component-library-angular@5.0.0-alpha.5':
-    dependencies:
-      '@angular/animations': 15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))
-      '@angular/common': 15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1)
-      '@angular/compiler': 15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))
-      '@angular/core': 15.2.9(rxjs@7.8.1)(zone.js@0.12.0)
-      '@angular/forms': 15.2.9(@angular/common@15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@15.2.9(@angular/animations@15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1)
-      '@angular/platform-browser': 15.2.9(@angular/animations@15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))
-      '@angular/platform-browser-dynamic': 15.2.9(@angular/common@15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/compiler@15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@15.2.9(@angular/animations@15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10)))
-      '@angular/router': 15.2.9(@angular/common@15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@15.2.9(@angular/animations@15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1)
-      '@ongov/ontario-design-system-component-library': 5.0.0-alpha.5
-      '@ongov/ontario-design-system-global-styles': 5.0.0-alpha.3
-      copyfiles: 2.4.1
-      rxjs: 7.8.1
-      tslib: 2.8.1
-      zone.js: 0.12.0
-
-  '@ongov/ontario-design-system-component-library-react@5.0.0-alpha.5(react-dom@17.0.2(react@17.0.2))(react@17.0.2)':
-    dependencies:
-      '@ongov/ontario-design-system-component-library': 5.0.0-alpha.5
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-
-  '@ongov/ontario-design-system-component-library-react@5.0.0-alpha.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@ongov/ontario-design-system-component-library': 5.0.0-alpha.5
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-
-  '@ongov/ontario-design-system-component-library@5.0.0-alpha.5':
-    dependencies:
-      '@ongov/ontario-design-system-global-styles': 5.0.0-alpha.3
-      '@stencil/core': 4.25.1
-      dotenv: 16.4.7
-
-  '@ongov/ontario-design-system-design-tokens@4.3.1-alpha.1': {}
-
-  '@ongov/ontario-design-system-global-styles@5.0.0-alpha.3': {}
 
   '@parcel/watcher-android-arm64@2.5.1':
     optional: true
@@ -35846,6 +35782,8 @@ snapshots:
 
   uuid@10.0.0: {}
 
+  uuid@11.0.5: {}
+
   uuid@8.3.2: {}
 
   uuid@9.0.1: {}
@@ -36740,10 +36678,6 @@ snapshots:
   yoctocolors@2.1.1: {}
 
   zod@3.23.8: {}
-
-  zone.js@0.12.0:
-    dependencies:
-      tslib: 2.8.1
 
   zone.js@0.14.10: {}
 
