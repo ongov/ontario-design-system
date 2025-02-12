@@ -294,17 +294,25 @@ To ensure best practices, it is important to limit the number of navigation link
 | `menuItems`             | `menu-items`              | The items that will go inside the menu.                                                                                                                                                                                                                | `MenuItem[] \| string`                                        | `undefined`     |
 | `type`                  | `type`                    | The type of header.                                                                                                                                                                                                                                    | `"application" \| "ontario" \| "serviceOntario" \| undefined` | `'application'` |
 
+## Events
+
+| Event               | Description | Type                   |
+| ------------------- | ----------- | ---------------------- |
+| `menuButtonToggled` |             | `CustomEvent<boolean>` |
+
 ## Dependencies
 
 ### Depends on
 
 - [ontario-language-toggle](../ontario-language-toggle)
+- [ontario-header-menu](../ontario-header-menu)
 
 ### Graph
 
 ```mermaid
 graph TD;
   ontario-header --> ontario-language-toggle
+  ontario-header --> ontario-header-menu
   style ontario-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

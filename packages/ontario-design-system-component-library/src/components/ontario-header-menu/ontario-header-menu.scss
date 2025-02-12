@@ -1,0 +1,211 @@
+@use 'sass:math';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
+	focusPlaceholders;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/5-layout/_grid.layout.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
+
+$navigation-link-bg--hover: #e5e5e5;
+$navigation-max-width: 72rem;
+
+.ontario-application-navigation {
+	position: absolute;
+	width: 100%;
+
+	@media screen and (min-width: breakpoints.$medium-breakpoint) {
+		position: relative;
+		max-width: $navigation-max-width;
+		width: auto;
+		margin: spacing.$spacing-0 auto;
+	}
+}
+
+.ontario-application-navigation__container {
+	background: colours.$ontario-colour-white;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: zIndex.$ontario-z-index-above-high;
+
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
+		background: colours.$ontario-colour-white;
+		position: absolute;
+		z-index: zIndex.$ontario-z-index-above-high;
+	}
+
+	@media screen and (min-width: breakpoints.$medium-breakpoint) {
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+		border-radius: globalVariables.$global-radius;
+		position: absolute;
+		right: spacing.$spacing-3;
+		top: -0.6rem;
+		min-width: 290px;
+		max-width: 30%;
+		z-index: calc(zIndex.$ontario-z-index-above-medium + 1);
+		transition: none !important;
+	}
+}
+
+.ontario-application-navigation ul {
+	list-style: none;
+	padding: spacing.$spacing-2 spacing.$spacing-0;
+	margin: spacing.$spacing-0;
+	border-bottom: 1px solid colours.$ontario-greyscale-20;
+
+	@media screen and (min-width: breakpoints.$medium-breakpoint) {
+		border-bottom: none;
+	}
+}
+
+.ontario-application-navigation li {
+	border-top: 1px solid colours.$ontario-greyscale-20;
+	padding: spacing.$spacing-0;
+	margin-bottom: spacing.$spacing-0;
+
+	&:last-of-type {
+		border-bottom: 1px solid colours.$ontario-greyscale-20;
+	}
+}
+
+.ontario-application-navigation a {
+	color: colours.$ontario-colour-black;
+	display: block;
+	font-size: 1.125rem;
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	font-family: typography.$ontario-font-open-sans;
+	text-decoration: none;
+	padding: calc(spacing.$spacing-3 - math.div(spacing.$spacing-1, 3.25)) spacing.$spacing-5;
+
+	&:hover {
+		text-decoration: underline;
+		background-color: $navigation-link-bg--hover;
+	}
+
+	&:active {
+		text-decoration: underline;
+		background-color: colours.$ontario-greyscale-20;
+	}
+
+	&:focus,
+	&:active {
+		@extend %ontario-focus;
+		box-shadow: focusPlaceholders.$ontario-focus-box-shadow inset;
+	}
+
+	&.ontario-link--active {
+		border-left: 6px solid colours.$ontario-colour-black;
+		background-color: colours.$ontario-greyscale-5;
+	}
+}
+
+.ontario-application-navigation.ontario-navigation--open .ontario-application-navigation__container {
+	visibility: visible;
+	transform: translateY(0);
+	transition: transform 0.4s ease-in-out;
+
+	@media screen and (min-width: breakpoints.$medium-breakpoint) {
+		transition: none;
+		display: block;
+	}
+}
+
+.ontario-application-navigation__container {
+	background: colours.$ontario-colour-white;
+	position: absolute;
+	transform: translateY(-100%);
+	transition:
+		transform 0.3s ease-in-out,
+		visibility 0.1s ease;
+	width: 100%;
+	visibility: hidden;
+	z-index: zIndex.$ontario-z-index-above-high;
+
+	@media screen and (min-width: breakpoints.$medium-breakpoint) {
+		box-shadow: 0 globalVariables.$global-radius 12px rgba(0, 0, 0, 0.3);
+		border-radius: globalVariables.$global-radius;
+		display: none;
+		position: absolute;
+		right: spacing.$spacing-4;
+		top: calc(100% - #{spacing.$spacing-2});
+		min-width: 290px; // this value is to control the min-width size the dropdown navigation list can be
+		max-width: 30%;
+		z-index: calc(zIndex.$ontario-z-index-above-high + 1);
+	}
+}
+
+.ontario-application-navigation.ontario-navigation--open .ontario-application-navigation__container {
+	background: colours.$ontario-colour-white;
+	visibility: visible;
+	transform: translateY(0);
+	transition: transform 0.4s ease-in-out;
+
+	@media screen and (min-width: breakpoints.$medium-breakpoint) {
+		transition: none;
+		display: block;
+	}
+}
+
+.ontario-application-navigation.ontario-navigation--open {
+	background: colours.$ontario-colour-white;
+	z-index: zIndex.$ontario-z-index-above-high;
+}
+
+.ontario-application-navigation ul {
+	list-style: none;
+	padding: spacing.$spacing-2 spacing.$spacing-0;
+	margin: spacing.$spacing-0;
+	border-bottom: 1px solid colours.$ontario-greyscale-20;
+
+	@media screen and (min-width: breakpoints.$medium-breakpoint) {
+		border-bottom: none;
+	}
+}
+
+.ontario-application-navigation li {
+	border-top: 1px solid colours.$ontario-greyscale-20;
+	padding: spacing.$spacing-0;
+	margin-bottom: spacing.$spacing-0;
+
+	&:last-of-type {
+		border-bottom: 1px solid colours.$ontario-greyscale-20;
+	}
+}
+
+.ontario-application-navigation a {
+	color: colours.$ontario-colour-black;
+	display: block;
+	font-size: 1.125rem;
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	font-family: typography.$ontario-font-open-sans;
+	text-decoration: none;
+	padding: (spacing.$spacing-3 - math.div(spacing.$spacing-1, 3.25)) spacing.$spacing-5;
+
+	&:hover {
+		text-decoration: underline;
+		background-color: $navigation-link-bg--hover;
+	}
+
+	&:active {
+		text-decoration: underline;
+		background-color: colours.$ontario-greyscale-20;
+	}
+
+	&:focus,
+	&:active {
+		@extend %ontario-focus;
+		box-shadow: focusPlaceholders.$ontario-focus-box-shadow inset;
+	}
+
+	&.ontario-link--active {
+		border-left: 6px solid colours.$ontario-colour-black;
+		background-color: colours.$ontario-greyscale-5;
+	}
+}

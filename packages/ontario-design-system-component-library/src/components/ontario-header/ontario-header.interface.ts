@@ -28,3 +28,5 @@ export interface OntarioMenuItems {
 }
 
 export type OntarioHeaderType = 'application' | 'ontario' | 'serviceOntario';
+
+export type DeviceType = 'desktop' | 'tablet' | 'mobile';

@@ -342,8 +342,11 @@ importers:
 
   packages/ontario-design-system-component-library:
     dependencies:
+      '@ongov/ontario-design-system-design-tokens':
+        specifier: 4.3.1-alpha.1
+        version: link:../ontario-design-system-design-tokens
       '@ongov/ontario-design-system-global-styles':
-        specifier: 5.0.0-alpha.3
+        specifier: ^5.0.0-alpha.3
         version: link:../ontario-design-system-global-styles
       '@stencil/core':
         specifier: ^4.23.0
