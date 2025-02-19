@@ -109,7 +109,7 @@
 					</div>
 
 					<!-- Buttons -->
-					<div class="ontario-vertical-form-spacing--40">
+					<ontario-vertical-form-spacing>
 						<h2 id="buttons">Buttons</h2>
 						<h3 class="ontario-h4">Primary button</h3>
 						<ontario-button aria-label-text="Primary Button" type="primary">Primary</ontario-button>
@@ -118,7 +118,7 @@
 						<h3 class="ontario-h4">Tertiary button</h3>
 						<ontario-button aria-label-text="Tertiary Button" type="tertiary">Tertiary</ontario-button>
 						<hr />
-					</div>
+					</ontario-vertical-form-spacing>
 
 					<!-- Callouts & Asides -->
 					<div>
@@ -559,7 +559,7 @@
 							});
 						});
 					</script>
-					<div class="ontario-vertical-form-spacing--40">
+					<ontario-vertical-form-spacing>
 						<h2 id="fieldsets">Fieldsets</h2>
 						<ontario-fieldset legend-size="large" legend="What is your delivery address?">
 							<ontario-input
@@ -641,8 +641,8 @@
 								enable-live-validation
 							></ontario-input>
 						</ontario-fieldset>
-						<hr />
-					</div>
+					</ontario-vertical-form-spacing>
+					<hr />
 
 					<!-- Buttons -->
 					<div>
@@ -1079,7 +1079,7 @@
 					</div>
 
 					<!-- Textareas -->
-					<div class="ontario-vertical-form-spacing--40">
+					<ontario-vertical-form-spacing>
 						<h2 id="textareas">Textareas</h2>
 						<ontario-textarea
 							name="comments"
@@ -1113,12 +1113,11 @@
 							}'
 							element-id="response"
 						></ontario-textarea>
-
-						<hr />
-					</div>
+					</ontario-vertical-form-spacing>
+					<hr />
 
 					<!-- Text inputs -->
-					<div class="ontario-vertical-form-spacing--40">
+					<ontario-vertical-form-spacing>
 						<h2 id="text-inputs">Text inputs</h2>
 						<ontario-input
 							name="email"
@@ -1146,7 +1145,7 @@
 								"content": "This is the content, yup this is the content"
 							}'
 						></ontario-input>
-					</div>
+					</ontario-vertical-form-spacing>
 					<hr />
 
 					<!-- Date Input -->
@@ -1225,10 +1224,11 @@
 					</div>
 
 					<hr />
-					<div class="ontario-vertical-form-spacing--40">
-						<!-- Form -->
-						<form id="sample-form">
-							<h2 id="form">Form example</h2>
+
+					<!-- Form -->
+					<form id="sample-form">
+						<h2 id="form">Form example</h2>
+						<ontario-vertical-form-spacing>
 							<ontario-fieldset legend-size="large" legend="What is your delivery address?">
 								<ontario-input
 									id="delivery-address-form-line-1"
@@ -1316,7 +1316,7 @@
 												"elementId": "radio-2",
 												"label": "Text message"
 											},
-
+	
 											{
 												"value": "phone",
 												"elementId": "radio-3",
@@ -1354,48 +1354,49 @@
 								></ontario-textarea>
 							</ontario-fieldset>
 							<ontario-button type="primary" html-type="submit">Submit</ontario-button>
-						</form>
-						<h2 style="display: none" id="form-results">Form Results</h2>
-						<div id="form-results-data"></div>
-						<script>
-							window.addEventListener('load', () => {
-								console.log('Loaded Form Event Listener');
-								const form = document.getElementById('sample-form');
-								const formResults = document.getElementById('form-results');
-								const formResultsDataDisplay = document.getElementById('form-results-data');
-								form.addEventListener('submit', (event) => {
-									// Avoid an actual submission
-									event.preventDefault();
+						</ontario-vertical-form-spacing>
+					</form>
 
-									// Get the data from the form to be submitted
-									const formData = new FormData(event.target);
-									const formResultsArray = [...formData.entries()];
+					<h2 style="display: none" id="form-results">Form Results</h2>
+					<div id="form-results-data"></div>
+					<script>
+						window.addEventListener('load', () => {
+							console.log('Loaded Form Event Listener');
+							const form = document.getElementById('sample-form');
+							const formResults = document.getElementById('form-results');
+							const formResultsDataDisplay = document.getElementById('form-results-data');
+							form.addEventListener('submit', (event) => {
+								// Avoid an actual submission
+								event.preventDefault();
 
-									if (validateForm()) return;
+								// Get the data from the form to be submitted
+								const formData = new FormData(event.target);
+								const formResultsArray = [...formData.entries()];
 
-									// Display the form data
-									formResults.style.display = 'block';
-									console.log('Form Content:', formResultsArray);
-									const formResultsHtml = formResultsArray.map((x) => `<li><strong>${x[0]}</strong>: ${x[1]}</li>`);
-									formResultsDataDisplay.innerHTML = `<p class="ontario-columns ontario-small-12"><ul>\n${formResultsHtml.join(
-										'\n',
-									)}\n</ul></p>`;
-								});
+								if (validateForm()) return;
 
-								const validateForm = () => {
-									let error = false;
-									const address1 = document.getElementById('delivery-address-form-line-1');
-									if (address1.value == undefined || address1.value == '') {
-										address1.errorMessage = 'Please enter your address';
-										address1.scrollIntoView();
-										error = true;
-									}
-
-									return error;
-								};
+								// Display the form data
+								formResults.style.display = 'block';
+								console.log('Form Content:', formResultsArray);
+								const formResultsHtml = formResultsArray.map((x) => `<li><strong>${x[0]}</strong>: ${x[1]}</li>`);
+								formResultsDataDisplay.innerHTML = `<p class="ontario-columns ontario-small-12"><ul>\n${formResultsHtml.join(
+									'\n',
+								)}\n</ul></p>`;
 							});
-						</script>
-					</div>
+
+							const validateForm = () => {
+								let error = false;
+								const address1 = document.getElementById('delivery-address-form-line-1');
+								if (address1.value == undefined || address1.value == '') {
+									address1.errorMessage = 'Please enter your address';
+									address1.scrollIntoView();
+									error = true;
+								}
+
+								return error;
+							};
+						});
+					</script>
 				</div>
 			</div>
 		</main>

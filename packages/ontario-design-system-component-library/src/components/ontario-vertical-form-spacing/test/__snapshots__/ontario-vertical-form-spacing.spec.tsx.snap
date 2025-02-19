@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-vertical-form-spacing snapshot should render the expected html 1`] = `
+<ontario-vertical-form-spacing>
+  <template shadowrootmode="open">
+    <div class="ontario-vertical-form-spacing--40">
+      <slot></slot>
+    </div>
+  </template>
+  <slot></slot>
+</ontario-vertical-form-spacing>
+`;

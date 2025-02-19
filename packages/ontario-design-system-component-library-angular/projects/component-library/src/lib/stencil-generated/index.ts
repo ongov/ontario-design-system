@@ -142,4 +142,5 @@ export const DIRECTIVES = [
 	d.OntarioTask,
 	d.OntarioTaskList,
 	d.OntarioTextarea,
+	d.OntarioVerticalFormSpacing,
 ];
