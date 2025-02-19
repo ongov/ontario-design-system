@@ -1877,6 +1877,46 @@ export namespace Components {
          */
         "zebraStripes"?: 'auto' | 'disabled' | 'enabled' | undefined;
     }
+    interface OntarioTask {
+        /**
+          * Disables the task link when set to `true`.  Default is `false`, meaning the link will be active if provided.
+         */
+        "deactivateLink": boolean;
+        /**
+          * Used to include the ontario-hint-text component for the task.  This is optional.
+         */
+        "hintText"?: string | Hint;
+        /**
+          * Specifies the label of the task.  This is required to provide the name of the task.
+         */
+        "label": string;
+        /**
+          * The language of the component.  This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
+         */
+        "language"?: Language;
+        /**
+          * Specifies an optional link associated with the task.  If provided, clicking the task will navigate to this URL.
+         */
+        "link"?: string;
+        /**
+          * A unique id for the the task.  This is required.
+         */
+        "taskId": string;
+        /**
+          * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`.
+         */
+        "taskStatus": TaskStatus;
+    }
+    interface OntarioTaskList {
+        /**
+          * The label prop used for the task list heading.
+         */
+        "label": string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+         */
+        "language"?: Language;
+    }
     interface OntarioTextarea {
         /**
           * The text to display as the textarea label.
@@ -5036,6 +5076,46 @@ declare namespace LocalJSX {
          */
         "zebraStripes"?: 'auto' | 'disabled' | 'enabled' | undefined;
     }
+    interface OntarioTask {
+        /**
+          * Disables the task link when set to `true`.  Default is `false`, meaning the link will be active if provided.
+         */
+        "deactivateLink"?: boolean;
+        /**
+          * Used to include the ontario-hint-text component for the task.  This is optional.
+         */
+        "hintText"?: string | Hint;
+        /**
+          * Specifies the label of the task.  This is required to provide the name of the task.
+         */
+        "label"?: string;
+        /**
+          * The language of the component.  This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
+         */
+        "language"?: Language;
+        /**
+          * Specifies an optional link associated with the task.  If provided, clicking the task will navigate to this URL.
+         */
+        "link"?: string;
+        /**
+          * A unique id for the the task.  This is required.
+         */
+        "taskId"?: string;
+        /**
+          * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`.
+         */
+        "taskStatus"?: TaskStatus;
+    }
+    interface OntarioTaskList {
+        /**
+          * The label prop used for the task list heading.
+         */
+        "label"?: string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+         */
+        "language"?: Language;
+    }
     interface OntarioTextarea {
         /**
           * The text to display as the textarea label.
@@ -5251,6 +5331,8 @@ declare namespace LocalJSX {
         "ontario-search-box": OntarioSearchBox;
         "ontario-step-indicator": OntarioStepIndicator;
         "ontario-table": OntarioTable;
+        "ontario-task": OntarioTask;
+        "ontario-task-list": OntarioTaskList;
         "ontario-textarea": OntarioTextarea;
     }
 }

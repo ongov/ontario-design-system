@@ -25,6 +25,13 @@ export class OntarioTask {
 	@Prop() label: string;
 
 	/**
+	 * A unique id for the the task.
+	 *
+	 * This is required.
+	 */
+	@Prop() taskId: string;
+
+	/**
 	 * Specifies an optional link associated with the task.
 	 *
 	 * If provided, clicking the task will navigate to this URL.
@@ -183,7 +190,7 @@ export class OntarioTask {
 	private renderTaskContent() {
 		return (
 			<div class="ontario-task__content">
-				<h3 id="task-label" class={this.getClass()}>
+				<h3 id={`task-label--${this.taskId}`} class={this.getClass()}>
 					{this.label}
 				</h3>
 				{this.taskStatusState && (
@@ -218,6 +225,7 @@ export class OntarioTask {
 
 	render() {
 		const isLinkActive = this.link && !this.deactivateLink;
+		const taskStatusClass = `ontario-task-status--${this.taskStatusState.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}`;
 
 		const taskContent = (
 			<Fragment>
@@ -227,15 +235,14 @@ export class OntarioTask {
 		);
 
 		return (
-			<article class="ontario-task" role="group" aria-labelledby="task-label" aria-describedby={this.hintTextId}>
+			<article
+				class={`ontario-task ${taskStatusClass}`}
+				role="group"
+				aria-labelledby={`task-label--${this.taskId}`}
+				aria-describedby={this.hintTextId}
+			>
 				{isLinkActive ? (
-					<a
-						href={this.link}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="ontario-task__link"
-						aria-label={`${this.label} ${translations.newWindow[validateLanguage(this.language)]}`}
-					>
+					<a href={this.link} class="ontario-task__link" aria-label={this.label}>
 						{taskContent}
 					</a>
 				) : (
