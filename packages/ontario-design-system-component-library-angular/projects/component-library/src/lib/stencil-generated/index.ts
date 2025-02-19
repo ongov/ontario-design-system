@@ -140,4 +140,5 @@ export const DIRECTIVES = [
 	d.OntarioStepIndicator,
 	d.OntarioTable,
 	d.OntarioTextarea,
+	d.OntarioVerticalFormSpacing,
 ];

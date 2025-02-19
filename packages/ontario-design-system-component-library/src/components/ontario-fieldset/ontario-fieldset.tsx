@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch } from '@stencil/core';
+import { Component, h, Element, Prop, State, Watch } from '@stencil/core';
 
 import { Fieldset } from './ontario-fieldset.interface';
 
@@ -12,6 +12,8 @@ import { validatePropExists, validateValueAgainstArray } from '../../utils/valid
 	shadow: true,
 })
 export class OntarioFieldset implements Fieldset {
+	@Element() element!: HTMLElement;
+
 	/**
 	 * The text value used for the legend of the fieldset.
 	 */
@@ -21,6 +23,12 @@ export class OntarioFieldset implements Fieldset {
 	 * The size of the fieldset legend. If no prop is passed, it will be `default`.
 	 */
 	@Prop({ mutable: true }) legendSize: CaptionType = 'default';
+
+	/**
+	 * The following states are used to determine if the parent is a `ontario-vertical-form-spacing` component. This is to help style the form children if they are contained within a fieldset.
+	 */
+	@State() hasVerticalSpacingParent: boolean = false;
+	@State() verticalSpacingValue: number = 40;
 
 	/**
 	 * Watch for changes to the legendSize prop.
@@ -69,12 +77,20 @@ export class OntarioFieldset implements Fieldset {
 				.printMessage();
 		}
 	}
+
 	componentWillLoad() {
 		this.validateLegend();
 		this.validateLegendSize();
+
+		// Check if the direct or any ancestor parent is `ontario-vertical-spacing`
+		this.hasVerticalSpacingParent = this.element.closest('ontario-vertical-form-spacing') !== null;
+		if (this.hasVerticalSpacingParent) {
+			const verticalSpacingValue = this.element.closest('ontario-vertical-form-spacing')?.spacing;
+			verticalSpacingValue === 'condensed' ? (this.verticalSpacingValue = 16) : (this.verticalSpacingValue = 40);
+		}
 	}
 
-	private getClass() {
+	private getLegendClass() {
 		switch (this.legendSize) {
 			case 'large':
 				return `ontario-fieldset__legend ontario-fieldset__legend--large`;
@@ -86,10 +102,20 @@ export class OntarioFieldset implements Fieldset {
 		}
 	}
 
+	private getFieldsetClass() {
+		let baseClass = 'ontario-fieldset';
+		if (this.hasVerticalSpacingParent && this.verticalSpacingValue) {
+			baseClass += `ontario-fieldset ontario-fieldset--spacing-${this.verticalSpacingValue}`;
+		}
+		return baseClass;
+	}
+
 	render() {
 		return (
-			<fieldset class="ontario-fieldset">
-				<legend class={this.getClass()}>{this.legendSize === 'heading' ? <h1>{this.legend}</h1> : this.legend}</legend>
+			<fieldset class={this.getFieldsetClass()}>
+				<legend class={this.getLegendClass()}>
+					{this.legendSize === 'heading' ? <h1>{this.legend}</h1> : this.legend}
+				</legend>
 				<slot />
 			</fieldset>
 		);

@@ -1,15 +1,16 @@
-@use '../../1-variables/spacing.variables' as spacing;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
 
 // Mixin for generating individual vertical form spacing classes
 @mixin ontario-vertical-form-spacing($modifier, $spacing-variable) {
-	.ontario-vertical-form-spacing--#{$modifier} {
-		ontario-input:not(:last-child),
-		ontario-checkboxes:not(:last-child),
-		ontario-dropdown-list:not(:last-child),
-		ontario-textarea:not(:last-child),
-		ontario-radio-buttons:not(:last-child),
-		ontario-button:not(:last-child),
-		ontario-date-input:not(:last-child) {
+	.ontario-vertical-form-spacing--#{$modifier},
+	.ontario-vertical-form-spacing--#{$modifier} form {
+		::slotted(ontario-input:not(:last-child)),
+		::slotted(ontario-checkboxes:not(:last-child)),
+		::slotted(ontario-dropdown-list:not(:last-child)),
+		::slotted(ontario-textarea:not(:last-child)),
+		::slotted(ontario-radio-buttons:not(:last-child)),
+		::slotted(ontario-button:not(:last-child)),
+		::slotted(ontario-date-input:not(:last-child)) {
 			margin-bottom: (#{$spacing-variable});
 			display: block;
 		}
@@ -18,31 +19,33 @@
 
 // Mixin for generating nested vertical form spacing classes
 @mixin ontario-nested-vertical-form-spacing($parent-modifier, $parent-spacing, $child-spacings) {
-	.ontario-vertical-form-spacing--#{$parent-modifier} {
+	.ontario-vertical-form-spacing--#{$parent-modifier},
+	.ontario-vertical-form-spacing--#{$parent-modifier} form {
 		@each $child-spacing in $child-spacings {
 			$child-modifier: nth($child-spacing, 1);
 			$child-spacing-variable: nth($child-spacing, 2);
 
-			.ontario-vertical-form-spacing--#{$child-modifier} {
-				ontario-input:not(:last-child),
-				ontario-checkboxes:not(:last-child),
-				ontario-dropdown-list:not(:last-child),
-				ontario-textarea:not(:last-child),
-				ontario-radio-buttons:not(:last-child),
-				ontario-button:not(:last-child),
-				ontario-date-input:not(:last-child) {
+			.ontario-vertical-form-spacing--#{$child-modifier},
+			.ontario-vertical-form-spacing--#{$child-modifier} form {
+				::slotted(ontario-input:not(:last-child)),
+				::slotted(ontario-checkboxes:not(:last-child)),
+				::slotted(ontario-dropdown-list:not(:last-child)),
+				::slotted(ontario-textarea:not(:last-child)),
+				::slotted(ontario-radio-buttons:not(:last-child)),
+				::slotted(ontario-button:not(:last-child)),
+				::slotted(ontario-date-input:not(:last-child)) {
 					margin-bottom: $child-spacing-variable;
 					display: block;
 				}
 
 				// Add extra spacing for the last child
-				ontario-input:last-child,
-				ontario-checkboxes:last-child,
-				ontario-dropdown-list:last-child,
-				ontario-textarea:last-child,
-				ontario-radio-buttons:last-child,
-				ontario-button:last-child,
-				ontario-date-input:last-child {
+				::slotted(ontario-input:last-child),
+				::slotted(ontario-checkboxes:last-child),
+				::slotted(ontario-dropdown-list:last-child),
+				::slotted(ontario-textarea:last-child),
+				::slotted(ontario-radio-buttons:last-child),
+				::slotted(ontario-button:last-child),
+				::slotted(ontario-date-input:last-child) {
 					margin-bottom: $child-spacing-variable + $parent-spacing;
 					display: block;
 				}
