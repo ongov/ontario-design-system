@@ -29,7 +29,7 @@ import { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.i
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
-import { TaskStatus } from "./components/ontario-task/ontario-task-statuses";
+import { TaskStatus } from "./utils/common/task-statuses.enum";
 export { ExpandCollapseButtonDetails } from "./components/ontario-accordion/expandCollapseButtonDetails.interface";
 export { Accordion } from "./components/ontario-accordion/accordion.interface";
 export { Language } from "./utils/common/language-types";
@@ -54,7 +54,7 @@ export { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.i
 export { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 export { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
-export { TaskStatus } from "./components/ontario-task/ontario-task-statuses";
+export { TaskStatus } from "./utils/common/task-statuses.enum";
 export namespace Components {
     interface OntarioAccordion {
         /**
@@ -1883,6 +1883,10 @@ export namespace Components {
          */
         "deactivateLink": boolean;
         /**
+          * Allows consumers to define the heading level for the task label.  Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.
+         */
+        "headingLevel": 'h2' | 'h3' | 'h4';
+        /**
           * Used to include the ontario-hint-text component for the task.  This is optional.
          */
         "hintText"?: string | Hint;
@@ -1899,7 +1903,7 @@ export namespace Components {
          */
         "link"?: string;
         /**
-          * A unique id for the the task.  This is required.
+          * A unique id for the task.  This is required.
          */
         "taskId": string;
         /**
@@ -5082,6 +5086,10 @@ declare namespace LocalJSX {
          */
         "deactivateLink"?: boolean;
         /**
+          * Allows consumers to define the heading level for the task label.  Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.
+         */
+        "headingLevel"?: 'h2' | 'h3' | 'h4';
+        /**
           * Used to include the ontario-hint-text component for the task.  This is optional.
          */
         "hintText"?: string | Hint;
@@ -5098,7 +5106,7 @@ declare namespace LocalJSX {
          */
         "link"?: string;
         /**
-          * A unique id for the the task.  This is required.
+          * A unique id for the task.  This is required.
          */
         "taskId"?: string;
         /**
