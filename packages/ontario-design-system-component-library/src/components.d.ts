@@ -1931,6 +1931,12 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface OntarioVerticalFormSpacing {
+        /**
+          * Defines the spacing between slotted form elements. If no spacing prop is provided, it will default to 'default'.
+         */
+        "spacing": 'default' | 'condensed';
+    }
 }
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2934,6 +2940,12 @@ declare global {
         prototype: HTMLOntarioTextareaElement;
         new (): HTMLOntarioTextareaElement;
     };
+    interface HTMLOntarioVerticalFormSpacingElement extends Components.OntarioVerticalFormSpacing, HTMLStencilElement {
+    }
+    var HTMLOntarioVerticalFormSpacingElement: {
+        prototype: HTMLOntarioVerticalFormSpacingElement;
+        new (): HTMLOntarioVerticalFormSpacingElement;
+    };
     interface HTMLElementTagNameMap {
         "ontario-accordion": HTMLOntarioAccordionElement;
         "ontario-aside": HTMLOntarioAsideElement;
@@ -3074,6 +3086,7 @@ declare global {
         "ontario-step-indicator": HTMLOntarioStepIndicatorElement;
         "ontario-table": HTMLOntarioTableElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
+        "ontario-vertical-form-spacing": HTMLOntarioVerticalFormSpacingElement;
     }
 }
 declare namespace LocalJSX {
@@ -5096,6 +5109,12 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface OntarioVerticalFormSpacing {
+        /**
+          * Defines the spacing between slotted form elements. If no spacing prop is provided, it will default to 'default'.
+         */
+        "spacing"?: 'default' | 'condensed';
+    }
     interface IntrinsicElements {
         "ontario-accordion": OntarioAccordion;
         "ontario-aside": OntarioAside;
@@ -5236,6 +5255,7 @@ declare namespace LocalJSX {
         "ontario-step-indicator": OntarioStepIndicator;
         "ontario-table": OntarioTable;
         "ontario-textarea": OntarioTextarea;
+        "ontario-vertical-form-spacing": OntarioVerticalFormSpacing;
     }
 }
 export { LocalJSX as JSX };
@@ -5381,6 +5401,7 @@ declare module "@stencil/core" {
             "ontario-step-indicator": LocalJSX.OntarioStepIndicator & JSXBase.HTMLAttributes<HTMLOntarioStepIndicatorElement>;
             "ontario-table": LocalJSX.OntarioTable & JSXBase.HTMLAttributes<HTMLOntarioTableElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
+            "ontario-vertical-form-spacing": LocalJSX.OntarioVerticalFormSpacing & JSXBase.HTMLAttributes<HTMLOntarioVerticalFormSpacingElement>;
         }
     }
 }

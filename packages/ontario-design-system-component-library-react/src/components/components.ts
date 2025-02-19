@@ -579,6 +579,10 @@ import {
 	OntarioTextarea as OntarioTextareaElement,
 	defineCustomElement as defineOntarioTextarea,
 } from '@ongov/ontario-design-system-component-library/dist/components/ontario-textarea.js';
+import {
+	OntarioVerticalFormSpacing as OntarioVerticalFormSpacingElement,
+	defineCustomElement as defineOntarioVerticalFormSpacing,
+} from '@ongov/ontario-design-system-component-library/dist/components/ontario-vertical-form-spacing.js';
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
@@ -2422,3 +2426,17 @@ export const OntarioTextarea: StencilReactComponent<OntarioTextareaElement, Onta
 		} as OntarioTextareaEvents,
 		defineCustomElement: defineOntarioTextarea,
 	});
+
+type OntarioVerticalFormSpacingEvents = NonNullable<unknown>;
+
+export const OntarioVerticalFormSpacing: StencilReactComponent<
+	OntarioVerticalFormSpacingElement,
+	OntarioVerticalFormSpacingEvents
+> = /*@__PURE__*/ createComponent<OntarioVerticalFormSpacingElement, OntarioVerticalFormSpacingEvents>({
+	tagName: 'ontario-vertical-form-spacing',
+	elementClass: OntarioVerticalFormSpacingElement,
+	// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+	react: React,
+	events: {} as OntarioVerticalFormSpacingEvents,
+	defineCustomElement: defineOntarioVerticalFormSpacing,
+});
