@@ -1,4 +1,39 @@
+import { OntarioTask } from '@ongov/ontario-design-system-component-library-react';
+
 # ontario-task
+
+Use a task to show the user activities they have completed and what they have left to do.
+
+## Usage guidance
+
+Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/task-list.html) for current documentation guidance for tables.
+
+## Configuration
+
+Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the task component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for header properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.
+
+## Examples
+
+Example of a bare-bones task.
+
+```html
+<ontario-task label="Task" task-id="Task-id" task-status="notStarted" link="https://example.com"></ontario-task>
+```
+
+Example of a task with a hint.
+
+```html
+<ontario-task
+	label="Task"
+	task-id="Task-id"
+	hint-text="A hint for task"
+	hint-text-id="task-hint"
+	task-status="completed"
+	link="https://example.com"
+></ontario-task>
+```
+
+## Custom property types
 
 <!-- Auto Generated Below -->
 
