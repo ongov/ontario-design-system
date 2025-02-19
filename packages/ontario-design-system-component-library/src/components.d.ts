@@ -2913,6 +2913,18 @@ declare global {
         prototype: HTMLOntarioTableElement;
         new (): HTMLOntarioTableElement;
     };
+    interface HTMLOntarioTaskElement extends Components.OntarioTask, HTMLStencilElement {
+    }
+    var HTMLOntarioTaskElement: {
+        prototype: HTMLOntarioTaskElement;
+        new (): HTMLOntarioTaskElement;
+    };
+    interface HTMLOntarioTaskListElement extends Components.OntarioTaskList, HTMLStencilElement {
+    }
+    var HTMLOntarioTaskListElement: {
+        prototype: HTMLOntarioTaskListElement;
+        new (): HTMLOntarioTaskListElement;
+    };
     interface HTMLOntarioTextareaElementEventMap {
         "inputOnInput": InputInputEvent;
         "inputOnChange": InputInteractionEvent;
@@ -3073,6 +3085,8 @@ declare global {
         "ontario-search-box": HTMLOntarioSearchBoxElement;
         "ontario-step-indicator": HTMLOntarioStepIndicatorElement;
         "ontario-table": HTMLOntarioTableElement;
+        "ontario-task": HTMLOntarioTaskElement;
+        "ontario-task-list": HTMLOntarioTaskListElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
     }
 }
@@ -5380,6 +5394,8 @@ declare module "@stencil/core" {
             "ontario-search-box": LocalJSX.OntarioSearchBox & JSXBase.HTMLAttributes<HTMLOntarioSearchBoxElement>;
             "ontario-step-indicator": LocalJSX.OntarioStepIndicator & JSXBase.HTMLAttributes<HTMLOntarioStepIndicatorElement>;
             "ontario-table": LocalJSX.OntarioTable & JSXBase.HTMLAttributes<HTMLOntarioTableElement>;
+            "ontario-task": LocalJSX.OntarioTask & JSXBase.HTMLAttributes<HTMLOntarioTaskElement>;
+            "ontario-task-list": LocalJSX.OntarioTaskList & JSXBase.HTMLAttributes<HTMLOntarioTaskListElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
         }
     }
