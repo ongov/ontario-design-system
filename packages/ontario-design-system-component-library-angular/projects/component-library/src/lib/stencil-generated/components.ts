@@ -547,6 +547,30 @@ export class OntarioFooter {
 export declare interface OntarioFooter extends Components.OntarioFooter {}
 
 @ProxyCmp({
+	inputs: ['gap'],
+})
+@Component({
+	selector: 'ontario-form-container',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['gap'],
+})
+export class OntarioFormContainer {
+	protected el: HTMLOntarioFormContainerElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioFormContainer extends Components.OntarioFormContainer {}
+
+@ProxyCmp({
 	inputs: [
 		'applicationHeaderInfo',
 		'assetBasePath',
