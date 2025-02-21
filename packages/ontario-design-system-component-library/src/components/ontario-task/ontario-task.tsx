@@ -59,7 +59,7 @@ export class OntarioTask {
 	 *
 	 * This is optional.
 	 */
-	@Prop() hintText?: string | Hint;
+	@Prop({ mutable: true }) hintText?: string | Hint;
 
 	/**
 	 * Defines the status of the task, with default set to 'NotStarted'.
@@ -235,8 +235,14 @@ export class OntarioTask {
 	 * and set it for the `aria-describedby` attribute.
 	 */
 	async componentDidLoad() {
-		const hintId = await this.hintTextRef?.getHintTextId();
-		this.hintTextId = hintId || defaultHintId;
+		if (this.hintTextRef) {
+			const hintId = await this.hintTextRef.getHintTextId();
+			this.hintTextId = hintId || defaultHintId;
+		} else {
+			console.warn('hintTextRef is undefined, defaulting to defaultHintId');
+			this.hintTextId = defaultHintId;
+		}
+
 		this.el.setAttribute('data-task-status', this.taskStatus);
 	}
 
@@ -267,7 +273,7 @@ export class OntarioTask {
 				role="group"
 				aria-labelledby={`task-label--${this.taskId}`}
 				aria-describedby={this.hintTextId}
-				data-task-status
+				data-task-status={this.taskStatusState}
 			>
 				{isLinkActive ? (
 					<a href={this.link} class="ontario-task__link" aria-label={this.label}>
