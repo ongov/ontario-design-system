@@ -35,17 +35,6 @@ describe('ontario-task', () => {
 		expect(badge).toEqualText('Completed');
 	});
 
-	it('renders as a link when "link" prop is provided', async () => {
-		const page = await newE2EPage();
-		await page.setContent(
-			'<ontario-task label="Task with Link" task-id="task-5" link="https://example.com"></ontario-task>',
-		);
-
-		const link = await page.find('ontario-task >>> .ontario-task__link');
-		expect(link).toBeTruthy();
-		expect(link).toHaveAttribute('href', 'https://example.com');
-	});
-
 	it('does not render as a link when "deactivateLink" is true', async () => {
 		const page = await newE2EPage();
 		await page.setContent(

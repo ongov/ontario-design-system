@@ -1,7 +1,6 @@
 import { h, Component, Element, Prop, State } from '@stencil/core';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
-import { TaskStatus } from '../../utils/common/task-statuses.enum';
 import translations from '../../translations/global.i18n.json';
 
 @Component({
@@ -35,20 +34,61 @@ export class OntarioTaskList {
 
 	/**
 	 * Counts the total tasks and completed tasks by querying for `ontario-task` elements.
-	 * The completed tasks are determined based on the language-specific translation for "completed".
 	 */
 	countTasks() {
-		const tasks = Array.from(this.el.querySelectorAll('ontario-task')) as HTMLOntarioTaskElement[];
+		const slot = this.el.shadowRoot?.querySelector('slot');
+		const tasks = slot
+			? (slot.assignedElements().filter((el) => el.tagName.toLowerCase() === 'ontario-task') as HTMLElement[])
+			: [];
+
 		this.totalTasks = tasks.length;
 
 		this.completedTasks = tasks.filter((task) => {
-			const status = task.getAttribute('data-task-status') as TaskStatus;
-			return status === 'completed';
+			// Get the status directly from the light DOM
+			const status = task.getAttribute('data-task-status');
+			return status?.toLowerCase() === 'completed';
 		}).length;
 	}
 
+	/**
+	 * Ensure tasks are counted after custom elements are fully upgraded.
+	 */
+	connectedCallback() {
+		// Wait for the custom element to be fully defined before counting
+		customElements.whenDefined('ontario-task').then(() => {
+			setTimeout(() => {
+				this.countTasks();
+			}, 50);
+		});
+	}
+
+	/**
+	 * Use slotchange and MutationObserver to track changes in slot content.
+	 */
+	componentDidLoad() {
+		const slot = this.el.shadowRoot?.querySelector('slot');
+		if (slot) {
+			slot.addEventListener('slotchange', () => {
+				this.countTasks();
+			});
+		}
+
+		// Observe changes to the light DOM for accurate counting
+		const observer = new MutationObserver((mutations) => {
+			this.countTasks();
+		});
+		observer.observe(this.el, {
+			childList: true,
+			subtree: true,
+			attributes: true,
+			attributeFilter: ['data-task-status'],
+		});
+	}
+
 	componentDidRender() {
-		this.countTasks();
+		setTimeout(() => {
+			this.countTasks();
+		}, 100);
 	}
 
 	render() {
@@ -67,9 +107,9 @@ export class OntarioTaskList {
 					{translations.taskGroup.tasks[resolvedLanguage]}
 				</p>
 
-				<div class="ontario-task-list" role="list">
+				<ul class="ontario-task-list" role="list">
 					<slot></slot>
-				</div>
+				</ul>
 			</div>
 		);
 	}
