@@ -56,10 +56,13 @@ export class OntarioHeader {
 	 *    application-header-info='{
 	 *      "title": "Application name",
 	 *      "href": "/application-homepage",
-	 *		maxSubheaderDesktopLinks?: 3,
-	 *		maxSubheaderTabletLinks?: 2,
-	 *		maxSubheaderMobileLinks?: 1,
-	 *    }'>
+	 *		"maxSubheaderLinks": {
+	 *			"desktop": "3",
+	 *			"tablet": "2",
+	 *			"mobile": "1"
+	 *		}
+	 *    }'
+	 *	>
 	 *  </ontario-header>
 	 */
 	@Prop() applicationHeaderInfo: ApplicationHeaderInfo | string;
@@ -432,8 +435,7 @@ export class OntarioHeader {
 
 	private isMenuVisible(viewportSize: string) {
 		const { menuItemState, applicationHeaderInfoState } = this;
-		const { maxSubheaderMobileLinks, maxSubheaderTabletLinks, maxSubheaderDesktopLinks } =
-			applicationHeaderInfoState ?? {};
+		const { mobile, tablet, desktop } = applicationHeaderInfoState.maxSubheaderLinks ?? {};
 
 		const numOfMenuItems = menuItemState?.length ?? 0;
 
@@ -442,15 +444,15 @@ export class OntarioHeader {
 		}
 
 		if (viewportSize === 'mobile') {
-			return numOfMenuItems - (maxSubheaderMobileLinks ?? 0) > 0;
+			return numOfMenuItems - (mobile ?? 0) > 0;
 		}
 
 		if (viewportSize === 'tablet') {
-			return numOfMenuItems - (maxSubheaderTabletLinks ?? 0) > 0;
+			return numOfMenuItems - (tablet ?? 0) > 0;
 		}
 
 		if (viewportSize === 'desktop') {
-			return numOfMenuItems - (maxSubheaderDesktopLinks ?? 0) > 0;
+			return numOfMenuItems - (desktop ?? 0) > 0;
 		}
 
 		return true;
@@ -650,10 +652,10 @@ export class OntarioHeader {
 											</a>
 										)}
 										<div class="ontario-application-subheader__menu-container">
-											{!!this.applicationHeaderInfoState?.maxSubheaderDesktopLinks && (
+											{!!this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState] && (
 												<ul class="ontario-application-subheader__menu">
 													{this.menuItemState
-														?.slice(0, this.applicationHeaderInfoState?.maxSubheaderDesktopLinks)
+														?.slice(0, this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState])
 														.map((item) =>
 															this.generateMenuItem(item.href, item.title, item.linkIsActive, '', item.onClickHandler),
 														)}
@@ -662,7 +664,8 @@ export class OntarioHeader {
 
 											{/* Render menu button if menuItemState exists, and if there are items to display in a dropdown menu */}
 											{this.menuItemState !== undefined &&
-												this.applicationHeaderInfoState?.maxSubheaderDesktopLinks !== this.menuItemState.length &&
+												this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState] !==
+													this.menuItemState.length &&
 												this.renderMenuButton('')}
 										</div>
 									</div>
@@ -673,7 +676,7 @@ export class OntarioHeader {
 								<ontario-header-menu
 									menu-items={JSON.stringify(
 										this.menuItemState?.slice(
-											this.applicationHeaderInfoState?.maxSubheaderDesktopLinks,
+											this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState],
 											this.menuItemState.length,
 										),
 									)}

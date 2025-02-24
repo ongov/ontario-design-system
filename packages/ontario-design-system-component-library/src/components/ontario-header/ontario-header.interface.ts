@@ -10,9 +10,11 @@ export interface MenuItem {
 export interface ApplicationHeaderInfo {
 	title: string;
 	href?: string;
-	maxSubheaderDesktopLinks?: number;
-	maxSubheaderTabletLinks?: number;
-	maxSubheaderMobileLinks?: number;
+	maxSubheaderLinks?: {
+		desktop?: number;
+		tablet?: number;
+		mobile?: number;
+	};
 }
 
 export interface LanguageToggleOptions {
