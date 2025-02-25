@@ -27,9 +27,9 @@ describe('ontario-task', () => {
 						<p aria-live="polite" class="ontario-task-list__completion-text">
 							You have completed&nbsp;0&nbsp;out of&nbsp;0&nbsp;tasks.
 						</p>
-						<div class="ontario-task-list" role="list">
+						<ul class="ontario-task-list" role="list">
 							<slot></slot>
-						</div>
+						</ul>
 					</div>
 				</mock:shadow-root>
 			</ontario-task-list>
