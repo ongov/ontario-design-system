@@ -1,9 +1,9 @@
 import { Component, Prop, State, Watch, h, Listen, Event, EventEmitter, Element } from '@stencil/core';
-import { MenuItem } from './ontario-header-menu.interface';
+import { MenuItem } from './ontario-header-overflow-menu.interface';
 
 @Component({
-	tag: 'ontario-header-menu',
-	styleUrl: 'ontario-header-menu.scss',
+	tag: 'ontario-header-overflow-menu',
+	styleUrl: 'ontario-header-overflow-menu.scss',
 	shadow: true,
 })
 export class OntarioHeaderApplicationMenu {
@@ -13,7 +13,7 @@ export class OntarioHeaderApplicationMenu {
 	 * The items that will go inside the menu.
 	 *
 	 *  @example
-	 * 	<ontario-header-menu
+	 * 	<ontario-header-overflow-menu
 	 *			menu-items='[{
 	 *				"title": "Link 1",
 	 *				"href": "/link-1"
@@ -31,7 +31,7 @@ export class OntarioHeaderApplicationMenu {
 	 *				"href": "/link-4"
 	 *				"linkIsActive": "false"
 	 *			}]'>
-	 *	</ontario-header-menu>
+	 *	</ontario-header-overflow-menu>
 	 */
 	@Prop() menuItems: MenuItem[] | string;
 

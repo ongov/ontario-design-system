@@ -5,7 +5,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Use the `ontario` type header for all pages that are part of the main ontario.ca website. This header is mandatory.
 
-Use the `applicaton` type header for applications and subsites outside of the main ontario.ca website.
+Use the `application` type header for applications and subsites outside of the main ontario.ca website.
 
 Use the `serviceOntario` type header for ServiceOntario sites/apps. This type is for use by ServiceOntario teams only.
 

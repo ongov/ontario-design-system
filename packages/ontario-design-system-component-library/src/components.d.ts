@@ -24,7 +24,7 @@ import { CaptionType } from "./utils/common/input-caption/input-caption.types";
 import { FooterLinks, OntarioFooterType, ThreeColumnOptions, TwoColumnOptions } from "./components/ontario-footer/ontario-footer-interface";
 import { FooterSocialLinksProps } from "./components/ontario-footer/components";
 import { ApplicationHeaderInfo, LanguageToggleOptions, MenuItem, OntarioHeaderType } from "./components/ontario-header/ontario-header.interface";
-import { MenuItem as MenuItem1 } from "./components/ontario-header-menu/ontario-header-menu.interface";
+import { MenuItem as MenuItem1 } from "./components/ontario-header-overflow-menu/ontario-header-overflow-menu.interface";
 import { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 import { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.interface";
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
@@ -49,7 +49,7 @@ export { CaptionType } from "./utils/common/input-caption/input-caption.types";
 export { FooterLinks, OntarioFooterType, ThreeColumnOptions, TwoColumnOptions } from "./components/ontario-footer/ontario-footer-interface";
 export { FooterSocialLinksProps } from "./components/ontario-footer/components";
 export { ApplicationHeaderInfo, LanguageToggleOptions, MenuItem, OntarioHeaderType } from "./components/ontario-header/ontario-header.interface";
-export { MenuItem as MenuItem1 } from "./components/ontario-header-menu/ontario-header-menu.interface";
+export { MenuItem as MenuItem1 } from "./components/ontario-header-overflow-menu/ontario-header-overflow-menu.interface";
 export { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 export { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.interface";
 export { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
@@ -470,10 +470,10 @@ export namespace Components {
          */
         "type"?: OntarioHeaderType;
     }
-    interface OntarioHeaderMenu {
+    interface OntarioHeaderOverflowMenu {
         /**
           * The items that will go inside the menu.
-          * @example <ontario-header-menu 	menu-items='[{ 		"title": "Link 1", 		"href": "/link-1" 		"linkIsActive": "false" 	},{ 		"title": "Link 2", 		"href": "/link-2" 		"linkIsActive": "false" 	},{ 		"title": "Link 3", 		"href": "/link-3" 		"linkIsActive": "false" 	},{ 		"title": "Link 4", 		"href": "/link-4" 		"linkIsActive": "false" 	}]'> </ontario-header-menu>
+          * @example <ontario-header-overflow-menu 	menu-items='[{ 		"title": "Link 1", 		"href": "/link-1" 		"linkIsActive": "false" 	},{ 		"title": "Link 2", 		"href": "/link-2" 		"linkIsActive": "false" 	},{ 		"title": "Link 3", 		"href": "/link-3" 		"linkIsActive": "false" 	},{ 		"title": "Link 4", 		"href": "/link-4" 		"linkIsActive": "false" 	}]'> </ontario-header-overflow-menu>
          */
         "menuItems": MenuItem1[] | string;
         /**
@@ -1961,9 +1961,9 @@ export interface OntarioHeaderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOntarioHeaderElement;
 }
-export interface OntarioHeaderMenuCustomEvent<T> extends CustomEvent<T> {
+export interface OntarioHeaderOverflowMenuCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLOntarioHeaderMenuElement;
+    target: HTMLOntarioHeaderOverflowMenuElement;
 }
 export interface OntarioHintExpanderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2146,22 +2146,22 @@ declare global {
         prototype: HTMLOntarioHeaderElement;
         new (): HTMLOntarioHeaderElement;
     };
-    interface HTMLOntarioHeaderMenuElementEventMap {
+    interface HTMLOntarioHeaderOverflowMenuElementEventMap {
         "endOfMenuReached": boolean;
     }
-    interface HTMLOntarioHeaderMenuElement extends Components.OntarioHeaderMenu, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLOntarioHeaderMenuElementEventMap>(type: K, listener: (this: HTMLOntarioHeaderMenuElement, ev: OntarioHeaderMenuCustomEvent<HTMLOntarioHeaderMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLOntarioHeaderOverflowMenuElement extends Components.OntarioHeaderOverflowMenu, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOntarioHeaderOverflowMenuElementEventMap>(type: K, listener: (this: HTMLOntarioHeaderOverflowMenuElement, ev: OntarioHeaderOverflowMenuCustomEvent<HTMLOntarioHeaderOverflowMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLOntarioHeaderMenuElementEventMap>(type: K, listener: (this: HTMLOntarioHeaderMenuElement, ev: OntarioHeaderMenuCustomEvent<HTMLOntarioHeaderMenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOntarioHeaderOverflowMenuElementEventMap>(type: K, listener: (this: HTMLOntarioHeaderOverflowMenuElement, ev: OntarioHeaderOverflowMenuCustomEvent<HTMLOntarioHeaderOverflowMenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLOntarioHeaderMenuElement: {
-        prototype: HTMLOntarioHeaderMenuElement;
-        new (): HTMLOntarioHeaderMenuElement;
+    var HTMLOntarioHeaderOverflowMenuElement: {
+        prototype: HTMLOntarioHeaderOverflowMenuElement;
+        new (): HTMLOntarioHeaderOverflowMenuElement;
     };
     interface HTMLOntarioHintExpanderElementEventMap {
         "toggleExpanderEvent": MouseEvent | KeyboardEvent;
@@ -3000,7 +3000,7 @@ declare global {
         "ontario-fieldset": HTMLOntarioFieldsetElement;
         "ontario-footer": HTMLOntarioFooterElement;
         "ontario-header": HTMLOntarioHeaderElement;
-        "ontario-header-menu": HTMLOntarioHeaderMenuElement;
+        "ontario-header-overflow-menu": HTMLOntarioHeaderOverflowMenuElement;
         "ontario-hint-expander": HTMLOntarioHintExpanderElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
         "ontario-icon-accessibility": HTMLOntarioIconAccessibilityElement;
@@ -3600,16 +3600,16 @@ declare namespace LocalJSX {
          */
         "type"?: OntarioHeaderType;
     }
-    interface OntarioHeaderMenu {
+    interface OntarioHeaderOverflowMenu {
         /**
           * The items that will go inside the menu.
-          * @example <ontario-header-menu 	menu-items='[{ 		"title": "Link 1", 		"href": "/link-1" 		"linkIsActive": "false" 	},{ 		"title": "Link 2", 		"href": "/link-2" 		"linkIsActive": "false" 	},{ 		"title": "Link 3", 		"href": "/link-3" 		"linkIsActive": "false" 	},{ 		"title": "Link 4", 		"href": "/link-4" 		"linkIsActive": "false" 	}]'> </ontario-header-menu>
+          * @example <ontario-header-overflow-menu 	menu-items='[{ 		"title": "Link 1", 		"href": "/link-1" 		"linkIsActive": "false" 	},{ 		"title": "Link 2", 		"href": "/link-2" 		"linkIsActive": "false" 	},{ 		"title": "Link 3", 		"href": "/link-3" 		"linkIsActive": "false" 	},{ 		"title": "Link 4", 		"href": "/link-4" 		"linkIsActive": "false" 	}]'> </ontario-header-overflow-menu>
          */
         "menuItems"?: MenuItem1[] | string;
         /**
           * Emitted by `linkIsLast()`.
          */
-        "onEndOfMenuReached"?: (event: OntarioHeaderMenuCustomEvent<boolean>) => void;
+        "onEndOfMenuReached"?: (event: OntarioHeaderOverflowMenuCustomEvent<boolean>) => void;
         /**
           * Controls the tab order flow of the menu in relation to the rest of the page.  If set to `true`, when a user tabs to the end of the menu, the tab order / focus will be reset to the menu button in the header.  If set to `false` the tab order will continue on down the page.
          */
@@ -5179,7 +5179,7 @@ declare namespace LocalJSX {
         "ontario-fieldset": OntarioFieldset;
         "ontario-footer": OntarioFooter;
         "ontario-header": OntarioHeader;
-        "ontario-header-menu": OntarioHeaderMenu;
+        "ontario-header-overflow-menu": OntarioHeaderOverflowMenu;
         "ontario-hint-expander": OntarioHintExpander;
         "ontario-hint-text": OntarioHintText;
         "ontario-icon-accessibility": OntarioIconAccessibility;
@@ -5325,7 +5325,7 @@ declare module "@stencil/core" {
             "ontario-fieldset": LocalJSX.OntarioFieldset & JSXBase.HTMLAttributes<HTMLOntarioFieldsetElement>;
             "ontario-footer": LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;
             "ontario-header": LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
-            "ontario-header-menu": LocalJSX.OntarioHeaderMenu & JSXBase.HTMLAttributes<HTMLOntarioHeaderMenuElement>;
+            "ontario-header-overflow-menu": LocalJSX.OntarioHeaderOverflowMenu & JSXBase.HTMLAttributes<HTMLOntarioHeaderOverflowMenuElement>;
             "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
             "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
             "ontario-icon-accessibility": LocalJSX.OntarioIconAccessibility & JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;
