@@ -133,7 +133,7 @@ export class OntarioHintText implements Hint {
 
 	render() {
 		return this.hintContentType === 'string' ? (
-			<p id={this.getId()} class="ontario-hint">
+			<p part="hint-text" id={this.getId()} class="ontario-hint">
 				{this.hintState}
 			</p>
 		) : (

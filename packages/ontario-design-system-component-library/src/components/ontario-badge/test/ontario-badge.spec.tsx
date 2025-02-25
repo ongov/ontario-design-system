@@ -23,7 +23,7 @@ describe('ontario-badge', () => {
 	it('should render with the ontario-badge--default-light class on the span element', async () => {
 		const page = await newSpecPage({
 			components: [OntarioBadge],
-			html: `<ontario-badge colour="light-teal">In progress</ontario-badge>`,
+			html: `<ontario-badge colour="lightTeal">In progress</ontario-badge>`,
 		});
 
 		expect(page.root).toMatchSnapshot();
