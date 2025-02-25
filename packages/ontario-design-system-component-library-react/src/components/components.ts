@@ -84,6 +84,10 @@ import {
 	defineCustomElement as defineOntarioFooter,
 } from '@ongov/ontario-design-system-component-library/dist/components/ontario-footer.js';
 import {
+	OntarioHeaderOverflowMenu as OntarioHeaderOverflowMenuElement,
+	defineCustomElement as defineOntarioHeaderOverflowMenu,
+} from '@ongov/ontario-design-system-component-library/dist/components/ontario-header-overflow-menu.js';
+import {
 	OntarioHeader as OntarioHeaderElement,
 	defineCustomElement as defineOntarioHeader,
 } from '@ongov/ontario-design-system-component-library/dist/components/ontario-header.js';
@@ -807,7 +811,7 @@ export const OntarioFooter: StencilReactComponent<OntarioFooterElement, OntarioF
 		defineCustomElement: defineOntarioFooter,
 	});
 
-type OntarioHeaderEvents = NonNullable<unknown>;
+type OntarioHeaderEvents = { onMenuButtonToggled: EventName<CustomEvent<boolean>> };
 
 export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioHeaderEvents> =
 	/*@__PURE__*/ createComponent<OntarioHeaderElement, OntarioHeaderEvents>({
@@ -815,9 +819,23 @@ export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioH
 		elementClass: OntarioHeaderElement,
 		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
 		react: React,
-		events: {} as OntarioHeaderEvents,
+		events: { onMenuButtonToggled: 'menuButtonToggled' } as OntarioHeaderEvents,
 		defineCustomElement: defineOntarioHeader,
 	});
+
+type OntarioHeaderOverflowMenuEvents = { onEndOfMenuReached: EventName<CustomEvent<boolean>> };
+
+export const OntarioHeaderOverflowMenu: StencilReactComponent<
+	OntarioHeaderOverflowMenuElement,
+	OntarioHeaderOverflowMenuEvents
+> = /*@__PURE__*/ createComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents>({
+	tagName: 'ontario-header-overflow-menu',
+	elementClass: OntarioHeaderOverflowMenuElement,
+	// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+	react: React,
+	events: { onEndOfMenuReached: 'endOfMenuReached' } as OntarioHeaderOverflowMenuEvents,
+	defineCustomElement: defineOntarioHeaderOverflowMenu,
+});
 
 type OntarioHintExpanderEvents = {
 	onToggleExpanderEvent: EventName<OntarioHintExpanderCustomEvent<MouseEvent | KeyboardEvent>>;
