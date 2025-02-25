@@ -1,3 +1,15 @@
+// Mock MutationObserver for Jest
+beforeAll(() => {
+	global.MutationObserver = class {
+		constructor(callback: any) {}
+		observe(target: any, options: any) {}
+		disconnect() {}
+		takeRecords() {
+			return [];
+		}
+	};
+});
+
 import { newSpecPage } from '@stencil/core/testing';
 import { OntarioTaskList } from '../ontario-task-list';
 
