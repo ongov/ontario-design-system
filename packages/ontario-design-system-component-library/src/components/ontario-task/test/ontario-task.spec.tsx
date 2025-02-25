@@ -10,7 +10,7 @@ describe('ontario-task', () => {
 		expect(page.root).toEqualHtml(`
 			<ontario-task data-task-status="notStarted" task-id="task-1" task-status="notStarted">
 				<mock:shadow-root>
-				  <article aria-describedby="default-hint-id" aria-labelledby="task-label--task-1" class="ontario-task ontario-task-status--not-started" data-task-status role="group">
+				  <article aria-describedby="default-hint-id" aria-labelledby="task-label--task-1" class="ontario-task ontario-task-status--not-started" data-task-status="notStarted" role="group">
 						<div>
 							<div class="ontario-task__content">
 								<h3 class="ontario-task__label" id="task-label--task-1"></h3>
