@@ -10,6 +10,6 @@
 		"skipLibCheck": true,
 		"strict": true
 	},
-	"include": ["packages/**/*"],
+	"include": ["packages/**/*", "__mocks__"],
 	"exclude": ["node_modules"]
 }
