@@ -1,14 +1,16 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-// Define paths for input and output folders
-const slottedStyleSourceFolder: string = path.join(__dirname, '../src/styles/slotted-styles');
-const outputFolder: string = path.join(__dirname, '../src/styles');
-const outputFile: string = path.join(outputFolder, 'theme.scss');
+// Define default paths for input and output folders
+const defaultSlottedStyleSourceFolder: string = path.join(__dirname, '../src/styles/slotted-styles');
+const defaultOutputFolder: string = path.join(__dirname, '../src/styles');
+const defaultOutputFile: string = path.join(defaultOutputFolder, 'theme.scss');
 
 // Ensure the output folder exists, creating it if necessary
 export const checkOutputFolderExists = (folder: string): void => {
+	// Check if the folder already exists using fs.existsSync
 	if (!fs.existsSync(folder)) {
+		// If it doesn't exist, create the folder using fs.mkdirSync
 		fs.mkdirSync(folder, { recursive: true });
 	}
 };
@@ -48,17 +50,16 @@ export const writeGeneratedSCSSToTheme = (filePath: string, content: string): vo
 };
 
 // Main function to generate the theme.scss file
-export const generateThemeSCSS = (): void => {
-	checkOutputFolderExists(outputFolder);
+export const generateThemeSCSS = (
+	sourcedir: string = defaultSlottedStyleSourceFolder,
+	outputdir: string = defaultOutputFolder,
+	outputfile: string = defaultOutputFile,
+): void => {
+	checkOutputFolderExists(outputdir);
 
-	const scssContent = generateThemeSCSSContent(
-		getSlottedStyleFiles(slottedStyleSourceFolder),
-		slottedStyleSourceFolder,
-		outputFolder,
-	);
+	const scssContent = generateThemeSCSSContent(getSlottedStyleFiles(sourcedir), sourcedir, outputdir);
 
-	writeGeneratedSCSSToTheme(outputFile, scssContent);
+	writeGeneratedSCSSToTheme(outputfile, scssContent);
 };
 
-// Execute the script
 generateThemeSCSS();
