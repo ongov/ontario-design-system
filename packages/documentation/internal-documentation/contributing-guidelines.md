@@ -9,7 +9,7 @@
 
 ### Issue Tracking
 
-As with most projects within the ODS, the Design System has its own issue tracking board, via Jira. Currently, issues are tracked via a [Kanban board](https://ontariodigital.atlassian.net/jira/software/c/projects/DS/boards/380).
+As with most projects within the ODS, the Design System has its own issue tracking board, via Jira.
 
 ### Branching
 

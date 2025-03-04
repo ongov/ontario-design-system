@@ -258,6 +258,21 @@ pnpm run clean:full
 
 If run at root this will run the `clean:full` script on each package, which will clean build artefacts and nuke the `node_modules` directory. _The root level `node_modules` directory will not be touched._ This makes sure that Lerna is left around.
 
+## Testing
+
+- Run all tests across the monorepo:
+
+```bash
+pnpm run test:e2e # Runs all e2e tests across monorepo
+pnpm run test:unit # Runs all unit tests across monorepo
+```
+
+## Common Issues & Troubleshooting
+
+- **Dependency issues:** Clear lockfile or `node_modules` if needed
+- **Permission issues:** Ensure PNPM is correctly installed and configured
+- **Build/test failures:** Check logs for specific errors and verify that dependencies are correctly installed
+
 ## Resources
 
 Here are some helpful resources one can use to learn more.

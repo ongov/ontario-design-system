@@ -9,19 +9,19 @@ This guide is intended to help you understand the structure of the monorepo, set
 
 This monorepo contains multiple projects that work together to deliver a cohesive design sytem. Below is a brief description of each project:
 
-### 1. Ontario Design System Design Tokens
+### 1. [Ontario Design System Design Tokens](../../ontario-design-system-design-tokens)
 
-- Contains raw values for design tokens (colors, fonts, layouts) used throughout the design system.
+- Contains raw values for design tokens (colours, fonts, layouts) used throughout the design system.
 - Forms the foundation of all Ontario Design System npm packages.
 - Can be used directly in projects that don’t require global styles.
 
-### 2. Ontario Design System Global Styles
+### 2. [Ontario Design System Global Styles](../../ontario-design-system-global-styles)
 
 - Shared base styles of the Ontario Design System (global styles, fonts, and assets for generic elements and layouts).
 - Does not include component-specific styles.
 - Suitable for building additional components using base styles.
 
-### 3. Ontario Design System Complete Styles
+### 3. [Ontario Design System Complete Styles](../../ontario-design-system-complete-styles)
 
 - Comprehensive package with all Ontario Design System styles and assets.
 - Includes global styles, fonts, logos, icons, and component-specific styles.
@@ -29,16 +29,16 @@ This monorepo contains multiple projects that work together to deliver a cohesiv
 
 ### 4. Web Component Libraries
 
-- **Ontario Design System Component Library**: for HTML or frameworks without React/Angular.
-- **Ontario Design System Component Library (React)**: for React applications (including Gatsby, Next.js).
-- **Ontario Design System Component Library (Angular)**: for Angular applications.
+- **[Ontario Design System Component Library**](../../ontario-design-system-component-library): for HTML or frameworks without React/Angular.
+- **[Ontario Design System React Component Library](../../ontario-design-system-component-library-react)**: for React applications (including Gatsby, Next.js).
+- **[Ontario Design System Angular Component Library](../../ontario-design-system-component-library-angular)**: for Angular applications.
 
 ### 5. Example Projects
 
-- **Angular App:** Tests and builds examples using the Angular Web Component Library.
-- **React App**: Tests and builds examples using the React Web Component Library.
+- **[Angular PoC App](../../app-angular):** Tests and builds examples using the Angular Web Component Library.
+- **[React Poc App](../../app-react)**: Tests and builds examples using the React Web Component Library.
 
-### 6. Ontario Design System Web Components Documentation
+### 6. [Ontario Design System Web Components Documentation](../../app-web-components-documentation)
 
 - Developer documentation for guidance, examples, and API documentation for the web components and the component library packages.
 
@@ -55,12 +55,12 @@ Provides information for developers working on the monorepo, including:
 
 ## 🧩 **Technology Stack**
 
-- **Package Manager:** PNPM
-- **Monorepo Management:** Lerna
-- **Component Library:** Stencil
-- **Frontend Frameworks:** React, Angular
-- **Styling:** SCSS, Design Tokens
-- **Testing:** Jest for unit and e2e tests
+- **Package Manager:** [PNPM](https://pnpm.io/)
+- **Monorepo Management:** [Lerna](https://lerna.js.org/)
+- **Component Library:** [Stencil](https://stenciljs.com/)
+- **Frontend Frameworks:** [React](https://react.dev/), [Angular](https://angular.dev/)
+- **Styling:** [SCSS](https://sass-lang.com/documentation/syntax/), Design Tokens
+- **Testing:** [Jest](https://jestjs.io/) for unit tests, [Playwright](https://playwright.dev/) for E2E tests
 
 ---
 
