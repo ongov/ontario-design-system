@@ -1,3 +1,4 @@
+@use './fonts.variables' as fonts;
 @use './font-weights.variables' as fontWeights;
 @use './spacing.variables' as spacing;
 @use './breakpoints.variables' as breakpoints;
@@ -9,9 +10,9 @@
     Global typography variables
 --------------------------------- */
 
-$ontario-font-open-sans: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$ontario-font-raleway-modified: 'Raleway', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$ontario-font-courier-prime: 'Courier Prime', Courier, 'Courier New', monospace;
+$ontario-font-open-sans: fonts.$ontario-font-open-sans;
+$ontario-font-raleway-modified: fonts.$ontario-font-raleway;
+$ontario-font-courier-prime: fonts.$ontario-font-courier-prime;
 $ontario-max-width-large: 70rem;
 $ontario-max-width-standard: 48rem;
 
