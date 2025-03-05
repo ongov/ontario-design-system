@@ -84,6 +84,10 @@ import {
 	defineCustomElement as defineOntarioFooter,
 } from '@ongov/ontario-design-system-component-library/dist/components/ontario-footer.js';
 import {
+	OntarioFormContainer as OntarioFormContainerElement,
+	defineCustomElement as defineOntarioFormContainer,
+} from '@ongov/ontario-design-system-component-library/dist/components/ontario-form-container.js';
+import {
 	OntarioHeader as OntarioHeaderElement,
 	defineCustomElement as defineOntarioHeader,
 } from '@ongov/ontario-design-system-component-library/dist/components/ontario-header.js';
@@ -587,10 +591,6 @@ import {
 	OntarioTextarea as OntarioTextareaElement,
 	defineCustomElement as defineOntarioTextarea,
 } from '@ongov/ontario-design-system-component-library/dist/components/ontario-textarea.js';
-import {
-	OntarioVerticalFormSpacing as OntarioVerticalFormSpacingElement,
-	defineCustomElement as defineOntarioVerticalFormSpacing,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-vertical-form-spacing.js';
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
@@ -817,6 +817,18 @@ export const OntarioFooter: StencilReactComponent<OntarioFooterElement, OntarioF
 		react: React,
 		events: {} as OntarioFooterEvents,
 		defineCustomElement: defineOntarioFooter,
+	});
+
+type OntarioFormContainerEvents = NonNullable<unknown>;
+
+export const OntarioFormContainer: StencilReactComponent<OntarioFormContainerElement, OntarioFormContainerEvents> =
+	/*@__PURE__*/ createComponent<OntarioFormContainerElement, OntarioFormContainerEvents>({
+		tagName: 'ontario-form-container',
+		elementClass: OntarioFormContainerElement,
+		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+		react: React,
+		events: {} as OntarioFormContainerEvents,
+		defineCustomElement: defineOntarioFormContainer,
 	});
 
 type OntarioHeaderEvents = NonNullable<unknown>;
@@ -2460,17 +2472,3 @@ export const OntarioTextarea: StencilReactComponent<OntarioTextareaElement, Onta
 		} as OntarioTextareaEvents,
 		defineCustomElement: defineOntarioTextarea,
 	});
-
-type OntarioVerticalFormSpacingEvents = NonNullable<unknown>;
-
-export const OntarioVerticalFormSpacing: StencilReactComponent<
-	OntarioVerticalFormSpacingElement,
-	OntarioVerticalFormSpacingEvents
-> = /*@__PURE__*/ createComponent<OntarioVerticalFormSpacingElement, OntarioVerticalFormSpacingEvents>({
-	tagName: 'ontario-vertical-form-spacing',
-	elementClass: OntarioVerticalFormSpacingElement,
-	// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-	react: React,
-	events: {} as OntarioVerticalFormSpacingEvents,
-	defineCustomElement: defineOntarioVerticalFormSpacing,
-});

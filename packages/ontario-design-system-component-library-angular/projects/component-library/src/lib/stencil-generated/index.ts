@@ -16,6 +16,7 @@ export const DIRECTIVES = [
 	d.OntarioDropdownList,
 	d.OntarioFieldset,
 	d.OntarioFooter,
+	d.OntarioFormContainer,
 	d.OntarioHeader,
 	d.OntarioHintExpander,
 	d.OntarioHintText,
@@ -142,5 +143,4 @@ export const DIRECTIVES = [
 	d.OntarioTask,
 	d.OntarioTaskList,
 	d.OntarioTextarea,
-	d.OntarioVerticalFormSpacing,
 ];
