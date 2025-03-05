@@ -431,6 +431,12 @@ export namespace Components {
          */
         "type": OntarioFooterType;
     }
+    interface OntarioFormContainer {
+        /**
+          * Defines the gap (bottom margin) between slotted form elements. If no gap prop is provided, it will default to 'default'.
+         */
+        "gap": 'default' | 'condensed';
+    }
     interface OntarioHeader {
         /**
           * Information pertaining to the application header. This is only necessary for the 'application' header type.  This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.
@@ -1931,12 +1937,6 @@ export namespace Components {
          */
         "value"?: string;
     }
-    interface OntarioVerticalFormSpacing {
-        /**
-          * Defines the spacing between slotted form elements. If no spacing prop is provided, it will default to 'default'.
-         */
-        "spacing": 'default' | 'condensed';
-    }
 }
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2113,6 +2113,12 @@ declare global {
     var HTMLOntarioFooterElement: {
         prototype: HTMLOntarioFooterElement;
         new (): HTMLOntarioFooterElement;
+    };
+    interface HTMLOntarioFormContainerElement extends Components.OntarioFormContainer, HTMLStencilElement {
+    }
+    var HTMLOntarioFormContainerElement: {
+        prototype: HTMLOntarioFormContainerElement;
+        new (): HTMLOntarioFormContainerElement;
     };
     interface HTMLOntarioHeaderElement extends Components.OntarioHeader, HTMLStencilElement {
     }
@@ -2940,12 +2946,6 @@ declare global {
         prototype: HTMLOntarioTextareaElement;
         new (): HTMLOntarioTextareaElement;
     };
-    interface HTMLOntarioVerticalFormSpacingElement extends Components.OntarioVerticalFormSpacing, HTMLStencilElement {
-    }
-    var HTMLOntarioVerticalFormSpacingElement: {
-        prototype: HTMLOntarioVerticalFormSpacingElement;
-        new (): HTMLOntarioVerticalFormSpacingElement;
-    };
     interface HTMLElementTagNameMap {
         "ontario-accordion": HTMLOntarioAccordionElement;
         "ontario-aside": HTMLOntarioAsideElement;
@@ -2962,6 +2962,7 @@ declare global {
         "ontario-dropdown-list": HTMLOntarioDropdownListElement;
         "ontario-fieldset": HTMLOntarioFieldsetElement;
         "ontario-footer": HTMLOntarioFooterElement;
+        "ontario-form-container": HTMLOntarioFormContainerElement;
         "ontario-header": HTMLOntarioHeaderElement;
         "ontario-hint-expander": HTMLOntarioHintExpanderElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
@@ -3086,7 +3087,6 @@ declare global {
         "ontario-step-indicator": HTMLOntarioStepIndicatorElement;
         "ontario-table": HTMLOntarioTableElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
-        "ontario-vertical-form-spacing": HTMLOntarioVerticalFormSpacingElement;
     }
 }
 declare namespace LocalJSX {
@@ -3524,6 +3524,12 @@ declare namespace LocalJSX {
           * The type of footer to be rendered. If no prop is provided, it will default to the 'default' type.
          */
         "type"?: OntarioFooterType;
+    }
+    interface OntarioFormContainer {
+        /**
+          * Defines the gap (bottom margin) between slotted form elements. If no gap prop is provided, it will default to 'default'.
+         */
+        "gap"?: 'default' | 'condensed';
     }
     interface OntarioHeader {
         /**
@@ -5109,12 +5115,6 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
-    interface OntarioVerticalFormSpacing {
-        /**
-          * Defines the spacing between slotted form elements. If no spacing prop is provided, it will default to 'default'.
-         */
-        "spacing"?: 'default' | 'condensed';
-    }
     interface IntrinsicElements {
         "ontario-accordion": OntarioAccordion;
         "ontario-aside": OntarioAside;
@@ -5131,6 +5131,7 @@ declare namespace LocalJSX {
         "ontario-dropdown-list": OntarioDropdownList;
         "ontario-fieldset": OntarioFieldset;
         "ontario-footer": OntarioFooter;
+        "ontario-form-container": OntarioFormContainer;
         "ontario-header": OntarioHeader;
         "ontario-hint-expander": OntarioHintExpander;
         "ontario-hint-text": OntarioHintText;
@@ -5255,7 +5256,6 @@ declare namespace LocalJSX {
         "ontario-step-indicator": OntarioStepIndicator;
         "ontario-table": OntarioTable;
         "ontario-textarea": OntarioTextarea;
-        "ontario-vertical-form-spacing": OntarioVerticalFormSpacing;
     }
 }
 export { LocalJSX as JSX };
@@ -5277,6 +5277,7 @@ declare module "@stencil/core" {
             "ontario-dropdown-list": LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
             "ontario-fieldset": LocalJSX.OntarioFieldset & JSXBase.HTMLAttributes<HTMLOntarioFieldsetElement>;
             "ontario-footer": LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;
+            "ontario-form-container": LocalJSX.OntarioFormContainer & JSXBase.HTMLAttributes<HTMLOntarioFormContainerElement>;
             "ontario-header": LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
             "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
             "ontario-hint-text": LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
@@ -5401,7 +5402,6 @@ declare module "@stencil/core" {
             "ontario-step-indicator": LocalJSX.OntarioStepIndicator & JSXBase.HTMLAttributes<HTMLOntarioStepIndicatorElement>;
             "ontario-table": LocalJSX.OntarioTable & JSXBase.HTMLAttributes<HTMLOntarioTableElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
-            "ontario-vertical-form-spacing": LocalJSX.OntarioVerticalFormSpacing & JSXBase.HTMLAttributes<HTMLOntarioVerticalFormSpacingElement>;
         }
     }
 }

@@ -25,10 +25,11 @@ export class OntarioFieldset implements Fieldset {
 	@Prop({ mutable: true }) legendSize: CaptionType = 'default';
 
 	/**
-	 * The following states are used to determine if the parent is a `ontario-vertical-form-spacing` component. This is to help style the form children if they are contained within a fieldset.
+	 * The following states are used to determine if the parent is a `ontario-form-container` component.
+	 * This is to help style the form children if they are contained within a fieldset.
 	 */
-	@State() hasVerticalSpacingParent: boolean = false;
-	@State() verticalSpacingValue: number = 40;
+	@State() hasFormContainerParent: boolean = false;
+	@State() gapValue: number = 40;
 
 	/**
 	 * Watch for changes to the legendSize prop.
@@ -82,11 +83,11 @@ export class OntarioFieldset implements Fieldset {
 		this.validateLegend();
 		this.validateLegendSize();
 
-		// Check if the direct or any ancestor parent is `ontario-vertical-spacing`
-		this.hasVerticalSpacingParent = this.element.closest('ontario-vertical-form-spacing') !== null;
-		if (this.hasVerticalSpacingParent) {
-			const verticalSpacingValue = this.element.closest('ontario-vertical-form-spacing')?.spacing;
-			verticalSpacingValue === 'condensed' ? (this.verticalSpacingValue = 16) : (this.verticalSpacingValue = 40);
+		// Check if the direct or any ancestor parent is `ontario-form-container`
+		this.hasFormContainerParent = this.element.closest('ontario-form-container') !== null;
+		const formContainer = this.element.closest('ontario-form-container') as HTMLElement | null;
+		if (formContainer) {
+			this.gapValue = (formContainer as any).gap === 'condensed' ? 16 : 40;
 		}
 	}
 
@@ -104,8 +105,8 @@ export class OntarioFieldset implements Fieldset {
 
 	private getFieldsetClass() {
 		let baseClass = 'ontario-fieldset';
-		if (this.hasVerticalSpacingParent && this.verticalSpacingValue) {
-			baseClass += `ontario-fieldset ontario-fieldset--spacing-${this.verticalSpacingValue}`;
+		if (this.hasFormContainerParent && this.gapValue) {
+			baseClass += `ontario-fieldset ontario-fieldset--gap-${this.gapValue}`;
 		}
 		return baseClass;
 	}

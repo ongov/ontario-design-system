@@ -1,9 +1,9 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
 
-// Mixin for generating individual vertical form spacing classes
-@mixin ontario-vertical-form-spacing($modifier, $spacing-variable) {
-	.ontario-vertical-form-spacing--#{$modifier},
-	.ontario-vertical-form-spacing--#{$modifier} form {
+// Mixin for generating individual form container gap classes
+@mixin ontario-form-container-gap($modifier, $spacing-variable) {
+	.ontario-form-container--gap-#{$modifier},
+	.ontario-form-container--gap-#{$modifier} form {
 		::slotted(ontario-input:not(:last-child)),
 		::slotted(ontario-checkboxes:not(:last-child)),
 		::slotted(ontario-dropdown-list:not(:last-child)),
@@ -17,16 +17,16 @@
 	}
 }
 
-// Mixin for generating nested vertical form spacing classes
-@mixin ontario-nested-vertical-form-spacing($parent-modifier, $parent-spacing, $child-spacings) {
-	.ontario-vertical-form-spacing--#{$parent-modifier},
-	.ontario-vertical-form-spacing--#{$parent-modifier} form {
+// Mixin for generating nested form container gap classes
+@mixin ontario-nested-form-container-gap($parent-modifier, $parent-spacing, $child-spacings) {
+	.ontario-form-container--gap-#{$parent-modifier},
+	.ontario-form-container--gap-#{$parent-modifier} form {
 		@each $child-spacing in $child-spacings {
 			$child-modifier: nth($child-spacing, 1);
 			$child-spacing-variable: nth($child-spacing, 2);
 
-			.ontario-vertical-form-spacing--#{$child-modifier},
-			.ontario-vertical-form-spacing--#{$child-modifier} form {
+			.ontario-form-container--gap-#{$child-modifier},
+			.ontario-form-container--gap-#{$child-modifier} form {
 				::slotted(ontario-input:not(:last-child)),
 				::slotted(ontario-checkboxes:not(:last-child)),
 				::slotted(ontario-dropdown-list:not(:last-child)),
@@ -54,24 +54,24 @@
 	}
 }
 
-// Vertical spacing definitions
-$vertical-spacing-definitions: (16, spacing.$spacing-4), (40, spacing.$spacing-7);
+// Gap definitions
+$gap-definitions: (16, spacing.$spacing-4), (40, spacing.$spacing-7);
 
-// Generate styles for each vertical spacing
-@each $spacing-definition in $vertical-spacing-definitions {
-	$spacing-modifier: nth($spacing-definition, 1);
-	$spacing-variable: nth($spacing-definition, 2);
+// Generate styles for each gap setting
+@each $gap-definition in $gap-definitions {
+	$gap-modifier: nth($gap-definition, 1);
+	$gap-variable: nth($gap-definition, 2);
 
-	// Generate individual vertical form spacing classes
-	@include ontario-vertical-form-spacing($spacing-modifier, $spacing-variable);
+	// Generate individual form container gap classes
+	@include ontario-form-container-gap($gap-modifier, $gap-variable);
 
-	// Generate nested vertical form spacing classes
-	$nested-spacings: ();
-	@each $nested-spacing in $vertical-spacing-definitions {
-		@if $spacing-modifier != nth($nested-spacing, 1) {
-			$nested-spacings: append($nested-spacings, $nested-spacing);
+	// Generate nested form container gap classes
+	$nested-gaps: ();
+	@each $nested-gap in $gap-definitions {
+		@if $gap-modifier != nth($nested-gap, 1) {
+			$nested-gaps: append($nested-gaps, $nested-gap);
 		}
 	}
 
-	@include ontario-nested-vertical-form-spacing($spacing-modifier, $spacing-variable, $nested-spacings);
+	@include ontario-nested-form-container-gap($gap-modifier, $gap-variable, $nested-gaps);
 }
