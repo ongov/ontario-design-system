@@ -1,0 +1,77 @@
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+
+// Mixin for generating individual form container gap classes
+@mixin ontario-form-container-gap($modifier, $spacing-variable) {
+	.ontario-form-container--gap-#{$modifier},
+	.ontario-form-container--gap-#{$modifier} form {
+		::slotted(ontario-input:not(:last-child)),
+		::slotted(ontario-checkboxes:not(:last-child)),
+		::slotted(ontario-dropdown-list:not(:last-child)),
+		::slotted(ontario-textarea:not(:last-child)),
+		::slotted(ontario-radio-buttons:not(:last-child)),
+		::slotted(ontario-button:not(:last-child)),
+		::slotted(ontario-date-input:not(:last-child)) {
+			margin-bottom: (#{$spacing-variable});
+			display: block;
+		}
+	}
+}
+
+// Mixin for generating nested form container gap classes
+@mixin ontario-nested-form-container-gap($parent-modifier, $parent-spacing, $child-spacings) {
+	.ontario-form-container--gap-#{$parent-modifier},
+	.ontario-form-container--gap-#{$parent-modifier} form {
+		@each $child-spacing in $child-spacings {
+			$child-modifier: nth($child-spacing, 1);
+			$child-spacing-variable: nth($child-spacing, 2);
+
+			.ontario-form-container--gap-#{$child-modifier},
+			.ontario-form-container--gap-#{$child-modifier} form {
+				::slotted(ontario-input:not(:last-child)),
+				::slotted(ontario-checkboxes:not(:last-child)),
+				::slotted(ontario-dropdown-list:not(:last-child)),
+				::slotted(ontario-textarea:not(:last-child)),
+				::slotted(ontario-radio-buttons:not(:last-child)),
+				::slotted(ontario-button:not(:last-child)),
+				::slotted(ontario-date-input:not(:last-child)) {
+					margin-bottom: $child-spacing-variable;
+					display: block;
+				}
+
+				// Add extra spacing for the last child
+				::slotted(ontario-input:last-child),
+				::slotted(ontario-checkboxes:last-child),
+				::slotted(ontario-dropdown-list:last-child),
+				::slotted(ontario-textarea:last-child),
+				::slotted(ontario-radio-buttons:last-child),
+				::slotted(ontario-button:last-child),
+				::slotted(ontario-date-input:last-child) {
+					margin-bottom: $child-spacing-variable + $parent-spacing;
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+// Gap definitions
+$gap-definitions: (16, spacing.$spacing-4), (40, spacing.$spacing-7);
+
+// Generate styles for each gap setting
+@each $gap-definition in $gap-definitions {
+	$gap-modifier: nth($gap-definition, 1);
+	$gap-variable: nth($gap-definition, 2);
+
+	// Generate individual form container gap classes
+	@include ontario-form-container-gap($gap-modifier, $gap-variable);
+
+	// Generate nested form container gap classes
+	$nested-gaps: ();
+	@each $nested-gap in $gap-definitions {
+		@if $gap-modifier != nth($nested-gap, 1) {
+			$nested-gaps: append($nested-gaps, $nested-gap);
+		}
+	}
+
+	@include ontario-nested-form-container-gap($gap-modifier, $gap-variable, $nested-gaps);
+}

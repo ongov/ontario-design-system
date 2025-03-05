@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-form-container snapshot should render the expected html 1`] = `
+<ontario-form-container>
+  <template shadowrootmode="open">
+    <div class="ontario-form-container--gap-40">
+      <slot></slot>
+    </div>
+  </template>
+  <slot></slot>
+</ontario-form-container>
+`;
