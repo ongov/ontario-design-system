@@ -10,9 +10,6 @@
     Global typography variables
 --------------------------------- */
 
-$ontario-font-open-sans: fonts.$ontario-font-open-sans;
-$ontario-font-raleway-modified: fonts.$ontario-font-raleway;
-$ontario-font-courier-prime: fonts.$ontario-font-courier-prime;
 $ontario-max-width-large: 70rem;
 $ontario-max-width-standard: 48rem;
 
@@ -22,7 +19,7 @@ $ontario-max-width-standard: 48rem;
 	text-rendering: optimizeLegibility;
 	margin-bottom: spacing.$spacing-4;
 	font-feature-settings: normal;
-	font-family: $ontario-font-raleway-modified;
+	font-family: fonts.$ontario-font-raleway;
 }
 
 %h1-styles {
