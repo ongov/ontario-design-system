@@ -7,7 +7,7 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
-@use './ontario-application-header.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_header.component.scss';
 
 .ontario-service-header {
 	height: 3.125rem;
@@ -24,7 +24,7 @@
 }
 
 .ontario-service-header__logo img {
-	width: 100px;
+	width: globalVariables.$full-width;
 	height: 25px;
 }
 
@@ -172,14 +172,7 @@
 }
 
 .ontario-overlay {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background: rgba(colours.$ontario-colour-black, 0.6);
-	width: 100%;
-	height: 100%;
-	z-index: zIndex.$ontario-z-index-above-medium;
+	@extend %ontario-overlay;
 }
 
 .ontario-navigation--open {
