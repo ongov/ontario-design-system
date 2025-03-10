@@ -5,6 +5,7 @@ import { Fieldset } from './ontario-fieldset.interface';
 import { CaptionType, CaptionTypes } from '../../utils/common/input-caption/input-caption.types';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { validatePropExists, validateValueAgainstArray } from '../../utils/validation/validation-functions';
+import { FormGapDefault, FormGapCondensed } from '../../utils/components/form-container/form-container.interface';
 
 @Component({
 	tag: 'ontario-fieldset',
@@ -29,6 +30,14 @@ export class OntarioFieldset implements Fieldset {
 	 * This is to help style the form children if they are contained within a fieldset.
 	 */
 	@State() hasFormContainerParent: boolean = false;
+
+	/**
+	 * The spacing value applied to fieldset elements when inside an `ontario-form-container`.
+	 * - `40`: For default form layouts
+	 * - `16`: For condensed form layouts
+	 *
+	 * This ensures consistent vertical spacing between form elements when they are grouped inside a fieldset.
+	 */
 	@State() gapValue: number = 40;
 
 	/**
@@ -87,7 +96,7 @@ export class OntarioFieldset implements Fieldset {
 		this.hasFormContainerParent = this.element.closest('ontario-form-container') !== null;
 		const formContainer = this.element.closest('ontario-form-container') as HTMLElement | null;
 		if (formContainer) {
-			this.gapValue = (formContainer as any).gap === 'condensed' ? 16 : 40;
+			this.gapValue = (formContainer as any).gap === 'condensed' ? FormGapCondensed : FormGapDefault;
 		}
 	}
 
@@ -105,8 +114,8 @@ export class OntarioFieldset implements Fieldset {
 
 	private getFieldsetClass() {
 		let baseClass = 'ontario-fieldset';
-		if (this.hasFormContainerParent && this.gapValue) {
-			baseClass += `ontario-fieldset ontario-fieldset--gap-${this.gapValue}`;
+		if (this.hasFormContainerParent && (this.gapValue === FormGapCondensed || this.gapValue === FormGapDefault)) {
+			baseClass += ` ontario-fieldset--gap-${this.gapValue}`;
 		}
 		return baseClass;
 	}

@@ -4,9 +4,10 @@
 @use '../../styles/fieldsets.scss';
 @use '../../styles/labels.scss';
 @use '../../styles/text-inputs.scss';
+
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
 
-.ontario-fieldset--spacing-40 {
+.ontario-fieldset--gap-40 {
 	::slotted(ontario-input:not(:last-child)),
 	::slotted(ontario-checkboxes:not(:last-child)),
 	::slotted(ontario-dropdown-list:not(:last-child)),
@@ -19,7 +20,7 @@
 	}
 }
 
-.ontario-fieldset--spacing-16 {
+.ontario-fieldset--gap-16 {
 	::slotted(ontario-input:not(:last-child)),
 	::slotted(ontario-checkboxes:not(:last-child)),
 	::slotted(ontario-dropdown-list:not(:last-child)),
