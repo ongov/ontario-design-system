@@ -6,7 +6,7 @@ describe('ontario-form-container', () => {
 		it('should render the expected html', async () => {
 			const page = await newSpecPage({
 				components: [OntarioFormContainer],
-				html: `<ontario-form-container><slot></slot></ontario-form-container>`,
+				html: `<ontario-form-container></ontario-form-container>`,
 			});
 			expect(page.root).toMatchSnapshot();
 		});

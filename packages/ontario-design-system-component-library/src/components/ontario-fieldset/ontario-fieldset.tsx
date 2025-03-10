@@ -5,6 +5,7 @@ import { Fieldset } from './ontario-fieldset.interface';
 import { CaptionType, CaptionTypes } from '../../utils/common/input-caption/input-caption.types';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { validatePropExists, validateValueAgainstArray } from '../../utils/validation/validation-functions';
+import { OntarioFormContainer, FormGap } from '../../utils/components/form-container/form-container.interface';
 
 @Component({
 	tag: 'ontario-fieldset',
@@ -29,7 +30,12 @@ export class OntarioFieldset implements Fieldset {
 	 * This is to help style the form children if they are contained within a fieldset.
 	 */
 	@State() hasFormContainerParent: boolean = false;
-	@State() gapValue: number = 40;
+
+	/**
+	 * The spacing value applied to fieldset elements when inside an `ontario-form-container`.
+	 * This ensures consistent vertical spacing between form elements when they are grouped inside a fieldset.
+	 */
+	@State() gapValue: FormGap = FormGap.Default;
 
 	/**
 	 * Watch for changes to the legendSize prop.
@@ -82,13 +88,7 @@ export class OntarioFieldset implements Fieldset {
 	componentWillLoad() {
 		this.validateLegend();
 		this.validateLegendSize();
-
-		// Check if the direct or any ancestor parent is `ontario-form-container`
-		this.hasFormContainerParent = this.element.closest('ontario-form-container') !== null;
-		const formContainer = this.element.closest('ontario-form-container') as HTMLElement | null;
-		if (formContainer) {
-			this.gapValue = (formContainer as any).gap === 'condensed' ? 16 : 40;
-		}
+		this.initializeFormContainerSettings();
 	}
 
 	private getLegendClass() {
@@ -105,10 +105,19 @@ export class OntarioFieldset implements Fieldset {
 
 	private getFieldsetClass() {
 		let baseClass = 'ontario-fieldset';
-		if (this.hasFormContainerParent && this.gapValue) {
-			baseClass += `ontario-fieldset ontario-fieldset--gap-${this.gapValue}`;
+		if (this.hasFormContainerParent && (this.gapValue === FormGap.Condensed || this.gapValue === FormGap.Default)) {
+			baseClass += ` ontario-fieldset--gap-${this.gapValue}`;
 		}
 		return baseClass;
+	}
+
+	// Check if the direct or any ancestor parent is `ontario-form-container`
+	private initializeFormContainerSettings(): void {
+		this.hasFormContainerParent = this.element.closest('ontario-form-container') !== null;
+		const formContainer = this.element.closest('ontario-form-container') as OntarioFormContainer | null;
+		if (formContainer) {
+			this.gapValue = formContainer.gap === 'condensed' ? FormGap.Condensed : FormGap.Default;
+		}
 	}
 
 	render() {
