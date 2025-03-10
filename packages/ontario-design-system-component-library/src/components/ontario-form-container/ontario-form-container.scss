@@ -55,6 +55,9 @@
 }
 
 // Gap definitions
+// These values represent the two gap options available:
+////  $spacing-4 (or 16px): Standard spacing for default form layout
+////  $spacing-7 (or 40px): Condensed spacing for condensed form layout
 $gap-definitions: (16, spacing.$spacing-4), (40, spacing.$spacing-7);
 
 // Generate styles for each gap setting
