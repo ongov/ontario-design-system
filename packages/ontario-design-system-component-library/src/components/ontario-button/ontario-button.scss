@@ -3,8 +3,8 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
 	placeholders;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
@@ -22,7 +22,7 @@ $ontario-button-bg-secondary: colours.$ontario-colour-white;
 	box-shadow: none;
 	display: inline-block;
 	font-size: 1.125rem;
-	font-family: typography.$ontario-font-open-sans;
+	font-family: fonts.$ontario-font-open-sans;
 	font-weight: fontWeights.$ontario-font-weights-semi-bold;
 	line-height: math.div(14, 9);
 	margin: spacing.$spacing-0 (spacing.$spacing-4 + spacing.$spacing-3) spacing.$spacing-5 spacing.$spacing-0;

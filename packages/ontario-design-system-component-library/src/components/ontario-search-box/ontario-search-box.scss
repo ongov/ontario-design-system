@@ -3,7 +3,7 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables' as lineheight;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
@@ -87,7 +87,7 @@ input[type='reset'].ontario-search__reset {
 	justify-content: center;
 	align-items: center;
 
-	font-family: typography.$ontario-font-open-sans;
+	font-family: fonts.$ontario-font-open-sans;
 	font-weight: fontWeights.$ontario-font-weights-semi-bold;
 	font-size: 1.125rem;
 	width: $ontario-search-button-width;
