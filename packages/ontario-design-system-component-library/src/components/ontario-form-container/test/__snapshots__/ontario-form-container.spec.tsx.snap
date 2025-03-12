@@ -7,6 +7,5 @@ exports[`ontario-form-container snapshot should render the expected html 1`] = `
       <slot></slot>
     </div>
   </template>
-  <slot></slot>
 </ontario-form-container>
 `;
