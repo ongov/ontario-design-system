@@ -421,6 +421,7 @@ export class OntarioHeader {
 						? this.translations.header.closeMenu[`${this.language}`]
 						: this.translations.header.openMenu[`${this.language}`]
 				}
+				aria-expanded={this.menuToggle ? 'true' : 'false'}
 				onClick={this.handleMenuToggle}
 				type="button"
 				ref={(el) => (this.menuButton = el as HTMLInputElement)}
