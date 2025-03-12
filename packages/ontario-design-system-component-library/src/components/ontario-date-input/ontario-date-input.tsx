@@ -176,7 +176,7 @@ export class OntarioDateInput {
 					dayVisible,
 					monthVisible,
 					yearVisible,
-			  });
+				});
 
 		this.dayInvalid = dayInvalid;
 		this.monthInvalid = monthInvalid;

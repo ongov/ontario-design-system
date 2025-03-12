@@ -1,7 +1,7 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
 	focusPlaceholders;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as fontSizes;
@@ -17,7 +17,7 @@ $ontario-textarea-border-width: 0.125rem;
 	box-sizing: border-box;
 	color: colours.$ontario-colour-black;
 	font-size: fontSizes.$ontario-font-size-standard-body-text;
-	font-family: typography.$ontario-font-open-sans;
+	font-family: fonts.$ontario-font-open-sans;
 	line-height: globalVariables.$line-height-default;
 	display: block;
 	max-width: globalVariables.$standard-width;

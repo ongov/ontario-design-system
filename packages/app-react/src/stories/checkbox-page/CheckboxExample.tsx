@@ -78,6 +78,9 @@ export default function CheckboxExample() {
 				<h2>Example</h2>
 				<div className="ontario-margin-top-24-!">
 					<OntarioCheckboxes
+						placeholder=""
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
 						ref={componentRef}
 						caption={{
 							captionText: 'Checkbox legend',

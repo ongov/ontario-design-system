@@ -37,7 +37,7 @@ There are two ways to install the Ontario Design System component library packag
 1. Install the NPM package.
 
    ```bash
-   npm install --save @ongov/ontario-design-system-component-library
+   pnpm install --save @ongov/ontario-design-system-component-library
    ```
 
 2. Add the following script tags to your HTML to import the component library, adjusting the paths to fit your setup.

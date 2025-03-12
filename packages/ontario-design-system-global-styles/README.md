@@ -18,7 +18,7 @@ It includes the Ontario Design System global styles that are used for more gener
 To install the Ontario Design System global styles package, run the following command:
 
 ```bash
-npm install --save @ongov/ontario-design-system-global-styles
+pnpm install --save @ongov/ontario-design-system-global-styles
 ```
 
 ### Using the global styles package

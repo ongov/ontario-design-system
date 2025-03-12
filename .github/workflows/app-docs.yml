@@ -17,12 +17,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+        # Install pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.2.0
+
       - name: Use Node.js ${{ inputs.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node-version }}
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
@@ -31,13 +37,10 @@ jobs:
           path: ./packages
 
       - name: Install dependencies
-        run: npm ci
-
-      - name: Bootstrap packages
-        run: npm run bootstrap
+        run: pnpm install --frozen-lockfile
 
       - name: Build the documentation site
-        run: npm run build-docs
+        run: pnpm run build-docs
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -47,6 +50,7 @@ jobs:
           path: | # Path to the artifacts directory
             packages/app-web-components-documentation
             !**/node_modules/**/*
+          if-no-files-found: error # Fail if no files are found
 
   publish-documentation-app:
     needs: ['build-documentation-app']
@@ -64,17 +68,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node-version }}
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts-docs # Artifact name (must match upload name)
           path: .
-
-      # - name: Install dependencies
-      #   run: npm ci
 
       - name: Deploy documentation app
         run: aws s3 sync packages/app-web-components-documentation/build s3://${S3_DEPLOY_BUCKET}/${DOCS_ENDPOINT}/ --delete
