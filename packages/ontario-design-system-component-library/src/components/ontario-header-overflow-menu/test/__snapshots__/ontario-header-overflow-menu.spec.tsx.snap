@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-header-overflow-menu should render menu items correctly 1`] = `
+<ontario-header-overflow-menu menu-items="[{&quot;title&quot;:&quot;Link 1&quot;,&quot;href&quot;:&quot;/link-1&quot;,&quot;linkIsActive&quot;:false},{&quot;title&quot;:&quot;Link 2&quot;,&quot;href&quot;:&quot;/link-2&quot;,&quot;linkIsActive&quot;:false}]">
+  <template shadowrootmode="open">
+    <nav class="ontario-application-navigation" id="ontario-application-navigation" role="navigation">
+      <div class="ontario-application-navigation__container">
+        <ul>
+          <li>
+            <a href="/link-1">
+              Link 1
+            </a>
+          </li>
+          <li>
+            <a href="/link-2">
+              Link 2
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </template>
+</ontario-header-overflow-menu>
+`;

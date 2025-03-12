@@ -22,17 +22,10 @@ describe('ontario-header-overflow-menu', () => {
 			html: `<ontario-header-overflow-menu menu-items='${menuItems}'></ontario-header-overflow-menu>`,
 		});
 
-		expect(page.root).toBeTruthy();
-		const menuLinks = page.root?.shadowRoot?.querySelectorAll('a');
-
-		expect(menuLinks?.length).toBe(2);
-		expect(menuLinks?.[0]?.textContent).toBe('Link 1');
-		expect(menuLinks?.[0]?.getAttribute('href')).toBe('/link-1');
-		expect(menuLinks?.[1]?.textContent).toBe('Link 2');
-		expect(menuLinks?.[1]?.getAttribute('href')).toBe('/link-2');
+		expect(page.root).toMatchSnapshot();
 	});
 
-	it('should toggle menu visibility when the menuButtonToggled event is received', async () => {
+	it('should toggle menu open when the menuButtonToggled event is received', async () => {
 		const menuItems = JSON.stringify([{ title: 'Link 1', href: '/link-1', linkIsActive: false }]);
 
 		const page = await newSpecPage({
@@ -50,6 +43,27 @@ describe('ontario-header-overflow-menu', () => {
 		await page.waitForChanges();
 
 		expect(component.menuIsOpen).toBe(true);
+	});
+
+	it('should toggle menu closed when the menuButtonToggled event is received', async () => {
+		const menuItems = JSON.stringify([{ title: 'Link 1', href: '/link-1', linkIsActive: false }]);
+
+		const page = await newSpecPage({
+			components: [OntarioHeaderApplicationMenu],
+			html: `<ontario-header-overflow-menu menu-items='${menuItems}'></ontario-header-overflow-menu>`,
+		});
+
+		expect(page.rootInstance).toBeTruthy();
+		const component = page.rootInstance!;
+		component.menuIsOpen = true;
+		await page.waitForChanges();
+
+		// Simulate the menu button being toggled closed
+		const event = new CustomEvent('menuButtonToggled', { detail: false });
+		window.dispatchEvent(event);
+		await page.waitForChanges();
+
+		expect(component.menuIsOpen).toBe(false);
 	});
 
 	it('should close menu when clicking outside', async () => {
