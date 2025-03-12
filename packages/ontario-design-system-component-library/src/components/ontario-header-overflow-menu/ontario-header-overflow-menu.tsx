@@ -95,6 +95,7 @@ export class OntarioHeaderApplicationMenu {
 	@Listen('menuButtonToggled', { target: 'window' })
 	toggleMenuVisibility(event: CustomEvent<boolean>) {
 		this.menuIsOpen = event.detail;
+		this.currentIndex = undefined;
 	}
 
 	/**
@@ -111,6 +112,7 @@ export class OntarioHeaderApplicationMenu {
 
 		this.menuIsOpen = false;
 		this.menuButtonToggled.emit(this.menuIsOpen);
+		this.currentIndex = undefined;
 	}
 
 	/**
