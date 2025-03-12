@@ -5,7 +5,7 @@ import { Fieldset } from './ontario-fieldset.interface';
 import { CaptionType, CaptionTypes } from '../../utils/common/input-caption/input-caption.types';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { validatePropExists, validateValueAgainstArray } from '../../utils/validation/validation-functions';
-import { FormGapDefault, FormGapCondensed } from '../../utils/components/form-container/form-container.interface';
+import { OntarioFormContainer, FormGap } from '../../utils/components/form-container/form-container.interface';
 
 @Component({
 	tag: 'ontario-fieldset',
@@ -33,12 +33,9 @@ export class OntarioFieldset implements Fieldset {
 
 	/**
 	 * The spacing value applied to fieldset elements when inside an `ontario-form-container`.
-	 * - `40`: For default form layouts
-	 * - `16`: For condensed form layouts
-	 *
 	 * This ensures consistent vertical spacing between form elements when they are grouped inside a fieldset.
 	 */
-	@State() gapValue: number = 40;
+	@State() gapValue: FormGap = FormGap.Default;
 
 	/**
 	 * Watch for changes to the legendSize prop.
@@ -94,9 +91,9 @@ export class OntarioFieldset implements Fieldset {
 
 		// Check if the direct or any ancestor parent is `ontario-form-container`
 		this.hasFormContainerParent = this.element.closest('ontario-form-container') !== null;
-		const formContainer = this.element.closest('ontario-form-container') as HTMLElement | null;
+		const formContainer = this.element.closest('ontario-form-container') as OntarioFormContainer | null;
 		if (formContainer) {
-			this.gapValue = (formContainer as any).gap === 'condensed' ? FormGapCondensed : FormGapDefault;
+			this.gapValue = formContainer.gap === 'condensed' ? FormGap.Condensed : FormGap.Default;
 		}
 	}
 
@@ -114,7 +111,7 @@ export class OntarioFieldset implements Fieldset {
 
 	private getFieldsetClass() {
 		let baseClass = 'ontario-fieldset';
-		if (this.hasFormContainerParent && (this.gapValue === FormGapCondensed || this.gapValue === FormGapDefault)) {
+		if (this.hasFormContainerParent && (this.gapValue === FormGap.Condensed || this.gapValue === FormGap.Default)) {
 			baseClass += ` ontario-fieldset--gap-${this.gapValue}`;
 		}
 		return baseClass;

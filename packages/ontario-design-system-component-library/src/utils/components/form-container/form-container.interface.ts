@@ -1,2 +1,8 @@
-export const FormGapDefault = 40;
-export const FormGapCondensed = 16;
+export enum FormGap {
+	Default = 40,
+	Condensed = 16,
+}
+
+export interface OntarioFormContainer extends HTMLElement {
+	gap: 'default' | 'condensed';
+}

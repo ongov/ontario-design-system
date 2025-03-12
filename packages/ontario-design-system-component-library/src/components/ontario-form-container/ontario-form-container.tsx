@@ -1,6 +1,6 @@
 import { Component, Element, h, Prop } from '@stencil/core';
 
-import { FormGapCondensed, FormGapDefault } from '../../utils/components/form-container/form-container.interface';
+import { FormGap } from '../../utils/components/form-container/form-container.interface';
 
 @Component({
 	tag: 'ontario-form-container',
@@ -19,13 +19,13 @@ export class OntarioFormContainer {
 	/**
 	 * Returns the pixel value for the selected gap option.
 	 */
-	private getGapValue() {
-		const gapOptions = {
-			default: FormGapDefault, // 40 (number)
-			condensed: FormGapCondensed, // 16 (number)
+	private getGapValue(): FormGap {
+		const gapOptions: { [key: string]: FormGap } = {
+			default: FormGap.Default,
+			condensed: FormGap.Condensed,
 		};
 
-		return gapOptions[this.gap] || gapOptions.default;
+		return gapOptions[this.gap] || FormGap.Default;
 	}
 
 	render() {
