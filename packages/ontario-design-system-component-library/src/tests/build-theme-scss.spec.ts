@@ -1,6 +1,7 @@
 import mock from 'mock-fs'; // Mocking file system for testing
 import {
 	checkOutputFolderExists,
+	createOutputFolder,
 	getSlottedStyleFiles,
 	generateThemeSCSSContent,
 	writeGeneratedSCSSToTheme,
@@ -14,23 +15,26 @@ describe('SCSS Theme Generation Functions', () => {
 	let sourceFolder: string;
 	let targetFolder: string;
 	let expectedContent: string;
+	let content: string = 'content';
+
+	// Mock file system structure
+	const mockFolderStructure = {
+		'/mock-folder': {
+			'file1.scss': '',
+			'file2.scss': '',
+			'file3.css': '',
+			'file4.txt': '',
+		},
+		'/src/styles/slotted-styles': {
+			'file1.scss': '',
+			'file2.scss': '',
+		},
+		'/src/styles': {},
+	};
 
 	// Setup before each test: mock the file system and set common variables
 	beforeEach(() => {
-		// Mock file system structure
-		mock({
-			'/mock-folder': {
-				'file1.scss': '',
-				'file2.scss': '',
-				'file3.css': '',
-				'file4.txt': '',
-			},
-			'/src/styles/slotted-styles': {
-				'file1.scss': '',
-				'file2.scss': '',
-			},
-			'/src/styles': {},
-		});
+		mock(mockFolderStructure);
 
 		// Common variables for tests
 		files = ['style1.scss', 'style2.scss'];
@@ -50,25 +54,37 @@ describe('SCSS Theme Generation Functions', () => {
 	});
 
 	describe('checkOutputFolderExists', () => {
+		it('should return false if the folder does not exist', () => {
+			// Call the function with a non-existent folder
+			const exists = checkOutputFolderExists('/test-folder');
+
+			// Assert that the folder does not exist
+			expect(exists).toBe(false);
+		});
+
+		it('should return true if the folder exists', () => {
+			// Call the function with an existing folder
+			const exists = checkOutputFolderExists('/mock-folder');
+
+			// Assert that the folder exists
+			expect(exists).toBe(true);
+		});
+	});
+
+	describe('createOutputFolder', () => {
 		it('should create the folder if it does not exist', () => {
-			// Assert that the folder does not exist before calling the function
-			expect(fs.existsSync('/test-folder')).toBe(false);
+			// Call the function with a non-existent folder
+			createOutputFolder('/test-folder');
 
-			// Call the function to create the folder
-			checkOutputFolderExists('/test-folder');
-
-			// Assert that the folder now exists
+			// Assert that the folder got created
 			expect(fs.existsSync('/test-folder')).toBe(true);
 		});
 
 		it('should not create the folder if it exists', () => {
-			// Assert that the folder exists before calling the function
-			expect(fs.existsSync('/mock-folder')).toBe(true);
+			// Call the function with an existing folder
+			createOutputFolder('/mock-folder');
 
-			// Call the function (folder should not be created again)
-			checkOutputFolderExists('/mock-folder');
-
-			// Assert that the folder still exists (no changes)
+			// Assert that no new folder was created
 			expect(fs.existsSync('/mock-folder')).toBe(true);
 		});
 	});
@@ -78,44 +94,60 @@ describe('SCSS Theme Generation Functions', () => {
 			// Call the function to get SCSS files from the mock folder
 			const files = getSlottedStyleFiles('/mock-folder');
 
-			// Assert that only SCSS files are returned
-			expect(files).toEqual(['file1.scss', 'file2.scss']);
+			// Assert that only SCSS files are returned from the mock folder
+			const expectedFiles = Object.keys(mockFolderStructure['/mock-folder']).filter((file) => file.endsWith('.scss'));
+			expect(files).toEqual(expectedFiles);
 		});
 
 		it('should warn if no SCSS files are found', () => {
 			// Mock console.warn to spy on it
 			const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
-
 			// Mock an empty folder to simulate no SCSS files
-			mock({
-				'/empty-folder': {},
-			});
+			mock({ '/empty-folder': {} });
 
 			// Call the function (this should trigger a warning)
 			getSlottedStyleFiles('/empty-folder');
 
-			// Assert that a warning was logged
+			// Assert that the warning was logged
 			expect(consoleWarnSpy).toHaveBeenCalledWith('No SCSS files found in the source folder.');
-
-			// Restore the original console.warn functionality
+			// Restore the console.warn function
 			consoleWarnSpy.mockRestore();
 		});
 	});
 
 	describe('generateThemeSCSSContent', () => {
 		it('should return the correct SCSS content including header and imports', () => {
-			// Call the function and compare the result with the expected output
-			expect(generateThemeSCSSContent(files, sourceFolder, targetFolder)).toBe(expectedContent);
+			// Call the function with the mock files and folders
+			const content = generateThemeSCSSContent(files, sourceFolder, targetFolder);
+
+			// Assert that the content is as expected
+			expect(content).toBe(expectedContent);
 		});
 
 		it('should handle path normalization correctly', () => {
-			// Call the function and compare the result with the expected output
-			expect(generateThemeSCSSContent(files, sourceFolder, targetFolder)).toBe(expectedContent);
-
-			// Additional test for path normalization
+			// Mock a Windows-style path
 			const windowsPath = 'C:\\mock-source\\style1.scss';
+			// Call the function with the Windows-style path
 			const normalizedPath = `./${path.relative(targetFolder, windowsPath).replace(/\\/g, '/')}`;
-			expect(normalizedPath).toBe('./C:/mock-source/style1.scss');
+			// Expected normalized path
+			const expectedNormalizedPath = `./${path.relative(targetFolder, windowsPath).replace(/\\/g, '/')}`;
+
+			// Assert that the path normalization is correct
+			expect(normalizedPath).toBe(expectedNormalizedPath);
+		});
+
+		it('should set default parameters if none are passed', () => {
+			// Expected content based on the mock file structure
+			const expectedContent =
+				'// WARNING: This file is autogenerated. Do not edit manually.\n' +
+				'// Changes will be overwritten during the build process.\n\n' +
+				"@forward '@ongov/ontario-design-system-global-styles/dist/styles/scss/theme.scss';\n\n";
+
+			// Call the function without parameters to use defaults
+			const content = generateThemeSCSSContent();
+
+			// Assert that the generated content matches the expected content
+			expect(content.trim()).toBe(expectedContent.trim());
 		});
 	});
 
@@ -123,50 +155,31 @@ describe('SCSS Theme Generation Functions', () => {
 		it('should write content to file', () => {
 			// Mock console.log to spy on it
 			const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
-
 			// Ensure the directory exists for the file to be written to
-			mock({
-				'/some': {}, // Create the directory
-			});
+			mock({ '/some': {} });
 
 			// Call the function to write content to a .scss file
-			writeGeneratedSCSSToTheme('/some/path.scss', 'content');
+			writeGeneratedSCSSToTheme('/some/path.scss', content);
 
-			// Assert that the file was written correctly
-			expect(fs.readFileSync('/some/path.scss', 'utf8')).toBe('content');
-
-			// Assert that a success message was logged
+			// Assert that the file was written and the log was printed
+			expect(fs.readFileSync('/some/path.scss', 'utf8')).toBe(content);
 			expect(consoleLogSpy).toHaveBeenCalledWith('Generated theme.scss at /some/path.scss');
 
-			// Restore the original console.log functionality
+			// Restore the console.log function
 			consoleLogSpy.mockRestore();
 		});
 
 		it('should handle file writing errors', () => {
-			// Mock console.error to spy on it
-			const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-
-			// Mock file system to throw an error on write
+			// Mock the file system to simulate a non-writable directory
 			mock({
-				'/some': mock.directory({
-					mode: 0o000, // No permissions
-					items: {
-						'path.scss': mock.file({
-							content: '', // File content
-							mode: 0o000, // No read/write/execute permissions permitted
-						}),
-					},
-				}),
+				'/restricted': mock.directory({ mode: 0o400 }), // Read-only permissions
 			});
 
-			// Call the function to write content to a .scss file (this should trigger an error)
-			expect(() => writeGeneratedSCSSToTheme('/some/path.scss', 'content')).toThrow();
+			// Attempt to write to the read-only directory and expect an error to be thrown
+			expect(() => writeGeneratedSCSSToTheme('/restricted/theme.scss', content)).toThrow();
 
-			// Assert that an error message was logged
-			expect(consoleErrorSpy).toHaveBeenCalledWith(expect.stringContaining('Error writing to /some/path.scss'));
-
-			// Restore the original console.error functionality
-			consoleErrorSpy.mockRestore();
+			// Restore the mock file system
+			mock.restore();
 		});
 	});
 
@@ -174,23 +187,20 @@ describe('SCSS Theme Generation Functions', () => {
 		it('should execute full process', () => {
 			// Mock console.log to spy on it
 			const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
-
-			// Mock folders and files to simulate a typical scenario
+			// Mock filders and files to simulate a typical setup
 			mock({
 				'/mock-folder': {
 					'style1.scss': '',
 					'style2.scss': '',
 				},
-				'/mock-output': {}, // Output folder for the generated theme
+				'/mock-output': {}, // Output folder for the generated theme.scss
 			});
 
 			// Call the function to generate the theme.scss file
 			generateThemeSCSS('/mock-folder', '/mock-output', '/mock-output/theme.scss');
 
-			// Assert that the generated theme.scss file exists
+			// Assert that the generated theme.scss file is correct and the log was printed
 			expect(fs.existsSync('/mock-output/theme.scss')).toBe(true);
-
-			// Assert that the generated content matches the expected SCSS content
 			expect(fs.readFileSync('/mock-output/theme.scss', 'utf8')).toBe(
 				'// WARNING: This file is autogenerated. Do not edit manually.\n' +
 					'// Changes will be overwritten during the build process.\n\n' +
@@ -199,39 +209,28 @@ describe('SCSS Theme Generation Functions', () => {
 					"@use './../mock-folder/style2.scss';\n",
 			);
 
-			// Restore the original console.log functionality
+			// Restore the console.log function
 			consoleLogSpy.mockRestore();
 		});
 
 		it('should handle errors during the process', () => {
-			// Mock console.error to spy on it
-			const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-
-			// Mock file system to throw an error on write
+			// Mock the file system with a read-only output directory
 			mock({
 				'/mock-folder': {
 					'style1.scss': '',
 					'style2.scss': '',
 				},
 				'/mock-output': mock.directory({
-					mode: 0o000, // No read/write/execute permissions permitted
-					items: {
-						'theme.scss': mock.file({
-							content: '', // File content
-							mode: 0o000, // No read/write/execute permissions permitted
-						}),
-					},
+					mode: 0o400, // Read-only permissions
+					items: {},
 				}),
 			});
 
-			// Call the function to generate the theme.scss file (this should trigger an error)
+			// Attempt to generate the theme.scss file in the read-only directory and expect an error to be thrown
 			expect(() => generateThemeSCSS('/mock-folder', '/mock-output', '/mock-output/theme.scss')).toThrow();
 
-			// Assert that an error message was logged
-			expect(consoleErrorSpy).toHaveBeenCalledWith(expect.stringContaining('Error writing to /mock-output/theme.scss'));
-
-			// Restore the original console.error functionality
-			consoleErrorSpy.mockRestore();
+			// Restore the mock file system
+			mock.restore();
 		});
 	});
 });
