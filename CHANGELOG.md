@@ -1,3 +1,9 @@
+# 5.0.0-alpha.7 (2025-03-13)
+
+### Bug Fixes
+
+- **.releaserc.json:** swap lockfile references from npm to pnpm 3567d96
+
 # 5.0.0-alpha.6 (2025-03-13)
 
 - **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** feat(fonts)!: update font asset set 178b657
