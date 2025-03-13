@@ -8,14 +8,7 @@
 		[
 			"@semantic-release/git",
 			{
-				"assets": [
-					"CHANGELOG.md",
-					"lerna.json",
-					"package.json",
-					"package-lock.json",
-					"packages/*/package.json",
-					"packages/*/package-lock.json"
-				],
+				"assets": ["CHANGELOG.md", "lerna.json", "package.json", "pnpm-lock.yaml"],
 				"message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
 			}
 		]
