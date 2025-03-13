@@ -1,3 +1,83 @@
+# 5.0.0-alpha.6 (2025-03-13)
+
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** feat(fonts)!: update font asset set 178b657
+- DS-2137: update font asset set ([#32](undefined/ongov/ontario-design-system/issues/32)) 7766b6a
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-complete-styles, @ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** update module paths to use local node_modules now that we are using pnpm without hoisting b713fd7
+- **@ongov/ontario-design-system-component-library-react:** fix broken symlinks in packages 96ec819
+- **@ongov/ontario-design-system-component-library:** adds missing package to component library - uuid 4626619
+- **@ongov/ontario-design-system-component-library:** updates after running refresh 8985cc7
+- **app-angular:** correct import paths and update TypeScript configuration b7d4ae0
+- **app-angular:** remove .js extensions from import paths since theyre all typescript... c5989ea
+- **app-angular:** update Angular dependencies to use exact versions 6200309
+- **app-angular:** update paths for Angular CLI schema and asset copying 6cf4ccc
+- **app-angular:** updated fonts and lock file 9464e12
+- **app-react:** add missing properties that are broken in react 18 7736754
+- **code-highlighter:** add type assertion for Prism component due to incomplete types 0045d00
+- **component-library:** return an object with code property for non-SVG files b2e996c
+- **dependencies:** downgrade design tokens and global styles to version 4.3.1-alpha.1 7dc56ee
+- **dependencies:** update global styles and design tokens to version 4.3.1-alpha.1 2ee1b39
+- **dependencies:** update nanoid to version 3.3.8 and upgrade design tokens to version 4.3.1-alpha.1 e9598ec
+- **dependencies:** update TypeScript, Sass, Prettier, and Stencil packages 03bbeaa
+- fix broken symlinks in packages ([#27](undefined/ongov/ontario-design-system/issues/27)) 45a8756
+- **global-styles:** update paths for fonts and favicons to remove unnecessary wildcards fe4113c
+- **gulpfile:** correct options parameter name in compileSass function 25463ee
+- **gulpfile:** replace src and dest with fs.cp for fonts and favicons tasks 8ff6327
+- **gulpfile:** update Sass options to use includePaths for better compatibility 289bca4
+- **husky:** simplify commit-msg hook by removing unnecessary lines for v10 d8d8c1a
+- **ontario-design-system-complete-styles:** upgrade our own packages 9611040
+- **ontario-design-system-global-styles:** restore original gulpfile 90d6415
+- **ontario-design-system-global-styles:** revert change to dsTokensPath for now 6bf8094
+- **ontario-design-system-global-styles:** update font and favicon moving tasks to use path constants 946677f
+- **snapshots:** update shadow DOM mock elements to use <template> for consistency f6ab738
+- **workflows:** update pnpm action to use action-setup for installation f4ab102
+- **workflows:** update pnpm version to 10.2.0 in all workflow files 45ac877
+
+### Code Refactoring
+
+- **global-styles:** update global styles to use new fonts partial 4e855db
+
+### Features
+
+- **@ongov/ontario-design-system-complete-styles, @ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library, @ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** update lerna, semantic-release, and snapshots 0053577
+- **@ongov/ontario-design-system-complete-styles, @ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library, @ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** use pnpm 3ea714a
+- **monorepo:** add rimraf as a dev dependency in multiple packages de2959d
+- **monorepo:** add script to check for outdated dependencies and update gulpfile paths 764c2a4
+- **monorepo:** migrate to npm workspaces with Lerna a16264d
+- **monorepo:** updating dependencies 0b1e74d
+- **ontario-design-system-component-library-react:** update everything else except np 7d61e74
+- **ontario-design-system-component-library-react:** update types and jest dependencies 357392b
+- **ontario-design-system-component-library\*:** update imports to follow nodenext standard 6553372
+- **ontario-design-system-components:** update StyleDictionary implementation 666a0d1
+- **ontario-design-system-design-tokens:** add js platform output for tokens f670e60
+- **ontario-design-system:** add TypeScript configuration file with baseUrl and path mappings 06d5cc8
+
+### BREAKING CHANGES
+
+- Font assets have been restructured, review font files
+  and SCSS/CSS imports in use.
+
+### update global styles to use new fonts partial
+
+- Provide `font-family` strings from `fonts` partial instead of
+  `typography` partial
+- Rename `$ontario-font-raleway-modified` to `$ontario-font-raleway`
+- Add `fonts` to `theme.scss`
+
+* `font-family` vars → `fonts`; Removed `-modified` from
+  `$ontario-font-raleway`.
+
+### update component styles to use fonts
+
+- Update components using `typeography` `font-face` vars to use `fonts`.
+- Rename uses of `$ontario-font-raleway-modified` to
+  `$ontario-font-raleway`.
+
+* **global-styles:** `font-family` vars → `fonts`; Removed `-modified` from `$ontario-font-raleway`.
+* **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** Font assets have been restructured, review font files and SCSS/CSS imports in use.
+
 # 5.0.0-alpha.5 (2025-01-27)
 
 ### Bug Fixes
