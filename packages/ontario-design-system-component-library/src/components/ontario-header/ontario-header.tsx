@@ -231,11 +231,9 @@ export class OntarioHeader {
 
 	@Listen('keydown', { target: 'window' })
 	handleKeyDown(event: KeyboardEvent) {
-		if (this.menuToggle) {
-			if (event.key === 'Escape' || event.key === 'Tab') {
-				this.menuToggle = false;
-				this.menuButtonToggled.emit(this.menuToggle);
-			}
+		if (this.menuToggle && event.key === 'Escape') {
+			this.menuToggle = false;
+			this.menuButtonToggled.emit(this.menuToggle);
 		}
 	}
 
@@ -251,6 +249,17 @@ export class OntarioHeader {
 
 		// If the click was outside the current component, do the following
 		if (this.menuToggle) this.menuToggle = !this.menuToggle;
+	}
+
+	/**
+	 * Logic to close the menu when the focus leaves the menu
+	 */
+	@Listen('focusout', { target: 'window' })
+	handleFocusOut(event: FocusEvent) {
+		if (this.menuToggle && !this.el.contains(event.relatedTarget as Node)) {
+			this.menuToggle = false;
+			this.menuButtonToggled.emit(this.menuToggle);
+		}
 	}
 
 	/**
