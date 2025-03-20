@@ -7,7 +7,7 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_header.component.scss';
+@use '../../styles/header.scss';
 
 .ontario-service-header {
 	height: 3.125rem;

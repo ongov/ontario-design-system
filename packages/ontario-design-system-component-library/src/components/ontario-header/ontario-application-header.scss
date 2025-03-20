@@ -11,8 +11,8 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/5-layout/grid.layout.scss';
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/text-inputs.component.scss';
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/header.component.scss';
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/visibility.overrides.scss';
+@use '../../styles/header.scss';
 
 $navigation-link-bg--hover: #e5e5e5;
 $menu-button-icon-margin-right: 6px;
