@@ -1,6 +1,7 @@
 import { h, Component, Element, Prop, State } from '@stencil/core';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
+import { TaskStatus } from '../../utils/common/task-statuses.enum';
 import translations from '../../translations/global.i18n.json';
 
 @Component({
@@ -37,17 +38,13 @@ export class OntarioTaskList {
 	 * The completed tasks are determined based on the language-specific translation for "completed".
 	 */
 	countTasks() {
-		const tasks = this.el.querySelectorAll('ontario-task');
+		const tasks = Array.from(this.el.querySelectorAll('ontario-task')) as HTMLOntarioTaskElement[];
 		this.totalTasks = tasks.length;
 
-		const resolvedLanguage = validateLanguage(this.language);
-
-		const completedTranslation =
-			translations.taskStatus.completed[resolvedLanguage as keyof typeof translations.taskStatus.completed];
-
-		this.completedTasks = Array.from(tasks).filter(
-			(task) => task.getAttribute('data-task-status') === completedTranslation,
-		).length;
+		this.completedTasks = tasks.filter((task) => {
+			const status = task.getAttribute('data-task-status') as TaskStatus;
+			return status === 'completed';
+		}).length;
 	}
 
 	componentDidRender() {

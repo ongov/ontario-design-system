@@ -1,11 +1,12 @@
 import { h, Component, Prop, Watch, State, Listen, Element, Fragment } from '@stencil/core';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { TaskStatuses, TaskStatus, TaskBadgeColour, TaskToBadgeColour } from './ontario-task-statuses';
+import { TaskStatuses, TaskStatus, TaskBadgeColour, TaskToBadgeColour } from '../../utils/common/task-statuses.enum';
 import { validateLanguage, validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { Hint } from '../../utils/common/common.interface';
 import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
 import translations from '../../translations/global.i18n.json';
+const defaultHintId = 'default-hint-id';
 
 @Component({
 	tag: 'ontario-task',
@@ -15,6 +16,7 @@ import translations from '../../translations/global.i18n.json';
 export class OntarioTask {
 	@Element() el: HTMLElement;
 
+	// Reference to the ontario-hint-text element for this task.
 	hintTextRef?: HTMLOntarioHintTextElement;
 
 	/**
@@ -25,7 +27,7 @@ export class OntarioTask {
 	@Prop() label: string;
 
 	/**
-	 * A unique id for the the task.
+	 * A unique id for the task.
 	 *
 	 * This is required.
 	 */
@@ -67,12 +69,19 @@ export class OntarioTask {
 	@Prop() taskStatus: TaskStatus;
 
 	/**
-	 * Used for the `aria-describedby` value of the task's label. This will match with the id of the hint text.
+	 * Allows consumers to define the heading level for the task label.
+	 *
+	 * Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.
 	 */
-	@State() private hintTextId: string | null | undefined;
+	@Prop() headingLevel: 'h2' | 'h3' | 'h4' = 'h3';
 
 	/**
-	 * The hint text options are re-assigned to the internalHintText array.
+	 * Used for the `aria-describedby` value of the task's label. This will match with the id of the hint text.
+	 */
+	@State() private hintTextId: string | null = null;
+
+	/**
+	 * The hint text options are re-assigned to the internalHintText state.
 	 */
 	@State() private internalHintText: Hint;
 
@@ -119,6 +128,9 @@ export class OntarioTask {
 
 	/**
 	 * Watch for changes in `hintText` prop and parse it if available.
+	 *
+	 * If a `hintText` prop is passed, the `constructHintTextObject` function will convert it to the correct format,
+	 * and the result will be stored in the `internalHintText` state.
 	 */
 	@Watch('hintText')
 	private parseHintText() {
@@ -139,7 +151,7 @@ export class OntarioTask {
 	}
 
 	/**
-	 * This listens for the `headerLanguageToggled` event sent from the language toggle when it is is connected to the DOM.
+	 * This listens for the `headerLanguageToggled` event sent from the language toggle when it is connected to the DOM.
 	 * It is used for changing the component language after the language toggle has been activated.
 	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
@@ -180,19 +192,28 @@ export class OntarioTask {
 		return null;
 	}
 
+	/**
+	 * Returns the class name(s) for the task label.
+	 */
 	private getClass(): string {
 		return ['ontario-task__label', this.hintText && 'ontario-task__hint-text--true'].filter(Boolean).join(' ');
 	}
 
 	/**
 	 * Renders the task label and status content.
+	 *
+	 * This includes dynamically rendering the heading element (h2, h3, or h4) based on the `headingLevel` prop,
+	 * as well as the badge indicating the task status.
 	 */
 	private renderTaskContent() {
+		const headingProps: any = {
+			id: `task-label--${this.taskId}`,
+			class: this.getClass(),
+		};
+
 		return (
 			<div class="ontario-task__content">
-				<h3 id={`task-label--${this.taskId}`} class={this.getClass()}>
-					{this.label}
-				</h3>
+				{h(this.headingLevel, headingProps, this.label)}
 				{this.taskStatusState && (
 					<ontario-badge
 						class="ontario-task__badge"
@@ -209,18 +230,24 @@ export class OntarioTask {
 		);
 	}
 
+	/**
+	 * After the component loads, retrieve the hint text ID (if available) from the hintText component,
+	 * and set it for the `aria-describedby` attribute.
+	 */
 	async componentDidLoad() {
 		const hintId = await this.hintTextRef?.getHintTextId();
-		this.hintTextId = hintId || 'default-hint-id'; // Fallback to a default value
-		this.el.setAttribute('data-task-status', this.getTranslatedTaskStatus());
+		this.hintTextId = hintId || defaultHintId;
+		this.el.setAttribute('data-task-status', this.taskStatus);
 	}
 
+	/**
+	 * Lifecycle method: before the component loads, parse the hint text and
+	 * validate language and task status.
+	 */
 	componentWillLoad() {
 		this.parseHintText();
 		this.language = validateLanguage(this.language);
 		this.validateTaskStatus();
-
-		this.hintTextId = 'default-hint-id';
 	}
 
 	render() {
@@ -240,6 +267,7 @@ export class OntarioTask {
 				role="group"
 				aria-labelledby={`task-label--${this.taskId}`}
 				aria-describedby={this.hintTextId}
+				data-task-status
 			>
 				{isLinkActive ? (
 					<a href={this.link} class="ontario-task__link" aria-label={this.label}>
