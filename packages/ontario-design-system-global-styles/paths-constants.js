@@ -10,6 +10,7 @@ const paths = {
 	},
 	fonts: './src/fonts',
 	favicons: './src/favicons',
+	index: './src/index.js',
 	dsTokens: {
 		src: '../ontario-design-system-design-tokens/dist/scss/_variables.scss',
 		dest: './dist/styles/scss/1-variables/_tokens.variables.scss',
@@ -20,6 +21,7 @@ const paths = {
 		fontsDist: './dist/fonts/',
 		styles: './dist/styles/',
 		favicons: './dist/favicons',
+		index: './dist/index.js',
 	},
 };
 

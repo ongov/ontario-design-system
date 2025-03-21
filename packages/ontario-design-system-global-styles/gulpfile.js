@@ -80,13 +80,15 @@ task('sass:copy-tokens', () => {
 
 task('sass:build-minify', parallel('sass:build', 'sass:minify'));
 
+task('index:move', () => fs.cp(paths.index, paths.output.index));
+
 // Move all non-style related fonts to the dist/fonts folder
-task('fonts-move', () => {
+task('fonts:move', () => {
 	return fs.cp(paths.fonts, paths.output.fontsDist, { recursive: true });
 });
 
 // Move all favicons to the dist/favicons folder
-task('favicons-move', () => {
+task('favicons:move', () => {
 	return fs.cp(paths.favicons, paths.output.favicons, { recursive: true });
 });
 
@@ -101,7 +103,15 @@ task('clean', async () => {
 
 task(
 	'deploy',
-	series('clean', 'fonts-move', 'favicons-move', 'sass:copy-dist', 'sass:copy-tokens', 'sass:build-minify'),
+	series(
+		'clean',
+		'index:move',
+		'fonts:move',
+		'favicons:move',
+		'sass:copy-dist',
+		'sass:copy-tokens',
+		'sass:build-minify',
+	),
 );
 
 task('default', series('watch'));
