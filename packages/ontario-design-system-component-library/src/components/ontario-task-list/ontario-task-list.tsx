@@ -74,7 +74,7 @@ export class OntarioTaskList {
 		}
 
 		// Observe changes to the light DOM for accurate counting
-		const observer = new MutationObserver((mutations) => {
+		const observer = new MutationObserver((_mutations) => {
 			this.countTasks();
 		});
 		observer.observe(this.el, {

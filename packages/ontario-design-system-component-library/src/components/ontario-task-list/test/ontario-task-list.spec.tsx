@@ -1,8 +1,8 @@
 // Mock MutationObserver for Jest
 beforeAll(() => {
 	global.MutationObserver = class {
-		constructor(callback: any) {}
-		observe(target: any, options: any) {}
+		constructor(_callback: any) {}
+		observe(_target: any, _options: any) {}
 		disconnect() {}
 		takeRecords() {
 			return [];
