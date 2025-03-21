@@ -17,7 +17,8 @@
 		align-items: center;
 
 		@media screen and (max-width: breakpoints.$small-breakpoint) {
-			display: block;
+			display: flex;
+			flex-direction: column;
 			align-items: flex-start;
 		}
 	}
