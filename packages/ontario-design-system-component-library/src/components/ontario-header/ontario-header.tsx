@@ -1,10 +1,4 @@
 import { Component, Prop, State, Watch, Event, EventEmitter, Listen, h, Element, getAssetPath } from '@stencil/core';
-import {
-	OntarioBreakpointsSmall,
-	OntarioBreakpointsMedium,
-	OntarioBreakpointsLarge,
-} from '@ongov/ontario-design-system-design-tokens/dist/ts/tokens';
-
 import { Input } from '../../utils/common/input/input';
 import {
 	MenuItem,
@@ -249,6 +243,10 @@ export class OntarioHeader {
 	 */
 	@Listen('resize', { target: 'window' })
 	handleResize() {
+		const OntarioBreakpointsSmall = '40em';
+		const OntarioBreakpointsMedium = '64em';
+		const OntarioBreakpointsLarge = '90em';
+
 		// screen breakpoint em values
 		const breakpoints = {
 			small: Number(OntarioBreakpointsSmall.replace('em', '')),
