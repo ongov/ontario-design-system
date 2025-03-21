@@ -52,6 +52,20 @@ This is another example of a badge. This time, the content is passed as a child 
 | `colour`        | `colour`          | The colour of the badge.                                                                                                  | `"black" \| "green" \| "grey" \| "light-teal" \| "red" \| "teal" \| "yellow"` | `'teal'`    |
 | `label`         | `label`           | The label for the badge. Offical guidance is to keep the label length within 15 characters.                               | `string`                                                                      | `undefined` |
 
+## Dependencies
+
+### Used by
+
+- [ontario-task](../ontario-task)
+
+### Graph
+
+```mermaid
+graph TD;
+  ontario-task --> ontario-badge
+  style ontario-badge fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ---
 
 _Built with [StencilJS](https://stenciljs.com/)_

@@ -1,0 +1,31 @@
+.ontario-task {
+	padding: 10px 0;
+	border-bottom: 1px solid #ccc;
+
+	&__content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__label {
+		font-weight: bold;
+		text-align: left;
+		margin: 0;
+
+		a {
+			text-decoration: none;
+			color: inherit;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&__hint {
+		margin-top: 5px;
+		color: #666;
+		font-size: 0.875rem;
+	}
+}
