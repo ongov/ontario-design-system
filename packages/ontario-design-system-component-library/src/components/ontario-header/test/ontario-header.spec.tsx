@@ -1,6 +1,12 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { OntarioHeader } from '../ontario-header';
 
+jest.mock('@ongov/ontario-design-system-design-tokens/dist/ts/tokens', () => ({
+	OntarioBreakpointsSmall: '40em',
+	OntarioBreakpointsMedium: '64em',
+	OntarioBreakpointsLarge: '90em',
+}));
+
 describe('ontario-header', () => {
 	it('should render application header', async () => {
 		const page = await newSpecPage({
@@ -101,143 +107,17 @@ describe('ontario-header', () => {
 												</a>
 											</p>
 											<div class="ontario-application-subheader__menu-container">
-												<ul class="ontario-application-subheader__menu ontario-show-for-large">
-                          <li>
-														<a data-type="app-desktop" href="/link-one">
-															Link one
-														</a>
-													</li>
-													<li>
-														<a data-type="app-desktop" href="/link-two">
-															Link two
-														</a>
-													</li>
-													<li>
-														<a data-type="app-desktop" href="/link-three">
-															Link three
-														</a>
-													</li>
-												</ul>
-												<ul class="ontario-application-subheader__menu ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large">
-													<li>
-														<a data-type="app-tablet" href="/link-one">
-															Link one
-														</a>
-													</li>
-												</ul>
-												<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler ontario-show-for-large" id="ontario-application-header-menu-toggler" type="button">
+												<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-application-header-menu-toggler" type="button">
 													<span class="ontario-header__icon-container"></span>
 													<span>Menu</span>
 												</button>
-												<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler ontario-hide-for-large ontario-hide-for-small ontario-show-for-medium" id="ontario-application-header-menu-toggler" type="button">
-													<span class="ontario-header__icon-container"></span>
-													<span>Menu</span>
-												</button>
-												<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler ontario-show-for-small-only" id="ontario-application-header-menu-toggler" type="button">
-                         <span class="ontario-header__icon-container"></span>
-                         <span>
-                           Menu
-                         </span>
-                       </button>
 											</div>
-										</div>
-									</div>
-             	 			</section>
-							<nav class="ontario-application-navigation" id="ontario-application-navigation" role="navigation">
-								<div class="ontario-application-navigation__container">
-									<ul class="ontario-show-for-large">
-										<li>
-											<a data-type="app-desktop" href="/link-four">
-												Link four
-											</a>
-										</li>
-										<li>
-											<a data-type="app-desktop" href="/link-five">
-												Link five
-											</a>
-										</li>
-										<li>
-											<a data-type="app-desktop" href="/link-six">
-												Link six
-											</a>
-										</li>
-										<li>
-											<a data-type="app-desktop" href="/link-seven">
-												Link seven
-											</a>
-										</li>
-									</ul>
-									<ul class="ontario-show-for-medium ontario-hide-for-small ontario-hide-for-large">
-									<li>
-										<a data-type="app-tablet" href="/link-two">
-											Link two
-										</a>
-									</li>
-									<li>
-										<a data-type="app-tablet" href="/link-three">
-											Link three
-										</a>
-									</li>
-										<li>
-											<a data-type="app-tablet" href="/link-four">
-												Link four
-											</a>
-										</li>
-										<li>
-											<a data-type="app-tablet" href="/link-five">
-												Link five
-											</a>
-										</li>
-										<li>
-											<a data-type="app-tablet" href="/link-six">
-												Link six
-											</a>
-										</li>
-										<li>
-											<a data-type="app-tablet" href="/link-seven">
-												Link seven
-											</a>
-										</li>
-									</ul>
-									<ul class="ontario-show-for-small-only">
-									<li>
-											<a data-type="app-mobile" href="/link-one">
-												Link one
-											</a>
-									</li>
-									<li>
-										<a data-type="app-mobile" href="/link-two">
-											Link two
-										</a>
-									</li>
-									<li>
-										<a data-type="app-mobile" href="/link-three">
-											Link three
-										</a>
-									</li>
-										<li>
-											<a data-type="app-mobile" href="/link-four">
-												Link four
-											</a>
-										</li>
-										<li>
-											<a data-type="app-mobile" href="/link-five">
-												Link five
-											</a>
-										</li>
-										<li>
-											<a data-type="app-mobile" href="/link-six">
-												Link six
-											</a>
-										</li>
-										<li>
-											<a data-type="app-mobile" href="/link-seven">
-												Link seven
-											</a>
-										</li>
-									</ul>
-								</div>
-							</nav>
+                    </div>
+                  </div>
+                </section>
+                <slot name="menu-overflow">
+                  <ontario-header-menu menu-items="[{&quot;title&quot;:&quot;Link one&quot;,&quot;href&quot;:&quot;/link-one&quot;},{&quot;title&quot;:&quot;Link two&quot;,&quot;href&quot;:&quot;/link-two&quot;},{&quot;title&quot;:&quot;Link three&quot;,&quot;href&quot;:&quot;/link-three&quot;},{&quot;title&quot;:&quot;Link four&quot;,&quot;href&quot;:&quot;/link-four&quot;},{&quot;title&quot;:&quot;Link five&quot;,&quot;href&quot;:&quot;/link-five&quot;},{&quot;title&quot;:&quot;Link six&quot;,&quot;href&quot;:&quot;/link-six&quot;},{&quot;title&quot;:&quot;Link seven&quot;,&quot;href&quot;:&quot;/link-seven&quot;}]"></ontario-header-menu>
+                </slot>
 						</div>
 					</div>
 				</div>
@@ -394,51 +274,7 @@ describe('ontario-header', () => {
 								</div>
 							</div>
 						</header>
-						<nav class="ontario-navigation" id="ontario-navigation" role="navigation">
-							<div class="ontario-navigation__container">
-								<ul>
-									<li class="ontario-header-navigation__menu-item">
-										<a data-type="ontario-header" href="https://www.ontario.ca/page/arts-and-culture">Arts and Culture</a>
-									</li>
-									<li class="ontario-header-navigation__menu-item">
-										<a data-type="ontario-header" href="https://www.ontario.ca/page/business-and-economy">Business and economy</a>
-									</li>
-									<li class="ontario-header-navigation__menu-item">
-										<a data-type="ontario-header" href="https://www.ontario.ca/page/driving-and-roads">Driving and Roads</a>
-									</li>
-									<li class="ontario-header-navigation__menu-item">
-										<a data-type="ontario-header" href="https://www.ontario.ca/page/education-and-training">Education and training</a>
-									</li>
-									<li class="ontario-header-navigation__menu-item">
-										<a data-type="ontario-header" href="https://www.ontario.ca/page/environment-and-energy">Environment and energy</a>
-									</li>
-									<li class="ontario-header-navigation__menu-item">
-										<a data-type="ontario-header" href="https://www.ontario.ca/page/government">Government</a>
-									</li>
-									<li class="ontario-header-navigation__menu-item">
-										<a data-type="ontario-header" href="https://www.ontario.ca/page/health-care-ontario">Health and wellness</a>
-									</li>
-									<li class="ontario-header-navigation__menu-item">
-										<a data-type="ontario-header" href="https://www.ontario.ca/page/home-and-community">Home and community</a>
-									</li>
-									<li class="ontario-header-navigation__menu-item">
-										<a data-type="ontario-header" href="https://www.ontario.ca/page/jobs-and-employment">Jobs and employment</a>
-									</li>
-									<li class="ontario-header-navigation__menu-item">
-										<a data-type="ontario-header" href="https://www.ontario.ca/page/law-and-safety">Law and safety</a>
-									</li>
-									<li class="ontario-header-navigation__menu-item">
-										<a data-type="ontario-header" href="https://www.ontario.ca/page/rural-and-north">Rural and north</a>
-									</li>
-									<li class="ontario-header-navigation__menu-item">
-										<a data-type="ontario-header" href="https://www.ontario.ca/page/taxes-and-benefits">Taxes and benefits</a>
-									</li>
-									<li class="ontario-header-navigation__menu-item">
-										<a data-type="ontario-header" href="https://www.ontario.ca/page/travel-and-recreation">Travel and recreation</a>
-									</li>
-								</ul>
-							</div>
-						</nav>
+						<ontario-header-menu menu-items="[{&quot;title&quot;:&quot;Arts and Culture&quot;,&quot;href&quot;:&quot;https://www.ontario.ca/page/arts-and-culture&quot;},{&quot;title&quot;:&quot;Business and economy&quot;,&quot;href&quot;:&quot;https://www.ontario.ca/page/business-and-economy&quot;},{&quot;title&quot;:&quot;Driving and Roads&quot;,&quot;href&quot;:&quot;https://www.ontario.ca/page/driving-and-roads&quot;},{&quot;title&quot;:&quot;Education and training&quot;,&quot;href&quot;:&quot;https://www.ontario.ca/page/education-and-training&quot;},{&quot;title&quot;:&quot;Environment and energy&quot;,&quot;href&quot;:&quot;https://www.ontario.ca/page/environment-and-energy&quot;},{&quot;title&quot;:&quot;Government&quot;,&quot;href&quot;:&quot;https://www.ontario.ca/page/government&quot;},{&quot;title&quot;:&quot;Health and wellness&quot;,&quot;href&quot;:&quot;https://www.ontario.ca/page/health-care-ontario&quot;},{&quot;title&quot;:&quot;Home and community&quot;,&quot;href&quot;:&quot;https://www.ontario.ca/page/home-and-community&quot;},{&quot;title&quot;:&quot;Jobs and employment&quot;,&quot;href&quot;:&quot;https://www.ontario.ca/page/jobs-and-employment&quot;},{&quot;title&quot;:&quot;Law and safety&quot;,&quot;href&quot;:&quot;https://www.ontario.ca/page/law-and-safety&quot;},{&quot;title&quot;:&quot;Rural and north&quot;,&quot;href&quot;:&quot;https://www.ontario.ca/page/rural-and-north&quot;},{&quot;title&quot;:&quot;Taxes and benefits&quot;,&quot;href&quot;:&quot;https://www.ontario.ca/page/taxes-and-benefits&quot;},{&quot;title&quot;:&quot;Travel and recreation&quot;,&quot;href&quot;:&quot;https://www.ontario.ca/page/travel-and-recreation&quot;}]"></ontario-header-menu>
 					</div>
 				</div>
 			</mock:shadow-root>
@@ -549,144 +385,17 @@ describe('ontario-header', () => {
 												</div>
 											</a>
 											<div class="ontario-application-subheader__menu-container">
-												<ul class="ontario-service-subheader__menu ontario-show-for-large">
-                          <li>
-														<a data-type="app-desktop" href="/link-one">
-															Link one
-														</a>
-													</a>
-													</li>
-													<li>
-														<a data-type="app-desktop" href="/link-two">
-															Link two
-														</a>
-													</li>
-													<li>
-														<a data-type="app-desktop" href="/link-three">
-															Link three
-														</a>
-													</li>
-												</ul>
-												<ul class="ontario-application-subheader__menu ontario-hide-for-large ontario-hide-for-small ontario-show-for-medium">
-													<li>
-														<a data-type="app-tablet" href="/link-one">
-															Link one
-														</a>
-													</li>
-												</ul>
-												<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler ontario-show-for-large" id="ontario-application-header-menu-toggler" type="button">
+												<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-application-header-menu-toggler" type="button">
 													<span class="ontario-header__icon-container"></span>
 													<span>Menu</span>
 												</button>
-												<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler ontario-hide-for-large ontario-hide-for-small ontario-show-for-medium" id="ontario-application-header-menu-toggler" type="button">
-													<span class="ontario-header__icon-container"></span>
-													<span>Menu</span>
-												</button>
-												<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler ontario-show-for-small-only" id="ontario-application-header-menu-toggler" type="button">
-                         <span class="ontario-header__icon-container"></span>
-                         <span>
-                           Menu
-                         </span>
-                       </button>
 											</div>
-										</div>
-									</div>
-             	 	</section>
-							<nav class="ontario-application-navigation" id="ontario-application-navigation" role="navigation">
-								<div class="ontario-application-navigation__container">
-									<ul class="ontario-show-for-large">
-										<li>
-											<a data-type="app-desktop" href="/link-four">
-												Link four
-											</a>
-										</li>
-										<li>
-											<a data-type="app-desktop" href="/link-five">
-												Link five
-											</a>
-										</li>
-										<li>
-											<a data-type="app-desktop" href="/link-six">
-												Link six
-											</a>
-										</li>
-										<li>
-											<a data-type="app-desktop" href="/link-seven">
-												Link seven
-											</a>
-										</li>
-									</ul>
-									<ul class="ontario-show-for-medium ontario-hide-for-small ontario-hide-for-large">
-									<li>
-										<a data-type="app-tablet" href="/link-two">
-											Link two
-										</a>
-									</li>
-									<li>
-										<a data-type="app-tablet" href="/link-three">
-											Link three
-										</a>
-									</li>
-										<li>
-											<a data-type="app-tablet" href="/link-four">
-												Link four
-											</a>
-										</li>
-										<li>
-											<a data-type="app-tablet" href="/link-five">
-												Link five
-											</a>
-										</li>
-										<li>
-											<a data-type="app-tablet" href="/link-six">
-												Link six
-											</a>
-										</li>
-										<li>
-											<a data-type="app-tablet" href="/link-seven">
-												Link seven
-											</a>
-										</li>
-									</ul>
-									<ul class="ontario-show-for-small-only">
-									<li>
-											<a data-type="app-mobile" href="/link-one">
-												Link one
-											</a>
-									</li>
-									<li>
-										<a data-type="app-mobile" href="/link-two">
-											Link two
-										</a>
-									</li>
-									<li>
-										<a data-type="app-mobile" href="/link-three">
-											Link three
-										</a>
-									</li>
-										<li>
-											<a data-type="app-mobile" href="/link-four">
-												Link four
-											</a>
-										</li>
-										<li>
-											<a data-type="app-mobile" href="/link-five">
-												Link five
-											</a>
-										</li>
-										<li>
-											<a data-type="app-mobile" href="/link-six">
-												Link six
-											</a>
-										</li>
-										<li>
-											<a data-type="app-mobile" href="/link-seven">
-												Link seven
-											</a>
-										</li>
-									</ul>
-								</div>
-							</nav>
+  		            	</div>
+                  </div>
+                </section>
+							<slot name="menu-overflow">
+                <ontario-header-menu menu-items="[{&quot;title&quot;:&quot;Link one&quot;,&quot;href&quot;:&quot;/link-one&quot;},{&quot;title&quot;:&quot;Link two&quot;,&quot;href&quot;:&quot;/link-two&quot;},{&quot;title&quot;:&quot;Link three&quot;,&quot;href&quot;:&quot;/link-three&quot;},{&quot;title&quot;:&quot;Link four&quot;,&quot;href&quot;:&quot;/link-four&quot;},{&quot;title&quot;:&quot;Link five&quot;,&quot;href&quot;:&quot;/link-five&quot;},{&quot;title&quot;:&quot;Link six&quot;,&quot;href&quot;:&quot;/link-six&quot;},{&quot;title&quot;:&quot;Link seven&quot;,&quot;href&quot;:&quot;/link-seven&quot;}]"></ontario-header-menu>
+              </slot>
 						</div>
 					</div>
 				</div>

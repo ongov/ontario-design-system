@@ -1,11 +1,10 @@
 import { Component, Prop, State, Watch, Event, EventEmitter, Listen, h, Element, getAssetPath } from '@stencil/core';
+import { Input } from '../../utils/common/input/input';
 import {
 	OntarioBreakpointsSmall,
 	OntarioBreakpointsMedium,
 	OntarioBreakpointsLarge,
 } from '@ongov/ontario-design-system-design-tokens/dist/ts/tokens';
-
-import { Input } from '../../utils/common/input/input';
 import {
 	MenuItem,
 	ApplicationHeaderInfo,
@@ -434,25 +433,27 @@ export class OntarioHeader {
 	}
 
 	private isMenuVisible(viewportSize: string) {
-		const { menuItemState, applicationHeaderInfoState } = this;
-		const { mobile, tablet, desktop } = applicationHeaderInfoState.maxSubheaderLinks ?? {};
+		if (this.type !== 'ontario') {
+			const { menuItemState, applicationHeaderInfoState } = this;
+			const { mobile = 0, tablet = 0, desktop = 0 } = applicationHeaderInfoState?.maxSubheaderLinks ?? {};
 
-		const numOfMenuItems = menuItemState?.length ?? 0;
+			const numOfMenuItems = menuItemState?.length ?? 0;
 
-		if (numOfMenuItems <= 0) {
-			return false;
-		}
+			if (numOfMenuItems <= 0) {
+				return false;
+			}
 
-		if (viewportSize === 'mobile') {
-			return numOfMenuItems - (mobile ?? 0) > 0;
-		}
+			if (viewportSize === 'mobile') {
+				return numOfMenuItems - mobile > 0;
+			}
 
-		if (viewportSize === 'tablet') {
-			return numOfMenuItems - (tablet ?? 0) > 0;
-		}
+			if (viewportSize === 'tablet') {
+				return numOfMenuItems - tablet > 0;
+			}
 
-		if (viewportSize === 'desktop') {
-			return numOfMenuItems - (desktop ?? 0) > 0;
+			if (viewportSize === 'desktop') {
+				return numOfMenuItems - desktop > 0;
+			}
 		}
 
 		return true;
