@@ -3722,17 +3722,17 @@ export class OntarioTable {
 export declare interface OntarioTable extends Components.OntarioTable {}
 
 @ProxyCmp({
-	inputs: ['deactivateLink', 'hintText', 'label', 'language', 'link', 'taskStatus'],
+	inputs: ['deactivateLink', 'hintText', 'label', 'language', 'link', 'taskId', 'taskStatus'],
 })
 @Component({
 	selector: 'ontario-task',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['deactivateLink', 'hintText', 'label', 'language', 'link', 'taskStatus'],
+	inputs: ['deactivateLink', 'hintText', 'label', 'language', 'link', 'taskId', 'taskStatus'],
 })
 export class OntarioTask {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioTaskElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
@@ -3756,7 +3756,7 @@ export declare interface OntarioTask extends Components.OntarioTask {}
 	inputs: ['label', 'language'],
 })
 export class OntarioTaskList {
-	protected el: HTMLElement;
+	protected el: HTMLOntarioTaskListElement;
 	constructor(
 		c: ChangeDetectorRef,
 		r: ElementRef,
