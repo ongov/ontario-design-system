@@ -1,6 +1,12 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { OntarioHeader } from '../ontario-header';
 
+jest.mock('@ongov/ontario-design-system-design-tokens/dist/ts/tokens', () => ({
+	OntarioBreakpointsSmall: '40em',
+	OntarioBreakpointsMedium: '64em',
+	OntarioBreakpointsLarge: '90em',
+}));
+
 describe('ontario-header', () => {
 	it('should render application header', async () => {
 		const page = await newSpecPage({

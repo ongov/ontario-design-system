@@ -305,7 +305,6 @@ To ensure best practices, it is important to limit the number of navigation link
 ### Depends on
 
 - [ontario-language-toggle](../ontario-language-toggle)
-- [ontario-header-menu](../ontario-header-menu)
 
 ### Graph
 
