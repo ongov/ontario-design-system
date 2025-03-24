@@ -56,6 +56,12 @@
 	}
 }
 
+.ontario-task-list__task {
+	list-style: none;
+	margin: spacing.$spacing-0;
+	padding: spacing.$spacing-0;
+}
+
 .ontario-task__link:focus {
 	outline: none;
 	box-shadow: none;
