@@ -229,6 +229,14 @@ export class OntarioHeader {
 		}
 	}
 
+	@Listen('keydown', { target: 'window' })
+	handleKeyDown(event: KeyboardEvent) {
+		if (event.key === 'Escape' && this.menuToggle) {
+			this.menuToggle = false;
+			this.menuButtonToggled.emit(this.menuToggle);
+		}
+	}
+
 	/**
 	 * Logic to close the menu when anything outside the menu is clicked
 	 */

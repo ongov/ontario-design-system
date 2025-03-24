@@ -57,6 +57,16 @@ export class OntarioHeaderApplicationMenu {
 	 */
 	@State() private menuIsOpen: boolean = false;
 
+	/**
+	 * The current index of the menu item that is focused.
+	 */
+	private currentIndex: number = 0;
+
+	/**
+	 * The aria-live region that will be updated with the selected menu item.
+	 */
+	private ariaLiveRegion!: HTMLElement;
+
 	@Watch('menuItems')
 	parseMenuItems() {
 		if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
@@ -67,7 +77,7 @@ export class OntarioHeaderApplicationMenu {
 
 		// if a menu item is the active page, update the linkIsActive value for that menu item
 		this.menuItemState.map((item) => {
-			const activeLinkRegex = item.title.replace(/\s+/g, '-').toLowerCase();
+			const activeLinkRegex = item.href.replace(/\s+/g, '-').toLowerCase();
 			item.linkIsActive = window.location.pathname.includes(activeLinkRegex);
 		});
 	}
@@ -81,9 +91,18 @@ export class OntarioHeaderApplicationMenu {
 	 * This listens for the `menuButtonToggled` event sent from the header menu button when it is clicked.
 	 * It is used to toggle menu visibility by adding or removing the ontario-navigation--open class on the nav element.
 	 */
+	@Event() menuButtonToggled: EventEmitter<boolean>;
+
+	/**
+	 * This listens for the `menuButtonToggled` event sent from the header menu button when it is clicked.
+	 * It is used to toggle menu visibility by adding or removing the ontario-navigation--open class on the nav element.
+	 */
 	@Listen('menuButtonToggled', { target: 'window' })
 	toggleMenuVisibility(event: CustomEvent<boolean>) {
 		this.menuIsOpen = event.detail;
+		if (this.menuIsOpen) {
+			this.setFocusToFirstMenuItem();
+		}
 	}
 
 	/**
@@ -99,6 +118,70 @@ export class OntarioHeaderApplicationMenu {
 		}
 
 		this.menuIsOpen = false;
+		this.menuButtonToggled.emit(this.menuIsOpen);
+	}
+
+	/**
+	 * Listens for keydown events and handles navigation within the menu using the ArrowUp and ArrowDown keys.
+	 */
+	@Listen('keydown', { target: 'window' })
+	handleKeyDown(event: KeyboardEvent) {
+		if (this.menuIsOpen) {
+			const focusableElements = this.menu.querySelectorAll('.ontario-menu-item');
+			const focusableArray = Array.prototype.slice.call(focusableElements);
+
+			switch (event.key) {
+				case 'ArrowDown':
+					event.preventDefault();
+					if (this.currentIndex === -1) {
+						this.currentIndex = 0;
+					} else {
+						this.currentIndex = (this.currentIndex + 1) % focusableArray.length;
+					}
+					(focusableArray[this.currentIndex] as HTMLElement).focus();
+					this.updateAriaLive(this.currentIndex);
+					break;
+				case 'ArrowUp':
+					event.preventDefault();
+					if (this.currentIndex === -1) {
+						this.currentIndex = focusableArray.length - 1;
+					} else {
+						this.currentIndex = (this.currentIndex - 1 + focusableArray.length) % focusableArray.length;
+					}
+					(focusableArray[this.currentIndex] as HTMLElement).focus();
+					this.updateAriaLive(this.currentIndex);
+					break;
+			}
+		}
+	}
+
+	/**
+	 * Sets focus to the first menu item when the menu is opened.
+	 */
+	private setFocusToFirstMenuItem() {
+		const focusableElements = this.menu.querySelectorAll('ontario-menu-item');
+		const firstMenuItem = focusableElements[0] as HTMLElement;
+		if (firstMenuItem) {
+			firstMenuItem.focus();
+			this.currentIndex = 0;
+			this.updateAriaLive(this.currentIndex);
+		}
+	}
+
+	/**
+	 * Updates the aria-live region with the menu item count and selected option.
+	 *
+	 * @param {number} selectedIndex The index of the selected menu item
+	 */
+	private updateAriaLive(selectedIndex: number) {
+		const menuItemCount = this.menuItemState.length;
+		const selectedMenuItemNumber = selectedIndex + 1;
+		const selectedMenuItem = this.menuItemState[selectedIndex].title;
+		const ariaLiveMessage = `Option ${selectedMenuItemNumber} of ${menuItemCount}: ${selectedMenuItem}`;
+
+		if (this.ariaLiveRegion) {
+			this.ariaLiveRegion.textContent = ariaLiveMessage;
+		}
 	}
 
 	/**
@@ -124,7 +207,7 @@ export class OntarioHeaderApplicationMenu {
 		return (
 			<li class={liClass}>
 				<a
-					class={linkIsActive === true ? `ontario-link--active` : ``}
+					class={`ontario-menu-item ${linkIsActive ? 'ontario-link--active' : 'ontario-menu-item'}`}
 					href={href}
 					onClick={onClick}
 					onBlur={this.trapMenuFocus && lastLink ? () => this.linkIsLast() : undefined}
@@ -171,6 +254,12 @@ export class OntarioHeaderApplicationMenu {
 						})}
 					</ul>
 				</div>
+				<div
+					id="aria-live-region"
+					class="ontario__visually-hidden"
+					aria-live="polite"
+					ref={(el) => (this.ariaLiveRegion = el as HTMLElement)}
+				></div>
 			</nav>
 		);
 	}
