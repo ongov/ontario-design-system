@@ -606,15 +606,11 @@ export class OntarioHeaderOverflowMenu {
 	) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['endOfMenuReached', 'menuButtonToggled']);
+		proxyOutputs(this, this.el, ['menuButtonToggled']);
 	}
 }
 
 export declare interface OntarioHeaderOverflowMenu extends Components.OntarioHeaderOverflowMenu {
-	/**
-	 * Emitted by `linkIsLast()`.
-	 */
-	endOfMenuReached: EventEmitter<CustomEvent<boolean>>;
 	/**
    * This listens for the `menuButtonToggled` event sent from the header menu button when it is clicked.
 It is used to toggle menu visibility by adding or removing the ontario-navigation--open class on the nav element.

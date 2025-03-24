@@ -231,9 +231,11 @@ export class OntarioHeader {
 
 	@Listen('keydown', { target: 'window' })
 	handleKeyDown(event: KeyboardEvent) {
-		if (event.key === 'Escape' && this.menuToggle) {
-			this.menuToggle = false;
-			this.menuButtonToggled.emit(this.menuToggle);
+		if (this.menuToggle) {
+			if (event.key === 'Escape' || event.key === 'Tab') {
+				this.menuToggle = false;
+				this.menuButtonToggled.emit(this.menuToggle);
+			}
 		}
 	}
 

@@ -60,7 +60,7 @@ export class OntarioHeaderApplicationMenu {
 	/**
 	 * The current index of the menu item that is focused.
 	 */
-	private currentIndex: number = 0;
+	private currentIndex: number | undefined = undefined;
 
 	/**
 	 * The aria-live region that will be updated with the selected menu item.
@@ -83,11 +83,6 @@ export class OntarioHeaderApplicationMenu {
 	}
 
 	/**
-	 * Emitted by `linkIsLast()`.
-	 */
-	@Event() endOfMenuReached: EventEmitter<boolean>;
-
-	/**
 	 * This listens for the `menuButtonToggled` event sent from the header menu button when it is clicked.
 	 * It is used to toggle menu visibility by adding or removing the ontario-navigation--open class on the nav element.
 	 */
@@ -100,9 +95,6 @@ export class OntarioHeaderApplicationMenu {
 	@Listen('menuButtonToggled', { target: 'window' })
 	toggleMenuVisibility(event: CustomEvent<boolean>) {
 		this.menuIsOpen = event.detail;
-		if (this.menuIsOpen) {
-			this.setFocusToFirstMenuItem();
-		}
 	}
 
 	/**
@@ -133,7 +125,7 @@ export class OntarioHeaderApplicationMenu {
 			switch (event.key) {
 				case 'ArrowDown':
 					event.preventDefault();
-					if (this.currentIndex === -1) {
+					if (this.currentIndex === -1 || this.currentIndex === undefined) {
 						this.currentIndex = 0;
 					} else {
 						this.currentIndex = (this.currentIndex + 1) % focusableArray.length;
@@ -143,7 +135,7 @@ export class OntarioHeaderApplicationMenu {
 					break;
 				case 'ArrowUp':
 					event.preventDefault();
-					if (this.currentIndex === -1) {
+					if (this.currentIndex === -1 || this.currentIndex === undefined) {
 						this.currentIndex = focusableArray.length - 1;
 					} else {
 						this.currentIndex = (this.currentIndex - 1 + focusableArray.length) % focusableArray.length;
@@ -156,19 +148,6 @@ export class OntarioHeaderApplicationMenu {
 	}
 
 	/**
-	 * Sets focus to the first menu item when the menu is opened.
-	 */
-	private setFocusToFirstMenuItem() {
-		const focusableElements = this.menu.querySelectorAll('ontario-menu-item');
-		const firstMenuItem = focusableElements[0] as HTMLElement;
-		if (firstMenuItem) {
-			firstMenuItem.focus();
-			this.currentIndex = 0;
-			this.updateAriaLive(this.currentIndex);
-		}
-	}
-
-	/**
 	 * Updates the aria-live region with the menu item count and selected option.
 	 *
 	 * @param {number} selectedIndex The index of the selected menu item
@@ -176,8 +155,7 @@ export class OntarioHeaderApplicationMenu {
 	private updateAriaLive(selectedIndex: number) {
 		const menuItemCount = this.menuItemState.length;
 		const selectedMenuItemNumber = selectedIndex + 1;
-		const selectedMenuItem = this.menuItemState[selectedIndex].title;
-		const ariaLiveMessage = `Option ${selectedMenuItemNumber} of ${menuItemCount}: ${selectedMenuItem}`;
+		const ariaLiveMessage = `Option ${selectedMenuItemNumber} of ${menuItemCount}`;
 
 		if (this.ariaLiveRegion) {
 			this.ariaLiveRegion.textContent = ariaLiveMessage;
@@ -200,31 +178,16 @@ export class OntarioHeaderApplicationMenu {
 		href: string,
 		title: string,
 		linkIsActive: boolean | undefined,
-		lastLink: boolean = false,
 		liClass?: string,
 		onClick?: any,
 	) {
 		return (
 			<li class={liClass}>
-				<a
-					class={`ontario-menu-item ${linkIsActive ? 'ontario-link--active' : 'ontario-menu-item'}`}
-					href={href}
-					onClick={onClick}
-					onBlur={this.trapMenuFocus && lastLink ? () => this.linkIsLast() : undefined}
-				>
+				<a class={`ontario-menu-item ${linkIsActive ? 'ontario-link--active' : ''}`} href={href} onClick={onClick}>
 					{title}
 				</a>
 			</li>
 		);
-	}
-
-	/**
-	 * Conditionally triggered by the onBlur property of the menu item.
-	 *
-	 * Emits the `endOfMenuReached` event, which the header listens for to set the tab focus to the menu button.
-	 */
-	private linkIsLast() {
-		this.endOfMenuReached.emit(true);
 	}
 
 	componentWillLoad() {
@@ -248,9 +211,8 @@ export class OntarioHeaderApplicationMenu {
 			>
 				<div class="ontario-application-navigation__container">
 					<ul>
-						{this.menuItemState.map((item: any, index) => {
-							const isLastItem = index + 1 == this.menuItemState.length ? true : false;
-							return this.generateMenuItem(item.href, item.title, item.linkIsActive, isLastItem);
+						{this.menuItemState.map((item: any) => {
+							return this.generateMenuItem(item.href, item.title, item.linkIsActive);
 						})}
 					</ul>
 				</div>
