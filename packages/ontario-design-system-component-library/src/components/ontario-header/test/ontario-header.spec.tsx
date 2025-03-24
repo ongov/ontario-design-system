@@ -107,7 +107,7 @@ describe('ontario-header', () => {
 												</a>
 											</p>
 											<div class="ontario-application-subheader__menu-container">
-												<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-application-header-menu-toggler" type="button">
+												<button aria-controls="ontario-navigation" aria-expanded="false" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-application-header-menu-toggler" type="button">
 													<span class="ontario-header__icon-container"></span>
 													<span>Menu</span>
 												</button>
@@ -257,7 +257,7 @@ describe('ontario-header', () => {
 											Search
 										</span>
 									</button>
-									<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-header-menu-toggler" type="button">
+									<button aria-controls="ontario-navigation" aria-expanded="false" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-header-menu-toggler" type="button">
 										<span class="ontario-header__icon-container"></span>
 										<span>
 											Menu
@@ -385,7 +385,7 @@ describe('ontario-header', () => {
 												</div>
 											</a>
 											<div class="ontario-application-subheader__menu-container">
-												<button aria-controls="ontario-navigation" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-application-header-menu-toggler" type="button">
+												<button aria-controls="ontario-navigation" aria-expanded="false" aria-label="Show navigation menu" class="ontario-header-button ontario-header-button--with-outline ontario-header__menu-toggler" id="ontario-application-header-menu-toggler" type="button">
 													<span class="ontario-header__icon-container"></span>
 													<span>Menu</span>
 												</button>

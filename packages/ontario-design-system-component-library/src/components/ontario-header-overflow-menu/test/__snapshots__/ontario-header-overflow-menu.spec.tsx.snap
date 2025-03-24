@@ -7,17 +7,18 @@ exports[`ontario-header-overflow-menu should render menu items correctly 1`] = `
       <div class="ontario-application-navigation__container">
         <ul>
           <li>
-            <a href="/link-1">
+            <a class="ontario-menu-item" href="/link-1">
               Link 1
             </a>
           </li>
           <li>
-            <a href="/link-2">
+            <a class="ontario-menu-item" href="/link-2">
               Link 2
             </a>
           </li>
         </ul>
       </div>
+      <div aria-live="polite" class="ontario-visually-hidden" id="aria-live-region"></div>
     </nav>
   </template>
 </ontario-header-overflow-menu>
