@@ -127,6 +127,30 @@ export class OntarioTask {
 	}
 
 	/**
+	 * Watch for changes in `headingLevel` prop to validate its value.
+	 */
+	@Watch('headingLevel')
+	validateHeadingLevel(newValue: string) {
+		const allowedValues = ['h2', 'h3', 'h4'];
+		if (!allowedValues.includes(newValue)) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' headingLevel ')
+				.addRegularText('on')
+				.addMonospaceText(' <ontario-task> ')
+				.addRegularText('was set to an invalid value; only ')
+				.addMonospaceText(allowedValues.join(', '))
+				.addRegularText(' are supported. The default value ')
+				.addMonospaceText('h3')
+				.addRegularText(' is assumed.')
+				.printMessage();
+
+			this.headingLevel = 'h3';
+		}
+	}
+
+	/**
 	 * Watch for changes in `hintText` prop and parse it if available.
 	 *
 	 * If a `hintText` prop is passed, the `constructHintTextObject` function will convert it to the correct format,
@@ -235,6 +259,18 @@ export class OntarioTask {
 	 * and set it for the `aria-describedby` attribute.
 	 */
 	async componentDidLoad() {
+		this.el.setAttribute('data-task-status', this.taskStatus);
+	}
+	/**
+	 * Lifecycle method: before the component loads, parse the hint text and
+	 * validate language and task status.
+	 */
+	async componentWillLoad() {
+		this.parseHintText();
+		this.language = validateLanguage(this.language);
+		this.validateTaskStatus();
+		this.validateHeadingLevel(this.headingLevel);
+
 		if (this.hintTextRef) {
 			const hintId = await this.hintTextRef.getHintTextId();
 			this.hintTextId = hintId || defaultHintId;
@@ -242,18 +278,6 @@ export class OntarioTask {
 			console.warn('hintTextRef is undefined, defaulting to defaultHintId');
 			this.hintTextId = defaultHintId;
 		}
-
-		this.el.setAttribute('data-task-status', this.taskStatus);
-	}
-
-	/**
-	 * Lifecycle method: before the component loads, parse the hint text and
-	 * validate language and task status.
-	 */
-	componentWillLoad() {
-		this.parseHintText();
-		this.language = validateLanguage(this.language);
-		this.validateTaskStatus();
 	}
 
 	render() {
