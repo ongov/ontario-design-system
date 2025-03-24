@@ -36,16 +36,6 @@ export class OntarioHeaderApplicationMenu {
 	@Prop() menuItems: MenuItem[] | string;
 
 	/**
-	 * Controls the tab order flow of the menu in relation to the rest of the page.
-	 *
-	 * If set to `true`, when a user tabs to the end of the menu,
-	 * the tab order / focus will be reset to the menu button in the header.
-	 *
-	 * If set to `false` the tab order will continue on down the page.
-	 */
-	@Prop() trapMenuFocus: boolean = true;
-
-	/**
 	 * The `menuItems` are reassigned to `menuItemState` for parsing by `parseMenuItems()`.
 	 */
 	@State() private menuItemState: MenuItem[];
@@ -62,11 +52,6 @@ export class OntarioHeaderApplicationMenu {
 	 */
 	private currentIndex: number | undefined = undefined;
 
-	/**
-	 * The aria-live region that will be updated with the selected menu item.
-	 */
-	private ariaLiveRegion!: HTMLElement;
-
 	@Watch('menuItems')
 	parseMenuItems() {
 		if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
@@ -81,12 +66,6 @@ export class OntarioHeaderApplicationMenu {
 			item.linkIsActive = window.location.pathname.includes(activeLinkRegex);
 		});
 	}
-
-	/**
-	 * This listens for the `menuButtonToggled` event sent from the header menu button when it is clicked.
-	 * It is used to toggle menu visibility by adding or removing the ontario-navigation--open class on the nav element.
-	 */
-	@Event() menuButtonToggled: EventEmitter<boolean>;
 
 	/**
 	 * This listens for the `menuButtonToggled` event sent from the header menu button when it is clicked.
@@ -111,7 +90,6 @@ export class OntarioHeaderApplicationMenu {
 		}
 
 		this.menuIsOpen = false;
-		this.menuButtonToggled.emit(this.menuIsOpen);
 		this.currentIndex = undefined;
 	}
 
@@ -174,7 +152,6 @@ export class OntarioHeaderApplicationMenu {
 	 * @param linkIsActive - when set to true, this will add the classes necessary to style the link in a way that indicates to the user what the active page/link is
 	 * @param liClass - if there is a class that is related to the <a> portion of the menu item, put it here
 	 * @param onClick - for any custom onClick event a user might want to add to their menu links
-	 * @param onBlur - when set to true, it will call the function trapMenuFocus(), otherwise nothing is done (used in lastLink)
 	 */
 	private generateMenuItem(
 		href: string,
@@ -199,7 +176,12 @@ export class OntarioHeaderApplicationMenu {
 	/**
 	 * Assigning values to elements to use them as ref
 	 */
-	menu!: HTMLElement;
+	private menu!: HTMLElement;
+
+	/**
+	 * The aria-live region that will be updated with the selected menu item.
+	 */
+	private ariaLiveRegion!: HTMLElement;
 
 	render() {
 		return (

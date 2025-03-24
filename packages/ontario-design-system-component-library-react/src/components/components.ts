@@ -823,7 +823,7 @@ export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioH
 		defineCustomElement: defineOntarioHeader,
 	});
 
-type OntarioHeaderOverflowMenuEvents = { onMenuButtonToggled: EventName<CustomEvent<boolean>> };
+type OntarioHeaderOverflowMenuEvents = NonNullable<unknown>;
 
 export const OntarioHeaderOverflowMenu: StencilReactComponent<
 	OntarioHeaderOverflowMenuElement,
@@ -833,7 +833,7 @@ export const OntarioHeaderOverflowMenu: StencilReactComponent<
 	elementClass: OntarioHeaderOverflowMenuElement,
 	// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
 	react: React,
-	events: { onMenuButtonToggled: 'menuButtonToggled' } as OntarioHeaderOverflowMenuEvents,
+	events: {} as OntarioHeaderOverflowMenuEvents,
 	defineCustomElement: defineOntarioHeaderOverflowMenu,
 });
 
