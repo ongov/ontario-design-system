@@ -5,3 +5,64 @@
 .ontario-form-group:last-of-type {
 	margin-bottom: spacing.$spacing-8;
 }
+
+// Define all component class names at the top (including class names, not tag names)
+$ontario-form-elements: '.ontario-input', '.ontario-checkboxes', '.ontario-dropdown-list', '.ontario-textarea',
+	'.ontario-radio-buttons', '.ontario-button', '.ontario-date-input';
+
+// Mixin for generating individual form container gap classes
+@mixin ontario-form-container-gap($modifier, $spacing-variable) {
+	.ontario-form-container--gap-#{$modifier},
+	.ontario-form-container--gap-#{$modifier} form {
+		@each $element in $ontario-form-elements {
+			#{$element}:not(:last-child) {
+				margin-bottom: $spacing-variable;
+				display: block;
+			}
+		}
+	}
+}
+
+// Mixin for generating nested form container gap classes
+@mixin ontario-nested-form-container-gap($parent-modifier, $parent-spacing, $child-spacings) {
+	.ontario-form-container--gap-#{$parent-modifier},
+	.ontario-form-container--gap-#{$parent-modifier} form {
+		@each $child-spacing in $child-spacings {
+			$child-modifier: nth($child-spacing, 1);
+			$child-spacing-variable: nth($child-spacing, 2);
+			.ontario-form-container--gap-#{$child-modifier},
+			.ontario-form-container--gap-#{$child-modifier} form {
+				@each $element in $ontario-form-elements {
+					#{$element}:not(:last-child) {
+						margin-bottom: $child-spacing-variable;
+						display: block;
+					}
+					// Add extra spacing for the last child
+					#{$element}:last-child {
+						margin-bottom: $child-spacing-variable + $parent-spacing;
+						display: block;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Gap definitions
+$gap-definitions: (16, spacing.$spacing-4), (40, spacing.$spacing-7);
+
+// Generate styles for each gap setting
+@each $gap-definition in $gap-definitions {
+	$gap-modifier: nth($gap-definition, 1);
+	$gap-variable: nth($gap-definition, 2);
+	// Generate individual form container gap classes
+	@include ontario-form-container-gap($gap-modifier, $gap-variable);
+	// Generate nested form container gap classes
+	$nested-gaps: ();
+	@each $nested-gap in $gap-definitions {
+		@if $gap-modifier != nth($nested-gap, 1) {
+			$nested-gaps: append($nested-gaps, $nested-gap);
+		}
+	}
+	@include ontario-nested-form-container-gap($gap-modifier, $gap-variable, $nested-gaps);
+}
