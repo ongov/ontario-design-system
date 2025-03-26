@@ -88,7 +88,8 @@ $ontario-header-z-index: calc(zIndex.$ontario-z-index-above-high + 1);
 .ontario-header-button {
 	@extend %ontario-header-button;
 
-	&:focus {
+	&:focus,
+	&:focus-visible {
 		@extend %ontario-focus;
 	}
 

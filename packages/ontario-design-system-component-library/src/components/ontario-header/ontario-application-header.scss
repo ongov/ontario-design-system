@@ -41,6 +41,7 @@ $menu-button-icon-margin-right: 6px;
 
 	&:hover,
 	&:focus {
+		@extend %ontario-focus;
 		background-color: colours.$ontario-greyscale-70;
 		color: colours.$ontario-colour-white;
 	}
@@ -143,6 +144,10 @@ $menu-button-icon-margin-right: 6px;
 	@extend %h4-styles;
 	margin-bottom: spacing.$spacing-0;
 	max-width: 65%;
+
+	&:focus {
+		@extend %ontario-focus;
+	}
 
 	a {
 		color: colours.$ontario-colour-white;
