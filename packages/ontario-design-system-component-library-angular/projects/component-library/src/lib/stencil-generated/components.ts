@@ -588,14 +588,14 @@ export declare interface OntarioHeader extends Components.OntarioHeader {
 }
 
 @ProxyCmp({
-	inputs: ['menuItems', 'trapMenuFocus'],
+	inputs: ['menuItems'],
 })
 @Component({
 	selector: 'ontario-header-overflow-menu',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['menuItems', 'trapMenuFocus'],
+	inputs: ['menuItems'],
 })
 export class OntarioHeaderOverflowMenu {
 	protected el: HTMLOntarioHeaderOverflowMenuElement;
@@ -606,16 +606,10 @@ export class OntarioHeaderOverflowMenu {
 	) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['endOfMenuReached']);
 	}
 }
 
-export declare interface OntarioHeaderOverflowMenu extends Components.OntarioHeaderOverflowMenu {
-	/**
-	 * Emitted by `linkIsLast()`.
-	 */
-	endOfMenuReached: EventEmitter<CustomEvent<boolean>>;
-}
+export declare interface OntarioHeaderOverflowMenu extends Components.OntarioHeaderOverflowMenu {}
 
 @ProxyCmp({
 	inputs: ['content', 'elementId', 'hint', 'hintContentType'],

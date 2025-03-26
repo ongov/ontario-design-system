@@ -184,7 +184,7 @@ export class OntarioHeader {
 	/**
 	 * Toggler for the menu and the search button
 	 */
-	@State() menuToggle: boolean = false;
+	@State() menuToggled: boolean = false;
 	@State() searchToggle?: boolean = false;
 
 	@State() translations: any = translations;
@@ -229,6 +229,14 @@ export class OntarioHeader {
 		}
 	}
 
+	@Listen('keydown', { target: 'window' })
+	handleKeyDown(event: KeyboardEvent) {
+		if (this.menuToggled && event.key === 'Escape') {
+			this.menuToggled = false;
+			this.menuButtonToggled.emit(this.menuToggled);
+		}
+	}
+
 	/**
 	 * Logic to close the menu when anything outside the menu is clicked
 	 */
@@ -240,7 +248,18 @@ export class OntarioHeader {
 		}
 
 		// If the click was outside the current component, do the following
-		if (this.menuToggle) this.menuToggle = !this.menuToggle;
+		if (this.menuToggled) this.menuToggled = !this.menuToggled;
+	}
+
+	/**
+	 * Logic to close the menu when the focus leaves the menu
+	 */
+	@Listen('focusout', { target: 'window' })
+	handleFocusOut(event: FocusEvent) {
+		if (this.menuToggled && !this.el.contains(event.relatedTarget as Node)) {
+			this.menuToggled = false;
+			this.menuButtonToggled.emit(this.menuToggled);
+		}
 	}
 
 	/**
@@ -296,9 +315,9 @@ export class OntarioHeader {
 	/**
 	 * Logic to handle the menu toggling
 	 */
-	handleMenuToggle = () => {
-		this.menuToggle = !this.menuToggle;
-		this.menuButtonToggled.emit(this.menuToggle);
+	handlemenuToggled = () => {
+		this.menuToggled = !this.menuToggled;
+		this.menuButtonToggled.emit(this.menuToggled);
 		this.searchToggle = undefined;
 	};
 
@@ -409,15 +428,19 @@ export class OntarioHeader {
 				id={this.type === 'ontario' ? 'ontario-header-menu-toggler' : 'ontario-application-header-menu-toggler'}
 				aria-controls="ontario-navigation"
 				aria-label={
-					this.menuToggle
+					this.menuToggled
 						? this.translations.header.closeMenu[`${this.language}`]
 						: this.translations.header.openMenu[`${this.language}`]
 				}
-				onClick={this.handleMenuToggle}
+				aria-expanded={this.menuToggled ? 'true' : 'false'}
+				onClick={this.handlemenuToggled}
 				type="button"
 				ref={(el) => (this.menuButton = el as HTMLInputElement)}
 			>
-				<span class="ontario-header__icon-container" innerHTML={this.menuToggle ? OntarioIconClose : OntarioIconMenu} />
+				<span
+					class="ontario-header__icon-container"
+					innerHTML={this.menuToggled ? OntarioIconClose : OntarioIconMenu}
+				/>
 				<span>Menu</span>
 			</button>
 		);
@@ -482,7 +505,7 @@ export class OntarioHeader {
 		if (this.type == 'ontario') {
 			if (this.searchToggle === true) this.searchBar.focus();
 			if (this.searchToggle === false) this.searchButton.focus();
-			if (this.menuToggle === false) this.menuButton.blur();
+			if (this.menuToggled === false) this.menuButton.blur();
 		}
 	}
 
@@ -599,7 +622,7 @@ export class OntarioHeader {
 						{/* Minor styling differences in placement of ontario.ca menu and application menu */}
 						<ontario-header-menu menu-items={JSON.stringify(this.menuItemState)}></ontario-header-menu>
 					</div>
-					{this.menuToggle && <div class="ontario-hide-for-large ontario-overlay" />}
+					{this.menuToggled && <div class="ontario-hide-for-large ontario-overlay" />}
 				</div>
 			);
 		} else {
@@ -685,7 +708,7 @@ export class OntarioHeader {
 							</slot>
 						</div>
 					</div>
-					{this.menuToggle && <div class="ontario-hide-for-large ontario-overlay" />}
+					{this.menuToggled && <div class="ontario-hide-for-large ontario-overlay" />}
 				</div>
 			);
 		}

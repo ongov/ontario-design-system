@@ -1,4 +1,4 @@
-import { Component, Prop, State, Watch, h, Listen, Event, EventEmitter, Element } from '@stencil/core';
+import { Component, Prop, State, Watch, h, Listen, Element } from '@stencil/core';
 import { MenuItem } from './ontario-header-overflow-menu.interface';
 
 @Component({
@@ -36,16 +36,6 @@ export class OntarioHeaderApplicationMenu {
 	@Prop() menuItems: MenuItem[] | string;
 
 	/**
-	 * Controls the tab order flow of the menu in relation to the rest of the page.
-	 *
-	 * If set to `true`, when a user tabs to the end of the menu,
-	 * the tab order / focus will be reset to the menu button in the header.
-	 *
-	 * If set to `false` the tab order will continue on down the page.
-	 */
-	@Prop() trapMenuFocus: boolean = true;
-
-	/**
 	 * The `menuItems` are reassigned to `menuItemState` for parsing by `parseMenuItems()`.
 	 */
 	@State() private menuItemState: MenuItem[];
@@ -57,6 +47,11 @@ export class OntarioHeaderApplicationMenu {
 	 */
 	@State() private menuIsOpen: boolean = false;
 
+	/**
+	 * The current index of the menu item that is focused.
+	 */
+	private currentIndex: number | undefined = undefined;
+
 	@Watch('menuItems')
 	parseMenuItems() {
 		if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
@@ -67,15 +62,10 @@ export class OntarioHeaderApplicationMenu {
 
 		// if a menu item is the active page, update the linkIsActive value for that menu item
 		this.menuItemState.map((item) => {
-			const activeLinkRegex = item.title.replace(/\s+/g, '-').toLowerCase();
+			const activeLinkRegex = item.href.replace(/\s+/g, '-').toLowerCase();
 			item.linkIsActive = window.location.pathname.includes(activeLinkRegex);
 		});
 	}
-
-	/**
-	 * Emitted by `linkIsLast()`.
-	 */
-	@Event() endOfMenuReached: EventEmitter<boolean>;
 
 	/**
 	 * This listens for the `menuButtonToggled` event sent from the header menu button when it is clicked.
@@ -84,6 +74,7 @@ export class OntarioHeaderApplicationMenu {
 	@Listen('menuButtonToggled', { target: 'window' })
 	toggleMenuVisibility(event: CustomEvent<boolean>) {
 		this.menuIsOpen = event.detail;
+		this.currentIndex = undefined;
 	}
 
 	/**
@@ -99,6 +90,56 @@ export class OntarioHeaderApplicationMenu {
 		}
 
 		this.menuIsOpen = false;
+		this.currentIndex = undefined;
+	}
+
+	/**
+	 * Listens for keydown events and handles navigation within the menu using the ArrowUp and ArrowDown keys.
+	 */
+	@Listen('keydown', { target: 'window' })
+	handleKeyDown(event: KeyboardEvent) {
+		if (this.menuIsOpen) {
+			const focusableElements = this.menu.querySelectorAll('.ontario-menu-item');
+			const focusableArray = Array.prototype.slice.call(focusableElements);
+
+			switch (event.key) {
+				case 'ArrowDown':
+					event.preventDefault();
+					if (this.currentIndex === -1 || this.currentIndex === undefined) {
+						this.currentIndex = 0;
+					} else {
+						this.currentIndex = (this.currentIndex + 1) % focusableArray.length;
+					}
+					(focusableArray[this.currentIndex] as HTMLElement).focus();
+					this.updateAriaLive(this.currentIndex);
+					break;
+				case 'ArrowUp':
+					event.preventDefault();
+					if (this.currentIndex === -1 || this.currentIndex === undefined) {
+						this.currentIndex = focusableArray.length - 1;
+					} else {
+						this.currentIndex = (this.currentIndex - 1 + focusableArray.length) % focusableArray.length;
+					}
+					(focusableArray[this.currentIndex] as HTMLElement).focus();
+					this.updateAriaLive(this.currentIndex);
+					break;
+			}
+		}
+	}
+
+	/**
+	 * Updates the aria-live region with the menu item count and selected option.
+	 *
+	 * @param {number} selectedIndex The index of the selected menu item
+	 */
+	private updateAriaLive(selectedIndex: number) {
+		const menuItemCount = this.menuItemState.length;
+		const selectedMenuItemNumber = selectedIndex + 1;
+		const ariaLiveMessage = `Option ${selectedMenuItemNumber} of ${menuItemCount}`;
+
+		if (this.ariaLiveRegion) {
+			this.ariaLiveRegion.textContent = ariaLiveMessage;
+		}
 	}
 
 	/**
@@ -111,37 +152,21 @@ export class OntarioHeaderApplicationMenu {
 	 * @param linkIsActive - when set to true, this will add the classes necessary to style the link in a way that indicates to the user what the active page/link is
 	 * @param liClass - if there is a class that is related to the <a> portion of the menu item, put it here
 	 * @param onClick - for any custom onClick event a user might want to add to their menu links
-	 * @param onBlur - when set to true, it will call the function trapMenuFocus(), otherwise nothing is done (used in lastLink)
 	 */
 	private generateMenuItem(
 		href: string,
 		title: string,
 		linkIsActive: boolean | undefined,
-		lastLink: boolean = false,
 		liClass?: string,
 		onClick?: any,
 	) {
 		return (
 			<li class={liClass}>
-				<a
-					class={linkIsActive === true ? `ontario-link--active` : ``}
-					href={href}
-					onClick={onClick}
-					onBlur={this.trapMenuFocus && lastLink ? () => this.linkIsLast() : undefined}
-				>
+				<a class={`ontario-menu-item ${linkIsActive ? 'ontario-link--active' : ''}`} href={href} onClick={onClick}>
 					{title}
 				</a>
 			</li>
 		);
-	}
-
-	/**
-	 * Conditionally triggered by the onBlur property of the menu item.
-	 *
-	 * Emits the `endOfMenuReached` event, which the header listens for to set the tab focus to the menu button.
-	 */
-	private linkIsLast() {
-		this.endOfMenuReached.emit(true);
 	}
 
 	componentWillLoad() {
@@ -151,7 +176,12 @@ export class OntarioHeaderApplicationMenu {
 	/**
 	 * Assigning values to elements to use them as ref
 	 */
-	menu!: HTMLElement;
+	private menu!: HTMLElement;
+
+	/**
+	 * The aria-live region that will be updated with the selected menu item.
+	 */
+	private ariaLiveRegion!: HTMLElement;
 
 	render() {
 		return (
@@ -165,12 +195,17 @@ export class OntarioHeaderApplicationMenu {
 			>
 				<div class="ontario-application-navigation__container">
 					<ul>
-						{this.menuItemState.map((item: any, index) => {
-							const isLastItem = index + 1 == this.menuItemState.length ? true : false;
-							return this.generateMenuItem(item.href, item.title, item.linkIsActive, isLastItem);
+						{this.menuItemState.map((item: any) => {
+							return this.generateMenuItem(item.href, item.title, item.linkIsActive);
 						})}
 					</ul>
 				</div>
+				<div
+					id="aria-live-region"
+					class="ontario-visually-hidden"
+					aria-live="polite"
+					ref={(el) => (this.ariaLiveRegion = el as HTMLElement)}
+				></div>
 			</nav>
 		);
 	}
