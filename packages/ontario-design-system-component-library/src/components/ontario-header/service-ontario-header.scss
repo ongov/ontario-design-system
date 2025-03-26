@@ -7,6 +7,8 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
+	placeholders;
 @use './ontario-application-header.scss';
 @use '../../styles/header.scss';
 
@@ -84,6 +86,11 @@
 
 .ontario-service-subheader__link {
 	text-decoration: none;
+
+	&:focus,
+	&:focus-visible {
+		@extend %ontario-focus;
+	}
 }
 
 .ontario-service-subheader__heading-container {
@@ -99,8 +106,9 @@
 			text-decoration: underline;
 		}
 
-		&:focus {
-			box-shadow: 0 0 0 4px colours.$ontario-colour-service-ontario-header-focus;
+		&:focus,
+		&:focus-visible {
+			@extend %ontario-focus;
 		}
 	}
 }
