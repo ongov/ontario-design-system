@@ -1,4 +1,4 @@
-import { Component, Prop, State, Watch, h, Listen, Event, EventEmitter, Element } from '@stencil/core';
+import { Component, Prop, State, Watch, h, Listen, Element } from '@stencil/core';
 import { MenuItem } from './ontario-header-overflow-menu.interface';
 
 @Component({
