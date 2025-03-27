@@ -91,3 +91,9 @@ $navigation-max-width: 72rem;
 	text-align: center;
 	text-decoration: none;
 }
+
+%ontario-header-button--with-outline {
+	border: globalVariables.$border-size-standard solid colours.$ontario-colour-white;
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-4;
+	padding: 0.375rem spacing.$spacing-4;
+}

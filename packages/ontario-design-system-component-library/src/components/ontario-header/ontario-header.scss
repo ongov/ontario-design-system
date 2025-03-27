@@ -65,7 +65,6 @@ $ontario-header-z-index: calc(zIndex.$ontario-z-index-above-high + 1);
 
 	a {
 		display: inline-block;
-		width: globalVariables.$full-width;
 		height: 100%;
 		outline: none;
 
@@ -377,9 +376,7 @@ input[type='reset'].ontario-header__search-reset {
 }
 
 .ontario-header-button--with-outline {
-	border: 2px solid colours.$ontario-colour-white;
-	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-4;
-	padding: math.div(spacing.$spacing-3, 2) spacing.$spacing-4;
+	@extend %ontario-header-button--with-outline;
 
 	&:hover {
 		border: 2px solid colours.$ontario-colour-white;
