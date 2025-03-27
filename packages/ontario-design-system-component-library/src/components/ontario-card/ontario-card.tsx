@@ -40,6 +40,19 @@ export class OntarioCard {
 	@Prop() image?: string;
 
 	/**
+	 * Alt text for the card's image.
+	 *
+	 * This is optional prop, but may be required for an
+	 * image due to accessibility requirements.
+	 *
+	 * You can find guidance on when to add alt text to an image
+	 * on the Ontario.ca web content editing guide.
+	 *
+	 * https://www.ontario.ca/page/ontario-ca-web-content-editing-guide#alt-text-image-accessibility
+	 */
+	@Prop() imageAltText?: string = '';
+
+	/**
 	 * Text to be displayed within the card description container.
 	 *
 	 * This is optional.
@@ -250,7 +263,7 @@ export class OntarioCard {
 				{this.image && (
 					<div class="ontario-card__image-container">
 						<a href={this.getHref()} aria-label={this.ariaLabelText}>
-							<img class="ontario-card__image" src={this.image} />
+							<img class="ontario-card__image" alt={this.imageAltText} src={this.image} />
 						</a>
 					</div>
 				)}
