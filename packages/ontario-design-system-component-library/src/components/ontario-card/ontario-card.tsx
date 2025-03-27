@@ -7,9 +7,10 @@ import {
 	Layout,
 	Layouts,
 } from './ontario-card-types';
-import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
+import { headingLevels, HeadingLevel } from '../../utils/common/common.interface';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { printArray } from '../../utils/helper/utils';
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
 @Component({
 	tag: 'ontario-card',
@@ -31,6 +32,17 @@ export class OntarioCard {
 	 *	>
 	 */
 	@Prop() label: string;
+
+	/**
+	 * The heading level that the label will be rendered as.
+	 *
+	 * @example
+	 *	<ontario-card
+	 *		heading-level="h4"
+	 *		label="Card Title 1"
+	 *	>
+	 */
+	@Prop() headingLevel: HeadingLevel = 'h2';
 
 	/**
 	 * Image to be displayed within the card image container.
@@ -151,6 +163,25 @@ export class OntarioCard {
 	}
 
 	/**
+	 * Watch for changes to the `headingLevel` property for validation purposes.
+	 *
+	 * If the user input doesn't match one of the array values then `headingLevel` will be set to its default (`h2`).
+	 *
+	 * If a match is found in one of the array values then `headingLevel` will be set to the matching array key value.
+	 */
+	@Watch('headingLevel')
+	validateHeadingLevel() {
+		if (this.headingLevel) {
+			const isValid = validateValueAgainstArray(this.headingLevel, headingLevels);
+
+			if (!isValid) {
+				this.warnDefaultHeadingLevel();
+				this.headingLevel = 'h2';
+			}
+		}
+	}
+
+	/**
 	 * Watch for changes to the `headerColour` property for validation purposes.
 	 *
 	 * If the user input doesn't match one of the array values then `headerColour` will be kept empty ('').
@@ -183,6 +214,23 @@ export class OntarioCard {
 			.addRegularText(' are supported. The default layout')
 			.addMonospaceText(' vertical ')
 			.addRegularText('is assumed.')
+			.printMessage();
+	}
+
+	/**
+	 * Print the invalid `headingLevel` prop warning message.
+	 */
+	private warnDefaultHeadingLevel() {
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addMonospaceText(' heading-level ')
+			.addRegularText('on')
+			.addMonospaceText(' <ontario-card> ')
+			.addRegularText('was set to an invalid value; only ')
+			.addMonospaceText(printArray([...headingLevels]))
+			.addRegularText(' are supported. ')
+			.addRegularText('h2 is assumed as the default.')
 			.printMessage();
 	}
 
@@ -254,6 +302,7 @@ export class OntarioCard {
 	 */
 	componentWillLoad() {
 		this.validateLayout();
+		this.validateHeadingLevel();
 		this.validateHeaderColour();
 	}
 
@@ -268,11 +317,21 @@ export class OntarioCard {
 					</div>
 				)}
 				<div class={`ontario-card__text-container ${this.image ? 'ontario-card--image-true' : ''}`}>
-					<h2 class={this.getCardHeadingClasses()}>
+					{/**
+					 * h() is a stencil wrapped shorthand method for a render function, and is very
+					 * similar to the h() method or createElement() method found within React
+					 * It accepts 3 parameters:
+					 *  - a string interpretation of an HTML tag (e.g. 'h2')
+					 *  - an object of properties / attributes (e.g. 'id', 'className')
+					 *  - The innerHTML such as a string, or additional HTML elements
+					 */}
+					{h(
+						this.headingLevel,
+						{ className: this.getCardHeadingClasses() },
 						<a href={this.getHref()} aria-label={this.ariaLabelText}>
 							{this.label}
-						</a>
-					</h2>
+						</a>,
+					)}
 					{this.description && (
 						<div class="ontario-card__description">
 							<p>{this.description}</p>
