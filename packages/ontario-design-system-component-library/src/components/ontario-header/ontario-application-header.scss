@@ -35,19 +35,8 @@ $menu-button-icon-margin-right: 6px;
 
 /* Header Buttons */
 .ontario-header-button {
-	background-color: colours.$ontario-colour-black;
+	@extend %ontario-header-button;
 	border: 2px solid colours.$ontario-colour-white;
-	border-radius: globalVariables.$global-radius;
-	color: colours.$ontario-colour-white;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 1.125rem;
-	font-weight: fontWeights.$ontario-font-weights-semi-bold;
-	font-family: typography.$ontario-font-open-sans;
-	height: globalVariables.$standard-input-height;
-	text-align: center;
 	padding: spacing.$spacing-2 spacing.$spacing-4;
 
 	&:hover,

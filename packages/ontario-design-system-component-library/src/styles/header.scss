@@ -74,3 +74,20 @@ $navigation-max-width: 72rem;
 	width: globalVariables.$full-width;
 	z-index: zIndex.$ontario-z-index-above-medium;
 }
+
+%ontario-header-button {
+	background-color: colours.$ontario-colour-black;
+	border: none;
+	border-radius: globalVariables.$global-radius;
+	color: colours.$ontario-colour-white;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	font-size: 1.125rem;
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	font-family: typography.$ontario-font-open-sans;
+	height: globalVariables.$standard-input-height;
+	line-height: 1.5;
+	text-align: center;
+	text-decoration: none;
+}
