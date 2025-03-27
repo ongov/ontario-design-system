@@ -10,6 +10,7 @@
 .ontario-task {
 	border-bottom: globalFunctions.px-to-rem(2) solid colours.$ontario-greyscale-20;
 	padding: globalFunctions.px-to-rem(19) spacing.$spacing-0;
+	list-style: none;
 
 	&__content {
 		display: flex;
@@ -54,12 +55,6 @@
 	&__hint-text--true {
 		margin-bottom: spacing.$spacing-2;
 	}
-}
-
-.ontario-task-list__task {
-	list-style: none;
-	margin: spacing.$spacing-0;
-	padding: spacing.$spacing-0;
 }
 
 .ontario-task__link:focus {

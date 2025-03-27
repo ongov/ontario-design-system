@@ -292,22 +292,20 @@ export class OntarioTask {
 		);
 
 		return (
-			<li class="ontario-task-list__task">
-				<article
-					class={`ontario-task ${taskStatusClass}`}
-					role="group"
-					aria-labelledby={`task-label--${this.taskId}`}
-					aria-describedby={this.hintTextId}
-					data-task-status={this.taskStatusState}
-				>
-					{isLinkActive ? (
-						<a href={this.link} class="ontario-task__link" aria-label={this.label}>
-							{taskContent}
-						</a>
-					) : (
-						<div>{taskContent}</div>
-					)}
-				</article>
+			<li
+				class={`ontario-task ${taskStatusClass}`}
+				role="group"
+				aria-labelledby={`task-label--${this.taskId}`}
+				aria-describedby={this.hintTextId}
+				data-task-status={this.taskStatusState}
+			>
+				{isLinkActive ? (
+					<a href={this.link} class="ontario-task__link" aria-label={this.label}>
+						{taskContent}
+					</a>
+				) : (
+					<div>{taskContent}</div>
+				)}
 			</li>
 		);
 	}
