@@ -1,3 +1,9 @@
+# 5.0.0-alpha.8 (2025-03-27)
+
+### Features
+
+- **global-styles:** add index.js file to allow for import in JS 0f029eb
+
 # 5.0.0-alpha.7 (2025-03-13)
 
 ### Bug Fixes
