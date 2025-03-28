@@ -201,8 +201,8 @@ export namespace Components {
          */
         "headerColour"?: HeaderColour;
         /**
-          * Text to be displayed within the header.
-          * @example <ontario-card 	header-type="dark" 	card-type="horizontal" 	label="Card Title 1" 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" >
+          * The heading level that the label will be rendered as.
+          * @example <ontario-card 	heading-level="h4" 	label="Card Title 1" >
          */
         "headingLevel": HeadingLevel;
         /**
@@ -3233,8 +3233,8 @@ declare namespace LocalJSX {
          */
         "headerColour"?: HeaderColour;
         /**
-          * Text to be displayed within the header.
-          * @example <ontario-card 	header-type="dark" 	card-type="horizontal" 	label="Card Title 1" 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" >
+          * The heading level that the label will be rendered as.
+          * @example <ontario-card 	heading-level="h4" 	label="Card Title 1" >
          */
         "headingLevel"?: HeadingLevel;
         /**
