@@ -1,13 +1,13 @@
 import { Component, Prop, Element, h, State, Watch } from '@stencil/core';
 import {
-	HeaderColour,
-	HeaderColours,
+	headerColours,
+	HeaderColourType,
 	HorizontalImagePositionType,
 	HorizontalImageSizeType,
-	Layout,
-	Layouts,
+	layouts,
+	LayoutType,
 } from './ontario-card-types';
-import { headingLevels, HeadingLevel } from '../../utils/common/common.interface';
+import { headingLevels, HeadingLevelType } from '../../utils/common/common.interface';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { printArray } from '../../utils/helper/utils';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
@@ -42,7 +42,7 @@ export class OntarioCard {
 	 *		label="Card Title 1"
 	 *	>
 	 */
-	@Prop() headingLevel: HeadingLevel = 'h2';
+	@Prop() headingLevel: HeadingLevelType = 'h2';
 
 	/**
 	 * Image to be displayed within the card image container.
@@ -62,7 +62,7 @@ export class OntarioCard {
 	 *
 	 * https://www.ontario.ca/page/ontario-ca-web-content-editing-guide#alt-text-image-accessibility
 	 */
-	@Prop() imageAltText?: string = '';
+	@Prop() imageAltText?: string;
 
 	/**
 	 * Text to be displayed within the card description container.
@@ -84,14 +84,14 @@ export class OntarioCard {
 	 * If no type is passed, it will default to 'vertical'.
 	 *
 	 */
-	@Prop() layout?: Layout = 'vertical';
+	@Prop() layout?: LayoutType = 'vertical';
 
 	/**
 	 * Set the card's header colour.
 	 *
 	 * This is optional.
 	 */
-	@Prop() headerColour?: HeaderColour;
+	@Prop() headerColour?: HeaderColourType;
 
 	/**
 	 * The position of the image when the card-type is set to 'horizontal'.
@@ -152,7 +152,7 @@ export class OntarioCard {
 	@Watch('layout')
 	validateLayout() {
 		if (this.layout) {
-			const isValid = validateValueAgainstArray(this.layout, Layouts);
+			const isValid = validateValueAgainstArray(this.layout, layouts);
 			if (isValid) {
 				this.layoutState = this.layout;
 			} else {
@@ -184,17 +184,17 @@ export class OntarioCard {
 	/**
 	 * Watch for changes to the `headerColour` property for validation purposes.
 	 *
-	 * If the user input doesn't match one of the array values then `headerColour` will be kept empty ('').
+	 * If the user input doesn't match one of the array values then `headerColour` will be kept empty (undefined).
 	 * If a match is found in one of the array values then `headerColour` will be set to the matching array key value.
 	 */
 	@Watch('headerColour')
 	validateHeaderColour() {
 		if (this.headerColour) {
-			const isValid = validateValueAgainstArray(this.headerColour, HeaderColours);
+			const isValid = validateValueAgainstArray(this.headerColour, headerColours);
 
 			if (!isValid) {
 				this.warnDefaultHeaderColour();
-				this.headerColour = '';
+				this.headerColour = undefined;
 			}
 		}
 	}
@@ -210,7 +210,7 @@ export class OntarioCard {
 			.addRegularText('on')
 			.addMonospaceText(' <ontario-card> ')
 			.addRegularText('was set to an invalid layout; only ')
-			.addMonospaceText(printArray([...Layouts]))
+			.addMonospaceText(printArray([...layouts]))
 			.addRegularText(' are supported. The default layout')
 			.addMonospaceText(' vertical ')
 			.addRegularText('is assumed.')
@@ -245,7 +245,7 @@ export class OntarioCard {
 			.addRegularText('on')
 			.addMonospaceText(' <ontario-card> ')
 			.addRegularText('was set to an invalid colour; only ')
-			.addMonospaceText(printArray([...HeaderColours]))
+			.addMonospaceText(printArray([...headerColours]))
 			.addRegularText(' are supported. ')
 			.addRegularText('No colour is assumed as the default.')
 			.printMessage();
@@ -279,7 +279,7 @@ export class OntarioCard {
 		const baseClass = 'ontario-card__heading';
 
 		const backgroundClass =
-			this.headerColour && validateValueAgainstArray(this.headerColour, HeaderColours)
+			this.headerColour && validateValueAgainstArray(this.headerColour, headerColours)
 				? `ontario-card__heading--${this.headerColour}`
 				: '';
 

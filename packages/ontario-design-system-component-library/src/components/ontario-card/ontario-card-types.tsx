@@ -1,12 +1,12 @@
-export const Layouts = ['vertical', 'horizontal'] as const;
-export const HorizontalImagePositionTypes = ['left', 'right'] as const;
-export const HorizontalImageSizeTypes = ['one-fourth', 'one-third'] as const;
+export const layouts = ['vertical', 'horizontal'] as const;
+export const horizontalImagePositions = ['left', 'right'] as const;
+export const horizontalImageSizes = ['one-fourth', 'one-third'] as const;
 
-export type Layout = (typeof Layouts)[number];
-export type HorizontalImagePositionType = (typeof HorizontalImagePositionTypes)[number];
-export type HorizontalImageSizeType = (typeof HorizontalImageSizeTypes)[number];
+export type LayoutType = (typeof layouts)[number];
+export type HorizontalImagePositionType = (typeof horizontalImagePositions)[number];
+export type HorizontalImageSizeType = (typeof horizontalImageSizes)[number];
 
-export const HeaderColours = [
+export const headerColours = [
 	'dark-accent',
 	'light-accent',
 	'light-gold',
@@ -33,6 +33,6 @@ export const HeaderColours = [
 	'orange',
 	'red',
 	'magenta',
-];
+] as const;
 
-export type HeaderColour = (typeof HeaderColours)[number];
+export type HeaderColourType = (typeof headerColours)[number];

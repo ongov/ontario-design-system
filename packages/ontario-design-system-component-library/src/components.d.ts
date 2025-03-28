@@ -11,8 +11,8 @@ import { Language } from "./utils/common/language-types";
 import { HeadingContentType, HeadingLevelOptions, HighlightColourOptions } from "./utils/components/callout-aside/callout-aside.interface";
 import { BadgeColour } from "./components/ontario-badge/ontario-badge.types";
 import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
-import { HeadingLevel, Hint, HintContentType } from "./utils/common/common.interface";
-import { HeaderColour, HorizontalImagePositionType, HorizontalImageSizeType, Layout } from "./components/ontario-card/ontario-card-types";
+import { HeadingLevelType, Hint, HintContentType } from "./utils/common/common.interface";
+import { HeaderColourType, HorizontalImagePositionType, HorizontalImageSizeType, LayoutType } from "./components/ontario-card/ontario-card-types";
 import { CardsPerRow } from "./components/ontario-card-collection/ontario-collection-card-types";
 import { Caption } from "./utils/common/input-caption/caption.interface";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
@@ -35,8 +35,8 @@ export { Language } from "./utils/common/language-types";
 export { HeadingContentType, HeadingLevelOptions, HighlightColourOptions } from "./utils/components/callout-aside/callout-aside.interface";
 export { BadgeColour } from "./components/ontario-badge/ontario-badge.types";
 export { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
-export { HeadingLevel, Hint, HintContentType } from "./utils/common/common.interface";
-export { HeaderColour, HorizontalImagePositionType, HorizontalImageSizeType, Layout } from "./components/ontario-card/ontario-card-types";
+export { HeadingLevelType, Hint, HintContentType } from "./utils/common/common.interface";
+export { HeaderColourType, HorizontalImagePositionType, HorizontalImageSizeType, LayoutType } from "./components/ontario-card/ontario-card-types";
 export { CardsPerRow } from "./components/ontario-card-collection/ontario-collection-card-types";
 export { Caption } from "./utils/common/input-caption/caption.interface";
 export { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
@@ -199,12 +199,12 @@ export namespace Components {
         /**
           * Set the card's header colour.  This is optional.
          */
-        "headerColour"?: HeaderColour;
+        "headerColour"?: HeaderColourType;
         /**
           * The heading level that the label will be rendered as.
           * @example <ontario-card 	heading-level="h4" 	label="Card Title 1" >
          */
-        "headingLevel": HeadingLevel;
+        "headingLevel": HeadingLevelType;
         /**
           * The position of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
           * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
@@ -231,7 +231,7 @@ export namespace Components {
         /**
           * The layout oritnetation of the card.  If no type is passed, it will default to 'vertical'.
          */
-        "layout"?: Layout;
+        "layout"?: LayoutType;
     }
     interface OntarioCardCollection {
         /**
@@ -3231,12 +3231,12 @@ declare namespace LocalJSX {
         /**
           * Set the card's header colour.  This is optional.
          */
-        "headerColour"?: HeaderColour;
+        "headerColour"?: HeaderColourType;
         /**
           * The heading level that the label will be rendered as.
           * @example <ontario-card 	heading-level="h4" 	label="Card Title 1" >
          */
-        "headingLevel"?: HeadingLevel;
+        "headingLevel"?: HeadingLevelType;
         /**
           * The position of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
           * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
@@ -3263,7 +3263,7 @@ declare namespace LocalJSX {
         /**
           * The layout oritnetation of the card.  If no type is passed, it will default to 'vertical'.
          */
-        "layout"?: Layout;
+        "layout"?: LayoutType;
     }
     interface OntarioCardCollection {
         /**
