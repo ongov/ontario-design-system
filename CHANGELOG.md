@@ -1,3 +1,9 @@
+# 5.0.0-alpha.9 (2025-03-31)
+
+### Bug Fixes
+
+- **.releaserc:** add back pattern to commit package.json files 436e127
+
 # 5.0.0-alpha.8 (2025-03-27)
 
 ### Features
