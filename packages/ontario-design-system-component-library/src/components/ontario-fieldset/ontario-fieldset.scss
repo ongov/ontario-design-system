@@ -7,35 +7,33 @@
 
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
 
+@use '../../utils/common/common.form-elements.scss' as common-form-elements;
+
+// Note: If additional form elements need to be targeted for gaps, update the $form-elements list in the common.form-elements.scss file.
+
 /**
  * The following classes define the gap (bottom margin) between slotted form elements.
- * - `40`: For default form layouts
- * - `16`: For condensed form layouts
+ * - `40`: For default form layouts (40px)
+ * - `16`: For condensed form layouts (16px)
  *
  * This ensures consistent vertical gap between form elements when they are grouped inside a fieldset.
  */
-.ontario-fieldset--gap-40 {
-	::slotted(ontario-input:not(:last-child)),
-	::slotted(ontario-checkboxes:not(:last-child)),
-	::slotted(ontario-dropdown-list:not(:last-child)),
-	::slotted(ontario-textarea:not(:last-child)),
-	::slotted(ontario-radio-buttons:not(:last-child)),
-	::slotted(ontario-button:not(:last-child)),
-	::slotted(ontario-date-input:not(:last-child)) {
-		margin-bottom: spacing.$spacing-7;
-		display: block;
+.ontario-fieldset {
+	&--gap-40 {
+		@each $element in common-form-elements.$form-elements {
+			::slotted(#{$element}:not(:last-child)) {
+				margin-bottom: spacing.$spacing-7;
+				display: block;
+			}
+		}
 	}
-}
 
-.ontario-fieldset--gap-16 {
-	::slotted(ontario-input:not(:last-child)),
-	::slotted(ontario-checkboxes:not(:last-child)),
-	::slotted(ontario-dropdown-list:not(:last-child)),
-	::slotted(ontario-textarea:not(:last-child)),
-	::slotted(ontario-radio-buttons:not(:last-child)),
-	::slotted(ontario-button:not(:last-child)),
-	::slotted(ontario-date-input:not(:last-child)) {
-		margin-bottom: spacing.$spacing-4;
-		display: block;
+	&--gap-16 {
+		@each $element in common-form-elements.$form-elements {
+			::slotted(#{$element}:not(:last-child)) {
+				margin-bottom: spacing.$spacing-4;
+				display: block;
+			}
+		}
 	}
 }
