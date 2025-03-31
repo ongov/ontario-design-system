@@ -1,18 +1,18 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
 
+@use '../../utils/common/common.form-elements.scss' as common-form-elements;
+
+// Note: If additional form elements need to be targeted for gaps, update the $form-elements list in the common.form-elements.scss file.
+
 // Mixin for generating individual form container gap classes
 @mixin ontario-form-container-gap($modifier, $spacing-variable) {
 	.ontario-form-container--gap-#{$modifier},
 	.ontario-form-container--gap-#{$modifier} form {
-		::slotted(ontario-input:not(:last-child)),
-		::slotted(ontario-checkboxes:not(:last-child)),
-		::slotted(ontario-dropdown-list:not(:last-child)),
-		::slotted(ontario-textarea:not(:last-child)),
-		::slotted(ontario-radio-buttons:not(:last-child)),
-		::slotted(ontario-button:not(:last-child)),
-		::slotted(ontario-date-input:not(:last-child)) {
-			margin-bottom: (#{$spacing-variable});
-			display: block;
+		@each $element in common-form-elements.$form-elements {
+			::slotted(#{$element}:not(:last-child)) {
+				margin-bottom: (#{$spacing-variable});
+				display: block;
+			}
 		}
 	}
 }
@@ -27,27 +27,17 @@
 
 			.ontario-form-container--gap-#{$child-modifier},
 			.ontario-form-container--gap-#{$child-modifier} form {
-				::slotted(ontario-input:not(:last-child)),
-				::slotted(ontario-checkboxes:not(:last-child)),
-				::slotted(ontario-dropdown-list:not(:last-child)),
-				::slotted(ontario-textarea:not(:last-child)),
-				::slotted(ontario-radio-buttons:not(:last-child)),
-				::slotted(ontario-button:not(:last-child)),
-				::slotted(ontario-date-input:not(:last-child)) {
-					margin-bottom: $child-spacing-variable;
-					display: block;
-				}
+				@each $element in common-form-elements.$form-elements {
+					::slotted(#{$element}:not(:last-child)) {
+						margin-bottom: $child-spacing-variable;
+						display: block;
+					}
 
-				// Add extra spacing for the last child
-				::slotted(ontario-input:last-child),
-				::slotted(ontario-checkboxes:last-child),
-				::slotted(ontario-dropdown-list:last-child),
-				::slotted(ontario-textarea:last-child),
-				::slotted(ontario-radio-buttons:last-child),
-				::slotted(ontario-button:last-child),
-				::slotted(ontario-date-input:last-child) {
-					margin-bottom: $child-spacing-variable + $parent-spacing;
-					display: block;
+					// Add extra spacing for the last child
+					::slotted(#{$element}:last-child) {
+						margin-bottom: $child-spacing-variable + $parent-spacing;
+						display: block;
+					}
 				}
 			}
 		}
