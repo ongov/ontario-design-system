@@ -67,7 +67,7 @@ Provides information for developers working on the monorepo, including:
 - Follow the [Setup Guide](./setup-guide.md) to configure your development environment.
 - Refer to [Contributing Guidelines](./contributing-guidelines.md) for information on submitting changes.
 
-If you encounter any issues, please reach out to the development team.
+If you run into any issues, please contact the development team. You can reach us on Slack by tagging `@designsystem-dev` in the **#shared-co-design-system** channel or by emailing the Design System team at design.system@ontario.ca.
 
 ---
 
