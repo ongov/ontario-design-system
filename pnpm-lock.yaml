@@ -123,13 +123,13 @@ importers:
         specifier: ^7.0.0
         version: 7.0.0(@angular/common@15.2.9(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@ngx-translate/core@14.0.0(@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(rxjs@7.8.1)
       '@ongov/ontario-design-system-component-library-angular':
-        specifier: ^5.0.0-alpha.8
+        specifier: ^5.0.0-alpha.6
         version: link:../ontario-design-system-component-library-angular
       '@ongov/ontario-design-system-design-tokens':
         specifier: ^5.0.0-alpha.6
         version: link:../ontario-design-system-design-tokens
       '@ongov/ontario-design-system-global-styles':
-        specifier: ^5.0.0-alpha.8
+        specifier: ^5.0.0-alpha.6
         version: link:../ontario-design-system-global-styles
       '@uirouter/angular':
         specifier: ^11.1.0
@@ -187,13 +187,13 @@ importers:
   packages/app-react:
     dependencies:
       '@ongov/ontario-design-system-component-library-react':
-        specifier: ^5.0.0-alpha.8
+        specifier: ^5.0.0-alpha.6
         version: link:../ontario-design-system-component-library-react
       '@ongov/ontario-design-system-design-tokens':
         specifier: ^5.0.0-alpha.6
         version: link:../ontario-design-system-design-tokens
       '@ongov/ontario-design-system-global-styles':
-        specifier: 5.0.0-alpha.8
+        specifier: 5.0.0-alpha.6
         version: link:../ontario-design-system-global-styles
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -272,7 +272,7 @@ importers:
         specifier: ^1.6.22
         version: 1.6.22(react@17.0.2)
       '@ongov/ontario-design-system-component-library-react':
-        specifier: ^5.0.0-alpha.8
+        specifier: ^5.0.0-alpha.6
         version: link:../ontario-design-system-component-library-react
       clsx:
         specifier: ^1.2.1
@@ -297,13 +297,13 @@ importers:
   packages/ontario-design-system-complete-styles:
     dependencies:
       '@ongov/ontario-design-system-component-library':
-        specifier: 5.0.0-alpha.8
+        specifier: 5.0.0-alpha.6
         version: link:../ontario-design-system-component-library
       '@ongov/ontario-design-system-design-tokens':
         specifier: 5.0.0-alpha.6
         version: link:../ontario-design-system-design-tokens
       '@ongov/ontario-design-system-global-styles':
-        specifier: 5.0.0-alpha.8
+        specifier: 5.0.0-alpha.6
         version: link:../ontario-design-system-global-styles
     devDependencies:
       glob:
@@ -343,7 +343,7 @@ importers:
   packages/ontario-design-system-component-library:
     dependencies:
       '@ongov/ontario-design-system-global-styles':
-        specifier: 5.0.0-alpha.8
+        specifier: 5.0.0-alpha.6
         version: link:../ontario-design-system-global-styles
       '@stencil/core':
         specifier: ^4.23.0
@@ -464,10 +464,10 @@ importers:
         specifier: ^18.2.11
         version: 18.2.13(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.13(@angular/animations@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1)
       '@ongov/ontario-design-system-component-library':
-        specifier: 5.0.0-alpha.8
+        specifier: 5.0.0-alpha.6
         version: link:../ontario-design-system-component-library
       '@ongov/ontario-design-system-global-styles':
-        specifier: 5.0.0-alpha.8
+        specifier: 5.0.0-alpha.6
         version: link:../ontario-design-system-global-styles
       copyfiles:
         specifier: ^2.4.1
@@ -513,7 +513,7 @@ importers:
   packages/ontario-design-system-component-library-react:
     dependencies:
       '@ongov/ontario-design-system-component-library':
-        specifier: 5.0.0-alpha.8
+        specifier: 5.0.0-alpha.6
         version: link:../ontario-design-system-component-library
       '@stencil/react-output-target':
         specifier: ^0.7.4
