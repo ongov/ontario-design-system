@@ -1,3 +1,9 @@
+# 5.0.0-alpha.10 (2025-03-31)
+
+### Bug Fixes
+
+- **global-styles:** add comment about import in index.js b9402ec
+
 # 5.0.0-alpha.9 (2025-03-31)
 
 ### Bug Fixes

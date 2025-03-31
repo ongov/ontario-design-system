@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-complete-styles",
-	"version": "5.0.0-alpha.6",
+	"version": "5.0.0-alpha.10",
 	"private": false,
 	"description": "Complete styles package for the Ontario Design System containing all SASS and CSS for use independently of the Component Library.",
 	"license": "Apache-2.0",
@@ -20,9 +20,9 @@
 		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: Complete Styles\n---\n\" -df ../app-web-components-documentation/docs/06-readme-complete-styles.md"
 	},
 	"dependencies": {
-		"@ongov/ontario-design-system-component-library": "5.0.0-alpha.6",
+		"@ongov/ontario-design-system-component-library": "5.0.0-alpha.10",
 		"@ongov/ontario-design-system-design-tokens": "5.0.0-alpha.6",
-		"@ongov/ontario-design-system-global-styles": "5.0.0-alpha.6"
+		"@ongov/ontario-design-system-global-styles": "5.0.0-alpha.10"
 	},
 	"devDependencies": {
 		"glob": "^11.0.0",
