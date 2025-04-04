@@ -1,3 +1,5 @@
+import { HeadingLevelType } from '../../utils/common/common.interface';
+
 export const layouts = ['vertical', 'horizontal'] as const;
 export const horizontalImagePositions = ['left', 'right'] as const;
 export const horizontalImageSizes = ['one-fourth', 'one-third'] as const;
@@ -36,3 +38,10 @@ export const headerColours = [
 ] as const;
 
 export type HeaderColourType = (typeof headerColours)[number];
+
+// Define properties that you would like to track as component state
+export type CardStateType = {
+	headerColour: HeaderColourType | undefined;
+	headingLevel: HeadingLevelType | undefined;
+	layout: LayoutType | undefined;
+};

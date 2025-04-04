@@ -6,6 +6,7 @@ import {
 	HorizontalImageSizeType,
 	layouts,
 	LayoutType,
+	CardStateType,
 } from './ontario-card-types';
 import { headingLevels, HeadingLevelType } from '../../utils/common/common.interface';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
@@ -137,11 +138,11 @@ export class OntarioCard {
 	 */
 	@Prop() ariaLabelText?: string;
 
-	/**
-	 * Mutable variable, for internal use only.
-	 * Set the card's layout depending on validation result.
-	 */
-	@State() private layoutState: string;
+	@State() private cardState: CardStateType = {
+		headerColour: undefined,
+		headingLevel: undefined,
+		layout: undefined,
+	};
 
 	/**
 	 * Watch for changes to the `layout` property for validation purposes.
@@ -153,12 +154,14 @@ export class OntarioCard {
 	validateLayout() {
 		if (this.layout) {
 			const isValid = validateValueAgainstArray(this.layout, layouts);
-			if (isValid) {
-				this.layoutState = this.layout;
-			} else {
+
+			if (!isValid) {
 				this.warnDefaultLayout();
-				this.layoutState = 'vertical';
+				this.cardState.layout = 'vertical';
+				return;
 			}
+
+			this.cardState.layout = this.layout;
 		}
 	}
 
@@ -176,8 +179,11 @@ export class OntarioCard {
 
 			if (!isValid) {
 				this.warnDefaultHeadingLevel();
-				this.headingLevel = 'h2';
+				this.cardState.headingLevel = 'h2';
+				return;
 			}
+
+			this.cardState.headingLevel = this.headingLevel;
 		}
 	}
 
@@ -194,8 +200,11 @@ export class OntarioCard {
 
 			if (!isValid) {
 				this.warnDefaultHeaderColour();
-				this.headerColour = undefined;
+				this.cardState.headerColour = undefined;
+				return;
 			}
+
+			this.cardState.headerColour = this.headerColour;
 		}
 	}
 
@@ -209,9 +218,11 @@ export class OntarioCard {
 			.addMonospaceText(' layout ')
 			.addRegularText('on')
 			.addMonospaceText(' <ontario-card> ')
-			.addRegularText('was set to an invalid layout; only ')
+			.addRegularText('was set to an invalid value of ')
+			.addMonospaceText(`${this.layout}`)
+			.addRegularText('. Only ')
 			.addMonospaceText(printArray([...layouts]))
-			.addRegularText(' are supported. The default layout')
+			.addRegularText(' are supported values. The default value of')
 			.addMonospaceText(' vertical ')
 			.addRegularText('is assumed.')
 			.printMessage();
@@ -227,10 +238,13 @@ export class OntarioCard {
 			.addMonospaceText(' heading-level ')
 			.addRegularText('on')
 			.addMonospaceText(' <ontario-card> ')
-			.addRegularText('was set to an invalid value; only ')
+			.addRegularText('was set to an invalid value of ')
+			.addMonospaceText(`${this.headingLevel}`)
+			.addRegularText('. Only ')
 			.addMonospaceText(printArray([...headingLevels]))
-			.addRegularText(' are supported. ')
-			.addRegularText('h2 is assumed as the default.')
+			.addRegularText(' are supported values. The default value of')
+			.addRegularText(' h2 ')
+			.addRegularText('is assumed.')
 			.printMessage();
 	}
 
@@ -244,11 +258,26 @@ export class OntarioCard {
 			.addMonospaceText(' header-colour ')
 			.addRegularText('on')
 			.addMonospaceText(' <ontario-card> ')
-			.addRegularText('was set to an invalid colour; only ')
+			.addRegularText('was set to an invalid value of ')
+			.addMonospaceText(`${this.headerColour}`)
+			.addRegularText('. Only ')
 			.addMonospaceText(printArray([...headerColours]))
-			.addRegularText(' are supported. ')
-			.addRegularText('No colour is assumed as the default.')
+			.addRegularText(' are supported values. The default value of')
+			.addMonospaceText(' undefined ')
+			.addRegularText('is assumed.')
 			.printMessage();
+	}
+
+	/**
+	 * Update a key within the State Object with a value.
+	 *
+	 * @param {keyof CardStateType} key - Should match a key found within `CardStateType`.
+	 * @param {any} value - Should match the value type associated to the key within `CardStateType`.
+	 */
+	private updateState(key: keyof CardStateType, value: any) {
+		let cardStateCopy = { ...this.cardState };
+		cardStateCopy[key] = value;
+		this.cardState = cardStateCopy;
 	}
 
 	/**
@@ -258,9 +287,9 @@ export class OntarioCard {
 	 */
 	private getCardClasses(): string {
 		const baseClass =
-			this.layoutState === 'horizontal'
-				? `ontario-card ontario-card__card-type--${this.layoutState} ontario-card__image-${this.horizontalImagePositionType} ontario-card__image-size-${this.horizontalImageSizeType}`
-				: `ontario-card ontario-card__card-type--basic ontario-card--position-${this.layoutState}`;
+			this.cardState.layout === 'horizontal'
+				? `ontario-card ontario-card__card-type--${this.cardState.layout} ontario-card__image-${this.horizontalImagePositionType} ontario-card__image-size-${this.horizontalImageSizeType}`
+				: `ontario-card ontario-card__card-type--basic ontario-card--position-${this.cardState.layout}`;
 
 		const descriptionClass = this.description ? '' : ' ontario-card__description-false';
 
@@ -278,10 +307,7 @@ export class OntarioCard {
 	private getCardHeadingClasses(): string {
 		const baseClass = 'ontario-card__heading';
 
-		const backgroundClass =
-			this.headerColour && validateValueAgainstArray(this.headerColour, headerColours)
-				? `ontario-card__heading--${this.headerColour}`
-				: '';
+		const backgroundClass = this.cardState.headerColour ? `ontario-card__heading--${this.cardState.headerColour}` : '';
 
 		return `${baseClass} ${backgroundClass}`.trim();
 	}
@@ -301,6 +327,9 @@ export class OntarioCard {
 	 * https://stenciljs.com/docs/component-lifecycle#connectedcallback
 	 */
 	componentWillLoad() {
+		this.updateState('headerColour', this.headerColour);
+		this.updateState('headingLevel', this.headingLevel);
+		this.updateState('layout', this.layout);
 		this.validateLayout();
 		this.validateHeadingLevel();
 		this.validateHeaderColour();
@@ -326,8 +355,8 @@ export class OntarioCard {
 					 *  - The innerHTML such as a string, or additional HTML elements
 					 */}
 					{h(
-						this.headingLevel,
-						{ className: this.getCardHeadingClasses() },
+						this.cardState.headingLevel, //tag
+						{ className: this.getCardHeadingClasses() }, //attributes
 						<a href={this.getHref()} aria-label={this.ariaLabelText}>
 							{this.label}
 						</a>,
