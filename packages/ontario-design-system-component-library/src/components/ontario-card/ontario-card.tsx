@@ -156,7 +156,7 @@ export class OntarioCard {
 			const isValid = validateValueAgainstArray(this.layout, layouts);
 
 			if (!isValid) {
-				this.warnDefaultLayout();
+				this.printPropWarning('layout', '<ontario-card>', this.layout, layouts, 'vertical');
 				this.cardState.layout = 'vertical';
 				return;
 			}
@@ -178,7 +178,7 @@ export class OntarioCard {
 			const isValid = validateValueAgainstArray(this.headingLevel, headingLevels);
 
 			if (!isValid) {
-				this.warnDefaultHeadingLevel();
+				this.printPropWarning('heading-level', '<ontario-card>', this.headingLevel, headingLevels, 'h2');
 				this.cardState.headingLevel = 'h2';
 				return;
 			}
@@ -199,7 +199,7 @@ export class OntarioCard {
 			const isValid = validateValueAgainstArray(this.headerColour, headerColours);
 
 			if (!isValid) {
-				this.warnDefaultHeaderColour();
+				this.printPropWarning('header-colour', '<ontario-card>', this.headerColour, headerColours, 'undefined');
 				this.cardState.headerColour = undefined;
 				return;
 			}
@@ -209,67 +209,42 @@ export class OntarioCard {
 	}
 
 	/**
-	 * Print the invalid `layout` prop warning message.
+	 * Print an invalid prop warning message.
+	 *
+	 * @param {string} propName - Name of the prop
+	 * @param {string} component - Component the error is on e.g. <ontario-card>
+	 * @param {any} propValue - Value of the prop
+	 * @param {readonly any[]} acceptableValues  - readonly array of acceptable prop values
+	 * @param {string} defaultValue - Stringified representation of the value that the corresponding State Object value will default to
 	 */
-	private warnDefaultLayout() {
+	private printPropWarning(
+		propName: string,
+		component: string,
+		propValue: any,
+		acceptableValues: readonly any[],
+		defaultValue: string,
+	) {
 		const message = new ConsoleMessageClass();
 		message
 			.addDesignSystemTag()
-			.addMonospaceText(' layout ')
+			.addMonospaceText(` ${propName} `)
 			.addRegularText('on')
-			.addMonospaceText(' <ontario-card> ')
+			.addMonospaceText(` ${component} `)
 			.addRegularText('was set to an invalid value of ')
-			.addMonospaceText(`${this.layout}`)
+			.addMonospaceText(` ${propValue} `)
 			.addRegularText('. Only ')
-			.addMonospaceText(printArray([...layouts]))
+			.addMonospaceText(printArray([...acceptableValues]))
 			.addRegularText(' are supported values. The default value of')
-			.addMonospaceText(' vertical ')
-			.addRegularText('is assumed.')
-			.printMessage();
-	}
-
-	/**
-	 * Print the invalid `headingLevel` prop warning message.
-	 */
-	private warnDefaultHeadingLevel() {
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' heading-level ')
-			.addRegularText('on')
-			.addMonospaceText(' <ontario-card> ')
-			.addRegularText('was set to an invalid value of ')
-			.addMonospaceText(`${this.headingLevel}`)
-			.addRegularText('. Only ')
-			.addMonospaceText(printArray([...headingLevels]))
-			.addRegularText(' are supported values. The default value of')
-			.addRegularText(' h2 ')
-			.addRegularText('is assumed.')
-			.printMessage();
-	}
-
-	/**
-	 * Print the invalid `headerColour` prop warning message.
-	 */
-	private warnDefaultHeaderColour() {
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' header-colour ')
-			.addRegularText('on')
-			.addMonospaceText(' <ontario-card> ')
-			.addRegularText('was set to an invalid value of ')
-			.addMonospaceText(`${this.headerColour}`)
-			.addRegularText('. Only ')
-			.addMonospaceText(printArray([...headerColours]))
-			.addRegularText(' are supported values. The default value of')
-			.addMonospaceText(' undefined ')
+			.addMonospaceText(` ${defaultValue} `)
 			.addRegularText('is assumed.')
 			.printMessage();
 	}
 
 	/**
 	 * Update a key within the State Object with a value.
+	 *
+	 * Note: When state is represented as an object, and values are changed, the entire object needs to be rebuilt.
+	 * If only the corresponding object key/value is updated, corresponding render changes may not happen.
 	 *
 	 * @param {keyof CardStateType} key - Should match a key found within `CardStateType`.
 	 * @param {any} value - Should match the value type associated to the key within `CardStateType`.
