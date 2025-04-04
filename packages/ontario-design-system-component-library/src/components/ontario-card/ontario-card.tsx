@@ -62,8 +62,11 @@ export class OntarioCard {
 	 * on the Ontario.ca web content editing guide.
 	 *
 	 * https://www.ontario.ca/page/ontario-ca-web-content-editing-guide#alt-text-image-accessibility
+	 *
+	 * Note: This should default to an empty string ('') to ensure the alt attribute appears in the markup
+	 * for decorative images. If left as undefined, the alt attribute will not render in markup.
 	 */
-	@Prop() imageAltText?: string;
+	@Prop() imageAltText?: string = '';
 
 	/**
 	 * Text to be displayed within the card description container.

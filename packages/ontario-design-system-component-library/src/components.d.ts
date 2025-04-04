@@ -220,7 +220,7 @@ export namespace Components {
          */
         "image"?: string;
         /**
-          * Alt text for the card's image.  This is optional prop, but may be required for an image due to accessibility requirements.  You can find guidance on when to add alt text to an image on the Ontario.ca web content editing guide.  https://www.ontario.ca/page/ontario-ca-web-content-editing-guide#alt-text-image-accessibility
+          * Alt text for the card's image.  This is optional prop, but may be required for an image due to accessibility requirements.  You can find guidance on when to add alt text to an image on the Ontario.ca web content editing guide.  https://www.ontario.ca/page/ontario-ca-web-content-editing-guide#alt-text-image-accessibility  Note: This should default to an empty string ('') to ensure the alt attribute appears in the markup for decorative images. If left as undefined, the alt attribute will not render in markup.
          */
         "imageAltText"?: string;
         /**
@@ -3252,7 +3252,7 @@ declare namespace LocalJSX {
          */
         "image"?: string;
         /**
-          * Alt text for the card's image.  This is optional prop, but may be required for an image due to accessibility requirements.  You can find guidance on when to add alt text to an image on the Ontario.ca web content editing guide.  https://www.ontario.ca/page/ontario-ca-web-content-editing-guide#alt-text-image-accessibility
+          * Alt text for the card's image.  This is optional prop, but may be required for an image due to accessibility requirements.  You can find guidance on when to add alt text to an image on the Ontario.ca web content editing guide.  https://www.ontario.ca/page/ontario-ca-web-content-editing-guide#alt-text-image-accessibility  Note: This should default to an empty string ('') to ensure the alt attribute appears in the markup for decorative images. If left as undefined, the alt attribute will not render in markup.
          */
         "imageAltText"?: string;
         /**
