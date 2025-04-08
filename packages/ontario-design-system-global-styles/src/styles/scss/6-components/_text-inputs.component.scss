@@ -1,4 +1,4 @@
-@use '../1-variables/typography.variables' as typography;
+@use '../1-variables/fonts.variables' as fonts;
 @use '../1-variables/colours.variables' as colours;
 @use '../1-variables/spacing.variables' as spacing;
 @use '../1-variables/global.variables' as global;
@@ -15,7 +15,7 @@
 	color: colours.$ontario-colour-black;
 	display: block;
 	font-size: 1rem;
-	font-family: typography.$ontario-font-open-sans;
+	font-family: fonts.$ontario-font-open-sans;
 	line-height: global.$line-height-default;
 	margin: 0 0 spacing.$spacing-7;
 	max-width: global.$standard-width;

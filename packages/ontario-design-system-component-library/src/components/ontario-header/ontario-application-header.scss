@@ -3,15 +3,16 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
 	focusPlaceholders;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/5-layout/grid.layout.scss';
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/text-inputs.component.scss';
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/visibility.overrides.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/5-layout/_grid.layout.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
 @use '../../styles/header.scss';
 
 $navigation-link-bg--hover: #e5e5e5;
@@ -106,7 +107,7 @@ $menu-button-icon-margin-right: 6px;
 	border-radius: globalVariables.$global-radius;
 	color: colours.$ontario-colour-white;
 	display: inline-block;
-	font-family: typography.$ontario-font-open-sans;
+	font-family: fonts.$ontario-font-open-sans;
 	font-size: globalFunctions.px-to-rem(18);
 	font-weight: fontWeights.$ontario-font-weights-semi-bold;
 	height: globalVariables.$standard-input-height;
