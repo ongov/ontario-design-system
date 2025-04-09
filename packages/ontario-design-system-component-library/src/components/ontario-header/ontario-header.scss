@@ -23,7 +23,7 @@ $ontario-header-logo-width--mobile: 45px;
 $ontario-header-custom-breakpoint: 39.9375em;
 $ontario-header-menu-button-icon--margin-right: 6px;
 $ontario-navigation-container-min-width: 290px;
-$ontario-header-z-index: calc(zIndex.$ontario-z-index-above-high);
+$ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 
 :host {
 	--header-search-reset: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTE5IDYuNEwxNy42IDUgMTIgMTAuNiA2LjQgNSA1IDYuNGw1LjYgNS42TDUgMTcuNiA2LjQgMTlsNS42LTUuNiA1LjYgNS42IDEuNC0xLjQtNS42LTUuNkwxOSA2LjR6IiBmaWxsPSIjMDAwIi8+PC9zdmc+);
@@ -32,7 +32,7 @@ $ontario-header-z-index: calc(zIndex.$ontario-z-index-above-high);
 .ontario-header {
 	position: relative;
 	overflow: hidden;
-	z-index: calc(zIndex.$ontario-z-index-above-high);
+	z-index: zIndex.$ontario-z-index-above-high;
 	background-color: colours.$ontario-colour-black;
 	color: colours.$ontario-colour-white;
 	display: flex;
@@ -186,7 +186,7 @@ $ontario-header-z-index: calc(zIndex.$ontario-z-index-above-high);
 	transition: transform 0.4s ease-in-out;
 
 	@media screen and (min-width: breakpoints.$medium-breakpoint) {
-		z-index: calc(zIndex.$ontario-z-index-above-high);
+		z-index: zIndex.$ontario-z-index-above-high;
 	}
 }
 

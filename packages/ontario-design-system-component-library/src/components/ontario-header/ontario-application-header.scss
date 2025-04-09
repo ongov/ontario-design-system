@@ -31,7 +31,7 @@ $menu-button-icon-margin-right: 6px;
 .ontario-application-header-container {
 	position: relative;
 	width: globalVariables.$full-width;
-	z-index: calc(zIndex.$ontario-z-index-above-high);
+	z-index: zIndex.$ontario-z-index-above-high;
 }
 
 /* Header Buttons */
@@ -69,7 +69,7 @@ $menu-button-icon-margin-right: 6px;
 	padding: (spacing.$spacing-2 + spacing.$spacing-3) 0;
 	background-color: darken(colours.$ontario-colour-white, 75);
 	position: relative;
-	z-index: calc(zIndex.$ontario-z-index-above-high);
+	z-index: zIndex.$ontario-z-index-above-high;
 
 	@media screen and (min-width: breakpoints.$medium-breakpoint) {
 		z-index: zIndex.$ontario-z-index-neutral;
