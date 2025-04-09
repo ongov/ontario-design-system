@@ -69,6 +69,20 @@ Once the component package has been installed (see Ontario Design System Compone
 | ----------- | ------------ | --------------------------------------- | ---------------------- | ----------- |
 | `menuItems` | `menu-items` | The items that will go inside the menu. | `MenuItem[] \| string` | `undefined` |
 
+## Dependencies
+
+### Used by
+
+- [ontario-header](../ontario-header)
+
+### Graph
+
+```mermaid
+graph TD;
+  ontario-header --> ontario-header-overflow-menu
+  style ontario-header-overflow-menu fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ---
 
 _Built with [StencilJS](https://stenciljs.com/)_

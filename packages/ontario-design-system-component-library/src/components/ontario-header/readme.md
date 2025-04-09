@@ -305,12 +305,14 @@ To ensure best practices, it is important to limit the number of navigation link
 ### Depends on
 
 - [ontario-language-toggle](../ontario-language-toggle)
+- [ontario-header-overflow-menu](../ontario-header-overflow-menu)
 
 ### Graph
 
 ```mermaid
 graph TD;
   ontario-header --> ontario-language-toggle
+  ontario-header --> ontario-header-overflow-menu
   style ontario-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
