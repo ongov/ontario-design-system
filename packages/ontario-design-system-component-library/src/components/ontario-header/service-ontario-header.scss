@@ -15,7 +15,7 @@
 
 .ontario-service-header {
 	height: 3.125rem;
-	z-index: calc(zIndex.$ontario-z-index-above-high + 1);
+	z-index: calc(zIndex.$ontario-z-index-above-high);
 }
 
 .ontario-service-header__logo,
@@ -48,7 +48,7 @@
 	background-color: colours.$ontario-colour-service-ontario-header-brand;
 	overflow: hidden;
 	position: relative;
-	z-index: calc(zIndex.$ontario-z-index-above-high + 1);
+	z-index: calc(zIndex.$ontario-z-index-above-high);
 
 	@media screen and (min-width: breakpoints.$medium-breakpoint) {
 		z-index: zIndex.$ontario-z-index-neutral;
@@ -197,7 +197,7 @@
 	@media screen and (max-width: breakpoints.$medium-breakpoint) {
 		.ontario-service-subheader-menu__container {
 			position: relative;
-			z-index: calc(zIndex.$ontario-z-index-above-medium + 1);
+			z-index: calc(zIndex.$ontario-z-index-above-medium);
 		}
 	}
 

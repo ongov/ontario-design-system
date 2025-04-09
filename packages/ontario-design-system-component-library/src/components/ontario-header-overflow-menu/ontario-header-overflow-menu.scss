@@ -91,5 +91,5 @@ $navigation-link-bg--hover: #e5e5e5;
 
 .ontario-application-navigation.ontario-navigation--open {
 	background: colours.$ontario-colour-white;
-	z-index: calc(zIndex.$ontario-z-index-above-high + 1); // 5
+	z-index: calc(zIndex.$ontario-z-index-above-high);
 }
