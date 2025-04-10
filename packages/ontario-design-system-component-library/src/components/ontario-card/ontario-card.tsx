@@ -83,12 +83,12 @@ export class OntarioCard {
 	@Prop() cardLink?: string;
 
 	/**
-	 * The layout oritnetation of the card.
+	 * The layout direction/orientation of the card.
 	 *
 	 * If no type is passed, it will default to 'vertical'.
 	 *
 	 */
-	@Prop() layout?: LayoutDirection = 'vertical';
+	@Prop() layoutDirection?: LayoutDirection = 'vertical';
 
 	/**
 	 * Set the card's header colour.
@@ -148,23 +148,29 @@ export class OntarioCard {
 	};
 
 	/**
-	 * Watch for changes to the `layout` property for validation purposes.
+	 * Watch for changes to the `layoutDirection` property for validation purposes.
 	 *
-	 * If the user input doesn't match one of the array values then `layout` will be set to its default (`vertical`).
-	 * If a match is found in one of the array values then `cardState.layout` will be set to the matching array key value.
+	 * If the user input doesn't match one of the array values then `layoutDirection` will be set to its default (`vertical`).
+	 * If a match is found in one of the array values then `cardState.layoutDirection` will be set to the matching array key value.
 	 */
-	@Watch('layout')
+	@Watch('layoutDirection')
 	validateLayoutDirection() {
-		if (this.layout) {
-			const isValid = validateValueAgainstArray(this.layout, layoutDirectionDefinitions);
+		if (this.layoutDirection) {
+			const isValid = validateValueAgainstArray(this.layoutDirection, layoutDirectionDefinitions);
 
 			if (!isValid) {
-				this.printPropWarning('layout', '<ontario-card>', this.layout, layoutDirectionDefinitions, 'vertical');
+				this.printPropWarning(
+					'layout-direction',
+					'<ontario-card>',
+					this.layoutDirection,
+					layoutDirectionDefinitions,
+					'vertical',
+				);
 				this.updateState('layoutDirection', 'vertical');
 				return;
 			}
 
-			this.updateState('layoutDirection', this.layout);
+			this.updateState('layoutDirection', this.layoutDirection);
 		}
 	}
 
@@ -313,7 +319,7 @@ export class OntarioCard {
 	componentWillLoad() {
 		this.updateState('headerColour', this.headerColour);
 		this.updateState('headingLevel', this.headingLevel);
-		this.updateState('layoutDirection', this.layout);
+		this.updateState('layoutDirection', this.layoutDirection);
 		this.validateLayoutDirection();
 		this.validateHeadingLevel();
 		this.validateHeaderColour();

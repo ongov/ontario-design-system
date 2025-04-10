@@ -186,7 +186,7 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 		'image',
 		'imageAltText',
 		'label',
-		'layout',
+		'layoutDirection',
 	],
 })
 @Component({
@@ -205,7 +205,7 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 		'image',
 		'imageAltText',
 		'label',
-		'layout',
+		'layoutDirection',
 	],
 })
 export class OntarioCard {

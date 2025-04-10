@@ -229,9 +229,9 @@ export namespace Components {
          */
         "label": string;
         /**
-          * The layout oritnetation of the card.  If no type is passed, it will default to 'vertical'.
+          * The layout direction/orientation of the card.  If no type is passed, it will default to 'vertical'.
          */
-        "layout"?: LayoutDirection;
+        "layoutDirection"?: LayoutDirection;
     }
     interface OntarioCardCollection {
         /**
@@ -3261,9 +3261,9 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * The layout oritnetation of the card.  If no type is passed, it will default to 'vertical'.
+          * The layout direction/orientation of the card.  If no type is passed, it will default to 'vertical'.
          */
-        "layout"?: LayoutDirection;
+        "layoutDirection"?: LayoutDirection;
     }
     interface OntarioCardCollection {
         /**
