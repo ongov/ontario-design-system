@@ -1,14 +1,14 @@
 import { Component, Prop, Element, h, State, Watch } from '@stencil/core';
 import {
-	headerColours,
-	HeaderColourType,
+	headerColourDefinitions,
+	HeaderColour,
 	HorizontalImagePositionType,
 	HorizontalImageSizeType,
-	layouts,
-	LayoutType,
-	CardStateType,
+	layoutDirectionDefinitions,
+	LayoutDirection,
+	CardState,
 } from './ontario-card-types';
-import { headingLevels, HeadingLevelType } from '../../utils/common/common.interface';
+import { headingLevelDefinitions, HeadingLevel } from '../../utils/common/common.interface';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { printArray } from '../../utils/helper/utils';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
@@ -43,7 +43,7 @@ export class OntarioCard {
 	 *		label="Card Title 1"
 	 *	>
 	 */
-	@Prop() headingLevel: HeadingLevelType = 'h2';
+	@Prop() headingLevel: HeadingLevel = 'h2';
 
 	/**
 	 * Image to be displayed within the card image container.
@@ -88,14 +88,14 @@ export class OntarioCard {
 	 * If no type is passed, it will default to 'vertical'.
 	 *
 	 */
-	@Prop() layout?: LayoutType = 'vertical';
+	@Prop() layout?: LayoutDirection = 'vertical';
 
 	/**
 	 * Set the card's header colour.
 	 *
 	 * This is optional.
 	 */
-	@Prop() headerColour?: HeaderColourType;
+	@Prop() headerColour?: HeaderColour;
 
 	/**
 	 * The position of the image when the card-type is set to 'horizontal'.
@@ -141,30 +141,30 @@ export class OntarioCard {
 	 */
 	@Prop() ariaLabelText?: string;
 
-	@State() private cardState: CardStateType = {
+	@State() private cardState: CardState = {
 		headerColour: undefined,
 		headingLevel: undefined,
-		layout: undefined,
+		layoutDirection: undefined,
 	};
 
 	/**
 	 * Watch for changes to the `layout` property for validation purposes.
 	 *
 	 * If the user input doesn't match one of the array values then `layout` will be set to its default (`vertical`).
-	 * If a match is found in one of the array values then `layoutState` will be set to the matching array key value.
+	 * If a match is found in one of the array values then `cardState.layout` will be set to the matching array key value.
 	 */
 	@Watch('layout')
-	validateLayout() {
+	validateLayoutDirection() {
 		if (this.layout) {
-			const isValid = validateValueAgainstArray(this.layout, layouts);
+			const isValid = validateValueAgainstArray(this.layout, layoutDirectionDefinitions);
 
 			if (!isValid) {
-				this.printPropWarning('layout', '<ontario-card>', this.layout, layouts, 'vertical');
-				this.cardState.layout = 'vertical';
+				this.printPropWarning('layout', '<ontario-card>', this.layout, layoutDirectionDefinitions, 'vertical');
+				this.cardState.layoutDirection = 'vertical';
 				return;
 			}
 
-			this.cardState.layout = this.layout;
+			this.cardState.layoutDirection = this.layout;
 		}
 	}
 
@@ -178,10 +178,10 @@ export class OntarioCard {
 	@Watch('headingLevel')
 	validateHeadingLevel() {
 		if (this.headingLevel) {
-			const isValid = validateValueAgainstArray(this.headingLevel, headingLevels);
+			const isValid = validateValueAgainstArray(this.headingLevel, headingLevelDefinitions);
 
 			if (!isValid) {
-				this.printPropWarning('heading-level', '<ontario-card>', this.headingLevel, headingLevels, 'h2');
+				this.printPropWarning('heading-level', '<ontario-card>', this.headingLevel, headingLevelDefinitions, 'h2');
 				this.cardState.headingLevel = 'h2';
 				return;
 			}
@@ -199,10 +199,16 @@ export class OntarioCard {
 	@Watch('headerColour')
 	validateHeaderColour() {
 		if (this.headerColour) {
-			const isValid = validateValueAgainstArray(this.headerColour, headerColours);
+			const isValid = validateValueAgainstArray(this.headerColour, headerColourDefinitions);
 
 			if (!isValid) {
-				this.printPropWarning('header-colour', '<ontario-card>', this.headerColour, headerColours, 'undefined');
+				this.printPropWarning(
+					'header-colour',
+					'<ontario-card>',
+					this.headerColour,
+					headerColourDefinitions,
+					'undefined',
+				);
 				this.cardState.headerColour = undefined;
 				return;
 			}
@@ -249,10 +255,10 @@ export class OntarioCard {
 	 * Note: When state is represented as an object, and values are changed, the entire object needs to be rebuilt.
 	 * If only the corresponding object key/value is updated, corresponding render changes may not happen.
 	 *
-	 * @param {keyof CardStateType} key - Should match a key found within `CardStateType`.
-	 * @param {any} value - Should match the value type associated to the key within `CardStateType`.
+	 * @param {keyof CardState} key - Should match a key found within `CardState`.
+	 * @param {any} value - Should match the value type associated to the key within `CardState`.
 	 */
-	private updateState(key: keyof CardStateType, value: any) {
+	private updateState(key: keyof CardState, value: any) {
 		let cardStateCopy = { ...this.cardState };
 		cardStateCopy[key] = value;
 		this.cardState = cardStateCopy;
@@ -265,9 +271,9 @@ export class OntarioCard {
 	 */
 	private getCardClasses(): string {
 		const baseClass =
-			this.cardState.layout === 'horizontal'
-				? `ontario-card ontario-card__card-type--${this.cardState.layout} ontario-card__image-${this.horizontalImagePositionType} ontario-card__image-size-${this.horizontalImageSizeType}`
-				: `ontario-card ontario-card__card-type--basic ontario-card--position-${this.cardState.layout}`;
+			this.cardState.layoutDirection === 'horizontal'
+				? `ontario-card ontario-card__card-type--${this.cardState.layoutDirection} ontario-card__image-${this.horizontalImagePositionType} ontario-card__image-size-${this.horizontalImageSizeType}`
+				: `ontario-card ontario-card__card-type--basic ontario-card--position-${this.cardState.layoutDirection}`;
 
 		const descriptionClass = this.description ? '' : ' ontario-card__description-false';
 
@@ -307,8 +313,8 @@ export class OntarioCard {
 	componentWillLoad() {
 		this.updateState('headerColour', this.headerColour);
 		this.updateState('headingLevel', this.headingLevel);
-		this.updateState('layout', this.layout);
-		this.validateLayout();
+		this.updateState('layoutDirection', this.layout);
+		this.validateLayoutDirection();
 		this.validateHeadingLevel();
 		this.validateHeaderColour();
 	}

@@ -1,14 +1,14 @@
-import { HeadingLevelType } from '../../utils/common/common.interface';
+import { HeadingLevel } from '../../utils/common/common.interface';
 
-export const layouts = ['vertical', 'horizontal'] as const;
-export const horizontalImagePositions = ['left', 'right'] as const;
-export const horizontalImageSizes = ['one-fourth', 'one-third'] as const;
+export const layoutDirectionDefinitions = ['vertical', 'horizontal'] as const;
+export const horizontalImagePositionDefinitions = ['left', 'right'] as const;
+export const horizontalImageSizeDefinitions = ['one-fourth', 'one-third'] as const;
 
-export type LayoutType = (typeof layouts)[number];
-export type HorizontalImagePositionType = (typeof horizontalImagePositions)[number];
-export type HorizontalImageSizeType = (typeof horizontalImageSizes)[number];
+export type LayoutDirection = (typeof layoutDirectionDefinitions)[number];
+export type HorizontalImagePositionType = (typeof horizontalImagePositionDefinitions)[number];
+export type HorizontalImageSizeType = (typeof horizontalImageSizeDefinitions)[number];
 
-export const headerColours = [
+export const headerColourDefinitions = [
 	'dark-accent',
 	'light-accent',
 	'light-gold',
@@ -37,11 +37,11 @@ export const headerColours = [
 	'magenta',
 ] as const;
 
-export type HeaderColourType = (typeof headerColours)[number];
+export type HeaderColour = (typeof headerColourDefinitions)[number];
 
 // Define properties that you would like to track as component state
-export type CardStateType = {
-	headerColour: HeaderColourType | undefined;
-	headingLevel: HeadingLevelType | undefined;
-	layout: LayoutType | undefined;
+export type CardState = {
+	headerColour: HeaderColour | undefined;
+	headingLevel: HeadingLevel | undefined;
+	layoutDirection: LayoutDirection | undefined;
 };

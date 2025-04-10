@@ -96,11 +96,11 @@ export interface Hint extends Base {
 
 export type HintContentType = 'string' | 'html';
 
-export const headingLevels = ['h2', 'h3', 'h4', 'h5', 'h6'] as const;
+export const headingLevelDefinitions = ['h2', 'h3', 'h4', 'h5', 'h6'] as const;
 
 /**
  * Create a type from an array of values.
  *
  * https://steveholgado.com/typescript-types-from-arrays/
  */
-export type HeadingLevelType = (typeof headingLevels)[number];
+export type HeadingLevel = (typeof headingLevelDefinitions)[number];
