@@ -160,11 +160,11 @@ export class OntarioCard {
 
 			if (!isValid) {
 				this.printPropWarning('layout', '<ontario-card>', this.layout, layoutDirectionDefinitions, 'vertical');
-				this.cardState.layoutDirection = 'vertical';
+				this.updateState('layoutDirection', 'vertical');
 				return;
 			}
 
-			this.cardState.layoutDirection = this.layout;
+			this.updateState('layoutDirection', this.layout);
 		}
 	}
 
@@ -182,11 +182,11 @@ export class OntarioCard {
 
 			if (!isValid) {
 				this.printPropWarning('heading-level', '<ontario-card>', this.headingLevel, headingLevelDefinitions, 'h2');
-				this.cardState.headingLevel = 'h2';
+				this.updateState('headingLevel', 'h2');
 				return;
 			}
 
-			this.cardState.headingLevel = this.headingLevel;
+			this.updateState('headingLevel', this.headingLevel);
 		}
 	}
 
@@ -209,11 +209,11 @@ export class OntarioCard {
 					headerColourDefinitions,
 					'undefined',
 				);
-				this.cardState.headerColour = undefined;
+				this.updateState('headerColour', undefined);
 				return;
 			}
 
-			this.cardState.headerColour = this.headerColour;
+			this.updateState('headerColour', this.headerColour);
 		}
 	}
 
