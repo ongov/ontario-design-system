@@ -155,23 +155,21 @@ export class OntarioCard {
 	 */
 	@Watch('layoutDirection')
 	validateLayoutDirection() {
-		if (this.layoutDirection) {
-			const isValid = validateValueAgainstArray(this.layoutDirection, layoutDirectionDefinitions);
+		const isValid = this.layoutDirection && validateValueAgainstArray(this.layoutDirection, layoutDirectionDefinitions);
 
-			if (!isValid) {
-				this.printPropWarning(
-					'layout-direction',
-					'<ontario-card>',
-					this.layoutDirection,
-					layoutDirectionDefinitions,
-					'vertical',
-				);
-				this.updateState('layoutDirection', 'vertical');
-				return;
-			}
-
-			this.updateState('layoutDirection', this.layoutDirection);
+		if (!isValid) {
+			this.printPropWarning(
+				'layout-direction',
+				'<ontario-card>',
+				this.layoutDirection,
+				layoutDirectionDefinitions,
+				'vertical',
+			);
+			this.updateCardState('layoutDirection', 'vertical');
+			return;
 		}
+
+		this.updateCardState('layoutDirection', this.layoutDirection);
 	}
 
 	/**
@@ -183,17 +181,15 @@ export class OntarioCard {
 	 */
 	@Watch('headingLevel')
 	validateHeadingLevel() {
-		if (this.headingLevel) {
-			const isValid = validateValueAgainstArray(this.headingLevel, headingLevelDefinitions);
+		const isValid = this.headingLevel && validateValueAgainstArray(this.headingLevel, headingLevelDefinitions);
 
-			if (!isValid) {
-				this.printPropWarning('heading-level', '<ontario-card>', this.headingLevel, headingLevelDefinitions, 'h2');
-				this.updateState('headingLevel', 'h2');
-				return;
-			}
-
-			this.updateState('headingLevel', this.headingLevel);
+		if (!isValid) {
+			this.printPropWarning('heading-level', '<ontario-card>', this.headingLevel, headingLevelDefinitions, 'h2');
+			this.updateCardState('headingLevel', 'h2');
+			return;
 		}
+
+		this.updateCardState('headingLevel', this.headingLevel);
 	}
 
 	/**
@@ -204,23 +200,15 @@ export class OntarioCard {
 	 */
 	@Watch('headerColour')
 	validateHeaderColour() {
-		if (this.headerColour) {
-			const isValid = validateValueAgainstArray(this.headerColour, headerColourDefinitions);
+		const isValid = this.headerColour && validateValueAgainstArray(this.headerColour, headerColourDefinitions);
 
-			if (!isValid) {
-				this.printPropWarning(
-					'header-colour',
-					'<ontario-card>',
-					this.headerColour,
-					headerColourDefinitions,
-					'undefined',
-				);
-				this.updateState('headerColour', undefined);
-				return;
-			}
-
-			this.updateState('headerColour', this.headerColour);
+		if (!isValid && this.headerColour !== undefined) {
+			this.printPropWarning('header-colour', '<ontario-card>', this.headerColour, headerColourDefinitions, 'undefined');
+			this.updateCardState('headerColour', undefined);
+			return;
 		}
+
+		this.updateCardState('headerColour', this.headerColour);
 	}
 
 	/**
@@ -264,8 +252,8 @@ export class OntarioCard {
 	 * @param {keyof CardState} key - Should match a key found within `CardState`.
 	 * @param {any} value - Should match the value type associated to the key within `CardState`.
 	 */
-	private updateState(key: keyof CardState, value: any) {
-		let cardStateCopy = { ...this.cardState };
+	private updateCardState(key: keyof CardState, value: any) {
+		const cardStateCopy = { ...this.cardState };
 		cardStateCopy[key] = value;
 		this.cardState = cardStateCopy;
 	}
@@ -317,9 +305,6 @@ export class OntarioCard {
 	 * https://stenciljs.com/docs/component-lifecycle#connectedcallback
 	 */
 	componentWillLoad() {
-		this.updateState('headerColour', this.headerColour);
-		this.updateState('headingLevel', this.headingLevel);
-		this.updateState('layoutDirection', this.layoutDirection);
 		this.validateLayoutDirection();
 		this.validateHeadingLevel();
 		this.validateHeaderColour();
