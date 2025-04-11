@@ -45,5 +45,3 @@ export type CardState = {
 	headingLevel: HeadingLevel | undefined;
 	layoutDirection: LayoutDirection | undefined;
 };
-
-// this is a test comment
