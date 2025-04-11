@@ -1,15 +1,17 @@
 import { Component, Prop, Element, h, State, Watch } from '@stencil/core';
 import {
+	headerColourDefinitions,
 	HeaderColour,
-	HeaderColours,
 	HorizontalImagePositionType,
 	HorizontalImageSizeType,
-	Layout,
-	Layouts,
+	layoutDirectionDefinitions,
+	LayoutDirection,
+	CardState,
 } from './ontario-card-types';
-import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
+import { headingLevelDefinitions, HeadingLevel } from '../../utils/common/common.interface';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { printArray } from '../../utils/helper/utils';
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
 @Component({
 	tag: 'ontario-card',
@@ -33,11 +35,38 @@ export class OntarioCard {
 	@Prop() label: string;
 
 	/**
+	 * The heading level that the label will be rendered as.
+	 *
+	 * @example
+	 *	<ontario-card
+	 *		heading-level="h4"
+	 *		label="Card Title 1"
+	 *	>
+	 */
+	@Prop() headingLevel: HeadingLevel = 'h2';
+
+	/**
 	 * Image to be displayed within the card image container.
 	 *
 	 * This is optional.
 	 */
 	@Prop() image?: string;
+
+	/**
+	 * Alt text for the card's image.
+	 *
+	 * This is optional prop, but may be required for an
+	 * image due to accessibility requirements.
+	 *
+	 * You can find guidance on when to add alt text to an image
+	 * on the Ontario.ca web content editing guide.
+	 *
+	 * https://www.ontario.ca/page/ontario-ca-web-content-editing-guide#alt-text-image-accessibility
+	 *
+	 * Note: This should default to an empty string ('') to ensure the alt attribute appears in the markup
+	 * for decorative images. If left as undefined, the alt attribute will not render in markup.
+	 */
+	@Prop() imageAltText?: string = '';
 
 	/**
 	 * Text to be displayed within the card description container.
@@ -54,12 +83,12 @@ export class OntarioCard {
 	@Prop() cardLink?: string;
 
 	/**
-	 * The layout oritnetation of the card.
+	 * The layout direction/orientation of the card.
 	 *
 	 * If no type is passed, it will default to 'vertical'.
 	 *
 	 */
-	@Prop() layout?: Layout = 'vertical';
+	@Prop() layoutDirection?: LayoutDirection = 'vertical';
 
 	/**
 	 * Set the card's header colour.
@@ -112,82 +141,121 @@ export class OntarioCard {
 	 */
 	@Prop() ariaLabelText?: string;
 
-	/**
-	 * Mutable variable, for internal use only.
-	 * Set the card's layout depending on validation result.
-	 */
-	@State() private layoutState: string;
+	@State() private cardState: CardState = {
+		headerColour: undefined,
+		headingLevel: undefined,
+		layoutDirection: undefined,
+	};
 
 	/**
-	 * Watch for changes to the `layout` property for validation purposes.
+	 * Watch for changes to the `layoutDirection` property for validation purposes.
 	 *
-	 * If the user input doesn't match one of the array values then `layout` will be set to its default (`vertical`).
-	 * If a match is found in one of the array values then `layoutState` will be set to the matching array key value.
+	 * If the user input doesn't match one of the array values then `layoutDirection` will be set to its default (`vertical`).
+	 * If a match is found in one of the array values then `cardState.layoutDirection` will be set to the matching array key value.
 	 */
-	@Watch('layout')
-	validateLayout() {
-		if (this.layout) {
-			const isValid = validateValueAgainstArray(this.layout, Layouts);
-			if (isValid) {
-				this.layoutState = this.layout;
-			} else {
-				this.warnDefaultLayout();
-				this.layoutState = 'vertical';
-			}
+	@Watch('layoutDirection')
+	validateLayoutDirection() {
+		const isValid = this.layoutDirection && validateValueAgainstArray(this.layoutDirection, layoutDirectionDefinitions);
+
+		if (!isValid) {
+			this.printPropWarning(
+				'layout-direction',
+				'<ontario-card>',
+				this.layoutDirection,
+				layoutDirectionDefinitions,
+				'vertical',
+			);
+			this.updateCardState('layoutDirection', 'vertical');
+			return;
 		}
+
+		this.updateCardState('layoutDirection', this.layoutDirection);
+	}
+
+	/**
+	 * Watch for changes to the `headingLevel` property for validation purposes.
+	 *
+	 * If the user input doesn't match one of the array values then `headingLevel` will be set to its default (`h2`).
+	 *
+	 * If a match is found in one of the array values then `headingLevel` will be set to the matching array key value.
+	 */
+	@Watch('headingLevel')
+	validateHeadingLevel() {
+		const isValid = this.headingLevel && validateValueAgainstArray(this.headingLevel, headingLevelDefinitions);
+
+		if (!isValid) {
+			this.printPropWarning('heading-level', '<ontario-card>', this.headingLevel, headingLevelDefinitions, 'h2');
+			this.updateCardState('headingLevel', 'h2');
+			return;
+		}
+
+		this.updateCardState('headingLevel', this.headingLevel);
 	}
 
 	/**
 	 * Watch for changes to the `headerColour` property for validation purposes.
 	 *
-	 * If the user input doesn't match one of the array values then `headerColour` will be kept empty ('').
+	 * If the user input doesn't match one of the array values then `headerColour` will be kept empty (undefined).
 	 * If a match is found in one of the array values then `headerColour` will be set to the matching array key value.
 	 */
 	@Watch('headerColour')
 	validateHeaderColour() {
-		if (this.headerColour) {
-			const isValid = validateValueAgainstArray(this.headerColour, HeaderColours);
+		const isValid = this.headerColour && validateValueAgainstArray(this.headerColour, headerColourDefinitions);
 
-			if (!isValid) {
-				this.warnDefaultHeaderColour();
-				this.headerColour = '';
-			}
+		if (!isValid && this.headerColour !== undefined) {
+			this.printPropWarning('header-colour', '<ontario-card>', this.headerColour, headerColourDefinitions, 'undefined');
+			this.updateCardState('headerColour', undefined);
+			return;
 		}
+
+		this.updateCardState('headerColour', this.headerColour);
 	}
 
 	/**
-	 * Print the invalid `layout` prop warning message.
+	 * Print an invalid prop warning message.
+	 *
+	 * @param {string} propName - Name of the prop
+	 * @param {string} component - Component the error is on e.g. <ontario-card>
+	 * @param {any} propValue - Value of the prop
+	 * @param {readonly any[]} acceptableValues  - readonly array of acceptable prop values
+	 * @param {string} defaultValue - Stringified representation of the value that the corresponding State Object value will default to
 	 */
-	private warnDefaultLayout() {
+	private printPropWarning(
+		propName: string,
+		component: string,
+		propValue: any,
+		acceptableValues: readonly any[],
+		defaultValue: string,
+	) {
 		const message = new ConsoleMessageClass();
 		message
 			.addDesignSystemTag()
-			.addMonospaceText(' layout ')
+			.addMonospaceText(` ${propName} `)
 			.addRegularText('on')
-			.addMonospaceText(' <ontario-card> ')
-			.addRegularText('was set to an invalid layout; only ')
-			.addMonospaceText(printArray([...Layouts]))
-			.addRegularText(' are supported. The default layout')
-			.addMonospaceText(' vertical ')
+			.addMonospaceText(` ${component} `)
+			.addRegularText('was set to an invalid value of ')
+			.addMonospaceText(` ${propValue} `)
+			.addRegularText('. Only ')
+			.addMonospaceText(printArray([...acceptableValues]))
+			.addRegularText(' are supported values. The default value of')
+			.addMonospaceText(` ${defaultValue} `)
 			.addRegularText('is assumed.')
 			.printMessage();
 	}
 
 	/**
-	 * Print the invalid `headerColour` prop warning message.
+	 * Update a key within the State Object with a value.
+	 *
+	 * Note: When state is represented as an object, and values are changed, the entire object needs to be rebuilt.
+	 * If only the corresponding object key/value is updated, corresponding render changes may not happen.
+	 *
+	 * @param {keyof CardState} key - Should match a key found within `CardState`.
+	 * @param {any} value - Should match the value type associated to the key within `CardState`.
 	 */
-	private warnDefaultHeaderColour() {
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' header-colour ')
-			.addRegularText('on')
-			.addMonospaceText(' <ontario-card> ')
-			.addRegularText('was set to an invalid colour; only ')
-			.addMonospaceText(printArray([...HeaderColours]))
-			.addRegularText(' are supported. ')
-			.addRegularText('No colour is assumed as the default.')
-			.printMessage();
+	private updateCardState(key: keyof CardState, value: any) {
+		const cardStateCopy = { ...this.cardState };
+		cardStateCopy[key] = value;
+		this.cardState = cardStateCopy;
 	}
 
 	/**
@@ -197,9 +265,9 @@ export class OntarioCard {
 	 */
 	private getCardClasses(): string {
 		const baseClass =
-			this.layoutState === 'horizontal'
-				? `ontario-card ontario-card__card-type--${this.layoutState} ontario-card__image-${this.horizontalImagePositionType} ontario-card__image-size-${this.horizontalImageSizeType}`
-				: `ontario-card ontario-card__card-type--basic ontario-card--position-${this.layoutState}`;
+			this.cardState.layoutDirection === 'horizontal'
+				? `ontario-card ontario-card__card-type--${this.cardState.layoutDirection} ontario-card__image-${this.horizontalImagePositionType} ontario-card__image-size-${this.horizontalImageSizeType}`
+				: `ontario-card ontario-card__card-type--basic ontario-card--position-${this.cardState.layoutDirection}`;
 
 		const descriptionClass = this.description ? '' : ' ontario-card__description-false';
 
@@ -217,10 +285,7 @@ export class OntarioCard {
 	private getCardHeadingClasses(): string {
 		const baseClass = 'ontario-card__heading';
 
-		const backgroundClass =
-			this.headerColour && validateValueAgainstArray(this.headerColour, HeaderColours)
-				? `ontario-card__heading--${this.headerColour}`
-				: '';
+		const backgroundClass = this.cardState.headerColour ? `ontario-card__heading--${this.cardState.headerColour}` : '';
 
 		return `${baseClass} ${backgroundClass}`.trim();
 	}
@@ -240,7 +305,8 @@ export class OntarioCard {
 	 * https://stenciljs.com/docs/component-lifecycle#connectedcallback
 	 */
 	componentWillLoad() {
-		this.validateLayout();
+		this.validateLayoutDirection();
+		this.validateHeadingLevel();
 		this.validateHeaderColour();
 	}
 
@@ -250,16 +316,26 @@ export class OntarioCard {
 				{this.image && (
 					<div class="ontario-card__image-container">
 						<a href={this.getHref()} aria-label={this.ariaLabelText}>
-							<img class="ontario-card__image" src={this.image} />
+							<img class="ontario-card__image" alt={this.imageAltText} src={this.image} />
 						</a>
 					</div>
 				)}
 				<div class={`ontario-card__text-container ${this.image ? 'ontario-card--image-true' : ''}`}>
-					<h2 class={this.getCardHeadingClasses()}>
+					{/**
+					 * h() is a stencil wrapped shorthand method for a render function, and is very
+					 * similar to the h() method or createElement() method found within React
+					 * It accepts 3 parameters:
+					 *  - a string interpretation of an HTML tag (e.g. 'h2')
+					 *  - an object of properties / attributes (e.g. 'id', 'className')
+					 *  - The innerHTML such as a string, or additional HTML elements
+					 */}
+					{h(
+						this.cardState.headingLevel, //tag
+						{ className: this.getCardHeadingClasses() }, //attributes
 						<a href={this.getHref()} aria-label={this.ariaLabelText}>
 							{this.label}
-						</a>
-					</h2>
+						</a>,
+					)}
 					{this.description && (
 						<div class="ontario-card__description">
 							<p>{this.description}</p>

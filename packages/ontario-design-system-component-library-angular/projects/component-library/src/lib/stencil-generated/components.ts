@@ -180,11 +180,13 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 		'cardLink',
 		'description',
 		'headerColour',
+		'headingLevel',
 		'horizontalImagePositionType',
 		'horizontalImageSizeType',
 		'image',
+		'imageAltText',
 		'label',
-		'layout',
+		'layoutDirection',
 	],
 })
 @Component({
@@ -197,11 +199,13 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 		'cardLink',
 		'description',
 		'headerColour',
+		'headingLevel',
 		'horizontalImagePositionType',
 		'horizontalImageSizeType',
 		'image',
+		'imageAltText',
 		'label',
-		'layout',
+		'layoutDirection',
 	],
 })
 export class OntarioCard {
