@@ -84,6 +84,10 @@ import {
 	defineCustomElement as defineOntarioFooter,
 } from '@ongov/ontario-design-system-component-library/dist/components/ontario-footer.js';
 import {
+	OntarioFormContainer as OntarioFormContainerElement,
+	defineCustomElement as defineOntarioFormContainer,
+} from '@ongov/ontario-design-system-component-library/dist/components/ontario-form-container.js';
+import {
 	OntarioHeader as OntarioHeaderElement,
 	defineCustomElement as defineOntarioHeader,
 } from '@ongov/ontario-design-system-component-library/dist/components/ontario-header.js';
@@ -805,6 +809,18 @@ export const OntarioFooter: StencilReactComponent<OntarioFooterElement, OntarioF
 		react: React,
 		events: {} as OntarioFooterEvents,
 		defineCustomElement: defineOntarioFooter,
+	});
+
+type OntarioFormContainerEvents = NonNullable<unknown>;
+
+export const OntarioFormContainer: StencilReactComponent<OntarioFormContainerElement, OntarioFormContainerEvents> =
+	/*@__PURE__*/ createComponent<OntarioFormContainerElement, OntarioFormContainerEvents>({
+		tagName: 'ontario-form-container',
+		elementClass: OntarioFormContainerElement,
+		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+		react: React,
+		events: {} as OntarioFormContainerEvents,
+		defineCustomElement: defineOntarioFormContainer,
 	});
 
 type OntarioHeaderEvents = NonNullable<unknown>;
