@@ -88,13 +88,7 @@ export class OntarioFieldset implements Fieldset {
 	componentWillLoad() {
 		this.validateLegend();
 		this.validateLegendSize();
-
-		// Check if the direct or any ancestor parent is `ontario-form-container`
-		this.hasFormContainerParent = this.element.closest('ontario-form-container') !== null;
-		const formContainer = this.element.closest('ontario-form-container') as OntarioFormContainer | null;
-		if (formContainer) {
-			this.gapValue = formContainer.gap === 'condensed' ? FormGap.Condensed : FormGap.Default;
-		}
+		this.initializeFormContainerSettings();
 	}
 
 	private getLegendClass() {
@@ -115,6 +109,15 @@ export class OntarioFieldset implements Fieldset {
 			baseClass += ` ontario-fieldset--gap-${this.gapValue}`;
 		}
 		return baseClass;
+	}
+
+	// Check if the direct or any ancestor parent is `ontario-form-container`
+	private initializeFormContainerSettings(): void {
+		this.hasFormContainerParent = this.element.closest('ontario-form-container') !== null;
+		const formContainer = this.element.closest('ontario-form-container') as OntarioFormContainer | null;
+		if (formContainer) {
+			this.gapValue = formContainer.gap === 'condensed' ? FormGap.Condensed : FormGap.Default;
+		}
 	}
 
 	render() {
