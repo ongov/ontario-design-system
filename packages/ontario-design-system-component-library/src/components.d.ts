@@ -30,6 +30,8 @@ import { PageAlertType } from "./components/ontario-page-alert/ontario-page-aler
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
 import { TaskStatus } from "./utils/common/task-statuses.enum";
+import { LimitedHeadingLevel } from "./components/ontario-task/ontario-task";
+import { LimitedHeadingLevel as LimitedHeadingLevel1 } from "./components/ontario-task-list/ontario-task-list";
 export { ExpandCollapseButtonDetails } from "./components/ontario-accordion/expandCollapseButtonDetails.interface";
 export { Accordion } from "./components/ontario-accordion/accordion.interface";
 export { Language } from "./utils/common/language-types";
@@ -55,6 +57,8 @@ export { PageAlertType } from "./components/ontario-page-alert/ontario-page-aler
 export { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
 export { TaskStatus } from "./utils/common/task-statuses.enum";
+export { LimitedHeadingLevel } from "./components/ontario-task/ontario-task";
+export { LimitedHeadingLevel as LimitedHeadingLevel1 } from "./components/ontario-task-list/ontario-task-list";
 export namespace Components {
     interface OntarioAccordion {
         /**
@@ -1894,7 +1898,7 @@ export namespace Components {
         /**
           * Allows consumers to define the heading level for the task label.  Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.
          */
-        "headingLevel": 'h2' | 'h3' | 'h4';
+        "headingLevel": LimitedHeadingLevel;
         /**
           * Used to include the ontario-hint-text component for the task.  This is optional.
          */
@@ -1924,7 +1928,7 @@ export namespace Components {
         /**
           * Allows consumers to define the heading level for the task list component.  Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h3'.
          */
-        "headingLevel": 'h1' | 'h2' | 'h3' | 'h4' |'h5';
+        "headingLevel": LimitedHeadingLevel1;
         /**
           * The label prop used for the task list heading.
          */
@@ -5110,7 +5114,7 @@ declare namespace LocalJSX {
         /**
           * Allows consumers to define the heading level for the task label.  Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.
          */
-        "headingLevel"?: 'h2' | 'h3' | 'h4';
+        "headingLevel"?: LimitedHeadingLevel;
         /**
           * Used to include the ontario-hint-text component for the task.  This is optional.
          */
@@ -5140,7 +5144,7 @@ declare namespace LocalJSX {
         /**
           * Allows consumers to define the heading level for the task list component.  Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h3'.
          */
-        "headingLevel"?: 'h1' | 'h2' | 'h3' | 'h4' |'h5';
+        "headingLevel"?: LimitedHeadingLevel1;
         /**
           * The label prop used for the task list heading.
          */

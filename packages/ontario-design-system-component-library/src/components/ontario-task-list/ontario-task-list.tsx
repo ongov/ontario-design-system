@@ -3,6 +3,9 @@ import { Language } from '../../utils/common/language-types';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import translations from '../../translations/global.i18n.json';
+import { HeadingLevel } from '../../utils/common/common.interface';
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
+export type LimitedHeadingLevel = Exclude<HeadingLevel, 'h6'> | 'h1';
 
 @Component({
 	tag: 'ontario-task-list',
@@ -22,7 +25,7 @@ export class OntarioTaskList {
 	 *
 	 * Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h3'.
 	 */
-	@Prop() headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' = 'h2';
+	@Prop() headingLevel: LimitedHeadingLevel = 'h2';
 
 	/**
 	 * The language of the component.
@@ -45,8 +48,12 @@ export class OntarioTaskList {
 	 */
 	@Watch('headingLevel')
 	validateHeadingLevel(newValue: string) {
-		const allowedValues = ['h1', 'h2', 'h3', 'h4', 'h5'];
-		if (!allowedValues.includes(newValue)) {
+		const allowedValues: LimitedHeadingLevel[] = ['h1', 'h2', 'h3', 'h4', 'h5'];
+
+		// Validate the new value against the allowed values
+		const isValid = validateValueAgainstArray(newValue, allowedValues);
+
+		if (!isValid) {
 			const message = new ConsoleMessageClass();
 			message
 				.addDesignSystemTag()
@@ -80,6 +87,13 @@ export class OntarioTaskList {
 			const status = task.getAttribute('data-task-status');
 			return status?.toLowerCase() === 'completed';
 		}).length;
+	}
+
+	/**
+	 * Lifecycle method: before the component loads, validate heading level.
+	 */
+	async componentWillLoad() {
+		this.validateHeadingLevel(this.headingLevel);
 	}
 
 	/**

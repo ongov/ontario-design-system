@@ -6,6 +6,8 @@ import { Hint } from '../../utils/common/common.interface';
 import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
 import translations from '../../translations/global.i18n.json';
+import { HeadingLevel } from '../../utils/common/common.interface';
+export type LimitedHeadingLevel = Extract<HeadingLevel, 'h2' | 'h3' | 'h4'>;
 
 @Component({
 	tag: 'ontario-task',
@@ -72,7 +74,7 @@ export class OntarioTask {
 	 *
 	 * Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.
 	 */
-	@Prop() headingLevel: 'h2' | 'h3' | 'h4' = 'h3';
+	@Prop() headingLevel: LimitedHeadingLevel = 'h3';
 
 	/**
 	 * The hint text options are re-assigned to the internalHintText state.
@@ -93,6 +95,9 @@ export class OntarioTask {
 	validateTaskStatus() {
 		const isValidStatus = validateValueAgainstArray(this.taskStatus, TaskStatuses);
 		this.taskStatusState = isValidStatus ? this.taskStatus : this.warnAndGetDefaultTaskStatus();
+
+		// Update the `data-task-status` attribute
+		this.el.setAttribute('data-task-status', this.taskStatusState);
 	}
 
 	/**
@@ -125,8 +130,12 @@ export class OntarioTask {
 	 */
 	@Watch('headingLevel')
 	validateHeadingLevel(newValue: string) {
-		const allowedValues = ['h2', 'h3', 'h4'];
-		if (!allowedValues.includes(newValue)) {
+		const allowedValues: LimitedHeadingLevel[] = ['h2', 'h3', 'h4'];
+
+		// Validate the new value against the allowed values
+		const isValid = validateValueAgainstArray(newValue, allowedValues);
+
+		if (!isValid) {
 			const message = new ConsoleMessageClass();
 			message
 				.addDesignSystemTag()
@@ -270,7 +279,7 @@ export class OntarioTask {
 
 	/**
 	 * Lifecycle method: before the component loads, parse the hint text and
-	 * validate language and task status.
+	 * validate language and task status and heading level.
 	 */
 	async componentWillLoad() {
 		this.parseHintText();
