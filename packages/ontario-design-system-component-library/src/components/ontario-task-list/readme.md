@@ -6,11 +6,14 @@ Use a task list to show the user activities they have completed and what they ha
 
 ## Usage guidance
 
-Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/task-list.html) for current documentation guidance for tables.
+Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/task-list.html) for current documentation guidance for task list.
 
-## Configuration
+## Prerequisites
 
-Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the task component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for header properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.
+Before using the `ontario-task-list` component, ensure the following:
+
+1. The Ontario Design System Component Library is installed in your project. Refer to the [installation instructions](https://designsystem.ontario.ca/getting-started/installation.html) for guidance.
+2. The component library is properly configured in your project (e.g., included in your build process if using a framework like React or Angular).
 
 ## Examples
 
