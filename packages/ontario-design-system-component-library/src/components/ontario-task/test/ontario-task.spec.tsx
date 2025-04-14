@@ -15,7 +15,7 @@ describe('ontario-task', () => {
 		expect(page.root).toEqualHtml(`
 					<ontario-task data-task-status="notStarted" task-id="task-1" task-status="notStarted">
 							<mock:shadow-root>
-								<li aria-describedby="default-hint-id" aria-labelledby="task-label--task-1" class="ontario-task ontario-task-status--not-started" data-task-status="notStarted" role="group">
+								<li aria-labelledby="task-label--task-1" class="ontario-task ontario-task-status--not-started" data-task-status="notStarted" role="group">
 											<div>
 													<div class="ontario-task__content">
 															<h3 class="ontario-task__label" id="task-label--task-1"></h3>
@@ -93,6 +93,5 @@ describe('ontario-task', () => {
 		const listItem = page.root.shadowRoot?.querySelector('li');
 		expect(listItem?.getAttribute('role')).toBe('group');
 		expect(listItem?.getAttribute('aria-labelledby')).toBe('task-label--task-5');
-		expect(listItem?.getAttribute('aria-describedby')).toBe('default-hint-id');
 	});
 });
