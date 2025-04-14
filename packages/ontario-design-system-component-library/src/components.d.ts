@@ -11,10 +11,10 @@ import { Language } from "./utils/common/language-types";
 import { HeadingContentType, HeadingLevelOptions, HighlightColourOptions } from "./utils/components/callout-aside/callout-aside.interface";
 import { BadgeColour } from "./components/ontario-badge/ontario-badge.types";
 import { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
-import { HeaderColour, HorizontalImagePositionType, HorizontalImageSizeType, Layout } from "./components/ontario-card/ontario-card-types";
+import { HeadingLevel, Hint, HintContentType } from "./utils/common/common.interface";
+import { HeaderColour, HorizontalImagePositionType, HorizontalImageSizeType, LayoutDirection } from "./components/ontario-card/ontario-card-types";
 import { CardsPerRow } from "./components/ontario-card-collection/ontario-collection-card-types";
 import { Caption } from "./utils/common/input-caption/caption.interface";
-import { Hint, HintContentType } from "./utils/common/common.interface";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { InputFocusBlurEvent, InputInputEvent, InputInteractionEvent, RadioAndCheckboxChangeEvent } from "./utils/events/event-handler.interface";
@@ -36,10 +36,10 @@ export { Language } from "./utils/common/language-types";
 export { HeadingContentType, HeadingLevelOptions, HighlightColourOptions } from "./utils/components/callout-aside/callout-aside.interface";
 export { BadgeColour } from "./components/ontario-badge/ontario-badge.types";
 export { ButtonType, HtmlType } from "./components/ontario-button/ontario-button.types";
-export { HeaderColour, HorizontalImagePositionType, HorizontalImageSizeType, Layout } from "./components/ontario-card/ontario-card-types";
+export { HeadingLevel, Hint, HintContentType } from "./utils/common/common.interface";
+export { HeaderColour, HorizontalImagePositionType, HorizontalImageSizeType, LayoutDirection } from "./components/ontario-card/ontario-card-types";
 export { CardsPerRow } from "./components/ontario-card-collection/ontario-collection-card-types";
 export { Caption } from "./utils/common/input-caption/caption.interface";
-export { Hint, HintContentType } from "./utils/common/common.interface";
 export { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 export { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 export { InputFocusBlurEvent, InputInputEvent, InputInteractionEvent, RadioAndCheckboxChangeEvent } from "./utils/events/event-handler.interface";
@@ -217,14 +217,18 @@ export namespace Components {
          */
         "image"?: string;
         /**
+          * Alt text for the card's image.  This is optional prop, but may be required for an image due to accessibility requirements.  You can find guidance on when to add alt text to an image on the Ontario.ca web content editing guide.  https://www.ontario.ca/page/ontario-ca-web-content-editing-guide#alt-text-image-accessibility  Note: This should default to an empty string ('') to ensure the alt attribute appears in the markup for decorative images. If left as undefined, the alt attribute will not render in markup.
+         */
+        "imageAltText"?: string;
+        /**
           * Text to be displayed within the header.
           * @example <ontario-card 	header-type="dark" 	card-type="horizontal" 	label="Card Title 1" 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" >
          */
         "label": string;
         /**
-          * The layout oritnetation of the card.  If no type is passed, it will default to 'vertical'.
+          * The layout direction/orientation of the card.  If no type is passed, it will default to 'vertical'.
          */
-        "layout"?: Layout;
+        "layoutDirection"?: LayoutDirection;
     }
     interface OntarioCardCollection {
         /**
@@ -3269,14 +3273,18 @@ declare namespace LocalJSX {
          */
         "image"?: string;
         /**
+          * Alt text for the card's image.  This is optional prop, but may be required for an image due to accessibility requirements.  You can find guidance on when to add alt text to an image on the Ontario.ca web content editing guide.  https://www.ontario.ca/page/ontario-ca-web-content-editing-guide#alt-text-image-accessibility  Note: This should default to an empty string ('') to ensure the alt attribute appears in the markup for decorative images. If left as undefined, the alt attribute will not render in markup.
+         */
+        "imageAltText"?: string;
+        /**
           * Text to be displayed within the header.
           * @example <ontario-card 	header-type="dark" 	card-type="horizontal" 	label="Card Title 1" 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" >
          */
         "label"?: string;
         /**
-          * The layout oritnetation of the card.  If no type is passed, it will default to 'vertical'.
+          * The layout direction/orientation of the card.  If no type is passed, it will default to 'vertical'.
          */
-        "layout"?: Layout;
+        "layoutDirection"?: LayoutDirection;
     }
     interface OntarioCardCollection {
         /**
