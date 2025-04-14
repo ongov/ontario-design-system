@@ -29,6 +29,7 @@ import { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.i
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
+import { TaskStatus } from "./utils/common/task-statuses.enum";
 export { ExpandCollapseButtonDetails } from "./components/ontario-accordion/expandCollapseButtonDetails.interface";
 export { Accordion } from "./components/ontario-accordion/accordion.interface";
 export { Language } from "./utils/common/language-types";
@@ -53,6 +54,7 @@ export { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.i
 export { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 export { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
+export { TaskStatus } from "./utils/common/task-statuses.enum";
 export namespace Components {
     interface OntarioAccordion {
         /**
@@ -1884,6 +1886,50 @@ export namespace Components {
          */
         "zebraStripes"?: 'auto' | 'disabled' | 'enabled' | undefined;
     }
+    interface OntarioTask {
+        /**
+          * Disables the task link when set to `true`.  Default is `false`, meaning the link will be active if provided.
+         */
+        "deactivateLink": boolean;
+        /**
+          * Allows consumers to define the heading level for the task label.  Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.
+         */
+        "headingLevel": 'h2' | 'h3' | 'h4';
+        /**
+          * Used to include the ontario-hint-text component for the task.  This is optional.
+         */
+        "hintText"?: string | Hint;
+        /**
+          * Specifies the label of the task.  This is required to provide the name of the task.
+         */
+        "label": string;
+        /**
+          * The language of the component.  This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
+         */
+        "language"?: Language;
+        /**
+          * Specifies an optional link associated with the task.  If provided, clicking the task will navigate to this URL.
+         */
+        "link"?: string;
+        /**
+          * A unique id for the task.  This is required.
+         */
+        "taskId": string;
+        /**
+          * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`.
+         */
+        "taskStatus": TaskStatus;
+    }
+    interface OntarioTaskList {
+        /**
+          * The label prop used for the task list heading.
+         */
+        "label": string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+         */
+        "language"?: Language;
+    }
     interface OntarioTextarea {
         /**
           * The text to display as the textarea label.
@@ -2922,6 +2968,18 @@ declare global {
         prototype: HTMLOntarioTableElement;
         new (): HTMLOntarioTableElement;
     };
+    interface HTMLOntarioTaskElement extends Components.OntarioTask, HTMLStencilElement {
+    }
+    var HTMLOntarioTaskElement: {
+        prototype: HTMLOntarioTaskElement;
+        new (): HTMLOntarioTaskElement;
+    };
+    interface HTMLOntarioTaskListElement extends Components.OntarioTaskList, HTMLStencilElement {
+    }
+    var HTMLOntarioTaskListElement: {
+        prototype: HTMLOntarioTaskListElement;
+        new (): HTMLOntarioTaskListElement;
+    };
     interface HTMLOntarioTextareaElementEventMap {
         "inputOnInput": InputInputEvent;
         "inputOnChange": InputInteractionEvent;
@@ -3082,6 +3140,8 @@ declare global {
         "ontario-search-box": HTMLOntarioSearchBoxElement;
         "ontario-step-indicator": HTMLOntarioStepIndicatorElement;
         "ontario-table": HTMLOntarioTableElement;
+        "ontario-task": HTMLOntarioTaskElement;
+        "ontario-task-list": HTMLOntarioTaskListElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
     }
 }
@@ -5038,6 +5098,50 @@ declare namespace LocalJSX {
          */
         "zebraStripes"?: 'auto' | 'disabled' | 'enabled' | undefined;
     }
+    interface OntarioTask {
+        /**
+          * Disables the task link when set to `true`.  Default is `false`, meaning the link will be active if provided.
+         */
+        "deactivateLink"?: boolean;
+        /**
+          * Allows consumers to define the heading level for the task label.  Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.
+         */
+        "headingLevel"?: 'h2' | 'h3' | 'h4';
+        /**
+          * Used to include the ontario-hint-text component for the task.  This is optional.
+         */
+        "hintText"?: string | Hint;
+        /**
+          * Specifies the label of the task.  This is required to provide the name of the task.
+         */
+        "label"?: string;
+        /**
+          * The language of the component.  This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
+         */
+        "language"?: Language;
+        /**
+          * Specifies an optional link associated with the task.  If provided, clicking the task will navigate to this URL.
+         */
+        "link"?: string;
+        /**
+          * A unique id for the task.  This is required.
+         */
+        "taskId"?: string;
+        /**
+          * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`.
+         */
+        "taskStatus"?: TaskStatus;
+    }
+    interface OntarioTaskList {
+        /**
+          * The label prop used for the task list heading.
+         */
+        "label"?: string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+         */
+        "language"?: Language;
+    }
     interface OntarioTextarea {
         /**
           * The text to display as the textarea label.
@@ -5253,6 +5357,8 @@ declare namespace LocalJSX {
         "ontario-search-box": OntarioSearchBox;
         "ontario-step-indicator": OntarioStepIndicator;
         "ontario-table": OntarioTable;
+        "ontario-task": OntarioTask;
+        "ontario-task-list": OntarioTaskList;
         "ontario-textarea": OntarioTextarea;
     }
 }
@@ -5398,6 +5504,8 @@ declare module "@stencil/core" {
             "ontario-search-box": LocalJSX.OntarioSearchBox & JSXBase.HTMLAttributes<HTMLOntarioSearchBoxElement>;
             "ontario-step-indicator": LocalJSX.OntarioStepIndicator & JSXBase.HTMLAttributes<HTMLOntarioStepIndicatorElement>;
             "ontario-table": LocalJSX.OntarioTable & JSXBase.HTMLAttributes<HTMLOntarioTableElement>;
+            "ontario-task": LocalJSX.OntarioTask & JSXBase.HTMLAttributes<HTMLOntarioTaskElement>;
+            "ontario-task-list": LocalJSX.OntarioTaskList & JSXBase.HTMLAttributes<HTMLOntarioTaskListElement>;
             "ontario-textarea": LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
         }
     }
