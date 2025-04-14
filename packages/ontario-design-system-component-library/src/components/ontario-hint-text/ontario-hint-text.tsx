@@ -41,6 +41,10 @@ export class OntarioHintText implements Hint {
 	@State() hintState: string;
 
 	/**
+	 * @part hint-text - The container for the hint text content. This part can be used to apply custom styles to the hint text.
+	 */
+
+	/**
 	 * Watch for changes to the `hintContentType` prop for validation purposes.
 	 * If none is provided, or the wrong type is provided, it will default to `string`.
 	 */
