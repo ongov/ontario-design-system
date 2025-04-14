@@ -1,5 +1,6 @@
-import { h, Component, Element, Prop, State } from '@stencil/core';
+import { h, Component, Element, Prop, State, Watch } from '@stencil/core';
 import { Language } from '../../utils/common/language-types';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import translations from '../../translations/global.i18n.json';
 
@@ -17,6 +18,13 @@ export class OntarioTaskList {
 	@Prop() label: string;
 
 	/**
+	 * Allows consumers to define the heading level for the task list component.
+	 *
+	 * Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h3'.
+	 */
+	@Prop() headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' = 'h2';
+
+	/**
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 	 */
@@ -31,6 +39,30 @@ export class OntarioTaskList {
 	 * State to track the total number of tasks.
 	 */
 	@State() totalTasks: number = 0;
+
+	/**
+	 * Watch for changes in `headingLevel` prop to validate its value.
+	 */
+	@Watch('headingLevel')
+	validateHeadingLevel(newValue: string) {
+		const allowedValues = ['h1', 'h2', 'h3', 'h4', 'h5'];
+		if (!allowedValues.includes(newValue)) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' headingLevel ')
+				.addRegularText('on')
+				.addMonospaceText(' <ontario-task-list> ')
+				.addRegularText('was set to an invalid value; only ')
+				.addMonospaceText(allowedValues.join(', '))
+				.addRegularText(' are supported. The default value ')
+				.addMonospaceText('h2')
+				.addRegularText(' is assumed.')
+				.printMessage();
+
+			this.headingLevel = 'h2';
+		}
+	}
 
 	/**
 	 * Counts the total tasks and completed tasks by querying for `ontario-task` elements.
@@ -95,9 +127,13 @@ export class OntarioTaskList {
 		// Resolve the language to ensure valid translations are used.
 		const resolvedLanguage = validateLanguage(this.language);
 
+		const headingProps: any = {
+			class: 'ontario-task-list__heading',
+		};
+
 		return (
 			<div class="ontario-task-list__container">
-				<h2 class="ontario-task-list__heading">{this.label}</h2>
+				{h(this.headingLevel, headingProps, this.label)}
 
 				<p class="ontario-task-list__completion-text" aria-live="polite">
 					{translations.taskGroup.completed[resolvedLanguage]}&nbsp;

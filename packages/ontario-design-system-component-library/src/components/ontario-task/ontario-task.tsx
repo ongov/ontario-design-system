@@ -6,7 +6,6 @@ import { Hint } from '../../utils/common/common.interface';
 import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
 import translations from '../../translations/global.i18n.json';
-const defaultHintId = 'default-hint-id';
 
 @Component({
 	tag: 'ontario-task',
@@ -74,11 +73,6 @@ export class OntarioTask {
 	 * Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.
 	 */
 	@Prop() headingLevel: 'h2' | 'h3' | 'h4' = 'h3';
-
-	/**
-	 * Used for the `aria-describedby` value of the task's label. This will match with the id of the hint text.
-	 */
-	@State() private hintTextId: string | null = null;
 
 	/**
 	 * The hint text options are re-assigned to the internalHintText state.
@@ -259,8 +253,21 @@ export class OntarioTask {
 	 * and set it for the `aria-describedby` attribute.
 	 */
 	async componentDidLoad() {
-		this.el.setAttribute('data-task-status', this.taskStatus);
+		if (this.hintTextRef) {
+			let hintTextId = this.hintTextRef.elementId;
+
+			if (!hintTextId) {
+				hintTextId = `hint-text--${this.taskId}`;
+				this.hintTextRef.elementId = hintTextId;
+			}
+
+			const taskElement = this.el.shadowRoot?.querySelector('li');
+			if (taskElement) {
+				taskElement.setAttribute('aria-describedby', hintTextId);
+			}
+		}
 	}
+
 	/**
 	 * Lifecycle method: before the component loads, parse the hint text and
 	 * validate language and task status.
@@ -270,14 +277,6 @@ export class OntarioTask {
 		this.language = validateLanguage(this.language);
 		this.validateTaskStatus();
 		this.validateHeadingLevel(this.headingLevel);
-
-		if (this.hintTextRef) {
-			const hintId = await this.hintTextRef.getHintTextId();
-			this.hintTextId = hintId || defaultHintId;
-		} else {
-			console.warn('hintTextRef is undefined, defaulting to defaultHintId');
-			this.hintTextId = defaultHintId;
-		}
 	}
 
 	render() {
@@ -296,7 +295,6 @@ export class OntarioTask {
 				class={`ontario-task ${taskStatusClass}`}
 				role="group"
 				aria-labelledby={`task-label--${this.taskId}`}
-				aria-describedby={this.hintTextId}
 				data-task-status={this.taskStatusState}
 			>
 				{isLinkActive ? (

@@ -32,7 +32,6 @@
 	},
 	"jest": {
 		"preset": "ts-jest",
-		"maxWorkers": 4,
 		"setupFilesAfterEnv": [
 			"<rootDir>/jest.setup.js"
 		],
