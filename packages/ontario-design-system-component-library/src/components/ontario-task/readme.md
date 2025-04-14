@@ -20,6 +20,15 @@ Example of a bare-bones task.
 <ontario-task label="Task" task-id="Task-id" task-status="notStarted" link="https://example.com"></ontario-task>
 ```
 
+<div>
+	<ontario-task 
+		label="Task" 
+		task-id="Task-id" 
+		task-status="notStarted" 
+		link="https://example.com">
+	</ontario-task>
+</div>
+
 Example of a task with a hint.
 
 ```html
@@ -32,6 +41,17 @@ Example of a task with a hint.
 	link="https://example.com"
 ></ontario-task>
 ```
+
+<div>
+	<ontario-task
+		label="Task"
+		task-id="Task-id"
+		hint-text="A hint for task"
+		hint-text-id="task-hint"
+		task-status="completed"
+		link="https://example.com"
+	></ontario-task>
+</div>
 
 ## Custom property types
 

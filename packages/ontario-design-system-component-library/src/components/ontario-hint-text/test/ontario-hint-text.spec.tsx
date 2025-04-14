@@ -11,24 +11,22 @@ describe('ontario-hint-text', () => {
 				components: [OntarioHintText],
 				html: `<ontario-hint-text element-id="idTest" hint="This is a test hint"></ontario-hint-text>`,
 			});
-
 			expect(page.root).toMatchSnapshot();
 		});
 	});
-
 	it('renders', async () => {
 		const page = await newSpecPage({
 			components: [OntarioHintText],
 			html: `<ontario-hint-text element-id="idTest" hint="This is a test hint"></ontario-hint-text>`,
 		});
 		expect(page.root).toEqualHtml(`
-      <ontario-hint-text element-id="idTest" hint="This is a test hint">
-        <mock:shadow-root>
-					<p id="idTest" class="ontario-hint" part="hint-text">
-						This is a test hint
-					</p>
-        </mock:shadow-root>
-      </ontario-hint-text>
-    `);
+            <ontario-hint-text element-id="idTest" hint="This is a test hint">
+                <mock:shadow-root>
+                    <p id="idTest" class="ontario-hint" part="hint-text">
+                        This is a test hint
+                    </p>
+                </mock:shadow-root>
+            </ontario-hint-text>
+        `);
 	});
 });

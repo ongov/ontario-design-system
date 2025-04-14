@@ -25,7 +25,6 @@ Example of a task-list component with tasks inside.
 		label="Task 1"
 		task-id="Task-1-unique-id"
 		hint-text="A hint for task 1"
-		hint-text-id="task-hint-1"
 		task-status="completed"
 		link="https://example.com"
 	></ontario-task>
@@ -39,6 +38,26 @@ Example of a task-list component with tasks inside.
 	>
 </ontario-task-list>
 ```
+
+<div>
+	<ontario-task-list language="en">
+		<ontario-task
+			label="Task 1"
+			task-id="Task-1-unique-id"
+			hint-text="A hint for task 1"
+			task-status="completed"
+			link="https://example.com"
+		></ontario-task>
+		<ontario-task
+			label="Task 2"
+			task-id="Task-2-unique-id"
+			hint-text="A hint for task 2"
+			task-status="inProgress"
+			link="https://example.com"
+			deactivate-link="true"
+		>
+	</ontario-task-list>
+</div>
 
 ## Custom property types
 
