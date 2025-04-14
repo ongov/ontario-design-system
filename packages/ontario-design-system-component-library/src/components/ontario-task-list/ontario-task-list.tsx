@@ -5,7 +5,8 @@ import { validateLanguage } from '../../utils/validation/validation-functions';
 import translations from '../../translations/global.i18n.json';
 import { HeadingLevel } from '../../utils/common/common.interface';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
-export type LimitedHeadingLevel = Exclude<HeadingLevel, 'h6'> | 'h1';
+import { TaskStatuses } from '../../utils/common/task-statuses.enum';
+export type TaskListHeadingLevel = Exclude<HeadingLevel, 'h6'> | 'h1';
 
 @Component({
 	tag: 'ontario-task-list',
@@ -25,7 +26,7 @@ export class OntarioTaskList {
 	 *
 	 * Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h3'.
 	 */
-	@Prop() headingLevel: LimitedHeadingLevel = 'h2';
+	@Prop() headingLevel: TaskListHeadingLevel = 'h2';
 
 	/**
 	 * The language of the component.
@@ -48,7 +49,7 @@ export class OntarioTaskList {
 	 */
 	@Watch('headingLevel')
 	validateHeadingLevel(newValue: string) {
-		const allowedValues: LimitedHeadingLevel[] = ['h1', 'h2', 'h3', 'h4', 'h5'];
+		const allowedValues: TaskListHeadingLevel[] = ['h1', 'h2', 'h3', 'h4', 'h5'];
 
 		// Validate the new value against the allowed values
 		const isValid = validateValueAgainstArray(newValue, allowedValues);
@@ -85,7 +86,7 @@ export class OntarioTaskList {
 		this.completedTasks = tasks.filter((task) => {
 			// Get the status directly from the light DOM
 			const status = task.getAttribute('data-task-status');
-			return status?.toLowerCase() === 'completed';
+			return status === TaskStatuses.Completed;
 		}).length;
 	}
 
@@ -100,11 +101,12 @@ export class OntarioTaskList {
 	 * Ensure tasks are counted after custom elements are fully upgraded.
 	 */
 	connectedCallback() {
+		const TASK_COUNT_DELAY_MS = 50;
 		// Wait for the custom element to be fully defined before counting
 		customElements.whenDefined('ontario-task').then(() => {
 			setTimeout(() => {
 				this.countTasks();
-			}, 50);
+			}, TASK_COUNT_DELAY_MS);
 		});
 	}
 

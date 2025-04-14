@@ -1,13 +1,13 @@
 import { h, Component, Prop, Watch, State, Listen, Element, Fragment } from '@stencil/core';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { TaskStatuses, TaskStatus, TaskBadgeColour, TaskToBadgeColour } from '../../utils/common/task-statuses.enum';
+import { TaskStatuses, TaskBadgeColour, TaskToBadgeColour } from '../../utils/common/task-statuses.enum';
 import { validateLanguage, validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { Hint } from '../../utils/common/common.interface';
 import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
 import translations from '../../translations/global.i18n.json';
 import { HeadingLevel } from '../../utils/common/common.interface';
-export type LimitedHeadingLevel = Extract<HeadingLevel, 'h2' | 'h3' | 'h4'>;
+export type TaskHeadingLevel = Extract<HeadingLevel, 'h2' | 'h3' | 'h4'>;
 
 @Component({
 	tag: 'ontario-task',
@@ -67,14 +67,19 @@ export class OntarioTask {
 	 *
 	 * Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`.
 	 */
-	@Prop() taskStatus: TaskStatus;
+	/**
+	 * Defines the status of the task, with default set to 'NotStarted'.
+	 *
+	 * Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`, etc.
+	 */
+	@Prop() taskStatus: TaskStatuses = TaskStatuses.NotStarted;
 
 	/**
 	 * Allows consumers to define the heading level for the task label.
 	 *
 	 * Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.
 	 */
-	@Prop() headingLevel: LimitedHeadingLevel = 'h3';
+	@Prop() headingLevel: TaskHeadingLevel = 'h3';
 
 	/**
 	 * The hint text options are re-assigned to the internalHintText state.
@@ -86,14 +91,14 @@ export class OntarioTask {
 	 *
 	 * Set the task's status state depending on validation result.
 	 */
-	@State() private taskStatusState: TaskStatus;
-
+	@State() private taskStatusState: TaskStatuses = TaskStatuses.NotStarted;
 	/**
 	 * Watch for changes in `taskStatus` prop to validate its value.
 	 */
 	@Watch('taskStatus')
 	validateTaskStatus() {
-		const isValidStatus = validateValueAgainstArray(this.taskStatus, TaskStatuses);
+		const validStatuses = Object.values(TaskStatuses);
+		const isValidStatus = validStatuses.includes(this.taskStatus);
 		this.taskStatusState = isValidStatus ? this.taskStatus : this.warnAndGetDefaultTaskStatus();
 
 		// Update the `data-task-status` attribute
@@ -109,7 +114,8 @@ export class OntarioTask {
 	 *
 	 * @returns The default task status `'notStarted'`.
 	 */
-	private warnAndGetDefaultTaskStatus(): TaskStatus {
+	private warnAndGetDefaultTaskStatus(): TaskStatuses {
+		const validStatuses = Object.values(TaskStatuses).join(', ');
 		const message = new ConsoleMessageClass();
 		message
 			.addDesignSystemTag()
@@ -117,12 +123,12 @@ export class OntarioTask {
 			.addRegularText('on')
 			.addMonospaceText(' <ontario-task> ')
 			.addRegularText('was set to an invalid taskStatus; only ')
-			.addMonospaceText(TaskStatuses.join(', '))
+			.addMonospaceText(validStatuses)
 			.addRegularText(' are supported. The default taskStatus ')
-			.addMonospaceText('notStarted')
+			.addMonospaceText(TaskStatuses.NotStarted)
 			.addRegularText(' is assumed.')
 			.printMessage();
-		return 'notStarted';
+		return TaskStatuses.NotStarted;
 	}
 
 	/**
@@ -130,7 +136,7 @@ export class OntarioTask {
 	 */
 	@Watch('headingLevel')
 	validateHeadingLevel(newValue: string) {
-		const allowedValues: LimitedHeadingLevel[] = ['h2', 'h3', 'h4'];
+		const allowedValues: TaskHeadingLevel[] = ['h2', 'h3', 'h4'];
 
 		// Validate the new value against the allowed values
 		const isValid = validateValueAgainstArray(newValue, allowedValues);

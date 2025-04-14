@@ -29,9 +29,9 @@ import { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.i
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
-import { TaskStatus } from "./utils/common/task-statuses.enum";
-import { LimitedHeadingLevel } from "./components/ontario-task/ontario-task";
-import { LimitedHeadingLevel as LimitedHeadingLevel1 } from "./components/ontario-task-list/ontario-task-list";
+import { TaskStatuses } from "./utils/common/task-statuses.enum";
+import { TaskHeadingLevel } from "./components/ontario-task/ontario-task";
+import { TaskListHeadingLevel } from "./components/ontario-task-list/ontario-task-list";
 export { ExpandCollapseButtonDetails } from "./components/ontario-accordion/expandCollapseButtonDetails.interface";
 export { Accordion } from "./components/ontario-accordion/accordion.interface";
 export { Language } from "./utils/common/language-types";
@@ -56,9 +56,9 @@ export { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.i
 export { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 export { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
-export { TaskStatus } from "./utils/common/task-statuses.enum";
-export { LimitedHeadingLevel } from "./components/ontario-task/ontario-task";
-export { LimitedHeadingLevel as LimitedHeadingLevel1 } from "./components/ontario-task-list/ontario-task-list";
+export { TaskStatuses } from "./utils/common/task-statuses.enum";
+export { TaskHeadingLevel } from "./components/ontario-task/ontario-task";
+export { TaskListHeadingLevel } from "./components/ontario-task-list/ontario-task-list";
 export namespace Components {
     interface OntarioAccordion {
         /**
@@ -1898,7 +1898,7 @@ export namespace Components {
         /**
           * Allows consumers to define the heading level for the task label.  Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.
          */
-        "headingLevel": LimitedHeadingLevel;
+        "headingLevel": TaskHeadingLevel;
         /**
           * Used to include the ontario-hint-text component for the task.  This is optional.
          */
@@ -1920,15 +1920,15 @@ export namespace Components {
          */
         "taskId": string;
         /**
-          * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`.
+          * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`, etc.
          */
-        "taskStatus": TaskStatus;
+        "taskStatus": TaskStatuses;
     }
     interface OntarioTaskList {
         /**
           * Allows consumers to define the heading level for the task list component.  Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h3'.
          */
-        "headingLevel": LimitedHeadingLevel1;
+        "headingLevel": TaskListHeadingLevel;
         /**
           * The label prop used for the task list heading.
          */
@@ -5114,7 +5114,7 @@ declare namespace LocalJSX {
         /**
           * Allows consumers to define the heading level for the task label.  Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.
          */
-        "headingLevel"?: LimitedHeadingLevel;
+        "headingLevel"?: TaskHeadingLevel;
         /**
           * Used to include the ontario-hint-text component for the task.  This is optional.
          */
@@ -5136,15 +5136,15 @@ declare namespace LocalJSX {
          */
         "taskId"?: string;
         /**
-          * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`.
+          * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`, etc.
          */
-        "taskStatus"?: TaskStatus;
+        "taskStatus"?: TaskStatuses;
     }
     interface OntarioTaskList {
         /**
           * Allows consumers to define the heading level for the task list component.  Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h3'.
          */
-        "headingLevel"?: LimitedHeadingLevel1;
+        "headingLevel"?: TaskListHeadingLevel;
         /**
           * The label prop used for the task list heading.
          */
