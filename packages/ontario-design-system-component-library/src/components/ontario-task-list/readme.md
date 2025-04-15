@@ -59,8 +59,6 @@ Example of a task-list component with tasks inside.
 	</ontario-task-list>
 </div>
 
-## Custom property types
-
 <!-- Auto Generated Below -->
 
 ## Properties

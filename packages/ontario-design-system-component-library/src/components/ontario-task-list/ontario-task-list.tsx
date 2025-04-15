@@ -6,7 +6,7 @@ import translations from '../../translations/global.i18n.json';
 import { HeadingLevel } from '../../utils/common/common.interface';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { TaskStatuses } from '../../utils/common/task-statuses.enum';
-export type TaskListHeadingLevel = Exclude<HeadingLevel, 'h6'> | 'h1';
+export type TaskListHeadingLevel = 'h1' | Exclude<HeadingLevel, 'h6'>;
 
 @Component({
 	tag: 'ontario-task-list',
@@ -43,6 +43,16 @@ export class OntarioTaskList {
 	 * State to track the total number of tasks.
 	 */
 	@State() totalTasks: number = 0;
+
+	/**
+	 * Class-level constant for task count delay in milliseconds.
+	 *
+	 * This delay ensures that the `ontario-task` custom elements are fully upgraded and rendered
+	 * in the DOM before the `countTasks` method is executed. Without this delay, the component
+	 * might attempt to query or count tasks before they are properly initialized, leading to
+	 * inaccurate task counts.
+	 */
+	private static readonly TASK_COUNT_DELAY_MS = 50;
 
 	/**
 	 * Watch for changes in `headingLevel` prop to validate its value.
@@ -101,12 +111,11 @@ export class OntarioTaskList {
 	 * Ensure tasks are counted after custom elements are fully upgraded.
 	 */
 	connectedCallback() {
-		const TASK_COUNT_DELAY_MS = 50;
 		// Wait for the custom element to be fully defined before counting
 		customElements.whenDefined('ontario-task').then(() => {
 			setTimeout(() => {
 				this.countTasks();
-			}, TASK_COUNT_DELAY_MS);
+			}, OntarioTaskList.TASK_COUNT_DELAY_MS);
 		});
 	}
 
@@ -136,15 +145,15 @@ export class OntarioTaskList {
 	componentDidRender() {
 		setTimeout(() => {
 			this.countTasks();
-		}, 100);
+		}, OntarioTaskList.TASK_COUNT_DELAY_MS);
 	}
 
 	render() {
 		// Resolve the language to ensure valid translations are used.
 		const resolvedLanguage = validateLanguage(this.language);
 
-		const headingProps: any = {
-			class: 'ontario-task-list__heading',
+		const headingProps = {
+			class: { 'ontario-task-list__heading': true },
 		};
 
 		return (
