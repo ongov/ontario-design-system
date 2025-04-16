@@ -1,4 +1,4 @@
-import { Component, Prop, h, State, Watch, Listen, getAssetPath } from '@stencil/core';
+import { Component, Prop, h, State, Watch, Listen } from '@stencil/core';
 
 import {
 	FooterLinks,
@@ -8,11 +8,13 @@ import {
 	SimpleFooterLinks,
 } from './ontario-footer-interface';
 import { ExpandedFooterWrapper, FooterColumn, FooterSocialLinksProps, SimpleFooter } from './components';
+
 import { isInvalidTwoColumnOptions, isInvalidThreeColumnOptions } from './utils';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { ConsoleType } from '../../utils/console-message/console-message.enum';
+import { getImageAssetSrcPath } from '../../utils/helper/assets';
 
 import translations from '../../translations/global.i18n.json';
 
@@ -178,15 +180,6 @@ export class OntarioFooter {
 	}
 
 	/**
-	 * Generate a link to the given image based on the base asset path.
-	 * @param imageName Name of the image to build the path to
-	 * @returns Path to image with asset path
-	 */
-	private getImageAssetSrcPath(imageName: string): string {
-		return `${this.assetBasePath ? this.assetBasePath : getAssetPath('./assets')}/${imageName}`;
-	}
-
-	/**
 	 * Generate CSS url to the background image
 	 * @returns path to the background image
 	 */
@@ -195,7 +188,7 @@ export class OntarioFooter {
 			? 'footer-expanded-supergraphic-logo.svg'
 			: 'footer-default-supergraphic-logo.svg';
 
-		return `url(${this.getImageAssetSrcPath(supergraphicLogoFile)})`;
+		return `url(${getImageAssetSrcPath(supergraphicLogoFile, this.assetBasePath)})`;
 	}
 
 	private getFooterClasses() {
