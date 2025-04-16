@@ -39,6 +39,10 @@ Example of a hint text that includes the `hint` property, which will override th
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Use hint text to help users understand how to complete fields in a form.
+
 ## Properties
 
 | Property          | Attribute           | Description                                                                                                                                                                       | Type                              | Default     |
@@ -61,9 +65,9 @@ Promise<string | undefined>
 
 ## Shadow Parts
 
-| Part          | Description |
-| ------------- | ----------- |
-| `"hint-text"` |             |
+| Part          | Description                                                                                             |
+| ------------- | ------------------------------------------------------------------------------------------------------- |
+| `"hint-text"` | The container for the hint text content. This part can be used to apply custom styles to the hint text. |
 
 ## Dependencies
 

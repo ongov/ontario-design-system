@@ -6,6 +6,11 @@ import { Hint, HintContentType } from '../../utils/common/common.interface';
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
+/**
+ * Use hint text to help users understand how to complete fields in a form.
+ *
+ * @part hint-text - The container for the hint text content. This part can be used to apply custom styles to the hint text.
+ */
 @Component({
 	tag: 'ontario-hint-text',
 	styleUrl: 'ontario-hint-text.scss',

@@ -1,4 +1,4 @@
-import { OntarioTaskList } from '@ongov/ontario-design-system-component-library-react';
+import { OntarioTaskList, OntarioTask } from '@ongov/ontario-design-system-component-library-react';
 
 # ontario-task-list
 
@@ -40,33 +40,34 @@ Example of a task-list component with tasks inside.
 ```
 
 <div>
-	<ontario-task-list language="en">
-		<ontario-task
+	<OntarioTaskList language="en">
+		<OntarioTask
 			label="Task 1"
 			task-id="Task-1-unique-id"
 			hint-text="A hint for task 1"
 			task-status="completed"
 			link="https://example.com"
-		></ontario-task>
-		<ontario-task
+		></OntarioTask>
+		<OntarioTask
 			label="Task 2"
 			task-id="Task-2-unique-id"
 			hint-text="A hint for task 2"
 			task-status="inProgress"
 			link="https://example.com"
 			deactivate-link="true"
-		>
-	</ontario-task-list>
+		></OntarioTask>
+	</OntarioTaskList>
 </div>
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                                                                                                   | Type                        | Default     |
-| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ----------- |
-| `label`    | `label`    | The label prop used for the task list heading.                                                                                                                                                                | `string`                    | `undefined` |
-| `language` | `language` | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English. | `"en" \| "fr" \| undefined` | `'en'`      |
+| Property       | Attribute       | Description                                                                                                                                                                                                   | Type                                   | Default     |
+| -------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- | ----------- |
+| `headingLevel` | `heading-level` | Allows consumers to define the heading level for the task list component. Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h3'.                                                                                  | `"h1" \| "h2" \| "h3" \| "h4" \| "h5"` | `'h2'`      |
+| `label`        | `label`         | The label prop used for the task list heading.                                                                                                                                                                | `string`                               | `undefined` |
+| `language`     | `language`      | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English. | `"en" \| "fr" \| undefined`            | `'en'`      |
 
 ---
 
