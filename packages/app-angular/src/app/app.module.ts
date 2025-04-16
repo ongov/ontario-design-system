@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ComponentLibraryModule } from '@ongov/ontario-design-system-component-library-angular/dist/component-library';
 import { RouterModule } from '@angular/router';
@@ -63,6 +63,7 @@ import { createTranslateLoader } from './translation.config';
 			enableTitleTranslate: true,
 		}),
 	],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 	providers: [TemporaryStorageService],
 	bootstrap: [AppComponent],
 })
