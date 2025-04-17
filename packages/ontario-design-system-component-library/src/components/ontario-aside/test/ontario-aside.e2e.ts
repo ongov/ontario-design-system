@@ -27,11 +27,11 @@ describe('ontario-aside', () => {
 			component.setProperty('headingType', 'h3');
 			await page.waitForChanges();
 
-			expect(element.firstChild.nodeName).toBe('H3');
+			expect(element.firstChild.nodeName).toBe('SLOT');
 
 			component.setProperty('headingType', 'h4');
 			await page.waitForChanges();
-			expect(element.firstChild.nodeName).toBe('H4');
+			expect(element.firstChild.nodeName).toBe('SLOT');
 		});
 
 		it('renders changes to the class names when the highlightColor is changed', async () => {

@@ -39,6 +39,10 @@ Example of a hint text that includes the `hint` property, which will override th
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Use hint text to help users understand how to complete fields in a form.
+
 ## Properties
 
 | Property          | Attribute           | Description                                                                                                                                                                       | Type                              | Default     |
@@ -59,6 +63,12 @@ Type: `Promise<string | undefined>`
 
 Promise<string | undefined>
 
+## Shadow Parts
+
+| Part          | Description                                                                                             |
+| ------------- | ------------------------------------------------------------------------------------------------------- |
+| `"hint-text"` | The container for the hint text content. This part can be used to apply custom styles to the hint text. |
+
 ## Dependencies
 
 ### Used by
@@ -68,6 +78,7 @@ Promise<string | undefined>
 - [ontario-input](../ontario-input)
 - [ontario-radio-buttons](../ontario-radio-buttons)
 - [ontario-search-box](../ontario-search-box)
+- [ontario-task](../ontario-task)
 - [ontario-textarea](../ontario-textarea)
 
 ### Graph
@@ -79,6 +90,7 @@ graph TD;
   ontario-input --> ontario-hint-text
   ontario-radio-buttons --> ontario-hint-text
   ontario-search-box --> ontario-hint-text
+  ontario-task --> ontario-hint-text
   ontario-textarea --> ontario-hint-text
   style ontario-hint-text fill:#f9f,stroke:#333,stroke-width:4px
 ```

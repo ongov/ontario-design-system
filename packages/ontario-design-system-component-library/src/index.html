@@ -58,6 +58,7 @@
 						<li><a href="#page-alerts">Page alerts</a></li>
 						<li><a href="#radio-buttons">Radio buttons</a></li>
 						<li><a href="#tables">Tables</a></li>
+						<li><a href="#tasks">Tasks</a></li>
 						<li><a href="#textareas">Textareas</a></li>
 						<li><a href="#text-inputs">Text inputs</a></li>
 						<li><a href="#date-input">Date input</a></li>
@@ -89,7 +90,7 @@
 					<div>
 						<h2 id="badges">Badges</h2>
 						<ontario-badge>Default</ontario-badge>
-						<ontario-badge colour="light-teal">Default light</ontario-badge>
+						<ontario-badge colour="lightTeal">Default light</ontario-badge>
 						<ontario-badge colour="black">Neutral</ontario-badge>
 						<ontario-badge colour="grey">Neutral light</ontario-badge>
 						<hr />
@@ -1045,6 +1046,41 @@
 							]'
 						>
 						</ontario-table>
+						<hr />
+					</div>
+
+					<!-- Tasks -->
+					<div>
+						<h2 id="tasks">Tasks</h2>
+
+						<ontario-task-list heading-level="h6" label="Task list collection" language="en">
+							<ontario-task
+								label="Task 1"
+								task-id="Task-1-unique-id"
+								heading-level="h2"
+								hint-text="A hint for task 1"
+								task-status="completed"
+								link="https://example.com"
+								language="en"
+							></ontario-task>
+							<ontario-task
+								label="Task 2"
+								task-id="Task-2-unique-id"
+								hint-text="A hint for task 2"
+								task-status="inProgress"
+								link="https://example.com"
+								deactivate-link="true"
+								language="en"
+							>
+							</ontario-task>
+							<ontario-task label="Task 3" task-id="Task-3-unique-id" task-status="notStarted" language="en">
+							</ontario-task>
+							<ontario-task label="Task 4" task-id="Task-4-unique-id" task-status="optional" language="en">
+							</ontario-task>
+							<ontario-task label="Task 5" task-id="Task-5-unique-id" task-status="error" language="en"> </ontario-task>
+							<ontario-task label="Task 6" task-id="Task-6-unique-id" task-status="cannotStartYet" language="en">
+							</ontario-task>
+						</ontario-task-list>
 						<hr />
 					</div>
 
