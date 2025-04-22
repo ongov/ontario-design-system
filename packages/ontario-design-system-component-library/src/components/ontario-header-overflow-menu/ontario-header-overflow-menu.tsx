@@ -173,6 +173,15 @@ export class OntarioHeaderApplicationMenu {
 		this.parseMenuItems();
 	}
 
+	componentDidLoad() {
+		const focusableElements = this.menu.querySelectorAll('.ontario-menu-item');
+		focusableElements.forEach((element, index) => {
+			element.addEventListener('focus', () => {
+				this.currentIndex = index;
+			});
+		});
+	}
+
 	/**
 	 * Assigning values to elements to use them as ref
 	 */
