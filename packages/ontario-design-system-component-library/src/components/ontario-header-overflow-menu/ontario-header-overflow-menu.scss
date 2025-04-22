@@ -92,4 +92,8 @@ $navigation-link-bg--hover: #e5e5e5;
 .ontario-application-navigation.ontario-navigation--open {
 	background: colours.$ontario-colour-white;
 	z-index: zIndex.$ontario-z-index-above-high;
+
+	@media screen and (max-width: breakpoints.$medium-breakpoint) {
+		z-index: zIndex.$ontario-z-index-above-medium; // behind header for animation purposes
+	}
 }

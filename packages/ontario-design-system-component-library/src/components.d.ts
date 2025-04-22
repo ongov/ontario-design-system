@@ -203,6 +203,11 @@ export namespace Components {
          */
         "headerColour"?: HeaderColour;
         /**
+          * The heading level that the label will be rendered as.
+          * @example <ontario-card 	heading-level="h4" 	label="Card Title 1" >
+         */
+        "headingLevel": HeadingLevel;
+        /**
           * The position of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
           * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
          */
@@ -3258,6 +3263,11 @@ declare namespace LocalJSX {
           * Set the card's header colour.  This is optional.
          */
         "headerColour"?: HeaderColour;
+        /**
+          * The heading level that the label will be rendered as.
+          * @example <ontario-card 	heading-level="h4" 	label="Card Title 1" >
+         */
+        "headingLevel"?: HeadingLevel;
         /**
           * The position of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
           * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
