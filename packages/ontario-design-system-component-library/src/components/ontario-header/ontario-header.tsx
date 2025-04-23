@@ -234,7 +234,7 @@ export class OntarioHeader {
 		if (this.menuToggled && event.key === 'Escape') {
 			this.menuToggled = false;
 			this.menuButtonToggled.emit(this.menuToggled);
-			this.returnFocusToMenuButton();
+			this.focusMenuButton();
 		}
 	}
 
@@ -378,22 +378,6 @@ export class OntarioHeader {
 	}
 
 	/**
-	 * Returns focus to the menu button when the menu is closed.
-	 *
-	 * The `setTimeout` is used to ensure that the focus logic executes after the DOM updates
-	 * caused by closing the menu. Without the timeout, the focus might not work as expected
-	 * because the DOM changes (e.g., removing focusable elements) might not have completed yet.
-	 */
-	private returnFocusToMenuButton() {
-		const menuToggleButton = this.el.shadowRoot?.querySelector('.ontario-header__menu-toggler') as HTMLElement;
-		if (menuToggleButton) {
-			setTimeout(() => {
-				menuToggleButton.focus();
-			}, 0);
-		}
-	}
-
-	/**
 	 * Generate a link to the given image based on the base asset path.
 	 * @param imageName Name of the image to build the path to
 	 * @returns Path to image with asset path
@@ -513,16 +497,14 @@ export class OntarioHeader {
 	}
 
 	/**
-	 * Handles the focus when menu/toggle button is clicked.
+	 * Handles the search focus when the search toggle button is clicked.
 	 * When search button is clicked, the search bar is in focus,
 	 * when the closed button is clicked, the search button is back into focus.
-	 * When the menu is closed, the menu button should be out of focus.
 	 */
 	componentDidUpdate() {
 		if (this.type == 'ontario') {
 			if (this.searchToggle === true) this.searchBar.focus();
 			if (this.searchToggle === false) this.searchButton.focus();
-			if (this.menuToggled === false) this.menuButton.blur();
 		}
 	}
 
