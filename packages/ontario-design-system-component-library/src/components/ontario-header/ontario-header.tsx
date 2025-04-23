@@ -234,6 +234,7 @@ export class OntarioHeader {
 		if (this.menuToggled && event.key === 'Escape') {
 			this.menuToggled = false;
 			this.menuButtonToggled.emit(this.menuToggled);
+			this.returnFocusToMenuButton();
 		}
 	}
 
@@ -374,6 +375,22 @@ export class OntarioHeader {
 			}
 		}
 		return;
+	}
+
+	/**
+	 * Returns focus to the menu button when the menu is closed.
+	 *
+	 * The `setTimeout` is used to ensure that the focus logic executes after the DOM updates
+	 * caused by closing the menu. Without the timeout, the focus might not work as expected
+	 * because the DOM changes (e.g., removing focusable elements) might not have completed yet.
+	 */
+	private returnFocusToMenuButton() {
+		const menuToggleButton = this.el.shadowRoot?.querySelector('.ontario-header__menu-toggler') as HTMLElement;
+		if (menuToggleButton) {
+			setTimeout(() => {
+				menuToggleButton.focus();
+			}, 0);
+		}
 	}
 
 	/**
