@@ -1,3 +1,5 @@
+import { OntarioFormContainer, OntarioFieldset, OntarioInput, OntarioDropdownList, OntarioTextarea, OntarioButton } from '@ongov/ontario-design-system-component-library-react';
+
 # ontario-form-container
 
 The `ontario-form-container` component defines vertical spacing (referred to as _gap_) between child form elements within a container. It ensures consistent and accessible spacing between form elements, aligning with design tokens from the Ontario Design System.
@@ -76,6 +78,41 @@ No `gap` prop is required when using the default gap option.
 </form>
 ```
 
+<form>
+	<OntarioFormContainer>
+		<OntarioFieldset legendSize="large" legend="What is your delivery address?">
+			<OntarioInput
+				id="delivery-address-form-line-1"
+				caption="Address line 1"
+				required
+				name="delivery-address-form-line-1"
+				hintText="Street and number or P.O. box."
+				enableLiveValidation
+				requiredValidationMessage="Please enter your address"
+			>
+			</OntarioInput
+				caption="Address line 2"
+				name="delivery-address-form-line-2"
+				hintText="Apartment, suite, unit, building, etc."
+			>
+			</OntarioInput>
+			<OntarioDropdownList
+				caption="Province/territory"
+				name="delivery-address-form-province-selection-form"
+				elementId="delivery-address-form-province-territory"
+				required
+				isEmptyStartOption="true"
+				options='{[
+					{ "value": "ON", "label": "Ontario" },
+					{ "value": "QC", "label": "Quebec" },
+					{ "value": "SK", "label": "Saskatchewan" }
+				]}'
+			>
+			</OntarioDropdownList>
+		</OntarioFieldset>
+	</OntarioFormContainer>
+</form>
+
 ### Mixed gap example
 
 This example uses both default and condensed gaps.
@@ -108,6 +145,33 @@ This example uses both default and condensed gaps.
 	</ontario-form-container>
 </form>
 ```
+
+<form>
+	<OntarioFormContainer>
+		<OntarioFieldset legendSize="large" legend="What is your delivery address?">
+			<OntarioInput
+				name="email"
+				inputWidth="20-char-width"
+				caption='{
+                    "captionText": "Email",
+                    "captionType": "large"
+                }'
+				required="true"
+			></OntarioInput>
+			<OntarioFormContainer gap="condensed">
+				<OntarioTextarea
+					name="comments"
+					caption='{
+                        "captionText": "Comments",
+                        "captionType": "large"
+                    }'
+					required="true"
+				></OntarioTextarea>
+				<OntarioButton type="secondary">✅ Share my feedback</OntarioButton>
+			</OntarioFormContainer>
+		</OntarioFieldset>
+	</OntarioFormContainer>
+</form>
 
 ## Best Practices
 
