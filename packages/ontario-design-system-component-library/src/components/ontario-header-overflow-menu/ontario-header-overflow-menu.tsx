@@ -99,8 +99,7 @@ export class OntarioHeaderApplicationMenu {
 	@Listen('keydown', { target: 'window' })
 	handleKeyDown(event: KeyboardEvent) {
 		if (this.menuIsOpen) {
-			const focusableElements = this.menu.querySelectorAll('.ontario-menu-item');
-			const focusableArray = Array.prototype.slice.call(focusableElements);
+			const focusableElements: NodeListOf<HTMLElement> = this.menu.querySelectorAll('.ontario-menu-item');
 
 			switch (event.key) {
 				case 'ArrowDown':
@@ -108,20 +107,35 @@ export class OntarioHeaderApplicationMenu {
 					if (this.currentIndex === -1 || this.currentIndex === undefined) {
 						this.currentIndex = 0;
 					} else {
-						this.currentIndex = (this.currentIndex + 1) % focusableArray.length;
+						this.currentIndex = (this.currentIndex + 1) % focusableElements.length;
 					}
-					(focusableArray[this.currentIndex] as HTMLElement).focus();
+					focusableElements[this.currentIndex].focus();
+					/**
+					 * Tried other ways of triggering this function to condense code via a watch on currentIndex,
+					 * and also tried sticking at the bottom of the switch's parent if statement.
+					 *
+					 * Both attempts led to inconsistent results (e.g. the aria message was out of sync with currentIndex)
+					 * or just didn't appear at all. Setting this at the source seems to have the best outcome.
+					 */
 					this.updateAriaLive(this.currentIndex);
 					break;
 				case 'ArrowUp':
 					event.preventDefault();
 					if (this.currentIndex === -1 || this.currentIndex === undefined) {
-						this.currentIndex = focusableArray.length - 1;
+						this.currentIndex = focusableElements.length - 1;
 					} else {
-						this.currentIndex = (this.currentIndex - 1 + focusableArray.length) % focusableArray.length;
+						this.currentIndex = (this.currentIndex - 1 + focusableElements.length) % focusableElements.length;
 					}
-					(focusableArray[this.currentIndex] as HTMLElement).focus();
+					focusableElements[this.currentIndex].focus();
 					this.updateAriaLive(this.currentIndex);
+					break;
+				case 'Tab':
+					focusableElements.forEach((element, index) => {
+						element.addEventListener('focus', () => {
+							this.currentIndex = index;
+							this.updateAriaLive(this.currentIndex);
+						});
+					});
 					break;
 			}
 		}

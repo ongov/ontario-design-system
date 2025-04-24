@@ -234,6 +234,7 @@ export class OntarioHeader {
 		if (this.menuToggled && event.key === 'Escape') {
 			this.menuToggled = false;
 			this.menuButtonToggled.emit(this.menuToggled);
+			this.focusMenuButton();
 		}
 	}
 
@@ -496,16 +497,14 @@ export class OntarioHeader {
 	}
 
 	/**
-	 * Handles the focus when menu/toggle button is clicked.
+	 * Handles the search focus when the search toggle button is clicked.
 	 * When search button is clicked, the search bar is in focus,
 	 * when the closed button is clicked, the search button is back into focus.
-	 * When the menu is closed, the menu button should be out of focus.
 	 */
 	componentDidUpdate() {
 		if (this.type == 'ontario') {
 			if (this.searchToggle === true) this.searchBar.focus();
 			if (this.searchToggle === false) this.searchButton.focus();
-			if (this.menuToggled === false) this.menuButton.blur();
 		}
 	}
 
