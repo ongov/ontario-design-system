@@ -23,6 +23,7 @@ export const config: Config = {
 		reactOutputTarget({
 			outDir: '../ontario-design-system-component-library-react/src/components',
 			stencilPackageName: '@ongov/ontario-design-system-component-library',
+			hydrateModule: '@ongov/ontario-design-system-component-library/hydrate',
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@ongov/ontario-design-system-component-library',
@@ -63,6 +64,9 @@ export const config: Config = {
 		},
 		{
 			type: 'dist-custom-elements',
+		},
+		{
+			type: 'dist-hydrate-script',
 		},
 		{
 			type: 'docs-readme',

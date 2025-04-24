@@ -1,0 +1,12 @@
+{
+	"name": "@ongov/ontario-design-system-component-library/hydrate",
+	"description": "OntarioDesignSystemComponents component hydration app.",
+	"main": "index.js",
+	"types": "index.d.ts",
+	"exports": {
+		".": {
+			"require": "./index.js",
+			"import": "./index.mjs"
+		}
+	}
+}

@@ -11,6 +11,7 @@
 	"files": [
 		"dist/",
 		"loader/",
+		"hydrate/",
 		"src/",
 		"www/",
 		"LICENSE",
@@ -41,7 +42,7 @@
 	},
 	"dependencies": {
 		"@ongov/ontario-design-system-global-styles": "5.0.0-alpha.3",
-		"@stencil/core": "^4.23.0",
+		"@stencil/core": "^4.30.0",
 		"dotenv": "^16.4.5",
 		"uuid": "^11.0.5"
 	},
