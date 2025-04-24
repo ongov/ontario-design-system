@@ -272,8 +272,8 @@ importers:
         specifier: ^1.6.22
         version: 1.6.22(react@17.0.2)
       '@ongov/ontario-design-system-component-library-react':
-        specifier: ^5.0.0-alpha.5
-        version: 5.0.0-alpha.10(@stencil/core@4.25.1)(@types/react@18.3.12)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
+        specifier: 5.0.0-alpha.5
+        version: link:../ontario-design-system-component-library-react
       clsx:
         specifier: ^1.2.1
         version: 1.2.1
@@ -20986,16 +20986,6 @@ snapshots:
     transitivePeerDependencies:
       - zone.js
 
-  '@ongov/ontario-design-system-component-library-react@5.0.0-alpha.10(@stencil/core@4.25.1)(@types/react@18.3.12)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)':
-    dependencies:
-      '@ongov/ontario-design-system-component-library': 5.0.0-alpha.10
-      '@stencil/react-output-target': 0.7.4(@stencil/core@4.25.1)(@types/react@18.3.12)(react@17.0.2)
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-    transitivePeerDependencies:
-      - '@stencil/core'
-      - '@types/react'
-
   '@ongov/ontario-design-system-component-library-react@5.0.0-alpha.10(@stencil/core@4.25.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@ongov/ontario-design-system-component-library': 5.0.0-alpha.10
@@ -21490,18 +21480,6 @@ snapshots:
       '@stencil/core': 4.25.1
 
   '@stencil/core@4.25.1': {}
-
-  '@stencil/react-output-target@0.7.4(@stencil/core@4.25.1)(@types/react@18.3.12)(react@17.0.2)':
-    dependencies:
-      '@lit/react': 1.0.7(@types/react@18.3.12)
-      '@stencil/core': 4.25.1
-      html-react-parser: 5.2.2(@types/react@18.3.12)(react@17.0.2)
-      react-dom: 18.3.1(react@17.0.2)
-      style-object-to-css-string: 1.1.3
-      ts-morph: 22.0.0
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
 
   '@stencil/react-output-target@0.7.4(@stencil/core@4.25.1)(@types/react@18.3.12)(react@18.3.1)':
     dependencies:
@@ -26034,16 +26012,6 @@ snapshots:
       relateurl: 0.2.7
       terser: 5.37.0
 
-  html-react-parser@5.2.2(@types/react@18.3.12)(react@17.0.2):
-    dependencies:
-      domhandler: 5.0.3
-      html-dom-parser: 5.0.13
-      react: 17.0.2
-      react-property: 2.0.2
-      style-to-js: 1.1.16
-    optionalDependencies:
-      '@types/react': 18.3.12
-
   html-react-parser@5.2.2(@types/react@18.3.12)(react@18.3.1):
     dependencies:
       domhandler: 5.0.3
@@ -30231,12 +30199,6 @@ snapshots:
       object-assign: 4.1.1
       react: 17.0.2
       scheduler: 0.20.2
-
-  react-dom@18.3.1(react@17.0.2):
-    dependencies:
-      loose-envify: 1.4.0
-      react: 17.0.2
-      scheduler: 0.23.2
 
   react-dom@18.3.1(react@18.3.1):
     dependencies:
