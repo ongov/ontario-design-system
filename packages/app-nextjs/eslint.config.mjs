@@ -11,4 +11,10 @@ const compat = new FlatCompat({
 
 const eslintConfig = [...compat.extends('next/core-web-vitals', 'next/typescript')];
 
+module.exports = {
+	rules: {
+		'no-empty-function': ['error', { allow: ['arrowFunctions', 'functions', 'methods'] }],
+	},
+};
+
 export default eslintConfig;

@@ -1,15 +1,11 @@
-'use client';
+export const dynamic = 'force-dynamic';
 
-// import { OntarioButton } from '@ongov/ontario-design-system-component-library-react';
-import { OntarioBadge } from '@ongov/ontario-design-system-component-library-react';
+import OntarioBadgeWrapper from './components/OntarioBadgeWrapper';
 
-export default function Home() {
+export default function Page() {
 	return (
-		<main>
-			{/* 
-			// @ts-ignore */}
-			<OntarioBadge label="yo"></OntarioBadge>
-			{/* <OntarioButton type="primary" label="Hello!" /> */}
-		</main>
+		<div>
+			<OntarioBadgeWrapper />
+		</div>
 	);
 }
