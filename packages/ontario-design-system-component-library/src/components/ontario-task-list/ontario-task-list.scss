@@ -1,0 +1,14 @@
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+
+.ontario-task-list {
+	border-top: globalFunctions.px-to-rem(2) solid colours.$ontario-greyscale-20;
+	padding: spacing.$spacing-0;
+}
+
+.ontario-task-list__item {
+	max-width: globalVariables.$full-width;
+	list-style-type: none;
+}

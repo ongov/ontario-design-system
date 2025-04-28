@@ -243,6 +243,54 @@
 			"fr": "fr"
 		}
 	},
+	"taskGroup": {
+		"completed": {
+			"en": "You have completed",
+			"fr": "Vous avez complété"
+		},
+		"outOf": {
+			"en": "out of",
+			"fr": "sur"
+		},
+		"tasks": {
+			"en": "tasks.",
+			"fr": "tâches."
+		}
+	},
+	"taskStatus": {
+		"taskStatus": {
+			"en": "Task Status:",
+			"fr": "Statut de la tâche:"
+		},
+		"notStarted": {
+			"en": "Not Started",
+			"fr": "Pas commencé"
+		},
+		"inProgress": {
+			"en": "In Progress",
+			"fr": "En cours"
+		},
+		"completed": {
+			"en": "Completed",
+			"fr": "Terminé"
+		},
+		"cannotStartYet": {
+			"en": "Cannot Start Yet",
+			"fr": "Peux pas encore commencer"
+		},
+		"error": {
+			"en": "Error",
+			"fr": "Erreur"
+		},
+		"optional": {
+			"en": "Optional",
+			"fr": "Facultatif"
+		}
+	},
+	"newWindow": {
+		"en": "opens in a new window",
+		"fr": "s'ouvre dans une nouvelle fenêtre"
+	},
 	"required": {
 		"en": "required",
 		"fr": "obligatoire"

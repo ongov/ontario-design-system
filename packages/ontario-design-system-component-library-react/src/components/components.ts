@@ -580,6 +580,14 @@ import {
 	defineCustomElement as defineOntarioTable,
 } from '@ongov/ontario-design-system-component-library/dist/components/ontario-table.js';
 import {
+	OntarioTaskList as OntarioTaskListElement,
+	defineCustomElement as defineOntarioTaskList,
+} from '@ongov/ontario-design-system-component-library/dist/components/ontario-task-list.js';
+import {
+	OntarioTask as OntarioTaskElement,
+	defineCustomElement as defineOntarioTask,
+} from '@ongov/ontario-design-system-component-library/dist/components/ontario-task.js';
+import {
 	OntarioTextarea as OntarioTextareaElement,
 	defineCustomElement as defineOntarioTextarea,
 } from '@ongov/ontario-design-system-component-library/dist/components/ontario-textarea.js';
@@ -2415,6 +2423,32 @@ export const OntarioTable: StencilReactComponent<OntarioTableElement, OntarioTab
 		react: React,
 		events: {} as OntarioTableEvents,
 		defineCustomElement: defineOntarioTable,
+	});
+
+type OntarioTaskEvents = NonNullable<unknown>;
+
+export const OntarioTask: StencilReactComponent<OntarioTaskElement, OntarioTaskEvents> = /*@__PURE__*/ createComponent<
+	OntarioTaskElement,
+	OntarioTaskEvents
+>({
+	tagName: 'ontario-task',
+	elementClass: OntarioTaskElement,
+	// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+	react: React,
+	events: {} as OntarioTaskEvents,
+	defineCustomElement: defineOntarioTask,
+});
+
+type OntarioTaskListEvents = NonNullable<unknown>;
+
+export const OntarioTaskList: StencilReactComponent<OntarioTaskListElement, OntarioTaskListEvents> =
+	/*@__PURE__*/ createComponent<OntarioTaskListElement, OntarioTaskListEvents>({
+		tagName: 'ontario-task-list',
+		elementClass: OntarioTaskListElement,
+		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+		react: React,
+		events: {} as OntarioTaskListEvents,
+		defineCustomElement: defineOntarioTaskList,
 	});
 
 type OntarioTextareaEvents = {

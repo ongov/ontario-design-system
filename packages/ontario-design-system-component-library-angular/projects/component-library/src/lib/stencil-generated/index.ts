@@ -140,5 +140,7 @@ export const DIRECTIVES = [
 	d.OntarioSearchBox,
 	d.OntarioStepIndicator,
 	d.OntarioTable,
+	d.OntarioTask,
+	d.OntarioTaskList,
 	d.OntarioTextarea,
 ];
