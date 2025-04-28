@@ -583,10 +583,37 @@ export class OntarioHeader {
 	) {
 		c.detach();
 		this.el = r.nativeElement;
+		proxyOutputs(this, this.el, ['menuButtonToggled']);
 	}
 }
 
-export declare interface OntarioHeader extends Components.OntarioHeader {}
+export declare interface OntarioHeader extends Components.OntarioHeader {
+	menuButtonToggled: EventEmitter<CustomEvent<boolean>>;
+}
+
+@ProxyCmp({
+	inputs: ['menuItems'],
+})
+@Component({
+	selector: 'ontario-header-overflow-menu',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['menuItems'],
+})
+export class OntarioHeaderOverflowMenu {
+	protected el: HTMLOntarioHeaderOverflowMenuElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioHeaderOverflowMenu extends Components.OntarioHeaderOverflowMenu {}
 
 @ProxyCmp({
 	inputs: ['content', 'elementId', 'hint', 'hintContentType'],

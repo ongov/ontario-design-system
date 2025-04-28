@@ -17,6 +17,7 @@ export const DIRECTIVES = [
 	d.OntarioFieldset,
 	d.OntarioFooter,
 	d.OntarioHeader,
+	d.OntarioHeaderOverflowMenu,
 	d.OntarioHintExpander,
 	d.OntarioHintText,
 	d.OntarioIconAccessibility,

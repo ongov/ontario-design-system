@@ -10,9 +10,11 @@ export interface MenuItem {
 export interface ApplicationHeaderInfo {
 	title: string;
 	href?: string;
-	maxSubheaderDesktopLinks?: number;
-	maxSubheaderTabletLinks?: number;
-	maxSubheaderMobileLinks?: number;
+	maxSubheaderLinks?: {
+		desktop?: number;
+		tablet?: number;
+		mobile?: number;
+	};
 }
 
 export interface LanguageToggleOptions {
@@ -28,3 +30,5 @@ export interface OntarioMenuItems {
 }
 
 export type OntarioHeaderType = 'application' | 'ontario' | 'serviceOntario';
+
+export type DeviceType = 'desktop' | 'tablet' | 'mobile';

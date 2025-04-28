@@ -15,19 +15,25 @@
 		</ontario-critical-alert>
 		<ontario-header
 			id="ontarioHeader"
-			type="serviceOntario"
+			type="ontario"
 			application-header-info='{
 				"title": "Application name",
 				"href": "/application-homepage",
-				"maxSubheaderDesktopLinks": "3",
-				"maxSubheaderTabletLinks": "2",
-				"maxSubheaderMobileLinks": "1"
+				"maxSubheaderLinks": {
+					"desktop": "3",
+					"tablet": "2",
+					"mobile": "1"
+				}
 			}'
 			language-toggle-options='{
 				"englishLink": "/",
 				"frenchLink" : "/french.html"
 			}'
 		>
+			<ontario-header-overflow-menu
+				slot="menu-overflow"
+				menu-items='[{"title":"Item 1","href":"/item-1"},{"title":"Item 2","href":"/item-2"},{"title":"Item 3","href":"/item-3"},{"title":"Item 4","href":"/item-4"}]'
+			></ontario-header-overflow-menu>
 		</ontario-header>
 
 		<main>

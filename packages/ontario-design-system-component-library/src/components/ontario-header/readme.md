@@ -5,7 +5,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Use the `ontario` type header for all pages that are part of the main ontario.ca website. This header is mandatory.
 
-Use the `applicaton` type header for applications and subsites outside of the main ontario.ca website.
+Use the `application` type header for applications and subsites outside of the main ontario.ca website.
 
 Use the `serviceOntario` type header for ServiceOntario sites/apps. This type is for use by ServiceOntario teams only.
 
@@ -294,17 +294,25 @@ To ensure best practices, it is important to limit the number of navigation link
 | `menuItems`             | `menu-items`              | The items that will go inside the menu.                                                                                                                                                                                                                | `MenuItem[] \| string`                                        | `undefined`     |
 | `type`                  | `type`                    | The type of header.                                                                                                                                                                                                                                    | `"application" \| "ontario" \| "serviceOntario" \| undefined` | `'application'` |
 
+## Events
+
+| Event               | Description | Type                   |
+| ------------------- | ----------- | ---------------------- |
+| `menuButtonToggled` |             | `CustomEvent<boolean>` |
+
 ## Dependencies
 
 ### Depends on
 
 - [ontario-language-toggle](../ontario-language-toggle)
+- [ontario-header-overflow-menu](../ontario-header-overflow-menu)
 
 ### Graph
 
 ```mermaid
 graph TD;
   ontario-header --> ontario-language-toggle
+  ontario-header --> ontario-header-overflow-menu
   style ontario-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
