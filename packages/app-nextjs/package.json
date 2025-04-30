@@ -1,0 +1,28 @@
+{
+	"name": "app-nextjs",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@ongov/ontario-design-system-component-library": "workspace:*",
+		"@ongov/ontario-design-system-component-library-react": "workspace:*",
+		"next": "15.3.1",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
+	},
+	"devDependencies": {
+		"@eslint/eslintrc": "^3",
+		"@stencil/ssr": "^0.1.0",
+		"@types/node": "^22.10.1",
+		"@types/react": "^18.3.12",
+		"@types/react-dom": "^18.3.1",
+		"eslint": "^9",
+		"eslint-config-next": "15.3.1",
+		"typescript": "^5"
+	}
+}

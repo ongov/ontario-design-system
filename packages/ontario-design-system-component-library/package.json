@@ -12,11 +12,32 @@
 		"dist/",
 		"loader/",
 		"src/",
+		"hydrate/",
 		"www/",
 		"LICENSE",
 		"package.json",
 		"readme.md"
 	],
+	"exports": {
+		".": {
+			"types": "./dist/types/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs.js",
+			"default": "./dist/index.mjs"
+		},
+		"./loader": {
+			"types": "./loader/index.d.ts",
+			"import": "./loader/index.js",
+			"require": "./loader/index.js",
+			"default": "./loader/index.js"
+		},
+		"./components": {
+			"types": "./dist/types/components.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs.js",
+			"default": "./dist/index.js"
+		}
+	},
 	"scripts": {
 		"prebuild": "pnpm run build:config",
 		"build": "pnpm run build:stencil && pnpm run format && pnpm run docs:copy:readme",
