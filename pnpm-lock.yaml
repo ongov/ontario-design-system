@@ -476,9 +476,9 @@ importers:
       svgson:
         specifier: ^5.3.1
         version: 5.3.1
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@22.10.10)(typescript@5.7.3)
+      tsx:
+        specifier: ^4.19.4
+        version: 4.19.4
       typescript:
         specifier: ^5.6.3
         version: 5.7.3
@@ -16688,6 +16688,12 @@ packages:
     engines: { node: '>= 6' }
     peerDependencies:
       typescript: '>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta'
+
+  tsx@4.19.4:
+    resolution:
+      { integrity: sha512-gK5GVzDkJK1SI1zwHf32Mqxf2tSJkNx+eYcNly5+nHvWqXUJYUkWBQtKauoESz3ymezAI++ZwT855x5p5eop+Q== }
+    engines: { node: '>=18.0.0' }
+    hasBin: true
 
   tuf-js@2.2.1:
     resolution:
@@ -35353,6 +35359,13 @@ snapshots:
     dependencies:
       tslib: 1.14.1
       typescript: 5.7.3
+
+  tsx@4.19.4:
+    dependencies:
+      esbuild: 0.25.3
+      get-tsconfig: 4.10.0
+    optionalDependencies:
+      fsevents: 2.3.3
 
   tuf-js@2.2.1:
     dependencies:
