@@ -6,7 +6,7 @@ const nextConfig = {};
 export default stencilSSR({
 	module: import('@ongov/ontario-design-system-component-library-react'),
 	from: '@ongov/ontario-design-system-component-library-react',
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate/index.js'),
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
 	serializeShadowRoot: {
 		scoped: ['ontario-button'],
 		default: 'declarative-shadow-dom',
