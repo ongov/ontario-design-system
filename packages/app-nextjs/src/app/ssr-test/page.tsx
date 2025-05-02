@@ -1,17 +1,10 @@
-'use client';
-
-import { useState } from 'react';
 import { OntarioButton } from '@ongov/ontario-design-system-component-library-react';
 
-export default function ClientTestPage() {
-	const [count, setCount] = useState(0);
-
+export default function SSRTestPage() {
 	return (
 		<main>
-			<h2>Client-Only Version</h2>
-			<OntarioButton type="primary" onClick={() => setCount(count + 1)}>
-				Clicked {count} times
-			</OntarioButton>
+			<h2>SSR Version</h2>
+			<OntarioButton type="primary">This button is server-rendered</OntarioButton>
 		</main>
 	);
 }
