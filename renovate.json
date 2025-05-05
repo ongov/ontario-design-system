@@ -1,0 +1,35 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"onboarding": true,
+	"onboardingConfig": {
+		"extends": ["config:base"]
+	},
+	"extends": [
+		"config:base",
+		"group:allNonMajor",
+		":combinePatchMinorReleases",
+		":preserveSemverRanges",
+		":disableRateLimiting"
+	],
+	"enabledManagers": ["pnpm"],
+	"pnpm": {
+		"enabled": true,
+		"workspaces": true
+	},
+	"dependencyDashboard": true,
+	"automerge": false,
+	"schedule": ["before 3am on Sunday"],
+	"timezone": "UTC",
+	"semanticCommits": "enabled",
+	"labels": ["dependencies", "renovate"],
+	"prHourlyLimit": 5,
+	"prConcurrentLimit": 10,
+	"packageRules": [
+		{
+			"description": "Automerge devDependencies",
+			"matchDepTypes": ["devDependencies"],
+			"automerge": true,
+			"groupName": "devDependencies"
+		}
+	]
+}
