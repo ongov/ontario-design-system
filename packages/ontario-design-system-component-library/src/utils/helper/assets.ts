@@ -18,7 +18,8 @@ export function getImageAssetSrcPath(imageName: string, assetBasePath?: string):
 
 	try {
 		return getAssetPath(`./assets/${imageName}`);
-	} catch {
+	} catch (error) {
+		console.warn(`getAssetPath failed for ${imageName}, falling back to /assets/:`, error);
 		return `/assets/${imageName}`;
 	}
 }
