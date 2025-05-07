@@ -29,3 +29,4 @@ jobs:
           # GitHub and NPM tokens must be set in the repository secrets
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          RENOVATE_TOKEN: ${{ secrets.GH_TOKEN }}
