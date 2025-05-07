@@ -33,4 +33,3 @@ jobs:
           RENOVATE_REPOSITORIES: ${{ github.repository }}
           LOG_LEVEL: debug
           REPOSITORY: ${{ github.repository }}
-          RENOVATE_CONFIG_FILE: .github/renovate.json
