@@ -9,9 +9,14 @@ export default function ClientTestPage() {
 	return (
 		<main>
 			<h2>Client-Only Version</h2>
-			<OntarioButton type="primary" onClick={() => setCount(count + 1)}>
-				Clicked {count} times
-			</OntarioButton>
+			<OntarioButton
+				type="primary"
+				onClick={() => {
+					console.log('Clicked: count:', count);
+					setCount(count + 1);
+				}}
+				label={`Clicked ${count} times`}
+			></OntarioButton>
 		</main>
 	);
 }
