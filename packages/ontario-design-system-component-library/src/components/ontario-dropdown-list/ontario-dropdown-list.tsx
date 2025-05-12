@@ -1,16 +1,4 @@
-import {
-	Component,
-	State,
-	Element,
-	h,
-	Prop,
-	Event,
-	Listen,
-	Watch,
-	getAssetPath,
-	EventEmitter,
-	AttachInternals,
-} from '@stencil/core';
+import { Component, State, Element, h, Prop, Event, Listen, Watch, EventEmitter, AttachInternals } from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
 import { DropdownOption } from './dropdown-option.interface';
@@ -27,6 +15,7 @@ import {
 } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { hasMultipleTrueValues } from '../../utils/helper/utils';
+import { getImageAssetSrcPath } from '../../utils/helper/assets';
 import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
 import { InputFocusBlurEvent, EventType, InputInteractionEvent } from '../../utils/events/event-handler.interface';
@@ -442,7 +431,7 @@ export class OntarioDropdownList implements Dropdown {
 
 	private getDropdownArrow() {
 		return {
-			backgroundImage: `url(${getAssetPath('./assets/ontario-material-dropdown-arrow-48px.svg')})`,
+			backgroundImage: `url(${getImageAssetSrcPath('ontario-material-dropdown-arrow-48px.svg')})`,
 		};
 	}
 
