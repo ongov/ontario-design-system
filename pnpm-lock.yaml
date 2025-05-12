@@ -192,6 +192,12 @@ importers:
       '@ongov/ontario-design-system-component-library-react':
         specifier: workspace:*
         version: link:../ontario-design-system-component-library-react
+      '@ongov/ontario-design-system-global-styles':
+        specifier: workspace:*
+        version: link:../ontario-design-system-global-styles
+      copyfiles:
+        specifier: ^2.4.1
+        version: 2.4.1
       next:
         specifier: 15.3.1
         version: 15.3.1(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.83.4)
