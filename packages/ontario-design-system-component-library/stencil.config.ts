@@ -106,7 +106,7 @@ export const config: Config = {
 	},
 	testing: {
 		transform: {
-			'^.+\\.svg$': '<rootDir>/src/utils/svgTransform.js',
+			'^.+\\.svg$': '<rootDir>/src/utils/svgTransform.cjs',
 		},
 		reporters: ['default', 'jest-junit'],
 	},
