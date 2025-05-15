@@ -26,6 +26,7 @@ export default function ButtonExample() {
 				<div className="ontario-margin-top-24-!">
 					<h3 className="ontario-h4">Primary</h3>
 					<OntarioButton
+						className="ontario-margin-bottom-16-!"
 						placeholder=""
 						onPointerEnterCapture={() => {}}
 						onPointerLeaveCapture={() => {}}
