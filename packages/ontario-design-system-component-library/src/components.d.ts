@@ -15,15 +15,15 @@ import {
 } from './utils/components/callout-aside/callout-aside.interface';
 import { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 import { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
+import { HeadingLevel, Hint, HintContentType } from './utils/common/common.interface';
 import {
 	HeaderColour,
 	HorizontalImagePositionType,
 	HorizontalImageSizeType,
-	Layout,
+	LayoutDirection,
 } from './components/ontario-card/ontario-card-types';
 import { CardsPerRow } from './components/ontario-card-collection/ontario-collection-card-types';
 import { Caption } from './utils/common/input-caption/caption.interface';
-import { Hint, HintContentType } from './utils/common/common.interface';
 import { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
 import { CheckboxOption } from './components/ontario-checkbox/checkbox-option.interface';
 import {
@@ -57,6 +57,9 @@ import { HeaderLanguageToggleEventDetails } from './utils/events/common-events.i
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 import { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
+import { TaskStatuses } from './utils/common/task-statuses.enum';
+import { TaskHeadingLevel } from './components/ontario-task/ontario-task';
+import { TaskListHeadingLevel } from './components/ontario-task-list/ontario-task-list';
 export { ExpandCollapseButtonDetails } from './components/ontario-accordion/expandCollapseButtonDetails.interface';
 export { Accordion } from './components/ontario-accordion/accordion.interface';
 export { Language } from './utils/common/language-types';
@@ -67,15 +70,15 @@ export {
 } from './utils/components/callout-aside/callout-aside.interface';
 export { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 export { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
+export { HeadingLevel, Hint, HintContentType } from './utils/common/common.interface';
 export {
 	HeaderColour,
 	HorizontalImagePositionType,
 	HorizontalImageSizeType,
-	Layout,
+	LayoutDirection,
 } from './components/ontario-card/ontario-card-types';
 export { CardsPerRow } from './components/ontario-card-collection/ontario-collection-card-types';
 export { Caption } from './utils/common/input-caption/caption.interface';
-export { Hint, HintContentType } from './utils/common/common.interface';
 export { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
 export { CheckboxOption } from './components/ontario-checkbox/checkbox-option.interface';
 export {
@@ -109,6 +112,9 @@ export { HeaderLanguageToggleEventDetails } from './utils/events/common-events.i
 export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 export { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 export { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
+export { TaskStatuses } from './utils/common/task-statuses.enum';
+export { TaskHeadingLevel } from './components/ontario-task/ontario-task';
+export { TaskListHeadingLevel } from './components/ontario-task-list/ontario-task-list';
 export namespace Components {
 	interface OntarioAccordion {
 		/**
@@ -300,7 +306,7 @@ export namespace Components {
 		 * The layout direction/orientation of the card.  If no type is passed, it will default to 'vertical'.
 		 * @default 'vertical'
 		 */
-		layout?: Layout;
+		layoutDirection?: LayoutDirection;
 	}
 	interface OntarioCardCollection {
 		/**
@@ -584,6 +590,9 @@ export namespace Components {
 		 */
 		hintContentType?: HintContentType;
 	}
+	/**
+	 * Use hint text to help users understand how to complete fields in a form.
+	 */
 	interface OntarioHintText {
 		/**
 		 * The unique identifier of the element. This is optional - if no ID is passed, one will be generated.
@@ -2657,6 +2666,9 @@ declare global {
 		prototype: HTMLOntarioHintExpanderElement;
 		new (): HTMLOntarioHintExpanderElement;
 	};
+	/**
+	 * Use hint text to help users understand how to complete fields in a form.
+	 */
 	interface HTMLOntarioHintTextElement extends Components.OntarioHintText, HTMLStencilElement {}
 	var HTMLOntarioHintTextElement: {
 		prototype: HTMLOntarioHintTextElement;
@@ -3470,6 +3482,16 @@ declare global {
 		prototype: HTMLOntarioTableElement;
 		new (): HTMLOntarioTableElement;
 	};
+	interface HTMLOntarioTaskElement extends Components.OntarioTask, HTMLStencilElement {}
+	var HTMLOntarioTaskElement: {
+		prototype: HTMLOntarioTaskElement;
+		new (): HTMLOntarioTaskElement;
+	};
+	interface HTMLOntarioTaskListElement extends Components.OntarioTaskList, HTMLStencilElement {}
+	var HTMLOntarioTaskListElement: {
+		prototype: HTMLOntarioTaskListElement;
+		new (): HTMLOntarioTaskListElement;
+	};
 	interface HTMLOntarioTextareaElementEventMap {
 		inputOnInput: InputInputEvent;
 		inputOnChange: InputInteractionEvent;
@@ -3669,6 +3691,8 @@ declare global {
 		'ontario-search-box': HTMLOntarioSearchBoxElement;
 		'ontario-step-indicator': HTMLOntarioStepIndicatorElement;
 		'ontario-table': HTMLOntarioTableElement;
+		'ontario-task': HTMLOntarioTaskElement;
+		'ontario-task-list': HTMLOntarioTaskListElement;
 		'ontario-textarea': HTMLOntarioTextareaElement;
 	}
 }
@@ -3863,7 +3887,7 @@ declare namespace LocalJSX {
 		 * The layout direction/orientation of the card.  If no type is passed, it will default to 'vertical'.
 		 * @default 'vertical'
 		 */
-		layout?: Layout;
+		layoutDirection?: LayoutDirection;
 	}
 	interface OntarioCardCollection {
 		/**
@@ -4213,6 +4237,9 @@ declare namespace LocalJSX {
 		 */
 		onToggleExpanderEvent?: (event: OntarioHintExpanderCustomEvent<MouseEvent | KeyboardEvent>) => void;
 	}
+	/**
+	 * Use hint text to help users understand how to complete fields in a form.
+	 */
 	interface OntarioHintText {
 		/**
 		 * The unique identifier of the element. This is optional - if no ID is passed, one will be generated.
@@ -6161,6 +6188,8 @@ declare namespace LocalJSX {
 		'ontario-search-box': OntarioSearchBox;
 		'ontario-step-indicator': OntarioStepIndicator;
 		'ontario-table': OntarioTable;
+		'ontario-task': OntarioTask;
+		'ontario-task-list': OntarioTaskList;
 		'ontario-textarea': OntarioTextarea;
 	}
 }
@@ -6187,6 +6216,9 @@ declare module '@stencil/core' {
 			'ontario-form-container': LocalJSX.OntarioFormContainer & JSXBase.HTMLAttributes<HTMLOntarioFormContainerElement>;
 			'ontario-header': LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
 			'ontario-hint-expander': LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
+			/**
+			 * Use hint text to help users understand how to complete fields in a form.
+			 */
 			'ontario-hint-text': LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
 			'ontario-icon-accessibility': LocalJSX.OntarioIconAccessibility &
 				JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;
@@ -6367,6 +6399,8 @@ declare module '@stencil/core' {
 			'ontario-search-box': LocalJSX.OntarioSearchBox & JSXBase.HTMLAttributes<HTMLOntarioSearchBoxElement>;
 			'ontario-step-indicator': LocalJSX.OntarioStepIndicator & JSXBase.HTMLAttributes<HTMLOntarioStepIndicatorElement>;
 			'ontario-table': LocalJSX.OntarioTable & JSXBase.HTMLAttributes<HTMLOntarioTableElement>;
+			'ontario-task': LocalJSX.OntarioTask & JSXBase.HTMLAttributes<HTMLOntarioTaskElement>;
+			'ontario-task-list': LocalJSX.OntarioTaskList & JSXBase.HTMLAttributes<HTMLOntarioTaskListElement>;
 			'ontario-textarea': LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
 		}
 	}
