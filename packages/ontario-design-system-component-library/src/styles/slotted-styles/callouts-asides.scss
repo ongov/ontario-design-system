@@ -1,47 +1,11 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
 
-@use '../../utils/common/common.form-elements.scss' as common-form-elements;
-
-$spacing-units: (
-	0: spacing.$spacing-0,
-	4: spacing.$spacing-1,
-	8: spacing.$spacing-2,
-	12: spacing.$spacing-3,
-	16: spacing.$spacing-4,
-	24: spacing.$spacing-5,
-	32: spacing.$spacing-6,
-	40: spacing.$spacing-7,
-	48: spacing.$spacing-8,
-	64: spacing.$spacing-9,
-	80: spacing.$spacing-10,
-);
-
-$spacing-directions: (
-	'ontario-margin-top',
-	'ontario-margin-right',
-	'ontario-margin-bottom',
-	'ontario-margin-left',
-	'ontario-padding-top',
-	'ontario-padding-right',
-	'ontario-padding-bottom' 'ontario-padding-left'
-);
-
 ontario-aside *,
 ontario-callout * {
 	max-width: globalVariables.$standard-width;
 
 	&:last-of-type {
 		margin-bottom: spacing.$spacing-2;
-	}
-}
-
-@each $element in $form-elements {
-	@each $direction in $spacing-directions {
-		@each $key, $value in $spacing-units {
-			#{$element}.#{$direction}-#{$key}-\! {
-				display: block;
-			}
-		}
 	}
 }
