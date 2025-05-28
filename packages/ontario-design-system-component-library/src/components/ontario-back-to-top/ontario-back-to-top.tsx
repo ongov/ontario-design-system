@@ -31,7 +31,9 @@ export class OntarioBackToTop {
 	 */
 	@Listen('scroll', { target: 'window' })
 	showBackToTopButton() {
-		this.displayBackToTop = window.scrollY > this.scrollYValue;
+		if (typeof window !== 'undefined') {
+			this.displayBackToTop = window.scrollY > this.scrollYValue;
+		}
 	}
 
 	/**
@@ -53,7 +55,9 @@ export class OntarioBackToTop {
 	 * Scroll to top functionality when the Back to Top button is clicked
 	 */
 	private scrollToTop() {
-		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		if (typeof window !== 'undefined') {
+			window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		}
 	}
 
 	componentWillLoad() {

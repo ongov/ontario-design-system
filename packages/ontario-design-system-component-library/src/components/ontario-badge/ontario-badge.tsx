@@ -104,8 +104,14 @@ export class OntarioBadge {
 	 * @returns {string | null}
 	 */
 	getBadgeLabel(): string | null {
-		const badgeLabel = this.label ? this.label : this.host.textContent;
-		return badgeLabel;
+		if (this.label) return this.label;
+
+		// SSR safety check
+		if (typeof this.host?.textContent === 'string') {
+			return this.host.textContent;
+		}
+
+		return null;
 	}
 
 	componentWillLoad() {

@@ -84,10 +84,11 @@ export class OntarioLoadingIndicator {
 	validateType() {
 		const isValid = validateValueAgainstArray(this.type, ['large', 'small']);
 		if (isValid) {
-			return (this.typeState = this.type);
+			this.typeState = this.type;
 		} else {
 			this.warnDefaultType();
-			return (this.typeState = 'large');
+			this.type = 'large'; // sync the prop to prevent hydration mismatch in SSR
+			this.typeState = 'large';
 		}
 	}
 

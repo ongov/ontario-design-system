@@ -44,9 +44,16 @@ export class OntarioBlockquote implements Blockquote {
 	 */
 	@Watch('quote')
 	validateQuote() {
-		this.quoteState = this.quote ?? this.host.textContent ?? '';
+		if (typeof window === 'undefined') {
+			// Server-side rendering — don't rely on host.textContent
+			this.quoteState = this.quote ?? '';
+		} else {
+			// Client-side — safe to fall back to text content
+			this.quoteState = this.quote ?? this.host.textContent ?? '';
+		}
+
 		this.validateQuoteContent(this.quoteState);
-		this.shortQuote = this.quoteState?.length <= this.shortQuoteLength ?? true;
+		this.shortQuote = this.quoteState?.length <= this.shortQuoteLength;
 	}
 
 	/**
