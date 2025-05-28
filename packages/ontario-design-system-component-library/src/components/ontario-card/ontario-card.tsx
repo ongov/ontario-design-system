@@ -212,6 +212,27 @@ export class OntarioCard {
 	}
 
 	/**
+	 * Watch for the presence of the `label` prop.
+	 *
+	 * If no `label` is provided, a warning message will be printed.
+	 * This is important for accessibility and ensures content is properly rendered
+	 * during SSR and visible to all users.
+	 */
+	@Watch('label')
+	private validateLabel() {
+		if (!this.label || this.label.trim() === '') {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' label ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-card> ')
+				.addRegularText('was not provided. This may result in inaccessible or empty content.')
+				.printMessage();
+		}
+	}
+
+	/**
 	 * Print an invalid prop warning message.
 	 *
 	 * @param {string} propName - Name of the prop
@@ -308,6 +329,7 @@ export class OntarioCard {
 		this.validateLayoutDirection();
 		this.validateHeadingLevel();
 		this.validateHeaderColour();
+		this.validateLabel();
 	}
 
 	render() {

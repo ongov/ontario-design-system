@@ -124,6 +124,16 @@ It is important to know when the proper use-case is for a button. Often, the rol
 
 It can be confusing and frustrating for users to expect a button to trigger an action, and then they are redirected to a new page.
 
+## Technical Note: Label Fallback and SSR
+
+If no `label` prop is provided, the component will attempt to fall back to the text content placed between the opening and closing tags. This fallback works in the browser, but may not be populated during Server-Side Rendering (SSR), which can result in a blank button label.
+
+> Recommended for SSR:  
+> `<ontario-button label="Click me" />`
+
+> Avoid relying solely on inner text during SSR:  
+> `<ontario-button>Click me</ontario-button>`
+
 <!-- Auto Generated Below -->
 
 ## Properties

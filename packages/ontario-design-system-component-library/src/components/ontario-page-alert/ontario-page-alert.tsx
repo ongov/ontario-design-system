@@ -1,5 +1,7 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Watch } from '@stencil/core';
 import { PageAlert, PageAlertType } from './ontario-page-alert.interface';
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 @Component({
 	tag: 'ontario-page-alert',
@@ -42,6 +44,25 @@ export class OntarioPageAlert implements PageAlert {
 	 */
 	@Prop() content: string;
 
+	@Watch('type')
+	validateType() {
+		const validTypes: PageAlertType[] = ['informational', 'warning', 'success', 'error'];
+		const isValid = validateValueAgainstArray(this.type, validTypes);
+
+		if (!isValid) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(` type "${this.type}" `)
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-page-alert> ')
+				.addRegularText('is not a valid type. Defaulting to "informational".')
+				.printMessage();
+
+			this.type = 'informational';
+		}
+	}
+
 	/**
 	 * @returns the classes of the page alert container based on the alert `type`.
 	 */
@@ -68,13 +89,14 @@ export class OntarioPageAlert implements PageAlert {
 	}
 
 	renderContent() {
-		const body = this.content;
-
-		if (typeof body === 'string') {
-			return <p>{body}</p>;
+		if (this.content) {
+			return <p>{this.content}</p>;
 		}
-
 		return <slot />;
+	}
+
+	componentWillLoad() {
+		this.validateType();
 	}
 
 	render() {

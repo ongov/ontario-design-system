@@ -58,6 +58,21 @@ This is another example of an callout. This time, the content is passed as a chi
 	</OntarioCallout>
 </div>
 
+## Technical Note: Content Rendering and SSR
+
+The Ontario Callout component supports two ways of defining content:
+
+- Via the `content` prop (as a string)
+- Via slotted children placed between the component's opening and closing tags
+
+While both approaches work in the browser, only the `content` prop is reliably rendered during Server-Side Rendering (SSR).
+
+> Recommended for SSR:  
+> `<ontario-callout headingContent="Notice" content="This is the callout content." />`
+
+> Slotted content may not render in SSR:  
+> `<ontario-callout headingContent="Notice"><p>This won't appear on the server</p></ontario-callout>`
+
 <!-- Auto Generated Below -->
 
 ## Properties

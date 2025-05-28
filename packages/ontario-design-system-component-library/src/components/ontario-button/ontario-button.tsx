@@ -82,7 +82,12 @@ export class OntarioButton implements Button {
 	 */
 	@Watch('label')
 	private updateLabelContent() {
-		this.labelState = this.label ?? this.host.textContent ?? '';
+		if (typeof window === 'undefined') {
+			// SSR: don’t rely on textContent
+			this.labelState = this.label ?? '';
+		} else {
+			this.labelState = this.label ?? this.host.textContent ?? '';
+		}
 		this.validateLabelContent(this.labelState);
 	}
 

@@ -212,6 +212,19 @@ The `caption` property is used to render the label for the ontario-input. It can
 caption='{ "captionText": "Exact Date", "captionType": "heading" }'
 ```
 
+## Technical Note: SSR Considerations
+
+The Ontario Date Input component is compatible with Server-Side Rendering (SSR), but a few guidelines are recommended for best results:
+
+- **Pass `elementId` explicitly** when using this component with SSR. Otherwise, a randomly generated ID may mismatch during hydration.
+- **Avoid relying on language toggle events** (`setAppLanguage`, `headerLanguageToggled`) to determine language server-side. Always pass the `language` prop explicitly for consistent output.
+
+> ✅ Recommended for SSR:
+>
+> ```html
+> <ontario-date-input element-id="my-date-input" language="en" />
+> ```
+
 <!-- Auto Generated Below -->
 
 ## Properties
