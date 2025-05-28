@@ -38,6 +38,10 @@ Otherwise, a default Back to Top button can be used as follows:
     </div>
 </div>
 
+## Technical Note
+
+Th Back to Top component relies on scroll position and window events, which are only available in the browser. While SSR will render the static markup, interactive behavior (e.g., toggling visibility, scrolling to top) only activates after client-side hydration.
+
 <!-- Auto Generated Below -->
 
 ## Properties

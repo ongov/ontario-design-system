@@ -42,7 +42,7 @@ export class OntarioFieldset implements Fieldset {
 				.addRegularText('is not a valid type. A default size will be applied.')
 				.printMessage();
 
-			return 'default';
+			return (this.legendSize = 'default'); // Ensure hydration matches server render for SSR compatibility
 		}
 	}
 

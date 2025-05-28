@@ -241,14 +241,31 @@ export class OntarioCheckboxes implements Checkboxes {
 	/**
 	 * Watch for changes to the `hintExpander` prop.
 	 *
-	 * If a `hintExpander` prop is passed, it will be parsed (if it is a string), and the result will be set to the `internalHintExpander` state.
+	 * If a `hintExpander` prop is passed, it will be parsed (if it is a string),
+	 * and the result will be set to the `internalHintExpander` state.
+	 * Includes error handling for invalid JSON strings.
 	 */
 	@Watch('hintExpander')
 	private parseHintExpander() {
 		const hintExpander = this.hintExpander;
+
 		if (hintExpander) {
-			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
-			else this.internalHintExpander = hintExpander;
+			if (typeof hintExpander === 'string') {
+				try {
+					this.internalHintExpander = JSON.parse(hintExpander);
+				} catch (error) {
+					const message = new ConsoleMessageClass();
+					message
+						.addDesignSystemTag()
+						.addMonospaceText(' hintExpander ')
+						.addRegularText('for')
+						.addMonospaceText(' <ontario-checkboxes> ')
+						.addRegularText('could not be parsed from a string. Please ensure it is valid JSON.')
+						.printMessage();
+				}
+			} else {
+				this.internalHintExpander = hintExpander;
+			}
 		}
 	}
 
@@ -256,17 +273,19 @@ export class OntarioCheckboxes implements Checkboxes {
 	 * Watch for changes to the `options` prop.
 	 *
 	 * If an `options` prop is passed, it will be parsed (if it is a string), and the result will be set to the `internalOptions` state. The result will be run through a validation function.
+	 * Includes error handling for invalid JSON strings
 	 */
 	@Watch('options')
 	parseOptions() {
 		if (typeof this.options !== 'undefined') {
-			if (!Array.isArray(this.options)) {
-				this.internalOptions = JSON.parse(this.options);
-			} else {
-				this.internalOptions = this.options;
+			try {
+				this.internalOptions = Array.isArray(this.options) ? this.options : JSON.parse(this.options);
+				this.validateOptions(this.internalOptions);
+			} catch (e) {
+				console.error('<ontario-checkboxes>: Failed to parse `options` prop. Invalid JSON.', e);
+				this.internalOptions = [];
 			}
 		}
-		this.validateOptions(this.internalOptions);
 	}
 
 	/**

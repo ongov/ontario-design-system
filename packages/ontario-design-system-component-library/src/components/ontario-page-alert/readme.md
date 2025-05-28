@@ -50,6 +50,27 @@ Example of success page alert type, where the content is passed as a string rath
 	</OntarioPageAlert>
 </div>
 
+## Technical Note: SSR Considerations
+
+The Ontario Page Alert component is safe to use in server-side rendering (SSR) environments. However, to prevent hydration mismatch warnings:
+
+- **Prefer using the `content` prop as a plain string.** Avoid passing complex HTML through `content`; use slotting instead for rich markup.
+- **Use slots for links or formatting** only in client-side hydrated content.
+
+> ✅ Recommended:
+>
+> ```html
+> <ontario-page-alert type="error" heading="Submission failed" content="Please try again."></ontario-page-alert>
+> ```
+
+> ✅ For rich content:
+>
+> ```html
+> <ontario-page-alert type="error" heading="Submission failed">
+> 	<p>Please <a href="/contact">contact support</a> for help.</p>
+> </ontario-page-alert>
+> ```
+
 <!-- Auto Generated Below -->
 
 ## Properties

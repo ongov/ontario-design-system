@@ -54,6 +54,20 @@ This is another example of a long blockquote. The component calculates the lengt
 	</OntarioBlockquote>
 </div>
 
+## 📘 Technical Note: Quote Fallback and SSR
+
+The Ontario Blockquote component can render quotes either via the `quote` prop or by placing text directly between the opening and closing `<ontario-blockquote>` tags.
+
+However, for Server-Side Rendering (SSR), we recommend passing the `quote` prop explicitly:
+
+> Recommended (SSR-safe):  
+> `<ontario-blockquote quote="Courage is resistance to fear, mastery of fear—not absence of fear." />`
+
+> Avoid relying solely on inner text during SSR:  
+> `<ontario-blockquote>Courage is resistance to fear...</ontario-blockquote>`
+
+During SSR, fallback content using `host.textContent` is not reliably available, which can result in empty quotes in the rendered output.
+
 <!-- Auto Generated Below -->
 
 ## Properties
