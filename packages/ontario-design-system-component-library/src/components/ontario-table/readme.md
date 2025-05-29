@@ -342,6 +342,18 @@ Used to define the table body data. Note that the keys passed to the `data` obje
 | `subtotal`    | `boolean \| undefined`                            | `false` | A boolean value to indicate whether or not the row should be styled as a subtotal. <br />This is optional. If no prop is passed, it will default to `false`.               |
 | `footer`      | `boolean \| undefined`                            | `false` | A boolean value to indicate whether or not the row should be coded as a table footer. <br /> This is optional. If no prop is passed, it will default to `false`.           |
 
+## Technical Note: SSR Considerations
+
+The Ontario Table component is largely safe for server-side rendering (SSR) when used with valid, static data.
+
+> **Important**: Props such as `tableColumns` and `tableData` are parsed from JSON. To avoid hydration mismatch:
+>
+> - Pass structured arrays directly instead of JSON strings when using JSX.
+> - Ensure any JSON strings are valid and match the server-rendered data exactly.
+
+> **Note for SSR (Server-Side Rendering):**  
+> The Ontario Table component dynamically calculates and applies a top scrollbar based on the rendered width of the table. Because this layout behavior depends on measurements only available in the browser, scrollbars will not be visible during SSR. They will appear after hydration when the component finishes rendering in the browser.
+
 <!-- Auto Generated Below -->
 
 ## Properties

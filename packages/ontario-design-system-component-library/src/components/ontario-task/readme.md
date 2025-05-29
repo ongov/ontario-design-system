@@ -53,6 +53,26 @@ Example of a task with a hint.
 	></OntarioTask>
 </div>
 
+## Technical Note: SSR Considerations
+
+The Ontario Task component is SSR-compatible and renders predictably during hydration. For full consistency:
+
+- Always pass a valid `taskStatus` prop. Invalid values will default to 'NotStarted' at runtime.
+- To ensure the correct language is used during SSR, pass the `language` prop explicitly.
+
+> ✅ Recommended:
+>
+> ```html
+> <ontario-task
+> 	label="Confirm email"
+> 	task-id="confirm-email"
+> 	task-status="InProgress"
+> 	heading-level="h3"
+> 	language="fr"
+> 	hint-text="Be sure to use your work email"
+> ></ontario-task>
+> ```
+
 <!-- Auto Generated Below -->
 
 ## Properties
