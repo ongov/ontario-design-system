@@ -232,7 +232,9 @@ export class OntarioSearchBox {
 		// Update the component value to match the value of the input element.
 		this.value = input?.value;
 
-		this.internals?.setFormValue?.(this.value ?? '');
+		if (typeof this.internals?.setFormValue === 'function') {
+			this.internals.setFormValue(this.value ?? '');
+		}
 
 		handleInputEvent(
 			event,
@@ -272,7 +274,7 @@ export class OntarioSearchBox {
 	 *This function ensures that the focus returns to the search input field when the reset button is clicked.
 	 */
 	private setFocus(inputRef?: HTMLInputElement) {
-		if (inputRef) {
+		if (typeof window !== 'undefined' && inputRef) {
 			inputRef.focus();
 		}
 	}

@@ -59,6 +59,22 @@ Example of a task-list component with tasks inside.
 	</OntarioTaskList>
 </div>
 
+## Technical Note: SSR Considerations
+
+This Ontario Task List component is SSR-compatible but includes some client-only behavior.
+
+- To avoid hydration mismatch, always pass a valid `headingLevel` prop. Acceptable values: `"h1"`, `"h2"`, `"h3"`, `"h4"`. An invalid value will be replaced with `"h2"` on the client.
+- Task counts are calculated after hydration and are not rendered during SSR. If you require stable output for task totals in SSR, consider rendering them statically with props.
+
+> ✅ Recommended:
+>
+> ```html
+> <ontario-task-list label="Your tasks" heading-level="h2">
+> 	<ontario-task data-task-status="Completed" />
+> 	<ontario-task data-task-status="Incomplete" />
+> </ontario-task-list>
+> ```
+
 <!-- Auto Generated Below -->
 
 ## Properties

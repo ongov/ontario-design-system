@@ -298,10 +298,14 @@ export class OntarioDropdownList implements Dropdown {
 	@Watch('options')
 	parseOptions() {
 		if (typeof this.options !== 'undefined') {
-			if (!Array.isArray(this.options)) {
-				this.internalOptions = JSON.parse(this.options);
-			} else {
-				this.internalOptions = this.options;
+			try {
+				if (!Array.isArray(this.options)) {
+					this.internalOptions = JSON.parse(this.options);
+				} else {
+					this.internalOptions = this.options;
+				}
+			} catch (error) {
+				console.error(`Error parsing options: ${error}`);
 			}
 		}
 
@@ -356,10 +360,12 @@ export class OntarioDropdownList implements Dropdown {
 	@Watch('hintExpander')
 	private parseHintExpander() {
 		const hintExpander = this.hintExpander;
-		if (hintExpander) {
-			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
-			else this.internalHintExpander = hintExpander;
-		}
+		try {
+			if (hintExpander) {
+				if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
+				else this.internalHintExpander = hintExpander;
+			}
+		} catch (error) {}
 	}
 
 	@Watch('errorMessage')

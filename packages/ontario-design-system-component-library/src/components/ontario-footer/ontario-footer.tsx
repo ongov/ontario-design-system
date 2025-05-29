@@ -148,26 +148,17 @@ export class OntarioFooter {
 	}
 
 	private parseOptions(optionType: any) {
-		const options = optionType;
-		const isString = typeof options === 'string';
-
-		if (!options) {
-			return;
-		}
+		if (!optionType) return;
 
 		try {
-			if (options === this.footerLinks) {
-				this.footerLinksState = isString ? JSON.parse(options) : options;
-			} else if (options === this.socialLinks) {
-				this.socialLinksState = isString ? JSON.parse(options) : options;
-			} else if (options === this.twoColumnOptions) {
-				this.twoColumnState = isString ? JSON.parse(options) : options;
-			} else {
-				this.threeColumnState = isString ? JSON.parse(options) : options;
-			}
+			const parsed = typeof optionType === 'string' ? JSON.parse(optionType) : optionType;
+
+			if (optionType === this.footerLinks) this.footerLinksState = parsed;
+			else if (optionType === this.socialLinks) this.socialLinksState = parsed;
+			else if (optionType === this.twoColumnOptions) this.twoColumnState = parsed;
+			else this.threeColumnState = parsed;
 		} catch (error) {
-			const message = new ConsoleMessageClass();
-			message
+			new ConsoleMessageClass()
 				.addDesignSystemTag()
 				.addRegularText(' failed to parse props for ')
 				.addMonospaceText('<ontario-footer>')
