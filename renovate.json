@@ -11,11 +11,7 @@
 		":preserveSemverRanges",
 		":disableRateLimiting"
 	],
-	"enabledManagers": ["pnpm"],
-	"pnpm": {
-		"enabled": true,
-		"workspaces": true
-	},
+	"repositories": ["ongov/ontario-design-system"],
 	"dependencyDashboard": true,
 	"automerge": false,
 	"schedule": ["before 3am on Sunday"],

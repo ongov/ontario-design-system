@@ -32,3 +32,5 @@ jobs:
           RENOVATE_TOKEN: ${{ secrets.GH_TOKEN }}
           LOG_LEVEL: debug
           REPOSITORY: ${{ github.repository }}
+          RENOVATE_PLATFORM: github
+          RENOVATE_CONFIG_FILE: renovate.json
