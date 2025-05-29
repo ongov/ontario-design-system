@@ -21,7 +21,7 @@ jobs:
       - name: Install PNPM
         uses: pnpm/action-setup@v4.0.0
         with:
-          version: 10.2.0
+          version: 10.11.0
 
       - name: Run Renovate
         uses: renovatebot/github-action@v42.0.0
