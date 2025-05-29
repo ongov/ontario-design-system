@@ -92,18 +92,6 @@ export class OntarioTask {
 	 * Set the task's status state depending on validation result.
 	 */
 	@State() private taskStatusState: TaskStatuses = TaskStatuses.NotStarted;
-	/**
-	 * Watch for changes in `taskStatus` prop to validate its value.
-	 */
-	@Watch('taskStatus')
-	validateTaskStatus() {
-		const validStatuses = Object.values(TaskStatuses);
-		const isValidStatus = validStatuses.includes(this.taskStatus);
-		this.taskStatusState = isValidStatus ? this.taskStatus : this.warnAndGetDefaultTaskStatus();
-
-		// Update the `data-task-status` attribute
-		this.el.setAttribute('data-task-status', this.taskStatusState);
-	}
 
 	/**
 	 * Logs a warning to the console if the `taskStatus` prop is set to an invalid value.
@@ -218,6 +206,7 @@ export class OntarioTask {
 				<ontario-hint-text
 					hint={this.internalHintText.hint}
 					hintContentType={this.internalHintText.hintContentType}
+					elementId={`hint-text--${this.taskId}`}
 					ref={(el) => (this.hintTextRef = el)}
 				></ontario-hint-text>
 			);
@@ -275,11 +264,6 @@ export class OntarioTask {
 				hintTextId = `hint-text--${this.taskId}`;
 				this.hintTextRef.elementId = hintTextId;
 			}
-
-			const taskElement = this.el.shadowRoot?.querySelector('li');
-			if (taskElement) {
-				taskElement.setAttribute('aria-describedby', hintTextId);
-			}
 		}
 	}
 
@@ -290,13 +274,24 @@ export class OntarioTask {
 	async componentWillLoad() {
 		this.parseHintText();
 		this.language = validateLanguage(this.language);
-		this.validateTaskStatus();
 		this.validateHeadingLevel(this.headingLevel);
+
+		/**
+		 * Validate the `taskStatus` prop to ensure it is one of the valid statuses.
+		 * If the status is invalid, log a warning and set it to the default value of 'NotStarted'.
+		 * This ensures that the component always has a valid task status.
+		 */
+		if (!Object.values(TaskStatuses).includes(this.taskStatus)) {
+			this.warnAndGetDefaultTaskStatus();
+			this.taskStatus = TaskStatuses.NotStarted; // prop updated
+		}
+		this.taskStatusState = this.taskStatus;
 	}
 
 	render() {
 		const isLinkActive = this.link && !this.deactivateLink;
 		const taskStatusClass = `ontario-task-status--${this.taskStatusState.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}`;
+		const describedBy = this.internalHintText ? `hint-text--${this.taskId}` : undefined;
 
 		const taskContent = (
 			<Fragment>
@@ -311,6 +306,7 @@ export class OntarioTask {
 				role="group"
 				aria-labelledby={`task-label--${this.taskId}`}
 				data-task-status={this.taskStatusState}
+				aria-describedby={describedBy}
 			>
 				{isLinkActive ? (
 					<a href={this.link} class="ontario-task__link" aria-label={this.label}>

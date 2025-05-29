@@ -282,6 +282,15 @@ visible when the hint expander title (hint) is toggled" }'
 
 - Do not pre-select radio buttons (there should be no checked attribute by default on the radio button)
 
+## Technical Note: SSR Considerations
+
+The Ontario Radio Buttons component supports server-side rendering with the following considerations:
+
+- Language-specific content relies on the `language` prop. For SSR, explicitly pass the `language` value (e.g., `language="fr"`) to avoid relying on client-side events like `setAppLanguage`.
+- Some accessibility enhancements (e.g., `aria-describedby` via hint text) are finalized post-hydration due to their reliance on DOM references.
+
+By following these practices, the component will render correctly in both static and hydrated environments.
+
 <!-- Auto Generated Below -->
 
 ## Properties

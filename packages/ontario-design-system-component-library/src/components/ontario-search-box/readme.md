@@ -85,6 +85,10 @@ caption='{ "captionText": "Input label", "captionType": "large" }'
 | `captionText` | `string`                           | Text to display as the input question                                                                                                            |
 | `captionType` | `"default" \| "large"\| "heading"` | The type of label to display for the input question. This is optional, and if no information is provided, it will default to the `default` type. |
 
+## Technical Note: SSR Considerations
+
+The Ontario Search Box component is mostly safe for Server-Side Rendering (SSR), but to ensure correct behavior during hydration, **explicitly pass a valid `language` prop** (e.g., `<ontario-search-box language="fr" />`). Language events only fire in the browser.
+
 <!-- Auto Generated Below -->
 
 ## Properties
