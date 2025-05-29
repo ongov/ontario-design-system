@@ -22,7 +22,7 @@ export const config: Config = {
 	outputTargets: [
 		reactOutputTarget({
 			outDir: '../ontario-design-system-component-library-react/src/components',
-			stencilPackageName: '@ongov/ontario-design-system-component-library',
+			hydrateModule: '@ongov/ontario-design-system-component-library/hydrate',
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@ongov/ontario-design-system-component-library',
@@ -33,9 +33,13 @@ export const config: Config = {
 		}),
 		{
 			type: 'dist-custom-elements',
+			dir: 'components',
+			customElementsExportBehavior: 'auto-define-custom-elements',
 			externalRuntime: false,
-			generateTypeDeclarations: true,
-			isPrimaryPackageOutputTarget: false,
+		},
+		// Hydrate script for SSR
+		{
+			type: 'dist-hydrate-script',
 		},
 		{
 			type: 'dist',
@@ -60,9 +64,6 @@ export const config: Config = {
 					dest: 'i18n',
 				},
 			],
-		},
-		{
-			type: 'dist-custom-elements',
 		},
 		{
 			type: 'docs-readme',
@@ -105,7 +106,7 @@ export const config: Config = {
 	},
 	testing: {
 		transform: {
-			'^.+\\.svg$': '<rootDir>/src/utils/svgTransform.js',
+			'^.+\\.svg$': '<rootDir>/src/utils/svgTransform.cjs',
 		},
 		reporters: ['default', 'jest-junit'],
 	},

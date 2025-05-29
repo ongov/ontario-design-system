@@ -1,7 +1,12 @@
 import 'dotenv/config';
 
 import { writeFile } from 'fs/promises';
-import { resolve } from 'path';
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+
+// @ts-ignore: TS error due to usage of import.meta.url in CommonJS context
+const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
+const __dirname = dirname(__filename);
 
 const outputPath = resolve(__dirname, '..', 'src', 'config.json');
 
