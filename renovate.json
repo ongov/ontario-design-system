@@ -2,10 +2,10 @@
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
 	"onboarding": true,
 	"onboardingConfig": {
-		"extends": ["config:base"]
+		"extends": ["config:recommended"]
 	},
 	"extends": [
-		"config:base",
+		"config:recommended",
 		"group:allNonMajor",
 		":combinePatchMinorReleases",
 		":preserveSemverRanges",
