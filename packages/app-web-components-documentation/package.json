@@ -22,10 +22,10 @@
 		"clean:full": "rm -rf node_modules && pnpm run clean"
 	},
 	"dependencies": {
-		"@docusaurus/core": "2.4.1",
-		"@docusaurus/plugin-google-tag-manager": "2.4.1",
-		"@docusaurus/preset-classic": "2.4.1",
-		"@docusaurus/theme-mermaid": "2.4.1",
+		"@docusaurus/core": "2.4.3",
+		"@docusaurus/plugin-google-tag-manager": "2.4.3",
+		"@docusaurus/preset-classic": "2.4.3",
+		"@docusaurus/theme-mermaid": "2.4.3",
 		"@mdx-js/react": "^1.6.22",
 		"@ongov/ontario-design-system-component-library-react": "5.0.0-alpha.5",
 		"clsx": "^1.2.1",
