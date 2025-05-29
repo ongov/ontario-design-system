@@ -226,6 +226,16 @@ An `element-id` attribute is necessary to allow the input to be associated with 
 
 A `name` attribute needs to be set to be submitted to the server when the form is submitted.
 
+## Technical Note: SSR Considerations
+
+The Ontario Input component supports server-side rendering, with a few considerations:
+
+- **Dynamic ID generation:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, you should explicitly pass a stable `elementId`.
+- **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Ensure this does not impact critical accessibility paths.
+- **Form participation:** The component uses the `formAssociated` feature and `@AttachInternals()`, which is supported in most modern browsers and works with SSR.
+
+For maximum SSR compatibility, always provide a stable `elementId` and test hydration behavior when dynamic content or validation is enabled.
+
 <!-- Auto Generated Below -->
 
 ## Properties

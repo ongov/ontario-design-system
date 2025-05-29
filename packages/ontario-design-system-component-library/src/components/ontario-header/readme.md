@@ -279,6 +279,20 @@ application-header-info='{ "title": "Application name", "href": "/", "maxSubhead
 
 To ensure best practices, it is important to limit the number of navigation links passed to the `menuItems` property. We recommend a maximum of seven links, and to keep the labels for these links concise.
 
+## Technical Note: SSR and Client-Side Behavior
+
+The Ontario Header component is partially SSR-compatible. It supports static HTML rendering on the server but defers most dynamic behavior to the browser after hydration.
+
+Important considerations:
+
+- Dynamic menu fetching via the Ontario Header API (`fetchOntarioMenu`) is browser-only. This will not execute during SSR, and no menu will be rendered until hydration.
+- To avoid empty menus during SSR, pass a predefined menuItems array via props or disable the dynamic menu with `disable-dynamic-menu="true"`.
+- Language detection (`document.documentElement.lang`, `window`, etc.) is also only available after hydration. Default language will be used until hydration completes. To ensure the correct language is rendered during SSR, explicitly pass the language prop.
+- Internal state updates (like `menuToggle`, `searchToggle`) are interactive and require JavaScript. These elements will not function without hydration.
+- If your framework allows, consider using client:only or useEffect (React) to delay rendering this component until after hydration in SSR-critical apps.
+
+> **Best Practice**: Use static menuItems for SSR environments and enable the dynamic menu only when client-side rendering is guaranteed.
+
 <!-- Auto Generated Below -->
 
 ## Properties

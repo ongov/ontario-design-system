@@ -124,6 +124,19 @@ hintExpander='{ "hint": "This is the hint expander title", "content": "This is t
 - An `element-id` attribute is necessary to allow the textarea to be associated with a label element
 - A `name` attribute needs to be set to be submitted to the server when the form is submitted.
 
+## Technical Note: SSR Considerations
+
+The Ontario Textarea component is compatible with server-side rendering (SSR) and behaves predictably based on its props. It supports multilingual content through the `language` prop and optional UI enhancements like `<ontario-hint-text>` and `<ontario-hint-expander>`.
+
+If `hintText`, `caption`, or `hintExpander` are provided as JSON strings, they are parsed during `componentWillLoad()` into internal objects used during rendering.
+
+> **Note for SSR:**  
+> Global language change events like `setAppLanguage` and `headerLanguageToggled` are only available in the browser after hydration. To ensure the correct language is applied during SSR, explicitly set the `language` prop.
+
+- If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, you should explicitly pass a stable `elementId`.
+  > Provide the `name` prop to avoid runtime console warnings.
+  > Set `language="en"` or `language="fr"` explicitly for consistent SSR output.
+
 <!-- Auto Generated Below -->
 
 ## Properties

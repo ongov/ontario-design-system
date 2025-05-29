@@ -250,8 +250,12 @@ export class OntarioRadioButtons implements RadioButtons {
 	private parseHintExpander() {
 		const hintExpander = this.hintExpander;
 		if (hintExpander) {
-			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
-			else this.internalHintExpander = hintExpander;
+			try {
+				if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
+				else this.internalHintExpander = hintExpander;
+			} catch (error) {
+				console.error('Error parsing hintExpander prop. Please ensure it is a valid JSON string or object.', error);
+			}
 		}
 	}
 
@@ -263,10 +267,14 @@ export class OntarioRadioButtons implements RadioButtons {
 	@Watch('options')
 	parseOptions() {
 		if (typeof this.options !== 'undefined') {
-			if (!Array.isArray(this.options)) {
-				this.internalOptions = JSON.parse(this.options);
-			} else {
-				this.internalOptions = this.options;
+			try {
+				if (!Array.isArray(this.options)) {
+					this.internalOptions = JSON.parse(this.options);
+				} else {
+					this.internalOptions = this.options;
+				}
+			} catch (error) {
+				console.error('Error parsing options prop. Please ensure it is a valid JSON string or object.', error);
 			}
 		}
 	}
