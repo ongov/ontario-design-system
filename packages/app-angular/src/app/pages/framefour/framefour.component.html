@@ -6,15 +6,20 @@
 	language="{{ lang }}"
 ></ontario-step-indicator>
 
-<ontario-checkboxes
-	[caption]="{
-		captionText: getTranslation().describeRole.label,
-		captionType: 'heading'
-	}"
-	name="describe-role"
-	hintText="{{ 'form.questions.describeRole.hint' | translate }}"
-	[options]="generateOptions()"
-	language="{{ lang }}"
-></ontario-checkboxes>
-
-<ontario-button type="primary" label="{{ 'form.buttons.next' | translate }}" [routerLink]="getRoute()"></ontario-button>
+<ontario-form-container>
+	<ontario-checkboxes
+		[caption]="{
+			captionText: getTranslation().describeRole.label,
+			captionType: 'heading',
+		}"
+		name="describe-role"
+		hintText="{{ 'form.questions.describeRole.hint' | translate }}"
+		[options]="generateOptions()"
+		language="{{ lang }}"
+	></ontario-checkboxes>
+	<ontario-button
+		type="primary"
+		label="{{ 'form.buttons.next' | translate }}"
+		[routerLink]="getRoute()"
+	></ontario-button>
+</ontario-form-container>
