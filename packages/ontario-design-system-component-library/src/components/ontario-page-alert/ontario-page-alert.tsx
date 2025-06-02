@@ -90,11 +90,7 @@ export class OntarioPageAlert implements PageAlert {
 		if (this.content) {
 			return <p>{this.content}</p>;
 		}
-		return (
-			<p>
-				<slot />
-			</p>
-		);
+		return <slot />;
 	}
 
 	componentWillLoad() {

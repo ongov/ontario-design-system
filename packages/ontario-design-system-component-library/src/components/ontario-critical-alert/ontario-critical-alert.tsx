@@ -60,11 +60,7 @@ export class OntarioCriticalAlert implements CriticalAlert {
 			return <p>{this.content}</p>;
 		}
 
-		return (
-			<p>
-				<slot />
-			</p>
-		);
+		return <slot />;
 	}
 
 	componentWillLoad() {
