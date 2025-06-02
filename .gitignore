@@ -32,7 +32,7 @@ UserInterfaceState.xcuserstate
 junit.xml
 
 # Gernerated Documentation
-docs/
+packages/app-web-components-documentation/docs/
 ontario-design-system-web-components-documentation-*
 
 # Gernerated static assets
