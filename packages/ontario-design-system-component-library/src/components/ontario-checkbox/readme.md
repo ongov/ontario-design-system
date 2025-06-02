@@ -256,8 +256,9 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 
 The Ontario Checkbox component supports Server-Side Rendering (SSR), but to ensure correct rendering and prevent hydration mismatches, keep the following in mind:
 
-- Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-checkbox language="fr"></ontario-checkbox>`).
+- **Langauge-Props**: Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-checkbox language="fr"></ontario-checkbox>`).
 - `aria-describedby` for the hint text is added after hydration. This is fine for client interactivity, but screen readers won’t pick it up until the client JS is loaded.
+- **Form Submission Support:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. This requires client-side hydration to fully activate. While the component will render as expected during SSR, native form behavior will only function once hydrated in the browser.
 
 <!-- Auto Generated Below -->
 
