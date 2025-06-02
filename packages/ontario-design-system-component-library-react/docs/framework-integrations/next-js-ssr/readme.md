@@ -1,7 +1,3 @@
----
-title: Next.js Server-Side Rendering (SSR)
----
-
 ## Global Styles & SSR Integration Guide for Ontario Design System in Next.js
 
 This section explains how to properly import global styles and configure server-side rendering (SSR) for Stencil-based components in a Next.js project using the Ontario Design System.
