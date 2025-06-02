@@ -282,14 +282,13 @@ visible when the hint expander title (hint) is toggled" }'
 
 - Do not pre-select radio buttons (there should be no checked attribute by default on the radio button)
 
-## Technical Note: SSR Considerations
+## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Radio Buttons component supports server-side rendering with the following considerations:
+The Ontario Radio Buttons component supports server-side rendering, with a few considerations:
 
-- Language-specific content relies on the `language` prop. For SSR, explicitly pass the `language` value (e.g., `language="fr"`) to avoid relying on client-side events like `setAppLanguage`.
-- Some accessibility enhancements (e.g., `aria-describedby` via hint text) are finalized post-hydration due to their reliance on DOM references.
-
-By following these practices, the component will render correctly in both static and hydrated environments.
+- **Language Prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-radio-buttons language="fr"></ontario-radio-buttons>`).
+- **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Ensure this does not impact critical accessibility paths.
+- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. This requires client-side hydration to fully activate. While the component will render as expected during SSR, native form behavior will only function once hydrated in the browser.
 
 <!-- Auto Generated Below -->
 

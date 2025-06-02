@@ -96,9 +96,11 @@ The simplest use of the back button is to provide, via the `back-button-url` att
 </script>
 ```
 
-## Technical Note: SSR Considerations
+## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Step Indicator component is mostly safe for Server-Side Rendering (SSR), but to ensure correct behavior during hydration, **explicitly pass a valid `language` prop** (e.g., `<ontario-step-indicator language="fr" />`). Language events only fire in the browser.
+The Ontario Step Indicator component is compatible with Server-Side Rendering (SSR), but a few guidelines are recommended for best results:
+
+- **Avoid relying on language toggle events** (`setAppLanguage`, `headerLanguageToggled`) to determine language server-side. Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-step-indicator language="fr"></ontario-step-indicator>`).
 
 <!-- Auto Generated Below -->
 

@@ -304,8 +304,16 @@ export class OntarioDropdownList implements Dropdown {
 				} else {
 					this.internalOptions = this.options;
 				}
-			} catch (error) {
-				console.error(`Error parsing options: ${error}`);
+			} catch {
+				const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' options ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-dropdown-list> ')
+					.addRegularText('was not provided in the correct format')
+					.printMessage();
+				this.internalOptions = [];
 			}
 		}
 
@@ -365,7 +373,16 @@ export class OntarioDropdownList implements Dropdown {
 				if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
 				else this.internalHintExpander = hintExpander;
 			}
-		} catch (error) {}
+		} catch {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' hintExpander ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-dropdown-list> ')
+				.addRegularText('was not provided in the correct format')
+				.printMessage();
+		}
 	}
 
 	@Watch('errorMessage')
