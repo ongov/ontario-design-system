@@ -253,7 +253,7 @@ export class OntarioCheckboxes implements Checkboxes {
 			if (typeof hintExpander === 'string') {
 				try {
 					this.internalHintExpander = JSON.parse(hintExpander);
-				} catch (error) {
+				} catch {
 					const message = new ConsoleMessageClass();
 					message
 						.addDesignSystemTag()
@@ -281,9 +281,15 @@ export class OntarioCheckboxes implements Checkboxes {
 			try {
 				this.internalOptions = Array.isArray(this.options) ? this.options : JSON.parse(this.options);
 				this.validateOptions(this.internalOptions);
-			} catch (e) {
-				console.error('<ontario-checkboxes>: Failed to parse `options` prop. Invalid JSON.', e);
-				this.internalOptions = [];
+			} catch {
+				const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' options ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-checkboxes> ')
+					.addRegularText('could not be parsed. Please ensure it is valid JSON.')
+					.printMessage();
 			}
 		}
 	}

@@ -34,23 +34,22 @@ Alternatively, HTML content can be supplied as the child of the critical alert r
 	<a href="https://designsystem.ontario.ca/">Ontario Design System</a> web components now available!!!
 </OntarioCriticalAlert>
 
-## Technical Note: SSR and Content Rendering
+## Technical Note: SSR (Server-Side Rendering) and Content Rendering
 
-The Ontario Critical Alert component supports rendering content via either the `content` prop or slotted HTML between tags. However, only the `content` prop is guaranteed to render correctly during Server-Side Rendering (SSR).
+The Ontario Critical Alert component supports two ways of defining content:
 
-> Recommended for SSR:
+- Via the `content` prop (as a string)
+- Via slotted children placed between the component's opening and closing tags
+
+While both approaches work in the browser, only the `content` prop is reliably rendered during Server-Side Rendering (SSR).
+
+> **Recommended for SSR:**
+>
+> During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the critical alert content through the `content` prop. Eg:
 >
 > ```html
-> <ontario-critical-alert content="Emergency alert message." />
+> <ontario-critical-alert content="Emergency alert message."></ontario-critical-alert>
 > ```
-
-> Avoid relying solely on slotted content for SSR:
->
-> ```html
-> <ontario-critical-alert> <a href="#">Emergency alert</a> is in effect. </ontario-critical-alert>
-> ```
-
-> Slotted content may not render properly on the server when using shadow DOM.
 
 <!-- Auto Generated Below -->
 
