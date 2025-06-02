@@ -74,14 +74,15 @@ expand-collapse-button='{ "expandAllSectionsLabel": "Expand All", "collapseAllSe
 | `collapseAllSectionsLabel` | The label for the 'Collapse all' button. | `string` |
 | `ariaLabelText`            | Alt text for the expand/close button.    | `string` |
 
-## Technical Note: Language Handling
+## Technical Note: Language Handling and SSR (Server-Side Rendering)
 
 The Ontario Accordion component supports multiple languages via the `language` prop, which controls the text used in translatable UI elements (e.g., button labels). If no language is explicitly passed, it defaults to English (`'en'`).
 
 On the client side, the component also listens for global language change events such as `setAppLanguage` and `headerLanguageToggled`, allowing it to update dynamically when used in conjunction with shared application-level language controls (like `<ontario-header>`).
 
-> **Note for SSR (Server-Side Rendering):**  
-> These language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-accordion language="fr" />`).
+> **Note for SSR:**
+>
+> These language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-accordion language="fr"></ontario-accordion>`).
 
 <!-- Auto Generated Below -->
 

@@ -124,15 +124,22 @@ It is important to know when the proper use-case is for a button. Often, the rol
 
 It can be confusing and frustrating for users to expect a button to trigger an action, and then they are redirected to a new page.
 
-## Technical Note: Label Fallback and SSR
+## Technical Note: Label Fallback and SSR (Server-Side Rendering)
 
-If no `label` prop is provided, the component will attempt to fall back to the text content placed between the opening and closing tags. This fallback works in the browser, but may not be populated during Server-Side Rendering (SSR), which can result in a blank button label.
+The Ontario Button component supports two ways of defining labels:
 
-> Recommended for SSR:  
-> `<ontario-button label="Click me" />`
+- Via the `label` prop (as a string)
+- Via slotted children placed between the component's opening and closing tags
 
-> Avoid relying solely on inner text during SSR:  
-> `<ontario-button>Click me</ontario-button>`
+While both approaches work in the browser, only the `label` prop is reliably rendered during Server-Side Rendering (SSR).
+
+> **Recommended for SSR:**
+>
+> During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the button content through the `label` prop. Eg:
+>
+> ```html
+> <ontario-button label="Click me"></ontario-button>
+> ```
 
 <!-- Auto Generated Below -->
 
