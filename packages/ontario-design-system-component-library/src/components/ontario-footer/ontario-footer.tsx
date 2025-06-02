@@ -158,7 +158,8 @@ export class OntarioFooter {
 			else if (optionType === this.twoColumnOptions) this.twoColumnState = parsed;
 			else this.threeColumnState = parsed;
 		} catch (error) {
-			new ConsoleMessageClass()
+			const message = new ConsoleMessageClass();
+			message
 				.addDesignSystemTag()
 				.addRegularText(' failed to parse props for ')
 				.addMonospaceText('<ontario-footer>')

@@ -333,21 +333,20 @@ options='[ { "value": "netflix", "label": "Netflix" }, { "value": "disney-plus",
 - A `name` attribute needs to be set to be submitted to the server when the form is submitted.
 - Do not add any customized styles to dropdown lists - the browser's default is the most accessible.
 
-## Technical Note: SSR and Server-Side Rendering Support
+## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Dropdown List component supports full server-side rendering, including rendering captions, options, hint text, and expandable hint content.
+The Ontario Dropdown List component supports full server-side rendering, with a few considerations:
 
-> ✅ Recommended for SSR:
->
-> - **Language Prop:** Set the `language` prop explicitly (e.g., `language="en"` or `language="fr"`), as automatic detection via global events does not run during SSR.
-> - **Element ID Consistency:** If you require stable IDs for accessibility or testing, pass an explicit `elementId` value to avoid SSR/client mismatch.
-> - **Form Submission Support:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. This requires client-side hydration to fully activate. While the component will render as expected during SSR, native form behavior will only function once hydrated in the browser.
+- **Language Prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-dropdown-list language="fr"></ontario-dropdown-list>`).
+- **Element ID Consistency:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, you should explicitly pass a stable `elementId`.
+- **Form Submission Support:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. This requires client-side hydration to fully activate. While the component will render as expected during SSR, native form behavior will only function once hydrated in the browser.
 
-> Example:
+> ** SSR-safe example:**
 >
 > ```html
 > <ontario-dropdown-list
 > 	name="province"
+> 	element-id="province"
 > 	language="en"
 > 	caption='{"captionText": "Select your province", "captionType": "heading"}'
 > 	options='[{"label":"Ontario", "value":"on"}, {"label":"Quebec", "value":"qc"}]'

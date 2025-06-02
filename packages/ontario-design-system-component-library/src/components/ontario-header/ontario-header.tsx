@@ -18,6 +18,8 @@ import OntarioHeaderDefaultData from './ontario-header-default-data.json';
 import { Language } from '../../utils/common/language-types';
 import { getImageAssetSrcPath } from '../../utils/helper/assets';
 import { validateLanguage } from '../../utils/validation/validation-functions';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { ConsoleType } from '../../utils/console-message/console-message.enum';
 
 import translations from '../../translations/global.i18n.json';
 import config from '../../config.json';
@@ -198,7 +200,16 @@ export class OntarioHeader {
 					this.applicationHeaderInfoState = JSON.parse(applicationHeaderInfo);
 				else this.applicationHeaderInfoState = applicationHeaderInfo;
 			} catch (error) {
-				console.error('Error parsing application header info:', error);
+				const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addRegularText(' failed to parse props for ')
+					.addMonospaceText('<ontario-header>')
+					.addRegularText(' in ')
+					.addMonospaceText('parseApplicationHeaderInfo()')
+					.addRegularText(' method \n ')
+					.addMonospaceText(error.stack)
+					.printMessage(ConsoleType.Error);
 			}
 		}
 	}
@@ -218,7 +229,16 @@ export class OntarioHeader {
 				this.isDynamicMenu = false;
 			}
 		} catch (error) {
-			console.error('Error parsing menu items:', error);
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addRegularText(' failed to parse props for ')
+				.addMonospaceText('<ontario-header>')
+				.addRegularText(' in ')
+				.addMonospaceText('parseMenuItems()')
+				.addRegularText(' method \n ')
+				.addMonospaceText(error.stack)
+				.printMessage(ConsoleType.Error);
 		}
 	}
 
@@ -235,7 +255,16 @@ export class OntarioHeader {
 				}
 			}
 		} catch (error) {
-			console.error('Error parsing language toggle options:', error);
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addRegularText(' failed to parse props for ')
+				.addMonospaceText('<ontario-header>')
+				.addRegularText(' in ')
+				.addMonospaceText('parseLanguage()')
+				.addRegularText(' method \n ')
+				.addMonospaceText(error.stack)
+				.printMessage(ConsoleType.Error);
 		}
 	}
 

@@ -1,12 +1,13 @@
 import { Component, Prop, State, Event, EventEmitter, Watch, h, Fragment } from '@stencil/core';
 
 import { supportedLanguages, Language } from '../../utils/common/language-types';
+import { isClientSideRendering } from '../../utils/common/environment';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
+import { printArray, getRootHTMLElement } from '../../utils/helper/utils';
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
 import { default as translations } from '../../translations/global.i18n.json';
-import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
-import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { printArray, getRootHTMLElement } from '../../utils/helper/utils';
 
 @Component({
 	tag: 'ontario-language-toggle',
@@ -246,7 +247,7 @@ export class OntarioLanguageToggle {
 		});
 
 		// Only create/trigger the MutationObserver if the <html> element exists.
-		if (typeof window !== 'undefined' && getRootHTMLElement()) {
+		if (isClientSideRendering() && getRootHTMLElement()) {
 			const options = { attributes: true };
 			observer.observe(getRootHTMLElement(), options);
 		}
