@@ -124,18 +124,20 @@ hintExpander='{ "hint": "This is the hint expander title", "content": "This is t
 - An `element-id` attribute is necessary to allow the textarea to be associated with a label element
 - A `name` attribute needs to be set to be submitted to the server when the form is submitted.
 
-## Technical Note: SSR Considerations
+## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Textarea component is compatible with server-side rendering (SSR) and behaves predictably based on its props. It supports multilingual content through the `language` prop and optional UI enhancements like `<ontario-hint-text>` and `<ontario-hint-expander>`.
+The Ontario Input component supports server-side rendering, with a few considerations:
 
-If `hintText`, `caption`, or `hintExpander` are provided as JSON strings, they are parsed during `componentWillLoad()` into internal objects used during rendering.
+- **Language Prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-textarea language="fr"></ontario-textarea>`).
+- **Dynamic ID generation:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, you should explicitly pass a stable `elementId`.
+- **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Ensure this does not impact critical accessibility paths.
+- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. This requires client-side hydration to fully activate. While the component will render as expected during SSR, native form behavior will only function once hydrated in the browser.
 
-> **Note for SSR:**  
-> Global language change events like `setAppLanguage` and `headerLanguageToggled` are only available in the browser after hydration. To ensure the correct language is applied during SSR, explicitly set the `language` prop.
-
-- If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, you should explicitly pass a stable `elementId`.
-  > Provide the `name` prop to avoid runtime console warnings.
-  > Set `language="en"` or `language="fr"` explicitly for consistent SSR output.
+> ** SSR-safe example:**
+>
+> ```html
+> <ontario-textarea name="comments" language="en" element-id="comments"></ontario-textarea>
+> ```
 
 <!-- Auto Generated Below -->
 

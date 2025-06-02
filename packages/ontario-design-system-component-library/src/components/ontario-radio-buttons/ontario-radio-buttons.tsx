@@ -21,9 +21,10 @@ import {
 	EventType,
 } from '../../utils/events/event-handler.interface';
 import { handleInputEvent } from '../../utils/events/event-handler';
+import { ErrorMessage } from '../../utils/components/error-message/error-message';
+import { ConsoleType } from '../../utils/console-message/console-message.enum';
 
 import { default as translations } from '../../translations/global.i18n.json';
-import { ErrorMessage } from '../../utils/components/error-message/error-message';
 
 @Component({
 	tag: 'ontario-radio-buttons',
@@ -254,7 +255,15 @@ export class OntarioRadioButtons implements RadioButtons {
 				if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
 				else this.internalHintExpander = hintExpander;
 			} catch (error) {
-				console.error('Error parsing hintExpander prop. Please ensure it is a valid JSON string or object.', error);
+				const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' hintExpander ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-radio-buttons> ')
+					.addRegularText('was not provided in a valid format')
+					.addMonospaceText(error.stack)
+					.printMessage(ConsoleType.Error);
 			}
 		}
 	}
@@ -274,7 +283,15 @@ export class OntarioRadioButtons implements RadioButtons {
 					this.internalOptions = this.options;
 				}
 			} catch (error) {
-				console.error('Error parsing options prop. Please ensure it is a valid JSON string or object.', error);
+				const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' options ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-radio-buttons> ')
+					.addRegularText('was not provided in a valid format')
+					.addMonospaceText(error.stack)
+					.printMessage(ConsoleType.Error);
 			}
 		}
 	}
