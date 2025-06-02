@@ -106,7 +106,7 @@ export class OntarioBadge {
 	getBadgeLabel(): string | null {
 		if (this.label) return this.label;
 
-		// SSR safety check
+		// Ensure host and its textContent are defined and accessible (safe for SSR environments)
 		if (typeof this.host?.textContent === 'string') {
 			return this.host.textContent;
 		}

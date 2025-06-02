@@ -38,9 +38,13 @@ Otherwise, a default Back to Top button can be used as follows:
     </div>
 </div>
 
-## Technical Note
+## Technical Note: SSR (Server-Side Rendering) Considerations
 
-Th Back to Top component relies on scroll position and window events, which are only available in the browser. While SSR will render the static markup, interactive behavior (e.g., toggling visibility, scrolling to top) only activates after client-side hydration.
+The Back to Top component relies on scroll position and window events, which are only available in the browser. While SSR will render the static markup, interactive behavior (e.g., toggling visibility, scrolling to top) only activates after client-side hydration.
+
+> **Recommended for SSR:**
+>
+> Avoid relying on language toggle events (`setAppLanguage`, `headerLanguageToggled`) to determine language server-side. Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-back-to-top language="fr"></ontario-back-to-top>`).
 
 <!-- Auto Generated Below -->
 

@@ -42,15 +42,22 @@ This is another example of a badge. This time, the content is passed as a child 
 	</OntarioBadge>
 </div>
 
-## Technical Note: SSR and Content Rendering
+## Technical Note: Content Rendering and SSR (Server-Side Rendering)
 
-To ensure consistent rendering during SSR (Server-Side Rendering), it’s recommended to pass the `label` prop explicitly to `<ontario-badge>`. While the component can fall back to using the text content placed between its tags, this fallback (`host.textContent`) may not be reliably populated during SSR.
+The Ontario Badge component supports two ways of defining labels:
 
-> Recommended:  
-> `<ontario-badge label="In progress" />`
+- Via the `label` prop (as a string)
+- Via slotted children placed between the component's opening and closing tags
 
-> Avoid relying solely on inner text during SSR:  
-> `<ontario-badge>In progress</ontario-badge>`
+While both approaches work in the browser, only the `label` prop is reliably rendered during Server-Side Rendering (SSR).
+
+> **Recommended for SSR:**
+>
+> During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the badge label through the `label` prop.
+>
+> ```html
+> <ontario-badge label="In progress"></ontario-badge>
+> ```
 
 <!-- Auto Generated Below -->
 

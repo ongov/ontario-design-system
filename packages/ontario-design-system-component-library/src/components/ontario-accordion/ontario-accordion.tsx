@@ -126,8 +126,16 @@ export class OntarioAccordion {
 
 			// Initialize the label based on the initial accordion state
 			this.updateLabel();
-		} catch (error) {
-			console.error('<ontario-accordion>: Failed to parse accordionData prop.', error);
+		} catch {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' accordionData ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-accordion> ')
+				.addRegularText('could not be parsed. Please ensure it is valid JSON.')
+				.printMessage();
+
 			this.internalAccordionData = [];
 		}
 	}
@@ -142,7 +150,7 @@ export class OntarioAccordion {
 			if (typeof this.expandCollapseButton === 'string') {
 				try {
 					this.internalExpandCollapseLabelDetails = JSON.parse(this.expandCollapseButton);
-				} catch (error) {
+				} catch {
 					const message = new ConsoleMessageClass();
 					message
 						.addDesignSystemTag()

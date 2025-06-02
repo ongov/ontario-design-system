@@ -103,26 +103,23 @@ The `header-colour` property supports a wide range of values, including:
 - `red`
 - `magenta`
 
-## Technical Note: SSR and Required Props
+## Technical Note: Required Props and SSR (Server-Side Rendering)
 
 The Ontario Card component is SSR-compatible and will render static HTML for the card’s image, heading, and description based on its props.
 
 For best SSR results:
 
-- Always provide the `label` prop to ensure the heading and link are rendered with visible content.
+- **Always provide the `label` prop** to ensure the heading and link are rendered with visible content. During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the card label through the `label` prop.
 - If `ariaLabelText` is used, consider whether it’s appropriate for both the image and heading links, or whether separate values should be passed (if split becomes available in future versions).
 
-> SSR-safe example:
+> **SSR-safe example:**
 >
 > ```html
-> <ontario-card label="Card Title" image="https://example.com/image.jpg" description="This is a short description" />
-> ```
-
-> Avoid:
->
-> ```html
-> <ontario-card image="https://example.com/image.jpg" />
-> <!-- No label — SSR will render an empty link -->
+> <ontario-card
+> 	label="Card Title"
+> 	image="https://example.com/image.jpg"
+> 	description="This is a short description"
+> ></ontario-card>
 > ```
 
 <!-- Auto Generated Below -->

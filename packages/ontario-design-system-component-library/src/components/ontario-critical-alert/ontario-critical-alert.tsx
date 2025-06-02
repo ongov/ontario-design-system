@@ -60,8 +60,11 @@ export class OntarioCriticalAlert implements CriticalAlert {
 			return <p>{this.content}</p>;
 		}
 
-		// If content is not a string, render slotted content without wrapping in <p>
-		return <slot />;
+		return (
+			<p>
+				<slot />
+			</p>
+		);
 	}
 
 	componentWillLoad() {

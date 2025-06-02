@@ -58,8 +58,6 @@ export class OntarioPageAlert implements PageAlert {
 				.addMonospaceText(' <ontario-page-alert> ')
 				.addRegularText('is not a valid type. Defaulting to "informational".')
 				.printMessage();
-
-			this.type = 'informational';
 		}
 	}
 
@@ -92,7 +90,11 @@ export class OntarioPageAlert implements PageAlert {
 		if (this.content) {
 			return <p>{this.content}</p>;
 		}
-		return <slot />;
+		return (
+			<p>
+				<slot />
+			</p>
+		);
 	}
 
 	componentWillLoad() {
