@@ -61,11 +61,18 @@ Since the hint expander information comes after the form element, add text in th
 </legend>
 ```
 
-## Technical Note: SSR and Expandable Content
+## Technical Note: Expandable Content and SSR (Server-Side Rendering)
 
-The Ontario Hint Expander supports setting content via the `content` prop or slotted HTML. For full SSR compatibility, use the `content` prop. Slotted content will not render during SSR and may cause content mismatch during hydration.
+The Ontario Hint Expander component supports two ways of defining content:
 
-> Recommended for SSR:
+- Via the `content` prop (as a string)
+- Via slotted children placed between the component's opening and closing tags
+
+While both approaches work in the browser, only the `content` prop is reliably rendered during Server-Side Rendering (SSR).
+
+> **Recommended for SSR:**
+>
+> During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the hint expander content through the `content` prop. Eg:
 >
 > ```html
 > <ontario-hint-expander hint="What is this?" content="Here is the expanded explanation."></ontario-hint-expander>

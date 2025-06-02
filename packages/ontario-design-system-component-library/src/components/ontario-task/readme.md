@@ -53,14 +53,14 @@ Example of a task with a hint.
 	></OntarioTask>
 </div>
 
-## Technical Note: SSR Considerations
+## Technical Note: SSR (Server-Side Rendering) Considerations
 
 The Ontario Task component is SSR-compatible and renders predictably during hydration. For full consistency:
 
-- Always pass a valid `taskStatus` prop. Invalid values will default to 'NotStarted' at runtime.
-- To ensure the correct language is used during SSR, pass the `language` prop explicitly.
+- **Always pass a valid `taskStatus` prop**. Invalid values will default to 'NotStarted' at runtime.
+- **Language Prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-task language="fr"></ontario-task>`).
 
-> ✅ Recommended:
+> **SSR-safe example:**
 >
 > ```html
 > <ontario-task
