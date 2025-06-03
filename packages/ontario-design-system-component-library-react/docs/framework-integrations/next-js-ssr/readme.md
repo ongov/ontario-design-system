@@ -4,12 +4,12 @@ This guide outlines how to extend a standard NextJS setup to integrate the Ontar
 
 ## Key Steps:
 
-1. [**Install the Ontario Design System React Component Library**](#1-install-the-ontario-design-system-react-library)
-2. [**Configure SSR with Stencil Web Components**](#2-configure-ssr-with-stencil-web-components)
-3. [**Adjust `tsconfig.json` for Compatibility**](#3-adjust-tsconfigjson-for-compatibility)
-4. [**Set Up Global Styles**](#4-set-up-global-styles)
-5. [**Copy Design System Assets**](#5-copy-design-system-assets)
-6. [**Troubleshoot Common Issues**](#6-troubleshoot-common-issues)
+1. [Install the Ontario Design System React Component Library](#1-install-the-ontario-design-system-react-library)
+2. [Configure SSR with Stencil Web Components](#2-configure-ssr-with-stencil-web-components)
+3. [Adjust `tsconfig.json` for Compatibility](#3-adjust-tsconfigjson-for-compatibility)
+4. [Set Up Global Styles](#4-set-up-global-styles)
+5. [Copy Design System Assets](#5-copy-design-system-assets)
+6. [Troubleshoot Common Issues](#6-troubleshoot-common-issues)
 
 ---
 
@@ -78,13 +78,13 @@ export default stencilSSR({
 
 ### Explanation of Options:
 
-**hydrateModule:** Specifies the hydration module from Stencil.
+**`hydrateModule`:** Specifies the hydration module from Stencil.
 
-**module:** Dynamically imports the Ontario Design System React wrapper.
+**`module`:** Dynamically imports the Ontario Design System React wrapper.
 
-**from:** Specifies the source package for the components.
+**`from`:** Specifies the source package for the components.
 
-**serializeShadowRoot:** Use the scoped key for components that use scoped shadow DOM. All other components default to Declarative Shadow DOM.
+**`serializeShadowRoot`:** Use the scoped key for components that use scoped shadow DOM. All other components default to Declarative Shadow DOM.
 
 ---
 
@@ -108,11 +108,11 @@ To ensure compatibility with Stencil and Next.js, adjust your tsconfig.json as f
 
 ### Key Points:
 
-**moduleResolution:** "bundler": Required for compatibility with certain ESM packages (like Stencil output).
+**`moduleResolution`:** `"bundler"`: Required for compatibility with certain ESM packages (like Stencil output).
 
-**jsx:** "preserve": Allows Next.js to control JSX transformation.
+**`jsx`:** `"preserve"`: Allows Next.js to control JSX transformation.
 
-**paths:** Optional aliasing for cleaner imports.
+**`paths`:** Optional aliasing for cleaner imports.
 
 ---
 
@@ -199,41 +199,55 @@ Add these scripts to automate asset copying:
 ### Hydration Errors
 
 **Symptom:** Text content did not match.
-**Cause:** Mismatch between server-rendered and client-rendered output.
-**Fix:**
-Wrap browser-only logic in `useEffect`.
-Avoid dynamic content during SSR.
 
-```tsx
-useEffect(() => {
-	// Safe browser-only logic
-}, []);
-```
+**Cause:** Mismatch between server-rendered and client-rendered output.
+
+**Fix:**
+
+- Wrap browser-only logic in `useEffect`.
+- Avoid dynamic content during SSR.
+
+  ```tsx
+  useEffect(() => {
+  	// Safe browser-only logic
+  }, []);
+  ```
 
 ### Missing Styles
 
 **Symptom:** Components appear unstyled.
+
 **Cause:** Global styles or assets not properly imported.
+
 **Fix:**
-Ensure global styles are imported in layout files.
-Verify asset copying scripts are working.
+
+- Ensure global styles are imported in layout files.
+- Verify asset copying scripts are working.
 
 ### Performance Considerations
 
 **Symptom:** Large bundle size or slow page loads.
-**Fix:**
-Import only the needed components.
-Use dynamic imports for rarely used components:
 
-```tsx
-const OntarioButton = dynamic(() =>
-	import('@ongov/ontario-design-system-component-library-react').then((mod) => mod.OntarioButton),
-);
-```
+**Fix:**
+
+- Import only the needed components.
+- Use dynamic imports for rarely used components:
+
+  ```tsx
+  const OntarioButton = dynamic(() =>
+  	import('@ongov/ontario-design-system-component-library-react').then((mod) => mod.OntarioButton),
+  );
+  ```
 
 ### SSR Configuration Issues
 
 **Symptom:** Components don’t render or throw hydration errors.
+
 **Fix:**
-Double-check `next.config.mjs` and `tsconfig.json`.
-Ensure `serializeShadowRoot` is correctly configured.
+
+- Double-check `next.config.mjs` and `tsconfig.json`.
+- Ensure `serializeShadowRoot` is correctly configured.
+
+## Support
+
+Contact us at [design.system@ontario.ca](mailto:design.system@ontario.ca) for assistance with this package or via opening a [GitHub](https://github.com/ongov/ontario-design-system) [issue](https://github.com/ongov/ontario-design-system/issues).
