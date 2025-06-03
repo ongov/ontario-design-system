@@ -94,32 +94,6 @@ export class OntarioTask {
 	@State() private taskStatusState: TaskStatuses = TaskStatuses.NotStarted;
 
 	/**
-	 * Logs a warning to the console if the `taskStatus` prop is set to an invalid value.
-	 *
-	 * This function informs developers that the provided `taskStatus` is not recognized
-	 * and resets the status to the default value of `'notStarted'`. The warning message
-	 * specifies the valid task statuses to help guide correct usage.
-	 *
-	 * @returns The default task status `'notStarted'`.
-	 */
-	private warnAndGetDefaultTaskStatus(): TaskStatuses {
-		const validStatuses = Object.values(TaskStatuses).join(', ');
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' taskStatus ')
-			.addRegularText('on')
-			.addMonospaceText(' <ontario-task> ')
-			.addRegularText('was set to an invalid taskStatus; only ')
-			.addMonospaceText(validStatuses)
-			.addRegularText(' are supported. The default taskStatus ')
-			.addMonospaceText(TaskStatuses.NotStarted)
-			.addRegularText(' is assumed.')
-			.printMessage();
-		return TaskStatuses.NotStarted;
-	}
-
-	/**
 	 * Watch for changes in `headingLevel` prop to validate its value.
 	 */
 	@Watch('headingLevel')
@@ -159,6 +133,25 @@ export class OntarioTask {
 			const hintTextObject = constructHintTextObject(this.hintText);
 			this.internalHintText = hintTextObject;
 		}
+	}
+
+	/**
+	 * Watch for changes in `taskStatus` prop to validate its value.
+	 */
+	@Watch('taskStatus')
+	validateTaskStatus(newValue: TaskStatuses) {
+		const validStatuses = Object.values(TaskStatuses);
+		const isValidStatus = validStatuses.includes(newValue);
+
+		if (isValidStatus) {
+			this.taskStatusState = newValue;
+		} else {
+			// If the status is invalid, log a warning and use the default
+			this.taskStatusState = this.warnAndGetDefaultTaskStatus();
+		}
+
+		// Update the `data-task-status` attribute
+		this.el.setAttribute('data-task-status', this.taskStatusState);
 	}
 
 	/**
@@ -222,6 +215,32 @@ export class OntarioTask {
 	}
 
 	/**
+	 * Logs a warning to the console if the `taskStatus` prop is set to an invalid value.
+	 *
+	 * This function informs developers that the provided `taskStatus` is not recognized
+	 * and resets the status to the default value of `'notStarted'`. The warning message
+	 * specifies the valid task statuses to help guide correct usage.
+	 *
+	 * @returns The default task status `'notStarted'`.
+	 */
+	private warnAndGetDefaultTaskStatus(): TaskStatuses {
+		const validStatuses = Object.values(TaskStatuses).join(', ');
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addMonospaceText(' taskStatus ')
+			.addRegularText('on')
+			.addMonospaceText(' <ontario-task> ')
+			.addRegularText('was set to an invalid taskStatus; only ')
+			.addMonospaceText(validStatuses)
+			.addRegularText(' are supported. The default taskStatus ')
+			.addMonospaceText(TaskStatuses.NotStarted)
+			.addRegularText(' is assumed.')
+			.printMessage();
+		return TaskStatuses.NotStarted;
+	}
+
+	/**
 	 * Renders the task label and status content.
 	 *
 	 * This includes dynamically rendering the heading element (h2, h3, or h4) based on the `headingLevel` prop,
@@ -276,16 +295,8 @@ export class OntarioTask {
 		this.language = validateLanguage(this.language);
 		this.validateHeadingLevel(this.headingLevel);
 
-		/**
-		 * Validate the `taskStatus` prop to ensure it is one of the valid statuses.
-		 * If the status is invalid, log a warning and set it to the default value of 'NotStarted'.
-		 * This ensures that the component always has a valid task status.
-		 */
-		if (!Object.values(TaskStatuses).includes(this.taskStatus)) {
-			this.warnAndGetDefaultTaskStatus();
-			this.taskStatus = TaskStatuses.NotStarted; // prop updated
-		}
-		this.taskStatusState = this.taskStatus;
+		// Ensure the taskStatus is set initially based on the prop
+		this.validateTaskStatus(this.taskStatus);
 	}
 
 	render() {

@@ -71,11 +71,13 @@ describe('ontario-task', () => {
 
 		const badge = page.root.shadowRoot?.querySelector('ontario-badge');
 		expect(badge?.textContent).toBe('Not Started');
+		expect(badge?.getAttribute('aria-label')).toBe('Task Status: Not Started (notStarted)');
 
 		// Update the task status
 		page.root.setAttribute('task-status', 'inProgress');
-		await page.waitForChanges();
+		await page.waitForChanges(); // Wait for changes to propagate
 
+		// Ensure the badge text and aria-label reflect the updated status
 		expect(badge?.getAttribute('aria-label')).toBe('Task Status: In Progress (inProgress)');
 		expect(badge?.textContent).toBe('In Progress');
 	});
