@@ -216,8 +216,8 @@ class DocumentationUtils {
 			const relativePath = path.relative(baseDirectory, path.join(currentDirectory, entry.name));
 
 			if (entry.isDirectory()) {
-				fileList = fileList.concat(
-					await DocumentationUtils.walkDirectory(path.join(currentDirectory, entry.name), baseDirectory),
+				fileList.push(
+					...(await DocumentationUtils.walkDirectory(path.join(currentDirectory, entry.name), baseDirectory)),
 				);
 			} else {
 				fileList.push(relativePath);
