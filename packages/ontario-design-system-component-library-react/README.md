@@ -91,12 +91,12 @@ That said, for most public-facing pages using the Ontario Design System, enablin
 
 To begin using the Ontario Design System in your [Next.js](http://Next.js) project:
 
-- Install the React component library: : `npm install –save @ongov/ontario-design-system-componnet-library-react`
+- Install the React component library: : `npm install --save @ongov/ontario-design-system-component-library-react`
 - Import the desired components from the component library:
-  `import { OntarioButton } from ‘@ongov/ontario-design-system-component-library-react”;`
+  `import { OntarioButton } from '@ongov/ontario-design-system-component-library-react';`
 
 The React components can now be used in the component and template files of your project.
-`<OntarioButton type=”primary”>Click me!</OntarioButton>`
+`<OntarioButton type="primary">Click me!</OntarioButton>`
 
 For detailed documentation on individual components, please refer to the official [component documentation](https://designsystem.ontario.ca/docs/documentation/for-developers/web-components.html#component-documentation).
 
@@ -107,13 +107,13 @@ The Ontario Design System includes local assets, such as logos and fonts, that m
 1. Locate the assets: The assets in the npm package are located at `@ongov/ontario-design-system-component-library-react/dist/assets`
 2. Copy assets to your project, there are two ways to do this:
    a. Manual copy command:
-   `copyfiles -E -f “node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/*” src/assets`
+   `copyfiles -E -f "node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/*" src/assets`
    b. Automate with package.json scripts:
-   `“prebuild”: “npm run copy:assets”,
-“copy:assets”: “npm run copy:images && npm run copy:favicons && npm run copy:fonts”,
-“copy:favicons”: “copyfiles -E -f \”./node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/favicons/**\” public/assets/favicons,
-“copy:fonts”: “copyfiles -E -f \”./node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/fonts/**/*\” public/assets/fonts,
-“copy:images”: “copyfiles -E -f \”./node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/images/**\” public/assets`
+   `"prebuild": "npm run copy:assets",
+   "copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts",
+   "copy:favicons": "copyfiles -E -f \"./node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/favicons/**\" public/assets/favicons",
+   "copy:fonts": "copyfiles -E -f \"./node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/fonts/**/\*\" public/assets/fonts",
+   "copy:images": "copyfiles -E -f \"./node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/images/\*\*\" public/assets"
 
 ## Support
 
