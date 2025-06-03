@@ -66,55 +66,6 @@ Another way is to add scripts to copy the assets in your `package.json` file. Fo
 "copy:assets": "pnpm run copy:images && pnpm run copy:favicons && pnpm run copy:fonts"
 ```
 
-## Custom Setup Guide for Using Ontario Design System in a Next.js Project
-
-This guide outlines how to extend a standard [create-next-app](https://nextjs.org/docs/app/api-reference/cli/create-next-app) setup to integrate the [Ontario Design System React component library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-react) with support for server-side rendering (SSR). Below are the key configuration steps and customizations to help get your project running
-
-### Why SSR Matters for the Ontario Design System
-
-The Ontario Design System includes Stencil-based Web Components, which are designed to be framework-agnostic and highly performant. However, when used in a Next.js application, enabling server-side rendering (SSR) offers several key benefits:
-
-- Improved SEO: SSR ensures that content is rendered and crawlable by search engines, which is especially important for public sector websites that must be accessible and discoverable.
-- Faster Time-to-Interactive: By rendering components on the server, users see meaningful content sooner, improving perceived performance.
-- Accessibility Compliance: SSR helps ensure that assistive technologies can access the full structure of the page immediately.
-
-### When SSR Might Not Be Necessary
-
-When SSR Might Not Be Necessary
-
-- **Client-only Pages**: If a page or component is only used after user interaction (e.g., modals, dashboards), rendering it on the client may be sufficient.
-- **Non-critical UI Elements**: Decorative or non-essential components that don’t impact SEO or accessibility can be deferred to client-side rendering.
-
-That said, for most public-facing pages using the Ontario Design System, enabling SSR is strongly recommended to meet performance, accessibility, and SEO standards.
-
-### Installation and Usage
-
-To begin using the Ontario Design System in your [Next.js](http://Next.js) project:
-
-- Install the React component library: : `npm install --save @ongov/ontario-design-system-component-library-react`
-- Import the desired components from the component library:
-  `import { OntarioButton } from '@ongov/ontario-design-system-component-library-react';`
-
-The React components can now be used in the component and template files of your project.
-`<OntarioButton type="primary">Click me!</OntarioButton>`
-
-For detailed documentation on individual components, please refer to the official [component documentation](https://designsystem.ontario.ca/docs/documentation/for-developers/web-components.html#component-documentation).
-
-### Asset Copying for Design System
-
-The Ontario Design System includes local assets, such as logos and fonts, that must be bundled with your application.
-
-1. Locate the assets: The assets in the npm package are located at `@ongov/ontario-design-system-component-library-react/dist/assets`
-2. Copy assets to your project, there are two ways to do this:
-   a. Manual copy command:
-   `copyfiles -E -f "node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/*" src/assets`
-   b. Automate with package.json scripts:
-   `"prebuild": "npm run copy:assets",
-   "copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts",
-   "copy:favicons": "copyfiles -E -f \"./node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/favicons/**\" public/assets/favicons",
-   "copy:fonts": "copyfiles -E -f \"./node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/fonts/**/\*\" public/assets/fonts",
-   "copy:images": "copyfiles -E -f \"./node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/images/\*\*\" public/assets"
-
 ## Support
 
 Contact us at [design.system@ontario.ca](mailto:design.system@ontario.ca) for assistance with this package or via opening a [GitHub](https://github.com/ongov/ontario-design-system) [issue](https://github.com/ongov/ontario-design-system/issues).
