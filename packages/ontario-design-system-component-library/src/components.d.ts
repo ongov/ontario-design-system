@@ -594,7 +594,7 @@ export namespace Components {
 		elementId?: string;
 		/**
 		 * This method returns the ontario-hint-text id. It is used to make sure the hint text and `aria-describedby` value of other form components match when the internal hint text props are used.
-		 * @returns Promise<string | undefined>
+		 * @returns The ID of the hint text element, or undefined if no ID is set.
 		 */
 		getHintTextId: () => Promise<string | undefined>;
 		/**
