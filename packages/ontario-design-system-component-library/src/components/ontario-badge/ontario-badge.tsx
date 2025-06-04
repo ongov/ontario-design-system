@@ -1,7 +1,9 @@
 import { Component, Prop, Element, h, Watch, AttachInternals } from '@stencil/core';
 
 import { BadgeColour, BadgeColours, BadgeColourToClass } from './ontario-badge.types';
+
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { isClientSideRendering } from '../../utils/common/environment';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
 @Component({
@@ -106,8 +108,8 @@ export class OntarioBadge {
 	getBadgeLabel(): string | null {
 		if (this.label) return this.label;
 
-		// Ensure host and its textContent are defined and accessible (safe for SSR environments)
-		if (typeof this.host?.textContent === 'string') {
+		// SSR safety check: ensure we're in the client-side environment before accessing textContent
+		if (isClientSideRendering() && typeof this.host?.textContent !== 'undefined') {
 			return this.host.textContent;
 		}
 
