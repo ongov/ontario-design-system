@@ -1,0 +1,7 @@
+# docs-metadata.yaml
+files:
+  framework-integrations/next-js-ssr/readme.md:
+    frontmatter: |
+      ---
+      title: Next.js Server-Side Rendering (SSR)
+      ---

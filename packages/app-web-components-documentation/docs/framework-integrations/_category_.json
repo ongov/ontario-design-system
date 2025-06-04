@@ -1,0 +1,8 @@
+{
+	"label": "Framework Integrations",
+	"position": 10,
+	"link": {
+		"type": "generated-index",
+		"description": "Learn more about integrating with different frameworks by following the links on this page or within the sidebar."
+	}
+}
