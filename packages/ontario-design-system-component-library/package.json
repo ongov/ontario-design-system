@@ -41,7 +41,7 @@
 	},
 	"dependencies": {
 		"@ongov/ontario-design-system-global-styles": "5.0.0-alpha.10",
-		"@stencil/core": "^4.23.0",
+		"@stencil/core": "^4.33.1",
 		"dotenv": "^16.4.5",
 		"uuid": "^11.0.5"
 	},
