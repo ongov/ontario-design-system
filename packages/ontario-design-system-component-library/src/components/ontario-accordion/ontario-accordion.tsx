@@ -3,6 +3,7 @@ import { Accordion } from './accordion.interface';
 import { ExpandCollapseButtonDetails } from './expandCollapseButtonDetails.interface';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import translations from '../../translations/global.i18n.json';
 
 @Component({
@@ -116,26 +117,52 @@ export class OntarioAccordion {
 	 */
 	@Watch('accordionData')
 	private parseAccordionData() {
-		if (typeof this.accordionData !== 'undefined') {
-			this.internalAccordionData = Array.isArray(this.accordionData)
-				? this.accordionData
-				: JSON.parse(this.accordionData);
-		}
+		try {
+			if (typeof this.accordionData !== 'undefined') {
+				this.internalAccordionData = Array.isArray(this.accordionData)
+					? this.accordionData
+					: JSON.parse(this.accordionData);
+			}
 
-		// Initialize the label based on the initial accordion state
-		this.updateLabel();
+			// Initialize the label based on the initial accordion state
+			this.updateLabel();
+		} catch {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' accordionData ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-accordion> ')
+				.addRegularText('could not be parsed. Please ensure it is valid JSON.')
+				.printMessage();
+
+			this.internalAccordionData = [];
+		}
 	}
 
 	/**
-	 * Parse Expand/Collapse Button Details, this is used to handle JSON strings from HTML.
+	 * Parse Expand/Collapse Button Details. This handles both object and JSON string formats
+	 * passed from HTML, with safe error handling for invalid JSON.
 	 */
 	@Watch('expandCollapseButton')
 	private parseExpandCollapseButtonDetails() {
 		if (typeof this.expandCollapseButton !== 'undefined') {
-			this.internalExpandCollapseLabelDetails =
-				typeof this.expandCollapseButton === 'string'
-					? JSON.parse(this.expandCollapseButton)
-					: this.expandCollapseButton;
+			if (typeof this.expandCollapseButton === 'string') {
+				try {
+					this.internalExpandCollapseLabelDetails = JSON.parse(this.expandCollapseButton);
+				} catch {
+					const message = new ConsoleMessageClass();
+					message
+						.addDesignSystemTag()
+						.addMonospaceText(' expandCollapseButton ')
+						.addRegularText('for')
+						.addMonospaceText(' <ontario-accordion> ')
+						.addRegularText('could not be parsed from a string. Please ensure it is valid JSON.')
+						.printMessage();
+				}
+			} else {
+				this.internalExpandCollapseLabelDetails = this.expandCollapseButton;
+			}
 		}
 	}
 

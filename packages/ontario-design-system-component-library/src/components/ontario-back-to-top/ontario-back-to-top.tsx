@@ -5,6 +5,7 @@ import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 
 import translations from '../../translations/global.i18n.json';
+import { isClientSideRendering } from '../../utils/common/environment';
 
 @Component({
 	tag: 'ontario-back-to-top',
@@ -31,7 +32,9 @@ export class OntarioBackToTop {
 	 */
 	@Listen('scroll', { target: 'window' })
 	showBackToTopButton() {
-		this.displayBackToTop = window.scrollY > this.scrollYValue;
+		if (isClientSideRendering()) {
+			this.displayBackToTop = window.scrollY > this.scrollYValue;
+		}
 	}
 
 	/**
@@ -53,7 +56,9 @@ export class OntarioBackToTop {
 	 * Scroll to top functionality when the Back to Top button is clicked
 	 */
 	private scrollToTop() {
-		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		if (isClientSideRendering()) {
+			window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		}
 	}
 
 	componentWillLoad() {

@@ -252,6 +252,14 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 - Do not preselect checkboxes (there should be no checked attribute by default on the checkbox)
 - All checkboxes in a group should have the same name value to associate them as a group of options
 
+## Technical Note: Dynamic Props and SSR (Server-Side Rendering)
+
+The Ontario Checkbox component supports Server-Side Rendering (SSR), but to ensure correct rendering and prevent hydration mismatches, keep the following in mind:
+
+- **Langauge-Props**: Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-checkbox language="fr"></ontario-checkbox>`).
+- `aria-describedby` for the hint text is added after hydration. This is fine for client interactivity, but screen readers won’t pick it up until the client JS is loaded.
+- **Form Submission Support:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. This requires client-side hydration to fully activate. While the component will render as expected during SSR, native form behavior will only function once hydrated in the browser.
+
 <!-- Auto Generated Below -->
 
 ## Properties
