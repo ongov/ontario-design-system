@@ -10,12 +10,12 @@ It is used in the ontario-header component.
 
 ## Properties
 
-| Property               | Attribute  | Description                                                                                                                                                                      | Type                                    | Default     |
-| ---------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | ----------- |
-| `customLanguageToggle` | --         | A custom function to pass to the language toggle button. This is optional.                                                                                                       | `((event: Event) => void) \| undefined` | `undefined` |
-| `language`             | `language` | The language of the component. In most cases, the language toggle should be the source of truth for determining the site language. Only pass a language value here if necessary. | `"en" \| "fr" \| undefined`             | `undefined` |
-| `size`                 | `size`     | The size of the language toggle button. If no prop is passed, it will be set to the `default` size.                                                                              | `"default" \| "small" \| undefined`     | `'default'` |
-| `url`                  | `url`      | The URL to change to when the language toggle button is clicked. This is optional.                                                                                               | `string \| undefined`                   | `undefined` |
+| Property               | Attribute                | Description                                                                                                                                                                      | Type                                    | Default     |
+| ---------------------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | ----------- |
+| `customLanguageToggle` | `custom-language-toggle` | A custom function to pass to the language toggle button. This is optional.                                                                                                       | `((event: Event) => void) \| undefined` | `undefined` |
+| `language`             | `language`               | The language of the component. In most cases, the language toggle should be the source of truth for determining the site language. Only pass a language value here if necessary. | `"en" \| "fr" \| undefined`             | `undefined` |
+| `size`                 | `size`                   | The size of the language toggle button. If no prop is passed, it will be set to the `default` size.                                                                              | `"default" \| "small" \| undefined`     | `'default'` |
+| `url`                  | `url`                    | The URL to change to when the language toggle button is clicked. This is optional.                                                                                               | `string \| undefined`                   | `undefined` |
 
 ## Events
 
