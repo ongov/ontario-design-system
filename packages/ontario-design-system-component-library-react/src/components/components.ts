@@ -153,7 +153,7 @@ import type { EventName, StencilReactComponent } from '@stencil/react-output-tar
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
 
-export type OntarioAccordionEvents = NonNullable<unknown>;
+type OntarioAccordionEvents = NonNullable<unknown>;
 
 export const OntarioAccordion: StencilReactComponent<OntarioAccordionElement, OntarioAccordionEvents> = /*@__PURE__*/ createComponent<OntarioAccordionElement, OntarioAccordionEvents>({
     tagName: 'ontario-accordion',
@@ -164,7 +164,7 @@ export const OntarioAccordion: StencilReactComponent<OntarioAccordionElement, On
     defineCustomElement: defineOntarioAccordion
 });
 
-export type OntarioAsideEvents = NonNullable<unknown>;
+type OntarioAsideEvents = NonNullable<unknown>;
 
 export const OntarioAside: StencilReactComponent<OntarioAsideElement, OntarioAsideEvents> = /*@__PURE__*/ createComponent<OntarioAsideElement, OntarioAsideEvents>({
     tagName: 'ontario-aside',
@@ -175,7 +175,7 @@ export const OntarioAside: StencilReactComponent<OntarioAsideElement, OntarioAsi
     defineCustomElement: defineOntarioAside
 });
 
-export type OntarioBackToTopEvents = NonNullable<unknown>;
+type OntarioBackToTopEvents = NonNullable<unknown>;
 
 export const OntarioBackToTop: StencilReactComponent<OntarioBackToTopElement, OntarioBackToTopEvents> = /*@__PURE__*/ createComponent<OntarioBackToTopElement, OntarioBackToTopEvents>({
     tagName: 'ontario-back-to-top',
@@ -186,7 +186,7 @@ export const OntarioBackToTop: StencilReactComponent<OntarioBackToTopElement, On
     defineCustomElement: defineOntarioBackToTop
 });
 
-export type OntarioBadgeEvents = NonNullable<unknown>;
+type OntarioBadgeEvents = NonNullable<unknown>;
 
 export const OntarioBadge: StencilReactComponent<OntarioBadgeElement, OntarioBadgeEvents> = /*@__PURE__*/ createComponent<OntarioBadgeElement, OntarioBadgeEvents>({
     tagName: 'ontario-badge',
@@ -197,7 +197,7 @@ export const OntarioBadge: StencilReactComponent<OntarioBadgeElement, OntarioBad
     defineCustomElement: defineOntarioBadge
 });
 
-export type OntarioBlockquoteEvents = NonNullable<unknown>;
+type OntarioBlockquoteEvents = NonNullable<unknown>;
 
 export const OntarioBlockquote: StencilReactComponent<OntarioBlockquoteElement, OntarioBlockquoteEvents> = /*@__PURE__*/ createComponent<OntarioBlockquoteElement, OntarioBlockquoteEvents>({
     tagName: 'ontario-blockquote',
@@ -208,7 +208,7 @@ export const OntarioBlockquote: StencilReactComponent<OntarioBlockquoteElement, 
     defineCustomElement: defineOntarioBlockquote
 });
 
-export type OntarioButtonEvents = NonNullable<unknown>;
+type OntarioButtonEvents = NonNullable<unknown>;
 
 export const OntarioButton: StencilReactComponent<OntarioButtonElement, OntarioButtonEvents> = /*@__PURE__*/ createComponent<OntarioButtonElement, OntarioButtonEvents>({
     tagName: 'ontario-button',
@@ -219,7 +219,7 @@ export const OntarioButton: StencilReactComponent<OntarioButtonElement, OntarioB
     defineCustomElement: defineOntarioButton
 });
 
-export type OntarioCalloutEvents = NonNullable<unknown>;
+type OntarioCalloutEvents = NonNullable<unknown>;
 
 export const OntarioCallout: StencilReactComponent<OntarioCalloutElement, OntarioCalloutEvents> = /*@__PURE__*/ createComponent<OntarioCalloutElement, OntarioCalloutEvents>({
     tagName: 'ontario-callout',
@@ -230,7 +230,7 @@ export const OntarioCallout: StencilReactComponent<OntarioCalloutElement, Ontari
     defineCustomElement: defineOntarioCallout
 });
 
-export type OntarioCardEvents = NonNullable<unknown>;
+type OntarioCardEvents = NonNullable<unknown>;
 
 export const OntarioCard: StencilReactComponent<OntarioCardElement, OntarioCardEvents> = /*@__PURE__*/ createComponent<OntarioCardElement, OntarioCardEvents>({
     tagName: 'ontario-card',
@@ -241,7 +241,7 @@ export const OntarioCard: StencilReactComponent<OntarioCardElement, OntarioCardE
     defineCustomElement: defineOntarioCard
 });
 
-export type OntarioCardCollectionEvents = NonNullable<unknown>;
+type OntarioCardCollectionEvents = NonNullable<unknown>;
 
 export const OntarioCardCollection: StencilReactComponent<OntarioCardCollectionElement, OntarioCardCollectionEvents> = /*@__PURE__*/ createComponent<OntarioCardCollectionElement, OntarioCardCollectionEvents>({
     tagName: 'ontario-card-collection',
@@ -252,7 +252,7 @@ export const OntarioCardCollection: StencilReactComponent<OntarioCardCollectionE
     defineCustomElement: defineOntarioCardCollection
 });
 
-export type OntarioCheckboxesEvents = {
+type OntarioCheckboxesEvents = {
     onCheckboxOnChange: EventName<OntarioCheckboxesCustomEvent<RadioAndCheckboxChangeEvent>>,
     onCheckboxOnBlur: EventName<OntarioCheckboxesCustomEvent<InputFocusBlurEvent>>,
     onCheckboxOnFocus: EventName<OntarioCheckboxesCustomEvent<InputFocusBlurEvent>>,
@@ -273,7 +273,7 @@ export const OntarioCheckboxes: StencilReactComponent<OntarioCheckboxesElement, 
     defineCustomElement: defineOntarioCheckboxes
 });
 
-export type OntarioCriticalAlertEvents = NonNullable<unknown>;
+type OntarioCriticalAlertEvents = NonNullable<unknown>;
 
 export const OntarioCriticalAlert: StencilReactComponent<OntarioCriticalAlertElement, OntarioCriticalAlertEvents> = /*@__PURE__*/ createComponent<OntarioCriticalAlertElement, OntarioCriticalAlertEvents>({
     tagName: 'ontario-critical-alert',
@@ -284,7 +284,7 @@ export const OntarioCriticalAlert: StencilReactComponent<OntarioCriticalAlertEle
     defineCustomElement: defineOntarioCriticalAlert
 });
 
-export type OntarioDateInputEvents = {
+type OntarioDateInputEvents = {
     onInputOnInput: EventName<CustomEvent<{
         value: string;
         fieldType: 'day' | 'month' | 'year';
@@ -313,7 +313,7 @@ export const OntarioDateInput: StencilReactComponent<OntarioDateInputElement, On
     defineCustomElement: defineOntarioDateInput
 });
 
-export type OntarioDropdownListEvents = {
+type OntarioDropdownListEvents = {
     onDropdownOnChange: EventName<OntarioDropdownListCustomEvent<InputInteractionEvent>>,
     onDropdownOnBlur: EventName<OntarioDropdownListCustomEvent<InputFocusBlurEvent>>,
     onDropdownOnFocus: EventName<OntarioDropdownListCustomEvent<InputFocusBlurEvent>>,
@@ -334,7 +334,7 @@ export const OntarioDropdownList: StencilReactComponent<OntarioDropdownListEleme
     defineCustomElement: defineOntarioDropdownList
 });
 
-export type OntarioFieldsetEvents = NonNullable<unknown>;
+type OntarioFieldsetEvents = NonNullable<unknown>;
 
 export const OntarioFieldset: StencilReactComponent<OntarioFieldsetElement, OntarioFieldsetEvents> = /*@__PURE__*/ createComponent<OntarioFieldsetElement, OntarioFieldsetEvents>({
     tagName: 'ontario-fieldset',
@@ -345,7 +345,7 @@ export const OntarioFieldset: StencilReactComponent<OntarioFieldsetElement, Onta
     defineCustomElement: defineOntarioFieldset
 });
 
-export type OntarioFooterEvents = NonNullable<unknown>;
+type OntarioFooterEvents = NonNullable<unknown>;
 
 export const OntarioFooter: StencilReactComponent<OntarioFooterElement, OntarioFooterEvents> = /*@__PURE__*/ createComponent<OntarioFooterElement, OntarioFooterEvents>({
     tagName: 'ontario-footer',
@@ -356,7 +356,7 @@ export const OntarioFooter: StencilReactComponent<OntarioFooterElement, OntarioF
     defineCustomElement: defineOntarioFooter
 });
 
-export type OntarioHeaderEvents = NonNullable<unknown>;
+type OntarioHeaderEvents = NonNullable<unknown>;
 
 export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioHeaderEvents> = /*@__PURE__*/ createComponent<OntarioHeaderElement, OntarioHeaderEvents>({
     tagName: 'ontario-header',
@@ -367,7 +367,7 @@ export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioH
     defineCustomElement: defineOntarioHeader
 });
 
-export type OntarioHintExpanderEvents = { onToggleExpanderEvent: EventName<OntarioHintExpanderCustomEvent<MouseEvent | KeyboardEvent>> };
+type OntarioHintExpanderEvents = { onToggleExpanderEvent: EventName<OntarioHintExpanderCustomEvent<MouseEvent | KeyboardEvent>> };
 
 export const OntarioHintExpander: StencilReactComponent<OntarioHintExpanderElement, OntarioHintExpanderEvents> = /*@__PURE__*/ createComponent<OntarioHintExpanderElement, OntarioHintExpanderEvents>({
     tagName: 'ontario-hint-expander',
@@ -378,7 +378,7 @@ export const OntarioHintExpander: StencilReactComponent<OntarioHintExpanderEleme
     defineCustomElement: defineOntarioHintExpander
 });
 
-export type OntarioHintTextEvents = NonNullable<unknown>;
+type OntarioHintTextEvents = NonNullable<unknown>;
 
 export const OntarioHintText: StencilReactComponent<OntarioHintTextElement, OntarioHintTextEvents> = /*@__PURE__*/ createComponent<OntarioHintTextElement, OntarioHintTextEvents>({
     tagName: 'ontario-hint-text',
@@ -389,7 +389,7 @@ export const OntarioHintText: StencilReactComponent<OntarioHintTextElement, Onta
     defineCustomElement: defineOntarioHintText
 });
 
-export type OntarioIconAccessibilityEvents = NonNullable<unknown>;
+type OntarioIconAccessibilityEvents = NonNullable<unknown>;
 
 export const OntarioIconAccessibility: StencilReactComponent<OntarioIconAccessibilityElement, OntarioIconAccessibilityEvents> = /*@__PURE__*/ createComponent<OntarioIconAccessibilityElement, OntarioIconAccessibilityEvents>({
     tagName: 'ontario-icon-accessibility',
@@ -400,7 +400,7 @@ export const OntarioIconAccessibility: StencilReactComponent<OntarioIconAccessib
     defineCustomElement: defineOntarioIconAccessibility
 });
 
-export type OntarioIconAccountEvents = NonNullable<unknown>;
+type OntarioIconAccountEvents = NonNullable<unknown>;
 
 export const OntarioIconAccount: StencilReactComponent<OntarioIconAccountElement, OntarioIconAccountEvents> = /*@__PURE__*/ createComponent<OntarioIconAccountElement, OntarioIconAccountEvents>({
     tagName: 'ontario-icon-account',
@@ -411,7 +411,7 @@ export const OntarioIconAccount: StencilReactComponent<OntarioIconAccountElement
     defineCustomElement: defineOntarioIconAccount
 });
 
-export type OntarioIconAddEvents = NonNullable<unknown>;
+type OntarioIconAddEvents = NonNullable<unknown>;
 
 export const OntarioIconAdd: StencilReactComponent<OntarioIconAddElement, OntarioIconAddEvents> = /*@__PURE__*/ createComponent<OntarioIconAddElement, OntarioIconAddEvents>({
     tagName: 'ontario-icon-add',
@@ -422,7 +422,7 @@ export const OntarioIconAdd: StencilReactComponent<OntarioIconAddElement, Ontari
     defineCustomElement: defineOntarioIconAdd
 });
 
-export type OntarioIconAddAltEvents = NonNullable<unknown>;
+type OntarioIconAddAltEvents = NonNullable<unknown>;
 
 export const OntarioIconAddAlt: StencilReactComponent<OntarioIconAddAltElement, OntarioIconAddAltEvents> = /*@__PURE__*/ createComponent<OntarioIconAddAltElement, OntarioIconAddAltEvents>({
     tagName: 'ontario-icon-add-alt',
@@ -433,7 +433,7 @@ export const OntarioIconAddAlt: StencilReactComponent<OntarioIconAddAltElement, 
     defineCustomElement: defineOntarioIconAddAlt
 });
 
-export type OntarioIconAlertErrorEvents = NonNullable<unknown>;
+type OntarioIconAlertErrorEvents = NonNullable<unknown>;
 
 export const OntarioIconAlertError: StencilReactComponent<OntarioIconAlertErrorElement, OntarioIconAlertErrorEvents> = /*@__PURE__*/ createComponent<OntarioIconAlertErrorElement, OntarioIconAlertErrorEvents>({
     tagName: 'ontario-icon-alert-error',
@@ -444,7 +444,7 @@ export const OntarioIconAlertError: StencilReactComponent<OntarioIconAlertErrorE
     defineCustomElement: defineOntarioIconAlertError
 });
 
-export type OntarioIconAlertInformationEvents = NonNullable<unknown>;
+type OntarioIconAlertInformationEvents = NonNullable<unknown>;
 
 export const OntarioIconAlertInformation: StencilReactComponent<OntarioIconAlertInformationElement, OntarioIconAlertInformationEvents> = /*@__PURE__*/ createComponent<OntarioIconAlertInformationElement, OntarioIconAlertInformationEvents>({
     tagName: 'ontario-icon-alert-information',
@@ -455,7 +455,7 @@ export const OntarioIconAlertInformation: StencilReactComponent<OntarioIconAlert
     defineCustomElement: defineOntarioIconAlertInformation
 });
 
-export type OntarioIconAlertSuccessEvents = NonNullable<unknown>;
+type OntarioIconAlertSuccessEvents = NonNullable<unknown>;
 
 export const OntarioIconAlertSuccess: StencilReactComponent<OntarioIconAlertSuccessElement, OntarioIconAlertSuccessEvents> = /*@__PURE__*/ createComponent<OntarioIconAlertSuccessElement, OntarioIconAlertSuccessEvents>({
     tagName: 'ontario-icon-alert-success',
@@ -466,7 +466,7 @@ export const OntarioIconAlertSuccess: StencilReactComponent<OntarioIconAlertSucc
     defineCustomElement: defineOntarioIconAlertSuccess
 });
 
-export type OntarioIconAlertWarningEvents = NonNullable<unknown>;
+type OntarioIconAlertWarningEvents = NonNullable<unknown>;
 
 export const OntarioIconAlertWarning: StencilReactComponent<OntarioIconAlertWarningElement, OntarioIconAlertWarningEvents> = /*@__PURE__*/ createComponent<OntarioIconAlertWarningElement, OntarioIconAlertWarningEvents>({
     tagName: 'ontario-icon-alert-warning',
@@ -477,7 +477,7 @@ export const OntarioIconAlertWarning: StencilReactComponent<OntarioIconAlertWarn
     defineCustomElement: defineOntarioIconAlertWarning
 });
 
-export type OntarioIconArrowUpEvents = NonNullable<unknown>;
+type OntarioIconArrowUpEvents = NonNullable<unknown>;
 
 export const OntarioIconArrowUp: StencilReactComponent<OntarioIconArrowUpElement, OntarioIconArrowUpEvents> = /*@__PURE__*/ createComponent<OntarioIconArrowUpElement, OntarioIconArrowUpEvents>({
     tagName: 'ontario-icon-arrow-up',
@@ -488,7 +488,7 @@ export const OntarioIconArrowUp: StencilReactComponent<OntarioIconArrowUpElement
     defineCustomElement: defineOntarioIconArrowUp
 });
 
-export type OntarioIconAttachEvents = NonNullable<unknown>;
+type OntarioIconAttachEvents = NonNullable<unknown>;
 
 export const OntarioIconAttach: StencilReactComponent<OntarioIconAttachElement, OntarioIconAttachEvents> = /*@__PURE__*/ createComponent<OntarioIconAttachElement, OntarioIconAttachEvents>({
     tagName: 'ontario-icon-attach',
@@ -499,7 +499,7 @@ export const OntarioIconAttach: StencilReactComponent<OntarioIconAttachElement, 
     defineCustomElement: defineOntarioIconAttach
 });
 
-export type OntarioIconBookmarkOffEvents = NonNullable<unknown>;
+type OntarioIconBookmarkOffEvents = NonNullable<unknown>;
 
 export const OntarioIconBookmarkOff: StencilReactComponent<OntarioIconBookmarkOffElement, OntarioIconBookmarkOffEvents> = /*@__PURE__*/ createComponent<OntarioIconBookmarkOffElement, OntarioIconBookmarkOffEvents>({
     tagName: 'ontario-icon-bookmark-off',
@@ -510,7 +510,7 @@ export const OntarioIconBookmarkOff: StencilReactComponent<OntarioIconBookmarkOf
     defineCustomElement: defineOntarioIconBookmarkOff
 });
 
-export type OntarioIconBookmarkOnEvents = NonNullable<unknown>;
+type OntarioIconBookmarkOnEvents = NonNullable<unknown>;
 
 export const OntarioIconBookmarkOn: StencilReactComponent<OntarioIconBookmarkOnElement, OntarioIconBookmarkOnEvents> = /*@__PURE__*/ createComponent<OntarioIconBookmarkOnElement, OntarioIconBookmarkOnEvents>({
     tagName: 'ontario-icon-bookmark-on',
@@ -521,7 +521,7 @@ export const OntarioIconBookmarkOn: StencilReactComponent<OntarioIconBookmarkOnE
     defineCustomElement: defineOntarioIconBookmarkOn
 });
 
-export type OntarioIconCalendarEvents = NonNullable<unknown>;
+type OntarioIconCalendarEvents = NonNullable<unknown>;
 
 export const OntarioIconCalendar: StencilReactComponent<OntarioIconCalendarElement, OntarioIconCalendarEvents> = /*@__PURE__*/ createComponent<OntarioIconCalendarElement, OntarioIconCalendarEvents>({
     tagName: 'ontario-icon-calendar',
@@ -532,7 +532,7 @@ export const OntarioIconCalendar: StencilReactComponent<OntarioIconCalendarEleme
     defineCustomElement: defineOntarioIconCalendar
 });
 
-export type OntarioIconCameraEvents = NonNullable<unknown>;
+type OntarioIconCameraEvents = NonNullable<unknown>;
 
 export const OntarioIconCamera: StencilReactComponent<OntarioIconCameraElement, OntarioIconCameraEvents> = /*@__PURE__*/ createComponent<OntarioIconCameraElement, OntarioIconCameraEvents>({
     tagName: 'ontario-icon-camera',
@@ -543,7 +543,7 @@ export const OntarioIconCamera: StencilReactComponent<OntarioIconCameraElement, 
     defineCustomElement: defineOntarioIconCamera
 });
 
-export type OntarioIconChevronDownEvents = NonNullable<unknown>;
+type OntarioIconChevronDownEvents = NonNullable<unknown>;
 
 export const OntarioIconChevronDown: StencilReactComponent<OntarioIconChevronDownElement, OntarioIconChevronDownEvents> = /*@__PURE__*/ createComponent<OntarioIconChevronDownElement, OntarioIconChevronDownEvents>({
     tagName: 'ontario-icon-chevron-down',
@@ -554,7 +554,7 @@ export const OntarioIconChevronDown: StencilReactComponent<OntarioIconChevronDow
     defineCustomElement: defineOntarioIconChevronDown
 });
 
-export type OntarioIconChevronLeftEvents = NonNullable<unknown>;
+type OntarioIconChevronLeftEvents = NonNullable<unknown>;
 
 export const OntarioIconChevronLeft: StencilReactComponent<OntarioIconChevronLeftElement, OntarioIconChevronLeftEvents> = /*@__PURE__*/ createComponent<OntarioIconChevronLeftElement, OntarioIconChevronLeftEvents>({
     tagName: 'ontario-icon-chevron-left',
@@ -565,7 +565,7 @@ export const OntarioIconChevronLeft: StencilReactComponent<OntarioIconChevronLef
     defineCustomElement: defineOntarioIconChevronLeft
 });
 
-export type OntarioIconChevronRightEvents = NonNullable<unknown>;
+type OntarioIconChevronRightEvents = NonNullable<unknown>;
 
 export const OntarioIconChevronRight: StencilReactComponent<OntarioIconChevronRightElement, OntarioIconChevronRightEvents> = /*@__PURE__*/ createComponent<OntarioIconChevronRightElement, OntarioIconChevronRightEvents>({
     tagName: 'ontario-icon-chevron-right',
@@ -576,7 +576,7 @@ export const OntarioIconChevronRight: StencilReactComponent<OntarioIconChevronRi
     defineCustomElement: defineOntarioIconChevronRight
 });
 
-export type OntarioIconChevronUpEvents = NonNullable<unknown>;
+type OntarioIconChevronUpEvents = NonNullable<unknown>;
 
 export const OntarioIconChevronUp: StencilReactComponent<OntarioIconChevronUpElement, OntarioIconChevronUpEvents> = /*@__PURE__*/ createComponent<OntarioIconChevronUpElement, OntarioIconChevronUpEvents>({
     tagName: 'ontario-icon-chevron-up',
@@ -587,7 +587,7 @@ export const OntarioIconChevronUp: StencilReactComponent<OntarioIconChevronUpEle
     defineCustomElement: defineOntarioIconChevronUp
 });
 
-export type OntarioIconClockEvents = NonNullable<unknown>;
+type OntarioIconClockEvents = NonNullable<unknown>;
 
 export const OntarioIconClock: StencilReactComponent<OntarioIconClockElement, OntarioIconClockEvents> = /*@__PURE__*/ createComponent<OntarioIconClockElement, OntarioIconClockEvents>({
     tagName: 'ontario-icon-clock',
@@ -598,7 +598,7 @@ export const OntarioIconClock: StencilReactComponent<OntarioIconClockElement, On
     defineCustomElement: defineOntarioIconClock
 });
 
-export type OntarioIconCloseEvents = NonNullable<unknown>;
+type OntarioIconCloseEvents = NonNullable<unknown>;
 
 export const OntarioIconClose: StencilReactComponent<OntarioIconCloseElement, OntarioIconCloseEvents> = /*@__PURE__*/ createComponent<OntarioIconCloseElement, OntarioIconCloseEvents>({
     tagName: 'ontario-icon-close',
@@ -609,7 +609,7 @@ export const OntarioIconClose: StencilReactComponent<OntarioIconCloseElement, On
     defineCustomElement: defineOntarioIconClose
 });
 
-export type OntarioIconCloseHeaderEvents = NonNullable<unknown>;
+type OntarioIconCloseHeaderEvents = NonNullable<unknown>;
 
 export const OntarioIconCloseHeader: StencilReactComponent<OntarioIconCloseHeaderElement, OntarioIconCloseHeaderEvents> = /*@__PURE__*/ createComponent<OntarioIconCloseHeaderElement, OntarioIconCloseHeaderEvents>({
     tagName: 'ontario-icon-close-header',
@@ -620,7 +620,7 @@ export const OntarioIconCloseHeader: StencilReactComponent<OntarioIconCloseHeade
     defineCustomElement: defineOntarioIconCloseHeader
 });
 
-export type OntarioIconCloudEvents = NonNullable<unknown>;
+type OntarioIconCloudEvents = NonNullable<unknown>;
 
 export const OntarioIconCloud: StencilReactComponent<OntarioIconCloudElement, OntarioIconCloudEvents> = /*@__PURE__*/ createComponent<OntarioIconCloudElement, OntarioIconCloudEvents>({
     tagName: 'ontario-icon-cloud',
@@ -631,7 +631,7 @@ export const OntarioIconCloud: StencilReactComponent<OntarioIconCloudElement, On
     defineCustomElement: defineOntarioIconCloud
 });
 
-export type OntarioIconCollapseEvents = NonNullable<unknown>;
+type OntarioIconCollapseEvents = NonNullable<unknown>;
 
 export const OntarioIconCollapse: StencilReactComponent<OntarioIconCollapseElement, OntarioIconCollapseEvents> = /*@__PURE__*/ createComponent<OntarioIconCollapseElement, OntarioIconCollapseEvents>({
     tagName: 'ontario-icon-collapse',
@@ -642,7 +642,7 @@ export const OntarioIconCollapse: StencilReactComponent<OntarioIconCollapseEleme
     defineCustomElement: defineOntarioIconCollapse
 });
 
-export type OntarioIconCreditCardEvents = NonNullable<unknown>;
+type OntarioIconCreditCardEvents = NonNullable<unknown>;
 
 export const OntarioIconCreditCard: StencilReactComponent<OntarioIconCreditCardElement, OntarioIconCreditCardEvents> = /*@__PURE__*/ createComponent<OntarioIconCreditCardElement, OntarioIconCreditCardEvents>({
     tagName: 'ontario-icon-credit-card',
@@ -653,7 +653,7 @@ export const OntarioIconCreditCard: StencilReactComponent<OntarioIconCreditCardE
     defineCustomElement: defineOntarioIconCreditCard
 });
 
-export type OntarioIconCriticalAlertWarningEvents = NonNullable<unknown>;
+type OntarioIconCriticalAlertWarningEvents = NonNullable<unknown>;
 
 export const OntarioIconCriticalAlertWarning: StencilReactComponent<OntarioIconCriticalAlertWarningElement, OntarioIconCriticalAlertWarningEvents> = /*@__PURE__*/ createComponent<OntarioIconCriticalAlertWarningElement, OntarioIconCriticalAlertWarningEvents>({
     tagName: 'ontario-icon-critical-alert-warning',
@@ -664,7 +664,7 @@ export const OntarioIconCriticalAlertWarning: StencilReactComponent<OntarioIconC
     defineCustomElement: defineOntarioIconCriticalAlertWarning
 });
 
-export type OntarioIconDeleteEvents = NonNullable<unknown>;
+type OntarioIconDeleteEvents = NonNullable<unknown>;
 
 export const OntarioIconDelete: StencilReactComponent<OntarioIconDeleteElement, OntarioIconDeleteEvents> = /*@__PURE__*/ createComponent<OntarioIconDeleteElement, OntarioIconDeleteEvents>({
     tagName: 'ontario-icon-delete',
@@ -675,7 +675,7 @@ export const OntarioIconDelete: StencilReactComponent<OntarioIconDeleteElement, 
     defineCustomElement: defineOntarioIconDelete
 });
 
-export type OntarioIconDocumentEvents = NonNullable<unknown>;
+type OntarioIconDocumentEvents = NonNullable<unknown>;
 
 export const OntarioIconDocument: StencilReactComponent<OntarioIconDocumentElement, OntarioIconDocumentEvents> = /*@__PURE__*/ createComponent<OntarioIconDocumentElement, OntarioIconDocumentEvents>({
     tagName: 'ontario-icon-document',
@@ -686,7 +686,7 @@ export const OntarioIconDocument: StencilReactComponent<OntarioIconDocumentEleme
     defineCustomElement: defineOntarioIconDocument
 });
 
-export type OntarioIconDownloadEvents = NonNullable<unknown>;
+type OntarioIconDownloadEvents = NonNullable<unknown>;
 
 export const OntarioIconDownload: StencilReactComponent<OntarioIconDownloadElement, OntarioIconDownloadEvents> = /*@__PURE__*/ createComponent<OntarioIconDownloadElement, OntarioIconDownloadEvents>({
     tagName: 'ontario-icon-download',
@@ -697,7 +697,7 @@ export const OntarioIconDownload: StencilReactComponent<OntarioIconDownloadEleme
     defineCustomElement: defineOntarioIconDownload
 });
 
-export type OntarioIconDropdownArrowEvents = NonNullable<unknown>;
+type OntarioIconDropdownArrowEvents = NonNullable<unknown>;
 
 export const OntarioIconDropdownArrow: StencilReactComponent<OntarioIconDropdownArrowElement, OntarioIconDropdownArrowEvents> = /*@__PURE__*/ createComponent<OntarioIconDropdownArrowElement, OntarioIconDropdownArrowEvents>({
     tagName: 'ontario-icon-dropdown-arrow',
@@ -708,7 +708,7 @@ export const OntarioIconDropdownArrow: StencilReactComponent<OntarioIconDropdown
     defineCustomElement: defineOntarioIconDropdownArrow
 });
 
-export type OntarioIconEditEvents = NonNullable<unknown>;
+type OntarioIconEditEvents = NonNullable<unknown>;
 
 export const OntarioIconEdit: StencilReactComponent<OntarioIconEditElement, OntarioIconEditEvents> = /*@__PURE__*/ createComponent<OntarioIconEditElement, OntarioIconEditEvents>({
     tagName: 'ontario-icon-edit',
@@ -719,7 +719,7 @@ export const OntarioIconEdit: StencilReactComponent<OntarioIconEditElement, Onta
     defineCustomElement: defineOntarioIconEdit
 });
 
-export type OntarioIconEmailEvents = NonNullable<unknown>;
+type OntarioIconEmailEvents = NonNullable<unknown>;
 
 export const OntarioIconEmail: StencilReactComponent<OntarioIconEmailElement, OntarioIconEmailEvents> = /*@__PURE__*/ createComponent<OntarioIconEmailElement, OntarioIconEmailEvents>({
     tagName: 'ontario-icon-email',
@@ -730,7 +730,7 @@ export const OntarioIconEmail: StencilReactComponent<OntarioIconEmailElement, On
     defineCustomElement: defineOntarioIconEmail
 });
 
-export type OntarioIconExpandEvents = NonNullable<unknown>;
+type OntarioIconExpandEvents = NonNullable<unknown>;
 
 export const OntarioIconExpand: StencilReactComponent<OntarioIconExpandElement, OntarioIconExpandEvents> = /*@__PURE__*/ createComponent<OntarioIconExpandElement, OntarioIconExpandEvents>({
     tagName: 'ontario-icon-expand',
@@ -741,7 +741,7 @@ export const OntarioIconExpand: StencilReactComponent<OntarioIconExpandElement, 
     defineCustomElement: defineOntarioIconExpand
 });
 
-export type OntarioIconExportEvents = NonNullable<unknown>;
+type OntarioIconExportEvents = NonNullable<unknown>;
 
 export const OntarioIconExport: StencilReactComponent<OntarioIconExportElement, OntarioIconExportEvents> = /*@__PURE__*/ createComponent<OntarioIconExportElement, OntarioIconExportEvents>({
     tagName: 'ontario-icon-export',
@@ -752,7 +752,7 @@ export const OntarioIconExport: StencilReactComponent<OntarioIconExportElement, 
     defineCustomElement: defineOntarioIconExport
 });
 
-export type OntarioIconFacebookEvents = NonNullable<unknown>;
+type OntarioIconFacebookEvents = NonNullable<unknown>;
 
 export const OntarioIconFacebook: StencilReactComponent<OntarioIconFacebookElement, OntarioIconFacebookEvents> = /*@__PURE__*/ createComponent<OntarioIconFacebookElement, OntarioIconFacebookEvents>({
     tagName: 'ontario-icon-facebook',
@@ -763,7 +763,7 @@ export const OntarioIconFacebook: StencilReactComponent<OntarioIconFacebookEleme
     defineCustomElement: defineOntarioIconFacebook
 });
 
-export type OntarioIconFacebookAltEvents = NonNullable<unknown>;
+type OntarioIconFacebookAltEvents = NonNullable<unknown>;
 
 export const OntarioIconFacebookAlt: StencilReactComponent<OntarioIconFacebookAltElement, OntarioIconFacebookAltEvents> = /*@__PURE__*/ createComponent<OntarioIconFacebookAltElement, OntarioIconFacebookAltEvents>({
     tagName: 'ontario-icon-facebook-alt',
@@ -774,7 +774,7 @@ export const OntarioIconFacebookAlt: StencilReactComponent<OntarioIconFacebookAl
     defineCustomElement: defineOntarioIconFacebookAlt
 });
 
-export type OntarioIconFavouriteOffEvents = NonNullable<unknown>;
+type OntarioIconFavouriteOffEvents = NonNullable<unknown>;
 
 export const OntarioIconFavouriteOff: StencilReactComponent<OntarioIconFavouriteOffElement, OntarioIconFavouriteOffEvents> = /*@__PURE__*/ createComponent<OntarioIconFavouriteOffElement, OntarioIconFavouriteOffEvents>({
     tagName: 'ontario-icon-favourite-off',
@@ -785,7 +785,7 @@ export const OntarioIconFavouriteOff: StencilReactComponent<OntarioIconFavourite
     defineCustomElement: defineOntarioIconFavouriteOff
 });
 
-export type OntarioIconFavouriteOnEvents = NonNullable<unknown>;
+type OntarioIconFavouriteOnEvents = NonNullable<unknown>;
 
 export const OntarioIconFavouriteOn: StencilReactComponent<OntarioIconFavouriteOnElement, OntarioIconFavouriteOnEvents> = /*@__PURE__*/ createComponent<OntarioIconFavouriteOnElement, OntarioIconFavouriteOnEvents>({
     tagName: 'ontario-icon-favourite-on',
@@ -796,7 +796,7 @@ export const OntarioIconFavouriteOn: StencilReactComponent<OntarioIconFavouriteO
     defineCustomElement: defineOntarioIconFavouriteOn
 });
 
-export type OntarioIconFilterEvents = NonNullable<unknown>;
+type OntarioIconFilterEvents = NonNullable<unknown>;
 
 export const OntarioIconFilter: StencilReactComponent<OntarioIconFilterElement, OntarioIconFilterEvents> = /*@__PURE__*/ createComponent<OntarioIconFilterElement, OntarioIconFilterEvents>({
     tagName: 'ontario-icon-filter',
@@ -807,7 +807,7 @@ export const OntarioIconFilter: StencilReactComponent<OntarioIconFilterElement, 
     defineCustomElement: defineOntarioIconFilter
 });
 
-export type OntarioIconFlickrEvents = NonNullable<unknown>;
+type OntarioIconFlickrEvents = NonNullable<unknown>;
 
 export const OntarioIconFlickr: StencilReactComponent<OntarioIconFlickrElement, OntarioIconFlickrEvents> = /*@__PURE__*/ createComponent<OntarioIconFlickrElement, OntarioIconFlickrEvents>({
     tagName: 'ontario-icon-flickr',
@@ -818,7 +818,7 @@ export const OntarioIconFlickr: StencilReactComponent<OntarioIconFlickrElement, 
     defineCustomElement: defineOntarioIconFlickr
 });
 
-export type OntarioIconGridEvents = NonNullable<unknown>;
+type OntarioIconGridEvents = NonNullable<unknown>;
 
 export const OntarioIconGrid: StencilReactComponent<OntarioIconGridElement, OntarioIconGridEvents> = /*@__PURE__*/ createComponent<OntarioIconGridElement, OntarioIconGridEvents>({
     tagName: 'ontario-icon-grid',
@@ -829,7 +829,7 @@ export const OntarioIconGrid: StencilReactComponent<OntarioIconGridElement, Onta
     defineCustomElement: defineOntarioIconGrid
 });
 
-export type OntarioIconHelpEvents = NonNullable<unknown>;
+type OntarioIconHelpEvents = NonNullable<unknown>;
 
 export const OntarioIconHelp: StencilReactComponent<OntarioIconHelpElement, OntarioIconHelpEvents> = /*@__PURE__*/ createComponent<OntarioIconHelpElement, OntarioIconHelpEvents>({
     tagName: 'ontario-icon-help',
@@ -840,7 +840,7 @@ export const OntarioIconHelp: StencilReactComponent<OntarioIconHelpElement, Onta
     defineCustomElement: defineOntarioIconHelp
 });
 
-export type OntarioIconInstagramEvents = NonNullable<unknown>;
+type OntarioIconInstagramEvents = NonNullable<unknown>;
 
 export const OntarioIconInstagram: StencilReactComponent<OntarioIconInstagramElement, OntarioIconInstagramEvents> = /*@__PURE__*/ createComponent<OntarioIconInstagramElement, OntarioIconInstagramEvents>({
     tagName: 'ontario-icon-instagram',
@@ -851,7 +851,7 @@ export const OntarioIconInstagram: StencilReactComponent<OntarioIconInstagramEle
     defineCustomElement: defineOntarioIconInstagram
 });
 
-export type OntarioIconInteracEnEvents = NonNullable<unknown>;
+type OntarioIconInteracEnEvents = NonNullable<unknown>;
 
 export const OntarioIconInteracEn: StencilReactComponent<OntarioIconInteracEnElement, OntarioIconInteracEnEvents> = /*@__PURE__*/ createComponent<OntarioIconInteracEnElement, OntarioIconInteracEnEvents>({
     tagName: 'ontario-icon-interac-en',
@@ -862,7 +862,7 @@ export const OntarioIconInteracEn: StencilReactComponent<OntarioIconInteracEnEle
     defineCustomElement: defineOntarioIconInteracEn
 });
 
-export type OntarioIconInteracEnAltEvents = NonNullable<unknown>;
+type OntarioIconInteracEnAltEvents = NonNullable<unknown>;
 
 export const OntarioIconInteracEnAlt: StencilReactComponent<OntarioIconInteracEnAltElement, OntarioIconInteracEnAltEvents> = /*@__PURE__*/ createComponent<OntarioIconInteracEnAltElement, OntarioIconInteracEnAltEvents>({
     tagName: 'ontario-icon-interac-en-alt',
@@ -873,7 +873,7 @@ export const OntarioIconInteracEnAlt: StencilReactComponent<OntarioIconInteracEn
     defineCustomElement: defineOntarioIconInteracEnAlt
 });
 
-export type OntarioIconInteracFrEvents = NonNullable<unknown>;
+type OntarioIconInteracFrEvents = NonNullable<unknown>;
 
 export const OntarioIconInteracFr: StencilReactComponent<OntarioIconInteracFrElement, OntarioIconInteracFrEvents> = /*@__PURE__*/ createComponent<OntarioIconInteracFrElement, OntarioIconInteracFrEvents>({
     tagName: 'ontario-icon-interac-fr',
@@ -884,7 +884,7 @@ export const OntarioIconInteracFr: StencilReactComponent<OntarioIconInteracFrEle
     defineCustomElement: defineOntarioIconInteracFr
 });
 
-export type OntarioIconInteracFrAltEvents = NonNullable<unknown>;
+type OntarioIconInteracFrAltEvents = NonNullable<unknown>;
 
 export const OntarioIconInteracFrAlt: StencilReactComponent<OntarioIconInteracFrAltElement, OntarioIconInteracFrAltEvents> = /*@__PURE__*/ createComponent<OntarioIconInteracFrAltElement, OntarioIconInteracFrAltEvents>({
     tagName: 'ontario-icon-interac-fr-alt',
@@ -895,7 +895,7 @@ export const OntarioIconInteracFrAlt: StencilReactComponent<OntarioIconInteracFr
     defineCustomElement: defineOntarioIconInteracFrAlt
 });
 
-export type OntarioIconLinkedinEvents = NonNullable<unknown>;
+type OntarioIconLinkedinEvents = NonNullable<unknown>;
 
 export const OntarioIconLinkedin: StencilReactComponent<OntarioIconLinkedinElement, OntarioIconLinkedinEvents> = /*@__PURE__*/ createComponent<OntarioIconLinkedinElement, OntarioIconLinkedinEvents>({
     tagName: 'ontario-icon-linkedin',
@@ -906,7 +906,7 @@ export const OntarioIconLinkedin: StencilReactComponent<OntarioIconLinkedinEleme
     defineCustomElement: defineOntarioIconLinkedin
 });
 
-export type OntarioIconLinkedinAltEvents = NonNullable<unknown>;
+type OntarioIconLinkedinAltEvents = NonNullable<unknown>;
 
 export const OntarioIconLinkedinAlt: StencilReactComponent<OntarioIconLinkedinAltElement, OntarioIconLinkedinAltEvents> = /*@__PURE__*/ createComponent<OntarioIconLinkedinAltElement, OntarioIconLinkedinAltEvents>({
     tagName: 'ontario-icon-linkedin-alt',
@@ -917,7 +917,7 @@ export const OntarioIconLinkedinAlt: StencilReactComponent<OntarioIconLinkedinAl
     defineCustomElement: defineOntarioIconLinkedinAlt
 });
 
-export type OntarioIconListEvents = NonNullable<unknown>;
+type OntarioIconListEvents = NonNullable<unknown>;
 
 export const OntarioIconList: StencilReactComponent<OntarioIconListElement, OntarioIconListEvents> = /*@__PURE__*/ createComponent<OntarioIconListElement, OntarioIconListEvents>({
     tagName: 'ontario-icon-list',
@@ -928,7 +928,7 @@ export const OntarioIconList: StencilReactComponent<OntarioIconListElement, Onta
     defineCustomElement: defineOntarioIconList
 });
 
-export type OntarioIconLiveChatEvents = NonNullable<unknown>;
+type OntarioIconLiveChatEvents = NonNullable<unknown>;
 
 export const OntarioIconLiveChat: StencilReactComponent<OntarioIconLiveChatElement, OntarioIconLiveChatEvents> = /*@__PURE__*/ createComponent<OntarioIconLiveChatElement, OntarioIconLiveChatEvents>({
     tagName: 'ontario-icon-live-chat',
@@ -939,7 +939,7 @@ export const OntarioIconLiveChat: StencilReactComponent<OntarioIconLiveChatEleme
     defineCustomElement: defineOntarioIconLiveChat
 });
 
-export type OntarioIconLocationOffEvents = NonNullable<unknown>;
+type OntarioIconLocationOffEvents = NonNullable<unknown>;
 
 export const OntarioIconLocationOff: StencilReactComponent<OntarioIconLocationOffElement, OntarioIconLocationOffEvents> = /*@__PURE__*/ createComponent<OntarioIconLocationOffElement, OntarioIconLocationOffEvents>({
     tagName: 'ontario-icon-location-off',
@@ -950,7 +950,7 @@ export const OntarioIconLocationOff: StencilReactComponent<OntarioIconLocationOf
     defineCustomElement: defineOntarioIconLocationOff
 });
 
-export type OntarioIconLocationOnEvents = NonNullable<unknown>;
+type OntarioIconLocationOnEvents = NonNullable<unknown>;
 
 export const OntarioIconLocationOn: StencilReactComponent<OntarioIconLocationOnElement, OntarioIconLocationOnEvents> = /*@__PURE__*/ createComponent<OntarioIconLocationOnElement, OntarioIconLocationOnEvents>({
     tagName: 'ontario-icon-location-on',
@@ -961,7 +961,7 @@ export const OntarioIconLocationOn: StencilReactComponent<OntarioIconLocationOnE
     defineCustomElement: defineOntarioIconLocationOn
 });
 
-export type OntarioIconLockOffEvents = NonNullable<unknown>;
+type OntarioIconLockOffEvents = NonNullable<unknown>;
 
 export const OntarioIconLockOff: StencilReactComponent<OntarioIconLockOffElement, OntarioIconLockOffEvents> = /*@__PURE__*/ createComponent<OntarioIconLockOffElement, OntarioIconLockOffEvents>({
     tagName: 'ontario-icon-lock-off',
@@ -972,7 +972,7 @@ export const OntarioIconLockOff: StencilReactComponent<OntarioIconLockOffElement
     defineCustomElement: defineOntarioIconLockOff
 });
 
-export type OntarioIconLockOnEvents = NonNullable<unknown>;
+type OntarioIconLockOnEvents = NonNullable<unknown>;
 
 export const OntarioIconLockOn: StencilReactComponent<OntarioIconLockOnElement, OntarioIconLockOnEvents> = /*@__PURE__*/ createComponent<OntarioIconLockOnElement, OntarioIconLockOnEvents>({
     tagName: 'ontario-icon-lock-on',
@@ -983,7 +983,7 @@ export const OntarioIconLockOn: StencilReactComponent<OntarioIconLockOnElement, 
     defineCustomElement: defineOntarioIconLockOn
 });
 
-export type OntarioIconMapEvents = NonNullable<unknown>;
+type OntarioIconMapEvents = NonNullable<unknown>;
 
 export const OntarioIconMap: StencilReactComponent<OntarioIconMapElement, OntarioIconMapEvents> = /*@__PURE__*/ createComponent<OntarioIconMapElement, OntarioIconMapEvents>({
     tagName: 'ontario-icon-map',
@@ -994,7 +994,7 @@ export const OntarioIconMap: StencilReactComponent<OntarioIconMapElement, Ontari
     defineCustomElement: defineOntarioIconMap
 });
 
-export type OntarioIconMastercardEvents = NonNullable<unknown>;
+type OntarioIconMastercardEvents = NonNullable<unknown>;
 
 export const OntarioIconMastercard: StencilReactComponent<OntarioIconMastercardElement, OntarioIconMastercardEvents> = /*@__PURE__*/ createComponent<OntarioIconMastercardElement, OntarioIconMastercardEvents>({
     tagName: 'ontario-icon-mastercard',
@@ -1005,7 +1005,7 @@ export const OntarioIconMastercard: StencilReactComponent<OntarioIconMastercardE
     defineCustomElement: defineOntarioIconMastercard
 });
 
-export type OntarioIconMastercardAltEvents = NonNullable<unknown>;
+type OntarioIconMastercardAltEvents = NonNullable<unknown>;
 
 export const OntarioIconMastercardAlt: StencilReactComponent<OntarioIconMastercardAltElement, OntarioIconMastercardAltEvents> = /*@__PURE__*/ createComponent<OntarioIconMastercardAltElement, OntarioIconMastercardAltEvents>({
     tagName: 'ontario-icon-mastercard-alt',
@@ -1016,7 +1016,7 @@ export const OntarioIconMastercardAlt: StencilReactComponent<OntarioIconMasterca
     defineCustomElement: defineOntarioIconMastercardAlt
 });
 
-export type OntarioIconMediaFastForwardEvents = NonNullable<unknown>;
+type OntarioIconMediaFastForwardEvents = NonNullable<unknown>;
 
 export const OntarioIconMediaFastForward: StencilReactComponent<OntarioIconMediaFastForwardElement, OntarioIconMediaFastForwardEvents> = /*@__PURE__*/ createComponent<OntarioIconMediaFastForwardElement, OntarioIconMediaFastForwardEvents>({
     tagName: 'ontario-icon-media-fast-forward',
@@ -1027,7 +1027,7 @@ export const OntarioIconMediaFastForward: StencilReactComponent<OntarioIconMedia
     defineCustomElement: defineOntarioIconMediaFastForward
 });
 
-export type OntarioIconMediaFastRewindEvents = NonNullable<unknown>;
+type OntarioIconMediaFastRewindEvents = NonNullable<unknown>;
 
 export const OntarioIconMediaFastRewind: StencilReactComponent<OntarioIconMediaFastRewindElement, OntarioIconMediaFastRewindEvents> = /*@__PURE__*/ createComponent<OntarioIconMediaFastRewindElement, OntarioIconMediaFastRewindEvents>({
     tagName: 'ontario-icon-media-fast-rewind',
@@ -1038,7 +1038,7 @@ export const OntarioIconMediaFastRewind: StencilReactComponent<OntarioIconMediaF
     defineCustomElement: defineOntarioIconMediaFastRewind
 });
 
-export type OntarioIconMediaPauseEvents = NonNullable<unknown>;
+type OntarioIconMediaPauseEvents = NonNullable<unknown>;
 
 export const OntarioIconMediaPause: StencilReactComponent<OntarioIconMediaPauseElement, OntarioIconMediaPauseEvents> = /*@__PURE__*/ createComponent<OntarioIconMediaPauseElement, OntarioIconMediaPauseEvents>({
     tagName: 'ontario-icon-media-pause',
@@ -1049,7 +1049,7 @@ export const OntarioIconMediaPause: StencilReactComponent<OntarioIconMediaPauseE
     defineCustomElement: defineOntarioIconMediaPause
 });
 
-export type OntarioIconMediaPlayEvents = NonNullable<unknown>;
+type OntarioIconMediaPlayEvents = NonNullable<unknown>;
 
 export const OntarioIconMediaPlay: StencilReactComponent<OntarioIconMediaPlayElement, OntarioIconMediaPlayEvents> = /*@__PURE__*/ createComponent<OntarioIconMediaPlayElement, OntarioIconMediaPlayEvents>({
     tagName: 'ontario-icon-media-play',
@@ -1060,7 +1060,7 @@ export const OntarioIconMediaPlay: StencilReactComponent<OntarioIconMediaPlayEle
     defineCustomElement: defineOntarioIconMediaPlay
 });
 
-export type OntarioIconMediaStopEvents = NonNullable<unknown>;
+type OntarioIconMediaStopEvents = NonNullable<unknown>;
 
 export const OntarioIconMediaStop: StencilReactComponent<OntarioIconMediaStopElement, OntarioIconMediaStopEvents> = /*@__PURE__*/ createComponent<OntarioIconMediaStopElement, OntarioIconMediaStopEvents>({
     tagName: 'ontario-icon-media-stop',
@@ -1071,7 +1071,7 @@ export const OntarioIconMediaStop: StencilReactComponent<OntarioIconMediaStopEle
     defineCustomElement: defineOntarioIconMediaStop
 });
 
-export type OntarioIconMenuEvents = NonNullable<unknown>;
+type OntarioIconMenuEvents = NonNullable<unknown>;
 
 export const OntarioIconMenu: StencilReactComponent<OntarioIconMenuElement, OntarioIconMenuEvents> = /*@__PURE__*/ createComponent<OntarioIconMenuElement, OntarioIconMenuEvents>({
     tagName: 'ontario-icon-menu',
@@ -1082,7 +1082,7 @@ export const OntarioIconMenu: StencilReactComponent<OntarioIconMenuElement, Onta
     defineCustomElement: defineOntarioIconMenu
 });
 
-export type OntarioIconMenuHeaderEvents = NonNullable<unknown>;
+type OntarioIconMenuHeaderEvents = NonNullable<unknown>;
 
 export const OntarioIconMenuHeader: StencilReactComponent<OntarioIconMenuHeaderElement, OntarioIconMenuHeaderEvents> = /*@__PURE__*/ createComponent<OntarioIconMenuHeaderElement, OntarioIconMenuHeaderEvents>({
     tagName: 'ontario-icon-menu-header',
@@ -1093,7 +1093,7 @@ export const OntarioIconMenuHeader: StencilReactComponent<OntarioIconMenuHeaderE
     defineCustomElement: defineOntarioIconMenuHeader
 });
 
-export type OntarioIconMicrophoneOffEvents = NonNullable<unknown>;
+type OntarioIconMicrophoneOffEvents = NonNullable<unknown>;
 
 export const OntarioIconMicrophoneOff: StencilReactComponent<OntarioIconMicrophoneOffElement, OntarioIconMicrophoneOffEvents> = /*@__PURE__*/ createComponent<OntarioIconMicrophoneOffElement, OntarioIconMicrophoneOffEvents>({
     tagName: 'ontario-icon-microphone-off',
@@ -1104,7 +1104,7 @@ export const OntarioIconMicrophoneOff: StencilReactComponent<OntarioIconMicropho
     defineCustomElement: defineOntarioIconMicrophoneOff
 });
 
-export type OntarioIconMicrophoneOnEvents = NonNullable<unknown>;
+type OntarioIconMicrophoneOnEvents = NonNullable<unknown>;
 
 export const OntarioIconMicrophoneOn: StencilReactComponent<OntarioIconMicrophoneOnElement, OntarioIconMicrophoneOnEvents> = /*@__PURE__*/ createComponent<OntarioIconMicrophoneOnElement, OntarioIconMicrophoneOnEvents>({
     tagName: 'ontario-icon-microphone-on',
@@ -1115,7 +1115,7 @@ export const OntarioIconMicrophoneOn: StencilReactComponent<OntarioIconMicrophon
     defineCustomElement: defineOntarioIconMicrophoneOn
 });
 
-export type OntarioIconMoreVerticalEvents = NonNullable<unknown>;
+type OntarioIconMoreVerticalEvents = NonNullable<unknown>;
 
 export const OntarioIconMoreVertical: StencilReactComponent<OntarioIconMoreVerticalElement, OntarioIconMoreVerticalEvents> = /*@__PURE__*/ createComponent<OntarioIconMoreVerticalElement, OntarioIconMoreVerticalEvents>({
     tagName: 'ontario-icon-more-vertical',
@@ -1126,7 +1126,7 @@ export const OntarioIconMoreVertical: StencilReactComponent<OntarioIconMoreVerti
     defineCustomElement: defineOntarioIconMoreVertical
 });
 
-export type OntarioIconNewWindowEvents = NonNullable<unknown>;
+type OntarioIconNewWindowEvents = NonNullable<unknown>;
 
 export const OntarioIconNewWindow: StencilReactComponent<OntarioIconNewWindowElement, OntarioIconNewWindowEvents> = /*@__PURE__*/ createComponent<OntarioIconNewWindowElement, OntarioIconNewWindowEvents>({
     tagName: 'ontario-icon-new-window',
@@ -1137,7 +1137,7 @@ export const OntarioIconNewWindow: StencilReactComponent<OntarioIconNewWindowEle
     defineCustomElement: defineOntarioIconNewWindow
 });
 
-export type OntarioIconNextEvents = NonNullable<unknown>;
+type OntarioIconNextEvents = NonNullable<unknown>;
 
 export const OntarioIconNext: StencilReactComponent<OntarioIconNextElement, OntarioIconNextEvents> = /*@__PURE__*/ createComponent<OntarioIconNextElement, OntarioIconNextEvents>({
     tagName: 'ontario-icon-next',
@@ -1148,7 +1148,7 @@ export const OntarioIconNext: StencilReactComponent<OntarioIconNextElement, Onta
     defineCustomElement: defineOntarioIconNext
 });
 
-export type OntarioIconNotificationEvents = NonNullable<unknown>;
+type OntarioIconNotificationEvents = NonNullable<unknown>;
 
 export const OntarioIconNotification: StencilReactComponent<OntarioIconNotificationElement, OntarioIconNotificationEvents> = /*@__PURE__*/ createComponent<OntarioIconNotificationElement, OntarioIconNotificationEvents>({
     tagName: 'ontario-icon-notification',
@@ -1159,7 +1159,7 @@ export const OntarioIconNotification: StencilReactComponent<OntarioIconNotificat
     defineCustomElement: defineOntarioIconNotification
 });
 
-export type OntarioIconPasswordHideEvents = NonNullable<unknown>;
+type OntarioIconPasswordHideEvents = NonNullable<unknown>;
 
 export const OntarioIconPasswordHide: StencilReactComponent<OntarioIconPasswordHideElement, OntarioIconPasswordHideEvents> = /*@__PURE__*/ createComponent<OntarioIconPasswordHideElement, OntarioIconPasswordHideEvents>({
     tagName: 'ontario-icon-password-hide',
@@ -1170,7 +1170,7 @@ export const OntarioIconPasswordHide: StencilReactComponent<OntarioIconPasswordH
     defineCustomElement: defineOntarioIconPasswordHide
 });
 
-export type OntarioIconPasswordShowEvents = NonNullable<unknown>;
+type OntarioIconPasswordShowEvents = NonNullable<unknown>;
 
 export const OntarioIconPasswordShow: StencilReactComponent<OntarioIconPasswordShowElement, OntarioIconPasswordShowEvents> = /*@__PURE__*/ createComponent<OntarioIconPasswordShowElement, OntarioIconPasswordShowEvents>({
     tagName: 'ontario-icon-password-show',
@@ -1181,7 +1181,7 @@ export const OntarioIconPasswordShow: StencilReactComponent<OntarioIconPasswordS
     defineCustomElement: defineOntarioIconPasswordShow
 });
 
-export type OntarioIconPhoneEvents = NonNullable<unknown>;
+type OntarioIconPhoneEvents = NonNullable<unknown>;
 
 export const OntarioIconPhone: StencilReactComponent<OntarioIconPhoneElement, OntarioIconPhoneEvents> = /*@__PURE__*/ createComponent<OntarioIconPhoneElement, OntarioIconPhoneEvents>({
     tagName: 'ontario-icon-phone',
@@ -1192,7 +1192,7 @@ export const OntarioIconPhone: StencilReactComponent<OntarioIconPhoneElement, On
     defineCustomElement: defineOntarioIconPhone
 });
 
-export type OntarioIconPhotoEvents = NonNullable<unknown>;
+type OntarioIconPhotoEvents = NonNullable<unknown>;
 
 export const OntarioIconPhoto: StencilReactComponent<OntarioIconPhotoElement, OntarioIconPhotoEvents> = /*@__PURE__*/ createComponent<OntarioIconPhotoElement, OntarioIconPhotoEvents>({
     tagName: 'ontario-icon-photo',
@@ -1203,7 +1203,7 @@ export const OntarioIconPhoto: StencilReactComponent<OntarioIconPhotoElement, On
     defineCustomElement: defineOntarioIconPhoto
 });
 
-export type OntarioIconPinLocationOffEvents = NonNullable<unknown>;
+type OntarioIconPinLocationOffEvents = NonNullable<unknown>;
 
 export const OntarioIconPinLocationOff: StencilReactComponent<OntarioIconPinLocationOffElement, OntarioIconPinLocationOffEvents> = /*@__PURE__*/ createComponent<OntarioIconPinLocationOffElement, OntarioIconPinLocationOffEvents>({
     tagName: 'ontario-icon-pin-location-off',
@@ -1214,7 +1214,7 @@ export const OntarioIconPinLocationOff: StencilReactComponent<OntarioIconPinLoca
     defineCustomElement: defineOntarioIconPinLocationOff
 });
 
-export type OntarioIconPinLocationOnEvents = NonNullable<unknown>;
+type OntarioIconPinLocationOnEvents = NonNullable<unknown>;
 
 export const OntarioIconPinLocationOn: StencilReactComponent<OntarioIconPinLocationOnElement, OntarioIconPinLocationOnEvents> = /*@__PURE__*/ createComponent<OntarioIconPinLocationOnElement, OntarioIconPinLocationOnEvents>({
     tagName: 'ontario-icon-pin-location-on',
@@ -1225,7 +1225,7 @@ export const OntarioIconPinLocationOn: StencilReactComponent<OntarioIconPinLocat
     defineCustomElement: defineOntarioIconPinLocationOn
 });
 
-export type OntarioIconPreviousEvents = NonNullable<unknown>;
+type OntarioIconPreviousEvents = NonNullable<unknown>;
 
 export const OntarioIconPrevious: StencilReactComponent<OntarioIconPreviousElement, OntarioIconPreviousEvents> = /*@__PURE__*/ createComponent<OntarioIconPreviousElement, OntarioIconPreviousEvents>({
     tagName: 'ontario-icon-previous',
@@ -1236,7 +1236,7 @@ export const OntarioIconPrevious: StencilReactComponent<OntarioIconPreviousEleme
     defineCustomElement: defineOntarioIconPrevious
 });
 
-export type OntarioIconPrintEvents = NonNullable<unknown>;
+type OntarioIconPrintEvents = NonNullable<unknown>;
 
 export const OntarioIconPrint: StencilReactComponent<OntarioIconPrintElement, OntarioIconPrintEvents> = /*@__PURE__*/ createComponent<OntarioIconPrintElement, OntarioIconPrintEvents>({
     tagName: 'ontario-icon-print',
@@ -1247,7 +1247,7 @@ export const OntarioIconPrint: StencilReactComponent<OntarioIconPrintElement, On
     defineCustomElement: defineOntarioIconPrint
 });
 
-export type OntarioIconRemoveEvents = NonNullable<unknown>;
+type OntarioIconRemoveEvents = NonNullable<unknown>;
 
 export const OntarioIconRemove: StencilReactComponent<OntarioIconRemoveElement, OntarioIconRemoveEvents> = /*@__PURE__*/ createComponent<OntarioIconRemoveElement, OntarioIconRemoveEvents>({
     tagName: 'ontario-icon-remove',
@@ -1258,7 +1258,7 @@ export const OntarioIconRemove: StencilReactComponent<OntarioIconRemoveElement, 
     defineCustomElement: defineOntarioIconRemove
 });
 
-export type OntarioIconRemoveAltEvents = NonNullable<unknown>;
+type OntarioIconRemoveAltEvents = NonNullable<unknown>;
 
 export const OntarioIconRemoveAlt: StencilReactComponent<OntarioIconRemoveAltElement, OntarioIconRemoveAltEvents> = /*@__PURE__*/ createComponent<OntarioIconRemoveAltElement, OntarioIconRemoveAltEvents>({
     tagName: 'ontario-icon-remove-alt',
@@ -1269,7 +1269,7 @@ export const OntarioIconRemoveAlt: StencilReactComponent<OntarioIconRemoveAltEle
     defineCustomElement: defineOntarioIconRemoveAlt
 });
 
-export type OntarioIconReplayEvents = NonNullable<unknown>;
+type OntarioIconReplayEvents = NonNullable<unknown>;
 
 export const OntarioIconReplay: StencilReactComponent<OntarioIconReplayElement, OntarioIconReplayEvents> = /*@__PURE__*/ createComponent<OntarioIconReplayElement, OntarioIconReplayEvents>({
     tagName: 'ontario-icon-replay',
@@ -1280,7 +1280,7 @@ export const OntarioIconReplay: StencilReactComponent<OntarioIconReplayElement, 
     defineCustomElement: defineOntarioIconReplay
 });
 
-export type OntarioIconRssFeedEvents = NonNullable<unknown>;
+type OntarioIconRssFeedEvents = NonNullable<unknown>;
 
 export const OntarioIconRssFeed: StencilReactComponent<OntarioIconRssFeedElement, OntarioIconRssFeedEvents> = /*@__PURE__*/ createComponent<OntarioIconRssFeedElement, OntarioIconRssFeedEvents>({
     tagName: 'ontario-icon-rss-feed',
@@ -1291,7 +1291,7 @@ export const OntarioIconRssFeed: StencilReactComponent<OntarioIconRssFeedElement
     defineCustomElement: defineOntarioIconRssFeed
 });
 
-export type OntarioIconSaveEvents = NonNullable<unknown>;
+type OntarioIconSaveEvents = NonNullable<unknown>;
 
 export const OntarioIconSave: StencilReactComponent<OntarioIconSaveElement, OntarioIconSaveEvents> = /*@__PURE__*/ createComponent<OntarioIconSaveElement, OntarioIconSaveEvents>({
     tagName: 'ontario-icon-save',
@@ -1302,7 +1302,7 @@ export const OntarioIconSave: StencilReactComponent<OntarioIconSaveElement, Onta
     defineCustomElement: defineOntarioIconSave
 });
 
-export type OntarioIconSearchEvents = NonNullable<unknown>;
+type OntarioIconSearchEvents = NonNullable<unknown>;
 
 export const OntarioIconSearch: StencilReactComponent<OntarioIconSearchElement, OntarioIconSearchEvents> = /*@__PURE__*/ createComponent<OntarioIconSearchElement, OntarioIconSearchEvents>({
     tagName: 'ontario-icon-search',
@@ -1313,7 +1313,7 @@ export const OntarioIconSearch: StencilReactComponent<OntarioIconSearchElement, 
     defineCustomElement: defineOntarioIconSearch
 });
 
-export type OntarioIconSearchWhiteEvents = NonNullable<unknown>;
+type OntarioIconSearchWhiteEvents = NonNullable<unknown>;
 
 export const OntarioIconSearchWhite: StencilReactComponent<OntarioIconSearchWhiteElement, OntarioIconSearchWhiteEvents> = /*@__PURE__*/ createComponent<OntarioIconSearchWhiteElement, OntarioIconSearchWhiteEvents>({
     tagName: 'ontario-icon-search-white',
@@ -1324,7 +1324,7 @@ export const OntarioIconSearchWhite: StencilReactComponent<OntarioIconSearchWhit
     defineCustomElement: defineOntarioIconSearchWhite
 });
 
-export type OntarioIconSentiment1Events = NonNullable<unknown>;
+type OntarioIconSentiment1Events = NonNullable<unknown>;
 
 export const OntarioIconSentiment1: StencilReactComponent<OntarioIconSentiment1Element, OntarioIconSentiment1Events> = /*@__PURE__*/ createComponent<OntarioIconSentiment1Element, OntarioIconSentiment1Events>({
     tagName: 'ontario-icon-sentiment-1',
@@ -1335,7 +1335,7 @@ export const OntarioIconSentiment1: StencilReactComponent<OntarioIconSentiment1E
     defineCustomElement: defineOntarioIconSentiment1
 });
 
-export type OntarioIconSentiment2Events = NonNullable<unknown>;
+type OntarioIconSentiment2Events = NonNullable<unknown>;
 
 export const OntarioIconSentiment2: StencilReactComponent<OntarioIconSentiment2Element, OntarioIconSentiment2Events> = /*@__PURE__*/ createComponent<OntarioIconSentiment2Element, OntarioIconSentiment2Events>({
     tagName: 'ontario-icon-sentiment-2',
@@ -1346,7 +1346,7 @@ export const OntarioIconSentiment2: StencilReactComponent<OntarioIconSentiment2E
     defineCustomElement: defineOntarioIconSentiment2
 });
 
-export type OntarioIconSentiment3Events = NonNullable<unknown>;
+type OntarioIconSentiment3Events = NonNullable<unknown>;
 
 export const OntarioIconSentiment3: StencilReactComponent<OntarioIconSentiment3Element, OntarioIconSentiment3Events> = /*@__PURE__*/ createComponent<OntarioIconSentiment3Element, OntarioIconSentiment3Events>({
     tagName: 'ontario-icon-sentiment-3',
@@ -1357,7 +1357,7 @@ export const OntarioIconSentiment3: StencilReactComponent<OntarioIconSentiment3E
     defineCustomElement: defineOntarioIconSentiment3
 });
 
-export type OntarioIconSentiment4Events = NonNullable<unknown>;
+type OntarioIconSentiment4Events = NonNullable<unknown>;
 
 export const OntarioIconSentiment4: StencilReactComponent<OntarioIconSentiment4Element, OntarioIconSentiment4Events> = /*@__PURE__*/ createComponent<OntarioIconSentiment4Element, OntarioIconSentiment4Events>({
     tagName: 'ontario-icon-sentiment-4',
@@ -1368,7 +1368,7 @@ export const OntarioIconSentiment4: StencilReactComponent<OntarioIconSentiment4E
     defineCustomElement: defineOntarioIconSentiment4
 });
 
-export type OntarioIconSentiment5Events = NonNullable<unknown>;
+type OntarioIconSentiment5Events = NonNullable<unknown>;
 
 export const OntarioIconSentiment5: StencilReactComponent<OntarioIconSentiment5Element, OntarioIconSentiment5Events> = /*@__PURE__*/ createComponent<OntarioIconSentiment5Element, OntarioIconSentiment5Events>({
     tagName: 'ontario-icon-sentiment-5',
@@ -1379,7 +1379,7 @@ export const OntarioIconSentiment5: StencilReactComponent<OntarioIconSentiment5E
     defineCustomElement: defineOntarioIconSentiment5
 });
 
-export type OntarioIconSettingsEvents = NonNullable<unknown>;
+type OntarioIconSettingsEvents = NonNullable<unknown>;
 
 export const OntarioIconSettings: StencilReactComponent<OntarioIconSettingsElement, OntarioIconSettingsEvents> = /*@__PURE__*/ createComponent<OntarioIconSettingsElement, OntarioIconSettingsEvents>({
     tagName: 'ontario-icon-settings',
@@ -1390,7 +1390,7 @@ export const OntarioIconSettings: StencilReactComponent<OntarioIconSettingsEleme
     defineCustomElement: defineOntarioIconSettings
 });
 
-export type OntarioIconShareEvents = NonNullable<unknown>;
+type OntarioIconShareEvents = NonNullable<unknown>;
 
 export const OntarioIconShare: StencilReactComponent<OntarioIconShareElement, OntarioIconShareEvents> = /*@__PURE__*/ createComponent<OntarioIconShareElement, OntarioIconShareEvents>({
     tagName: 'ontario-icon-share',
@@ -1401,7 +1401,7 @@ export const OntarioIconShare: StencilReactComponent<OntarioIconShareElement, On
     defineCustomElement: defineOntarioIconShare
 });
 
-export type OntarioIconSortEvents = NonNullable<unknown>;
+type OntarioIconSortEvents = NonNullable<unknown>;
 
 export const OntarioIconSort: StencilReactComponent<OntarioIconSortElement, OntarioIconSortEvents> = /*@__PURE__*/ createComponent<OntarioIconSortElement, OntarioIconSortEvents>({
     tagName: 'ontario-icon-sort',
@@ -1412,7 +1412,7 @@ export const OntarioIconSort: StencilReactComponent<OntarioIconSortElement, Onta
     defineCustomElement: defineOntarioIconSort
 });
 
-export type OntarioIconTagEvents = NonNullable<unknown>;
+type OntarioIconTagEvents = NonNullable<unknown>;
 
 export const OntarioIconTag: StencilReactComponent<OntarioIconTagElement, OntarioIconTagEvents> = /*@__PURE__*/ createComponent<OntarioIconTagElement, OntarioIconTagEvents>({
     tagName: 'ontario-icon-tag',
@@ -1423,7 +1423,7 @@ export const OntarioIconTag: StencilReactComponent<OntarioIconTagElement, Ontari
     defineCustomElement: defineOntarioIconTag
 });
 
-export type OntarioIconTextMessageEvents = NonNullable<unknown>;
+type OntarioIconTextMessageEvents = NonNullable<unknown>;
 
 export const OntarioIconTextMessage: StencilReactComponent<OntarioIconTextMessageElement, OntarioIconTextMessageEvents> = /*@__PURE__*/ createComponent<OntarioIconTextMessageElement, OntarioIconTextMessageEvents>({
     tagName: 'ontario-icon-text-message',
@@ -1434,7 +1434,7 @@ export const OntarioIconTextMessage: StencilReactComponent<OntarioIconTextMessag
     defineCustomElement: defineOntarioIconTextMessage
 });
 
-export type OntarioIconTimerEvents = NonNullable<unknown>;
+type OntarioIconTimerEvents = NonNullable<unknown>;
 
 export const OntarioIconTimer: StencilReactComponent<OntarioIconTimerElement, OntarioIconTimerEvents> = /*@__PURE__*/ createComponent<OntarioIconTimerElement, OntarioIconTimerEvents>({
     tagName: 'ontario-icon-timer',
@@ -1445,7 +1445,7 @@ export const OntarioIconTimer: StencilReactComponent<OntarioIconTimerElement, On
     defineCustomElement: defineOntarioIconTimer
 });
 
-export type OntarioIconTransportBicycleEvents = NonNullable<unknown>;
+type OntarioIconTransportBicycleEvents = NonNullable<unknown>;
 
 export const OntarioIconTransportBicycle: StencilReactComponent<OntarioIconTransportBicycleElement, OntarioIconTransportBicycleEvents> = /*@__PURE__*/ createComponent<OntarioIconTransportBicycleElement, OntarioIconTransportBicycleEvents>({
     tagName: 'ontario-icon-transport-bicycle',
@@ -1456,7 +1456,7 @@ export const OntarioIconTransportBicycle: StencilReactComponent<OntarioIconTrans
     defineCustomElement: defineOntarioIconTransportBicycle
 });
 
-export type OntarioIconTransportBusEvents = NonNullable<unknown>;
+type OntarioIconTransportBusEvents = NonNullable<unknown>;
 
 export const OntarioIconTransportBus: StencilReactComponent<OntarioIconTransportBusElement, OntarioIconTransportBusEvents> = /*@__PURE__*/ createComponent<OntarioIconTransportBusElement, OntarioIconTransportBusEvents>({
     tagName: 'ontario-icon-transport-bus',
@@ -1467,7 +1467,7 @@ export const OntarioIconTransportBus: StencilReactComponent<OntarioIconTransport
     defineCustomElement: defineOntarioIconTransportBus
 });
 
-export type OntarioIconTransportCarEvents = NonNullable<unknown>;
+type OntarioIconTransportCarEvents = NonNullable<unknown>;
 
 export const OntarioIconTransportCar: StencilReactComponent<OntarioIconTransportCarElement, OntarioIconTransportCarEvents> = /*@__PURE__*/ createComponent<OntarioIconTransportCarElement, OntarioIconTransportCarEvents>({
     tagName: 'ontario-icon-transport-car',
@@ -1478,7 +1478,7 @@ export const OntarioIconTransportCar: StencilReactComponent<OntarioIconTransport
     defineCustomElement: defineOntarioIconTransportCar
 });
 
-export type OntarioIconTransportWalkEvents = NonNullable<unknown>;
+type OntarioIconTransportWalkEvents = NonNullable<unknown>;
 
 export const OntarioIconTransportWalk: StencilReactComponent<OntarioIconTransportWalkElement, OntarioIconTransportWalkEvents> = /*@__PURE__*/ createComponent<OntarioIconTransportWalkElement, OntarioIconTransportWalkEvents>({
     tagName: 'ontario-icon-transport-walk',
@@ -1489,7 +1489,7 @@ export const OntarioIconTransportWalk: StencilReactComponent<OntarioIconTranspor
     defineCustomElement: defineOntarioIconTransportWalk
 });
 
-export type OntarioIconTtyEvents = NonNullable<unknown>;
+type OntarioIconTtyEvents = NonNullable<unknown>;
 
 export const OntarioIconTty: StencilReactComponent<OntarioIconTtyElement, OntarioIconTtyEvents> = /*@__PURE__*/ createComponent<OntarioIconTtyElement, OntarioIconTtyEvents>({
     tagName: 'ontario-icon-tty',
@@ -1500,7 +1500,7 @@ export const OntarioIconTty: StencilReactComponent<OntarioIconTtyElement, Ontari
     defineCustomElement: defineOntarioIconTty
 });
 
-export type OntarioIconTwitterEvents = NonNullable<unknown>;
+type OntarioIconTwitterEvents = NonNullable<unknown>;
 
 export const OntarioIconTwitter: StencilReactComponent<OntarioIconTwitterElement, OntarioIconTwitterEvents> = /*@__PURE__*/ createComponent<OntarioIconTwitterElement, OntarioIconTwitterEvents>({
     tagName: 'ontario-icon-twitter',
@@ -1511,7 +1511,7 @@ export const OntarioIconTwitter: StencilReactComponent<OntarioIconTwitterElement
     defineCustomElement: defineOntarioIconTwitter
 });
 
-export type OntarioIconTwitterAltEvents = NonNullable<unknown>;
+type OntarioIconTwitterAltEvents = NonNullable<unknown>;
 
 export const OntarioIconTwitterAlt: StencilReactComponent<OntarioIconTwitterAltElement, OntarioIconTwitterAltEvents> = /*@__PURE__*/ createComponent<OntarioIconTwitterAltElement, OntarioIconTwitterAltEvents>({
     tagName: 'ontario-icon-twitter-alt',
@@ -1522,7 +1522,7 @@ export const OntarioIconTwitterAlt: StencilReactComponent<OntarioIconTwitterAltE
     defineCustomElement: defineOntarioIconTwitterAlt
 });
 
-export type OntarioIconUploadEvents = NonNullable<unknown>;
+type OntarioIconUploadEvents = NonNullable<unknown>;
 
 export const OntarioIconUpload: StencilReactComponent<OntarioIconUploadElement, OntarioIconUploadEvents> = /*@__PURE__*/ createComponent<OntarioIconUploadElement, OntarioIconUploadEvents>({
     tagName: 'ontario-icon-upload',
@@ -1533,7 +1533,7 @@ export const OntarioIconUpload: StencilReactComponent<OntarioIconUploadElement, 
     defineCustomElement: defineOntarioIconUpload
 });
 
-export type OntarioIconVideoEvents = NonNullable<unknown>;
+type OntarioIconVideoEvents = NonNullable<unknown>;
 
 export const OntarioIconVideo: StencilReactComponent<OntarioIconVideoElement, OntarioIconVideoEvents> = /*@__PURE__*/ createComponent<OntarioIconVideoElement, OntarioIconVideoEvents>({
     tagName: 'ontario-icon-video',
@@ -1544,7 +1544,7 @@ export const OntarioIconVideo: StencilReactComponent<OntarioIconVideoElement, On
     defineCustomElement: defineOntarioIconVideo
 });
 
-export type OntarioIconVisaEvents = NonNullable<unknown>;
+type OntarioIconVisaEvents = NonNullable<unknown>;
 
 export const OntarioIconVisa: StencilReactComponent<OntarioIconVisaElement, OntarioIconVisaEvents> = /*@__PURE__*/ createComponent<OntarioIconVisaElement, OntarioIconVisaEvents>({
     tagName: 'ontario-icon-visa',
@@ -1555,7 +1555,7 @@ export const OntarioIconVisa: StencilReactComponent<OntarioIconVisaElement, Onta
     defineCustomElement: defineOntarioIconVisa
 });
 
-export type OntarioIconVoteDislikeEvents = NonNullable<unknown>;
+type OntarioIconVoteDislikeEvents = NonNullable<unknown>;
 
 export const OntarioIconVoteDislike: StencilReactComponent<OntarioIconVoteDislikeElement, OntarioIconVoteDislikeEvents> = /*@__PURE__*/ createComponent<OntarioIconVoteDislikeElement, OntarioIconVoteDislikeEvents>({
     tagName: 'ontario-icon-vote-dislike',
@@ -1566,7 +1566,7 @@ export const OntarioIconVoteDislike: StencilReactComponent<OntarioIconVoteDislik
     defineCustomElement: defineOntarioIconVoteDislike
 });
 
-export type OntarioIconVoteLikeEvents = NonNullable<unknown>;
+type OntarioIconVoteLikeEvents = NonNullable<unknown>;
 
 export const OntarioIconVoteLike: StencilReactComponent<OntarioIconVoteLikeElement, OntarioIconVoteLikeEvents> = /*@__PURE__*/ createComponent<OntarioIconVoteLikeElement, OntarioIconVoteLikeEvents>({
     tagName: 'ontario-icon-vote-like',
@@ -1577,7 +1577,7 @@ export const OntarioIconVoteLike: StencilReactComponent<OntarioIconVoteLikeEleme
     defineCustomElement: defineOntarioIconVoteLike
 });
 
-export type OntarioIconVpnKeyEvents = NonNullable<unknown>;
+type OntarioIconVpnKeyEvents = NonNullable<unknown>;
 
 export const OntarioIconVpnKey: StencilReactComponent<OntarioIconVpnKeyElement, OntarioIconVpnKeyEvents> = /*@__PURE__*/ createComponent<OntarioIconVpnKeyElement, OntarioIconVpnKeyEvents>({
     tagName: 'ontario-icon-vpn-key',
@@ -1588,7 +1588,7 @@ export const OntarioIconVpnKey: StencilReactComponent<OntarioIconVpnKeyElement, 
     defineCustomElement: defineOntarioIconVpnKey
 });
 
-export type OntarioIconWheelchairEvents = NonNullable<unknown>;
+type OntarioIconWheelchairEvents = NonNullable<unknown>;
 
 export const OntarioIconWheelchair: StencilReactComponent<OntarioIconWheelchairElement, OntarioIconWheelchairEvents> = /*@__PURE__*/ createComponent<OntarioIconWheelchairElement, OntarioIconWheelchairEvents>({
     tagName: 'ontario-icon-wheelchair',
@@ -1599,7 +1599,7 @@ export const OntarioIconWheelchair: StencilReactComponent<OntarioIconWheelchairE
     defineCustomElement: defineOntarioIconWheelchair
 });
 
-export type OntarioIconWifiEvents = NonNullable<unknown>;
+type OntarioIconWifiEvents = NonNullable<unknown>;
 
 export const OntarioIconWifi: StencilReactComponent<OntarioIconWifiElement, OntarioIconWifiEvents> = /*@__PURE__*/ createComponent<OntarioIconWifiElement, OntarioIconWifiEvents>({
     tagName: 'ontario-icon-wifi',
@@ -1610,7 +1610,7 @@ export const OntarioIconWifi: StencilReactComponent<OntarioIconWifiElement, Onta
     defineCustomElement: defineOntarioIconWifi
 });
 
-export type OntarioIconYoutubeEvents = NonNullable<unknown>;
+type OntarioIconYoutubeEvents = NonNullable<unknown>;
 
 export const OntarioIconYoutube: StencilReactComponent<OntarioIconYoutubeElement, OntarioIconYoutubeEvents> = /*@__PURE__*/ createComponent<OntarioIconYoutubeElement, OntarioIconYoutubeEvents>({
     tagName: 'ontario-icon-youtube',
@@ -1621,7 +1621,7 @@ export const OntarioIconYoutube: StencilReactComponent<OntarioIconYoutubeElement
     defineCustomElement: defineOntarioIconYoutube
 });
 
-export type OntarioInputEvents = {
+type OntarioInputEvents = {
     onInputOnInput: EventName<OntarioInputCustomEvent<InputInputEvent>>,
     onInputOnChange: EventName<OntarioInputCustomEvent<InputInteractionEvent>>,
     onInputOnBlur: EventName<OntarioInputCustomEvent<InputFocusBlurEvent>>,
@@ -1644,7 +1644,7 @@ export const OntarioInput: StencilReactComponent<OntarioInputElement, OntarioInp
     defineCustomElement: defineOntarioInput
 });
 
-export type OntarioLanguageToggleEvents = {
+type OntarioLanguageToggleEvents = {
     onSetAppLanguage: EventName<OntarioLanguageToggleCustomEvent<Language>>,
     onHeaderLanguageToggled: EventName<OntarioLanguageToggleCustomEvent<HeaderLanguageToggleEventDetails>>
 };
@@ -1661,7 +1661,7 @@ export const OntarioLanguageToggle: StencilReactComponent<OntarioLanguageToggleE
     defineCustomElement: defineOntarioLanguageToggle
 });
 
-export type OntarioLoadingIndicatorEvents = NonNullable<unknown>;
+type OntarioLoadingIndicatorEvents = NonNullable<unknown>;
 
 export const OntarioLoadingIndicator: StencilReactComponent<OntarioLoadingIndicatorElement, OntarioLoadingIndicatorEvents> = /*@__PURE__*/ createComponent<OntarioLoadingIndicatorElement, OntarioLoadingIndicatorEvents>({
     tagName: 'ontario-loading-indicator',
@@ -1672,7 +1672,7 @@ export const OntarioLoadingIndicator: StencilReactComponent<OntarioLoadingIndica
     defineCustomElement: defineOntarioLoadingIndicator
 });
 
-export type OntarioPageAlertEvents = NonNullable<unknown>;
+type OntarioPageAlertEvents = NonNullable<unknown>;
 
 export const OntarioPageAlert: StencilReactComponent<OntarioPageAlertElement, OntarioPageAlertEvents> = /*@__PURE__*/ createComponent<OntarioPageAlertElement, OntarioPageAlertEvents>({
     tagName: 'ontario-page-alert',
@@ -1683,7 +1683,7 @@ export const OntarioPageAlert: StencilReactComponent<OntarioPageAlertElement, On
     defineCustomElement: defineOntarioPageAlert
 });
 
-export type OntarioRadioButtonsEvents = {
+type OntarioRadioButtonsEvents = {
     onRadioOnChange: EventName<OntarioRadioButtonsCustomEvent<RadioAndCheckboxChangeEvent>>,
     onRadioOnBlur: EventName<OntarioRadioButtonsCustomEvent<InputFocusBlurEvent>>,
     onRadioOnFocus: EventName<OntarioRadioButtonsCustomEvent<InputFocusBlurEvent>>,
@@ -1704,7 +1704,7 @@ export const OntarioRadioButtons: StencilReactComponent<OntarioRadioButtonsEleme
     defineCustomElement: defineOntarioRadioButtons
 });
 
-export type OntarioSearchBoxEvents = {
+type OntarioSearchBoxEvents = {
     onSearchOnSubmit: EventName<CustomEvent<string>>,
     onInputOnInput: EventName<OntarioSearchBoxCustomEvent<InputInputEvent>>,
     onInputOnChange: EventName<OntarioSearchBoxCustomEvent<InputInteractionEvent>>,
@@ -1727,7 +1727,7 @@ export const OntarioSearchBox: StencilReactComponent<OntarioSearchBoxElement, On
     defineCustomElement: defineOntarioSearchBox
 });
 
-export type OntarioStepIndicatorEvents = NonNullable<unknown>;
+type OntarioStepIndicatorEvents = NonNullable<unknown>;
 
 export const OntarioStepIndicator: StencilReactComponent<OntarioStepIndicatorElement, OntarioStepIndicatorEvents> = /*@__PURE__*/ createComponent<OntarioStepIndicatorElement, OntarioStepIndicatorEvents>({
     tagName: 'ontario-step-indicator',
@@ -1738,7 +1738,7 @@ export const OntarioStepIndicator: StencilReactComponent<OntarioStepIndicatorEle
     defineCustomElement: defineOntarioStepIndicator
 });
 
-export type OntarioTableEvents = NonNullable<unknown>;
+type OntarioTableEvents = NonNullable<unknown>;
 
 export const OntarioTable: StencilReactComponent<OntarioTableElement, OntarioTableEvents> = /*@__PURE__*/ createComponent<OntarioTableElement, OntarioTableEvents>({
     tagName: 'ontario-table',
@@ -1749,7 +1749,7 @@ export const OntarioTable: StencilReactComponent<OntarioTableElement, OntarioTab
     defineCustomElement: defineOntarioTable
 });
 
-export type OntarioTaskEvents = NonNullable<unknown>;
+type OntarioTaskEvents = NonNullable<unknown>;
 
 export const OntarioTask: StencilReactComponent<OntarioTaskElement, OntarioTaskEvents> = /*@__PURE__*/ createComponent<OntarioTaskElement, OntarioTaskEvents>({
     tagName: 'ontario-task',
@@ -1760,7 +1760,7 @@ export const OntarioTask: StencilReactComponent<OntarioTaskElement, OntarioTaskE
     defineCustomElement: defineOntarioTask
 });
 
-export type OntarioTaskListEvents = NonNullable<unknown>;
+type OntarioTaskListEvents = NonNullable<unknown>;
 
 export const OntarioTaskList: StencilReactComponent<OntarioTaskListElement, OntarioTaskListEvents> = /*@__PURE__*/ createComponent<OntarioTaskListElement, OntarioTaskListEvents>({
     tagName: 'ontario-task-list',
@@ -1771,7 +1771,7 @@ export const OntarioTaskList: StencilReactComponent<OntarioTaskListElement, Onta
     defineCustomElement: defineOntarioTaskList
 });
 
-export type OntarioTextareaEvents = {
+type OntarioTextareaEvents = {
     onInputOnInput: EventName<OntarioTextareaCustomEvent<InputInputEvent>>,
     onInputOnChange: EventName<OntarioTextareaCustomEvent<InputInteractionEvent>>,
     onInputOnBlur: EventName<OntarioTextareaCustomEvent<InputFocusBlurEvent>>,
