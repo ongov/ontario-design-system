@@ -341,18 +341,19 @@ The Ontario Dropdown List component supports full server-side rendering, with a 
 - **Element ID Consistency:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, you should explicitly pass a stable `elementId`.
 - **Form Submission Support:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. This requires client-side hydration to fully activate. While the component will render as expected during SSR, native form behavior will only function once hydrated in the browser.
 
-> ** SSR-safe example:**
+### **SSR-safe example:**
+
+```html
+<ontario-dropdown-list
+	name="province"
+	element-id="province"
+	language="en"
+	caption='{"captionText": "Select your province", "captionType": "heading"}'
+	options='[{"label":"Ontario", "value":"on"}, {"label":"Quebec", "value":"qc"}]'
+	is-empty-start-option="Select a province"
 >
-> ```html
-> <ontario-dropdown-list
-> 	name="province"
-> 	element-id="province"
-> 	language="en"
-> 	caption='{"captionText": "Select your province", "captionType": "heading"}'
-> 	options='[{"label":"Ontario", "value":"on"}, {"label":"Quebec", "value":"qc"}]'
-> 	is-empty-start-option="Select a province"
-> ></ontario-dropdown-list>
-> ```
+</ontario-dropdown-list>
+```
 
 <!-- Auto Generated Below -->
 
