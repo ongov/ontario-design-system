@@ -210,6 +210,11 @@ export class OntarioHeader {
 					.addRegularText(' method \n ')
 					.addMonospaceText(error.stack)
 					.printMessage(ConsoleType.Error);
+
+				this.applicationHeaderInfoState = {
+					title: '',
+					href: '/',
+				}; // fallback on error
 			}
 		}
 	}
@@ -239,6 +244,8 @@ export class OntarioHeader {
 				.addRegularText(' method \n ')
 				.addMonospaceText(error.stack)
 				.printMessage(ConsoleType.Error);
+
+			this.menuItemState = [];
 		}
 	}
 
@@ -265,6 +272,11 @@ export class OntarioHeader {
 				.addRegularText(' method \n ')
 				.addMonospaceText(error.stack)
 				.printMessage(ConsoleType.Error);
+
+			this.languageState = {
+				englishLink: '/en',
+				frenchLink: '/fr',
+			}; // fallback on error
 		}
 	}
 
@@ -386,6 +398,8 @@ export class OntarioHeader {
 	 *
 	 * The `isHydrated` flag is set to true in `componentDidLoad()` and checked before
 	 * triggering logic that should only run in the browser (e.g., `fetchOntarioMenu()`).
+	 *
+	 * Not reactive - should  not be stored in State.
 	 */
 	private isHydrated = false;
 
