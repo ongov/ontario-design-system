@@ -288,7 +288,7 @@ The Ontario Radio Buttons component supports server-side rendering, with a few c
 
 - **Language Prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-radio-buttons language="fr"></ontario-radio-buttons>`).
 - **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Ensure this does not impact critical accessibility paths.
-- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. This requires client-side hydration to fully activate. While the component will render as expected during SSR, native form behavior will only function once hydrated in the browser.
+- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR (before hydration), the component will render as a standard `<input type="radio">`, meaning it can still function inside a `<form>` and be submitted normally. However, enhanced form behavior (like validation or custom value handling) only becomes active after hydration in the browser.
 
 <!-- Auto Generated Below -->
 

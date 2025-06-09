@@ -147,7 +147,9 @@ export class OntarioFooter {
 		}
 	}
 
-	private parseOptions(optionType: any) {
+	private parseOptions(
+		optionType: string | FooterLinks | FooterSocialLinksProps | TwoColumnOptions | ThreeColumnOptions,
+	) {
 		if (!optionType) return;
 
 		try {
