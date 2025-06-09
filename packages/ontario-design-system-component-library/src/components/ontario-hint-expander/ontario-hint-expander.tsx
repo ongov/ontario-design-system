@@ -196,7 +196,13 @@ export class OntarioHintExpander implements HintExpander {
 					aria-hidden="true"
 					data-toggle="ontario-expander-content"
 				>
-					{this.hintContentType === 'string' ? this.content : <span innerHTML={this.content}></span>}
+					{this.hintContentType === 'string' && this.content ? (
+						this.content
+					) : this.hintContentType === 'html' && this.content ? (
+						<span innerHTML={this.content}></span>
+					) : (
+						<slot />
+					)}
 				</div>
 			</div>
 		);

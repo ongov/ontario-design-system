@@ -6,6 +6,12 @@ It renders an anchor tag (styles as an ontario-button) that accepts either a URL
 
 It is used in the ontario-header component.
 
+## Technical Note: SSR (Server-Side Rendering) Considerations
+
+The Ontario Language toggle component reads the `<html lang="">` attribute and uses `MutationObserver` to track changes to it. However, since DOM access is not available during SSR, this logic only executes in the browser after hydration.
+
+To ensure the correct language is rendered during SSR, explicitly pass the language prop, e.g.: `<ontario-language-toggle language="fr"></ontario-language-toggle>`. This avoids reliance on the `<html>` element, which is inaccessible server-side. It also ensures that other components listening for the `setAppLanguage` event receive the correct value immediately upon hydration.
+
 <!-- Auto Generated Below -->
 
 ## Properties

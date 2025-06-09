@@ -141,12 +141,18 @@ export class OntarioHintText implements Hint {
 	}
 
 	render() {
-		return this.hintContentType === 'string' ? (
+		if (this.hintContentType === 'html') {
+			return (
+				<div id={this.getId()} class="ontario-hint" innerHTML={this.hintState}>
+					{!this.hintState && <slot />}
+				</div>
+			);
+		}
+
+		return (
 			<p part="hint-text" id={this.getId()} class="ontario-hint">
-				{this.hintState}
+				{this.hintState || <slot />}
 			</p>
-		) : (
-			<div id={this.getId()} class="ontario-hint" innerHTML={this.hintState}></div>
 		);
 	}
 }
