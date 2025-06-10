@@ -17,8 +17,6 @@ jobs:
       # Install pnpm
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10.2.0
 
       # Setup Node.js
       - name: Use Node.js ${{ inputs.node-version }} # Pass this in as a parameter

@@ -15,6 +15,7 @@ export default function IconExample() {
 					<OntarioIconAccessibility
 						icon-width="36"
 						colour="blue"
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
 						placeholder=""
 						onPointerEnterCapture={() => {}}
 						onPointerLeaveCapture={() => {}}
@@ -30,6 +31,7 @@ export default function IconExample() {
 					<OntarioIconAccount
 						icon-width="36"
 						colour="grey"
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
 						placeholder=""
 						onPointerEnterCapture={() => {}}
 						onPointerLeaveCapture={() => {}}

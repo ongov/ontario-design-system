@@ -17,6 +17,7 @@ export default function ButtonExample() {
 					<OntarioBlockquote
 						attribution="Academic partners"
 						byline="Ontario’s Pedagogy for the Early Years"
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
 						placeholder=""
 						onPointerEnterCapture={() => {}}
 						onPointerLeaveCapture={() => {}}
@@ -35,6 +36,7 @@ export default function ButtonExample() {
 				<div className="ontario-margin-top-64-!">
 					<h3 className="ontario-h4">Short blockquote:</h3>
 					<OntarioBlockquote
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
 						placeholder=""
 						onPointerEnterCapture={() => {}}
 						onPointerLeaveCapture={() => {}}
