@@ -2097,7 +2097,7 @@ export namespace Components {
 	interface OntarioSearchBox {
 		/**
 		 * The text to display as the input label
-		 * @example <ontario-search-box      caption='{ 		"captionText": "Search directory", 		"captionType": "default" 		}' 	required = "true" > </ontario-search-box>
+		 * @example <ontario-search-box   caption='{ 		"captionText": "Search directory", 		"captionType": "default" 	}' 	required = "true" > </ontario-search-box>
 		 */
 		caption: Caption | string;
 		/**
@@ -2245,7 +2245,7 @@ export namespace Components {
 	}
 	interface OntarioTaskList {
 		/**
-		 * Allows consumers to define the heading level for the task list component.  Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h3'.
+		 * Allows consumers to define the heading level for the task list component.  Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h2'.
 		 * @default 'h2'
 		 */
 		headingLevel: TaskListHeadingLevel;
@@ -5771,7 +5771,7 @@ declare namespace LocalJSX {
 	interface OntarioSearchBox {
 		/**
 		 * The text to display as the input label
-		 * @example <ontario-search-box      caption='{ 		"captionText": "Search directory", 		"captionType": "default" 		}' 	required = "true" > </ontario-search-box>
+		 * @example <ontario-search-box   caption='{ 		"captionText": "Search directory", 		"captionType": "default" 	}' 	required = "true" > </ontario-search-box>
 		 */
 		caption?: Caption | string;
 		/**
@@ -5940,7 +5940,7 @@ declare namespace LocalJSX {
 	}
 	interface OntarioTaskList {
 		/**
-		 * Allows consumers to define the heading level for the task list component.  Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h3'.
+		 * Allows consumers to define the heading level for the task list component.  Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h2'.
 		 * @default 'h2'
 		 */
 		headingLevel?: TaskListHeadingLevel;
