@@ -16,7 +16,7 @@ To find documentation on individual web components in this component library, pl
 
 To use the Ontario Design System React component library, follow these steps:
 
-1. Install the NPM package.
+1. Install the npm package.
 
    ```bash
    npm install --save @ongov/ontario-design-system-component-library-react
@@ -48,9 +48,9 @@ You can now use the React components in your component and template files.
 
 Along with the components, the local assets (logos, fonts, etc.) need to be copied into your project so that they are available for bundling upon building your React application.
 
-The assets in the NPM package are located at `@ongov/ontario-design-system-component-library-react/dist/assets`, and should be copied to your public assets folder.
+The assets in the npm package are located at `@ongov/ontario-design-system-component-library-react/dist/assets`, and should be copied to your public assets folder.
 
-In a standard React application this can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package, which you can with any operating system:
+In a standard React application this can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) npm package, which you can with any operating system:
 
 ```bash
 copyfiles -E -f "node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/*" src/assets

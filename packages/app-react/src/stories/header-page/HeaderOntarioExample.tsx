@@ -24,6 +24,10 @@ export default function HeaderOntarioExample() {
 							englishLink: '/en',
 							frenchLink: '/fr',
 						}}
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+						placeholder={''}
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
 					></OntarioHeader>
 
 					<p>With the following markup:</p>

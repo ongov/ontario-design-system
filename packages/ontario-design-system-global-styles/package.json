@@ -1,10 +1,11 @@
 {
 	"name": "@ongov/ontario-design-system-global-styles",
-	"version": "4.3.0",
+	"version": "5.0.0-alpha.10",
 	"private": false,
 	"description": "Includes the Ontario Design System global styles that are used for more generic elements and layouts, as well as fonts and favicon files.",
 	"license": "Apache-2.0",
 	"type": "module",
+	"main": "dist/index.js",
 	"style": "dist/styles/css/compiled/ontario-theme.min.css",
 	"files": [
 		"dist/",
@@ -12,22 +13,22 @@
 		"README.md"
 	],
 	"scripts": {
-		"build": "gulp deploy && npm run  docs:copy:readme",
+		"build": "gulp deploy && pnpm run  docs:copy:readme",
 		"clean": "rm -rf dist",
-		"clean:full": "rm -rf node_modules && npm run clean",
-		"scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js --watch scss -o css",
+		"clean:full": "rm -rf node_modules && pnpm run clean",
+		"scss": "sass --pkg-importer=node --watch ./src/styles/scss:dist/styles/css",
 		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: Global Styles\n---\n\" -df ../app-web-components-documentation/docs/05-readme-global-styles.md"
 	},
 	"devDependencies": {
-		"del": "^7.0.0",
-		"gulp": "^4.0.2",
-		"gulp-autoprefixer": "^8.0.0",
+		"@ongov/ontario-design-system-design-tokens": "5.0.0-alpha.6",
+		"gulp": "^5.0.0",
+		"gulp-autoprefixer": "^9.0.0",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-if": "^3.0.0",
 		"gulp-sass": "^5.1.0",
-		"sass": "^1.56.2",
-		"@ongov/ontario-design-system-design-tokens": "4.3.0"
+		"rimraf": "^6.0.1",
+		"sass": "^1.83.0"
 	},
 	"publishConfig": {
 		"access": "public"

@@ -39,7 +39,7 @@ These scripts can also be ported over to your projects public assets for use.
 
 You may want to move the assets mentioned above into your project so that they are available for bundling upon building your SPA application.
 
-This can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package, which can be used with any operating system:
+This can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) npm package, which can be used with any operating system:
 
 ```bash
 copyfiles -E -f \"node_modules/@ongov/ontario-design-system-complete-styles/dist/assets/**\" public/assets

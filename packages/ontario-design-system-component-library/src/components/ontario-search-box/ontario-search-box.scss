@@ -1,0 +1,141 @@
+@use 'sass:math';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables' as lineheight;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
+	focusPlaceholders;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
+@use '../../styles/form.scss';
+
+$ontario-input-height: globalFunctions.px-to-rem(48);
+$ontario-search-icon-size: 2rem;
+$ontario-reset-icon-size: 1.5rem;
+$ontario-search-button-width: 5rem;
+$ontario-search-button-width--mobile: 3rem;
+$ontario-search-input-padding: 8.5rem;
+$ontario-search-input-padding--mobile: 7.75rem;
+$ontario-search-desktop-width: 34rem;
+$ontario-search-mobile-width: 20.5rem;
+
+.ontario-search__container {
+	max-width: $ontario-search-desktop-width;
+	margin-bottom: spacing.$spacing-7;
+}
+
+.ontario-search__input-container {
+	position: relative;
+}
+
+.ontario-search__input.ontario-input {
+	border: 2px solid colours.$ontario-colour-black;
+	margin-bottom: spacing.$spacing-0;
+	height: $ontario-input-height;
+	padding-left: spacing.$spacing-3;
+	padding-right: $ontario-search-input-padding;
+	width: 100%;
+
+	&:invalid + input[type='reset'] {
+		display: none;
+	}
+
+	&:focus {
+		@extend %ontario-focus;
+	}
+}
+
+input[type='reset'].ontario-search__reset {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	top: spacing.$spacing-3;
+	right: $ontario-search-button-width + spacing.$spacing-4;
+	height: $ontario-reset-icon-size;
+	width: $ontario-reset-icon-size;
+	color: colours.$ontario-colour-black;
+	margin: spacing.$spacing-0;
+	padding: spacing.$spacing-1;
+	background-size: $ontario-reset-icon-size;
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTE5IDYuNEwxNy42IDUgMTIgMTAuNiA2LjQgNSA1IDYuNGw1LjYgNS42TDUgMTcuNiA2LjQgMTlsNS42LTUuNiA1LjYgNS42IDEuNC0xLjQtNS42LTUuNkwxOSA2LjR6IiBmaWxsPSIjMDAwIi8+PC9zdmc+);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	outline: none;
+	border: none;
+	cursor: pointer;
+
+	&:focus {
+		box-shadow: inset 0 0 0 globalVariables.$global-radius colours.$ontario-colour-focus;
+	}
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		right: $ontario-search-button-width--mobile + spacing.$spacing-7;
+	}
+}
+
+.ontario-search__submit {
+	border: 0;
+	border-radius: 0 3px 3px 0;
+	background-color: colours.$ontario-colour-link;
+	color: colours.$ontario-colour-black;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	font-family: fonts.$ontario-font-open-sans;
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	font-size: 1.125rem;
+	width: $ontario-search-button-width;
+	line-height: lineheight.$ontario-line-height-8;
+
+	position: absolute;
+	right: spacing.$spacing-0;
+	bottom: spacing.$spacing-0;
+	top: spacing.$spacing-0;
+	cursor: pointer;
+
+	&:hover {
+		background-color: colours.$ontario-colour-link--hover;
+		color: colours.$ontario-colour-white;
+	}
+
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 0 globalVariables.$global-radius colours.$ontario-colour-focus;
+		background-color: colours.$ontario-colour-link--hover;
+		color: colours.$ontario-colour-white;
+	}
+
+	&:active {
+		background-color: colours.$ontario-colour-link--active;
+		color: colours.$ontario-colour-white;
+	}
+
+	svg {
+		fill: colours.$ontario-colour-white;
+		margin-right: spacing.$spacing-0;
+		margin-bottom: spacing.$spacing-0;
+		width: $ontario-search-icon-size;
+		height: $ontario-search-icon-size;
+		display: inline-block;
+		vertical-align: middle;
+		overflow: hidden;
+	}
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		width: $ontario-search-button-width--mobile;
+	}
+}
+
+// remove default cancel button for input with type="search"
+input[type='search'].ontario-search__input::-webkit-search-decoration,
+input[type='search'].ontario-search__input::-webkit-search-cancel-button,
+input[type='search'].ontario-search__input::-webkit-search-results-button,
+input[type='search'].ontario-search__input::-webkit-search-results-decoration {
+	-webkit-appearance: none;
+}

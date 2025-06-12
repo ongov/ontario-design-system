@@ -11,7 +11,7 @@
 
 The Ontario Design System design tokens package includes all of the design tokens that are used for generic variables, elements and layouts in Design System styles.
 
-It forms the base of the the Ontario Design System NPM packages, but can also be used to access the design tokens directly in projects not using these packages.
+It forms the base of the the Ontario Design System npm packages, but can also be used to access the design tokens directly in projects not using these packages.
 
 ### What is a design token?
 
@@ -78,7 +78,7 @@ For this package, we have a `tokens`` folder that holds sub-folders for differen
 
 ### Building the design tokens with Style Dictionary
 
-[Style Dictionary](https://amzn.github.io/style-dictionary/) is a build system that allows you to define styles once, in a way for any platform or language to consume. It is a single place to create and edit your styles, with a single command exports these rules to all the places you need them - iOS, Android, CSS, JS, HTML, sketch files, style documentation, etc. It is available as a CLI through NPM, but can also be used like any normal node module if you want to extend its functionality.
+[Style Dictionary](https://amzn.github.io/style-dictionary/) is a build system that allows you to define styles once, in a way for any platform or language to consume. It is a single place to create and edit your styles, with a single command exports these rules to all the places you need them - iOS, Android, CSS, JS, HTML, sketch files, style documentation, etc. It is available as a CLI through npm, but can also be used like any normal node module if you want to extend its functionality.
 
 ## Support
 

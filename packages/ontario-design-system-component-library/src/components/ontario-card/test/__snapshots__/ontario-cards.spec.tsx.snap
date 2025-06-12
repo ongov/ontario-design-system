@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-card renders 1`] = `
+<ontario-card>
+  <template shadowrootmode="open">
+    <li class="ontario-card ontario-card--position-vertical ontario-card__card-type--basic ontario-card__description-false">
+      <div class="ontario-card__text-container">
+        <h2 class="ontario-card__heading">
+          <a href="#"></a>
+        </h2>
+      </div>
+    </li>
+  </template>
+</ontario-card>
+`;
+
+exports[`ontario-card should render a description 1`] = `
+<ontario-card description="Lorem ipsum">
+  <template shadowrootmode="open">
+    <li class="ontario-card ontario-card--position-vertical ontario-card__card-type--basic">
+      <div class="ontario-card__text-container">
+        <h2 class="ontario-card__heading">
+          <a href="#"></a>
+        </h2>
+        <div class="ontario-card__description">
+          <p>
+            Lorem ipsum
+          </p>
+        </div>
+      </div>
+    </li>
+  </template>
+</ontario-card>
+`;
+
+exports[`ontario-card should render a header colour on the label 1`] = `
+<ontario-card header-colour="sky" label="Card Title 1">
+  <template shadowrootmode="open">
+    <li class="ontario-card ontario-card--position-vertical ontario-card__background--sky ontario-card__card-type--basic ontario-card__description-false">
+      <div class="ontario-card__text-container">
+        <h2 class="ontario-card__heading ontario-card__heading--sky">
+          <a href="#">
+            Card Title 1
+          </a>
+        </h2>
+      </div>
+    </li>
+  </template>
+</ontario-card>
+`;
+
+exports[`ontario-card should render a label 1`] = `
+<ontario-card label="Card Title 1">
+  <template shadowrootmode="open">
+    <li class="ontario-card ontario-card--position-vertical ontario-card__card-type--basic ontario-card__description-false">
+      <div class="ontario-card__text-container">
+        <h2 class="ontario-card__heading">
+          <a href="#">
+            Card Title 1
+          </a>
+        </h2>
+      </div>
+    </li>
+  </template>
+</ontario-card>
+`;

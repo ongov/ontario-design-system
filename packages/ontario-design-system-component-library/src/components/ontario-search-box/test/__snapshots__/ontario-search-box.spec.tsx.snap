@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-search-box should render a default search box element 1`] = `
+<ontario-search-box>
+  <template shadowrootmode="open">
+    <form class="ontario-columns ontario-large-6 ontario-large-offset-0 ontario-medium-6 ontario-medium-offset-3 ontario-search__container ontario-small-10" id="ontario-search-form-container" name="searchForm" novalidate="">
+      <label class="ontario-label" htmlfor="ontario-search-input-field"></label>
+      <div class="ontario-search__input-container">
+        <input aria-autocomplete="none" autocomplete="off" class="ontario-input ontario-search__input" id="ontario-search-input-field" name="search" required="" type="search" value="">
+        <input class="ontario-search__reset" id="ontario-search-reset" type="reset" value="">
+        <button class="ontario-search__submit" id="ontario-search-box__submit" type="submit">
+          <span></span>
+        </button>
+      </div>
+    </form>
+  </template>
+</ontario-search-box>
+`;
+
+exports[`ontario-search-box should render the expected html 1`] = `
+<ontario-search-box class="hydrated" id="ontario-search-box">
+  <template shadowrootmode="open">
+    <form class="ontario-columns ontario-large-6 ontario-large-offset-0 ontario-medium-6 ontario-medium-offset-3 ontario-search__container ontario-small-10" id="ontario-search-form-container" name="searchForm" novalidate="">
+      <label class="ontario-label" htmlfor="ontario-search-input-field"></label>
+      <div class="ontario-search__input-container">
+        <input aria-autocomplete="none" autocomplete="off" class="ontario-input ontario-search__input" id="ontario-search-input-field" name="search" required="" type="search" value="">
+        <input class="ontario-search__reset" id="ontario-search-reset" type="reset" value="">
+        <button class="ontario-search__submit" id="ontario-search-box__submit" type="submit">
+          <span></span>
+        </button>
+      </div>
+    </form>
+  </template>
+</ontario-search-box>
+`;

@@ -106,7 +106,7 @@
 				var r = g && 0 === g.left && 0 === g.right && 0 === g.top && 0 === g.bottom;
 				g && 0 === g.width && 0 === g.height && !r
 					? (f[c].hasAttribute('href') && f[c].setAttributeNS('http://www.w3.org/1999/xlink', 'href', a),
-					  b.length &&
+						b.length &&
 							((a = e[b]),
 							!0 !== a && setTimeout(l({ useEl: f[c], base: b, hash: h }), 0),
 							void 0 === a &&
@@ -121,10 +121,10 @@
 									a.send(),
 									(q += 1)))))
 					: r
-					? b.length && e[b] && setTimeout(l({ useEl: f[c], base: b, hash: h }), 0)
-					: void 0 === e[b]
-					? (e[b] = !0)
-					: e[b].onload && (e[b].abort(), delete e[b].onload, (e[b] = !0));
+						? b.length && e[b] && setTimeout(l({ useEl: f[c], base: b, hash: h }), 0)
+						: void 0 === e[b]
+							? (e[b] = !0)
+							: e[b].onload && (e[b].abort(), delete e[b].onload, (e[b] = !0));
 			}
 			f = '';
 			q += 1;

@@ -1,3 +1,5 @@
+import { Conjunction } from './utils-types';
+
 export function format(first: string | undefined, middle: string | undefined, last: string | undefined): string {
 	return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
 }
@@ -65,7 +67,8 @@ export function removeObjectsBySpecificKey<T>(objects: T[], key: keyof T, value:
  * @returns {boolean}
  */
 export function isNumber(value: string | number): boolean {
-	return isNaN(Number(value)) === true;
+	if (value === undefined || value === null) return false;
+	return isNaN(Number(value)) === false;
 }
 
 export function isEmpty(str: string | undefined | null): boolean {
@@ -80,5 +83,34 @@ export function isEmpty(str: string | undefined | null): boolean {
  * @returns {string[]}
  */
 export function retrieveEnumKeys(enumObject: object): string[] {
-	return Object.keys(enumObject).filter(isNumber);
+	if (enumObject === undefined || enumObject === null) return new Array<string>(0);
+	return Object.keys(enumObject).filter((key) => !isNumber(key));
+}
+
+/**
+ * Prints an array as a comma delimited list, with the last element being preceded by a conjunction.
+ * As per ontario.ca content guidelines, there is no Oxford comma.
+ *
+ * @param {Array<any>} arr - The array that you wish to print.
+ * @param {Conjunction} conjunctionType - Whether you want the sentence to end with 'and value.' or 'or value.'
+ *
+ * @returns {string}
+ */
+export function printArray(arr: Array<any>, conjunctionType: Conjunction = 'and'): string {
+	return [...arr].reduce(
+		(text, value, i, array) => text + (i < array.length - 1 ? ', ' : ` ${conjunctionType} `) + value,
+	);
+}
+
+/**
+ * Grabs the HTML element of the page.
+ *
+ * More targetted than document.documentElement as the documentElement could
+ * in theory be any element that is the top level. e.g. <div> if the page is not
+ * set up to be semantically correct.
+ *
+ * @returns {HTMLElement}
+ */
+export function getRootHTMLElement(): HTMLElement {
+	return document.getElementsByTagName('html')[0];
 }

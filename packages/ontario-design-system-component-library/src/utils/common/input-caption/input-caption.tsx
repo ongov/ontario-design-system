@@ -76,20 +76,26 @@ export class InputCaption implements CaptionInfo {
 	/**
 	 * Return the `<label>` element for text inputs
 	 * @param captionFor Set the `htmlFor` attribute
+	 * @param hasHintExpander Indicate whether the component the label is for has a hint expander or not
+	 * @param disableRequiredFlag Disable the required/optional label text _(only use in highly special cases)_
 	 * @returns element containing the caption for the input
 	 */
-	getCaption = (captionFor?: string | undefined, hasHintExpander: boolean = false): HTMLElement => {
+	getCaption = (
+		captionFor?: string | undefined,
+		hasHintExpander: boolean = false,
+		disableRequiredFlag: boolean = false,
+	): HTMLElement => {
 		const captionText = this.captionText && this.captionText.toLowerCase();
 		const captionContent = this.isLegend ? (
 			<legend class={this.getClass()}>
 				{this.captionType === 'heading' ? <h1>{this.captionText}</h1> : this.captionText}
-				{this.getRequiredFlagElement()}
+				{!disableRequiredFlag && this.getRequiredFlagElement()}
 				{hasHintExpander && this.getHintExpanderAccessibilityText(captionText, false)}
 			</legend>
 		) : (
 			<label htmlFor={captionFor} class={this.getClass()}>
 				{this.captionText}
-				{this.getRequiredFlagElement()}
+				{!disableRequiredFlag && this.getRequiredFlagElement()}
 				{hasHintExpander && this.getHintExpanderAccessibilityText(captionText, false)}
 			</label>
 		);
@@ -147,8 +153,8 @@ export class InputCaption implements CaptionInfo {
 				? `ontario-fieldset__legend ontario-fieldset__legend--${this.captionType}`
 				: `ontario-label ontario-label--${this.captionType}`
 			: this.isLegend
-			? 'ontario-fieldset__legend'
-			: 'ontario-label';
+				? 'ontario-fieldset__legend'
+				: 'ontario-label';
 	}
 
 	/**

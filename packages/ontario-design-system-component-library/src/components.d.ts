@@ -15,15 +15,15 @@ import {
 } from './utils/components/callout-aside/callout-aside.interface';
 import { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 import { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
+import { HeadingLevel, Hint, HintContentType } from './utils/common/common.interface';
 import {
-	CardType,
-	HeaderType,
+	HeaderColour,
 	HorizontalImagePositionType,
 	HorizontalImageSizeType,
+	LayoutDirection,
 } from './components/ontario-card/ontario-card-types';
 import { CardsPerRow } from './components/ontario-card-collection/ontario-collection-card-types';
 import { Caption } from './utils/common/input-caption/caption.interface';
-import { Hint, HintContentType } from './utils/common/common.interface';
 import { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
 import { CheckboxOption } from './components/ontario-checkbox/checkbox-option.interface';
 import {
@@ -57,6 +57,9 @@ import { HeaderLanguageToggleEventDetails } from './utils/events/common-events.i
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 import { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
+import { TaskStatuses } from './utils/common/task-statuses.enum';
+import { TaskHeadingLevel } from './components/ontario-task/ontario-task';
+import { TaskListHeadingLevel } from './components/ontario-task-list/ontario-task-list';
 export { ExpandCollapseButtonDetails } from './components/ontario-accordion/expandCollapseButtonDetails.interface';
 export { Accordion } from './components/ontario-accordion/accordion.interface';
 export { Language } from './utils/common/language-types';
@@ -67,15 +70,15 @@ export {
 } from './utils/components/callout-aside/callout-aside.interface';
 export { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 export { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
+export { HeadingLevel, Hint, HintContentType } from './utils/common/common.interface';
 export {
-	CardType,
-	HeaderType,
+	HeaderColour,
 	HorizontalImagePositionType,
 	HorizontalImageSizeType,
+	LayoutDirection,
 } from './components/ontario-card/ontario-card-types';
 export { CardsPerRow } from './components/ontario-card-collection/ontario-collection-card-types';
 export { Caption } from './utils/common/input-caption/caption.interface';
-export { Hint, HintContentType } from './utils/common/common.interface';
 export { HintExpander } from './components/ontario-hint-expander/hint-expander.interface';
 export { CheckboxOption } from './components/ontario-checkbox/checkbox-option.interface';
 export {
@@ -109,6 +112,9 @@ export { HeaderLanguageToggleEventDetails } from './utils/events/common-events.i
 export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 export { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 export { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
+export { TaskStatuses } from './utils/common/task-statuses.enum';
+export { TaskHeadingLevel } from './components/ontario-task/ontario-task';
+export { TaskListHeadingLevel } from './components/ontario-task-list/ontario-task-list';
 export namespace Components {
 	interface OntarioAccordion {
 		/**
@@ -123,6 +129,7 @@ export namespace Components {
 		expandCollapseButton?: string | ExpandCollapseButtonDetails;
 		/**
 		 * Used to show whether the accordion is opened or closed.
+		 * @default false
 		 */
 		isOpen: boolean;
 		/**
@@ -146,6 +153,7 @@ export namespace Components {
 		headingContent?: string;
 		/**
 		 * The type of the heading content. If no prop is passed, it will default to string.
+		 * @default 'string'
 		 */
 		headingContentType: HeadingContentType;
 		/**
@@ -154,6 +162,7 @@ export namespace Components {
 		headingType?: HeadingLevelOptions;
 		/**
 		 * Optional prop to choose the border colour of the aside. If none is passed, the default colour will be teal.
+		 * @default 'teal'
 		 */
 		highlightColour?: HighlightColourOptions;
 	}
@@ -171,6 +180,7 @@ export namespace Components {
 		ariaLabelText?: string;
 		/**
 		 * The colour of the badge.
+		 * @default 'teal'
 		 */
 		colour: BadgeColour;
 		/**
@@ -204,6 +214,7 @@ export namespace Components {
 		elementId?: string;
 		/**
 		 * The native HTML button type the button should use.  If no htmlType is passed, it will default to 'button'.
+		 * @default 'button'
 		 */
 		htmlType: HtmlType;
 		/**
@@ -213,6 +224,7 @@ export namespace Components {
 		label?: string;
 		/**
 		 * The type of button to render.  If no type is passed, it will default to 'secondary'.
+		 * @default 'secondary'
 		 */
 		type: ButtonType;
 	}
@@ -228,6 +240,7 @@ export namespace Components {
 		headingContent?: string;
 		/**
 		 * The type of the heading content. If no prop is passed, it will default to `string`.
+		 * @default 'string'
 		 */
 		headingContentType: HeadingContentType;
 		/**
@@ -236,6 +249,7 @@ export namespace Components {
 		headingType?: HeadingLevelOptions;
 		/**
 		 * Optional prop to choose the border colour of the callout. If none is passed, the default colour will be teal.
+		 * @default 'teal'
 		 */
 		highlightColour?: HighlightColourOptions;
 	}
@@ -249,25 +263,29 @@ export namespace Components {
 		 */
 		cardLink?: string;
 		/**
-		 * The type of card to render.  If no type is passed, it will default to 'basic'.
-		 */
-		cardType: CardType;
-		/**
 		 * Text to be displayed within the card description container.  This is optional.
 		 */
 		description?: string;
 		/**
-		 * The type of header to render.  If no type is passed, it will default to 'default'.
+		 * Set the card's header colour.  This is optional.
 		 */
-		headerType: HeaderType;
+		headerColour?: HeaderColour;
+		/**
+		 * The heading level that the label will be rendered as.
+		 * @example <ontario-card 	heading-level="h4" 	label="Card Title 1" >
+		 * @default 'h2'
+		 */
+		headingLevel: HeadingLevel;
 		/**
 		 * The position of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
 		 * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
+		 * @default 'left'
 		 */
 		horizontalImagePositionType?: HorizontalImagePositionType;
 		/**
 		 * The size of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
 		 * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
+		 * @default 'one-third'
 		 */
 		horizontalImageSizeType?: HorizontalImageSizeType;
 		/**
@@ -275,14 +293,25 @@ export namespace Components {
 		 */
 		image?: string;
 		/**
+		 * Alt text for the card's image.  This is optional prop, but may be required for an image due to accessibility requirements.  You can find guidance on when to add alt text to an image on the Ontario.ca web content editing guide.  https://www.ontario.ca/page/ontario-ca-web-content-editing-guide#alt-text-image-accessibility  Note: This should default to an empty string ('') to ensure the alt attribute appears in the markup for decorative images. If left as undefined, the alt attribute will not render in markup.
+		 * @default ''
+		 */
+		imageAltText?: string;
+		/**
 		 * Text to be displayed within the header.
 		 * @example <ontario-card 	header-type="dark" 	card-type="horizontal" 	label="Card Title 1" 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" >
 		 */
 		label: string;
+		/**
+		 * The layout direction/orientation of the card.  If no type is passed, it will default to 'vertical'.
+		 * @default 'vertical'
+		 */
+		layoutDirection?: LayoutDirection;
 	}
 	interface OntarioCardCollection {
 		/**
 		 * The number of cards to display per row.  If no number is passed, it will default to 3.
+		 * @default 3
 		 */
 		cardsPerRow: CardsPerRow;
 	}
@@ -332,6 +361,7 @@ export namespace Components {
 		options: CheckboxOption[] | string;
 		/**
 		 * This is used to determine whether the checkbox is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+		 * @default false
 		 */
 		required?: boolean;
 	}
@@ -350,6 +380,7 @@ export namespace Components {
 		caption: Caption | string;
 		/**
 		 * An array value used to display date options. For example, only the day and month fields can be displayed by specifying the dateOptions as `["day", "month"]`, etc.  This is optional. If no prop for `dateOptions` is passed, it will default to `["day", "month", "year"]`.
+		 * @default ['day', 'month', 'year']
 		 */
 		dateOptions?: string | Array<DateInputFieldType>;
 		/**
@@ -382,6 +413,7 @@ export namespace Components {
 		placeholder?: DateInputPlaceholder | string;
 		/**
 		 * A boolean value to determine whether or not the date input is required.  This is optional. If no prop is passed, it will default to `false`.
+		 * @default false
 		 */
 		required?: boolean;
 	}
@@ -423,6 +455,7 @@ export namespace Components {
 		/**
 		 * This prop is used to determine whether or not the initial option displayed is empty. If set to `true`, it will render the default “select” text. If set to a string, it will render the string value.
 		 * @example <ontario-dropdown-list is-empty-start-option="true"></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
+		 * @default false
 		 */
 		isEmptyStartOption?: boolean | string;
 		/**
@@ -440,6 +473,7 @@ export namespace Components {
 		options: string | DropdownOption[];
 		/**
 		 * This is used to determine whether the dropdown list is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+		 * @default false
 		 */
 		required?: boolean;
 	}
@@ -450,6 +484,7 @@ export namespace Components {
 		legend: string;
 		/**
 		 * The size of the fieldset legend. If no prop is passed, it will be `default`.
+		 * @default 'default'
 		 */
 		legendSize: CaptionType;
 	}
@@ -459,7 +494,7 @@ export namespace Components {
 		 */
 		assetBasePath: string;
 		/**
-		 * A prop that stores the required links for all footers. Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink'
+		 * A prop that stores the required links for all footers. Available options are 'accessibilityLink', 'privacyLink', 'contactLink','termsOfUseLink' and 'printerLink'
 		 */
 		footerLinks: FooterLinks | string;
 		/**
@@ -476,6 +511,7 @@ export namespace Components {
 		threeColumnOptions?: ThreeColumnOptions | string;
 		/**
 		 * Top margin for the footer. By default, this prop is set to `true`, which adds a margin top value of `5rem`. If set to `false`, the top margin value will be set to zero.
+		 * @default true
 		 */
 		topMargin: boolean;
 		/**
@@ -484,6 +520,7 @@ export namespace Components {
 		twoColumnOptions?: TwoColumnOptions | string;
 		/**
 		 * The type of footer to be rendered. If no prop is provided, it will default to the 'default' type.
+		 * @default 'default'
 		 */
 		type: OntarioFooterType;
 	}
@@ -504,10 +541,12 @@ export namespace Components {
 		/**
 		 * Option to disable fetching of the dynamic menu from the Ontario Header API
 		 * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
+		 * @default false
 		 */
 		disableDynamicMenu: boolean;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+		 * @default 'en'
 		 */
 		language?: Language;
 		/**
@@ -521,6 +560,7 @@ export namespace Components {
 		menuItems: MenuItem[] | string;
 		/**
 		 * The type of header.
+		 * @default 'application'
 		 */
 		type?: OntarioHeaderType;
 	}
@@ -540,9 +580,13 @@ export namespace Components {
 		hint: string;
 		/**
 		 * The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
+		 * @default 'string'
 		 */
 		hintContentType?: HintContentType;
 	}
+	/**
+	 * Use hint text to help users understand how to complete fields in a form.
+	 */
 	interface OntarioHintText {
 		/**
 		 * The unique identifier of the element. This is optional - if no ID is passed, one will be generated.
@@ -550,7 +594,7 @@ export namespace Components {
 		elementId?: string;
 		/**
 		 * This method returns the ontario-hint-text id. It is used to make sure the hint text and `aria-describedby` value of other form components match when the internal hint text props are used.
-		 * @returns Promise<string | undefined>
+		 * @returns The ID of the hint text element, or undefined if no ID is set.
 		 */
 		getHintTextId: () => Promise<string | undefined>;
 		/**
@@ -560,1078 +604,1291 @@ export namespace Components {
 		hint: string;
 		/**
 		 * The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
+		 * @default 'string'
 		 */
 		hintContentType?: HintContentType;
 	}
 	interface OntarioIconAccessibility {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconAccount {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconAdd {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconAddAlt {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconAlertError {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconAlertInformation {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconAlertSuccess {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconAlertWarning {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconArrowUp {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconAttach {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconBookmarkOff {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconBookmarkOn {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconCalendar {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconCamera {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconChevronDown {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconChevronLeft {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconChevronRight {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconChevronUp {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconClock {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconClose {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconCloseHeader {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconCloud {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconCollapse {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconCreditCard {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconCriticalAlertWarning {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconDelete {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconDocument {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconDownload {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconDropdownArrow {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconEdit {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconEmail {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconExpand {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconExport {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconFacebook {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconFacebookAlt {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconFavouriteOff {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconFavouriteOn {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconFilter {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconFlickr {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconGrid {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconHelp {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconInstagram {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconInteracEn {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconInteracEnAlt {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconInteracFr {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconInteracFrAlt {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconLinkedin {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconLinkedinAlt {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconList {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconLiveChat {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconLocationOff {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconLocationOn {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconLockOff {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconLockOn {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconMap {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconMastercard {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconMastercardAlt {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconMediaFastForward {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconMediaFastRewind {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconMediaPause {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconMediaPlay {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconMediaStop {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconMenu {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconMenuHeader {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconMicrophoneOff {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconMicrophoneOn {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconMoreVertical {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconNewWindow {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconNext {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconNotification {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconPasswordHide {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconPasswordShow {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconPhone {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconPhoto {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconPinLocationOff {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconPinLocationOn {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconPrevious {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconPrint {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconRemove {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconRemoveAlt {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconReplay {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconRssFeed {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconSave {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconSearch {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconSearchWhite {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconSentiment1 {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconSentiment2 {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconSentiment3 {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconSentiment4 {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconSentiment5 {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconSettings {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconShare {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconSort {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconTag {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconTextMessage {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconTimer {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconTransportBicycle {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconTransportBus {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconTransportCar {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconTransportWalk {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconTty {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconTwitter {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconTwitterAlt {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconUpload {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconVideo {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconVisa {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconVoteDislike {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconVoteLike {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconVpnKey {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconWheelchair {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconWifi {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
 	interface OntarioIconYoutube {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth: IconSize;
 	}
@@ -1663,6 +1920,7 @@ export namespace Components {
 		elementId?: string;
 		/**
 		 * Enable live validation on the input.  Custom live validation can be performed using an `inputValidator` validation function.  It will also validate the `required` state if no errors are returned from the `inputValidator`.  Please set a `requiredValidationMessage` to report concisely to the end user what they are required to set.
+		 * @default false
 		 */
 		enableLiveValidation: boolean;
 		/**
@@ -1684,6 +1942,7 @@ export namespace Components {
 		inputValidator?: (value?: string) => Promise<{ errorMessage?: string } | null | undefined>;
 		/**
 		 * The width of the input field. If no value is assigned, it will present as the `default` input width.
+		 * @default 'default'
 		 */
 		inputWidth:
 			| '2-char-width'
@@ -1696,6 +1955,7 @@ export namespace Components {
 			| 'default';
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
+		 * @default 'en'
 		 */
 		language?: Language;
 		/**
@@ -1705,6 +1965,7 @@ export namespace Components {
 		/**
 		 * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  _Please add a validation messaging using `requiredValidationMessage` if setting this property._
 		 * @example <ontario-input 	id="address-line-1" 	caption="Address line 1" 	required 	required-validation-message="Please enter an address, including street number and street name" 	name="address-line-1" 	hint-text="Street and number or P.O. box." ></ontario-input>
+		 * @default false
 		 */
 		required?: boolean;
 		/**
@@ -1713,6 +1974,7 @@ export namespace Components {
 		requiredValidationMessage: string;
 		/**
 		 * The input type value.  If no `type` is provided, it will default to 'text'.
+		 * @default 'text'
 		 */
 		type: 'text' | 'tel' | 'email' | 'password';
 		/**
@@ -1725,9 +1987,13 @@ export namespace Components {
 		 * A custom function to pass to the language toggle button.  This is optional.
 		 */
 		customLanguageToggle?: (event: globalThis.Event) => void;
-		language: Language | string;
+		/**
+		 * The language of the component.  In most cases, the language toggle should be the source of truth for determining the site language.  Only pass a language value here if necessary.
+		 */
+		language?: Language;
 		/**
 		 * The size of the language toggle button.  If no prop is passed, it will be set to the `default` size.
+		 * @default 'default'
 		 */
 		size?: 'default' | 'small';
 		/**
@@ -1738,10 +2004,12 @@ export namespace Components {
 	interface OntarioLoadingIndicator {
 		/**
 		 * A boolean value to determine whether the loading indicator overlay covers the full page or not. By default, this is set to `true`.  If set to `false`, the loading indicator overlay will be positioned absolutely relative to its container. Note that this will only work if the containing element has a style rule specifying it to be positioned relatively.
+		 * @default true
 		 */
 		fullScreenOverlay?: boolean;
 		/**
 		 * A boolean value to determine whether or not the loading indicator is loading (i.e: is visible) or not.
+		 * @default false
 		 */
 		isLoading: boolean;
 		/**
@@ -1754,6 +2022,7 @@ export namespace Components {
 		message?: string;
 		/**
 		 * The type of loading indicator to render.
+		 * @default 'large'
 		 */
 		type: 'small' | 'large';
 	}
@@ -1771,6 +2040,7 @@ export namespace Components {
 		/**
 		 * The type of page alert to render. If no value is provided, the `informational` type alert would be rendered.  There are four possible values for page alert: `informational`, `warning`, `success` or `error`.
 		 * @example <ontario-page-alert type="error"> </ontario-page-alert>
+		 * @default 'informational'
 		 */
 		type: PageAlertType;
 	}
@@ -1820,8 +2090,59 @@ export namespace Components {
 		options: string | RadioOption[];
 		/**
 		 * This is used to determine whether the radio button is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+		 * @default false
 		 */
 		required?: boolean;
+	}
+	interface OntarioSearchBox {
+		/**
+		 * The text to display as the input label
+		 * @example <ontario-search-box   caption='{ 		"captionText": "Search directory", 		"captionType": "default" 	}' 	required = "true" > </ontario-search-box>
+		 */
+		caption: Caption | string;
+		/**
+		 * Used to add a custom function to the input onBlur event.
+		 */
+		customOnBlur?: (event: globalThis.Event) => void;
+		/**
+		 * Used to add a custom function to the input onChange event.
+		 */
+		customOnChange?: (event: globalThis.Event) => void;
+		/**
+		 * Used to add a custom function to the input onFocus event.
+		 */
+		customOnFocus?: (event: globalThis.Event) => void;
+		/**
+		 * Used to add a custom function to the input onInput event.
+		 */
+		customOnInput?: (event: globalThis.Event) => void;
+		/**
+		 * The unique identifier of the search-box component. This is optional - if no ID is passed, one will be generated.
+		 */
+		elementId?: string;
+		/**
+		 * Used to include the ontario-hint-text component for the search-box. This is optional.
+		 */
+		hintText?: string | Hint;
+		/**
+		 * The language of the component. This is used for translations. If none is passed, it will default to English.
+		 * @default 'en'
+		 */
+		language?: Language;
+		/**
+		 * This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted.
+		 * @example <ontario-search-box   id="ontario-search-box"   caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
+		 */
+		performSearch?: (value?: string) => Promise<void>;
+		/**
+		 * This is used to determine whether the dropdown list is required or not. This prop gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+		 * @default false
+		 */
+		required?: boolean;
+		/**
+		 * The value of the search term. This is optional.
+		 */
+		value?: string;
 	}
 	interface OntarioStepIndicator {
 		/**
@@ -1850,6 +2171,7 @@ export namespace Components {
 		percentageComplete?: number;
 		/**
 		 * A boolean value to determine whether or not the back button is displayed for the step indicator.  This is optional. If no prop is passed, it will default to `false`.
+		 * @default false
 		 */
 		showBackButton?: boolean;
 	}
@@ -1860,10 +2182,12 @@ export namespace Components {
 		caption?: string | undefined;
 		/**
 		 * Used to specify whether or not table data in cells should have reduced top and bottom padding. This is useful for pages with multiple data-heavy tables such as a budget or financial data.  This is optional. By default it will be set to “false”.
+		 * @default false
 		 */
 		condensed?: boolean | undefined;
 		/**
 		 * Used to specify whether or not the table should extend the full width of its container.  This is optional. By default, it will be set to “false”
+		 * @default false
 		 */
 		fullWidth?: boolean | undefined;
 		/**
@@ -1878,8 +2202,62 @@ export namespace Components {
 		tableData: string | TableRowOptions[];
 		/**
 		 * Indicates whether or not the table data should have alternate row zebra striping.  This is optional. By default, zebra striping will be added when the table rows extend 5 rows. If zebra striping is needed to table rows less than 5 rows, the prop should be set to “enabled”. If no zebra stripes are needed, it should be set to “disabled”.  The default will be set to “auto”.
+		 * @default 'auto'
 		 */
 		zebraStripes?: 'auto' | 'disabled' | 'enabled' | undefined;
+	}
+	interface OntarioTask {
+		/**
+		 * Disables the task link when set to `true`.  Default is `false`, meaning the link will be active if provided.
+		 * @default false
+		 */
+		deactivateLink: boolean;
+		/**
+		 * Allows consumers to define the heading level for the task label.  Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.
+		 * @default 'h3'
+		 */
+		headingLevel: TaskHeadingLevel;
+		/**
+		 * Used to include the ontario-hint-text component for the task.  This is optional.
+		 */
+		hintText?: string | Hint;
+		/**
+		 * Specifies the label of the task.  This is required to provide the name of the task.
+		 */
+		label: string;
+		/**
+		 * The language of the component.  This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
+		 */
+		language?: Language;
+		/**
+		 * Specifies an optional link associated with the task.  If provided, clicking the task will navigate to this URL.
+		 */
+		link?: string;
+		/**
+		 * A unique id for the task.  This is required.
+		 */
+		taskId: string;
+		/**
+		 * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`, etc.
+		 * @default TaskStatuses.NotStarted
+		 */
+		taskStatus: TaskStatuses;
+	}
+	interface OntarioTaskList {
+		/**
+		 * Allows consumers to define the heading level for the task list component.  Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h2'.
+		 * @default 'h2'
+		 */
+		headingLevel: TaskListHeadingLevel;
+		/**
+		 * The label prop used for the task list heading.
+		 */
+		label: string;
+		/**
+		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+		 * @default 'en'
+		 */
+		language?: Language;
 	}
 	interface OntarioTextarea {
 		/**
@@ -1930,6 +2308,7 @@ export namespace Components {
 		name: string;
 		/**
 		 * This is used to determine whether the textarea is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+		 * @default false
 		 */
 		required?: boolean;
 		/**
@@ -1965,6 +2344,10 @@ export interface OntarioLanguageToggleCustomEvent<T> extends CustomEvent<T> {
 export interface OntarioRadioButtonsCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioRadioButtonsElement;
+}
+export interface OntarioSearchBoxCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioSearchBoxElement;
 }
 export interface OntarioTextareaCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
@@ -2272,6 +2655,9 @@ declare global {
 		prototype: HTMLOntarioHintExpanderElement;
 		new (): HTMLOntarioHintExpanderElement;
 	};
+	/**
+	 * Use hint text to help users understand how to complete fields in a form.
+	 */
 	interface HTMLOntarioHintTextElement extends Components.OntarioHintText, HTMLStencilElement {}
 	var HTMLOntarioHintTextElement: {
 		prototype: HTMLOntarioHintTextElement;
@@ -2893,7 +3279,7 @@ declare global {
 		new (): HTMLOntarioInputElement;
 	};
 	interface HTMLOntarioLanguageToggleElementEventMap {
-		setAppLanguage: string;
+		setAppLanguage: Language;
 		headerLanguageToggled: HeaderLanguageToggleEventDetails;
 	}
 	interface HTMLOntarioLanguageToggleElement extends Components.OntarioLanguageToggle, HTMLStencilElement {
@@ -3016,6 +3402,65 @@ declare global {
 		prototype: HTMLOntarioRadioButtonsElement;
 		new (): HTMLOntarioRadioButtonsElement;
 	};
+	interface HTMLOntarioSearchBoxElementEventMap {
+		searchOnSubmit: string;
+		inputOnInput: InputInputEvent;
+		inputOnChange: InputInteractionEvent;
+		inputOnBlur: InputFocusBlurEvent;
+		inputOnFocus: InputFocusBlurEvent;
+	}
+	interface HTMLOntarioSearchBoxElement extends Components.OntarioSearchBox, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioSearchBoxElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioSearchBoxElement,
+				ev: OntarioSearchBoxCustomEvent<HTMLOntarioSearchBoxElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioSearchBoxElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioSearchBoxElement,
+				ev: OntarioSearchBoxCustomEvent<HTMLOntarioSearchBoxElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
+	var HTMLOntarioSearchBoxElement: {
+		prototype: HTMLOntarioSearchBoxElement;
+		new (): HTMLOntarioSearchBoxElement;
+	};
 	interface HTMLOntarioStepIndicatorElement extends Components.OntarioStepIndicator, HTMLStencilElement {}
 	var HTMLOntarioStepIndicatorElement: {
 		prototype: HTMLOntarioStepIndicatorElement;
@@ -3025,6 +3470,16 @@ declare global {
 	var HTMLOntarioTableElement: {
 		prototype: HTMLOntarioTableElement;
 		new (): HTMLOntarioTableElement;
+	};
+	interface HTMLOntarioTaskElement extends Components.OntarioTask, HTMLStencilElement {}
+	var HTMLOntarioTaskElement: {
+		prototype: HTMLOntarioTaskElement;
+		new (): HTMLOntarioTaskElement;
+	};
+	interface HTMLOntarioTaskListElement extends Components.OntarioTaskList, HTMLStencilElement {}
+	var HTMLOntarioTaskListElement: {
+		prototype: HTMLOntarioTaskListElement;
+		new (): HTMLOntarioTaskListElement;
 	};
 	interface HTMLOntarioTextareaElementEventMap {
 		inputOnInput: InputInputEvent;
@@ -3221,8 +3676,11 @@ declare global {
 		'ontario-loading-indicator': HTMLOntarioLoadingIndicatorElement;
 		'ontario-page-alert': HTMLOntarioPageAlertElement;
 		'ontario-radio-buttons': HTMLOntarioRadioButtonsElement;
+		'ontario-search-box': HTMLOntarioSearchBoxElement;
 		'ontario-step-indicator': HTMLOntarioStepIndicatorElement;
 		'ontario-table': HTMLOntarioTableElement;
+		'ontario-task': HTMLOntarioTaskElement;
+		'ontario-task-list': HTMLOntarioTaskListElement;
 		'ontario-textarea': HTMLOntarioTextareaElement;
 	}
 }
@@ -3240,6 +3698,7 @@ declare namespace LocalJSX {
 		expandCollapseButton?: string | ExpandCollapseButtonDetails;
 		/**
 		 * Used to show whether the accordion is opened or closed.
+		 * @default false
 		 */
 		isOpen?: boolean;
 		/**
@@ -3263,6 +3722,7 @@ declare namespace LocalJSX {
 		headingContent?: string;
 		/**
 		 * The type of the heading content. If no prop is passed, it will default to string.
+		 * @default 'string'
 		 */
 		headingContentType?: HeadingContentType;
 		/**
@@ -3271,6 +3731,7 @@ declare namespace LocalJSX {
 		headingType?: HeadingLevelOptions;
 		/**
 		 * Optional prop to choose the border colour of the aside. If none is passed, the default colour will be teal.
+		 * @default 'teal'
 		 */
 		highlightColour?: HighlightColourOptions;
 	}
@@ -3288,6 +3749,7 @@ declare namespace LocalJSX {
 		ariaLabelText?: string;
 		/**
 		 * The colour of the badge.
+		 * @default 'teal'
 		 */
 		colour?: BadgeColour;
 		/**
@@ -3321,6 +3783,7 @@ declare namespace LocalJSX {
 		elementId?: string;
 		/**
 		 * The native HTML button type the button should use.  If no htmlType is passed, it will default to 'button'.
+		 * @default 'button'
 		 */
 		htmlType?: HtmlType;
 		/**
@@ -3330,6 +3793,7 @@ declare namespace LocalJSX {
 		label?: string;
 		/**
 		 * The type of button to render.  If no type is passed, it will default to 'secondary'.
+		 * @default 'secondary'
 		 */
 		type?: ButtonType;
 	}
@@ -3345,6 +3809,7 @@ declare namespace LocalJSX {
 		headingContent?: string;
 		/**
 		 * The type of the heading content. If no prop is passed, it will default to `string`.
+		 * @default 'string'
 		 */
 		headingContentType?: HeadingContentType;
 		/**
@@ -3353,6 +3818,7 @@ declare namespace LocalJSX {
 		headingType?: HeadingLevelOptions;
 		/**
 		 * Optional prop to choose the border colour of the callout. If none is passed, the default colour will be teal.
+		 * @default 'teal'
 		 */
 		highlightColour?: HighlightColourOptions;
 	}
@@ -3366,25 +3832,29 @@ declare namespace LocalJSX {
 		 */
 		cardLink?: string;
 		/**
-		 * The type of card to render.  If no type is passed, it will default to 'basic'.
-		 */
-		cardType?: CardType;
-		/**
 		 * Text to be displayed within the card description container.  This is optional.
 		 */
 		description?: string;
 		/**
-		 * The type of header to render.  If no type is passed, it will default to 'default'.
+		 * Set the card's header colour.  This is optional.
 		 */
-		headerType?: HeaderType;
+		headerColour?: HeaderColour;
+		/**
+		 * The heading level that the label will be rendered as.
+		 * @example <ontario-card 	heading-level="h4" 	label="Card Title 1" >
+		 * @default 'h2'
+		 */
+		headingLevel?: HeadingLevel;
 		/**
 		 * The position of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
 		 * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
+		 * @default 'left'
 		 */
 		horizontalImagePositionType?: HorizontalImagePositionType;
 		/**
 		 * The size of the image when the card-type is set to 'horizontal'.  This prop is only necessry when the card-type is set to 'horizontal'.
 		 * @example 	<ontario-card 	card-type="horizontal" 	label="Card Title 1" 	image="https://picsum.photos/200/300" 	horizontal-image-position-type="left" 	horizontal-image-size-type="one-fourth"   description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" > </ontario-card>
+		 * @default 'one-third'
 		 */
 		horizontalImageSizeType?: HorizontalImageSizeType;
 		/**
@@ -3392,14 +3862,25 @@ declare namespace LocalJSX {
 		 */
 		image?: string;
 		/**
+		 * Alt text for the card's image.  This is optional prop, but may be required for an image due to accessibility requirements.  You can find guidance on when to add alt text to an image on the Ontario.ca web content editing guide.  https://www.ontario.ca/page/ontario-ca-web-content-editing-guide#alt-text-image-accessibility  Note: This should default to an empty string ('') to ensure the alt attribute appears in the markup for decorative images. If left as undefined, the alt attribute will not render in markup.
+		 * @default ''
+		 */
+		imageAltText?: string;
+		/**
 		 * Text to be displayed within the header.
 		 * @example <ontario-card 	header-type="dark" 	card-type="horizontal" 	label="Card Title 1" 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" >
 		 */
 		label?: string;
+		/**
+		 * The layout direction/orientation of the card.  If no type is passed, it will default to 'vertical'.
+		 * @default 'vertical'
+		 */
+		layoutDirection?: LayoutDirection;
 	}
 	interface OntarioCardCollection {
 		/**
 		 * The number of cards to display per row.  If no number is passed, it will default to 3.
+		 * @default 3
 		 */
 		cardsPerRow?: CardsPerRow;
 	}
@@ -3465,6 +3946,7 @@ declare namespace LocalJSX {
 		options?: CheckboxOption[] | string;
 		/**
 		 * This is used to determine whether the checkbox is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+		 * @default false
 		 */
 		required?: boolean;
 	}
@@ -3483,6 +3965,7 @@ declare namespace LocalJSX {
 		caption?: Caption | string;
 		/**
 		 * An array value used to display date options. For example, only the day and month fields can be displayed by specifying the dateOptions as `["day", "month"]`, etc.  This is optional. If no prop for `dateOptions` is passed, it will default to `["day", "month", "year"]`.
+		 * @default ['day', 'month', 'year']
 		 */
 		dateOptions?: string | Array<DateInputFieldType>;
 		/**
@@ -3545,6 +4028,7 @@ declare namespace LocalJSX {
 		placeholder?: DateInputPlaceholder | string;
 		/**
 		 * A boolean value to determine whether or not the date input is required.  This is optional. If no prop is passed, it will default to `false`.
+		 * @default false
 		 */
 		required?: boolean;
 	}
@@ -3586,6 +4070,7 @@ declare namespace LocalJSX {
 		/**
 		 * This prop is used to determine whether or not the initial option displayed is empty. If set to `true`, it will render the default “select” text. If set to a string, it will render the string value.
 		 * @example <ontario-dropdown-list is-empty-start-option="true"></ontario-dropdown-list>  or  <ontario-dropdown-list is-empty-start-option="Please select"></ontario-dropdown-list>
+		 * @default false
 		 */
 		isEmptyStartOption?: boolean | string;
 		/**
@@ -3619,6 +4104,7 @@ declare namespace LocalJSX {
 		options?: string | DropdownOption[];
 		/**
 		 * This is used to determine whether the dropdown list is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+		 * @default false
 		 */
 		required?: boolean;
 	}
@@ -3629,6 +4115,7 @@ declare namespace LocalJSX {
 		legend?: string;
 		/**
 		 * The size of the fieldset legend. If no prop is passed, it will be `default`.
+		 * @default 'default'
 		 */
 		legendSize?: CaptionType;
 	}
@@ -3638,7 +4125,7 @@ declare namespace LocalJSX {
 		 */
 		assetBasePath?: string;
 		/**
-		 * A prop that stores the required links for all footers. Available options are 'accessibilityLink', 'privacyLink', 'contactLink' and 'printerLink'
+		 * A prop that stores the required links for all footers. Available options are 'accessibilityLink', 'privacyLink', 'contactLink','termsOfUseLink' and 'printerLink'
 		 */
 		footerLinks?: FooterLinks | string;
 		/**
@@ -3655,6 +4142,7 @@ declare namespace LocalJSX {
 		threeColumnOptions?: ThreeColumnOptions | string;
 		/**
 		 * Top margin for the footer. By default, this prop is set to `true`, which adds a margin top value of `5rem`. If set to `false`, the top margin value will be set to zero.
+		 * @default true
 		 */
 		topMargin?: boolean;
 		/**
@@ -3663,6 +4151,7 @@ declare namespace LocalJSX {
 		twoColumnOptions?: TwoColumnOptions | string;
 		/**
 		 * The type of footer to be rendered. If no prop is provided, it will default to the 'default' type.
+		 * @default 'default'
 		 */
 		type?: OntarioFooterType;
 	}
@@ -3683,10 +4172,12 @@ declare namespace LocalJSX {
 		/**
 		 * Option to disable fetching of the dynamic menu from the Ontario Header API
 		 * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
+		 * @default false
 		 */
 		disableDynamicMenu?: boolean;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+		 * @default 'en'
 		 */
 		language?: Language;
 		/**
@@ -3700,6 +4191,7 @@ declare namespace LocalJSX {
 		menuItems?: MenuItem[] | string;
 		/**
 		 * The type of header.
+		 * @default 'application'
 		 */
 		type?: OntarioHeaderType;
 	}
@@ -3719,6 +4211,7 @@ declare namespace LocalJSX {
 		hint?: string;
 		/**
 		 * The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
+		 * @default 'string'
 		 */
 		hintContentType?: HintContentType;
 		/**
@@ -3726,6 +4219,9 @@ declare namespace LocalJSX {
 		 */
 		onToggleExpanderEvent?: (event: OntarioHintExpanderCustomEvent<MouseEvent | KeyboardEvent>) => void;
 	}
+	/**
+	 * Use hint text to help users understand how to complete fields in a form.
+	 */
 	interface OntarioHintText {
 		/**
 		 * The unique identifier of the element. This is optional - if no ID is passed, one will be generated.
@@ -3738,1078 +4234,1291 @@ declare namespace LocalJSX {
 		hint?: string;
 		/**
 		 * The content type of the hint. If no prop is passed, it will default to a string. If the hint requires multiple lines or HTML, the `hintContentType` prop should be set to `html`.
+		 * @default 'string'
 		 */
 		hintContentType?: HintContentType;
 	}
 	interface OntarioIconAccessibility {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconAccount {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconAdd {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconAddAlt {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconAlertError {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconAlertInformation {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconAlertSuccess {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconAlertWarning {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconArrowUp {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconAttach {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconBookmarkOff {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconBookmarkOn {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconCalendar {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconCamera {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconChevronDown {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconChevronLeft {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconChevronRight {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconChevronUp {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconClock {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconClose {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconCloseHeader {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconCloud {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconCollapse {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconCreditCard {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconCriticalAlertWarning {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconDelete {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconDocument {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconDownload {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconDropdownArrow {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconEdit {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconEmail {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconExpand {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconExport {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconFacebook {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconFacebookAlt {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconFavouriteOff {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconFavouriteOn {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconFilter {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconFlickr {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconGrid {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconHelp {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconInstagram {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconInteracEn {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconInteracEnAlt {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconInteracFr {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconInteracFrAlt {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconLinkedin {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconLinkedinAlt {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconList {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconLiveChat {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconLocationOff {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconLocationOn {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconLockOff {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconLockOn {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconMap {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconMastercard {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconMastercardAlt {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconMediaFastForward {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconMediaFastRewind {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconMediaPause {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconMediaPlay {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconMediaStop {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconMenu {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconMenuHeader {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconMicrophoneOff {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconMicrophoneOn {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconMoreVertical {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconNewWindow {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconNext {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconNotification {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconPasswordHide {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconPasswordShow {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconPhone {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconPhoto {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconPinLocationOff {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconPinLocationOn {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconPrevious {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconPrint {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconRemove {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconRemoveAlt {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconReplay {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconRssFeed {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconSave {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconSearch {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconSearchWhite {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconSentiment1 {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconSentiment2 {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconSentiment3 {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconSentiment4 {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconSentiment5 {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconSettings {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconShare {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconSort {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconTag {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconTextMessage {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconTimer {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconTransportBicycle {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconTransportBus {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconTransportCar {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconTransportWalk {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconTty {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconTwitter {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconTwitterAlt {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconUpload {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconVideo {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconVisa {
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconVoteDislike {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconVoteLike {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconVpnKey {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconWheelchair {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconWifi {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconYoutube {
 		/**
 		 * Set the icon's colour.
+		 * @default 'black'
 		 */
 		colour?: IconColour;
 		/**
 		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
 		 */
 		iconWidth?: IconSize;
 	}
@@ -4841,6 +5550,7 @@ declare namespace LocalJSX {
 		elementId?: string;
 		/**
 		 * Enable live validation on the input.  Custom live validation can be performed using an `inputValidator` validation function.  It will also validate the `required` state if no errors are returned from the `inputValidator`.  Please set a `requiredValidationMessage` to report concisely to the end user what they are required to set.
+		 * @default false
 		 */
 		enableLiveValidation?: boolean;
 		/**
@@ -4862,6 +5572,7 @@ declare namespace LocalJSX {
 		inputValidator?: (value?: string) => Promise<{ errorMessage?: string } | null | undefined>;
 		/**
 		 * The width of the input field. If no value is assigned, it will present as the `default` input width.
+		 * @default 'default'
 		 */
 		inputWidth?:
 			| '2-char-width'
@@ -4874,6 +5585,7 @@ declare namespace LocalJSX {
 			| 'default';
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
+		 * @default 'en'
 		 */
 		language?: Language;
 		/**
@@ -4903,6 +5615,7 @@ declare namespace LocalJSX {
 		/**
 		 * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  _Please add a validation messaging using `requiredValidationMessage` if setting this property._
 		 * @example <ontario-input 	id="address-line-1" 	caption="Address line 1" 	required 	required-validation-message="Please enter an address, including street number and street name" 	name="address-line-1" 	hint-text="Street and number or P.O. box." ></ontario-input>
+		 * @default false
 		 */
 		required?: boolean;
 		/**
@@ -4911,6 +5624,7 @@ declare namespace LocalJSX {
 		requiredValidationMessage?: string;
 		/**
 		 * The input type value.  If no `type` is provided, it will default to 'text'.
+		 * @default 'text'
 		 */
 		type?: 'text' | 'tel' | 'email' | 'password';
 		/**
@@ -4923,17 +5637,21 @@ declare namespace LocalJSX {
 		 * A custom function to pass to the language toggle button.  This is optional.
 		 */
 		customLanguageToggle?: (event: globalThis.Event) => void;
-		language?: Language | string;
 		/**
-		 * An event that emits to other components that the language toggle button has been toggled.
+		 * The language of the component.  In most cases, the language toggle should be the source of truth for determining the site language.  Only pass a language value here if necessary.
+		 */
+		language?: Language;
+		/**
+		 * Event that fires when the language toggle is pressed/clicked.  The event contains the oldLanguage along with the newLanguage.
 		 */
 		onHeaderLanguageToggled?: (event: OntarioLanguageToggleCustomEvent<HeaderLanguageToggleEventDetails>) => void;
 		/**
-		 * An event to set the Document's HTML lang property, and emit the toggled language to other components.
+		 * Event that fires during the setAppLanguageHandler() method.  The event contains the current language (after language logic has already occurred).
 		 */
-		onSetAppLanguage?: (event: OntarioLanguageToggleCustomEvent<string>) => void;
+		onSetAppLanguage?: (event: OntarioLanguageToggleCustomEvent<Language>) => void;
 		/**
 		 * The size of the language toggle button.  If no prop is passed, it will be set to the `default` size.
+		 * @default 'default'
 		 */
 		size?: 'default' | 'small';
 		/**
@@ -4944,10 +5662,12 @@ declare namespace LocalJSX {
 	interface OntarioLoadingIndicator {
 		/**
 		 * A boolean value to determine whether the loading indicator overlay covers the full page or not. By default, this is set to `true`.  If set to `false`, the loading indicator overlay will be positioned absolutely relative to its container. Note that this will only work if the containing element has a style rule specifying it to be positioned relatively.
+		 * @default true
 		 */
 		fullScreenOverlay?: boolean;
 		/**
 		 * A boolean value to determine whether or not the loading indicator is loading (i.e: is visible) or not.
+		 * @default false
 		 */
 		isLoading?: boolean;
 		/**
@@ -4960,6 +5680,7 @@ declare namespace LocalJSX {
 		message?: string;
 		/**
 		 * The type of loading indicator to render.
+		 * @default 'large'
 		 */
 		type?: 'small' | 'large';
 	}
@@ -4977,6 +5698,7 @@ declare namespace LocalJSX {
 		/**
 		 * The type of page alert to render. If no value is provided, the `informational` type alert would be rendered.  There are four possible values for page alert: `informational`, `warning`, `success` or `error`.
 		 * @example <ontario-page-alert type="error"> </ontario-page-alert>
+		 * @default 'informational'
 		 */
 		type?: PageAlertType;
 	}
@@ -5042,8 +5764,80 @@ declare namespace LocalJSX {
 		options?: string | RadioOption[];
 		/**
 		 * This is used to determine whether the radio button is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+		 * @default false
 		 */
 		required?: boolean;
+	}
+	interface OntarioSearchBox {
+		/**
+		 * The text to display as the input label
+		 * @example <ontario-search-box   caption='{ 		"captionText": "Search directory", 		"captionType": "default" 	}' 	required = "true" > </ontario-search-box>
+		 */
+		caption?: Caption | string;
+		/**
+		 * Used to add a custom function to the input onBlur event.
+		 */
+		customOnBlur?: (event: globalThis.Event) => void;
+		/**
+		 * Used to add a custom function to the input onChange event.
+		 */
+		customOnChange?: (event: globalThis.Event) => void;
+		/**
+		 * Used to add a custom function to the input onFocus event.
+		 */
+		customOnFocus?: (event: globalThis.Event) => void;
+		/**
+		 * Used to add a custom function to the input onInput event.
+		 */
+		customOnInput?: (event: globalThis.Event) => void;
+		/**
+		 * The unique identifier of the search-box component. This is optional - if no ID is passed, one will be generated.
+		 */
+		elementId?: string;
+		/**
+		 * Used to include the ontario-hint-text component for the search-box. This is optional.
+		 */
+		hintText?: string | Hint;
+		/**
+		 * The language of the component. This is used for translations. If none is passed, it will default to English.
+		 * @default 'en'
+		 */
+		language?: Language;
+		/**
+		 * Emitted when a keyboard input event occurs when an input has lost focus.
+		 */
+		onInputOnBlur?: (event: OntarioSearchBoxCustomEvent<InputFocusBlurEvent>) => void;
+		/**
+		 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
+		 */
+		onInputOnChange?: (event: OntarioSearchBoxCustomEvent<InputInteractionEvent>) => void;
+		/**
+		 * Emitted when a keyboard input event occurs when an input has gained focus.
+		 */
+		onInputOnFocus?: (event: OntarioSearchBoxCustomEvent<InputFocusBlurEvent>) => void;
+		/**
+		 * Emitted when a input  occurs when an input has been changed.
+		 */
+		onInputOnInput?: (event: OntarioSearchBoxCustomEvent<InputInputEvent>) => void;
+		/**
+		 * Emitted when the search is submitted. Below is an example on how to hook into the event to get the event details.
+		 * @example <script> 	document.getElementById('ontario-search-box').addEventListener('searchOnSubmit', (event) => {  		const searchValue = event.detail; 		console.log('Search submitted with value:', searchValue);   }; 	</script>
+		 */
+		onSearchOnSubmit?: (event: OntarioSearchBoxCustomEvent<string>) => void;
+		/**
+		 * This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted.
+		 * @example <ontario-search-box   id="ontario-search-box"   caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
+		 */
+		performSearch?: (value?: string) => Promise<void>;
+		/**
+		 * This is used to determine whether the dropdown list is required or not. This prop gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+		 * @default false
+		 */
+		required?: boolean;
+		/**
+		 * The value of the search term. This is optional.
+		 */
+		value?: string;
 	}
 	interface OntarioStepIndicator {
 		/**
@@ -5072,6 +5866,7 @@ declare namespace LocalJSX {
 		percentageComplete?: number;
 		/**
 		 * A boolean value to determine whether or not the back button is displayed for the step indicator.  This is optional. If no prop is passed, it will default to `false`.
+		 * @default false
 		 */
 		showBackButton?: boolean;
 	}
@@ -5082,10 +5877,12 @@ declare namespace LocalJSX {
 		caption?: string | undefined;
 		/**
 		 * Used to specify whether or not table data in cells should have reduced top and bottom padding. This is useful for pages with multiple data-heavy tables such as a budget or financial data.  This is optional. By default it will be set to “false”.
+		 * @default false
 		 */
 		condensed?: boolean | undefined;
 		/**
 		 * Used to specify whether or not the table should extend the full width of its container.  This is optional. By default, it will be set to “false”
+		 * @default false
 		 */
 		fullWidth?: boolean | undefined;
 		/**
@@ -5100,8 +5897,62 @@ declare namespace LocalJSX {
 		tableData?: string | TableRowOptions[];
 		/**
 		 * Indicates whether or not the table data should have alternate row zebra striping.  This is optional. By default, zebra striping will be added when the table rows extend 5 rows. If zebra striping is needed to table rows less than 5 rows, the prop should be set to “enabled”. If no zebra stripes are needed, it should be set to “disabled”.  The default will be set to “auto”.
+		 * @default 'auto'
 		 */
 		zebraStripes?: 'auto' | 'disabled' | 'enabled' | undefined;
+	}
+	interface OntarioTask {
+		/**
+		 * Disables the task link when set to `true`.  Default is `false`, meaning the link will be active if provided.
+		 * @default false
+		 */
+		deactivateLink?: boolean;
+		/**
+		 * Allows consumers to define the heading level for the task label.  Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.
+		 * @default 'h3'
+		 */
+		headingLevel?: TaskHeadingLevel;
+		/**
+		 * Used to include the ontario-hint-text component for the task.  This is optional.
+		 */
+		hintText?: string | Hint;
+		/**
+		 * Specifies the label of the task.  This is required to provide the name of the task.
+		 */
+		label?: string;
+		/**
+		 * The language of the component.  This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
+		 */
+		language?: Language;
+		/**
+		 * Specifies an optional link associated with the task.  If provided, clicking the task will navigate to this URL.
+		 */
+		link?: string;
+		/**
+		 * A unique id for the task.  This is required.
+		 */
+		taskId?: string;
+		/**
+		 * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`, etc.
+		 * @default TaskStatuses.NotStarted
+		 */
+		taskStatus?: TaskStatuses;
+	}
+	interface OntarioTaskList {
+		/**
+		 * Allows consumers to define the heading level for the task list component.  Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h2'.
+		 * @default 'h2'
+		 */
+		headingLevel?: TaskListHeadingLevel;
+		/**
+		 * The label prop used for the task list heading.
+		 */
+		label?: string;
+		/**
+		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+		 * @default 'en'
+		 */
+		language?: Language;
 	}
 	interface OntarioTextarea {
 		/**
@@ -5172,6 +6023,7 @@ declare namespace LocalJSX {
 		onInputOnInput?: (event: OntarioTextareaCustomEvent<InputInputEvent>) => void;
 		/**
 		 * This is used to determine whether the textarea is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).
+		 * @default false
 		 */
 		required?: boolean;
 		/**
@@ -5315,8 +6167,11 @@ declare namespace LocalJSX {
 		'ontario-loading-indicator': OntarioLoadingIndicator;
 		'ontario-page-alert': OntarioPageAlert;
 		'ontario-radio-buttons': OntarioRadioButtons;
+		'ontario-search-box': OntarioSearchBox;
 		'ontario-step-indicator': OntarioStepIndicator;
 		'ontario-table': OntarioTable;
+		'ontario-task': OntarioTask;
+		'ontario-task-list': OntarioTaskList;
 		'ontario-textarea': OntarioTextarea;
 	}
 }
@@ -5342,6 +6197,9 @@ declare module '@stencil/core' {
 			'ontario-footer': LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;
 			'ontario-header': LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
 			'ontario-hint-expander': LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
+			/**
+			 * Use hint text to help users understand how to complete fields in a form.
+			 */
 			'ontario-hint-text': LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
 			'ontario-icon-accessibility': LocalJSX.OntarioIconAccessibility &
 				JSXBase.HTMLAttributes<HTMLOntarioIconAccessibilityElement>;
@@ -5519,8 +6377,11 @@ declare module '@stencil/core' {
 				JSXBase.HTMLAttributes<HTMLOntarioLoadingIndicatorElement>;
 			'ontario-page-alert': LocalJSX.OntarioPageAlert & JSXBase.HTMLAttributes<HTMLOntarioPageAlertElement>;
 			'ontario-radio-buttons': LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
+			'ontario-search-box': LocalJSX.OntarioSearchBox & JSXBase.HTMLAttributes<HTMLOntarioSearchBoxElement>;
 			'ontario-step-indicator': LocalJSX.OntarioStepIndicator & JSXBase.HTMLAttributes<HTMLOntarioStepIndicatorElement>;
 			'ontario-table': LocalJSX.OntarioTable & JSXBase.HTMLAttributes<HTMLOntarioTableElement>;
+			'ontario-task': LocalJSX.OntarioTask & JSXBase.HTMLAttributes<HTMLOntarioTaskElement>;
+			'ontario-task-list': LocalJSX.OntarioTaskList & JSXBase.HTMLAttributes<HTMLOntarioTaskListElement>;
 			'ontario-textarea': LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
 		}
 	}

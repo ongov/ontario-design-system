@@ -14,23 +14,21 @@ jobs:
       # Checkout the repo
       - uses: actions/checkout@v4
 
+      # Install pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       # Setup Node.js
       - name: Use Node.js ${{ inputs.node-version }} # Pass this in as a parameter
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node-version }}
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
 
-      # Perhaps the next two steps can be performed before this workflow is triggered
-      # Install node_modules
-      - name: Install base node_modules
-        run: npm ci
-
-      # Install node_modules in all packages
-      - name: Initialise all package node_modules
-        run: npm run bootstrap
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       # Run unit tests
       - name: Run Unit Tests
-        run: npm run test:unit
+        run: pnpm run test:unit

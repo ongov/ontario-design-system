@@ -1,6 +1,7 @@
 @use '../1-variables/colours.variables' as colours;
 @use '../1-variables/font-weights.variables' as fontWeights;
 @use '../1-variables/font-sizes.variables' as fontSizes;
+@use '../1-variables/fonts.variables' as fonts;
 @use '../1-variables/typography.variables' as typography;
 @use '../1-variables/global.variables' as global;
 @use '../1-variables/spacing.variables' as spacing;
@@ -21,7 +22,7 @@
 
 /* Base */
 html {
-	font-family: typography.$ontario-font-open-sans;
+	font-family: fonts.$ontario-font-open-sans;
 	font-size: fontSizes.$ontario-font-size-standard-body-text;
 }
 
@@ -189,7 +190,7 @@ textarea {
 
 input[type='checkbox'] + label,
 input[type='radio'] + label {
-	font-family: typography.$ontario-font-open-sans;
+	font-family: fonts.$ontario-font-open-sans;
 	font-size: fontSizes.$ontario-font-size-standard-body-text;
 	font-weight: fontWeights.$ontario-font-weights-normal;
 	margin-left: spacing.$spacing-0;

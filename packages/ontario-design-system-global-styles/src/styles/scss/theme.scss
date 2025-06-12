@@ -19,6 +19,7 @@
 @forward './1-variables/colours.variables';
 @forward './1-variables/font-sizes.variables';
 @forward './1-variables/font-weights.variables';
+@forward './1-variables/fonts.variables';
 @forward './1-variables/global.variables';
 @forward './1-variables/grid.variables';
 @forward './1-variables/letter-spacing.variables';
@@ -26,7 +27,6 @@
 @forward './1-variables/spacing.variables';
 @forward './1-variables/typography.variables';
 @forward './1-variables/z-index.variables';
-@forward './1-variables/line-heights.variables';
 
 /*** 2 - Tools - Mixins and placeholders ***/
 @forward './2-tools/mixins/global.mixins';

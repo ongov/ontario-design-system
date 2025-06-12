@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ComponentLibraryModule } from '@ongov/ontario-design-system-component-library-angular/dist/component-library';
 import { RouterModule } from '@angular/router';
@@ -14,7 +14,7 @@ import { TemporaryStorageService } from './services/temporary-storage.services';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FrameOneComponent } from './pages//frameone/frameone.component';
+import { FrameOneComponent } from './pages/frameone/frameone.component';
 import { FrameTwoComponent } from './pages/frametwo/frametwo.component';
 import { FrameThreeComponent } from './pages/framethree/framethree.component';
 import { FrameFourComponent } from './pages/framefour/framefour.component';
@@ -63,6 +63,7 @@ import { createTranslateLoader } from './translation.config';
 			enableTitleTranslate: true,
 		}),
 	],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 	providers: [TemporaryStorageService],
 	bootstrap: [AppComponent],
 })

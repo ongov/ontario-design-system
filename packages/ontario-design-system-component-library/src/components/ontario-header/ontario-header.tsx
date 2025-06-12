@@ -1,4 +1,4 @@
-import { Component, Prop, State, Watch, h, Listen, Element, getAssetPath } from '@stencil/core';
+import { Component, Prop, State, Watch, h, Listen, Element } from '@stencil/core';
 
 import { Input } from '../../utils/common/input/input';
 import {
@@ -16,6 +16,7 @@ import OntarioIconSearchWhite from '../ontario-icon/assets/ontario-icon-search-w
 import OntarioHeaderDefaultData from './ontario-header-default-data.json';
 
 import { Language } from '../../utils/common/language-types';
+import { getImageAssetSrcPath } from '../../utils/helper/assets';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 
 import translations from '../../translations/global.i18n.json';
@@ -23,11 +24,7 @@ import config from '../../config.json';
 
 @Component({
 	tag: 'ontario-header',
-	styleUrls: {
-		ontario: 'ontario-header.scss',
-		application: 'ontario-application-header.scss',
-		serviceOntario: 'service-ontario-header.scss',
-	},
+	styleUrls: ['ontario-header.scss', 'ontario-application-header.scss', 'service-ontario-header.scss'],
 	shadow: true,
 	assetsDirs: ['./assets'],
 })
@@ -250,11 +247,22 @@ export class OntarioHeader {
 	}
 
 	/**
-	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
+	 * This listens for the `setAppLanguage` event sent from the language toggle when it is is connected to the DOM.
+	 * It is used for the initial language when the input component loads.
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
-	handleSetAppLanguage(event: CustomEvent<Language>) {
+	handleSetAppLanguage(event: CustomEvent<Language> | Language) {
 		this.language = validateLanguage(event);
+		this.parseMenuItems();
+	}
+
+	/**
+	 * This listens for the `headerLanguageToggled` event sent from the language toggle when it is is connected to the DOM.
+	 * It is used for changing the component language after the language toggle has been activated.
+	 */
+	@Listen('headerLanguageToggled', { target: 'window' })
+	handleLanguageToggle(event: CustomEvent<{ oldLanguage: Language; newLanguage: Language }>) {
+		this.handleSetAppLanguage(event.detail.newLanguage);
 	}
 
 	/**
@@ -329,12 +337,19 @@ export class OntarioHeader {
 	}
 
 	/**
-	 * Generate a link to the given image based on the base asset path.
-	 * @param imageName Name of the image to build the path to
-	 * @returns Path to image with asset path
+	 * Generate the full path to an image asset based on the base asset path.
+	 *
+	 * - If `assetBasePath` is provided, it is used as the base path.
+	 * - If not, attempts to use Stencil's `getAssetPath` (for Stencil/Angular builds).
+	 * - If that fails (e.g., in React), falls back to `/assets/`, assuming assets are in the public folder.
+	 *
+	 * This allows the component to work across multiple environments (Stencil, Angular, React).
+	 *
+	 * @param imageName - The name of the image file.
+	 * @returns The full image path as a string.
 	 */
 	private getImageAssetSrcPath(imageName: string): string {
-		return `${this.assetBasePath ? this.assetBasePath : getAssetPath('./assets')}/${imageName}`;
+		return getImageAssetSrcPath(imageName, this.assetBasePath);
 	}
 
 	/**
@@ -389,10 +404,10 @@ export class OntarioHeader {
 					viewportSize === 'desktop'
 						? 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-show-for-large'
 						: viewportSize === 'tablet'
-						? 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large'
-						: viewportSize === 'mobile'
-						? 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-show-for-small-only'
-						: 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline'
+							? 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large'
+							: viewportSize === 'mobile'
+								? 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-show-for-small-only'
+								: 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline'
 				}
 				id={this.type === 'ontario' ? 'ontario-header-menu-toggler' : 'ontario-application-header-menu-toggler'}
 				aria-controls="ontario-navigation"
@@ -407,10 +422,10 @@ export class OntarioHeader {
 					viewportSize === 'desktop'
 						? (el) => (this.menuButtonDesktop = el as HTMLInputElement)
 						: viewportSize === 'tablet'
-						? (el) => (this.menuButtonTablet = el as HTMLInputElement)
-						: viewportSize === 'mobile'
-						? (el) => (this.menuButtonMobile = el as HTMLInputElement)
-						: (el) => (this.menuButton = el as HTMLInputElement)
+							? (el) => (this.menuButtonTablet = el as HTMLInputElement)
+							: viewportSize === 'mobile'
+								? (el) => (this.menuButtonMobile = el as HTMLInputElement)
+								: (el) => (this.menuButton = el as HTMLInputElement)
 				}
 			>
 				<span class="ontario-header__icon-container" innerHTML={this.menuToggle ? OntarioIconClose : OntarioIconMenu} />
@@ -573,7 +588,6 @@ export class OntarioHeader {
 										url={this.language === 'en' ? this.languageState?.frenchLink : this.languageState?.englishLink}
 										size="default"
 										customLanguageToggle={this.customLanguageToggle}
-										language={this.language}
 									></ontario-language-toggle>
 									<button
 										class="ontario-header__search-toggler ontario-header-button ontario-header-button--without-outline ontario-hide-for-large"
@@ -632,7 +646,7 @@ export class OntarioHeader {
 													'ontario-header-navigation__menu-item',
 													undefined,
 													lastLink,
-											  )
+												)
 											: this.generateMenuItem(
 													item.href,
 													item.title,
@@ -641,7 +655,7 @@ export class OntarioHeader {
 													'ontario-header-navigation__menu-item',
 													item.onClickHandler,
 													lastLink,
-											  );
+												);
 									})}
 								</ul>
 							</div>
@@ -674,7 +688,6 @@ export class OntarioHeader {
 										size="small"
 										url={this.language === 'en' ? this.languageState?.frenchLink : this.languageState?.englishLink}
 										customLanguageToggle={this.customLanguageToggle}
-										language={this.language}
 									></ontario-language-toggle>
 								</div>
 							</div>

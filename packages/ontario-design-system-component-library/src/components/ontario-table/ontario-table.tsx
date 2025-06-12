@@ -159,8 +159,8 @@ export class OntarioTable implements Table {
 		return this.zebraStripes === 'disabled'
 			? `ontario-table--no-zebra-stripes`
 			: this.zebraStripes === 'enabled'
-			? `ontario-table--zebra-stripes-enabled`
-			: ``;
+				? `ontario-table--zebra-stripes-enabled`
+				: ``;
 	};
 
 	private getTableClasses = () => {
@@ -298,8 +298,8 @@ export class OntarioTable implements Table {
 									const rowClass = rowData.highlight
 										? `ontario-table-row--highlight`
 										: rowData.subtotal
-										? `ontario-table-row--subtotal`
-										: undefined;
+											? `ontario-table-row--subtotal`
+											: undefined;
 
 									return this.generateTableDataHTML('tableData', rowData, columns, rowClass);
 								})}

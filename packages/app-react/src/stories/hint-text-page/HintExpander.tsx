@@ -37,6 +37,10 @@ export default function HintExpander() {
 				<div className="ontario-margin-top-24-!">
 					<h3>Example</h3>
 					<OntarioHintExpander
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+						placeholder=""
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
 						hint="Example hint expander hint text"
 						content="Example hint expander hint content"
 						elementId="hint-expander-id"

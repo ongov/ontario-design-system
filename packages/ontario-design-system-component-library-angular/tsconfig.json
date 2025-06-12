@@ -1,6 +1,5 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-	"compileOnSave": false,
 	"compilerOptions": {
 		"baseUrl": "./",
 		"paths": {
@@ -17,10 +16,10 @@
 		"declaration": false,
 		"downlevelIteration": true,
 		"experimentalDecorators": true,
+		"target": "ES2022",
+		"module": "esnext",
 		"moduleResolution": "node",
 		"importHelpers": true,
-		"target": "ES2022",
-		"module": "ES2022",
 		"useDefineForClassFields": false,
 		"skipLibCheck": true,
 		"lib": ["ES2022", "dom"]
@@ -30,5 +29,7 @@
 		"strictInjectionParameters": true,
 		"strictInputAccessModifiers": true,
 		"strictTemplates": true
-	}
+	},
+	"compileOnSave": false,
+	"buildOnSave": false
 }

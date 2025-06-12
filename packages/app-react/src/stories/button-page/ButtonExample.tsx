@@ -26,6 +26,10 @@ export default function ButtonExample() {
 				<div className="ontario-margin-top-24-!">
 					<h3 className="ontario-h4">Primary</h3>
 					<OntarioButton
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+						placeholder=""
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
 						type="primary"
 						label="Primary button"
 						ariaLabelText="This is a clickable primary button"
@@ -44,7 +48,14 @@ export default function ButtonExample() {
 
 				<div className="ontario-margin-top-24-!">
 					<h3 className="ontario-h4">Secondary</h3>
-					<OntarioButton type="secondary" elementId="secondary-button">
+					<OntarioButton
+						type="secondary"
+						elementId="secondary-button"
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+						placeholder=""
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
+					>
 						Secondary button
 					</OntarioButton>
 
@@ -60,7 +71,15 @@ export default function ButtonExample() {
 
 				<div className="ontario-margin-top-24-!">
 					<h3 className="ontario-h4">Tertiary</h3>
-					<OntarioButton type="tertiary" label="Tertiary button" onClick={onButtonClick}></OntarioButton>
+					<OntarioButton
+						type="tertiary"
+						label="Tertiary button"
+						onClick={onButtonClick}
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+						placeholder=""
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
+					></OntarioButton>
 
 					<p>With the following markup:</p>
 

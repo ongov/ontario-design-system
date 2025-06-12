@@ -3,7 +3,7 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as fontSizes;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables' as lineheight;
@@ -19,7 +19,6 @@
 $ontario-radios-size: 32px;
 $ontario-radios-size-mobile: 36px;
 $ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-radios-size), 2);
-$ontario-input-border-width: 0.125rem;
 
 .ontario-radios__item {
 	position: relative;
@@ -55,7 +54,7 @@ $ontario-input-border-width: 0.125rem;
 	cursor: pointer;
 	color: colours.$ontario-colour-black;
 	display: inline-block;
-	font-family: typography.$ontario-font-raleway-modified;
+	font-family: fonts.$ontario-font-raleway;
 	font-size: fontSizes.$ontario-font-size-standard-body-text;
 	font-weight: fontWeights.$ontario-font-weights-bold;
 	line-height: globalVariables.$line-height-default;

@@ -19,7 +19,12 @@ export default function DefaultFooterCodeExample() {
 			text: 'Contact us',
 			href: 'https://www.ontario.ca/feedback/contact-us'
 		},
+		termsOfUseLink: {
+			text: 'Terms of use',
+			href: 'https://www.ontario.ca/page/terms-use'
+		},
 		printerLink: {
+			text: 'Printer',
 			href: 'https://www.ontario.ca/page/copyright-information'
 		}
 	}}
@@ -30,6 +35,10 @@ export default function DefaultFooterCodeExample() {
 				<h4>Example</h4>
 				<div className="ontario-margin-top-24-!">
 					<OntarioFooter
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+						placeholder=""
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
 						type="default"
 						footerLinks={{
 							accessibilityLink: {
@@ -45,6 +54,7 @@ export default function DefaultFooterCodeExample() {
 								href: 'https://www.ontario.ca/feedback/contact-us',
 							},
 							printerLink: {
+								text: 'printer',
 								href: 'https://www.ontario.ca/page/copyright-information',
 							},
 						}}

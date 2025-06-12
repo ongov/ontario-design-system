@@ -4,12 +4,14 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { inlineSvg } from 'stencil-inline-svg';
 import dotEnvPlugin from 'rollup-plugin-dotenv';
+import path from 'path';
 
 export const config: Config = {
 	namespace: 'ontario-design-system-components',
+	sourceMap: true,
 	plugins: [
 		sass({
-			includePaths: ['./node_modules', './node_modules/@ongov/ontario-design-system-global-styles/node_modules'],
+			includePaths: ['./node_modules'],
 		}),
 		inlineSvg(),
 		dotEnvPlugin(),
@@ -19,9 +21,8 @@ export const config: Config = {
 	buildEs5: false,
 	outputTargets: [
 		reactOutputTarget({
-			componentCorePackage: '@ongov/ontario-design-system-component-library',
-			proxiesFile: '../ontario-design-system-component-library-react/src/components.ts',
-			includeDefineCustomElements: true,
+			outDir: '../ontario-design-system-component-library-react/src/components',
+			stencilPackageName: '@ongov/ontario-design-system-component-library',
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@ongov/ontario-design-system-component-library',
@@ -31,16 +32,22 @@ export const config: Config = {
 				'../ontario-design-system-component-library-angular/projects/component-library/src/lib/stencil-generated/index.ts',
 		}),
 		{
+			type: 'dist-custom-elements',
+			externalRuntime: false,
+			generateTypeDeclarations: true,
+			isPrimaryPackageOutputTarget: false,
+		},
+		{
 			type: 'dist',
 			esmLoaderPath: '../loader',
 			copy: [
 				{
-					src: '../node_modules/@ongov/ontario-design-system-global-styles/dist/fonts',
+					src: path.resolve(__dirname, './node_modules/@ongov/ontario-design-system-global-styles/dist/fonts'),
 					dest: 'fonts',
 					warn: true,
 				},
 				{
-					src: '../node_modules/@ongov/ontario-design-system-global-styles/dist/favicons',
+					src: path.resolve(__dirname, './node_modules/@ongov/ontario-design-system-global-styles/dist/favicons'),
 					dest: 'favicons',
 					warn: true,
 				},
@@ -63,18 +70,19 @@ export const config: Config = {
 		{
 			type: 'docs-readme',
 			dir: '../app-web-components-documentation/docs/',
+			overwriteExisting: true,
 		},
 		{
 			type: 'www',
 			serviceWorker: null, // disable service workers
 			copy: [
 				{
-					src: '../node_modules/@ongov/ontario-design-system-global-styles/dist/fonts',
+					src: path.resolve(__dirname, './node_modules/@ongov/ontario-design-system-global-styles/dist/fonts'),
 					dest: 'fonts',
 					warn: true,
 				},
 				{
-					src: '../node_modules/@ongov/ontario-design-system-global-styles/dist/favicons',
+					src: path.resolve(__dirname, './node_modules/@ongov/ontario-design-system-global-styles/dist/favicons'),
 					dest: 'favicons',
 					warn: true,
 				},
@@ -85,6 +93,10 @@ export const config: Config = {
 				{
 					src: 'translations/*.i18n.json',
 					dest: 'i18n',
+				},
+				{
+					src: 'french.html',
+					dest: 'french.html',
 				},
 			],
 		},

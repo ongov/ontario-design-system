@@ -3,10 +3,10 @@ const path = require('path');
 module.exports = {
 	process(src, filePath) {
 		if (path.extname(filePath) !== '.svg') {
-			return src;
+			return { code: src }; // Return an object with the code property
 		}
 
-		return 'module.exports = {};';
+		return { code: 'module.exports = {};' };
 	},
 	getCacheKey() {
 		// The output is always the same.

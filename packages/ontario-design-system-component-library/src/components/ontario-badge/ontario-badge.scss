@@ -1,5 +1,5 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as fontSizes;
@@ -27,7 +27,7 @@
 	background-color: colours.$ontario-colour-information-light;
 	color: colours.$ontario-greyscale-70;
 	padding: spacing.$spacing-1 spacing.$spacing-2;
-	font-family: typography.$ontario-font-raleway-modified;
+	font-family: fonts.$ontario-font-raleway;
 	font-size: fontSizes.$ontario-font-size-standard-body-text;
 	font-weight: fontWeights.$ontario-font-weights-bold;
 	line-height: globalFunctions.px-to-rem(25);
@@ -68,4 +68,15 @@
 .ontario-badge--success-heavy {
 	background-color: colours.$ontario-colour-success;
 	color: colours.$ontario-colour-white;
+}
+
+.ontario-badge--white {
+	background-color: colours.$ontario-colour-white;
+	color: colours.$ontario-greyscale-70;
+	border: globalFunctions.px-to-rem(1) solid colours.$ontario-greyscale-70;
+}
+
+.ontario-badge--grey {
+	background-color: colours.$ontario-greyscale-20;
+	color: colours.$ontario-colour-black;
 }

@@ -46,6 +46,8 @@ export class AppComponent implements OnInit {
 		const accessibilityLink = this.translate.instant('footer.accessibility.link');
 		const privacy = this.translate.instant('footer.privacy.text');
 		const privacyLink = this.translate.instant('footer.privacy.link');
+		const termsOfUse = this.translate.instant('footer.termsOfUse.text');
+		const termsOfUseLink = this.translate.instant('footer.termsOfUse.link');
 		const contactUs = this.translate.instant('footer.contactUs.text');
 		const contactUsLink = this.translate.instant('footer.contactUs.link');
 
@@ -57,6 +59,8 @@ export class AppComponent implements OnInit {
 			accessibilityLink,
 			privacy,
 			privacyLink,
+			termsOfUse,
+			termsOfUseLink,
 			contactUs,
 			contactUsLink,
 		};

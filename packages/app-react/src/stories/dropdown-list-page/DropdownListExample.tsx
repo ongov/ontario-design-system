@@ -5,7 +5,7 @@ import { OntarioDropdownList } from '@ongov/ontario-design-system-component-libr
 import CodeHighlighter from '../../components/code-highlighter';
 
 export default function DropdownListExamples() {
-	const dropdownListCodeExample = `import { OntarioDropdownList } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList 
+	const dropdownListCodeExample = `import { OntarioDropdownList } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList
   caption="Province/territory"
   name="province-selection"
   elementId="province-territory"
@@ -66,12 +66,12 @@ export default function DropdownListExamples() {
 >
 </OntarioDropdownList>`;
 
-	const dropdownListCodeExample2 = `import { OntarioDropdownList } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList 
+	const dropdownListCodeExample2 = `import { OntarioDropdownList } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList
   caption={{
 	captionText: "Country",
 	captionType: "default"
   }}
-  name="country" 
+  name="country"
   required
   options={[
     {
@@ -90,8 +90,8 @@ export default function DropdownListExamples() {
 >
 </OntarioDropdownList>`;
 
-	const dropdownListCodeExample3 = `import { OntarioDropdownList } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList 
-  caption="Select a language" 
+	const dropdownListCodeExample3 = `import { OntarioDropdownList } from '@ongov/ontario-design-system-component-library-react'; \n\n<OntarioDropdownList
+  caption="Select a language"
   name="language-select"
   isEmptyStartOption="Select a language"
   hintExpander={{
@@ -122,6 +122,10 @@ export default function DropdownListExamples() {
 				<h2>Examples</h2>
 
 				<OntarioDropdownList
+					// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+					placeholder=""
+					onPointerEnterCapture={() => {}}
+					onPointerLeaveCapture={() => {}}
 					caption="Province/territory"
 					name="province-selection"
 					elementId="province-territory"
@@ -192,6 +196,10 @@ export default function DropdownListExamples() {
 				</p>
 
 				<OntarioDropdownList
+					// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+					placeholder=""
+					onPointerEnterCapture={() => {}}
+					onPointerLeaveCapture={() => {}}
 					caption={{
 						captionText: 'Country',
 						captionType: 'default',
@@ -224,6 +232,10 @@ export default function DropdownListExamples() {
 				</p>
 
 				<OntarioDropdownList
+					// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+					placeholder=""
+					onPointerEnterCapture={() => {}}
+					onPointerLeaveCapture={() => {}}
 					caption="Select a language"
 					name="language-select"
 					isEmptyStartOption="Select a language"

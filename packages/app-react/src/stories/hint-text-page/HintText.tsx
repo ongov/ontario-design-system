@@ -34,7 +34,14 @@ export default function HintText() {
 
 				<div className="ontario-margin-top-24-!">
 					<h3>Example</h3>
-					<OntarioHintText hint="Example hint text" elementId="hint-id" />
+					<OntarioHintText
+						hint="Example hint text"
+						elementId="hint-id"
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+						placeholder=""
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
+					/>
 
 					<p>With the following markup:</p>
 

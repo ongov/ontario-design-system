@@ -1,25 +1,26 @@
 {
 	"name": "@ongov/ontario-design-system-design-tokens",
-	"version": "4.3.0",
+	"version": "5.0.0-alpha.6",
 	"private": false,
 	"description": "Design Tokens defining the base values within the Ontario Design System",
 	"license": "Apache-2.0",
 	"main": "index.js",
 	"style": "dist/css/_variables.css",
 	"files": [
-		"dist/{css,scss}/",
+		"dist/",
 		"package.json",
 		"README.md"
 	],
 	"scripts": {
-		"build": "node build.js && npm run docs:copy:readme",
+		"build": "node build.mjs && pnpm run docs:copy:readme",
 		"clean": "rm -rf dist",
-		"clean:full": "rm -rf node_modules && npm run clean",
+		"clean:full": "rm -rf node_modules && pnpm run clean",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: Design Tokens\n---\n\" -df ../app-web-components-documentation/docs/04-readme-design-tokens.md"
 	},
 	"devDependencies": {
-		"style-dictionary": "^3.7.1"
+		"@types/node": "^22.10.10",
+		"style-dictionary": "^4.3.0"
 	},
 	"publishConfig": {
 		"access": "public"

@@ -12,7 +12,14 @@ export default function IconExample() {
 				<h2>How to use the icons</h2>
 				<div className="ontario-margin-top-24-!">
 					<h3 className="ontario-h4">Primary Icon:</h3>
-					<OntarioIconAccessibility icon-width="36" colour="blue"></OntarioIconAccessibility>
+					<OntarioIconAccessibility
+						icon-width="36"
+						colour="blue"
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+						placeholder=""
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
+					></OntarioIconAccessibility>
 
 					<p>With the following markup:</p>
 
@@ -21,7 +28,14 @@ export default function IconExample() {
 
 				<div className="ontario-margin-top-24-!">
 					<h3 className="ontario-h4">Secondary Icon:</h3>
-					<OntarioIconAccount icon-width="36" colour="grey"></OntarioIconAccount>
+					<OntarioIconAccount
+						icon-width="36"
+						colour="grey"
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+						placeholder=""
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
+					></OntarioIconAccount>
 
 					<p>With the following markup:</p>
 

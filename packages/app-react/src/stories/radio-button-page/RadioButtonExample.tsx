@@ -6,7 +6,7 @@ import CodeHighlighter from '../../components/code-highlighter';
 
 export default function RadioButtonExample() {
 	const radioButtonsCodeExample = `import { OntarioRadioButtons } from '@ongov/ontario-design-system-component-library-react'; \n
-<OntarioRadioButtons 
+<OntarioRadioButtons
 	ref={componentRef}
 	caption="Radio legend"
 	name="radio-example"
@@ -70,6 +70,10 @@ export default function RadioButtonExample() {
 			<div className="ontario-columns ontario-large-12">
 				<h2>Example</h2>
 				<OntarioRadioButtons
+					// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+					placeholder=""
+					onPointerEnterCapture={() => {}}
+					onPointerLeaveCapture={() => {}}
 					ref={componentRef}
 					caption="Radio legend"
 					name="radio-example"

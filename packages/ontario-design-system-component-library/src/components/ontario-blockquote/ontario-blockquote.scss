@@ -2,14 +2,14 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables' as lineHeights;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
 
 .ontario-blockquote {
 	border-left: 4px solid colours.$ontario-greyscale-70;
-	font-family: typography.$ontario-font-raleway-modified;
+	font-family: fonts.$ontario-font-raleway;
 	font-size: globalFunctions.px-to-rem(19);
 	font-weight: fontWeights.$ontario-font-weights-normal;
 	letter-spacing: 0.025rem;
@@ -17,7 +17,7 @@
 	max-width: globalVariables.$standard-width;
 	margin: spacing.$spacing-6;
 	padding: spacing.$spacing-5 0 spacing.$spacing-5 spacing.$spacing-5;
-	quotes: '\201C''\201D';
+	quotes: '\201C' '\201D';
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		font-size: globalFunctions.px-to-rem(18);

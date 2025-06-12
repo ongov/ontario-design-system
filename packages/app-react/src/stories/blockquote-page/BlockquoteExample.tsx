@@ -14,7 +14,14 @@ export default function ButtonExample() {
 
 				<div className="ontario-margin-top-24-!">
 					<h3 className="ontario-h4">Long blockquote:</h3>
-					<OntarioBlockquote attribution="Academic partners" byline="Ontario’s Pedagogy for the Early Years">
+					<OntarioBlockquote
+						attribution="Academic partners"
+						byline="Ontario’s Pedagogy for the Early Years"
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+						placeholder=""
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
+					>
 						In the past few years, Ontario has gained a high level of respect for its visionary work in early education.
 						The changes have been profound, and thoughtfully introduced. The views that guide the work are articulated
 						clearly, and express great respect for children, families, and educators. We now have a solid foundation
@@ -29,6 +36,10 @@ export default function ButtonExample() {
 				<div className="ontario-margin-top-64-!">
 					<h3 className="ontario-h4">Short blockquote:</h3>
 					<OntarioBlockquote
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
+						placeholder=""
+						onPointerEnterCapture={() => {}}
+						onPointerLeaveCapture={() => {}}
 						attribution="Survey respondent"
 						quote="Access to high-quality child care is an issue that impacts our entire society."
 					></OntarioBlockquote>

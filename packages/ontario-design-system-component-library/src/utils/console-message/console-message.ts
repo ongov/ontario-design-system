@@ -47,7 +47,7 @@ export function printConsoleMessage(
 			: messages?.reduce(
 					(message: string, currentObject: ConsoleMessage) => (message += addSpecifier(currentObject.message) ?? ''),
 					hasDesignSystemTag ? addSpecifier(designSystemTag) : '',
-			  );
+				);
 
 	// array of arguments to be passed into the the console function
 	const messageArray: string[] = [];
