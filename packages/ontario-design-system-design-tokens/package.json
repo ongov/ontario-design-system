@@ -20,7 +20,7 @@
 	},
 	"devDependencies": {
 		"@types/node": "^22.10.10",
-		"style-dictionary": "^4.3.0"
+		"style-dictionary": "^5.0.0"
 	},
 	"publishConfig": {
 		"access": "public"
