@@ -123,13 +123,13 @@ importers:
         specifier: ^7.0.0
         version: 7.0.0(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@ngx-translate/core@14.0.0(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(rxjs@7.8.1)
       '@ongov/ontario-design-system-component-library-angular':
-        specifier: ^5.0.0-alpha.10
+        specifier: ^5.0.0
         version: link:../ontario-design-system-component-library-angular
       '@ongov/ontario-design-system-design-tokens':
-        specifier: ^5.0.0-alpha.6
+        specifier: ^5.0.0
         version: link:../ontario-design-system-design-tokens
       '@ongov/ontario-design-system-global-styles':
-        specifier: ^5.0.0-alpha.10
+        specifier: ^5.0.0
         version: link:../ontario-design-system-global-styles
       '@uirouter/angular':
         specifier: ^11.1.0
@@ -187,13 +187,13 @@ importers:
   packages/app-react:
     dependencies:
       '@ongov/ontario-design-system-component-library-react':
-        specifier: ^5.0.0-alpha.10
+        specifier: ^5.0.0
         version: link:../ontario-design-system-component-library-react
       '@ongov/ontario-design-system-design-tokens':
-        specifier: ^5.0.0-alpha.6
+        specifier: ^5.0.0
         version: link:../ontario-design-system-design-tokens
       '@ongov/ontario-design-system-global-styles':
-        specifier: 5.0.0-alpha.10
+        specifier: 5.0.0
         version: link:../ontario-design-system-global-styles
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -272,7 +272,7 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(@types/react@19.0.8)(react@18.3.1)
       '@ongov/ontario-design-system-component-library-react':
-        specifier: ^5.0.0-alpha.10
+        specifier: ^5.0.0
         version: link:../ontario-design-system-component-library-react
       clsx:
         specifier: ^2.0.0
@@ -303,13 +303,13 @@ importers:
   packages/ontario-design-system-complete-styles:
     dependencies:
       '@ongov/ontario-design-system-component-library':
-        specifier: 5.0.0-alpha.10
+        specifier: 5.0.0
         version: link:../ontario-design-system-component-library
       '@ongov/ontario-design-system-design-tokens':
-        specifier: 5.0.0-alpha.6
+        specifier: 5.0.0
         version: link:../ontario-design-system-design-tokens
       '@ongov/ontario-design-system-global-styles':
-        specifier: 5.0.0-alpha.10
+        specifier: 5.0.0
         version: link:../ontario-design-system-global-styles
     devDependencies:
       glob:
@@ -349,7 +349,7 @@ importers:
   packages/ontario-design-system-component-library:
     dependencies:
       '@ongov/ontario-design-system-global-styles':
-        specifier: 5.0.0-alpha.10
+        specifier: 5.0.0
         version: link:../ontario-design-system-global-styles
       '@stencil/core':
         specifier: ^4.33.1
@@ -470,10 +470,10 @@ importers:
         specifier: ^18.2.11
         version: 18.2.13(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.13(@angular/animations@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1)
       '@ongov/ontario-design-system-component-library':
-        specifier: 5.0.0-alpha.10
+        specifier: 5.0.0
         version: link:../ontario-design-system-component-library
       '@ongov/ontario-design-system-global-styles':
-        specifier: 5.0.0-alpha.10
+        specifier: 5.0.0
         version: link:../ontario-design-system-global-styles
       copyfiles:
         specifier: ^2.4.1
@@ -519,7 +519,7 @@ importers:
   packages/ontario-design-system-component-library-react:
     dependencies:
       '@ongov/ontario-design-system-component-library':
-        specifier: 5.0.0-alpha.10
+        specifier: 5.0.0
         version: link:../ontario-design-system-component-library
       '@stencil/react-output-target':
         specifier: ^0.7.4
@@ -571,7 +571,7 @@ importers:
   packages/ontario-design-system-global-styles:
     devDependencies:
       '@ongov/ontario-design-system-design-tokens':
-        specifier: 5.0.0-alpha.6
+        specifier: 5.0.0
         version: link:../ontario-design-system-design-tokens
       gulp:
         specifier: ^5.0.0
@@ -17176,7 +17176,7 @@ snapshots:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.1802.12(chokidar@3.6.0)
-      '@angular-devkit/build-webpack': 0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0(esbuild@0.23.0)))(webpack@5.94.0(esbuild@0.23.0))
+      '@angular-devkit/build-webpack': 0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0)
       '@angular-devkit/core': 18.2.12(chokidar@3.6.0)
       '@angular/build': 18.2.12(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.3))(@types/node@22.10.10)(chokidar@3.6.0)(less@4.2.0)(postcss@8.4.41)(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.10.10)(typescript@5.5.3)))(terser@5.31.6)(typescript@5.5.3)
       '@angular/compiler-cli': 18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.3)
@@ -17234,8 +17234,8 @@ snapshots:
       vite: 5.4.6(@types/node@22.10.10)(less@4.2.0)(sass@1.77.6)(terser@5.31.6)
       watchpack: 2.4.1
       webpack: 5.94.0(esbuild@0.23.0)
-      webpack-dev-middleware: 7.4.2(webpack@5.94.0(esbuild@0.23.0))
-      webpack-dev-server: 5.0.4(webpack@5.94.0(esbuild@0.23.0))
+      webpack-dev-middleware: 7.4.2(webpack@5.94.0)
+      webpack-dev-server: 5.0.4(webpack@5.94.0)
       webpack-merge: 6.0.1
       webpack-subresource-integrity: 5.1.0(html-webpack-plugin@5.6.3(webpack@5.94.0))(webpack@5.94.0)
     optionalDependencies:
@@ -17266,7 +17266,7 @@ snapshots:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.1802.12(chokidar@3.6.0)
-      '@angular-devkit/build-webpack': 0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0(esbuild@0.23.0)))(webpack@5.94.0(esbuild@0.23.0))
+      '@angular-devkit/build-webpack': 0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0)
       '@angular-devkit/core': 18.2.12(chokidar@3.6.0)
       '@angular/build': 18.2.12(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.3))(@types/node@22.10.10)(chokidar@3.6.0)(less@4.2.0)(postcss@8.4.41)(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.10.10)(typescript@5.5.3)))(terser@5.31.6)(typescript@5.5.3)
       '@angular/compiler-cli': 18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.3)
@@ -17324,8 +17324,8 @@ snapshots:
       vite: 5.4.6(@types/node@22.10.10)(less@4.2.0)(sass@1.77.6)(terser@5.31.6)
       watchpack: 2.4.1
       webpack: 5.94.0(esbuild@0.23.0)
-      webpack-dev-middleware: 7.4.2(webpack@5.94.0(esbuild@0.23.0))
-      webpack-dev-server: 5.0.4(webpack@5.94.0(esbuild@0.23.0))
+      webpack-dev-middleware: 7.4.2(webpack@5.94.0)
+      webpack-dev-server: 5.0.4(webpack@5.94.0)
       webpack-merge: 6.0.1
       webpack-subresource-integrity: 5.1.0(html-webpack-plugin@5.6.3(webpack@5.97.1))(webpack@5.94.0(esbuild@0.23.0))
     optionalDependencies:
@@ -17352,12 +17352,12 @@ snapshots:
       - utf-8-validate
       - webpack-cli
 
-  '@angular-devkit/build-webpack@0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0(esbuild@0.23.0)))(webpack@5.94.0(esbuild@0.23.0))':
+  '@angular-devkit/build-webpack@0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0)':
     dependencies:
       '@angular-devkit/architect': 0.1802.12(chokidar@3.6.0)
       rxjs: 7.8.1
       webpack: 5.94.0(esbuild@0.23.0)
-      webpack-dev-server: 5.0.4(webpack@5.94.0(esbuild@0.23.0))
+      webpack-dev-server: 5.0.4(webpack@5.94.0)
     transitivePeerDependencies:
       - chokidar
 
@@ -34121,7 +34121,7 @@ snapshots:
       schema-utils: 4.3.0
       webpack: 5.97.1
 
-  webpack-dev-middleware@7.4.2(webpack@5.94.0(esbuild@0.23.0)):
+  webpack-dev-middleware@7.4.2(webpack@5.94.0):
     dependencies:
       colorette: 2.0.20
       memfs: 4.17.0
@@ -34172,7 +34172,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  webpack-dev-server@5.0.4(webpack@5.94.0(esbuild@0.23.0)):
+  webpack-dev-server@5.0.4(webpack@5.94.0):
     dependencies:
       '@types/bonjour': 3.5.13
       '@types/connect-history-api-fallback': 1.5.4
@@ -34202,7 +34202,7 @@ snapshots:
       serve-index: 1.9.1
       sockjs: 0.3.24
       spdy: 4.0.2
-      webpack-dev-middleware: 7.4.2(webpack@5.94.0(esbuild@0.23.0))
+      webpack-dev-middleware: 7.4.2(webpack@5.94.0)
       ws: 8.18.0
     optionalDependencies:
       webpack: 5.94.0(esbuild@0.23.0)
