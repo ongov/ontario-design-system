@@ -35,9 +35,9 @@
 		"react-dom": "^18.3.1"
 	},
 	"devDependencies": {
-		"@docusaurus/module-type-aliases": "3.5.0",
-		"@docusaurus/tsconfig": "3.5.0",
-		"@docusaurus/types": "3.5.0"
+		"@docusaurus/module-type-aliases": "3.8.1",
+		"@docusaurus/tsconfig": "3.8.1",
+		"@docusaurus/types": "3.8.1"
 	},
 	"browserslist": {
 		"production": [
