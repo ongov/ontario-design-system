@@ -42,7 +42,7 @@ This is another example of a badge. This time, the content is passed as a child 
 	</OntarioBadge>
 </div>
 
-## Technical Note: Content Rendering and SSR (Server-Side Rendering)
+## Technical Note: SSR (Server-Side Rendering) Considerations
 
 The Ontario Badge component supports two ways of defining labels:
 
@@ -51,13 +51,13 @@ The Ontario Badge component supports two ways of defining labels:
 
 While both approaches work in the browser, only the `label` prop is reliably rendered during Server-Side Rendering (SSR).
 
-> **Recommended for SSR:**
->
-> During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the badge label through the `label` prop.
->
-> ```html
-> <ontario-badge label="In progress"></ontario-badge>
-> ```
+### SSR-safe example:
+
+During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the badge label through the `label` prop.
+
+```html
+<ontario-badge label="In progress"></ontario-badge>
+```
 
 <!-- Auto Generated Below -->
 
