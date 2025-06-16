@@ -284,7 +284,7 @@ visible when the hint expander title (hint) is toggled" }'
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Radio Buttons component supports server-side rendering, with a few considerations:
+The Ontario Radio Button component supports server-side rendering, with a few considerations:
 
 - **Language Prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-radio-buttons language="fr"></ontario-radio-buttons>`).
 - **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Ensure this does not impact critical accessibility paths.

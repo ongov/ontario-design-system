@@ -60,7 +60,7 @@ The Ontario Task component is SSR-compatible and renders predictably during hydr
 - **Always pass a valid `taskStatus` prop**. Invalid values will default to 'NotStarted' at runtime.
 - **Language Prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-task language="fr"></ontario-task>`).
 
-### **SSR-safe example:**
+### SSR-safe example:
 
 ```html
 <ontario-task
