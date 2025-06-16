@@ -235,7 +235,7 @@ The Ontario Input component supports server-side rendering, with a few considera
 - **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Ensure this does not impact critical accessibility paths.
 - **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR (before hydration), the component will render as a standard `<input>`, meaning it can still function inside a `<form>` and be submitted normally. However, enhanced form behavior (like validation or custom value handling) only becomes active after hydration in the browser.
 
-### **SSR-safe example:**
+### SSR-safe example:
 
 ```html
 <ontario-input name="firstName" language="en" element-id="first-name"></ontario-input>

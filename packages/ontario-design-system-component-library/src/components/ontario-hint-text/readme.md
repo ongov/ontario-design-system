@@ -46,13 +46,13 @@ The Ontario Hint component supports two ways of defining hints:
 
 While both approaches work in the browser, only the `hint` prop is reliably rendered during Server-Side Rendering (SSR).
 
-> **Recommended for SSR:**
->
-> During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the hint through the `hint` prop. Eg:
->
-> ```html
-> <ontario-hint hint="Provide a detailed street address."></ontario-hint>
-> ```
+### SSR-safe example:
+
+During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the hint through the `hint` prop. Eg:
+
+```html
+<ontario-hint hint="Provide a detailed street address."></ontario-hint>
+```
 
 <!-- Auto Generated Below -->
 

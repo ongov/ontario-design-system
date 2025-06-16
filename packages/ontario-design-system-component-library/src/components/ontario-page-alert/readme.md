@@ -59,13 +59,13 @@ The Ontario Page Alert component supports two ways of defining content:
 
 While both approaches work in the browser, only the `content` prop is reliably rendered during Server-Side Rendering (SSR).
 
-> **Recommended for SSR:**
->
-> During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the page alert content through the `content` prop, when possible. Eg:
->
-> ```html
-> <ontario-page-alert type="error" heading="Submission failed" content="Please try again."></ontario-page-alert>
-> ```
+### SSR-safe example:
+
+During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the page alert content through the `content` prop, when possible. Eg:
+
+```html
+<ontario-page-alert type="error" heading="Submission failed" content="Please try again."></ontario-page-alert>
+```
 
 <!-- Auto Generated Below -->
 
