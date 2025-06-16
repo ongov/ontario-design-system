@@ -298,10 +298,22 @@ export class OntarioDropdownList implements Dropdown {
 	@Watch('options')
 	parseOptions() {
 		if (typeof this.options !== 'undefined') {
-			if (!Array.isArray(this.options)) {
-				this.internalOptions = JSON.parse(this.options);
-			} else {
-				this.internalOptions = this.options;
+			try {
+				if (!Array.isArray(this.options)) {
+					this.internalOptions = JSON.parse(this.options);
+				} else {
+					this.internalOptions = this.options;
+				}
+			} catch {
+				const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' options ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-dropdown-list> ')
+					.addRegularText('was not provided in the correct format')
+					.printMessage();
+				this.internalOptions = [];
 			}
 		}
 
@@ -356,9 +368,20 @@ export class OntarioDropdownList implements Dropdown {
 	@Watch('hintExpander')
 	private parseHintExpander() {
 		const hintExpander = this.hintExpander;
-		if (hintExpander) {
-			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
-			else this.internalHintExpander = hintExpander;
+		try {
+			if (hintExpander) {
+				if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
+				else this.internalHintExpander = hintExpander;
+			}
+		} catch {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' hintExpander ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-dropdown-list> ')
+				.addRegularText('was not provided in the correct format')
+				.printMessage();
 		}
 	}
 

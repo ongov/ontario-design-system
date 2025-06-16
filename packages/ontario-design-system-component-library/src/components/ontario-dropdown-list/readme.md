@@ -333,6 +333,29 @@ options='[ { "value": "netflix", "label": "Netflix" }, { "value": "disney-plus",
 - A `name` attribute needs to be set to be submitted to the server when the form is submitted.
 - Do not add any customized styles to dropdown lists - the browser's default is the most accessible.
 
+## Technical Note: SSR (Server-Side Rendering) Considerations
+
+The Ontario Dropdown List component supports full server-side rendering, with a few considerations:
+
+- **Language Prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-dropdown-list language="fr"></ontario-dropdown-list>`).
+- **Dynamic ID generation:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, you should explicitly pass a stable `elementId`.
+- **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Ensure this does not impact critical accessibility paths.
+- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR (before hydration), the component will render as a standard `<select>`, meaning it can still function inside a `<form>` and be submitted normally. However, enhanced form behavior (like validation or custom value handling) only becomes active after hydration in the browser.
+
+### SSR-safe example:
+
+```html
+<ontario-dropdown-list
+	name="province"
+	element-id="province"
+	language="en"
+	caption='{"captionText": "Select your province", "captionType": "heading"}'
+	options='[{"label":"Ontario", "value":"on"}, {"label":"Quebec", "value":"qc"}]'
+	is-empty-start-option="Select a province"
+>
+</ontario-dropdown-list>
+```
+
 <!-- Auto Generated Below -->
 
 ## Properties
