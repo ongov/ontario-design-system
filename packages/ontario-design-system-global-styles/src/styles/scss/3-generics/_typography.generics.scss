@@ -10,8 +10,9 @@
 		assetHelperFunctions.getFontUrl('courier-prime-400/courier-prime-400.woff2') format('woff2'),
 		assetHelperFunctions.getFontUrl('courier-prime-400/courier-prime-400.otf') format('opentype'),
 		assetHelperFunctions.getFontUrl('courier-prime-400/courier-prime-400.ttf') format('truetype'),
+		local('Courier Prime Regular'),
 		local('Courier Prime'),
-		local('Courier-prime-regular');
+		local('CourierPrime-Regular');
 }
 
 @font-face {
@@ -24,7 +25,8 @@
 		assetHelperFunctions.getFontUrl('courier-prime-400--italic/courier-prime-400--italic.otf') format('opentype'),
 		assetHelperFunctions.getFontUrl('courier-prime-400--italic/courier-prime-400--italic.ttf') format('truetype'),
 		local('Courier Prime Italic'),
-		local('Courier-prime-italic');
+		local('Courier Prime'),
+		local('CourierPrime-Italic');
 }
 
 @font-face {
@@ -37,7 +39,8 @@
 		assetHelperFunctions.getFontUrl('courier-prime-700/courier-prime-700.otf') format('opentype'),
 		assetHelperFunctions.getFontUrl('courier-prime-700/courier-prime-700.ttf') format('truetype'),
 		local('Courier Prime Bold'),
-		local('Courier-prime-bold');
+		local('Courier Prime'),
+		local('CourierPrime-Bold');
 }
 
 @font-face {
@@ -50,7 +53,8 @@
 		assetHelperFunctions.getFontUrl('courier-prime-700--italic/courier-prime-700--italic.otf') format('opentype'),
 		assetHelperFunctions.getFontUrl('courier-prime-700--italic/courier-prime-700--italic.ttf') format('truetype'),
 		local('Courier Prime Bold Italic'),
-		local('Courier-prime-bold-italic');
+		local('Courier Prime'),
+		local('CourierPrime-BoldItalic');
 }
 
 @font-face {
@@ -63,7 +67,8 @@
 		assetHelperFunctions.getFontUrl('open-sans-300/open-sans-300.otf') format('opentype'),
 		assetHelperFunctions.getFontUrl('open-sans-300/open-sans-300.ttf') format('truetype'),
 		local('Open Sans Light'),
-		local('Open-Sans-300');
+		local('Open Sans Light'),
+		local('OpenSans-Light');
 }
 
 @font-face {
@@ -76,7 +81,8 @@
 		assetHelperFunctions.getFontUrl('open-sans-300--italic/open-sans-300--italic.otf') format('opentype'),
 		assetHelperFunctions.getFontUrl('open-sans-300--italic/open-sans-300--italic.ttf') format('truetype'),
 		local('Open Sans Light Italic'),
-		local('Open-Sans-300-italic');
+		local('Open Sans Light'),
+		local('OpenSans-LightItalic');
 }
 
 @font-face {
@@ -88,21 +94,9 @@
 		assetHelperFunctions.getFontUrl('open-sans-400/open-sans-400.woff2') format('woff2'),
 		assetHelperFunctions.getFontUrl('open-sans-400/open-sans-400.otf') format('opentype'),
 		assetHelperFunctions.getFontUrl('open-sans-400/open-sans-400.ttf') format('truetype'),
+		local('Open Sans Regular'),
 		local('Open Sans'),
-		local('Open-Sans-regular');
-}
-
-@font-face {
-	font-family: 'Open Sans';
-	font-weight: fontWeights.$ontario-font-weights-semi-bold;
-	font-style: normal;
-	font-display: swap;
-	src:
-		assetHelperFunctions.getFontUrl('open-sans-600/open-sans-600.woff2') format('woff2'),
-		assetHelperFunctions.getFontUrl('open-sans-600/open-sans-600.otf') format('opentype'),
-		assetHelperFunctions.getFontUrl('open-sans-600/open-sans-600.ttf') format('truetype'),
-		local('Open Sans Semibold'),
-		local('Open-Sans-600');
+		local('OpenSans-Regular');
 }
 
 @font-face {
@@ -115,19 +109,78 @@
 		assetHelperFunctions.getFontUrl('open-sans-400--italic/open-sans-400--italic.otf') format('opentype'),
 		assetHelperFunctions.getFontUrl('open-sans-400--italic/open-sans-400--italic.ttf') format('truetype'),
 		local('Open Sans Italic'),
-		local('Open-Sans-italic');
+		local('Open Sans'),
+		local('OpenSans-Italic');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-weight: fontWeights.$ontario-font-weights-medium;
+	font-style: normal;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('open-sans-500/open-sans-500.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('open-sans-500/open-sans-500.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('open-sans-500/open-sans-500.ttf') format('truetype'),
+		local('Open Sans Medium'),
+		local('Open Sans Medium'),
+		local('OpenSans-Medium');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-weight: fontWeights.$ontario-font-weights-medium;
+	font-style: italic;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('open-sans-500--italic/open-sans-500--italic.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('open-sans-500--italic/open-sans-500--italic.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('open-sans-500--italic/open-sans-500--italic.ttf') format('truetype'),
+		local('Open Sans Medium Italic'),
+		local('Open Sans Medium'),
+		local('OpenSans-MediumItalic');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	font-style: normal;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('open-sans-600/open-sans-600.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('open-sans-600/open-sans-600.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('open-sans-600/open-sans-600.ttf') format('truetype'),
+		local('Open Sans SemiBold'),
+		local('Open Sans SemiBold'),
+		local('OpenSans-SemiBold');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	font-style: italic;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('open-sans-600--italic/open-sans-600--italic.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('open-sans-600--italic/open-sans-600--italic.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('open-sans-600--italic/open-sans-600--italic.ttf') format('truetype'),
+		local('Open Sans SemiBold Italic'),
+		local('Open Sans SemiBold'),
+		local('OpenSans-SemiBoldItalic');
 }
 
 @font-face {
 	font-family: 'Open Sans';
 	font-weight: fontWeights.$ontario-font-weights-bold;
+	font-style: normal;
 	font-display: swap;
 	src:
 		assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.woff2') format('woff2'),
 		assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.otf') format('opentype'),
 		assetHelperFunctions.getFontUrl('open-sans-700/open-sans-700.ttf') format('truetype'),
 		local('Open Sans Bold'),
-		local('Open-Sans-700');
+		local('Open Sans'),
+		local('OpenSans-Bold');
 }
 
 @font-face {
@@ -140,11 +193,96 @@
 		assetHelperFunctions.getFontUrl('open-sans-700--italic/open-sans-700--italic.otf') format('opentype'),
 		assetHelperFunctions.getFontUrl('open-sans-700--italic/open-sans-700--italic.ttf') format('truetype'),
 		local('Open Sans Bold Italic'),
-		local('Open-Sans-bold-italic');
+		local('Open Sans'),
+		local('OpenSans-BoldItalic');
 }
 
 @font-face {
-	font-family: 'Raleway';
+	font-family: 'Open Sans';
+	font-weight: fontWeights.$ontario-font-weights-extra-bold;
+	font-style: normal;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('open-sans-800/open-sans-800.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('open-sans-800/open-sans-800.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('open-sans-800/open-sans-800.ttf') format('truetype'),
+		local('Open Sans ExtraBold'),
+		local('Open Sans ExtraBold'),
+		local('OpenSans-ExtraBold');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-weight: fontWeights.$ontario-font-weights-extra-bold;
+	font-style: italic;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('open-sans-800--italic/open-sans-800--italic.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('open-sans-800--italic/open-sans-800--italic.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('open-sans-800--italic/open-sans-800--italic.ttf') format('truetype'),
+		local('Open Sans ExtraBold Italic'),
+		local('Open Sans ExtraBold'),
+		local('OpenSans-ExtraBoldItalic');
+}
+
+@font-face {
+	font-family: 'Raleway Modified';
+	font-weight: fontWeights.$ontario-font-weights-thin;
+	font-style: normal;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('raleway-modified-100/raleway-modified-100.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('raleway-modified-100/raleway-modified-100.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('raleway-modified-100/raleway-modified-100.ttf') format('truetype'),
+		local('Raleway Modified Thin'),
+		local('Raleway Modified'),
+		local('RalewayModified-Thin');
+}
+
+@font-face {
+	font-family: 'Raleway Modified';
+	font-weight: fontWeights.$ontario-font-weights-thin;
+	font-style: italic;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('raleway-modified-100--italic/raleway-modified-100--italic.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('raleway-modified-100--italic/raleway-modified-100--italic.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('raleway-modified-100--italic/raleway-modified-100--italic.ttf') format('truetype'),
+		local('Raleway Modified Thin Italic'),
+		local('Raleway Modified'),
+		local('RalewayModified-ThinItalic');
+}
+
+@font-face {
+	font-family: 'Raleway Modified';
+	font-weight: fontWeights.$ontario-font-weights-extra-light;
+	font-style: normal;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('raleway-modified-200/raleway-modified-200.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('raleway-modified-200/raleway-modified-200.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('raleway-modified-200/raleway-modified-200.ttf') format('truetype'),
+		local('Raleway Modified ExtraLight'),
+		local('Raleway Modified'),
+		local('RalewayModified-ExtraLight');
+}
+
+@font-face {
+	font-family: 'Raleway Modified';
+	font-weight: fontWeights.$ontario-font-weights-extra-light;
+	font-style: italic;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('raleway-modified-200--italic/raleway-modified-200--italic.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('raleway-modified-200--italic/raleway-modified-200--italic.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('raleway-modified-200--italic/raleway-modified-200--italic.ttf') format('truetype'),
+		local('Raleway Modified ExtraLight Italic'),
+		local('Raleway Modified'),
+		local('RalewayModified-ExtraLightItalic');
+}
+
+@font-face {
+	font-family: 'Raleway Modified';
 	font-weight: fontWeights.$ontario-font-weights-light;
 	font-style: normal;
 	font-display: swap;
@@ -152,12 +290,13 @@
 		assetHelperFunctions.getFontUrl('raleway-modified-300/raleway-modified-300.woff2') format('woff2'),
 		assetHelperFunctions.getFontUrl('raleway-modified-300/raleway-modified-300.otf') format('opentype'),
 		assetHelperFunctions.getFontUrl('raleway-modified-300/raleway-modified-300.ttf') format('truetype'),
-		local('Raleway Light'),
-		local('Raleway-300');
+		local('Raleway Modified Light'),
+		local('Raleway Modified'),
+		local('RalewayModified-Light');
 }
 
 @font-face {
-	font-family: 'Raleway';
+	font-family: 'Raleway Modified';
 	font-weight: fontWeights.$ontario-font-weights-light;
 	font-style: italic;
 	font-display: swap;
@@ -165,12 +304,13 @@
 		assetHelperFunctions.getFontUrl('raleway-modified-300--italic/raleway-modified-300--italic.woff2') format('woff2'),
 		assetHelperFunctions.getFontUrl('raleway-modified-300--italic/raleway-modified-300--italic.otf') format('opentype'),
 		assetHelperFunctions.getFontUrl('raleway-modified-300--italic/raleway-modified-300--italic.ttf') format('truetype'),
-		local('Raleway Light Italic'),
-		local('Raleway-300-italic');
+		local('Raleway Modified Light Italic'),
+		local('Raleway Modified'),
+		local('RalewayModified-LightItalic');
 }
 
 @font-face {
-	font-family: 'Raleway';
+	font-family: 'Raleway Modified';
 	font-weight: fontWeights.$ontario-font-weights-normal;
 	font-style: normal;
 	font-display: swap;
@@ -178,12 +318,55 @@
 		assetHelperFunctions.getFontUrl('raleway-modified-400/raleway-modified-400.woff2') format('woff2'),
 		assetHelperFunctions.getFontUrl('raleway-modified-400/raleway-modified-400.otf') format('opentype'),
 		assetHelperFunctions.getFontUrl('raleway-modified-400/raleway-modified-400.ttf') format('truetype'),
-		local('Raleway'),
-		local('Raleway-400');
+		local('Raleway Modified Regular'),
+		local('Raleway Modified'),
+		local('RalewayModified-Regular');
 }
 
 @font-face {
-	font-family: 'Raleway';
+	font-family: 'Raleway Modified';
+	font-weight: fontWeights.$ontario-font-weights-normal;
+	font-style: italic;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('raleway-modified-400--italic/raleway-modified-400--italic.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('raleway-modified-400--italic/raleway-modified-400--italic.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('raleway-modified-400--italic/raleway-modified-400--italic.ttf') format('truetype'),
+		local('Raleway Modified Italic'),
+		local('Raleway Modified'),
+		local('RalewayModified-Italic');
+}
+
+@font-face {
+	font-family: 'Raleway Modified';
+	font-weight: fontWeights.$ontario-font-weights-medium;
+	font-style: normal;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('raleway-modified-500/raleway-modified-500.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('raleway-modified-500/raleway-modified-500.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('raleway-modified-500/raleway-modified-500.ttf') format('truetype'),
+		local('Raleway Modified Medium'),
+		local('Raleway Modified'),
+		local('RalewayModified-Medium');
+}
+
+@font-face {
+	font-family: 'Raleway Modified';
+	font-weight: fontWeights.$ontario-font-weights-medium;
+	font-style: italic;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('raleway-modified-500--italic/raleway-modified-500--italic.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('raleway-modified-500--italic/raleway-modified-500--italic.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('raleway-modified-500--italic/raleway-modified-500--italic.ttf') format('truetype'),
+		local('Raleway Modified Medium Italic'),
+		local('Raleway Modified'),
+		local('RalewayModified-MediumItalic');
+}
+
+@font-face {
+	font-family: 'Raleway Modified';
 	font-weight: fontWeights.$ontario-font-weights-semi-bold;
 	font-style: normal;
 	font-display: swap;
@@ -191,12 +374,27 @@
 		assetHelperFunctions.getFontUrl('raleway-modified-600/raleway-modified-600.woff2') format('woff2'),
 		assetHelperFunctions.getFontUrl('raleway-modified-600/raleway-modified-600.otf') format('opentype'),
 		assetHelperFunctions.getFontUrl('raleway-modified-600/raleway-modified-600.ttf') format('truetype'),
-		local('Raleway SemiBold'),
-		local('Raleway-600');
+		local('Raleway Modified SemiBold'),
+		local('Raleway Modified'),
+		local('RalewayModified-SemiBold');
 }
 
 @font-face {
-	font-family: 'Raleway';
+	font-family: 'Raleway Modified';
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	font-style: italic;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('raleway-modified-600--italic/raleway-modified-600--italic.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('raleway-modified-600--italic/raleway-modified-600--italic.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('raleway-modified-600--italic/raleway-modified-600--italic.ttf') format('truetype'),
+		local('Raleway Modified SemiBold Italic'),
+		local('Raleway Modified'),
+		local('RalewayModified-SemiBoldItalic');
+}
+
+@font-face {
+	font-family: 'Raleway Modified';
 	font-weight: fontWeights.$ontario-font-weights-bold;
 	font-style: normal;
 	font-display: swap;
@@ -204,6 +402,77 @@
 		assetHelperFunctions.getFontUrl('raleway-modified-700/raleway-modified-700.woff2') format('woff2'),
 		assetHelperFunctions.getFontUrl('raleway-modified-700/raleway-modified-700.otf') format('opentype'),
 		assetHelperFunctions.getFontUrl('raleway-modified-700/raleway-modified-700.ttf') format('truetype'),
-		local('Raleway Bold'),
-		local('Raleway-700');
+		local('Raleway Modified Bold'),
+		local('Raleway Modified'),
+		local('RalewayModified-Bold');
+}
+
+@font-face {
+	font-family: 'Raleway Modified';
+	font-weight: fontWeights.$ontario-font-weights-bold;
+	font-style: italic;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('raleway-modified-700--italic/raleway-modified-700--italic.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('raleway-modified-700--italic/raleway-modified-700--italic.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('raleway-modified-700--italic/raleway-modified-700--italic.ttf') format('truetype'),
+		local('Raleway Modified Bold Italic'),
+		local('Raleway Modified'),
+		local('RalewayModified-BoldItalic');
+}
+
+@font-face {
+	font-family: 'Raleway Modified';
+	font-weight: fontWeights.$ontario-font-weights-extra-bold;
+	font-style: normal;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('raleway-modified-800/raleway-modified-800.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('raleway-modified-800/raleway-modified-800.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('raleway-modified-800/raleway-modified-800.ttf') format('truetype'),
+		local('Raleway Modified ExtraBold'),
+		local('Raleway Modified'),
+		local('RalewayModified-ExtraBold');
+}
+
+@font-face {
+	font-family: 'Raleway Modified';
+	font-weight: fontWeights.$ontario-font-weights-extra-bold;
+	font-style: italic;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('raleway-modified-800--italic/raleway-modified-800--italic.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('raleway-modified-800--italic/raleway-modified-800--italic.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('raleway-modified-800--italic/raleway-modified-800--italic.ttf') format('truetype'),
+		local('Raleway Modified ExtraBold Italic'),
+		local('Raleway Modified'),
+		local('RalewayModified-ExtraBoldItalic');
+}
+
+@font-face {
+	font-family: 'Raleway Modified';
+	font-weight: fontWeights.$ontario-font-weights-black;
+	font-style: normal;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('raleway-modified-900/raleway-modified-900.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('raleway-modified-900/raleway-modified-900.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('raleway-modified-900/raleway-modified-900.ttf') format('truetype'),
+		local('Raleway Modified Black'),
+		local('Raleway Modified'),
+		local('RalewayModified-Black');
+}
+
+@font-face {
+	font-family: 'Raleway Modified';
+	font-weight: fontWeights.$ontario-font-weights-black;
+	font-style: italic;
+	font-display: swap;
+	src:
+		assetHelperFunctions.getFontUrl('raleway-modified-900--italic/raleway-modified-900--italic.woff2') format('woff2'),
+		assetHelperFunctions.getFontUrl('raleway-modified-900--italic/raleway-modified-900--italic.otf') format('opentype'),
+		assetHelperFunctions.getFontUrl('raleway-modified-900--italic/raleway-modified-900--italic.ttf') format('truetype'),
+		local('Raleway Modified Black Italic'),
+		local('Raleway Modified'),
+		local('RalewayModified-BlackItalic');
 }
