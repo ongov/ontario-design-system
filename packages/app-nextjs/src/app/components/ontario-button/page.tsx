@@ -7,10 +7,18 @@ export default function OntarioButtonPage() {
 			<Grid>
 				<h1>ontario-button</h1>
 
-				<h2>"type" Prop Variants</h2>
-				<OntarioButton type="primary" label="Primary Button"></OntarioButton>
-				<OntarioButton type="secondary" label="Secondary Button"></OntarioButton>
-				<OntarioButton type="tertiary" label="Tertiary Button"></OntarioButton>
+				<div>
+					<h2>"type" Prop Variants</h2>
+
+					<h3>Primary</h3>
+					<OntarioButton type="primary" label="Primary Button"></OntarioButton>
+
+					<h3>Secondary</h3>
+					<OntarioButton type="secondary" label="Secondary Button"></OntarioButton>
+
+					<h3>Tertiary</h3>
+					<OntarioButton type="tertiary" label="Tertiary Button"></OntarioButton>
+				</div>
 			</Grid>
 		</main>
 	);
