@@ -7,48 +7,67 @@ export default function OntarioAccordionPage() {
 			<Grid>
 				<h1>ontario-accordion</h1>
 
-				<h2>"accordion" Prop Variants</h2>
-
+				<h2>"Name" Prop variant</h2>
 				<h3>Name</h3>
 				<OntarioAccordion
 					name="My Accordion"
-					expand-collapse-button='{
-							"expandAllSectionsLabel": "Expand All",
-							"collapseAllSectionsLabel": "Collapse All"
-						}'
-					accordion-data='[
-							{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
-							{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
-						]'
-				></OntarioAccordion>
+					expandCollapseButton={{
+						expandAllSectionsLabel: 'Expand All',
+						collapseAllSectionsLabel: 'Collapse All',
+					}}
+					accordionData={[
+						{
+							label: 'Accordion 1',
+							content: ['Item 1', 'Item 2', 'Item 3'],
+						},
+						{
+							label: 'Accordion 2',
+							content: ['Item A', 'Item B', 'Item C'],
+						},
+					]}
+				/>
+
+				<h2>"isOpen" variant</h2>
 
 				<h3>Open Accordion</h3>
 				<OntarioAccordion
-					name="My Accordion"
+					name="Accordion 2"
 					isOpen={true}
-					expand-collapse-button='{
-							"expandAllSectionsLabel": "Expand All",
-							"collapseAllSectionsLabel": "Collapse All"
-						}'
-					accordion-data='[
-							{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
-							{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
-						]'
-				></OntarioAccordion>
+					expandCollapseButton={{
+						expandAllSectionsLabel: 'Expand All',
+						collapseAllSectionsLabel: 'Collapse All',
+					}}
+					accordionData={[
+						{
+							label: 'Accordion 1',
+							content: ['Item 1', 'Item 2', 'Item 3'],
+						},
+						{
+							label: 'Accordion 2',
+							content: ['Item A', 'Item B', 'Item C'],
+						},
+					]}
+				/>
 
 				<h3>Closed Accordion</h3>
 				<OntarioAccordion
-					name="My Accordion"
+					name="Accordion 3"
 					isOpen={false}
-					expand-collapse-button='{
-							"expandAllSectionsLabel": "Expand All",
-							"collapseAllSectionsLabel": "Collapse All"
-						}'
-					accordion-data='[
-							{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]},
-							{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]}
-						]'
-				></OntarioAccordion>
+					expandCollapseButton={{
+						expandAllSectionsLabel: 'Expand All',
+						collapseAllSectionsLabel: 'Collapse All',
+					}}
+					accordionData={[
+						{
+							label: 'Accordion 1',
+							content: ['Item 1', 'Item 2', 'Item 3'],
+						},
+						{
+							label: 'Accordion 2',
+							content: ['Item A', 'Item B', 'Item C'],
+						},
+					]}
+				/>
 			</Grid>
 		</main>
 	);
