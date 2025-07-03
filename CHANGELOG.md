@@ -1,3 +1,13 @@
+# 6.0.0-alpha.1 (2025-07-03)
+
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** feat(fonts)!: update font files and SCSS variables for Raleway Modified and Open Sans 5fa5465
+
+### BREAKING CHANGES
+
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** New font variants have been added alongside references
+  to Raleway has been updated to use `Raleway Modified`. Please validate
+  your font assets and CSS/SCSS.
+
 # 5.0.0 (2025-06-13)
 
 - **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library:** feat!: change layout prop name to layoutDirection for clarity 9a0dcfc
