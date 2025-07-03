@@ -34,7 +34,7 @@ exports[`ontario-badge should render the expected base html 1`] = `
 `;
 
 exports[`ontario-badge should render with the ontario-badge--default-light class on the span element 1`] = `
-<ontario-badge colour="light-teal">
+<ontario-badge colour="lightTeal">
   <template shadowrootmode="open">
     <span class="ontario-badge ontario-badge--default-light">
       In progress

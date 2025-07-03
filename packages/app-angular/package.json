@@ -1,6 +1,6 @@
 {
 	"name": "app-angular",
-	"version": "5.0.0-alpha.10",
+	"version": "5.0.0",
 	"type": "module",
 	"scripts": {
 		"ng": "ng",
@@ -19,19 +19,19 @@
 	},
 	"private": true,
 	"dependencies": {
-		"@angular/animations": "15.2.9",
-		"@angular/common": "15.2.9",
-		"@angular/compiler": "15.2.9",
-		"@angular/core": "15.2.9",
-		"@angular/forms": "15.2.9",
-		"@angular/platform-browser": "15.2.9",
-		"@angular/platform-browser-dynamic": "15.2.9",
-		"@angular/router": "15.2.9",
+		"@angular/animations": "^18.2.11",
+		"@angular/common": "^18.2.11",
+		"@angular/compiler": "^18.2.11",
+		"@angular/core": "^18.2.11",
+		"@angular/forms": "^18.2.11",
+		"@angular/platform-browser": "^18.2.11",
+		"@angular/platform-browser-dynamic": "^18.2.11",
+		"@angular/router": "^18.2.11",
 		"@ngx-translate/core": "^14.0.0",
 		"@ngx-translate/http-loader": "^7.0.0",
-		"@ongov/ontario-design-system-component-library-angular": "^5.0.0-alpha.10",
-		"@ongov/ontario-design-system-design-tokens": "^5.0.0-alpha.6",
-		"@ongov/ontario-design-system-global-styles": "^5.0.0-alpha.10",
+		"@ongov/ontario-design-system-component-library-angular": "^5.0.0",
+		"@ongov/ontario-design-system-design-tokens": "^5.0.0",
+		"@ongov/ontario-design-system-global-styles": "^5.0.0",
 		"@uirouter/angular": "^11.1.0",
 		"copyfiles": "^2.4.1",
 		"ngx-translate-routes": "^1.4.1",
@@ -40,9 +40,9 @@
 		"zone.js": "~0.14.10"
 	},
 	"devDependencies": {
-		"@angular-devkit/build-angular": "15.2.9",
-		"@angular/cli": "15.2.9",
-		"@angular/compiler-cli": "15.2.9",
+		"@angular-devkit/build-angular": "^18.2.11",
+		"@angular/cli": "~18.2.11",
+		"@angular/compiler-cli": "^18.2.11",
 		"@types/jasmine": "~4.3.0",
 		"jasmine-core": "~4.5.0",
 		"karma": "~6.4.0",
@@ -50,6 +50,6 @@
 		"karma-coverage": "~2.2.0",
 		"karma-jasmine": "~5.1.0",
 		"karma-jasmine-html-reporter": "~2.0.0",
-		"typescript": "~4.9.4"
+		"typescript": "5.5.3"
 	}
 }

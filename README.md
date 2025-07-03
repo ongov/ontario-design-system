@@ -186,7 +186,7 @@ pnpm run build
 
 ### `app-angular`
 
-A Angular frontend to show off the whole process, from `ontario-design-system-component-library` components to Angular components. It is a simple Angular application and demos the simplicity of using the generated components.
+An Angular frontend to show off the whole process, from `ontario-design-system-component-library` components to Angular components. It is a simple Angular application and demos the simplicity of using the generated components.
 
 #### Running the App for Development
 

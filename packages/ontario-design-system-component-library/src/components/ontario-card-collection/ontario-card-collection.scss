@@ -5,7 +5,8 @@
 .ontario-card-collection__container {
 	display: flex;
 	flex-wrap: wrap;
-	gap: spacing.$spacing-6;
+	column-gap: spacing.$spacing-6;
+	row-gap: spacing.$spacing-0;
 	margin: spacing.$spacing-0;
 	padding: spacing.$spacing-0;
 }

@@ -180,11 +180,13 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 		'cardLink',
 		'description',
 		'headerColour',
+		'headingLevel',
 		'horizontalImagePositionType',
 		'horizontalImageSizeType',
 		'image',
+		'imageAltText',
 		'label',
-		'layout',
+		'layoutDirection',
 	],
 })
 @Component({
@@ -197,11 +199,13 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
 		'cardLink',
 		'description',
 		'headerColour',
+		'headingLevel',
 		'horizontalImagePositionType',
 		'horizontalImageSizeType',
 		'image',
+		'imageAltText',
 		'label',
-		'layout',
+		'layoutDirection',
 	],
 })
 export class OntarioCard {
@@ -3716,6 +3720,54 @@ export class OntarioTable {
 }
 
 export declare interface OntarioTable extends Components.OntarioTable {}
+
+@ProxyCmp({
+	inputs: ['deactivateLink', 'headingLevel', 'hintText', 'label', 'language', 'link', 'taskId', 'taskStatus'],
+})
+@Component({
+	selector: 'ontario-task',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['deactivateLink', 'headingLevel', 'hintText', 'label', 'language', 'link', 'taskId', 'taskStatus'],
+})
+export class OntarioTask {
+	protected el: HTMLOntarioTaskElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioTask extends Components.OntarioTask {}
+
+@ProxyCmp({
+	inputs: ['headingLevel', 'label', 'language'],
+})
+@Component({
+	selector: 'ontario-task-list',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['headingLevel', 'label', 'language'],
+})
+export class OntarioTaskList {
+	protected el: HTMLOntarioTaskListElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioTaskList extends Components.OntarioTaskList {}
 
 @ProxyCmp({
 	inputs: [

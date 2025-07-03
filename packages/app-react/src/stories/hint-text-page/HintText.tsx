@@ -37,6 +37,7 @@ export default function HintText() {
 					<OntarioHintText
 						hint="Example hint text"
 						elementId="hint-id"
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
 						placeholder=""
 						onPointerEnterCapture={() => {}}
 						onPointerLeaveCapture={() => {}}

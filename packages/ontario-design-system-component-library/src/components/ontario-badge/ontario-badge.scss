@@ -27,7 +27,7 @@
 	background-color: colours.$ontario-colour-information-light;
 	color: colours.$ontario-greyscale-70;
 	padding: spacing.$spacing-1 spacing.$spacing-2;
-	font-family: fonts.$ontario-font-raleway;
+	font-family: fonts.$ontario-font-raleway-modified;
 	font-size: fontSizes.$ontario-font-size-standard-body-text;
 	font-weight: fontWeights.$ontario-font-weights-bold;
 	line-height: globalFunctions.px-to-rem(25);
@@ -68,4 +68,15 @@
 .ontario-badge--success-heavy {
 	background-color: colours.$ontario-colour-success;
 	color: colours.$ontario-colour-white;
+}
+
+.ontario-badge--white {
+	background-color: colours.$ontario-colour-white;
+	color: colours.$ontario-greyscale-70;
+	border: globalFunctions.px-to-rem(1) solid colours.$ontario-greyscale-70;
+}
+
+.ontario-badge--grey {
+	background-color: colours.$ontario-greyscale-20;
+	color: colours.$ontario-colour-black;
 }

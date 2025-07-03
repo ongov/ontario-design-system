@@ -1,0 +1,110 @@
+@use 'sass:math';
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
+	placeholders;
+@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+
+.ontario-task {
+	border-bottom: globalFunctions.px-to-rem(2) solid colours.$ontario-greyscale-20;
+	padding: globalFunctions.px-to-rem(19) spacing.$spacing-0;
+	list-style: none;
+
+	&__content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+
+	&__label {
+		text-align: left;
+		margin: spacing.$spacing-0;
+		font-size: globalFunctions.px-to-rem(19);
+		font-weight: fontWeights.$ontario-font-weights-semi-bold;
+		display: inline-block;
+
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
+			margin-bottom: spacing.$spacing-2;
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&__link {
+		display: block;
+		text-decoration: underline;
+		color: colours.$ontario-colour-link;
+		font-weight: normal;
+	}
+
+	&__hint-text--true {
+		margin-bottom: spacing.$spacing-2;
+	}
+}
+
+.ontario-task__link:focus {
+	outline: none;
+	box-shadow: none;
+
+	.ontario-task__label {
+		@extend %ontario-focus;
+		box-shadow: 0 0 0 4px colours.$ontario-colour-focus inset;
+	}
+}
+
+.ontario-task:has(.ontario-task__link) {
+	&:hover {
+		background-color: colours.$ontario-greyscale-5;
+	}
+}
+
+@mixin link-states {
+	&:visited .ontario-task__label {
+		color: colours.$ontario-colour-link--visited;
+	}
+	&:hover .ontario-task__label {
+		color: colours.$ontario-colour-link--hover;
+	}
+	&:active .ontario-task__label {
+		color: colours.$ontario-colour-link--active;
+	}
+}
+
+.ontario-task {
+	&--status-completed,
+	&--status-inprogress,
+	&--status-notstarted,
+	&--status-optional,
+	&--status-error {
+		.ontario-task__link {
+			.ontario-task__label {
+				color: colours.$ontario-colour-link;
+				text-decoration: underline;
+			}
+			@include link-states;
+		}
+	}
+}
+
+ontario-hint-text::part(hint-text) {
+	margin: spacing.$spacing-0;
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		margin-top: spacing.$spacing-2;
+	}
+}

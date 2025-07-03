@@ -146,6 +146,8 @@ import { OntarioRadioButtons as OntarioRadioButtonsElement, defineCustomElement 
 import { OntarioSearchBox as OntarioSearchBoxElement, defineCustomElement as defineOntarioSearchBox } from "@ongov/ontario-design-system-component-library/dist/components/ontario-search-box.js";
 import { OntarioStepIndicator as OntarioStepIndicatorElement, defineCustomElement as defineOntarioStepIndicator } from "@ongov/ontario-design-system-component-library/dist/components/ontario-step-indicator.js";
 import { OntarioTable as OntarioTableElement, defineCustomElement as defineOntarioTable } from "@ongov/ontario-design-system-component-library/dist/components/ontario-table.js";
+import { OntarioTaskList as OntarioTaskListElement, defineCustomElement as defineOntarioTaskList } from "@ongov/ontario-design-system-component-library/dist/components/ontario-task-list.js";
+import { OntarioTask as OntarioTaskElement, defineCustomElement as defineOntarioTask } from "@ongov/ontario-design-system-component-library/dist/components/ontario-task.js";
 import { OntarioTextarea as OntarioTextareaElement, defineCustomElement as defineOntarioTextarea } from "@ongov/ontario-design-system-component-library/dist/components/ontario-textarea.js";
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
@@ -1745,6 +1747,28 @@ export const OntarioTable: StencilReactComponent<OntarioTableElement, OntarioTab
     react: React,
     events: {} as OntarioTableEvents,
     defineCustomElement: defineOntarioTable
+});
+
+type OntarioTaskEvents = NonNullable<unknown>;
+
+export const OntarioTask: StencilReactComponent<OntarioTaskElement, OntarioTaskEvents> = /*@__PURE__*/ createComponent<OntarioTaskElement, OntarioTaskEvents>({
+    tagName: 'ontario-task',
+    elementClass: OntarioTaskElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioTaskEvents,
+    defineCustomElement: defineOntarioTask
+});
+
+type OntarioTaskListEvents = NonNullable<unknown>;
+
+export const OntarioTaskList: StencilReactComponent<OntarioTaskListElement, OntarioTaskListEvents> = /*@__PURE__*/ createComponent<OntarioTaskListElement, OntarioTaskListEvents>({
+    tagName: 'ontario-task-list',
+    elementClass: OntarioTaskListElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioTaskListEvents,
+    defineCustomElement: defineOntarioTaskList
 });
 
 type OntarioTextareaEvents = {
