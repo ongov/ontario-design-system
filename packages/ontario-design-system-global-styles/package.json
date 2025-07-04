@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-global-styles",
-	"version": "5.0.0",
+	"version": "6.0.0-alpha.1",
 	"private": false,
 	"description": "Includes the Ontario Design System global styles that are used for more generic elements and layouts, as well as fonts and favicon files.",
 	"license": "Apache-2.0",
@@ -20,7 +20,7 @@
 		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: Global Styles\n---\n\" -df ../app-web-components-documentation/docs/05-readme-global-styles.md"
 	},
 	"devDependencies": {
-		"@ongov/ontario-design-system-design-tokens": "5.0.0",
+		"@ongov/ontario-design-system-design-tokens": "6.0.0-alpha.1",
 		"gulp": "^5.0.0",
 		"gulp-autoprefixer": "^9.0.0",
 		"gulp-clean-css": "^4.3.0",
