@@ -21,6 +21,9 @@ export default function Home() {
 						<li>
 							<Link href="/components/ontario-accordion">ontario-accordion</Link>
 						</li>
+						<li>
+							<Link href="/components/ontario-aside">ontario-aside</Link>
+						</li>
 					</ul>
 				</div>
 			</Grid>

@@ -22,11 +22,22 @@ export default function OntarioAsidePage() {
 
 				<h3>h3 HeadingType</h3>
 				<OntarioAside
-					headingType="h3"
+					headingType="h4"
 					headingContentType="string"
 					headingContent="Did you know?"
 					highlightColour="teal"
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
+				></OntarioAside>
+
+				<h2>"Content" Prop variant</h2>
+
+				<h3>h3 HeadingType</h3>
+				<OntarioAside
+					headingType="h2"
+					headingContentType="string"
+					headingContent="Did you know?"
+					highlightColour="teal"
+					content="Updated content"
 				></OntarioAside>
 			</Grid>
 		</main>
