@@ -27,7 +27,7 @@ export default function OntarioAccordionPage() {
 					]}
 				/>
 
-				<h2>"isOpen" variant</h2>
+				<h2>"is-open" Prop Variant</h2>
 
 				<h3>Open Accordion</h3>
 				<OntarioAccordion
