@@ -7,7 +7,7 @@ export default function OntarioAsidePage() {
 			<Grid>
 				<h1>ontario-aside</h1>
 
-				<h2>"HeadingType" Prop variant</h2>
+				<h2>"heading-type" Prop Variants</h2>
 
 				<h3>h3 HeadingType</h3>
 				<OntarioAside
