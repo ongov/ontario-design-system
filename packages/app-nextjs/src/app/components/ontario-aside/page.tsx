@@ -54,7 +54,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h2>"Hightlight-colour" Prop variant</h2>
+				<h2>"hightlight-colour" Prop Variants</h2>
 
 				<h3>highlight colour - teal</h3>
 				<OntarioAside
@@ -137,7 +137,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h2>"heading-content-type" Prop variant</h2>
+				<h2>"heading-content-type" Prop Variants</h2>
 
 				<h3>heading content type - string</h3>
 				<OntarioAside
