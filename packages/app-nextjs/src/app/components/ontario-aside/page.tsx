@@ -9,7 +9,7 @@ export default function OntarioAsidePage() {
 
 				<h2>"heading-type" Prop Variants</h2>
 
-				<h3>h3 HeadingType</h3>
+				<h3>h3 Heading Type</h3>
 				<OntarioAside
 					headingType="h3"
 					headingContentType="string"
