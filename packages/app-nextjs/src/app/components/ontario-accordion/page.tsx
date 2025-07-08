@@ -51,7 +51,7 @@ export default function OntarioAccordionPage() {
 
 				<h3>Closed Accordion</h3>
 				<OntarioAccordion
-					name="Accordion 3"
+					name="Accordion - Closed"
 					isOpen={false}
 					expandCollapseButton={{
 						expandAllSectionsLabel: 'Expand All',
