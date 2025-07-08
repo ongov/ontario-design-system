@@ -7,7 +7,7 @@ export default function OntarioAccordionPage() {
 			<Grid>
 				<h1>ontario-accordion</h1>
 
-				<h2>"Name" Prop variant</h2>
+				<h2>"name" Prop Variant</h2>
 				<h3>Name</h3>
 				<OntarioAccordion
 					name="My Accordion"
