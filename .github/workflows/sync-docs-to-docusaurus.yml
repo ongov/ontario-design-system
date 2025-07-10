@@ -1,0 +1,71 @@
+name: Sync Docs to External Docusaurus Repo
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: true
+        type: string
+      build-artifacts-name:
+        required: true
+        type: string
+      docs-artifacts-name:
+        required: true
+        type: string
+
+jobs:
+  sync-docs:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: docs-update
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout monorepo
+        uses: actions/checkout@v4
+
+      - name: Get latest tag
+        id: get_tag
+        run: |
+          tag=$(git describe --tags --abbrev=0)
+          echo "version=${tag}" >> $GITHUB_OUTPUT
+
+      - name: Checkout Docusaurus repo
+        uses: actions/checkout@v4
+        with:
+          repository: your-org/docusaurus-repo
+          token: ${{ secrets.GH_TOKEN }}
+          ref: main # or the branch you want to update
+          path: packages/docusaurus
+
+      - name: Clean Docusaurus component docs (preserve _category_.json)
+        run: |
+          find packages/docusaurus/docs/components -mindepth 1 ! -name '_category_.json' -delete
+
+      - name: Download docs artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.docs-artifacts-name }}
+          path: packages/docusaurus/docs/
+
+      - name: Update package.json in Docusaurus
+        run: |
+          cd packages/docusaurus
+          pnpm add ontario-design-system-component-library@${{ steps.get_tag.outputs.version }}
+
+      - name: Version Docusaurus docs
+        run: |
+          cd packages/docusaurus
+          npx docusaurus docs:version ${{ steps.get_tag.outputs.version }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.DOCS_REPO_TOKEN }}
+          path: packages/docusaurus
+          commit-message: 'docs: update for ${{ steps.get_tag.outputs.version }}'
+          title: 'docs: update for ${{ steps.get_tag.outputs.version }}'
+          body: |
+            This PR updates the documentation site for version `${{ steps.get_tag.outputs.version }}`.
+          branch: docs/update-${{ steps.get_tag.outputs.version }}
+          labels: docs-update

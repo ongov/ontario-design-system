@@ -47,3 +47,12 @@ jobs:
     secrets: inherit
     permissions:
       contents: write
+
+  sync-docs-to-docusaurus: # Job defined in a separate file (sync-docs-to-docusaurus.yml)
+    needs: ['build', 'publish-packages']
+    uses: ./.github/workflows/sync-docs-to-docusaurus.yml
+    with:
+      node-version: 20
+      build-artifacts-name: ${{ needs.build.outputs.build-artifacts-name }}
+      docs-artifacts-name: ${{ needs.build.outputs.docs-artifacts-name }}
+    secrets: inherit
