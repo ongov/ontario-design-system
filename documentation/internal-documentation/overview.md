@@ -55,6 +55,7 @@ Provides information for developers working on the monorepo, including:
 
 - **Package Manager:** [PNPM](https://pnpm.io/)
 - **Monorepo Management:** [Lerna](https://lerna.js.org/)
+- **Dependency Management:** [Renovate](https://github.com/renovatebot/renovate)
 - **Component Library:** [Stencil](https://stenciljs.com/)
 - **Frontend Frameworks:** [React](https://react.dev/), [Angular](https://angular.dev/)
 - **Styling:** [SCSS](https://sass-lang.com/documentation/syntax/), Design Tokens
