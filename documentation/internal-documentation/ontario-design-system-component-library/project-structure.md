@@ -40,7 +40,7 @@ The dist directory contains the final build output of the component library, inc
 
 This folder contains various scripts used to automate tasks in the project. Notable scripts include:
 
-- A script to build out a `theme.scss` file that gets placed in the dist folder.
+- A script to build out a `theme.scss` file that gets placed in the `dist` folder.
 - A script to create a documentation bundle based on the component readme files.
 - A configuration build script to manage build processes and any custom actions needed for our workflow.
 
