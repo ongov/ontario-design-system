@@ -123,7 +123,7 @@ For example, the translation file may look like this:
 
 - Each section corresponds to a component or feature (e.g., accessibility), and within that section, each key represents a specific UI element or text string.
 - The keys within each section (e.g., `checkboxHintExpander`, `moreInfo`, `singleHintExpander`) represent specific phrases or hints displayed in the UI.
-- Each language code (e.g., en for English, fr for French) maps to the translated text for that particular language.
+- Each language code (e.g., `en` for English, `fr` for French) maps to the translated text for that particular language.
 
 This setup ensures that text can be easily swapped based on the language preference, helping developers create multilingual support for their components.
 
