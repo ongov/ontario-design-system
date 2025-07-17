@@ -9,11 +9,11 @@
 
 ### Issue Tracking
 
-As with most projects within the ODS, the Design System has its own issue tracking board, via Jira.
+The Design System has its own issue tracking board via Jira.
 
 ### Branching
 
-The development workflow has two main branches - `master` and `develop`.
+The development workflow has four main branches - `master`, `develop`, `alpha` and `beta`.
 
 The `master` branch should always be in a releasable state. In theory, this means at any point a release should be able to be cut and tagged from this branch.
 

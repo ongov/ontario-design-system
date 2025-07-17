@@ -48,7 +48,7 @@ Example of an accordion component, where the user is explicitly passing in conte
 
 ### Accordion
 
-```ts
+```typescript
 accordion-data='[ {"label": "Accordion 1", "content": "Text Context"}, {"label": "Accordion 2", "content": "Text Content"}]'
 ```
 
@@ -64,7 +64,7 @@ accordion-data='[ {"label": "Accordion 1", "content": "Text Context"}, {"label":
 
 By default, the component uses our recommended values for the Expand/Collapse button label, which will automatically match the language the component is in. However, if custom values for this button are required they can be set via the `expandCollapseButton` property.
 
-```ts
+```typescript
 expand-collapse-button='{ "expandAllSectionsLabel": "Expand All", "collapseAllSectionsLabel": "Collapse All" }'
 ```
 
