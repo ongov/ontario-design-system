@@ -89,7 +89,7 @@ To handle this, we use a separate global stylesheet for slotted styles. This app
 
 There is a `global.scss` file at the root of the project that imports the core theme from the Ontario Design System Global Styles. To ensure that slotted content is styled properly, any additional slotted style files should be appended to this `global.scss` file. This allows for slotted styles to be applied correctly while maintaining proper order and precedence over the base global styles.
 
-The slotted styles are stored in the _styles/slotted-styles_ folder and processed by a build script that compiles them into a `theme.scss` file. This file is then included in the build output and made available to all component libraries.
+The slotted styles are stored in the `styles/slotted-styles` folder and processed by a build script that compiles them into a `theme.scss` file. This file is then included in the build output and made available to all component libraries.
 
 The `build-theme-scss.ts` script does the following:
 
