@@ -129,7 +129,7 @@ This setup ensures that text can be easily swapped based on the language prefere
 
 ### `utils`
 
-The utils folder houses helper functions and shared code used across components. Examples include:
+The `utils` folder houses helper functions and shared code used across components. Examples include:
 
 - **Validation Functions**: Functions to validate input values, component properties, or other data within components.
 - **Shared Type Interfaces**: TypeScript interfaces that define common types used throughout the component library, ensuring consistency.
