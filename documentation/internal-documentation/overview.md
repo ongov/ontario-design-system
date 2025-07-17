@@ -34,7 +34,7 @@ This monorepo contains multiple projects that work together to deliver a cohesiv
 ### 5. Example Projects
 
 - **[Angular PoC App](../../packages/app-angular):** Tests and builds examples using the Angular Web Component Library.
-- **[React Poc App](../../packages/app-react)**: Tests and builds examples using the React Web Component Library.
+- **[React PoC App](../../packages/app-react)**: Tests and builds examples using the React Web Component Library.
 
 ### 6. [Ontario Design System Web Components Documentation](../../packages/app-web-components-documentation)
 
