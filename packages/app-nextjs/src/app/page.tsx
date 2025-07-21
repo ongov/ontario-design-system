@@ -22,7 +22,7 @@ export default function Home() {
 							<Link href="/components/ontario-accordion">ontario-accordion</Link>
 						</li>
 						<li>
-							<Link href="/components/ontario-search-box">ontario-search-box</Link>
+							<Link href="/components/ontario-language-toggle">ontario-language-toggle</Link>
 						</li>
 					</ul>
 				</div>
