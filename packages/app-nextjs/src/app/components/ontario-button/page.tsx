@@ -11,13 +11,13 @@ export default function OntarioButtonPage() {
 					<h2>"type" Prop Variants</h2>
 
 					<h3>Primary</h3>
-					<OntarioButton elementId="ontario-button-primary" type="primary" label="Primary Button"></OntarioButton>
+					<OntarioButton id="ontario-button-primary" type="primary" label="Primary Button"></OntarioButton>
 
 					<h3>Secondary</h3>
-					<OntarioButton elementId="ontario-button-secondary" type="secondary" label="Secondary Button"></OntarioButton>
+					<OntarioButton id="ontario-button-secondary" type="secondary" label="Secondary Button"></OntarioButton>
 
 					<h3>Tertiary</h3>
-					<OntarioButton elementId="ontario-button-tertiary" type="tertiary" label="Tertiary Button"></OntarioButton>
+					<OntarioButton id="ontario-button-tertiary" type="tertiary" label="Tertiary Button"></OntarioButton>
 				</div>
 			</Grid>
 		</main>

@@ -9,6 +9,7 @@
 		"build-docs": "lerna run --scope ds-web-component-docs build",
 		"build-libs": "lerna run --scope @ongov/ontario-design-system* build",
 		"build-angular-app": "lerna run --scope app-angular build",
+		"build-nextjs-app": "lerna run --scope app-nextjs build",
 		"clean": "lerna run clean",
 		"clean:full": "lerna run clean:full",
 		"format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
@@ -16,7 +17,8 @@
 		"refresh": "pnpm run clean && pnpm install && pnpm run build-libs",
 		"semantic-release": "semantic-release",
 		"test:e2e": "lerna run test:e2e",
-		"test:unit": "lerna run test:unit"
+		"test:unit": "lerna run test:unit",
+		"test:playwright:nextjs": "pnpm run build-nextjs-app && lerna run --scope app-nextjs test:playwright"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.5.0",
