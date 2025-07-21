@@ -56,8 +56,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+      - name: Install Playwright Browsers in app-nextjs
+        run: pnpm --filter app-nextjs exec playwright install --with-deps
 
       - name: Run All Playwright Tests
         run: pnpm run test:playwright:nextjs
