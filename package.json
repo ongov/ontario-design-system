@@ -18,7 +18,7 @@
 		"semantic-release": "semantic-release",
 		"test:e2e": "lerna run test:e2e",
 		"test:unit": "lerna run test:unit",
-		"test:playwright:nextjs": "pnpm run build-nextjs-app && lerna run --scope app-nextjs test:playwright"
+		"test:playwright:nextjs": "pnpm run build-nextjs-app && pnpm --filter app-nextjs exec playwright test"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.5.0",
