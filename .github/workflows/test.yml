@@ -67,17 +67,61 @@ jobs:
       - name: Run All VRT Tests
         run: pnpm run test:vrt
 
-      - name: Upload HTML Report
+      - name: Upload VRT Test Results
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
+          name: vrt-test-results
+          path: packages/app-nextjs/test-results # Update when adding tests for other apps
 
-      - name: Upload JUnit results for GitHub integration
+      - name: Upload VRT JUnit results for GitHub integration
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: junit-results
-          path: test-results/playwright/results.xml
+          name: vrt-junit-results
+          path: packages/app-nextjs/test-results/playwright/results.xml # Update when adding tests for other apps
+
+  e2e-test:
+    runs-on: ubuntu-latest
+    needs: unit-test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Use Node.js ${{ inputs.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.build-artifacts-name }} # Artifact name (must match upload name)
+          path: ./packages
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright Browsers
+        run: pnpm --filter app-nextjs exec playwright install --with-deps
+
+      - name: Run All E2E Tests
+        run: pnpm run test:e2e
+
+      - name: Upload E2E Test Results
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-test-results
+          path: packages/app-nextjs/test-results # Update when adding tests for other apps
+
+      - name: Upload E2E JUnit results for GitHub integration
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-junit-results
+          path: packages/app-nextjs/test-results/playwright/results.xml # Update when adding tests for other apps

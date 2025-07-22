@@ -3,6 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
 	testDir: './tests',
 	testMatch: '**/*.@(spec|test|e2e|vrt).?(c|m)[jt]s?(x)',
+	snapshotPathTemplate: '{testDir}/{testFileDir}/vrt-snapshots/{arg}-{projectName}{ext}',
 	fullyParallel: true,
 	forbidOnly: !!process.env.CI,
 	retries: process.env.CI ? 2 : 0,
