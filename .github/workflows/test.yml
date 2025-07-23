@@ -81,7 +81,7 @@ jobs:
           name: vrt-junit-results
           path: packages/app-nextjs/test-results/playwright/results.xml # Update when adding tests for other apps
 
-  e2e-test:
+  e2e-apps-test:
     runs-on: ubuntu-latest
     needs: unit-test
     steps:
@@ -110,7 +110,7 @@ jobs:
         run: pnpm --filter app-nextjs exec playwright install --with-deps
 
       - name: Run All E2E Tests
-        run: pnpm run test:e2e
+        run: pnpm run test:e2e:apps
 
       - name: Upload E2E Test Results
         if: ${{ !cancelled() }}

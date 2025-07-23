@@ -8,8 +8,7 @@
 	"scripts": {
 		"build-docs": "lerna run --scope ds-web-component-docs build",
 		"build-libs": "lerna run --scope @ongov/ontario-design-system* build",
-		"build-apps": "lerna run --scope app-nextjs build",
-		"build-angular-app": "lerna run --scope app-angular build",
+		"build-apps": "lerna run build --scope 'app-*' --ignore 'app-web-components-documentation'",
 		"clean": "lerna run clean",
 		"clean:full": "lerna run clean:full",
 		"format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
@@ -17,6 +16,7 @@
 		"refresh": "pnpm run clean && pnpm install && pnpm run build-libs",
 		"semantic-release": "semantic-release",
 		"test:e2e": "lerna run test:e2e",
+		"test:e2e:apps": "lerna run test:e2e --scope 'app-*' --ignore 'app-web-components-documentation'",
 		"test:unit": "lerna run test:unit",
 		"test:vrt": "lerna run test:vrt"
 	},
