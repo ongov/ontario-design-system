@@ -6,9 +6,6 @@ on:
       node-version:
         required: true
         type: string
-      build-artifacts-name:
-        required: true
-        type: string
       docs-artifacts-name:
         required: true
         type: string
@@ -24,6 +21,7 @@ jobs:
       - name: Checkout monorepo
         uses: actions/checkout@v4
 
+      # Since this follows the build job, the latest tag is the latest version of npm packages.
       - name: Get latest tag
         id: get_tag
         run: |
@@ -35,7 +33,7 @@ jobs:
         with:
           repository: your-org/docusaurus-repo
           token: ${{ secrets.GH_TOKEN }}
-          ref: main # or the branch you want to update
+          ref: main
           path: packages/docusaurus
 
       - name: Clean Docusaurus component docs (preserve _category_.json)
