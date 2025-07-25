@@ -43,6 +43,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # Make directories for documentation files
+      - name: Make directories for documentation files
+        run: mkdir -p packages/docusaurus/docs/components
+
       # Build the project
       - name: Build the project
         run: pnpm run build-libs
@@ -56,7 +60,7 @@ jobs:
           path: | # Collect all package artifacts
             packages/**/*
             !**/node_modules/**/*
-            packages/docusaurus/**/*
+            !packages/docusaurus/**/*
 
       # Upload docs artifact
       - name: Upload docs artifact
