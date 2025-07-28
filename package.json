@@ -18,7 +18,8 @@
 		"test:e2e": "lerna run test:e2e",
 		"test:e2e:apps": "lerna run test:e2e --scope 'app-*' --ignore 'app-web-components-documentation'",
 		"test:unit": "lerna run test:unit",
-		"test:vrt": "lerna run test:vrt"
+		"test:vrt": "lerna run test:vrt",
+		"test:update-snapshots": "lerna run test:update-snapshots"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.5.0",

@@ -1,0 +1,13 @@
+FROM mcr.microsoft.com/playwright:v1.54.0-noble
+
+# Set the working directory
+WORKDIR /app
+
+# copy monorepo
+COPY . .
+
+# Set up pnpm 
+RUN npm install -g pnpm
+
+# Install deps & build libs
+RUN pnpm install && pnpm run build-libs
