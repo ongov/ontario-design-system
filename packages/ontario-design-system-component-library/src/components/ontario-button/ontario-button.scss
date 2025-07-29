@@ -15,9 +15,11 @@ $ontario-button-bg-primary--hover: colours.$ontario-colour-link--hover;
 $ontario-button-bg-primary--active: colours.$ontario-colour-link--active;
 $ontario-button-bg-secondary: colours.$ontario-colour-white;
 
+// Added for visual regression tests to ensure the component renders with correct dimensions and spacing
 :host {
 	display: inline-block;
 }
+
 .ontario-button {
 	border: none;
 	border-radius: globalVariables.$global-radius;

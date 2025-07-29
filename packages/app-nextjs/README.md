@@ -50,6 +50,17 @@ This project uses [Playwright](https://playwright.dev/) for visual regression te
 
 ### Prerequisites
 
+Before running tests or starting local development, ensure you have Rancher Desktop installed and running on your machine. Rancher Desktop provides the container runtime environment required for this project.
+
+Install Rancher Desktop
+
+- Download Rancher Desktop from the official site: https://rancherdesktop.io/
+- Follow the installation instructions for your operating system.
+- During setup, you can disable Kubernetes.
+- The default container runtime is containerd — no changes are needed.
+
+Start Rancher Desktop to ensure the container runtime is active.
+
 ---
 
 ### Step 1: Build the VRT Docker Container
