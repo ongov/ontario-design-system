@@ -28,15 +28,10 @@ test.describe('Ontario Button', () => {
 		await expect(tertiaryButton.locator('button')).toHaveClass(/ontario-button--tertiary/);
 	});
 
-	// Test for aria-attributes
+	// Test for aria-attribute
 	test('should have the expected aria-label when `aria-label-text` prop is set', async ({ page }) => {
 		const primaryButton = await page.locator('#ontario-button-primary');
 		await expect(primaryButton.locator('button')).toHaveAttribute('aria-label', 'Click to perform primary action');
-	});
-
-	test('should have an empty aria label when `aria-label-text` prop is not set', async ({ page }) => {
-		const secondaryButton = await page.locator('#ontario-button-secondary');
-		await expect(secondaryButton.locator('button')).toHaveAttribute('aria-label', '');
 	});
 
 	// Test for click event

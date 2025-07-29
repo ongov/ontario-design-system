@@ -10,4 +10,6 @@ COPY . .
 RUN npm install -g pnpm
 
 # Install deps & build libs
-RUN pnpm install && pnpm run build-libs
+RUN rm -rf node_modules && \
+    pnpm install --frozen-lockfile && \
+    pnpm run build-libs

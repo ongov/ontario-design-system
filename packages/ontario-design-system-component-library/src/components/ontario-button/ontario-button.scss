@@ -15,6 +15,9 @@ $ontario-button-bg-primary--hover: colours.$ontario-colour-link--hover;
 $ontario-button-bg-primary--active: colours.$ontario-colour-link--active;
 $ontario-button-bg-secondary: colours.$ontario-colour-white;
 
+:host {
+	display: inline-block;
+}
 .ontario-button {
 	border: none;
 	border-radius: globalVariables.$global-radius;
