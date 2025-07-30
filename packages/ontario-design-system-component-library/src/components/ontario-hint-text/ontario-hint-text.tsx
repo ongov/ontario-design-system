@@ -108,7 +108,7 @@ export class OntarioHintText implements Hint {
 	/**
 	 * This method returns the ontario-hint-text id. It is used to make sure the hint text and `aria-describedby` value of other form components match when the internal hint text props are used.
 	 *
-	 * @returns Promise<string | undefined>
+	 * @returns {Promise<string | undefined>} The ID of the hint text element, or undefined if no ID is set.
 	 */
 	@Method()
 	async getHintTextId(): Promise<string | undefined> {

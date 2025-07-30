@@ -24,7 +24,7 @@ export class OntarioTaskList {
 	/**
 	 * Allows consumers to define the heading level for the task list component.
 	 *
-	 * Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h3'.
+	 * Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h2'.
 	 */
 	@Prop() headingLevel: TaskListHeadingLevel = 'h2';
 

@@ -49,6 +49,7 @@ export default function ExpandedFooterCodeExample() {
 					<h4>Example</h4>
 					<div className="ontario-margin-top-24-!">
 						<OntarioFooter
+							// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
 							placeholder=""
 							onPointerEnterCapture={() => {}}
 							onPointerLeaveCapture={() => {}}

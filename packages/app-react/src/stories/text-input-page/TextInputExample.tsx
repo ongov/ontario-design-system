@@ -25,7 +25,7 @@ export default function TextInputExample() {
 	elementId="20-char-input-id"
 	inputWidth="20-char-width"
 	name="20-char-input"
-	required={false}	
+	required={false}
 	type="text"
 	hintExpander={{
 		content: "This is the example content for the 20 character width input",
@@ -41,7 +41,7 @@ export default function TextInputExample() {
 		captionType: "large"
 	}}
 	elementId="default-input"
-	name="default-input"	
+	name="default-input"
 	type="text"
 	onFocus={defaultInputOnFocus}
 />`;
@@ -77,6 +77,7 @@ export default function TextInputExample() {
 				<h3>Examples</h3>
 				<div className="ontario-margin-top-24-!">
 					<OntarioInput
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
 						placeholder=""
 						onPointerEnterCapture={() => {}}
 						onPointerLeaveCapture={() => {}}
@@ -99,6 +100,7 @@ export default function TextInputExample() {
 
 				<div className="ontario-margin-top-24-!">
 					<OntarioInput
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
 						placeholder=""
 						onPointerEnterCapture={() => {}}
 						onPointerLeaveCapture={() => {}}
@@ -126,6 +128,7 @@ export default function TextInputExample() {
 
 				<div className="ontario-margin-top-24-!">
 					<OntarioInput
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
 						placeholder=""
 						onPointerEnterCapture={() => {}}
 						onPointerLeaveCapture={() => {}}
