@@ -9,7 +9,7 @@ export default function OntarioAsidePage() {
 
 				<h2>"heading-type" Prop Variants</h2>
 
-				<h3>h2 Heading Type</h3>
+				<h3>H2</h3>
 				<OntarioAside
 					headingType="h2"
 					headingContentType="string"
@@ -18,7 +18,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h3>h3 Heading Type</h3>
+				<h3>H3</h3>
 				<OntarioAside
 					headingType="h3"
 					headingContentType="string"
@@ -27,7 +27,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h3>h4 Heading Type</h3>
+				<h3>H4</h3>
 				<OntarioAside
 					headingType="h4"
 					headingContentType="string"
@@ -36,7 +36,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h3>h5 Heading Type</h3>
+				<h3>H5</h3>
 				<OntarioAside
 					headingType="h5"
 					headingContentType="string"
@@ -45,7 +45,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h3>h6 Heading Type</h3>
+				<h3>H6</h3>
 				<OntarioAside
 					headingType="h6"
 					headingContentType="string"
@@ -56,7 +56,7 @@ export default function OntarioAsidePage() {
 
 				<h2>"hightlight-colour" Prop Variants</h2>
 
-				<h3>highlight colour - teal</h3>
+				<h3>Teal</h3>
 				<OntarioAside
 					headingType="h4"
 					headingContentType="string"
@@ -65,7 +65,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h3>highlight colour - gold</h3>
+				<h3>Gold</h3>
 				<OntarioAside
 					headingType="h4"
 					headingContentType="string"
@@ -74,7 +74,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h3>highlight colour - yellow</h3>
+				<h3>Yellow</h3>
 				<OntarioAside
 					headingType="h4"
 					headingContentType="string"
@@ -83,7 +83,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h3>highlight colour - taupe</h3>
+				<h3>Taupe</h3>
 				<OntarioAside
 					headingType="h4"
 					headingContentType="string"
@@ -92,7 +92,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h3>highlight colour - green</h3>
+				<h3>Green</h3>
 				<OntarioAside
 					headingType="h4"
 					headingContentType="string"
@@ -101,7 +101,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h3>highlight colour - lime</h3>
+				<h3>Lime</h3>
 				<OntarioAside
 					headingType="h4"
 					headingContentType="string"
@@ -110,7 +110,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h3>highlight colour - sky</h3>
+				<h3>Sky</h3>
 				<OntarioAside
 					headingType="h4"
 					headingContentType="string"
@@ -119,7 +119,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h3>highlight colour - blue</h3>
+				<h3>Blue</h3>
 				<OntarioAside
 					headingType="h4"
 					headingContentType="string"
@@ -128,7 +128,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h3>highlight colour - purple</h3>
+				<h3>Purple</h3>
 				<OntarioAside
 					headingType="h4"
 					headingContentType="string"
@@ -139,7 +139,7 @@ export default function OntarioAsidePage() {
 
 				<h2>"heading-content-type" Prop Variants</h2>
 
-				<h3>heading content type - string</h3>
+				<h3>String</h3>
 				<OntarioAside
 					headingType="h2"
 					headingContentType="string"
@@ -148,13 +148,23 @@ export default function OntarioAsidePage() {
 					content="Updated content"
 				></OntarioAside>
 
-				<h3>heading content type - html</h3>
+				<h3>HTML</h3>
 				<OntarioAside
 					headingType="h2"
 					headingContentType="html"
-					headingContent="Did you know?"
+					headingContent={
+						<div className="ontario-aside">
+							<p>
+								Did you know? <strong>HTML</strong> in heading!
+							</p>
+						</div>
+					}
 					highlightColour="teal"
-					content="<div>Updated content with <strong>HTML</strong> support.</div>"
+					content={
+						<div>
+							Updated content with <strong>HTML</strong> support.
+						</div>
+					}
 				></OntarioAside>
 			</Grid>
 		</main>
