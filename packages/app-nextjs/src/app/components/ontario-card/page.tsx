@@ -8,35 +8,35 @@ export default function OntarioCardPage() {
 				<h1>ontario-card</h1>
 
 				<h2>'heading-level' Prop Variants</h2>
-				<h3>heading level - h2 </h3>
+				<h3>H2</h3>
 				<OntarioCard
 					headingLevel="h2"
 					label="Heading level h2"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>heading level - h3 </h3>
+				<h3>H3</h3>
 				<OntarioCard
 					headingLevel="h3"
 					label="Heading level h3"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>heading level - h4 </h3>
+				<h3>H4</h3>
 				<OntarioCard
 					headingLevel="h4"
 					label="Heading level h4"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>heading level - h5 </h3>
+				<h3>H5</h3>
 				<OntarioCard
 					headingLevel="h5"
 					label="Heading level h5"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>heading level - h6 </h3>
+				<h3>H6</h3>
 				<OntarioCard
 					headingLevel="h6"
 					label="Heading level h6"
@@ -61,7 +61,7 @@ export default function OntarioCardPage() {
 				></OntarioCard>
 
 				<h2>'layout-direction' Prop Variants</h2>
-				<h3>layout direction - horizontal </h3>
+				<h3>Horizontal</h3>
 				<OntarioCard
 					headingLevel="h2"
 					label="Layout direction is horizontal"
@@ -69,7 +69,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>layout direction - vertical </h3>
+				<h3>Vertical</h3>
 				<OntarioCard
 					headingLevel="h2"
 					label="Layout direction is vertical"
@@ -78,7 +78,7 @@ export default function OntarioCardPage() {
 				></OntarioCard>
 
 				<h2>'header-colour' Prop Variants</h2>
-				<h3>Header colour - dark-accent </h3>
+				<h3>Dark-accent</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="dark-accent"
@@ -87,7 +87,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - light-accent</h3>
+				<h3>Light-accent</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="light-accent"
@@ -96,7 +96,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - light-gold</h3>
+				<h3>Light-gold</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="light-gold"
@@ -105,7 +105,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - light-yellow</h3>
+				<h3>Light-yellow</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="light-yellow"
@@ -114,7 +114,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - light-taupe</h3>
+				<h3>Light-taupe</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="light-taupe"
@@ -123,7 +123,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - light-green</h3>
+				<h3>Light-green</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="light-green"
@@ -132,7 +132,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - light-lime</h3>
+				<h3>Light-lime</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="light-lime"
@@ -141,7 +141,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - light-teal</h3>
+				<h3>Light-teal</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="light-teal"
@@ -150,7 +150,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - light-sky</h3>
+				<h3>Light-sky</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="light-sky"
@@ -159,7 +159,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - light-blue</h3>
+				<h3>Light-blue</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="light-blue"
@@ -168,7 +168,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - light-purple</h3>
+				<h3>Light-purple</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="light-purple"
@@ -177,7 +177,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - light-orange</h3>
+				<h3>Light-orange</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="light-orange"
@@ -186,7 +186,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - light-red</h3>
+				<h3>Light-red</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="light-red"
@@ -195,7 +195,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - light-magenta</h3>
+				<h3>Light-magenta</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="light-magenta"
@@ -204,7 +204,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - gold</h3>
+				<h3>Gold</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="gold"
@@ -213,7 +213,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - yellow</h3>
+				<h3>Yellow</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="yellow"
@@ -222,7 +222,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - taupe</h3>
+				<h3>Taupe</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="taupe"
@@ -231,7 +231,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - green</h3>
+				<h3>Green</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="green"
@@ -240,7 +240,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - lime</h3>
+				<h3>Lime</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="lime"
@@ -249,7 +249,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - teal</h3>
+				<h3>Teal</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="teal"
@@ -258,7 +258,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - sky</h3>
+				<h3>Sky</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="sky"
@@ -267,7 +267,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - blue</h3>
+				<h3>Blue</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="blue"
@@ -276,7 +276,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - purple</h3>
+				<h3>Purple</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="purple"
@@ -285,7 +285,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - orange</h3>
+				<h3>Orange</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="orange"
@@ -294,7 +294,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - red</h3>
+				<h3>Red</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="red"
@@ -303,7 +303,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Header colour - magenta</h3>
+				<h3>Magenta</h3>
 				<OntarioCard
 					headingLevel="h2"
 					headerColour="magenta"
@@ -313,7 +313,7 @@ export default function OntarioCardPage() {
 				></OntarioCard>
 
 				<h2>'horizontal-impage-position-type' Prop Variants</h2>
-				<h3>horizontal image position type - left </h3>
+				<h3>Left</h3>
 				<OntarioCard
 					headingLevel="h2"
 					image="https://picsum.photos/200/300"
@@ -322,7 +322,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>horizontal image position type - right </h3>
+				<h3>Right</h3>
 				<OntarioCard
 					headingLevel="h2"
 					image="https://picsum.photos/200/300"
@@ -332,7 +332,7 @@ export default function OntarioCardPage() {
 				></OntarioCard>
 
 				<h2>'horizontal-impage-size-type' Prop Variants</h2>
-				<h3>horizontal image size type - one-thid </h3>
+				<h3>One-third</h3>
 				<OntarioCard
 					headingLevel="h2"
 					image="https://picsum.photos/200/300"
@@ -342,7 +342,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>horizontal image size type - one-fourth </h3>
+				<h3>One-fourth</h3>
 				<OntarioCard
 					headingLevel="h2"
 					image="https://picsum.photos/200/300"
