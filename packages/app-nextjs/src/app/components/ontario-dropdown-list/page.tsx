@@ -14,10 +14,10 @@ export default function OntarioDropdownListPage() {
 				<h1>OntarioDropdownList</h1>
 
 				<h2>'language' Prop Variants</h2>
-				<h3>Language - en</h3>
+				<h3>EN</h3>
 				<OntarioDropdownList name="dropdown-en" caption="Dropdown in English" language="en" options={dropdownOptions} />
 
-				<h3>Language - fr</h3>
+				<h3>FR</h3>
 				<OntarioDropdownList
 					name="dropdown-fr"
 					caption="Liste déroulante en français"
@@ -26,10 +26,10 @@ export default function OntarioDropdownListPage() {
 				/>
 
 				<h2>'caption' Prop Variants</h2>
-				<h3>Caption - string</h3>
+				<h3>String</h3>
 				<OntarioDropdownList name="dropdown-caption-string" caption="Simple Caption" options={dropdownOptions} />
 
-				<h3>Caption - object</h3>
+				<h3>Object</h3>
 				<OntarioDropdownList
 					name="dropdown-caption-object"
 					caption={{ captionText: 'Dropdown Label', captionType: 'heading' }}
@@ -37,7 +37,7 @@ export default function OntarioDropdownListPage() {
 				/>
 
 				<h2>'required' Prop Variants</h2>
-				<h3>Required - true</h3>
+				<h3>True</h3>
 				<OntarioDropdownList
 					name="dropdown-required"
 					caption="Required Dropdown"
@@ -45,7 +45,7 @@ export default function OntarioDropdownListPage() {
 					options={dropdownOptions}
 				/>
 
-				<h3>Required - false</h3>
+				<h3>False</h3>
 				<OntarioDropdownList
 					name="dropdown-optional"
 					caption="Optional Dropdown"
@@ -54,7 +54,7 @@ export default function OntarioDropdownListPage() {
 				/>
 
 				<h2>'isEmptyStartOption' Prop Variants</h2>
-				<h3>isEmptyStartOption - true</h3>
+				<h3>True</h3>
 				<OntarioDropdownList
 					name="dropdown-empty-true"
 					caption="Empty Start Option (true)"
@@ -62,7 +62,7 @@ export default function OntarioDropdownListPage() {
 					options={dropdownOptions}
 				/>
 
-				<h3>isEmptyStartOption - custom string</h3>
+				<h3>Custom String</h3>
 				<OntarioDropdownList
 					name="dropdown-empty-string"
 					caption="Empty Start Option (custom)"
@@ -71,6 +71,7 @@ export default function OntarioDropdownListPage() {
 				/>
 
 				<h2>'hintText' Prop Variant</h2>
+				<h3>String</h3>
 				<OntarioDropdownList
 					name="dropdown-hint"
 					caption="Dropdown with Hint"
@@ -79,6 +80,7 @@ export default function OntarioDropdownListPage() {
 				/>
 
 				<h2>'hintExpander' Prop Variant</h2>
+				<h3>Object</h3>
 				<OntarioDropdownList
 					name="dropdown-hint-expander"
 					caption="Dropdown with Hint Expander"
