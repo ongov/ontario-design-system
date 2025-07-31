@@ -22,8 +22,11 @@ export default function Home() {
 							<Link href="/components/ontario-accordion">ontario-accordion</Link>
 						</li>
 						<li>
-							<Link href="/components/ontario-critical-alert">ontario-critical-alert</Link>
+							<Link href="/components/ontario-button">ontario-button</Link>
 						</li>
+            <li>
+              <Link href="/components/ontario-critical-alert">ontario-critical-alert</Link>
+            </li>
 					</ul>
 				</div>
 			</Grid>
