@@ -3,10 +3,6 @@ import {
 	OntarioIconAccessibility,
 	OntarioIconAdd,
 	OntarioIconAddAlt,
-	OntarioIconAlertError,
-	OntarioIconAlertInformation,
-	OntarioIconAlertSuccess,
-	OntarioIconAlertWarning,
 	OntarioIconArrowUp,
 	OntarioIconChevronDown,
 	OntarioIconChevronLeft,
@@ -16,7 +12,6 @@ import {
 	OntarioIconCollapse,
 	OntarioIconCreditCard,
 	OntarioIconCriticalAlertWarning,
-	OntarioIconDropdownArrow,
 	OntarioIconEmail,
 	OntarioIconExpand,
 	OntarioIconHelp,
@@ -158,170 +153,6 @@ export default function OntarioIconTestPage() {
 				<OntarioIconAddAlt colour="inherit" iconWidth={32} />
 				<h3>colour - inherit, iconWidth - 48</h3>
 				<OntarioIconAddAlt colour="inherit" iconWidth={48} />
-				<h2>OntarioIconAlertError</h2>
-				<h3>colour - black, iconWidth - 16</h3>
-				<OntarioIconAlertError colour="black" iconWidth={16} />
-				<h3>colour - black, iconWidth - 24</h3>
-				<OntarioIconAlertError colour="black" iconWidth={24} />
-				<h3>colour - black, iconWidth - 32</h3>
-				<OntarioIconAlertError colour="black" iconWidth={32} />
-				<h3>colour - black, iconWidth - 48</h3>
-				<OntarioIconAlertError colour="black" iconWidth={48} />
-				<h3>colour - blue, iconWidth - 16</h3>
-				<OntarioIconAlertError colour="blue" iconWidth={16} />
-				<h3>colour - blue, iconWidth - 24</h3>
-				<OntarioIconAlertError colour="blue" iconWidth={24} />
-				<h3>colour - blue, iconWidth - 32</h3>
-				<OntarioIconAlertError colour="blue" iconWidth={32} />
-				<h3>colour - blue, iconWidth - 48</h3>
-				<OntarioIconAlertError colour="blue" iconWidth={48} />
-				<h3>colour - grey, iconWidth - 16</h3>
-				<OntarioIconAlertError colour="grey" iconWidth={16} />
-				<h3>colour - grey, iconWidth - 24</h3>
-				<OntarioIconAlertError colour="grey" iconWidth={24} />
-				<h3>colour - grey, iconWidth - 32</h3>
-				<OntarioIconAlertError colour="grey" iconWidth={32} />
-				<h3>colour - grey, iconWidth - 48</h3>
-				<OntarioIconAlertError colour="grey" iconWidth={48} />
-				<h3>colour - white, iconWidth - 16</h3>
-				<OntarioIconAlertError colour="white" iconWidth={16} />
-				<h3>colour - white, iconWidth - 24</h3>
-				<OntarioIconAlertError colour="white" iconWidth={24} />
-				<h3>colour - white, iconWidth - 32</h3>
-				<OntarioIconAlertError colour="white" iconWidth={32} />
-				<h3>colour - white, iconWidth - 48</h3>
-				<OntarioIconAlertError colour="white" iconWidth={48} />
-				<h3>colour - inherit, iconWidth - 16</h3>
-				<OntarioIconAlertError colour="inherit" iconWidth={16} />
-				<h3>colour - inherit, iconWidth - 24</h3>
-				<OntarioIconAlertError colour="inherit" iconWidth={24} />
-				<h3>colour - inherit, iconWidth - 32</h3>
-				<OntarioIconAlertError colour="inherit" iconWidth={32} />
-				<h3>colour - inherit, iconWidth - 48</h3>
-				<OntarioIconAlertError colour="inherit" iconWidth={48} />
-				<h2>OntarioIconAlertInformation</h2>
-				<h3>colour - black, iconWidth - 16</h3>
-				<OntarioIconAlertInformation colour="black" iconWidth={16} />
-				<h3>colour - black, iconWidth - 24</h3>
-				<OntarioIconAlertInformation colour="black" iconWidth={24} />
-				<h3>colour - black, iconWidth - 32</h3>
-				<OntarioIconAlertInformation colour="black" iconWidth={32} />
-				<h3>colour - black, iconWidth - 48</h3>
-				<OntarioIconAlertInformation colour="black" iconWidth={48} />
-				<h3>colour - blue, iconWidth - 16</h3>
-				<OntarioIconAlertInformation colour="blue" iconWidth={16} />
-				<h3>colour - blue, iconWidth - 24</h3>
-				<OntarioIconAlertInformation colour="blue" iconWidth={24} />
-				<h3>colour - blue, iconWidth - 32</h3>
-				<OntarioIconAlertInformation colour="blue" iconWidth={32} />
-				<h3>colour - blue, iconWidth - 48</h3>
-				<OntarioIconAlertInformation colour="blue" iconWidth={48} />
-				<h3>colour - grey, iconWidth - 16</h3>
-				<OntarioIconAlertInformation colour="grey" iconWidth={16} />
-				<h3>colour - grey, iconWidth - 24</h3>
-				<OntarioIconAlertInformation colour="grey" iconWidth={24} />
-				<h3>colour - grey, iconWidth - 32</h3>
-				<OntarioIconAlertInformation colour="grey" iconWidth={32} />
-				<h3>colour - grey, iconWidth - 48</h3>
-				<OntarioIconAlertInformation colour="grey" iconWidth={48} />
-				<h3>colour - white, iconWidth - 16</h3>
-				<OntarioIconAlertInformation colour="white" iconWidth={16} />
-				<h3>colour - white, iconWidth - 24</h3>
-				<OntarioIconAlertInformation colour="white" iconWidth={24} />
-				<h3>colour - white, iconWidth - 32</h3>
-				<OntarioIconAlertInformation colour="white" iconWidth={32} />
-				<h3>colour - white, iconWidth - 48</h3>
-				<OntarioIconAlertInformation colour="white" iconWidth={48} />
-				<h3>colour - inherit, iconWidth - 16</h3>
-				<OntarioIconAlertInformation colour="inherit" iconWidth={16} />
-				<h3>colour - inherit, iconWidth - 24</h3>
-				<OntarioIconAlertInformation colour="inherit" iconWidth={24} />
-				<h3>colour - inherit, iconWidth - 32</h3>
-				<OntarioIconAlertInformation colour="inherit" iconWidth={32} />
-				<h3>colour - inherit, iconWidth - 48</h3>
-				<OntarioIconAlertInformation colour="inherit" iconWidth={48} />
-				<h2>OntarioIconAlertSuccess</h2>
-				<h3>colour - black, iconWidth - 16</h3>
-				<OntarioIconAlertSuccess colour="black" iconWidth={16} />
-				<h3>colour - black, iconWidth - 24</h3>
-				<OntarioIconAlertSuccess colour="black" iconWidth={24} />
-				<h3>colour - black, iconWidth - 32</h3>
-				<OntarioIconAlertSuccess colour="black" iconWidth={32} />
-				<h3>colour - black, iconWidth - 48</h3>
-				<OntarioIconAlertSuccess colour="black" iconWidth={48} />
-				<h3>colour - blue, iconWidth - 16</h3>
-				<OntarioIconAlertSuccess colour="blue" iconWidth={16} />
-				<h3>colour - blue, iconWidth - 24</h3>
-				<OntarioIconAlertSuccess colour="blue" iconWidth={24} />
-				<h3>colour - blue, iconWidth - 32</h3>
-				<OntarioIconAlertSuccess colour="blue" iconWidth={32} />
-				<h3>colour - blue, iconWidth - 48</h3>
-				<OntarioIconAlertSuccess colour="blue" iconWidth={48} />
-				<h3>colour - grey, iconWidth - 16</h3>
-				<OntarioIconAlertSuccess colour="grey" iconWidth={16} />
-				<h3>colour - grey, iconWidth - 24</h3>
-				<OntarioIconAlertSuccess colour="grey" iconWidth={24} />
-				<h3>colour - grey, iconWidth - 32</h3>
-				<OntarioIconAlertSuccess colour="grey" iconWidth={32} />
-				<h3>colour - grey, iconWidth - 48</h3>
-				<OntarioIconAlertSuccess colour="grey" iconWidth={48} />
-				<h3>colour - white, iconWidth - 16</h3>
-				<OntarioIconAlertSuccess colour="white" iconWidth={16} />
-				<h3>colour - white, iconWidth - 24</h3>
-				<OntarioIconAlertSuccess colour="white" iconWidth={24} />
-				<h3>colour - white, iconWidth - 32</h3>
-				<OntarioIconAlertSuccess colour="white" iconWidth={32} />
-				<h3>colour - white, iconWidth - 48</h3>
-				<OntarioIconAlertSuccess colour="white" iconWidth={48} />
-				<h3>colour - inherit, iconWidth - 16</h3>
-				<OntarioIconAlertSuccess colour="inherit" iconWidth={16} />
-				<h3>colour - inherit, iconWidth - 24</h3>
-				<OntarioIconAlertSuccess colour="inherit" iconWidth={24} />
-				<h3>colour - inherit, iconWidth - 32</h3>
-				<OntarioIconAlertSuccess colour="inherit" iconWidth={32} />
-				<h3>colour - inherit, iconWidth - 48</h3>
-				<OntarioIconAlertSuccess colour="inherit" iconWidth={48} />
-				<h2>OntarioIconAlertWarning</h2>
-				<h3>colour - black, iconWidth - 16</h3>
-				<OntarioIconAlertWarning colour="black" iconWidth={16} />
-				<h3>colour - black, iconWidth - 24</h3>
-				<OntarioIconAlertWarning colour="black" iconWidth={24} />
-				<h3>colour - black, iconWidth - 32</h3>
-				<OntarioIconAlertWarning colour="black" iconWidth={32} />
-				<h3>colour - black, iconWidth - 48</h3>
-				<OntarioIconAlertWarning colour="black" iconWidth={48} />
-				<h3>colour - blue, iconWidth - 16</h3>
-				<OntarioIconAlertWarning colour="blue" iconWidth={16} />
-				<h3>colour - blue, iconWidth - 24</h3>
-				<OntarioIconAlertWarning colour="blue" iconWidth={24} />
-				<h3>colour - blue, iconWidth - 32</h3>
-				<OntarioIconAlertWarning colour="blue" iconWidth={32} />
-				<h3>colour - blue, iconWidth - 48</h3>
-				<OntarioIconAlertWarning colour="blue" iconWidth={48} />
-				<h3>colour - grey, iconWidth - 16</h3>
-				<OntarioIconAlertWarning colour="grey" iconWidth={16} />
-				<h3>colour - grey, iconWidth - 24</h3>
-				<OntarioIconAlertWarning colour="grey" iconWidth={24} />
-				<h3>colour - grey, iconWidth - 32</h3>
-				<OntarioIconAlertWarning colour="grey" iconWidth={32} />
-				<h3>colour - grey, iconWidth - 48</h3>
-				<OntarioIconAlertWarning colour="grey" iconWidth={48} />
-				<h3>colour - white, iconWidth - 16</h3>
-				<OntarioIconAlertWarning colour="white" iconWidth={16} />
-				<h3>colour - white, iconWidth - 24</h3>
-				<OntarioIconAlertWarning colour="white" iconWidth={24} />
-				<h3>colour - white, iconWidth - 32</h3>
-				<OntarioIconAlertWarning colour="white" iconWidth={32} />
-				<h3>colour - white, iconWidth - 48</h3>
-				<OntarioIconAlertWarning colour="white" iconWidth={48} />
-				<h3>colour - inherit, iconWidth - 16</h3>
-				<OntarioIconAlertWarning colour="inherit" iconWidth={16} />
-				<h3>colour - inherit, iconWidth - 24</h3>
-				<OntarioIconAlertWarning colour="inherit" iconWidth={24} />
-				<h3>colour - inherit, iconWidth - 32</h3>
-				<OntarioIconAlertWarning colour="inherit" iconWidth={32} />
-				<h3>colour - inherit, iconWidth - 48</h3>
-				<OntarioIconAlertWarning colour="inherit" iconWidth={48} />
 				<h2>OntarioIconArrowUp</h2>
 				<h3>colour - black, iconWidth - 16</h3>
 				<OntarioIconArrowUp colour="black" iconWidth={16} />
@@ -691,47 +522,6 @@ export default function OntarioIconTestPage() {
 				<OntarioIconCriticalAlertWarning colour="inherit" iconWidth={32} />
 				<h3>colour - inherit, iconWidth - 48</h3>
 				<OntarioIconCriticalAlertWarning colour="inherit" iconWidth={48} />
-				<h2>OntarioIconDropdownArrow</h2>
-				<h3>colour - black, iconWidth - 16</h3>
-				<OntarioIconDropdownArrow colour="black" iconWidth={16} />
-				<h3>colour - black, iconWidth - 24</h3>
-				<OntarioIconDropdownArrow colour="black" iconWidth={24} />
-				<h3>colour - black, iconWidth - 32</h3>
-				<OntarioIconDropdownArrow colour="black" iconWidth={32} />
-				<h3>colour - black, iconWidth - 48</h3>
-				<OntarioIconDropdownArrow colour="black" iconWidth={48} />
-				<h3>colour - blue, iconWidth - 16</h3>
-				<OntarioIconDropdownArrow colour="blue" iconWidth={16} />
-				<h3>colour - blue, iconWidth - 24</h3>
-				<OntarioIconDropdownArrow colour="blue" iconWidth={24} />
-				<h3>colour - blue, iconWidth - 32</h3>
-				<OntarioIconDropdownArrow colour="blue" iconWidth={32} />
-				<h3>colour - blue, iconWidth - 48</h3>
-				<OntarioIconDropdownArrow colour="blue" iconWidth={48} />
-				<h3>colour - grey, iconWidth - 16</h3>
-				<OntarioIconDropdownArrow colour="grey" iconWidth={16} />
-				<h3>colour - grey, iconWidth - 24</h3>
-				<OntarioIconDropdownArrow colour="grey" iconWidth={24} />
-				<h3>colour - grey, iconWidth - 32</h3>
-				<OntarioIconDropdownArrow colour="grey" iconWidth={32} />
-				<h3>colour - grey, iconWidth - 48</h3>
-				<OntarioIconDropdownArrow colour="grey" iconWidth={48} />
-				<h3>colour - white, iconWidth - 16</h3>
-				<OntarioIconDropdownArrow colour="white" iconWidth={16} />
-				<h3>colour - white, iconWidth - 24</h3>
-				<OntarioIconDropdownArrow colour="white" iconWidth={24} />
-				<h3>colour - white, iconWidth - 32</h3>
-				<OntarioIconDropdownArrow colour="white" iconWidth={32} />
-				<h3>colour - white, iconWidth - 48</h3>
-				<OntarioIconDropdownArrow colour="white" iconWidth={48} />
-				<h3>colour - inherit, iconWidth - 16</h3>
-				<OntarioIconDropdownArrow colour="inherit" iconWidth={16} />
-				<h3>colour - inherit, iconWidth - 24</h3>
-				<OntarioIconDropdownArrow colour="inherit" iconWidth={24} />
-				<h3>colour - inherit, iconWidth - 32</h3>
-				<OntarioIconDropdownArrow colour="inherit" iconWidth={32} />
-				<h3>colour - inherit, iconWidth - 48</h3>
-				<OntarioIconDropdownArrow colour="inherit" iconWidth={48} />
 				<h2>OntarioIconEmail</h2>
 				<h3>colour - black, iconWidth - 16</h3>
 				<OntarioIconEmail colour="black" iconWidth={16} />
