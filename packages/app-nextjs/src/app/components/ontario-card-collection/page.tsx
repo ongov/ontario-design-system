@@ -9,7 +9,7 @@ export default function OntarioCardCollectionPage() {
 				<h1>ontario-card-collection</h1>
 
 				<h2>'cards-per-row' Prop Variants</h2>
-				<h3>cards per row - 4</h3>
+				<h3>4</h3>
 				<OntarioCardCollection cardsPerRow="4">
 					<OntarioCard
 						description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
@@ -24,7 +24,7 @@ export default function OntarioCardCollectionPage() {
 					<OntarioCard headerColour="blue" label="Card Title 4"></OntarioCard>
 				</OntarioCardCollection>
 
-				<h3>cards per row - 3</h3>
+				<h3>3</h3>
 				<OntarioCardCollection cardsPerRow="3">
 					<OntarioCard
 						description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
@@ -38,7 +38,7 @@ export default function OntarioCardCollectionPage() {
 					<OntarioCard label="Card Title 3"></OntarioCard>
 				</OntarioCardCollection>
 
-				<h3>cards per row - 2</h3>
+				<h3>2</h3>
 				<OntarioCardCollection cardsPerRow="2">
 					<OntarioCard
 						description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
