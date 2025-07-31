@@ -1,3 +1,5 @@
+'use client';
+
 import { Grid } from '../../grid';
 import { OntarioSearchBox } from '@ongov/ontario-design-system-component-library-react';
 import { useCallback } from 'react';
@@ -31,18 +33,18 @@ export default function OntarioSearchBoxPage() {
 				<h1>ontario-search-box</h1>
 
 				<h2>'language' Prop Variants</h2>
-				<h3>Language - en</h3>
+				<h3>En</h3>
 				<OntarioSearchBox caption="Search in English"></OntarioSearchBox>
 
-				<h3>Language - fr</h3>
+				<h3>Fr</h3>
 				<OntarioSearchBox language="fr" caption="Recherche en français"></OntarioSearchBox>
 
 				<h2>'required' Prop Variants</h2>
-				<h3>Required - true</h3>
-				<OntarioSearchBox required="true" caption="Required field"></OntarioSearchBox>
+				<h3>True</h3>
+				<OntarioSearchBox required={true} caption="Required field"></OntarioSearchBox>
 
-				<h3>Required - false</h3>
-				<OntarioSearchBox required="false" caption="Optional field"></OntarioSearchBox>
+				<h3>False</h3>
+				<OntarioSearchBox required={false} caption="Optional field"></OntarioSearchBox>
 
 				<h2>'hint-text' - Prop Variants</h2>
 				<OntarioSearchBox caption="Search with hint" hintText="This is a simple hint string."></OntarioSearchBox>
