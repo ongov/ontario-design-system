@@ -61,7 +61,7 @@ export default function OntarioCalloutPage() {
 				<OntarioCallout
 					headingType="h3"
 					headingContentType="string"
-					headingContent="This is the callout</a>"
+					headingContent="This is the callout"
 					content="This is testing the string heading-content-type."
 				></OntarioCallout>
 
