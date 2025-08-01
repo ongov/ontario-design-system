@@ -34,6 +34,9 @@ export default function Home() {
 							<Link href="/components/ontario-language-toggle">ontario-language-toggle</Link>
             </li>
             <li>
+							<Link href="/components/ontario-textarea">ontario-textarea</Link>
+            </li>
+            <li>
 							<Link href="/components/ontario-page-alert">ontario-page-alert</Link>
 						</li>
 					</ul>
