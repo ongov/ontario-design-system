@@ -153,11 +153,9 @@ export default function OntarioAsidePage() {
 					headingType="h2"
 					headingContentType="html"
 					headingContent={
-						<div className="ontario-aside">
-							<p>
-								Did you know? <strong>HTML</strong> in heading!
-							</p>
-						</div>
+						<p>
+							Did you know? <strong>HTML</strong> in heading!
+						</p>
 					}
 					highlightColour="teal"
 					content={
