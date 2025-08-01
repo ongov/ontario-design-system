@@ -331,7 +331,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h2>'horizontal-impage-size-type' Prop Variants</h2>
+				<h2>'horizontal-image-size-type' Prop Variants</h2>
 				<h3>One-third</h3>
 				<OntarioCard
 					headingLevel="h2"
