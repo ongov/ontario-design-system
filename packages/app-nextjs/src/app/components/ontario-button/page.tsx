@@ -1,0 +1,25 @@
+import { Grid } from '../../grid';
+import { OntarioButton } from '@ongov/ontario-design-system-component-library-react';
+
+export default function OntarioButtonPage() {
+	return (
+		<main>
+			<Grid>
+				<h1>ontario-button</h1>
+
+				<div>
+					<h2>"type" Prop Variants</h2>
+
+					<h3>Primary</h3>
+					<OntarioButton type="primary" label="Primary Button"></OntarioButton>
+
+					<h3>Secondary</h3>
+					<OntarioButton type="secondary" label="Secondary Button"></OntarioButton>
+
+					<h3>Tertiary</h3>
+					<OntarioButton type="tertiary" label="Tertiary Button"></OntarioButton>
+				</div>
+			</Grid>
+		</main>
+	);
+}
