@@ -17,11 +17,19 @@ export default function OntarioAccordionPage() {
 					accordionData={[
 						{
 							label: 'Accordion 1',
-							content: ['Item 1', 'Item 2', 'Item 3'],
+							content: [
+								'Ontario is Canada’s most populous province.',
+								'The capital city is Toronto.',
+								'Lake Superior is the largest of the Great Lakes.',
+							],
 						},
 						{
 							label: 'Accordion 2',
-							content: ['Item A', 'Item B', 'Item C'],
+							content: [
+								'Bananas are berries, but strawberries are not.',
+								'The Eiffel Tower can be 15 cm taller during hot days.',
+								'Honey never spoils.',
+							],
 						},
 					]}
 				/>
@@ -39,11 +47,19 @@ export default function OntarioAccordionPage() {
 					accordionData={[
 						{
 							label: 'Accordion 1',
-							content: ['Item 1', 'Item 2', 'Item 3'],
+							content: [
+								'Cats have fewer toes on their back paws.',
+								'The unicorn is Scotland’s national animal.',
+								'Octopuses have three hearts.',
+							],
 						},
 						{
 							label: 'Accordion 2',
-							content: ['Item A', 'Item B', 'Item C'],
+							content: [
+								'The world’s largest desert is Antarctica.',
+								'Wombat poop is cube-shaped.',
+								'There are more stars in the universe than grains of sand on Earth.',
+							],
 						},
 					]}
 				/>
@@ -59,11 +75,19 @@ export default function OntarioAccordionPage() {
 					accordionData={[
 						{
 							label: 'Accordion 1',
-							content: ['Item 1', 'Item 2', 'Item 3'],
+							content: [
+								'Hot water freezes faster than cold water.',
+								'The inventor of the frisbee was turned into a frisbee.',
+								'The dot over the letter "i" is called a tittle.',
+							],
 						},
 						{
 							label: 'Accordion 2',
-							content: ['Item A', 'Item B', 'Item C'],
+							content: [
+								'Venus is the only planet to spin clockwise.',
+								'The tongue is the only muscle attached at one end.',
+								'Some turtles can breathe through their butts.',
+							],
 						},
 					]}
 				/>
@@ -79,11 +103,19 @@ export default function OntarioAccordionPage() {
 					accordionData={[
 						{
 							label: 'Accordion 1',
-							content: ['Item 1', 'Item 2', 'Item 3'],
+							content: [
+								'The longest place name on the planet is 85 letters long.',
+								'The inventor of the microwave only received $2 for his discovery.',
+								'The first computer mouse was made of wood.',
+							],
 						},
 						{
 							label: 'Accordion 2',
-							content: ['Item A', 'Item B', 'Item C'],
+							content: [
+								'The Twitter bird’s official name is Larry.',
+								'The majority of your brain is fat.',
+								'The hashtag symbol is technically called an octothorpe.',
+							],
 						},
 					]}
 				/>
