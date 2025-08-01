@@ -33,6 +33,9 @@ export default function Home() {
         		<li>
 							<Link href="/components/ontario-hint-text">ontario-hint-text</Link>
             </li>
+            <li>
+							<Link href="/components/ontario-input">ontario-input</Link>
+            </li>
 						<li>
 							<Link href="/components/ontario-language-toggle">ontario-language-toggle</Link>
             </li>
