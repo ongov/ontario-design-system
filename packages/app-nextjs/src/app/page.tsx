@@ -48,6 +48,9 @@ export default function Home() {
             <li>
 							<Link href="/components/ontario-page-alert">ontario-page-alert</Link>
 						</li>
+						<li>
+							<Link href="/components/ontario-hint-expander">ontario-hint-expander</Link>
+						</li>
 					</ul>
 				</div>
 			</Grid>
