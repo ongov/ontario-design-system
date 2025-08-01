@@ -20,13 +20,16 @@ export default function Home() {
 					<ul>
 						<li>
 							<Link href="/components/ontario-accordion">ontario-accordion</Link>
-						</li>
-		        <li>
+            </li>
+            <li>
 							<Link href="/components/ontario-badge">ontario-badge</Link>
 						</li>
             <li>
               <Link href="/components/ontario-button">ontario-button</Link>
             </li>
+            <li>
+							<Link href="/components/ontario-card-collection">ontario-card-collection</Link>
+		        <li>
             <li>
               <Link href="/components/ontario-critical-alert">ontario-critical-alert</Link>
             </li>
