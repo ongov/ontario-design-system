@@ -57,6 +57,9 @@ export default function Home() {
 						<li>
 							<Link href="/components/ontario-callout">ontario-callout</Link>
 						</li>
+						<li>
+							<Link href="/components/ontario-card">ontario-card</Link>
+						</li>
 					</ul>
 				</div>
 			</Grid>
