@@ -20,9 +20,33 @@ export default function Home() {
 					<ul>
 						<li>
 							<Link href="/components/ontario-accordion">ontario-accordion</Link>
+            </li>
+            <li>
+							<Link href="/components/ontario-badge">ontario-badge</Link>
 						</li>
+            <li>
+              <Link href="/components/ontario-button">ontario-button</Link>
+            </li>
+            <li>
+							<Link href="/components/ontario-card-collection">ontario-card-collection</Link>
+		        <li>
+            <li>
+              <Link href="/components/ontario-critical-alert">ontario-critical-alert</Link>
+            </li>
+        		<li>
+							<Link href="/components/ontario-hint-text">ontario-hint-text</Link>
+            </li>
+            <li>
+							<Link href="/components/ontario-input">ontario-input</Link>
+            </li>
 						<li>
-							<Link href="/components/ontario-card-colection">ontario-card-collection</Link>
+							<Link href="/components/ontario-language-toggle">ontario-language-toggle</Link>
+            </li>
+            <li>
+							<Link href="/components/ontario-textarea">ontario-textarea</Link>
+            </li>
+            <li>
+							<Link href="/components/ontario-page-alert">ontario-page-alert</Link>
 						</li>
 					</ul>
 				</div>
