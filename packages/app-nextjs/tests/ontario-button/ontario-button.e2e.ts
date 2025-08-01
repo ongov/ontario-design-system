@@ -8,7 +8,6 @@ test.describe('Ontario Button', () => {
 	// Test for default rendering
 	test('should display the primary button when the type is set to `primary`', async ({ page }) => {
 		const primaryButton = await page.locator('#ontario-button-primary');
-		const internalButton = await primaryButton.locator('button');
 		await expect(primaryButton).toBeVisible();
 		await expect(primaryButton).toHaveText('Primary Button');
 		await expect(primaryButton.locator('button')).toHaveClass(/ontario-button--primary/);
@@ -54,5 +53,17 @@ test.describe('Ontario Button', () => {
 		const button = page.locator('#ontario-button-secondary');
 		await button.focus();
 		await page.keyboard.press('Enter');
+	});
+
+	// Test for button with no onClick handler
+	test('should not trigger alert if button has no onClick handler', async ({ page }) => {
+		let triggered = false;
+
+		page.once('dialog', () => {
+			triggered = true;
+		});
+
+		await page.click('#ontario-button-tertiary'); // has no onClick
+		expect(triggered).toBe(false);
 	});
 });

@@ -50,9 +50,9 @@ This project uses [Playwright](https://playwright.dev/) for visual regression te
 
 ### Prerequisites
 
-Before running tests or starting local development, ensure you have Rancher Desktop installed and running on your machine. Rancher Desktop provides the container runtime environment required for this project.
+Before running tests or starting local development, ensure you have [Rancher Desktop](https://rancherdesktop.io/) installed and running on your machine. Rancher Desktop provides the container runtime environment required for this project.
 
-Install Rancher Desktop
+#### Install Rancher Desktop
 
 - Download Rancher Desktop from the official site: https://rancherdesktop.io/
 - Follow the installation instructions for your operating system.
@@ -115,3 +115,43 @@ Use with care — read the prompt before confirming.
 - Snapshots are saved to the `vrt-snapshots/` folder inside each component within the `tests` folder.
 - Docker ensures consistency with CI snapshots by running the same base OS and browser environment.
 - You do not need to run pnpm install manually — all dependencies are handled in the container.
+
+## Running E2E and VRT tests locally
+
+This project provides scripts to run Playwright-based E2E and VRT tests. However, visual regression tests (VRT) are not recommended to run locally unless you're explicitly updating snapshots.
+
+### Why avoid local VRT test runs?
+
+Visual tests rely on pixel-perfect rendering, which can vary based on:
+
+- Your local operating system
+- Browser rendering engines
+- Installed system fonts or rendering backends (e.g., CoreText vs. Freetype)
+
+As a result, tests may pass locally but fail in CI — even if nothing is visually broken.
+
+Run VRT locally only when you intend to update snapshots using the Dockerized environment, which mirrors CI.
+
+### Local Test Commands
+
+| Purpose                                    | Script                                  |
+| ------------------------------------------ | --------------------------------------- |
+| Update snapshots using Docker (CI-safe)    | `pnpm run test:update-snapshots:docker` |
+| Run VRT tests using Docker (CI-safe)       | `pnpm run test:vrt:docker`              |
+| Run VRT tests locally ( not CI-consistent) | `pnpm run test:vrt`                     |
+| Run E2E tests locally                      | `pnpm run test:e2e`                     |
+| Update snapshots using local engine        | `pnpm run test:update-snapshots`        |
+
+### Fixing Permission Errors (Permission denied)
+
+If you get an error like:
+
+```bash
+/bin/sh: 1: ../../scripts/start-server.sh: Permission denied
+```
+
+Make sure your script is executable. You can do this by running the following command in the monorepo root:
+
+```bash
+chmod +x scripts/start-server.sh
+```

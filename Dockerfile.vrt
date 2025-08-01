@@ -6,6 +6,9 @@ WORKDIR /app
 # copy monorepo
 COPY . .
 
+# Make start-server.sh executable
+RUN chmod +x scripts/start-server.sh
+
 # Set up pnpm 
 RUN npm install -g pnpm
 

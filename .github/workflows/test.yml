@@ -14,15 +14,12 @@ jobs:
   unit-test:
     runs-on: ubuntu-latest
     steps:
-      # Checkout the repo
       - uses: actions/checkout@v4
 
-      # Install pnpm
       - name: Install pnpm
         uses: pnpm/action-setup@v4
 
-      # Setup Node.js
-      - name: Use Node.js ${{ inputs.node-version }} # Pass this in as a parameter
+      - name: Use Node.js ${{ inputs.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node-version }}
@@ -32,7 +29,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Run unit tests
       - name: Run Unit Tests
         run: pnpm run test:unit
 
@@ -55,7 +51,7 @@ jobs:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
-          name: ${{ inputs.build-artifacts-name }} # Artifact name (must match upload name)
+          name: ${{ inputs.build-artifacts-name }}
           path: ./packages
 
       - name: Install dependencies
@@ -72,14 +68,29 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: vrt-test-results
-          path: packages/app-nextjs/test-results # Update when adding tests for other apps
+          path: packages/app-nextjs/test-results
 
       - name: Upload VRT JUnit results for GitHub integration
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: vrt-junit-results
-          path: packages/app-nextjs/test-results/playwright/results.xml # Update when adding tests for other apps
+          path: packages/app-nextjs/test-results/playwright/results.xml
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-html-report
+          path: packages/app-nextjs/playwright-report
+
+      - name: Publish JUnit Results
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: Playwright VRT Tests
+          path: packages/app-nextjs/test-results/playwright/results.xml
+          reporter: jest-junit
 
   e2e-apps-test:
     runs-on: ubuntu-latest
@@ -100,7 +111,7 @@ jobs:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
-          name: ${{ inputs.build-artifacts-name }} # Artifact name (must match upload name)
+          name: ${{ inputs.build-artifacts-name }}
           path: ./packages
 
       - name: Install dependencies
@@ -117,11 +128,26 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: e2e-test-results
-          path: packages/app-nextjs/test-results # Update when adding tests for other apps
+          path: packages/app-nextjs/test-results
 
       - name: Upload E2E Apps JUnit results for GitHub integration
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: e2e-junit-results
-          path: packages/app-nextjs/test-results/playwright/results.xml # Update when adding tests for other apps
+          path: packages/app-nextjs/test-results/playwright/results.xml
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-html-report
+          path: packages/app-nextjs/playwright-report
+
+      - name: Publish JUnit Results
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: Playwright E2E Tests
+          path: packages/app-nextjs/test-results/playwright/results.xml
+          reporter: jest-junit

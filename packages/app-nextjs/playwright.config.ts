@@ -7,13 +7,13 @@ export default defineConfig({
 	fullyParallel: true,
 	forbidOnly: !!process.env.CI,
 	retries: process.env.CI ? 2 : 0,
-	workers: process.env.CI ? 1 : undefined,
+	// workers: process.env.CI ? 1 : undefined,
 
-	reporter: [['html'], ['junit', { outputFile: 'test-results/playwright/results.xml' }]],
+	reporter: [['list'], ['html'], ['junit', { outputFile: 'test-results/playwright/results.xml' }]],
 
 	use: {
 		baseURL: 'http://localhost:3000',
-		trace: 'on-first-retry',
+		trace: 'retain-on-failure',
 	},
 
 	projects: [
@@ -32,7 +32,7 @@ export default defineConfig({
 	],
 
 	webServer: {
-		command: 'pnpm run build && pnpm run start',
+		command: '../../scripts/start-server.sh',
 		port: 3000,
 		timeout: 300 * 1000,
 		reuseExistingServer: !process.env.CI,
