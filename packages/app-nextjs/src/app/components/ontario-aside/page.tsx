@@ -152,17 +152,9 @@ export default function OntarioAsidePage() {
 				<OntarioAside
 					headingType="h2"
 					headingContentType="html"
-					headingContent={
-						<p>
-							Did you know? <strong>HTML</strong> in heading!
-						</p>
-					}
+					headingContent="Did you know? <strong>HTML</strong> in heading!"
 					highlightColour="teal"
-					content={
-						<div>
-							Updated content with <strong>HTML</strong> support.
-						</div>
-					}
+					content="Updated content with <strong>HTML</strong> support."
 				></OntarioAside>
 			</Grid>
 		</main>
