@@ -13,39 +13,38 @@ export default function Home() {
 						visual regression testing. Each page displays one or more components with relevant visual variations.
 					</p>
 				</div>
-
 				<hr />
 				<div>
 					<h2>Component Pages</h2>
 					<ul>
 						<li>
 							<Link href="/components/ontario-accordion">ontario-accordion</Link>
-            </li>
-            <li>
+						</li>
+						<li>
 							<Link href="/components/ontario-badge">ontario-badge</Link>
 						</li>
-            <li>
-              <Link href="/components/ontario-button">ontario-button</Link>
-            </li>
-            <li>
+						<li>
+							<Link href="/components/ontario-button">ontario-button</Link>
+						</li>
+						<li>
 							<Link href="/components/ontario-card-collection">ontario-card-collection</Link>
-		        <li>
-            <li>
-              <Link href="/components/ontario-critical-alert">ontario-critical-alert</Link>
-            </li>
-        		<li>
+						</li>
+						<li>
+							<Link href="/components/ontario-critical-alert">ontario-critical-alert</Link>
+						</li>
+						<li>
 							<Link href="/components/ontario-hint-text">ontario-hint-text</Link>
-            </li>
-            <li>
+						</li>
+						<li>
 							<Link href="/components/ontario-input">ontario-input</Link>
-            </li>
+						</li>
 						<li>
 							<Link href="/components/ontario-language-toggle">ontario-language-toggle</Link>
-            </li>
-            <li>
+						</li>
+						<li>
 							<Link href="/components/ontario-textarea">ontario-textarea</Link>
-            </li>
-            <li>
+						</li>
+						<li>
 							<Link href="/components/ontario-page-alert">ontario-page-alert</Link>
 						</li>
 						<li>
@@ -59,6 +58,9 @@ export default function Home() {
 						</li>
 						<li>
 							<Link href="/components/ontario-card">ontario-card</Link>
+						</li>
+						<li>
+							<Link href="/components/ontario-search-box">ontario-search-box</Link>
 						</li>
 					</ul>
 				</div>
