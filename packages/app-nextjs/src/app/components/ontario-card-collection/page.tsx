@@ -1,6 +1,5 @@
 import { Grid } from '../../grid';
-import { OntarioCardCollection } from '@ontario/ods-web-components/ontario-card-collection';
-import { OntarioCard } from '@ontario/ods-web-components/ontario-card';
+import { OntarioCard, OntarioCardCollection } from '@ongov/ontario-design-system-component-library-react';
 
 export default function OntarioCardCollectionPage() {
 	return (
@@ -10,7 +9,7 @@ export default function OntarioCardCollectionPage() {
 
 				<h2>'cards-per-row' Prop Variants</h2>
 				<h3>4</h3>
-				<OntarioCardCollection cardsPerRow="4">
+				<OntarioCardCollection cardsPerRow={4}>
 					<OntarioCard
 						description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 						label="Card Title 1"
@@ -25,7 +24,7 @@ export default function OntarioCardCollectionPage() {
 				</OntarioCardCollection>
 
 				<h3>3</h3>
-				<OntarioCardCollection cardsPerRow="3">
+				<OntarioCardCollection cardsPerRow={3}>
 					<OntarioCard
 						description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 						label="Card Title 1"
@@ -39,7 +38,7 @@ export default function OntarioCardCollectionPage() {
 				</OntarioCardCollection>
 
 				<h3>2</h3>
-				<OntarioCardCollection cardsPerRow="2">
+				<OntarioCardCollection cardsPerRow={2}>
 					<OntarioCard
 						description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 						label="Card Title 1"
