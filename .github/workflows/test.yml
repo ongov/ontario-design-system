@@ -90,7 +90,7 @@ jobs:
         with:
           name: Playwright VRT Tests
           path: packages/app-nextjs/test-results/playwright/results.xml
-          reporter: playwright
+          reporter: java-junit
 
   e2e-apps-test:
     runs-on: ubuntu-latest
@@ -150,4 +150,4 @@ jobs:
         with:
           name: Playwright E2E Tests
           path: packages/app-nextjs/test-results/playwright/results.xml
-          reporter: playwright
+          reporter: java-junit
