@@ -6,4 +6,4 @@ services:
     working_dir: /app/packages/app-nextjs
     volumes:
       - .:/app
-    command: sh -c "pnpm run build-libs && pnpm run test:vrt"
+    command: sh -c "pnpm run build-libs && pnpm run build-apps && pnpm run test:vrt"

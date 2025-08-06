@@ -81,7 +81,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-html-report
+          name: playwright-html-report-vrt
           path: packages/app-nextjs/playwright-report
 
       - name: Publish JUnit Results
@@ -90,7 +90,7 @@ jobs:
         with:
           name: Playwright VRT Tests
           path: packages/app-nextjs/test-results/playwright/results.xml
-          reporter: jest-junit
+          reporter: playwright
 
   e2e-apps-test:
     runs-on: ubuntu-latest
@@ -141,7 +141,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-html-report
+          name: playwright-html-report-e2e
           path: packages/app-nextjs/playwright-report
 
       - name: Publish JUnit Results
@@ -150,4 +150,4 @@ jobs:
         with:
           name: Playwright E2E Tests
           path: packages/app-nextjs/test-results/playwright/results.xml
-          reporter: jest-junit
+          reporter: playwright
