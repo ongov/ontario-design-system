@@ -18,7 +18,7 @@ const paths = {
 	dsGlobalStyles: {
 		package: '../ontario-design-system-global-styles',
 		favicons: '../ontario-design-system-global-styles/src/favicons/**',
-		src: '../ontario-design-system-global-styles/src/**',
+		src: '../ontario-design-system-global-styles/dist/**',
 	},
 	dsComponentLibrary: {
 		package: '../ontario-design-system-component-library',
