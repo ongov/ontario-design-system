@@ -130,28 +130,14 @@ Visual tests rely on pixel-perfect rendering, which can vary based on:
 
 As a result, tests may pass locally but fail in CI — even if nothing is visually broken.
 
-Run VRT locally only when you intend to update snapshots using the Dockerized environment, which mirrors CI.
+Run VRT locally only inside the provided Docker container, which matches the CI environment (same OS, Playwright version, browsers, and fonts). This makes your local snapshots consistent with CI.
 
 ### Local Test Commands
 
-| Purpose                                    | Script                                  |
-| ------------------------------------------ | --------------------------------------- |
-| Update snapshots using Docker (CI-safe)    | `pnpm run test:update-snapshots:docker` |
-| Run VRT tests using Docker (CI-safe)       | `pnpm run test:vrt:docker`              |
-| Run VRT tests locally ( not CI-consistent) | `pnpm run test:vrt`                     |
-| Run E2E tests locally                      | `pnpm run test:e2e`                     |
-| Update snapshots using local engine        | `pnpm run test:update-snapshots`        |
-
-### Fixing Permission Errors (Permission denied)
-
-If you get an error like:
-
-```bash
-/bin/sh: 1: ../../scripts/start-server.sh: Permission denied
-```
-
-Make sure your script is executable. You can do this by running the following command in the monorepo root:
-
-```bash
-chmod +x scripts/start-server.sh
-```
+| Purpose                                        | Script                                  |
+| ---------------------------------------------- | --------------------------------------- |
+| Update snapshots in CI-matching Docker env     | `pnpm run test:update-snapshots:docker` |
+| Run VRT in CI-matching Docker env              | `pnpm run test:vrt:docker`              |
+| Run VRT tests locally (might not match CI env) | `pnpm run test:vrt`                     |
+| Run E2E tests locally                          | `pnpm run test:e2e`                     |
+| Update snapshots using local engine            | `pnpm run test:update-snapshots`        |

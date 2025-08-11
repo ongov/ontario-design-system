@@ -15,7 +15,8 @@ $ontario-button-bg-primary--hover: colours.$ontario-colour-link--hover;
 $ontario-button-bg-primary--active: colours.$ontario-colour-link--active;
 $ontario-button-bg-secondary: colours.$ontario-colour-white;
 
-// Added for visual regression tests to ensure the component renders with correct dimensions and spacing
+// Make the host box-level so its width/height/margins apply (was inline by default).
+// This also stabilizes VRT by giving the component predictable intrinsic sizing.
 :host {
 	display: inline-block;
 }
