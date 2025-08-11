@@ -18,6 +18,10 @@ jobs:
   test: # Job defined in a separate file (test.yml)
     needs: ['build']
     uses: ./.github/workflows/test.yml
+    permissions:
+      contents: read
+      actions: read
+      checks: write
     with:
       node-version: 20
       build-artifacts-name: ${{ needs.build.outputs.build-artifacts-name }}

@@ -89,7 +89,7 @@ jobs:
           path: packages/app-nextjs/playwright-report
 
       - name: Publish JUnit Results
-        if: ${{ success() || failure() }}
+        if: ${{ (success() || failure()) && (github.event.pull_request.head.repo.fork == false) }}
         uses: dorny/test-reporter@v1
         with:
           name: Playwright VRT Tests
@@ -153,7 +153,7 @@ jobs:
           path: packages/app-nextjs/playwright-report
 
       - name: Publish JUnit Results
-        if: ${{ success() || failure() }}
+        if: ${{ (success() || failure()) && (github.event.pull_request.head.repo.fork == false) }}
         uses: dorny/test-reporter@v1
         with:
           name: Playwright E2E Tests
