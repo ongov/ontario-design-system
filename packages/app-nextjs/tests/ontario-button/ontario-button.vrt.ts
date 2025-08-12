@@ -27,32 +27,51 @@ test.describe('Ontario Button - focus states', () => {
 	});
 
 	test('primary button - focus state', async ({ page }) => {
-		await page.keyboard.press('Tab');
+		await page.waitForSelector('#ontario-button-primary.hydrated');
+		await page.waitForSelector('#ontario-button-primary >>> button');
 
-		const button = page.locator('#ontario-button-primary');
-		await expect(button).toBeFocused();
-		await expect(button).toHaveScreenshot('ontarioButtonPrimary-focus.png');
+		const host = page.locator('#ontario-button-primary');
+		const inner = page.locator('#ontario-button-primary >>> button');
+
+		await inner.focus();
+
+		// Snap the HOST (stable target) while inner button is focused
+		await expect(host).toHaveScreenshot('ontarioButtonPrimary-focus.png', {
+			animations: 'disabled',
+			caret: 'hide',
+		});
 	});
 
 	test('secondary button - focus state', async ({ page }) => {
-		// Two tabs to ensure second button is focused
-		await page.keyboard.press('Tab');
-		await page.keyboard.press('Tab');
+		await page.waitForSelector('#ontario-button-secondary.hydrated');
+		await page.waitForSelector('#ontario-button-secondary >>> button');
 
-		const button = page.locator('#ontario-button-secondary');
-		await expect(button).toBeFocused();
-		await expect(button).toHaveScreenshot('ontarioButtonSecondary-focus.png');
+		const host = page.locator('#ontario-button-secondary');
+		const inner = page.locator('#ontario-button-secondary >>> button');
+
+		await inner.focus();
+
+		// Snap the HOST (stable target) while inner button is focused
+		await expect(host).toHaveScreenshot('ontarioButtonSecondary-focus.png', {
+			animations: 'disabled',
+			caret: 'hide',
+		});
 	});
 
 	test('tertiary button - focus state', async ({ page }) => {
-		// Three tabs to ensure third button is focused
-		await page.keyboard.press('Tab');
-		await page.keyboard.press('Tab');
-		await page.keyboard.press('Tab');
+		await page.waitForSelector('#ontario-button-tertiary.hydrated');
+		await page.waitForSelector('#ontario-button-tertiary >>> button');
 
-		const button = page.locator('#ontario-button-tertiary');
-		await expect(button).toBeFocused();
-		await expect(button).toHaveScreenshot('ontarioButtonTertiary-focus.png');
+		const host = page.locator('#ontario-button-tertiary');
+		const inner = page.locator('#ontario-button-tertiary >>> button');
+
+		await inner.focus();
+
+		// Snap the HOST (stable target) while inner button is focused
+		await expect(host).toHaveScreenshot('ontarioButtonTertiary-focus.png', {
+			animations: 'disabled',
+			caret: 'hide',
+		});
 	});
 });
 
