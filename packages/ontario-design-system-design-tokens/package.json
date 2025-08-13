@@ -47,5 +47,11 @@
 			"email": "Nakib.Momin@ontario.ca"
 		}
 	],
-	"sass": "dist/scss/_variables.scss"
+	"sass": "dist/scss/_variables.scss",
+	"exports": {
+		"sass": "./dist/scss/_variables.scss",
+		"./dist/scss/variables": {
+			"sass": "./dist/scss/variables.scss"
+		}
+	}
 }
