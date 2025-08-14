@@ -1,7 +1,9 @@
 import { Component, Prop, Element, h, Watch, AttachInternals } from '@stencil/core';
 
 import { BadgeColour, BadgeColours, BadgeColourToClass } from './ontario-badge.types';
+
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { isClientSideRendering } from '../../utils/common/environment';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
 @Component({
@@ -104,8 +106,14 @@ export class OntarioBadge {
 	 * @returns {string | null}
 	 */
 	getBadgeLabel(): string | null {
-		const badgeLabel = this.label ? this.label : this.host.textContent;
-		return badgeLabel;
+		if (this.label) return this.label;
+
+		// SSR safety check: ensure we're in the client-side environment before accessing textContent
+		if (isClientSideRendering() && typeof this.host?.textContent !== 'undefined') {
+			return this.host.textContent;
+		}
+
+		return null;
 	}
 
 	componentWillLoad() {

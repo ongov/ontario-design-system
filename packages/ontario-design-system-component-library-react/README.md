@@ -68,4 +68,4 @@ Another way is to add scripts to copy the assets in your `package.json` file. Fo
 
 ## Support
 
-Contact us at [design.system@ontario.ca](mailto:design.system@ontario.ca) for assistance with this package.
+Contact us at [design.system@ontario.ca](mailto:design.system@ontario.ca) for assistance with this package or via opening a [GitHub](https://github.com/ongov/ontario-design-system) [issue](https://github.com/ongov/ontario-design-system/issues).
