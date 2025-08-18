@@ -62,6 +62,12 @@ export default function Home() {
 						<li>
 							<Link href="/components/ontario-search-box">ontario-search-box</Link>
 						</li>
+						<li>
+							<Link href="/components/ontario-task">ontario-task</Link>
+						</li>
+						<li>
+							<Link href="/components/ontario-task-list">ontario-task-list</Link>
+						</li>
 					</ul>
 				</div>
 			</Grid>
