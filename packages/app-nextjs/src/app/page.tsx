@@ -63,6 +63,9 @@ export default function Home() {
 							<Link href="/components/ontario-search-box">ontario-search-box</Link>
 						</li>
 						<li>
+							<Link href="/components/ontario-icon">ontario-icon</Link>
+						</li>
+						<li>
 							<Link href="/components/ontario-task">ontario-task</Link>
 						</li>
 						<li>
