@@ -24,781 +24,289 @@ import {
 	type OntarioTextareaCustomEvent,
 	type RadioAndCheckboxChangeEvent,
 } from '@ongov/ontario-design-system-component-library';
-import {
-	OntarioAccordion as OntarioAccordionElement,
-	defineCustomElement as defineOntarioAccordion,
-} from '@ongov/ontario-design-system-component-library/components/ontario-accordion.js';
-import {
-	OntarioAside as OntarioAsideElement,
-	defineCustomElement as defineOntarioAside,
-} from '@ongov/ontario-design-system-component-library/components/ontario-aside.js';
-import {
-	OntarioBackToTop as OntarioBackToTopElement,
-	defineCustomElement as defineOntarioBackToTop,
-} from '@ongov/ontario-design-system-component-library/components/ontario-back-to-top.js';
-import {
-	OntarioBadge as OntarioBadgeElement,
-	defineCustomElement as defineOntarioBadge,
-} from '@ongov/ontario-design-system-component-library/components/ontario-badge.js';
-import {
-	OntarioBlockquote as OntarioBlockquoteElement,
-	defineCustomElement as defineOntarioBlockquote,
-} from '@ongov/ontario-design-system-component-library/components/ontario-blockquote.js';
-import {
-	OntarioButton as OntarioButtonElement,
-	defineCustomElement as defineOntarioButton,
-} from '@ongov/ontario-design-system-component-library/components/ontario-button.js';
-import {
-	OntarioCallout as OntarioCalloutElement,
-	defineCustomElement as defineOntarioCallout,
-} from '@ongov/ontario-design-system-component-library/components/ontario-callout.js';
-import {
-	OntarioCardCollection as OntarioCardCollectionElement,
-	defineCustomElement as defineOntarioCardCollection,
-} from '@ongov/ontario-design-system-component-library/components/ontario-card-collection.js';
-import {
-	OntarioCard as OntarioCardElement,
-	defineCustomElement as defineOntarioCard,
-} from '@ongov/ontario-design-system-component-library/components/ontario-card.js';
-import {
-	OntarioCheckboxes as OntarioCheckboxesElement,
-	defineCustomElement as defineOntarioCheckboxes,
-} from '@ongov/ontario-design-system-component-library/components/ontario-checkboxes.js';
-import {
-	OntarioCriticalAlert as OntarioCriticalAlertElement,
-	defineCustomElement as defineOntarioCriticalAlert,
-} from '@ongov/ontario-design-system-component-library/components/ontario-critical-alert.js';
-import {
-	OntarioDateInput as OntarioDateInputElement,
-	defineCustomElement as defineOntarioDateInput,
-} from '@ongov/ontario-design-system-component-library/components/ontario-date-input.js';
-import {
-	OntarioDropdownList as OntarioDropdownListElement,
-	defineCustomElement as defineOntarioDropdownList,
-} from '@ongov/ontario-design-system-component-library/components/ontario-dropdown-list.js';
-import {
-	OntarioFieldset as OntarioFieldsetElement,
-	defineCustomElement as defineOntarioFieldset,
-} from '@ongov/ontario-design-system-component-library/components/ontario-fieldset.js';
-import {
-	OntarioFooter as OntarioFooterElement,
-	defineCustomElement as defineOntarioFooter,
-} from '@ongov/ontario-design-system-component-library/components/ontario-footer.js';
-import {
-	OntarioHeader as OntarioHeaderElement,
-	defineCustomElement as defineOntarioHeader,
-} from '@ongov/ontario-design-system-component-library/components/ontario-header.js';
-import {
-	OntarioHintExpander as OntarioHintExpanderElement,
-	defineCustomElement as defineOntarioHintExpander,
-} from '@ongov/ontario-design-system-component-library/components/ontario-hint-expander.js';
-import {
-	OntarioHintText as OntarioHintTextElement,
-	defineCustomElement as defineOntarioHintText,
-} from '@ongov/ontario-design-system-component-library/components/ontario-hint-text.js';
-import {
-	OntarioIconAccessibility as OntarioIconAccessibilityElement,
-	defineCustomElement as defineOntarioIconAccessibility,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-accessibility.js';
-import {
-	OntarioIconAccount as OntarioIconAccountElement,
-	defineCustomElement as defineOntarioIconAccount,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-account.js';
-import {
-	OntarioIconAddAlt as OntarioIconAddAltElement,
-	defineCustomElement as defineOntarioIconAddAlt,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-add-alt.js';
-import {
-	OntarioIconAdd as OntarioIconAddElement,
-	defineCustomElement as defineOntarioIconAdd,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-add.js';
-import {
-	OntarioIconAlertError as OntarioIconAlertErrorElement,
-	defineCustomElement as defineOntarioIconAlertError,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-alert-error.js';
-import {
-	OntarioIconAlertInformation as OntarioIconAlertInformationElement,
-	defineCustomElement as defineOntarioIconAlertInformation,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-alert-information.js';
-import {
-	OntarioIconAlertSuccess as OntarioIconAlertSuccessElement,
-	defineCustomElement as defineOntarioIconAlertSuccess,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-alert-success.js';
-import {
-	OntarioIconAlertWarning as OntarioIconAlertWarningElement,
-	defineCustomElement as defineOntarioIconAlertWarning,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-alert-warning.js';
-import {
-	OntarioIconArrowUp as OntarioIconArrowUpElement,
-	defineCustomElement as defineOntarioIconArrowUp,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-arrow-up.js';
-import {
-	OntarioIconAttach as OntarioIconAttachElement,
-	defineCustomElement as defineOntarioIconAttach,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-attach.js';
-import {
-	OntarioIconBookmarkOff as OntarioIconBookmarkOffElement,
-	defineCustomElement as defineOntarioIconBookmarkOff,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-bookmark-off.js';
-import {
-	OntarioIconBookmarkOn as OntarioIconBookmarkOnElement,
-	defineCustomElement as defineOntarioIconBookmarkOn,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-bookmark-on.js';
-import {
-	OntarioIconCalendar as OntarioIconCalendarElement,
-	defineCustomElement as defineOntarioIconCalendar,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-calendar.js';
-import {
-	OntarioIconCamera as OntarioIconCameraElement,
-	defineCustomElement as defineOntarioIconCamera,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-camera.js';
-import {
-	OntarioIconChevronDown as OntarioIconChevronDownElement,
-	defineCustomElement as defineOntarioIconChevronDown,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-down.js';
-import {
-	OntarioIconChevronLeft as OntarioIconChevronLeftElement,
-	defineCustomElement as defineOntarioIconChevronLeft,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-left.js';
-import {
-	OntarioIconChevronRight as OntarioIconChevronRightElement,
-	defineCustomElement as defineOntarioIconChevronRight,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-right.js';
-import {
-	OntarioIconChevronUp as OntarioIconChevronUpElement,
-	defineCustomElement as defineOntarioIconChevronUp,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-up.js';
-import {
-	OntarioIconClock as OntarioIconClockElement,
-	defineCustomElement as defineOntarioIconClock,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-clock.js';
-import {
-	OntarioIconCloseHeader as OntarioIconCloseHeaderElement,
-	defineCustomElement as defineOntarioIconCloseHeader,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-close-header.js';
-import {
-	OntarioIconClose as OntarioIconCloseElement,
-	defineCustomElement as defineOntarioIconClose,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-close.js';
-import {
-	OntarioIconCloud as OntarioIconCloudElement,
-	defineCustomElement as defineOntarioIconCloud,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-cloud.js';
-import {
-	OntarioIconCollapse as OntarioIconCollapseElement,
-	defineCustomElement as defineOntarioIconCollapse,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-collapse.js';
-import {
-	OntarioIconCreditCard as OntarioIconCreditCardElement,
-	defineCustomElement as defineOntarioIconCreditCard,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-credit-card.js';
-import {
-	OntarioIconCriticalAlertWarning as OntarioIconCriticalAlertWarningElement,
-	defineCustomElement as defineOntarioIconCriticalAlertWarning,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-critical-alert-warning.js';
-import {
-	OntarioIconDelete as OntarioIconDeleteElement,
-	defineCustomElement as defineOntarioIconDelete,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-delete.js';
-import {
-	OntarioIconDocument as OntarioIconDocumentElement,
-	defineCustomElement as defineOntarioIconDocument,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-document.js';
-import {
-	OntarioIconDownload as OntarioIconDownloadElement,
-	defineCustomElement as defineOntarioIconDownload,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-download.js';
-import {
-	OntarioIconDropdownArrow as OntarioIconDropdownArrowElement,
-	defineCustomElement as defineOntarioIconDropdownArrow,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-dropdown-arrow.js';
-import {
-	OntarioIconEdit as OntarioIconEditElement,
-	defineCustomElement as defineOntarioIconEdit,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-edit.js';
-import {
-	OntarioIconEmail as OntarioIconEmailElement,
-	defineCustomElement as defineOntarioIconEmail,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-email.js';
-import {
-	OntarioIconExpand as OntarioIconExpandElement,
-	defineCustomElement as defineOntarioIconExpand,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-expand.js';
-import {
-	OntarioIconExport as OntarioIconExportElement,
-	defineCustomElement as defineOntarioIconExport,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-export.js';
-import {
-	OntarioIconFacebookAlt as OntarioIconFacebookAltElement,
-	defineCustomElement as defineOntarioIconFacebookAlt,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-facebook-alt.js';
-import {
-	OntarioIconFacebook as OntarioIconFacebookElement,
-	defineCustomElement as defineOntarioIconFacebook,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-facebook.js';
-import {
-	OntarioIconFavouriteOff as OntarioIconFavouriteOffElement,
-	defineCustomElement as defineOntarioIconFavouriteOff,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-favourite-off.js';
-import {
-	OntarioIconFavouriteOn as OntarioIconFavouriteOnElement,
-	defineCustomElement as defineOntarioIconFavouriteOn,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-favourite-on.js';
-import {
-	OntarioIconFilter as OntarioIconFilterElement,
-	defineCustomElement as defineOntarioIconFilter,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-filter.js';
-import {
-	OntarioIconFlickr as OntarioIconFlickrElement,
-	defineCustomElement as defineOntarioIconFlickr,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-flickr.js';
-import {
-	OntarioIconGrid as OntarioIconGridElement,
-	defineCustomElement as defineOntarioIconGrid,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-grid.js';
-import {
-	OntarioIconHelp as OntarioIconHelpElement,
-	defineCustomElement as defineOntarioIconHelp,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-help.js';
-import {
-	OntarioIconInstagram as OntarioIconInstagramElement,
-	defineCustomElement as defineOntarioIconInstagram,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-instagram.js';
-import {
-	OntarioIconInteracEnAlt as OntarioIconInteracEnAltElement,
-	defineCustomElement as defineOntarioIconInteracEnAlt,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-interac-en-alt.js';
-import {
-	OntarioIconInteracEn as OntarioIconInteracEnElement,
-	defineCustomElement as defineOntarioIconInteracEn,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-interac-en.js';
-import {
-	OntarioIconInteracFrAlt as OntarioIconInteracFrAltElement,
-	defineCustomElement as defineOntarioIconInteracFrAlt,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-interac-fr-alt.js';
-import {
-	OntarioIconInteracFr as OntarioIconInteracFrElement,
-	defineCustomElement as defineOntarioIconInteracFr,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-interac-fr.js';
-import {
-	OntarioIconLinkedinAlt as OntarioIconLinkedinAltElement,
-	defineCustomElement as defineOntarioIconLinkedinAlt,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-linkedin-alt.js';
-import {
-	OntarioIconLinkedin as OntarioIconLinkedinElement,
-	defineCustomElement as defineOntarioIconLinkedin,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-linkedin.js';
-import {
-	OntarioIconList as OntarioIconListElement,
-	defineCustomElement as defineOntarioIconList,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-list.js';
-import {
-	OntarioIconLiveChat as OntarioIconLiveChatElement,
-	defineCustomElement as defineOntarioIconLiveChat,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-live-chat.js';
-import {
-	OntarioIconLocationOff as OntarioIconLocationOffElement,
-	defineCustomElement as defineOntarioIconLocationOff,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-location-off.js';
-import {
-	OntarioIconLocationOn as OntarioIconLocationOnElement,
-	defineCustomElement as defineOntarioIconLocationOn,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-location-on.js';
-import {
-	OntarioIconLockOff as OntarioIconLockOffElement,
-	defineCustomElement as defineOntarioIconLockOff,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-lock-off.js';
-import {
-	OntarioIconLockOn as OntarioIconLockOnElement,
-	defineCustomElement as defineOntarioIconLockOn,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-lock-on.js';
-import {
-	OntarioIconMap as OntarioIconMapElement,
-	defineCustomElement as defineOntarioIconMap,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-map.js';
-import {
-	OntarioIconMastercardAlt as OntarioIconMastercardAltElement,
-	defineCustomElement as defineOntarioIconMastercardAlt,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-mastercard-alt.js';
-import {
-	OntarioIconMastercard as OntarioIconMastercardElement,
-	defineCustomElement as defineOntarioIconMastercard,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-mastercard.js';
-import {
-	OntarioIconMediaFastForward as OntarioIconMediaFastForwardElement,
-	defineCustomElement as defineOntarioIconMediaFastForward,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-media-fast-forward.js';
-import {
-	OntarioIconMediaFastRewind as OntarioIconMediaFastRewindElement,
-	defineCustomElement as defineOntarioIconMediaFastRewind,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-media-fast-rewind.js';
-import {
-	OntarioIconMediaPause as OntarioIconMediaPauseElement,
-	defineCustomElement as defineOntarioIconMediaPause,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-media-pause.js';
-import {
-	OntarioIconMediaPlay as OntarioIconMediaPlayElement,
-	defineCustomElement as defineOntarioIconMediaPlay,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-media-play.js';
-import {
-	OntarioIconMediaStop as OntarioIconMediaStopElement,
-	defineCustomElement as defineOntarioIconMediaStop,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-media-stop.js';
-import {
-	OntarioIconMenuHeader as OntarioIconMenuHeaderElement,
-	defineCustomElement as defineOntarioIconMenuHeader,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-menu-header.js';
-import {
-	OntarioIconMenu as OntarioIconMenuElement,
-	defineCustomElement as defineOntarioIconMenu,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-menu.js';
-import {
-	OntarioIconMicrophoneOff as OntarioIconMicrophoneOffElement,
-	defineCustomElement as defineOntarioIconMicrophoneOff,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-off.js';
-import {
-	OntarioIconMicrophoneOn as OntarioIconMicrophoneOnElement,
-	defineCustomElement as defineOntarioIconMicrophoneOn,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-on.js';
-import {
-	OntarioIconMoreVertical as OntarioIconMoreVerticalElement,
-	defineCustomElement as defineOntarioIconMoreVertical,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-more-vertical.js';
-import {
-	OntarioIconNewWindow as OntarioIconNewWindowElement,
-	defineCustomElement as defineOntarioIconNewWindow,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-new-window.js';
-import {
-	OntarioIconNext as OntarioIconNextElement,
-	defineCustomElement as defineOntarioIconNext,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-next.js';
-import {
-	OntarioIconNotification as OntarioIconNotificationElement,
-	defineCustomElement as defineOntarioIconNotification,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-notification.js';
-import {
-	OntarioIconPasswordHide as OntarioIconPasswordHideElement,
-	defineCustomElement as defineOntarioIconPasswordHide,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-password-hide.js';
-import {
-	OntarioIconPasswordShow as OntarioIconPasswordShowElement,
-	defineCustomElement as defineOntarioIconPasswordShow,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-password-show.js';
-import {
-	OntarioIconPhone as OntarioIconPhoneElement,
-	defineCustomElement as defineOntarioIconPhone,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-phone.js';
-import {
-	OntarioIconPhoto as OntarioIconPhotoElement,
-	defineCustomElement as defineOntarioIconPhoto,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-photo.js';
-import {
-	OntarioIconPinLocationOff as OntarioIconPinLocationOffElement,
-	defineCustomElement as defineOntarioIconPinLocationOff,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-pin-location-off.js';
-import {
-	OntarioIconPinLocationOn as OntarioIconPinLocationOnElement,
-	defineCustomElement as defineOntarioIconPinLocationOn,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-pin-location-on.js';
-import {
-	OntarioIconPrevious as OntarioIconPreviousElement,
-	defineCustomElement as defineOntarioIconPrevious,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-previous.js';
-import {
-	OntarioIconPrint as OntarioIconPrintElement,
-	defineCustomElement as defineOntarioIconPrint,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-print.js';
-import {
-	OntarioIconRemoveAlt as OntarioIconRemoveAltElement,
-	defineCustomElement as defineOntarioIconRemoveAlt,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-remove-alt.js';
-import {
-	OntarioIconRemove as OntarioIconRemoveElement,
-	defineCustomElement as defineOntarioIconRemove,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-remove.js';
-import {
-	OntarioIconReplay as OntarioIconReplayElement,
-	defineCustomElement as defineOntarioIconReplay,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-replay.js';
-import {
-	OntarioIconRssFeed as OntarioIconRssFeedElement,
-	defineCustomElement as defineOntarioIconRssFeed,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-rss-feed.js';
-import {
-	OntarioIconSave as OntarioIconSaveElement,
-	defineCustomElement as defineOntarioIconSave,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-save.js';
-import {
-	OntarioIconSearchWhite as OntarioIconSearchWhiteElement,
-	defineCustomElement as defineOntarioIconSearchWhite,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-search-white.js';
-import {
-	OntarioIconSearch as OntarioIconSearchElement,
-	defineCustomElement as defineOntarioIconSearch,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-search.js';
-import {
-	OntarioIconSentiment1 as OntarioIconSentiment1Element,
-	defineCustomElement as defineOntarioIconSentiment1,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-1.js';
-import {
-	OntarioIconSentiment2 as OntarioIconSentiment2Element,
-	defineCustomElement as defineOntarioIconSentiment2,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-2.js';
-import {
-	OntarioIconSentiment3 as OntarioIconSentiment3Element,
-	defineCustomElement as defineOntarioIconSentiment3,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-3.js';
-import {
-	OntarioIconSentiment4 as OntarioIconSentiment4Element,
-	defineCustomElement as defineOntarioIconSentiment4,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-4.js';
-import {
-	OntarioIconSentiment5 as OntarioIconSentiment5Element,
-	defineCustomElement as defineOntarioIconSentiment5,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-5.js';
-import {
-	OntarioIconSettings as OntarioIconSettingsElement,
-	defineCustomElement as defineOntarioIconSettings,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-settings.js';
-import {
-	OntarioIconShare as OntarioIconShareElement,
-	defineCustomElement as defineOntarioIconShare,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-share.js';
-import {
-	OntarioIconSort as OntarioIconSortElement,
-	defineCustomElement as defineOntarioIconSort,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-sort.js';
-import {
-	OntarioIconTag as OntarioIconTagElement,
-	defineCustomElement as defineOntarioIconTag,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-tag.js';
-import {
-	OntarioIconTextMessage as OntarioIconTextMessageElement,
-	defineCustomElement as defineOntarioIconTextMessage,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-text-message.js';
-import {
-	OntarioIconTimer as OntarioIconTimerElement,
-	defineCustomElement as defineOntarioIconTimer,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-timer.js';
-import {
-	OntarioIconTransportBicycle as OntarioIconTransportBicycleElement,
-	defineCustomElement as defineOntarioIconTransportBicycle,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-transport-bicycle.js';
-import {
-	OntarioIconTransportBus as OntarioIconTransportBusElement,
-	defineCustomElement as defineOntarioIconTransportBus,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-transport-bus.js';
-import {
-	OntarioIconTransportCar as OntarioIconTransportCarElement,
-	defineCustomElement as defineOntarioIconTransportCar,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-transport-car.js';
-import {
-	OntarioIconTransportWalk as OntarioIconTransportWalkElement,
-	defineCustomElement as defineOntarioIconTransportWalk,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-transport-walk.js';
-import {
-	OntarioIconTty as OntarioIconTtyElement,
-	defineCustomElement as defineOntarioIconTty,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-tty.js';
-import {
-	OntarioIconTwitterAlt as OntarioIconTwitterAltElement,
-	defineCustomElement as defineOntarioIconTwitterAlt,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-twitter-alt.js';
-import {
-	OntarioIconTwitter as OntarioIconTwitterElement,
-	defineCustomElement as defineOntarioIconTwitter,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-twitter.js';
-import {
-	OntarioIconUpload as OntarioIconUploadElement,
-	defineCustomElement as defineOntarioIconUpload,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-upload.js';
-import {
-	OntarioIconVideo as OntarioIconVideoElement,
-	defineCustomElement as defineOntarioIconVideo,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-video.js';
-import {
-	OntarioIconVisa as OntarioIconVisaElement,
-	defineCustomElement as defineOntarioIconVisa,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-visa.js';
-import {
-	OntarioIconVoteDislike as OntarioIconVoteDislikeElement,
-	defineCustomElement as defineOntarioIconVoteDislike,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-vote-dislike.js';
-import {
-	OntarioIconVoteLike as OntarioIconVoteLikeElement,
-	defineCustomElement as defineOntarioIconVoteLike,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-vote-like.js';
-import {
-	OntarioIconVpnKey as OntarioIconVpnKeyElement,
-	defineCustomElement as defineOntarioIconVpnKey,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-vpn-key.js';
-import {
-	OntarioIconWheelchair as OntarioIconWheelchairElement,
-	defineCustomElement as defineOntarioIconWheelchair,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-wheelchair.js';
-import {
-	OntarioIconWifi as OntarioIconWifiElement,
-	defineCustomElement as defineOntarioIconWifi,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-wifi.js';
-import {
-	OntarioIconYoutube as OntarioIconYoutubeElement,
-	defineCustomElement as defineOntarioIconYoutube,
-} from '@ongov/ontario-design-system-component-library/components/ontario-icon-youtube.js';
-import {
-	OntarioInput as OntarioInputElement,
-	defineCustomElement as defineOntarioInput,
-} from '@ongov/ontario-design-system-component-library/components/ontario-input.js';
-import {
-	OntarioLanguageToggle as OntarioLanguageToggleElement,
-	defineCustomElement as defineOntarioLanguageToggle,
-} from '@ongov/ontario-design-system-component-library/components/ontario-language-toggle.js';
-import {
-	OntarioLoadingIndicator as OntarioLoadingIndicatorElement,
-	defineCustomElement as defineOntarioLoadingIndicator,
-} from '@ongov/ontario-design-system-component-library/components/ontario-loading-indicator.js';
-import {
-	OntarioPageAlert as OntarioPageAlertElement,
-	defineCustomElement as defineOntarioPageAlert,
-} from '@ongov/ontario-design-system-component-library/components/ontario-page-alert.js';
-import {
-	OntarioRadioButtons as OntarioRadioButtonsElement,
-	defineCustomElement as defineOntarioRadioButtons,
-} from '@ongov/ontario-design-system-component-library/components/ontario-radio-buttons.js';
-import {
-	OntarioSearchBox as OntarioSearchBoxElement,
-	defineCustomElement as defineOntarioSearchBox,
-} from '@ongov/ontario-design-system-component-library/components/ontario-search-box.js';
-import {
-	OntarioStepIndicator as OntarioStepIndicatorElement,
-	defineCustomElement as defineOntarioStepIndicator,
-} from '@ongov/ontario-design-system-component-library/components/ontario-step-indicator.js';
-import {
-	OntarioTable as OntarioTableElement,
-	defineCustomElement as defineOntarioTable,
-} from '@ongov/ontario-design-system-component-library/components/ontario-table.js';
-import {
-	OntarioTaskList as OntarioTaskListElement,
-	defineCustomElement as defineOntarioTaskList,
-} from '@ongov/ontario-design-system-component-library/components/ontario-task-list.js';
-import {
-	OntarioTask as OntarioTaskElement,
-	defineCustomElement as defineOntarioTask,
-} from '@ongov/ontario-design-system-component-library/components/ontario-task.js';
-import {
-	OntarioTextarea as OntarioTextareaElement,
-	defineCustomElement as defineOntarioTextarea,
-} from '@ongov/ontario-design-system-component-library/components/ontario-textarea.js';
+import { OntarioAccordion as OntarioAccordionElement } from '@ongov/ontario-design-system-component-library/components/ontario-accordion.js';
+import { OntarioAside as OntarioAsideElement } from '@ongov/ontario-design-system-component-library/components/ontario-aside.js';
+import { OntarioBackToTop as OntarioBackToTopElement } from '@ongov/ontario-design-system-component-library/components/ontario-back-to-top.js';
+import { OntarioBadge as OntarioBadgeElement } from '@ongov/ontario-design-system-component-library/components/ontario-badge.js';
+import { OntarioBlockquote as OntarioBlockquoteElement } from '@ongov/ontario-design-system-component-library/components/ontario-blockquote.js';
+import { OntarioButton as OntarioButtonElement } from '@ongov/ontario-design-system-component-library/components/ontario-button.js';
+import { OntarioCallout as OntarioCalloutElement } from '@ongov/ontario-design-system-component-library/components/ontario-callout.js';
+import { OntarioCardCollection as OntarioCardCollectionElement } from '@ongov/ontario-design-system-component-library/components/ontario-card-collection.js';
+import { OntarioCard as OntarioCardElement } from '@ongov/ontario-design-system-component-library/components/ontario-card.js';
+import { OntarioCheckboxes as OntarioCheckboxesElement } from '@ongov/ontario-design-system-component-library/components/ontario-checkboxes.js';
+import { OntarioCriticalAlert as OntarioCriticalAlertElement } from '@ongov/ontario-design-system-component-library/components/ontario-critical-alert.js';
+import { OntarioDateInput as OntarioDateInputElement } from '@ongov/ontario-design-system-component-library/components/ontario-date-input.js';
+import { OntarioDropdownList as OntarioDropdownListElement } from '@ongov/ontario-design-system-component-library/components/ontario-dropdown-list.js';
+import { OntarioFieldset as OntarioFieldsetElement } from '@ongov/ontario-design-system-component-library/components/ontario-fieldset.js';
+import { OntarioFooter as OntarioFooterElement } from '@ongov/ontario-design-system-component-library/components/ontario-footer.js';
+import { OntarioHeader as OntarioHeaderElement } from '@ongov/ontario-design-system-component-library/components/ontario-header.js';
+import { OntarioHintExpander as OntarioHintExpanderElement } from '@ongov/ontario-design-system-component-library/components/ontario-hint-expander.js';
+import { OntarioHintText as OntarioHintTextElement } from '@ongov/ontario-design-system-component-library/components/ontario-hint-text.js';
+import { OntarioIconAccessibility as OntarioIconAccessibilityElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-accessibility.js';
+import { OntarioIconAccount as OntarioIconAccountElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-account.js';
+import { OntarioIconAddAlt as OntarioIconAddAltElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-add-alt.js';
+import { OntarioIconAdd as OntarioIconAddElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-add.js';
+import { OntarioIconAlertError as OntarioIconAlertErrorElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-alert-error.js';
+import { OntarioIconAlertInformation as OntarioIconAlertInformationElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-alert-information.js';
+import { OntarioIconAlertSuccess as OntarioIconAlertSuccessElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-alert-success.js';
+import { OntarioIconAlertWarning as OntarioIconAlertWarningElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-alert-warning.js';
+import { OntarioIconArrowUp as OntarioIconArrowUpElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-arrow-up.js';
+import { OntarioIconAttach as OntarioIconAttachElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-attach.js';
+import { OntarioIconBookmarkOff as OntarioIconBookmarkOffElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-bookmark-off.js';
+import { OntarioIconBookmarkOn as OntarioIconBookmarkOnElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-bookmark-on.js';
+import { OntarioIconCalendar as OntarioIconCalendarElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-calendar.js';
+import { OntarioIconCamera as OntarioIconCameraElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-camera.js';
+import { OntarioIconChevronDown as OntarioIconChevronDownElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-down.js';
+import { OntarioIconChevronLeft as OntarioIconChevronLeftElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-left.js';
+import { OntarioIconChevronRight as OntarioIconChevronRightElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-right.js';
+import { OntarioIconChevronUp as OntarioIconChevronUpElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-up.js';
+import { OntarioIconClock as OntarioIconClockElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-clock.js';
+import { OntarioIconCloseHeader as OntarioIconCloseHeaderElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-close-header.js';
+import { OntarioIconClose as OntarioIconCloseElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-close.js';
+import { OntarioIconCloud as OntarioIconCloudElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-cloud.js';
+import { OntarioIconCollapse as OntarioIconCollapseElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-collapse.js';
+import { OntarioIconCreditCard as OntarioIconCreditCardElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-credit-card.js';
+import { OntarioIconCriticalAlertWarning as OntarioIconCriticalAlertWarningElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-critical-alert-warning.js';
+import { OntarioIconDelete as OntarioIconDeleteElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-delete.js';
+import { OntarioIconDocument as OntarioIconDocumentElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-document.js';
+import { OntarioIconDownload as OntarioIconDownloadElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-download.js';
+import { OntarioIconDropdownArrow as OntarioIconDropdownArrowElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-dropdown-arrow.js';
+import { OntarioIconEdit as OntarioIconEditElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-edit.js';
+import { OntarioIconEmail as OntarioIconEmailElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-email.js';
+import { OntarioIconExpand as OntarioIconExpandElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-expand.js';
+import { OntarioIconExport as OntarioIconExportElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-export.js';
+import { OntarioIconFacebookAlt as OntarioIconFacebookAltElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-facebook-alt.js';
+import { OntarioIconFacebook as OntarioIconFacebookElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-facebook.js';
+import { OntarioIconFavouriteOff as OntarioIconFavouriteOffElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-favourite-off.js';
+import { OntarioIconFavouriteOn as OntarioIconFavouriteOnElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-favourite-on.js';
+import { OntarioIconFilter as OntarioIconFilterElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-filter.js';
+import { OntarioIconFlickr as OntarioIconFlickrElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-flickr.js';
+import { OntarioIconGrid as OntarioIconGridElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-grid.js';
+import { OntarioIconHelp as OntarioIconHelpElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-help.js';
+import { OntarioIconInstagram as OntarioIconInstagramElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-instagram.js';
+import { OntarioIconInteracEnAlt as OntarioIconInteracEnAltElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-interac-en-alt.js';
+import { OntarioIconInteracEn as OntarioIconInteracEnElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-interac-en.js';
+import { OntarioIconInteracFrAlt as OntarioIconInteracFrAltElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-interac-fr-alt.js';
+import { OntarioIconInteracFr as OntarioIconInteracFrElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-interac-fr.js';
+import { OntarioIconLinkedinAlt as OntarioIconLinkedinAltElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-linkedin-alt.js';
+import { OntarioIconLinkedin as OntarioIconLinkedinElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-linkedin.js';
+import { OntarioIconList as OntarioIconListElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-list.js';
+import { OntarioIconLiveChat as OntarioIconLiveChatElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-live-chat.js';
+import { OntarioIconLocationOff as OntarioIconLocationOffElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-location-off.js';
+import { OntarioIconLocationOn as OntarioIconLocationOnElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-location-on.js';
+import { OntarioIconLockOff as OntarioIconLockOffElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-lock-off.js';
+import { OntarioIconLockOn as OntarioIconLockOnElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-lock-on.js';
+import { OntarioIconMap as OntarioIconMapElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-map.js';
+import { OntarioIconMastercardAlt as OntarioIconMastercardAltElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-mastercard-alt.js';
+import { OntarioIconMastercard as OntarioIconMastercardElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-mastercard.js';
+import { OntarioIconMediaFastForward as OntarioIconMediaFastForwardElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-media-fast-forward.js';
+import { OntarioIconMediaFastRewind as OntarioIconMediaFastRewindElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-media-fast-rewind.js';
+import { OntarioIconMediaPause as OntarioIconMediaPauseElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-media-pause.js';
+import { OntarioIconMediaPlay as OntarioIconMediaPlayElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-media-play.js';
+import { OntarioIconMediaStop as OntarioIconMediaStopElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-media-stop.js';
+import { OntarioIconMenuHeader as OntarioIconMenuHeaderElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-menu-header.js';
+import { OntarioIconMenu as OntarioIconMenuElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-menu.js';
+import { OntarioIconMicrophoneOff as OntarioIconMicrophoneOffElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-off.js';
+import { OntarioIconMicrophoneOn as OntarioIconMicrophoneOnElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-on.js';
+import { OntarioIconMoreVertical as OntarioIconMoreVerticalElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-more-vertical.js';
+import { OntarioIconNewWindow as OntarioIconNewWindowElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-new-window.js';
+import { OntarioIconNext as OntarioIconNextElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-next.js';
+import { OntarioIconNotification as OntarioIconNotificationElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-notification.js';
+import { OntarioIconPasswordHide as OntarioIconPasswordHideElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-password-hide.js';
+import { OntarioIconPasswordShow as OntarioIconPasswordShowElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-password-show.js';
+import { OntarioIconPhone as OntarioIconPhoneElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-phone.js';
+import { OntarioIconPhoto as OntarioIconPhotoElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-photo.js';
+import { OntarioIconPinLocationOff as OntarioIconPinLocationOffElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-pin-location-off.js';
+import { OntarioIconPinLocationOn as OntarioIconPinLocationOnElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-pin-location-on.js';
+import { OntarioIconPrevious as OntarioIconPreviousElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-previous.js';
+import { OntarioIconPrint as OntarioIconPrintElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-print.js';
+import { OntarioIconRemoveAlt as OntarioIconRemoveAltElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-remove-alt.js';
+import { OntarioIconRemove as OntarioIconRemoveElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-remove.js';
+import { OntarioIconReplay as OntarioIconReplayElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-replay.js';
+import { OntarioIconRssFeed as OntarioIconRssFeedElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-rss-feed.js';
+import { OntarioIconSave as OntarioIconSaveElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-save.js';
+import { OntarioIconSearchWhite as OntarioIconSearchWhiteElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-search-white.js';
+import { OntarioIconSearch as OntarioIconSearchElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-search.js';
+import { OntarioIconSentiment1 as OntarioIconSentiment1Element } from '@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-1.js';
+import { OntarioIconSentiment2 as OntarioIconSentiment2Element } from '@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-2.js';
+import { OntarioIconSentiment3 as OntarioIconSentiment3Element } from '@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-3.js';
+import { OntarioIconSentiment4 as OntarioIconSentiment4Element } from '@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-4.js';
+import { OntarioIconSentiment5 as OntarioIconSentiment5Element } from '@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-5.js';
+import { OntarioIconSettings as OntarioIconSettingsElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-settings.js';
+import { OntarioIconShare as OntarioIconShareElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-share.js';
+import { OntarioIconSort as OntarioIconSortElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-sort.js';
+import { OntarioIconTag as OntarioIconTagElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-tag.js';
+import { OntarioIconTextMessage as OntarioIconTextMessageElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-text-message.js';
+import { OntarioIconTimer as OntarioIconTimerElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-timer.js';
+import { OntarioIconTransportBicycle as OntarioIconTransportBicycleElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-transport-bicycle.js';
+import { OntarioIconTransportBus as OntarioIconTransportBusElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-transport-bus.js';
+import { OntarioIconTransportCar as OntarioIconTransportCarElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-transport-car.js';
+import { OntarioIconTransportWalk as OntarioIconTransportWalkElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-transport-walk.js';
+import { OntarioIconTty as OntarioIconTtyElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-tty.js';
+import { OntarioIconTwitterAlt as OntarioIconTwitterAltElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-twitter-alt.js';
+import { OntarioIconTwitter as OntarioIconTwitterElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-twitter.js';
+import { OntarioIconUpload as OntarioIconUploadElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-upload.js';
+import { OntarioIconVideo as OntarioIconVideoElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-video.js';
+import { OntarioIconVisa as OntarioIconVisaElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-visa.js';
+import { OntarioIconVoteDislike as OntarioIconVoteDislikeElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-vote-dislike.js';
+import { OntarioIconVoteLike as OntarioIconVoteLikeElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-vote-like.js';
+import { OntarioIconVpnKey as OntarioIconVpnKeyElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-vpn-key.js';
+import { OntarioIconWheelchair as OntarioIconWheelchairElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-wheelchair.js';
+import { OntarioIconWifi as OntarioIconWifiElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-wifi.js';
+import { OntarioIconYoutube as OntarioIconYoutubeElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-youtube.js';
+import { OntarioInput as OntarioInputElement } from '@ongov/ontario-design-system-component-library/components/ontario-input.js';
+import { OntarioLanguageToggle as OntarioLanguageToggleElement } from '@ongov/ontario-design-system-component-library/components/ontario-language-toggle.js';
+import { OntarioLoadingIndicator as OntarioLoadingIndicatorElement } from '@ongov/ontario-design-system-component-library/components/ontario-loading-indicator.js';
+import { OntarioPageAlert as OntarioPageAlertElement } from '@ongov/ontario-design-system-component-library/components/ontario-page-alert.js';
+import { OntarioRadioButtons as OntarioRadioButtonsElement } from '@ongov/ontario-design-system-component-library/components/ontario-radio-buttons.js';
+import { OntarioSearchBox as OntarioSearchBoxElement } from '@ongov/ontario-design-system-component-library/components/ontario-search-box.js';
+import { OntarioStepIndicator as OntarioStepIndicatorElement } from '@ongov/ontario-design-system-component-library/components/ontario-step-indicator.js';
+import { OntarioTable as OntarioTableElement } from '@ongov/ontario-design-system-component-library/components/ontario-table.js';
+import { OntarioTaskList as OntarioTaskListElement } from '@ongov/ontario-design-system-component-library/components/ontario-task-list.js';
+import { OntarioTask as OntarioTaskElement } from '@ongov/ontario-design-system-component-library/components/ontario-task.js';
+import { OntarioTextarea as OntarioTextareaElement } from '@ongov/ontario-design-system-component-library/components/ontario-textarea.js';
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
-import { createComponent, createSSRComponent } from '@stencil/react-output-target/runtime';
-import React from 'react';
+import { createComponent, type SerializeShadowRootOptions } from '@stencil/react-output-target/ssr';
 
-type OntarioAccordionEvents = NonNullable<unknown>;
+export const serializeShadowRoot: SerializeShadowRootOptions = { default: 'declarative-shadow-dom' };
+
+export type OntarioAccordionEvents = NonNullable<unknown>;
 
 export const OntarioAccordion: StencilReactComponent<OntarioAccordionElement, OntarioAccordionEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioAccordionElement, OntarioAccordionEvents>({
-				tagName: 'ontario-accordion',
-				elementClass: OntarioAccordionElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioAccordionEvents,
-				defineCustomElement: defineOntarioAccordion,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioAccordionElement, OntarioAccordionEvents>({
-				tagName: 'ontario-accordion',
-				properties: {
-					name: 'name',
-					expandCollapseButton: 'expand-collapse-button',
-					accordionData: 'accordion-data',
-					isOpen: 'is-open',
-					language: 'language',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioAccordionElement, OntarioAccordionEvents>({
+		tagName: 'ontario-accordion',
+		properties: {
+			name: 'name',
+			expandCollapseButton: 'expand-collapse-button',
+			accordionData: 'accordion-data',
+			isOpen: 'is-open',
+			language: 'language',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioAsideEvents = NonNullable<unknown>;
+export type OntarioAsideEvents = NonNullable<unknown>;
 
 export const OntarioAside: StencilReactComponent<OntarioAsideElement, OntarioAsideEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioAsideElement, OntarioAsideEvents>({
-				tagName: 'ontario-aside',
-				elementClass: OntarioAsideElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioAsideEvents,
-				defineCustomElement: defineOntarioAside,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioAsideElement, OntarioAsideEvents>({
-				tagName: 'ontario-aside',
-				properties: {
-					headingType: 'heading-type',
-					headingContentType: 'heading-content-type',
-					headingContent: 'heading-content',
-					content: 'content',
-					highlightColour: 'highlight-colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioAsideElement, OntarioAsideEvents>({
+		tagName: 'ontario-aside',
+		properties: {
+			headingType: 'heading-type',
+			headingContentType: 'heading-content-type',
+			headingContent: 'heading-content',
+			content: 'content',
+			highlightColour: 'highlight-colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioBackToTopEvents = NonNullable<unknown>;
+export type OntarioBackToTopEvents = NonNullable<unknown>;
 
 export const OntarioBackToTop: StencilReactComponent<OntarioBackToTopElement, OntarioBackToTopEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioBackToTopElement, OntarioBackToTopEvents>({
-				tagName: 'ontario-back-to-top',
-				elementClass: OntarioBackToTopElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioBackToTopEvents,
-				defineCustomElement: defineOntarioBackToTop,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioBackToTopElement, OntarioBackToTopEvents>({
-				tagName: 'ontario-back-to-top',
-				properties: { language: 'language' },
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioBackToTopElement, OntarioBackToTopEvents>({
+		tagName: 'ontario-back-to-top',
+		properties: { language: 'language' },
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioBadgeEvents = NonNullable<unknown>;
+export type OntarioBadgeEvents = NonNullable<unknown>;
 
 export const OntarioBadge: StencilReactComponent<OntarioBadgeElement, OntarioBadgeEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioBadgeElement, OntarioBadgeEvents>({
-				tagName: 'ontario-badge',
-				elementClass: OntarioBadgeElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioBadgeEvents,
-				defineCustomElement: defineOntarioBadge,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioBadgeElement, OntarioBadgeEvents>({
-				tagName: 'ontario-badge',
-				properties: {
-					colour: 'colour',
-					label: 'label',
-					ariaLabelText: 'aria-label-text',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioBadgeElement, OntarioBadgeEvents>({
+		tagName: 'ontario-badge',
+		properties: {
+			colour: 'colour',
+			label: 'label',
+			ariaLabelText: 'aria-label-text',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioBlockquoteEvents = NonNullable<unknown>;
+export type OntarioBlockquoteEvents = NonNullable<unknown>;
 
 export const OntarioBlockquote: StencilReactComponent<OntarioBlockquoteElement, OntarioBlockquoteEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioBlockquoteElement, OntarioBlockquoteEvents>({
-				tagName: 'ontario-blockquote',
-				elementClass: OntarioBlockquoteElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioBlockquoteEvents,
-				defineCustomElement: defineOntarioBlockquote,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioBlockquoteElement, OntarioBlockquoteEvents>({
-				tagName: 'ontario-blockquote',
-				properties: {
-					quote: 'quote',
-					attribution: 'attribution',
-					byline: 'byline',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioBlockquoteElement, OntarioBlockquoteEvents>({
+		tagName: 'ontario-blockquote',
+		properties: {
+			quote: 'quote',
+			attribution: 'attribution',
+			byline: 'byline',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioButtonEvents = NonNullable<unknown>;
+export type OntarioButtonEvents = NonNullable<unknown>;
 
 export const OntarioButton: StencilReactComponent<OntarioButtonElement, OntarioButtonEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioButtonElement, OntarioButtonEvents>({
-				tagName: 'ontario-button',
-				elementClass: OntarioButtonElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioButtonEvents,
-				defineCustomElement: defineOntarioButton,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioButtonElement, OntarioButtonEvents>({
-				tagName: 'ontario-button',
-				properties: {
-					type: 'type',
-					htmlType: 'html-type',
-					label: 'label',
-					ariaLabelText: 'aria-label-text',
-					elementId: 'element-id',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioButtonElement, OntarioButtonEvents>({
+		tagName: 'ontario-button',
+		properties: {
+			type: 'type',
+			htmlType: 'html-type',
+			label: 'label',
+			ariaLabelText: 'aria-label-text',
+			elementId: 'element-id',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioCalloutEvents = NonNullable<unknown>;
+export type OntarioCalloutEvents = NonNullable<unknown>;
 
 export const OntarioCallout: StencilReactComponent<OntarioCalloutElement, OntarioCalloutEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioCalloutElement, OntarioCalloutEvents>({
-				tagName: 'ontario-callout',
-				elementClass: OntarioCalloutElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioCalloutEvents,
-				defineCustomElement: defineOntarioCallout,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioCalloutElement, OntarioCalloutEvents>({
-				tagName: 'ontario-callout',
-				properties: {
-					headingType: 'heading-type',
-					headingContentType: 'heading-content-type',
-					headingContent: 'heading-content',
-					content: 'content',
-					highlightColour: 'highlight-colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioCalloutElement, OntarioCalloutEvents>({
+		tagName: 'ontario-callout',
+		properties: {
+			headingType: 'heading-type',
+			headingContentType: 'heading-content-type',
+			headingContent: 'heading-content',
+			content: 'content',
+			highlightColour: 'highlight-colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioCardEvents = NonNullable<unknown>;
+export type OntarioCardEvents = NonNullable<unknown>;
 
-export const OntarioCard: StencilReactComponent<OntarioCardElement, OntarioCardEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioCardElement, OntarioCardEvents>({
-				tagName: 'ontario-card',
-				elementClass: OntarioCardElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioCardEvents,
-				defineCustomElement: defineOntarioCard,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioCardElement, OntarioCardEvents>({
-				tagName: 'ontario-card',
-				properties: {
-					label: 'label',
-					headingLevel: 'heading-level',
-					image: 'image',
-					imageAltText: 'image-alt-text',
-					description: 'description',
-					cardLink: 'card-link',
-					layoutDirection: 'layout-direction',
-					headerColour: 'header-colour',
-					horizontalImagePositionType: 'horizontal-image-position-type',
-					horizontalImageSizeType: 'horizontal-image-size-type',
-					ariaLabelText: 'aria-label-text',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+export const OntarioCard: StencilReactComponent<OntarioCardElement, OntarioCardEvents> = /*@__PURE__*/ createComponent<
+	OntarioCardElement,
+	OntarioCardEvents
+>({
+	tagName: 'ontario-card',
+	properties: {
+		label: 'label',
+		headingLevel: 'heading-level',
+		image: 'image',
+		imageAltText: 'image-alt-text',
+		description: 'description',
+		cardLink: 'card-link',
+		layoutDirection: 'layout-direction',
+		headerColour: 'header-colour',
+		horizontalImagePositionType: 'horizontal-image-position-type',
+		horizontalImageSizeType: 'horizontal-image-size-type',
+		ariaLabelText: 'aria-label-text',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioCardCollectionEvents = NonNullable<unknown>;
+export type OntarioCardCollectionEvents = NonNullable<unknown>;
 
 export const OntarioCardCollection: StencilReactComponent<OntarioCardCollectionElement, OntarioCardCollectionEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioCardCollectionElement, OntarioCardCollectionEvents>({
-				tagName: 'ontario-card-collection',
-				elementClass: OntarioCardCollectionElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioCardCollectionEvents,
-				defineCustomElement: defineOntarioCardCollection,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioCardCollectionElement, OntarioCardCollectionEvents>({
-				tagName: 'ontario-card-collection',
-				properties: { cardsPerRow: 'cards-per-row' },
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioCardCollectionElement, OntarioCardCollectionEvents>({
+		tagName: 'ontario-card-collection',
+		properties: { cardsPerRow: 'cards-per-row' },
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioCheckboxesEvents = {
+export type OntarioCheckboxesEvents = {
 	onCheckboxOnChange: EventName<OntarioCheckboxesCustomEvent<RadioAndCheckboxChangeEvent>>;
 	onCheckboxOnBlur: EventName<OntarioCheckboxesCustomEvent<InputFocusBlurEvent>>;
 	onCheckboxOnFocus: EventName<OntarioCheckboxesCustomEvent<InputFocusBlurEvent>>;
@@ -806,57 +314,36 @@ type OntarioCheckboxesEvents = {
 };
 
 export const OntarioCheckboxes: StencilReactComponent<OntarioCheckboxesElement, OntarioCheckboxesEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioCheckboxesElement, OntarioCheckboxesEvents>({
-				tagName: 'ontario-checkboxes',
-				elementClass: OntarioCheckboxesElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {
-					onCheckboxOnChange: 'checkboxOnChange',
-					onCheckboxOnBlur: 'checkboxOnBlur',
-					onCheckboxOnFocus: 'checkboxOnFocus',
-					onInputErrorOccurred: 'inputErrorOccurred',
-				} as OntarioCheckboxesEvents,
-				defineCustomElement: defineOntarioCheckboxes,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioCheckboxesElement, OntarioCheckboxesEvents>({
-				tagName: 'ontario-checkboxes',
-				properties: {
-					caption: 'caption',
-					language: 'language',
-					name: 'name',
-					hintText: 'hint-text',
-					hintExpander: 'hint-expander',
-					options: 'options',
-					required: 'required',
-					errorMessage: 'error-message',
-					customOnChange: 'custom-on-change',
-					customOnBlur: 'custom-on-blur',
-					customOnFocus: 'custom-on-focus',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioCheckboxesElement, OntarioCheckboxesEvents>({
+		tagName: 'ontario-checkboxes',
+		properties: {
+			caption: 'caption',
+			language: 'language',
+			name: 'name',
+			hintText: 'hint-text',
+			hintExpander: 'hint-expander',
+			options: 'options',
+			required: 'required',
+			errorMessage: 'error-message',
+			customOnChange: 'custom-on-change',
+			customOnBlur: 'custom-on-blur',
+			customOnFocus: 'custom-on-focus',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioCriticalAlertEvents = NonNullable<unknown>;
+export type OntarioCriticalAlertEvents = NonNullable<unknown>;
 
 export const OntarioCriticalAlert: StencilReactComponent<OntarioCriticalAlertElement, OntarioCriticalAlertEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioCriticalAlertElement, OntarioCriticalAlertEvents>({
-				tagName: 'ontario-critical-alert',
-				elementClass: OntarioCriticalAlertElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioCriticalAlertEvents,
-				defineCustomElement: defineOntarioCriticalAlert,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioCriticalAlertElement, OntarioCriticalAlertEvents>({
-				tagName: 'ontario-critical-alert',
-				properties: { content: 'content' },
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioCriticalAlertElement, OntarioCriticalAlertEvents>({
+		tagName: 'ontario-critical-alert',
+		properties: { content: 'content' },
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioDateInputEvents = {
+export type OntarioDateInputEvents = {
 	onInputOnInput: EventName<
 		CustomEvent<{
 			value: string;
@@ -875,39 +362,25 @@ type OntarioDateInputEvents = {
 };
 
 export const OntarioDateInput: StencilReactComponent<OntarioDateInputElement, OntarioDateInputEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioDateInputElement, OntarioDateInputEvents>({
-				tagName: 'ontario-date-input',
-				elementClass: OntarioDateInputElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {
-					onInputOnInput: 'inputOnInput',
-					onInputOnChange: 'inputOnChange',
-					onInputOnBlur: 'inputOnBlur',
-					onInputOnFocus: 'inputOnFocus',
-					onInputErrorOccurred: 'inputErrorOccurred',
-				} as OntarioDateInputEvents,
-				defineCustomElement: defineOntarioDateInput,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioDateInputElement, OntarioDateInputEvents>({
-				tagName: 'ontario-date-input',
-				properties: {
-					language: 'language',
-					required: 'required',
-					placeholder: 'placeholder',
-					caption: 'caption',
-					elementId: 'element-id',
-					minYear: 'min-year',
-					maxYear: 'max-year',
-					hintText: 'hint-text',
-					dateOptions: 'date-options',
-					dateValidator: 'date-validator',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioDateInputElement, OntarioDateInputEvents>({
+		tagName: 'ontario-date-input',
+		properties: {
+			language: 'language',
+			required: 'required',
+			placeholder: 'placeholder',
+			caption: 'caption',
+			elementId: 'element-id',
+			minYear: 'min-year',
+			maxYear: 'max-year',
+			hintText: 'hint-text',
+			dateOptions: 'date-options',
+			dateValidator: 'date-validator',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioDropdownListEvents = {
+export type OntarioDropdownListEvents = {
 	onDropdownOnChange: EventName<OntarioDropdownListCustomEvent<InputInteractionEvent>>;
 	onDropdownOnBlur: EventName<OntarioDropdownListCustomEvent<InputFocusBlurEvent>>;
 	onDropdownOnFocus: EventName<OntarioDropdownListCustomEvent<InputFocusBlurEvent>>;
@@ -915,2587 +388,1602 @@ type OntarioDropdownListEvents = {
 };
 
 export const OntarioDropdownList: StencilReactComponent<OntarioDropdownListElement, OntarioDropdownListEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioDropdownListElement, OntarioDropdownListEvents>({
-				tagName: 'ontario-dropdown-list',
-				elementClass: OntarioDropdownListElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {
-					onDropdownOnChange: 'dropdownOnChange',
-					onDropdownOnBlur: 'dropdownOnBlur',
-					onDropdownOnFocus: 'dropdownOnFocus',
-					onInputErrorOccurred: 'inputErrorOccurred',
-				} as OntarioDropdownListEvents,
-				defineCustomElement: defineOntarioDropdownList,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioDropdownListElement, OntarioDropdownListEvents>({
-				tagName: 'ontario-dropdown-list',
-				properties: {
-					caption: 'caption',
-					language: 'language',
-					name: 'name',
-					elementId: 'element-id',
-					options: 'options',
-					required: 'required',
-					isEmptyStartOption: 'is-empty-start-option',
-					hintText: 'hint-text',
-					hintExpander: 'hint-expander',
-					errorMessage: 'error-message',
-					customOnChange: 'custom-on-change',
-					customOnBlur: 'custom-on-blur',
-					customOnFocus: 'custom-on-focus',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioDropdownListElement, OntarioDropdownListEvents>({
+		tagName: 'ontario-dropdown-list',
+		properties: {
+			caption: 'caption',
+			language: 'language',
+			name: 'name',
+			elementId: 'element-id',
+			options: 'options',
+			required: 'required',
+			isEmptyStartOption: 'is-empty-start-option',
+			hintText: 'hint-text',
+			hintExpander: 'hint-expander',
+			errorMessage: 'error-message',
+			customOnChange: 'custom-on-change',
+			customOnBlur: 'custom-on-blur',
+			customOnFocus: 'custom-on-focus',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioFieldsetEvents = NonNullable<unknown>;
+export type OntarioFieldsetEvents = NonNullable<unknown>;
 
 export const OntarioFieldset: StencilReactComponent<OntarioFieldsetElement, OntarioFieldsetEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioFieldsetElement, OntarioFieldsetEvents>({
-				tagName: 'ontario-fieldset',
-				elementClass: OntarioFieldsetElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioFieldsetEvents,
-				defineCustomElement: defineOntarioFieldset,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioFieldsetElement, OntarioFieldsetEvents>({
-				tagName: 'ontario-fieldset',
-				properties: {
-					legend: 'legend',
-					legendSize: 'legend-size',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioFieldsetElement, OntarioFieldsetEvents>({
+		tagName: 'ontario-fieldset',
+		properties: {
+			legend: 'legend',
+			legendSize: 'legend-size',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioFooterEvents = NonNullable<unknown>;
+export type OntarioFooterEvents = NonNullable<unknown>;
 
 export const OntarioFooter: StencilReactComponent<OntarioFooterElement, OntarioFooterEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioFooterElement, OntarioFooterEvents>({
-				tagName: 'ontario-footer',
-				elementClass: OntarioFooterElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioFooterEvents,
-				defineCustomElement: defineOntarioFooter,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioFooterElement, OntarioFooterEvents>({
-				tagName: 'ontario-footer',
-				properties: {
-					language: 'language',
-					type: 'type',
-					footerLinks: 'footer-links',
-					socialLinks: 'social-links',
-					twoColumnOptions: 'two-column-options',
-					threeColumnOptions: 'three-column-options',
-					topMargin: 'top-margin',
-					assetBasePath: 'asset-base-path',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioFooterElement, OntarioFooterEvents>({
+		tagName: 'ontario-footer',
+		properties: {
+			language: 'language',
+			type: 'type',
+			footerLinks: 'footer-links',
+			socialLinks: 'social-links',
+			twoColumnOptions: 'two-column-options',
+			threeColumnOptions: 'three-column-options',
+			topMargin: 'top-margin',
+			assetBasePath: 'asset-base-path',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioHeaderEvents = NonNullable<unknown>;
+export type OntarioHeaderEvents = NonNullable<unknown>;
 
 export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioHeaderEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioHeaderElement, OntarioHeaderEvents>({
-				tagName: 'ontario-header',
-				elementClass: OntarioHeaderElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioHeaderEvents,
-				defineCustomElement: defineOntarioHeader,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioHeaderElement, OntarioHeaderEvents>({
-				tagName: 'ontario-header',
-				properties: {
-					type: 'type',
-					applicationHeaderInfo: 'application-header-info',
-					menuItems: 'menu-items',
-					disableDynamicMenu: 'disable-dynamic-menu',
-					languageToggleOptions: 'language-toggle-options',
-					customLanguageToggle: 'custom-language-toggle',
-					language: 'language',
-					assetBasePath: 'asset-base-path',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioHeaderElement, OntarioHeaderEvents>({
+		tagName: 'ontario-header',
+		properties: {
+			type: 'type',
+			applicationHeaderInfo: 'application-header-info',
+			menuItems: 'menu-items',
+			disableDynamicMenu: 'disable-dynamic-menu',
+			languageToggleOptions: 'language-toggle-options',
+			customLanguageToggle: 'custom-language-toggle',
+			language: 'language',
+			assetBasePath: 'asset-base-path',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioHintExpanderEvents = {
+export type OntarioHintExpanderEvents = {
 	onToggleExpanderEvent: EventName<OntarioHintExpanderCustomEvent<MouseEvent | KeyboardEvent>>;
 };
 
 export const OntarioHintExpander: StencilReactComponent<OntarioHintExpanderElement, OntarioHintExpanderEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioHintExpanderElement, OntarioHintExpanderEvents>({
-				tagName: 'ontario-hint-expander',
-				elementClass: OntarioHintExpanderElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: { onToggleExpanderEvent: 'toggleExpanderEvent' } as OntarioHintExpanderEvents,
-				defineCustomElement: defineOntarioHintExpander,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioHintExpanderElement, OntarioHintExpanderEvents>({
-				tagName: 'ontario-hint-expander',
-				properties: {
-					hintContentType: 'hint-content-type',
-					hint: 'hint',
-					content: 'content',
-					elementId: 'element-id',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioHintExpanderElement, OntarioHintExpanderEvents>({
+		tagName: 'ontario-hint-expander',
+		properties: {
+			hintContentType: 'hint-content-type',
+			hint: 'hint',
+			content: 'content',
+			elementId: 'element-id',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioHintTextEvents = NonNullable<unknown>;
+export type OntarioHintTextEvents = NonNullable<unknown>;
 
 export const OntarioHintText: StencilReactComponent<OntarioHintTextElement, OntarioHintTextEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioHintTextElement, OntarioHintTextEvents>({
-				tagName: 'ontario-hint-text',
-				elementClass: OntarioHintTextElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioHintTextEvents,
-				defineCustomElement: defineOntarioHintText,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioHintTextElement, OntarioHintTextEvents>({
-				tagName: 'ontario-hint-text',
-				properties: {
-					hintContentType: 'hint-content-type',
-					hint: 'hint',
-					elementId: 'element-id',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioHintTextElement, OntarioHintTextEvents>({
+		tagName: 'ontario-hint-text',
+		properties: {
+			hintContentType: 'hint-content-type',
+			hint: 'hint',
+			elementId: 'element-id',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconAccessibilityEvents = NonNullable<unknown>;
+export type OntarioIconAccessibilityEvents = NonNullable<unknown>;
 
 export const OntarioIconAccessibility: StencilReactComponent<
 	OntarioIconAccessibilityElement,
 	OntarioIconAccessibilityEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconAccessibilityElement, OntarioIconAccessibilityEvents>({
-				tagName: 'ontario-icon-accessibility',
-				elementClass: OntarioIconAccessibilityElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconAccessibilityEvents,
-				defineCustomElement: defineOntarioIconAccessibility,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconAccessibilityElement, OntarioIconAccessibilityEvents>({
-				tagName: 'ontario-icon-accessibility',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconAccessibilityElement, OntarioIconAccessibilityEvents>({
+	tagName: 'ontario-icon-accessibility',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconAccountEvents = NonNullable<unknown>;
+export type OntarioIconAccountEvents = NonNullable<unknown>;
 
 export const OntarioIconAccount: StencilReactComponent<OntarioIconAccountElement, OntarioIconAccountEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconAccountElement, OntarioIconAccountEvents>({
-				tagName: 'ontario-icon-account',
-				elementClass: OntarioIconAccountElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconAccountEvents,
-				defineCustomElement: defineOntarioIconAccount,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconAccountElement, OntarioIconAccountEvents>({
-				tagName: 'ontario-icon-account',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconAccountElement, OntarioIconAccountEvents>({
+		tagName: 'ontario-icon-account',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconAddEvents = NonNullable<unknown>;
+export type OntarioIconAddEvents = NonNullable<unknown>;
 
 export const OntarioIconAdd: StencilReactComponent<OntarioIconAddElement, OntarioIconAddEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconAddElement, OntarioIconAddEvents>({
-				tagName: 'ontario-icon-add',
-				elementClass: OntarioIconAddElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconAddEvents,
-				defineCustomElement: defineOntarioIconAdd,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconAddElement, OntarioIconAddEvents>({
-				tagName: 'ontario-icon-add',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconAddElement, OntarioIconAddEvents>({
+		tagName: 'ontario-icon-add',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconAddAltEvents = NonNullable<unknown>;
+export type OntarioIconAddAltEvents = NonNullable<unknown>;
 
 export const OntarioIconAddAlt: StencilReactComponent<OntarioIconAddAltElement, OntarioIconAddAltEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconAddAltElement, OntarioIconAddAltEvents>({
-				tagName: 'ontario-icon-add-alt',
-				elementClass: OntarioIconAddAltElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconAddAltEvents,
-				defineCustomElement: defineOntarioIconAddAlt,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconAddAltElement, OntarioIconAddAltEvents>({
-				tagName: 'ontario-icon-add-alt',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconAddAltElement, OntarioIconAddAltEvents>({
+		tagName: 'ontario-icon-add-alt',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconAlertErrorEvents = NonNullable<unknown>;
+export type OntarioIconAlertErrorEvents = NonNullable<unknown>;
 
 export const OntarioIconAlertError: StencilReactComponent<OntarioIconAlertErrorElement, OntarioIconAlertErrorEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconAlertErrorElement, OntarioIconAlertErrorEvents>({
-				tagName: 'ontario-icon-alert-error',
-				elementClass: OntarioIconAlertErrorElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconAlertErrorEvents,
-				defineCustomElement: defineOntarioIconAlertError,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconAlertErrorElement, OntarioIconAlertErrorEvents>({
-				tagName: 'ontario-icon-alert-error',
-				properties: { iconWidth: 'icon-width' },
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconAlertErrorElement, OntarioIconAlertErrorEvents>({
+		tagName: 'ontario-icon-alert-error',
+		properties: { iconWidth: 'icon-width' },
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconAlertInformationEvents = NonNullable<unknown>;
+export type OntarioIconAlertInformationEvents = NonNullable<unknown>;
 
 export const OntarioIconAlertInformation: StencilReactComponent<
 	OntarioIconAlertInformationElement,
 	OntarioIconAlertInformationEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconAlertInformationElement, OntarioIconAlertInformationEvents>({
-				tagName: 'ontario-icon-alert-information',
-				elementClass: OntarioIconAlertInformationElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconAlertInformationEvents,
-				defineCustomElement: defineOntarioIconAlertInformation,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconAlertInformationElement, OntarioIconAlertInformationEvents>({
-				tagName: 'ontario-icon-alert-information',
-				properties: { iconWidth: 'icon-width' },
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconAlertInformationElement, OntarioIconAlertInformationEvents>({
+	tagName: 'ontario-icon-alert-information',
+	properties: { iconWidth: 'icon-width' },
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconAlertSuccessEvents = NonNullable<unknown>;
+export type OntarioIconAlertSuccessEvents = NonNullable<unknown>;
 
 export const OntarioIconAlertSuccess: StencilReactComponent<
 	OntarioIconAlertSuccessElement,
 	OntarioIconAlertSuccessEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconAlertSuccessElement, OntarioIconAlertSuccessEvents>({
-				tagName: 'ontario-icon-alert-success',
-				elementClass: OntarioIconAlertSuccessElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconAlertSuccessEvents,
-				defineCustomElement: defineOntarioIconAlertSuccess,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconAlertSuccessElement, OntarioIconAlertSuccessEvents>({
-				tagName: 'ontario-icon-alert-success',
-				properties: { iconWidth: 'icon-width' },
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconAlertSuccessElement, OntarioIconAlertSuccessEvents>({
+	tagName: 'ontario-icon-alert-success',
+	properties: { iconWidth: 'icon-width' },
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconAlertWarningEvents = NonNullable<unknown>;
+export type OntarioIconAlertWarningEvents = NonNullable<unknown>;
 
 export const OntarioIconAlertWarning: StencilReactComponent<
 	OntarioIconAlertWarningElement,
 	OntarioIconAlertWarningEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconAlertWarningElement, OntarioIconAlertWarningEvents>({
-				tagName: 'ontario-icon-alert-warning',
-				elementClass: OntarioIconAlertWarningElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconAlertWarningEvents,
-				defineCustomElement: defineOntarioIconAlertWarning,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconAlertWarningElement, OntarioIconAlertWarningEvents>({
-				tagName: 'ontario-icon-alert-warning',
-				properties: { iconWidth: 'icon-width' },
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconAlertWarningElement, OntarioIconAlertWarningEvents>({
+	tagName: 'ontario-icon-alert-warning',
+	properties: { iconWidth: 'icon-width' },
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconArrowUpEvents = NonNullable<unknown>;
+export type OntarioIconArrowUpEvents = NonNullable<unknown>;
 
 export const OntarioIconArrowUp: StencilReactComponent<OntarioIconArrowUpElement, OntarioIconArrowUpEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconArrowUpElement, OntarioIconArrowUpEvents>({
-				tagName: 'ontario-icon-arrow-up',
-				elementClass: OntarioIconArrowUpElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconArrowUpEvents,
-				defineCustomElement: defineOntarioIconArrowUp,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconArrowUpElement, OntarioIconArrowUpEvents>({
-				tagName: 'ontario-icon-arrow-up',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconArrowUpElement, OntarioIconArrowUpEvents>({
+		tagName: 'ontario-icon-arrow-up',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconAttachEvents = NonNullable<unknown>;
+export type OntarioIconAttachEvents = NonNullable<unknown>;
 
 export const OntarioIconAttach: StencilReactComponent<OntarioIconAttachElement, OntarioIconAttachEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconAttachElement, OntarioIconAttachEvents>({
-				tagName: 'ontario-icon-attach',
-				elementClass: OntarioIconAttachElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconAttachEvents,
-				defineCustomElement: defineOntarioIconAttach,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconAttachElement, OntarioIconAttachEvents>({
-				tagName: 'ontario-icon-attach',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconAttachElement, OntarioIconAttachEvents>({
+		tagName: 'ontario-icon-attach',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconBookmarkOffEvents = NonNullable<unknown>;
+export type OntarioIconBookmarkOffEvents = NonNullable<unknown>;
 
 export const OntarioIconBookmarkOff: StencilReactComponent<
 	OntarioIconBookmarkOffElement,
 	OntarioIconBookmarkOffEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconBookmarkOffElement, OntarioIconBookmarkOffEvents>({
-				tagName: 'ontario-icon-bookmark-off',
-				elementClass: OntarioIconBookmarkOffElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconBookmarkOffEvents,
-				defineCustomElement: defineOntarioIconBookmarkOff,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconBookmarkOffElement, OntarioIconBookmarkOffEvents>({
-				tagName: 'ontario-icon-bookmark-off',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconBookmarkOffElement, OntarioIconBookmarkOffEvents>({
+	tagName: 'ontario-icon-bookmark-off',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconBookmarkOnEvents = NonNullable<unknown>;
+export type OntarioIconBookmarkOnEvents = NonNullable<unknown>;
 
 export const OntarioIconBookmarkOn: StencilReactComponent<OntarioIconBookmarkOnElement, OntarioIconBookmarkOnEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconBookmarkOnElement, OntarioIconBookmarkOnEvents>({
-				tagName: 'ontario-icon-bookmark-on',
-				elementClass: OntarioIconBookmarkOnElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconBookmarkOnEvents,
-				defineCustomElement: defineOntarioIconBookmarkOn,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconBookmarkOnElement, OntarioIconBookmarkOnEvents>({
-				tagName: 'ontario-icon-bookmark-on',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconBookmarkOnElement, OntarioIconBookmarkOnEvents>({
+		tagName: 'ontario-icon-bookmark-on',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconCalendarEvents = NonNullable<unknown>;
+export type OntarioIconCalendarEvents = NonNullable<unknown>;
 
 export const OntarioIconCalendar: StencilReactComponent<OntarioIconCalendarElement, OntarioIconCalendarEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconCalendarElement, OntarioIconCalendarEvents>({
-				tagName: 'ontario-icon-calendar',
-				elementClass: OntarioIconCalendarElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconCalendarEvents,
-				defineCustomElement: defineOntarioIconCalendar,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconCalendarElement, OntarioIconCalendarEvents>({
-				tagName: 'ontario-icon-calendar',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconCalendarElement, OntarioIconCalendarEvents>({
+		tagName: 'ontario-icon-calendar',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconCameraEvents = NonNullable<unknown>;
+export type OntarioIconCameraEvents = NonNullable<unknown>;
 
 export const OntarioIconCamera: StencilReactComponent<OntarioIconCameraElement, OntarioIconCameraEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconCameraElement, OntarioIconCameraEvents>({
-				tagName: 'ontario-icon-camera',
-				elementClass: OntarioIconCameraElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconCameraEvents,
-				defineCustomElement: defineOntarioIconCamera,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconCameraElement, OntarioIconCameraEvents>({
-				tagName: 'ontario-icon-camera',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconCameraElement, OntarioIconCameraEvents>({
+		tagName: 'ontario-icon-camera',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconChevronDownEvents = NonNullable<unknown>;
+export type OntarioIconChevronDownEvents = NonNullable<unknown>;
 
 export const OntarioIconChevronDown: StencilReactComponent<
 	OntarioIconChevronDownElement,
 	OntarioIconChevronDownEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconChevronDownElement, OntarioIconChevronDownEvents>({
-				tagName: 'ontario-icon-chevron-down',
-				elementClass: OntarioIconChevronDownElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconChevronDownEvents,
-				defineCustomElement: defineOntarioIconChevronDown,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconChevronDownElement, OntarioIconChevronDownEvents>({
-				tagName: 'ontario-icon-chevron-down',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconChevronDownElement, OntarioIconChevronDownEvents>({
+	tagName: 'ontario-icon-chevron-down',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconChevronLeftEvents = NonNullable<unknown>;
+export type OntarioIconChevronLeftEvents = NonNullable<unknown>;
 
 export const OntarioIconChevronLeft: StencilReactComponent<
 	OntarioIconChevronLeftElement,
 	OntarioIconChevronLeftEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconChevronLeftElement, OntarioIconChevronLeftEvents>({
-				tagName: 'ontario-icon-chevron-left',
-				elementClass: OntarioIconChevronLeftElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconChevronLeftEvents,
-				defineCustomElement: defineOntarioIconChevronLeft,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconChevronLeftElement, OntarioIconChevronLeftEvents>({
-				tagName: 'ontario-icon-chevron-left',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconChevronLeftElement, OntarioIconChevronLeftEvents>({
+	tagName: 'ontario-icon-chevron-left',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconChevronRightEvents = NonNullable<unknown>;
+export type OntarioIconChevronRightEvents = NonNullable<unknown>;
 
 export const OntarioIconChevronRight: StencilReactComponent<
 	OntarioIconChevronRightElement,
 	OntarioIconChevronRightEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconChevronRightElement, OntarioIconChevronRightEvents>({
-				tagName: 'ontario-icon-chevron-right',
-				elementClass: OntarioIconChevronRightElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconChevronRightEvents,
-				defineCustomElement: defineOntarioIconChevronRight,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconChevronRightElement, OntarioIconChevronRightEvents>({
-				tagName: 'ontario-icon-chevron-right',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconChevronRightElement, OntarioIconChevronRightEvents>({
+	tagName: 'ontario-icon-chevron-right',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconChevronUpEvents = NonNullable<unknown>;
+export type OntarioIconChevronUpEvents = NonNullable<unknown>;
 
 export const OntarioIconChevronUp: StencilReactComponent<OntarioIconChevronUpElement, OntarioIconChevronUpEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconChevronUpElement, OntarioIconChevronUpEvents>({
-				tagName: 'ontario-icon-chevron-up',
-				elementClass: OntarioIconChevronUpElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconChevronUpEvents,
-				defineCustomElement: defineOntarioIconChevronUp,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconChevronUpElement, OntarioIconChevronUpEvents>({
-				tagName: 'ontario-icon-chevron-up',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconChevronUpElement, OntarioIconChevronUpEvents>({
+		tagName: 'ontario-icon-chevron-up',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconClockEvents = NonNullable<unknown>;
+export type OntarioIconClockEvents = NonNullable<unknown>;
 
 export const OntarioIconClock: StencilReactComponent<OntarioIconClockElement, OntarioIconClockEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconClockElement, OntarioIconClockEvents>({
-				tagName: 'ontario-icon-clock',
-				elementClass: OntarioIconClockElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconClockEvents,
-				defineCustomElement: defineOntarioIconClock,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconClockElement, OntarioIconClockEvents>({
-				tagName: 'ontario-icon-clock',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconClockElement, OntarioIconClockEvents>({
+		tagName: 'ontario-icon-clock',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconCloseEvents = NonNullable<unknown>;
+export type OntarioIconCloseEvents = NonNullable<unknown>;
 
 export const OntarioIconClose: StencilReactComponent<OntarioIconCloseElement, OntarioIconCloseEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconCloseElement, OntarioIconCloseEvents>({
-				tagName: 'ontario-icon-close',
-				elementClass: OntarioIconCloseElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconCloseEvents,
-				defineCustomElement: defineOntarioIconClose,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconCloseElement, OntarioIconCloseEvents>({
-				tagName: 'ontario-icon-close',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconCloseElement, OntarioIconCloseEvents>({
+		tagName: 'ontario-icon-close',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconCloseHeaderEvents = NonNullable<unknown>;
+export type OntarioIconCloseHeaderEvents = NonNullable<unknown>;
 
 export const OntarioIconCloseHeader: StencilReactComponent<
 	OntarioIconCloseHeaderElement,
 	OntarioIconCloseHeaderEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconCloseHeaderElement, OntarioIconCloseHeaderEvents>({
-				tagName: 'ontario-icon-close-header',
-				elementClass: OntarioIconCloseHeaderElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconCloseHeaderEvents,
-				defineCustomElement: defineOntarioIconCloseHeader,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconCloseHeaderElement, OntarioIconCloseHeaderEvents>({
-				tagName: 'ontario-icon-close-header',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconCloseHeaderElement, OntarioIconCloseHeaderEvents>({
+	tagName: 'ontario-icon-close-header',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconCloudEvents = NonNullable<unknown>;
+export type OntarioIconCloudEvents = NonNullable<unknown>;
 
 export const OntarioIconCloud: StencilReactComponent<OntarioIconCloudElement, OntarioIconCloudEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconCloudElement, OntarioIconCloudEvents>({
-				tagName: 'ontario-icon-cloud',
-				elementClass: OntarioIconCloudElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconCloudEvents,
-				defineCustomElement: defineOntarioIconCloud,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconCloudElement, OntarioIconCloudEvents>({
-				tagName: 'ontario-icon-cloud',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconCloudElement, OntarioIconCloudEvents>({
+		tagName: 'ontario-icon-cloud',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconCollapseEvents = NonNullable<unknown>;
+export type OntarioIconCollapseEvents = NonNullable<unknown>;
 
 export const OntarioIconCollapse: StencilReactComponent<OntarioIconCollapseElement, OntarioIconCollapseEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconCollapseElement, OntarioIconCollapseEvents>({
-				tagName: 'ontario-icon-collapse',
-				elementClass: OntarioIconCollapseElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconCollapseEvents,
-				defineCustomElement: defineOntarioIconCollapse,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconCollapseElement, OntarioIconCollapseEvents>({
-				tagName: 'ontario-icon-collapse',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconCollapseElement, OntarioIconCollapseEvents>({
+		tagName: 'ontario-icon-collapse',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconCreditCardEvents = NonNullable<unknown>;
+export type OntarioIconCreditCardEvents = NonNullable<unknown>;
 
 export const OntarioIconCreditCard: StencilReactComponent<OntarioIconCreditCardElement, OntarioIconCreditCardEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconCreditCardElement, OntarioIconCreditCardEvents>({
-				tagName: 'ontario-icon-credit-card',
-				elementClass: OntarioIconCreditCardElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconCreditCardEvents,
-				defineCustomElement: defineOntarioIconCreditCard,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconCreditCardElement, OntarioIconCreditCardEvents>({
-				tagName: 'ontario-icon-credit-card',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconCreditCardElement, OntarioIconCreditCardEvents>({
+		tagName: 'ontario-icon-credit-card',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconCriticalAlertWarningEvents = NonNullable<unknown>;
+export type OntarioIconCriticalAlertWarningEvents = NonNullable<unknown>;
 
 export const OntarioIconCriticalAlertWarning: StencilReactComponent<
 	OntarioIconCriticalAlertWarningElement,
 	OntarioIconCriticalAlertWarningEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconCriticalAlertWarningElement, OntarioIconCriticalAlertWarningEvents>({
-				tagName: 'ontario-icon-critical-alert-warning',
-				elementClass: OntarioIconCriticalAlertWarningElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconCriticalAlertWarningEvents,
-				defineCustomElement: defineOntarioIconCriticalAlertWarning,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconCriticalAlertWarningElement, OntarioIconCriticalAlertWarningEvents>({
-				tagName: 'ontario-icon-critical-alert-warning',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconCriticalAlertWarningElement, OntarioIconCriticalAlertWarningEvents>({
+	tagName: 'ontario-icon-critical-alert-warning',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconDeleteEvents = NonNullable<unknown>;
+export type OntarioIconDeleteEvents = NonNullable<unknown>;
 
 export const OntarioIconDelete: StencilReactComponent<OntarioIconDeleteElement, OntarioIconDeleteEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconDeleteElement, OntarioIconDeleteEvents>({
-				tagName: 'ontario-icon-delete',
-				elementClass: OntarioIconDeleteElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconDeleteEvents,
-				defineCustomElement: defineOntarioIconDelete,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconDeleteElement, OntarioIconDeleteEvents>({
-				tagName: 'ontario-icon-delete',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconDeleteElement, OntarioIconDeleteEvents>({
+		tagName: 'ontario-icon-delete',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconDocumentEvents = NonNullable<unknown>;
+export type OntarioIconDocumentEvents = NonNullable<unknown>;
 
 export const OntarioIconDocument: StencilReactComponent<OntarioIconDocumentElement, OntarioIconDocumentEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconDocumentElement, OntarioIconDocumentEvents>({
-				tagName: 'ontario-icon-document',
-				elementClass: OntarioIconDocumentElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconDocumentEvents,
-				defineCustomElement: defineOntarioIconDocument,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconDocumentElement, OntarioIconDocumentEvents>({
-				tagName: 'ontario-icon-document',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconDocumentElement, OntarioIconDocumentEvents>({
+		tagName: 'ontario-icon-document',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconDownloadEvents = NonNullable<unknown>;
+export type OntarioIconDownloadEvents = NonNullable<unknown>;
 
 export const OntarioIconDownload: StencilReactComponent<OntarioIconDownloadElement, OntarioIconDownloadEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconDownloadElement, OntarioIconDownloadEvents>({
-				tagName: 'ontario-icon-download',
-				elementClass: OntarioIconDownloadElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconDownloadEvents,
-				defineCustomElement: defineOntarioIconDownload,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconDownloadElement, OntarioIconDownloadEvents>({
-				tagName: 'ontario-icon-download',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconDownloadElement, OntarioIconDownloadEvents>({
+		tagName: 'ontario-icon-download',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconDropdownArrowEvents = NonNullable<unknown>;
+export type OntarioIconDropdownArrowEvents = NonNullable<unknown>;
 
 export const OntarioIconDropdownArrow: StencilReactComponent<
 	OntarioIconDropdownArrowElement,
 	OntarioIconDropdownArrowEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconDropdownArrowElement, OntarioIconDropdownArrowEvents>({
-				tagName: 'ontario-icon-dropdown-arrow',
-				elementClass: OntarioIconDropdownArrowElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconDropdownArrowEvents,
-				defineCustomElement: defineOntarioIconDropdownArrow,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconDropdownArrowElement, OntarioIconDropdownArrowEvents>({
-				tagName: 'ontario-icon-dropdown-arrow',
-				properties: { iconWidth: 'icon-width' },
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconDropdownArrowElement, OntarioIconDropdownArrowEvents>({
+	tagName: 'ontario-icon-dropdown-arrow',
+	properties: { iconWidth: 'icon-width' },
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconEditEvents = NonNullable<unknown>;
+export type OntarioIconEditEvents = NonNullable<unknown>;
 
 export const OntarioIconEdit: StencilReactComponent<OntarioIconEditElement, OntarioIconEditEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconEditElement, OntarioIconEditEvents>({
-				tagName: 'ontario-icon-edit',
-				elementClass: OntarioIconEditElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconEditEvents,
-				defineCustomElement: defineOntarioIconEdit,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconEditElement, OntarioIconEditEvents>({
-				tagName: 'ontario-icon-edit',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconEditElement, OntarioIconEditEvents>({
+		tagName: 'ontario-icon-edit',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconEmailEvents = NonNullable<unknown>;
+export type OntarioIconEmailEvents = NonNullable<unknown>;
 
 export const OntarioIconEmail: StencilReactComponent<OntarioIconEmailElement, OntarioIconEmailEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconEmailElement, OntarioIconEmailEvents>({
-				tagName: 'ontario-icon-email',
-				elementClass: OntarioIconEmailElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconEmailEvents,
-				defineCustomElement: defineOntarioIconEmail,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconEmailElement, OntarioIconEmailEvents>({
-				tagName: 'ontario-icon-email',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconEmailElement, OntarioIconEmailEvents>({
+		tagName: 'ontario-icon-email',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconExpandEvents = NonNullable<unknown>;
+export type OntarioIconExpandEvents = NonNullable<unknown>;
 
 export const OntarioIconExpand: StencilReactComponent<OntarioIconExpandElement, OntarioIconExpandEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconExpandElement, OntarioIconExpandEvents>({
-				tagName: 'ontario-icon-expand',
-				elementClass: OntarioIconExpandElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconExpandEvents,
-				defineCustomElement: defineOntarioIconExpand,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconExpandElement, OntarioIconExpandEvents>({
-				tagName: 'ontario-icon-expand',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconExpandElement, OntarioIconExpandEvents>({
+		tagName: 'ontario-icon-expand',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconExportEvents = NonNullable<unknown>;
+export type OntarioIconExportEvents = NonNullable<unknown>;
 
 export const OntarioIconExport: StencilReactComponent<OntarioIconExportElement, OntarioIconExportEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconExportElement, OntarioIconExportEvents>({
-				tagName: 'ontario-icon-export',
-				elementClass: OntarioIconExportElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconExportEvents,
-				defineCustomElement: defineOntarioIconExport,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconExportElement, OntarioIconExportEvents>({
-				tagName: 'ontario-icon-export',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconExportElement, OntarioIconExportEvents>({
+		tagName: 'ontario-icon-export',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconFacebookEvents = NonNullable<unknown>;
+export type OntarioIconFacebookEvents = NonNullable<unknown>;
 
 export const OntarioIconFacebook: StencilReactComponent<OntarioIconFacebookElement, OntarioIconFacebookEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconFacebookElement, OntarioIconFacebookEvents>({
-				tagName: 'ontario-icon-facebook',
-				elementClass: OntarioIconFacebookElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconFacebookEvents,
-				defineCustomElement: defineOntarioIconFacebook,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconFacebookElement, OntarioIconFacebookEvents>({
-				tagName: 'ontario-icon-facebook',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconFacebookElement, OntarioIconFacebookEvents>({
+		tagName: 'ontario-icon-facebook',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconFacebookAltEvents = NonNullable<unknown>;
+export type OntarioIconFacebookAltEvents = NonNullable<unknown>;
 
 export const OntarioIconFacebookAlt: StencilReactComponent<
 	OntarioIconFacebookAltElement,
 	OntarioIconFacebookAltEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconFacebookAltElement, OntarioIconFacebookAltEvents>({
-				tagName: 'ontario-icon-facebook-alt',
-				elementClass: OntarioIconFacebookAltElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconFacebookAltEvents,
-				defineCustomElement: defineOntarioIconFacebookAlt,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconFacebookAltElement, OntarioIconFacebookAltEvents>({
-				tagName: 'ontario-icon-facebook-alt',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconFacebookAltElement, OntarioIconFacebookAltEvents>({
+	tagName: 'ontario-icon-facebook-alt',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconFavouriteOffEvents = NonNullable<unknown>;
+export type OntarioIconFavouriteOffEvents = NonNullable<unknown>;
 
 export const OntarioIconFavouriteOff: StencilReactComponent<
 	OntarioIconFavouriteOffElement,
 	OntarioIconFavouriteOffEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconFavouriteOffElement, OntarioIconFavouriteOffEvents>({
-				tagName: 'ontario-icon-favourite-off',
-				elementClass: OntarioIconFavouriteOffElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconFavouriteOffEvents,
-				defineCustomElement: defineOntarioIconFavouriteOff,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconFavouriteOffElement, OntarioIconFavouriteOffEvents>({
-				tagName: 'ontario-icon-favourite-off',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconFavouriteOffElement, OntarioIconFavouriteOffEvents>({
+	tagName: 'ontario-icon-favourite-off',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconFavouriteOnEvents = NonNullable<unknown>;
+export type OntarioIconFavouriteOnEvents = NonNullable<unknown>;
 
 export const OntarioIconFavouriteOn: StencilReactComponent<
 	OntarioIconFavouriteOnElement,
 	OntarioIconFavouriteOnEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconFavouriteOnElement, OntarioIconFavouriteOnEvents>({
-				tagName: 'ontario-icon-favourite-on',
-				elementClass: OntarioIconFavouriteOnElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconFavouriteOnEvents,
-				defineCustomElement: defineOntarioIconFavouriteOn,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconFavouriteOnElement, OntarioIconFavouriteOnEvents>({
-				tagName: 'ontario-icon-favourite-on',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconFavouriteOnElement, OntarioIconFavouriteOnEvents>({
+	tagName: 'ontario-icon-favourite-on',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconFilterEvents = NonNullable<unknown>;
+export type OntarioIconFilterEvents = NonNullable<unknown>;
 
 export const OntarioIconFilter: StencilReactComponent<OntarioIconFilterElement, OntarioIconFilterEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconFilterElement, OntarioIconFilterEvents>({
-				tagName: 'ontario-icon-filter',
-				elementClass: OntarioIconFilterElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconFilterEvents,
-				defineCustomElement: defineOntarioIconFilter,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconFilterElement, OntarioIconFilterEvents>({
-				tagName: 'ontario-icon-filter',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconFilterElement, OntarioIconFilterEvents>({
+		tagName: 'ontario-icon-filter',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconFlickrEvents = NonNullable<unknown>;
+export type OntarioIconFlickrEvents = NonNullable<unknown>;
 
 export const OntarioIconFlickr: StencilReactComponent<OntarioIconFlickrElement, OntarioIconFlickrEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconFlickrElement, OntarioIconFlickrEvents>({
-				tagName: 'ontario-icon-flickr',
-				elementClass: OntarioIconFlickrElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconFlickrEvents,
-				defineCustomElement: defineOntarioIconFlickr,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconFlickrElement, OntarioIconFlickrEvents>({
-				tagName: 'ontario-icon-flickr',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconFlickrElement, OntarioIconFlickrEvents>({
+		tagName: 'ontario-icon-flickr',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconGridEvents = NonNullable<unknown>;
+export type OntarioIconGridEvents = NonNullable<unknown>;
 
 export const OntarioIconGrid: StencilReactComponent<OntarioIconGridElement, OntarioIconGridEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconGridElement, OntarioIconGridEvents>({
-				tagName: 'ontario-icon-grid',
-				elementClass: OntarioIconGridElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconGridEvents,
-				defineCustomElement: defineOntarioIconGrid,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconGridElement, OntarioIconGridEvents>({
-				tagName: 'ontario-icon-grid',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconGridElement, OntarioIconGridEvents>({
+		tagName: 'ontario-icon-grid',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconHelpEvents = NonNullable<unknown>;
+export type OntarioIconHelpEvents = NonNullable<unknown>;
 
 export const OntarioIconHelp: StencilReactComponent<OntarioIconHelpElement, OntarioIconHelpEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconHelpElement, OntarioIconHelpEvents>({
-				tagName: 'ontario-icon-help',
-				elementClass: OntarioIconHelpElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconHelpEvents,
-				defineCustomElement: defineOntarioIconHelp,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconHelpElement, OntarioIconHelpEvents>({
-				tagName: 'ontario-icon-help',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconHelpElement, OntarioIconHelpEvents>({
+		tagName: 'ontario-icon-help',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconInstagramEvents = NonNullable<unknown>;
+export type OntarioIconInstagramEvents = NonNullable<unknown>;
 
 export const OntarioIconInstagram: StencilReactComponent<OntarioIconInstagramElement, OntarioIconInstagramEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconInstagramElement, OntarioIconInstagramEvents>({
-				tagName: 'ontario-icon-instagram',
-				elementClass: OntarioIconInstagramElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconInstagramEvents,
-				defineCustomElement: defineOntarioIconInstagram,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconInstagramElement, OntarioIconInstagramEvents>({
-				tagName: 'ontario-icon-instagram',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconInstagramElement, OntarioIconInstagramEvents>({
+		tagName: 'ontario-icon-instagram',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconInteracEnEvents = NonNullable<unknown>;
+export type OntarioIconInteracEnEvents = NonNullable<unknown>;
 
 export const OntarioIconInteracEn: StencilReactComponent<OntarioIconInteracEnElement, OntarioIconInteracEnEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconInteracEnElement, OntarioIconInteracEnEvents>({
-				tagName: 'ontario-icon-interac-en',
-				elementClass: OntarioIconInteracEnElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconInteracEnEvents,
-				defineCustomElement: defineOntarioIconInteracEn,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconInteracEnElement, OntarioIconInteracEnEvents>({
-				tagName: 'ontario-icon-interac-en',
-				properties: { iconWidth: 'icon-width' },
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconInteracEnElement, OntarioIconInteracEnEvents>({
+		tagName: 'ontario-icon-interac-en',
+		properties: { iconWidth: 'icon-width' },
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconInteracEnAltEvents = NonNullable<unknown>;
+export type OntarioIconInteracEnAltEvents = NonNullable<unknown>;
 
 export const OntarioIconInteracEnAlt: StencilReactComponent<
 	OntarioIconInteracEnAltElement,
 	OntarioIconInteracEnAltEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconInteracEnAltElement, OntarioIconInteracEnAltEvents>({
-				tagName: 'ontario-icon-interac-en-alt',
-				elementClass: OntarioIconInteracEnAltElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconInteracEnAltEvents,
-				defineCustomElement: defineOntarioIconInteracEnAlt,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconInteracEnAltElement, OntarioIconInteracEnAltEvents>({
-				tagName: 'ontario-icon-interac-en-alt',
-				properties: { iconWidth: 'icon-width' },
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconInteracEnAltElement, OntarioIconInteracEnAltEvents>({
+	tagName: 'ontario-icon-interac-en-alt',
+	properties: { iconWidth: 'icon-width' },
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconInteracFrEvents = NonNullable<unknown>;
+export type OntarioIconInteracFrEvents = NonNullable<unknown>;
 
 export const OntarioIconInteracFr: StencilReactComponent<OntarioIconInteracFrElement, OntarioIconInteracFrEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconInteracFrElement, OntarioIconInteracFrEvents>({
-				tagName: 'ontario-icon-interac-fr',
-				elementClass: OntarioIconInteracFrElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconInteracFrEvents,
-				defineCustomElement: defineOntarioIconInteracFr,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconInteracFrElement, OntarioIconInteracFrEvents>({
-				tagName: 'ontario-icon-interac-fr',
-				properties: { iconWidth: 'icon-width' },
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconInteracFrElement, OntarioIconInteracFrEvents>({
+		tagName: 'ontario-icon-interac-fr',
+		properties: { iconWidth: 'icon-width' },
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconInteracFrAltEvents = NonNullable<unknown>;
+export type OntarioIconInteracFrAltEvents = NonNullable<unknown>;
 
 export const OntarioIconInteracFrAlt: StencilReactComponent<
 	OntarioIconInteracFrAltElement,
 	OntarioIconInteracFrAltEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconInteracFrAltElement, OntarioIconInteracFrAltEvents>({
-				tagName: 'ontario-icon-interac-fr-alt',
-				elementClass: OntarioIconInteracFrAltElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconInteracFrAltEvents,
-				defineCustomElement: defineOntarioIconInteracFrAlt,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconInteracFrAltElement, OntarioIconInteracFrAltEvents>({
-				tagName: 'ontario-icon-interac-fr-alt',
-				properties: { iconWidth: 'icon-width' },
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconInteracFrAltElement, OntarioIconInteracFrAltEvents>({
+	tagName: 'ontario-icon-interac-fr-alt',
+	properties: { iconWidth: 'icon-width' },
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconLinkedinEvents = NonNullable<unknown>;
+export type OntarioIconLinkedinEvents = NonNullable<unknown>;
 
 export const OntarioIconLinkedin: StencilReactComponent<OntarioIconLinkedinElement, OntarioIconLinkedinEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconLinkedinElement, OntarioIconLinkedinEvents>({
-				tagName: 'ontario-icon-linkedin',
-				elementClass: OntarioIconLinkedinElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconLinkedinEvents,
-				defineCustomElement: defineOntarioIconLinkedin,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconLinkedinElement, OntarioIconLinkedinEvents>({
-				tagName: 'ontario-icon-linkedin',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconLinkedinElement, OntarioIconLinkedinEvents>({
+		tagName: 'ontario-icon-linkedin',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconLinkedinAltEvents = NonNullable<unknown>;
+export type OntarioIconLinkedinAltEvents = NonNullable<unknown>;
 
 export const OntarioIconLinkedinAlt: StencilReactComponent<
 	OntarioIconLinkedinAltElement,
 	OntarioIconLinkedinAltEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconLinkedinAltElement, OntarioIconLinkedinAltEvents>({
-				tagName: 'ontario-icon-linkedin-alt',
-				elementClass: OntarioIconLinkedinAltElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconLinkedinAltEvents,
-				defineCustomElement: defineOntarioIconLinkedinAlt,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconLinkedinAltElement, OntarioIconLinkedinAltEvents>({
-				tagName: 'ontario-icon-linkedin-alt',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconLinkedinAltElement, OntarioIconLinkedinAltEvents>({
+	tagName: 'ontario-icon-linkedin-alt',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconListEvents = NonNullable<unknown>;
+export type OntarioIconListEvents = NonNullable<unknown>;
 
 export const OntarioIconList: StencilReactComponent<OntarioIconListElement, OntarioIconListEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconListElement, OntarioIconListEvents>({
-				tagName: 'ontario-icon-list',
-				elementClass: OntarioIconListElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconListEvents,
-				defineCustomElement: defineOntarioIconList,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconListElement, OntarioIconListEvents>({
-				tagName: 'ontario-icon-list',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconListElement, OntarioIconListEvents>({
+		tagName: 'ontario-icon-list',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconLiveChatEvents = NonNullable<unknown>;
+export type OntarioIconLiveChatEvents = NonNullable<unknown>;
 
 export const OntarioIconLiveChat: StencilReactComponent<OntarioIconLiveChatElement, OntarioIconLiveChatEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconLiveChatElement, OntarioIconLiveChatEvents>({
-				tagName: 'ontario-icon-live-chat',
-				elementClass: OntarioIconLiveChatElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconLiveChatEvents,
-				defineCustomElement: defineOntarioIconLiveChat,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconLiveChatElement, OntarioIconLiveChatEvents>({
-				tagName: 'ontario-icon-live-chat',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconLiveChatElement, OntarioIconLiveChatEvents>({
+		tagName: 'ontario-icon-live-chat',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconLocationOffEvents = NonNullable<unknown>;
+export type OntarioIconLocationOffEvents = NonNullable<unknown>;
 
 export const OntarioIconLocationOff: StencilReactComponent<
 	OntarioIconLocationOffElement,
 	OntarioIconLocationOffEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconLocationOffElement, OntarioIconLocationOffEvents>({
-				tagName: 'ontario-icon-location-off',
-				elementClass: OntarioIconLocationOffElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconLocationOffEvents,
-				defineCustomElement: defineOntarioIconLocationOff,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconLocationOffElement, OntarioIconLocationOffEvents>({
-				tagName: 'ontario-icon-location-off',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconLocationOffElement, OntarioIconLocationOffEvents>({
+	tagName: 'ontario-icon-location-off',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconLocationOnEvents = NonNullable<unknown>;
+export type OntarioIconLocationOnEvents = NonNullable<unknown>;
 
 export const OntarioIconLocationOn: StencilReactComponent<OntarioIconLocationOnElement, OntarioIconLocationOnEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconLocationOnElement, OntarioIconLocationOnEvents>({
-				tagName: 'ontario-icon-location-on',
-				elementClass: OntarioIconLocationOnElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconLocationOnEvents,
-				defineCustomElement: defineOntarioIconLocationOn,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconLocationOnElement, OntarioIconLocationOnEvents>({
-				tagName: 'ontario-icon-location-on',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconLocationOnElement, OntarioIconLocationOnEvents>({
+		tagName: 'ontario-icon-location-on',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconLockOffEvents = NonNullable<unknown>;
+export type OntarioIconLockOffEvents = NonNullable<unknown>;
 
 export const OntarioIconLockOff: StencilReactComponent<OntarioIconLockOffElement, OntarioIconLockOffEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconLockOffElement, OntarioIconLockOffEvents>({
-				tagName: 'ontario-icon-lock-off',
-				elementClass: OntarioIconLockOffElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconLockOffEvents,
-				defineCustomElement: defineOntarioIconLockOff,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconLockOffElement, OntarioIconLockOffEvents>({
-				tagName: 'ontario-icon-lock-off',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconLockOffElement, OntarioIconLockOffEvents>({
+		tagName: 'ontario-icon-lock-off',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconLockOnEvents = NonNullable<unknown>;
+export type OntarioIconLockOnEvents = NonNullable<unknown>;
 
 export const OntarioIconLockOn: StencilReactComponent<OntarioIconLockOnElement, OntarioIconLockOnEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconLockOnElement, OntarioIconLockOnEvents>({
-				tagName: 'ontario-icon-lock-on',
-				elementClass: OntarioIconLockOnElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconLockOnEvents,
-				defineCustomElement: defineOntarioIconLockOn,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconLockOnElement, OntarioIconLockOnEvents>({
-				tagName: 'ontario-icon-lock-on',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconLockOnElement, OntarioIconLockOnEvents>({
+		tagName: 'ontario-icon-lock-on',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconMapEvents = NonNullable<unknown>;
+export type OntarioIconMapEvents = NonNullable<unknown>;
 
 export const OntarioIconMap: StencilReactComponent<OntarioIconMapElement, OntarioIconMapEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconMapElement, OntarioIconMapEvents>({
-				tagName: 'ontario-icon-map',
-				elementClass: OntarioIconMapElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconMapEvents,
-				defineCustomElement: defineOntarioIconMap,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconMapElement, OntarioIconMapEvents>({
-				tagName: 'ontario-icon-map',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconMapElement, OntarioIconMapEvents>({
+		tagName: 'ontario-icon-map',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconMastercardEvents = NonNullable<unknown>;
+export type OntarioIconMastercardEvents = NonNullable<unknown>;
 
 export const OntarioIconMastercard: StencilReactComponent<OntarioIconMastercardElement, OntarioIconMastercardEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconMastercardElement, OntarioIconMastercardEvents>({
-				tagName: 'ontario-icon-mastercard',
-				elementClass: OntarioIconMastercardElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconMastercardEvents,
-				defineCustomElement: defineOntarioIconMastercard,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconMastercardElement, OntarioIconMastercardEvents>({
-				tagName: 'ontario-icon-mastercard',
-				properties: { iconWidth: 'icon-width' },
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconMastercardElement, OntarioIconMastercardEvents>({
+		tagName: 'ontario-icon-mastercard',
+		properties: { iconWidth: 'icon-width' },
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconMastercardAltEvents = NonNullable<unknown>;
+export type OntarioIconMastercardAltEvents = NonNullable<unknown>;
 
 export const OntarioIconMastercardAlt: StencilReactComponent<
 	OntarioIconMastercardAltElement,
 	OntarioIconMastercardAltEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconMastercardAltElement, OntarioIconMastercardAltEvents>({
-				tagName: 'ontario-icon-mastercard-alt',
-				elementClass: OntarioIconMastercardAltElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconMastercardAltEvents,
-				defineCustomElement: defineOntarioIconMastercardAlt,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconMastercardAltElement, OntarioIconMastercardAltEvents>({
-				tagName: 'ontario-icon-mastercard-alt',
-				properties: { iconWidth: 'icon-width' },
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconMastercardAltElement, OntarioIconMastercardAltEvents>({
+	tagName: 'ontario-icon-mastercard-alt',
+	properties: { iconWidth: 'icon-width' },
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconMediaFastForwardEvents = NonNullable<unknown>;
+export type OntarioIconMediaFastForwardEvents = NonNullable<unknown>;
 
 export const OntarioIconMediaFastForward: StencilReactComponent<
 	OntarioIconMediaFastForwardElement,
 	OntarioIconMediaFastForwardEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconMediaFastForwardElement, OntarioIconMediaFastForwardEvents>({
-				tagName: 'ontario-icon-media-fast-forward',
-				elementClass: OntarioIconMediaFastForwardElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconMediaFastForwardEvents,
-				defineCustomElement: defineOntarioIconMediaFastForward,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconMediaFastForwardElement, OntarioIconMediaFastForwardEvents>({
-				tagName: 'ontario-icon-media-fast-forward',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconMediaFastForwardElement, OntarioIconMediaFastForwardEvents>({
+	tagName: 'ontario-icon-media-fast-forward',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconMediaFastRewindEvents = NonNullable<unknown>;
+export type OntarioIconMediaFastRewindEvents = NonNullable<unknown>;
 
 export const OntarioIconMediaFastRewind: StencilReactComponent<
 	OntarioIconMediaFastRewindElement,
 	OntarioIconMediaFastRewindEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconMediaFastRewindElement, OntarioIconMediaFastRewindEvents>({
-				tagName: 'ontario-icon-media-fast-rewind',
-				elementClass: OntarioIconMediaFastRewindElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconMediaFastRewindEvents,
-				defineCustomElement: defineOntarioIconMediaFastRewind,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconMediaFastRewindElement, OntarioIconMediaFastRewindEvents>({
-				tagName: 'ontario-icon-media-fast-rewind',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconMediaFastRewindElement, OntarioIconMediaFastRewindEvents>({
+	tagName: 'ontario-icon-media-fast-rewind',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconMediaPauseEvents = NonNullable<unknown>;
+export type OntarioIconMediaPauseEvents = NonNullable<unknown>;
 
 export const OntarioIconMediaPause: StencilReactComponent<OntarioIconMediaPauseElement, OntarioIconMediaPauseEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconMediaPauseElement, OntarioIconMediaPauseEvents>({
-				tagName: 'ontario-icon-media-pause',
-				elementClass: OntarioIconMediaPauseElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconMediaPauseEvents,
-				defineCustomElement: defineOntarioIconMediaPause,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconMediaPauseElement, OntarioIconMediaPauseEvents>({
-				tagName: 'ontario-icon-media-pause',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconMediaPauseElement, OntarioIconMediaPauseEvents>({
+		tagName: 'ontario-icon-media-pause',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconMediaPlayEvents = NonNullable<unknown>;
+export type OntarioIconMediaPlayEvents = NonNullable<unknown>;
 
 export const OntarioIconMediaPlay: StencilReactComponent<OntarioIconMediaPlayElement, OntarioIconMediaPlayEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconMediaPlayElement, OntarioIconMediaPlayEvents>({
-				tagName: 'ontario-icon-media-play',
-				elementClass: OntarioIconMediaPlayElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconMediaPlayEvents,
-				defineCustomElement: defineOntarioIconMediaPlay,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconMediaPlayElement, OntarioIconMediaPlayEvents>({
-				tagName: 'ontario-icon-media-play',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconMediaPlayElement, OntarioIconMediaPlayEvents>({
+		tagName: 'ontario-icon-media-play',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconMediaStopEvents = NonNullable<unknown>;
+export type OntarioIconMediaStopEvents = NonNullable<unknown>;
 
 export const OntarioIconMediaStop: StencilReactComponent<OntarioIconMediaStopElement, OntarioIconMediaStopEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconMediaStopElement, OntarioIconMediaStopEvents>({
-				tagName: 'ontario-icon-media-stop',
-				elementClass: OntarioIconMediaStopElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconMediaStopEvents,
-				defineCustomElement: defineOntarioIconMediaStop,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconMediaStopElement, OntarioIconMediaStopEvents>({
-				tagName: 'ontario-icon-media-stop',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconMediaStopElement, OntarioIconMediaStopEvents>({
+		tagName: 'ontario-icon-media-stop',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconMenuEvents = NonNullable<unknown>;
+export type OntarioIconMenuEvents = NonNullable<unknown>;
 
 export const OntarioIconMenu: StencilReactComponent<OntarioIconMenuElement, OntarioIconMenuEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconMenuElement, OntarioIconMenuEvents>({
-				tagName: 'ontario-icon-menu',
-				elementClass: OntarioIconMenuElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconMenuEvents,
-				defineCustomElement: defineOntarioIconMenu,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconMenuElement, OntarioIconMenuEvents>({
-				tagName: 'ontario-icon-menu',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconMenuElement, OntarioIconMenuEvents>({
+		tagName: 'ontario-icon-menu',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconMenuHeaderEvents = NonNullable<unknown>;
+export type OntarioIconMenuHeaderEvents = NonNullable<unknown>;
 
 export const OntarioIconMenuHeader: StencilReactComponent<OntarioIconMenuHeaderElement, OntarioIconMenuHeaderEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconMenuHeaderElement, OntarioIconMenuHeaderEvents>({
-				tagName: 'ontario-icon-menu-header',
-				elementClass: OntarioIconMenuHeaderElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconMenuHeaderEvents,
-				defineCustomElement: defineOntarioIconMenuHeader,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconMenuHeaderElement, OntarioIconMenuHeaderEvents>({
-				tagName: 'ontario-icon-menu-header',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconMenuHeaderElement, OntarioIconMenuHeaderEvents>({
+		tagName: 'ontario-icon-menu-header',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconMicrophoneOffEvents = NonNullable<unknown>;
+export type OntarioIconMicrophoneOffEvents = NonNullable<unknown>;
 
 export const OntarioIconMicrophoneOff: StencilReactComponent<
 	OntarioIconMicrophoneOffElement,
 	OntarioIconMicrophoneOffEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconMicrophoneOffElement, OntarioIconMicrophoneOffEvents>({
-				tagName: 'ontario-icon-microphone-off',
-				elementClass: OntarioIconMicrophoneOffElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconMicrophoneOffEvents,
-				defineCustomElement: defineOntarioIconMicrophoneOff,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconMicrophoneOffElement, OntarioIconMicrophoneOffEvents>({
-				tagName: 'ontario-icon-microphone-off',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconMicrophoneOffElement, OntarioIconMicrophoneOffEvents>({
+	tagName: 'ontario-icon-microphone-off',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconMicrophoneOnEvents = NonNullable<unknown>;
+export type OntarioIconMicrophoneOnEvents = NonNullable<unknown>;
 
 export const OntarioIconMicrophoneOn: StencilReactComponent<
 	OntarioIconMicrophoneOnElement,
 	OntarioIconMicrophoneOnEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconMicrophoneOnElement, OntarioIconMicrophoneOnEvents>({
-				tagName: 'ontario-icon-microphone-on',
-				elementClass: OntarioIconMicrophoneOnElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconMicrophoneOnEvents,
-				defineCustomElement: defineOntarioIconMicrophoneOn,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconMicrophoneOnElement, OntarioIconMicrophoneOnEvents>({
-				tagName: 'ontario-icon-microphone-on',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconMicrophoneOnElement, OntarioIconMicrophoneOnEvents>({
+	tagName: 'ontario-icon-microphone-on',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconMoreVerticalEvents = NonNullable<unknown>;
+export type OntarioIconMoreVerticalEvents = NonNullable<unknown>;
 
 export const OntarioIconMoreVertical: StencilReactComponent<
 	OntarioIconMoreVerticalElement,
 	OntarioIconMoreVerticalEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconMoreVerticalElement, OntarioIconMoreVerticalEvents>({
-				tagName: 'ontario-icon-more-vertical',
-				elementClass: OntarioIconMoreVerticalElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconMoreVerticalEvents,
-				defineCustomElement: defineOntarioIconMoreVertical,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconMoreVerticalElement, OntarioIconMoreVerticalEvents>({
-				tagName: 'ontario-icon-more-vertical',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconMoreVerticalElement, OntarioIconMoreVerticalEvents>({
+	tagName: 'ontario-icon-more-vertical',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconNewWindowEvents = NonNullable<unknown>;
+export type OntarioIconNewWindowEvents = NonNullable<unknown>;
 
 export const OntarioIconNewWindow: StencilReactComponent<OntarioIconNewWindowElement, OntarioIconNewWindowEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconNewWindowElement, OntarioIconNewWindowEvents>({
-				tagName: 'ontario-icon-new-window',
-				elementClass: OntarioIconNewWindowElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconNewWindowEvents,
-				defineCustomElement: defineOntarioIconNewWindow,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconNewWindowElement, OntarioIconNewWindowEvents>({
-				tagName: 'ontario-icon-new-window',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconNewWindowElement, OntarioIconNewWindowEvents>({
+		tagName: 'ontario-icon-new-window',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconNextEvents = NonNullable<unknown>;
+export type OntarioIconNextEvents = NonNullable<unknown>;
 
 export const OntarioIconNext: StencilReactComponent<OntarioIconNextElement, OntarioIconNextEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconNextElement, OntarioIconNextEvents>({
-				tagName: 'ontario-icon-next',
-				elementClass: OntarioIconNextElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconNextEvents,
-				defineCustomElement: defineOntarioIconNext,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconNextElement, OntarioIconNextEvents>({
-				tagName: 'ontario-icon-next',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconNextElement, OntarioIconNextEvents>({
+		tagName: 'ontario-icon-next',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconNotificationEvents = NonNullable<unknown>;
+export type OntarioIconNotificationEvents = NonNullable<unknown>;
 
 export const OntarioIconNotification: StencilReactComponent<
 	OntarioIconNotificationElement,
 	OntarioIconNotificationEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconNotificationElement, OntarioIconNotificationEvents>({
-				tagName: 'ontario-icon-notification',
-				elementClass: OntarioIconNotificationElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconNotificationEvents,
-				defineCustomElement: defineOntarioIconNotification,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconNotificationElement, OntarioIconNotificationEvents>({
-				tagName: 'ontario-icon-notification',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconNotificationElement, OntarioIconNotificationEvents>({
+	tagName: 'ontario-icon-notification',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconPasswordHideEvents = NonNullable<unknown>;
+export type OntarioIconPasswordHideEvents = NonNullable<unknown>;
 
 export const OntarioIconPasswordHide: StencilReactComponent<
 	OntarioIconPasswordHideElement,
 	OntarioIconPasswordHideEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconPasswordHideElement, OntarioIconPasswordHideEvents>({
-				tagName: 'ontario-icon-password-hide',
-				elementClass: OntarioIconPasswordHideElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconPasswordHideEvents,
-				defineCustomElement: defineOntarioIconPasswordHide,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconPasswordHideElement, OntarioIconPasswordHideEvents>({
-				tagName: 'ontario-icon-password-hide',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconPasswordHideElement, OntarioIconPasswordHideEvents>({
+	tagName: 'ontario-icon-password-hide',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconPasswordShowEvents = NonNullable<unknown>;
+export type OntarioIconPasswordShowEvents = NonNullable<unknown>;
 
 export const OntarioIconPasswordShow: StencilReactComponent<
 	OntarioIconPasswordShowElement,
 	OntarioIconPasswordShowEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconPasswordShowElement, OntarioIconPasswordShowEvents>({
-				tagName: 'ontario-icon-password-show',
-				elementClass: OntarioIconPasswordShowElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconPasswordShowEvents,
-				defineCustomElement: defineOntarioIconPasswordShow,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconPasswordShowElement, OntarioIconPasswordShowEvents>({
-				tagName: 'ontario-icon-password-show',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconPasswordShowElement, OntarioIconPasswordShowEvents>({
+	tagName: 'ontario-icon-password-show',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconPhoneEvents = NonNullable<unknown>;
+export type OntarioIconPhoneEvents = NonNullable<unknown>;
 
 export const OntarioIconPhone: StencilReactComponent<OntarioIconPhoneElement, OntarioIconPhoneEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconPhoneElement, OntarioIconPhoneEvents>({
-				tagName: 'ontario-icon-phone',
-				elementClass: OntarioIconPhoneElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconPhoneEvents,
-				defineCustomElement: defineOntarioIconPhone,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconPhoneElement, OntarioIconPhoneEvents>({
-				tagName: 'ontario-icon-phone',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconPhoneElement, OntarioIconPhoneEvents>({
+		tagName: 'ontario-icon-phone',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconPhotoEvents = NonNullable<unknown>;
+export type OntarioIconPhotoEvents = NonNullable<unknown>;
 
 export const OntarioIconPhoto: StencilReactComponent<OntarioIconPhotoElement, OntarioIconPhotoEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconPhotoElement, OntarioIconPhotoEvents>({
-				tagName: 'ontario-icon-photo',
-				elementClass: OntarioIconPhotoElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconPhotoEvents,
-				defineCustomElement: defineOntarioIconPhoto,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconPhotoElement, OntarioIconPhotoEvents>({
-				tagName: 'ontario-icon-photo',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconPhotoElement, OntarioIconPhotoEvents>({
+		tagName: 'ontario-icon-photo',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconPinLocationOffEvents = NonNullable<unknown>;
+export type OntarioIconPinLocationOffEvents = NonNullable<unknown>;
 
 export const OntarioIconPinLocationOff: StencilReactComponent<
 	OntarioIconPinLocationOffElement,
 	OntarioIconPinLocationOffEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconPinLocationOffElement, OntarioIconPinLocationOffEvents>({
-				tagName: 'ontario-icon-pin-location-off',
-				elementClass: OntarioIconPinLocationOffElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconPinLocationOffEvents,
-				defineCustomElement: defineOntarioIconPinLocationOff,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconPinLocationOffElement, OntarioIconPinLocationOffEvents>({
-				tagName: 'ontario-icon-pin-location-off',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconPinLocationOffElement, OntarioIconPinLocationOffEvents>({
+	tagName: 'ontario-icon-pin-location-off',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconPinLocationOnEvents = NonNullable<unknown>;
+export type OntarioIconPinLocationOnEvents = NonNullable<unknown>;
 
 export const OntarioIconPinLocationOn: StencilReactComponent<
 	OntarioIconPinLocationOnElement,
 	OntarioIconPinLocationOnEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconPinLocationOnElement, OntarioIconPinLocationOnEvents>({
-				tagName: 'ontario-icon-pin-location-on',
-				elementClass: OntarioIconPinLocationOnElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconPinLocationOnEvents,
-				defineCustomElement: defineOntarioIconPinLocationOn,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconPinLocationOnElement, OntarioIconPinLocationOnEvents>({
-				tagName: 'ontario-icon-pin-location-on',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconPinLocationOnElement, OntarioIconPinLocationOnEvents>({
+	tagName: 'ontario-icon-pin-location-on',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconPreviousEvents = NonNullable<unknown>;
+export type OntarioIconPreviousEvents = NonNullable<unknown>;
 
 export const OntarioIconPrevious: StencilReactComponent<OntarioIconPreviousElement, OntarioIconPreviousEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconPreviousElement, OntarioIconPreviousEvents>({
-				tagName: 'ontario-icon-previous',
-				elementClass: OntarioIconPreviousElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconPreviousEvents,
-				defineCustomElement: defineOntarioIconPrevious,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconPreviousElement, OntarioIconPreviousEvents>({
-				tagName: 'ontario-icon-previous',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconPreviousElement, OntarioIconPreviousEvents>({
+		tagName: 'ontario-icon-previous',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconPrintEvents = NonNullable<unknown>;
+export type OntarioIconPrintEvents = NonNullable<unknown>;
 
 export const OntarioIconPrint: StencilReactComponent<OntarioIconPrintElement, OntarioIconPrintEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconPrintElement, OntarioIconPrintEvents>({
-				tagName: 'ontario-icon-print',
-				elementClass: OntarioIconPrintElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconPrintEvents,
-				defineCustomElement: defineOntarioIconPrint,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconPrintElement, OntarioIconPrintEvents>({
-				tagName: 'ontario-icon-print',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconPrintElement, OntarioIconPrintEvents>({
+		tagName: 'ontario-icon-print',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconRemoveEvents = NonNullable<unknown>;
+export type OntarioIconRemoveEvents = NonNullable<unknown>;
 
 export const OntarioIconRemove: StencilReactComponent<OntarioIconRemoveElement, OntarioIconRemoveEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconRemoveElement, OntarioIconRemoveEvents>({
-				tagName: 'ontario-icon-remove',
-				elementClass: OntarioIconRemoveElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconRemoveEvents,
-				defineCustomElement: defineOntarioIconRemove,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconRemoveElement, OntarioIconRemoveEvents>({
-				tagName: 'ontario-icon-remove',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconRemoveElement, OntarioIconRemoveEvents>({
+		tagName: 'ontario-icon-remove',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconRemoveAltEvents = NonNullable<unknown>;
+export type OntarioIconRemoveAltEvents = NonNullable<unknown>;
 
 export const OntarioIconRemoveAlt: StencilReactComponent<OntarioIconRemoveAltElement, OntarioIconRemoveAltEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconRemoveAltElement, OntarioIconRemoveAltEvents>({
-				tagName: 'ontario-icon-remove-alt',
-				elementClass: OntarioIconRemoveAltElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconRemoveAltEvents,
-				defineCustomElement: defineOntarioIconRemoveAlt,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconRemoveAltElement, OntarioIconRemoveAltEvents>({
-				tagName: 'ontario-icon-remove-alt',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconRemoveAltElement, OntarioIconRemoveAltEvents>({
+		tagName: 'ontario-icon-remove-alt',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconReplayEvents = NonNullable<unknown>;
+export type OntarioIconReplayEvents = NonNullable<unknown>;
 
 export const OntarioIconReplay: StencilReactComponent<OntarioIconReplayElement, OntarioIconReplayEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconReplayElement, OntarioIconReplayEvents>({
-				tagName: 'ontario-icon-replay',
-				elementClass: OntarioIconReplayElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconReplayEvents,
-				defineCustomElement: defineOntarioIconReplay,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconReplayElement, OntarioIconReplayEvents>({
-				tagName: 'ontario-icon-replay',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconReplayElement, OntarioIconReplayEvents>({
+		tagName: 'ontario-icon-replay',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconRssFeedEvents = NonNullable<unknown>;
+export type OntarioIconRssFeedEvents = NonNullable<unknown>;
 
 export const OntarioIconRssFeed: StencilReactComponent<OntarioIconRssFeedElement, OntarioIconRssFeedEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconRssFeedElement, OntarioIconRssFeedEvents>({
-				tagName: 'ontario-icon-rss-feed',
-				elementClass: OntarioIconRssFeedElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconRssFeedEvents,
-				defineCustomElement: defineOntarioIconRssFeed,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconRssFeedElement, OntarioIconRssFeedEvents>({
-				tagName: 'ontario-icon-rss-feed',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconRssFeedElement, OntarioIconRssFeedEvents>({
+		tagName: 'ontario-icon-rss-feed',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconSaveEvents = NonNullable<unknown>;
+export type OntarioIconSaveEvents = NonNullable<unknown>;
 
 export const OntarioIconSave: StencilReactComponent<OntarioIconSaveElement, OntarioIconSaveEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconSaveElement, OntarioIconSaveEvents>({
-				tagName: 'ontario-icon-save',
-				elementClass: OntarioIconSaveElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconSaveEvents,
-				defineCustomElement: defineOntarioIconSave,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconSaveElement, OntarioIconSaveEvents>({
-				tagName: 'ontario-icon-save',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconSaveElement, OntarioIconSaveEvents>({
+		tagName: 'ontario-icon-save',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconSearchEvents = NonNullable<unknown>;
+export type OntarioIconSearchEvents = NonNullable<unknown>;
 
 export const OntarioIconSearch: StencilReactComponent<OntarioIconSearchElement, OntarioIconSearchEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconSearchElement, OntarioIconSearchEvents>({
-				tagName: 'ontario-icon-search',
-				elementClass: OntarioIconSearchElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconSearchEvents,
-				defineCustomElement: defineOntarioIconSearch,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconSearchElement, OntarioIconSearchEvents>({
-				tagName: 'ontario-icon-search',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconSearchElement, OntarioIconSearchEvents>({
+		tagName: 'ontario-icon-search',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconSearchWhiteEvents = NonNullable<unknown>;
+export type OntarioIconSearchWhiteEvents = NonNullable<unknown>;
 
 export const OntarioIconSearchWhite: StencilReactComponent<
 	OntarioIconSearchWhiteElement,
 	OntarioIconSearchWhiteEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconSearchWhiteElement, OntarioIconSearchWhiteEvents>({
-				tagName: 'ontario-icon-search-white',
-				elementClass: OntarioIconSearchWhiteElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconSearchWhiteEvents,
-				defineCustomElement: defineOntarioIconSearchWhite,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconSearchWhiteElement, OntarioIconSearchWhiteEvents>({
-				tagName: 'ontario-icon-search-white',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconSearchWhiteElement, OntarioIconSearchWhiteEvents>({
+	tagName: 'ontario-icon-search-white',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconSentiment1Events = NonNullable<unknown>;
+export type OntarioIconSentiment1Events = NonNullable<unknown>;
 
 export const OntarioIconSentiment1: StencilReactComponent<OntarioIconSentiment1Element, OntarioIconSentiment1Events> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconSentiment1Element, OntarioIconSentiment1Events>({
-				tagName: 'ontario-icon-sentiment-1',
-				elementClass: OntarioIconSentiment1Element,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconSentiment1Events,
-				defineCustomElement: defineOntarioIconSentiment1,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconSentiment1Element, OntarioIconSentiment1Events>({
-				tagName: 'ontario-icon-sentiment-1',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconSentiment1Element, OntarioIconSentiment1Events>({
+		tagName: 'ontario-icon-sentiment-1',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconSentiment2Events = NonNullable<unknown>;
+export type OntarioIconSentiment2Events = NonNullable<unknown>;
 
 export const OntarioIconSentiment2: StencilReactComponent<OntarioIconSentiment2Element, OntarioIconSentiment2Events> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconSentiment2Element, OntarioIconSentiment2Events>({
-				tagName: 'ontario-icon-sentiment-2',
-				elementClass: OntarioIconSentiment2Element,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconSentiment2Events,
-				defineCustomElement: defineOntarioIconSentiment2,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconSentiment2Element, OntarioIconSentiment2Events>({
-				tagName: 'ontario-icon-sentiment-2',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconSentiment2Element, OntarioIconSentiment2Events>({
+		tagName: 'ontario-icon-sentiment-2',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconSentiment3Events = NonNullable<unknown>;
+export type OntarioIconSentiment3Events = NonNullable<unknown>;
 
 export const OntarioIconSentiment3: StencilReactComponent<OntarioIconSentiment3Element, OntarioIconSentiment3Events> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconSentiment3Element, OntarioIconSentiment3Events>({
-				tagName: 'ontario-icon-sentiment-3',
-				elementClass: OntarioIconSentiment3Element,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconSentiment3Events,
-				defineCustomElement: defineOntarioIconSentiment3,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconSentiment3Element, OntarioIconSentiment3Events>({
-				tagName: 'ontario-icon-sentiment-3',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconSentiment3Element, OntarioIconSentiment3Events>({
+		tagName: 'ontario-icon-sentiment-3',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconSentiment4Events = NonNullable<unknown>;
+export type OntarioIconSentiment4Events = NonNullable<unknown>;
 
 export const OntarioIconSentiment4: StencilReactComponent<OntarioIconSentiment4Element, OntarioIconSentiment4Events> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconSentiment4Element, OntarioIconSentiment4Events>({
-				tagName: 'ontario-icon-sentiment-4',
-				elementClass: OntarioIconSentiment4Element,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconSentiment4Events,
-				defineCustomElement: defineOntarioIconSentiment4,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconSentiment4Element, OntarioIconSentiment4Events>({
-				tagName: 'ontario-icon-sentiment-4',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconSentiment4Element, OntarioIconSentiment4Events>({
+		tagName: 'ontario-icon-sentiment-4',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconSentiment5Events = NonNullable<unknown>;
+export type OntarioIconSentiment5Events = NonNullable<unknown>;
 
 export const OntarioIconSentiment5: StencilReactComponent<OntarioIconSentiment5Element, OntarioIconSentiment5Events> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconSentiment5Element, OntarioIconSentiment5Events>({
-				tagName: 'ontario-icon-sentiment-5',
-				elementClass: OntarioIconSentiment5Element,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconSentiment5Events,
-				defineCustomElement: defineOntarioIconSentiment5,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconSentiment5Element, OntarioIconSentiment5Events>({
-				tagName: 'ontario-icon-sentiment-5',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconSentiment5Element, OntarioIconSentiment5Events>({
+		tagName: 'ontario-icon-sentiment-5',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconSettingsEvents = NonNullable<unknown>;
+export type OntarioIconSettingsEvents = NonNullable<unknown>;
 
 export const OntarioIconSettings: StencilReactComponent<OntarioIconSettingsElement, OntarioIconSettingsEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconSettingsElement, OntarioIconSettingsEvents>({
-				tagName: 'ontario-icon-settings',
-				elementClass: OntarioIconSettingsElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconSettingsEvents,
-				defineCustomElement: defineOntarioIconSettings,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconSettingsElement, OntarioIconSettingsEvents>({
-				tagName: 'ontario-icon-settings',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconSettingsElement, OntarioIconSettingsEvents>({
+		tagName: 'ontario-icon-settings',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconShareEvents = NonNullable<unknown>;
+export type OntarioIconShareEvents = NonNullable<unknown>;
 
 export const OntarioIconShare: StencilReactComponent<OntarioIconShareElement, OntarioIconShareEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconShareElement, OntarioIconShareEvents>({
-				tagName: 'ontario-icon-share',
-				elementClass: OntarioIconShareElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconShareEvents,
-				defineCustomElement: defineOntarioIconShare,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconShareElement, OntarioIconShareEvents>({
-				tagName: 'ontario-icon-share',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconShareElement, OntarioIconShareEvents>({
+		tagName: 'ontario-icon-share',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconSortEvents = NonNullable<unknown>;
+export type OntarioIconSortEvents = NonNullable<unknown>;
 
 export const OntarioIconSort: StencilReactComponent<OntarioIconSortElement, OntarioIconSortEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconSortElement, OntarioIconSortEvents>({
-				tagName: 'ontario-icon-sort',
-				elementClass: OntarioIconSortElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconSortEvents,
-				defineCustomElement: defineOntarioIconSort,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconSortElement, OntarioIconSortEvents>({
-				tagName: 'ontario-icon-sort',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconSortElement, OntarioIconSortEvents>({
+		tagName: 'ontario-icon-sort',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconTagEvents = NonNullable<unknown>;
+export type OntarioIconTagEvents = NonNullable<unknown>;
 
 export const OntarioIconTag: StencilReactComponent<OntarioIconTagElement, OntarioIconTagEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconTagElement, OntarioIconTagEvents>({
-				tagName: 'ontario-icon-tag',
-				elementClass: OntarioIconTagElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconTagEvents,
-				defineCustomElement: defineOntarioIconTag,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconTagElement, OntarioIconTagEvents>({
-				tagName: 'ontario-icon-tag',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconTagElement, OntarioIconTagEvents>({
+		tagName: 'ontario-icon-tag',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconTextMessageEvents = NonNullable<unknown>;
+export type OntarioIconTextMessageEvents = NonNullable<unknown>;
 
 export const OntarioIconTextMessage: StencilReactComponent<
 	OntarioIconTextMessageElement,
 	OntarioIconTextMessageEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconTextMessageElement, OntarioIconTextMessageEvents>({
-				tagName: 'ontario-icon-text-message',
-				elementClass: OntarioIconTextMessageElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconTextMessageEvents,
-				defineCustomElement: defineOntarioIconTextMessage,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconTextMessageElement, OntarioIconTextMessageEvents>({
-				tagName: 'ontario-icon-text-message',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconTextMessageElement, OntarioIconTextMessageEvents>({
+	tagName: 'ontario-icon-text-message',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconTimerEvents = NonNullable<unknown>;
+export type OntarioIconTimerEvents = NonNullable<unknown>;
 
 export const OntarioIconTimer: StencilReactComponent<OntarioIconTimerElement, OntarioIconTimerEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconTimerElement, OntarioIconTimerEvents>({
-				tagName: 'ontario-icon-timer',
-				elementClass: OntarioIconTimerElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconTimerEvents,
-				defineCustomElement: defineOntarioIconTimer,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconTimerElement, OntarioIconTimerEvents>({
-				tagName: 'ontario-icon-timer',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconTimerElement, OntarioIconTimerEvents>({
+		tagName: 'ontario-icon-timer',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconTransportBicycleEvents = NonNullable<unknown>;
+export type OntarioIconTransportBicycleEvents = NonNullable<unknown>;
 
 export const OntarioIconTransportBicycle: StencilReactComponent<
 	OntarioIconTransportBicycleElement,
 	OntarioIconTransportBicycleEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconTransportBicycleElement, OntarioIconTransportBicycleEvents>({
-				tagName: 'ontario-icon-transport-bicycle',
-				elementClass: OntarioIconTransportBicycleElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconTransportBicycleEvents,
-				defineCustomElement: defineOntarioIconTransportBicycle,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconTransportBicycleElement, OntarioIconTransportBicycleEvents>({
-				tagName: 'ontario-icon-transport-bicycle',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconTransportBicycleElement, OntarioIconTransportBicycleEvents>({
+	tagName: 'ontario-icon-transport-bicycle',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconTransportBusEvents = NonNullable<unknown>;
+export type OntarioIconTransportBusEvents = NonNullable<unknown>;
 
 export const OntarioIconTransportBus: StencilReactComponent<
 	OntarioIconTransportBusElement,
 	OntarioIconTransportBusEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconTransportBusElement, OntarioIconTransportBusEvents>({
-				tagName: 'ontario-icon-transport-bus',
-				elementClass: OntarioIconTransportBusElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconTransportBusEvents,
-				defineCustomElement: defineOntarioIconTransportBus,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconTransportBusElement, OntarioIconTransportBusEvents>({
-				tagName: 'ontario-icon-transport-bus',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconTransportBusElement, OntarioIconTransportBusEvents>({
+	tagName: 'ontario-icon-transport-bus',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconTransportCarEvents = NonNullable<unknown>;
+export type OntarioIconTransportCarEvents = NonNullable<unknown>;
 
 export const OntarioIconTransportCar: StencilReactComponent<
 	OntarioIconTransportCarElement,
 	OntarioIconTransportCarEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconTransportCarElement, OntarioIconTransportCarEvents>({
-				tagName: 'ontario-icon-transport-car',
-				elementClass: OntarioIconTransportCarElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconTransportCarEvents,
-				defineCustomElement: defineOntarioIconTransportCar,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconTransportCarElement, OntarioIconTransportCarEvents>({
-				tagName: 'ontario-icon-transport-car',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconTransportCarElement, OntarioIconTransportCarEvents>({
+	tagName: 'ontario-icon-transport-car',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconTransportWalkEvents = NonNullable<unknown>;
+export type OntarioIconTransportWalkEvents = NonNullable<unknown>;
 
 export const OntarioIconTransportWalk: StencilReactComponent<
 	OntarioIconTransportWalkElement,
 	OntarioIconTransportWalkEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconTransportWalkElement, OntarioIconTransportWalkEvents>({
-				tagName: 'ontario-icon-transport-walk',
-				elementClass: OntarioIconTransportWalkElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconTransportWalkEvents,
-				defineCustomElement: defineOntarioIconTransportWalk,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconTransportWalkElement, OntarioIconTransportWalkEvents>({
-				tagName: 'ontario-icon-transport-walk',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconTransportWalkElement, OntarioIconTransportWalkEvents>({
+	tagName: 'ontario-icon-transport-walk',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconTtyEvents = NonNullable<unknown>;
+export type OntarioIconTtyEvents = NonNullable<unknown>;
 
 export const OntarioIconTty: StencilReactComponent<OntarioIconTtyElement, OntarioIconTtyEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconTtyElement, OntarioIconTtyEvents>({
-				tagName: 'ontario-icon-tty',
-				elementClass: OntarioIconTtyElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconTtyEvents,
-				defineCustomElement: defineOntarioIconTty,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconTtyElement, OntarioIconTtyEvents>({
-				tagName: 'ontario-icon-tty',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconTtyElement, OntarioIconTtyEvents>({
+		tagName: 'ontario-icon-tty',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconTwitterEvents = NonNullable<unknown>;
+export type OntarioIconTwitterEvents = NonNullable<unknown>;
 
 export const OntarioIconTwitter: StencilReactComponent<OntarioIconTwitterElement, OntarioIconTwitterEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconTwitterElement, OntarioIconTwitterEvents>({
-				tagName: 'ontario-icon-twitter',
-				elementClass: OntarioIconTwitterElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconTwitterEvents,
-				defineCustomElement: defineOntarioIconTwitter,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconTwitterElement, OntarioIconTwitterEvents>({
-				tagName: 'ontario-icon-twitter',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconTwitterElement, OntarioIconTwitterEvents>({
+		tagName: 'ontario-icon-twitter',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconTwitterAltEvents = NonNullable<unknown>;
+export type OntarioIconTwitterAltEvents = NonNullable<unknown>;
 
 export const OntarioIconTwitterAlt: StencilReactComponent<OntarioIconTwitterAltElement, OntarioIconTwitterAltEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconTwitterAltElement, OntarioIconTwitterAltEvents>({
-				tagName: 'ontario-icon-twitter-alt',
-				elementClass: OntarioIconTwitterAltElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconTwitterAltEvents,
-				defineCustomElement: defineOntarioIconTwitterAlt,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconTwitterAltElement, OntarioIconTwitterAltEvents>({
-				tagName: 'ontario-icon-twitter-alt',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconTwitterAltElement, OntarioIconTwitterAltEvents>({
+		tagName: 'ontario-icon-twitter-alt',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconUploadEvents = NonNullable<unknown>;
+export type OntarioIconUploadEvents = NonNullable<unknown>;
 
 export const OntarioIconUpload: StencilReactComponent<OntarioIconUploadElement, OntarioIconUploadEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconUploadElement, OntarioIconUploadEvents>({
-				tagName: 'ontario-icon-upload',
-				elementClass: OntarioIconUploadElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconUploadEvents,
-				defineCustomElement: defineOntarioIconUpload,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconUploadElement, OntarioIconUploadEvents>({
-				tagName: 'ontario-icon-upload',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconUploadElement, OntarioIconUploadEvents>({
+		tagName: 'ontario-icon-upload',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconVideoEvents = NonNullable<unknown>;
+export type OntarioIconVideoEvents = NonNullable<unknown>;
 
 export const OntarioIconVideo: StencilReactComponent<OntarioIconVideoElement, OntarioIconVideoEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconVideoElement, OntarioIconVideoEvents>({
-				tagName: 'ontario-icon-video',
-				elementClass: OntarioIconVideoElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconVideoEvents,
-				defineCustomElement: defineOntarioIconVideo,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconVideoElement, OntarioIconVideoEvents>({
-				tagName: 'ontario-icon-video',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconVideoElement, OntarioIconVideoEvents>({
+		tagName: 'ontario-icon-video',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconVisaEvents = NonNullable<unknown>;
+export type OntarioIconVisaEvents = NonNullable<unknown>;
 
 export const OntarioIconVisa: StencilReactComponent<OntarioIconVisaElement, OntarioIconVisaEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconVisaElement, OntarioIconVisaEvents>({
-				tagName: 'ontario-icon-visa',
-				elementClass: OntarioIconVisaElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconVisaEvents,
-				defineCustomElement: defineOntarioIconVisa,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconVisaElement, OntarioIconVisaEvents>({
-				tagName: 'ontario-icon-visa',
-				properties: { iconWidth: 'icon-width' },
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconVisaElement, OntarioIconVisaEvents>({
+		tagName: 'ontario-icon-visa',
+		properties: { iconWidth: 'icon-width' },
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconVoteDislikeEvents = NonNullable<unknown>;
+export type OntarioIconVoteDislikeEvents = NonNullable<unknown>;
 
 export const OntarioIconVoteDislike: StencilReactComponent<
 	OntarioIconVoteDislikeElement,
 	OntarioIconVoteDislikeEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconVoteDislikeElement, OntarioIconVoteDislikeEvents>({
-				tagName: 'ontario-icon-vote-dislike',
-				elementClass: OntarioIconVoteDislikeElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconVoteDislikeEvents,
-				defineCustomElement: defineOntarioIconVoteDislike,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconVoteDislikeElement, OntarioIconVoteDislikeEvents>({
-				tagName: 'ontario-icon-vote-dislike',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioIconVoteDislikeElement, OntarioIconVoteDislikeEvents>({
+	tagName: 'ontario-icon-vote-dislike',
+	properties: {
+		iconWidth: 'icon-width',
+		colour: 'colour',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioIconVoteLikeEvents = NonNullable<unknown>;
+export type OntarioIconVoteLikeEvents = NonNullable<unknown>;
 
 export const OntarioIconVoteLike: StencilReactComponent<OntarioIconVoteLikeElement, OntarioIconVoteLikeEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconVoteLikeElement, OntarioIconVoteLikeEvents>({
-				tagName: 'ontario-icon-vote-like',
-				elementClass: OntarioIconVoteLikeElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconVoteLikeEvents,
-				defineCustomElement: defineOntarioIconVoteLike,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconVoteLikeElement, OntarioIconVoteLikeEvents>({
-				tagName: 'ontario-icon-vote-like',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconVoteLikeElement, OntarioIconVoteLikeEvents>({
+		tagName: 'ontario-icon-vote-like',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconVpnKeyEvents = NonNullable<unknown>;
+export type OntarioIconVpnKeyEvents = NonNullable<unknown>;
 
 export const OntarioIconVpnKey: StencilReactComponent<OntarioIconVpnKeyElement, OntarioIconVpnKeyEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconVpnKeyElement, OntarioIconVpnKeyEvents>({
-				tagName: 'ontario-icon-vpn-key',
-				elementClass: OntarioIconVpnKeyElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconVpnKeyEvents,
-				defineCustomElement: defineOntarioIconVpnKey,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconVpnKeyElement, OntarioIconVpnKeyEvents>({
-				tagName: 'ontario-icon-vpn-key',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconVpnKeyElement, OntarioIconVpnKeyEvents>({
+		tagName: 'ontario-icon-vpn-key',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconWheelchairEvents = NonNullable<unknown>;
+export type OntarioIconWheelchairEvents = NonNullable<unknown>;
 
 export const OntarioIconWheelchair: StencilReactComponent<OntarioIconWheelchairElement, OntarioIconWheelchairEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconWheelchairElement, OntarioIconWheelchairEvents>({
-				tagName: 'ontario-icon-wheelchair',
-				elementClass: OntarioIconWheelchairElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconWheelchairEvents,
-				defineCustomElement: defineOntarioIconWheelchair,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconWheelchairElement, OntarioIconWheelchairEvents>({
-				tagName: 'ontario-icon-wheelchair',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconWheelchairElement, OntarioIconWheelchairEvents>({
+		tagName: 'ontario-icon-wheelchair',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconWifiEvents = NonNullable<unknown>;
+export type OntarioIconWifiEvents = NonNullable<unknown>;
 
 export const OntarioIconWifi: StencilReactComponent<OntarioIconWifiElement, OntarioIconWifiEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconWifiElement, OntarioIconWifiEvents>({
-				tagName: 'ontario-icon-wifi',
-				elementClass: OntarioIconWifiElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconWifiEvents,
-				defineCustomElement: defineOntarioIconWifi,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconWifiElement, OntarioIconWifiEvents>({
-				tagName: 'ontario-icon-wifi',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconWifiElement, OntarioIconWifiEvents>({
+		tagName: 'ontario-icon-wifi',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioIconYoutubeEvents = NonNullable<unknown>;
+export type OntarioIconYoutubeEvents = NonNullable<unknown>;
 
 export const OntarioIconYoutube: StencilReactComponent<OntarioIconYoutubeElement, OntarioIconYoutubeEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioIconYoutubeElement, OntarioIconYoutubeEvents>({
-				tagName: 'ontario-icon-youtube',
-				elementClass: OntarioIconYoutubeElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioIconYoutubeEvents,
-				defineCustomElement: defineOntarioIconYoutube,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioIconYoutubeElement, OntarioIconYoutubeEvents>({
-				tagName: 'ontario-icon-youtube',
-				properties: {
-					iconWidth: 'icon-width',
-					colour: 'colour',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioIconYoutubeElement, OntarioIconYoutubeEvents>({
+		tagName: 'ontario-icon-youtube',
+		properties: {
+			iconWidth: 'icon-width',
+			colour: 'colour',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioInputEvents = {
+export type OntarioInputEvents = {
 	onInputOnInput: EventName<OntarioInputCustomEvent<InputInputEvent>>;
 	onInputOnChange: EventName<OntarioInputCustomEvent<InputInteractionEvent>>;
 	onInputOnBlur: EventName<OntarioInputCustomEvent<InputFocusBlurEvent>>;
@@ -3504,125 +1992,83 @@ type OntarioInputEvents = {
 };
 
 export const OntarioInput: StencilReactComponent<OntarioInputElement, OntarioInputEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioInputElement, OntarioInputEvents>({
-				tagName: 'ontario-input',
-				elementClass: OntarioInputElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {
-					onInputOnInput: 'inputOnInput',
-					onInputOnChange: 'inputOnChange',
-					onInputOnBlur: 'inputOnBlur',
-					onInputOnFocus: 'inputOnFocus',
-					onInputErrorOccurred: 'inputErrorOccurred',
-				} as OntarioInputEvents,
-				defineCustomElement: defineOntarioInput,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioInputElement, OntarioInputEvents>({
-				tagName: 'ontario-input',
-				properties: {
-					caption: 'caption',
-					elementId: 'element-id',
-					inputWidth: 'input-width',
-					name: 'name',
-					hintText: 'hint-text',
-					required: 'required',
-					type: 'type',
-					value: 'value',
-					errorMessage: 'error-message',
-					language: 'language',
-					hintExpander: 'hint-expander',
-					enableLiveValidation: 'enable-live-validation',
-					inputValidator: 'input-validator',
-					customOnInput: 'custom-on-input',
-					customOnChange: 'custom-on-change',
-					customOnBlur: 'custom-on-blur',
-					customOnFocus: 'custom-on-focus',
-					requiredValidationMessage: 'required-validation-message',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioInputElement, OntarioInputEvents>({
+		tagName: 'ontario-input',
+		properties: {
+			caption: 'caption',
+			elementId: 'element-id',
+			inputWidth: 'input-width',
+			name: 'name',
+			hintText: 'hint-text',
+			required: 'required',
+			type: 'type',
+			value: 'value',
+			errorMessage: 'error-message',
+			language: 'language',
+			hintExpander: 'hint-expander',
+			enableLiveValidation: 'enable-live-validation',
+			inputValidator: 'input-validator',
+			customOnInput: 'custom-on-input',
+			customOnChange: 'custom-on-change',
+			customOnBlur: 'custom-on-blur',
+			customOnFocus: 'custom-on-focus',
+			requiredValidationMessage: 'required-validation-message',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioLanguageToggleEvents = {
+export type OntarioLanguageToggleEvents = {
 	onSetAppLanguage: EventName<OntarioLanguageToggleCustomEvent<Language>>;
 	onHeaderLanguageToggled: EventName<OntarioLanguageToggleCustomEvent<HeaderLanguageToggleEventDetails>>;
 };
 
 export const OntarioLanguageToggle: StencilReactComponent<OntarioLanguageToggleElement, OntarioLanguageToggleEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioLanguageToggleElement, OntarioLanguageToggleEvents>({
-				tagName: 'ontario-language-toggle',
-				elementClass: OntarioLanguageToggleElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {
-					onSetAppLanguage: 'setAppLanguage',
-					onHeaderLanguageToggled: 'headerLanguageToggled',
-				} as OntarioLanguageToggleEvents,
-				defineCustomElement: defineOntarioLanguageToggle,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioLanguageToggleElement, OntarioLanguageToggleEvents>({
-				tagName: 'ontario-language-toggle',
-				properties: {
-					language: 'language',
-					size: 'size',
-					url: 'url',
-					customLanguageToggle: 'custom-language-toggle',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioLanguageToggleElement, OntarioLanguageToggleEvents>({
+		tagName: 'ontario-language-toggle',
+		properties: {
+			language: 'language',
+			size: 'size',
+			url: 'url',
+			customLanguageToggle: 'custom-language-toggle',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioLoadingIndicatorEvents = NonNullable<unknown>;
+export type OntarioLoadingIndicatorEvents = NonNullable<unknown>;
 
 export const OntarioLoadingIndicator: StencilReactComponent<
 	OntarioLoadingIndicatorElement,
 	OntarioLoadingIndicatorEvents
-> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioLoadingIndicatorElement, OntarioLoadingIndicatorEvents>({
-				tagName: 'ontario-loading-indicator',
-				elementClass: OntarioLoadingIndicatorElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioLoadingIndicatorEvents,
-				defineCustomElement: defineOntarioLoadingIndicator,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioLoadingIndicatorElement, OntarioLoadingIndicatorEvents>({
-				tagName: 'ontario-loading-indicator',
-				properties: {
-					type: 'type',
-					isLoading: 'is-loading',
-					message: 'message',
-					fullScreenOverlay: 'full-screen-overlay',
-					language: 'language',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+> = /*@__PURE__*/ createComponent<OntarioLoadingIndicatorElement, OntarioLoadingIndicatorEvents>({
+	tagName: 'ontario-loading-indicator',
+	properties: {
+		type: 'type',
+		isLoading: 'is-loading',
+		message: 'message',
+		fullScreenOverlay: 'full-screen-overlay',
+		language: 'language',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioPageAlertEvents = NonNullable<unknown>;
+export type OntarioPageAlertEvents = NonNullable<unknown>;
 
 export const OntarioPageAlert: StencilReactComponent<OntarioPageAlertElement, OntarioPageAlertEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioPageAlertElement, OntarioPageAlertEvents>({
-				tagName: 'ontario-page-alert',
-				elementClass: OntarioPageAlertElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioPageAlertEvents,
-				defineCustomElement: defineOntarioPageAlert,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioPageAlertElement, OntarioPageAlertEvents>({
-				tagName: 'ontario-page-alert',
-				properties: {
-					type: 'type',
-					heading: 'heading',
-					content: 'content',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioPageAlertElement, OntarioPageAlertEvents>({
+		tagName: 'ontario-page-alert',
+		properties: {
+			type: 'type',
+			heading: 'heading',
+			content: 'content',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioRadioButtonsEvents = {
+export type OntarioRadioButtonsEvents = {
 	onRadioOnChange: EventName<OntarioRadioButtonsCustomEvent<RadioAndCheckboxChangeEvent>>;
 	onRadioOnBlur: EventName<OntarioRadioButtonsCustomEvent<InputFocusBlurEvent>>;
 	onRadioOnFocus: EventName<OntarioRadioButtonsCustomEvent<InputFocusBlurEvent>>;
@@ -3630,39 +2076,26 @@ type OntarioRadioButtonsEvents = {
 };
 
 export const OntarioRadioButtons: StencilReactComponent<OntarioRadioButtonsElement, OntarioRadioButtonsEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioRadioButtonsElement, OntarioRadioButtonsEvents>({
-				tagName: 'ontario-radio-buttons',
-				elementClass: OntarioRadioButtonsElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {
-					onRadioOnChange: 'radioOnChange',
-					onRadioOnBlur: 'radioOnBlur',
-					onRadioOnFocus: 'radioOnFocus',
-					onInputErrorOccurred: 'inputErrorOccurred',
-				} as OntarioRadioButtonsEvents,
-				defineCustomElement: defineOntarioRadioButtons,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioRadioButtonsElement, OntarioRadioButtonsEvents>({
-				tagName: 'ontario-radio-buttons',
-				properties: {
-					caption: 'caption',
-					language: 'language',
-					name: 'name',
-					hintText: 'hint-text',
-					hintExpander: 'hint-expander',
-					required: 'required',
-					options: 'options',
-					errorMessage: 'error-message',
-					customOnChange: 'custom-on-change',
-					customOnBlur: 'custom-on-blur',
-					customOnFocus: 'custom-on-focus',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioRadioButtonsElement, OntarioRadioButtonsEvents>({
+		tagName: 'ontario-radio-buttons',
+		properties: {
+			caption: 'caption',
+			language: 'language',
+			name: 'name',
+			hintText: 'hint-text',
+			hintExpander: 'hint-expander',
+			required: 'required',
+			options: 'options',
+			errorMessage: 'error-message',
+			customOnChange: 'custom-on-change',
+			customOnBlur: 'custom-on-blur',
+			customOnFocus: 'custom-on-focus',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioSearchBoxEvents = {
+export type OntarioSearchBoxEvents = {
 	onSearchOnSubmit: EventName<CustomEvent<string>>;
 	onInputOnInput: EventName<OntarioSearchBoxCustomEvent<InputInputEvent>>;
 	onInputOnChange: EventName<OntarioSearchBoxCustomEvent<InputInteractionEvent>>;
@@ -3671,140 +2104,96 @@ type OntarioSearchBoxEvents = {
 };
 
 export const OntarioSearchBox: StencilReactComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents>({
-				tagName: 'ontario-search-box',
-				elementClass: OntarioSearchBoxElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {
-					onSearchOnSubmit: 'searchOnSubmit',
-					onInputOnInput: 'inputOnInput',
-					onInputOnChange: 'inputOnChange',
-					onInputOnBlur: 'inputOnBlur',
-					onInputOnFocus: 'inputOnFocus',
-				} as OntarioSearchBoxEvents,
-				defineCustomElement: defineOntarioSearchBox,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents>({
-				tagName: 'ontario-search-box',
-				properties: {
-					language: 'language',
-					elementId: 'element-id',
-					value: 'value',
-					caption: 'caption',
-					required: 'required',
-					performSearch: 'perform-search',
-					hintText: 'hint-text',
-					customOnInput: 'custom-on-input',
-					customOnChange: 'custom-on-change',
-					customOnBlur: 'custom-on-blur',
-					customOnFocus: 'custom-on-focus',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents>({
+		tagName: 'ontario-search-box',
+		properties: {
+			language: 'language',
+			elementId: 'element-id',
+			value: 'value',
+			caption: 'caption',
+			required: 'required',
+			performSearch: 'perform-search',
+			hintText: 'hint-text',
+			customOnInput: 'custom-on-input',
+			customOnChange: 'custom-on-change',
+			customOnBlur: 'custom-on-blur',
+			customOnFocus: 'custom-on-focus',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioStepIndicatorEvents = NonNullable<unknown>;
+export type OntarioStepIndicatorEvents = NonNullable<unknown>;
 
 export const OntarioStepIndicator: StencilReactComponent<OntarioStepIndicatorElement, OntarioStepIndicatorEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioStepIndicatorElement, OntarioStepIndicatorEvents>({
-				tagName: 'ontario-step-indicator',
-				elementClass: OntarioStepIndicatorElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioStepIndicatorEvents,
-				defineCustomElement: defineOntarioStepIndicator,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioStepIndicatorElement, OntarioStepIndicatorEvents>({
-				tagName: 'ontario-step-indicator',
-				properties: {
-					showBackButton: 'show-back-button',
-					backButtonUrl: 'back-button-url',
-					currentStep: 'current-step',
-					numberOfSteps: 'number-of-steps',
-					percentageComplete: 'percentage-complete',
-					customOnClick: 'custom-on-click',
-					language: 'language',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioStepIndicatorElement, OntarioStepIndicatorEvents>({
+		tagName: 'ontario-step-indicator',
+		properties: {
+			showBackButton: 'show-back-button',
+			backButtonUrl: 'back-button-url',
+			currentStep: 'current-step',
+			numberOfSteps: 'number-of-steps',
+			percentageComplete: 'percentage-complete',
+			customOnClick: 'custom-on-click',
+			language: 'language',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioTableEvents = NonNullable<unknown>;
+export type OntarioTableEvents = NonNullable<unknown>;
 
 export const OntarioTable: StencilReactComponent<OntarioTableElement, OntarioTableEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioTableElement, OntarioTableEvents>({
-				tagName: 'ontario-table',
-				elementClass: OntarioTableElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioTableEvents,
-				defineCustomElement: defineOntarioTable,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioTableElement, OntarioTableEvents>({
-				tagName: 'ontario-table',
-				properties: {
-					caption: 'caption',
-					tableColumns: 'table-columns',
-					tableData: 'table-data',
-					zebraStripes: 'zebra-stripes',
-					condensed: 'condensed',
-					fullWidth: 'full-width',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioTableElement, OntarioTableEvents>({
+		tagName: 'ontario-table',
+		properties: {
+			caption: 'caption',
+			tableColumns: 'table-columns',
+			tableData: 'table-data',
+			zebraStripes: 'zebra-stripes',
+			condensed: 'condensed',
+			fullWidth: 'full-width',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioTaskEvents = NonNullable<unknown>;
+export type OntarioTaskEvents = NonNullable<unknown>;
 
-export const OntarioTask: StencilReactComponent<OntarioTaskElement, OntarioTaskEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioTaskElement, OntarioTaskEvents>({
-				tagName: 'ontario-task',
-				elementClass: OntarioTaskElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioTaskEvents,
-				defineCustomElement: defineOntarioTask,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioTaskElement, OntarioTaskEvents>({
-				tagName: 'ontario-task',
-				properties: {
-					label: 'label',
-					taskId: 'task-id',
-					link: 'link',
-					deactivateLink: 'deactivate-link',
-					language: 'language',
-					hintText: 'hint-text',
-					taskStatus: 'task-status',
-					headingLevel: 'heading-level',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+export const OntarioTask: StencilReactComponent<OntarioTaskElement, OntarioTaskEvents> = /*@__PURE__*/ createComponent<
+	OntarioTaskElement,
+	OntarioTaskEvents
+>({
+	tagName: 'ontario-task',
+	properties: {
+		label: 'label',
+		taskId: 'task-id',
+		link: 'link',
+		deactivateLink: 'deactivate-link',
+		language: 'language',
+		hintText: 'hint-text',
+		taskStatus: 'task-status',
+		headingLevel: 'heading-level',
+	},
+	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+	serializeShadowRoot,
+});
 
-type OntarioTaskListEvents = NonNullable<unknown>;
+export type OntarioTaskListEvents = NonNullable<unknown>;
 
 export const OntarioTaskList: StencilReactComponent<OntarioTaskListElement, OntarioTaskListEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioTaskListElement, OntarioTaskListEvents>({
-				tagName: 'ontario-task-list',
-				elementClass: OntarioTaskListElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {} as OntarioTaskListEvents,
-				defineCustomElement: defineOntarioTaskList,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioTaskListElement, OntarioTaskListEvents>({
-				tagName: 'ontario-task-list',
-				properties: {
-					label: 'label',
-					headingLevel: 'heading-level',
-					language: 'language',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioTaskListElement, OntarioTaskListEvents>({
+		tagName: 'ontario-task-list',
+		properties: {
+			label: 'label',
+			headingLevel: 'heading-level',
+			language: 'language',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
 
-type OntarioTextareaEvents = {
+export type OntarioTextareaEvents = {
 	onInputOnInput: EventName<OntarioTextareaCustomEvent<InputInputEvent>>;
 	onInputOnChange: EventName<OntarioTextareaCustomEvent<InputInteractionEvent>>;
 	onInputOnBlur: EventName<OntarioTextareaCustomEvent<InputFocusBlurEvent>>;
@@ -3813,37 +2202,23 @@ type OntarioTextareaEvents = {
 };
 
 export const OntarioTextarea: StencilReactComponent<OntarioTextareaElement, OntarioTextareaEvents> =
-	typeof window !== 'undefined'
-		? /*@__PURE__*/ createComponent<OntarioTextareaElement, OntarioTextareaEvents>({
-				tagName: 'ontario-textarea',
-				elementClass: OntarioTextareaElement,
-				// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-				react: React,
-				events: {
-					onInputOnInput: 'inputOnInput',
-					onInputOnChange: 'inputOnChange',
-					onInputOnBlur: 'inputOnBlur',
-					onInputOnFocus: 'inputOnFocus',
-					onInputErrorOccurred: 'inputErrorOccurred',
-				} as OntarioTextareaEvents,
-				defineCustomElement: defineOntarioTextarea,
-			})
-		: /*@__PURE__*/ createSSRComponent<OntarioTextareaElement, OntarioTextareaEvents>({
-				tagName: 'ontario-textarea',
-				properties: {
-					caption: 'caption',
-					name: 'name',
-					elementId: 'element-id',
-					required: 'required',
-					value: 'value',
-					hintText: 'hint-text',
-					hintExpander: 'hint-expander',
-					language: 'language',
-					errorMessage: 'error-message',
-					customOnInput: 'custom-on-input',
-					customOnChange: 'custom-on-change',
-					customOnBlur: 'custom-on-blur',
-					customOnFocus: 'custom-on-focus',
-				},
-				hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-			});
+	/*@__PURE__*/ createComponent<OntarioTextareaElement, OntarioTextareaEvents>({
+		tagName: 'ontario-textarea',
+		properties: {
+			caption: 'caption',
+			name: 'name',
+			elementId: 'element-id',
+			required: 'required',
+			value: 'value',
+			hintText: 'hint-text',
+			hintExpander: 'hint-expander',
+			language: 'language',
+			errorMessage: 'error-message',
+			customOnInput: 'custom-on-input',
+			customOnChange: 'custom-on-change',
+			customOnBlur: 'custom-on-blur',
+			customOnFocus: 'custom-on-focus',
+		},
+		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+		serializeShadowRoot,
+	});
