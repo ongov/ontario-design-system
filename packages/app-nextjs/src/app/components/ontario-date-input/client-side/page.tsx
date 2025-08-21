@@ -6,7 +6,7 @@ export default function OntarioDateInputPageClientSide() {
 	return (
 		<main>
 			<Grid>
-				<h1>OntarioDateInput</h1>
+				<h1>ontario-date-input</h1>
 
 				<h2>'error' Prop Variant</h2>
 				<h3>Error State</h3>
