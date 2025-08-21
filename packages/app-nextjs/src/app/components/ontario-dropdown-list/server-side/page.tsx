@@ -42,6 +42,28 @@ export default function OntarioDropdownListPageServerSide() {
 					options={dropdownOptions}
 				/>
 
+				<h2>'captionType' Prop Variants</h2>
+				<h3>Default</h3>
+				<OntarioDropdownList
+					name="dropdown-caption-object"
+					caption={{ captionText: 'Default caption type', captionType: 'default' }}
+					options={dropdownOptions}
+				/>
+
+				<h3>Large</h3>
+				<OntarioDropdownList
+					name="dropdown-caption-object"
+					caption={{ captionText: 'Large caption type', captionType: 'large' }}
+					options={dropdownOptions}
+				/>
+
+				<h3>Heading</h3>
+				<OntarioDropdownList
+					name="dropdown-caption-object"
+					caption={{ captionText: 'Heading caption type', captionType: 'heading' }}
+					options={dropdownOptions}
+				/>
+
 				<h2>'options' Prop Variant - Preselected Value</h2>
 				<h3>Option 2 Preselected</h3>
 				<OntarioDropdownList
