@@ -5,7 +5,7 @@ export default function OntarioDateInputPageServerSide() {
 	return (
 		<main>
 			<Grid>
-				<h1>OntarioDateInput</h1>
+				<h1>ontario-date-input</h1>
 
 				<h2>'language' Prop Variants</h2>
 				<h3>EN</h3>
