@@ -66,6 +66,9 @@ export default function Home() {
 							<Link href="/components/ontario-date-input">ontario-date-input</Link>
 						</li>
 						<li>
+							<Link href="/components/ontario-dropdown-list">ontario-search-box</Link>
+						</li>
+						<li>
 							<Link href="/components/ontario-back-to-top">ontario-back-to-top</Link>
 						</li>
 						<li>
