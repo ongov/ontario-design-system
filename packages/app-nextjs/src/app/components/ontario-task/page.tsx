@@ -1,4 +1,3 @@
-import { TaskStatuses } from '@ongov/ontario-design-system-component-library';
 import { Grid } from '../../grid';
 import { OntarioTask } from '@ongov/ontario-design-system-component-library-react';
 
@@ -17,13 +16,13 @@ export default function OntarioTaskPage() {
 
 				<h2>'task-status' Prop Variants</h2>
 				<h3>Not started</h3>
-				<OntarioTask taskId="task-notstarted" label="Task Not Started" taskStatus={TaskStatuses.NotStarted} />
+				<OntarioTask taskId="task-notstarted" label="Task Not Started" task-status="notStarted" />
 
 				<h3>In progress</h3>
-				<OntarioTask taskId="task-inprogress" label="Task In Progress" taskStatus={TaskStatuses.InProgress} />
+				<OntarioTask taskId="task-inprogress" label="Task In Progress" task-status="inProgress" />
 
 				<h3>Completed</h3>
-				<OntarioTask taskId="task-completed" label="Task Completed" taskStatus={TaskStatuses.Completed} />
+				<OntarioTask taskId="task-completed" label="Task Completed" task-status="completed" />
 
 				<h2>'headingLevel' - Prop Variants</h2>
 				<h3>H2</h3>
