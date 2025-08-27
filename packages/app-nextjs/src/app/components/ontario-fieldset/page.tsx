@@ -52,56 +52,56 @@ export default function OntarioCriticalAlertPage() {
 						element-id="province-territory"
 						required
 						is-empty-start-option="true"
-						options='[
-                            {
-                                "value": "AB",
-                                "label": "Alberta"
-                            },
-                            {
-                                "value": "BC",
-                                "label": "British Columbia"
-                            },
-                            {
-                                "value": "MB",
-                                "label": "Manitoba"
-                            },
-                            {
-                                "value": "NB",
-                                "label": "New Brunswick"
-                            },
-                            {
-                                "value": "NL",
-                                "label": "Newfoundland and Labrador"
-                            },
-                            {
-                                "value": "NS",
-                                "label": "Nova Scotia"
-                            },
-                            {
-                                "value": "ON",
-                                "label": "Ontario"
-                            },
-                            {
-                                "value": "QC",
-                                "label": "Quebec"
-                            },
-                            {
-                                "value": "SK",
-                                "label": "Saskatchewan"
-                            },
-                            {
-                                "value": "NT",
-                                "label": "Northwest Territories"
-                            },
-                            {
-                                "value": "NU",
-                                "label": "Nunavut"
-                            },
-                            {
-                                "value": "YT",
-                                "label": "Yukon"
-                            }
-                        ]'
+						options={[
+							{
+								value: 'AB',
+								label: 'Alberta',
+							},
+							{
+								value: 'BC',
+								label: 'British Columbia',
+							},
+							{
+								value: 'MB',
+								label: 'Manitoba',
+							},
+							{
+								value: 'NB',
+								label: 'New Brunswick',
+							},
+							{
+								value: 'NL',
+								label: 'Newfoundland and Labrador',
+							},
+							{
+								value: 'NS',
+								label: 'Nova Scotia',
+							},
+							{
+								value: 'ON',
+								label: 'Ontario',
+							},
+							{
+								value: 'QC',
+								label: 'Quebec',
+							},
+							{
+								value: 'SK',
+								label: 'Saskatchewan',
+							},
+							{
+								value: 'NT',
+								label: 'Northwest Territories',
+							},
+							{
+								value: 'NU',
+								label: 'Nunavut',
+							},
+							{
+								value: 'YT',
+								label: 'Yukon',
+							},
+						]}
 					></OntarioDropdownList>
 					<OntarioInput
 						id="post-code-2"
