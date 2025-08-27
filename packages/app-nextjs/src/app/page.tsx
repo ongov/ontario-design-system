@@ -54,6 +54,9 @@ export default function Home() {
 							<Link href="/components/ontario-fieldset">ontario-fieldset</Link>
 						</li>
 						<li>
+							<Link href="/components/ontario-footer">ontario-footer</Link>
+						</li>
+						<li>
 							<Link href="/components/ontario-hint-expander">ontario-hint-expander</Link>
 						</li>
 						<li>
