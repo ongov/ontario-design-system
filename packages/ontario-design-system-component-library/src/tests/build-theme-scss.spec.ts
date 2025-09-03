@@ -6,7 +6,7 @@ import {
 	generateThemeSCSSContent,
 	writeGeneratedSCSSToTheme,
 	generateThemeSCSS,
-} from '../../scripts/build-theme-scss'; // Importing the functions being tested
+} from '../../scripts/build-theme-scss.cjs'; // Importing the functions being tested
 import * as fs from 'fs'; // File system module for interacting with the mock file system
 import * as path from 'path'; // Path module for handling and transforming file paths
 
