@@ -21,24 +21,41 @@ jobs:
       - name: Checkout monorepo
         uses: actions/checkout@v4
 
-      # Since this follows the build job, the latest tag is the latest version of npm packages.
-      - name: Get latest tag
-        id: get_tag
-        run: |
-          tag=$(git describe --tags --abbrev=0)
-          echo "version=${tag}" >> $GITHUB_OUTPUT
-
       - name: Checkout Docusaurus repo
         uses: actions/checkout@v4
         with:
-          repository: your-org/docusaurus-repo
+          repository: ongov/design-system-developer-documentation-site
           token: ${{ secrets.GH_TOKEN }}
           ref: main
           path: packages/docusaurus
 
-      - name: Clean Docusaurus component docs (preserve _category_.json)
+      # Install pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      # Setup Node.js
+      - name: Use Node.js ${{ inputs.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
+
+      # Install dependencies for Docusaurus
+      - name: Install Docusaurus dependencies
+        working-directory: packages/docusaurus
+        run: pnpm install --frozen-lockfile
+
+      - name: Clean Docusaurus docs (preserve _category_.json; delete empty dirs)
+        shell: bash
+        working-directory: packages/docusaurus
         run: |
-          find packages/docusaurus/docs/components -mindepth 1 ! -name '_category_.json' -delete
+          # Delete all files except _category_.json, then remove empty directories
+          find docs -depth -mindepth 1 \
+            \( -type f ! -name '_category_.json' -delete \) -o \
+            \( -type d -empty -delete \)
 
       - name: Download docs artifact
         uses: actions/download-artifact@v4
@@ -46,15 +63,21 @@ jobs:
           name: ${{ inputs.docs-artifacts-name }}
           path: packages/docusaurus/docs/
 
-      - name: Update package.json in Docusaurus
+      # Since this follows the build job, the latest tag is the latest version of npm packages.
+      - name: Get latest tag
+        id: get_tag
+        working-directory: .
         run: |
-          cd packages/docusaurus
-          pnpm add ontario-design-system-component-library@${{ steps.get_tag.outputs.version }}
+          tag=$(git describe --tags --abbrev=0)
+          echo "version=${tag}" >> $GITHUB_OUTPUT
+
+      - name: Update package.json in Docusaurus
+        working-directory: packages/docusaurus
+        run: pnpm add @ongov/ontario-design-system-component-library-react@${{ steps.get_tag.outputs.version }}
 
       - name: Version Docusaurus docs
-        run: |
-          cd packages/docusaurus
-          npx docusaurus docs:version ${{ steps.get_tag.outputs.version }}
+        working-directory: packages/docusaurus
+        run: npx docusaurus docs:version ${{ steps.get_tag.outputs.version }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
