@@ -12,10 +12,10 @@ export default function OntarioFooterPage() {
 							<Link href="/components/ontario-footer/page-default">Default Footer</Link>
 						</li>
 						<li>
-							<Link href="/components/ontario-footer/page-twoColumn">Two Column Expanded Footer</Link>
+							<Link href="/components/ontario-footer/page-two-column">Two Column Expanded Footer</Link>
 						</li>
 						<li>
-							<Link href="/components/ontario-footer/page-threeColumn">Three Column Expanded Footer</Link>
+							<Link href="/components/ontario-footer/page-three-column">Three Column Expanded Footer</Link>
 						</li>
 					</ul>
 				</div>
