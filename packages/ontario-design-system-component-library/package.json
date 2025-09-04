@@ -28,9 +28,9 @@
 		},
 		"./loader": {
 			"types": "./loader/index.d.ts",
-			"import": "./loader/index.js",
-			"require": "./loader/index.js",
-			"default": "./loader/index.js"
+			"import": "./loader/index.es2017.js",
+			"require": "./loader/index.cjs.js",
+			"default": "./loader/index.es2017.js"
 		},
 		"./hydrate": {
 			"types": "./hydrate/index.d.ts",
