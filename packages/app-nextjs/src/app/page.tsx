@@ -60,7 +60,7 @@ export default function Home() {
 							<Link href="/components/ontario-hint-text">ontario-hint-text</Link>
 						</li>
 						<li>
-							<Link href="/components/ontario-icon">ontario-icon</Link>
+							<Link href="/components/ontario-task-list">ontario-task-list</Link>
 						</li>
 						<li>
 							<Link href="/components/ontario-input">ontario-input</Link>
@@ -79,7 +79,10 @@ export default function Home() {
 							<Link href="/components/ontario-task">ontario-task</Link>
 						</li>
 						<li>
-							<Link href="/components/ontario-task-list">ontario-task-list</Link>
+							<Link href="/components/ontario-icon">ontario-icon</Link>
+						</li>
+						<li>
+							<Link href="/components/ontario-step-indicator">ontario-step-indicator</Link>
 						</li>
 						<li>
 							<Link href="/components/ontario-textarea">ontario-textarea</Link>

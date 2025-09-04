@@ -65,14 +65,9 @@ export class OntarioTask {
 	/**
 	 * Defines the status of the task, with default set to 'NotStarted'.
 	 *
-	 * Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`.
-	 */
-	/**
-	 * Defines the status of the task, with default set to 'NotStarted'.
-	 *
 	 * Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`, etc.
 	 */
-	@Prop() taskStatus: TaskStatuses = TaskStatuses.NotStarted;
+	@Prop({ mutable: true }) taskStatus: TaskStatuses | string;
 
 	/**
 	 * Allows consumers to define the heading level for the task label.
