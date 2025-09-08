@@ -1,3 +1,29 @@
+# 6.0.0-alpha.3 (2025-09-08)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library:** removes paragraph tags around slots in critical alert and page alert components dc6e5f8
+- **jest:** move svgTransform to .cjs to support require() in ESM context bb48dd0
+- **nextjs:** update to use label prop for dynamic button text 150417a
+- **ontario-task:** updates ontario-task to set default task status properly, fixes broken unit tests b9afff9
+- **srr:** improve hydration safety across compnents via default props, validation and error handling 21c0b1c
+- **srr:** improve hydration safety across compnents via default props, validation and error handling 014fb43
+- **ssr:** improves SSR optimizations across components 8f5ebee
+- **tsconfig:** downgrade TypeScript target and lib to ES2017 for compatibility 361cbbc
+
+### Build System
+
+- **@ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** fix react-component-library build errors f70efa0
+
+### Features
+
+- **@ongov/ontario-design-system-component-library-react:** added documentation for Next.js support 0a21573
+
+### BREAKING CHANGES
+
+- **@ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** `component` folder in the component-library moved from `dist`
+  to the root of the package
+
 # 6.0.0-alpha.2 (2025-08-12)
 
 ### Bug Fixes
