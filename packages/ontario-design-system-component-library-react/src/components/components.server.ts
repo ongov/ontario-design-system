@@ -8,2217 +8,1977 @@
 
 /* eslint-disable */
 
-import {
-	type HeaderLanguageToggleEventDetails,
-	type InputFocusBlurEvent,
-	type InputInputEvent,
-	type InputInteractionEvent,
-	type Language,
-	type OntarioCheckboxesCustomEvent,
-	type OntarioDropdownListCustomEvent,
-	type OntarioHintExpanderCustomEvent,
-	type OntarioInputCustomEvent,
-	type OntarioLanguageToggleCustomEvent,
-	type OntarioRadioButtonsCustomEvent,
-	type OntarioSearchBoxCustomEvent,
-	type OntarioTextareaCustomEvent,
-	type RadioAndCheckboxChangeEvent,
-} from '@ongov/ontario-design-system-component-library';
-import { OntarioAccordion as OntarioAccordionElement } from '@ongov/ontario-design-system-component-library/components/ontario-accordion.js';
-import { OntarioAside as OntarioAsideElement } from '@ongov/ontario-design-system-component-library/components/ontario-aside.js';
-import { OntarioBackToTop as OntarioBackToTopElement } from '@ongov/ontario-design-system-component-library/components/ontario-back-to-top.js';
-import { OntarioBadge as OntarioBadgeElement } from '@ongov/ontario-design-system-component-library/components/ontario-badge.js';
-import { OntarioBlockquote as OntarioBlockquoteElement } from '@ongov/ontario-design-system-component-library/components/ontario-blockquote.js';
-import { OntarioButton as OntarioButtonElement } from '@ongov/ontario-design-system-component-library/components/ontario-button.js';
-import { OntarioCallout as OntarioCalloutElement } from '@ongov/ontario-design-system-component-library/components/ontario-callout.js';
-import { OntarioCardCollection as OntarioCardCollectionElement } from '@ongov/ontario-design-system-component-library/components/ontario-card-collection.js';
-import { OntarioCard as OntarioCardElement } from '@ongov/ontario-design-system-component-library/components/ontario-card.js';
-import { OntarioCheckboxes as OntarioCheckboxesElement } from '@ongov/ontario-design-system-component-library/components/ontario-checkboxes.js';
-import { OntarioCriticalAlert as OntarioCriticalAlertElement } from '@ongov/ontario-design-system-component-library/components/ontario-critical-alert.js';
-import { OntarioDateInput as OntarioDateInputElement } from '@ongov/ontario-design-system-component-library/components/ontario-date-input.js';
-import { OntarioDropdownList as OntarioDropdownListElement } from '@ongov/ontario-design-system-component-library/components/ontario-dropdown-list.js';
-import { OntarioFieldset as OntarioFieldsetElement } from '@ongov/ontario-design-system-component-library/components/ontario-fieldset.js';
-import { OntarioFooter as OntarioFooterElement } from '@ongov/ontario-design-system-component-library/components/ontario-footer.js';
-import { OntarioHeader as OntarioHeaderElement } from '@ongov/ontario-design-system-component-library/components/ontario-header.js';
-import { OntarioHintExpander as OntarioHintExpanderElement } from '@ongov/ontario-design-system-component-library/components/ontario-hint-expander.js';
-import { OntarioHintText as OntarioHintTextElement } from '@ongov/ontario-design-system-component-library/components/ontario-hint-text.js';
-import { OntarioIconAccessibility as OntarioIconAccessibilityElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-accessibility.js';
-import { OntarioIconAccount as OntarioIconAccountElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-account.js';
-import { OntarioIconAddAlt as OntarioIconAddAltElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-add-alt.js';
-import { OntarioIconAdd as OntarioIconAddElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-add.js';
-import { OntarioIconAlertError as OntarioIconAlertErrorElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-alert-error.js';
-import { OntarioIconAlertInformation as OntarioIconAlertInformationElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-alert-information.js';
-import { OntarioIconAlertSuccess as OntarioIconAlertSuccessElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-alert-success.js';
-import { OntarioIconAlertWarning as OntarioIconAlertWarningElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-alert-warning.js';
-import { OntarioIconArrowUp as OntarioIconArrowUpElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-arrow-up.js';
-import { OntarioIconAttach as OntarioIconAttachElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-attach.js';
-import { OntarioIconBookmarkOff as OntarioIconBookmarkOffElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-bookmark-off.js';
-import { OntarioIconBookmarkOn as OntarioIconBookmarkOnElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-bookmark-on.js';
-import { OntarioIconCalendar as OntarioIconCalendarElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-calendar.js';
-import { OntarioIconCamera as OntarioIconCameraElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-camera.js';
-import { OntarioIconChevronDown as OntarioIconChevronDownElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-down.js';
-import { OntarioIconChevronLeft as OntarioIconChevronLeftElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-left.js';
-import { OntarioIconChevronRight as OntarioIconChevronRightElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-right.js';
-import { OntarioIconChevronUp as OntarioIconChevronUpElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-up.js';
-import { OntarioIconClock as OntarioIconClockElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-clock.js';
-import { OntarioIconCloseHeader as OntarioIconCloseHeaderElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-close-header.js';
-import { OntarioIconClose as OntarioIconCloseElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-close.js';
-import { OntarioIconCloud as OntarioIconCloudElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-cloud.js';
-import { OntarioIconCollapse as OntarioIconCollapseElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-collapse.js';
-import { OntarioIconCreditCard as OntarioIconCreditCardElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-credit-card.js';
-import { OntarioIconCriticalAlertWarning as OntarioIconCriticalAlertWarningElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-critical-alert-warning.js';
-import { OntarioIconDelete as OntarioIconDeleteElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-delete.js';
-import { OntarioIconDocument as OntarioIconDocumentElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-document.js';
-import { OntarioIconDownload as OntarioIconDownloadElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-download.js';
-import { OntarioIconDropdownArrow as OntarioIconDropdownArrowElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-dropdown-arrow.js';
-import { OntarioIconEdit as OntarioIconEditElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-edit.js';
-import { OntarioIconEmail as OntarioIconEmailElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-email.js';
-import { OntarioIconExpand as OntarioIconExpandElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-expand.js';
-import { OntarioIconExport as OntarioIconExportElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-export.js';
-import { OntarioIconFacebookAlt as OntarioIconFacebookAltElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-facebook-alt.js';
-import { OntarioIconFacebook as OntarioIconFacebookElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-facebook.js';
-import { OntarioIconFavouriteOff as OntarioIconFavouriteOffElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-favourite-off.js';
-import { OntarioIconFavouriteOn as OntarioIconFavouriteOnElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-favourite-on.js';
-import { OntarioIconFilter as OntarioIconFilterElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-filter.js';
-import { OntarioIconFlickr as OntarioIconFlickrElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-flickr.js';
-import { OntarioIconGrid as OntarioIconGridElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-grid.js';
-import { OntarioIconHelp as OntarioIconHelpElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-help.js';
-import { OntarioIconInstagram as OntarioIconInstagramElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-instagram.js';
-import { OntarioIconInteracEnAlt as OntarioIconInteracEnAltElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-interac-en-alt.js';
-import { OntarioIconInteracEn as OntarioIconInteracEnElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-interac-en.js';
-import { OntarioIconInteracFrAlt as OntarioIconInteracFrAltElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-interac-fr-alt.js';
-import { OntarioIconInteracFr as OntarioIconInteracFrElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-interac-fr.js';
-import { OntarioIconLinkedinAlt as OntarioIconLinkedinAltElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-linkedin-alt.js';
-import { OntarioIconLinkedin as OntarioIconLinkedinElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-linkedin.js';
-import { OntarioIconList as OntarioIconListElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-list.js';
-import { OntarioIconLiveChat as OntarioIconLiveChatElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-live-chat.js';
-import { OntarioIconLocationOff as OntarioIconLocationOffElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-location-off.js';
-import { OntarioIconLocationOn as OntarioIconLocationOnElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-location-on.js';
-import { OntarioIconLockOff as OntarioIconLockOffElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-lock-off.js';
-import { OntarioIconLockOn as OntarioIconLockOnElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-lock-on.js';
-import { OntarioIconMap as OntarioIconMapElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-map.js';
-import { OntarioIconMastercardAlt as OntarioIconMastercardAltElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-mastercard-alt.js';
-import { OntarioIconMastercard as OntarioIconMastercardElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-mastercard.js';
-import { OntarioIconMediaFastForward as OntarioIconMediaFastForwardElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-media-fast-forward.js';
-import { OntarioIconMediaFastRewind as OntarioIconMediaFastRewindElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-media-fast-rewind.js';
-import { OntarioIconMediaPause as OntarioIconMediaPauseElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-media-pause.js';
-import { OntarioIconMediaPlay as OntarioIconMediaPlayElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-media-play.js';
-import { OntarioIconMediaStop as OntarioIconMediaStopElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-media-stop.js';
-import { OntarioIconMenuHeader as OntarioIconMenuHeaderElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-menu-header.js';
-import { OntarioIconMenu as OntarioIconMenuElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-menu.js';
-import { OntarioIconMicrophoneOff as OntarioIconMicrophoneOffElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-off.js';
-import { OntarioIconMicrophoneOn as OntarioIconMicrophoneOnElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-on.js';
-import { OntarioIconMoreVertical as OntarioIconMoreVerticalElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-more-vertical.js';
-import { OntarioIconNewWindow as OntarioIconNewWindowElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-new-window.js';
-import { OntarioIconNext as OntarioIconNextElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-next.js';
-import { OntarioIconNotification as OntarioIconNotificationElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-notification.js';
-import { OntarioIconPasswordHide as OntarioIconPasswordHideElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-password-hide.js';
-import { OntarioIconPasswordShow as OntarioIconPasswordShowElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-password-show.js';
-import { OntarioIconPhone as OntarioIconPhoneElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-phone.js';
-import { OntarioIconPhoto as OntarioIconPhotoElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-photo.js';
-import { OntarioIconPinLocationOff as OntarioIconPinLocationOffElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-pin-location-off.js';
-import { OntarioIconPinLocationOn as OntarioIconPinLocationOnElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-pin-location-on.js';
-import { OntarioIconPrevious as OntarioIconPreviousElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-previous.js';
-import { OntarioIconPrint as OntarioIconPrintElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-print.js';
-import { OntarioIconRemoveAlt as OntarioIconRemoveAltElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-remove-alt.js';
-import { OntarioIconRemove as OntarioIconRemoveElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-remove.js';
-import { OntarioIconReplay as OntarioIconReplayElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-replay.js';
-import { OntarioIconRssFeed as OntarioIconRssFeedElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-rss-feed.js';
-import { OntarioIconSave as OntarioIconSaveElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-save.js';
-import { OntarioIconSearchWhite as OntarioIconSearchWhiteElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-search-white.js';
-import { OntarioIconSearch as OntarioIconSearchElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-search.js';
-import { OntarioIconSentiment1 as OntarioIconSentiment1Element } from '@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-1.js';
-import { OntarioIconSentiment2 as OntarioIconSentiment2Element } from '@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-2.js';
-import { OntarioIconSentiment3 as OntarioIconSentiment3Element } from '@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-3.js';
-import { OntarioIconSentiment4 as OntarioIconSentiment4Element } from '@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-4.js';
-import { OntarioIconSentiment5 as OntarioIconSentiment5Element } from '@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-5.js';
-import { OntarioIconSettings as OntarioIconSettingsElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-settings.js';
-import { OntarioIconShare as OntarioIconShareElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-share.js';
-import { OntarioIconSort as OntarioIconSortElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-sort.js';
-import { OntarioIconTag as OntarioIconTagElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-tag.js';
-import { OntarioIconTextMessage as OntarioIconTextMessageElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-text-message.js';
-import { OntarioIconTimer as OntarioIconTimerElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-timer.js';
-import { OntarioIconTransportBicycle as OntarioIconTransportBicycleElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-transport-bicycle.js';
-import { OntarioIconTransportBus as OntarioIconTransportBusElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-transport-bus.js';
-import { OntarioIconTransportCar as OntarioIconTransportCarElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-transport-car.js';
-import { OntarioIconTransportWalk as OntarioIconTransportWalkElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-transport-walk.js';
-import { OntarioIconTty as OntarioIconTtyElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-tty.js';
-import { OntarioIconTwitterAlt as OntarioIconTwitterAltElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-twitter-alt.js';
-import { OntarioIconTwitter as OntarioIconTwitterElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-twitter.js';
-import { OntarioIconUpload as OntarioIconUploadElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-upload.js';
-import { OntarioIconVideo as OntarioIconVideoElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-video.js';
-import { OntarioIconVisa as OntarioIconVisaElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-visa.js';
-import { OntarioIconVoteDislike as OntarioIconVoteDislikeElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-vote-dislike.js';
-import { OntarioIconVoteLike as OntarioIconVoteLikeElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-vote-like.js';
-import { OntarioIconVpnKey as OntarioIconVpnKeyElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-vpn-key.js';
-import { OntarioIconWheelchair as OntarioIconWheelchairElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-wheelchair.js';
-import { OntarioIconWifi as OntarioIconWifiElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-wifi.js';
-import { OntarioIconYoutube as OntarioIconYoutubeElement } from '@ongov/ontario-design-system-component-library/components/ontario-icon-youtube.js';
-import { OntarioInput as OntarioInputElement } from '@ongov/ontario-design-system-component-library/components/ontario-input.js';
-import { OntarioLanguageToggle as OntarioLanguageToggleElement } from '@ongov/ontario-design-system-component-library/components/ontario-language-toggle.js';
-import { OntarioLoadingIndicator as OntarioLoadingIndicatorElement } from '@ongov/ontario-design-system-component-library/components/ontario-loading-indicator.js';
-import { OntarioPageAlert as OntarioPageAlertElement } from '@ongov/ontario-design-system-component-library/components/ontario-page-alert.js';
-import { OntarioRadioButtons as OntarioRadioButtonsElement } from '@ongov/ontario-design-system-component-library/components/ontario-radio-buttons.js';
-import { OntarioSearchBox as OntarioSearchBoxElement } from '@ongov/ontario-design-system-component-library/components/ontario-search-box.js';
-import { OntarioStepIndicator as OntarioStepIndicatorElement } from '@ongov/ontario-design-system-component-library/components/ontario-step-indicator.js';
-import { OntarioTable as OntarioTableElement } from '@ongov/ontario-design-system-component-library/components/ontario-table.js';
-import { OntarioTaskList as OntarioTaskListElement } from '@ongov/ontario-design-system-component-library/components/ontario-task-list.js';
-import { OntarioTask as OntarioTaskElement } from '@ongov/ontario-design-system-component-library/components/ontario-task.js';
-import { OntarioTextarea as OntarioTextareaElement } from '@ongov/ontario-design-system-component-library/components/ontario-textarea.js';
+import { type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioCheckboxesCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { OntarioAccordion as OntarioAccordionElement } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
+import { OntarioAside as OntarioAsideElement } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
+import { OntarioBackToTop as OntarioBackToTopElement } from "@ongov/ontario-design-system-component-library/components/ontario-back-to-top.js";
+import { OntarioBadge as OntarioBadgeElement } from "@ongov/ontario-design-system-component-library/components/ontario-badge.js";
+import { OntarioBlockquote as OntarioBlockquoteElement } from "@ongov/ontario-design-system-component-library/components/ontario-blockquote.js";
+import { OntarioButton as OntarioButtonElement } from "@ongov/ontario-design-system-component-library/components/ontario-button.js";
+import { OntarioCallout as OntarioCalloutElement } from "@ongov/ontario-design-system-component-library/components/ontario-callout.js";
+import { OntarioCardCollection as OntarioCardCollectionElement } from "@ongov/ontario-design-system-component-library/components/ontario-card-collection.js";
+import { OntarioCard as OntarioCardElement } from "@ongov/ontario-design-system-component-library/components/ontario-card.js";
+import { OntarioCheckboxes as OntarioCheckboxesElement } from "@ongov/ontario-design-system-component-library/components/ontario-checkboxes.js";
+import { OntarioCriticalAlert as OntarioCriticalAlertElement } from "@ongov/ontario-design-system-component-library/components/ontario-critical-alert.js";
+import { OntarioDateInput as OntarioDateInputElement } from "@ongov/ontario-design-system-component-library/components/ontario-date-input.js";
+import { OntarioDropdownList as OntarioDropdownListElement } from "@ongov/ontario-design-system-component-library/components/ontario-dropdown-list.js";
+import { OntarioFieldset as OntarioFieldsetElement } from "@ongov/ontario-design-system-component-library/components/ontario-fieldset.js";
+import { OntarioFooter as OntarioFooterElement } from "@ongov/ontario-design-system-component-library/components/ontario-footer.js";
+import { OntarioHeader as OntarioHeaderElement } from "@ongov/ontario-design-system-component-library/components/ontario-header.js";
+import { OntarioHintExpander as OntarioHintExpanderElement } from "@ongov/ontario-design-system-component-library/components/ontario-hint-expander.js";
+import { OntarioHintText as OntarioHintTextElement } from "@ongov/ontario-design-system-component-library/components/ontario-hint-text.js";
+import { OntarioIconAccessibility as OntarioIconAccessibilityElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-accessibility.js";
+import { OntarioIconAccount as OntarioIconAccountElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-account.js";
+import { OntarioIconAddAlt as OntarioIconAddAltElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-add-alt.js";
+import { OntarioIconAdd as OntarioIconAddElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-add.js";
+import { OntarioIconAlertError as OntarioIconAlertErrorElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-alert-error.js";
+import { OntarioIconAlertInformation as OntarioIconAlertInformationElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-alert-information.js";
+import { OntarioIconAlertSuccess as OntarioIconAlertSuccessElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-alert-success.js";
+import { OntarioIconAlertWarning as OntarioIconAlertWarningElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-alert-warning.js";
+import { OntarioIconArrowUp as OntarioIconArrowUpElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-arrow-up.js";
+import { OntarioIconAttach as OntarioIconAttachElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-attach.js";
+import { OntarioIconBookmarkOff as OntarioIconBookmarkOffElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-bookmark-off.js";
+import { OntarioIconBookmarkOn as OntarioIconBookmarkOnElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-bookmark-on.js";
+import { OntarioIconCalendar as OntarioIconCalendarElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-calendar.js";
+import { OntarioIconCamera as OntarioIconCameraElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-camera.js";
+import { OntarioIconChevronDown as OntarioIconChevronDownElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-down.js";
+import { OntarioIconChevronLeft as OntarioIconChevronLeftElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-left.js";
+import { OntarioIconChevronRight as OntarioIconChevronRightElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-right.js";
+import { OntarioIconChevronUp as OntarioIconChevronUpElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-up.js";
+import { OntarioIconClock as OntarioIconClockElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-clock.js";
+import { OntarioIconCloseHeader as OntarioIconCloseHeaderElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-close-header.js";
+import { OntarioIconClose as OntarioIconCloseElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-close.js";
+import { OntarioIconCloud as OntarioIconCloudElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-cloud.js";
+import { OntarioIconCollapse as OntarioIconCollapseElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-collapse.js";
+import { OntarioIconCreditCard as OntarioIconCreditCardElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-credit-card.js";
+import { OntarioIconCriticalAlertWarning as OntarioIconCriticalAlertWarningElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-critical-alert-warning.js";
+import { OntarioIconDelete as OntarioIconDeleteElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-delete.js";
+import { OntarioIconDocument as OntarioIconDocumentElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-document.js";
+import { OntarioIconDownload as OntarioIconDownloadElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-download.js";
+import { OntarioIconDropdownArrow as OntarioIconDropdownArrowElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-dropdown-arrow.js";
+import { OntarioIconEdit as OntarioIconEditElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-edit.js";
+import { OntarioIconEmail as OntarioIconEmailElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-email.js";
+import { OntarioIconExpand as OntarioIconExpandElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-expand.js";
+import { OntarioIconExport as OntarioIconExportElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-export.js";
+import { OntarioIconFacebookAlt as OntarioIconFacebookAltElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-facebook-alt.js";
+import { OntarioIconFacebook as OntarioIconFacebookElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-facebook.js";
+import { OntarioIconFavouriteOff as OntarioIconFavouriteOffElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-favourite-off.js";
+import { OntarioIconFavouriteOn as OntarioIconFavouriteOnElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-favourite-on.js";
+import { OntarioIconFilter as OntarioIconFilterElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-filter.js";
+import { OntarioIconFlickr as OntarioIconFlickrElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-flickr.js";
+import { OntarioIconGrid as OntarioIconGridElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-grid.js";
+import { OntarioIconHelp as OntarioIconHelpElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-help.js";
+import { OntarioIconInstagram as OntarioIconInstagramElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-instagram.js";
+import { OntarioIconInteracEnAlt as OntarioIconInteracEnAltElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-interac-en-alt.js";
+import { OntarioIconInteracEn as OntarioIconInteracEnElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-interac-en.js";
+import { OntarioIconInteracFrAlt as OntarioIconInteracFrAltElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-interac-fr-alt.js";
+import { OntarioIconInteracFr as OntarioIconInteracFrElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-interac-fr.js";
+import { OntarioIconLinkedinAlt as OntarioIconLinkedinAltElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-linkedin-alt.js";
+import { OntarioIconLinkedin as OntarioIconLinkedinElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-linkedin.js";
+import { OntarioIconList as OntarioIconListElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-list.js";
+import { OntarioIconLiveChat as OntarioIconLiveChatElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-live-chat.js";
+import { OntarioIconLocationOff as OntarioIconLocationOffElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-location-off.js";
+import { OntarioIconLocationOn as OntarioIconLocationOnElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-location-on.js";
+import { OntarioIconLockOff as OntarioIconLockOffElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-lock-off.js";
+import { OntarioIconLockOn as OntarioIconLockOnElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-lock-on.js";
+import { OntarioIconMap as OntarioIconMapElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-map.js";
+import { OntarioIconMastercardAlt as OntarioIconMastercardAltElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-mastercard-alt.js";
+import { OntarioIconMastercard as OntarioIconMastercardElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-mastercard.js";
+import { OntarioIconMediaFastForward as OntarioIconMediaFastForwardElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-media-fast-forward.js";
+import { OntarioIconMediaFastRewind as OntarioIconMediaFastRewindElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-media-fast-rewind.js";
+import { OntarioIconMediaPause as OntarioIconMediaPauseElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-media-pause.js";
+import { OntarioIconMediaPlay as OntarioIconMediaPlayElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-media-play.js";
+import { OntarioIconMediaStop as OntarioIconMediaStopElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-media-stop.js";
+import { OntarioIconMenuHeader as OntarioIconMenuHeaderElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-menu-header.js";
+import { OntarioIconMenu as OntarioIconMenuElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-menu.js";
+import { OntarioIconMicrophoneOff as OntarioIconMicrophoneOffElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-off.js";
+import { OntarioIconMicrophoneOn as OntarioIconMicrophoneOnElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-on.js";
+import { OntarioIconMoreVertical as OntarioIconMoreVerticalElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-more-vertical.js";
+import { OntarioIconNewWindow as OntarioIconNewWindowElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-new-window.js";
+import { OntarioIconNext as OntarioIconNextElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-next.js";
+import { OntarioIconNotification as OntarioIconNotificationElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-notification.js";
+import { OntarioIconPasswordHide as OntarioIconPasswordHideElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-password-hide.js";
+import { OntarioIconPasswordShow as OntarioIconPasswordShowElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-password-show.js";
+import { OntarioIconPhone as OntarioIconPhoneElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-phone.js";
+import { OntarioIconPhoto as OntarioIconPhotoElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-photo.js";
+import { OntarioIconPinLocationOff as OntarioIconPinLocationOffElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-pin-location-off.js";
+import { OntarioIconPinLocationOn as OntarioIconPinLocationOnElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-pin-location-on.js";
+import { OntarioIconPrevious as OntarioIconPreviousElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-previous.js";
+import { OntarioIconPrint as OntarioIconPrintElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-print.js";
+import { OntarioIconRemoveAlt as OntarioIconRemoveAltElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-remove-alt.js";
+import { OntarioIconRemove as OntarioIconRemoveElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-remove.js";
+import { OntarioIconReplay as OntarioIconReplayElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-replay.js";
+import { OntarioIconRssFeed as OntarioIconRssFeedElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-rss-feed.js";
+import { OntarioIconSave as OntarioIconSaveElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-save.js";
+import { OntarioIconSearchWhite as OntarioIconSearchWhiteElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-search-white.js";
+import { OntarioIconSearch as OntarioIconSearchElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-search.js";
+import { OntarioIconSentiment1 as OntarioIconSentiment1Element } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-1.js";
+import { OntarioIconSentiment2 as OntarioIconSentiment2Element } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-2.js";
+import { OntarioIconSentiment3 as OntarioIconSentiment3Element } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-3.js";
+import { OntarioIconSentiment4 as OntarioIconSentiment4Element } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-4.js";
+import { OntarioIconSentiment5 as OntarioIconSentiment5Element } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-5.js";
+import { OntarioIconSettings as OntarioIconSettingsElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-settings.js";
+import { OntarioIconShare as OntarioIconShareElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-share.js";
+import { OntarioIconSort as OntarioIconSortElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sort.js";
+import { OntarioIconTag as OntarioIconTagElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-tag.js";
+import { OntarioIconTextMessage as OntarioIconTextMessageElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-text-message.js";
+import { OntarioIconTimer as OntarioIconTimerElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-timer.js";
+import { OntarioIconTransportBicycle as OntarioIconTransportBicycleElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-transport-bicycle.js";
+import { OntarioIconTransportBus as OntarioIconTransportBusElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-transport-bus.js";
+import { OntarioIconTransportCar as OntarioIconTransportCarElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-transport-car.js";
+import { OntarioIconTransportWalk as OntarioIconTransportWalkElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-transport-walk.js";
+import { OntarioIconTty as OntarioIconTtyElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-tty.js";
+import { OntarioIconTwitterAlt as OntarioIconTwitterAltElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-twitter-alt.js";
+import { OntarioIconTwitter as OntarioIconTwitterElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-twitter.js";
+import { OntarioIconUpload as OntarioIconUploadElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-upload.js";
+import { OntarioIconVideo as OntarioIconVideoElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-video.js";
+import { OntarioIconVisa as OntarioIconVisaElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-visa.js";
+import { OntarioIconVoteDislike as OntarioIconVoteDislikeElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-vote-dislike.js";
+import { OntarioIconVoteLike as OntarioIconVoteLikeElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-vote-like.js";
+import { OntarioIconVpnKey as OntarioIconVpnKeyElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-vpn-key.js";
+import { OntarioIconWheelchair as OntarioIconWheelchairElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-wheelchair.js";
+import { OntarioIconWifi as OntarioIconWifiElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-wifi.js";
+import { OntarioIconYoutube as OntarioIconYoutubeElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-youtube.js";
+import { OntarioInput as OntarioInputElement } from "@ongov/ontario-design-system-component-library/components/ontario-input.js";
+import { OntarioLanguageToggle as OntarioLanguageToggleElement } from "@ongov/ontario-design-system-component-library/components/ontario-language-toggle.js";
+import { OntarioLoadingIndicator as OntarioLoadingIndicatorElement } from "@ongov/ontario-design-system-component-library/components/ontario-loading-indicator.js";
+import { OntarioPageAlert as OntarioPageAlertElement } from "@ongov/ontario-design-system-component-library/components/ontario-page-alert.js";
+import { OntarioRadioButtons as OntarioRadioButtonsElement } from "@ongov/ontario-design-system-component-library/components/ontario-radio-buttons.js";
+import { OntarioSearchBox as OntarioSearchBoxElement } from "@ongov/ontario-design-system-component-library/components/ontario-search-box.js";
+import { OntarioStepIndicator as OntarioStepIndicatorElement } from "@ongov/ontario-design-system-component-library/components/ontario-step-indicator.js";
+import { OntarioTable as OntarioTableElement } from "@ongov/ontario-design-system-component-library/components/ontario-table.js";
+import { OntarioTaskList as OntarioTaskListElement } from "@ongov/ontario-design-system-component-library/components/ontario-task-list.js";
+import { OntarioTask as OntarioTaskElement } from "@ongov/ontario-design-system-component-library/components/ontario-task.js";
+import { OntarioTextarea as OntarioTextareaElement } from "@ongov/ontario-design-system-component-library/components/ontario-textarea.js";
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent, type SerializeShadowRootOptions } from '@stencil/react-output-target/ssr';
 
-export const serializeShadowRoot: SerializeShadowRootOptions = { default: 'declarative-shadow-dom' };
+export const serializeShadowRoot: SerializeShadowRootOptions = { default: "declarative-shadow-dom" };
 
 export type OntarioAccordionEvents = NonNullable<unknown>;
 
-export const OntarioAccordion: StencilReactComponent<OntarioAccordionElement, OntarioAccordionEvents> =
-	/*@__PURE__*/ createComponent<OntarioAccordionElement, OntarioAccordionEvents>({
-		tagName: 'ontario-accordion',
-		properties: {
-			name: 'name',
-			expandCollapseButton: 'expand-collapse-button',
-			accordionData: 'accordion-data',
-			isOpen: 'is-open',
-			language: 'language',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioAccordion: StencilReactComponent<OntarioAccordionElement, OntarioAccordionEvents> = /*@__PURE__*/ createComponent<OntarioAccordionElement, OntarioAccordionEvents>({
+    tagName: 'ontario-accordion',
+    properties: {
+        name: 'name',
+        expandCollapseButton: 'expand-collapse-button',
+        accordionData: 'accordion-data',
+        isOpen: 'is-open',
+        language: 'language'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioAsideEvents = NonNullable<unknown>;
 
-export const OntarioAside: StencilReactComponent<OntarioAsideElement, OntarioAsideEvents> =
-	/*@__PURE__*/ createComponent<OntarioAsideElement, OntarioAsideEvents>({
-		tagName: 'ontario-aside',
-		properties: {
-			headingType: 'heading-type',
-			headingContentType: 'heading-content-type',
-			headingContent: 'heading-content',
-			content: 'content',
-			highlightColour: 'highlight-colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioAside: StencilReactComponent<OntarioAsideElement, OntarioAsideEvents> = /*@__PURE__*/ createComponent<OntarioAsideElement, OntarioAsideEvents>({
+    tagName: 'ontario-aside',
+    properties: {
+        headingType: 'heading-type',
+        headingContentType: 'heading-content-type',
+        headingContent: 'heading-content',
+        content: 'content',
+        highlightColour: 'highlight-colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioBackToTopEvents = NonNullable<unknown>;
 
-export const OntarioBackToTop: StencilReactComponent<OntarioBackToTopElement, OntarioBackToTopEvents> =
-	/*@__PURE__*/ createComponent<OntarioBackToTopElement, OntarioBackToTopEvents>({
-		tagName: 'ontario-back-to-top',
-		properties: { language: 'language' },
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioBackToTop: StencilReactComponent<OntarioBackToTopElement, OntarioBackToTopEvents> = /*@__PURE__*/ createComponent<OntarioBackToTopElement, OntarioBackToTopEvents>({
+    tagName: 'ontario-back-to-top',
+    properties: { language: 'language' },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioBadgeEvents = NonNullable<unknown>;
 
-export const OntarioBadge: StencilReactComponent<OntarioBadgeElement, OntarioBadgeEvents> =
-	/*@__PURE__*/ createComponent<OntarioBadgeElement, OntarioBadgeEvents>({
-		tagName: 'ontario-badge',
-		properties: {
-			colour: 'colour',
-			label: 'label',
-			ariaLabelText: 'aria-label-text',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioBadge: StencilReactComponent<OntarioBadgeElement, OntarioBadgeEvents> = /*@__PURE__*/ createComponent<OntarioBadgeElement, OntarioBadgeEvents>({
+    tagName: 'ontario-badge',
+    properties: {
+        colour: 'colour',
+        label: 'label',
+        ariaLabelText: 'aria-label-text'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioBlockquoteEvents = NonNullable<unknown>;
 
-export const OntarioBlockquote: StencilReactComponent<OntarioBlockquoteElement, OntarioBlockquoteEvents> =
-	/*@__PURE__*/ createComponent<OntarioBlockquoteElement, OntarioBlockquoteEvents>({
-		tagName: 'ontario-blockquote',
-		properties: {
-			quote: 'quote',
-			attribution: 'attribution',
-			byline: 'byline',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioBlockquote: StencilReactComponent<OntarioBlockquoteElement, OntarioBlockquoteEvents> = /*@__PURE__*/ createComponent<OntarioBlockquoteElement, OntarioBlockquoteEvents>({
+    tagName: 'ontario-blockquote',
+    properties: {
+        quote: 'quote',
+        attribution: 'attribution',
+        byline: 'byline'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioButtonEvents = NonNullable<unknown>;
 
-export const OntarioButton: StencilReactComponent<OntarioButtonElement, OntarioButtonEvents> =
-	/*@__PURE__*/ createComponent<OntarioButtonElement, OntarioButtonEvents>({
-		tagName: 'ontario-button',
-		properties: {
-			type: 'type',
-			htmlType: 'html-type',
-			label: 'label',
-			ariaLabelText: 'aria-label-text',
-			elementId: 'element-id',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioButton: StencilReactComponent<OntarioButtonElement, OntarioButtonEvents> = /*@__PURE__*/ createComponent<OntarioButtonElement, OntarioButtonEvents>({
+    tagName: 'ontario-button',
+    properties: {
+        type: 'type',
+        htmlType: 'html-type',
+        label: 'label',
+        ariaLabelText: 'aria-label-text',
+        elementId: 'element-id'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioCalloutEvents = NonNullable<unknown>;
 
-export const OntarioCallout: StencilReactComponent<OntarioCalloutElement, OntarioCalloutEvents> =
-	/*@__PURE__*/ createComponent<OntarioCalloutElement, OntarioCalloutEvents>({
-		tagName: 'ontario-callout',
-		properties: {
-			headingType: 'heading-type',
-			headingContentType: 'heading-content-type',
-			headingContent: 'heading-content',
-			content: 'content',
-			highlightColour: 'highlight-colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioCallout: StencilReactComponent<OntarioCalloutElement, OntarioCalloutEvents> = /*@__PURE__*/ createComponent<OntarioCalloutElement, OntarioCalloutEvents>({
+    tagName: 'ontario-callout',
+    properties: {
+        headingType: 'heading-type',
+        headingContentType: 'heading-content-type',
+        headingContent: 'heading-content',
+        content: 'content',
+        highlightColour: 'highlight-colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioCardEvents = NonNullable<unknown>;
 
-export const OntarioCard: StencilReactComponent<OntarioCardElement, OntarioCardEvents> = /*@__PURE__*/ createComponent<
-	OntarioCardElement,
-	OntarioCardEvents
->({
-	tagName: 'ontario-card',
-	properties: {
-		label: 'label',
-		headingLevel: 'heading-level',
-		image: 'image',
-		imageAltText: 'image-alt-text',
-		description: 'description',
-		cardLink: 'card-link',
-		layoutDirection: 'layout-direction',
-		headerColour: 'header-colour',
-		horizontalImagePositionType: 'horizontal-image-position-type',
-		horizontalImageSizeType: 'horizontal-image-size-type',
-		ariaLabelText: 'aria-label-text',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioCard: StencilReactComponent<OntarioCardElement, OntarioCardEvents> = /*@__PURE__*/ createComponent<OntarioCardElement, OntarioCardEvents>({
+    tagName: 'ontario-card',
+    properties: {
+        label: 'label',
+        headingLevel: 'heading-level',
+        image: 'image',
+        imageAltText: 'image-alt-text',
+        description: 'description',
+        cardLink: 'card-link',
+        layoutDirection: 'layout-direction',
+        headerColour: 'header-colour',
+        horizontalImagePositionType: 'horizontal-image-position-type',
+        horizontalImageSizeType: 'horizontal-image-size-type',
+        ariaLabelText: 'aria-label-text'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioCardCollectionEvents = NonNullable<unknown>;
 
-export const OntarioCardCollection: StencilReactComponent<OntarioCardCollectionElement, OntarioCardCollectionEvents> =
-	/*@__PURE__*/ createComponent<OntarioCardCollectionElement, OntarioCardCollectionEvents>({
-		tagName: 'ontario-card-collection',
-		properties: { cardsPerRow: 'cards-per-row' },
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioCardCollection: StencilReactComponent<OntarioCardCollectionElement, OntarioCardCollectionEvents> = /*@__PURE__*/ createComponent<OntarioCardCollectionElement, OntarioCardCollectionEvents>({
+    tagName: 'ontario-card-collection',
+    properties: { cardsPerRow: 'cards-per-row' },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioCheckboxesEvents = {
-	onCheckboxOnChange: EventName<OntarioCheckboxesCustomEvent<RadioAndCheckboxChangeEvent>>;
-	onCheckboxOnBlur: EventName<OntarioCheckboxesCustomEvent<InputFocusBlurEvent>>;
-	onCheckboxOnFocus: EventName<OntarioCheckboxesCustomEvent<InputFocusBlurEvent>>;
-	onInputErrorOccurred: EventName<CustomEvent<{ errorMessage: string }>>;
+    onCheckboxOnChange: EventName<OntarioCheckboxesCustomEvent<RadioAndCheckboxChangeEvent>>,
+    onCheckboxOnBlur: EventName<OntarioCheckboxesCustomEvent<InputFocusBlurEvent>>,
+    onCheckboxOnFocus: EventName<OntarioCheckboxesCustomEvent<InputFocusBlurEvent>>,
+    onInputErrorOccurred: EventName<CustomEvent<{ errorMessage: string }>>
 };
 
-export const OntarioCheckboxes: StencilReactComponent<OntarioCheckboxesElement, OntarioCheckboxesEvents> =
-	/*@__PURE__*/ createComponent<OntarioCheckboxesElement, OntarioCheckboxesEvents>({
-		tagName: 'ontario-checkboxes',
-		properties: {
-			caption: 'caption',
-			language: 'language',
-			name: 'name',
-			hintText: 'hint-text',
-			hintExpander: 'hint-expander',
-			options: 'options',
-			required: 'required',
-			errorMessage: 'error-message',
-			customOnChange: 'custom-on-change',
-			customOnBlur: 'custom-on-blur',
-			customOnFocus: 'custom-on-focus',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioCheckboxes: StencilReactComponent<OntarioCheckboxesElement, OntarioCheckboxesEvents> = /*@__PURE__*/ createComponent<OntarioCheckboxesElement, OntarioCheckboxesEvents>({
+    tagName: 'ontario-checkboxes',
+    properties: {
+        caption: 'caption',
+        language: 'language',
+        name: 'name',
+        hintText: 'hint-text',
+        hintExpander: 'hint-expander',
+        options: 'options',
+        required: 'required',
+        errorMessage: 'error-message',
+        customOnChange: 'custom-on-change',
+        customOnBlur: 'custom-on-blur',
+        customOnFocus: 'custom-on-focus'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioCriticalAlertEvents = NonNullable<unknown>;
 
-export const OntarioCriticalAlert: StencilReactComponent<OntarioCriticalAlertElement, OntarioCriticalAlertEvents> =
-	/*@__PURE__*/ createComponent<OntarioCriticalAlertElement, OntarioCriticalAlertEvents>({
-		tagName: 'ontario-critical-alert',
-		properties: { content: 'content' },
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioCriticalAlert: StencilReactComponent<OntarioCriticalAlertElement, OntarioCriticalAlertEvents> = /*@__PURE__*/ createComponent<OntarioCriticalAlertElement, OntarioCriticalAlertEvents>({
+    tagName: 'ontario-critical-alert',
+    properties: { content: 'content' },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioDateInputEvents = {
-	onInputOnInput: EventName<
-		CustomEvent<{
-			value: string;
-			fieldType: 'day' | 'month' | 'year';
-		}>
-	>;
-	onInputOnChange: EventName<
-		CustomEvent<{
-			value: string;
-			fieldType: 'day' | 'month' | 'year';
-		}>
-	>;
-	onInputOnBlur: EventName<CustomEvent<'day' | 'month' | 'year'>>;
-	onInputOnFocus: EventName<CustomEvent<'day' | 'month' | 'year'>>;
-	onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>;
+    onInputOnInput: EventName<CustomEvent<{
+        value: string;
+        fieldType: 'day' | 'month' | 'year';
+    }>>,
+    onInputOnChange: EventName<CustomEvent<{
+        value: string;
+        fieldType: 'day' | 'month' | 'year';
+    }>>,
+    onInputOnBlur: EventName<CustomEvent<'day' | 'month' | 'year'>>,
+    onInputOnFocus: EventName<CustomEvent<'day' | 'month' | 'year'>>,
+    onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>
 };
 
-export const OntarioDateInput: StencilReactComponent<OntarioDateInputElement, OntarioDateInputEvents> =
-	/*@__PURE__*/ createComponent<OntarioDateInputElement, OntarioDateInputEvents>({
-		tagName: 'ontario-date-input',
-		properties: {
-			language: 'language',
-			required: 'required',
-			placeholder: 'placeholder',
-			caption: 'caption',
-			elementId: 'element-id',
-			minYear: 'min-year',
-			maxYear: 'max-year',
-			hintText: 'hint-text',
-			dateOptions: 'date-options',
-			dateValidator: 'date-validator',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioDateInput: StencilReactComponent<OntarioDateInputElement, OntarioDateInputEvents> = /*@__PURE__*/ createComponent<OntarioDateInputElement, OntarioDateInputEvents>({
+    tagName: 'ontario-date-input',
+    properties: {
+        language: 'language',
+        required: 'required',
+        placeholder: 'placeholder',
+        caption: 'caption',
+        elementId: 'element-id',
+        minYear: 'min-year',
+        maxYear: 'max-year',
+        hintText: 'hint-text',
+        dateOptions: 'date-options',
+        dateValidator: 'date-validator'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioDropdownListEvents = {
-	onDropdownOnChange: EventName<OntarioDropdownListCustomEvent<InputInteractionEvent>>;
-	onDropdownOnBlur: EventName<OntarioDropdownListCustomEvent<InputFocusBlurEvent>>;
-	onDropdownOnFocus: EventName<OntarioDropdownListCustomEvent<InputFocusBlurEvent>>;
-	onInputErrorOccurred: EventName<CustomEvent<{ errorMessage: string }>>;
+    onDropdownOnChange: EventName<OntarioDropdownListCustomEvent<InputInteractionEvent>>,
+    onDropdownOnBlur: EventName<OntarioDropdownListCustomEvent<InputFocusBlurEvent>>,
+    onDropdownOnFocus: EventName<OntarioDropdownListCustomEvent<InputFocusBlurEvent>>,
+    onInputErrorOccurred: EventName<CustomEvent<{ errorMessage: string }>>
 };
 
-export const OntarioDropdownList: StencilReactComponent<OntarioDropdownListElement, OntarioDropdownListEvents> =
-	/*@__PURE__*/ createComponent<OntarioDropdownListElement, OntarioDropdownListEvents>({
-		tagName: 'ontario-dropdown-list',
-		properties: {
-			caption: 'caption',
-			language: 'language',
-			name: 'name',
-			elementId: 'element-id',
-			options: 'options',
-			required: 'required',
-			isEmptyStartOption: 'is-empty-start-option',
-			hintText: 'hint-text',
-			hintExpander: 'hint-expander',
-			errorMessage: 'error-message',
-			customOnChange: 'custom-on-change',
-			customOnBlur: 'custom-on-blur',
-			customOnFocus: 'custom-on-focus',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioDropdownList: StencilReactComponent<OntarioDropdownListElement, OntarioDropdownListEvents> = /*@__PURE__*/ createComponent<OntarioDropdownListElement, OntarioDropdownListEvents>({
+    tagName: 'ontario-dropdown-list',
+    properties: {
+        caption: 'caption',
+        language: 'language',
+        name: 'name',
+        elementId: 'element-id',
+        options: 'options',
+        required: 'required',
+        isEmptyStartOption: 'is-empty-start-option',
+        hintText: 'hint-text',
+        hintExpander: 'hint-expander',
+        errorMessage: 'error-message',
+        customOnChange: 'custom-on-change',
+        customOnBlur: 'custom-on-blur',
+        customOnFocus: 'custom-on-focus'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioFieldsetEvents = NonNullable<unknown>;
 
-export const OntarioFieldset: StencilReactComponent<OntarioFieldsetElement, OntarioFieldsetEvents> =
-	/*@__PURE__*/ createComponent<OntarioFieldsetElement, OntarioFieldsetEvents>({
-		tagName: 'ontario-fieldset',
-		properties: {
-			legend: 'legend',
-			legendSize: 'legend-size',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioFieldset: StencilReactComponent<OntarioFieldsetElement, OntarioFieldsetEvents> = /*@__PURE__*/ createComponent<OntarioFieldsetElement, OntarioFieldsetEvents>({
+    tagName: 'ontario-fieldset',
+    properties: {
+        legend: 'legend',
+        legendSize: 'legend-size'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioFooterEvents = NonNullable<unknown>;
 
-export const OntarioFooter: StencilReactComponent<OntarioFooterElement, OntarioFooterEvents> =
-	/*@__PURE__*/ createComponent<OntarioFooterElement, OntarioFooterEvents>({
-		tagName: 'ontario-footer',
-		properties: {
-			language: 'language',
-			type: 'type',
-			footerLinks: 'footer-links',
-			socialLinks: 'social-links',
-			twoColumnOptions: 'two-column-options',
-			threeColumnOptions: 'three-column-options',
-			topMargin: 'top-margin',
-			assetBasePath: 'asset-base-path',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioFooter: StencilReactComponent<OntarioFooterElement, OntarioFooterEvents> = /*@__PURE__*/ createComponent<OntarioFooterElement, OntarioFooterEvents>({
+    tagName: 'ontario-footer',
+    properties: {
+        language: 'language',
+        type: 'type',
+        footerLinks: 'footer-links',
+        socialLinks: 'social-links',
+        twoColumnOptions: 'two-column-options',
+        threeColumnOptions: 'three-column-options',
+        topMargin: 'top-margin',
+        assetBasePath: 'asset-base-path'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioHeaderEvents = NonNullable<unknown>;
 
-export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioHeaderEvents> =
-	/*@__PURE__*/ createComponent<OntarioHeaderElement, OntarioHeaderEvents>({
-		tagName: 'ontario-header',
-		properties: {
-			type: 'type',
-			applicationHeaderInfo: 'application-header-info',
-			menuItems: 'menu-items',
-			disableDynamicMenu: 'disable-dynamic-menu',
-			languageToggleOptions: 'language-toggle-options',
-			customLanguageToggle: 'custom-language-toggle',
-			language: 'language',
-			assetBasePath: 'asset-base-path',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioHeaderEvents> = /*@__PURE__*/ createComponent<OntarioHeaderElement, OntarioHeaderEvents>({
+    tagName: 'ontario-header',
+    properties: {
+        type: 'type',
+        applicationHeaderInfo: 'application-header-info',
+        menuItems: 'menu-items',
+        disableDynamicMenu: 'disable-dynamic-menu',
+        languageToggleOptions: 'language-toggle-options',
+        customLanguageToggle: 'custom-language-toggle',
+        language: 'language',
+        assetBasePath: 'asset-base-path'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
-export type OntarioHintExpanderEvents = {
-	onToggleExpanderEvent: EventName<OntarioHintExpanderCustomEvent<MouseEvent | KeyboardEvent>>;
-};
+export type OntarioHintExpanderEvents = { onToggleExpanderEvent: EventName<OntarioHintExpanderCustomEvent<MouseEvent | KeyboardEvent>> };
 
-export const OntarioHintExpander: StencilReactComponent<OntarioHintExpanderElement, OntarioHintExpanderEvents> =
-	/*@__PURE__*/ createComponent<OntarioHintExpanderElement, OntarioHintExpanderEvents>({
-		tagName: 'ontario-hint-expander',
-		properties: {
-			hintContentType: 'hint-content-type',
-			hint: 'hint',
-			content: 'content',
-			elementId: 'element-id',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioHintExpander: StencilReactComponent<OntarioHintExpanderElement, OntarioHintExpanderEvents> = /*@__PURE__*/ createComponent<OntarioHintExpanderElement, OntarioHintExpanderEvents>({
+    tagName: 'ontario-hint-expander',
+    properties: {
+        hintContentType: 'hint-content-type',
+        hint: 'hint',
+        content: 'content',
+        elementId: 'element-id'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioHintTextEvents = NonNullable<unknown>;
 
-export const OntarioHintText: StencilReactComponent<OntarioHintTextElement, OntarioHintTextEvents> =
-	/*@__PURE__*/ createComponent<OntarioHintTextElement, OntarioHintTextEvents>({
-		tagName: 'ontario-hint-text',
-		properties: {
-			hintContentType: 'hint-content-type',
-			hint: 'hint',
-			elementId: 'element-id',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioHintText: StencilReactComponent<OntarioHintTextElement, OntarioHintTextEvents> = /*@__PURE__*/ createComponent<OntarioHintTextElement, OntarioHintTextEvents>({
+    tagName: 'ontario-hint-text',
+    properties: {
+        hintContentType: 'hint-content-type',
+        hint: 'hint',
+        elementId: 'element-id'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconAccessibilityEvents = NonNullable<unknown>;
 
-export const OntarioIconAccessibility: StencilReactComponent<
-	OntarioIconAccessibilityElement,
-	OntarioIconAccessibilityEvents
-> = /*@__PURE__*/ createComponent<OntarioIconAccessibilityElement, OntarioIconAccessibilityEvents>({
-	tagName: 'ontario-icon-accessibility',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconAccessibility: StencilReactComponent<OntarioIconAccessibilityElement, OntarioIconAccessibilityEvents> = /*@__PURE__*/ createComponent<OntarioIconAccessibilityElement, OntarioIconAccessibilityEvents>({
+    tagName: 'ontario-icon-accessibility',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconAccountEvents = NonNullable<unknown>;
 
-export const OntarioIconAccount: StencilReactComponent<OntarioIconAccountElement, OntarioIconAccountEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconAccountElement, OntarioIconAccountEvents>({
-		tagName: 'ontario-icon-account',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconAccount: StencilReactComponent<OntarioIconAccountElement, OntarioIconAccountEvents> = /*@__PURE__*/ createComponent<OntarioIconAccountElement, OntarioIconAccountEvents>({
+    tagName: 'ontario-icon-account',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconAddEvents = NonNullable<unknown>;
 
-export const OntarioIconAdd: StencilReactComponent<OntarioIconAddElement, OntarioIconAddEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconAddElement, OntarioIconAddEvents>({
-		tagName: 'ontario-icon-add',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconAdd: StencilReactComponent<OntarioIconAddElement, OntarioIconAddEvents> = /*@__PURE__*/ createComponent<OntarioIconAddElement, OntarioIconAddEvents>({
+    tagName: 'ontario-icon-add',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconAddAltEvents = NonNullable<unknown>;
 
-export const OntarioIconAddAlt: StencilReactComponent<OntarioIconAddAltElement, OntarioIconAddAltEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconAddAltElement, OntarioIconAddAltEvents>({
-		tagName: 'ontario-icon-add-alt',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconAddAlt: StencilReactComponent<OntarioIconAddAltElement, OntarioIconAddAltEvents> = /*@__PURE__*/ createComponent<OntarioIconAddAltElement, OntarioIconAddAltEvents>({
+    tagName: 'ontario-icon-add-alt',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconAlertErrorEvents = NonNullable<unknown>;
 
-export const OntarioIconAlertError: StencilReactComponent<OntarioIconAlertErrorElement, OntarioIconAlertErrorEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconAlertErrorElement, OntarioIconAlertErrorEvents>({
-		tagName: 'ontario-icon-alert-error',
-		properties: { iconWidth: 'icon-width' },
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconAlertError: StencilReactComponent<OntarioIconAlertErrorElement, OntarioIconAlertErrorEvents> = /*@__PURE__*/ createComponent<OntarioIconAlertErrorElement, OntarioIconAlertErrorEvents>({
+    tagName: 'ontario-icon-alert-error',
+    properties: { iconWidth: 'icon-width' },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconAlertInformationEvents = NonNullable<unknown>;
 
-export const OntarioIconAlertInformation: StencilReactComponent<
-	OntarioIconAlertInformationElement,
-	OntarioIconAlertInformationEvents
-> = /*@__PURE__*/ createComponent<OntarioIconAlertInformationElement, OntarioIconAlertInformationEvents>({
-	tagName: 'ontario-icon-alert-information',
-	properties: { iconWidth: 'icon-width' },
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconAlertInformation: StencilReactComponent<OntarioIconAlertInformationElement, OntarioIconAlertInformationEvents> = /*@__PURE__*/ createComponent<OntarioIconAlertInformationElement, OntarioIconAlertInformationEvents>({
+    tagName: 'ontario-icon-alert-information',
+    properties: { iconWidth: 'icon-width' },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconAlertSuccessEvents = NonNullable<unknown>;
 
-export const OntarioIconAlertSuccess: StencilReactComponent<
-	OntarioIconAlertSuccessElement,
-	OntarioIconAlertSuccessEvents
-> = /*@__PURE__*/ createComponent<OntarioIconAlertSuccessElement, OntarioIconAlertSuccessEvents>({
-	tagName: 'ontario-icon-alert-success',
-	properties: { iconWidth: 'icon-width' },
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconAlertSuccess: StencilReactComponent<OntarioIconAlertSuccessElement, OntarioIconAlertSuccessEvents> = /*@__PURE__*/ createComponent<OntarioIconAlertSuccessElement, OntarioIconAlertSuccessEvents>({
+    tagName: 'ontario-icon-alert-success',
+    properties: { iconWidth: 'icon-width' },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconAlertWarningEvents = NonNullable<unknown>;
 
-export const OntarioIconAlertWarning: StencilReactComponent<
-	OntarioIconAlertWarningElement,
-	OntarioIconAlertWarningEvents
-> = /*@__PURE__*/ createComponent<OntarioIconAlertWarningElement, OntarioIconAlertWarningEvents>({
-	tagName: 'ontario-icon-alert-warning',
-	properties: { iconWidth: 'icon-width' },
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconAlertWarning: StencilReactComponent<OntarioIconAlertWarningElement, OntarioIconAlertWarningEvents> = /*@__PURE__*/ createComponent<OntarioIconAlertWarningElement, OntarioIconAlertWarningEvents>({
+    tagName: 'ontario-icon-alert-warning',
+    properties: { iconWidth: 'icon-width' },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconArrowUpEvents = NonNullable<unknown>;
 
-export const OntarioIconArrowUp: StencilReactComponent<OntarioIconArrowUpElement, OntarioIconArrowUpEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconArrowUpElement, OntarioIconArrowUpEvents>({
-		tagName: 'ontario-icon-arrow-up',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconArrowUp: StencilReactComponent<OntarioIconArrowUpElement, OntarioIconArrowUpEvents> = /*@__PURE__*/ createComponent<OntarioIconArrowUpElement, OntarioIconArrowUpEvents>({
+    tagName: 'ontario-icon-arrow-up',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconAttachEvents = NonNullable<unknown>;
 
-export const OntarioIconAttach: StencilReactComponent<OntarioIconAttachElement, OntarioIconAttachEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconAttachElement, OntarioIconAttachEvents>({
-		tagName: 'ontario-icon-attach',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconAttach: StencilReactComponent<OntarioIconAttachElement, OntarioIconAttachEvents> = /*@__PURE__*/ createComponent<OntarioIconAttachElement, OntarioIconAttachEvents>({
+    tagName: 'ontario-icon-attach',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconBookmarkOffEvents = NonNullable<unknown>;
 
-export const OntarioIconBookmarkOff: StencilReactComponent<
-	OntarioIconBookmarkOffElement,
-	OntarioIconBookmarkOffEvents
-> = /*@__PURE__*/ createComponent<OntarioIconBookmarkOffElement, OntarioIconBookmarkOffEvents>({
-	tagName: 'ontario-icon-bookmark-off',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconBookmarkOff: StencilReactComponent<OntarioIconBookmarkOffElement, OntarioIconBookmarkOffEvents> = /*@__PURE__*/ createComponent<OntarioIconBookmarkOffElement, OntarioIconBookmarkOffEvents>({
+    tagName: 'ontario-icon-bookmark-off',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconBookmarkOnEvents = NonNullable<unknown>;
 
-export const OntarioIconBookmarkOn: StencilReactComponent<OntarioIconBookmarkOnElement, OntarioIconBookmarkOnEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconBookmarkOnElement, OntarioIconBookmarkOnEvents>({
-		tagName: 'ontario-icon-bookmark-on',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconBookmarkOn: StencilReactComponent<OntarioIconBookmarkOnElement, OntarioIconBookmarkOnEvents> = /*@__PURE__*/ createComponent<OntarioIconBookmarkOnElement, OntarioIconBookmarkOnEvents>({
+    tagName: 'ontario-icon-bookmark-on',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconCalendarEvents = NonNullable<unknown>;
 
-export const OntarioIconCalendar: StencilReactComponent<OntarioIconCalendarElement, OntarioIconCalendarEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconCalendarElement, OntarioIconCalendarEvents>({
-		tagName: 'ontario-icon-calendar',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconCalendar: StencilReactComponent<OntarioIconCalendarElement, OntarioIconCalendarEvents> = /*@__PURE__*/ createComponent<OntarioIconCalendarElement, OntarioIconCalendarEvents>({
+    tagName: 'ontario-icon-calendar',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconCameraEvents = NonNullable<unknown>;
 
-export const OntarioIconCamera: StencilReactComponent<OntarioIconCameraElement, OntarioIconCameraEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconCameraElement, OntarioIconCameraEvents>({
-		tagName: 'ontario-icon-camera',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconCamera: StencilReactComponent<OntarioIconCameraElement, OntarioIconCameraEvents> = /*@__PURE__*/ createComponent<OntarioIconCameraElement, OntarioIconCameraEvents>({
+    tagName: 'ontario-icon-camera',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconChevronDownEvents = NonNullable<unknown>;
 
-export const OntarioIconChevronDown: StencilReactComponent<
-	OntarioIconChevronDownElement,
-	OntarioIconChevronDownEvents
-> = /*@__PURE__*/ createComponent<OntarioIconChevronDownElement, OntarioIconChevronDownEvents>({
-	tagName: 'ontario-icon-chevron-down',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconChevronDown: StencilReactComponent<OntarioIconChevronDownElement, OntarioIconChevronDownEvents> = /*@__PURE__*/ createComponent<OntarioIconChevronDownElement, OntarioIconChevronDownEvents>({
+    tagName: 'ontario-icon-chevron-down',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconChevronLeftEvents = NonNullable<unknown>;
 
-export const OntarioIconChevronLeft: StencilReactComponent<
-	OntarioIconChevronLeftElement,
-	OntarioIconChevronLeftEvents
-> = /*@__PURE__*/ createComponent<OntarioIconChevronLeftElement, OntarioIconChevronLeftEvents>({
-	tagName: 'ontario-icon-chevron-left',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconChevronLeft: StencilReactComponent<OntarioIconChevronLeftElement, OntarioIconChevronLeftEvents> = /*@__PURE__*/ createComponent<OntarioIconChevronLeftElement, OntarioIconChevronLeftEvents>({
+    tagName: 'ontario-icon-chevron-left',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconChevronRightEvents = NonNullable<unknown>;
 
-export const OntarioIconChevronRight: StencilReactComponent<
-	OntarioIconChevronRightElement,
-	OntarioIconChevronRightEvents
-> = /*@__PURE__*/ createComponent<OntarioIconChevronRightElement, OntarioIconChevronRightEvents>({
-	tagName: 'ontario-icon-chevron-right',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconChevronRight: StencilReactComponent<OntarioIconChevronRightElement, OntarioIconChevronRightEvents> = /*@__PURE__*/ createComponent<OntarioIconChevronRightElement, OntarioIconChevronRightEvents>({
+    tagName: 'ontario-icon-chevron-right',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconChevronUpEvents = NonNullable<unknown>;
 
-export const OntarioIconChevronUp: StencilReactComponent<OntarioIconChevronUpElement, OntarioIconChevronUpEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconChevronUpElement, OntarioIconChevronUpEvents>({
-		tagName: 'ontario-icon-chevron-up',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconChevronUp: StencilReactComponent<OntarioIconChevronUpElement, OntarioIconChevronUpEvents> = /*@__PURE__*/ createComponent<OntarioIconChevronUpElement, OntarioIconChevronUpEvents>({
+    tagName: 'ontario-icon-chevron-up',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconClockEvents = NonNullable<unknown>;
 
-export const OntarioIconClock: StencilReactComponent<OntarioIconClockElement, OntarioIconClockEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconClockElement, OntarioIconClockEvents>({
-		tagName: 'ontario-icon-clock',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconClock: StencilReactComponent<OntarioIconClockElement, OntarioIconClockEvents> = /*@__PURE__*/ createComponent<OntarioIconClockElement, OntarioIconClockEvents>({
+    tagName: 'ontario-icon-clock',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconCloseEvents = NonNullable<unknown>;
 
-export const OntarioIconClose: StencilReactComponent<OntarioIconCloseElement, OntarioIconCloseEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconCloseElement, OntarioIconCloseEvents>({
-		tagName: 'ontario-icon-close',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconClose: StencilReactComponent<OntarioIconCloseElement, OntarioIconCloseEvents> = /*@__PURE__*/ createComponent<OntarioIconCloseElement, OntarioIconCloseEvents>({
+    tagName: 'ontario-icon-close',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconCloseHeaderEvents = NonNullable<unknown>;
 
-export const OntarioIconCloseHeader: StencilReactComponent<
-	OntarioIconCloseHeaderElement,
-	OntarioIconCloseHeaderEvents
-> = /*@__PURE__*/ createComponent<OntarioIconCloseHeaderElement, OntarioIconCloseHeaderEvents>({
-	tagName: 'ontario-icon-close-header',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconCloseHeader: StencilReactComponent<OntarioIconCloseHeaderElement, OntarioIconCloseHeaderEvents> = /*@__PURE__*/ createComponent<OntarioIconCloseHeaderElement, OntarioIconCloseHeaderEvents>({
+    tagName: 'ontario-icon-close-header',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconCloudEvents = NonNullable<unknown>;
 
-export const OntarioIconCloud: StencilReactComponent<OntarioIconCloudElement, OntarioIconCloudEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconCloudElement, OntarioIconCloudEvents>({
-		tagName: 'ontario-icon-cloud',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconCloud: StencilReactComponent<OntarioIconCloudElement, OntarioIconCloudEvents> = /*@__PURE__*/ createComponent<OntarioIconCloudElement, OntarioIconCloudEvents>({
+    tagName: 'ontario-icon-cloud',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconCollapseEvents = NonNullable<unknown>;
 
-export const OntarioIconCollapse: StencilReactComponent<OntarioIconCollapseElement, OntarioIconCollapseEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconCollapseElement, OntarioIconCollapseEvents>({
-		tagName: 'ontario-icon-collapse',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconCollapse: StencilReactComponent<OntarioIconCollapseElement, OntarioIconCollapseEvents> = /*@__PURE__*/ createComponent<OntarioIconCollapseElement, OntarioIconCollapseEvents>({
+    tagName: 'ontario-icon-collapse',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconCreditCardEvents = NonNullable<unknown>;
 
-export const OntarioIconCreditCard: StencilReactComponent<OntarioIconCreditCardElement, OntarioIconCreditCardEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconCreditCardElement, OntarioIconCreditCardEvents>({
-		tagName: 'ontario-icon-credit-card',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconCreditCard: StencilReactComponent<OntarioIconCreditCardElement, OntarioIconCreditCardEvents> = /*@__PURE__*/ createComponent<OntarioIconCreditCardElement, OntarioIconCreditCardEvents>({
+    tagName: 'ontario-icon-credit-card',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconCriticalAlertWarningEvents = NonNullable<unknown>;
 
-export const OntarioIconCriticalAlertWarning: StencilReactComponent<
-	OntarioIconCriticalAlertWarningElement,
-	OntarioIconCriticalAlertWarningEvents
-> = /*@__PURE__*/ createComponent<OntarioIconCriticalAlertWarningElement, OntarioIconCriticalAlertWarningEvents>({
-	tagName: 'ontario-icon-critical-alert-warning',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconCriticalAlertWarning: StencilReactComponent<OntarioIconCriticalAlertWarningElement, OntarioIconCriticalAlertWarningEvents> = /*@__PURE__*/ createComponent<OntarioIconCriticalAlertWarningElement, OntarioIconCriticalAlertWarningEvents>({
+    tagName: 'ontario-icon-critical-alert-warning',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconDeleteEvents = NonNullable<unknown>;
 
-export const OntarioIconDelete: StencilReactComponent<OntarioIconDeleteElement, OntarioIconDeleteEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconDeleteElement, OntarioIconDeleteEvents>({
-		tagName: 'ontario-icon-delete',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconDelete: StencilReactComponent<OntarioIconDeleteElement, OntarioIconDeleteEvents> = /*@__PURE__*/ createComponent<OntarioIconDeleteElement, OntarioIconDeleteEvents>({
+    tagName: 'ontario-icon-delete',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconDocumentEvents = NonNullable<unknown>;
 
-export const OntarioIconDocument: StencilReactComponent<OntarioIconDocumentElement, OntarioIconDocumentEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconDocumentElement, OntarioIconDocumentEvents>({
-		tagName: 'ontario-icon-document',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconDocument: StencilReactComponent<OntarioIconDocumentElement, OntarioIconDocumentEvents> = /*@__PURE__*/ createComponent<OntarioIconDocumentElement, OntarioIconDocumentEvents>({
+    tagName: 'ontario-icon-document',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconDownloadEvents = NonNullable<unknown>;
 
-export const OntarioIconDownload: StencilReactComponent<OntarioIconDownloadElement, OntarioIconDownloadEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconDownloadElement, OntarioIconDownloadEvents>({
-		tagName: 'ontario-icon-download',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconDownload: StencilReactComponent<OntarioIconDownloadElement, OntarioIconDownloadEvents> = /*@__PURE__*/ createComponent<OntarioIconDownloadElement, OntarioIconDownloadEvents>({
+    tagName: 'ontario-icon-download',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconDropdownArrowEvents = NonNullable<unknown>;
 
-export const OntarioIconDropdownArrow: StencilReactComponent<
-	OntarioIconDropdownArrowElement,
-	OntarioIconDropdownArrowEvents
-> = /*@__PURE__*/ createComponent<OntarioIconDropdownArrowElement, OntarioIconDropdownArrowEvents>({
-	tagName: 'ontario-icon-dropdown-arrow',
-	properties: { iconWidth: 'icon-width' },
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconDropdownArrow: StencilReactComponent<OntarioIconDropdownArrowElement, OntarioIconDropdownArrowEvents> = /*@__PURE__*/ createComponent<OntarioIconDropdownArrowElement, OntarioIconDropdownArrowEvents>({
+    tagName: 'ontario-icon-dropdown-arrow',
+    properties: { iconWidth: 'icon-width' },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconEditEvents = NonNullable<unknown>;
 
-export const OntarioIconEdit: StencilReactComponent<OntarioIconEditElement, OntarioIconEditEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconEditElement, OntarioIconEditEvents>({
-		tagName: 'ontario-icon-edit',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconEdit: StencilReactComponent<OntarioIconEditElement, OntarioIconEditEvents> = /*@__PURE__*/ createComponent<OntarioIconEditElement, OntarioIconEditEvents>({
+    tagName: 'ontario-icon-edit',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconEmailEvents = NonNullable<unknown>;
 
-export const OntarioIconEmail: StencilReactComponent<OntarioIconEmailElement, OntarioIconEmailEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconEmailElement, OntarioIconEmailEvents>({
-		tagName: 'ontario-icon-email',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconEmail: StencilReactComponent<OntarioIconEmailElement, OntarioIconEmailEvents> = /*@__PURE__*/ createComponent<OntarioIconEmailElement, OntarioIconEmailEvents>({
+    tagName: 'ontario-icon-email',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconExpandEvents = NonNullable<unknown>;
 
-export const OntarioIconExpand: StencilReactComponent<OntarioIconExpandElement, OntarioIconExpandEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconExpandElement, OntarioIconExpandEvents>({
-		tagName: 'ontario-icon-expand',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconExpand: StencilReactComponent<OntarioIconExpandElement, OntarioIconExpandEvents> = /*@__PURE__*/ createComponent<OntarioIconExpandElement, OntarioIconExpandEvents>({
+    tagName: 'ontario-icon-expand',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconExportEvents = NonNullable<unknown>;
 
-export const OntarioIconExport: StencilReactComponent<OntarioIconExportElement, OntarioIconExportEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconExportElement, OntarioIconExportEvents>({
-		tagName: 'ontario-icon-export',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconExport: StencilReactComponent<OntarioIconExportElement, OntarioIconExportEvents> = /*@__PURE__*/ createComponent<OntarioIconExportElement, OntarioIconExportEvents>({
+    tagName: 'ontario-icon-export',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconFacebookEvents = NonNullable<unknown>;
 
-export const OntarioIconFacebook: StencilReactComponent<OntarioIconFacebookElement, OntarioIconFacebookEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconFacebookElement, OntarioIconFacebookEvents>({
-		tagName: 'ontario-icon-facebook',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconFacebook: StencilReactComponent<OntarioIconFacebookElement, OntarioIconFacebookEvents> = /*@__PURE__*/ createComponent<OntarioIconFacebookElement, OntarioIconFacebookEvents>({
+    tagName: 'ontario-icon-facebook',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconFacebookAltEvents = NonNullable<unknown>;
 
-export const OntarioIconFacebookAlt: StencilReactComponent<
-	OntarioIconFacebookAltElement,
-	OntarioIconFacebookAltEvents
-> = /*@__PURE__*/ createComponent<OntarioIconFacebookAltElement, OntarioIconFacebookAltEvents>({
-	tagName: 'ontario-icon-facebook-alt',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconFacebookAlt: StencilReactComponent<OntarioIconFacebookAltElement, OntarioIconFacebookAltEvents> = /*@__PURE__*/ createComponent<OntarioIconFacebookAltElement, OntarioIconFacebookAltEvents>({
+    tagName: 'ontario-icon-facebook-alt',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconFavouriteOffEvents = NonNullable<unknown>;
 
-export const OntarioIconFavouriteOff: StencilReactComponent<
-	OntarioIconFavouriteOffElement,
-	OntarioIconFavouriteOffEvents
-> = /*@__PURE__*/ createComponent<OntarioIconFavouriteOffElement, OntarioIconFavouriteOffEvents>({
-	tagName: 'ontario-icon-favourite-off',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconFavouriteOff: StencilReactComponent<OntarioIconFavouriteOffElement, OntarioIconFavouriteOffEvents> = /*@__PURE__*/ createComponent<OntarioIconFavouriteOffElement, OntarioIconFavouriteOffEvents>({
+    tagName: 'ontario-icon-favourite-off',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconFavouriteOnEvents = NonNullable<unknown>;
 
-export const OntarioIconFavouriteOn: StencilReactComponent<
-	OntarioIconFavouriteOnElement,
-	OntarioIconFavouriteOnEvents
-> = /*@__PURE__*/ createComponent<OntarioIconFavouriteOnElement, OntarioIconFavouriteOnEvents>({
-	tagName: 'ontario-icon-favourite-on',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconFavouriteOn: StencilReactComponent<OntarioIconFavouriteOnElement, OntarioIconFavouriteOnEvents> = /*@__PURE__*/ createComponent<OntarioIconFavouriteOnElement, OntarioIconFavouriteOnEvents>({
+    tagName: 'ontario-icon-favourite-on',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconFilterEvents = NonNullable<unknown>;
 
-export const OntarioIconFilter: StencilReactComponent<OntarioIconFilterElement, OntarioIconFilterEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconFilterElement, OntarioIconFilterEvents>({
-		tagName: 'ontario-icon-filter',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconFilter: StencilReactComponent<OntarioIconFilterElement, OntarioIconFilterEvents> = /*@__PURE__*/ createComponent<OntarioIconFilterElement, OntarioIconFilterEvents>({
+    tagName: 'ontario-icon-filter',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconFlickrEvents = NonNullable<unknown>;
 
-export const OntarioIconFlickr: StencilReactComponent<OntarioIconFlickrElement, OntarioIconFlickrEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconFlickrElement, OntarioIconFlickrEvents>({
-		tagName: 'ontario-icon-flickr',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconFlickr: StencilReactComponent<OntarioIconFlickrElement, OntarioIconFlickrEvents> = /*@__PURE__*/ createComponent<OntarioIconFlickrElement, OntarioIconFlickrEvents>({
+    tagName: 'ontario-icon-flickr',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconGridEvents = NonNullable<unknown>;
 
-export const OntarioIconGrid: StencilReactComponent<OntarioIconGridElement, OntarioIconGridEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconGridElement, OntarioIconGridEvents>({
-		tagName: 'ontario-icon-grid',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconGrid: StencilReactComponent<OntarioIconGridElement, OntarioIconGridEvents> = /*@__PURE__*/ createComponent<OntarioIconGridElement, OntarioIconGridEvents>({
+    tagName: 'ontario-icon-grid',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconHelpEvents = NonNullable<unknown>;
 
-export const OntarioIconHelp: StencilReactComponent<OntarioIconHelpElement, OntarioIconHelpEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconHelpElement, OntarioIconHelpEvents>({
-		tagName: 'ontario-icon-help',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconHelp: StencilReactComponent<OntarioIconHelpElement, OntarioIconHelpEvents> = /*@__PURE__*/ createComponent<OntarioIconHelpElement, OntarioIconHelpEvents>({
+    tagName: 'ontario-icon-help',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconInstagramEvents = NonNullable<unknown>;
 
-export const OntarioIconInstagram: StencilReactComponent<OntarioIconInstagramElement, OntarioIconInstagramEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconInstagramElement, OntarioIconInstagramEvents>({
-		tagName: 'ontario-icon-instagram',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconInstagram: StencilReactComponent<OntarioIconInstagramElement, OntarioIconInstagramEvents> = /*@__PURE__*/ createComponent<OntarioIconInstagramElement, OntarioIconInstagramEvents>({
+    tagName: 'ontario-icon-instagram',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconInteracEnEvents = NonNullable<unknown>;
 
-export const OntarioIconInteracEn: StencilReactComponent<OntarioIconInteracEnElement, OntarioIconInteracEnEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconInteracEnElement, OntarioIconInteracEnEvents>({
-		tagName: 'ontario-icon-interac-en',
-		properties: { iconWidth: 'icon-width' },
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconInteracEn: StencilReactComponent<OntarioIconInteracEnElement, OntarioIconInteracEnEvents> = /*@__PURE__*/ createComponent<OntarioIconInteracEnElement, OntarioIconInteracEnEvents>({
+    tagName: 'ontario-icon-interac-en',
+    properties: { iconWidth: 'icon-width' },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconInteracEnAltEvents = NonNullable<unknown>;
 
-export const OntarioIconInteracEnAlt: StencilReactComponent<
-	OntarioIconInteracEnAltElement,
-	OntarioIconInteracEnAltEvents
-> = /*@__PURE__*/ createComponent<OntarioIconInteracEnAltElement, OntarioIconInteracEnAltEvents>({
-	tagName: 'ontario-icon-interac-en-alt',
-	properties: { iconWidth: 'icon-width' },
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconInteracEnAlt: StencilReactComponent<OntarioIconInteracEnAltElement, OntarioIconInteracEnAltEvents> = /*@__PURE__*/ createComponent<OntarioIconInteracEnAltElement, OntarioIconInteracEnAltEvents>({
+    tagName: 'ontario-icon-interac-en-alt',
+    properties: { iconWidth: 'icon-width' },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconInteracFrEvents = NonNullable<unknown>;
 
-export const OntarioIconInteracFr: StencilReactComponent<OntarioIconInteracFrElement, OntarioIconInteracFrEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconInteracFrElement, OntarioIconInteracFrEvents>({
-		tagName: 'ontario-icon-interac-fr',
-		properties: { iconWidth: 'icon-width' },
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconInteracFr: StencilReactComponent<OntarioIconInteracFrElement, OntarioIconInteracFrEvents> = /*@__PURE__*/ createComponent<OntarioIconInteracFrElement, OntarioIconInteracFrEvents>({
+    tagName: 'ontario-icon-interac-fr',
+    properties: { iconWidth: 'icon-width' },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconInteracFrAltEvents = NonNullable<unknown>;
 
-export const OntarioIconInteracFrAlt: StencilReactComponent<
-	OntarioIconInteracFrAltElement,
-	OntarioIconInteracFrAltEvents
-> = /*@__PURE__*/ createComponent<OntarioIconInteracFrAltElement, OntarioIconInteracFrAltEvents>({
-	tagName: 'ontario-icon-interac-fr-alt',
-	properties: { iconWidth: 'icon-width' },
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconInteracFrAlt: StencilReactComponent<OntarioIconInteracFrAltElement, OntarioIconInteracFrAltEvents> = /*@__PURE__*/ createComponent<OntarioIconInteracFrAltElement, OntarioIconInteracFrAltEvents>({
+    tagName: 'ontario-icon-interac-fr-alt',
+    properties: { iconWidth: 'icon-width' },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconLinkedinEvents = NonNullable<unknown>;
 
-export const OntarioIconLinkedin: StencilReactComponent<OntarioIconLinkedinElement, OntarioIconLinkedinEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconLinkedinElement, OntarioIconLinkedinEvents>({
-		tagName: 'ontario-icon-linkedin',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconLinkedin: StencilReactComponent<OntarioIconLinkedinElement, OntarioIconLinkedinEvents> = /*@__PURE__*/ createComponent<OntarioIconLinkedinElement, OntarioIconLinkedinEvents>({
+    tagName: 'ontario-icon-linkedin',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconLinkedinAltEvents = NonNullable<unknown>;
 
-export const OntarioIconLinkedinAlt: StencilReactComponent<
-	OntarioIconLinkedinAltElement,
-	OntarioIconLinkedinAltEvents
-> = /*@__PURE__*/ createComponent<OntarioIconLinkedinAltElement, OntarioIconLinkedinAltEvents>({
-	tagName: 'ontario-icon-linkedin-alt',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconLinkedinAlt: StencilReactComponent<OntarioIconLinkedinAltElement, OntarioIconLinkedinAltEvents> = /*@__PURE__*/ createComponent<OntarioIconLinkedinAltElement, OntarioIconLinkedinAltEvents>({
+    tagName: 'ontario-icon-linkedin-alt',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconListEvents = NonNullable<unknown>;
 
-export const OntarioIconList: StencilReactComponent<OntarioIconListElement, OntarioIconListEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconListElement, OntarioIconListEvents>({
-		tagName: 'ontario-icon-list',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconList: StencilReactComponent<OntarioIconListElement, OntarioIconListEvents> = /*@__PURE__*/ createComponent<OntarioIconListElement, OntarioIconListEvents>({
+    tagName: 'ontario-icon-list',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconLiveChatEvents = NonNullable<unknown>;
 
-export const OntarioIconLiveChat: StencilReactComponent<OntarioIconLiveChatElement, OntarioIconLiveChatEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconLiveChatElement, OntarioIconLiveChatEvents>({
-		tagName: 'ontario-icon-live-chat',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconLiveChat: StencilReactComponent<OntarioIconLiveChatElement, OntarioIconLiveChatEvents> = /*@__PURE__*/ createComponent<OntarioIconLiveChatElement, OntarioIconLiveChatEvents>({
+    tagName: 'ontario-icon-live-chat',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconLocationOffEvents = NonNullable<unknown>;
 
-export const OntarioIconLocationOff: StencilReactComponent<
-	OntarioIconLocationOffElement,
-	OntarioIconLocationOffEvents
-> = /*@__PURE__*/ createComponent<OntarioIconLocationOffElement, OntarioIconLocationOffEvents>({
-	tagName: 'ontario-icon-location-off',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconLocationOff: StencilReactComponent<OntarioIconLocationOffElement, OntarioIconLocationOffEvents> = /*@__PURE__*/ createComponent<OntarioIconLocationOffElement, OntarioIconLocationOffEvents>({
+    tagName: 'ontario-icon-location-off',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconLocationOnEvents = NonNullable<unknown>;
 
-export const OntarioIconLocationOn: StencilReactComponent<OntarioIconLocationOnElement, OntarioIconLocationOnEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconLocationOnElement, OntarioIconLocationOnEvents>({
-		tagName: 'ontario-icon-location-on',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconLocationOn: StencilReactComponent<OntarioIconLocationOnElement, OntarioIconLocationOnEvents> = /*@__PURE__*/ createComponent<OntarioIconLocationOnElement, OntarioIconLocationOnEvents>({
+    tagName: 'ontario-icon-location-on',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconLockOffEvents = NonNullable<unknown>;
 
-export const OntarioIconLockOff: StencilReactComponent<OntarioIconLockOffElement, OntarioIconLockOffEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconLockOffElement, OntarioIconLockOffEvents>({
-		tagName: 'ontario-icon-lock-off',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconLockOff: StencilReactComponent<OntarioIconLockOffElement, OntarioIconLockOffEvents> = /*@__PURE__*/ createComponent<OntarioIconLockOffElement, OntarioIconLockOffEvents>({
+    tagName: 'ontario-icon-lock-off',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconLockOnEvents = NonNullable<unknown>;
 
-export const OntarioIconLockOn: StencilReactComponent<OntarioIconLockOnElement, OntarioIconLockOnEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconLockOnElement, OntarioIconLockOnEvents>({
-		tagName: 'ontario-icon-lock-on',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconLockOn: StencilReactComponent<OntarioIconLockOnElement, OntarioIconLockOnEvents> = /*@__PURE__*/ createComponent<OntarioIconLockOnElement, OntarioIconLockOnEvents>({
+    tagName: 'ontario-icon-lock-on',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconMapEvents = NonNullable<unknown>;
 
-export const OntarioIconMap: StencilReactComponent<OntarioIconMapElement, OntarioIconMapEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconMapElement, OntarioIconMapEvents>({
-		tagName: 'ontario-icon-map',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconMap: StencilReactComponent<OntarioIconMapElement, OntarioIconMapEvents> = /*@__PURE__*/ createComponent<OntarioIconMapElement, OntarioIconMapEvents>({
+    tagName: 'ontario-icon-map',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconMastercardEvents = NonNullable<unknown>;
 
-export const OntarioIconMastercard: StencilReactComponent<OntarioIconMastercardElement, OntarioIconMastercardEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconMastercardElement, OntarioIconMastercardEvents>({
-		tagName: 'ontario-icon-mastercard',
-		properties: { iconWidth: 'icon-width' },
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconMastercard: StencilReactComponent<OntarioIconMastercardElement, OntarioIconMastercardEvents> = /*@__PURE__*/ createComponent<OntarioIconMastercardElement, OntarioIconMastercardEvents>({
+    tagName: 'ontario-icon-mastercard',
+    properties: { iconWidth: 'icon-width' },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconMastercardAltEvents = NonNullable<unknown>;
 
-export const OntarioIconMastercardAlt: StencilReactComponent<
-	OntarioIconMastercardAltElement,
-	OntarioIconMastercardAltEvents
-> = /*@__PURE__*/ createComponent<OntarioIconMastercardAltElement, OntarioIconMastercardAltEvents>({
-	tagName: 'ontario-icon-mastercard-alt',
-	properties: { iconWidth: 'icon-width' },
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconMastercardAlt: StencilReactComponent<OntarioIconMastercardAltElement, OntarioIconMastercardAltEvents> = /*@__PURE__*/ createComponent<OntarioIconMastercardAltElement, OntarioIconMastercardAltEvents>({
+    tagName: 'ontario-icon-mastercard-alt',
+    properties: { iconWidth: 'icon-width' },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconMediaFastForwardEvents = NonNullable<unknown>;
 
-export const OntarioIconMediaFastForward: StencilReactComponent<
-	OntarioIconMediaFastForwardElement,
-	OntarioIconMediaFastForwardEvents
-> = /*@__PURE__*/ createComponent<OntarioIconMediaFastForwardElement, OntarioIconMediaFastForwardEvents>({
-	tagName: 'ontario-icon-media-fast-forward',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconMediaFastForward: StencilReactComponent<OntarioIconMediaFastForwardElement, OntarioIconMediaFastForwardEvents> = /*@__PURE__*/ createComponent<OntarioIconMediaFastForwardElement, OntarioIconMediaFastForwardEvents>({
+    tagName: 'ontario-icon-media-fast-forward',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconMediaFastRewindEvents = NonNullable<unknown>;
 
-export const OntarioIconMediaFastRewind: StencilReactComponent<
-	OntarioIconMediaFastRewindElement,
-	OntarioIconMediaFastRewindEvents
-> = /*@__PURE__*/ createComponent<OntarioIconMediaFastRewindElement, OntarioIconMediaFastRewindEvents>({
-	tagName: 'ontario-icon-media-fast-rewind',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconMediaFastRewind: StencilReactComponent<OntarioIconMediaFastRewindElement, OntarioIconMediaFastRewindEvents> = /*@__PURE__*/ createComponent<OntarioIconMediaFastRewindElement, OntarioIconMediaFastRewindEvents>({
+    tagName: 'ontario-icon-media-fast-rewind',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconMediaPauseEvents = NonNullable<unknown>;
 
-export const OntarioIconMediaPause: StencilReactComponent<OntarioIconMediaPauseElement, OntarioIconMediaPauseEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconMediaPauseElement, OntarioIconMediaPauseEvents>({
-		tagName: 'ontario-icon-media-pause',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconMediaPause: StencilReactComponent<OntarioIconMediaPauseElement, OntarioIconMediaPauseEvents> = /*@__PURE__*/ createComponent<OntarioIconMediaPauseElement, OntarioIconMediaPauseEvents>({
+    tagName: 'ontario-icon-media-pause',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconMediaPlayEvents = NonNullable<unknown>;
 
-export const OntarioIconMediaPlay: StencilReactComponent<OntarioIconMediaPlayElement, OntarioIconMediaPlayEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconMediaPlayElement, OntarioIconMediaPlayEvents>({
-		tagName: 'ontario-icon-media-play',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconMediaPlay: StencilReactComponent<OntarioIconMediaPlayElement, OntarioIconMediaPlayEvents> = /*@__PURE__*/ createComponent<OntarioIconMediaPlayElement, OntarioIconMediaPlayEvents>({
+    tagName: 'ontario-icon-media-play',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconMediaStopEvents = NonNullable<unknown>;
 
-export const OntarioIconMediaStop: StencilReactComponent<OntarioIconMediaStopElement, OntarioIconMediaStopEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconMediaStopElement, OntarioIconMediaStopEvents>({
-		tagName: 'ontario-icon-media-stop',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconMediaStop: StencilReactComponent<OntarioIconMediaStopElement, OntarioIconMediaStopEvents> = /*@__PURE__*/ createComponent<OntarioIconMediaStopElement, OntarioIconMediaStopEvents>({
+    tagName: 'ontario-icon-media-stop',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconMenuEvents = NonNullable<unknown>;
 
-export const OntarioIconMenu: StencilReactComponent<OntarioIconMenuElement, OntarioIconMenuEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconMenuElement, OntarioIconMenuEvents>({
-		tagName: 'ontario-icon-menu',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconMenu: StencilReactComponent<OntarioIconMenuElement, OntarioIconMenuEvents> = /*@__PURE__*/ createComponent<OntarioIconMenuElement, OntarioIconMenuEvents>({
+    tagName: 'ontario-icon-menu',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconMenuHeaderEvents = NonNullable<unknown>;
 
-export const OntarioIconMenuHeader: StencilReactComponent<OntarioIconMenuHeaderElement, OntarioIconMenuHeaderEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconMenuHeaderElement, OntarioIconMenuHeaderEvents>({
-		tagName: 'ontario-icon-menu-header',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconMenuHeader: StencilReactComponent<OntarioIconMenuHeaderElement, OntarioIconMenuHeaderEvents> = /*@__PURE__*/ createComponent<OntarioIconMenuHeaderElement, OntarioIconMenuHeaderEvents>({
+    tagName: 'ontario-icon-menu-header',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconMicrophoneOffEvents = NonNullable<unknown>;
 
-export const OntarioIconMicrophoneOff: StencilReactComponent<
-	OntarioIconMicrophoneOffElement,
-	OntarioIconMicrophoneOffEvents
-> = /*@__PURE__*/ createComponent<OntarioIconMicrophoneOffElement, OntarioIconMicrophoneOffEvents>({
-	tagName: 'ontario-icon-microphone-off',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconMicrophoneOff: StencilReactComponent<OntarioIconMicrophoneOffElement, OntarioIconMicrophoneOffEvents> = /*@__PURE__*/ createComponent<OntarioIconMicrophoneOffElement, OntarioIconMicrophoneOffEvents>({
+    tagName: 'ontario-icon-microphone-off',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconMicrophoneOnEvents = NonNullable<unknown>;
 
-export const OntarioIconMicrophoneOn: StencilReactComponent<
-	OntarioIconMicrophoneOnElement,
-	OntarioIconMicrophoneOnEvents
-> = /*@__PURE__*/ createComponent<OntarioIconMicrophoneOnElement, OntarioIconMicrophoneOnEvents>({
-	tagName: 'ontario-icon-microphone-on',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconMicrophoneOn: StencilReactComponent<OntarioIconMicrophoneOnElement, OntarioIconMicrophoneOnEvents> = /*@__PURE__*/ createComponent<OntarioIconMicrophoneOnElement, OntarioIconMicrophoneOnEvents>({
+    tagName: 'ontario-icon-microphone-on',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconMoreVerticalEvents = NonNullable<unknown>;
 
-export const OntarioIconMoreVertical: StencilReactComponent<
-	OntarioIconMoreVerticalElement,
-	OntarioIconMoreVerticalEvents
-> = /*@__PURE__*/ createComponent<OntarioIconMoreVerticalElement, OntarioIconMoreVerticalEvents>({
-	tagName: 'ontario-icon-more-vertical',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconMoreVertical: StencilReactComponent<OntarioIconMoreVerticalElement, OntarioIconMoreVerticalEvents> = /*@__PURE__*/ createComponent<OntarioIconMoreVerticalElement, OntarioIconMoreVerticalEvents>({
+    tagName: 'ontario-icon-more-vertical',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconNewWindowEvents = NonNullable<unknown>;
 
-export const OntarioIconNewWindow: StencilReactComponent<OntarioIconNewWindowElement, OntarioIconNewWindowEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconNewWindowElement, OntarioIconNewWindowEvents>({
-		tagName: 'ontario-icon-new-window',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconNewWindow: StencilReactComponent<OntarioIconNewWindowElement, OntarioIconNewWindowEvents> = /*@__PURE__*/ createComponent<OntarioIconNewWindowElement, OntarioIconNewWindowEvents>({
+    tagName: 'ontario-icon-new-window',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconNextEvents = NonNullable<unknown>;
 
-export const OntarioIconNext: StencilReactComponent<OntarioIconNextElement, OntarioIconNextEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconNextElement, OntarioIconNextEvents>({
-		tagName: 'ontario-icon-next',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconNext: StencilReactComponent<OntarioIconNextElement, OntarioIconNextEvents> = /*@__PURE__*/ createComponent<OntarioIconNextElement, OntarioIconNextEvents>({
+    tagName: 'ontario-icon-next',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconNotificationEvents = NonNullable<unknown>;
 
-export const OntarioIconNotification: StencilReactComponent<
-	OntarioIconNotificationElement,
-	OntarioIconNotificationEvents
-> = /*@__PURE__*/ createComponent<OntarioIconNotificationElement, OntarioIconNotificationEvents>({
-	tagName: 'ontario-icon-notification',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconNotification: StencilReactComponent<OntarioIconNotificationElement, OntarioIconNotificationEvents> = /*@__PURE__*/ createComponent<OntarioIconNotificationElement, OntarioIconNotificationEvents>({
+    tagName: 'ontario-icon-notification',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconPasswordHideEvents = NonNullable<unknown>;
 
-export const OntarioIconPasswordHide: StencilReactComponent<
-	OntarioIconPasswordHideElement,
-	OntarioIconPasswordHideEvents
-> = /*@__PURE__*/ createComponent<OntarioIconPasswordHideElement, OntarioIconPasswordHideEvents>({
-	tagName: 'ontario-icon-password-hide',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconPasswordHide: StencilReactComponent<OntarioIconPasswordHideElement, OntarioIconPasswordHideEvents> = /*@__PURE__*/ createComponent<OntarioIconPasswordHideElement, OntarioIconPasswordHideEvents>({
+    tagName: 'ontario-icon-password-hide',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconPasswordShowEvents = NonNullable<unknown>;
 
-export const OntarioIconPasswordShow: StencilReactComponent<
-	OntarioIconPasswordShowElement,
-	OntarioIconPasswordShowEvents
-> = /*@__PURE__*/ createComponent<OntarioIconPasswordShowElement, OntarioIconPasswordShowEvents>({
-	tagName: 'ontario-icon-password-show',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconPasswordShow: StencilReactComponent<OntarioIconPasswordShowElement, OntarioIconPasswordShowEvents> = /*@__PURE__*/ createComponent<OntarioIconPasswordShowElement, OntarioIconPasswordShowEvents>({
+    tagName: 'ontario-icon-password-show',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconPhoneEvents = NonNullable<unknown>;
 
-export const OntarioIconPhone: StencilReactComponent<OntarioIconPhoneElement, OntarioIconPhoneEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconPhoneElement, OntarioIconPhoneEvents>({
-		tagName: 'ontario-icon-phone',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconPhone: StencilReactComponent<OntarioIconPhoneElement, OntarioIconPhoneEvents> = /*@__PURE__*/ createComponent<OntarioIconPhoneElement, OntarioIconPhoneEvents>({
+    tagName: 'ontario-icon-phone',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconPhotoEvents = NonNullable<unknown>;
 
-export const OntarioIconPhoto: StencilReactComponent<OntarioIconPhotoElement, OntarioIconPhotoEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconPhotoElement, OntarioIconPhotoEvents>({
-		tagName: 'ontario-icon-photo',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconPhoto: StencilReactComponent<OntarioIconPhotoElement, OntarioIconPhotoEvents> = /*@__PURE__*/ createComponent<OntarioIconPhotoElement, OntarioIconPhotoEvents>({
+    tagName: 'ontario-icon-photo',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconPinLocationOffEvents = NonNullable<unknown>;
 
-export const OntarioIconPinLocationOff: StencilReactComponent<
-	OntarioIconPinLocationOffElement,
-	OntarioIconPinLocationOffEvents
-> = /*@__PURE__*/ createComponent<OntarioIconPinLocationOffElement, OntarioIconPinLocationOffEvents>({
-	tagName: 'ontario-icon-pin-location-off',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconPinLocationOff: StencilReactComponent<OntarioIconPinLocationOffElement, OntarioIconPinLocationOffEvents> = /*@__PURE__*/ createComponent<OntarioIconPinLocationOffElement, OntarioIconPinLocationOffEvents>({
+    tagName: 'ontario-icon-pin-location-off',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconPinLocationOnEvents = NonNullable<unknown>;
 
-export const OntarioIconPinLocationOn: StencilReactComponent<
-	OntarioIconPinLocationOnElement,
-	OntarioIconPinLocationOnEvents
-> = /*@__PURE__*/ createComponent<OntarioIconPinLocationOnElement, OntarioIconPinLocationOnEvents>({
-	tagName: 'ontario-icon-pin-location-on',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconPinLocationOn: StencilReactComponent<OntarioIconPinLocationOnElement, OntarioIconPinLocationOnEvents> = /*@__PURE__*/ createComponent<OntarioIconPinLocationOnElement, OntarioIconPinLocationOnEvents>({
+    tagName: 'ontario-icon-pin-location-on',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconPreviousEvents = NonNullable<unknown>;
 
-export const OntarioIconPrevious: StencilReactComponent<OntarioIconPreviousElement, OntarioIconPreviousEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconPreviousElement, OntarioIconPreviousEvents>({
-		tagName: 'ontario-icon-previous',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconPrevious: StencilReactComponent<OntarioIconPreviousElement, OntarioIconPreviousEvents> = /*@__PURE__*/ createComponent<OntarioIconPreviousElement, OntarioIconPreviousEvents>({
+    tagName: 'ontario-icon-previous',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconPrintEvents = NonNullable<unknown>;
 
-export const OntarioIconPrint: StencilReactComponent<OntarioIconPrintElement, OntarioIconPrintEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconPrintElement, OntarioIconPrintEvents>({
-		tagName: 'ontario-icon-print',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconPrint: StencilReactComponent<OntarioIconPrintElement, OntarioIconPrintEvents> = /*@__PURE__*/ createComponent<OntarioIconPrintElement, OntarioIconPrintEvents>({
+    tagName: 'ontario-icon-print',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconRemoveEvents = NonNullable<unknown>;
 
-export const OntarioIconRemove: StencilReactComponent<OntarioIconRemoveElement, OntarioIconRemoveEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconRemoveElement, OntarioIconRemoveEvents>({
-		tagName: 'ontario-icon-remove',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconRemove: StencilReactComponent<OntarioIconRemoveElement, OntarioIconRemoveEvents> = /*@__PURE__*/ createComponent<OntarioIconRemoveElement, OntarioIconRemoveEvents>({
+    tagName: 'ontario-icon-remove',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconRemoveAltEvents = NonNullable<unknown>;
 
-export const OntarioIconRemoveAlt: StencilReactComponent<OntarioIconRemoveAltElement, OntarioIconRemoveAltEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconRemoveAltElement, OntarioIconRemoveAltEvents>({
-		tagName: 'ontario-icon-remove-alt',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconRemoveAlt: StencilReactComponent<OntarioIconRemoveAltElement, OntarioIconRemoveAltEvents> = /*@__PURE__*/ createComponent<OntarioIconRemoveAltElement, OntarioIconRemoveAltEvents>({
+    tagName: 'ontario-icon-remove-alt',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconReplayEvents = NonNullable<unknown>;
 
-export const OntarioIconReplay: StencilReactComponent<OntarioIconReplayElement, OntarioIconReplayEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconReplayElement, OntarioIconReplayEvents>({
-		tagName: 'ontario-icon-replay',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconReplay: StencilReactComponent<OntarioIconReplayElement, OntarioIconReplayEvents> = /*@__PURE__*/ createComponent<OntarioIconReplayElement, OntarioIconReplayEvents>({
+    tagName: 'ontario-icon-replay',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconRssFeedEvents = NonNullable<unknown>;
 
-export const OntarioIconRssFeed: StencilReactComponent<OntarioIconRssFeedElement, OntarioIconRssFeedEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconRssFeedElement, OntarioIconRssFeedEvents>({
-		tagName: 'ontario-icon-rss-feed',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconRssFeed: StencilReactComponent<OntarioIconRssFeedElement, OntarioIconRssFeedEvents> = /*@__PURE__*/ createComponent<OntarioIconRssFeedElement, OntarioIconRssFeedEvents>({
+    tagName: 'ontario-icon-rss-feed',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconSaveEvents = NonNullable<unknown>;
 
-export const OntarioIconSave: StencilReactComponent<OntarioIconSaveElement, OntarioIconSaveEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconSaveElement, OntarioIconSaveEvents>({
-		tagName: 'ontario-icon-save',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconSave: StencilReactComponent<OntarioIconSaveElement, OntarioIconSaveEvents> = /*@__PURE__*/ createComponent<OntarioIconSaveElement, OntarioIconSaveEvents>({
+    tagName: 'ontario-icon-save',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconSearchEvents = NonNullable<unknown>;
 
-export const OntarioIconSearch: StencilReactComponent<OntarioIconSearchElement, OntarioIconSearchEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconSearchElement, OntarioIconSearchEvents>({
-		tagName: 'ontario-icon-search',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconSearch: StencilReactComponent<OntarioIconSearchElement, OntarioIconSearchEvents> = /*@__PURE__*/ createComponent<OntarioIconSearchElement, OntarioIconSearchEvents>({
+    tagName: 'ontario-icon-search',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconSearchWhiteEvents = NonNullable<unknown>;
 
-export const OntarioIconSearchWhite: StencilReactComponent<
-	OntarioIconSearchWhiteElement,
-	OntarioIconSearchWhiteEvents
-> = /*@__PURE__*/ createComponent<OntarioIconSearchWhiteElement, OntarioIconSearchWhiteEvents>({
-	tagName: 'ontario-icon-search-white',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconSearchWhite: StencilReactComponent<OntarioIconSearchWhiteElement, OntarioIconSearchWhiteEvents> = /*@__PURE__*/ createComponent<OntarioIconSearchWhiteElement, OntarioIconSearchWhiteEvents>({
+    tagName: 'ontario-icon-search-white',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconSentiment1Events = NonNullable<unknown>;
 
-export const OntarioIconSentiment1: StencilReactComponent<OntarioIconSentiment1Element, OntarioIconSentiment1Events> =
-	/*@__PURE__*/ createComponent<OntarioIconSentiment1Element, OntarioIconSentiment1Events>({
-		tagName: 'ontario-icon-sentiment-1',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconSentiment1: StencilReactComponent<OntarioIconSentiment1Element, OntarioIconSentiment1Events> = /*@__PURE__*/ createComponent<OntarioIconSentiment1Element, OntarioIconSentiment1Events>({
+    tagName: 'ontario-icon-sentiment-1',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconSentiment2Events = NonNullable<unknown>;
 
-export const OntarioIconSentiment2: StencilReactComponent<OntarioIconSentiment2Element, OntarioIconSentiment2Events> =
-	/*@__PURE__*/ createComponent<OntarioIconSentiment2Element, OntarioIconSentiment2Events>({
-		tagName: 'ontario-icon-sentiment-2',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconSentiment2: StencilReactComponent<OntarioIconSentiment2Element, OntarioIconSentiment2Events> = /*@__PURE__*/ createComponent<OntarioIconSentiment2Element, OntarioIconSentiment2Events>({
+    tagName: 'ontario-icon-sentiment-2',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconSentiment3Events = NonNullable<unknown>;
 
-export const OntarioIconSentiment3: StencilReactComponent<OntarioIconSentiment3Element, OntarioIconSentiment3Events> =
-	/*@__PURE__*/ createComponent<OntarioIconSentiment3Element, OntarioIconSentiment3Events>({
-		tagName: 'ontario-icon-sentiment-3',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconSentiment3: StencilReactComponent<OntarioIconSentiment3Element, OntarioIconSentiment3Events> = /*@__PURE__*/ createComponent<OntarioIconSentiment3Element, OntarioIconSentiment3Events>({
+    tagName: 'ontario-icon-sentiment-3',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconSentiment4Events = NonNullable<unknown>;
 
-export const OntarioIconSentiment4: StencilReactComponent<OntarioIconSentiment4Element, OntarioIconSentiment4Events> =
-	/*@__PURE__*/ createComponent<OntarioIconSentiment4Element, OntarioIconSentiment4Events>({
-		tagName: 'ontario-icon-sentiment-4',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconSentiment4: StencilReactComponent<OntarioIconSentiment4Element, OntarioIconSentiment4Events> = /*@__PURE__*/ createComponent<OntarioIconSentiment4Element, OntarioIconSentiment4Events>({
+    tagName: 'ontario-icon-sentiment-4',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconSentiment5Events = NonNullable<unknown>;
 
-export const OntarioIconSentiment5: StencilReactComponent<OntarioIconSentiment5Element, OntarioIconSentiment5Events> =
-	/*@__PURE__*/ createComponent<OntarioIconSentiment5Element, OntarioIconSentiment5Events>({
-		tagName: 'ontario-icon-sentiment-5',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconSentiment5: StencilReactComponent<OntarioIconSentiment5Element, OntarioIconSentiment5Events> = /*@__PURE__*/ createComponent<OntarioIconSentiment5Element, OntarioIconSentiment5Events>({
+    tagName: 'ontario-icon-sentiment-5',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconSettingsEvents = NonNullable<unknown>;
 
-export const OntarioIconSettings: StencilReactComponent<OntarioIconSettingsElement, OntarioIconSettingsEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconSettingsElement, OntarioIconSettingsEvents>({
-		tagName: 'ontario-icon-settings',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconSettings: StencilReactComponent<OntarioIconSettingsElement, OntarioIconSettingsEvents> = /*@__PURE__*/ createComponent<OntarioIconSettingsElement, OntarioIconSettingsEvents>({
+    tagName: 'ontario-icon-settings',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconShareEvents = NonNullable<unknown>;
 
-export const OntarioIconShare: StencilReactComponent<OntarioIconShareElement, OntarioIconShareEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconShareElement, OntarioIconShareEvents>({
-		tagName: 'ontario-icon-share',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconShare: StencilReactComponent<OntarioIconShareElement, OntarioIconShareEvents> = /*@__PURE__*/ createComponent<OntarioIconShareElement, OntarioIconShareEvents>({
+    tagName: 'ontario-icon-share',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconSortEvents = NonNullable<unknown>;
 
-export const OntarioIconSort: StencilReactComponent<OntarioIconSortElement, OntarioIconSortEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconSortElement, OntarioIconSortEvents>({
-		tagName: 'ontario-icon-sort',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconSort: StencilReactComponent<OntarioIconSortElement, OntarioIconSortEvents> = /*@__PURE__*/ createComponent<OntarioIconSortElement, OntarioIconSortEvents>({
+    tagName: 'ontario-icon-sort',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconTagEvents = NonNullable<unknown>;
 
-export const OntarioIconTag: StencilReactComponent<OntarioIconTagElement, OntarioIconTagEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconTagElement, OntarioIconTagEvents>({
-		tagName: 'ontario-icon-tag',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconTag: StencilReactComponent<OntarioIconTagElement, OntarioIconTagEvents> = /*@__PURE__*/ createComponent<OntarioIconTagElement, OntarioIconTagEvents>({
+    tagName: 'ontario-icon-tag',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconTextMessageEvents = NonNullable<unknown>;
 
-export const OntarioIconTextMessage: StencilReactComponent<
-	OntarioIconTextMessageElement,
-	OntarioIconTextMessageEvents
-> = /*@__PURE__*/ createComponent<OntarioIconTextMessageElement, OntarioIconTextMessageEvents>({
-	tagName: 'ontario-icon-text-message',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconTextMessage: StencilReactComponent<OntarioIconTextMessageElement, OntarioIconTextMessageEvents> = /*@__PURE__*/ createComponent<OntarioIconTextMessageElement, OntarioIconTextMessageEvents>({
+    tagName: 'ontario-icon-text-message',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconTimerEvents = NonNullable<unknown>;
 
-export const OntarioIconTimer: StencilReactComponent<OntarioIconTimerElement, OntarioIconTimerEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconTimerElement, OntarioIconTimerEvents>({
-		tagName: 'ontario-icon-timer',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconTimer: StencilReactComponent<OntarioIconTimerElement, OntarioIconTimerEvents> = /*@__PURE__*/ createComponent<OntarioIconTimerElement, OntarioIconTimerEvents>({
+    tagName: 'ontario-icon-timer',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconTransportBicycleEvents = NonNullable<unknown>;
 
-export const OntarioIconTransportBicycle: StencilReactComponent<
-	OntarioIconTransportBicycleElement,
-	OntarioIconTransportBicycleEvents
-> = /*@__PURE__*/ createComponent<OntarioIconTransportBicycleElement, OntarioIconTransportBicycleEvents>({
-	tagName: 'ontario-icon-transport-bicycle',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconTransportBicycle: StencilReactComponent<OntarioIconTransportBicycleElement, OntarioIconTransportBicycleEvents> = /*@__PURE__*/ createComponent<OntarioIconTransportBicycleElement, OntarioIconTransportBicycleEvents>({
+    tagName: 'ontario-icon-transport-bicycle',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconTransportBusEvents = NonNullable<unknown>;
 
-export const OntarioIconTransportBus: StencilReactComponent<
-	OntarioIconTransportBusElement,
-	OntarioIconTransportBusEvents
-> = /*@__PURE__*/ createComponent<OntarioIconTransportBusElement, OntarioIconTransportBusEvents>({
-	tagName: 'ontario-icon-transport-bus',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconTransportBus: StencilReactComponent<OntarioIconTransportBusElement, OntarioIconTransportBusEvents> = /*@__PURE__*/ createComponent<OntarioIconTransportBusElement, OntarioIconTransportBusEvents>({
+    tagName: 'ontario-icon-transport-bus',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconTransportCarEvents = NonNullable<unknown>;
 
-export const OntarioIconTransportCar: StencilReactComponent<
-	OntarioIconTransportCarElement,
-	OntarioIconTransportCarEvents
-> = /*@__PURE__*/ createComponent<OntarioIconTransportCarElement, OntarioIconTransportCarEvents>({
-	tagName: 'ontario-icon-transport-car',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconTransportCar: StencilReactComponent<OntarioIconTransportCarElement, OntarioIconTransportCarEvents> = /*@__PURE__*/ createComponent<OntarioIconTransportCarElement, OntarioIconTransportCarEvents>({
+    tagName: 'ontario-icon-transport-car',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconTransportWalkEvents = NonNullable<unknown>;
 
-export const OntarioIconTransportWalk: StencilReactComponent<
-	OntarioIconTransportWalkElement,
-	OntarioIconTransportWalkEvents
-> = /*@__PURE__*/ createComponent<OntarioIconTransportWalkElement, OntarioIconTransportWalkEvents>({
-	tagName: 'ontario-icon-transport-walk',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconTransportWalk: StencilReactComponent<OntarioIconTransportWalkElement, OntarioIconTransportWalkEvents> = /*@__PURE__*/ createComponent<OntarioIconTransportWalkElement, OntarioIconTransportWalkEvents>({
+    tagName: 'ontario-icon-transport-walk',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconTtyEvents = NonNullable<unknown>;
 
-export const OntarioIconTty: StencilReactComponent<OntarioIconTtyElement, OntarioIconTtyEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconTtyElement, OntarioIconTtyEvents>({
-		tagName: 'ontario-icon-tty',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconTty: StencilReactComponent<OntarioIconTtyElement, OntarioIconTtyEvents> = /*@__PURE__*/ createComponent<OntarioIconTtyElement, OntarioIconTtyEvents>({
+    tagName: 'ontario-icon-tty',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconTwitterEvents = NonNullable<unknown>;
 
-export const OntarioIconTwitter: StencilReactComponent<OntarioIconTwitterElement, OntarioIconTwitterEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconTwitterElement, OntarioIconTwitterEvents>({
-		tagName: 'ontario-icon-twitter',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconTwitter: StencilReactComponent<OntarioIconTwitterElement, OntarioIconTwitterEvents> = /*@__PURE__*/ createComponent<OntarioIconTwitterElement, OntarioIconTwitterEvents>({
+    tagName: 'ontario-icon-twitter',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconTwitterAltEvents = NonNullable<unknown>;
 
-export const OntarioIconTwitterAlt: StencilReactComponent<OntarioIconTwitterAltElement, OntarioIconTwitterAltEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconTwitterAltElement, OntarioIconTwitterAltEvents>({
-		tagName: 'ontario-icon-twitter-alt',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconTwitterAlt: StencilReactComponent<OntarioIconTwitterAltElement, OntarioIconTwitterAltEvents> = /*@__PURE__*/ createComponent<OntarioIconTwitterAltElement, OntarioIconTwitterAltEvents>({
+    tagName: 'ontario-icon-twitter-alt',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconUploadEvents = NonNullable<unknown>;
 
-export const OntarioIconUpload: StencilReactComponent<OntarioIconUploadElement, OntarioIconUploadEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconUploadElement, OntarioIconUploadEvents>({
-		tagName: 'ontario-icon-upload',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconUpload: StencilReactComponent<OntarioIconUploadElement, OntarioIconUploadEvents> = /*@__PURE__*/ createComponent<OntarioIconUploadElement, OntarioIconUploadEvents>({
+    tagName: 'ontario-icon-upload',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconVideoEvents = NonNullable<unknown>;
 
-export const OntarioIconVideo: StencilReactComponent<OntarioIconVideoElement, OntarioIconVideoEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconVideoElement, OntarioIconVideoEvents>({
-		tagName: 'ontario-icon-video',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconVideo: StencilReactComponent<OntarioIconVideoElement, OntarioIconVideoEvents> = /*@__PURE__*/ createComponent<OntarioIconVideoElement, OntarioIconVideoEvents>({
+    tagName: 'ontario-icon-video',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconVisaEvents = NonNullable<unknown>;
 
-export const OntarioIconVisa: StencilReactComponent<OntarioIconVisaElement, OntarioIconVisaEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconVisaElement, OntarioIconVisaEvents>({
-		tagName: 'ontario-icon-visa',
-		properties: { iconWidth: 'icon-width' },
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconVisa: StencilReactComponent<OntarioIconVisaElement, OntarioIconVisaEvents> = /*@__PURE__*/ createComponent<OntarioIconVisaElement, OntarioIconVisaEvents>({
+    tagName: 'ontario-icon-visa',
+    properties: { iconWidth: 'icon-width' },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconVoteDislikeEvents = NonNullable<unknown>;
 
-export const OntarioIconVoteDislike: StencilReactComponent<
-	OntarioIconVoteDislikeElement,
-	OntarioIconVoteDislikeEvents
-> = /*@__PURE__*/ createComponent<OntarioIconVoteDislikeElement, OntarioIconVoteDislikeEvents>({
-	tagName: 'ontario-icon-vote-dislike',
-	properties: {
-		iconWidth: 'icon-width',
-		colour: 'colour',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioIconVoteDislike: StencilReactComponent<OntarioIconVoteDislikeElement, OntarioIconVoteDislikeEvents> = /*@__PURE__*/ createComponent<OntarioIconVoteDislikeElement, OntarioIconVoteDislikeEvents>({
+    tagName: 'ontario-icon-vote-dislike',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioIconVoteLikeEvents = NonNullable<unknown>;
 
-export const OntarioIconVoteLike: StencilReactComponent<OntarioIconVoteLikeElement, OntarioIconVoteLikeEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconVoteLikeElement, OntarioIconVoteLikeEvents>({
-		tagName: 'ontario-icon-vote-like',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconVoteLike: StencilReactComponent<OntarioIconVoteLikeElement, OntarioIconVoteLikeEvents> = /*@__PURE__*/ createComponent<OntarioIconVoteLikeElement, OntarioIconVoteLikeEvents>({
+    tagName: 'ontario-icon-vote-like',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconVpnKeyEvents = NonNullable<unknown>;
 
-export const OntarioIconVpnKey: StencilReactComponent<OntarioIconVpnKeyElement, OntarioIconVpnKeyEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconVpnKeyElement, OntarioIconVpnKeyEvents>({
-		tagName: 'ontario-icon-vpn-key',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconVpnKey: StencilReactComponent<OntarioIconVpnKeyElement, OntarioIconVpnKeyEvents> = /*@__PURE__*/ createComponent<OntarioIconVpnKeyElement, OntarioIconVpnKeyEvents>({
+    tagName: 'ontario-icon-vpn-key',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconWheelchairEvents = NonNullable<unknown>;
 
-export const OntarioIconWheelchair: StencilReactComponent<OntarioIconWheelchairElement, OntarioIconWheelchairEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconWheelchairElement, OntarioIconWheelchairEvents>({
-		tagName: 'ontario-icon-wheelchair',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconWheelchair: StencilReactComponent<OntarioIconWheelchairElement, OntarioIconWheelchairEvents> = /*@__PURE__*/ createComponent<OntarioIconWheelchairElement, OntarioIconWheelchairEvents>({
+    tagName: 'ontario-icon-wheelchair',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconWifiEvents = NonNullable<unknown>;
 
-export const OntarioIconWifi: StencilReactComponent<OntarioIconWifiElement, OntarioIconWifiEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconWifiElement, OntarioIconWifiEvents>({
-		tagName: 'ontario-icon-wifi',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconWifi: StencilReactComponent<OntarioIconWifiElement, OntarioIconWifiEvents> = /*@__PURE__*/ createComponent<OntarioIconWifiElement, OntarioIconWifiEvents>({
+    tagName: 'ontario-icon-wifi',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioIconYoutubeEvents = NonNullable<unknown>;
 
-export const OntarioIconYoutube: StencilReactComponent<OntarioIconYoutubeElement, OntarioIconYoutubeEvents> =
-	/*@__PURE__*/ createComponent<OntarioIconYoutubeElement, OntarioIconYoutubeEvents>({
-		tagName: 'ontario-icon-youtube',
-		properties: {
-			iconWidth: 'icon-width',
-			colour: 'colour',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioIconYoutube: StencilReactComponent<OntarioIconYoutubeElement, OntarioIconYoutubeEvents> = /*@__PURE__*/ createComponent<OntarioIconYoutubeElement, OntarioIconYoutubeEvents>({
+    tagName: 'ontario-icon-youtube',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioInputEvents = {
-	onInputOnInput: EventName<OntarioInputCustomEvent<InputInputEvent>>;
-	onInputOnChange: EventName<OntarioInputCustomEvent<InputInteractionEvent>>;
-	onInputOnBlur: EventName<OntarioInputCustomEvent<InputFocusBlurEvent>>;
-	onInputOnFocus: EventName<OntarioInputCustomEvent<InputFocusBlurEvent>>;
-	onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>;
+    onInputOnInput: EventName<OntarioInputCustomEvent<InputInputEvent>>,
+    onInputOnChange: EventName<OntarioInputCustomEvent<InputInteractionEvent>>,
+    onInputOnBlur: EventName<OntarioInputCustomEvent<InputFocusBlurEvent>>,
+    onInputOnFocus: EventName<OntarioInputCustomEvent<InputFocusBlurEvent>>,
+    onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>
 };
 
-export const OntarioInput: StencilReactComponent<OntarioInputElement, OntarioInputEvents> =
-	/*@__PURE__*/ createComponent<OntarioInputElement, OntarioInputEvents>({
-		tagName: 'ontario-input',
-		properties: {
-			caption: 'caption',
-			elementId: 'element-id',
-			inputWidth: 'input-width',
-			name: 'name',
-			hintText: 'hint-text',
-			required: 'required',
-			type: 'type',
-			value: 'value',
-			errorMessage: 'error-message',
-			language: 'language',
-			hintExpander: 'hint-expander',
-			enableLiveValidation: 'enable-live-validation',
-			inputValidator: 'input-validator',
-			customOnInput: 'custom-on-input',
-			customOnChange: 'custom-on-change',
-			customOnBlur: 'custom-on-blur',
-			customOnFocus: 'custom-on-focus',
-			requiredValidationMessage: 'required-validation-message',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioInput: StencilReactComponent<OntarioInputElement, OntarioInputEvents> = /*@__PURE__*/ createComponent<OntarioInputElement, OntarioInputEvents>({
+    tagName: 'ontario-input',
+    properties: {
+        caption: 'caption',
+        elementId: 'element-id',
+        inputWidth: 'input-width',
+        name: 'name',
+        hintText: 'hint-text',
+        required: 'required',
+        type: 'type',
+        value: 'value',
+        errorMessage: 'error-message',
+        language: 'language',
+        hintExpander: 'hint-expander',
+        enableLiveValidation: 'enable-live-validation',
+        inputValidator: 'input-validator',
+        customOnInput: 'custom-on-input',
+        customOnChange: 'custom-on-change',
+        customOnBlur: 'custom-on-blur',
+        customOnFocus: 'custom-on-focus',
+        requiredValidationMessage: 'required-validation-message'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioLanguageToggleEvents = {
-	onSetAppLanguage: EventName<OntarioLanguageToggleCustomEvent<Language>>;
-	onHeaderLanguageToggled: EventName<OntarioLanguageToggleCustomEvent<HeaderLanguageToggleEventDetails>>;
+    onSetAppLanguage: EventName<OntarioLanguageToggleCustomEvent<Language>>,
+    onHeaderLanguageToggled: EventName<OntarioLanguageToggleCustomEvent<HeaderLanguageToggleEventDetails>>
 };
 
-export const OntarioLanguageToggle: StencilReactComponent<OntarioLanguageToggleElement, OntarioLanguageToggleEvents> =
-	/*@__PURE__*/ createComponent<OntarioLanguageToggleElement, OntarioLanguageToggleEvents>({
-		tagName: 'ontario-language-toggle',
-		properties: {
-			language: 'language',
-			size: 'size',
-			url: 'url',
-			customLanguageToggle: 'custom-language-toggle',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioLanguageToggle: StencilReactComponent<OntarioLanguageToggleElement, OntarioLanguageToggleEvents> = /*@__PURE__*/ createComponent<OntarioLanguageToggleElement, OntarioLanguageToggleEvents>({
+    tagName: 'ontario-language-toggle',
+    properties: {
+        language: 'language',
+        size: 'size',
+        url: 'url',
+        customLanguageToggle: 'custom-language-toggle'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioLoadingIndicatorEvents = NonNullable<unknown>;
 
-export const OntarioLoadingIndicator: StencilReactComponent<
-	OntarioLoadingIndicatorElement,
-	OntarioLoadingIndicatorEvents
-> = /*@__PURE__*/ createComponent<OntarioLoadingIndicatorElement, OntarioLoadingIndicatorEvents>({
-	tagName: 'ontario-loading-indicator',
-	properties: {
-		type: 'type',
-		isLoading: 'is-loading',
-		message: 'message',
-		fullScreenOverlay: 'full-screen-overlay',
-		language: 'language',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioLoadingIndicator: StencilReactComponent<OntarioLoadingIndicatorElement, OntarioLoadingIndicatorEvents> = /*@__PURE__*/ createComponent<OntarioLoadingIndicatorElement, OntarioLoadingIndicatorEvents>({
+    tagName: 'ontario-loading-indicator',
+    properties: {
+        type: 'type',
+        isLoading: 'is-loading',
+        message: 'message',
+        fullScreenOverlay: 'full-screen-overlay',
+        language: 'language'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioPageAlertEvents = NonNullable<unknown>;
 
-export const OntarioPageAlert: StencilReactComponent<OntarioPageAlertElement, OntarioPageAlertEvents> =
-	/*@__PURE__*/ createComponent<OntarioPageAlertElement, OntarioPageAlertEvents>({
-		tagName: 'ontario-page-alert',
-		properties: {
-			type: 'type',
-			heading: 'heading',
-			content: 'content',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioPageAlert: StencilReactComponent<OntarioPageAlertElement, OntarioPageAlertEvents> = /*@__PURE__*/ createComponent<OntarioPageAlertElement, OntarioPageAlertEvents>({
+    tagName: 'ontario-page-alert',
+    properties: {
+        type: 'type',
+        heading: 'heading',
+        content: 'content'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioRadioButtonsEvents = {
-	onRadioOnChange: EventName<OntarioRadioButtonsCustomEvent<RadioAndCheckboxChangeEvent>>;
-	onRadioOnBlur: EventName<OntarioRadioButtonsCustomEvent<InputFocusBlurEvent>>;
-	onRadioOnFocus: EventName<OntarioRadioButtonsCustomEvent<InputFocusBlurEvent>>;
-	onInputErrorOccurred: EventName<CustomEvent<{ errorMessage: string }>>;
+    onRadioOnChange: EventName<OntarioRadioButtonsCustomEvent<RadioAndCheckboxChangeEvent>>,
+    onRadioOnBlur: EventName<OntarioRadioButtonsCustomEvent<InputFocusBlurEvent>>,
+    onRadioOnFocus: EventName<OntarioRadioButtonsCustomEvent<InputFocusBlurEvent>>,
+    onInputErrorOccurred: EventName<CustomEvent<{ errorMessage: string }>>
 };
 
-export const OntarioRadioButtons: StencilReactComponent<OntarioRadioButtonsElement, OntarioRadioButtonsEvents> =
-	/*@__PURE__*/ createComponent<OntarioRadioButtonsElement, OntarioRadioButtonsEvents>({
-		tagName: 'ontario-radio-buttons',
-		properties: {
-			caption: 'caption',
-			language: 'language',
-			name: 'name',
-			hintText: 'hint-text',
-			hintExpander: 'hint-expander',
-			required: 'required',
-			options: 'options',
-			errorMessage: 'error-message',
-			customOnChange: 'custom-on-change',
-			customOnBlur: 'custom-on-blur',
-			customOnFocus: 'custom-on-focus',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioRadioButtons: StencilReactComponent<OntarioRadioButtonsElement, OntarioRadioButtonsEvents> = /*@__PURE__*/ createComponent<OntarioRadioButtonsElement, OntarioRadioButtonsEvents>({
+    tagName: 'ontario-radio-buttons',
+    properties: {
+        caption: 'caption',
+        language: 'language',
+        name: 'name',
+        hintText: 'hint-text',
+        hintExpander: 'hint-expander',
+        required: 'required',
+        options: 'options',
+        errorMessage: 'error-message',
+        customOnChange: 'custom-on-change',
+        customOnBlur: 'custom-on-blur',
+        customOnFocus: 'custom-on-focus'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioSearchBoxEvents = {
-	onSearchOnSubmit: EventName<CustomEvent<string>>;
-	onInputOnInput: EventName<OntarioSearchBoxCustomEvent<InputInputEvent>>;
-	onInputOnChange: EventName<OntarioSearchBoxCustomEvent<InputInteractionEvent>>;
-	onInputOnBlur: EventName<OntarioSearchBoxCustomEvent<InputFocusBlurEvent>>;
-	onInputOnFocus: EventName<OntarioSearchBoxCustomEvent<InputFocusBlurEvent>>;
+    onSearchOnSubmit: EventName<CustomEvent<string>>,
+    onInputOnInput: EventName<OntarioSearchBoxCustomEvent<InputInputEvent>>,
+    onInputOnChange: EventName<OntarioSearchBoxCustomEvent<InputInteractionEvent>>,
+    onInputOnBlur: EventName<OntarioSearchBoxCustomEvent<InputFocusBlurEvent>>,
+    onInputOnFocus: EventName<OntarioSearchBoxCustomEvent<InputFocusBlurEvent>>
 };
 
-export const OntarioSearchBox: StencilReactComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents> =
-	/*@__PURE__*/ createComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents>({
-		tagName: 'ontario-search-box',
-		properties: {
-			language: 'language',
-			elementId: 'element-id',
-			value: 'value',
-			caption: 'caption',
-			required: 'required',
-			performSearch: 'perform-search',
-			hintText: 'hint-text',
-			customOnInput: 'custom-on-input',
-			customOnChange: 'custom-on-change',
-			customOnBlur: 'custom-on-blur',
-			customOnFocus: 'custom-on-focus',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioSearchBox: StencilReactComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents> = /*@__PURE__*/ createComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents>({
+    tagName: 'ontario-search-box',
+    properties: {
+        language: 'language',
+        elementId: 'element-id',
+        value: 'value',
+        caption: 'caption',
+        required: 'required',
+        performSearch: 'perform-search',
+        hintText: 'hint-text',
+        customOnInput: 'custom-on-input',
+        customOnChange: 'custom-on-change',
+        customOnBlur: 'custom-on-blur',
+        customOnFocus: 'custom-on-focus'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioStepIndicatorEvents = NonNullable<unknown>;
 
-export const OntarioStepIndicator: StencilReactComponent<OntarioStepIndicatorElement, OntarioStepIndicatorEvents> =
-	/*@__PURE__*/ createComponent<OntarioStepIndicatorElement, OntarioStepIndicatorEvents>({
-		tagName: 'ontario-step-indicator',
-		properties: {
-			showBackButton: 'show-back-button',
-			backButtonUrl: 'back-button-url',
-			currentStep: 'current-step',
-			numberOfSteps: 'number-of-steps',
-			percentageComplete: 'percentage-complete',
-			customOnClick: 'custom-on-click',
-			language: 'language',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioStepIndicator: StencilReactComponent<OntarioStepIndicatorElement, OntarioStepIndicatorEvents> = /*@__PURE__*/ createComponent<OntarioStepIndicatorElement, OntarioStepIndicatorEvents>({
+    tagName: 'ontario-step-indicator',
+    properties: {
+        showBackButton: 'show-back-button',
+        backButtonUrl: 'back-button-url',
+        currentStep: 'current-step',
+        numberOfSteps: 'number-of-steps',
+        percentageComplete: 'percentage-complete',
+        customOnClick: 'custom-on-click',
+        language: 'language'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioTableEvents = NonNullable<unknown>;
 
-export const OntarioTable: StencilReactComponent<OntarioTableElement, OntarioTableEvents> =
-	/*@__PURE__*/ createComponent<OntarioTableElement, OntarioTableEvents>({
-		tagName: 'ontario-table',
-		properties: {
-			caption: 'caption',
-			tableColumns: 'table-columns',
-			tableData: 'table-data',
-			zebraStripes: 'zebra-stripes',
-			condensed: 'condensed',
-			fullWidth: 'full-width',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioTable: StencilReactComponent<OntarioTableElement, OntarioTableEvents> = /*@__PURE__*/ createComponent<OntarioTableElement, OntarioTableEvents>({
+    tagName: 'ontario-table',
+    properties: {
+        caption: 'caption',
+        tableColumns: 'table-columns',
+        tableData: 'table-data',
+        zebraStripes: 'zebra-stripes',
+        condensed: 'condensed',
+        fullWidth: 'full-width'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioTaskEvents = NonNullable<unknown>;
 
-export const OntarioTask: StencilReactComponent<OntarioTaskElement, OntarioTaskEvents> = /*@__PURE__*/ createComponent<
-	OntarioTaskElement,
-	OntarioTaskEvents
->({
-	tagName: 'ontario-task',
-	properties: {
-		label: 'label',
-		taskId: 'task-id',
-		link: 'link',
-		deactivateLink: 'deactivate-link',
-		language: 'language',
-		hintText: 'hint-text',
-		taskStatus: 'task-status',
-		headingLevel: 'heading-level',
-	},
-	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-	serializeShadowRoot,
+export const OntarioTask: StencilReactComponent<OntarioTaskElement, OntarioTaskEvents> = /*@__PURE__*/ createComponent<OntarioTaskElement, OntarioTaskEvents>({
+    tagName: 'ontario-task',
+    properties: {
+        label: 'label',
+        taskId: 'task-id',
+        link: 'link',
+        deactivateLink: 'deactivate-link',
+        language: 'language',
+        hintText: 'hint-text',
+        taskStatus: 'task-status',
+        headingLevel: 'heading-level'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
 });
 
 export type OntarioTaskListEvents = NonNullable<unknown>;
 
-export const OntarioTaskList: StencilReactComponent<OntarioTaskListElement, OntarioTaskListEvents> =
-	/*@__PURE__*/ createComponent<OntarioTaskListElement, OntarioTaskListEvents>({
-		tagName: 'ontario-task-list',
-		properties: {
-			label: 'label',
-			headingLevel: 'heading-level',
-			language: 'language',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioTaskList: StencilReactComponent<OntarioTaskListElement, OntarioTaskListEvents> = /*@__PURE__*/ createComponent<OntarioTaskListElement, OntarioTaskListEvents>({
+    tagName: 'ontario-task-list',
+    properties: {
+        label: 'label',
+        headingLevel: 'heading-level',
+        language: 'language'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
 
 export type OntarioTextareaEvents = {
-	onInputOnInput: EventName<OntarioTextareaCustomEvent<InputInputEvent>>;
-	onInputOnChange: EventName<OntarioTextareaCustomEvent<InputInteractionEvent>>;
-	onInputOnBlur: EventName<OntarioTextareaCustomEvent<InputFocusBlurEvent>>;
-	onInputOnFocus: EventName<OntarioTextareaCustomEvent<InputFocusBlurEvent>>;
-	onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>;
+    onInputOnInput: EventName<OntarioTextareaCustomEvent<InputInputEvent>>,
+    onInputOnChange: EventName<OntarioTextareaCustomEvent<InputInteractionEvent>>,
+    onInputOnBlur: EventName<OntarioTextareaCustomEvent<InputFocusBlurEvent>>,
+    onInputOnFocus: EventName<OntarioTextareaCustomEvent<InputFocusBlurEvent>>,
+    onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>
 };
 
-export const OntarioTextarea: StencilReactComponent<OntarioTextareaElement, OntarioTextareaEvents> =
-	/*@__PURE__*/ createComponent<OntarioTextareaElement, OntarioTextareaEvents>({
-		tagName: 'ontario-textarea',
-		properties: {
-			caption: 'caption',
-			name: 'name',
-			elementId: 'element-id',
-			required: 'required',
-			value: 'value',
-			hintText: 'hint-text',
-			hintExpander: 'hint-expander',
-			language: 'language',
-			errorMessage: 'error-message',
-			customOnInput: 'custom-on-input',
-			customOnChange: 'custom-on-change',
-			customOnBlur: 'custom-on-blur',
-			customOnFocus: 'custom-on-focus',
-		},
-		hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
-		serializeShadowRoot,
-	});
+export const OntarioTextarea: StencilReactComponent<OntarioTextareaElement, OntarioTextareaEvents> = /*@__PURE__*/ createComponent<OntarioTextareaElement, OntarioTextareaEvents>({
+    tagName: 'ontario-textarea',
+    properties: {
+        caption: 'caption',
+        name: 'name',
+        elementId: 'element-id',
+        required: 'required',
+        value: 'value',
+        hintText: 'hint-text',
+        hintExpander: 'hint-expander',
+        language: 'language',
+        errorMessage: 'error-message',
+        customOnInput: 'custom-on-input',
+        customOnChange: 'custom-on-change',
+        customOnBlur: 'custom-on-blur',
+        customOnFocus: 'custom-on-focus'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});

@@ -34,9 +34,11 @@ createComponent.tsx
 interfaces.ts
 **/src/components.ts
 **/src/components/components.ts
+**/src/components/components.server.ts
 **/utils/attachProps.ts
 **/utils/index.tsx
 **/utils/case.ts
 **/utils/dev.ts
 
+# Nx
 /.nx/workspace-data
