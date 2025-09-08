@@ -276,7 +276,11 @@ export class OntarioTextarea implements Input {
 	private handleEvent(event: Event, eventType: EventType) {
 		const input = event.target as HTMLTextAreaElement | null;
 
-		this.internals?.setFormValue?.(input?.value ?? '');
+		// Guard usage of `this.internals` to ensure this logic only runs in the browser.
+		// `ElementInternals` is not available during SSR, and unguarded access can cause hydration errors.
+		if (typeof this.internals?.setFormValue === 'function') {
+			this.internals.setFormValue(input?.value ?? '');
+		}
 
 		handleInputEvent(
 			event,

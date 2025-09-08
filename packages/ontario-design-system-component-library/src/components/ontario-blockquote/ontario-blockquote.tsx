@@ -4,6 +4,7 @@ import { Blockquote } from './blockquote.interface';
 
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { isServerSideRendering } from '../../utils/common/environment';
 
 @Component({
 	tag: 'ontario-blockquote',
@@ -44,9 +45,15 @@ export class OntarioBlockquote implements Blockquote {
 	 */
 	@Watch('quote')
 	validateQuote() {
-		this.quoteState = this.quote ?? this.host.textContent ?? '';
+		if (isServerSideRendering()) {
+			// Ensure host and its textContent are defined and accessible (safe for SSR environments)
+			this.quoteState = this.quote ?? '';
+		} else {
+			this.quoteState = this.quote ?? this.host.textContent ?? '';
+		}
+
 		this.validateQuoteContent(this.quoteState);
-		this.shortQuote = this.quoteState?.length <= this.shortQuoteLength ?? true;
+		this.shortQuote = this.quoteState?.length <= this.shortQuoteLength;
 	}
 
 	/**

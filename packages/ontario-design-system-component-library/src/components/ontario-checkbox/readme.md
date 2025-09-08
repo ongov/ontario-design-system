@@ -252,6 +252,15 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 - Do not preselect checkboxes (there should be no checked attribute by default on the checkbox)
 - All checkboxes in a group should have the same name value to associate them as a group of options
 
+## Technical Note: SSR (Server-Side Rendering) Considerations
+
+The Ontario Checkbox component supports Server-Side Rendering (SSR), but to ensure correct rendering and prevent hydration mismatches, keep the following in mind:
+
+- **Langauge-Props**: Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-checkbox language="fr"></ontario-checkbox>`).
+- **Dynamic ID generation:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, you should explicitly pass a stable `elementId`.
+- **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Ensure this does not impact critical accessibility paths.
+- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR (before hydration), the component will render as a standard `<input type="checkbox">`, meaning it can still function inside a `<form>` and be submitted normally. However, enhanced form behavior (like validation or custom value handling) only becomes active after hydration in the browser.
+
 <!-- Auto Generated Below -->
 
 ## Properties
