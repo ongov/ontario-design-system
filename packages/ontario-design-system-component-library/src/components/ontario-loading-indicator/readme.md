@@ -49,6 +49,12 @@ There is also a custom message passed to display as the loading content.
     </div>
 </div>
 
+## Technical Note: SSR (Server-Side Rendering) Considerations
+
+The Ontario Loading Indicator component is compatible with Server-Side Rendering (SSR), but a few guidelines are recommended for best results:
+
+- **Avoid relying on language toggle events** (`setAppLanguage`, `headerLanguageToggled`) to determine language server-side. Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-loading-indicator language="fr"></ontario-loading-indicator>`).
+
 <!-- Auto Generated Below -->
 
 ## Properties

@@ -37,7 +37,7 @@ export class OntarioCardCollection {
 				.addDesignSystemTag()
 				.addMonospaceText(' cards-per-row ')
 				.addRegularText('on')
-				.addMonospaceText(' <ontario-card> ')
+				.addMonospaceText(' <ontario-card-collection> ')
 				.addRegularText(
 					`${
 						isNaN(this.cardsPerRow) ? 'was set to a non-numeric value' : 'was set to a negative number'

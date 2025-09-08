@@ -1,12 +1,13 @@
 import { Component, Prop, State, Event, EventEmitter, Watch, h, Fragment } from '@stencil/core';
 
 import { supportedLanguages, Language } from '../../utils/common/language-types';
+import { isClientSideRendering } from '../../utils/common/environment';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
+import { printArray, getRootHTMLElement } from '../../utils/helper/utils';
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
 import { default as translations } from '../../translations/global.i18n.json';
-import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
-import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { printArray, getRootHTMLElement } from '../../utils/helper/utils';
 
 @Component({
 	tag: 'ontario-language-toggle',
@@ -96,32 +97,38 @@ export class OntarioLanguageToggle {
 	 */
 	private setAppLanguageHandler() {
 		const defaultLang = this.translations.siteLanguage.abbreviation.en;
-		const rootLang = getRootHTMLElement()?.lang;
 
-		// If languageState is not set, set it equal to the following cadence:
-		// language prop value, <html> tag lang attribute, or default to "en"
+		// If internal language state isn't already set, determine the best language source
 		if (!this.languageState) {
 			if (this.language) {
+				// Use explicitly passed prop value if available
 				this.languageState = this.language;
-			} else if (rootLang) {
+			} else if (typeof window !== 'undefined') {
+				// On the client, try to derive from <html lang=""> if no prop was passed
+				const rootLang = getRootHTMLElement()?.lang;
 				if (validateValueAgainstArray(rootLang, supportedLanguages)) {
 					this.languageState = rootLang as Language;
 				} else {
-					this.showLanguageWarning(rootLang, 'document');
+					// Log a warning if <html lang=""> is invalid, and fallback
+					if (rootLang) this.showLanguageWarning(rootLang, 'document');
 					this.languageState = defaultLang;
 				}
 			} else {
+				// Fallback for SSR: use default language when document is not accessible
 				this.languageState = defaultLang;
 			}
 		}
 
+		// Emit the language value to notify other components or app logic
 		this.setAppLanguage.emit(this.languageState);
 
+		// Update label shown in the UI for toggling languages (e.g., "Français" if current is "en")
 		this.oppositeLanguageLabel = {
 			fullWord: this.getOppositeLanguageFullWord(),
 			abbreviation: this.getOppositeLanguageAbbrievation(),
 		};
 
+		// Update <html lang=""> to match selected language (helps with screen readers & SEO)
 		this.updateHTMLLang();
 	}
 
@@ -240,7 +247,7 @@ export class OntarioLanguageToggle {
 		});
 
 		// Only create/trigger the MutationObserver if the <html> element exists.
-		if (getRootHTMLElement()) {
+		if (isClientSideRendering() && getRootHTMLElement()) {
 			const options = { attributes: true };
 			observer.observe(getRootHTMLElement(), options);
 		}
