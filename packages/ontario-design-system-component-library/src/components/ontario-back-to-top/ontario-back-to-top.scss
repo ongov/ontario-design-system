@@ -96,7 +96,7 @@ $ontario-colour-back-to-top--active-background: #b2b2b2;
 		}
 
 		.ontario-icon {
-			margin: calc(spacing.$spacing-1 / 2) spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0;
+			margin: math.div(spacing.$spacing-1, 2) spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0;
 
 			@-moz-document url-prefix() {
 				margin-top: $ontario-icon-margin-top;
