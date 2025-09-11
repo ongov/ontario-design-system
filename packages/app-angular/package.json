@@ -1,6 +1,6 @@
 {
 	"name": "app-angular",
-	"version": "6.0.0-alpha.1",
+	"version": "6.0.0-alpha.2",
 	"type": "module",
 	"scripts": {
 		"ng": "ng",
@@ -29,7 +29,7 @@
 		"@angular/router": "^18.2.11",
 		"@ngx-translate/core": "^14.0.0",
 		"@ngx-translate/http-loader": "^7.0.0",
-		"@ongov/ontario-design-system-component-library-angular": "^6.0.0-alpha.1",
+		"@ongov/ontario-design-system-component-library-angular": "^6.0.0-alpha.2",
 		"@ongov/ontario-design-system-design-tokens": "^6.0.0-alpha.1",
 		"@ongov/ontario-design-system-global-styles": "^6.0.0-alpha.1",
 		"@uirouter/angular": "^11.1.0",

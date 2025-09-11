@@ -22,7 +22,7 @@ jobs:
         uses: pnpm/action-setup@v4.0.0
 
       - name: Run Renovate
-        uses: renovatebot/github-action@v42.0.0
+        uses: renovatebot/github-action@v43.0.5
         env:
           # GitHub and NPM tokens must be set in the repository secrets
           GH_TOKEN: ${{ secrets.GH_TOKEN }}

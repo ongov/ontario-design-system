@@ -5,6 +5,7 @@ import { ButtonType, ButtonTypes, HtmlType, HtmlTypes } from './ontario-button.t
 
 import { validatePropExists, validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { isServerSideRendering } from '../../utils/common/environment';
 
 @Component({
 	tag: 'ontario-button',
@@ -82,7 +83,12 @@ export class OntarioButton implements Button {
 	 */
 	@Watch('label')
 	private updateLabelContent() {
-		this.labelState = this.label ?? this.host.textContent ?? '';
+		if (isServerSideRendering()) {
+			// Ensure host and its textContent are defined and accessible (safe for SSR environments)
+			this.labelState = this.label ?? '';
+		} else {
+			this.labelState = this.label ?? this.host.textContent ?? '';
+		}
 		this.validateLabelContent(this.labelState);
 	}
 

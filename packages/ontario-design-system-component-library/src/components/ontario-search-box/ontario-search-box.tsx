@@ -1,8 +1,13 @@
 import { Component, Prop, h, Element, EventEmitter, Event, AttachInternals, State, Watch } from '@stencil/core';
-import { Input } from '../../utils/common/input/input';
-import { Language } from '../../utils/common/language-types';
 import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
+
+import { Input } from '../../utils/common/input/input';
+import { Caption } from '../../utils/common/input-caption/caption.interface';
+import { InputCaption } from '../../utils/common/input-caption/input-caption';
+import { Language } from '../../utils/common/language-types';
 import { Hint } from '../../utils/common/common.interface';
+import { isClientSideRendering } from '../../utils/common/environment';
+import { constructHintTextObject } from '../../utils/components/hints/hints';
 import { handleInputEvent } from '../../utils/events/event-handler';
 import {
 	InputFocusBlurEvent,
@@ -10,10 +15,8 @@ import {
 	InputInteractionEvent,
 	InputInputEvent,
 } from '../../utils/events/event-handler.interface';
-import { Caption } from '../../utils/common/input-caption/caption.interface';
-import { InputCaption } from '../../utils/common/input-caption/input-caption';
+
 import { default as translations } from '../../translations/global.i18n.json';
-import { constructHintTextObject } from '../../utils/components/hints/hints';
 
 @Component({
 	tag: 'ontario-search-box',
@@ -232,7 +235,11 @@ export class OntarioSearchBox {
 		// Update the component value to match the value of the input element.
 		this.value = input?.value;
 
-		this.internals?.setFormValue?.(this.value ?? '');
+		// Guard usage of `this.internals` to ensure this logic only runs in the browser.
+		// `ElementInternals` is not available during SSR, and unguarded access can cause hydration errors.
+		if (typeof this.internals?.setFormValue === 'function') {
+			this.internals.setFormValue(this.value ?? '');
+		}
 
 		handleInputEvent(
 			event,
@@ -272,7 +279,7 @@ export class OntarioSearchBox {
 	 *This function ensures that the focus returns to the search input field when the reset button is clicked.
 	 */
 	private setFocus(inputRef?: HTMLInputElement) {
-		if (inputRef) {
+		if (isClientSideRendering() && inputRef) {
 			inputRef.focus();
 		}
 	}

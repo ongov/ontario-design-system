@@ -37,6 +37,23 @@ Example of a hint text that includes the `hint` property, which will override th
   </OntarioHintText>
 </div>
 
+## Technical Note: Content Rendering and SSR (Server-Side Rendering)
+
+The Ontario Hint component supports two ways of defining hints:
+
+- Via the `hint` prop (as a string)
+- Via slotted children placed between the component's opening and closing tags
+
+While both approaches work in the browser, only the `hint` prop is reliably rendered during Server-Side Rendering (SSR).
+
+### SSR-safe example:
+
+During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the hint through the `hint` prop. Eg:
+
+```html
+<ontario-hint hint="Provide a detailed street address."></ontario-hint>
+```
+
 <!-- Auto Generated Below -->
 
 ## Overview

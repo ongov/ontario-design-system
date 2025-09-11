@@ -66,6 +66,23 @@ This is another example of an aside. This time, the content is passed as a child
 	</OntarioAside>
 </div>
 
+## Technical Note: SSR (Server-Side Rendering) Considerations
+
+The Ontario Aside component supports two ways of defining content:
+
+- Via the `content` prop (as a string)
+- Via slotted children placed between the component's opening and closing tags
+
+While both approaches work in the browser, only the `content` prop is reliably rendered during Server-Side Rendering (SSR).
+
+### SSR-safe example:
+
+During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the aside content through the `content` prop. Eg:
+
+```html
+<ontario-aside headingContent="Notice" content="This is the callout content."></ontario-aside>
+```
+
 <!-- Auto Generated Below -->
 
 ## Properties

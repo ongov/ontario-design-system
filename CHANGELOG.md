@@ -1,3 +1,10 @@
+# 6.0.0-alpha.2 (2025-08-12)
+
+### Bug Fixes
+
+- **gulpfile:** update complete style package build c10a288
+- **web-components-library:** remove unused header type swap code from global.ts file 8cce6f4
+
 # 6.0.0-alpha.1 (2025-07-03)
 
 - **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** feat(fonts)!: update font files and SCSS variables for Raleway Modified and Open Sans 5fa5465

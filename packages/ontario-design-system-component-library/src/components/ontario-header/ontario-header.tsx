@@ -18,6 +18,8 @@ import OntarioHeaderDefaultData from './ontario-header-default-data.json';
 import { Language } from '../../utils/common/language-types';
 import { getImageAssetSrcPath } from '../../utils/helper/assets';
 import { validateLanguage } from '../../utils/validation/validation-functions';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { ConsoleType } from '../../utils/console-message/console-message.enum';
 
 import translations from '../../translations/global.i18n.json';
 import config from '../../config.json';
@@ -193,37 +195,88 @@ export class OntarioHeader {
 	private parseApplicationHeaderInfo() {
 		const applicationHeaderInfo = this.applicationHeaderInfo;
 		if (applicationHeaderInfo) {
-			if (typeof applicationHeaderInfo === 'string')
-				this.applicationHeaderInfoState = JSON.parse(applicationHeaderInfo);
-			else this.applicationHeaderInfoState = applicationHeaderInfo;
+			try {
+				if (typeof applicationHeaderInfo === 'string')
+					this.applicationHeaderInfoState = JSON.parse(applicationHeaderInfo);
+				else this.applicationHeaderInfoState = applicationHeaderInfo;
+			} catch (error) {
+				const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addRegularText(' failed to parse props for ')
+					.addMonospaceText('<ontario-header>')
+					.addRegularText(' in ')
+					.addMonospaceText('parseApplicationHeaderInfo()')
+					.addRegularText(' method \n ')
+					.addMonospaceText(error.stack)
+					.printMessage(ConsoleType.Error);
+
+				this.applicationHeaderInfoState = {
+					title: '',
+					href: '/',
+				}; // fallback on error
+			}
 		}
 	}
 
 	@Watch('menuItems')
 	parseMenuItems() {
 		const isEnglish = this.language === 'en';
+		try {
+			if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
+				this.menuItemState = JSON.parse(this.menuItems);
+				this.isDynamicMenu = false;
+			} else if (Array.isArray(this.menuItems) && this.type === 'application') {
+				this.menuItemState = this.menuItems;
+				this.isDynamicMenu = false;
+			} else {
+				this.menuItemState = isEnglish ? OntarioHeaderDefaultData.en : OntarioHeaderDefaultData.fr;
+				this.isDynamicMenu = false;
+			}
+		} catch (error) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addRegularText(' failed to parse props for ')
+				.addMonospaceText('<ontario-header>')
+				.addRegularText(' in ')
+				.addMonospaceText('parseMenuItems()')
+				.addRegularText(' method \n ')
+				.addMonospaceText(error.stack)
+				.printMessage(ConsoleType.Error);
 
-		if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
-			this.menuItemState = JSON.parse(this.menuItems);
-			this.isDynamicMenu = false;
-		} else if (Array.isArray(this.menuItems) && this.type === 'application') {
-			this.menuItemState = this.menuItems;
-			this.isDynamicMenu = false;
-		} else {
-			this.menuItemState = isEnglish ? OntarioHeaderDefaultData.en : OntarioHeaderDefaultData.fr;
-			this.isDynamicMenu = false;
+			this.menuItemState = [];
 		}
 	}
 
 	@Watch('languageToggleOptions')
 	private parseLanguage() {
 		const languageToggleOptions = this.languageToggleOptions;
-		if (languageToggleOptions) {
-			if (typeof languageToggleOptions === 'string') {
-				this.languageState = JSON.parse(languageToggleOptions);
-			} else {
-				this.languageState = languageToggleOptions;
+
+		try {
+			if (languageToggleOptions) {
+				if (typeof languageToggleOptions === 'string') {
+					this.languageState = JSON.parse(languageToggleOptions);
+				} else {
+					this.languageState = languageToggleOptions;
+				}
 			}
+		} catch (error) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addRegularText(' failed to parse props for ')
+				.addMonospaceText('<ontario-header>')
+				.addRegularText(' in ')
+				.addMonospaceText('parseLanguage()')
+				.addRegularText(' method \n ')
+				.addMonospaceText(error.stack)
+				.printMessage(ConsoleType.Error);
+
+			this.languageState = {
+				englishLink: '/en',
+				frenchLink: '/fr',
+			}; // fallback on error
 		}
 	}
 
@@ -335,6 +388,20 @@ export class OntarioHeader {
 		}
 		return;
 	}
+
+	/**
+	 * Hydration Guard Flag
+	 *
+	 * This flag is used to determine if the component has been hydrated in the browser.
+	 * It prevents certain browser-only operations, like fetching from APIs, from running
+	 * during Server-Side Rendering (SSR), where `window` and `fetch` are not available.
+	 *
+	 * The `isHydrated` flag is set to true in `componentDidLoad()` and checked before
+	 * triggering logic that should only run in the browser (e.g., `fetchOntarioMenu()`).
+	 *
+	 * Not reactive - should  not be stored in State.
+	 */
+	private isHydrated = false;
 
 	/**
 	 * Generate the full path to an image asset based on the base asset path.
@@ -499,8 +566,12 @@ export class OntarioHeader {
 		this.parseLanguage();
 	}
 
+	componentDidLoad() {
+		this.isHydrated = true;
+	}
+
 	componentDidRender() {
-		if (this.disableDynamicMenu === false && this.type === 'ontario') {
+		if (this.isHydrated && this.disableDynamicMenu === false && this.type === 'ontario') {
 			this.fetchOntarioMenu();
 		}
 	}
