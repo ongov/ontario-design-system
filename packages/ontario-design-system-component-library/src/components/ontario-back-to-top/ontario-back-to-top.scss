@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
@@ -91,8 +92,12 @@ $ontario-colour-back-to-top--active-background: #b2b2b2;
 		width: globalFunctions.px-to-rem(48);
 		height: globalFunctions.px-to-rem(48);
 
+		span {
+			display: block;
+		}
+
 		.ontario-icon {
-			margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0;
+			margin: math.div(spacing.$spacing-1, 2) spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0;
 
 			@-moz-document url-prefix() {
 				margin-top: $ontario-icon-margin-top;
