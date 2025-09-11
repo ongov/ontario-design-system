@@ -26,6 +26,7 @@ export default function ButtonExample() {
 				<div className="ontario-margin-top-24-!">
 					<h3 className="ontario-h4">Primary</h3>
 					<OntarioButton
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
 						placeholder=""
 						onPointerEnterCapture={() => {}}
 						onPointerLeaveCapture={() => {}}
@@ -50,6 +51,7 @@ export default function ButtonExample() {
 					<OntarioButton
 						type="secondary"
 						elementId="secondary-button"
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
 						placeholder=""
 						onPointerEnterCapture={() => {}}
 						onPointerLeaveCapture={() => {}}
@@ -73,6 +75,7 @@ export default function ButtonExample() {
 						type="tertiary"
 						label="Tertiary button"
 						onClick={onButtonClick}
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
 						placeholder=""
 						onPointerEnterCapture={() => {}}
 						onPointerLeaveCapture={() => {}}

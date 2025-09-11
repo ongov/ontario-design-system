@@ -70,9 +70,9 @@ task('generate:components-import-file', async (done) => {
 	const componentSassFilePaths = await glob(globPattern);
 	const contentLines = componentSassFilePaths.map((filePath) => {
 		// Remove the path up to the component name
-		// e.g. from 'src/styles/components/ontario-button/ontario-button.scss' to 'ontario-button/ontario-button.scss'
-		const paths = filePath.replace(/.*?\/.*?\/s.*?\//, '');
-		return `@forward "./${paths}";`;
+		// e.g. from 'src/styles/components/ontario-button/ontario-button.scss' to 'components/ontario-button/ontario-button.scss'
+		const cleanedPath = filePath.replace(/^.*?components\//, 'components/');
+		return `@forward "../../${cleanedPath}";`;
 	});
 
 	const assetStyles = await fs.readFile('./asset-styles.scss', 'utf8');

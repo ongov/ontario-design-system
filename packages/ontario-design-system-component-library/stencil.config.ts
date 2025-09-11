@@ -71,6 +71,7 @@ export const config: Config = {
 		{
 			type: 'docs-readme',
 			dir: '../app-web-components-documentation/docs/',
+			overwriteExisting: true,
 		},
 		{
 			type: 'www',

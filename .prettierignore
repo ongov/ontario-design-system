@@ -33,6 +33,7 @@ components.d.ts
 createComponent.tsx
 interfaces.ts
 **/src/components.ts
+**/src/components/components.ts
 **/utils/attachProps.ts
 **/utils/index.tsx
 **/utils/case.ts

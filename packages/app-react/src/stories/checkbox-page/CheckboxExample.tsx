@@ -6,7 +6,7 @@ import CodeHighlighter from '../../components/code-highlighter';
 
 export default function CheckboxExample() {
 	const checkboxCodeExample = `import { OntarioCheckboxes } from '@ongov/ontario-design-system-component-library-react'; \n\n
-<OntarioCheckboxes 
+<OntarioCheckboxes
 	ref={componentRef}
 	caption={{
 		captionText: "Checkbox legend",
@@ -78,6 +78,7 @@ export default function CheckboxExample() {
 				<h2>Example</h2>
 				<div className="ontario-margin-top-24-!">
 					<OntarioCheckboxes
+						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
 						placeholder=""
 						onPointerEnterCapture={() => {}}
 						onPointerLeaveCapture={() => {}}

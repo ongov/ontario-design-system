@@ -78,7 +78,7 @@ This method returns the ontario-hint-text id. It is used to make sure the hint t
 
 Type: `Promise<string | undefined>`
 
-Promise<string | undefined>
+The ID of the hint text element, or undefined if no ID is set.
 
 ## Shadow Parts
 

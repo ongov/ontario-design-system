@@ -55,18 +55,18 @@ export class OntarioSearchBox {
 	@Prop({ mutable: true }) value?: string;
 
 	/**
-	* The text to display as the input label
-	*
-	* @example
-	* <ontario-search-box
-	*      caption='{
-					"captionText": "Search directory",
-					"captionType": "default"
-					}'
-				required = "true"
-	>
-	</ontario-search-box>
-	*/
+	 * The text to display as the input label
+	 *
+	 * @example
+	 * <ontario-search-box
+	 *   caption='{
+	 *			"captionText": "Search directory",
+	 *			"captionType": "default"
+	 *		}'
+	 *		required = "true"
+	 * >
+	 * </ontario-search-box>
+	 */
 	@Prop() caption: Caption | string;
 
 	/**

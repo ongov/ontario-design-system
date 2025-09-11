@@ -1,4 +1,4 @@
-import { h, Component, Prop, Watch, State, Listen, Element, Fragment } from '@stencil/core';
+import { h, Component, Prop, Watch, State, Listen, Element } from '@stencil/core';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { TaskStatuses, TaskBadgeColour, TaskToBadgeColour } from '../../utils/common/task-statuses.enum';
 import { validateLanguage, validateValueAgainstArray } from '../../utils/validation/validation-functions';
@@ -254,7 +254,10 @@ export class OntarioTask {
 
 		return (
 			<div class="ontario-task__content">
-				{h(this.headingLevel, headingProps, this.label)}
+				<div class="ontario-task__text">
+					{h(this.headingLevel, headingProps, this.label)}
+					{this.renderHintText()}
+				</div>
 				{this.taskStatusState && (
 					<ontario-badge
 						class="ontario-task__badge"
@@ -270,7 +273,6 @@ export class OntarioTask {
 			</div>
 		);
 	}
-
 	/**
 	 * After the component loads, retrieve the hint text ID (if available) from the hintText component,
 	 * and set it for the `aria-describedby` attribute.
@@ -304,13 +306,6 @@ export class OntarioTask {
 		const taskStatusClass = `ontario-task-status--${this.taskStatusState.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}`;
 		const describedBy = this.internalHintText ? `hint-text--${this.taskId}` : undefined;
 
-		const taskContent = (
-			<Fragment>
-				{this.renderTaskContent()}
-				{this.renderHintText()}
-			</Fragment>
-		);
-
 		return (
 			<li
 				class={`ontario-task ${taskStatusClass}`}
@@ -321,10 +316,10 @@ export class OntarioTask {
 			>
 				{isLinkActive ? (
 					<a href={this.link} class="ontario-task__link" aria-label={this.label}>
-						{taskContent}
+						{this.renderTaskContent()}
 					</a>
 				) : (
-					<div>{taskContent}</div>
+					<div>{this.renderTaskContent()}</div>
 				)}
 			</li>
 		);

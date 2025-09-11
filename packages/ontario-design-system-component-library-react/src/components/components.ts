@@ -691,15 +691,14 @@ export const OntarioCard: StencilReactComponent<OntarioCardElement, OntarioCardE
 
 export type OntarioCardCollectionEvents = NonNullable<unknown>;
 
-export const OntarioCardCollection: StencilReactComponent<OntarioCardCollectionElement, OntarioCardCollectionEvents> =
-	/*@__PURE__*/ createComponent<OntarioCardCollectionElement, OntarioCardCollectionEvents>({
-		tagName: 'ontario-card-collection',
-		elementClass: OntarioCardCollectionElement,
-		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-		react: React,
-		events: {} as OntarioCardCollectionEvents,
-		defineCustomElement: defineOntarioCardCollection,
-	});
+export const OntarioAside: StencilReactComponent<OntarioAsideElement, OntarioAsideEvents> = /*@__PURE__*/ createComponent<OntarioAsideElement, OntarioAsideEvents>({
+    tagName: 'ontario-aside',
+    elementClass: OntarioAsideElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioAsideEvents,
+    defineCustomElement: defineOntarioAside
+});
 
 export type OntarioCheckboxesEvents = {
 	onCheckboxOnChange: EventName<OntarioCheckboxesCustomEvent<RadioAndCheckboxChangeEvent>>;
@@ -708,32 +707,30 @@ export type OntarioCheckboxesEvents = {
 	onInputErrorOccurred: EventName<CustomEvent<{ errorMessage: string }>>;
 };
 
-export const OntarioCheckboxes: StencilReactComponent<OntarioCheckboxesElement, OntarioCheckboxesEvents> =
-	/*@__PURE__*/ createComponent<OntarioCheckboxesElement, OntarioCheckboxesEvents>({
-		tagName: 'ontario-checkboxes',
-		elementClass: OntarioCheckboxesElement,
-		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-		react: React,
-		events: {
-			onCheckboxOnChange: 'checkboxOnChange',
-			onCheckboxOnBlur: 'checkboxOnBlur',
-			onCheckboxOnFocus: 'checkboxOnFocus',
-			onInputErrorOccurred: 'inputErrorOccurred',
-		} as OntarioCheckboxesEvents,
-		defineCustomElement: defineOntarioCheckboxes,
-	});
+export const OntarioCheckboxes: StencilReactComponent<OntarioCheckboxesElement, OntarioCheckboxesEvents> = /*@__PURE__*/ createComponent<OntarioCheckboxesElement, OntarioCheckboxesEvents>({
+    tagName: 'ontario-checkboxes',
+    elementClass: OntarioCheckboxesElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onCheckboxOnChange: 'checkboxOnChange',
+        onCheckboxOnBlur: 'checkboxOnBlur',
+        onCheckboxOnFocus: 'checkboxOnFocus',
+        onInputErrorOccurred: 'inputErrorOccurred'
+    } as OntarioCheckboxesEvents,
+    defineCustomElement: defineOntarioCheckboxes
+});
 
 export type OntarioCriticalAlertEvents = NonNullable<unknown>;
 
-export const OntarioCriticalAlert: StencilReactComponent<OntarioCriticalAlertElement, OntarioCriticalAlertEvents> =
-	/*@__PURE__*/ createComponent<OntarioCriticalAlertElement, OntarioCriticalAlertEvents>({
-		tagName: 'ontario-critical-alert',
-		elementClass: OntarioCriticalAlertElement,
-		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-		react: React,
-		events: {} as OntarioCriticalAlertEvents,
-		defineCustomElement: defineOntarioCriticalAlert,
-	});
+export const OntarioCriticalAlert: StencilReactComponent<OntarioCriticalAlertElement, OntarioCriticalAlertEvents> = /*@__PURE__*/ createComponent<OntarioCriticalAlertElement, OntarioCriticalAlertEvents>({
+    tagName: 'ontario-critical-alert',
+    elementClass: OntarioCriticalAlertElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioCriticalAlertEvents,
+    defineCustomElement: defineOntarioCriticalAlert
+});
 
 export type OntarioDateInputEvents = {
 	onInputOnInput: EventName<
@@ -753,21 +750,20 @@ export type OntarioDateInputEvents = {
 	onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>;
 };
 
-export const OntarioDateInput: StencilReactComponent<OntarioDateInputElement, OntarioDateInputEvents> =
-	/*@__PURE__*/ createComponent<OntarioDateInputElement, OntarioDateInputEvents>({
-		tagName: 'ontario-date-input',
-		elementClass: OntarioDateInputElement,
-		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-		react: React,
-		events: {
-			onInputOnInput: 'inputOnInput',
-			onInputOnChange: 'inputOnChange',
-			onInputOnBlur: 'inputOnBlur',
-			onInputOnFocus: 'inputOnFocus',
-			onInputErrorOccurred: 'inputErrorOccurred',
-		} as OntarioDateInputEvents,
-		defineCustomElement: defineOntarioDateInput,
-	});
+export const OntarioDateInput: StencilReactComponent<OntarioDateInputElement, OntarioDateInputEvents> = /*@__PURE__*/ createComponent<OntarioDateInputElement, OntarioDateInputEvents>({
+    tagName: 'ontario-date-input',
+    elementClass: OntarioDateInputElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onInputOnInput: 'inputOnInput',
+        onInputOnChange: 'inputOnChange',
+        onInputOnBlur: 'inputOnBlur',
+        onInputOnFocus: 'inputOnFocus',
+        onInputErrorOccurred: 'inputErrorOccurred'
+    } as OntarioDateInputEvents,
+    defineCustomElement: defineOntarioDateInput
+});
 
 export type OntarioDropdownListEvents = {
 	onDropdownOnChange: EventName<OntarioDropdownListCustomEvent<InputInteractionEvent>>;
@@ -776,56 +772,52 @@ export type OntarioDropdownListEvents = {
 	onInputErrorOccurred: EventName<CustomEvent<{ errorMessage: string }>>;
 };
 
-export const OntarioDropdownList: StencilReactComponent<OntarioDropdownListElement, OntarioDropdownListEvents> =
-	/*@__PURE__*/ createComponent<OntarioDropdownListElement, OntarioDropdownListEvents>({
-		tagName: 'ontario-dropdown-list',
-		elementClass: OntarioDropdownListElement,
-		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-		react: React,
-		events: {
-			onDropdownOnChange: 'dropdownOnChange',
-			onDropdownOnBlur: 'dropdownOnBlur',
-			onDropdownOnFocus: 'dropdownOnFocus',
-			onInputErrorOccurred: 'inputErrorOccurred',
-		} as OntarioDropdownListEvents,
-		defineCustomElement: defineOntarioDropdownList,
-	});
+export const OntarioDropdownList: StencilReactComponent<OntarioDropdownListElement, OntarioDropdownListEvents> = /*@__PURE__*/ createComponent<OntarioDropdownListElement, OntarioDropdownListEvents>({
+    tagName: 'ontario-dropdown-list',
+    elementClass: OntarioDropdownListElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onDropdownOnChange: 'dropdownOnChange',
+        onDropdownOnBlur: 'dropdownOnBlur',
+        onDropdownOnFocus: 'dropdownOnFocus',
+        onInputErrorOccurred: 'inputErrorOccurred'
+    } as OntarioDropdownListEvents,
+    defineCustomElement: defineOntarioDropdownList
+});
 
 export type OntarioFieldsetEvents = NonNullable<unknown>;
 
-export const OntarioFieldset: StencilReactComponent<OntarioFieldsetElement, OntarioFieldsetEvents> =
-	/*@__PURE__*/ createComponent<OntarioFieldsetElement, OntarioFieldsetEvents>({
-		tagName: 'ontario-fieldset',
-		elementClass: OntarioFieldsetElement,
-		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-		react: React,
-		events: {} as OntarioFieldsetEvents,
-		defineCustomElement: defineOntarioFieldset,
-	});
+export const OntarioFieldset: StencilReactComponent<OntarioFieldsetElement, OntarioFieldsetEvents> = /*@__PURE__*/ createComponent<OntarioFieldsetElement, OntarioFieldsetEvents>({
+    tagName: 'ontario-fieldset',
+    elementClass: OntarioFieldsetElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioFieldsetEvents,
+    defineCustomElement: defineOntarioFieldset
+});
 
 export type OntarioFooterEvents = NonNullable<unknown>;
 
-export const OntarioFooter: StencilReactComponent<OntarioFooterElement, OntarioFooterEvents> =
-	/*@__PURE__*/ createComponent<OntarioFooterElement, OntarioFooterEvents>({
-		tagName: 'ontario-footer',
-		elementClass: OntarioFooterElement,
-		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-		react: React,
-		events: {} as OntarioFooterEvents,
-		defineCustomElement: defineOntarioFooter,
-	});
+export const OntarioFooter: StencilReactComponent<OntarioFooterElement, OntarioFooterEvents> = /*@__PURE__*/ createComponent<OntarioFooterElement, OntarioFooterEvents>({
+    tagName: 'ontario-footer',
+    elementClass: OntarioFooterElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioFooterEvents,
+    defineCustomElement: defineOntarioFooter
+});
 
 export type OntarioHeaderEvents = NonNullable<unknown>;
 
-export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioHeaderEvents> =
-	/*@__PURE__*/ createComponent<OntarioHeaderElement, OntarioHeaderEvents>({
-		tagName: 'ontario-header',
-		elementClass: OntarioHeaderElement,
-		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-		react: React,
-		events: {} as OntarioHeaderEvents,
-		defineCustomElement: defineOntarioHeader,
-	});
+export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioHeaderEvents> = /*@__PURE__*/ createComponent<OntarioHeaderElement, OntarioHeaderEvents>({
+    tagName: 'ontario-header',
+    elementClass: OntarioHeaderElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioHeaderEvents,
+    defineCustomElement: defineOntarioHeader
+});
 
 export type OntarioHintExpanderEvents = {
 	onToggleExpanderEvent: EventName<OntarioHintExpanderCustomEvent<MouseEvent | KeyboardEvent>>;
@@ -2423,15 +2415,14 @@ export const OntarioTask: StencilReactComponent<OntarioTaskElement, OntarioTaskE
 
 export type OntarioTaskListEvents = NonNullable<unknown>;
 
-export const OntarioTaskList: StencilReactComponent<OntarioTaskListElement, OntarioTaskListEvents> =
-	/*@__PURE__*/ createComponent<OntarioTaskListElement, OntarioTaskListEvents>({
-		tagName: 'ontario-task-list',
-		elementClass: OntarioTaskListElement,
-		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-		react: React,
-		events: {} as OntarioTaskListEvents,
-		defineCustomElement: defineOntarioTaskList,
-	});
+export const OntarioPageAlert: StencilReactComponent<OntarioPageAlertElement, OntarioPageAlertEvents> = /*@__PURE__*/ createComponent<OntarioPageAlertElement, OntarioPageAlertEvents>({
+    tagName: 'ontario-page-alert',
+    elementClass: OntarioPageAlertElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioPageAlertEvents,
+    defineCustomElement: defineOntarioPageAlert
+});
 
 export type OntarioTextareaEvents = {
 	onInputOnInput: EventName<OntarioTextareaCustomEvent<InputInputEvent>>;
@@ -2441,18 +2432,106 @@ export type OntarioTextareaEvents = {
 	onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>;
 };
 
-export const OntarioTextarea: StencilReactComponent<OntarioTextareaElement, OntarioTextareaEvents> =
-	/*@__PURE__*/ createComponent<OntarioTextareaElement, OntarioTextareaEvents>({
-		tagName: 'ontario-textarea',
-		elementClass: OntarioTextareaElement,
-		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-		react: React,
-		events: {
-			onInputOnInput: 'inputOnInput',
-			onInputOnChange: 'inputOnChange',
-			onInputOnBlur: 'inputOnBlur',
-			onInputOnFocus: 'inputOnFocus',
-			onInputErrorOccurred: 'inputErrorOccurred',
-		} as OntarioTextareaEvents,
-		defineCustomElement: defineOntarioTextarea,
-	});
+export const OntarioRadioButtons: StencilReactComponent<OntarioRadioButtonsElement, OntarioRadioButtonsEvents> = /*@__PURE__*/ createComponent<OntarioRadioButtonsElement, OntarioRadioButtonsEvents>({
+    tagName: 'ontario-radio-buttons',
+    elementClass: OntarioRadioButtonsElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onRadioOnChange: 'radioOnChange',
+        onRadioOnBlur: 'radioOnBlur',
+        onRadioOnFocus: 'radioOnFocus',
+        onInputErrorOccurred: 'inputErrorOccurred'
+    } as OntarioRadioButtonsEvents,
+    defineCustomElement: defineOntarioRadioButtons
+});
+
+export type OntarioSearchBoxEvents = {
+    onSearchOnSubmit: EventName<CustomEvent<string>>,
+    onInputOnInput: EventName<OntarioSearchBoxCustomEvent<InputInputEvent>>,
+    onInputOnChange: EventName<OntarioSearchBoxCustomEvent<InputInteractionEvent>>,
+    onInputOnBlur: EventName<OntarioSearchBoxCustomEvent<InputFocusBlurEvent>>,
+    onInputOnFocus: EventName<OntarioSearchBoxCustomEvent<InputFocusBlurEvent>>
+};
+
+export const OntarioSearchBox: StencilReactComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents> = /*@__PURE__*/ createComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents>({
+    tagName: 'ontario-search-box',
+    elementClass: OntarioSearchBoxElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onSearchOnSubmit: 'searchOnSubmit',
+        onInputOnInput: 'inputOnInput',
+        onInputOnChange: 'inputOnChange',
+        onInputOnBlur: 'inputOnBlur',
+        onInputOnFocus: 'inputOnFocus'
+    } as OntarioSearchBoxEvents,
+    defineCustomElement: defineOntarioSearchBox
+});
+
+export type OntarioStepIndicatorEvents = NonNullable<unknown>;
+
+export const OntarioStepIndicator: StencilReactComponent<OntarioStepIndicatorElement, OntarioStepIndicatorEvents> = /*@__PURE__*/ createComponent<OntarioStepIndicatorElement, OntarioStepIndicatorEvents>({
+    tagName: 'ontario-step-indicator',
+    elementClass: OntarioStepIndicatorElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioStepIndicatorEvents,
+    defineCustomElement: defineOntarioStepIndicator
+});
+
+export type OntarioTableEvents = NonNullable<unknown>;
+
+export const OntarioTable: StencilReactComponent<OntarioTableElement, OntarioTableEvents> = /*@__PURE__*/ createComponent<OntarioTableElement, OntarioTableEvents>({
+    tagName: 'ontario-table',
+    elementClass: OntarioTableElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioTableEvents,
+    defineCustomElement: defineOntarioTable
+});
+
+export type OntarioTaskEvents = NonNullable<unknown>;
+
+export const OntarioTask: StencilReactComponent<OntarioTaskElement, OntarioTaskEvents> = /*@__PURE__*/ createComponent<OntarioTaskElement, OntarioTaskEvents>({
+    tagName: 'ontario-task',
+    elementClass: OntarioTaskElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioTaskEvents,
+    defineCustomElement: defineOntarioTask
+});
+
+export type OntarioTaskListEvents = NonNullable<unknown>;
+
+export const OntarioTaskList: StencilReactComponent<OntarioTaskListElement, OntarioTaskListEvents> = /*@__PURE__*/ createComponent<OntarioTaskListElement, OntarioTaskListEvents>({
+    tagName: 'ontario-task-list',
+    elementClass: OntarioTaskListElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioTaskListEvents,
+    defineCustomElement: defineOntarioTaskList
+});
+
+export type OntarioTextareaEvents = {
+    onInputOnInput: EventName<OntarioTextareaCustomEvent<InputInputEvent>>,
+    onInputOnChange: EventName<OntarioTextareaCustomEvent<InputInteractionEvent>>,
+    onInputOnBlur: EventName<OntarioTextareaCustomEvent<InputFocusBlurEvent>>,
+    onInputOnFocus: EventName<OntarioTextareaCustomEvent<InputFocusBlurEvent>>,
+    onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>
+};
+
+export const OntarioTextarea: StencilReactComponent<OntarioTextareaElement, OntarioTextareaEvents> = /*@__PURE__*/ createComponent<OntarioTextareaElement, OntarioTextareaEvents>({
+    tagName: 'ontario-textarea',
+    elementClass: OntarioTextareaElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onInputOnInput: 'inputOnInput',
+        onInputOnChange: 'inputOnChange',
+        onInputOnBlur: 'inputOnBlur',
+        onInputOnFocus: 'inputOnFocus',
+        onInputErrorOccurred: 'inputErrorOccurred'
+    } as OntarioTextareaEvents,
+    defineCustomElement: defineOntarioTextarea
+});
