@@ -15,6 +15,12 @@ $ontario-button-bg-primary--hover: colours.$ontario-colour-link--hover;
 $ontario-button-bg-primary--active: colours.$ontario-colour-link--active;
 $ontario-button-bg-secondary: colours.$ontario-colour-white;
 
+// Make the host box-level so its width/height/margins apply (was inline by default).
+// This also stabilizes VRT by giving the component predictable intrinsic sizing.
+:host {
+	display: inline-block;
+}
+
 .ontario-button {
 	border: none;
 	border-radius: globalVariables.$global-radius;

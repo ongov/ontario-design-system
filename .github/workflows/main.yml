@@ -8,22 +8,27 @@ on:
   pull_request: # Trigger on pull request events
 
 jobs:
-  test: # Job defined in a separate file (test.yml)
-    needs: []
-    uses: ./.github/workflows/test.yml
-    with:
-      node-version: 20
-
   build: # Job defined in a separate file (build.yml)
-    needs: ['test']
+    needs: []
     uses: ./.github/workflows/build.yml # Path to the reusable workflow file
     with:
       node-version: 20
       build-artifacts-name: 'build-artifacts'
 
+  test: # Job defined in a separate file (test.yml)
+    needs: ['build']
+    uses: ./.github/workflows/test.yml
+    permissions:
+      contents: read
+      actions: read
+      checks: write
+    with:
+      node-version: 20
+      build-artifacts-name: ${{ needs.build.outputs.build-artifacts-name }}
+
   # app-docs
   app-docs: # Job defined in a separate file (app-docs.yml)
-    needs: ['build']
+    needs: ['build', 'test']
     uses: ./.github/workflows/app-docs.yml # Path to the reusable workflow file
     with:
       node-version: 20
@@ -33,7 +38,7 @@ jobs:
   # app-angular (Coming soon)
 
   publish-packages: # Job defined in a separate file (publish-packages.yml)
-    needs: ['build']
+    needs: ['build', 'test']
     uses: ./.github/workflows/publish-packages.yml # Path to the reusable workflow file
     if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
     with:
