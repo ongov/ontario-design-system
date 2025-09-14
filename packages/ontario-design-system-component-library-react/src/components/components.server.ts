@@ -120,6 +120,11 @@ import { OntarioIconSentiment4 as OntarioIconSentiment4Element } from "@ongov/on
 import { OntarioIconSentiment5 as OntarioIconSentiment5Element } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-5.js";
 import { OntarioIconSettings as OntarioIconSettingsElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-settings.js";
 import { OntarioIconShare as OntarioIconShareElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-share.js";
+import { OntarioIconSortAlphabeticalAscending as OntarioIconSortAlphabeticalAscendingElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sort-alphabetical-ascending.js";
+import { OntarioIconSortAlphabeticalDescending as OntarioIconSortAlphabeticalDescendingElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sort-alphabetical-descending.js";
+import { OntarioIconSortAscending as OntarioIconSortAscendingElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sort-ascending.js";
+import { OntarioIconSortDescending as OntarioIconSortDescendingElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sort-descending.js";
+import { OntarioIconSortVariant as OntarioIconSortVariantElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sort-variant.js";
 import { OntarioIconSort as OntarioIconSortElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sort.js";
 import { OntarioIconTag as OntarioIconTagElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-tag.js";
 import { OntarioIconTextMessage as OntarioIconTextMessageElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-text-message.js";
@@ -1535,6 +1540,66 @@ export type OntarioIconSortEvents = NonNullable<unknown>;
 
 export const OntarioIconSort: StencilReactComponent<OntarioIconSortElement, OntarioIconSortEvents> = /*@__PURE__*/ createComponent<OntarioIconSortElement, OntarioIconSortEvents>({
     tagName: 'ontario-icon-sort',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
+
+export type OntarioIconSortAlphabeticalAscendingEvents = NonNullable<unknown>;
+
+export const OntarioIconSortAlphabeticalAscending: StencilReactComponent<OntarioIconSortAlphabeticalAscendingElement, OntarioIconSortAlphabeticalAscendingEvents> = /*@__PURE__*/ createComponent<OntarioIconSortAlphabeticalAscendingElement, OntarioIconSortAlphabeticalAscendingEvents>({
+    tagName: 'ontario-icon-sort-alphabetical-ascending',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
+
+export type OntarioIconSortAlphabeticalDescendingEvents = NonNullable<unknown>;
+
+export const OntarioIconSortAlphabeticalDescending: StencilReactComponent<OntarioIconSortAlphabeticalDescendingElement, OntarioIconSortAlphabeticalDescendingEvents> = /*@__PURE__*/ createComponent<OntarioIconSortAlphabeticalDescendingElement, OntarioIconSortAlphabeticalDescendingEvents>({
+    tagName: 'ontario-icon-sort-alphabetical-descending',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
+
+export type OntarioIconSortAscendingEvents = NonNullable<unknown>;
+
+export const OntarioIconSortAscending: StencilReactComponent<OntarioIconSortAscendingElement, OntarioIconSortAscendingEvents> = /*@__PURE__*/ createComponent<OntarioIconSortAscendingElement, OntarioIconSortAscendingEvents>({
+    tagName: 'ontario-icon-sort-ascending',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
+
+export type OntarioIconSortDescendingEvents = NonNullable<unknown>;
+
+export const OntarioIconSortDescending: StencilReactComponent<OntarioIconSortDescendingElement, OntarioIconSortDescendingEvents> = /*@__PURE__*/ createComponent<OntarioIconSortDescendingElement, OntarioIconSortDescendingEvents>({
+    tagName: 'ontario-icon-sort-descending',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
+
+export type OntarioIconSortVariantEvents = NonNullable<unknown>;
+
+export const OntarioIconSortVariant: StencilReactComponent<OntarioIconSortVariantElement, OntarioIconSortVariantEvents> = /*@__PURE__*/ createComponent<OntarioIconSortVariantElement, OntarioIconSortVariantEvents>({
+    tagName: 'ontario-icon-sort-variant',
     properties: {
         iconWidth: 'icon-width',
         colour: 'colour'

@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
@@ -12,6 +13,7 @@
 
 .ontario-error-messaging__content {
 	margin-left: spacing.$spacing-2;
+	margin-top: math.div(spacing.$spacing-1, 2);
 }
 
 .ontario-input__error {
