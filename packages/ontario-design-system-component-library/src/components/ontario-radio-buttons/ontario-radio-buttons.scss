@@ -29,6 +29,14 @@ $ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-r
 	&:last-of-type {
 		margin-bottom: spacing.$spacing-0;
 	}
+
+	.ontario-radios__hint-expander {
+		margin: spacing.$spacing-3 spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-2;
+
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
+			margin-top: spacing.$spacing-4;
+		}
+	}
 }
 
 .ontario-radios__input {
@@ -119,7 +127,7 @@ $ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-r
 }
 
 .ontario-radios__hint-expander {
-	margin: spacing.$spacing-3 spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-2;
+	margin: spacing.$spacing-3 spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		margin-top: spacing.$spacing-4;

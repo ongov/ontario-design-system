@@ -37,6 +37,14 @@ $ontario-checkbox-box-shadow-outline: globalFunctions.px-to-rem(4);
 		margin: 0;
 	}
 
+	.ontario-checkboxes__hint-expander {
+		margin: spacing.$spacing-3 0 0 spacing.$spacing-3;
+
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
+			margin-top: spacing.$spacing-4;
+		}
+	}
+
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		padding: 0 0 0 spacing.$spacing-7;
 		min-height: $ontario-checkboxes-size-mobile;
@@ -136,7 +144,7 @@ $ontario-checkbox-box-shadow-outline: globalFunctions.px-to-rem(4);
 }
 
 .ontario-checkboxes__hint-expander {
-	margin: spacing.$spacing-3 0 0 spacing.$spacing-2;
+	margin: spacing.$spacing-3 0 0 0;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		margin-top: spacing.$spacing-4;
