@@ -1,12 +1,5 @@
 import { DrupalMenuMachineName } from './ontario-header.enum';
 
-export interface MenuItem {
-	title: string;
-	href: string;
-	linkIsActive?: boolean;
-	onClickHandler?: (event: Event) => void;
-}
-
 export interface ApplicationHeaderInfo {
 	title: string;
 	href?: string;

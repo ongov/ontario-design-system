@@ -6,13 +6,13 @@ import {
 	OntarioBreakpointsLarge,
 } from '@ongov/ontario-design-system-design-tokens/dist/ts/tokens';
 import {
-	MenuItem,
 	ApplicationHeaderInfo,
 	LanguageToggleOptions,
 	OntarioMenuItems,
 	OntarioHeaderType,
 	DeviceType,
 } from './ontario-header.interface';
+import { MenuItem } from '../../utils/common/common.interface';
 
 import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';

@@ -104,3 +104,13 @@ export const headingLevelDefinitions = ['h2', 'h3', 'h4', 'h5', 'h6'] as const;
  * https://steveholgado.com/typescript-types-from-arrays/
  */
 export type HeadingLevel = (typeof headingLevelDefinitions)[number];
+
+/**
+ * Used in both ontario-header and ontario-header-overflow-menu.
+ */
+export interface MenuItem {
+	title: string;
+	href: string;
+	linkIsActive?: boolean;
+	onClickHandler?: (event: Event) => void;
+}
