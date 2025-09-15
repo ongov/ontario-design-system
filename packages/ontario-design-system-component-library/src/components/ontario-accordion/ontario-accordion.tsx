@@ -1,4 +1,4 @@
-import { Component, Prop, Element, State, h, Listen, Watch } from '@stencil/core';
+import { Component, Prop, Element, Event, EventEmitter, State, h, Listen, Watch } from '@stencil/core';
 import { Accordion } from './accordion.interface';
 import { ExpandCollapseButtonDetails } from './expandCollapseButtonDetails.interface';
 import { Language } from '../../utils/common/language-types';
@@ -45,21 +45,22 @@ export class OntarioAccordion {
 	 *
 	 * The `content` is expecting a string, that can either be written as HTML or a just a plain string, depending on the accordionContentType.
 	 *
+	 * - label: string
+	 * - content: string (rendered as text or via innerHTML)
+	 * - accordionContentType: 'string' | 'html'
+	 * - isOpen: boolean (initial open state - default is false)
+	 * - ariaLabelText: string
+	 *
 	 * @example
 	 * 	<ontario-accordion
 	 *		name="My Accordion"
 	 *		accordion-data='[
-	 *			{"label": "Accordion 1", "content": "This is a string"},
+	 *			{"label": "Accordion 1", "content": "This is a string", "isOpen": true},
 	 *			{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"}
 	 *		]'
 	 *	></ontario-accordion>
 	 */
 	@Prop() accordionData: string | Accordion[];
-
-	/**
-	 * Used to show whether the accordion is opened or closed.
-	 */
-	@Prop() isOpen: boolean = false;
 
 	/**
 	 * The language of the component.
@@ -68,23 +69,9 @@ export class OntarioAccordion {
 	@Prop({ mutable: true }) language?: Language;
 
 	/**
-	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
+	 * Emits when open indexes change
 	 */
-	@Listen('setAppLanguage', { target: 'window' })
-	handleSetAppLanguage(event: CustomEvent<Language>) {
-		if (!this.language) {
-			this.language = validateLanguage(event);
-		}
-	}
-
-	/**
-	 * Handle the language being toggled from the `<ontario-header>`.
-	 * @param event Event object passed when the event is fired.
-	 */
-	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
-	}
+	@Event() accordionChange: EventEmitter<{ openIndexes: number[] }>;
 
 	/**
 	 * Store the translation dictionary for use within the component.
@@ -112,17 +99,47 @@ export class OntarioAccordion {
 	 */
 	@State() private openAccordionIndexes: number[] = [];
 
+	/** Unique prefix for a11y ids */
+	@State() private uidPrefix: string = `ontario-accordion-${Math.random().toString(36).slice(2, 9)}`;
+
+	/**
+	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
+	 */
+	@Listen('setAppLanguage', { target: 'window' })
+	handleSetAppLanguage(event: CustomEvent<Language>) {
+		if (!this.language) {
+			this.language = validateLanguage(event);
+		}
+	}
+
+	/**
+	 * Handle the language being toggled from the `<ontario-header>`.
+	 * @param event Event object passed when the event is fired.
+	 */
+	@Listen('headerLanguageToggled', { target: 'window' })
+	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
+		this.language = validateLanguage(event);
+	}
+
 	/**
 	 * Parse Accordion data, this is used to handle JSON strings from HTML.
 	 */
 	@Watch('accordionData')
 	private parseAccordionData() {
 		try {
-			if (typeof this.accordionData !== 'undefined') {
-				this.internalAccordionData = Array.isArray(this.accordionData)
-					? this.accordionData
-					: JSON.parse(this.accordionData);
-			}
+			const parsed = Array.isArray(this.accordionData) ? this.accordionData : JSON.parse(this.accordionData || '[]');
+
+			// Normalize and type-guard
+			this.internalAccordionData = (parsed || []).map((prop: any) => ({
+				label: prop?.label ?? '',
+				content: prop?.content ?? '',
+				accordionContentType: (prop?.accordionContentType ?? 'string') as 'string' | 'html',
+				isOpen: Boolean(prop?.isOpen),
+				ariaLabelText: prop?.ariaLabelText,
+			}));
+
+			// Seed the openAccordionIndexes based on the isOpen properties
+			this.seedOpenIndexesFromItems();
 
 			// Initialize the label based on the initial accordion state
 			this.updateLabel();
@@ -137,6 +154,8 @@ export class OntarioAccordion {
 				.printMessage();
 
 			this.internalAccordionData = [];
+			this.openAccordionIndexes = [];
+			this.updateLabel();
 		}
 	}
 
@@ -164,6 +183,13 @@ export class OntarioAccordion {
 				this.internalExpandCollapseLabelDetails = this.expandCollapseButton;
 			}
 		}
+	}
+
+	// Seed the openAccordionIndexes based on the isOpen properties of the accordion items
+	private seedOpenIndexesFromItems() {
+		this.openAccordionIndexes = this.internalAccordionData
+			.map((accordionItem, index) => (accordionItem?.isOpen ? index : -1))
+			.filter((accordionIndex) => accordionIndex !== -1);
 	}
 
 	// Toggle the accordion state when it's clicked
@@ -240,49 +266,51 @@ export class OntarioAccordion {
 							</span>
 						</button>
 					</div>
-					{this.internalAccordionData?.map((accordion, index) => (
-						<div
-							class={`ontario-accordion ${this.openAccordionIndexes.includes(index) ? 'open' : ''}`}
-							key={`accordion-${index}`}
-						>
-							<h3
-								class={`ontario-accordion__heading ${
-									this.openAccordionIndexes.includes(index) ? 'ontario-expander--active' : ''
-								}`}
-							>
-								<button
-									class="ontario-accordion__button"
-									aria-expanded={this.openAccordionIndexes.includes(index) ? 'true' : 'false'}
-									data-toggle="ontario-collapse"
-									onClick={() => this.toggleAccordion(index)}
-									aria-label={accordion.ariaLabelText}
+					{this.internalAccordionData?.map((accordion, index) => {
+						const buttonId = `${this.uidPrefix}__button--${index}`;
+						const sectionId = `${this.uidPrefix}__section--${index}`;
+						const isOpen = this.openAccordionIndexes.includes(index);
+
+						return (
+							<div class={`ontario-accordion ${isOpen ? 'open' : ''}`} key={`accordion-${index}`}>
+								<h3 class={`ontario-accordion__heading ${isOpen ? 'ontario-expander--active' : ''}`}>
+									<button
+										id={buttonId}
+										class="ontario-accordion__button"
+										aria-expanded={isOpen ? 'true' : 'false'}
+										data-toggle="ontario-collapse"
+										aria-controls={sectionId}
+										onClick={() => this.toggleAccordion(index)}
+										aria-label={accordion.ariaLabelText}
+									>
+										<span class="ontario-accordion__button-icon--close">
+											<ontario-icon-chevron-up colour="blue" aria-hidden="true"></ontario-icon-chevron-up>
+										</span>
+										<span class="ontario-accordion__button-icon--open">
+											<ontario-icon-chevron-down colour="blue" aria-hidden="true"></ontario-icon-chevron-down>
+										</span>
+										{accordion.label}
+									</button>
+								</h3>
+								<section
+									id={sectionId}
+									class={`ontario-accordion__content ${
+										isOpen ? 'ontario-expander__content--opened' : 'ontario-accordion__content--closed'
+									}`}
+									aria-labelledby={buttonId}
+									role="region"
+									aria-hidden={isOpen ? 'false' : 'true'}
+									data-toggle="ontario-expander-content"
 								>
-									<span class="ontario-accordion__button-icon--close">
-										<ontario-icon-chevron-up colour="blue" aria-hidden="true"></ontario-icon-chevron-up>
-									</span>
-									<span class="ontario-accordion__button-icon--open">
-										<ontario-icon-chevron-down colour="blue" aria-hidden="true"></ontario-icon-chevron-down>
-									</span>
-									{accordion.label}
-								</button>
-							</h3>
-							<section
-								class={`ontario-accordion__content ${
-									this.openAccordionIndexes.includes(index)
-										? 'ontario-accordion__content--opened'
-										: 'ontario-accordion__content--closed'
-								}`}
-								aria-hidden={!this.openAccordionIndexes.includes(index)}
-								data-toggle="ontario-expander-content"
-							>
-								{accordion.accordionContentType === 'html' ? (
-									<div innerHTML={accordion.content}></div> // Render HTML content
-								) : (
-									<div>{accordion.content}</div>
-								)}
-							</section>
-						</div>
-					))}
+									{accordion.accordionContentType === 'html' ? (
+										<div innerHTML={accordion.content}></div> // Render HTML content
+									) : (
+										<div>{accordion.content}</div>
+									)}
+								</section>
+							</div>
+						);
+					})}
 				</div>
 			</div>
 		);
