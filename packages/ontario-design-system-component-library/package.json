@@ -54,7 +54,7 @@
 		"build": "pnpm run build:stencil && pnpm run format && pnpm run docs:copy:readme",
 		"build:stencil": "stencil build --docs",
 		"build:config": "tsx scripts/build-config.ts",
-		"build:theme": "tsx scripts/build-theme-scss.cts",
+		"build:theme": "tsx scripts/build-theme-scss.ts",
 		"clean": "rm -rf dist loader www",
 		"clean:full": "rm -rf node_modules && pnpm run clean",
 		"clean:icons": "rm -rf src/components/ontario-icon/ontario-icon-*.tsx",

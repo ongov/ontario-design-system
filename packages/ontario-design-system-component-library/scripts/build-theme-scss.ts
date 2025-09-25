@@ -1,5 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
+
+// @ts-ignore: TS error due to usage of import.meta.url in CommonJS context
+const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
+const __dirname = path.dirname(__filename);
 
 // Define default paths for input and output folders
 const defaultSlottedStyleSourceFolder: string = path.join(__dirname, '../src/styles/slotted-styles');
