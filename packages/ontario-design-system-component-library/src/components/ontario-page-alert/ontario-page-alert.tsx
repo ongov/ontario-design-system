@@ -101,7 +101,9 @@ export class OntarioPageAlert implements PageAlert {
 		return (
 			<div class={this.getClass()}>
 				<div class="ontario-alert__header">
-					<div class="ontario-alert__header-icon">{this.renderIcon()}</div>
+					<div class="ontario-alert__header-icon" aria-hidden="true">
+						{this.renderIcon()}
+					</div>
 					<h2 class="ontario-alert__header-title ontario-h4">{this.heading}</h2>
 				</div>
 				<div class="ontario-alert__body">{this.renderContent()}</div>

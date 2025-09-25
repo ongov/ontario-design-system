@@ -258,10 +258,10 @@ export class OntarioAccordion {
 									aria-label={accordion.ariaLabelText}
 								>
 									<span class="ontario-accordion__button-icon--close">
-										<ontario-icon-chevron-up colour="blue"></ontario-icon-chevron-up>
+										<ontario-icon-chevron-up colour="blue" aria-hidden="true"></ontario-icon-chevron-up>
 									</span>
 									<span class="ontario-accordion__button-icon--open">
-										<ontario-icon-chevron-down colour="blue"></ontario-icon-chevron-down>
+										<ontario-icon-chevron-down colour="blue" aria-hidden="true"></ontario-icon-chevron-down>
 									</span>
 									{accordion.label}
 								</button>

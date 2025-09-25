@@ -73,7 +73,11 @@ export class OntarioCriticalAlert implements CriticalAlert {
 				<div class="ontario-row">
 					<div class="ontario-column ontario-small-12">
 						<div class="ontario-critical-alert__body">
-							<div class="ontario-critical-alert__icon" innerHTML={OntarioIconCriticalAlertWarning}></div>
+							<div
+								class="ontario-critical-alert__icon"
+								innerHTML={OntarioIconCriticalAlertWarning}
+								aria-hidden="true"
+							></div>
 							{this.renderContent()}
 						</div>
 					</div>
