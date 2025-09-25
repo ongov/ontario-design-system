@@ -3777,6 +3777,21 @@ packages:
   '@octokit/types@9.3.2':
     resolution: {integrity: sha512-D4iHGTdAnEEVsB8fl95m1hiz7D5YiRdQ9b/OEb3BYRVwbLsGHcRVPz+u+BgRLNk0Q0/4iZCBqDN96j2XNxfXrA==}
 
+  '@ongov/ontario-design-system-component-library-react@6.0.0-alpha.3':
+    resolution:
+      { integrity: sha512-VJk1wAJc+Y6NCHK4ctB7Vqy7xSa87LYcY4TRCE7ekHPZSk3+SjBhnnhP2veufq6wiaSDazCOr6NACePB36+AaQ== }
+    peerDependencies:
+      react: ^18.3.0
+      react-dom: ^18.3.0
+
+  '@ongov/ontario-design-system-component-library@6.0.0-alpha.3':
+    resolution:
+      { integrity: sha512-3I5n1dKTuX7Zcb0wX/1Gu0wxrEHMzHwBUD2y4rnXPlT4WcqS8Pq9XT0ZE8LJ700JXE8RLrr9uoHpr/D96tJRmQ== }
+
+  '@ongov/ontario-design-system-global-styles@6.0.0-alpha.1':
+    resolution:
+      { integrity: sha512-nqaGQNexPBFafLDJAkl/we/ElGbaDrFLtIOHDlEHXlbTrA+HpqBJtwd3uZS9UHyO0NU1Q57fm1wHmHNiukGpEw== }
+
   '@parcel/watcher-android-arm64@2.5.1':
     resolution: {integrity: sha512-KF8+j9nNbUN8vzOFDpRMsaKBHZ/mcjEjMToVMJOhTozkDonQFFrRcfdLWn6yWKCmJKmdVxSgHiYvTCef4/qcBA==}
     engines: {node: '>= 10.0.0'}
@@ -15068,7 +15083,7 @@ snapshots:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.1802.12(chokidar@3.6.0)
-      '@angular-devkit/build-webpack': 0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0(esbuild@0.23.0)))(webpack@5.94.0(esbuild@0.23.0))
+      '@angular-devkit/build-webpack': 0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0(esbuild@0.23.0))
       '@angular-devkit/core': 18.2.12(chokidar@3.6.0)
       '@angular/build': 18.2.12(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.3))(@types/node@22.10.10)(chokidar@3.6.0)(less@4.2.0)(postcss@8.4.41)(sass-embedded@1.93.2)(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.10.10)(typescript@5.5.3)))(terser@5.31.6)(typescript@5.5.3)
       '@angular/compiler-cli': 18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.3)
@@ -15158,7 +15173,7 @@ snapshots:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.1802.12(chokidar@3.6.0)
-      '@angular-devkit/build-webpack': 0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0(esbuild@0.23.0)))(webpack@5.94.0(esbuild@0.23.0))
+      '@angular-devkit/build-webpack': 0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0(esbuild@0.23.0))
       '@angular-devkit/core': 18.2.12(chokidar@3.6.0)
       '@angular/build': 18.2.12(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.3))(@types/node@22.10.10)(chokidar@3.6.0)(less@4.2.0)(postcss@8.4.41)(sass-embedded@1.93.2)(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.10.10)(typescript@5.5.3)))(terser@5.31.6)(typescript@5.5.3)
       '@angular/compiler-cli': 18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.3)
@@ -15244,7 +15259,7 @@ snapshots:
       - utf-8-validate
       - webpack-cli
 
-  '@angular-devkit/build-webpack@0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0(esbuild@0.23.0)))(webpack@5.94.0(esbuild@0.23.0))':
+  '@angular-devkit/build-webpack@0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0(esbuild@0.23.0))':
     dependencies:
       '@angular-devkit/architect': 0.1802.12(chokidar@3.6.0)
       rxjs: 7.8.1
@@ -19686,6 +19701,25 @@ snapshots:
   '@octokit/types@9.3.2':
     dependencies:
       '@octokit/openapi-types': 18.1.1
+
+  '@ongov/ontario-design-system-component-library-react@6.0.0-alpha.3(@stencil/core@4.36.2)(@types/react@19.0.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@ongov/ontario-design-system-component-library': 6.0.0-alpha.3
+      '@stencil/react-output-target': 1.0.2(@stencil/core@4.36.2)(@types/react@19.0.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    transitivePeerDependencies:
+      - '@stencil/core'
+      - '@types/react'
+
+  '@ongov/ontario-design-system-component-library@6.0.0-alpha.3':
+    dependencies:
+      '@ongov/ontario-design-system-global-styles': 6.0.0-alpha.1
+      '@stencil/core': 4.36.2
+      dotenv: 16.4.7
+      uuid: 11.0.5
+
+  '@ongov/ontario-design-system-global-styles@6.0.0-alpha.1': {}
 
   '@parcel/watcher-android-arm64@2.5.1':
     optional: true
@@ -25389,6 +25423,16 @@ snapshots:
       style-to-js: 1.1.16
     optionalDependencies:
       '@types/react': 18.3.24
+
+  html-react-parser@5.2.2(@types/react@19.0.8)(react@18.3.1):
+    dependencies:
+      domhandler: 5.0.3
+      html-dom-parser: 5.0.13
+      react: 18.3.1
+      react-property: 2.0.2
+      style-to-js: 1.1.16
+    optionalDependencies:
+      '@types/react': 19.0.8
 
   html-react-parser@5.2.2(@types/react@19.0.8)(react@19.1.0):
     dependencies:
