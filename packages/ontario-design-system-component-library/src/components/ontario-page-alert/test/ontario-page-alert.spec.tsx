@@ -15,7 +15,7 @@ describe('ontario-page-alert', () => {
 				<mock:shadow-root>
 			     <div class="ontario-alert ontario-alert--informational">
 			       <div class="ontario-alert__header">
-			         <div class="ontario-alert__header-icon">
+			         <div aria-hidden="true" class="ontario-alert__header-icon">
 			           <ontario-icon-alert-information icon-width="36"></ontario-icon-alert-information>
 			         </div>
 			         <h2 class="ontario-alert__header-title ontario-h4">
@@ -44,7 +44,7 @@ describe('ontario-page-alert', () => {
 				<mock:shadow-root>
 			     <div class="ontario-alert ontario-alert--warning">
 			       <div class="ontario-alert__header">
-			         <div class="ontario-alert__header-icon">
+			         <div aria-hidden="true" class="ontario-alert__header-icon">
 			           <ontario-icon-alert-warning icon-width="36"></ontario-icon-alert-warning>
 			         </div>
 			         <h2 class="ontario-alert__header-title ontario-h4">
@@ -73,7 +73,7 @@ describe('ontario-page-alert', () => {
 				<mock:shadow-root>
 			     <div class="ontario-alert ontario-alert--success">
 			       <div class="ontario-alert__header">
-			         <div class="ontario-alert__header-icon">
+			         <div aria-hidden="true" class="ontario-alert__header-icon">
 			           <ontario-icon-alert-success icon-width="36"></ontario-icon-alert-success>
 			         </div>
 			         <h2 class="ontario-alert__header-title ontario-h4">
@@ -102,7 +102,7 @@ describe('ontario-page-alert', () => {
 				<mock:shadow-root>
 			     <div class="ontario-alert ontario-alert--error">
 			       <div class="ontario-alert__header">
-			         <div class="ontario-alert__header-icon">
+			         <div aria-hidden="true" class="ontario-alert__header-icon">
 			           <ontario-icon-alert-error icon-width="36"></ontario-icon-alert-error>
 			         </div>
 			         <h2 class="ontario-alert__header-title ontario-h4">
@@ -132,7 +132,7 @@ describe('ontario-page-alert', () => {
 				<mock:shadow-root>
 			     <div class="ontario-alert ontario-alert--informational">
 			       <div class="ontario-alert__header">
-			         <div class="ontario-alert__header-icon">
+			         <div aria-hidden="true" class="ontario-alert__header-icon">
 			           <ontario-icon-alert-information icon-width="36"></ontario-icon-alert-information>
 			         </div>
 			         <h2 class="ontario-alert__header-title ontario-h4"></h2>

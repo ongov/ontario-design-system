@@ -9,7 +9,10 @@ exports[`ontario-search-box should render a default search box element 1`] = `
         <input aria-autocomplete="none" autocomplete="off" class="ontario-input ontario-search__input" id="ontario-search-input-field" name="search" required="" type="search" value="">
         <input class="ontario-search__reset" id="ontario-search-reset" type="reset" value="">
         <button class="ontario-search__submit" id="ontario-search-box__submit" type="submit">
-          <span></span>
+          <span class="ontario-show-for-sr">
+            Submit
+          </span>
+          <span aria-hidden="true"></span>
         </button>
       </div>
     </form>
@@ -26,7 +29,10 @@ exports[`ontario-search-box should render the expected html 1`] = `
         <input aria-autocomplete="none" autocomplete="off" class="ontario-input ontario-search__input" id="ontario-search-input-field" name="search" required="" type="search" value="">
         <input class="ontario-search__reset" id="ontario-search-reset" type="reset" value="">
         <button class="ontario-search__submit" id="ontario-search-box__submit" type="submit">
-          <span></span>
+          <span class="ontario-show-for-sr">
+            Submit
+          </span>
+          <span aria-hidden="true"></span>
         </button>
       </div>
     </form>
