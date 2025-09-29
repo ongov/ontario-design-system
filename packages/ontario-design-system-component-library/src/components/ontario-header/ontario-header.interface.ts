@@ -3,11 +3,13 @@ import { DrupalMenuMachineName } from './ontario-header.enum';
 export interface ApplicationHeaderInfo {
 	title: string;
 	href?: string;
-	maxSubheaderLinks?: {
-		desktop?: number;
-		tablet?: number;
-		mobile?: number;
-	};
+	maxSubheaderLinks?: maxSubheaderLinks;
+}
+
+interface maxSubheaderLinks {
+	desktop?: number;
+	tablet?: number;
+	mobile?: number;
 }
 
 export interface LanguageToggleOptions {
