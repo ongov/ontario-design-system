@@ -3,7 +3,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # ontario-header-overflow-menu
 
-This component is intended to be used as a sub-component of the ontario-header component.
+This component is intended to be used as a sub-component of the [ontario-header](../ontario-header) component.
 
 ## Configuration
 
@@ -60,6 +60,49 @@ Once the component package has been installed (see Ontario Design System Compone
   >
   </OntarioHeaderMenuOverflow>
 </div>
+
+## Custom property types
+
+### menuItems
+
+The menu items you want to display in the dropdown menu button.
+
+If `maxSubheaderLinks` is set within `applicationHeaderInfo` on the `ontario-header` component for an `application` type header, some of these links will be dispersed as links within the subheader menu bar relative to the breakpoint and number set.
+
+```html
+<ontario-header
+	menu-items='[ 
+		{ 
+			"title": "Vehicle registration",
+			"href": "/vehicle-registration",
+			"linkIsActive": "false" 
+		}, 
+		{ 
+			"title": "Driver records",
+			"href": "/driver-records", 
+			"linkIsActive": "false" 
+		}, 
+		{ 
+			"title": "Accessible Parking Permits", 
+			"href": "/accessible-parking-permits", 
+			"linkIsActive": "false" 
+		}, 
+		{ 
+			"title": "Highway traveler information", 
+			"href": "/highway-traveler-information", 
+			"linkIsActive": "true",
+			"onClickHandler": (e: Event) => { e.preventDefault(); alert("Menu item clicked!") }
+		} 
+	]'
+></ontario-header>
+```
+
+| **Property name** | **Type**                 | **Description**                                                                                                                                     |
+| ----------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `title`           | `string`                 | The title of the menu item (this is what will appear as the label in the header/dropdown menu)                                                      |
+| `href`            | `string`                 | The URL for the menu item                                                                                                                           |
+| `linkIsActive`    | `boolean`                | A boolean flag for whether or not the current menu item link is active. If set to true, active classes and styles will be applied to the menu item. |
+| `onClickHandler`  | `(event: Event) => void` | An optional custom function to add to the menu item. This can be used if any additional logic should happen when the menu item is clicked.          |
 
 <!-- Auto Generated Below -->
 

@@ -109,10 +109,12 @@ Example of an Ontario.ca header component.
 		type="application"
 		disable-dynamic-menu="true"
 		application-header-info='{
-		"title": "Driving and roads",
-		"href": "/driving-and-roads",
-		"maxSubheaderDesktopLinks": "3",
-		"maxSubheaderTabletLinks": "1"
+			"title": "Driving and roads",
+			"href": "/driving-and-roads",
+			"maxSubheaderLinks": "{
+				"desktop": "3",
+				"tablet": "1"
+			}"
 		}'
 		language-toggle-options='{
 		"englishLink": "/",
@@ -157,8 +159,12 @@ Example of an Application header component.
 	application-header-info='{
 		"title": "Driving and roads",
 		"href": "/driving-and-roads",
-		"maxSubheaderDesktopLinks": "3",
-		"maxSubheaderTabletLinks": "1"
+		"title": "Driving and roads",
+		"href": "/driving-and-roads",
+		"maxSubheaderLinks": "{
+			"desktop": "3",
+			"tablet": "1"
+		}"
 	}'
 	language-toggle-options='{
 		"englishLink": "/",
@@ -219,7 +225,7 @@ language-toggle-options='{ "englishLink": "/en", "frenchLink": "/fr" }'
 
 For the Ontario.ca header, the menu items will automatically be rendered in a dropdown menu button.
 
-For Application headers, there is a default of a maximum of 5 menu links on desktop and 2 menu links on tablet displayed in the subheader. This logic is handled by the web component based on the total number of menu links passed.
+If `maxSubheaderLinks` is set within `applicationHeaderInfo` on the `ontario-header` component for an `application` type header, some of these links will be dispersed as links within the subheader menu bar relative to the breakpoint and number set.
 
 ```html
 <ontario-header
@@ -261,17 +267,15 @@ For Application headers, there is a default of a maximum of 5 menu links on desk
 Note that this is only required for the Application and ServiceOntario header types.
 
 ```html
-application-header-info='{ "title": "Application name", "href": "/", "maxSubheaderDesktopLinks": "4",
-"maxSubheaderTabletLinks": "2", "maxSubheaderMobileLinks": "1" }'
+application-header-info='{ "title": "Application name", "href": "/", "maxSubheaderLinks": {"desktop": "4", "tablet":
+"2", "mobile": "1"}}'
 ```
 
-| **Property name**          | **Type** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| -------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `title`                    | `string` | The title of the application (this is what will appear as the label for the application sub header title)                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| `href`                     | `string` | The URL for the application name                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `maxSubheaderDesktopLinks` | `number` | The number of links to appear in the Ontario application type header's subheader on desktop size. This is optional.<br /><br /> These links will display in the order they are described in the `menuItems` prop. For example, if the `maxSubheaderDesktopLinks` number is '4', the first four `menuItems` items will appear in the application subheader on desktop, and the rest will appear in the menu dropdown.<br /><br /> If no dropdown item is needed, the `maxSubheaderDesktopLinks` number should match the `menuItems` items length. |
-| `maxSubheaderTabletLinks`  | `number` | The number of links to appear in the Ontario application type header's subheader on tablet size. This is optional.<br />< br /> These links will display in the order they are described in the `menuItems` prop. For example, if the `maxSubheaderTabletLinks` number is '2', the first two `menuItems` items will appear in the application subheader on tablet, and the rest will appear in the menu dropdown.<br /><br /> If no dropdown item is needed, the `maxSubheaderTabletLinks` number should match the `menuItems` items length.     |
-| `maxSubheaderMobileLinks`  | `number` | The number of links to appear in the Ontario application type header's subheader on mobile size. This is optional.<br /><br /> These links will display in the order they are described in the `menuItems` prop. For example, if the `maxSubheaderMobileLinks` number is '1', the first `menuItems` item will appear in the application subheader on mobile, and the rest will appear in the menu dropdown.<br /><br /> If no dropdown item is needed, the `maxSubheaderMobileLinks` number should match the `menuItems` items length.           |
+| **Property name**   | **Type** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `title`             | `string` | The title of the application (this is what will appear as the label for the application sub header title)                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `href`              | `string` | The URL for the application name                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `maxSubheaderLinks` | `number` | The number of links to appear in the Ontario application type header's subheader. This is optional.<br /><br /> These links will display in the order they are described in the `menuItems` prop. For example, if the `maxSubheaderLinks.desktop` number is '4', the first four `menuItems` items will appear in the application subheader on desktop, and the rest will appear in the menu dropdown.<br /><br /> If no dropdown item is needed, the `maxSubheaderLinks` number should match the `menuItems` items length. |
 
 ## Accessibility
 
