@@ -24,8 +24,8 @@ const { dest, series, src, task, parallel, watch } = gulp;
  */
 const processSass = (opts) => {
 	const sassOptions = {
-		outputStyle: opts.compress ? 'compressed' : 'expanded',
-		includePaths: ['./node_modules'],
+		importers: [new dartSass.NodePackageImporter()],
+		style: opts.compress ? 'compressed' : 'expanded',
 	};
 
 	return [
