@@ -80,7 +80,7 @@
 	"devDependencies": {
 		"@stencil/angular-output-target": "^0.10.1",
 		"@stencil/react-output-target": "^1.0.2",
-		"@stencil/sass": "^3.0.12",
+		"@stencil/sass": "^3.2.2",
 		"@types/jest": "^29.5.3",
 		"@types/node": "^22.7.5",
 		"@types/react": "^19.0.8",
@@ -99,6 +99,7 @@
 		"prettier": "^3.4.2",
 		"puppeteer": "^23.10.4",
 		"rollup-plugin-dotenv": "^0.5.1",
+		"sass-embedded": "^1.89.2",
 		"shx": "^0.4.0",
 		"stencil-inline-svg": "^1.1.0",
 		"svgson": "^5.3.1",
