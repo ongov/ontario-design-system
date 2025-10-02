@@ -8,6 +8,7 @@ import flatten from 'gulp-flatten';
 import * as dartSass from 'sass';
 import gulp from 'gulp';
 import gulpSass from 'gulp-sass';
+import path from 'path';
 import paths from './paths-constants.js';
 
 const sass = gulpSass(dartSass);
@@ -22,8 +23,8 @@ const { dest, series, src, task, parallel, watch } = gulp;
  */
 const compileSass = (input, outputFile, options) => {
 	const sassOptions = {
+		importers: [new dartSass.NodePackageImporter()],
 		style: options.compress ? 'compressed' : 'expanded',
-		includePaths: ['./node_modules'],
 	};
 
 	if (options.debug) {
@@ -93,19 +94,27 @@ task('generate:components-import-file', async (done) => {
 });
 
 task('sass:build', async (done) => {
-	compileSass(paths.files.theme, 'ontario-theme', {
-		compress: false,
-		sourcemaps: true,
-	});
-	done();
+	try {
+		compileSass(paths.files.theme, 'ontario-theme', {
+			compress: false,
+			sourcemaps: true,
+		});
+		done();
+	} catch (error) {
+		done(error);
+	}
 });
 
 task('sass:minify', async (done) => {
-	compileSass(paths.files.theme, 'ontario-theme', {
-		compress: true,
-		sourcemaps: false,
-	});
-	done();
+	try {
+		compileSass(paths.files.theme, 'ontario-theme', {
+			compress: true,
+			sourcemaps: false,
+		});
+		done();
+	} catch (error) {
+		done(error);
+	}
 });
 
 task('sass:copy-dist', () => {
@@ -134,6 +143,20 @@ task('favicons-move', () => {
 
 task('sass:build-minify', parallel('sass:build', 'sass:minify'));
 
+// Generate dist/index.js that imports the main SASS file
+task('generate:index', async (done) => {
+	try {
+		const distDir = paths.distDir;
+		const indexPath = path.join(distDir, 'index.js');
+		const content = `/**\n * A default import to aid in using and bundling styles with bundlers like webpack, etc.\n */\nimport './styles/scss/theme.scss';\n`;
+		await fs.mkdir(distDir, { recursive: true });
+		await fs.writeFile(indexPath, content);
+		done();
+	} catch (error) {
+		done(error);
+	}
+});
+
 task('watch', (done) => {
 	watch(paths.styles.dir, { ignoreInitial: false }, parallel('sass:build-minify'));
 	done();
@@ -156,6 +179,7 @@ task(
 		'favicons-move',
 		'sass:copy-dist',
 		'sass:build-minify',
+		'generate:index',
 		'clean:src',
 	),
 );

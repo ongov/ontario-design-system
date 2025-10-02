@@ -32,7 +32,7 @@
 		"gulp-concat": "^2.6.1",
 		"gulp-flatten": "^0.4.0",
 		"gulp-if": "^3.0.0",
-		"gulp-sass": "^5.1.0",
+		"gulp-sass": "^6.0.1",
 		"prettier": "^3.4.2",
 		"rimraf": "^6.0.1",
 		"sass": "^1.83.0"
@@ -46,5 +46,15 @@
 			"email": "nakib.momin@ontario.ca"
 		}
 	],
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.js",
+			"style": "./dist/styles/css/compiled/ontario-theme.min.css",
+			"sass": "./dist/styles/scss/theme.scss"
+		},
+		"./styles/css/compiled/ontario-theme.min.css": "./dist/styles/css/compiled/ontario-theme.min.css",
+		"./styles/scss/theme.scss": "./dist/styles/scss/theme.scss"
+	},
 	"sass": "dist/styles/scss/theme.scss"
 }
