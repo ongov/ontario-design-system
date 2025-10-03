@@ -29,8 +29,8 @@ By default, the above components do not have built-in margins to separate them f
 
 **Spacing options:**
 
-- **Default** (40px) corresponds to $spacing-7.
-- **Condensed** (16px) corresponds to $spacing-4.
+- **Default** (`40px`) corresponds to $spacing-7.
+- **Condensed** (`16px`) corresponds to $spacing-4.
 
 **Styling:**
 
@@ -52,7 +52,7 @@ No `gap` prop is required when using the default gap option.
 				caption="Address line 1"
 				required
 				name="delivery-address-form-line-1"
-				hint-text="Street and number or P.O. box."
+				hint-text="Street and number or P.O. Box."
 				enable-live-validation
 				required-validation-message="Please enter your address"
 			></ontario-input>
@@ -87,7 +87,7 @@ No `gap` prop is required when using the default gap option.
 					caption="Address line 1"
 					required
 					name="delivery-address-form-line-1"
-					hint-text="Street and number or P.O. box."
+					hint-text="Street and number or P.O. Box."
 					enable-live-validation
 					required-validation-message="Please enter your address"
 				>
@@ -104,11 +104,11 @@ No `gap` prop is required when using the default gap option.
 					element-id="delivery-address-form-province-territory"
 					required
 					is-empty-start-option="true"
-					options='{[
+					options='[
 						{ "value": "ON", "label": "Ontario" },
 						{ "value": "QC", "label": "Quebec" },
 						{ "value": "SK", "label": "Saskatchewan" }
-					]}'
+					]'
 				>
 				</OntarioDropdownList>
 			</OntarioFieldset>

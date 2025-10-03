@@ -331,7 +331,7 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(@types/react@19.0.8)(react@18.3.1)
       '@ongov/ontario-design-system-component-library-react':
-        specifier: ^6.0.0-alpha.3
+        specifier: workspace:*
         version: link:../ontario-design-system-component-library-react
       clsx:
         specifier: ^2.0.0
@@ -981,9 +981,8 @@ packages:
     engines: {node: '>=6.9.0'}
 
   '@babel/code-frame@7.27.1':
-    resolution:
-      { integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg== }
-    engines: { node: '>=6.9.0' }
+    resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
+    engines: {node: '>=6.9.0'}
 
   '@babel/compat-data@7.26.5':
     resolution: {integrity: sha512-XvcZi1KWf88RVbF9wn8MN6tYFloU5qX8KjuF3E1PVBmJ9eypXfs4GRiJwLuTZL0iSnJUKn1BFPa5BPZZJyFzPg==}
@@ -1092,9 +1091,8 @@ packages:
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-validator-identifier@7.27.1':
-    resolution:
-      { integrity: sha512-D2hP9eA+Sqx1kBZgzxZh0y1trbuU+JoDkiEwqhQ36nodYqJwyEIhPSdMNd7lOm/4io72luTPWH20Yda0xOuUow== }
-    engines: { node: '>=6.9.0' }
+    resolution: {integrity: sha512-D2hP9eA+Sqx1kBZgzxZh0y1trbuU+JoDkiEwqhQ36nodYqJwyEIhPSdMNd7lOm/4io72luTPWH20Yda0xOuUow==}
+    engines: {node: '>=6.9.0'}
 
   '@babel/helper-validator-option@7.25.9':
     resolution: {integrity: sha512-e/zv1co8pp55dNdEcCynfj9X7nyUKUXoUEwfXqaZt0omVOmDe9oOTdKStH4GmAw6zxMFs50ZayuMfHDKlO7Tfw==}
@@ -1736,9 +1734,8 @@ packages:
     engines: {node: '>=6.9.0'}
 
   '@babel/runtime@7.28.4':
-    resolution:
-      { integrity: sha512-Q/N6JNWvIvPnLDvjlE1OUBLPQHH6l3CltCEsHIujp45zQUSSh8K+gHnaEX45yAT1nyngnINhvWtzN+Nb9D8RAQ== }
-    engines: { node: '>=6.9.0' }
+    resolution: {integrity: sha512-Q/N6JNWvIvPnLDvjlE1OUBLPQHH6l3CltCEsHIujp45zQUSSh8K+gHnaEX45yAT1nyngnINhvWtzN+Nb9D8RAQ==}
+    engines: {node: '>=6.9.0'}
 
   '@babel/template@7.25.9':
     resolution: {integrity: sha512-9DGttpmPvIxBb/2uwpVo3dqJ+O6RooAFOS+lB+xDqoE2PVCE8nfoHMdZLpfCQRLwvohzXISPZcgxt80xLfsuwg==}
@@ -3791,21 +3788,6 @@ packages:
 
   '@octokit/types@9.3.2':
     resolution: {integrity: sha512-D4iHGTdAnEEVsB8fl95m1hiz7D5YiRdQ9b/OEb3BYRVwbLsGHcRVPz+u+BgRLNk0Q0/4iZCBqDN96j2XNxfXrA==}
-
-  '@ongov/ontario-design-system-component-library-react@6.0.0-alpha.3':
-    resolution:
-      { integrity: sha512-VJk1wAJc+Y6NCHK4ctB7Vqy7xSa87LYcY4TRCE7ekHPZSk3+SjBhnnhP2veufq6wiaSDazCOr6NACePB36+AaQ== }
-    peerDependencies:
-      react: ^18.3.0
-      react-dom: ^18.3.0
-
-  '@ongov/ontario-design-system-component-library@6.0.0-alpha.3':
-    resolution:
-      { integrity: sha512-3I5n1dKTuX7Zcb0wX/1Gu0wxrEHMzHwBUD2y4rnXPlT4WcqS8Pq9XT0ZE8LJ700JXE8RLrr9uoHpr/D96tJRmQ== }
-
-  '@ongov/ontario-design-system-global-styles@6.0.0-alpha.1':
-    resolution:
-      { integrity: sha512-nqaGQNexPBFafLDJAkl/we/ElGbaDrFLtIOHDlEHXlbTrA+HpqBJtwd3uZS9UHyO0NU1Q57fm1wHmHNiukGpEw== }
 
   '@parcel/watcher-android-arm64@2.5.1':
     resolution: {integrity: sha512-KF8+j9nNbUN8vzOFDpRMsaKBHZ/mcjEjMToVMJOhTozkDonQFFrRcfdLWn6yWKCmJKmdVxSgHiYvTCef4/qcBA==}
@@ -15098,7 +15080,7 @@ snapshots:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.1802.12(chokidar@3.6.0)
-      '@angular-devkit/build-webpack': 0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0(esbuild@0.23.0))
+      '@angular-devkit/build-webpack': 0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0(esbuild@0.23.0)))(webpack@5.94.0(esbuild@0.23.0))
       '@angular-devkit/core': 18.2.12(chokidar@3.6.0)
       '@angular/build': 18.2.12(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.3))(@types/node@22.10.10)(chokidar@3.6.0)(less@4.2.0)(postcss@8.4.41)(sass-embedded@1.93.2)(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.10.10)(typescript@5.5.3)))(terser@5.31.6)(typescript@5.5.3)
       '@angular/compiler-cli': 18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.3)
@@ -15188,7 +15170,7 @@ snapshots:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.1802.12(chokidar@3.6.0)
-      '@angular-devkit/build-webpack': 0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0(esbuild@0.23.0))
+      '@angular-devkit/build-webpack': 0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0(esbuild@0.23.0)))(webpack@5.94.0(esbuild@0.23.0))
       '@angular-devkit/core': 18.2.12(chokidar@3.6.0)
       '@angular/build': 18.2.12(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.3))(@types/node@22.10.10)(chokidar@3.6.0)(less@4.2.0)(postcss@8.4.41)(sass-embedded@1.93.2)(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.10.10)(typescript@5.5.3)))(terser@5.31.6)(typescript@5.5.3)
       '@angular/compiler-cli': 18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.3)
@@ -15274,7 +15256,7 @@ snapshots:
       - utf-8-validate
       - webpack-cli
 
-  '@angular-devkit/build-webpack@0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0(esbuild@0.23.0))':
+  '@angular-devkit/build-webpack@0.1802.12(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0(esbuild@0.23.0)))(webpack@5.94.0(esbuild@0.23.0))':
     dependencies:
       '@angular-devkit/architect': 0.1802.12(chokidar@3.6.0)
       rxjs: 7.8.1
@@ -17715,7 +17697,7 @@ snapshots:
 
   '@docusaurus/react-loadable@6.0.0(react@18.3.1)':
     dependencies:
-      '@types/react': 19.0.8
+      '@types/react': 18.3.24
       react: 18.3.1
 
   '@docusaurus/theme-classic@3.5.0(@types/react@19.0.8)(acorn@8.14.0)(eslint@9.25.1(jiti@2.4.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2)':
@@ -19727,25 +19709,6 @@ snapshots:
     dependencies:
       '@octokit/openapi-types': 18.1.1
 
-  '@ongov/ontario-design-system-component-library-react@6.0.0-alpha.3(@stencil/core@4.36.2)(@types/react@19.0.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@ongov/ontario-design-system-component-library': 6.0.0-alpha.3
-      '@stencil/react-output-target': 1.0.2(@stencil/core@4.36.2)(@types/react@19.0.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-    transitivePeerDependencies:
-      - '@stencil/core'
-      - '@types/react'
-
-  '@ongov/ontario-design-system-component-library@6.0.0-alpha.3':
-    dependencies:
-      '@ongov/ontario-design-system-global-styles': 6.0.0-alpha.1
-      '@stencil/core': 4.36.2
-      dotenv: 16.4.7
-      uuid: 11.0.5
-
-  '@ongov/ontario-design-system-global-styles@6.0.0-alpha.1': {}
-
   '@parcel/watcher-android-arm64@2.5.1':
     optional: true
 
@@ -20781,7 +20744,7 @@ snapshots:
   '@types/react-router@5.1.20':
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 19.0.8
+      '@types/react': 18.3.12
 
   '@types/react-syntax-highlighter@15.5.13':
     dependencies:
@@ -25448,16 +25411,6 @@ snapshots:
       style-to-js: 1.1.16
     optionalDependencies:
       '@types/react': 18.3.24
-
-  html-react-parser@5.2.2(@types/react@19.0.8)(react@18.3.1):
-    dependencies:
-      domhandler: 5.0.3
-      html-dom-parser: 5.0.13
-      react: 18.3.1
-      react-property: 2.0.2
-      style-to-js: 1.1.16
-    optionalDependencies:
-      '@types/react': 19.0.8
 
   html-react-parser@5.2.2(@types/react@19.0.8)(react@19.1.0):
     dependencies:
