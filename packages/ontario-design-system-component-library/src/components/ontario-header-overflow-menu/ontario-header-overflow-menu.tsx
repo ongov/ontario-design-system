@@ -210,7 +210,7 @@ export class OntarioHeaderApplicationMenu {
 				</div>
 				<div
 					id="aria-live-region"
-					class="ontario-visually-hidden"
+					class="ontario-show-for-sr"
 					aria-live="polite"
 					ref={(el) => (this.ariaLiveRegion = el as HTMLElement)}
 				></div>
