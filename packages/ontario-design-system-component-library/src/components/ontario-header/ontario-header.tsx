@@ -361,6 +361,11 @@ export class OntarioHeader {
 		this.handleSetAppLanguage(event.detail.newLanguage);
 	}
 
+	/**
+	 * This event is toggled when the menu button is pressed.
+	 * The <ontario-header-overflow-menu> sub-component listens for this event
+	 * To trigger the showing and hiding of the overflow menu.
+	 */
 	@Event() menuButtonToggled: EventEmitter<boolean>;
 
 	/**
