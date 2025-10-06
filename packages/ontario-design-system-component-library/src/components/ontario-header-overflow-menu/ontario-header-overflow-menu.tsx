@@ -209,7 +209,7 @@ export class OntarioHeaderApplicationMenu {
 			>
 				<div class="ontario-application-navigation__container">
 					<ul>
-						{this.menuItemState.map((item: any) => {
+						{this.menuItemState.map((item: MenuItem) => {
 							return this.generateMenuItem(item.href, item.title, item.linkIsActive);
 						})}
 					</ul>
