@@ -468,13 +468,7 @@ export class OntarioHeader {
 	 * @param liClass - if there is a class that is related to the <a> portion of the menu item, put it here
 	 * @param onClick - for any custom onClick event a user might want to add to their menu links
 	 */
-	private generateMenuItem(
-		href: string,
-		title: string,
-		linkIsActive: boolean | undefined,
-		liClass?: string,
-		onClick?: any,
-	) {
+	private generateMenuItem(href: string, title: string, linkIsActive?: boolean, liClass?: string, onClick?: any) {
 		return (
 			<li class={liClass}>
 				<a class={linkIsActive === true ? `ontario-link--active` : ``} href={href} onClick={onClick}>
