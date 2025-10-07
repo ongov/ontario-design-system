@@ -52,6 +52,15 @@ export class OntarioHeaderApplicationMenu {
 	 */
 	private currentIndex: number | undefined = undefined;
 
+	/**
+	 * Resets the `currentIndex` value.
+	 *
+	 * Typically resets when the menu closes.
+	 */
+	private resetCurrentIndex() {
+		this.currentIndex = undefined;
+	}
+
 	@Watch('menuItems')
 	parseMenuItems() {
 		if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
@@ -74,7 +83,7 @@ export class OntarioHeaderApplicationMenu {
 	@Listen('menuButtonToggled', { target: 'window' })
 	toggleMenuVisibility(event: CustomEvent<boolean>) {
 		this.menuIsOpen = event.detail;
-		this.currentIndex = undefined;
+		this.resetCurrentIndex();
 	}
 
 	/**
@@ -90,7 +99,7 @@ export class OntarioHeaderApplicationMenu {
 		}
 
 		this.menuIsOpen = false;
-		this.currentIndex = undefined;
+		this.resetCurrentIndex();
 	}
 
 	/**
