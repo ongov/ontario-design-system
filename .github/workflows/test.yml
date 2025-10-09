@@ -32,6 +32,14 @@ jobs:
       - name: Run Unit Tests
         run: pnpm run test:unit
 
+      - name: Publish Stencil Unit Test Results
+        if: ${{ (success() || failure()) }}
+        uses: dorny/test-reporter@v1
+        with:
+          name: Stencil Unit Tests
+          path: packages/ontario-design-system-component-library/junit.xml
+          reporter: java-junit
+
   vrt-test:
     runs-on: ubuntu-latest
     needs: unit-test
@@ -67,32 +75,32 @@ jobs:
       - name: Run All VRT Tests
         run: pnpm run test:vrt
 
-      - name: Upload VRT Test Results
+      - name: Upload Next.js VRT Test Results
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
-          name: vrt-test-results
+          name: nextjs-vrt-test-results
           path: packages/app-nextjs/test-results
 
-      - name: Upload VRT JUnit results for GitHub integration
+      - name: Upload Next.js VRT JUnit results for GitHub integration
         if: ${{ success() || failure() }}
         uses: actions/upload-artifact@v4
         with:
-          name: vrt-junit-results
+          name: nextjs-vrt-junit-results
           path: packages/app-nextjs/test-results/playwright/results.xml
 
-      - name: Upload Playwright HTML report
+      - name: Upload Next.js Playwright HTML report
         if: ${{ success() || failure() }}
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-html-report-vrt
+          name: nextjs-playwright-html-report-vrt
           path: packages/app-nextjs/playwright-report
 
-      - name: Publish JUnit Results
+      - name: Publish Next.js Playwright VRT Results
         if: ${{ (success() || failure()) && (github.event.pull_request.head.repo.fork == false) }}
         uses: dorny/test-reporter@v1
         with:
-          name: Playwright VRT Tests
+          name: Next.js Playwright VRT Tests
           path: packages/app-nextjs/test-results/playwright/results.xml
           reporter: java-junit
 
@@ -131,31 +139,31 @@ jobs:
       - name: Run All E2E Apps Tests
         run: pnpm run test:e2e:apps
 
-      - name: Upload E2E Apps Test Results
+      - name: Upload Next.js E2E Apps Test Results
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
-          name: e2e-test-results
+          name: nextjs-e2e-test-results
           path: packages/app-nextjs/test-results
 
-      - name: Upload E2E Apps JUnit results for GitHub integration
+      - name: Upload Next.js E2E Apps JUnit results for GitHub integration
         if: ${{ success() || failure() }}
         uses: actions/upload-artifact@v4
         with:
-          name: e2e-junit-results
+          name: nextjs-e2e-junit-results
           path: packages/app-nextjs/test-results/playwright/results.xml
 
-      - name: Upload Playwright HTML report
+      - name: Upload Next.js Playwright HTML report
         if: ${{ success() || failure() }}
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-html-report-e2e
+          name: nextjs-playwright-html-report-e2e
           path: packages/app-nextjs/playwright-report
 
-      - name: Publish JUnit Results
+      - name: Publish Next.js Playwright Next.js E2E Test Results
         if: ${{ (success() || failure()) && (github.event.pull_request.head.repo.fork == false) }}
         uses: dorny/test-reporter@v1
         with:
-          name: Playwright E2E Tests
+          name: Playwright Next.js E2E Tests
           path: packages/app-nextjs/test-results/playwright/results.xml
           reporter: java-junit
