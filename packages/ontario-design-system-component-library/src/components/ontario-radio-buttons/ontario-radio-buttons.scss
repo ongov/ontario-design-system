@@ -1,19 +1,19 @@
 @use 'sass:math';
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as fontSizes;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables' as lineheight;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as fontSizes;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables' as lineheight;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
 	placeholders;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_form.component.scss';
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_form.component.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
 @forward '../../utils/components/error-message/error-message';
 
 $ontario-radios-size: 32px;
