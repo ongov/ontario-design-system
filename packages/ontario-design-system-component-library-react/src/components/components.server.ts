@@ -24,6 +24,7 @@ import { OntarioDateInput as OntarioDateInputElement } from "@ongov/ontario-desi
 import { OntarioDropdownList as OntarioDropdownListElement } from "@ongov/ontario-design-system-component-library/components/ontario-dropdown-list.js";
 import { OntarioFieldset as OntarioFieldsetElement } from "@ongov/ontario-design-system-component-library/components/ontario-fieldset.js";
 import { OntarioFooter as OntarioFooterElement } from "@ongov/ontario-design-system-component-library/components/ontario-footer.js";
+import { OntarioFormContainer as OntarioFormContainerElement } from "@ongov/ontario-design-system-component-library/components/ontario-form-container.js";
 import { OntarioHeader as OntarioHeaderElement } from "@ongov/ontario-design-system-component-library/components/ontario-header.js";
 import { OntarioHintExpander as OntarioHintExpanderElement } from "@ongov/ontario-design-system-component-library/components/ontario-hint-expander.js";
 import { OntarioHintText as OntarioHintTextElement } from "@ongov/ontario-design-system-component-library/components/ontario-hint-text.js";
@@ -401,6 +402,15 @@ export const OntarioFooter: StencilReactComponent<OntarioFooterElement, OntarioF
         topMargin: 'top-margin',
         assetBasePath: 'asset-base-path'
     },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
+
+export type OntarioFormContainerEvents = NonNullable<unknown>;
+
+export const OntarioFormContainer: StencilReactComponent<OntarioFormContainerElement, OntarioFormContainerEvents> = /*@__PURE__*/ createComponent<OntarioFormContainerElement, OntarioFormContainerEvents>({
+    tagName: 'ontario-form-container',
+    properties: { gap: 'gap' },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
     serializeShadowRoot
 });

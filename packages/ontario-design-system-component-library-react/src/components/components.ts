@@ -7,590 +7,149 @@
 
 /* eslint-disable */
 
-import {
-	type HeaderLanguageToggleEventDetails,
-	type InputFocusBlurEvent,
-	type InputInputEvent,
-	type InputInteractionEvent,
-	type Language,
-	type OntarioCheckboxesCustomEvent,
-	type OntarioDropdownListCustomEvent,
-	type OntarioHintExpanderCustomEvent,
-	type OntarioInputCustomEvent,
-	type OntarioLanguageToggleCustomEvent,
-	type OntarioRadioButtonsCustomEvent,
-	type OntarioSearchBoxCustomEvent,
-	type OntarioTextareaCustomEvent,
-	type RadioAndCheckboxChangeEvent,
-} from '@ongov/ontario-design-system-component-library';
-import {
-	OntarioAccordion as OntarioAccordionElement,
-	defineCustomElement as defineOntarioAccordion,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-accordion.js';
-import {
-	OntarioAside as OntarioAsideElement,
-	defineCustomElement as defineOntarioAside,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-aside.js';
-import {
-	OntarioBackToTop as OntarioBackToTopElement,
-	defineCustomElement as defineOntarioBackToTop,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-back-to-top.js';
-import {
-	OntarioBadge as OntarioBadgeElement,
-	defineCustomElement as defineOntarioBadge,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-badge.js';
-import {
-	OntarioBlockquote as OntarioBlockquoteElement,
-	defineCustomElement as defineOntarioBlockquote,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-blockquote.js';
-import {
-	OntarioButton as OntarioButtonElement,
-	defineCustomElement as defineOntarioButton,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-button.js';
-import {
-	OntarioCallout as OntarioCalloutElement,
-	defineCustomElement as defineOntarioCallout,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-callout.js';
-import {
-	OntarioCardCollection as OntarioCardCollectionElement,
-	defineCustomElement as defineOntarioCardCollection,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-card-collection.js';
-import {
-	OntarioCard as OntarioCardElement,
-	defineCustomElement as defineOntarioCard,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-card.js';
-import {
-	OntarioCheckboxes as OntarioCheckboxesElement,
-	defineCustomElement as defineOntarioCheckboxes,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-checkboxes.js';
-import {
-	OntarioCriticalAlert as OntarioCriticalAlertElement,
-	defineCustomElement as defineOntarioCriticalAlert,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-critical-alert.js';
-import {
-	OntarioDateInput as OntarioDateInputElement,
-	defineCustomElement as defineOntarioDateInput,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-date-input.js';
-import {
-	OntarioDropdownList as OntarioDropdownListElement,
-	defineCustomElement as defineOntarioDropdownList,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-dropdown-list.js';
-import {
-	OntarioFieldset as OntarioFieldsetElement,
-	defineCustomElement as defineOntarioFieldset,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-fieldset.js';
-import {
-	OntarioFooter as OntarioFooterElement,
-	defineCustomElement as defineOntarioFooter,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-footer.js';
-import {
-	OntarioFormContainer as OntarioFormContainerElement,
-	defineCustomElement as defineOntarioFormContainer,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-form-container.js';
-import {
-	OntarioHeader as OntarioHeaderElement,
-	defineCustomElement as defineOntarioHeader,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-header.js';
-import {
-	OntarioHintExpander as OntarioHintExpanderElement,
-	defineCustomElement as defineOntarioHintExpander,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-hint-expander.js';
-import {
-	OntarioHintText as OntarioHintTextElement,
-	defineCustomElement as defineOntarioHintText,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-hint-text.js';
-import {
-	OntarioIconAccessibility as OntarioIconAccessibilityElement,
-	defineCustomElement as defineOntarioIconAccessibility,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-accessibility.js';
-import {
-	OntarioIconAccount as OntarioIconAccountElement,
-	defineCustomElement as defineOntarioIconAccount,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-account.js';
-import {
-	OntarioIconAddAlt as OntarioIconAddAltElement,
-	defineCustomElement as defineOntarioIconAddAlt,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-add-alt.js';
-import {
-	OntarioIconAdd as OntarioIconAddElement,
-	defineCustomElement as defineOntarioIconAdd,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-add.js';
-import {
-	OntarioIconAlertError as OntarioIconAlertErrorElement,
-	defineCustomElement as defineOntarioIconAlertError,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-alert-error.js';
-import {
-	OntarioIconAlertInformation as OntarioIconAlertInformationElement,
-	defineCustomElement as defineOntarioIconAlertInformation,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-alert-information.js';
-import {
-	OntarioIconAlertSuccess as OntarioIconAlertSuccessElement,
-	defineCustomElement as defineOntarioIconAlertSuccess,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-alert-success.js';
-import {
-	OntarioIconAlertWarning as OntarioIconAlertWarningElement,
-	defineCustomElement as defineOntarioIconAlertWarning,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-alert-warning.js';
-import {
-	OntarioIconArrowUp as OntarioIconArrowUpElement,
-	defineCustomElement as defineOntarioIconArrowUp,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-arrow-up.js';
-import {
-	OntarioIconAttach as OntarioIconAttachElement,
-	defineCustomElement as defineOntarioIconAttach,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-attach.js';
-import {
-	OntarioIconBookmarkOff as OntarioIconBookmarkOffElement,
-	defineCustomElement as defineOntarioIconBookmarkOff,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-bookmark-off.js';
-import {
-	OntarioIconBookmarkOn as OntarioIconBookmarkOnElement,
-	defineCustomElement as defineOntarioIconBookmarkOn,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-bookmark-on.js';
-import {
-	OntarioIconCalendar as OntarioIconCalendarElement,
-	defineCustomElement as defineOntarioIconCalendar,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-calendar.js';
-import {
-	OntarioIconCamera as OntarioIconCameraElement,
-	defineCustomElement as defineOntarioIconCamera,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-camera.js';
-import {
-	OntarioIconChevronDown as OntarioIconChevronDownElement,
-	defineCustomElement as defineOntarioIconChevronDown,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-chevron-down.js';
-import {
-	OntarioIconChevronLeft as OntarioIconChevronLeftElement,
-	defineCustomElement as defineOntarioIconChevronLeft,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-chevron-left.js';
-import {
-	OntarioIconChevronRight as OntarioIconChevronRightElement,
-	defineCustomElement as defineOntarioIconChevronRight,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-chevron-right.js';
-import {
-	OntarioIconChevronUp as OntarioIconChevronUpElement,
-	defineCustomElement as defineOntarioIconChevronUp,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-chevron-up.js';
-import {
-	OntarioIconClock as OntarioIconClockElement,
-	defineCustomElement as defineOntarioIconClock,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-clock.js';
-import {
-	OntarioIconCloseHeader as OntarioIconCloseHeaderElement,
-	defineCustomElement as defineOntarioIconCloseHeader,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-close-header.js';
-import {
-	OntarioIconClose as OntarioIconCloseElement,
-	defineCustomElement as defineOntarioIconClose,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-close.js';
-import {
-	OntarioIconCloud as OntarioIconCloudElement,
-	defineCustomElement as defineOntarioIconCloud,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-cloud.js';
-import {
-	OntarioIconCollapse as OntarioIconCollapseElement,
-	defineCustomElement as defineOntarioIconCollapse,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-collapse.js';
-import {
-	OntarioIconCreditCard as OntarioIconCreditCardElement,
-	defineCustomElement as defineOntarioIconCreditCard,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-credit-card.js';
-import {
-	OntarioIconCriticalAlertWarning as OntarioIconCriticalAlertWarningElement,
-	defineCustomElement as defineOntarioIconCriticalAlertWarning,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-critical-alert-warning.js';
-import {
-	OntarioIconDelete as OntarioIconDeleteElement,
-	defineCustomElement as defineOntarioIconDelete,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-delete.js';
-import {
-	OntarioIconDocument as OntarioIconDocumentElement,
-	defineCustomElement as defineOntarioIconDocument,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-document.js';
-import {
-	OntarioIconDownload as OntarioIconDownloadElement,
-	defineCustomElement as defineOntarioIconDownload,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-download.js';
-import {
-	OntarioIconDropdownArrow as OntarioIconDropdownArrowElement,
-	defineCustomElement as defineOntarioIconDropdownArrow,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-dropdown-arrow.js';
-import {
-	OntarioIconEdit as OntarioIconEditElement,
-	defineCustomElement as defineOntarioIconEdit,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-edit.js';
-import {
-	OntarioIconEmail as OntarioIconEmailElement,
-	defineCustomElement as defineOntarioIconEmail,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-email.js';
-import {
-	OntarioIconExpand as OntarioIconExpandElement,
-	defineCustomElement as defineOntarioIconExpand,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-expand.js';
-import {
-	OntarioIconExport as OntarioIconExportElement,
-	defineCustomElement as defineOntarioIconExport,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-export.js';
-import {
-	OntarioIconFacebookAlt as OntarioIconFacebookAltElement,
-	defineCustomElement as defineOntarioIconFacebookAlt,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-facebook-alt.js';
-import {
-	OntarioIconFacebook as OntarioIconFacebookElement,
-	defineCustomElement as defineOntarioIconFacebook,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-facebook.js';
-import {
-	OntarioIconFavouriteOff as OntarioIconFavouriteOffElement,
-	defineCustomElement as defineOntarioIconFavouriteOff,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-favourite-off.js';
-import {
-	OntarioIconFavouriteOn as OntarioIconFavouriteOnElement,
-	defineCustomElement as defineOntarioIconFavouriteOn,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-favourite-on.js';
-import {
-	OntarioIconFilter as OntarioIconFilterElement,
-	defineCustomElement as defineOntarioIconFilter,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-filter.js';
-import {
-	OntarioIconFlickr as OntarioIconFlickrElement,
-	defineCustomElement as defineOntarioIconFlickr,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-flickr.js';
-import {
-	OntarioIconGrid as OntarioIconGridElement,
-	defineCustomElement as defineOntarioIconGrid,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-grid.js';
-import {
-	OntarioIconHelp as OntarioIconHelpElement,
-	defineCustomElement as defineOntarioIconHelp,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-help.js';
-import {
-	OntarioIconInstagram as OntarioIconInstagramElement,
-	defineCustomElement as defineOntarioIconInstagram,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-instagram.js';
-import {
-	OntarioIconInteracEnAlt as OntarioIconInteracEnAltElement,
-	defineCustomElement as defineOntarioIconInteracEnAlt,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-interac-en-alt.js';
-import {
-	OntarioIconInteracEn as OntarioIconInteracEnElement,
-	defineCustomElement as defineOntarioIconInteracEn,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-interac-en.js';
-import {
-	OntarioIconInteracFrAlt as OntarioIconInteracFrAltElement,
-	defineCustomElement as defineOntarioIconInteracFrAlt,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-interac-fr-alt.js';
-import {
-	OntarioIconInteracFr as OntarioIconInteracFrElement,
-	defineCustomElement as defineOntarioIconInteracFr,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-interac-fr.js';
-import {
-	OntarioIconLinkedinAlt as OntarioIconLinkedinAltElement,
-	defineCustomElement as defineOntarioIconLinkedinAlt,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-linkedin-alt.js';
-import {
-	OntarioIconLinkedin as OntarioIconLinkedinElement,
-	defineCustomElement as defineOntarioIconLinkedin,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-linkedin.js';
-import {
-	OntarioIconList as OntarioIconListElement,
-	defineCustomElement as defineOntarioIconList,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-list.js';
-import {
-	OntarioIconLiveChat as OntarioIconLiveChatElement,
-	defineCustomElement as defineOntarioIconLiveChat,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-live-chat.js';
-import {
-	OntarioIconLocationOff as OntarioIconLocationOffElement,
-	defineCustomElement as defineOntarioIconLocationOff,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-location-off.js';
-import {
-	OntarioIconLocationOn as OntarioIconLocationOnElement,
-	defineCustomElement as defineOntarioIconLocationOn,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-location-on.js';
-import {
-	OntarioIconLockOff as OntarioIconLockOffElement,
-	defineCustomElement as defineOntarioIconLockOff,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-lock-off.js';
-import {
-	OntarioIconLockOn as OntarioIconLockOnElement,
-	defineCustomElement as defineOntarioIconLockOn,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-lock-on.js';
-import {
-	OntarioIconMap as OntarioIconMapElement,
-	defineCustomElement as defineOntarioIconMap,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-map.js';
-import {
-	OntarioIconMastercardAlt as OntarioIconMastercardAltElement,
-	defineCustomElement as defineOntarioIconMastercardAlt,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-mastercard-alt.js';
-import {
-	OntarioIconMastercard as OntarioIconMastercardElement,
-	defineCustomElement as defineOntarioIconMastercard,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-mastercard.js';
-import {
-	OntarioIconMediaFastForward as OntarioIconMediaFastForwardElement,
-	defineCustomElement as defineOntarioIconMediaFastForward,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-media-fast-forward.js';
-import {
-	OntarioIconMediaFastRewind as OntarioIconMediaFastRewindElement,
-	defineCustomElement as defineOntarioIconMediaFastRewind,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-media-fast-rewind.js';
-import {
-	OntarioIconMediaPause as OntarioIconMediaPauseElement,
-	defineCustomElement as defineOntarioIconMediaPause,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-media-pause.js';
-import {
-	OntarioIconMediaPlay as OntarioIconMediaPlayElement,
-	defineCustomElement as defineOntarioIconMediaPlay,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-media-play.js';
-import {
-	OntarioIconMediaStop as OntarioIconMediaStopElement,
-	defineCustomElement as defineOntarioIconMediaStop,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-media-stop.js';
-import {
-	OntarioIconMenuHeader as OntarioIconMenuHeaderElement,
-	defineCustomElement as defineOntarioIconMenuHeader,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-menu-header.js';
-import {
-	OntarioIconMenu as OntarioIconMenuElement,
-	defineCustomElement as defineOntarioIconMenu,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-menu.js';
-import {
-	OntarioIconMicrophoneOff as OntarioIconMicrophoneOffElement,
-	defineCustomElement as defineOntarioIconMicrophoneOff,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-microphone-off.js';
-import {
-	OntarioIconMicrophoneOn as OntarioIconMicrophoneOnElement,
-	defineCustomElement as defineOntarioIconMicrophoneOn,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-microphone-on.js';
-import {
-	OntarioIconMoreVertical as OntarioIconMoreVerticalElement,
-	defineCustomElement as defineOntarioIconMoreVertical,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-more-vertical.js';
-import {
-	OntarioIconNewWindow as OntarioIconNewWindowElement,
-	defineCustomElement as defineOntarioIconNewWindow,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-new-window.js';
-import {
-	OntarioIconNext as OntarioIconNextElement,
-	defineCustomElement as defineOntarioIconNext,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-next.js';
-import {
-	OntarioIconNotification as OntarioIconNotificationElement,
-	defineCustomElement as defineOntarioIconNotification,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-notification.js';
-import {
-	OntarioIconPasswordHide as OntarioIconPasswordHideElement,
-	defineCustomElement as defineOntarioIconPasswordHide,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-password-hide.js';
-import {
-	OntarioIconPasswordShow as OntarioIconPasswordShowElement,
-	defineCustomElement as defineOntarioIconPasswordShow,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-password-show.js';
-import {
-	OntarioIconPhone as OntarioIconPhoneElement,
-	defineCustomElement as defineOntarioIconPhone,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-phone.js';
-import {
-	OntarioIconPhoto as OntarioIconPhotoElement,
-	defineCustomElement as defineOntarioIconPhoto,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-photo.js';
-import {
-	OntarioIconPinLocationOff as OntarioIconPinLocationOffElement,
-	defineCustomElement as defineOntarioIconPinLocationOff,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-pin-location-off.js';
-import {
-	OntarioIconPinLocationOn as OntarioIconPinLocationOnElement,
-	defineCustomElement as defineOntarioIconPinLocationOn,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-pin-location-on.js';
-import {
-	OntarioIconPrevious as OntarioIconPreviousElement,
-	defineCustomElement as defineOntarioIconPrevious,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-previous.js';
-import {
-	OntarioIconPrint as OntarioIconPrintElement,
-	defineCustomElement as defineOntarioIconPrint,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-print.js';
-import {
-	OntarioIconRemoveAlt as OntarioIconRemoveAltElement,
-	defineCustomElement as defineOntarioIconRemoveAlt,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-remove-alt.js';
-import {
-	OntarioIconRemove as OntarioIconRemoveElement,
-	defineCustomElement as defineOntarioIconRemove,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-remove.js';
-import {
-	OntarioIconReplay as OntarioIconReplayElement,
-	defineCustomElement as defineOntarioIconReplay,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-replay.js';
-import {
-	OntarioIconRssFeed as OntarioIconRssFeedElement,
-	defineCustomElement as defineOntarioIconRssFeed,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-rss-feed.js';
-import {
-	OntarioIconSave as OntarioIconSaveElement,
-	defineCustomElement as defineOntarioIconSave,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-save.js';
-import {
-	OntarioIconSearchWhite as OntarioIconSearchWhiteElement,
-	defineCustomElement as defineOntarioIconSearchWhite,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-search-white.js';
-import {
-	OntarioIconSearch as OntarioIconSearchElement,
-	defineCustomElement as defineOntarioIconSearch,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-search.js';
-import {
-	OntarioIconSentiment1 as OntarioIconSentiment1Element,
-	defineCustomElement as defineOntarioIconSentiment1,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-sentiment-1.js';
-import {
-	OntarioIconSentiment2 as OntarioIconSentiment2Element,
-	defineCustomElement as defineOntarioIconSentiment2,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-sentiment-2.js';
-import {
-	OntarioIconSentiment3 as OntarioIconSentiment3Element,
-	defineCustomElement as defineOntarioIconSentiment3,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-sentiment-3.js';
-import {
-	OntarioIconSentiment4 as OntarioIconSentiment4Element,
-	defineCustomElement as defineOntarioIconSentiment4,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-sentiment-4.js';
-import {
-	OntarioIconSentiment5 as OntarioIconSentiment5Element,
-	defineCustomElement as defineOntarioIconSentiment5,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-sentiment-5.js';
-import {
-	OntarioIconSettings as OntarioIconSettingsElement,
-	defineCustomElement as defineOntarioIconSettings,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-settings.js';
-import {
-	OntarioIconShare as OntarioIconShareElement,
-	defineCustomElement as defineOntarioIconShare,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-share.js';
-import {
-	OntarioIconSort as OntarioIconSortElement,
-	defineCustomElement as defineOntarioIconSort,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-sort.js';
-import {
-	OntarioIconTag as OntarioIconTagElement,
-	defineCustomElement as defineOntarioIconTag,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-tag.js';
-import {
-	OntarioIconTextMessage as OntarioIconTextMessageElement,
-	defineCustomElement as defineOntarioIconTextMessage,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-text-message.js';
-import {
-	OntarioIconTimer as OntarioIconTimerElement,
-	defineCustomElement as defineOntarioIconTimer,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-timer.js';
-import {
-	OntarioIconTransportBicycle as OntarioIconTransportBicycleElement,
-	defineCustomElement as defineOntarioIconTransportBicycle,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-transport-bicycle.js';
-import {
-	OntarioIconTransportBus as OntarioIconTransportBusElement,
-	defineCustomElement as defineOntarioIconTransportBus,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-transport-bus.js';
-import {
-	OntarioIconTransportCar as OntarioIconTransportCarElement,
-	defineCustomElement as defineOntarioIconTransportCar,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-transport-car.js';
-import {
-	OntarioIconTransportWalk as OntarioIconTransportWalkElement,
-	defineCustomElement as defineOntarioIconTransportWalk,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-transport-walk.js';
-import {
-	OntarioIconTty as OntarioIconTtyElement,
-	defineCustomElement as defineOntarioIconTty,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-tty.js';
-import {
-	OntarioIconTwitterAlt as OntarioIconTwitterAltElement,
-	defineCustomElement as defineOntarioIconTwitterAlt,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-twitter-alt.js';
-import {
-	OntarioIconTwitter as OntarioIconTwitterElement,
-	defineCustomElement as defineOntarioIconTwitter,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-twitter.js';
-import {
-	OntarioIconUpload as OntarioIconUploadElement,
-	defineCustomElement as defineOntarioIconUpload,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-upload.js';
-import {
-	OntarioIconVideo as OntarioIconVideoElement,
-	defineCustomElement as defineOntarioIconVideo,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-video.js';
-import {
-	OntarioIconVisa as OntarioIconVisaElement,
-	defineCustomElement as defineOntarioIconVisa,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-visa.js';
-import {
-	OntarioIconVoteDislike as OntarioIconVoteDislikeElement,
-	defineCustomElement as defineOntarioIconVoteDislike,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-vote-dislike.js';
-import {
-	OntarioIconVoteLike as OntarioIconVoteLikeElement,
-	defineCustomElement as defineOntarioIconVoteLike,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-vote-like.js';
-import {
-	OntarioIconVpnKey as OntarioIconVpnKeyElement,
-	defineCustomElement as defineOntarioIconVpnKey,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-vpn-key.js';
-import {
-	OntarioIconWheelchair as OntarioIconWheelchairElement,
-	defineCustomElement as defineOntarioIconWheelchair,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-wheelchair.js';
-import {
-	OntarioIconWifi as OntarioIconWifiElement,
-	defineCustomElement as defineOntarioIconWifi,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-wifi.js';
-import {
-	OntarioIconYoutube as OntarioIconYoutubeElement,
-	defineCustomElement as defineOntarioIconYoutube,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-icon-youtube.js';
-import {
-	OntarioInput as OntarioInputElement,
-	defineCustomElement as defineOntarioInput,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-input.js';
-import {
-	OntarioLanguageToggle as OntarioLanguageToggleElement,
-	defineCustomElement as defineOntarioLanguageToggle,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-language-toggle.js';
-import {
-	OntarioLoadingIndicator as OntarioLoadingIndicatorElement,
-	defineCustomElement as defineOntarioLoadingIndicator,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-loading-indicator.js';
-import {
-	OntarioPageAlert as OntarioPageAlertElement,
-	defineCustomElement as defineOntarioPageAlert,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-page-alert.js';
-import {
-	OntarioRadioButtons as OntarioRadioButtonsElement,
-	defineCustomElement as defineOntarioRadioButtons,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-radio-buttons.js';
-import {
-	OntarioSearchBox as OntarioSearchBoxElement,
-	defineCustomElement as defineOntarioSearchBox,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-search-box.js';
-import {
-	OntarioStepIndicator as OntarioStepIndicatorElement,
-	defineCustomElement as defineOntarioStepIndicator,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-step-indicator.js';
-import {
-	OntarioTable as OntarioTableElement,
-	defineCustomElement as defineOntarioTable,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-table.js';
-import {
-	OntarioTaskList as OntarioTaskListElement,
-	defineCustomElement as defineOntarioTaskList,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-task-list.js';
-import {
-	OntarioTask as OntarioTaskElement,
-	defineCustomElement as defineOntarioTask,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-task.js';
-import {
-	OntarioTextarea as OntarioTextareaElement,
-	defineCustomElement as defineOntarioTextarea,
-} from '@ongov/ontario-design-system-component-library/dist/components/ontario-textarea.js';
+import { type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioCheckboxesCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { OntarioAccordion as OntarioAccordionElement, defineCustomElement as defineOntarioAccordion } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
+import { OntarioAside as OntarioAsideElement, defineCustomElement as defineOntarioAside } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
+import { OntarioBackToTop as OntarioBackToTopElement, defineCustomElement as defineOntarioBackToTop } from "@ongov/ontario-design-system-component-library/components/ontario-back-to-top.js";
+import { OntarioBadge as OntarioBadgeElement, defineCustomElement as defineOntarioBadge } from "@ongov/ontario-design-system-component-library/components/ontario-badge.js";
+import { OntarioBlockquote as OntarioBlockquoteElement, defineCustomElement as defineOntarioBlockquote } from "@ongov/ontario-design-system-component-library/components/ontario-blockquote.js";
+import { OntarioButton as OntarioButtonElement, defineCustomElement as defineOntarioButton } from "@ongov/ontario-design-system-component-library/components/ontario-button.js";
+import { OntarioCallout as OntarioCalloutElement, defineCustomElement as defineOntarioCallout } from "@ongov/ontario-design-system-component-library/components/ontario-callout.js";
+import { OntarioCardCollection as OntarioCardCollectionElement, defineCustomElement as defineOntarioCardCollection } from "@ongov/ontario-design-system-component-library/components/ontario-card-collection.js";
+import { OntarioCard as OntarioCardElement, defineCustomElement as defineOntarioCard } from "@ongov/ontario-design-system-component-library/components/ontario-card.js";
+import { OntarioCheckboxes as OntarioCheckboxesElement, defineCustomElement as defineOntarioCheckboxes } from "@ongov/ontario-design-system-component-library/components/ontario-checkboxes.js";
+import { OntarioCriticalAlert as OntarioCriticalAlertElement, defineCustomElement as defineOntarioCriticalAlert } from "@ongov/ontario-design-system-component-library/components/ontario-critical-alert.js";
+import { OntarioDateInput as OntarioDateInputElement, defineCustomElement as defineOntarioDateInput } from "@ongov/ontario-design-system-component-library/components/ontario-date-input.js";
+import { OntarioDropdownList as OntarioDropdownListElement, defineCustomElement as defineOntarioDropdownList } from "@ongov/ontario-design-system-component-library/components/ontario-dropdown-list.js";
+import { OntarioFieldset as OntarioFieldsetElement, defineCustomElement as defineOntarioFieldset } from "@ongov/ontario-design-system-component-library/components/ontario-fieldset.js";
+import { OntarioFooter as OntarioFooterElement, defineCustomElement as defineOntarioFooter } from "@ongov/ontario-design-system-component-library/components/ontario-footer.js";
+import { OntarioFormContainer as OntarioFormContainerElement, defineCustomElement as defineOntarioFormContainer } from "@ongov/ontario-design-system-component-library/components/ontario-form-container.js";
+import { OntarioHeader as OntarioHeaderElement, defineCustomElement as defineOntarioHeader } from "@ongov/ontario-design-system-component-library/components/ontario-header.js";
+import { OntarioHintExpander as OntarioHintExpanderElement, defineCustomElement as defineOntarioHintExpander } from "@ongov/ontario-design-system-component-library/components/ontario-hint-expander.js";
+import { OntarioHintText as OntarioHintTextElement, defineCustomElement as defineOntarioHintText } from "@ongov/ontario-design-system-component-library/components/ontario-hint-text.js";
+import { OntarioIconAccessibility as OntarioIconAccessibilityElement, defineCustomElement as defineOntarioIconAccessibility } from "@ongov/ontario-design-system-component-library/components/ontario-icon-accessibility.js";
+import { OntarioIconAccount as OntarioIconAccountElement, defineCustomElement as defineOntarioIconAccount } from "@ongov/ontario-design-system-component-library/components/ontario-icon-account.js";
+import { OntarioIconAddAlt as OntarioIconAddAltElement, defineCustomElement as defineOntarioIconAddAlt } from "@ongov/ontario-design-system-component-library/components/ontario-icon-add-alt.js";
+import { OntarioIconAdd as OntarioIconAddElement, defineCustomElement as defineOntarioIconAdd } from "@ongov/ontario-design-system-component-library/components/ontario-icon-add.js";
+import { OntarioIconAlertError as OntarioIconAlertErrorElement, defineCustomElement as defineOntarioIconAlertError } from "@ongov/ontario-design-system-component-library/components/ontario-icon-alert-error.js";
+import { OntarioIconAlertInformation as OntarioIconAlertInformationElement, defineCustomElement as defineOntarioIconAlertInformation } from "@ongov/ontario-design-system-component-library/components/ontario-icon-alert-information.js";
+import { OntarioIconAlertSuccess as OntarioIconAlertSuccessElement, defineCustomElement as defineOntarioIconAlertSuccess } from "@ongov/ontario-design-system-component-library/components/ontario-icon-alert-success.js";
+import { OntarioIconAlertWarning as OntarioIconAlertWarningElement, defineCustomElement as defineOntarioIconAlertWarning } from "@ongov/ontario-design-system-component-library/components/ontario-icon-alert-warning.js";
+import { OntarioIconArrowUp as OntarioIconArrowUpElement, defineCustomElement as defineOntarioIconArrowUp } from "@ongov/ontario-design-system-component-library/components/ontario-icon-arrow-up.js";
+import { OntarioIconAttach as OntarioIconAttachElement, defineCustomElement as defineOntarioIconAttach } from "@ongov/ontario-design-system-component-library/components/ontario-icon-attach.js";
+import { OntarioIconBookmarkOff as OntarioIconBookmarkOffElement, defineCustomElement as defineOntarioIconBookmarkOff } from "@ongov/ontario-design-system-component-library/components/ontario-icon-bookmark-off.js";
+import { OntarioIconBookmarkOn as OntarioIconBookmarkOnElement, defineCustomElement as defineOntarioIconBookmarkOn } from "@ongov/ontario-design-system-component-library/components/ontario-icon-bookmark-on.js";
+import { OntarioIconCalendar as OntarioIconCalendarElement, defineCustomElement as defineOntarioIconCalendar } from "@ongov/ontario-design-system-component-library/components/ontario-icon-calendar.js";
+import { OntarioIconCamera as OntarioIconCameraElement, defineCustomElement as defineOntarioIconCamera } from "@ongov/ontario-design-system-component-library/components/ontario-icon-camera.js";
+import { OntarioIconChevronDown as OntarioIconChevronDownElement, defineCustomElement as defineOntarioIconChevronDown } from "@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-down.js";
+import { OntarioIconChevronLeft as OntarioIconChevronLeftElement, defineCustomElement as defineOntarioIconChevronLeft } from "@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-left.js";
+import { OntarioIconChevronRight as OntarioIconChevronRightElement, defineCustomElement as defineOntarioIconChevronRight } from "@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-right.js";
+import { OntarioIconChevronUp as OntarioIconChevronUpElement, defineCustomElement as defineOntarioIconChevronUp } from "@ongov/ontario-design-system-component-library/components/ontario-icon-chevron-up.js";
+import { OntarioIconClock as OntarioIconClockElement, defineCustomElement as defineOntarioIconClock } from "@ongov/ontario-design-system-component-library/components/ontario-icon-clock.js";
+import { OntarioIconCloseHeader as OntarioIconCloseHeaderElement, defineCustomElement as defineOntarioIconCloseHeader } from "@ongov/ontario-design-system-component-library/components/ontario-icon-close-header.js";
+import { OntarioIconClose as OntarioIconCloseElement, defineCustomElement as defineOntarioIconClose } from "@ongov/ontario-design-system-component-library/components/ontario-icon-close.js";
+import { OntarioIconCloud as OntarioIconCloudElement, defineCustomElement as defineOntarioIconCloud } from "@ongov/ontario-design-system-component-library/components/ontario-icon-cloud.js";
+import { OntarioIconCollapse as OntarioIconCollapseElement, defineCustomElement as defineOntarioIconCollapse } from "@ongov/ontario-design-system-component-library/components/ontario-icon-collapse.js";
+import { OntarioIconCreditCard as OntarioIconCreditCardElement, defineCustomElement as defineOntarioIconCreditCard } from "@ongov/ontario-design-system-component-library/components/ontario-icon-credit-card.js";
+import { OntarioIconCriticalAlertWarning as OntarioIconCriticalAlertWarningElement, defineCustomElement as defineOntarioIconCriticalAlertWarning } from "@ongov/ontario-design-system-component-library/components/ontario-icon-critical-alert-warning.js";
+import { OntarioIconDelete as OntarioIconDeleteElement, defineCustomElement as defineOntarioIconDelete } from "@ongov/ontario-design-system-component-library/components/ontario-icon-delete.js";
+import { OntarioIconDocument as OntarioIconDocumentElement, defineCustomElement as defineOntarioIconDocument } from "@ongov/ontario-design-system-component-library/components/ontario-icon-document.js";
+import { OntarioIconDownload as OntarioIconDownloadElement, defineCustomElement as defineOntarioIconDownload } from "@ongov/ontario-design-system-component-library/components/ontario-icon-download.js";
+import { OntarioIconDropdownArrow as OntarioIconDropdownArrowElement, defineCustomElement as defineOntarioIconDropdownArrow } from "@ongov/ontario-design-system-component-library/components/ontario-icon-dropdown-arrow.js";
+import { OntarioIconEdit as OntarioIconEditElement, defineCustomElement as defineOntarioIconEdit } from "@ongov/ontario-design-system-component-library/components/ontario-icon-edit.js";
+import { OntarioIconEmail as OntarioIconEmailElement, defineCustomElement as defineOntarioIconEmail } from "@ongov/ontario-design-system-component-library/components/ontario-icon-email.js";
+import { OntarioIconExpand as OntarioIconExpandElement, defineCustomElement as defineOntarioIconExpand } from "@ongov/ontario-design-system-component-library/components/ontario-icon-expand.js";
+import { OntarioIconExport as OntarioIconExportElement, defineCustomElement as defineOntarioIconExport } from "@ongov/ontario-design-system-component-library/components/ontario-icon-export.js";
+import { OntarioIconFacebookAlt as OntarioIconFacebookAltElement, defineCustomElement as defineOntarioIconFacebookAlt } from "@ongov/ontario-design-system-component-library/components/ontario-icon-facebook-alt.js";
+import { OntarioIconFacebook as OntarioIconFacebookElement, defineCustomElement as defineOntarioIconFacebook } from "@ongov/ontario-design-system-component-library/components/ontario-icon-facebook.js";
+import { OntarioIconFavouriteOff as OntarioIconFavouriteOffElement, defineCustomElement as defineOntarioIconFavouriteOff } from "@ongov/ontario-design-system-component-library/components/ontario-icon-favourite-off.js";
+import { OntarioIconFavouriteOn as OntarioIconFavouriteOnElement, defineCustomElement as defineOntarioIconFavouriteOn } from "@ongov/ontario-design-system-component-library/components/ontario-icon-favourite-on.js";
+import { OntarioIconFilter as OntarioIconFilterElement, defineCustomElement as defineOntarioIconFilter } from "@ongov/ontario-design-system-component-library/components/ontario-icon-filter.js";
+import { OntarioIconFlickr as OntarioIconFlickrElement, defineCustomElement as defineOntarioIconFlickr } from "@ongov/ontario-design-system-component-library/components/ontario-icon-flickr.js";
+import { OntarioIconGrid as OntarioIconGridElement, defineCustomElement as defineOntarioIconGrid } from "@ongov/ontario-design-system-component-library/components/ontario-icon-grid.js";
+import { OntarioIconHelp as OntarioIconHelpElement, defineCustomElement as defineOntarioIconHelp } from "@ongov/ontario-design-system-component-library/components/ontario-icon-help.js";
+import { OntarioIconInstagram as OntarioIconInstagramElement, defineCustomElement as defineOntarioIconInstagram } from "@ongov/ontario-design-system-component-library/components/ontario-icon-instagram.js";
+import { OntarioIconInteracEnAlt as OntarioIconInteracEnAltElement, defineCustomElement as defineOntarioIconInteracEnAlt } from "@ongov/ontario-design-system-component-library/components/ontario-icon-interac-en-alt.js";
+import { OntarioIconInteracEn as OntarioIconInteracEnElement, defineCustomElement as defineOntarioIconInteracEn } from "@ongov/ontario-design-system-component-library/components/ontario-icon-interac-en.js";
+import { OntarioIconInteracFrAlt as OntarioIconInteracFrAltElement, defineCustomElement as defineOntarioIconInteracFrAlt } from "@ongov/ontario-design-system-component-library/components/ontario-icon-interac-fr-alt.js";
+import { OntarioIconInteracFr as OntarioIconInteracFrElement, defineCustomElement as defineOntarioIconInteracFr } from "@ongov/ontario-design-system-component-library/components/ontario-icon-interac-fr.js";
+import { OntarioIconLinkedinAlt as OntarioIconLinkedinAltElement, defineCustomElement as defineOntarioIconLinkedinAlt } from "@ongov/ontario-design-system-component-library/components/ontario-icon-linkedin-alt.js";
+import { OntarioIconLinkedin as OntarioIconLinkedinElement, defineCustomElement as defineOntarioIconLinkedin } from "@ongov/ontario-design-system-component-library/components/ontario-icon-linkedin.js";
+import { OntarioIconList as OntarioIconListElement, defineCustomElement as defineOntarioIconList } from "@ongov/ontario-design-system-component-library/components/ontario-icon-list.js";
+import { OntarioIconLiveChat as OntarioIconLiveChatElement, defineCustomElement as defineOntarioIconLiveChat } from "@ongov/ontario-design-system-component-library/components/ontario-icon-live-chat.js";
+import { OntarioIconLocationOff as OntarioIconLocationOffElement, defineCustomElement as defineOntarioIconLocationOff } from "@ongov/ontario-design-system-component-library/components/ontario-icon-location-off.js";
+import { OntarioIconLocationOn as OntarioIconLocationOnElement, defineCustomElement as defineOntarioIconLocationOn } from "@ongov/ontario-design-system-component-library/components/ontario-icon-location-on.js";
+import { OntarioIconLockOff as OntarioIconLockOffElement, defineCustomElement as defineOntarioIconLockOff } from "@ongov/ontario-design-system-component-library/components/ontario-icon-lock-off.js";
+import { OntarioIconLockOn as OntarioIconLockOnElement, defineCustomElement as defineOntarioIconLockOn } from "@ongov/ontario-design-system-component-library/components/ontario-icon-lock-on.js";
+import { OntarioIconMap as OntarioIconMapElement, defineCustomElement as defineOntarioIconMap } from "@ongov/ontario-design-system-component-library/components/ontario-icon-map.js";
+import { OntarioIconMastercardAlt as OntarioIconMastercardAltElement, defineCustomElement as defineOntarioIconMastercardAlt } from "@ongov/ontario-design-system-component-library/components/ontario-icon-mastercard-alt.js";
+import { OntarioIconMastercard as OntarioIconMastercardElement, defineCustomElement as defineOntarioIconMastercard } from "@ongov/ontario-design-system-component-library/components/ontario-icon-mastercard.js";
+import { OntarioIconMediaFastForward as OntarioIconMediaFastForwardElement, defineCustomElement as defineOntarioIconMediaFastForward } from "@ongov/ontario-design-system-component-library/components/ontario-icon-media-fast-forward.js";
+import { OntarioIconMediaFastRewind as OntarioIconMediaFastRewindElement, defineCustomElement as defineOntarioIconMediaFastRewind } from "@ongov/ontario-design-system-component-library/components/ontario-icon-media-fast-rewind.js";
+import { OntarioIconMediaPause as OntarioIconMediaPauseElement, defineCustomElement as defineOntarioIconMediaPause } from "@ongov/ontario-design-system-component-library/components/ontario-icon-media-pause.js";
+import { OntarioIconMediaPlay as OntarioIconMediaPlayElement, defineCustomElement as defineOntarioIconMediaPlay } from "@ongov/ontario-design-system-component-library/components/ontario-icon-media-play.js";
+import { OntarioIconMediaStop as OntarioIconMediaStopElement, defineCustomElement as defineOntarioIconMediaStop } from "@ongov/ontario-design-system-component-library/components/ontario-icon-media-stop.js";
+import { OntarioIconMenuHeader as OntarioIconMenuHeaderElement, defineCustomElement as defineOntarioIconMenuHeader } from "@ongov/ontario-design-system-component-library/components/ontario-icon-menu-header.js";
+import { OntarioIconMenu as OntarioIconMenuElement, defineCustomElement as defineOntarioIconMenu } from "@ongov/ontario-design-system-component-library/components/ontario-icon-menu.js";
+import { OntarioIconMicrophoneOff as OntarioIconMicrophoneOffElement, defineCustomElement as defineOntarioIconMicrophoneOff } from "@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-off.js";
+import { OntarioIconMicrophoneOn as OntarioIconMicrophoneOnElement, defineCustomElement as defineOntarioIconMicrophoneOn } from "@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-on.js";
+import { OntarioIconMoreVertical as OntarioIconMoreVerticalElement, defineCustomElement as defineOntarioIconMoreVertical } from "@ongov/ontario-design-system-component-library/components/ontario-icon-more-vertical.js";
+import { OntarioIconNewWindow as OntarioIconNewWindowElement, defineCustomElement as defineOntarioIconNewWindow } from "@ongov/ontario-design-system-component-library/components/ontario-icon-new-window.js";
+import { OntarioIconNext as OntarioIconNextElement, defineCustomElement as defineOntarioIconNext } from "@ongov/ontario-design-system-component-library/components/ontario-icon-next.js";
+import { OntarioIconNotification as OntarioIconNotificationElement, defineCustomElement as defineOntarioIconNotification } from "@ongov/ontario-design-system-component-library/components/ontario-icon-notification.js";
+import { OntarioIconPasswordHide as OntarioIconPasswordHideElement, defineCustomElement as defineOntarioIconPasswordHide } from "@ongov/ontario-design-system-component-library/components/ontario-icon-password-hide.js";
+import { OntarioIconPasswordShow as OntarioIconPasswordShowElement, defineCustomElement as defineOntarioIconPasswordShow } from "@ongov/ontario-design-system-component-library/components/ontario-icon-password-show.js";
+import { OntarioIconPhone as OntarioIconPhoneElement, defineCustomElement as defineOntarioIconPhone } from "@ongov/ontario-design-system-component-library/components/ontario-icon-phone.js";
+import { OntarioIconPhoto as OntarioIconPhotoElement, defineCustomElement as defineOntarioIconPhoto } from "@ongov/ontario-design-system-component-library/components/ontario-icon-photo.js";
+import { OntarioIconPinLocationOff as OntarioIconPinLocationOffElement, defineCustomElement as defineOntarioIconPinLocationOff } from "@ongov/ontario-design-system-component-library/components/ontario-icon-pin-location-off.js";
+import { OntarioIconPinLocationOn as OntarioIconPinLocationOnElement, defineCustomElement as defineOntarioIconPinLocationOn } from "@ongov/ontario-design-system-component-library/components/ontario-icon-pin-location-on.js";
+import { OntarioIconPrevious as OntarioIconPreviousElement, defineCustomElement as defineOntarioIconPrevious } from "@ongov/ontario-design-system-component-library/components/ontario-icon-previous.js";
+import { OntarioIconPrint as OntarioIconPrintElement, defineCustomElement as defineOntarioIconPrint } from "@ongov/ontario-design-system-component-library/components/ontario-icon-print.js";
+import { OntarioIconRemoveAlt as OntarioIconRemoveAltElement, defineCustomElement as defineOntarioIconRemoveAlt } from "@ongov/ontario-design-system-component-library/components/ontario-icon-remove-alt.js";
+import { OntarioIconRemove as OntarioIconRemoveElement, defineCustomElement as defineOntarioIconRemove } from "@ongov/ontario-design-system-component-library/components/ontario-icon-remove.js";
+import { OntarioIconReplay as OntarioIconReplayElement, defineCustomElement as defineOntarioIconReplay } from "@ongov/ontario-design-system-component-library/components/ontario-icon-replay.js";
+import { OntarioIconRssFeed as OntarioIconRssFeedElement, defineCustomElement as defineOntarioIconRssFeed } from "@ongov/ontario-design-system-component-library/components/ontario-icon-rss-feed.js";
+import { OntarioIconSave as OntarioIconSaveElement, defineCustomElement as defineOntarioIconSave } from "@ongov/ontario-design-system-component-library/components/ontario-icon-save.js";
+import { OntarioIconSearchWhite as OntarioIconSearchWhiteElement, defineCustomElement as defineOntarioIconSearchWhite } from "@ongov/ontario-design-system-component-library/components/ontario-icon-search-white.js";
+import { OntarioIconSearch as OntarioIconSearchElement, defineCustomElement as defineOntarioIconSearch } from "@ongov/ontario-design-system-component-library/components/ontario-icon-search.js";
+import { OntarioIconSentiment1 as OntarioIconSentiment1Element, defineCustomElement as defineOntarioIconSentiment1 } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-1.js";
+import { OntarioIconSentiment2 as OntarioIconSentiment2Element, defineCustomElement as defineOntarioIconSentiment2 } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-2.js";
+import { OntarioIconSentiment3 as OntarioIconSentiment3Element, defineCustomElement as defineOntarioIconSentiment3 } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-3.js";
+import { OntarioIconSentiment4 as OntarioIconSentiment4Element, defineCustomElement as defineOntarioIconSentiment4 } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-4.js";
+import { OntarioIconSentiment5 as OntarioIconSentiment5Element, defineCustomElement as defineOntarioIconSentiment5 } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-5.js";
+import { OntarioIconSettings as OntarioIconSettingsElement, defineCustomElement as defineOntarioIconSettings } from "@ongov/ontario-design-system-component-library/components/ontario-icon-settings.js";
+import { OntarioIconShare as OntarioIconShareElement, defineCustomElement as defineOntarioIconShare } from "@ongov/ontario-design-system-component-library/components/ontario-icon-share.js";
+import { OntarioIconSort as OntarioIconSortElement, defineCustomElement as defineOntarioIconSort } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sort.js";
+import { OntarioIconTag as OntarioIconTagElement, defineCustomElement as defineOntarioIconTag } from "@ongov/ontario-design-system-component-library/components/ontario-icon-tag.js";
+import { OntarioIconTextMessage as OntarioIconTextMessageElement, defineCustomElement as defineOntarioIconTextMessage } from "@ongov/ontario-design-system-component-library/components/ontario-icon-text-message.js";
+import { OntarioIconTimer as OntarioIconTimerElement, defineCustomElement as defineOntarioIconTimer } from "@ongov/ontario-design-system-component-library/components/ontario-icon-timer.js";
+import { OntarioIconTransportBicycle as OntarioIconTransportBicycleElement, defineCustomElement as defineOntarioIconTransportBicycle } from "@ongov/ontario-design-system-component-library/components/ontario-icon-transport-bicycle.js";
+import { OntarioIconTransportBus as OntarioIconTransportBusElement, defineCustomElement as defineOntarioIconTransportBus } from "@ongov/ontario-design-system-component-library/components/ontario-icon-transport-bus.js";
+import { OntarioIconTransportCar as OntarioIconTransportCarElement, defineCustomElement as defineOntarioIconTransportCar } from "@ongov/ontario-design-system-component-library/components/ontario-icon-transport-car.js";
+import { OntarioIconTransportWalk as OntarioIconTransportWalkElement, defineCustomElement as defineOntarioIconTransportWalk } from "@ongov/ontario-design-system-component-library/components/ontario-icon-transport-walk.js";
+import { OntarioIconTty as OntarioIconTtyElement, defineCustomElement as defineOntarioIconTty } from "@ongov/ontario-design-system-component-library/components/ontario-icon-tty.js";
+import { OntarioIconTwitterAlt as OntarioIconTwitterAltElement, defineCustomElement as defineOntarioIconTwitterAlt } from "@ongov/ontario-design-system-component-library/components/ontario-icon-twitter-alt.js";
+import { OntarioIconTwitter as OntarioIconTwitterElement, defineCustomElement as defineOntarioIconTwitter } from "@ongov/ontario-design-system-component-library/components/ontario-icon-twitter.js";
+import { OntarioIconUpload as OntarioIconUploadElement, defineCustomElement as defineOntarioIconUpload } from "@ongov/ontario-design-system-component-library/components/ontario-icon-upload.js";
+import { OntarioIconVideo as OntarioIconVideoElement, defineCustomElement as defineOntarioIconVideo } from "@ongov/ontario-design-system-component-library/components/ontario-icon-video.js";
+import { OntarioIconVisa as OntarioIconVisaElement, defineCustomElement as defineOntarioIconVisa } from "@ongov/ontario-design-system-component-library/components/ontario-icon-visa.js";
+import { OntarioIconVoteDislike as OntarioIconVoteDislikeElement, defineCustomElement as defineOntarioIconVoteDislike } from "@ongov/ontario-design-system-component-library/components/ontario-icon-vote-dislike.js";
+import { OntarioIconVoteLike as OntarioIconVoteLikeElement, defineCustomElement as defineOntarioIconVoteLike } from "@ongov/ontario-design-system-component-library/components/ontario-icon-vote-like.js";
+import { OntarioIconVpnKey as OntarioIconVpnKeyElement, defineCustomElement as defineOntarioIconVpnKey } from "@ongov/ontario-design-system-component-library/components/ontario-icon-vpn-key.js";
+import { OntarioIconWheelchair as OntarioIconWheelchairElement, defineCustomElement as defineOntarioIconWheelchair } from "@ongov/ontario-design-system-component-library/components/ontario-icon-wheelchair.js";
+import { OntarioIconWifi as OntarioIconWifiElement, defineCustomElement as defineOntarioIconWifi } from "@ongov/ontario-design-system-component-library/components/ontario-icon-wifi.js";
+import { OntarioIconYoutube as OntarioIconYoutubeElement, defineCustomElement as defineOntarioIconYoutube } from "@ongov/ontario-design-system-component-library/components/ontario-icon-youtube.js";
+import { OntarioInput as OntarioInputElement, defineCustomElement as defineOntarioInput } from "@ongov/ontario-design-system-component-library/components/ontario-input.js";
+import { OntarioLanguageToggle as OntarioLanguageToggleElement, defineCustomElement as defineOntarioLanguageToggle } from "@ongov/ontario-design-system-component-library/components/ontario-language-toggle.js";
+import { OntarioLoadingIndicator as OntarioLoadingIndicatorElement, defineCustomElement as defineOntarioLoadingIndicator } from "@ongov/ontario-design-system-component-library/components/ontario-loading-indicator.js";
+import { OntarioPageAlert as OntarioPageAlertElement, defineCustomElement as defineOntarioPageAlert } from "@ongov/ontario-design-system-component-library/components/ontario-page-alert.js";
+import { OntarioRadioButtons as OntarioRadioButtonsElement, defineCustomElement as defineOntarioRadioButtons } from "@ongov/ontario-design-system-component-library/components/ontario-radio-buttons.js";
+import { OntarioSearchBox as OntarioSearchBoxElement, defineCustomElement as defineOntarioSearchBox } from "@ongov/ontario-design-system-component-library/components/ontario-search-box.js";
+import { OntarioStepIndicator as OntarioStepIndicatorElement, defineCustomElement as defineOntarioStepIndicator } from "@ongov/ontario-design-system-component-library/components/ontario-step-indicator.js";
+import { OntarioTable as OntarioTableElement, defineCustomElement as defineOntarioTable } from "@ongov/ontario-design-system-component-library/components/ontario-table.js";
+import { OntarioTaskList as OntarioTaskListElement, defineCustomElement as defineOntarioTaskList } from "@ongov/ontario-design-system-component-library/components/ontario-task-list.js";
+import { OntarioTask as OntarioTaskElement, defineCustomElement as defineOntarioTask } from "@ongov/ontario-design-system-component-library/components/ontario-task.js";
+import { OntarioTextarea as OntarioTextareaElement, defineCustomElement as defineOntarioTextarea } from "@ongov/ontario-design-system-component-library/components/ontario-textarea.js";
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
@@ -798,19 +357,18 @@ export const OntarioFooter: StencilReactComponent<OntarioFooterElement, OntarioF
     defineCustomElement: defineOntarioFooter
 });
 
-type OntarioFormContainerEvents = NonNullable<unknown>;
+export type OntarioFormContainerEvents = NonNullable<unknown>;
 
-export const OntarioFormContainer: StencilReactComponent<OntarioFormContainerElement, OntarioFormContainerEvents> =
-	/*@__PURE__*/ createComponent<OntarioFormContainerElement, OntarioFormContainerEvents>({
-		tagName: 'ontario-form-container',
-		elementClass: OntarioFormContainerElement,
-		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-		react: React,
-		events: {} as OntarioFormContainerEvents,
-		defineCustomElement: defineOntarioFormContainer,
-	});
+export const OntarioFormContainer: StencilReactComponent<OntarioFormContainerElement, OntarioFormContainerEvents> = /*@__PURE__*/ createComponent<OntarioFormContainerElement, OntarioFormContainerEvents>({
+    tagName: 'ontario-form-container',
+    elementClass: OntarioFormContainerElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioFormContainerEvents,
+    defineCustomElement: defineOntarioFormContainer
+});
 
-type OntarioHeaderEvents = NonNullable<unknown>;
+export type OntarioHeaderEvents = NonNullable<unknown>;
 
 export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioHeaderEvents> = /*@__PURE__*/ createComponent<OntarioHeaderElement, OntarioHeaderEvents>({
     tagName: 'ontario-header',
@@ -2233,18 +1791,17 @@ export type OntarioTextareaEvents = {
     onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>
 };
 
-export const OntarioTextarea: StencilReactComponent<OntarioTextareaElement, OntarioTextareaEvents> =
-	/*@__PURE__*/ createComponent<OntarioTextareaElement, OntarioTextareaEvents>({
-		tagName: 'ontario-textarea',
-		elementClass: OntarioTextareaElement,
-		// @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-		react: React,
-		events: {
-			onInputOnInput: 'inputOnInput',
-			onInputOnChange: 'inputOnChange',
-			onInputOnBlur: 'inputOnBlur',
-			onInputOnFocus: 'inputOnFocus',
-			onInputErrorOccurred: 'inputErrorOccurred',
-		} as OntarioTextareaEvents,
-		defineCustomElement: defineOntarioTextarea,
-	});
+export const OntarioTextarea: StencilReactComponent<OntarioTextareaElement, OntarioTextareaEvents> = /*@__PURE__*/ createComponent<OntarioTextareaElement, OntarioTextareaEvents>({
+    tagName: 'ontario-textarea',
+    elementClass: OntarioTextareaElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onInputOnInput: 'inputOnInput',
+        onInputOnChange: 'inputOnChange',
+        onInputOnBlur: 'inputOnBlur',
+        onInputOnFocus: 'inputOnFocus',
+        onInputErrorOccurred: 'inputErrorOccurred'
+    } as OntarioTextareaEvents,
+    defineCustomElement: defineOntarioTextarea
+});

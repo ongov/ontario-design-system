@@ -10,10 +10,8 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
 	placeholders;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_form.component.scss';
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/global.elements';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/visibility.overrides';
 
 @use '../../styles/fieldsets.scss';
 @use '../../styles/labels.scss';

@@ -527,6 +527,7 @@ export namespace Components {
 	interface OntarioFormContainer {
 		/**
 		 * Defines the gap (bottom margin) between slotted form elements. If no gap prop is provided, it will default to 'default'.
+		 * @default 'default'
 		 */
 		gap: 'default' | 'condensed';
 	}
@@ -4170,6 +4171,7 @@ declare namespace LocalJSX {
 	interface OntarioFormContainer {
 		/**
 		 * Defines the gap (bottom margin) between slotted form elements. If no gap prop is provided, it will default to 'default'.
+		 * @default 'default'
 		 */
 		gap?: 'default' | 'condensed';
 	}
@@ -6065,6 +6067,7 @@ declare namespace LocalJSX {
 		'ontario-dropdown-list': OntarioDropdownList;
 		'ontario-fieldset': OntarioFieldset;
 		'ontario-footer': OntarioFooter;
+		'ontario-form-container': OntarioFormContainer;
 		'ontario-header': OntarioHeader;
 		'ontario-hint-expander': OntarioHintExpander;
 		'ontario-hint-text': OntarioHintText;
