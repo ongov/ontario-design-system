@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import '@ongov/ontario-design-system-global-styles/dist/styles/scss/theme.scss';
+import '@ongov/ontario-design-system-global-styles/styles/scss/theme.scss';
 
 export const metadata: Metadata = {
 	title: 'Create Next App',

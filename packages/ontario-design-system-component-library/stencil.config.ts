@@ -5,13 +5,14 @@ import { angularOutputTarget } from '@stencil/angular-output-target';
 import { inlineSvg } from 'stencil-inline-svg';
 import dotEnvPlugin from 'rollup-plugin-dotenv';
 import path from 'path';
+import { NodePackageImporter } from 'sass-embedded';
 
 export const config: Config = {
 	namespace: 'ontario-design-system-components',
 	sourceMap: true,
 	plugins: [
 		sass({
-			includePaths: ['./node_modules'],
+			pkgImporter: new NodePackageImporter(),
 		}),
 		inlineSvg(),
 		dotEnvPlugin(),

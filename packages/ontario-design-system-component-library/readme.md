@@ -131,6 +131,30 @@ After installing the necessary styles and web components package, components can
 </ontario-radio-buttons>
 ```
 
+## Sass Package Resolution and the `NodePackageImporter`
+
+This project uses [Stencil](https://stenciljs.com/) and its official [@stenciljs/sass](https://github.com/stenciljs/sass) plugin, which internally relies on the `sass-embedded` package for compiling Sass. Traditional Sass import resolution does not always align with Node.js' module resolution, making it difficult to use `@use` or `@forward` with package-based imports. To address this, the Design System leverages the [`NodePackageImporter`](https://sass-lang.com/documentation/js-api/classes/nodepackageimporter/), which resolves imports using Node's algorithm. This makes it possible to reference SCSS files in npm packages in a way that's robust and future-proof.
+
+### Why is this needed?
+
+- Ensures that Sass can resolve imports from npm packages using the `pkg:` scheme.
+- Prevents import errors when package locations or structures change.
+- Provides consistency with how Node.js resolves modules, improving maintainability.
+
+### How it works in this project
+
+- The Stencil build process is already configured to use `NodePackageImporter` through the `sass-embedded` package.
+- You do **not** need to add additional configuration if you are consuming this component library as distributed.
+- If you are extending the library or basing your Sass on component Sass files, you can use the `pkg:` scheme in your own Sass to ensure reliable resolution.
+
+#### Example Sass import
+
+```scss
+@use 'pkg:@ongov/ontario-design-system-component-library/dist/components/ontario-button/ontario-button.scss';
+```
+
+**Note**: If you are consuming this library normally (via HTML/JS import), you do not need to configure Sass yourself. This information is primarily for developers working on or extending the component library.
+
 ## Component documentation
 
 For more information about using the Ontario Design System component library package web components, see [Using the components](https://designsystem.ontario.ca/docs/documentation/for-developers/web-components.html#using-the-components) in the [Ontario Design System Guidance](https://designsystem.ontario.ca).
@@ -161,8 +185,10 @@ Contact us at [design.system@ontario.ca](mailto:design.system@ontario.ca) for as
 
 ## References
 
-[Stencil](https://stenciljs.com/) is a compiler for building fast web apps using Web Components.
+- [Stencil](https://stenciljs.com/) is a compiler for building fast web apps using Web Components.
 
-Stencil combines the best concepts of the most popular frontend frameworks into a compile-time rather than run-time tool. Stencil takes TypeScript, JSX, a tiny virtual DOM layer, efficient one-way data binding, an asynchronous rendering pipeline (similar to React Fiber), and lazy-loading out of the box, and generates 100% standards-based Web Components that run in any browser supporting the Custom Elements v1 spec.
+  Stencil combines the best concepts of the most popular frontend frameworks into a compile-time rather than run-time tool. Stencil takes TypeScript, JSX, a tiny virtual DOM layer, efficient one-way data binding, an asynchronous rendering pipeline (similar to React Fiber), and lazy-loading out of the box, and generates 100% standards-based Web Components that run in any browser supporting the Custom Elements v1 spec.
 
-Stencil components are just Web Components, so they work in any major framework or with no framework at all.
+  Stencil components are just Web Components, so they work in any major framework or with no framework at all.
+
+- [`@stenciljs/sass`](https://github.com/stenciljs/sass) provides the official Stencil plugin for Sass integration, built on top of `sass-embedded`.
