@@ -6,37 +6,6 @@ settings:
 
 importers:
   .:
-    optionalDependencies:
-      '@nrwl/nx-darwin-arm64':
-        specifier: 15.9.3
-        version: 15.9.3
-      '@nrwl/nx-darwin-x64':
-        specifier: 15.9.3
-        version: 15.9.3
-      '@nrwl/nx-linux-arm-gnueabihf':
-        specifier: 15.9.3
-        version: 15.9.3
-      '@nrwl/nx-linux-arm64-gnu':
-        specifier: 15.9.3
-        version: 15.9.3
-      '@nrwl/nx-linux-arm64-musl':
-        specifier: 15.9.3
-        version: 15.9.3
-      '@nrwl/nx-linux-x64-gnu':
-        specifier: 15.9.3
-        version: 15.9.3
-      '@nrwl/nx-linux-x64-musl':
-        specifier: 15.9.3
-        version: 15.9.3
-      '@nrwl/nx-win32-arm64-msvc':
-        specifier: 15.9.3
-        version: 15.9.3
-      '@nrwl/nx-win32-x64-msvc':
-        specifier: 15.9.3
-        version: 15.9.3
-      bl:
-        specifier: ^6.0.18
-        version: 6.0.18
     devDependencies:
       '@commitlint/cli':
         specifier: ^19.5.0
@@ -95,6 +64,37 @@ importers:
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@22.10.10)(typescript@5.9.2)
+    optionalDependencies:
+      '@nrwl/nx-darwin-arm64':
+        specifier: 15.9.3
+        version: 15.9.3
+      '@nrwl/nx-darwin-x64':
+        specifier: 15.9.3
+        version: 15.9.3
+      '@nrwl/nx-linux-arm-gnueabihf':
+        specifier: 15.9.3
+        version: 15.9.3
+      '@nrwl/nx-linux-arm64-gnu':
+        specifier: 15.9.3
+        version: 15.9.3
+      '@nrwl/nx-linux-arm64-musl':
+        specifier: 15.9.3
+        version: 15.9.3
+      '@nrwl/nx-linux-x64-gnu':
+        specifier: 15.9.3
+        version: 15.9.3
+      '@nrwl/nx-linux-x64-musl':
+        specifier: 15.9.3
+        version: 15.9.3
+      '@nrwl/nx-win32-arm64-msvc':
+        specifier: 15.9.3
+        version: 15.9.3
+      '@nrwl/nx-win32-x64-msvc':
+        specifier: 15.9.3
+        version: 15.9.3
+      bl:
+        specifier: ^6.0.18
+        version: 6.0.18
 
   packages/app-angular:
     dependencies:
@@ -245,8 +245,8 @@ importers:
   packages/app-react:
     dependencies:
       '@ongov/ontario-design-system-component-library-react':
-        specifier: ^6.0.0-alpha.2
-        version: 6.0.0-alpha.3(@stencil/core@4.36.2)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^6.0.0-alpha.3
+        version: link:../ontario-design-system-component-library-react
       '@ongov/ontario-design-system-design-tokens':
         specifier: ^6.0.0-alpha.1
         version: link:../ontario-design-system-design-tokens
@@ -330,8 +330,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(@types/react@19.0.8)(react@18.3.1)
       '@ongov/ontario-design-system-component-library-react':
-        specifier: ^6.0.0-alpha.2
-        version: 6.0.0-alpha.3(@stencil/core@4.36.2)(@types/react@19.0.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^6.0.0-alpha.3
+        version: link:../ontario-design-system-component-library-react
       clsx:
         specifier: ^2.0.0
         version: 2.1.1
@@ -361,7 +361,7 @@ importers:
   packages/ontario-design-system-complete-styles:
     dependencies:
       '@ongov/ontario-design-system-component-library':
-        specifier: 6.0.0-alpha.2
+        specifier: 6.0.0-alpha.3
         version: link:../ontario-design-system-component-library
       '@ongov/ontario-design-system-design-tokens':
         specifier: 6.0.0-alpha.1
@@ -528,7 +528,7 @@ importers:
         specifier: ^18.2.11
         version: 18.2.13(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.13(@angular/animations@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1)
       '@ongov/ontario-design-system-component-library':
-        specifier: 6.0.0-alpha.2
+        specifier: 6.0.0-alpha.3
         version: link:../ontario-design-system-component-library
       '@ongov/ontario-design-system-global-styles':
         specifier: 6.0.0-alpha.1
@@ -577,7 +577,7 @@ importers:
   packages/ontario-design-system-component-library-react:
     dependencies:
       '@ongov/ontario-design-system-component-library':
-        specifier: 6.0.0-alpha.2
+        specifier: 6.0.0-alpha.3
         version: link:../ontario-design-system-component-library
       '@stencil/react-output-target':
         specifier: ^1.0.2
@@ -4349,21 +4349,6 @@ packages:
   '@octokit/types@9.3.2':
     resolution:
       { integrity: sha512-D4iHGTdAnEEVsB8fl95m1hiz7D5YiRdQ9b/OEb3BYRVwbLsGHcRVPz+u+BgRLNk0Q0/4iZCBqDN96j2XNxfXrA== }
-
-  '@ongov/ontario-design-system-component-library-react@6.0.0-alpha.3':
-    resolution:
-      { integrity: sha512-VJk1wAJc+Y6NCHK4ctB7Vqy7xSa87LYcY4TRCE7ekHPZSk3+SjBhnnhP2veufq6wiaSDazCOr6NACePB36+AaQ== }
-    peerDependencies:
-      react: ^18.3.0
-      react-dom: ^18.3.0
-
-  '@ongov/ontario-design-system-component-library@6.0.0-alpha.3':
-    resolution:
-      { integrity: sha512-3I5n1dKTuX7Zcb0wX/1Gu0wxrEHMzHwBUD2y4rnXPlT4WcqS8Pq9XT0ZE8LJ700JXE8RLrr9uoHpr/D96tJRmQ== }
-
-  '@ongov/ontario-design-system-global-styles@6.0.0-alpha.1':
-    resolution:
-      { integrity: sha512-nqaGQNexPBFafLDJAkl/we/ElGbaDrFLtIOHDlEHXlbTrA+HpqBJtwd3uZS9UHyO0NU1Q57fm1wHmHNiukGpEw== }
 
   '@parcel/watcher-android-arm64@2.5.1':
     resolution:
@@ -22133,10 +22118,6 @@ snapshots:
       '@inquirer/prompts': 5.3.8
       '@inquirer/type': 1.5.5
 
-  '@lit/react@1.0.7(@types/react@18.3.12)':
-    dependencies:
-      '@types/react': 18.3.12
-
   '@lit/react@1.0.7(@types/react@18.3.24)':
     dependencies:
       '@types/react': 18.3.24
@@ -22776,35 +22757,6 @@ snapshots:
     dependencies:
       '@octokit/openapi-types': 18.1.1
 
-  '@ongov/ontario-design-system-component-library-react@6.0.0-alpha.3(@stencil/core@4.36.2)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@ongov/ontario-design-system-component-library': 6.0.0-alpha.3
-      '@stencil/react-output-target': 1.0.2(@stencil/core@4.36.2)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-    transitivePeerDependencies:
-      - '@stencil/core'
-      - '@types/react'
-
-  '@ongov/ontario-design-system-component-library-react@6.0.0-alpha.3(@stencil/core@4.36.2)(@types/react@19.0.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@ongov/ontario-design-system-component-library': 6.0.0-alpha.3
-      '@stencil/react-output-target': 1.0.2(@stencil/core@4.36.2)(@types/react@19.0.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-    transitivePeerDependencies:
-      - '@stencil/core'
-      - '@types/react'
-
-  '@ongov/ontario-design-system-component-library@6.0.0-alpha.3':
-    dependencies:
-      '@ongov/ontario-design-system-global-styles': 6.0.0-alpha.1
-      '@stencil/core': 4.36.2
-      dotenv: 16.4.7
-      uuid: 11.0.5
-
-  '@ongov/ontario-design-system-global-styles@6.0.0-alpha.1': {}
-
   '@parcel/watcher-android-arm64@2.5.1':
     optional: true
 
@@ -23318,35 +23270,11 @@ snapshots:
       '@rollup/rollup-win32-arm64-msvc': 4.34.9
       '@rollup/rollup-win32-x64-msvc': 4.34.9
 
-  '@stencil/react-output-target@1.0.2(@stencil/core@4.36.2)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@lit/react': 1.0.7(@types/react@18.3.12)
-      '@stencil/core': 4.36.2
-      html-react-parser: 5.2.2(@types/react@18.3.12)(react@18.3.1)
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      style-object-to-css-string: 1.1.3
-      ts-morph: 22.0.0
-    transitivePeerDependencies:
-      - '@types/react'
-
   '@stencil/react-output-target@1.0.2(@stencil/core@4.36.2)(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@lit/react': 1.0.7(@types/react@18.3.24)
       '@stencil/core': 4.36.2
       html-react-parser: 5.2.2(@types/react@18.3.24)(react@18.3.1)
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      style-object-to-css-string: 1.1.3
-      ts-morph: 22.0.0
-    transitivePeerDependencies:
-      - '@types/react'
-
-  '@stencil/react-output-target@1.0.2(@stencil/core@4.36.2)(@types/react@19.0.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@lit/react': 1.0.7(@types/react@19.0.8)
-      '@stencil/core': 4.36.2
-      html-react-parser: 5.2.2(@types/react@19.0.8)(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       style-object-to-css-string: 1.1.3
@@ -28513,16 +28441,6 @@ snapshots:
       relateurl: 0.2.7
       terser: 5.37.0
 
-  html-react-parser@5.2.2(@types/react@18.3.12)(react@18.3.1):
-    dependencies:
-      domhandler: 5.0.3
-      html-dom-parser: 5.0.13
-      react: 18.3.1
-      react-property: 2.0.2
-      style-to-js: 1.1.16
-    optionalDependencies:
-      '@types/react': 18.3.12
-
   html-react-parser@5.2.2(@types/react@18.3.24)(react@18.3.1):
     dependencies:
       domhandler: 5.0.3
@@ -28532,16 +28450,6 @@ snapshots:
       style-to-js: 1.1.16
     optionalDependencies:
       '@types/react': 18.3.24
-
-  html-react-parser@5.2.2(@types/react@19.0.8)(react@18.3.1):
-    dependencies:
-      domhandler: 5.0.3
-      html-dom-parser: 5.0.13
-      react: 18.3.1
-      react-property: 2.0.2
-      style-to-js: 1.1.16
-    optionalDependencies:
-      '@types/react': 19.0.8
 
   html-react-parser@5.2.2(@types/react@19.0.8)(react@19.1.0):
     dependencies:

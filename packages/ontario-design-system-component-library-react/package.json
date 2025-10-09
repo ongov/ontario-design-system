@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-component-library-react",
-	"version": "6.0.0-alpha.2",
+	"version": "6.0.0-alpha.3",
 	"private": false,
 	"description": "React specific wrapper for ontario-design-system-component-library",
 	"license": "Apache-2.0",
@@ -42,7 +42,7 @@
 		]
 	},
 	"dependencies": {
-		"@ongov/ontario-design-system-component-library": "6.0.0-alpha.2",
+		"@ongov/ontario-design-system-component-library": "6.0.0-alpha.3",
 		"@stencil/react-output-target": "^1.0.2"
 	},
 	"devDependencies": {
