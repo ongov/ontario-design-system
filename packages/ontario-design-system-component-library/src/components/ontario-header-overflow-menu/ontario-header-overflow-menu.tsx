@@ -1,5 +1,6 @@
 import { Component, Prop, State, Watch, h, Listen, Element } from '@stencil/core';
 import { MenuItem } from '../../utils/common/common.interface';
+import { convertStringToBoolean } from '../../utils/helper/utils';
 
 @Component({
 	tag: 'ontario-header-overflow-menu',
@@ -64,16 +65,33 @@ export class OntarioHeaderApplicationMenu {
 	@Watch('menuItems')
 	parseMenuItems() {
 		if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
-			this.menuItemState = JSON.parse(this.menuItems);
+			let copyOfMenuItems = JSON.parse(...[this.menuItems]) as MenuItem[];
+			// convert stringified boolean values for linkIsActive, to their actual boolean equivalents
+			copyOfMenuItems.forEach((menuItem) =>
+				typeof menuItem?.linkIsActive === 'string'
+					? (menuItem.linkIsActive = convertStringToBoolean(menuItem?.linkIsActive))
+					: menuItem?.linkIsActive,
+			);
+			this.menuItemState = copyOfMenuItems;
 		} else {
 			this.menuItemState = this.menuItems;
 		}
 
-		// if a menu item is the active page, update the linkIsActive value for that menu item
-		this.menuItemState.map((item) => {
-			const activeLinkRegex = item.href.replace(/\s+/g, '-').toLowerCase();
-			item.linkIsActive = window.location.pathname.includes(activeLinkRegex);
-		});
+		const activeLinkSet = this.menuItemState.some((menuItem) =>
+			menuItem?.linkIsActive ? menuItem.linkIsActive === true : false,
+		);
+
+		// If no active link is set, try to guess and set the active link based
+		// on if the href is included in the URL.
+		if (!activeLinkSet) {
+			let copyOfMenuItemsState = [...this.menuItemState];
+			copyOfMenuItemsState.forEach((menuItem) => {
+				const sanitizedSlug = menuItem.href.replace(/\s+/g, '-').toLowerCase();
+				menuItem.linkIsActive = window.location.pathname.includes(sanitizedSlug);
+			});
+
+			this.menuItemState = [...copyOfMenuItemsState];
+		}
 	}
 
 	/**

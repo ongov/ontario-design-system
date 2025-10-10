@@ -67,6 +67,8 @@ Once the component package has been installed (see Ontario Design System Compone
 
 The menu items you want to display in the dropdown menu button.
 
+If `linkIsActive` is not set on a menu item, the component will attempt to set the property on a menu item, based on if it's `href` value is included within the URL. If `linkIsActive` is set, it will take **precendence** over the `href` being included within the URL.
+
 If `maxSubheaderLinks` is set within `applicationHeaderInfo` on the `ontario-header` component for an `application` type header, some of these links will be dispersed as links within the subheader menu bar relative to the breakpoint and number set.
 
 ```html
