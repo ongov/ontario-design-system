@@ -76,6 +76,25 @@ export function isEmpty(str: string | undefined | null): boolean {
 }
 
 /**
+ * Takes a string value of "true" and converts it to boolean true.
+ *
+ * All other values are converted to boolean false.
+ *
+ * Has advantages over the built in JavaScript Boolean() constructor / function.
+ *
+ * Using Boolean() could lead to unexpected results.
+ *
+ * e.g. Boolean("false") evaluates to a boolean value of true.
+ *
+ * @param {string} value - The value you would like to convert to a boolean.
+ *
+ * @returns {boolean}
+ */
+export function convertStringToBoolean(value: string): boolean {
+	return value.toLowerCase() === 'true';
+}
+
+/**
  * Retrieves the keys from an enum and lists them in an array.
  *
  * @param {object} enumObject - The enum you wish to get the keys of.
