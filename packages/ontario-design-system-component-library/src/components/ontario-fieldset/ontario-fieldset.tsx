@@ -113,8 +113,10 @@ export class OntarioFieldset implements Fieldset {
 
 	// Check if the direct or any ancestor parent is `ontario-form-container`
 	private initializeFormContainerSettings(): void {
-		this.hasFormContainerParent = this.element.closest('ontario-form-container') !== null;
 		const formContainer = this.element.closest('ontario-form-container') as OntarioFormContainer | null;
+
+		this.hasFormContainerParent = formContainer !== null;
+
 		if (formContainer) {
 			this.gapValue = formContainer.gap === 'condensed' ? FormGap.Condensed : FormGap.Default;
 		}
