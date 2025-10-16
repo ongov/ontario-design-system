@@ -62,6 +62,16 @@ export class OntarioHeaderApplicationMenu {
 		this.currentIndex = undefined;
 	}
 
+	/**
+	 * Updates the `currentIndex` value.
+	 *
+	 * Typically occurs when a user uses the keyboard to tab through
+	 * menu items.
+	 */
+	private updateCurrentIndex(index: number) {
+		this.currentIndex = index;
+	}
+
 	@Watch('menuItems')
 	parseMenuItems() {
 		if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
@@ -158,10 +168,17 @@ export class OntarioHeaderApplicationMenu {
 					break;
 				case 'Tab':
 					focusableElements.forEach((element, index) => {
-						element.addEventListener('focus', () => {
-							this.currentIndex = index;
-							this.updateAriaLive(this.currentIndex);
-						});
+						// within an event listener, the scope of "this" changes.
+						// To continue keeping the scope global, set a variable that captures it
+						// Without this, calls to global variables/methods/functions will not work
+						const self = this;
+						if (
+							!element.hasAttribute('data-has-focus-listener') ||
+							element.getAttribute('data-has-focus-listener') === 'false'
+						) {
+							element.addEventListener('focus', () => self.updateCurrentIndex(index));
+							element.setAttribute('data-has-focus-listener', 'true');
+						}
 					});
 					break;
 			}
