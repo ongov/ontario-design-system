@@ -693,9 +693,7 @@ export class OntarioHeader {
 
 						{/* Ontario header navigation */}
 						{/* Minor styling differences in placement of ontario.ca menu and application menu */}
-						<ontario-header-overflow-menu
-							menu-items={JSON.stringify(this.menuItemState)}
-						></ontario-header-overflow-menu>
+						<ontario-header-overflow-menu menuItems={this.menuItemState}></ontario-header-overflow-menu>
 					</div>
 					{this.menuToggled && <div class="ontario-hide-for-large ontario-overlay" />}
 				</div>
@@ -773,11 +771,9 @@ export class OntarioHeader {
 
 							<slot name="menu-overflow">
 								<ontario-header-overflow-menu
-									menu-items={JSON.stringify(
-										this.menuItemState?.slice(
-											this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState],
-											this.menuItemState.length,
-										),
+									menuItems={this.menuItemState?.slice(
+										this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState],
+										this.menuItemState.length,
 									)}
 								></ontario-header-overflow-menu>
 							</slot>

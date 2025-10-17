@@ -75,7 +75,7 @@ export class OntarioHeaderApplicationMenu {
 	@Watch('menuItems')
 	parseMenuItems() {
 		if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
-			let copyOfMenuItems = JSON.parse(...[this.menuItems]) as MenuItem[];
+			let copyOfMenuItems = JSON.parse(this.menuItems) as MenuItem[];
 			// convert stringified boolean values for linkIsActive, to their actual boolean equivalents
 			copyOfMenuItems.forEach((menuItem) =>
 				typeof menuItem?.linkIsActive === 'string'
