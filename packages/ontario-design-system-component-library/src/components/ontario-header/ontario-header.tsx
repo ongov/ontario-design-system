@@ -326,8 +326,8 @@ export class OntarioHeader {
 		};
 
 		const standardFontSize = 16;
-		let windowWidthPx = window.innerWidth;
-		let windowWidthEm = Math.ceil(windowWidthPx / standardFontSize);
+		const windowWidthPx = window.innerWidth;
+		const windowWidthEm = Math.ceil(windowWidthPx / standardFontSize);
 
 		let device: DeviceType;
 
