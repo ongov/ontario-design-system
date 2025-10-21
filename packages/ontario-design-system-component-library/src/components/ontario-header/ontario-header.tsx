@@ -1,18 +1,11 @@
 import { Component, Prop, State, Watch, Event, EventEmitter, Listen, h, Element } from '@stencil/core';
-import { Input } from '../../utils/common/input/input';
-import {
-	OntarioBreakpointsSmall,
-	OntarioBreakpointsMedium,
-	OntarioBreakpointsLarge,
-} from '@ongov/ontario-design-system-design-tokens/dist/ts/tokens';
+
 import {
 	ApplicationHeaderInfo,
 	LanguageToggleOptions,
 	OntarioMenuItems,
 	OntarioHeaderType,
-	DeviceType,
 } from './ontario-header.interface';
-import { MenuItem } from '../../utils/common/common.interface';
 
 import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
@@ -21,10 +14,16 @@ import OntarioIconSearchWhite from '../ontario-icon/assets/ontario-icon-search-w
 import OntarioHeaderDefaultData from './ontario-header-default-data.json';
 
 import { Language } from '../../utils/common/language-types';
-import { getImageAssetSrcPath } from '../../utils/helper/assets';
-import { validateLanguage } from '../../utils/validation/validation-functions';
+import { MenuItem } from '../../utils/common/common.interface';
+import { DeviceTypes } from '../../utils/common/common.enum';
+import { isClientSideRendering } from '../../utils/common/environment';
+import { Input } from '../../utils/common/input/input';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { ConsoleType } from '../../utils/console-message/console-message.enum';
+import { getImageAssetSrcPath } from '../../utils/helper/assets';
+import { determineDeviceType } from '../../utils/helper/utils';
+import { DeviceType } from '../../utils/helper/utils-types';
+import { validateLanguage } from '../../utils/validation/validation-functions';
 
 import translations from '../../translations/global.i18n.json';
 import config from '../../config.json';
@@ -318,28 +317,7 @@ export class OntarioHeader {
 	 */
 	@Listen('resize', { target: 'window' })
 	handleResize() {
-		// screen breakpoint em values
-		const breakpoints = {
-			small: Number(OntarioBreakpointsSmall.replace('em', '')),
-			medium: Number(OntarioBreakpointsMedium.replace('em', '')),
-			large: Number(OntarioBreakpointsLarge.replace('em', '')),
-		};
-
-		const standardFontSize = 16;
-		const windowWidthPx = window.innerWidth;
-		const windowWidthEm = Math.ceil(windowWidthPx / standardFontSize);
-
-		let device: DeviceType;
-
-		if (windowWidthEm <= breakpoints.small) {
-			device = 'mobile';
-		} else if (windowWidthEm > breakpoints.small && windowWidthEm <= breakpoints.medium) {
-			device = 'tablet';
-		} else {
-			device = 'desktop';
-		}
-
-		this.breakpointDeviceState = device;
+		this.breakpointDeviceState = isClientSideRendering() ? determineDeviceType() : DeviceTypes.Desktop;
 	}
 
 	/**
@@ -537,15 +515,15 @@ export class OntarioHeader {
 				return false;
 			}
 
-			if (viewportSize === 'mobile') {
+			if (viewportSize === DeviceTypes.Mobile) {
 				return numOfMenuItems - mobile > 0;
 			}
 
-			if (viewportSize === 'tablet') {
+			if (viewportSize === DeviceTypes.Tablet) {
 				return numOfMenuItems - tablet > 0;
 			}
 
-			if (viewportSize === 'desktop') {
+			if (viewportSize === DeviceTypes.Desktop) {
 				return numOfMenuItems - desktop > 0;
 			}
 		}

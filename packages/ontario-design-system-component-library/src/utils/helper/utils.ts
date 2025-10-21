@@ -1,4 +1,6 @@
-import { Conjunction } from './utils-types';
+import { DeviceTypes } from '../common/common.enum';
+import { DeviceType, Conjunction } from './utils-types';
+import { screenBreakpoints, standardFontSizePx } from '../common/common.variables';
 
 export function format(first: string | undefined, middle: string | undefined, last: string | undefined): string {
 	return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
@@ -132,4 +134,27 @@ export function printArray(arr: Array<any>, conjunctionType: Conjunction = 'and'
  */
 export function getRootHTMLElement(): HTMLElement {
 	return document.getElementsByTagName('html')[0];
+}
+
+/**
+ * Determines the device type based on screen breakpoints.
+ *
+ * @returns {DeviceType}
+ */
+export function determineDeviceType(): DeviceType {
+	const windowWidthPx = window.innerWidth;
+	/**
+	 * Converted window width in em values, useful for comparisons
+	 * against the screenBreakpoints, which are listed in em values
+	 * which are pulled from the design tokens package.
+	 */
+	const windowWidthEm = Math.ceil(windowWidthPx / standardFontSizePx);
+
+	if (windowWidthEm <= screenBreakpoints.small) {
+		return DeviceTypes.Mobile;
+	} else if (windowWidthEm > screenBreakpoints.small && windowWidthEm <= screenBreakpoints.medium) {
+		return DeviceTypes.Tablet;
+	}
+
+	return DeviceTypes.Desktop;
 }
