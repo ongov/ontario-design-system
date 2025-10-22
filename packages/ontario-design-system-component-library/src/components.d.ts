@@ -524,6 +524,13 @@ export namespace Components {
 		 */
 		type: OntarioFooterType;
 	}
+	interface OntarioFormContainer {
+		/**
+		 * Defines the gap (bottom margin) between slotted form elements. If no gap prop is provided, it will default to 'default'.
+		 * @default 'default'
+		 */
+		gap: 'default' | 'condensed';
+	}
 	interface OntarioHeader {
 		/**
 		 * Information pertaining to the application header. This is only necessary for the 'application' header type.  This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.
@@ -2595,6 +2602,11 @@ declare global {
 		prototype: HTMLOntarioFooterElement;
 		new (): HTMLOntarioFooterElement;
 	};
+	interface HTMLOntarioFormContainerElement extends Components.OntarioFormContainer, HTMLStencilElement {}
+	var HTMLOntarioFormContainerElement: {
+		prototype: HTMLOntarioFormContainerElement;
+		new (): HTMLOntarioFormContainerElement;
+	};
 	interface HTMLOntarioHeaderElement extends Components.OntarioHeader, HTMLStencilElement {}
 	var HTMLOntarioHeaderElement: {
 		prototype: HTMLOntarioHeaderElement;
@@ -3556,6 +3568,7 @@ declare global {
 		'ontario-dropdown-list': HTMLOntarioDropdownListElement;
 		'ontario-fieldset': HTMLOntarioFieldsetElement;
 		'ontario-footer': HTMLOntarioFooterElement;
+		'ontario-form-container': HTMLOntarioFormContainerElement;
 		'ontario-header': HTMLOntarioHeaderElement;
 		'ontario-hint-expander': HTMLOntarioHintExpanderElement;
 		'ontario-hint-text': HTMLOntarioHintTextElement;
@@ -4154,6 +4167,13 @@ declare namespace LocalJSX {
 		 * @default 'default'
 		 */
 		type?: OntarioFooterType;
+	}
+	interface OntarioFormContainer {
+		/**
+		 * Defines the gap (bottom margin) between slotted form elements. If no gap prop is provided, it will default to 'default'.
+		 * @default 'default'
+		 */
+		gap?: 'default' | 'condensed';
 	}
 	interface OntarioHeader {
 		/**
@@ -6047,6 +6067,7 @@ declare namespace LocalJSX {
 		'ontario-dropdown-list': OntarioDropdownList;
 		'ontario-fieldset': OntarioFieldset;
 		'ontario-footer': OntarioFooter;
+		'ontario-form-container': OntarioFormContainer;
 		'ontario-header': OntarioHeader;
 		'ontario-hint-expander': OntarioHintExpander;
 		'ontario-hint-text': OntarioHintText;
@@ -6195,6 +6216,7 @@ declare module '@stencil/core' {
 			'ontario-dropdown-list': LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
 			'ontario-fieldset': LocalJSX.OntarioFieldset & JSXBase.HTMLAttributes<HTMLOntarioFieldsetElement>;
 			'ontario-footer': LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;
+			'ontario-form-container': LocalJSX.OntarioFormContainer & JSXBase.HTMLAttributes<HTMLOntarioFormContainerElement>;
 			'ontario-header': LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
 			'ontario-hint-expander': LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
 			/**

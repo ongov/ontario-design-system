@@ -6,7 +6,11 @@
 	focusPlaceholders;
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as fontSizes;
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
-@use '../../styles/form.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
+
+@use '../../styles/fieldsets.scss';
+@use '../../styles/labels.scss';
+@use '../../styles/text-inputs.scss';
 @forward '../../utils/components/error-message/error-message';
 
 $ontario-input-padding: 0.625rem;
@@ -21,7 +25,7 @@ $ontario-input-border-width: 0.125rem;
 	font-size: fontSizes.$ontario-font-size-standard-body-text;
 	font-family: fonts.$ontario-font-open-sans;
 	line-height: globalVariables.$line-height-default;
-	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-7;
+	margin: spacing.$spacing-0;
 	max-width: globalVariables.$standard-width;
 	padding: $ontario-input-padding spacing.$spacing-4;
 	transition: focusPlaceholders.$ontario-focus-transition;

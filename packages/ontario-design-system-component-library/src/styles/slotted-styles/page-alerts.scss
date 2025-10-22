@@ -1,5 +1,8 @@
-@use '../1-variables/spacing.variables' as spacing;
-@use '../1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+
+$ontario-page-alert__error-link--hover: #6b0000;
+$ontario-page-alert__error-link--active: #280000;
 
 ontario-page-alert {
 	p {
@@ -33,11 +36,11 @@ ontario-page-alert[type='error'] {
 
 		&:hover,
 		&:focus {
-			color: #6b0000;
+			color: $ontario-page-alert__error-link--hover;
 		}
 
 		&:active {
-			color: #280000;
+			color: $ontario-page-alert__error-link--active;
 		}
 	}
 }

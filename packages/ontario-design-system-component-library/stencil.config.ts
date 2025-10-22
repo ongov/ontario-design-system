@@ -64,6 +64,14 @@ export const config: Config = {
 					src: 'translations/*.i18n.json',
 					dest: 'i18n',
 				},
+				{
+					src: '../src/styles/theme.scss',
+					dest: 'styles/theme.scss',
+				},
+				{
+					src: '../src/styles/slotted-styles',
+					dest: 'styles/slotted-styles',
+				},
 			],
 		},
 		{
@@ -99,6 +107,10 @@ export const config: Config = {
 				{
 					src: 'french.html',
 					dest: 'french.html',
+				},
+				{
+					src: '../src/global.scss',
+					dest: 'scss/theme.scss',
 				},
 			],
 		},

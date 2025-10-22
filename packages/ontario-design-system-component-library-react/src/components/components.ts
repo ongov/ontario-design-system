@@ -23,6 +23,7 @@ import { OntarioDateInput as OntarioDateInputElement, defineCustomElement as def
 import { OntarioDropdownList as OntarioDropdownListElement, defineCustomElement as defineOntarioDropdownList } from "@ongov/ontario-design-system-component-library/components/ontario-dropdown-list.js";
 import { OntarioFieldset as OntarioFieldsetElement, defineCustomElement as defineOntarioFieldset } from "@ongov/ontario-design-system-component-library/components/ontario-fieldset.js";
 import { OntarioFooter as OntarioFooterElement, defineCustomElement as defineOntarioFooter } from "@ongov/ontario-design-system-component-library/components/ontario-footer.js";
+import { OntarioFormContainer as OntarioFormContainerElement, defineCustomElement as defineOntarioFormContainer } from "@ongov/ontario-design-system-component-library/components/ontario-form-container.js";
 import { OntarioHeader as OntarioHeaderElement, defineCustomElement as defineOntarioHeader } from "@ongov/ontario-design-system-component-library/components/ontario-header.js";
 import { OntarioHintExpander as OntarioHintExpanderElement, defineCustomElement as defineOntarioHintExpander } from "@ongov/ontario-design-system-component-library/components/ontario-hint-expander.js";
 import { OntarioHintText as OntarioHintTextElement, defineCustomElement as defineOntarioHintText } from "@ongov/ontario-design-system-component-library/components/ontario-hint-text.js";
@@ -354,6 +355,17 @@ export const OntarioFooter: StencilReactComponent<OntarioFooterElement, OntarioF
     react: React,
     events: {} as OntarioFooterEvents,
     defineCustomElement: defineOntarioFooter
+});
+
+export type OntarioFormContainerEvents = NonNullable<unknown>;
+
+export const OntarioFormContainer: StencilReactComponent<OntarioFormContainerElement, OntarioFormContainerEvents> = /*@__PURE__*/ createComponent<OntarioFormContainerElement, OntarioFormContainerEvents>({
+    tagName: 'ontario-form-container',
+    elementClass: OntarioFormContainerElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioFormContainerEvents,
+    defineCustomElement: defineOntarioFormContainer
 });
 
 export type OntarioHeaderEvents = NonNullable<unknown>;

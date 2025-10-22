@@ -22,12 +22,10 @@ describe('ontario-fieldset', () => {
 		expect(page.root).toEqualHtml(`
 			<ontario-fieldset legend="What is your delivery address?">
 				<mock:shadow-root>
-					<div class="ontario-form-group">
-						<fieldset class="ontario-fieldset">
-							<legend class="ontario-fieldset__legend">What is your delivery address?</legend>
-							<slot></slot>
-						</fieldset>
-					</div>
+					<fieldset class="ontario-fieldset">
+						<legend class="ontario-fieldset__legend">What is your delivery address?</legend>
+						<slot></slot>
+					</fieldset>
 				</mock:shadow-root>
 			</ontario-fieldset>
 		`);

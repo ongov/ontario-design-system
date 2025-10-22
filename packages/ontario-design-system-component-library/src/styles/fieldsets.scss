@@ -1,21 +1,13 @@
-@use '../1-variables/font-weights.variables' as fontWeights;
-@use '../1-variables/fonts.variables' as fonts;
-@use '../1-variables/spacing.variables' as spacing;
-@use '../1-variables/colours.variables' as colours;
-@use '../1-variables/breakpoints.variables' as breakpoints;
-@use '../1-variables/global.variables' as globalVariables;
-@use '../1-variables/letter-spacing.variables' as letterSpacing;
-@use '../1-variables/line-heights.variables' as lineHeight;
-@use '../1-variables/typography.variables';
-
-//for general forms
-.ontario-form-group:last-of-type {
-	margin-bottom: 2.5rem;
-}
-
-.ontario-form-group:last-of-type {
-	margin-bottom: spacing.$spacing-8;
-}
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/letter-spacing.variables' as
+	letterSpacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables' as lineHeight;
 
 .ontario-fieldset__legend {
 	color: colours.$ontario-colour-black;
@@ -58,16 +50,6 @@
 
 .ontario-fieldset__legend-required-flag,
 .ontario-fieldset__legend-optional-flag {
-	font-family: fonts.$ontario-font-open-sans;
-	font-size: 1rem;
-	font-weight: fontWeights.$ontario-font-weights-normal;
-
-	&:before {
-		content: '\a0';
-	}
-}
-
-.ontario-label__flag {
 	font-family: fonts.$ontario-font-open-sans;
 	font-size: 1rem;
 	font-weight: fontWeights.$ontario-font-weights-normal;

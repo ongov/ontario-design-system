@@ -1,0 +1,7 @@
+@use '../1-variables/spacing.variables' as spacing;
+
+//for general forms
+@warn "The `ontario-form-group` class will be deprecated and replaced with a vertical spacing component in future.";
+.ontario-form-group:last-of-type {
+	margin-bottom: spacing.$spacing-8;
+}

@@ -11,7 +11,11 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
 	focusPlaceholders;
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
-@use '../../styles/form.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
+
+@use '../../styles/fieldsets.scss';
+@use '../../styles/labels.scss';
+@use '../../styles/text-inputs.scss';
 
 $ontario-input-height: globalFunctions.px-to-rem(48);
 $ontario-search-icon-size: 2rem;
