@@ -1,6 +1,6 @@
 import { Component, Prop, Element, Event, EventEmitter, State, h, Listen, Watch } from '@stencil/core';
 
-import { Accordion } from './accordion.interface';
+import { Accordion, AccordionChangeDetail } from './accordion.interface';
 import { ExpandCollapseButtonDetails } from './expandCollapseButtonDetails.interface';
 
 import { Language } from '../../utils/common/language-types';
@@ -45,16 +45,11 @@ export class OntarioAccordion {
 
 	/**
 	 * Used to include individual accordion data for the accordion component.
-	 * This is passed in as an array of objects with key-value pairs.
+	 * Accepts an array of {@link Accordion} items or a JSON string of that array.
 	 *
-	 * The `content` is expecting a string, that can either be written as HTML or a just a plain string, depending on the accordionContentType.
+	 * The `content` is rendered either as plain text or HTML depending on `accordionContentType`.
 	 *
-	 * - label: string
-	 * - content: string (rendered as text or via innerHTML)
-	 * - accordionContentType: 'string' | 'html'
-	 * - isOpen: boolean (initial open state - default is false)
-	 * - ariaLabelText: string
-	 *
+	 * @see {@link Accordion}
 	 * @example
 	 * 	<ontario-accordion
 	 *		name="My Accordion"
@@ -75,7 +70,7 @@ export class OntarioAccordion {
 	/**
 	 * Emits when open indexes change
 	 */
-	@Event() accordionChange: EventEmitter<{ openIndexes: number[] }>;
+	@Event() accordionChange: EventEmitter<AccordionChangeDetail>;
 
 	/**
 	 * Store the translation dictionary for use within the component.
@@ -147,6 +142,11 @@ export class OntarioAccordion {
 
 			// Initialize the label based on the initial accordion state
 			this.updateLabel();
+
+			this.emitAccordionChange({
+				openIndexes: this.openAccordionIndexes,
+				reason: 'init',
+			});
 		} catch {
 			const message = new ConsoleMessageClass();
 			message
@@ -160,6 +160,11 @@ export class OntarioAccordion {
 			this.internalAccordionData = [];
 			this.openAccordionIndexes = [];
 			this.updateLabel();
+
+			this.emitAccordionChange({
+				openIndexes: this.openAccordionIndexes,
+				reason: 'init',
+			});
 		}
 	}
 
@@ -189,6 +194,21 @@ export class OntarioAccordion {
 		}
 	}
 
+	/**
+	 * Emits a typed change event whenever the open/closed state changes.
+	 *
+	 * Consumers can listen for `accordionChange` to:
+	 *  - Read the full set of `openIndexes`
+	 *  - Know which index changed on single-item toggles (`changedIndex`)
+	 *  - Detect bulk actions like expand/collapse all (`isBulk`)
+	 *  - Understand why the change happened (`reason`)
+	 *
+	 * Always call this AFTER updating `openAccordionIndexes` and `expandCollapseLabel`.
+	 */
+	private emitAccordionChange(detail: AccordionChangeDetail) {
+		this.accordionChange.emit(detail);
+	}
+
 	// Seed the openAccordionIndexes based on the isOpen properties of the accordion items
 	private seedOpenIndexesFromItems() {
 		this.openAccordionIndexes = this.internalAccordionData
@@ -199,13 +219,18 @@ export class OntarioAccordion {
 	// Toggle the accordion state when it's clicked
 	private toggleAccordion(index: number) {
 		if (this.openAccordionIndexes.includes(index)) {
-			// If the accordion is already open, close it
 			this.openAccordionIndexes = this.openAccordionIndexes.filter((i) => i !== index);
 		} else {
-			// If the accordion is closed, open it
 			this.openAccordionIndexes = [...this.openAccordionIndexes, index];
 		}
+
 		this.updateLabel();
+
+		this.emitAccordionChange({
+			openIndexes: this.openAccordionIndexes,
+			changedIndex: index,
+			reason: 'toggle-one',
+		});
 	}
 
 	/**
@@ -219,7 +244,14 @@ export class OntarioAccordion {
 			// At least one accordion is closed, open all
 			this.openAccordionIndexes = this.internalAccordionData.map((_, index) => index);
 		}
+
 		this.updateLabel();
+
+		this.emitAccordionChange({
+			openIndexes: this.openAccordionIndexes,
+			isBulk: true,
+			reason: 'toggle-all',
+		});
 	}
 
 	/**
