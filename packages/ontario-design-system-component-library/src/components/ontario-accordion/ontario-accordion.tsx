@@ -45,11 +45,11 @@ export class OntarioAccordion {
 
 	/**
 	 * Used to include individual accordion data for the accordion component.
-	 * Accepts an array of {@link Accordion} items or a JSON string of that array.
+	 * Accepts an array of Accordion (@see Accordion) items or a JSON string of that array.
 	 *
 	 * The `content` is rendered either as plain text or HTML depending on `accordionContentType`.
 	 *
-	 * @see {@link Accordion}
+	 * @see Accordion
 	 * @example
 	 * 	<ontario-accordion
 	 *		name="My Accordion"
