@@ -14,6 +14,7 @@ jobs:
     with:
       node-version: 20
       build-artifacts-name: 'build-artifacts'
+      docs-artifacts-name: 'docs-artifacts'
 
   test: # Job defined in a separate file (test.yml)
     needs: ['build']
@@ -25,15 +26,6 @@ jobs:
     with:
       node-version: 20
       build-artifacts-name: ${{ needs.build.outputs.build-artifacts-name }}
-
-  # app-docs
-  app-docs: # Job defined in a separate file (app-docs.yml)
-    needs: ['build', 'test']
-    uses: ./.github/workflows/app-docs.yml # Path to the reusable workflow file
-    with:
-      node-version: 20
-      build-artifacts-name: ${{ needs.build.outputs.build-artifacts-name }}
-    secrets: inherit
 
   publish-packages: # Job defined in a separate file (publish-packages.yml)
     needs: ['build', 'test']
