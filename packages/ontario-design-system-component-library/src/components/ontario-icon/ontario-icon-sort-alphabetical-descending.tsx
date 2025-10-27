@@ -7,11 +7,11 @@ import { validateValueAgainstArray } from '../../utils/validation/validation-fun
 import validateColor from 'validate-color';
 
 @Component({
-	tag: 'ontario-icon-sort',
+	tag: 'ontario-icon-sort-alphabetical-descending',
 	styleUrl: 'ontario-icon.scss',
 	shadow: true,
 })
-export class OntarioIconSort implements IconWithColour {
+export class OntarioIconSortAlphabeticalDescending implements IconWithColour {
 	/**
 	 * The icon width will autogenerate the height since the icons are in square format, thus preserving
 	 * the aspect ratio.
@@ -36,7 +36,7 @@ export class OntarioIconSort implements IconWithColour {
 				.addDesignSystemTag()
 				.addMonospaceText(' icon-width ')
 				.addRegularText('on')
-				.addMonospaceText(' <ontario-icon-sort> ')
+				.addMonospaceText(' <ontario-icon-sort-alphabetical-descending> ')
 				.addRegularText(
 					`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`,
 				)
@@ -95,7 +95,7 @@ export class OntarioIconSort implements IconWithColour {
 			.addDesignSystemTag()
 			.addMonospaceText(' colour ')
 			.addRegularText('on')
-			.addMonospaceText(' <ontario-icon-sort> ')
+			.addMonospaceText(' <ontario-icon-sort-alphabetical-descending> ')
 			.addRegularText('was set to an invalid colour; only')
 			.addMonospaceText(' black, blue, grey or white ')
 			.addRegularText('are supported. The default colour')
@@ -122,8 +122,15 @@ export class OntarioIconSort implements IconWithColour {
 				class={`ontario-icon ontario-icon--${this.iconColourState} ontario-icon--width-${this.iconWidthState}`}
 				style={{ width: `${this.iconWidthState}px` }}
 			>
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="sort">
-					<path d="M18 21L14 17H17V7H14L18 3L22 7H19V17H22M2 19V17H12V19M2 13V11H9V13M2 7V5H6V7H2Z" />
+				<svg
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					id="sort-alphabetical-descending"
+				>
+					<path d="M19 7H22L18 3L14 7H17V21H19M11 13V15L7.67 19H11V21H5V19L8.33 15H5V13M9 3H7C5.9 3 5 3.9 5 5V11H7V9H9V11H11V5C11 3.9 10.11 3 9 3ZM9 7H7V5H9V7Z" />
 				</svg>
 			</div>
 		);

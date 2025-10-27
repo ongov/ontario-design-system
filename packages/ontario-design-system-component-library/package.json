@@ -62,7 +62,7 @@
 		"docs:copy:readme": "tsx ../../scripts/documentation-helper.ts -f readme.md -p \"---\nslug: /\n---\n\" -df ../app-web-components-documentation/docs/01-readme.md",
 		"format": "prettier --write .",
 		"generate": "stencil generate",
-		"generate:icons": "node src/components/ontario-icon/scripts/generate-icons.js",
+		"generate:icons": "node src/components/ontario-icon/scripts/generate-icons.cjs",
 		"start": "stencil build --dev --watch --serve",
 		"pretest": "pnpm run build:config",
 		"test": "stencil test --spec --e2e",

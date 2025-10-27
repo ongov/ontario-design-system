@@ -7,11 +7,11 @@ import { validateValueAgainstArray } from '../../utils/validation/validation-fun
 import validateColor from 'validate-color';
 
 @Component({
-	tag: 'ontario-icon-sort',
+	tag: 'ontario-icon-sort-variant',
 	styleUrl: 'ontario-icon.scss',
 	shadow: true,
 })
-export class OntarioIconSort implements IconWithColour {
+export class OntarioIconSortVariant implements IconWithColour {
 	/**
 	 * The icon width will autogenerate the height since the icons are in square format, thus preserving
 	 * the aspect ratio.
@@ -36,7 +36,7 @@ export class OntarioIconSort implements IconWithColour {
 				.addDesignSystemTag()
 				.addMonospaceText(' icon-width ')
 				.addRegularText('on')
-				.addMonospaceText(' <ontario-icon-sort> ')
+				.addMonospaceText(' <ontario-icon-sort-variant> ')
 				.addRegularText(
 					`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`,
 				)
@@ -95,7 +95,7 @@ export class OntarioIconSort implements IconWithColour {
 			.addDesignSystemTag()
 			.addMonospaceText(' colour ')
 			.addRegularText('on')
-			.addMonospaceText(' <ontario-icon-sort> ')
+			.addMonospaceText(' <ontario-icon-sort-variant> ')
 			.addRegularText('was set to an invalid colour; only')
 			.addMonospaceText(' black, blue, grey or white ')
 			.addRegularText('are supported. The default colour')
@@ -122,8 +122,15 @@ export class OntarioIconSort implements IconWithColour {
 				class={`ontario-icon ontario-icon--${this.iconColourState} ontario-icon--width-${this.iconWidthState}`}
 				style={{ width: `${this.iconWidthState}px` }}
 			>
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="sort">
-					<path d="M18 21L14 17H17V7H14L18 3L22 7H19V17H22M2 19V17H12V19M2 13V11H9V13M2 7V5H6V7H2Z" />
+				<svg
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					id="sort-variant"
+				>
+					<path d="M3 13H15V11H3M3 6V8H21V6M3 18H9V16H3V18Z" />
 				</svg>
 			</div>
 		);
