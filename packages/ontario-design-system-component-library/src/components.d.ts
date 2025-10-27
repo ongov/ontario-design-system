@@ -1676,6 +1676,66 @@ export namespace Components {
 		 */
 		iconWidth: IconSize;
 	}
+	interface OntarioIconSortAlphabeticalAscending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
+	interface OntarioIconSortAlphabeticalDescending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
+	interface OntarioIconSortAscending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
+	interface OntarioIconSortDescending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
+	interface OntarioIconSortVariant {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
 	interface OntarioIconTag {
 		/**
 		 * Set the icon's colour.
@@ -3142,6 +3202,35 @@ declare global {
 		prototype: HTMLOntarioIconSortElement;
 		new (): HTMLOntarioIconSortElement;
 	};
+	interface HTMLOntarioIconSortAlphabeticalAscendingElement
+		extends Components.OntarioIconSortAlphabeticalAscending,
+			HTMLStencilElement {}
+	var HTMLOntarioIconSortAlphabeticalAscendingElement: {
+		prototype: HTMLOntarioIconSortAlphabeticalAscendingElement;
+		new (): HTMLOntarioIconSortAlphabeticalAscendingElement;
+	};
+	interface HTMLOntarioIconSortAlphabeticalDescendingElement
+		extends Components.OntarioIconSortAlphabeticalDescending,
+			HTMLStencilElement {}
+	var HTMLOntarioIconSortAlphabeticalDescendingElement: {
+		prototype: HTMLOntarioIconSortAlphabeticalDescendingElement;
+		new (): HTMLOntarioIconSortAlphabeticalDescendingElement;
+	};
+	interface HTMLOntarioIconSortAscendingElement extends Components.OntarioIconSortAscending, HTMLStencilElement {}
+	var HTMLOntarioIconSortAscendingElement: {
+		prototype: HTMLOntarioIconSortAscendingElement;
+		new (): HTMLOntarioIconSortAscendingElement;
+	};
+	interface HTMLOntarioIconSortDescendingElement extends Components.OntarioIconSortDescending, HTMLStencilElement {}
+	var HTMLOntarioIconSortDescendingElement: {
+		prototype: HTMLOntarioIconSortDescendingElement;
+		new (): HTMLOntarioIconSortDescendingElement;
+	};
+	interface HTMLOntarioIconSortVariantElement extends Components.OntarioIconSortVariant, HTMLStencilElement {}
+	var HTMLOntarioIconSortVariantElement: {
+		prototype: HTMLOntarioIconSortVariantElement;
+		new (): HTMLOntarioIconSortVariantElement;
+	};
 	interface HTMLOntarioIconTagElement extends Components.OntarioIconTag, HTMLStencilElement {}
 	var HTMLOntarioIconTagElement: {
 		prototype: HTMLOntarioIconTagElement;
@@ -3665,6 +3754,11 @@ declare global {
 		'ontario-icon-settings': HTMLOntarioIconSettingsElement;
 		'ontario-icon-share': HTMLOntarioIconShareElement;
 		'ontario-icon-sort': HTMLOntarioIconSortElement;
+		'ontario-icon-sort-alphabetical-ascending': HTMLOntarioIconSortAlphabeticalAscendingElement;
+		'ontario-icon-sort-alphabetical-descending': HTMLOntarioIconSortAlphabeticalDescendingElement;
+		'ontario-icon-sort-ascending': HTMLOntarioIconSortAscendingElement;
+		'ontario-icon-sort-descending': HTMLOntarioIconSortDescendingElement;
+		'ontario-icon-sort-variant': HTMLOntarioIconSortVariantElement;
 		'ontario-icon-tag': HTMLOntarioIconTagElement;
 		'ontario-icon-text-message': HTMLOntarioIconTextMessageElement;
 		'ontario-icon-timer': HTMLOntarioIconTimerElement;
@@ -5319,6 +5413,66 @@ declare namespace LocalJSX {
 		 */
 		iconWidth?: IconSize;
 	}
+	interface OntarioIconSortAlphabeticalAscending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
+	interface OntarioIconSortAlphabeticalDescending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
+	interface OntarioIconSortAscending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
+	interface OntarioIconSortDescending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
+	interface OntarioIconSortVariant {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
 	interface OntarioIconTag {
 		/**
 		 * Set the icon's colour.
@@ -6164,6 +6318,11 @@ declare namespace LocalJSX {
 		'ontario-icon-settings': OntarioIconSettings;
 		'ontario-icon-share': OntarioIconShare;
 		'ontario-icon-sort': OntarioIconSort;
+		'ontario-icon-sort-alphabetical-ascending': OntarioIconSortAlphabeticalAscending;
+		'ontario-icon-sort-alphabetical-descending': OntarioIconSortAlphabeticalDescending;
+		'ontario-icon-sort-ascending': OntarioIconSortAscending;
+		'ontario-icon-sort-descending': OntarioIconSortDescending;
+		'ontario-icon-sort-variant': OntarioIconSortVariant;
 		'ontario-icon-tag': OntarioIconTag;
 		'ontario-icon-text-message': OntarioIconTextMessage;
 		'ontario-icon-timer': OntarioIconTimer;
@@ -6365,6 +6524,16 @@ declare module '@stencil/core' {
 			'ontario-icon-settings': LocalJSX.OntarioIconSettings & JSXBase.HTMLAttributes<HTMLOntarioIconSettingsElement>;
 			'ontario-icon-share': LocalJSX.OntarioIconShare & JSXBase.HTMLAttributes<HTMLOntarioIconShareElement>;
 			'ontario-icon-sort': LocalJSX.OntarioIconSort & JSXBase.HTMLAttributes<HTMLOntarioIconSortElement>;
+			'ontario-icon-sort-alphabetical-ascending': LocalJSX.OntarioIconSortAlphabeticalAscending &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSortAlphabeticalAscendingElement>;
+			'ontario-icon-sort-alphabetical-descending': LocalJSX.OntarioIconSortAlphabeticalDescending &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSortAlphabeticalDescendingElement>;
+			'ontario-icon-sort-ascending': LocalJSX.OntarioIconSortAscending &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSortAscendingElement>;
+			'ontario-icon-sort-descending': LocalJSX.OntarioIconSortDescending &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSortDescendingElement>;
+			'ontario-icon-sort-variant': LocalJSX.OntarioIconSortVariant &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSortVariantElement>;
 			'ontario-icon-tag': LocalJSX.OntarioIconTag & JSXBase.HTMLAttributes<HTMLOntarioIconTagElement>;
 			'ontario-icon-text-message': LocalJSX.OntarioIconTextMessage &
 				JSXBase.HTMLAttributes<HTMLOntarioIconTextMessageElement>;

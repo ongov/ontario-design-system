@@ -119,6 +119,11 @@ import { OntarioIconSentiment4 as OntarioIconSentiment4Element, defineCustomElem
 import { OntarioIconSentiment5 as OntarioIconSentiment5Element, defineCustomElement as defineOntarioIconSentiment5 } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sentiment-5.js";
 import { OntarioIconSettings as OntarioIconSettingsElement, defineCustomElement as defineOntarioIconSettings } from "@ongov/ontario-design-system-component-library/components/ontario-icon-settings.js";
 import { OntarioIconShare as OntarioIconShareElement, defineCustomElement as defineOntarioIconShare } from "@ongov/ontario-design-system-component-library/components/ontario-icon-share.js";
+import { OntarioIconSortAlphabeticalAscending as OntarioIconSortAlphabeticalAscendingElement, defineCustomElement as defineOntarioIconSortAlphabeticalAscending } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sort-alphabetical-ascending.js";
+import { OntarioIconSortAlphabeticalDescending as OntarioIconSortAlphabeticalDescendingElement, defineCustomElement as defineOntarioIconSortAlphabeticalDescending } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sort-alphabetical-descending.js";
+import { OntarioIconSortAscending as OntarioIconSortAscendingElement, defineCustomElement as defineOntarioIconSortAscending } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sort-ascending.js";
+import { OntarioIconSortDescending as OntarioIconSortDescendingElement, defineCustomElement as defineOntarioIconSortDescending } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sort-descending.js";
+import { OntarioIconSortVariant as OntarioIconSortVariantElement, defineCustomElement as defineOntarioIconSortVariant } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sort-variant.js";
 import { OntarioIconSort as OntarioIconSortElement, defineCustomElement as defineOntarioIconSort } from "@ongov/ontario-design-system-component-library/components/ontario-icon-sort.js";
 import { OntarioIconTag as OntarioIconTagElement, defineCustomElement as defineOntarioIconTag } from "@ongov/ontario-design-system-component-library/components/ontario-icon-tag.js";
 import { OntarioIconTextMessage as OntarioIconTextMessageElement, defineCustomElement as defineOntarioIconTextMessage } from "@ongov/ontario-design-system-component-library/components/ontario-icon-text-message.js";
@@ -1422,6 +1427,61 @@ export const OntarioIconSort: StencilReactComponent<OntarioIconSortElement, Onta
     react: React,
     events: {} as OntarioIconSortEvents,
     defineCustomElement: defineOntarioIconSort
+});
+
+export type OntarioIconSortAlphabeticalAscendingEvents = NonNullable<unknown>;
+
+export const OntarioIconSortAlphabeticalAscending: StencilReactComponent<OntarioIconSortAlphabeticalAscendingElement, OntarioIconSortAlphabeticalAscendingEvents> = /*@__PURE__*/ createComponent<OntarioIconSortAlphabeticalAscendingElement, OntarioIconSortAlphabeticalAscendingEvents>({
+    tagName: 'ontario-icon-sort-alphabetical-ascending',
+    elementClass: OntarioIconSortAlphabeticalAscendingElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioIconSortAlphabeticalAscendingEvents,
+    defineCustomElement: defineOntarioIconSortAlphabeticalAscending
+});
+
+export type OntarioIconSortAlphabeticalDescendingEvents = NonNullable<unknown>;
+
+export const OntarioIconSortAlphabeticalDescending: StencilReactComponent<OntarioIconSortAlphabeticalDescendingElement, OntarioIconSortAlphabeticalDescendingEvents> = /*@__PURE__*/ createComponent<OntarioIconSortAlphabeticalDescendingElement, OntarioIconSortAlphabeticalDescendingEvents>({
+    tagName: 'ontario-icon-sort-alphabetical-descending',
+    elementClass: OntarioIconSortAlphabeticalDescendingElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioIconSortAlphabeticalDescendingEvents,
+    defineCustomElement: defineOntarioIconSortAlphabeticalDescending
+});
+
+export type OntarioIconSortAscendingEvents = NonNullable<unknown>;
+
+export const OntarioIconSortAscending: StencilReactComponent<OntarioIconSortAscendingElement, OntarioIconSortAscendingEvents> = /*@__PURE__*/ createComponent<OntarioIconSortAscendingElement, OntarioIconSortAscendingEvents>({
+    tagName: 'ontario-icon-sort-ascending',
+    elementClass: OntarioIconSortAscendingElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioIconSortAscendingEvents,
+    defineCustomElement: defineOntarioIconSortAscending
+});
+
+export type OntarioIconSortDescendingEvents = NonNullable<unknown>;
+
+export const OntarioIconSortDescending: StencilReactComponent<OntarioIconSortDescendingElement, OntarioIconSortDescendingEvents> = /*@__PURE__*/ createComponent<OntarioIconSortDescendingElement, OntarioIconSortDescendingEvents>({
+    tagName: 'ontario-icon-sort-descending',
+    elementClass: OntarioIconSortDescendingElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioIconSortDescendingEvents,
+    defineCustomElement: defineOntarioIconSortDescending
+});
+
+export type OntarioIconSortVariantEvents = NonNullable<unknown>;
+
+export const OntarioIconSortVariant: StencilReactComponent<OntarioIconSortVariantElement, OntarioIconSortVariantEvents> = /*@__PURE__*/ createComponent<OntarioIconSortVariantElement, OntarioIconSortVariantEvents>({
+    tagName: 'ontario-icon-sort-variant',
+    elementClass: OntarioIconSortVariantElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioIconSortVariantEvents,
+    defineCustomElement: defineOntarioIconSortVariant
 });
 
 export type OntarioIconTagEvents = NonNullable<unknown>;
