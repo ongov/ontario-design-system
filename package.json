@@ -6,11 +6,11 @@
 		"packages/*"
 	],
 	"scripts": {
-		"build-docs": "lerna run --scope ds-web-component-docs build",
 		"build-libs": "lerna run --scope @ongov/ontario-design-system* build",
 		"build-apps": "lerna run build --scope 'app-*' --ignore 'app-web-components-documentation'",
 		"clean": "lerna run clean",
-		"clean:full": "lerna run clean:full",
+		"clean:docs": "rm -rf ./packages/docusaurus",
+		"clean:full": "lerna run clean:full && pnpm clean:docs",
 		"format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
 		"prepare": "husky install",
 		"refresh": "pnpm run clean && pnpm install && pnpm run build-libs",

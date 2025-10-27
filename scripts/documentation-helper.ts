@@ -171,7 +171,22 @@ class DocumentationUtils {
 	 */
 	private static async writeFile(fileContents: string, filePath: string): Promise<void> {
 		Logging.debugMessage('Writing', `${colour.green(`${filePath}`)}`);
-		return fs.writeFile(filePath, fileContents, 'utf-8');
+		try {
+			const newLocal = path.dirname(filePath);
+
+			Logging.debugMessage(colour.blue(`Checking if directory exists: ${colour.green(newLocal)}`));
+			await fs.access(newLocal, fs.constants.F_OK).catch(async () => {
+				Logging.debugMessage(colour.blue(`Directory does not exist, creating: ${colour.green(newLocal)}`));
+				await fs.mkdir(newLocal, { recursive: true });
+			});
+
+			Logging.debugMessage(colour.blue(`Writing to file: ${colour.green(filePath)}`));
+			return fs.writeFile(filePath, fileContents, 'utf-8');
+		} catch (e) {
+			const error = e as Error;
+			Logging.errorMessage(error.stack);
+			return Promise.reject(e);
+		}
 	}
 
 	/**
@@ -276,14 +291,14 @@ class DocumentationUtils {
 				} else {
 					Logging.infoMessage(`Copied: ${sourceFilePath} -> ${destinationFilePath}`);
 				}
-
-				await fs.mkdir(path.dirname(destinationFilePath), { recursive: true });
-				await fs.writeFile(destinationFilePath, fileContents, 'utf-8');
+				console.log('processBatch:', { fileContents, destinationFilePath });
+				await this.writeFile(fileContents, destinationFilePath);
 			}
 
 			return true;
 		} catch (e) {
-			Logging.errorMessage('Batch processing failed:', e);
+			const error = e as Error;
+			Logging.errorMessage('Batch processing failed:', error.stack);
 			return false;
 		}
 	}
@@ -311,7 +326,7 @@ program.parse();
 
 // Process command arguments
 const options = program.opts();
-debug = options.debug;
+debug = options.debug || process.env.DEBUG === 'true';
 sourceFilePath = options.file;
 destinationFilePath = options.destinationFile;
 

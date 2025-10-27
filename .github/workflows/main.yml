@@ -14,6 +14,7 @@ jobs:
     with:
       node-version: 20
       build-artifacts-name: 'build-artifacts'
+      docs-artifacts-name: 'docs-artifacts'
 
   test: # Job defined in a separate file (test.yml)
     needs: ['build']
@@ -26,17 +27,6 @@ jobs:
       node-version: 20
       build-artifacts-name: ${{ needs.build.outputs.build-artifacts-name }}
 
-  # app-docs
-  app-docs: # Job defined in a separate file (app-docs.yml)
-    needs: ['build', 'test']
-    uses: ./.github/workflows/app-docs.yml # Path to the reusable workflow file
-    with:
-      node-version: 20
-      build-artifacts-name: ${{ needs.build.outputs.build-artifacts-name }}
-    secrets: inherit
-
-  # app-angular (Coming soon)
-
   publish-packages: # Job defined in a separate file (publish-packages.yml)
     needs: ['build', 'test']
     uses: ./.github/workflows/publish-packages.yml # Path to the reusable workflow file
@@ -47,3 +37,12 @@ jobs:
     secrets: inherit
     permissions:
       contents: write
+
+  sync-docs-to-docusaurus: # Job defined in a separate file (sync-docs-to-docusaurus.yml)
+    needs: ['build', 'publish-packages']
+    uses: ./.github/workflows/sync-docs-to-docusaurus.yml
+    if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
+    with:
+      node-version: 20
+      docs-artifacts-name: ${{ needs.build.outputs.docs-artifacts-name }}
+    secrets: inherit

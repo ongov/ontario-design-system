@@ -9,10 +9,16 @@ on:
       build-artifacts-name:
         required: true
         type: string
+      docs-artifacts-name:
+        required: true
+        type: string
     outputs: # https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
       build-artifacts-name:
         description: 'Name of the artifacts archive of the built libraries'
         value: ${{ inputs.build-artifacts-name }}
+      docs-artifacts-name:
+        description: 'Name of the artifacts archive of the built docs'
+        value: ${{ inputs.docs-artifacts-name }}
 
 jobs:
   build:
@@ -37,6 +43,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # Make directories for documentation files
+      - name: Make directories for documentation files
+        run: mkdir -p packages/docusaurus/docs/components
+
       # Build the project
       - name: Build the project
         run: pnpm run build-libs
@@ -50,3 +60,12 @@ jobs:
           path: | # Collect all package artifacts
             packages/**/*
             !**/node_modules/**/*
+            !packages/docusaurus/**/*
+
+      # Upload docs artifact
+      - name: Upload docs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.docs-artifacts-name }}
+          compression-level: 9 # Best compression
+          path: packages/docusaurus/docs/

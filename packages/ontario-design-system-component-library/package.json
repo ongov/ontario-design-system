@@ -59,7 +59,7 @@
 		"clean:full": "rm -rf node_modules && pnpm run clean",
 		"clean:icons": "rm -rf src/components/ontario-icon/ontario-icon-*.tsx",
 		"docs:assemble": "tsx scripts/build-documentation-bundle.ts",
-		"docs:copy:readme": "tsx ../../scripts/documentation-helper.ts -f readme.md -p \"---\nslug: /\n---\n\" -df ../app-web-components-documentation/docs/01-readme.md",
+		"docs:copy:readme": "tsx ../../scripts/documentation-helper.ts -f readme.md -p \"---\nslug: /\n---\n\" -df ../docusaurus/docs/01-readme.md",
 		"format": "prettier --write .",
 		"generate": "stencil generate",
 		"generate:icons": "node src/components/ontario-icon/scripts/generate-icons.cjs",

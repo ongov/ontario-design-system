@@ -79,7 +79,7 @@ export const config: Config = {
 		},
 		{
 			type: 'docs-readme',
-			dir: '../app-web-components-documentation/docs/',
+			dir: '../docusaurus/docs/',
 			overwriteExisting: true,
 		},
 		{
