@@ -44,6 +44,9 @@ export class OntarioHeaderApplicationMenu {
 	/**
 	 * A state variable to determine whether the menu is open or not.
 	 *
+	 * The boolean values map to eitherthe presence (true) or absense (false)
+	 * of the `ontario-navigation--open` on the `nav` element.
+	 *
 	 * Triggered by either the `menuButtonToggled` event or the `click` event.
 	 */
 	@State() private menuIsOpen: boolean = false;
@@ -115,11 +118,12 @@ export class OntarioHeaderApplicationMenu {
 	}
 
 	/**
-	 * Listens for clicks on anything outside of the menu and closes
-	 * the menu by removing the ontario-navigation--open class on the nav element.
+	 * Listens for clicks on anything outside of the menu.
+	 * If a click is outside of the menu, then the menu will
+	 * close.
 	 */
 	@Listen('click', { capture: true, target: 'window' })
-	handleClick(event: any) {
+	handleClick(event: PointerEvent) {
 		// if the menu (ref) is clicked, return
 		if (event.composedPath().includes(this.menu)) {
 			this.menuIsOpen = true;
@@ -205,11 +209,11 @@ export class OntarioHeaderApplicationMenu {
 	 *
 	 * href and title are necessary, but rest are not.
 	 *
-	 * @param href - the href of the menu item
-	 * @param title - the title of the menu item
-	 * @param linkIsActive - when set to true, this will add the classes necessary to style the link in a way that indicates to the user what the active page/link is
-	 * @param liClass - if there is a class that is related to the <a> portion of the menu item, put it here
-	 * @param onClick - for any custom onClick event a user might want to add to their menu links
+	 * @param {string} href - the href of the menu item
+	 * @param {string} title - the title of the menu item
+	 * @param {boolean} [linkIsActive] - when set to true, this will add the classes necessary to style the link in a way that indicates to the user what the active page/link is
+	 * @param {string} [liClass] - if there is a class that is related to the <a> portion of the menu item, put it here
+	 * @param {any} [onClick] - for any custom onClick event a user might want to add to their menu links
 	 */
 	private generateMenuItem(href: string, title: string, linkIsActive?: boolean, liClass?: string, onClick?: any) {
 		return (
