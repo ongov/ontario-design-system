@@ -213,12 +213,22 @@ export class OntarioHeaderApplicationMenu {
 	 * @param {string} title - the title of the menu item
 	 * @param {boolean} [linkIsActive] - when set to true, this will add the classes necessary to style the link in a way that indicates to the user what the active page/link is
 	 * @param {string} [liClass] - if there is a class that is related to the <a> portion of the menu item, put it here
-	 * @param {any} [onClick] - for any custom onClick event a user might want to add to their menu links
+	 * @param {function(PointerEvent): void} [onClickHandler] - for any custom onClick functionality a user might want to add to their menu links
 	 */
-	private generateMenuItem(href: string, title: string, linkIsActive?: boolean, liClass?: string, onClick?: any) {
+	private generateMenuItem(
+		href: string,
+		title: string,
+		linkIsActive?: boolean,
+		liClass?: string,
+		onClickHandler?: (e: PointerEvent) => void,
+	) {
 		return (
 			<li class={liClass}>
-				<a class={`ontario-menu-item ${linkIsActive ? 'ontario-link--active' : ''}`} href={href} onClick={onClick}>
+				<a
+					class={`ontario-menu-item ${linkIsActive ? 'ontario-link--active' : ''}`}
+					href={href}
+					onClick={onClickHandler}
+				>
 					{title}
 				</a>
 			</li>
