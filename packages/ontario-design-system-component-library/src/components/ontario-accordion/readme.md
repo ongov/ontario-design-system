@@ -74,6 +74,27 @@ expand-collapse-button='{ "expandAllSectionsLabel": "Expand All", "collapseAllSe
 | `collapseAllSectionsLabel` | The label for the 'Collapse all' button. | `string` |
 | `ariaLabelText`            | Alt text for the expand/close button.    | `string` |
 
+### AccordionChangeDetail
+
+This event detail type is emitted by the `accordionChange` event whenever an individual accordion item's open state changes. It provides context about what changed, which indexes are open, and why the event occurred.
+
+| Property       | Description                                                   | Type                                                               |
+| -------------- | ------------------------------------------------------------- | ------------------------------------------------------------------ | ----------- |
+| `openIndexes`  | Array of indexes currently open.                              | `number[]`                                                         |
+| `changedIndex` | The index that was just toggled (if applicable).              | `number`                                                           | `undefined` |
+| `isBulk`       | True if triggered by a “Expand All” or “Collapse All” action. | `boolean`                                                          | `undefined` |
+| `reason`       | Describes what triggered the event.                           | [`AccordionChangeDetailReason`](#accordionchangedetailreason-enum) |
+
+### AccordionChangeDetailReason (enum)
+
+This enum defines the possible values for the reason property in the event payload.
+
+| Enum Member | Value          | Description                                                 |
+| ----------- | -------------- | ----------------------------------------------------------- |
+| `Init`      | `'init'`       | Emitted when the component first initializes.               |
+| `ToggleOne` | `'toggle-one'` | Emitted when a single accordion item is toggled.            |
+| `ToggleAll` | `'toggle-all'` | Emitted when all accordion items are expanded or collapsed. |
+
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
 The Ontario Accordion component supports multiple languages via the `language` prop, which controls the text used in translatable UI elements (e.g., button labels). If no language is explicitly passed, it defaults to English (`'en'`).

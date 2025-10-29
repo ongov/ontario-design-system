@@ -30,6 +30,12 @@ export interface Accordion extends Base {
 	ariaLabelText: string;
 }
 
+export enum AccordionChangeDetailReasons {
+	Init = 'init',
+	ToggleOne = 'toggle-one',
+	ToggleAll = 'toggle-all',
+}
+
 /**
  * The event detail payload emitted by the accordion component.
  */
@@ -44,5 +50,5 @@ export interface AccordionChangeDetail {
 	isBulk?: boolean;
 
 	/** Optional description of what triggered the event */
-	reason?: 'init' | 'toggle-one' | 'toggle-all';
+	reason?: AccordionChangeDetailReasons;
 }

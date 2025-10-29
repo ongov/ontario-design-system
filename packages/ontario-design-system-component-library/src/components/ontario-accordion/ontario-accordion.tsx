@@ -1,6 +1,7 @@
 import { Component, Prop, Element, Event, EventEmitter, State, h, Listen, Watch } from '@stencil/core';
+import { v4 as uuid } from 'uuid';
 
-import { Accordion, AccordionChangeDetail } from './accordion.interface';
+import { Accordion, AccordionChangeDetail, AccordionChangeDetailReasons } from './accordion.interface';
 import { ExpandCollapseButtonDetails } from './expandCollapseButtonDetails.interface';
 
 import { Language } from '../../utils/common/language-types';
@@ -99,7 +100,7 @@ export class OntarioAccordion {
 	@State() private openAccordionIndexes: number[] = [];
 
 	/** Unique prefix for a11y ids */
-	@State() private uidPrefix: string = `ontario-accordion-${Math.random().toString(36).slice(2, 9)}`;
+	@State() private uidPrefix: string = `ontario-accordion-${uuid()}`;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
@@ -129,13 +130,15 @@ export class OntarioAccordion {
 			const parsed = Array.isArray(this.accordionData) ? this.accordionData : JSON.parse(this.accordionData || '[]');
 
 			// Normalize and type-guard
-			this.internalAccordionData = (parsed || []).map((prop: any) => ({
-				label: prop?.label ?? '',
-				content: prop?.content ?? '',
-				accordionContentType: (prop?.accordionContentType ?? 'string') as 'string' | 'html',
-				isOpen: Boolean(prop?.isOpen),
-				ariaLabelText: prop?.ariaLabelText,
-			}));
+			this.internalAccordionData = parsed.length
+				? parsed.map((prop: Accordion) => ({
+						label: prop?.label ?? '',
+						content: prop?.content ?? '',
+						accordionContentType: (prop?.accordionContentType ?? 'string') as 'string' | 'html',
+						isOpen: Boolean(prop?.isOpen),
+						ariaLabelText: prop?.ariaLabelText,
+					}))
+				: [];
 
 			// Seed the openAccordionIndexes based on the isOpen properties
 			this.seedOpenIndexesFromItems();
@@ -145,7 +148,7 @@ export class OntarioAccordion {
 
 			this.emitAccordionChange({
 				openIndexes: this.openAccordionIndexes,
-				reason: 'init',
+				reason: AccordionChangeDetailReasons.Init,
 			});
 		} catch {
 			const message = new ConsoleMessageClass();
@@ -163,7 +166,7 @@ export class OntarioAccordion {
 
 			this.emitAccordionChange({
 				openIndexes: this.openAccordionIndexes,
-				reason: 'init',
+				reason: AccordionChangeDetailReasons.Init,
 			});
 		}
 	}
@@ -229,7 +232,7 @@ export class OntarioAccordion {
 		this.emitAccordionChange({
 			openIndexes: this.openAccordionIndexes,
 			changedIndex: index,
-			reason: 'toggle-one',
+			reason: AccordionChangeDetailReasons.ToggleOne,
 		});
 	}
 
@@ -250,7 +253,7 @@ export class OntarioAccordion {
 		this.emitAccordionChange({
 			openIndexes: this.openAccordionIndexes,
 			isBulk: true,
-			reason: 'toggle-all',
+			reason: AccordionChangeDetailReasons.ToggleAll,
 		});
 	}
 
