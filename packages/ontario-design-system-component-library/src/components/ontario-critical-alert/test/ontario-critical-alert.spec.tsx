@@ -14,7 +14,7 @@ describe('ontario-critical-alert', () => {
 						<div class="ontario-row">
 							<div class="ontario-column ontario-small-12">
 								<div class="ontario-critical-alert__body">
-									<div class="ontario-critical-alert__icon"></div>
+									<div aria-hidden="true" class="ontario-critical-alert__icon"></div>
 									<p>
 										This is the critical alert content
 									</p>
@@ -39,7 +39,7 @@ describe('ontario-critical-alert', () => {
 						<div class="ontario-row">
 							<div class="ontario-column ontario-small-12">
 								<div class="ontario-critical-alert__body">
-									<div class="ontario-critical-alert__icon"></div>
+									<div aria-hidden="true" class="ontario-critical-alert__icon"></div>
 									<p>
 										I am the critical alert content that will display
 									</p>

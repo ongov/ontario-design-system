@@ -129,7 +129,12 @@ export class OntarioLoadingIndicator {
 				aria-live="assertive"
 			>
 				<div class="ontario-loading-indicator">
-					<svg class="ontario-loading-indicator__spinner" viewBox="25 25 50 50" xmlns="http://www.w3.org/2000/svg">
+					<svg
+						class="ontario-loading-indicator__spinner"
+						viewBox="25 25 50 50"
+						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true"
+					>
 						<circle cx="50" cy="50" r="20" fill="none" stroke-width="4" />
 					</svg>
 					<p>{this.message ?? this.translations.loading[`${this.language}`]}</p>

@@ -21,7 +21,7 @@ describe('ontario-loading-indicator', () => {
 				<mock:shadow-root>
 					<div aria-hidden="true" aria-live="assertive" class="ontario-loading-indicator__overlay" role="alert">
 						<div class="ontario-loading-indicator">
-							<svg class="ontario-loading-indicator__spinner" viewBox="25 25 50 50" xmlns="http://www.w3.org/2000/svg">
+							<svg aria-hidden="true" class="ontario-loading-indicator__spinner" viewBox="25 25 50 50" xmlns="http://www.w3.org/2000/svg">
 								<circle cx="50" cy="50" fill="none" r="20" stroke-width="4"></circle>
 							</svg>
 							<p>Loading</p>

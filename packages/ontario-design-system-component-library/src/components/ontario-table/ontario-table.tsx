@@ -236,6 +236,7 @@ export class OntarioTable implements Table {
 								<img
 									class="ontario-table--highlight-indicator"
 									src={getAssetPath('./assets/highlight-indicator.svg')}
+									aria-hidden="true"
 								></img>
 							)}
 						</th>
