@@ -23,6 +23,7 @@ import {
 import { handleInputEvent } from '../../utils/events/event-handler';
 import { ErrorMessage } from '../../utils/components/error-message/error-message';
 import { ConsoleType } from '../../utils/console-message/console-message.enum';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
@@ -224,9 +225,13 @@ export class OntarioRadioButtons implements RadioButtons {
 		}
 	}
 
+	/**
+	 * Handles an update to the language should the user request a language update from the language toggle.
+	 * @param {CustomEvent} - The language that has been selected.
+	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
+		this.language = validateLanguage(event.detail.newLanguage);
 	}
 
 	/**

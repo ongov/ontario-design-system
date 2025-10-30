@@ -10,6 +10,7 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 import translations from '../../translations/global.i18n.json';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 @Component({
 	tag: 'ontario-accordion',
@@ -114,7 +115,7 @@ export class OntarioAccordion {
 
 	/**
 	 * Handles an update to the language should the user request a language update from the language toggle.
-	 * @param event The language that has been selected.
+	 * @param {CustomEvent} - The language that has been selected.
 	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
 	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
