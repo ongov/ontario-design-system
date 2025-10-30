@@ -12,7 +12,7 @@ import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { InputCaption } from '../../utils/common/input-caption/input-caption';
 import { Caption } from '../../utils/common/input-caption/caption.interface';
 import { emitEvent } from '../../utils/events/event-handler';
-import { HeaderLanguageToggleEventDetails } from '../../components';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 @Component({
 	tag: 'ontario-date-input',

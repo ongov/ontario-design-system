@@ -17,7 +17,7 @@ import {
 	InputInputEvent,
 } from '../../utils/events/event-handler.interface';
 import { handleInputEvent } from '../../utils/events/event-handler';
-import { HeaderLanguageToggleEventDetails } from '../../components';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 import { default as translations } from '../../translations/global.i18n.json';
 import { ErrorMessage } from '../../utils/components/error-message/error-message';

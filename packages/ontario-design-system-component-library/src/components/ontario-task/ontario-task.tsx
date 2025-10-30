@@ -7,7 +7,7 @@ import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
 import translations from '../../translations/global.i18n.json';
 import { HeadingLevel } from '../../utils/common/common.interface';
-import { HeaderLanguageToggleEventDetails } from '../../components';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 export type TaskHeadingLevel = Extract<HeadingLevel, 'h2' | 'h3' | 'h4'>;
 
 @Component({

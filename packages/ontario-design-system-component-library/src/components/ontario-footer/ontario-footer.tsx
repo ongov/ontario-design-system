@@ -17,7 +17,7 @@ import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { getImageAssetSrcPath } from '../../utils/helper/assets';
 
 import translations from '../../translations/global.i18n.json';
-import { HeaderLanguageToggleEventDetails } from '../../components';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 @Component({
 	tag: 'ontario-footer',
