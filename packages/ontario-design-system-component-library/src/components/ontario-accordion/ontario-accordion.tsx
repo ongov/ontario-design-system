@@ -115,7 +115,7 @@ export class OntarioAccordion {
 
 	/**
 	 * Handles an update to the language should the user request a language update from the language toggle.
-	 * @param event The language that has been selected.
+	 * @param {CustomEvent} - The language that has been selected.
 	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
 	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {

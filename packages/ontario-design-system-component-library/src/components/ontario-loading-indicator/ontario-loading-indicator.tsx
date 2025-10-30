@@ -3,7 +3,7 @@ import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { HeaderLanguageToggleEventDetails } from '../../components';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 import translations from '../../translations/global.i18n.json';
 
 @Component({
@@ -63,7 +63,7 @@ export class OntarioLoadingIndicator {
 
 	/**
 	 * Handles an update to the language should the user request a language update from the language toggle.
-	 * @param event The language that has been selected.
+	 * @param {CustomEvent} - The language that has been selected.
 	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
 	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
