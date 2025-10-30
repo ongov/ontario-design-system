@@ -23,6 +23,7 @@ import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
 import { ErrorMessage } from '../../utils/components/error-message/error-message';
+import { HeaderLanguageToggleEventDetails } from '../../components';
 
 @Component({
 	tag: 'ontario-dropdown-list',
@@ -245,9 +246,13 @@ export class OntarioDropdownList implements Dropdown {
 		}
 	}
 
+	/**
+	 * Handles an update to the language should the user request a language update from the language toggle.
+	 * @param event The language that has been selected.
+	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
+		this.language = validateLanguage(event.detail.newLanguage);
 	}
 
 	/*

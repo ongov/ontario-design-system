@@ -7,6 +7,7 @@ import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
 import translations from '../../translations/global.i18n.json';
 import { HeadingLevel } from '../../utils/common/common.interface';
+import { HeaderLanguageToggleEventDetails } from '../../components';
 export type TaskHeadingLevel = Extract<HeadingLevel, 'h2' | 'h3' | 'h4'>;
 
 @Component({
@@ -165,12 +166,12 @@ export class OntarioTask {
 	}
 
 	/**
-	 * This listens for the `headerLanguageToggled` event sent from the language toggle when it is connected to the DOM.
-	 * It is used for changing the component language after the language toggle has been activated.
+	 * Handles an update to the language should the user request a language update from the language toggle.
+	 * @param event The language that has been selected.
 	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
+		this.language = validateLanguage(event.detail.newLanguage);
 	}
 
 	/**

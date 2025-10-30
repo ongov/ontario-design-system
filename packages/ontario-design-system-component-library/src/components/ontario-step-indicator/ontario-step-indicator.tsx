@@ -2,6 +2,7 @@ import { Component, Prop, Element, h, State, Listen } from '@stencil/core';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import translations from '../../translations/global.i18n.json';
+import { HeaderLanguageToggleEventDetails } from '../../components';
 
 @Component({
 	tag: 'ontario-step-indicator',
@@ -66,9 +67,13 @@ export class OntarioStepIndicator {
 		}
 	}
 
+	/**
+	 * Handles an update to the language should the user request a language update from the language toggle.
+	 * @param event The language that has been selected.
+	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
+		this.language = validateLanguage(event.detail.newLanguage);
 	}
 
 	@State() translations: any = translations;
