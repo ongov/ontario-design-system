@@ -14,6 +14,7 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
 
 $navigation-max-width: 72rem;
+$ontario-navigation-container-min-width: globalFunctions.px-to-rem(290); //18.125rem
 
 // General Header Styles
 %ontario-header,
@@ -57,7 +58,7 @@ $navigation-max-width: 72rem;
 		position: absolute;
 		right: spacing.$spacing-4;
 		top: calc(100% - #{spacing.$spacing-2});
-		min-width: 18.125rem; // ~290px - this value is to control the min-width size the dropdown navigation list can be
+		min-width: $ontario-navigation-container-min-width; // this value is to control the min-width size the dropdown navigation list can be
 		max-width: 30%;
 		z-index: zIndex.$ontario-z-index-above-high;
 	}

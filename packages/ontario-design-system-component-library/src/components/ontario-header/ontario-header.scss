@@ -22,7 +22,7 @@ $ontario-header-logo-width: 180px;
 $ontario-header-logo-width--mobile: 45px;
 $ontario-header-custom-breakpoint: 39.9375em;
 $ontario-header-menu-button-icon--margin-right: 6px;
-$ontario-navigation-container-min-width: 290px;
+$ontario-navigation-container-min-width: globalFunctions.px-to-rem(290); //18.125rem
 $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 
 :host {
