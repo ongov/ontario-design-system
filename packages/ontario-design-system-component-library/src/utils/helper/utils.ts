@@ -1,6 +1,6 @@
 import { DeviceTypes } from '../common/common.enum';
 import { DeviceType, Conjunction } from './utils-types';
-import { screenBreakpoints, standardFontSizePx } from '../common/common.variables';
+import { ScreenBreakpoints, standardFontSizePx } from '../common/common.variables';
 
 export function format(first: string | undefined, middle: string | undefined, last: string | undefined): string {
 	return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
@@ -150,9 +150,9 @@ export function determineDeviceType(): DeviceType {
 	 */
 	const windowWidthEm = Math.ceil(windowWidthPx / standardFontSizePx);
 
-	if (windowWidthEm <= screenBreakpoints.small) {
+	if (windowWidthEm <= ScreenBreakpoints.Small) {
 		return DeviceTypes.Mobile;
-	} else if (windowWidthEm > screenBreakpoints.small && windowWidthEm <= screenBreakpoints.medium) {
+	} else if (windowWidthEm > ScreenBreakpoints.Small && windowWidthEm <= ScreenBreakpoints.Medium) {
 		return DeviceTypes.Tablet;
 	}
 
