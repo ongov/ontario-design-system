@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import { ExpandCollapseButtonDetails } from './components/ontario-accordion/expandCollapseButtonDetails.interface';
-import { Accordion } from './components/ontario-accordion/accordion.interface';
+import { Accordion, AccordionChangeDetail } from './components/ontario-accordion/accordion.interface';
 import { Language } from './utils/common/language-types';
 import {
 	HeadingContentType,
@@ -61,7 +61,7 @@ import { TaskStatuses } from './utils/common/task-statuses.enum';
 import { TaskHeadingLevel } from './components/ontario-task/ontario-task';
 import { TaskListHeadingLevel } from './components/ontario-task-list/ontario-task-list';
 export { ExpandCollapseButtonDetails } from './components/ontario-accordion/expandCollapseButtonDetails.interface';
-export { Accordion } from './components/ontario-accordion/accordion.interface';
+export { Accordion, AccordionChangeDetail } from './components/ontario-accordion/accordion.interface';
 export { Language } from './utils/common/language-types';
 export {
 	HeadingContentType,
@@ -118,8 +118,9 @@ export { TaskListHeadingLevel } from './components/ontario-task-list/ontario-tas
 export namespace Components {
 	interface OntarioAccordion {
 		/**
-		 * Used to include individual accordion data for the accordion component. This is passed in as an array of objects with key-value pairs.  The `content` is expecting a string, that can either be written as HTML or a just a plain string, depending on the accordionContentType.
-		 * @example 	<ontario-accordion 	name="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": "This is a string"}, 		{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"} 	]' ></ontario-accordion>
+		 * Used to include individual accordion data for the accordion component. Accepts an array of Accordion (@see Accordion) items or a JSON string of that array.  The `content` is rendered either as plain text or HTML depending on `accordionContentType`.
+		 * @see Accordion *
+		 * @example 	<ontario-accordion 	name="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": "This is a string", "isOpen": true}, 		{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"} 	]' ></ontario-accordion>
 		 */
 		accordionData: string | Accordion[];
 		/**
@@ -127,11 +128,6 @@ export namespace Components {
 		 * @example  <ontario-accordion 	name="My Accordion" 	expand-collapse-button='{ 		"expandAllSectionsLabel": "Expand All", 		"collapseAllSectionsLabel": "Collapse All" 	}' 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
 		 */
 		expandCollapseButton?: string | ExpandCollapseButtonDetails;
-		/**
-		 * Used to show whether the accordion is opened or closed.
-		 * @default false
-		 */
-		isOpen: boolean;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 		 */
@@ -2384,6 +2380,10 @@ export namespace Components {
 		value?: string;
 	}
 }
+export interface OntarioAccordionCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioAccordionElement;
+}
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioCheckboxesElement;
@@ -2421,7 +2421,57 @@ export interface OntarioTextareaCustomEvent<T> extends CustomEvent<T> {
 	target: HTMLOntarioTextareaElement;
 }
 declare global {
-	interface HTMLOntarioAccordionElement extends Components.OntarioAccordion, HTMLStencilElement {}
+	interface HTMLOntarioAccordionElementEventMap {
+		accordionChange: AccordionChangeDetail;
+	}
+	interface HTMLOntarioAccordionElement extends Components.OntarioAccordion, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioAccordionElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioAccordionElement,
+				ev: OntarioAccordionCustomEvent<HTMLOntarioAccordionElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioAccordionElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioAccordionElement,
+				ev: OntarioAccordionCustomEvent<HTMLOntarioAccordionElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
 	var HTMLOntarioAccordionElement: {
 		prototype: HTMLOntarioAccordionElement;
 		new (): HTMLOntarioAccordionElement;
@@ -3794,8 +3844,9 @@ declare global {
 declare namespace LocalJSX {
 	interface OntarioAccordion {
 		/**
-		 * Used to include individual accordion data for the accordion component. This is passed in as an array of objects with key-value pairs.  The `content` is expecting a string, that can either be written as HTML or a just a plain string, depending on the accordionContentType.
-		 * @example 	<ontario-accordion 	name="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": "This is a string"}, 		{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"} 	]' ></ontario-accordion>
+		 * Used to include individual accordion data for the accordion component. Accepts an array of Accordion (@see Accordion) items or a JSON string of that array.  The `content` is rendered either as plain text or HTML depending on `accordionContentType`.
+		 * @see Accordion *
+		 * @example 	<ontario-accordion 	name="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": "This is a string", "isOpen": true}, 		{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"} 	]' ></ontario-accordion>
 		 */
 		accordionData?: string | Accordion[];
 		/**
@@ -3804,11 +3855,6 @@ declare namespace LocalJSX {
 		 */
 		expandCollapseButton?: string | ExpandCollapseButtonDetails;
 		/**
-		 * Used to show whether the accordion is opened or closed.
-		 * @default false
-		 */
-		isOpen?: boolean;
-		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 		 */
 		language?: Language;
@@ -3816,6 +3862,10 @@ declare namespace LocalJSX {
 		 * The name of the accordion component.  This is not optional.
 		 */
 		name?: string;
+		/**
+		 * Emits when open indexes change
+		 */
+		onAccordionChange?: (event: OntarioAccordionCustomEvent<AccordionChangeDetail>) => void;
 	}
 	interface OntarioAside {
 		/**

@@ -7,14 +7,14 @@ import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 import { Components } from '@ongov/ontario-design-system-component-library';
 
 @ProxyCmp({
-	inputs: ['accordionData', 'expandCollapseButton', 'isOpen', 'language', 'name'],
+	inputs: ['accordionData', 'expandCollapseButton', 'language', 'name'],
 })
 @Component({
 	selector: 'ontario-accordion',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['accordionData', 'expandCollapseButton', 'isOpen', 'language', 'name'],
+	inputs: ['accordionData', 'expandCollapseButton', 'language', 'name'],
 })
 export class OntarioAccordion {
 	protected el: HTMLOntarioAccordionElement;
@@ -25,10 +25,18 @@ export class OntarioAccordion {
 	) {
 		c.detach();
 		this.el = r.nativeElement;
+		proxyOutputs(this, this.el, ['accordionChange']);
 	}
 }
 
-export declare interface OntarioAccordion extends Components.OntarioAccordion {}
+import type { AccordionChangeDetail as IOntarioAccordionAccordionChangeDetail } from '@ongov/ontario-design-system-component-library';
+
+export declare interface OntarioAccordion extends Components.OntarioAccordion {
+	/**
+	 * Emits when open indexes change
+	 */
+	accordionChange: EventEmitter<CustomEvent<IOntarioAccordionAccordionChangeDetail>>;
+}
 
 @ProxyCmp({
 	inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],

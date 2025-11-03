@@ -10,7 +10,6 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 import translations from '../../translations/global.i18n.json';
-import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 @Component({
 	tag: 'ontario-accordion',

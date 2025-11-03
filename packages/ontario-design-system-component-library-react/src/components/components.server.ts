@@ -8,7 +8,7 @@
 
 /* eslint-disable */
 
-import { type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioCheckboxesCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { type AccordionChangeDetail, type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
 import { OntarioAccordion as OntarioAccordionElement } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
 import { OntarioAside as OntarioAsideElement } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
 import { OntarioBackToTop as OntarioBackToTopElement } from "@ongov/ontario-design-system-component-library/components/ontario-back-to-top.js";
@@ -161,7 +161,7 @@ import { createComponent, type SerializeShadowRootOptions } from '@stencil/react
 
 export const serializeShadowRoot: SerializeShadowRootOptions = { default: "declarative-shadow-dom" };
 
-export type OntarioAccordionEvents = NonNullable<unknown>;
+export type OntarioAccordionEvents = { onAccordionChange: EventName<OntarioAccordionCustomEvent<AccordionChangeDetail>> };
 
 export const OntarioAccordion: StencilReactComponent<OntarioAccordionElement, OntarioAccordionEvents> = /*@__PURE__*/ createComponent<OntarioAccordionElement, OntarioAccordionEvents>({
     tagName: 'ontario-accordion',
@@ -169,7 +169,6 @@ export const OntarioAccordion: StencilReactComponent<OntarioAccordionElement, On
         name: 'name',
         expandCollapseButton: 'expand-collapse-button',
         accordionData: 'accordion-data',
-        isOpen: 'is-open',
         language: 'language'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
