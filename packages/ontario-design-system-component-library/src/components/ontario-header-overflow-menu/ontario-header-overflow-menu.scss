@@ -16,8 +16,10 @@
 @use '../../styles/header.scss';
 
 $navigation-link-bg--hover: #e5e5e5;
-
 $ontario-navigation-link-padding-vertical: globalFunctions.px-to-rem(10);
+$ontario-header-overflow-menu-link-font-size: globalFunctions.px-to-rem(18);
+$border-width-1: 1px;
+$border-width-6: 6px;
 
 .ontario-application-navigation {
 	@extend %ontario-application-navigation;
@@ -26,7 +28,7 @@ $ontario-navigation-link-padding-vertical: globalFunctions.px-to-rem(10);
 		list-style: none;
 		padding: spacing.$spacing-2 spacing.$spacing-0;
 		margin: spacing.$spacing-0;
-		border-bottom: 1px solid colours.$ontario-greyscale-20;
+		border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
 
 		@media screen and (min-width: breakpoints.$medium-breakpoint) {
 			border-bottom: none;
@@ -34,19 +36,19 @@ $ontario-navigation-link-padding-vertical: globalFunctions.px-to-rem(10);
 	}
 
 	li {
-		border-top: 1px solid colours.$ontario-greyscale-20;
+		border-top: $border-width-1 solid colours.$ontario-greyscale-20;
 		padding: spacing.$spacing-0;
 		margin-bottom: spacing.$spacing-0;
 
 		&:last-of-type {
-			border-bottom: 1px solid colours.$ontario-greyscale-20;
+			border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
 		}
 	}
 
 	a {
 		color: colours.$ontario-colour-black;
 		display: block;
-		font-size: 1.125rem;
+		font-size: $ontario-header-overflow-menu-link-font-size;
 		font-weight: fontWeights.$ontario-font-weights-semi-bold;
 		font-family: fonts.$ontario-font-open-sans;
 		text-decoration: none;
@@ -69,7 +71,7 @@ $ontario-navigation-link-padding-vertical: globalFunctions.px-to-rem(10);
 		}
 
 		&.ontario-link--active {
-			border-left: 6px solid colours.$ontario-colour-black;
+			border-left: $border-width-6 solid colours.$ontario-colour-black;
 			background-color: colours.$ontario-greyscale-5;
 		}
 	}
