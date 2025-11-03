@@ -13,8 +13,14 @@
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
 @use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
 
+$box-shadow-blur-radius-12: 12px;
+$font-size-18: globalFunctions.px-to-rem(18);
 $navigation-max-width: 72rem;
 $ontario-navigation-container-min-width: globalFunctions.px-to-rem(290); //18.125rem
+$ontario-header-button-font-size: $font-size-18;
+$ontario-header-button-line-height: 1.5;
+$ontario-header-button-with-outline-padding-top-bottom: globalFunctions.px-to-rem(6);
+$header-height: globalFunctions.px-to-rem(50);
 
 // General Header Styles
 %ontario-header,
@@ -25,7 +31,7 @@ $ontario-navigation-container-min-width: globalFunctions.px-to-rem(290); //18.12
 	align-items: center;
 	background-color: colours.$ontario-colour-black;
 	color: colours.$ontario-colour-white;
-	height: 3.125rem;
+	height: $header-height;
 	z-index: zIndex.$ontario-z-index-above-high;
 }
 
@@ -52,7 +58,7 @@ $ontario-navigation-container-min-width: globalFunctions.px-to-rem(290); //18.12
 	z-index: zIndex.$ontario-z-index-above-high;
 
 	@media screen and (min-width: breakpoints.$medium-breakpoint) {
-		box-shadow: 0 globalVariables.$global-radius 12px rgba(0, 0, 0, 0.3);
+		box-shadow: 0 globalVariables.$global-radius $box-shadow-blur-radius-12 rgba(0, 0, 0, 0.3);
 		border-radius: globalVariables.$global-radius;
 		display: none;
 		position: absolute;
@@ -81,11 +87,11 @@ $ontario-navigation-container-min-width: globalFunctions.px-to-rem(290); //18.12
 	cursor: pointer;
 	display: flex;
 	align-items: center;
-	font-size: 1.125rem;
+	font-size: $ontario-header-button-font-size;
 	font-weight: fontWeights.$ontario-font-weights-semi-bold;
 	font-family: fonts.$ontario-font-open-sans;
 	height: globalVariables.$standard-input-height;
-	line-height: 1.5;
+	line-height: $ontario-header-button-line-height;
 	text-align: center;
 	text-decoration: none;
 }
@@ -93,5 +99,5 @@ $ontario-navigation-container-min-width: globalFunctions.px-to-rem(290); //18.12
 %ontario-header-button--with-outline {
 	border: globalVariables.$border-size-standard solid colours.$ontario-colour-white;
 	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-4;
-	padding: 0.375rem spacing.$spacing-4;
+	padding: $ontario-header-button-with-outline-padding-top-bottom spacing.$spacing-4;
 }
