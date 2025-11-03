@@ -16,14 +16,22 @@
 @use '../../styles/header.scss';
 @use '../../styles/grid.scss';
 
+$border-width-1: 1px;
+$border-width-2: 2px;
+$border-width-6: 6px;
+$font-size-18: globalFunctions.px-to-rem(18);
+
 $ontario-search-padding: 7.2rem;
 $ontario-search-padding--mobile: 6.4rem;
+$ontario-header-height: globalFunctions.px-to-rem(92);
 $ontario-header-logo-width: 180px;
 $ontario-header-logo-width--mobile: 45px;
 $ontario-header-custom-breakpoint: 39.9375em;
 $ontario-header-menu-button-icon--margin-right: 6px;
 $ontario-navigation-container-min-width: globalFunctions.px-to-rem(290); //18.125rem
+$ontario-header-navigation-link-font-size: $font-size-18;
 $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
+$ontario-header-search-submit-button-font-size: $font-size-18;
 
 :host {
 	--header-search-reset: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTE5IDYuNEwxNy42IDUgMTIgMTAuNiA2LjQgNSA1IDYuNGw1LjYgNS42TDUgMTcuNiA2LjQgMTlsNS42LTUuNiA1LjYgNS42IDEuNC0xLjQtNS42LTUuNkwxOSA2LjR6IiBmaWxsPSIjMDAwIi8+PC9zdmc+);
@@ -37,7 +45,7 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	color: colours.$ontario-colour-white;
 	display: flex;
 	align-items: center;
-	height: 5.75rem;
+	height: $ontario-header-height;
 
 	.ontario-row {
 		display: flex;
@@ -113,7 +121,7 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		list-style: none;
 		padding: spacing.$spacing-2 spacing.$spacing-0;
 		margin: spacing.$spacing-0;
-		border-bottom: 1px solid colours.$ontario-greyscale-20;
+		border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
 
 		@media screen and (min-width: breakpoints.$medium-breakpoint) {
 			border-bottom: none;
@@ -121,19 +129,19 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	}
 
 	li {
-		border-top: 1px solid colours.$ontario-greyscale-20;
+		border-top: $border-width-1 solid colours.$ontario-greyscale-20;
 		padding: spacing.$spacing-0;
 		margin-bottom: spacing.$spacing-0;
 
 		&:last-of-type {
-			border-bottom: 1px solid colours.$ontario-greyscale-20;
+			border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
 		}
 	}
 
 	a {
 		color: colours.$ontario-colour-black;
 		display: block;
-		font-size: 1.125rem;
+		font-size: $ontario-header-navigation-link-font-size;
 		font-weight: fontWeights.$ontario-font-weights-semi-bold;
 		font-family: fonts.$ontario-font-open-sans;
 		text-decoration: none;
@@ -156,7 +164,7 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		}
 
 		&.ontario-link--active {
-			border-left: 6px solid colours.$ontario-colour-black;
+			border-left: $border-width-6 solid colours.$ontario-colour-black;
 			background-color: colours.$ontario-greyscale-5;
 		}
 	}
@@ -295,7 +303,7 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 
 	font-family: fonts.$ontario-font-open-sans;
 	font-weight: fontWeights.$ontario-font-weights-semi-bold;
-	font-size: 1.125rem;
+	font-size: $ontario-header-search-submit-button-font-size;
 	height: 100%;
 	line-height: lineHeights.$ontario-line-height-8;
 
@@ -380,7 +388,7 @@ input[type='reset'].ontario-header__search-reset {
 	@extend %ontario-header-button--with-outline;
 
 	&:hover {
-		border: 2px solid colours.$ontario-colour-white;
+		border: $border-width-2 solid colours.$ontario-colour-white;
 		color: colours.$ontario-colour-white;
 	}
 
@@ -527,19 +535,21 @@ input[type='reset'].ontario-header__search-reset {
 }
 
 .ontario-header-navigation__menu-item {
-	border-top: 1px solid colours.$ontario-greyscale-20;
+	border-top: $border-width-1 solid colours.$ontario-greyscale-20;
 	padding: spacing.$spacing-0;
 	margin-bottom: spacing.$spacing-0;
 
 	&:last-of-type {
-		border-bottom: 1px solid colours.$ontario-greyscale-20;
+		border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
 	}
 }
 
+// TODO: Investigate
+// Might be a duplicate of line 140
 .ontario-navigation a {
 	color: colours.$ontario-colour-black;
 	display: block;
-	font-size: 1.125rem;
+	font-size: $ontario-header-navigation-link-font-size;
 	font-weight: fontWeights.$ontario-font-weights-semi-bold;
 	font-family: fonts.$ontario-font-open-sans;
 	text-decoration: none;
@@ -562,7 +572,7 @@ input[type='reset'].ontario-header__search-reset {
 	}
 
 	&.ontario-link--active {
-		border-left: 6px solid colours.$ontario-colour-black;
+		border-left: $border-width-6 solid colours.$ontario-colour-black;
 		background-color: colours.$ontario-greyscale-5;
 	}
 }
