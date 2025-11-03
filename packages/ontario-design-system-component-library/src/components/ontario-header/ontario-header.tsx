@@ -18,6 +18,7 @@ import { MenuItem } from '../../utils/common/common.interface';
 import { DeviceTypes } from '../../utils/common/common.enum';
 import { isClientSideRendering } from '../../utils/common/environment';
 import { Input } from '../../utils/common/input/input';
+import { generateMenuItem } from '../../utils/components/header/header-menu-items';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { getImageAssetSrcPath } from '../../utils/helper/assets';
@@ -441,27 +442,6 @@ export class OntarioHeader {
 	}
 
 	/**
-	 * This function generates the menu items in a <li>, accordingly, to the given parameters.
-	 *
-	 * href and title are necessary, but rest are not.
-	 *
-	 * @param href - the href of the menu item
-	 * @param title - the title of the menu item
-	 * @param linkIsActive - when set to true, this will add the classes necessary to style the link in a way that indicates to the user what the active page/link is
-	 * @param liClass - if there is a class that is related to the <a> portion of the menu item, put it here
-	 * @param onClick - for any custom onClick event a user might want to add to their menu links
-	 */
-	private generateMenuItem(href: string, title: string, linkIsActive?: boolean, liClass?: string, onClick?: any) {
-		return (
-			<li class={liClass}>
-				<a class={linkIsActive === true ? `ontario-link--active` : ``} href={href} onClick={onClick}>
-					{title}
-				</a>
-			</li>
-		);
-	}
-
-	/**
 	 * This function generates the menu dropdown button for the ontario header component.
 	 *
 	 * @param viewportSize - the size of the screen where the function is being called. It can either be set to `desktop`, `tablet` or `mobile`. This dictates the classes used on the menu button, as well as the ref to keep the focus trapped when the menu is open.
@@ -732,7 +712,7 @@ export class OntarioHeader {
 													{this.menuItemState
 														?.slice(0, this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState])
 														.map((item) =>
-															this.generateMenuItem(item.href, item.title, item.linkIsActive, '', item.onClickHandler),
+															generateMenuItem(item.href, item.title, item.linkIsActive, '', item.onClickHandler),
 														)}
 												</ul>
 											)}
