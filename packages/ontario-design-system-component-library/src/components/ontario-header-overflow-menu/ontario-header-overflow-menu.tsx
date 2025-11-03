@@ -97,7 +97,7 @@ export class OntarioHeaderApplicationMenu {
 		// If no active link is set, try to guess and set the active link based
 		// on if the href is included in the URL.
 		if (!activeLinkSet) {
-			let copyOfMenuItemsState = [...this.menuItemState];
+			const copyOfMenuItemsState = [...this.menuItemState];
 			copyOfMenuItemsState.forEach((menuItem) => {
 				const sanitizedSlug = menuItem.href.replace(/\s+/g, '-').toLowerCase();
 				menuItem.linkIsActive = window.location.pathname.includes(sanitizedSlug);
