@@ -196,6 +196,9 @@ export class OntarioHeaderApplicationMenu {
 	 */
 	private updateAriaLive(selectedIndex: number) {
 		const menuItemCount = this.menuItemState.length;
+		// index starts at 0, but users expect the message to start at 1
+		// therefore add value of +1 to each index value to align with
+		// user expectations
 		const selectedMenuItemNumber = selectedIndex + 1;
 		const ariaLiveMessage = `Option ${selectedMenuItemNumber} of ${menuItemCount}`;
 
