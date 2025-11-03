@@ -726,15 +726,12 @@ export class OntarioHeader {
 									</div>
 								</div>
 							</section>
-
-							<slot name="menu-overflow">
-								<ontario-header-overflow-menu
-									menuItems={this.menuItemState?.slice(
-										this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState],
-										this.menuItemState.length,
-									)}
-								></ontario-header-overflow-menu>
-							</slot>
+							<ontario-header-overflow-menu
+								menuItems={this.menuItemState?.slice(
+									this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState],
+									this.menuItemState.length,
+								)}
+							></ontario-header-overflow-menu>
 						</div>
 					</div>
 					{this.menuToggled && <div class="ontario-hide-for-large ontario-overlay" />}
