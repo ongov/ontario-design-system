@@ -6,6 +6,8 @@
 	"license": "Apache-2.0",
 	"main": "index.js",
 	"style": "dist/css/_variables.css",
+	"sass": "dist/scss/_variables.scss",
+	"types": "./dist/ts/tokens.d.ts",
 	"files": [
 		"dist/",
 		"package.json",
@@ -16,7 +18,7 @@
 		"clean": "rm -rf dist",
 		"clean:full": "rm -rf node_modules && pnpm run clean",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: Design Tokens\n---\n\" -df ../app-web-components-documentation/docs/04-readme-design-tokens.md"
+		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\\ntitle: Design Tokens\\n---\\n\" -df ../docusaurus/docs/04-readme-design-tokens.md"
 	},
 	"devDependencies": {
 		"@types/node": "^22.10.10",
@@ -47,5 +49,24 @@
 			"email": "Nakib.Momin@ontario.ca"
 		}
 	],
-	"sass": "dist/scss/_variables.scss"
+	"exports": {
+		".": {
+			"sass": "./dist/scss/_variables.scss",
+			"style": "./dist/css/_variables.css",
+			"import": "./dist/js/tokens.js",
+			"types": "./dist/ts/tokens.d.ts",
+			"default": "./dist/js/tokens.js"
+		},
+		"./scss": {
+			"sass": "./dist/scss/_variables.scss"
+		},
+		"./css": {
+			"style": "./dist/css/_variables.css"
+		},
+		"./tokens": {
+			"import": "./dist/js/tokens.js",
+			"types": "./dist/ts/tokens.d.ts",
+			"default": "./dist/js/tokens.js"
+		}
+	}
 }

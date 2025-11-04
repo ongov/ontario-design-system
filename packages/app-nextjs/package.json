@@ -11,7 +11,13 @@
 		"copy:assets": "pnpm run copy:images && pnpm run copy:favicons && pnpm run copy:fonts",
 		"copy:favicons": "copyfiles -E -f \"./node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/favicons/**\" public/assets/favicons",
 		"copy:fonts": "copyfiles -E -u 6 \"./node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/fonts/**/*\" public/assets/fonts",
-		"copy:images": "copyfiles -E -f \"./node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/images/**\" public/assets"
+		"copy:images": "copyfiles -E -f \"./node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/images/**\" public/assets",
+		"test:update-snapshots": "playwright test --update-snapshots",
+		"test:vrt": "playwright test tests/**/*.vrt.ts",
+		"test:e2e": "playwright test tests/**/*.e2e.ts",
+		"docker:build-vrt": "docker compose build vrt-runner",
+		"test:vrt:docker": "docker compose run --rm vrt-runner pnpm run test:vrt",
+		"test:update-snapshots:docker": "docker compose run --rm vrt-runner pnpm run test:update-snapshots"
 	},
 	"dependencies": {
 		"@ongov/ontario-design-system-component-library": "workspace:*",
@@ -24,12 +30,13 @@
 	},
 	"devDependencies": {
 		"@eslint/eslintrc": "^3",
+		"@playwright/test": "1.55.0",
 		"@stencil/ssr": "^0.1.0",
 		"@types/node": "^22.10.1",
 		"@types/react": "^18.3.12",
 		"@types/react-dom": "^18.3.1",
 		"eslint": "^9",
-		"eslint-config-next": "15.3.1",
+		"eslint-config-next": "15.5.3",
 		"typescript": "^5"
 	}
 }

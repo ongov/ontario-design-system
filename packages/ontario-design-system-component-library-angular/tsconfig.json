@@ -3,7 +3,11 @@
 	"compilerOptions": {
 		"baseUrl": "./",
 		"paths": {
-			"component-library": ["dist/component-library"]
+			"component-library": ["dist/component-library"],
+			"@ongov/ontario-design-system-component-library": ["node_modules/@ongov/ontario-design-system-component-library"],
+			"@ongov/ontario-design-system-component-library/loader": [
+				"node_modules/@ongov/ontario-design-system-component-library/loader"
+			]
 		},
 		"outDir": "./dist/out-tsc",
 		"forceConsistentCasingInFileNames": true,

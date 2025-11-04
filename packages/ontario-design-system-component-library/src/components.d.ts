@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import { ExpandCollapseButtonDetails } from './components/ontario-accordion/expandCollapseButtonDetails.interface';
-import { Accordion } from './components/ontario-accordion/accordion.interface';
+import { Accordion, AccordionChangeDetail } from './components/ontario-accordion/accordion.interface';
 import { Language } from './utils/common/language-types';
 import {
 	HeadingContentType,
@@ -61,7 +61,7 @@ import { TaskStatuses } from './utils/common/task-statuses.enum';
 import { TaskHeadingLevel } from './components/ontario-task/ontario-task';
 import { TaskListHeadingLevel } from './components/ontario-task-list/ontario-task-list';
 export { ExpandCollapseButtonDetails } from './components/ontario-accordion/expandCollapseButtonDetails.interface';
-export { Accordion } from './components/ontario-accordion/accordion.interface';
+export { Accordion, AccordionChangeDetail } from './components/ontario-accordion/accordion.interface';
 export { Language } from './utils/common/language-types';
 export {
 	HeadingContentType,
@@ -118,8 +118,9 @@ export { TaskListHeadingLevel } from './components/ontario-task-list/ontario-tas
 export namespace Components {
 	interface OntarioAccordion {
 		/**
-		 * Used to include individual accordion data for the accordion component. This is passed in as an array of objects with key-value pairs.  The `content` is expecting a string, that can either be written as HTML or a just a plain string, depending on the accordionContentType.
-		 * @example 	<ontario-accordion 	name="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": "This is a string"}, 		{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"} 	]' ></ontario-accordion>
+		 * Used to include individual accordion data for the accordion component. Accepts an array of Accordion (@see Accordion) items or a JSON string of that array.  The `content` is rendered either as plain text or HTML depending on `accordionContentType`.
+		 * @see Accordion *
+		 * @example 	<ontario-accordion 	name="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": "This is a string", "isOpen": true}, 		{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"} 	]' ></ontario-accordion>
 		 */
 		accordionData: string | Accordion[];
 		/**
@@ -127,11 +128,6 @@ export namespace Components {
 		 * @example  <ontario-accordion 	name="My Accordion" 	expand-collapse-button='{ 		"expandAllSectionsLabel": "Expand All", 		"collapseAllSectionsLabel": "Collapse All" 	}' 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
 		 */
 		expandCollapseButton?: string | ExpandCollapseButtonDetails;
-		/**
-		 * Used to show whether the accordion is opened or closed.
-		 * @default false
-		 */
-		isOpen: boolean;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 		 */
@@ -523,6 +519,13 @@ export namespace Components {
 		 * @default 'default'
 		 */
 		type: OntarioFooterType;
+	}
+	interface OntarioFormContainer {
+		/**
+		 * Defines the gap (bottom margin) between slotted form elements. If no gap prop is provided, it will default to 'default'.
+		 * @default 'default'
+		 */
+		gap: 'default' | 'condensed';
 	}
 	interface OntarioHeader {
 		/**
@@ -1669,6 +1672,66 @@ export namespace Components {
 		 */
 		iconWidth: IconSize;
 	}
+	interface OntarioIconSortAlphabeticalAscending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
+	interface OntarioIconSortAlphabeticalDescending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
+	interface OntarioIconSortAscending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
+	interface OntarioIconSortDescending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
+	interface OntarioIconSortVariant {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
 	interface OntarioIconTag {
 		/**
 		 * Set the icon's colour.
@@ -2317,6 +2380,10 @@ export namespace Components {
 		value?: string;
 	}
 }
+export interface OntarioAccordionCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioAccordionElement;
+}
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioCheckboxesElement;
@@ -2354,7 +2421,57 @@ export interface OntarioTextareaCustomEvent<T> extends CustomEvent<T> {
 	target: HTMLOntarioTextareaElement;
 }
 declare global {
-	interface HTMLOntarioAccordionElement extends Components.OntarioAccordion, HTMLStencilElement {}
+	interface HTMLOntarioAccordionElementEventMap {
+		accordionChange: AccordionChangeDetail;
+	}
+	interface HTMLOntarioAccordionElement extends Components.OntarioAccordion, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioAccordionElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioAccordionElement,
+				ev: OntarioAccordionCustomEvent<HTMLOntarioAccordionElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioAccordionElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioAccordionElement,
+				ev: OntarioAccordionCustomEvent<HTMLOntarioAccordionElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
 	var HTMLOntarioAccordionElement: {
 		prototype: HTMLOntarioAccordionElement;
 		new (): HTMLOntarioAccordionElement;
@@ -2594,6 +2711,11 @@ declare global {
 	var HTMLOntarioFooterElement: {
 		prototype: HTMLOntarioFooterElement;
 		new (): HTMLOntarioFooterElement;
+	};
+	interface HTMLOntarioFormContainerElement extends Components.OntarioFormContainer, HTMLStencilElement {}
+	var HTMLOntarioFormContainerElement: {
+		prototype: HTMLOntarioFormContainerElement;
+		new (): HTMLOntarioFormContainerElement;
 	};
 	interface HTMLOntarioHeaderElement extends Components.OntarioHeader, HTMLStencilElement {}
 	var HTMLOntarioHeaderElement: {
@@ -3130,6 +3252,35 @@ declare global {
 		prototype: HTMLOntarioIconSortElement;
 		new (): HTMLOntarioIconSortElement;
 	};
+	interface HTMLOntarioIconSortAlphabeticalAscendingElement
+		extends Components.OntarioIconSortAlphabeticalAscending,
+			HTMLStencilElement {}
+	var HTMLOntarioIconSortAlphabeticalAscendingElement: {
+		prototype: HTMLOntarioIconSortAlphabeticalAscendingElement;
+		new (): HTMLOntarioIconSortAlphabeticalAscendingElement;
+	};
+	interface HTMLOntarioIconSortAlphabeticalDescendingElement
+		extends Components.OntarioIconSortAlphabeticalDescending,
+			HTMLStencilElement {}
+	var HTMLOntarioIconSortAlphabeticalDescendingElement: {
+		prototype: HTMLOntarioIconSortAlphabeticalDescendingElement;
+		new (): HTMLOntarioIconSortAlphabeticalDescendingElement;
+	};
+	interface HTMLOntarioIconSortAscendingElement extends Components.OntarioIconSortAscending, HTMLStencilElement {}
+	var HTMLOntarioIconSortAscendingElement: {
+		prototype: HTMLOntarioIconSortAscendingElement;
+		new (): HTMLOntarioIconSortAscendingElement;
+	};
+	interface HTMLOntarioIconSortDescendingElement extends Components.OntarioIconSortDescending, HTMLStencilElement {}
+	var HTMLOntarioIconSortDescendingElement: {
+		prototype: HTMLOntarioIconSortDescendingElement;
+		new (): HTMLOntarioIconSortDescendingElement;
+	};
+	interface HTMLOntarioIconSortVariantElement extends Components.OntarioIconSortVariant, HTMLStencilElement {}
+	var HTMLOntarioIconSortVariantElement: {
+		prototype: HTMLOntarioIconSortVariantElement;
+		new (): HTMLOntarioIconSortVariantElement;
+	};
 	interface HTMLOntarioIconTagElement extends Components.OntarioIconTag, HTMLStencilElement {}
 	var HTMLOntarioIconTagElement: {
 		prototype: HTMLOntarioIconTagElement;
@@ -3556,6 +3707,7 @@ declare global {
 		'ontario-dropdown-list': HTMLOntarioDropdownListElement;
 		'ontario-fieldset': HTMLOntarioFieldsetElement;
 		'ontario-footer': HTMLOntarioFooterElement;
+		'ontario-form-container': HTMLOntarioFormContainerElement;
 		'ontario-header': HTMLOntarioHeaderElement;
 		'ontario-hint-expander': HTMLOntarioHintExpanderElement;
 		'ontario-hint-text': HTMLOntarioHintTextElement;
@@ -3652,6 +3804,11 @@ declare global {
 		'ontario-icon-settings': HTMLOntarioIconSettingsElement;
 		'ontario-icon-share': HTMLOntarioIconShareElement;
 		'ontario-icon-sort': HTMLOntarioIconSortElement;
+		'ontario-icon-sort-alphabetical-ascending': HTMLOntarioIconSortAlphabeticalAscendingElement;
+		'ontario-icon-sort-alphabetical-descending': HTMLOntarioIconSortAlphabeticalDescendingElement;
+		'ontario-icon-sort-ascending': HTMLOntarioIconSortAscendingElement;
+		'ontario-icon-sort-descending': HTMLOntarioIconSortDescendingElement;
+		'ontario-icon-sort-variant': HTMLOntarioIconSortVariantElement;
 		'ontario-icon-tag': HTMLOntarioIconTagElement;
 		'ontario-icon-text-message': HTMLOntarioIconTextMessageElement;
 		'ontario-icon-timer': HTMLOntarioIconTimerElement;
@@ -3687,8 +3844,9 @@ declare global {
 declare namespace LocalJSX {
 	interface OntarioAccordion {
 		/**
-		 * Used to include individual accordion data for the accordion component. This is passed in as an array of objects with key-value pairs.  The `content` is expecting a string, that can either be written as HTML or a just a plain string, depending on the accordionContentType.
-		 * @example 	<ontario-accordion 	name="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": "This is a string"}, 		{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"} 	]' ></ontario-accordion>
+		 * Used to include individual accordion data for the accordion component. Accepts an array of Accordion (@see Accordion) items or a JSON string of that array.  The `content` is rendered either as plain text or HTML depending on `accordionContentType`.
+		 * @see Accordion *
+		 * @example 	<ontario-accordion 	name="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": "This is a string", "isOpen": true}, 		{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"} 	]' ></ontario-accordion>
 		 */
 		accordionData?: string | Accordion[];
 		/**
@@ -3697,11 +3855,6 @@ declare namespace LocalJSX {
 		 */
 		expandCollapseButton?: string | ExpandCollapseButtonDetails;
 		/**
-		 * Used to show whether the accordion is opened or closed.
-		 * @default false
-		 */
-		isOpen?: boolean;
-		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 		 */
 		language?: Language;
@@ -3709,6 +3862,10 @@ declare namespace LocalJSX {
 		 * The name of the accordion component.  This is not optional.
 		 */
 		name?: string;
+		/**
+		 * Emits when open indexes change
+		 */
+		onAccordionChange?: (event: OntarioAccordionCustomEvent<AccordionChangeDetail>) => void;
 	}
 	interface OntarioAside {
 		/**
@@ -4154,6 +4311,13 @@ declare namespace LocalJSX {
 		 * @default 'default'
 		 */
 		type?: OntarioFooterType;
+	}
+	interface OntarioFormContainer {
+		/**
+		 * Defines the gap (bottom margin) between slotted form elements. If no gap prop is provided, it will default to 'default'.
+		 * @default 'default'
+		 */
+		gap?: 'default' | 'condensed';
 	}
 	interface OntarioHeader {
 		/**
@@ -5299,6 +5463,66 @@ declare namespace LocalJSX {
 		 */
 		iconWidth?: IconSize;
 	}
+	interface OntarioIconSortAlphabeticalAscending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
+	interface OntarioIconSortAlphabeticalDescending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
+	interface OntarioIconSortAscending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
+	interface OntarioIconSortDescending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
+	interface OntarioIconSortVariant {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
 	interface OntarioIconTag {
 		/**
 		 * Set the icon's colour.
@@ -6047,6 +6271,7 @@ declare namespace LocalJSX {
 		'ontario-dropdown-list': OntarioDropdownList;
 		'ontario-fieldset': OntarioFieldset;
 		'ontario-footer': OntarioFooter;
+		'ontario-form-container': OntarioFormContainer;
 		'ontario-header': OntarioHeader;
 		'ontario-hint-expander': OntarioHintExpander;
 		'ontario-hint-text': OntarioHintText;
@@ -6143,6 +6368,11 @@ declare namespace LocalJSX {
 		'ontario-icon-settings': OntarioIconSettings;
 		'ontario-icon-share': OntarioIconShare;
 		'ontario-icon-sort': OntarioIconSort;
+		'ontario-icon-sort-alphabetical-ascending': OntarioIconSortAlphabeticalAscending;
+		'ontario-icon-sort-alphabetical-descending': OntarioIconSortAlphabeticalDescending;
+		'ontario-icon-sort-ascending': OntarioIconSortAscending;
+		'ontario-icon-sort-descending': OntarioIconSortDescending;
+		'ontario-icon-sort-variant': OntarioIconSortVariant;
 		'ontario-icon-tag': OntarioIconTag;
 		'ontario-icon-text-message': OntarioIconTextMessage;
 		'ontario-icon-timer': OntarioIconTimer;
@@ -6195,6 +6425,7 @@ declare module '@stencil/core' {
 			'ontario-dropdown-list': LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
 			'ontario-fieldset': LocalJSX.OntarioFieldset & JSXBase.HTMLAttributes<HTMLOntarioFieldsetElement>;
 			'ontario-footer': LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;
+			'ontario-form-container': LocalJSX.OntarioFormContainer & JSXBase.HTMLAttributes<HTMLOntarioFormContainerElement>;
 			'ontario-header': LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
 			'ontario-hint-expander': LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
 			/**
@@ -6343,6 +6574,16 @@ declare module '@stencil/core' {
 			'ontario-icon-settings': LocalJSX.OntarioIconSettings & JSXBase.HTMLAttributes<HTMLOntarioIconSettingsElement>;
 			'ontario-icon-share': LocalJSX.OntarioIconShare & JSXBase.HTMLAttributes<HTMLOntarioIconShareElement>;
 			'ontario-icon-sort': LocalJSX.OntarioIconSort & JSXBase.HTMLAttributes<HTMLOntarioIconSortElement>;
+			'ontario-icon-sort-alphabetical-ascending': LocalJSX.OntarioIconSortAlphabeticalAscending &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSortAlphabeticalAscendingElement>;
+			'ontario-icon-sort-alphabetical-descending': LocalJSX.OntarioIconSortAlphabeticalDescending &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSortAlphabeticalDescendingElement>;
+			'ontario-icon-sort-ascending': LocalJSX.OntarioIconSortAscending &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSortAscendingElement>;
+			'ontario-icon-sort-descending': LocalJSX.OntarioIconSortDescending &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSortDescendingElement>;
+			'ontario-icon-sort-variant': LocalJSX.OntarioIconSortVariant &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSortVariantElement>;
 			'ontario-icon-tag': LocalJSX.OntarioIconTag & JSXBase.HTMLAttributes<HTMLOntarioIconTagElement>;
 			'ontario-icon-text-message': LocalJSX.OntarioIconTextMessage &
 				JSXBase.HTMLAttributes<HTMLOntarioIconTextMessageElement>;

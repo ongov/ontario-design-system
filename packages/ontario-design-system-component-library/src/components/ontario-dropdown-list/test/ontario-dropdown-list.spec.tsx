@@ -11,7 +11,7 @@ describe('ontario-dropdown-list', () => {
 			expect(page.root).toEqualHtml(`
 				<ontario-dropdown-list element-id="dropdown-list" options='[{ "value": "dropdown-option-1", "label": "Option 1" }]'>
 				<mock:shadow-root>
-					<div class="ontario-form-group">
+					<div>
 						<label class="ontario-label" htmlfor="dropdown-list">
 							<span class="ontario-label__flag">
 							(optional)

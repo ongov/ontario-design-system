@@ -3,7 +3,7 @@ import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 import translations from '../../translations/global.i18n.json';
 
 @Component({
@@ -61,9 +61,13 @@ export class OntarioLoadingIndicator {
 		}
 	}
 
+	/**
+	 * Handles an update to the language should the user request a language update from the language toggle.
+	 * @param {CustomEvent} - The language that has been selected.
+	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
+		this.language = validateLanguage(event.detail.newLanguage);
 	}
 
 	/**
@@ -129,7 +133,12 @@ export class OntarioLoadingIndicator {
 				aria-live="assertive"
 			>
 				<div class="ontario-loading-indicator">
-					<svg class="ontario-loading-indicator__spinner" viewBox="25 25 50 50" xmlns="http://www.w3.org/2000/svg">
+					<svg
+						class="ontario-loading-indicator__spinner"
+						viewBox="25 25 50 50"
+						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true"
+					>
 						<circle cx="50" cy="50" r="20" fill="none" stroke-width="4" />
 					</svg>
 					<p>{this.message ?? this.translations.loading[`${this.language}`]}</p>

@@ -1,4 +1,4 @@
-import { h, Component, Prop, Watch, State, Listen, Element, Fragment } from '@stencil/core';
+import { h, Component, Prop, Watch, State, Listen, Element } from '@stencil/core';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { TaskStatuses, TaskBadgeColour, TaskToBadgeColour } from '../../utils/common/task-statuses.enum';
 import { validateLanguage, validateValueAgainstArray } from '../../utils/validation/validation-functions';
@@ -7,6 +7,7 @@ import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
 import translations from '../../translations/global.i18n.json';
 import { HeadingLevel } from '../../utils/common/common.interface';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 export type TaskHeadingLevel = Extract<HeadingLevel, 'h2' | 'h3' | 'h4'>;
 
 @Component({
@@ -165,12 +166,12 @@ export class OntarioTask {
 	}
 
 	/**
-	 * This listens for the `headerLanguageToggled` event sent from the language toggle when it is connected to the DOM.
-	 * It is used for changing the component language after the language toggle has been activated.
+	 * Handles an update to the language should the user request a language update from the language toggle.
+	 * @param {CustomEvent} - The language that has been selected.
 	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
+		this.language = validateLanguage(event.detail.newLanguage);
 	}
 
 	/**
@@ -254,7 +255,10 @@ export class OntarioTask {
 
 		return (
 			<div class="ontario-task__content">
-				{h(this.headingLevel, headingProps, this.label)}
+				<div class="ontario-task__text">
+					{h(this.headingLevel, headingProps, this.label)}
+					{this.renderHintText()}
+				</div>
 				{this.taskStatusState && (
 					<ontario-badge
 						class="ontario-task__badge"
@@ -270,7 +274,6 @@ export class OntarioTask {
 			</div>
 		);
 	}
-
 	/**
 	 * After the component loads, retrieve the hint text ID (if available) from the hintText component,
 	 * and set it for the `aria-describedby` attribute.
@@ -304,13 +307,6 @@ export class OntarioTask {
 		const taskStatusClass = `ontario-task-status--${this.taskStatusState.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}`;
 		const describedBy = this.internalHintText ? `hint-text--${this.taskId}` : undefined;
 
-		const taskContent = (
-			<Fragment>
-				{this.renderTaskContent()}
-				{this.renderHintText()}
-			</Fragment>
-		);
-
 		return (
 			<li
 				class={`ontario-task ${taskStatusClass}`}
@@ -321,10 +317,10 @@ export class OntarioTask {
 			>
 				{isLinkActive ? (
 					<a href={this.link} class="ontario-task__link" aria-label={this.label}>
-						{taskContent}
+						{this.renderTaskContent()}
 					</a>
 				) : (
-					<div>{taskContent}</div>
+					<div>{this.renderTaskContent()}</div>
 				)}
 			</li>
 		);

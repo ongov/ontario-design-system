@@ -225,7 +225,7 @@ exports[`ontario-table snapshot - 5 columns (numeric) should render the expected
             <tr class="ontario-table-row--highlight">
               <th scope="row">
                 Forestry
-                <img class="ontario-table--highlight-indicator" src="/assets/highlight-indicator.svg">
+                <img aria-hidden="true" class="ontario-table--highlight-indicator" src="/assets/highlight-indicator.svg">
               </th>
               <td class="ontario-table-cell--numeric">
                 182
