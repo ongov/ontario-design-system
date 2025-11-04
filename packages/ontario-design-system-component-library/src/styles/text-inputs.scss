@@ -1,0 +1,56 @@
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as global;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
+	focusPlaceholders;
+
+.ontario-input {
+	border: global.$border-size-standard solid colours.$ontario-colour-black;
+	border-radius: global.$global-radius;
+	box-sizing: border-box;
+	color: colours.$ontario-colour-black;
+	display: block;
+	font-size: 1rem;
+	font-family: fonts.$ontario-font-open-sans;
+	line-height: global.$line-height-default;
+	margin: spacing.$spacing-0;
+	max-width: global.$standard-width;
+	width: global.$full-width;
+	padding: 0.625rem spacing.$spacing-4;
+	transition: focusPlaceholders.$ontario-focus-transition;
+
+	&:focus,
+	&:active {
+		@extend %ontario-focus;
+	}
+}
+
+.ontario-input--2-char-width {
+	max-width: 8ex;
+}
+
+.ontario-input--3-char-width {
+	max-width: 10ex;
+}
+
+.ontario-input--4-char-width {
+	max-width: 12ex;
+}
+
+.ontario-input--5-char-width {
+	max-width: 14ex;
+}
+
+.ontario-input--7-char-width {
+	max-width: 17ex;
+}
+
+.ontario-input--10-char-width {
+	max-width: 23ex;
+}
+
+.ontario-input--20-char-width {
+	max-width: 41ex;
+}

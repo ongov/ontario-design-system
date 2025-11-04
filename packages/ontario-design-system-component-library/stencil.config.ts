@@ -5,13 +5,14 @@ import { angularOutputTarget } from '@stencil/angular-output-target';
 import { inlineSvg } from 'stencil-inline-svg';
 import dotEnvPlugin from 'rollup-plugin-dotenv';
 import path from 'path';
+import { NodePackageImporter } from 'sass-embedded';
 
 export const config: Config = {
 	namespace: 'ontario-design-system-components',
 	sourceMap: true,
 	plugins: [
 		sass({
-			includePaths: ['./node_modules'],
+			pkgImporter: new NodePackageImporter(),
 		}),
 		inlineSvg(),
 		dotEnvPlugin(),
@@ -63,6 +64,14 @@ export const config: Config = {
 					src: 'translations/*.i18n.json',
 					dest: 'i18n',
 				},
+				{
+					src: '../src/styles/theme.scss',
+					dest: 'styles/theme.scss',
+				},
+				{
+					src: '../src/styles/slotted-styles',
+					dest: 'styles/slotted-styles',
+				},
 			],
 		},
 		{
@@ -70,7 +79,7 @@ export const config: Config = {
 		},
 		{
 			type: 'docs-readme',
-			dir: '../app-web-components-documentation/docs/',
+			dir: '../docusaurus/docs/',
 			overwriteExisting: true,
 		},
 		{
@@ -98,6 +107,10 @@ export const config: Config = {
 				{
 					src: 'french.html',
 					dest: 'french.html',
+				},
+				{
+					src: '../src/global.scss',
+					dest: 'scss/theme.scss',
 				},
 			],
 		},

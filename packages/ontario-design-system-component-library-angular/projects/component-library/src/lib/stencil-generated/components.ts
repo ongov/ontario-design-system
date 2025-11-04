@@ -7,14 +7,14 @@ import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 import { Components } from '@ongov/ontario-design-system-component-library';
 
 @ProxyCmp({
-	inputs: ['accordionData', 'expandCollapseButton', 'isOpen', 'language', 'name'],
+	inputs: ['accordionData', 'expandCollapseButton', 'language', 'name'],
 })
 @Component({
 	selector: 'ontario-accordion',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['accordionData', 'expandCollapseButton', 'isOpen', 'language', 'name'],
+	inputs: ['accordionData', 'expandCollapseButton', 'language', 'name'],
 })
 export class OntarioAccordion {
 	protected el: HTMLOntarioAccordionElement;
@@ -25,10 +25,18 @@ export class OntarioAccordion {
 	) {
 		c.detach();
 		this.el = r.nativeElement;
+		proxyOutputs(this, this.el, ['accordionChange']);
 	}
 }
 
-export declare interface OntarioAccordion extends Components.OntarioAccordion {}
+import type { AccordionChangeDetail as IOntarioAccordionAccordionChangeDetail } from '@ongov/ontario-design-system-component-library';
+
+export declare interface OntarioAccordion extends Components.OntarioAccordion {
+	/**
+	 * Emits when open indexes change
+	 */
+	accordionChange: EventEmitter<CustomEvent<IOntarioAccordionAccordionChangeDetail>>;
+}
 
 @ProxyCmp({
 	inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
@@ -547,6 +555,30 @@ export class OntarioFooter {
 export declare interface OntarioFooter extends Components.OntarioFooter {}
 
 @ProxyCmp({
+	inputs: ['gap'],
+})
+@Component({
+	selector: 'ontario-form-container',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['gap'],
+})
+export class OntarioFormContainer {
+	protected el: HTMLOntarioFormContainerElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioFormContainer extends Components.OntarioFormContainer {}
+
+@ProxyCmp({
 	inputs: [
 		'applicationHeaderInfo',
 		'assetBasePath',
@@ -588,6 +620,11 @@ export class OntarioHeader {
 }
 
 export declare interface OntarioHeader extends Components.OntarioHeader {
+	/**
+   * This event is toggled when the menu button is pressed.
+The <ontario-header-overflow-menu> sub-component listens for this event
+To trigger the showing and hiding of the overflow menu.
+   */
 	menuButtonToggled: EventEmitter<CustomEvent<boolean>>;
 }
 
@@ -2901,6 +2938,127 @@ export class OntarioIconSort {
 }
 
 export declare interface OntarioIconSort extends Components.OntarioIconSort {}
+
+@ProxyCmp({
+	inputs: ['colour', 'iconWidth'],
+})
+@Component({
+	selector: 'ontario-icon-sort-alphabetical-ascending',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+})
+export class OntarioIconSortAlphabeticalAscending {
+	protected el: HTMLOntarioIconSortAlphabeticalAscendingElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioIconSortAlphabeticalAscending extends Components.OntarioIconSortAlphabeticalAscending {}
+
+@ProxyCmp({
+	inputs: ['colour', 'iconWidth'],
+})
+@Component({
+	selector: 'ontario-icon-sort-alphabetical-descending',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+})
+export class OntarioIconSortAlphabeticalDescending {
+	protected el: HTMLOntarioIconSortAlphabeticalDescendingElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioIconSortAlphabeticalDescending
+	extends Components.OntarioIconSortAlphabeticalDescending {}
+
+@ProxyCmp({
+	inputs: ['colour', 'iconWidth'],
+})
+@Component({
+	selector: 'ontario-icon-sort-ascending',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+})
+export class OntarioIconSortAscending {
+	protected el: HTMLOntarioIconSortAscendingElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioIconSortAscending extends Components.OntarioIconSortAscending {}
+
+@ProxyCmp({
+	inputs: ['colour', 'iconWidth'],
+})
+@Component({
+	selector: 'ontario-icon-sort-descending',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+})
+export class OntarioIconSortDescending {
+	protected el: HTMLOntarioIconSortDescendingElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioIconSortDescending extends Components.OntarioIconSortDescending {}
+
+@ProxyCmp({
+	inputs: ['colour', 'iconWidth'],
+})
+@Component({
+	selector: 'ontario-icon-sort-variant',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+})
+export class OntarioIconSortVariant {
+	protected el: HTMLOntarioIconSortVariantElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioIconSortVariant extends Components.OntarioIconSortVariant {}
 
 @ProxyCmp({
 	inputs: ['colour', 'iconWidth'],

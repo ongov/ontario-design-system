@@ -29,3 +29,26 @@ export interface Accordion extends Base {
 	 */
 	ariaLabelText: string;
 }
+
+export enum AccordionChangeDetailReasons {
+	Init = 'init',
+	ToggleOne = 'toggle-one',
+	ToggleAll = 'toggle-all',
+}
+
+/**
+ * The event detail payload emitted by the accordion component.
+ */
+export interface AccordionChangeDetail {
+	/** Array of indexes currently open */
+	openIndexes: number[];
+
+	/** The index that was just toggled (if applicable) */
+	changedIndex?: number;
+
+	/** True if triggered by expand/collapse all */
+	isBulk?: boolean;
+
+	/** Optional description of what triggered the event */
+	reason?: AccordionChangeDetailReasons;
+}

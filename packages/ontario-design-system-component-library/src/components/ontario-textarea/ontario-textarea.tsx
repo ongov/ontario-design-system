@@ -17,6 +17,7 @@ import {
 	InputInputEvent,
 } from '../../utils/events/event-handler.interface';
 import { handleInputEvent } from '../../utils/events/event-handler';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 import { default as translations } from '../../translations/global.i18n.json';
 import { ErrorMessage } from '../../utils/components/error-message/error-message';
@@ -186,9 +187,13 @@ export class OntarioTextarea implements Input {
 		}
 	}
 
+	/**
+	 * Handles an update to the language should the user request a language update from the language toggle.
+	 * @param {CustomEvent} - The language that has been selected.
+	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
+		this.language = validateLanguage(event.detail.newLanguage);
 	}
 
 	/**
@@ -330,7 +335,7 @@ export class OntarioTextarea implements Input {
 	render() {
 		const error = !!this.errorMessage;
 		return (
-			<div class={`ontario-form-group ${error ? 'ontario-textarea--error' : ''}`}>
+			<div class={error ? 'ontario-textarea--error' : ''}>
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.internalHintText && (
 					<ontario-hint-text

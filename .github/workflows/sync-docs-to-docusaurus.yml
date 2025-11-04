@@ -1,0 +1,92 @@
+name: Sync Docs to External Docusaurus Repo
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: true
+        type: string
+      docs-artifacts-name:
+        required: true
+        type: string
+
+jobs:
+  sync-docs:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: docs-update
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout monorepo
+        uses: actions/checkout@v4
+
+      - name: Checkout Docusaurus repo
+        uses: actions/checkout@v4
+        with:
+          repository: ongov/design-system-developer-documentation-site
+          token: ${{ secrets.GH_TOKEN }}
+          ref: main
+          path: packages/docusaurus
+
+      # Install pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      # Setup Node.js
+      - name: Use Node.js ${{ inputs.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
+
+      # Install dependencies for Docusaurus
+      - name: Install Docusaurus dependencies
+        working-directory: packages/docusaurus
+        run: pnpm install --frozen-lockfile
+
+      - name: Clean Docusaurus docs (preserve _category_.json; delete empty dirs)
+        shell: bash
+        working-directory: packages/docusaurus
+        run: |
+          # Delete all files except _category_.json, then remove empty directories
+          find docs -depth -mindepth 1 \
+            \( -type f ! -name '_category_.json' -delete \) -o \
+            \( -type d -empty -delete \)
+
+      - name: Download docs artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.docs-artifacts-name }}
+          path: packages/docusaurus/docs/
+
+      # Since this follows the build job, the latest tag is the latest version of npm packages.
+      - name: Get latest tag
+        id: get_tag
+        working-directory: .
+        run: |
+          tag=$(git describe --tags --abbrev=0)
+          echo "version=${tag}" >> $GITHUB_OUTPUT
+
+      - name: Update package.json in Docusaurus
+        working-directory: packages/docusaurus
+        run: pnpm add @ongov/ontario-design-system-component-library-react@${{ steps.get_tag.outputs.version }}
+
+      - name: Version Docusaurus docs
+        working-directory: packages/docusaurus
+        run: npx docusaurus docs:version ${{ steps.get_tag.outputs.version }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.DOCS_REPO_TOKEN }}
+          path: packages/docusaurus
+          commit-message: 'docs: update for ${{ steps.get_tag.outputs.version }}'
+          title: 'docs: update for ${{ steps.get_tag.outputs.version }}'
+          body: |
+            This PR updates the documentation site for version `${{ steps.get_tag.outputs.version }}`.
+          branch: docs/update-${{ steps.get_tag.outputs.version }}
+          labels: docs-update

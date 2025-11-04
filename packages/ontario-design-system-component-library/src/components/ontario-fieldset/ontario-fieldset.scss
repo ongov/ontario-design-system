@@ -1,2 +1,38 @@
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_form.component.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
+
+@use '../../styles/fieldsets.scss';
+@use '../../styles/labels.scss';
+@use '../../styles/text-inputs.scss';
+
+@use '../../utils/common/common.form-elements.scss' as common-form-elements;
+
+// Note: If additional form elements need to be targeted for gaps, update the $form-elements list in the common.form-elements.scss file.
+
+/**
+ * The following classes define the gap (bottom margin) between slotted form elements.
+ * - `40`: For default form layouts (40px)
+ * - `16`: For condensed form layouts (16px)
+ *
+ * This ensures consistent vertical gap between form elements when they are grouped inside a fieldset.
+ */
+.ontario-fieldset {
+	&--gap-40 {
+		@each $element in common-form-elements.$form-elements {
+			::slotted(#{$element}:not(:last-child)) {
+				margin-bottom: spacing.$spacing-7;
+				display: block;
+			}
+		}
+	}
+
+	&--gap-16 {
+		@each $element in common-form-elements.$form-elements {
+			::slotted(#{$element}:not(:last-child)) {
+				margin-bottom: spacing.$spacing-4;
+				display: block;
+			}
+		}
+	}
+}

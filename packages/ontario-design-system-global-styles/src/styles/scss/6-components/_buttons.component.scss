@@ -1,0 +1,5 @@
+@use '../1-variables/spacing.variables' as spacing;
+
+.ontario-button {
+	margin: spacing.$spacing-0 (spacing.$spacing-4 + spacing.$spacing-3) spacing.$spacing-5 spacing.$spacing-0;
+}

@@ -17,6 +17,7 @@ import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { getImageAssetSrcPath } from '../../utils/helper/assets';
 
 import translations from '../../translations/global.i18n.json';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 @Component({
 	tag: 'ontario-footer',
@@ -90,9 +91,13 @@ export class OntarioFooter {
 		}
 	}
 
+	/**
+	 * Handles an update to the language should the user request a language update from the language toggle.
+	 * @param {CustomEvent} - The language that has been selected.
+	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
+		this.language = validateLanguage(event.detail.newLanguage);
 	}
 
 	@Watch('footerLinks')

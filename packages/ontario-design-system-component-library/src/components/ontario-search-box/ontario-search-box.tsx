@@ -16,7 +16,7 @@ import {
 	InputInputEvent,
 } from '../../utils/events/event-handler.interface';
 
-import { default as translations } from '../../translations/global.i18n.json';
+import translations from '../../translations/global.i18n.json';
 
 @Component({
 	tag: 'ontario-search-box',
@@ -174,6 +174,8 @@ export class OntarioSearchBox {
 	 */
 	@State() hintTextId: string | null | undefined;
 
+	@State() translations: any = translations;
+
 	/**
 	 * Watch for changes to the `hintText` prop.
 	 *
@@ -198,7 +200,7 @@ export class OntarioSearchBox {
 		this.captionState = new InputCaption(
 			this.element.tagName,
 			newValue,
-			translations,
+			this.translations,
 			this.language,
 			false,
 			this.required,
@@ -339,7 +341,8 @@ export class OntarioSearchBox {
 						id="ontario-search-box__submit"
 						onClick={(e) => this.handleSearch(e)}
 					>
-						<span innerHTML={OntarioIconSearch} />
+						<span class="ontario-show-for-sr">{this.translations.header.submit[`${this.language}`]}</span>
+						<span innerHTML={OntarioIconSearch} aria-hidden="true" />
 					</button>
 				</div>
 			</form>

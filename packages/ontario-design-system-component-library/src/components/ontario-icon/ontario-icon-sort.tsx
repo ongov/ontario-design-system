@@ -38,9 +38,7 @@ export class OntarioIconSort implements IconWithColour {
 				.addRegularText('on')
 				.addMonospaceText(' <ontario-icon-sort> ')
 				.addRegularText(
-					`${
-						isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'
-					}; only a positive number is allowed. The default size of`,
+					`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`,
 				)
 				.addMonospaceText(' 24px ')
 				.addRegularText('was assumed.')
@@ -124,15 +122,8 @@ export class OntarioIconSort implements IconWithColour {
 				class={`ontario-icon ontario-icon--${this.iconColourState} ontario-icon--width-${this.iconWidthState}`}
 				style={{ width: `${this.iconWidthState}px` }}
 			>
-				<svg
-					class="svg-icon"
-					style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}
-					role="img"
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 24 24"
-					id="sort"
-				>
-					<path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" />
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="sort">
+					<path d="M18 21L14 17H17V7H14L18 3L22 7H19V17H22M2 19V17H12V19M2 13V11H9V13M2 7V5H6V7H2Z" />
 				</svg>
 			</div>
 		);
