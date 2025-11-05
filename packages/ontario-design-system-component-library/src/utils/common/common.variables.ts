@@ -1,8 +1,17 @@
-import {
-	OntarioBreakpointsSmall,
-	OntarioBreakpointsMedium,
-	OntarioBreakpointsLarge,
-} from '@ongov/ontario-design-system-design-tokens/dist/ts/tokens';
+// import {
+// 	OntarioBreakpointsSmall,
+// 	OntarioBreakpointsMedium,
+// 	OntarioBreakpointsLarge,
+// } from '@ongov/ontario-design-system-design-tokens/dist/ts/tokens';
+
+/**
+ * TODO: Investigate why importing tokens above is leading to compiler errors with Rollup.
+ *
+ * Temp fix for now is to define them seperately in this file.
+ */
+const OntarioBreakpointsSmall = '20em';
+const OntarioBreakpointsMedium = '40em';
+const OntarioBreakpointsLarge = '73em';
 
 export const minimumGridColumns = 1;
 export const maximumGridColumns = 12;
