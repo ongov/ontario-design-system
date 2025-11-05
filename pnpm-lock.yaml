@@ -361,13 +361,13 @@ importers:
   packages/ontario-design-system-complete-styles:
     dependencies:
       '@ongov/ontario-design-system-component-library':
-        specifier: 6.0.0-alpha.3
+        specifier: workspace:*
         version: link:../ontario-design-system-component-library
       '@ongov/ontario-design-system-design-tokens':
-        specifier: 6.0.0-alpha.1
+        specifier: workspace:*
         version: link:../ontario-design-system-design-tokens
       '@ongov/ontario-design-system-global-styles':
-        specifier: 6.0.0-alpha.1
+        specifier: workspace:*
         version: link:../ontario-design-system-global-styles
     devDependencies:
       glob:
@@ -407,10 +407,10 @@ importers:
   packages/ontario-design-system-component-library:
     dependencies:
       '@ongov/ontario-design-system-design-tokens':
-        specifier: ^5.0.0
-        version: 5.0.0
+        specifier: workspace:*
+        version: link:../ontario-design-system-design-tokens
       '@ongov/ontario-design-system-global-styles':
-        specifier: 6.0.0-alpha.1
+        specifier: workspace:*
         version: link:../ontario-design-system-global-styles
       '@stencil/core':
         specifier: ^4.33.1
@@ -540,10 +540,10 @@ importers:
         specifier: ^18.2.11
         version: 18.2.13(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.13(@angular/animations@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1)
       '@ongov/ontario-design-system-component-library':
-        specifier: 6.0.0-alpha.3
+        specifier: workspace:*
         version: link:../ontario-design-system-component-library
       '@ongov/ontario-design-system-global-styles':
-        specifier: 6.0.0-alpha.1
+        specifier: workspace:*
         version: link:../ontario-design-system-global-styles
       copyfiles:
         specifier: ^2.4.1
@@ -589,7 +589,7 @@ importers:
   packages/ontario-design-system-component-library-react:
     dependencies:
       '@ongov/ontario-design-system-component-library':
-        specifier: 6.0.0-alpha.3
+        specifier: workspace:*
         version: link:../ontario-design-system-component-library
       '@stencil/react-output-target':
         specifier: ^1.0.2
@@ -641,7 +641,7 @@ importers:
   packages/ontario-design-system-global-styles:
     devDependencies:
       '@ongov/ontario-design-system-design-tokens':
-        specifier: 6.0.0-alpha.1
+        specifier: workspace:*
         version: link:../ontario-design-system-design-tokens
       gulp:
         specifier: ^5.0.0
@@ -4380,10 +4380,6 @@ packages:
   '@octokit/types@9.3.2':
     resolution:
       { integrity: sha512-D4iHGTdAnEEVsB8fl95m1hiz7D5YiRdQ9b/OEb3BYRVwbLsGHcRVPz+u+BgRLNk0Q0/4iZCBqDN96j2XNxfXrA== }
-
-  '@ongov/ontario-design-system-design-tokens@5.0.0':
-    resolution:
-      { integrity: sha512-ZOHUlPt0KO4CoKe+/HtASjE7GR7ZP5nWc47dcritKTvyKKlKlfdORIXRJn36OvDfxnWexWHyAq8pY9pwFHbhsQ== }
 
   '@parcel/watcher-android-arm64@2.5.1':
     resolution:
@@ -22967,8 +22963,6 @@ snapshots:
   '@octokit/types@9.3.2':
     dependencies:
       '@octokit/openapi-types': 18.1.1
-
-  '@ongov/ontario-design-system-design-tokens@5.0.0': {}
 
   '@parcel/watcher-android-arm64@2.5.1':
     optional: true
