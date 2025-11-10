@@ -8,7 +8,7 @@ import { convertStringToBoolean } from '../../utils/helper/utils';
 	styleUrl: 'ontario-header-overflow-menu.scss',
 	shadow: true,
 })
-export class OntarioHeaderApplicationMenu {
+export class OntarioHeaderOverflowMenu {
 	@Element() el: HTMLElement;
 
 	/**

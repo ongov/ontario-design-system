@@ -18,7 +18,7 @@ exports[`ontario-header-overflow-menu should render menu items correctly 1`] = `
           </li>
         </ul>
       </div>
-      <div aria-live="polite" class="ontario-visually-hidden" id="aria-live-region"></div>
+      <div aria-live="polite" class="ontario-show-for-sr" id="aria-live-region"></div>
     </nav>
   </template>
 </ontario-header-overflow-menu>

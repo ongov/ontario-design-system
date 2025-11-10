@@ -1,10 +1,10 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { OntarioHeaderApplicationMenu } from '../ontario-header-overflow-menu';
+import { OntarioHeaderOverflowMenu } from '../ontario-header-overflow-menu';
 
 describe('ontario-header-overflow-menu', () => {
 	it('should render without errors', async () => {
 		const page = await newSpecPage({
-			components: [OntarioHeaderApplicationMenu],
+			components: [OntarioHeaderOverflowMenu],
 			html: `<ontario-header-overflow-menu menu-items='[{"title":"Link 1","href":"/link-1"},{"title":"Link 2","href":"/link-2"}]'></ontario-header-overflow-menu>`,
 		});
 
@@ -18,7 +18,7 @@ describe('ontario-header-overflow-menu', () => {
 		]);
 
 		const page = await newSpecPage({
-			components: [OntarioHeaderApplicationMenu],
+			components: [OntarioHeaderOverflowMenu],
 			html: `<ontario-header-overflow-menu menu-items='${menuItems}'></ontario-header-overflow-menu>`,
 		});
 
@@ -29,7 +29,7 @@ describe('ontario-header-overflow-menu', () => {
 		const menuItems = JSON.stringify([{ title: 'Link 1', href: '/link-1', linkIsActive: false }]);
 
 		const page = await newSpecPage({
-			components: [OntarioHeaderApplicationMenu],
+			components: [OntarioHeaderOverflowMenu],
 			html: `<ontario-header-overflow-menu menu-items='${menuItems}'></ontario-header-overflow-menu>`,
 		});
 
@@ -49,7 +49,7 @@ describe('ontario-header-overflow-menu', () => {
 		const menuItems = JSON.stringify([{ title: 'Link 1', href: '/link-1', linkIsActive: false }]);
 
 		const page = await newSpecPage({
-			components: [OntarioHeaderApplicationMenu],
+			components: [OntarioHeaderOverflowMenu],
 			html: `<ontario-header-overflow-menu menu-items='${menuItems}'></ontario-header-overflow-menu>`,
 		});
 
@@ -70,7 +70,7 @@ describe('ontario-header-overflow-menu', () => {
 		const menuItems = JSON.stringify([{ title: 'Link 1', href: '/link-1', linkIsActive: false }]);
 
 		const page = await newSpecPage({
-			components: [OntarioHeaderApplicationMenu],
+			components: [OntarioHeaderOverflowMenu],
 			html: `<ontario-header-overflow-menu menu-items='${menuItems}'></ontario-header-overflow-menu>`,
 		});
 
