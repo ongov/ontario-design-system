@@ -12,7 +12,7 @@ jobs:
     needs: []
     uses: ./.github/workflows/build.yml # Path to the reusable workflow file
     with:
-      node-version: 20
+      node-version: 22
       build-artifacts-name: 'build-artifacts'
       docs-artifacts-name: 'docs-artifacts'
 
@@ -24,7 +24,7 @@ jobs:
       actions: read
       checks: write
     with:
-      node-version: 20
+      node-version: 22
       build-artifacts-name: ${{ needs.build.outputs.build-artifacts-name }}
 
   publish-packages: # Job defined in a separate file (publish-packages.yml)
@@ -32,7 +32,7 @@ jobs:
     uses: ./.github/workflows/publish-packages.yml # Path to the reusable workflow file
     if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
     with:
-      node-version: 20
+      node-version: 22
       build-artifacts-name: ${{ needs.build.outputs.build-artifacts-name }}
     secrets: inherit
     permissions:
@@ -46,6 +46,6 @@ jobs:
     uses: ./.github/workflows/sync-docs-to-docusaurus.yml
     if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
     with:
-      node-version: 20
+      node-version: 22
       docs-artifacts-name: ${{ needs.build.outputs.docs-artifacts-name }}
     secrets: inherit
