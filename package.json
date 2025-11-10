@@ -40,7 +40,7 @@
 		"prettier": "^3.3.3",
 		"pretty-quick": "^4.0.0",
 		"semantic-release": "^24.1.2",
-		"semantic-release-lerna": "^2.9.0",
+		"semantic-release-lerna": "^2.13.0",
 		"ts-node": "^10.9.2"
 	},
 	"optionalDependencies": {
