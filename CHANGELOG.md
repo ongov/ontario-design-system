@@ -1,3 +1,86 @@
+# 6.0.0-alpha.4 (2025-11-12)
+
+- **@ongov/ontario-design-system-complete-styles:** fix(complete-styles)!: update Gulp tasks to handle pkg Sass imports def4550
+- **@ongov/ontario-design-system-component-library:** refactor(accordion)!: remove global isOpen prop, use per-item isOpen for initial state 774ab3f
+- **@ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** fix(global-styles)!: update gulp-sass and enable NodePackageImporter 6877ffd
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library:** added hover state style to language toggle 5a2c251
+- **@ongov/ontario-design-system-component-library:** added hover state style to language toggle 6d45d42
+- **@ongov/ontario-design-system-component-library:** added missing styles for ontario-radio button 6b4f8b4
+- **@ongov/ontario-design-system-component-library:** adds aria-hidden attribute to multiple decorative icons across components 9aa7bfa
+- **@ongov/ontario-design-system-component-library:** fix broken loader export for angular component library e79092e
+- **@ongov/ontario-design-system-component-library:** refactors initializeFormContainerSettings function in fieldset component dacd942
+- **@ongov/ontario-design-system-component-library:** removes paragraph tags around slots in critical alert and page alert components 1e0c2e9
+- **@ongov/ontario-design-system-component-library:** replace zero with a spacing variable edd1671
+- **@ongov/ontario-design-system-component-library:** update HeaderLanguageToggleEventDetails type in accordion language toggle add2693
+- **@ongov/ontario-design-system-component-library:** updated paths for the language toggle event ac8a773
+- added hover state style to language toggle ([#133](undefined/ongov/ontario-design-system/issues/133)) 92f1b5f
+- adds html and string options for hint text and hint expander 2136659
+- **angular:** roll back typescript version to be compatible for angular compiler 5552f20
+- **ci:** fix JUnit publish task, update snapshots, update docker-compose to include build for apps 8a0ad33
+- **component-library:** refactor SCSS imports to use pkg namespace 5cbb64f
+- **components-documentation:** rollback docusaurus devdeps b/c we're not at react19 860a2b5
+- **jest:** move svgTransform to .cjs to support require() in ESM context 049181a
+- **nextjs:** update to use label prop for dynamic button text 8952a73
+- **ontario-task:** updates ontario-task to set default task status properly, fixes broken unit tests 3945269
+- **srr:** improve hydration safety across compnents via default props, validation and error handling a6f18a7
+- **srr:** improve hydration safety across compnents via default props, validation and error handling 30394b8
+- **srr:** Optimize Components for SSR (Pt 1) ([#52](undefined/ongov/ontario-design-system/issues/52)) 526f7df
+- **ssr:** improves SSR optimizations across components 7e4c371
+- **SSR:** Optimize Components for SSR (Pt 2) ([#60](undefined/ongov/ontario-design-system/issues/60)) e1083a7
+- **tsconfig:** downgrade TypeScript target and lib to ES2017 for compatibility f779a68
+- updates docker image, reruns snapshot tests, adds new fonts to nextjs build 4e2863e
+
+### Build System
+
+- **@ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** fix react-component-library build errors 1e05e9a
+
+### Features
+
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** create ontario-form-container component and update naming d5200b7
+- **@ongov/ontario-design-system-component-library-react:** added documentation for Next.js support f3c9553
+- **@ongov/ontario-design-system-component-library:** add spacing config, snapshots, and logic for form container integration f9378ee
+- **@ongov/ontario-design-system-component-library:** adds new sort icon svgs, generates new sort icon components, fixes icon generator script 61095eb
+- **accordion:** add AccordionChangeDetailReasons enum and update README docs e2b3f6c
+- **accordion:** emit accordionChange with full context (open indexes, changed index, reason) 347046e
+- added consistent naming conventions 0ef72a5
+- added documentation for Next.js support ([#59](undefined/ongov/ontario-design-system/issues/59)) 4182dd9
+- added link for ontario-card 33a5099
+- added more colour types for ontario badge 8939ceb
+- added more tests for heading leel, highlight colour, and heading content type 766ca8a
+- added more tests for highligh colour and heading type 4edd8f9
+- added playwright to the repo e085722
+- added test pace for ontario-card 39c3ad7
+- added test page for ontario-callout 391c5e0
+- added test page for ontario-critical-alert bf05b52
+- added testing page for aside df92f59
+- added testing page for badge cff01a3
+- added testing page for badge a924974
+- added testing page for ontario-card-collection 429fa66
+- added testing page for ontario-search-box b816757
+- adds hint-text test page with hint content type variants f060126
+- adds ontario-hint-expander page with hint content type variants 6d46bdf
+- adds page alert testing page with type props a6a6b0e
+- adds test page for ontario-input component 50a914a
+- adds textarea page with multiple variants to nextjs vrt poc cf72996
+- creating test page for ontario-aside 7e1be5b
+
+### BREAKING CHANGES
+
+- **@ongov/ontario-design-system-component-library:** Ontario accordion component `isOpen` global prop has been removed. To set the
+  `isOpen` status of an accordion section, add the `isOpen` prop to the
+  `accordionData` prop list.
+- **@ongov/ontario-design-system-complete-styles:** Style imports from the Complete Styles package now use
+  the `pkg:` prefix and must be resolved using `NodePackageImporter()`
+  when compiling Sass in external projects.
+- **@ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** Style imports from the Global Styles package now use
+  the `pkg:` prefix and must be resolved using `NodePackageImporter()`
+  when compiling Sass in external projects.
+- **@ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** `component` folder in the component-library moved from `dist`
+  to the root of the package
+
 # 6.0.0-alpha.3 (2025-09-08)
 
 ### Bug Fixes
