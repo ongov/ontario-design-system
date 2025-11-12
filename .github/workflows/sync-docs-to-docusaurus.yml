@@ -46,7 +46,7 @@ jobs:
       # Install dependencies for Docusaurus
       - name: Install Docusaurus dependencies
         working-directory: packages/docusaurus
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --lockfile-dir . --ignore-workspace
 
       - name: Clean Docusaurus docs (preserve _category_.json; delete empty dirs)
         shell: bash
@@ -73,7 +73,7 @@ jobs:
 
       - name: Update package.json in Docusaurus
         working-directory: packages/docusaurus
-        run: pnpm add @ongov/ontario-design-system-component-library-react@${{ steps.get_tag.outputs.version }}
+        run: pnpm --ignore-workspace --lockfile-dir . add @ongov/ontario-design-system-component-library-react@${{ steps.get_tag.outputs.version }}
 
       - name: Version Docusaurus docs
         working-directory: packages/docusaurus
