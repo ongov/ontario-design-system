@@ -91,9 +91,7 @@ export class OntarioHeaderOverflowMenu {
 			this.menuItemState = this.menuItems;
 		}
 
-		const activeLinkSet = this.menuItemState.some((menuItem) =>
-			menuItem?.linkIsActive ? menuItem.linkIsActive === true : false,
-		);
+		const activeLinkSet = this.menuItemState?.some((menuItem) => menuItem?.linkIsActive) ?? [];
 
 		// If no active link is set, try to guess and set the active link based
 		// on if the href is included in the URL.
@@ -234,7 +232,7 @@ export class OntarioHeaderOverflowMenu {
 			>
 				<div class="ontario-application-navigation__container">
 					<ul>
-						{this.menuItemState.map((item: MenuItem) => {
+						{this.menuItemState?.map((item: MenuItem) => {
 							return generateMenuItem(item.href, item.title, item.linkIsActive);
 						})}
 					</ul>
