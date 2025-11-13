@@ -207,9 +207,10 @@ Add these scripts to automate asset copying:
 - Wrap browser-only logic in `useEffect`.
 - Avoid dynamic content during SSR.
 - **Important**: Using `'use client'` in a component forces the component to be rendered client-side, effectively disabling SSR for that component. This should be used sparingly, as it overrides the SSR benefits.
+
   ```tsx
   'use client';
-  
+
   useEffect(() => {
   	// Safe browser-only logic
   }, []);

@@ -24,6 +24,7 @@ import { OntarioDropdownList as OntarioDropdownListElement, defineCustomElement 
 import { OntarioFieldset as OntarioFieldsetElement, defineCustomElement as defineOntarioFieldset } from "@ongov/ontario-design-system-component-library/components/ontario-fieldset.js";
 import { OntarioFooter as OntarioFooterElement, defineCustomElement as defineOntarioFooter } from "@ongov/ontario-design-system-component-library/components/ontario-footer.js";
 import { OntarioFormContainer as OntarioFormContainerElement, defineCustomElement as defineOntarioFormContainer } from "@ongov/ontario-design-system-component-library/components/ontario-form-container.js";
+import { OntarioHeaderOverflowMenu as OntarioHeaderOverflowMenuElement, defineCustomElement as defineOntarioHeaderOverflowMenu } from "@ongov/ontario-design-system-component-library/components/ontario-header-overflow-menu.js";
 import { OntarioHeader as OntarioHeaderElement, defineCustomElement as defineOntarioHeader } from "@ongov/ontario-design-system-component-library/components/ontario-header.js";
 import { OntarioHintExpander as OntarioHintExpanderElement, defineCustomElement as defineOntarioHintExpander } from "@ongov/ontario-design-system-component-library/components/ontario-hint-expander.js";
 import { OntarioHintText as OntarioHintTextElement, defineCustomElement as defineOntarioHintText } from "@ongov/ontario-design-system-component-library/components/ontario-hint-text.js";
@@ -373,15 +374,26 @@ export const OntarioFormContainer: StencilReactComponent<OntarioFormContainerEle
     defineCustomElement: defineOntarioFormContainer
 });
 
-export type OntarioHeaderEvents = NonNullable<unknown>;
+export type OntarioHeaderEvents = { onMenuButtonToggled: EventName<CustomEvent<boolean>> };
 
 export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioHeaderEvents> = /*@__PURE__*/ createComponent<OntarioHeaderElement, OntarioHeaderEvents>({
     tagName: 'ontario-header',
     elementClass: OntarioHeaderElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: {} as OntarioHeaderEvents,
+    events: { onMenuButtonToggled: 'menuButtonToggled' } as OntarioHeaderEvents,
     defineCustomElement: defineOntarioHeader
+});
+
+export type OntarioHeaderOverflowMenuEvents = NonNullable<unknown>;
+
+export const OntarioHeaderOverflowMenu: StencilReactComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents> = /*@__PURE__*/ createComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents>({
+    tagName: 'ontario-header-overflow-menu',
+    elementClass: OntarioHeaderOverflowMenuElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioHeaderOverflowMenuEvents,
+    defineCustomElement: defineOntarioHeaderOverflowMenu
 });
 
 export type OntarioHintExpanderEvents = { onToggleExpanderEvent: EventName<OntarioHintExpanderCustomEvent<MouseEvent | KeyboardEvent>> };

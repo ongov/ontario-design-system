@@ -1,18 +1,15 @@
 import { DrupalMenuMachineName } from './ontario-header.enum';
 
-export interface MenuItem {
-	title: string;
-	href: string;
-	linkIsActive?: boolean;
-	onClickHandler?: (event: Event) => void;
-}
-
 export interface ApplicationHeaderInfo {
 	title: string;
 	href?: string;
-	maxSubheaderDesktopLinks?: number;
-	maxSubheaderTabletLinks?: number;
-	maxSubheaderMobileLinks?: number;
+	maxSubheaderLinks?: maxSubheaderLinks;
+}
+
+interface maxSubheaderLinks {
+	desktop?: number;
+	tablet?: number;
+	mobile?: number;
 }
 
 export interface LanguageToggleOptions {

@@ -1,0 +1,103 @@
+@use 'sass:math';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as
+	globalFunctions;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
+	focusPlaceholders;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/5-layout/_grid.layout.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
+@use '../../styles/header.scss';
+
+$navigation-link-bg--hover: #e5e5e5;
+$ontario-navigation-link-padding-vertical: globalFunctions.px-to-rem(10);
+$ontario-header-overflow-menu-link-font-size: globalFunctions.px-to-rem(18);
+$border-width-1: 1px;
+$border-width-6: 6px;
+
+.ontario-application-navigation {
+	@extend %ontario-application-navigation;
+
+	ul {
+		list-style: none;
+		padding: spacing.$spacing-2 spacing.$spacing-0;
+		margin: spacing.$spacing-0;
+		border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
+
+		@media screen and (min-width: breakpoints.$medium-breakpoint) {
+			border-bottom: none;
+		}
+	}
+
+	li {
+		border-top: $border-width-1 solid colours.$ontario-greyscale-20;
+		padding: spacing.$spacing-0;
+		margin-bottom: spacing.$spacing-0;
+
+		&:last-of-type {
+			border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
+		}
+	}
+
+	a {
+		color: colours.$ontario-colour-black;
+		display: block;
+		font-size: $ontario-header-overflow-menu-link-font-size;
+		font-weight: fontWeights.$ontario-font-weights-semi-bold;
+		font-family: fonts.$ontario-font-open-sans;
+		text-decoration: none;
+		padding: $ontario-navigation-link-padding-vertical spacing.$spacing-5;
+
+		&:hover {
+			text-decoration: underline;
+			background-color: $navigation-link-bg--hover;
+		}
+
+		&:active {
+			text-decoration: underline;
+			background-color: colours.$ontario-greyscale-20;
+		}
+
+		&:focus,
+		&:active {
+			@extend %ontario-focus;
+			box-shadow: focusPlaceholders.$ontario-focus-box-shadow inset;
+		}
+
+		&.ontario-link--active {
+			border-left: $border-width-6 solid colours.$ontario-colour-black;
+			background-color: colours.$ontario-greyscale-5;
+		}
+	}
+}
+
+.ontario-application-navigation__container {
+	@extend %ontario-application-navigation__container;
+}
+
+.ontario-application-navigation.ontario-navigation--open .ontario-application-navigation__container {
+	background: colours.$ontario-colour-white;
+	visibility: visible;
+	transform: translateY(0);
+	transition: transform 0.4s ease-in-out;
+
+	@media screen and (min-width: breakpoints.$medium-breakpoint) {
+		transition: none;
+		display: block;
+	}
+}
+
+.ontario-application-navigation.ontario-navigation--open {
+	background: colours.$ontario-colour-white;
+	z-index: zIndex.$ontario-z-index-above-high;
+
+	@media screen and (max-width: breakpoints.$medium-breakpoint) {
+		z-index: zIndex.$ontario-z-index-above-medium; // behind header for animation purposes
+	}
+}

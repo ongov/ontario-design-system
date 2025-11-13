@@ -25,6 +25,7 @@ import { OntarioDropdownList as OntarioDropdownListElement } from "@ongov/ontari
 import { OntarioFieldset as OntarioFieldsetElement } from "@ongov/ontario-design-system-component-library/components/ontario-fieldset.js";
 import { OntarioFooter as OntarioFooterElement } from "@ongov/ontario-design-system-component-library/components/ontario-footer.js";
 import { OntarioFormContainer as OntarioFormContainerElement } from "@ongov/ontario-design-system-component-library/components/ontario-form-container.js";
+import { OntarioHeaderOverflowMenu as OntarioHeaderOverflowMenuElement } from "@ongov/ontario-design-system-component-library/components/ontario-header-overflow-menu.js";
 import { OntarioHeader as OntarioHeaderElement } from "@ongov/ontario-design-system-component-library/components/ontario-header.js";
 import { OntarioHintExpander as OntarioHintExpanderElement } from "@ongov/ontario-design-system-component-library/components/ontario-hint-expander.js";
 import { OntarioHintText as OntarioHintTextElement } from "@ongov/ontario-design-system-component-library/components/ontario-hint-text.js";
@@ -419,7 +420,7 @@ export const OntarioFormContainer: StencilReactComponent<OntarioFormContainerEle
     serializeShadowRoot
 });
 
-export type OntarioHeaderEvents = NonNullable<unknown>;
+export type OntarioHeaderEvents = { onMenuButtonToggled: EventName<CustomEvent<boolean>> };
 
 export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioHeaderEvents> = /*@__PURE__*/ createComponent<OntarioHeaderElement, OntarioHeaderEvents>({
     tagName: 'ontario-header',
@@ -433,6 +434,15 @@ export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioH
         language: 'language',
         assetBasePath: 'asset-base-path'
     },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
+
+export type OntarioHeaderOverflowMenuEvents = NonNullable<unknown>;
+
+export const OntarioHeaderOverflowMenu: StencilReactComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents> = /*@__PURE__*/ createComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents>({
+    tagName: 'ontario-header-overflow-menu',
+    properties: { menuItems: 'menu-items' },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
     serializeShadowRoot
 });
