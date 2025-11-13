@@ -1,4 +1,4 @@
-import { newSpecPage } from '@stencil/core/testing';
+import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { OntarioHeader } from '../ontario-header';
 import OntarioHeaderDefaultData from '../ontario-header-default-data.json';
 import { OntarioHeaderOverflowMenu } from '../../ontario-header-overflow-menu/ontario-header-overflow-menu';
@@ -24,20 +24,26 @@ globalThis.MutationObserver = class {
 } as typeof MutationObserver;
 
 describe('ontario-header', () => {
-	it('should render', async () => {
-		const page = await newSpecPage({
+	let page: SpecPage;
+	let host: HTMLOntarioHeaderElement;
+	let hostShadow: ShadowRoot;
+
+	beforeEach(async () => {
+		page = await newSpecPage({
 			components: [OntarioHeader],
 			html: `<ontario-header></ontario-header>`,
 		});
 
+		host = page.root as HTMLOntarioHeaderElement;
+		hostShadow = host.shadowRoot as ShadowRoot;
+
 		await page.waitForChanges();
+	});
 
-		const host = page.root as HTMLOntarioHeaderElement;
-
+	it('should render', async () => {
 		expect(host).not.toBeNull();
 		expect(host.tagName).toBe('ONTARIO-HEADER');
 
-		const hostShadow = host.shadowRoot as ShadowRoot;
 		expect(hostShadow).not.toBeNull();
 	});
 
@@ -85,17 +91,9 @@ describe('ontario-header', () => {
 	});
 
 	it('should render the ontario header', async () => {
-		const page = await newSpecPage({
-			components: [OntarioHeader],
-			html: `<ontario-header
-				type="ontario"
-			></ontario-header>`,
-		});
+		host.type = 'ontario';
 
 		await page.waitForChanges();
-
-		const host = page.root as HTMLOntarioHeaderElement;
-		const hostShadow = host.shadowRoot as ShadowRoot;
 
 		expect(hostShadow).not.toBeNull();
 		expect(hostShadow.querySelectorAll('.ontario-header').length).toBe(1);
@@ -104,15 +102,17 @@ describe('ontario-header', () => {
 	it('should render the ontario header menu items', async () => {
 		const page = await newSpecPage({
 			components: [OntarioHeader, OntarioHeaderOverflowMenu],
-			html: `<ontario-header
-				type="ontario"
-			></ontario-header>`,
+			html: `<ontario-header></ontario-header>`,
 		});
 
 		await page.waitForChanges();
 
 		const host = page.root as HTMLOntarioHeaderElement;
 		const hostShadow = host.shadowRoot as ShadowRoot;
+
+		host.type = 'ontario';
+
+		await page.waitForChanges();
 
 		// Find the child component inside the shadow root
 		const childOverflowMenu = hostShadow.querySelector(
@@ -139,17 +139,9 @@ describe('ontario-header', () => {
 	});
 
 	it('should render the application header', async () => {
-		const page = await newSpecPage({
-			components: [OntarioHeader],
-			html: `<ontario-header
-				type="application"
-			></ontario-header>`,
-		});
+		host.type = 'application';
 
 		await page.waitForChanges();
-
-		const host = page.root as HTMLOntarioHeaderElement;
-		const hostShadow = host.shadowRoot as ShadowRoot;
 
 		expect(hostShadow).not.toBeNull();
 		expect(hostShadow.querySelectorAll('.ontario-application-header').length).toBe(1);
@@ -158,14 +150,13 @@ describe('ontario-header', () => {
 	it('should render the application header menu items', async () => {
 		const page = await newSpecPage({
 			components: [OntarioHeader, OntarioHeaderOverflowMenu],
-			html: `<ontario-header
-				type="application"
-			></ontario-header>`,
+			html: `<ontario-header></ontario-header>`,
 		});
 
 		await page.waitForChanges();
 
 		const host = page.root as HTMLOntarioHeaderElement;
+		host.type = 'application';
 		host.menuItems = [
 			{ title: 'Item 1', href: '/item-1' },
 			{ title: 'Item 2', href: '/item-2' },
@@ -201,17 +192,9 @@ describe('ontario-header', () => {
 	});
 
 	it('should render the ServiceOntario header', async () => {
-		const page = await newSpecPage({
-			components: [OntarioHeader],
-			html: `<ontario-header
-				type="serviceOntario"
-			></ontario-header>`,
-		});
+		host.type = 'serviceOntario';
 
 		await page.waitForChanges();
-
-		const host = page.root as HTMLOntarioHeaderElement;
-		const hostShadow = host.shadowRoot as ShadowRoot;
 
 		expect(hostShadow).not.toBeNull();
 		expect(hostShadow?.querySelectorAll('.ontario-service-subheader').length).toBe(1);
