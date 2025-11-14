@@ -44,7 +44,7 @@
 		]
 	},
 	"dependencies": {
-		"@ongov/ontario-design-system-component-library": "6.0.0-alpha.4",
+		"@ongov/ontario-design-system-component-library": "workspace:*",
 		"@stencil/react-output-target": "^1.0.2"
 	},
 	"devDependencies": {

@@ -73,7 +73,8 @@
 		"test:unit": "stencil test --spec"
 	},
 	"dependencies": {
-		"@ongov/ontario-design-system-global-styles": "6.0.0-alpha.4",
+		"@ongov/ontario-design-system-design-tokens": "workspace:*",
+		"@ongov/ontario-design-system-global-styles": "workspace:*",
 		"@stencil/core": "^4.33.1",
 		"dotenv": "^16.4.5",
 		"uuid": "^11.0.5"

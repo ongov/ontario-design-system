@@ -320,13 +320,13 @@ importers:
   packages/ontario-design-system-complete-styles:
     dependencies:
       '@ongov/ontario-design-system-component-library':
-        specifier: 6.0.0-alpha.4
+        specifier: workspace:*
         version: link:../ontario-design-system-component-library
       '@ongov/ontario-design-system-design-tokens':
-        specifier: 6.0.0-alpha.4
+        specifier: workspace:*
         version: link:../ontario-design-system-design-tokens
       '@ongov/ontario-design-system-global-styles':
-        specifier: 6.0.0-alpha.4
+        specifier: workspace:*
         version: link:../ontario-design-system-global-styles
     devDependencies:
       glob:
@@ -365,8 +365,11 @@ importers:
 
   packages/ontario-design-system-component-library:
     dependencies:
+      '@ongov/ontario-design-system-design-tokens':
+        specifier: workspace:*
+        version: link:../ontario-design-system-design-tokens
       '@ongov/ontario-design-system-global-styles':
-        specifier: 6.0.0-alpha.4
+        specifier: workspace:*
         version: link:../ontario-design-system-global-styles
       '@stencil/core':
         specifier: ^4.33.1
@@ -496,10 +499,10 @@ importers:
         specifier: ^18.2.11
         version: 18.2.13(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.13(@angular/animations@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1)
       '@ongov/ontario-design-system-component-library':
-        specifier: 6.0.0-alpha.4
+        specifier: workspace:*
         version: link:../ontario-design-system-component-library
       '@ongov/ontario-design-system-global-styles':
-        specifier: 6.0.0-alpha.4
+        specifier: workspace:*
         version: link:../ontario-design-system-global-styles
       copyfiles:
         specifier: ^2.4.1
@@ -545,7 +548,7 @@ importers:
   packages/ontario-design-system-component-library-react:
     dependencies:
       '@ongov/ontario-design-system-component-library':
-        specifier: 6.0.0-alpha.4
+        specifier: workspace:*
         version: link:../ontario-design-system-component-library
       '@stencil/react-output-target':
         specifier: ^1.0.2
@@ -597,7 +600,7 @@ importers:
   packages/ontario-design-system-global-styles:
     devDependencies:
       '@ongov/ontario-design-system-design-tokens':
-        specifier: 6.0.0-alpha.4
+        specifier: workspace:*
         version: link:../ontario-design-system-design-tokens
       gulp:
         specifier: ^5.0.0
@@ -12828,7 +12831,6 @@ packages:
     engines: { node: '>=0.6.0', teleport: '>=0.2.0' }
     deprecated: |-
       You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
-
       (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
 
   qjobs@1.2.0:

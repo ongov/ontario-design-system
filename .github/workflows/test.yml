@@ -26,6 +26,12 @@ jobs:
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
 
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.build-artifacts-name }} # Artifact name (must match upload name)
+          path: ./packages
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 

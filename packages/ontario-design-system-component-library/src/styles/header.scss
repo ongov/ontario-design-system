@@ -1,0 +1,103 @@
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as
+	globalFunctions;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
+	focusPlaceholders;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables' as lineHeights;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
+
+$box-shadow-blur-radius-12: 12px;
+$font-size-18: globalFunctions.px-to-rem(18);
+$navigation-max-width: 72rem;
+$ontario-navigation-container-min-width: globalFunctions.px-to-rem(290); //18.125rem
+$ontario-header-button-font-size: $font-size-18;
+$ontario-header-button-line-height: 1.5;
+$ontario-header-button-with-outline-padding-top-bottom: globalFunctions.px-to-rem(6);
+$header-height: globalFunctions.px-to-rem(50);
+
+// General Header Styles
+%ontario-header,
+%ontario-application-header,
+%ontario-service-header {
+	position: relative;
+	display: flex;
+	align-items: center;
+	background-color: colours.$ontario-colour-black;
+	color: colours.$ontario-colour-white;
+	height: $header-height;
+	z-index: zIndex.$ontario-z-index-above-high;
+}
+
+// Common Navigation Container
+%ontario-navigation,
+%ontario-application-navigation {
+	position: absolute;
+	width: globalVariables.$full-width;
+
+	@media screen and (min-width: breakpoints.$medium-breakpoint) {
+		position: relative;
+		max-width: $navigation-max-width;
+		width: auto;
+		margin: spacing.$spacing-0 auto;
+	}
+}
+
+%ontario-application-navigation__container {
+	background: colours.$ontario-colour-white;
+	position: absolute;
+	transform: translateY(-100%);
+	width: 100%;
+	visibility: hidden;
+	z-index: zIndex.$ontario-z-index-above-high;
+
+	@media screen and (min-width: breakpoints.$medium-breakpoint) {
+		box-shadow: 0 globalVariables.$global-radius $box-shadow-blur-radius-12 rgba(0, 0, 0, 0.3);
+		border-radius: globalVariables.$global-radius;
+		display: none;
+		position: absolute;
+		right: spacing.$spacing-4;
+		top: calc(100% - #{spacing.$spacing-2});
+		min-width: $ontario-navigation-container-min-width; // this value is to control the min-width size the dropdown navigation list can be
+		max-width: 30%;
+		z-index: zIndex.$ontario-z-index-above-high;
+	}
+}
+
+%ontario-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.6);
+	width: globalVariables.$full-width;
+	z-index: zIndex.$ontario-z-index-above-medium;
+}
+
+%ontario-header-button {
+	background-color: colours.$ontario-colour-black;
+	border: none;
+	border-radius: globalVariables.$global-radius;
+	color: colours.$ontario-colour-white;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	font-size: $ontario-header-button-font-size;
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	font-family: fonts.$ontario-font-open-sans;
+	height: globalVariables.$standard-input-height;
+	line-height: $ontario-header-button-line-height;
+	text-align: center;
+	text-decoration: none;
+}
+
+%ontario-header-button--with-outline {
+	border: globalVariables.$border-size-standard solid colours.$ontario-colour-white;
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-4;
+	padding: $ontario-header-button-with-outline-padding-top-bottom spacing.$spacing-4;
+}

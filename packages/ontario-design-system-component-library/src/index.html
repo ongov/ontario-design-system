@@ -15,13 +15,15 @@
 		</ontario-critical-alert>
 		<ontario-header
 			id="ontarioHeader"
-			type="serviceOntario"
+			type="application"
 			application-header-info='{
 				"title": "Application name",
 				"href": "/application-homepage",
-				"maxSubheaderDesktopLinks": "3",
-				"maxSubheaderTabletLinks": "2",
-				"maxSubheaderMobileLinks": "1"
+				"maxSubheaderLinks": {
+					"desktop": "3",
+					"tablet": "2",
+					"mobile": "1"
+				}
 			}'
 			language-toggle-options='{
 				"englishLink": "/",
