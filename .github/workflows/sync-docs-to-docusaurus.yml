@@ -80,7 +80,7 @@ jobs:
 
       - name: Version Docusaurus docs
         working-directory: packages/docusaurus
-        run: npx docusaurus docs:version ${{ steps.get_tag.outputs.version }}
+        run: pnpm exec docusaurus docs:version ${{ steps.get_tag.outputs.version }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
