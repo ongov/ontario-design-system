@@ -1,0 +1,13 @@
+diff --git a/lib/success.js b/lib/success.js
+index 9448c8eb541211afb33a080166792404e167f5e6..48246f29a2162ce0abc0d044112de94bab39becb 100644
+--- a/lib/success.js
++++ b/lib/success.js
+@@ -457,7 +457,7 @@ function buildAssociatedPRsQuery(shas) {
+       repository(owner: $owner, name: $repo) {
+         ${shas
+           .map((sha) => {
+-            return `commit${sha.slice(0, 6)}: object(oid: "${sha}") {
++            return `commit${sha.slice(0, 12)}: object(oid: "${sha}") {
+             ...on Commit {
+               oid
+               associatedPullRequests(first: 100) {

@@ -20,6 +20,9 @@ jobs:
     steps:
       - name: Checkout monorepo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history to ensure tagged commits are available
+          fetch-tags: true # Ensure tags are fetched as well
 
       - name: Checkout Docusaurus repo
         uses: actions/checkout@v4
@@ -46,7 +49,7 @@ jobs:
       # Install dependencies for Docusaurus
       - name: Install Docusaurus dependencies
         working-directory: packages/docusaurus
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --lockfile-dir . --ignore-workspace
 
       - name: Clean Docusaurus docs (preserve _category_.json; delete empty dirs)
         shell: bash
@@ -73,16 +76,16 @@ jobs:
 
       - name: Update package.json in Docusaurus
         working-directory: packages/docusaurus
-        run: pnpm add @ongov/ontario-design-system-component-library-react@${{ steps.get_tag.outputs.version }}
+        run: pnpm --ignore-workspace --lockfile-dir . add @ongov/ontario-design-system-component-library-react@${{ steps.get_tag.outputs.version }}
 
       - name: Version Docusaurus docs
         working-directory: packages/docusaurus
-        run: npx docusaurus docs:version ${{ steps.get_tag.outputs.version }}
+        run: pnpm exec docusaurus docs:version ${{ steps.get_tag.outputs.version }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.DOCS_REPO_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           path: packages/docusaurus
           commit-message: 'docs: update for ${{ steps.get_tag.outputs.version }}'
           title: 'docs: update for ${{ steps.get_tag.outputs.version }}'
