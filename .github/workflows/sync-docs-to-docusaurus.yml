@@ -85,7 +85,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.DOCS_REPO_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           path: packages/docusaurus
           commit-message: 'docs: update for ${{ steps.get_tag.outputs.version }}'
           title: 'docs: update for ${{ steps.get_tag.outputs.version }}'
