@@ -10,25 +10,108 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
 	focusPlaceholders;
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as fontSize;
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables';
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/5-layout/_grid.layout.scss';
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
 @use '../../styles/header.scss';
 
+// Variables
 $navigation-link-bg--hover: #e5e5e5;
-$ontario-navigation-link-padding-vertical: globalFunctions.px-to-rem(10);
 $ontario-header-overflow-menu-link-font-size: globalFunctions.px-to-rem(18);
 $border-width-1: 1px;
 $border-width-6: 6px;
+$mobile-menu-tab-line-height: 2.1875rem;
 
+// Shared mixins
+@mixin menu-list-styles {
+	list-style: none;
+	padding: spacing.$spacing-2 spacing.$spacing-0;
+	margin: spacing.$spacing-0;
+	border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
+}
+
+@mixin menu-list-item-styles {
+	border-top: $border-width-1 solid colours.$ontario-greyscale-20;
+	padding: spacing.$spacing-0;
+	margin-bottom: spacing.$spacing-0;
+
+	&:last-of-type {
+		border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
+	}
+}
+
+@mixin menu-link-base-styles {
+	color: colours.$ontario-colour-black;
+	font-size: $ontario-header-overflow-menu-link-font-size;
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	font-family: fonts.$ontario-font-open-sans;
+	text-decoration: none;
+	padding: spacing.$spacing-3 spacing.$spacing-5;
+	display: block;
+}
+
+@mixin menu-link-interactive-styles {
+	&:hover {
+		background-color: $navigation-link-bg--hover;
+
+		.ontario-menu-item__title {
+			text-decoration: underline;
+		}
+	}
+
+	&:active {
+		background-color: colours.$ontario-greyscale-20;
+
+		.ontario-menu-item__title {
+			text-decoration: underline;
+		}
+	}
+
+	&:focus,
+	&:active {
+		@extend %ontario-focus;
+		box-shadow: focusPlaceholders.$ontario-focus-box-shadow inset;
+	}
+
+	&.ontario-link--active {
+		border-left: $border-width-6 solid colours.$ontario-colour-black;
+		background-color: colours.$ontario-greyscale-5;
+	}
+}
+
+// Base navigation container
 .ontario-application-navigation {
 	@extend %ontario-application-navigation;
 
+	&__container {
+		@extend %ontario-application-navigation__container;
+	}
+
+	// Open state
+	&.ontario-navigation--open {
+		background: colours.$ontario-colour-white;
+		z-index: zIndex.$ontario-z-index-above-high;
+
+		.ontario-application-navigation__container {
+			background: colours.$ontario-colour-white;
+			visibility: visible;
+			transform: translateY(0);
+			transition: transform 0.4s ease-in-out;
+
+			@media screen and (min-width: breakpoints.$medium-breakpoint) {
+				transition: none;
+				display: block;
+			}
+		}
+
+		@media screen and (max-width: breakpoints.$medium-breakpoint) {
+			z-index: zIndex.$ontario-z-index-above-medium;
+		}
+	}
+
 	ul {
-		list-style: none;
-		padding: spacing.$spacing-2 spacing.$spacing-0;
-		margin: spacing.$spacing-0;
-		border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
+		@include menu-list-styles;
 
 		@media screen and (min-width: breakpoints.$medium-breakpoint) {
 			border-bottom: none;
@@ -36,68 +119,115 @@ $border-width-6: 6px;
 	}
 
 	li {
-		border-top: $border-width-1 solid colours.$ontario-greyscale-20;
-		padding: spacing.$spacing-0;
-		margin-bottom: spacing.$spacing-0;
-
-		&:last-of-type {
-			border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
-		}
+		@include menu-list-item-styles;
 	}
 
 	a {
+		@include menu-link-base-styles;
+		@include menu-link-interactive-styles;
+	}
+}
+
+// Menu item components
+.ontario-menu-item {
+	display: flex !important;
+	flex-direction: column !important;
+
+	&__description {
+		font-size: fontSize.$ontario-font-size-small;
+		font-weight: fontWeights.$ontario-font-weights-normal;
+		margin-top: spacing.$spacing-2;
+		margin-bottom: spacing.$spacing-0;
+		line-height: globalFunctions.px-to-rem(21);
+		text-decoration: none !important;
+	}
+}
+
+// Menu item with icon variant
+.ontario-header-navigation__menu-item--with-icon {
+	a {
+		padding: spacing.$spacing-3 spacing.$spacing-5;
+		padding-left: globalFunctions.px-to-rem(20);
+	}
+
+	svg {
+		margin-right: spacing.$spacing-2;
+	}
+}
+
+// Mobile tabbed interface
+.ontario-mobile-menu__tabs {
+	display: flex;
+	background: colours.$ontario-colour-white;
+	border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
+}
+
+.ontario-mobile-menu__tab {
+	flex: 1;
+	font-family: fonts.$ontario-font-raleway-modified;
+	font-size: fontSize.$ontario-font-size-large;
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	padding: spacing.$spacing-4 spacing.$spacing-6;
+	background: colours.$ontario-greyscale-70;
+	border: none;
+	cursor: pointer;
+	color: colours.$ontario-colour-white;
+	line-height: $mobile-menu-tab-line-height;
+
+	&:hover {
+		background: colours.$ontario-greyscale-60;
+	}
+
+	&:active,
+	&:focus {
+		box-shadow: 0 0 0 4px colours.$ontario-colour-focus inset;
+	}
+
+	&[aria-selected='true'] {
+		background: colours.$ontario-colour-white;
 		color: colours.$ontario-colour-black;
-		display: block;
-		font-size: $ontario-header-overflow-menu-link-font-size;
-		font-weight: fontWeights.$ontario-font-weights-semi-bold;
-		font-family: fonts.$ontario-font-open-sans;
-		text-decoration: none;
-		padding: $ontario-navigation-link-padding-vertical spacing.$spacing-5;
-
-		&:hover {
-			text-decoration: underline;
-			background-color: $navigation-link-bg--hover;
-		}
-
-		&:active {
-			text-decoration: underline;
-			background-color: colours.$ontario-greyscale-20;
-		}
-
-		&:focus,
-		&:active {
-			@extend %ontario-focus;
-			box-shadow: focusPlaceholders.$ontario-focus-box-shadow inset;
-		}
-
-		&.ontario-link--active {
-			border-left: $border-width-6 solid colours.$ontario-colour-black;
-			background-color: colours.$ontario-greyscale-5;
-		}
 	}
 }
 
-.ontario-application-navigation__container {
-	@extend %ontario-application-navigation__container;
+.ontario-mobile-menu__panel {
+	background: colours.$ontario-colour-white;
+
+	&[hidden] {
+		display: none !important;
+	}
+
+	&--active {
+		display: block;
+	}
+
+	ul {
+		@include menu-list-styles;
+	}
+
+	li {
+		@include menu-list-item-styles;
+	}
+
+	a {
+		@include menu-link-base-styles;
+		@include menu-link-interactive-styles;
+	}
 }
 
-.ontario-application-navigation.ontario-navigation--open .ontario-application-navigation__container {
-	background: colours.$ontario-colour-white;
-	visibility: visible;
-	transform: translateY(0);
-	transition: transform 0.4s ease-in-out;
-
-	@media screen and (min-width: breakpoints.$medium-breakpoint) {
-		transition: none;
+@media screen and (min-width: breakpoints.$medium-breakpoint) {
+	.ontario-navigation,
+	.ontario-sign-in-navigation {
 		display: block;
 	}
 }
 
-.ontario-application-navigation.ontario-navigation--open {
-	background: colours.$ontario-colour-white;
-	z-index: zIndex.$ontario-z-index-above-high;
+@media screen and (max-width: breakpoints.$medium-breakpoint) {
+	.ontario-navigation,
+	.ontario-sign-in-navigation {
+		display: none;
+	}
 
-	@media screen and (max-width: breakpoints.$medium-breakpoint) {
-		z-index: zIndex.$ontario-z-index-above-medium; // behind header for animation purposes
+	.ontario-application-header .ontario-navigation {
+		display: block;
 	}
 }

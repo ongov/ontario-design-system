@@ -4,6 +4,7 @@ import {
 	ApplicationHeaderInfo,
 	LanguageToggleOptions,
 	OntarioMenuItems,
+	OntarioSignInMenuItems,
 	OntarioHeaderType,
 } from './ontario-header.interface';
 
@@ -11,6 +12,7 @@ import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.s
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
 import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
 import OntarioIconSearchWhite from '../ontario-icon/assets/ontario-icon-search-white.svg';
+import OntarioIconDropdownArrow from '../ontario-icon/assets/ontario-icon-dropdown-arrow.svg';
 import OntarioHeaderDefaultData from './ontario-header-default-data.json';
 
 import { Language } from '../../utils/common/language-types';
@@ -69,6 +71,19 @@ export class OntarioHeader {
 	 * The items that will go inside the menu.
 	 */
 	@Prop() menuItems: MenuItem[] | string;
+
+	/**
+	 * Information pertaining to the sign-in menu items for the Ontario header.
+	 */
+	@Prop() signInMenuItems?: OntarioSignInMenuItems[] | string;
+
+	/**
+	 * A custom function to pass to the sign-in button.
+	 */
+	@Prop() customSignInToggle?: (event: globalThis.Event) => void;
+
+	@State() private signInMenuItemsState: OntarioSignInMenuItems[];
+	@State() signInToggled: boolean = false;
 
 	/**
 	 * Option to disable fetching of the dynamic menu from the Ontario Header API
@@ -248,6 +263,32 @@ export class OntarioHeader {
 		}
 	}
 
+	@Watch('signInMenuItems')
+	parseSignInMenuItems() {
+		try {
+			if (!Array.isArray(this.signInMenuItems) && typeof this.signInMenuItems === 'string') {
+				this.signInMenuItemsState = JSON.parse(this.signInMenuItems);
+			} else if (Array.isArray(this.signInMenuItems)) {
+				this.signInMenuItemsState = this.signInMenuItems;
+			} else {
+				this.signInMenuItemsState = [];
+			}
+		} catch (error) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addRegularText(' failed to parse props for ')
+				.addMonospaceText('<ontario-header>')
+				.addRegularText(' in ')
+				.addMonospaceText('parseSignInMenuItems()')
+				.addRegularText(' method \n ')
+				.addMonospaceText(error.stack)
+				.printMessage(ConsoleType.Error);
+
+			this.signInMenuItemsState = [];
+		}
+	}
+
 	@Watch('languageToggleOptions')
 	private parseLanguage() {
 		const languageToggleOptions = this.languageToggleOptions;
@@ -281,10 +322,17 @@ export class OntarioHeader {
 
 	@Listen('keydown', { target: 'window' })
 	handleKeyDown(event: KeyboardEvent) {
-		if (this.menuToggled && event.key === 'Escape') {
-			this.menuToggled = false;
-			this.menuButtonToggled.emit(this.menuToggled);
-			this.focusMenuButton();
+		if (event.key === 'Escape') {
+			if (this.menuToggled) {
+				this.menuToggled = false;
+				this.menuButtonToggled.emit(this.menuToggled);
+				this.focusMenuButton();
+			}
+			if (this.signInToggled) {
+				this.signInToggled = false;
+				this.menuButtonToggled.emit(this.signInToggled);
+				this.signInButton.focus();
+			}
 		}
 	}
 
@@ -293,13 +341,28 @@ export class OntarioHeader {
 	 */
 	@Listen('click', { capture: true, target: 'window' })
 	handleClick(event: any) {
-		// if the button is clicked, return
+		// Check if clicking inside overflow menu
+		const overflowMenu = this.el.shadowRoot?.querySelector('ontario-header-overflow-menu');
+		if (overflowMenu && event.composedPath().includes(overflowMenu)) {
+			return;
+		}
+
+		// if the sign-in button is clicked, return
+		if (this.signInButton && event.composedPath().includes(this.signInButton)) {
+			return;
+		}
+
+		// if the menu button is clicked, return
 		if (event.composedPath().includes(this.menuButton)) {
 			return;
 		}
 
-		// If the click was outside the current component, do the following
-		if (this.menuToggled) this.menuToggled = !this.menuToggled;
+		// Close both menus when clicking outside
+		if (this.menuToggled || this.signInToggled) {
+			this.menuToggled = false;
+			this.signInToggled = false;
+			this.menuButtonToggled.emit(false);
+		}
 	}
 
 	/**
@@ -351,6 +414,11 @@ export class OntarioHeader {
 	 * Logic to handle the menu toggling
 	 */
 	handlemenuToggled = () => {
+		// Close sign-in menu if it's open
+		if (this.signInToggled) {
+			this.signInToggled = false;
+		}
+
 		this.menuToggled = !this.menuToggled;
 		this.menuButtonToggled.emit(this.menuToggled);
 		this.searchToggle = undefined;
@@ -361,6 +429,20 @@ export class OntarioHeader {
 	 */
 	handleSearchToggle = () => {
 		this.searchToggle = !this.searchToggle;
+	};
+
+	/**
+	 * Logic to handle the sign-in toggling
+	 */
+	handleSignInToggled = () => {
+		// Close main menu if it's open
+		if (this.menuToggled) {
+			this.menuToggled = false;
+		}
+
+		this.signInToggled = !this.signInToggled;
+		// Emit the menuButtonToggled event for either dropdown
+		this.menuButtonToggled.emit(this.signInToggled);
 	};
 
 	/**
@@ -451,9 +533,23 @@ export class OntarioHeader {
 			return;
 		}
 
+		// Don't render menu button for Service Ontario headers
+		if (this.type === 'serviceOntario') {
+			return;
+		}
+
+		const isApplicationHeader = this.type === 'application';
+		const isOntarioHeader = this.type === 'ontario';
+		const isMobileOrTablet = this.breakpointDeviceState === 'mobile' || this.breakpointDeviceState === 'tablet';
+		const isApplicationOrMobileOrTablet = isApplicationHeader || isMobileOrTablet;
+
 		return (
 			<button
-				class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline"
+				class={`ontario-header__menu-toggle ontario-header-button ${
+					isOntarioHeader ? 'ontario-header-button--desktop' : ''
+				} ${isApplicationOrMobileOrTablet ? 'ontario-header-button--with-outline' : ''} ${
+					this.menuToggled ? 'ontario-header-button--toggled-open' : ''
+				}`}
 				id={this.type === 'ontario' ? 'ontario-header-menu-toggler' : 'ontario-application-header-menu-toggler'}
 				aria-controls="ontario-navigation"
 				aria-label={
@@ -464,13 +560,63 @@ export class OntarioHeader {
 				aria-expanded={this.menuToggled ? 'true' : 'false'}
 				onClick={this.handlemenuToggled}
 				type="button"
-				ref={(el) => (this.menuButton = el as HTMLInputElement)}
+				ref={(el) => (this.menuButton = el as HTMLButtonElement)}
 			>
+				{isApplicationOrMobileOrTablet ? (
+					<div class="ontario-header__menu-toggle-content">
+						<span
+							class="ontario-header__icon-container ontario-header__icon-container--white"
+							innerHTML={this.menuToggled ? OntarioIconClose : OntarioIconMenu}
+						/>
+						<span>Menu</span>
+					</div>
+				) : (
+					<div class="ontario-header__menu-toggle-content">
+						<span>Menu</span>
+						<span
+							class={`ontario-header__icon-container ontario-header__icon-container--white ${
+								this.menuToggled ? 'ontario-header__icon-container--rotated' : ''
+							}`}
+							innerHTML={OntarioIconDropdownArrow}
+						/>
+					</div>
+				)}
+			</button>
+		);
+	}
+
+	/**
+	 * This function generates the sign-in button for the ontario header component.
+	 */
+	private renderSignInButton() {
+		if (!this.signInMenuItemsState || this.signInMenuItemsState.length === 0) {
+			return;
+		}
+
+		// Only render sign-in button on desktop
+		if (this.breakpointDeviceState !== 'desktop') {
+			return;
+		}
+
+		return (
+			<button
+				class={`ontario-header__sign-in-toggle ontario-header-button ontario-header-button--desktop ontario-header-button--without-outline ontario-hide-for-small-only ontario-hide-for-medium-only ${
+					this.signInToggled ? 'ontario-header-button--toggled-open' : ''
+				}`}
+				id="ontario-header-sign-in-toggler"
+				aria-controls="ontario-sign-in-navigation"
+				aria-expanded={this.signInToggled ? 'true' : 'false'}
+				onClick={this.handleSignInToggled}
+				type="button"
+				ref={(el) => (this.signInButton = el as HTMLElement)}
+			>
+				<span>Sign In</span>
 				<span
-					class="ontario-header__icon-container"
-					innerHTML={this.menuToggled ? OntarioIconClose : OntarioIconMenu}
+					class={`ontario-header__icon-container ontario-header__icon-container--white ${
+						this.signInToggled ? 'ontario-header__icon-container--rotated' : ''
+					}`}
+					innerHTML={OntarioIconDropdownArrow}
 				/>
-				<span>Menu</span>
 			</button>
 		);
 	}
@@ -514,6 +660,7 @@ export class OntarioHeader {
 	componentWillLoad() {
 		this.parseApplicationHeaderInfo();
 		this.parseMenuItems();
+		this.parseSignInMenuItems();
 		this.parseLanguage();
 	}
 
@@ -545,6 +692,7 @@ export class OntarioHeader {
 	 */
 	header!: HTMLElement;
 	menuButton!: HTMLElement;
+	signInButton!: HTMLElement;
 	searchBar!: HTMLInputElement;
 	searchButton!: HTMLInputElement;
 
@@ -581,7 +729,7 @@ export class OntarioHeader {
 									name="searchForm"
 									id="ontario-search-form-container"
 									onSubmit={this.handleSubmit}
-									class="ontario-header__search-container ontario-columns ontario-small-10 ontario-medium-offset-3 ontario-medium-6 ontario-large-offset-0 ontario-large-6"
+									class="ontario-header__search-container ontario-columns ontario-small-10 ontario-medium-6 ontario-large-5"
 									novalidate
 								>
 									<label htmlFor="ontario-search-input-field" class="ontario-show-for-sr">
@@ -612,7 +760,7 @@ export class OntarioHeader {
 								</form>
 
 								{/* Ontario header language toggle + menu button */}
-								<div class="ontario-header__nav-right-container ontario-columns ontario-small-10 ontario-medium-8 ontario-large-3">
+								<div class="ontario-header__nav-right-container ontario-columns ontario-small-10 ontario-medium-8 ontario-large-5">
 									<ontario-language-toggle
 										url={this.language === 'en' ? this.languageState?.frenchLink : this.languageState?.englishLink}
 										size="default"
@@ -630,6 +778,7 @@ export class OntarioHeader {
 											{this.translations.header.search[`${this.language}`]}
 										</span>
 									</button>
+									{this.renderSignInButton()}
 									{this.renderMenuButton('ontario-header')}
 								</div>
 								<div class="ontario-header__search-close-container ontario-columns ontario-small-2 ontario-medium-3">
@@ -650,8 +799,36 @@ export class OntarioHeader {
 						</header>
 
 						{/* Ontario header navigation */}
-						{/* Minor styling differences in placement of ontario.ca menu and application menu */}
-						<ontario-header-overflow-menu menuItems={this.menuItemState}></ontario-header-overflow-menu>
+						{/* Show overflow menu on all devices, but with different props based on breakpoint */}
+						{/* Ontario header navigation */}
+						<ontario-header-overflow-menu
+							menuItems={
+								this.signInToggled
+									? this.signInMenuItemsState?.map((item) => ({
+											href: item.href,
+											title: item.title,
+											linkIsActive: false,
+											description: item.description,
+										})) || []
+									: this.menuItemState
+							}
+							signInMenuItems={
+								this.breakpointDeviceState === 'mobile' || this.breakpointDeviceState === 'tablet'
+									? this.signInMenuItemsState
+									: undefined
+							}
+							headerType={
+								this.breakpointDeviceState === 'mobile' || this.breakpointDeviceState === 'tablet'
+									? this.type
+									: undefined
+							}
+							breakpointState={
+								this.breakpointDeviceState === 'mobile' || this.breakpointDeviceState === 'tablet'
+									? this.breakpointDeviceState
+									: undefined
+							}
+							menuButtonRef={this.signInToggled ? this.signInButton : this.menuButton}
+						></ontario-header-overflow-menu>
 					</div>
 					{this.menuToggled && <div class="ontario-hide-for-large ontario-overlay" />}
 				</div>
@@ -712,7 +889,7 @@ export class OntarioHeader {
 													{this.menuItemState
 														?.slice(0, this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState])
 														.map((item) =>
-															generateMenuItem(item.href, item.title, item.linkIsActive, '', item.onClickHandler),
+															generateMenuItem(item.href, item.title, item.linkIsActive ?? false, item.description),
 														)}
 												</ul>
 											)}

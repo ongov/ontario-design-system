@@ -583,10 +583,12 @@ export declare interface OntarioFormContainer extends Components.OntarioFormCont
 		'applicationHeaderInfo',
 		'assetBasePath',
 		'customLanguageToggle',
+		'customSignInToggle',
 		'disableDynamicMenu',
 		'language',
 		'languageToggleOptions',
 		'menuItems',
+		'signInMenuItems',
 		'type',
 	],
 })
@@ -599,10 +601,12 @@ export declare interface OntarioFormContainer extends Components.OntarioFormCont
 		'applicationHeaderInfo',
 		'assetBasePath',
 		'customLanguageToggle',
+		'customSignInToggle',
 		'disableDynamicMenu',
 		'language',
 		'languageToggleOptions',
 		'menuItems',
+		'signInMenuItems',
 		'type',
 	],
 })
@@ -629,14 +633,14 @@ To trigger the showing and hiding of the overflow menu.
 }
 
 @ProxyCmp({
-	inputs: ['menuItems'],
+	inputs: ['breakpointState', 'headerType', 'menuButtonRef', 'menuItems', 'signInMenuItems'],
 })
 @Component({
 	selector: 'ontario-header-overflow-menu',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['menuItems'],
+	inputs: ['breakpointState', 'headerType', 'menuButtonRef', 'menuItems', 'signInMenuItems'],
 })
 export class OntarioHeaderOverflowMenu {
 	protected el: HTMLOntarioHeaderOverflowMenuElement;
@@ -1380,14 +1384,14 @@ export class OntarioIconDownload {
 export declare interface OntarioIconDownload extends Components.OntarioIconDownload {}
 
 @ProxyCmp({
-	inputs: ['iconWidth'],
+	inputs: ['colour', 'iconWidth'],
 })
 @Component({
 	selector: 'ontario-icon-dropdown-arrow',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['iconWidth'],
+	inputs: ['colour', 'iconWidth'],
 })
 export class OntarioIconDropdownArrow {
 	protected el: HTMLOntarioIconDropdownArrowElement;

@@ -46,7 +46,6 @@ $border-width-2: 2px;
 /* Header Buttons */
 .ontario-header-button {
 	@extend %ontario-header-button;
-	border: $border-width-2 solid colours.$ontario-colour-white;
 	padding: spacing.$spacing-2 spacing.$spacing-4;
 
 	&:hover,
@@ -230,16 +229,14 @@ $border-width-2: 2px;
 		padding-left: spacing.$spacing-2;
 		padding-right: spacing.$spacing-2;
 	}
-
-	svg {
-		margin-right: $menu-button-icon-margin-right;
-	}
 }
 
 /* Icon Container */
 .ontario-header__icon-container {
 	display: flex;
 	align-items: center;
+	width: spacing.$spacing-8;
+	height: spacing.$spacing-8;
 }
 
 .ontario-application-header__lang-toggle {

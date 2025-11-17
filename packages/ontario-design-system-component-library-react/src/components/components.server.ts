@@ -428,6 +428,8 @@ export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioH
         type: 'type',
         applicationHeaderInfo: 'application-header-info',
         menuItems: 'menu-items',
+        signInMenuItems: 'sign-in-menu-items',
+        customSignInToggle: 'custom-sign-in-toggle',
         disableDynamicMenu: 'disable-dynamic-menu',
         languageToggleOptions: 'language-toggle-options',
         customLanguageToggle: 'custom-language-toggle',
@@ -442,7 +444,13 @@ export type OntarioHeaderOverflowMenuEvents = NonNullable<unknown>;
 
 export const OntarioHeaderOverflowMenu: StencilReactComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents> = /*@__PURE__*/ createComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents>({
     tagName: 'ontario-header-overflow-menu',
-    properties: { menuItems: 'menu-items' },
+    properties: {
+        menuItems: 'menu-items',
+        signInMenuItems: 'sign-in-menu-items',
+        headerType: 'header-type',
+        breakpointState: 'breakpoint-state',
+        menuButtonRef: 'menu-button-ref'
+    },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
     serializeShadowRoot
 });
@@ -802,7 +810,10 @@ export type OntarioIconDropdownArrowEvents = NonNullable<unknown>;
 
 export const OntarioIconDropdownArrow: StencilReactComponent<OntarioIconDropdownArrowElement, OntarioIconDropdownArrowEvents> = /*@__PURE__*/ createComponent<OntarioIconDropdownArrowElement, OntarioIconDropdownArrowEvents>({
     tagName: 'ontario-icon-dropdown-arrow',
-    properties: { iconWidth: 'icon-width' },
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
     serializeShadowRoot
 });
