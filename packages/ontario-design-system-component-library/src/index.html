@@ -14,105 +14,46 @@
 			<a href="https://designsystem.ontario.ca/">Ontario Design System</a> web components now available!!!
 		</ontario-critical-alert>
 		<ontario-header
-			type="ontario"
-			language-toggle-options='{
-				"englishLink": "/driving-and-roads",
-				"frenchLink" : "/fr/conduite-et-routes"
+			id="ontarioHeader"
+			type="serviceOntario"
+			application-header-info='{
+				"title": "Application name",
+				"href": "/application-homepage",
+				"maxSubheaderDesktopLinks": "3",
+				"maxSubheaderTabletLinks": "2",
+				"maxSubheaderMobileLinks": "1"
 			}'
-			menu-items='[
-				{
-					"title": "Arts and Culture",
-					"href": "https://www.ontario.ca/page/arts-and-culture",
-					"linkIsActive": "false"
-				},
-				{
-					"title": "Business and economy",
-					"href": "https://www.ontario.ca/page/business-and-economy",
-					"linkIsActive": "false"
-				},
-				{
-					"title": "Driving and Roads",
-					"href": "https://www.ontario.ca/page/driving-and-roads",
-					"linkIsActive": "false"
-				},
-				{
-					"title": "Education and training",
-					"href": "https://www.ontario.ca/page/education-and-training",
-					"linkIsActive": "false"
-				},
-				{
-					"title": "Environment and energy",
-					"href": "https://www.ontario.ca/page/environment-and-energy",
-					"linkIsActive": "false"
-				},
-				{
-					"title": "Government",
-					"href": "https://www.ontario.ca/page/government",
-					"linkIsActive": "false"
-				},
-				{
-					"title": "Health and wellness",
-					"href": "https://www.ontario.ca/page/health-care-ontario",
-					"linkIsActive": "false"
-				},
-				{
-					"title": "Home and community",
-					"href": "https://www.ontario.ca/page/home-and-community",
-					"linkIsActive": "false"
-				},
-				{
-					"title": "Jobs and employment",
-					"href": "https://www.ontario.ca/page/jobs-and-employment",
-					"linkIsActive": "false"
-				},
-				{
-					"title": "Law and safety",
-					"href": "https://www.ontario.ca/page/law-and-safety",
-					"linkIsActive": "false"
-				},
-				{
-					"title": "Rural and north",
-					"href": "https://www.ontario.ca/page/rural-and-north",
-					"linkIsActive": "false"
-				},
-				{
-					"title": "Taxes and benefits",
-					"href": "https://www.ontario.ca/page/taxes-and-benefits",
-					"linkIsActive": "false"
-				},
-				{
-					"title": "Travel and recreation",
-					"href": "https://www.ontario.ca/page/travel-and-recreation",
-					"linkIsActive": "false"
-				}
-			]'
+			language-toggle-options='{
+				"englishLink": "/",
+				"frenchLink" : "/french.html"
+			}'
 			sign-in-menu-items='[
-				{
-					"href": "/sign-in",
-					"title": "Sign in to your account",
-					"description": "Access your personal information"
-				},
-				{
-					"href": "/register",
-					"title": "Create an account",
-					"description": "Register for government services"
-				},
-				{
-					"href": "/help",
-					"title": "Get help with your account",
-					"description": "Recover your username or password"
-				},
-				{
-					"href": "/privacy",
-					"title": "Privacy settings",
-					"description": "Manage your privacy preferences"
-				},
-				{
-					"href": "/sign-out",
-					"title": "Sign out",
-					"description": "Securely sign out of your account"
-				}
-			]'
+			{
+				"href": "/sign-in",
+				"title": "Sign in to your account",
+				"description": "Access your personal information"
+			},
+			{
+				"href": "/register",
+				"title": "Create an account",
+				"description": "Register for government services"
+			},
+			{
+				"href": "/help",
+				"title": "Get help with your account",
+				"description": "Recover your username or password"
+			},
+			{
+				"href": "/privacy",
+				"title": "Privacy settings",
+				"description": "Manage your privacy preferences"
+			},
+			{
+				"href": "/sign-out",
+				"title": "Sign out",
+				"description": "Securely sign out of your account"
+			}
+		]'
 		>
 		</ontario-header>
 
@@ -126,6 +67,609 @@
 						to be handled in one place.
 					</p>
 					<p></p>
+
+					<h2>On this page</h2>
+					<ol>
+						<li><a href="#accordion">Accordion</a></li>
+						<li><a href="#badges">Badges</a></li>
+						<li><a href="#blockquotes">Blockquotes</a></li>
+						<li><a href="#buttons">Buttons</a></li>
+						<li><a href="#callout-aside">Callouts and Asides</a></li>
+						<li><a href="#card">Card Collection and Card</a></li>
+						<li><a href="#checkboxes">Checkboxes</a></li>
+						<li><a href="#dropdown-lists">Dropdown lists</a></li>
+						<li><a href="#fieldsets">Fieldsets</a></li>
+						<li><a href="#header">Header</a></li>
+						<li><a href="#icons">Icons</a></li>
+						<li><a href="#loading-indicator">Loading indicator</a></li>
+						<li><a href="#page-alerts">Page alerts</a></li>
+						<li><a href="#radio-buttons">Radio buttons</a></li>
+						<li><a href="#tables">Tables</a></li>
+						<li><a href="#tasks">Tasks</a></li>
+						<li><a href="#textareas">Textareas</a></li>
+						<li><a href="#text-inputs">Text inputs</a></li>
+						<li><a href="#date-input">Date input</a></li>
+						<li><a href="#step-indicator">Step indicator</a></li>
+						<li><a href="#search-box">Search Box</a></li>
+						<li><a href="#form">Form example</a></li>
+					</ol>
+					<hr />
+
+					<!-- Accordion -->
+					<div>
+						<h2 id="accordion">Accordion</h2>
+						<ontario-accordion
+							name="My Accordion"
+							expand-collapse-button='{
+								"expandAllSectionsLabel": "Expand All",
+								"collapseAllSectionsLabel": "Collapse All"
+							}'
+							accordion-data='[
+								{"label": "Accordion 1", "content": "This is a string"},
+								{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"},
+								{"label": "Accordion 3", "accordionContentType": "html", "content": "<p>Some <em>sample</em> <strong>text</strong> <s>with</s> <u>lots </u><span style=\"font-size:24px\">of</span> <strong><em><u><s>formating</s></u></em></strong>!</p>"}
+							]'
+						></ontario-accordion>
+						<hr />
+					</div>
+
+					<!-- Badges -->
+					<div>
+						<h2 id="badges">Badges</h2>
+						<ontario-badge>Default</ontario-badge>
+						<ontario-badge colour="lightTeal">Default light</ontario-badge>
+						<ontario-badge colour="black">Neutral</ontario-badge>
+						<ontario-badge colour="grey">Neutral light</ontario-badge>
+						<hr />
+					</div>
+
+					<!-- Blockquotes -->
+					<div>
+						<h2 id="blockquotes">Blockquotes</h2>
+						<ontario-blockquote attribution="Academic partners" byline="Ontario’s Pedagogy for the Early Years"
+							>In the past few years, Ontario has gained a high level of respect for its visionary work in early
+							education. The changes have been profound, and thoughtfully introduced. The views that guide the work are
+							articulated clearly, and express great respect for children, families, and educators. We now have a solid
+							foundation upon which to build a more coherent system.</ontario-blockquote
+						>
+						<hr />
+					</div>
+
+					<!-- Buttons -->
+					<ontario-form-container>
+						<h2 id="buttons">Buttons</h2>
+						<h3 class="ontario-h4">Primary button</h3>
+						<ontario-button aria-label-text="Primary Button" type="primary">Primary</ontario-button>
+						<h3 class="ontario-h4">Secondary button</h3>
+						<ontario-button aria-label-text="Secondary Button" htmlType="reset">Secondary</ontario-button>
+						<h3 class="ontario-h4">Tertiary button</h3>
+						<ontario-button aria-label-text="Tertiary Button" type="tertiary">Tertiary</ontario-button>
+						<hr />
+					</ontario-form-container>
+
+					<!-- Callouts & Asides -->
+					<div>
+						<h2 id="callout-aside">Callouts and Asides</h2>
+						<div>
+							<h3 class="ontario-h4">Callouts</h3>
+							<h4 class="ontario-h5">With Heading</h4>
+							<ontario-callout
+								heading-type="h3"
+								heading-content-type="string"
+								heading-content="Get notified"
+								highlight-colour="purple"
+							>
+								<p>
+									<a href="#">Sign up for email reminders</a> and we’ll notify you 60 and 30 days before your licence
+									expires.
+								</p>
+							</ontario-callout>
+							<h4 class="ontario-h5">Without Heading</h4>
+							<ontario-callout highlight-colour="purple">
+								<p>
+									<a href="#">Sign up for email reminders</a> and we’ll notify you 60 and 30 days before your licence
+									expires.
+								</p>
+							</ontario-callout>
+						</div>
+
+						<div>
+							<h3 class="ontario-h4">Asides</h3>
+							<h4 class="ontario-h5">With Heading</h4>
+							<ontario-aside
+								heading-type="h2"
+								heading-content-type="string"
+								heading-content="Quick fact:"
+								highlight-colour="gold"
+								content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
+							>
+							</ontario-aside>
+							<h4 class="ontario-h5">Without Heading</h4>
+							<ontario-aside
+								highlight-colour="gold"
+								content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
+							>
+							</ontario-aside>
+						</div>
+						<hr />
+					</div>
+
+					<!-- Card -->
+					<div>
+						<h2 id="card">Card Collection & Card</h2>
+						<div>
+							<h3>Basic cards (no images)</h3>
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									label="Card Title 1"
+								>
+								</ontario-card>
+								<ontario-card
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									header-colour="sky"
+									label="Card Title 2"
+								>
+								</ontario-card>
+								<ontario-card label="Card Title 3"> </ontario-card>
+								<ontario-card header-colour="sky" label="Card Title 4"> </ontario-card>
+							</ontario-card-collection>
+
+							<h3>Basic cards with 4:3 images</h3>
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/300/225"
+									label="Card Title 1"
+								>
+								</ontario-card>
+								<ontario-card
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/300/225"
+									header-colour="sky"
+									label="Card Title 2"
+								>
+								</ontario-card>
+								<ontario-card image="https://picsum.photos/300/225" label="Card Title 3"> </ontario-card>
+								<ontario-card header-colour="sky" image="https://picsum.photos/300/225" label="Card Title 4">
+								</ontario-card>
+							</ontario-card-collection>
+
+							<h3>Basic cards with 16:9 images</h3>
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/300/169"
+									label="Card Title 1"
+								>
+								</ontario-card>
+								<ontario-card
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/300/169"
+									header-colour="sky"
+									label="Card Title 2"
+								>
+								</ontario-card>
+								<ontario-card image="https://picsum.photos/300/169" label="Card Title 3"> </ontario-card>
+								<ontario-card header-colour="sky" image="https://picsum.photos/300/169" label="Card Title 4">
+								</ontario-card>
+							</ontario-card-collection>
+
+							<h3>Basic cards with 2:1 images</h3>
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/300/150"
+									label="Card Title 1"
+								>
+								</ontario-card>
+								<ontario-card
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/300/150"
+									header-colour="sky"
+									label="Card Title 2"
+								>
+								</ontario-card>
+								<ontario-card image="https://picsum.photos/300/150" label="Card Title 3"> </ontario-card>
+								<ontario-card header-colour="sky" image="https://picsum.photos/300/150" label="Card Title 4">
+								</ontario-card>
+							</ontario-card-collection>
+
+							<h3>Horizontal cards with left align 9:16 images (one-fourth size)</h3>
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card
+									layout-direction="horizontal"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-fourth"
+									label="Card Title 1"
+								>
+								</ontario-card>
+								<ontario-card
+									layout-direction="horizontal"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/169/300"
+									header-colour="sky"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-fourth"
+									label="Card Title 2"
+								>
+								</ontario-card>
+								<ontario-card
+									layout-direction="horizontal"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-fourth"
+									label="Card Title 3"
+								>
+								</ontario-card>
+								<ontario-card
+									layout-direction="horizontal"
+									header-colour="sky"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-fourth"
+									label="Card Title 4"
+								>
+								</ontario-card>
+							</ontario-card-collection>
+
+							<h3>Horizontal cards with left align 9:16 images (one-third size)</h3>
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card
+									layout-direction="horizontal"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-third"
+									label="Card Title 1"
+								>
+								</ontario-card>
+								<ontario-card
+									layout-direction="horizontal"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/169/300"
+									header-colour="sky"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-third"
+									label="Card Title 2"
+								>
+								</ontario-card>
+								<ontario-card
+									layout-direction="horizontal"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-third"
+									label="Card Title 3"
+								>
+								</ontario-card>
+								<ontario-card
+									layout-direction="horizontal"
+									header-colour="sky"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-third"
+									label="Card Title 4"
+								>
+								</ontario-card>
+							</ontario-card-collection>
+
+							<h3>Horizontal cards with right align 9:16 images (one-fourth size)</h3>
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card
+									layout-direction="horizontal"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="right"
+									horizontal-image-size-type="one-fourth"
+									label="Card Title 1"
+								>
+								</ontario-card>
+								<ontario-card
+									layout-direction="horizontal"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/169/300"
+									header-colour="sky"
+									horizontal-image-position-type="right"
+									horizontal-image-size-type="one-fourth"
+									label="Card Title 2"
+								>
+								</ontario-card>
+								<ontario-card
+									layout-direction="horizontal"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="right"
+									horizontal-image-size-type="one-fourth"
+									label="Card Title 3"
+								>
+								</ontario-card>
+								<ontario-card
+									layout-direction="horizontal"
+									header-colour="sky"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="right"
+									horizontal-image-size-type="one-fourth"
+									label="Card Title 4"
+								>
+								</ontario-card>
+							</ontario-card-collection>
+
+							<h3>Horizontal cards with right align 9:16 images (one-third size)</h3>
+							<ontario-card-collection cards-per-row="4">
+								<ontario-card
+									layout-direction="horizontal"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="right"
+									horizontal-image-size-type="one-third"
+									label="Card Title 1"
+								>
+								</ontario-card>
+								<ontario-card
+									layout-direction="horizontal"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+									image="https://picsum.photos/169/300"
+									header-colour="sky"
+									horizontal-image-position-type="right"
+									horizontal-image-size-type="one-third"
+									label="Card Title 2"
+								>
+								</ontario-card>
+								<ontario-card
+									layout-direction="horizontal"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="right"
+									horizontal-image-size-type="one-third"
+									label="Card Title 3"
+								>
+								</ontario-card>
+								<ontario-card
+									layout-direction="horizontal"
+									header-colour="sky"
+									image="https://picsum.photos/169/300"
+									horizontal-image-position-type="right"
+									horizontal-image-size-type="one-third"
+									label="Card Title 4"
+								>
+								</ontario-card>
+							</ontario-card-collection>
+
+							<h3>Edge cases</h3>
+							<ontario-card-collection cards-per-row="3">
+								<ontario-card
+									header-colour="orange"
+									label="Card Title 1 Card Title 1 Card Title 1"
+									image="https://picsum.photos/200/300"
+								>
+								</ontario-card>
+								<ontario-card
+									header-colour="sky"
+									label="Card Title 2"
+									image="https://picsum.photos/200/300"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+								>
+								</ontario-card>
+								<ontario-card
+									label="Card Title 3"
+									image="https://picsum.photos/200/300"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+								>
+								</ontario-card>
+							</ontario-card-collection>
+
+							<ontario-card-collection cards-per-row="2">
+								<ontario-card
+									layout-direction="horizontal"
+									header-colour="orange"
+									label="Card Title 1 Card Title 1 Card Title 1"
+									image="https://picsum.photos/200/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-third"
+								>
+								</ontario-card>
+								<ontario-card
+									layout-direction="horizontal"
+									header-colour="sky"
+									label="Card Title 2"
+									image="https://picsum.photos/200/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-fourth"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+								>
+								</ontario-card>
+								<ontario-card
+									layout-direction="horizontal"
+									label="Card Title 3"
+									image="https://picsum.photos/200/300"
+									horizontal-image-position-type="left"
+									horizontal-image-size-type="one-fourth"
+									description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+								>
+								</ontario-card>
+							</ontario-card-collection>
+						</div>
+						<hr />
+					</div>
+
+					<!-- Checkboxes -->
+					<div>
+						<h2 id="checkboxes">Checkboxes</h2>
+						<ontario-checkboxes
+							name="ontario-checkbox-group"
+							caption='{
+								"captionText": "Checkbox legend",
+								"captionType": "large"
+							}'
+							hint-text="Hint text for the checkbox group."
+							required
+							options='[
+								{
+									"value": "checkbox-option-1",
+									"label": "Checkbox option 1 label",
+									"elementId": "checkbox-1"
+								},
+								{
+									"value": "checkbox-option-2",
+									"label": "Checkbox option 2 label",
+									"elementId": "checkbox-2",
+									"hintExpander": {
+										"hint": "Hint expander for checkbox option 2",
+										"content": "Example hint expander content for checkbox option 2."
+									}
+								},
+								{
+									"value": "checkbox-option-3",
+									"label": "Checkbox option 3 label",
+									"elementId": "checkbox-3",
+									"hintExpander": {
+										"hint": "Hint expander for checkbox option 3",
+										"content": "Example hint expander content for checkbox option 3."
+									}
+								},
+								{
+									"value": "checkbox-option-4",
+									"label": "Checkbox option 4 label",
+									"elementId": "checkbox-4"
+								}
+							]'
+							hint-expander='{
+								"hint": "Hint expander for the checkbox group",
+								"content": "<p>Example hint expander content for the checkbox group.</p><p>It has multiple lines.</p>",
+								"hintContentType": "html"
+							}'
+						>
+						</ontario-checkboxes>
+						<hr />
+					</div>
+
+					<!-- Dropdown lists -->
+					<div>
+						<h2 id="dropdown-lists">Dropdown lists</h2>
+						<ontario-dropdown-list
+							name="dropdown"
+							caption='{
+								"captionText": "Label",
+								"captionType": "large"
+							}'
+							required
+							options='[
+								{
+									"value": "dropdown-option-1",
+									"label": "Option 1",
+									"selected": true
+								},
+								{
+									"value": "dropdown-option-2",
+									"label": "Option 2"
+								},
+								{
+									"value": "dropdown-option-3",
+									"label": "Option 3"
+								}
+							]'
+						>
+						</ontario-dropdown-list>
+						<hr />
+					</div>
+
+					<!-- Fieldsets -->
+					<script>
+						window.addEventListener('load', () => {
+							console.log('Loaded Address Event Listener');
+							const addressLine1 = document.getElementById('address-line-1');
+							addressLine1.inputValidator = async (value) => {
+								if (value === 'error') return { errorMessage: "You entered 'error'" };
+							};
+							addressLine1.addEventListener('inputErrorOccurred', (event) => {
+								console.log('errorOccurred:', event);
+							});
+						});
+					</script>
+					<ontario-form-container>
+						<h2 id="fieldsets">Fieldsets</h2>
+						<ontario-fieldset legend-size="large" legend="What is your delivery address?">
+							<ontario-input
+								id="address-line-1"
+								caption="Address line 1"
+								required
+								name="address-line-1"
+								hint-text="Street and number or P.O. box."
+								enable-live-validation
+							></ontario-input>
+							<ontario-input
+								caption="Address line 2"
+								name="address-line-2"
+								hint-text="Apartment, suite, unit, building, etc."
+							></ontario-input>
+							<ontario-dropdown-list
+								caption="Province/territory"
+								name="province-selection"
+								element-id="province-territory"
+								required
+								is-empty-start-option="true"
+								options='[
+									{
+										"value": "AB",
+										"label": "Alberta"
+									},
+									{
+										"value": "BC",
+										"label": "British Columbia"
+									},
+									{
+										"value": "MB",
+										"label": "Manitoba"
+									},
+									{
+										"value": "NB",
+										"label": "New Brunswick"
+									},
+									{
+										"value": "NL",
+										"label": "Newfoundland and Labrador"
+									},
+									{
+										"value": "NS",
+										"label": "Nova Scotia"
+									},
+									{
+										"value": "ON",
+										"label": "Ontario"
+									},
+									{
+										"value": "QC",
+										"label": "Quebec"
+									},
+									{
+										"value": "SK",
+										"label": "Saskatchewan"
+									},
+									{
+										"value": "NT",
+										"label": "Northwest Territories"
+									},
+									{
+										"value": "NU",
+										"label": "Nunavut"
+									},
+									{
+										"value": "YT",
+										"label": "Yukon"
+									}
+								]'
+							></ontario-dropdown-list>
+							<ontario-input
+								id="post-code"
+								caption="Postal code"
+								required
+								name="postal-code"
+								input-width="7-char-width"
+								enable-live-validation
+							></ontario-input>
+						</ontario-fieldset>
+					</ontario-form-container>
+					<hr />
 
 					<!-- Buttons -->
 					<div>
@@ -142,9 +686,841 @@
 						</div>
 						<hr />
 					</div>
+
+					<!-- Icons -->
+					<div>
+						<h2 id="icons">Icons</h2>
+						<div>
+							<h3 class="ontario-h4">Primary Icons</h3>
+							<ontario-icon-accessibility icon-width="32" colour="blue"></ontario-icon-accessibility>
+							<ontario-icon-help icon-width="32"></ontario-icon-help>
+							<ontario-icon-email icon-width="32" colour="grey"></ontario-icon-email>
+						</div>
+						<div class="ontario-margin-top-24-!">
+							<h3 class="ontario-h4">Secondary Icons</h3>
+							<ontario-icon-notification icon-width="32" colour="blue"></ontario-icon-notification>
+							<ontario-icon-print icon-width="32"></ontario-icon-print>
+							<ontario-icon-camera icon-width="32" colour="grey"></ontario-icon-camera>
+							<ontario-icon-text-message icon-width="32" colour="blue"></ontario-icon-text-message>
+							<ontario-icon-mastercard icon-width="32"></ontario-icon-mastercard>
+							<ontario-icon-transport-bus icon-width="32" colour="grey"></ontario-icon-transport-bus>
+							<ontario-icon-sentiment-5 icon-width="32"></ontario-icon-sentiment-5>
+						</div>
+						<hr />
+					</div>
+
+					<!-- Loading Indicator -->
+					<div>
+						<h2 id="loading-indicator">Loading Indicator</h2>
+						<div style="position: relative; height: 25vh">
+							<ontario-loading-indicator is-loading="true" full-screen-overlay="false" />
+						</div>
+						<hr />
+					</div>
+
+					<!-- Page alerts -->
+					<div>
+						<h2 id="page-alerts">Page alerts</h2>
+						<div>
+							<h3 class="ontario-h4">Informational</h3>
+							<ontario-page-alert type="informational" heading="Licence plates">
+								ServiceOntario centres may issue either a blue licence plate or a white embossed ‘Yours to Discover’
+								licence plate depending on availability.
+								<a href="#">Learn more about replacing a licence plate</a>.
+							</ontario-page-alert>
+						</div>
+						<div>
+							<h3 class="ontario-h4">Warning</h3>
+							<ontario-page-alert type="warning" heading="Service wait times">
+								We are experiencing longer than normal wait times at this ServiceOntario centre. You can
+								<a href="#">check out our Service Finder</a> to see if the service you need is offered online or at a
+								different centre nearby.
+							</ontario-page-alert>
+						</div>
+						<div>
+							<h3 class="ontario-h4">Success</h3>
+							<ontario-page-alert
+								type="success"
+								heading="Your payment was successful and your order is now complete."
+								content="Please look out for an email confirmation with your receipt and order number. Your licence plate sticker should arrive in 2-4 weeks."
+							></ontario-page-alert>
+						</div>
+						<div>
+							<h3 class="ontario-h4">Error</h3>
+							<ontario-page-alert type="error" heading="There is a problem">
+								Errors were found on this page:
+								<ul>
+									<li><a href="#">Your licence plate number must be a valid plate number</a></li>
+									<li><a href="#">The odometer reading must be a valid number</a></li>
+									<li><a href="#">The name field must not be empty</a></li>
+								</ul>
+							</ontario-page-alert>
+						</div>
+
+						<hr />
+					</div>
+
+					<!-- Radio buttons -->
+					<div>
+						<h2 id="radio-buttons">Radio buttons</h2>
+						<ontario-radio-buttons
+							name="radios"
+							hint-text="Hint text for the radio button group."
+							caption='{
+								"captionText": "Radio legend",
+								"captionType": "large"
+							}'
+							required="false"
+							options='[
+								{
+									"value": "radio-option-1",
+									"elementId": "radio-1",
+									"label": "Radio option 1 label"
+								},
+								{
+									"value": "radio-option-2",
+									"elementId": "radio-2",
+									"label": "Radio option 2 label",
+									"hintExpander": {
+										"hint": "Hint expander for radio option 2",
+										"content": "Example hint expander content for radio option 2."
+									}
+								},
+								{
+									"value": "radio-option-3",
+									"elementId": "radio-3",
+									"label": "Radio option 3 label"
+								},
+								{
+									"value": "radio-option-4",
+									"elementId": "radio-4",
+									"label": "Radio option 4 label"
+								}
+							]'
+							hint-expander='{
+								"hint": "Hint expander for the radio button group",
+								"content": "Example hint expander content for the radio button group."
+							}'
+						>
+						</ontario-radio-buttons>
+						<hr />
+					</div>
+
+					<!-- Tables -->
+					<div>
+						<h2 id="tables">Tables</h2>
+
+						<h3>3 columns (non-numeric)</h3>
+						<ontario-table
+							caption="Marriage certificate: cost and delivery"
+							table-columns='[
+								{ "title": "Type of service", "key": "service" },
+								{ "title": "Processing and delivery", "key": "processing" },
+								{ "title": "Cost", "key": "cost", "type": "numeric" }
+							]'
+							table-data='[
+								{
+									"data" : {
+										"service": "Regular service (online)",
+										"processing": "15 business days plus delivery by Canada Post",
+										"cost": "$15"
+									}
+								},
+								{
+									"data" : {
+										"service": "Premium service (online)",
+										"cost": "$45",
+										"processing": "5 business days including delivery by courier"
+									}
+								},
+								{
+									"data" : {
+										"processing": "5 business days including delivery by courier (proof of urgency is required)",
+										"service": "Emergency service (in-person)",
+										"cost": "$45"
+									}
+								}
+							]'
+						>
+						</ontario-table>
+
+						<h3>5 columns (numeric)</h3>
+						<ontario-table
+							caption="Number of engagement sessions by business area from 2016–2020"
+							zebra-stripes="enabled"
+							table-columns='[
+								{ "title": "Business area", "key": "business" },
+								{ "title": "April 2016 – March 2017", "key": "date1", "type": "numeric" },
+								{ "title": "April 2017 - March 2018", "key": "date2", "type": "numeric" },
+								{ "title": "April 2018 - March 2019", "key": "date3", "type": "numeric" },
+								{ "title": "April 2019 - March 2020", "key": "date4", "type": "numeric" }
+							]'
+							table-data='[
+								{
+									"data" : {
+										"business": "Aggregates and petroleum",
+										"date1": "35",
+										"date2": "32",
+										"date3": "45",
+										"date4": "71"
+									}
+								},
+								{
+									"data" : {
+										"business": "Fish and wildlife",
+										"date1": "162",
+										"date2": "240",
+										"date3": "178",
+										"date4": "162"
+									}
+								},
+								{
+									"data": {
+										"business": "Forestry",
+										"date1": "182",
+										"date2": "170",
+										"date3": "235",
+										"date4": "242"
+									},
+									"highlight": "true"
+								},
+								{
+									"data": {
+										"business": "Lands and water",
+										"date1": "79",
+										"date2": "101",
+										"date3": "42",
+										"date4": "70"
+									}
+								},
+								{
+									"data": {
+										"business": "General",
+										"date1": "56",
+										"date2": "37",
+										"date3": "64",
+										"date4": "46"
+									}
+								},
+								{
+									"data": {
+										"business": "Total row",
+										"date1": "514",
+										"date2": "580",
+										"date3": "564",
+										"date4": "591"
+									},
+									"footer": true
+								}
+							]'
+						>
+						</ontario-table>
+
+						<h3>7 columns (numeric and condensed)</h3>
+						<ontario-table
+							caption="Operating expense"
+							condensed="true"
+							table-columns='[
+								{ "title": "Votes/Programs", "key": "program", "colSpan": 2 },
+								{ "title": "Estimates 2020-21 $", "key": "column1", "type": "numeric" },
+								{ "title": "Change from estimates 2019-20 $", "key": "column2", "type": "numeric" },
+								{ "title": "Change from estimates 2019-20 %", "key": "column3", "type": "numeric" },
+								{ "title": "Estimates 2019-20 $", "key": "column4", "type": "numeric" },
+								{ "title": "Interim actuals 2019-20 $", "key": "column5", "type": "numeric" },
+								{ "title": "Actuals 2018-19 $", "key": "column6", "type": "numeric"}
+							]'
+							table-data='[
+								{
+									"data" : {
+										"program": "Ministry administration",
+										"column1": "16,147,000",
+										"column6": "20,683,313",
+										"column2": "1,388,600",
+										"column3": "9.4",
+										"column4": "14,758,400",
+										"column5": "17,470,200"
+									}
+								},
+								{
+									"data" : {
+										"program": "Postsecondary education",
+										"column1": "6,455,038,100",
+										"column4": "6,586,779,600",
+										"column2": "(131,741,500)",
+										"column3": "(2.0)",
+										"column5": "6,491,779,600",
+										"column6": "7,398,858,795"
+									}
+								},
+								{
+									"data" : {
+										"program": "Research program",
+										"column1": "187,399,200",
+										"column2": "(1,290,400)",
+										"column3": "(0.7)",
+										"column4": "188,689,600",
+										"column5": "188,689,600",
+										"column6": "174,629,399"
+									}
+								},
+								{
+									"data" : {
+										"program": "Total operating expense to be voted",
+										"column1": "6,658,584,300",
+										"column2": "(131,643,300)",
+										"column3": "(1.9)",
+										"column4": "6,790,227,600",
+										"column5": "6,697,939,400",
+										"column6": "7,594,171,507"
+									}
+								},
+								{
+									"data" : {
+										"program": "Statutory appropriations",
+										"column1": "55,106,014",
+										"column2": "0",
+										"column3": "0",
+										"column4": "55,106,014",
+										"column5": "55,106,014",
+										"column6": "36,264,081"
+									}
+								},
+								{
+									"data" : {
+										"program": "Ministry total operating expense",
+										"column1": "6,713,690,314",
+										"column2": "(131,643,300)",
+										"column3": "(1.9)",
+										"column4": "6,845,333,614",
+										"column5": "6,753,045,414",
+										"column6": "7,630,435,588"
+									},
+									"subtotal": "true"
+								},
+								{
+									"data" : {
+										"program": "Consolidation & other Adjustments - Colleges",
+										"column1": "3,504,321,700",
+										"column2": "210,997,500",
+										"column3": "6.4",
+										"column4": "3,293,324,200",
+										"column5": "3,269,671,700",
+										"column6": "2,961,027,351"
+									}
+								},
+								{
+									"data" : {
+										"program": "Operating expense adjustment - Student assistance interest expense reclassification",
+										"column1": "(48,979,900)",
+										"column2": "0",
+										"column3": "0",
+										"column4": "(48,979,900)",
+										"column5": "(48,979,900)",
+										"column6": "(33,055,246)"
+									}
+								},
+								{
+									"data" : {
+										"program": "Consolidation & other adjustments - Hospitals",
+										"column1": "(9,886,600)",
+										"column2": "5,107,400",
+										"column3": "123",
+										"column4": "(14,994,000)",
+										"column5": "(15,005,000)",
+										"column6": "(15,193,844)"
+									}
+								},
+								{
+									"data" : {
+										"program": "Consolidation & other adjustments - Hospitals",
+										"column1": "(9,886,600)",
+										"column2": "5,107,400",
+										"column3": "<abbr title=\"not available\">N/A</abbr>",
+										"column4": "(14,994,000)",
+										"column5": "(15,005,000)",
+										"column6": "(15,193,844)"
+									}
+								},
+								{
+									"data" : {
+										"program": "Consolidation & other adjustments - General real estate portfolio",
+										"column1": "(5,904,600)",
+										"column2": "(5,686,900)",
+										"column3": "<abbr title=\"not available\">N/A</abbr>",
+										"column4": "(217,700)",
+										"column5": "<abbr title=\"not available\">N/A</abbr>",
+										"column6": "(189,337)"
+									}
+								},
+								{
+									"data" : {
+										"program": "Total including consolidation & other adjustments",
+										"column1": "10,153,240,914",
+										"column2": "78,774,700",
+										"column3": "0.80",
+										"column4": "10,074,466,214",
+										"column5": "9,958,732,214",
+										"column6": "10,543,024,512"
+									},
+									"footer": true
+								}
+							]'
+						>
+						</ontario-table>
+						<hr />
+					</div>
+
+					<!-- Tasks -->
+					<div>
+						<h2 id="tasks">Tasks</h2>
+
+						<ontario-task-list heading-level="h6" label="Task list collection" language="en">
+							<ontario-task
+								label="Task 1"
+								task-id="Task-1-unique-id"
+								heading-level="h2"
+								hint-text="A hint for task 1"
+								task-status="completed"
+								link="https://example.com"
+								language="en"
+							></ontario-task>
+							<ontario-task
+								label="Task 2"
+								task-id="Task-2-unique-id"
+								hint-text="A hint for task 2"
+								task-status="inProgress"
+								link="https://example.com"
+								deactivate-link="true"
+								language="en"
+							>
+							</ontario-task>
+							<ontario-task label="Task 3" task-id="Task-3-unique-id" task-status="notStarted" language="en">
+							</ontario-task>
+							<ontario-task label="Task 4" task-id="Task-4-unique-id" task-status="optional" language="en">
+							</ontario-task>
+							<ontario-task label="Task 5" task-id="Task-5-unique-id" task-status="error" language="en"> </ontario-task>
+							<ontario-task label="Task 6" task-id="Task-6-unique-id" task-status="cannotStartYet" language="en">
+							</ontario-task>
+						</ontario-task-list>
+						<hr />
+					</div>
+
+					<!-- Textareas -->
+					<ontario-form-container>
+						<h2 id="textareas">Textareas</h2>
+						<ontario-textarea
+							name="comments"
+							caption='{
+								"captionText": "Comments",
+								"captionType": "large"
+							}'
+							required="true"
+							hint-expander='{
+								"hint": "Hint expander",
+								"content": "A comment can be constructive or positive!"
+							}'
+						></ontario-textarea>
+						<ontario-textarea
+							name="feedback"
+							caption='{
+								"captionText": "Feedback",
+								"captionType": "large"
+							}'
+							element-id="feedback"
+							hint-text='{
+								"hint": "<p>Please provide any additional information you think would be useful for us to improve our services.</p><p>We welcome all feedback, both constructive or otherwise.</p>",
+								"hintContentType": "html"
+							}'
+						></ontario-textarea>
+						<ontario-textarea
+							name="response"
+							caption='{
+								"captionText": "What do you like about ODS?",
+								"captionType": "default"
+							}'
+							element-id="response"
+						></ontario-textarea>
+					</ontario-form-container>
+					<hr />
+
+					<!-- Text inputs -->
+					<ontario-form-container>
+						<h2 id="text-inputs">Text inputs</h2>
+						<ontario-input
+							name="email"
+							input-width="20-char-width"
+							caption='{
+								"captionText": "Email",
+								"captionType": "large"
+							}'
+							required="true"
+						></ontario-input>
+						<ontario-input
+							name="postal"
+							input-width="7-char-width"
+							caption='{
+								"captionText": "Postal Code",
+								"captionType": "default"
+							}'
+							hint-text="For example, A1A 1A1"
+						></ontario-input>
+						<ontario-input
+							name="address"
+							caption="Address"
+							hint-expander='{
+								"hint": "Hint expander",
+								"content": "This is the content, yup this is the content"
+							}'
+						></ontario-input>
+					</ontario-form-container>
+					<hr />
+
+					<!-- Date Input -->
+					<div>
+						<h2 id="date-input">Date Input</h2>
+						<ontario-date-input
+							element-id="date-input-example-id"
+							placeholder='{
+								"day": "DD",
+								"month": "MM",
+								"year": "YYYY"
+							}'
+							min-year="999"
+							max-year="9999"
+							required="true"
+							date-options='["day", "month", "year"]'
+							hint-text="For example 2000 03 01"
+							caption='{
+								"captionText": "Exact Date",
+								"captionType": "default"
+							}'
+						></ontario-date-input>
+					</div>
+					<hr />
+
+					<!-- Step Indicator -->
+					<div>
+						<h2 id="step-indicator">Step Indicator</h2>
+						<h3>Percentage</h3>
+						<ontario-step-indicator
+							show-back-button="true"
+							back-button-url="https://designsystem.ontario.ca/"
+							percentage-complete="70"
+						></ontario-step-indicator>
+						<h3>Steps</h3>
+						<ontario-step-indicator
+							show-back-button="true"
+							back-button-url="https://designsystem.ontario.ca/"
+							current-step="4"
+							number-of-steps="5"
+						></ontario-step-indicator>
+						<h3>No back button</h3>
+						<ontario-step-indicator
+							show-back-button="false"
+							current-step="4"
+							number-of-steps="5"
+						></ontario-step-indicator>
+					</div>
+					<hr />
+
+					<!-- Search box -->
+					<script>
+						window.addEventListener('load', () => {
+							console.log('Loaded Search Box Event Listener');
+							const searchBox = document.getElementById('ontario-search-box');
+							searchBox.performSearch = async ($value) => {
+								console.log('Performing search with value:', $value);
+							};
+
+							searchBox.addEventListener('searchOnSubmit', (event) => {
+								console.log('Search Event:', event);
+							});
+						});
+					</script>
+
+					<div>
+						<h2 id="search-box">Search box</h2>
+						<ontario-search-box
+							id="ontario-search-box"
+							caption='{
+							"captionText": "Search directory",
+							"captionType": "default"
+						}'
+							hint-text="Search by employee name or organization name."
+						></ontario-search-box>
+					</div>
+
+					<hr />
+
+					<!-- Form -->
+					<form id="sample-form">
+						<h2 id="form">Form example</h2>
+						<ontario-form-container>
+							<ontario-fieldset legend-size="large" legend="What is your delivery address?">
+								<ontario-input
+									id="delivery-address-form-line-1"
+									caption="Address line 1"
+									required
+									name="delivery-address-form-line-1"
+									hint-text="Street and number or P.O. box."
+									enable-live-validation
+									required-validation-message="Please enter your address"
+								></ontario-input>
+								<ontario-input
+									caption="Address line 2"
+									name="delivery-address-form-line-2"
+									hint-text="Apartment, suite, unit, building, etc."
+								></ontario-input>
+								<ontario-dropdown-list
+									caption="Province/territory"
+									name="delivery-address-form-province-selection-form"
+									element-id="delivery-address-form-province-territory"
+									required
+									is-empty-start-option="true"
+									options='[
+									{
+										"value": "ON",
+										"label": "Ontario"
+									},
+									{
+										"value": "QC",
+										"label": "Quebec"
+									},
+									{
+										"value": "SK",
+										"label": "Saskatchewan"
+									}
+								]'
+								></ontario-dropdown-list>
+								<ontario-checkboxes
+									name="delivery-address-form-options"
+									caption="Options"
+									hint-text="Select all delivery options that apply"
+									options='[
+										{
+											"value": "signature",
+											"label": "Signature",
+											"elementId": "checkbox-1"
+										},
+										{
+											"value": "gift-wrap",
+											"label": "Gift Wrap",
+											"elementId": "checkbox-2",
+											"hintExpander": {
+												"hint": "What is gift wrapping?",
+												"content": "Have your package wrapped in pretty paper."
+											}
+										},
+										{
+											"value": "high-5",
+											"label": "High Five",
+											"elementId": "checkbox-3",
+											"hintExpander": {
+												"hint": "What is a high five",
+												"content": "Life is short, show both your and the driver some appreciation with a high five."
+											}
+										}
+									]'
+								>
+								</ontario-checkboxes>
+								<ontario-radio-buttons
+									name="delivery-address-form-notification"
+									hint-text="Let the driver know how to notify you."
+									caption="Notification"
+									required="false"
+									options='[
+											{
+												"value": "knock",
+												"elementId": "radio-1",
+												"label": "Knock on door",
+												"hintExpander": {
+													"hint": "What is this option?",
+													"content": "The driver will knock on your door to let you know the delivery has arrived."
+												}
+											},
+											{
+												"value": "text",
+												"elementId": "radio-2",
+												"label": "Text message"
+											},
+
+											{
+												"value": "phone",
+												"elementId": "radio-3",
+												"label": "Phone call"
+											}
+										]'
+									hint-expander='{
+										"hint": "What is a notification?",
+										"content": "Let our driver know how best to notify you of your package being delivered."
+									}'
+								>
+								</ontario-radio-buttons>
+								<ontario-date-input
+									element-id="delivery-address-form-delivery-date"
+									name="delivery-address-form-delivery-date"
+									placeholder='{
+										"day": "DD",
+										"month": "MM",
+										"year": "YYYY"
+									}'
+									min-year="999"
+									max-year="9999"
+									required="true"
+									date-options='["day", "month", "year"]'
+									hint-text="For example 2000 03 01"
+									caption="Delivery date"
+								></ontario-date-input>
+								<ontario-textarea
+									name="delivery-address-form-delivery-notes"
+									caption="Delivery notes"
+									hint-expander='{
+										"hint": "What are delivery notes?",
+										"content": "Delivery notes can include things like door codes, etc."
+									}'
+								></ontario-textarea>
+							</ontario-fieldset>
+							<ontario-button type="primary" html-type="submit">Submit</ontario-button>
+						</ontario-form-container>
+					</form>
+
+					<h2 style="display: none" id="form-results">Form Results</h2>
+					<div id="form-results-data"></div>
+					<script>
+						window.addEventListener('load', () => {
+							console.log('Loaded Form Event Listener');
+							const form = document.getElementById('sample-form');
+							const formResults = document.getElementById('form-results');
+							const formResultsDataDisplay = document.getElementById('form-results-data');
+							form.addEventListener('submit', (event) => {
+								// Avoid an actual submission
+								event.preventDefault();
+
+								// Get the data from the form to be submitted
+								const formData = new FormData(event.target);
+								const formResultsArray = [...formData.entries()];
+
+								if (validateForm()) return;
+
+								// Display the form data
+								formResults.style.display = 'block';
+								console.log('Form Content:', formResultsArray);
+								const formResultsHtml = formResultsArray.map((x) => `<li><strong>${x[0]}</strong>: ${x[1]}</li>`);
+								formResultsDataDisplay.innerHTML = `<p class="ontario-columns ontario-small-12"><ul>\n${formResultsHtml.join(
+									'\n',
+								)}\n</ul></p>`;
+							});
+
+							const validateForm = () => {
+								let error = false;
+								const address1 = document.getElementById('delivery-address-form-line-1');
+								if (address1.value == undefined || address1.value == '') {
+									address1.errorMessage = 'Please enter your address';
+									address1.scrollIntoView();
+									error = true;
+								}
+
+								return error;
+							};
+						});
+					</script>
 				</div>
 			</div>
 		</main>
+
+		<ontario-footer
+			type="threeColumn"
+			footer-links='{
+				"accessibilityLink": {
+					"text": "Accessibility",
+					"href": "https://www.ontario.ca/page/accessibility"
+				},
+				"privacyLink": {
+					"href": "https://www.ontario.ca/page/privacy-statement"
+				},
+				"contactLink": {
+					"text": "Contact us",
+					"href": "https://www.ontario.ca/feedback/contact-us"
+				},
+				"printerLink": {
+					"href": "https://www.ontario.ca/page/copyright-information"
+				},
+				"termsOfUseLink": {
+					"text": "Terms of Use",
+					"href": "https://www.ontario.ca/page/terms-use"
+				}
+			}'
+			social-links='{
+				"facebook": "https://www.facebook.com/ONgov",
+				"instagram": "https://www.instagram.com/ongov",
+				"twitter": "https://twitter.com/ONgov",
+				"youtube": "https://www.youtube.com/ongov"
+			}'
+			two-column-options='{
+				"column1": {
+					"title": "Ontario Design System",
+					"content": [
+						{
+							"type": "text",
+							"text": "The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services."
+						},
+						{
+							"type": "list",
+							"heading": "Latest release",
+							"list": ["Built on: June 3, 2022", "Distribution package version 0.12.10"]
+						}
+					]
+				},
+				"column2": {
+					"title": "Help us improve the design system",
+					"content": [
+						{
+							"type": "html",
+							"html": "You can check our <a href=#>help and feedback page</a> if you don&#8217;t see the component you need."
+						}
+					],
+					"button": {
+						"text": "Send us an email",
+						"link": "#"
+					}
+				}
+			}'
+			three-column-options='{
+				"column1": {
+					"title": "Ontario Design System",
+					"content": [
+						{
+							"type": "text",
+							"text": "The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services."
+						}
+					]
+				},
+				"column2": {
+					"title": "Latest release",
+					"content": [
+						{
+							"type": "list",
+							"list": ["Built on: June 3, 2022", "Distribution package version 0.12.10"]
+						}
+					]
+				},
+				"column3": {
+					"title": "Help us improve the design system",
+					"content": [
+						{
+							"type": "html",
+							"html": "You can check our <a href=#>help and feedback page</a> if you don&#8217;t see the component you need."
+						}
+					],
+					"button": {
+						"text": "Send us an email",
+						"link": "#"
+					}
+				}
+			}'
+		>
+		</ontario-footer>
+		<ontario-back-to-top />
 
 		<script>
 			function activateHeaderType(headerType) {

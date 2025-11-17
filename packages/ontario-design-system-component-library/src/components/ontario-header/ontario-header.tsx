@@ -533,24 +533,57 @@ export class OntarioHeader {
 			return;
 		}
 
-		// Don't render menu button for Service Ontario headers
-		if (this.type === 'serviceOntario') {
-			return;
-		}
-
-		const isApplicationHeader = this.type === 'application';
+		// Determine header type and device state
+		const isApplicationOrServiceHeader = this.type === 'application' || this.type === 'serviceOntario';
 		const isOntarioHeader = this.type === 'ontario';
 		const isMobileOrTablet = this.breakpointDeviceState === 'mobile' || this.breakpointDeviceState === 'tablet';
-		const isApplicationOrMobileOrTablet = isApplicationHeader || isMobileOrTablet;
+
+		// Determine button styling and behavior
+		const shouldShowOutline = isApplicationOrServiceHeader || isMobileOrTablet;
+		const useMenuCloseToggle = isApplicationOrServiceHeader || isMobileOrTablet;
+
+		// Build CSS classes
+		const buttonClasses = [
+			'ontario-header__menu-toggle',
+			'ontario-header-button',
+			isOntarioHeader && 'ontario-header-button--desktop',
+			shouldShowOutline && 'ontario-header-button--with-outline',
+			this.menuToggled && 'ontario-header-button--toggled-open',
+		]
+			.filter(Boolean)
+			.join(' ');
+
+		// Determine button content
+		const getButtonContent = () => {
+			if (useMenuCloseToggle) {
+				return (
+					<div class="ontario-header__menu-toggle-content">
+						<span
+							class="ontario-header__icon-container ontario-header__icon-container--white"
+							innerHTML={this.menuToggled ? OntarioIconClose : OntarioIconMenu}
+						/>
+						<span>Menu</span>
+					</div>
+				);
+			}
+
+			return (
+				<div class="ontario-header__menu-toggle-content">
+					<span>{isMobileOrTablet ? 'Menu' : 'Topics'}</span>
+					<span
+						class={`ontario-header__icon-container ontario-header__icon-container--white ${
+							this.menuToggled ? 'ontario-header__icon-container--rotated' : ''
+						}`}
+						innerHTML={OntarioIconDropdownArrow}
+					/>
+				</div>
+			);
+		};
 
 		return (
 			<button
-				class={`ontario-header__menu-toggle ontario-header-button ${
-					isOntarioHeader ? 'ontario-header-button--desktop' : ''
-				} ${isApplicationOrMobileOrTablet ? 'ontario-header-button--with-outline' : ''} ${
-					this.menuToggled ? 'ontario-header-button--toggled-open' : ''
-				}`}
-				id={this.type === 'ontario' ? 'ontario-header-menu-toggler' : 'ontario-application-header-menu-toggler'}
+				class={buttonClasses}
+				id={isOntarioHeader ? 'ontario-header-menu-toggler' : 'ontario-application-header-menu-toggler'}
 				aria-controls="ontario-navigation"
 				aria-label={
 					this.menuToggled
@@ -562,25 +595,7 @@ export class OntarioHeader {
 				type="button"
 				ref={(el) => (this.menuButton = el as HTMLButtonElement)}
 			>
-				{isApplicationOrMobileOrTablet ? (
-					<div class="ontario-header__menu-toggle-content">
-						<span
-							class="ontario-header__icon-container ontario-header__icon-container--white"
-							innerHTML={this.menuToggled ? OntarioIconClose : OntarioIconMenu}
-						/>
-						<span>Menu</span>
-					</div>
-				) : (
-					<div class="ontario-header__menu-toggle-content">
-						<span>Menu</span>
-						<span
-							class={`ontario-header__icon-container ontario-header__icon-container--white ${
-								this.menuToggled ? 'ontario-header__icon-container--rotated' : ''
-							}`}
-							innerHTML={OntarioIconDropdownArrow}
-						/>
-					</div>
-				)}
+				{getButtonContent()}
 			</button>
 		);
 	}
@@ -802,16 +817,7 @@ export class OntarioHeader {
 						{/* Show overflow menu on all devices, but with different props based on breakpoint */}
 						{/* Ontario header navigation */}
 						<ontario-header-overflow-menu
-							menuItems={
-								this.signInToggled
-									? this.signInMenuItemsState?.map((item) => ({
-											href: item.href,
-											title: item.title,
-											linkIsActive: false,
-											description: item.description,
-										})) || []
-									: this.menuItemState
-							}
+							menuItems={this.signInToggled ? this.signInMenuItemsState || [] : this.menuItemState}
 							signInMenuItems={
 								this.breakpointDeviceState === 'mobile' || this.breakpointDeviceState === 'tablet'
 									? this.signInMenuItemsState

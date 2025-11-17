@@ -41,6 +41,13 @@ $border-width-2: 2px;
 	position: relative;
 	width: globalVariables.$full-width;
 	z-index: zIndex.$ontario-z-index-above-high;
+
+	.ontario-header__icon-container {
+		display: flex;
+		align-items: center;
+		width: spacing.$spacing-8;
+		height: spacing.$spacing-8;
+	}
 }
 
 /* Header Buttons */
@@ -229,14 +236,6 @@ $border-width-2: 2px;
 		padding-left: spacing.$spacing-2;
 		padding-right: spacing.$spacing-2;
 	}
-}
-
-/* Icon Container */
-.ontario-header__icon-container {
-	display: flex;
-	align-items: center;
-	width: spacing.$spacing-8;
-	height: spacing.$spacing-8;
 }
 
 .ontario-application-header__lang-toggle {
