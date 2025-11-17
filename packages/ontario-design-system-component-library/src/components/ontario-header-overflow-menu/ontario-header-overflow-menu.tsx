@@ -13,11 +13,53 @@ export class OntarioHeaderApplicationMenu {
 
 	/**
 	 * The items that will go inside the menu.
+	 *
+	 * 	@example
+	 * 	<ontario-header-overflow-menu
+	 *			menu-items='[{
+	 *				"title": "Link 1",
+	 *				"href": "/link-1"
+	 *				"linkIsActive": "false"
+	 *			},{
+	 *				"title": "Link 2",
+	 *				"href": "/link-2"
+	 *				"linkIsActive": "false"
+	 *			},{
+	 *				"title": "Link 3",
+	 *				"href": "/link-3"
+	 *				"linkIsActive": "false"
+	 *			},{
+	 *				"title": "Link 4",
+	 *				"href": "/link-4"
+	 *				"linkIsActive": "false"
+	 *			}]'>
+	 *	</ontario-header-overflow-menu>
 	 */
 	@Prop() menuItems: MenuItem[] | string;
 
 	/**
 	 * Sign-in menu items for the Ontario header on mobile
+	 * @example
+	 * 	<ontario-header-overflow-menu
+	 *			menu-items='[{
+	 *				"title": "Link 1",
+	 *				"href": "/link-1"
+	 *				"linkIsActive": "false"
+	 *			},{
+	 *				"title": "Link 2",
+	 *				"href": "/link-2"
+	 *				"linkIsActive": "false"
+	 *			}]'
+	 *			sign-in-menu-items='[{
+	 *				"title": "Link 1",
+	 *				"href": "/link-1"
+	 *				"description": "Description text for link 1"
+	 *			},{
+	 *				"title": "Link 2",
+	 *				"href": "/link-2"
+	 *				"description": "Description text for link 2"
+	 *			}]'>
+	 *	</ontario-header-overflow-menu>
 	 */
 	@Prop() signInMenuItems?: MenuItem[] | string;
 
@@ -57,7 +99,12 @@ export class OntarioHeaderApplicationMenu {
 	@State() private showTabs: boolean = false;
 
 	/**
-	 * Whether the menu is open or not
+	 * A state variable to determine whether the menu is open or not.
+	 *
+	 * The boolean values map to eitherthe presence (true) or absense (false)
+	 * of the `ontario-navigation--open` on the `nav` element.
+	 *
+	 * Triggered by either the `menuButtonToggled` event or the `click` event.
 	 */
 	@State() private menuIsOpen: boolean = false;
 
