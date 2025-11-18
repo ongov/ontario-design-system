@@ -234,17 +234,17 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 			height: spacing.$spacing-6;
 		}
 	}
+
+	.ontario-header-button--toggled-open {
+		@extend %ontario-focus;
+		box-shadow: focusPlaceholders.$ontario-focus-box-shadow;
+		background-color: colours.$ontario-greyscale-70;
+	}
 }
 
 // Header button variants
 .ontario-header-button {
 	@include header-button-base;
-
-	&--toggled-open {
-		@extend %ontario-focus;
-		box-shadow: focusPlaceholders.$ontario-focus-box-shadow;
-		background-color: colours.$ontario-greyscale-70 !important;
-	}
 
 	&--with-outline {
 		@extend %ontario-header-button--with-outline;

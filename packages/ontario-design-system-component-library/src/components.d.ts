@@ -534,10 +534,12 @@ export namespace Components {
         "menuButtonRef"?: HTMLElement;
         /**
           * The items that will go inside the menu.
+          * @example <ontario-header-overflow-menu 	menu-items='[{ 		"title": "Link 1", 		"href": "/link-1" 		"linkIsActive": "false" 	},{ 		"title": "Link 2", 		"href": "/link-2" 		"linkIsActive": "false" 	},{ 		"title": "Link 3", 		"href": "/link-3" 		"linkIsActive": "false" 	},{ 		"title": "Link 4", 		"href": "/link-4" 		"linkIsActive": "false" 	}]'> </ontario-header-overflow-menu>
          */
         "menuItems": MenuItem[] | string;
         /**
           * Sign-in menu items for the Ontario header on mobile
+          * @example 	<ontario-header-overflow-menu 		menu-items='[{ 			"title": "Link 1", 			"href": "/link-1" 			"linkIsActive": "false" 		},{ 			"title": "Link 2", 			"href": "/link-2" 			"linkIsActive": "false" 		}]' 		sign-in-menu-items='[{ 			"title": "Link 1", 			"href": "/link-1" 			"description": "Description text for link 1" 		},{ 			"title": "Link 2", 			"href": "/link-2" 			"description": "Description text for link 2" 		}]'> </ontario-header-overflow-menu>
          */
         "signInMenuItems"?: MenuItem[] | string;
     }
@@ -4139,10 +4141,12 @@ declare namespace LocalJSX {
         "menuButtonRef"?: HTMLElement;
         /**
           * The items that will go inside the menu.
+          * @example <ontario-header-overflow-menu 	menu-items='[{ 		"title": "Link 1", 		"href": "/link-1" 		"linkIsActive": "false" 	},{ 		"title": "Link 2", 		"href": "/link-2" 		"linkIsActive": "false" 	},{ 		"title": "Link 3", 		"href": "/link-3" 		"linkIsActive": "false" 	},{ 		"title": "Link 4", 		"href": "/link-4" 		"linkIsActive": "false" 	}]'> </ontario-header-overflow-menu>
          */
         "menuItems"?: MenuItem[] | string;
         /**
           * Sign-in menu items for the Ontario header on mobile
+          * @example 	<ontario-header-overflow-menu 		menu-items='[{ 			"title": "Link 1", 			"href": "/link-1" 			"linkIsActive": "false" 		},{ 			"title": "Link 2", 			"href": "/link-2" 			"linkIsActive": "false" 		}]' 		sign-in-menu-items='[{ 			"title": "Link 1", 			"href": "/link-1" 			"description": "Description text for link 1" 		},{ 			"title": "Link 2", 			"href": "/link-2" 			"description": "Description text for link 2" 		}]'> </ontario-header-overflow-menu>
          */
         "signInMenuItems"?: MenuItem[] | string;
     }
