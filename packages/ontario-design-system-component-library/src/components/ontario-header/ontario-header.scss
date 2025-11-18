@@ -236,8 +236,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	}
 
 	.ontario-header-button--toggled-open {
-		@extend %ontario-focus;
-		box-shadow: focusPlaceholders.$ontario-focus-box-shadow;
 		background-color: colours.$ontario-greyscale-70;
 	}
 }

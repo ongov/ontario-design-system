@@ -232,6 +232,39 @@ export class OntarioHeaderApplicationMenu {
 	}
 
 	/**
+	 * Listen for focus leaving the menu to close it on desktop
+	 */
+	@Listen('focusout', { target: 'window' })
+	handleFocusOut(event: FocusEvent) {
+		if (!this.menuIsOpen || this.showTabs) return; // Only for desktop simple menu
+
+		// Use setTimeout to ensure relatedTarget is set
+		setTimeout(() => {
+			const menuButton = this.getMenuButton();
+			const focusedElement = event.relatedTarget as HTMLElement;
+
+			// Check if focus moved outside both the menu and the menu button
+			const focusInMenu = this.menu?.contains(focusedElement);
+			const focusOnButton = menuButton?.contains(focusedElement);
+			const focusInShadowRoot = this.el.shadowRoot?.contains(focusedElement);
+
+			if (!focusInMenu && !focusOnButton && !focusInShadowRoot) {
+				// Focus has left the menu - close it
+				this.menuIsOpen = false;
+				this.resetState();
+
+				// Emit event to tell parent header to update its state
+				this.el.dispatchEvent(
+					new CustomEvent('menuClosed', {
+						bubbles: true,
+						composed: true,
+					}),
+				);
+			}
+		}, 0);
+	}
+
+	/**
 	 * Handle keyboard navigation for simple menu using arrow keys
 	 */
 	private handleSimpleMenuKeyDown(event: KeyboardEvent) {
@@ -253,6 +286,25 @@ export class OntarioHeaderApplicationMenu {
 		const focusableElements = activePanel.querySelectorAll('.ontario-menu-item') as NodeListOf<HTMLElement>;
 		const currentMenuItems = this.activeTab === 0 ? this.menuItemState : this.signInMenuItemState;
 		this.handleArrowNavigation(event, focusableElements, currentMenuItems);
+	}
+
+	/**
+	 * Get the currently focused element, accounting for Shadow DOM
+	 */
+	private getActiveElement(): Element | null {
+		let active = document.activeElement;
+
+		// Traverse shadow DOM boundaries
+		while (active?.shadowRoot?.activeElement) {
+			active = active.shadowRoot.activeElement;
+		}
+
+		// Check this component's shadow root
+		if (this.el.shadowRoot?.activeElement) {
+			return this.el.shadowRoot.activeElement;
+		}
+
+		return active;
 	}
 
 	/**
@@ -335,9 +387,15 @@ export class OntarioHeaderApplicationMenu {
 			if (tab) {
 				tab.focus();
 				if (this.showTabs) {
-					const activePanel = this.getActiveTabPanel();
-					if (activePanel) {
-						this.setupFocusTrap(activePanel, tab);
+					const menuButton = this.getMenuButton();
+					if (menuButton) {
+						// For tabbed interface, trap focus in the entire menu container
+						const menuContainer = this.el.shadowRoot?.querySelector(
+							'.ontario-application-navigation__container',
+						) as HTMLElement;
+						if (menuContainer) {
+							this.setupFocusTrap(menuContainer, menuButton);
+						}
 					}
 				}
 			}
@@ -382,7 +440,7 @@ export class OntarioHeaderApplicationMenu {
 					this.setupFocusTrap(menuContainer, menuButton);
 				}
 			}
-		}, 100);
+		}, 150); // Increased timeout to ensure elements are rendered
 	}
 
 	/**
@@ -461,37 +519,60 @@ export class OntarioHeaderApplicationMenu {
 		const handler = (e: KeyboardEvent) => {
 			if (e.key !== 'Tab') return;
 
-			const focusable = this.getFocusableElements(panel);
-			if (!focusable.length) return;
+			// For mobile/tablet with tabs, trap focus and loop back to menu button
+			if (this.showTabs) {
+				const focusable = this.getFocusableElements(panel);
 
-			const [first, last] = [focusable[0], focusable[focusable.length - 1]];
+				// Include the tab buttons
+				const tabs = this.el.shadowRoot?.querySelectorAll('[role="tab"]') as NodeListOf<HTMLElement>;
+				if (tabs) {
+					focusable.unshift(...Array.from(tabs));
+				}
 
-			let active = document.activeElement;
-			if (this.el.shadowRoot?.activeElement) {
-				active = this.el.shadowRoot.activeElement;
-			}
+				if (!focusable.length) return;
 
-			const isInPanel = focusable.includes(active as HTMLElement);
-			const isOnLoopTarget = active === loopTarget;
+				const [first, last] = [focusable[0], focusable[focusable.length - 1]];
+				const active = this.getActiveElement();
 
-			if (!isInPanel && !isOnLoopTarget) return;
+				const isInPanel = focusable.includes(active as HTMLElement);
+				const isOnLoopTarget = active === loopTarget;
 
-			if (e.shiftKey) {
-				if (active === first) {
-					e.preventDefault();
-					loopTarget.focus();
-				} else if (active === loopTarget) {
-					e.preventDefault();
-					last.focus();
+				if (!isInPanel && !isOnLoopTarget) return;
+
+				if (e.shiftKey) {
+					// Shift + Tab (going backwards)
+					if (active === first) {
+						e.preventDefault();
+						loopTarget.focus();
+					} else if (active === loopTarget) {
+						e.preventDefault();
+						last.focus();
+					}
+				} else {
+					// Tab (going forwards)
+					if (active === last) {
+						e.preventDefault();
+						loopTarget.focus();
+					} else if (active === loopTarget) {
+						e.preventDefault();
+						first.focus();
+					}
 				}
 			} else {
-				if (active === last) {
+				// For desktop simple menu, only trap Shift+Tab from first item back to menu button
+				// Allow Tab to naturally move out of the menu after the last item
+				const focusable = this.getFocusableElements(panel);
+				if (!focusable.length) return;
+
+				const first = focusable[0];
+				const active = this.getActiveElement();
+
+				// Only prevent Shift+Tab on first item to go back to menu button
+				if (e.shiftKey && active === first) {
 					e.preventDefault();
 					loopTarget.focus();
-				} else if (active === loopTarget) {
-					e.preventDefault();
-					first.focus();
 				}
+				// Allow normal Tab behavior - don't trap it
 			}
 		};
 
