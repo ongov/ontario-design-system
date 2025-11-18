@@ -388,7 +388,15 @@ export class OntarioHeader {
 	 */
 	@Listen('resize', { target: 'window' })
 	handleResize() {
+		const previousBreakpoint = this.breakpointDeviceState;
 		this.breakpointDeviceState = isClientSideRendering() ? determineDeviceType() : DeviceTypes.Desktop;
+
+		// Close all menus when breakpoint changes
+		if (previousBreakpoint && previousBreakpoint !== this.breakpointDeviceState) {
+			this.menuToggled = false;
+			this.signInToggled = false;
+			this.menuButtonToggled.emit(false);
+		}
 	}
 
 	/**
