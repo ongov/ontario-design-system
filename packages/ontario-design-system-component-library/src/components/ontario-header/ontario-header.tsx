@@ -82,9 +82,6 @@ export class OntarioHeader {
 	 */
 	@Prop() customSignInToggle?: (event: globalThis.Event) => void;
 
-	@State() private signInMenuItemsState: OntarioSignInMenuItems[];
-	@State() signInToggled: boolean = false;
-
 	/**
 	 * Option to disable fetching of the dynamic menu from the Ontario Header API
 	 *
@@ -176,6 +173,16 @@ export class OntarioHeader {
 	 *	</ontario-header>
 	 */
 	@State() private menuItemState: MenuItem[];
+
+	/**
+	 * The parsed sign-in menu items state
+	 */
+	@State() private signInMenuItemsState: OntarioSignInMenuItems[];
+
+	/**
+	 * A boolean state to handle the toggling of the sign-in menu
+	 */
+	@State() signInToggled: boolean = false;
 
 	/**
 	 * Check to see if menu is dynamic or static
