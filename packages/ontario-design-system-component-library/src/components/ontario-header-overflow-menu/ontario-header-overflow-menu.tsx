@@ -14,52 +14,55 @@ export class OntarioHeaderApplicationMenu {
 	/**
 	 * The items that will go inside the menu.
 	 *
-	 * 	@example
-	 * 	<ontario-header-overflow-menu
-	 *			menu-items='[{
-	 *				"title": "Link 1",
-	 *				"href": "/link-1"
-	 *				"linkIsActive": "false"
-	 *			},{
-	 *				"title": "Link 2",
-	 *				"href": "/link-2"
-	 *				"linkIsActive": "false"
-	 *			},{
-	 *				"title": "Link 3",
-	 *				"href": "/link-3"
-	 *				"linkIsActive": "false"
-	 *			},{
-	 *				"title": "Link 4",
-	 *				"href": "/link-4"
-	 *				"linkIsActive": "false"
-	 *			}]'>
-	 *	</ontario-header-overflow-menu>
+	 * @example
+	 * <ontario-header-overflow-menu
+	 *   menu-items='[{
+	 *     "title": "Link 1",
+	 *     "href": "/link-1",
+	 *     "linkIsActive": "false"
+	 *   },{
+	 *     "title": "Link 2",
+	 *     "href": "/link-2",
+	 *     "linkIsActive": "false"
+	 *   },{
+	 *     "title": "Link 3",
+	 *     "href": "/link-3",
+	 *     "linkIsActive": "false"
+	 *   },{
+	 *     "title": "Link 4",
+	 *     "href": "/link-4",
+	 *     "linkIsActive": "false"
+	 *   }]'>
+	 * </ontario-header-overflow-menu>
 	 */
 	@Prop() menuItems: MenuItem[] | string;
 
 	/**
-	 * Sign-in menu items for the Ontario header on mobile
+	 * Sign-in menu items for the Ontario header on mobile/tablet
+	 *
 	 * @example
-	 * 	<ontario-header-overflow-menu
-	 *			menu-items='[{
-	 *				"title": "Link 1",
-	 *				"href": "/link-1"
-	 *				"linkIsActive": "false"
-	 *			},{
-	 *				"title": "Link 2",
-	 *				"href": "/link-2"
-	 *				"linkIsActive": "false"
-	 *			}]'
-	 *			sign-in-menu-items='[{
-	 *				"title": "Link 1",
-	 *				"href": "/link-1"
-	 *				"description": "Description text for link 1"
-	 *			},{
-	 *				"title": "Link 2",
-	 *				"href": "/link-2"
-	 *				"description": "Description text for link 2"
-	 *			}]'>
-	 *	</ontario-header-overflow-menu>
+	 * <ontario-header-overflow-menu
+	 *   menu-items='[{
+	 *     "title": "Link 1",
+	 *     "href": "/link-1",
+	 *     "linkIsActive": "false"
+	 *   },{
+	 *     "title": "Link 2",
+	 *     "href": "/link-2",
+	 *     "linkIsActive": "false"
+	 *   }]'
+	 *   sign-in-menu-items='[{
+	 *     "title": "Sign in to your account",
+	 *     "href": "/sign-in",
+	 *     "description": "Access your personal information"
+	 *   },{
+	 *     "title": "Create an account",
+	 *     "href": "/register",
+	 *     "description": "Register for government services"
+	 *   }]'
+	 *   header-type="ontario"
+	 *   breakpoint-state="mobile">
+	 * </ontario-header-overflow-menu>
 	 */
 	@Prop() signInMenuItems?: MenuItem[] | string;
 
@@ -94,15 +97,15 @@ export class OntarioHeaderApplicationMenu {
 	@State() private activeTab: number = 0;
 
 	/**
-	 * Whether to show tabs (mobile + ontario header + has sign-in items)
+	 * Whether to show tabs (mobile/tablet + ontario header + has sign-in items)
 	 */
 	@State() private showTabs: boolean = false;
 
 	/**
 	 * A state variable to determine whether the menu is open or not.
 	 *
-	 * The boolean values map to eitherthe presence (true) or absense (false)
-	 * of the `ontario-navigation--open` on the `nav` element.
+	 * The boolean values map to either the presence (true) or absence (false)
+	 * of the `ontario-navigation--open` class on the `nav` element.
 	 *
 	 * Triggered by either the `menuButtonToggled` event or the `click` event.
 	 */
@@ -224,11 +227,7 @@ export class OntarioHeaderApplicationMenu {
 	handleKeyDown(event: KeyboardEvent) {
 		if (!this.menuIsOpen) return;
 
-		if (this.showTabs) {
-			this.handleTabbedKeyDown(event);
-		} else {
-			this.handleSimpleMenuKeyDown(event);
-		}
+		this.showTabs ? this.handleTabbedKeyDown(event) : this.handleSimpleMenuKeyDown(event);
 	}
 
 	/**
@@ -300,11 +299,7 @@ export class OntarioHeaderApplicationMenu {
 		}
 
 		// Check this component's shadow root
-		if (this.el.shadowRoot?.activeElement) {
-			return this.el.shadowRoot.activeElement;
-		}
-
-		return active;
+		return this.el.shadowRoot?.activeElement || active;
 	}
 
 	/**
@@ -352,20 +347,15 @@ export class OntarioHeaderApplicationMenu {
 	 * Handle keyboard events specific to individual tab buttons
 	 */
 	private handleTabKeyDown(event: KeyboardEvent, tabIndex: number) {
-		switch (event.key) {
-			case 'ArrowLeft':
-			case 'ArrowRight':
-				event.preventDefault();
-				event.stopPropagation();
-				this.switchTab(tabIndex === 0 ? 1 : 0);
-				break;
+		if (!['ArrowLeft', 'ArrowRight', 'Enter', ' '].includes(event.key)) return;
 
-			case 'Enter':
-			case ' ':
-				event.preventDefault();
-				event.stopPropagation();
-				this.switchTab(tabIndex);
-				break;
+		event.preventDefault();
+		event.stopPropagation();
+
+		if (event.key === 'Enter' || event.key === ' ') {
+			this.switchTab(tabIndex);
+		} else {
+			this.switchTab(tabIndex === 0 ? 1 : 0);
 		}
 	}
 
@@ -374,7 +364,7 @@ export class OntarioHeaderApplicationMenu {
 	 */
 	private switchTab(tabIndex: number) {
 		this.activeTab = tabIndex;
-		this.resetCurrentIndex();
+		this.currentIndex = undefined;
 		this.focusTab(tabIndex);
 	}
 
@@ -384,19 +374,18 @@ export class OntarioHeaderApplicationMenu {
 	private focusTab(tabIndex: number) {
 		setTimeout(() => {
 			const tab = this.getTabElement(tabIndex);
-			if (tab) {
-				tab.focus();
-				if (this.showTabs) {
-					const menuButton = this.getMenuButton();
-					if (menuButton) {
-						// For tabbed interface, trap focus in the entire menu container
-						const menuContainer = this.el.shadowRoot?.querySelector(
-							'.ontario-application-navigation__container',
-						) as HTMLElement;
-						if (menuContainer) {
-							this.setupFocusTrap(menuContainer, menuButton);
-						}
-					}
+			if (!tab) return;
+
+			tab.focus();
+
+			if (this.showTabs) {
+				const menuButton = this.getMenuButton();
+				const menuContainer = this.el.shadowRoot?.querySelector(
+					'.ontario-application-navigation__container',
+				) as HTMLElement;
+
+				if (menuContainer && menuButton) {
+					this.setupFocusTrap(menuContainer, menuButton);
 				}
 			}
 		}, 0);
@@ -447,24 +436,15 @@ export class OntarioHeaderApplicationMenu {
 	 * Reset state when menu closes
 	 */
 	private resetState() {
-		this.resetCurrentIndex();
-		this.clearFocusTrap();
-	}
-
-	/**
-	 * Reset the current menu item index to undefined
-	 */
-	private resetCurrentIndex() {
 		this.currentIndex = undefined;
+		this.clearFocusTrap();
 	}
 
 	/**
 	 * Get the menu button from the parent header component or fallback to DOM search
 	 */
 	private getMenuButton(): HTMLButtonElement | null {
-		if (this.menuButtonRef) {
-			return this.menuButtonRef as HTMLButtonElement;
-		}
+		if (this.menuButtonRef) return this.menuButtonRef as HTMLButtonElement;
 
 		const selectors = [
 			'#ontario-header-menu-toggler',
@@ -474,10 +454,9 @@ export class OntarioHeaderApplicationMenu {
 
 		for (const selector of selectors) {
 			const button = document.querySelector(selector) as HTMLButtonElement;
-			if (button?.getAttribute('aria-expanded') === 'true') {
-				return button;
-			}
+			if (button?.getAttribute('aria-expanded') === 'true') return button;
 		}
+
 		return null;
 	}
 
@@ -519,21 +498,16 @@ export class OntarioHeaderApplicationMenu {
 		const handler = (e: KeyboardEvent) => {
 			if (e.key !== 'Tab') return;
 
-			// For mobile/tablet with tabs, trap focus and loop back to menu button
 			if (this.showTabs) {
+				// For mobile/tablet with tabs, trap focus and loop back to menu button
 				const focusable = this.getFocusableElements(panel);
-
-				// Include the tab buttons
 				const tabs = this.el.shadowRoot?.querySelectorAll('[role="tab"]') as NodeListOf<HTMLElement>;
-				if (tabs) {
-					focusable.unshift(...Array.from(tabs));
-				}
 
+				if (tabs) focusable.unshift(...Array.from(tabs));
 				if (!focusable.length) return;
 
 				const [first, last] = [focusable[0], focusable[focusable.length - 1]];
 				const active = this.getActiveElement();
-
 				const isInPanel = focusable.includes(active as HTMLElement);
 				const isOnLoopTarget = active === loopTarget;
 
@@ -564,11 +538,10 @@ export class OntarioHeaderApplicationMenu {
 				const focusable = this.getFocusableElements(panel);
 				if (!focusable.length) return;
 
-				const first = focusable[0];
 				const active = this.getActiveElement();
 
 				// Only prevent Shift+Tab on first item to go back to menu button
-				if (e.shiftKey && active === first) {
+				if (e.shiftKey && active === focusable[0]) {
 					e.preventDefault();
 					loopTarget.focus();
 				}
