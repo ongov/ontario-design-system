@@ -15,45 +15,47 @@
 		</ontario-critical-alert>
 		<ontario-header
 			id="ontarioHeader"
-			type="serviceOntario"
+			type="application"
 			application-header-info='{
 				"title": "Application name",
 				"href": "/application-homepage",
-				"maxSubheaderDesktopLinks": "3",
-				"maxSubheaderTabletLinks": "2",
-				"maxSubheaderMobileLinks": "1"
+				"maxSubheaderLinks": {
+					"desktop": "3",
+					"tablet": "2",
+					"mobile": "1"
+				}
 			}'
+			sign-in-menu-items='[
+				{
+					"href": "/sign-in",
+					"title": "Sign in to your account",
+					"description": "Access your personal information"
+				},
+				{
+					"href": "/register",
+					"title": "Create an account",
+					"description": "Register for government services"
+				},
+				{
+					"href": "/help",
+					"title": "Get help with your account",
+					"description": "Recover your username or password"
+				},
+				{
+					"href": "/privacy",
+					"title": "Privacy settings",
+					"description": "Manage your privacy preferences"
+				},
+				{
+					"href": "/sign-out",
+					"title": "Sign out",
+					"description": "Securely sign out of your account"
+				}
+			]'
 			language-toggle-options='{
 				"englishLink": "/",
 				"frenchLink" : "/french.html"
 			}'
-			sign-in-menu-items='[
-			{
-				"href": "/sign-in",
-				"title": "Sign in to your account",
-				"description": "Access your personal information"
-			},
-			{
-				"href": "/register",
-				"title": "Create an account",
-				"description": "Register for government services"
-			},
-			{
-				"href": "/help",
-				"title": "Get help with your account",
-				"description": "Recover your username or password"
-			},
-			{
-				"href": "/privacy",
-				"title": "Privacy settings",
-				"description": "Manage your privacy preferences"
-			},
-			{
-				"href": "/sign-out",
-				"title": "Sign out",
-				"description": "Securely sign out of your account"
-			}
-		]'
 		>
 		</ontario-header>
 
