@@ -24,6 +24,8 @@ $border-width-6: 6px;
 $font-size-18: globalFunctions.px-to-rem(18);
 $ontario-search-padding: 7.2rem;
 $ontario-search-padding--mobile: 6.4rem;
+$ontario-header-search-close-height: globalFunctions.px-to-rem(60);
+$ontario-header-search-close-icon-height: globalFunctions.px-to-rem(30);
 $ontario-header-height: globalFunctions.px-to-rem(92);
 $ontario-header-logo-width: 180px;
 $ontario-header-logo-width--mobile: 45px;
@@ -86,7 +88,7 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 
 	&:hover {
 		text-decoration: underline;
-		background-color: darken(colours.$ontario-greyscale-5, 5);
+		background-color: colours.$ontario-greyscale-10;
 	}
 
 	&:active {
@@ -151,7 +153,7 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	color: colours.$ontario-colour-white;
 	display: flex;
 	align-items: center;
-	height: 5.75rem;
+	height: $ontario-header-height;
 
 	.ontario-row {
 		display: flex;
@@ -348,7 +350,7 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	margin-right: spacing.$spacing-4;
 	padding: math.div(spacing.$spacing-5, 10) spacing.$spacing-1 !important;
 	position: relative;
-	height: 60px;
+	height: $ontario-header-search-close-height;
 	display: none;
 
 	span {
@@ -359,7 +361,7 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 
 		&:last-of-type {
 			top: 0;
-			height: 1.875rem;
+			height: $ontario-header-search-close-icon-height;
 		}
 
 		@media screen and (min-width: $ontario-header-custom-breakpoint) {

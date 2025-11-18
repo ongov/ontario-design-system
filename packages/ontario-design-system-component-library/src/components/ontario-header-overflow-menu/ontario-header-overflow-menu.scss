@@ -146,8 +146,7 @@ $mobile-menu-tab-line-height: 2.1875rem;
 // Menu item with icon variant
 .ontario-header-navigation__menu-item--with-icon {
 	a {
-		padding: spacing.$spacing-3 spacing.$spacing-5;
-		padding-left: globalFunctions.px-to-rem(20);
+		padding: spacing.$spacing-3 spacing.$spacing-5 spacing.$spacing-3 globalFunctions.px-to-rem(20);
 	}
 
 	svg {
@@ -180,7 +179,7 @@ $mobile-menu-tab-line-height: 2.1875rem;
 
 	&:active,
 	&:focus {
-		box-shadow: 0 0 0 4px colours.$ontario-colour-focus inset;
+		box-shadow: focusPlaceholders.$ontario-focus-box-shadow inset;
 	}
 
 	&[aria-selected='true'] {

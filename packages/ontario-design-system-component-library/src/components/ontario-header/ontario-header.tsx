@@ -4,7 +4,6 @@ import {
 	ApplicationHeaderInfo,
 	LanguageToggleOptions,
 	OntarioMenuItems,
-	OntarioSignInMenuItems,
 	OntarioHeaderType,
 } from './ontario-header.interface';
 
@@ -75,7 +74,7 @@ export class OntarioHeader {
 	/**
 	 * Information pertaining to the sign-in menu items for the Ontario header.
 	 */
-	@Prop() signInMenuItems?: OntarioSignInMenuItems[] | string;
+	@Prop() signInMenuItems?: MenuItem[] | string;
 
 	/**
 	 * A custom function to pass to the sign-in button.
@@ -177,7 +176,7 @@ export class OntarioHeader {
 	/**
 	 * The parsed sign-in menu items state
 	 */
-	@State() private signInMenuItemsState: OntarioSignInMenuItems[];
+	@State() private signInMenuItemsState: MenuItem[];
 
 	/**
 	 * A boolean state to handle the toggling of the sign-in menu
@@ -211,6 +210,13 @@ export class OntarioHeader {
 	@State() translations: any = translations;
 
 	@State() breakpointDeviceState: DeviceType;
+
+	/**
+	 * Helper to check if current breakpoint is mobile or tablet (not desktop)
+	 */
+	private get isMobileOrTablet(): boolean {
+		return this.breakpointDeviceState !== 'desktop';
+	}
 
 	@Watch('applicationHeaderInfo')
 	private parseApplicationHeaderInfo() {
@@ -560,11 +566,10 @@ export class OntarioHeader {
 		// Determine header type and device state
 		const isApplicationOrServiceHeader = this.type === 'application' || this.type === 'serviceOntario';
 		const isOntarioHeader = this.type === 'ontario';
-		const isMobileOrTablet = this.breakpointDeviceState === 'mobile' || this.breakpointDeviceState === 'tablet';
 
 		// Determine button styling and behavior
-		const shouldShowOutline = isApplicationOrServiceHeader || isMobileOrTablet;
-		const useMenuCloseToggle = isApplicationOrServiceHeader || isMobileOrTablet;
+		const shouldShowOutline = isApplicationOrServiceHeader || this.isMobileOrTablet;
+		const useMenuCloseToggle = isApplicationOrServiceHeader || this.isMobileOrTablet;
 
 		// Build CSS classes
 		const buttonClasses = [
@@ -593,7 +598,11 @@ export class OntarioHeader {
 
 			return (
 				<div class="ontario-header__menu-toggle-content">
-					<span>{isMobileOrTablet ? 'Menu' : 'Topics'}</span>
+					<span>
+						{this.isMobileOrTablet
+							? this.translations.header.menu[`${this.language}`]
+							: this.translations.header.topics[`${this.language}`]}
+					</span>
 					<span
 						class={`ontario-header__icon-container ontario-header__icon-container--white ${
 							this.menuToggled ? 'ontario-header__icon-container--rotated' : ''
@@ -649,7 +658,7 @@ export class OntarioHeader {
 				type="button"
 				ref={(el) => (this.signInButton = el as HTMLElement)}
 			>
-				<span>Sign In</span>
+				<span>{this.translations.header.signIn[`${this.language}`]}</span>
 				<span
 					class={`ontario-header__icon-container ontario-header__icon-container--white ${
 						this.signInToggled ? 'ontario-header__icon-container--rotated' : ''
@@ -842,21 +851,9 @@ export class OntarioHeader {
 						{/* Ontario header navigation */}
 						<ontario-header-overflow-menu
 							menuItems={this.signInToggled ? this.signInMenuItemsState || [] : this.menuItemState}
-							signInMenuItems={
-								this.breakpointDeviceState === 'mobile' || this.breakpointDeviceState === 'tablet'
-									? this.signInMenuItemsState
-									: undefined
-							}
-							headerType={
-								this.breakpointDeviceState === 'mobile' || this.breakpointDeviceState === 'tablet'
-									? this.type
-									: undefined
-							}
-							breakpointState={
-								this.breakpointDeviceState === 'mobile' || this.breakpointDeviceState === 'tablet'
-									? this.breakpointDeviceState
-									: undefined
-							}
+							signInMenuItems={this.isMobileOrTablet ? this.signInMenuItemsState : undefined}
+							headerType={this.isMobileOrTablet ? this.type : undefined}
+							breakpointState={this.isMobileOrTablet ? this.breakpointDeviceState : undefined}
 							menuButtonRef={this.signInToggled ? this.signInButton : this.menuButton}
 						></ontario-header-overflow-menu>
 					</div>
