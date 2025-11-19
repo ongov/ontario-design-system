@@ -88,7 +88,7 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 
 	&:hover {
 		text-decoration: underline;
-		background-color: colours.$ontario-greyscale-10;
+		background-color: darken(colours.$ontario-greyscale-5, 5);
 	}
 
 	&:active {

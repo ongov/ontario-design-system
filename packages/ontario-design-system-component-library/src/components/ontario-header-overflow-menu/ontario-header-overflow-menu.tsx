@@ -11,6 +11,10 @@ import { convertStringToBoolean } from '../../utils/helper/utils';
 export class OntarioHeaderApplicationMenu {
 	@Element() el: HTMLElement;
 
+	/* ===========================
+        Props & State
+    =========================== */
+
 	/**
 	 * The items that will go inside the menu.
 	 *
@@ -131,6 +135,10 @@ export class OntarioHeaderApplicationMenu {
 	 */
 	private focusTrapCleanup: (() => void) | null = null;
 
+	/* ===========================
+        Lifecycle & Watchers
+    =========================== */
+
 	/**
 	 * Component lifecycle - Initialize menu items and show tabs state
 	 */
@@ -170,41 +178,9 @@ export class OntarioHeaderApplicationMenu {
 			this.signInMenuItemState.length > 0;
 	}
 
-	/**
-	 * Consolidated parsing logic for both menu types
-	 */
-	private parseMenuItemsData(items: MenuItem[] | string | undefined): MenuItem[] | null {
-		if (!items) return null;
-
-		if (typeof items === 'string') {
-			const parsed = JSON.parse(items) as MenuItem[];
-			// Convert stringified boolean values
-			parsed.forEach((item) => {
-				if (typeof item?.linkIsActive === 'string') {
-					item.linkIsActive = convertStringToBoolean(item.linkIsActive);
-				}
-			});
-			return parsed;
-		}
-
-		return Array.isArray(items) ? items : null;
-	}
-
-	/**
-	 * Set active link if none is explicitly set
-	 */
-	private setActiveLink(menuItems: MenuItem[]) {
-		if (!menuItems) return;
-
-		const hasActiveLink = menuItems.some((item) => item?.linkIsActive === true);
-
-		if (!hasActiveLink) {
-			menuItems.forEach((item) => {
-				const sanitizedSlug = item.href.replace(/\s+/g, '-').toLowerCase();
-				item.linkIsActive = window.location.pathname.includes(sanitizedSlug);
-			});
-		}
-	}
+	/* ===========================
+        Event Listeners
+    =========================== */
 
 	/**
 	 * Listen for menu button toggle events from the parent header component
@@ -263,6 +239,10 @@ export class OntarioHeaderApplicationMenu {
 		}, 0);
 	}
 
+	/* ===========================
+        Keyboard Navigation - Simple Menu (Desktop)
+    =========================== */
+
 	/**
 	 * Handle keyboard navigation for simple menu using arrow keys
 	 */
@@ -270,6 +250,10 @@ export class OntarioHeaderApplicationMenu {
 		const focusableElements = this.menu.querySelectorAll('.ontario-menu-item') as NodeListOf<HTMLElement>;
 		this.handleArrowNavigation(event, focusableElements, this.menuItemState);
 	}
+
+	/* ===========================
+        Keyboard Navigation - Tabbed Interface (Mobile/Tablet)
+    =========================== */
 
 	/**
 	 * Handle keyboard navigation for tabbed interface with tab switching and menu navigation
@@ -285,42 +269,6 @@ export class OntarioHeaderApplicationMenu {
 		const focusableElements = activePanel.querySelectorAll('.ontario-menu-item') as NodeListOf<HTMLElement>;
 		const currentMenuItems = this.activeTab === 0 ? this.menuItemState : this.signInMenuItemState;
 		this.handleArrowNavigation(event, focusableElements, currentMenuItems);
-	}
-
-	/**
-	 * Get the currently focused element, accounting for Shadow DOM
-	 */
-	private getActiveElement(): Element | null {
-		let active = document.activeElement;
-
-		// Traverse shadow DOM boundaries
-		while (active?.shadowRoot?.activeElement) {
-			active = active.shadowRoot.activeElement;
-		}
-
-		// Check this component's shadow root
-		return this.el.shadowRoot?.activeElement || active;
-	}
-
-	/**
-	 * Consolidated arrow navigation logic for both simple and tabbed menus
-	 */
-	private handleArrowNavigation(event: KeyboardEvent, elements: NodeListOf<HTMLElement>, menuItems: MenuItem[]) {
-		if (!['ArrowDown', 'ArrowUp'].includes(event.key)) return;
-
-		event.preventDefault();
-
-		if (event.key === 'ArrowDown') {
-			this.currentIndex = this.currentIndex === undefined ? 0 : (this.currentIndex + 1) % elements.length;
-		} else {
-			this.currentIndex =
-				this.currentIndex === undefined
-					? elements.length - 1
-					: (this.currentIndex - 1 + elements.length) % elements.length;
-		}
-
-		elements[this.currentIndex].focus();
-		this.updateAriaLive(this.currentIndex, menuItems);
 	}
 
 	/**
@@ -358,6 +306,35 @@ export class OntarioHeaderApplicationMenu {
 			this.switchTab(tabIndex === 0 ? 1 : 0);
 		}
 	}
+
+	/* ===========================
+        Keyboard Navigation - Shared Arrow Logic
+    =========================== */
+
+	/**
+	 * Consolidated arrow navigation logic for both simple and tabbed menus
+	 */
+	private handleArrowNavigation(event: KeyboardEvent, elements: NodeListOf<HTMLElement>, menuItems: MenuItem[]) {
+		if (!['ArrowDown', 'ArrowUp'].includes(event.key)) return;
+
+		event.preventDefault();
+
+		if (event.key === 'ArrowDown') {
+			this.currentIndex = this.currentIndex === undefined ? 0 : (this.currentIndex + 1) % elements.length;
+		} else {
+			this.currentIndex =
+				this.currentIndex === undefined
+					? elements.length - 1
+					: (this.currentIndex - 1 + elements.length) % elements.length;
+		}
+
+		elements[this.currentIndex].focus();
+		this.updateAriaLive(this.currentIndex, menuItems);
+	}
+
+	/* ===========================
+        Tab Management (UI Tabs - Topics/Sign In)
+    =========================== */
 
 	/**
 	 * Switch to a specific tab by index
@@ -407,6 +384,10 @@ export class OntarioHeaderApplicationMenu {
 		return this.el.shadowRoot?.querySelector(panelId) as HTMLElement;
 	}
 
+	/* ===========================
+        Focus Management
+    =========================== */
+
 	/**
 	 * Set up initial focus when menu opens based on interface type
 	 */
@@ -441,6 +422,21 @@ export class OntarioHeaderApplicationMenu {
 	}
 
 	/**
+	 * Get the currently focused element, accounting for Shadow DOM
+	 */
+	private getActiveElement(): Element | null {
+		let active = document.activeElement;
+
+		// Traverse shadow DOM boundaries
+		while (active?.shadowRoot?.activeElement) {
+			active = active.shadowRoot.activeElement;
+		}
+
+		// Check this component's shadow root
+		return this.el.shadowRoot?.activeElement || active;
+	}
+
+	/**
 	 * Get the menu button from the parent header component or fallback to DOM search
 	 */
 	private getMenuButton(): HTMLButtonElement | null {
@@ -459,6 +455,10 @@ export class OntarioHeaderApplicationMenu {
 
 		return null;
 	}
+
+	/* ===========================
+        Focus Trap (Tab Key Trapping)
+    =========================== */
 
 	/**
 	 * Set up focus trap for the given panel and loop target
@@ -553,6 +553,10 @@ export class OntarioHeaderApplicationMenu {
 		return () => document.removeEventListener('keydown', handler, true);
 	}
 
+	/* ===========================
+        Accessibility
+    =========================== */
+
 	/**
 	 * Update the aria-live region with current selection information
 	 */
@@ -560,6 +564,50 @@ export class OntarioHeaderApplicationMenu {
 		if (!this.ariaLiveRegion || !menuItems) return;
 		this.ariaLiveRegion.textContent = `Option ${selectedIndex + 1} of ${menuItems.length}`;
 	}
+
+	/* ===========================
+        Data Parsing & Utilities
+    =========================== */
+
+	/**
+	 * Consolidated parsing logic for both menu types
+	 */
+	private parseMenuItemsData(items: MenuItem[] | string | undefined): MenuItem[] | null {
+		if (!items) return null;
+
+		if (typeof items === 'string') {
+			const parsed = JSON.parse(items) as MenuItem[];
+			// Convert stringified boolean values
+			parsed.forEach((item) => {
+				if (typeof item?.linkIsActive === 'string') {
+					item.linkIsActive = convertStringToBoolean(item.linkIsActive);
+				}
+			});
+			return parsed;
+		}
+
+		return Array.isArray(items) ? items : null;
+	}
+
+	/**
+	 * Set active link if none is explicitly set
+	 */
+	private setActiveLink(menuItems: MenuItem[]) {
+		if (!menuItems) return;
+
+		const hasActiveLink = menuItems.some((item) => item?.linkIsActive === true);
+
+		if (!hasActiveLink) {
+			menuItems.forEach((item) => {
+				const sanitizedSlug = item.href.replace(/\s+/g, '-').toLowerCase();
+				item.linkIsActive = window.location.pathname.includes(sanitizedSlug);
+			});
+		}
+	}
+
+	/* ===========================
+        Render Helpers
+    =========================== */
 
 	/**
 	 * Create a tab button with consistent properties
@@ -639,6 +687,10 @@ export class OntarioHeaderApplicationMenu {
 			</div>
 		);
 	}
+
+	/* ===========================
+        Main Render
+    =========================== */
 
 	/**
 	 * Main render method for the overflow menu component
