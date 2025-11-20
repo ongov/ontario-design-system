@@ -190,6 +190,19 @@ export class OntarioHeader {
 
 	@State() breakpointDeviceState: DeviceType;
 
+	/**
+	 * Tracks the current value of the search input field.
+	 *
+	 * This state is updated as the user types and is used as the single
+	 * source of truth for the search input content (instead of directly
+	 * manipulating the DOM). Clearing the field via Escape now resets this
+	 * state, which triggers the UI to update automatically.
+	 *
+	 * Also used as the value submitted when performing a header search,
+	 * improving consistency and reliability of the search behaviour.
+	 */
+	@State() private searchBoxTextState: string = '';
+
 	@Watch('applicationHeaderInfo')
 	private parseApplicationHeaderInfo() {
 		const applicationHeaderInfo = this.applicationHeaderInfo;
@@ -369,7 +382,12 @@ export class OntarioHeader {
 	 */
 	handleSubmit = (event: any) => {
 		event.preventDefault();
-		location.href = `${this.translations.header.ontarioSearchURL[`${this.language}`]}${event.target[0].value}`;
+
+		const query = this.searchBoxTextState.trim();
+		if (!query) return;
+
+		const baseUrl = this.translations.header.ontarioSearchURL[this.language ? this.language : 'en'];
+		location.href = `${baseUrl}${encodeURIComponent(query)}`;
 	};
 
 	/**
@@ -478,11 +496,11 @@ export class OntarioHeader {
 	/**
 	 * The onEscapePressed function clears the searchbar form when Escape is pressed
 	 */
-	private onEscapePressed(event: any) {
+	private onEscapePressed = (event: KeyboardEvent) => {
 		if (event.key === 'Escape') {
-			event.path[0].value = '';
+			this.searchBoxTextState = '';
 		}
-	}
+	};
 
 	private isMenuVisible(viewportSize: string) {
 		if (this.type !== 'ontario') {
@@ -595,7 +613,12 @@ export class OntarioHeader {
 										aria-autocomplete="none"
 										className="ontario-input ontario-header__search-input"
 										required={true}
+										value={this.searchBoxTextState}
 										ref={(el) => (this.searchBar = el as HTMLInputElement)}
+										onInput={(event: any) => {
+											const target = event.target as HTMLInputElement;
+											this.searchBoxTextState = target.value;
+										}}
 										onKeyDown={this.onEscapePressed}
 									></Input>
 									<Input
