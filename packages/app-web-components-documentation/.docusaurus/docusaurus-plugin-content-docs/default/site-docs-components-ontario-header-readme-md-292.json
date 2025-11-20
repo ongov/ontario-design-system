@@ -1,0 +1,23 @@
+{
+	"unversionedId": "components/ontario-header/readme",
+	"id": "components/ontario-header/readme",
+	"title": "readme",
+	"description": "Properties",
+	"source": "@site/docs/components/ontario-header/readme.md",
+	"sourceDirName": "components/ontario-header",
+	"slug": "/components/ontario-header/",
+	"permalink": "/developer-docs/components/ontario-header/",
+	"draft": false,
+	"tags": [],
+	"version": "current",
+	"frontMatter": {},
+	"sidebar": "tutorialSidebar",
+	"previous": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-footer/"
+	},
+	"next": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-hint-expander/"
+	}
+}

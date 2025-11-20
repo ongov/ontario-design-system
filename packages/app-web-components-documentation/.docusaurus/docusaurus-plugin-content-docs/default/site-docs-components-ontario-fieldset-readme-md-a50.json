@@ -1,0 +1,23 @@
+{
+	"unversionedId": "components/ontario-fieldset/readme",
+	"id": "components/ontario-fieldset/readme",
+	"title": "readme",
+	"description": "Properties",
+	"source": "@site/docs/components/ontario-fieldset/readme.md",
+	"sourceDirName": "components/ontario-fieldset",
+	"slug": "/components/ontario-fieldset/",
+	"permalink": "/developer-docs/components/ontario-fieldset/",
+	"draft": false,
+	"tags": [],
+	"version": "current",
+	"frontMatter": {},
+	"sidebar": "tutorialSidebar",
+	"previous": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-dropdown-list/"
+	},
+	"next": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-footer/"
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"unversionedId": "components/ontario-accordion/readme",
+	"id": "components/ontario-accordion/readme",
+	"title": "readme",
+	"description": "Properties",
+	"source": "@site/docs/components/ontario-accordion/readme.md",
+	"sourceDirName": "components/ontario-accordion",
+	"slug": "/components/ontario-accordion/",
+	"permalink": "/developer-docs/components/ontario-accordion/",
+	"draft": false,
+	"tags": [],
+	"version": "current",
+	"frontMatter": {},
+	"sidebar": "tutorialSidebar",
+	"previous": {
+		"title": "Web Component API Docs",
+		"permalink": "/developer-docs/category/web-component-api-docs"
+	},
+	"next": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-aside/"
+	}
+}

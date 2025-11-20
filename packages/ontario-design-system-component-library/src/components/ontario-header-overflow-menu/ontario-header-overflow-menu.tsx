@@ -11,239 +11,321 @@ import { convertStringToBoolean } from '../../utils/helper/utils';
 export class OntarioHeaderOverflowMenu {
 	@Element() el: HTMLElement;
 
+	/* ===========================
+        Props & State
+    =========================== */
+
 	/**
-	 * The items that will go inside the menu.
-	 *
-	 *  @example
-	 * 	<ontario-header-overflow-menu
-	 *			menu-items='[{
-	 *				"title": "Link 1",
-	 *				"href": "/link-1"
-	 *				"linkIsActive": "false"
-	 *			},{
-	 *				"title": "Link 2",
-	 *				"href": "/link-2"
-	 *				"linkIsActive": "false"
-	 *			},{
-	 *				"title": "Link 3",
-	 *				"href": "/link-3"
-	 *				"linkIsActive": "false"
-	 *			},{
-	 *				"title": "Link 4",
-	 *				"href": "/link-4"
-	 *				"linkIsActive": "false"
-	 *			}]'>
-	 *	</ontario-header-overflow-menu>
+	 * The menu items to display
 	 */
 	@Prop() menuItems: MenuItem[] | string;
 
 	/**
-	 * The `menuItems` are reassigned to `menuItemState` for parsing by `parseMenuItems()`.
+	 * Reference to the menu button (for focus trapping in standalone mode)
+	 */
+	@Prop() menuButtonRef?: HTMLElement;
+
+	/**
+	 * Whether this is being used standalone (true) or inside tabs (false)
+	 */
+	@Prop() standalone: boolean = true;
+
+	/**
+	 * Parsed menu items
 	 */
 	@State() private menuItemState: MenuItem[];
 
 	/**
-	 * A state variable to determine whether the menu is open or not.
-	 *
-	 * The boolean values map to eitherthe presence (true) or absense (false)
-	 * of the `ontario-navigation--open` on the `nav` element.
-	 *
-	 * Triggered by either the `menuButtonToggled` event or the `click` event.
+	 * Whether the menu is open (standalone mode only)
 	 */
 	@State() private menuIsOpen: boolean = false;
 
 	/**
-	 * The current index of the menu item that is focused.
+	 * Current focused item index
 	 */
 	private currentIndex: number | undefined = undefined;
 
 	/**
-	 * Resets the `currentIndex` value.
-	 *
-	 * Typically resets when the menu closes.
+	 * Reference to the menu container
 	 */
-	private resetCurrentIndex() {
-		this.currentIndex = undefined;
-	}
+	private menu!: HTMLElement;
 
 	/**
-	 * Updates the `currentIndex` value.
-	 *
-	 * Typically occurs when a user uses the keyboard to tab through
-	 * menu items.
+	 * Reference to aria-live region
 	 */
-	private updateCurrentIndex(index: number) {
-		this.currentIndex = index;
-	}
-
-	@Watch('menuItems')
-	parseMenuItems() {
-		if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
-			let copyOfMenuItems = JSON.parse(this.menuItems) as MenuItem[];
-			// convert stringified boolean values for linkIsActive, to their actual boolean equivalents
-			copyOfMenuItems.forEach((menuItem) =>
-				typeof menuItem?.linkIsActive === 'string'
-					? (menuItem.linkIsActive = convertStringToBoolean(menuItem?.linkIsActive))
-					: menuItem?.linkIsActive,
-			);
-			this.menuItemState = copyOfMenuItems;
-		} else {
-			this.menuItemState = this.menuItems;
-		}
-
-		const activeLinkSet = this.menuItemState?.some((menuItem) => menuItem?.linkIsActive) ?? [];
-
-		// If no active link is set, try to guess and set the active link based
-		// on if the href is included in the URL.
-		if (!activeLinkSet) {
-			const copyOfMenuItemsState = [...this.menuItemState];
-			copyOfMenuItemsState.forEach((menuItem) => {
-				const sanitizedSlug = menuItem.href.replace(/\s+/g, '-').toLowerCase();
-				menuItem.linkIsActive = window.location.pathname.includes(sanitizedSlug);
-			});
-
-			this.menuItemState = [...copyOfMenuItemsState];
-		}
-	}
+	private ariaLiveRegion!: HTMLElement;
 
 	/**
-	 * This listens for the `menuButtonToggled` event sent from the header menu button when it is clicked.
-	 * It is used to toggle menu visibility by adding or removing the ontario-navigation--open class on the nav element.
+	 * Focus trap cleanup
 	 */
-	@Listen('menuButtonToggled', { target: 'window' })
-	toggleMenuVisibility(event: CustomEvent<boolean>) {
-		this.menuIsOpen = event.detail;
-		this.resetCurrentIndex();
-	}
+	private focusTrapCleanup: (() => void) | null = null;
 
-	/**
-	 * Listens for clicks on anything outside of the menu.
-	 * If a click is outside of the menu, then the menu will
-	 * close.
-	 */
-	@Listen('click', { capture: true, target: 'window' })
-	handleClick(event: PointerEvent) {
-		// if the menu (ref) is clicked, return
-		if (event.composedPath().includes(this.menu)) {
-			this.menuIsOpen = true;
-			return;
-		}
-
-		this.menuIsOpen = false;
-		this.resetCurrentIndex();
-	}
-
-	/**
-	 * Listens for keydown events and handles navigation within the menu using the ArrowUp and ArrowDown keys.
-	 */
-	@Listen('keydown', { target: 'window' })
-	handleKeyDown(event: KeyboardEvent) {
-		if (this.menuIsOpen) {
-			const focusableElements: NodeListOf<HTMLElement> = this.menu.querySelectorAll('.ontario-menu-item');
-
-			switch (event.key) {
-				case 'ArrowDown':
-					event.preventDefault();
-					if (this.currentIndex === -1 || this.currentIndex === undefined) {
-						this.currentIndex = 0;
-					} else {
-						this.currentIndex = (this.currentIndex + 1) % focusableElements.length;
-					}
-					focusableElements[this.currentIndex].focus();
-					/**
-					 * Tried other ways of triggering this function to condense code via a watch on currentIndex,
-					 * and also tried sticking at the bottom of the switch's parent if statement.
-					 *
-					 * Both attempts led to inconsistent results (e.g. the aria message was out of sync with currentIndex)
-					 * or just didn't appear at all. Setting this at the source seems to have the best outcome.
-					 */
-					this.updateAriaLive(this.currentIndex);
-					break;
-				case 'ArrowUp':
-					event.preventDefault();
-					if (this.currentIndex === -1 || this.currentIndex === undefined) {
-						this.currentIndex = focusableElements.length - 1;
-					} else {
-						this.currentIndex = (this.currentIndex - 1 + focusableElements.length) % focusableElements.length;
-					}
-					focusableElements[this.currentIndex].focus();
-					this.updateAriaLive(this.currentIndex);
-					break;
-				case 'Tab':
-					focusableElements.forEach((element, index) => {
-						// within an event listener, the scope of "this" changes.
-						// To continue keeping the scope global, set a variable that captures it
-						// Without this, calls to global variables/methods/functions will not work
-						const self = this;
-						if (
-							!element.hasAttribute('data-has-focus-listener') ||
-							element.getAttribute('data-has-focus-listener') === 'false'
-						) {
-							element.addEventListener('focus', () => self.updateCurrentIndex(index));
-							element.setAttribute('data-has-focus-listener', 'true');
-						}
-					});
-					break;
-			}
-		}
-	}
-
-	/**
-	 * Updates the aria-live region with the menu item count and selected option.
-	 *
-	 * @param {number} selectedIndex The index of the selected menu item
-	 */
-	private updateAriaLive(selectedIndex: number) {
-		const menuItemCount = this.menuItemState.length;
-		// index starts at 0, but users expect the message to start at 1
-		// therefore add value of +1 to each index value to align with
-		// user expectations
-		const selectedMenuItemNumber = selectedIndex + 1;
-		const ariaLiveMessage = `Option ${selectedMenuItemNumber} of ${menuItemCount}`;
-
-		if (this.ariaLiveRegion) {
-			this.ariaLiveRegion.textContent = ariaLiveMessage;
-		}
-	}
+	/* ===========================
+        Lifecycle & Watchers
+    =========================== */
 
 	componentWillLoad() {
 		this.parseMenuItems();
 	}
 
-	/**
-	 * Assigning values to elements to use them as ref
-	 */
-	private menu!: HTMLElement;
+	@Watch('menuItems')
+	parseMenuItems() {
+		this.menuItemState = this.parseMenuItemsData(this.menuItems) || [];
+		this.setActiveLink(this.menuItemState);
+	}
 
-	/**
-	 * The aria-live region that will be updated with the selected menu item.
-	 */
-	private ariaLiveRegion!: HTMLElement;
+	/* ===========================
+        Event Listeners (Standalone Mode Only)
+    =========================== */
+
+	@Listen('menuButtonToggled', { target: 'window' })
+	toggleMenuVisibility(event: CustomEvent<boolean>) {
+		if (!this.standalone) return; // Ignore if inside tabs
+
+		this.menuIsOpen = event.detail;
+		this.menuIsOpen ? this.setupInitialFocus() : this.resetState();
+	}
+
+	@Listen('keydown', { target: 'window' })
+	handleKeyDown(event: KeyboardEvent) {
+		if (!this.standalone) return; // Tabs component handles this
+		if (!this.menuIsOpen) return;
+
+		this.handleArrowNavigation(event);
+	}
+
+	@Listen('focusout', { target: 'window' })
+	handleFocusOut(event: FocusEvent) {
+		if (!this.standalone || !this.menuIsOpen) return;
+
+		setTimeout(() => {
+			const menuButton = this.getMenuButton();
+			const focusedElement = event.relatedTarget as HTMLElement;
+
+			const focusInMenu = this.menu?.contains(focusedElement);
+			const focusOnButton = menuButton?.contains(focusedElement);
+			const focusInShadowRoot = this.el.shadowRoot?.contains(focusedElement);
+
+			if (!focusInMenu && !focusOnButton && !focusInShadowRoot) {
+				this.menuIsOpen = false;
+				this.resetState();
+				this.emitMenuClosed();
+			}
+		}, 0);
+	}
+
+	/* ===========================
+        Keyboard Navigation
+    =========================== */
+
+	private handleArrowNavigation(event: KeyboardEvent) {
+		if (!['ArrowDown', 'ArrowUp'].includes(event.key)) return;
+
+		event.preventDefault();
+
+		const focusableElements = this.menu.querySelectorAll('.ontario-menu-item') as NodeListOf<HTMLElement>;
+
+		if (event.key === 'ArrowDown') {
+			this.currentIndex = this.currentIndex === undefined ? 0 : (this.currentIndex + 1) % focusableElements.length;
+		} else {
+			this.currentIndex =
+				this.currentIndex === undefined
+					? focusableElements.length - 1
+					: (this.currentIndex - 1 + focusableElements.length) % focusableElements.length;
+		}
+
+		focusableElements[this.currentIndex].focus();
+		this.updateAriaLive(this.currentIndex);
+	}
+
+	/* ===========================
+        Focus Management (Standalone Mode)
+    =========================== */
+
+	private setupInitialFocus() {
+		setTimeout(() => {
+			const firstMenuItem = this.menu.querySelector('.ontario-menu-item') as HTMLElement;
+			if (firstMenuItem) {
+				firstMenuItem.focus();
+				this.currentIndex = 0;
+				this.updateAriaLive(0);
+			}
+
+			const menuButton = this.getMenuButton();
+			if (menuButton) {
+				this.setupFocusTrap(this.menu, menuButton);
+			}
+		}, 150);
+	}
+
+	private resetState() {
+		this.currentIndex = undefined;
+		this.clearFocusTrap();
+	}
+
+	private getMenuButton(): HTMLButtonElement | null {
+		if (this.menuButtonRef) return this.menuButtonRef as HTMLButtonElement;
+
+		const selectors = [
+			'#ontario-header-menu-toggler',
+			'#ontario-application-header-menu-toggler',
+			'#ontario-header-sign-in-toggler',
+		];
+
+		for (const selector of selectors) {
+			const button = document.querySelector(selector) as HTMLButtonElement;
+			if (button?.getAttribute('aria-expanded') === 'true') return button;
+		}
+
+		return null;
+	}
+
+	/* ===========================
+        Focus Trap (Standalone Mode)
+    =========================== */
+
+	private setupFocusTrap(panel: HTMLElement, loopTarget: HTMLElement) {
+		this.clearFocusTrap();
+
+		const handler = (e: KeyboardEvent) => {
+			if (e.key !== 'Tab') return;
+
+			const focusable = this.getFocusableElements(panel);
+			if (!focusable.length) return;
+
+			const active = document.activeElement;
+
+			// Partial trap for desktop - only Shift+Tab backwards
+			if (e.shiftKey && active === focusable[0]) {
+				e.preventDefault();
+				loopTarget.focus();
+			}
+		};
+
+		document.addEventListener('keydown', handler, true);
+		this.focusTrapCleanup = () => document.removeEventListener('keydown', handler, true);
+	}
+
+	private clearFocusTrap() {
+		if (this.focusTrapCleanup) {
+			this.focusTrapCleanup();
+			this.focusTrapCleanup = null;
+		}
+	}
+
+	private getFocusableElements(panel: HTMLElement): HTMLElement[] {
+		if (!panel) return [];
+
+		const selectors =
+			'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+		const elements = panel.querySelectorAll(selectors) as NodeListOf<HTMLElement>;
+
+		return Array.from(elements).filter((el) => el.offsetWidth > 0 && el.offsetHeight > 0 && !el.hasAttribute('hidden'));
+	}
+
+	private emitMenuClosed() {
+		this.el.dispatchEvent(
+			new CustomEvent('menuClosed', {
+				bubbles: true,
+				composed: true,
+			}),
+		);
+	}
+
+	/* ===========================
+        Accessibility
+    =========================== */
+
+	private updateAriaLive(selectedIndex: number) {
+		if (!this.ariaLiveRegion || !this.menuItemState) return;
+		this.ariaLiveRegion.textContent = `Option ${selectedIndex + 1} of ${this.menuItemState.length}`;
+	}
+
+	/* ===========================
+        Data Parsing
+    =========================== */
+
+	private parseMenuItemsData(items: MenuItem[] | string | undefined): MenuItem[] | null {
+		if (!items) return null;
+
+		if (typeof items === 'string') {
+			const parsed = JSON.parse(items) as MenuItem[];
+			parsed.forEach((item) => {
+				if (typeof item?.linkIsActive === 'string') {
+					item.linkIsActive = convertStringToBoolean(item.linkIsActive);
+				}
+			});
+			return parsed;
+		}
+
+		return Array.isArray(items) ? items : null;
+	}
+
+	private setActiveLink(menuItems: MenuItem[]) {
+		if (!menuItems) return;
+
+		const hasActiveLink = menuItems.some((item) => item?.linkIsActive === true);
+
+		if (!hasActiveLink) {
+			menuItems.forEach((item) => {
+				const sanitizedSlug = item.href.replace(/\s+/g, '-').toLowerCase();
+				item.linkIsActive = window.location.pathname.includes(sanitizedSlug);
+			});
+		}
+	}
+
+	/* ===========================
+        Render
+    =========================== */
 
 	render() {
-		return (
-			<nav
-				role="navigation"
-				class={
-					this.menuIsOpen ? 'ontario-application-navigation ontario-navigation--open' : 'ontario-application-navigation'
-				}
-				id="ontario-application-navigation"
-				ref={(el) => (this.menu = el as HTMLElement)}
-			>
-				<div class="ontario-application-navigation__container">
-					<ul>
-						{this.menuItemState?.map((item: MenuItem) => {
-							return generateMenuItem(item.href, item.title, item.linkIsActive);
-						})}
-					</ul>
-				</div>
-				<div
-					id="aria-live-region"
-					class="ontario-show-for-sr"
-					aria-live="polite"
-					ref={(el) => (this.ariaLiveRegion = el as HTMLElement)}
-				></div>
-			</nav>
+		// When standalone, wrap in nav with open/close behavior
+		// When inside tabs, just render the list
+		const menuList = (
+			<ul>
+				{this.menuItemState?.map((item: MenuItem) =>
+					generateMenuItem(item.href, item.title, item.linkIsActive ?? false, item.description),
+				)}
+			</ul>
 		);
+
+		if (this.standalone) {
+			return (
+				<nav
+					role="navigation"
+					class={
+						this.menuIsOpen
+							? 'ontario-application-navigation ontario-navigation--open'
+							: 'ontario-application-navigation'
+					}
+					id="ontario-application-navigation"
+					ref={(el) => (this.menu = el as HTMLElement)}
+				>
+					<div class="ontario-application-navigation__container">
+						<div class="ontario-navigation-content" role="tabpanel">
+							{menuList}
+						</div>
+					</div>
+					<div
+						id="aria-live-region"
+						class="ontario-show-for-sr"
+						aria-live="polite"
+						ref={(el) => (this.ariaLiveRegion = el as HTMLElement)}
+					></div>
+				</nav>
+			);
+		} else {
+			// Inside tabs - just render the list
+			return (
+				<div class="ontario-menu-list" ref={(el) => (this.menu = el as HTMLElement)}>
+					{menuList}
+					<div
+						class="ontario-show-for-sr"
+						aria-live="polite"
+						ref={(el) => (this.ariaLiveRegion = el as HTMLElement)}
+					></div>
+				</div>
+			);
+		}
 	}
 }

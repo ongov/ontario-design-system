@@ -1,0 +1,22 @@
+{
+	"unversionedId": "readme",
+	"id": "readme",
+	"title": "Ontario Design System Component Library",
+	"description": "Built With Stencil",
+	"source": "@site/docs/01-readme.md",
+	"sourceDirName": ".",
+	"slug": "/",
+	"permalink": "/developer-docs/",
+	"draft": false,
+	"tags": [],
+	"version": "current",
+	"sidebarPosition": 1,
+	"frontMatter": {
+		"slug": "/"
+	},
+	"sidebar": "tutorialSidebar",
+	"next": {
+		"title": "Angular Component Library",
+		"permalink": "/developer-docs/readme-angular"
+	}
+}

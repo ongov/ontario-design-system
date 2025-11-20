@@ -1,0 +1,26 @@
+{
+	"unversionedId": "readme-complete-styles",
+	"id": "readme-complete-styles",
+	"title": "Complete Styles",
+	"description": "- Introduction",
+	"source": "@site/docs/06-readme-complete-styles.md",
+	"sourceDirName": ".",
+	"slug": "/readme-complete-styles",
+	"permalink": "/developer-docs/readme-complete-styles",
+	"draft": false,
+	"tags": [],
+	"version": "current",
+	"sidebarPosition": 6,
+	"frontMatter": {
+		"title": "Complete Styles"
+	},
+	"sidebar": "tutorialSidebar",
+	"previous": {
+		"title": "Global Styles",
+		"permalink": "/developer-docs/readme-global-styles"
+	},
+	"next": {
+		"title": "Web Component API Docs",
+		"permalink": "/developer-docs/category/web-component-api-docs"
+	}
+}

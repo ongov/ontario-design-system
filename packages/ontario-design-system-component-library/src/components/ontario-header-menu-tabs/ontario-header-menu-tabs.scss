@@ -17,11 +17,12 @@
 @use '../../styles/header.scss';
 
 // Variables
-$navigation-link-bg--hover: #e5e5e5;
-$ontario-header-overflow-menu-link-font-size: globalFunctions.px-to-rem(18);
 $border-width-1: 1px;
+$border-width-2: 2px;
 $border-width-6: 6px;
+$navigation-link-bg--hover: #e5e5e5;
 $mobile-menu-tab-line-height: 2.1875rem;
+$ontario-header-overflow-menu-link-font-size: globalFunctions.px-to-rem(18);
 
 // Shared mixins
 @mixin menu-list-styles {
@@ -80,97 +81,26 @@ $mobile-menu-tab-line-height: 2.1875rem;
 	}
 }
 
-// Base navigation container
 .ontario-application-navigation {
-	@extend %ontario-application-navigation;
+	background-color: colours.$ontario-colour-white;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	width: 100%;
+	max-height: 0;
+	overflow: hidden;
+	z-index: zIndex.$ontario-z-index-above-high;
+	transition: max-height 0.4s ease-in-out;
 
-	&__container {
-		@extend %ontario-application-navigation__container;
-	}
-
-	// Open state
 	&.ontario-navigation--open {
-		background: colours.$ontario-colour-white;
-		z-index: zIndex.$ontario-z-index-above-high;
-
-		.ontario-application-navigation__container {
-			background: colours.$ontario-colour-white;
-			visibility: visible;
-			transform: translateY(0);
-			transition: transform 0.4s ease-in-out;
-
-			@media screen and (min-width: breakpoints.$medium-breakpoint) {
-				transition: none;
-				display: block;
-			}
-		}
-
-		@media screen and (max-width: breakpoints.$medium-breakpoint) {
-			z-index: zIndex.$ontario-z-index-above-medium;
-		}
-	}
-
-	ul {
-		@include menu-list-styles;
-
-		@media screen and (min-width: breakpoints.$medium-breakpoint) {
-			border-bottom: none;
-		}
-	}
-
-	li {
-		@include menu-list-item-styles;
-	}
-
-	a {
-		@include menu-link-base-styles;
-		@include menu-link-interactive-styles;
+		max-height: 100vh;
+		overflow-y: auto;
 	}
 }
 
-.ontario-menu-list {
-	ul {
-		@include menu-list-styles;
-
-		@media screen and (min-width: breakpoints.$medium-breakpoint) {
-			border-bottom: none;
-		}
-	}
-
-	li {
-		@include menu-list-item-styles;
-	}
-
-	a {
-		@include menu-link-base-styles;
-		@include menu-link-interactive-styles;
-	}
-}
-
-// Menu item components
-.ontario-menu-item {
-	display: flex !important;
-	flex-direction: column !important;
-
-	&__description {
-		font-size: fontSize.$ontario-font-size-small;
-		font-weight: fontWeights.$ontario-font-weights-normal;
-		margin-top: spacing.$spacing-2;
-		margin-bottom: spacing.$spacing-0;
-		line-height: globalFunctions.px-to-rem(21);
-		text-decoration: none !important;
-	}
-}
-
-// Menu item with icon variant
-.ontario-header-navigation__menu-item--with-icon {
-	a {
-		padding: spacing.$spacing-3 spacing.$spacing-5 spacing.$spacing-3 globalFunctions.px-to-rem(20);
-	}
-
-	svg {
-		margin-right: spacing.$spacing-2;
-	}
+.ontario-application-navigation__container {
+	padding: spacing.$spacing-0;
 }
 
 // Mobile tabbed interface
@@ -205,6 +135,11 @@ $mobile-menu-tab-line-height: 2.1875rem;
 		background: colours.$ontario-colour-white;
 		color: colours.$ontario-colour-black;
 	}
+
+	&--active {
+		border-bottom-color: colours.$ontario-colour-link;
+		color: colours.$ontario-colour-black;
+	}
 }
 
 .ontario-mobile-menu__panel {
@@ -216,19 +151,6 @@ $mobile-menu-tab-line-height: 2.1875rem;
 
 	&--active {
 		display: block;
-	}
-
-	ul {
-		@include menu-list-styles;
-	}
-
-	li {
-		@include menu-list-item-styles;
-	}
-
-	a {
-		@include menu-link-base-styles;
-		@include menu-link-interactive-styles;
 	}
 }
 
@@ -247,5 +169,36 @@ $mobile-menu-tab-line-height: 2.1875rem;
 
 	.ontario-application-header .ontario-navigation {
 		display: block;
+	}
+}
+
+/* ===========================
+   Tab Panels
+=========================== */
+
+.ontario-mobile-menu__panel {
+	display: none;
+
+	&--active {
+		display: block;
+	}
+}
+
+.ontario-menu-list {
+	ul {
+		@include menu-list-styles;
+
+		@media screen and (min-width: breakpoints.$medium-breakpoint) {
+			border-bottom: none;
+		}
+	}
+
+	li {
+		@include menu-list-item-styles;
+	}
+
+	a {
+		@include menu-link-base-styles;
+		@include menu-link-interactive-styles;
 	}
 }

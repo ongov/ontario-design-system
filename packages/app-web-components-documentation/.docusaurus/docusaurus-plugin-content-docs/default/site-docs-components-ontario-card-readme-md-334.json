@@ -1,0 +1,23 @@
+{
+	"unversionedId": "components/ontario-card/readme",
+	"id": "components/ontario-card/readme",
+	"title": "readme",
+	"description": "Properties",
+	"source": "@site/docs/components/ontario-card/readme.md",
+	"sourceDirName": "components/ontario-card",
+	"slug": "/components/ontario-card/",
+	"permalink": "/developer-docs/components/ontario-card/",
+	"draft": false,
+	"tags": [],
+	"version": "current",
+	"frontMatter": {},
+	"sidebar": "tutorialSidebar",
+	"previous": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-callout/"
+	},
+	"next": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-card-collection/"
+	}
+}

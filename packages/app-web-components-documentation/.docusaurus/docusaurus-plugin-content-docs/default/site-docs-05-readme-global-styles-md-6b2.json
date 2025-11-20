@@ -1,0 +1,26 @@
+{
+	"unversionedId": "readme-global-styles",
+	"id": "readme-global-styles",
+	"title": "Global Styles",
+	"description": "- Introduction",
+	"source": "@site/docs/05-readme-global-styles.md",
+	"sourceDirName": ".",
+	"slug": "/readme-global-styles",
+	"permalink": "/developer-docs/readme-global-styles",
+	"draft": false,
+	"tags": [],
+	"version": "current",
+	"sidebarPosition": 5,
+	"frontMatter": {
+		"title": "Global Styles"
+	},
+	"sidebar": "tutorialSidebar",
+	"previous": {
+		"title": "Design Tokens",
+		"permalink": "/developer-docs/readme-design-tokens"
+	},
+	"next": {
+		"title": "Complete Styles",
+		"permalink": "/developer-docs/readme-complete-styles"
+	}
+}

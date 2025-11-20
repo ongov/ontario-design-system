@@ -1,0 +1,26 @@
+{
+	"unversionedId": "readme-react",
+	"id": "readme-react",
+	"title": "React Component Library",
+	"description": "Built With Stencil",
+	"source": "@site/docs/03-readme-react.md",
+	"sourceDirName": ".",
+	"slug": "/readme-react",
+	"permalink": "/developer-docs/readme-react",
+	"draft": false,
+	"tags": [],
+	"version": "current",
+	"sidebarPosition": 3,
+	"frontMatter": {
+		"title": "React Component Library"
+	},
+	"sidebar": "tutorialSidebar",
+	"previous": {
+		"title": "Angular Component Library",
+		"permalink": "/developer-docs/readme-angular"
+	},
+	"next": {
+		"title": "Design Tokens",
+		"permalink": "/developer-docs/readme-design-tokens"
+	}
+}

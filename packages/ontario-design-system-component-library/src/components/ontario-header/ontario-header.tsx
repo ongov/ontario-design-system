@@ -11,6 +11,7 @@ import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.s
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
 import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
 import OntarioIconSearchWhite from '../ontario-icon/assets/ontario-icon-search-white.svg';
+import OntarioIconDropdownArrow from '../ontario-icon/assets/ontario-icon-dropdown-arrow.svg';
 import OntarioHeaderDefaultData from './ontario-header-default-data.json';
 
 import { Language } from '../../utils/common/language-types';
@@ -69,6 +70,16 @@ export class OntarioHeader {
 	 * The items that will go inside the menu.
 	 */
 	@Prop() menuItems: MenuItem[] | string;
+
+	/**
+	 * Information pertaining to the sign-in menu items for the Ontario header.
+	 */
+	@Prop() signInMenuItems?: MenuItem[] | string;
+
+	/**
+	 * A custom function to pass to the sign-in button.
+	 */
+	@Prop() customSignInToggle?: (event: globalThis.Event) => void;
 
 	/**
 	 * Option to disable fetching of the dynamic menu from the Ontario Header API
@@ -163,6 +174,16 @@ export class OntarioHeader {
 	@State() private menuItemState: MenuItem[];
 
 	/**
+	 * The parsed sign-in menu items state
+	 */
+	@State() private signInMenuItemsState: MenuItem[];
+
+	/**
+	 * A boolean state to handle the toggling of the sign-in menu
+	 */
+	@State() signInToggled: boolean = false;
+
+	/**
 	 * Check to see if menu is dynamic or static
 	 */
 	@State() private isDynamicMenu: boolean = false;
@@ -189,6 +210,13 @@ export class OntarioHeader {
 	@State() translations: any = translations;
 
 	@State() breakpointDeviceState: DeviceType;
+
+	/**
+	 * Helper to check if current breakpoint is mobile or tablet (not desktop)
+	 */
+	private get isMobileOrTablet(): boolean {
+		return this.breakpointDeviceState !== 'desktop';
+	}
 
 	@Watch('applicationHeaderInfo')
 	private parseApplicationHeaderInfo() {
@@ -248,6 +276,32 @@ export class OntarioHeader {
 		}
 	}
 
+	@Watch('signInMenuItems')
+	parseSignInMenuItems() {
+		try {
+			if (!Array.isArray(this.signInMenuItems) && typeof this.signInMenuItems === 'string') {
+				this.signInMenuItemsState = JSON.parse(this.signInMenuItems);
+			} else if (Array.isArray(this.signInMenuItems)) {
+				this.signInMenuItemsState = this.signInMenuItems;
+			} else {
+				this.signInMenuItemsState = [];
+			}
+		} catch (error) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addRegularText(' failed to parse props for ')
+				.addMonospaceText('<ontario-header>')
+				.addRegularText(' in ')
+				.addMonospaceText('parseSignInMenuItems()')
+				.addRegularText(' method \n ')
+				.addMonospaceText(error.stack)
+				.printMessage(ConsoleType.Error);
+
+			this.signInMenuItemsState = [];
+		}
+	}
+
 	@Watch('languageToggleOptions')
 	private parseLanguage() {
 		const languageToggleOptions = this.languageToggleOptions;
@@ -281,10 +335,17 @@ export class OntarioHeader {
 
 	@Listen('keydown', { target: 'window' })
 	handleKeyDown(event: KeyboardEvent) {
-		if (this.menuToggled && event.key === 'Escape') {
-			this.menuToggled = false;
-			this.menuButtonToggled.emit(this.menuToggled);
-			this.focusMenuButton();
+		if (event.key === 'Escape') {
+			if (this.menuToggled) {
+				this.menuToggled = false;
+				this.menuButtonToggled.emit(this.menuToggled);
+				this.focusMenuButton();
+			}
+			if (this.signInToggled) {
+				this.signInToggled = false;
+				this.menuButtonToggled.emit(this.signInToggled);
+				this.signInButton.focus();
+			}
 		}
 	}
 
@@ -293,13 +354,34 @@ export class OntarioHeader {
 	 */
 	@Listen('click', { capture: true, target: 'window' })
 	handleClick(event: any) {
-		// if the button is clicked, return
+		// Check if clicking inside overflow menu
+		const overflowMenu = this.el.shadowRoot?.querySelector('ontario-header-overflow-menu');
+		if (overflowMenu && event.composedPath().includes(overflowMenu)) {
+			return;
+		}
+
+		// Check if clicking inside tabs component (NEW!)
+		const tabsMenu = this.el.shadowRoot?.querySelector('ontario-header-menu-tabs');
+		if (tabsMenu && event.composedPath().includes(tabsMenu)) {
+			return;
+		}
+
+		// if the sign-in button is clicked, return
+		if (this.signInButton && event.composedPath().includes(this.signInButton)) {
+			return;
+		}
+
+		// if the menu button is clicked, return
 		if (event.composedPath().includes(this.menuButton)) {
 			return;
 		}
 
-		// If the click was outside the current component, do the following
-		if (this.menuToggled) this.menuToggled = !this.menuToggled;
+		// Close both menus when clicking outside
+		if (this.menuToggled || this.signInToggled) {
+			this.menuToggled = false;
+			this.signInToggled = false;
+			this.menuButtonToggled.emit(false);
+		}
 	}
 
 	/**
@@ -318,7 +400,15 @@ export class OntarioHeader {
 	 */
 	@Listen('resize', { target: 'window' })
 	handleResize() {
+		const previousBreakpoint = this.breakpointDeviceState;
 		this.breakpointDeviceState = isClientSideRendering() ? determineDeviceType() : DeviceTypes.Desktop;
+
+		// Close all menus when breakpoint changes
+		if (previousBreakpoint && previousBreakpoint !== this.breakpointDeviceState) {
+			this.menuToggled = false;
+			this.signInToggled = false;
+			this.menuButtonToggled.emit(false);
+		}
 	}
 
 	/**
@@ -341,6 +431,15 @@ export class OntarioHeader {
 	}
 
 	/**
+	 * Listen for menu closed event from overflow menu
+	 */
+	@Listen('menuClosed', { target: 'window' })
+	handleMenuClosed() {
+		this.menuToggled = false;
+		this.signInToggled = false;
+	}
+
+	/**
 	 * This event is toggled when the menu button is pressed.
 	 * The <ontario-header-overflow-menu> sub-component listens for this event
 	 * To trigger the showing and hiding of the overflow menu.
@@ -351,6 +450,11 @@ export class OntarioHeader {
 	 * Logic to handle the menu toggling
 	 */
 	handlemenuToggled = () => {
+		// Close sign-in menu if it's open
+		if (this.signInToggled) {
+			this.signInToggled = false;
+		}
+
 		this.menuToggled = !this.menuToggled;
 		this.menuButtonToggled.emit(this.menuToggled);
 		this.searchToggle = undefined;
@@ -361,6 +465,20 @@ export class OntarioHeader {
 	 */
 	handleSearchToggle = () => {
 		this.searchToggle = !this.searchToggle;
+	};
+
+	/**
+	 * Logic to handle the sign-in toggling
+	 */
+	handleSignInToggled = () => {
+		// Close main menu if it's open
+		if (this.menuToggled) {
+			this.menuToggled = false;
+		}
+
+		this.signInToggled = !this.signInToggled;
+		// Emit the menuButtonToggled event for either dropdown
+		this.menuButtonToggled.emit(this.signInToggled);
 	};
 
 	/**
@@ -451,10 +569,60 @@ export class OntarioHeader {
 			return;
 		}
 
+		// Determine header type and device state
+		const isApplicationOrServiceHeader = this.type === 'application' || this.type === 'serviceOntario';
+		const isOntarioHeader = this.type === 'ontario';
+
+		// Determine button styling and behavior
+		const shouldShowOutline = isApplicationOrServiceHeader || this.isMobileOrTablet;
+		const useMenuCloseToggle = isApplicationOrServiceHeader || this.isMobileOrTablet;
+
+		// Build CSS classes
+		const buttonClasses = [
+			'ontario-header__menu-toggle',
+			'ontario-header-button',
+			isOntarioHeader && 'ontario-header-button--desktop',
+			shouldShowOutline && 'ontario-header-button--with-outline',
+			this.menuToggled && 'ontario-header-button--toggled-open',
+		]
+			.filter(Boolean)
+			.join(' ');
+
+		// Determine button content
+		const getButtonContent = () => {
+			if (useMenuCloseToggle) {
+				return (
+					<div class="ontario-header__menu-toggle-content">
+						<span
+							class="ontario-header__icon-container ontario-header__icon-container--white"
+							innerHTML={this.menuToggled ? OntarioIconClose : OntarioIconMenu}
+						/>
+						<span>Menu</span>
+					</div>
+				);
+			}
+
+			return (
+				<div class="ontario-header__menu-toggle-content">
+					<span>
+						{this.isMobileOrTablet
+							? this.translations.header.menu[`${this.language}`]
+							: this.translations.header.topics[`${this.language}`]}
+					</span>
+					<span
+						class={`ontario-header__icon-container ontario-header__icon-container--white ${
+							this.menuToggled ? 'ontario-header__icon-container--rotated' : ''
+						}`}
+						innerHTML={OntarioIconDropdownArrow}
+					/>
+				</div>
+			);
+		};
+
 		return (
 			<button
-				class="ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline"
-				id={this.type === 'ontario' ? 'ontario-header-menu-toggler' : 'ontario-application-header-menu-toggler'}
+				class={buttonClasses}
+				id={isOntarioHeader ? 'ontario-header-menu-toggler' : 'ontario-application-header-menu-toggler'}
 				aria-controls="ontario-navigation"
 				aria-label={
 					this.menuToggled
@@ -464,13 +632,45 @@ export class OntarioHeader {
 				aria-expanded={this.menuToggled ? 'true' : 'false'}
 				onClick={this.handlemenuToggled}
 				type="button"
-				ref={(el) => (this.menuButton = el as HTMLInputElement)}
+				ref={(el) => (this.menuButton = el as HTMLButtonElement)}
 			>
+				{getButtonContent()}
+			</button>
+		);
+	}
+
+	/**
+	 * This function generates the sign-in button for the ontario header component.
+	 */
+	private renderSignInButton() {
+		if (!this.signInMenuItemsState || this.signInMenuItemsState.length === 0) {
+			return;
+		}
+
+		// Only render sign-in button on desktop
+		if (this.breakpointDeviceState !== 'desktop') {
+			return;
+		}
+
+		return (
+			<button
+				class={`ontario-header__sign-in-toggle ontario-header-button ontario-header-button--desktop ontario-header-button--without-outline ontario-hide-for-small-only ontario-hide-for-medium-only ${
+					this.signInToggled ? 'ontario-header-button--toggled-open' : ''
+				}`}
+				id="ontario-header-sign-in-toggler"
+				aria-controls="ontario-sign-in-navigation"
+				aria-expanded={this.signInToggled ? 'true' : 'false'}
+				onClick={this.handleSignInToggled}
+				type="button"
+				ref={(el) => (this.signInButton = el as HTMLElement)}
+			>
+				<span>{this.translations.header.signIn[`${this.language}`]}</span>
 				<span
-					class="ontario-header__icon-container"
-					innerHTML={this.menuToggled ? OntarioIconClose : OntarioIconMenu}
+					class={`ontario-header__icon-container ontario-header__icon-container--white ${
+						this.signInToggled ? 'ontario-header__icon-container--rotated' : ''
+					}`}
+					innerHTML={OntarioIconDropdownArrow}
 				/>
-				<span>Menu</span>
 			</button>
 		);
 	}
@@ -514,6 +714,7 @@ export class OntarioHeader {
 	componentWillLoad() {
 		this.parseApplicationHeaderInfo();
 		this.parseMenuItems();
+		this.parseSignInMenuItems();
 		this.parseLanguage();
 	}
 
@@ -545,6 +746,7 @@ export class OntarioHeader {
 	 */
 	header!: HTMLElement;
 	menuButton!: HTMLElement;
+	signInButton!: HTMLElement;
 	searchBar!: HTMLInputElement;
 	searchButton!: HTMLInputElement;
 
@@ -552,6 +754,8 @@ export class OntarioHeader {
 		const isServiceOntarioType = this.type === 'serviceOntario';
 
 		if (this.type == 'ontario') {
+			// Check if we should show tabbed interface
+			const shouldShowTabs = this.isMobileOrTablet && this.signInMenuItemsState && this.signInMenuItemsState.length > 0;
 			return (
 				<div>
 					<div class="ontario-header__container" ref={(el) => (this.header = el as HTMLInputElement)}>
@@ -581,7 +785,7 @@ export class OntarioHeader {
 									name="searchForm"
 									id="ontario-search-form-container"
 									onSubmit={this.handleSubmit}
-									class="ontario-header__search-container ontario-columns ontario-small-10 ontario-medium-offset-3 ontario-medium-6 ontario-large-offset-0 ontario-large-6"
+									class="ontario-header__search-container ontario-columns ontario-small-10 ontario-medium-6 ontario-large-5"
 									novalidate
 								>
 									<label htmlFor="ontario-search-input-field" class="ontario-show-for-sr">
@@ -612,7 +816,7 @@ export class OntarioHeader {
 								</form>
 
 								{/* Ontario header language toggle + menu button */}
-								<div class="ontario-header__nav-right-container ontario-columns ontario-small-10 ontario-medium-8 ontario-large-3">
+								<div class="ontario-header__nav-right-container ontario-columns ontario-small-10 ontario-medium-8 ontario-large-5">
 									<ontario-language-toggle
 										url={this.language === 'en' ? this.languageState?.frenchLink : this.languageState?.englishLink}
 										size="default"
@@ -630,6 +834,7 @@ export class OntarioHeader {
 											{this.translations.header.search[`${this.language}`]}
 										</span>
 									</button>
+									{this.renderSignInButton()}
 									{this.renderMenuButton('ontario-header')}
 								</div>
 								<div class="ontario-header__search-close-container ontario-columns ontario-small-2 ontario-medium-3">
@@ -650,8 +855,22 @@ export class OntarioHeader {
 						</header>
 
 						{/* Ontario header navigation */}
-						{/* Minor styling differences in placement of ontario.ca menu and application menu */}
-						<ontario-header-overflow-menu menuItems={this.menuItemState}></ontario-header-overflow-menu>
+						{/* Show overflow menu on all devices, but with different props based on breakpoint */}
+						{/* Ontario header navigation */}
+						{shouldShowTabs ? (
+							// Mobile/Tablet with sign-in items → Use tabbed interface
+							<ontario-header-menu-tabs
+								topicsMenuItems={this.menuItemState}
+								signInMenuItems={this.signInMenuItemsState}
+								menuButtonRef={this.menuButton}
+							/>
+						) : (
+							// Desktop OR no sign-in items → Use simple overflow menu
+							<ontario-header-overflow-menu
+								menuItems={this.signInToggled ? this.signInMenuItemsState || [] : this.menuItemState}
+								menuButtonRef={this.signInToggled ? this.signInButton : this.menuButton}
+							/>
+						)}
 					</div>
 					{this.menuToggled && <div class="ontario-hide-for-large ontario-overlay" />}
 				</div>
@@ -712,7 +931,7 @@ export class OntarioHeader {
 													{this.menuItemState
 														?.slice(0, this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState])
 														.map((item) =>
-															generateMenuItem(item.href, item.title, item.linkIsActive, '', item.onClickHandler),
+															generateMenuItem(item.href, item.title, item.linkIsActive ?? false, item.description),
 														)}
 												</ul>
 											)}

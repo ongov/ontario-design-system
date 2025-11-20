@@ -1,0 +1,23 @@
+{
+	"unversionedId": "components/ontario-critical-alert/readme",
+	"id": "components/ontario-critical-alert/readme",
+	"title": "readme",
+	"description": "Properties",
+	"source": "@site/docs/components/ontario-critical-alert/readme.md",
+	"sourceDirName": "components/ontario-critical-alert",
+	"slug": "/components/ontario-critical-alert/",
+	"permalink": "/developer-docs/components/ontario-critical-alert/",
+	"draft": false,
+	"tags": [],
+	"version": "current",
+	"frontMatter": {},
+	"sidebar": "tutorialSidebar",
+	"previous": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-checkbox/"
+	},
+	"next": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-date-input/"
+	}
+}

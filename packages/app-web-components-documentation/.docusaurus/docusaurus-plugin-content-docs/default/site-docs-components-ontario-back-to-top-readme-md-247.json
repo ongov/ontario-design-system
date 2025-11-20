@@ -1,0 +1,23 @@
+{
+	"unversionedId": "components/ontario-back-to-top/readme",
+	"id": "components/ontario-back-to-top/readme",
+	"title": "readme",
+	"description": "Properties",
+	"source": "@site/docs/components/ontario-back-to-top/readme.md",
+	"sourceDirName": "components/ontario-back-to-top",
+	"slug": "/components/ontario-back-to-top/",
+	"permalink": "/developer-docs/components/ontario-back-to-top/",
+	"draft": false,
+	"tags": [],
+	"version": "current",
+	"frontMatter": {},
+	"sidebar": "tutorialSidebar",
+	"previous": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-aside/"
+	},
+	"next": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-badge/"
+	}
+}
