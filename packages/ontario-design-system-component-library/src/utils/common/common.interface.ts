@@ -112,5 +112,6 @@ export interface MenuItem {
 	title: string;
 	href: string;
 	linkIsActive?: boolean;
+	description?: string;
 	onClickHandler?: (event: Event) => void;
 }

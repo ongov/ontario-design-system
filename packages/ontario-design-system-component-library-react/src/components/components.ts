@@ -24,6 +24,7 @@ import { OntarioDropdownList as OntarioDropdownListElement, defineCustomElement 
 import { OntarioFieldset as OntarioFieldsetElement, defineCustomElement as defineOntarioFieldset } from "@ongov/ontario-design-system-component-library/components/ontario-fieldset.js";
 import { OntarioFooter as OntarioFooterElement, defineCustomElement as defineOntarioFooter } from "@ongov/ontario-design-system-component-library/components/ontario-footer.js";
 import { OntarioFormContainer as OntarioFormContainerElement, defineCustomElement as defineOntarioFormContainer } from "@ongov/ontario-design-system-component-library/components/ontario-form-container.js";
+import { OntarioHeaderMenuTabs as OntarioHeaderMenuTabsElement, defineCustomElement as defineOntarioHeaderMenuTabs } from "@ongov/ontario-design-system-component-library/components/ontario-header-menu-tabs.js";
 import { OntarioHeaderOverflowMenu as OntarioHeaderOverflowMenuElement, defineCustomElement as defineOntarioHeaderOverflowMenu } from "@ongov/ontario-design-system-component-library/components/ontario-header-overflow-menu.js";
 import { OntarioHeader as OntarioHeaderElement, defineCustomElement as defineOntarioHeader } from "@ongov/ontario-design-system-component-library/components/ontario-header.js";
 import { OntarioHintExpander as OntarioHintExpanderElement, defineCustomElement as defineOntarioHintExpander } from "@ongov/ontario-design-system-component-library/components/ontario-hint-expander.js";
@@ -383,6 +384,17 @@ export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioH
     react: React,
     events: { onMenuButtonToggled: 'menuButtonToggled' } as OntarioHeaderEvents,
     defineCustomElement: defineOntarioHeader
+});
+
+export type OntarioHeaderMenuTabsEvents = NonNullable<unknown>;
+
+export const OntarioHeaderMenuTabs: StencilReactComponent<OntarioHeaderMenuTabsElement, OntarioHeaderMenuTabsEvents> = /*@__PURE__*/ createComponent<OntarioHeaderMenuTabsElement, OntarioHeaderMenuTabsEvents>({
+    tagName: 'ontario-header-menu-tabs',
+    elementClass: OntarioHeaderMenuTabsElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioHeaderMenuTabsEvents,
+    defineCustomElement: defineOntarioHeaderMenuTabs
 });
 
 export type OntarioHeaderOverflowMenuEvents = NonNullable<unknown>;

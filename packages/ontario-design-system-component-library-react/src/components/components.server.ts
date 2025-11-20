@@ -25,6 +25,7 @@ import { OntarioDropdownList as OntarioDropdownListElement } from "@ongov/ontari
 import { OntarioFieldset as OntarioFieldsetElement } from "@ongov/ontario-design-system-component-library/components/ontario-fieldset.js";
 import { OntarioFooter as OntarioFooterElement } from "@ongov/ontario-design-system-component-library/components/ontario-footer.js";
 import { OntarioFormContainer as OntarioFormContainerElement } from "@ongov/ontario-design-system-component-library/components/ontario-form-container.js";
+import { OntarioHeaderMenuTabs as OntarioHeaderMenuTabsElement } from "@ongov/ontario-design-system-component-library/components/ontario-header-menu-tabs.js";
 import { OntarioHeaderOverflowMenu as OntarioHeaderOverflowMenuElement } from "@ongov/ontario-design-system-component-library/components/ontario-header-overflow-menu.js";
 import { OntarioHeader as OntarioHeaderElement } from "@ongov/ontario-design-system-component-library/components/ontario-header.js";
 import { OntarioHintExpander as OntarioHintExpanderElement } from "@ongov/ontario-design-system-component-library/components/ontario-hint-expander.js";
@@ -428,6 +429,8 @@ export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioH
         type: 'type',
         applicationHeaderInfo: 'application-header-info',
         menuItems: 'menu-items',
+        signInMenuItems: 'sign-in-menu-items',
+        customSignInToggle: 'custom-sign-in-toggle',
         disableDynamicMenu: 'disable-dynamic-menu',
         languageToggleOptions: 'language-toggle-options',
         customLanguageToggle: 'custom-language-toggle',
@@ -438,11 +441,28 @@ export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioH
     serializeShadowRoot
 });
 
+export type OntarioHeaderMenuTabsEvents = NonNullable<unknown>;
+
+export const OntarioHeaderMenuTabs: StencilReactComponent<OntarioHeaderMenuTabsElement, OntarioHeaderMenuTabsEvents> = /*@__PURE__*/ createComponent<OntarioHeaderMenuTabsElement, OntarioHeaderMenuTabsEvents>({
+    tagName: 'ontario-header-menu-tabs',
+    properties: {
+        topicsMenuItems: 'topics-menu-items',
+        signInMenuItems: 'sign-in-menu-items',
+        menuButtonRef: 'menu-button-ref'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
+
 export type OntarioHeaderOverflowMenuEvents = NonNullable<unknown>;
 
 export const OntarioHeaderOverflowMenu: StencilReactComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents> = /*@__PURE__*/ createComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents>({
     tagName: 'ontario-header-overflow-menu',
-    properties: { menuItems: 'menu-items' },
+    properties: {
+        menuItems: 'menu-items',
+        menuButtonRef: 'menu-button-ref',
+        standalone: 'standalone'
+    },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
     serializeShadowRoot
 });
