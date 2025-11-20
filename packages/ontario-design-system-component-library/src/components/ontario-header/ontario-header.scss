@@ -14,88 +14,27 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables';
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/5-layout/_grid.layout.scss';
 @use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
-
 @use '../../styles/text-inputs.scss';
 @use '../../styles/header.scss';
 
+// Variables
 $border-width-1: 1px;
 $border-width-2: 2px;
 $border-width-6: 6px;
 $font-size-18: globalFunctions.px-to-rem(18);
-
 $ontario-search-padding: 7.2rem;
 $ontario-search-padding--mobile: 6.4rem;
+$ontario-header-search-close-height: globalFunctions.px-to-rem(60);
+$ontario-header-search-close-icon-height: globalFunctions.px-to-rem(30);
 $ontario-header-height: globalFunctions.px-to-rem(92);
 $ontario-header-logo-width: 180px;
 $ontario-header-logo-width--mobile: 45px;
 $ontario-header-custom-breakpoint: 39.9375em;
-$ontario-header-menu-button-icon--margin-right: 6px;
-$ontario-navigation-container-min-width: globalFunctions.px-to-rem(290); //18.125rem
-$ontario-header-navigation-link-font-size: $font-size-18;
+$ontario-navigation-container-min-width: globalFunctions.px-to-rem(290);
 $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
-$ontario-header-search-submit-button-font-size: $font-size-18;
 
-:host {
-	--header-search-reset: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTE5IDYuNEwxNy42IDUgMTIgMTAuNiA2LjQgNSA1IDYuNGw1LjYgNS42TDUgMTcuNiA2LjQgMTlsNS42LTUuNiA1LjYgNS42IDEuNC0xLjQtNS42LTUuNkwxOSA2LjR6IiBmaWxsPSIjMDAwIi8+PC9zdmc+);
-}
-
-.ontario-header {
-	position: relative;
-	overflow: hidden;
-	z-index: zIndex.$ontario-z-index-above-high;
-	background-color: colours.$ontario-colour-black;
-	color: colours.$ontario-colour-white;
-	display: flex;
-	align-items: center;
-	height: $ontario-header-height;
-
-	.ontario-row {
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-	}
-
-	svg {
-		width: spacing.$spacing-6;
-		height: spacing.$spacing-6;
-		margin-bottom: spacing.$spacing-0;
-	}
-}
-
-.ontario-header__container {
-	position: relative;
-	z-index: $ontario-header-z-index;
-
-	@media screen and (min-width: breakpoints.$medium-breakpoint) {
-		z-index: zIndex.$ontario-z-index-above-low;
-	}
-}
-
-.ontario-header__logo-container {
-	height: globalVariables.$ontario-logo-height;
-
-	a {
-		display: inline-block;
-		height: 100%;
-		outline: none;
-
-		&:focus {
-			box-shadow: 0 0 0 globalVariables.$global-radius colours.$ontario-colour-focus;
-		}
-	}
-
-	svg,
-	img {
-		width: $ontario-header-logo-width--mobile;
-		height: globalVariables.$ontario-logo-height;
-
-		@media screen and (min-width: breakpoints.$small-breakpoint) {
-			width: $ontario-header-logo_width;
-		}
-	}
-}
-
-.ontario-header-button {
+// Mixins for common button states
+@mixin header-button-base {
 	@extend %ontario-header-button;
 
 	&:focus,
@@ -110,217 +49,66 @@ $ontario-header-search-submit-button-font-size: $font-size-18;
 	}
 }
 
-.ontario-navigation {
-	@extend %ontario-navigation;
-
-	&--open {
-		visibility: visible;
-		transform: translateY(0);
-		transition: transform 0.4s ease-in-out;
-	}
-
-	ul {
-		list-style: none;
-		padding: spacing.$spacing-2 spacing.$spacing-0;
-		margin: spacing.$spacing-0;
-		border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
-
-		@media screen and (min-width: breakpoints.$medium-breakpoint) {
-			border-bottom: none;
-		}
-	}
-
-	li {
-		border-top: $border-width-1 solid colours.$ontario-greyscale-20;
-		padding: spacing.$spacing-0;
-		margin-bottom: spacing.$spacing-0;
-
-		&:last-of-type {
-			border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
-		}
-	}
-
-	a {
-		color: colours.$ontario-colour-black;
-		display: block;
-		font-size: $ontario-header-navigation-link-font-size;
-		font-weight: fontWeights.$ontario-font-weights-semi-bold;
-		font-family: fonts.$ontario-font-open-sans;
-		text-decoration: none;
-		padding: calc(spacing.$spacing-3 - math.div(spacing.$spacing-1, 3.25)) spacing.$spacing-5;
-
-		&:hover {
-			text-decoration: underline;
-			background-color: darken(colours.$ontario-greyscale-5, 5);
-		}
-
-		&:active {
-			text-decoration: underline;
-			background-color: colours.$ontario-greyscale-20;
-		}
-
-		&:focus,
-		&:active {
-			@extend %ontario-focus;
-			box-shadow: focusPlaceholders.$ontario-focus-box-shadow inset;
-		}
-
-		&.ontario-link--active {
-			border-left: $border-width-6 solid colours.$ontario-colour-black;
-			background-color: colours.$ontario-greyscale-5;
-		}
-	}
-}
-
-.ontario-overlay {
-	@extend %ontario-overlay;
-}
-
-.ontario-icon-container {
-	display: flex;
-	align-items: center;
-}
-
-.ontario-icon-container-reset {
-	display: flex;
-	align-items: center;
-
-	svg {
-		fill: colours.$ontario-colour-black;
-	}
-}
-
-.ontario-navigation__container.ontario-navigation--open {
-	visibility: visible;
-	transform: translateY(0);
-	transition: transform 0.4s ease-in-out;
-
-	@media screen and (min-width: breakpoints.$medium-breakpoint) {
-		z-index: zIndex.$ontario-z-index-above-high;
-	}
-}
-
-.ontario-navigation__container.ontario-navigation--closed {
-	background: colours.$ontario-colour-white;
-	position: absolute;
-	transform: translateY(-100%);
-	transition:
-		transform 0.3s ease-in-out,
-		visibility 0.1s ease;
-	width: 100%;
-	visibility: hidden;
-	z-index: zIndex.$ontario-z-index-above-high;
-}
-
-.ontario-header-button.ontario-navigation--open {
-	&:hover {
-		background-color: colours.$ontario-greyscale-60;
-	}
-
-	&:active {
-		background-color: colours.$ontario-colour-black;
-	}
-}
-
-.ontario-header-button.ontario-navigation--closed {
-	&:active {
-		background-color: colours.$ontario-colour-black;
-	}
-}
-
-/* Ontario heaader search styles */
-.ontario-header__search-container {
-	position: relative;
-	display: none;
-
-	@media screen and (min-width: breakpoints.$medium-breakpoint) {
-		display: flex;
-	}
-
-	@media screen and (min-width: breakpoints.$small-breakpoint) {
-		padding-right: math.div(2rem, 2);
-	}
-}
-
-.ontario-input.ontario-header__search-input {
-	border-width: 0;
-	margin-bottom: spacing.$spacing-0;
-	height: globalVariables.$standard-input-height;
-	padding-left: spacing.$spacing-3;
-	padding-right: $ontario-search-padding;
-
-	&:invalid + input[type='reset'] {
-		display: none;
-	}
-
+@mixin header-button-hover-focus {
+	&:hover,
 	&:focus {
-		& ~ .ontario-header__search-submit {
-			background-color: colours.$ontario-colour-link;
-			color: colours.$ontario-colour-white;
-
-			svg {
-				fill: colours.$ontario-colour-white;
-			}
-
-			&:hover {
-				background-color: colours.$ontario-colour-link--hover;
-				color: colours.$ontario-colour-white;
-			}
-		}
-	}
-
-	// Remove auto X icon for IE and Edge on input area
-	&::-ms-clear {
-		display: none;
-		width: 0;
-		height: 0;
-	}
-
-	// Remove red outline around input area on Firefox
-	&:invalid:focus {
-		box-shadow: focusPlaceholders.$ontario-focus-box-shadow;
-		-moz-box-shadow: none;
-	}
-
-	&:invalid:not(:focus) {
-		box-shadow: none;
-		-moz-box-shadow: none;
-	}
-
-	@media screen and (min-width: breakpoints.$small-breakpoint) and (max-width: breakpoints.$medium-breakpoint) {
-		padding-left: spacing.$spacing-4;
-		padding-right: $ontario-search-padding--mobile;
+		background-color: colours.$ontario-greyscale-70;
 	}
 }
 
-.ontario-header__search-submit {
-	border: 0;
-	border-radius: 0 3px 3px 0;
-	background-color: colours.$ontario-greyscale-5;
+@mixin navigation-list-styles {
+	list-style: none;
+	padding: spacing.$spacing-2 spacing.$spacing-0;
+	margin: spacing.$spacing-0;
+	border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
+
+	@media screen and (min-width: breakpoints.$medium-breakpoint) {
+		border-bottom: none;
+	}
+}
+
+@mixin navigation-item-styles {
+	border-top: $border-width-1 solid colours.$ontario-greyscale-20;
+	padding: spacing.$spacing-0;
+	margin-bottom: spacing.$spacing-0;
+
+	&:last-of-type {
+		border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
+	}
+}
+
+@mixin navigation-link-styles {
 	color: colours.$ontario-colour-black;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	font-family: fonts.$ontario-font-open-sans;
+	display: block;
+	font-size: $font-size-18;
 	font-weight: fontWeights.$ontario-font-weights-semi-bold;
-	font-size: $ontario-header-search-submit-button-font-size;
-	height: 100%;
-	line-height: lineHeights.$ontario-line-height-8;
+	font-family: fonts.$ontario-font-open-sans;
+	text-decoration: none;
+	padding: calc(spacing.$spacing-3 - math.div(spacing.$spacing-1, 3.25)) spacing.$spacing-5;
 
-	position: absolute;
-	right: spacing.$spacing-4;
-	top: spacing.$spacing-0;
-	cursor: pointer;
-
-	padding-left: spacing.$spacing-3;
-	padding-right: spacing.$spacing-3;
-
-	svg {
-		fill: colours.$ontario-colour-black;
+	&:hover {
+		text-decoration: underline;
+		background-color: darken(colours.$ontario-greyscale-5, 5);
 	}
 
+	&:active {
+		text-decoration: underline;
+		background-color: colours.$ontario-greyscale-20;
+	}
+
+	&:focus,
+	&:active {
+		@extend %ontario-focus;
+		box-shadow: focusPlaceholders.$ontario-focus-box-shadow inset;
+	}
+
+	&.ontario-link--active {
+		border-left: $border-width-6 solid colours.$ontario-colour-black;
+		background-color: colours.$ontario-greyscale-5;
+	}
+}
+
+@mixin search-button-interactive-states {
 	&:hover {
 		background-color: colours.$ontario-colour-link--hover;
 		color: colours.$ontario-colour-white;
@@ -349,73 +137,162 @@ $ontario-header-search-submit-button-font-size: $font-size-18;
 			fill: colours.$ontario-colour-white;
 		}
 	}
+}
+
+// Host styles
+:host {
+	--header-search-reset: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTE5IDYuNEwxNy42IDUgMTIgMTAuNiA2LjQgNSA1IDYuNGw1LjYgNS42TDUgMTcuNiA2LjQgMTlsNS42LTUuNiA1LjYgNS42IDEuNC0xLjQtNS42LTUuNkwxOSA2LjR6IiBmaWxsPSIjMDAwIi8+PC9zdmc+);
+}
+
+// Main header component
+.ontario-header {
+	position: relative;
+	overflow: hidden;
+	z-index: zIndex.$ontario-z-index-above-high;
+	background-color: colours.$ontario-colour-black;
+	color: colours.$ontario-colour-white;
+	display: flex;
+	align-items: center;
+	height: $ontario-header-height;
+
+	.ontario-row {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+	}
 
 	svg {
-		margin-right: spacing.$spacing-0;
-	}
-}
-
-input[type='reset'].ontario-header__search-reset {
-	position: absolute;
-	display: flex;
-	align-items: center;
-	top: 11px;
-	right: 80px;
-	height: 28px;
-	width: 28px;
-	color: colours.$ontario-colour-black;
-	margin: spacing.$spacing-0;
-	padding: spacing.$spacing-2;
-	background-image: var(--header-search-reset);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-color: transparent;
-	outline: none;
-	border: none;
-	cursor: pointer;
-
-	&:focus {
-		box-shadow: 0 0 0 globalVariables.$global-radius colours.$ontario-colour-focus;
-	}
-}
-
-/* Header menu & language toggle & close search button styles */
-.ontario-header__nav-right-container {
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-}
-
-.ontario-header-button--with-outline {
-	@extend %ontario-header-button--with-outline;
-
-	&:hover {
-		border: $border-width-2 solid colours.$ontario-colour-white;
-		color: colours.$ontario-colour-white;
+		width: spacing.$spacing-6;
+		height: spacing.$spacing-6;
+		margin-bottom: spacing.$spacing-0;
 	}
 
-	&:focus {
+	&__container {
+		position: relative;
+		z-index: $ontario-header-z-index;
+
+		@media screen and (min-width: breakpoints.$medium-breakpoint) {
+			z-index: zIndex.$ontario-z-index-above-low;
+		}
+	}
+
+	&__logo-container {
+		height: globalVariables.$ontario-logo-height;
+
+		a {
+			display: inline-block;
+			height: 100%;
+			outline: none;
+
+			&:focus {
+				box-shadow: 0 0 0 globalVariables.$global-radius colours.$ontario-colour-focus;
+			}
+		}
+
+		svg,
+		img {
+			width: $ontario-header-logo-width--mobile;
+			height: globalVariables.$ontario-logo-height;
+
+			@media screen and (min-width: breakpoints.$small-breakpoint) {
+				width: $ontario-header-logo-width;
+			}
+		}
+	}
+
+	&__nav-right-container {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: spacing.$spacing-4;
+	}
+
+	&__icon-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: spacing.$spacing-5;
+		height: spacing.$spacing-5;
+
+		&--white {
+			svg {
+				fill: white;
+				color: white;
+			}
+
+			svg path {
+				stroke: white;
+			}
+		}
+
+		&--rotated {
+			svg {
+				transform: rotate(180deg);
+			}
+		}
+
+		@media screen and (max-width: breakpoints.$medium-breakpoint) {
+			width: spacing.$spacing-6;
+			height: spacing.$spacing-6;
+		}
+	}
+
+	.ontario-header-button--toggled-open {
 		background-color: colours.$ontario-greyscale-70;
 	}
+}
 
-	@media screen and (max-width: breakpoints.$xsmall-breakpoint) {
-		padding: math.div(spacing.$spacing-3, 2);
+// Header button variants
+.ontario-header-button {
+	@include header-button-base;
+
+	&--with-outline {
+		@extend %ontario-header-button--with-outline;
+
+		&:hover {
+			border: $border-width-2 solid colours.$ontario-colour-white;
+			color: colours.$ontario-colour-white;
+		}
+
+		&:focus {
+			background-color: colours.$ontario-greyscale-70;
+		}
+
+		@media screen and (max-width: breakpoints.$xsmall-breakpoint) {
+			padding: math.div(spacing.$spacing-3, 2);
+		}
+	}
+
+	&--without-outline {
+		@include header-button-hover-focus;
+	}
+
+	&--desktop {
+		@media screen and (min-width: breakpoints.$medium-breakpoint) {
+			background-color: colours.$ontario-colour-black;
+			margin-left: spacing.$spacing-4;
+			padding: spacing.$spacing-1 spacing.$spacing-1 spacing.$spacing-1 spacing.$spacing-3 !important;
+			border: none !important;
+
+			svg {
+				margin-left: spacing.$spacing-1;
+				margin-right: spacing.$spacing-0 !important;
+				width: spacing.$spacing-5 !important;
+				height: spacing.$spacing-5 !important;
+			}
+
+			@include header-button-hover-focus;
+
+			&.ontario-header-button--with-outline {
+				border: none;
+			}
+		}
 	}
 }
 
-.ontario-header-button--without-outline {
-	&:focus {
-		background-color: colours.$ontario-greyscale-70;
-	}
-}
-
-.ontario-header__menu-toggler {
+// Specific header buttons
+.ontario-header__menu-toggle {
 	padding: math.div(spacing.$spacing-3, 2) spacing.$spacing-4;
-
-	@media screen and (max-width: breakpoints.$xsmall-breakpoint) {
-		padding-left: spacing.$spacing-2;
-		padding-right: spacing.$spacing-2;
-	}
 
 	span {
 		display: flex;
@@ -426,11 +303,19 @@ input[type='reset'].ontario-header__search-reset {
 	}
 
 	svg {
-		margin-right: $ontario-header-menu-button-icon--margin-right;
+		margin-right: globalFunctions.px-to-rem(6);
+		width: spacing.$spacing-6;
+		height: spacing.$spacing-6;
+	}
 
-		@media screen and (max-width: breakpoints.$xsmall-breakpoint) {
-			margin-right: spacing.$spacing-0;
-		}
+	@media screen and (max-width: breakpoints.$xsmall-breakpoint) {
+		padding-left: spacing.$spacing-2;
+		padding-right: spacing.$spacing-2;
+	}
+
+	@media screen and (max-width: breakpoints.$medium-breakpoint) {
+		flex-direction: row-reverse;
+		margin-left: spacing.$spacing-0 !important;
 	}
 }
 
@@ -445,21 +330,27 @@ input[type='reset'].ontario-header__search-reset {
 .ontario-header__search-toggler {
 	padding: spacing.$spacing-2 spacing.$spacing-3;
 	margin-left: spacing.$spacing-4;
+	border: none !important;
 
 	svg {
 		@media screen and (min-width: breakpoints.$small-breakpoint) {
 			margin-right: spacing.$spacing-1;
 		}
 	}
+
+	@media screen and (max-width: breakpoints.$medium-breakpoint) {
+		margin-left: spacing.$spacing-0;
+	}
 }
 
 .ontario-header__search-close {
 	flex-direction: column-reverse;
+	justify-content: center;
 	font-weight: fontWeights.$ontario-font-weights-normal;
 	margin-right: spacing.$spacing-4;
-	padding: math.div(spacing.$spacing-5, 10) spacing.$spacing-1;
+	padding: math.div(spacing.$spacing-5, 10) spacing.$spacing-1 !important;
 	position: relative;
-	height: 60px;
+	height: $ontario-header-search-close-height;
 	display: none;
 
 	span {
@@ -470,7 +361,7 @@ input[type='reset'].ontario-header__search-reset {
 
 		&:last-of-type {
 			top: 0;
-			height: 1.875rem;
+			height: $ontario-header-search-close-icon-height;
 		}
 
 		@media screen and (min-width: $ontario-header-custom-breakpoint) {
@@ -505,9 +396,191 @@ input[type='reset'].ontario-header__search-reset {
 	}
 }
 
-.ontario-header--search-open .ontario-header__search-close {
+// Navigation components
+.ontario-navigation {
+	@extend %ontario-navigation;
+
+	&--open {
+		visibility: visible;
+		transform: translateY(0);
+		transition: transform 0.4s ease-in-out;
+
+		.ontario-navigation__container {
+			visibility: visible;
+			transform: translateY(0);
+			transition: transform 0.4s ease-in-out;
+
+			@media screen and (min-width: breakpoints.$medium-breakpoint) {
+				transition: none;
+				display: block;
+			}
+		}
+	}
+
+	ul {
+		@include navigation-list-styles;
+	}
+
+	li {
+		@include navigation-item-styles;
+	}
+
+	a {
+		@include navigation-link-styles;
+	}
+
+	&__container {
+		&.ontario-navigation--open {
+			visibility: visible;
+			transform: translateY(0);
+			transition: transform 0.4s ease-in-out;
+
+			@media screen and (min-width: breakpoints.$medium-breakpoint) {
+				z-index: zIndex.$ontario-z-index-above-high;
+			}
+		}
+
+		&.ontario-navigation--closed {
+			background: colours.$ontario-colour-white;
+			position: absolute;
+			transform: translateY(-100%);
+			transition:
+				transform 0.3s ease-in-out,
+				visibility 0.1s ease;
+			width: 100%;
+			visibility: hidden;
+			z-index: zIndex.$ontario-z-index-above-high;
+		}
+	}
+}
+
+.ontario-overlay {
+	@extend %ontario-overlay;
+}
+
+.ontario-icon-container {
+	display: flex;
+	align-items: center;
+}
+
+.ontario-icon-container-reset {
+	display: flex;
+	align-items: center;
+
+	svg {
+		fill: colours.$ontario-colour-black;
+	}
+}
+
+// Search functionality
+.ontario-header__search-container {
+	position: relative;
+	display: none;
+
 	@media screen and (min-width: breakpoints.$medium-breakpoint) {
+		display: flex;
+	}
+
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
+		padding-right: math.div(2rem, 2);
+	}
+}
+
+.ontario-input.ontario-header__search-input {
+	border-width: 0;
+	margin-bottom: spacing.$spacing-0;
+	height: globalVariables.$standard-input-height;
+	padding-left: spacing.$spacing-3;
+	padding-right: $ontario-search-padding;
+
+	&:invalid + input[type='reset'] {
 		display: none;
+	}
+
+	&:focus {
+		& ~ .ontario-header__search-submit {
+			background-color: colours.$ontario-colour-link;
+			color: colours.$ontario-colour-white;
+
+			svg {
+				fill: colours.$ontario-colour-white;
+			}
+
+			@include search-button-interactive-states;
+		}
+	}
+
+	&::-ms-clear {
+		display: none;
+		width: 0;
+		height: 0;
+	}
+
+	&:invalid:focus {
+		box-shadow: focusPlaceholders.$ontario-focus-box-shadow;
+		-moz-box-shadow: none;
+	}
+
+	&:invalid:not(:focus) {
+		box-shadow: none;
+		-moz-box-shadow: none;
+	}
+
+	@media screen and (min-width: breakpoints.$small-breakpoint) and (max-width: breakpoints.$medium-breakpoint) {
+		padding-left: spacing.$spacing-4;
+		padding-right: $ontario-search-padding--mobile;
+	}
+}
+
+.ontario-header__search-submit {
+	border: 0;
+	border-radius: 0 3px 3px 0;
+	background-color: colours.$ontario-greyscale-5;
+	color: colours.$ontario-colour-black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: fonts.$ontario-font-open-sans;
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	font-size: $font-size-18;
+	height: 100%;
+	line-height: lineHeights.$ontario-line-height-8;
+	position: absolute;
+	right: spacing.$spacing-4;
+	top: spacing.$spacing-0;
+	cursor: pointer;
+	padding-left: spacing.$spacing-3;
+	padding-right: spacing.$spacing-3;
+
+	svg {
+		fill: colours.$ontario-colour-black;
+		margin-right: spacing.$spacing-0;
+	}
+
+	@include search-button-interactive-states;
+}
+
+input[type='reset'].ontario-header__search-reset {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	top: 11px;
+	right: 80px;
+	height: 28px;
+	width: 28px;
+	color: colours.$ontario-colour-black;
+	margin: spacing.$spacing-0;
+	padding: spacing.$spacing-2;
+	background-image: var(--header-search-reset);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	outline: none;
+	border: none;
+	cursor: pointer;
+
+	&:focus {
+		box-shadow: 0 0 0 globalVariables.$global-radius colours.$ontario-colour-focus;
 	}
 }
 
@@ -523,75 +596,33 @@ input[type='reset'].ontario-header__search-reset {
 	}
 }
 
-@media screen and (max-width: breakpoints.$medium-breakpoint) {
-	.ontario-header--search-open .ontario-header__logo-container,
-	.ontario-header--search-open .ontario-header__nav-right-container {
-		display: none;
+// Search open state
+.ontario-header--search-open {
+	.ontario-header__search-close {
+		@media screen and (min-width: breakpoints.$medium-breakpoint) {
+			display: none;
+		}
 	}
 
-	.ontario-header--search-open .ontario-header__search-close-container,
-	.ontario-header--search-open .ontario-header__search-container,
-	.ontario-header--search-open .ontario-header__search-close {
-		display: flex;
+	@media screen and (max-width: breakpoints.$medium-breakpoint) {
+		.ontario-header__logo-container,
+		.ontario-header__nav-right-container {
+			display: none;
+		}
+
+		.ontario-header__search-close-container,
+		.ontario-header__search-container,
+		.ontario-header__search-close {
+			display: flex;
+		}
 	}
+}
+
+.ontario-header__menu-toggle-content {
+	display: flex;
+	align-items: center;
 }
 
 .ontario-header-navigation__menu-item {
-	border-top: $border-width-1 solid colours.$ontario-greyscale-20;
-	padding: spacing.$spacing-0;
-	margin-bottom: spacing.$spacing-0;
-
-	&:last-of-type {
-		border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
-	}
-}
-
-// TODO: Investigate
-// Might be a duplicate of line 140
-.ontario-navigation a {
-	color: colours.$ontario-colour-black;
-	display: block;
-	font-size: $ontario-header-navigation-link-font-size;
-	font-weight: fontWeights.$ontario-font-weights-semi-bold;
-	font-family: fonts.$ontario-font-open-sans;
-	text-decoration: none;
-	padding: (spacing.$spacing-3 - math.div(spacing.$spacing-1, 3.25)) spacing.$spacing-5;
-
-	&:hover {
-		text-decoration: underline;
-		background-color: darken(colours.$ontario-greyscale-5, 5);
-	}
-
-	&:active {
-		text-decoration: underline;
-		background-color: colours.$ontario-greyscale-20;
-	}
-
-	&:focus,
-	&:active {
-		@extend %ontario-focus;
-		box-shadow: focusPlaceholders.$ontario-focus-box-shadow inset;
-	}
-
-	&.ontario-link--active {
-		border-left: $border-width-6 solid colours.$ontario-colour-black;
-		background-color: colours.$ontario-greyscale-5;
-	}
-}
-
-.ontario-navigation.ontario-navigation--open .ontario-navigation__container {
-	visibility: visible;
-	transform: translateY(0);
-	transition: transform 0.4s ease-in-out;
-
-	@media screen and (min-width: breakpoints.$medium-breakpoint) {
-		transition: none;
-		display: block;
-	}
-}
-
-/* Ontario header helper styles */
-.ontario-header__icon-container {
-	display: flex;
-	align-items: center;
+	@include navigation-item-styles;
 }
