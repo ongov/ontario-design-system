@@ -583,10 +583,12 @@ export declare interface OntarioFormContainer extends Components.OntarioFormCont
 		'applicationHeaderInfo',
 		'assetBasePath',
 		'customLanguageToggle',
+		'customSignInToggle',
 		'disableDynamicMenu',
 		'language',
 		'languageToggleOptions',
 		'menuItems',
+		'signInMenuItems',
 		'type',
 	],
 })
@@ -599,10 +601,12 @@ export declare interface OntarioFormContainer extends Components.OntarioFormCont
 		'applicationHeaderInfo',
 		'assetBasePath',
 		'customLanguageToggle',
+		'customSignInToggle',
 		'disableDynamicMenu',
 		'language',
 		'languageToggleOptions',
 		'menuItems',
+		'signInMenuItems',
 		'type',
 	],
 })
@@ -629,14 +633,38 @@ To trigger the showing and hiding of the overflow menu.
 }
 
 @ProxyCmp({
-	inputs: ['menuItems'],
+	inputs: ['menuButtonRef', 'signInMenuItems', 'topicsMenuItems'],
+})
+@Component({
+	selector: 'ontario-header-menu-tabs',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['menuButtonRef', 'signInMenuItems', 'topicsMenuItems'],
+})
+export class OntarioHeaderMenuTabs {
+	protected el: HTMLOntarioHeaderMenuTabsElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioHeaderMenuTabs extends Components.OntarioHeaderMenuTabs {}
+
+@ProxyCmp({
+	inputs: ['menuButtonRef', 'menuItems', 'standalone'],
 })
 @Component({
 	selector: 'ontario-header-overflow-menu',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['menuItems'],
+	inputs: ['menuButtonRef', 'menuItems', 'standalone'],
 })
 export class OntarioHeaderOverflowMenu {
 	protected el: HTMLOntarioHeaderOverflowMenuElement;
