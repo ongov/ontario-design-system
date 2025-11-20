@@ -486,6 +486,10 @@ export namespace Components {
          */
         "customLanguageToggle"?: (event: globalThis.Event) => void;
         /**
+          * A custom function to pass to the sign-in button.
+         */
+        "customSignInToggle"?: (event: globalThis.Event) => void;
+        /**
           * Option to disable fetching of the dynamic menu from the Ontario Header API
           * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
           * @default false
@@ -506,17 +510,34 @@ export namespace Components {
          */
         "menuItems": MenuItem[] | string;
         /**
+          * Information pertaining to the sign-in menu items for the Ontario header.
+         */
+        "signInMenuItems"?: MenuItem[] | string;
+        /**
           * The type of header.
           * @default 'application'
          */
         "type"?: OntarioHeaderType;
     }
+    interface OntarioHeaderMenuTabs {
+        "menuButtonRef"?: HTMLElement;
+        "signInMenuItems": MenuItem[] | string;
+        "topicsMenuItems": MenuItem[] | string;
+    }
     interface OntarioHeaderOverflowMenu {
         /**
-          * The items that will go inside the menu.
-          * @example <ontario-header-overflow-menu 	menu-items='[{ 		"title": "Link 1", 		"href": "/link-1" 		"linkIsActive": "false" 	},{ 		"title": "Link 2", 		"href": "/link-2" 		"linkIsActive": "false" 	},{ 		"title": "Link 3", 		"href": "/link-3" 		"linkIsActive": "false" 	},{ 		"title": "Link 4", 		"href": "/link-4" 		"linkIsActive": "false" 	}]'> </ontario-header-overflow-menu>
+          * Reference to the menu button (for focus trapping in standalone mode)
+         */
+        "menuButtonRef"?: HTMLElement;
+        /**
+          * The menu items to display
          */
         "menuItems": MenuItem[] | string;
+        /**
+          * Whether this is being used standalone (true) or inside tabs (false)
+          * @default true
+         */
+        "standalone": boolean;
     }
     interface OntarioHintExpander {
         /**
@@ -2548,6 +2569,12 @@ declare global {
         prototype: HTMLOntarioHeaderElement;
         new (): HTMLOntarioHeaderElement;
     };
+    interface HTMLOntarioHeaderMenuTabsElement extends Components.OntarioHeaderMenuTabs, HTMLStencilElement {
+    }
+    var HTMLOntarioHeaderMenuTabsElement: {
+        prototype: HTMLOntarioHeaderMenuTabsElement;
+        new (): HTMLOntarioHeaderMenuTabsElement;
+    };
     interface HTMLOntarioHeaderOverflowMenuElement extends Components.OntarioHeaderOverflowMenu, HTMLStencilElement {
     }
     var HTMLOntarioHeaderOverflowMenuElement: {
@@ -3437,6 +3464,7 @@ declare global {
         "ontario-footer": HTMLOntarioFooterElement;
         "ontario-form-container": HTMLOntarioFormContainerElement;
         "ontario-header": HTMLOntarioHeaderElement;
+        "ontario-header-menu-tabs": HTMLOntarioHeaderMenuTabsElement;
         "ontario-header-overflow-menu": HTMLOntarioHeaderOverflowMenuElement;
         "ontario-hint-expander": HTMLOntarioHintExpanderElement;
         "ontario-hint-text": HTMLOntarioHintTextElement;
@@ -4059,6 +4087,10 @@ declare namespace LocalJSX {
          */
         "customLanguageToggle"?: (event: globalThis.Event) => void;
         /**
+          * A custom function to pass to the sign-in button.
+         */
+        "customSignInToggle"?: (event: globalThis.Event) => void;
+        /**
           * Option to disable fetching of the dynamic menu from the Ontario Header API
           * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
           * @default false
@@ -4083,17 +4115,34 @@ declare namespace LocalJSX {
          */
         "onMenuButtonToggled"?: (event: OntarioHeaderCustomEvent<boolean>) => void;
         /**
+          * Information pertaining to the sign-in menu items for the Ontario header.
+         */
+        "signInMenuItems"?: MenuItem[] | string;
+        /**
           * The type of header.
           * @default 'application'
          */
         "type"?: OntarioHeaderType;
     }
+    interface OntarioHeaderMenuTabs {
+        "menuButtonRef"?: HTMLElement;
+        "signInMenuItems"?: MenuItem[] | string;
+        "topicsMenuItems"?: MenuItem[] | string;
+    }
     interface OntarioHeaderOverflowMenu {
         /**
-          * The items that will go inside the menu.
-          * @example <ontario-header-overflow-menu 	menu-items='[{ 		"title": "Link 1", 		"href": "/link-1" 		"linkIsActive": "false" 	},{ 		"title": "Link 2", 		"href": "/link-2" 		"linkIsActive": "false" 	},{ 		"title": "Link 3", 		"href": "/link-3" 		"linkIsActive": "false" 	},{ 		"title": "Link 4", 		"href": "/link-4" 		"linkIsActive": "false" 	}]'> </ontario-header-overflow-menu>
+          * Reference to the menu button (for focus trapping in standalone mode)
+         */
+        "menuButtonRef"?: HTMLElement;
+        /**
+          * The menu items to display
          */
         "menuItems"?: MenuItem[] | string;
+        /**
+          * Whether this is being used standalone (true) or inside tabs (false)
+          * @default true
+         */
+        "standalone"?: boolean;
     }
     interface OntarioHintExpander {
         /**
@@ -6008,6 +6057,7 @@ declare namespace LocalJSX {
         "ontario-footer": OntarioFooter;
         "ontario-form-container": OntarioFormContainer;
         "ontario-header": OntarioHeader;
+        "ontario-header-menu-tabs": OntarioHeaderMenuTabs;
         "ontario-header-overflow-menu": OntarioHeaderOverflowMenu;
         "ontario-hint-expander": OntarioHintExpander;
         "ontario-hint-text": OntarioHintText;
@@ -6162,6 +6212,7 @@ declare module "@stencil/core" {
             "ontario-footer": LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;
             "ontario-form-container": LocalJSX.OntarioFormContainer & JSXBase.HTMLAttributes<HTMLOntarioFormContainerElement>;
             "ontario-header": LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
+            "ontario-header-menu-tabs": LocalJSX.OntarioHeaderMenuTabs & JSXBase.HTMLAttributes<HTMLOntarioHeaderMenuTabsElement>;
             "ontario-header-overflow-menu": LocalJSX.OntarioHeaderOverflowMenu & JSXBase.HTMLAttributes<HTMLOntarioHeaderOverflowMenuElement>;
             "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
             /**
