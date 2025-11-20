@@ -48,4 +48,5 @@ jobs:
     with:
       node-version: 22
       docs-artifacts-name: ${{ needs.build.outputs.docs-artifacts-name }}
+      release_tag: ${{ needs.publish-packages.outputs.release_tag }}
     secrets: inherit

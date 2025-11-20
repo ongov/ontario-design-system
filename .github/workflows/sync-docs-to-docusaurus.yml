@@ -9,6 +9,9 @@ on:
       docs-artifacts-name:
         required: true
         type: string
+      release_tag:
+        required: true
+        type: string
 
 jobs:
   sync-docs:
@@ -66,30 +69,22 @@ jobs:
           name: ${{ inputs.docs-artifacts-name }}
           path: packages/docusaurus/docs/
 
-      # Since this follows the build job, the latest tag is the latest version of npm packages.
-      - name: Get latest tag
-        id: get_tag
-        working-directory: .
-        run: |
-          tag=$(git describe --tags --abbrev=0)
-          echo "version=${tag}" >> $GITHUB_OUTPUT
-
       - name: Update package.json in Docusaurus
         working-directory: packages/docusaurus
-        run: pnpm --ignore-workspace --lockfile-dir . add @ongov/ontario-design-system-component-library-react@${{ steps.get_tag.outputs.version }}
+        run: pnpm --ignore-workspace --lockfile-dir . add @ongov/ontario-design-system-component-library-react@${{ inputs.release_tag }}
 
       - name: Version Docusaurus docs
         working-directory: packages/docusaurus
-        run: pnpm exec docusaurus docs:version ${{ steps.get_tag.outputs.version }}
+        run: pnpm exec docusaurus docs:version ${{ inputs.release_tag }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GH_TOKEN }}
           path: packages/docusaurus
-          commit-message: 'docs: update for ${{ steps.get_tag.outputs.version }}'
-          title: 'docs: update for ${{ steps.get_tag.outputs.version }}'
+          commit-message: 'docs: update for ${{ inputs.release_tag }}'
+          title: 'docs: update for ${{ inputs.release_tag }}'
           body: |
-            This PR updates the documentation site for version `${{ steps.get_tag.outputs.version }}`.
-          branch: docs/update-${{ steps.get_tag.outputs.version }}
+            This PR updates the documentation site for version `${{ inputs.release_tag }}`.
+          branch: docs/update-${{ inputs.release_tag }}
           labels: docs-update

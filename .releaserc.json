@@ -11,6 +11,12 @@
 				"assets": ["CHANGELOG.md", "lerna.json", "package.json", "packages/*/package.json", "pnpm-lock.yaml"],
 				"message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
 			}
+		],
+		[
+			"@semantic-release/exec",
+			{
+				"successCmd": "echo \"release_tag=${nextRelease.gitTag}\" >> $GITHUB_OUTPUT"
+			}
 		]
 	]
 }
