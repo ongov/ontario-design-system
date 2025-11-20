@@ -1,3 +1,9 @@
+# 6.0.0-alpha.6 (2025-11-20)
+
+### Bug Fixes
+
+- **component-library:** include shipped components/ and export component entrypoints e96022d
+
 # 6.0.0-alpha.5 (2025-11-14)
 
 ### Bug Fixes
