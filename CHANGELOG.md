@@ -1,3 +1,9 @@
+# 6.0.0-alpha.7 (2025-11-20)
+
+### Bug Fixes
+
+- version bump to test ci updates 6fabd7b
+
 # 6.0.0-alpha.6 (2025-11-20)
 
 ### Bug Fixes
