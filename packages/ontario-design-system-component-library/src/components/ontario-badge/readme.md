@@ -31,12 +31,12 @@ Example of a badge component, where the user is explicitly passing in content th
 This is another example of a badge. This time, the content is passed as a child of the `ontario-badge` component. A `colour` option is also passed.
 
 ```html
-<ontario-badge colour="lightTeal">Completed</ontario-badge>
+<ontario-badge colour="light-teal">Completed</ontario-badge>
 ```
 
 <div>
 	<OntarioBadge
-		colour="lightTeal"
+		colour="light-teal"
 	>
 		Completed
 	</OntarioBadge>
@@ -63,11 +63,11 @@ During SSR, fallback content using `host.textContent` is not reliably available.
 
 ## Properties
 
-| Property        | Attribute         | Description                                                                                                               | Type                                                                                                  | Default     |
-| --------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------- |
-| `ariaLabelText` | `aria-label-text` | An aria label for screen readers. Used to provide more context to screen readers if necessary. This property is optional. | `string \| undefined`                                                                                 | `undefined` |
-| `colour`        | `colour`          | The colour of the badge.                                                                                                  | `"black" \| "darkGrey" \| "green" \| "grey" \| "lightTeal" \| "red" \| "teal" \| "white" \| "yellow"` | `'teal'`    |
-| `label`         | `label`           | The label for the badge. Offical guidance is to keep the label length within 15 characters.                               | `string`                                                                                              | `undefined` |
+| Property        | Attribute         | Description                                                                                                               | Type                                                                                                    | Default     |
+| --------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------- |
+| `ariaLabelText` | `aria-label-text` | An aria label for screen readers. Used to provide more context to screen readers if necessary. This property is optional. | `string \| undefined`                                                                                   | `undefined` |
+| `colour`        | `colour`          | The colour of the badge.                                                                                                  | `"black" \| "dark-grey" \| "green" \| "grey" \| "light-teal" \| "red" \| "teal" \| "white" \| "yellow"` | `'teal'`    |
+| `label`         | `label`           | The label for the badge. Offical guidance is to keep the label length within 15 characters.                               | `string`                                                                                                | `undefined` |
 
 ## Dependencies
 
