@@ -10,6 +10,31 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"styles": "./dist/styles/theme.scss",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"default": "./dist/index.js"
+		},
+		"./components": {
+			"types": "./dist/components.d.ts",
+			"import": "./dist/components.js",
+			"default": "./dist/components.js"
+		},
+		"./next": {
+			"types": "./dist/components.server.d.ts",
+			"import": "./dist/components.server.js"
+		},
+		"./react-component-lib": {
+			"types": "./dist/react-component-lib/index.d.ts",
+			"import": "./dist/react-component-lib/index.js",
+			"default": "./dist/react-component-lib/index.js"
+		},
+		"./styles": {
+			"default": "./dist/styles/theme.scss"
+		},
+		"./styles/*": "./dist/styles/*"
+	},
 	"files": [
 		"dist/",
 		"src/",

@@ -10,6 +10,7 @@
 	"module": "dist/index.js",
 	"types": "dist/types/index.d.ts",
 	"files": [
+		"components/",
 		"dist/",
 		"loader/",
 		"src/",
@@ -38,15 +39,16 @@
 			"require": "./hydrate/index.cjs.js",
 			"default": "./hydrate/index.js"
 		},
-		"./components/*.js": {
+		"./components/*": {
 			"types": "./dist/types/components/*.d.ts",
-			"import": "./components/*.js"
+			"import": "./components/*",
+			"require": "./components/*.cjs"
 		},
 		"./components": {
 			"types": "./dist/types/components.d.ts",
-			"import": "./dist/index.js",
-			"require": "./dist/index.cjs.js",
-			"default": "./dist/index.js"
+			"import": "./components/index.js",
+			"require": "./components/index.cjs.js",
+			"default": "./components/index.js"
 		}
 	},
 	"scripts": {
