@@ -573,9 +573,32 @@ export namespace Components {
          */
         "type"?: OntarioHeaderType;
     }
+    /**
+     * Ontario Header Menu Tabs Component
+     * A tabbed navigation menu used for Ontario headers on mobile and tablet devices.
+     * Displays two tabs: "Topics" and "Sign In", each containing their own menu items.
+     * Includes full keyboard navigation and focus trapping for accessibility.
+     * @example <ontario-header-menu-tabs
+     *   topicsMenuItems={menuItems}
+     *   signInMenuItems={signInItems}
+     *   menuButtonRef={buttonElement}
+     * />
+     */
     interface OntarioHeaderMenuTabs {
+        /**
+          * Reference to the menu button that opens this dropdown. Used for focus trapping - allows focus to loop back to the button.
+          * @example menuButtonRef={this.menuButton}
+         */
         "menuButtonRef"?: HTMLElement;
+        /**
+          * Menu items for the "Sign In" tab. Can be passed as a MenuItem array or JSON string.
+          * @example signInMenuItems={[   { href: '/login', title: 'Login' },   { href: '/register', title: 'Register' } ]}
+         */
         "signInMenuItems": MenuItem[] | string;
+        /**
+          * Menu items for the "Topics" tab. Can be passed as a MenuItem array or JSON string.
+          * @example topicsMenuItems={[   { href: '/about', title: 'About' },   { href: '/services', title: 'Services' } ]}
+         */
         "topicsMenuItems": MenuItem[] | string;
     }
     interface OntarioHeaderOverflowMenu {
@@ -2583,6 +2606,17 @@ declare global {
         prototype: HTMLOntarioHeaderElement;
         new (): HTMLOntarioHeaderElement;
     };
+    /**
+     * Ontario Header Menu Tabs Component
+     * A tabbed navigation menu used for Ontario headers on mobile and tablet devices.
+     * Displays two tabs: "Topics" and "Sign In", each containing their own menu items.
+     * Includes full keyboard navigation and focus trapping for accessibility.
+     * @example <ontario-header-menu-tabs
+     *   topicsMenuItems={menuItems}
+     *   signInMenuItems={signInItems}
+     *   menuButtonRef={buttonElement}
+     * />
+     */
     interface HTMLOntarioHeaderMenuTabsElement extends Components.OntarioHeaderMenuTabs, HTMLStencilElement {
     }
     var HTMLOntarioHeaderMenuTabsElement: {
@@ -4138,9 +4172,32 @@ declare namespace LocalJSX {
          */
         "type"?: OntarioHeaderType;
     }
+    /**
+     * Ontario Header Menu Tabs Component
+     * A tabbed navigation menu used for Ontario headers on mobile and tablet devices.
+     * Displays two tabs: "Topics" and "Sign In", each containing their own menu items.
+     * Includes full keyboard navigation and focus trapping for accessibility.
+     * @example <ontario-header-menu-tabs
+     *   topicsMenuItems={menuItems}
+     *   signInMenuItems={signInItems}
+     *   menuButtonRef={buttonElement}
+     * />
+     */
     interface OntarioHeaderMenuTabs {
+        /**
+          * Reference to the menu button that opens this dropdown. Used for focus trapping - allows focus to loop back to the button.
+          * @example menuButtonRef={this.menuButton}
+         */
         "menuButtonRef"?: HTMLElement;
+        /**
+          * Menu items for the "Sign In" tab. Can be passed as a MenuItem array or JSON string.
+          * @example signInMenuItems={[   { href: '/login', title: 'Login' },   { href: '/register', title: 'Register' } ]}
+         */
         "signInMenuItems"?: MenuItem[] | string;
+        /**
+          * Menu items for the "Topics" tab. Can be passed as a MenuItem array or JSON string.
+          * @example topicsMenuItems={[   { href: '/about', title: 'About' },   { href: '/services', title: 'Services' } ]}
+         */
         "topicsMenuItems"?: MenuItem[] | string;
     }
     interface OntarioHeaderOverflowMenu {
@@ -6226,6 +6283,17 @@ declare module "@stencil/core" {
             "ontario-footer": LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;
             "ontario-form-container": LocalJSX.OntarioFormContainer & JSXBase.HTMLAttributes<HTMLOntarioFormContainerElement>;
             "ontario-header": LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
+            /**
+             * Ontario Header Menu Tabs Component
+             * A tabbed navigation menu used for Ontario headers on mobile and tablet devices.
+             * Displays two tabs: "Topics" and "Sign In", each containing their own menu items.
+             * Includes full keyboard navigation and focus trapping for accessibility.
+             * @example <ontario-header-menu-tabs
+             *   topicsMenuItems={menuItems}
+             *   signInMenuItems={signInItems}
+             *   menuButtonRef={buttonElement}
+             * />
+             */
             "ontario-header-menu-tabs": LocalJSX.OntarioHeaderMenuTabs & JSXBase.HTMLAttributes<HTMLOntarioHeaderMenuTabsElement>;
             "ontario-header-overflow-menu": LocalJSX.OntarioHeaderOverflowMenu & JSXBase.HTMLAttributes<HTMLOntarioHeaderOverflowMenuElement>;
             "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
