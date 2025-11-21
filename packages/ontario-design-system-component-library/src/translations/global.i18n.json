@@ -170,9 +170,17 @@
 			"en": "ServiceOntario",
 			"fr": "ServiceOntario"
 		},
+		"signIn": {
+			"en": "Sign In",
+			"fr": "Connexion"
+		},
 		"submit": {
 			"en": "Submit",
 			"fr": "Soumission"
+		},
+		"topics": {
+			"en": "Topics",
+			"fr": "Sujets"
 		}
 	},
 	"input": {
