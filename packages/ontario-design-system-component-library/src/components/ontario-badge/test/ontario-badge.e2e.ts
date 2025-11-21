@@ -8,7 +8,7 @@ describe('ontario-badge', () => {
 		const element = await page.find('ontario-badge >>> span');
 
 		expect(component).toHaveClass('hydrated');
-		expect(element).toHaveClasses(['ontario-badge', 'ontario-badge--default-heavy']);
+		expect(element).toHaveClasses(['ontario-badge', 'ontario-badge--teal']);
 	});
 
 	describe('render prop changes', () => {
@@ -27,12 +27,12 @@ describe('ontario-badge', () => {
 			component.setProperty('colour', 'light-teal');
 			await page.waitForChanges();
 
-			expect(element).toHaveClasses(['ontario-badge', 'ontario-badge--default-light']);
+			expect(element).toHaveClasses(['ontario-badge', 'ontario-badge--light-teal']);
 
 			component.setProperty('colour', 'black');
 			await page.waitForChanges();
 
-			expect(element).toHaveClasses(['ontario-badge', 'ontario-badge--neutral-heavy']);
+			expect(element).toHaveClasses(['ontario-badge', 'ontario-badge--black']);
 		});
 
 		/*

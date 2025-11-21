@@ -3,7 +3,7 @@
 exports[`ontario-badge should override the host textContent with label prop output on the span element 1`] = `
 <ontario-badge label="completed">
   <template shadowrootmode="open">
-    <span class="ontario-badge ontario-badge--default-heavy">
+    <span class="ontario-badge ontario-badge--teal">
       completed
     </span>
   </template>
@@ -14,7 +14,7 @@ exports[`ontario-badge should override the host textContent with label prop outp
 exports[`ontario-badge should render the aria-label attribute on the span element 1`] = `
 <ontario-badge aria-label-text="This course is currently in progress.">
   <template shadowrootmode="open">
-    <span aria-label="This course is currently in progress." class="ontario-badge ontario-badge--default-heavy">
+    <span aria-label="This course is currently in progress." class="ontario-badge ontario-badge--teal">
       In progress
     </span>
   </template>
@@ -25,7 +25,7 @@ exports[`ontario-badge should render the aria-label attribute on the span elemen
 exports[`ontario-badge should render the expected base html 1`] = `
 <ontario-badge>
   <template shadowrootmode="open">
-    <span class="ontario-badge ontario-badge--default-heavy">
+    <span class="ontario-badge ontario-badge--teal">
       In progress
     </span>
   </template>
@@ -36,7 +36,7 @@ exports[`ontario-badge should render the expected base html 1`] = `
 exports[`ontario-badge should render with the ontario-badge--default-light class on the span element 1`] = `
 <ontario-badge colour="lightTeal">
   <template shadowrootmode="open">
-    <span class="ontario-badge ontario-badge--default-light">
+    <span class="ontario-badge ontario-badge--light-teal">
       In progress
     </span>
   </template>
