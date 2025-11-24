@@ -1,3 +1,9 @@
+# 6.0.0-alpha.9 (2025-11-24)
+
+### Bug Fixes
+
+- update header and overflow menu readmes to use MDX syntax correctly 1b21d23
+
 # 6.0.0-alpha.8 (2025-11-24)
 
 ### Bug Fixes
