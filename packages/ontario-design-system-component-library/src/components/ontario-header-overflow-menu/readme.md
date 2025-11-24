@@ -12,7 +12,7 @@ Once the component package has been installed (see Ontario Design System Compone
 ## Examples
 
 ```html
-<ontario-header-menu-overflow
+<ontario-header-overflow-menu
 	menu-items='[
     {
       "title":"Item 1",
@@ -31,35 +31,9 @@ Once the component package has been installed (see Ontario Design System Compone
       "href":"/item-4"
     },
   ]'
-	trap-menu-focus="false"
 >
-</ontario-header-menu-overflow>
+</ontario-header-overflow-menu>
 ```
-
-<div>
-    <OntarioHeaderMenuOverflow
-    menu-items='[
-      {
-        "title":"Item 1",
-        "href":"/item-1"
-      },
-      {
-        "title":"Item 2",
-        "href":"/item-2"
-      },
-      {
-        "title":"Item 3",
-        "href":"/item-3"
-      },
-      {
-        "title":"Item 4",
-        "href":"/item-4"
-      },
-    ]'
-    trap-menu-focus='false'
-  >
-  </OntarioHeaderMenuOverflow>
-</div>
 
 ## Custom property types
 
@@ -92,8 +66,7 @@ If `maxSubheaderLinks` is set within `applicationHeaderInfo` on the `ontario-hea
 		{ 
 			"title": "Highway traveler information", 
 			"href": "/highway-traveler-information", 
-			"linkIsActive": "true",
-			"onClickHandler": (e: Event) => { e.preventDefault(); alert("Menu item clicked!") }
+			"linkIsActive": "true"
 		} 
 	]'
 ></ontario-header>
