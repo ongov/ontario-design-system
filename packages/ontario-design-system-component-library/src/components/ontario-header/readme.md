@@ -105,49 +105,44 @@ Example of an Ontario.ca header component.
 
 <div>
 	<OntarioHeader
-		asset-base-path={useBaseUrl('/assets')}
+		assetBasePath={useBaseUrl("/assets")}
 		type="application"
-		disable-dynamic-menu="true"
-		application-header-info='{
-			"title": "Driving and roads",
-			"href": "/driving-and-roads",
-			"maxSubheaderLinks": "{
-				"desktop": "3",
-				"tablet": "1"
-			}"
-		}'
-		language-toggle-options='{
-		"englishLink": "/",
-		"frenchLink" : "/fr"
-		}'
-		menu-items='[
-		{
-		"title": "Vehicle registration",
-		"href": "/vehicle-registration",
-		"linkIsActive": "false"
-		},
-		{
-		"title": "Driver records",
-		"href": "/driver-records",
-		"linkIsActive": "false"
-		},
-		{
-		"title": "Accessible Parking Permits",
-		"href": "/accessible-parking-permits",
-		"linkIsActive": "false"
-		},
-		{
-		"title": "Highway traveler information",
-		"href": "/highway-traveler-information",
-		"linkIsActive": "true",
-		"onClickHandler": (e: Event) => {
-		e.preventDefault();
-		alert("Menu item clicked!")
-		},
-		}
-		]'
-		custom-language-toggle="{changeLanguage}">
-	 </OntarioHeader>
+		disableDynamicMenu="true"
+		applicationHeaderInfo={{
+			title: "Driving and roads",
+			href: "/driving-and-roads",
+			maxSubheaderLinks: {
+				desktop: 1,
+				tablet: 1,
+			},
+		}}
+		languageToggleOptions={{
+			englishLink: "/",
+			frenchLink: "/fr",
+		}}
+		menuItems={[
+			{
+				title: "Vehicle registration",
+				href: "/vehicle-registration",
+				linkIsActive: false,
+			},
+			{
+				title: "Driver records",
+				href: "/driver-records",
+				linkIsActive: false,
+			},
+			{
+				title: "Accessible Parking Permits",
+				href: "/accessible-parking-permits",
+				linkIsActive: true,
+			},
+			{
+				title: "Highway traveler information",
+				href: "/highway-traveler-information",
+				linkIsActive: false,
+			},
+		]}
+	></OntarioHeader>
 </div>
 
 Example of an Application header component.
@@ -189,11 +184,7 @@ Example of an Application header component.
 		{ 
 			"title": "Highway traveler information", 
 			"href": "/highway-traveler-information",
-			"linkIsActive": "true",
-			"onClickHandler": (e: Event) => {
-					e.preventDefault();
-					alert("Menu item clicked!")
-			},  
+			"linkIsActive": "true"
 		}
 	]'
 	custom-language-toggle="{changeLanguage}"
@@ -312,9 +303,9 @@ Important considerations:
 
 ## Events
 
-| Event               | Description                                                                                                                                                                            | Type                   |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| `menuButtonToggled` | This event is toggled when the menu button is pressed. The <ontario-header-overflow-menu> sub-component listens for this event To trigger the showing and hiding of the overflow menu. | `CustomEvent<boolean>` |
+| Event               | Description                                                                                                                                                                              | Type                   |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| `menuButtonToggled` | This event is toggled when the menu button is pressed. The `<ontario-header-overflow-menu>` sub-component listens for this event To trigger the showing and hiding of the overflow menu. | `CustomEvent<boolean>` |
 
 ## Dependencies
 

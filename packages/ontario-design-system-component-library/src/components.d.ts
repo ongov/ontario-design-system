@@ -4419,7 +4419,7 @@ declare namespace LocalJSX {
 		 */
 		menuItems?: MenuItem[] | string;
 		/**
-		 * This event is toggled when the menu button is pressed. The <ontario-header-overflow-menu> sub-component listens for this event To trigger the showing and hiding of the overflow menu.
+		 * This event is toggled when the menu button is pressed. The `<ontario-header-overflow-menu>` sub-component listens for this event To trigger the showing and hiding of the overflow menu.
 		 */
 		onMenuButtonToggled?: (event: OntarioHeaderCustomEvent<boolean>) => void;
 		/**
