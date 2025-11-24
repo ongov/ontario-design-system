@@ -1,3 +1,9 @@
+# 6.0.0-alpha.8 (2025-11-24)
+
+### Bug Fixes
+
+- **releaserc:** enable prerelease latching for semantic-release-lerna 512c58a
+
 # 6.0.0-alpha.7 (2025-11-20)
 
 ### Bug Fixes
