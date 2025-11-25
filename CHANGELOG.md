@@ -1,3 +1,76 @@
+# 6.0.0-alpha.9 (2025-11-24)
+
+### Bug Fixes
+
+- update header and overflow menu readmes to use MDX syntax correctly 1b21d23
+
+# 6.0.0-alpha.8 (2025-11-24)
+
+### Bug Fixes
+
+- **releaserc:** enable prerelease latching for semantic-release-lerna 512c58a
+
+# 6.0.0-alpha.7 (2025-11-20)
+
+### Bug Fixes
+
+- version bump to test ci updates 6fabd7b
+
+# 6.0.0-alpha.6 (2025-11-20)
+
+### Bug Fixes
+
+- **component-library:** include shipped components/ and export component entrypoints e96022d
+
+# 6.0.0-alpha.5 (2025-11-14)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library:** added a function for the menu button to regain focus once users escape the menu d2fd938
+- **@ongov/ontario-design-system-component-library:** focus now always follows the index, regardless of whether you use tab or arrow keys 9e158a3
+- **@ongov/ontario-design-system-component-library:** removed calc from statements that dont need it c755a48
+- **@ongov/ontario-design-system-component-library:** updating z-indexes to ensure we are only using variables ac68093
+
+### Code Refactoring
+
+- **ontario-header:** add `maxSubheaderLinks` object to `application-header-info` prop ca0f204
+
+### Features
+
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** rebasing on origin branch eda237a
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** rebasing on origin branch 8976aeb
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** rebasing on origin branch 4e0f15d
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** rebasing on origin branch c8ae1cb
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** updated and reorganized header styles to remove redundancy 92ab7b9
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** updated menutoggle to menutoggled 10f6d73
+- **@ongov/ontario-design-system-component-library:** added aria-expanded to the ontario header menu button 7de766f
+- **@ongov/ontario-design-system-component-library:** added focus state for service ontario header links d0076d5
+- **@ongov/ontario-design-system-component-library:** added focusout functionality with tabbing 980addf
+- **@ongov/ontario-design-system-component-library:** added more test cases based on MR feedback bb2fb42
+- **@ongov/ontario-design-system-component-library:** added one more import for header styles to service ontario header style sheet 79a634d
+- **@ongov/ontario-design-system-component-library:** added service ontario header spec test back in 3a41492
+- **@ongov/ontario-design-system-component-library:** added unit tests for overflow menu 43fac25
+- **@ongov/ontario-design-system-component-library:** fixed breaking tests and updated header styles e80d40c
+- **@ongov/ontario-design-system-component-library:** fixed focus rings f433afb
+- **@ongov/ontario-design-system-component-library:** fixed focus states on header buttons a7d13f1
+- **@ongov/ontario-design-system-component-library:** fixed the unit tests for header 613c182
+- **@ongov/ontario-design-system-component-library:** fixed the unit tests for header e7fd4ee
+- **@ongov/ontario-design-system-component-library:** remove import statement for event and eventEmitter ede3612
+- **@ongov/ontario-design-system-component-library:** reset the current index when menu is closed 79c94ec
+- **@ongov/ontario-design-system-component-library:** testing replacing the imported breakpoints with consts 8b5e766
+- **@ongov/ontario-design-system-component-library:** testing replacing the imported breakpoints with consts 7005ff4
+- **@ongov/ontario-design-system-component-library:** testing replacing the imported breakpoints with consts 0390fe1
+- **@ongov/ontario-design-system-component-library:** testing replacing the imported breakpoints with consts c854fab
+- **@ongov/ontario-design-system-component-library:** updated index file to have proper hrefs in the overflow menu 9effcdd
+- added accessibility features to overflow menu ([#35](undefined/ongov/ontario-design-system/issues/35)) 898e3cb
+- **ontario-header:** modularize header menu into it's own subcomponent 7772e2d
+- **utils:** add convertStringToBoolean util 8874144
+
+### BREAKING CHANGES
+
+- **ontario-header:** `maxSubheaderDesktopLinks`, `maxSubheaderTabletLinks`,
+  and `maxSubheaderMobileLinks` have been deprecated.
+
 # 6.0.0-alpha.4 (2025-11-12)
 
 - **@ongov/ontario-design-system-complete-styles:** fix(complete-styles)!: update Gulp tasks to handle pkg Sass imports def4550
