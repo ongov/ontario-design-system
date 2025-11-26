@@ -615,7 +615,7 @@ export class OntarioHeader {
 										required={true}
 										value={this.searchBoxTextState}
 										ref={(el) => (this.searchBar = el as HTMLInputElement)}
-										onInput={(event: any) => {
+										onInput={(event: Event) => {
 											const target = event.target as HTMLInputElement;
 											this.searchBoxTextState = target.value;
 										}}
