@@ -42,7 +42,6 @@ export default function OntarioAccordionPage() {
 				<h3>Open Accordion</h3>
 				<OntarioAccordion
 					name="Accordion - Open"
-					isOpen={true}
 					expandCollapseButton={{
 						expandAllSectionsLabel: 'Expand All',
 						collapseAllSectionsLabel: 'Collapse All',
@@ -73,7 +72,6 @@ export default function OntarioAccordionPage() {
 				<h3>Closed Accordion</h3>
 				<OntarioAccordion
 					name="Accordion - Closed"
-					isOpen={false}
 					expandCollapseButton={{
 						expandAllSectionsLabel: 'Expand All',
 						collapseAllSectionsLabel: 'Collapse All',
@@ -104,7 +102,6 @@ export default function OntarioAccordionPage() {
 				<h2>"expand-collapse-button" Prop Variant</h2>
 				<OntarioAccordion
 					name="Accordion - Closed"
-					isOpen={false}
 					expandCollapseButton={{
 						expandAllSectionsLabel: 'Open all accordions',
 						collapseAllSectionsLabel: 'Close all accordions',
