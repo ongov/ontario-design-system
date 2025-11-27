@@ -71,7 +71,9 @@ export default function Home() {
 						<li>
 							<Link href="/components/ontario-language-toggle">ontario-language-toggle</Link>
 						</li>
-
+						<li>
+							<Link href="/components/ontario-loading-indicator">ontario-loading-indicator</Link>
+						</li>
 						<li>
 							<Link href="/components/ontario-page-alert">ontario-page-alert</Link>
 						</li>
