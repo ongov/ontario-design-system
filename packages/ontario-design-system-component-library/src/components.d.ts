@@ -547,17 +547,43 @@ export namespace Components {
          */
         "topicsMenuItems": MenuItem[] | string;
     }
+    /**
+     * Ontario Header Overflow Menu Component
+     * A dropdown navigation menu used for Ontario headers. Can operate in two modes:
+     * **Standalone mode (desktop):**
+     * - Manages its own open/close state
+     * - Handles all keyboard navigation and focus trapping
+     * - Auto-closes when focus leaves the menu
+     * - Partial focus trap (only Shift+Tab backwards to menu button)
+     * **Embedded mode (inside tabs on mobile/tablet):**
+     * - Just renders menu items
+     * - Parent component (tabs) handles all behavior
+     * - No event listeners or state management
+     * @example // Standalone
+     * <ontario-header-overflow-menu
+     *   menuItems={items}
+     *   menuButtonRef={buttonElement}
+     *   standalone={true}
+     * />
+     * // Inside tabs
+     * <ontario-header-overflow-menu
+     *   menuItems={items}
+     *   standalone={false}
+     * />
+     */
     interface OntarioHeaderOverflowMenu {
         /**
-          * Reference to the menu button (for focus trapping in standalone mode)
+          * Reference to the menu button that opens this dropdown. Used for focus trapping in standalone mode - allows Shift+Tab to loop back.
+          * @example menuButtonRef={this.menuButton}
          */
         "menuButtonRef"?: HTMLElement;
         /**
-          * The menu items to display
+          * The menu items to display. Can be passed as a MenuItem array or JSON string.
+          * @example menuItems={[   { href: '/about', title: 'About', linkIsActive: false },   { href: '/services', title: 'Services', linkIsActive: true } ]}
          */
         "menuItems": MenuItem[] | string;
         /**
-          * Whether this is being used standalone (true) or inside tabs (false)
+          * Whether this is being used standalone (true) or inside tabs (false).  **Standalone mode (true):** - Handles own open/close state, event listeners, and focus trapping - Desktop behavior with partial focus trap  **Embedded mode (false):** - Just renders menu items - Parent component handles all behavior - Mobile/tablet behavior inside tabs component
           * @default true
          */
         "standalone": boolean;
@@ -2609,6 +2635,30 @@ declare global {
         prototype: HTMLOntarioHeaderMenuTabsElement;
         new (): HTMLOntarioHeaderMenuTabsElement;
     };
+    /**
+     * Ontario Header Overflow Menu Component
+     * A dropdown navigation menu used for Ontario headers. Can operate in two modes:
+     * **Standalone mode (desktop):**
+     * - Manages its own open/close state
+     * - Handles all keyboard navigation and focus trapping
+     * - Auto-closes when focus leaves the menu
+     * - Partial focus trap (only Shift+Tab backwards to menu button)
+     * **Embedded mode (inside tabs on mobile/tablet):**
+     * - Just renders menu items
+     * - Parent component (tabs) handles all behavior
+     * - No event listeners or state management
+     * @example // Standalone
+     * <ontario-header-overflow-menu
+     *   menuItems={items}
+     *   menuButtonRef={buttonElement}
+     *   standalone={true}
+     * />
+     * // Inside tabs
+     * <ontario-header-overflow-menu
+     *   menuItems={items}
+     *   standalone={false}
+     * />
+     */
     interface HTMLOntarioHeaderOverflowMenuElement extends Components.OntarioHeaderOverflowMenu, HTMLStencilElement {
     }
     var HTMLOntarioHeaderOverflowMenuElement: {
@@ -4186,17 +4236,43 @@ declare namespace LocalJSX {
          */
         "topicsMenuItems"?: MenuItem[] | string;
     }
+    /**
+     * Ontario Header Overflow Menu Component
+     * A dropdown navigation menu used for Ontario headers. Can operate in two modes:
+     * **Standalone mode (desktop):**
+     * - Manages its own open/close state
+     * - Handles all keyboard navigation and focus trapping
+     * - Auto-closes when focus leaves the menu
+     * - Partial focus trap (only Shift+Tab backwards to menu button)
+     * **Embedded mode (inside tabs on mobile/tablet):**
+     * - Just renders menu items
+     * - Parent component (tabs) handles all behavior
+     * - No event listeners or state management
+     * @example // Standalone
+     * <ontario-header-overflow-menu
+     *   menuItems={items}
+     *   menuButtonRef={buttonElement}
+     *   standalone={true}
+     * />
+     * // Inside tabs
+     * <ontario-header-overflow-menu
+     *   menuItems={items}
+     *   standalone={false}
+     * />
+     */
     interface OntarioHeaderOverflowMenu {
         /**
-          * Reference to the menu button (for focus trapping in standalone mode)
+          * Reference to the menu button that opens this dropdown. Used for focus trapping in standalone mode - allows Shift+Tab to loop back.
+          * @example menuButtonRef={this.menuButton}
          */
         "menuButtonRef"?: HTMLElement;
         /**
-          * The menu items to display
+          * The menu items to display. Can be passed as a MenuItem array or JSON string.
+          * @example menuItems={[   { href: '/about', title: 'About', linkIsActive: false },   { href: '/services', title: 'Services', linkIsActive: true } ]}
          */
         "menuItems"?: MenuItem[] | string;
         /**
-          * Whether this is being used standalone (true) or inside tabs (false)
+          * Whether this is being used standalone (true) or inside tabs (false).  **Standalone mode (true):** - Handles own open/close state, event listeners, and focus trapping - Desktop behavior with partial focus trap  **Embedded mode (false):** - Just renders menu items - Parent component handles all behavior - Mobile/tablet behavior inside tabs component
           * @default true
          */
         "standalone"?: boolean;
@@ -6281,6 +6357,30 @@ declare module "@stencil/core" {
              * />
              */
             "ontario-header-menu-tabs": LocalJSX.OntarioHeaderMenuTabs & JSXBase.HTMLAttributes<HTMLOntarioHeaderMenuTabsElement>;
+            /**
+             * Ontario Header Overflow Menu Component
+             * A dropdown navigation menu used for Ontario headers. Can operate in two modes:
+             * **Standalone mode (desktop):**
+             * - Manages its own open/close state
+             * - Handles all keyboard navigation and focus trapping
+             * - Auto-closes when focus leaves the menu
+             * - Partial focus trap (only Shift+Tab backwards to menu button)
+             * **Embedded mode (inside tabs on mobile/tablet):**
+             * - Just renders menu items
+             * - Parent component (tabs) handles all behavior
+             * - No event listeners or state management
+             * @example // Standalone
+             * <ontario-header-overflow-menu
+             *   menuItems={items}
+             *   menuButtonRef={buttonElement}
+             *   standalone={true}
+             * />
+             * // Inside tabs
+             * <ontario-header-overflow-menu
+             *   menuItems={items}
+             *   standalone={false}
+             * />
+             */
             "ontario-header-overflow-menu": LocalJSX.OntarioHeaderOverflowMenu & JSXBase.HTMLAttributes<HTMLOntarioHeaderOverflowMenuElement>;
             "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
             /**
