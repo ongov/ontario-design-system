@@ -212,10 +212,23 @@ export class OntarioHeader {
 	@State() breakpointDeviceState: DeviceType;
 
 	/**
+	 * Header-specific device detection.
+	 * Mobile: 0 — 639px
+	 * Tablet: 640 — 1168px
+	 * Desktop: > 1168px
+	 */
+	private getHeaderDeviceType(): DeviceType {
+		const width = typeof window !== 'undefined' ? window.innerWidth : 1200;
+		if (width <= 639) return DeviceTypes.Mobile;
+		if (width <= 1168) return DeviceTypes.Tablet;
+		return DeviceTypes.Desktop;
+	}
+
+	/**
 	 * Helper to check if current breakpoint is mobile or tablet (not desktop)
 	 */
 	private get isMobileOrTablet(): boolean {
-		return this.breakpointDeviceState !== 'desktop';
+		return (this.breakpointDeviceState ?? DeviceTypes.Desktop) !== DeviceTypes.Desktop;
 	}
 
 	@Watch('applicationHeaderInfo')
@@ -401,7 +414,8 @@ export class OntarioHeader {
 	@Listen('resize', { target: 'window' })
 	handleResize() {
 		const previousBreakpoint = this.breakpointDeviceState;
-		this.breakpointDeviceState = isClientSideRendering() ? determineDeviceType() : DeviceTypes.Desktop;
+		// Use header-specific device detection here so the header's UI logic stays consistent
+		this.breakpointDeviceState = isClientSideRendering() ? this.getHeaderDeviceType() : DeviceTypes.Desktop;
 
 		// Close all menus when breakpoint changes
 		if (previousBreakpoint && previousBreakpoint !== this.breakpointDeviceState) {
@@ -561,23 +575,22 @@ export class OntarioHeader {
 
 	/**
 	 * This function generates the menu dropdown button for the ontario header component.
-	 *
-	 * @param viewportSize - the size of the screen where the function is being called. It can either be set to `desktop`, `tablet` or `mobile`. This dictates the classes used on the menu button, as well as the ref to keep the focus trapped when the menu is open.
+	 * It now derives viewport from component state (this.breakpointDeviceState) instead
+	 * of relying on a caller-provided string.
 	 */
-	private renderMenuButton(viewportSize: string) {
+	private renderMenuButton() {
+		const viewportSize = this.breakpointDeviceState as string;
+
 		if (!this.isMenuVisible(viewportSize)) {
 			return;
 		}
 
-		// Determine header type and device state
 		const isApplicationOrServiceHeader = this.type === 'application' || this.type === 'serviceOntario';
 		const isOntarioHeader = this.type === 'ontario';
 
-		// Determine button styling and behavior
 		const shouldShowOutline = isApplicationOrServiceHeader || this.isMobileOrTablet;
 		const useMenuCloseToggle = isApplicationOrServiceHeader || this.isMobileOrTablet;
 
-		// Build CSS classes
 		const buttonClasses = [
 			'ontario-header__menu-toggle',
 			'ontario-header-button',
@@ -588,7 +601,6 @@ export class OntarioHeader {
 			.filter(Boolean)
 			.join(' ');
 
-		// Determine button content
 		const getButtonContent = () => {
 			if (useMenuCloseToggle) {
 				return (
@@ -835,7 +847,7 @@ export class OntarioHeader {
 										</span>
 									</button>
 									{this.renderSignInButton()}
-									{this.renderMenuButton('ontario-header')}
+									{this.renderMenuButton()}
 								</div>
 								<div class="ontario-header__search-close-container ontario-columns ontario-small-2 ontario-medium-3">
 									<button
@@ -940,7 +952,7 @@ export class OntarioHeader {
 											{this.menuItemState !== undefined &&
 												this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState] !==
 													this.menuItemState.length &&
-												this.renderMenuButton('')}
+												this.renderMenuButton()}
 										</div>
 									</div>
 								</div>
