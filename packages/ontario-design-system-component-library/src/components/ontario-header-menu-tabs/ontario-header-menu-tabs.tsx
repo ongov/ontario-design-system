@@ -104,6 +104,25 @@ export class OntarioHeaderMenuTabs {
 	 */
 	private focusTrapCleanup: (() => void) | null = null;
 
+	/**
+	 * Return the navigation container element used for focus-trapping.
+	 * Prefer the header's shadowRoot container first (covers embedded case),
+	 * then fall back to the ref'd this.menu for standalone rendering.
+	 */
+	private getMenuContainer(): HTMLElement | null {
+		// Prefer container that's rendered in the component shadow root (used in the tabbed layout)
+		const containerFromShadow = this.el.shadowRoot?.querySelector(
+			'.ontario-application-navigation__container',
+		) as HTMLElement | null;
+		if (containerFromShadow) return containerFromShadow;
+
+		// If this.menu is the full nav (standalone), return it directly
+		if (this.menu && this.menu.classList?.contains('ontario-application-navigation')) return this.menu;
+
+		// Otherwise try to find the container inside the ref'd menu (fallback)
+		return (this.menu?.querySelector('.ontario-application-navigation__container') as HTMLElement | null) || null;
+	}
+
 	/* ===========================
         Lifecycle
     =========================== */
@@ -174,9 +193,7 @@ export class OntarioHeaderMenuTabs {
 			const panel = activePanel();
 			const overflowMenu = panel?.querySelector('ontario-header-overflow-menu') as HTMLElement | null;
 			const hasItems = !!overflowMenu?.shadowRoot?.querySelectorAll('.ontario-menu-item')?.length;
-			const menuContainer = this.el.shadowRoot?.querySelector(
-				'.ontario-application-navigation__container',
-			) as HTMLElement | null;
+			const menuContainer = this.getMenuContainer();
 
 			if (menuContainer && this.menuButtonRef && hasItems) {
 				this.setupFocusTrap(menuContainer, this.menuButtonRef);
@@ -197,9 +214,7 @@ export class OntarioHeaderMenuTabs {
 				if (performance.now() - start < timeoutMs) {
 					requestAnimationFrame(tick);
 				} else {
-					const menuContainer = this.el.shadowRoot?.querySelector(
-						'.ontario-application-navigation__container',
-					) as HTMLElement | null;
+					const menuContainer = this.getMenuContainer();
 					if (menuContainer && this.menuButtonRef) this.setupFocusTrap(menuContainer, this.menuButtonRef);
 				}
 			};
@@ -212,10 +227,7 @@ export class OntarioHeaderMenuTabs {
 				observer.disconnect();
 			} else if (performance.now() - start > timeoutMs) {
 				observer.disconnect();
-				// fallback best-effort
-				const menuContainer = this.el.shadowRoot?.querySelector(
-					'.ontario-application-navigation__container',
-				) as HTMLElement | null;
+				const menuContainer = this.getMenuContainer();
 				if (menuContainer && this.menuButtonRef) this.setupFocusTrap(menuContainer, this.menuButtonRef);
 			}
 		});
@@ -232,9 +244,7 @@ export class OntarioHeaderMenuTabs {
 				requestAnimationFrame(tickFallback);
 			} else {
 				observer.disconnect();
-				const menuContainer = this.el.shadowRoot?.querySelector(
-					'.ontario-application-navigation__container',
-				) as HTMLElement | null;
+				const menuContainer = this.getMenuContainer();
 				if (menuContainer && this.menuButtonRef) this.setupFocusTrap(menuContainer, this.menuButtonRef);
 			}
 		};
@@ -255,9 +265,7 @@ export class OntarioHeaderMenuTabs {
 			const menuButton = this.menuButtonRef;
 
 			// Get all elements in our focus trap
-			const menuContainer = this.el.shadowRoot?.querySelector(
-				'.ontario-application-navigation__container',
-			) as HTMLElement;
+			const menuContainer = this.getMenuContainer();
 			const focusable = this.getFocusableElements(menuContainer);
 			const tabs = this.el.shadowRoot?.querySelectorAll('[role="tab"]') as NodeListOf<HTMLElement>;
 
@@ -315,9 +323,7 @@ export class OntarioHeaderMenuTabs {
 
 			// Update focus trap to include newly focused tab
 			if (this.menuButtonRef) {
-				const menuContainer = this.el.shadowRoot?.querySelector(
-					'.ontario-application-navigation__container',
-				) as HTMLElement;
+				const menuContainer = this.getMenuContainer();
 				if (menuContainer) {
 					this.setupFocusTrap(menuContainer, this.menuButtonRef);
 				}
@@ -424,45 +430,39 @@ export class OntarioHeaderMenuTabs {
 		const handler = (e: KeyboardEvent) => {
 			if (e.key !== 'Tab') return;
 
-			// Get focusable elements from inside shadow DOM
-			const focusable = this.getFocusableElements(panel);
-			const tabs = this.el.shadowRoot?.querySelectorAll('[role="tab"]') as NodeListOf<HTMLElement>;
+			const tabsList = this.el.shadowRoot?.querySelectorAll('[role="tab"]') as NodeListOf<HTMLElement>;
+			const tabs = tabsList ? Array.from(tabsList) : [];
+			const panelFocusables = panel ? HeaderKeyboardNavigation.getFocusableElements(panel) : [];
+			const activePanel = this.getActiveTabPanel();
+			const overflowMenu = activePanel?.querySelector('ontario-header-overflow-menu') as HTMLElement | null;
+			const overflowFocusables = overflowMenu
+				? HeaderKeyboardNavigation.getFocusableElementsInShadow(overflowMenu)
+				: [];
 
-			if (tabs) focusable.unshift(...Array.from(tabs));
+			const focusable: HTMLElement[] = [...tabs, ...panelFocusables, ...overflowFocusables].filter(Boolean);
+
 			if (!focusable.length) return;
 
-			// First and last in the tab+menu sequence
 			const first = focusable[0];
 			const last = focusable[focusable.length - 1];
 
-			// Use our custom getActiveElement that checks both shadow roots
-			const active = this.getActiveElement();
-
-			const isInPanel = focusable.includes(active as HTMLElement);
+			// Our custom active element getter checks both shadow roots
+			const active = this.getActiveElement() as Element | null;
+			const isInLoop = focusable.includes(active as HTMLElement);
 			const isOnLoopTarget = active === loopTarget;
 
-			// If focus isn't inside the loopable set and it's not on the menu button, ignore
-			if (!isInPanel && !isOnLoopTarget) return;
+			// If focus isn't in our loop or on the loop target, ignore
+			if (!isInLoop && !isOnLoopTarget) return;
 
 			if (e.shiftKey) {
-				// Shift + Tab (backwards)
-				// If we're on the first (a tab), loop to the last menu item
-				if (active === first) {
-					e.preventDefault();
-					(last as HTMLElement).focus();
-				} else if (active === loopTarget) {
-					// If user Shift+Tab'd from the menu button, put them on the last
+				// Shift+Tab: backwards
+				if (active === first || active === loopTarget) {
 					e.preventDefault();
 					(last as HTMLElement).focus();
 				}
 			} else {
-				// Tab (forwards)
-				// If we're on the last menu item, loop to the first tab
-				if (active === last) {
-					e.preventDefault();
-					(first as HTMLElement).focus();
-				} else if (active === loopTarget) {
-					// If focus was on the menu button and they Tab forward, go to first tab
+				// Tab: forwards
+				if (active === last || active === loopTarget) {
 					e.preventDefault();
 					(first as HTMLElement).focus();
 				}
@@ -484,16 +484,15 @@ export class OntarioHeaderMenuTabs {
 	}
 
 	/**
-	 * Get all focusable elements within a given panel, piercing through shadow DOM
-	 * This is specific to the tabs component because it needs to access menu items
-	 * inside the overflow menu's shadow root
+	 * Get all focusable elements within the menu panel.
+	 * Uses shared utility for consistent element detection.
+	 *
+	 * Accepts a possibly-null panel (returns [] if none).
 	 */
-	private getFocusableElements(panel: HTMLElement): HTMLElement[] {
-		const activePanel = this.getActiveTabPanel();
-		if (!activePanel) return [];
-
-		const overflowMenu = activePanel.querySelector('ontario-header-overflow-menu') as HTMLElement | null;
-		return HeaderKeyboardNavigation.getFocusableElementsInShadow(overflowMenu);
+	private getFocusableElements(panel?: HTMLElement | null): HTMLElement[] {
+		const container = panel ?? this.getMenuContainer();
+		if (!container) return [];
+		return HeaderKeyboardNavigation.getFocusableElements(container);
 	}
 
 	/* ===========================

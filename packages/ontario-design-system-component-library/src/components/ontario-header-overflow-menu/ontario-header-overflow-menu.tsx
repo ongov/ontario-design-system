@@ -236,7 +236,7 @@ export class OntarioHeaderOverflowMenu {
 			this.currentIndex,
 			focusableElements,
 			this.menuItemState,
-			(index, items) => this.updateAriaLive(index),
+			(index) => this.updateAriaLive(index),
 		);
 	}
 

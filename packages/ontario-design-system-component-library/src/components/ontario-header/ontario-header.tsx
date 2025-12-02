@@ -23,7 +23,6 @@ import { generateMenuItem } from '../../utils/components/header/header-menu-item
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { getImageAssetSrcPath } from '../../utils/helper/assets';
-import { determineDeviceType } from '../../utils/helper/utils';
 import { DeviceType } from '../../utils/helper/utils-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 
