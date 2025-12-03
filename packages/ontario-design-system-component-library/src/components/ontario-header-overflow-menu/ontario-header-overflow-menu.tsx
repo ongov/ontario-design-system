@@ -147,16 +147,28 @@ export class OntarioHeaderOverflowMenu {
 			return;
 		}
 
-		// Embedded: only handle arrow keys when focus is inside this menu instance.
-		// Use the shadowRoot.activeElement to detect focus inside this component's shadow DOM.
+		// Embedded: check if focus is inside this menu instance
 		const shadowActive = (this.el.shadowRoot?.activeElement as HTMLElement) || null;
 		const domActive = (document.activeElement as HTMLElement) || null;
+
 		const focusInThisMenu = !!(
 			(shadowActive && this.el.shadowRoot?.contains(shadowActive)) ||
 			(domActive && this.menu?.contains(domActive))
 		);
 
 		if (!focusInThisMenu) return;
+
+		// Handle Tab key when on the last menu item
+		if (event.key === 'Tab' && !event.shiftKey) {
+			const focusableElements = this.getFocusableElements(this.menu);
+			const currentElement = shadowActive || domActive;
+			const currentIndex = focusableElements.indexOf(currentElement as HTMLElement);
+			const lastIndex = focusableElements.length - 1;
+
+			if (currentIndex === lastIndex) {
+				this.endOfMenuReached.emit();
+			}
+		}
 
 		this.handleArrowNavigation(event);
 	}
@@ -206,16 +218,14 @@ export class OntarioHeaderOverflowMenu {
 	 * @param event - Keyboard event (Arrow Up or Arrow Down)
 	 */
 	private handleArrowNavigation(event: KeyboardEvent) {
-		if (!['ArrowDown', 'ArrowUp'].includes(event.key)) return;
+		if (!['ArrowDown', 'ArrowUp'].includes(event.key)) {
+			return;
+		}
 
-		// Use the helper to get actual focusable elements (anchors, buttons, etc.)
 		const focusableElementsArray = this.getFocusableElements(this.menu);
 		if (!focusableElementsArray || !focusableElementsArray.length) return;
 
-		// Convert array to NodeList-like object
 		const focusableElements = this.arrayToNodeList(focusableElementsArray);
-
-		// Sync currentIndex with actually focused element before navigating
 		const syncedIndex = HeaderKeyboardNavigation.syncCurrentIndexWithFocus(focusableElements, () =>
 			this.getActiveElement(),
 		);
@@ -223,7 +233,6 @@ export class OntarioHeaderOverflowMenu {
 			this.currentIndex = syncedIndex;
 		}
 
-		// Handle arrow navigation
 		this.currentIndex = HeaderKeyboardNavigation.handleArrowNavigation(
 			event,
 			this.currentIndex,
@@ -232,8 +241,9 @@ export class OntarioHeaderOverflowMenu {
 			(index) => this.updateAriaLive(index),
 		);
 
-		const lastIndex = (focusableElements?.length || 0) - 1;
-		if (this.currentIndex === lastIndex) {
+		// Emit when we navigate DOWN to the last item (so focus can move to tab)
+		const lastIndex = focusableElements.length - 1;
+		if (event.key === 'ArrowDown' && this.currentIndex === lastIndex) {
 			this.endOfMenuReached.emit();
 		}
 	}
@@ -538,7 +548,7 @@ export class OntarioHeaderOverflowMenu {
 								const isDisabled = (item as any)?.disabled === true;
 								return (
 									<li class="ontario-menu-item" role="none">
-										<a role="menuitem" href={item.href} tabindex={isDisabled ? -1 : 0}>
+										<a role="menuitem" href={item.href} tabIndex={isDisabled ? -1 : 0}>
 											{item.title}
 										</a>
 									</li>

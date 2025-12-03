@@ -114,6 +114,12 @@ export class OntarioHeaderMenuTabs {
 		return (this.menu?.querySelector('.ontario-application-navigation__container') as HTMLElement | null) || null;
 	}
 
+	/**
+	 * Whether we've already installed the focus trap for the currently-open panel.
+	 * Prevents duplicate installs across lifecycle ticks / events.
+	 */
+	private trapInstalled = false;
+
 	/* ===========================
         Lifecycle
     =========================== */
@@ -136,27 +142,13 @@ export class OntarioHeaderMenuTabs {
 		this.signInMenuItemsState = this.parseMenuItemsData(this.signInMenuItems) || [];
 	}
 
-	@Listen('menuReady', { target: 'window' })
-	async onMenuReady(event: CustomEvent) {
-		if (!this.autoDetectMode) return;
-
-		// Match panel by id so we only claim the right menu
-		const panelId = this.getActiveTabPanel()?.id || null;
-		if (event.detail?.panelId !== panelId) return;
-
-		// Claim ownership: tell overflow menu (and others) that we will own focus/trap
-		window.dispatchEvent(
-			new CustomEvent('takeOwnership', {
-				detail: { panelId },
-				bubbles: true,
-				composed: true,
-			}),
-		);
-
-		// Install the trap right away (we're the owner)
-		const container = this.getMenuContainer();
-		if (container && this.menuButtonRef) {
-			this.setupFocusTrap(container, this.menuButtonRef);
+	/**
+	 * Lifecycle hook: after each render, try to install the trap if menu is open.
+	 * This runs automatically after the component updates, avoiding timers.
+	 */
+	componentDidRender() {
+		if (this.menuIsOpen && !this.trapInstalled) {
+			this.tryInstallTrap();
 		}
 	}
 	/* ===========================
@@ -170,8 +162,7 @@ export class OntarioHeaderMenuTabs {
 		this.menuIsOpen = event.detail;
 
 		if (this.menuIsOpen) {
-			// try to install the trap once the panel + overflow menu items are available
-			this.installTrapWhenReady(1000); // 1s max wait
+			// Lifecycle will call tryInstallTrap() — just focus
 			this.setupInitialFocus();
 		} else {
 			this.resetState();
@@ -193,76 +184,60 @@ export class OntarioHeaderMenuTabs {
 	}
 
 	/**
-	 * Wait until the overflow menu's shadow DOM and menu items are available,
-	 * then install the focus trap. Uses MutationObserver for reliability and
-	 * falls back to a timeout.
-	 *
-	 * @param timeoutMs maximum time to wait for elements (ms)
+	 * Listen for end of menu navigation from child overflow menus.
+	 * When user reaches the last item, move focus back to the active tab.
 	 */
-	private installTrapWhenReady(timeoutMs: number = 500) {
-		const start = performance.now();
-		const activePanel = () => this.getActiveTabPanel();
+	@Listen('endOfMenuReached', { target: 'window' })
+	handleEndOfMenu(event: CustomEvent) {
+		if (!this.menuIsOpen) return;
 
-		const tryInstall = () => {
-			const panel = activePanel();
-			const overflowMenu = panel?.querySelector('ontario-header-overflow-menu') as HTMLElement | null;
-			const hasItems = !!overflowMenu?.shadowRoot?.querySelectorAll('.ontario-menu-item')?.length;
-			const menuContainer = this.getMenuContainer();
+		// Prevent default to stop any other handlers
+		event.stopPropagation();
 
-			if (menuContainer && this.menuButtonRef && hasItems) {
-				this.setupFocusTrap(menuContainer, this.menuButtonRef);
-				return true;
-			}
-			return false;
-		};
+		// Small delay to ensure current navigation completes
+		setTimeout(() => {
+			this.focusTab(this.activeTab);
+			this.currentIndex = undefined;
+		}, 50);
+	}
 
-		// quick synchronous check first
-		if (tryInstall()) return;
+	@Listen('menuReady', { target: 'window' })
+	async onMenuReady(event: CustomEvent) {
+		// Match panel by id so we only claim the right menu
+		const panelId = this.getActiveTabPanel()?.id || null;
+		if (event.detail?.panelId !== panelId) return;
 
-		// observe the active panel for DOM changes so we can attach as soon as items appear
-		const panel = activePanel();
-		if (!panel) {
-			// if panel not found yet, poll via rAF until timeout
-			const tick = () => {
-				if (tryInstall()) return;
-				if (performance.now() - start < timeoutMs) {
-					requestAnimationFrame(tick);
-				} else {
-					const menuContainer = this.getMenuContainer();
-					if (menuContainer && this.menuButtonRef) this.setupFocusTrap(menuContainer, this.menuButtonRef);
-				}
-			};
-			requestAnimationFrame(tick);
-			return;
+		// If auto-detect is on, emit takeOwnership
+		if (this.autoDetectMode) {
+			window.dispatchEvent(
+				new CustomEvent('takeOwnership', {
+					detail: { panelId },
+					bubbles: true,
+					composed: true,
+				}),
+			);
 		}
 
-		const observer = new MutationObserver(() => {
-			if (tryInstall()) {
-				observer.disconnect();
-			} else if (performance.now() - start > timeoutMs) {
-				observer.disconnect();
-				const menuContainer = this.getMenuContainer();
-				if (menuContainer && this.menuButtonRef) this.setupFocusTrap(menuContainer, this.menuButtonRef);
-			}
-		});
+		// Try to install trap (works regardless of autoDetectMode)
+		this.tryInstallTrap();
+	}
 
-		observer.observe(panel, { childList: true, subtree: true });
+	/**
+	 * Try to install the focus trap synchronously based on current DOM.
+	 * Sets trapInstalled = true when successful to avoid repeated installs.
+	 */
+	private tryInstallTrap() {
+		if (this.trapInstalled) return;
 
-		// also guard with an rAF poll in case mutations don't fire on some environments
-		const tickFallback = () => {
-			if (tryInstall()) {
-				observer.disconnect();
-				return;
-			}
-			if (performance.now() - start < timeoutMs) {
-				requestAnimationFrame(tickFallback);
-			} else {
-				observer.disconnect();
-				const menuContainer = this.getMenuContainer();
-				if (menuContainer && this.menuButtonRef) this.setupFocusTrap(menuContainer, this.menuButtonRef);
-			}
-		};
-		requestAnimationFrame(tickFallback);
+		const panel = this.getActiveTabPanel();
+		const overflowMenu = panel?.querySelector('ontario-header-overflow-menu') as HTMLElement | null;
+		const hasItems = !!overflowMenu?.shadowRoot?.querySelectorAll('.ontario-menu-item')?.length;
+		const menuContainer = this.getMenuContainer();
+
+		if (menuContainer && this.menuButtonRef && hasItems) {
+			this.setupFocusTrap(menuContainer, this.menuButtonRef);
+			this.trapInstalled = true;
+		}
 	}
 
 	/**
