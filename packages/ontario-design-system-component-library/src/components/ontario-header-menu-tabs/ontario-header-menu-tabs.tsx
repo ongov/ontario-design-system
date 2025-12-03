@@ -2,20 +2,6 @@ import { Component, Prop, State, Watch, h, Listen, Element } from '@stencil/core
 import { MenuItem } from '../../utils/common/common.interface';
 import { HeaderKeyboardNavigation } from '../../utils/components/header/header-keyboard-navigation';
 
-/**
- * Ontario Header Menu Tabs Component
- *
- * A tabbed navigation menu used for Ontario headers on mobile and tablet devices.
- * Displays two tabs: "Topics" and "Sign In", each containing their own menu items.
- * Includes full keyboard navigation and focus trapping for accessibility.
- *
- * @example
- * <ontario-header-menu-tabs
- *   topicsMenuItems={menuItems}
- *   signInMenuItems={signInItems}
- *   menuButtonRef={buttonElement}
- * />
- */
 @Component({
 	tag: 'ontario-header-menu-tabs',
 	styleUrl: 'ontario-header-menu-tabs.scss',
@@ -59,6 +45,11 @@ export class OntarioHeaderMenuTabs {
 	 * menuButtonRef={this.menuButton}
 	 */
 	@Prop() menuButtonRef?: HTMLElement;
+
+	/**
+	 * Enable auto-detect handoff.
+	 */
+	@Prop() autoDetectMode?: boolean = false;
 
 	/**
 	 * The currently active tab index.
@@ -145,6 +136,29 @@ export class OntarioHeaderMenuTabs {
 		this.signInMenuItemsState = this.parseMenuItemsData(this.signInMenuItems) || [];
 	}
 
+	@Listen('menuReady', { target: 'window' })
+	async onMenuReady(event: CustomEvent) {
+		if (!this.autoDetectMode) return;
+
+		// Match panel by id so we only claim the right menu
+		const panelId = this.getActiveTabPanel()?.id || null;
+		if (event.detail?.panelId !== panelId) return;
+
+		// Claim ownership: tell overflow menu (and others) that we will own focus/trap
+		window.dispatchEvent(
+			new CustomEvent('takeOwnership', {
+				detail: { panelId },
+				bubbles: true,
+				composed: true,
+			}),
+		);
+
+		// Install the trap right away (we're the owner)
+		const container = this.getMenuContainer();
+		if (container && this.menuButtonRef) {
+			this.setupFocusTrap(container, this.menuButtonRef);
+		}
+	}
 	/* ===========================
         Event Listeners
     =========================== */
@@ -358,10 +372,7 @@ export class OntarioHeaderMenuTabs {
 		if (!focusableElements.length) return;
 
 		const currentMenuItems = this.activeTab === 0 ? this.topicsMenuItemsState : this.signInMenuItemsState;
-
-		// Use shared utility for shadow active element
 		const activeElement = HeaderKeyboardNavigation.getShadowActiveElement(overflowMenu) as HTMLElement | null;
-
 		const focusedIndex = activeElement ? focusableElements.findIndex((el) => el === activeElement) : -1;
 		if (focusedIndex !== -1) this.currentIndex = focusedIndex;
 
@@ -526,14 +537,7 @@ export class OntarioHeaderMenuTabs {
     =========================== */
 	render() {
 		return (
-			<nav
-				role="navigation"
-				class={
-					this.menuIsOpen ? 'ontario-application-navigation ontario-navigation--open' : 'ontario-application-navigation'
-				}
-				id="ontario-application-navigation"
-				ref={(el) => (this.menu = el as HTMLElement)}
-			>
+			<div class="ontario-menu-tabs-host" hidden={!this.menuIsOpen} aria-hidden={!this.menuIsOpen ? 'true' : 'false'}>
 				<div class="ontario-application-navigation__container">
 					<div class="ontario-menu-tabs-container">
 						{/* Tab Buttons */}
@@ -572,7 +576,11 @@ export class OntarioHeaderMenuTabs {
 							aria-labelledby="ontario-menu-tab-topics"
 							hidden={this.activeTab !== 0}
 						>
-							<ontario-header-overflow-menu menuItems={this.topicsMenuItemsState} standalone={false} />
+							<ontario-header-overflow-menu
+								menuItems={this.topicsMenuItemsState}
+								menuButtonRef={this.menuButtonRef}
+								autoDetectMode={this.autoDetectMode}
+							/>
 						</div>
 
 						{/* Sign In Panel */}
@@ -583,17 +591,22 @@ export class OntarioHeaderMenuTabs {
 							aria-labelledby="ontario-menu-tab-sign-in"
 							hidden={this.activeTab !== 1}
 						>
-							<ontario-header-overflow-menu menuItems={this.signInMenuItemsState} standalone={false} />
+							<ontario-header-overflow-menu
+								menuItems={this.signInMenuItemsState}
+								menuButtonRef={this.menuButtonRef}
+								autoDetectMode={this.autoDetectMode}
+							/>
 						</div>
 					</div>
 				</div>
+
 				<div
 					id="aria-live-region"
 					class="ontario-show-for-sr"
 					aria-live="polite"
 					ref={(el) => (this.ariaLiveRegion = el as HTMLElement)}
 				></div>
-			</nav>
+			</div>
 		);
 	}
 }

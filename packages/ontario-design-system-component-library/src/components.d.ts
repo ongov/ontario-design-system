@@ -519,18 +519,12 @@ export namespace Components {
          */
         "type"?: OntarioHeaderType;
     }
-    /**
-     * Ontario Header Menu Tabs Component
-     * A tabbed navigation menu used for Ontario headers on mobile and tablet devices.
-     * Displays two tabs: "Topics" and "Sign In", each containing their own menu items.
-     * Includes full keyboard navigation and focus trapping for accessibility.
-     * @example <ontario-header-menu-tabs
-     *   topicsMenuItems={menuItems}
-     *   signInMenuItems={signInItems}
-     *   menuButtonRef={buttonElement}
-     * />
-     */
     interface OntarioHeaderMenuTabs {
+        /**
+          * Enable auto-detect handoff.
+          * @default false
+         */
+        "autoDetectMode"?: boolean;
         /**
           * Reference to the menu button that opens this dropdown. Used for focus trapping - allows focus to loop back to the button.
           * @example menuButtonRef={this.menuButton}
@@ -547,31 +541,12 @@ export namespace Components {
          */
         "topicsMenuItems": MenuItem[] | string;
     }
-    /**
-     * Ontario Header Overflow Menu Component
-     * A dropdown navigation menu used for Ontario headers. Can operate in two modes:
-     * **Standalone mode (desktop):**
-     * - Manages its own open/close state
-     * - Handles all keyboard navigation and focus trapping
-     * - Auto-closes when focus leaves the menu
-     * - Partial focus trap (only Shift+Tab backwards to menu button)
-     * **Embedded mode (inside tabs on mobile/tablet):**
-     * - Just renders menu items
-     * - Parent component (tabs) handles all behavior
-     * - No event listeners or state management
-     * @example // Standalone
-     * <ontario-header-overflow-menu
-     *   menuItems={items}
-     *   menuButtonRef={buttonElement}
-     *   standalone={true}
-     * />
-     * // Inside tabs
-     * <ontario-header-overflow-menu
-     *   menuItems={items}
-     *   standalone={false}
-     * />
-     */
     interface OntarioHeaderOverflowMenu {
+        /**
+          * Whether to automatically detect and coordinate focus trap ownership. When true, emits menuReady and waits for a parent to claim ownership. If no parent claims ownership, falls back to own focus trap.
+          * @default false
+         */
+        "autoDetectMode": boolean;
         /**
           * Reference to the menu button that opens this dropdown. Used for focus trapping in standalone mode - allows Shift+Tab to loop back.
           * @example menuButtonRef={this.menuButton}
@@ -582,11 +557,6 @@ export namespace Components {
           * @example menuItems={[   { href: '/about', title: 'About', linkIsActive: false },   { href: '/services', title: 'Services', linkIsActive: true } ]}
          */
         "menuItems": MenuItem[] | string;
-        /**
-          * Whether this is being used standalone (true) or inside tabs (false).  **Standalone mode (true):** - Handles own open/close state, event listeners, and focus trapping - Desktop behavior with partial focus trap  **Embedded mode (false):** - Just renders menu items - Parent component handles all behavior - Mobile/tablet behavior inside tabs component
-          * @default true
-         */
-        "standalone": boolean;
     }
     interface OntarioHintExpander {
         /**
@@ -2420,6 +2390,10 @@ export interface OntarioHeaderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOntarioHeaderElement;
 }
+export interface OntarioHeaderOverflowMenuCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOntarioHeaderOverflowMenuElement;
+}
 export interface OntarioHintExpanderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOntarioHintExpanderElement;
@@ -2618,48 +2592,26 @@ declare global {
         prototype: HTMLOntarioHeaderElement;
         new (): HTMLOntarioHeaderElement;
     };
-    /**
-     * Ontario Header Menu Tabs Component
-     * A tabbed navigation menu used for Ontario headers on mobile and tablet devices.
-     * Displays two tabs: "Topics" and "Sign In", each containing their own menu items.
-     * Includes full keyboard navigation and focus trapping for accessibility.
-     * @example <ontario-header-menu-tabs
-     *   topicsMenuItems={menuItems}
-     *   signInMenuItems={signInItems}
-     *   menuButtonRef={buttonElement}
-     * />
-     */
     interface HTMLOntarioHeaderMenuTabsElement extends Components.OntarioHeaderMenuTabs, HTMLStencilElement {
     }
     var HTMLOntarioHeaderMenuTabsElement: {
         prototype: HTMLOntarioHeaderMenuTabsElement;
         new (): HTMLOntarioHeaderMenuTabsElement;
     };
-    /**
-     * Ontario Header Overflow Menu Component
-     * A dropdown navigation menu used for Ontario headers. Can operate in two modes:
-     * **Standalone mode (desktop):**
-     * - Manages its own open/close state
-     * - Handles all keyboard navigation and focus trapping
-     * - Auto-closes when focus leaves the menu
-     * - Partial focus trap (only Shift+Tab backwards to menu button)
-     * **Embedded mode (inside tabs on mobile/tablet):**
-     * - Just renders menu items
-     * - Parent component (tabs) handles all behavior
-     * - No event listeners or state management
-     * @example // Standalone
-     * <ontario-header-overflow-menu
-     *   menuItems={items}
-     *   menuButtonRef={buttonElement}
-     *   standalone={true}
-     * />
-     * // Inside tabs
-     * <ontario-header-overflow-menu
-     *   menuItems={items}
-     *   standalone={false}
-     * />
-     */
+    interface HTMLOntarioHeaderOverflowMenuElementEventMap {
+        "menuClosed": void;
+        "menuReady": { panelId: string | null; host: HTMLElement };
+        "endOfMenuReached": void;
+    }
     interface HTMLOntarioHeaderOverflowMenuElement extends Components.OntarioHeaderOverflowMenu, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOntarioHeaderOverflowMenuElementEventMap>(type: K, listener: (this: HTMLOntarioHeaderOverflowMenuElement, ev: OntarioHeaderOverflowMenuCustomEvent<HTMLOntarioHeaderOverflowMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOntarioHeaderOverflowMenuElementEventMap>(type: K, listener: (this: HTMLOntarioHeaderOverflowMenuElement, ev: OntarioHeaderOverflowMenuCustomEvent<HTMLOntarioHeaderOverflowMenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLOntarioHeaderOverflowMenuElement: {
         prototype: HTMLOntarioHeaderOverflowMenuElement;
@@ -4208,18 +4160,12 @@ declare namespace LocalJSX {
          */
         "type"?: OntarioHeaderType;
     }
-    /**
-     * Ontario Header Menu Tabs Component
-     * A tabbed navigation menu used for Ontario headers on mobile and tablet devices.
-     * Displays two tabs: "Topics" and "Sign In", each containing their own menu items.
-     * Includes full keyboard navigation and focus trapping for accessibility.
-     * @example <ontario-header-menu-tabs
-     *   topicsMenuItems={menuItems}
-     *   signInMenuItems={signInItems}
-     *   menuButtonRef={buttonElement}
-     * />
-     */
     interface OntarioHeaderMenuTabs {
+        /**
+          * Enable auto-detect handoff.
+          * @default false
+         */
+        "autoDetectMode"?: boolean;
         /**
           * Reference to the menu button that opens this dropdown. Used for focus trapping - allows focus to loop back to the button.
           * @example menuButtonRef={this.menuButton}
@@ -4236,31 +4182,12 @@ declare namespace LocalJSX {
          */
         "topicsMenuItems"?: MenuItem[] | string;
     }
-    /**
-     * Ontario Header Overflow Menu Component
-     * A dropdown navigation menu used for Ontario headers. Can operate in two modes:
-     * **Standalone mode (desktop):**
-     * - Manages its own open/close state
-     * - Handles all keyboard navigation and focus trapping
-     * - Auto-closes when focus leaves the menu
-     * - Partial focus trap (only Shift+Tab backwards to menu button)
-     * **Embedded mode (inside tabs on mobile/tablet):**
-     * - Just renders menu items
-     * - Parent component (tabs) handles all behavior
-     * - No event listeners or state management
-     * @example // Standalone
-     * <ontario-header-overflow-menu
-     *   menuItems={items}
-     *   menuButtonRef={buttonElement}
-     *   standalone={true}
-     * />
-     * // Inside tabs
-     * <ontario-header-overflow-menu
-     *   menuItems={items}
-     *   standalone={false}
-     * />
-     */
     interface OntarioHeaderOverflowMenu {
+        /**
+          * Whether to automatically detect and coordinate focus trap ownership. When true, emits menuReady and waits for a parent to claim ownership. If no parent claims ownership, falls back to own focus trap.
+          * @default false
+         */
+        "autoDetectMode"?: boolean;
         /**
           * Reference to the menu button that opens this dropdown. Used for focus trapping in standalone mode - allows Shift+Tab to loop back.
           * @example menuButtonRef={this.menuButton}
@@ -4272,10 +4199,17 @@ declare namespace LocalJSX {
          */
         "menuItems"?: MenuItem[] | string;
         /**
-          * Whether this is being used standalone (true) or inside tabs (false).  **Standalone mode (true):** - Handles own open/close state, event listeners, and focus trapping - Desktop behavior with partial focus trap  **Embedded mode (false):** - Just renders menu items - Parent component handles all behavior - Mobile/tablet behavior inside tabs component
-          * @default true
+          * Emitted when navigation reaches the last menu item.
          */
-        "standalone"?: boolean;
+        "onEndOfMenuReached"?: (event: OntarioHeaderOverflowMenuCustomEvent<void>) => void;
+        /**
+          * Emit a menuClosed event to tell the parent header component. This allows the header to update its state when the menu auto-closes.
+         */
+        "onMenuClosed"?: (event: OntarioHeaderOverflowMenuCustomEvent<void>) => void;
+        /**
+          * Notify potential owners that this menu's items are ready.  Emits a global 'menuReady' event with: - detail.panelId: id of the closest mobile panel (if any) so parents can match the panel - detail.host: DOM reference to this overflow menu instance  The event bubbles and is composed so listeners outside the shadow DOM (e.g. tabs/header) can observe it and optionally claim ownership by dispatching 'takeOwnership'.
+         */
+        "onMenuReady"?: (event: OntarioHeaderOverflowMenuCustomEvent<{ panelId: string | null; host: HTMLElement }>) => void;
     }
     interface OntarioHintExpander {
         /**
@@ -6345,42 +6279,7 @@ declare module "@stencil/core" {
             "ontario-footer": LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;
             "ontario-form-container": LocalJSX.OntarioFormContainer & JSXBase.HTMLAttributes<HTMLOntarioFormContainerElement>;
             "ontario-header": LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
-            /**
-             * Ontario Header Menu Tabs Component
-             * A tabbed navigation menu used for Ontario headers on mobile and tablet devices.
-             * Displays two tabs: "Topics" and "Sign In", each containing their own menu items.
-             * Includes full keyboard navigation and focus trapping for accessibility.
-             * @example <ontario-header-menu-tabs
-             *   topicsMenuItems={menuItems}
-             *   signInMenuItems={signInItems}
-             *   menuButtonRef={buttonElement}
-             * />
-             */
             "ontario-header-menu-tabs": LocalJSX.OntarioHeaderMenuTabs & JSXBase.HTMLAttributes<HTMLOntarioHeaderMenuTabsElement>;
-            /**
-             * Ontario Header Overflow Menu Component
-             * A dropdown navigation menu used for Ontario headers. Can operate in two modes:
-             * **Standalone mode (desktop):**
-             * - Manages its own open/close state
-             * - Handles all keyboard navigation and focus trapping
-             * - Auto-closes when focus leaves the menu
-             * - Partial focus trap (only Shift+Tab backwards to menu button)
-             * **Embedded mode (inside tabs on mobile/tablet):**
-             * - Just renders menu items
-             * - Parent component (tabs) handles all behavior
-             * - No event listeners or state management
-             * @example // Standalone
-             * <ontario-header-overflow-menu
-             *   menuItems={items}
-             *   menuButtonRef={buttonElement}
-             *   standalone={true}
-             * />
-             * // Inside tabs
-             * <ontario-header-overflow-menu
-             *   menuItems={items}
-             *   standalone={false}
-             * />
-             */
             "ontario-header-overflow-menu": LocalJSX.OntarioHeaderOverflowMenu & JSXBase.HTMLAttributes<HTMLOntarioHeaderOverflowMenuElement>;
             "ontario-hint-expander": LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
             /**
