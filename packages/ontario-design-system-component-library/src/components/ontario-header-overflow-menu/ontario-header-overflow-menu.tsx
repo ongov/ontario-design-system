@@ -1,39 +1,8 @@
-import { Component, Prop, State, Watch, h, Listen, Element } from '@stencil/core';
+import { Component, Prop, State, Watch, h, Listen, Element, Event, EventEmitter } from '@stencil/core';
 import { MenuItem } from '../../utils/common/common.interface';
-import { generateMenuItem } from '../../utils/components/header/header-menu-items';
 import { convertStringToBoolean } from '../../utils/helper/utils';
 import { HeaderKeyboardNavigation } from '../../utils/components/header/header-keyboard-navigation';
 
-/**
- * Ontario Header Overflow Menu Component
- *
- * A dropdown navigation menu used for Ontario headers. Can operate in two modes:
- *
- * **Standalone mode (desktop):**
- * - Manages its own open/close state
- * - Handles all keyboard navigation and focus trapping
- * - Auto-closes when focus leaves the menu
- * - Partial focus trap (only Shift+Tab backwards to menu button)
- *
- * **Embedded mode (inside tabs on mobile/tablet):**
- * - Just renders menu items
- * - Parent component (tabs) handles all behavior
- * - No event listeners or state management
- *
- * @example
- * // Standalone
- * <ontario-header-overflow-menu
- *   menuItems={items}
- *   menuButtonRef={buttonElement}
- *   standalone={true}
- * />
- *
- * // Inside tabs
- * <ontario-header-overflow-menu
- *   menuItems={items}
- *   standalone={false}
- * />
- */
 @Component({
 	tag: 'ontario-header-overflow-menu',
 	styleUrl: 'ontario-header-overflow-menu.scss',
@@ -43,8 +12,8 @@ export class OntarioHeaderOverflowMenu {
 	@Element() el: HTMLElement;
 
 	/* ===========================
-        Props & State
-    =========================== */
+		Props & State
+	=========================== */
 	/**
 	 * The menu items to display.
 	 * Can be passed as a MenuItem array or JSON string.
@@ -67,20 +36,13 @@ export class OntarioHeaderOverflowMenu {
 	@Prop() menuButtonRef?: HTMLElement;
 
 	/**
-	 * Whether this is being used standalone (true) or inside tabs (false).
+	 * Whether to automatically detect and coordinate focus trap ownership.
+	 * When true, emits menuReady and waits for a parent to claim ownership.
+	 * If no parent claims ownership, falls back to own focus trap.
 	 *
-	 * **Standalone mode (true):**
-	 * - Handles own open/close state, event listeners, and focus trapping
-	 * - Desktop behavior with partial focus trap
-	 *
-	 * **Embedded mode (false):**
-	 * - Just renders menu items
-	 * - Parent component handles all behavior
-	 * - Mobile/tablet behavior inside tabs component
-	 *
-	 * @default true
+	 * @default false
 	 */
-	@Prop() standalone: boolean = true;
+	@Prop() autoDetectMode: boolean = false;
 
 	/**
 	 * Parsed menu items (converted from string if needed).
@@ -116,6 +78,17 @@ export class OntarioHeaderOverflowMenu {
 	 */
 	private focusTrapCleanup: (() => void) | null = null;
 
+	/**
+	 * Runtime mode check.
+	 * Returns true when this component is rendered standalone (not inside the tabbed
+	 * menu or a mobile panel). Used to decide whether this component should manage
+	 * open/close state, keyboard listeners, and the focus trap locally.
+	 */
+	private get isStandalone(): boolean {
+		const inTabs = !!this.el.closest('ontario-header-menu-tabs');
+		const inMobilePanel = !!this.el.closest('.ontario-mobile-menu__panel');
+		return !inTabs && !inMobilePanel;
+	}
 	/* ===========================
         Lifecycle & Watchers
     =========================== */
@@ -150,7 +123,7 @@ export class OntarioHeaderOverflowMenu {
 	 */
 	@Listen('menuButtonToggled', { target: 'window' })
 	toggleMenuVisibility(event: CustomEvent<boolean>) {
-		if (!this.standalone) return; // Ignore if inside tabs
+		if (!this.isStandalone) return;
 
 		this.menuIsOpen = event.detail;
 		this.menuIsOpen ? this.setupInitialFocus() : this.resetState();
@@ -167,8 +140,23 @@ export class OntarioHeaderOverflowMenu {
 	 */
 	@Listen('keydown', { target: 'window' })
 	handleKeyDown(event: KeyboardEvent) {
-		if (!this.standalone) return; // Tabs component handles this
-		if (!this.menuIsOpen) return;
+		// If standalone, only handle when our menu is open.
+		if (this.isStandalone) {
+			if (!this.menuIsOpen) return;
+			this.handleArrowNavigation(event);
+			return;
+		}
+
+		// Embedded: only handle arrow keys when focus is inside this menu instance.
+		// Use the shadowRoot.activeElement to detect focus inside this component's shadow DOM.
+		const shadowActive = (this.el.shadowRoot?.activeElement as HTMLElement) || null;
+		const domActive = (document.activeElement as HTMLElement) || null;
+		const focusInThisMenu = !!(
+			(shadowActive && this.el.shadowRoot?.contains(shadowActive)) ||
+			(domActive && this.menu?.contains(domActive))
+		);
+
+		if (!focusInThisMenu) return;
 
 		this.handleArrowNavigation(event);
 	}
@@ -184,14 +172,14 @@ export class OntarioHeaderOverflowMenu {
 	 */
 	@Listen('focusout', { target: 'window' })
 	handleFocusOut(event: FocusEvent) {
-		if (!this.standalone || !this.menuIsOpen) return;
+		if (!this.isStandalone || !this.menuIsOpen) return;
 
 		// Use setTimeout to ensure relatedTarget is set
 		setTimeout(() => {
 			const menuButton = this.getMenuButton();
 			const focusedElement = event.relatedTarget as HTMLElement;
 
-			// Check if focus moved outside both the menu and the menu button
+			// Check if focus moved outside both the menu and tfhe menu button
 			const focusInMenu = this.menu?.contains(focusedElement);
 			const focusOnButton = menuButton?.contains(focusedElement);
 			const focusInShadowRoot = this.el.shadowRoot?.contains(focusedElement);
@@ -220,7 +208,12 @@ export class OntarioHeaderOverflowMenu {
 	private handleArrowNavigation(event: KeyboardEvent) {
 		if (!['ArrowDown', 'ArrowUp'].includes(event.key)) return;
 
-		const focusableElements = this.menu.querySelectorAll('.ontario-menu-item') as NodeListOf<HTMLElement>;
+		// Use the helper to get actual focusable elements (anchors, buttons, etc.)
+		const focusableElementsArray = this.getFocusableElements(this.menu);
+		if (!focusableElementsArray || !focusableElementsArray.length) return;
+
+		// Convert array to NodeList-like object
+		const focusableElements = this.arrayToNodeList(focusableElementsArray);
 
 		// Sync currentIndex with actually focused element before navigating
 		const syncedIndex = HeaderKeyboardNavigation.syncCurrentIndexWithFocus(focusableElements, () =>
@@ -238,6 +231,11 @@ export class OntarioHeaderOverflowMenu {
 			this.menuItemState,
 			(index) => this.updateAriaLive(index),
 		);
+
+		const lastIndex = (focusableElements?.length || 0) - 1;
+		if (this.currentIndex === lastIndex) {
+			this.endOfMenuReached.emit();
+		}
 	}
 
 	/* ===========================
@@ -259,7 +257,11 @@ export class OntarioHeaderOverflowMenu {
 
 			const menuButton = this.getMenuButton();
 			if (menuButton) {
-				this.setupFocusTrap(this.menu, menuButton);
+				if (this.autoDetectMode && !this.isStandalone) {
+					this.tryAutoOwnership();
+				} else if (this.isStandalone) {
+					this.setupFocusTrap(this.menu, menuButton);
+				}
 			}
 		}, 150);
 	}
@@ -321,12 +323,10 @@ export class OntarioHeaderOverflowMenu {
 
 			const active = document.activeElement;
 
-			// Partial trap for desktop - only Shift+Tab backwards
 			if (e.shiftKey && active === focusable[0]) {
 				e.preventDefault();
 				loopTarget.focus();
 			}
-			// Allow normal Tab behavior - don't trap it
 		};
 
 		document.addEventListener('keydown', handler, true);
@@ -356,16 +356,28 @@ export class OntarioHeaderOverflowMenu {
 	}
 
 	/**
+	 * Convert an array of HTMLElements to a NodeList-like object.
+	 * Adds the required 'item' method and array-like indexing.
+	 *
+	 * @param elements - Array of HTMLElements
+	 * @returns NodeList-like object
+	 */
+	private arrayToNodeList(elements: HTMLElement[]): NodeListOf<HTMLElement> {
+		const nodeList = Object.assign(elements, {
+			item: (index: number) => elements[index] || null,
+		});
+		return nodeList as unknown as NodeListOf<HTMLElement>;
+	}
+
+	/**
 	 * Emit a menuClosed event to tell the parent header component.
 	 * This allows the header to update its state when the menu auto-closes.
 	 */
+	@Event({ eventName: 'menuClosed', bubbles: true, composed: true })
+	menuClosed!: EventEmitter<void>;
+
 	private emitMenuClosed() {
-		this.el.dispatchEvent(
-			new CustomEvent('menuClosed', {
-				bubbles: true,
-				composed: true,
-			}),
-		);
+		this.menuClosed.emit();
 	}
 
 	/**
@@ -377,6 +389,64 @@ export class OntarioHeaderOverflowMenu {
 	private getActiveElement(): Element | null {
 		return HeaderKeyboardNavigation.getActiveElement(this.el);
 	}
+
+	/**
+	 * Flag used during the auto-detect ownership handshake.
+	 * - false: no parent has claimed focus/keyboard ownership for this menu.
+	 * - true: a parent (tabs/header) has responded to menuReady with takeOwnership.
+	 *
+	 * This prevents the overflow menu from installing its own focus trap when a parent
+	 * has taken responsibility for focus management.
+	 */
+	private ownershipClaimed = false;
+
+	/**
+	 * Notify potential owners that this menu's items are ready.
+	 *
+	 * Emits a global 'menuReady' event with:
+	 * - detail.panelId: id of the closest mobile panel (if any) so parents can match the panel
+	 * - detail.host: DOM reference to this overflow menu instance
+	 *
+	 * The event bubbles and is composed so listeners outside the shadow DOM (e.g. tabs/header)
+	 * can observe it and optionally claim ownership by dispatching 'takeOwnership'.
+	 */
+	@Event({ eventName: 'menuReady', bubbles: true, composed: true })
+	menuReady!: EventEmitter<{ panelId: string | null; host: HTMLElement }>;
+
+	/**
+	 * Listen for takeOwnership from potential parent owners
+	 */
+	@Listen('takeOwnership', { target: 'window' })
+	handleTakeOwnership(event: CustomEvent) {
+		// Optionally check panelId to ensure the claim is for this menu
+		const panelId = this.el.closest('.ontario-mobile-menu__panel')?.id || null;
+		if (!event.detail || event.detail.panelId !== panelId) return;
+		this.ownershipClaimed = true;
+	}
+
+	/**
+	 * When items appear (or menu opens), call emitMenuReady and wait for owner
+	 */
+	private tryAutoOwnership(timeoutMs = 300) {
+		this.ownershipClaimed = false;
+		const panelId = this.el.closest('.ontario-mobile-menu__panel')?.id || null;
+		this.menuReady.emit({ panelId, host: this.el });
+
+		setTimeout(() => {
+			if (!this.ownershipClaimed) {
+				const menuButton = this.getMenuButton();
+				if (menuButton) {
+					this.setupFocusTrap(this.menu, menuButton);
+				}
+			}
+		}, timeoutMs);
+	}
+
+	/**
+	 * Emitted when navigation reaches the last menu item.
+	 */
+	@Event({ eventName: 'endOfMenuReached', bubbles: true, composed: true })
+	endOfMenuReached!: EventEmitter<void>;
 
 	/* ===========================
         Accessibility
@@ -442,61 +512,50 @@ export class OntarioHeaderOverflowMenu {
 	/* ===========================
         Render
     =========================== */
-
-	/**
-	 * Render the menu in either standalone or embedded mode.
-	 *
-	 * **Standalone mode:** Full navigation wrapper with open/close classes
-	 * **Embedded mode:** Simple div with menu items (for use inside tabs)
-	 */
 	render() {
-		// Generate the menu list (same for both modes)
-		const menuList = (
-			<ul>
-				{this.menuItemState?.map((item: MenuItem) =>
-					generateMenuItem(item.href, item.title, item.linkIsActive ?? false, item.description),
-				)}
-			</ul>
-		);
+		// Compute class and aria-hidden depending on whether we own open/close
+		const navClass = this.isStandalone
+			? this.menuIsOpen
+				? 'ontario-application-navigation ontario-navigation--open'
+				: 'ontario-application-navigation'
+			: 'ontario-application-navigation ontario-navigation--open ontario-application-navigation--embedded';
 
-		if (this.standalone) {
-			// Standalone mode - full navigation wrapper
-			return (
-				<nav
-					role="navigation"
-					class={
-						this.menuIsOpen
-							? 'ontario-application-navigation ontario-navigation--open'
-							: 'ontario-application-navigation'
-					}
-					id="ontario-application-navigation"
-					ref={(el) => (this.menu = el as HTMLElement)}
-				>
-					<div class="ontario-application-navigation__container">
-						<div class="ontario-navigation-content" role="tabpanel">
-							{menuList}
-						</div>
+		// Only set aria-hidden when standalone (parent controls visibility when embedded)
+		const ariaHidden = this.isStandalone ? String(!this.menuIsOpen) : 'false';
+
+		return (
+			<nav
+				role="navigation"
+				class={navClass}
+				id="ontario-application-navigation"
+				ref={(el) => (this.menu = el as HTMLElement)}
+				aria-hidden={ariaHidden}
+			>
+				<div class="ontario-application-navigation__container">
+					<div class="ontario-menu-list">
+						<ul class="ontario-menu" role="menu">
+							{this.menuItemState.map((item) => {
+								const isDisabled = (item as any)?.disabled === true;
+								return (
+									<li class="ontario-menu-item" role="none">
+										<a role="menuitem" href={item.href} tabindex={isDisabled ? -1 : 0}>
+											{item.title}
+										</a>
+									</li>
+								);
+							})}
+						</ul>
 					</div>
-					<div
-						id="aria-live-region"
-						class="ontario-show-for-sr"
-						aria-live="polite"
-						ref={(el) => (this.ariaLiveRegion = el as HTMLElement)}
-					></div>
-				</nav>
-			);
-		} else {
-			// Embedded mode - just the menu list
-			return (
-				<div class="ontario-menu-list" ref={(el) => (this.menu = el as HTMLElement)}>
-					{menuList}
-					<div
-						class="ontario-show-for-sr"
-						aria-live="polite"
-						ref={(el) => (this.ariaLiveRegion = el as HTMLElement)}
-					></div>
 				</div>
-			);
-		}
+
+				{/* optional aria-live region */}
+				<div
+					id="aria-live-region"
+					class="ontario-show-for-sr"
+					aria-live="polite"
+					ref={(el) => (this.ariaLiveRegion = el as HTMLElement)}
+				></div>
+			</nav>
+		);
 	}
 }
