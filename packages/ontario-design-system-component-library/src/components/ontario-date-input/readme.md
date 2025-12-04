@@ -16,6 +16,19 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of date input component
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-date-input
 	placeholder='{
@@ -35,22 +48,68 @@ Example of date input component
 ></ontario-date-input>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioDateInput
+	placeholder={{
+		day: 'DD',
+		month: 'MM',
+		year: 'YYYY',
+	}}
+	minYear={500}
+	maxYear={1000}
+	required={true}
+	dateOptions={['day', 'month', 'year']}
+	hintText="For example 2000 03 01"
+	caption={{
+		captionText: 'Exact Date',
+		captionType: 'default',
+	}}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-date-input
+	[placeholder]="{ day: 'DD', month: 'MM', year: 'YYYY' }"
+	[minYear]="500"
+	[maxYear]="1000"
+	required="true"
+	[dateOptions]="['day', 'month', 'year']"
+	[hintText]="'For example 2000 03 01'"
+	[caption]="{ captionText: 'Exact Date', captionType: 'default' }"
+></ontario-date-input>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
 	<OntarioDateInput
-		placeholder='{
-			"day": "DD",
-			"month": "MM",
-			"year": "YYYY"
-		}'
-		min-year="500"
-		max-year="1000"
-		required="true"
-		date-options='["day", "month", "year"]'
-		hint-text="For example 2000 03 01"
-		caption='{
-			"captionText": "Exact Date",
-			"captionType": "default"
-		}'
+		placeholder={{
+			day: 'DD',
+			month: 'MM',
+			year: 'YYYY',
+		}}
+		minYear={500}
+		maxYear={1000}
+		required={true}
+		dateOptions={['day', 'month', 'year']}
+		hintText="For example 2000 03 01"
+		caption={{
+			captionText: 'Exact Date',
+			captionType: 'default',
+		}}
 	></OntarioDateInput>
 </div>
 
@@ -222,8 +281,8 @@ The Ontario Date Input component is compatible with Server-Side Rendering (SSR),
 
 > **Recommended for SSR:**
 >
-> ```html
-> <ontario-date-input element-id="my-date-input" language="en"></ontario-date-input>
+> ```tsx
+> <OntarioDateInput elementId="my-date-input" language="en"></OntarioDateInput>
 > ```
 
 <!-- Auto Generated Below -->

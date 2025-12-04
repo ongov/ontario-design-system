@@ -1,4 +1,6 @@
 import { OntarioSearchBox } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-search-box
 
@@ -16,8 +18,44 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ### Search box with caption
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-search-box id="ontario-search-box" caption="Search the directory"></ontario-search-box>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioSearchBox id="ontario-search-box" caption="Search the directory"></OntarioSearchBox>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-search-box [id]="'ontario-search-box'" [caption]="'Search the directory'"></ontario-search-box>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <div>

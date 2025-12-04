@@ -1,4 +1,6 @@
 import { OntarioFormContainer, OntarioFieldset, OntarioInput, OntarioDropdownList, OntarioTextarea, OntarioButton } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-form-container
 
@@ -43,6 +45,19 @@ By default, the above components do not have built-in margins to separate them f
 
 No `gap` prop is required when using the default gap option.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <form>
 	<ontario-form-container>
@@ -78,6 +93,91 @@ No `gap` prop is required when using the default gap option.
 </form>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<form>
+	<OntarioFormContainer>
+		<OntarioFieldset legendSize="large" legend="What is your delivery address?">
+			<OntarioInput
+				id="delivery-address-form-line-1"
+				caption="Address line 1"
+				required
+				name="delivery-address-form-line-1"
+				hintText="Street and number or P.O. Box."
+				enableLiveValidation
+				requiredValidationMessage="Please enter your address"
+			></OntarioInput>
+			<OntarioInput
+				caption="Address line 2"
+				name="delivery-address-form-line-2"
+				hintText="Apartment, suite, unit, building, etc."
+			></OntarioInput>
+			<OntarioDropdownList
+				caption="Province/territory"
+				name="delivery-address-form-province-selection-form"
+				elementId="delivery-address-form-province-territory"
+				required
+				isEmptyStartOption={true}
+				options={[
+					{ value: 'ON', label: 'Ontario' },
+					{ value: 'QC', label: 'Quebec' },
+					{ value: 'SK', label: 'Saskatchewan' },
+				]}
+			></OntarioDropdownList>
+		</OntarioFieldset>
+	</OntarioFormContainer>
+</form>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<form>
+	<ontario-form-container>
+		<ontario-fieldset legend-size="large" legend="What is your delivery address?">
+			<ontario-input
+				[id]="'delivery-address-form-line-1'"
+				[caption]="'Address line 1'"
+				[required]="true"
+				[name]="'delivery-address-form-line-1'"
+				[hintText]="'Street and number or P.O. Box.'"
+				[enableLiveValidation]="true"
+				[requiredValidationMessage]="'Please enter your address'"
+			></ontario-input>
+			<ontario-input
+				[caption]="'Address line 2'"
+				[name]="'delivery-address-form-line-2'"
+				[hintText]="'Apartment, suite, unit, building, etc.'"
+			></ontario-input>
+			<ontario-dropdown-list
+				[caption]="'Province/territory'"
+				[name]="'delivery-address-form-province-selection-form'"
+				[elementId]="'delivery-address-form-province-territory'"
+				[required]="true"
+				[isEmptyStartOption]="true"
+				[options]="[
+					{ value: 'ON', label: 'Ontario' },
+					{ value: 'QC', label: 'Quebec' },
+					{ value: 'SK', label: 'Saskatchewan' }
+				]"
+			></ontario-dropdown-list>
+		</ontario-fieldset>
+	</ontario-form-container>
+</form>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
 	<form>
 		<OntarioFormContainer>
@@ -87,28 +187,28 @@ No `gap` prop is required when using the default gap option.
 					caption="Address line 1"
 					required
 					name="delivery-address-form-line-1"
-					hint-text="Street and number or P.O. Box."
-					enable-live-validation
-					required-validation-message="Please enter your address"
+					hintText="Street and number or P.O. Box."
+					enableLiveValidation
+					requiredValidationMessage="Please enter your address"
 				>
 				</OntarioInput>
 				<OntarioInput
 					caption="Address line 2"
 					name="delivery-address-form-line-2"
-					hint-text="Apartment, suite, unit, building, etc."
+					hintText="Apartment, suite, unit, building, etc."
 				>
 				</OntarioInput>
 				<OntarioDropdownList
 					caption="Province/territory"
 					name="delivery-address-form-province-selection-form"
-					element-id="delivery-address-form-province-territory"
+					elementId="delivery-address-form-province-territory"
 					required
-					is-empty-start-option="true"
-					options='[
-						{ "value": "ON", "label": "Ontario" },
-						{ "value": "QC", "label": "Quebec" },
-						{ "value": "SK", "label": "Saskatchewan" }
-					]'
+					isEmptyStartOption={true}
+					options={[
+						{ value: 'ON', label: 'Ontario' },
+						{ value: 'QC', label: 'Quebec' },
+						{ value: 'SK', label: 'Saskatchewan' },
+					]}
 				>
 				</OntarioDropdownList>
 			</OntarioFieldset>
@@ -119,6 +219,19 @@ No `gap` prop is required when using the default gap option.
 ### Mixed gap example
 
 This example uses both default and condensed gaps.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <form>
@@ -149,27 +262,94 @@ This example uses both default and condensed gaps.
 </form>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<form>
+	<OntarioFormContainer>
+		<OntarioFieldset legendSize="large" legend="What is your delivery address?">
+			<OntarioInput
+				name="email"
+				inputWidth="20-char-width"
+				caption={{
+					captionText: 'Email',
+					captionType: 'large',
+				}}
+				required="true"
+			></OntarioInput>
+			<OntarioFormContainer gap="condensed">
+				<OntarioTextarea
+					name="comments"
+					caption={{
+						captionText: 'Comments',
+						captionType: 'large',
+					}}
+					required="true"
+				></OntarioTextarea>
+				<OntarioButton type="secondary">✅ Share my feedback</OntarioButton>
+			</OntarioFormContainer>
+		</OntarioFieldset>
+	</OntarioFormContainer>
+</form>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<form>
+	<ontario-form-container>
+		<ontario-fieldset legend-size="large" legend="What is your delivery address?">
+			<ontario-input
+				[name]="'email'"
+				[inputWidth]="'20-char-width'"
+				[caption]="{ captionText: 'Email', captionType: 'large' }"
+				[required]="true"
+			></ontario-input>
+			<ontario-form-container gap="condensed">
+				<ontario-textarea
+					[name]="'comments'"
+					[caption]="{ captionText: 'Comments', captionType: 'large' }"
+					[required]="true"
+				></ontario-textarea>
+				<ontario-button [type]="'secondary'">✅ Share my feedback</ontario-button>
+			</ontario-form-container>
+		</ontario-fieldset>
+	</ontario-form-container>
+</form>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
 	<form>
 		<OntarioFormContainer>
 			<OntarioFieldset legendSize="large" legend="What is your delivery address?">
 				<OntarioInput
 					name="email"
-					input-width="20-char-width"
-					caption='{
-						"captionText": "Email",
-						"captionType": "large"
-					}'
-					required="true"
+					inputWidth="20-char-width"
+					caption={{
+						captionText: 'Email',
+						captionType: 'large',
+					}}
+					required={true}
 				></OntarioInput>
 				<OntarioFormContainer gap="condensed">
 					<OntarioTextarea
 						name="comments"
-						caption='{
-							"captionText": "Comments",
-							"captionType": "large"
-						}'
-						required="true"
+						caption={{
+							captionText: 'Comments',
+							captionType: 'large',
+						}}
+						required={true}
 					></OntarioTextarea>
 					<OntarioButton type="secondary">✅ Share my feedback</OntarioButton>
 				</OntarioFormContainer>

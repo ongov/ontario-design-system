@@ -1,4 +1,6 @@
 import { OntarioHeader } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # ontario-header
@@ -24,6 +26,19 @@ Once the component package has been installed (see Ontario Design System Compone
 ## Examples
 
 Example of an Ontario.ca header component.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-header
@@ -103,6 +118,76 @@ Example of an Ontario.ca header component.
 </ontario-header>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioHeader
+	type="ontario"
+	languageToggleOptions={{
+		englishLink: '/driving-and-roads',
+		frenchLink: '/fr/conduite-et-routes',
+	}}
+	menuItems={[
+		{ title: 'Arts and Culture', href: 'https://www.ontario.ca/page/arts-and-culture', linkIsActive: false },
+		{ title: 'Business and economy', href: 'https://www.ontario.ca/page/business-and-economy', linkIsActive: false },
+		{ title: 'Driving and Roads', href: 'https://www.ontario.ca/page/driving-and-roads', linkIsActive: false },
+		{
+			title: 'Education and training',
+			href: 'https://www.ontario.ca/page/education-and-training',
+			linkIsActive: false,
+		},
+		{
+			title: 'Environment and energy',
+			href: 'https://www.ontario.ca/page/environment-and-energy',
+			linkIsActive: false,
+		},
+		{ title: 'Government', href: 'https://www.ontario.ca/page/government', linkIsActive: false },
+		{ title: 'Health and wellness', href: 'https://www.ontario.ca/page/health-care-ontario', linkIsActive: false },
+		{ title: 'Home and community', href: 'https://www.ontario.ca/page/home-and-community', linkIsActive: false },
+		{ title: 'Jobs and employment', href: 'https://www.ontario.ca/page/jobs-and-employment', linkIsActive: false },
+		{ title: 'Law and safety', href: 'https://www.ontario.ca/page/law-and-safety', linkIsActive: false },
+		{ title: 'Rural and north', href: 'https://www.ontario.ca/page/rural-and-north', linkIsActive: false },
+		{ title: 'Taxes and benefits', href: 'https://www.ontario.ca/page/taxes-and-benefits', linkIsActive: false },
+		{ title: 'Travel and recreation', href: 'https://www.ontario.ca/page/travel-and-recreation', linkIsActive: false },
+	]}
+></OntarioHeader>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-header
+	[type]="'ontario'"
+	[languageToggleOptions]="{ englishLink: '/driving-and-roads', frenchLink: '/fr/conduite-et-routes' }"
+	[menuItems]="[
+		{ title: 'Arts and Culture', href: 'https://www.ontario.ca/page/arts-and-culture', linkIsActive: false },
+		{ title: 'Business and economy', href: 'https://www.ontario.ca/page/business-and-economy', linkIsActive: false },
+		{ title: 'Driving and Roads', href: 'https://www.ontario.ca/page/driving-and-roads', linkIsActive: false },
+		{ title: 'Education and training', href: 'https://www.ontario.ca/page/education-and-training', linkIsActive: false },
+		{ title: 'Environment and energy', href: 'https://www.ontario.ca/page/environment-and-energy', linkIsActive: false },
+		{ title: 'Government', href: 'https://www.ontario.ca/page/government', linkIsActive: false },
+		{ title: 'Health and wellness', href: 'https://www.ontario.ca/page/health-care-ontario', linkIsActive: false },
+		{ title: 'Home and community', href: 'https://www.ontario.ca/page/home-and-community', linkIsActive: false },
+		{ title: 'Jobs and employment', href: 'https://www.ontario.ca/page/jobs-and-employment', linkIsActive: false },
+		{ title: 'Law and safety', href: 'https://www.ontario.ca/page/law-and-safety', linkIsActive: false },
+		{ title: 'Rural and north', href: 'https://www.ontario.ca/page/rural-and-north', linkIsActive: false },
+		{ title: 'Taxes and benefits', href: 'https://www.ontario.ca/page/taxes-and-benefits', linkIsActive: false },
+		{ title: 'Travel and recreation', href: 'https://www.ontario.ca/page/travel-and-recreation', linkIsActive: false }
+	]"
+></ontario-header>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
 	<OntarioHeader
 		assetBasePath={useBaseUrl("/assets")}
@@ -146,6 +231,19 @@ Example of an Ontario.ca header component.
 </div>
 
 Example of an Application header component.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-header
@@ -198,6 +296,130 @@ Example of an Application header component.
 	};
 </script>
 ```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+const changeLanguage = (event: Event) => {
+	event.preventDefault();
+	// Logic to change language below
+};
+
+<OntarioHeader
+	assetBasePath={useBaseUrl('/assets')}
+	type="application"
+	disableDynamicMenu={true}
+	applicationHeaderInfo={{
+		title: 'Driving and roads',
+		href: '/driving-and-roads',
+		maxSubheaderDesktopLinks: 3,
+		maxSubheaderTabletLinks: 1,
+	}}
+	languageToggleOptions={{
+		englishLink: '/',
+		frenchLink: '/fr',
+	}}
+	menuItems={[
+		{ title: 'Vehicle registration', href: '/vehicle-registration', linkIsActive: false },
+		{ title: 'Driver records', href: '/driver-records', linkIsActive: false },
+		{ title: 'Accessible Parking Permits', href: '/accessible-parking-permits', linkIsActive: false },
+		{
+			title: 'Highway traveler information',
+			href: '/highway-traveler-information',
+			linkIsActive: true,
+			onClickHandler: (e: Event) => {
+				e.preventDefault();
+				alert('Menu item clicked!');
+			},
+		},
+	]}
+	customLanguageToggle={changeLanguage}
+></OntarioHeader>;
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-header
+	[assetBasePath]="'/assets'"
+	[type]="'application'"
+	[disableDynamicMenu]="true"
+	[applicationHeaderInfo]="{
+		title: 'Driving and roads',
+		href: '/driving-and-roads',
+		maxSubheaderDesktopLinks: 3,
+		maxSubheaderTabletLinks: 1
+	}"
+	[languageToggleOptions]="{ englishLink: '/', frenchLink: '/fr' }"
+	[menuItems]="[
+		{ title: 'Vehicle registration', href: '/vehicle-registration', linkIsActive: false },
+		{ title: 'Driver records', href: '/driver-records', linkIsActive: false },
+		{ title: 'Accessible Parking Permits', href: '/accessible-parking-permits', linkIsActive: false },
+		{
+			title: 'Highway traveler information',
+			href: '/highway-traveler-information',
+			linkIsActive: true,
+			onClickHandler: onMenuClick
+		}
+	]"
+	[customLanguageToggle]="changeLanguage"
+></ontario-header>
+```
+
+```ts
+onMenuClick(event: Event): void {
+	event.preventDefault();
+	alert('Menu item clicked!');
+}
+
+changeLanguage(event: Event): void {
+	event.preventDefault();
+	// Logic to change language below
+}
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+<div>
+	<OntarioHeader
+		assetBasePath={useBaseUrl('/assets')}
+		type="application"
+		disableDynamicMenu={true}
+		applicationHeaderInfo={{
+			title: 'Driving and roads',
+			href: '/driving-and-roads',
+			maxSubheaderDesktopLinks: 3,
+			maxSubheaderTabletLinks: 1,
+		}}
+		languageToggleOptions={{
+			englishLink: '/',
+			frenchLink: '/fr',
+		}}
+		menuItems={[
+			{ title: 'Vehicle registration', href: '/vehicle-registration', linkIsActive: false },
+			{ title: 'Driver records', href: '/driver-records', linkIsActive: false },
+			{ title: 'Accessible Parking Permits', href: '/accessible-parking-permits', linkIsActive: false },
+			{
+				title: 'Highway traveler information',
+				href: '/highway-traveler-information',
+				linkIsActive: true,
+				onClickHandler: (e: Event) => {
+					e.preventDefault();
+					alert('Menu item clicked!');
+				},
+			},
+		]}>
+	 </OntarioHeader>
+</div>
 
 ## Custom property types
 

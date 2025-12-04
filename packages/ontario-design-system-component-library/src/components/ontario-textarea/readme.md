@@ -16,13 +16,64 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of a bare-bones textarea component where the user is passing the `name` which is the value used to reference form data after a form is submitted. The `elementId` is also being passed in as the unique identifier of the textarea.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-textarea caption="Comments" name="comments" element-id="form-comments"></ontario-textarea>
 ```
 
-<OntarioTextarea caption="Comments" name="comments" element-id="form-comments"></OntarioTextarea>
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioTextarea caption="Comments" name="comments" elementId="form-comments"></OntarioTextarea>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-textarea [caption]="'Comments'" [name]="'comments'" [elementId]="'form-comments'"></ontario-textarea>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+<div>
+	<OntarioTextarea caption="Comments" name="comments" elementId="form-comments"></OntarioTextarea>
+</div>
 
 To mark a textarea as required, add the `required` attribute to the component.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-textarea
@@ -34,7 +85,42 @@ To mark a textarea as required, add the `required` attribute to the component.
 ></ontario-textarea>
 ```
 
-<OntarioTextarea caption="Comments" name="comments" element-id="form-comments" required="true"></OntarioTextarea>
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioTextarea
+	caption="Comments"
+	name="comments"
+	elementId="form-comments"
+	required={true}
+	onBlur={exampleFunction}
+></OntarioTextarea>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-textarea
+	[caption]="'Comments'"
+	[name]="'comments'"
+	[elementId]="'form-comments'"
+	required="true"
+	(onBlur)="exampleFunction()"
+></ontario-textarea>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+<OntarioTextarea caption="Comments" name="comments" elementId="form-comments" required={true}></OntarioTextarea>
 
 ### Forms
 
@@ -135,8 +221,8 @@ The Ontario Textarea component supports server-side rendering, with a few consid
 
 ### SSR-safe example:
 
-```html
-<ontario-textarea name="comments" language="en" element-id="comments"></ontario-textarea>
+```tsx
+<OntarioTextarea name="comments" language="en" elementId="comments"></OntarioTextarea>
 ```
 
 <!-- Auto Generated Below -->

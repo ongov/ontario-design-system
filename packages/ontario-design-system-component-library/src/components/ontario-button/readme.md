@@ -22,11 +22,10 @@ Example of a bare-bones button component where the `label` for the button is pro
 <Tabs
 	defaultValue="html"
 	values={[
-					{label: 'HTML', value: 'html'},
-					{label: 'React', value: 'react'},
-					{label: 'Angular', value: 'angular'},
-    ]}
-
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
 	groupId="framework"
 	queryString="framework">
 <TabItem value="html">
@@ -50,7 +49,7 @@ Example of a bare-bones button component where the `label` for the button is pro
 <TabItem value="angular">
 ```
 
-```tsx
+```html
 <ontario-button>Element Content</ontario-button>
 ```
 
@@ -67,10 +66,10 @@ Example of a button component, which includes the `label`, `elementId`, `htmlTyp
 <Tabs
 	defaultValue="html"
 	values={[
-					{label: 'HTML', value: 'html'},
-					{label: 'React', value: 'react'},
-					{label: 'Angular', value: 'angular'},
-    ]}
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
 	groupId="framework"
 	queryString="framework">
 <TabItem value="html">
@@ -99,7 +98,12 @@ Example of a button component, which includes the `label`, `elementId`, `htmlTyp
 ```
 
 ```html
-<ontario-button aria-label-text="Example aria label text" element-id="button-id" html-type="button" type="tertiary">
+<ontario-button
+	[ariaLabelText]="'Example aria label text'"
+	[elementId]="'button-id'"
+	[htmlType]="'button'"
+	[type]="'tertiary'"
+>
 	Element Content
 </ontario-button>
 ```
@@ -119,11 +123,10 @@ This is another example of a button component, where the user is passing in the 
 <Tabs
 	defaultValue="html"
 	values={[
-					{label: 'HTML', value: 'html'},
-					{label: 'React', value: 'react'},
-					{label: 'Angular', value: 'angular'},
-    ]}
-
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
 	groupId="framework"
 	queryString="framework">
 <TabItem value="html">
@@ -139,7 +142,7 @@ This is another example of a button component, where the user is passing in the 
 ```
 
 ```tsx
-<OntarioButton label="Example" html-type="submit" type="primary">
+<OntarioButton label="Example" htmlType="submit" type="primary">
 	Element Content
 </OntarioButton>
 ```
@@ -149,10 +152,8 @@ This is another example of a button component, where the user is passing in the 
 <TabItem value="angular">
 ```
 
-```tsx
-<ontario-button label="Example" htmlType="submit" type="primary">
-	Element Content
-</ontario-button>
+```html
+<ontario-button [label]="'Example'" [htmlType]="'submit'" [type]="'primary'"> Element Content </ontario-button>
 ```
 
 ```mdx-code-block
@@ -168,11 +169,10 @@ An example of how to pass in an `onclick` function to the button component.
 <Tabs
 	defaultValue="html"
 	values={[
-					{label: 'HTML', value: 'html'},
-					{label: 'React', value: 'react'},
-					{label: 'Angular', value: 'angular'},
-    ]}
-
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
 	groupId="framework"
 	queryString="framework">
 <TabItem value="html">
@@ -188,7 +188,7 @@ An example of how to pass in an `onclick` function to the button component.
 ```
 
 ```tsx
-<OntarioButton onClick="exampleFunction()">Element Content</OntarioButton>
+<OntarioButton onClick={exampleFunction}>Element Content</OntarioButton>
 ```
 
 ```mdx-code-block

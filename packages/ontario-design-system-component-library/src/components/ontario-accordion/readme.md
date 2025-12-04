@@ -1,4 +1,6 @@
 import { OntarioAccordion } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-accordion
 
@@ -16,6 +18,19 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of an accordion component, where the user is explicitly passing in content through the `accordionData` property.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-accordion
 	title="My Accordion"
@@ -28,6 +43,53 @@ Example of an accordion component, where the user is explicitly passing in conte
 		{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"}
 	]'
 ></ontario-accordion>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioAccordion
+	title="My Accordion"
+	expandCollapseButton={{
+		expandAllSectionsLabel: 'Expand All',
+		collapseAllSectionsLabel: 'Collapse All',
+	}}
+	accordionData={[
+		{ label: 'Accordion 1', content: 'This is a string' },
+		{
+			label: 'Accordion 2',
+			accordionContentType: 'html',
+			content: '<ul><li>List A</li><li>List B</li><li>List C</li></ul>',
+		},
+	]}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-accordion
+	[title]="'My Accordion'"
+	[expandCollapseButton]="{
+		expandAllSectionsLabel: 'Expand All',
+		collapseAllSectionsLabel: 'Collapse All'
+	}"
+	[accordionData]="[
+		{ label: 'Accordion 1', content: 'This is a string' },
+		{ label: 'Accordion 2', accordionContentType: 'html', content: '<ul><li>List A</li><li>List B</li><li>List C</li></ul>' }
+	]"
+></ontario-accordion>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <div>
