@@ -176,11 +176,21 @@ export class OntarioHeaderMenuTabs {
 	handleKeyDown(event: KeyboardEvent) {
 		if (!this.menuIsOpen) return;
 
-		// Handle tab switching with arrows
+		// Handle tab switching with Left/Right arrows
 		if (this.handleTabSwitching(event)) return;
 
-		// Handle menu navigation within active panel
-		this.handleMenuNavigation(event);
+		// Handle Arrow Down from tab button to first menu item
+		if (event.key === 'ArrowDown' && this.isFocusOnTab()) {
+			event.preventDefault();
+			this.moveToFirstMenuItem();
+			return;
+		}
+
+		// Handle Arrow Up from tab button (stay on tab, don't do anything)
+		if (event.key === 'ArrowUp' && this.isFocusOnTab()) {
+			event.preventDefault();
+			return;
+		}
 	}
 
 	/**
@@ -220,24 +230,6 @@ export class OntarioHeaderMenuTabs {
 
 		// Try to install trap (works regardless of autoDetectMode)
 		this.tryInstallTrap();
-	}
-
-	/**
-	 * Try to install the focus trap synchronously based on current DOM.
-	 * Sets trapInstalled = true when successful to avoid repeated installs.
-	 */
-	private tryInstallTrap() {
-		if (this.trapInstalled) return;
-
-		const panel = this.getActiveTabPanel();
-		const overflowMenu = panel?.querySelector('ontario-header-overflow-menu') as HTMLElement | null;
-		const hasItems = !!overflowMenu?.shadowRoot?.querySelectorAll('.ontario-menu-item')?.length;
-		const menuContainer = this.getMenuContainer();
-
-		if (menuContainer && this.menuButtonRef && hasItems) {
-			this.setupFocusTrap(menuContainer, this.menuButtonRef);
-			this.trapInstalled = true;
-		}
 	}
 
 	/**
@@ -331,39 +323,6 @@ export class OntarioHeaderMenuTabs {
 		return this.el.shadowRoot?.querySelector(panelId) as HTMLElement;
 	}
 
-	/**
-	 * Handle menu navigation within the active tab panel
-	 */
-	private handleMenuNavigation(event: KeyboardEvent) {
-		if (!['ArrowDown', 'ArrowUp'].includes(event.key)) return;
-
-		const activePanel = this.getActiveTabPanel();
-		if (!activePanel) return;
-
-		const overflowMenu = activePanel.querySelector('ontario-header-overflow-menu') as HTMLElement | null;
-		if (!overflowMenu) return;
-
-		const focusableElements = HeaderKeyboardNavigation.getFocusableElementsInShadow(overflowMenu);
-		if (!focusableElements.length) return;
-
-		const currentMenuItems = this.activeTab === 0 ? this.topicsMenuItemsState : this.signInMenuItemsState;
-		const activeElement = HeaderKeyboardNavigation.getShadowActiveElement(overflowMenu) as HTMLElement | null;
-		const focusedIndex = activeElement ? focusableElements.findIndex((el) => el === activeElement) : -1;
-		if (focusedIndex !== -1) this.currentIndex = focusedIndex;
-
-		event.preventDefault();
-		if (event.key === 'ArrowDown') {
-			this.currentIndex = this.currentIndex === undefined ? 0 : (this.currentIndex + 1) % focusableElements.length;
-		} else {
-			this.currentIndex =
-				this.currentIndex === undefined
-					? focusableElements.length - 1
-					: (this.currentIndex - 1 + focusableElements.length) % focusableElements.length;
-		}
-
-		focusableElements[this.currentIndex].focus();
-		this.updateAriaLive(this.currentIndex, currentMenuItems);
-	}
 	/* ===========================
         Focus Management
     =========================== */
@@ -377,11 +336,69 @@ export class OntarioHeaderMenuTabs {
 	}
 
 	/**
+	 * Try to install the focus trap synchronously based on current DOM.
+	 * Sets trapInstalled = true when successful to avoid repeated installs.
+	 */
+	private tryInstallTrap() {
+		if (this.trapInstalled) return;
+
+		const panel = this.getActiveTabPanel();
+		const overflowMenu = panel?.querySelector('ontario-header-overflow-menu') as HTMLElement | null;
+		const hasItems = !!overflowMenu?.shadowRoot?.querySelectorAll('.ontario-menu-item')?.length;
+		const menuContainer = this.getMenuContainer();
+
+		if (menuContainer && this.menuButtonRef && hasItems) {
+			this.setupFocusTrap(menuContainer, this.menuButtonRef);
+			this.trapInstalled = true;
+		}
+	}
+
+	/**
 	 * Reset state when menu closes
 	 */
 	private resetState() {
 		this.currentIndex = undefined;
 		this.clearFocusTrap();
+	}
+
+	/**
+	 * Check if focus is currently on a tab button
+	 */
+	private isFocusOnTab(): boolean {
+		const activeElement = this.el.shadowRoot?.activeElement;
+		return activeElement?.getAttribute('role') === 'tab';
+	}
+
+	/**
+	 * Move focus from tab button to first menu item in active panel
+	 */
+	private moveToFirstMenuItem() {
+		const activePanel = this.getActiveTabPanel();
+		if (!activePanel) {
+			return;
+		}
+
+		const overflowMenu = activePanel.querySelector('ontario-header-overflow-menu') as HTMLElement | null;
+		if (!overflowMenu) {
+			return;
+		}
+
+		// Get focusable elements from the overflow menu's shadow root
+		const menuItems = overflowMenu.shadowRoot?.querySelectorAll('.ontario-menu-item a');
+		if (!menuItems || menuItems.length === 0) {
+			return;
+		}
+
+		const firstMenuItem = menuItems[0] as HTMLElement;
+
+		// Small delay to ensure shadow DOM is ready
+		setTimeout(() => {
+			firstMenuItem.focus();
+			this.currentIndex = 0;
+
+			const currentMenuItems = this.activeTab === 0 ? this.topicsMenuItemsState : this.signInMenuItemsState;
+			this.updateAriaLive(0, currentMenuItems);
+		}, 50);
 	}
 
 	/**
@@ -434,11 +451,6 @@ export class OntarioHeaderMenuTabs {
 
 			// Our custom active element getter checks both shadow roots
 			const active = this.getActiveElement() as Element | null;
-			const isInLoop = focusable.includes(active as HTMLElement);
-			const isOnLoopTarget = active === loopTarget;
-
-			// If focus isn't in our loop or on the loop target, ignore
-			if (!isInLoop && !isOnLoopTarget) return;
 
 			if (e.shiftKey) {
 				// Shift+Tab: backwards
@@ -447,8 +459,11 @@ export class OntarioHeaderMenuTabs {
 					(last as HTMLElement).focus();
 				}
 			} else {
-				// Tab: forwards
-				if (active === last || active === loopTarget) {
+				// Tab: forwards - only loop when actually on the last element
+				if (active === last) {
+					e.preventDefault();
+					(first as HTMLElement).focus();
+				} else if (active === loopTarget) {
 					e.preventDefault();
 					(first as HTMLElement).focus();
 				}
