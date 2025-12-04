@@ -81,23 +81,44 @@ If `maxSubheaderLinks` is set within `applicationHeaderInfo` on the `ontario-hea
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Overflow Menu Component
+
+Displays a dropdown menu of links. Can operate in two modes:
+
+- Standalone: manages its own open/close state, focus trap, and keyboard navigation
+- Embedded: used inside tabs component, parent controls everything
+
+Mode is auto-detected based on DOM position (no prop needed).
+
 ## Properties
 
-| Property    | Attribute    | Description                             | Type                   | Default     |
-| ----------- | ------------ | --------------------------------------- | ---------------------- | ----------- |
-| `menuItems` | `menu-items` | The items that will go inside the menu. | `MenuItem[] \| string` | `undefined` |
+| Property        | Attribute         | Description                                                                                        | Type                       | Default     |
+| --------------- | ----------------- | -------------------------------------------------------------------------------------------------- | -------------------------- | ----------- |
+| `menuButtonRef` | `menu-button-ref` | Reference to the menu button that opens this dropdown. Used for focus trapping in standalone mode. | `HTMLElement \| undefined` | `undefined` |
+| `menuItems`     | `menu-items`      | The menu items to display. Can be passed as a MenuItem array or JSON string.                       | `MenuItem[] \| string`     | `undefined` |
+
+## Events
+
+| Event              | Description                                                              | Type                |
+| ------------------ | ------------------------------------------------------------------------ | ------------------- |
+| `endOfMenuReached` | Event emitted when Tab is pressed on the last menu item (embedded mode). | `CustomEvent<void>` |
+| `menuClosed`       | Event emitted when menu closes (standalone mode).                        | `CustomEvent<void>` |
 
 ## Dependencies
 
 ### Used by
 
 - [ontario-header](../ontario-header)
+- [ontario-header-menu-tabs](../ontario-header-menu-tabs)
 
 ### Graph
 
 ```mermaid
 graph TD;
   ontario-header --> ontario-header-overflow-menu
+  ontario-header-menu-tabs --> ontario-header-overflow-menu
   style ontario-header-overflow-menu fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

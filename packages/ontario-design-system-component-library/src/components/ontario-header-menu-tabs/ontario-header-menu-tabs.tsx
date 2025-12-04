@@ -61,11 +61,6 @@ export class OntarioHeaderMenuTabs {
 	@State() private signInMenuItemsState: MenuItem[] = [];
 
 	/**
-	 * Current focused menu item index for arrow key navigation.
-	 */
-	private currentIndex: number | undefined = undefined;
-
-	/**
 	 * Reference to the ARIA live region for screen reader announcements.
 	 */
 	private ariaLiveRegion!: HTMLElement;
@@ -161,7 +156,6 @@ export class OntarioHeaderMenuTabs {
 
 		setTimeout(() => {
 			this.focusTab(this.activeTab);
-			this.currentIndex = undefined;
 		}, 50);
 	}
 
@@ -219,7 +213,6 @@ export class OntarioHeaderMenuTabs {
 
 		event.preventDefault();
 		this.activeTab = event.key === 'ArrowRight' ? 1 : 0;
-		this.currentIndex = undefined;
 		this.focusTab(this.activeTab);
 		return true;
 	}
@@ -229,7 +222,6 @@ export class OntarioHeaderMenuTabs {
 	 */
 	private switchTab(tabIndex: number) {
 		this.activeTab = tabIndex;
-		this.currentIndex = undefined;
 		this.focusTab(tabIndex);
 	}
 
@@ -278,7 +270,6 @@ export class OntarioHeaderMenuTabs {
 	 * Reset state when menu closes.
 	 */
 	private resetState() {
-		this.currentIndex = undefined;
 		this.clearFocusTrap();
 		this.trapInstalled = false;
 	}
@@ -302,7 +293,6 @@ export class OntarioHeaderMenuTabs {
 
 		setTimeout(() => {
 			(menuItems[0] as HTMLElement).focus();
-			this.currentIndex = 0;
 
 			const currentMenuItems = this.activeTab === 0 ? this.topicsMenuItemsState : this.signInMenuItemsState;
 			HeaderKeyboardNavigation.updateAriaLive(this.ariaLiveRegion, 0, currentMenuItems);

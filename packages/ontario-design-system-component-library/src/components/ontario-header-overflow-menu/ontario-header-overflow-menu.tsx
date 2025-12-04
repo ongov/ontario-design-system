@@ -375,10 +375,22 @@ export class OntarioHeaderOverflowMenu {
 						<ul class="ontario-menu" role="menu">
 							{this.menuItemState.map((item) => {
 								const isDisabled = (item as any)?.disabled === true;
+								const hasIcon = !!item.icon;
+								const menuItemClass = hasIcon ? 'ontario-menu-item ontario-menu-item--with-icon' : 'ontario-menu-item';
+
+								const IconComponent = hasIcon ? `ontario-icon-${item.icon!.id}` : null;
+
 								return (
-									<li class="ontario-menu-item" role="none">
+									<li class={menuItemClass} role="none">
 										<a role="menuitem" href={item.href} tabIndex={isDisabled ? -1 : 0}>
-											{item.title}
+											{hasIcon && IconComponent ? (
+												<span class="ontario-menu-item__label-container">
+													<IconComponent />
+													<span class="ontario-menu-item__label">{item.title}</span>
+												</span>
+											) : (
+												item.title
+											)}
 										</a>
 									</li>
 								);

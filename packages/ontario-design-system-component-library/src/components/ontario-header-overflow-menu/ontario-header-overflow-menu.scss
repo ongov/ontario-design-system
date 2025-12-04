@@ -162,6 +162,16 @@ $mobile-menu-tab-line-height: 2.1875rem;
 	}
 }
 
+.ontario-menu-item--with-icon {
+	.ontario-menu-item__label-container {
+		display: flex;
+	}
+
+	.ontario-menu-item__label {
+		padding-left: globalFunctions.px-to-rem(20);
+	}
+}
+
 // Menu item with icon variant
 .ontario-header-navigation__menu-item--with-icon {
 	a {

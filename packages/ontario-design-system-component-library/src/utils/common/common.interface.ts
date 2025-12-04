@@ -114,4 +114,7 @@ export interface MenuItem {
 	linkIsActive?: boolean;
 	description?: string;
 	onClickHandler?: (event: Event) => void;
+	icon?: {
+		id: string;
+	};
 }
