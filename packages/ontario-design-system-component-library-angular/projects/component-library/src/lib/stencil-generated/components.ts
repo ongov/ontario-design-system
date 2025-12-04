@@ -657,14 +657,14 @@ export class OntarioHeaderMenuTabs {
 export declare interface OntarioHeaderMenuTabs extends Components.OntarioHeaderMenuTabs {}
 
 @ProxyCmp({
-	inputs: ['autoDetectMode', 'menuButtonRef', 'menuItems'],
+	inputs: ['menuButtonRef', 'menuItems'],
 })
 @Component({
 	selector: 'ontario-header-overflow-menu',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['autoDetectMode', 'menuButtonRef', 'menuItems'],
+	inputs: ['menuButtonRef', 'menuItems'],
 })
 export class OntarioHeaderOverflowMenu {
 	protected el: HTMLOntarioHeaderOverflowMenuElement;
@@ -675,29 +675,17 @@ export class OntarioHeaderOverflowMenu {
 	) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['menuClosed', 'menuReady', 'endOfMenuReached']);
+		proxyOutputs(this, this.el, ['menuClosed', 'endOfMenuReached']);
 	}
 }
 
 export declare interface OntarioHeaderOverflowMenu extends Components.OntarioHeaderOverflowMenu {
 	/**
-   * Emit a menuClosed event to tell the parent header component.
-This allows the header to update its state when the menu auto-closes.
-   */
+	 * Event emitted when menu closes (standalone mode).
+	 */
 	menuClosed: EventEmitter<CustomEvent<void>>;
 	/**
-   * Notify potential owners that this menu's items are ready.
-
-Emits a global 'menuReady' event with:
-- detail.panelId: id of the closest mobile panel (if any) so parents can match the panel
-- detail.host: DOM reference to this overflow menu instance
-
-The event bubbles and is composed so listeners outside the shadow DOM (e.g. tabs/header)
-can observe it and optionally claim ownership by dispatching 'takeOwnership'.
-   */
-	menuReady: EventEmitter<CustomEvent<{ panelId: string | null; host: HTMLElement }>>;
-	/**
-	 * Emitted when navigation reaches the last menu item.
+	 * Event emitted when Tab is pressed on the last menu item (embedded mode).
 	 */
 	endOfMenuReached: EventEmitter<CustomEvent<void>>;
 }
