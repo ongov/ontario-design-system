@@ -143,6 +143,25 @@ export class OntarioHeaderOverflowMenu {
 		// If standalone, only handle when our menu is open.
 		if (this.isStandalone) {
 			if (!this.menuIsOpen) return;
+
+			// Handle Arrow Down from menu button to first menu item
+			if (event.key === 'ArrowDown') {
+				const menuButton = this.getMenuButton();
+				const activeElement = document.activeElement;
+
+				// If focus is on the menu button, move to first menu item
+				if (menuButton && activeElement === menuButton) {
+					event.preventDefault();
+					const focusableElements = this.getFocusableElements(this.menu);
+					if (focusableElements.length > 0) {
+						focusableElements[0].focus();
+						this.currentIndex = 0;
+						this.updateAriaLive(0);
+					}
+					return;
+				}
+			}
+
 			this.handleArrowNavigation(event);
 			return;
 		}
@@ -162,7 +181,16 @@ export class OntarioHeaderOverflowMenu {
 		if (event.key === 'Tab' && !event.shiftKey) {
 			const focusableElements = this.getFocusableElements(this.menu);
 			const currentElement = shadowActive || domActive;
-			const currentIndex = focusableElements.indexOf(currentElement as HTMLElement);
+
+			// Find the current element's index properly
+			let currentIndex = -1;
+			for (let i = 0; i < focusableElements.length; i++) {
+				if (focusableElements[i] === currentElement || focusableElements[i].contains(currentElement as Node)) {
+					currentIndex = i;
+					break;
+				}
+			}
+
 			const lastIndex = focusableElements.length - 1;
 
 			if (currentIndex === lastIndex) {
@@ -218,11 +246,10 @@ export class OntarioHeaderOverflowMenu {
 	 * @param event - Keyboard event (Arrow Up or Arrow Down)
 	 */
 	private handleArrowNavigation(event: KeyboardEvent) {
-		if (!['ArrowDown', 'ArrowUp'].includes(event.key)) {
-			return;
-		}
+		if (!['ArrowDown', 'ArrowUp'].includes(event.key)) return;
 
 		const focusableElementsArray = this.getFocusableElements(this.menu);
+
 		if (!focusableElementsArray || !focusableElementsArray.length) return;
 
 		const focusableElements = this.arrayToNodeList(focusableElementsArray);
@@ -240,12 +267,6 @@ export class OntarioHeaderOverflowMenu {
 			this.menuItemState,
 			(index) => this.updateAriaLive(index),
 		);
-
-		// Emit when we navigate DOWN to the last item (so focus can move to tab)
-		const lastIndex = focusableElements.length - 1;
-		if (event.key === 'ArrowDown' && this.currentIndex === lastIndex) {
-			this.endOfMenuReached.emit();
-		}
 	}
 
 	/* ===========================
@@ -257,23 +278,14 @@ export class OntarioHeaderOverflowMenu {
 	 * Uses 150ms delay to ensure dropdown animation has started.
 	 */
 	private setupInitialFocus() {
-		setTimeout(() => {
-			const firstMenuItem = this.menu.querySelector('.ontario-menu-item') as HTMLElement;
-			if (firstMenuItem) {
-				firstMenuItem.focus();
-				this.currentIndex = 0;
-				this.updateAriaLive(0);
+		const menuButton = this.getMenuButton();
+		if (menuButton) {
+			if (this.autoDetectMode && !this.isStandalone) {
+				this.tryAutoOwnership();
+			} else if (this.isStandalone) {
+				this.setupFocusTrap(this.menu, menuButton);
 			}
-
-			const menuButton = this.getMenuButton();
-			if (menuButton) {
-				if (this.autoDetectMode && !this.isStandalone) {
-					this.tryAutoOwnership();
-				} else if (this.isStandalone) {
-					this.setupFocusTrap(this.menu, menuButton);
-				}
-			}
-		}, 150);
+		}
 	}
 
 	/**
