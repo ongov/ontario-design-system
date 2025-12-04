@@ -2,6 +2,13 @@ import { Component, Prop, State, Watch, h, Listen, Element } from '@stencil/core
 import { MenuItem } from '../../utils/common/common.interface';
 import { HeaderKeyboardNavigation } from '../../utils/components/header/header-keyboard-navigation';
 
+/**
+ * Ontario Header Menu Tabs Component
+ *
+ * Provides a tabbed navigation interface for mobile/tablet views.
+ * Displays two tabs (Topics and Sign In) with overflow menu content.
+ * Manages keyboard navigation, focus trapping, and accessibility.
+ */
 @Component({
 	tag: 'ontario-header-menu-tabs',
 	styleUrl: 'ontario-header-menu-tabs.scss',
@@ -10,79 +17,53 @@ import { HeaderKeyboardNavigation } from '../../utils/components/header/header-k
 export class OntarioHeaderMenuTabs {
 	@Element() el: HTMLElement;
 
-	/* ===========================
-        Props & State
-    =========================== */
 	/**
 	 * Menu items for the "Topics" tab.
 	 * Can be passed as a MenuItem array or JSON string.
-	 *
-	 * @example
-	 * topicsMenuItems={[
-	 *   { href: '/about', title: 'About' },
-	 *   { href: '/services', title: 'Services' }
-	 * ]}
 	 */
 	@Prop() topicsMenuItems: MenuItem[] | string;
 
 	/**
 	 * Menu items for the "Sign In" tab.
 	 * Can be passed as a MenuItem array or JSON string.
-	 *
-	 * @example
-	 * signInMenuItems={[
-	 *   { href: '/login', title: 'Login' },
-	 *   { href: '/register', title: 'Register' }
-	 * ]}
 	 */
 	@Prop() signInMenuItems: MenuItem[] | string;
 
 	/**
 	 * Reference to the menu button that opens this dropdown.
-	 * Used for focus trapping - allows focus to loop back to the button.
-	 *
-	 * @example
-	 * menuButtonRef={this.menuButton}
+	 * Used for focus trapping.
 	 */
 	@Prop() menuButtonRef?: HTMLElement;
 
 	/**
-	 * Enable auto-detect handoff.
+	 * Enable auto-detect handoff mode.
 	 */
 	@Prop() autoDetectMode?: boolean = false;
 
 	/**
-	 * The currently active tab index.
-	 * 0 = Topics tab, 1 = Sign In tab
+	 * The currently active tab index (0 = Topics, 1 = Sign In).
 	 */
 	@State() private activeTab: number = 0;
 
 	/**
 	 * Whether the menu dropdown is currently open.
-	 * Controlled by the menuButtonToggled event from the header.
 	 */
 	@State() private menuIsOpen: boolean = false;
 
 	/**
-	 * Parsed topics menu items (converted from string if needed).
+	 * Parsed topics menu items.
 	 */
 	@State() private topicsMenuItemsState: MenuItem[] = [];
 
 	/**
-	 * Parsed sign-in menu items (converted from string if needed).
+	 * Parsed sign-in menu items.
 	 */
 	@State() private signInMenuItemsState: MenuItem[] = [];
 
 	/**
 	 * Current focused menu item index for arrow key navigation.
-	 * Undefined when no menu item is focused (e.g., when a tab button has focus).
 	 */
 	private currentIndex: number | undefined = undefined;
-
-	/**
-	 * Reference to the menu container element.
-	 */
-	private menu!: HTMLElement;
 
 	/**
 	 * Reference to the ARIA live region for screen reader announcements.
@@ -91,49 +72,24 @@ export class OntarioHeaderMenuTabs {
 
 	/**
 	 * Cleanup function for the focus trap event listener.
-	 * Called when menu closes to remove the event listener.
 	 */
 	private focusTrapCleanup: (() => void) | null = null;
 
 	/**
-	 * Return the navigation container element used for focus-trapping.
-	 * Prefer the header's shadowRoot container first (covers embedded case),
-	 * then fall back to the ref'd this.menu for standalone rendering.
-	 */
-	private getMenuContainer(): HTMLElement | null {
-		// Prefer container that's rendered in the component shadow root (used in the tabbed layout)
-		const containerFromShadow = this.el.shadowRoot?.querySelector(
-			'.ontario-application-navigation__container',
-		) as HTMLElement | null;
-		if (containerFromShadow) return containerFromShadow;
-
-		// If this.menu is the full nav (standalone), return it directly
-		if (this.menu && this.menu.classList?.contains('ontario-application-navigation')) return this.menu;
-
-		// Otherwise try to find the container inside the ref'd menu (fallback)
-		return (this.menu?.querySelector('.ontario-application-navigation__container') as HTMLElement | null) || null;
-	}
-
-	/**
-	 * Whether we've already installed the focus trap for the currently-open panel.
-	 * Prevents duplicate installs across lifecycle ticks / events.
+	 * Whether the focus trap has been installed for the current panel.
 	 */
 	private trapInstalled = false;
 
 	/* ===========================
         Lifecycle
     =========================== */
-	/**
-	 * Lifecycle hook called before the component is loaded.
-	 * Parses menu items from props.
-	 */
+
 	componentWillLoad() {
 		this.parseMenuItems();
 	}
 
 	/**
 	 * Watches for changes to menu item props and re-parses them.
-	 * Automatically called when topicsMenuItems or signInMenuItems change.
 	 */
 	@Watch('topicsMenuItems')
 	@Watch('signInMenuItems')
@@ -143,26 +99,26 @@ export class OntarioHeaderMenuTabs {
 	}
 
 	/**
-	 * Lifecycle hook: after each render, try to install the trap if menu is open.
-	 * This runs automatically after the component updates, avoiding timers.
+	 * After each render, try to install the focus trap if menu is open.
 	 */
 	componentDidRender() {
 		if (this.menuIsOpen && !this.trapInstalled) {
 			this.tryInstallTrap();
 		}
 	}
+
 	/* ===========================
         Event Listeners
     =========================== */
+
 	/**
-	 * Listen for menu button toggle events from the parent header component
+	 * Listen for menu button toggle events.
 	 */
 	@Listen('menuButtonToggled', { target: 'window' })
 	toggleMenuVisibility(event: CustomEvent<boolean>) {
 		this.menuIsOpen = event.detail;
 
 		if (this.menuIsOpen) {
-			// Lifecycle will call tryInstallTrap() — just focus
 			this.setupInitialFocus();
 		} else {
 			this.resetState();
@@ -170,23 +126,23 @@ export class OntarioHeaderMenuTabs {
 	}
 
 	/**
-	 * Handle keyboard navigation within the tabbed menu
+	 * Handle keyboard navigation within the tabbed menu.
 	 */
 	@Listen('keydown', { target: 'window' })
 	handleKeyDown(event: KeyboardEvent) {
 		if (!this.menuIsOpen) return;
 
-		// Handle tab switching with Left/Right arrows
+		// Tab switching with Left/Right arrows
 		if (this.handleTabSwitching(event)) return;
 
-		// Handle Arrow Down from tab button to first menu item
+		// Arrow Down from tab button to first menu item
 		if (event.key === 'ArrowDown' && this.isFocusOnTab()) {
 			event.preventDefault();
 			this.moveToFirstMenuItem();
 			return;
 		}
 
-		// Handle Arrow Up from tab button (stay on tab, don't do anything)
+		// Arrow Up from tab button (stay on tab)
 		if (event.key === 'ArrowUp' && this.isFocusOnTab()) {
 			event.preventDefault();
 			return;
@@ -194,30 +150,30 @@ export class OntarioHeaderMenuTabs {
 	}
 
 	/**
-	 * Listen for end of menu navigation from child overflow menus.
-	 * When user reaches the last item, move focus back to the active tab.
+	 * Listen for end of menu reached event from overflow menus.
+	 * When Tab is pressed on last item, loop focus back to active tab.
 	 */
 	@Listen('endOfMenuReached', { target: 'window' })
 	handleEndOfMenu(event: CustomEvent) {
 		if (!this.menuIsOpen) return;
 
-		// Prevent default to stop any other handlers
 		event.stopPropagation();
 
-		// Small delay to ensure current navigation completes
 		setTimeout(() => {
 			this.focusTab(this.activeTab);
 			this.currentIndex = undefined;
 		}, 50);
 	}
 
+	/**
+	 * Listen for menuReady event from overflow menus.
+	 * Triggers ownership handoff in auto-detect mode.
+	 */
 	@Listen('menuReady', { target: 'window' })
 	async onMenuReady(event: CustomEvent) {
-		// Match panel by id so we only claim the right menu
 		const panelId = this.getActiveTabPanel()?.id || null;
 		if (event.detail?.panelId !== panelId) return;
 
-		// If auto-detect is on, emit takeOwnership
 		if (this.autoDetectMode) {
 			window.dispatchEvent(
 				new CustomEvent('takeOwnership', {
@@ -228,14 +184,11 @@ export class OntarioHeaderMenuTabs {
 			);
 		}
 
-		// Try to install trap (works regardless of autoDetectMode)
 		this.tryInstallTrap();
 	}
 
 	/**
-	 * Prevent menu from closing when focus moves within the trap
-	 * The focus trap handles Tab key looping, but we need to prevent
-	 * the header's focusout listener from closing the menu
+	 * Prevent menu from closing when focus moves within the trap.
 	 */
 	@Listen('focusout', { target: 'window' })
 	handleFocusOut(event: FocusEvent) {
@@ -243,21 +196,12 @@ export class OntarioHeaderMenuTabs {
 
 		setTimeout(() => {
 			const relatedTarget = event.relatedTarget as HTMLElement;
-			const menuButton = this.menuButtonRef;
-
-			// Get all elements in our focus trap
 			const menuContainer = this.getMenuContainer();
-			const focusable = this.getFocusableElements(menuContainer);
-			const tabs = this.el.shadowRoot?.querySelectorAll('[role="tab"]') as NodeListOf<HTMLElement>;
+			const focusable = menuContainer ? HeaderKeyboardNavigation.getFocusableElements(menuContainer) : [];
+			const tabs = Array.from(this.el.shadowRoot?.querySelectorAll('[role="tab"]') || []);
+			const allTrapElements = [...tabs, ...focusable, this.menuButtonRef].filter(Boolean);
 
-			const allTrapElements = [...Array.from(tabs), ...focusable, menuButton].filter(Boolean);
-
-			// Check if focus is still within our trap
-			const focusStillInTrap = allTrapElements.some((el) => el === relatedTarget);
-
-			// If focus left the trap entirely, don't prevent the header from closing
-			// But if focus is still in trap, stop the event from bubbling to prevent close
-			if (focusStillInTrap) {
+			if (allTrapElements.some((el) => el === relatedTarget)) {
 				event.stopPropagation();
 			}
 		}, 0);
@@ -266,23 +210,22 @@ export class OntarioHeaderMenuTabs {
 	/* ===========================
         Tab Switching
     =========================== */
+
 	/**
-	 * Handle tab switching between Topics and Sign In tabs using Arrow Left/Right
+	 * Handle tab switching with Arrow Left/Right.
 	 */
 	private handleTabSwitching(event: KeyboardEvent): boolean {
 		if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return false;
 
 		event.preventDefault();
 		this.activeTab = event.key === 'ArrowRight' ? 1 : 0;
-		this.currentIndex = undefined; // Reset menu navigation when switching tabs
+		this.currentIndex = undefined;
 		this.focusTab(this.activeTab);
 		return true;
 	}
 
 	/**
-	 * Programmatically switches to a specific tab (called by click events).
-	 *
-	 * @param tabIndex - Index of tab to switch to (0 = Topics, 1 = Sign In)
+	 * Switch to a specific tab (called by click events).
 	 */
 	private switchTab(tabIndex: number) {
 		this.activeTab = tabIndex;
@@ -291,43 +234,22 @@ export class OntarioHeaderMenuTabs {
 	}
 
 	/**
-	 * Focus a specific tab by index and update focus trap
+	 * Focus a specific tab by index.
 	 */
 	private focusTab(tabIndex: number) {
 		setTimeout(() => {
-			const tab = this.el.shadowRoot?.querySelector(
-				`#ontario-menu-tab-${tabIndex === 0 ? 'topics' : 'sign-in'}`,
-			) as HTMLButtonElement;
-
-			if (!tab) return;
-			tab.focus();
-
-			// Update focus trap to include newly focused tab
-			if (this.menuButtonRef) {
-				const menuContainer = this.getMenuContainer();
-				if (menuContainer) {
-					this.setupFocusTrap(menuContainer, this.menuButtonRef);
-				}
-			}
+			const tabId = `ontario-menu-tab-${tabIndex === 0 ? 'topics' : 'sign-in'}`;
+			const tab = this.el.shadowRoot?.querySelector(`#${tabId}`) as HTMLButtonElement;
+			tab?.focus();
 		}, 0);
-	}
-
-	/* ===========================
-				Menu Navigation (Arrow Up/Down)
-		=========================== */
-	/**
-	 * Get the currently active tab panel
-	 */
-	private getActiveTabPanel(): HTMLElement | null {
-		const panelId = `#ontario-menu-panel-${this.activeTab === 0 ? 'topics' : 'sign-in'}`;
-		return this.el.shadowRoot?.querySelector(panelId) as HTMLElement;
 	}
 
 	/* ===========================
         Focus Management
     =========================== */
+
 	/**
-	 * Set up initial focus when tabbed menu opens
+	 * Set up initial focus when menu opens.
 	 */
 	private setupInitialFocus() {
 		setTimeout(() => {
@@ -336,8 +258,7 @@ export class OntarioHeaderMenuTabs {
 	}
 
 	/**
-	 * Try to install the focus trap synchronously based on current DOM.
-	 * Sets trapInstalled = true when successful to avoid repeated installs.
+	 * Try to install the focus trap if DOM is ready.
 	 */
 	private tryInstallTrap() {
 		if (this.trapInstalled) return;
@@ -354,78 +275,42 @@ export class OntarioHeaderMenuTabs {
 	}
 
 	/**
-	 * Reset state when menu closes
+	 * Reset state when menu closes.
 	 */
 	private resetState() {
 		this.currentIndex = undefined;
 		this.clearFocusTrap();
+		this.trapInstalled = false;
 	}
 
 	/**
-	 * Check if focus is currently on a tab button
+	 * Check if focus is currently on a tab button.
 	 */
 	private isFocusOnTab(): boolean {
-		const activeElement = this.el.shadowRoot?.activeElement;
-		return activeElement?.getAttribute('role') === 'tab';
+		return this.el.shadowRoot?.activeElement?.getAttribute('role') === 'tab';
 	}
 
 	/**
-	 * Move focus from tab button to first menu item in active panel
+	 * Move focus from tab button to first menu item.
 	 */
 	private moveToFirstMenuItem() {
 		const activePanel = this.getActiveTabPanel();
-		if (!activePanel) {
-			return;
-		}
+		const overflowMenu = activePanel?.querySelector('ontario-header-overflow-menu') as HTMLElement | null;
+		const menuItems = overflowMenu?.shadowRoot?.querySelectorAll('.ontario-menu-item a');
 
-		const overflowMenu = activePanel.querySelector('ontario-header-overflow-menu') as HTMLElement | null;
-		if (!overflowMenu) {
-			return;
-		}
+		if (!menuItems?.length) return;
 
-		// Get focusable elements from the overflow menu's shadow root
-		const menuItems = overflowMenu.shadowRoot?.querySelectorAll('.ontario-menu-item a');
-		if (!menuItems || menuItems.length === 0) {
-			return;
-		}
-
-		const firstMenuItem = menuItems[0] as HTMLElement;
-
-		// Small delay to ensure shadow DOM is ready
 		setTimeout(() => {
-			firstMenuItem.focus();
+			(menuItems[0] as HTMLElement).focus();
 			this.currentIndex = 0;
 
 			const currentMenuItems = this.activeTab === 0 ? this.topicsMenuItemsState : this.signInMenuItemsState;
-			this.updateAriaLive(0, currentMenuItems);
+			HeaderKeyboardNavigation.updateAriaLive(this.ariaLiveRegion, 0, currentMenuItems);
 		}, 50);
 	}
 
 	/**
-	 * Get the currently focused element, checking both shadow roots
-	 */
-	private getActiveElement(): Element | null {
-		// First check if a tab button is focused (in this component's shadow root)
-		const tabsFocus = this.el.shadowRoot?.activeElement;
-		if (tabsFocus && tabsFocus.getAttribute('role') === 'tab') {
-			return tabsFocus;
-		}
-
-		// Then check if a menu item is focused (in overflow menu's shadow root)
-		const activePanel = this.getActiveTabPanel();
-		if (!activePanel) return null;
-
-		const overflowMenu = activePanel.querySelector('ontario-header-overflow-menu');
-		if (!overflowMenu?.shadowRoot) return null;
-
-		// Return the active element from the overflow menu's shadow root
-		return overflowMenu.shadowRoot.activeElement;
-	}
-	/* ===========================
-        Focus Trap (Full Loop for Mobile/Tablet)
-    =========================== */
-	/**
-	 * Set up focus trap for the given panel and loop target
+	 * Set up focus trap for Tab/Shift+Tab looping.
 	 */
 	private setupFocusTrap(panel: HTMLElement, loopTarget: HTMLElement) {
 		this.clearFocusTrap();
@@ -433,39 +318,30 @@ export class OntarioHeaderMenuTabs {
 		const handler = (e: KeyboardEvent) => {
 			if (e.key !== 'Tab') return;
 
-			const tabsList = this.el.shadowRoot?.querySelectorAll('[role="tab"]') as NodeListOf<HTMLElement>;
-			const tabs = tabsList ? Array.from(tabsList) : [];
-			const panelFocusables = panel ? HeaderKeyboardNavigation.getFocusableElements(panel) : [];
+			const tabs = Array.from(this.el.shadowRoot?.querySelectorAll('[role="tab"]') || []) as HTMLElement[];
+			const panelFocusables = HeaderKeyboardNavigation.getFocusableElements(panel);
 			const activePanel = this.getActiveTabPanel();
 			const overflowMenu = activePanel?.querySelector('ontario-header-overflow-menu') as HTMLElement | null;
 			const overflowFocusables = overflowMenu
 				? HeaderKeyboardNavigation.getFocusableElementsInShadow(overflowMenu)
 				: [];
 
-			const focusable: HTMLElement[] = [...tabs, ...panelFocusables, ...overflowFocusables].filter(Boolean);
-
+			const focusable = [...tabs, ...panelFocusables, ...overflowFocusables].filter(Boolean) as HTMLElement[];
 			if (!focusable.length) return;
 
 			const first = focusable[0];
 			const last = focusable[focusable.length - 1];
-
-			// Our custom active element getter checks both shadow roots
-			const active = this.getActiveElement() as Element | null;
+			const active = this.getActiveElement();
 
 			if (e.shiftKey) {
-				// Shift+Tab: backwards
 				if (active === first || active === loopTarget) {
 					e.preventDefault();
-					(last as HTMLElement).focus();
+					last.focus();
 				}
 			} else {
-				// Tab: forwards - only loop when actually on the last element
-				if (active === last) {
+				if (active === last || active === loopTarget) {
 					e.preventDefault();
-					(first as HTMLElement).focus();
-				} else if (active === loopTarget) {
-					e.preventDefault();
-					(first as HTMLElement).focus();
+					first.focus();
 				}
 			}
 		};
@@ -475,7 +351,7 @@ export class OntarioHeaderMenuTabs {
 	}
 
 	/**
-	 * Clear the active focus trap
+	 * Clear the active focus trap.
 	 */
 	private clearFocusTrap() {
 		if (this.focusTrapCleanup) {
@@ -484,109 +360,95 @@ export class OntarioHeaderMenuTabs {
 		}
 	}
 
+	/* ===========================
+        Helper Methods
+    =========================== */
+
 	/**
-	 * Get all focusable elements within the menu panel.
-	 * Uses shared utility for consistent element detection.
-	 *
-	 * Accepts a possibly-null panel (returns [] if none).
+	 * Get the currently active tab panel.
 	 */
-	private getFocusableElements(panel?: HTMLElement | null): HTMLElement[] {
-		const container = panel ?? this.getMenuContainer();
-		if (!container) return [];
-		return HeaderKeyboardNavigation.getFocusableElements(container);
+	private getActiveTabPanel(): HTMLElement | null {
+		const panelId = `ontario-menu-panel-${this.activeTab === 0 ? 'topics' : 'sign-in'}`;
+		return this.el.shadowRoot?.querySelector(`#${panelId}`) as HTMLElement | null;
 	}
 
-	/* ===========================
-        Accessibility
-    =========================== */
 	/**
-	 * Update ARIA live region to announce current menu item position
+	 * Get the menu container element for focus trapping.
 	 */
-	private updateAriaLive(selectedIndex: number, menuItems: MenuItem[]) {
-		HeaderKeyboardNavigation.updateAriaLive(this.ariaLiveRegion, selectedIndex, menuItems);
+	private getMenuContainer(): HTMLElement | null {
+		return this.el.shadowRoot?.querySelector('.ontario-application-navigation__container') as HTMLElement | null;
 	}
 
-	/* ===========================
-        Data Parsing
-    =========================== */
 	/**
-	 * Parse menu items from either array or JSON string format
+	 * Get the currently focused element (checks shadow roots).
+	 */
+	private getActiveElement(): Element | null {
+		// Check tab buttons first
+		const tabsFocus = this.el.shadowRoot?.activeElement;
+		if (tabsFocus?.getAttribute('role') === 'tab') return tabsFocus;
+
+		// Check overflow menu items
+		const activePanel = this.getActiveTabPanel();
+		const overflowMenu = activePanel?.querySelector('ontario-header-overflow-menu');
+		return overflowMenu?.shadowRoot?.activeElement || null;
+	}
+
+	/**
+	 * Parse menu items from array or JSON string.
 	 */
 	private parseMenuItemsData(items: MenuItem[] | string | undefined): MenuItem[] | null {
 		if (!items) return null;
-
-		if (typeof items === 'string') {
-			return JSON.parse(items);
-		}
-
+		if (typeof items === 'string') return JSON.parse(items);
 		return Array.isArray(items) ? items : null;
 	}
 
 	/* ===========================
         Render
     =========================== */
+
 	render() {
+		const isHidden = !this.menuIsOpen;
+
 		return (
-			<div class="ontario-menu-tabs-host" hidden={!this.menuIsOpen} aria-hidden={!this.menuIsOpen ? 'true' : 'false'}>
+			<div class="ontario-menu-tabs-host" hidden={isHidden} aria-hidden={isHidden ? 'true' : 'false'}>
 				<div class="ontario-application-navigation__container">
 					<div class="ontario-menu-tabs-container">
 						{/* Tab Buttons */}
 						<div class="ontario-mobile-menu__tabs" role="tablist">
-							<button
-								class={`ontario-mobile-menu__tab ${this.activeTab === 0 ? 'ontario-mobile-menu__tab--active' : ''}`}
-								id="ontario-menu-tab-topics"
-								role="tab"
-								aria-selected={this.activeTab === 0 ? 'true' : 'false'}
-								aria-controls="ontario-menu-panel-topics"
-								tabindex={this.activeTab === 0 ? '0' : '-1'}
-								type="button"
-								onClick={() => this.switchTab(0)}
-							>
-								Topics
-							</button>
-							<button
-								class={`ontario-mobile-menu__tab ${this.activeTab === 1 ? 'ontario-mobile-menu__tab--active' : ''}`}
-								id="ontario-menu-tab-sign-in"
-								role="tab"
-								aria-selected={this.activeTab === 1 ? 'true' : 'false'}
-								aria-controls="ontario-menu-panel-sign-in"
-								tabindex={this.activeTab === 1 ? '0' : '-1'}
-								type="button"
-								onClick={() => this.switchTab(1)}
-							>
-								Sign In
-							</button>
+							{[
+								{ index: 0, id: 'topics', label: 'Topics' },
+								{ index: 1, id: 'sign-in', label: 'Sign In' },
+							].map(({ index, id, label }) => (
+								<button
+									class={`ontario-mobile-menu__tab ${this.activeTab === index ? 'ontario-mobile-menu__tab--active' : ''}`}
+									id={`ontario-menu-tab-${id}`}
+									role="tab"
+									aria-selected={this.activeTab === index ? 'true' : 'false'}
+									aria-controls={`ontario-menu-panel-${id}`}
+									tabindex={this.activeTab === index ? '0' : '-1'}
+									type="button"
+									onClick={() => this.switchTab(index)}
+								>
+									{label}
+								</button>
+							))}
 						</div>
 
-						{/* Topics Panel */}
-						<div
-							class={`ontario-mobile-menu__panel ${this.activeTab === 0 ? 'ontario-mobile-menu__panel--active' : ''}`}
-							id="ontario-menu-panel-topics"
-							role="tabpanel"
-							aria-labelledby="ontario-menu-tab-topics"
-							hidden={this.activeTab !== 0}
-						>
-							<ontario-header-overflow-menu
-								menuItems={this.topicsMenuItemsState}
-								menuButtonRef={this.menuButtonRef}
-								autoDetectMode={this.autoDetectMode}
-							/>
-						</div>
-
-						{/* Sign In Panel */}
-						<div
-							class={`ontario-mobile-menu__panel ${this.activeTab === 1 ? 'ontario-mobile-menu__panel--active' : ''}`}
-							id="ontario-menu-panel-sign-in"
-							role="tabpanel"
-							aria-labelledby="ontario-menu-tab-sign-in"
-							hidden={this.activeTab !== 1}
-						>
-							<ontario-header-overflow-menu
-								menuItems={this.signInMenuItemsState}
-								menuButtonRef={this.menuButtonRef}
-								autoDetectMode={this.autoDetectMode}
-							/>
-						</div>
+						{/* Tab Panels */}
+						{[
+							{ index: 0, id: 'topics', items: this.topicsMenuItemsState },
+							{ index: 1, id: 'sign-in', items: this.signInMenuItemsState },
+						].map(({ index, id, items }) => (
+							<div
+								class={`ontario-mobile-menu__panel ${this.activeTab === index ? 'ontario-mobile-menu__panel--active' : ''}`}
+								id={`ontario-menu-panel-${id}`}
+								role="tabpanel"
+								aria-labelledby={`ontario-menu-tab-${id}`}
+								hidden={this.activeTab !== index}
+							>
+								<ontario-header-overflow-menu menuItems={items} menuButtonRef={this.menuButtonRef} />
+							</div>
+						))}
 					</div>
 				</div>
 
