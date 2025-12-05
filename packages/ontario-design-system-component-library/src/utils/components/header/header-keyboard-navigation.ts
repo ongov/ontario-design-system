@@ -94,8 +94,12 @@ export class HeaderKeyboardNavigation {
 	/**
 	 * Get focusable elements inside a component's shadowRoot using a selector.
 	 * Returns an array of HTMLElements (already filtered for visibility).
+	 * Default selector targets the actual focusable anchors inside menu items.
 	 */
-	static getFocusableElementsInShadow(overflowEl: HTMLElement | null, selector = '.ontario-menu-item'): HTMLElement[] {
+	static getFocusableElementsInShadow(
+		overflowEl: HTMLElement | null,
+		selector = '.ontario-menu-item a',
+	): HTMLElement[] {
 		if (!overflowEl?.shadowRoot) return [];
 		const els = overflowEl.shadowRoot.querySelectorAll(selector) as NodeListOf<HTMLElement>;
 		return Array.from(els).filter((el) => el.offsetWidth > 0 && el.offsetHeight > 0 && !el.hasAttribute('hidden'));

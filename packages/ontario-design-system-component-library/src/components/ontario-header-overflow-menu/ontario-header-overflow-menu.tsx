@@ -7,10 +7,24 @@ import { HeaderKeyboardNavigation } from '../../utils/components/header/header-k
  * Overflow Menu Component
  *
  * Displays a dropdown menu of links. Can operate in two modes:
- * - Standalone: manages its own open/close state, focus trap, and keyboard navigation
- * - Embedded: used inside tabs component, parent controls everything
  *
- * Mode is auto-detected based on DOM position (no prop needed).
+ * ## Standalone Mode
+ * Used when placed directly in the header (desktop view).
+ * - Manages its own open/close state via `menuButtonToggled` event
+ * - Automatically focuses first menu item when opened
+ * - Sets up focus trap to keep keyboard navigation within menu
+ * - Auto-closes when focus leaves the menu area
+ * - **Emits**: `menuClosed` event when menu closes (for cleanup/state sync)
+ *
+ * ## Embedded Mode
+ * Used when placed inside `ontario-header-menu-tabs` (mobile/tablet view).
+ * - Parent component controls open/close state
+ * - Parent component manages focus trap
+ * - Menu is always visible when parent tab is active
+ * - **Emits**: `endOfMenuReached` event when Tab is pressed on last item (for focus looping)
+ *
+ * **Mode Detection**: Auto-detected based on DOM position (no prop needed).
+ * Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
  */
 @Component({
 	tag: 'ontario-header-overflow-menu',
@@ -212,7 +226,7 @@ export class OntarioHeaderOverflowMenu {
 
 	/**
 	 * Handle arrow key navigation (both modes).
-	 * Navigates through menu items without wrapping - stops at first/last item.
+	 * Navigates through menu items with wrapping - arrows loop from last to first item and vice versa.
 	 */
 	private handleArrowNavigation(event: KeyboardEvent) {
 		if (!['ArrowDown', 'ArrowUp'].includes(event.key)) return;
@@ -365,6 +379,9 @@ export class OntarioHeaderOverflowMenu {
 	 */
 	private setActiveLink(menuItems: MenuItem[]) {
 		if (!menuItems) return;
+
+		// SSR guard — skip auto-activation when window is not available
+		if (typeof window === 'undefined') return;
 
 		const hasActiveLink = menuItems.some((item) => item?.linkIsActive === true);
 		if (hasActiveLink) return;
