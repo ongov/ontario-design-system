@@ -78,6 +78,16 @@ export class OntarioHeaderOverflowMenu {
 	}
 
 	/**
+	 * Lifecycle hook called after component updates.
+	 * Focuses first menu item when menu opens in standalone mode.
+	 */
+	componentDidUpdate() {
+		if (this.menuIsOpen && this.isStandalone) {
+			this.focusFirstMenuItem();
+		}
+	}
+
+	/**
 	 * Watch for changes to menuItems prop and re-parse them.
 	 */
 	@Watch('menuItems')
@@ -235,6 +245,18 @@ export class OntarioHeaderOverflowMenu {
 
 		focusable[this.currentIndex].focus();
 		this.updateAriaLive(this.currentIndex);
+	}
+
+	/**
+	 * Focus the first menu item.
+	 */
+	private focusFirstMenuItem() {
+		const focusable = this.getFocusableElements();
+		if (focusable.length > 0) {
+			focusable[0].focus();
+			this.currentIndex = 0;
+			this.updateAriaLive(0);
+		}
 	}
 
 	/**

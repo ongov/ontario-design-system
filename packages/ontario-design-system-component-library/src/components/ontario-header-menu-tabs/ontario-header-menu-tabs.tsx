@@ -1,6 +1,8 @@
 import { Component, Prop, State, Watch, h, Listen, Element } from '@stencil/core';
 import { MenuItem } from '../../utils/common/common.interface';
 import { HeaderKeyboardNavigation } from '../../utils/components/header/header-keyboard-navigation';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { ConsoleType } from '../../utils/console-message/console-message.enum';
 
 /**
  * Ontario Header Menu Tabs Component
@@ -89,8 +91,63 @@ export class OntarioHeaderMenuTabs {
 	@Watch('topicsMenuItems')
 	@Watch('signInMenuItems')
 	parseMenuItems() {
-		this.topicsMenuItemsState = this.parseMenuItemsData(this.topicsMenuItems) || [];
-		this.signInMenuItemsState = this.parseMenuItemsData(this.signInMenuItems) || [];
+		// Parse topics menu items
+		const topicsMenuItems = this.topicsMenuItems;
+		if (topicsMenuItems) {
+			try {
+				if (typeof topicsMenuItems === 'string') {
+					this.topicsMenuItemsState = JSON.parse(topicsMenuItems);
+				} else if (Array.isArray(topicsMenuItems)) {
+					this.topicsMenuItemsState = topicsMenuItems;
+				} else {
+					this.topicsMenuItemsState = [];
+				}
+			} catch (error) {
+				const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addRegularText(' failed to parse props for ')
+					.addMonospaceText('<ontario-header-menu-tabs>')
+					.addRegularText(' topicsMenuItems in ')
+					.addMonospaceText('parseMenuItems()')
+					.addRegularText(' method \n ')
+					.addMonospaceText(error.stack)
+					.printMessage(ConsoleType.Error);
+
+				this.topicsMenuItemsState = []; // fallback on error
+			}
+		} else {
+			this.topicsMenuItemsState = [];
+		}
+
+		// Parse sign-in menu items
+		const signInMenuItems = this.signInMenuItems;
+		if (signInMenuItems) {
+			try {
+				if (typeof signInMenuItems === 'string') {
+					this.signInMenuItemsState = JSON.parse(signInMenuItems);
+				} else if (Array.isArray(signInMenuItems)) {
+					this.signInMenuItemsState = signInMenuItems;
+				} else {
+					this.signInMenuItemsState = [];
+				}
+			} catch (error) {
+				const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addRegularText(' failed to parse props for ')
+					.addMonospaceText('<ontario-header-menu-tabs>')
+					.addRegularText(' signInMenuItems in ')
+					.addMonospaceText('parseMenuItems()')
+					.addRegularText(' method \n ')
+					.addMonospaceText(error.stack)
+					.printMessage(ConsoleType.Error);
+
+				this.signInMenuItemsState = []; // fallback on error
+			}
+		} else {
+			this.signInMenuItemsState = [];
+		}
 	}
 
 	/**
@@ -165,11 +222,12 @@ export class OntarioHeaderMenuTabs {
 	 */
 	@Listen('menuReady', { target: 'window' })
 	async onMenuReady(event: CustomEvent) {
-		const panelId = this.getActiveTabPanel()?.id || null;
+		const panel = this.getActiveTabPanel();
+		const panelId = panel?.id || null;
 		if (event.detail?.panelId !== panelId) return;
 
-		if (this.autoDetectMode) {
-			window.dispatchEvent(
+		if (this.autoDetectMode && panel) {
+			panel.dispatchEvent(
 				new CustomEvent('takeOwnership', {
 					detail: { panelId },
 					bubbles: true,
@@ -381,15 +439,6 @@ export class OntarioHeaderMenuTabs {
 		const activePanel = this.getActiveTabPanel();
 		const overflowMenu = activePanel?.querySelector('ontario-header-overflow-menu');
 		return overflowMenu?.shadowRoot?.activeElement || null;
-	}
-
-	/**
-	 * Parse menu items from array or JSON string.
-	 */
-	private parseMenuItemsData(items: MenuItem[] | string | undefined): MenuItem[] | null {
-		if (!items) return null;
-		if (typeof items === 'string') return JSON.parse(items);
-		return Array.isArray(items) ? items : null;
 	}
 
 	/* ===========================
