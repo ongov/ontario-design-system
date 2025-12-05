@@ -1,4 +1,6 @@
 import { OntarioTable } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-table
 

@@ -61,7 +61,7 @@ Example of a fieldset component.
 ```html
 <ontario-fieldset [legend]="'What is your delivery address?'" [legendSize]="'heading'">
 	<!-- Other form web components can be added as children to group related form elements together -->
-	<!-- <ontario-textarea...></ontario-textarea> -->
+	<!-- <ontario-textarea ...></ontario-textarea> -->
 	<!-- <ontario-radio-buttons ...></ontario-radio-buttons> -->
 </ontario-fieldset>
 ```

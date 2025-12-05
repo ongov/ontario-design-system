@@ -330,7 +330,7 @@ const changeLanguage = (event: Event) => {
 			title: 'Highway traveler information',
 			href: '/highway-traveler-information',
 			linkIsActive: true,
-			onClickHandler: (e: Event) => {
+			onClickHandler: (e) => {
 				e.preventDefault();
 				alert('Menu item clicked!');
 			},
@@ -412,7 +412,7 @@ changeLanguage(event: Event): void {
 				title: 'Highway traveler information',
 				href: '/highway-traveler-information',
 				linkIsActive: true,
-				onClickHandler: (e: Event) => {
+				onClickHandler: (e) => {
 					e.preventDefault();
 					alert('Menu item clicked!');
 				},

@@ -1,4 +1,6 @@
 import { OntarioCheckboxes } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-checkboxes
 
