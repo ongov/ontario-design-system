@@ -428,12 +428,18 @@ export class OntarioHeader {
 		const previousBreakpoint = this.breakpointDeviceState;
 		// Use header-specific device detection here so the header's UI logic stays consistent
 		this.breakpointDeviceState = isClientSideRendering() ? this.getHeaderDeviceType() : DeviceTypes.Desktop;
-
 		// Close all menus when breakpoint changes
 		if (previousBreakpoint && previousBreakpoint !== this.breakpointDeviceState) {
 			this.menuToggled = false;
 			this.signInToggled = false;
 			this.menuButtonToggled.emit(false);
+		}
+
+		// If we enter tabbed mode, signInToggled is no longer used.
+		// Reset it so the internal state doesn’t stay "stuck" when returning to desktop.
+		const nowTabbed = this.isMobileOrTablet && this.signInMenuItemsState?.length > 0;
+		if (nowTabbed && this.signInToggled) {
+			this.signInToggled = false;
 		}
 	}
 
