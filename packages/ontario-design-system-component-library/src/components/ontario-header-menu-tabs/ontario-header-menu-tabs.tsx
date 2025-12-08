@@ -1,4 +1,4 @@
-import { Component, Prop, State, Watch, h, Listen, Element } from '@stencil/core';
+import { Component, Prop, State, Watch, h, Listen, Element, Event, EventEmitter } from '@stencil/core';
 import { MenuItem } from '../../utils/common/common.interface';
 import { HeaderKeyboardNavigation } from '../../utils/components/header/header-keyboard-navigation';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
@@ -77,76 +77,70 @@ export class OntarioHeaderMenuTabs {
 	 */
 	private trapInstalled = false;
 
+	/**
+	 * Event emitted when ownership handoff is triggered in auto-detect mode.
+	 */
+	@Event({ eventName: 'takeOwnership', bubbles: true, composed: true })
+	takeOwnership!: EventEmitter<{ panelId: string | null }>;
+
+	/**
+	 * Event emitted to request overflow menu to focus its first item.
+	 */
+	@Event({ eventName: 'focusFirstItem', bubbles: true, composed: true })
+	focusFirstItem!: EventEmitter<void>;
+
 	/* ===========================
         Lifecycle
     =========================== */
 
 	componentWillLoad() {
-		this.parseMenuItems();
+		this.parseTopicsMenuItems();
+		this.parseSignInMenuItems();
 	}
 
 	/**
-	 * Watches for changes to menu item props and re-parses them.
+	 * Watch for changes to topicsMenuItems prop and re-parse.
 	 */
 	@Watch('topicsMenuItems')
+	parseTopicsMenuItems() {
+		this.topicsMenuItemsState = this.parseMenuItemsData(this.topicsMenuItems, 'topicsMenuItems');
+	}
+
+	/**
+	 * Watch for changes to signInMenuItems prop and re-parse.
+	 */
 	@Watch('signInMenuItems')
-	parseMenuItems() {
-		// Parse topics menu items
-		const topicsMenuItems = this.topicsMenuItems;
-		if (topicsMenuItems) {
-			try {
-				if (typeof topicsMenuItems === 'string') {
-					this.topicsMenuItemsState = JSON.parse(topicsMenuItems);
-				} else if (Array.isArray(topicsMenuItems)) {
-					this.topicsMenuItemsState = topicsMenuItems;
-				} else {
-					this.topicsMenuItemsState = [];
-				}
-			} catch (error) {
-				const message = new ConsoleMessageClass();
-				message
-					.addDesignSystemTag()
-					.addRegularText(' failed to parse props for ')
-					.addMonospaceText('<ontario-header-menu-tabs>')
-					.addRegularText(' topicsMenuItems in ')
-					.addMonospaceText('parseMenuItems()')
-					.addRegularText(' method \n ')
-					.addMonospaceText(error.stack)
-					.printMessage(ConsoleType.Error);
+	parseSignInMenuItems() {
+		this.signInMenuItemsState = this.parseMenuItemsData(this.signInMenuItems, 'signInMenuItems');
+	}
 
-				this.topicsMenuItemsState = []; // fallback on error
+	/**
+	 * Generic parser for menu items with error handling.
+	 */
+	private parseMenuItemsData(items: MenuItem[] | string | undefined, propName: string): MenuItem[] {
+		if (!items) return [];
+
+		try {
+			if (typeof items === 'string') {
+				return JSON.parse(items);
+			} else if (Array.isArray(items)) {
+				return items;
+			} else {
+				return [];
 			}
-		} else {
-			this.topicsMenuItemsState = [];
-		}
+		} catch (error) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addRegularText(' failed to parse props for ')
+				.addMonospaceText('<ontario-header-menu-tabs>')
+				.addRegularText(` ${propName} in `)
+				.addMonospaceText('parseMenuItemsData()')
+				.addRegularText(' method \n ')
+				.addMonospaceText(error.stack)
+				.printMessage(ConsoleType.Error);
 
-		// Parse sign-in menu items
-		const signInMenuItems = this.signInMenuItems;
-		if (signInMenuItems) {
-			try {
-				if (typeof signInMenuItems === 'string') {
-					this.signInMenuItemsState = JSON.parse(signInMenuItems);
-				} else if (Array.isArray(signInMenuItems)) {
-					this.signInMenuItemsState = signInMenuItems;
-				} else {
-					this.signInMenuItemsState = [];
-				}
-			} catch (error) {
-				const message = new ConsoleMessageClass();
-				message
-					.addDesignSystemTag()
-					.addRegularText(' failed to parse props for ')
-					.addMonospaceText('<ontario-header-menu-tabs>')
-					.addRegularText(' signInMenuItems in ')
-					.addMonospaceText('parseMenuItems()')
-					.addRegularText(' method \n ')
-					.addMonospaceText(error.stack)
-					.printMessage(ConsoleType.Error);
-
-				this.signInMenuItemsState = []; // fallback on error
-			}
-		} else {
-			this.signInMenuItemsState = [];
+			return []; // fallback on error
 		}
 	}
 
@@ -226,14 +220,8 @@ export class OntarioHeaderMenuTabs {
 		const panelId = panel?.id || null;
 		if (event.detail?.panelId !== panelId) return;
 
-		if (this.autoDetectMode && panel) {
-			panel.dispatchEvent(
-				new CustomEvent('takeOwnership', {
-					detail: { panelId },
-					bubbles: true,
-					composed: true,
-				}),
-			);
+		if (this.autoDetectMode) {
+			this.takeOwnership.emit({ panelId });
 		}
 
 		this.tryInstallTrap();
@@ -243,7 +231,7 @@ export class OntarioHeaderMenuTabs {
 	 * Prevent menu from closing when focus moves within the trap.
 	 */
 	@Listen('focusout', { target: 'window' })
-	handleFocusOut(event: FocusEvent) {
+	focusOut(event: FocusEvent) {
 		if (!this.menuIsOpen) return;
 
 		setTimeout(() => {
@@ -285,13 +273,14 @@ export class OntarioHeaderMenuTabs {
 
 	/**
 	 * Focus a specific tab by index.
+	 * Uses requestAnimationFrame to ensure DOM is ready.
 	 */
 	private focusTab(tabIndex: number) {
-		setTimeout(() => {
+		requestAnimationFrame(() => {
 			const tabId = `ontario-menu-tab-${tabIndex === 0 ? 'topics' : 'sign-in'}`;
 			const tab = this.el.shadowRoot?.querySelector(`#${tabId}`) as HTMLButtonElement;
 			tab?.focus();
-		}, 0);
+		});
 	}
 
 	/* ===========================
@@ -300,11 +289,12 @@ export class OntarioHeaderMenuTabs {
 
 	/**
 	 * Set up initial focus when menu opens.
+	 * Uses requestAnimationFrame to ensure DOM is ready after render.
 	 */
 	private setupInitialFocus() {
-		setTimeout(() => {
+		requestAnimationFrame(() => {
 			this.focusTab(this.activeTab);
-		}, 150);
+		});
 	}
 
 	/**
@@ -341,20 +331,19 @@ export class OntarioHeaderMenuTabs {
 
 	/**
 	 * Move focus from tab button to first menu item.
+	 * Emits event for overflow menu to handle focus.
 	 */
 	private moveToFirstMenuItem() {
-		const activePanel = this.getActiveTabPanel();
-		const overflowMenu = activePanel?.querySelector('ontario-header-overflow-menu') as HTMLElement | null;
-		const menuItems = overflowMenu?.shadowRoot?.querySelectorAll('.ontario-menu-item a');
+		const currentMenuItems = this.activeTab === 0 ? this.topicsMenuItemsState : this.signInMenuItemsState;
+		if (!currentMenuItems?.length) return;
 
-		if (!menuItems?.length) return;
+		// Emit event for overflow menu to focus first item
+		this.focusFirstItem.emit();
 
-		setTimeout(() => {
-			(menuItems[0] as HTMLElement).focus();
-
-			const currentMenuItems = this.activeTab === 0 ? this.topicsMenuItemsState : this.signInMenuItemsState;
+		// Update ARIA live region
+		requestAnimationFrame(() => {
 			HeaderKeyboardNavigation.updateAriaLive(this.ariaLiveRegion, 0, currentMenuItems);
-		}, 50);
+		});
 	}
 
 	/**

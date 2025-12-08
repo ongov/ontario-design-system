@@ -2459,6 +2459,10 @@ export interface OntarioHeaderCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioHeaderElement;
 }
+export interface OntarioHeaderMenuTabsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOntarioHeaderMenuTabsElement;
+}
 export interface OntarioHeaderOverflowMenuCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOntarioHeaderOverflowMenuElement;
@@ -2621,6 +2625,10 @@ declare global {
         prototype: HTMLOntarioHeaderElement;
         new (): HTMLOntarioHeaderElement;
     };
+    interface HTMLOntarioHeaderMenuTabsElementEventMap {
+        "takeOwnership": { panelId: string | null };
+        "focusFirstItem": void;
+    }
     /**
      * Ontario Header Menu Tabs Component
      * Provides a tabbed navigation interface for mobile/tablet views.
@@ -2628,6 +2636,14 @@ declare global {
      * Manages keyboard navigation, focus trapping, and accessibility.
      */
     interface HTMLOntarioHeaderMenuTabsElement extends Components.OntarioHeaderMenuTabs, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOntarioHeaderMenuTabsElementEventMap>(type: K, listener: (this: HTMLOntarioHeaderMenuTabsElement, ev: OntarioHeaderMenuTabsCustomEvent<HTMLOntarioHeaderMenuTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOntarioHeaderMenuTabsElementEventMap>(type: K, listener: (this: HTMLOntarioHeaderMenuTabsElement, ev: OntarioHeaderMenuTabsCustomEvent<HTMLOntarioHeaderMenuTabsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLOntarioHeaderMenuTabsElement: {
         prototype: HTMLOntarioHeaderMenuTabsElement;
@@ -4229,6 +4245,14 @@ declare namespace LocalJSX {
           * Reference to the menu button that opens this dropdown. Used for focus trapping.
          */
         "menuButtonRef"?: HTMLElement;
+        /**
+          * Event emitted to request overflow menu to focus its first item.
+         */
+        "onFocusFirstItem"?: (event: OntarioHeaderMenuTabsCustomEvent<void>) => void;
+        /**
+          * Event emitted when ownership handoff is triggered in auto-detect mode.
+         */
+        "onTakeOwnership"?: (event: OntarioHeaderMenuTabsCustomEvent<{ panelId: string | null }>) => void;
         /**
           * Menu items for the "Sign In" tab. Can be passed as a MenuItem array or JSON string.
          */

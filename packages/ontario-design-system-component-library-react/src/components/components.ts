@@ -386,14 +386,20 @@ export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioH
     defineCustomElement: defineOntarioHeader
 });
 
-export type OntarioHeaderMenuTabsEvents = NonNullable<unknown>;
+export type OntarioHeaderMenuTabsEvents = {
+    onTakeOwnership: EventName<CustomEvent<{ panelId: string | null }>>,
+    onFocusFirstItem: EventName<CustomEvent<void>>
+};
 
 export const OntarioHeaderMenuTabs: StencilReactComponent<OntarioHeaderMenuTabsElement, OntarioHeaderMenuTabsEvents> = /*@__PURE__*/ createComponent<OntarioHeaderMenuTabsElement, OntarioHeaderMenuTabsEvents>({
     tagName: 'ontario-header-menu-tabs',
     elementClass: OntarioHeaderMenuTabsElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: {} as OntarioHeaderMenuTabsEvents,
+    events: {
+        onTakeOwnership: 'takeOwnership',
+        onFocusFirstItem: 'focusFirstItem'
+    } as OntarioHeaderMenuTabsEvents,
     defineCustomElement: defineOntarioHeaderMenuTabs
 });
 

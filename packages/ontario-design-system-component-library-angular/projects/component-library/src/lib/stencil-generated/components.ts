@@ -651,10 +651,20 @@ export class OntarioHeaderMenuTabs {
 	) {
 		c.detach();
 		this.el = r.nativeElement;
+		proxyOutputs(this, this.el, ['takeOwnership', 'focusFirstItem']);
 	}
 }
 
-export declare interface OntarioHeaderMenuTabs extends Components.OntarioHeaderMenuTabs {}
+export declare interface OntarioHeaderMenuTabs extends Components.OntarioHeaderMenuTabs {
+	/**
+	 * Event emitted when ownership handoff is triggered in auto-detect mode.
+	 */
+	takeOwnership: EventEmitter<CustomEvent<{ panelId: string | null }>>;
+	/**
+	 * Event emitted to request overflow menu to focus its first item.
+	 */
+	focusFirstItem: EventEmitter<CustomEvent<void>>;
+}
 
 @ProxyCmp({
 	inputs: ['menuButtonRef', 'menuItems'],

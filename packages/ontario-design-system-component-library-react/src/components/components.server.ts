@@ -441,7 +441,10 @@ export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioH
     serializeShadowRoot
 });
 
-export type OntarioHeaderMenuTabsEvents = NonNullable<unknown>;
+export type OntarioHeaderMenuTabsEvents = {
+    onTakeOwnership: EventName<CustomEvent<{ panelId: string | null }>>,
+    onFocusFirstItem: EventName<CustomEvent<void>>
+};
 
 export const OntarioHeaderMenuTabs: StencilReactComponent<OntarioHeaderMenuTabsElement, OntarioHeaderMenuTabsEvents> = /*@__PURE__*/ createComponent<OntarioHeaderMenuTabsElement, OntarioHeaderMenuTabsEvents>({
     tagName: 'ontario-header-menu-tabs',

@@ -123,6 +123,14 @@ export class OntarioHeaderOverflowMenu {
 	endOfMenuReached!: EventEmitter<void>;
 
 	/**
+	 * Listen for focus first item event from menu tabs (embedded mode).
+	 */
+	@Listen('focusFirstItem')
+	handleFocusFirstItem() {
+		this.focusFirstMenuItem();
+	}
+
+	/**
 	 * Listen for menu button toggle events (standalone mode only).
 	 */
 	@Listen('menuButtonToggled', { target: 'window' })
