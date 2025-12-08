@@ -37,6 +37,29 @@ export class OntarioHeaderOverflowMenu {
 	/**
 	 * The menu items to display.
 	 * Can be passed as a MenuItem array or JSON string.
+	 *
+	 * The items that will go inside the menu.
+	 *
+	 *  @example
+	 * 	<ontario-header-overflow-menu
+	 *			menu-items='[{
+	 *				"title": "Link 1",
+	 *				"href": "/link-1"
+	 *				"linkIsActive": "false"
+	 *			},{
+	 *				"title": "Link 2",
+	 *				"href": "/link-2"
+	 *				"linkIsActive": "false"
+	 *			},{
+	 *				"title": "Link 3",
+	 *				"href": "/link-3"
+	 *				"linkIsActive": "false"
+	 *			},{
+	 *				"title": "Link 4",
+	 *				"href": "/link-4"
+	 *				"linkIsActive": "false"
+	 *			}]'>
+	 *	</ontario-header-overflow-menu>
 	 */
 	@Prop() menuItems: MenuItem[] | string;
 

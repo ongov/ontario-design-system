@@ -438,6 +438,7 @@ export class OntarioHeaderMenuTabs {
 		const isHidden = !this.menuIsOpen;
 
 		return (
+			// Note: hidden accepts boolean, but aria-hidden requires string "true"/"false" per ARIA spec
 			<div class="ontario-menu-tabs-host" hidden={isHidden} aria-hidden={isHidden ? 'true' : 'false'}>
 				<div class="ontario-application-navigation__container">
 					<div class="ontario-menu-tabs-container">
