@@ -669,14 +669,14 @@ export declare interface OntarioHeaderMenuTabs extends Components.OntarioHeaderM
 }
 
 @ProxyCmp({
-	inputs: ['menuButtonRef', 'menuItems'],
+	inputs: ['menuItems'],
 })
 @Component({
 	selector: 'ontario-header-overflow-menu',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['menuButtonRef', 'menuItems'],
+	inputs: ['menuItems'],
 })
 export class OntarioHeaderOverflowMenu {
 	protected el: HTMLOntarioHeaderOverflowMenuElement;
@@ -687,7 +687,7 @@ export class OntarioHeaderOverflowMenu {
 	) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['menuClosed', 'endOfMenuReached']);
+		proxyOutputs(this, this.el, ['menuClosed', 'endOfMenuReached', 'focusMenuButton', 'menuButtonTabPressed']);
 	}
 }
 
@@ -700,6 +700,16 @@ export declare interface OntarioHeaderOverflowMenu extends Components.OntarioHea
 	 * Event emitted when Tab is pressed on the last menu item (embedded mode).
 	 */
 	endOfMenuReached: EventEmitter<CustomEvent<void>>;
+	/**
+   * Event emitted when Shift+Tab is pressed on first menu item.
+Tells the header to focus the menu button.
+   */
+	focusMenuButton: EventEmitter<CustomEvent<void>>;
+	/**
+   * Event emitted when user Tabs from the menu button.
+Asks if menu is open and ready to receive focus.
+   */
+	menuButtonTabPressed: EventEmitter<CustomEvent<void>>;
 }
 
 @ProxyCmp({

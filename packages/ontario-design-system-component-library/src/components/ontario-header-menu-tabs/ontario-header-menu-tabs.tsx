@@ -474,7 +474,7 @@ export class OntarioHeaderMenuTabs {
 								aria-labelledby={`ontario-menu-tab-${id}`}
 								hidden={this.activeTab !== index}
 							>
-								<ontario-header-overflow-menu menuItems={items} menuButtonRef={this.menuButtonRef} />
+								<ontario-header-overflow-menu menuItems={items} />
 							</div>
 						))}
 					</div>

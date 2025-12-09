@@ -360,6 +360,20 @@ export class OntarioHeader {
 
 	@Listen('keydown', { target: 'window' })
 	handleKeyDown(event: KeyboardEvent) {
+		// Handle Tab from menu button -> ask menu to take focus
+		if (event.key === 'Tab' && !event.shiftKey) {
+			if (document.activeElement === this.menuButton && this.menuToggled) {
+				event.preventDefault();
+				window.dispatchEvent(new CustomEvent('menuButtonTabPressed', { bubbles: true, composed: true }));
+				return;
+			}
+			if (document.activeElement === this.signInButton && this.signInToggled) {
+				event.preventDefault();
+				window.dispatchEvent(new CustomEvent('menuButtonTabPressed', { bubbles: true, composed: true }));
+				return;
+			}
+		}
+
 		if (event.key === 'Escape') {
 			if (this.menuToggled) {
 				this.menuToggled = false;
@@ -469,6 +483,22 @@ export class OntarioHeader {
 	handleMenuClosed() {
 		this.menuToggled = false;
 		this.signInToggled = false;
+	}
+
+	/**
+	 * Listen for overflow menu requesting menu button focus.
+	 * Happens when user presses Shift+Tab from first menu item.
+	 */
+	@Listen('focusMenuButton', { target: 'window' })
+	handleFocusMenuButton() {
+		if (this.signInToggled && this.signInButton) {
+			this.signInButton.focus();
+			// Emit event so menu knows button is focused (prevents auto-close)
+			window.dispatchEvent(new CustomEvent('menuButtonFocused', { bubbles: true, composed: true }));
+		} else if (this.menuToggled && this.menuButton) {
+			this.menuButton.focus();
+			window.dispatchEvent(new CustomEvent('menuButtonFocused', { bubbles: true, composed: true }));
+		}
 	}
 
 	/**
@@ -902,13 +932,11 @@ export class OntarioHeader {
 							<ontario-header-menu-tabs
 								topicsMenuItems={this.menuItemState}
 								signInMenuItems={this.signInMenuItemsState}
-								menuButtonRef={this.menuButton}
 							/>
 						) : (
 							// Desktop OR no sign-in items → Use simple overflow menu
 							<ontario-header-overflow-menu
 								menuItems={this.signInToggled ? this.signInMenuItemsState || [] : this.menuItemState}
-								menuButtonRef={this.signInToggled ? this.signInButton : this.menuButton}
 							/>
 						)}
 					</div>

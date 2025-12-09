@@ -461,15 +461,14 @@ export const OntarioHeaderMenuTabs: StencilReactComponent<OntarioHeaderMenuTabsE
 
 export type OntarioHeaderOverflowMenuEvents = {
     onMenuClosed: EventName<CustomEvent<void>>,
-    onEndOfMenuReached: EventName<CustomEvent<void>>
+    onEndOfMenuReached: EventName<CustomEvent<void>>,
+    onFocusMenuButton: EventName<CustomEvent<void>>,
+    onMenuButtonTabPressed: EventName<CustomEvent<void>>
 };
 
 export const OntarioHeaderOverflowMenu: StencilReactComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents> = /*@__PURE__*/ createComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents>({
     tagName: 'ontario-header-overflow-menu',
-    properties: {
-        menuItems: 'menu-items',
-        menuButtonRef: 'menu-button-ref'
-    },
+    properties: { menuItems: 'menu-items' },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
     serializeShadowRoot
 });

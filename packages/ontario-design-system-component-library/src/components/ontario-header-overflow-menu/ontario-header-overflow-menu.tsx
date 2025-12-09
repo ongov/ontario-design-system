@@ -41,12 +41,6 @@ export class OntarioHeaderOverflowMenu {
 	@Prop() menuItems: MenuItem[] | string;
 
 	/**
-	 * Reference to the menu button that opens this dropdown.
-	 * Used for focus trapping in standalone mode.
-	 */
-	@Prop() menuButtonRef?: HTMLElement;
-
-	/**
 	 * Parsed menu items (converted from string if needed).
 	 */
 	@State() private menuItemState: MenuItem[];
@@ -62,6 +56,11 @@ export class OntarioHeaderOverflowMenu {
 	private currentIndex: number | undefined = undefined;
 
 	/**
+	 * Flag to track if auto-close check should happen.
+	 */
+	private shouldCheckAutoClose: boolean = true;
+
+	/**
 	 * Reference to the menu container element.
 	 */
 	private menu!: HTMLElement;
@@ -70,11 +69,6 @@ export class OntarioHeaderOverflowMenu {
 	 * Reference to the ARIA live region for screen reader announcements.
 	 */
 	private ariaLiveRegion!: HTMLElement;
-
-	/**
-	 * Cleanup function for the focus trap event listener.
-	 */
-	private focusTrapCleanup: (() => void) | null = null;
 
 	/**
 	 * Runtime mode detection.
@@ -123,11 +117,38 @@ export class OntarioHeaderOverflowMenu {
 	endOfMenuReached!: EventEmitter<void>;
 
 	/**
+	 * Event emitted when Shift+Tab is pressed on first menu item.
+	 * Tells the header to focus the menu button.
+	 */
+	@Event({ eventName: 'focusMenuButton', bubbles: true, composed: true })
+	focusMenuButtonEvent!: EventEmitter<void>;
+
+	/**
+	 * Event emitted when user Tabs from the menu button.
+	 * Asks if menu is open and ready to receive focus.
+	 */
+	@Event({ eventName: 'menuButtonTabPressed', bubbles: true, composed: true })
+	menuButtonTabPressed!: EventEmitter<void>;
+
+	/**
 	 * Listen for focus first item event from menu tabs (embedded mode).
 	 */
-	@Listen('focusFirstItem')
+	@Listen('focusFirstItem', { target: 'window' })
 	handleFocusFirstItem() {
-		this.focusFirstMenuItem();
+		if (!this.isStandalone) {
+			this.focusFirstMenuItem();
+		}
+	}
+
+	/**
+	 * Listen for Tab pressed from menu button.
+	 * If menu is open and in standalone mode, focus first item.
+	 */
+	@Listen('menuButtonTabPressed', { target: 'window' })
+	handleMenuButtonTab() {
+		if (this.isStandalone && this.menuIsOpen) {
+			this.focusFirstMenuItem();
+		}
 	}
 
 	/**
@@ -138,7 +159,9 @@ export class OntarioHeaderOverflowMenu {
 		if (!this.isStandalone) return;
 
 		this.menuIsOpen = event.detail;
-		this.menuIsOpen ? this.setupInitialFocus() : this.resetState();
+		if (!this.menuIsOpen) {
+			this.resetState();
+		}
 	}
 
 	/**
@@ -154,19 +177,28 @@ export class OntarioHeaderOverflowMenu {
 	}
 
 	/**
+	 * Listen for signal that focus has returned to menu button.
+	 */
+	@Listen('menuButtonFocused', { target: 'window' })
+	handleMenuButtonFocused() {
+		// Focus is back on button, don't close the menu
+		this.shouldCheckAutoClose = false;
+	}
+
+	/**
 	 * Auto-close menu when focus leaves (standalone mode only).
 	 */
 	@Listen('focusout', { target: 'window' })
 	handleFocusOut(event: FocusEvent) {
 		if (!this.isStandalone || !this.menuIsOpen) return;
 
+		this.shouldCheckAutoClose = true;
+
 		setTimeout(() => {
-			const menuButton = this.getMenuButton();
 			const focusedElement = event.relatedTarget as HTMLElement;
 			const focusInMenu = this.menu?.contains(focusedElement) || this.el.shadowRoot?.contains(focusedElement);
-			const focusOnButton = menuButton?.contains(focusedElement);
 
-			if (!focusInMenu && !focusOnButton) {
+			if (!focusInMenu && this.shouldCheckAutoClose) {
 				this.menuIsOpen = false;
 				this.resetState();
 				this.menuClosed.emit();
@@ -180,17 +212,17 @@ export class OntarioHeaderOverflowMenu {
 	private handleStandaloneKeyboard(event: KeyboardEvent) {
 		if (!this.menuIsOpen) return;
 
-		// Arrow Down from menu button -> enter menu
-		if (event.key === 'ArrowDown') {
-			const menuButton = this.getMenuButton();
-			if (document.activeElement === menuButton) {
+		const shadowActive = this.el.shadowRoot?.activeElement as HTMLElement;
+		const focusInThisMenu = shadowActive && this.el.shadowRoot?.contains(shadowActive);
+
+		if (!focusInThisMenu) return;
+
+		// Handle Shift+Tab from first item -> ask header to focus button
+		if (event.key === 'Tab' && event.shiftKey) {
+			const focusable = this.getFocusableElements();
+			if (focusable.length && shadowActive === focusable[0]) {
 				event.preventDefault();
-				const focusable = this.getFocusableElements();
-				if (focusable.length > 0) {
-					focusable[0].focus();
-					this.currentIndex = 0;
-					this.updateAriaLive(0);
-				}
+				this.focusMenuButtonEvent.emit();
 				return;
 			}
 		}
@@ -242,11 +274,14 @@ export class OntarioHeaderOverflowMenu {
 		const focusable = this.getFocusableElements();
 		if (!focusable.length) return;
 
-		// Sync currentIndex with actually focused element
-		const activeElement = this.el.shadowRoot?.activeElement || document.activeElement;
-		const focusedIndex = focusable.findIndex((el) => el === activeElement);
-		if (focusedIndex !== -1) {
-			this.currentIndex = focusedIndex;
+		// Sync currentIndex with actually focused element only if we don't already have a valid index
+		// This prevents the first arrow press after programmatic focus from being treated as navigation
+		if (this.currentIndex !== undefined) {
+			const activeElement = this.el.shadowRoot?.activeElement || document.activeElement;
+			const focusedIndex = focusable.findIndex((el) => el === activeElement);
+			if (focusedIndex !== -1) {
+				this.currentIndex = focusedIndex;
+			}
 		}
 
 		event.preventDefault();
@@ -271,23 +306,14 @@ export class OntarioHeaderOverflowMenu {
 
 	/**
 	 * Focus the first menu item.
+	 * Sets currentIndex to undefined so the next arrow key will properly navigate to index 0.
 	 */
 	private focusFirstMenuItem() {
 		const focusable = this.getFocusableElements();
 		if (focusable.length > 0) {
 			focusable[0].focus();
-			this.currentIndex = 0;
+			this.currentIndex = undefined;
 			this.updateAriaLive(0);
-		}
-	}
-
-	/**
-	 * Setup when menu opens (standalone mode).
-	 */
-	private setupInitialFocus() {
-		const menuButton = this.getMenuButton();
-		if (menuButton && this.isStandalone) {
-			this.setupFocusTrap(menuButton);
 		}
 	}
 
@@ -296,57 +322,7 @@ export class OntarioHeaderOverflowMenu {
 	 */
 	private resetState() {
 		this.currentIndex = undefined;
-		this.clearFocusTrap();
-	}
-
-	/**
-	 * Get the menu button element.
-	 */
-	private getMenuButton(): HTMLButtonElement | null {
-		if (this.menuButtonRef) return this.menuButtonRef as HTMLButtonElement;
-
-		const selectors = [
-			'#ontario-header-menu-toggler',
-			'#ontario-application-header-menu-toggler',
-			'#ontario-header-sign-in-toggler',
-		];
-
-		for (const selector of selectors) {
-			const button = document.querySelector(selector) as HTMLButtonElement;
-			if (button?.getAttribute('aria-expanded') === 'true') return button;
-		}
-
-		return null;
-	}
-
-	/**
-	 * Set up focus trap (Shift+Tab from first item loops to button).
-	 */
-	private setupFocusTrap(loopTarget: HTMLElement) {
-		this.clearFocusTrap();
-
-		const handler = (e: KeyboardEvent) => {
-			if (e.key !== 'Tab' || !e.shiftKey) return;
-
-			const focusable = this.getFocusableElements();
-			if (focusable.length && document.activeElement === focusable[0]) {
-				e.preventDefault();
-				loopTarget.focus();
-			}
-		};
-
-		document.addEventListener('keydown', handler, true);
-		this.focusTrapCleanup = () => document.removeEventListener('keydown', handler, true);
-	}
-
-	/**
-	 * Clear the active focus trap event listener.
-	 */
-	private clearFocusTrap() {
-		if (this.focusTrapCleanup) {
-			this.focusTrapCleanup();
-			this.focusTrapCleanup = null;
-		}
+		this.shouldCheckAutoClose = true;
 	}
 
 	/**

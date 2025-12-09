@@ -565,10 +565,6 @@ export namespace Components {
      */
     interface OntarioHeaderOverflowMenu {
         /**
-          * Reference to the menu button that opens this dropdown. Used for focus trapping in standalone mode.
-         */
-        "menuButtonRef"?: HTMLElement;
-        /**
           * The menu items to display. Can be passed as a MenuItem array or JSON string.
          */
         "menuItems": MenuItem[] | string;
@@ -2650,6 +2646,8 @@ declare global {
     interface HTMLOntarioHeaderOverflowMenuElementEventMap {
         "menuClosed": void;
         "endOfMenuReached": void;
+        "focusMenuButton": void;
+        "menuButtonTabPressed": void;
     }
     /**
      * Overflow Menu Component
@@ -4288,10 +4286,6 @@ declare namespace LocalJSX {
      */
     interface OntarioHeaderOverflowMenu {
         /**
-          * Reference to the menu button that opens this dropdown. Used for focus trapping in standalone mode.
-         */
-        "menuButtonRef"?: HTMLElement;
-        /**
           * The menu items to display. Can be passed as a MenuItem array or JSON string.
          */
         "menuItems"?: MenuItem[] | string;
@@ -4299,6 +4293,14 @@ declare namespace LocalJSX {
           * Event emitted when Tab is pressed on the last menu item (embedded mode).
          */
         "onEndOfMenuReached"?: (event: OntarioHeaderOverflowMenuCustomEvent<void>) => void;
+        /**
+          * Event emitted when Shift+Tab is pressed on first menu item. Tells the header to focus the menu button.
+         */
+        "onFocusMenuButton"?: (event: OntarioHeaderOverflowMenuCustomEvent<void>) => void;
+        /**
+          * Event emitted when user Tabs from the menu button. Asks if menu is open and ready to receive focus.
+         */
+        "onMenuButtonTabPressed"?: (event: OntarioHeaderOverflowMenuCustomEvent<void>) => void;
         /**
           * Event emitted when menu closes (standalone mode).
          */

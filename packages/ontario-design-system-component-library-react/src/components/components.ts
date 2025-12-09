@@ -406,7 +406,9 @@ export const OntarioHeaderMenuTabs: StencilReactComponent<OntarioHeaderMenuTabsE
 
 export type OntarioHeaderOverflowMenuEvents = {
     onMenuClosed: EventName<CustomEvent<void>>,
-    onEndOfMenuReached: EventName<CustomEvent<void>>
+    onEndOfMenuReached: EventName<CustomEvent<void>>,
+    onFocusMenuButton: EventName<CustomEvent<void>>,
+    onMenuButtonTabPressed: EventName<CustomEvent<void>>
 };
 
 export const OntarioHeaderOverflowMenu: StencilReactComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents> = /*@__PURE__*/ createComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents>({
@@ -416,7 +418,9 @@ export const OntarioHeaderOverflowMenu: StencilReactComponent<OntarioHeaderOverf
     react: React,
     events: {
         onMenuClosed: 'menuClosed',
-        onEndOfMenuReached: 'endOfMenuReached'
+        onEndOfMenuReached: 'endOfMenuReached',
+        onFocusMenuButton: 'focusMenuButton',
+        onMenuButtonTabPressed: 'menuButtonTabPressed'
     } as OntarioHeaderOverflowMenuEvents,
     defineCustomElement: defineOntarioHeaderOverflowMenu
 });
