@@ -397,7 +397,7 @@ export class OntarioHeaderOverflowMenu {
 					<div class="ontario-menu-list">
 						<ul class="ontario-menu" role="menu">
 							{this.menuItemState.map((item) => {
-								const isDisabled = (item as any)?.disabled === true;
+								const isDisabled = item.disabled === true;
 								const hasIcon = !!item.icon;
 								const menuItemClass = hasIcon ? 'ontario-menu-item ontario-menu-item--with-icon' : 'ontario-menu-item';
 								const IconComponent = hasIcon ? `ontario-icon-${item.icon!.id}` : null;

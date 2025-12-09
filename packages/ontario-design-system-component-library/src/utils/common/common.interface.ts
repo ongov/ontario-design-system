@@ -112,6 +112,7 @@ export interface MenuItem {
 	title: string;
 	href: string;
 	linkIsActive?: boolean;
+	disabled?: boolean;
 	description?: string;
 	onClickHandler?: (event: Event) => void;
 	icon?: {
