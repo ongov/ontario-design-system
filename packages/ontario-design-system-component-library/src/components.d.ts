@@ -575,9 +575,9 @@ export namespace Components {
     }
     /**
      * Ontario Header Menu Tabs Component
-     * Provides a tabbed navigation interface for mobile/tablet views.
-     * Displays two tabs (Topics and Sign In) with overflow menu content.
-     * Manages keyboard navigation, focus trapping, and accessibility.
+     * - Provides a tabbed navigation interface for mobile/tablet views.
+     * - Displays two tabs (Topics and Sign In) with overflow menu content.
+     * - Manages keyboard navigation, focus trapping, and accessibility.
      */
     interface OntarioHeaderMenuTabs {
         /**
@@ -2631,9 +2631,9 @@ declare global {
     }
     /**
      * Ontario Header Menu Tabs Component
-     * Provides a tabbed navigation interface for mobile/tablet views.
-     * Displays two tabs (Topics and Sign In) with overflow menu content.
-     * Manages keyboard navigation, focus trapping, and accessibility.
+     * - Provides a tabbed navigation interface for mobile/tablet views.
+     * - Displays two tabs (Topics and Sign In) with overflow menu content.
+     * - Manages keyboard navigation, focus trapping, and accessibility.
      */
     interface HTMLOntarioHeaderMenuTabsElement extends Components.OntarioHeaderMenuTabs, HTMLStencilElement {
         addEventListener<K extends keyof HTMLOntarioHeaderMenuTabsElementEventMap>(type: K, listener: (this: HTMLOntarioHeaderMenuTabsElement, ev: OntarioHeaderMenuTabsCustomEvent<HTMLOntarioHeaderMenuTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4231,9 +4231,9 @@ declare namespace LocalJSX {
     }
     /**
      * Ontario Header Menu Tabs Component
-     * Provides a tabbed navigation interface for mobile/tablet views.
-     * Displays two tabs (Topics and Sign In) with overflow menu content.
-     * Manages keyboard navigation, focus trapping, and accessibility.
+     * - Provides a tabbed navigation interface for mobile/tablet views.
+     * - Displays two tabs (Topics and Sign In) with overflow menu content.
+     * - Manages keyboard navigation, focus trapping, and accessibility.
      */
     interface OntarioHeaderMenuTabs {
         /**
@@ -6369,9 +6369,9 @@ declare module "@stencil/core" {
             "ontario-header": LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
             /**
              * Ontario Header Menu Tabs Component
-             * Provides a tabbed navigation interface for mobile/tablet views.
-             * Displays two tabs (Topics and Sign In) with overflow menu content.
-             * Manages keyboard navigation, focus trapping, and accessibility.
+             * - Provides a tabbed navigation interface for mobile/tablet views.
+             * - Displays two tabs (Topics and Sign In) with overflow menu content.
+             * - Manages keyboard navigation, focus trapping, and accessibility.
              */
             "ontario-header-menu-tabs": LocalJSX.OntarioHeaderMenuTabs & JSXBase.HTMLAttributes<HTMLOntarioHeaderMenuTabsElement>;
             /**

@@ -6,9 +6,9 @@
 
 Ontario Header Menu Tabs Component
 
-Provides a tabbed navigation interface for mobile/tablet views.
-Displays two tabs (Topics and Sign In) with overflow menu content.
-Manages keyboard navigation, focus trapping, and accessibility.
+- Provides a tabbed navigation interface for mobile/tablet views.
+- Displays two tabs (Topics and Sign In) with overflow menu content.
+- Manages keyboard navigation, focus trapping, and accessibility.
 
 ## Properties
 
@@ -18,6 +18,13 @@ Manages keyboard navigation, focus trapping, and accessibility.
 | `menuButtonRef`   | `menu-button-ref`    | Reference to the menu button that opens this dropdown. Used for focus trapping.     | `HTMLElement \| undefined` | `undefined` |
 | `signInMenuItems` | `sign-in-menu-items` | Menu items for the "Sign In" tab. Can be passed as a MenuItem array or JSON string. | `MenuItem[] \| string`     | `undefined` |
 | `topicsMenuItems` | `topics-menu-items`  | Menu items for the "Topics" tab. Can be passed as a MenuItem array or JSON string.  | `MenuItem[] \| string`     | `undefined` |
+
+## Events
+
+| Event            | Description                                                            | Type                                        |
+| ---------------- | ---------------------------------------------------------------------- | ------------------------------------------- |
+| `focusFirstItem` | Event emitted to request overflow menu to focus its first item.        | `CustomEvent<void>`                         |
+| `takeOwnership`  | Event emitted when ownership handoff is triggered in auto-detect mode. | `CustomEvent<{ panelId: string \| null; }>` |
 
 ## Dependencies
 

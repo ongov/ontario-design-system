@@ -424,7 +424,6 @@ export class OntarioHeaderOverflowMenu {
 								const isDisabled = (item as any)?.disabled === true;
 								const hasIcon = !!item.icon;
 								const menuItemClass = hasIcon ? 'ontario-menu-item ontario-menu-item--with-icon' : 'ontario-menu-item';
-
 								const IconComponent = hasIcon ? `ontario-icon-${item.icon!.id}` : null;
 
 								return (
