@@ -165,21 +165,22 @@ $mobile-menu-tab-line-height: 2.1875rem;
 .ontario-menu-item--with-icon {
 	.ontario-menu-item__label-container {
 		display: flex;
+		align-items: center;
 	}
 
 	.ontario-menu-item__label {
-		padding-left: globalFunctions.px-to-rem(20);
+		padding-left: spacing.$spacing-2;
+	}
+
+	ontario-icon-more-accounts {
+		margin-top: globalFunctions.px-to-rem(6) * -1;
+		margin-left: globalFunctions.px-to-rem(3) * -1;
 	}
 }
 
-// Menu item with icon variant
 .ontario-header-navigation__menu-item--with-icon {
 	a {
 		padding: spacing.$spacing-3 spacing.$spacing-5 spacing.$spacing-3 globalFunctions.px-to-rem(20);
-	}
-
-	svg {
-		margin-right: spacing.$spacing-2;
 	}
 }
 
