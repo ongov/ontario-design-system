@@ -8,7 +8,7 @@
 
 /* eslint-disable */
 
-import { type AccordionChangeDetail, type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
 import { OntarioAccordion as OntarioAccordionElement } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
 import { OntarioAside as OntarioAsideElement } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
 import { OntarioBackToTop as OntarioBackToTopElement } from "@ongov/ontario-design-system-component-library/components/ontario-back-to-top.js";
@@ -96,6 +96,7 @@ import { OntarioIconMenuHeader as OntarioIconMenuHeaderElement } from "@ongov/on
 import { OntarioIconMenu as OntarioIconMenuElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-menu.js";
 import { OntarioIconMicrophoneOff as OntarioIconMicrophoneOffElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-off.js";
 import { OntarioIconMicrophoneOn as OntarioIconMicrophoneOnElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-on.js";
+import { OntarioIconMoreAccounts as OntarioIconMoreAccountsElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-more-accounts.js";
 import { OntarioIconMoreVertical as OntarioIconMoreVerticalElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-more-vertical.js";
 import { OntarioIconNewWindow as OntarioIconNewWindowElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-new-window.js";
 import { OntarioIconNext as OntarioIconNextElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-next.js";
@@ -331,8 +332,8 @@ export type OntarioDateInputEvents = {
         value: string;
         fieldType: 'day' | 'month' | 'year';
     }>>,
-    onInputOnBlur: EventName<CustomEvent<'day' | 'month' | 'year'>>,
-    onInputOnFocus: EventName<CustomEvent<'day' | 'month' | 'year'>>,
+    onInputOnBlur: EventName<OntarioDateInputCustomEvent<DateInputFieldType>>,
+    onInputOnFocus: EventName<OntarioDateInputCustomEvent<DateInputFieldType>>,
     onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>
 };
 
@@ -1251,6 +1252,18 @@ export type OntarioIconMicrophoneOnEvents = NonNullable<unknown>;
 
 export const OntarioIconMicrophoneOn: StencilReactComponent<OntarioIconMicrophoneOnElement, OntarioIconMicrophoneOnEvents> = /*@__PURE__*/ createComponent<OntarioIconMicrophoneOnElement, OntarioIconMicrophoneOnEvents>({
     tagName: 'ontario-icon-microphone-on',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
+
+export type OntarioIconMoreAccountsEvents = NonNullable<unknown>;
+
+export const OntarioIconMoreAccounts: StencilReactComponent<OntarioIconMoreAccountsElement, OntarioIconMoreAccountsEvents> = /*@__PURE__*/ createComponent<OntarioIconMoreAccountsElement, OntarioIconMoreAccountsEvents>({
+    tagName: 'ontario-icon-more-accounts',
     properties: {
         iconWidth: 'icon-width',
         colour: 'colour'

@@ -392,6 +392,8 @@ export class OntarioDateInput {
 	}
 }
 
+import type { DateInputFieldType as IOntarioDateInputDateInputFieldType } from '@ongov/ontario-design-system-component-library';
+
 export declare interface OntarioDateInput extends Components.OntarioDateInput {
 	/**
 	 * Emitted when an `input` event occurs within the component.
@@ -404,11 +406,11 @@ export declare interface OntarioDateInput extends Components.OntarioDateInput {
 	/**
 	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
-	inputOnBlur: EventEmitter<CustomEvent<'day' | 'month' | 'year'>>;
+	inputOnBlur: EventEmitter<CustomEvent<IOntarioDateInputDateInputFieldType>>;
 	/**
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
-	inputOnFocus: EventEmitter<CustomEvent<'day' | 'month' | 'year'>>;
+	inputOnFocus: EventEmitter<CustomEvent<IOntarioDateInputDateInputFieldType>>;
 	/**
 	 * Emitted when an error message is reported to the component.
 	 */
@@ -2338,6 +2340,30 @@ export class OntarioIconMicrophoneOn {
 }
 
 export declare interface OntarioIconMicrophoneOn extends Components.OntarioIconMicrophoneOn {}
+
+@ProxyCmp({
+	inputs: ['colour', 'iconWidth'],
+})
+@Component({
+	selector: 'ontario-icon-more-accounts',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+})
+export class OntarioIconMoreAccounts {
+	protected el: HTMLOntarioIconMoreAccountsElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioIconMoreAccounts extends Components.OntarioIconMoreAccounts {}
 
 @ProxyCmp({
 	inputs: ['colour', 'iconWidth'],

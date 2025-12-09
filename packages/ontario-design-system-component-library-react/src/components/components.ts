@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AccordionChangeDetail, type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
 import { OntarioAccordion as OntarioAccordionElement, defineCustomElement as defineOntarioAccordion } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
 import { OntarioAside as OntarioAsideElement, defineCustomElement as defineOntarioAside } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
 import { OntarioBackToTop as OntarioBackToTopElement, defineCustomElement as defineOntarioBackToTop } from "@ongov/ontario-design-system-component-library/components/ontario-back-to-top.js";
@@ -95,6 +95,7 @@ import { OntarioIconMenuHeader as OntarioIconMenuHeaderElement, defineCustomElem
 import { OntarioIconMenu as OntarioIconMenuElement, defineCustomElement as defineOntarioIconMenu } from "@ongov/ontario-design-system-component-library/components/ontario-icon-menu.js";
 import { OntarioIconMicrophoneOff as OntarioIconMicrophoneOffElement, defineCustomElement as defineOntarioIconMicrophoneOff } from "@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-off.js";
 import { OntarioIconMicrophoneOn as OntarioIconMicrophoneOnElement, defineCustomElement as defineOntarioIconMicrophoneOn } from "@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-on.js";
+import { OntarioIconMoreAccounts as OntarioIconMoreAccountsElement, defineCustomElement as defineOntarioIconMoreAccounts } from "@ongov/ontario-design-system-component-library/components/ontario-icon-more-accounts.js";
 import { OntarioIconMoreVertical as OntarioIconMoreVerticalElement, defineCustomElement as defineOntarioIconMoreVertical } from "@ongov/ontario-design-system-component-library/components/ontario-icon-more-vertical.js";
 import { OntarioIconNewWindow as OntarioIconNewWindowElement, defineCustomElement as defineOntarioIconNewWindow } from "@ongov/ontario-design-system-component-library/components/ontario-icon-new-window.js";
 import { OntarioIconNext as OntarioIconNextElement, defineCustomElement as defineOntarioIconNext } from "@ongov/ontario-design-system-component-library/components/ontario-icon-next.js";
@@ -301,8 +302,8 @@ export type OntarioDateInputEvents = {
         value: string;
         fieldType: 'day' | 'month' | 'year';
     }>>,
-    onInputOnBlur: EventName<CustomEvent<'day' | 'month' | 'year'>>,
-    onInputOnFocus: EventName<CustomEvent<'day' | 'month' | 'year'>>,
+    onInputOnBlur: EventName<OntarioDateInputCustomEvent<DateInputFieldType>>,
+    onInputOnFocus: EventName<OntarioDateInputCustomEvent<DateInputFieldType>>,
     onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>
 };
 
@@ -1166,6 +1167,17 @@ export const OntarioIconMicrophoneOn: StencilReactComponent<OntarioIconMicrophon
     react: React,
     events: {} as OntarioIconMicrophoneOnEvents,
     defineCustomElement: defineOntarioIconMicrophoneOn
+});
+
+export type OntarioIconMoreAccountsEvents = NonNullable<unknown>;
+
+export const OntarioIconMoreAccounts: StencilReactComponent<OntarioIconMoreAccountsElement, OntarioIconMoreAccountsEvents> = /*@__PURE__*/ createComponent<OntarioIconMoreAccountsElement, OntarioIconMoreAccountsEvents>({
+    tagName: 'ontario-icon-more-accounts',
+    elementClass: OntarioIconMoreAccountsElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioIconMoreAccountsEvents,
+    defineCustomElement: defineOntarioIconMoreAccounts
 });
 
 export type OntarioIconMoreVerticalEvents = NonNullable<unknown>;

@@ -88,6 +88,7 @@ export const DIRECTIVES = [
 	d.OntarioIconMenuHeader,
 	d.OntarioIconMicrophoneOff,
 	d.OntarioIconMicrophoneOn,
+	d.OntarioIconMoreAccounts,
 	d.OntarioIconMoreVertical,
 	d.OntarioIconNewWindow,
 	d.OntarioIconNext,
