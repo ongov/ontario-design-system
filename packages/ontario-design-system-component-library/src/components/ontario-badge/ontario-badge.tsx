@@ -83,7 +83,6 @@ export class OntarioBadge {
 
 		// Check for legacy camelCase values
 		if (this.colour in legacyBadgeColourAliases) {
-			console.log('yes');
 			const mapped = legacyBadgeColourAliases[this.colour as keyof typeof legacyBadgeColourAliases];
 
 			const message = new ConsoleMessageClass();
