@@ -17,6 +17,7 @@ import OntarioHeaderDefaultData from './ontario-header-default-data.json';
 import { Language } from '../../utils/common/language-types';
 import { MenuItem } from '../../utils/common/common.interface';
 import { DeviceTypes } from '../../utils/common/common.enum';
+import { ScreenBreakpoints, standardFontSizePx } from '../../utils/common/common.variables';
 import { isClientSideRendering } from '../../utils/common/environment';
 import { Input } from '../../utils/common/input/input';
 import { generateMenuItem } from '../../utils/components/header/header-menu-items';
@@ -225,14 +226,13 @@ export class OntarioHeader {
 
 	/**
 	 * Header-specific device detection.
-	 * Mobile: 0 — 639px
-	 * Tablet: 640 — 1168px
-	 * Desktop: > 1168px
 	 */
 	private getHeaderDeviceType(): DeviceType {
 		const width = typeof window !== 'undefined' ? window.innerWidth : 1200;
-		if (width <= 639) return DeviceTypes.Mobile;
-		if (width <= 1168) return DeviceTypes.Tablet;
+		const tablet = ScreenBreakpoints.Large * standardFontSizePx;
+
+		if (width < tablet - 1) return DeviceTypes.Mobile;
+		if (width === tablet - 1) return DeviceTypes.Tablet;
 		return DeviceTypes.Desktop;
 	}
 
