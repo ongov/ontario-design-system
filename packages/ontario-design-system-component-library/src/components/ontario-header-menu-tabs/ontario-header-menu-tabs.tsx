@@ -7,9 +7,9 @@ import { ConsoleType } from '../../utils/console-message/console-message.enum';
 /**
  * Ontario Header Menu Tabs Component
  *
- * - Provides a tabbed navigation interface for mobile/tablet views.
- * - Displays two tabs (Topics and Sign In) with overflow menu content.
- * - Manages keyboard navigation, focus trapping, and accessibility.
+ * Provides a tabbed navigation interface for mobile/tablet views.
+ * Displays two tabs (Topics and Sign In) with overflow menu content.
+ * Manages keyboard navigation, focus trapping, and accessibility.
  */
 @Component({
 	tag: 'ontario-header-menu-tabs',
@@ -215,7 +215,7 @@ export class OntarioHeaderMenuTabs {
 	 * Triggers ownership handoff in auto-detect mode.
 	 */
 	@Listen('menuReady', { target: 'window' })
-	async onMenuReady(event: CustomEvent) {
+	async handleMenuReady(event: CustomEvent) {
 		const panel = this.getActiveTabPanel();
 		const panelId = panel?.id || null;
 		if (event.detail?.panelId !== panelId) return;
@@ -231,7 +231,7 @@ export class OntarioHeaderMenuTabs {
 	 * Prevent menu from closing when focus moves within the trap.
 	 */
 	@Listen('focusout', { target: 'window' })
-	focusOut(event: FocusEvent) {
+	handleFocusOut(event: FocusEvent) {
 		if (!this.menuIsOpen) return;
 
 		setTimeout(() => {
@@ -438,7 +438,6 @@ export class OntarioHeaderMenuTabs {
 		const isHidden = !this.menuIsOpen;
 
 		return (
-			// Note: hidden accepts boolean, but aria-hidden requires string "true"/"false" per ARIA spec
 			<div class="ontario-menu-tabs-host" hidden={isHidden} aria-hidden={isHidden ? 'true' : 'false'}>
 				<div class="ontario-application-navigation__container">
 					<div class="ontario-menu-tabs-container">
@@ -475,7 +474,7 @@ export class OntarioHeaderMenuTabs {
 								aria-labelledby={`ontario-menu-tab-${id}`}
 								hidden={this.activeTab !== index}
 							>
-								<ontario-header-overflow-menu menuItems={items} />
+								<ontario-header-overflow-menu menuItems={items} menuButtonRef={this.menuButtonRef} />
 							</div>
 						))}
 					</div>
