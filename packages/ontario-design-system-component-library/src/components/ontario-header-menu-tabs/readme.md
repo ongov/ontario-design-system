@@ -6,9 +6,9 @@
 
 Ontario Header Menu Tabs Component
 
-- Provides a tabbed navigation interface for mobile/tablet views.
-- Displays two tabs (Topics and Sign In) with overflow menu content.
-- Manages keyboard navigation, focus trapping, and accessibility.
+Provides a tabbed navigation interface for mobile/tablet views.
+Displays two tabs (Topics and Sign In) with overflow menu content.
+Manages keyboard navigation, focus trapping, and accessibility.
 
 ## Properties
 

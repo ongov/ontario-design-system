@@ -84,6 +84,11 @@ export class OntarioHeaderOverflowMenu {
 	private shouldCheckAutoClose: boolean = true;
 
 	/**
+	 * Flag to prevent handling arrow navigation immediately after programmatically focusing first item.
+	 */
+	private justFocusedFirstItem = false;
+
+	/**
 	 * Reference to the menu container element.
 	 */
 	private menu!: HTMLElement;
@@ -297,30 +302,30 @@ export class OntarioHeaderOverflowMenu {
 		const focusable = this.getFocusableElements();
 		if (!focusable.length) return;
 
-		// Sync currentIndex with actually focused element only if we don't already have a valid index
-		// This prevents the first arrow press after programmatic focus from being treated as navigation
-		if (this.currentIndex !== undefined) {
-			const activeElement = this.el.shadowRoot?.activeElement || document.activeElement;
-			const focusedIndex = focusable.findIndex((el) => el === activeElement);
-			if (focusedIndex !== -1) {
-				this.currentIndex = focusedIndex;
-			}
-		}
-
 		event.preventDefault();
+
+		// Skip handling if we just programmatically focused the first item
+		if (this.justFocusedFirstItem) {
+			this.justFocusedFirstItem = false;
+			return;
+		}
 
 		if (event.key === 'ArrowDown') {
 			if (this.currentIndex === undefined) {
-				this.currentIndex = 0;
-			} else {
-				this.currentIndex = (this.currentIndex + 1) % focusable.length;
+				// Sync with current focus if we don't have an index yet
+				const activeElement = this.el.shadowRoot?.activeElement || document.activeElement;
+				const focusedIndex = focusable.findIndex((el) => el === activeElement);
+				this.currentIndex = focusedIndex !== -1 ? focusedIndex : 0;
 			}
+			this.currentIndex = (this.currentIndex + 1) % focusable.length;
 		} else {
 			if (this.currentIndex === undefined) {
-				this.currentIndex = focusable.length - 1;
-			} else {
-				this.currentIndex = (this.currentIndex - 1 + focusable.length) % focusable.length;
+				// Sync with current focus if we don't have an index yet
+				const activeElement = this.el.shadowRoot?.activeElement || document.activeElement;
+				const focusedIndex = focusable.findIndex((el) => el === activeElement);
+				this.currentIndex = focusedIndex !== -1 ? focusedIndex : focusable.length - 1;
 			}
+			this.currentIndex = (this.currentIndex - 1 + focusable.length) % focusable.length;
 		}
 
 		focusable[this.currentIndex].focus();
@@ -329,13 +334,14 @@ export class OntarioHeaderOverflowMenu {
 
 	/**
 	 * Focus the first menu item.
-	 * Sets currentIndex to undefined so the next arrow key will properly navigate to index 0.
+	 * Sets currentIndex to 0 to track position for arrow navigation.
 	 */
 	private focusFirstMenuItem() {
 		const focusable = this.getFocusableElements();
 		if (focusable.length > 0) {
 			focusable[0].focus();
-			this.currentIndex = undefined;
+			this.currentIndex = 0;
+			this.justFocusedFirstItem = true;
 			this.updateAriaLive(0);
 		}
 	}

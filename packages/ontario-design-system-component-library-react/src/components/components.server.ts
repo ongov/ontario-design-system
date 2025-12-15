@@ -452,7 +452,6 @@ export const OntarioHeaderMenuTabs: StencilReactComponent<OntarioHeaderMenuTabsE
     properties: {
         topicsMenuItems: 'topics-menu-items',
         signInMenuItems: 'sign-in-menu-items',
-        menuButtonRef: 'menu-button-ref',
         autoDetectMode: 'auto-detect-mode'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),

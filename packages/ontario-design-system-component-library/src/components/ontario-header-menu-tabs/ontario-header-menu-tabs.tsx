@@ -32,12 +32,6 @@ export class OntarioHeaderMenuTabs {
 	@Prop() signInMenuItems: MenuItem[] | string;
 
 	/**
-	 * Reference to the menu button that opens this dropdown.
-	 * Used for focus trapping.
-	 */
-	@Prop() menuButtonRef?: HTMLElement;
-
-	/**
 	 * Enable auto-detect handoff mode.
 	 */
 	@Prop() autoDetectMode?: boolean = false;
@@ -184,6 +178,7 @@ export class OntarioHeaderMenuTabs {
 		// Arrow Down from tab button to first menu item
 		if (event.key === 'ArrowDown' && this.isFocusOnTab()) {
 			event.preventDefault();
+			event.stopPropagation(); // Prevent overflow menu from handling this event
 			this.moveToFirstMenuItem();
 			return;
 		}
@@ -239,7 +234,7 @@ export class OntarioHeaderMenuTabs {
 			const menuContainer = this.getMenuContainer();
 			const focusable = menuContainer ? HeaderKeyboardNavigation.getFocusableElements(menuContainer) : [];
 			const tabs = Array.from(this.el.shadowRoot?.querySelectorAll('[role="tab"]') || []);
-			const allTrapElements = [...tabs, ...focusable, this.menuButtonRef].filter(Boolean);
+			const allTrapElements = [...tabs, ...focusable].filter(Boolean);
 
 			if (allTrapElements.some((el) => el === relatedTarget)) {
 				event.stopPropagation();
@@ -308,8 +303,8 @@ export class OntarioHeaderMenuTabs {
 		const hasItems = !!overflowMenu?.shadowRoot?.querySelectorAll('.ontario-menu-item')?.length;
 		const menuContainer = this.getMenuContainer();
 
-		if (menuContainer && this.menuButtonRef && hasItems) {
-			this.setupFocusTrap(menuContainer, this.menuButtonRef);
+		if (menuContainer && hasItems) {
+			this.setupFocusTrap(menuContainer);
 			this.trapInstalled = true;
 		}
 	}
@@ -349,13 +344,13 @@ export class OntarioHeaderMenuTabs {
 	/**
 	 * Set up focus trap for Tab/Shift+Tab looping.
 	 */
-	private setupFocusTrap(panel: HTMLElement, loopTarget: HTMLElement) {
+	private setupFocusTrap(panel: HTMLElement) {
 		this.clearFocusTrap();
 
 		const handler = (e: KeyboardEvent) => {
 			if (e.key !== 'Tab') return;
 
-			const tabs = Array.from(this.el.shadowRoot?.querySelectorAll('[role="tab"]') || []) as HTMLElement[];
+			const activeTabElement = this.el.shadowRoot?.querySelector('[role="tab"][aria-selected="true"]') as HTMLElement;
 			const panelFocusables = HeaderKeyboardNavigation.getFocusableElements(panel);
 			const activePanel = this.getActiveTabPanel();
 			const overflowMenu = activePanel?.querySelector('ontario-header-overflow-menu') as HTMLElement | null;
@@ -363,7 +358,7 @@ export class OntarioHeaderMenuTabs {
 				? HeaderKeyboardNavigation.getFocusableElementsInShadow(overflowMenu)
 				: [];
 
-			const focusable = [...tabs, ...panelFocusables, ...overflowFocusables].filter(Boolean) as HTMLElement[];
+			const focusable = [activeTabElement, ...panelFocusables, ...overflowFocusables].filter(Boolean) as HTMLElement[];
 			if (!focusable.length) return;
 
 			const first = focusable[0];
@@ -371,12 +366,12 @@ export class OntarioHeaderMenuTabs {
 			const active = this.getActiveElement();
 
 			if (e.shiftKey) {
-				if (active === first || active === loopTarget) {
+				if (active === first) {
 					e.preventDefault();
 					last.focus();
 				}
 			} else {
-				if (active === last || active === loopTarget) {
+				if (active === last) {
 					e.preventDefault();
 					first.focus();
 				}

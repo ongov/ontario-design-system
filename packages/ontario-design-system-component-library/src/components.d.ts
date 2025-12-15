@@ -532,10 +532,6 @@ export namespace Components {
          */
         "autoDetectMode"?: boolean;
         /**
-          * Reference to the menu button that opens this dropdown. Used for focus trapping.
-         */
-        "menuButtonRef"?: HTMLElement;
-        /**
           * Menu items for the "Sign In" tab. Can be passed as a MenuItem array or JSON string.
          */
         "signInMenuItems": MenuItem[] | string;
@@ -4245,10 +4241,6 @@ declare namespace LocalJSX {
           * @default false
          */
         "autoDetectMode"?: boolean;
-        /**
-          * Reference to the menu button that opens this dropdown. Used for focus trapping.
-         */
-        "menuButtonRef"?: HTMLElement;
         /**
           * Event emitted to request overflow menu to focus its first item.
          */

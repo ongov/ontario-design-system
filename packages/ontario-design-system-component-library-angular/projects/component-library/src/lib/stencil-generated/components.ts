@@ -635,14 +635,14 @@ To trigger the showing and hiding of the overflow menu.
 }
 
 @ProxyCmp({
-	inputs: ['autoDetectMode', 'menuButtonRef', 'signInMenuItems', 'topicsMenuItems'],
+	inputs: ['autoDetectMode', 'signInMenuItems', 'topicsMenuItems'],
 })
 @Component({
 	selector: 'ontario-header-menu-tabs',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['autoDetectMode', 'menuButtonRef', 'signInMenuItems', 'topicsMenuItems'],
+	inputs: ['autoDetectMode', 'signInMenuItems', 'topicsMenuItems'],
 })
 export class OntarioHeaderMenuTabs {
 	protected el: HTMLOntarioHeaderMenuTabsElement;
