@@ -635,14 +635,14 @@ To trigger the showing and hiding of the overflow menu.
 }
 
 @ProxyCmp({
-	inputs: ['autoDetectMode', 'signInMenuItems', 'topicsMenuItems'],
+	inputs: ['autoDetectMode', 'language', 'signInMenuItems', 'topicsMenuItems'],
 })
 @Component({
 	selector: 'ontario-header-menu-tabs',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['autoDetectMode', 'signInMenuItems', 'topicsMenuItems'],
+	inputs: ['autoDetectMode', 'language', 'signInMenuItems', 'topicsMenuItems'],
 })
 export class OntarioHeaderMenuTabs {
 	protected el: HTMLOntarioHeaderMenuTabsElement;
@@ -669,14 +669,14 @@ export declare interface OntarioHeaderMenuTabs extends Components.OntarioHeaderM
 }
 
 @ProxyCmp({
-	inputs: ['menuItems'],
+	inputs: ['language', 'menuItems'],
 })
 @Component({
 	selector: 'ontario-header-overflow-menu',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['menuItems'],
+	inputs: ['language', 'menuItems'],
 })
 export class OntarioHeaderOverflowMenu {
 	protected el: HTMLOntarioHeaderOverflowMenuElement;

@@ -109,11 +109,11 @@ export type HeadingLevel = (typeof headingLevelDefinitions)[number];
  * Used in both ontario-header and ontario-header-overflow-menu.
  */
 export interface MenuItem {
-	title: string;
+	title?: string | { en: string; fr: string };
 	href: string;
 	linkIsActive?: boolean;
 	disabled?: boolean;
-	description?: string;
+	description?: string | { en: string; fr: string };
 	onClickHandler?: (event: Event) => void;
 	icon?: {
 		id: string;

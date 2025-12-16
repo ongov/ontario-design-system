@@ -932,11 +932,13 @@ export class OntarioHeader {
 							<ontario-header-menu-tabs
 								topicsMenuItems={this.menuItemState}
 								signInMenuItems={this.signInMenuItemsState}
+								language={this.language || 'en'}
 							/>
 						) : (
 							// Desktop OR no sign-in items → Use simple overflow menu
 							<ontario-header-overflow-menu
 								menuItems={this.signInToggled ? this.signInMenuItemsState || [] : this.menuItemState}
+								language={this.language || 'en'}
 							/>
 						)}
 					</div>

@@ -1,5 +1,7 @@
 import { Component, Prop, State, Watch, h, Listen, Element, Event, EventEmitter } from '@stencil/core';
 import { MenuItem } from '../../utils/common/common.interface';
+import { Language } from '../../utils/common/language-types';
+import { validateLanguage } from '../../utils/validation/validation-functions';
 import { convertStringToBoolean } from '../../utils/helper/utils';
 import { HeaderKeyboardNavigation } from '../../utils/components/header/header-keyboard-navigation';
 
@@ -62,6 +64,12 @@ export class OntarioHeaderOverflowMenu {
 	 *	</ontario-header-overflow-menu>
 	 */
 	@Prop() menuItems: MenuItem[] | string;
+
+	/**
+	 * The language of the component.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+	 */
+	@Prop({ mutable: true }) language?: Language = 'en';
 
 	/**
 	 * Parsed menu items (converted from string if needed).
@@ -235,6 +243,24 @@ export class OntarioHeaderOverflowMenu {
 	}
 
 	/**
+	 * This listens for the `setAppLanguage` event sent from the language toggle when it is connected to the DOM.
+	 * It is used for the initial language when the component loads.
+	 */
+	@Listen('setAppLanguage', { target: 'window' })
+	handleSetAppLanguage(event: CustomEvent<Language> | Language) {
+		this.language = validateLanguage(event);
+	}
+
+	/**
+	 * This listens for the `headerLanguageToggled` event sent from the language toggle when it is connected to the DOM.
+	 * It is used for changing the component language after the language toggle has been activated.
+	 */
+	@Listen('headerLanguageToggled', { target: 'window' })
+	handleLanguageToggle(event: CustomEvent<{ oldLanguage: Language; newLanguage: Language }>) {
+		this.handleSetAppLanguage(event.detail.newLanguage);
+	}
+
+	/**
 	 * Handle keyboard events in standalone mode.
 	 */
 	private handleStandaloneKeyboard(event: KeyboardEvent) {
@@ -388,6 +414,15 @@ export class OntarioHeaderOverflowMenu {
 	}
 
 	/**
+	 * Get text in current language from a string or bilingual object.
+	 */
+	private getText(text: string | { en: string; fr: string } | undefined): string {
+		if (!text) return '';
+		if (typeof text === 'string') return text;
+		return text[this.language ?? 'en'] || text.en || '';
+	}
+
+	/**
 	 * Set active link based on current URL if none specified.
 	 */
 	private setActiveLink(menuItems: MenuItem[]) {
@@ -437,10 +472,10 @@ export class OntarioHeaderOverflowMenu {
 											{hasIcon && IconComponent ? (
 												<span class="ontario-menu-item__label-container">
 													<IconComponent />
-													<span class="ontario-menu-item__label">{item.title}</span>
+													<span class="ontario-menu-item__label">{this.getText(item.title)}</span>
 												</span>
 											) : (
-												item.title
+												this.getText(item.title)
 											)}
 										</a>
 									</li>

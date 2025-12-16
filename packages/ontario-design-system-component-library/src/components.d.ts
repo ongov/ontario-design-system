@@ -532,6 +532,11 @@ export namespace Components {
          */
         "autoDetectMode"?: boolean;
         /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+          * @default 'en'
+         */
+        "language"?: Language;
+        /**
           * Menu items for the "Sign In" tab. Can be passed as a MenuItem array or JSON string.
          */
         "signInMenuItems": MenuItem[] | string;
@@ -560,6 +565,11 @@ export namespace Components {
      * Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
      */
     interface OntarioHeaderOverflowMenu {
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+          * @default 'en'
+         */
+        "language"?: Language;
         /**
           * The menu items to display. Can be passed as a MenuItem array or JSON string.  The items that will go inside the menu.
           * @example <ontario-header-overflow-menu 	menu-items='[{ 		"title": "Link 1", 		"href": "/link-1" 		"linkIsActive": "false" 	},{ 		"title": "Link 2", 		"href": "/link-2" 		"linkIsActive": "false" 	},{ 		"title": "Link 3", 		"href": "/link-3" 		"linkIsActive": "false" 	},{ 		"title": "Link 4", 		"href": "/link-4" 		"linkIsActive": "false" 	}]'> </ontario-header-overflow-menu>
@@ -4242,6 +4252,11 @@ declare namespace LocalJSX {
          */
         "autoDetectMode"?: boolean;
         /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+          * @default 'en'
+         */
+        "language"?: Language;
+        /**
           * Event emitted to request overflow menu to focus its first item.
          */
         "onFocusFirstItem"?: (event: OntarioHeaderMenuTabsCustomEvent<void>) => void;
@@ -4278,6 +4293,11 @@ declare namespace LocalJSX {
      * Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
      */
     interface OntarioHeaderOverflowMenu {
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+          * @default 'en'
+         */
+        "language"?: Language;
         /**
           * The menu items to display. Can be passed as a MenuItem array or JSON string.  The items that will go inside the menu.
           * @example <ontario-header-overflow-menu 	menu-items='[{ 		"title": "Link 1", 		"href": "/link-1" 		"linkIsActive": "false" 	},{ 		"title": "Link 2", 		"href": "/link-2" 		"linkIsActive": "false" 	},{ 		"title": "Link 3", 		"href": "/link-3" 		"linkIsActive": "false" 	},{ 		"title": "Link 4", 		"href": "/link-4" 		"linkIsActive": "false" 	}]'> </ontario-header-overflow-menu>

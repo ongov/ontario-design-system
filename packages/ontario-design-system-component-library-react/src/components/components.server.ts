@@ -452,7 +452,8 @@ export const OntarioHeaderMenuTabs: StencilReactComponent<OntarioHeaderMenuTabsE
     properties: {
         topicsMenuItems: 'topics-menu-items',
         signInMenuItems: 'sign-in-menu-items',
-        autoDetectMode: 'auto-detect-mode'
+        autoDetectMode: 'auto-detect-mode',
+        language: 'language'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
     serializeShadowRoot
@@ -467,7 +468,10 @@ export type OntarioHeaderOverflowMenuEvents = {
 
 export const OntarioHeaderOverflowMenu: StencilReactComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents> = /*@__PURE__*/ createComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents>({
     tagName: 'ontario-header-overflow-menu',
-    properties: { menuItems: 'menu-items' },
+    properties: {
+        menuItems: 'menu-items',
+        language: 'language'
+    },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
     serializeShadowRoot
 });

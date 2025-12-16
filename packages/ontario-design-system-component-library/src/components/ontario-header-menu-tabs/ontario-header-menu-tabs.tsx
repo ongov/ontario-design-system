@@ -1,8 +1,11 @@
 import { Component, Prop, State, Watch, h, Listen, Element, Event, EventEmitter } from '@stencil/core';
 import { MenuItem } from '../../utils/common/common.interface';
+import { Language } from '../../utils/common/language-types';
+import { validateLanguage } from '../../utils/validation/validation-functions';
 import { HeaderKeyboardNavigation } from '../../utils/components/header/header-keyboard-navigation';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { ConsoleType } from '../../utils/console-message/console-message.enum';
+import translations from '../../translations/global.i18n.json';
 
 /**
  * Ontario Header Menu Tabs Component
@@ -35,6 +38,12 @@ export class OntarioHeaderMenuTabs {
 	 * Enable auto-detect handoff mode.
 	 */
 	@Prop() autoDetectMode?: boolean = false;
+
+	/**
+	 * The language of the component.
+	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+	 */
+	@Prop({ mutable: true }) language?: Language = 'en';
 
 	/**
 	 * The currently active tab index (0 = Topics, 1 = Sign In).
@@ -242,6 +251,24 @@ export class OntarioHeaderMenuTabs {
 		}, 0);
 	}
 
+	/**
+	 * This listens for the `setAppLanguage` event sent from the language toggle when it is is connected to the DOM.
+	 * It is used for the initial language when the component loads.
+	 */
+	@Listen('setAppLanguage', { target: 'window' })
+	handleSetAppLanguage(event: CustomEvent<Language> | Language) {
+		this.language = validateLanguage(event);
+	}
+
+	/**
+	 * This listens for the `headerLanguageToggled` event sent from the language toggle when it is is connected to the DOM.
+	 * It is used for changing the component language after the language toggle has been activated.
+	 */
+	@Listen('headerLanguageToggled', { target: 'window' })
+	handleLanguageToggle(event: CustomEvent<{ oldLanguage: Language; newLanguage: Language }>) {
+		this.handleSetAppLanguage(event.detail.newLanguage);
+	}
+
 	/* ===========================
         Tab Switching
     =========================== */
@@ -439,8 +466,8 @@ export class OntarioHeaderMenuTabs {
 						{/* Tab Buttons */}
 						<div class="ontario-mobile-menu__tabs" role="tablist">
 							{[
-								{ index: 0, id: 'topics', label: 'Topics' },
-								{ index: 1, id: 'sign-in', label: 'Sign In' },
+								{ index: 0, id: 'topics', label: translations.header.topics[this.language ?? 'en'] },
+								{ index: 1, id: 'sign-in', label: translations.header.signIn[this.language ?? 'en'] },
 							].map(({ index, id, label }) => (
 								<button
 									class={`ontario-mobile-menu__tab ${this.activeTab === index ? 'ontario-mobile-menu__tab--active' : ''}`}
@@ -469,7 +496,7 @@ export class OntarioHeaderMenuTabs {
 								aria-labelledby={`ontario-menu-tab-${id}`}
 								hidden={this.activeTab !== index}
 							>
-								<ontario-header-overflow-menu menuItems={items} />
+								<ontario-header-overflow-menu menuItems={items} language={this.language || 'en'} />
 							</div>
 						))}
 					</div>
