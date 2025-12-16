@@ -191,7 +191,7 @@ export class OntarioHeaderOverflowMenu {
 	 * Listen for menu button toggle events (standalone mode only).
 	 */
 	@Listen('menuButtonToggled', { target: 'window' })
-	toggleMenuVisibility(event: CustomEvent<boolean>) {
+	handleMenuButtonToggled(event: CustomEvent<boolean>) {
 		if (!this.isStandalone) return;
 
 		this.menuIsOpen = event.detail;

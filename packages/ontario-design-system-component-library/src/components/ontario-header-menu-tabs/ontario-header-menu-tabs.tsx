@@ -164,7 +164,7 @@ export class OntarioHeaderMenuTabs {
 	 * Listen for menu button toggle events.
 	 */
 	@Listen('menuButtonToggled', { target: 'window' })
-	toggleMenuVisibility(event: CustomEvent<boolean>) {
+	handleMenuButtonToggled(event: CustomEvent<boolean>) {
 		this.menuIsOpen = event.detail;
 
 		if (this.menuIsOpen) {
