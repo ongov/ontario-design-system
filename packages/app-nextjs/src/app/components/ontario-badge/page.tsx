@@ -15,7 +15,7 @@ export default function OntarioBadgePage() {
 				<OntarioBadge colour="green" label="Green Badge" />
 
 				<h3>light-teal</h3>
-				<OntarioBadge colour="lightTeal" label="Light Teal Badge" />
+				<OntarioBadge colour="light-teal" label="Light Teal Badge" />
 
 				<h3>black</h3>
 				<OntarioBadge colour="black" label="Black Badge" />
@@ -30,7 +30,7 @@ export default function OntarioBadgePage() {
 				<OntarioBadge colour="white" label="White Badge" />
 
 				<h3>dark grey</h3>
-				<OntarioBadge colour="darkGrey" label="Dark Grey Badge" />
+				<OntarioBadge colour="dark-grey" label="Dark Grey Badge" />
 
 				<h2>"label" Prop Variants</h2>
 				<h3>success</h3>

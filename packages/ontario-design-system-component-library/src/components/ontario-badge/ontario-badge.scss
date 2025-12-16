@@ -36,37 +36,37 @@
 	text-transform: uppercase;
 }
 
-.ontario-badge--default-light {
+.ontario-badge--light-teal {
 	background-color: colours.$ontario-colour-information-light;
 	color: colours.$ontario-greyscale-70;
 }
 
-.ontario-badge--default-heavy {
+.ontario-badge--teal {
 	background-color: colours.$ontario-colour-information;
 	color: colours.$ontario-colour-white;
 }
 
-.ontario-badge--neutral-light {
+.ontario-badge--grey {
 	background-color: colours.$ontario-greyscale-5;
 	color: colours.$ontario-greyscale-70;
 }
 
-.ontario-badge--neutral-heavy {
+.ontario-badge--black {
 	background-color: colours.$ontario-colour-black;
 	color: colours.$ontario-colour-white;
 }
 
-.ontario-badge--alert-heavy {
+.ontario-badge--red {
 	background-color: colours.$ontario-colour-alert;
 	color: colours.$ontario-colour-white;
 }
 
-.ontario-badge--warning-heavy {
+.ontario-badge--yellow {
 	background-color: colours.$ontario-colour-warning;
 	color: colours.$ontario-colour-black;
 }
 
-.ontario-badge--success-heavy {
+.ontario-badge--green {
 	background-color: colours.$ontario-colour-success;
 	color: colours.$ontario-colour-white;
 }
@@ -77,7 +77,7 @@
 	border: globalFunctions.px-to-rem(1) solid colours.$ontario-greyscale-70;
 }
 
-.ontario-badge--grey {
+.ontario-badge--dark-grey {
 	background-color: colours.$ontario-greyscale-20;
 	color: colours.$ontario-colour-black;
 }
