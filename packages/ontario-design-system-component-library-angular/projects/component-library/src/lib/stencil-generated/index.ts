@@ -129,6 +129,7 @@ export const DIRECTIVES = [
 	d.OntarioIconTransportCar,
 	d.OntarioIconTransportWalk,
 	d.OntarioIconTty,
+	d.OntarioIconTune,
 	d.OntarioIconTwitter,
 	d.OntarioIconTwitterAlt,
 	d.OntarioIconUpload,

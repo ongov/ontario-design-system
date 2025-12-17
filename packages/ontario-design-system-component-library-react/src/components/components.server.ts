@@ -137,6 +137,7 @@ import { OntarioIconTransportBus as OntarioIconTransportBusElement } from "@ongo
 import { OntarioIconTransportCar as OntarioIconTransportCarElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-transport-car.js";
 import { OntarioIconTransportWalk as OntarioIconTransportWalkElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-transport-walk.js";
 import { OntarioIconTty as OntarioIconTtyElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-tty.js";
+import { OntarioIconTune as OntarioIconTuneElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-tune.js";
 import { OntarioIconTwitterAlt as OntarioIconTwitterAltElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-twitter-alt.js";
 import { OntarioIconTwitter as OntarioIconTwitterElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-twitter.js";
 import { OntarioIconUpload as OntarioIconUploadElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-upload.js";
@@ -1746,6 +1747,18 @@ export type OntarioIconTtyEvents = NonNullable<unknown>;
 
 export const OntarioIconTty: StencilReactComponent<OntarioIconTtyElement, OntarioIconTtyEvents> = /*@__PURE__*/ createComponent<OntarioIconTtyElement, OntarioIconTtyEvents>({
     tagName: 'ontario-icon-tty',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
+
+export type OntarioIconTuneEvents = NonNullable<unknown>;
+
+export const OntarioIconTune: StencilReactComponent<OntarioIconTuneElement, OntarioIconTuneEvents> = /*@__PURE__*/ createComponent<OntarioIconTuneElement, OntarioIconTuneEvents>({
+    tagName: 'ontario-icon-tune',
     properties: {
         iconWidth: 'icon-width',
         colour: 'colour'

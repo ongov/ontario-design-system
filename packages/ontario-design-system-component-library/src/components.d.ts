@@ -1849,6 +1849,18 @@ export namespace Components {
          */
         "iconWidth": IconSize;
     }
+    interface OntarioIconTune {
+        /**
+          * Set the icon's colour.
+          * @default 'black'
+         */
+        "colour": IconColour;
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+          * @default 24
+         */
+        "iconWidth": IconSize;
+    }
     interface OntarioIconTwitter {
         /**
           * Set the icon's colour.
@@ -3357,6 +3369,12 @@ declare global {
         prototype: HTMLOntarioIconTtyElement;
         new (): HTMLOntarioIconTtyElement;
     };
+    interface HTMLOntarioIconTuneElement extends Components.OntarioIconTune, HTMLStencilElement {
+    }
+    var HTMLOntarioIconTuneElement: {
+        prototype: HTMLOntarioIconTuneElement;
+        new (): HTMLOntarioIconTuneElement;
+    };
     interface HTMLOntarioIconTwitterElement extends Components.OntarioIconTwitter, HTMLStencilElement {
     }
     var HTMLOntarioIconTwitterElement: {
@@ -3689,6 +3707,7 @@ declare global {
         "ontario-icon-transport-car": HTMLOntarioIconTransportCarElement;
         "ontario-icon-transport-walk": HTMLOntarioIconTransportWalkElement;
         "ontario-icon-tty": HTMLOntarioIconTtyElement;
+        "ontario-icon-tune": HTMLOntarioIconTuneElement;
         "ontario-icon-twitter": HTMLOntarioIconTwitterElement;
         "ontario-icon-twitter-alt": HTMLOntarioIconTwitterAltElement;
         "ontario-icon-upload": HTMLOntarioIconUploadElement;
@@ -5592,6 +5611,18 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
     }
+    interface OntarioIconTune {
+        /**
+          * Set the icon's colour.
+          * @default 'black'
+         */
+        "colour"?: IconColour;
+        /**
+          * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+          * @default 24
+         */
+        "iconWidth"?: IconSize;
+    }
     interface OntarioIconTwitter {
         /**
           * Set the icon's colour.
@@ -6356,6 +6387,7 @@ declare namespace LocalJSX {
         "ontario-icon-transport-car": OntarioIconTransportCar;
         "ontario-icon-transport-walk": OntarioIconTransportWalk;
         "ontario-icon-tty": OntarioIconTty;
+        "ontario-icon-tune": OntarioIconTune;
         "ontario-icon-twitter": OntarioIconTwitter;
         "ontario-icon-twitter-alt": OntarioIconTwitterAlt;
         "ontario-icon-upload": OntarioIconUpload;
@@ -6540,6 +6572,7 @@ declare module "@stencil/core" {
             "ontario-icon-transport-car": LocalJSX.OntarioIconTransportCar & JSXBase.HTMLAttributes<HTMLOntarioIconTransportCarElement>;
             "ontario-icon-transport-walk": LocalJSX.OntarioIconTransportWalk & JSXBase.HTMLAttributes<HTMLOntarioIconTransportWalkElement>;
             "ontario-icon-tty": LocalJSX.OntarioIconTty & JSXBase.HTMLAttributes<HTMLOntarioIconTtyElement>;
+            "ontario-icon-tune": LocalJSX.OntarioIconTune & JSXBase.HTMLAttributes<HTMLOntarioIconTuneElement>;
             "ontario-icon-twitter": LocalJSX.OntarioIconTwitter & JSXBase.HTMLAttributes<HTMLOntarioIconTwitterElement>;
             "ontario-icon-twitter-alt": LocalJSX.OntarioIconTwitterAlt & JSXBase.HTMLAttributes<HTMLOntarioIconTwitterAltElement>;
             "ontario-icon-upload": LocalJSX.OntarioIconUpload & JSXBase.HTMLAttributes<HTMLOntarioIconUploadElement>;

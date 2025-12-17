@@ -136,6 +136,7 @@ import { OntarioIconTransportBus as OntarioIconTransportBusElement, defineCustom
 import { OntarioIconTransportCar as OntarioIconTransportCarElement, defineCustomElement as defineOntarioIconTransportCar } from "@ongov/ontario-design-system-component-library/components/ontario-icon-transport-car.js";
 import { OntarioIconTransportWalk as OntarioIconTransportWalkElement, defineCustomElement as defineOntarioIconTransportWalk } from "@ongov/ontario-design-system-component-library/components/ontario-icon-transport-walk.js";
 import { OntarioIconTty as OntarioIconTtyElement, defineCustomElement as defineOntarioIconTty } from "@ongov/ontario-design-system-component-library/components/ontario-icon-tty.js";
+import { OntarioIconTune as OntarioIconTuneElement, defineCustomElement as defineOntarioIconTune } from "@ongov/ontario-design-system-component-library/components/ontario-icon-tune.js";
 import { OntarioIconTwitterAlt as OntarioIconTwitterAltElement, defineCustomElement as defineOntarioIconTwitterAlt } from "@ongov/ontario-design-system-component-library/components/ontario-icon-twitter-alt.js";
 import { OntarioIconTwitter as OntarioIconTwitterElement, defineCustomElement as defineOntarioIconTwitter } from "@ongov/ontario-design-system-component-library/components/ontario-icon-twitter.js";
 import { OntarioIconUpload as OntarioIconUploadElement, defineCustomElement as defineOntarioIconUpload } from "@ongov/ontario-design-system-component-library/components/ontario-icon-upload.js";
@@ -1622,6 +1623,17 @@ export const OntarioIconTty: StencilReactComponent<OntarioIconTtyElement, Ontari
     react: React,
     events: {} as OntarioIconTtyEvents,
     defineCustomElement: defineOntarioIconTty
+});
+
+export type OntarioIconTuneEvents = NonNullable<unknown>;
+
+export const OntarioIconTune: StencilReactComponent<OntarioIconTuneElement, OntarioIconTuneEvents> = /*@__PURE__*/ createComponent<OntarioIconTuneElement, OntarioIconTuneEvents>({
+    tagName: 'ontario-icon-tune',
+    elementClass: OntarioIconTuneElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioIconTuneEvents,
+    defineCustomElement: defineOntarioIconTune
 });
 
 export type OntarioIconTwitterEvents = NonNullable<unknown>;

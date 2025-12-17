@@ -458,31 +458,44 @@ export class OntarioHeaderOverflowMenu {
 				aria-hidden={ariaHidden}
 			>
 				<div class="ontario-application-navigation__container">
-					<div class="ontario-menu-list">
-						<ul class="ontario-menu" role="menu">
-							{this.menuItemState.map((item) => {
-								const isDisabled = item.disabled === true;
-								const hasIcon = !!item.icon;
-								const menuItemClass = hasIcon ? 'ontario-menu-item ontario-menu-item--with-icon' : 'ontario-menu-item';
-								const IconComponent = hasIcon ? `ontario-icon-${item.icon!.id}` : null;
+					<ul>
+						{this.menuItemState.map((item) => {
+							const isDisabled = item.disabled === true;
+							const hasIcon = !!item.icon;
+							const hasDescription = !!item.description;
+							const linkIsActive = item.linkIsActive === true;
 
-								return (
-									<li class={menuItemClass} role="none">
-										<a role="menuitem" href={item.href} tabIndex={isDisabled ? -1 : 0}>
-											{hasIcon && IconComponent ? (
-												<span class="ontario-menu-item__label-container">
-													<IconComponent />
-													<span class="ontario-menu-item__label">{this.getText(item.title)}</span>
-												</span>
-											) : (
-												this.getText(item.title)
-											)}
-										</a>
-									</li>
-								);
-							})}
-						</ul>
-					</div>
+							const anchorClass = hasIcon
+								? 'ontario-menu-item ontario-menu-item--with-icon'
+								: linkIsActive
+									? 'ontario-menu-item ontario-link--active'
+									: 'ontario-menu-item';
+
+							const IconComponent = hasIcon ? `ontario-icon-${item.icon!.id}` : null;
+							const titleText = this.getText(item.title);
+							const descriptionText = this.getText(item.description);
+
+							return (
+								<li>
+									<a class={anchorClass} href={item.href} role="menuitem" tabIndex={isDisabled ? -1 : 0}>
+										{hasIcon && IconComponent ? (
+											<span class="ontario-menu-item__label-container">
+												<IconComponent />
+												<span class="ontario-menu-item__label">{titleText}</span>
+											</span>
+										) : hasDescription ? (
+											<span>
+												<span class="ontario-menu-item__title">{titleText}</span>
+												{descriptionText && <span class="ontario-menu-item__description">{descriptionText}</span>}
+											</span>
+										) : (
+											titleText
+										)}
+									</a>
+								</li>
+							);
+						})}
+					</ul>
 				</div>
 
 				<div
