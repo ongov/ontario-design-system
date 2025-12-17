@@ -92,9 +92,9 @@ export class OntarioHeaderOverflowMenu {
 	private shouldCheckAutoClose: boolean = true;
 
 	/**
-	 * Flag to prevent handling arrow navigation immediately after programmatically focusing first item.
+	 * Flag to prevent focusin from interfering with arrow navigation.
 	 */
-	private justFocusedFirstItem = false;
+	private isArrowNavigating = false;
 
 	/**
 	 * Reference to the menu container element.
@@ -115,6 +115,11 @@ export class OntarioHeaderOverflowMenu {
 	}
 
 	/**
+	 * Whether we've already focused the first item after menu opened.
+	 */
+	private hasInitializedFocus = false;
+
+	/**
 	 * Lifecycle hook called before the component is loaded.
 	 */
 	componentWillLoad() {
@@ -126,8 +131,12 @@ export class OntarioHeaderOverflowMenu {
 	 * Focuses first menu item when menu opens in standalone mode.
 	 */
 	componentDidUpdate() {
-		if (this.menuIsOpen && this.isStandalone) {
+		if (this.menuIsOpen && this.isStandalone && !this.hasInitializedFocus) {
 			this.focusFirstMenuItem();
+			this.hasInitializedFocus = true;
+		}
+		if (!this.menuIsOpen) {
+			this.hasInitializedFocus = false;
 		}
 	}
 
@@ -250,6 +259,34 @@ export class OntarioHeaderOverflowMenu {
 	}
 
 	/**
+	 * Sync currentIndex when focus enters a menu item (after Tab navigation).
+	 */
+	@Listen('focusin', { target: 'window' })
+	handleFocusIn(event: FocusEvent) {
+		if (!this.menuIsOpen) return;
+
+		// Don't interfere with arrow navigation
+		if (this.isArrowNavigating) {
+			return;
+		}
+
+		const target = event.target as HTMLElement;
+
+		// Check if the target is within our menu
+		const isInMenu = this.menu?.contains(target) || this.el.shadowRoot?.contains(target);
+		if (!isInMenu) {
+			return;
+		}
+
+		const focusable = this.getFocusableElements();
+		const focusedIndex = focusable.findIndex((el) => el === target || el.contains(target));
+
+		if (focusedIndex !== -1) {
+			this.currentIndex = focusedIndex;
+		}
+	}
+
+	/**
 	 * This listens for the `setAppLanguage` event sent from the language toggle when it is connected to the DOM.
 	 * It is used for the initial language when the component loads.
 	 */
@@ -265,6 +302,19 @@ export class OntarioHeaderOverflowMenu {
 	@Listen('headerLanguageToggled', { target: 'window' })
 	handleLanguageToggle(event: CustomEvent<{ oldLanguage: Language; newLanguage: Language }>) {
 		this.handleSetAppLanguage(event.detail.newLanguage);
+	}
+
+	/**
+	 * Sync currentIndex after Tab navigation completes.
+	 */
+	private syncIndexAfterTab(focusable: HTMLElement[]) {
+		requestAnimationFrame(() => {
+			const newActive = this.el.shadowRoot?.activeElement || document.activeElement;
+			const newIndex = focusable.findIndex((el) => el === newActive || el.contains(newActive as Node));
+			if (newIndex !== -1) {
+				this.currentIndex = newIndex;
+			}
+		});
 	}
 
 	/**
@@ -284,9 +334,13 @@ export class OntarioHeaderOverflowMenu {
 		if (event.key === 'Tab' && event.shiftKey) {
 			if (focusable.length && shadowActive === focusable[0]) {
 				event.preventDefault();
+				this.menuIsOpen = false;
+				this.resetState();
+				this.menuClosed.emit();
 				this.focusMenuButtonEvent.emit();
 				return;
 			}
+			this.syncIndexAfterTab(focusable);
 		}
 
 		// Handle Tab from last item -> close menu and ask header to focus next element
@@ -299,6 +353,7 @@ export class OntarioHeaderOverflowMenu {
 				this.focusNextElement.emit();
 				return;
 			}
+			this.syncIndexAfterTab(focusable);
 		}
 
 		this.handleArrowNavigation(event);
@@ -317,33 +372,25 @@ export class OntarioHeaderOverflowMenu {
 
 		if (!focusInThisMenu) return;
 
-		// Update currentIndex when Tab is used to navigate
-		if (event.key === 'Tab') {
-			const focusable = this.getFocusableElements();
-			const currentElement = shadowActive || domActive;
-			const focusedIndex = focusable.findIndex((el) => el === currentElement || el.contains(currentElement as Node));
-			if (focusedIndex !== -1) {
-				this.currentIndex = focusedIndex;
-			}
-		}
+		const focusable = this.getFocusableElements();
 
 		// Emit event when Tab from last item
 		if (event.key === 'Tab' && !event.shiftKey) {
-			const focusable = this.getFocusableElements();
 			const currentElement = shadowActive || domActive;
-
-			let currentIndex = -1;
-			for (let i = 0; i < focusable.length; i++) {
-				if (focusable[i] === currentElement || focusable[i].contains(currentElement as Node)) {
-					currentIndex = i;
-					break;
-				}
-			}
+			const currentIndex = focusable.findIndex((el) => el === currentElement || el.contains(currentElement as Node));
 
 			if (currentIndex === focusable.length - 1) {
 				event.preventDefault();
 				this.endOfMenuReached.emit();
+				return;
 			}
+
+			this.syncIndexAfterTab(focusable);
+		}
+
+		// Handle Shift+Tab - sync after browser moves focus
+		if (event.key === 'Tab' && event.shiftKey) {
+			this.syncIndexAfterTab(focusable);
 		}
 
 		this.handleArrowNavigation(event);
@@ -360,33 +407,27 @@ export class OntarioHeaderOverflowMenu {
 		if (!focusable.length) return;
 
 		event.preventDefault();
+		this.isArrowNavigating = true;
 
-		// Skip handling if we just programmatically focused the first item
-		if (this.justFocusedFirstItem) {
-			this.justFocusedFirstItem = false;
-			return;
+		// If we don't have an index, sync with current focus first
+		if (this.currentIndex === undefined) {
+			const activeElement = this.el.shadowRoot?.activeElement || document.activeElement;
+			const focusedIndex = focusable.findIndex((el) => el === activeElement);
+			this.currentIndex = focusedIndex !== -1 ? focusedIndex : 0;
 		}
 
+		// Now move in the requested direction
 		if (event.key === 'ArrowDown') {
-			if (this.currentIndex === undefined) {
-				// Sync with current focus if we don't have an index yet
-				const activeElement = this.el.shadowRoot?.activeElement || document.activeElement;
-				const focusedIndex = focusable.findIndex((el) => el === activeElement);
-				this.currentIndex = focusedIndex !== -1 ? focusedIndex : 0;
-			}
 			this.currentIndex = (this.currentIndex + 1) % focusable.length;
 		} else {
-			if (this.currentIndex === undefined) {
-				// Sync with current focus if we don't have an index yet
-				const activeElement = this.el.shadowRoot?.activeElement || document.activeElement;
-				const focusedIndex = focusable.findIndex((el) => el === activeElement);
-				this.currentIndex = focusedIndex !== -1 ? focusedIndex : focusable.length - 1;
-			}
 			this.currentIndex = (this.currentIndex - 1 + focusable.length) % focusable.length;
 		}
 
 		focusable[this.currentIndex].focus();
 		this.updateAriaLive(this.currentIndex);
+
+		// Reset flag after focus has been set
+		this.isArrowNavigating = false;
 	}
 
 	/**
@@ -398,7 +439,6 @@ export class OntarioHeaderOverflowMenu {
 		if (focusable.length > 0) {
 			focusable[0].focus();
 			this.currentIndex = 0;
-			this.justFocusedFirstItem = true;
 			this.updateAriaLive(0);
 		}
 	}
