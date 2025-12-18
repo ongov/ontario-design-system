@@ -66,6 +66,13 @@ export class OntarioHeaderOverflowMenu {
 	@Prop() menuItems: MenuItem[] | string;
 
 	/**
+	 * Whether this is the last menu in a series of menus.
+	 * If true, Tab from last item goes to next element on page.
+	 * If false, Tab from last item emits focusNextElement for header to handle.
+	 */
+	@Prop() isLastMenu?: boolean = true;
+
+	/**
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
@@ -346,14 +353,22 @@ export class OntarioHeaderOverflowMenu {
 			this.syncIndexAfterTab(focusable);
 		}
 
-		// Handle Tab from last item -> close menu and ask header to focus next element
+		// Handle Tab from last item
 		if (event.key === 'Tab' && !event.shiftKey) {
 			if (focusable.length && shadowActive === focusable[focusable.length - 1]) {
-				event.preventDefault();
-				this.menuIsOpen = false;
-				this.resetState();
-				this.menuClosed.emit();
-				this.focusNextElement.emit();
+				if (this.isLastMenu) {
+					// Last menu: let browser focus next tabbable element
+					this.menuIsOpen = false;
+					this.resetState();
+					this.menuClosed.emit();
+				} else {
+					// Not last menu: emit event to focus next menu button
+					event.preventDefault();
+					this.menuIsOpen = false;
+					this.resetState();
+					this.menuClosed.emit();
+					this.focusNextElement.emit();
+				}
 				return;
 			}
 			this.syncIndexAfterTab(focusable);

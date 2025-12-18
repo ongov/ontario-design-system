@@ -473,6 +473,7 @@ export const OntarioHeaderOverflowMenu: StencilReactComponent<OntarioHeaderOverf
     tagName: 'ontario-header-overflow-menu',
     properties: {
         menuItems: 'menu-items',
+        isLastMenu: 'is-last-menu',
         language: 'language'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),

@@ -674,14 +674,14 @@ Triggered when Shift+Tab is pressed on the first tab.
 }
 
 @ProxyCmp({
-	inputs: ['language', 'menuItems'],
+	inputs: ['isLastMenu', 'language', 'menuItems'],
 })
 @Component({
 	selector: 'ontario-header-overflow-menu',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['language', 'menuItems'],
+	inputs: ['isLastMenu', 'language', 'menuItems'],
 })
 export class OntarioHeaderOverflowMenu {
 	protected el: HTMLOntarioHeaderOverflowMenuElement;
