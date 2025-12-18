@@ -330,14 +330,17 @@ export class OntarioHeaderOverflowMenu {
 
 		const focusable = this.getFocusableElements();
 
-		// Handle Shift+Tab from first item -> ask header to focus button
+		// Handle Shift+Tab from first item -> close menu and focus menu button
 		if (event.key === 'Tab' && event.shiftKey) {
 			if (focusable.length && shadowActive === focusable[0]) {
 				event.preventDefault();
-				this.menuIsOpen = false;
-				this.resetState();
-				this.menuClosed.emit();
 				this.focusMenuButtonEvent.emit();
+				// Use requestAnimationFrame to close menu after focus event is processed
+				requestAnimationFrame(() => {
+					this.menuIsOpen = false;
+					this.resetState();
+					this.menuClosed.emit();
+				});
 				return;
 			}
 			this.syncIndexAfterTab(focusable);
