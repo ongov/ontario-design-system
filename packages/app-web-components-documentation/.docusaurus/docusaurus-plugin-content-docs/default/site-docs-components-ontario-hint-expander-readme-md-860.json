@@ -1,0 +1,23 @@
+{
+	"unversionedId": "components/ontario-hint-expander/readme",
+	"id": "components/ontario-hint-expander/readme",
+	"title": "readme",
+	"description": "Properties",
+	"source": "@site/docs/components/ontario-hint-expander/readme.md",
+	"sourceDirName": "components/ontario-hint-expander",
+	"slug": "/components/ontario-hint-expander/",
+	"permalink": "/developer-docs/components/ontario-hint-expander/",
+	"draft": false,
+	"tags": [],
+	"version": "current",
+	"frontMatter": {},
+	"sidebar": "tutorialSidebar",
+	"previous": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-header/"
+	},
+	"next": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-hint-text/"
+	}
+}

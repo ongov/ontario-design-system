@@ -1,0 +1,23 @@
+{
+	"unversionedId": "components/ontario-input/readme",
+	"id": "components/ontario-input/readme",
+	"title": "readme",
+	"description": "Properties",
+	"source": "@site/docs/components/ontario-input/readme.md",
+	"sourceDirName": "components/ontario-input",
+	"slug": "/components/ontario-input/",
+	"permalink": "/developer-docs/components/ontario-input/",
+	"draft": false,
+	"tags": [],
+	"version": "current",
+	"frontMatter": {},
+	"sidebar": "tutorialSidebar",
+	"previous": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-icon/"
+	},
+	"next": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-language-toggle/"
+	}
+}

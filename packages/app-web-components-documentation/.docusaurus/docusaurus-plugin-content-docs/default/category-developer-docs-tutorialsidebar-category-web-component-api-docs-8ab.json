@@ -1,0 +1,16 @@
+{
+	"title": "Web Component API Docs",
+	"description": "Learn more about each component by following the links on this page or within the sidebar.",
+	"slug": "/category/web-component-api-docs",
+	"permalink": "/developer-docs/category/web-component-api-docs",
+	"navigation": {
+		"previous": {
+			"title": "Complete Styles",
+			"permalink": "/developer-docs/readme-complete-styles"
+		},
+		"next": {
+			"title": "readme",
+			"permalink": "/developer-docs/components/ontario-accordion/"
+		}
+	}
+}

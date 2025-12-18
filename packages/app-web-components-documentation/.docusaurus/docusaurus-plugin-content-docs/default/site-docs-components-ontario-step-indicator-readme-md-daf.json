@@ -1,0 +1,23 @@
+{
+	"unversionedId": "components/ontario-step-indicator/readme",
+	"id": "components/ontario-step-indicator/readme",
+	"title": "readme",
+	"description": "Properties",
+	"source": "@site/docs/components/ontario-step-indicator/readme.md",
+	"sourceDirName": "components/ontario-step-indicator",
+	"slug": "/components/ontario-step-indicator/",
+	"permalink": "/developer-docs/components/ontario-step-indicator/",
+	"draft": false,
+	"tags": [],
+	"version": "current",
+	"frontMatter": {},
+	"sidebar": "tutorialSidebar",
+	"previous": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-search-box/"
+	},
+	"next": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-table/"
+	}
+}

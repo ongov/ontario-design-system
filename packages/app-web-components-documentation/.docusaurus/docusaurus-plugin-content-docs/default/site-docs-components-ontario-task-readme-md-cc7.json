@@ -1,0 +1,23 @@
+{
+	"unversionedId": "components/ontario-task/readme",
+	"id": "components/ontario-task/readme",
+	"title": "readme",
+	"description": "Properties",
+	"source": "@site/docs/components/ontario-task/readme.md",
+	"sourceDirName": "components/ontario-task",
+	"slug": "/components/ontario-task/",
+	"permalink": "/developer-docs/components/ontario-task/",
+	"draft": false,
+	"tags": [],
+	"version": "current",
+	"frontMatter": {},
+	"sidebar": "tutorialSidebar",
+	"previous": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-table/"
+	},
+	"next": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-task-list/"
+	}
+}

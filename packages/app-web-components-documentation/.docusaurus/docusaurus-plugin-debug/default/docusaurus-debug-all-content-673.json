@@ -1,0 +1,1065 @@
+{
+	"docusaurus-plugin-content-docs": {
+		"default": {
+			"loadedVersions": [
+				{
+					"versionName": "current",
+					"label": "Next",
+					"banner": null,
+					"badge": false,
+					"noIndex": false,
+					"className": "docs-version-current",
+					"path": "/developer-docs/",
+					"tagsPath": "/developer-docs/tags",
+					"isLast": true,
+					"routePriority": -1,
+					"sidebarFilePath": "/Users/erincarrieres/Documents/DesignSystem/github-web-components/ods-web-components/packages/app-web-components-documentation/sidebars.js",
+					"contentPath": "/Users/erincarrieres/Documents/DesignSystem/github-web-components/ods-web-components/packages/app-web-components-documentation/docs",
+					"contentPathLocalized": "/Users/erincarrieres/Documents/DesignSystem/github-web-components/ods-web-components/packages/app-web-components-documentation/i18n/en/docusaurus-plugin-content-docs/current",
+					"docs": [
+						{
+							"unversionedId": "components/ontario-accordion/readme",
+							"id": "components/ontario-accordion/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-accordion/readme.md",
+							"sourceDirName": "components/ontario-accordion",
+							"slug": "/components/ontario-accordion/",
+							"permalink": "/developer-docs/components/ontario-accordion/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "Web Component API Docs",
+								"permalink": "/developer-docs/category/web-component-api-docs"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-aside/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-aside/readme",
+							"id": "components/ontario-aside/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-aside/readme.md",
+							"sourceDirName": "components/ontario-aside",
+							"slug": "/components/ontario-aside/",
+							"permalink": "/developer-docs/components/ontario-aside/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-accordion/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-back-to-top/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-back-to-top/readme",
+							"id": "components/ontario-back-to-top/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-back-to-top/readme.md",
+							"sourceDirName": "components/ontario-back-to-top",
+							"slug": "/components/ontario-back-to-top/",
+							"permalink": "/developer-docs/components/ontario-back-to-top/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-aside/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-badge/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-badge/readme",
+							"id": "components/ontario-badge/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-badge/readme.md",
+							"sourceDirName": "components/ontario-badge",
+							"slug": "/components/ontario-badge/",
+							"permalink": "/developer-docs/components/ontario-badge/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-back-to-top/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-blockquote/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-blockquote/readme",
+							"id": "components/ontario-blockquote/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-blockquote/readme.md",
+							"sourceDirName": "components/ontario-blockquote",
+							"slug": "/components/ontario-blockquote/",
+							"permalink": "/developer-docs/components/ontario-blockquote/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-badge/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-button/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-button/readme",
+							"id": "components/ontario-button/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-button/readme.md",
+							"sourceDirName": "components/ontario-button",
+							"slug": "/components/ontario-button/",
+							"permalink": "/developer-docs/components/ontario-button/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-blockquote/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-callout/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-callout/readme",
+							"id": "components/ontario-callout/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-callout/readme.md",
+							"sourceDirName": "components/ontario-callout",
+							"slug": "/components/ontario-callout/",
+							"permalink": "/developer-docs/components/ontario-callout/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-button/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-card/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-card-collection/readme",
+							"id": "components/ontario-card-collection/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-card-collection/readme.md",
+							"sourceDirName": "components/ontario-card-collection",
+							"slug": "/components/ontario-card-collection/",
+							"permalink": "/developer-docs/components/ontario-card-collection/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-card/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-checkbox/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-card/readme",
+							"id": "components/ontario-card/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-card/readme.md",
+							"sourceDirName": "components/ontario-card",
+							"slug": "/components/ontario-card/",
+							"permalink": "/developer-docs/components/ontario-card/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-callout/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-card-collection/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-checkbox/readme",
+							"id": "components/ontario-checkbox/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-checkbox/readme.md",
+							"sourceDirName": "components/ontario-checkbox",
+							"slug": "/components/ontario-checkbox/",
+							"permalink": "/developer-docs/components/ontario-checkbox/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-card-collection/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-critical-alert/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-critical-alert/readme",
+							"id": "components/ontario-critical-alert/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-critical-alert/readme.md",
+							"sourceDirName": "components/ontario-critical-alert",
+							"slug": "/components/ontario-critical-alert/",
+							"permalink": "/developer-docs/components/ontario-critical-alert/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-checkbox/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-date-input/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-date-input/readme",
+							"id": "components/ontario-date-input/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-date-input/readme.md",
+							"sourceDirName": "components/ontario-date-input",
+							"slug": "/components/ontario-date-input/",
+							"permalink": "/developer-docs/components/ontario-date-input/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-critical-alert/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-dropdown-list/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-dropdown-list/readme",
+							"id": "components/ontario-dropdown-list/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-dropdown-list/readme.md",
+							"sourceDirName": "components/ontario-dropdown-list",
+							"slug": "/components/ontario-dropdown-list/",
+							"permalink": "/developer-docs/components/ontario-dropdown-list/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-date-input/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-fieldset/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-fieldset/readme",
+							"id": "components/ontario-fieldset/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-fieldset/readme.md",
+							"sourceDirName": "components/ontario-fieldset",
+							"slug": "/components/ontario-fieldset/",
+							"permalink": "/developer-docs/components/ontario-fieldset/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-dropdown-list/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-footer/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-footer/readme",
+							"id": "components/ontario-footer/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-footer/readme.md",
+							"sourceDirName": "components/ontario-footer",
+							"slug": "/components/ontario-footer/",
+							"permalink": "/developer-docs/components/ontario-footer/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-fieldset/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-header/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-header/readme",
+							"id": "components/ontario-header/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-header/readme.md",
+							"sourceDirName": "components/ontario-header",
+							"slug": "/components/ontario-header/",
+							"permalink": "/developer-docs/components/ontario-header/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-footer/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-hint-expander/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-hint-expander/readme",
+							"id": "components/ontario-hint-expander/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-hint-expander/readme.md",
+							"sourceDirName": "components/ontario-hint-expander",
+							"slug": "/components/ontario-hint-expander/",
+							"permalink": "/developer-docs/components/ontario-hint-expander/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-header/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-hint-text/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-hint-text/readme",
+							"id": "components/ontario-hint-text/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-hint-text/readme.md",
+							"sourceDirName": "components/ontario-hint-text",
+							"slug": "/components/ontario-hint-text/",
+							"permalink": "/developer-docs/components/ontario-hint-text/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-hint-expander/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-icon/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-icon/readme",
+							"id": "components/ontario-icon/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-icon/readme.md",
+							"sourceDirName": "components/ontario-icon",
+							"slug": "/components/ontario-icon/",
+							"permalink": "/developer-docs/components/ontario-icon/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-hint-text/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-input/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-input/readme",
+							"id": "components/ontario-input/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-input/readme.md",
+							"sourceDirName": "components/ontario-input",
+							"slug": "/components/ontario-input/",
+							"permalink": "/developer-docs/components/ontario-input/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-icon/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-language-toggle/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-language-toggle/readme",
+							"id": "components/ontario-language-toggle/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-language-toggle/readme.md",
+							"sourceDirName": "components/ontario-language-toggle",
+							"slug": "/components/ontario-language-toggle/",
+							"permalink": "/developer-docs/components/ontario-language-toggle/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-input/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-loading-indicator/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-loading-indicator/readme",
+							"id": "components/ontario-loading-indicator/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-loading-indicator/readme.md",
+							"sourceDirName": "components/ontario-loading-indicator",
+							"slug": "/components/ontario-loading-indicator/",
+							"permalink": "/developer-docs/components/ontario-loading-indicator/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-language-toggle/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-page-alert/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-page-alert/readme",
+							"id": "components/ontario-page-alert/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-page-alert/readme.md",
+							"sourceDirName": "components/ontario-page-alert",
+							"slug": "/components/ontario-page-alert/",
+							"permalink": "/developer-docs/components/ontario-page-alert/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-loading-indicator/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-radio-buttons/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-radio-buttons/readme",
+							"id": "components/ontario-radio-buttons/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-radio-buttons/readme.md",
+							"sourceDirName": "components/ontario-radio-buttons",
+							"slug": "/components/ontario-radio-buttons/",
+							"permalink": "/developer-docs/components/ontario-radio-buttons/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-page-alert/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-search-box/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-search-box/readme",
+							"id": "components/ontario-search-box/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-search-box/readme.md",
+							"sourceDirName": "components/ontario-search-box",
+							"slug": "/components/ontario-search-box/",
+							"permalink": "/developer-docs/components/ontario-search-box/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-radio-buttons/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-step-indicator/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-step-indicator/readme",
+							"id": "components/ontario-step-indicator/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-step-indicator/readme.md",
+							"sourceDirName": "components/ontario-step-indicator",
+							"slug": "/components/ontario-step-indicator/",
+							"permalink": "/developer-docs/components/ontario-step-indicator/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-search-box/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-table/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-table/readme",
+							"id": "components/ontario-table/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-table/readme.md",
+							"sourceDirName": "components/ontario-table",
+							"slug": "/components/ontario-table/",
+							"permalink": "/developer-docs/components/ontario-table/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-step-indicator/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-task/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-task-list/readme",
+							"id": "components/ontario-task-list/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-task-list/readme.md",
+							"sourceDirName": "components/ontario-task-list",
+							"slug": "/components/ontario-task-list/",
+							"permalink": "/developer-docs/components/ontario-task-list/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-task/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-textarea/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-task/readme",
+							"id": "components/ontario-task/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-task/readme.md",
+							"sourceDirName": "components/ontario-task",
+							"slug": "/components/ontario-task/",
+							"permalink": "/developer-docs/components/ontario-task/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-table/"
+							},
+							"next": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-task-list/"
+							}
+						},
+						{
+							"unversionedId": "components/ontario-textarea/readme",
+							"id": "components/ontario-textarea/readme",
+							"title": "readme",
+							"description": "Properties",
+							"source": "@site/docs/components/ontario-textarea/readme.md",
+							"sourceDirName": "components/ontario-textarea",
+							"slug": "/components/ontario-textarea/",
+							"permalink": "/developer-docs/components/ontario-textarea/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"frontMatter": {},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "readme",
+								"permalink": "/developer-docs/components/ontario-task-list/"
+							}
+						},
+						{
+							"unversionedId": "readme",
+							"id": "readme",
+							"title": "Ontario Design System Component Library",
+							"description": "Built With Stencil",
+							"source": "@site/docs/01-readme.md",
+							"sourceDirName": ".",
+							"slug": "/",
+							"permalink": "/developer-docs/",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"sidebarPosition": 1,
+							"frontMatter": {
+								"slug": "/"
+							},
+							"sidebar": "tutorialSidebar",
+							"next": {
+								"title": "Angular Component Library",
+								"permalink": "/developer-docs/readme-angular"
+							}
+						},
+						{
+							"unversionedId": "readme-angular",
+							"id": "readme-angular",
+							"title": "Angular Component Library",
+							"description": "Built With Stencil",
+							"source": "@site/docs/02-readme-angular.md",
+							"sourceDirName": ".",
+							"slug": "/readme-angular",
+							"permalink": "/developer-docs/readme-angular",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"sidebarPosition": 2,
+							"frontMatter": {
+								"title": "Angular Component Library"
+							},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "Ontario Design System Component Library",
+								"permalink": "/developer-docs/"
+							},
+							"next": {
+								"title": "React Component Library",
+								"permalink": "/developer-docs/readme-react"
+							}
+						},
+						{
+							"unversionedId": "readme-complete-styles",
+							"id": "readme-complete-styles",
+							"title": "Complete Styles",
+							"description": "- Introduction",
+							"source": "@site/docs/06-readme-complete-styles.md",
+							"sourceDirName": ".",
+							"slug": "/readme-complete-styles",
+							"permalink": "/developer-docs/readme-complete-styles",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"sidebarPosition": 6,
+							"frontMatter": {
+								"title": "Complete Styles"
+							},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "Global Styles",
+								"permalink": "/developer-docs/readme-global-styles"
+							},
+							"next": {
+								"title": "Web Component API Docs",
+								"permalink": "/developer-docs/category/web-component-api-docs"
+							}
+						},
+						{
+							"unversionedId": "readme-design-tokens",
+							"id": "readme-design-tokens",
+							"title": "Design Tokens",
+							"description": "- Introduction",
+							"source": "@site/docs/04-readme-design-tokens.md",
+							"sourceDirName": ".",
+							"slug": "/readme-design-tokens",
+							"permalink": "/developer-docs/readme-design-tokens",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"sidebarPosition": 4,
+							"frontMatter": {
+								"title": "Design Tokens"
+							},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "React Component Library",
+								"permalink": "/developer-docs/readme-react"
+							},
+							"next": {
+								"title": "Global Styles",
+								"permalink": "/developer-docs/readme-global-styles"
+							}
+						},
+						{
+							"unversionedId": "readme-global-styles",
+							"id": "readme-global-styles",
+							"title": "Global Styles",
+							"description": "- Introduction",
+							"source": "@site/docs/05-readme-global-styles.md",
+							"sourceDirName": ".",
+							"slug": "/readme-global-styles",
+							"permalink": "/developer-docs/readme-global-styles",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"sidebarPosition": 5,
+							"frontMatter": {
+								"title": "Global Styles"
+							},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "Design Tokens",
+								"permalink": "/developer-docs/readme-design-tokens"
+							},
+							"next": {
+								"title": "Complete Styles",
+								"permalink": "/developer-docs/readme-complete-styles"
+							}
+						},
+						{
+							"unversionedId": "readme-react",
+							"id": "readme-react",
+							"title": "React Component Library",
+							"description": "Built With Stencil",
+							"source": "@site/docs/03-readme-react.md",
+							"sourceDirName": ".",
+							"slug": "/readme-react",
+							"permalink": "/developer-docs/readme-react",
+							"draft": false,
+							"tags": [],
+							"version": "current",
+							"sidebarPosition": 3,
+							"frontMatter": {
+								"title": "React Component Library"
+							},
+							"sidebar": "tutorialSidebar",
+							"previous": {
+								"title": "Angular Component Library",
+								"permalink": "/developer-docs/readme-angular"
+							},
+							"next": {
+								"title": "Design Tokens",
+								"permalink": "/developer-docs/readme-design-tokens"
+							}
+						}
+					],
+					"drafts": [],
+					"sidebars": {
+						"tutorialSidebar": [
+							{
+								"type": "doc",
+								"id": "readme"
+							},
+							{
+								"type": "doc",
+								"id": "readme-angular"
+							},
+							{
+								"type": "doc",
+								"id": "readme-react"
+							},
+							{
+								"type": "doc",
+								"id": "readme-design-tokens"
+							},
+							{
+								"type": "doc",
+								"id": "readme-global-styles"
+							},
+							{
+								"type": "doc",
+								"id": "readme-complete-styles"
+							},
+							{
+								"type": "category",
+								"label": "Web Component API Docs",
+								"collapsible": true,
+								"collapsed": true,
+								"items": [
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-accordion/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-aside/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-back-to-top/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-badge/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-blockquote/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-button/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-callout/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-card/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-card-collection/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-checkbox/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-critical-alert/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-date-input/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-dropdown-list/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-fieldset/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-footer/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-header/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-hint-expander/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-hint-text/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-icon/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-input/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-language-toggle/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-loading-indicator/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-page-alert/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-radio-buttons/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-search-box/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-step-indicator/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-table/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-task/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-task-list/readme"
+									},
+									{
+										"type": "doc",
+										"label": "readme",
+										"id": "components/ontario-textarea/readme"
+									}
+								],
+								"link": {
+									"type": "generated-index",
+									"description": "Learn more about each component by following the links on this page or within the sidebar.",
+									"slug": "/category/web-component-api-docs",
+									"permalink": "/developer-docs/category/web-component-api-docs"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+	"docusaurus-plugin-content-pages": {
+		"default": []
+	},
+	"docusaurus-plugin-debug": {},
+	"docusaurus-plugin-google-tag-manager": {},
+	"docusaurus-theme-classic": {},
+	"docusaurus-theme-mermaid": {},
+	"docusaurus-bootstrap-plugin": {},
+	"docusaurus-mdx-fallback-plugin": {}
+}

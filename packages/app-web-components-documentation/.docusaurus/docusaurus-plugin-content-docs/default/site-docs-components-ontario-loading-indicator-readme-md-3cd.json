@@ -1,0 +1,23 @@
+{
+	"unversionedId": "components/ontario-loading-indicator/readme",
+	"id": "components/ontario-loading-indicator/readme",
+	"title": "readme",
+	"description": "Properties",
+	"source": "@site/docs/components/ontario-loading-indicator/readme.md",
+	"sourceDirName": "components/ontario-loading-indicator",
+	"slug": "/components/ontario-loading-indicator/",
+	"permalink": "/developer-docs/components/ontario-loading-indicator/",
+	"draft": false,
+	"tags": [],
+	"version": "current",
+	"frontMatter": {},
+	"sidebar": "tutorialSidebar",
+	"previous": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-language-toggle/"
+	},
+	"next": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-page-alert/"
+	}
+}

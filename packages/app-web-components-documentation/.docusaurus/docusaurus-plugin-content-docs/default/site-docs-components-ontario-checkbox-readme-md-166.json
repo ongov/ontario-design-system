@@ -1,0 +1,23 @@
+{
+	"unversionedId": "components/ontario-checkbox/readme",
+	"id": "components/ontario-checkbox/readme",
+	"title": "readme",
+	"description": "Properties",
+	"source": "@site/docs/components/ontario-checkbox/readme.md",
+	"sourceDirName": "components/ontario-checkbox",
+	"slug": "/components/ontario-checkbox/",
+	"permalink": "/developer-docs/components/ontario-checkbox/",
+	"draft": false,
+	"tags": [],
+	"version": "current",
+	"frontMatter": {},
+	"sidebar": "tutorialSidebar",
+	"previous": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-card-collection/"
+	},
+	"next": {
+		"title": "readme",
+		"permalink": "/developer-docs/components/ontario-critical-alert/"
+	}
+}
