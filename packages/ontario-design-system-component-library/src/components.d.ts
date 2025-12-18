@@ -2641,6 +2641,7 @@ declare global {
     interface HTMLOntarioHeaderMenuTabsElementEventMap {
         "takeOwnership": { panelId: string | null };
         "focusFirstItem": void;
+        "focusMenuButton": void;
     }
     /**
      * Ontario Header Menu Tabs Component
@@ -2666,6 +2667,7 @@ declare global {
         "menuClosed": void;
         "endOfMenuReached": void;
         "focusMenuButton": void;
+        "focusNextElement": void;
         "menuButtonTabPressed": void;
     }
     /**
@@ -4280,6 +4282,10 @@ declare namespace LocalJSX {
          */
         "onFocusFirstItem"?: (event: OntarioHeaderMenuTabsCustomEvent<void>) => void;
         /**
+          * Event emitted to request header to focus the menu button. Triggered when Shift+Tab is pressed on the first tab.
+         */
+        "onFocusMenuButton"?: (event: OntarioHeaderMenuTabsCustomEvent<void>) => void;
+        /**
           * Event emitted when ownership handoff is triggered in auto-detect mode.
          */
         "onTakeOwnership"?: (event: OntarioHeaderMenuTabsCustomEvent<{ panelId: string | null }>) => void;
@@ -4330,6 +4336,10 @@ declare namespace LocalJSX {
           * Event emitted when Shift+Tab is pressed on first menu item. Tells the header to focus the menu button.
          */
         "onFocusMenuButton"?: (event: OntarioHeaderOverflowMenuCustomEvent<void>) => void;
+        /**
+          * Event emitted when Tab is pressed on the last menu item in standalone mode. Tells the header to focus the next appropriate element.
+         */
+        "onFocusNextElement"?: (event: OntarioHeaderOverflowMenuCustomEvent<void>) => void;
         /**
           * Event emitted when user Tabs from the menu button. Asks if menu is open and ready to receive focus.
          */

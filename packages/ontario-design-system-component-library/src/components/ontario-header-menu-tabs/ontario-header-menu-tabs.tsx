@@ -92,6 +92,13 @@ export class OntarioHeaderMenuTabs {
 	@Event({ eventName: 'focusFirstItem', bubbles: true, composed: true })
 	focusFirstItem!: EventEmitter<void>;
 
+	/**
+	 * Event emitted to request header to focus the menu button.
+	 * Triggered when Shift+Tab is pressed on the first tab.
+	 */
+	@Event({ eventName: 'focusMenuButton', bubbles: true, composed: true })
+	focusMenuButton!: EventEmitter<void>;
+
 	/* ===========================
         Lifecycle
     =========================== */
@@ -184,10 +191,36 @@ export class OntarioHeaderMenuTabs {
 		// Tab switching with Left/Right arrows
 		if (this.handleTabSwitching(event)) return;
 
-		// Arrow Down from tab button to first menu item
-		if (event.key === 'ArrowDown' && this.isFocusOnTab()) {
+		const isFocusedOnTab = this.isFocusOnTab();
+
+		// Handle Shift+Tab on tabs
+		if (event.key === 'Tab' && event.shiftKey && isFocusedOnTab) {
 			event.preventDefault();
-			event.stopPropagation(); // Prevent overflow menu from handling this event
+			event.stopPropagation();
+
+			if (this.activeTab === 0) {
+				// First tab -> focus menu button
+				this.focusMenuButton.emit();
+			} else {
+				// Second tab -> focus first tab
+				this.activeTab = 0;
+				this.focusTab(0);
+			}
+			return;
+		}
+
+		// Tab from tab button to first menu item
+		if (event.key === 'Tab' && !event.shiftKey && isFocusedOnTab) {
+			event.preventDefault();
+			event.stopPropagation();
+			this.moveToFirstMenuItem();
+			return;
+		}
+
+		// Arrow Down from tab button to first menu item
+		if (event.key === 'ArrowDown' && isFocusedOnTab) {
+			event.preventDefault();
+			event.stopPropagation();
 			this.moveToFirstMenuItem();
 			return;
 		}

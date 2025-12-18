@@ -566,6 +566,16 @@ export class OntarioHeader {
 	}
 
 	/**
+	 * Handle the focus for the next element in the header once overflow menu is closed
+	 */
+	@Listen('focusNextElement', { target: 'window' })
+	handleFocusNextElement() {
+		if (this.menuButton) {
+			this.menuButton.focus();
+		}
+	}
+
+	/**
 	 * Call to Ontario Menu API to fetch linksets to populate header component
 	 */
 	async fetchOntarioMenu() {

@@ -653,7 +653,7 @@ export class OntarioHeaderMenuTabs {
 	) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['takeOwnership', 'focusFirstItem']);
+		proxyOutputs(this, this.el, ['takeOwnership', 'focusFirstItem', 'focusMenuButton']);
 	}
 }
 
@@ -666,6 +666,11 @@ export declare interface OntarioHeaderMenuTabs extends Components.OntarioHeaderM
 	 * Event emitted to request overflow menu to focus its first item.
 	 */
 	focusFirstItem: EventEmitter<CustomEvent<void>>;
+	/**
+   * Event emitted to request header to focus the menu button.
+Triggered when Shift+Tab is pressed on the first tab.
+   */
+	focusMenuButton: EventEmitter<CustomEvent<void>>;
 }
 
 @ProxyCmp({
@@ -687,7 +692,13 @@ export class OntarioHeaderOverflowMenu {
 	) {
 		c.detach();
 		this.el = r.nativeElement;
-		proxyOutputs(this, this.el, ['menuClosed', 'endOfMenuReached', 'focusMenuButton', 'menuButtonTabPressed']);
+		proxyOutputs(this, this.el, [
+			'menuClosed',
+			'endOfMenuReached',
+			'focusMenuButton',
+			'focusNextElement',
+			'menuButtonTabPressed',
+		]);
 	}
 }
 
@@ -705,6 +716,11 @@ export declare interface OntarioHeaderOverflowMenu extends Components.OntarioHea
 Tells the header to focus the menu button.
    */
 	focusMenuButton: EventEmitter<CustomEvent<void>>;
+	/**
+   * Event emitted when Tab is pressed on the last menu item in standalone mode.
+Tells the header to focus the next appropriate element.
+   */
+	focusNextElement: EventEmitter<CustomEvent<void>>;
 	/**
    * Event emitted when user Tabs from the menu button.
 Asks if menu is open and ready to receive focus.

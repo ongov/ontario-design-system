@@ -445,7 +445,8 @@ export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioH
 
 export type OntarioHeaderMenuTabsEvents = {
     onTakeOwnership: EventName<CustomEvent<{ panelId: string | null }>>,
-    onFocusFirstItem: EventName<CustomEvent<void>>
+    onFocusFirstItem: EventName<CustomEvent<void>>,
+    onFocusMenuButton: EventName<CustomEvent<void>>
 };
 
 export const OntarioHeaderMenuTabs: StencilReactComponent<OntarioHeaderMenuTabsElement, OntarioHeaderMenuTabsEvents> = /*@__PURE__*/ createComponent<OntarioHeaderMenuTabsElement, OntarioHeaderMenuTabsEvents>({
@@ -464,6 +465,7 @@ export type OntarioHeaderOverflowMenuEvents = {
     onMenuClosed: EventName<CustomEvent<void>>,
     onEndOfMenuReached: EventName<CustomEvent<void>>,
     onFocusMenuButton: EventName<CustomEvent<void>>,
+    onFocusNextElement: EventName<CustomEvent<void>>,
     onMenuButtonTabPressed: EventName<CustomEvent<void>>
 };
 

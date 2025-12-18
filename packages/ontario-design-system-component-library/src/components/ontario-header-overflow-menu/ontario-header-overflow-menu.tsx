@@ -160,6 +160,13 @@ export class OntarioHeaderOverflowMenu {
 	focusMenuButtonEvent!: EventEmitter<void>;
 
 	/**
+	 * Event emitted when Tab is pressed on the last menu item in standalone mode.
+	 * Tells the header to focus the next appropriate element.
+	 */
+	@Event({ eventName: 'focusNextElement', bubbles: true, composed: true })
+	focusNextElement!: EventEmitter<void>;
+
+	/**
 	 * Event emitted when user Tabs from the menu button.
 	 * Asks if menu is open and ready to receive focus.
 	 */
@@ -271,12 +278,25 @@ export class OntarioHeaderOverflowMenu {
 
 		if (!focusInThisMenu) return;
 
+		const focusable = this.getFocusableElements();
+
 		// Handle Shift+Tab from first item -> ask header to focus button
 		if (event.key === 'Tab' && event.shiftKey) {
-			const focusable = this.getFocusableElements();
 			if (focusable.length && shadowActive === focusable[0]) {
 				event.preventDefault();
 				this.focusMenuButtonEvent.emit();
+				return;
+			}
+		}
+
+		// Handle Tab from last item -> close menu and ask header to focus next element
+		if (event.key === 'Tab' && !event.shiftKey) {
+			if (focusable.length && shadowActive === focusable[focusable.length - 1]) {
+				event.preventDefault();
+				this.menuIsOpen = false;
+				this.resetState();
+				this.menuClosed.emit();
+				this.focusNextElement.emit();
 				return;
 			}
 		}
@@ -297,6 +317,16 @@ export class OntarioHeaderOverflowMenu {
 
 		if (!focusInThisMenu) return;
 
+		// Update currentIndex when Tab is used to navigate
+		if (event.key === 'Tab') {
+			const focusable = this.getFocusableElements();
+			const currentElement = shadowActive || domActive;
+			const focusedIndex = focusable.findIndex((el) => el === currentElement || el.contains(currentElement as Node));
+			if (focusedIndex !== -1) {
+				this.currentIndex = focusedIndex;
+			}
+		}
+
 		// Emit event when Tab from last item
 		if (event.key === 'Tab' && !event.shiftKey) {
 			const focusable = this.getFocusableElements();
@@ -311,6 +341,7 @@ export class OntarioHeaderOverflowMenu {
 			}
 
 			if (currentIndex === focusable.length - 1) {
+				event.preventDefault();
 				this.endOfMenuReached.emit();
 			}
 		}
@@ -484,7 +515,7 @@ export class OntarioHeaderOverflowMenu {
 												<span class="ontario-menu-item__label">{titleText}</span>
 											</span>
 										) : hasDescription ? (
-											<span>
+											<span class="ontario-menu-item__text-container">
 												<span class="ontario-menu-item__title">{titleText}</span>
 												{descriptionText && <span class="ontario-menu-item__description">{descriptionText}</span>}
 											</span>
