@@ -21,7 +21,7 @@ describe('ontario-task', () => {
 														<div class="ontario-task__text">
 															<h3 class="ontario-task__label" id="task-label--task-1"></h3>
 														</div>
-														<ontario-badge aria-label="Task Status: Not Started (notStarted)" class="ontario-task__badge" colour="lightTeal" role="status">
+														<ontario-badge aria-label="Task Status: Not Started (notStarted)" class="ontario-task__badge" colour="light-teal" role="status">
 																	Not Started
 															</ontario-badge>
 													</div>

@@ -231,12 +231,15 @@ $ontario-icon-size--social-small: 32px;
 	}
 }
 
+// Use CSS variable for optional background override.
+// Default to `none`, since the actual image is set via component logic.
+// Avoid using `url("")`, which triggers build warnings.
 .ontario-footer--default:before {
-	background-image: var(--imagePath, url(''));
+	background-image: var(--imagePath, none);
 }
 
 .ontario-footer__expanded-top-section:before {
-	background-image: var(--imagePath, url(''));
+	background-image: var(--imagePath, none);
 }
 
 //////////////////////////
