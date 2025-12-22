@@ -1,4 +1,6 @@
 import { OntarioHintExpander } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-hint-expander
 
@@ -19,13 +21,62 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of a bare-bones hint expander component where the user is passing the `hint` that will be displayed as the question/statement. The`content` is what is displayed once the hint expander is expanded.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-hint-expander hint="This is the hint" content="This is the content"></ontario-hint-expander>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioHintExpander hint="This is the hint" content="This is the content"></OntarioHintExpander>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-hint-expander [hint]="'This is the hint'" [content]="'This is the content'"></ontario-hint-expander>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <OntarioHintExpander hint="This is the hint" content="This is the content"></OntarioHintExpander>
 
 Example of a hint expander that includes an `element-id` property - this is used to establish a relationship between hint text content and elements using the `aria-describedby` attribute.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-hint-expander
@@ -35,11 +86,42 @@ Example of a hint expander that includes an `element-id` property - this is used
 ></ontario-hint-expander>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioHintExpander
+	hint="This is the hint"
+	content="This is the content"
+	elementId="expander-82913"
+></OntarioHintExpander>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-hint-expander
+	[hint]="'This is the hint'"
+	[content]="'This is the content'"
+	[elementId]="'expander-82913'"
+></ontario-hint-expander>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
   <OntarioHintExpander
     hint="This is the hint"
     content="This is the content"
-    element-id="expander-82913">
+    elementId="expander-82913">
   </OntarioHintExpander>
 </div>
 
@@ -74,8 +156,8 @@ While both approaches work in the browser, only the `content` prop is reliably r
 
 During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the hint expander content through the `content` prop. Eg:
 
-```html
-<ontario-hint-expander hint="What is this?" content="Here is the expanded explanation."></ontario-hint-expander>
+```tsx
+<OntarioHintExpander hint="What is this?" content="Here is the expanded explanation."></OntarioHintExpander>
 ```
 
 <!-- Auto Generated Below -->

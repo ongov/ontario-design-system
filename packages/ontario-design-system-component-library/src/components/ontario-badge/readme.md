@@ -1,4 +1,6 @@
 import { OntarioBadge } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-badge
 
@@ -18,8 +20,44 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of a badge component, where the user is explicitly passing in content through the `label` property.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-badge label="Not started"></ontario-badge>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioBadge label="Not started"></OntarioBadge>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-badge [label]="'Not started'"></ontario-badge>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <div>
@@ -30,13 +68,49 @@ Example of a badge component, where the user is explicitly passing in content th
 
 This is another example of a badge. This time, the content is passed as a child of the `ontario-badge` component. A `colour` option is also passed.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
-<ontario-badge colour="lightTeal">Completed</ontario-badge>
+<ontario-badge colour="light-teal">Completed</ontario-badge>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioBadge colour="lightTeal">Completed</OntarioBadge>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-badge [colour]="'lightTeal'">Completed</ontario-badge>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <div>
 	<OntarioBadge
-		colour="lightTeal"
+		colour="light-teal"
 	>
 		Completed
 	</OntarioBadge>
@@ -55,19 +129,19 @@ While both approaches work in the browser, only the `label` prop is reliably ren
 
 During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the badge label through the `label` prop.
 
-```html
-<ontario-badge label="In progress"></ontario-badge>
+```tsx
+<OntarioBadge label="In progress"></OntarioBadge>
 ```
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property        | Attribute         | Description                                                                                                               | Type                                                                                                  | Default     |
-| --------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------- |
-| `ariaLabelText` | `aria-label-text` | An aria label for screen readers. Used to provide more context to screen readers if necessary. This property is optional. | `string \| undefined`                                                                                 | `undefined` |
-| `colour`        | `colour`          | The colour of the badge.                                                                                                  | `"black" \| "darkGrey" \| "green" \| "grey" \| "lightTeal" \| "red" \| "teal" \| "white" \| "yellow"` | `'teal'`    |
-| `label`         | `label`           | The label for the badge. Offical guidance is to keep the label length within 15 characters.                               | `string`                                                                                              | `undefined` |
+| Property        | Attribute         | Description                                                                                                               | Type                                                                                                    | Default     |
+| --------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------- |
+| `ariaLabelText` | `aria-label-text` | An aria label for screen readers. Used to provide more context to screen readers if necessary. This property is optional. | `string \| undefined`                                                                                   | `undefined` |
+| `colour`        | `colour`          | The colour of the badge.                                                                                                  | `"black" \| "dark-grey" \| "green" \| "grey" \| "light-teal" \| "red" \| "teal" \| "white" \| "yellow"` | `'teal'`    |
+| `label`         | `label`           | The label for the badge. Offical guidance is to keep the label length within 15 characters.                               | `string`                                                                                                | `undefined` |
 
 ## Dependencies
 

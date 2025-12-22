@@ -1,4 +1,6 @@
 import { OntarioFooter } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # ontario-footer
@@ -22,6 +24,19 @@ Once the component package has been installed (see Ontario Design System Compone
 Note that the sample `footer-links` for the following examples are the same. Users should be mindful to update links (most notably, the `contactLink`) based on the application that is being developed.
 
 Example of a simple (`default` type) footer component.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-footer
@@ -47,34 +62,76 @@ Example of a simple (`default` type) footer component.
 ></ontario-footer>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioFooter
+	type="default"
+	footerLinks={{
+		accessibilityLink: { text: 'Accessibility', href: 'https://www.ontario.ca/page/accessibility' },
+		privacyLink: { text: 'Privacy', href: 'https://www.ontario.ca/page/privacy-statement' },
+		contactLink: { text: 'Contact', href: 'https://www.ontario.ca/feedback/contact-us' },
+		printerLink: { text: 'Printer', href: 'https://www.ontario.ca/page/copyright-information' },
+	}}
+	assetBasePath={useBaseUrl('/assets')}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-footer
+	[type]="'default'"
+	[footerLinks]="{
+		accessibilityLink: { text: 'Accessibility', href: 'https://www.ontario.ca/page/accessibility' },
+		privacyLink: { text: 'Privacy', href: 'https://www.ontario.ca/page/privacy-statement' },
+		contactLink: { text: 'Contact', href: 'https://www.ontario.ca/feedback/contact-us' },
+		printerLink: { text: 'Printer', href: 'https://www.ontario.ca/page/copyright-information' }
+	}"
+	[assetBasePath]="'/assets'"
+></ontario-footer>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 ### Simple (`default` type) footer
 
 <div>
 	<OntarioFooter
 		type="default"
-		footer-links='{
-			"accessibilityLink": {
-				"text": "Accessibility",
-				"href": "https://www.ontario.ca/page/accessibility"
-			},
-			"privacyLink": {
-				"text": "Privacy",
-				"href": "https://www.ontario.ca/page/privacy-statement"
-			},
-			"contactLink": {
-				"text": "Contact",
-				"href": "https://www.ontario.ca/feedback/contact-us"
-			},
-			"printerLink": {
-				"text": "Printer",
-				"href": "https://www.ontario.ca/page/copyright-information"
-			}
-		}'
-		asset-base-path={useBaseUrl('/assets')}> 
+		footerLinks={{
+			accessibilityLink: { text: 'Accessibility', href: 'https://www.ontario.ca/page/accessibility' },
+			privacyLink: { text: 'Privacy', href: 'https://www.ontario.ca/page/privacy-statement' },
+			contactLink: { text: 'Contact', href: 'https://www.ontario.ca/feedback/contact-us' },
+			printerLink: { text: 'Printer', href: 'https://www.ontario.ca/page/copyright-information' },
+		}}
+		assetBasePath={useBaseUrl('/assets')}>
 	</OntarioFooter>
 </div>
 
 Example of an expanded footer with two columns (`twoColumn` type).
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-footer
@@ -128,62 +185,166 @@ Example of an expanded footer with two columns (`twoColumn` type).
 ></ontario-footer>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioFooter
+	type="twoColumn"
+	topMargin={false}
+	footerLinks={{
+		accessibilityLink: { text: 'Accessibility', href: 'https://www.ontario.ca/page/accessibility' },
+		privacyLink: { href: 'https://www.ontario.ca/page/privacy-statement' },
+		contactLink: { text: 'Contact', href: 'https://www.ontario.ca/feedback/contact-us' },
+		printerLink: { href: 'https://www.ontario.ca/page/copyright-information' },
+	}}
+	twoColumnOptions={{
+		column1: {
+			title: 'Ontario Design System',
+			content: [
+				{
+					type: 'text',
+					text: 'The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services.',
+				},
+				{
+					type: 'list',
+					heading: 'Latest release',
+					list: ['Built on: June 3, 2022', 'Distribution package version 0.12.10'],
+				},
+			],
+		},
+		column2: {
+			title: 'Help us improve the design system',
+			content: [
+				{
+					type: 'html',
+					html: "You can check our <a href=#>help and feedback page</a> if you don't see the component you need.",
+				},
+			],
+			button: {
+				text: 'Send us an email',
+				link: '#',
+			},
+		},
+	}}
+	assetBasePath={useBaseUrl('/assets')}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-footer
+	[type]="'twoColumn'"
+	[topMargin]="false"
+	[footerLinks]="{
+		accessibilityLink: { text: 'Accessibility', href: 'https://www.ontario.ca/page/accessibility' },
+		privacyLink: { href: 'https://www.ontario.ca/page/privacy-statement' },
+		contactLink: { text: 'Contact', href: 'https://www.ontario.ca/feedback/contact-us' },
+		printerLink: { href: 'https://www.ontario.ca/page/copyright-information' }
+	}"
+	[twoColumnOptions]="{
+		column1: {
+			title: 'Ontario Design System',
+			content: [
+				{
+					type: 'text',
+					text: 'The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services.'
+				},
+				{
+					type: 'list',
+					heading: 'Latest release',
+					list: ['Built on: June 3, 2022', 'Distribution package version 0.12.10']
+				}
+			]
+		},
+		column2: {
+			title: 'Help us improve the design system',
+			content: [
+				{
+					type: 'html',
+					html: \"You can check our <a href=#>help and feedback page</a> if you don't see the component you need.\"
+				}
+			],
+			button: {
+				text: 'Send us an email',
+				link: '#'
+			}
+		}
+	}"
+	[assetBasePath]="'/assets'"
+></ontario-footer>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 ### Expanded footer (two columns)
 
 <div>
 	<OntarioFooter
 		type="twoColumn"
-		top-margin="false"
-		footer-links='{
-			"accessibilityLink": {
-				"text": "Accessibility",
-				"href": "https://www.ontario.ca/page/accessibility"
-			},
-			"privacyLink": {
-				"href": "https://www.ontario.ca/page/privacy-statement"
-			},
-			"contactLink": {
-				"text": "Contact",
-				"href": "https://www.ontario.ca/feedback/contact-us"
-			},
-			"printerLink": {
-				"href": "https://www.ontario.ca/page/copyright-information"
-			}
-		}'
-		two-column-options='{
-			"column1": {
-				"title": "Ontario Design System",
-				"content": [
+		topMargin={false}
+		footerLinks={{
+			accessibilityLink: { text: 'Accessibility', href: 'https://www.ontario.ca/page/accessibility' },
+			privacyLink: { href: 'https://www.ontario.ca/page/privacy-statement' },
+			contactLink: { text: 'Contact', href: 'https://www.ontario.ca/feedback/contact-us' },
+			printerLink: { href: 'https://www.ontario.ca/page/copyright-information' },
+		}}
+		twoColumnOptions={{
+			column1: {
+				title: 'Ontario Design System',
+				content: [
 					{
-						"type": "text",
-						"text": "The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services."
+						type: 'text',
+						text: 'The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services.',
 					},
 					{
-						"type": "list",
-						"heading": "Latest release",
-						"list": ["Built on: June 3, 2022", "Distribution package version 0.12.10"]
-					}
-				]
-			},
-			"column2": {
-				"title": "Help us improve the design system",
-				"content": [
-					{
-						"type": "html",
-						"html": "You can check our <a href=#>help and feedback page</a> if you don&#8217;t see the component you need."
-					}
+						type: 'list',
+						heading: 'Latest release',
+						list: ['Built on: June 3, 2022', 'Distribution package version 0.12.10'],
+					},
 				],
-				"button": {
-					"text": "Send us an email",
-					"link": "#"
-				}
-			}
-		}'
-		asset-base-path={useBaseUrl('/assets')}> 
+			},
+			column2: {
+				title: 'Help us improve the design system',
+				content: [
+					{
+						type: 'html',
+						html: "You can check our <a href=#>help and feedback page</a> if you don't see the component you need.",
+					},
+				],
+				button: {
+					text: 'Send us an email',
+					link: '#',
+				},
+			},
+		}}
+		assetBasePath={useBaseUrl('/assets')}>
 	</OntarioFooter>
 </div>
 
 Example of an expanded footer with three columns (`threeColumn` type).
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-footer
@@ -228,7 +389,7 @@ Example of an expanded footer with three columns (`threeColumn` type).
 			"content": [
 				{
 					"type": "html",
-					"html": "You can check our <a href=#>help and feedback page</a> if you don&#8217;t see the component you need."
+					"html": "You can check our <a href=#>help and feedback page</a> if you don't see the component you need."
 				}
 			]
 		}
@@ -236,61 +397,163 @@ Example of an expanded footer with three columns (`threeColumn` type).
 ></ontario-footer>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioFooter
+	type="threeColumn"
+	footerLinks={{
+		accessibilityLink: { text: 'Accessibility', href: 'https://www.ontario.ca/page/accessibility' },
+		privacyLink: { href: 'https://www.ontario.ca/page/privacy-statement' },
+		contactLink: { text: 'Contact', href: 'https://www.ontario.ca/feedback/contact-us' },
+		printerLink: { href: 'https://www.ontario.ca/page/copyright-information' },
+	}}
+	threeColumnOptions={{
+		column1: {
+			title: 'Ontario Design System',
+			content: [
+				{
+					type: 'text',
+					text: 'The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services.',
+				},
+			],
+		},
+		column2: {
+			title: 'Latest release',
+			content: [
+				{
+					type: 'list',
+					list: ['Built on: June 3, 2022', 'Distribution package version 0.12.10'],
+				},
+			],
+		},
+		column3: {
+			title: 'Help us improve the design system',
+			content: [
+				{
+					type: 'html',
+					html: "You can check our <a href=#>help and feedback page</a> if you don't see the component you need.",
+				},
+			],
+		},
+	}}
+	assetBasePath={useBaseUrl('/assets')}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-footer
+	[type]="'threeColumn'"
+	[footerLinks]="{
+		accessibilityLink: { text: 'Accessibility', href: 'https://www.ontario.ca/page/accessibility' },
+		privacyLink: { href: 'https://www.ontario.ca/page/privacy-statement' },
+		contactLink: { text: 'Contact', href: 'https://www.ontario.ca/feedback/contact-us' },
+		printerLink: { href: 'https://www.ontario.ca/page/copyright-information' }
+	}"
+	[threeColumnOptions]="{
+		column1: {
+			title: 'Ontario Design System',
+			content: [
+				{
+					type: 'text',
+					text: 'The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services.'
+				}
+			]
+		},
+		column2: {
+			title: 'Latest release',
+			content: [
+				{
+					type: 'list',
+					list: ['Built on: June 3, 2022', 'Distribution package version 0.12.10']
+				}
+			]
+		},
+		column3: {
+			title: 'Help us improve the design system',
+			content: [
+				{
+					type: 'html',
+					html: \"You can check our <a href=#>help and feedback page</a> if you don't see the component you need.\"
+				}
+			]
+		}
+	}"
+	[assetBasePath]="'/assets'"
+></ontario-footer>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 ### Expanded footer(3 columns)
 
 <div>
 	<OntarioFooter
 		type="threeColumn"
-		footer-links='{
-			"accessibilityLink": {
-				"text": "Accessibility",
-				"href": "https://www.ontario.ca/page/accessibility"
-			},
-			"privacyLink": {
-				"href": "https://www.ontario.ca/page/privacy-statement"
-			},
-			"contactLink": {
-				"text": "Contact",
-				"href": "https://www.ontario.ca/feedback/contact-us"
-			},
-			"printerLink": {
-				"href": "https://www.ontario.ca/page/copyright-information"
-			}
-		}'
-		three-column-options='{
-			"column1": {
-				"title": "Ontario Design System",
-				"content": [
+		footerLinks={{
+			accessibilityLink: { text: 'Accessibility', href: 'https://www.ontario.ca/page/accessibility' },
+			privacyLink: { href: 'https://www.ontario.ca/page/privacy-statement' },
+			contactLink: { text: 'Contact', href: 'https://www.ontario.ca/feedback/contact-us' },
+			printerLink: { href: 'https://www.ontario.ca/page/copyright-information' },
+		}}
+		threeColumnOptions={{
+			column1: {
+				title: 'Ontario Design System',
+				content: [
 					{
-						"type": "text",
-						"text": "The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services."
-					}
-				]
+						type: 'text',
+						text: 'The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services.',
+					},
+				],
 			},
-			"column2": {
-				"title": "Latest release",
-				"content": [
+			column2: {
+				title: 'Latest release',
+				content: [
 					{
-						"type": "list",
-						"list": ["Built on: June 3, 2022", "Distribution package version 0.12.10"]
-					}
-				]
+						type: 'list',
+						list: ['Built on: June 3, 2022', 'Distribution package version 0.12.10'],
+					},
+				],
 			},
-			"column3": {
-				"title": "Help us improve the design system",
-				"content": [
+			column3: {
+				title: 'Help us improve the design system',
+				content: [
 					{
-						"type": "html",
-						"html": "You can check our <a href=#>help and feedback page</a> if you don&#8217;t see the component you need."
-					}
-				]
-			}
-		}'
-		asset-base-path={useBaseUrl('/assets')}>
+						type: 'html',
+						html: "You can check our <a href=#>help and feedback page</a> if you don't see the component you need.",
+					},
+				],
+			},
+		}}
+		assetBasePath={useBaseUrl('/assets')}>
 	</OntarioFooter>
 </div>
 
 Example of footer with social media links, only `twoColumn` and `threeColumn` footer types support social media link.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-footer
@@ -341,7 +604,7 @@ Example of footer with social media links, only `twoColumn` and `threeColumn` fo
 			"content": [
 				{
 					"type": "html",
-					"html": "You can check our <a href=#>help and feedback page</a> if you don&#8217;t see the component you need."
+					"html": "You can check our <a href=#>help and feedback page</a> if you don't see the component you need."
 				}
 			],
 			"button": {
@@ -353,67 +616,176 @@ Example of footer with social media links, only `twoColumn` and `threeColumn` fo
 ></ontario-footer>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioFooter
+	type="threeColumn"
+	footerLinks={{
+		accessibilityLink: { text: 'Accessibility', href: 'https://www.ontario.ca/page/accessibility' },
+		privacyLink: { href: 'https://www.ontario.ca/page/privacy-statement' },
+		contactLink: { text: 'Contact', href: 'https://www.ontario.ca/feedback/contact-us' },
+		printerLink: { href: 'https://www.ontario.ca/page/copyright-information' },
+	}}
+	socialLinks={{
+		facebook: 'https://www.facebook.com/ONgov',
+		instagram: 'https://www.instagram.com/ongov',
+		twitter: 'https://twitter.com/ONgov',
+		youtube: 'https://www.youtube.com/ongov',
+	}}
+	threeColumnOptions={{
+		column1: {
+			title: 'Ontario Design System',
+			content: [
+				{
+					type: 'text',
+					text: 'The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services.',
+				},
+			],
+		},
+		column2: {
+			title: 'Latest release',
+			content: [
+				{
+					type: 'list',
+					list: ['Built on: June 3, 2022', 'Distribution package version 0.12.10'],
+				},
+			],
+		},
+		column3: {
+			title: 'Help us improve the design system',
+			content: [
+				{
+					type: 'html',
+					html: 'You can check our <a href=#>help and feedback page</a> if you don’t see the component you need.',
+				},
+			],
+			button: {
+				text: 'Send us an email',
+				link: '#',
+			},
+		},
+	}}
+	assetBasePath={useBaseUrl('/assets')}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-footer
+	[type]="'threeColumn'"
+	[footerLinks]="{
+		accessibilityLink: { text: 'Accessibility', href: 'https://www.ontario.ca/page/accessibility' },
+		privacyLink: { href: 'https://www.ontario.ca/page/privacy-statement' },
+		contactLink: { text: 'Contact', href: 'https://www.ontario.ca/feedback/contact-us' },
+		printerLink: { href: 'https://www.ontario.ca/page/copyright-information' }
+	}"
+	[socialLinks]="{
+		facebook: 'https://www.facebook.com/ONgov',
+		instagram: 'https://www.instagram.com/ongov',
+		twitter: 'https://twitter.com/ONgov',
+		youtube: 'https://www.youtube.com/ongov'
+	}"
+	[threeColumnOptions]="{
+		column1: {
+			title: 'Ontario Design System',
+			content: [
+				{
+					type: 'text',
+					text: 'The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services.'
+				}
+			]
+		},
+		column2: {
+			title: 'Latest release',
+			content: [
+				{
+					type: 'list',
+					list: ['Built on: June 3, 2022', 'Distribution package version 0.12.10']
+				}
+			]
+		},
+		column3: {
+			title: 'Help us improve the design system',
+			content: [
+				{
+					type: 'html',
+					html: \"You can check our <a href=#>help and feedback page</a> if you don’t see the component you need.\"
+				}
+			],
+			button: {
+				text: 'Send us an email',
+				link: '#'
+			}
+		}
+	}"
+	[assetBasePath]="'/assets'"
+></ontario-footer>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 ### Footer with social media links
 
 <div>
 	<OntarioFooter
 		type="threeColumn"
-		footer-links='{
-			"accessibilityLink": {
-				"text": "Accessibility",
-				"href": "https://www.ontario.ca/page/accessibility"
-			},
-			"privacyLink": {
-				"href": "https://www.ontario.ca/page/privacy-statement"
-			},
-			"contactLink": {
-				"text": "Contact",
-				"href": "https://www.ontario.ca/feedback/contact-us"
-			},
-			"printerLink": {
-				"href": "https://www.ontario.ca/page/copyright-information"
-			}
-		}'
-		social-links='{
-			"facebook": "https://www.facebook.com/ONgov",
-			"instagram": "https://www.instagram.com/ongov",
-			"twitter": "https://twitter.com/ONgov",
-			"youtube": "https://www.youtube.com/ongov"
-		}'
-		three-column-options='{
-			"column1": {
-				"title": "Ontario Design System",
-				"content": [
+		footerLinks={{
+			accessibilityLink: { text: 'Accessibility', href: 'https://www.ontario.ca/page/accessibility' },
+			privacyLink: { href: 'https://www.ontario.ca/page/privacy-statement' },
+			contactLink: { text: 'Contact', href: 'https://www.ontario.ca/feedback/contact-us' },
+			printerLink: { href: 'https://www.ontario.ca/page/copyright-information' },
+		}}
+		socialLinks={{
+			facebook: 'https://www.facebook.com/ONgov',
+			instagram: 'https://www.instagram.com/ongov',
+			twitter: 'https://twitter.com/ONgov',
+			youtube: 'https://www.youtube.com/ongov',
+		}}
+		threeColumnOptions={{
+			column1: {
+				title: 'Ontario Design System',
+				content: [
 					{
-						"type": "text",
-						"text": "The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services."
-					}
-				]
-			},
-			"column2": {
-				"title": "Latest release",
-				"content": [
-					{
-						"type": "list",
-						"list": ["Built on: June 3, 2022", "Distribution package version 0.12.10"]
-					}
-				]
-			},
-			"column3": {
-				"title": "Help us improve the design system",
-				"content": [
-					{
-						"type": "html",
-						"html": "You can check our <a href=#>help and feedback page</a> if you don&#8217;t see the component you need."
-					}
+						type: 'text',
+						text: 'The Ontario Design System provides principles, guidance and code to help teams design and build accessible, mobile-friendly government websites and digital services.',
+					},
 				],
-				"button": {
-					"text": "Send us an email",
-					"link": "#"
-				}
-			}
-		}'
-		asset-base-path={useBaseUrl('/assets')}>
+			},
+			column2: {
+				title: 'Latest release',
+				content: [
+					{
+						type: 'list',
+						list: ['Built on: June 3, 2022', 'Distribution package version 0.12.10'],
+					},
+				],
+			},
+			column3: {
+				title: 'Help us improve the design system',
+				content: [
+					{
+						type: 'html',
+						html: "You can check our <a href=#>help and feedback page</a> if you don’t see the component you need.",
+					},
+				],
+				button: {
+					text: 'Send us an email',
+					link: '#',
+				},
+			},
+		}}
+		assetBasePath={useBaseUrl('/assets')}>
 	</OntarioFooter>
 </div>
 
@@ -538,7 +910,7 @@ two-column-options='{
 			"content": [
 				{
 					"type": "html",
-					"html": "You can check our <a href=#>help and feedback page</a> if you don&#8217;t see the component you need."
+					"html": "You can check our <a href=#>help and feedback page</a> if you don't see the component you need."
 				}
 			],
 			"button": {

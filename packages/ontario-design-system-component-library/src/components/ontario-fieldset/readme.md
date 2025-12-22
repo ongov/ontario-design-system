@@ -1,5 +1,7 @@
 import { OntarioFieldset} from '@ongov/ontario-design-system-component-library-react';
 import { OntarioTextarea} from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-fieldset
 
@@ -17,15 +19,56 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of a fieldset component.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
-<ontario-fieldset
-	legend="What is your delivery address?"
-	level-size="heading"
->
-    <!-- Other form web components can be added as children to group related form elements together -->
-    <ontario-textarea ...></ontario-textarea>
-    <ontario-radio-buttons ...></ontario-radio-buttons>
-</ontario-aside>
+<ontario-fieldset legend="What is your delivery address?" level-size="heading">
+	<!-- Other form web components can be added as children to group related form elements together -->
+	<ontario-textarea ...></ontario-textarea>
+	<ontario-radio-buttons ...></ontario-radio-buttons>
+</ontario-fieldset>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioFieldset legend="What is your delivery address?" legendSize="heading">
+	{/* Other form web components can be added as children to group related form elements together */}
+	{/* <OntarioTextarea ...></OntarioTextarea> */}
+	{/* <OntarioRadioButtons ...></OntarioRadioButtons> */}
+</OntarioFieldset>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-fieldset [legend]="'What is your delivery address?'" [legendSize]="'heading'">
+	<!-- Other form web components can be added as children to group related form elements together -->
+	<!-- <ontario-textarea ...></ontario-textarea> -->
+	<!-- <ontario-radio-buttons ...></ontario-radio-buttons> -->
+</ontario-fieldset>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <OntarioFieldset

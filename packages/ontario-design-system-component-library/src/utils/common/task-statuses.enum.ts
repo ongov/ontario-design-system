@@ -10,10 +10,10 @@ export enum TaskStatuses {
 
 // Map task statuses to badge colours
 export const TaskToBadgeColour = {
-	[TaskStatuses.NotStarted]: 'lightTeal',
+	[TaskStatuses.NotStarted]: 'light-teal',
 	[TaskStatuses.InProgress]: 'teal',
 	[TaskStatuses.Completed]: 'white',
-	[TaskStatuses.CannotStartYet]: 'darkGrey',
+	[TaskStatuses.CannotStartYet]: 'dark-grey',
 	[TaskStatuses.Error]: 'red',
 	[TaskStatuses.Optional]: 'grey',
 } as const;

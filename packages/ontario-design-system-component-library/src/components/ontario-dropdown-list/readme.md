@@ -1,4 +1,6 @@
 import { OntarioDropdownList } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-dropdown-list
 
@@ -15,6 +17,19 @@ Once the component package has been installed (see Ontario Design System Compone
 ## Examples
 
 Example of a dropdown list component with no `elementId` or `isEmptyStartOption` props passed. Note that by default, an ID for the `elementId` will be generated if none is provided. If no `isEmptyStartOption` prop is provided, it will default to `false` and display the first option in the `options` list, unless one of the options has a `selected` attribute set to `true`.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-dropdown-list
@@ -44,34 +59,83 @@ Example of a dropdown list component with no `elementId` or `isEmptyStartOption`
 </ontario-dropdown-list>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioDropdownList
+	name="streaming-service"
+	caption={{
+		captionText: 'Select a streaming service',
+		captionType: 'default',
+	}}
+	required
+	options={[
+		{ value: 'netflix', label: 'Netflix' },
+		{ value: 'disney-plus', label: 'Disney Plus' },
+		{ value: 'crave', label: 'Crave' },
+		{ value: 'prime', label: 'Prime Video' },
+	]}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-dropdown-list
+	[name]="'streaming-service'"
+	[caption]="{ captionText: 'Select a streaming service', captionType: 'default' }"
+	required
+	[options]="[
+		{ value: 'netflix', label: 'Netflix' },
+		{ value: 'disney-plus', label: 'Disney Plus' },
+		{ value: 'crave', label: 'Crave' },
+		{ value: 'prime', label: 'Prime Video' }
+	]"
+></ontario-dropdown-list>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
 	<OntarioDropdownList
 		name="streaming-service"
-		caption='{
-			"captionText": "Select a streaming service",
-			"captionType": "default"
-		}'
+		caption={{
+			captionText: 'Select a streaming service',
+			captionType: 'default',
+		}}
 		required
-		options='[{
-			"value": "netflix",
-			"label": "Netflix"
-		},
-		{
-			"value": "disney-plus",
-			"label": "Disney Plus"
-		},
-		{
-			"value": "crave",
-			"label": "Crave"
-		},
-		{
-			"value": "prime",
-			"label": "Prime Video"
-		}]'
+		options={[
+			{ value: 'netflix', label: 'Netflix' },
+			{ value: 'disney-plus', label: 'Disney Plus' },
+			{ value: 'crave', label: 'Crave' },
+			{ value: 'prime', label: 'Prime Video' },
+		]}
 	></OntarioDropdownList>
 </div>
 
 In the following example, all available props are passed through.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-dropdown-list
@@ -142,71 +206,105 @@ In the following example, all available props are passed through.
 </ontario-dropdown-list>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioDropdownList
+	name="provinces-territories"
+	isEmptyStartOption="Select"
+	elementId="provinces-territories"
+	language="en"
+	hintText="Select the province or territory you currently live in."
+	caption={{
+		captionText: 'Province/territory',
+		captionType: 'heading',
+	}}
+	required
+	options={[
+		{ value: 'alberta', label: 'Alberta' },
+		{ value: 'british-columbia', label: 'British Columbia' },
+		{ value: 'manitoba', label: 'Manitoba' },
+		{ value: 'new-brunswick', label: 'New Brunswick' },
+		{ value: 'newfoundland-and-labrador', label: 'Newfoundland and Labrador' },
+		{ value: 'nova-scotia', label: 'Nova Scotia' },
+		{ value: 'ontario', label: 'Ontario', selected: true },
+		{ value: 'prince-edward-island', label: 'Prince Edward Island' },
+		{ value: 'quebec', label: 'Quebec' },
+		{ value: 'saskatchewan', label: 'Saskatchewan' },
+		{ value: 'northwest-territories', label: 'Northwest Territories' },
+		{ value: 'nunavut', label: 'Nunavut' },
+		{ value: 'yukon', label: 'Yukon' },
+	]}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-dropdown-list
+	[name]="'provinces-territories'"
+	[isEmptyStartOption]="'Select'"
+	[elementId]="'provinces-territories'"
+	[language]="'en'"
+	[hintText]="'Select the province or territory you currently live in.'"
+	[caption]="{ captionText: 'Province/territory', captionType: 'heading' }"
+	required
+	[options]="[
+		{ value: 'alberta', label: 'Alberta' },
+		{ value: 'british-columbia', label: 'British Columbia' },
+		{ value: 'manitoba', label: 'Manitoba' },
+		{ value: 'new-brunswick', label: 'New Brunswick' },
+		{ value: 'newfoundland-and-labrador', label: 'Newfoundland and Labrador' },
+		{ value: 'nova-scotia', label: 'Nova Scotia' },
+		{ value: 'ontario', label: 'Ontario', selected: true },
+		{ value: 'prince-edward-island', label: 'Prince Edward Island' },
+		{ value: 'quebec', label: 'Quebec' },
+		{ value: 'saskatchewan', label: 'Saskatchewan' },
+		{ value: 'northwest-territories', label: 'Northwest Territories' },
+		{ value: 'nunavut', label: 'Nunavut' },
+		{ value: 'yukon', label: 'Yukon' }
+	]"
+></ontario-dropdown-list>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
 	<OntarioDropdownList
 		name="provinces-territories"
-		is-empty-start-option="Select"
-		element-id="provinces-territories"
+		isEmptyStartOption="Select"
+		elementId="provinces-territories"
 		language="en"
-		hint-text="Select the province or territory you currently live in."
-		caption='{
-			"captionText": "Province/territory",
-			"captionType": "heading"
-		}'
+		hintText="Select the province or territory you currently live in."
+		caption={{
+			captionText: 'Province/territory',
+			captionType: 'heading',
+		}}
 		required
-		options='[{
-			"value": "alberta",
-			"label": "Alberta"
-		},
-		{
-			"value": "british-columbia",
-			"label": "British Columbia"
-		},
-		{
-			"value": "manitoba",
-			"label": "Manitoba"
-		},
-		{
-			"value": "new-brunswick",
-			"label": "New Brunswick"
-		},
-		{
-			"value": "newfoundland-and-labrador",
-			"label": "Newfoundland and Labrador"
-		},
-		{
-			"value": "nova-scotia",
-			"label": "Nova Scotia"
-		},
-		{
-			"value": "ontario",
-			"label": "Ontario",
-			"selected": true
-		},
-		{
-			"value": "prince-edward-island",
-			"label": "Prince Edward Island"
-		},
-		{
-			"value": "quebec",
-			"label": "Quebec"
-		},
-		{
-			"value": "saskatchewan",
-			"label": "Saskatchewan"
-		},
-		{
-			"value": "northwest-territories",
-			"label": "Northwest Territories"
-		},
-		{
-			"value": "nunavut",
-			"label": "Nunavut"
-		},
-		{
-			"value": "yukon",
-			"label": "Yukon"
-		}]'
+		options={[
+			{ value: 'alberta', label: 'Alberta' },
+			{ value: 'british-columbia', label: 'British Columbia' },
+			{ value: 'manitoba', label: 'Manitoba' },
+			{ value: 'new-brunswick', label: 'New Brunswick' },
+			{ value: 'newfoundland-and-labrador', label: 'Newfoundland and Labrador' },
+			{ value: 'nova-scotia', label: 'Nova Scotia' },
+			{ value: 'ontario', label: 'Ontario', selected: true },
+			{ value: 'prince-edward-island', label: 'Prince Edward Island' },
+			{ value: 'quebec', label: 'Quebec' },
+			{ value: 'saskatchewan', label: 'Saskatchewan' },
+			{ value: 'northwest-territories', label: 'Northwest Territories' },
+			{ value: 'nunavut', label: 'Nunavut' },
+			{ value: 'yukon', label: 'Yukon' },
+		]}
 	></OntarioDropdownList>
 </div>
 
@@ -344,16 +442,18 @@ The Ontario Dropdown List component supports full server-side rendering, with a 
 
 ### SSR-safe example:
 
-```html
-<ontario-dropdown-list
+```tsx
+<OntarioDropdownList
 	name="province"
-	element-id="province"
+	elementId="province"
 	language="en"
-	caption='{"captionText": "Select your province", "captionType": "heading"}'
-	options='[{"label":"Ontario", "value":"on"}, {"label":"Quebec", "value":"qc"}]'
-	is-empty-start-option="Select a province"
->
-</ontario-dropdown-list>
+	caption={{ captionText: 'Select your province', captionType: 'heading' }}
+	options={[
+		{ label: 'Ontario', value: 'on' },
+		{ label: 'Quebec', value: 'qc' },
+	]}
+	isEmptyStartOption="Select a province"
+/>
 ```
 
 <!-- Auto Generated Below -->

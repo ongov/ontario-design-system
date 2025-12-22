@@ -1,5 +1,7 @@
 import { OntarioCardCollection } from '@ongov/ontario-design-system-component-library-react';
 import { OntarioCard } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-card-collection
 
@@ -16,6 +18,19 @@ Once the component package has been installed (see Ontario Design System Compone
 ## Examples
 
 Example of a bare-bones `ontario-card-collection` component, with a `cardsPerRow` property.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-card-collection cards-per-row="2">
@@ -39,6 +54,67 @@ Example of a bare-bones `ontario-card-collection` component, with a `cardsPerRow
 	>
 	</ontario-card>
 </ontario-card-collection>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioCardCollection cardsPerRow={2}>
+	<OntarioCard
+		layout="horizontal"
+		label="Card Title 1"
+		image="https://picsum.photos/300/225"
+		cardLink="https://google.ca"
+		horizontalImagePositionType="left"
+		horizontalImageSizeType="one-fourth"
+		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+	/>
+	<OntarioCard
+		layout="horizontal"
+		label="Card Title 2"
+		image="https://picsum.photos/300/225"
+		horizontalImagePositionType="left"
+		horizontalImageSizeType="one-fourth"
+		description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+	/>
+</OntarioCardCollection>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-card-collection [cardsPerRow]="2">
+	<ontario-card
+		[layoutDirection]="'horizontal'"
+		[label]="'Card Title 1'"
+		[image]="'https://picsum.photos/300/225'"
+		[cardLink]="'https://google.ca'"
+		[horizontalImagePositionType]="'left'"
+		[horizontalImageSizeType]="'one-fourth'"
+		[description]="'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum'"
+	>
+	</ontario-card>
+	<ontario-card
+		[layoutDirection]="'horizontal'"
+		[label]="'Card Title 2'"
+		[image]="'https://picsum.photos/300/225'"
+		[horizontalImagePositionType]="'left'"
+		[horizontalImageSizeType]="'one-fourth'"
+		[description]="'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum'"
+	>
+	</ontario-card>
+</ontario-card-collection>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <OntarioCardCollection cards-per-row="2">

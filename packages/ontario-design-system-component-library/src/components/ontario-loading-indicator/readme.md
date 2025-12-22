@@ -1,4 +1,6 @@
 import { OntarioLoadingIndicator } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-loading-indicator
 
@@ -16,20 +18,69 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of a bare-bones loading indicator, where the default message of "Loading" will be applied, and the indicator will take up the whole screen.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-loading-indicator is-loading="true"></ontario-loading-indicator>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioLoadingIndicator isLoading={true}></OntarioLoadingIndicator>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-loading-indicator [isLoading]="true"></ontario-loading-indicator>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <div class="ontario-row">
     <div class="ontario-columns ontario-small-12">
         <div style={{position: 'relative', height: '25vh', zIndex:'1'}}>
-            <OntarioLoadingIndicator is-loading="true" full-screen-overlay="false"></OntarioLoadingIndicator>
+            <OntarioLoadingIndicator isLoading={true} fullScreenOverlay={false}></OntarioLoadingIndicator>
         </div>
     </div>
 </div>
 
 Example of a loading indicator that does not have a full screen overlay. The containing element is positioned relatively.
 There is also a custom message passed to display as the loading content.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <div class="ontario-row">
@@ -41,10 +92,49 @@ There is also a custom message passed to display as the loading content.
 </div>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<div className="ontario-row">
+	<div className="ontario-columns ontario-small-12">
+		<div style={{ position: 'relative', height: '25vh' }}>
+			<OntarioLoadingIndicator isLoading={true} fullScreenOverlay={false} message="Calculating" />
+		</div>
+	</div>
+</div>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<div class="ontario-row">
+	<div class="ontario-columns ontario-small-12">
+		<div style="position: relative; height: 25vh">
+			<ontario-loading-indicator
+				[isLoading]="true"
+				[fullScreenOverlay]="false"
+				[message]="'Calculating'"
+			></ontario-loading-indicator>
+		</div>
+	</div>
+</div>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div class="ontario-row">
     <div class="ontario-columns ontario-small-12">
         <div style={{position: 'relative', height: '25vh', zIndex:'1'}}>
-            <OntarioLoadingIndicator is-loading="true" full-screen-overlay="false" message="Calculating" />
+            <OntarioLoadingIndicator isLoading={true} fullScreenOverlay={false} message="Calculating" />
         </div>
     </div>
 </div>

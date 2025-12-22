@@ -81,23 +81,62 @@ If `maxSubheaderLinks` is set within `applicationHeaderInfo` on the `ontario-hea
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Overflow Menu Component
+
+Displays a dropdown menu of links. Can operate in two modes:
+
+## Standalone Mode
+
+Used when placed directly in the header (desktop view).
+
+- Manages its own open/close state via `menuButtonToggled` event
+- Automatically focuses first menu item when opened
+- Sets up focus trap to keep keyboard navigation within menu
+- Auto-closes when focus leaves the menu area
+- **Emits**: `menuClosed` event when menu closes (for cleanup/state sync)
+
+## Embedded Mode
+
+Used when placed inside `ontario-header-menu-tabs` (mobile/tablet view).
+
+- Parent component controls open/close state
+- Parent component manages focus trap
+- Menu is always visible when parent tab is active
+- **Emits**: `endOfMenuReached` event when Tab is pressed on last item (for focus looping)
+
+**Mode Detection**: Auto-detected based on DOM position (no prop needed).
+Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+
 ## Properties
 
-| Property    | Attribute    | Description                             | Type                   | Default     |
-| ----------- | ------------ | --------------------------------------- | ---------------------- | ----------- |
-| `menuItems` | `menu-items` | The items that will go inside the menu. | `MenuItem[] \| string` | `undefined` |
+| Property    | Attribute    | Description                                                                                                          | Type                   | Default     |
+| ----------- | ------------ | -------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |
+| `menuItems` | `menu-items` | The menu items to display. Can be passed as a MenuItem array or JSON string. The items that will go inside the menu. | `MenuItem[] \| string` | `undefined` |
+
+## Events
+
+| Event                  | Description                                                                                            | Type                |
+| ---------------------- | ------------------------------------------------------------------------------------------------------ | ------------------- |
+| `endOfMenuReached`     | Event emitted when Tab is pressed on the last menu item (embedded mode).                               | `CustomEvent<void>` |
+| `focusMenuButton`      | Event emitted when Shift+Tab is pressed on first menu item. Tells the header to focus the menu button. | `CustomEvent<void>` |
+| `menuButtonTabPressed` | Event emitted when user Tabs from the menu button. Asks if menu is open and ready to receive focus.    | `CustomEvent<void>` |
+| `menuClosed`           | Event emitted when menu closes (standalone mode).                                                      | `CustomEvent<void>` |
 
 ## Dependencies
 
 ### Used by
 
 - [ontario-header](../ontario-header)
+- [ontario-header-menu-tabs](../ontario-header-menu-tabs)
 
 ### Graph
 
 ```mermaid
 graph TD;
   ontario-header --> ontario-header-overflow-menu
+  ontario-header-menu-tabs --> ontario-header-overflow-menu
   style ontario-header-overflow-menu fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

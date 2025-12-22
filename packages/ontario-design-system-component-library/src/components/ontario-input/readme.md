@@ -1,4 +1,6 @@
 import { OntarioInput } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-input
 
@@ -16,13 +18,64 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of a bare-bones input component, the `name` property is passed in for the input, which is used to reference form data after a form is submitted. The `caption` property is being provided, which will be displayed as the label. By default, the `inputWidth` will be `default`, the `type` will be `text`, and the input will be set to `optional`.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-input name="ontario-text-input" caption="Ontario input"></ontario-input>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
 <OntarioInput name="ontario-text-input" caption="Ontario input"></OntarioInput>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-input [name]="'ontario-text-input'" [caption]="'Ontario input'"></ontario-input>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+<div>
+	<OntarioInput name="ontario-text-input" caption="Ontario input"></OntarioInput>
+</div>
 
 The following input component example has the `inputWidth` property passed in, which will define the width of the input field.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-input
@@ -35,14 +88,48 @@ The following input component example has the `inputWidth` property passed in, w
 ></ontario-input>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioInput
+	name="ontario-text-input"
+	caption={{
+		captionText: 'Ontario input',
+		captionType: 'large',
+	}}
+	inputWidth="10-char-width"
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-input
+	[name]="'ontario-text-input'"
+	[caption]="{ captionText: 'Ontario input', captionType: 'large' }"
+	[inputWidth]="'10-char-width'"
+></ontario-input>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
 	<OntarioInput
 		name="ontario-text-input"
-		caption='{
-			"captionText": "Ontario input",
-			"captionType": "large"
-		}'
-		input-width="10-char-width"> 
+		caption={{
+			captionText: 'Ontario input',
+			captionType: 'large',
+		}}
+		inputWidth="10-char-width">
 	</OntarioInput>
 </div>
 
@@ -163,6 +250,19 @@ Our best practices insist that a contextual based error message be provided to t
 
 For example,
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-input
 	id="first-name"
@@ -174,14 +274,52 @@ For example,
 ></ontario-input>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioInput
+	id="first-name"
+	name="first-name"
+	caption="First Name"
+	required
+	enableLiveValidation
+	requiredValidationMessage="Enter your first name"
+></OntarioInput>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-input
+	[id]="'first-name'"
+	[name]="'first-name'"
+	[caption]="'First Name'"
+	required
+	enable-live-validation
+	[requiredValidationMessage]="'Enter your first name'"
+>
+</ontario-input>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
 	<OntarioInput
 		id="first-name"
 		name="first-name"
 		caption="First Name"
 		required
-		enable-live-validation
-		required-validation-message="Enter your first name">
+		enableLiveValidation
+		requiredValidationMessage="Enter your first name">
 	</OntarioInput>
 </div>
 
@@ -237,8 +375,8 @@ The Ontario Input component supports server-side rendering, with a few considera
 
 ### SSR-safe example:
 
-```html
-<ontario-input name="firstName" language="en" element-id="first-name"></ontario-input>
+```tsx
+<OntarioInput name="firstName" language="en" elementId="first-name"></OntarioInput>
 ```
 
 <!-- Auto Generated Below -->

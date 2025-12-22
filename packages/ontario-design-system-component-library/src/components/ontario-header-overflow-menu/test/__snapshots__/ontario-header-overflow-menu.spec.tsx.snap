@@ -3,16 +3,16 @@
 exports[`ontario-header-overflow-menu should render menu items correctly 1`] = `
 <ontario-header-overflow-menu>
   <template shadowrootmode="open">
-    <nav class="ontario-application-navigation" id="ontario-application-navigation" role="navigation">
+    <nav aria-hidden="true" class="ontario-application-navigation" id="ontario-application-navigation" role="navigation">
       <div class="ontario-application-navigation__container">
         <ul>
           <li>
-            <a class="ontario-menu-item" href="/link-1">
+            <a class="ontario-menu-item" href="/link-1" role="menuitem" tabindex="0">
               Link 1
             </a>
           </li>
           <li>
-            <a class="ontario-menu-item" href="/link-2">
+            <a class="ontario-menu-item" href="/link-2" role="menuitem" tabindex="0">
               Link 2
             </a>
           </li>
