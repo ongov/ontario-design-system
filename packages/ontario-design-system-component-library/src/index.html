@@ -15,7 +15,7 @@
 		</ontario-critical-alert>
 		<ontario-header
 			id="ontarioHeader"
-			type="application"
+			type="ontario"
 			application-header-info='{
 				"title": "Application name",
 				"href": "/application-homepage",
@@ -25,6 +25,66 @@
 					"mobile": "1"
 				}
 			}'
+			sign-in-menu-items='[
+				{
+					"href": "/sign-in",
+					"title": {
+						"en": "Sign in to your account",
+						"fr": "Connectez-vous à votre compte"
+					},
+					"description": {
+						"en": "Access your personal information",
+						"fr": "Accédez à vos renseignements personnels"
+					}
+				},
+				{
+					"href": "/register",
+					"title": {
+						"en": "Create an account",
+						"fr": "Créer un compte"
+					},
+					"description": {
+						"en": "Register for government services",
+						"fr": "Inscription aux services gouvernementaux"
+					}
+				},
+				{
+					"href": "/help",
+					"title": {
+						"en": "Get help with your account",
+						"fr": "Obtenir de laide avec votre compte"
+					},
+					"description": {
+						"en": "Recover your username or password",
+						"fr": "Récupérer votre nom dutilisateur ou mot de passe"
+					}
+				},
+				{
+					"href": "/privacy",
+					"title": {
+						"en": "Privacy settings",
+						"fr": "Paramètres de confidentialité"
+					},
+					"description": {
+						"en": "Manage your privacy preferences",
+						"fr": "Gérer vos préférences de confidentialité"
+					}
+				},
+				{
+					"href": "/sign-out",
+					"title": {
+						"en": "Sign out",
+						"fr": "Se déconnecter"
+					},
+					"description": {
+						"en": "Securely sign out of your account",
+						"fr": "Déconnectez-vous en toute sécurité de votre compte"
+					},
+					"icon": {
+						"id": "more-accounts"
+					}
+				}
+			]'
 			language-toggle-options='{
 				"englishLink": "/",
 				"frenchLink" : "/french.html"
@@ -1318,7 +1378,7 @@
 												"elementId": "radio-2",
 												"label": "Text message"
 											},
-	
+
 											{
 												"value": "phone",
 												"elementId": "radio-3",

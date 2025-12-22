@@ -295,10 +295,12 @@ Important considerations:
 | `applicationHeaderInfo` | `application-header-info` | Information pertaining to the application header. This is only necessary for the 'application' header type. This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views. | `ApplicationHeaderInfo \| string`                             | `undefined`     |
 | `assetBasePath`         | `asset-base-path`         | The base path to an assets folder containing the Design System assets                                                                                                                                                                                  | `string`                                                      | `undefined`     |
 | `customLanguageToggle`  | `custom-language-toggle`  | A custom function to pass to the language toggle button.                                                                                                                                                                                               | `((event: Event) => void) \| undefined`                       | `undefined`     |
+| `customSignInToggle`    | `custom-sign-in-toggle`   | A custom function to pass to the sign-in button.                                                                                                                                                                                                       | `((event: Event) => void) \| undefined`                       | `undefined`     |
 | `disableDynamicMenu`    | `disable-dynamic-menu`    | Option to disable fetching of the dynamic menu from the Ontario Header API                                                                                                                                                                             | `boolean`                                                     | `false`         |
 | `language`              | `language`                | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.                                           | `"en" \| "fr" \| undefined`                                   | `'en'`          |
 | `languageToggleOptions` | `language-toggle-options` | Information pertaining to the language toggle links.                                                                                                                                                                                                   | `LanguageToggleOptions \| string \| undefined`                | `undefined`     |
 | `menuItems`             | `menu-items`              | The items that will go inside the menu.                                                                                                                                                                                                                | `MenuItem[] \| string`                                        | `undefined`     |
+| `signInMenuItems`       | `sign-in-menu-items`      | Information pertaining to the sign-in menu items for the Ontario header.                                                                                                                                                                               | `MenuItem[] \| string \| undefined`                           | `undefined`     |
 | `type`                  | `type`                    | The type of header.                                                                                                                                                                                                                                    | `"application" \| "ontario" \| "serviceOntario" \| undefined` | `'application'` |
 
 ## Events
@@ -312,6 +314,7 @@ Important considerations:
 ### Depends on
 
 - [ontario-language-toggle](../ontario-language-toggle)
+- [ontario-header-menu-tabs](../ontario-header-menu-tabs)
 - [ontario-header-overflow-menu](../ontario-header-overflow-menu)
 
 ### Graph
@@ -319,7 +322,9 @@ Important considerations:
 ```mermaid
 graph TD;
   ontario-header --> ontario-language-toggle
+  ontario-header --> ontario-header-menu-tabs
   ontario-header --> ontario-header-overflow-menu
+  ontario-header-menu-tabs --> ontario-header-overflow-menu
   style ontario-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

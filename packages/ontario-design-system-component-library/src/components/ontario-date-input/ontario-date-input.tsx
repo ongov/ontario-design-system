@@ -122,12 +122,12 @@ export class OntarioDateInput {
 	/**
 	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
-	@Event() inputOnBlur: EventEmitter<'day' | 'month' | 'year'>;
+	@Event() inputOnBlur: EventEmitter<DateInputFieldType>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
-	@Event() inputOnFocus: EventEmitter<'day' | 'month' | 'year'>;
+	@Event() inputOnFocus: EventEmitter<DateInputFieldType>;
 
 	/**
 	 * Emitted when an error message is reported to the component.

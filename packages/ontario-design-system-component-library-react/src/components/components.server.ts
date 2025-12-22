@@ -8,7 +8,7 @@
 
 /* eslint-disable */
 
-import { type AccordionChangeDetail, type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
 import { OntarioAccordion as OntarioAccordionElement } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
 import { OntarioAside as OntarioAsideElement } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
 import { OntarioBackToTop as OntarioBackToTopElement } from "@ongov/ontario-design-system-component-library/components/ontario-back-to-top.js";
@@ -25,6 +25,7 @@ import { OntarioDropdownList as OntarioDropdownListElement } from "@ongov/ontari
 import { OntarioFieldset as OntarioFieldsetElement } from "@ongov/ontario-design-system-component-library/components/ontario-fieldset.js";
 import { OntarioFooter as OntarioFooterElement } from "@ongov/ontario-design-system-component-library/components/ontario-footer.js";
 import { OntarioFormContainer as OntarioFormContainerElement } from "@ongov/ontario-design-system-component-library/components/ontario-form-container.js";
+import { OntarioHeaderMenuTabs as OntarioHeaderMenuTabsElement } from "@ongov/ontario-design-system-component-library/components/ontario-header-menu-tabs.js";
 import { OntarioHeaderOverflowMenu as OntarioHeaderOverflowMenuElement } from "@ongov/ontario-design-system-component-library/components/ontario-header-overflow-menu.js";
 import { OntarioHeader as OntarioHeaderElement } from "@ongov/ontario-design-system-component-library/components/ontario-header.js";
 import { OntarioHintExpander as OntarioHintExpanderElement } from "@ongov/ontario-design-system-component-library/components/ontario-hint-expander.js";
@@ -95,6 +96,7 @@ import { OntarioIconMenuHeader as OntarioIconMenuHeaderElement } from "@ongov/on
 import { OntarioIconMenu as OntarioIconMenuElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-menu.js";
 import { OntarioIconMicrophoneOff as OntarioIconMicrophoneOffElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-off.js";
 import { OntarioIconMicrophoneOn as OntarioIconMicrophoneOnElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-on.js";
+import { OntarioIconMoreAccounts as OntarioIconMoreAccountsElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-more-accounts.js";
 import { OntarioIconMoreVertical as OntarioIconMoreVerticalElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-more-vertical.js";
 import { OntarioIconNewWindow as OntarioIconNewWindowElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-new-window.js";
 import { OntarioIconNext as OntarioIconNextElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-next.js";
@@ -135,6 +137,7 @@ import { OntarioIconTransportBus as OntarioIconTransportBusElement } from "@ongo
 import { OntarioIconTransportCar as OntarioIconTransportCarElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-transport-car.js";
 import { OntarioIconTransportWalk as OntarioIconTransportWalkElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-transport-walk.js";
 import { OntarioIconTty as OntarioIconTtyElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-tty.js";
+import { OntarioIconTune as OntarioIconTuneElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-tune.js";
 import { OntarioIconTwitterAlt as OntarioIconTwitterAltElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-twitter-alt.js";
 import { OntarioIconTwitter as OntarioIconTwitterElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-twitter.js";
 import { OntarioIconUpload as OntarioIconUploadElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-upload.js";
@@ -330,8 +333,8 @@ export type OntarioDateInputEvents = {
         value: string;
         fieldType: 'day' | 'month' | 'year';
     }>>,
-    onInputOnBlur: EventName<CustomEvent<'day' | 'month' | 'year'>>,
-    onInputOnFocus: EventName<CustomEvent<'day' | 'month' | 'year'>>,
+    onInputOnBlur: EventName<OntarioDateInputCustomEvent<DateInputFieldType>>,
+    onInputOnFocus: EventName<OntarioDateInputCustomEvent<DateInputFieldType>>,
     onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>
 };
 
@@ -428,6 +431,8 @@ export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioH
         type: 'type',
         applicationHeaderInfo: 'application-header-info',
         menuItems: 'menu-items',
+        signInMenuItems: 'sign-in-menu-items',
+        customSignInToggle: 'custom-sign-in-toggle',
         disableDynamicMenu: 'disable-dynamic-menu',
         languageToggleOptions: 'language-toggle-options',
         customLanguageToggle: 'custom-language-toggle',
@@ -438,11 +443,39 @@ export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioH
     serializeShadowRoot
 });
 
-export type OntarioHeaderOverflowMenuEvents = NonNullable<unknown>;
+export type OntarioHeaderMenuTabsEvents = {
+    onTakeOwnership: EventName<CustomEvent<{ panelId: string | null }>>,
+    onFocusFirstItem: EventName<CustomEvent<void>>,
+    onFocusMenuButton: EventName<CustomEvent<void>>
+};
+
+export const OntarioHeaderMenuTabs: StencilReactComponent<OntarioHeaderMenuTabsElement, OntarioHeaderMenuTabsEvents> = /*@__PURE__*/ createComponent<OntarioHeaderMenuTabsElement, OntarioHeaderMenuTabsEvents>({
+    tagName: 'ontario-header-menu-tabs',
+    properties: {
+        topicsMenuItems: 'topics-menu-items',
+        signInMenuItems: 'sign-in-menu-items',
+        autoDetectMode: 'auto-detect-mode',
+        language: 'language'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
+
+export type OntarioHeaderOverflowMenuEvents = {
+    onMenuClosed: EventName<CustomEvent<void>>,
+    onEndOfMenuReached: EventName<CustomEvent<void>>,
+    onFocusMenuButton: EventName<CustomEvent<void>>,
+    onFocusNextElement: EventName<CustomEvent<void>>,
+    onMenuButtonTabPressed: EventName<CustomEvent<void>>
+};
 
 export const OntarioHeaderOverflowMenu: StencilReactComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents> = /*@__PURE__*/ createComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents>({
     tagName: 'ontario-header-overflow-menu',
-    properties: { menuItems: 'menu-items' },
+    properties: {
+        menuItems: 'menu-items',
+        isLastMenu: 'is-last-menu',
+        language: 'language'
+    },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
     serializeShadowRoot
 });
@@ -1233,6 +1266,18 @@ export const OntarioIconMicrophoneOn: StencilReactComponent<OntarioIconMicrophon
     serializeShadowRoot
 });
 
+export type OntarioIconMoreAccountsEvents = NonNullable<unknown>;
+
+export const OntarioIconMoreAccounts: StencilReactComponent<OntarioIconMoreAccountsElement, OntarioIconMoreAccountsEvents> = /*@__PURE__*/ createComponent<OntarioIconMoreAccountsElement, OntarioIconMoreAccountsEvents>({
+    tagName: 'ontario-icon-more-accounts',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
+
 export type OntarioIconMoreVerticalEvents = NonNullable<unknown>;
 
 export const OntarioIconMoreVertical: StencilReactComponent<OntarioIconMoreVerticalElement, OntarioIconMoreVerticalEvents> = /*@__PURE__*/ createComponent<OntarioIconMoreVerticalElement, OntarioIconMoreVerticalEvents>({
@@ -1705,6 +1750,18 @@ export type OntarioIconTtyEvents = NonNullable<unknown>;
 
 export const OntarioIconTty: StencilReactComponent<OntarioIconTtyElement, OntarioIconTtyEvents> = /*@__PURE__*/ createComponent<OntarioIconTtyElement, OntarioIconTtyEvents>({
     tagName: 'ontario-icon-tty',
+    properties: {
+        iconWidth: 'icon-width',
+        colour: 'colour'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+    serializeShadowRoot
+});
+
+export type OntarioIconTuneEvents = NonNullable<unknown>;
+
+export const OntarioIconTune: StencilReactComponent<OntarioIconTuneElement, OntarioIconTuneEvents> = /*@__PURE__*/ createComponent<OntarioIconTuneElement, OntarioIconTuneEvents>({
+    tagName: 'ontario-icon-tune',
     properties: {
         iconWidth: 'icon-width',
         colour: 'colour'

@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AccordionChangeDetail, type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
 import { OntarioAccordion as OntarioAccordionElement, defineCustomElement as defineOntarioAccordion } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
 import { OntarioAside as OntarioAsideElement, defineCustomElement as defineOntarioAside } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
 import { OntarioBackToTop as OntarioBackToTopElement, defineCustomElement as defineOntarioBackToTop } from "@ongov/ontario-design-system-component-library/components/ontario-back-to-top.js";
@@ -24,6 +24,7 @@ import { OntarioDropdownList as OntarioDropdownListElement, defineCustomElement 
 import { OntarioFieldset as OntarioFieldsetElement, defineCustomElement as defineOntarioFieldset } from "@ongov/ontario-design-system-component-library/components/ontario-fieldset.js";
 import { OntarioFooter as OntarioFooterElement, defineCustomElement as defineOntarioFooter } from "@ongov/ontario-design-system-component-library/components/ontario-footer.js";
 import { OntarioFormContainer as OntarioFormContainerElement, defineCustomElement as defineOntarioFormContainer } from "@ongov/ontario-design-system-component-library/components/ontario-form-container.js";
+import { OntarioHeaderMenuTabs as OntarioHeaderMenuTabsElement, defineCustomElement as defineOntarioHeaderMenuTabs } from "@ongov/ontario-design-system-component-library/components/ontario-header-menu-tabs.js";
 import { OntarioHeaderOverflowMenu as OntarioHeaderOverflowMenuElement, defineCustomElement as defineOntarioHeaderOverflowMenu } from "@ongov/ontario-design-system-component-library/components/ontario-header-overflow-menu.js";
 import { OntarioHeader as OntarioHeaderElement, defineCustomElement as defineOntarioHeader } from "@ongov/ontario-design-system-component-library/components/ontario-header.js";
 import { OntarioHintExpander as OntarioHintExpanderElement, defineCustomElement as defineOntarioHintExpander } from "@ongov/ontario-design-system-component-library/components/ontario-hint-expander.js";
@@ -94,6 +95,7 @@ import { OntarioIconMenuHeader as OntarioIconMenuHeaderElement, defineCustomElem
 import { OntarioIconMenu as OntarioIconMenuElement, defineCustomElement as defineOntarioIconMenu } from "@ongov/ontario-design-system-component-library/components/ontario-icon-menu.js";
 import { OntarioIconMicrophoneOff as OntarioIconMicrophoneOffElement, defineCustomElement as defineOntarioIconMicrophoneOff } from "@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-off.js";
 import { OntarioIconMicrophoneOn as OntarioIconMicrophoneOnElement, defineCustomElement as defineOntarioIconMicrophoneOn } from "@ongov/ontario-design-system-component-library/components/ontario-icon-microphone-on.js";
+import { OntarioIconMoreAccounts as OntarioIconMoreAccountsElement, defineCustomElement as defineOntarioIconMoreAccounts } from "@ongov/ontario-design-system-component-library/components/ontario-icon-more-accounts.js";
 import { OntarioIconMoreVertical as OntarioIconMoreVerticalElement, defineCustomElement as defineOntarioIconMoreVertical } from "@ongov/ontario-design-system-component-library/components/ontario-icon-more-vertical.js";
 import { OntarioIconNewWindow as OntarioIconNewWindowElement, defineCustomElement as defineOntarioIconNewWindow } from "@ongov/ontario-design-system-component-library/components/ontario-icon-new-window.js";
 import { OntarioIconNext as OntarioIconNextElement, defineCustomElement as defineOntarioIconNext } from "@ongov/ontario-design-system-component-library/components/ontario-icon-next.js";
@@ -134,6 +136,7 @@ import { OntarioIconTransportBus as OntarioIconTransportBusElement, defineCustom
 import { OntarioIconTransportCar as OntarioIconTransportCarElement, defineCustomElement as defineOntarioIconTransportCar } from "@ongov/ontario-design-system-component-library/components/ontario-icon-transport-car.js";
 import { OntarioIconTransportWalk as OntarioIconTransportWalkElement, defineCustomElement as defineOntarioIconTransportWalk } from "@ongov/ontario-design-system-component-library/components/ontario-icon-transport-walk.js";
 import { OntarioIconTty as OntarioIconTtyElement, defineCustomElement as defineOntarioIconTty } from "@ongov/ontario-design-system-component-library/components/ontario-icon-tty.js";
+import { OntarioIconTune as OntarioIconTuneElement, defineCustomElement as defineOntarioIconTune } from "@ongov/ontario-design-system-component-library/components/ontario-icon-tune.js";
 import { OntarioIconTwitterAlt as OntarioIconTwitterAltElement, defineCustomElement as defineOntarioIconTwitterAlt } from "@ongov/ontario-design-system-component-library/components/ontario-icon-twitter-alt.js";
 import { OntarioIconTwitter as OntarioIconTwitterElement, defineCustomElement as defineOntarioIconTwitter } from "@ongov/ontario-design-system-component-library/components/ontario-icon-twitter.js";
 import { OntarioIconUpload as OntarioIconUploadElement, defineCustomElement as defineOntarioIconUpload } from "@ongov/ontario-design-system-component-library/components/ontario-icon-upload.js";
@@ -300,8 +303,8 @@ export type OntarioDateInputEvents = {
         value: string;
         fieldType: 'day' | 'month' | 'year';
     }>>,
-    onInputOnBlur: EventName<CustomEvent<'day' | 'month' | 'year'>>,
-    onInputOnFocus: EventName<CustomEvent<'day' | 'month' | 'year'>>,
+    onInputOnBlur: EventName<OntarioDateInputCustomEvent<DateInputFieldType>>,
+    onInputOnFocus: EventName<OntarioDateInputCustomEvent<DateInputFieldType>>,
     onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>
 };
 
@@ -385,14 +388,45 @@ export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioH
     defineCustomElement: defineOntarioHeader
 });
 
-export type OntarioHeaderOverflowMenuEvents = NonNullable<unknown>;
+export type OntarioHeaderMenuTabsEvents = {
+    onTakeOwnership: EventName<CustomEvent<{ panelId: string | null }>>,
+    onFocusFirstItem: EventName<CustomEvent<void>>,
+    onFocusMenuButton: EventName<CustomEvent<void>>
+};
+
+export const OntarioHeaderMenuTabs: StencilReactComponent<OntarioHeaderMenuTabsElement, OntarioHeaderMenuTabsEvents> = /*@__PURE__*/ createComponent<OntarioHeaderMenuTabsElement, OntarioHeaderMenuTabsEvents>({
+    tagName: 'ontario-header-menu-tabs',
+    elementClass: OntarioHeaderMenuTabsElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onTakeOwnership: 'takeOwnership',
+        onFocusFirstItem: 'focusFirstItem',
+        onFocusMenuButton: 'focusMenuButton'
+    } as OntarioHeaderMenuTabsEvents,
+    defineCustomElement: defineOntarioHeaderMenuTabs
+});
+
+export type OntarioHeaderOverflowMenuEvents = {
+    onMenuClosed: EventName<CustomEvent<void>>,
+    onEndOfMenuReached: EventName<CustomEvent<void>>,
+    onFocusMenuButton: EventName<CustomEvent<void>>,
+    onFocusNextElement: EventName<CustomEvent<void>>,
+    onMenuButtonTabPressed: EventName<CustomEvent<void>>
+};
 
 export const OntarioHeaderOverflowMenu: StencilReactComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents> = /*@__PURE__*/ createComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents>({
     tagName: 'ontario-header-overflow-menu',
     elementClass: OntarioHeaderOverflowMenuElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: {} as OntarioHeaderOverflowMenuEvents,
+    events: {
+        onMenuClosed: 'menuClosed',
+        onEndOfMenuReached: 'endOfMenuReached',
+        onFocusMenuButton: 'focusMenuButton',
+        onFocusNextElement: 'focusNextElement',
+        onMenuButtonTabPressed: 'menuButtonTabPressed'
+    } as OntarioHeaderOverflowMenuEvents,
     defineCustomElement: defineOntarioHeaderOverflowMenu
 });
 
@@ -1144,6 +1178,17 @@ export const OntarioIconMicrophoneOn: StencilReactComponent<OntarioIconMicrophon
     defineCustomElement: defineOntarioIconMicrophoneOn
 });
 
+export type OntarioIconMoreAccountsEvents = NonNullable<unknown>;
+
+export const OntarioIconMoreAccounts: StencilReactComponent<OntarioIconMoreAccountsElement, OntarioIconMoreAccountsEvents> = /*@__PURE__*/ createComponent<OntarioIconMoreAccountsElement, OntarioIconMoreAccountsEvents>({
+    tagName: 'ontario-icon-more-accounts',
+    elementClass: OntarioIconMoreAccountsElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioIconMoreAccountsEvents,
+    defineCustomElement: defineOntarioIconMoreAccounts
+});
+
 export type OntarioIconMoreVerticalEvents = NonNullable<unknown>;
 
 export const OntarioIconMoreVertical: StencilReactComponent<OntarioIconMoreVerticalElement, OntarioIconMoreVerticalEvents> = /*@__PURE__*/ createComponent<OntarioIconMoreVerticalElement, OntarioIconMoreVerticalEvents>({
@@ -1582,6 +1627,17 @@ export const OntarioIconTty: StencilReactComponent<OntarioIconTtyElement, Ontari
     react: React,
     events: {} as OntarioIconTtyEvents,
     defineCustomElement: defineOntarioIconTty
+});
+
+export type OntarioIconTuneEvents = NonNullable<unknown>;
+
+export const OntarioIconTune: StencilReactComponent<OntarioIconTuneElement, OntarioIconTuneEvents> = /*@__PURE__*/ createComponent<OntarioIconTuneElement, OntarioIconTuneEvents>({
+    tagName: 'ontario-icon-tune',
+    elementClass: OntarioIconTuneElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as OntarioIconTuneEvents,
+    defineCustomElement: defineOntarioIconTune
 });
 
 export type OntarioIconTwitterEvents = NonNullable<unknown>;

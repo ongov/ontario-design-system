@@ -127,15 +127,15 @@ describe('ontario-header', () => {
 		// Access the child's shadow root
 		const childOverflowMenuShadow = childOverflowMenu.shadowRoot as ShadowRoot;
 		const childOverflowMenuRenderedMenuItems = childOverflowMenuShadow.querySelectorAll(
-			'.ontario-menu-item',
+			'a.ontario-menu-item',
 		) as NodeListOf<HTMLAnchorElement>;
 
 		// Check to see the HTML output of the rendered menu items is as expected
 		expect(childOverflowMenuRenderedMenuItems.length).toBe(14);
-		expect(childOverflowMenuRenderedMenuItems[0].textContent).toBe(OntarioHeaderDefaultData.en[0].title);
-		expect(childOverflowMenuRenderedMenuItems[0].getAttribute('href')).toBe(OntarioHeaderDefaultData.en[0].href);
-		expect(childOverflowMenuRenderedMenuItems[13].textContent).toBe(OntarioHeaderDefaultData.en[13].title);
-		expect(childOverflowMenuRenderedMenuItems[13].getAttribute('href')).toBe(OntarioHeaderDefaultData.en[13].href);
+		expect(childOverflowMenuRenderedMenuItems[0].textContent?.trim()).toBe(OntarioHeaderDefaultData.en[0].title);
+		expect(childOverflowMenuRenderedMenuItems[0].href).toContain(OntarioHeaderDefaultData.en[0].href);
+		expect(childOverflowMenuRenderedMenuItems[13].textContent?.trim()).toBe(OntarioHeaderDefaultData.en[13].title);
+		expect(childOverflowMenuRenderedMenuItems[13].href).toContain(OntarioHeaderDefaultData.en[13].href);
 	});
 
 	it('should render the application header', async () => {
@@ -180,15 +180,15 @@ describe('ontario-header', () => {
 		// Access the child's shadow root
 		const childOverflowMenuShadow = childOverflowMenu.shadowRoot as ShadowRoot;
 		const childOverflowMenuRenderedMenuItems = childOverflowMenuShadow.querySelectorAll(
-			'.ontario-menu-item',
+			'a.ontario-menu-item',
 		) as NodeListOf<HTMLAnchorElement>;
 
 		// Check to see the HTML output of the rendered menu items is as expected
 		expect(childOverflowMenuRenderedMenuItems.length).toBe(3);
-		expect(childOverflowMenuRenderedMenuItems[0].textContent).toBe('Item 1');
-		expect(childOverflowMenuRenderedMenuItems[0].getAttribute('href')).toContain('/item-1');
-		expect(childOverflowMenuRenderedMenuItems[2].textContent).toBe('Item 3');
-		expect(childOverflowMenuRenderedMenuItems[2].getAttribute('href')).toContain('/item-3');
+		expect(childOverflowMenuRenderedMenuItems[0].textContent?.trim()).toBe('Item 1');
+		expect(childOverflowMenuRenderedMenuItems[0].href).toContain('/item-1');
+		expect(childOverflowMenuRenderedMenuItems[2].textContent?.trim()).toBe('Item 3');
+		expect(childOverflowMenuRenderedMenuItems[2].href).toContain('/item-3');
 	});
 
 	it('should render the ServiceOntario header', async () => {
