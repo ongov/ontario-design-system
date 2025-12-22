@@ -1,4 +1,6 @@
 import { OntarioCallout } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-callout
 
@@ -16,6 +18,19 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of a callout component, where the user is explicitly passing in content through the `content` property.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-callout
 	heading-type="h2"
@@ -23,6 +38,39 @@ Example of a callout component, where the user is explicitly passing in content 
 	heading-content="<a href='#'>This is a callout heading that is a link</a>"
 	content="This is the content for the callout component."
 ></ontario-callout>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioCallout
+	headingType="h2"
+	headingContentType="html"
+	headingContent="<a href='#'>This is a callout heading that is a link</a>"
+	content="This is the content for the callout component."
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-callout
+	[headingType]="'h2'"
+	[headingContentType]="'html'"
+	[headingContent]="'<a href='#'>This is a callout heading that is a link</a>'"
+	[content]="'This is the content for the callout component.'"
+></ontario-callout>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <div>
@@ -36,6 +84,19 @@ Example of a callout component, where the user is explicitly passing in content 
 
 This is another example of an callout. This time, the content is passed as a child of the `ontario-callout` component, which allows for HTML content to be passed. A `highlightColour` option is also passed.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-callout
 	heading-type="h4"
@@ -45,6 +106,45 @@ This is another example of an callout. This time, the content is passed as a chi
 >
 	<p><a href="#">Sign up for email reminders</a> and we’ll notify you 60 and 30 days before your licence expires.</p>
 </ontario-callout>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioCallout
+	headingType="h4"
+	headingContentType="string"
+	headingContent="This is a callout heading"
+	highlightColour="gold"
+>
+	<p>
+		<a href="#">Sign up for email reminders</a> and we’ll notify you 60 and 30 days before your licence expires.
+	</p>
+</OntarioCallout>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-callout
+	[headingType]="'h4'"
+	[headingContentType]="'string'"
+	[headingContent]="'This is a callout heading'"
+	[highlightColour]="'gold'"
+>
+	<p><a href="#">Sign up for email reminders</a> and we’ll notify you 60 and 30 days before your licence expires.</p>
+</ontario-callout>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <div>
@@ -71,8 +171,8 @@ While both approaches work in the browser, only the `content` prop is reliably r
 
 During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the callout content through the `content` prop. Eg:
 
-```html
-<ontario-callout headingContent="Notice" content="This is the callout content."></ontario-callout>
+```tsx
+<OntarioCallout headingContent="Notice" content="This is the callout content."></OntarioCallout>
 ```
 
 <!-- Auto Generated Below -->

@@ -1,4 +1,6 @@
 import { OntarioHintText } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-hint-text
 
@@ -16,13 +18,62 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of a bare-bones hint text component where the user is passing the `hint` directly as the element text content, which will be displayed as the question/statement.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-hint-text>This is a hint</ontario-hint-text>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioHintText>This is a hint</OntarioHintText>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-hint-text>This is a hint</ontario-hint-text>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <OntarioHintText>This is a hint</OntarioHintText>
 
 Example of a hint text that includes the `hint` property, which will override the `This is a hint` text. The `element-id` property has also been added, which is used to establish a relationship between hint text content and elements using the `aria-describedby` attribute.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-hint-text hint="This hint will override the hint text provided as element content" element-id="hint-293849">
@@ -31,8 +82,38 @@ Example of a hint text that includes the `hint` property, which will override th
 </ontario-hint-text>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioHintText hint="This hint will override the hint text provided as element content" elementId="hint-293849">
+	This is a hint
+</OntarioHintText>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-hint-text
+	[hint]="'This hint will override the hint text provided as element content'"
+	[elementId]="'hint-293849'"
+>
+	This is a hint
+</ontario-hint-text>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
-  <OntarioHintText hint="This hint will override the hint text provided as element content" element-id="hint-293849">
+  <OntarioHintText hint="This hint will override the hint text provided as element content" elementId="hint-293849">
 	  This is a hint
   </OntarioHintText>
 </div>
@@ -50,8 +131,8 @@ While both approaches work in the browser, only the `hint` prop is reliably rend
 
 During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the hint through the `hint` prop. Eg:
 
-```html
-<ontario-hint hint="Provide a detailed street address."></ontario-hint>
+```tsx
+<OntarioHintText hint="Provide a detailed street address."></OntarioHintText>
 ```
 
 <!-- Auto Generated Below -->

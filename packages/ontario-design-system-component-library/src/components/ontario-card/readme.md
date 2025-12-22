@@ -1,4 +1,6 @@
 import { OntarioCard } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-card
 
@@ -16,13 +18,64 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of a bare-bones `ontario-card` component where the `label` and `description` for the card is provided.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-card label="Card Title" description="Lorem Ipsum Lorem Ipsum"></ontario-card>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
 <OntarioCard label="Card Title" description="Lorem Ipsum Lorem Ipsum"></OntarioCard>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-card [label]="'Card Title'" [description]="'Lorem Ipsum Lorem Ipsum'"></ontario-card>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+<div>
+	<OntarioCard label="Card Title" description="Lorem Ipsum Lorem Ipsum"></OntarioCard>
+</div>
 
 Example of an `ontario-card` component with an image, which includes the `headerColour`, `image`, `imageAltText`, `label` and `description` properties.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-card
@@ -33,6 +86,42 @@ Example of an `ontario-card` component with an image, which includes the `header
 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 >
 </ontario-card>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioCard
+	label="Card Title"
+	headerColour="sky"
+	image="https://picsum.photos/300/225"
+	imageAltText="Randomly generated image from picsum."
+	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+></OntarioCard>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-card
+	[label]="'Card Title'"
+	[headerColour]="'sky'"
+	[image]="'https://picsum.photos/300/225'"
+	[imageAltText]="'Randomly generated image from picsum.'"
+	[description]="'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum'"
+>
+</ontario-card>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <div>
@@ -47,6 +136,19 @@ Example of an `ontario-card` component with an image, which includes the `header
 
 This is another example of an `ontario-card` component with a horizontal layout containing an image. This will require more properties, including the `horizontalImagePositionType` and the `horizontalImageSizeType`.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-card
 	layout-direction="horizontal"
@@ -57,6 +159,44 @@ This is another example of an `ontario-card` component with a horizontal layout 
 	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 >
 </ontario-card>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioCard
+	layoutDirection="horizontal"
+	label="Card Title"
+	image="https://picsum.photos/300/225"
+	horizontalImagePositionType="left"
+	horizontalImageSizeType="one-fourth"
+	description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+></OntarioCard>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-card
+	[layoutDirection]="'horizontal'"
+	[label]="'Card Title'"
+	[image]="'https://picsum.photos/300/225'"
+	[horizontalImagePositionType]="'left'"
+	[horizontalImageSizeType]="'one-fourth'"
+	[description]="'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum'"
+>
+</ontario-card>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <div>
@@ -114,12 +254,12 @@ For best SSR results:
 
 ### SSR-safe example:
 
-```html
-<ontario-card
+```tsx
+<OntarioCard
 	label="Card Title"
 	image="https://example.com/image.jpg"
 	description="This is a short description"
-></ontario-card>
+></OntarioCard>
 ```
 
 <!-- Auto Generated Below -->

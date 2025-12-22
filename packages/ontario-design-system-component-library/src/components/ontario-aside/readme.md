@@ -1,4 +1,6 @@
 import { OntarioAside } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-aside
 
@@ -16,6 +18,19 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of an aside component, where the user is explicitly passing in content through the `content` property.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-aside
 	heading-type="h2"
@@ -23,6 +38,39 @@ Example of an aside component, where the user is explicitly passing in content t
 	heading-content="<a href='#'>This is an aside heading that is a link</a>"
 	content="This is the content for the aside component."
 ></ontario-aside>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioAside
+	headingType="h2"
+	headingContentType="html"
+	headingContent="<a href='#'>This is an aside heading that is a link</a>"
+	content="This is the content for the aside component."
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-aside
+	[headingType]="'h2'"
+	[headingContentType]="'html'"
+	[headingContent]="'<a href='#'>This is an aside heading that is a link</a>'"
+	[content]="'This is the content for the aside component.'"
+></ontario-aside>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <div>
@@ -35,6 +83,19 @@ Example of an aside component, where the user is explicitly passing in content t
 </div>
 
 This is another example of an aside. This time, the content is passed as a child of the `ontario-aside` component, which allows for HTML content to be passed. A `highlightColour` option is also passed.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-aside
@@ -49,6 +110,53 @@ This is another example of an aside. This time, the content is passed as a child
 	</p>
 	<p><a href="#">Learn more about Canada's global missions.</a></p>
 </ontario-aside>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioAside
+	headingType="h4"
+	headingContentType="string"
+	headingContent="This is an aside heading"
+	highlightColour="purple"
+>
+	<p>
+		As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of
+		global emissions.
+	</p>
+	<p>
+		<a href="#">Learn more about Canada's global missions.</a>
+	</p>
+</OntarioAside>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-aside
+	[headingType]="'h4'"
+	[headingContentType]="'string'"
+	[headingContent]="'This is an aside heading'"
+	[highlightColour]="'purple'"
+>
+	<p>
+		As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of
+		global emissions.
+	</p>
+	<p><a href="#">Learn more about Canada's global missions.</a></p>
+</ontario-aside>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <div>

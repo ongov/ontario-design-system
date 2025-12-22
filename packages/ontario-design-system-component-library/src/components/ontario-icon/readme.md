@@ -1,6 +1,8 @@
 import { OntarioIconAccessibility } from '@ongov/ontario-design-system-component-library-react';
 import { OntarioIconBookmarkOff } from '@ongov/ontario-design-system-component-library-react';
 import { OntarioIconBookmarkOn } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-icon
 
@@ -20,21 +22,99 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of a bare-bones icon component, the user is referencing the Ontario Design System's accessibility icon. The default colour will display as black.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-icon-accessibility></ontario-icon-accessibility>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
 <OntarioIconAccessibility></OntarioIconAccessibility>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-icon-accessibility></ontario-icon-accessibility>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+<div>
+	<OntarioIconAccessibility></OntarioIconAccessibility>
+</div>
 
 Example of a bookmark icon, where the user is is passing a colour property of 'Grey'.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-icon-bookmark-off colour="grey" icon-width="32"></ontario-icon-bookmark-off>
 <ontario-icon-bookmark-on colour="grey" icon-width="32"></ontario-icon-bookmark-on>
 ```
 
-<OntarioIconBookmarkOff colour="grey" icon-width="32"></OntarioIconBookmarkOff>
-<OntarioIconBookmarkOn colour="grey" icon-width="32"></OntarioIconBookmarkOn>
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioIconBookmarkOff colour="grey" iconWidth={32}></OntarioIconBookmarkOff>
+<OntarioIconBookmarkOn colour="grey" iconWidth={32}></OntarioIconBookmarkOn>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-icon-bookmark-off [colour]="'grey'" [iconWidth]="32"></ontario-icon-bookmark-off>
+<ontario-icon-bookmark-on [colour]="'grey'" [iconWidth]="32"></ontario-icon-bookmark-on>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+<div>
+	<OntarioIconBookmarkOff colour="grey" iconWidth={32}></OntarioIconBookmarkOff>
+	<OntarioIconBookmarkOn colour="grey" iconWidth={32}></OntarioIconBookmarkOn>
+</div>
 
 <!-- Auto Generated Below -->
 
