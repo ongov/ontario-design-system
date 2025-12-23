@@ -1,3 +1,36 @@
+# 6.0.0-alpha.10 (2025-12-23)
+
+- **@ongov/ontario-design-system-component-library:** feat(badge)!: update colour prop to use kebab-case & add legacy support 52789f0
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** fix tab navigation from overflow to tab eef4ae4
+- **@ongov/ontario-design-system-component-library:** ensure focus trap is working properly and we are not defining the same constant over again b392577
+- **@ongov/ontario-design-system-component-library:** ensures first item always gets focus when menu opens a5bce4d
+- **@ongov/ontario-design-system-component-library:** fixed bugs with arrow keys and tabbing on mobile dea4546
+- **@ongov/ontario-design-system-component-library:** fixed the index page and removed menubuttonhref fa2dcf4
+- **@ongov/ontario-design-system-component-library:** fixed the menu button focus state when using shift tab 2241ef0
+- **@ongov/ontario-design-system-component-library:** removed current index from tabs component and added ability to add an icon to menu item c16fd32
+- **footer:** replace url("") fallback with 'none' in CSS background-image 8f93d31
+- remove documentation app 3271167
+
+### Features
+
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** added language handling for header menus f129f39
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** adding tabbing functionality and component for mobile menu a27c52f
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** change to stencil events e1ad2ed
+- **@ongov/ontario-design-system-component-library:** adding tabbing functionality and component for mobile menu 58dc659
+- **@ongov/ontario-design-system-component-library:** adding tabbing functionality and component for mobile menu 5fee02e
+- **@ongov/ontario-design-system-component-library:** adds new more-accounts icon, generates more accounts icon component 11cc0ab
+- **@ongov/ontario-design-system-component-library:** adds new tune icon svg, generates new tune icon component b4238ef
+- **@ongov/ontario-design-system-component-library:** tabbing focus works on mobile 6364449
+
+### BREAKING CHANGES
+
+- **@ongov/ontario-design-system-component-library:** Badge colour prop values are now defined in kebab-case. Legacy camelCase values
+  are still accepted but deprecated and will log a warning. Support will be
+  removed in a future major release.
+
 # 6.0.0-alpha.9 (2025-11-24)
 
 ### Bug Fixes
