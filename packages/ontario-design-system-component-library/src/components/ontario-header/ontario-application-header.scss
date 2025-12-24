@@ -158,21 +158,22 @@ $border-width-2: 2px;
 	@extend %h4-styles;
 	margin-bottom: spacing.$spacing-0;
 	max-width: $application-subheader-heading-max-width;
+	color: colours.$ontario-colour-white;
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
 
 	a {
 		color: colours.$ontario-colour-white;
-		font-weight: fontWeights.$ontario-font-weights-semi-bold;
 		text-decoration: none;
-
-		&:focus {
-			@extend %ontario-focus;
-		}
 
 		&:hover,
 		&:active,
 		&:visited {
 			color: colours.$ontario-colour-white;
 			text-decoration: underline;
+		}
+
+		&:focus {
+			@extend %ontario-focus;
 		}
 	}
 }
