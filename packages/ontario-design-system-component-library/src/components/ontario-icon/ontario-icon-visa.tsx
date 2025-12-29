@@ -23,6 +23,12 @@ export class OntarioIconVisa implements Icon {
 	@State() iconWidthState: number;
 
 	/**
+	 * Whether the icon should be hidden from assistive technologies.
+	 * When set to "true", the icon will have aria-hidden="true" on the SVG element.
+	 */
+	@Prop() ariaHidden: string | null = null;
+
+	/**
 	 * Watch for changes in the `iconWidth` variable for validation purpose.
 	 * If the user input is not a number or is a negative number then `iconWidth` will be set to its default (24).
 	 */
@@ -36,9 +42,7 @@ export class OntarioIconVisa implements Icon {
 				.addRegularText('on')
 				.addMonospaceText(' <ontario-icon-visa> ')
 				.addRegularText(
-					`${
-						isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'
-					}; only a positive number is allowed. The default size of`,
+					`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`,
 				)
 				.addMonospaceText(' 24px ')
 				.addRegularText('was assumed.')
@@ -89,7 +93,14 @@ export class OntarioIconVisa implements Icon {
 				class={`ontario-icon ontario-icon--width-${this.iconWidthState}`}
 				style={{ width: `${this.iconWidthState}px` }}
 			>
-				<svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="visa">
+				<svg
+					class="svg-icon"
+					role="img"
+					aria-hidden={this.ariaHidden}
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					id="visa"
+				>
 					<path d="M23 5H1v13.974h22V5z" fill="#fff" />
 					<path d="M22.633 16.703H1.367v1.905h21.267v-1.905z" fill="#fcb316" />
 					<path

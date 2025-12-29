@@ -627,6 +627,11 @@ export namespace Components {
     }
     interface OntarioIconAccessibility {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -638,6 +643,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconAccount {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -651,6 +661,11 @@ export namespace Components {
     }
     interface OntarioIconAdd {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -662,6 +677,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconAddAlt {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -675,12 +695,22 @@ export namespace Components {
     }
     interface OntarioIconAlertError {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
         "iconWidth": IconSize;
     }
     interface OntarioIconAlertInformation {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
@@ -689,6 +719,11 @@ export namespace Components {
     }
     interface OntarioIconAlertSuccess {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
@@ -696,12 +731,22 @@ export namespace Components {
     }
     interface OntarioIconAlertWarning {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
         "iconWidth": IconSize;
     }
     interface OntarioIconArrowUp {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -715,6 +760,11 @@ export namespace Components {
     }
     interface OntarioIconAttach {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -726,6 +776,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconBookmarkOff {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -739,6 +794,11 @@ export namespace Components {
     }
     interface OntarioIconBookmarkOn {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -750,6 +810,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconCalendar {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -763,6 +828,11 @@ export namespace Components {
     }
     interface OntarioIconCamera {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -774,6 +844,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconChevronDown {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -787,6 +862,11 @@ export namespace Components {
     }
     interface OntarioIconChevronLeft {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -798,6 +878,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconChevronRight {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -811,6 +896,11 @@ export namespace Components {
     }
     interface OntarioIconChevronUp {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -822,6 +912,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconClock {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -835,6 +930,11 @@ export namespace Components {
     }
     interface OntarioIconClose {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -846,6 +946,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconCloseHeader {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -859,6 +964,11 @@ export namespace Components {
     }
     interface OntarioIconCloud {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -870,6 +980,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconCollapse {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -883,6 +998,11 @@ export namespace Components {
     }
     interface OntarioIconCreditCard {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -894,6 +1014,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconCriticalAlertWarning {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -907,6 +1032,11 @@ export namespace Components {
     }
     interface OntarioIconDelete {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -918,6 +1048,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconDocument {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -931,6 +1066,11 @@ export namespace Components {
     }
     interface OntarioIconDownload {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -943,12 +1083,22 @@ export namespace Components {
     }
     interface OntarioIconDropdownArrow {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
         "iconWidth": IconSize;
     }
     interface OntarioIconEdit {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -962,6 +1112,11 @@ export namespace Components {
     }
     interface OntarioIconEmail {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -973,6 +1128,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconExpand {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -986,6 +1146,11 @@ export namespace Components {
     }
     interface OntarioIconExport {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -997,6 +1162,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconFacebook {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1010,6 +1180,11 @@ export namespace Components {
     }
     interface OntarioIconFacebookAlt {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1021,6 +1196,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconFavouriteOff {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1034,6 +1214,11 @@ export namespace Components {
     }
     interface OntarioIconFavouriteOn {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1045,6 +1230,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconFilter {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1058,6 +1248,11 @@ export namespace Components {
     }
     interface OntarioIconFlickr {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1069,6 +1264,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconGrid {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1082,6 +1282,11 @@ export namespace Components {
     }
     interface OntarioIconHelp {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1093,6 +1298,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconInstagram {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1106,12 +1316,22 @@ export namespace Components {
     }
     interface OntarioIconInteracEn {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
         "iconWidth": IconSize;
     }
     interface OntarioIconInteracEnAlt {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
@@ -1120,6 +1340,11 @@ export namespace Components {
     }
     interface OntarioIconInteracFr {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
@@ -1127,12 +1352,22 @@ export namespace Components {
     }
     interface OntarioIconInteracFrAlt {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
         "iconWidth": IconSize;
     }
     interface OntarioIconLinkedin {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1146,6 +1381,11 @@ export namespace Components {
     }
     interface OntarioIconLinkedinAlt {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1157,6 +1397,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconList {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1170,6 +1415,11 @@ export namespace Components {
     }
     interface OntarioIconLiveChat {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1181,6 +1431,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconLocationOff {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1194,6 +1449,11 @@ export namespace Components {
     }
     interface OntarioIconLocationOn {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1205,6 +1465,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconLockOff {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1218,6 +1483,11 @@ export namespace Components {
     }
     interface OntarioIconLockOn {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1229,6 +1499,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconMap {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1242,6 +1517,11 @@ export namespace Components {
     }
     interface OntarioIconMastercard {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
@@ -1249,12 +1529,22 @@ export namespace Components {
     }
     interface OntarioIconMastercardAlt {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
         "iconWidth": IconSize;
     }
     interface OntarioIconMediaFastForward {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1268,6 +1558,11 @@ export namespace Components {
     }
     interface OntarioIconMediaFastRewind {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1279,6 +1574,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconMediaPause {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1292,6 +1592,11 @@ export namespace Components {
     }
     interface OntarioIconMediaPlay {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1303,6 +1608,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconMediaStop {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1316,6 +1626,11 @@ export namespace Components {
     }
     interface OntarioIconMenu {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1327,6 +1642,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconMenuHeader {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1340,6 +1660,11 @@ export namespace Components {
     }
     interface OntarioIconMicrophoneOff {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1351,6 +1676,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconMicrophoneOn {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1364,6 +1694,11 @@ export namespace Components {
     }
     interface OntarioIconMoreAccounts {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1375,6 +1710,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconMoreVertical {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1388,6 +1728,11 @@ export namespace Components {
     }
     interface OntarioIconNewWindow {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1399,6 +1744,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconNext {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1412,6 +1762,11 @@ export namespace Components {
     }
     interface OntarioIconNotification {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1423,6 +1778,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconPasswordHide {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1436,6 +1796,11 @@ export namespace Components {
     }
     interface OntarioIconPasswordShow {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1447,6 +1812,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconPhone {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1460,6 +1830,11 @@ export namespace Components {
     }
     interface OntarioIconPhoto {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1471,6 +1846,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconPinLocationOff {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1484,6 +1864,11 @@ export namespace Components {
     }
     interface OntarioIconPinLocationOn {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1495,6 +1880,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconPrevious {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1508,6 +1898,11 @@ export namespace Components {
     }
     interface OntarioIconPrint {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1519,6 +1914,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconRemove {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1532,6 +1932,11 @@ export namespace Components {
     }
     interface OntarioIconRemoveAlt {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1543,6 +1948,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconReplay {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1556,6 +1966,11 @@ export namespace Components {
     }
     interface OntarioIconRssFeed {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1567,6 +1982,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconSave {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1580,6 +2000,11 @@ export namespace Components {
     }
     interface OntarioIconSearch {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1591,6 +2016,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconSearchWhite {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1604,6 +2034,11 @@ export namespace Components {
     }
     interface OntarioIconSentiment1 {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1615,6 +2050,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconSentiment2 {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1628,6 +2068,11 @@ export namespace Components {
     }
     interface OntarioIconSentiment3 {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1639,6 +2084,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconSentiment4 {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1652,6 +2102,11 @@ export namespace Components {
     }
     interface OntarioIconSentiment5 {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1663,6 +2118,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconSettings {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1676,6 +2136,11 @@ export namespace Components {
     }
     interface OntarioIconShare {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1687,6 +2152,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconSort {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1700,6 +2170,11 @@ export namespace Components {
     }
     interface OntarioIconSortAlphabeticalAscending {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1711,6 +2186,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconSortAlphabeticalDescending {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1724,6 +2204,11 @@ export namespace Components {
     }
     interface OntarioIconSortAscending {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1735,6 +2220,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconSortDescending {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1748,6 +2238,11 @@ export namespace Components {
     }
     interface OntarioIconSortVariant {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1759,6 +2254,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconTag {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1772,6 +2272,11 @@ export namespace Components {
     }
     interface OntarioIconTextMessage {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1783,6 +2288,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconTimer {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1796,6 +2306,11 @@ export namespace Components {
     }
     interface OntarioIconTransportBicycle {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1807,6 +2322,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconTransportBus {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1820,6 +2340,11 @@ export namespace Components {
     }
     interface OntarioIconTransportCar {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1831,6 +2356,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconTransportWalk {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1844,6 +2374,11 @@ export namespace Components {
     }
     interface OntarioIconTty {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1855,6 +2390,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconTune {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1868,6 +2408,11 @@ export namespace Components {
     }
     interface OntarioIconTwitter {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1879,6 +2424,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconTwitterAlt {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1892,6 +2442,11 @@ export namespace Components {
     }
     interface OntarioIconUpload {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1903,6 +2458,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconVideo {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1916,12 +2476,22 @@ export namespace Components {
     }
     interface OntarioIconVisa {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
         "iconWidth": IconSize;
     }
     interface OntarioIconVoteDislike {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1935,6 +2505,11 @@ export namespace Components {
     }
     interface OntarioIconVoteLike {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1946,6 +2521,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconVpnKey {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -1959,6 +2539,11 @@ export namespace Components {
     }
     interface OntarioIconWheelchair {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1971,6 +2556,11 @@ export namespace Components {
     }
     interface OntarioIconWifi {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -1982,6 +2572,11 @@ export namespace Components {
         "iconWidth": IconSize;
     }
     interface OntarioIconYoutube {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden": string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4404,6 +4999,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconAccessibility {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4415,6 +5015,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconAccount {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4428,6 +5033,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconAdd {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4439,6 +5049,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconAddAlt {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4452,12 +5067,22 @@ declare namespace LocalJSX {
     }
     interface OntarioIconAlertError {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
         "iconWidth"?: IconSize;
     }
     interface OntarioIconAlertInformation {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
@@ -4466,6 +5091,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconAlertSuccess {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
@@ -4473,12 +5103,22 @@ declare namespace LocalJSX {
     }
     interface OntarioIconAlertWarning {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
         "iconWidth"?: IconSize;
     }
     interface OntarioIconArrowUp {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4492,6 +5132,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconAttach {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4503,6 +5148,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconBookmarkOff {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4516,6 +5166,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconBookmarkOn {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4527,6 +5182,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconCalendar {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4540,6 +5200,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconCamera {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4551,6 +5216,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconChevronDown {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4564,6 +5234,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconChevronLeft {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4575,6 +5250,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconChevronRight {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4588,6 +5268,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconChevronUp {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4599,6 +5284,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconClock {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4612,6 +5302,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconClose {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4623,6 +5318,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconCloseHeader {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4636,6 +5336,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconCloud {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4647,6 +5352,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconCollapse {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4660,6 +5370,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconCreditCard {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4671,6 +5386,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconCriticalAlertWarning {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4684,6 +5404,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconDelete {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4695,6 +5420,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconDocument {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4708,6 +5438,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconDownload {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4720,12 +5455,22 @@ declare namespace LocalJSX {
     }
     interface OntarioIconDropdownArrow {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
         "iconWidth"?: IconSize;
     }
     interface OntarioIconEdit {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4739,6 +5484,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconEmail {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4750,6 +5500,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconExpand {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4763,6 +5518,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconExport {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4774,6 +5534,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconFacebook {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4787,6 +5552,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconFacebookAlt {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4798,6 +5568,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconFavouriteOff {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4811,6 +5586,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconFavouriteOn {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4822,6 +5602,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconFilter {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4835,6 +5620,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconFlickr {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4846,6 +5636,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconGrid {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4859,6 +5654,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconHelp {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4870,6 +5670,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconInstagram {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4883,12 +5688,22 @@ declare namespace LocalJSX {
     }
     interface OntarioIconInteracEn {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
         "iconWidth"?: IconSize;
     }
     interface OntarioIconInteracEnAlt {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
@@ -4897,6 +5712,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconInteracFr {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
@@ -4904,12 +5724,22 @@ declare namespace LocalJSX {
     }
     interface OntarioIconInteracFrAlt {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
         "iconWidth"?: IconSize;
     }
     interface OntarioIconLinkedin {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4923,6 +5753,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconLinkedinAlt {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4934,6 +5769,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconList {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4947,6 +5787,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconLiveChat {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4958,6 +5803,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconLocationOff {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4971,6 +5821,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconLocationOn {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -4982,6 +5837,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconLockOff {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -4995,6 +5855,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconLockOn {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5006,6 +5871,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconMap {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5019,6 +5889,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMastercard {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
@@ -5026,12 +5901,22 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMastercardAlt {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
         "iconWidth"?: IconSize;
     }
     interface OntarioIconMediaFastForward {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5045,6 +5930,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMediaFastRewind {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5056,6 +5946,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconMediaPause {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5069,6 +5964,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMediaPlay {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5080,6 +5980,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconMediaStop {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5093,6 +5998,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMenu {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5104,6 +6014,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconMenuHeader {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5117,6 +6032,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMicrophoneOff {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5128,6 +6048,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconMicrophoneOn {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5141,6 +6066,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconMoreAccounts {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5152,6 +6082,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconMoreVertical {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5165,6 +6100,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconNewWindow {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5176,6 +6116,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconNext {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5189,6 +6134,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconNotification {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5200,6 +6150,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconPasswordHide {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5213,6 +6168,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconPasswordShow {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5224,6 +6184,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconPhone {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5237,6 +6202,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconPhoto {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5248,6 +6218,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconPinLocationOff {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5261,6 +6236,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconPinLocationOn {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5272,6 +6252,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconPrevious {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5285,6 +6270,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconPrint {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5296,6 +6286,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconRemove {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5309,6 +6304,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconRemoveAlt {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5320,6 +6320,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconReplay {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5333,6 +6338,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconRssFeed {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5344,6 +6354,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconSave {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5357,6 +6372,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconSearch {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5368,6 +6388,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconSearchWhite {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5381,6 +6406,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconSentiment1 {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5392,6 +6422,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconSentiment2 {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5405,6 +6440,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconSentiment3 {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5416,6 +6456,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconSentiment4 {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5429,6 +6474,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconSentiment5 {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5440,6 +6490,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconSettings {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5453,6 +6508,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconShare {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5464,6 +6524,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconSort {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5477,6 +6542,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconSortAlphabeticalAscending {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5488,6 +6558,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconSortAlphabeticalDescending {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5501,6 +6576,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconSortAscending {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5512,6 +6592,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconSortDescending {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5525,6 +6610,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconSortVariant {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5536,6 +6626,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconTag {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5549,6 +6644,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconTextMessage {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5560,6 +6660,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconTimer {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5573,6 +6678,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconTransportBicycle {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5584,6 +6694,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconTransportBus {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5597,6 +6712,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconTransportCar {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5608,6 +6728,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconTransportWalk {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5621,6 +6746,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconTty {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5632,6 +6762,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconTune {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5645,6 +6780,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconTwitter {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5656,6 +6796,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconTwitterAlt {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5669,6 +6814,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconUpload {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5680,6 +6830,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconVideo {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5693,12 +6848,22 @@ declare namespace LocalJSX {
     }
     interface OntarioIconVisa {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
          */
         "iconWidth"?: IconSize;
     }
     interface OntarioIconVoteDislike {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5712,6 +6877,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconVoteLike {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5723,6 +6893,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconVpnKey {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
@@ -5736,6 +6911,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconWheelchair {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5748,6 +6928,11 @@ declare namespace LocalJSX {
     }
     interface OntarioIconWifi {
         /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
+        /**
           * Set the icon's colour.
           * @default 'black'
          */
@@ -5759,6 +6944,11 @@ declare namespace LocalJSX {
         "iconWidth"?: IconSize;
     }
     interface OntarioIconYoutube {
+        /**
+          * Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element.
+          * @default null
+         */
+        "ariaHidden"?: string | null;
         /**
           * Set the icon's colour.
           * @default 'black'
