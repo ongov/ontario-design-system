@@ -70,7 +70,7 @@
 		"test": "stencil test --spec --e2e",
 		"test.watch": "stencil test --spec --e2e --watchAll",
 		"pretest:e2e": "pnpm run build:config",
-		"test:e2e": "stencil test --e2e",
+		"test:e2e": "playwright test",
 		"pretest:unit": "pnpm run build:config",
 		"test:unit": "stencil test --spec"
 	},
@@ -82,7 +82,9 @@
 		"uuid": "^11.0.5"
 	},
 	"devDependencies": {
+		"@playwright/test": "1.55.0",
 		"@stencil/angular-output-target": "^0.10.1",
+		"@stencil/playwright": "^0.2.1",
 		"@stencil/react-output-target": "^1.0.2",
 		"@stencil/sass": "^3.2.2",
 		"@types/jest": "^29.5.3",
@@ -103,7 +105,6 @@
 		"jszip": "^3.10.1",
 		"mock-fs": "^5.5.0",
 		"prettier": "^3.4.2",
-		"puppeteer": "^23.10.4",
 		"rollup-plugin-dotenv": "^0.5.1",
 		"sass-embedded": "^1.89.2",
 		"shx": "^0.4.0",
