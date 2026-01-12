@@ -111,18 +111,21 @@ Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel
 
 ## Properties
 
-| Property    | Attribute    | Description                                                                                                          | Type                   | Default     |
-| ----------- | ------------ | -------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |
-| `menuItems` | `menu-items` | The menu items to display. Can be passed as a MenuItem array or JSON string. The items that will go inside the menu. | `MenuItem[] \| string` | `undefined` |
+| Property     | Attribute      | Description                                                                                                                                                                                                  | Type                        | Default     |
+| ------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- | ----------- |
+| `isLastMenu` | `is-last-menu` | Whether this is the last menu in a series of menus. If true, Tab from last item goes to next element on page. If false, Tab from last item emits focusNextElement for header to handle.                      | `boolean \| undefined`      | `true`      |
+| `language`   | `language`     | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English. | `"en" \| "fr" \| undefined` | `'en'`      |
+| `menuItems`  | `menu-items`   | The menu items to display. Can be passed as a MenuItem array or JSON string. The items that will go inside the menu.                                                                                         | `MenuItem[] \| string`      | `undefined` |
 
 ## Events
 
-| Event                  | Description                                                                                            | Type                |
-| ---------------------- | ------------------------------------------------------------------------------------------------------ | ------------------- |
-| `endOfMenuReached`     | Event emitted when Tab is pressed on the last menu item (embedded mode).                               | `CustomEvent<void>` |
-| `focusMenuButton`      | Event emitted when Shift+Tab is pressed on first menu item. Tells the header to focus the menu button. | `CustomEvent<void>` |
-| `menuButtonTabPressed` | Event emitted when user Tabs from the menu button. Asks if menu is open and ready to receive focus.    | `CustomEvent<void>` |
-| `menuClosed`           | Event emitted when menu closes (standalone mode).                                                      | `CustomEvent<void>` |
+| Event                  | Description                                                                                                                         | Type                |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| `endOfMenuReached`     | Event emitted when Tab is pressed on the last menu item (embedded mode).                                                            | `CustomEvent<void>` |
+| `focusMenuButton`      | Event emitted when Shift+Tab is pressed on first menu item. Tells the header to focus the menu button.                              | `CustomEvent<void>` |
+| `focusNextElement`     | Event emitted when Tab is pressed on the last menu item in standalone mode. Tells the header to focus the next appropriate element. | `CustomEvent<void>` |
+| `menuButtonTabPressed` | Event emitted when user Tabs from the menu button. Asks if menu is open and ready to receive focus.                                 | `CustomEvent<void>` |
+| `menuClosed`           | Event emitted when menu closes (standalone mode).                                                                                   | `CustomEvent<void>` |
 
 ## Dependencies
 
