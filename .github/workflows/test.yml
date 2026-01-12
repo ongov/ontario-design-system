@@ -78,8 +78,8 @@ jobs:
       - name: Install Playwright Browsers
         run: pnpm --filter app-nextjs exec playwright install --with-deps
 
-      - name: Run All E2E Tests
-        run: pnpm run test:e2e
+      - name: Run E2E Tests
+        run: pnpm run test:e2e:stencil
 
       - name: Upload Stencil E2E Test Results
         if: ${{ !cancelled() }}
@@ -110,7 +110,7 @@ jobs:
           path: packages/ontario-design-system-component-library/test-results/playwright/results.xml
           reporter: java-junit
 
-  vrt-test:
+  vrt-apps-test:
     runs-on: ubuntu-latest
     needs: ['unit-test', 'e2e-test']
     permissions:
