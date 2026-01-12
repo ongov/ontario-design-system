@@ -112,7 +112,7 @@ jobs:
 
   vrt-test:
     runs-on: ubuntu-latest
-    needs: unit-test
+    needs: ['unit-test', 'e2e-test']
     permissions:
       contents: read
       actions: read
@@ -176,7 +176,7 @@ jobs:
 
   e2e-apps-test:
     runs-on: ubuntu-latest
-    needs: unit-test
+    needs: ['unit-test', 'e2e-test']
     permissions:
       contents: read
       actions: read
