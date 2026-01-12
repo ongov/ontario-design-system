@@ -6,4 +6,6 @@ expect.extend(matchers);
 
 export default createConfig({
 	// Overwrite Playwright config options here
+
+	reporter: [['list'], ['html'], ['junit', { outputFile: 'test-results/playwright/results.xml' }]],
 });
