@@ -75,7 +75,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Install Playwright Browsers
-        run: pnpm --filter app-nextjs exec playwright install --with-deps
+        run: pnpm --filter @ongov/ontario-design-system-component-library exec playwright install --with-deps
 
       - name: Run Stencil E2E Tests
         run: pnpm run test:e2e:stencil
