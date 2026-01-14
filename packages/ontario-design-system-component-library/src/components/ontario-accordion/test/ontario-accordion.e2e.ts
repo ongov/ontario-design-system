@@ -46,12 +46,12 @@ test.describe('ontario-accordion', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.setContent(`
 			<ontario-accordion
-			title="My Accordion"
-			accordion-data='[
-				{"label": "Accordion data 1", "content": "Example content 1"},
-				{"label": "Accordion data 2", "content": "Example content 2"},
-				{"label": "Accordion data 3", "content": "Example content 3"}
-			]'
+				title="My Accordion"
+				accordion-data='[
+					{"label": "Accordion data 1", "content": "Example content 1"},
+					{"label": "Accordion data 2", "content": "Example content 2"},
+					{"label": "Accordion data 3", "content": "Example content 3"}
+				]'
 			></ontario-accordion>
 		`);
 
@@ -69,18 +69,18 @@ test.describe('ontario-accordion', () => {
 	});
 
 	test('initial DOM states', async () => {
-		const accordionItems = await host.locator('.ontario-accordion').all();
+		const accordionElements = await host.locator('.ontario-accordion').all();
 		const groupToggle = await host.locator('.ontario-accordion__button--expand-all').first();
 
 		await expect(groupToggle).toHaveAttribute('aria-expanded', 'false');
 		await expect(groupToggle).toHaveText(translations.accordion.expand['en']);
 
-		for (const accordion of accordionItems) {
-			const accordionHeading = await accordion.locator('h3.ontario-accordion__heading');
-			const accordionToggleBtn = await accordion.locator('button.ontario-accordion__button');
-			const accordionContent = await accordion.locator('section.ontario-accordion__content');
+		for (const accordionElement of accordionElements) {
+			const accordionHeading = await accordionElement.locator('h3.ontario-accordion__heading');
+			const accordionToggleBtn = await accordionElement.locator('button.ontario-accordion__button');
+			const accordionContent = await accordionElement.locator('section.ontario-accordion__content');
 
-			await expect(accordion).not.toContainClass('open');
+			await expect(accordionElement).not.toContainClass('open');
 			await expect(accordionHeading).not.toContainClass('ontario-expander--active');
 			await expect(accordionToggleBtn).toHaveAttribute('aria-expanded', 'false');
 
@@ -90,16 +90,16 @@ test.describe('ontario-accordion', () => {
 		}
 	});
 
-	test('expands and collapses first accordion item', async ({ page }) => {
-		const firstItem = host.locator('.ontario-accordion').first();
-		const firstItemHeading = firstItem.locator('h3.ontario-accordion__heading');
-		const firstItemToggleBtn = firstItem.locator('button.ontario-accordion__button');
-		const accordionContent = firstItem.locator('section.ontario-accordion__content');
+	test('expands and collapses first accordion element', async ({ page }) => {
+		const firstElement = host.locator('.ontario-accordion').first();
+		const firstElementHeading = firstElement.locator('h3.ontario-accordion__heading');
+		const firstElementToggleBtn = firstElement.locator('button.ontario-accordion__button');
+		const firstElementContent = firstElement.locator('section.ontario-accordion__content');
 
 		/********** TEST SINGLE ACCORDION EXPAND **********/
 
 		// Click to expand
-		await firstItemToggleBtn.click();
+		await firstElementToggleBtn.click();
 		await page.waitForChanges();
 
 		// Confirm the accordionChange event fired
@@ -113,18 +113,18 @@ test.describe('ontario-accordion', () => {
 		});
 
 		// Verify after click that "open" values change as expected
-		await expect(firstItemToggleBtn).toHaveAttribute('aria-expanded', 'true');
-		await expect(firstItemHeading).toContainClass('ontario-expander--active');
-		await expect(firstItem).toContainClass('open');
+		await expect(firstElementToggleBtn).toHaveAttribute('aria-expanded', 'true');
+		await expect(firstElementHeading).toContainClass('ontario-expander--active');
+		await expect(firstElement).toContainClass('open');
 
-		await expect(accordionContent).toHaveAttribute('aria-hidden', 'false');
-		await expect(accordionContent).toContainClass('ontario-expander__content--opened');
-		await expect(accordionContent).not.toContainClass('ontario-accordion__content--closed');
+		await expect(firstElementContent).toHaveAttribute('aria-hidden', 'false');
+		await expect(firstElementContent).toContainClass('ontario-expander__content--opened');
+		await expect(firstElementContent).not.toContainClass('ontario-accordion__content--closed');
 
 		/********** TEST SINGLE ACCORDION COLLAPSE **********/
 
 		// Click to collapse
-		await firstItemToggleBtn.click();
+		await firstElementToggleBtn.click();
 		await page.waitForChanges();
 
 		// Confirm the accordionChange event fired
@@ -138,17 +138,17 @@ test.describe('ontario-accordion', () => {
 		});
 
 		// Verify after click that "closed" values change as expected
-		await expect(firstItemToggleBtn).toHaveAttribute('aria-expanded', 'false');
-		await expect(firstItemHeading).not.toContainClass('ontario-expander--active');
-		await expect(firstItem).not.toContainClass('open');
+		await expect(firstElementToggleBtn).toHaveAttribute('aria-expanded', 'false');
+		await expect(firstElementHeading).not.toContainClass('ontario-expander--active');
+		await expect(firstElement).not.toContainClass('open');
 
-		await expect(accordionContent).toHaveAttribute('aria-hidden', 'true');
-		await expect(accordionContent).toContainClass('ontario-accordion__content--closed');
-		await expect(accordionContent).not.toContainClass('ontario-expander__content--opened');
+		await expect(firstElementContent).toHaveAttribute('aria-hidden', 'true');
+		await expect(firstElementContent).toContainClass('ontario-accordion__content--closed');
+		await expect(firstElementContent).not.toContainClass('ontario-expander__content--opened');
 	});
 
-	test('expands and collapses all accordion items', async ({ page }) => {
-		const accordionItems = await host.locator('.ontario-accordion').all();
+	test('expands and collapses all accordion elements', async ({ page }) => {
+		const accordionElements = await host.locator('.ontario-accordion').all();
 		const groupToggle = await host.locator('.ontario-accordion__button--expand-all').first();
 
 		/********** TEST ALL ACCORDIONS EXPAND **********/
@@ -161,18 +161,18 @@ test.describe('ontario-accordion', () => {
 		await expect(groupToggle).toHaveAttribute('aria-expanded', 'true');
 		await expect(groupToggle).toHaveText(translations.accordion.collapse['en']);
 
-		for (const accordion of accordionItems) {
-			const accordionHeading = await accordion.locator('h3.ontario-accordion__heading');
-			const accordionToggleBtn = await accordion.locator('button.ontario-accordion__button');
-			const accordionContent = await accordion.locator('section.ontario-accordion__content');
+		for (const accordionElement of accordionElements) {
+			const accordionElementHeading = await accordionElement.locator('h3.ontario-accordion__heading');
+			const accordionElementToggleBtn = await accordionElement.locator('button.ontario-accordion__button');
+			const accordionElementContent = await accordionElement.locator('section.ontario-accordion__content');
 
-			await expect(accordion).toContainClass('open');
-			await expect(accordionHeading).toContainClass('ontario-expander--active');
-			await expect(accordionToggleBtn).toHaveAttribute('aria-expanded', 'true');
+			await expect(accordionElement).toContainClass('open');
+			await expect(accordionElementHeading).toContainClass('ontario-expander--active');
+			await expect(accordionElementToggleBtn).toHaveAttribute('aria-expanded', 'true');
 
-			await expect(accordionContent).toHaveAttribute('aria-hidden', 'false');
-			await expect(accordionContent).toContainClass('ontario-expander__content--opened');
-			await expect(accordionContent).not.toContainClass('ontario-accordion__content--closed');
+			await expect(accordionElementContent).toHaveAttribute('aria-hidden', 'false');
+			await expect(accordionElementContent).toContainClass('ontario-expander__content--opened');
+			await expect(accordionElementContent).not.toContainClass('ontario-accordion__content--closed');
 		}
 
 		// Confirm the accordionChange event fired
@@ -195,18 +195,18 @@ test.describe('ontario-accordion', () => {
 		await expect(groupToggle).toHaveAttribute('aria-expanded', 'false');
 		await expect(groupToggle).toHaveText(translations.accordion.expand['en']);
 
-		for (const accordion of accordionItems) {
-			const accordionHeading = await accordion.locator('h3.ontario-accordion__heading');
-			const accordionToggleBtn = await accordion.locator('button.ontario-accordion__button');
-			const accordionContent = await accordion.locator('section.ontario-accordion__content');
+		for (const accordionElement of accordionElements) {
+			const accordionElementHeading = await accordionElement.locator('h3.ontario-accordion__heading');
+			const accordionElementToggleBtn = await accordionElement.locator('button.ontario-accordion__button');
+			const accordionElementContent = await accordionElement.locator('section.ontario-accordion__content');
 
-			await expect(accordion).not.toContainClass('open');
-			await expect(accordionHeading).not.toContainClass('ontario-expander--active');
-			await expect(accordionToggleBtn).toHaveAttribute('aria-expanded', 'false');
+			await expect(accordionElement).not.toContainClass('open');
+			await expect(accordionElementHeading).not.toContainClass('ontario-expander--active');
+			await expect(accordionElementToggleBtn).toHaveAttribute('aria-expanded', 'false');
 
-			await expect(accordionContent).toHaveAttribute('aria-hidden', 'true');
-			await expect(accordionContent).toContainClass('ontario-accordion__content--closed');
-			await expect(accordionContent).not.toContainClass('ontario-expander__content--opened');
+			await expect(accordionElementContent).toHaveAttribute('aria-hidden', 'true');
+			await expect(accordionElementContent).toContainClass('ontario-accordion__content--closed');
+			await expect(accordionElementContent).not.toContainClass('ontario-expander__content--opened');
 		}
 
 		// Confirm the accordionChange event fired
