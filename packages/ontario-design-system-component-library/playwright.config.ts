@@ -6,6 +6,10 @@ expect.extend(matchers);
 
 export default createConfig({
 	// Overwrite Playwright config options here
+	retries: process.env.CI ? 2 : 0,
+	use: {
+		trace: 'retain-on-failure',
+	},
 
 	reporter: [['list'], ['html'], ['junit', { outputFile: 'test-results/playwright/results.xml' }]],
 });
