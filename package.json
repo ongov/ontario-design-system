@@ -16,6 +16,7 @@
 		"refresh": "pnpm run clean && pnpm install && pnpm run build-libs",
 		"semantic-release": "semantic-release",
 		"test:e2e": "lerna run test:e2e",
+		"test:e2e:stencil": "lerna run test:e2e --scope '@ongov/ontario-design-system-component-library'",
 		"test:e2e:apps": "lerna run test:e2e --scope 'app-*' --ignore 'app-web-components-documentation'",
 		"test:unit": "lerna run test:unit",
 		"test:vrt": "lerna run test:vrt",
