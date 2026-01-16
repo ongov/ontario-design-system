@@ -1,0 +1,20 @@
+x-playwright-runner: &playwright-runner
+  build:
+    context: ..
+    dockerfile: docker/playwright/Dockerfile
+  working_dir: /app
+  volumes:
+    - ..:/app
+
+services:
+  stencil-e2e-runner:
+    <<: *playwright-runner
+    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && pnpm --filter @ongov/ontario-design-system-component-library run test:e2e"
+
+  app-e2e-runner:
+    <<: *playwright-runner
+    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && pnpm -w run build-apps && pnpm --filter app-nextjs run test:e2e"
+
+  app-vrt-runner:
+    <<: *playwright-runner
+    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && pnpm -w run build-apps && pnpm --filter app-nextjs run test:vrt"
