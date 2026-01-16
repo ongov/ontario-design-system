@@ -18,9 +18,14 @@
 		"test:e2e": "lerna run test:e2e",
 		"test:e2e:stencil": "lerna run test:e2e --scope '@ongov/ontario-design-system-component-library'",
 		"test:e2e:apps": "lerna run test:e2e --scope 'app-*' --ignore 'app-web-components-documentation'",
+		"test:e2e:docker": "lerna run test:e2e:docker",
+		"test:e2e:stencil:docker": "lerna run test:e2e:docker --scope '@ongov/ontario-design-system-component-library'",
+		"test:e2e:apps:docker": "lerna run test:e2e:docker --scope 'app-*' --ignore 'app-web-components-documentation'",
 		"test:unit": "lerna run test:unit",
 		"test:vrt": "lerna run test:vrt",
+		"test:vrt:docker": "lerna run test:vrt:docker",
 		"test:update-snapshots": "lerna run test:update-snapshots",
+		"test:update-snapshots:docker": "lerna run test:update-snapshots:docker",
 		"test:all": "pnpm run test:unit && pnpm run test:e2e"
 	},
 	"devDependencies": {
