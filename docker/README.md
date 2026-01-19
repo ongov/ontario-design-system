@@ -3,16 +3,17 @@
 This folder hosts the shared Playwright runner image and Docker Compose services
 used for local E2E and VRT testing.
 
-The `scripts/docker-compose.sh` wrapper picks OS-specific overrides automatically.
+The `scripts/docker-compose.sh` wrapper runs Docker Compose with the repo-local
+file.
 
-The compose setup bind-mounts the repo and uses named volumes for `node_modules`
-and `.pnpm-store` so container-built dependencies stay in Linux containers.
+The compose setup bind-mounts the repo. It uses an entrypoint that aligns
+container UID/GID with your host (`PUID`/`PGID`) and fixes ownership of
+`node_modules`/`.pnpm-store` before dropping privileges.
 
 ## Structure
 
 - `docker/playwright/Dockerfile` - Base image with browsers baked in.
 - `docker/docker-compose.yml` - Local services for component and app tests.
-- `docker/docker-compose.linux.yml` - Linux-only overrides (host UID/GID).
 - `docker/.dockerignore` - Build ignore list (symlinked at repo root).
 
 ## Common Commands
