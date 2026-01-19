@@ -1,9 +1,0 @@
-services:
-  stencil-e2e-runner:
-    user: '${UID:-1000}:${GID:-1000}'
-
-  app-e2e-runner:
-    user: '${UID:-1000}:${GID:-1000}'
-
-  app-vrt-runner:
-    user: '${UID:-1000}:${GID:-1000}'
