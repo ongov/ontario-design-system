@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 @Directive({
 	selector: 'form',
 	outputs: ['valueChangeEvents: valueChanges'],
+	standalone: false,
 })
 export class FormValueChangesDirective {
 	public valueChangeEvents: EventEmitter<any>;
