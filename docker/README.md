@@ -49,3 +49,22 @@ pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker
 pnpm --filter app-nextjs run test:e2e:docker
 pnpm --filter app-nextjs run test:vrt:docker
 ```
+
+## Cleaning Volumes
+
+Remove all unused volumes:
+
+```bash
+docker volume prune
+```
+
+Remove the volumes created by this setup:
+
+```bash
+docker volume rm \
+  node_modules_root pnpm_store \
+  node_modules_app_angular node_modules_app_nextjs node_modules_app_react \
+  node_modules_app_web_components_documentation \
+  node_modules_component_library node_modules_component_library_angular node_modules_component_library_react \
+  node_modules_complete_styles node_modules_design_tokens node_modules_global_styles
+```
