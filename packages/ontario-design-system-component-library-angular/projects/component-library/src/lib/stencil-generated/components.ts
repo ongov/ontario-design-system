@@ -1,8 +1,16 @@
 /* tslint:disable */
 /* auto-generated angular directive proxies */
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, NgZone } from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	ElementRef,
+	EventEmitter,
+	Output,
+	NgZone,
+} from '@angular/core';
 
-import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
+import { ProxyCmp } from './angular-component-lib/utils';
 
 import { Components } from '@ongov/ontario-design-system-component-library';
 
@@ -11,19 +19,25 @@ import { Components } from '@ongov/ontario-design-system-component-library';
   inputs: ['accordionData', 'expandCollapseButton', 'language', 'name']
 })
 @Component({
-  selector: 'ontario-accordion',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['accordionData', 'expandCollapseButton', 'language', 'name'],
+	selector: 'ontario-accordion',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['accordionData', 'expandCollapseButton', 'language', 'name'],
+	outputs: ['accordionChange'],
+	standalone: false,
 })
 export class OntarioAccordion {
-  protected el: HTMLOntarioAccordionElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['accordionChange']);
-  }
+	protected el: HTMLOntarioAccordionElement;
+	@Output() accordionChange = new EventEmitter<CustomEvent<IOntarioAccordionAccordionChangeDetail>>();
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
 }
 
 
@@ -41,11 +55,12 @@ export declare interface OntarioAccordion extends Components.OntarioAccordion {
   inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour']
 })
 @Component({
-  selector: 'ontario-aside',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
+	selector: 'ontario-aside',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
+	standalone: false,
 })
 export class OntarioAside {
   protected el: HTMLOntarioAsideElement;
@@ -63,11 +78,12 @@ export declare interface OntarioAside extends Components.OntarioAside {}
   inputs: ['language']
 })
 @Component({
-  selector: 'ontario-back-to-top',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['language'],
+	selector: 'ontario-back-to-top',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['language'],
+	standalone: false,
 })
 export class OntarioBackToTop {
   protected el: HTMLOntarioBackToTopElement;
@@ -85,11 +101,12 @@ export declare interface OntarioBackToTop extends Components.OntarioBackToTop {}
   inputs: ['ariaLabelText', 'colour', 'label']
 })
 @Component({
-  selector: 'ontario-badge',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['ariaLabelText', 'colour', 'label'],
+	selector: 'ontario-badge',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['ariaLabelText', 'colour', 'label'],
+	standalone: false,
 })
 export class OntarioBadge {
   protected el: HTMLOntarioBadgeElement;
@@ -107,11 +124,12 @@ export declare interface OntarioBadge extends Components.OntarioBadge {}
   inputs: ['attribution', 'byline', 'quote']
 })
 @Component({
-  selector: 'ontario-blockquote',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['attribution', 'byline', 'quote'],
+	selector: 'ontario-blockquote',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['attribution', 'byline', 'quote'],
+	standalone: false,
 })
 export class OntarioBlockquote {
   protected el: HTMLOntarioBlockquoteElement;
@@ -129,11 +147,12 @@ export declare interface OntarioBlockquote extends Components.OntarioBlockquote 
   inputs: ['ariaLabelText', 'elementId', 'htmlType', 'label', 'type']
 })
 @Component({
-  selector: 'ontario-button',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['ariaLabelText', 'elementId', 'htmlType', 'label', 'type'],
+	selector: 'ontario-button',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['ariaLabelText', 'elementId', 'htmlType', 'label', 'type'],
+	standalone: false,
 })
 export class OntarioButton {
   protected el: HTMLOntarioButtonElement;
@@ -151,11 +170,12 @@ export declare interface OntarioButton extends Components.OntarioButton {}
   inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour']
 })
 @Component({
-  selector: 'ontario-callout',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
+	selector: 'ontario-callout',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
+	standalone: false,
 })
 export class OntarioCallout {
   protected el: HTMLOntarioCalloutElement;
@@ -173,11 +193,24 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
   inputs: ['ariaLabelText', 'cardLink', 'description', 'headerColour', 'headingLevel', 'horizontalImagePositionType', 'horizontalImageSizeType', 'image', 'imageAltText', 'label', 'layoutDirection']
 })
 @Component({
-  selector: 'ontario-card',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['ariaLabelText', 'cardLink', 'description', 'headerColour', 'headingLevel', 'horizontalImagePositionType', 'horizontalImageSizeType', 'image', 'imageAltText', 'label', 'layoutDirection'],
+	selector: 'ontario-card',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: [
+		'ariaLabelText',
+		'cardLink',
+		'description',
+		'headerColour',
+		'headingLevel',
+		'horizontalImagePositionType',
+		'horizontalImageSizeType',
+		'image',
+		'imageAltText',
+		'label',
+		'layoutDirection',
+	],
+	standalone: false,
 })
 export class OntarioCard {
   protected el: HTMLOntarioCardElement;
@@ -195,11 +228,12 @@ export declare interface OntarioCard extends Components.OntarioCard {}
   inputs: ['cardsPerRow']
 })
 @Component({
-  selector: 'ontario-card-collection',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['cardsPerRow'],
+	selector: 'ontario-card-collection',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['cardsPerRow'],
+	standalone: false,
 })
 export class OntarioCardCollection {
   protected el: HTMLOntarioCardCollectionElement;
@@ -217,19 +251,40 @@ export declare interface OntarioCardCollection extends Components.OntarioCardCol
   inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required']
 })
 @Component({
-  selector: 'ontario-checkboxes',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required'],
+	selector: 'ontario-checkboxes',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: [
+		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
+		'errorMessage',
+		'hintExpander',
+		'hintText',
+		'language',
+		'name',
+		'options',
+		'required',
+	],
+	outputs: ['checkboxOnChange', 'checkboxOnBlur', 'checkboxOnFocus', 'inputErrorOccurred'],
+	standalone: false,
 })
 export class OntarioCheckboxes {
-  protected el: HTMLOntarioCheckboxesElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['checkboxOnChange', 'checkboxOnBlur', 'checkboxOnFocus', 'inputErrorOccurred']);
-  }
+	protected el: HTMLOntarioCheckboxesElement;
+	@Output() checkboxOnChange = new EventEmitter<CustomEvent<IOntarioCheckboxesRadioAndCheckboxChangeEvent>>();
+	@Output() checkboxOnBlur = new EventEmitter<CustomEvent<IOntarioCheckboxesInputFocusBlurEvent>>();
+	@Output() checkboxOnFocus = new EventEmitter<CustomEvent<IOntarioCheckboxesInputFocusBlurEvent>>();
+	@Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ errorMessage: string }>>();
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
 }
 
 
@@ -260,11 +315,12 @@ export declare interface OntarioCheckboxes extends Components.OntarioCheckboxes 
   inputs: ['content']
 })
 @Component({
-  selector: 'ontario-critical-alert',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['content'],
+	selector: 'ontario-critical-alert',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['content'],
+	standalone: false,
 })
 export class OntarioCriticalAlert {
   protected el: HTMLOntarioCriticalAlertElement;
@@ -282,19 +338,40 @@ export declare interface OntarioCriticalAlert extends Components.OntarioCritical
   inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required']
 })
 @Component({
-  selector: 'ontario-date-input',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required'],
+	selector: 'ontario-date-input',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: [
+		'caption',
+		'dateOptions',
+		'dateValidator',
+		'elementId',
+		'hintText',
+		'language',
+		'maxYear',
+		'minYear',
+		'placeholder',
+		'required',
+	],
+	outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
+	standalone: false,
 })
 export class OntarioDateInput {
-  protected el: HTMLOntarioDateInputElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred']);
-  }
+	protected el: HTMLOntarioDateInputElement;
+	@Output() inputOnInput = new EventEmitter<CustomEvent<{ value: string; fieldType: 'day' | 'month' | 'year' }>>();
+	@Output() inputOnChange = new EventEmitter<CustomEvent<{ value: string; fieldType: 'day' | 'month' | 'year' }>>();
+	@Output() inputOnBlur = new EventEmitter<CustomEvent<IOntarioDateInputDateInputFieldType>>();
+	@Output() inputOnFocus = new EventEmitter<CustomEvent<IOntarioDateInputDateInputFieldType>>();
+	@Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ inputId: string; errorMessage: string }>>();
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
 }
 
 
@@ -328,19 +405,42 @@ export declare interface OntarioDateInput extends Components.OntarioDateInput {
   inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required']
 })
 @Component({
-  selector: 'ontario-dropdown-list',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required'],
+	selector: 'ontario-dropdown-list',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: [
+		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
+		'elementId',
+		'errorMessage',
+		'hintExpander',
+		'hintText',
+		'isEmptyStartOption',
+		'language',
+		'name',
+		'options',
+		'required',
+	],
+	outputs: ['dropdownOnChange', 'dropdownOnBlur', 'dropdownOnFocus', 'inputErrorOccurred'],
+	standalone: false,
 })
 export class OntarioDropdownList {
-  protected el: HTMLOntarioDropdownListElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['dropdownOnChange', 'dropdownOnBlur', 'dropdownOnFocus', 'inputErrorOccurred']);
-  }
+	protected el: HTMLOntarioDropdownListElement;
+	@Output() dropdownOnChange = new EventEmitter<CustomEvent<IOntarioDropdownListInputInteractionEvent>>();
+	@Output() dropdownOnBlur = new EventEmitter<CustomEvent<IOntarioDropdownListInputFocusBlurEvent>>();
+	@Output() dropdownOnFocus = new EventEmitter<CustomEvent<IOntarioDropdownListInputFocusBlurEvent>>();
+	@Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ errorMessage: string }>>();
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
 }
 
 
@@ -371,11 +471,12 @@ export declare interface OntarioDropdownList extends Components.OntarioDropdownL
   inputs: ['legend', 'legendSize']
 })
 @Component({
-  selector: 'ontario-fieldset',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['legend', 'legendSize'],
+	selector: 'ontario-fieldset',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['legend', 'legendSize'],
+	standalone: false,
 })
 export class OntarioFieldset {
   protected el: HTMLOntarioFieldsetElement;
@@ -393,11 +494,21 @@ export declare interface OntarioFieldset extends Components.OntarioFieldset {}
   inputs: ['assetBasePath', 'footerLinks', 'language', 'socialLinks', 'threeColumnOptions', 'topMargin', 'twoColumnOptions', 'type']
 })
 @Component({
-  selector: 'ontario-footer',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['assetBasePath', 'footerLinks', 'language', 'socialLinks', 'threeColumnOptions', 'topMargin', 'twoColumnOptions', 'type'],
+	selector: 'ontario-footer',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: [
+		'assetBasePath',
+		'footerLinks',
+		'language',
+		'socialLinks',
+		'threeColumnOptions',
+		'topMargin',
+		'twoColumnOptions',
+		'type',
+	],
+	standalone: false,
 })
 export class OntarioFooter {
   protected el: HTMLOntarioFooterElement;
@@ -415,11 +526,12 @@ export declare interface OntarioFooter extends Components.OntarioFooter {}
   inputs: ['gap']
 })
 @Component({
-  selector: 'ontario-form-container',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['gap'],
+	selector: 'ontario-form-container',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['gap'],
+	standalone: false,
 })
 export class OntarioFormContainer {
   protected el: HTMLOntarioFormContainerElement;
@@ -437,19 +549,36 @@ export declare interface OntarioFormContainer extends Components.OntarioFormCont
   inputs: ['applicationHeaderInfo', 'assetBasePath', 'customLanguageToggle', 'customSignInToggle', 'disableDynamicMenu', 'language', 'languageToggleOptions', 'menuItems', 'signInMenuItems', 'type']
 })
 @Component({
-  selector: 'ontario-header',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['applicationHeaderInfo', 'assetBasePath', 'customLanguageToggle', 'customSignInToggle', 'disableDynamicMenu', 'language', 'languageToggleOptions', 'menuItems', 'signInMenuItems', 'type'],
+	selector: 'ontario-header',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: [
+		'applicationHeaderInfo',
+		'assetBasePath',
+		'customLanguageToggle',
+		'customSignInToggle',
+		'disableDynamicMenu',
+		'language',
+		'languageToggleOptions',
+		'menuItems',
+		'signInMenuItems',
+		'type',
+	],
+	outputs: ['menuButtonToggled'],
+	standalone: false,
 })
 export class OntarioHeader {
-  protected el: HTMLOntarioHeaderElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['menuButtonToggled']);
-  }
+	protected el: HTMLOntarioHeaderElement;
+	@Output() menuButtonToggled = new EventEmitter<CustomEvent<boolean>>();
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
 }
 
 
@@ -467,19 +596,27 @@ To trigger the showing and hiding of the overflow menu.
   inputs: ['autoDetectMode', 'language', 'signInMenuItems', 'topicsMenuItems']
 })
 @Component({
-  selector: 'ontario-header-menu-tabs',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autoDetectMode', 'language', 'signInMenuItems', 'topicsMenuItems'],
+	selector: 'ontario-header-menu-tabs',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['autoDetectMode', 'language', 'signInMenuItems', 'topicsMenuItems'],
+	outputs: ['takeOwnership', 'focusFirstItem', 'focusMenuButton'],
+	standalone: false,
 })
 export class OntarioHeaderMenuTabs {
-  protected el: HTMLOntarioHeaderMenuTabsElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['takeOwnership', 'focusFirstItem', 'focusMenuButton']);
-  }
+	protected el: HTMLOntarioHeaderMenuTabsElement;
+	@Output() takeOwnership = new EventEmitter<CustomEvent<{ panelId: string | null }>>();
+	@Output() focusFirstItem = new EventEmitter<CustomEvent<void>>();
+	@Output() focusMenuButton = new EventEmitter<CustomEvent<void>>();
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
 }
 
 
@@ -504,19 +641,29 @@ Triggered when Shift+Tab is pressed on the first tab.
   inputs: ['isLastMenu', 'language', 'menuItems']
 })
 @Component({
-  selector: 'ontario-header-overflow-menu',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['isLastMenu', 'language', 'menuItems'],
+	selector: 'ontario-header-overflow-menu',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['isLastMenu', 'language', 'menuItems'],
+	outputs: ['menuClosed', 'endOfMenuReached', 'focusMenuButton', 'focusNextElement', 'menuButtonTabPressed'],
+	standalone: false,
 })
 export class OntarioHeaderOverflowMenu {
-  protected el: HTMLOntarioHeaderOverflowMenuElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['menuClosed', 'endOfMenuReached', 'focusMenuButton', 'focusNextElement', 'menuButtonTabPressed']);
-  }
+	protected el: HTMLOntarioHeaderOverflowMenuElement;
+	@Output() menuClosed = new EventEmitter<CustomEvent<void>>();
+	@Output() endOfMenuReached = new EventEmitter<CustomEvent<void>>();
+	@Output() focusMenuButton = new EventEmitter<CustomEvent<void>>();
+	@Output() focusNextElement = new EventEmitter<CustomEvent<void>>();
+	@Output() menuButtonTabPressed = new EventEmitter<CustomEvent<void>>();
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
 }
 
 
@@ -551,19 +698,25 @@ Asks if menu is open and ready to receive focus.
   inputs: ['content', 'elementId', 'hint', 'hintContentType']
 })
 @Component({
-  selector: 'ontario-hint-expander',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['content', 'elementId', 'hint', 'hintContentType'],
+	selector: 'ontario-hint-expander',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['content', 'elementId', 'hint', 'hintContentType'],
+	outputs: ['toggleExpanderEvent'],
+	standalone: false,
 })
 export class OntarioHintExpander {
-  protected el: HTMLOntarioHintExpanderElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['toggleExpanderEvent']);
-  }
+	protected el: HTMLOntarioHintExpanderElement;
+	@Output() toggleExpanderEvent = new EventEmitter<CustomEvent<MouseEvent | KeyboardEvent>>();
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
 }
 
 
@@ -580,11 +733,12 @@ export declare interface OntarioHintExpander extends Components.OntarioHintExpan
   methods: ['getHintTextId']
 })
 @Component({
-  selector: 'ontario-hint-text',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['elementId', 'hint', 'hintContentType'],
+	selector: 'ontario-hint-text',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['elementId', 'hint', 'hintContentType'],
+	standalone: false,
 })
 export class OntarioHintText {
   protected el: HTMLOntarioHintTextElement;
@@ -602,11 +756,12 @@ export declare interface OntarioHintText extends Components.OntarioHintText {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-accessibility',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-accessibility',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconAccessibility {
   protected el: HTMLOntarioIconAccessibilityElement;
@@ -624,11 +779,12 @@ export declare interface OntarioIconAccessibility extends Components.OntarioIcon
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-account',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-account',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconAccount {
   protected el: HTMLOntarioIconAccountElement;
@@ -646,11 +802,12 @@ export declare interface OntarioIconAccount extends Components.OntarioIconAccoun
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-add',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-add',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconAdd {
   protected el: HTMLOntarioIconAddElement;
@@ -668,11 +825,12 @@ export declare interface OntarioIconAdd extends Components.OntarioIconAdd {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-add-alt',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-add-alt',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconAddAlt {
   protected el: HTMLOntarioIconAddAltElement;
@@ -690,11 +848,12 @@ export declare interface OntarioIconAddAlt extends Components.OntarioIconAddAlt 
   inputs: ['iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-alert-error',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth'],
+	selector: 'ontario-icon-alert-error',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['iconWidth'],
+	standalone: false,
 })
 export class OntarioIconAlertError {
   protected el: HTMLOntarioIconAlertErrorElement;
@@ -712,11 +871,12 @@ export declare interface OntarioIconAlertError extends Components.OntarioIconAle
   inputs: ['iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-alert-information',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth'],
+	selector: 'ontario-icon-alert-information',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['iconWidth'],
+	standalone: false,
 })
 export class OntarioIconAlertInformation {
   protected el: HTMLOntarioIconAlertInformationElement;
@@ -734,11 +894,12 @@ export declare interface OntarioIconAlertInformation extends Components.OntarioI
   inputs: ['iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-alert-success',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth'],
+	selector: 'ontario-icon-alert-success',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['iconWidth'],
+	standalone: false,
 })
 export class OntarioIconAlertSuccess {
   protected el: HTMLOntarioIconAlertSuccessElement;
@@ -756,11 +917,12 @@ export declare interface OntarioIconAlertSuccess extends Components.OntarioIconA
   inputs: ['iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-alert-warning',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth'],
+	selector: 'ontario-icon-alert-warning',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['iconWidth'],
+	standalone: false,
 })
 export class OntarioIconAlertWarning {
   protected el: HTMLOntarioIconAlertWarningElement;
@@ -778,11 +940,12 @@ export declare interface OntarioIconAlertWarning extends Components.OntarioIconA
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-arrow-up',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-arrow-up',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconArrowUp {
   protected el: HTMLOntarioIconArrowUpElement;
@@ -800,11 +963,12 @@ export declare interface OntarioIconArrowUp extends Components.OntarioIconArrowU
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-attach',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-attach',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconAttach {
   protected el: HTMLOntarioIconAttachElement;
@@ -822,11 +986,12 @@ export declare interface OntarioIconAttach extends Components.OntarioIconAttach 
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-bookmark-off',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-bookmark-off',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconBookmarkOff {
   protected el: HTMLOntarioIconBookmarkOffElement;
@@ -844,11 +1009,12 @@ export declare interface OntarioIconBookmarkOff extends Components.OntarioIconBo
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-bookmark-on',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-bookmark-on',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconBookmarkOn {
   protected el: HTMLOntarioIconBookmarkOnElement;
@@ -866,11 +1032,12 @@ export declare interface OntarioIconBookmarkOn extends Components.OntarioIconBoo
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-calendar',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-calendar',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconCalendar {
   protected el: HTMLOntarioIconCalendarElement;
@@ -888,11 +1055,12 @@ export declare interface OntarioIconCalendar extends Components.OntarioIconCalen
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-camera',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-camera',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconCamera {
   protected el: HTMLOntarioIconCameraElement;
@@ -910,11 +1078,12 @@ export declare interface OntarioIconCamera extends Components.OntarioIconCamera 
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-chevron-down',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-chevron-down',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconChevronDown {
   protected el: HTMLOntarioIconChevronDownElement;
@@ -932,11 +1101,12 @@ export declare interface OntarioIconChevronDown extends Components.OntarioIconCh
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-chevron-left',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-chevron-left',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconChevronLeft {
   protected el: HTMLOntarioIconChevronLeftElement;
@@ -954,11 +1124,12 @@ export declare interface OntarioIconChevronLeft extends Components.OntarioIconCh
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-chevron-right',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-chevron-right',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconChevronRight {
   protected el: HTMLOntarioIconChevronRightElement;
@@ -976,11 +1147,12 @@ export declare interface OntarioIconChevronRight extends Components.OntarioIconC
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-chevron-up',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-chevron-up',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconChevronUp {
   protected el: HTMLOntarioIconChevronUpElement;
@@ -998,11 +1170,12 @@ export declare interface OntarioIconChevronUp extends Components.OntarioIconChev
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-clock',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-clock',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconClock {
   protected el: HTMLOntarioIconClockElement;
@@ -1020,11 +1193,12 @@ export declare interface OntarioIconClock extends Components.OntarioIconClock {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-close',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-close',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconClose {
   protected el: HTMLOntarioIconCloseElement;
@@ -1042,11 +1216,12 @@ export declare interface OntarioIconClose extends Components.OntarioIconClose {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-close-header',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-close-header',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconCloseHeader {
   protected el: HTMLOntarioIconCloseHeaderElement;
@@ -1064,11 +1239,12 @@ export declare interface OntarioIconCloseHeader extends Components.OntarioIconCl
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-cloud',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-cloud',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconCloud {
   protected el: HTMLOntarioIconCloudElement;
@@ -1086,11 +1262,12 @@ export declare interface OntarioIconCloud extends Components.OntarioIconCloud {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-collapse',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-collapse',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconCollapse {
   protected el: HTMLOntarioIconCollapseElement;
@@ -1108,11 +1285,12 @@ export declare interface OntarioIconCollapse extends Components.OntarioIconColla
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-credit-card',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-credit-card',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconCreditCard {
   protected el: HTMLOntarioIconCreditCardElement;
@@ -1130,11 +1308,12 @@ export declare interface OntarioIconCreditCard extends Components.OntarioIconCre
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-critical-alert-warning',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-critical-alert-warning',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconCriticalAlertWarning {
   protected el: HTMLOntarioIconCriticalAlertWarningElement;
@@ -1152,11 +1331,12 @@ export declare interface OntarioIconCriticalAlertWarning extends Components.Onta
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-delete',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-delete',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconDelete {
   protected el: HTMLOntarioIconDeleteElement;
@@ -1174,11 +1354,12 @@ export declare interface OntarioIconDelete extends Components.OntarioIconDelete 
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-document',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-document',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconDocument {
   protected el: HTMLOntarioIconDocumentElement;
@@ -1196,11 +1377,12 @@ export declare interface OntarioIconDocument extends Components.OntarioIconDocum
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-download',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-download',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconDownload {
   protected el: HTMLOntarioIconDownloadElement;
@@ -1218,11 +1400,12 @@ export declare interface OntarioIconDownload extends Components.OntarioIconDownl
   inputs: ['iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-dropdown-arrow',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth'],
+	selector: 'ontario-icon-dropdown-arrow',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['iconWidth'],
+	standalone: false,
 })
 export class OntarioIconDropdownArrow {
   protected el: HTMLOntarioIconDropdownArrowElement;
@@ -1240,11 +1423,12 @@ export declare interface OntarioIconDropdownArrow extends Components.OntarioIcon
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-edit',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-edit',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconEdit {
   protected el: HTMLOntarioIconEditElement;
@@ -1262,11 +1446,12 @@ export declare interface OntarioIconEdit extends Components.OntarioIconEdit {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-email',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-email',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconEmail {
   protected el: HTMLOntarioIconEmailElement;
@@ -1284,11 +1469,12 @@ export declare interface OntarioIconEmail extends Components.OntarioIconEmail {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-expand',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-expand',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconExpand {
   protected el: HTMLOntarioIconExpandElement;
@@ -1306,11 +1492,12 @@ export declare interface OntarioIconExpand extends Components.OntarioIconExpand 
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-export',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-export',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconExport {
   protected el: HTMLOntarioIconExportElement;
@@ -1328,11 +1515,12 @@ export declare interface OntarioIconExport extends Components.OntarioIconExport 
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-facebook',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-facebook',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconFacebook {
   protected el: HTMLOntarioIconFacebookElement;
@@ -1350,11 +1538,12 @@ export declare interface OntarioIconFacebook extends Components.OntarioIconFaceb
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-facebook-alt',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-facebook-alt',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconFacebookAlt {
   protected el: HTMLOntarioIconFacebookAltElement;
@@ -1372,11 +1561,12 @@ export declare interface OntarioIconFacebookAlt extends Components.OntarioIconFa
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-favourite-off',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-favourite-off',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconFavouriteOff {
   protected el: HTMLOntarioIconFavouriteOffElement;
@@ -1394,11 +1584,12 @@ export declare interface OntarioIconFavouriteOff extends Components.OntarioIconF
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-favourite-on',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-favourite-on',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconFavouriteOn {
   protected el: HTMLOntarioIconFavouriteOnElement;
@@ -1416,11 +1607,12 @@ export declare interface OntarioIconFavouriteOn extends Components.OntarioIconFa
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-filter',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-filter',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconFilter {
   protected el: HTMLOntarioIconFilterElement;
@@ -1438,11 +1630,12 @@ export declare interface OntarioIconFilter extends Components.OntarioIconFilter 
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-flickr',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-flickr',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconFlickr {
   protected el: HTMLOntarioIconFlickrElement;
@@ -1460,11 +1653,12 @@ export declare interface OntarioIconFlickr extends Components.OntarioIconFlickr 
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-grid',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-grid',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconGrid {
   protected el: HTMLOntarioIconGridElement;
@@ -1482,11 +1676,12 @@ export declare interface OntarioIconGrid extends Components.OntarioIconGrid {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-help',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-help',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconHelp {
   protected el: HTMLOntarioIconHelpElement;
@@ -1504,11 +1699,12 @@ export declare interface OntarioIconHelp extends Components.OntarioIconHelp {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-instagram',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-instagram',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconInstagram {
   protected el: HTMLOntarioIconInstagramElement;
@@ -1526,11 +1722,12 @@ export declare interface OntarioIconInstagram extends Components.OntarioIconInst
   inputs: ['iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-interac-en',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth'],
+	selector: 'ontario-icon-interac-en',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['iconWidth'],
+	standalone: false,
 })
 export class OntarioIconInteracEn {
   protected el: HTMLOntarioIconInteracEnElement;
@@ -1548,11 +1745,12 @@ export declare interface OntarioIconInteracEn extends Components.OntarioIconInte
   inputs: ['iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-interac-en-alt',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth'],
+	selector: 'ontario-icon-interac-en-alt',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['iconWidth'],
+	standalone: false,
 })
 export class OntarioIconInteracEnAlt {
   protected el: HTMLOntarioIconInteracEnAltElement;
@@ -1570,11 +1768,12 @@ export declare interface OntarioIconInteracEnAlt extends Components.OntarioIconI
   inputs: ['iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-interac-fr',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth'],
+	selector: 'ontario-icon-interac-fr',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['iconWidth'],
+	standalone: false,
 })
 export class OntarioIconInteracFr {
   protected el: HTMLOntarioIconInteracFrElement;
@@ -1592,11 +1791,12 @@ export declare interface OntarioIconInteracFr extends Components.OntarioIconInte
   inputs: ['iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-interac-fr-alt',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth'],
+	selector: 'ontario-icon-interac-fr-alt',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['iconWidth'],
+	standalone: false,
 })
 export class OntarioIconInteracFrAlt {
   protected el: HTMLOntarioIconInteracFrAltElement;
@@ -1614,11 +1814,12 @@ export declare interface OntarioIconInteracFrAlt extends Components.OntarioIconI
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-linkedin',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-linkedin',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconLinkedin {
   protected el: HTMLOntarioIconLinkedinElement;
@@ -1636,11 +1837,12 @@ export declare interface OntarioIconLinkedin extends Components.OntarioIconLinke
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-linkedin-alt',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-linkedin-alt',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconLinkedinAlt {
   protected el: HTMLOntarioIconLinkedinAltElement;
@@ -1658,11 +1860,12 @@ export declare interface OntarioIconLinkedinAlt extends Components.OntarioIconLi
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-list',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-list',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconList {
   protected el: HTMLOntarioIconListElement;
@@ -1680,11 +1883,12 @@ export declare interface OntarioIconList extends Components.OntarioIconList {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-live-chat',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-live-chat',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconLiveChat {
   protected el: HTMLOntarioIconLiveChatElement;
@@ -1702,11 +1906,12 @@ export declare interface OntarioIconLiveChat extends Components.OntarioIconLiveC
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-location-off',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-location-off',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconLocationOff {
   protected el: HTMLOntarioIconLocationOffElement;
@@ -1724,11 +1929,12 @@ export declare interface OntarioIconLocationOff extends Components.OntarioIconLo
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-location-on',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-location-on',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconLocationOn {
   protected el: HTMLOntarioIconLocationOnElement;
@@ -1746,11 +1952,12 @@ export declare interface OntarioIconLocationOn extends Components.OntarioIconLoc
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-lock-off',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-lock-off',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconLockOff {
   protected el: HTMLOntarioIconLockOffElement;
@@ -1768,11 +1975,12 @@ export declare interface OntarioIconLockOff extends Components.OntarioIconLockOf
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-lock-on',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-lock-on',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconLockOn {
   protected el: HTMLOntarioIconLockOnElement;
@@ -1790,11 +1998,12 @@ export declare interface OntarioIconLockOn extends Components.OntarioIconLockOn 
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-map',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-map',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconMap {
   protected el: HTMLOntarioIconMapElement;
@@ -1812,11 +2021,12 @@ export declare interface OntarioIconMap extends Components.OntarioIconMap {}
   inputs: ['iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-mastercard',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth'],
+	selector: 'ontario-icon-mastercard',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['iconWidth'],
+	standalone: false,
 })
 export class OntarioIconMastercard {
   protected el: HTMLOntarioIconMastercardElement;
@@ -1834,11 +2044,12 @@ export declare interface OntarioIconMastercard extends Components.OntarioIconMas
   inputs: ['iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-mastercard-alt',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth'],
+	selector: 'ontario-icon-mastercard-alt',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['iconWidth'],
+	standalone: false,
 })
 export class OntarioIconMastercardAlt {
   protected el: HTMLOntarioIconMastercardAltElement;
@@ -1856,11 +2067,12 @@ export declare interface OntarioIconMastercardAlt extends Components.OntarioIcon
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-media-fast-forward',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-media-fast-forward',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconMediaFastForward {
   protected el: HTMLOntarioIconMediaFastForwardElement;
@@ -1878,11 +2090,12 @@ export declare interface OntarioIconMediaFastForward extends Components.OntarioI
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-media-fast-rewind',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-media-fast-rewind',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconMediaFastRewind {
   protected el: HTMLOntarioIconMediaFastRewindElement;
@@ -1900,11 +2113,12 @@ export declare interface OntarioIconMediaFastRewind extends Components.OntarioIc
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-media-pause',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-media-pause',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconMediaPause {
   protected el: HTMLOntarioIconMediaPauseElement;
@@ -1922,11 +2136,12 @@ export declare interface OntarioIconMediaPause extends Components.OntarioIconMed
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-media-play',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-media-play',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconMediaPlay {
   protected el: HTMLOntarioIconMediaPlayElement;
@@ -1944,11 +2159,12 @@ export declare interface OntarioIconMediaPlay extends Components.OntarioIconMedi
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-media-stop',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-media-stop',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconMediaStop {
   protected el: HTMLOntarioIconMediaStopElement;
@@ -1966,11 +2182,12 @@ export declare interface OntarioIconMediaStop extends Components.OntarioIconMedi
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-menu',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-menu',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconMenu {
   protected el: HTMLOntarioIconMenuElement;
@@ -1988,11 +2205,12 @@ export declare interface OntarioIconMenu extends Components.OntarioIconMenu {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-menu-header',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-menu-header',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconMenuHeader {
   protected el: HTMLOntarioIconMenuHeaderElement;
@@ -2010,11 +2228,12 @@ export declare interface OntarioIconMenuHeader extends Components.OntarioIconMen
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-microphone-off',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-microphone-off',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconMicrophoneOff {
   protected el: HTMLOntarioIconMicrophoneOffElement;
@@ -2032,11 +2251,12 @@ export declare interface OntarioIconMicrophoneOff extends Components.OntarioIcon
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-microphone-on',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-microphone-on',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconMicrophoneOn {
   protected el: HTMLOntarioIconMicrophoneOnElement;
@@ -2054,11 +2274,12 @@ export declare interface OntarioIconMicrophoneOn extends Components.OntarioIconM
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-more-accounts',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-more-accounts',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconMoreAccounts {
   protected el: HTMLOntarioIconMoreAccountsElement;
@@ -2076,11 +2297,12 @@ export declare interface OntarioIconMoreAccounts extends Components.OntarioIconM
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-more-vertical',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-more-vertical',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconMoreVertical {
   protected el: HTMLOntarioIconMoreVerticalElement;
@@ -2098,11 +2320,12 @@ export declare interface OntarioIconMoreVertical extends Components.OntarioIconM
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-new-window',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-new-window',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconNewWindow {
   protected el: HTMLOntarioIconNewWindowElement;
@@ -2120,11 +2343,12 @@ export declare interface OntarioIconNewWindow extends Components.OntarioIconNewW
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-next',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-next',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconNext {
   protected el: HTMLOntarioIconNextElement;
@@ -2142,11 +2366,12 @@ export declare interface OntarioIconNext extends Components.OntarioIconNext {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-notification',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-notification',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconNotification {
   protected el: HTMLOntarioIconNotificationElement;
@@ -2164,11 +2389,12 @@ export declare interface OntarioIconNotification extends Components.OntarioIconN
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-password-hide',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-password-hide',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconPasswordHide {
   protected el: HTMLOntarioIconPasswordHideElement;
@@ -2186,11 +2412,12 @@ export declare interface OntarioIconPasswordHide extends Components.OntarioIconP
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-password-show',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-password-show',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconPasswordShow {
   protected el: HTMLOntarioIconPasswordShowElement;
@@ -2208,11 +2435,12 @@ export declare interface OntarioIconPasswordShow extends Components.OntarioIconP
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-phone',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-phone',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconPhone {
   protected el: HTMLOntarioIconPhoneElement;
@@ -2230,11 +2458,12 @@ export declare interface OntarioIconPhone extends Components.OntarioIconPhone {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-photo',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-photo',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconPhoto {
   protected el: HTMLOntarioIconPhotoElement;
@@ -2252,11 +2481,12 @@ export declare interface OntarioIconPhoto extends Components.OntarioIconPhoto {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-pin-location-off',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-pin-location-off',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconPinLocationOff {
   protected el: HTMLOntarioIconPinLocationOffElement;
@@ -2274,11 +2504,12 @@ export declare interface OntarioIconPinLocationOff extends Components.OntarioIco
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-pin-location-on',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-pin-location-on',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconPinLocationOn {
   protected el: HTMLOntarioIconPinLocationOnElement;
@@ -2296,11 +2527,12 @@ export declare interface OntarioIconPinLocationOn extends Components.OntarioIcon
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-previous',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-previous',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconPrevious {
   protected el: HTMLOntarioIconPreviousElement;
@@ -2318,11 +2550,12 @@ export declare interface OntarioIconPrevious extends Components.OntarioIconPrevi
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-print',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-print',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconPrint {
   protected el: HTMLOntarioIconPrintElement;
@@ -2340,11 +2573,12 @@ export declare interface OntarioIconPrint extends Components.OntarioIconPrint {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-remove',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-remove',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconRemove {
   protected el: HTMLOntarioIconRemoveElement;
@@ -2362,11 +2596,12 @@ export declare interface OntarioIconRemove extends Components.OntarioIconRemove 
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-remove-alt',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-remove-alt',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconRemoveAlt {
   protected el: HTMLOntarioIconRemoveAltElement;
@@ -2384,11 +2619,12 @@ export declare interface OntarioIconRemoveAlt extends Components.OntarioIconRemo
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-replay',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-replay',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconReplay {
   protected el: HTMLOntarioIconReplayElement;
@@ -2406,11 +2642,12 @@ export declare interface OntarioIconReplay extends Components.OntarioIconReplay 
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-rss-feed',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-rss-feed',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconRssFeed {
   protected el: HTMLOntarioIconRssFeedElement;
@@ -2428,11 +2665,12 @@ export declare interface OntarioIconRssFeed extends Components.OntarioIconRssFee
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-save',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-save',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconSave {
   protected el: HTMLOntarioIconSaveElement;
@@ -2450,11 +2688,12 @@ export declare interface OntarioIconSave extends Components.OntarioIconSave {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-search',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-search',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconSearch {
   protected el: HTMLOntarioIconSearchElement;
@@ -2472,11 +2711,12 @@ export declare interface OntarioIconSearch extends Components.OntarioIconSearch 
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-search-white',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-search-white',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconSearchWhite {
   protected el: HTMLOntarioIconSearchWhiteElement;
@@ -2494,11 +2734,12 @@ export declare interface OntarioIconSearchWhite extends Components.OntarioIconSe
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-sentiment-1',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-sentiment-1',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconSentiment1 {
   protected el: HTMLOntarioIconSentiment1Element;
@@ -2516,11 +2757,12 @@ export declare interface OntarioIconSentiment1 extends Components.OntarioIconSen
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-sentiment-2',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-sentiment-2',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconSentiment2 {
   protected el: HTMLOntarioIconSentiment2Element;
@@ -2538,11 +2780,12 @@ export declare interface OntarioIconSentiment2 extends Components.OntarioIconSen
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-sentiment-3',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-sentiment-3',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconSentiment3 {
   protected el: HTMLOntarioIconSentiment3Element;
@@ -2560,11 +2803,12 @@ export declare interface OntarioIconSentiment3 extends Components.OntarioIconSen
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-sentiment-4',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-sentiment-4',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconSentiment4 {
   protected el: HTMLOntarioIconSentiment4Element;
@@ -2582,11 +2826,12 @@ export declare interface OntarioIconSentiment4 extends Components.OntarioIconSen
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-sentiment-5',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-sentiment-5',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconSentiment5 {
   protected el: HTMLOntarioIconSentiment5Element;
@@ -2604,11 +2849,12 @@ export declare interface OntarioIconSentiment5 extends Components.OntarioIconSen
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-settings',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-settings',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconSettings {
   protected el: HTMLOntarioIconSettingsElement;
@@ -2626,11 +2872,12 @@ export declare interface OntarioIconSettings extends Components.OntarioIconSetti
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-share',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-share',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconShare {
   protected el: HTMLOntarioIconShareElement;
@@ -2648,11 +2895,12 @@ export declare interface OntarioIconShare extends Components.OntarioIconShare {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-sort',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-sort',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconSort {
   protected el: HTMLOntarioIconSortElement;
@@ -2670,11 +2918,12 @@ export declare interface OntarioIconSort extends Components.OntarioIconSort {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-sort-alphabetical-ascending',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-sort-alphabetical-ascending',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconSortAlphabeticalAscending {
   protected el: HTMLOntarioIconSortAlphabeticalAscendingElement;
@@ -2692,11 +2941,12 @@ export declare interface OntarioIconSortAlphabeticalAscending extends Components
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-sort-alphabetical-descending',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-sort-alphabetical-descending',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconSortAlphabeticalDescending {
   protected el: HTMLOntarioIconSortAlphabeticalDescendingElement;
@@ -2714,11 +2964,12 @@ export declare interface OntarioIconSortAlphabeticalDescending extends Component
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-sort-ascending',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-sort-ascending',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconSortAscending {
   protected el: HTMLOntarioIconSortAscendingElement;
@@ -2736,11 +2987,12 @@ export declare interface OntarioIconSortAscending extends Components.OntarioIcon
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-sort-descending',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-sort-descending',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconSortDescending {
   protected el: HTMLOntarioIconSortDescendingElement;
@@ -2758,11 +3010,12 @@ export declare interface OntarioIconSortDescending extends Components.OntarioIco
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-sort-variant',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-sort-variant',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconSortVariant {
   protected el: HTMLOntarioIconSortVariantElement;
@@ -2780,11 +3033,12 @@ export declare interface OntarioIconSortVariant extends Components.OntarioIconSo
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-tag',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-tag',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconTag {
   protected el: HTMLOntarioIconTagElement;
@@ -2802,11 +3056,12 @@ export declare interface OntarioIconTag extends Components.OntarioIconTag {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-text-message',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-text-message',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconTextMessage {
   protected el: HTMLOntarioIconTextMessageElement;
@@ -2824,11 +3079,12 @@ export declare interface OntarioIconTextMessage extends Components.OntarioIconTe
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-timer',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-timer',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconTimer {
   protected el: HTMLOntarioIconTimerElement;
@@ -2846,11 +3102,12 @@ export declare interface OntarioIconTimer extends Components.OntarioIconTimer {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-transport-bicycle',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-transport-bicycle',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconTransportBicycle {
   protected el: HTMLOntarioIconTransportBicycleElement;
@@ -2868,11 +3125,12 @@ export declare interface OntarioIconTransportBicycle extends Components.OntarioI
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-transport-bus',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-transport-bus',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconTransportBus {
   protected el: HTMLOntarioIconTransportBusElement;
@@ -2890,11 +3148,12 @@ export declare interface OntarioIconTransportBus extends Components.OntarioIconT
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-transport-car',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-transport-car',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconTransportCar {
   protected el: HTMLOntarioIconTransportCarElement;
@@ -2912,11 +3171,12 @@ export declare interface OntarioIconTransportCar extends Components.OntarioIconT
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-transport-walk',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-transport-walk',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconTransportWalk {
   protected el: HTMLOntarioIconTransportWalkElement;
@@ -2934,11 +3194,12 @@ export declare interface OntarioIconTransportWalk extends Components.OntarioIcon
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-tty',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-tty',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconTty {
   protected el: HTMLOntarioIconTtyElement;
@@ -2956,11 +3217,12 @@ export declare interface OntarioIconTty extends Components.OntarioIconTty {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-tune',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-tune',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconTune {
   protected el: HTMLOntarioIconTuneElement;
@@ -2978,11 +3240,12 @@ export declare interface OntarioIconTune extends Components.OntarioIconTune {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-twitter',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-twitter',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconTwitter {
   protected el: HTMLOntarioIconTwitterElement;
@@ -3000,11 +3263,12 @@ export declare interface OntarioIconTwitter extends Components.OntarioIconTwitte
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-twitter-alt',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-twitter-alt',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconTwitterAlt {
   protected el: HTMLOntarioIconTwitterAltElement;
@@ -3022,11 +3286,12 @@ export declare interface OntarioIconTwitterAlt extends Components.OntarioIconTwi
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-upload',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-upload',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconUpload {
   protected el: HTMLOntarioIconUploadElement;
@@ -3044,11 +3309,12 @@ export declare interface OntarioIconUpload extends Components.OntarioIconUpload 
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-video',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-video',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconVideo {
   protected el: HTMLOntarioIconVideoElement;
@@ -3066,11 +3332,12 @@ export declare interface OntarioIconVideo extends Components.OntarioIconVideo {}
   inputs: ['iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-visa',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth'],
+	selector: 'ontario-icon-visa',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['iconWidth'],
+	standalone: false,
 })
 export class OntarioIconVisa {
   protected el: HTMLOntarioIconVisaElement;
@@ -3088,11 +3355,12 @@ export declare interface OntarioIconVisa extends Components.OntarioIconVisa {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-vote-dislike',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-vote-dislike',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconVoteDislike {
   protected el: HTMLOntarioIconVoteDislikeElement;
@@ -3110,11 +3378,12 @@ export declare interface OntarioIconVoteDislike extends Components.OntarioIconVo
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-vote-like',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-vote-like',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconVoteLike {
   protected el: HTMLOntarioIconVoteLikeElement;
@@ -3132,11 +3401,12 @@ export declare interface OntarioIconVoteLike extends Components.OntarioIconVoteL
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-vpn-key',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-vpn-key',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconVpnKey {
   protected el: HTMLOntarioIconVpnKeyElement;
@@ -3154,11 +3424,12 @@ export declare interface OntarioIconVpnKey extends Components.OntarioIconVpnKey 
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-wheelchair',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-wheelchair',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconWheelchair {
   protected el: HTMLOntarioIconWheelchairElement;
@@ -3176,11 +3447,12 @@ export declare interface OntarioIconWheelchair extends Components.OntarioIconWhe
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-wifi',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-wifi',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconWifi {
   protected el: HTMLOntarioIconWifiElement;
@@ -3198,11 +3470,12 @@ export declare interface OntarioIconWifi extends Components.OntarioIconWifi {}
   inputs: ['colour', 'iconWidth']
 })
 @Component({
-  selector: 'ontario-icon-youtube',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth'],
+	selector: 'ontario-icon-youtube',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+	standalone: false,
 })
 export class OntarioIconYoutube {
   protected el: HTMLOntarioIconYoutubeElement;
@@ -3220,19 +3493,48 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
   inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value']
 })
 @Component({
-  selector: 'ontario-input',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value'],
+	selector: 'ontario-input',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: [
+		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
+		'customOnInput',
+		'elementId',
+		'enableLiveValidation',
+		'errorMessage',
+		'hintExpander',
+		'hintText',
+		'inputValidator',
+		'inputWidth',
+		'language',
+		'name',
+		'required',
+		'requiredValidationMessage',
+		'type',
+		'value',
+	],
+	outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
+	standalone: false,
 })
 export class OntarioInput {
-  protected el: HTMLOntarioInputElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred']);
-  }
+	protected el: HTMLOntarioInputElement;
+	@Output() inputOnInput = new EventEmitter<CustomEvent<IOntarioInputInputInputEvent>>();
+	@Output() inputOnChange = new EventEmitter<CustomEvent<IOntarioInputInputInteractionEvent>>();
+	@Output() inputOnBlur = new EventEmitter<CustomEvent<IOntarioInputInputFocusBlurEvent>>();
+	@Output() inputOnFocus = new EventEmitter<CustomEvent<IOntarioInputInputFocusBlurEvent>>();
+	@Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ inputId: string; errorMessage: string }>>();
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
 }
 
 
@@ -3268,19 +3570,28 @@ export declare interface OntarioInput extends Components.OntarioInput {
   inputs: ['customLanguageToggle', 'language', 'size', 'url']
 })
 @Component({
-  selector: 'ontario-language-toggle',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['customLanguageToggle', 'language', 'size', 'url'],
+	selector: 'ontario-language-toggle',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['customLanguageToggle', 'language', 'size', 'url'],
+	outputs: ['setAppLanguage', 'headerLanguageToggled'],
+	standalone: false,
 })
 export class OntarioLanguageToggle {
-  protected el: HTMLOntarioLanguageToggleElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['setAppLanguage', 'headerLanguageToggled']);
-  }
+	protected el: HTMLOntarioLanguageToggleElement;
+	@Output() setAppLanguage = new EventEmitter<CustomEvent<IOntarioLanguageToggleLanguage>>();
+	@Output() headerLanguageToggled = new EventEmitter<
+		CustomEvent<IOntarioLanguageToggleHeaderLanguageToggleEventDetails>
+	>();
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
 }
 
 
@@ -3307,11 +3618,12 @@ The event contains the oldLanguage along with the newLanguage.
   inputs: ['fullScreenOverlay', 'isLoading', 'language', 'message', 'type']
 })
 @Component({
-  selector: 'ontario-loading-indicator',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['fullScreenOverlay', 'isLoading', 'language', 'message', 'type'],
+	selector: 'ontario-loading-indicator',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['fullScreenOverlay', 'isLoading', 'language', 'message', 'type'],
+	standalone: false,
 })
 export class OntarioLoadingIndicator {
   protected el: HTMLOntarioLoadingIndicatorElement;
@@ -3329,11 +3641,12 @@ export declare interface OntarioLoadingIndicator extends Components.OntarioLoadi
   inputs: ['content', 'heading', 'type']
 })
 @Component({
-  selector: 'ontario-page-alert',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['content', 'heading', 'type'],
+	selector: 'ontario-page-alert',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['content', 'heading', 'type'],
+	standalone: false,
 })
 export class OntarioPageAlert {
   protected el: HTMLOntarioPageAlertElement;
@@ -3351,19 +3664,40 @@ export declare interface OntarioPageAlert extends Components.OntarioPageAlert {}
   inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required']
 })
 @Component({
-  selector: 'ontario-radio-buttons',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required'],
+	selector: 'ontario-radio-buttons',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: [
+		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
+		'errorMessage',
+		'hintExpander',
+		'hintText',
+		'language',
+		'name',
+		'options',
+		'required',
+	],
+	outputs: ['radioOnChange', 'radioOnBlur', 'radioOnFocus', 'inputErrorOccurred'],
+	standalone: false,
 })
 export class OntarioRadioButtons {
-  protected el: HTMLOntarioRadioButtonsElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['radioOnChange', 'radioOnBlur', 'radioOnFocus', 'inputErrorOccurred']);
-  }
+	protected el: HTMLOntarioRadioButtonsElement;
+	@Output() radioOnChange = new EventEmitter<CustomEvent<IOntarioRadioButtonsRadioAndCheckboxChangeEvent>>();
+	@Output() radioOnBlur = new EventEmitter<CustomEvent<IOntarioRadioButtonsInputFocusBlurEvent>>();
+	@Output() radioOnFocus = new EventEmitter<CustomEvent<IOntarioRadioButtonsInputFocusBlurEvent>>();
+	@Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ errorMessage: string }>>();
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
 }
 
 
@@ -3394,19 +3728,41 @@ export declare interface OntarioRadioButtons extends Components.OntarioRadioButt
   inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'hintText', 'language', 'performSearch', 'required', 'value']
 })
 @Component({
-  selector: 'ontario-search-box',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'hintText', 'language', 'performSearch', 'required', 'value'],
+	selector: 'ontario-search-box',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: [
+		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
+		'customOnInput',
+		'elementId',
+		'hintText',
+		'language',
+		'performSearch',
+		'required',
+		'value',
+	],
+	outputs: ['searchOnSubmit', 'inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus'],
+	standalone: false,
 })
 export class OntarioSearchBox {
-  protected el: HTMLOntarioSearchBoxElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['searchOnSubmit', 'inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus']);
-  }
+	protected el: HTMLOntarioSearchBoxElement;
+	@Output() searchOnSubmit = new EventEmitter<CustomEvent<string>>();
+	@Output() inputOnInput = new EventEmitter<CustomEvent<IOntarioSearchBoxInputInputEvent>>();
+	@Output() inputOnChange = new EventEmitter<CustomEvent<IOntarioSearchBoxInputInteractionEvent>>();
+	@Output() inputOnBlur = new EventEmitter<CustomEvent<IOntarioSearchBoxInputFocusBlurEvent>>();
+	@Output() inputOnFocus = new EventEmitter<CustomEvent<IOntarioSearchBoxInputFocusBlurEvent>>();
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
 }
 
 
@@ -3448,11 +3804,20 @@ Below is an example on how to hook into the event to get the event details. @exa
   inputs: ['backButtonUrl', 'currentStep', 'customOnClick', 'language', 'numberOfSteps', 'percentageComplete', 'showBackButton']
 })
 @Component({
-  selector: 'ontario-step-indicator',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['backButtonUrl', 'currentStep', 'customOnClick', 'language', 'numberOfSteps', 'percentageComplete', 'showBackButton'],
+	selector: 'ontario-step-indicator',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: [
+		'backButtonUrl',
+		'currentStep',
+		'customOnClick',
+		'language',
+		'numberOfSteps',
+		'percentageComplete',
+		'showBackButton',
+	],
+	standalone: false,
 })
 export class OntarioStepIndicator {
   protected el: HTMLOntarioStepIndicatorElement;
@@ -3470,11 +3835,12 @@ export declare interface OntarioStepIndicator extends Components.OntarioStepIndi
   inputs: ['caption', 'condensed', 'fullWidth', 'tableColumns', 'tableData', 'zebraStripes']
 })
 @Component({
-  selector: 'ontario-table',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'condensed', 'fullWidth', 'tableColumns', 'tableData', 'zebraStripes'],
+	selector: 'ontario-table',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['caption', 'condensed', 'fullWidth', 'tableColumns', 'tableData', 'zebraStripes'],
+	standalone: false,
 })
 export class OntarioTable {
   protected el: HTMLOntarioTableElement;
@@ -3492,11 +3858,12 @@ export declare interface OntarioTable extends Components.OntarioTable {}
   inputs: ['deactivateLink', 'headingLevel', 'hintText', 'label', 'language', 'link', 'taskId', 'taskStatus']
 })
 @Component({
-  selector: 'ontario-task',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['deactivateLink', 'headingLevel', 'hintText', 'label', 'language', 'link', 'taskId', 'taskStatus'],
+	selector: 'ontario-task',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['deactivateLink', 'headingLevel', 'hintText', 'label', 'language', 'link', 'taskId', 'taskStatus'],
+	standalone: false,
 })
 export class OntarioTask {
   protected el: HTMLOntarioTaskElement;
@@ -3514,11 +3881,12 @@ export declare interface OntarioTask extends Components.OntarioTask {}
   inputs: ['headingLevel', 'label', 'language']
 })
 @Component({
-  selector: 'ontario-task-list',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['headingLevel', 'label', 'language'],
+	selector: 'ontario-task-list',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['headingLevel', 'label', 'language'],
+	standalone: false,
 })
 export class OntarioTaskList {
   protected el: HTMLOntarioTaskListElement;
@@ -3536,19 +3904,43 @@ export declare interface OntarioTaskList extends Components.OntarioTaskList {}
   inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'required', 'value']
 })
 @Component({
-  selector: 'ontario-textarea',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'required', 'value'],
+	selector: 'ontario-textarea',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: [
+		'caption',
+		'customOnBlur',
+		'customOnChange',
+		'customOnFocus',
+		'customOnInput',
+		'elementId',
+		'errorMessage',
+		'hintExpander',
+		'hintText',
+		'language',
+		'name',
+		'required',
+		'value',
+	],
+	outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
+	standalone: false,
 })
 export class OntarioTextarea {
-  protected el: HTMLOntarioTextareaElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred']);
-  }
+	protected el: HTMLOntarioTextareaElement;
+	@Output() inputOnInput = new EventEmitter<CustomEvent<IOntarioTextareaInputInputEvent>>();
+	@Output() inputOnChange = new EventEmitter<CustomEvent<IOntarioTextareaInputInteractionEvent>>();
+	@Output() inputOnBlur = new EventEmitter<CustomEvent<IOntarioTextareaInputFocusBlurEvent>>();
+	@Output() inputOnFocus = new EventEmitter<CustomEvent<IOntarioTextareaInputFocusBlurEvent>>();
+	@Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ inputId: string; errorMessage: string }>>();
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
 }
 
 

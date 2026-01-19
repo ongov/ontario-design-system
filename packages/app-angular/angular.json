@@ -25,10 +25,12 @@
 						"inlineStyleLanguage": "scss",
 						"assets": ["src/favicon.ico", "src/assets"],
 						"styles": [
-							"node_modules/@ongov/ontario-design-system-global-styles/dist/styles/scss/theme.scss",
-							"node_modules/@ongov/ontario-design-system-component-library-angular/dist/component-library/styles/theme.scss"
+							"node_modules/@ongov/ontario-design-system-global-styles/dist/styles/css/compiled/ontario-theme.css"
 						],
-						"scripts": []
+						"scripts": [],
+						"stylePreprocessorOptions": {
+							"includePaths": ["node_modules", "../../node_modules"]
+						}
 					},
 					"configurations": {
 						"production": {

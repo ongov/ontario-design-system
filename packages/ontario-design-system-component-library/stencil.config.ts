@@ -32,6 +32,7 @@ export const config: Config = {
 				'../ontario-design-system-component-library-angular/projects/component-library/src/lib/stencil-generated/components.ts',
 			directivesArrayFile:
 				'../ontario-design-system-component-library-angular/projects/component-library/src/lib/stencil-generated/index.ts',
+			outputType: 'component',
 		}),
 		{
 			type: 'dist-custom-elements',

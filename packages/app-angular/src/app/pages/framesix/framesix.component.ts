@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { getLanguage, isEnglish } from 'src/utils/get-language.utils';
+import { getLanguage, isEnglish } from '../../../utils/get-language.utils';
 
 @Component({
 	selector: 'app-framesix',
 	templateUrl: './framesix.component.html',
+	standalone: false,
 })
 export class FrameSixComponent {
 	isLoading: boolean = false;
