@@ -7,11 +7,8 @@ compose_files=("$root_dir/docker/docker-compose.yml")
 
 case "$(uname -s)" in
   Linux*)
-    compose_files+=("$root_dir/docker/docker-compose.linux.yml")
-    export UID="${UID:-$(id -u)}"
-    export GID="${GID:-$(id -g)}"
-    ;;
-  Darwin*)
+    export PUID="${PUID:-$(id -u)}"
+    export PGID="${PGID:-$(id -g)}"
     ;;
   *)
     ;;
