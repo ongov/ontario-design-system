@@ -9,7 +9,7 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve app-angular",
-		"build": "pnpm run build:component-lib && pnpm run format:stencil && pnpm run docs:copy:readme",
+		"build": "pnpm run build:component-lib && pnpm run docs:copy:readme",
 		"build:component-lib": "ng build component-library",
 		"build:app": "ng build app-angular",
 		"clean": "rm -rf build",
