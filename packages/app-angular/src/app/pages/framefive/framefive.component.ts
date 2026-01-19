@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { StorageUtilsService } from '../../services/storage-utils.services'; // Update the path
-import { isEnglish, getLanguage } from 'src/utils/get-language.utils';
-import { handleBackButtonNavigationOnClick } from 'src/utils/routing.utils';
+import { isEnglish, getLanguage } from '../../../utils/get-language.utils';
+import { handleBackButtonNavigationOnClick } from '../../../utils/routing.utils';
 import { TemporaryStorageService } from '../../services/temporary-storage.services';
 
 interface NewAccountFormData {
@@ -13,6 +13,7 @@ interface NewAccountFormData {
 @Component({
 	selector: 'app-framefive',
 	templateUrl: './framefive.component.html',
+	standalone: false,
 })
 export class FrameFiveComponent implements OnInit {
 	public lang = getLanguage();
