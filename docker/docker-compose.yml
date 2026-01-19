@@ -5,6 +5,18 @@ x-playwright-runner: &playwright-runner
   working_dir: /app
   volumes:
     - ..:/app
+    - node_modules_root:/app/node_modules
+    - pnpm_store:/app/.pnpm-store
+    - node_modules_app_angular:/app/packages/app-angular/node_modules
+    - node_modules_app_nextjs:/app/packages/app-nextjs/node_modules
+    - node_modules_app_react:/app/packages/app-react/node_modules
+    - node_modules_app_web_components_documentation:/app/packages/app-web-components-documentation/node_modules
+    - node_modules_component_library:/app/packages/ontario-design-system-component-library/node_modules
+    - node_modules_component_library_angular:/app/packages/ontario-design-system-component-library-angular/node_modules
+    - node_modules_component_library_react:/app/packages/ontario-design-system-component-library-react/node_modules
+    - node_modules_complete_styles:/app/packages/ontario-design-system-complete-styles/node_modules
+    - node_modules_design_tokens:/app/packages/ontario-design-system-design-tokens/node_modules
+    - node_modules_global_styles:/app/packages/ontario-design-system-global-styles/node_modules
 
 services:
   stencil-e2e-runner:
@@ -18,3 +30,17 @@ services:
   app-vrt-runner:
     <<: *playwright-runner
     command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && pnpm -w run build-apps && pnpm --filter app-nextjs run test:vrt"
+
+volumes:
+  node_modules_root:
+  pnpm_store:
+  node_modules_app_angular:
+  node_modules_app_nextjs:
+  node_modules_app_react:
+  node_modules_app_web_components_documentation:
+  node_modules_component_library:
+  node_modules_component_library_angular:
+  node_modules_component_library_react:
+  node_modules_complete_styles:
+  node_modules_design_tokens:
+  node_modules_global_styles:
