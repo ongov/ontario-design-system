@@ -6,6 +6,7 @@ x-playwright-runner: &playwright-runner
   environment:
     PUID: ${PUID:-1000}
     PGID: ${PGID:-1000}
+    PLAYWRIGHT_ARGS: ${PLAYWRIGHT_ARGS:-}
   entrypoint: ['/app/scripts/docker-entrypoint.sh']
   volumes:
     - ..:/app
@@ -25,15 +26,15 @@ x-playwright-runner: &playwright-runner
 services:
   stencil-e2e-runner:
     <<: *playwright-runner
-    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && pnpm --filter @ongov/ontario-design-system-component-library run test:e2e"
+    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && pnpm --filter @ongov/ontario-design-system-component-library run test:e2e ${PLAYWRIGHT_ARGS:+-- $PLAYWRIGHT_ARGS}"
 
   app-e2e-runner:
     <<: *playwright-runner
-    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && pnpm -w run build-apps && pnpm --filter app-nextjs run test:e2e"
+    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && pnpm -w run build-apps && pnpm --filter app-nextjs run test:e2e ${PLAYWRIGHT_ARGS:+-- $PLAYWRIGHT_ARGS}"
 
   app-vrt-runner:
     <<: *playwright-runner
-    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && pnpm -w run build-apps && pnpm --filter app-nextjs run test:vrt"
+    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && pnpm -w run build-apps && pnpm --filter app-nextjs run test:vrt ${PLAYWRIGHT_ARGS:+-- $PLAYWRIGHT_ARGS}"
 
 volumes:
   node_modules_root:
