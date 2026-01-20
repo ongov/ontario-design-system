@@ -74,7 +74,7 @@ if [[ "$is_run" == true ]]; then
         )
         break
       fi
-    fi
+    done
   fi
 fi
 
