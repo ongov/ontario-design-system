@@ -23,6 +23,19 @@ cmd_args=("$@")
 playwright_args=()
 is_run=false
 
+if [[ -n "${ODS_DOCKER_COMPOSE_PROGRESS:-}" ]]; then
+  for i in "${!cmd_args[@]}"; do
+    if [[ "${cmd_args[$i]}" == "build" ]]; then
+      cmd_args=(
+        "${cmd_args[@]:0:$((i + 1))}"
+        "--progress=${ODS_DOCKER_COMPOSE_PROGRESS}"
+        "${cmd_args[@]:$((i + 1))}"
+      )
+      break
+    fi
+  done
+fi
+
 # Determine whether this invocation targets a runnable service.
 # We only parse/strip Playwright args when "run" is present to avoid
 # changing behavior for build/config/etc.
@@ -57,19 +70,20 @@ if [[ "$is_run" == true ]]; then
   fi
 
   if [[ "${#playwright_args[@]}" -gt 0 ]]; then
-    # Compose can only receive env values as a single string, so we join
-    # the args into a space-delimited value. The service command will
-    # append them to "pnpm run test:* --" inside the container.
-    playwright_args_joined="$(printf '%s ' "${playwright_args[@]}")"
-    playwright_args_joined="${playwright_args_joined% }"
+    if [[ "${playwright_args[0]}" == "--" ]]; then
+      playwright_args=("${playwright_args[@]:1}")
+    fi
+    # Encode args so we can reconstruct them inside the container without
+    # losing spaces or quoting.
+    playwright_args_b64="$(printf '%s\0' "${playwright_args[@]}" | base64 | tr -d '\n')"
     for i in "${!cmd_args[@]}"; do
       if [[ "${cmd_args[$i]}" == "run" ]]; then
-        # Inject PLAYWRIGHT_ARGS immediately after the "run" subcommand.
+        # Inject PLAYWRIGHT_ARGS_B64 immediately after the "run" subcommand.
         # This keeps docker compose parsing stable while forwarding args.
         cmd_args=(
           "${cmd_args[@]:0:$((i + 1))}"
           "-e"
-          "PLAYWRIGHT_ARGS=${playwright_args_joined}"
+          "PLAYWRIGHT_ARGS_B64=${playwright_args_b64}"
           "${cmd_args[@]:$((i + 1))}"
         )
         break

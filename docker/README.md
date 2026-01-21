@@ -41,29 +41,31 @@ pnpm --filter app-nextjs run test:vrt:docker
 Package script examples with forwarded Playwright args:
 
 ```bash
-pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- -- ontario-accordion.spec.ts
+pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- -- ontario-accordion.e2e.ts
 pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- -- tests/components/accordion/
-pnpm --filter app-nextjs run test:e2e:docker -- -- --grep=accordion
+pnpm --filter app-nextjs run test:e2e:docker -- -- --grep="accordion"
 ```
 
-Note: pass grep patterns without spaces (e.g., `--grep=accordion`) when using forwarded args.
+Note: quoted arguments with spaces are supported (use `--grep="pattern"`). Short `-g` expects a separate argument, not `-g=pattern`.
 
 Note: when using package scripts, you may see `-- --` because the first `--` is for `pnpm run` and the second `--` is the delimiter that `scripts/docker-compose.sh` uses to forward Playwright args. You can avoid the double dash by using `--playwright-args`:
 
 ```bash
-pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- --playwright-args ontario-accordion.spec.ts
+pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- --playwright-args ontario-accordion.e2e.ts
 ```
+
+Note: prefer `pnpm --filter ... run test:e2e:docker` when forwarding `--grep` with spaces. The `lerna run` shortcut (`pnpm test:e2e:stencil:docker`) can split quoted args.
 
 Common Playwright argument examples (forwarded to the container):
 
-| Target                    | Command Example                                                                                                            | Description                                                             |
-| :------------------------ | :------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------- |
-| **Entire Suite (File)**   | `pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- -- ontario-accordion.spec.ts`         | Runs every test defined in that specific file.                          |
-| **Specific Test (Title)** | `pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- -- -g "should expand on click"`       | Uses grep (`-g`) to run only tests with titles matching that string.    |
-| **Specific Test (Line)**  | `pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- -- ontario-accordion.spec.ts:42`      | Executes the exact test starting on line 42 of that file.               |
-| **Folder/Directory**      | `pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- -- tests/components/accordion/`       | Runs all spec files located within a specific directory.                |
-| **By Tag**                | `pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- -- --grep "@smoke"`                   | Runs tests containing the `@smoke` tag in their title or configuration. |
-| **Specific Browser**      | `pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- -- -g "accordion" --project=chromium` | Runs matching tests only in the Chromium environment.                   |
+| Target                    | Command Example                                                                                                                | Description                                                             |
+| :------------------------ | :----------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------- |
+| **Entire Suite (File)**   | `pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- -- ontario-accordion.e2e.ts`              | Runs every test defined in that specific file.                          |
+| **Specific Test (Title)** | `pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- -- --grep="should expand on click"`       | Uses grep to run only tests with titles matching that string.           |
+| **Specific Test (Line)**  | `pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- -- ontario-accordion.e2e.ts:42`           | Executes the exact test starting on line 42 of that file.               |
+| **Folder/Directory**      | `pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- -- tests/components/accordion/`           | Runs all E2E files located within a specific directory.                 |
+| **By Tag**                | `pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- -- --grep="@smoke"`                       | Runs tests containing the `@smoke` tag in their title or configuration. |
+| **Specific Browser**      | `pnpm --filter @ongov/ontario-design-system-component-library run test:e2e:docker -- -- --grep="accordion" --project=chromium` | Runs matching tests only in the Chromium environment.                   |
 
 ### Direct Docker Compose (Advanced)
 
@@ -95,7 +97,7 @@ Pass extra Playwright arguments (for a single test, grep, etc.):
 
 ```bash
 ./scripts/docker-compose.sh run --rm stencil-e2e-runner -- tests/ontario-accordion.e2e.ts
-./scripts/docker-compose.sh run --rm app-e2e-runner -- --grep=accordion
+./scripts/docker-compose.sh run --rm app-e2e-runner -- --grep="accordion"
 ./scripts/docker-compose.sh run --rm app-vrt-runner --playwright-args --project=chromium
 ```
 
@@ -104,9 +106,9 @@ Flow: CLI options to Playwright
 ```mermaid
 flowchart TD
   A[Host CLI] -->|./scripts/docker-compose.sh run ... -- <args>| B[docker-compose.sh]
-  B -->|extract Playwright args| C[PLAYWRIGHT_ARGS env var]
-  B -->|docker compose run -e PLAYWRIGHT_ARGS=...| D[Docker Compose service]
-  D -->|service command appends: pnpm run test:* -- $PLAYWRIGHT_ARGS| E[Playwright CLI]
+  B -->|encode Playwright args| C[PLAYWRIGHT_ARGS_B64 env var]
+  B -->|docker compose run -e PLAYWRIGHT_ARGS_B64=...| D[Docker Compose service]
+  D -->|runner script decodes + appends args| E[Playwright CLI]
 ```
 
 ## Cleaning Volumes
