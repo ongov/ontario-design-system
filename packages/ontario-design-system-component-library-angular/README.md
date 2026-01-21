@@ -23,23 +23,34 @@ To use the Ontario Design System Angular component library, follow these steps:
    npm install --save @ongov/ontario-design-system-component-library-angular
    ```
 
-2. Add the theme file into your project. This can be done two main ways:
+2. Add the Ontario Design System theme styles to your project.
 
-   - Add the theme to the build styles in your projects `angular.json` file:
+   To use the Ontario Design System styles in an Angular application, we recommend including the precompiled CSS theme. This works out of the box with Angular and does not require any custom Sass build configuration.
 
-     ```json
-     "build": {
-        "options": {
-           "styles": ["node_modules/@ongov/ontario-design-system-component-library-angular/dist/styles/theme.scss"]
-        }
-     }
-     ```
+   ### Recommended (CSS – works in all Angular projects)
 
-   - Forward the theme in your main stylesheet:
+   Add the Design System theme CSS to the styles array in your project’s angular.json file:
 
-     ```scss
-     @forward '@ongov/ontario-design-system-component-library-angular/dist/component-library/styles/theme.scss';
-     ```
+   ```bash
+   "build": {
+   "options": {
+      "styles": [
+         "node_modules/@ongov/ontario-design-system-global-styles/dist/styles/css/compiled/ontario-theme.css"
+      ]
+   }
+   ```
+
+   You may also use the minified version in production if desired: `ontario-theme.min.css`.
+
+   This ensures the Design System styles are applied globally and avoids build issues related to Sass configuration.
+
+   ### Advanced usage (SCSS – not recommended for most projects)
+
+   The Angular component library also exposes Sass (`.scss`) theme files. However, these Sass files rely on the `pkg:` Sass importer used by the Ontario Design System Component Library's internal build tooling.
+
+   Angular’s default Sass pipeline does not support pkg: imports without additional build customization. As a result, importing the SCSS theme directly may cause build errors unless your project is explicitly configured to support this.
+
+   For most Angular consumers, using the precompiled CSS theme is strongly recommended.
 
 3. Import the `ComponentLibraryModule`, or whichever specific component you wish to use into your root module. The `ComponentLibraryModule` import will include all the Ontario Design System web components.
 
