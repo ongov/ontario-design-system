@@ -12,6 +12,7 @@ on:
 
 jobs:
   stencil-unit-test:
+    name: Stencil Unit Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -47,7 +48,10 @@ jobs:
           reporter: java-junit
 
   stencil-e2e-test:
+    name: Stencil E2E Tests
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.55.0-noble
     permissions:
       contents: read
       actions: read
@@ -73,9 +77,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Install Playwright Browsers
-        run: pnpm --filter @ongov/ontario-design-system-component-library exec playwright install --with-deps
 
       - name: Run Stencil E2E Tests
         run: pnpm run test:e2e:stencil
@@ -110,7 +111,10 @@ jobs:
           reporter: java-junit
 
   apps-vrt-test:
+    name: Apps VRT Tests
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.55.0-noble
     needs: ['stencil-unit-test', 'stencil-e2e-test']
     permissions:
       contents: read
@@ -137,9 +141,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Install Playwright Browsers
-        run: pnpm --filter app-nextjs exec playwright install --with-deps
 
       - name: Run All VRT Tests
         run: pnpm run test:vrt
@@ -174,7 +175,10 @@ jobs:
           reporter: java-junit
 
   apps-e2e-test:
+    name: Apps E2E Tests
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.55.0-noble
     needs: ['stencil-unit-test', 'stencil-e2e-test']
     permissions:
       contents: read
@@ -201,9 +205,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Install Playwright Browsers
-        run: pnpm --filter app-nextjs exec playwright install --with-deps
 
       - name: Run All E2E Apps Tests
         run: pnpm run test:e2e:apps
