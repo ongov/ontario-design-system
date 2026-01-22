@@ -77,10 +77,10 @@
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"browserTarget": "app-angular:build:production"
+							"buildTarget": "app-angular:build:production"
 						},
 						"development": {
-							"browserTarget": "app-angular:build:development"
+							"buildTarget": "app-angular:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
@@ -88,7 +88,7 @@
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
 					"options": {
-						"browserTarget": "app-angular:build"
+						"buildTarget": "app-angular:build"
 					}
 				},
 				"test": {
