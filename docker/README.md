@@ -10,6 +10,13 @@ The compose setup bind-mounts the repo. It uses an entrypoint that aligns
 container UID/GID with your host (`PUID`/`PGID`) and fixes ownership of
 `node_modules`/`.pnpm-store` before dropping privileges.
 
+## CI Usage
+
+GitHub Actions runs Playwright tests inside the `mcr.microsoft.com/playwright:v1.55.0-noble`
+job container. In CI we do not use Docker Compose or bind mounts; the workflow
+installs dependencies with pnpm and executes the existing test scripts inside
+the container.
+
 ## Structure
 
 - `docker/playwright/Dockerfile` - Base image with browsers baked in.
