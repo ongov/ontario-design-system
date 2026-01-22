@@ -19,7 +19,7 @@ export class OntarioInputValueAccessor extends BaseCustomValueAccessor {
 		this.onChange(value ?? '');
 	}
 
-	@HostListener('onBlur', ['$event.target'])
+	@HostListener('onBlur')
 	_handleBlurEvent() {
 		this.onTouched();
 	}
@@ -38,11 +38,11 @@ export class OntarioInputValueAccessor extends BaseCustomValueAccessor {
 })
 export class OntarioTextareaValueAccessor extends BaseCustomValueAccessor {
 	@HostListener('inputOnChange', ['$event.detail.value'])
-	_handleChange(value: string) {
-		this.onChange(value);
+	_handleChange(value?: string) {
+		this.onChange(value ?? '');
 	}
 
-	@HostListener('onBlur', ['$event.target'])
+	@HostListener('onBlur')
 	_handleBlurEvent() {
 		this.onTouched();
 	}
@@ -65,7 +65,7 @@ export class OntarioCheckboxesValueAccessor extends BaseCustomValueAccessor {
 		this.onChange(event);
 	}
 
-	@HostListener('checkboxOnBlur', ['$event'])
+	@HostListener('checkboxOnBlur')
 	_handleBlurEvent() {
 		this.onTouched();
 	}
@@ -88,7 +88,7 @@ export class OntarioRadioButtonsValueAccessor extends BaseCustomValueAccessor {
 		this.onChange(event.detail);
 	}
 
-	@HostListener('radioOnBlur', ['$event'])
+	@HostListener('radioOnBlur')
 	_handleBlurEvent() {
 		this.onTouched();
 	}
