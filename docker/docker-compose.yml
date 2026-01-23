@@ -30,11 +30,11 @@ services:
 
   app-e2e-runner:
     <<: *playwright-runner
-    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && pnpm -w run build-apps && sh /app/scripts/docker-playwright-runner.sh pnpm --filter app-nextjs run test:e2e"
+    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && sh /app/scripts/docker-playwright-runner.sh pnpm -w run test:e2e:apps"
 
   app-vrt-runner:
     <<: *playwright-runner
-    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && pnpm -w run build-apps && sh /app/scripts/docker-playwright-runner.sh pnpm --filter app-nextjs run test:vrt"
+    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && sh /app/scripts/docker-playwright-runner.sh pnpm -w run test:vrt"
 
 volumes:
   node_modules_root:
