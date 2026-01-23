@@ -52,12 +52,16 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.55.0-noble
+    env:
+      HOME: /github/home
     permissions:
       contents: read
       actions: read
       checks: write
     steps:
       - uses: actions/checkout@v4
+      - name: Configure git safe directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -115,6 +119,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.55.0-noble
+    env:
+      HOME: /github/home
     needs: ['stencil-unit-test', 'stencil-e2e-test']
     permissions:
       contents: read
@@ -122,6 +128,8 @@ jobs:
       checks: write
     steps:
       - uses: actions/checkout@v4
+      - name: Configure git safe directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -179,6 +187,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.55.0-noble
+    env:
+      HOME: /github/home
     needs: ['stencil-unit-test', 'stencil-e2e-test']
     permissions:
       contents: read
@@ -186,6 +196,8 @@ jobs:
       checks: write
     steps:
       - uses: actions/checkout@v4
+      - name: Configure git safe directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
