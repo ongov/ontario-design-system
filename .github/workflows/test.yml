@@ -111,7 +111,7 @@ jobs:
         if: ${{ (success() || failure()) && (github.event.pull_request.head.repo.fork == false) }}
         uses: dorny/test-reporter@v1
         with:
-          name: stencil-playwright-e2e-tests-results
+          name: Stencil Playwright E2E Tests
           path: packages/ontario-design-system-component-library/test-results/playwright/results.xml
           reporter: java-junit
 
