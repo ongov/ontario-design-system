@@ -52,6 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.55.0-noble
+      options: --user pwuser
     env:
       HOME: /github/home
     permissions:
@@ -119,6 +120,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.55.0-noble
+      options: --user pwuser
     env:
       HOME: /github/home
     needs: ['stencil-unit-test', 'stencil-e2e-test']
@@ -187,6 +189,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.55.0-noble
+      options: --user pwuser
     env:
       HOME: /github/home
     needs: ['stencil-unit-test', 'stencil-e2e-test']
