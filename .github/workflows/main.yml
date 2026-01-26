@@ -44,7 +44,7 @@ jobs:
   sync-docs-to-docusaurus: # Job defined in a separate file (sync-docs-to-docusaurus.yml)
     needs: ['build', 'publish-packages']
     uses: ./.github/workflows/sync-docs-to-docusaurus.yml
-    if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
+    if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') && needs.publish-packages.outputs.release_tag != '' }}
     with:
       node-version: 22
       docs-artifacts-name: ${{ needs.build.outputs.docs-artifacts-name }}

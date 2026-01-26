@@ -16,6 +16,7 @@ on:
 jobs:
   sync-docs:
     runs-on: ubuntu-latest
+    if: ${{ inputs.release_tag != '' }}
     concurrency:
       group: docs-update
       cancel-in-progress: true
