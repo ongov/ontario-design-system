@@ -8,7 +8,7 @@ export default function OntarioButtonPage() {
 				<h1>ontario-hint-text</h1>
 
 				<div>
-					<h2>"hint-content-type" Prop Variants</h2>
+					<h2>&quot;hint-content-type&quot; Prop Variants</h2>
 
 					<h3>String</h3>
 					<OntarioHintText

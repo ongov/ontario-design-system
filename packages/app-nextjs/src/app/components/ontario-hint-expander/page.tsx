@@ -8,7 +8,7 @@ export default function OntarioHintExpanderPage() {
 				<h1>ontario-hint-expander</h1>
 
 				<div>
-					<h2>"hint-content-type" Prop Variants</h2>
+					<h2>&quot;hint-content-type&quot; Prop Variants</h2>
 
 					<h3>String</h3>
 					<OntarioHintExpander

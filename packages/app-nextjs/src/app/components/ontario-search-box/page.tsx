@@ -32,21 +32,21 @@ export default function OntarioSearchBoxPage() {
 			<Grid>
 				<h1>ontario-search-box</h1>
 
-				<h2>'language' Prop Variants</h2>
+				<h2>&apos;language&apos; Prop Variants</h2>
 				<h3>En</h3>
 				<OntarioSearchBox caption="Search in English"></OntarioSearchBox>
 
 				<h3>Fr</h3>
 				<OntarioSearchBox language="fr" caption="Recherche en français"></OntarioSearchBox>
 
-				<h2>'required' Prop Variants</h2>
+				<h2>&apos;required&apos; Prop Variants</h2>
 				<h3>True</h3>
 				<OntarioSearchBox required={true} caption="Required field"></OntarioSearchBox>
 
 				<h3>False</h3>
 				<OntarioSearchBox required={false} caption="Optional field"></OntarioSearchBox>
 
-				<h2>'hint-text' - Prop Variants</h2>
+				<h2>&apos;hint-text&apos; - Prop Variants</h2>
 				<OntarioSearchBox caption="Search with hint" hintText="This is a simple hint string."></OntarioSearchBox>
 
 				<h2>performSearch - custom function</h2>

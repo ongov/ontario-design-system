@@ -7,7 +7,7 @@ export default function OntarioPageAlertPage() {
 			<Grid>
 				<h1>ontario-page-alert</h1>
 
-				<h2>"page-alert-type" Prop Variants</h2>
+				<h2>&quot;page-alert-type&quot; Prop Variants</h2>
 
 				<h3>Informational</h3>
 				<OntarioPageAlert type="informational" heading="Licence plates">
@@ -20,7 +20,7 @@ export default function OntarioPageAlertPage() {
 				<h3>Warning</h3>
 				<OntarioPageAlert type="warning" heading="Service wait times">
 					<p>
-						We are experiencing longer than normal wait times at this ServiceOntario centre. You can{' '}
+						We are experiencing longer than normal wait times at this ServiceOntario centre. You can&apos;t{' '}
 						<a href="#">check out our Service Finder</a> to see if the service you need is offered online or at a
 						different centre nearby.
 					</p>

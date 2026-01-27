@@ -10,14 +10,14 @@ export default function OntarioButtonPage() {
 				<h1>ontario-button</h1>
 
 				<div>
-					<h2>"type" Prop Variants</h2>
+					<h2>&quot;type&quot; Prop Variants</h2>
 
 					<h3>Primary</h3>
 					<OntarioButton
 						id="ontario-button-primary"
 						type="primary"
 						label="Primary Button"
-						aria-label-text="Click to perform primary action"
+						ariaLabelText="Click to perform primary action"
 					></OntarioButton>
 
 					<h3>Secondary</h3>

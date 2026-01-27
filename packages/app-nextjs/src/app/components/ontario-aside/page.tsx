@@ -7,7 +7,7 @@ export default function OntarioAsidePage() {
 			<Grid>
 				<h1>ontario-aside</h1>
 
-				<h2>"heading-type" Prop Variants</h2>
+				<h2>&quot;heading-type&quot; Prop Variants</h2>
 
 				<h3>H2</h3>
 				<OntarioAside
@@ -54,7 +54,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h2>"hightlight-colour" Prop Variants</h2>
+				<h2>&quot;hightlight-colour&quot; Prop Variants</h2>
 
 				<h3>Teal</h3>
 				<OntarioAside
@@ -137,7 +137,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h2>"heading-content-type" Prop Variants</h2>
+				<h2>&quot;heading-content-type&quot; Prop Variants</h2>
 
 				<h3>String</h3>
 				<OntarioAside
@@ -152,9 +152,9 @@ export default function OntarioAsidePage() {
 				<OntarioAside
 					headingType="h2"
 					headingContentType="html"
-					headingContent="Did you know? <strong>HTML</strong> in heading!"
+					headingContent='Did you know? <strong>HTML</strong> in heading!"
 					highlightColour="teal"
-					content="Updated content with <strong>HTML</strong> support."
+					content="Updated content with <strong>HTML</strong> support.'
 				></OntarioAside>
 			</Grid>
 		</main>

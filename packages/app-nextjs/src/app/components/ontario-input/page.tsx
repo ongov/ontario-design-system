@@ -8,7 +8,7 @@ export default function OntarioInputPage() {
 				<h1>ontario-input</h1>
 
 				<div>
-					<h2>"caption" Prop Variants</h2>
+					<h2>&quot;caption&quot; Prop Variants</h2>
 
 					<h3>Default</h3>
 					<OntarioInput
@@ -32,7 +32,7 @@ export default function OntarioInputPage() {
 				<hr />
 
 				<div>
-					<h2>"input-width" Prop Variants</h2>
+					<h2>&quot;input-width&quot; Prop Variants</h2>
 
 					<h3>2 character width</h3>
 					<OntarioInput
@@ -87,7 +87,7 @@ export default function OntarioInputPage() {
 				<hr />
 
 				<div>
-					<h2>"required" Prop Variants</h2>
+					<h2>&quot;required&quot; Prop Variants</h2>
 
 					<h3>Required</h3>
 					<OntarioInput caption={{ captionText: 'First name' }} name="input-required" required={true}></OntarioInput>
@@ -99,7 +99,7 @@ export default function OntarioInputPage() {
 				<hr />
 
 				<div>
-					<h2>"value" Prop Variant</h2>
+					<h2>&quot;value&quot; Prop Variant</h2>
 
 					<h3>Value entered</h3>
 					<OntarioInput caption={{ captionText: 'City/Town' }} name="input-with value" value="Toronto"></OntarioInput>
@@ -108,7 +108,7 @@ export default function OntarioInputPage() {
 				<hr />
 
 				<div>
-					<h2>"hint-text" Prop Variant</h2>
+					<h2>&quot;hint-text&quot; Prop Variant</h2>
 
 					<h3>string hint-content-type</h3>
 					<OntarioInput
@@ -134,7 +134,7 @@ export default function OntarioInputPage() {
 				<hr />
 
 				<div>
-					<h2>"hint-expander" Prop Variant</h2>
+					<h2>&quot;hint-expander&quot; Prop Variant</h2>
 
 					<h3>string hint-content-type</h3>
 					<OntarioInput
@@ -164,7 +164,7 @@ export default function OntarioInputPage() {
 				<hr />
 
 				<div>
-					<h2>"language" Prop Variant</h2>
+					<h2>&quot;language&quot; Prop Variant</h2>
 
 					<h3>English</h3>
 					<OntarioInput
@@ -192,7 +192,7 @@ export default function OntarioInputPage() {
 				<hr />
 
 				<div>
-					<h2>"error-message" Prop Variant</h2>
+					<h2>&quot;error-message&quot; Prop Variant</h2>
 					<OntarioInput
 						caption={{ captionText: 'Driver’s licence number' }}
 						name="input-error-message"

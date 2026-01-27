@@ -7,7 +7,7 @@ export default function OntarioBadgePage() {
 			<Grid>
 				<h1>ontario-badge</h1>
 
-				<h2>"colour" Prop Variants</h2>
+				<h2>&quot;colour&quot; Prop Variants</h2>
 				<h3>teal</h3>
 				<OntarioBadge colour="teal" label="Teal Badge" />
 
@@ -32,7 +32,7 @@ export default function OntarioBadgePage() {
 				<h3>dark grey</h3>
 				<OntarioBadge colour="dark-grey" label="Dark Grey Badge" />
 
-				<h2>"label" Prop Variants</h2>
+				<h2>&quot;label&quot; Prop Variants</h2>
 				<h3>success</h3>
 				<OntarioBadge colour="green" label="Success" />
 
