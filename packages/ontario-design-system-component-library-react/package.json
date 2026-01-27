@@ -70,6 +70,7 @@
 	},
 	"dependencies": {
 		"@ongov/ontario-design-system-component-library": "workspace:*",
+		"@ongov/ontario-design-system-global-styles": "workspace:*",
 		"@stencil/react-output-target": "^1.4.0"
 	},
 	"devDependencies": {

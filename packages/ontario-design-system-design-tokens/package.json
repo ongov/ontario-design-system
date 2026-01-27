@@ -60,6 +60,15 @@
 		"./scss": {
 			"sass": "./dist/scss/_variables.scss"
 		},
+		"./dist/scss/variables": {
+			"sass": "./dist/scss/_variables.scss"
+		},
+		"./dist/scss/variables.scss": {
+			"sass": "./dist/scss/_variables.scss"
+		},
+		"./dist/scss/_variables.scss": {
+			"sass": "./dist/scss/_variables.scss"
+		},
 		"./css": {
 			"style": "./dist/css/_variables.css"
 		},
