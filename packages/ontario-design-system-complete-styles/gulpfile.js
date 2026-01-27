@@ -69,11 +69,16 @@ task('copy:component-styles', () => {
 task('generate:components-import-file', async (done) => {
 	const globPattern = paths.components.scss;
 	const componentSassFilePaths = await glob(globPattern);
+	const forwardHides = {
+		'components/ontario-header-overflow-menu/ontario-header-overflow-menu.scss': ['$navigation-link-bg--hover'],
+	};
 	const contentLines = componentSassFilePaths.map((filePath) => {
 		// Remove the path up to the component name
 		// e.g. from 'src/styles/components/ontario-button/ontario-button.scss' to 'components/ontario-button/ontario-button.scss'
 		const cleanedPath = filePath.replace(/^.*?components\//, 'components/');
-		return `@forward "../../${cleanedPath}";`;
+		const hide = forwardHides[cleanedPath];
+		const hideSuffix = hide?.length ? ` hide ${hide.join(', ')}` : '';
+		return `@forward "../../${cleanedPath}"${hideSuffix};`;
 	});
 
 	const assetStyles = await fs.readFile('./asset-styles.scss', 'utf8');

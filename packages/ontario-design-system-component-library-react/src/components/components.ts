@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
 import { OntarioAccordion as OntarioAccordionElement, defineCustomElement as defineOntarioAccordion } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
 import { OntarioAside as OntarioAsideElement, defineCustomElement as defineOntarioAside } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
 import { OntarioBackToTop as OntarioBackToTopElement, defineCustomElement as defineOntarioBackToTop } from "@ongov/ontario-design-system-component-library/components/ontario-back-to-top.js";
@@ -168,7 +168,7 @@ export type OntarioAccordionEvents = { onAccordionChange: EventName<OntarioAccor
 export const OntarioAccordion: StencilReactComponent<OntarioAccordionElement, OntarioAccordionEvents> = /*@__PURE__*/ createComponent<OntarioAccordionElement, OntarioAccordionEvents>({
     tagName: 'ontario-accordion',
     elementClass: OntarioAccordionElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onAccordionChange: 'accordionChange' } as OntarioAccordionEvents,
     defineCustomElement: defineOntarioAccordion
@@ -179,7 +179,7 @@ export type OntarioAsideEvents = NonNullable<unknown>;
 export const OntarioAside: StencilReactComponent<OntarioAsideElement, OntarioAsideEvents> = /*@__PURE__*/ createComponent<OntarioAsideElement, OntarioAsideEvents>({
     tagName: 'ontario-aside',
     elementClass: OntarioAsideElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioAsideEvents,
     defineCustomElement: defineOntarioAside
@@ -190,7 +190,7 @@ export type OntarioBackToTopEvents = NonNullable<unknown>;
 export const OntarioBackToTop: StencilReactComponent<OntarioBackToTopElement, OntarioBackToTopEvents> = /*@__PURE__*/ createComponent<OntarioBackToTopElement, OntarioBackToTopEvents>({
     tagName: 'ontario-back-to-top',
     elementClass: OntarioBackToTopElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioBackToTopEvents,
     defineCustomElement: defineOntarioBackToTop
@@ -201,7 +201,7 @@ export type OntarioBadgeEvents = NonNullable<unknown>;
 export const OntarioBadge: StencilReactComponent<OntarioBadgeElement, OntarioBadgeEvents> = /*@__PURE__*/ createComponent<OntarioBadgeElement, OntarioBadgeEvents>({
     tagName: 'ontario-badge',
     elementClass: OntarioBadgeElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioBadgeEvents,
     defineCustomElement: defineOntarioBadge
@@ -212,7 +212,7 @@ export type OntarioBlockquoteEvents = NonNullable<unknown>;
 export const OntarioBlockquote: StencilReactComponent<OntarioBlockquoteElement, OntarioBlockquoteEvents> = /*@__PURE__*/ createComponent<OntarioBlockquoteElement, OntarioBlockquoteEvents>({
     tagName: 'ontario-blockquote',
     elementClass: OntarioBlockquoteElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioBlockquoteEvents,
     defineCustomElement: defineOntarioBlockquote
@@ -223,7 +223,7 @@ export type OntarioButtonEvents = NonNullable<unknown>;
 export const OntarioButton: StencilReactComponent<OntarioButtonElement, OntarioButtonEvents> = /*@__PURE__*/ createComponent<OntarioButtonElement, OntarioButtonEvents>({
     tagName: 'ontario-button',
     elementClass: OntarioButtonElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioButtonEvents,
     defineCustomElement: defineOntarioButton
@@ -234,7 +234,7 @@ export type OntarioCalloutEvents = NonNullable<unknown>;
 export const OntarioCallout: StencilReactComponent<OntarioCalloutElement, OntarioCalloutEvents> = /*@__PURE__*/ createComponent<OntarioCalloutElement, OntarioCalloutEvents>({
     tagName: 'ontario-callout',
     elementClass: OntarioCalloutElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioCalloutEvents,
     defineCustomElement: defineOntarioCallout
@@ -245,7 +245,7 @@ export type OntarioCardEvents = NonNullable<unknown>;
 export const OntarioCard: StencilReactComponent<OntarioCardElement, OntarioCardEvents> = /*@__PURE__*/ createComponent<OntarioCardElement, OntarioCardEvents>({
     tagName: 'ontario-card',
     elementClass: OntarioCardElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioCardEvents,
     defineCustomElement: defineOntarioCard
@@ -256,7 +256,7 @@ export type OntarioCardCollectionEvents = NonNullable<unknown>;
 export const OntarioCardCollection: StencilReactComponent<OntarioCardCollectionElement, OntarioCardCollectionEvents> = /*@__PURE__*/ createComponent<OntarioCardCollectionElement, OntarioCardCollectionEvents>({
     tagName: 'ontario-card-collection',
     elementClass: OntarioCardCollectionElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioCardCollectionEvents,
     defineCustomElement: defineOntarioCardCollection
@@ -266,13 +266,13 @@ export type OntarioCheckboxesEvents = {
     onCheckboxOnChange: EventName<OntarioCheckboxesCustomEvent<RadioAndCheckboxChangeEvent>>,
     onCheckboxOnBlur: EventName<OntarioCheckboxesCustomEvent<InputFocusBlurEvent>>,
     onCheckboxOnFocus: EventName<OntarioCheckboxesCustomEvent<InputFocusBlurEvent>>,
-    onInputErrorOccurred: EventName<CustomEvent<{ errorMessage: string }>>
+    onInputErrorOccurred: EventName<OntarioCheckboxesCustomEvent<{ errorMessage: string }>>
 };
 
 export const OntarioCheckboxes: StencilReactComponent<OntarioCheckboxesElement, OntarioCheckboxesEvents> = /*@__PURE__*/ createComponent<OntarioCheckboxesElement, OntarioCheckboxesEvents>({
     tagName: 'ontario-checkboxes',
     elementClass: OntarioCheckboxesElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onCheckboxOnChange: 'checkboxOnChange',
@@ -288,30 +288,24 @@ export type OntarioCriticalAlertEvents = NonNullable<unknown>;
 export const OntarioCriticalAlert: StencilReactComponent<OntarioCriticalAlertElement, OntarioCriticalAlertEvents> = /*@__PURE__*/ createComponent<OntarioCriticalAlertElement, OntarioCriticalAlertEvents>({
     tagName: 'ontario-critical-alert',
     elementClass: OntarioCriticalAlertElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioCriticalAlertEvents,
     defineCustomElement: defineOntarioCriticalAlert
 });
 
 export type OntarioDateInputEvents = {
-    onInputOnInput: EventName<CustomEvent<{
-        value: string;
-        fieldType: 'day' | 'month' | 'year';
-    }>>,
-    onInputOnChange: EventName<CustomEvent<{
-        value: string;
-        fieldType: 'day' | 'month' | 'year';
-    }>>,
+    onInputOnInput: EventName<OntarioDateInputCustomEvent<{ value: string; fieldType: 'day' | 'month' | 'year'; }>>,
+    onInputOnChange: EventName<OntarioDateInputCustomEvent<{ value: string; fieldType: 'day' | 'month' | 'year'; }>>,
     onInputOnBlur: EventName<OntarioDateInputCustomEvent<DateInputFieldType>>,
     onInputOnFocus: EventName<OntarioDateInputCustomEvent<DateInputFieldType>>,
-    onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>
+    onInputErrorOccurred: EventName<OntarioDateInputCustomEvent<{ inputId: string; errorMessage: string }>>
 };
 
 export const OntarioDateInput: StencilReactComponent<OntarioDateInputElement, OntarioDateInputEvents> = /*@__PURE__*/ createComponent<OntarioDateInputElement, OntarioDateInputEvents>({
     tagName: 'ontario-date-input',
     elementClass: OntarioDateInputElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onInputOnInput: 'inputOnInput',
@@ -327,13 +321,13 @@ export type OntarioDropdownListEvents = {
     onDropdownOnChange: EventName<OntarioDropdownListCustomEvent<InputInteractionEvent>>,
     onDropdownOnBlur: EventName<OntarioDropdownListCustomEvent<InputFocusBlurEvent>>,
     onDropdownOnFocus: EventName<OntarioDropdownListCustomEvent<InputFocusBlurEvent>>,
-    onInputErrorOccurred: EventName<CustomEvent<{ errorMessage: string }>>
+    onInputErrorOccurred: EventName<OntarioDropdownListCustomEvent<{ errorMessage: string }>>
 };
 
 export const OntarioDropdownList: StencilReactComponent<OntarioDropdownListElement, OntarioDropdownListEvents> = /*@__PURE__*/ createComponent<OntarioDropdownListElement, OntarioDropdownListEvents>({
     tagName: 'ontario-dropdown-list',
     elementClass: OntarioDropdownListElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onDropdownOnChange: 'dropdownOnChange',
@@ -349,7 +343,7 @@ export type OntarioFieldsetEvents = NonNullable<unknown>;
 export const OntarioFieldset: StencilReactComponent<OntarioFieldsetElement, OntarioFieldsetEvents> = /*@__PURE__*/ createComponent<OntarioFieldsetElement, OntarioFieldsetEvents>({
     tagName: 'ontario-fieldset',
     elementClass: OntarioFieldsetElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioFieldsetEvents,
     defineCustomElement: defineOntarioFieldset
@@ -360,7 +354,7 @@ export type OntarioFooterEvents = NonNullable<unknown>;
 export const OntarioFooter: StencilReactComponent<OntarioFooterElement, OntarioFooterEvents> = /*@__PURE__*/ createComponent<OntarioFooterElement, OntarioFooterEvents>({
     tagName: 'ontario-footer',
     elementClass: OntarioFooterElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioFooterEvents,
     defineCustomElement: defineOntarioFooter
@@ -371,33 +365,33 @@ export type OntarioFormContainerEvents = NonNullable<unknown>;
 export const OntarioFormContainer: StencilReactComponent<OntarioFormContainerElement, OntarioFormContainerEvents> = /*@__PURE__*/ createComponent<OntarioFormContainerElement, OntarioFormContainerEvents>({
     tagName: 'ontario-form-container',
     elementClass: OntarioFormContainerElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioFormContainerEvents,
     defineCustomElement: defineOntarioFormContainer
 });
 
-export type OntarioHeaderEvents = { onMenuButtonToggled: EventName<CustomEvent<boolean>> };
+export type OntarioHeaderEvents = { onMenuButtonToggled: EventName<OntarioHeaderCustomEvent<boolean>> };
 
 export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioHeaderEvents> = /*@__PURE__*/ createComponent<OntarioHeaderElement, OntarioHeaderEvents>({
     tagName: 'ontario-header',
     elementClass: OntarioHeaderElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onMenuButtonToggled: 'menuButtonToggled' } as OntarioHeaderEvents,
     defineCustomElement: defineOntarioHeader
 });
 
 export type OntarioHeaderMenuTabsEvents = {
-    onTakeOwnership: EventName<CustomEvent<{ panelId: string | null }>>,
-    onFocusFirstItem: EventName<CustomEvent<void>>,
-    onFocusMenuButton: EventName<CustomEvent<void>>
+    onTakeOwnership: EventName<OntarioHeaderMenuTabsCustomEvent<{ panelId: string | null }>>,
+    onFocusFirstItem: EventName<OntarioHeaderMenuTabsCustomEvent<void>>,
+    onFocusMenuButton: EventName<OntarioHeaderMenuTabsCustomEvent<void>>
 };
 
 export const OntarioHeaderMenuTabs: StencilReactComponent<OntarioHeaderMenuTabsElement, OntarioHeaderMenuTabsEvents> = /*@__PURE__*/ createComponent<OntarioHeaderMenuTabsElement, OntarioHeaderMenuTabsEvents>({
     tagName: 'ontario-header-menu-tabs',
     elementClass: OntarioHeaderMenuTabsElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onTakeOwnership: 'takeOwnership',
@@ -408,17 +402,17 @@ export const OntarioHeaderMenuTabs: StencilReactComponent<OntarioHeaderMenuTabsE
 });
 
 export type OntarioHeaderOverflowMenuEvents = {
-    onMenuClosed: EventName<CustomEvent<void>>,
-    onEndOfMenuReached: EventName<CustomEvent<void>>,
-    onFocusMenuButton: EventName<CustomEvent<void>>,
-    onFocusNextElement: EventName<CustomEvent<void>>,
-    onMenuButtonTabPressed: EventName<CustomEvent<void>>
+    onMenuClosed: EventName<OntarioHeaderOverflowMenuCustomEvent<void>>,
+    onEndOfMenuReached: EventName<OntarioHeaderOverflowMenuCustomEvent<void>>,
+    onFocusMenuButton: EventName<OntarioHeaderOverflowMenuCustomEvent<void>>,
+    onFocusNextElement: EventName<OntarioHeaderOverflowMenuCustomEvent<void>>,
+    onMenuButtonTabPressed: EventName<OntarioHeaderOverflowMenuCustomEvent<void>>
 };
 
 export const OntarioHeaderOverflowMenu: StencilReactComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents> = /*@__PURE__*/ createComponent<OntarioHeaderOverflowMenuElement, OntarioHeaderOverflowMenuEvents>({
     tagName: 'ontario-header-overflow-menu',
     elementClass: OntarioHeaderOverflowMenuElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onMenuClosed: 'menuClosed',
@@ -435,7 +429,7 @@ export type OntarioHintExpanderEvents = { onToggleExpanderEvent: EventName<Ontar
 export const OntarioHintExpander: StencilReactComponent<OntarioHintExpanderElement, OntarioHintExpanderEvents> = /*@__PURE__*/ createComponent<OntarioHintExpanderElement, OntarioHintExpanderEvents>({
     tagName: 'ontario-hint-expander',
     elementClass: OntarioHintExpanderElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onToggleExpanderEvent: 'toggleExpanderEvent' } as OntarioHintExpanderEvents,
     defineCustomElement: defineOntarioHintExpander
@@ -446,7 +440,7 @@ export type OntarioHintTextEvents = NonNullable<unknown>;
 export const OntarioHintText: StencilReactComponent<OntarioHintTextElement, OntarioHintTextEvents> = /*@__PURE__*/ createComponent<OntarioHintTextElement, OntarioHintTextEvents>({
     tagName: 'ontario-hint-text',
     elementClass: OntarioHintTextElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioHintTextEvents,
     defineCustomElement: defineOntarioHintText
@@ -457,7 +451,7 @@ export type OntarioIconAccessibilityEvents = NonNullable<unknown>;
 export const OntarioIconAccessibility: StencilReactComponent<OntarioIconAccessibilityElement, OntarioIconAccessibilityEvents> = /*@__PURE__*/ createComponent<OntarioIconAccessibilityElement, OntarioIconAccessibilityEvents>({
     tagName: 'ontario-icon-accessibility',
     elementClass: OntarioIconAccessibilityElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconAccessibilityEvents,
     defineCustomElement: defineOntarioIconAccessibility
@@ -468,7 +462,7 @@ export type OntarioIconAccountEvents = NonNullable<unknown>;
 export const OntarioIconAccount: StencilReactComponent<OntarioIconAccountElement, OntarioIconAccountEvents> = /*@__PURE__*/ createComponent<OntarioIconAccountElement, OntarioIconAccountEvents>({
     tagName: 'ontario-icon-account',
     elementClass: OntarioIconAccountElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconAccountEvents,
     defineCustomElement: defineOntarioIconAccount
@@ -479,7 +473,7 @@ export type OntarioIconAddEvents = NonNullable<unknown>;
 export const OntarioIconAdd: StencilReactComponent<OntarioIconAddElement, OntarioIconAddEvents> = /*@__PURE__*/ createComponent<OntarioIconAddElement, OntarioIconAddEvents>({
     tagName: 'ontario-icon-add',
     elementClass: OntarioIconAddElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconAddEvents,
     defineCustomElement: defineOntarioIconAdd
@@ -490,7 +484,7 @@ export type OntarioIconAddAltEvents = NonNullable<unknown>;
 export const OntarioIconAddAlt: StencilReactComponent<OntarioIconAddAltElement, OntarioIconAddAltEvents> = /*@__PURE__*/ createComponent<OntarioIconAddAltElement, OntarioIconAddAltEvents>({
     tagName: 'ontario-icon-add-alt',
     elementClass: OntarioIconAddAltElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconAddAltEvents,
     defineCustomElement: defineOntarioIconAddAlt
@@ -501,7 +495,7 @@ export type OntarioIconAlertErrorEvents = NonNullable<unknown>;
 export const OntarioIconAlertError: StencilReactComponent<OntarioIconAlertErrorElement, OntarioIconAlertErrorEvents> = /*@__PURE__*/ createComponent<OntarioIconAlertErrorElement, OntarioIconAlertErrorEvents>({
     tagName: 'ontario-icon-alert-error',
     elementClass: OntarioIconAlertErrorElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconAlertErrorEvents,
     defineCustomElement: defineOntarioIconAlertError
@@ -512,7 +506,7 @@ export type OntarioIconAlertInformationEvents = NonNullable<unknown>;
 export const OntarioIconAlertInformation: StencilReactComponent<OntarioIconAlertInformationElement, OntarioIconAlertInformationEvents> = /*@__PURE__*/ createComponent<OntarioIconAlertInformationElement, OntarioIconAlertInformationEvents>({
     tagName: 'ontario-icon-alert-information',
     elementClass: OntarioIconAlertInformationElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconAlertInformationEvents,
     defineCustomElement: defineOntarioIconAlertInformation
@@ -523,7 +517,7 @@ export type OntarioIconAlertSuccessEvents = NonNullable<unknown>;
 export const OntarioIconAlertSuccess: StencilReactComponent<OntarioIconAlertSuccessElement, OntarioIconAlertSuccessEvents> = /*@__PURE__*/ createComponent<OntarioIconAlertSuccessElement, OntarioIconAlertSuccessEvents>({
     tagName: 'ontario-icon-alert-success',
     elementClass: OntarioIconAlertSuccessElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconAlertSuccessEvents,
     defineCustomElement: defineOntarioIconAlertSuccess
@@ -534,7 +528,7 @@ export type OntarioIconAlertWarningEvents = NonNullable<unknown>;
 export const OntarioIconAlertWarning: StencilReactComponent<OntarioIconAlertWarningElement, OntarioIconAlertWarningEvents> = /*@__PURE__*/ createComponent<OntarioIconAlertWarningElement, OntarioIconAlertWarningEvents>({
     tagName: 'ontario-icon-alert-warning',
     elementClass: OntarioIconAlertWarningElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconAlertWarningEvents,
     defineCustomElement: defineOntarioIconAlertWarning
@@ -545,7 +539,7 @@ export type OntarioIconArrowUpEvents = NonNullable<unknown>;
 export const OntarioIconArrowUp: StencilReactComponent<OntarioIconArrowUpElement, OntarioIconArrowUpEvents> = /*@__PURE__*/ createComponent<OntarioIconArrowUpElement, OntarioIconArrowUpEvents>({
     tagName: 'ontario-icon-arrow-up',
     elementClass: OntarioIconArrowUpElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconArrowUpEvents,
     defineCustomElement: defineOntarioIconArrowUp
@@ -556,7 +550,7 @@ export type OntarioIconAttachEvents = NonNullable<unknown>;
 export const OntarioIconAttach: StencilReactComponent<OntarioIconAttachElement, OntarioIconAttachEvents> = /*@__PURE__*/ createComponent<OntarioIconAttachElement, OntarioIconAttachEvents>({
     tagName: 'ontario-icon-attach',
     elementClass: OntarioIconAttachElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconAttachEvents,
     defineCustomElement: defineOntarioIconAttach
@@ -567,7 +561,7 @@ export type OntarioIconBookmarkOffEvents = NonNullable<unknown>;
 export const OntarioIconBookmarkOff: StencilReactComponent<OntarioIconBookmarkOffElement, OntarioIconBookmarkOffEvents> = /*@__PURE__*/ createComponent<OntarioIconBookmarkOffElement, OntarioIconBookmarkOffEvents>({
     tagName: 'ontario-icon-bookmark-off',
     elementClass: OntarioIconBookmarkOffElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconBookmarkOffEvents,
     defineCustomElement: defineOntarioIconBookmarkOff
@@ -578,7 +572,7 @@ export type OntarioIconBookmarkOnEvents = NonNullable<unknown>;
 export const OntarioIconBookmarkOn: StencilReactComponent<OntarioIconBookmarkOnElement, OntarioIconBookmarkOnEvents> = /*@__PURE__*/ createComponent<OntarioIconBookmarkOnElement, OntarioIconBookmarkOnEvents>({
     tagName: 'ontario-icon-bookmark-on',
     elementClass: OntarioIconBookmarkOnElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconBookmarkOnEvents,
     defineCustomElement: defineOntarioIconBookmarkOn
@@ -589,7 +583,7 @@ export type OntarioIconCalendarEvents = NonNullable<unknown>;
 export const OntarioIconCalendar: StencilReactComponent<OntarioIconCalendarElement, OntarioIconCalendarEvents> = /*@__PURE__*/ createComponent<OntarioIconCalendarElement, OntarioIconCalendarEvents>({
     tagName: 'ontario-icon-calendar',
     elementClass: OntarioIconCalendarElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconCalendarEvents,
     defineCustomElement: defineOntarioIconCalendar
@@ -600,7 +594,7 @@ export type OntarioIconCameraEvents = NonNullable<unknown>;
 export const OntarioIconCamera: StencilReactComponent<OntarioIconCameraElement, OntarioIconCameraEvents> = /*@__PURE__*/ createComponent<OntarioIconCameraElement, OntarioIconCameraEvents>({
     tagName: 'ontario-icon-camera',
     elementClass: OntarioIconCameraElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconCameraEvents,
     defineCustomElement: defineOntarioIconCamera
@@ -611,7 +605,7 @@ export type OntarioIconChevronDownEvents = NonNullable<unknown>;
 export const OntarioIconChevronDown: StencilReactComponent<OntarioIconChevronDownElement, OntarioIconChevronDownEvents> = /*@__PURE__*/ createComponent<OntarioIconChevronDownElement, OntarioIconChevronDownEvents>({
     tagName: 'ontario-icon-chevron-down',
     elementClass: OntarioIconChevronDownElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconChevronDownEvents,
     defineCustomElement: defineOntarioIconChevronDown
@@ -622,7 +616,7 @@ export type OntarioIconChevronLeftEvents = NonNullable<unknown>;
 export const OntarioIconChevronLeft: StencilReactComponent<OntarioIconChevronLeftElement, OntarioIconChevronLeftEvents> = /*@__PURE__*/ createComponent<OntarioIconChevronLeftElement, OntarioIconChevronLeftEvents>({
     tagName: 'ontario-icon-chevron-left',
     elementClass: OntarioIconChevronLeftElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconChevronLeftEvents,
     defineCustomElement: defineOntarioIconChevronLeft
@@ -633,7 +627,7 @@ export type OntarioIconChevronRightEvents = NonNullable<unknown>;
 export const OntarioIconChevronRight: StencilReactComponent<OntarioIconChevronRightElement, OntarioIconChevronRightEvents> = /*@__PURE__*/ createComponent<OntarioIconChevronRightElement, OntarioIconChevronRightEvents>({
     tagName: 'ontario-icon-chevron-right',
     elementClass: OntarioIconChevronRightElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconChevronRightEvents,
     defineCustomElement: defineOntarioIconChevronRight
@@ -644,7 +638,7 @@ export type OntarioIconChevronUpEvents = NonNullable<unknown>;
 export const OntarioIconChevronUp: StencilReactComponent<OntarioIconChevronUpElement, OntarioIconChevronUpEvents> = /*@__PURE__*/ createComponent<OntarioIconChevronUpElement, OntarioIconChevronUpEvents>({
     tagName: 'ontario-icon-chevron-up',
     elementClass: OntarioIconChevronUpElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconChevronUpEvents,
     defineCustomElement: defineOntarioIconChevronUp
@@ -655,7 +649,7 @@ export type OntarioIconClockEvents = NonNullable<unknown>;
 export const OntarioIconClock: StencilReactComponent<OntarioIconClockElement, OntarioIconClockEvents> = /*@__PURE__*/ createComponent<OntarioIconClockElement, OntarioIconClockEvents>({
     tagName: 'ontario-icon-clock',
     elementClass: OntarioIconClockElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconClockEvents,
     defineCustomElement: defineOntarioIconClock
@@ -666,7 +660,7 @@ export type OntarioIconCloseEvents = NonNullable<unknown>;
 export const OntarioIconClose: StencilReactComponent<OntarioIconCloseElement, OntarioIconCloseEvents> = /*@__PURE__*/ createComponent<OntarioIconCloseElement, OntarioIconCloseEvents>({
     tagName: 'ontario-icon-close',
     elementClass: OntarioIconCloseElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconCloseEvents,
     defineCustomElement: defineOntarioIconClose
@@ -677,7 +671,7 @@ export type OntarioIconCloseHeaderEvents = NonNullable<unknown>;
 export const OntarioIconCloseHeader: StencilReactComponent<OntarioIconCloseHeaderElement, OntarioIconCloseHeaderEvents> = /*@__PURE__*/ createComponent<OntarioIconCloseHeaderElement, OntarioIconCloseHeaderEvents>({
     tagName: 'ontario-icon-close-header',
     elementClass: OntarioIconCloseHeaderElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconCloseHeaderEvents,
     defineCustomElement: defineOntarioIconCloseHeader
@@ -688,7 +682,7 @@ export type OntarioIconCloudEvents = NonNullable<unknown>;
 export const OntarioIconCloud: StencilReactComponent<OntarioIconCloudElement, OntarioIconCloudEvents> = /*@__PURE__*/ createComponent<OntarioIconCloudElement, OntarioIconCloudEvents>({
     tagName: 'ontario-icon-cloud',
     elementClass: OntarioIconCloudElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconCloudEvents,
     defineCustomElement: defineOntarioIconCloud
@@ -699,7 +693,7 @@ export type OntarioIconCollapseEvents = NonNullable<unknown>;
 export const OntarioIconCollapse: StencilReactComponent<OntarioIconCollapseElement, OntarioIconCollapseEvents> = /*@__PURE__*/ createComponent<OntarioIconCollapseElement, OntarioIconCollapseEvents>({
     tagName: 'ontario-icon-collapse',
     elementClass: OntarioIconCollapseElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconCollapseEvents,
     defineCustomElement: defineOntarioIconCollapse
@@ -710,7 +704,7 @@ export type OntarioIconCreditCardEvents = NonNullable<unknown>;
 export const OntarioIconCreditCard: StencilReactComponent<OntarioIconCreditCardElement, OntarioIconCreditCardEvents> = /*@__PURE__*/ createComponent<OntarioIconCreditCardElement, OntarioIconCreditCardEvents>({
     tagName: 'ontario-icon-credit-card',
     elementClass: OntarioIconCreditCardElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconCreditCardEvents,
     defineCustomElement: defineOntarioIconCreditCard
@@ -721,7 +715,7 @@ export type OntarioIconCriticalAlertWarningEvents = NonNullable<unknown>;
 export const OntarioIconCriticalAlertWarning: StencilReactComponent<OntarioIconCriticalAlertWarningElement, OntarioIconCriticalAlertWarningEvents> = /*@__PURE__*/ createComponent<OntarioIconCriticalAlertWarningElement, OntarioIconCriticalAlertWarningEvents>({
     tagName: 'ontario-icon-critical-alert-warning',
     elementClass: OntarioIconCriticalAlertWarningElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconCriticalAlertWarningEvents,
     defineCustomElement: defineOntarioIconCriticalAlertWarning
@@ -732,7 +726,7 @@ export type OntarioIconDeleteEvents = NonNullable<unknown>;
 export const OntarioIconDelete: StencilReactComponent<OntarioIconDeleteElement, OntarioIconDeleteEvents> = /*@__PURE__*/ createComponent<OntarioIconDeleteElement, OntarioIconDeleteEvents>({
     tagName: 'ontario-icon-delete',
     elementClass: OntarioIconDeleteElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconDeleteEvents,
     defineCustomElement: defineOntarioIconDelete
@@ -743,7 +737,7 @@ export type OntarioIconDocumentEvents = NonNullable<unknown>;
 export const OntarioIconDocument: StencilReactComponent<OntarioIconDocumentElement, OntarioIconDocumentEvents> = /*@__PURE__*/ createComponent<OntarioIconDocumentElement, OntarioIconDocumentEvents>({
     tagName: 'ontario-icon-document',
     elementClass: OntarioIconDocumentElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconDocumentEvents,
     defineCustomElement: defineOntarioIconDocument
@@ -754,7 +748,7 @@ export type OntarioIconDownloadEvents = NonNullable<unknown>;
 export const OntarioIconDownload: StencilReactComponent<OntarioIconDownloadElement, OntarioIconDownloadEvents> = /*@__PURE__*/ createComponent<OntarioIconDownloadElement, OntarioIconDownloadEvents>({
     tagName: 'ontario-icon-download',
     elementClass: OntarioIconDownloadElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconDownloadEvents,
     defineCustomElement: defineOntarioIconDownload
@@ -765,7 +759,7 @@ export type OntarioIconDropdownArrowEvents = NonNullable<unknown>;
 export const OntarioIconDropdownArrow: StencilReactComponent<OntarioIconDropdownArrowElement, OntarioIconDropdownArrowEvents> = /*@__PURE__*/ createComponent<OntarioIconDropdownArrowElement, OntarioIconDropdownArrowEvents>({
     tagName: 'ontario-icon-dropdown-arrow',
     elementClass: OntarioIconDropdownArrowElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconDropdownArrowEvents,
     defineCustomElement: defineOntarioIconDropdownArrow
@@ -776,7 +770,7 @@ export type OntarioIconEditEvents = NonNullable<unknown>;
 export const OntarioIconEdit: StencilReactComponent<OntarioIconEditElement, OntarioIconEditEvents> = /*@__PURE__*/ createComponent<OntarioIconEditElement, OntarioIconEditEvents>({
     tagName: 'ontario-icon-edit',
     elementClass: OntarioIconEditElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconEditEvents,
     defineCustomElement: defineOntarioIconEdit
@@ -787,7 +781,7 @@ export type OntarioIconEmailEvents = NonNullable<unknown>;
 export const OntarioIconEmail: StencilReactComponent<OntarioIconEmailElement, OntarioIconEmailEvents> = /*@__PURE__*/ createComponent<OntarioIconEmailElement, OntarioIconEmailEvents>({
     tagName: 'ontario-icon-email',
     elementClass: OntarioIconEmailElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconEmailEvents,
     defineCustomElement: defineOntarioIconEmail
@@ -798,7 +792,7 @@ export type OntarioIconExpandEvents = NonNullable<unknown>;
 export const OntarioIconExpand: StencilReactComponent<OntarioIconExpandElement, OntarioIconExpandEvents> = /*@__PURE__*/ createComponent<OntarioIconExpandElement, OntarioIconExpandEvents>({
     tagName: 'ontario-icon-expand',
     elementClass: OntarioIconExpandElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconExpandEvents,
     defineCustomElement: defineOntarioIconExpand
@@ -809,7 +803,7 @@ export type OntarioIconExportEvents = NonNullable<unknown>;
 export const OntarioIconExport: StencilReactComponent<OntarioIconExportElement, OntarioIconExportEvents> = /*@__PURE__*/ createComponent<OntarioIconExportElement, OntarioIconExportEvents>({
     tagName: 'ontario-icon-export',
     elementClass: OntarioIconExportElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconExportEvents,
     defineCustomElement: defineOntarioIconExport
@@ -820,7 +814,7 @@ export type OntarioIconFacebookEvents = NonNullable<unknown>;
 export const OntarioIconFacebook: StencilReactComponent<OntarioIconFacebookElement, OntarioIconFacebookEvents> = /*@__PURE__*/ createComponent<OntarioIconFacebookElement, OntarioIconFacebookEvents>({
     tagName: 'ontario-icon-facebook',
     elementClass: OntarioIconFacebookElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconFacebookEvents,
     defineCustomElement: defineOntarioIconFacebook
@@ -831,7 +825,7 @@ export type OntarioIconFacebookAltEvents = NonNullable<unknown>;
 export const OntarioIconFacebookAlt: StencilReactComponent<OntarioIconFacebookAltElement, OntarioIconFacebookAltEvents> = /*@__PURE__*/ createComponent<OntarioIconFacebookAltElement, OntarioIconFacebookAltEvents>({
     tagName: 'ontario-icon-facebook-alt',
     elementClass: OntarioIconFacebookAltElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconFacebookAltEvents,
     defineCustomElement: defineOntarioIconFacebookAlt
@@ -842,7 +836,7 @@ export type OntarioIconFavouriteOffEvents = NonNullable<unknown>;
 export const OntarioIconFavouriteOff: StencilReactComponent<OntarioIconFavouriteOffElement, OntarioIconFavouriteOffEvents> = /*@__PURE__*/ createComponent<OntarioIconFavouriteOffElement, OntarioIconFavouriteOffEvents>({
     tagName: 'ontario-icon-favourite-off',
     elementClass: OntarioIconFavouriteOffElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconFavouriteOffEvents,
     defineCustomElement: defineOntarioIconFavouriteOff
@@ -853,7 +847,7 @@ export type OntarioIconFavouriteOnEvents = NonNullable<unknown>;
 export const OntarioIconFavouriteOn: StencilReactComponent<OntarioIconFavouriteOnElement, OntarioIconFavouriteOnEvents> = /*@__PURE__*/ createComponent<OntarioIconFavouriteOnElement, OntarioIconFavouriteOnEvents>({
     tagName: 'ontario-icon-favourite-on',
     elementClass: OntarioIconFavouriteOnElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconFavouriteOnEvents,
     defineCustomElement: defineOntarioIconFavouriteOn
@@ -864,7 +858,7 @@ export type OntarioIconFilterEvents = NonNullable<unknown>;
 export const OntarioIconFilter: StencilReactComponent<OntarioIconFilterElement, OntarioIconFilterEvents> = /*@__PURE__*/ createComponent<OntarioIconFilterElement, OntarioIconFilterEvents>({
     tagName: 'ontario-icon-filter',
     elementClass: OntarioIconFilterElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconFilterEvents,
     defineCustomElement: defineOntarioIconFilter
@@ -875,7 +869,7 @@ export type OntarioIconFlickrEvents = NonNullable<unknown>;
 export const OntarioIconFlickr: StencilReactComponent<OntarioIconFlickrElement, OntarioIconFlickrEvents> = /*@__PURE__*/ createComponent<OntarioIconFlickrElement, OntarioIconFlickrEvents>({
     tagName: 'ontario-icon-flickr',
     elementClass: OntarioIconFlickrElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconFlickrEvents,
     defineCustomElement: defineOntarioIconFlickr
@@ -886,7 +880,7 @@ export type OntarioIconGridEvents = NonNullable<unknown>;
 export const OntarioIconGrid: StencilReactComponent<OntarioIconGridElement, OntarioIconGridEvents> = /*@__PURE__*/ createComponent<OntarioIconGridElement, OntarioIconGridEvents>({
     tagName: 'ontario-icon-grid',
     elementClass: OntarioIconGridElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconGridEvents,
     defineCustomElement: defineOntarioIconGrid
@@ -897,7 +891,7 @@ export type OntarioIconHelpEvents = NonNullable<unknown>;
 export const OntarioIconHelp: StencilReactComponent<OntarioIconHelpElement, OntarioIconHelpEvents> = /*@__PURE__*/ createComponent<OntarioIconHelpElement, OntarioIconHelpEvents>({
     tagName: 'ontario-icon-help',
     elementClass: OntarioIconHelpElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconHelpEvents,
     defineCustomElement: defineOntarioIconHelp
@@ -908,7 +902,7 @@ export type OntarioIconInstagramEvents = NonNullable<unknown>;
 export const OntarioIconInstagram: StencilReactComponent<OntarioIconInstagramElement, OntarioIconInstagramEvents> = /*@__PURE__*/ createComponent<OntarioIconInstagramElement, OntarioIconInstagramEvents>({
     tagName: 'ontario-icon-instagram',
     elementClass: OntarioIconInstagramElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconInstagramEvents,
     defineCustomElement: defineOntarioIconInstagram
@@ -919,7 +913,7 @@ export type OntarioIconInteracEnEvents = NonNullable<unknown>;
 export const OntarioIconInteracEn: StencilReactComponent<OntarioIconInteracEnElement, OntarioIconInteracEnEvents> = /*@__PURE__*/ createComponent<OntarioIconInteracEnElement, OntarioIconInteracEnEvents>({
     tagName: 'ontario-icon-interac-en',
     elementClass: OntarioIconInteracEnElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconInteracEnEvents,
     defineCustomElement: defineOntarioIconInteracEn
@@ -930,7 +924,7 @@ export type OntarioIconInteracEnAltEvents = NonNullable<unknown>;
 export const OntarioIconInteracEnAlt: StencilReactComponent<OntarioIconInteracEnAltElement, OntarioIconInteracEnAltEvents> = /*@__PURE__*/ createComponent<OntarioIconInteracEnAltElement, OntarioIconInteracEnAltEvents>({
     tagName: 'ontario-icon-interac-en-alt',
     elementClass: OntarioIconInteracEnAltElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconInteracEnAltEvents,
     defineCustomElement: defineOntarioIconInteracEnAlt
@@ -941,7 +935,7 @@ export type OntarioIconInteracFrEvents = NonNullable<unknown>;
 export const OntarioIconInteracFr: StencilReactComponent<OntarioIconInteracFrElement, OntarioIconInteracFrEvents> = /*@__PURE__*/ createComponent<OntarioIconInteracFrElement, OntarioIconInteracFrEvents>({
     tagName: 'ontario-icon-interac-fr',
     elementClass: OntarioIconInteracFrElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconInteracFrEvents,
     defineCustomElement: defineOntarioIconInteracFr
@@ -952,7 +946,7 @@ export type OntarioIconInteracFrAltEvents = NonNullable<unknown>;
 export const OntarioIconInteracFrAlt: StencilReactComponent<OntarioIconInteracFrAltElement, OntarioIconInteracFrAltEvents> = /*@__PURE__*/ createComponent<OntarioIconInteracFrAltElement, OntarioIconInteracFrAltEvents>({
     tagName: 'ontario-icon-interac-fr-alt',
     elementClass: OntarioIconInteracFrAltElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconInteracFrAltEvents,
     defineCustomElement: defineOntarioIconInteracFrAlt
@@ -963,7 +957,7 @@ export type OntarioIconLinkedinEvents = NonNullable<unknown>;
 export const OntarioIconLinkedin: StencilReactComponent<OntarioIconLinkedinElement, OntarioIconLinkedinEvents> = /*@__PURE__*/ createComponent<OntarioIconLinkedinElement, OntarioIconLinkedinEvents>({
     tagName: 'ontario-icon-linkedin',
     elementClass: OntarioIconLinkedinElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconLinkedinEvents,
     defineCustomElement: defineOntarioIconLinkedin
@@ -974,7 +968,7 @@ export type OntarioIconLinkedinAltEvents = NonNullable<unknown>;
 export const OntarioIconLinkedinAlt: StencilReactComponent<OntarioIconLinkedinAltElement, OntarioIconLinkedinAltEvents> = /*@__PURE__*/ createComponent<OntarioIconLinkedinAltElement, OntarioIconLinkedinAltEvents>({
     tagName: 'ontario-icon-linkedin-alt',
     elementClass: OntarioIconLinkedinAltElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconLinkedinAltEvents,
     defineCustomElement: defineOntarioIconLinkedinAlt
@@ -985,7 +979,7 @@ export type OntarioIconListEvents = NonNullable<unknown>;
 export const OntarioIconList: StencilReactComponent<OntarioIconListElement, OntarioIconListEvents> = /*@__PURE__*/ createComponent<OntarioIconListElement, OntarioIconListEvents>({
     tagName: 'ontario-icon-list',
     elementClass: OntarioIconListElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconListEvents,
     defineCustomElement: defineOntarioIconList
@@ -996,7 +990,7 @@ export type OntarioIconLiveChatEvents = NonNullable<unknown>;
 export const OntarioIconLiveChat: StencilReactComponent<OntarioIconLiveChatElement, OntarioIconLiveChatEvents> = /*@__PURE__*/ createComponent<OntarioIconLiveChatElement, OntarioIconLiveChatEvents>({
     tagName: 'ontario-icon-live-chat',
     elementClass: OntarioIconLiveChatElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconLiveChatEvents,
     defineCustomElement: defineOntarioIconLiveChat
@@ -1007,7 +1001,7 @@ export type OntarioIconLocationOffEvents = NonNullable<unknown>;
 export const OntarioIconLocationOff: StencilReactComponent<OntarioIconLocationOffElement, OntarioIconLocationOffEvents> = /*@__PURE__*/ createComponent<OntarioIconLocationOffElement, OntarioIconLocationOffEvents>({
     tagName: 'ontario-icon-location-off',
     elementClass: OntarioIconLocationOffElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconLocationOffEvents,
     defineCustomElement: defineOntarioIconLocationOff
@@ -1018,7 +1012,7 @@ export type OntarioIconLocationOnEvents = NonNullable<unknown>;
 export const OntarioIconLocationOn: StencilReactComponent<OntarioIconLocationOnElement, OntarioIconLocationOnEvents> = /*@__PURE__*/ createComponent<OntarioIconLocationOnElement, OntarioIconLocationOnEvents>({
     tagName: 'ontario-icon-location-on',
     elementClass: OntarioIconLocationOnElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconLocationOnEvents,
     defineCustomElement: defineOntarioIconLocationOn
@@ -1029,7 +1023,7 @@ export type OntarioIconLockOffEvents = NonNullable<unknown>;
 export const OntarioIconLockOff: StencilReactComponent<OntarioIconLockOffElement, OntarioIconLockOffEvents> = /*@__PURE__*/ createComponent<OntarioIconLockOffElement, OntarioIconLockOffEvents>({
     tagName: 'ontario-icon-lock-off',
     elementClass: OntarioIconLockOffElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconLockOffEvents,
     defineCustomElement: defineOntarioIconLockOff
@@ -1040,7 +1034,7 @@ export type OntarioIconLockOnEvents = NonNullable<unknown>;
 export const OntarioIconLockOn: StencilReactComponent<OntarioIconLockOnElement, OntarioIconLockOnEvents> = /*@__PURE__*/ createComponent<OntarioIconLockOnElement, OntarioIconLockOnEvents>({
     tagName: 'ontario-icon-lock-on',
     elementClass: OntarioIconLockOnElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconLockOnEvents,
     defineCustomElement: defineOntarioIconLockOn
@@ -1051,7 +1045,7 @@ export type OntarioIconMapEvents = NonNullable<unknown>;
 export const OntarioIconMap: StencilReactComponent<OntarioIconMapElement, OntarioIconMapEvents> = /*@__PURE__*/ createComponent<OntarioIconMapElement, OntarioIconMapEvents>({
     tagName: 'ontario-icon-map',
     elementClass: OntarioIconMapElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconMapEvents,
     defineCustomElement: defineOntarioIconMap
@@ -1062,7 +1056,7 @@ export type OntarioIconMastercardEvents = NonNullable<unknown>;
 export const OntarioIconMastercard: StencilReactComponent<OntarioIconMastercardElement, OntarioIconMastercardEvents> = /*@__PURE__*/ createComponent<OntarioIconMastercardElement, OntarioIconMastercardEvents>({
     tagName: 'ontario-icon-mastercard',
     elementClass: OntarioIconMastercardElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconMastercardEvents,
     defineCustomElement: defineOntarioIconMastercard
@@ -1073,7 +1067,7 @@ export type OntarioIconMastercardAltEvents = NonNullable<unknown>;
 export const OntarioIconMastercardAlt: StencilReactComponent<OntarioIconMastercardAltElement, OntarioIconMastercardAltEvents> = /*@__PURE__*/ createComponent<OntarioIconMastercardAltElement, OntarioIconMastercardAltEvents>({
     tagName: 'ontario-icon-mastercard-alt',
     elementClass: OntarioIconMastercardAltElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconMastercardAltEvents,
     defineCustomElement: defineOntarioIconMastercardAlt
@@ -1084,7 +1078,7 @@ export type OntarioIconMediaFastForwardEvents = NonNullable<unknown>;
 export const OntarioIconMediaFastForward: StencilReactComponent<OntarioIconMediaFastForwardElement, OntarioIconMediaFastForwardEvents> = /*@__PURE__*/ createComponent<OntarioIconMediaFastForwardElement, OntarioIconMediaFastForwardEvents>({
     tagName: 'ontario-icon-media-fast-forward',
     elementClass: OntarioIconMediaFastForwardElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconMediaFastForwardEvents,
     defineCustomElement: defineOntarioIconMediaFastForward
@@ -1095,7 +1089,7 @@ export type OntarioIconMediaFastRewindEvents = NonNullable<unknown>;
 export const OntarioIconMediaFastRewind: StencilReactComponent<OntarioIconMediaFastRewindElement, OntarioIconMediaFastRewindEvents> = /*@__PURE__*/ createComponent<OntarioIconMediaFastRewindElement, OntarioIconMediaFastRewindEvents>({
     tagName: 'ontario-icon-media-fast-rewind',
     elementClass: OntarioIconMediaFastRewindElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconMediaFastRewindEvents,
     defineCustomElement: defineOntarioIconMediaFastRewind
@@ -1106,7 +1100,7 @@ export type OntarioIconMediaPauseEvents = NonNullable<unknown>;
 export const OntarioIconMediaPause: StencilReactComponent<OntarioIconMediaPauseElement, OntarioIconMediaPauseEvents> = /*@__PURE__*/ createComponent<OntarioIconMediaPauseElement, OntarioIconMediaPauseEvents>({
     tagName: 'ontario-icon-media-pause',
     elementClass: OntarioIconMediaPauseElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconMediaPauseEvents,
     defineCustomElement: defineOntarioIconMediaPause
@@ -1117,7 +1111,7 @@ export type OntarioIconMediaPlayEvents = NonNullable<unknown>;
 export const OntarioIconMediaPlay: StencilReactComponent<OntarioIconMediaPlayElement, OntarioIconMediaPlayEvents> = /*@__PURE__*/ createComponent<OntarioIconMediaPlayElement, OntarioIconMediaPlayEvents>({
     tagName: 'ontario-icon-media-play',
     elementClass: OntarioIconMediaPlayElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconMediaPlayEvents,
     defineCustomElement: defineOntarioIconMediaPlay
@@ -1128,7 +1122,7 @@ export type OntarioIconMediaStopEvents = NonNullable<unknown>;
 export const OntarioIconMediaStop: StencilReactComponent<OntarioIconMediaStopElement, OntarioIconMediaStopEvents> = /*@__PURE__*/ createComponent<OntarioIconMediaStopElement, OntarioIconMediaStopEvents>({
     tagName: 'ontario-icon-media-stop',
     elementClass: OntarioIconMediaStopElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconMediaStopEvents,
     defineCustomElement: defineOntarioIconMediaStop
@@ -1139,7 +1133,7 @@ export type OntarioIconMenuEvents = NonNullable<unknown>;
 export const OntarioIconMenu: StencilReactComponent<OntarioIconMenuElement, OntarioIconMenuEvents> = /*@__PURE__*/ createComponent<OntarioIconMenuElement, OntarioIconMenuEvents>({
     tagName: 'ontario-icon-menu',
     elementClass: OntarioIconMenuElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconMenuEvents,
     defineCustomElement: defineOntarioIconMenu
@@ -1150,7 +1144,7 @@ export type OntarioIconMenuHeaderEvents = NonNullable<unknown>;
 export const OntarioIconMenuHeader: StencilReactComponent<OntarioIconMenuHeaderElement, OntarioIconMenuHeaderEvents> = /*@__PURE__*/ createComponent<OntarioIconMenuHeaderElement, OntarioIconMenuHeaderEvents>({
     tagName: 'ontario-icon-menu-header',
     elementClass: OntarioIconMenuHeaderElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconMenuHeaderEvents,
     defineCustomElement: defineOntarioIconMenuHeader
@@ -1161,7 +1155,7 @@ export type OntarioIconMicrophoneOffEvents = NonNullable<unknown>;
 export const OntarioIconMicrophoneOff: StencilReactComponent<OntarioIconMicrophoneOffElement, OntarioIconMicrophoneOffEvents> = /*@__PURE__*/ createComponent<OntarioIconMicrophoneOffElement, OntarioIconMicrophoneOffEvents>({
     tagName: 'ontario-icon-microphone-off',
     elementClass: OntarioIconMicrophoneOffElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconMicrophoneOffEvents,
     defineCustomElement: defineOntarioIconMicrophoneOff
@@ -1172,7 +1166,7 @@ export type OntarioIconMicrophoneOnEvents = NonNullable<unknown>;
 export const OntarioIconMicrophoneOn: StencilReactComponent<OntarioIconMicrophoneOnElement, OntarioIconMicrophoneOnEvents> = /*@__PURE__*/ createComponent<OntarioIconMicrophoneOnElement, OntarioIconMicrophoneOnEvents>({
     tagName: 'ontario-icon-microphone-on',
     elementClass: OntarioIconMicrophoneOnElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconMicrophoneOnEvents,
     defineCustomElement: defineOntarioIconMicrophoneOn
@@ -1183,7 +1177,7 @@ export type OntarioIconMoreAccountsEvents = NonNullable<unknown>;
 export const OntarioIconMoreAccounts: StencilReactComponent<OntarioIconMoreAccountsElement, OntarioIconMoreAccountsEvents> = /*@__PURE__*/ createComponent<OntarioIconMoreAccountsElement, OntarioIconMoreAccountsEvents>({
     tagName: 'ontario-icon-more-accounts',
     elementClass: OntarioIconMoreAccountsElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconMoreAccountsEvents,
     defineCustomElement: defineOntarioIconMoreAccounts
@@ -1194,7 +1188,7 @@ export type OntarioIconMoreVerticalEvents = NonNullable<unknown>;
 export const OntarioIconMoreVertical: StencilReactComponent<OntarioIconMoreVerticalElement, OntarioIconMoreVerticalEvents> = /*@__PURE__*/ createComponent<OntarioIconMoreVerticalElement, OntarioIconMoreVerticalEvents>({
     tagName: 'ontario-icon-more-vertical',
     elementClass: OntarioIconMoreVerticalElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconMoreVerticalEvents,
     defineCustomElement: defineOntarioIconMoreVertical
@@ -1205,7 +1199,7 @@ export type OntarioIconNewWindowEvents = NonNullable<unknown>;
 export const OntarioIconNewWindow: StencilReactComponent<OntarioIconNewWindowElement, OntarioIconNewWindowEvents> = /*@__PURE__*/ createComponent<OntarioIconNewWindowElement, OntarioIconNewWindowEvents>({
     tagName: 'ontario-icon-new-window',
     elementClass: OntarioIconNewWindowElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconNewWindowEvents,
     defineCustomElement: defineOntarioIconNewWindow
@@ -1216,7 +1210,7 @@ export type OntarioIconNextEvents = NonNullable<unknown>;
 export const OntarioIconNext: StencilReactComponent<OntarioIconNextElement, OntarioIconNextEvents> = /*@__PURE__*/ createComponent<OntarioIconNextElement, OntarioIconNextEvents>({
     tagName: 'ontario-icon-next',
     elementClass: OntarioIconNextElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconNextEvents,
     defineCustomElement: defineOntarioIconNext
@@ -1227,7 +1221,7 @@ export type OntarioIconNotificationEvents = NonNullable<unknown>;
 export const OntarioIconNotification: StencilReactComponent<OntarioIconNotificationElement, OntarioIconNotificationEvents> = /*@__PURE__*/ createComponent<OntarioIconNotificationElement, OntarioIconNotificationEvents>({
     tagName: 'ontario-icon-notification',
     elementClass: OntarioIconNotificationElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconNotificationEvents,
     defineCustomElement: defineOntarioIconNotification
@@ -1238,7 +1232,7 @@ export type OntarioIconPasswordHideEvents = NonNullable<unknown>;
 export const OntarioIconPasswordHide: StencilReactComponent<OntarioIconPasswordHideElement, OntarioIconPasswordHideEvents> = /*@__PURE__*/ createComponent<OntarioIconPasswordHideElement, OntarioIconPasswordHideEvents>({
     tagName: 'ontario-icon-password-hide',
     elementClass: OntarioIconPasswordHideElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconPasswordHideEvents,
     defineCustomElement: defineOntarioIconPasswordHide
@@ -1249,7 +1243,7 @@ export type OntarioIconPasswordShowEvents = NonNullable<unknown>;
 export const OntarioIconPasswordShow: StencilReactComponent<OntarioIconPasswordShowElement, OntarioIconPasswordShowEvents> = /*@__PURE__*/ createComponent<OntarioIconPasswordShowElement, OntarioIconPasswordShowEvents>({
     tagName: 'ontario-icon-password-show',
     elementClass: OntarioIconPasswordShowElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconPasswordShowEvents,
     defineCustomElement: defineOntarioIconPasswordShow
@@ -1260,7 +1254,7 @@ export type OntarioIconPhoneEvents = NonNullable<unknown>;
 export const OntarioIconPhone: StencilReactComponent<OntarioIconPhoneElement, OntarioIconPhoneEvents> = /*@__PURE__*/ createComponent<OntarioIconPhoneElement, OntarioIconPhoneEvents>({
     tagName: 'ontario-icon-phone',
     elementClass: OntarioIconPhoneElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconPhoneEvents,
     defineCustomElement: defineOntarioIconPhone
@@ -1271,7 +1265,7 @@ export type OntarioIconPhotoEvents = NonNullable<unknown>;
 export const OntarioIconPhoto: StencilReactComponent<OntarioIconPhotoElement, OntarioIconPhotoEvents> = /*@__PURE__*/ createComponent<OntarioIconPhotoElement, OntarioIconPhotoEvents>({
     tagName: 'ontario-icon-photo',
     elementClass: OntarioIconPhotoElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconPhotoEvents,
     defineCustomElement: defineOntarioIconPhoto
@@ -1282,7 +1276,7 @@ export type OntarioIconPinLocationOffEvents = NonNullable<unknown>;
 export const OntarioIconPinLocationOff: StencilReactComponent<OntarioIconPinLocationOffElement, OntarioIconPinLocationOffEvents> = /*@__PURE__*/ createComponent<OntarioIconPinLocationOffElement, OntarioIconPinLocationOffEvents>({
     tagName: 'ontario-icon-pin-location-off',
     elementClass: OntarioIconPinLocationOffElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconPinLocationOffEvents,
     defineCustomElement: defineOntarioIconPinLocationOff
@@ -1293,7 +1287,7 @@ export type OntarioIconPinLocationOnEvents = NonNullable<unknown>;
 export const OntarioIconPinLocationOn: StencilReactComponent<OntarioIconPinLocationOnElement, OntarioIconPinLocationOnEvents> = /*@__PURE__*/ createComponent<OntarioIconPinLocationOnElement, OntarioIconPinLocationOnEvents>({
     tagName: 'ontario-icon-pin-location-on',
     elementClass: OntarioIconPinLocationOnElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconPinLocationOnEvents,
     defineCustomElement: defineOntarioIconPinLocationOn
@@ -1304,7 +1298,7 @@ export type OntarioIconPreviousEvents = NonNullable<unknown>;
 export const OntarioIconPrevious: StencilReactComponent<OntarioIconPreviousElement, OntarioIconPreviousEvents> = /*@__PURE__*/ createComponent<OntarioIconPreviousElement, OntarioIconPreviousEvents>({
     tagName: 'ontario-icon-previous',
     elementClass: OntarioIconPreviousElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconPreviousEvents,
     defineCustomElement: defineOntarioIconPrevious
@@ -1315,7 +1309,7 @@ export type OntarioIconPrintEvents = NonNullable<unknown>;
 export const OntarioIconPrint: StencilReactComponent<OntarioIconPrintElement, OntarioIconPrintEvents> = /*@__PURE__*/ createComponent<OntarioIconPrintElement, OntarioIconPrintEvents>({
     tagName: 'ontario-icon-print',
     elementClass: OntarioIconPrintElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconPrintEvents,
     defineCustomElement: defineOntarioIconPrint
@@ -1326,7 +1320,7 @@ export type OntarioIconRemoveEvents = NonNullable<unknown>;
 export const OntarioIconRemove: StencilReactComponent<OntarioIconRemoveElement, OntarioIconRemoveEvents> = /*@__PURE__*/ createComponent<OntarioIconRemoveElement, OntarioIconRemoveEvents>({
     tagName: 'ontario-icon-remove',
     elementClass: OntarioIconRemoveElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconRemoveEvents,
     defineCustomElement: defineOntarioIconRemove
@@ -1337,7 +1331,7 @@ export type OntarioIconRemoveAltEvents = NonNullable<unknown>;
 export const OntarioIconRemoveAlt: StencilReactComponent<OntarioIconRemoveAltElement, OntarioIconRemoveAltEvents> = /*@__PURE__*/ createComponent<OntarioIconRemoveAltElement, OntarioIconRemoveAltEvents>({
     tagName: 'ontario-icon-remove-alt',
     elementClass: OntarioIconRemoveAltElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconRemoveAltEvents,
     defineCustomElement: defineOntarioIconRemoveAlt
@@ -1348,7 +1342,7 @@ export type OntarioIconReplayEvents = NonNullable<unknown>;
 export const OntarioIconReplay: StencilReactComponent<OntarioIconReplayElement, OntarioIconReplayEvents> = /*@__PURE__*/ createComponent<OntarioIconReplayElement, OntarioIconReplayEvents>({
     tagName: 'ontario-icon-replay',
     elementClass: OntarioIconReplayElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconReplayEvents,
     defineCustomElement: defineOntarioIconReplay
@@ -1359,7 +1353,7 @@ export type OntarioIconRssFeedEvents = NonNullable<unknown>;
 export const OntarioIconRssFeed: StencilReactComponent<OntarioIconRssFeedElement, OntarioIconRssFeedEvents> = /*@__PURE__*/ createComponent<OntarioIconRssFeedElement, OntarioIconRssFeedEvents>({
     tagName: 'ontario-icon-rss-feed',
     elementClass: OntarioIconRssFeedElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconRssFeedEvents,
     defineCustomElement: defineOntarioIconRssFeed
@@ -1370,7 +1364,7 @@ export type OntarioIconSaveEvents = NonNullable<unknown>;
 export const OntarioIconSave: StencilReactComponent<OntarioIconSaveElement, OntarioIconSaveEvents> = /*@__PURE__*/ createComponent<OntarioIconSaveElement, OntarioIconSaveEvents>({
     tagName: 'ontario-icon-save',
     elementClass: OntarioIconSaveElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconSaveEvents,
     defineCustomElement: defineOntarioIconSave
@@ -1381,7 +1375,7 @@ export type OntarioIconSearchEvents = NonNullable<unknown>;
 export const OntarioIconSearch: StencilReactComponent<OntarioIconSearchElement, OntarioIconSearchEvents> = /*@__PURE__*/ createComponent<OntarioIconSearchElement, OntarioIconSearchEvents>({
     tagName: 'ontario-icon-search',
     elementClass: OntarioIconSearchElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconSearchEvents,
     defineCustomElement: defineOntarioIconSearch
@@ -1392,7 +1386,7 @@ export type OntarioIconSearchWhiteEvents = NonNullable<unknown>;
 export const OntarioIconSearchWhite: StencilReactComponent<OntarioIconSearchWhiteElement, OntarioIconSearchWhiteEvents> = /*@__PURE__*/ createComponent<OntarioIconSearchWhiteElement, OntarioIconSearchWhiteEvents>({
     tagName: 'ontario-icon-search-white',
     elementClass: OntarioIconSearchWhiteElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconSearchWhiteEvents,
     defineCustomElement: defineOntarioIconSearchWhite
@@ -1403,7 +1397,7 @@ export type OntarioIconSentiment1Events = NonNullable<unknown>;
 export const OntarioIconSentiment1: StencilReactComponent<OntarioIconSentiment1Element, OntarioIconSentiment1Events> = /*@__PURE__*/ createComponent<OntarioIconSentiment1Element, OntarioIconSentiment1Events>({
     tagName: 'ontario-icon-sentiment-1',
     elementClass: OntarioIconSentiment1Element,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconSentiment1Events,
     defineCustomElement: defineOntarioIconSentiment1
@@ -1414,7 +1408,7 @@ export type OntarioIconSentiment2Events = NonNullable<unknown>;
 export const OntarioIconSentiment2: StencilReactComponent<OntarioIconSentiment2Element, OntarioIconSentiment2Events> = /*@__PURE__*/ createComponent<OntarioIconSentiment2Element, OntarioIconSentiment2Events>({
     tagName: 'ontario-icon-sentiment-2',
     elementClass: OntarioIconSentiment2Element,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconSentiment2Events,
     defineCustomElement: defineOntarioIconSentiment2
@@ -1425,7 +1419,7 @@ export type OntarioIconSentiment3Events = NonNullable<unknown>;
 export const OntarioIconSentiment3: StencilReactComponent<OntarioIconSentiment3Element, OntarioIconSentiment3Events> = /*@__PURE__*/ createComponent<OntarioIconSentiment3Element, OntarioIconSentiment3Events>({
     tagName: 'ontario-icon-sentiment-3',
     elementClass: OntarioIconSentiment3Element,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconSentiment3Events,
     defineCustomElement: defineOntarioIconSentiment3
@@ -1436,7 +1430,7 @@ export type OntarioIconSentiment4Events = NonNullable<unknown>;
 export const OntarioIconSentiment4: StencilReactComponent<OntarioIconSentiment4Element, OntarioIconSentiment4Events> = /*@__PURE__*/ createComponent<OntarioIconSentiment4Element, OntarioIconSentiment4Events>({
     tagName: 'ontario-icon-sentiment-4',
     elementClass: OntarioIconSentiment4Element,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconSentiment4Events,
     defineCustomElement: defineOntarioIconSentiment4
@@ -1447,7 +1441,7 @@ export type OntarioIconSentiment5Events = NonNullable<unknown>;
 export const OntarioIconSentiment5: StencilReactComponent<OntarioIconSentiment5Element, OntarioIconSentiment5Events> = /*@__PURE__*/ createComponent<OntarioIconSentiment5Element, OntarioIconSentiment5Events>({
     tagName: 'ontario-icon-sentiment-5',
     elementClass: OntarioIconSentiment5Element,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconSentiment5Events,
     defineCustomElement: defineOntarioIconSentiment5
@@ -1458,7 +1452,7 @@ export type OntarioIconSettingsEvents = NonNullable<unknown>;
 export const OntarioIconSettings: StencilReactComponent<OntarioIconSettingsElement, OntarioIconSettingsEvents> = /*@__PURE__*/ createComponent<OntarioIconSettingsElement, OntarioIconSettingsEvents>({
     tagName: 'ontario-icon-settings',
     elementClass: OntarioIconSettingsElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconSettingsEvents,
     defineCustomElement: defineOntarioIconSettings
@@ -1469,7 +1463,7 @@ export type OntarioIconShareEvents = NonNullable<unknown>;
 export const OntarioIconShare: StencilReactComponent<OntarioIconShareElement, OntarioIconShareEvents> = /*@__PURE__*/ createComponent<OntarioIconShareElement, OntarioIconShareEvents>({
     tagName: 'ontario-icon-share',
     elementClass: OntarioIconShareElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconShareEvents,
     defineCustomElement: defineOntarioIconShare
@@ -1480,7 +1474,7 @@ export type OntarioIconSortEvents = NonNullable<unknown>;
 export const OntarioIconSort: StencilReactComponent<OntarioIconSortElement, OntarioIconSortEvents> = /*@__PURE__*/ createComponent<OntarioIconSortElement, OntarioIconSortEvents>({
     tagName: 'ontario-icon-sort',
     elementClass: OntarioIconSortElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconSortEvents,
     defineCustomElement: defineOntarioIconSort
@@ -1491,7 +1485,7 @@ export type OntarioIconSortAlphabeticalAscendingEvents = NonNullable<unknown>;
 export const OntarioIconSortAlphabeticalAscending: StencilReactComponent<OntarioIconSortAlphabeticalAscendingElement, OntarioIconSortAlphabeticalAscendingEvents> = /*@__PURE__*/ createComponent<OntarioIconSortAlphabeticalAscendingElement, OntarioIconSortAlphabeticalAscendingEvents>({
     tagName: 'ontario-icon-sort-alphabetical-ascending',
     elementClass: OntarioIconSortAlphabeticalAscendingElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconSortAlphabeticalAscendingEvents,
     defineCustomElement: defineOntarioIconSortAlphabeticalAscending
@@ -1502,7 +1496,7 @@ export type OntarioIconSortAlphabeticalDescendingEvents = NonNullable<unknown>;
 export const OntarioIconSortAlphabeticalDescending: StencilReactComponent<OntarioIconSortAlphabeticalDescendingElement, OntarioIconSortAlphabeticalDescendingEvents> = /*@__PURE__*/ createComponent<OntarioIconSortAlphabeticalDescendingElement, OntarioIconSortAlphabeticalDescendingEvents>({
     tagName: 'ontario-icon-sort-alphabetical-descending',
     elementClass: OntarioIconSortAlphabeticalDescendingElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconSortAlphabeticalDescendingEvents,
     defineCustomElement: defineOntarioIconSortAlphabeticalDescending
@@ -1513,7 +1507,7 @@ export type OntarioIconSortAscendingEvents = NonNullable<unknown>;
 export const OntarioIconSortAscending: StencilReactComponent<OntarioIconSortAscendingElement, OntarioIconSortAscendingEvents> = /*@__PURE__*/ createComponent<OntarioIconSortAscendingElement, OntarioIconSortAscendingEvents>({
     tagName: 'ontario-icon-sort-ascending',
     elementClass: OntarioIconSortAscendingElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconSortAscendingEvents,
     defineCustomElement: defineOntarioIconSortAscending
@@ -1524,7 +1518,7 @@ export type OntarioIconSortDescendingEvents = NonNullable<unknown>;
 export const OntarioIconSortDescending: StencilReactComponent<OntarioIconSortDescendingElement, OntarioIconSortDescendingEvents> = /*@__PURE__*/ createComponent<OntarioIconSortDescendingElement, OntarioIconSortDescendingEvents>({
     tagName: 'ontario-icon-sort-descending',
     elementClass: OntarioIconSortDescendingElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconSortDescendingEvents,
     defineCustomElement: defineOntarioIconSortDescending
@@ -1535,7 +1529,7 @@ export type OntarioIconSortVariantEvents = NonNullable<unknown>;
 export const OntarioIconSortVariant: StencilReactComponent<OntarioIconSortVariantElement, OntarioIconSortVariantEvents> = /*@__PURE__*/ createComponent<OntarioIconSortVariantElement, OntarioIconSortVariantEvents>({
     tagName: 'ontario-icon-sort-variant',
     elementClass: OntarioIconSortVariantElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconSortVariantEvents,
     defineCustomElement: defineOntarioIconSortVariant
@@ -1546,7 +1540,7 @@ export type OntarioIconTagEvents = NonNullable<unknown>;
 export const OntarioIconTag: StencilReactComponent<OntarioIconTagElement, OntarioIconTagEvents> = /*@__PURE__*/ createComponent<OntarioIconTagElement, OntarioIconTagEvents>({
     tagName: 'ontario-icon-tag',
     elementClass: OntarioIconTagElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconTagEvents,
     defineCustomElement: defineOntarioIconTag
@@ -1557,7 +1551,7 @@ export type OntarioIconTextMessageEvents = NonNullable<unknown>;
 export const OntarioIconTextMessage: StencilReactComponent<OntarioIconTextMessageElement, OntarioIconTextMessageEvents> = /*@__PURE__*/ createComponent<OntarioIconTextMessageElement, OntarioIconTextMessageEvents>({
     tagName: 'ontario-icon-text-message',
     elementClass: OntarioIconTextMessageElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconTextMessageEvents,
     defineCustomElement: defineOntarioIconTextMessage
@@ -1568,7 +1562,7 @@ export type OntarioIconTimerEvents = NonNullable<unknown>;
 export const OntarioIconTimer: StencilReactComponent<OntarioIconTimerElement, OntarioIconTimerEvents> = /*@__PURE__*/ createComponent<OntarioIconTimerElement, OntarioIconTimerEvents>({
     tagName: 'ontario-icon-timer',
     elementClass: OntarioIconTimerElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconTimerEvents,
     defineCustomElement: defineOntarioIconTimer
@@ -1579,7 +1573,7 @@ export type OntarioIconTransportBicycleEvents = NonNullable<unknown>;
 export const OntarioIconTransportBicycle: StencilReactComponent<OntarioIconTransportBicycleElement, OntarioIconTransportBicycleEvents> = /*@__PURE__*/ createComponent<OntarioIconTransportBicycleElement, OntarioIconTransportBicycleEvents>({
     tagName: 'ontario-icon-transport-bicycle',
     elementClass: OntarioIconTransportBicycleElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconTransportBicycleEvents,
     defineCustomElement: defineOntarioIconTransportBicycle
@@ -1590,7 +1584,7 @@ export type OntarioIconTransportBusEvents = NonNullable<unknown>;
 export const OntarioIconTransportBus: StencilReactComponent<OntarioIconTransportBusElement, OntarioIconTransportBusEvents> = /*@__PURE__*/ createComponent<OntarioIconTransportBusElement, OntarioIconTransportBusEvents>({
     tagName: 'ontario-icon-transport-bus',
     elementClass: OntarioIconTransportBusElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconTransportBusEvents,
     defineCustomElement: defineOntarioIconTransportBus
@@ -1601,7 +1595,7 @@ export type OntarioIconTransportCarEvents = NonNullable<unknown>;
 export const OntarioIconTransportCar: StencilReactComponent<OntarioIconTransportCarElement, OntarioIconTransportCarEvents> = /*@__PURE__*/ createComponent<OntarioIconTransportCarElement, OntarioIconTransportCarEvents>({
     tagName: 'ontario-icon-transport-car',
     elementClass: OntarioIconTransportCarElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconTransportCarEvents,
     defineCustomElement: defineOntarioIconTransportCar
@@ -1612,7 +1606,7 @@ export type OntarioIconTransportWalkEvents = NonNullable<unknown>;
 export const OntarioIconTransportWalk: StencilReactComponent<OntarioIconTransportWalkElement, OntarioIconTransportWalkEvents> = /*@__PURE__*/ createComponent<OntarioIconTransportWalkElement, OntarioIconTransportWalkEvents>({
     tagName: 'ontario-icon-transport-walk',
     elementClass: OntarioIconTransportWalkElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconTransportWalkEvents,
     defineCustomElement: defineOntarioIconTransportWalk
@@ -1623,7 +1617,7 @@ export type OntarioIconTtyEvents = NonNullable<unknown>;
 export const OntarioIconTty: StencilReactComponent<OntarioIconTtyElement, OntarioIconTtyEvents> = /*@__PURE__*/ createComponent<OntarioIconTtyElement, OntarioIconTtyEvents>({
     tagName: 'ontario-icon-tty',
     elementClass: OntarioIconTtyElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconTtyEvents,
     defineCustomElement: defineOntarioIconTty
@@ -1634,7 +1628,7 @@ export type OntarioIconTuneEvents = NonNullable<unknown>;
 export const OntarioIconTune: StencilReactComponent<OntarioIconTuneElement, OntarioIconTuneEvents> = /*@__PURE__*/ createComponent<OntarioIconTuneElement, OntarioIconTuneEvents>({
     tagName: 'ontario-icon-tune',
     elementClass: OntarioIconTuneElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconTuneEvents,
     defineCustomElement: defineOntarioIconTune
@@ -1645,7 +1639,7 @@ export type OntarioIconTwitterEvents = NonNullable<unknown>;
 export const OntarioIconTwitter: StencilReactComponent<OntarioIconTwitterElement, OntarioIconTwitterEvents> = /*@__PURE__*/ createComponent<OntarioIconTwitterElement, OntarioIconTwitterEvents>({
     tagName: 'ontario-icon-twitter',
     elementClass: OntarioIconTwitterElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconTwitterEvents,
     defineCustomElement: defineOntarioIconTwitter
@@ -1656,7 +1650,7 @@ export type OntarioIconTwitterAltEvents = NonNullable<unknown>;
 export const OntarioIconTwitterAlt: StencilReactComponent<OntarioIconTwitterAltElement, OntarioIconTwitterAltEvents> = /*@__PURE__*/ createComponent<OntarioIconTwitterAltElement, OntarioIconTwitterAltEvents>({
     tagName: 'ontario-icon-twitter-alt',
     elementClass: OntarioIconTwitterAltElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconTwitterAltEvents,
     defineCustomElement: defineOntarioIconTwitterAlt
@@ -1667,7 +1661,7 @@ export type OntarioIconUploadEvents = NonNullable<unknown>;
 export const OntarioIconUpload: StencilReactComponent<OntarioIconUploadElement, OntarioIconUploadEvents> = /*@__PURE__*/ createComponent<OntarioIconUploadElement, OntarioIconUploadEvents>({
     tagName: 'ontario-icon-upload',
     elementClass: OntarioIconUploadElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconUploadEvents,
     defineCustomElement: defineOntarioIconUpload
@@ -1678,7 +1672,7 @@ export type OntarioIconVideoEvents = NonNullable<unknown>;
 export const OntarioIconVideo: StencilReactComponent<OntarioIconVideoElement, OntarioIconVideoEvents> = /*@__PURE__*/ createComponent<OntarioIconVideoElement, OntarioIconVideoEvents>({
     tagName: 'ontario-icon-video',
     elementClass: OntarioIconVideoElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconVideoEvents,
     defineCustomElement: defineOntarioIconVideo
@@ -1689,7 +1683,7 @@ export type OntarioIconVisaEvents = NonNullable<unknown>;
 export const OntarioIconVisa: StencilReactComponent<OntarioIconVisaElement, OntarioIconVisaEvents> = /*@__PURE__*/ createComponent<OntarioIconVisaElement, OntarioIconVisaEvents>({
     tagName: 'ontario-icon-visa',
     elementClass: OntarioIconVisaElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconVisaEvents,
     defineCustomElement: defineOntarioIconVisa
@@ -1700,7 +1694,7 @@ export type OntarioIconVoteDislikeEvents = NonNullable<unknown>;
 export const OntarioIconVoteDislike: StencilReactComponent<OntarioIconVoteDislikeElement, OntarioIconVoteDislikeEvents> = /*@__PURE__*/ createComponent<OntarioIconVoteDislikeElement, OntarioIconVoteDislikeEvents>({
     tagName: 'ontario-icon-vote-dislike',
     elementClass: OntarioIconVoteDislikeElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconVoteDislikeEvents,
     defineCustomElement: defineOntarioIconVoteDislike
@@ -1711,7 +1705,7 @@ export type OntarioIconVoteLikeEvents = NonNullable<unknown>;
 export const OntarioIconVoteLike: StencilReactComponent<OntarioIconVoteLikeElement, OntarioIconVoteLikeEvents> = /*@__PURE__*/ createComponent<OntarioIconVoteLikeElement, OntarioIconVoteLikeEvents>({
     tagName: 'ontario-icon-vote-like',
     elementClass: OntarioIconVoteLikeElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconVoteLikeEvents,
     defineCustomElement: defineOntarioIconVoteLike
@@ -1722,7 +1716,7 @@ export type OntarioIconVpnKeyEvents = NonNullable<unknown>;
 export const OntarioIconVpnKey: StencilReactComponent<OntarioIconVpnKeyElement, OntarioIconVpnKeyEvents> = /*@__PURE__*/ createComponent<OntarioIconVpnKeyElement, OntarioIconVpnKeyEvents>({
     tagName: 'ontario-icon-vpn-key',
     elementClass: OntarioIconVpnKeyElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconVpnKeyEvents,
     defineCustomElement: defineOntarioIconVpnKey
@@ -1733,7 +1727,7 @@ export type OntarioIconWheelchairEvents = NonNullable<unknown>;
 export const OntarioIconWheelchair: StencilReactComponent<OntarioIconWheelchairElement, OntarioIconWheelchairEvents> = /*@__PURE__*/ createComponent<OntarioIconWheelchairElement, OntarioIconWheelchairEvents>({
     tagName: 'ontario-icon-wheelchair',
     elementClass: OntarioIconWheelchairElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconWheelchairEvents,
     defineCustomElement: defineOntarioIconWheelchair
@@ -1744,7 +1738,7 @@ export type OntarioIconWifiEvents = NonNullable<unknown>;
 export const OntarioIconWifi: StencilReactComponent<OntarioIconWifiElement, OntarioIconWifiEvents> = /*@__PURE__*/ createComponent<OntarioIconWifiElement, OntarioIconWifiEvents>({
     tagName: 'ontario-icon-wifi',
     elementClass: OntarioIconWifiElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconWifiEvents,
     defineCustomElement: defineOntarioIconWifi
@@ -1755,7 +1749,7 @@ export type OntarioIconYoutubeEvents = NonNullable<unknown>;
 export const OntarioIconYoutube: StencilReactComponent<OntarioIconYoutubeElement, OntarioIconYoutubeEvents> = /*@__PURE__*/ createComponent<OntarioIconYoutubeElement, OntarioIconYoutubeEvents>({
     tagName: 'ontario-icon-youtube',
     elementClass: OntarioIconYoutubeElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioIconYoutubeEvents,
     defineCustomElement: defineOntarioIconYoutube
@@ -1766,13 +1760,13 @@ export type OntarioInputEvents = {
     onInputOnChange: EventName<OntarioInputCustomEvent<InputInteractionEvent>>,
     onInputOnBlur: EventName<OntarioInputCustomEvent<InputFocusBlurEvent>>,
     onInputOnFocus: EventName<OntarioInputCustomEvent<InputFocusBlurEvent>>,
-    onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>
+    onInputErrorOccurred: EventName<OntarioInputCustomEvent<{ inputId: string; errorMessage: string }>>
 };
 
 export const OntarioInput: StencilReactComponent<OntarioInputElement, OntarioInputEvents> = /*@__PURE__*/ createComponent<OntarioInputElement, OntarioInputEvents>({
     tagName: 'ontario-input',
     elementClass: OntarioInputElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onInputOnInput: 'inputOnInput',
@@ -1792,7 +1786,7 @@ export type OntarioLanguageToggleEvents = {
 export const OntarioLanguageToggle: StencilReactComponent<OntarioLanguageToggleElement, OntarioLanguageToggleEvents> = /*@__PURE__*/ createComponent<OntarioLanguageToggleElement, OntarioLanguageToggleEvents>({
     tagName: 'ontario-language-toggle',
     elementClass: OntarioLanguageToggleElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSetAppLanguage: 'setAppLanguage',
@@ -1806,7 +1800,7 @@ export type OntarioLoadingIndicatorEvents = NonNullable<unknown>;
 export const OntarioLoadingIndicator: StencilReactComponent<OntarioLoadingIndicatorElement, OntarioLoadingIndicatorEvents> = /*@__PURE__*/ createComponent<OntarioLoadingIndicatorElement, OntarioLoadingIndicatorEvents>({
     tagName: 'ontario-loading-indicator',
     elementClass: OntarioLoadingIndicatorElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioLoadingIndicatorEvents,
     defineCustomElement: defineOntarioLoadingIndicator
@@ -1817,7 +1811,7 @@ export type OntarioPageAlertEvents = NonNullable<unknown>;
 export const OntarioPageAlert: StencilReactComponent<OntarioPageAlertElement, OntarioPageAlertEvents> = /*@__PURE__*/ createComponent<OntarioPageAlertElement, OntarioPageAlertEvents>({
     tagName: 'ontario-page-alert',
     elementClass: OntarioPageAlertElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioPageAlertEvents,
     defineCustomElement: defineOntarioPageAlert
@@ -1827,13 +1821,13 @@ export type OntarioRadioButtonsEvents = {
     onRadioOnChange: EventName<OntarioRadioButtonsCustomEvent<RadioAndCheckboxChangeEvent>>,
     onRadioOnBlur: EventName<OntarioRadioButtonsCustomEvent<InputFocusBlurEvent>>,
     onRadioOnFocus: EventName<OntarioRadioButtonsCustomEvent<InputFocusBlurEvent>>,
-    onInputErrorOccurred: EventName<CustomEvent<{ errorMessage: string }>>
+    onInputErrorOccurred: EventName<OntarioRadioButtonsCustomEvent<{ errorMessage: string }>>
 };
 
 export const OntarioRadioButtons: StencilReactComponent<OntarioRadioButtonsElement, OntarioRadioButtonsEvents> = /*@__PURE__*/ createComponent<OntarioRadioButtonsElement, OntarioRadioButtonsEvents>({
     tagName: 'ontario-radio-buttons',
     elementClass: OntarioRadioButtonsElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onRadioOnChange: 'radioOnChange',
@@ -1845,7 +1839,7 @@ export const OntarioRadioButtons: StencilReactComponent<OntarioRadioButtonsEleme
 });
 
 export type OntarioSearchBoxEvents = {
-    onSearchOnSubmit: EventName<CustomEvent<string>>,
+    onSearchOnSubmit: EventName<OntarioSearchBoxCustomEvent<string>>,
     onInputOnInput: EventName<OntarioSearchBoxCustomEvent<InputInputEvent>>,
     onInputOnChange: EventName<OntarioSearchBoxCustomEvent<InputInteractionEvent>>,
     onInputOnBlur: EventName<OntarioSearchBoxCustomEvent<InputFocusBlurEvent>>,
@@ -1855,7 +1849,7 @@ export type OntarioSearchBoxEvents = {
 export const OntarioSearchBox: StencilReactComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents> = /*@__PURE__*/ createComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents>({
     tagName: 'ontario-search-box',
     elementClass: OntarioSearchBoxElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSearchOnSubmit: 'searchOnSubmit',
@@ -1872,7 +1866,7 @@ export type OntarioStepIndicatorEvents = NonNullable<unknown>;
 export const OntarioStepIndicator: StencilReactComponent<OntarioStepIndicatorElement, OntarioStepIndicatorEvents> = /*@__PURE__*/ createComponent<OntarioStepIndicatorElement, OntarioStepIndicatorEvents>({
     tagName: 'ontario-step-indicator',
     elementClass: OntarioStepIndicatorElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioStepIndicatorEvents,
     defineCustomElement: defineOntarioStepIndicator
@@ -1883,7 +1877,7 @@ export type OntarioTableEvents = NonNullable<unknown>;
 export const OntarioTable: StencilReactComponent<OntarioTableElement, OntarioTableEvents> = /*@__PURE__*/ createComponent<OntarioTableElement, OntarioTableEvents>({
     tagName: 'ontario-table',
     elementClass: OntarioTableElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioTableEvents,
     defineCustomElement: defineOntarioTable
@@ -1894,7 +1888,7 @@ export type OntarioTaskEvents = NonNullable<unknown>;
 export const OntarioTask: StencilReactComponent<OntarioTaskElement, OntarioTaskEvents> = /*@__PURE__*/ createComponent<OntarioTaskElement, OntarioTaskEvents>({
     tagName: 'ontario-task',
     elementClass: OntarioTaskElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioTaskEvents,
     defineCustomElement: defineOntarioTask
@@ -1905,7 +1899,7 @@ export type OntarioTaskListEvents = NonNullable<unknown>;
 export const OntarioTaskList: StencilReactComponent<OntarioTaskListElement, OntarioTaskListEvents> = /*@__PURE__*/ createComponent<OntarioTaskListElement, OntarioTaskListEvents>({
     tagName: 'ontario-task-list',
     elementClass: OntarioTaskListElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as OntarioTaskListEvents,
     defineCustomElement: defineOntarioTaskList
@@ -1916,13 +1910,13 @@ export type OntarioTextareaEvents = {
     onInputOnChange: EventName<OntarioTextareaCustomEvent<InputInteractionEvent>>,
     onInputOnBlur: EventName<OntarioTextareaCustomEvent<InputFocusBlurEvent>>,
     onInputOnFocus: EventName<OntarioTextareaCustomEvent<InputFocusBlurEvent>>,
-    onInputErrorOccurred: EventName<CustomEvent<{ inputId: string; errorMessage: string }>>
+    onInputErrorOccurred: EventName<OntarioTextareaCustomEvent<{ inputId: string; errorMessage: string }>>
 };
 
 export const OntarioTextarea: StencilReactComponent<OntarioTextareaElement, OntarioTextareaEvents> = /*@__PURE__*/ createComponent<OntarioTextareaElement, OntarioTextareaEvents>({
     tagName: 'ontario-textarea',
     elementClass: OntarioTextareaElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onInputOnInput: 'inputOnInput',
