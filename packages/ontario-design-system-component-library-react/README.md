@@ -8,7 +8,13 @@
 
 ## Introduction
 
-This library was generated using Stencil's React output target dependency. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/). For more information, [find it on NPM](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-react).
+This library was generated using Stencil's React output target dependency. It is based on the [Ontario Design System Component Library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/). For more information, [find it on NPM](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-react).
+
+## React 19 support and tooling
+
+- React 19 only (React 18 is no longer supported by this package's peer dependencies).
+- `app-react` is Vite-based (CRA is deprecated).
+- `app-nextjs` remains on Next 15 with React 19 for now; SSR continues to use the Stencil wrapper.
 
 ## Installation and usage
 
@@ -25,7 +31,7 @@ To use the Ontario Design System React component library, follow these steps:
 2. Import the theme file into your project’s entry point.
 
    ```tsx
-   import '@ongov/ontario-design-system-component-library-react/dist/theme.scss';
+   import '@ongov/ontario-design-system-component-library-react/styles';
    ```
 
 3. Import the desired components from the component library.
@@ -48,6 +54,14 @@ You can now use the React components in your component and template files.
 	attribution="Survey respondent"
 	quote="Access to high-quality child care is an issue that impacts our entire society."
 ></OntarioBlockquote>
+```
+
+### Sass (optional)
+
+If you use Sass and want `pkg:` resolution via `@use`, import the styles entry point:
+
+```scss
+@use 'pkg:@ongov/ontario-design-system-component-library-react/styles' as *;
 ```
 
 ### Local assets

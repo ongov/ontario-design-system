@@ -2,7 +2,7 @@
 
 ## 1. System Requirements
 
-- **[Node.js](https://nodejs.org/en/download):** v20.18.1
+- **[Node.js](https://nodejs.org/en/download):** v22.14.0
 - **[PNPM](https://pnpm.io/installation):** v10.2.0
 
 ## 2. Project Structure Overview
