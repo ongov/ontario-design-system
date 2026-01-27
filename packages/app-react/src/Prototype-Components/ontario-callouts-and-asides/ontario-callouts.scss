@@ -1,4 +1,4 @@
-@import '@ongov/ontario-design-system-global-styles/dist/styles/scss/theme';
+@use '../../styles/ontario-theme.scss' as *;
 
 .ontario-callout,
 .ontario-aside {

@@ -6,6 +6,16 @@ The purpose of this project is to test the React web components library function
 
 Local assets are copied over via scripts using the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package as outlined in the Ontario Design System React component library README instructions.
 
+## Asset paths (fonts and images)
+
+This app uses a local theme entrypoint to keep asset URLs pointing at `/assets/...` when running in Vite.
+
+- Use `src/styles/ontario-theme.scss` as the single theme import and configure the base path there.
+- Any other SCSS files should import the local theme module instead of the package theme directly.
+- The React entrypoint calls `setAssetPath(`${window.location.origin}/assets/`)` so Stencil resolves web component image assets correctly in Vite.
+
+If you see font requests going to `/fonts/...` instead of `/assets/fonts/...`, it means a file is still importing the package theme directly.
+
 ## Available Scripts
 
 In the project directory, you can run:

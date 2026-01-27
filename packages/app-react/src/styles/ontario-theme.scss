@@ -1,0 +1,6 @@
+@forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss' with (
+	$asset-base-path: '/assets'
+);
+
+@use 'pkg:@ongov/ontario-design-system-component-library-react/styles/slotted-styles/callouts-asides.scss';
+@use 'pkg:@ongov/ontario-design-system-component-library-react/styles/slotted-styles/page-alerts.scss';
