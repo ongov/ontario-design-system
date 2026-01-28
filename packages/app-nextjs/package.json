@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"prebuild": "pnpm run copy:assets",
+		"prestart": "pnpm run copy:assets",
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
