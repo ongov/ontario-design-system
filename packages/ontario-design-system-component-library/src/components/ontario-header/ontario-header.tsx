@@ -994,7 +994,11 @@ export class OntarioHeader {
 									<div class="ontario-columns ontario-small-12 ontario-application-subheader__container">
 										{!isServiceOntarioType ? (
 											<p class="ontario-application-subheader__heading">
-												<a href={this.applicationHeaderInfoState?.href}>{this.applicationHeaderInfoState?.title}</a>
+												{this.applicationHeaderInfoState?.href ? (
+													<a href={this.applicationHeaderInfoState.href}>{this.applicationHeaderInfoState?.title}</a>
+												) : (
+													this.applicationHeaderInfoState?.title
+												)}
 											</p>
 										) : (
 											<a href={this.applicationHeaderInfoState?.href} class="ontario-service-subheader__link">
