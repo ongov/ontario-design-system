@@ -82,7 +82,7 @@ describe('ontario-footer', () => {
                   <li><a class="ontario-footer__link" href="https://www.ontario.ca/feedback/contact-us">Contact</a></li>
                 </ul>
                 <div class="ontario-footer__copyright">
-                  <a class="ontario-footer__link" href="https://www.ontario.ca/page/copyright-information">© King's Printer for Ontario, <span class="ontario-nbsp">2012–25</span></a>
+                  <a class="ontario-footer__link" href="https://www.ontario.ca/page/copyright-information">© King's Printer for Ontario, <span class="ontario-nbsp">2012–26</span></a>
                 </div>
               </div>
             </div>
@@ -225,7 +225,7 @@ describe('ontario-footer', () => {
                   <li><a class="ontario-footer__link" href="https://www.ontario.ca/feedback/contact-us">Contact</a></li>
                 </ul>
                 <div class="ontario-footer__copyright">
-                  <a class="ontario-footer__link" href="https://www.ontario.ca/page/copyright-information">© King's Printer for Ontario, <span class="ontario-nbsp">2012–25</span></a>
+                  <a class="ontario-footer__link" href="https://www.ontario.ca/page/copyright-information">© King's Printer for Ontario, <span class="ontario-nbsp">2012–26</span></a>
                 </div>
               </div>
             </div>
@@ -394,7 +394,7 @@ describe('ontario-footer', () => {
                   <li><a class="ontario-footer__link" href="https://www.ontario.ca/feedback/contact-us">Contact</a></li>
                 </ul>
                 <div class="ontario-footer__copyright">
-                  <a class="ontario-footer__link" href="https://www.ontario.ca/page/copyright-information">© King's Printer for Ontario, <span class="ontario-nbsp">2012–25</span></a>
+                  <a class="ontario-footer__link" href="https://www.ontario.ca/page/copyright-information">© King's Printer for Ontario, <span class="ontario-nbsp">2012–26</span></a>
                 </div>
               </div>
             </div>
@@ -573,7 +573,7 @@ describe('ontario-footer', () => {
                   <li><a class="ontario-footer__link" href="https://www.ontario.ca/feedback/contact-us">Contact</a></li>
                 </ul>
                 <div class="ontario-footer__copyright">
-                  <a class="ontario-footer__link" href="https://www.ontario.ca/page/copyright-information">© King's Printer for Ontario, <span class="ontario-nbsp">2012–25</span></a>
+                  <a class="ontario-footer__link" href="https://www.ontario.ca/page/copyright-information">© King's Printer for Ontario, <span class="ontario-nbsp">2012–26</span></a>
                 </div>
               </div>
             </div>
