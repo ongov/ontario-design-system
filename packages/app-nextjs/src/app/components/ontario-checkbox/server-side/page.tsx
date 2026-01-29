@@ -412,7 +412,7 @@ export default function OntarioCheckboxesPage() {
 				<hr />
 
 				<div>
-					<h2>"error-message" Prop Variant</h2>
+					<h2>"error-message" Prop Variants</h2>
 					<OntarioCheckboxes
 						caption={{ captionText: 'Choose how you want to be reminded' }}
 						name="checkbox-error-message"
