@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"prebuild": "pnpm run copy:assets",
-		"dev": "next dev",
+		"dev": "next dev --turbopack",
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
