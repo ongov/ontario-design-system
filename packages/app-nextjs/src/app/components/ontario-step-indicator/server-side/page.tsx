@@ -17,7 +17,7 @@ export default function OntarioStepIndicatorServerSidePage() {
 					numberOfSteps={3}
 				/>
 
-				<h2>Percentage Complete</h2>
+				<h2>'percentageComplete' Prop</h2>
 				<OntarioStepIndicator percentageComplete={75} />
 
 				<h2>French Language Example</h2>
