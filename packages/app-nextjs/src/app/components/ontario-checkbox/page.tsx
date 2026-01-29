@@ -146,7 +146,7 @@ export default function OntarioCheckboxesPage() {
 				<hr />
 
 				<div>
-					<h2>"hint-text" Prop Variant</h2>
+					<h2>"hint-text" Prop Variants</h2>
 
 					<h3>string hint-content-type</h3>
 					<OntarioCheckboxes
