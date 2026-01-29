@@ -7,7 +7,7 @@ export default function OntarioStepIndicatorClientSidePage() {
 		<main>
 			<Grid>
 				<h1>OntarioStepIndicator (Client Side)</h1>
-				<h2>With Back Button (Custom Click)</h2>
+				<h2>'customOnClick' Prop Variant</h2>
 				<OntarioStepIndicator
 					showBackButton={true}
 					currentStep={1}
