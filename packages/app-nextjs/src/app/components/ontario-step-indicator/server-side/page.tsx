@@ -20,7 +20,8 @@ export default function OntarioStepIndicatorServerSidePage() {
 				<h2>'percentageComplete' Prop</h2>
 				<OntarioStepIndicator percentageComplete={75} />
 
-				<h2>French Language Example</h2>
+				<h2>'language' Prop Variants</h2>
+				<h3>French</h3>
 				<OntarioStepIndicator currentStep={2} numberOfSteps={5} language="fr" />
 			</Grid>
 		</main>
