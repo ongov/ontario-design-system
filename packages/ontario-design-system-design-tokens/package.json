@@ -21,7 +21,7 @@
 		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\\ntitle: Design Tokens\\n---\\n\" -df ../docusaurus/docs/04-readme-design-tokens.md"
 	},
 	"devDependencies": {
-		"@types/node": "^22.10.10",
+		"@types/node": "^22.12.0",
 		"style-dictionary": "^4.3.0"
 	},
 	"publishConfig": {
