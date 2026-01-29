@@ -5,7 +5,7 @@ export default function OntarioStepIndicatorPage() {
 	return (
 		<main>
 			<Grid>
-				<h1>ontario-date-input</h1>
+				<h1>ontario-step-indicator</h1>
 				<div>
 					<ul>
 						<li>
