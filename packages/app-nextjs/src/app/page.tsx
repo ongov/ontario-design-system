@@ -45,6 +45,9 @@ export default function Home() {
 							<Link href="/components/ontario-critical-alert">ontario-critical-alert</Link>
 						</li>
 						<li>
+							<Link href="/components/ontario-icon">ontario-icon</Link>
+						</li>
+						<li>
 							<Link href="/components/ontario-date-input">ontario-date-input</Link>
 						</li>
 						<li>
@@ -60,9 +63,6 @@ export default function Home() {
 							<Link href="/components/ontario-hint-text">ontario-hint-text</Link>
 						</li>
 						<li>
-							<Link href="/components/ontario-task-list">ontario-task-list</Link>
-						</li>
-						<li>
 							<Link href="/components/ontario-input">ontario-input</Link>
 						</li>
 						<li>
@@ -76,13 +76,13 @@ export default function Home() {
 							<Link href="/components/ontario-search-box">ontario-search-box</Link>
 						</li>
 						<li>
+							<Link href="/components/ontario-step-indicator">ontario-step-indicator</Link>
+						</li>
+						<li>
 							<Link href="/components/ontario-task">ontario-task</Link>
 						</li>
 						<li>
-							<Link href="/components/ontario-icon">ontario-icon</Link>
-						</li>
-						<li>
-							<Link href="/components/ontario-step-indicator">ontario-step-indicator</Link>
+							<Link href="/components/ontario-task-list">ontario-task-list</Link>
 						</li>
 						<li>
 							<Link href="/components/ontario-textarea">ontario-textarea</Link>
