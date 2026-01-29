@@ -9,7 +9,7 @@ export default function OntarioStepIndicatorServerSidePage() {
 				<h2>default</h2>
 				<OntarioStepIndicator currentStep={2} numberOfSteps={5} />
 
-				<h2>With Back Button (URL)</h2>
+				<h2>'backButtonUrl' Prop</h2>
 				<OntarioStepIndicator
 					showBackButton={true}
 					backButtonUrl="https://www.ontario.ca"
