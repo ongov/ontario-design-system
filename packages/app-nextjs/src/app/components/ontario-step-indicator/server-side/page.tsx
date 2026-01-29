@@ -6,7 +6,7 @@ export default function OntarioStepIndicatorServerSidePage() {
 		<main>
 			<Grid>
 				<h1>ontario-step-indicator</h1>
-				<h2>Default Step Indicator</h2>
+				<h2>default</h2>
 				<OntarioStepIndicator currentStep={2} numberOfSteps={5} />
 
 				<h2>With Back Button (URL)</h2>
