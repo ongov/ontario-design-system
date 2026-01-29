@@ -273,7 +273,7 @@ export default function OntarioCheckboxesPage() {
 				<hr />
 
 				<div>
-					<h2>"language" Prop Variant</h2>
+					<h2>"language" Prop Variants</h2>
 
 					<h3>English</h3>
 					<OntarioCheckboxes
