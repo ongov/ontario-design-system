@@ -1,0 +1,29 @@
+import { Grid } from '../../../grid';
+import { OntarioStepIndicator } from '@ongov/ontario-design-system-component-library-react';
+
+export default function OntarioStepIndicatorServerSidePage() {
+	return (
+		<main>
+			<Grid>
+				<h1>ontario-step-indicator</h1>
+				<h2>default</h2>
+				<OntarioStepIndicator currentStep={2} numberOfSteps={5} />
+
+				<h2>'backButtonUrl' Prop</h2>
+				<OntarioStepIndicator
+					showBackButton={true}
+					backButtonUrl="https://www.ontario.ca"
+					currentStep={1}
+					numberOfSteps={3}
+				/>
+
+				<h2>'percentageComplete' Prop</h2>
+				<OntarioStepIndicator percentageComplete={75} />
+
+				<h2>'language' Prop Variants</h2>
+				<h3>French</h3>
+				<OntarioStepIndicator currentStep={2} numberOfSteps={5} language="fr" />
+			</Grid>
+		</main>
+	);
+}

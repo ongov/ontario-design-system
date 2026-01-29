@@ -15,14 +15,13 @@ export default function OntarioTaskPage() {
 				<OntarioTask taskId="task-fr" label="Tâche en français" language="fr" />
 
 				<h2>'task-status' Prop Variants</h2>
-				<h3>Not started</h3>
-				<OntarioTask taskId="task-notstarted" label="Task Not Started" task-status="notStarted" />
+				<OntarioTask taskId="task-notstarted" label="Task Not Started" taskStatus="notStarted" />
 
 				<h3>In progress</h3>
-				<OntarioTask taskId="task-inprogress" label="Task In Progress" task-status="inProgress" />
+				<OntarioTask taskId="task-inprogress" label="Task In Progress" taskStatus="inProgress" />
 
 				<h3>Completed</h3>
-				<OntarioTask taskId="task-completed" label="Task Completed" task-status="completed" />
+				<OntarioTask taskId="task-completed" label="Task Completed" taskStatus="completed" />
 
 				<h2>'headingLevel' - Prop Variants</h2>
 				<h3>H2</h3>
