@@ -371,11 +371,14 @@ export class OntarioHeader {
 	 * Watch for changes to the disableDynamicMenu prop to reset the fetch state.
 	 * This allows the menu to be fetched again if the prop is changed after initial load.
 	 */
+	// @ts-ignore - Watcher is called by Stencil framework on prop changes
 	@Watch('disableDynamicMenu')
-	private handleDisableDynamicMenuChange() {
-		// Reset the dynamic menu flag when the prop changes
-		// This allows the fetch to happen again if re-enabled
-		this.isDynamicMenu = false;
+	private handleDisableDynamicMenuChange(newValue: boolean) {
+		// Only reset the dynamic menu flag if disableDynamicMenu is being changed to false (re-enabling)
+		// This allows the fetch to happen again when the user toggles dynamic menu back on
+		if (newValue === false) {
+			this.isDynamicMenu = false;
+		}
 	}
 
 	@Listen('keydown', { target: 'window' })
