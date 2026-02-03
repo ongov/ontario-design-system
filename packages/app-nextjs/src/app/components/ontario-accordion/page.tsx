@@ -9,12 +9,8 @@ export default function OntarioAccordionPage() {
 
 				<h2>"name" Prop Variant</h2>
 				<OntarioAccordion
+					id="ontario-accordion-name-variant"
 					name="My Accordion"
-					expandCollapseButton={{
-						expandAllSectionsLabel: 'Expand All',
-						collapseAllSectionsLabel: 'Collapse All',
-						ariaLabelText: 'Expand or collapse all accordion sections',
-					}}
 					accordionData={[
 						{
 							label: 'Accordion 1',
@@ -41,6 +37,7 @@ export default function OntarioAccordionPage() {
 
 				<h3>Open Accordion</h3>
 				<OntarioAccordion
+					id="ontario-accordion-open-variant"
 					name="Accordion - Open"
 					expandCollapseButton={{
 						expandAllSectionsLabel: 'Expand All',
@@ -71,10 +68,11 @@ export default function OntarioAccordionPage() {
 
 				<h3>Closed Accordion</h3>
 				<OntarioAccordion
+					id="ontario-accordion-closed-variant"
 					name="Accordion - Closed"
 					expandCollapseButton={{
-						expandAllSectionsLabel: 'Expand All',
-						collapseAllSectionsLabel: 'Collapse All',
+						expandAllSectionsLabel: 'Expand all',
+						collapseAllSectionsLabel: 'Collapse all',
 						ariaLabelText: 'Expand or collapse all accordion sections',
 					}}
 					accordionData={[
@@ -101,6 +99,7 @@ export default function OntarioAccordionPage() {
 
 				<h2>"expand-collapse-button" Prop Variant</h2>
 				<OntarioAccordion
+					id="ontario-accordion-custom-expand-collapse"
 					name="Accordion - Closed"
 					expandCollapseButton={{
 						expandAllSectionsLabel: 'Open all accordions',
@@ -123,6 +122,54 @@ export default function OntarioAccordionPage() {
 								'Across the sea of space, the stars are other suns. We are made of star-stuff. We are a way for the cosmos to know itself. Some part of our being knows this is where we came from. We long to return. And we can, because the cosmos is also within us. We’re made of star-stuff. We are a way for the universe to know itself.',
 							ariaLabelText: 'Famous quote from Carl Sagan - Cosmos',
 							isOpen: false,
+						},
+					]}
+				/>
+
+				<hr />
+
+				<h2>Edge cases</h2>
+
+				<h3>Invalid "accordion-data" prop</h3>
+				<OntarioAccordion
+					id="ontario-accordion-invalid-data"
+					name="Accordion - Invalid Data"
+					// Intentionally invalid JSON for testing
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					accordionData={'{ not valid json '}
+				/>
+
+				<hr />
+
+				<h3>Empty "accordion-data" prop</h3>
+				<OntarioAccordion
+					id="ontario-accordion-empty-data"
+					name="Accordion - Empty Data"
+					expandCollapseButton={{
+						expandAllSectionsLabel: 'Expand all',
+						collapseAllSectionsLabel: 'Collapse all',
+						ariaLabelText: 'Expand or collapse all accordion sections',
+					}}
+					accordionData={[]}
+				/>
+
+				<hr />
+
+				<h3>Invalid "expand-collapse-button" prop</h3>
+				<OntarioAccordion
+					id="ontario-accordion-invalid-expand-collapse-button"
+					name="Accordion - Invalid Button JSON"
+					// Intentionally invalid JSON for testing
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					expandCollapseButton={'{ not valid json '}
+					accordionData={[
+						{
+							label: 'Accordion 1',
+							accordionContentType: 'string',
+							content:
+								'If you have 3 quarters, 4 dimes, and 4 pennies, you have $1.19. You also have the largest amount of money in coins without being able to make change for a dollar.',
+							isOpen: false,
+							ariaLabelText: 'Accordion 1 content',
 						},
 					]}
 				/>
