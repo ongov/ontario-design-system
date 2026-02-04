@@ -5,13 +5,14 @@ import { angularOutputTarget } from '@stencil/angular-output-target';
 import { inlineSvg } from 'stencil-inline-svg';
 import dotEnvPlugin from 'rollup-plugin-dotenv';
 import path from 'path';
+import { NodePackageImporter } from 'sass-embedded';
 
 export const config: Config = {
 	namespace: 'ontario-design-system-components',
 	sourceMap: true,
 	plugins: [
 		sass({
-			includePaths: ['./node_modules'],
+			pkgImporter: new NodePackageImporter(),
 		}),
 		inlineSvg(),
 		dotEnvPlugin(),
@@ -22,7 +23,7 @@ export const config: Config = {
 	outputTargets: [
 		reactOutputTarget({
 			outDir: '../ontario-design-system-component-library-react/src/components',
-			stencilPackageName: '@ongov/ontario-design-system-component-library',
+			hydrateModule: '@ongov/ontario-design-system-component-library/hydrate',
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@ongov/ontario-design-system-component-library',
@@ -33,9 +34,13 @@ export const config: Config = {
 		}),
 		{
 			type: 'dist-custom-elements',
+			dir: 'components',
+			customElementsExportBehavior: 'auto-define-custom-elements',
 			externalRuntime: false,
-			generateTypeDeclarations: true,
-			isPrimaryPackageOutputTarget: false,
+		},
+		// Hydrate script for SSR
+		{
+			type: 'dist-hydrate-script',
 		},
 		{
 			type: 'dist',
@@ -59,17 +64,22 @@ export const config: Config = {
 					src: 'translations/*.i18n.json',
 					dest: 'i18n',
 				},
+				{
+					src: '../src/styles/theme.scss',
+					dest: 'styles/theme.scss',
+				},
+				{
+					src: '../src/styles/slotted-styles',
+					dest: 'styles/slotted-styles',
+				},
 			],
 		},
 		{
-			type: 'dist-custom-elements',
-		},
-		{
 			type: 'docs-readme',
 		},
 		{
 			type: 'docs-readme',
-			dir: '../app-web-components-documentation/docs/',
+			dir: '../docusaurus/docs/',
 			overwriteExisting: true,
 		},
 		{
@@ -98,6 +108,10 @@ export const config: Config = {
 					src: 'french.html',
 					dest: 'french.html',
 				},
+				{
+					src: '../src/global.scss',
+					dest: 'scss/theme.scss',
+				},
 			],
 		},
 	],
@@ -106,7 +120,7 @@ export const config: Config = {
 	},
 	testing: {
 		transform: {
-			'^.+\\.svg$': '<rootDir>/src/utils/svgTransform.js',
+			'^.+\\.svg$': '<rootDir>/src/utils/svgTransform.cjs',
 		},
 		reporters: ['default', 'jest-junit'],
 	},

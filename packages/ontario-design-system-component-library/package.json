@@ -1,6 +1,7 @@
 {
 	"name": "@ongov/ontario-design-system-component-library",
-	"version": "5.0.0",
+	"version": "6.0.0-alpha.10",
+	"type": "module",
 	"private": false,
 	"description": "Ontario Design System Component Library",
 	"license": "Apache-2.0",
@@ -9,27 +10,61 @@
 	"module": "dist/index.js",
 	"types": "dist/types/index.d.ts",
 	"files": [
+		"components/",
 		"dist/",
 		"loader/",
 		"src/",
+		"hydrate/",
 		"www/",
 		"LICENSE",
 		"package.json",
 		"readme.md"
 	],
+	"exports": {
+		".": {
+			"types": "./dist/types/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs.js",
+			"default": "./dist/index.mjs"
+		},
+		"./loader": {
+			"types": "./loader/index.d.ts",
+			"import": "./loader/index.es2017.js",
+			"require": "./loader/index.cjs.js",
+			"default": "./loader/index.es2017.js"
+		},
+		"./hydrate": {
+			"types": "./hydrate/index.d.ts",
+			"import": "./hydrate/index.js",
+			"require": "./hydrate/index.cjs.js",
+			"default": "./hydrate/index.js"
+		},
+		"./components/*": {
+			"types": "./dist/types/components/*.d.ts",
+			"import": "./components/*",
+			"require": "./components/*.cjs"
+		},
+		"./components": {
+			"types": "./dist/types/components.d.ts",
+			"import": "./components/index.js",
+			"require": "./components/index.cjs.js",
+			"default": "./components/index.js"
+		}
+	},
 	"scripts": {
-		"prebuild": "pnpm run build:config",
+		"prebuild": "pnpm run build:config && pnpm run build:theme",
 		"build": "pnpm run build:stencil && pnpm run format && pnpm run docs:copy:readme",
 		"build:stencil": "stencil build --docs",
-		"build:config": "ts-node scripts/build-config.ts",
+		"build:config": "tsx scripts/build-config.ts",
+		"build:theme": "tsx scripts/build-theme-scss.ts",
 		"clean": "rm -rf dist loader www",
 		"clean:full": "rm -rf node_modules && pnpm run clean",
 		"clean:icons": "rm -rf src/components/ontario-icon/ontario-icon-*.tsx",
-		"docs:assemble": "ts-node scripts/build-documentation-bundle.ts",
-		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f readme.md -p \"---\nslug: /\n---\n\" -df ../app-web-components-documentation/docs/01-readme.md",
+		"docs:assemble": "tsx scripts/build-documentation-bundle.ts",
+		"docs:copy:readme": "tsx ../../scripts/documentation-helper.ts -f readme.md -p \"---\nslug: /\n---\n\" -df ../docusaurus/docs/01-readme.md",
 		"format": "prettier --write .",
 		"generate": "stencil generate",
-		"generate:icons": "node src/components/ontario-icon/scripts/generate-icons.js",
+		"generate:icons": "node src/components/ontario-icon/scripts/generate-icons.cjs",
 		"start": "stencil build --dev --watch --serve",
 		"pretest": "pnpm run build:config",
 		"test": "stencil test --spec --e2e",
@@ -40,16 +75,18 @@
 		"test:unit": "stencil test --spec"
 	},
 	"dependencies": {
-		"@ongov/ontario-design-system-global-styles": "5.0.0",
+		"@ongov/ontario-design-system-design-tokens": "workspace:*",
+		"@ongov/ontario-design-system-global-styles": "workspace:*",
 		"@stencil/core": "^4.33.1",
 		"dotenv": "^16.4.5",
 		"uuid": "^11.0.5"
 	},
 	"devDependencies": {
 		"@stencil/angular-output-target": "^0.10.1",
-		"@stencil/react-output-target": "0.8.0",
-		"@stencil/sass": "^3.0.12",
+		"@stencil/react-output-target": "^1.0.2",
+		"@stencil/sass": "^3.2.2",
 		"@types/jest": "^29.5.3",
+		"@types/mock-fs": "^4.13.4",
 		"@types/node": "^22.7.5",
 		"@types/react": "^19.0.8",
 		"@types/react-dom": "^19.0.3",
@@ -64,13 +101,15 @@
 		"jest-svg-transformer": "^1.0.0",
 		"json-loader": "^0.5.7",
 		"jszip": "^3.10.1",
+		"mock-fs": "^5.5.0",
 		"prettier": "^3.4.2",
 		"puppeteer": "^23.10.4",
 		"rollup-plugin-dotenv": "^0.5.1",
-		"shx": "^0.3.4",
+		"sass-embedded": "^1.89.2",
+		"shx": "^0.4.0",
 		"stencil-inline-svg": "^1.1.0",
 		"svgson": "^5.3.1",
-		"ts-node": "^10.9.2",
+		"tsx": "^4.19.4",
 		"typescript": "^5.6.3",
 		"validate-color": "^2.2.4"
 	},

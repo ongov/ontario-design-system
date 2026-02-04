@@ -7,14 +7,14 @@ import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 import { Components } from '@ongov/ontario-design-system-component-library';
 
 @ProxyCmp({
-	inputs: ['accordionData', 'expandCollapseButton', 'isOpen', 'language', 'name'],
+	inputs: ['accordionData', 'expandCollapseButton', 'language', 'name'],
 })
 @Component({
 	selector: 'ontario-accordion',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
 	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['accordionData', 'expandCollapseButton', 'isOpen', 'language', 'name'],
+	inputs: ['accordionData', 'expandCollapseButton', 'language', 'name'],
 })
 export class OntarioAccordion {
 	protected el: HTMLOntarioAccordionElement;
@@ -25,10 +25,18 @@ export class OntarioAccordion {
 	) {
 		c.detach();
 		this.el = r.nativeElement;
+		proxyOutputs(this, this.el, ['accordionChange']);
 	}
 }
 
-export declare interface OntarioAccordion extends Components.OntarioAccordion {}
+import type { AccordionChangeDetail as IOntarioAccordionAccordionChangeDetail } from '@ongov/ontario-design-system-component-library';
+
+export declare interface OntarioAccordion extends Components.OntarioAccordion {
+	/**
+	 * Emits when open indexes change
+	 */
+	accordionChange: EventEmitter<CustomEvent<IOntarioAccordionAccordionChangeDetail>>;
+}
 
 @ProxyCmp({
 	inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
@@ -384,6 +392,8 @@ export class OntarioDateInput {
 	}
 }
 
+import type { DateInputFieldType as IOntarioDateInputDateInputFieldType } from '@ongov/ontario-design-system-component-library';
+
 export declare interface OntarioDateInput extends Components.OntarioDateInput {
 	/**
 	 * Emitted when an `input` event occurs within the component.
@@ -396,11 +406,11 @@ export declare interface OntarioDateInput extends Components.OntarioDateInput {
 	/**
 	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
-	inputOnBlur: EventEmitter<CustomEvent<'day' | 'month' | 'year'>>;
+	inputOnBlur: EventEmitter<CustomEvent<IOntarioDateInputDateInputFieldType>>;
 	/**
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
-	inputOnFocus: EventEmitter<CustomEvent<'day' | 'month' | 'year'>>;
+	inputOnFocus: EventEmitter<CustomEvent<IOntarioDateInputDateInputFieldType>>;
 	/**
 	 * Emitted when an error message is reported to the component.
 	 */
@@ -547,14 +557,40 @@ export class OntarioFooter {
 export declare interface OntarioFooter extends Components.OntarioFooter {}
 
 @ProxyCmp({
+	inputs: ['gap'],
+})
+@Component({
+	selector: 'ontario-form-container',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['gap'],
+})
+export class OntarioFormContainer {
+	protected el: HTMLOntarioFormContainerElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioFormContainer extends Components.OntarioFormContainer {}
+
+@ProxyCmp({
 	inputs: [
 		'applicationHeaderInfo',
 		'assetBasePath',
 		'customLanguageToggle',
+		'customSignInToggle',
 		'disableDynamicMenu',
 		'language',
 		'languageToggleOptions',
 		'menuItems',
+		'signInMenuItems',
 		'type',
 	],
 })
@@ -567,10 +603,12 @@ export declare interface OntarioFooter extends Components.OntarioFooter {}
 		'applicationHeaderInfo',
 		'assetBasePath',
 		'customLanguageToggle',
+		'customSignInToggle',
 		'disableDynamicMenu',
 		'language',
 		'languageToggleOptions',
 		'menuItems',
+		'signInMenuItems',
 		'type',
 	],
 })
@@ -583,10 +621,112 @@ export class OntarioHeader {
 	) {
 		c.detach();
 		this.el = r.nativeElement;
+		proxyOutputs(this, this.el, ['menuButtonToggled']);
 	}
 }
 
-export declare interface OntarioHeader extends Components.OntarioHeader {}
+export declare interface OntarioHeader extends Components.OntarioHeader {
+	/**
+   * This event is toggled when the menu button is pressed.
+The `<ontario-header-overflow-menu>` sub-component listens for this event
+To trigger the showing and hiding of the overflow menu.
+   */
+	menuButtonToggled: EventEmitter<CustomEvent<boolean>>;
+}
+
+@ProxyCmp({
+	inputs: ['autoDetectMode', 'language', 'signInMenuItems', 'topicsMenuItems'],
+})
+@Component({
+	selector: 'ontario-header-menu-tabs',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['autoDetectMode', 'language', 'signInMenuItems', 'topicsMenuItems'],
+})
+export class OntarioHeaderMenuTabs {
+	protected el: HTMLOntarioHeaderMenuTabsElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+		proxyOutputs(this, this.el, ['takeOwnership', 'focusFirstItem', 'focusMenuButton']);
+	}
+}
+
+export declare interface OntarioHeaderMenuTabs extends Components.OntarioHeaderMenuTabs {
+	/**
+	 * Event emitted when ownership handoff is triggered in auto-detect mode.
+	 */
+	takeOwnership: EventEmitter<CustomEvent<{ panelId: string | null }>>;
+	/**
+	 * Event emitted to request overflow menu to focus its first item.
+	 */
+	focusFirstItem: EventEmitter<CustomEvent<void>>;
+	/**
+   * Event emitted to request header to focus the menu button.
+Triggered when Shift+Tab is pressed on the first tab.
+   */
+	focusMenuButton: EventEmitter<CustomEvent<void>>;
+}
+
+@ProxyCmp({
+	inputs: ['isLastMenu', 'language', 'menuItems'],
+})
+@Component({
+	selector: 'ontario-header-overflow-menu',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['isLastMenu', 'language', 'menuItems'],
+})
+export class OntarioHeaderOverflowMenu {
+	protected el: HTMLOntarioHeaderOverflowMenuElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+		proxyOutputs(this, this.el, [
+			'menuClosed',
+			'endOfMenuReached',
+			'focusMenuButton',
+			'focusNextElement',
+			'menuButtonTabPressed',
+		]);
+	}
+}
+
+export declare interface OntarioHeaderOverflowMenu extends Components.OntarioHeaderOverflowMenu {
+	/**
+	 * Event emitted when menu closes (standalone mode).
+	 */
+	menuClosed: EventEmitter<CustomEvent<void>>;
+	/**
+	 * Event emitted when Tab is pressed on the last menu item (embedded mode).
+	 */
+	endOfMenuReached: EventEmitter<CustomEvent<void>>;
+	/**
+   * Event emitted when Shift+Tab is pressed on first menu item.
+Tells the header to focus the menu button.
+   */
+	focusMenuButton: EventEmitter<CustomEvent<void>>;
+	/**
+   * Event emitted when Tab is pressed on the last menu item in standalone mode.
+Tells the header to focus the next appropriate element.
+   */
+	focusNextElement: EventEmitter<CustomEvent<void>>;
+	/**
+   * Event emitted when user Tabs from the menu button.
+Asks if menu is open and ready to receive focus.
+   */
+	menuButtonTabPressed: EventEmitter<CustomEvent<void>>;
+}
 
 @ProxyCmp({
 	inputs: ['content', 'elementId', 'hint', 'hintContentType'],
@@ -2231,6 +2371,30 @@ export declare interface OntarioIconMicrophoneOn extends Components.OntarioIconM
 	inputs: ['colour', 'iconWidth'],
 })
 @Component({
+	selector: 'ontario-icon-more-accounts',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+})
+export class OntarioIconMoreAccounts {
+	protected el: HTMLOntarioIconMoreAccountsElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioIconMoreAccounts extends Components.OntarioIconMoreAccounts {}
+
+@ProxyCmp({
+	inputs: ['colour', 'iconWidth'],
+})
+@Component({
 	selector: 'ontario-icon-more-vertical',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
@@ -2879,6 +3043,127 @@ export declare interface OntarioIconSort extends Components.OntarioIconSort {}
 	inputs: ['colour', 'iconWidth'],
 })
 @Component({
+	selector: 'ontario-icon-sort-alphabetical-ascending',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+})
+export class OntarioIconSortAlphabeticalAscending {
+	protected el: HTMLOntarioIconSortAlphabeticalAscendingElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioIconSortAlphabeticalAscending extends Components.OntarioIconSortAlphabeticalAscending {}
+
+@ProxyCmp({
+	inputs: ['colour', 'iconWidth'],
+})
+@Component({
+	selector: 'ontario-icon-sort-alphabetical-descending',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+})
+export class OntarioIconSortAlphabeticalDescending {
+	protected el: HTMLOntarioIconSortAlphabeticalDescendingElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioIconSortAlphabeticalDescending
+	extends Components.OntarioIconSortAlphabeticalDescending {}
+
+@ProxyCmp({
+	inputs: ['colour', 'iconWidth'],
+})
+@Component({
+	selector: 'ontario-icon-sort-ascending',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+})
+export class OntarioIconSortAscending {
+	protected el: HTMLOntarioIconSortAscendingElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioIconSortAscending extends Components.OntarioIconSortAscending {}
+
+@ProxyCmp({
+	inputs: ['colour', 'iconWidth'],
+})
+@Component({
+	selector: 'ontario-icon-sort-descending',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+})
+export class OntarioIconSortDescending {
+	protected el: HTMLOntarioIconSortDescendingElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioIconSortDescending extends Components.OntarioIconSortDescending {}
+
+@ProxyCmp({
+	inputs: ['colour', 'iconWidth'],
+})
+@Component({
+	selector: 'ontario-icon-sort-variant',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+})
+export class OntarioIconSortVariant {
+	protected el: HTMLOntarioIconSortVariantElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioIconSortVariant extends Components.OntarioIconSortVariant {}
+
+@ProxyCmp({
+	inputs: ['colour', 'iconWidth'],
+})
+@Component({
 	selector: 'ontario-icon-tag',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: '<ng-content></ng-content>',
@@ -3066,6 +3351,30 @@ export class OntarioIconTty {
 }
 
 export declare interface OntarioIconTty extends Components.OntarioIconTty {}
+
+@ProxyCmp({
+	inputs: ['colour', 'iconWidth'],
+})
+@Component({
+	selector: 'ontario-icon-tune',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: '<ng-content></ng-content>',
+	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+	inputs: ['colour', 'iconWidth'],
+})
+export class OntarioIconTune {
+	protected el: HTMLOntarioIconTuneElement;
+	constructor(
+		c: ChangeDetectorRef,
+		r: ElementRef,
+		protected z: NgZone,
+	) {
+		c.detach();
+		this.el = r.nativeElement;
+	}
+}
+
+export declare interface OntarioIconTune extends Components.OntarioIconTune {}
 
 @ProxyCmp({
 	inputs: ['colour', 'iconWidth'],

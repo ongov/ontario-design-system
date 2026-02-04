@@ -1,4 +1,6 @@
 import { OntarioStepIndicator } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-step-indicator
 
@@ -16,32 +18,176 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ### Percentage
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-step-indicator
+	show-back-button="true"
+	back-button-url="https://designsystem.ontario.ca/"
+	percentage-complete="70"
+></ontario-step-indicator>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioStepIndicator
+	showBackButton={true}
+	backButtonUrl="https://designsystem.ontario.ca/"
+	percentageComplete={70}
+></OntarioStepIndicator>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-step-indicator
+	[showBackButton]="true"
+	[backButtonUrl]="'https://designsystem.ontario.ca/'"
+	[percentageComplete]="70"
+></ontario-step-indicator>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
 	<OntarioStepIndicator
-		show-back-button="true"
-		back-button-url="https://designsystem.ontario.ca/"
-		percentage-complete="70">
+		showBackButton={true}
+		backButtonUrl="https://designsystem.ontario.ca/"
+		percentageComplete={70}>
 	</OntarioStepIndicator>
 </div>
 
 ### Steps
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-step-indicator
+	show-back-button="true"
+	back-button-url="https://designsystem.ontario.ca/"
+	current-step="4"
+	number-of-steps="5"
+></ontario-step-indicator>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioStepIndicator
+	showBackButton={true}
+	backButtonUrl="https://designsystem.ontario.ca/"
+	currentStep={4}
+	numberOfSteps={5}
+></OntarioStepIndicator>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-step-indicator
+	[showBackButton]="true"
+	[backButtonUrl]="'https://designsystem.ontario.ca/'"
+	[currentStep]="4"
+	[numberOfSteps]="5"
+></ontario-step-indicator>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
 	<OntarioStepIndicator
-		show-back-button="true"
-		back-button-url="https://designsystem.ontario.ca/"
-		current-step="4"
-		number-of-steps="5">
+		showBackButton={true}
+		backButtonUrl="https://designsystem.ontario.ca/"
+		currentStep={4}
+		numberOfSteps={5}>
 	</OntarioStepIndicator>
 </div>
 
 ### No back button
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-step-indicator show-back-button="false" current-step="4" number-of-steps="5"></ontario-step-indicator>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioStepIndicator showBackButton={false} currentStep={4} numberOfSteps={5}></OntarioStepIndicator>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-step-indicator [showBackButton]="false" [currentStep]="4" [numberOfSteps]="5"></ontario-step-indicator>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
-	<OntarioStepIndicator
-		show-back-button="false"
-		current-step="4"
-		number-of-steps="5">
+	<OntarioStepIndicator showBackButton={false} currentStep={4} numberOfSteps={5}>
 	</OntarioStepIndicator>
 </div>
 
@@ -57,6 +203,19 @@ Progress reported by the step indicator can be displayed in either a percentage 
 
 To use a percentage as the reported progress, set the `percentage-complete` attribute to the percentage the user has completed the form.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-step-indicator
 	show-back-button="true"
@@ -65,9 +224,53 @@ To use a percentage as the reported progress, set the `percentage-complete` attr
 ></ontario-step-indicator>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioStepIndicator
+	showBackButton={true}
+	backButtonUrl="https://designsystem.ontario.ca/"
+	percentageComplete={70}
+></OntarioStepIndicator>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-step-indicator
+	[showBackButton]="true"
+	[backButtonUrl]="'https://designsystem.ontario.ca/'"
+	[percentageComplete]="70"
+></ontario-step-indicator>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 #### Using steps
 
 To output the step the user is currently on and the total number of steps, set the `current-step` and the `number-of-steps` to the appropriate values.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-step-indicator
@@ -78,9 +281,55 @@ To output the step the user is currently on and the total number of steps, set t
 ></ontario-step-indicator>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioStepIndicator
+	showBackButton={true}
+	backButtonUrl="https://designsystem.ontario.ca/"
+	currentStep={4}
+	numberOfSteps={5}
+></OntarioStepIndicator>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-step-indicator
+	[showBackButton]="true"
+	[backButtonUrl]="'https://designsystem.ontario.ca/'"
+	[currentStep]="4"
+	[numberOfSteps]="5"
+></ontario-step-indicator>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 ### Custom back button function
 
 The simplest use of the back button is to provide, via the `back-button-url` attribute, a URL to navigate the user to when the back button is clicked. This isn't always sufficient to cover all use cases of the component so the component can also make use of a custom back button function, registered via the `customOnClick` property using JavaScript, to perform any custom actions within your application/site.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-step-indicator show-back-button="true" percentage-complete="70"></ontario-step-indicator>
@@ -95,6 +344,55 @@ The simplest use of the back button is to provide, via the `back-button-url` att
 	ontarioStepIndicator.customOnClick = handleBackButton;
 </script>
 ```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+const handleBackButton = (event: Event) => {
+	event.preventDefault();
+	// Additional logic here
+};
+
+<OntarioStepIndicator
+	showBackButton={true}
+	percentageComplete={70}
+	customOnClick={handleBackButton}
+></OntarioStepIndicator>;
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-step-indicator
+	[showBackButton]="true"
+	[percentageComplete]="70"
+	[customOnClick]="handleBackButton"
+></ontario-step-indicator>
+```
+
+```ts
+handleBackButton(event: Event): void {
+	event.preventDefault();
+	// Additional logic here
+}
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+## Technical Note: SSR (Server-Side Rendering) Considerations
+
+The Ontario Step Indicator component is compatible with Server-Side Rendering (SSR), but a few guidelines are recommended for best results:
+
+- **Avoid relying on language toggle events** (`setAppLanguage`, `headerLanguageToggled`) to determine language server-side. Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-step-indicator language="fr"></ontario-step-indicator>`).
 
 <!-- Auto Generated Below -->
 

@@ -1,4 +1,6 @@
 import { OntarioTaskList, OntarioTask } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-task-list
 
@@ -19,6 +21,19 @@ Before using the `ontario-task-list` component, ensure the following:
 
 Example of a task-list component with tasks inside.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-task-list language="en">
 	<ontario-task
@@ -35,29 +50,100 @@ Example of a task-list component with tasks inside.
 		task-status="inProgress"
 		link="https://example.com"
 		deactivate-link="true"
-	>
+	></ontario-task>
 </ontario-task-list>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioTaskList language="en">
+	<OntarioTask
+		label="Task 1"
+		taskId="Task-1-unique-id"
+		hintText="A hint for task 1"
+		taskStatus="completed"
+		link="https://example.com"
+	></OntarioTask>
+	<OntarioTask
+		label="Task 2"
+		taskId="Task-2-unique-id"
+		hintText="A hint for task 2"
+		taskStatus="inProgress"
+		link="https://example.com"
+		deactivateLink={true}
+	></OntarioTask>
+</OntarioTaskList>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-task-list [language]="'en'">
+	<ontario-task
+		[label]="'Task 1'"
+		[taskId]="'Task-1-unique-id'"
+		[hintText]="'A hint for task 1'"
+		[taskStatus]="'completed'"
+		[link]="'https://example.com'"
+	></ontario-task>
+	<ontario-task
+		[label]="'Task 2'"
+		[taskId]="'Task-2-unique-id'"
+		[hintText]="'A hint for task 2'"
+		[taskStatus]="'inProgress'"
+		[link]="'https://example.com'"
+		[deactivateLink]="true"
+	></ontario-task>
+</ontario-task-list>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <div>
 	<OntarioTaskList language="en">
 		<OntarioTask
 			label="Task 1"
-			task-id="Task-1-unique-id"
-			hint-text="A hint for task 1"
-			task-status="completed"
+			taskId="Task-1-unique-id"
+			hintText="A hint for task 1"
+			taskStatus="completed"
 			link="https://example.com"
 		></OntarioTask>
 		<OntarioTask
 			label="Task 2"
-			task-id="Task-2-unique-id"
-			hint-text="A hint for task 2"
-			task-status="inProgress"
+			taskId="Task-2-unique-id"
+			hintText="A hint for task 2"
+			taskStatus="inProgress"
 			link="https://example.com"
-			deactivate-link="true"
+			deactivateLink={true}
 		></OntarioTask>
 	</OntarioTaskList>
 </div>
+
+## Technical Note: SSR (Server-Side Rendering) Considerations
+
+The Ontario Task List component is SSR-compatible but includes some client-only behavior.
+
+- To avoid hydration mismatch, **always pass a valid `headingLevel` prop**. Acceptable values: `"h1"`, `"h2"`, `"h3"`, `"h4"`. An invalid value will be replaced with `"h2"` on the client.
+- **Task counts are calculated after hydration and are not rendered during SSR**. If you require stable output for task totals in SSR, consider rendering them statically with props.
+
+### SSR-safe example:
+
+```html
+<ontario-task-list label="Your tasks" heading-level="h2">
+	<ontario-task data-task-status="Completed" />
+	<ontario-task data-task-status="Incomplete" />
+</ontario-task-list>
+```
 
 <!-- Auto Generated Below -->
 

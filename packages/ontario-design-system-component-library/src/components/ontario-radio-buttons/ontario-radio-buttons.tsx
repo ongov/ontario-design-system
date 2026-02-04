@@ -21,9 +21,11 @@ import {
 	EventType,
 } from '../../utils/events/event-handler.interface';
 import { handleInputEvent } from '../../utils/events/event-handler';
+import { ErrorMessage } from '../../utils/components/error-message/error-message';
+import { ConsoleType } from '../../utils/console-message/console-message.enum';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 import { default as translations } from '../../translations/global.i18n.json';
-import { ErrorMessage } from '../../utils/components/error-message/error-message';
 
 @Component({
 	tag: 'ontario-radio-buttons',
@@ -223,9 +225,13 @@ export class OntarioRadioButtons implements RadioButtons {
 		}
 	}
 
+	/**
+	 * Handles an update to the language should the user request a language update from the language toggle.
+	 * @param {CustomEvent} - The language that has been selected.
+	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
+		this.language = validateLanguage(event.detail.newLanguage);
 	}
 
 	/**
@@ -250,8 +256,20 @@ export class OntarioRadioButtons implements RadioButtons {
 	private parseHintExpander() {
 		const hintExpander = this.hintExpander;
 		if (hintExpander) {
-			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
-			else this.internalHintExpander = hintExpander;
+			try {
+				if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
+				else this.internalHintExpander = hintExpander;
+			} catch (error) {
+				const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' hintExpander ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-radio-buttons> ')
+					.addRegularText('was not provided in a valid format')
+					.addMonospaceText(error.stack)
+					.printMessage(ConsoleType.Error);
+			}
 		}
 	}
 
@@ -263,10 +281,22 @@ export class OntarioRadioButtons implements RadioButtons {
 	@Watch('options')
 	parseOptions() {
 		if (typeof this.options !== 'undefined') {
-			if (!Array.isArray(this.options)) {
-				this.internalOptions = JSON.parse(this.options);
-			} else {
-				this.internalOptions = this.options;
+			try {
+				if (!Array.isArray(this.options)) {
+					this.internalOptions = JSON.parse(this.options);
+				} else {
+					this.internalOptions = this.options;
+				}
+			} catch (error) {
+				const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' options ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-radio-buttons> ')
+					.addRegularText('was not provided in a valid format')
+					.addMonospaceText(error.stack)
+					.printMessage(ConsoleType.Error);
 			}
 		}
 	}
@@ -406,7 +436,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	render() {
 		const error = !!this.errorMessage;
 		return (
-			<div class={`ontario-form-group ${error ? 'ontario-input--error' : ''}`}>
+			<div class={error ? 'ontario-input--error' : ''}>
 				<fieldset class="ontario-fieldset" aria-describedby={this.hintTextId}>
 					{this.captionState.getCaption(undefined, !!this.internalHintExpander)}
 					{this.internalHintText && (

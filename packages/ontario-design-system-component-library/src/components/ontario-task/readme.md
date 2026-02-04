@@ -1,4 +1,6 @@
 import { OntarioTask } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-task
 
@@ -16,20 +18,70 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of a bare-bones task.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-task label="Task" task-id="Task-id" task-status="notStarted" link="https://example.com"></ontario-task>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioTask label="Task" taskId="Task-id" taskStatus="notStarted" link="https://example.com"></OntarioTask>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-task
+	[label]="'Task'"
+	[taskId]="'Task-id'"
+	[taskStatus]="'notStarted'"
+	[link]="'https://example.com'"
+></ontario-task>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
-	<OntarioTask 
-		label="Task" 
-		task-id="Task-id" 
-		task-status="notStarted" 
-		link="https://example.com">
+	<OntarioTask label="Task" taskId="Task-id" taskStatus="notStarted" link="https://example.com">
 	</OntarioTask>
 </div>
 
 Example of a task with a hint.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-task
@@ -42,16 +94,73 @@ Example of a task with a hint.
 ></ontario-task>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioTask
+	label="Task"
+	taskId="Task-id"
+	hintText="A hint for task"
+	hintTextId="task-hint"
+	taskStatus="completed"
+	link="https://example.com"
+></OntarioTask>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-task
+	[label]="'Task'"
+	[taskId]="'Task-id'"
+	[hintText]="'A hint for task'"
+	[hintTextId]="'task-hint'"
+	[taskStatus]="'completed'"
+	[link]="'https://example.com'"
+></ontario-task>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
 	<OntarioTask
 		label="Task"
-		task-id="Task-id"
-		hint-text="A hint for task"
-		hint-text-id="task-hint"
-		task-status="completed"
+		taskId="Task-id"
+		hintText="A hint for task"
+		hintTextId="task-hint"
+		taskStatus="completed"
 		link="https://example.com"
 	></OntarioTask>
 </div>
+
+## Technical Note: SSR (Server-Side Rendering) Considerations
+
+The Ontario Task component is SSR-compatible and renders predictably during hydration. For full consistency:
+
+- **Always pass a valid `taskStatus` prop**. Invalid values will default to 'NotStarted' at runtime.
+- **Language Prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-task language="fr"></ontario-task>`).
+
+### SSR-safe example:
+
+```html
+<ontario-task
+	label="Confirm email"
+	task-id="confirm-email"
+	task-status="InProgress"
+	heading-level="h3"
+	language="fr"
+	hint-text="Be sure to use your work email"
+></ontario-task>
+```
 
 <!-- Auto Generated Below -->
 

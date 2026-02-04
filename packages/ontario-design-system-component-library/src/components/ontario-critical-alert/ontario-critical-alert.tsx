@@ -56,10 +56,8 @@ export class OntarioCriticalAlert implements CriticalAlert {
 	}
 
 	private renderContent() {
-		const content = this.content;
-
-		if (typeof content === 'string') {
-			return content;
+		if (typeof this.content === 'string') {
+			return <p>{this.content}</p>;
 		}
 
 		return <slot />;
@@ -75,8 +73,12 @@ export class OntarioCriticalAlert implements CriticalAlert {
 				<div class="ontario-row">
 					<div class="ontario-column ontario-small-12">
 						<div class="ontario-critical-alert__body">
-							<div class="ontario-critical-alert__icon" innerHTML={OntarioIconCriticalAlertWarning}></div>
-							<p>{this.renderContent()}</p>
+							<div
+								class="ontario-critical-alert__icon"
+								innerHTML={OntarioIconCriticalAlertWarning}
+								aria-hidden="true"
+							></div>
+							{this.renderContent()}
 						</div>
 					</div>
 				</div>

@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-component-library-react",
-	"version": "5.0.0",
+	"version": "6.0.0-alpha.10",
 	"private": false,
 	"description": "React specific wrapper for ontario-design-system-component-library",
 	"license": "Apache-2.0",
@@ -9,6 +9,32 @@
 	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"type": "module",
+	"styles": "./dist/styles/theme.scss",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"default": "./dist/index.js"
+		},
+		"./components": {
+			"types": "./dist/components.d.ts",
+			"import": "./dist/components.js",
+			"default": "./dist/components.js"
+		},
+		"./next": {
+			"types": "./dist/components.server.d.ts",
+			"import": "./dist/components.server.js"
+		},
+		"./react-component-lib": {
+			"types": "./dist/react-component-lib/index.d.ts",
+			"import": "./dist/react-component-lib/index.js",
+			"default": "./dist/react-component-lib/index.js"
+		},
+		"./styles": {
+			"default": "./dist/styles/theme.scss"
+		},
+		"./styles/*": "./dist/styles/*"
+	},
 	"files": [
 		"dist/",
 		"src/",
@@ -16,16 +42,18 @@
 		"README.md"
 	],
 	"scripts": {
-		"build": "pnpm run clean && pnpm run compile && pnpm run docs:copy:readme",
+		"build": "pnpm run clean && pnpm run compile && pnpm run docs:copy:readme && pnpm run docs:copy:docs",
 		"postbuild": "pnpm run copy:assets",
 		"clean": "rm -rf dist",
 		"clean:full": "rm -rf node_modules && pnpm run clean",
 		"compile": "pnpm run tsc",
-		"copy:assets": "pnpm run copy:images && pnpm run copy:favicons && pnpm run copy:fonts",
+		"copy:assets": "pnpm run copy:images && pnpm run copy:favicons && pnpm run copy:fonts && pnpm run copy:theme",
 		"copy:favicons": "copyfiles -E -f \"./node_modules/@ongov/ontario-design-system-component-library/dist/ontario-design-system-components/favicons/**/*\" dist/assets/favicons",
 		"copy:fonts": "copyfiles -E -u 6 \"./node_modules/@ongov/ontario-design-system-component-library/dist/ontario-design-system-components/fonts/**/*\" dist/assets/fonts",
 		"copy:images": "copyfiles -E -f \"./node_modules/@ongov/ontario-design-system-component-library/dist/ontario-design-system-components/assets/**/*\" dist/assets/images",
-		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: React Component Library\n---\n\" -df ../app-web-components-documentation/docs/03-readme-react.md",
+		"copy:theme": "copyfiles -E -u 6 \"node_modules/@ongov/ontario-design-system-component-library/dist/ontario-design-system-components/styles/slotted-styles/**/*\" \"node_modules/@ongov/ontario-design-system-component-library/dist/ontario-design-system-components/styles/theme.scss\" dist/styles",
+		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: React Component Library\n---\n\" -df ../docusaurus/docs/03-readme-react.md",
+		"docs:copy:docs": "ts-node ../../scripts/documentation-helper.ts -i ./docs -o ../docusaurus/docs",
 		"format": "prettier --write .",
 		"rollup": "rollup -c",
 		"tsc": "tsc -p ."
@@ -41,15 +69,15 @@
 		]
 	},
 	"dependencies": {
-		"@ongov/ontario-design-system-component-library": "5.0.0",
-		"@stencil/react-output-target": "^0.7.4"
+		"@ongov/ontario-design-system-component-library": "workspace:*",
+		"@stencil/react-output-target": "^1.0.2"
 	},
 	"devDependencies": {
 		"@testing-library/jest-dom": "^6.6.2",
 		"@types/jest": "29.5.14",
 		"@types/node": "^22.8.1",
-		"@types/react": "18.3.12",
-		"@types/react-dom": "18.3.1",
+		"@types/react": "18.3.24",
+		"@types/react-dom": "18.3.7",
 		"copyfiles": "^2.4.1",
 		"jest": "^29.7.0",
 		"prettier": "^3.4.2",

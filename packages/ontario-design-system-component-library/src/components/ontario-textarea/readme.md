@@ -1,4 +1,6 @@
 import { OntarioTextarea } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-textarea
 
@@ -16,13 +18,64 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of a bare-bones textarea component where the user is passing the `name` which is the value used to reference form data after a form is submitted. The `elementId` is also being passed in as the unique identifier of the textarea.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-textarea caption="Comments" name="comments" element-id="form-comments"></ontario-textarea>
 ```
 
-<OntarioTextarea caption="Comments" name="comments" element-id="form-comments"></OntarioTextarea>
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioTextarea caption="Comments" name="comments" elementId="form-comments"></OntarioTextarea>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-textarea [caption]="'Comments'" [name]="'comments'" [elementId]="'form-comments'"></ontario-textarea>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+<div>
+	<OntarioTextarea caption="Comments" name="comments" elementId="form-comments"></OntarioTextarea>
+</div>
 
 To mark a textarea as required, add the `required` attribute to the component.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-textarea
@@ -34,7 +87,42 @@ To mark a textarea as required, add the `required` attribute to the component.
 ></ontario-textarea>
 ```
 
-<OntarioTextarea caption="Comments" name="comments" element-id="form-comments" required="true"></OntarioTextarea>
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioTextarea
+	caption="Comments"
+	name="comments"
+	elementId="form-comments"
+	required={true}
+	onBlur={exampleFunction}
+></OntarioTextarea>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-textarea
+	[caption]="'Comments'"
+	[name]="'comments'"
+	[elementId]="'form-comments'"
+	required="true"
+	(onBlur)="exampleFunction()"
+></ontario-textarea>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+<OntarioTextarea caption="Comments" name="comments" elementId="form-comments" required={true}></OntarioTextarea>
 
 ### Forms
 
@@ -123,6 +211,21 @@ hintExpander='{ "hint": "This is the hint expander title", "content": "This is t
 
 - An `element-id` attribute is necessary to allow the textarea to be associated with a label element
 - A `name` attribute needs to be set to be submitted to the server when the form is submitted.
+
+## Technical Note: SSR (Server-Side Rendering) Considerations
+
+The Ontario Textarea component supports server-side rendering, with a few considerations:
+
+- **Language Prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-textarea language="fr"></ontario-textarea>`).
+- **Dynamic ID generation:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, you should explicitly pass a stable `elementId`.
+- **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Ensure this does not impact critical accessibility paths.
+- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR (before hydration), the component will render as a standard `<textarea>`, meaning it can still function inside a `<form>` and be submitted normally. However, enhanced form behavior (like validation or custom value handling) only becomes active after hydration in the browser.
+
+### SSR-safe example:
+
+```tsx
+<OntarioTextarea name="comments" language="en" elementId="comments"></OntarioTextarea>
+```
 
 <!-- Auto Generated Below -->
 

@@ -16,7 +16,7 @@ To use the Angular Component Library, follow these steps:
 
 2. Import the `ComponentLibraryModule`, or whichever specific component you wish to use into your root module. The `ComponentLibraryModule` import will include all the Ontario Design System web components.
 
-   ```ts
+   ```typescript
    import { ComponentLibraryModule } from '@ongov/ontario-design-system-component-library-angular/dist/component-library';
 
    @NgModule({
@@ -65,7 +65,7 @@ This error arises when attempting to bind to a property that does not exist.
 
 To fix this issue, the `CUSTOM_ELEMENTS_SCHEMA` must be added to the module schemas for the component. Ex:
 
-```ts
+```typescript
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({

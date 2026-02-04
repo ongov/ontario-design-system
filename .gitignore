@@ -1,6 +1,8 @@
 dist/
 www/
 loader/
+hydrate/
+
 
 *~
 *.sw[mnpcod]
@@ -20,6 +22,7 @@ log.txt
 node_modules/
 $RECYCLE.BIN/
 
+
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
@@ -29,7 +32,7 @@ UserInterfaceState.xcuserstate
 junit.xml
 
 # Gernerated Documentation
-docs/
+packages/app-web-components-documentation/docs/
 ontario-design-system-web-components-documentation-*
 
 # Gernerated static assets
@@ -37,3 +40,7 @@ packages/app-web-components-documentation/static/assets
 
 # Component Library Ignored Items
 packages/ontario-design-system-component-library/src/config.json
+packages/ontario-design-system-component-library/components
+
+# Docusaurus artifacts
+packages/docusaurus

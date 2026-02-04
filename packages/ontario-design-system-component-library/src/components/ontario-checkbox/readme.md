@@ -1,4 +1,6 @@
 import { OntarioCheckboxes } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-checkboxes
 
@@ -15,6 +17,19 @@ Once the component package has been installed (see Ontario Design System Compone
 ## Examples
 
 Example of a bare-bones checkbox component, the legend for the checkbox fieldset is provided, as well as 2 checkbox options.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-checkboxes
@@ -36,32 +51,90 @@ Example of a bare-bones checkbox component, the legend for the checkbox fieldset
 </ontario-checkboxes>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioCheckboxes
+	caption="Checkbox legend"
+	name="checkboxes"
+	options={[
+		{
+			value: 'checkbox-option-1',
+			label: 'Checkbox option 1 label',
+			elementId: 'checkbox-1',
+		},
+		{
+			value: 'checkbox-option-2',
+			label: 'Checkbox option 2 label',
+			elementId: 'checkbox-2',
+		},
+	]}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-checkboxes
+	[caption]="'Checkbox legend'"
+	[name]="'checkboxes'"
+	[options]="[
+		{ value: 'checkbox-option-1', label: 'Checkbox option 1 label', elementId: 'checkbox-1' },
+		{ value: 'checkbox-option-2', label: 'Checkbox option 2 label', elementId: 'checkbox-2' }
+	]"
+></ontario-checkboxes>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
-  <OntarioCheckboxes
-    caption="Checkbox legend"
-    name="checkboxes"
-    options='[
-      {
-        "value": "checkbox-option-1",
-        "label": "Checkbox option 1 label",
-        "elementId": "checkbox-1"
-      },
-      {
-        "value": "checkbox-option-2",
-        "label": "Checkbox option 2 label",
-        "elementId": "checkbox-2"
-      }
-    ]'
-  ></OntarioCheckboxes>
+	<OntarioCheckboxes
+		caption="Checkbox legend"
+		name="checkboxes"
+		options={[
+			{
+				value: 'checkbox-option-1',
+				label: 'Checkbox option 1 label',
+				elementId: 'checkbox-1',
+			},
+			{
+				value: 'checkbox-option-2',
+				label: 'Checkbox option 2 label',
+				elementId: 'checkbox-2',
+			},
+		]}
+	></OntarioCheckboxes>
 </div>
 
 Example of a checkbox component with multiple options, a hint text and hint expander for the entire checkbox group, and a hint expander on an individual option. It also has the `required` property set.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-checkboxes
 	caption='{
 		"captionText": "Checkbox legend",
-		"captionType": "large" 
+		"captionType": "large"
 	}'
 	name="checkboxes"
 	hint-text="Hint text for the checkbox group"
@@ -86,32 +159,93 @@ Example of a checkbox component with multiple options, a hint text and hint expa
 </ontario-checkboxes>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioCheckboxes
+	caption={{
+		captionText: 'Checkbox legend',
+		captionType: 'large',
+	}}
+	name="checkboxes"
+	hintText="Hint text for the checkbox group"
+	required
+	options={[
+		{
+			value: 'checkbox-option-1',
+			label: 'Checkbox option 1 label',
+			elementId: 'checkbox-1',
+		},
+		{
+			value: 'checkbox-option-2',
+			label: 'Checkbox option 2 label',
+			elementId: 'checkbox-2',
+			hintExpander: {
+				hint: 'Hint expander for checkbox option 2',
+				content: 'Example hint expander content for checkbox option 2',
+			},
+		},
+	]}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-checkboxes
+	[caption]="{ captionText: 'Checkbox legend', captionType: 'large' }"
+	[name]="'checkboxes'"
+	[hintText]="'Hint text for the checkbox group'"
+	required
+	[options]="[
+		{ value: 'checkbox-option-1', label: 'Checkbox option 1 label', elementId: 'checkbox-1' },
+		{
+			value: 'checkbox-option-2',
+			label: 'Checkbox option 2 label',
+			elementId: 'checkbox-2',
+			hintExpander: { hint: 'Hint expander for checkbox option 2', content: 'Example hint expander content for checkbox option 2' }
+		}
+	]"
+></ontario-checkboxes>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
-  <OntarioCheckboxes
-    caption='{
-      "captionText": "Checkbox legend",
-      "captionType": "large"
-    }'
-    name="checkboxes"
-    hint-text="Hint text for the checkbox group"
-    required
-    options='[
-      {
-        "value": "checkbox-option-1",
-        "label": "Checkbox option 1 label",
-        "elementId": "checkbox-1"
-      },
-      {
-        "value": "checkbox-option-2",
-        "label": "Checkbox option 2 label",
-        "elementId": "checkbox-2",
-        "hintExpander": {
-          "hint": "Hint expander for checkbox option 2",
-          "content": "Example hint expander content for checkbox option 2"
-        }
-      }
-    ]'
-  ></OntarioCheckboxes>
+	<OntarioCheckboxes
+		caption={{
+			captionText: 'Checkbox legend',
+			captionType: 'large',
+		}}
+		name="checkboxes"
+		hintText="Hint text for the checkbox group"
+		required
+		options={[
+			{
+				value: 'checkbox-option-1',
+				label: 'Checkbox option 1 label',
+				elementId: 'checkbox-1',
+			},
+			{
+				value: 'checkbox-option-2',
+				label: 'Checkbox option 2 label',
+				elementId: 'checkbox-2',
+				hintExpander: {
+					hint: 'Hint expander for checkbox option 2',
+					content: 'Example hint expander content for checkbox option 2',
+				},
+			},
+		]}
+	></OntarioCheckboxes>
 </div>
 
 ### Forms
@@ -251,6 +385,15 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 
 - Do not preselect checkboxes (there should be no checked attribute by default on the checkbox)
 - All checkboxes in a group should have the same name value to associate them as a group of options
+
+## Technical Note: SSR (Server-Side Rendering) Considerations
+
+The Ontario Checkbox component supports Server-Side Rendering (SSR), but to ensure correct rendering and prevent hydration mismatches, keep the following in mind:
+
+- **Langauge-Props**: Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-checkbox language="fr"></ontario-checkbox>`).
+- **Dynamic ID generation:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, you should explicitly pass a stable `elementId`.
+- **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Ensure this does not impact critical accessibility paths.
+- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR (before hydration), the component will render as a standard `<input type="checkbox">`, meaning it can still function inside a `<form>` and be submitted normally. However, enhanced form behavior (like validation or custom value handling) only becomes active after hydration in the browser.
 
 <!-- Auto Generated Below -->
 

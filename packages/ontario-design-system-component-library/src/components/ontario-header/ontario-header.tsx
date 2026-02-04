@@ -1,8 +1,6 @@
-import { Component, Prop, State, Watch, h, Listen, Element } from '@stencil/core';
+import { Component, Prop, State, Watch, Event, EventEmitter, Listen, h, Element } from '@stencil/core';
 
-import { Input } from '../../utils/common/input/input';
 import {
-	MenuItem,
 	ApplicationHeaderInfo,
 	LanguageToggleOptions,
 	OntarioMenuItems,
@@ -13,10 +11,20 @@ import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.s
 import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
 import OntarioIconSearch from '../ontario-icon/assets/ontario-icon-search.svg';
 import OntarioIconSearchWhite from '../ontario-icon/assets/ontario-icon-search-white.svg';
+import OntarioIconDropdownArrow from '../ontario-icon/assets/ontario-icon-dropdown-arrow.svg';
 import OntarioHeaderDefaultData from './ontario-header-default-data.json';
 
 import { Language } from '../../utils/common/language-types';
+import { MenuItem } from '../../utils/common/common.interface';
+import { DeviceTypes } from '../../utils/common/common.enum';
+import { ScreenBreakpoints, standardFontSizePx } from '../../utils/common/common.variables';
+import { isClientSideRendering } from '../../utils/common/environment';
+import { Input } from '../../utils/common/input/input';
+import { generateMenuItem } from '../../utils/components/header/header-menu-items';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { getImageAssetSrcPath } from '../../utils/helper/assets';
+import { DeviceType } from '../../utils/helper/utils-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 
 import translations from '../../translations/global.i18n.json';
@@ -47,10 +55,13 @@ export class OntarioHeader {
 	 *    application-header-info='{
 	 *      "title": "Application name",
 	 *      "href": "/application-homepage",
-	 *      "maxSubheaderDesktopLinks": "3",
-	 *      "maxSubheaderTabletLinks": "2",
-	 *      "maxSubheaderMobileLinks": "1"
-	 *    }'>
+	 *		"maxSubheaderLinks": {
+	 *			"desktop": "3",
+	 *			"tablet": "2",
+	 *			"mobile": "1"
+	 *		}
+	 *    }'
+	 *	>
 	 *  </ontario-header>
 	 */
 	@Prop() applicationHeaderInfo: ApplicationHeaderInfo | string;
@@ -59,6 +70,16 @@ export class OntarioHeader {
 	 * The items that will go inside the menu.
 	 */
 	@Prop() menuItems: MenuItem[] | string;
+
+	/**
+	 * Information pertaining to the sign-in menu items for the Ontario header.
+	 */
+	@Prop() signInMenuItems?: MenuItem[] | string;
+
+	/**
+	 * A custom function to pass to the sign-in button.
+	 */
+	@Prop() customSignInToggle?: (event: globalThis.Event) => void;
 
 	/**
 	 * Option to disable fetching of the dynamic menu from the Ontario Header API
@@ -153,6 +174,16 @@ export class OntarioHeader {
 	@State() private menuItemState: MenuItem[];
 
 	/**
+	 * The parsed sign-in menu items state
+	 */
+	@State() private signInMenuItemsState: MenuItem[];
+
+	/**
+	 * A boolean state to handle the toggling of the sign-in menu
+	 */
+	@State() signInToggled: boolean = false;
+
+	/**
 	 * Check to see if menu is dynamic or static
 	 */
 	@State() private isDynamicMenu: boolean = false;
@@ -173,56 +204,186 @@ export class OntarioHeader {
 	/**
 	 * Toggler for the menu and the search button
 	 */
-	@State() menuToggle: boolean = false;
+	@State() menuToggled: boolean = false;
 	@State() searchToggle?: boolean = false;
 
-	/**
-	 * Assigning values to elements to use them as ref
-	 */
-	header!: HTMLElement;
-	menuButton!: HTMLElement;
-	menuButtonDesktop!: HTMLElement;
-	menuButtonTablet!: HTMLElement;
-	menuButtonMobile!: HTMLElement;
-	searchBar!: HTMLInputElement;
-	searchButton!: HTMLInputElement;
-
 	@State() translations: any = translations;
+
+	@State() breakpointDeviceState: DeviceType;
+
+	/**
+	 * Tracks the current value of the search input field.
+	 *
+	 * This state is updated as the user types and is used as the single
+	 * source of truth for the search input content (instead of directly
+	 * manipulating the DOM). Clearing the field via Escape now resets this
+	 * state, which triggers the UI to update automatically.
+	 *
+	 * Also used as the value submitted when performing a header search,
+	 * improving consistency and reliability of the search behaviour.
+	 */
+	@State() private searchBoxTextState: string = '';
+
+	/**
+	 * Header-specific device detection.
+	 */
+	private getHeaderDeviceType(): DeviceType {
+		const width = typeof window !== 'undefined' ? window.innerWidth : 1200;
+		const tablet = ScreenBreakpoints.Large * standardFontSizePx;
+
+		if (width < tablet - 1) return DeviceTypes.Mobile;
+		if (width === tablet - 1) return DeviceTypes.Tablet;
+		return DeviceTypes.Desktop;
+	}
+
+	/**
+	 * Helper to check if current breakpoint is mobile or tablet (not desktop)
+	 */
+	private get isMobileOrTablet(): boolean {
+		return (this.breakpointDeviceState ?? DeviceTypes.Desktop) !== DeviceTypes.Desktop;
+	}
 
 	@Watch('applicationHeaderInfo')
 	private parseApplicationHeaderInfo() {
 		const applicationHeaderInfo = this.applicationHeaderInfo;
 		if (applicationHeaderInfo) {
-			if (typeof applicationHeaderInfo === 'string')
-				this.applicationHeaderInfoState = JSON.parse(applicationHeaderInfo);
-			else this.applicationHeaderInfoState = applicationHeaderInfo;
+			try {
+				if (typeof applicationHeaderInfo === 'string')
+					this.applicationHeaderInfoState = JSON.parse(applicationHeaderInfo);
+				else this.applicationHeaderInfoState = applicationHeaderInfo;
+			} catch (error) {
+				const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addRegularText(' failed to parse props for ')
+					.addMonospaceText('<ontario-header>')
+					.addRegularText(' in ')
+					.addMonospaceText('parseApplicationHeaderInfo()')
+					.addRegularText(' method \n ')
+					.addMonospaceText(error.stack)
+					.printMessage(ConsoleType.Error);
+
+				this.applicationHeaderInfoState = {
+					title: '',
+					href: '/',
+				}; // fallback on error
+			}
 		}
 	}
 
 	@Watch('menuItems')
 	parseMenuItems() {
 		const isEnglish = this.language === 'en';
+		try {
+			if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
+				this.menuItemState = JSON.parse(this.menuItems);
+				this.isDynamicMenu = false;
+			} else if (Array.isArray(this.menuItems) && this.type === 'application') {
+				this.menuItemState = this.menuItems;
+				this.isDynamicMenu = false;
+			} else {
+				this.menuItemState = isEnglish ? OntarioHeaderDefaultData.en : OntarioHeaderDefaultData.fr;
+				this.isDynamicMenu = false;
+			}
+		} catch (error) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addRegularText(' failed to parse props for ')
+				.addMonospaceText('<ontario-header>')
+				.addRegularText(' in ')
+				.addMonospaceText('parseMenuItems()')
+				.addRegularText(' method \n ')
+				.addMonospaceText(error.stack)
+				.printMessage(ConsoleType.Error);
 
-		if (!Array.isArray(this.menuItems) && typeof this.menuItems === 'string') {
-			this.menuItemState = JSON.parse(this.menuItems);
-			this.isDynamicMenu = false;
-		} else if (Array.isArray(this.menuItems) && this.type === 'application') {
-			this.menuItemState = this.menuItems;
-			this.isDynamicMenu = false;
-		} else {
-			this.menuItemState = isEnglish ? OntarioHeaderDefaultData.en : OntarioHeaderDefaultData.fr;
-			this.isDynamicMenu = false;
+			this.menuItemState = [];
+		}
+	}
+
+	@Watch('signInMenuItems')
+	parseSignInMenuItems() {
+		try {
+			if (!Array.isArray(this.signInMenuItems) && typeof this.signInMenuItems === 'string') {
+				this.signInMenuItemsState = JSON.parse(this.signInMenuItems);
+			} else if (Array.isArray(this.signInMenuItems)) {
+				this.signInMenuItemsState = this.signInMenuItems;
+			} else {
+				this.signInMenuItemsState = [];
+			}
+		} catch (error) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addRegularText(' failed to parse props for ')
+				.addMonospaceText('<ontario-header>')
+				.addRegularText(' in ')
+				.addMonospaceText('parseSignInMenuItems()')
+				.addRegularText(' method \n ')
+				.addMonospaceText(error.stack)
+				.printMessage(ConsoleType.Error);
+
+			this.signInMenuItemsState = [];
 		}
 	}
 
 	@Watch('languageToggleOptions')
 	private parseLanguage() {
 		const languageToggleOptions = this.languageToggleOptions;
-		if (languageToggleOptions) {
-			if (typeof languageToggleOptions === 'string') {
-				this.languageState = JSON.parse(languageToggleOptions);
-			} else {
-				this.languageState = languageToggleOptions;
+
+		try {
+			if (languageToggleOptions) {
+				if (typeof languageToggleOptions === 'string') {
+					this.languageState = JSON.parse(languageToggleOptions);
+				} else {
+					this.languageState = languageToggleOptions;
+				}
+			}
+		} catch (error) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addRegularText(' failed to parse props for ')
+				.addMonospaceText('<ontario-header>')
+				.addRegularText(' in ')
+				.addMonospaceText('parseLanguage()')
+				.addRegularText(' method \n ')
+				.addMonospaceText(error.stack)
+				.printMessage(ConsoleType.Error);
+
+			this.languageState = {
+				englishLink: '/en',
+				frenchLink: '/fr',
+			}; // fallback on error
+		}
+	}
+
+	@Listen('keydown', { target: 'window' })
+	handleKeyDown(event: KeyboardEvent) {
+		// Handle Tab from menu button -> ask menu to take focus
+		if (event.key === 'Tab' && !event.shiftKey) {
+			if (document.activeElement === this.menuButton && this.menuToggled) {
+				event.preventDefault();
+				window.dispatchEvent(new CustomEvent('menuButtonTabPressed', { bubbles: true, composed: true }));
+				return;
+			}
+			if (document.activeElement === this.signInButton && this.signInToggled) {
+				event.preventDefault();
+				window.dispatchEvent(new CustomEvent('menuButtonTabPressed', { bubbles: true, composed: true }));
+				return;
+			}
+		}
+
+		if (event.key === 'Escape') {
+			if (this.menuToggled) {
+				this.menuToggled = false;
+				this.menuButtonToggled.emit(this.menuToggled);
+				this.focusMenuButton();
+			}
+			if (this.signInToggled) {
+				this.signInToggled = false;
+				this.menuButtonToggled.emit(this.signInToggled);
+				this.signInButton.focus();
 			}
 		}
 	}
@@ -232,18 +393,68 @@ export class OntarioHeader {
 	 */
 	@Listen('click', { capture: true, target: 'window' })
 	handleClick(event: any) {
-		// if the button is clicked, return
-		if (
-			event.composedPath().includes(this.menuButton) ||
-			event.composedPath().includes(this.menuButtonDesktop) ||
-			event.composedPath().includes(this.menuButtonTablet) ||
-			event.composedPath().includes(this.menuButtonMobile)
-		) {
+		// Check if clicking inside overflow menu
+		const overflowMenu = this.el.shadowRoot?.querySelector('ontario-header-overflow-menu');
+		if (overflowMenu && event.composedPath().includes(overflowMenu)) {
 			return;
 		}
 
-		// If the click was outside the current component, do the following
-		if (this.menuToggle) this.menuToggle = !this.menuToggle;
+		// Check if clicking inside tabs component (NEW!)
+		const tabsMenu = this.el.shadowRoot?.querySelector('ontario-header-menu-tabs');
+		if (tabsMenu && event.composedPath().includes(tabsMenu)) {
+			return;
+		}
+
+		// if the sign-in button is clicked, return
+		if (this.signInButton && event.composedPath().includes(this.signInButton)) {
+			return;
+		}
+
+		// if the menu button is clicked, return
+		if (event.composedPath().includes(this.menuButton)) {
+			return;
+		}
+
+		// Close both menus when clicking outside
+		if (this.menuToggled || this.signInToggled) {
+			this.menuToggled = false;
+			this.signInToggled = false;
+			this.menuButtonToggled.emit(false);
+		}
+	}
+
+	/**
+	 * Logic to close the menu when the focus leaves the menu
+	 */
+	@Listen('focusout', { target: 'window' })
+	handleFocusOut(event: FocusEvent) {
+		if (this.menuToggled && !this.el.contains(event.relatedTarget as Node)) {
+			this.menuToggled = false;
+			this.menuButtonToggled.emit(this.menuToggled);
+		}
+	}
+
+	/**
+	 * Logic to set breakpointDeviceState to the appropriate device when the screen resizes
+	 */
+	@Listen('resize', { target: 'window' })
+	handleResize() {
+		const previousBreakpoint = this.breakpointDeviceState;
+		// Use header-specific device detection here so the header's UI logic stays consistent
+		this.breakpointDeviceState = isClientSideRendering() ? this.getHeaderDeviceType() : DeviceTypes.Desktop;
+		// Close all menus when breakpoint changes
+		if (previousBreakpoint && previousBreakpoint !== this.breakpointDeviceState) {
+			this.menuToggled = false;
+			this.signInToggled = false;
+			this.menuButtonToggled.emit(false);
+		}
+
+		// If we enter tabbed mode, signInToggled is no longer used.
+		// Reset it so the internal state doesn’t stay "stuck" when returning to desktop.
+		const nowTabbed = this.isMobileOrTablet && this.signInMenuItemsState?.length > 0;
+		if (nowTabbed && this.signInToggled) {
+			this.signInToggled = false;
+		}
 	}
 
 	/**
@@ -266,10 +477,48 @@ export class OntarioHeader {
 	}
 
 	/**
+	 * Listen for menu closed event from overflow menu
+	 */
+	@Listen('menuClosed', { target: 'window' })
+	handleMenuClosed() {
+		this.menuToggled = false;
+		this.signInToggled = false;
+	}
+
+	/**
+	 * Listen for overflow menu requesting menu button focus.
+	 * Happens when user presses Shift+Tab from first menu item.
+	 */
+	@Listen('focusMenuButton', { target: 'window' })
+	handleFocusMenuButton() {
+		if (this.signInToggled && this.signInButton) {
+			this.signInButton.focus();
+			// Emit event so menu knows button is focused (prevents auto-close)
+			window.dispatchEvent(new CustomEvent('menuButtonFocused', { bubbles: true, composed: true }));
+		} else if (this.menuToggled && this.menuButton) {
+			this.menuButton.focus();
+			window.dispatchEvent(new CustomEvent('menuButtonFocused', { bubbles: true, composed: true }));
+		}
+	}
+
+	/**
+	 * This event is toggled when the menu button is pressed.
+	 * The `<ontario-header-overflow-menu>` sub-component listens for this event
+	 * To trigger the showing and hiding of the overflow menu.
+	 */
+	@Event() menuButtonToggled: EventEmitter<boolean>;
+
+	/**
 	 * Logic to handle the menu toggling
 	 */
-	handleMenuToggle = () => {
-		this.menuToggle = !this.menuToggle;
+	handlemenuToggled = () => {
+		// Close sign-in menu if it's open
+		if (this.signInToggled) {
+			this.signInToggled = false;
+		}
+
+		this.menuToggled = !this.menuToggled;
+		this.menuButtonToggled.emit(this.menuToggled);
 		this.searchToggle = undefined;
 	};
 
@@ -281,31 +530,52 @@ export class OntarioHeader {
 	};
 
 	/**
+	 * Logic to handle the sign-in toggling
+	 */
+	handleSignInToggled = () => {
+		// Close main menu if it's open
+		if (this.menuToggled) {
+			this.menuToggled = false;
+		}
+
+		this.signInToggled = !this.signInToggled;
+		// Emit the menuButtonToggled event for either dropdown
+		this.menuButtonToggled.emit(this.signInToggled);
+	};
+
+	/**
 	 * event.preventDefault(): https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
 	 * location.href: https://developer.mozilla.org/en-US/docs/Web/API/Location/href
 	 */
 	handleSubmit = (event: any) => {
 		event.preventDefault();
-		location.href = `${this.translations.header.ontarioSearchURL[`${this.language}`]}${event.target[0].value}`;
+
+		const query = this.searchBoxTextState.trim();
+		if (!query) return;
+
+		const baseUrl = this.translations.header.ontarioSearchURL[this.language ? this.language : 'en'];
+		location.href = `${baseUrl}${encodeURIComponent(query)}`;
 	};
 
 	/**
 	 * Logic to make the focus go back to the menu button when the list ends
 	 */
-	trapMenuFocus = (e: any) => {
-		let dataType = e.target?.dataset.type;
-		if (dataType === 'app-desktop') {
-			this.menuButtonDesktop.focus();
-		} else if (dataType === 'app-tablet') {
-			this.menuButtonTablet.focus();
-		} else if (dataType === 'app-mobile') {
-			this.menuButtonMobile.focus();
-		} else {
-			this.menuButton.focus();
-		}
-	};
+	@Listen('endOfMenuReached', { target: 'window' })
+	focusMenuButton() {
+		this.menuButton.focus();
+	}
 
 	/**
+	 * Handle the focus for the next element in the header once overflow menu is closed
+	 * This is only called when there's another menu to focus (isLastMenu=false)
+	 */
+	@Listen('focusNextElement', { target: 'window' })
+	handleFocusNextElement() {
+		// Focus the menu button (next menu in sequence)
+		if (this.menuButton) {
+			this.menuButton.focus();
+		}
+	} /**
 	 * Call to Ontario Menu API to fetch linksets to populate header component
 	 */
 	async fetchOntarioMenu() {
@@ -337,6 +607,20 @@ export class OntarioHeader {
 	}
 
 	/**
+	 * Hydration Guard Flag
+	 *
+	 * This flag is used to determine if the component has been hydrated in the browser.
+	 * It prevents certain browser-only operations, like fetching from APIs, from running
+	 * during Server-Side Rendering (SSR), where `window` and `fetch` are not available.
+	 *
+	 * The `isHydrated` flag is set to true in `componentDidLoad()` and checked before
+	 * triggering logic that should only run in the browser (e.g., `fetchOntarioMenu()`).
+	 *
+	 * Not reactive - should  not be stored in State.
+	 */
+	private isHydrated = false;
+
+	/**
 	 * Generate the full path to an image asset based on the base asset path.
 	 *
 	 * - If `assetBasePath` is provided, it is used as the base path.
@@ -353,141 +637,150 @@ export class OntarioHeader {
 	}
 
 	/**
-	 * This function generates the menu items in a <li>, accordingly, to the given parameters.
-	 *
-	 * href and title are necessary, but rest are not.
-	 *
-	 * @param href - the href of the menu item
-	 * @param title - the title of the menu item
-	 * @param linkIsActive - when set to true, this will add the classes necessary to style the link in a way that indicates to the user what the active page/link is
-	 * @param liClass - if there is a class that is related to the <a> portion of the menu item, put it here
-	 * @param onClick - for any custom onClick event a user might want to add to their menu links
-	 * @param onBlur - when set to true, it will call the function trapMenuFocus(), otherwise nothing is done (used in lastLink)
-	 */
-	private generateMenuItem(
-		href: string,
-		title: string,
-		linkIsActive: boolean | undefined,
-		type: string,
-		liClass?: string,
-		onClick?: any,
-		onBlur?: boolean,
-	) {
-		return (
-			<li class={liClass}>
-				<a
-					class={linkIsActive === true ? `ontario-link--active` : ``}
-					href={href}
-					onClick={onClick}
-					onBlur={onBlur ? this.trapMenuFocus : undefined}
-					data-type={type}
-				>
-					{title}
-				</a>
-			</li>
-		);
-	}
-
-	/**
 	 * This function generates the menu dropdown button for the ontario header component.
-	 *
-	 * @param viewportSize - the size of the screen where the function is being called. It can either be set to `desktop`, `tablet` or `mobile`. This dictates the classes used on the menu button, as well as the ref to keep the focus trapped when the menu is open.
+	 * It now derives viewport from component state (this.breakpointDeviceState) instead
+	 * of relying on a caller-provided string.
 	 */
-	private renderMenuButton(viewportSize: string) {
+	private renderMenuButton() {
+		const viewportSize = this.breakpointDeviceState as string;
+
 		if (!this.isMenuVisible(viewportSize)) {
 			return;
 		}
 
+		const isApplicationOrServiceHeader = this.type === 'application' || this.type === 'serviceOntario';
+		const isOntarioHeader = this.type === 'ontario';
+
+		const shouldShowOutline = isApplicationOrServiceHeader || this.isMobileOrTablet;
+		const useMenuCloseToggle = isApplicationOrServiceHeader || this.isMobileOrTablet;
+
+		const buttonClasses = [
+			'ontario-header__menu-toggle',
+			'ontario-header-button',
+			isOntarioHeader && 'ontario-header-button--desktop',
+			shouldShowOutline && 'ontario-header-button--with-outline',
+			this.menuToggled && 'ontario-header-button--toggled-open',
+		]
+			.filter(Boolean)
+			.join(' ');
+
+		const getButtonContent = () => {
+			if (useMenuCloseToggle) {
+				return (
+					<div class="ontario-header__menu-toggle-content">
+						<span
+							class="ontario-header__icon-container ontario-header__icon-container--white"
+							innerHTML={this.menuToggled ? OntarioIconClose : OntarioIconMenu}
+						/>
+						<span>Menu</span>
+					</div>
+				);
+			}
+
+			return (
+				<div class="ontario-header__menu-toggle-content">
+					<span>
+						{this.isMobileOrTablet
+							? this.translations.header.menu[`${this.language}`]
+							: this.translations.header.topics[`${this.language}`]}
+					</span>
+					<span
+						class={`ontario-header__icon-container ontario-header__icon-container--white ${
+							this.menuToggled ? 'ontario-header__icon-container--rotated' : ''
+						}`}
+						innerHTML={OntarioIconDropdownArrow}
+					/>
+				</div>
+			);
+		};
+
 		return (
 			<button
-				class={
-					viewportSize === 'desktop'
-						? 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-show-for-large'
-						: viewportSize === 'tablet'
-							? 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large'
-							: viewportSize === 'mobile'
-								? 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline ontario-show-for-small-only'
-								: 'ontario-header__menu-toggler ontario-header-button ontario-header-button--with-outline'
-				}
-				id={this.type === 'ontario' ? 'ontario-header-menu-toggler' : 'ontario-application-header-menu-toggler'}
+				class={buttonClasses}
+				id={isOntarioHeader ? 'ontario-header-menu-toggler' : 'ontario-application-header-menu-toggler'}
 				aria-controls="ontario-navigation"
 				aria-label={
-					this.menuToggle
+					this.menuToggled
 						? this.translations.header.closeMenu[`${this.language}`]
 						: this.translations.header.openMenu[`${this.language}`]
 				}
-				onClick={this.handleMenuToggle}
+				aria-expanded={this.menuToggled ? 'true' : 'false'}
+				onClick={this.handlemenuToggled}
 				type="button"
-				ref={
-					viewportSize === 'desktop'
-						? (el) => (this.menuButtonDesktop = el as HTMLInputElement)
-						: viewportSize === 'tablet'
-							? (el) => (this.menuButtonTablet = el as HTMLInputElement)
-							: viewportSize === 'mobile'
-								? (el) => (this.menuButtonMobile = el as HTMLInputElement)
-								: (el) => (this.menuButton = el as HTMLInputElement)
-				}
+				ref={(el) => (this.menuButton = el as HTMLButtonElement)}
 			>
-				<span class="ontario-header__icon-container" innerHTML={this.menuToggle ? OntarioIconClose : OntarioIconMenu} />
-				<span>Menu</span>
+				{getButtonContent()}
 			</button>
 		);
 	}
 
 	/**
-	 * A helper function to generate navigation dropdown links with onBlur functionality. This is used for the application header.
-	 *
-	 * @param item - the menu item to be looped over (contains the title and href)
-	 * @param index
-	 * @param links - the number of links associated with the maxSubheader[size]Links in the application header info prop. This will determine how many links should be displayed in the dropdown.
-	 * @param viewportSize - the size of the viewport. It can be set to `desktop`, `tablet` or `mobile`.
-	 * @returns
+	 * This function generates the sign-in button for the ontario header component.
 	 */
-	private generateNavigationLinks(item: MenuItem, index: number, links: number | undefined, viewportSize: string) {
-		const lastLink =
-			index + 1 === (links ? this.menuItemState.length - links : this.menuItemState.length) ? true : false;
+	private renderSignInButton() {
+		if (!this.signInMenuItemsState || this.signInMenuItemsState.length === 0) {
+			return;
+		}
 
-		return this.generateMenuItem(
-			item.href,
-			item.title,
-			item.linkIsActive,
-			viewportSize,
-			'',
-			item.onClickHandler,
-			lastLink,
+		// Only render sign-in button on desktop
+		if (this.breakpointDeviceState !== 'desktop') {
+			return;
+		}
+
+		return (
+			<button
+				class={`ontario-header__sign-in-toggle ontario-header-button ontario-header-button--desktop ontario-header-button--without-outline ontario-hide-for-small-only ontario-hide-for-medium-only ${
+					this.signInToggled ? 'ontario-header-button--toggled-open' : ''
+				}`}
+				id="ontario-header-sign-in-toggler"
+				aria-controls="ontario-sign-in-navigation"
+				aria-expanded={this.signInToggled ? 'true' : 'false'}
+				onClick={this.handleSignInToggled}
+				type="button"
+				ref={(el) => (this.signInButton = el as HTMLElement)}
+			>
+				<span>{this.translations.header.signIn[`${this.language}`]}</span>
+				<span
+					class={`ontario-header__icon-container ontario-header__icon-container--white ${
+						this.signInToggled ? 'ontario-header__icon-container--rotated' : ''
+					}`}
+					innerHTML={OntarioIconDropdownArrow}
+				/>
+			</button>
 		);
 	}
 
 	/**
 	 * The onEscapePressed function clears the searchbar form when Escape is pressed
 	 */
-	private onEscapePressed(event: any) {
+	private onEscapePressed = (event: KeyboardEvent) => {
 		if (event.key === 'Escape') {
-			event.path[0].value = '';
+			this.searchBoxTextState = '';
 		}
-	}
+	};
 
 	private isMenuVisible(viewportSize: string) {
-		const { menuItemState, applicationHeaderInfoState } = this;
-		const { maxSubheaderMobileLinks, maxSubheaderTabletLinks, maxSubheaderDesktopLinks } =
-			applicationHeaderInfoState ?? {};
+		if (this.type !== 'ontario') {
+			const { menuItemState, applicationHeaderInfoState } = this;
+			const { mobile = 0, tablet = 0, desktop = 0 } = applicationHeaderInfoState?.maxSubheaderLinks ?? {};
 
-		const numOfMenuItems = menuItemState?.length ?? 0;
+			const numOfMenuItems = menuItemState?.length ?? 0;
 
-		if (numOfMenuItems <= 0) {
-			return false;
-		}
+			if (numOfMenuItems <= 0) {
+				return false;
+			}
 
-		if (viewportSize === 'mobile') {
-			return numOfMenuItems - (maxSubheaderMobileLinks ?? 0) > 0;
-		}
+			if (viewportSize === DeviceTypes.Mobile) {
+				return numOfMenuItems - mobile > 0;
+			}
 
-		if (viewportSize === 'tablet') {
-			return numOfMenuItems - (maxSubheaderTabletLinks ?? 0) > 0;
-		}
+			if (viewportSize === DeviceTypes.Tablet) {
+				return numOfMenuItems - tablet > 0;
+			}
 
-		if (viewportSize === 'desktop') {
-			return numOfMenuItems - (maxSubheaderDesktopLinks ?? 0) > 0;
+			if (viewportSize === DeviceTypes.Desktop) {
+				return numOfMenuItems - desktop > 0;
+			}
 		}
 
 		return true;
@@ -496,33 +789,48 @@ export class OntarioHeader {
 	componentWillLoad() {
 		this.parseApplicationHeaderInfo();
 		this.parseMenuItems();
+		this.parseSignInMenuItems();
 		this.parseLanguage();
 	}
 
+	componentDidLoad() {
+		this.isHydrated = true;
+	}
+
 	componentDidRender() {
-		if (this.disableDynamicMenu === false && this.type === 'ontario') {
+		if (this.isHydrated && this.disableDynamicMenu === false && this.type === 'ontario') {
 			this.fetchOntarioMenu();
 		}
+		this.handleResize();
 	}
 
 	/**
-	 * Handles the focus when menu/toggle button is clicked.
+	 * Handles the search focus when the search toggle button is clicked.
 	 * When search button is clicked, the search bar is in focus,
 	 * when the closed button is clicked, the search button is back into focus.
-	 * When the menu is closed, the menu button should be out of focus.
 	 */
 	componentDidUpdate() {
 		if (this.type == 'ontario') {
 			if (this.searchToggle === true) this.searchBar.focus();
 			if (this.searchToggle === false) this.searchButton.focus();
-			if (this.menuToggle === false) this.menuButton.blur();
 		}
 	}
+
+	/**
+	 * Assigning values to elements to use them as ref
+	 */
+	header!: HTMLElement;
+	menuButton!: HTMLElement;
+	signInButton!: HTMLElement;
+	searchBar!: HTMLInputElement;
+	searchButton!: HTMLInputElement;
 
 	render() {
 		const isServiceOntarioType = this.type === 'serviceOntario';
 
 		if (this.type == 'ontario') {
+			// Check if we should show tabbed interface
+			const shouldShowTabs = this.isMobileOrTablet && this.signInMenuItemsState && this.signInMenuItemsState.length > 0;
 			return (
 				<div>
 					<div class="ontario-header__container" ref={(el) => (this.header = el as HTMLInputElement)}>
@@ -552,7 +860,7 @@ export class OntarioHeader {
 									name="searchForm"
 									id="ontario-search-form-container"
 									onSubmit={this.handleSubmit}
-									class="ontario-header__search-container ontario-columns ontario-small-10 ontario-medium-offset-3 ontario-medium-6 ontario-large-offset-0 ontario-large-6"
+									class="ontario-header__search-container ontario-columns ontario-small-10 ontario-medium-6 ontario-large-5"
 									novalidate
 								>
 									<label htmlFor="ontario-search-input-field" class="ontario-show-for-sr">
@@ -566,7 +874,12 @@ export class OntarioHeader {
 										aria-autocomplete="none"
 										className="ontario-input ontario-header__search-input"
 										required={true}
+										value={this.searchBoxTextState}
 										ref={(el) => (this.searchBar = el as HTMLInputElement)}
+										onInput={(event: Event) => {
+											const target = event.target as HTMLInputElement;
+											this.searchBoxTextState = target.value;
+										}}
 										onKeyDown={this.onEscapePressed}
 									></Input>
 									<Input
@@ -583,7 +896,7 @@ export class OntarioHeader {
 								</form>
 
 								{/* Ontario header language toggle + menu button */}
-								<div class="ontario-header__nav-right-container ontario-columns ontario-small-10 ontario-medium-8 ontario-large-3">
+								<div class="ontario-header__nav-right-container ontario-columns ontario-small-10 ontario-medium-8 ontario-large-5">
 									<ontario-language-toggle
 										url={this.language === 'en' ? this.languageState?.frenchLink : this.languageState?.englishLink}
 										size="default"
@@ -601,7 +914,8 @@ export class OntarioHeader {
 											{this.translations.header.search[`${this.language}`]}
 										</span>
 									</button>
-									{this.renderMenuButton('ontario-header')}
+									{this.renderSignInButton()}
+									{this.renderMenuButton()}
 								</div>
 								<div class="ontario-header__search-close-container ontario-columns ontario-small-2 ontario-medium-3">
 									<button
@@ -621,47 +935,25 @@ export class OntarioHeader {
 						</header>
 
 						{/* Ontario header navigation */}
-						<nav
-							role="navigation"
-							class={this.menuToggle ? 'ontario-navigation ontario-navigation--open' : 'ontario-navigation'}
-							id="ontario-navigation"
-						>
-							<div class="ontario-navigation__container">
-								<ul>
-									{/*
-										Maps through all the menu items, and the last item is set to lastLink.
-										When the focus goes away from the lastLink, return the focus to the menu button
-										(only applicable pressing the "tab" key, not actually clicking away from the menu).
-									*/}
-									{this.menuItemState?.map((item, index: number) => {
-										const lastLink = index + 1 === this.menuItemState.length;
-										const activeLinkRegex = item.title.replace(/\s+/g, '-').toLowerCase();
-										const linkIsActive = window.location.pathname.includes(activeLinkRegex);
-										return this.isDynamicMenu
-											? this.generateMenuItem(
-													item.href,
-													item.title,
-													linkIsActive,
-													'ontario-header',
-													'ontario-header-navigation__menu-item',
-													undefined,
-													lastLink,
-												)
-											: this.generateMenuItem(
-													item.href,
-													item.title,
-													item.linkIsActive,
-													'ontario-header',
-													'ontario-header-navigation__menu-item',
-													item.onClickHandler,
-													lastLink,
-												);
-									})}
-								</ul>
-							</div>
-						</nav>
+						{/* Show overflow menu on all devices, but with different props based on breakpoint */}
+						{/* Ontario header navigation */}
+						{shouldShowTabs ? (
+							// Mobile/Tablet with sign-in items → Use tabbed interface
+							<ontario-header-menu-tabs
+								topicsMenuItems={this.menuItemState}
+								signInMenuItems={this.signInMenuItemsState}
+								language={this.language || 'en'}
+							/>
+						) : (
+							// Desktop OR no sign-in items → Use simple overflow menu
+							<ontario-header-overflow-menu
+								menuItems={this.signInToggled ? this.signInMenuItemsState || [] : this.menuItemState}
+								isLastMenu={!this.signInToggled || !this.signInMenuItemsState?.length}
+								language={this.language || 'en'}
+							/>
+						)}
 					</div>
-					{this.menuToggle && <div class="ontario-hide-for-large ontario-overlay" />}
+					{this.menuToggled && <div class="ontario-hide-for-large ontario-overlay" />}
 				</div>
 			);
 		} else {
@@ -715,138 +1007,34 @@ export class OntarioHeader {
 											</a>
 										)}
 										<div class="ontario-application-subheader__menu-container">
-											{/* Desktop subheader links */}
-											{!!this.applicationHeaderInfoState?.maxSubheaderDesktopLinks && (
-												<ul
-													class={`${
-														isServiceOntarioType
-															? 'ontario-service-subheader__menu'
-															: 'ontario-application-subheader__menu'
-													} ontario-show-for-large`}
-												>
+											{!!this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState] && (
+												<ul class="ontario-application-subheader__menu">
 													{this.menuItemState
-														?.slice(0, this.applicationHeaderInfoState?.maxSubheaderDesktopLinks)
+														?.slice(0, this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState])
 														.map((item) =>
-															this.generateMenuItem(
-																item.href,
-																item.title,
-																item.linkIsActive,
-																'app-desktop',
-																'',
-																item.onClickHandler,
-															),
-														)}
-												</ul>
-											)}
-
-											{/* Tablet subheader links */}
-											{!!this.applicationHeaderInfoState?.maxSubheaderTabletLinks && (
-												<ul class="ontario-application-subheader__menu ontario-hide-for-small ontario-show-for-medium ontario-hide-for-large">
-													{this.menuItemState
-														?.slice(0, this.applicationHeaderInfoState?.maxSubheaderTabletLinks)
-														.map((item) =>
-															this.generateMenuItem(
-																item.href,
-																item.title,
-																item.linkIsActive,
-																'app-tablet',
-																'',
-																item.onClickHandler,
-															),
-														)}
-												</ul>
-											)}
-
-											{/* Mobile subheader links */}
-											{!!this.applicationHeaderInfoState?.maxSubheaderMobileLinks && (
-												<ul class="ontario-application-subheader__menu ontario-show-for-small-only">
-													{this.menuItemState
-														?.slice(0, this.applicationHeaderInfoState.maxSubheaderMobileLinks)
-														.map((item) =>
-															this.generateMenuItem(
-																item.href,
-																item.title,
-																item.linkIsActive,
-																'app-mobile',
-																'',
-																item.onClickHandler,
-															),
+															generateMenuItem(item.href, item.title, item.linkIsActive ?? false, item.description),
 														)}
 												</ul>
 											)}
 
 											{/* Render menu button if menuItemState exists, and if there are items to display in a dropdown menu */}
 											{this.menuItemState !== undefined &&
-												this.applicationHeaderInfoState?.maxSubheaderDesktopLinks !== this.menuItemState.length &&
-												this.renderMenuButton('desktop')}
-
-											{this.menuItemState !== undefined &&
-												this.applicationHeaderInfoState?.maxSubheaderTabletLinks !== this.menuItemState.length &&
-												this.renderMenuButton('tablet')}
-
-											{this.menuItemState !== undefined &&
-												this.applicationHeaderInfoState?.maxSubheaderMobileLinks !== this.menuItemState.length &&
-												this.renderMenuButton('mobile')}
+												this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState] !==
+													this.menuItemState.length &&
+												this.renderMenuButton()}
 										</div>
 									</div>
 								</div>
 							</section>
-							<nav
-								role="navigation"
-								class={
-									this.menuToggle === true
-										? 'ontario-application-navigation ontario-navigation--open'
-										: 'ontario-application-navigation'
-								}
-								id="ontario-application-navigation"
-							>
-								<div class="ontario-application-navigation__container">
-									{/* Ontario application header desktop menu dropdown links */}
-									<ul class="ontario-show-for-large">
-										{this.menuItemState
-											?.slice(this.applicationHeaderInfoState?.maxSubheaderDesktopLinks, this.menuItemState.length)
-											.map((item: any, index) => {
-												return this.generateNavigationLinks(
-													item,
-													index,
-													this.applicationHeaderInfoState?.maxSubheaderDesktopLinks,
-													'app-desktop',
-												);
-											})}
-									</ul>
-
-									{/* Ontario application header tablet menu dropdown links */}
-									<ul class="ontario-show-for-medium ontario-hide-for-small ontario-hide-for-large">
-										{this.menuItemState
-											?.slice(this.applicationHeaderInfoState?.maxSubheaderTabletLinks, this.menuItemState.length)
-											.map((item, index) => {
-												return this.generateNavigationLinks(
-													item,
-													index,
-													this.applicationHeaderInfoState?.maxSubheaderTabletLinks,
-													'app-tablet',
-												);
-											})}
-									</ul>
-
-									{/* Ontario application header mobile menu dropdown links */}
-									<ul class="ontario-show-for-small-only">
-										{this.menuItemState
-											?.slice(this.applicationHeaderInfoState?.maxSubheaderMobileLinks, this.menuItemState.length)
-											.map((item, index) => {
-												return this.generateNavigationLinks(
-													item,
-													index,
-													this.applicationHeaderInfoState?.maxSubheaderMobileLinks,
-													'app-mobile',
-												);
-											})}
-									</ul>
-								</div>
-							</nav>
+							<ontario-header-overflow-menu
+								menuItems={this.menuItemState?.slice(
+									this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState],
+									this.menuItemState.length,
+								)}
+							></ontario-header-overflow-menu>
 						</div>
 					</div>
-					{this.menuToggle && <div class="ontario-hide-for-large ontario-overlay" />}
+					{this.menuToggled && <div class="ontario-hide-for-large ontario-overlay" />}
 				</div>
 			);
 		}

@@ -25,6 +25,7 @@ import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
 import { ErrorMessage } from '../../utils/components/error-message/error-message';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 @Component({
 	tag: 'ontario-checkboxes',
@@ -220,9 +221,13 @@ export class OntarioCheckboxes implements Checkboxes {
 		}
 	}
 
+	/**
+	 * Handles an update to the language should the user request a language update from the language toggle.
+	 * @param {CustomEvent} - The language that has been selected.
+	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
+		this.language = validateLanguage(event.detail.newLanguage);
 	}
 
 	/**
@@ -241,14 +246,31 @@ export class OntarioCheckboxes implements Checkboxes {
 	/**
 	 * Watch for changes to the `hintExpander` prop.
 	 *
-	 * If a `hintExpander` prop is passed, it will be parsed (if it is a string), and the result will be set to the `internalHintExpander` state.
+	 * If a `hintExpander` prop is passed, it will be parsed (if it is a string),
+	 * and the result will be set to the `internalHintExpander` state.
+	 * Includes error handling for invalid JSON strings.
 	 */
 	@Watch('hintExpander')
 	private parseHintExpander() {
 		const hintExpander = this.hintExpander;
+
 		if (hintExpander) {
-			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
-			else this.internalHintExpander = hintExpander;
+			if (typeof hintExpander === 'string') {
+				try {
+					this.internalHintExpander = JSON.parse(hintExpander);
+				} catch {
+					const message = new ConsoleMessageClass();
+					message
+						.addDesignSystemTag()
+						.addMonospaceText(' hintExpander ')
+						.addRegularText('for')
+						.addMonospaceText(' <ontario-checkboxes> ')
+						.addRegularText('could not be parsed from a string. Please ensure it is valid JSON.')
+						.printMessage();
+				}
+			} else {
+				this.internalHintExpander = hintExpander;
+			}
 		}
 	}
 
@@ -256,17 +278,25 @@ export class OntarioCheckboxes implements Checkboxes {
 	 * Watch for changes to the `options` prop.
 	 *
 	 * If an `options` prop is passed, it will be parsed (if it is a string), and the result will be set to the `internalOptions` state. The result will be run through a validation function.
+	 * Includes error handling for invalid JSON strings
 	 */
 	@Watch('options')
 	parseOptions() {
 		if (typeof this.options !== 'undefined') {
-			if (!Array.isArray(this.options)) {
-				this.internalOptions = JSON.parse(this.options);
-			} else {
-				this.internalOptions = this.options;
+			try {
+				this.internalOptions = Array.isArray(this.options) ? this.options : JSON.parse(this.options);
+				this.validateOptions(this.internalOptions);
+			} catch {
+				const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' options ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-checkboxes> ')
+					.addRegularText('could not be parsed. Please ensure it is valid JSON.')
+					.printMessage();
 			}
 		}
-		this.validateOptions(this.internalOptions);
 	}
 
 	/**
@@ -399,7 +429,7 @@ export class OntarioCheckboxes implements Checkboxes {
 	render() {
 		const error = !!this.errorMessage;
 		return (
-			<div class={`ontario-form-group ${error ? 'ontario-input--error' : ''}`}>
+			<div class={error ? 'ontario-input--error' : ''}>
 				<fieldset class="ontario-fieldset" aria-describedby={this.hintTextId}>
 					{this.captionState.getCaption(undefined, !!this.internalHintExpander)}
 					{this.internalHintText && (

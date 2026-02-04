@@ -253,7 +253,7 @@ export class OntarioInput implements TextInput {
 
 	/**
 	 * Handles an update to the language should the user request a language update from the language toggle.
-	 * @param event The language that has been selected.
+	 * @param {CustomEvent} - The language that has been selected.
 	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
 	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
@@ -442,7 +442,7 @@ export class OntarioInput implements TextInput {
 	render() {
 		const error = !!this.errorMessage;
 		return (
-			<div class={`ontario-form-group ${error ? 'ontario-input--error' : ''}`}>
+			<div class={error ? 'ontario-input--error' : ''}>
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.internalHintText && (
 					<ontario-hint-text

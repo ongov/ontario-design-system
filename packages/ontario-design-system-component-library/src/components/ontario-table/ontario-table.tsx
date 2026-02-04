@@ -99,43 +99,65 @@ export class OntarioTable implements Table {
 
 	@Watch('tableColumns')
 	private processTableColumns() {
-		this.tableColumns && this.parseOptions(this.tableColumns);
-		validateTableColumns(this.tableColumnsState);
+		if (this.tableColumns) this.parseTableColumns(this.tableColumns);
 	}
 
 	@Watch('tableData')
 	private processTableData() {
-		this.tableData && this.parseOptions(this.tableData);
-		validateTableRowOptions(this.tableDataState);
+		if (this.tableData) this.parseTableData(this.tableData);
 	}
 
-	// Parse the tableColumn & tableData options if they are strings
-	// Transforms the data and stores it in respective state objects
-	private parseOptions(options: any) {
-		const isString = typeof options === 'string';
-
-		if (!options) {
-			return;
-		}
-
+	/**
+	 * Parsse and validates the `tableColumns` prop.
+	 * If the prop is a string, it will be parsed as JSON.
+	 * Validated output is stored in `tableColumnsState`.
+	 *
+	 * If parsing or validation fails, an error message is logged and the state is set to an empty array as a fallback.
+	 */
+	private parseTableColumns(columns: string | TableColumnOptions[]) {
 		try {
-			if (options === this.tableColumns) {
-				this.tableColumnsState = isString ? JSON.parse(options) : options;
-			} else {
-				this.tableDataState = isString ? JSON.parse(options) : options;
-				this.transformTableData(this.tableDataState);
-			}
+			this.tableColumnsState = typeof columns === 'string' ? JSON.parse(columns) : columns;
+			validateTableColumns(this.tableColumnsState);
 		} catch (error) {
 			const message = new ConsoleMessageClass();
 			message
 				.addDesignSystemTag()
-				.addRegularText(' failed to parse props for ')
+				.addRegularText(' failed to parse ')
+				.addMonospaceText('tableColumns')
+				.addRegularText(' for ')
 				.addMonospaceText('<ontario-table>')
-				.addRegularText(' in ')
-				.addMonospaceText('parseOptions()')
-				.addRegularText(' method \n ')
+				.addRegularText(' — check for valid JSON format or structure.\n')
 				.addMonospaceText(error.stack)
 				.printMessage(ConsoleType.Error);
+			this.tableColumnsState = []; // Fallback to prevent render failure
+		}
+	}
+
+	/**
+	 * Parses and validates the `tableData` prop.
+	 * If the prop is a string, it will be parsed as JSON.
+	 * The parsed object is transformed for internal use and stored in `tableDataState` and `tableFooterState`.
+	 *
+	 * If parsing or validation fails, logs an error and sets both data states to empty arrays as a fallback.
+	 */
+	private parseTableData(data: string | TableRowOptions[]) {
+		try {
+			const parsed = typeof data === 'string' ? JSON.parse(data) : data;
+			this.transformTableData(parsed);
+			validateTableRowOptions(parsed);
+		} catch (error) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addRegularText(' failed to parse ')
+				.addMonospaceText('tableData')
+				.addRegularText(' for ')
+				.addMonospaceText('<ontario-table>')
+				.addRegularText(' — check for valid JSON format or structure.\n')
+				.addMonospaceText(error.stack)
+				.printMessage(ConsoleType.Error);
+			this.tableDataState = [];
+			this.tableFooterState = []; // Prevents render issues when data is invalid
 		}
 	}
 
@@ -214,6 +236,7 @@ export class OntarioTable implements Table {
 								<img
 									class="ontario-table--highlight-indicator"
 									src={getAssetPath('./assets/highlight-indicator.svg')}
+									aria-hidden="true"
 								></img>
 							)}
 						</th>
@@ -238,24 +261,26 @@ export class OntarioTable implements Table {
 		const scrollerDivs = this.tableScrollDiv;
 		const scrollerWrappers = this.tableScrollWrapper;
 
-		let resizeObserver = new ResizeObserver(() => {
+		if (typeof window !== 'undefined') {
+			let resizeObserver = new ResizeObserver(() => {
+				this.applyScrollbar(tables, scrollerDivs);
+			});
+
 			this.applyScrollbar(tables, scrollerDivs);
-		});
+			resizeObserver.observe(tables);
 
-		this.applyScrollbar(tables, scrollerDivs);
-		resizeObserver.observe(tables);
+			tables.addEventListener('scroll', () => {
+				this.applyScrollbar(tables, scrollerDivs);
 
-		tables.addEventListener('scroll', () => {
-			this.applyScrollbar(tables, scrollerDivs);
+				scrollerWrappers.scrollLeft = tables.scrollLeft;
+			});
 
-			scrollerWrappers.scrollLeft = tables.scrollLeft;
-		});
+			scrollerWrappers.addEventListener('scroll', () => {
+				this.applyScrollbar(tables, scrollerDivs);
 
-		scrollerWrappers.addEventListener('scroll', () => {
-			this.applyScrollbar(tables, scrollerDivs);
-
-			tables.scrollLeft = scrollerWrappers.scrollLeft;
-		});
+				tables.scrollLeft = scrollerWrappers.scrollLeft;
+			});
+		}
 	}
 
 	componentWillLoad() {

@@ -3,10 +3,11 @@
 		"allowSyntheticDefaultImports": true,
 		"allowUnreachableCode": false,
 		"declaration": false,
+		"esModuleInterop": true,
 		"experimentalDecorators": true,
-		"lib": ["dom", "es2022"],
+		"lib": ["dom", "es2017"],
 		"module": "esnext",
-		"target": "ES2022",
+		"target": "ES2017",
 		"moduleResolution": "node",
 		"strictNullChecks": true,
 		"noUnusedLocals": true,
@@ -20,6 +21,9 @@
 	},
 	"include": ["src"],
 	"exclude": ["node_modules"],
+	"paths": {
+		"@ongov/ontario-design-system-design-tokens/*": ["node_modules/@ongov/ontario-design-system-design-tokens/*"]
+	},
 	"ts-node": {
 		// these options are overrides used only by ts-node
 		"compilerOptions": {

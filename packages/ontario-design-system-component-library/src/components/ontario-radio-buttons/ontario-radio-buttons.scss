@@ -1,24 +1,31 @@
 @use 'sass:math';
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as fontSizes;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables' as lineheight;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as fontSizes;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables' as lineheight;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
 	placeholders;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/_global.elements.scss';
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_form.component.scss';
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/6-components/_text-inputs.component.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/4-elements/global.elements';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/visibility.overrides';
+
+@use '../../styles/fieldsets.scss';
+@use '../../styles/labels.scss';
+@use '../../styles/text-inputs.scss';
 @forward '../../utils/components/error-message/error-message';
 
 $ontario-radios-size: 32px;
 $ontario-radios-size-mobile: 36px;
 $ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-radios-size), 2);
+
+.ontario-radios {
+	padding: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0 math.div(spacing.$spacing-1, 2);
+	max-width: globalVariables.$standard-width;
+}
 
 .ontario-radios__item {
 	position: relative;
@@ -28,6 +35,14 @@ $ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-r
 
 	&:last-of-type {
 		margin-bottom: spacing.$spacing-0;
+	}
+
+	.ontario-radios__hint-expander {
+		margin: spacing.$spacing-3 spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-2;
+
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
+			margin-top: spacing.$spacing-4;
+		}
 	}
 }
 
@@ -54,7 +69,7 @@ $ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-r
 	cursor: pointer;
 	color: colours.$ontario-colour-black;
 	display: inline-block;
-	font-family: fonts.$ontario-font-raleway;
+	font-family: fonts.$ontario-font-raleway-modified;
 	font-size: fontSizes.$ontario-font-size-standard-body-text;
 	font-weight: fontWeights.$ontario-font-weights-bold;
 	line-height: globalVariables.$line-height-default;
@@ -119,7 +134,7 @@ $ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-r
 }
 
 .ontario-radios__hint-expander {
-	margin: spacing.$spacing-3 spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-2;
+	margin: spacing.$spacing-3 spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		margin-top: spacing.$spacing-4;

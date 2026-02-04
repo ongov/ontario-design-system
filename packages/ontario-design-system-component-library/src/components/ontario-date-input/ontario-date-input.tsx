@@ -12,6 +12,7 @@ import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { InputCaption } from '../../utils/common/input-caption/input-caption';
 import { Caption } from '../../utils/common/input-caption/caption.interface';
 import { emitEvent } from '../../utils/events/event-handler';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 @Component({
 	tag: 'ontario-date-input',
@@ -121,12 +122,12 @@ export class OntarioDateInput {
 	/**
 	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
-	@Event() inputOnBlur: EventEmitter<'day' | 'month' | 'year'>;
+	@Event() inputOnBlur: EventEmitter<DateInputFieldType>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
-	@Event() inputOnFocus: EventEmitter<'day' | 'month' | 'year'>;
+	@Event() inputOnFocus: EventEmitter<DateInputFieldType>;
 
 	/**
 	 * Emitted when an error message is reported to the component.
@@ -149,9 +150,13 @@ export class OntarioDateInput {
 		}
 	}
 
+	/**
+	 * Handles an update to the language should the user request a language update from the language toggle.
+	 * @param {CustomEvent} - The language that has been selected.
+	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
+		this.language = validateLanguage(event.detail.newLanguage);
 	}
 
 	@Listen('blur', { capture: true })
@@ -386,67 +391,65 @@ export class OntarioDateInput {
 		const hintTextId = this.getHintTextId();
 
 		return (
-			<div class="ontario-form-group">
-				<fieldset role="group" class="ontario-fieldset">
-					{this.captionState.getCaption()}
-					{!!hintText && (
-						<p id={hintTextId} class="ontario-hint">
-							{hintText}
-						</p>
+			<fieldset role="group" class="ontario-fieldset">
+				{this.captionState.getCaption()}
+				{!!hintText && (
+					<p id={hintTextId} class="ontario-hint">
+						{hintText}
+					</p>
+				)}
+				<ErrorMessage message={this.errorMessage} error={this.isInvalidDate()} />
+				<div class="ontario-date__group">
+					{yearVisible && (
+						<Input
+							id={yearId}
+							type="year"
+							label={dateStrings.year.label[language]}
+							accessibilityLabel={dateStrings.year.accessibility[language]}
+							required={!!required}
+							error={this.yearInvalid}
+							placeholder={placeholderText.year}
+							onInput={this.handleDateInput}
+							onChange={this.handleDateChanged}
+							onBlur={this.handleDateBlur}
+							onFocus={this.handleDateFocus}
+							ariaDescribedBy={hintTextId}
+						/>
 					)}
-					<ErrorMessage message={this.errorMessage} error={this.isInvalidDate()} />
-					<div class="ontario-date__group">
-						{yearVisible && (
-							<Input
-								id={yearId}
-								type="year"
-								label={dateStrings.year.label[language]}
-								accessibilityLabel={dateStrings.year.accessibility[language]}
-								required={!!required}
-								error={this.yearInvalid}
-								placeholder={placeholderText.year}
-								onInput={this.handleDateInput}
-								onChange={this.handleDateChanged}
-								onBlur={this.handleDateBlur}
-								onFocus={this.handleDateFocus}
-								ariaDescribedBy={hintTextId}
-							/>
-						)}
-						{monthVisible && (
-							<Input
-								id={monthId}
-								type="month"
-								label={dateStrings.month.label[language]}
-								accessibilityLabel={dateStrings.month.accessibility[language]}
-								required={!!required}
-								error={this.monthInvalid}
-								placeholder={placeholderText.month}
-								onInput={this.handleDateInput}
-								onChange={this.handleDateChanged}
-								onBlur={this.handleDateBlur}
-								onFocus={this.handleDateFocus}
-								ariaDescribedBy={hintTextId}
-							/>
-						)}
-						{dayVisible && (
-							<Input
-								id={dayId}
-								type="day"
-								label={dateStrings.day.label[language]}
-								accessibilityLabel={dateStrings.day.accessibility[language]}
-								required={!!required}
-								error={this.dayInvalid}
-								placeholder={placeholderText.day}
-								onInput={this.handleDateInput}
-								onChange={this.handleDateChanged}
-								onBlur={this.handleDateBlur}
-								onFocus={this.handleDateFocus}
-								ariaDescribedBy={hintTextId}
-							/>
-						)}
-					</div>
-				</fieldset>
-			</div>
+					{monthVisible && (
+						<Input
+							id={monthId}
+							type="month"
+							label={dateStrings.month.label[language]}
+							accessibilityLabel={dateStrings.month.accessibility[language]}
+							required={!!required}
+							error={this.monthInvalid}
+							placeholder={placeholderText.month}
+							onInput={this.handleDateInput}
+							onChange={this.handleDateChanged}
+							onBlur={this.handleDateBlur}
+							onFocus={this.handleDateFocus}
+							ariaDescribedBy={hintTextId}
+						/>
+					)}
+					{dayVisible && (
+						<Input
+							id={dayId}
+							type="day"
+							label={dateStrings.day.label[language]}
+							accessibilityLabel={dateStrings.day.accessibility[language]}
+							required={!!required}
+							error={this.dayInvalid}
+							placeholder={placeholderText.day}
+							onInput={this.handleDateInput}
+							onChange={this.handleDateChanged}
+							onBlur={this.handleDateBlur}
+							onFocus={this.handleDateFocus}
+							ariaDescribedBy={hintTextId}
+						/>
+					)}
+				</div>
+			</fieldset>
 		);
 	}
 }

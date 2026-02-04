@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import { ExpandCollapseButtonDetails } from './components/ontario-accordion/expandCollapseButtonDetails.interface';
-import { Accordion } from './components/ontario-accordion/accordion.interface';
+import { Accordion, AccordionChangeDetail } from './components/ontario-accordion/accordion.interface';
 import { Language } from './utils/common/language-types';
 import {
 	HeadingContentType,
@@ -15,7 +15,7 @@ import {
 } from './utils/components/callout-aside/callout-aside.interface';
 import { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 import { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
-import { HeadingLevel, Hint, HintContentType } from './utils/common/common.interface';
+import { HeadingLevel, Hint, HintContentType, MenuItem } from './utils/common/common.interface';
 import {
 	HeaderColour,
 	HorizontalImagePositionType,
@@ -49,7 +49,6 @@ import { FooterSocialLinksProps } from './components/ontario-footer/components';
 import {
 	ApplicationHeaderInfo,
 	LanguageToggleOptions,
-	MenuItem,
 	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 import { IconColour, IconSize } from './components/ontario-icon/icon.types';
@@ -61,7 +60,7 @@ import { TaskStatuses } from './utils/common/task-statuses.enum';
 import { TaskHeadingLevel } from './components/ontario-task/ontario-task';
 import { TaskListHeadingLevel } from './components/ontario-task-list/ontario-task-list';
 export { ExpandCollapseButtonDetails } from './components/ontario-accordion/expandCollapseButtonDetails.interface';
-export { Accordion } from './components/ontario-accordion/accordion.interface';
+export { Accordion, AccordionChangeDetail } from './components/ontario-accordion/accordion.interface';
 export { Language } from './utils/common/language-types';
 export {
 	HeadingContentType,
@@ -70,7 +69,7 @@ export {
 } from './utils/components/callout-aside/callout-aside.interface';
 export { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 export { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
-export { HeadingLevel, Hint, HintContentType } from './utils/common/common.interface';
+export { HeadingLevel, Hint, HintContentType, MenuItem } from './utils/common/common.interface';
 export {
 	HeaderColour,
 	HorizontalImagePositionType,
@@ -104,7 +103,6 @@ export { FooterSocialLinksProps } from './components/ontario-footer/components';
 export {
 	ApplicationHeaderInfo,
 	LanguageToggleOptions,
-	MenuItem,
 	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 export { IconColour, IconSize } from './components/ontario-icon/icon.types';
@@ -118,8 +116,9 @@ export { TaskListHeadingLevel } from './components/ontario-task-list/ontario-tas
 export namespace Components {
 	interface OntarioAccordion {
 		/**
-		 * Used to include individual accordion data for the accordion component. This is passed in as an array of objects with key-value pairs.  The `content` is expecting a string, that can either be written as HTML or a just a plain string, depending on the accordionContentType.
-		 * @example 	<ontario-accordion 	name="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": "This is a string"}, 		{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"} 	]' ></ontario-accordion>
+		 * Used to include individual accordion data for the accordion component. Accepts an array of Accordion (@see Accordion) items or a JSON string of that array.  The `content` is rendered either as plain text or HTML depending on `accordionContentType`.
+		 * @see Accordion *
+		 * @example 	<ontario-accordion 	name="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": "This is a string", "isOpen": true}, 		{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"} 	]' ></ontario-accordion>
 		 */
 		accordionData: string | Accordion[];
 		/**
@@ -127,11 +126,6 @@ export namespace Components {
 		 * @example  <ontario-accordion 	name="My Accordion" 	expand-collapse-button='{ 		"expandAllSectionsLabel": "Expand All", 		"collapseAllSectionsLabel": "Collapse All" 	}' 	accordion-data='[ 		{"label": "Accordion 1", "content": ["Item 1", "Item 2", "Item 3"]}, 		{"label": "Accordion 2", "content": ["Item A", "Item B", "Item C"]} 	]' ></ontario-accordion>
 		 */
 		expandCollapseButton?: string | ExpandCollapseButtonDetails;
-		/**
-		 * Used to show whether the accordion is opened or closed.
-		 * @default false
-		 */
-		isOpen: boolean;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 		 */
@@ -524,10 +518,17 @@ export namespace Components {
 		 */
 		type: OntarioFooterType;
 	}
+	interface OntarioFormContainer {
+		/**
+		 * Defines the gap (bottom margin) between slotted form elements. If no gap prop is provided, it will default to 'default'.
+		 * @default 'default'
+		 */
+		gap: 'default' | 'condensed';
+	}
 	interface OntarioHeader {
 		/**
 		 * Information pertaining to the application header. This is only necessary for the 'application' header type.  This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.
-		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage",      "maxSubheaderDesktopLinks": "3",      "maxSubheaderTabletLinks": "2",      "maxSubheaderMobileLinks": "1"    }'>  </ontario-header>
+		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage", 	"maxSubheaderLinks": { 		"desktop": "3", 		"tablet": "2", 		"mobile": "1" 	}    }' >  </ontario-header>
 		 */
 		applicationHeaderInfo: ApplicationHeaderInfo | string;
 		/**
@@ -538,6 +539,10 @@ export namespace Components {
 		 * A custom function to pass to the language toggle button.
 		 */
 		customLanguageToggle?: (event: globalThis.Event) => void;
+		/**
+		 * A custom function to pass to the sign-in button.
+		 */
+		customSignInToggle?: (event: globalThis.Event) => void;
 		/**
 		 * Option to disable fetching of the dynamic menu from the Ontario Header API
 		 * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
@@ -559,10 +564,76 @@ export namespace Components {
 		 */
 		menuItems: MenuItem[] | string;
 		/**
+		 * Information pertaining to the sign-in menu items for the Ontario header.
+		 */
+		signInMenuItems?: MenuItem[] | string;
+		/**
 		 * The type of header.
 		 * @default 'application'
 		 */
 		type?: OntarioHeaderType;
+	}
+	/**
+	 * Ontario Header Menu Tabs Component
+	 * Provides a tabbed navigation interface for mobile/tablet views.
+	 * Displays two tabs (Topics and Sign In) with overflow menu content.
+	 * Manages keyboard navigation, focus trapping, and accessibility.
+	 */
+	interface OntarioHeaderMenuTabs {
+		/**
+		 * Enable auto-detect handoff mode.
+		 * @default false
+		 */
+		autoDetectMode?: boolean;
+		/**
+		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+		 * @default 'en'
+		 */
+		language?: Language;
+		/**
+		 * Menu items for the "Sign In" tab. Can be passed as a MenuItem array or JSON string.
+		 */
+		signInMenuItems: MenuItem[] | string;
+		/**
+		 * Menu items for the "Topics" tab. Can be passed as a MenuItem array or JSON string.
+		 */
+		topicsMenuItems: MenuItem[] | string;
+	}
+	/**
+	 * Overflow Menu Component
+	 * Displays a dropdown menu of links. Can operate in two modes:
+	 * ## Standalone Mode
+	 * Used when placed directly in the header (desktop view).
+	 * - Manages its own open/close state via `menuButtonToggled` event
+	 * - Automatically focuses first menu item when opened
+	 * - Sets up focus trap to keep keyboard navigation within menu
+	 * - Auto-closes when focus leaves the menu area
+	 * - **Emits**: `menuClosed` event when menu closes (for cleanup/state sync)
+	 * ## Embedded Mode
+	 * Used when placed inside `ontario-header-menu-tabs` (mobile/tablet view).
+	 * - Parent component controls open/close state
+	 * - Parent component manages focus trap
+	 * - Menu is always visible when parent tab is active
+	 * - **Emits**: `endOfMenuReached` event when Tab is pressed on last item (for focus looping)
+	 * **Mode Detection**: Auto-detected based on DOM position (no prop needed).
+	 * Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+	 */
+	interface OntarioHeaderOverflowMenu {
+		/**
+		 * Whether this is the last menu in a series of menus. If true, Tab from last item goes to next element on page. If false, Tab from last item emits focusNextElement for header to handle.
+		 * @default true
+		 */
+		isLastMenu?: boolean;
+		/**
+		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+		 * @default 'en'
+		 */
+		language?: Language;
+		/**
+		 * The menu items to display. Can be passed as a MenuItem array or JSON string.  The items that will go inside the menu.
+		 * @example <ontario-header-overflow-menu 	menu-items='[{ 		"title": "Link 1", 		"href": "/link-1" 		"linkIsActive": "false" 	},{ 		"title": "Link 2", 		"href": "/link-2" 		"linkIsActive": "false" 	},{ 		"title": "Link 3", 		"href": "/link-3" 		"linkIsActive": "false" 	},{ 		"title": "Link 4", 		"href": "/link-4" 		"linkIsActive": "false" 	}]'> </ontario-header-overflow-menu>
+		 */
+		menuItems: MenuItem[] | string;
 	}
 	interface OntarioHintExpander {
 		/**
@@ -1345,6 +1416,18 @@ export namespace Components {
 		 */
 		iconWidth: IconSize;
 	}
+	interface OntarioIconMoreAccounts {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
 	interface OntarioIconMoreVertical {
 		/**
 		 * Set the icon's colour.
@@ -1669,6 +1752,66 @@ export namespace Components {
 		 */
 		iconWidth: IconSize;
 	}
+	interface OntarioIconSortAlphabeticalAscending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
+	interface OntarioIconSortAlphabeticalDescending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
+	interface OntarioIconSortAscending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
+	interface OntarioIconSortDescending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
+	interface OntarioIconSortVariant {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
 	interface OntarioIconTag {
 		/**
 		 * Set the icon's colour.
@@ -1754,6 +1897,18 @@ export namespace Components {
 		iconWidth: IconSize;
 	}
 	interface OntarioIconTty {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth: IconSize;
+	}
+	interface OntarioIconTune {
 		/**
 		 * Set the icon's colour.
 		 * @default 'black'
@@ -2317,6 +2472,10 @@ export namespace Components {
 		value?: string;
 	}
 }
+export interface OntarioAccordionCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioAccordionElement;
+}
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioCheckboxesElement;
@@ -2328,6 +2487,18 @@ export interface OntarioDateInputCustomEvent<T> extends CustomEvent<T> {
 export interface OntarioDropdownListCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioDropdownListElement;
+}
+export interface OntarioHeaderCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioHeaderElement;
+}
+export interface OntarioHeaderMenuTabsCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioHeaderMenuTabsElement;
+}
+export interface OntarioHeaderOverflowMenuCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioHeaderOverflowMenuElement;
 }
 export interface OntarioHintExpanderCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
@@ -2354,7 +2525,57 @@ export interface OntarioTextareaCustomEvent<T> extends CustomEvent<T> {
 	target: HTMLOntarioTextareaElement;
 }
 declare global {
-	interface HTMLOntarioAccordionElement extends Components.OntarioAccordion, HTMLStencilElement {}
+	interface HTMLOntarioAccordionElementEventMap {
+		accordionChange: AccordionChangeDetail;
+	}
+	interface HTMLOntarioAccordionElement extends Components.OntarioAccordion, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioAccordionElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioAccordionElement,
+				ev: OntarioAccordionCustomEvent<HTMLOntarioAccordionElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioAccordionElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioAccordionElement,
+				ev: OntarioAccordionCustomEvent<HTMLOntarioAccordionElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
 	var HTMLOntarioAccordionElement: {
 		prototype: HTMLOntarioAccordionElement;
 		new (): HTMLOntarioAccordionElement;
@@ -2471,8 +2692,8 @@ declare global {
 			value: string;
 			fieldType: 'day' | 'month' | 'year';
 		};
-		inputOnBlur: 'day' | 'month' | 'year';
-		inputOnFocus: 'day' | 'month' | 'year';
+		inputOnBlur: DateInputFieldType;
+		inputOnFocus: DateInputFieldType;
 		inputErrorOccurred: { inputId: string; errorMessage: string };
 	}
 	interface HTMLOntarioDateInputElement extends Components.OntarioDateInput, HTMLStencilElement {
@@ -2595,10 +2816,206 @@ declare global {
 		prototype: HTMLOntarioFooterElement;
 		new (): HTMLOntarioFooterElement;
 	};
-	interface HTMLOntarioHeaderElement extends Components.OntarioHeader, HTMLStencilElement {}
+	interface HTMLOntarioFormContainerElement extends Components.OntarioFormContainer, HTMLStencilElement {}
+	var HTMLOntarioFormContainerElement: {
+		prototype: HTMLOntarioFormContainerElement;
+		new (): HTMLOntarioFormContainerElement;
+	};
+	interface HTMLOntarioHeaderElementEventMap {
+		menuButtonToggled: boolean;
+	}
+	interface HTMLOntarioHeaderElement extends Components.OntarioHeader, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioHeaderElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioHeaderElement,
+				ev: OntarioHeaderCustomEvent<HTMLOntarioHeaderElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioHeaderElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioHeaderElement,
+				ev: OntarioHeaderCustomEvent<HTMLOntarioHeaderElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
 	var HTMLOntarioHeaderElement: {
 		prototype: HTMLOntarioHeaderElement;
 		new (): HTMLOntarioHeaderElement;
+	};
+	interface HTMLOntarioHeaderMenuTabsElementEventMap {
+		takeOwnership: { panelId: string | null };
+		focusFirstItem: void;
+		focusMenuButton: void;
+	}
+	/**
+	 * Ontario Header Menu Tabs Component
+	 * Provides a tabbed navigation interface for mobile/tablet views.
+	 * Displays two tabs (Topics and Sign In) with overflow menu content.
+	 * Manages keyboard navigation, focus trapping, and accessibility.
+	 */
+	interface HTMLOntarioHeaderMenuTabsElement extends Components.OntarioHeaderMenuTabs, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioHeaderMenuTabsElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioHeaderMenuTabsElement,
+				ev: OntarioHeaderMenuTabsCustomEvent<HTMLOntarioHeaderMenuTabsElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioHeaderMenuTabsElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioHeaderMenuTabsElement,
+				ev: OntarioHeaderMenuTabsCustomEvent<HTMLOntarioHeaderMenuTabsElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
+	var HTMLOntarioHeaderMenuTabsElement: {
+		prototype: HTMLOntarioHeaderMenuTabsElement;
+		new (): HTMLOntarioHeaderMenuTabsElement;
+	};
+	interface HTMLOntarioHeaderOverflowMenuElementEventMap {
+		menuClosed: void;
+		endOfMenuReached: void;
+		focusMenuButton: void;
+		focusNextElement: void;
+		menuButtonTabPressed: void;
+	}
+	/**
+	 * Overflow Menu Component
+	 * Displays a dropdown menu of links. Can operate in two modes:
+	 * ## Standalone Mode
+	 * Used when placed directly in the header (desktop view).
+	 * - Manages its own open/close state via `menuButtonToggled` event
+	 * - Automatically focuses first menu item when opened
+	 * - Sets up focus trap to keep keyboard navigation within menu
+	 * - Auto-closes when focus leaves the menu area
+	 * - **Emits**: `menuClosed` event when menu closes (for cleanup/state sync)
+	 * ## Embedded Mode
+	 * Used when placed inside `ontario-header-menu-tabs` (mobile/tablet view).
+	 * - Parent component controls open/close state
+	 * - Parent component manages focus trap
+	 * - Menu is always visible when parent tab is active
+	 * - **Emits**: `endOfMenuReached` event when Tab is pressed on last item (for focus looping)
+	 * **Mode Detection**: Auto-detected based on DOM position (no prop needed).
+	 * Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+	 */
+	interface HTMLOntarioHeaderOverflowMenuElement extends Components.OntarioHeaderOverflowMenu, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioHeaderOverflowMenuElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioHeaderOverflowMenuElement,
+				ev: OntarioHeaderOverflowMenuCustomEvent<HTMLOntarioHeaderOverflowMenuElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioHeaderOverflowMenuElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioHeaderOverflowMenuElement,
+				ev: OntarioHeaderOverflowMenuCustomEvent<HTMLOntarioHeaderOverflowMenuElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
+	var HTMLOntarioHeaderOverflowMenuElement: {
+		prototype: HTMLOntarioHeaderOverflowMenuElement;
+		new (): HTMLOntarioHeaderOverflowMenuElement;
 	};
 	interface HTMLOntarioHintExpanderElementEventMap {
 		toggleExpanderEvent: MouseEvent | KeyboardEvent;
@@ -2995,6 +3412,11 @@ declare global {
 		prototype: HTMLOntarioIconMicrophoneOnElement;
 		new (): HTMLOntarioIconMicrophoneOnElement;
 	};
+	interface HTMLOntarioIconMoreAccountsElement extends Components.OntarioIconMoreAccounts, HTMLStencilElement {}
+	var HTMLOntarioIconMoreAccountsElement: {
+		prototype: HTMLOntarioIconMoreAccountsElement;
+		new (): HTMLOntarioIconMoreAccountsElement;
+	};
 	interface HTMLOntarioIconMoreVerticalElement extends Components.OntarioIconMoreVertical, HTMLStencilElement {}
 	var HTMLOntarioIconMoreVerticalElement: {
 		prototype: HTMLOntarioIconMoreVerticalElement;
@@ -3130,6 +3552,35 @@ declare global {
 		prototype: HTMLOntarioIconSortElement;
 		new (): HTMLOntarioIconSortElement;
 	};
+	interface HTMLOntarioIconSortAlphabeticalAscendingElement
+		extends Components.OntarioIconSortAlphabeticalAscending,
+			HTMLStencilElement {}
+	var HTMLOntarioIconSortAlphabeticalAscendingElement: {
+		prototype: HTMLOntarioIconSortAlphabeticalAscendingElement;
+		new (): HTMLOntarioIconSortAlphabeticalAscendingElement;
+	};
+	interface HTMLOntarioIconSortAlphabeticalDescendingElement
+		extends Components.OntarioIconSortAlphabeticalDescending,
+			HTMLStencilElement {}
+	var HTMLOntarioIconSortAlphabeticalDescendingElement: {
+		prototype: HTMLOntarioIconSortAlphabeticalDescendingElement;
+		new (): HTMLOntarioIconSortAlphabeticalDescendingElement;
+	};
+	interface HTMLOntarioIconSortAscendingElement extends Components.OntarioIconSortAscending, HTMLStencilElement {}
+	var HTMLOntarioIconSortAscendingElement: {
+		prototype: HTMLOntarioIconSortAscendingElement;
+		new (): HTMLOntarioIconSortAscendingElement;
+	};
+	interface HTMLOntarioIconSortDescendingElement extends Components.OntarioIconSortDescending, HTMLStencilElement {}
+	var HTMLOntarioIconSortDescendingElement: {
+		prototype: HTMLOntarioIconSortDescendingElement;
+		new (): HTMLOntarioIconSortDescendingElement;
+	};
+	interface HTMLOntarioIconSortVariantElement extends Components.OntarioIconSortVariant, HTMLStencilElement {}
+	var HTMLOntarioIconSortVariantElement: {
+		prototype: HTMLOntarioIconSortVariantElement;
+		new (): HTMLOntarioIconSortVariantElement;
+	};
 	interface HTMLOntarioIconTagElement extends Components.OntarioIconTag, HTMLStencilElement {}
 	var HTMLOntarioIconTagElement: {
 		prototype: HTMLOntarioIconTagElement;
@@ -3169,6 +3620,11 @@ declare global {
 	var HTMLOntarioIconTtyElement: {
 		prototype: HTMLOntarioIconTtyElement;
 		new (): HTMLOntarioIconTtyElement;
+	};
+	interface HTMLOntarioIconTuneElement extends Components.OntarioIconTune, HTMLStencilElement {}
+	var HTMLOntarioIconTuneElement: {
+		prototype: HTMLOntarioIconTuneElement;
+		new (): HTMLOntarioIconTuneElement;
 	};
 	interface HTMLOntarioIconTwitterElement extends Components.OntarioIconTwitter, HTMLStencilElement {}
 	var HTMLOntarioIconTwitterElement: {
@@ -3556,7 +4012,10 @@ declare global {
 		'ontario-dropdown-list': HTMLOntarioDropdownListElement;
 		'ontario-fieldset': HTMLOntarioFieldsetElement;
 		'ontario-footer': HTMLOntarioFooterElement;
+		'ontario-form-container': HTMLOntarioFormContainerElement;
 		'ontario-header': HTMLOntarioHeaderElement;
+		'ontario-header-menu-tabs': HTMLOntarioHeaderMenuTabsElement;
+		'ontario-header-overflow-menu': HTMLOntarioHeaderOverflowMenuElement;
 		'ontario-hint-expander': HTMLOntarioHintExpanderElement;
 		'ontario-hint-text': HTMLOntarioHintTextElement;
 		'ontario-icon-accessibility': HTMLOntarioIconAccessibilityElement;
@@ -3625,6 +4084,7 @@ declare global {
 		'ontario-icon-menu-header': HTMLOntarioIconMenuHeaderElement;
 		'ontario-icon-microphone-off': HTMLOntarioIconMicrophoneOffElement;
 		'ontario-icon-microphone-on': HTMLOntarioIconMicrophoneOnElement;
+		'ontario-icon-more-accounts': HTMLOntarioIconMoreAccountsElement;
 		'ontario-icon-more-vertical': HTMLOntarioIconMoreVerticalElement;
 		'ontario-icon-new-window': HTMLOntarioIconNewWindowElement;
 		'ontario-icon-next': HTMLOntarioIconNextElement;
@@ -3652,6 +4112,11 @@ declare global {
 		'ontario-icon-settings': HTMLOntarioIconSettingsElement;
 		'ontario-icon-share': HTMLOntarioIconShareElement;
 		'ontario-icon-sort': HTMLOntarioIconSortElement;
+		'ontario-icon-sort-alphabetical-ascending': HTMLOntarioIconSortAlphabeticalAscendingElement;
+		'ontario-icon-sort-alphabetical-descending': HTMLOntarioIconSortAlphabeticalDescendingElement;
+		'ontario-icon-sort-ascending': HTMLOntarioIconSortAscendingElement;
+		'ontario-icon-sort-descending': HTMLOntarioIconSortDescendingElement;
+		'ontario-icon-sort-variant': HTMLOntarioIconSortVariantElement;
 		'ontario-icon-tag': HTMLOntarioIconTagElement;
 		'ontario-icon-text-message': HTMLOntarioIconTextMessageElement;
 		'ontario-icon-timer': HTMLOntarioIconTimerElement;
@@ -3660,6 +4125,7 @@ declare global {
 		'ontario-icon-transport-car': HTMLOntarioIconTransportCarElement;
 		'ontario-icon-transport-walk': HTMLOntarioIconTransportWalkElement;
 		'ontario-icon-tty': HTMLOntarioIconTtyElement;
+		'ontario-icon-tune': HTMLOntarioIconTuneElement;
 		'ontario-icon-twitter': HTMLOntarioIconTwitterElement;
 		'ontario-icon-twitter-alt': HTMLOntarioIconTwitterAltElement;
 		'ontario-icon-upload': HTMLOntarioIconUploadElement;
@@ -3687,8 +4153,9 @@ declare global {
 declare namespace LocalJSX {
 	interface OntarioAccordion {
 		/**
-		 * Used to include individual accordion data for the accordion component. This is passed in as an array of objects with key-value pairs.  The `content` is expecting a string, that can either be written as HTML or a just a plain string, depending on the accordionContentType.
-		 * @example 	<ontario-accordion 	name="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": "This is a string"}, 		{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"} 	]' ></ontario-accordion>
+		 * Used to include individual accordion data for the accordion component. Accepts an array of Accordion (@see Accordion) items or a JSON string of that array.  The `content` is rendered either as plain text or HTML depending on `accordionContentType`.
+		 * @see Accordion *
+		 * @example 	<ontario-accordion 	name="My Accordion" 	accordion-data='[ 		{"label": "Accordion 1", "content": "This is a string", "isOpen": true}, 		{"label": "Accordion 2", "accordionContentType": "html", "content": "<ul><li>List A</li><li>List B</li><li>List C</li></ul>"} 	]' ></ontario-accordion>
 		 */
 		accordionData?: string | Accordion[];
 		/**
@@ -3697,11 +4164,6 @@ declare namespace LocalJSX {
 		 */
 		expandCollapseButton?: string | ExpandCollapseButtonDetails;
 		/**
-		 * Used to show whether the accordion is opened or closed.
-		 * @default false
-		 */
-		isOpen?: boolean;
-		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
 		 */
 		language?: Language;
@@ -3709,6 +4171,10 @@ declare namespace LocalJSX {
 		 * The name of the accordion component.  This is not optional.
 		 */
 		name?: string;
+		/**
+		 * Emits when open indexes change
+		 */
+		onAccordionChange?: (event: OntarioAccordionCustomEvent<AccordionChangeDetail>) => void;
 	}
 	interface OntarioAside {
 		/**
@@ -3999,7 +4465,7 @@ declare namespace LocalJSX {
 		/**
 		 * Emitted when a keyboard input event occurs when an input has lost focus.
 		 */
-		onInputOnBlur?: (event: OntarioDateInputCustomEvent<'day' | 'month' | 'year'>) => void;
+		onInputOnBlur?: (event: OntarioDateInputCustomEvent<DateInputFieldType>) => void;
 		/**
 		 * Emitted when a `change` event occurs within the component.
 		 */
@@ -4012,7 +4478,7 @@ declare namespace LocalJSX {
 		/**
 		 * Emitted when a keyboard input event occurs when an input has gained focus.
 		 */
-		onInputOnFocus?: (event: OntarioDateInputCustomEvent<'day' | 'month' | 'year'>) => void;
+		onInputOnFocus?: (event: OntarioDateInputCustomEvent<DateInputFieldType>) => void;
 		/**
 		 * Emitted when an `input` event occurs within the component.
 		 */
@@ -4155,10 +4621,17 @@ declare namespace LocalJSX {
 		 */
 		type?: OntarioFooterType;
 	}
+	interface OntarioFormContainer {
+		/**
+		 * Defines the gap (bottom margin) between slotted form elements. If no gap prop is provided, it will default to 'default'.
+		 * @default 'default'
+		 */
+		gap?: 'default' | 'condensed';
+	}
 	interface OntarioHeader {
 		/**
 		 * Information pertaining to the application header. This is only necessary for the 'application' header type.  This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.
-		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage",      "maxSubheaderDesktopLinks": "3",      "maxSubheaderTabletLinks": "2",      "maxSubheaderMobileLinks": "1"    }'>  </ontario-header>
+		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage", 	"maxSubheaderLinks": { 		"desktop": "3", 		"tablet": "2", 		"mobile": "1" 	}    }' >  </ontario-header>
 		 */
 		applicationHeaderInfo?: ApplicationHeaderInfo | string;
 		/**
@@ -4169,6 +4642,10 @@ declare namespace LocalJSX {
 		 * A custom function to pass to the language toggle button.
 		 */
 		customLanguageToggle?: (event: globalThis.Event) => void;
+		/**
+		 * A custom function to pass to the sign-in button.
+		 */
+		customSignInToggle?: (event: globalThis.Event) => void;
 		/**
 		 * Option to disable fetching of the dynamic menu from the Ontario Header API
 		 * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
@@ -4190,10 +4667,112 @@ declare namespace LocalJSX {
 		 */
 		menuItems?: MenuItem[] | string;
 		/**
+		 * This event is toggled when the menu button is pressed. The `<ontario-header-overflow-menu>` sub-component listens for this event To trigger the showing and hiding of the overflow menu.
+		 */
+		onMenuButtonToggled?: (event: OntarioHeaderCustomEvent<boolean>) => void;
+		/**
+		 * Information pertaining to the sign-in menu items for the Ontario header.
+		 */
+		signInMenuItems?: MenuItem[] | string;
+		/**
 		 * The type of header.
 		 * @default 'application'
 		 */
 		type?: OntarioHeaderType;
+	}
+	/**
+	 * Ontario Header Menu Tabs Component
+	 * Provides a tabbed navigation interface for mobile/tablet views.
+	 * Displays two tabs (Topics and Sign In) with overflow menu content.
+	 * Manages keyboard navigation, focus trapping, and accessibility.
+	 */
+	interface OntarioHeaderMenuTabs {
+		/**
+		 * Enable auto-detect handoff mode.
+		 * @default false
+		 */
+		autoDetectMode?: boolean;
+		/**
+		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+		 * @default 'en'
+		 */
+		language?: Language;
+		/**
+		 * Event emitted to request overflow menu to focus its first item.
+		 */
+		onFocusFirstItem?: (event: OntarioHeaderMenuTabsCustomEvent<void>) => void;
+		/**
+		 * Event emitted to request header to focus the menu button. Triggered when Shift+Tab is pressed on the first tab.
+		 */
+		onFocusMenuButton?: (event: OntarioHeaderMenuTabsCustomEvent<void>) => void;
+		/**
+		 * Event emitted when ownership handoff is triggered in auto-detect mode.
+		 */
+		onTakeOwnership?: (event: OntarioHeaderMenuTabsCustomEvent<{ panelId: string | null }>) => void;
+		/**
+		 * Menu items for the "Sign In" tab. Can be passed as a MenuItem array or JSON string.
+		 */
+		signInMenuItems?: MenuItem[] | string;
+		/**
+		 * Menu items for the "Topics" tab. Can be passed as a MenuItem array or JSON string.
+		 */
+		topicsMenuItems?: MenuItem[] | string;
+	}
+	/**
+	 * Overflow Menu Component
+	 * Displays a dropdown menu of links. Can operate in two modes:
+	 * ## Standalone Mode
+	 * Used when placed directly in the header (desktop view).
+	 * - Manages its own open/close state via `menuButtonToggled` event
+	 * - Automatically focuses first menu item when opened
+	 * - Sets up focus trap to keep keyboard navigation within menu
+	 * - Auto-closes when focus leaves the menu area
+	 * - **Emits**: `menuClosed` event when menu closes (for cleanup/state sync)
+	 * ## Embedded Mode
+	 * Used when placed inside `ontario-header-menu-tabs` (mobile/tablet view).
+	 * - Parent component controls open/close state
+	 * - Parent component manages focus trap
+	 * - Menu is always visible when parent tab is active
+	 * - **Emits**: `endOfMenuReached` event when Tab is pressed on last item (for focus looping)
+	 * **Mode Detection**: Auto-detected based on DOM position (no prop needed).
+	 * Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+	 */
+	interface OntarioHeaderOverflowMenu {
+		/**
+		 * Whether this is the last menu in a series of menus. If true, Tab from last item goes to next element on page. If false, Tab from last item emits focusNextElement for header to handle.
+		 * @default true
+		 */
+		isLastMenu?: boolean;
+		/**
+		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
+		 * @default 'en'
+		 */
+		language?: Language;
+		/**
+		 * The menu items to display. Can be passed as a MenuItem array or JSON string.  The items that will go inside the menu.
+		 * @example <ontario-header-overflow-menu 	menu-items='[{ 		"title": "Link 1", 		"href": "/link-1" 		"linkIsActive": "false" 	},{ 		"title": "Link 2", 		"href": "/link-2" 		"linkIsActive": "false" 	},{ 		"title": "Link 3", 		"href": "/link-3" 		"linkIsActive": "false" 	},{ 		"title": "Link 4", 		"href": "/link-4" 		"linkIsActive": "false" 	}]'> </ontario-header-overflow-menu>
+		 */
+		menuItems?: MenuItem[] | string;
+		/**
+		 * Event emitted when Tab is pressed on the last menu item (embedded mode).
+		 */
+		onEndOfMenuReached?: (event: OntarioHeaderOverflowMenuCustomEvent<void>) => void;
+		/**
+		 * Event emitted when Shift+Tab is pressed on first menu item. Tells the header to focus the menu button.
+		 */
+		onFocusMenuButton?: (event: OntarioHeaderOverflowMenuCustomEvent<void>) => void;
+		/**
+		 * Event emitted when Tab is pressed on the last menu item in standalone mode. Tells the header to focus the next appropriate element.
+		 */
+		onFocusNextElement?: (event: OntarioHeaderOverflowMenuCustomEvent<void>) => void;
+		/**
+		 * Event emitted when user Tabs from the menu button. Asks if menu is open and ready to receive focus.
+		 */
+		onMenuButtonTabPressed?: (event: OntarioHeaderOverflowMenuCustomEvent<void>) => void;
+		/**
+		 * Event emitted when menu closes (standalone mode).
+		 */
+		onMenuClosed?: (event: OntarioHeaderOverflowMenuCustomEvent<void>) => void;
 	}
 	interface OntarioHintExpander {
 		/**
@@ -4975,6 +5554,18 @@ declare namespace LocalJSX {
 		 */
 		iconWidth?: IconSize;
 	}
+	interface OntarioIconMoreAccounts {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
 	interface OntarioIconMoreVertical {
 		/**
 		 * Set the icon's colour.
@@ -5299,6 +5890,66 @@ declare namespace LocalJSX {
 		 */
 		iconWidth?: IconSize;
 	}
+	interface OntarioIconSortAlphabeticalAscending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
+	interface OntarioIconSortAlphabeticalDescending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
+	interface OntarioIconSortAscending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
+	interface OntarioIconSortDescending {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
+	interface OntarioIconSortVariant {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
 	interface OntarioIconTag {
 		/**
 		 * Set the icon's colour.
@@ -5384,6 +6035,18 @@ declare namespace LocalJSX {
 		iconWidth?: IconSize;
 	}
 	interface OntarioIconTty {
+		/**
+		 * Set the icon's colour.
+		 * @default 'black'
+		 */
+		colour?: IconColour;
+		/**
+		 * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
+		 * @default 24
+		 */
+		iconWidth?: IconSize;
+	}
+	interface OntarioIconTune {
 		/**
 		 * Set the icon's colour.
 		 * @default 'black'
@@ -6047,7 +6710,10 @@ declare namespace LocalJSX {
 		'ontario-dropdown-list': OntarioDropdownList;
 		'ontario-fieldset': OntarioFieldset;
 		'ontario-footer': OntarioFooter;
+		'ontario-form-container': OntarioFormContainer;
 		'ontario-header': OntarioHeader;
+		'ontario-header-menu-tabs': OntarioHeaderMenuTabs;
+		'ontario-header-overflow-menu': OntarioHeaderOverflowMenu;
 		'ontario-hint-expander': OntarioHintExpander;
 		'ontario-hint-text': OntarioHintText;
 		'ontario-icon-accessibility': OntarioIconAccessibility;
@@ -6116,6 +6782,7 @@ declare namespace LocalJSX {
 		'ontario-icon-menu-header': OntarioIconMenuHeader;
 		'ontario-icon-microphone-off': OntarioIconMicrophoneOff;
 		'ontario-icon-microphone-on': OntarioIconMicrophoneOn;
+		'ontario-icon-more-accounts': OntarioIconMoreAccounts;
 		'ontario-icon-more-vertical': OntarioIconMoreVertical;
 		'ontario-icon-new-window': OntarioIconNewWindow;
 		'ontario-icon-next': OntarioIconNext;
@@ -6143,6 +6810,11 @@ declare namespace LocalJSX {
 		'ontario-icon-settings': OntarioIconSettings;
 		'ontario-icon-share': OntarioIconShare;
 		'ontario-icon-sort': OntarioIconSort;
+		'ontario-icon-sort-alphabetical-ascending': OntarioIconSortAlphabeticalAscending;
+		'ontario-icon-sort-alphabetical-descending': OntarioIconSortAlphabeticalDescending;
+		'ontario-icon-sort-ascending': OntarioIconSortAscending;
+		'ontario-icon-sort-descending': OntarioIconSortDescending;
+		'ontario-icon-sort-variant': OntarioIconSortVariant;
 		'ontario-icon-tag': OntarioIconTag;
 		'ontario-icon-text-message': OntarioIconTextMessage;
 		'ontario-icon-timer': OntarioIconTimer;
@@ -6151,6 +6823,7 @@ declare namespace LocalJSX {
 		'ontario-icon-transport-car': OntarioIconTransportCar;
 		'ontario-icon-transport-walk': OntarioIconTransportWalk;
 		'ontario-icon-tty': OntarioIconTty;
+		'ontario-icon-tune': OntarioIconTune;
 		'ontario-icon-twitter': OntarioIconTwitter;
 		'ontario-icon-twitter-alt': OntarioIconTwitterAlt;
 		'ontario-icon-upload': OntarioIconUpload;
@@ -6195,7 +6868,37 @@ declare module '@stencil/core' {
 			'ontario-dropdown-list': LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
 			'ontario-fieldset': LocalJSX.OntarioFieldset & JSXBase.HTMLAttributes<HTMLOntarioFieldsetElement>;
 			'ontario-footer': LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;
+			'ontario-form-container': LocalJSX.OntarioFormContainer & JSXBase.HTMLAttributes<HTMLOntarioFormContainerElement>;
 			'ontario-header': LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
+			/**
+			 * Ontario Header Menu Tabs Component
+			 * Provides a tabbed navigation interface for mobile/tablet views.
+			 * Displays two tabs (Topics and Sign In) with overflow menu content.
+			 * Manages keyboard navigation, focus trapping, and accessibility.
+			 */
+			'ontario-header-menu-tabs': LocalJSX.OntarioHeaderMenuTabs &
+				JSXBase.HTMLAttributes<HTMLOntarioHeaderMenuTabsElement>;
+			/**
+			 * Overflow Menu Component
+			 * Displays a dropdown menu of links. Can operate in two modes:
+			 * ## Standalone Mode
+			 * Used when placed directly in the header (desktop view).
+			 * - Manages its own open/close state via `menuButtonToggled` event
+			 * - Automatically focuses first menu item when opened
+			 * - Sets up focus trap to keep keyboard navigation within menu
+			 * - Auto-closes when focus leaves the menu area
+			 * - **Emits**: `menuClosed` event when menu closes (for cleanup/state sync)
+			 * ## Embedded Mode
+			 * Used when placed inside `ontario-header-menu-tabs` (mobile/tablet view).
+			 * - Parent component controls open/close state
+			 * - Parent component manages focus trap
+			 * - Menu is always visible when parent tab is active
+			 * - **Emits**: `endOfMenuReached` event when Tab is pressed on last item (for focus looping)
+			 * **Mode Detection**: Auto-detected based on DOM position (no prop needed).
+			 * Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+			 */
+			'ontario-header-overflow-menu': LocalJSX.OntarioHeaderOverflowMenu &
+				JSXBase.HTMLAttributes<HTMLOntarioHeaderOverflowMenuElement>;
 			'ontario-hint-expander': LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
 			/**
 			 * Use hint text to help users understand how to complete fields in a form.
@@ -6302,6 +7005,8 @@ declare module '@stencil/core' {
 				JSXBase.HTMLAttributes<HTMLOntarioIconMicrophoneOffElement>;
 			'ontario-icon-microphone-on': LocalJSX.OntarioIconMicrophoneOn &
 				JSXBase.HTMLAttributes<HTMLOntarioIconMicrophoneOnElement>;
+			'ontario-icon-more-accounts': LocalJSX.OntarioIconMoreAccounts &
+				JSXBase.HTMLAttributes<HTMLOntarioIconMoreAccountsElement>;
 			'ontario-icon-more-vertical': LocalJSX.OntarioIconMoreVertical &
 				JSXBase.HTMLAttributes<HTMLOntarioIconMoreVerticalElement>;
 			'ontario-icon-new-window': LocalJSX.OntarioIconNewWindow &
@@ -6343,6 +7048,16 @@ declare module '@stencil/core' {
 			'ontario-icon-settings': LocalJSX.OntarioIconSettings & JSXBase.HTMLAttributes<HTMLOntarioIconSettingsElement>;
 			'ontario-icon-share': LocalJSX.OntarioIconShare & JSXBase.HTMLAttributes<HTMLOntarioIconShareElement>;
 			'ontario-icon-sort': LocalJSX.OntarioIconSort & JSXBase.HTMLAttributes<HTMLOntarioIconSortElement>;
+			'ontario-icon-sort-alphabetical-ascending': LocalJSX.OntarioIconSortAlphabeticalAscending &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSortAlphabeticalAscendingElement>;
+			'ontario-icon-sort-alphabetical-descending': LocalJSX.OntarioIconSortAlphabeticalDescending &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSortAlphabeticalDescendingElement>;
+			'ontario-icon-sort-ascending': LocalJSX.OntarioIconSortAscending &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSortAscendingElement>;
+			'ontario-icon-sort-descending': LocalJSX.OntarioIconSortDescending &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSortDescendingElement>;
+			'ontario-icon-sort-variant': LocalJSX.OntarioIconSortVariant &
+				JSXBase.HTMLAttributes<HTMLOntarioIconSortVariantElement>;
 			'ontario-icon-tag': LocalJSX.OntarioIconTag & JSXBase.HTMLAttributes<HTMLOntarioIconTagElement>;
 			'ontario-icon-text-message': LocalJSX.OntarioIconTextMessage &
 				JSXBase.HTMLAttributes<HTMLOntarioIconTextMessageElement>;
@@ -6356,6 +7071,7 @@ declare module '@stencil/core' {
 			'ontario-icon-transport-walk': LocalJSX.OntarioIconTransportWalk &
 				JSXBase.HTMLAttributes<HTMLOntarioIconTransportWalkElement>;
 			'ontario-icon-tty': LocalJSX.OntarioIconTty & JSXBase.HTMLAttributes<HTMLOntarioIconTtyElement>;
+			'ontario-icon-tune': LocalJSX.OntarioIconTune & JSXBase.HTMLAttributes<HTMLOntarioIconTuneElement>;
 			'ontario-icon-twitter': LocalJSX.OntarioIconTwitter & JSXBase.HTMLAttributes<HTMLOntarioIconTwitterElement>;
 			'ontario-icon-twitter-alt': LocalJSX.OntarioIconTwitterAlt &
 				JSXBase.HTMLAttributes<HTMLOntarioIconTwitterAltElement>;

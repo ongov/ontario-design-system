@@ -9,10 +9,17 @@ on:
       build-artifacts-name:
         required: true
         type: string
+    outputs:
+      release_tag:
+        description: 'The git tag of the released version'
+        value: ${{ jobs.publish.outputs.release_tag }}
 
 jobs:
   publish:
+    name: Publish Packages
     runs-on: ubuntu-latest
+    outputs:
+      release_tag: ${{ steps.publish.outputs.release_tag }}
     steps:
       # Checkout the repo
       - uses: actions/checkout@v4
@@ -39,7 +46,9 @@ jobs:
           name: ${{ inputs.build-artifacts-name }} # Artifact name (must match upload name)
           path: ./packages
 
+      # Note: This step outputs a `release_tag` variable to be used by downstream workflows if needed.
       - name: Publish packages
+        id: publish
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

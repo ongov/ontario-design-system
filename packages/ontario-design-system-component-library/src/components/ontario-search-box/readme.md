@@ -1,4 +1,6 @@
 import { OntarioSearchBox } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-search-box
 
@@ -16,8 +18,44 @@ Once the component package has been installed (see Ontario Design System Compone
 
 ### Search box with caption
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-search-box id="ontario-search-box" caption="Search the directory"></ontario-search-box>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioSearchBox id="ontario-search-box" caption="Search the directory"></OntarioSearchBox>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-search-box [id]="'ontario-search-box'" [caption]="'Search the directory'"></ontario-search-box>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <div>
@@ -84,6 +122,12 @@ caption='{ "captionText": "Input label", "captionType": "large" }'
 | ------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `captionText` | `string`                           | Text to display as the input question                                                                                                            |
 | `captionType` | `"default" \| "large"\| "heading"` | The type of label to display for the input question. This is optional, and if no information is provided, it will default to the `default` type. |
+
+## Technical Note: SSR (Server-Side Rendering) Considerations
+
+The Ontario Search Box component is compatible with Server-Side Rendering (SSR), but a few guidelines are recommended for best results:
+
+- **Avoid relying on language toggle events** (`setAppLanguage`, `headerLanguageToggled`) to determine language server-side. Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-search-box language="fr"></ontario-search-box>`).
 
 <!-- Auto Generated Below -->
 

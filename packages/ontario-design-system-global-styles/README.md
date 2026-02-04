@@ -3,7 +3,8 @@
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
 - [Architecture](#architecture)
-- [Naming Convention](#naming-convention)
+- [Naming convention](#naming-convention)
+- [Sass package resolution and the `NodePackageImporter`](#sass-package-resolution-and-the-nodepackageimporter)
 - [Support](#support)
 - [References](#references)
 
@@ -29,16 +30,18 @@ There are two ways to consume the Ontario Design System global styles package:
 
 You can import the entire global styles package by including the following import statements.
 
-**SCSS:**
+**Scss**:
 
-```bash
-@forward "@ongov/ontario-design-system-global-styles/dist/styles/scss/theme.scss";
+```scss
+@forward 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/theme.scss';
 ```
 
-**CSS:**
+Please see the [_How to use_](#how-to-use) in [_Sass Package Resolution and the NodePackageImporter_](#sass-package-resolution-and-the-nodepackageimporter) for information on how to import and use our Scss.
 
-```bash
-@forward "@ongov/ontario-design-system-global-styles/dist/styles/css/compiled/ontario-theme.css";
+**CSS**:
+
+```css
+@import '@ongov/ontario-design-system-global-styles/dist/styles/css/compiled/ontario-theme.css';
 ```
 
 This will give you access to the complete package, and will load in all layers of the project, as defined in our [architecture section](#architecture).
@@ -49,8 +52,8 @@ Alternatively, you can be more granular by explicitly importing specific styles 
 
 For example, if you only require our global variables, you can include the following [`@use`](https://sass-lang.com/documentation/at-rules/use) rule to import specific styles:
 
-```bash
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+```scss
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
 ```
 
 The `@use` rule loads mixins, functions, and variables from other Sass stylesheets, and combines CSS from multiple stylesheets together. In your SCSS, you would then reference one of these variables by including the namespace, followed by the variable you intend to use. For example:
@@ -74,7 +77,7 @@ That means that styles that appear in the beginning of the project tend to be ge
 
 In ITCSS, there is a concept of breaking down the CSS into layers, with the top layer holding the most general styles, and the bottom layer holding more specific styles. For the global styles package, we have broken the structure into the following layers:
 
-### Variables:
+### Variables
 
 This layer contains all variables that will be used throughought the SCSS partials. For that reason, it needs to be the first partial to be imported into the theme style sheet.
 
@@ -82,13 +85,13 @@ It is worth noting that the values in our variables are using tokens from the [O
 
 The variables layer holds the following folders for the following variables: breakpoints, colours, font sizes, font weights, global, grid, letter spacing, line heights, spacing, typography and z-index helper variables.
 
-**_Note: These files should not generate any CSS_**
+**Note**: _These files should not generate any CSS_
 
-### Tools:
+### Tools
 
 This layer will include globally available functions, mixins, and placeholders that we use throughout our SCSS partials. These are not specific to one component.
 
-**_Note: These files should not generate any CSS_**
+**Note**: _These files should not generate any CSS_
 
 ### Generics:
 
@@ -126,13 +129,67 @@ The basic BEM convention goes: `.block-name__element-name--modifier-state`, with
 
   - _Example_: `.ontario-input--2-char-width`, `.ontario-fieldset__legend--heading`. etc.
 
-  ## Support
+## Sass package resolution and the `NodePackageImporter`
+
+Modern Sass projects often rely on importing styles from npm packages. However, traditional Sass import resolution does not always align with Node.js' module resolution, making it difficult to use `@use` or `@forward` with package-based imports.
+
+To address this, [Dart Sass](https://github.com/sass/dart-sass) introduced the `pkg:` URL scheme and the [`NodePackageImporter`](https://sass-lang.com/documentation/js-api/classes/nodepackageimporter/) in version **1.71.0**. This allows Sass to resolve imports using Node's algorithm, making it possible to reference SCSS files in npm packages in a way that's robust and future-proof.
+
+### Why is this needed?
+
+- Ensures that Sass can find and import styles from npm packages using the `pkg:` scheme.
+- Prevents import errors when package locations or structures change.
+- Enables more maintainable and portable Sass code in large, modular projects like the Ontario Design System.
+
+### Minimum requirements:
+
+- Dart Sass (`sass` npm package) version: **1.71.0 or higher**
+- Your build tool (gulp, webpack, etc.) must be configured to use the `NodePackageImporter`.
+
+### How to use
+
+For more details and advanced usage, see the official Sass documentation:
+https://sass-lang.com/documentation/js-api/classes/nodepackageimporter/
+
+#### Using `pkg:` in Sass
+
+Once enabled, you can reference npm packages in your Sass code with the `pkg:` scheme:
+
+```scss
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/theme.scss';
+```
+
+#### JavaScript Example
+
+Add a new `NodePackageImporter()` instance to the `importers` option when compiling Sass.
+
+```js
+import * as sass from 'sass';
+
+const result = await sass.compileAsync('input.scss', {
+	importers: [new sass.NodePackageImporter()],
+});
+```
+
+#### CLI Example
+
+```bash
+sass --pkg-importer=node src/styles:dist/styles
+```
+
+**Note**: _If you do not use the `NodePackageImporter` or are on an older Sass version, the `pkg:` URL scheme will not work and you will see errors like_:
+
+```
+"Can't find stylesheet to import."
+```
+
+## Support
 
 Contact us at [design.system@ontario.ca](mailto:design.system@ontario.ca) for assistance with this package.
 
 ## References
 
 - BEM naming convention (http://getbem.com/)
-- SASS compiler (https://sass-lang.com/)
+- Sass compiler (https://sass-lang.com/)
 - ITCSS architecture (https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)
 - Design Tokens (https://css-tricks.com/what-are-design-tokens/)

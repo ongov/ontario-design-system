@@ -1,4 +1,4 @@
-import { h, Component, Prop, Watch, State, Listen, Element, Fragment } from '@stencil/core';
+import { h, Component, Prop, Watch, State, Listen, Element } from '@stencil/core';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { TaskStatuses, TaskBadgeColour, TaskToBadgeColour } from '../../utils/common/task-statuses.enum';
 import { validateLanguage, validateValueAgainstArray } from '../../utils/validation/validation-functions';
@@ -7,6 +7,7 @@ import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
 import translations from '../../translations/global.i18n.json';
 import { HeadingLevel } from '../../utils/common/common.interface';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 export type TaskHeadingLevel = Extract<HeadingLevel, 'h2' | 'h3' | 'h4'>;
 
 @Component({
@@ -92,44 +93,6 @@ export class OntarioTask {
 	 * Set the task's status state depending on validation result.
 	 */
 	@State() private taskStatusState: TaskStatuses = TaskStatuses.NotStarted;
-	/**
-	 * Watch for changes in `taskStatus` prop to validate its value.
-	 */
-	@Watch('taskStatus')
-	validateTaskStatus() {
-		const validStatuses = Object.values(TaskStatuses);
-		const isValidStatus = validStatuses.includes(this.taskStatus);
-		this.taskStatusState = isValidStatus ? this.taskStatus : this.warnAndGetDefaultTaskStatus();
-
-		// Update the `data-task-status` attribute
-		this.el.setAttribute('data-task-status', this.taskStatusState);
-	}
-
-	/**
-	 * Logs a warning to the console if the `taskStatus` prop is set to an invalid value.
-	 *
-	 * This function informs developers that the provided `taskStatus` is not recognized
-	 * and resets the status to the default value of `'notStarted'`. The warning message
-	 * specifies the valid task statuses to help guide correct usage.
-	 *
-	 * @returns The default task status `'notStarted'`.
-	 */
-	private warnAndGetDefaultTaskStatus(): TaskStatuses {
-		const validStatuses = Object.values(TaskStatuses).join(', ');
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' taskStatus ')
-			.addRegularText('on')
-			.addMonospaceText(' <ontario-task> ')
-			.addRegularText('was set to an invalid taskStatus; only ')
-			.addMonospaceText(validStatuses)
-			.addRegularText(' are supported. The default taskStatus ')
-			.addMonospaceText(TaskStatuses.NotStarted)
-			.addRegularText(' is assumed.')
-			.printMessage();
-		return TaskStatuses.NotStarted;
-	}
 
 	/**
 	 * Watch for changes in `headingLevel` prop to validate its value.
@@ -174,6 +137,25 @@ export class OntarioTask {
 	}
 
 	/**
+	 * Watch for changes in `taskStatus` prop to validate its value.
+	 */
+	@Watch('taskStatus')
+	validateTaskStatus(newValue: TaskStatuses) {
+		const validStatuses = Object.values(TaskStatuses);
+		const isValidStatus = validStatuses.includes(newValue);
+
+		if (isValidStatus) {
+			this.taskStatusState = newValue;
+		} else {
+			// If the status is invalid, log a warning and use the default
+			this.taskStatusState = this.warnAndGetDefaultTaskStatus();
+		}
+
+		// Update the `data-task-status` attribute
+		this.el.setAttribute('data-task-status', this.taskStatusState);
+	}
+
+	/**
 	 * Listen for app language settings on the window to update the component language.
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
@@ -184,12 +166,12 @@ export class OntarioTask {
 	}
 
 	/**
-	 * This listens for the `headerLanguageToggled` event sent from the language toggle when it is connected to the DOM.
-	 * It is used for changing the component language after the language toggle has been activated.
+	 * Handles an update to the language should the user request a language update from the language toggle.
+	 * @param {CustomEvent} - The language that has been selected.
 	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
+		this.language = validateLanguage(event.detail.newLanguage);
 	}
 
 	/**
@@ -218,6 +200,7 @@ export class OntarioTask {
 				<ontario-hint-text
 					hint={this.internalHintText.hint}
 					hintContentType={this.internalHintText.hintContentType}
+					elementId={`hint-text--${this.taskId}`}
 					ref={(el) => (this.hintTextRef = el)}
 				></ontario-hint-text>
 			);
@@ -230,6 +213,32 @@ export class OntarioTask {
 	 */
 	private getClass(): string {
 		return ['ontario-task__label', this.hintText && 'ontario-task__hint-text--true'].filter(Boolean).join(' ');
+	}
+
+	/**
+	 * Logs a warning to the console if the `taskStatus` prop is set to an invalid value.
+	 *
+	 * This function informs developers that the provided `taskStatus` is not recognized
+	 * and resets the status to the default value of `'notStarted'`. The warning message
+	 * specifies the valid task statuses to help guide correct usage.
+	 *
+	 * @returns The default task status `'notStarted'`.
+	 */
+	private warnAndGetDefaultTaskStatus(): TaskStatuses {
+		const validStatuses = Object.values(TaskStatuses).join(', ');
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addMonospaceText(' taskStatus ')
+			.addRegularText('on')
+			.addMonospaceText(' <ontario-task> ')
+			.addRegularText('was set to an invalid taskStatus; only ')
+			.addMonospaceText(validStatuses)
+			.addRegularText(' are supported. The default taskStatus ')
+			.addMonospaceText(TaskStatuses.NotStarted)
+			.addRegularText(' is assumed.')
+			.printMessage();
+		return TaskStatuses.NotStarted;
 	}
 
 	/**
@@ -246,7 +255,10 @@ export class OntarioTask {
 
 		return (
 			<div class="ontario-task__content">
-				{h(this.headingLevel, headingProps, this.label)}
+				<div class="ontario-task__text">
+					{h(this.headingLevel, headingProps, this.label)}
+					{this.renderHintText()}
+				</div>
 				{this.taskStatusState && (
 					<ontario-badge
 						class="ontario-task__badge"
@@ -262,7 +274,6 @@ export class OntarioTask {
 			</div>
 		);
 	}
-
 	/**
 	 * After the component loads, retrieve the hint text ID (if available) from the hintText component,
 	 * and set it for the `aria-describedby` attribute.
@@ -275,11 +286,6 @@ export class OntarioTask {
 				hintTextId = `hint-text--${this.taskId}`;
 				this.hintTextRef.elementId = hintTextId;
 			}
-
-			const taskElement = this.el.shadowRoot?.querySelector('li');
-			if (taskElement) {
-				taskElement.setAttribute('aria-describedby', hintTextId);
-			}
 		}
 	}
 
@@ -290,20 +296,16 @@ export class OntarioTask {
 	async componentWillLoad() {
 		this.parseHintText();
 		this.language = validateLanguage(this.language);
-		this.validateTaskStatus();
 		this.validateHeadingLevel(this.headingLevel);
+
+		// Ensure the taskStatus is set initially based on the prop
+		this.validateTaskStatus(this.taskStatus);
 	}
 
 	render() {
 		const isLinkActive = this.link && !this.deactivateLink;
 		const taskStatusClass = `ontario-task-status--${this.taskStatusState.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}`;
-
-		const taskContent = (
-			<Fragment>
-				{this.renderTaskContent()}
-				{this.renderHintText()}
-			</Fragment>
-		);
+		const describedBy = this.internalHintText ? `hint-text--${this.taskId}` : undefined;
 
 		return (
 			<li
@@ -311,13 +313,14 @@ export class OntarioTask {
 				role="group"
 				aria-labelledby={`task-label--${this.taskId}`}
 				data-task-status={this.taskStatusState}
+				aria-describedby={describedBy}
 			>
 				{isLinkActive ? (
 					<a href={this.link} class="ontario-task__link" aria-label={this.label}>
-						{taskContent}
+						{this.renderTaskContent()}
 					</a>
 				) : (
-					<div>{taskContent}</div>
+					<div>{this.renderTaskContent()}</div>
 				)}
 			</li>
 		);

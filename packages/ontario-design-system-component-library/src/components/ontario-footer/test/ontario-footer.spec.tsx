@@ -2,6 +2,30 @@ import { newSpecPage } from '@stencil/core/testing';
 import { OntarioFooter } from '../ontario-footer';
 
 describe('ontario-footer', () => {
+	const OriginalDate = Date;
+
+	beforeAll(() => {
+		// Keep real timers to avoid hanging Stencil's async test helpers, but
+		// override no-arg Date construction so the footer year is deterministic
+		// and the snapshots don't fail when the real-world year advances.
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		(global as any).Date = class extends OriginalDate {
+			constructor(...args: [] | ConstructorParameters<typeof Date>) {
+				if (args.length === 0) {
+					super('2025-06-30T12:00:00Z');
+					return;
+				}
+				super(...(args as ConstructorParameters<typeof Date>));
+			}
+		} as DateConstructor;
+	});
+
+	afterAll(() => {
+		// Restore native Date implementation.
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		(global as any).Date = OriginalDate;
+	});
+
 	it('renders default ontario-footer', async () => {
 		const page = await newSpecPage({
 			components: [OntarioFooter],

@@ -5,6 +5,8 @@ import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 
 import translations from '../../translations/global.i18n.json';
+import { isClientSideRendering } from '../../utils/common/environment';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 @Component({
 	tag: 'ontario-back-to-top',
@@ -31,7 +33,9 @@ export class OntarioBackToTop {
 	 */
 	@Listen('scroll', { target: 'window' })
 	showBackToTopButton() {
-		this.displayBackToTop = window.scrollY > this.scrollYValue;
+		if (isClientSideRendering()) {
+			this.displayBackToTop = window.scrollY > this.scrollYValue;
+		}
 	}
 
 	/**
@@ -44,16 +48,21 @@ export class OntarioBackToTop {
 		}
 	}
 
+	/**
+	 * Handles an update to the language should the user request a language update from the language toggle.
+	 * @param {CustomEvent} - The language that has been selected.
+	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
+		this.language = validateLanguage(event.detail.newLanguage);
 	}
-
 	/**
 	 * Scroll to top functionality when the Back to Top button is clicked
 	 */
 	private scrollToTop() {
-		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		if (isClientSideRendering()) {
+			window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		}
 	}
 
 	componentWillLoad() {

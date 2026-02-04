@@ -1,9 +1,10 @@
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as fontSizes;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-sizes.variables' as fontSizes;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as
+	globalFunctions;
 
 .ontario-badge__container {
 	display: flex;
@@ -27,7 +28,7 @@
 	background-color: colours.$ontario-colour-information-light;
 	color: colours.$ontario-greyscale-70;
 	padding: spacing.$spacing-1 spacing.$spacing-2;
-	font-family: fonts.$ontario-font-raleway;
+	font-family: fonts.$ontario-font-raleway-modified;
 	font-size: fontSizes.$ontario-font-size-standard-body-text;
 	font-weight: fontWeights.$ontario-font-weights-bold;
 	line-height: globalFunctions.px-to-rem(25);
@@ -35,37 +36,37 @@
 	text-transform: uppercase;
 }
 
-.ontario-badge--default-light {
+.ontario-badge--light-teal {
 	background-color: colours.$ontario-colour-information-light;
 	color: colours.$ontario-greyscale-70;
 }
 
-.ontario-badge--default-heavy {
+.ontario-badge--teal {
 	background-color: colours.$ontario-colour-information;
 	color: colours.$ontario-colour-white;
 }
 
-.ontario-badge--neutral-light {
+.ontario-badge--grey {
 	background-color: colours.$ontario-greyscale-5;
 	color: colours.$ontario-greyscale-70;
 }
 
-.ontario-badge--neutral-heavy {
+.ontario-badge--black {
 	background-color: colours.$ontario-colour-black;
 	color: colours.$ontario-colour-white;
 }
 
-.ontario-badge--alert-heavy {
+.ontario-badge--red {
 	background-color: colours.$ontario-colour-alert;
 	color: colours.$ontario-colour-white;
 }
 
-.ontario-badge--warning-heavy {
+.ontario-badge--yellow {
 	background-color: colours.$ontario-colour-warning;
 	color: colours.$ontario-colour-black;
 }
 
-.ontario-badge--success-heavy {
+.ontario-badge--green {
 	background-color: colours.$ontario-colour-success;
 	color: colours.$ontario-colour-white;
 }
@@ -76,7 +77,7 @@
 	border: globalFunctions.px-to-rem(1) solid colours.$ontario-greyscale-70;
 }
 
-.ontario-badge--grey {
+.ontario-badge--dark-grey {
 	background-color: colours.$ontario-greyscale-20;
 	color: colours.$ontario-colour-black;
 }

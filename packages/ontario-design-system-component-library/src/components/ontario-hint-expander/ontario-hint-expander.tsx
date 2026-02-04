@@ -182,10 +182,10 @@ export class OntarioHintExpander implements HintExpander {
 					data-toggle="ontario-collapse"
 				>
 					<span class="ontario-hint-expander__button-icon--close ontario-icon">
-						<ontario-icon-chevron-up colour="inherit"></ontario-icon-chevron-up>
+						<ontario-icon-chevron-up colour="inherit" aria-hidden="true"></ontario-icon-chevron-up>
 					</span>
 					<span class="ontario-hint-expander__button-icon--open">
-						<ontario-icon-chevron-down colour="inherit"></ontario-icon-chevron-down>
+						<ontario-icon-chevron-down colour="inherit" aria-hidden="true"></ontario-icon-chevron-down>
 					</span>
 					{this.hint}
 				</button>
@@ -196,7 +196,13 @@ export class OntarioHintExpander implements HintExpander {
 					aria-hidden="true"
 					data-toggle="ontario-expander-content"
 				>
-					{this.hintContentType === 'string' ? this.content : <span innerHTML={this.content}></span>}
+					{this.hintContentType === 'string' && this.content ? (
+						this.content
+					) : this.hintContentType === 'html' && this.content ? (
+						<span innerHTML={this.content}></span>
+					) : (
+						<slot />
+					)}
 				</div>
 			</div>
 		);

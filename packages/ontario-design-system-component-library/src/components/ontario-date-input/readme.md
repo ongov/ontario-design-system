@@ -1,4 +1,6 @@
 import { OntarioDateInput } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-date-input
 
@@ -15,6 +17,19 @@ Once the component package has been installed (see Ontario Design System Compone
 ## Examples
 
 Example of date input component
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-date-input
@@ -35,22 +50,68 @@ Example of date input component
 ></ontario-date-input>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioDateInput
+	placeholder={{
+		day: 'DD',
+		month: 'MM',
+		year: 'YYYY',
+	}}
+	minYear={500}
+	maxYear={1000}
+	required={true}
+	dateOptions={['day', 'month', 'year']}
+	hintText="For example 2000 03 01"
+	caption={{
+		captionText: 'Exact Date',
+		captionType: 'default',
+	}}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-date-input
+	[placeholder]="{ day: 'DD', month: 'MM', year: 'YYYY' }"
+	[minYear]="500"
+	[maxYear]="1000"
+	required="true"
+	[dateOptions]="['day', 'month', 'year']"
+	[hintText]="'For example 2000 03 01'"
+	[caption]="{ captionText: 'Exact Date', captionType: 'default' }"
+></ontario-date-input>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
 	<OntarioDateInput
-		placeholder='{
-			"day": "DD",
-			"month": "MM",
-			"year": "YYYY"
-		}'
-		min-year="500"
-		max-year="1000"
-		required="true"
-		date-options='["day", "month", "year"]'
-		hint-text="For example 2000 03 01"
-		caption='{
-			"captionText": "Exact Date",
-			"captionType": "default"
-		}'
+		placeholder={{
+			day: 'DD',
+			month: 'MM',
+			year: 'YYYY',
+		}}
+		minYear={500}
+		maxYear={1000}
+		required={true}
+		dateOptions={['day', 'month', 'year']}
+		hintText="For example 2000 03 01"
+		caption={{
+			captionText: 'Exact Date',
+			captionType: 'default',
+		}}
 	></OntarioDateInput>
 </div>
 
@@ -211,6 +272,20 @@ The `caption` property is used to render the label for the ontario-input. It can
 ```html
 caption='{ "captionText": "Exact Date", "captionType": "heading" }'
 ```
+
+## Technical Note: SSR (Server-Side Rendering) Considerations
+
+The Ontario Date Input component is compatible with Server-Side Rendering (SSR), but a few guidelines are recommended for best results:
+
+- **Pass `elementId` explicitly** when using this component with SSR. Otherwise, a randomly generated ID may mismatch during hydration.
+- **Avoid relying on language toggle events** (`setAppLanguage`, `headerLanguageToggled`) to determine language server-side. Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-date-input language="fr"></ontario-date-input>`).
+- **Form Submission Support:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. This requires client-side hydration to fully activate. While the component will render as expected during SSR, native form behavior will only function once hydrated in the browser.
+
+> **Recommended for SSR:**
+>
+> ```tsx
+> <OntarioDateInput elementId="my-date-input" language="en"></OntarioDateInput>
+> ```
 
 <!-- Auto Generated Below -->
 

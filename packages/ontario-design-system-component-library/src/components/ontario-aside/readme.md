@@ -1,4 +1,6 @@
 import { OntarioAside } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-aside
 
@@ -16,6 +18,19 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of an aside component, where the user is explicitly passing in content through the `content` property.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-aside
 	heading-type="h2"
@@ -23,6 +38,39 @@ Example of an aside component, where the user is explicitly passing in content t
 	heading-content="<a href='#'>This is an aside heading that is a link</a>"
 	content="This is the content for the aside component."
 ></ontario-aside>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioAside
+	headingType="h2"
+	headingContentType="html"
+	headingContent="<a href='#'>This is an aside heading that is a link</a>"
+	content="This is the content for the aside component."
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-aside
+	[headingType]="'h2'"
+	[headingContentType]="'html'"
+	[headingContent]="'<a href='#'>This is an aside heading that is a link</a>'"
+	[content]="'This is the content for the aside component.'"
+></ontario-aside>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <div>
@@ -35,6 +83,19 @@ Example of an aside component, where the user is explicitly passing in content t
 </div>
 
 This is another example of an aside. This time, the content is passed as a child of the `ontario-aside` component, which allows for HTML content to be passed. A `highlightColour` option is also passed.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-aside
@@ -51,6 +112,53 @@ This is another example of an aside. This time, the content is passed as a child
 </ontario-aside>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioAside
+	headingType="h4"
+	headingContentType="string"
+	headingContent="This is an aside heading"
+	highlightColour="purple"
+>
+	<p>
+		As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of
+		global emissions.
+	</p>
+	<p>
+		<a href="#">Learn more about Canada's global missions.</a>
+	</p>
+</OntarioAside>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-aside
+	[headingType]="'h4'"
+	[headingContentType]="'string'"
+	[headingContent]="'This is an aside heading'"
+	[highlightColour]="'purple'"
+>
+	<p>
+		As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of
+		global emissions.
+	</p>
+	<p><a href="#">Learn more about Canada's global missions.</a></p>
+</ontario-aside>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
 	<OntarioAside
 		heading-type="h4"
@@ -65,6 +173,23 @@ This is another example of an aside. This time, the content is passed as a child
 		<p><a href="#">Learn more about Canada's global missions.</a></p>
 	</OntarioAside>
 </div>
+
+## Technical Note: SSR (Server-Side Rendering) Considerations
+
+The Ontario Aside component supports two ways of defining content:
+
+- Via the `content` prop (as a string)
+- Via slotted children placed between the component's opening and closing tags
+
+While both approaches work in the browser, only the `content` prop is reliably rendered during Server-Side Rendering (SSR).
+
+### SSR-safe example:
+
+During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the aside content through the `content` prop. Eg:
+
+```html
+<ontario-aside headingContent="Notice" content="This is the callout content."></ontario-aside>
+```
 
 <!-- Auto Generated Below -->
 

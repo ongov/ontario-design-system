@@ -1,4 +1,6 @@
 import { OntarioButton} from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # ontario-button
 
@@ -16,18 +18,99 @@ Once the component package has been installed (see Ontario Design System Compone
 
 Example of a bare-bones button component where the `label` for the button is provided. The default button type will be `secondary`, and the native HTML button type will be `button`.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-button>Element Content</ontario-button>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioButton>Element Content</OntarioButton>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-button>Element Content</ontario-button>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <OntarioButton>Element Content</OntarioButton>
 
 Example of a button component, which includes the `label`, `elementId`, `htmlType`, `type` and `ariaLabelText` properties.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-button aria-label-text="Example aria label text" element-id="button-id" html-type="button" type="tertiary">
 	Element Content
 </ontario-button>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioButton ariaLabelText="Example aria label text" elementId="button-id" htmlType="button" type="tertiary">
+	Element Content
+</OntarioButton>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-button
+	[ariaLabelText]="'Example aria label text'"
+	[elementId]="'button-id'"
+	[htmlType]="'button'"
+	[type]="'tertiary'"
+>
+	Element Content
+</ontario-button>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <OntarioButton aria-label-text="Example aria label text" element-id="button-id" html-type="button" type="tertiary">
@@ -36,16 +119,90 @@ Example of a button component, which includes the `label`, `elementId`, `htmlTyp
 
 This is another example of a button component, where the user is passing in the label through the `label` property - overriding the 'Element Content' value. The resulting label text will display as `Example`.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-button label="Example" html-type="submit" type="primary">Element Content</ontario-button>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioButton label="Example" htmlType="submit" type="primary">
+	Element Content
+</OntarioButton>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-button [label]="'Example'" [htmlType]="'submit'" [type]="'primary'"> Element Content </ontario-button>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <OntarioButton label="Example" html-type="submit" type="primary">Element Content</OntarioButton>
 
 An example of how to pass in an `onclick` function to the button component.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-button onclick="exampleFunction()">Element Content</ontario-button>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioButton onClick={exampleFunction}>Element Content</OntarioButton>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-button (click)="exampleFunction()">Element Content</ontario-button>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 ### Forms
@@ -123,6 +280,23 @@ It is important to know when the proper use-case is for a button. Often, the rol
 - Buttons will trigger an action, such as opening or closing a modal, or submitting a form.
 
 It can be confusing and frustrating for users to expect a button to trigger an action, and then they are redirected to a new page.
+
+## Technical Note: SSR (Server-Side Rendering) Considerations
+
+The Ontario Button component supports two ways of defining labels:
+
+- Via the `label` prop (as a string)
+- Via slotted children placed between the component's opening and closing tags
+
+While both approaches work in the browser, only the `label` prop is reliably rendered during Server-Side Rendering (SSR).
+
+### SSR-safe Example
+
+During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the button content through the `label` prop. Eg:
+
+```html
+<ontario-button label="Click me"></ontario-button>
+```
 
 <!-- Auto Generated Below -->
 

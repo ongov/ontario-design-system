@@ -1,7 +1,9 @@
 import { Component, Prop, Element, h, Watch, AttachInternals } from '@stencil/core';
 
-import { BadgeColour, BadgeColours, BadgeColourToClass } from './ontario-badge.types';
+import { badgeColourDefinitions, BadgeColour } from './ontario-badge.types';
+
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { isClientSideRendering } from '../../utils/common/environment';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
 @Component({
@@ -65,8 +67,38 @@ export class OntarioBadge {
 	 */
 	@Watch('colour')
 	validateColour(): BadgeColour {
+		/**
+		 * Optional mapping to provide backward compatibility
+		 * for older camelCase colour values (e.g., `lightTeal`, `darkGrey`).
+		 *
+		 * These legacy values are still accepted but will be transformed into
+		 * the new kebab-case format and a console warning will be printed.
+		 *
+		 * This compatibility layer can be removed in the next major version bump.
+		 */
+		const legacyBadgeColourAliases: Record<string, BadgeColour> = {
+			lightTeal: 'light-teal',
+			darkGrey: 'dark-grey',
+		};
+
+		// Check for legacy camelCase values
+		if (this.colour in legacyBadgeColourAliases) {
+			const mapped = legacyBadgeColourAliases[this.colour as keyof typeof legacyBadgeColourAliases];
+
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(` colour ${this.colour} `)
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-badge> ')
+				.addRegularText('has been deprecated. Please use kebab-case values instead (e.g., "light-teal", "dark-grey").')
+				.printMessage();
+
+			return this.setBadgeColour(mapped);
+		}
+
 		if (this.colour) {
-			if (validateValueAgainstArray(this.colour, BadgeColours)) {
+			if (validateValueAgainstArray(this.colour, badgeColourDefinitions)) {
 				return this.colour;
 			} else {
 				const message = new ConsoleMessageClass();
@@ -104,8 +136,14 @@ export class OntarioBadge {
 	 * @returns {string | null}
 	 */
 	getBadgeLabel(): string | null {
-		const badgeLabel = this.label ? this.label : this.host.textContent;
-		return badgeLabel;
+		if (this.label) return this.label;
+
+		// SSR safety check: ensure we're in the client-side environment before accessing textContent
+		if (isClientSideRendering() && typeof this.host?.textContent !== 'undefined') {
+			return this.host.textContent;
+		}
+
+		return null;
 	}
 
 	componentWillLoad() {
@@ -115,7 +153,7 @@ export class OntarioBadge {
 
 	render() {
 		return (
-			<span class={`ontario-badge ${BadgeColourToClass[this.colour]}`} aria-label={this.ariaLabelText}>
+			<span class={`ontario-badge ontario-badge--${this.colour}`} aria-label={this.ariaLabelText}>
 				{this.getBadgeLabel()}
 			</span>
 		);

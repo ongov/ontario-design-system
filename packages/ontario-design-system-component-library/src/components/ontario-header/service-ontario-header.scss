@@ -1,18 +1,23 @@
 @use 'sass:math';
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as globalFunctions;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
-@use '@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables';
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as
+	globalFunctions;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
+	placeholders;
+@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables';
+
 @use './ontario-application-header.scss';
+@use '../../styles/header.scss';
 
 .ontario-service-header {
 	height: 3.125rem;
-	z-index: calc(zIndex.$ontario-z-index-above-high + 1);
+	z-index: zIndex.$ontario-z-index-above-high;
 }
 
 .ontario-service-header__logo,
@@ -25,7 +30,7 @@
 }
 
 .ontario-service-header__logo img {
-	width: 100px;
+	width: globalVariables.$full-width;
 	height: 25px;
 }
 
@@ -45,7 +50,7 @@
 	background-color: colours.$ontario-colour-service-ontario-header-brand;
 	overflow: hidden;
 	position: relative;
-	z-index: calc(zIndex.$ontario-z-index-above-high + 1);
+	z-index: zIndex.$ontario-z-index-above-high;
 
 	@media screen and (min-width: breakpoints.$medium-breakpoint) {
 		z-index: zIndex.$ontario-z-index-neutral;
@@ -84,6 +89,11 @@
 
 .ontario-service-subheader__link {
 	text-decoration: none;
+
+	&:focus,
+	&:focus-visible {
+		@extend %ontario-focus;
+	}
 }
 
 .ontario-service-subheader__heading-container {
@@ -99,8 +109,9 @@
 			text-decoration: underline;
 		}
 
-		&:focus {
-			box-shadow: 0 0 0 4px colours.$ontario-colour-service-ontario-header-focus;
+		&:focus,
+		&:focus-visible {
+			@extend %ontario-focus;
 		}
 	}
 }
@@ -173,14 +184,7 @@
 }
 
 .ontario-overlay {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background: rgba(colours.$ontario-colour-black, 0.6);
-	width: 100%;
-	height: 100%;
-	z-index: zIndex.$ontario-z-index-above-medium;
+	@extend %ontario-overlay;
 }
 
 .ontario-navigation--open {
@@ -195,7 +199,7 @@
 	@media screen and (max-width: breakpoints.$medium-breakpoint) {
 		.ontario-service-subheader-menu__container {
 			position: relative;
-			z-index: calc(zIndex.$ontario-z-index-above-medium + 1);
+			z-index: zIndex.$ontario-z-index-above-medium;
 		}
 	}
 

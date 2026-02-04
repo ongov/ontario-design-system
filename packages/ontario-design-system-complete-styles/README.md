@@ -1,7 +1,8 @@
-# Ontario Design System Complete Style
+# Ontario Design System Complete Styles
 
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
+- [Sass package resolution and the `NodePackageImporter`](#sass-package-resolution-and-the-nodepackageimporter)
 - [Known issues](#known-issues)
 - [Support](#support)
 
@@ -21,7 +22,7 @@ npm install --save @ongov/ontario-design-system-complete-styles
 
 ### How to use this package
 
-#### Styles & Assets
+#### Styles & assets
 
 To incorporate the Ontario Design System global and component styles into your project, you can either import CSS from the `dist/css/compiled` folder, or SCSS under `dist/styles/scss/theme.scss`.
 
@@ -60,6 +61,60 @@ Another way is to add scripts to copy the assets in your `package.json` file. Fo
 "copy:fonts": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-complete-styles/dist/fonts/**\" public/fonts",
 "copy:scripts": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-complete-styles/dist/scripts/**\" public/scripts",
 "copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts && npm run copy:scripts"
+```
+
+## Sass package resolution and the `NodePackageImporter`
+
+Modern Sass projects often rely on importing styles from npm packages. However, traditional Sass import resolution does not always align with Node.js' module resolution, making it difficult to use `@use` or `@forward` with package-based imports.
+
+To address this, [Dart Sass](https://github.com/sass/dart-sass) introduced the `pkg:` URL scheme and the [`NodePackageImporter`](https://sass-lang.com/documentation/js-api/classes/nodepackageimporter/) in version **1.71.0**. This allows Sass to resolve imports using Node's algorithm, making it possible to reference SCSS files in npm packages in a way that's robust and future-proof.
+
+### Why is this needed?
+
+- Ensures that Sass can find and import styles from npm packages using the `pkg:` scheme.
+- Prevents import errors when package locations or structures change.
+- Enables more maintainable and portable Sass code in large, modular projects like the Ontario Design System.
+
+### Minimum requirements
+
+- Dart Sass (`sass` npm package) version: **1.71.0 or higher**
+- Your build tool (webpack, Vite, etc.) must be configured to use the `NodePackageImporter`.
+
+### How to use
+
+For more details and advanced usage, see the official Sass documentation:  
+https://sass-lang.com/documentation/js-api/classes/nodepackageimporter/
+
+#### Using `pkg:` in Sass
+
+Once enabled, you can reference npm packages in your Sass code with the `pkg:` scheme:
+
+```scss
+@use 'pkg:@ongov/ontario-design-system-complete-styles/dist/styles/scss/theme.scss';
+```
+
+#### JavaScript example
+
+Add a new `NodePackageImporter()` instance to the `importers` option when compiling Sass:
+
+```js
+import * as sass from 'sass';
+
+const result = await sass.compileAsync('input.scss', {
+	importers: [new sass.NodePackageImporter()],
+});
+```
+
+#### CLI example
+
+```sh
+sass --pkg-importer=node src/styles:dist/styles
+```
+
+**Note**: _If you do not use the `NodePackageImporter` or are on an older Sass version, the `pkg:` URL scheme will not work and you will see errors like_:
+
+```
+"Can't find stylesheet to import."
 ```
 
 ## Known issues

@@ -8,37 +8,45 @@ on:
   pull_request: # Trigger on pull request events
 
 jobs:
-  test: # Job defined in a separate file (test.yml)
-    needs: []
-    uses: ./.github/workflows/test.yml
-    with:
-      node-version: 20
-
   build: # Job defined in a separate file (build.yml)
-    needs: ['test']
+    needs: []
     uses: ./.github/workflows/build.yml # Path to the reusable workflow file
     with:
-      node-version: 20
+      node-version: 22
       build-artifacts-name: 'build-artifacts'
+      docs-artifacts-name: 'docs-artifacts'
 
-  # app-docs
-  app-docs: # Job defined in a separate file (app-docs.yml)
+  test: # Job defined in a separate file (test.yml)
     needs: ['build']
-    uses: ./.github/workflows/app-docs.yml # Path to the reusable workflow file
+    uses: ./.github/workflows/test.yml
+    permissions:
+      contents: read
+      actions: read
+      checks: write
     with:
-      node-version: 20
+      node-version: 22
       build-artifacts-name: ${{ needs.build.outputs.build-artifacts-name }}
-    secrets: inherit
-
-  # app-angular (Coming soon)
 
   publish-packages: # Job defined in a separate file (publish-packages.yml)
-    needs: ['build']
+    needs: ['build', 'test']
     uses: ./.github/workflows/publish-packages.yml # Path to the reusable workflow file
     if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
     with:
-      node-version: 20
+      node-version: 22
       build-artifacts-name: ${{ needs.build.outputs.build-artifacts-name }}
     secrets: inherit
     permissions:
-      contents: write
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for trusted publishing and npm provenance
+
+  sync-docs-to-docusaurus: # Job defined in a separate file (sync-docs-to-docusaurus.yml)
+    needs: ['build', 'publish-packages']
+    uses: ./.github/workflows/sync-docs-to-docusaurus.yml
+    if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
+    with:
+      node-version: 22
+      docs-artifacts-name: ${{ needs.build.outputs.docs-artifacts-name }}
+      release_tag: ${{ needs.publish-packages.outputs.release_tag }}
+    secrets: inherit

@@ -6,18 +6,20 @@
 	language="{{ lang }}"
 ></ontario-step-indicator>
 
-<ontario-fieldset legend-size="heading" legend="{{ 'form.questions.contactInformation.legend' | translate }}">
-	<ontario-radio-buttons
-		caption="{{ 'form.questions.contactInformation.contactType.label' | translate }}"
-		name="contact-type"
-		required
-		language="{{ lang }}"
-		[options]="generateRadioOptions()"
-	>
-	</ontario-radio-buttons>
-	<ontario-button
-		type="primary"
-		label="{{ 'form.buttons.next' | translate }}"
-		[routerLink]="getRoute()"
-	></ontario-button>
-</ontario-fieldset>
+<ontario-form-container>
+	<ontario-fieldset legend-size="heading" legend="{{ 'form.questions.contactInformation.legend' | translate }}">
+		<ontario-radio-buttons
+			caption="{{ 'form.questions.contactInformation.contactType.label' | translate }}"
+			name="contact-type"
+			required
+			language="{{ lang }}"
+			[options]="generateRadioOptions()"
+		>
+		</ontario-radio-buttons>
+		<ontario-button
+			type="primary"
+			label="{{ 'form.buttons.next' | translate }}"
+			[routerLink]="getRoute()"
+		></ontario-button>
+	</ontario-fieldset>
+</ontario-form-container>

@@ -1,11 +1,13 @@
 import { OntarioHeader } from '@ongov/ontario-design-system-component-library-react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # ontario-header
 
 Use the `ontario` type header for all pages that are part of the main ontario.ca website. This header is mandatory.
 
-Use the `applicaton` type header for applications and subsites outside of the main ontario.ca website.
+Use the `application` type header for applications and subsites outside of the main ontario.ca website.
 
 Use the `serviceOntario` type header for ServiceOntario sites/apps. This type is for use by ServiceOntario teams only.
 
@@ -24,6 +26,19 @@ Once the component package has been installed (see Ontario Design System Compone
 ## Examples
 
 Example of an Ontario.ca header component.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-header
@@ -103,52 +118,132 @@ Example of an Ontario.ca header component.
 </ontario-header>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioHeader
+	type="ontario"
+	languageToggleOptions={{
+		englishLink: '/driving-and-roads',
+		frenchLink: '/fr/conduite-et-routes',
+	}}
+	menuItems={[
+		{ title: 'Arts and Culture', href: 'https://www.ontario.ca/page/arts-and-culture', linkIsActive: false },
+		{ title: 'Business and economy', href: 'https://www.ontario.ca/page/business-and-economy', linkIsActive: false },
+		{ title: 'Driving and Roads', href: 'https://www.ontario.ca/page/driving-and-roads', linkIsActive: false },
+		{
+			title: 'Education and training',
+			href: 'https://www.ontario.ca/page/education-and-training',
+			linkIsActive: false,
+		},
+		{
+			title: 'Environment and energy',
+			href: 'https://www.ontario.ca/page/environment-and-energy',
+			linkIsActive: false,
+		},
+		{ title: 'Government', href: 'https://www.ontario.ca/page/government', linkIsActive: false },
+		{ title: 'Health and wellness', href: 'https://www.ontario.ca/page/health-care-ontario', linkIsActive: false },
+		{ title: 'Home and community', href: 'https://www.ontario.ca/page/home-and-community', linkIsActive: false },
+		{ title: 'Jobs and employment', href: 'https://www.ontario.ca/page/jobs-and-employment', linkIsActive: false },
+		{ title: 'Law and safety', href: 'https://www.ontario.ca/page/law-and-safety', linkIsActive: false },
+		{ title: 'Rural and north', href: 'https://www.ontario.ca/page/rural-and-north', linkIsActive: false },
+		{ title: 'Taxes and benefits', href: 'https://www.ontario.ca/page/taxes-and-benefits', linkIsActive: false },
+		{ title: 'Travel and recreation', href: 'https://www.ontario.ca/page/travel-and-recreation', linkIsActive: false },
+	]}
+></OntarioHeader>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-header
+	[type]="'ontario'"
+	[languageToggleOptions]="{ englishLink: '/driving-and-roads', frenchLink: '/fr/conduite-et-routes' }"
+	[menuItems]="[
+		{ title: 'Arts and Culture', href: 'https://www.ontario.ca/page/arts-and-culture', linkIsActive: false },
+		{ title: 'Business and economy', href: 'https://www.ontario.ca/page/business-and-economy', linkIsActive: false },
+		{ title: 'Driving and Roads', href: 'https://www.ontario.ca/page/driving-and-roads', linkIsActive: false },
+		{ title: 'Education and training', href: 'https://www.ontario.ca/page/education-and-training', linkIsActive: false },
+		{ title: 'Environment and energy', href: 'https://www.ontario.ca/page/environment-and-energy', linkIsActive: false },
+		{ title: 'Government', href: 'https://www.ontario.ca/page/government', linkIsActive: false },
+		{ title: 'Health and wellness', href: 'https://www.ontario.ca/page/health-care-ontario', linkIsActive: false },
+		{ title: 'Home and community', href: 'https://www.ontario.ca/page/home-and-community', linkIsActive: false },
+		{ title: 'Jobs and employment', href: 'https://www.ontario.ca/page/jobs-and-employment', linkIsActive: false },
+		{ title: 'Law and safety', href: 'https://www.ontario.ca/page/law-and-safety', linkIsActive: false },
+		{ title: 'Rural and north', href: 'https://www.ontario.ca/page/rural-and-north', linkIsActive: false },
+		{ title: 'Taxes and benefits', href: 'https://www.ontario.ca/page/taxes-and-benefits', linkIsActive: false },
+		{ title: 'Travel and recreation', href: 'https://www.ontario.ca/page/travel-and-recreation', linkIsActive: false }
+	]"
+></ontario-header>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
 	<OntarioHeader
-		asset-base-path={useBaseUrl('/assets')}
+		assetBasePath={useBaseUrl("/assets")}
 		type="application"
-		disable-dynamic-menu="true"
-		application-header-info='{
-		"title": "Driving and roads",
-		"href": "/driving-and-roads",
-		"maxSubheaderDesktopLinks": "3",
-		"maxSubheaderTabletLinks": "1"
-		}'
-		language-toggle-options='{
-		"englishLink": "/",
-		"frenchLink" : "/fr"
-		}'
-		menu-items='[
-		{
-		"title": "Vehicle registration",
-		"href": "/vehicle-registration",
-		"linkIsActive": "false"
-		},
-		{
-		"title": "Driver records",
-		"href": "/driver-records",
-		"linkIsActive": "false"
-		},
-		{
-		"title": "Accessible Parking Permits",
-		"href": "/accessible-parking-permits",
-		"linkIsActive": "false"
-		},
-		{
-		"title": "Highway traveler information",
-		"href": "/highway-traveler-information",
-		"linkIsActive": "true",
-		"onClickHandler": (e: Event) => {
-		e.preventDefault();
-		alert("Menu item clicked!")
-		},
-		}
-		]'
-		custom-language-toggle="{changeLanguage}">
-	 </OntarioHeader>
+		disableDynamicMenu="true"
+		applicationHeaderInfo={{
+			title: "Driving and roads",
+			href: "/driving-and-roads",
+			maxSubheaderLinks: {
+				desktop: 1,
+				tablet: 1,
+			},
+		}}
+		languageToggleOptions={{
+			englishLink: "/",
+			frenchLink: "/fr",
+		}}
+		menuItems={[
+			{
+				title: "Vehicle registration",
+				href: "/vehicle-registration",
+				linkIsActive: false,
+			},
+			{
+				title: "Driver records",
+				href: "/driver-records",
+				linkIsActive: false,
+			},
+			{
+				title: "Accessible Parking Permits",
+				href: "/accessible-parking-permits",
+				linkIsActive: true,
+			},
+			{
+				title: "Highway traveler information",
+				href: "/highway-traveler-information",
+				linkIsActive: false,
+			},
+		]}
+	></OntarioHeader>
 </div>
 
 Example of an Application header component.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-header
@@ -157,8 +252,12 @@ Example of an Application header component.
 	application-header-info='{
 		"title": "Driving and roads",
 		"href": "/driving-and-roads",
-		"maxSubheaderDesktopLinks": "3",
-		"maxSubheaderTabletLinks": "1"
+		"title": "Driving and roads",
+		"href": "/driving-and-roads",
+		"maxSubheaderLinks": "{
+			"desktop": "3",
+			"tablet": "1"
+		}"
 	}'
 	language-toggle-options='{
 		"englishLink": "/",
@@ -183,11 +282,7 @@ Example of an Application header component.
 		{ 
 			"title": "Highway traveler information", 
 			"href": "/highway-traveler-information",
-			"linkIsActive": "true",
-			"onClickHandler": (e: Event) => {
-					e.preventDefault();
-					alert("Menu item clicked!")
-			},  
+			"linkIsActive": "true"
 		}
 	]'
 	custom-language-toggle="{changeLanguage}"
@@ -201,6 +296,130 @@ Example of an Application header component.
 	};
 </script>
 ```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+const changeLanguage = (event: Event) => {
+	event.preventDefault();
+	// Logic to change language below
+};
+
+<OntarioHeader
+	assetBasePath={useBaseUrl('/assets')}
+	type="application"
+	disableDynamicMenu={true}
+	applicationHeaderInfo={{
+		title: 'Driving and roads',
+		href: '/driving-and-roads',
+		maxSubheaderDesktopLinks: 3,
+		maxSubheaderTabletLinks: 1,
+	}}
+	languageToggleOptions={{
+		englishLink: '/',
+		frenchLink: '/fr',
+	}}
+	menuItems={[
+		{ title: 'Vehicle registration', href: '/vehicle-registration', linkIsActive: false },
+		{ title: 'Driver records', href: '/driver-records', linkIsActive: false },
+		{ title: 'Accessible Parking Permits', href: '/accessible-parking-permits', linkIsActive: false },
+		{
+			title: 'Highway traveler information',
+			href: '/highway-traveler-information',
+			linkIsActive: true,
+			onClickHandler: (e) => {
+				e.preventDefault();
+				alert('Menu item clicked!');
+			},
+		},
+	]}
+	customLanguageToggle={changeLanguage}
+></OntarioHeader>;
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-header
+	[assetBasePath]="'/assets'"
+	[type]="'application'"
+	[disableDynamicMenu]="true"
+	[applicationHeaderInfo]="{
+		title: 'Driving and roads',
+		href: '/driving-and-roads',
+		maxSubheaderDesktopLinks: 3,
+		maxSubheaderTabletLinks: 1
+	}"
+	[languageToggleOptions]="{ englishLink: '/', frenchLink: '/fr' }"
+	[menuItems]="[
+		{ title: 'Vehicle registration', href: '/vehicle-registration', linkIsActive: false },
+		{ title: 'Driver records', href: '/driver-records', linkIsActive: false },
+		{ title: 'Accessible Parking Permits', href: '/accessible-parking-permits', linkIsActive: false },
+		{
+			title: 'Highway traveler information',
+			href: '/highway-traveler-information',
+			linkIsActive: true,
+			onClickHandler: onMenuClick
+		}
+	]"
+	[customLanguageToggle]="changeLanguage"
+></ontario-header>
+```
+
+```ts
+onMenuClick(event: Event): void {
+	event.preventDefault();
+	alert('Menu item clicked!');
+}
+
+changeLanguage(event: Event): void {
+	event.preventDefault();
+	// Logic to change language below
+}
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+<div>
+	<OntarioHeader
+		assetBasePath={useBaseUrl('/assets')}
+		type="application"
+		disableDynamicMenu={true}
+		applicationHeaderInfo={{
+			title: 'Driving and roads',
+			href: '/driving-and-roads',
+			maxSubheaderDesktopLinks: 3,
+			maxSubheaderTabletLinks: 1,
+		}}
+		languageToggleOptions={{
+			englishLink: '/',
+			frenchLink: '/fr',
+		}}
+		menuItems={[
+			{ title: 'Vehicle registration', href: '/vehicle-registration', linkIsActive: false },
+			{ title: 'Driver records', href: '/driver-records', linkIsActive: false },
+			{ title: 'Accessible Parking Permits', href: '/accessible-parking-permits', linkIsActive: false },
+			{
+				title: 'Highway traveler information',
+				href: '/highway-traveler-information',
+				linkIsActive: true,
+				onClickHandler: (e) => {
+					e.preventDefault();
+					alert('Menu item clicked!');
+				},
+			},
+		]}>
+	 </OntarioHeader>
+</div>
 
 ## Custom property types
 
@@ -219,7 +438,7 @@ language-toggle-options='{ "englishLink": "/en", "frenchLink": "/fr" }'
 
 For the Ontario.ca header, the menu items will automatically be rendered in a dropdown menu button.
 
-For Application headers, there is a default of a maximum of 5 menu links on desktop and 2 menu links on tablet displayed in the subheader. This logic is handled by the web component based on the total number of menu links passed.
+If `maxSubheaderLinks` is set within `applicationHeaderInfo` on the `ontario-header` component for an `application` type header, some of these links will be dispersed as links within the subheader menu bar relative to the breakpoint and number set.
 
 ```html
 <ontario-header
@@ -261,23 +480,33 @@ For Application headers, there is a default of a maximum of 5 menu links on desk
 Note that this is only required for the Application and ServiceOntario header types.
 
 ```html
-application-header-info='{ "title": "Application name", "href": "/", "maxSubheaderDesktopLinks": "4",
-"maxSubheaderTabletLinks": "2", "maxSubheaderMobileLinks": "1" }'
+application-header-info='{ "title": "Application name", "href": "/", "maxSubheaderLinks": {"desktop": "4", "tablet":
+"2", "mobile": "1"}}'
 ```
 
-| **Property name**          | **Type** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| -------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `title`                    | `string` | The title of the application (this is what will appear as the label for the application sub header title)                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| `href`                     | `string` | The URL for the application name                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `maxSubheaderDesktopLinks` | `number` | The number of links to appear in the Ontario application type header's subheader on desktop size. This is optional.<br /><br /> These links will display in the order they are described in the `menuItems` prop. For example, if the `maxSubheaderDesktopLinks` number is '4', the first four `menuItems` items will appear in the application subheader on desktop, and the rest will appear in the menu dropdown.<br /><br /> If no dropdown item is needed, the `maxSubheaderDesktopLinks` number should match the `menuItems` items length. |
-| `maxSubheaderTabletLinks`  | `number` | The number of links to appear in the Ontario application type header's subheader on tablet size. This is optional.<br />< br /> These links will display in the order they are described in the `menuItems` prop. For example, if the `maxSubheaderTabletLinks` number is '2', the first two `menuItems` items will appear in the application subheader on tablet, and the rest will appear in the menu dropdown.<br /><br /> If no dropdown item is needed, the `maxSubheaderTabletLinks` number should match the `menuItems` items length.     |
-| `maxSubheaderMobileLinks`  | `number` | The number of links to appear in the Ontario application type header's subheader on mobile size. This is optional.<br /><br /> These links will display in the order they are described in the `menuItems` prop. For example, if the `maxSubheaderMobileLinks` number is '1', the first `menuItems` item will appear in the application subheader on mobile, and the rest will appear in the menu dropdown.<br /><br /> If no dropdown item is needed, the `maxSubheaderMobileLinks` number should match the `menuItems` items length.           |
+| Property name       | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `title`             | `string` | The title of the application (this is what will appear as the label for the application sub header title)                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `href`              | `string` | The URL for the application name                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `maxSubheaderLinks` | `number` | The number of links to appear in the Ontario application type header's subheader. This is optional.<br /><br /> These links will display in the order they are described in the `menuItems` prop. For example, if the `maxSubheaderLinks.desktop` number is '4', the first four `menuItems` items will appear in the application subheader on desktop, and the rest will appear in the menu dropdown.<br /><br /> If no dropdown item is needed, the `maxSubheaderLinks` number should match the `menuItems` items length. |
 
 ## Accessibility
 
 ### Application header
 
 To ensure best practices, it is important to limit the number of navigation links passed to the `menuItems` property. We recommend a maximum of seven links, and to keep the labels for these links concise.
+
+## Technical Note: SSR (Server-Side Rendering) Considerations
+
+The Ontario Header component is partially SSR-compatible. It supports static HTML rendering on the server but defers most dynamic behavior to the browser after hydration.
+
+Important considerations:
+
+- **Dynamic menu fetching via the Ontario Header API (`fetchOntarioMenu`) is browser-only**. This will not execute during SSR, and no menu will be rendered until hydration.
+- **Language detection** (`document.documentElement.lang`, `window`, etc.) is also only available after hydration. Default language will be used until hydration completes. To ensure the correct language is rendered during SSR, explicitly pass the language prop.
+- Internal state updates (like `menuToggle`, `searchToggle`) are interactive and require JavaScript. These elements will not function without hydration.
+- If your framework allows, consider using `client:only` or `useEffect` (React) to delay rendering this component until after hydration in SSR-critical apps.
+- **Use static `menuItems` for SSR environments** and enable the dynamic menu only when client-side rendering is guaranteed.
 
 <!-- Auto Generated Below -->
 
@@ -288,23 +517,36 @@ To ensure best practices, it is important to limit the number of navigation link
 | `applicationHeaderInfo` | `application-header-info` | Information pertaining to the application header. This is only necessary for the 'application' header type. This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views. | `ApplicationHeaderInfo \| string`                             | `undefined`     |
 | `assetBasePath`         | `asset-base-path`         | The base path to an assets folder containing the Design System assets                                                                                                                                                                                  | `string`                                                      | `undefined`     |
 | `customLanguageToggle`  | `custom-language-toggle`  | A custom function to pass to the language toggle button.                                                                                                                                                                                               | `((event: Event) => void) \| undefined`                       | `undefined`     |
+| `customSignInToggle`    | `custom-sign-in-toggle`   | A custom function to pass to the sign-in button.                                                                                                                                                                                                       | `((event: Event) => void) \| undefined`                       | `undefined`     |
 | `disableDynamicMenu`    | `disable-dynamic-menu`    | Option to disable fetching of the dynamic menu from the Ontario Header API                                                                                                                                                                             | `boolean`                                                     | `false`         |
 | `language`              | `language`                | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.                                           | `"en" \| "fr" \| undefined`                                   | `'en'`          |
 | `languageToggleOptions` | `language-toggle-options` | Information pertaining to the language toggle links.                                                                                                                                                                                                   | `LanguageToggleOptions \| string \| undefined`                | `undefined`     |
 | `menuItems`             | `menu-items`              | The items that will go inside the menu.                                                                                                                                                                                                                | `MenuItem[] \| string`                                        | `undefined`     |
+| `signInMenuItems`       | `sign-in-menu-items`      | Information pertaining to the sign-in menu items for the Ontario header.                                                                                                                                                                               | `MenuItem[] \| string \| undefined`                           | `undefined`     |
 | `type`                  | `type`                    | The type of header.                                                                                                                                                                                                                                    | `"application" \| "ontario" \| "serviceOntario" \| undefined` | `'application'` |
+
+## Events
+
+| Event               | Description                                                                                                                                                                              | Type                   |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| `menuButtonToggled` | This event is toggled when the menu button is pressed. The `<ontario-header-overflow-menu>` sub-component listens for this event To trigger the showing and hiding of the overflow menu. | `CustomEvent<boolean>` |
 
 ## Dependencies
 
 ### Depends on
 
 - [ontario-language-toggle](../ontario-language-toggle)
+- [ontario-header-menu-tabs](../ontario-header-menu-tabs)
+- [ontario-header-overflow-menu](../ontario-header-overflow-menu)
 
 ### Graph
 
 ```mermaid
 graph TD;
   ontario-header --> ontario-language-toggle
+  ontario-header --> ontario-header-menu-tabs
+  ontario-header --> ontario-header-overflow-menu
+  ontario-header-menu-tabs --> ontario-header-overflow-menu
   style ontario-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

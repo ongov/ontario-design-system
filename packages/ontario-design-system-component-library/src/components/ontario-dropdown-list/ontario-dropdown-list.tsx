@@ -23,6 +23,7 @@ import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
 import { ErrorMessage } from '../../utils/components/error-message/error-message';
+import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 @Component({
 	tag: 'ontario-dropdown-list',
@@ -245,9 +246,13 @@ export class OntarioDropdownList implements Dropdown {
 		}
 	}
 
+	/**
+	 * Handles an update to the language should the user request a language update from the language toggle.
+	 * @param {CustomEvent} - The language that has been selected.
+	 */
 	@Listen('headerLanguageToggled', { target: 'window' })
-	handleHeaderLanguageToggled(event: CustomEvent<Language>) {
-		this.language = validateLanguage(event);
+	handleHeaderLanguageToggled(event: CustomEvent<HeaderLanguageToggleEventDetails>) {
+		this.language = validateLanguage(event.detail.newLanguage);
 	}
 
 	/*
@@ -298,10 +303,22 @@ export class OntarioDropdownList implements Dropdown {
 	@Watch('options')
 	parseOptions() {
 		if (typeof this.options !== 'undefined') {
-			if (!Array.isArray(this.options)) {
-				this.internalOptions = JSON.parse(this.options);
-			} else {
-				this.internalOptions = this.options;
+			try {
+				if (!Array.isArray(this.options)) {
+					this.internalOptions = JSON.parse(this.options);
+				} else {
+					this.internalOptions = this.options;
+				}
+			} catch {
+				const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' options ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-dropdown-list> ')
+					.addRegularText('was not provided in the correct format')
+					.printMessage();
+				this.internalOptions = [];
 			}
 		}
 
@@ -356,9 +373,20 @@ export class OntarioDropdownList implements Dropdown {
 	@Watch('hintExpander')
 	private parseHintExpander() {
 		const hintExpander = this.hintExpander;
-		if (hintExpander) {
-			if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
-			else this.internalHintExpander = hintExpander;
+		try {
+			if (hintExpander) {
+				if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
+				else this.internalHintExpander = hintExpander;
+			}
+		} catch {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' hintExpander ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-dropdown-list> ')
+				.addRegularText('was not provided in the correct format')
+				.printMessage();
 		}
 	}
 
@@ -462,7 +490,7 @@ export class OntarioDropdownList implements Dropdown {
 	render() {
 		const error = !!this.errorMessage;
 		return (
-			<div class={`ontario-form-group ${error ? 'ontario-dropdown--error' : ''}`}>
+			<div class={error ? 'ontario-dropdown--error' : ''}>
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.internalHintText && (
 					<ontario-hint-text
