@@ -44,6 +44,15 @@ To use the Ontario Design System React component library, follow these steps:
 
    Call `setAssetPath` once, before rendering any components. This ensures Stencil can resolve component assets (fonts, images, favicons) when they are hosted under a custom base path.
 
+   If you need to override the global styles theme with a custom asset base path, you can create a local theme wrapper that forwards the global styles and sets `$asset-base-path`, then import that wrapper in your app entry point.
+
+   ```scss
+   // src/styles/ontario-theme.scss
+   @forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss' with (
+   	$asset-base-path: '/assets'
+   );
+   ```
+
 4. Import the desired components from the component library.
 
    ```tsx

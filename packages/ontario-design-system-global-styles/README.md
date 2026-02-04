@@ -36,6 +36,15 @@ You can import the entire global styles package by including the following impor
 @forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss';
 ```
 
+If you need to override the asset base path, create a local theme wrapper that forwards the global styles and sets `$asset-base-path`, then import that wrapper instead.
+
+```scss
+// src/styles/ontario-theme.scss
+@forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss' with (
+	$asset-base-path: '/assets'
+);
+```
+
 Please see the [_How to use_](#how-to-use) in [_Sass Package Resolution and the NodePackageImporter_](#sass-package-resolution-and-the-nodepackageimporter) for information on how to import and use our Scss.
 
 **CSS**:

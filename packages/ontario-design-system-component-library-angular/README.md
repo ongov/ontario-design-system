@@ -62,6 +62,15 @@ import { setAssetPath } from '@ongov/ontario-design-system-component-library-ang
 setAssetPath(`${window.location.origin}/assets/`);
 ```
 
+If you need to override the global styles theme with a custom asset base path, create a local theme wrapper that forwards the global styles and sets `$asset-base-path`, then import that wrapper in your app entry point.
+
+```scss
+// src/styles/ontario-theme.scss
+@forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss' with (
+	$asset-base-path: '/assets'
+);
+```
+
 ### Usage
 
 You can now use the Angular Components in your component template files.

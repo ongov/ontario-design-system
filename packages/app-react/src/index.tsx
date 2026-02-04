@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 
+// Local theme wrapper sets asset base path and includes slotted styles.
 import './styles/ontario-theme.scss';
 import { setAssetPath } from '@ongov/ontario-design-system-component-library-react';
 
