@@ -25,13 +25,13 @@ export class OntarioIconTune implements IconWithColour {
 	@State() iconWidthState: number;
 
 	/**
-	 * Whether the icon should be hidden from assistive technologies.
+	 * Whether the icon is decorative and should be hidden from assistive technologies.
 	 * When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element.
 	 * When set to false (default), the icon is exposed to assistive technologies with role="img".
 	 *
 	 * @default false
 	 */
-	@Prop() hideFromAT: boolean = false;
+	@Prop() isDecorative: boolean = false;
 
 	/**
 	 * Watch for changes in the `iconWidth` variable for validation purpose.
