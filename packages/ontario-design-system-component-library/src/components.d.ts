@@ -2394,9 +2394,8 @@ export namespace Components {
 		taskId: string;
 		/**
 		 * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`, etc.
-		 * @default TaskStatuses.NotStarted
 		 */
-		taskStatus: TaskStatuses;
+		taskStatus: TaskStatuses | string;
 	}
 	interface OntarioTaskList {
 		/**
@@ -6597,9 +6596,8 @@ declare namespace LocalJSX {
 		taskId?: string;
 		/**
 		 * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`, etc.
-		 * @default TaskStatuses.NotStarted
 		 */
-		taskStatus?: TaskStatuses;
+		taskStatus?: TaskStatuses | string;
 	}
 	interface OntarioTaskList {
 		/**
