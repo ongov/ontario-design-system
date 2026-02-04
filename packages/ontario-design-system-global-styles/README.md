@@ -65,6 +65,28 @@ The `@use` rule loads mixins, functions, and variables from other Sass styleshee
 }
 ```
 
+### Exports map maintenance
+
+This package relies on `package.json` `exports` to expose compiled CSS and SCSS entry points. If the `dist/styles` folder structure changes, update the `exports` map in `package.json` to keep `pkg:` imports and direct style imports working as expected.
+
+Example `exports` entries for common style paths:
+
+```json
+{
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.js",
+			"style": "./dist/styles/css/compiled/ontario-theme.min.css",
+			"sass": "./dist/styles/scss/theme.scss"
+		},
+		"./styles/css/compiled/ontario-theme.min.css": "./dist/styles/css/compiled/ontario-theme.min.css",
+		"./styles/scss/theme.scss": "./dist/styles/scss/theme.scss",
+		"./styles/scss/1-variables/*": "./dist/styles/scss/1-variables/*"
+	}
+}
+```
+
 ## Architecture
 
 For this package, we are using Harry Roberts' [Inverted Triangle CSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/) (ITCSS) method of organizing code. The inverted triangle organizes code along three axes:

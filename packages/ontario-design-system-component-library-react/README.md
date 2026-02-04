@@ -34,7 +34,17 @@ To use the Ontario Design System React component library, follow these steps:
    import '@ongov/ontario-design-system-component-library-react/styles';
    ```
 
-3. Import the desired components from the component library.
+3. Configure the asset path (recommended when assets are not served from `/`).
+
+   ```tsx
+   import { setAssetPath } from '@ongov/ontario-design-system-component-library-react';
+
+   setAssetPath(`${window.location.origin}/assets/`);
+   ```
+
+   Call `setAssetPath` once, before rendering any components. This ensures Stencil can resolve component assets (fonts, images, favicons) when they are hosted under a custom base path.
+
+4. Import the desired components from the component library.
 
    ```tsx
    import { OntarioButton } from '@ongov/ontario-design-system-component-library-react';

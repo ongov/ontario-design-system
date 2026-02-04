@@ -52,6 +52,16 @@ To use the Ontario Design System Angular component library, follow these steps:
    export class AppModule {}
    ```
 
+### Asset path configuration (optional)
+
+If your app serves component assets (fonts, images, favicons) from a non-root path, configure the asset base path before components render.
+
+```typescript
+import { setAssetPath } from '@ongov/ontario-design-system-component-library-angular';
+
+setAssetPath(`${window.location.origin}/assets/`);
+```
+
 ### Usage
 
 You can now use the Angular Components in your component template files.
