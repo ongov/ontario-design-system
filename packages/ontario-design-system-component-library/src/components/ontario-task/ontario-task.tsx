@@ -135,14 +135,15 @@ export class OntarioTask {
 	 * Watch for changes in `taskStatus` prop to validate its value.
 	 */
 	@Watch('taskStatus')
-	validateTaskStatus(newValue: TaskStatuses) {
-		const validStatuses = Object.values(TaskStatuses);
-		const isValidStatus = validStatuses.includes(newValue);
+	validateTaskStatus(newValue: TaskStatuses | string) {
+		const validStatuses = Object.values(TaskStatuses) as TaskStatuses[];
+
+		// If newValue is a string, it might still match a TaskStatuses value.
+		const isValidStatus = validStatuses.includes(newValue as TaskStatuses);
 
 		if (isValidStatus) {
-			this.taskStatusState = newValue;
+			this.taskStatusState = newValue as TaskStatuses;
 		} else {
-			// If the status is invalid, log a warning and use the default
 			this.taskStatusState = this.warnAndGetDefaultTaskStatus();
 		}
 
