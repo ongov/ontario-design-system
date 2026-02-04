@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>my-component sample</title>
+		<style>
+			body {
+				font-family:
+					system-ui,
+					-apple-system,
+					BlinkMacSystemFont,
+					'Segoe UI',
+					sans-serif;
+				padding: 1.5rem;
+				color: #1f2933;
+				background-color: #f7f9fb;
+			}
+			main {
+				max-width: 720px;
+				margin: 0 auto;
+				background: #fff;
+				border-radius: 0.75rem;
+				padding: 1.5rem;
+				box-shadow: 0 6px 18px rgba(31, 41, 51, 0.08);
+			}
+			h1 {
+				margin: 0 0 0.5rem;
+				font-size: 1.5rem;
+			}
+			.description {
+				margin: 0 0 1rem;
+				color: #52616b;
+			}
+			.sample {
+				border: 1px solid #e5e7eb;
+				border-radius: 0.5rem;
+				padding: 1rem;
+				background: #f9fafb;
+			}
+			my-component {
+				display: block;
+				font-family:
+					system-ui,
+					-apple-system,
+					BlinkMacSystemFont,
+					'Segoe UI',
+					sans-serif;
+				color: #1f2933;
+			}
+
+			.my-component {
+				border: 1px solid #e5e7eb;
+				border-radius: 0.75rem;
+				padding: 1rem 1.25rem;
+				background-color: #f9fafb;
+			}
+
+			.heading {
+				margin: 0 0 0.25rem;
+				font-size: 1.125rem;
+				font-weight: 600;
+			}
+
+			.body {
+				margin: 0;
+				color: #52616b;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<h1>my-component</h1>
+			<p class="description">Demonstrates how to pass props to the sample component.</p>
+			<section class="sample" aria-label="Rendered component sample">
+				<my-component prop="value"
+					><div class="my-component">
+						<p class="heading">My component</p>
+						<p class="body">Prop value: value</p>
+					</div></my-component
+				>
+			</section>
+		</main>
+	</body>
+</html>
