@@ -7,7 +7,7 @@ export default function OntarioPageAlertPage() {
 			<Grid>
 				<h1>ontario-page-alert</h1>
 
-				<h2>&quot;page-alert-type&quot; Prop Variants</h2>
+				<h2>"page-alert-type" Prop Variants</h2>
 
 				<h3>Informational</h3>
 				<OntarioPageAlert type="informational" heading="Licence plates">

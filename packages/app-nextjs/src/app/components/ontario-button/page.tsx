@@ -10,7 +10,7 @@ export default function OntarioButtonPage() {
 				<h1>ontario-button</h1>
 
 				<div>
-					<h2>&quot;type&quot; Prop Variants</h2>
+					<h2>"type" Prop Variants</h2>
 
 					<h3>Primary</h3>
 					<OntarioButton

@@ -7,7 +7,7 @@ export default function OntarioCalloutPage() {
 			<Grid>
 				<h1>ontario-callout</h1>
 
-				<h2>&quot;heading-type&quot; Prop Variants</h2>
+				<h2>"heading-type" Prop Variants</h2>
 				<h3>H2</h3>
 				<OntarioCallout
 					headingType="h2"
@@ -48,13 +48,13 @@ export default function OntarioCalloutPage() {
 					content="This is testing the h6 heading-type."
 				></OntarioCallout>
 
-				<h2>&quot;heading-content-type&quot; Prop Variants</h2>
+				<h2>"heading-content-type" Prop Variants</h2>
 				<h3>HTML</h3>
 				<OntarioCallout
 					headingType="h2"
 					headingContentType="html"
-					headingContent="<a href='#'>HTML heading-content-type</a>&quot;
-					content=&quot;<div><p>This is testing the heading-content-type with HTML content.</p></div> <div><p>This is testing the h2 heading-content-type with HTML content.</p></div>"
+					headingContent="<a href='#'>HTML heading-content-type</a>"
+					content="<div><p>This is testing the heading-content-type with HTML content.</p></div> <div><p>This is testing the h2 heading-content-type with HTML content.</p></div>"
 				></OntarioCallout>
 
 				<h3>String</h3>
@@ -65,7 +65,7 @@ export default function OntarioCalloutPage() {
 					content="This is testing the string heading-content-type."
 				></OntarioCallout>
 
-				<h2>&quot;highlight-colour&quot; Prop Variants</h2>
+				<h2>"highlight-colour" Prop Variants</h2>
 				<h3>Yellow</h3>
 				<OntarioCallout
 					headingType="h2"
