@@ -1,3 +1,167 @@
+# 6.0.0 (2026-02-04)
+
+- **@ongov/ontario-design-system-complete-styles:** fix(complete-styles)!: update Gulp tasks to handle pkg Sass imports def4550
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** feat(fonts)!: update font files and SCSS variables for Raleway Modified and Open Sans 5fa5465
+- **@ongov/ontario-design-system-component-library:** feat(badge)!: update colour prop to use kebab-case & add legacy support 52789f0
+- **@ongov/ontario-design-system-component-library:** refactor(accordion)!: remove global isOpen prop, use per-item isOpen for initial state 774ab3f
+- **@ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** fix(global-styles)!: update gulp-sass and enable NodePackageImporter 6877ffd
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** fix tab navigation from overflow to tab eef4ae4
+- **@ongov/ontario-design-system-component-library:** added a function for the menu button to regain focus once users escape the menu d2fd938
+- **@ongov/ontario-design-system-component-library:** added hover state style to language toggle 5a2c251
+- **@ongov/ontario-design-system-component-library:** added hover state style to language toggle 6d45d42
+- **@ongov/ontario-design-system-component-library:** added missing styles for ontario-radio button 6b4f8b4
+- **@ongov/ontario-design-system-component-library:** adds aria-hidden attribute to multiple decorative icons across components 9aa7bfa
+- **@ongov/ontario-design-system-component-library:** ensure focus trap is working properly and we are not defining the same constant over again b392577
+- **@ongov/ontario-design-system-component-library:** ensures first item always gets focus when menu opens a5bce4d
+- **@ongov/ontario-design-system-component-library:** fix broken loader export for angular component library e79092e
+- **@ongov/ontario-design-system-component-library:** fixed bugs with arrow keys and tabbing on mobile dea4546
+- **@ongov/ontario-design-system-component-library:** fixed the index page and removed menubuttonhref fa2dcf4
+- **@ongov/ontario-design-system-component-library:** fixed the menu button focus state when using shift tab 2241ef0
+- **@ongov/ontario-design-system-component-library:** focus now always follows the index, regardless of whether you use tab or arrow keys 9e158a3
+- **@ongov/ontario-design-system-component-library:** refactors initializeFormContainerSettings function in fieldset component dacd942
+- **@ongov/ontario-design-system-component-library:** removed calc from statements that dont need it c755a48
+- **@ongov/ontario-design-system-component-library:** removed current index from tabs component and added ability to add an icon to menu item c16fd32
+- **@ongov/ontario-design-system-component-library:** removes paragraph tags around slots in critical alert and page alert components dc6e5f8
+- **@ongov/ontario-design-system-component-library:** removes paragraph tags around slots in critical alert and page alert components 1e0c2e9
+- **@ongov/ontario-design-system-component-library:** replace zero with a spacing variable edd1671
+- **@ongov/ontario-design-system-component-library:** update HeaderLanguageToggleEventDetails type in accordion language toggle add2693
+- **@ongov/ontario-design-system-component-library:** updated paths for the language toggle event ac8a773
+- **@ongov/ontario-design-system-component-library:** updating z-indexes to ensure we are only using variables ac68093
+- added hover state style to language toggle ([#133](undefined/ongov/ontario-design-system/issues/133)) 92f1b5f
+- adds html and string options for hint text and hint expander 2136659
+- **angular:** roll back typescript version to be compatible for angular compiler 5552f20
+- **ci:** fix JUnit publish task, update snapshots, update docker-compose to include build for apps 8a0ad33
+- **component-library:** include shipped components/ and export component entrypoints e96022d
+- **component-library:** refactor SCSS imports to use pkg namespace 5cbb64f
+- **components-documentation:** rollback docusaurus devdeps b/c we're not at react19 860a2b5
+- **footer:** replace url("") fallback with 'none' in CSS background-image 8f93d31
+- **gulpfile:** update complete style package build c10a288
+- **jest:** move svgTransform to .cjs to support require() in ESM context bb48dd0
+- **jest:** move svgTransform to .cjs to support require() in ESM context 049181a
+- **nextjs:** update to use label prop for dynamic button text 150417a
+- **nextjs:** update to use label prop for dynamic button text 8952a73
+- **ontario-task:** updates ontario-task to set default task status properly, fixes broken unit tests b9afff9
+- **ontario-task:** updates ontario-task to set default task status properly, fixes broken unit tests 3945269
+- **releaserc:** enable prerelease latching for semantic-release-lerna 512c58a
+- remove documentation app 3271167
+- **srr:** improve hydration safety across compnents via default props, validation and error handling 21c0b1c
+- **srr:** improve hydration safety across compnents via default props, validation and error handling 014fb43
+- **srr:** improve hydration safety across compnents via default props, validation and error handling a6f18a7
+- **srr:** improve hydration safety across compnents via default props, validation and error handling 30394b8
+- **srr:** Optimize Components for SSR (Pt 1) ([#52](undefined/ongov/ontario-design-system/issues/52)) 526f7df
+- **ssr:** improves SSR optimizations across components 8f5ebee
+- **ssr:** improves SSR optimizations across components 7e4c371
+- **SSR:** Optimize Components for SSR (Pt 2) ([#60](undefined/ongov/ontario-design-system/issues/60)) e1083a7
+- **tsconfig:** downgrade TypeScript target and lib to ES2017 for compatibility 361cbbc
+- **tsconfig:** downgrade TypeScript target and lib to ES2017 for compatibility f779a68
+- update header and overflow menu readmes to use MDX syntax correctly 1b21d23
+- updates docker image, reruns snapshot tests, adds new fonts to nextjs build 4e2863e
+- version bump to test ci updates 6fabd7b
+- **web-components-library:** remove unused header type swap code from global.ts file 8cce6f4
+
+### Build System
+
+- **@ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** fix react-component-library build errors f70efa0
+- **@ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** fix react-component-library build errors 1e05e9a
+
+### Code Refactoring
+
+- **ontario-header:** add `maxSubheaderLinks` object to `application-header-info` prop ca0f204
+
+### Features
+
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** create ontario-form-container component and update naming d5200b7
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** added language handling for header menus f129f39
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** adding tabbing functionality and component for mobile menu a27c52f
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** change to stencil events e1ad2ed
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** rebasing on origin branch eda237a
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** rebasing on origin branch 8976aeb
+- **@ongov/ontario-design-system-component-library-angular, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** rebasing on origin branch 4e0f15d
+- **@ongov/ontario-design-system-component-library-react:** added documentation for Next.js support 0a21573
+- **@ongov/ontario-design-system-component-library-react:** added documentation for Next.js support f3c9553
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** rebasing on origin branch c8ae1cb
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** updated and reorganized header styles to remove redundancy 92ab7b9
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** updated menutoggle to menutoggled 10f6d73
+- **@ongov/ontario-design-system-component-library:** add spacing config, snapshots, and logic for form container integration f9378ee
+- **@ongov/ontario-design-system-component-library:** added aria-expanded to the ontario header menu button 7de766f
+- **@ongov/ontario-design-system-component-library:** added focus state for service ontario header links d0076d5
+- **@ongov/ontario-design-system-component-library:** added focusout functionality with tabbing 980addf
+- **@ongov/ontario-design-system-component-library:** added more test cases based on MR feedback bb2fb42
+- **@ongov/ontario-design-system-component-library:** added one more import for header styles to service ontario header style sheet 79a634d
+- **@ongov/ontario-design-system-component-library:** added service ontario header spec test back in 3a41492
+- **@ongov/ontario-design-system-component-library:** added unit tests for overflow menu 43fac25
+- **@ongov/ontario-design-system-component-library:** adding tabbing functionality and component for mobile menu 58dc659
+- **@ongov/ontario-design-system-component-library:** adding tabbing functionality and component for mobile menu 5fee02e
+- **@ongov/ontario-design-system-component-library:** adds new more-accounts icon, generates more accounts icon component 11cc0ab
+- **@ongov/ontario-design-system-component-library:** adds new sort icon svgs, generates new sort icon components, fixes icon generator script 61095eb
+- **@ongov/ontario-design-system-component-library:** adds new tune icon svg, generates new tune icon component b4238ef
+- **@ongov/ontario-design-system-component-library:** fixed breaking tests and updated header styles e80d40c
+- **@ongov/ontario-design-system-component-library:** fixed focus rings f433afb
+- **@ongov/ontario-design-system-component-library:** fixed focus states on header buttons a7d13f1
+- **@ongov/ontario-design-system-component-library:** fixed the unit tests for header 613c182
+- **@ongov/ontario-design-system-component-library:** fixed the unit tests for header e7fd4ee
+- **@ongov/ontario-design-system-component-library:** remove import statement for event and eventEmitter ede3612
+- **@ongov/ontario-design-system-component-library:** reset the current index when menu is closed 79c94ec
+- **@ongov/ontario-design-system-component-library:** tabbing focus works on mobile 6364449
+- **@ongov/ontario-design-system-component-library:** testing replacing the imported breakpoints with consts 8b5e766
+- **@ongov/ontario-design-system-component-library:** testing replacing the imported breakpoints with consts 7005ff4
+- **@ongov/ontario-design-system-component-library:** testing replacing the imported breakpoints with consts 0390fe1
+- **@ongov/ontario-design-system-component-library:** testing replacing the imported breakpoints with consts c854fab
+- **@ongov/ontario-design-system-component-library:** updated index file to have proper hrefs in the overflow menu 9effcdd
+- **accordion:** add AccordionChangeDetailReasons enum and update README docs e2b3f6c
+- **accordion:** emit accordionChange with full context (open indexes, changed index, reason) 347046e
+- added accessibility features to overflow menu ([#35](undefined/ongov/ontario-design-system/issues/35)) 898e3cb
+- added consistent naming conventions 0ef72a5
+- added documentation for Next.js support ([#59](undefined/ongov/ontario-design-system/issues/59)) 4182dd9
+- added link for ontario-card 33a5099
+- added more colour types for ontario badge 8939ceb
+- added more tests for heading leel, highlight colour, and heading content type 766ca8a
+- added more tests for highligh colour and heading type 4edd8f9
+- added playwright to the repo e085722
+- added test pace for ontario-card 39c3ad7
+- added test page for ontario-callout 391c5e0
+- added test page for ontario-critical-alert bf05b52
+- added testing page for aside df92f59
+- added testing page for badge cff01a3
+- added testing page for badge a924974
+- added testing page for ontario-card-collection 429fa66
+- added testing page for ontario-search-box b816757
+- adds hint-text test page with hint content type variants f060126
+- adds ontario-hint-expander page with hint content type variants 6d46bdf
+- adds page alert testing page with type props a6a6b0e
+- adds test page for ontario-input component 50a914a
+- adds textarea page with multiple variants to nextjs vrt poc cf72996
+- creating test page for ontario-aside 7e1be5b
+- **ontario-header:** modularize header menu into it's own subcomponent 7772e2d
+- **utils:** add convertStringToBoolean util 8874144
+
+### BREAKING CHANGES
+
+- **@ongov/ontario-design-system-component-library:** Badge colour prop values are now defined in kebab-case. Legacy camelCase values
+  are still accepted but deprecated and will log a warning. Support will be
+  removed in a future major release.
+- **@ongov/ontario-design-system-component-library:** Ontario accordion component `isOpen` global prop has been removed. To set the
+  `isOpen` status of an accordion section, add the `isOpen` prop to the
+  `accordionData` prop list.
+- **@ongov/ontario-design-system-complete-styles:** Style imports from the Complete Styles package now use
+  the `pkg:` prefix and must be resolved using `NodePackageImporter()`
+  when compiling Sass in external projects.
+- **@ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** Style imports from the Global Styles package now use
+  the `pkg:` prefix and must be resolved using `NodePackageImporter()`
+  when compiling Sass in external projects.
+- **@ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** `component` folder in the component-library moved from `dist`
+  to the root of the package
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-design-tokens, @ongov/ontario-design-system-global-styles:** New font variants have been added alongside references
+  to Raleway has been updated to use `Raleway Modified`. Please validate
+  your font assets and CSS/SCSS.
+- **@ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** `component` folder in the component-library moved from `dist`
+  to the root of the package
+- **ontario-header:** `maxSubheaderDesktopLinks`, `maxSubheaderTabletLinks`,
+  and `maxSubheaderMobileLinks` have been deprecated.
+
 # 6.0.0-alpha.10 (2025-12-23)
 
 - **@ongov/ontario-design-system-component-library:** feat(badge)!: update colour prop to use kebab-case & add legacy support 52789f0
