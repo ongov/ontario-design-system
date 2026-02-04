@@ -134,8 +134,18 @@ $border-width-2: 2px;
 	white-space: nowrap;
 
 	&.ontario-link--active {
-		border-radius: globalVariables.$global-radius globalVariables.$global-radius 0 0;
-		border-bottom: globalVariables.$global-radius solid colours.$ontario-colour-white;
+		border-radius: globalVariables.$global-radius;
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: -(spacing.$spacing-2);
+			left: spacing.$spacing-0;
+			right: spacing.$spacing-0;
+			height: globalVariables.$global-radius;
+			background-color: colours.$ontario-colour-white;
+		}
 	}
 
 	&:hover {
