@@ -76,6 +76,7 @@ $header-height: globalFunctions.px-to-rem(50);
 	left: 0;
 	background: rgba(0, 0, 0, 0.6);
 	width: globalVariables.$full-width;
+	height: globalVariables.$full-width;
 	z-index: zIndex.$ontario-z-index-above-medium;
 }
 
