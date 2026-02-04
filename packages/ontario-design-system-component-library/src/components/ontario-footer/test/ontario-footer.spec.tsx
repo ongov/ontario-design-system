@@ -12,7 +12,7 @@ describe('ontario-footer', () => {
 		(global as any).Date = class extends OriginalDate {
 			constructor(...args: [] | ConstructorParameters<typeof Date>) {
 				if (args.length === 0) {
-					super('2025-06-30T12:00:00Z');
+					super('2026-06-30T12:00:00Z');
 					return;
 				}
 				super(...(args as ConstructorParameters<typeof Date>));
