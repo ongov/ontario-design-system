@@ -20,7 +20,7 @@ export default function OntarioPageAlertPage() {
 				<h3>Warning</h3>
 				<OntarioPageAlert type="warning" heading="Service wait times">
 					<p>
-						We are experiencing longer than normal wait times at this ServiceOntario centre. You can&apos;t{' '}
+						We are experiencing longer than normal wait times at this ServiceOntario centre. You can{' '}
 						<a href="#">check out our Service Finder</a> to see if the service you need is offered online or at a
 						different centre nearby.
 					</p>

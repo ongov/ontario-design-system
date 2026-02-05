@@ -10,11 +10,9 @@
 
 This library was generated using Stencil's React output target dependency. It is based on the [Ontario Design System Component Library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/). For more information, [find it on NPM](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-react).
 
-## React 19 support and tooling
+### React 19 support and tooling
 
-- React 19 only (React 18 is no longer supported by this package's peer dependencies).
-- `app-react` is Vite-based (CRA is deprecated).
-- `app-nextjs` remains on Next 15 with React 19 for now; SSR continues to use the Stencil wrapper.
+This package targets React 19 and ships bindings that align with React 19's JSX/runtime expectations and tooling. React 18 is no longer supported by this package's peer dependencies.
 
 ## Installation and usage
 
@@ -80,7 +78,7 @@ You can now use the React components in your component and template files.
 If you use Sass and want `pkg:` resolution via `@use`, import the styles entry point:
 
 ```scss
-@use 'pkg:@ongov/ontario-design-system-component-library-react/styles' as *;
+@use 'pkg:@ongov/ontario-design-system-component-library-react/styles' as ods;
 ```
 
 ### Local assets
