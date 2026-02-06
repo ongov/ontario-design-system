@@ -29,6 +29,9 @@ UserInterfaceState.xcuserstate
 # component-lib
 components.d.ts
 
+# Generated icon components (maintain original formatting)
+packages/ontario-design-system-component-library/src/components/ontario-icon/ontario-icon-*.tsx
+
 # component-lib-react
 createComponent.tsx
 interfaces.ts

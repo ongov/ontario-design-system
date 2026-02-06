@@ -1,0 +1,12 @@
+<testsuites id="" name="" tests="4" failures="0" skipped="0" errors="0" time="24.666949">
+<testsuite name="src/components/ontario-accordion/test/ontario-accordion.e2e.ts" timestamp="2026-01-20T20:10:53.304Z" hostname="" tests="4" failures="0" skipped="0" time="2.099" errors="0">
+<testcase name="ontario-accordion › renders and is hydrated" classname="src/components/ontario-accordion/test/ontario-accordion.e2e.ts" time="0.39">
+</testcase>
+<testcase name="ontario-accordion › initial DOM states" classname="src/components/ontario-accordion/test/ontario-accordion.e2e.ts" time="0.385">
+</testcase>
+<testcase name="ontario-accordion › expands and collapses first accordion element" classname="src/components/ontario-accordion/test/ontario-accordion.e2e.ts" time="0.648">
+</testcase>
+<testcase name="ontario-accordion › expands and collapses all accordion elements" classname="src/components/ontario-accordion/test/ontario-accordion.e2e.ts" time="0.676">
+</testcase>
+</testsuite>
+</testsuites>
