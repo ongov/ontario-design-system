@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-component-library-react",
-	"version": "6.0.0-alpha.10",
+	"version": "6.0.0",
 	"private": false,
 	"description": "React specific wrapper for ontario-design-system-component-library",
 	"license": "Apache-2.0",
@@ -70,24 +70,25 @@
 	},
 	"dependencies": {
 		"@ongov/ontario-design-system-component-library": "workspace:*",
-		"@stencil/react-output-target": "^1.0.2"
+		"@ongov/ontario-design-system-global-styles": "workspace:*",
+		"@stencil/react-output-target": "^1.4.0"
 	},
 	"devDependencies": {
 		"@testing-library/jest-dom": "^6.6.2",
 		"@types/jest": "29.5.14",
-		"@types/node": "^22.8.1",
-		"@types/react": "18.3.24",
-		"@types/react-dom": "18.3.7",
+		"@types/node": "^22.12.0",
+		"@types/react": "19.2.10",
+		"@types/react-dom": "19.2.3",
 		"copyfiles": "^2.4.1",
 		"jest": "^29.7.0",
 		"prettier": "^3.4.2",
-		"react": "^18.3.1",
-		"react-dom": "^18.3.1",
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4",
 		"typescript": "^5.6.3"
 	},
 	"peerDependencies": {
-		"react": "^18.3.0",
-		"react-dom": "^18.3.0"
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4"
 	},
 	"publishConfig": {
 		"access": "public"

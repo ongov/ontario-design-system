@@ -7,7 +7,7 @@ export default function OntarioCriticalAlertPage() {
 			<Grid>
 				<h1>ontario-critical-alert</h1>
 
-				<h2>'content' Prop Variants</h2>
+				<h2>&apos;content&apos; Prop Variants</h2>
 
 				<h3>string</h3>
 				<OntarioCriticalAlert content="COVID-19 State of emergency extended until May 12, 2020." />

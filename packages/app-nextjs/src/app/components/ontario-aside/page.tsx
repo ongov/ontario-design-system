@@ -54,7 +54,7 @@ export default function OntarioAsidePage() {
 					content="As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of global emissions."
 				></OntarioAside>
 
-				<h2>"hightlight-colour" Prop Variants</h2>
+				<h2>"highlight-colour" Prop Variants</h2>
 
 				<h3>Teal</h3>
 				<OntarioAside

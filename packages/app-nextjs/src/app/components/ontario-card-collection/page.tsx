@@ -7,7 +7,7 @@ export default function OntarioCardCollectionPage() {
 			<Grid>
 				<h1>ontario-card-collection</h1>
 
-				<h2>'cards-per-row' Prop Variants</h2>
+				<h2>&apos;cards-per-row&apos; Prop Variants</h2>
 				<h3>4</h3>
 				<OntarioCardCollection cardsPerRow={4}>
 					<OntarioCard

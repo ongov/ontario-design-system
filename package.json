@@ -1,6 +1,6 @@
 {
 	"name": "root",
-	"version": "6.0.0-alpha.10",
+	"version": "6.0.0",
 	"private": true,
 	"workspaces": [
 		"packages/*"
@@ -16,6 +16,7 @@
 		"refresh": "pnpm run clean && pnpm install && pnpm run build-libs",
 		"semantic-release": "semantic-release",
 		"test:e2e": "lerna run test:e2e",
+		"test:e2e:stencil": "lerna run test:e2e --scope '@ongov/ontario-design-system-component-library'",
 		"test:e2e:apps": "lerna run test:e2e --scope 'app-*' --ignore 'app-web-components-documentation'",
 		"test:unit": "lerna run test:unit",
 		"test:vrt": "lerna run test:vrt",
@@ -32,7 +33,7 @@
 		"@semantic-release/github": "12.0.2",
 		"@semantic-release/npm": "^13.1.1",
 		"@types/js-yaml": "^4.0.9",
-		"@types/node": "^22.10.10",
+		"@types/node": "^22.12.0",
 		"bash-color": "^0.0.4",
 		"commander": "^11.0.0",
 		"husky": "^8.0.2",

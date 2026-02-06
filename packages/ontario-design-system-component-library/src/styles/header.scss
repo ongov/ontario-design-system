@@ -1,21 +1,21 @@
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as
-	globalFunctions;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/global.variables' as globalVariables;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/fonts.variables' as fonts;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/placeholder/focus.placeholders' as
 	focusPlaceholders;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables' as lineHeights;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables';
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/z-index.variables' as zIndex;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/line-heights.variables' as lineHeights;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/typography.variables';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/_visibility.overrides.scss';
 
 $box-shadow-blur-radius-12: 12px;
 $font-size-18: globalFunctions.px-to-rem(18);
 $navigation-max-width: 72rem;
+$navigation-link-bg--hover: #e5e5e5;
 $ontario-navigation-container-min-width: globalFunctions.px-to-rem(290); //18.125rem
 $ontario-header-button-font-size: $font-size-18;
 $ontario-header-button-line-height: 1.5;
@@ -76,6 +76,7 @@ $header-height: globalFunctions.px-to-rem(50);
 	left: 0;
 	background: rgba(0, 0, 0, 0.6);
 	width: globalVariables.$full-width;
+	height: globalVariables.$full-width;
 	z-index: zIndex.$ontario-z-index-above-medium;
 }
 

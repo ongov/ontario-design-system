@@ -11,7 +11,7 @@ on:
         type: string
 
 jobs:
-  unit-test:
+  stencil-unit-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Run Unit Tests
+      - name: Run Stencil Unit Tests
         run: pnpm run test:unit
 
       - name: Publish Stencil Unit Test Results
@@ -46,9 +46,72 @@ jobs:
           path: packages/ontario-design-system-component-library/junit.xml
           reporter: java-junit
 
-  vrt-test:
+  stencil-e2e-test:
     runs-on: ubuntu-latest
-    needs: unit-test
+    permissions:
+      contents: read
+      actions: read
+      checks: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Use Node.js ${{ inputs.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.build-artifacts-name }}
+          path: ./packages
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright Browsers
+        run: pnpm --filter @ongov/ontario-design-system-component-library exec playwright install --with-deps
+
+      - name: Run Stencil E2E Tests
+        run: pnpm run test:e2e:stencil
+
+      - name: Upload Stencil E2E Test Results
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: stencil-e2e-test-results
+          path: packages/ontario-design-system-component-library/test-results
+
+      - name: Upload Stencil E2E JUnit results for GitHub integration
+        if: ${{ success() || failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: stencil-e2e-junit-results
+          path: packages/ontario-design-system-component-library/test-results/playwright/results.xml
+
+      - name: Upload Stencil Playwright HTML report
+        if: ${{ success() || failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: stencil-playwright-html-report-e2e
+          path: packages/ontario-design-system-component-library/playwright-report
+
+      - name: Publish Stencil Playwright E2E Test Results
+        if: ${{ (success() || failure()) && (github.event.pull_request.head.repo.fork == false) }}
+        uses: dorny/test-reporter@v1
+        with:
+          name: stencil-playwright-e2e-tests-results
+          path: packages/ontario-design-system-component-library/test-results/playwright/results.xml
+          reporter: java-junit
+
+  apps-vrt-test:
+    runs-on: ubuntu-latest
+    needs: ['stencil-unit-test', 'stencil-e2e-test']
     permissions:
       contents: read
       actions: read
@@ -110,9 +173,9 @@ jobs:
           path: packages/app-nextjs/test-results/playwright/results.xml
           reporter: java-junit
 
-  e2e-apps-test:
+  apps-e2e-test:
     runs-on: ubuntu-latest
-    needs: unit-test
+    needs: ['stencil-unit-test', 'stencil-e2e-test']
     permissions:
       contents: read
       actions: read

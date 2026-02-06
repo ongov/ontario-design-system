@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-complete-styles",
-	"version": "6.0.0-alpha.10",
+	"version": "6.0.0",
 	"private": false,
 	"description": "Complete styles package for the Ontario Design System containing all SASS and CSS for use independently of the Component Library.",
 	"license": "Apache-2.0",
@@ -54,7 +54,9 @@
 			"sass": "./dist/styles/scss/theme.scss"
 		},
 		"./styles/css/compiled/ontario-theme.min.css": "./dist/styles/css/compiled/ontario-theme.min.css",
-		"./styles/scss/theme.scss": "./dist/styles/scss/theme.scss"
+		"./styles/scss/theme.scss": "./dist/styles/scss/theme.scss",
+		"./dist/styles/scss/theme.scss": "./dist/styles/scss/theme.scss",
+		"./dist/styles/scss/theme": "./dist/styles/scss/theme.scss"
 	},
 	"sass": "dist/styles/scss/theme.scss"
 }

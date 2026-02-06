@@ -1,12 +1,11 @@
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables' as typography;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as global;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/letter-spacing.variables' as
-	letterSpacing;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/line-heights.variables' as lineHeight;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/fonts.variables' as fonts;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/typography.variables' as typography;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/global.variables' as global;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/letter-spacing.variables' as letterSpacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/line-heights.variables' as lineHeight;
 
 .ontario-label {
 	cursor: pointer;
