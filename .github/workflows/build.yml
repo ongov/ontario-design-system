@@ -53,7 +53,7 @@ jobs:
 
       # Upload build artifacts
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ inputs.build-artifacts-name }} # Artifact name
           compression-level: 9 # Best compression
@@ -64,7 +64,7 @@ jobs:
 
       # Upload docs artifact
       - name: Upload docs artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ inputs.docs-artifacts-name }}
           compression-level: 9 # Best compression
