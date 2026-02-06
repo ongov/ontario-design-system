@@ -21,7 +21,7 @@
 		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\\ntitle: Design Tokens\\n---\\n\" -df ../docusaurus/docs/04-readme-design-tokens.md"
 	},
 	"devDependencies": {
-		"@types/node": "^22.10.10",
+		"@types/node": "^22.12.0",
 		"style-dictionary": "^4.3.0"
 	},
 	"publishConfig": {
@@ -58,6 +58,15 @@
 			"default": "./dist/js/tokens.js"
 		},
 		"./scss": {
+			"sass": "./dist/scss/_variables.scss"
+		},
+		"./dist/scss/variables": {
+			"sass": "./dist/scss/_variables.scss"
+		},
+		"./dist/scss/variables.scss": {
+			"sass": "./dist/scss/_variables.scss"
+		},
+		"./dist/scss/_variables.scss": {
 			"sass": "./dist/scss/_variables.scss"
 		},
 		"./css": {

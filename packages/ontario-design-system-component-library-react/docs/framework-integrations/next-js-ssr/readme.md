@@ -135,7 +135,7 @@ npm add @ongov/ontario-design-system-global-styles
 If you're using the App Router:
 
 ```tsx
-import '@ongov/ontario-design-system-global-styles/dist/styles/scss/theme.scss';
+import '@ongov/ontario-design-system-global-styles/styles/scss/theme.scss';
 
 export default function RootLayout({ children }) {
 	return (
@@ -151,7 +151,7 @@ export default function RootLayout({ children }) {
 If you're using the Pages Router:
 
 ```tsx
-import '@ongov/ontario-design-system-global-styles/dist/styles/scss/theme.scss';
+import '@ongov/ontario-design-system-global-styles/styles/scss/theme.scss';
 
 function MyApp({ Component, pageProps }) {
 	return <Component {...pageProps} />;

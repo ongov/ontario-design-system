@@ -33,7 +33,16 @@ You can import the entire global styles package by including the following impor
 **Scss**:
 
 ```scss
-@forward 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/theme.scss';
+@forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss';
+```
+
+If you need to override the asset base path, create a local theme wrapper that forwards the global styles and sets `$asset-base-path`, then import that wrapper instead.
+
+```scss
+// src/styles/ontario-theme.scss
+@forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss' with (
+	$asset-base-path: '/assets'
+);
 ```
 
 Please see the [_How to use_](#how-to-use) in [_Sass Package Resolution and the NodePackageImporter_](#sass-package-resolution-and-the-nodepackageimporter) for information on how to import and use our Scss.
@@ -41,7 +50,7 @@ Please see the [_How to use_](#how-to-use) in [_Sass Package Resolution and the 
 **CSS**:
 
 ```css
-@import '@ongov/ontario-design-system-global-styles/dist/styles/css/compiled/ontario-theme.css';
+@import '@ongov/ontario-design-system-global-styles/styles/css/compiled/ontario-theme.min.css';
 ```
 
 This will give you access to the complete package, and will load in all layers of the project, as defined in our [architecture section](#architecture).
@@ -53,7 +62,7 @@ Alternatively, you can be more granular by explicitly importing specific styles 
 For example, if you only require our global variables, you can include the following [`@use`](https://sass-lang.com/documentation/at-rules/use) rule to import specific styles:
 
 ```scss
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/global.variables' as globalVariables;
 ```
 
 The `@use` rule loads mixins, functions, and variables from other Sass stylesheets, and combines CSS from multiple stylesheets together. In your SCSS, you would then reference one of these variables by including the namespace, followed by the variable you intend to use. For example:
@@ -62,6 +71,28 @@ The `@use` rule loads mixins, functions, and variables from other Sass styleshee
 .platform-banner {
 	width: globalVariables.$full-width;
 	max-width: globalVariables.$full-width;
+}
+```
+
+### Exports map maintenance
+
+This package relies on `package.json` `exports` to expose compiled CSS and SCSS entry points. If the `dist/styles` folder structure changes, update the `exports` map in `package.json` to keep `pkg:` imports and direct style imports working as expected.
+
+Example `exports` entries for common style paths:
+
+```json
+{
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.js",
+			"style": "./dist/styles/css/compiled/ontario-theme.min.css",
+			"sass": "./dist/styles/scss/theme.scss"
+		},
+		"./styles/css/compiled/ontario-theme.min.css": "./dist/styles/css/compiled/ontario-theme.min.css",
+		"./styles/scss/theme.scss": "./dist/styles/scss/theme.scss",
+		"./styles/scss/1-variables/*": "./dist/styles/scss/1-variables/*"
+	}
 }
 ```
 
@@ -156,7 +187,7 @@ https://sass-lang.com/documentation/js-api/classes/nodepackageimporter/
 Once enabled, you can reference npm packages in your Sass code with the `pkg:` scheme:
 
 ```scss
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/theme.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss';
 ```
 
 #### JavaScript Example

@@ -1,5 +1,5 @@
-@use '~@ongov/ontario-design-system-global-styles/dist/styles/scss/theme';
-@use '~@ongov/ontario-design-system-design-tokens/dist/scss/variables' as designTokenVariables;
+@use '../../styles/ontario-theme.scss' as theme;
+@use 'pkg:@ongov/ontario-design-system-design-tokens/scss' as designTokenVariables;
 
 $ontario-5rem: 5rem;
 $ontario-50rem: 50rem;
