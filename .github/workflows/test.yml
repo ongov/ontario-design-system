@@ -12,6 +12,7 @@ on:
 
 jobs:
   stencil-unit-test:
+    name: Stencil Unit Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -42,18 +43,26 @@ jobs:
         if: ${{ (success() || failure()) }}
         uses: dorny/test-reporter@v1
         with:
-          name: Stencil Unit Tests
           path: packages/ontario-design-system-component-library/junit.xml
+          name: Stencil Unit Tests
           reporter: java-junit
 
   stencil-e2e-test:
+    name: Stencil E2E Tests
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.55.0-noble
+      options: --user pwuser
+    env:
+      HOME: /github/home
     permissions:
       contents: read
       actions: read
       checks: write
     steps:
       - uses: actions/checkout@v4
+      - name: Configure git safe directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -73,9 +82,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Install Playwright Browsers
-        run: pnpm --filter @ongov/ontario-design-system-component-library exec playwright install --with-deps
 
       - name: Run Stencil E2E Tests
         run: pnpm run test:e2e:stencil
@@ -105,12 +111,18 @@ jobs:
         if: ${{ (success() || failure()) && (github.event.pull_request.head.repo.fork == false) }}
         uses: dorny/test-reporter@v1
         with:
-          name: stencil-playwright-e2e-tests-results
+          name: Stencil Playwright E2E Tests
           path: packages/ontario-design-system-component-library/test-results/playwright/results.xml
           reporter: java-junit
 
   apps-vrt-test:
+    name: Apps VRT Tests
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.55.0-noble
+      options: --user pwuser
+    env:
+      HOME: /github/home
     needs: ['stencil-unit-test', 'stencil-e2e-test']
     permissions:
       contents: read
@@ -118,6 +130,8 @@ jobs:
       checks: write
     steps:
       - uses: actions/checkout@v4
+      - name: Configure git safe directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -137,9 +151,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Install Playwright Browsers
-        run: pnpm --filter app-nextjs exec playwright install --with-deps
 
       - name: Run All VRT Tests
         run: pnpm run test:vrt
@@ -174,7 +185,13 @@ jobs:
           reporter: java-junit
 
   apps-e2e-test:
+    name: Apps E2E Tests
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.55.0-noble
+      options: --user pwuser
+    env:
+      HOME: /github/home
     needs: ['stencil-unit-test', 'stencil-e2e-test']
     permissions:
       contents: read
@@ -182,6 +199,8 @@ jobs:
       checks: write
     steps:
       - uses: actions/checkout@v4
+      - name: Configure git safe directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -201,9 +220,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Install Playwright Browsers
-        run: pnpm --filter app-nextjs exec playwright install --with-deps
 
       - name: Run All E2E Apps Tests
         run: pnpm run test:e2e:apps
