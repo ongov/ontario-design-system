@@ -113,9 +113,9 @@ Flow: CLI options to Playwright
 ```mermaid
 flowchart TD
   A[Host CLI] -->|./scripts/docker-compose.sh run ... -- <args>| B[docker-compose.sh]
-  B -->|encode Playwright args| C[PLAYWRIGHT_ARGS_B64 env var]
-  B -->|docker compose run -e PLAYWRIGHT_ARGS_B64=...| D[Docker Compose service]
-  D -->|runner script decodes + appends args| E[Playwright CLI]
+  B -->|extract + encode Playwright args| C[PLAYWRIGHT_ARGS_B64 env var]
+  C -->|inject via docker compose run -e PLAYWRIGHT_ARGS_B64=...| D[Docker Compose service]
+  D -->|docker-playwright-runner.sh decodes + appends args| E[Playwright CLI]
 ```
 
 ## Cleaning Volumes

@@ -1,16 +1,33 @@
 #!/usr/bin/env bash
 
+# What this script is:
+# - A thin wrapper around `docker compose` for this repository.
+#
+# What it does:
+# - Always uses the repo-local compose file.
+# - On Linux, passes host UID/GID (`PUID`/`PGID`) so mounted files are writable.
+# - For `docker compose run`, captures Playwright CLI args and forwards them
+#   through `PLAYWRIGHT_ARGS_B64` to avoid quoting and spacing issues.
+#
+# Why we use it:
+# - Keeps local commands and CI-like container execution consistent.
+# - Prevents permission friction with bind mounts.
+# - Makes Playwright argument forwarding predictable from package scripts.
+
 set -euo pipefail
 
+# Resolve repo root from this script location so calls work from any cwd.
 root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 compose_files=("$root_dir/docker/docker-compose.yml")
 
 case "$(uname -s)" in
   Linux*)
+    # Forward host UID/GID for bind mounts; entrypoint uses these to fix ownership.
     export PUID="${PUID:-$(id -u)}"
     export PGID="${PGID:-$(id -g)}"
     ;;
   *)
+    # Non-Linux hosts (for example Docker Desktop) do not need explicit UID/GID mapping.
     ;;
 esac
 
@@ -23,6 +40,7 @@ cmd_args=("$@")
 playwright_args=()
 is_run=false
 
+# Optional knob for build output style (plain/tty/auto) when the command is `build`.
 if [[ -n "${ODS_DOCKER_COMPOSE_PROGRESS:-}" ]]; then
   for i in "${!cmd_args[@]}"; do
     if [[ "${cmd_args[$i]}" == "build" ]]; then
@@ -70,6 +88,7 @@ if [[ "$is_run" == true ]]; then
   fi
 
   if [[ "${#playwright_args[@]}" -gt 0 ]]; then
+    # Normalise accidental duplicate separator usage (`-- --grep=...`).
     if [[ "${playwright_args[0]}" == "--" ]]; then
       playwright_args=("${playwright_args[@]:1}")
     fi
@@ -92,4 +111,5 @@ if [[ "$is_run" == true ]]; then
   fi
 fi
 
+# Replace current shell process so exit code/signals come directly from docker compose.
 exec docker compose "${compose_args[@]}" "${cmd_args[@]}"
