@@ -125,4 +125,18 @@ describe('ontario-header-overflow-menu', () => {
 
 		expect(hostInstance.menuIsOpen).toBe(false);
 	});
+
+	it('should call menu item onClickHandler when item is clicked', async () => {
+		const onClickHandler = jest.fn((event: Event) => event.preventDefault());
+		host.menuItems = [{ title: 'Link 1', href: '/link-1', linkIsActive: false, onClickHandler }];
+
+		await page.waitForChanges();
+
+		const menuItem = hostShadow.querySelector('a.ontario-menu-item') as HTMLAnchorElement;
+		expect(menuItem).not.toBeNull();
+
+		menuItem.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+
+		expect(onClickHandler).toHaveBeenCalledTimes(1);
+	});
 });
