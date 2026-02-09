@@ -10,6 +10,8 @@ export default createConfig({
 	use: {
 		trace: 'retain-on-failure',
 	},
-
+	webServer: {
+		timeout: 120 * 1000, // 2 minute timeout for the server to start
+	},
 	reporter: [['list'], ['html'], ['junit', { outputFile: 'test-results/playwright/results.xml' }]],
 });

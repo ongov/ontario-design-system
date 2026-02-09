@@ -55,7 +55,7 @@ describe('ontario-header-overflow-menu', () => {
 		expect(host).toMatchSnapshot();
 	});
 
-	/* This is a good test but may be better suited as an E2E test where actual browser behaviour is tested */
+	/* TODO: This is a good test but may be better suited as an E2E test where actual browser behaviour is tested */
 	it('should toggle menu open when the menuButtonToggled event is received', async () => {
 		const menuItems = [
 			{ title: 'Link 1', href: '/link-1', linkIsActive: false },
@@ -77,7 +77,7 @@ describe('ontario-header-overflow-menu', () => {
 		expect(hostInstance.menuIsOpen).toBe(true);
 	});
 
-	/* This is a good test but may be better suited as an E2E test where actual browser behaviour is tested */
+	/* TODO: This is a good test but may be better suited as an E2E test where actual browser behaviour is tested */
 	it('should toggle menu closed when the menuButtonToggled event is received', async () => {
 		const menuItems = [
 			{ title: 'Link 1', href: '/link-1', linkIsActive: false },
@@ -100,7 +100,7 @@ describe('ontario-header-overflow-menu', () => {
 		expect(hostInstance.menuIsOpen).toBe(false);
 	});
 
-	/* This is a good test but may be better suited as an E2E test where actual browser behaviour is tested */
+	/* TODO: This is a good test but may be better suited as an E2E test where actual browser behaviour is tested */
 	it('should close menu when focus leaves', async () => {
 		const menuItems = [
 			{ title: 'Link 1', href: '/link-1', linkIsActive: false },
