@@ -120,13 +120,7 @@ flowchart TD
 
 ## Cleaning Volumes
 
-Remove all unused volumes:
-
-```bash
-docker volume prune
-```
-
-Remove the volumes created by this setup:
+Remove only the volumes created by this setup (safer default):
 
 ```bash
 docker volume rm \
@@ -135,4 +129,10 @@ docker volume rm \
   node_modules_app_web_components_documentation \
   node_modules_component_library node_modules_component_library_angular node_modules_component_library_react \
   node_modules_complete_styles node_modules_design_tokens node_modules_global_styles
+```
+
+Last resort: remove all unused Docker volumes on your machine:
+
+```bash
+docker volume prune
 ```
