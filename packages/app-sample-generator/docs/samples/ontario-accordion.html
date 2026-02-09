@@ -1,0 +1,270 @@
+<style>
+	.ontario-accordion__button--expand-all:focus,
+	.ontario-accordion__button:focus {
+		box-shadow: 0 0 0 4px #009adb;
+		outline: 4px solid transparent;
+		transition: box-shadow 0.1s ease-in-out;
+	}
+	.ontario-accordion__button {
+		font-style: normal;
+		font-weight: 700;
+		text-rendering: optimizeLegibility;
+		margin-bottom: 1rem;
+		font-feature-settings: normal;
+		font-family: 'Raleway Modified', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	}
+	.ontario-accordion__button {
+		font-size: 1.25rem;
+		letter-spacing: 0.03rem;
+		line-height: 1.5;
+		margin: 0 0 0.75rem 0;
+		max-width: 48rem;
+	}
+	@media screen and (min-width: 40em) {
+		.ontario-accordion__button {
+			font-size: 1.5rem;
+			letter-spacing: 0.0313rem;
+			line-height: 1.5;
+		}
+	}
+	.ontario-accordions__container {
+		max-width: 48rem;
+		width: 100%;
+	}
+	.ontario-accordion {
+		border-top: 2px solid #cccccc;
+	}
+	.ontario-accordion:last-of-type {
+		border-bottom: 2px solid #cccccc;
+	}
+	.ontario-accordion__controls {
+		display: flex;
+		justify-content: flex-end;
+	}
+	.ontario-accordion__button,
+	.ontario-accordion__button--expand-all {
+		background: none;
+		border: 0;
+		box-sizing: border-box;
+	}
+	.ontario-accordion__button--expand-all {
+		font-size: 1rem;
+		margin-bottom: 0.5rem;
+		color: #0066cc;
+		cursor: pointer;
+	}
+	.ontario-accordion__button--expand-all:focus,
+	.ontario-accordion__button--expand-all:hover {
+		color: #00478f;
+		text-decoration: underline;
+	}
+	.ontario-accordion__button--expand-all:active {
+		color: #002142;
+		text-decoration: underline;
+	}
+	.ontario-accordion--expand-close-all {
+		display: none;
+	}
+	.ontario-accordion__controls--active .ontario-accordion--expand-close-all {
+		display: block;
+	}
+	.ontario-accordion__controls--active .ontario-accordion--expand-open-all {
+		display: none;
+	}
+	.ontario-accordion__button {
+		display: flex;
+		align-items: flex-start;
+		color: #0066cc;
+		cursor: pointer;
+		padding: 0.75rem 0.5rem;
+		text-align: left;
+		width: 100%;
+		margin-bottom: 0;
+	}
+	.ontario-accordion__button .ontario-accordion__button-icon--close,
+	.ontario-accordion__button .ontario-accordion__button-icon--open {
+		margin-right: 0.5rem;
+	}
+	.ontario-accordion__button .ontario-icon {
+		width: 1.75rem;
+		height: 1.75rem;
+	}
+	.ontario-accordion__button:focus,
+	.ontario-accordion__button:hover {
+		background-color: rgb(242.25, 242.25, 242.25);
+		color: #00478f;
+	}
+	.ontario-accordion__button:focus {
+		box-shadow: 0 0 0 4px #009adb inset;
+	}
+	.ontario-accordion__button:active {
+		color: #002142;
+	}
+	.ontario-accordion__content {
+		display: none;
+		padding: 0.75rem 0.75rem 2rem 0.75rem;
+		margin-left: 0;
+	}
+	@media screen and (min-width: 40em) {
+		.ontario-accordion__content {
+			margin-left: 2rem;
+		}
+	}
+	.ontario-accordion__content * {
+		margin-top: 0;
+		max-width: 48rem;
+		width: 100%;
+	}
+	.ontario-accordion__content ul,
+	.ontario-accordion__content ol {
+		max-width: calc(100% - 3rem);
+	}
+	.ontario-accordion__content > :last-child {
+		margin-bottom: 0;
+	}
+	.ontario-accordion__button-icon--close,
+	.ontario-expander--active .ontario-accordion__button-icon--open {
+		display: none;
+	}
+	.ontario-expander--active ~ .ontario-accordion__content,
+	.ontario-expander--active .ontario-accordion__button-icon--close {
+		display: block;
+	}
+	.ontario-accordions__container .ontario-h1,
+	.ontario-accordions__container .ontario-h2,
+	.ontario-accordions__container .ontario-h3,
+	.ontario-accordions__container .ontario-h4,
+	.ontario-accordions__container .ontario-h5,
+	.ontario-accordions__container p,
+	.ontario-accordions__container h1,
+	.ontario-accordions__container h2,
+	.ontario-accordions__container h3,
+	.ontario-accordions__container h4,
+	.ontario-accordions__container h5,
+	.ontario-accordions__container h6 {
+		margin: 0;
+	}
+</style>
+
+<div>
+	<h2>My Accordion</h2>
+	<div class="ontario-accordions__container">
+		<div class="ontario-accordion__controls">
+			<button aria-expanded="false" class="ontario-accordion__button--expand-all">
+				<span class="ontario-accordion--expand-open-all">
+					<div>Expand All</div>
+				</span>
+			</button>
+		</div>
+		<div class="ontario-accordion">
+			<h3 class="ontario-accordion__heading">
+				<button
+					aria-controls="ontario-accordion-d319092a-aec3-411d-9c4c-c0e18c4aa928__section--0"
+					aria-expanded="false"
+					class="ontario-accordion__button"
+					id="ontario-accordion-d319092a-aec3-411d-9c4c-c0e18c4aa928__button--0"
+				>
+					<span class="ontario-accordion__button-icon--close">
+						<ontario-icon-chevron-up aria-hidden="true">
+							<div class="ontario-icon ontario-icon--blue ontario-icon--width-24" style="width: 24px">
+								<svg
+									class="svg-icon"
+									fill="none"
+									id="chevron-up"
+									role="img"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+									style="fill: undefined; stroke: undefined"
+								>
+									<path d="M7.4 15.4l4.6-4.58 4.6 4.58L18 14l-6-6-6 6 1.4 1.4z"></path>
+								</svg>
+							</div>
+						</ontario-icon-chevron-up>
+					</span>
+					<span class="ontario-accordion__button-icon--open">
+						<ontario-icon-chevron-down aria-hidden="true">
+							<div class="ontario-icon ontario-icon--blue ontario-icon--width-24" style="width: 24px">
+								<svg
+									class="svg-icon"
+									fill="none"
+									id="chevron-down"
+									role="img"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+									style="fill: undefined; stroke: undefined"
+								>
+									<path d="M7.4 8.6l4.6 4.58 4.6-4.58L18 10l-6 6-6-6 1.4-1.4z"></path>
+								</svg>
+							</div>
+						</ontario-icon-chevron-down>
+					</span>
+					Section 1
+				</button>
+			</h3>
+			<section
+				aria-hidden="true"
+				aria-labelledby="ontario-accordion-d319092a-aec3-411d-9c4c-c0e18c4aa928__button--0"
+				class="ontario-accordion__content ontario-accordion__content--closed"
+				id="ontario-accordion-d319092a-aec3-411d-9c4c-c0e18c4aa928__section--0"
+				role="region"
+			>
+				<div>Content for section 1</div>
+			</section>
+		</div>
+		<div class="ontario-accordion">
+			<h3 class="ontario-accordion__heading">
+				<button
+					aria-controls="ontario-accordion-d319092a-aec3-411d-9c4c-c0e18c4aa928__section--1"
+					aria-expanded="false"
+					class="ontario-accordion__button"
+					id="ontario-accordion-d319092a-aec3-411d-9c4c-c0e18c4aa928__button--1"
+				>
+					<span class="ontario-accordion__button-icon--close">
+						<ontario-icon-chevron-up aria-hidden="true">
+							<div class="ontario-icon ontario-icon--blue ontario-icon--width-24" style="width: 24px">
+								<svg
+									class="svg-icon"
+									fill="none"
+									id="chevron-up"
+									role="img"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+									style="fill: undefined; stroke: undefined"
+								>
+									<path d="M7.4 15.4l4.6-4.58 4.6 4.58L18 14l-6-6-6 6 1.4 1.4z"></path>
+								</svg>
+							</div>
+						</ontario-icon-chevron-up>
+					</span>
+					<span class="ontario-accordion__button-icon--open">
+						<ontario-icon-chevron-down aria-hidden="true">
+							<div class="ontario-icon ontario-icon--blue ontario-icon--width-24" style="width: 24px">
+								<svg
+									class="svg-icon"
+									fill="none"
+									id="chevron-down"
+									role="img"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+									style="fill: undefined; stroke: undefined"
+								>
+									<path d="M7.4 8.6l4.6 4.58 4.6-4.58L18 10l-6 6-6-6 1.4-1.4z"></path>
+								</svg>
+							</div>
+						</ontario-icon-chevron-down>
+					</span>
+					Section 2
+				</button>
+			</h3>
+			<section
+				aria-hidden="true"
+				aria-labelledby="ontario-accordion-d319092a-aec3-411d-9c4c-c0e18c4aa928__button--1"
+				class="ontario-accordion__content ontario-accordion__content--closed"
+				id="ontario-accordion-d319092a-aec3-411d-9c4c-c0e18c4aa928__section--1"
+				role="region"
+			>
+				<div>Content for section 2</div>
+			</section>
+		</div>
+	</div>
+</div>
