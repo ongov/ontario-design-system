@@ -1,6 +1,29 @@
 # Ontario Design System Scripts
 
-This folder serves as a collection of project-wide scripts that provide shared functionality and utilities used throughout the application. By centralizing these scripts, the project ensures consistency, reusability, and easier maintenance across different components and features.
+This folder serves as a collection of project-wide scripts that provide shared functionality and utilities used throughout the application. By centralising these scripts, the project ensures consistency, reusability, and easier maintenance across different components and features.
+
+## extract-git-issues.js
+
+A utility script that extracts Jira issue keys from git commit subjects since a specified tag. If a Jira instance URL is provided, it outputs Jira links. If Jira credentials are also provided, it fetches issue titles from Jira.
+
+### Usage
+
+```sh
+node extract-git-issues.js --tag v1.1.0
+```
+
+#### Options
+
+- `-t, --tag <string>`: Release tag name, e.g. `v1.1.0` (or `RELEASE_TAG_NAME`)
+- `-k, --projectKey <string>`: Limit matches to a specific Jira project key, e.g. `ODS`
+- `--no-unique`: Keep duplicate issue keys
+- `--no-sort`: Keep the original order from git output
+- `-u, --username <string>`: Jira username for title lookup (or `JIRA_USERNAME`)
+- `-p, --personalAccessToken <string>`: Jira personal access token for title lookup (or `JIRA_PERSONAL_ACCESS_TOKEN`)
+- `-i, --jiraInstanceUrl <string>`: Jira base URL (or `JIRA_INSTANCE_URL`)
+- `-c, --date`: Use the tag date (`git log --since`) instead of tag-to-HEAD range
+- `-j, --json`: Output as JSON (`issueId`, `issueUrl`, and optional `issueTitle`)
+- `-d, --debug`: Enable debug mode
 
 ## documentation-helper.ts
 
