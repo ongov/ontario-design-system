@@ -1016,7 +1016,15 @@ export class OntarioHeader {
 													{this.menuItemState
 														?.slice(0, this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState])
 														.map((item) =>
-															generateMenuItem(item.href, item.title, item.linkIsActive ?? false, item.description),
+															generateMenuItem(
+																item.href,
+																item.title,
+																item.linkIsActive ?? false,
+																item.description,
+																this.language,
+																undefined,
+																item.onClickHandler,
+															),
 														)}
 												</ul>
 											)}
