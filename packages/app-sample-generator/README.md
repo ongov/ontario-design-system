@@ -1,79 +1,320 @@
 # stencil-sample-generator
 
-Automated HTML sample generation for Stencil components using `newSpecPage()`.
+Automated HTML sample generation for Stencil components with **automatic CSS inlining**.
 
-## Setup
+## What it does
 
-Install dependencies:
+Takes your Web Components and generates clean, standalone HTML samples with:
 
-```bash
-npm install
+- ✅ Rendered component markup
+- ✅ Inline CSS styles (automatically transformed from shadow DOM)
+- ✅ No Stencil framework artifacts
+- ✅ Proper indentation and formatting
+- ✅ Ready to use in documentation, Fractal, or anywhere
+
+## Quick Start
+
+### 1. Define your samples
+
+Edit `scripts/sample-config.ts`:
+
+```typescript
+{
+  component: 'ontario-button',
+  html: '<ontario-button type="primary">Click me</ontario-button>',
+  outputFile: 'ontario-button.html',
+  description: 'Primary button example',
+  includeStyles: true  // ← CSS will be inlined
+}
 ```
 
-## Define samples
-
-Edit `scripts/sample-config.ts` to add each component you want rendered. Each entry
-accepts a component tag, the HTML snippet to render, an output filename, and an
-optional description used in the generated page. The runtime script reads
-`scripts/sample-config.js`, so keep both files in sync when adding new samples.
-
-## Generate HTML samples
-
-Run the generator to produce HTML documents under `docs/samples/`:
+### 2. Generate samples
 
 ```bash
 npm run generate-samples
 ```
 
-The script first runs the Stencil build (using components generated via
-`stencil generate` in `src/components/`), then renders each sample with
-`newSpecPage()`, strips Stencil hydration artifacts, wraps the result in a
-simple documentation shell, and writes the output file. Shadow DOM output is
-flattened into regular HTML by stripping the Stencil test harness'
-`<mock:shadow-root>` or `<template shadowroot="open">` wrappers for readability
-in docs.
+### 3. Get clean HTML output
 
-## Conversion process
+Output goes to `docs/samples/`:
 
-The conversion flow is implemented in `scripts/generate-samples.ts` and is orchestrated by the
-`generate-samples` npm script. The key stages are:
+```html
+<style>
+	ontario-button {
+		/* Styles automatically transformed */
+	}
+	.button {
+		padding: 0.6rem 1.25rem;
+	}
+</style>
+<button class="button primary" type="button">Click me</button>
+```
 
-1. Build components into `dist/stencilsample/*.entry.js` via the npm script chain
-   ([package.json#L7](package.json#L7), [package.json#L8](package.json#L8)).
-2. Load the sample list from `scripts/sample-config.js` and resolve per-tag component modules
-   ([scripts/generate-samples.ts#L13](scripts/generate-samples.ts#L13), [scripts/generate-samples.ts#L20](scripts/generate-samples.ts#L20)).
-3. Attach Stencil component metadata before rendering so the test harness can
-   instantiate each component correctly
-   ([scripts/generate-samples.ts#L64](scripts/generate-samples.ts#L64), [scripts/generate-samples.ts#L203](scripts/generate-samples.ts#L203)).
-4. Render each sample with `newSpecPage()`, including any declared component dependencies
-   for nested output
-   ([scripts/generate-samples.ts#L36](scripts/generate-samples.ts#L36), [scripts/generate-samples.ts#L366](scripts/generate-samples.ts#L366)).
-5. Strip hydration attributes and flatten the shadow root wrappers so the output is regular HTML,
-   then resolve default and named slots for nested samples
-   ([scripts/generate-samples.ts#L216](scripts/generate-samples.ts#L216), [scripts/generate-samples.ts#L230](scripts/generate-samples.ts#L230),
-   [scripts/generate-samples.ts#L238](scripts/generate-samples.ts#L238), [scripts/generate-samples.ts#L262](scripts/generate-samples.ts#L262),
-   [scripts/generate-samples.ts#L287](scripts/generate-samples.ts#L287)).
-6. Inline component styles by transforming `:host` selectors into tag names and merging
-   dependency CSS into the document
-   ([scripts/generate-samples.ts#L314](scripts/generate-samples.ts#L314), [scripts/generate-samples.ts#L318](scripts/generate-samples.ts#L318),
-   [scripts/generate-samples.ts#L377](scripts/generate-samples.ts#L377)).
-7. Wrap the cleaned markup in a documentation shell and write each file under `docs/samples/`
-   ([scripts/generate-samples.ts#L333](scripts/generate-samples.ts#L333), [scripts/generate-samples.ts#L382](scripts/generate-samples.ts#L382)).
+## Features
 
-## Sample button screenshot
+### Automatic CSS Inlining
 
-Run the capture script to refresh the sample button screenshot and save it in
-`docs/samples/sample-button.png` (generated locally and not tracked in git):
+- Loads component CSS from your component library
+- Transforms `:host` selectors to component tags
+- Includes dependency styles automatically
+- Toggle with `includeStyles: true/false`
+
+### Clean HTML Output
+
+- No Stencil hydration artifacts (`s-id`, `c-id`, `data-*`)
+- No shadow DOM wrappers
+- Proper indentation
+- Strips outer component wrapper tags
+
+### Smart Rendering
+
+- Uses `renderToString()` for Ontario components (SSR)
+- Uses `newSpecPage()` for local test components
+- Handles nested components and slots
+- Resolves component dependencies
+
+## Configuration
+
+### Sample Definition
+
+Each sample in `scripts/sample-config.ts` has:
+
+```typescript
+interface ComponentSample {
+	component: string; // Component tag name
+	html: string; // HTML to render
+	outputFile: string; // Output filename (e.g., 'button.html')
+	description?: string; // Optional description
+	includeStyles?: boolean; // Include CSS (default: true)
+}
+```
+
+### Example
+
+```typescript
+export const samples: ComponentSample[] = [
+	{
+		component: 'ontario-button',
+		html: '<ontario-button type="primary">Click me</ontario-button>',
+		outputFile: 'ontario-button.html',
+		description: 'Primary button with label',
+		includeStyles: true, // CSS will be inlined
+	},
+	{
+		component: 'ontario-accordion',
+		html: '<ontario-accordion name="Test" accordion-data="[...]"></ontario-accordion>',
+		outputFile: 'ontario-accordion.html',
+		includeStyles: false, // No CSS (HTML only)
+	},
+];
+```
+
+## How It Works
+
+### 1. Component Rendering
+
+**For Ontario components** (from component library):
+
+- Uses `renderToString()` from hydrate build
+- Server-side rendering for production components
+
+**For local test components**:
+
+- Uses `newSpecPage()` from Stencil testing
+- Perfect for prototypes and examples
+
+### 2. Cleanup Process
+
+1. **Strip framework artifacts**: Removes `s-id`, `c-id`, `data-*`, `sc-*` classes
+2. **Flatten shadow DOM**: Removes `<mock:shadow-root>` wrappers
+3. **Resolve slots**: Replaces `<slot>` with actual content
+4. **Format HTML**: Adds proper indentation
+5. **Strip wrapper**: Removes outer `<ontario-button>` tag
+6. **Inline CSS**: Adds component styles with transformed selectors
+
+### 3. CSS Transformation
+
+Shadow DOM styles use `:host`:
+
+```css
+:host {
+	display: block;
+}
+```
+
+Generator transforms to:
+
+```css
+ontario-button {
+	display: block;
+}
+```
+
+Dependency styles are merged automatically.
+
+## Output
+
+### File Structure
+
+```
+docs/samples/
+├── my-component.html
+├── sample-button.html
+├── sample-input.html
+├── sample-card.html
+├── ontario-button.html
+└── ontario-accordion.html
+```
+
+### Example Output (ontario-button.html)
+
+```html
+<style>
+	ontario-button {
+		display: inline-block;
+	}
+	.button {
+		padding: 0.6rem 1.25rem;
+		border-radius: 9999px;
+		/* ... more styles ... */
+	}
+</style>
+<button class="button primary" type="button">Click me</button>
+```
+
+## Use Cases
+
+### 1. Documentation Sites
+
+Point iframes to generated HTML:
+
+```html
+<iframe src="docs/samples/ontario-button.html"></iframe>
+```
+
+### 2. Fractal Integration
+
+Load samples in Fractal templates:
+
+```hbs
+{{> @iframe src="/samples/ontario-button.html" }}
+```
+
+### 3. Style Guides
+
+Use as static examples in design system docs
+
+### 4. Testing
+
+Visual regression testing with clean, reproducible HTML
+
+## Advanced Usage
+
+### Adding New Components
+
+1. Add to `sample-config.ts`:
+
+```typescript
+{
+  component: 'my-new-component',
+  html: '<my-new-component prop="value"></my-new-component>',
+  outputFile: 'my-new-component.html',
+  includeStyles: true
+}
+```
+
+2. Add module path in `generate-samples.ts`:
+
+```typescript
+const componentModulePaths = {
+	'my-new-component': path.join(process.cwd(), 'dist', 'stencilsample', 'my-new-component.entry.js'),
+	// ...
+};
+```
+
+3. Add style path:
+
+```typescript
+const componentStylePaths = {
+	'my-new-component': path.join(process.cwd(), 'src', 'components', 'my-new-component', 'my-new-component.css'),
+	// ...
+};
+```
+
+4. Run generator:
+
+```bash
+npm run generate-samples
+```
+
+### Nested Components
+
+For components with dependencies:
+
+```typescript
+const componentDependencies = {
+	'sample-card': ['sample-card-action'], // Card contains action buttons
+};
+```
+
+Generator loads both and resolves slots automatically.
+
+## Troubleshooting
+
+### Component not rendering
+
+- Check module path in `componentModulePaths`
+- Verify component is built: `npm run build-components`
+
+### Styles not showing
+
+- Check style path in `componentStylePaths`
+- Verify CSS file exists
+- Set `includeStyles: true` in sample config
+
+### Slots not resolving
+
+- Add dependencies in `componentDependencies`
+- Check slot names match between parent/child
+
+## Development
+
+### Build components
+
+```bash
+npm run build-components
+```
+
+### Generate samples
+
+```bash
+npm run generate-samples
+```
+
+### Screenshot sample
 
 ```bash
 npm run screenshot:sample-button
 ```
 
-The resulting image will be written to `docs/samples/sample-button.png` so you
-can preview it locally or add it to downstream documentation.
+## Future Enhancements
 
-## Additional notes
+- [ ] Extract into reusable library package
+- [ ] Support dynamic Fractal rendering
+- [ ] Add batch processing for entire component library
+- [ ] Generate index page with sample browser
+- [ ] Add TypeScript definitions for samples
 
-- A styled input example is available as `sample-input`; mirror the config entry in both `scripts/sample-config.ts` and `scripts/sample-config.js` when adding more examples so the generator picks them up.
-- Nested samples are available as `sample-card` and `sample-card-action` to show component composition in the generated HTML.
-- Stencil emits a `tsconfig.json "include" required` warning in dev builds; the current setup still builds and generates samples successfully.
+## License
+
+ISC
+
+    K -->|final HTML| L["writeFileSync()"]
+
+    L -->|saves to| M["docs/samples/<br/>component-name.html"]
+
+    style D fill:#e1f5ff
+    style E fill:#f3e5f5
+    style G fill:#fff3e0
+    style H fill:#e8f5e9
+    style M fill:#fce4ec
