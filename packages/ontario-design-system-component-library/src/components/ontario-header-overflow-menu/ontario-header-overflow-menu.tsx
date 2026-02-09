@@ -566,7 +566,13 @@ export class OntarioHeaderOverflowMenu {
 
 							return (
 								<li>
-									<a class={anchorClass} href={item.href} role="menuitem" tabIndex={isDisabled ? -1 : 0}>
+									<a
+										class={anchorClass}
+										href={item.href}
+										role="menuitem"
+										tabIndex={isDisabled ? -1 : 0}
+										onClick={item.onClickHandler}
+									>
 										{hasIcon && IconComponent ? (
 											<span class="ontario-menu-item__label-container">
 												<IconComponent />
