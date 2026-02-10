@@ -29,6 +29,16 @@
 	"module": "./dist/component-library/index.t.ts",
 	"types": "./dist/component-library/index.t.ts",
 	"styles": "./dist/component-library/styles/theme.scss",
+	"exports": {
+		".": {
+			"types": "./dist/component-library/types/angular-component-library.d.ts",
+			"default": "./dist/component-library/fesm2022/angular-component-library.mjs"
+		},
+		"./styles/theme.scss": "./dist/component-library/styles/theme.scss",
+		"./styles/theme": "./dist/component-library/styles/theme.scss",
+		"./styles/slotted-styles/*": "./dist/component-library/styles/slotted-styles/*",
+		"./styles/*": "./dist/component-library/styles/*"
+	},
 	"files": [
 		"dist/",
 		"projects/component-library/src",
