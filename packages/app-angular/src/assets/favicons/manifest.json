@@ -1,7 +1,7 @@
 {
-	"name": "Ontario Design System Angular demo",
-	"short_name": "Form demo Angular",
-	"description": "An Angular POC to test the Ontario Design System Web Components",
+	"name": "Application name",
+	"short_name": "App name",
+	"description": "Application description",
 	"icons": [
 		{
 			"src": "./favicon-192x192.png",
