@@ -17,7 +17,7 @@ To use the Angular Component Library, follow these steps:
 2. Import the `ComponentLibraryModule`, or whichever specific component you wish to use into your root module. The `ComponentLibraryModule` import will include all the Ontario Design System web components.
 
    ```typescript
-   import { ComponentLibraryModule } from '@ongov/ontario-design-system-component-library-angular/dist/component-library';
+   import { ComponentLibraryModule } from '@ongov/ontario-design-system-component-library-angular';
 
    @NgModule({
    	imports: [ComponentLibraryModule],
