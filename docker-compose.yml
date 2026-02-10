@@ -1,9 +1,0 @@
-services:
-  vrt-runner:
-    build:
-      context: .
-      dockerfile: Dockerfile.vrt
-    working_dir: /app/packages/app-nextjs
-    volumes:
-      - .:/app
-    command: sh -c "pnpm install --frozen-lockfile && pnpm run build-libs && pnpm run build-apps && pnpm run test:vrt"

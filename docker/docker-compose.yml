@@ -1,0 +1,72 @@
+# What this file is:
+# - Docker Compose configuration for local Playwright E2E/VRT execution.
+#
+# What it does:
+# - Defines a shared runner template with the repository bind-mounted at `/app`.
+# - Uses named volumes for dependency paths so installs can be reused between runs.
+# - Configures entrypoint and environment required for host UID/GID alignment and
+#   Playwright argument forwarding (`PLAYWRIGHT_ARGS_B64`).
+#
+# Why we use it:
+# - Keeps local test execution aligned with CI scripts and commands.
+# - Avoids repeated dependency installation cost in ephemeral containers.
+# - Reduces permission issues on bind-mounted files.
+
+# Shared baseline for Playwright runner services.
+x-playwright-runner: &playwright-runner
+  build:
+    context: ..
+    dockerfile: docker/playwright/Dockerfile
+  working_dir: /app
+  environment:
+    PUID: ${PUID:-1000}
+    PGID: ${PGID:-1000}
+    PLAYWRIGHT_ARGS_B64: ${PLAYWRIGHT_ARGS_B64:-}
+  entrypoint: ['/app/scripts/docker-entrypoint.sh']
+  volumes:
+    # Bind mount the full repository for source + scripts access.
+    - ..:/app
+    # Keep dependency stores in named volumes to avoid reinstall churn.
+    - node_modules_root:/app/node_modules
+    - pnpm_store:/app/.pnpm-store
+    - node_modules_app_angular:/app/packages/app-angular/node_modules
+    - node_modules_app_nextjs:/app/packages/app-nextjs/node_modules
+    - node_modules_app_react:/app/packages/app-react/node_modules
+    - node_modules_app_web_components_documentation:/app/packages/app-web-components-documentation/node_modules
+    - node_modules_component_library:/app/packages/ontario-design-system-component-library/node_modules
+    - node_modules_component_library_angular:/app/packages/ontario-design-system-component-library-angular/node_modules
+    - node_modules_component_library_react:/app/packages/ontario-design-system-component-library-react/node_modules
+    - node_modules_complete_styles:/app/packages/ontario-design-system-complete-styles/node_modules
+    - node_modules_design_tokens:/app/packages/ontario-design-system-design-tokens/node_modules
+    - node_modules_global_styles:/app/packages/ontario-design-system-global-styles/node_modules
+
+services:
+  # Runs Stencil component library Playwright E2E tests.
+  stencil-e2e-runner:
+    <<: *playwright-runner
+    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && sh /app/scripts/docker-playwright-runner.sh pnpm --filter @ongov/ontario-design-system-component-library run test:e2e"
+
+  # Runs app-level Playwright E2E tests.
+  app-e2e-runner:
+    <<: *playwright-runner
+    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && sh /app/scripts/docker-playwright-runner.sh pnpm -w run test:e2e:apps"
+
+  # Runs app-level Playwright visual regression tests.
+  app-vrt-runner:
+    <<: *playwright-runner
+    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && sh /app/scripts/docker-playwright-runner.sh pnpm -w run test:vrt"
+
+# Named volumes used by mounted workspace dependency paths.
+volumes:
+  node_modules_root:
+  pnpm_store:
+  node_modules_app_angular:
+  node_modules_app_nextjs:
+  node_modules_app_react:
+  node_modules_app_web_components_documentation:
+  node_modules_component_library:
+  node_modules_component_library_angular:
+  node_modules_component_library_react:
+  node_modules_complete_styles:
+  node_modules_design_tokens:
+  node_modules_global_styles:

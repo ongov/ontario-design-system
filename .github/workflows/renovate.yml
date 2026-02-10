@@ -6,8 +6,6 @@ on:
     - cron: '0 0 * * 0'
   # Allow manual triggering from the Actions tab
   workflow_dispatch:
-  # Optionally enable PR trigger
-  pull_request:
 
 jobs:
   run-renovate:
