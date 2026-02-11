@@ -45,7 +45,7 @@ export class OntarioHeader {
 	@Prop() type?: OntarioHeaderType = 'application';
 
 	/**
-	 * Information pertaining to the application and service Ontario headers.
+	 * Information pertaining to the application and ServiceOntario headers.
 	 *
 	 * For the 'application' header type, this includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.
 	 *
