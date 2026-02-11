@@ -12,6 +12,7 @@ export const config: Config = {
 	sourceMap: true,
 	plugins: [
 		sass({
+			// @ts-ignore - `@stencil/sass` typings do not include Sass `pkgImporter`, but runtime supports it.
 			pkgImporter: new NodePackageImporter(),
 		}),
 		inlineSvg(),
