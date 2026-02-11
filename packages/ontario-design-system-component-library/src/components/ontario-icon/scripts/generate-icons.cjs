@@ -65,21 +65,6 @@ const getIconComponentTemplate = (svgObject, iconName) => {
 	let svgElement = stringify(svgObject);
 	const hasColour = useIconColour(iconName);
 
-	/* Format SVG with proper line breaks and indentation */
-	// Add line break after opening svg tag
-	svgElement = svgElement.replace(/<svg\s+/, '<svg\n\t\t\t\t\t');
-
-	// Add line breaks between attributes
-	svgElement = svgElement.replace(/\s+class=/g, '\n\t\t\t\t\tclass=');
-	svgElement = svgElement.replace(/\s+role=/g, '\n\t\t\t\t\trole=');
-	svgElement = svgElement.replace(/\s+xmlns=/g, '\n\t\t\t\t\txmlns=');
-	svgElement = svgElement.replace(/\s+viewBox=/g, '\n\t\t\t\t\tviewBox=');
-	svgElement = svgElement.replace(/\s+id=/g, '\n\t\t\t\t\tid=');
-
-	// Format path and closing tag
-	svgElement = svgElement.replace(/>\s*<path/g, '\n\t\t\t\t>\n\t\t\t\t\t<path');
-	svgElement = svgElement.replace(/<\/svg>/g, '\n\t\t\t\t</svg>');
-
 	/* If custom color exists, assign style to SVG element */
 	const customColourRegex = /class="svg-icon"/gm;
 	if (hasColour) {
@@ -143,24 +128,28 @@ export class ${toPascalCase(iconName)} implements ${hasColour ? 'IconWithColour'
 	 * Watch for changes in the \`iconWidth\` variable for validation purpose.
 	 * If the user input is not a number or is a negative number then \`iconWidth\` will be set to its default (24).
 	 */
-	@Watch('iconWidth')
-	validateWidth() {
-		if (isNaN(this.iconWidth) || (!isNaN(this.iconWidth) && this.iconWidth <= 0)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' icon-width ')
-				.addRegularText('on')
-				.addMonospaceText(' <${iconName}> ')
-				.addRegularText(\`\${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of\`)
-				.addMonospaceText(' 24px ')
-				.addRegularText('was assumed.')
-				.printMessage();
-			this.iconWidthState = 24;
-		} else {
-			this.iconWidthState = this.iconWidth;
-		}
-	}
+	   @Watch('iconWidth')
+	   validateWidth() {
+		   // Validate against preset IconSize values
+		   const allowedSizes = Object.values(IconSize);
+		   if (!allowedSizes.includes(this.iconWidth)) {
+			   const message = new ConsoleMessageClass();
+			   message
+				   .addDesignSystemTag()
+				   .addMonospaceText(' icon-width ')
+				   .addRegularText('on')
+				   .addMonospaceText(' <${iconName}> ')
+				   .addRegularText('was set to an invalid value; only the following sizes are allowed:')
+				   .addMonospaceText(\` \${allowedSizes.join(', ')} \`)
+				   .addRegularText('The default size of')
+				   .addMonospaceText(' 24px ')
+				   .addRegularText('was assumed.')
+				   .printMessage();
+			   this.iconWidthState = 24;
+		   } else {
+			   this.iconWidthState = this.iconWidth;
+		   }
+	   }
 	${
 		hasColour
 			? `
@@ -182,9 +171,9 @@ export class ${toPascalCase(iconName)} implements ${hasColour ? 'IconWithColour'
 	@State() iconCustomColourState: string;
 
 	/**
-	 * Watch for changes in the \`colour\` variable for validation purpose.
-	 * If the user input doesn't match one of the enum values then \`colour\` will be set to its default (\`black\`).
-	 * If a match is found in one of the enum values then \`colour\` will be set to the matching enum value.
+	 * Watch for changes in the colour variable for validation purpose.
+	 * If the user input doesn't match one of the enum values then colour will be set to its default (black).
+	 * If a match is found in one of the enum values then colour will be set to the matching enum value.
 	 */
 	@Watch('colour')
 	validateColour() {
