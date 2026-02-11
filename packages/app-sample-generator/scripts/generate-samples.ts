@@ -1,7 +1,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
-import { BUILD } from '@stencil/core/internal/app-data';
 import { renderToString } from '@ongov/ontario-design-system-component-library/hydrate';
+
 type ComponentSample = {
 	component: string;
 	html: string;
@@ -12,29 +12,7 @@ type ComponentSample = {
 
 import { samples } from './sample-config.js';
 
-import { mutationObserverMock } from '../utils/tests/mutation-observer.mock';
-
-global.MutationObserver = mutationObserverMock;
-
 /**
- * STENCIL RUNTIME CONFIGURATION
- * Disable Stencil's lazy loading and async queue features for SSR rendering.
- * This tells Stencil to render components synchronously without waiting for
- * async initialization, which is necessary for generating static HTML samples.
- */
-BUILD.lazyLoad = false;
-BUILD.asyncLoading = false;
-BUILD.taskQueue = false;
-
-/**
- * COMPONENT MODULE PATHS
- * Maps component tag names to their JavaScript module paths in node_modules.
- * Ontario components are loaded from the installed @ongov/ontario-design-system-
- * component-library package.
- */
-
-/**
- * COMPONENT STYLE PATHS
  * Dynamically generates CSS file paths for Ontario components.
  * All Ontario components follow the same directory structure in the component library.
  */
@@ -53,14 +31,6 @@ function getComponentStylePath(tagName: string): string {
 }
 
 /**
- * COMPONENT DEPENDENCIES
- * Maps components to their dependent components. If component A uses component B
- * internally, B's styles will be included when generating A's sample.
- */
-const componentDependencies: Record<string, string[]> = {};
-
-/**
- * HTML CLEANING & PROCESSING
  * Series of functions to clean up rendered HTML by removing Stencil framework
  * markers and artifacts that are only needed during rendering.
  */
@@ -98,36 +68,6 @@ function flattenShadowRoot(markup: string): string {
 		.replace(/<template\b[^>]*shadowroot[^>]*>/gi, '')
 		.replace(/<\/template>/gi, '');
 }
-
-/**
- * Extracts the light DOM content from within a component's opening and closing tags.
- * This content was passed into the component and needs to be resolved to replace <slot> tags.
- */
-function extractSlotContent(renderedMarkup: string, tagName: string): string | null {
-	const match = renderedMarkup.match(new RegExp(`<${tagName}\\b[^>]*>([\\s\\S]*?)</${tagName}>`, 'i'));
-	if (!match) {
-		return null;
-	}
-
-	let innerContent = match[1];
-	innerContent = innerContent.replace(/<mock:shadow-root\b[^>]*>[\s\S]*?<\/mock:shadow-root>/i, '');
-	innerContent = innerContent.replace(/<template\b[^>]*shadowroot[^>]*>[\s\S]*?<\/template>/i, '');
-
-	const trimmed = innerContent.trim();
-	return trimmed ? trimmed : null;
-}
-
-/**
- * Escapes special regex characters to safely use strings in regex patterns.
- */
-function escapeRegex(value: string): string {
-	return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-/**
- * CSS PROCESSING
- * Functions to load, transform, and clean CSS for inlining into HTML output.
- */
 
 /**
  * Transforms :host selectors in component CSS to the actual component tag name.
@@ -173,24 +113,14 @@ function loadComponentStyles(tagName: string): string {
 }
 
 /**
- * DOCUMENT BUILDING
  * Wraps HTML markup with inline CSS styles to create a self-contained document.
- * This makes the generated HTML file completely standalone.
  */
 function buildDocument(sample: ComponentSample, markup: string): string {
-	// Inline CSS if requested
 	if (sample.includeStyles !== false) {
 		const css = loadComponentStyles(sample.component);
 
-		// Load dependency styles too
-		const deps = componentDependencies[sample.component] ?? [];
-		const depStyles = deps.map((dep) => loadComponentStyles(dep)).filter(Boolean);
-
-		const allStyles = [css, ...depStyles].filter(Boolean).join('\n\n');
-
-		if (allStyles) {
-			// Add newline after style block for cleaner separation
-			return `<style>\n${allStyles}\n</style>\n\n${markup}`;
+		if (css) {
+			return `<style>\n${css}\n</style>\n\n${markup}`;
 		}
 	}
 
@@ -198,7 +128,6 @@ function buildDocument(sample: ComponentSample, markup: string): string {
 }
 
 /**
- * HTML FORMATTING
  * Formats HTML with proper indentation and removes boilerplate markup.
  * Optionally strips the outer component tag and CSS style tags.
  */
@@ -267,7 +196,6 @@ function formatHtml(html: string, stripOuterComponent: boolean = false, removeSt
 }
 
 /**
- * SAMPLE RENDERING
  * Renders Ontario Design System components using server-side rendering (renderToString)
  * for fast, clean HTML output.
  */
@@ -278,7 +206,7 @@ async function renderSample(sample: ComponentSample): Promise<string> {
 	});
 
 	// Extract just the rendered HTML from the hydrate result
-	const renderedMarkup = stripHydrationArtifacts(flattenShadowRoot(hydrated.html));
+	const renderedMarkup = stripHydrationArtifacts(flattenShadowRoot(hydrated.html ?? ''));
 	const formattedHtml = formatHtml(renderedMarkup, true, true);
 
 	// Build final document with CSS if needed
@@ -286,7 +214,6 @@ async function renderSample(sample: ComponentSample): Promise<string> {
 }
 
 /**
- * MAIN ENTRY POINT
  * Orchestrates the entire sample generation process:
  * 1. Creates output directory
  * 2. Renders each sample component
@@ -297,38 +224,37 @@ async function generateSamples(): Promise<void> {
 	const outputDir = path.resolve(process.cwd(), 'docs', 'samples');
 	mkdirSync(outputDir, { recursive: true });
 
-	console.log('\n🚀 Generating component samples...\n');
+	console.log('\nGenerating component samples...\n');
 
 	let successCount = 0;
 	let failCount = 0;
 
 	for (const sample of samples) {
 		try {
-			console.log(`📦 Rendering ${sample.component}...`);
+			console.log(`Rendering ${sample.component}...`);
 			const html = await renderSample(sample);
 			const outputPath = path.join(outputDir, sample.outputFile);
 			writeFileSync(outputPath, `${html}\n`, 'utf8');
 
 			const hasStyles = sample.includeStyles !== false;
 			const styleMsg = hasStyles ? '(with CSS)' : '';
-			console.log(`   ✅ ${sample.outputFile} ${styleMsg}`);
+			console.log(`   ${sample.outputFile} ${styleMsg}`);
 			successCount++;
 		} catch (error) {
-			console.error(`   ❌ Failed: ${error instanceof Error ? error.message : String(error)}`);
+			console.error(`   Failed: ${error instanceof Error ? error.message : String(error)}`);
 			failCount++;
 		}
 	}
 
-	console.log(`\n📊 Summary:`);
-	console.log(`   ✅ ${successCount} samples generated`);
+	console.log('\nSummary:');
+	console.log(`   ${successCount} samples generated`);
 	if (failCount > 0) {
-		console.log(`   ❌ ${failCount} failed`);
+		console.log(`   ${failCount} failed`);
 	}
-	console.log(`   📁 Output: ${outputDir}\n`);
+	console.log(`   Output: ${outputDir}\n`);
 }
 
 /**
- * EXECUTION
  * Run the sample generator and handle errors.
  */
 generateSamples().catch((error) => {
