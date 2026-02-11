@@ -23,6 +23,12 @@ export class OntarioIconMastercardAlt implements Icon {
 	@State() iconWidthState: number;
 
 	/**
+	 * Whether the icon should be hidden from assistive technologies.
+	 * When set to "true", the icon will have aria-hidden="true" on the SVG element.
+	 */
+	@Prop() ariaHidden: string | null = null;
+
+	/**
 	 * Watch for changes in the `iconWidth` variable for validation purpose.
 	 * If the user input is not a number or is a negative number then `iconWidth` will be set to its default (24).
 	 */
@@ -36,9 +42,7 @@ export class OntarioIconMastercardAlt implements Icon {
 				.addRegularText('on')
 				.addMonospaceText(' <ontario-icon-mastercard-alt> ')
 				.addRegularText(
-					`${
-						isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'
-					}; only a positive number is allowed. The default size of`,
+					`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`,
 				)
 				.addMonospaceText(' 24px ')
 				.addRegularText('was assumed.')
@@ -89,7 +93,14 @@ export class OntarioIconMastercardAlt implements Icon {
 				class={`ontario-icon ontario-icon--width-${this.iconWidthState}`}
 				style={{ width: `${this.iconWidthState}px` }}
 			>
-				<svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="mastercard-alt">
+				<svg
+					class="svg-icon"
+					role="img"
+					aria-hidden={this.ariaHidden}
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					id="mastercard-alt"
+				>
 					<circle cx="8" cy="12" r="6.5" fill="#eb001b" />
 					<circle cx="16" cy="12" r="6.5" fill="#f79e1b" />
 					<path d="M12 17.124S9.5 15.5 9.5 12 12 6.876 12 6.876 14.5 8.5 14.5 12 12 17.124 12 17.124z" fill="#ff5f00" />

@@ -25,6 +25,12 @@ export class OntarioIconCloseHeader implements IconWithColour {
 	@State() iconWidthState: number;
 
 	/**
+	 * Whether the icon should be hidden from assistive technologies.
+	 * When set to "true", the icon will have aria-hidden="true" on the SVG element.
+	 */
+	@Prop() ariaHidden: string | null = null;
+
+	/**
 	 * Watch for changes in the `iconWidth` variable for validation purpose.
 	 * If the user input is not a number or is a negative number then `iconWidth` will be set to its default (24).
 	 */
@@ -38,9 +44,7 @@ export class OntarioIconCloseHeader implements IconWithColour {
 				.addRegularText('on')
 				.addMonospaceText(' <ontario-icon-close-header> ')
 				.addRegularText(
-					`${
-						isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'
-					}; only a positive number is allowed. The default size of`,
+					`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`,
 				)
 				.addMonospaceText(' 24px ')
 				.addRegularText('was assumed.')

@@ -25,6 +25,12 @@ export class OntarioIconSortAscending implements IconWithColour {
 	@State() iconWidthState: number;
 
 	/**
+	 * Whether the icon should be hidden from assistive technologies.
+	 * When set to "true", the icon will have aria-hidden="true" on the SVG element.
+	 */
+	@Prop() ariaHidden: string | null = null;
+
+	/**
 	 * Watch for changes in the `iconWidth` variable for validation purpose.
 	 * If the user input is not a number or is a negative number then `iconWidth` will be set to its default (24).
 	 */

@@ -120,10 +120,11 @@ Example of a bookmark icon, where the user is is passing a colour property of 'G
 
 ## Properties
 
-| Property    | Attribute    | Description                                                                                                         | Type                                                  | Default   |
-| ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | --------- |
-| `colour`    | `colour`     | Set the icon's colour.                                                                                              | `"black" \| "blue" \| "grey" \| "inherit" \| "white"` | `'black'` |
-| `iconWidth` | `icon-width` | The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio. | `16 \| 24 \| 32 \| 48`                                | `24`      |
+| Property     | Attribute     | Description                                                                                                                                  | Type                                                  | Default   |
+| ------------ | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | --------- |
+| `ariaHidden` | `aria-hidden` | Whether the icon should be hidden from assistive technologies. When set to "true", the icon will have aria-hidden="true" on the SVG element. | `null \| string`                                      | `null`    |
+| `colour`     | `colour`      | Set the icon's colour.                                                                                                                       | `"black" \| "blue" \| "grey" \| "inherit" \| "white"` | `'black'` |
+| `iconWidth`  | `icon-width`  | The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.                          | `16 \| 24 \| 32 \| 48`                                | `24`      |
 
 ---
 

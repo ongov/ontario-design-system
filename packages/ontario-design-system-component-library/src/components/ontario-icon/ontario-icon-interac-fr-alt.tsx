@@ -23,6 +23,12 @@ export class OntarioIconInteracFrAlt implements Icon {
 	@State() iconWidthState: number;
 
 	/**
+	 * Whether the icon should be hidden from assistive technologies.
+	 * When set to "true", the icon will have aria-hidden="true" on the SVG element.
+	 */
+	@Prop() ariaHidden: string | null = null;
+
+	/**
 	 * Watch for changes in the `iconWidth` variable for validation purpose.
 	 * If the user input is not a number or is a negative number then `iconWidth` will be set to its default (24).
 	 */
@@ -36,9 +42,7 @@ export class OntarioIconInteracFrAlt implements Icon {
 				.addRegularText('on')
 				.addMonospaceText(' <ontario-icon-interac-fr-alt> ')
 				.addRegularText(
-					`${
-						isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'
-					}; only a positive number is allowed. The default size of`,
+					`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`,
 				)
 				.addMonospaceText(' 24px ')
 				.addRegularText('was assumed.')
@@ -89,7 +93,14 @@ export class OntarioIconInteracFrAlt implements Icon {
 				class={`ontario-icon ontario-icon--width-${this.iconWidthState}`}
 				style={{ width: `${this.iconWidthState}px` }}
 			>
-				<svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="interac-fr-alt">
+				<svg
+					class="svg-icon"
+					role="img"
+					aria-hidden={this.ariaHidden}
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					id="interac-fr-alt"
+				>
 					<path
 						d="M18.463 17.052H5.548a1.62 1.62 0 0 1-1.304-.693v5.093c0 .733.57 1.304 1.304 1.304h12.915c.733 0 1.304-.57 1.304-1.304V16.36c-.285.448-.774.693-1.304.693z"
 						fill="#636466"

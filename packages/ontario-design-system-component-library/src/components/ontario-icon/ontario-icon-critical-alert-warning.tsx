@@ -25,6 +25,12 @@ export class OntarioIconCriticalAlertWarning implements IconWithColour {
 	@State() iconWidthState: number;
 
 	/**
+	 * Whether the icon should be hidden from assistive technologies.
+	 * When set to "true", the icon will have aria-hidden="true" on the SVG element.
+	 */
+	@Prop() ariaHidden: string | null = null;
+
+	/**
 	 * Watch for changes in the `iconWidth` variable for validation purpose.
 	 * If the user input is not a number or is a negative number then `iconWidth` will be set to its default (24).
 	 */
@@ -38,9 +44,7 @@ export class OntarioIconCriticalAlertWarning implements IconWithColour {
 				.addRegularText('on')
 				.addMonospaceText(' <ontario-icon-critical-alert-warning> ')
 				.addRegularText(
-					`${
-						isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'
-					}; only a positive number is allowed. The default size of`,
+					`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`,
 				)
 				.addMonospaceText(' 24px ')
 				.addRegularText('was assumed.')
@@ -128,6 +132,7 @@ export class OntarioIconCriticalAlertWarning implements IconWithColour {
 					class="svg-icon"
 					style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}
 					role="img"
+					aria-hidden={this.ariaHidden}
 					viewBox="0 0 24 24"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
