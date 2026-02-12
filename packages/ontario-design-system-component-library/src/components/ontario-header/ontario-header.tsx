@@ -68,7 +68,7 @@ export class OntarioHeader {
 	 *
 	 *  <ontario-header
 	 *    type="serviceOntario"
-	 *    application-header-info='{\"title\": \"Service Ontario\"}'
+	 *    application-header-info='{\"title\": \"ServiceOntario\"}'
 	 *	>
 	 *  </ontario-header>
 	 */
