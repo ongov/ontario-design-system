@@ -32,9 +32,6 @@ components.d.ts
 # stencil-generated
 **/stencil-generated/
 
-# Generated icon components (maintain original formatting)
-packages/ontario-design-system-component-library/src/components/ontario-icon/ontario-icon-*.tsx
-
 # component-lib-react
 createComponent.tsx
 interfaces.ts
