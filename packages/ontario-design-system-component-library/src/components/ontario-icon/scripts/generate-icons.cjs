@@ -171,9 +171,9 @@ export class ${toPascalCase(iconName)} implements ${hasColour ? 'IconWithColour'
 	@State() iconCustomColourState: string;
 
 	/**
-	 * Watch for changes in the colour variable for validation purpose.
-	 * If the user input doesn't match one of the enum values then colour will be set to its default (black).
-	 * If a match is found in one of the enum values then colour will be set to the matching enum value.
+	 * Watch for changes in the \`colour\` variable for validation purpose.
+	 * If the user input doesn't match one of the enum values then \`colour\` will be set to its default (\`black\`).
+	 * If a match is found in one of the enum values then \`colour\` will be set to the matching enum value.
 	 */
 	@Watch('colour')
 	validateColour() {
