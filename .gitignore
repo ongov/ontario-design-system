@@ -49,5 +49,9 @@ packages/docusaurus
 packages/app-angular/src/assets/fonts
 packages/app-nextjs/public/assets/fonts
 
-# Playwright reports
+# Playwright reports and test results (global)
 packages/ontario-design-system-component-library/playwright-report/
+packages/**/playwright-report/
+packages/**/test-results/
+packages/**/blob-report/
+packages/**/playwright/.cache/
