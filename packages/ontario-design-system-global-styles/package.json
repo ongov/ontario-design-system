@@ -59,9 +59,6 @@
 			"style": "./dist/styles/css/compiled/ontario-theme.min.css",
 			"sass": "./dist/styles/scss/theme.scss"
 		},
-		"./dist/styles/scss/theme.scss": "./dist/styles/scss/theme.scss",
-		"./dist/styles/scss/*": "./dist/styles/scss/*",
-		"./dist/styles/scss/*/*": "./dist/styles/scss/*/*",
 		"./styles/css/compiled/ontario-theme.min.css": "./dist/styles/css/compiled/ontario-theme.min.css",
 		"./styles/scss/theme.scss": "./dist/styles/scss/theme.scss",
 		"./styles/scss/theme": "./dist/styles/scss/theme.scss",
