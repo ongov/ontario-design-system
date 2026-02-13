@@ -1,14 +1,6 @@
 /* tslint:disable */
 /* auto-generated angular directive proxies */
-import {
-	ChangeDetectionStrategy,
-	ChangeDetectorRef,
-	Component,
-	ElementRef,
-	EventEmitter,
-	Output,
-	NgZone,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Output, NgZone } from '@angular/core';
 
 import { ProxyCmp } from './angular-component-lib/utils';
 
@@ -19,25 +11,21 @@ import { Components } from '@ongov/ontario-design-system-component-library';
   inputs: ['accordionData', 'expandCollapseButton', 'language', 'name']
 })
 @Component({
-	selector: 'ontario-accordion',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['accordionData', 'expandCollapseButton', 'language', 'name'],
-	outputs: ['accordionChange'],
-	standalone: false,
+  selector: 'ontario-accordion',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['accordionData', 'expandCollapseButton', 'language', 'name'],
+  outputs: ['accordionChange'],
+  standalone: false
 })
 export class OntarioAccordion {
-	protected el: HTMLOntarioAccordionElement;
-	@Output() accordionChange = new EventEmitter<CustomEvent<IOntarioAccordionAccordionChangeDetail>>();
-	constructor(
-		c: ChangeDetectorRef,
-		r: ElementRef,
-		protected z: NgZone,
-	) {
-		c.detach();
-		this.el = r.nativeElement;
-	}
+  protected el: HTMLOntarioAccordionElement;
+  @Output() accordionChange = new EventEmitter<CustomEvent<IOntarioAccordionAccordionChangeDetail>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
 }
 
 
@@ -55,12 +43,12 @@ export declare interface OntarioAccordion extends Components.OntarioAccordion {
   inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour']
 })
 @Component({
-	selector: 'ontario-aside',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
-	standalone: false,
+  selector: 'ontario-aside',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
+  standalone: false
 })
 export class OntarioAside {
   protected el: HTMLOntarioAsideElement;
@@ -78,12 +66,12 @@ export declare interface OntarioAside extends Components.OntarioAside {}
   inputs: ['language']
 })
 @Component({
-	selector: 'ontario-back-to-top',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['language'],
-	standalone: false,
+  selector: 'ontario-back-to-top',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['language'],
+  standalone: false
 })
 export class OntarioBackToTop {
   protected el: HTMLOntarioBackToTopElement;
@@ -101,12 +89,12 @@ export declare interface OntarioBackToTop extends Components.OntarioBackToTop {}
   inputs: ['ariaLabelText', 'colour', 'label']
 })
 @Component({
-	selector: 'ontario-badge',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['ariaLabelText', 'colour', 'label'],
-	standalone: false,
+  selector: 'ontario-badge',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['ariaLabelText', 'colour', 'label'],
+  standalone: false
 })
 export class OntarioBadge {
   protected el: HTMLOntarioBadgeElement;
@@ -124,12 +112,12 @@ export declare interface OntarioBadge extends Components.OntarioBadge {}
   inputs: ['attribution', 'byline', 'quote']
 })
 @Component({
-	selector: 'ontario-blockquote',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['attribution', 'byline', 'quote'],
-	standalone: false,
+  selector: 'ontario-blockquote',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['attribution', 'byline', 'quote'],
+  standalone: false
 })
 export class OntarioBlockquote {
   protected el: HTMLOntarioBlockquoteElement;
@@ -147,12 +135,12 @@ export declare interface OntarioBlockquote extends Components.OntarioBlockquote 
   inputs: ['ariaLabelText', 'elementId', 'htmlType', 'label', 'type']
 })
 @Component({
-	selector: 'ontario-button',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['ariaLabelText', 'elementId', 'htmlType', 'label', 'type'],
-	standalone: false,
+  selector: 'ontario-button',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['ariaLabelText', 'elementId', 'htmlType', 'label', 'type'],
+  standalone: false
 })
 export class OntarioButton {
   protected el: HTMLOntarioButtonElement;
@@ -170,12 +158,12 @@ export declare interface OntarioButton extends Components.OntarioButton {}
   inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour']
 })
 @Component({
-	selector: 'ontario-callout',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
-	standalone: false,
+  selector: 'ontario-callout',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['content', 'headingContent', 'headingContentType', 'headingType', 'highlightColour'],
+  standalone: false
 })
 export class OntarioCallout {
   protected el: HTMLOntarioCalloutElement;
@@ -193,24 +181,12 @@ export declare interface OntarioCallout extends Components.OntarioCallout {}
   inputs: ['ariaLabelText', 'cardLink', 'description', 'headerColour', 'headingLevel', 'horizontalImagePositionType', 'horizontalImageSizeType', 'image', 'imageAltText', 'label', 'layoutDirection']
 })
 @Component({
-	selector: 'ontario-card',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: [
-		'ariaLabelText',
-		'cardLink',
-		'description',
-		'headerColour',
-		'headingLevel',
-		'horizontalImagePositionType',
-		'horizontalImageSizeType',
-		'image',
-		'imageAltText',
-		'label',
-		'layoutDirection',
-	],
-	standalone: false,
+  selector: 'ontario-card',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['ariaLabelText', 'cardLink', 'description', 'headerColour', 'headingLevel', 'horizontalImagePositionType', 'horizontalImageSizeType', 'image', 'imageAltText', 'label', 'layoutDirection'],
+  standalone: false
 })
 export class OntarioCard {
   protected el: HTMLOntarioCardElement;
@@ -228,12 +204,12 @@ export declare interface OntarioCard extends Components.OntarioCard {}
   inputs: ['cardsPerRow']
 })
 @Component({
-	selector: 'ontario-card-collection',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['cardsPerRow'],
-	standalone: false,
+  selector: 'ontario-card-collection',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['cardsPerRow'],
+  standalone: false
 })
 export class OntarioCardCollection {
   protected el: HTMLOntarioCardCollectionElement;
@@ -251,40 +227,24 @@ export declare interface OntarioCardCollection extends Components.OntarioCardCol
   inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required']
 })
 @Component({
-	selector: 'ontario-checkboxes',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: [
-		'caption',
-		'customOnBlur',
-		'customOnChange',
-		'customOnFocus',
-		'errorMessage',
-		'hintExpander',
-		'hintText',
-		'language',
-		'name',
-		'options',
-		'required',
-	],
-	outputs: ['checkboxOnChange', 'checkboxOnBlur', 'checkboxOnFocus', 'inputErrorOccurred'],
-	standalone: false,
+  selector: 'ontario-checkboxes',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required'],
+  outputs: ['checkboxOnChange', 'checkboxOnBlur', 'checkboxOnFocus', 'inputErrorOccurred'],
+  standalone: false
 })
 export class OntarioCheckboxes {
-	protected el: HTMLOntarioCheckboxesElement;
-	@Output() checkboxOnChange = new EventEmitter<CustomEvent<IOntarioCheckboxesRadioAndCheckboxChangeEvent>>();
-	@Output() checkboxOnBlur = new EventEmitter<CustomEvent<IOntarioCheckboxesInputFocusBlurEvent>>();
-	@Output() checkboxOnFocus = new EventEmitter<CustomEvent<IOntarioCheckboxesInputFocusBlurEvent>>();
-	@Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ errorMessage: string }>>();
-	constructor(
-		c: ChangeDetectorRef,
-		r: ElementRef,
-		protected z: NgZone,
-	) {
-		c.detach();
-		this.el = r.nativeElement;
-	}
+  protected el: HTMLOntarioCheckboxesElement;
+  @Output() checkboxOnChange = new EventEmitter<CustomEvent<IOntarioCheckboxesRadioAndCheckboxChangeEvent>>();
+  @Output() checkboxOnBlur = new EventEmitter<CustomEvent<IOntarioCheckboxesInputFocusBlurEvent>>();
+  @Output() checkboxOnFocus = new EventEmitter<CustomEvent<IOntarioCheckboxesInputFocusBlurEvent>>();
+  @Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ errorMessage: string }>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
 }
 
 
@@ -315,12 +275,12 @@ export declare interface OntarioCheckboxes extends Components.OntarioCheckboxes 
   inputs: ['content']
 })
 @Component({
-	selector: 'ontario-critical-alert',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['content'],
-	standalone: false,
+  selector: 'ontario-critical-alert',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['content'],
+  standalone: false
 })
 export class OntarioCriticalAlert {
   protected el: HTMLOntarioCriticalAlertElement;
@@ -338,40 +298,25 @@ export declare interface OntarioCriticalAlert extends Components.OntarioCritical
   inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required']
 })
 @Component({
-	selector: 'ontario-date-input',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: [
-		'caption',
-		'dateOptions',
-		'dateValidator',
-		'elementId',
-		'hintText',
-		'language',
-		'maxYear',
-		'minYear',
-		'placeholder',
-		'required',
-	],
-	outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
-	standalone: false,
+  selector: 'ontario-date-input',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required'],
+  outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
+  standalone: false
 })
 export class OntarioDateInput {
-	protected el: HTMLOntarioDateInputElement;
-	@Output() inputOnInput = new EventEmitter<CustomEvent<{ value: string; fieldType: 'day' | 'month' | 'year' }>>();
-	@Output() inputOnChange = new EventEmitter<CustomEvent<{ value: string; fieldType: 'day' | 'month' | 'year' }>>();
-	@Output() inputOnBlur = new EventEmitter<CustomEvent<IOntarioDateInputDateInputFieldType>>();
-	@Output() inputOnFocus = new EventEmitter<CustomEvent<IOntarioDateInputDateInputFieldType>>();
-	@Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ inputId: string; errorMessage: string }>>();
-	constructor(
-		c: ChangeDetectorRef,
-		r: ElementRef,
-		protected z: NgZone,
-	) {
-		c.detach();
-		this.el = r.nativeElement;
-	}
+  protected el: HTMLOntarioDateInputElement;
+  @Output() inputOnInput = new EventEmitter<CustomEvent<{ value: string; fieldType: 'day' | 'month' | 'year'; }>>();
+  @Output() inputOnChange = new EventEmitter<CustomEvent<{ value: string; fieldType: 'day' | 'month' | 'year'; }>>();
+  @Output() inputOnBlur = new EventEmitter<CustomEvent<IOntarioDateInputDateInputFieldType>>();
+  @Output() inputOnFocus = new EventEmitter<CustomEvent<IOntarioDateInputDateInputFieldType>>();
+  @Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ inputId: string; errorMessage: string }>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
 }
 
 
@@ -405,42 +350,24 @@ export declare interface OntarioDateInput extends Components.OntarioDateInput {
   inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required']
 })
 @Component({
-	selector: 'ontario-dropdown-list',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: [
-		'caption',
-		'customOnBlur',
-		'customOnChange',
-		'customOnFocus',
-		'elementId',
-		'errorMessage',
-		'hintExpander',
-		'hintText',
-		'isEmptyStartOption',
-		'language',
-		'name',
-		'options',
-		'required',
-	],
-	outputs: ['dropdownOnChange', 'dropdownOnBlur', 'dropdownOnFocus', 'inputErrorOccurred'],
-	standalone: false,
+  selector: 'ontario-dropdown-list',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required'],
+  outputs: ['dropdownOnChange', 'dropdownOnBlur', 'dropdownOnFocus', 'inputErrorOccurred'],
+  standalone: false
 })
 export class OntarioDropdownList {
-	protected el: HTMLOntarioDropdownListElement;
-	@Output() dropdownOnChange = new EventEmitter<CustomEvent<IOntarioDropdownListInputInteractionEvent>>();
-	@Output() dropdownOnBlur = new EventEmitter<CustomEvent<IOntarioDropdownListInputFocusBlurEvent>>();
-	@Output() dropdownOnFocus = new EventEmitter<CustomEvent<IOntarioDropdownListInputFocusBlurEvent>>();
-	@Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ errorMessage: string }>>();
-	constructor(
-		c: ChangeDetectorRef,
-		r: ElementRef,
-		protected z: NgZone,
-	) {
-		c.detach();
-		this.el = r.nativeElement;
-	}
+  protected el: HTMLOntarioDropdownListElement;
+  @Output() dropdownOnChange = new EventEmitter<CustomEvent<IOntarioDropdownListInputInteractionEvent>>();
+  @Output() dropdownOnBlur = new EventEmitter<CustomEvent<IOntarioDropdownListInputFocusBlurEvent>>();
+  @Output() dropdownOnFocus = new EventEmitter<CustomEvent<IOntarioDropdownListInputFocusBlurEvent>>();
+  @Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ errorMessage: string }>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
 }
 
 
@@ -471,12 +398,12 @@ export declare interface OntarioDropdownList extends Components.OntarioDropdownL
   inputs: ['legend', 'legendSize']
 })
 @Component({
-	selector: 'ontario-fieldset',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['legend', 'legendSize'],
-	standalone: false,
+  selector: 'ontario-fieldset',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['legend', 'legendSize'],
+  standalone: false
 })
 export class OntarioFieldset {
   protected el: HTMLOntarioFieldsetElement;
@@ -494,21 +421,12 @@ export declare interface OntarioFieldset extends Components.OntarioFieldset {}
   inputs: ['assetBasePath', 'footerLinks', 'language', 'socialLinks', 'threeColumnOptions', 'topMargin', 'twoColumnOptions', 'type']
 })
 @Component({
-	selector: 'ontario-footer',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: [
-		'assetBasePath',
-		'footerLinks',
-		'language',
-		'socialLinks',
-		'threeColumnOptions',
-		'topMargin',
-		'twoColumnOptions',
-		'type',
-	],
-	standalone: false,
+  selector: 'ontario-footer',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['assetBasePath', 'footerLinks', 'language', 'socialLinks', 'threeColumnOptions', 'topMargin', 'twoColumnOptions', 'type'],
+  standalone: false
 })
 export class OntarioFooter {
   protected el: HTMLOntarioFooterElement;
@@ -526,12 +444,12 @@ export declare interface OntarioFooter extends Components.OntarioFooter {}
   inputs: ['gap']
 })
 @Component({
-	selector: 'ontario-form-container',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['gap'],
-	standalone: false,
+  selector: 'ontario-form-container',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['gap'],
+  standalone: false
 })
 export class OntarioFormContainer {
   protected el: HTMLOntarioFormContainerElement;
@@ -549,36 +467,21 @@ export declare interface OntarioFormContainer extends Components.OntarioFormCont
   inputs: ['applicationHeaderInfo', 'assetBasePath', 'customLanguageToggle', 'customSignInToggle', 'disableDynamicMenu', 'language', 'languageToggleOptions', 'menuItems', 'signInMenuItems', 'type']
 })
 @Component({
-	selector: 'ontario-header',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: [
-		'applicationHeaderInfo',
-		'assetBasePath',
-		'customLanguageToggle',
-		'customSignInToggle',
-		'disableDynamicMenu',
-		'language',
-		'languageToggleOptions',
-		'menuItems',
-		'signInMenuItems',
-		'type',
-	],
-	outputs: ['menuButtonToggled'],
-	standalone: false,
+  selector: 'ontario-header',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['applicationHeaderInfo', 'assetBasePath', 'customLanguageToggle', 'customSignInToggle', 'disableDynamicMenu', 'language', 'languageToggleOptions', 'menuItems', 'signInMenuItems', 'type'],
+  outputs: ['menuButtonToggled'],
+  standalone: false
 })
 export class OntarioHeader {
-	protected el: HTMLOntarioHeaderElement;
-	@Output() menuButtonToggled = new EventEmitter<CustomEvent<boolean>>();
-	constructor(
-		c: ChangeDetectorRef,
-		r: ElementRef,
-		protected z: NgZone,
-	) {
-		c.detach();
-		this.el = r.nativeElement;
-	}
+  protected el: HTMLOntarioHeaderElement;
+  @Output() menuButtonToggled = new EventEmitter<CustomEvent<boolean>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
 }
 
 
@@ -596,27 +499,23 @@ To trigger the showing and hiding of the overflow menu.
   inputs: ['autoDetectMode', 'language', 'signInMenuItems', 'topicsMenuItems']
 })
 @Component({
-	selector: 'ontario-header-menu-tabs',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['autoDetectMode', 'language', 'signInMenuItems', 'topicsMenuItems'],
-	outputs: ['takeOwnership', 'focusFirstItem', 'focusMenuButton'],
-	standalone: false,
+  selector: 'ontario-header-menu-tabs',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['autoDetectMode', 'language', 'signInMenuItems', 'topicsMenuItems'],
+  outputs: ['takeOwnership', 'focusFirstItem', 'focusMenuButton'],
+  standalone: false
 })
 export class OntarioHeaderMenuTabs {
-	protected el: HTMLOntarioHeaderMenuTabsElement;
-	@Output() takeOwnership = new EventEmitter<CustomEvent<{ panelId: string | null }>>();
-	@Output() focusFirstItem = new EventEmitter<CustomEvent<void>>();
-	@Output() focusMenuButton = new EventEmitter<CustomEvent<void>>();
-	constructor(
-		c: ChangeDetectorRef,
-		r: ElementRef,
-		protected z: NgZone,
-	) {
-		c.detach();
-		this.el = r.nativeElement;
-	}
+  protected el: HTMLOntarioHeaderMenuTabsElement;
+  @Output() takeOwnership = new EventEmitter<CustomEvent<{ panelId: string | null }>>();
+  @Output() focusFirstItem = new EventEmitter<CustomEvent<void>>();
+  @Output() focusMenuButton = new EventEmitter<CustomEvent<void>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
 }
 
 
@@ -641,29 +540,25 @@ Triggered when Shift+Tab is pressed on the first tab.
   inputs: ['isLastMenu', 'language', 'menuItems']
 })
 @Component({
-	selector: 'ontario-header-overflow-menu',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['isLastMenu', 'language', 'menuItems'],
-	outputs: ['menuClosed', 'endOfMenuReached', 'focusMenuButton', 'focusNextElement', 'menuButtonTabPressed'],
-	standalone: false,
+  selector: 'ontario-header-overflow-menu',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['isLastMenu', 'language', 'menuItems'],
+  outputs: ['menuClosed', 'endOfMenuReached', 'focusMenuButton', 'focusNextElement', 'menuButtonTabPressed'],
+  standalone: false
 })
 export class OntarioHeaderOverflowMenu {
-	protected el: HTMLOntarioHeaderOverflowMenuElement;
-	@Output() menuClosed = new EventEmitter<CustomEvent<void>>();
-	@Output() endOfMenuReached = new EventEmitter<CustomEvent<void>>();
-	@Output() focusMenuButton = new EventEmitter<CustomEvent<void>>();
-	@Output() focusNextElement = new EventEmitter<CustomEvent<void>>();
-	@Output() menuButtonTabPressed = new EventEmitter<CustomEvent<void>>();
-	constructor(
-		c: ChangeDetectorRef,
-		r: ElementRef,
-		protected z: NgZone,
-	) {
-		c.detach();
-		this.el = r.nativeElement;
-	}
+  protected el: HTMLOntarioHeaderOverflowMenuElement;
+  @Output() menuClosed = new EventEmitter<CustomEvent<void>>();
+  @Output() endOfMenuReached = new EventEmitter<CustomEvent<void>>();
+  @Output() focusMenuButton = new EventEmitter<CustomEvent<void>>();
+  @Output() focusNextElement = new EventEmitter<CustomEvent<void>>();
+  @Output() menuButtonTabPressed = new EventEmitter<CustomEvent<void>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
 }
 
 
@@ -698,25 +593,21 @@ Asks if menu is open and ready to receive focus.
   inputs: ['content', 'elementId', 'hint', 'hintContentType']
 })
 @Component({
-	selector: 'ontario-hint-expander',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['content', 'elementId', 'hint', 'hintContentType'],
-	outputs: ['toggleExpanderEvent'],
-	standalone: false,
+  selector: 'ontario-hint-expander',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['content', 'elementId', 'hint', 'hintContentType'],
+  outputs: ['toggleExpanderEvent'],
+  standalone: false
 })
 export class OntarioHintExpander {
-	protected el: HTMLOntarioHintExpanderElement;
-	@Output() toggleExpanderEvent = new EventEmitter<CustomEvent<MouseEvent | KeyboardEvent>>();
-	constructor(
-		c: ChangeDetectorRef,
-		r: ElementRef,
-		protected z: NgZone,
-	) {
-		c.detach();
-		this.el = r.nativeElement;
-	}
+  protected el: HTMLOntarioHintExpanderElement;
+  @Output() toggleExpanderEvent = new EventEmitter<CustomEvent<MouseEvent | KeyboardEvent>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
 }
 
 
@@ -733,12 +624,12 @@ export declare interface OntarioHintExpander extends Components.OntarioHintExpan
   methods: ['getHintTextId']
 })
 @Component({
-	selector: 'ontario-hint-text',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['elementId', 'hint', 'hintContentType'],
-	standalone: false,
+  selector: 'ontario-hint-text',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['elementId', 'hint', 'hintContentType'],
+  standalone: false
 })
 export class OntarioHintText {
   protected el: HTMLOntarioHintTextElement;
@@ -3374,48 +3265,25 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
   inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value']
 })
 @Component({
-	selector: 'ontario-input',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: [
-		'caption',
-		'customOnBlur',
-		'customOnChange',
-		'customOnFocus',
-		'customOnInput',
-		'elementId',
-		'enableLiveValidation',
-		'errorMessage',
-		'hintExpander',
-		'hintText',
-		'inputValidator',
-		'inputWidth',
-		'language',
-		'name',
-		'required',
-		'requiredValidationMessage',
-		'type',
-		'value',
-	],
-	outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
-	standalone: false,
+  selector: 'ontario-input',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value'],
+  outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
+  standalone: false
 })
 export class OntarioInput {
-	protected el: HTMLOntarioInputElement;
-	@Output() inputOnInput = new EventEmitter<CustomEvent<IOntarioInputInputInputEvent>>();
-	@Output() inputOnChange = new EventEmitter<CustomEvent<IOntarioInputInputInteractionEvent>>();
-	@Output() inputOnBlur = new EventEmitter<CustomEvent<IOntarioInputInputFocusBlurEvent>>();
-	@Output() inputOnFocus = new EventEmitter<CustomEvent<IOntarioInputInputFocusBlurEvent>>();
-	@Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ inputId: string; errorMessage: string }>>();
-	constructor(
-		c: ChangeDetectorRef,
-		r: ElementRef,
-		protected z: NgZone,
-	) {
-		c.detach();
-		this.el = r.nativeElement;
-	}
+  protected el: HTMLOntarioInputElement;
+  @Output() inputOnInput = new EventEmitter<CustomEvent<IOntarioInputInputInputEvent>>();
+  @Output() inputOnChange = new EventEmitter<CustomEvent<IOntarioInputInputInteractionEvent>>();
+  @Output() inputOnBlur = new EventEmitter<CustomEvent<IOntarioInputInputFocusBlurEvent>>();
+  @Output() inputOnFocus = new EventEmitter<CustomEvent<IOntarioInputInputFocusBlurEvent>>();
+  @Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ inputId: string; errorMessage: string }>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
 }
 
 
@@ -3451,28 +3319,22 @@ export declare interface OntarioInput extends Components.OntarioInput {
   inputs: ['customLanguageToggle', 'language', 'size', 'url']
 })
 @Component({
-	selector: 'ontario-language-toggle',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['customLanguageToggle', 'language', 'size', 'url'],
-	outputs: ['setAppLanguage', 'headerLanguageToggled'],
-	standalone: false,
+  selector: 'ontario-language-toggle',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['customLanguageToggle', 'language', 'size', 'url'],
+  outputs: ['setAppLanguage', 'headerLanguageToggled'],
+  standalone: false
 })
 export class OntarioLanguageToggle {
-	protected el: HTMLOntarioLanguageToggleElement;
-	@Output() setAppLanguage = new EventEmitter<CustomEvent<IOntarioLanguageToggleLanguage>>();
-	@Output() headerLanguageToggled = new EventEmitter<
-		CustomEvent<IOntarioLanguageToggleHeaderLanguageToggleEventDetails>
-	>();
-	constructor(
-		c: ChangeDetectorRef,
-		r: ElementRef,
-		protected z: NgZone,
-	) {
-		c.detach();
-		this.el = r.nativeElement;
-	}
+  protected el: HTMLOntarioLanguageToggleElement;
+  @Output() setAppLanguage = new EventEmitter<CustomEvent<IOntarioLanguageToggleLanguage>>();
+  @Output() headerLanguageToggled = new EventEmitter<CustomEvent<IOntarioLanguageToggleHeaderLanguageToggleEventDetails>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
 }
 
 
@@ -3499,12 +3361,12 @@ The event contains the oldLanguage along with the newLanguage.
   inputs: ['fullScreenOverlay', 'isLoading', 'language', 'message', 'type']
 })
 @Component({
-	selector: 'ontario-loading-indicator',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['fullScreenOverlay', 'isLoading', 'language', 'message', 'type'],
-	standalone: false,
+  selector: 'ontario-loading-indicator',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['fullScreenOverlay', 'isLoading', 'language', 'message', 'type'],
+  standalone: false
 })
 export class OntarioLoadingIndicator {
   protected el: HTMLOntarioLoadingIndicatorElement;
@@ -3522,12 +3384,12 @@ export declare interface OntarioLoadingIndicator extends Components.OntarioLoadi
   inputs: ['content', 'heading', 'type']
 })
 @Component({
-	selector: 'ontario-page-alert',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['content', 'heading', 'type'],
-	standalone: false,
+  selector: 'ontario-page-alert',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['content', 'heading', 'type'],
+  standalone: false
 })
 export class OntarioPageAlert {
   protected el: HTMLOntarioPageAlertElement;
@@ -3545,40 +3407,24 @@ export declare interface OntarioPageAlert extends Components.OntarioPageAlert {}
   inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required']
 })
 @Component({
-	selector: 'ontario-radio-buttons',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: [
-		'caption',
-		'customOnBlur',
-		'customOnChange',
-		'customOnFocus',
-		'errorMessage',
-		'hintExpander',
-		'hintText',
-		'language',
-		'name',
-		'options',
-		'required',
-	],
-	outputs: ['radioOnChange', 'radioOnBlur', 'radioOnFocus', 'inputErrorOccurred'],
-	standalone: false,
+  selector: 'ontario-radio-buttons',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required'],
+  outputs: ['radioOnChange', 'radioOnBlur', 'radioOnFocus', 'inputErrorOccurred'],
+  standalone: false
 })
 export class OntarioRadioButtons {
-	protected el: HTMLOntarioRadioButtonsElement;
-	@Output() radioOnChange = new EventEmitter<CustomEvent<IOntarioRadioButtonsRadioAndCheckboxChangeEvent>>();
-	@Output() radioOnBlur = new EventEmitter<CustomEvent<IOntarioRadioButtonsInputFocusBlurEvent>>();
-	@Output() radioOnFocus = new EventEmitter<CustomEvent<IOntarioRadioButtonsInputFocusBlurEvent>>();
-	@Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ errorMessage: string }>>();
-	constructor(
-		c: ChangeDetectorRef,
-		r: ElementRef,
-		protected z: NgZone,
-	) {
-		c.detach();
-		this.el = r.nativeElement;
-	}
+  protected el: HTMLOntarioRadioButtonsElement;
+  @Output() radioOnChange = new EventEmitter<CustomEvent<IOntarioRadioButtonsRadioAndCheckboxChangeEvent>>();
+  @Output() radioOnBlur = new EventEmitter<CustomEvent<IOntarioRadioButtonsInputFocusBlurEvent>>();
+  @Output() radioOnFocus = new EventEmitter<CustomEvent<IOntarioRadioButtonsInputFocusBlurEvent>>();
+  @Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ errorMessage: string }>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
 }
 
 
@@ -3609,41 +3455,25 @@ export declare interface OntarioRadioButtons extends Components.OntarioRadioButt
   inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'hintText', 'language', 'performSearch', 'required', 'value']
 })
 @Component({
-	selector: 'ontario-search-box',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: [
-		'caption',
-		'customOnBlur',
-		'customOnChange',
-		'customOnFocus',
-		'customOnInput',
-		'elementId',
-		'hintText',
-		'language',
-		'performSearch',
-		'required',
-		'value',
-	],
-	outputs: ['searchOnSubmit', 'inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus'],
-	standalone: false,
+  selector: 'ontario-search-box',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'hintText', 'language', 'performSearch', 'required', 'value'],
+  outputs: ['searchOnSubmit', 'inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus'],
+  standalone: false
 })
 export class OntarioSearchBox {
-	protected el: HTMLOntarioSearchBoxElement;
-	@Output() searchOnSubmit = new EventEmitter<CustomEvent<string>>();
-	@Output() inputOnInput = new EventEmitter<CustomEvent<IOntarioSearchBoxInputInputEvent>>();
-	@Output() inputOnChange = new EventEmitter<CustomEvent<IOntarioSearchBoxInputInteractionEvent>>();
-	@Output() inputOnBlur = new EventEmitter<CustomEvent<IOntarioSearchBoxInputFocusBlurEvent>>();
-	@Output() inputOnFocus = new EventEmitter<CustomEvent<IOntarioSearchBoxInputFocusBlurEvent>>();
-	constructor(
-		c: ChangeDetectorRef,
-		r: ElementRef,
-		protected z: NgZone,
-	) {
-		c.detach();
-		this.el = r.nativeElement;
-	}
+  protected el: HTMLOntarioSearchBoxElement;
+  @Output() searchOnSubmit = new EventEmitter<CustomEvent<string>>();
+  @Output() inputOnInput = new EventEmitter<CustomEvent<IOntarioSearchBoxInputInputEvent>>();
+  @Output() inputOnChange = new EventEmitter<CustomEvent<IOntarioSearchBoxInputInteractionEvent>>();
+  @Output() inputOnBlur = new EventEmitter<CustomEvent<IOntarioSearchBoxInputFocusBlurEvent>>();
+  @Output() inputOnFocus = new EventEmitter<CustomEvent<IOntarioSearchBoxInputFocusBlurEvent>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
 }
 
 
@@ -3685,20 +3515,12 @@ Below is an example on how to hook into the event to get the event details. @exa
   inputs: ['backButtonUrl', 'currentStep', 'customOnClick', 'language', 'numberOfSteps', 'percentageComplete', 'showBackButton']
 })
 @Component({
-	selector: 'ontario-step-indicator',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: [
-		'backButtonUrl',
-		'currentStep',
-		'customOnClick',
-		'language',
-		'numberOfSteps',
-		'percentageComplete',
-		'showBackButton',
-	],
-	standalone: false,
+  selector: 'ontario-step-indicator',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['backButtonUrl', 'currentStep', 'customOnClick', 'language', 'numberOfSteps', 'percentageComplete', 'showBackButton'],
+  standalone: false
 })
 export class OntarioStepIndicator {
   protected el: HTMLOntarioStepIndicatorElement;
@@ -3716,12 +3538,12 @@ export declare interface OntarioStepIndicator extends Components.OntarioStepIndi
   inputs: ['caption', 'condensed', 'fullWidth', 'tableColumns', 'tableData', 'zebraStripes']
 })
 @Component({
-	selector: 'ontario-table',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['caption', 'condensed', 'fullWidth', 'tableColumns', 'tableData', 'zebraStripes'],
-	standalone: false,
+  selector: 'ontario-table',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['caption', 'condensed', 'fullWidth', 'tableColumns', 'tableData', 'zebraStripes'],
+  standalone: false
 })
 export class OntarioTable {
   protected el: HTMLOntarioTableElement;
@@ -3739,12 +3561,12 @@ export declare interface OntarioTable extends Components.OntarioTable {}
   inputs: ['deactivateLink', 'headingLevel', 'hintText', 'label', 'language', 'link', 'taskId', 'taskStatus']
 })
 @Component({
-	selector: 'ontario-task',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['deactivateLink', 'headingLevel', 'hintText', 'label', 'language', 'link', 'taskId', 'taskStatus'],
-	standalone: false,
+  selector: 'ontario-task',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['deactivateLink', 'headingLevel', 'hintText', 'label', 'language', 'link', 'taskId', 'taskStatus'],
+  standalone: false
 })
 export class OntarioTask {
   protected el: HTMLOntarioTaskElement;
@@ -3762,12 +3584,12 @@ export declare interface OntarioTask extends Components.OntarioTask {}
   inputs: ['headingLevel', 'label', 'language']
 })
 @Component({
-	selector: 'ontario-task-list',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: ['headingLevel', 'label', 'language'],
-	standalone: false,
+  selector: 'ontario-task-list',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['headingLevel', 'label', 'language'],
+  standalone: false
 })
 export class OntarioTaskList {
   protected el: HTMLOntarioTaskListElement;
@@ -3785,43 +3607,25 @@ export declare interface OntarioTaskList extends Components.OntarioTaskList {}
   inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'required', 'value']
 })
 @Component({
-	selector: 'ontario-textarea',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: '<ng-content></ng-content>',
-	// eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-	inputs: [
-		'caption',
-		'customOnBlur',
-		'customOnChange',
-		'customOnFocus',
-		'customOnInput',
-		'elementId',
-		'errorMessage',
-		'hintExpander',
-		'hintText',
-		'language',
-		'name',
-		'required',
-		'value',
-	],
-	outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
-	standalone: false,
+  selector: 'ontario-textarea',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'required', 'value'],
+  outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
+  standalone: false
 })
 export class OntarioTextarea {
-	protected el: HTMLOntarioTextareaElement;
-	@Output() inputOnInput = new EventEmitter<CustomEvent<IOntarioTextareaInputInputEvent>>();
-	@Output() inputOnChange = new EventEmitter<CustomEvent<IOntarioTextareaInputInteractionEvent>>();
-	@Output() inputOnBlur = new EventEmitter<CustomEvent<IOntarioTextareaInputFocusBlurEvent>>();
-	@Output() inputOnFocus = new EventEmitter<CustomEvent<IOntarioTextareaInputFocusBlurEvent>>();
-	@Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ inputId: string; errorMessage: string }>>();
-	constructor(
-		c: ChangeDetectorRef,
-		r: ElementRef,
-		protected z: NgZone,
-	) {
-		c.detach();
-		this.el = r.nativeElement;
-	}
+  protected el: HTMLOntarioTextareaElement;
+  @Output() inputOnInput = new EventEmitter<CustomEvent<IOntarioTextareaInputInputEvent>>();
+  @Output() inputOnChange = new EventEmitter<CustomEvent<IOntarioTextareaInputInteractionEvent>>();
+  @Output() inputOnBlur = new EventEmitter<CustomEvent<IOntarioTextareaInputFocusBlurEvent>>();
+  @Output() inputOnFocus = new EventEmitter<CustomEvent<IOntarioTextareaInputFocusBlurEvent>>();
+  @Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ inputId: string; errorMessage: string }>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
 }
 
 
