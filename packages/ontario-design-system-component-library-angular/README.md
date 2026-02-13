@@ -17,53 +17,69 @@ To find documentation on individual web components in this component library, pl
 
 To use the Ontario Design System Angular component library, follow these steps:
 
-1. Install the npm package.
+### 1. Install the npm package.
 
-   ```bash
-   npm install --save @ongov/ontario-design-system-component-library-angular
-   ```
+```bash
+npm install --save @ongov/ontario-design-system-component-library-angular
+```
 
-2. Add the Ontario Design System theme styles to your project.
+### 2. Importing the component library styles
 
-   To use the Ontario Design System styles in an Angular application, we recommend including the precompiled CSS theme. This works out of the box with Angular and does not require any custom Sass build configuration.
+There are three supported ways to include the Ontario Design System theme in your Angular application.
 
-   ### Recommended (CSS – works in all Angular projects)
+**Option A: Direct Import in Angular Styles**
 
-   Add the Design System theme CSS to the styles array in your project’s angular.json file:
+      Add the following to your global `styles.scss` file:
 
-   ```bash
-   "build": {
-   "options": {
-      "styles": [
-         "node_modules/@ongov/ontario-design-system-global-styles/dist/styles/css/compiled/ontario-theme.css"
-      ]
-   }
-   ```
+      ```scss
+      @import 'pkg:@ongov/ontario-design-system-component-library-angular/styles/theme.scss';
+      ```
 
-   You may also use the minified version in production if desired: `ontario-theme.min.css`.
+**Option B: Create a Separate Styles File**
 
-   This ensures the Design System styles are applied globally and avoids build issues related to Sass configuration.
+Alternatively, you can create a new SCSS file (e.g., `theme.scss`). If you need to override the global styles theme with a custom asset base path, you can create a local theme wrapper that forwards the global styles and sets `$asset-base-path`, then import that wrapper in your app entry point.
 
-   ### Advanced usage (SCSS – not recommended for most projects)
+```scss
+@forward 'pkg:@ongov/ontario-design-system-component-library-angular/styles/theme.scss' with (
+	$asset-base-path: '/assets'
+);
+```
 
-   The Angular component library also exposes Sass (`.scss`) theme files. However, these Sass files rely on the `pkg:` Sass importer used by the Ontario Design System Component Library's internal build tooling.
+Then, include this file in your Angular project by adding it to the `styles` array in `angular.json`:
 
-   Angular’s default Sass pipeline does not support pkg: imports without additional build customization. As a result, importing the SCSS theme directly may cause build errors unless your project is explicitly configured to support this.
+```json
+"styles": [
+   "src/theme.scss"
+]
+```
 
-   For most Angular consumers, using the precompiled CSS theme is strongly recommended.
+**Option C: Add the Design System theme CSS**
 
-3. Import the `ComponentLibraryModule`, or whichever specific component you wish to use into your root module. The `ComponentLibraryModule` import will include all the Ontario Design System web components.
+Add the following to the styles array in your project’s angular.json file:
 
-   ```typescript
-   import { ComponentLibraryModule } from '@ongov/ontario-design-system-component-library-angular';
+```bash
+"build": {
+"options": {
+   "styles": [
+      "node_modules/@ongov/ontario-design-system-global-styles/dist/styles/css/compiled/ontario-theme.css"
+   ]
+}
+```
 
-   @NgModule({
-   	imports: [ComponentLibraryModule],
-   })
-   export class AppModule {}
-   ```
+You may also use the minified version in production if desired: `ontario-theme.min.css`.
 
-### Asset path configuration (optional)
+### 3. Import the `ComponentLibraryModule`, or whichever specific component you wish to use into your root module. The `ComponentLibraryModule` import will include all the Ontario Design System web components.
+
+```typescript
+import { ComponentLibraryModule } from '@ongov/ontario-design-system-component-library-angular';
+
+@NgModule({
+	imports: [ComponentLibraryModule],
+})
+export class AppModule {}
+```
+
+## Asset path configuration (optional)
 
 If your app serves component assets (fonts, images, favicons) from a non-root path, configure the asset base path before components render.
 
@@ -73,16 +89,7 @@ import { setAssetPath } from '@ongov/ontario-design-system-component-library-ang
 setAssetPath(`${window.location.origin}/assets/`);
 ```
 
-If you need to override the global styles theme with a custom asset base path, create a local theme wrapper that forwards the global styles and sets `$asset-base-path`, then import that wrapper in your app entry point.
-
-```scss
-// src/styles/ontario-theme.scss
-@forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss' with (
-	$asset-base-path: '/assets'
-);
-```
-
-### Usage
+## Usage
 
 You can now use the Angular Components in your component template files.
 
@@ -90,7 +97,7 @@ You can now use the Angular Components in your component template files.
 <ontario-button type="primary">Primary Button</ontario-button>
 ```
 
-### Local assets
+## Local assets
 
 Along with the components, the local assets (logos, fonts, etc.) need to be copied into your project so that they are available for bundling upon building your Angular application.
 
