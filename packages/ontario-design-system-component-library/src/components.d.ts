@@ -690,6 +690,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconAccount {
 		/**
@@ -702,6 +707,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconAdd {
 		/**
@@ -714,6 +724,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconAddAlt {
 		/**
@@ -726,6 +741,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconAlertError {
 		/**
@@ -733,6 +753,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconAlertInformation {
 		/**
@@ -740,6 +765,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconAlertSuccess {
 		/**
@@ -747,6 +777,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconAlertWarning {
 		/**
@@ -754,6 +789,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconArrowUp {
 		/**
@@ -766,6 +806,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconAttach {
 		/**
@@ -778,6 +823,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconBookmarkOff {
 		/**
@@ -790,6 +840,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconBookmarkOn {
 		/**
@@ -802,6 +857,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconCalendar {
 		/**
@@ -814,6 +874,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconCamera {
 		/**
@@ -826,6 +891,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconChevronDown {
 		/**
@@ -838,6 +908,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconChevronLeft {
 		/**
@@ -850,6 +925,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconChevronRight {
 		/**
@@ -862,6 +942,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconChevronUp {
 		/**
@@ -874,6 +959,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconClock {
 		/**
@@ -886,6 +976,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconClose {
 		/**
@@ -898,6 +993,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconCloseHeader {
 		/**
@@ -910,6 +1010,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconCloud {
 		/**
@@ -922,6 +1027,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconCollapse {
 		/**
@@ -934,6 +1044,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconCreditCard {
 		/**
@@ -946,6 +1061,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconCriticalAlertWarning {
 		/**
@@ -958,6 +1078,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconDelete {
 		/**
@@ -970,6 +1095,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconDocument {
 		/**
@@ -982,6 +1112,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconDownload {
 		/**
@@ -994,6 +1129,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconDropdownArrow {
 		/**
@@ -1001,6 +1141,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconEdit {
 		/**
@@ -1013,6 +1158,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconEmail {
 		/**
@@ -1025,6 +1175,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconExpand {
 		/**
@@ -1037,6 +1192,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconExport {
 		/**
@@ -1049,6 +1209,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconFacebook {
 		/**
@@ -1061,6 +1226,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconFacebookAlt {
 		/**
@@ -1073,6 +1243,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconFavouriteOff {
 		/**
@@ -1085,6 +1260,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconFavouriteOn {
 		/**
@@ -1097,6 +1277,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconFilter {
 		/**
@@ -1109,6 +1294,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconFlickr {
 		/**
@@ -1121,6 +1311,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconGrid {
 		/**
@@ -1133,6 +1328,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconHelp {
 		/**
@@ -1145,6 +1345,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconInstagram {
 		/**
@@ -1157,6 +1362,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconInteracEn {
 		/**
@@ -1164,6 +1374,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconInteracEnAlt {
 		/**
@@ -1171,6 +1386,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconInteracFr {
 		/**
@@ -1178,6 +1398,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconInteracFrAlt {
 		/**
@@ -1185,6 +1410,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconLinkedin {
 		/**
@@ -1197,6 +1427,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconLinkedinAlt {
 		/**
@@ -1209,6 +1444,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconList {
 		/**
@@ -1221,6 +1461,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconLiveChat {
 		/**
@@ -1233,6 +1478,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconLocationOff {
 		/**
@@ -1245,6 +1495,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconLocationOn {
 		/**
@@ -1257,6 +1512,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconLockOff {
 		/**
@@ -1269,6 +1529,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconLockOn {
 		/**
@@ -1281,6 +1546,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconMap {
 		/**
@@ -1293,6 +1563,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconMastercard {
 		/**
@@ -1300,6 +1575,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconMastercardAlt {
 		/**
@@ -1307,6 +1587,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconMediaFastForward {
 		/**
@@ -1319,6 +1604,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconMediaFastRewind {
 		/**
@@ -1331,6 +1621,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconMediaPause {
 		/**
@@ -1343,6 +1638,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconMediaPlay {
 		/**
@@ -1355,6 +1655,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconMediaStop {
 		/**
@@ -1367,6 +1672,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconMenu {
 		/**
@@ -1379,6 +1689,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconMenuHeader {
 		/**
@@ -1391,6 +1706,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconMicrophoneOff {
 		/**
@@ -1403,6 +1723,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconMicrophoneOn {
 		/**
@@ -1415,6 +1740,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconMoreAccounts {
 		/**
@@ -1427,6 +1757,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconMoreVertical {
 		/**
@@ -1439,6 +1774,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconNewWindow {
 		/**
@@ -1451,6 +1791,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconNext {
 		/**
@@ -1463,6 +1808,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconNotification {
 		/**
@@ -1475,6 +1825,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconPasswordHide {
 		/**
@@ -1487,6 +1842,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconPasswordShow {
 		/**
@@ -1499,6 +1859,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconPhone {
 		/**
@@ -1511,6 +1876,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconPhoto {
 		/**
@@ -1523,6 +1893,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconPinLocationOff {
 		/**
@@ -1535,6 +1910,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconPinLocationOn {
 		/**
@@ -1547,6 +1927,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconPrevious {
 		/**
@@ -1559,6 +1944,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconPrint {
 		/**
@@ -1571,6 +1961,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconRemove {
 		/**
@@ -1583,6 +1978,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconRemoveAlt {
 		/**
@@ -1595,6 +1995,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconReplay {
 		/**
@@ -1607,6 +2012,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconRssFeed {
 		/**
@@ -1619,6 +2029,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconSave {
 		/**
@@ -1631,6 +2046,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconSearch {
 		/**
@@ -1643,6 +2063,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconSearchWhite {
 		/**
@@ -1655,6 +2080,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconSentiment1 {
 		/**
@@ -1667,6 +2097,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconSentiment2 {
 		/**
@@ -1679,6 +2114,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconSentiment3 {
 		/**
@@ -1691,6 +2131,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconSentiment4 {
 		/**
@@ -1703,6 +2148,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconSentiment5 {
 		/**
@@ -1715,6 +2165,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconSettings {
 		/**
@@ -1727,6 +2182,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconShare {
 		/**
@@ -1739,6 +2199,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconSort {
 		/**
@@ -1751,6 +2216,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconSortAlphabeticalAscending {
 		/**
@@ -1763,6 +2233,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconSortAlphabeticalDescending {
 		/**
@@ -1775,6 +2250,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconSortAscending {
 		/**
@@ -1787,6 +2267,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconSortDescending {
 		/**
@@ -1799,6 +2284,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconSortVariant {
 		/**
@@ -1811,6 +2301,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconTag {
 		/**
@@ -1823,6 +2318,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconTextMessage {
 		/**
@@ -1835,6 +2335,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconTimer {
 		/**
@@ -1847,6 +2352,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconTransportBicycle {
 		/**
@@ -1859,6 +2369,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconTransportBus {
 		/**
@@ -1871,6 +2386,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconTransportCar {
 		/**
@@ -1883,6 +2403,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconTransportWalk {
 		/**
@@ -1895,6 +2420,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconTty {
 		/**
@@ -1907,6 +2437,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconTune {
 		/**
@@ -1919,6 +2454,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconTwitter {
 		/**
@@ -1931,6 +2471,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconTwitterAlt {
 		/**
@@ -1943,6 +2488,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconUpload {
 		/**
@@ -1955,6 +2505,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconVideo {
 		/**
@@ -1967,6 +2522,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconVisa {
 		/**
@@ -1974,6 +2534,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconVoteDislike {
 		/**
@@ -1986,6 +2551,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconVoteLike {
 		/**
@@ -1998,6 +2568,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconVpnKey {
 		/**
@@ -2010,6 +2585,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconWheelchair {
 		/**
@@ -2022,6 +2602,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconWifi {
 		/**
@@ -2034,6 +2619,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioIconYoutube {
 		/**
@@ -2046,6 +2636,11 @@ export namespace Components {
 		 * @default 24
 		 */
 		iconWidth: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative: boolean;
 	}
 	interface OntarioInput {
 		/**
@@ -4828,6 +5423,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconAccount {
 		/**
@@ -4840,6 +5440,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconAdd {
 		/**
@@ -4852,6 +5457,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconAddAlt {
 		/**
@@ -4864,6 +5474,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconAlertError {
 		/**
@@ -4871,6 +5486,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconAlertInformation {
 		/**
@@ -4878,6 +5498,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconAlertSuccess {
 		/**
@@ -4885,6 +5510,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconAlertWarning {
 		/**
@@ -4892,6 +5522,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconArrowUp {
 		/**
@@ -4904,6 +5539,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconAttach {
 		/**
@@ -4916,6 +5556,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconBookmarkOff {
 		/**
@@ -4928,6 +5573,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconBookmarkOn {
 		/**
@@ -4940,6 +5590,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconCalendar {
 		/**
@@ -4952,6 +5607,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconCamera {
 		/**
@@ -4964,6 +5624,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconChevronDown {
 		/**
@@ -4976,6 +5641,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconChevronLeft {
 		/**
@@ -4988,6 +5658,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconChevronRight {
 		/**
@@ -5000,6 +5675,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconChevronUp {
 		/**
@@ -5012,6 +5692,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconClock {
 		/**
@@ -5024,6 +5709,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconClose {
 		/**
@@ -5036,6 +5726,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconCloseHeader {
 		/**
@@ -5048,6 +5743,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconCloud {
 		/**
@@ -5060,6 +5760,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconCollapse {
 		/**
@@ -5072,6 +5777,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconCreditCard {
 		/**
@@ -5084,6 +5794,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconCriticalAlertWarning {
 		/**
@@ -5096,6 +5811,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconDelete {
 		/**
@@ -5108,6 +5828,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconDocument {
 		/**
@@ -5120,6 +5845,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconDownload {
 		/**
@@ -5132,6 +5862,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconDropdownArrow {
 		/**
@@ -5139,6 +5874,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconEdit {
 		/**
@@ -5151,6 +5891,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconEmail {
 		/**
@@ -5163,6 +5908,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconExpand {
 		/**
@@ -5175,6 +5925,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconExport {
 		/**
@@ -5187,6 +5942,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconFacebook {
 		/**
@@ -5199,6 +5959,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconFacebookAlt {
 		/**
@@ -5211,6 +5976,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconFavouriteOff {
 		/**
@@ -5223,6 +5993,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconFavouriteOn {
 		/**
@@ -5235,6 +6010,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconFilter {
 		/**
@@ -5247,6 +6027,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconFlickr {
 		/**
@@ -5259,6 +6044,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconGrid {
 		/**
@@ -5271,6 +6061,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconHelp {
 		/**
@@ -5283,6 +6078,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconInstagram {
 		/**
@@ -5295,6 +6095,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconInteracEn {
 		/**
@@ -5302,6 +6107,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconInteracEnAlt {
 		/**
@@ -5309,6 +6119,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconInteracFr {
 		/**
@@ -5316,6 +6131,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconInteracFrAlt {
 		/**
@@ -5323,6 +6143,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconLinkedin {
 		/**
@@ -5335,6 +6160,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconLinkedinAlt {
 		/**
@@ -5347,6 +6177,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconList {
 		/**
@@ -5359,6 +6194,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconLiveChat {
 		/**
@@ -5371,6 +6211,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconLocationOff {
 		/**
@@ -5383,6 +6228,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconLocationOn {
 		/**
@@ -5395,6 +6245,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconLockOff {
 		/**
@@ -5407,6 +6262,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconLockOn {
 		/**
@@ -5419,6 +6279,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconMap {
 		/**
@@ -5431,6 +6296,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconMastercard {
 		/**
@@ -5438,6 +6308,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconMastercardAlt {
 		/**
@@ -5445,6 +6320,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconMediaFastForward {
 		/**
@@ -5457,6 +6337,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconMediaFastRewind {
 		/**
@@ -5469,6 +6354,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconMediaPause {
 		/**
@@ -5481,6 +6371,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconMediaPlay {
 		/**
@@ -5493,6 +6388,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconMediaStop {
 		/**
@@ -5505,6 +6405,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconMenu {
 		/**
@@ -5517,6 +6422,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconMenuHeader {
 		/**
@@ -5529,6 +6439,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconMicrophoneOff {
 		/**
@@ -5541,6 +6456,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconMicrophoneOn {
 		/**
@@ -5553,6 +6473,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconMoreAccounts {
 		/**
@@ -5565,6 +6490,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconMoreVertical {
 		/**
@@ -5577,6 +6507,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconNewWindow {
 		/**
@@ -5589,6 +6524,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconNext {
 		/**
@@ -5601,6 +6541,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconNotification {
 		/**
@@ -5613,6 +6558,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconPasswordHide {
 		/**
@@ -5625,6 +6575,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconPasswordShow {
 		/**
@@ -5637,6 +6592,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconPhone {
 		/**
@@ -5649,6 +6609,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconPhoto {
 		/**
@@ -5661,6 +6626,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconPinLocationOff {
 		/**
@@ -5673,6 +6643,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconPinLocationOn {
 		/**
@@ -5685,6 +6660,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconPrevious {
 		/**
@@ -5697,6 +6677,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconPrint {
 		/**
@@ -5709,6 +6694,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconRemove {
 		/**
@@ -5721,6 +6711,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconRemoveAlt {
 		/**
@@ -5733,6 +6728,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconReplay {
 		/**
@@ -5745,6 +6745,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconRssFeed {
 		/**
@@ -5757,6 +6762,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconSave {
 		/**
@@ -5769,6 +6779,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconSearch {
 		/**
@@ -5781,6 +6796,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconSearchWhite {
 		/**
@@ -5793,6 +6813,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconSentiment1 {
 		/**
@@ -5805,6 +6830,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconSentiment2 {
 		/**
@@ -5817,6 +6847,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconSentiment3 {
 		/**
@@ -5829,6 +6864,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconSentiment4 {
 		/**
@@ -5841,6 +6881,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconSentiment5 {
 		/**
@@ -5853,6 +6898,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconSettings {
 		/**
@@ -5865,6 +6915,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconShare {
 		/**
@@ -5877,6 +6932,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconSort {
 		/**
@@ -5889,6 +6949,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconSortAlphabeticalAscending {
 		/**
@@ -5901,6 +6966,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconSortAlphabeticalDescending {
 		/**
@@ -5913,6 +6983,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconSortAscending {
 		/**
@@ -5925,6 +7000,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconSortDescending {
 		/**
@@ -5937,6 +7017,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconSortVariant {
 		/**
@@ -5949,6 +7034,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconTag {
 		/**
@@ -5961,6 +7051,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconTextMessage {
 		/**
@@ -5973,6 +7068,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconTimer {
 		/**
@@ -5985,6 +7085,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconTransportBicycle {
 		/**
@@ -5997,6 +7102,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconTransportBus {
 		/**
@@ -6009,6 +7119,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconTransportCar {
 		/**
@@ -6021,6 +7136,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconTransportWalk {
 		/**
@@ -6033,6 +7153,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconTty {
 		/**
@@ -6045,6 +7170,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconTune {
 		/**
@@ -6057,6 +7187,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconTwitter {
 		/**
@@ -6069,6 +7204,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconTwitterAlt {
 		/**
@@ -6081,6 +7221,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconUpload {
 		/**
@@ -6093,6 +7238,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconVideo {
 		/**
@@ -6105,6 +7255,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconVisa {
 		/**
@@ -6112,6 +7267,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconVoteDislike {
 		/**
@@ -6124,6 +7284,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconVoteLike {
 		/**
@@ -6136,6 +7301,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconVpnKey {
 		/**
@@ -6148,6 +7318,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconWheelchair {
 		/**
@@ -6160,6 +7335,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconWifi {
 		/**
@@ -6172,6 +7352,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioIconYoutube {
 		/**
@@ -6184,6 +7369,11 @@ declare namespace LocalJSX {
 		 * @default 24
 		 */
 		iconWidth?: IconSize;
+		/**
+		 * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
+		 * @default false
+		 */
+		isDecorative?: boolean;
 	}
 	interface OntarioInput {
 		/**

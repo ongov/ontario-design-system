@@ -25,6 +25,15 @@ export class OntarioIconSortAlphabeticalDescending implements IconWithColour {
 	@State() iconWidthState: number;
 
 	/**
+	 * Whether the icon is decorative and should be hidden from assistive technologies.
+	 * When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element.
+	 * When set to false (default), the icon is exposed to assistive technologies with role="img".
+	 *
+	 * @default false
+	 */
+	@Prop() isDecorative: boolean = false;
+
+	/**
 	 * Watch for changes in the `iconWidth` variable for validation purpose.
 	 * If the user input is not a number or is a negative number then `iconWidth` will be set to its default (24).
 	 */
