@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { StorageUtilsService } from '../../services/storage-utils.services'; // Update the path
-import { isEnglish, getLanguage } from 'src/utils/get-language.utils';
 import { TemporaryStorageService } from '../../services/temporary-storage.services';
+import { isEnglish, getLanguage } from '../../../utils/get-language.utils';
 
 interface NewAccountFormData {
 	email: string;
@@ -12,6 +12,7 @@ interface NewAccountFormData {
 @Component({
 	selector: 'app-frame-two',
 	templateUrl: './frametwo.component.html',
+	standalone: false,
 })
 export class FrameTwoComponent implements OnInit {
 	public lang = getLanguage();
