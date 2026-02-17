@@ -4,7 +4,6 @@ import { OntarioHeaderOverflowMenu } from '../ontario-header-overflow-menu';
 describe('ontario-header-overflow-menu', () => {
 	let page: SpecPage;
 	let host: HTMLOntarioHeaderOverflowMenuElement;
-	let hostInstance: any | OntarioHeaderOverflowMenu;
 	let hostShadow: ShadowRoot;
 
 	beforeEach(async () => {
@@ -14,7 +13,6 @@ describe('ontario-header-overflow-menu', () => {
 		});
 
 		host = page.root as HTMLOntarioHeaderOverflowMenuElement;
-		hostInstance = page.rootInstance as OntarioHeaderOverflowMenu;
 		hostShadow = host.shadowRoot as ShadowRoot;
 
 		await page.waitForChanges();
