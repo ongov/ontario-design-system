@@ -25,7 +25,7 @@ For all other branches there are a few different types that can be used.
 
 | Branch Type | Description                                                                | Example                                         |
 | ----------- | -------------------------------------------------------------------------- | ----------------------------------------------- |
-| _feature_   | A branch that contains a feature, which is a significant work item/change. | `meaghan/feature/DS-122/create-table-component` |
+| _feature_   | A branch that contains a feature, which is a significant work item/change. | `meaghan/feature/DS-122-create-table-component` |
 | _bugfix_    | A branch that is based off a _Bug_ issue in Jira.                          | `erin/bugfix/DS-123`                            |
 | _hotfix_    | A branch that fixes an issue with production, similar to a _bugfix_.       | `kyle/hotfix/DS-124`                            |
 | _task_      | _Reserved for future use._                                                 | `matt/task/DS-125`                              |
@@ -36,8 +36,10 @@ For all other branches there are a few different types that can be used.
 The recommended naming convention for branches is,
 
 ```
-[your-name]/[branch-type]/[issue-number]/[description]
+[your-name]/[branch-type]/[issue-number]-[description]
 ```
+
+This format is for internal team branches in this repository.
 
 |                  |                                                |
 | ---------------- | ---------------------------------------------- |
@@ -46,7 +48,7 @@ The recommended naming convention for branches is,
 | `[issue-number]` | Jira issue number, DS-123                      |
 | `[description]`  | Short description of issue/branch (_optional_) |
 
-_Note_: Although the `description` is optional, it is recommended to help distinguish the branch from other branches once a number of them have been created.
+_Note_: Although the `description` is optional, it is recommended to help distinguish the branch from other branches once a number of them have been created. If included, append it to `issue-number` using a dash, for example `DS-123-update-button-styles`.
 
 ## Code Standards
 
@@ -56,7 +58,7 @@ This project uses [BEM](http://getbem.com/introduction/) methodology for SCSS cl
 
 This project follows the [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) commit message structure. It is automatically linted using a [Husky](https://typicode.github.io/husky/) pre-commit script that validates the message format, ensuring that it follows the Conventional Commit structure along with a few rules (based off the [@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional) rule set).
 
-Learn more through the [commit guidelines documentation](../../COMMIT-GUIDELINES.MD).
+Learn more through the [commit guidelines documentation](../../COMMIT-GUIDELINES.md).
 
 ## Testing
 

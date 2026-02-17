@@ -6,6 +6,8 @@ By adhering to the Conventional Commit structure and following semantic versioni
 
 Happy Committing!
 
+For branch naming conventions, workflow expectations, and pull request guidance, refer to the [Contributing Guidelines](documentation/internal-documentation/contributing-guidelines.md).
+
 ## Commit messages
 
 Commit messages are the messages that accompany a commit and help to document the flow of the project history. A good commit message goes a long way to helping other developers (or even future you) trace how a project has progressed over time.
