@@ -1,25 +1,29 @@
 {
-	"name": "stencil-sample-generator",
+	"name": "app-sample-generator",
 	"version": "1.0.0",
-	"description": "Automated HTML sample generator for Stencil components.",
-	"main": "index.js",
+	"description": "Automated HTML sample generator for Ontario Design System components.",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"bin": {
+		"app-sample-generator": "dist/cli.js"
+	},
 	"scripts": {
-		"build-components": "stencil build --dev",
-		"generate-samples": "npm run build-components && tsx scripts/generate-samples.ts",
-		"screenshot:sample-button": "node scripts/capture-sample-button.mjs",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "tsc",
+		"start": "node dist/cli.js"
 	},
 	"keywords": [
-		"stencil",
+		"ontario",
+		"design-system",
 		"docs",
 		"samples"
 	],
 	"author": "",
 	"license": "Apache-2.0",
 	"type": "module",
+	"dependencies": {},
 	"devDependencies": {
 		"@jest/globals": "^30.2.0",
-		"@ongov/ontario-design-system-component-library": "workspace:*",
+		"@ongov/ontario-design-system-component-library": "^6.0.0-alpha.1",
 		"@stencil/core": "^4.38.3",
 		"@types/node": "^24.10.1",
 		"jest": "^30.2.0",
