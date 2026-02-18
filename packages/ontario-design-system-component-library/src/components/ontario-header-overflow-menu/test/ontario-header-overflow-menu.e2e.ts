@@ -5,6 +5,7 @@ test.describe('ontario-header-overflow-menu', () => {
 	let host: Locator;
 	let nav: Locator;
 	const dispatchMenuButtonToggledEvent = async (page: Page, isOpen: boolean) => {
+		// TODO: Consider Playwright's locator.dispatchEvent() and if it can be made to work with custom events and detail.
 		await page.evaluate((detail: boolean) => {
 			window.dispatchEvent(new CustomEvent('menuButtonToggled', { detail }));
 		}, isOpen);
