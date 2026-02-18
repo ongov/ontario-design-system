@@ -12,24 +12,24 @@ export default function OntarioLanguageTogglePage() {
 			<Grid>
 				<h1>ontario-language-toggle</h1>
 
-				<h2>'language' Prop Variants</h2>
+				<h2>&apos;language&apos; Prop Variants</h2>
 				<h3>EN</h3>
 				<OntarioLanguageToggle language="en" />
 
 				<h3>FR</h3>
 				<OntarioLanguageToggle language="fr" />
 
-				<h2>'size' Prop Variants</h2>
+				<h2>&apos;size&apos; Prop Variants</h2>
 				<h3>default</h3>
 				<OntarioLanguageToggle size="default" />
 
 				<h3>small</h3>
 				<OntarioLanguageToggle size="small" />
 
-				<h2>'url' Prop Variant</h2>
+				<h2>&apos;url&apos; Prop Variant</h2>
 				<OntarioLanguageToggle url="https://example.com/fr" />
 
-				<h2>'customLanguageToggle' Prop Variant</h2>
+				<h2>&apos;customLanguageToggle&apos; Prop Variant</h2>
 				<OntarioLanguageToggle customLanguageToggle={handleCustomToggle} />
 			</Grid>
 		</main>

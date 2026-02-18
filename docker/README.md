@@ -113,20 +113,14 @@ Flow: CLI options to Playwright
 ```mermaid
 flowchart TD
   A[Host CLI] -->|./scripts/docker-compose.sh run ... -- <args>| B[docker-compose.sh]
-  B -->|encode Playwright args| C[PLAYWRIGHT_ARGS_B64 env var]
-  B -->|docker compose run -e PLAYWRIGHT_ARGS_B64=...| D[Docker Compose service]
-  D -->|runner script decodes + appends args| E[Playwright CLI]
+  B -->|extract + encode Playwright args| C[PLAYWRIGHT_ARGS_B64 env var]
+  C -->|inject via docker compose run -e PLAYWRIGHT_ARGS_B64=...| D[Docker Compose service]
+  D -->|docker-playwright-runner.sh decodes + appends args| E[Playwright CLI]
 ```
 
 ## Cleaning Volumes
 
-Remove all unused volumes:
-
-```bash
-docker volume prune
-```
-
-Remove the volumes created by this setup:
+Remove only the volumes created by this setup (safer default):
 
 ```bash
 docker volume rm \
@@ -135,4 +129,10 @@ docker volume rm \
   node_modules_app_web_components_documentation \
   node_modules_component_library node_modules_component_library_angular node_modules_component_library_react \
   node_modules_complete_styles node_modules_design_tokens node_modules_global_styles
+```
+
+Last resort: remove all unused Docker volumes on your machine:
+
+```bash
+docker volume prune
 ```

@@ -17,7 +17,7 @@ export default function OntarioButtonPage() {
 						id="ontario-button-primary"
 						type="primary"
 						label="Primary Button"
-						aria-label-text="Click to perform primary action"
+						ariaLabelText="Click to perform primary action"
 					></OntarioButton>
 
 					<h3>Secondary</h3>

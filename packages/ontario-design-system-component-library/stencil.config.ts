@@ -24,6 +24,7 @@ export const config: Config = {
 		reactOutputTarget({
 			outDir: '../ontario-design-system-component-library-react/src/components',
 			hydrateModule: '@ongov/ontario-design-system-component-library/hydrate',
+			clientModule: '@ongov/ontario-design-system-component-library-react',
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@ongov/ontario-design-system-component-library',

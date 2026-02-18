@@ -23,6 +23,15 @@ export class OntarioIconInteracFr implements Icon {
 	@State() iconWidthState: number;
 
 	/**
+	 * Whether the icon is decorative and should be hidden from assistive technologies.
+	 * When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element.
+	 * When set to false (default), the icon is exposed to assistive technologies with role="img".
+	 *
+	 * @default false
+	 */
+	@Prop() isDecorative: boolean = false;
+
+	/**
 	 * Watch for changes in the `iconWidth` variable for validation purpose.
 	 * If the user input is not a number or is a negative number then `iconWidth` will be set to its default (24).
 	 */
@@ -36,9 +45,7 @@ export class OntarioIconInteracFr implements Icon {
 				.addRegularText('on')
 				.addMonospaceText(' <ontario-icon-interac-fr> ')
 				.addRegularText(
-					`${
-						isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'
-					}; only a positive number is allowed. The default size of`,
+					`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`,
 				)
 				.addMonospaceText(' 24px ')
 				.addRegularText('was assumed.')
@@ -89,7 +96,14 @@ export class OntarioIconInteracFr implements Icon {
 				class={`ontario-icon ontario-icon--width-${this.iconWidthState}`}
 				style={{ width: `${this.iconWidthState}px` }}
 			>
-				<svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="interac-fr">
+				<svg
+					class="svg-icon"
+					role={this.isDecorative ? undefined : 'img'}
+					aria-hidden={this.isDecorative ? 'true' : undefined}
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					id="interac-fr"
+				>
 					<path
 						fill-rule="evenodd"
 						d="M15.998 18.442c0 .7-.584 1.285-1.285 1.285H1.827c-.7 0-1.285-.584-1.285-1.285V5.556c0-.7.584-1.285 1.285-1.285h12.886c.7 0 1.285.584 1.285 1.285v12.886z"

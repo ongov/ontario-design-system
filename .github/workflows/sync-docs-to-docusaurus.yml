@@ -14,8 +14,10 @@ on:
         type: string
 
 jobs:
+  # Note: Only sync docs when there is a release_tag (semantic-release produced a tag).
   sync-docs:
     runs-on: ubuntu-latest
+    if: ${{ inputs.release_tag != '' }}
     concurrency:
       group: docs-update
       cancel-in-progress: true
