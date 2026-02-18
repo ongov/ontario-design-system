@@ -4,7 +4,6 @@ import { OntarioHeaderOverflowMenu } from '../ontario-header-overflow-menu';
 describe('ontario-header-overflow-menu', () => {
 	let page: SpecPage;
 	let host: HTMLOntarioHeaderOverflowMenuElement;
-	let hostInstance: any | OntarioHeaderOverflowMenu;
 	let hostShadow: ShadowRoot;
 
 	beforeEach(async () => {
@@ -14,7 +13,6 @@ describe('ontario-header-overflow-menu', () => {
 		});
 
 		host = page.root as HTMLOntarioHeaderOverflowMenuElement;
-		hostInstance = page.rootInstance as OntarioHeaderOverflowMenu;
 		hostShadow = host.shadowRoot as ShadowRoot;
 
 		await page.waitForChanges();
@@ -55,74 +53,17 @@ describe('ontario-header-overflow-menu', () => {
 		expect(host).toMatchSnapshot();
 	});
 
-	/* This is a good test but may be better suited as an E2E test where actual browser behaviour is tested */
-	it('should toggle menu open when the menuButtonToggled event is received', async () => {
-		const menuItems = [
-			{ title: 'Link 1', href: '/link-1', linkIsActive: false },
-			{ title: 'Link 2', href: '/link-2', linkIsActive: false },
-		];
-
-		host.menuItems = menuItems;
+	it('should call menu item onClickHandler when item is clicked', async () => {
+		const onClickHandler = jest.fn((event: Event) => event.preventDefault());
+		host.menuItems = [{ title: 'Link 1', href: '/link-1', linkIsActive: false, onClickHandler }];
 
 		await page.waitForChanges();
 
-		expect(hostInstance.menuIsOpen).toBe(false);
+		const menuItem = hostShadow.querySelector('a.ontario-menu-item') as HTMLAnchorElement;
+		expect(menuItem).not.toBeNull();
 
-		// Simulate the menu button being toggled open
-		const event = new CustomEvent('menuButtonToggled', { detail: true });
-		window.dispatchEvent(event);
+		menuItem.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
 
-		await page.waitForChanges();
-
-		expect(hostInstance.menuIsOpen).toBe(true);
-	});
-
-	/* This is a good test but may be better suited as an E2E test where actual browser behaviour is tested */
-	it('should toggle menu closed when the menuButtonToggled event is received', async () => {
-		const menuItems = [
-			{ title: 'Link 1', href: '/link-1', linkIsActive: false },
-			{ title: 'Link 2', href: '/link-2', linkIsActive: false },
-		];
-
-		host.menuItems = menuItems;
-
-		await page.waitForChanges();
-
-		hostInstance.menuIsOpen = true;
-
-		await page.waitForChanges();
-
-		// Simulate the menu button being toggled closed
-		const event = new CustomEvent('menuButtonToggled', { detail: false });
-		window.dispatchEvent(event);
-		await page.waitForChanges();
-
-		expect(hostInstance.menuIsOpen).toBe(false);
-	});
-
-	/* This is a good test but may be better suited as an E2E test where actual browser behaviour is tested */
-	it('should close menu when focus leaves', async () => {
-		const menuItems = [
-			{ title: 'Link 1', href: '/link-1', linkIsActive: false },
-			{ title: 'Link 2', href: '/link-2', linkIsActive: false },
-		];
-
-		host.menuItems = menuItems;
-
-		await page.waitForChanges();
-
-		// Simulate the menu being opened via menu button toggle event
-		const openEvent = new CustomEvent('menuButtonToggled', { detail: true });
-		window.dispatchEvent(openEvent);
-		await page.waitForChanges();
-
-		expect(hostInstance.menuIsOpen).toBe(true);
-
-		// Simulate the menu being closed via menu button toggle event
-		const closeEvent = new CustomEvent('menuButtonToggled', { detail: false });
-		window.dispatchEvent(closeEvent);
-		await page.waitForChanges();
-
-		expect(hostInstance.menuIsOpen).toBe(false);
+		expect(onClickHandler).toHaveBeenCalledTimes(1);
 	});
 });
