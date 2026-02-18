@@ -9,7 +9,7 @@
 
 ## Introduction
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/). For more information, [find it on NPM](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-angular).
+This library is built using [`@stencil/angular-output-target`](https://www.npmjs.com/package/@stencil/angular-output-target) and supports Angular versions 18–21. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/). For more information, [find it on NPM](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-angular).
 
 ## Installation and usage
 
@@ -17,7 +17,7 @@ To find documentation on individual web components in this component library, pl
 
 To use the Ontario Design System Angular component library, follow these steps:
 
-### 1. Install the npm package.
+### 1. Install the npm package
 
 ```bash
 npm install --save @ongov/ontario-design-system-component-library-angular
@@ -68,7 +68,9 @@ Add the following to the styles array in your project’s angular.json file:
 
 You may also use the minified version in production if desired: `ontario-theme.min.css`.
 
-### 3. Import the `ComponentLibraryModule`, or whichever specific component you wish to use into your root module. The `ComponentLibraryModule` import will include all the Ontario Design System web components.
+### 3. Import the ComponentLibraryModule
+
+Import `ComponentLibraryModule` into your root module. This registers all Ontario Design System web components for use in your Angular application.
 
 ```typescript
 import { ComponentLibraryModule } from '@ongov/ontario-design-system-component-library-angular';
