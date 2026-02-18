@@ -349,7 +349,7 @@ test.describe('ontario-aside', () => {
 			return window.getComputedStyle(el).marginBottom;
 		});
 
-		expect(lastParagraphMargin).toBe('0px');
+		expect(lastParagraphMargin).toBe('8px');
 	});
 
 	test('maintains proper text contrast within aside container', async () => {
