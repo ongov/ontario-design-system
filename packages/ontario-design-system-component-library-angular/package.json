@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-component-library-angular",
-	"version": "7.0.0-alpha.1",
+	"version": "7.0.0-alpha.2",
 	"description": "Angular specific wrapper for ontario-design-system-component-library",
 	"private": false,
 	"publishConfig": {

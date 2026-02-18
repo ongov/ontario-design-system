@@ -1,3 +1,10 @@
+# 7.0.0-alpha.2 (2026-02-18)
+
+### Bug Fixes
+
+- **build:** restore react output target clientModule path 8c6b788
+- **header:** wire menu item click handlers 5a5904b
+
 # 7.0.0-alpha.1 (2026-02-06)
 
 - **@ongov/ontario-design-system-complete-styles, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** feat(react-lib)!: align output target + hydrate types for React 19 857071e

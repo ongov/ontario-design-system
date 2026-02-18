@@ -1,6 +1,6 @@
 {
 	"name": "react-app",
-	"version": "7.0.0-alpha.1",
+	"version": "7.0.0-alpha.2",
 	"private": true,
 	"scripts": {
 		"prebuild": "pnpm run copy:assets",

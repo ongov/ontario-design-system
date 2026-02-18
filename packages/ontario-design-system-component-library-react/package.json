@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-component-library-react",
-	"version": "7.0.0-alpha.1",
+	"version": "7.0.0-alpha.2",
 	"private": false,
 	"description": "React specific wrapper for ontario-design-system-component-library",
 	"license": "Apache-2.0",
