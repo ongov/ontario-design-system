@@ -49,7 +49,8 @@ There is no required external branch naming convention.
 
 ## Commit Messages
 
-This repository follows Conventional Commits.
+This repository follows [Conventional Commits](https://www.conventionalcommits.org/).
+
 External contributors should follow the same commit message rules as internal contributors.
 
 Examples:
@@ -79,9 +80,10 @@ pnpm run test:e2e
 
 ## Code Standards
 
-- Follow existing patterns and naming conventions.
-- Use BEM and project SCSS guidance.
-- Keep changes focused and scoped.
+- Follow existing patterns, naming conventions, and architecture used in nearby files.
+- Use [BEM](https://getbem.com/introduction/) for SCSS class naming.
+- See internal team standards: [Contributing Guidelines: Code Standards](documentation/internal-documentation/contributing-guidelines.md#code-standards).
+- Keep changes focused and scoped to a single concern whenever possible.
 
 ## Release Notes Impact
 
