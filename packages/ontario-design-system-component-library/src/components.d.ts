@@ -527,8 +527,8 @@ export namespace Components {
 	}
 	interface OntarioHeader {
 		/**
-		 * Information pertaining to the application header. This is only necessary for the 'application' header type.  This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.
-		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage", 	"maxSubheaderLinks": { 		"desktop": "3", 		"tablet": "2", 		"mobile": "1" 	}    }' >  </ontario-header>
+		 * Information pertaining to the application and ServiceOntario headers.  For the 'application' header type, this includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.  For the 'serviceOntario' header type, the 'title' property is used as the service name displayed in the subheader.
+		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage", 	"maxSubheaderLinks": { 		"desktop": "3", 		"tablet": "2", 		"mobile": "1" 	}    }' >  </ontario-header>   <ontario-header    type="serviceOntario"    application-header-info='{\"title\": \"Service Ontario\"}' >  </ontario-header>
 		 */
 		applicationHeaderInfo: ApplicationHeaderInfo | string;
 		/**
@@ -544,9 +544,9 @@ export namespace Components {
 		 */
 		customSignInToggle?: (event: globalThis.Event) => void;
 		/**
-		 * Option to disable fetching of the dynamic menu from the Ontario Header API
-		 * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
+		 * Option to disable fetching of the dynamic menu from the Ontario Header API.  When set to true, the static `menuItems` prop will be used instead of fetching from the API. When set to false (default), menu items are fetched dynamically from the Ontario Header API endpoint.  This property only applies to the 'ontario' header type. The 'application' and 'serviceOntario' types always use static menu items.
 		 * @default false
+		 * @example 	<ontario-header 		type="ontario" 		disable-dynamic-menu="true" 		menu-items='[{ 			"title": "Home", 			"href": "/" 		},{ 			"title": "About", 			"href": "/about" 		}]'> </ontario-header>
 		 */
 		disableDynamicMenu: boolean;
 		/**
@@ -560,7 +560,7 @@ export namespace Components {
 		 */
 		languageToggleOptions?: LanguageToggleOptions | string;
 		/**
-		 * The items that will go inside the menu.
+		 * The items that will go inside the menu dropdown.  For the 'ontario' header type, these items are displayed in the overflow menu. If `disableDynamicMenu` is false, static items will be overridden by dynamically fetched items from the Ontario Header API.  For the 'application' and 'serviceOntario' header types, these items are displayed in the subheader menu and overflow menu.
 		 */
 		menuItems: MenuItem[] | string;
 		/**
@@ -5225,8 +5225,8 @@ declare namespace LocalJSX {
 	}
 	interface OntarioHeader {
 		/**
-		 * Information pertaining to the application header. This is only necessary for the 'application' header type.  This includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.
-		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage", 	"maxSubheaderLinks": { 		"desktop": "3", 		"tablet": "2", 		"mobile": "1" 	}    }' >  </ontario-header>
+		 * Information pertaining to the application and ServiceOntario headers.  For the 'application' header type, this includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.  For the 'serviceOntario' header type, the 'title' property is used as the service name displayed in the subheader.
+		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage", 	"maxSubheaderLinks": { 		"desktop": "3", 		"tablet": "2", 		"mobile": "1" 	}    }' >  </ontario-header>   <ontario-header    type="serviceOntario"    application-header-info='{\"title\": \"Service Ontario\"}' >  </ontario-header>
 		 */
 		applicationHeaderInfo?: ApplicationHeaderInfo | string;
 		/**
@@ -5242,9 +5242,9 @@ declare namespace LocalJSX {
 		 */
 		customSignInToggle?: (event: globalThis.Event) => void;
 		/**
-		 * Option to disable fetching of the dynamic menu from the Ontario Header API
-		 * @example 	<ontario-header 			type="ontario" 			disable-dynamic-menu="false" 		menu-items='[{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		},{ 			"title": "Hint", 			"href": "/ontario-hint" 			"linkIsActive": "false" 		}]'> </ontario-header>
+		 * Option to disable fetching of the dynamic menu from the Ontario Header API.  When set to true, the static `menuItems` prop will be used instead of fetching from the API. When set to false (default), menu items are fetched dynamically from the Ontario Header API endpoint.  This property only applies to the 'ontario' header type. The 'application' and 'serviceOntario' types always use static menu items.
 		 * @default false
+		 * @example 	<ontario-header 		type="ontario" 		disable-dynamic-menu="true" 		menu-items='[{ 			"title": "Home", 			"href": "/" 		},{ 			"title": "About", 			"href": "/about" 		}]'> </ontario-header>
 		 */
 		disableDynamicMenu?: boolean;
 		/**
@@ -5258,7 +5258,7 @@ declare namespace LocalJSX {
 		 */
 		languageToggleOptions?: LanguageToggleOptions | string;
 		/**
-		 * The items that will go inside the menu.
+		 * The items that will go inside the menu dropdown.  For the 'ontario' header type, these items are displayed in the overflow menu. If `disableDynamicMenu` is false, static items will be overridden by dynamically fetched items from the Ontario Header API.  For the 'application' and 'serviceOntario' header types, these items are displayed in the subheader menu and overflow menu.
 		 */
 		menuItems?: MenuItem[] | string;
 		/**
