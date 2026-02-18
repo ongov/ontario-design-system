@@ -5,7 +5,7 @@
 		"declaration": false,
 		"esModuleInterop": true,
 		"experimentalDecorators": true,
-		"lib": ["dom", "es2017"],
+		"lib": ["dom", "es2017", "ESNext.Disposable"],
 		"module": "esnext",
 		"target": "ES2017",
 		"moduleResolution": "node",

@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-global-styles",
-	"version": "6.0.0",
+	"version": "7.0.0-alpha.2",
 	"private": false,
 	"description": "Includes the Ontario Design System global styles that are used for more generic elements and layouts, as well as fonts and favicon files.",
 	"license": "Apache-2.0",
@@ -59,7 +59,27 @@
 			"sass": "./dist/styles/scss/theme.scss"
 		},
 		"./styles/css/compiled/ontario-theme.min.css": "./dist/styles/css/compiled/ontario-theme.min.css",
-		"./styles/scss/theme.scss": "./dist/styles/scss/theme.scss"
+		"./styles/scss/theme.scss": "./dist/styles/scss/theme.scss",
+		"./styles/scss/1-variables/*": "./dist/styles/scss/1-variables/*",
+		"./styles/scss/2-tools/functions/*": "./dist/styles/scss/2-tools/functions/*",
+		"./styles/scss/2-tools/mixins/*": "./dist/styles/scss/2-tools/mixins/*",
+		"./styles/scss/2-tools/placeholder/*": "./dist/styles/scss/2-tools/placeholder/*",
+		"./styles/scss/3-generics/*": "./dist/styles/scss/3-generics/*",
+		"./styles/scss/4-elements/*": "./dist/styles/scss/4-elements/*",
+		"./styles/scss/5-layout/*": "./dist/styles/scss/5-layout/*",
+		"./styles/scss/6-components/*": "./dist/styles/scss/6-components/*",
+		"./styles/scss/7-overrides/*": "./dist/styles/scss/7-overrides/*",
+		"./dist/styles/scss/theme.scss": "./dist/styles/scss/theme.scss",
+		"./dist/styles/scss/theme": "./dist/styles/scss/theme.scss",
+		"./dist/styles/scss/1-variables/*": "./dist/styles/scss/1-variables/*",
+		"./dist/styles/scss/2-tools/functions/*": "./dist/styles/scss/2-tools/functions/*",
+		"./dist/styles/scss/2-tools/mixins/*": "./dist/styles/scss/2-tools/mixins/*",
+		"./dist/styles/scss/2-tools/placeholder/*": "./dist/styles/scss/2-tools/placeholder/*",
+		"./dist/styles/scss/3-generics/*": "./dist/styles/scss/3-generics/*",
+		"./dist/styles/scss/4-elements/*": "./dist/styles/scss/4-elements/*",
+		"./dist/styles/scss/5-layout/*": "./dist/styles/scss/5-layout/*",
+		"./dist/styles/scss/6-components/*": "./dist/styles/scss/6-components/*",
+		"./dist/styles/scss/7-overrides/*": "./dist/styles/scss/7-overrides/*"
 	},
 	"sass": "dist/styles/scss/theme.scss"
 }

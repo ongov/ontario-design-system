@@ -9,6 +9,14 @@ const compat = new FlatCompat({
 	baseDirectory: __dirname,
 });
 
-const eslintConfig = [...compat.extends('next/core-web-vitals', 'next/typescript')];
+const eslintConfig = [
+	...compat.extends('next/core-web-vitals', 'next/typescript'),
+	{
+		// Allow unescaped quotes in component docs/examples.
+		rules: {
+			'react/no-unescaped-entities': 'off',
+		},
+	},
+];
 
 export default eslintConfig;

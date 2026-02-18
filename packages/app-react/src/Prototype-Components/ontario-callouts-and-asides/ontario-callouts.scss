@@ -1,52 +1,54 @@
-@import '~@ongov/ontario-design-system-global-styles/dist/styles/scss/theme';
+// Use a namespace to avoid leaking theme variables globally.
+// This local theme wrapper also sets the asset base path and loads slotted styles.
+@use '../../styles/ontario-theme.scss' as theme;
 
 .ontario-callout,
 .ontario-aside {
-	border-left: $spacing-1 solid $ontario-colour-dark-teal;
-	padding: $spacing-5;
+	border-left: theme.$spacing-1 solid theme.$ontario-colour-dark-teal;
+	padding: theme.$spacing-5;
 
 	* {
-		max-width: $standard-width;
+		max-width: theme.$standard-width;
 
 		&:last-child {
-			margin-bottom: $spacing-2;
+			margin-bottom: theme.$spacing-2;
 		}
 	}
 }
 
 .ontario-callout {
-	margin: $spacing-6 0 $spacing-7 0;
-	background-color: $ontario-greyscale-5;
+	margin: theme.$spacing-6 0 theme.$spacing-7 0;
+	background-color: theme.$ontario-greyscale-5;
 }
 
 .ontario-aside {
-	margin: $spacing-6 0 $spacing-7 $spacing-6;
+	margin: theme.$spacing-6 0 theme.$spacing-7 theme.$spacing-6;
 }
 
-@media screen and (max-width: $small-breakpoint) {
+@media screen and (max-width: theme.$small-breakpoint) {
 	.ontario-aside {
-		margin: $spacing-6 0 $spacing-7 $spacing-4;
+		margin: theme.$spacing-6 0 theme.$spacing-7 theme.$spacing-4;
 	}
 }
 
 .ontario-callout__title,
 .ontario-aside__title {
-	margin-bottom: $spacing-4;
+	margin-bottom: theme.$spacing-4;
 }
 
 // -----------------------------------
 //   Callout & Aside border variants
 // -----------------------------------
 $highlight-colours: (
-	'teal': $ontario-colour-dark-teal,
-	'gold': $ontario-colour-dark-gold,
-	'yellow': $ontario-colour-dark-yellow,
-	'taupe': $ontario-colour-dark-taupe,
-	'green': $ontario-colour-dark-green,
-	'lime': $ontario-colour-dark-lime,
-	'sky': $ontario-colour-dark-sky,
-	'blue': $ontario-colour-dark-blue,
-	'purple': $ontario-colour-dark-purple,
+	'teal': theme.$ontario-colour-dark-teal,
+	'gold': theme.$ontario-colour-dark-gold,
+	'yellow': theme.$ontario-colour-dark-yellow,
+	'taupe': theme.$ontario-colour-dark-taupe,
+	'green': theme.$ontario-colour-dark-green,
+	'lime': theme.$ontario-colour-dark-lime,
+	'sky': theme.$ontario-colour-dark-sky,
+	'blue': theme.$ontario-colour-dark-blue,
+	'purple': theme.$ontario-colour-dark-purple,
 );
 
 @each $color-name, $hex in $highlight-colours {

@@ -7,7 +7,7 @@ export default function OntarioCardPage() {
 			<Grid>
 				<h1>ontario-card</h1>
 
-				<h2>'heading-level' Prop Variants</h2>
+				<h2>&apos;heading-level&apos; Prop Variants</h2>
 				<h3>H2</h3>
 				<OntarioCard
 					headingLevel="h2"
@@ -43,7 +43,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h2>'image' Prop Variants</h2>
+				<h2>&apos;image&apos; Prop Variants</h2>
 				<OntarioCard
 					headingLevel="h2"
 					image="https://picsum.photos/200/300"
@@ -52,7 +52,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h2>'card-link' Prop Variants</h2>
+				<h2>&apos;card-link&apos; Prop Variants</h2>
 				<OntarioCard
 					headingLevel="h2"
 					cardLink="https://www.ontario.ca"
@@ -60,7 +60,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h2>'layout-direction' Prop Variants</h2>
+				<h2>&apos;layout-direction&apos; Prop Variants</h2>
 				<h3>Horizontal</h3>
 				<OntarioCard
 					headingLevel="h2"
@@ -77,7 +77,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h2>'header-colour' Prop Variants</h2>
+				<h2>&apos;header-colour&apos; Prop Variants</h2>
 				<h3>Dark-accent</h3>
 				<OntarioCard
 					headingLevel="h2"
@@ -312,7 +312,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h2>'horizontal-impage-position-type' Prop Variants</h2>
+				<h2>&apos;horizontal-impage-position-type&apos; Prop Variants</h2>
 				<h3>Left</h3>
 				<OntarioCard
 					headingLevel="h2"
@@ -331,7 +331,7 @@ export default function OntarioCardPage() {
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h2>'horizontal-image-size-type' Prop Variants</h2>
+				<h2>&apos;horizontal-image-size-type&apos; Prop Variants</h2>
 				<h3>One-third</h3>
 				<OntarioCard
 					headingLevel="h2"

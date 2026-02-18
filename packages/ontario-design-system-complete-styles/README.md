@@ -24,7 +24,7 @@ npm install --save @ongov/ontario-design-system-complete-styles
 
 #### Styles & assets
 
-To incorporate the Ontario Design System global and component styles into your project, you can either import CSS from the `dist/css/compiled` folder, or SCSS under `dist/styles/scss/theme.scss`.
+To incorporate the Ontario Design System global and component styles into your project, you can either import CSS from `styles/css/compiled/ontario-theme.min.css`, or SCSS under `styles/scss/theme.scss`.
 
 The styles will automatically be linked to the fonts and assets (for most components).
 
@@ -90,7 +90,7 @@ https://sass-lang.com/documentation/js-api/classes/nodepackageimporter/
 Once enabled, you can reference npm packages in your Sass code with the `pkg:` scheme:
 
 ```scss
-@use 'pkg:@ongov/ontario-design-system-complete-styles/dist/styles/scss/theme.scss';
+@use 'pkg:@ongov/ontario-design-system-complete-styles/styles/scss/theme.scss';
 ```
 
 #### JavaScript example

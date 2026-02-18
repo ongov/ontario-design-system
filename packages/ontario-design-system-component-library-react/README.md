@@ -8,7 +8,11 @@
 
 ## Introduction
 
-This library was generated using Stencil's React output target dependency. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/). For more information, [find it on NPM](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-react).
+This library was generated using Stencil's React output target dependency. It is based on the [Ontario Design System Component Library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/). For more information, [find it on NPM](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-react).
+
+### React 19 support and tooling
+
+This package targets React 19 and ships bindings that align with React 19's JSX/runtime expectations and tooling. React 18 is no longer supported by this package's peer dependencies.
 
 ## Installation and usage
 
@@ -25,10 +29,29 @@ To use the Ontario Design System React component library, follow these steps:
 2. Import the theme file into your project’s entry point.
 
    ```tsx
-   import '@ongov/ontario-design-system-component-library-react/dist/theme.scss';
+   import '@ongov/ontario-design-system-component-library-react/styles';
    ```
 
-3. Import the desired components from the component library.
+3. Configure the asset path (recommended when assets are not served from `/`).
+
+   ```tsx
+   import { setAssetPath } from '@ongov/ontario-design-system-component-library-react';
+
+   setAssetPath(`${window.location.origin}/assets/`);
+   ```
+
+   Call `setAssetPath` once, before rendering any components. This ensures Stencil can resolve component assets (fonts, images, favicons) when they are hosted under a custom base path.
+
+   If you need to override the global styles theme with a custom asset base path, you can create a local theme wrapper that forwards the global styles and sets `$asset-base-path`, then import that wrapper in your app entry point.
+
+   ```scss
+   // src/styles/ontario-theme.scss
+   @forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss' with (
+   	$asset-base-path: '/assets'
+   );
+   ```
+
+4. Import the desired components from the component library.
 
    ```tsx
    import { OntarioButton } from '@ongov/ontario-design-system-component-library-react';
@@ -48,6 +71,14 @@ You can now use the React components in your component and template files.
 	attribution="Survey respondent"
 	quote="Access to high-quality child care is an issue that impacts our entire society."
 ></OntarioBlockquote>
+```
+
+### Sass (optional)
+
+If you use Sass and want `pkg:` resolution via `@use`, import the styles entry point:
+
+```scss
+@use 'pkg:@ongov/ontario-design-system-component-library-react/styles' as ods;
 ```
 
 ### Local assets

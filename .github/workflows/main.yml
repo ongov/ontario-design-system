@@ -8,16 +8,20 @@ on:
   pull_request: # Trigger on pull request events
 
 jobs:
+  # Build the project and export build artifacts.
   build: # Job defined in a separate file (build.yml)
     needs: []
+    name: Build
     uses: ./.github/workflows/build.yml # Path to the reusable workflow file
     with:
       node-version: 22
       build-artifacts-name: 'build-artifacts'
       docs-artifacts-name: 'docs-artifacts'
 
+  # Run test suites for the project.
   test: # Job defined in a separate file (test.yml)
     needs: ['build']
+    name: Test
     uses: ./.github/workflows/test.yml
     permissions:
       contents: read
@@ -27,8 +31,10 @@ jobs:
       node-version: 22
       build-artifacts-name: ${{ needs.build.outputs.build-artifacts-name }}
 
+  # Publish packages and release artifacts on release branches.
   publish-packages: # Job defined in a separate file (publish-packages.yml)
     needs: ['build', 'test']
+    name: Publish Packages
     uses: ./.github/workflows/publish-packages.yml # Path to the reusable workflow file
     if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
     with:
@@ -41,10 +47,13 @@ jobs:
       pull-requests: write # to be able to comment on released pull requests
       id-token: write # to enable use of OIDC for trusted publishing and npm provenance
 
+  # Sync generated documentation to Docusaurus.
+  # Only sync docs when there is a release_tag (semantic-release produced a tag).
   sync-docs-to-docusaurus: # Job defined in a separate file (sync-docs-to-docusaurus.yml)
     needs: ['build', 'publish-packages']
+    name: Sync Docs to Docusaurus
     uses: ./.github/workflows/sync-docs-to-docusaurus.yml
-    if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
+    if: ${{ success() && needs.publish-packages.outputs.release_tag != '' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
     with:
       node-version: 22
       docs-artifacts-name: ${{ needs.build.outputs.docs-artifacts-name }}

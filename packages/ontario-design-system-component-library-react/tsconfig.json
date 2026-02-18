@@ -19,12 +19,13 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"outDir": "dist",
+		"rootDir": "src",
 		"removeComments": false,
 		"sourceMap": true,
 		"jsx": "react",
 		"types": ["node", "jest", "react", "react-dom"]
 	},
-	"include": ["src/**/*.ts", "src/**/*.tsx"],
+	"include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"],
 	"exclude": ["**/__tests__/**", "**/@types/jasmine/**"],
 	"compileOnSave": false,
 	"buildOnSave": false

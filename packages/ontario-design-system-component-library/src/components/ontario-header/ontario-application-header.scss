@@ -1,23 +1,21 @@
 @use 'sass:math';
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/global.variables' as globalVariables;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/spacing.variables' as spacing;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables' as colours;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/breakpoints.variables' as breakpoints;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/fonts.variables' as fonts;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/functions/global.functions' as
-	globalFunctions;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/font-weights.variables' as fontWeights;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/2-tools/placeholder/focus.placeholders' as
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/global.variables' as globalVariables;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/fonts.variables' as fonts;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/placeholder/focus.placeholders' as
 	focusPlaceholders;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/z-index.variables' as zIndex;
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/typography.variables';
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/5-layout/_grid.layout.scss';
-@use 'pkg:@ongov/ontario-design-system-global-styles/dist/styles/scss/7-overrides/_visibility.overrides.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/z-index.variables' as zIndex;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/typography.variables';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/5-layout/_grid.layout.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/_visibility.overrides.scss';
 
 @use '../../styles/text-inputs.scss';
 @use '../../styles/header.scss';
 
-$navigation-link-bg--hover: #e5e5e5;
 $application-subheader-heading-padding-top-bottom: globalFunctions.px-to-rem(6);
 $application-subheader-heading-max-width: 65%;
 $application-header-logo-width: 100px;
@@ -112,7 +110,7 @@ $border-width-2: 2px;
 	li {
 		border-radius: globalVariables.$global-radius;
 		padding: spacing.$spacing-0;
-		margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3;
+		margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-4;
 		text-align: center;
 	}
 }
@@ -134,8 +132,18 @@ $border-width-2: 2px;
 	white-space: nowrap;
 
 	&.ontario-link--active {
-		border-radius: globalVariables.$global-radius globalVariables.$global-radius 0 0;
-		border-bottom: globalVariables.$global-radius solid colours.$ontario-colour-white;
+		border-radius: globalVariables.$global-radius;
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: -(spacing.$spacing-2);
+			left: spacing.$spacing-0;
+			right: spacing.$spacing-0;
+			height: globalVariables.$global-radius;
+			background-color: colours.$ontario-colour-white;
+		}
 	}
 
 	&:hover {
@@ -158,21 +166,22 @@ $border-width-2: 2px;
 	@extend %h4-styles;
 	margin-bottom: spacing.$spacing-0;
 	max-width: $application-subheader-heading-max-width;
+	color: colours.$ontario-colour-white;
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
 
 	a {
 		color: colours.$ontario-colour-white;
-		font-weight: fontWeights.$ontario-font-weights-semi-bold;
 		text-decoration: none;
-
-		&:focus {
-			@extend %ontario-focus;
-		}
 
 		&:hover,
 		&:active,
 		&:visited {
 			color: colours.$ontario-colour-white;
 			text-decoration: underline;
+		}
+
+		&:focus {
+			@extend %ontario-focus;
 		}
 	}
 }
