@@ -44,3 +44,7 @@ packages/ontario-design-system-component-library/components
 
 # Docusaurus artifacts
 packages/docusaurus
+
+# Sample generator outputs
+packages/app-sample-generator/docs/samples/
+packages/app-sample-generator/generated-samples/
