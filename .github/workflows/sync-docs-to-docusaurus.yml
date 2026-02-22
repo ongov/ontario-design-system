@@ -24,13 +24,13 @@ jobs:
 
     steps:
       - name: Checkout monorepo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0 # Fetch all history to ensure tagged commits are available
           fetch-tags: true # Ensure tags are fetched as well
 
       - name: Checkout Docusaurus repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: ongov/design-system-developer-documentation-site
           token: ${{ secrets.GH_TOKEN }}
