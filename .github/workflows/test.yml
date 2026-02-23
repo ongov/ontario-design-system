@@ -108,7 +108,7 @@ jobs:
           path: packages/ontario-design-system-component-library/playwright-report
 
       - name: Publish Stencil Playwright E2E Test Results
-        if: ${{ (success() || failure()) && (github.event.pull_request.head.repo.fork == false) }}
+        if: ${{ success() || failure() }}
         uses: dorny/test-reporter@v1
         with:
           name: Stencil Playwright E2E Tests
@@ -177,7 +177,7 @@ jobs:
           path: packages/app-nextjs/playwright-report
 
       - name: Publish Next.js Playwright VRT Results
-        if: ${{ (success() || failure()) && (github.event.pull_request.head.repo.fork == false) }}
+        if: ${{ success() || failure() }}
         uses: dorny/test-reporter@v1
         with:
           name: Next.js Playwright VRT Tests
@@ -246,7 +246,7 @@ jobs:
           path: packages/app-nextjs/playwright-report
 
       - name: Publish Next.js Playwright Next.js E2E Test Results
-        if: ${{ (success() || failure()) && (github.event.pull_request.head.repo.fork == false) }}
+        if: ${{ success() || failure() }}
         uses: dorny/test-reporter@v1
         with:
           name: Playwright Next.js E2E Tests
