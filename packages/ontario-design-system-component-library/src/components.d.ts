@@ -528,7 +528,7 @@ export namespace Components {
 	interface OntarioHeader {
 		/**
 		 * Information pertaining to the application and ServiceOntario headers.  For the 'application' header type, this includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.  For the 'serviceOntario' header type, the 'title' property is used as the service name displayed in the subheader.
-		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage", 	"maxSubheaderLinks": { 		"desktop": "3", 		"tablet": "2", 		"mobile": "1" 	}    }' >  </ontario-header>   <ontario-header    type="serviceOntario"    application-header-info='{\"title\": \"Service Ontario\"}' >  </ontario-header>
+		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage", 	"maxSubheaderLinks": { 		"desktop": "3", 		"tablet": "2", 		"mobile": "1" 	}    }' >  </ontario-header>   <ontario-header    type="serviceOntario"    application-header-info='{\"title\": \"ServiceOntario\"}' >  </ontario-header>
 		 */
 		applicationHeaderInfo: ApplicationHeaderInfo | string;
 		/**
@@ -5226,7 +5226,7 @@ declare namespace LocalJSX {
 	interface OntarioHeader {
 		/**
 		 * Information pertaining to the application and ServiceOntario headers.  For the 'application' header type, this includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.  For the 'serviceOntario' header type, the 'title' property is used as the service name displayed in the subheader.
-		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage", 	"maxSubheaderLinks": { 		"desktop": "3", 		"tablet": "2", 		"mobile": "1" 	}    }' >  </ontario-header>   <ontario-header    type="serviceOntario"    application-header-info='{\"title\": \"Service Ontario\"}' >  </ontario-header>
+		 * @example  <ontario-header    type="application"    application-header-info='{      "title": "Application name",      "href": "/application-homepage", 	"maxSubheaderLinks": { 		"desktop": "3", 		"tablet": "2", 		"mobile": "1" 	}    }' >  </ontario-header>   <ontario-header    type="serviceOntario"    application-header-info='{\"title\": \"ServiceOntario\"}' >  </ontario-header>
 		 */
 		applicationHeaderInfo?: ApplicationHeaderInfo | string;
 		/**

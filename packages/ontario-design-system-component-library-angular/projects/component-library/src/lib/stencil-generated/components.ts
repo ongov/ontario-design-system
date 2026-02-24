@@ -652,6 +652,7 @@ export declare interface OntarioHintText extends Components.OntarioHintText {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconAccessibility {
   protected el: HTMLOntarioIconAccessibilityElement;
@@ -674,6 +675,7 @@ export declare interface OntarioIconAccessibility extends Components.OntarioIcon
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconAccount {
   protected el: HTMLOntarioIconAccountElement;
@@ -696,6 +698,7 @@ export declare interface OntarioIconAccount extends Components.OntarioIconAccoun
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconAdd {
   protected el: HTMLOntarioIconAddElement;
@@ -718,6 +721,7 @@ export declare interface OntarioIconAdd extends Components.OntarioIconAdd {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconAddAlt {
   protected el: HTMLOntarioIconAddAltElement;
@@ -740,6 +744,7 @@ export declare interface OntarioIconAddAlt extends Components.OntarioIconAddAlt 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconAlertError {
   protected el: HTMLOntarioIconAlertErrorElement;
@@ -762,6 +767,7 @@ export declare interface OntarioIconAlertError extends Components.OntarioIconAle
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconAlertInformation {
   protected el: HTMLOntarioIconAlertInformationElement;
@@ -784,6 +790,7 @@ export declare interface OntarioIconAlertInformation extends Components.OntarioI
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconAlertSuccess {
   protected el: HTMLOntarioIconAlertSuccessElement;
@@ -806,6 +813,7 @@ export declare interface OntarioIconAlertSuccess extends Components.OntarioIconA
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconAlertWarning {
   protected el: HTMLOntarioIconAlertWarningElement;
@@ -828,6 +836,7 @@ export declare interface OntarioIconAlertWarning extends Components.OntarioIconA
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconArrowUp {
   protected el: HTMLOntarioIconArrowUpElement;
@@ -850,6 +859,7 @@ export declare interface OntarioIconArrowUp extends Components.OntarioIconArrowU
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconAttach {
   protected el: HTMLOntarioIconAttachElement;
@@ -872,6 +882,7 @@ export declare interface OntarioIconAttach extends Components.OntarioIconAttach 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconBookmarkOff {
   protected el: HTMLOntarioIconBookmarkOffElement;
@@ -894,6 +905,7 @@ export declare interface OntarioIconBookmarkOff extends Components.OntarioIconBo
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconBookmarkOn {
   protected el: HTMLOntarioIconBookmarkOnElement;
@@ -916,6 +928,7 @@ export declare interface OntarioIconBookmarkOn extends Components.OntarioIconBoo
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconCalendar {
   protected el: HTMLOntarioIconCalendarElement;
@@ -938,6 +951,7 @@ export declare interface OntarioIconCalendar extends Components.OntarioIconCalen
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconCamera {
   protected el: HTMLOntarioIconCameraElement;
@@ -960,6 +974,7 @@ export declare interface OntarioIconCamera extends Components.OntarioIconCamera 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconChevronDown {
   protected el: HTMLOntarioIconChevronDownElement;
@@ -982,6 +997,7 @@ export declare interface OntarioIconChevronDown extends Components.OntarioIconCh
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconChevronLeft {
   protected el: HTMLOntarioIconChevronLeftElement;
@@ -1004,6 +1020,7 @@ export declare interface OntarioIconChevronLeft extends Components.OntarioIconCh
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconChevronRight {
   protected el: HTMLOntarioIconChevronRightElement;
@@ -1026,6 +1043,7 @@ export declare interface OntarioIconChevronRight extends Components.OntarioIconC
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconChevronUp {
   protected el: HTMLOntarioIconChevronUpElement;
@@ -1048,6 +1066,7 @@ export declare interface OntarioIconChevronUp extends Components.OntarioIconChev
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconClock {
   protected el: HTMLOntarioIconClockElement;
@@ -1070,6 +1089,7 @@ export declare interface OntarioIconClock extends Components.OntarioIconClock {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconClose {
   protected el: HTMLOntarioIconCloseElement;
@@ -1092,6 +1112,7 @@ export declare interface OntarioIconClose extends Components.OntarioIconClose {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconCloseHeader {
   protected el: HTMLOntarioIconCloseHeaderElement;
@@ -1114,6 +1135,7 @@ export declare interface OntarioIconCloseHeader extends Components.OntarioIconCl
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconCloud {
   protected el: HTMLOntarioIconCloudElement;
@@ -1136,6 +1158,7 @@ export declare interface OntarioIconCloud extends Components.OntarioIconCloud {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconCollapse {
   protected el: HTMLOntarioIconCollapseElement;
@@ -1158,6 +1181,7 @@ export declare interface OntarioIconCollapse extends Components.OntarioIconColla
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconCreditCard {
   protected el: HTMLOntarioIconCreditCardElement;
@@ -1180,6 +1204,7 @@ export declare interface OntarioIconCreditCard extends Components.OntarioIconCre
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconCriticalAlertWarning {
   protected el: HTMLOntarioIconCriticalAlertWarningElement;
@@ -1202,6 +1227,7 @@ export declare interface OntarioIconCriticalAlertWarning extends Components.Onta
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconDelete {
   protected el: HTMLOntarioIconDeleteElement;
@@ -1224,6 +1250,7 @@ export declare interface OntarioIconDelete extends Components.OntarioIconDelete 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconDocument {
   protected el: HTMLOntarioIconDocumentElement;
@@ -1246,6 +1273,7 @@ export declare interface OntarioIconDocument extends Components.OntarioIconDocum
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconDownload {
   protected el: HTMLOntarioIconDownloadElement;
@@ -1268,6 +1296,7 @@ export declare interface OntarioIconDownload extends Components.OntarioIconDownl
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconDropdownArrow {
   protected el: HTMLOntarioIconDropdownArrowElement;
@@ -1290,6 +1319,7 @@ export declare interface OntarioIconDropdownArrow extends Components.OntarioIcon
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconEdit {
   protected el: HTMLOntarioIconEditElement;
@@ -1312,6 +1342,7 @@ export declare interface OntarioIconEdit extends Components.OntarioIconEdit {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconEmail {
   protected el: HTMLOntarioIconEmailElement;
@@ -1334,6 +1365,7 @@ export declare interface OntarioIconEmail extends Components.OntarioIconEmail {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconExpand {
   protected el: HTMLOntarioIconExpandElement;
@@ -1356,6 +1388,7 @@ export declare interface OntarioIconExpand extends Components.OntarioIconExpand 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconExport {
   protected el: HTMLOntarioIconExportElement;
@@ -1378,6 +1411,7 @@ export declare interface OntarioIconExport extends Components.OntarioIconExport 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconFacebook {
   protected el: HTMLOntarioIconFacebookElement;
@@ -1400,6 +1434,7 @@ export declare interface OntarioIconFacebook extends Components.OntarioIconFaceb
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconFacebookAlt {
   protected el: HTMLOntarioIconFacebookAltElement;
@@ -1422,6 +1457,7 @@ export declare interface OntarioIconFacebookAlt extends Components.OntarioIconFa
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconFavouriteOff {
   protected el: HTMLOntarioIconFavouriteOffElement;
@@ -1444,6 +1480,7 @@ export declare interface OntarioIconFavouriteOff extends Components.OntarioIconF
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconFavouriteOn {
   protected el: HTMLOntarioIconFavouriteOnElement;
@@ -1466,6 +1503,7 @@ export declare interface OntarioIconFavouriteOn extends Components.OntarioIconFa
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconFilter {
   protected el: HTMLOntarioIconFilterElement;
@@ -1488,6 +1526,7 @@ export declare interface OntarioIconFilter extends Components.OntarioIconFilter 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconFlickr {
   protected el: HTMLOntarioIconFlickrElement;
@@ -1510,6 +1549,7 @@ export declare interface OntarioIconFlickr extends Components.OntarioIconFlickr 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconGrid {
   protected el: HTMLOntarioIconGridElement;
@@ -1532,6 +1572,7 @@ export declare interface OntarioIconGrid extends Components.OntarioIconGrid {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconHelp {
   protected el: HTMLOntarioIconHelpElement;
@@ -1554,6 +1595,7 @@ export declare interface OntarioIconHelp extends Components.OntarioIconHelp {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconInstagram {
   protected el: HTMLOntarioIconInstagramElement;
@@ -1576,6 +1618,7 @@ export declare interface OntarioIconInstagram extends Components.OntarioIconInst
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconInteracEn {
   protected el: HTMLOntarioIconInteracEnElement;
@@ -1598,6 +1641,7 @@ export declare interface OntarioIconInteracEn extends Components.OntarioIconInte
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconInteracEnAlt {
   protected el: HTMLOntarioIconInteracEnAltElement;
@@ -1620,6 +1664,7 @@ export declare interface OntarioIconInteracEnAlt extends Components.OntarioIconI
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconInteracFr {
   protected el: HTMLOntarioIconInteracFrElement;
@@ -1642,6 +1687,7 @@ export declare interface OntarioIconInteracFr extends Components.OntarioIconInte
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconInteracFrAlt {
   protected el: HTMLOntarioIconInteracFrAltElement;
@@ -1664,6 +1710,7 @@ export declare interface OntarioIconInteracFrAlt extends Components.OntarioIconI
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconLinkedin {
   protected el: HTMLOntarioIconLinkedinElement;
@@ -1686,6 +1733,7 @@ export declare interface OntarioIconLinkedin extends Components.OntarioIconLinke
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconLinkedinAlt {
   protected el: HTMLOntarioIconLinkedinAltElement;
@@ -1708,6 +1756,7 @@ export declare interface OntarioIconLinkedinAlt extends Components.OntarioIconLi
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconList {
   protected el: HTMLOntarioIconListElement;
@@ -1730,6 +1779,7 @@ export declare interface OntarioIconList extends Components.OntarioIconList {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconLiveChat {
   protected el: HTMLOntarioIconLiveChatElement;
@@ -1752,6 +1802,7 @@ export declare interface OntarioIconLiveChat extends Components.OntarioIconLiveC
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconLocationOff {
   protected el: HTMLOntarioIconLocationOffElement;
@@ -1774,6 +1825,7 @@ export declare interface OntarioIconLocationOff extends Components.OntarioIconLo
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconLocationOn {
   protected el: HTMLOntarioIconLocationOnElement;
@@ -1796,6 +1848,7 @@ export declare interface OntarioIconLocationOn extends Components.OntarioIconLoc
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconLockOff {
   protected el: HTMLOntarioIconLockOffElement;
@@ -1818,6 +1871,7 @@ export declare interface OntarioIconLockOff extends Components.OntarioIconLockOf
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconLockOn {
   protected el: HTMLOntarioIconLockOnElement;
@@ -1840,6 +1894,7 @@ export declare interface OntarioIconLockOn extends Components.OntarioIconLockOn 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconMap {
   protected el: HTMLOntarioIconMapElement;
@@ -1862,6 +1917,7 @@ export declare interface OntarioIconMap extends Components.OntarioIconMap {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconMastercard {
   protected el: HTMLOntarioIconMastercardElement;
@@ -1884,6 +1940,7 @@ export declare interface OntarioIconMastercard extends Components.OntarioIconMas
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconMastercardAlt {
   protected el: HTMLOntarioIconMastercardAltElement;
@@ -1906,6 +1963,7 @@ export declare interface OntarioIconMastercardAlt extends Components.OntarioIcon
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconMediaFastForward {
   protected el: HTMLOntarioIconMediaFastForwardElement;
@@ -1928,6 +1986,7 @@ export declare interface OntarioIconMediaFastForward extends Components.OntarioI
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconMediaFastRewind {
   protected el: HTMLOntarioIconMediaFastRewindElement;
@@ -1950,6 +2009,7 @@ export declare interface OntarioIconMediaFastRewind extends Components.OntarioIc
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconMediaPause {
   protected el: HTMLOntarioIconMediaPauseElement;
@@ -1972,6 +2032,7 @@ export declare interface OntarioIconMediaPause extends Components.OntarioIconMed
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconMediaPlay {
   protected el: HTMLOntarioIconMediaPlayElement;
@@ -1994,6 +2055,7 @@ export declare interface OntarioIconMediaPlay extends Components.OntarioIconMedi
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconMediaStop {
   protected el: HTMLOntarioIconMediaStopElement;
@@ -2016,6 +2078,7 @@ export declare interface OntarioIconMediaStop extends Components.OntarioIconMedi
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconMenu {
   protected el: HTMLOntarioIconMenuElement;
@@ -2038,6 +2101,7 @@ export declare interface OntarioIconMenu extends Components.OntarioIconMenu {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconMenuHeader {
   protected el: HTMLOntarioIconMenuHeaderElement;
@@ -2060,6 +2124,7 @@ export declare interface OntarioIconMenuHeader extends Components.OntarioIconMen
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconMicrophoneOff {
   protected el: HTMLOntarioIconMicrophoneOffElement;
@@ -2082,6 +2147,7 @@ export declare interface OntarioIconMicrophoneOff extends Components.OntarioIcon
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconMicrophoneOn {
   protected el: HTMLOntarioIconMicrophoneOnElement;
@@ -2104,6 +2170,7 @@ export declare interface OntarioIconMicrophoneOn extends Components.OntarioIconM
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconMoreAccounts {
   protected el: HTMLOntarioIconMoreAccountsElement;
@@ -2126,6 +2193,7 @@ export declare interface OntarioIconMoreAccounts extends Components.OntarioIconM
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconMoreVertical {
   protected el: HTMLOntarioIconMoreVerticalElement;
@@ -2148,6 +2216,7 @@ export declare interface OntarioIconMoreVertical extends Components.OntarioIconM
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconNewWindow {
   protected el: HTMLOntarioIconNewWindowElement;
@@ -2170,6 +2239,7 @@ export declare interface OntarioIconNewWindow extends Components.OntarioIconNewW
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconNext {
   protected el: HTMLOntarioIconNextElement;
@@ -2192,6 +2262,7 @@ export declare interface OntarioIconNext extends Components.OntarioIconNext {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconNotification {
   protected el: HTMLOntarioIconNotificationElement;
@@ -2214,6 +2285,7 @@ export declare interface OntarioIconNotification extends Components.OntarioIconN
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconPasswordHide {
   protected el: HTMLOntarioIconPasswordHideElement;
@@ -2236,6 +2308,7 @@ export declare interface OntarioIconPasswordHide extends Components.OntarioIconP
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconPasswordShow {
   protected el: HTMLOntarioIconPasswordShowElement;
@@ -2258,6 +2331,7 @@ export declare interface OntarioIconPasswordShow extends Components.OntarioIconP
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconPhone {
   protected el: HTMLOntarioIconPhoneElement;
@@ -2280,6 +2354,7 @@ export declare interface OntarioIconPhone extends Components.OntarioIconPhone {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconPhoto {
   protected el: HTMLOntarioIconPhotoElement;
@@ -2302,6 +2377,7 @@ export declare interface OntarioIconPhoto extends Components.OntarioIconPhoto {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconPinLocationOff {
   protected el: HTMLOntarioIconPinLocationOffElement;
@@ -2324,6 +2400,7 @@ export declare interface OntarioIconPinLocationOff extends Components.OntarioIco
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconPinLocationOn {
   protected el: HTMLOntarioIconPinLocationOnElement;
@@ -2346,6 +2423,7 @@ export declare interface OntarioIconPinLocationOn extends Components.OntarioIcon
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconPrevious {
   protected el: HTMLOntarioIconPreviousElement;
@@ -2368,6 +2446,7 @@ export declare interface OntarioIconPrevious extends Components.OntarioIconPrevi
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconPrint {
   protected el: HTMLOntarioIconPrintElement;
@@ -2390,6 +2469,7 @@ export declare interface OntarioIconPrint extends Components.OntarioIconPrint {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconRemove {
   protected el: HTMLOntarioIconRemoveElement;
@@ -2412,6 +2492,7 @@ export declare interface OntarioIconRemove extends Components.OntarioIconRemove 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconRemoveAlt {
   protected el: HTMLOntarioIconRemoveAltElement;
@@ -2434,6 +2515,7 @@ export declare interface OntarioIconRemoveAlt extends Components.OntarioIconRemo
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconReplay {
   protected el: HTMLOntarioIconReplayElement;
@@ -2456,6 +2538,7 @@ export declare interface OntarioIconReplay extends Components.OntarioIconReplay 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconRssFeed {
   protected el: HTMLOntarioIconRssFeedElement;
@@ -2478,6 +2561,7 @@ export declare interface OntarioIconRssFeed extends Components.OntarioIconRssFee
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconSave {
   protected el: HTMLOntarioIconSaveElement;
@@ -2500,6 +2584,7 @@ export declare interface OntarioIconSave extends Components.OntarioIconSave {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconSearch {
   protected el: HTMLOntarioIconSearchElement;
@@ -2522,6 +2607,7 @@ export declare interface OntarioIconSearch extends Components.OntarioIconSearch 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconSearchWhite {
   protected el: HTMLOntarioIconSearchWhiteElement;
@@ -2544,6 +2630,7 @@ export declare interface OntarioIconSearchWhite extends Components.OntarioIconSe
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconSentiment1 {
   protected el: HTMLOntarioIconSentiment1Element;
@@ -2566,6 +2653,7 @@ export declare interface OntarioIconSentiment1 extends Components.OntarioIconSen
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconSentiment2 {
   protected el: HTMLOntarioIconSentiment2Element;
@@ -2588,6 +2676,7 @@ export declare interface OntarioIconSentiment2 extends Components.OntarioIconSen
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconSentiment3 {
   protected el: HTMLOntarioIconSentiment3Element;
@@ -2610,6 +2699,7 @@ export declare interface OntarioIconSentiment3 extends Components.OntarioIconSen
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconSentiment4 {
   protected el: HTMLOntarioIconSentiment4Element;
@@ -2632,6 +2722,7 @@ export declare interface OntarioIconSentiment4 extends Components.OntarioIconSen
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconSentiment5 {
   protected el: HTMLOntarioIconSentiment5Element;
@@ -2654,6 +2745,7 @@ export declare interface OntarioIconSentiment5 extends Components.OntarioIconSen
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconSettings {
   protected el: HTMLOntarioIconSettingsElement;
@@ -2676,6 +2768,7 @@ export declare interface OntarioIconSettings extends Components.OntarioIconSetti
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconShare {
   protected el: HTMLOntarioIconShareElement;
@@ -2698,6 +2791,7 @@ export declare interface OntarioIconShare extends Components.OntarioIconShare {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconSort {
   protected el: HTMLOntarioIconSortElement;
@@ -2720,6 +2814,7 @@ export declare interface OntarioIconSort extends Components.OntarioIconSort {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconSortAlphabeticalAscending {
   protected el: HTMLOntarioIconSortAlphabeticalAscendingElement;
@@ -2742,6 +2837,7 @@ export declare interface OntarioIconSortAlphabeticalAscending extends Components
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconSortAlphabeticalDescending {
   protected el: HTMLOntarioIconSortAlphabeticalDescendingElement;
@@ -2764,6 +2860,7 @@ export declare interface OntarioIconSortAlphabeticalDescending extends Component
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconSortAscending {
   protected el: HTMLOntarioIconSortAscendingElement;
@@ -2786,6 +2883,7 @@ export declare interface OntarioIconSortAscending extends Components.OntarioIcon
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconSortDescending {
   protected el: HTMLOntarioIconSortDescendingElement;
@@ -2808,6 +2906,7 @@ export declare interface OntarioIconSortDescending extends Components.OntarioIco
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconSortVariant {
   protected el: HTMLOntarioIconSortVariantElement;
@@ -2830,6 +2929,7 @@ export declare interface OntarioIconSortVariant extends Components.OntarioIconSo
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconTag {
   protected el: HTMLOntarioIconTagElement;
@@ -2852,6 +2952,7 @@ export declare interface OntarioIconTag extends Components.OntarioIconTag {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconTextMessage {
   protected el: HTMLOntarioIconTextMessageElement;
@@ -2874,6 +2975,7 @@ export declare interface OntarioIconTextMessage extends Components.OntarioIconTe
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconTimer {
   protected el: HTMLOntarioIconTimerElement;
@@ -2896,6 +2998,7 @@ export declare interface OntarioIconTimer extends Components.OntarioIconTimer {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconTransportBicycle {
   protected el: HTMLOntarioIconTransportBicycleElement;
@@ -2918,6 +3021,7 @@ export declare interface OntarioIconTransportBicycle extends Components.OntarioI
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconTransportBus {
   protected el: HTMLOntarioIconTransportBusElement;
@@ -2940,6 +3044,7 @@ export declare interface OntarioIconTransportBus extends Components.OntarioIconT
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconTransportCar {
   protected el: HTMLOntarioIconTransportCarElement;
@@ -2962,6 +3067,7 @@ export declare interface OntarioIconTransportCar extends Components.OntarioIconT
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconTransportWalk {
   protected el: HTMLOntarioIconTransportWalkElement;
@@ -2984,6 +3090,7 @@ export declare interface OntarioIconTransportWalk extends Components.OntarioIcon
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconTty {
   protected el: HTMLOntarioIconTtyElement;
@@ -3006,6 +3113,7 @@ export declare interface OntarioIconTty extends Components.OntarioIconTty {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconTune {
   protected el: HTMLOntarioIconTuneElement;
@@ -3028,6 +3136,7 @@ export declare interface OntarioIconTune extends Components.OntarioIconTune {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconTwitter {
   protected el: HTMLOntarioIconTwitterElement;
@@ -3050,6 +3159,7 @@ export declare interface OntarioIconTwitter extends Components.OntarioIconTwitte
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconTwitterAlt {
   protected el: HTMLOntarioIconTwitterAltElement;
@@ -3072,6 +3182,7 @@ export declare interface OntarioIconTwitterAlt extends Components.OntarioIconTwi
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconUpload {
   protected el: HTMLOntarioIconUploadElement;
@@ -3094,6 +3205,7 @@ export declare interface OntarioIconUpload extends Components.OntarioIconUpload 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconVideo {
   protected el: HTMLOntarioIconVideoElement;
@@ -3116,6 +3228,7 @@ export declare interface OntarioIconVideo extends Components.OntarioIconVideo {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconVisa {
   protected el: HTMLOntarioIconVisaElement;
@@ -3138,6 +3251,7 @@ export declare interface OntarioIconVisa extends Components.OntarioIconVisa {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconVoteDislike {
   protected el: HTMLOntarioIconVoteDislikeElement;
@@ -3160,6 +3274,7 @@ export declare interface OntarioIconVoteDislike extends Components.OntarioIconVo
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconVoteLike {
   protected el: HTMLOntarioIconVoteLikeElement;
@@ -3182,6 +3297,7 @@ export declare interface OntarioIconVoteLike extends Components.OntarioIconVoteL
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconVpnKey {
   protected el: HTMLOntarioIconVpnKeyElement;
@@ -3204,6 +3320,7 @@ export declare interface OntarioIconVpnKey extends Components.OntarioIconVpnKey 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconWheelchair {
   protected el: HTMLOntarioIconWheelchairElement;
@@ -3226,6 +3343,7 @@ export declare interface OntarioIconWheelchair extends Components.OntarioIconWhe
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconWifi {
   protected el: HTMLOntarioIconWifiElement;
@@ -3248,6 +3366,7 @@ export declare interface OntarioIconWifi extends Components.OntarioIconWifi {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['colour', 'iconWidth', 'isDecorative'],
+  standalone: false
 })
 export class OntarioIconYoutube {
   protected el: HTMLOntarioIconYoutubeElement;
