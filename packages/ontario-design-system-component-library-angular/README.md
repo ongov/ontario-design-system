@@ -55,7 +55,7 @@ Then, include this file in your Angular project by adding it to the `styles` arr
 
 **Option C: Add the Design System theme CSS**
 
-Add the following to the styles array in your project’s angular.json file:
+Add the following to the styles array in your project’s `angular.json` file:
 
 ```bash
 "build": {
