@@ -32,7 +32,7 @@ There are three supported ways to include the Ontario Design System theme in you
       Add the following to your global `styles.scss` file:
 
       ```scss
-      @import 'pkg:@ongov/ontario-design-system-component-library-angular/styles/theme.scss';
+      @forward 'pkg:@ongov/ontario-design-system-component-library-angular/styles/theme.scss';
       ```
 
 **Option B: Create a Separate Styles File**
