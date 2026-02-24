@@ -6,10 +6,19 @@ on:
     - cron: '0 0 * * 0'
   # Allow manual triggering from the Actions tab
   workflow_dispatch:
+  # React to Renovate PR activity so checkbox/label requests are processed quickly
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - edited
+      - labeled
 
 jobs:
   run-renovate:
     name: Run Renovate Bot
+    if: github.event_name != 'pull_request' || contains(github.event.pull_request.labels.*.name, 'renovate')
     runs-on: ubuntu-latest
 
     steps:
