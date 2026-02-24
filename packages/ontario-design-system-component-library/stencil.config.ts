@@ -12,6 +12,7 @@ export const config: Config = {
 	sourceMap: true,
 	plugins: [
 		sass({
+			// @ts-ignore - `@stencil/sass` typings do not include Sass `pkgImporter`, but runtime supports it.
 			pkgImporter: new NodePackageImporter(),
 		}),
 		inlineSvg(),
@@ -32,6 +33,7 @@ export const config: Config = {
 				'../ontario-design-system-component-library-angular/projects/component-library/src/lib/stencil-generated/components.ts',
 			directivesArrayFile:
 				'../ontario-design-system-component-library-angular/projects/component-library/src/lib/stencil-generated/index.ts',
+			outputType: 'component',
 		}),
 		{
 			type: 'dist-custom-elements',
