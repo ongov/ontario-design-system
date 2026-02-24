@@ -11,7 +11,7 @@ describe('ontario-page-alert', () => {
 			`,
 		});
 		expect(page.root).toEqualHtml(`
-      <ontario-page-alert heading='This is sample informational page alert'>
+      <ontario-page-alert heading='This is sample informational page alert' type='informational'>
 				<mock:shadow-root>
 			     <div class="ontario-alert ontario-alert--informational">
 			       <div class="ontario-alert__header">
@@ -128,7 +128,7 @@ describe('ontario-page-alert', () => {
 			`,
 		});
 		expect(page.root).toEqualHtml(`
-      <ontario-page-alert>
+      <ontario-page-alert type='informational'>
 				<mock:shadow-root>
 			     <div class="ontario-alert ontario-alert--informational">
 			       <div class="ontario-alert__header">
