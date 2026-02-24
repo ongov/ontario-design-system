@@ -4,6 +4,8 @@
 
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
+  - [React usage](#react-usage)
+  - [Next.js usage](#nextjs-usage)
 - [Support](#support)
 
 ## Introduction
@@ -32,6 +34,21 @@ To use the Ontario Design System React component library, follow these steps:
    import '@ongov/ontario-design-system-component-library-react/styles';
    ```
 
+   If you need to override the asset base path, create a local theme wrapper:
+
+   ```scss
+   // src/styles/ontario-theme.scss
+   @forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss' with (
+   	$asset-base-path: '/assets'
+   );
+
+   // Include slotted styles
+   @use 'pkg:@ongov/ontario-design-system-component-library-react/styles/slotted-styles/callouts-asides.scss';
+   @use 'pkg:@ongov/ontario-design-system-component-library-react/styles/slotted-styles/page-alerts.scss';
+   ```
+
+   Then import that wrapper in your app entry point.
+
 3. Configure the asset path (recommended when assets are not served from `/`).
 
    ```tsx
@@ -42,15 +59,6 @@ To use the Ontario Design System React component library, follow these steps:
 
    Call `setAssetPath` once, before rendering any components. This ensures Stencil can resolve component assets (fonts, images, favicons) when they are hosted under a custom base path.
 
-   If you need to override the global styles theme with a custom asset base path, you can create a local theme wrapper that forwards the global styles and sets `$asset-base-path`, then import that wrapper in your app entry point.
-
-   ```scss
-   // src/styles/ontario-theme.scss
-   @forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss' with (
-   	$asset-base-path: '/assets'
-   );
-   ```
-
 4. Import the desired components from the component library.
 
    ```tsx
@@ -58,9 +66,11 @@ To use the Ontario Design System React component library, follow these steps:
    import { OntarioBlockquote } from '@ongov/ontario-design-system-component-library-react';
    ```
 
-### Usage
+### React usage
 
-You can now use the React components in your component and template files.
+No additional configuration is required.
+
+Components can be improted directly:
 
 ```tsx
 <OntarioButton type="primary">Click me!</OntarioButton>
@@ -72,6 +82,65 @@ You can now use the React components in your component and template files.
 	quote="Access to high-quality child care is an issue that impacts our entire society."
 ></OntarioBlockquote>
 ```
+
+### Next.js usage
+
+When using this package with Next.js App Router, three additional steps are recommended:
+
+1. Configure Next.js for SSR and Sass `pkg:` support
+
+   Create or update `next.config.mjs` to include the following:
+
+   ```mjs
+   import stencilSSR from '@stencil/ssr/next';
+   import { pkgImporter } from '@ongov/ontario-design-system-component-library-react/next/sass-pkg-importer';
+
+   /** @type {import('next').NextConfig} */
+   const nextConfig = {
+   	sassOptions: {
+   		importer: [pkgImporter],
+   	},
+   };
+
+   export default stencilSSR({
+   	module: import('@ongov/ontario-design-system-component-library-react'),
+   	from: '@ongov/ontario-design-system-component-library-react',
+   	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
+   })(nextConfig);
+   ```
+
+   #### Why this configuration is required
+
+   The Ontario Design System Sass uses the `pkg:` import convention. This allows Sass files to resolve through the package `exports` field instead of relying on filesystem paths.
+
+   While this works out of the box in other tools, Next.js does not currently resolve `pkg:` imports automatically.
+
+   The `pkgImporter` helper adds this support by resolving `pkg:` specifiers to the correct Sass files in `node_modules`.
+
+2. Import theme styles
+
+   ```scss
+   // src/styles/ontario-theme.scss
+   @forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss' with (
+   	$asset-base-path: '/assets'
+   );
+
+   // Include slotted styles
+   @use 'pkg:@ongov/ontario-design-system-component-library-react/styles/slotted-styles/callouts-asides.scss';
+   @use 'pkg:@ongov/ontario-design-system-component-library-react/styles/slotted-styles/page-alerts.scss';
+   ```
+
+3. Configure asset path (SSR-safe)
+
+   ```ts
+   import { setAssetPath } from '@ongov/ontario-design-system-component-library-react';
+
+   if (typeof window !== 'undefined') {
+      setAssetPath(`${window.location.origin/assets/}`);
+   }
+   ```
+
+<hr />
 
 ### Sass (optional)
 
