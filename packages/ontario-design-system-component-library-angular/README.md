@@ -9,7 +9,7 @@
 
 ## Introduction
 
-This library is built using [`@stencil/angular-output-target`](https://www.npmjs.com/package/@stencil/angular-output-target) and supports Angular versions 18–21. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/). For more information, [find it on NPM](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-angular).
+This library is built using [`@stencil/angular-output-target`](https://www.npmjs.com/package/@stencil/angular-output-target) and supports Angular versions 20+. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/). For more information, [find it on NPM](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-angular).
 
 ## Installation and usage
 
