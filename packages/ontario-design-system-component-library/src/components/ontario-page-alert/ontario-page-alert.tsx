@@ -18,7 +18,7 @@ export class OntarioPageAlert implements PageAlert {
 	 * <ontario-page-alert type="error">
 	 * </ontario-page-alert>
 	 */
-	@Prop() type: PageAlertType = 'informational';
+	@Prop({ reflect: true }) type: PageAlertType = 'informational';
 
 	/**
 	 * The heading for the page alert.

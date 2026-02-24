@@ -39,6 +39,7 @@
 		"@types/react-dom": "19.2.3",
 		"eslint": "^9",
 		"eslint-config-next": "15.5.3",
+		"sass": "^1.97.3",
 		"typescript": "^5"
 	}
 }
