@@ -32,13 +32,13 @@
 	},
 	"devDependencies": {
 		"@eslint/eslintrc": "^3",
-		"@playwright/test": "1.55.0",
-		"@stencil/ssr": "^0.1.0",
+		"@playwright/test": "1.58.2",
+		"@stencil/ssr": "^0.3.0",
 		"@types/node": "^22.12.0",
-		"@types/react": "19.2.10",
+		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
 		"eslint": "^9",
-		"eslint-config-next": "15.5.3",
+		"eslint-config-next": "15.5.12",
 		"typescript": "^5"
 	}
 }
