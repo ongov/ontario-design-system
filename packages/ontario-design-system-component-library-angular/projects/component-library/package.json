@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"peerDependencies": {
 		"@angular/common": "^15.2.9",
-		"@angular/core": "^15.2.9",
+		"@angular/core": "^21.0.0",
 		"@ongov/ontario-design-system-component-library": "5.0.0-alpha.10"
 	},
 	"dependencies": {
