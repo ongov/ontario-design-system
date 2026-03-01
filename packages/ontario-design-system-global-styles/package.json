@@ -23,7 +23,7 @@
 	"devDependencies": {
 		"@ongov/ontario-design-system-design-tokens": "workspace:*",
 		"gulp": "^5.0.0",
-		"gulp-autoprefixer": "^9.0.0",
+		"gulp-autoprefixer": "^10.0.0",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-if": "^3.0.0",
