@@ -3,9 +3,6 @@ name: Sync Docs to External Docusaurus Repo
 on:
   workflow_call:
     inputs:
-      node-version:
-        required: true
-        type: string
       docs-artifacts-name:
         required: true
         type: string
@@ -44,10 +41,10 @@ jobs:
           run_install: false
 
       # Setup Node.js
-      - name: Use Node.js ${{ inputs.node-version }}
+      - name: Use Node.js from .nvmrc
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ inputs.node-version }}
+          node-version-file: '.nvmrc'
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
 
