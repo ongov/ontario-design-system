@@ -2,9 +2,16 @@
 
 # Ontario Design System Components
 
+[![Node.js](https://img.shields.io/badge/node-22.22.0-339933?logo=node.js&logoColor=white)](./.nvmrc)
+[![pnpm](https://img.shields.io/github/package-json/packageManager/ongov/ontario-design-system?label=pnpm&logo=pnpm&logoColor=white)](https://pnpm.io/)
+[![Stencil](https://img.shields.io/github/package-json/dependency-version/ongov/ontario-design-system/%40stencil%2Fcore?filename=packages/ontario-design-system-component-library/package.json&label=stencil&logo=stencil)](https://stenciljs.com/)
+[![TypeScript](https://img.shields.io/github/package-json/dependency-version/ongov/ontario-design-system/dev/typescript?filename=packages/ontario-design-system-component-library/package.json&label=typescipt&logo=typescript)](https://www.typescriptlang.org/)
+
 This project contains the Ontario Design System Web Components and npm packages.
 
 Web Components provide strong encapsulation for reusable components that can be integrated into web applications.
+
+Tool versions are standardized at the repo root: Node via [`.nvmrc`](./.nvmrc), and package manager/engine ranges via [`package.json`](./package.json).
 
 ## Documentation
 
