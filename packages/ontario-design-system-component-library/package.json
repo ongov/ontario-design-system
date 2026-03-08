@@ -83,7 +83,7 @@
 		"uuid": "^11.0.5"
 	},
 	"devDependencies": {
-		"@playwright/test": "1.55.0",
+		"@playwright/test": "1.58.2",
 		"@stencil/angular-output-target": "^1.1.1",
 		"@stencil/playwright": "^0.2.1",
 		"@stencil/react-output-target": "^1.4.0",
