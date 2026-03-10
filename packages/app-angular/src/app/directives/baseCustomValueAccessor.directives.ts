@@ -1,9 +1,14 @@
 import { Directive, ElementRef, Renderer2 } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 
-@Directive()
+@Directive({
+	standalone: false,
+})
 export abstract class BaseCustomValueAccessor implements ControlValueAccessor {
-	constructor(private element: ElementRef, private renderer: Renderer2) {}
+	constructor(
+		private element: ElementRef,
+		private renderer: Renderer2,
+	) {}
 
 	onChange: (value: string) => void = () => {};
 	onTouched: () => void = () => {};

@@ -3,9 +3,6 @@ name: Publish Packages
 on:
   workflow_call:
     inputs:
-      node-version:
-        required: true
-        type: number
       build-artifacts-name:
         required: true
         type: string
@@ -22,17 +19,17 @@ jobs:
       release_tag: ${{ steps.publish.outputs.release_tag }}
     steps:
       # Checkout the repo
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       # Install pnpm
       - name: Install pnpm
         uses: pnpm/action-setup@v4
 
       # Setup Node.js
-      - name: Use Node.js ${{ inputs.node-version }}
+      - name: Use Node.js from .nvmrc
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ inputs.node-version }}
+          node-version-file: '.nvmrc'
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
 
@@ -41,7 +38,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: ${{ inputs.build-artifacts-name }} # Artifact name (must match upload name)
           path: ./packages

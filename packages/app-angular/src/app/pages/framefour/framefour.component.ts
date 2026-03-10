@@ -2,8 +2,8 @@ import { Component, OnInit, ChangeDetectorRef, NgZone, OnChanges, SimpleChanges 
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
-import { getLanguage, isEnglish } from 'src/utils/get-language.utils';
-import { handleBackButtonNavigationOnClick } from 'src/utils/routing.utils';
+import { getLanguage, isEnglish } from '../../../utils/get-language.utils';
+import { handleBackButtonNavigationOnClick } from '../../../utils/routing.utils';
 
 interface CheckboxOption {
 	value: string;
@@ -30,6 +30,7 @@ interface Translation {
 @Component({
 	selector: 'app-framefour',
 	templateUrl: './framefour.component.html',
+	standalone: false,
 })
 export class FrameFourComponent implements OnInit {
 	public lang = getLanguage();

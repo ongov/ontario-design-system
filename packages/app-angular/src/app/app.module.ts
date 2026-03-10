@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ComponentLibraryModule } from '@ongov/ontario-design-system-component-library-angular/dist/component-library';
+import { ComponentLibraryModule } from '@ongov/ontario-design-system-component-library-angular';
 import { RouterModule } from '@angular/router';
 import { FormValueChangesDirective } from './directives/formValue.directives';
 import { FormsModule } from '@angular/forms';

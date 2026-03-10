@@ -1,3 +1,26 @@
+# 7.0.0 (2026-02-18)
+
+- **@ongov/ontario-design-system-complete-styles, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** feat(react-lib)!: align output target + hydrate types for React 19 857071e
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library:** only render application header link if link exists c4c93b8
+- **@ongov/ontario-design-system-component-library:** ontario-overlay now appears as it should on mobile devices when menu is open d62a700
+- **@ongov/ontario-design-system-component-library:** updated margin for application header list items 59a9a1a
+- **@ongov/ontario-design-system-component-library:** updated the text-underline of the current page so that there is space between cf66f47
+- **build:** restore react output target clientModule path 8c6b788
+- **header:** wire menu item click handlers 5a5904b
+- normalise quote usage in demo headings fafb8ea
+
+### Features
+
+- **app-react:** migrate to Vite and update asset handling a536798
+- **e2e-tests:** add config for playwright integration, remove puppeteer 9a7272d
+
+### BREAKING CHANGES
+
+- **@ongov/ontario-design-system-complete-styles, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** React Component Library now requires React 19
+
 # 7.0.0-alpha.2 (2026-02-18)
 
 ### Bug Fixes

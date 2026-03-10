@@ -5,7 +5,7 @@ This guide is intended to help you understand the structure of the monorepo, set
 
 ## 🏗 **Monorepo Overview**
 
-This monorepo contains multiple projects that work together to deliver a cohesive design sytem. Below is a brief description of each project:
+This monorepo contains multiple projects that work together to deliver a cohesive design system. Below is a brief description of each project:
 
 ### 1. [Ontario Design System Design Tokens](../../packages/ontario-design-system-design-tokens)
 
@@ -85,5 +85,5 @@ If you run into any issues, please contact the development team. You can reach u
 3. **Create a Branch:** Create a new branch for your feature or bug fix. Information on branching can be found [here](./contributing-guidelines.md#branching).
 4. **Develop:** Make your changes, following the [coding guidelines and best practices](./contributing-guidelines.md#code-standards).
 5. **Test:** Run unit tests with `pnpm run test:unit` and E2E tests with `pnpm run test:e2e`.
-6. **Commit and Push:** [Commit your changes](./contributing-guidelines.md#-contributing-guidelines) and push your branch to the remote repository.
+6. **Commit and Push:** Follow the [commit guidelines](../../COMMIT-GUIDELINES.md), then push your branch to the remote repository.
 7. **Create a Pull Request:** Open a pull request for your branch and request a code review. Make sure to label your pull request.

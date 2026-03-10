@@ -6,8 +6,6 @@ on:
     - cron: '0 0 * * 0'
   # Allow manual triggering from the Actions tab
   workflow_dispatch:
-  # Optionally enable PR trigger
-  pull_request:
 
 jobs:
   run-renovate:
@@ -16,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4.2.0
+        uses: actions/checkout@v6.0.2
 
       - name: Install PNPM
         uses: pnpm/action-setup@v4.0.0

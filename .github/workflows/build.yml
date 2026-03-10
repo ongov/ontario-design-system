@@ -3,9 +3,6 @@ name: Build
 on:
   workflow_call:
     inputs:
-      node-version:
-        required: true
-        type: number
       build-artifacts-name:
         required: true
         type: string
@@ -25,17 +22,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout the repo
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       # Install pnpm
       - name: Install pnpm
         uses: pnpm/action-setup@v4
 
       # Setup Node.js
-      - name: Use Node.js ${{ inputs.node-version }}
+      - name: Use Node.js from .nvmrc
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ inputs.node-version }}
+          node-version-file: '.nvmrc'
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
 
@@ -53,7 +50,7 @@ jobs:
 
       # Upload build artifacts
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ inputs.build-artifacts-name }} # Artifact name
           compression-level: 9 # Best compression
@@ -64,7 +61,7 @@ jobs:
 
       # Upload docs artifact
       - name: Upload docs artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ inputs.docs-artifacts-name }}
           compression-level: 9 # Best compression

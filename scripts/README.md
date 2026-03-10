@@ -1,8 +1,100 @@
 # Ontario Design System Scripts
 
-This folder serves as a collection of project-wide scripts that provide shared functionality and utilities used throughout the application. By centralizing these scripts, the project ensures consistency, reusability, and easier maintenance across different components and features.
+This folder serves as a collection of project-wide scripts that provide shared functionality and utilities used throughout the application. By centralising these scripts, the project ensures consistency, reusability, and easier maintenance across different components and features.
 
-## documentation-helper.ts
+## extract-git-issues.js
+
+A utility script that extracts Jira issue keys from git commit subjects since a specified tag. If a Jira instance URL is provided, it outputs Jira links. If Jira credentials are also provided, it fetches issue titles from Jira.
+
+### Usage
+
+```sh
+node extract-git-issues.js --tag v1.1.0
+```
+
+#### Options
+
+- `-t, --tag <string>`: Release tag name, e.g. `v1.1.0` (or `RELEASE_TAG_NAME`)
+- `-k, --projectKey <string>`: Limit matches to a specific Jira project key, e.g. `ODS`
+- `--no-unique`: Keep duplicate issue keys
+- `--no-sort`: Keep the original order from git output
+- `-u, --username <string>`: Jira username for title lookup (or `JIRA_USERNAME`)
+- `-p, --personalAccessToken <string>`: Jira personal access token for title lookup (or `JIRA_PERSONAL_ACCESS_TOKEN`)
+- `-i, --jiraInstanceUrl <string>`: Jira base URL (or `JIRA_INSTANCE_URL`)
+- `-c, --date`: Use the tag date (`git log --since`) instead of tag-to-HEAD range
+- `-j, --json`: Output as JSON (`issueId`, `issueUrl`, and optional `issueTitle`)
+- `-d, --debug`: Enable debug mode
+
+## Docker test runner scripts
+
+These scripts work together to run local Playwright tests in Docker with stable
+permissions and reliable argument forwarding.
+
+### `docker-compose.sh`
+
+Wrapper around `docker compose` for this repository.
+
+- Always uses `docker/docker-compose.yml`.
+- On Linux, exports host `PUID`/`PGID` for bind-mounted file permissions.
+- For `docker compose run`, extracts Playwright arguments and passes them
+  through `PLAYWRIGHT_ARGS_B64`.
+
+Why:
+
+- Keeps local commands aligned with the repository setup.
+- Avoids permission issues in mounted workspace paths.
+- Preserves Playwright arguments with spaces/quotes across shell boundaries.
+
+### `docker-entrypoint.sh`
+
+Entrypoint script used by local Docker Playwright services.
+
+- Reads `PUID`/`PGID` and aligns container user/group IDs with the host.
+- Ensures shared dependency paths exist (`node_modules`, `.pnpm-store`).
+- Applies ownership and runs the command as a non-root user where possible.
+
+Why:
+
+- Prevents bind-mount ownership conflicts.
+- Supports repeatable local runs with shared dependency volumes.
+- Mirrors CI-style non-root execution more closely.
+
+### `docker-playwright-runner.sh`
+
+Container-side command runner for Playwright services.
+
+- Decodes `PLAYWRIGHT_ARGS_B64` (null-delimited argument list).
+- Appends decoded arguments to the base command.
+- Executes the base command unchanged when no forwarded args are provided.
+
+Why:
+
+- Preserves exact Playwright CLI arguments from host to container.
+- Keeps argument parsing simple and predictable.
+
+### Docker flow summary
+
+1. Host command runs via `./scripts/docker-compose.sh`.
+2. Script captures Playwright arguments and encodes them into `PLAYWRIGHT_ARGS_B64`.
+3. `docker compose run` injects `PLAYWRIGHT_ARGS_B64` into the service container.
+4. `docker-entrypoint.sh` prepares permissions and launches the requested command.
+5. `docker-playwright-runner.sh` decodes arguments and executes Playwright.
+
+## `start-server.sh`
+
+Helper script to build and start the Next.js app from a known working directory.
+
+- Changes directory to `packages/app-nextjs`.
+- Runs `pnpm run build`.
+- Runs `pnpm run start`.
+- Uses `set -e` and `set -x` for fail-fast behaviour and command tracing.
+
+Why:
+
+- Provides a simple, repeatable local start flow for the app.
+- Reduces directory/context mistakes when launching production-mode server runs.
+
+## `documentation-helper.ts`
 
 A utility script for processing documentation files in Ontario Design System repositories.
 

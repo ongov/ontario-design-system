@@ -66,10 +66,10 @@ Start Rancher Desktop to ensure the container runtime is active.
 ### Step 1: Build the VRT Docker Container
 
 ```bash
-pnpm run docker:build-vrt
+pnpm run docker:build-playwright
 ```
 
-This builds the Docker container using the root `Dockerfile.vrt` and mounts the repo via the root `docker-compose.yml` file.
+This builds the Docker container using `docker/playwright/Dockerfile` and mounts the repo via `docker/docker-compose.yml`.
 
 ### Step 2: Run VRT Tests
 

@@ -2,7 +2,6 @@
 {
 	"compileOnSave": false,
 	"compilerOptions": {
-		"baseUrl": "./",
 		"outDir": "./dist/out-tsc",
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
@@ -14,15 +13,12 @@
 		"declaration": false,
 		"downlevelIteration": true,
 		"experimentalDecorators": true,
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"module": "esnext",
 		"importHelpers": true,
 		"target": "ES2022",
 		"useDefineForClassFields": false,
 		"lib": ["ES2022", "dom"],
-		"paths": {
-			"@angular/*": ["./node_modules/@angular/*"]
-		},
 		"types": ["jasmine"]
 	},
 	"angularCompilerOptions": {

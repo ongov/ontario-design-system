@@ -23,6 +23,15 @@ export class OntarioIconMastercard implements Icon {
 	@State() iconWidthState: number;
 
 	/**
+	 * Whether the icon is decorative and should be hidden from assistive technologies.
+	 * When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element.
+	 * When set to false (default), the icon is exposed to assistive technologies with role="img".
+	 *
+	 * @default false
+	 */
+	@Prop() isDecorative: boolean = false;
+
+	/**
 	 * Watch for changes in the `iconWidth` variable for validation purpose.
 	 * If the user input is not a number or is a negative number then `iconWidth` will be set to its default (24).
 	 */
@@ -36,9 +45,7 @@ export class OntarioIconMastercard implements Icon {
 				.addRegularText('on')
 				.addMonospaceText(' <ontario-icon-mastercard> ')
 				.addRegularText(
-					`${
-						isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'
-					}; only a positive number is allowed. The default size of`,
+					`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`,
 				)
 				.addMonospaceText(' 24px ')
 				.addRegularText('was assumed.')
@@ -89,7 +96,14 @@ export class OntarioIconMastercard implements Icon {
 				class={`ontario-icon ontario-icon--width-${this.iconWidthState}`}
 				style={{ width: `${this.iconWidthState}px` }}
 			>
-				<svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="mastercard">
+				<svg
+					class="svg-icon"
+					role={this.isDecorative ? undefined : 'img'}
+					aria-hidden={this.isDecorative ? 'true' : undefined}
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					id="mastercard"
+				>
 					<circle cx="8" cy="12" r="6.5" fill="#eb001b" />
 					<circle cx="16" cy="12" r="6.5" fill="#f79e1b" />
 					<path d="M12 17.124S9.5 15.5 9.5 12 12 6.876 12 6.876 14.5 8.5 14.5 12 12 17.124 12 17.124z" fill="#ff5f00" />
