@@ -38,13 +38,9 @@ To use the Ontario Design System React component library, follow these steps:
 
    ```scss
    // src/styles/ontario-theme.scss
-   @forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss' with (
+   @forward 'pkg:@ongov/ontario-design-system-component-library-react/styles/theme.scss' with (
    	$asset-base-path: '/assets'
    );
-
-   // Include slotted styles
-   @use 'pkg:@ongov/ontario-design-system-component-library-react/styles/slotted-styles/callouts-asides.scss';
-   @use 'pkg:@ongov/ontario-design-system-component-library-react/styles/slotted-styles/page-alerts.scss';
    ```
 
    Then import that wrapper in your app entry point.
@@ -121,13 +117,9 @@ When using this package with Next.js App Router, three additional steps are reco
 
    ```scss
    // src/styles/ontario-theme.scss
-   @forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss' with (
+   @forward 'pkg:@ongov/ontario-design-system-component-library-react/styles/theme.scss' with (
    	$asset-base-path: '/assets'
    );
-
-   // Include slotted styles
-   @use 'pkg:@ongov/ontario-design-system-component-library-react/styles/slotted-styles/callouts-asides.scss';
-   @use 'pkg:@ongov/ontario-design-system-component-library-react/styles/slotted-styles/page-alerts.scss';
    ```
 
 3. Configure asset path (SSR-safe)
