@@ -38,8 +38,9 @@ To use the Ontario Design System React component library, follow these steps:
 
    ```scss
    // src/styles/ontario-theme.scss
+   // Update `$asset-base-path` to match where your app serves Ontario Design System assets.
    @forward 'pkg:@ongov/ontario-design-system-component-library-react/styles/theme.scss' with (
-   	$asset-base-path: '/assets'
+   	$asset-base-path: '/your-assets-path'
    );
    ```
 
@@ -117,8 +118,9 @@ When using this package with Next.js App Router, three additional steps are reco
 
    ```scss
    // src/styles/ontario-theme.scss
+   // Update `$asset-base-path` to match where your app serves Ontario Design System assets
    @forward 'pkg:@ongov/ontario-design-system-component-library-react/styles/theme.scss' with (
-   	$asset-base-path: '/assets'
+   	$asset-base-path: '/your-assets-path'
    );
    ```
 
