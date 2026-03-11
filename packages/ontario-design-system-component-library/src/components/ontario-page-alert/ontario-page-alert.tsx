@@ -1,5 +1,6 @@
 import { Component, h, Prop, Watch, State } from '@stencil/core';
-import { PageAlert, PageAlertType } from './ontario-page-alert.interface';
+import { PageAlert } from './ontario-page-alert.interface';
+import { PageAlertType, PageAlertTypes } from './ontario-page-alert.types';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
@@ -40,10 +41,8 @@ export class OntarioPageAlert implements PageAlert {
 	 */
 	@State() private typeState: PageAlertType = 'informational';
 
-	private readonly validTypes: PageAlertType[] = ['informational', 'warning', 'success', 'error'];
-
 	private sanitizeType(value: PageAlertType): PageAlertType {
-		return validateValueAgainstArray(value, this.validTypes) ? value : 'informational';
+		return validateValueAgainstArray(value, PageAlertTypes) ? value : 'informational';
 	}
 
 	@Watch('type')

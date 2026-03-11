@@ -53,7 +53,7 @@ import {
 } from './components/ontario-header/ontario-header.interface';
 import { IconColour, IconSize } from './components/ontario-icon/icon.types';
 import { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
-import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
+import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.types';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 import { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
 import { TaskStatuses } from './utils/common/task-statuses.enum';
@@ -107,7 +107,7 @@ export {
 } from './components/ontario-header/ontario-header.interface';
 export { IconColour, IconSize } from './components/ontario-icon/icon.types';
 export { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
-export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
+export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.types';
 export { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 export { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
 export { TaskStatuses } from './utils/common/task-statuses.enum';
