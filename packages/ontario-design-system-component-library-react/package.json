@@ -25,6 +25,10 @@
 			"types": "./dist/components.server.d.ts",
 			"import": "./dist/components.server.js"
 		},
+		"./next/sass-pkg-importer": {
+			"types": "./dist/next/sass-pkg-importer.d.ts",
+			"import": "./dist/next/sass-pkg-importer.js"
+		},
 		"./react-component-lib": {
 			"types": "./dist/react-component-lib/index.d.ts",
 			"import": "./dist/react-component-lib/index.js",
