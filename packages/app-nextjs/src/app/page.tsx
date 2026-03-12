@@ -60,6 +60,9 @@ export default function Home() {
 							<Link href="/components/ontario-fieldset">ontario-fieldset</Link>
 						</li>
 						<li>
+							<Link href="/components/ontario-form-container">ontario-form-container</Link>
+						</li>
+						<li>
 							<Link href="/components/ontario-hint-expander">ontario-hint-expander</Link>
 						</li>
 						<li>
