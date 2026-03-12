@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, State, Watch, getAssetPath } from '@stencil/core';
+import { Component, h, Element, Prop, State, Watch } from '@stencil/core';
 
 import { Table, TableColumnOptions, TableRowOptions } from './table.interface';
 
@@ -7,6 +7,7 @@ import { validateTableColumns, validateTableRowOptions } from './utils/ontario-t
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { extractValuesByKey, organizeObjectKeys, removeObjectsBySpecificKey } from '../../utils/helper/utils';
+import { getImageAssetSrcPath } from '../../utils/helper/assets';
 
 @Component({
 	tag: 'ontario-table',
@@ -235,7 +236,7 @@ export class OntarioTable implements Table {
 							{dataType === 'tableData' && rowData.highlight && (
 								<img
 									class="ontario-table--highlight-indicator"
-									src={getAssetPath('./assets/highlight-indicator.svg')}
+									src={getImageAssetSrcPath('highlight-indicator.svg')}
 									aria-hidden="true"
 								></img>
 							)}
@@ -249,7 +250,9 @@ export class OntarioTable implements Table {
 	};
 
 	// Helper function to apply the scrollbar styles to the tops of tables
-	private applyScrollbar(tableElement: Element, scrollerDiv: HTMLElement) {
+	private applyScrollbar(tableElement?: HTMLElement, scrollerDiv?: HTMLElement) {
+		if (!tableElement || !scrollerDiv) return;
+
 		scrollerDiv.style.visibility = 'visible';
 		scrollerDiv.style.height = '20px';
 		scrollerDiv.style.width = `${tableElement.scrollWidth}px`;
@@ -257,30 +260,28 @@ export class OntarioTable implements Table {
 
 	// The following logic adds scrollbar functionality to the tops of tables depending on their size.
 	componentDidLoad() {
-		const tables = this.table;
-		const scrollerDivs = this.tableScrollDiv;
-		const scrollerWrappers = this.tableScrollWrapper;
+		const table = this.table;
+		const scrollerDiv = this.tableScrollDiv;
+		const scrollerWrapper = this.tableScrollWrapper;
 
-		if (typeof window !== 'undefined') {
-			let resizeObserver = new ResizeObserver(() => {
-				this.applyScrollbar(tables, scrollerDivs);
-			});
+		if (typeof window === 'undefined' || !table || !scrollerDiv || !scrollerWrapper) return;
 
-			this.applyScrollbar(tables, scrollerDivs);
-			resizeObserver.observe(tables);
+		const resizeObserver = new ResizeObserver(() => {
+			this.applyScrollbar(table, scrollerDiv);
+		});
 
-			tables.addEventListener('scroll', () => {
-				this.applyScrollbar(tables, scrollerDivs);
+		this.applyScrollbar(table, scrollerDiv);
+		resizeObserver.observe(table);
 
-				scrollerWrappers.scrollLeft = tables.scrollLeft;
-			});
+		table.addEventListener('scroll', () => {
+			this.applyScrollbar(table, scrollerDiv);
+			scrollerWrapper.scrollLeft = table.scrollLeft;
+		});
 
-			scrollerWrappers.addEventListener('scroll', () => {
-				this.applyScrollbar(tables, scrollerDivs);
-
-				tables.scrollLeft = scrollerWrappers.scrollLeft;
-			});
-		}
+		scrollerWrapper.addEventListener('scroll', () => {
+			this.applyScrollbar(table, scrollerDiv);
+			table.scrollLeft = scrollerWrapper.scrollLeft;
+		});
 	}
 
 	componentWillLoad() {
