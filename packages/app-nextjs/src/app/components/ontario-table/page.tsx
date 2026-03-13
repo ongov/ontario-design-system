@@ -393,7 +393,7 @@ export default function OntarioTablePage() {
 						]}
 					></OntarioTable>
 
-					<h3>`zebraStripes`` enabled</h3>
+					<h3>`zebraStripes` enabled</h3>
 					<OntarioTable
 						id="ontario-table-zebra-enabled-variant"
 						caption="Applications received by region"
