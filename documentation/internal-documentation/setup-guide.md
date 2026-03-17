@@ -2,8 +2,8 @@
 
 ## 1. System Requirements
 
-- **[Node.js](https://nodejs.org/en/download):** v22.22.0
-- **[PNPM](https://pnpm.io/installation):** v10.2.0
+- **[Node.js](https://nodejs.org/en/download):** use the version pinned in [`/.nvmrc`](../../.nvmrc) (currently `v22.22.0`)
+- **[PNPM](https://pnpm.io/installation):** use the version/range in [`/package.json`](../../package.json) (`packageManager` currently `pnpm@10.2.0`)
 
 ## 2. Project Structure Overview
 
