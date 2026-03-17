@@ -5,7 +5,7 @@ export default function OntarioCheckboxesPage() {
 	return (
 		<main>
 			<Grid>
-				<h1>ontario-checkboxes</h1>
+				<h1>ontario-checkboxes (Server Side)</h1>
 
 				<div>
 					<h2>"caption" Prop Variants</h2>
@@ -223,7 +223,7 @@ export default function OntarioCheckboxesPage() {
 				<div>
 					<h2>"hint-expander" Prop Variants</h2>
 
-					<h3>string hint-content-type</h3>
+					<h3>string hint-expander content type</h3>
 					<OntarioCheckboxes
 						caption={{ captionText: 'What areas of the project could have been better supported?' }}
 						name="checkbox-hint-expander-string"
@@ -235,7 +235,7 @@ export default function OntarioCheckboxesPage() {
 						}}
 					></OntarioCheckboxes>
 
-					<h3>html hint content type</h3>
+					<h3>html hint-expander content type</h3>
 					<OntarioCheckboxes
 						caption={{ captionText: 'Which topics should we include in the next team workshop?' }}
 						name="checkboxes-hint-expander-html"

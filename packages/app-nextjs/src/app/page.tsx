@@ -81,6 +81,9 @@ export default function Home() {
 							<Link href="/components/ontario-page-alert">ontario-page-alert</Link>
 						</li>
 						<li>
+							<Link href="/components/ontario-radio-buttons">ontario-radio-buttons</Link>
+						</li>
+						<li>
 							<Link href="/components/ontario-search-box">ontario-search-box</Link>
 						</li>
 						<li>
