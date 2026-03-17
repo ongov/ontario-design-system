@@ -518,7 +518,10 @@ export class OntarioHeader {
 			this.signInButton.focus();
 			// Emit event so menu knows button is focused (prevents auto-close)
 			window.dispatchEvent(new CustomEvent('menuButtonFocused', { bubbles: true, composed: true }));
-		} else if (this.menuToggled && this.menuButton) {
+			return;
+		}
+
+		if (this.menuToggled && this.menuButton) {
 			this.menuButton.focus();
 			window.dispatchEvent(new CustomEvent('menuButtonFocused', { bubbles: true, composed: true }));
 		}
@@ -595,9 +598,14 @@ export class OntarioHeader {
 	@Listen('focusNextElement', { target: 'window' })
 	handleFocusNextElement() {
 		// Focus the menu button (next menu in sequence)
-		if (this.menuButton) {
-			this.menuButton.focus();
-		}
+		// if (this.menuButton) {
+		// 	this.menuButton.focus();
+		// }
+		// if (this.signInButton) {
+		// 	this.signInButton.focus();
+		// } else {
+		// 	this.menuButton.focus();
+		// }
 	} /**
 	 * Call to Ontario Menu API to fetch linksets to populate header component
 	 */
@@ -937,8 +945,8 @@ export class OntarioHeader {
 											{this.translations.header.search[`${this.language}`]}
 										</span>
 									</button>
-									{this.renderSignInButton()}
 									{this.renderMenuButton()}
+									{this.renderSignInButton()}
 								</div>
 								<div class="ontario-header__search-close-container ontario-columns ontario-small-2 ontario-medium-3">
 									<button
@@ -971,7 +979,8 @@ export class OntarioHeader {
 							// Desktop OR no sign-in items → Use simple overflow menu
 							<ontario-header-overflow-menu
 								menuItems={this.signInToggled ? this.signInMenuItemsState || [] : this.menuItemState}
-								isLastMenu={!this.signInToggled || !this.signInMenuItemsState?.length}
+								isLastMenu={false}
+								returnFocusToTriggerOnLastTab={true}
 								language={this.language || 'en'}
 							/>
 						)}

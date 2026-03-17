@@ -485,6 +485,7 @@ export const OntarioHeaderOverflowMenu: StencilReactComponent<OntarioHeaderOverf
     properties: {
         menuItems: 'menu-items',
         isLastMenu: 'is-last-menu',
+        returnFocusToTriggerOnLastTab: 'return-focus-to-trigger-on-last-tab',
         language: 'language'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
