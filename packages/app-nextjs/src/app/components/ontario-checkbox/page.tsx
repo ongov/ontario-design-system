@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { Grid } from '../../grid';
 
-export default function OntarioStepIndicatorPage() {
+export default function OntarioCheckboxPage() {
 	return (
 		<main>
 			<Grid>
-				<h1>ontario-step-indicator</h1>
+				<h1>ontario-checkbox</h1>
 				<div>
 					<ul>
 						<li>

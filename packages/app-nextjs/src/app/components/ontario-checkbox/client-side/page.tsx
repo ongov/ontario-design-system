@@ -7,7 +7,7 @@ export default function OntarioCheckboxesPage() {
 	return (
 		<main>
 			<Grid>
-				<h1>ontario-checkboxes</h1>
+				<h1>ontario-checkboxes (Client Side)</h1>
 
 				<div>
 					<h2>Custom Event Props</h2>
