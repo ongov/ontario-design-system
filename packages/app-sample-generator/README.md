@@ -16,7 +16,7 @@ Takes your Web Components and generates clean, standalone HTML samples with:
 
 ### 1. Define your samples
 
-Edit `scripts/sample-config.ts`:
+Edit `src/sample-config.ts`:
 
 ```typescript
 {
@@ -31,12 +31,13 @@ Edit `scripts/sample-config.ts`:
 ### 2. Generate samples
 
 ```bash
-npm run generate-samples
+pnpm build
+pnpm start
 ```
 
 ### 3. Get clean HTML output
 
-Output goes to `docs/samples/`:
+Default output goes to `generated-samples/` (or a custom `--outputDirectory`):
 
 ```html
 <style>
@@ -49,6 +50,15 @@ Output goes to `docs/samples/`:
 </style>
 <button class="button primary" type="button">Click me</button>
 ```
+
+## Runtime Flow (Where the logic lives)
+
+- `src/cli.ts` is the command entrypoint.
+- `src/cli.ts` calls `generateSamples()` from `src/index.ts`.
+- `src/index.ts` loads sample data from `src/sample-config.ts`.
+- `src/index.ts` renders + cleans HTML and writes output files.
+- `pnpm build` compiles all of this to `dist/*`.
+- `pnpm start` runs `dist/cli.js`.
 
 ## Features
 
@@ -69,7 +79,6 @@ Output goes to `docs/samples/`:
 ### Smart Rendering
 
 - Uses `renderToString()` for Ontario components (SSR)
-- Uses `newSpecPage()` for local test components
 - Handles nested components and slots
 - Resolves component dependencies
 
@@ -77,7 +86,7 @@ Output goes to `docs/samples/`:
 
 ### Sample Definition
 
-Each sample in `scripts/sample-config.ts` has:
+Each sample in `src/sample-config.ts` has:
 
 ```typescript
 interface ComponentSample {
@@ -118,10 +127,10 @@ export const samples: ComponentSample[] = [
 - Uses `renderToString()` from hydrate build
 - Server-side rendering for production components
 
-**For local test components**:
+**For local sample entries**:
 
-- Uses `newSpecPage()` from Stencil testing
-- Perfect for prototypes and examples
+- Uses the HTML defined in `src/sample-config.ts` as input to `renderToString()`
+- Keeps output consistent with Ontario component library rendering
 
 ### 2. Cleanup Process
 
@@ -157,7 +166,7 @@ Dependency styles are merged automatically.
 ### File Structure
 
 ```
-docs/samples/
+generated-samples/
 ├── my-component.html
 ├── sample-button.html
 ├── sample-input.html
@@ -189,7 +198,7 @@ docs/samples/
 Point iframes to generated HTML:
 
 ```html
-<iframe src="docs/samples/ontario-button.html"></iframe>
+<iframe src="generated-samples/ontario-button.html"></iframe>
 ```
 
 ### 2. Fractal Integration
@@ -212,7 +221,7 @@ Visual regression testing with clean, reproducible HTML
 
 ### Adding New Components
 
-1. Add to `sample-config.ts`:
+1. Add to `src/sample-config.ts`:
 
 ```typescript
 {
@@ -223,78 +232,42 @@ Visual regression testing with clean, reproducible HTML
 }
 ```
 
-2. Add module path in `generate-samples.ts`:
-
-```typescript
-const componentModulePaths = {
-	'my-new-component': path.join(process.cwd(), 'dist', 'stencilsample', 'my-new-component.entry.js'),
-	// ...
-};
-```
-
-3. Add style path:
-
-```typescript
-const componentStylePaths = {
-	'my-new-component': path.join(process.cwd(), 'src', 'components', 'my-new-component', 'my-new-component.css'),
-	// ...
-};
-```
-
-4. Run generator:
+2. Run generator:
 
 ```bash
-npm run generate-samples
+pnpm build
+pnpm start
 ```
-
-### Nested Components
-
-For components with dependencies:
-
-```typescript
-const componentDependencies = {
-	'sample-card': ['sample-card-action'], // Card contains action buttons
-};
-```
-
-Generator loads both and resolves slots automatically.
 
 ## Troubleshooting
 
 ### Component not rendering
 
-- Check module path in `componentModulePaths`
-- Verify component is built: `npm run build-components`
+- Check the component tag and HTML in `src/sample-config.ts`
+- Verify generator is built: `pnpm build`
 
 ### Styles not showing
 
-- Check style path in `componentStylePaths`
-- Verify CSS file exists
+- Verify the component exists in `@ongov/ontario-design-system-component-library`
+- Reinstall dependencies if needed: `pnpm install`
 - Set `includeStyles: true` in sample config
 
 ### Slots not resolving
 
-- Add dependencies in `componentDependencies`
-- Check slot names match between parent/child
+- Check slot names and content in your sample HTML
 
 ## Development
 
-### Build components
+### Build
 
 ```bash
-npm run build-components
+pnpm build
 ```
 
 ### Generate samples
 
 ```bash
-npm run generate-samples
-```
-
-### Screenshot sample
-
-```bash
-npm run screenshot:sample-button
+pnpm start
 ```
 
 ## Future Enhancements
@@ -308,13 +281,3 @@ npm run screenshot:sample-button
 ## License
 
 ISC
-
-    K -->|final HTML| L["writeFileSync()"]
-
-    L -->|saves to| M["docs/samples/<br/>component-name.html"]
-
-    style D fill:#e1f5ff
-    style E fill:#f3e5f5
-    style G fill:#fff3e0
-    style H fill:#e8f5e9
-    style M fill:#fce4ec
