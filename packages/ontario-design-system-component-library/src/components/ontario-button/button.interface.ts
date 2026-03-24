@@ -12,22 +12,27 @@ export interface Button extends Base {
 	/**
 	 * The native HTML button type the button should use.
 	 *
-	 * If no htmlType is passed, it will default to 'button'.
+	 * If no `htmlType` is passed, it will default to `'button'`.
+	 * This prop only affects the component when it renders as a native `<button>`.
+	 * If `href` is provided, the component renders as a native `<a>` and `htmlType` is ignored.
 	 */
 	htmlType: HtmlType;
 
 	/**
 	 * When provided, the component renders as a native anchor for navigation use cases.
+	 * This takes precedence over `htmlType`, so form-submission behaviour is disabled in link mode.
 	 */
 	href?: string;
 
 	/**
 	 * Specifies where to open the linked document when `href` is provided.
+	 * This prop has no effect unless the component is in link mode.
 	 */
 	target?: string;
 
 	/**
 	 * Specifies the relationship of the linked document to the current document when `href` is provided.
+	 * This prop has no effect unless the component is in link mode.
 	 */
 	rel?: string;
 
