@@ -5,7 +5,12 @@ import { validateLanguage } from '../../utils/validation/validation-functions';
 import { translations, Translations } from '../../translations';
 import { Input } from './components';
 import { getDateErrorMessage, getVisibleDateFields } from './utils';
-import { DateInputFieldType, DateInputPlaceholder, DateValidatorReturnType } from './ontario-date-input-interface';
+import {
+	DateInputFieldType,
+	DateInputPlaceholder,
+	DateInputValueParts,
+	DateValidatorReturnType,
+} from './ontario-date-input-interface';
 import { ErrorMessage } from '../../utils/components/error-message/error-message';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { ConsoleType } from '../../utils/console-message/console-message.enum';
@@ -44,6 +49,15 @@ export class OntarioDateInput {
 	 * This is optional. If no prop is passed, it will not display any placeholder text.
 	 */
 	@Prop() placeholder?: DateInputPlaceholder | string;
+
+	/**
+	 * The aggregate date value for the component.
+	 *
+	 * Accepts either a plain ISO date (`YYYY-MM-DD`) or a full ISO 8601 timestamp. When a valid value is provided,
+	 * the component hydrates the internal day, month, and year fields and normalizes the stored form value to a full
+	 * UTC ISO timestamp (`YYYY-MM-DDT00:00:00.000Z`).
+	 */
+	@Prop({ mutable: true }) value?: string;
 
 	/**
 	 * The text to display as the input label
@@ -205,6 +219,8 @@ export class OntarioDateInput {
 	@State() private placeholderState: DateInputPlaceholder;
 	@State() private dateOptionsState: Array<DateInputFieldType>;
 
+	private isSyncingValue = false;
+
 	/**
 	 * Watch for changes to the `caption` prop.
 	 *
@@ -229,6 +245,40 @@ export class OntarioDateInput {
 	@Watch('language')
 	updateLanguage() {
 		this.updateCaptionState(this.caption);
+	}
+
+	@Watch('value')
+	syncValueProp(newValue?: string) {
+		if (this.isSyncingValue) {
+			return;
+		}
+
+		if (!newValue) {
+			this.day = '';
+			this.month = '';
+			this.year = '';
+			this.isDateTyped = false;
+			this.resetErrorState();
+			if (typeof this.internals?.setFormValue === 'function') {
+				this.internals.setFormValue('');
+			}
+			return;
+		}
+
+		const parsedValue = this.parseDateValue(newValue);
+
+		if (!parsedValue) {
+			this.logInvalidValueProp(newValue);
+			return;
+		}
+
+		this.day = parsedValue.day;
+		this.month = parsedValue.month;
+		this.year = parsedValue.year;
+		this.isDateTyped = false;
+		this.resetErrorState();
+
+		this.syncAggregateValue(parsedValue.normalizedValue);
 	}
 
 	private processPlaceholder() {
@@ -269,6 +319,59 @@ export class OntarioDateInput {
 		return this.dayInvalid || this.monthInvalid || this.yearInvalid;
 	};
 
+	private getNormalizedDateValue(year = this.year, month = this.month, day = this.day): string | undefined {
+		if (!year || !month || !day) {
+			return undefined;
+		}
+
+		const numericYear = Number(year);
+		const numericMonth = Number(month);
+		const numericDay = Number(day);
+		const desiredDate = new Date(Date.UTC(numericYear, numericMonth - 1, numericDay, 0, 0, 0, 0));
+
+		if (
+			Number.isNaN(desiredDate.getTime()) ||
+			desiredDate.getUTCFullYear() !== numericYear ||
+			desiredDate.getUTCMonth() + 1 !== numericMonth ||
+			desiredDate.getUTCDate() !== numericDay
+		) {
+			return undefined;
+		}
+
+		return desiredDate.toISOString();
+	}
+
+	private parseDateValue(value: string): DateInputValueParts | undefined {
+		const match = value.match(/^(\d{4})-(\d{2})-(\d{2})(?:T.*)?$/);
+
+		if (!match) {
+			return undefined;
+		}
+
+		const [, year, month, day] = match;
+		const normalizedValue = this.getNormalizedDateValue(year, month, day);
+
+		if (!normalizedValue) {
+			return undefined;
+		}
+
+		return { year, month, day, normalizedValue };
+	}
+
+	private logInvalidValueProp(value: string) {
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addRegularText(' invalid ')
+			.addMonospaceText(' value ')
+			.addRegularText('on')
+			.addMonospaceText(' <ontario-date-input> ')
+			.addRegularText('received')
+			.addMonospaceText(` ${value} `)
+			.addRegularText('Expected a plain ISO date (`YYYY-MM-DD`) or full ISO 8601 timestamp.')
+			.printMessage(ConsoleType.Error);
+	}
+
 	private resetErrorState = () => {
 		if (!this.isInvalidDate()) {
 			return;
@@ -294,6 +397,16 @@ export class OntarioDateInput {
 		}
 	};
 
+	private syncAggregateValue(normalizedValue?: string) {
+		this.isSyncingValue = true;
+		this.value = normalizedValue;
+		this.isSyncingValue = false;
+
+		if (typeof this.internals?.setFormValue === 'function') {
+			this.internals.setFormValue(normalizedValue ?? '');
+		}
+	}
+
 	private handleDateUpdates = (value: string, fieldType: DateInputFieldType) => {
 		// set boolean indicating user interaction with the component for validation
 		if (!this.isDateTyped) {
@@ -306,13 +419,7 @@ export class OntarioDateInput {
 		// update date state
 		this.updateDateState(value, fieldType);
 
-		// TODO: verify are all the values numbers?
-		if (this.year && this.month && this.day) {
-			const desiredDate = new Date(
-				Date.UTC(parseInt(this.year), parseInt(this.month) - 1, parseInt(this.day), 0, 0, 0, 0),
-			);
-			this.internals?.setFormValue?.(desiredDate.toISOString());
-		}
+		this.syncAggregateValue(this.getNormalizedDateValue());
 	};
 
 	private handleDateInput = (value: string, fieldType: DateInputFieldType) => {
@@ -379,6 +486,7 @@ export class OntarioDateInput {
 		this.elementId = this.elementId ?? uuid();
 
 		this.language = validateLanguage(this.language) as Language;
+		this.syncValueProp(this.value);
 	}
 
 	render() {
@@ -406,6 +514,7 @@ export class OntarioDateInput {
 							type="year"
 							label={dateStrings.year.label[language]}
 							accessibilityLabel={dateStrings.year.accessibility[language]}
+							value={this.year}
 							required={!!required}
 							error={this.yearInvalid}
 							placeholder={placeholderText.year}
@@ -422,6 +531,7 @@ export class OntarioDateInput {
 							type="month"
 							label={dateStrings.month.label[language]}
 							accessibilityLabel={dateStrings.month.accessibility[language]}
+							value={this.month}
 							required={!!required}
 							error={this.monthInvalid}
 							placeholder={placeholderText.month}
@@ -438,6 +548,7 @@ export class OntarioDateInput {
 							type="day"
 							label={dateStrings.day.label[language]}
 							accessibilityLabel={dateStrings.day.accessibility[language]}
+							value={this.day}
 							required={!!required}
 							error={this.dayInvalid}
 							placeholder={placeholderText.day}

@@ -422,6 +422,10 @@ export namespace Components {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The aggregate date value for the component.  Accepts either a plain ISO date (`YYYY-MM-DD`) or a full ISO 8601 timestamp. When a valid value is provided, the component hydrates the internal day, month, and year fields and normalizes the stored form value to a full UTC ISO timestamp (`YYYY-MM-DDT00:00:00.000Z`).
+		 */
+		value?: string;
 	}
 	interface OntarioDropdownList {
 		/**
@@ -5121,6 +5125,10 @@ declare namespace LocalJSX {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The aggregate date value for the component.  Accepts either a plain ISO date (`YYYY-MM-DD`) or a full ISO 8601 timestamp. When a valid value is provided, the component hydrates the internal day, month, and year fields and normalizes the stored form value to a full UTC ISO timestamp (`YYYY-MM-DDT00:00:00.000Z`).
+		 */
+		value?: string;
 	}
 	interface OntarioDropdownList {
 		/**

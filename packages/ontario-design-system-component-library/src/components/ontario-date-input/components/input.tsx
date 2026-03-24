@@ -7,6 +7,7 @@ export type InputProps = {
 	type: DateInputFieldType;
 	label: string;
 	accessibilityLabel: string;
+	value?: string;
 	error?: boolean;
 	onInput: (value: string, fieldType: DateInputFieldType) => void;
 	onChange: (value: string, fieldType: DateInputFieldType) => void;
@@ -22,6 +23,7 @@ export const Input: FunctionalComponent<InputProps> = ({
 	type,
 	label,
 	accessibilityLabel,
+	value,
 	placeholder,
 	onInput,
 	onChange,
@@ -60,6 +62,7 @@ export const Input: FunctionalComponent<InputProps> = ({
 				type="text"
 				inputMode="numeric"
 				id={id}
+				value={value}
 				required={!!required}
 				placeholder={placeholder}
 				onInput={handleInputInput}

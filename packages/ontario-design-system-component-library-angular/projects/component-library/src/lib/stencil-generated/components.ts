@@ -295,14 +295,14 @@ export declare interface OntarioCriticalAlert extends Components.OntarioCritical
 
 
 @ProxyCmp({
-  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required']
+  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required', 'value']
 })
 @Component({
   selector: 'ontario-date-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required'],
+  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required', 'value'],
   outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
   standalone: false
 })

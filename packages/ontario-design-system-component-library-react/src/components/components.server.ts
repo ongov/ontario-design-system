@@ -351,6 +351,7 @@ export const OntarioDateInput: StencilReactComponent<OntarioDateInputElement, On
         language: 'language',
         required: 'required',
         placeholder: 'placeholder',
+        value: 'value',
         caption: 'caption',
         elementId: 'element-id',
         minYear: 'min-year',
