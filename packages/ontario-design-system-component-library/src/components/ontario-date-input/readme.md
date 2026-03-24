@@ -205,7 +205,7 @@ The `value` prop accepts either:
 
 When a valid `value` is provided, the component hydrates the internal year, month, and day fields and normalizes its aggregate value to a full UTC ISO timestamp.
 
-There is no dedicated aggregate value event in this change. The component continues to emit the existing field-level `inputOnInput` and `inputOnChange` events, and the normalized aggregate value can be read from `event.target.value` on the host element.
+The component also emits a dedicated `dateInputValueOnChange` event whenever the aggregate `value` changes. The event detail includes the normalized full UTC ISO value when the entered date is complete and valid, or `undefined` when the aggregate value is cleared.
 
 ### Forms
 
@@ -224,6 +224,14 @@ If you are listening for changes on the host element, read the normalized aggreg
 ```js
 document.querySelector('ontario-date-input').addEventListener('change', (event) => {
 	console.log(event.target.value);
+});
+```
+
+If you want to observe only aggregate value updates, listen for `dateInputValueOnChange` instead:
+
+```js
+document.querySelector('ontario-date-input').addEventListener('dateInputValueOnChange', (event) => {
+	console.log(event.detail.value);
 });
 ```
 
@@ -297,6 +305,20 @@ If the number `2` is entered into the year input within `date-input-1`, the valu
 ```
 
 See the [Events](#events) table to learn more about the available custom events from the component and what the type of `CustomEvent.detail` will be.
+
+To listen specifically for aggregate value updates instead of field-level changes, use the `dateInputValueOnChange` event:
+
+```html
+<ontario-date-input id="date-input-value-example"></ontario-date-input>
+<script>
+	window.onload = () => {
+		const dateInput = document.getElementById('date-input-value-example');
+		dateInput.addEventListener('dateInputValueOnChange', (event) => {
+			console.log('Aggregate value detail:', event.detail.value);
+		});
+	};
+</script>
+```
 
 ### Native `input` and `change` events
 
@@ -376,13 +398,14 @@ The Ontario Date Input component is compatible with Server-Side Rendering (SSR),
 
 ## Events
 
-| Event                | Description                                                                | Type                                                                     |
-| -------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `inputErrorOccurred` | Emitted when an error message is reported to the component.                | `CustomEvent<{ inputId: string; errorMessage: string; }>`                |
-| `inputOnBlur`        | Emitted when a keyboard input event occurs when an input has lost focus.   | `CustomEvent<"day" \| "month" \| "year">`                                |
-| `inputOnChange`      | Emitted when a `change` event occurs within the component.                 | `CustomEvent<{ value: string; fieldType: "day" \| "month" \| "year"; }>` |
-| `inputOnFocus`       | Emitted when a keyboard input event occurs when an input has gained focus. | `CustomEvent<"day" \| "month" \| "year">`                                |
-| `inputOnInput`       | Emitted when an `input` event occurs within the component.                 | `CustomEvent<{ value: string; fieldType: "day" \| "month" \| "year"; }>` |
+| Event                    | Description                                                                                                                                                                                                                                        | Type                                                                     |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `dateInputValueOnChange` | Emitted when the aggregate `value` for the component changes. The emitted value is normalized to a full UTC ISO timestamp when the entered date is complete and valid. If the entered date becomes incomplete, the emitted `value` is `undefined`. | `CustomEvent<{ value?: string \| undefined; }>`                          |
+| `inputErrorOccurred`     | Emitted when an error message is reported to the component.                                                                                                                                                                                        | `CustomEvent<{ inputId: string; errorMessage: string; }>`                |
+| `inputOnBlur`            | Emitted when a keyboard input event occurs when an input has lost focus.                                                                                                                                                                           | `CustomEvent<"day" \| "month" \| "year">`                                |
+| `inputOnChange`          | Emitted when a `change` event occurs within the component.                                                                                                                                                                                         | `CustomEvent<{ value: string; fieldType: "day" \| "month" \| "year"; }>` |
+| `inputOnFocus`           | Emitted when a keyboard input event occurs when an input has gained focus.                                                                                                                                                                         | `CustomEvent<"day" \| "month" \| "year">`                                |
+| `inputOnInput`           | Emitted when an `input` event occurs within the component.                                                                                                                                                                                         | `CustomEvent<{ value: string; fieldType: "day" \| "month" \| "year"; }>` |
 
 ## Dependencies
 

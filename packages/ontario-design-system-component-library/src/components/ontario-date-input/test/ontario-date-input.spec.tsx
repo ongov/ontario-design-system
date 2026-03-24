@@ -166,6 +166,51 @@ describe('ontario-date-input', () => {
 		expect((page.root as HTMLOntarioDateInputElement).value).toBe('2024-02-20T00:00:00.000Z');
 	});
 
+	it('emits an aggregate value event when the normalized value changes', async () => {
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input></ontario-date-input>`,
+		});
+		const emitSpy = jest.fn();
+		page.root?.addEventListener('dateInputValueOnChange', emitSpy);
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+		const [yearInput, monthInput, dayInput] = Array.from(inputs ?? []);
+
+		yearInput.value = '2024';
+		yearInput.dispatchEvent(new Event('input'));
+		monthInput.value = '02';
+		monthInput.dispatchEvent(new Event('input'));
+		dayInput.value = '20';
+		dayInput.dispatchEvent(new Event('input'));
+
+		await page.waitForChanges();
+
+		expect(emitSpy).toHaveBeenCalledTimes(1);
+		expect(emitSpy.mock.calls[0][0].detail).toEqual({ value: '2024-02-20T00:00:00.000Z' });
+	});
+
+	it('emits an aggregate value event when the normalized value is cleared', async () => {
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input value="2024-02-20"></ontario-date-input>`,
+		});
+		const emitSpy = jest.fn();
+		page.root?.addEventListener('dateInputValueOnChange', emitSpy);
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+		const [yearInput] = Array.from(inputs ?? []);
+
+		yearInput.value = '';
+		yearInput.dispatchEvent(new Event('input'));
+
+		await page.waitForChanges();
+
+		expect((page.root as HTMLOntarioDateInputElement).value).toBeUndefined();
+		expect(emitSpy).toHaveBeenCalledTimes(1);
+		expect(emitSpy.mock.calls[0][0].detail).toEqual({ value: undefined });
+	});
+
 	it('reports an error and ignores invalid aggregate values', async () => {
 		const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
 

@@ -7,6 +7,7 @@ import { Input } from './components';
 import { getDateErrorMessage, getVisibleDateFields } from './utils';
 import {
 	DateInputFieldType,
+	DateInputValueChangeEvent,
 	DateInputPlaceholder,
 	DateInputValueParts,
 	DateValidatorReturnType,
@@ -132,6 +133,14 @@ export class OntarioDateInput {
 		value: string;
 		fieldType: 'day' | 'month' | 'year';
 	}>;
+
+	/**
+	 * Emitted when the aggregate `value` for the component changes.
+	 *
+	 * The emitted value is normalized to a full UTC ISO timestamp when the entered date is complete and valid.
+	 * If the entered date becomes incomplete, the emitted `value` is `undefined`.
+	 */
+	@Event() dateInputValueOnChange: EventEmitter<DateInputValueChangeEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when an input has lost focus.
@@ -398,12 +407,18 @@ export class OntarioDateInput {
 	};
 
 	private syncAggregateValue(normalizedValue?: string) {
+		const previousValue = this.value;
+
 		this.isSyncingValue = true;
 		this.value = normalizedValue;
 		this.isSyncingValue = false;
 
 		if (typeof this.internals?.setFormValue === 'function') {
 			this.internals.setFormValue(normalizedValue ?? '');
+		}
+
+		if (previousValue !== normalizedValue) {
+			this.dateInputValueOnChange.emit({ value: normalizedValue });
 		}
 	}
 
