@@ -34,11 +34,13 @@ export const Input: FunctionalComponent<InputProps> = ({
 	required = false,
 }) => {
 	const handleInputInput = (event: Event) => {
+		event.stopPropagation();
 		const newValue = (event.target as HTMLInputElement)?.value ?? '';
 		onInput(newValue, type);
 	};
 
 	const handleInputChange = (event: Event) => {
+		event.stopPropagation();
 		const newValue = (event.target as HTMLInputElement)?.value ?? '';
 		onChange(newValue, type);
 	};

@@ -6,7 +6,7 @@
 /* eslint-disable */
 
 // @ts-ignore - ignore potential type issues as the project is importing itself
-import { type AccordionChangeDetail, type DateInputFieldType, type DateInputValueChangeEvent, type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
 import * as clientComponents from '@ongov/ontario-design-system-component-library-react';
 import { OntarioAccordion as OntarioAccordionElement } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
 import { OntarioAside as OntarioAsideElement } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
@@ -340,7 +340,6 @@ export const OntarioCriticalAlert: StencilReactComponent<OntarioCriticalAlertEle
 export type OntarioDateInputEvents = {
     onInputOnInput: EventName<OntarioDateInputCustomEvent<{ value: string; fieldType: 'day' | 'month' | 'year'; }>>,
     onInputOnChange: EventName<OntarioDateInputCustomEvent<{ value: string; fieldType: 'day' | 'month' | 'year'; }>>,
-    onDateInputValueOnChange: EventName<OntarioDateInputCustomEvent<DateInputValueChangeEvent>>,
     onInputOnBlur: EventName<OntarioDateInputCustomEvent<DateInputFieldType>>,
     onInputOnFocus: EventName<OntarioDateInputCustomEvent<DateInputFieldType>>,
     onInputErrorOccurred: EventName<OntarioDateInputCustomEvent<{ inputId: string; errorMessage: string }>>

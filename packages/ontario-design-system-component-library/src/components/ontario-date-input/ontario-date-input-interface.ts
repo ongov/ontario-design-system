@@ -7,10 +7,6 @@ export type DateInputValueParts = {
 	normalizedValue: string;
 };
 
-export type DateInputValueChangeEvent = {
-	value?: string;
-};
-
 export type DateInputPlaceholder = {
 	day?: string;
 	month?: string;

@@ -7,7 +7,6 @@ import { Input } from './components';
 import { getDateErrorMessage, getVisibleDateFields } from './utils';
 import {
 	DateInputFieldType,
-	DateInputValueChangeEvent,
 	DateInputPlaceholder,
 	DateInputValueParts,
 	DateValidatorReturnType,
@@ -135,14 +134,6 @@ export class OntarioDateInput {
 	}>;
 
 	/**
-	 * Emitted when the aggregate `value` for the component changes.
-	 *
-	 * The emitted value is normalized to a full UTC ISO timestamp when the entered date is complete and valid.
-	 * If the entered date becomes incomplete, the emitted `value` is `undefined`.
-	 */
-	@Event() dateInputValueOnChange: EventEmitter<DateInputValueChangeEvent>;
-
-	/**
 	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
 	@Event() inputOnBlur: EventEmitter<DateInputFieldType>;
@@ -268,6 +259,9 @@ export class OntarioDateInput {
 			this.year = '';
 			this.isDateTyped = false;
 			this.resetErrorState();
+			this.isSyncingValue = true;
+			this.value = '';
+			this.isSyncingValue = false;
 			if (typeof this.internals?.setFormValue === 'function') {
 				this.internals.setFormValue('');
 			}
@@ -406,23 +400,26 @@ export class OntarioDateInput {
 		}
 	};
 
-	private syncAggregateValue(normalizedValue?: string) {
-		const previousValue = this.value;
+	private emitAggregateValueEvent(name: 'input' | 'change') {
+		emitEvent(this.element, name);
+	}
+
+	private syncAggregateValue(normalizedValue?: string): boolean {
+		const previousValue = this.value ?? '';
+		const nextValue = normalizedValue ?? '';
 
 		this.isSyncingValue = true;
-		this.value = normalizedValue;
+		this.value = nextValue;
 		this.isSyncingValue = false;
 
 		if (typeof this.internals?.setFormValue === 'function') {
-			this.internals.setFormValue(normalizedValue ?? '');
+			this.internals.setFormValue(nextValue);
 		}
 
-		if (previousValue !== normalizedValue) {
-			this.dateInputValueOnChange.emit({ value: normalizedValue });
-		}
+		return previousValue !== nextValue;
 	}
 
-	private handleDateUpdates = (value: string, fieldType: DateInputFieldType) => {
+	private handleDateUpdates = (value: string, fieldType: DateInputFieldType): boolean => {
 		// set boolean indicating user interaction with the component for validation
 		if (!this.isDateTyped) {
 			this.isDateTyped = true;
@@ -434,24 +431,29 @@ export class OntarioDateInput {
 		// update date state
 		this.updateDateState(value, fieldType);
 
-		this.syncAggregateValue(this.getNormalizedDateValue());
+		return this.syncAggregateValue(this.getNormalizedDateValue());
 	};
 
 	private handleDateInput = (value: string, fieldType: DateInputFieldType) => {
-		this.handleDateUpdates(value, fieldType);
+		const aggregateValueChanged = this.handleDateUpdates(value, fieldType);
 
 		// emit date change event
 		this.inputOnInput.emit({ value, fieldType });
+
+		if (aggregateValueChanged) {
+			this.emitAggregateValueEvent('input');
+		}
 	};
 
 	private handleDateChanged = (value: string, fieldType: DateInputFieldType) => {
-		this.handleDateUpdates(value, fieldType);
+		const aggregateValueChanged = this.handleDateUpdates(value, fieldType);
 
 		// emit date change event
 		this.inputOnChange.emit({ value, fieldType });
 
-		// emit change event
-		emitEvent(this.element, 'change', { value, fieldType });
+		if (aggregateValueChanged) {
+			this.emitAggregateValueEvent('change');
+		}
 	};
 
 	private handleDateFocus = (fieldType: DateInputFieldType) => {

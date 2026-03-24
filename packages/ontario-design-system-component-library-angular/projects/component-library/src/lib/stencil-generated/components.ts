@@ -303,14 +303,13 @@ export declare interface OntarioCriticalAlert extends Components.OntarioCritical
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required', 'value'],
-  outputs: ['inputOnInput', 'inputOnChange', 'dateInputValueOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
+  outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
   standalone: false
 })
 export class OntarioDateInput {
   protected el: HTMLOntarioDateInputElement;
   @Output() inputOnInput = new EventEmitter<CustomEvent<{ value: string; fieldType: 'day' | 'month' | 'year'; }>>();
   @Output() inputOnChange = new EventEmitter<CustomEvent<{ value: string; fieldType: 'day' | 'month' | 'year'; }>>();
-  @Output() dateInputValueOnChange = new EventEmitter<CustomEvent<IOntarioDateInputDateInputValueChangeEvent>>();
   @Output() inputOnBlur = new EventEmitter<CustomEvent<IOntarioDateInputDateInputFieldType>>();
   @Output() inputOnFocus = new EventEmitter<CustomEvent<IOntarioDateInputDateInputFieldType>>();
   @Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ inputId: string; errorMessage: string }>>();
@@ -321,7 +320,6 @@ export class OntarioDateInput {
 }
 
 
-import type { DateInputValueChangeEvent as IOntarioDateInputDateInputValueChangeEvent } from '@ongov/ontario-design-system-component-library';
 import type { DateInputFieldType as IOntarioDateInputDateInputFieldType } from '@ongov/ontario-design-system-component-library';
 
 export declare interface OntarioDateInput extends Components.OntarioDateInput {
@@ -333,13 +331,6 @@ export declare interface OntarioDateInput extends Components.OntarioDateInput {
    * Emitted when a `change` event occurs within the component.
    */
   inputOnChange: EventEmitter<CustomEvent<{ value: string; fieldType: 'day' | 'month' | 'year'; }>>;
-  /**
-   * Emitted when the aggregate `value` for the component changes.
-
-The emitted value is normalized to a full UTC ISO timestamp when the entered date is complete and valid.
-If the entered date becomes incomplete, the emitted `value` is `undefined`.
-   */
-  dateInputValueOnChange: EventEmitter<CustomEvent<IOntarioDateInputDateInputValueChangeEvent>>;
   /**
    * Emitted when a keyboard input event occurs when an input has lost focus.
    */

@@ -35,7 +35,6 @@ import {
 import {
 	DateInputFieldType,
 	DateInputPlaceholder,
-	DateInputValueChangeEvent,
 	DateValidatorReturnType,
 } from './components/ontario-date-input/ontario-date-input-interface';
 import { DropdownOption } from './components/ontario-dropdown-list/dropdown-option.interface';
@@ -90,7 +89,6 @@ export {
 export {
 	DateInputFieldType,
 	DateInputPlaceholder,
-	DateInputValueChangeEvent,
 	DateValidatorReturnType,
 } from './components/ontario-date-input/ontario-date-input-interface';
 export { DropdownOption } from './components/ontario-dropdown-list/dropdown-option.interface';
@@ -3310,7 +3308,6 @@ declare global {
 			value: string;
 			fieldType: 'day' | 'month' | 'year';
 		};
-		dateInputValueOnChange: DateInputValueChangeEvent;
 		inputOnBlur: DateInputFieldType;
 		inputOnFocus: DateInputFieldType;
 		inputErrorOccurred: { inputId: string; errorMessage: string };
@@ -5089,10 +5086,6 @@ declare namespace LocalJSX {
 		 * A number value indicating minimum value allowed for year input field of the date component.  This is optional. If no prop is passed, it will default to `999`.
 		 */
 		minYear?: number;
-		/**
-		 * Emitted when the aggregate `value` for the component changes.  The emitted value is normalized to a full UTC ISO timestamp when the entered date is complete and valid. If the entered date becomes incomplete, the emitted `value` is `undefined`.
-		 */
-		onDateInputValueOnChange?: (event: OntarioDateInputCustomEvent<DateInputValueChangeEvent>) => void;
 		/**
 		 * Emitted when an error message is reported to the component.
 		 */

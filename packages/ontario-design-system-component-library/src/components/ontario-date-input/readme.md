@@ -205,7 +205,7 @@ The `value` prop accepts either:
 
 When a valid `value` is provided, the component hydrates the internal year, month, and day fields and normalizes its aggregate value to a full UTC ISO timestamp.
 
-The component also emits a dedicated `dateInputValueOnChange` event whenever the aggregate `value` changes. The event detail includes the normalized full UTC ISO value when the entered date is complete and valid, or `undefined` when the aggregate value is cleared.
+When the aggregate value changes, listen for host `input` and `change` events and read the normalized value from `event.target.value`, similar to a native form control. The existing `inputOnInput` and `inputOnChange` custom events remain available if you need the field-level detail.
 
 ### Forms
 
@@ -227,12 +227,59 @@ document.querySelector('ontario-date-input').addEventListener('change', (event) 
 });
 ```
 
-If you want to observe only aggregate value updates, listen for `dateInputValueOnChange` instead:
+The same pattern works in framework wrappers:
 
-```js
-document.querySelector('ontario-date-input').addEventListener('dateInputValueOnChange', (event) => {
-	console.log(event.detail.value);
-});
+```mdx-code-block
+<Tabs
+groupId="framework-events"
+defaultValue="react"
+values={[
+{label: 'React', value: 'react'},
+{label: 'Angular', value: 'angular'},
+]}>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioDateInput
+	value="2024-02-20"
+	caption="Exact date"
+	onInput={(event) => {
+		console.log((event.target as HTMLOntarioDateInputElement).value);
+	}}
+	onChange={(event) => {
+		console.log((event.target as HTMLOntarioDateInputElement).value);
+	}}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-date-input
+	[value]="'2024-02-20'"
+	[caption]="'Exact date'"
+	(input)="handleDateInput($event)"
+	(change)="handleDateChange($event)"
+></ontario-date-input>
+```
+
+```ts
+handleDateInput(event: Event) {
+	console.log((event.target as HTMLOntarioDateInputElement).value);
+}
+
+handleDateChange(event: Event) {
+	console.log((event.target as HTMLOntarioDateInputElement).value);
+}
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 ```html
@@ -306,27 +353,13 @@ If the number `2` is entered into the year input within `date-input-1`, the valu
 
 See the [Events](#events) table to learn more about the available custom events from the component and what the type of `CustomEvent.detail` will be.
 
-To listen specifically for aggregate value updates instead of field-level changes, use the `dateInputValueOnChange` event:
-
-```html
-<ontario-date-input id="date-input-value-example"></ontario-date-input>
-<script>
-	window.onload = () => {
-		const dateInput = document.getElementById('date-input-value-example');
-		dateInput.addEventListener('dateInputValueOnChange', (event) => {
-			console.log('Aggregate value detail:', event.detail.value);
-		});
-	};
-</script>
-```
-
 ### Native `input` and `change` events
 
 The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
 
-Events, such as the native `input` event, deliver data from inside of the component and flow up the event stack as expected.
+The component emits host `input` and `change` events when the aggregate date value changes so consumers can respond to updates using the familiar native event names. Read the aggregate ISO value from `event.target.value`.
 
-This isn't the case for the native `change` event, this event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
+The field-level `inputOnInput` and `inputOnChange` custom events remain available when you need to know which sub-field changed.
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
 
@@ -398,14 +431,13 @@ The Ontario Date Input component is compatible with Server-Side Rendering (SSR),
 
 ## Events
 
-| Event                    | Description                                                                                                                                                                                                                                        | Type                                                                     |
-| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `dateInputValueOnChange` | Emitted when the aggregate `value` for the component changes. The emitted value is normalized to a full UTC ISO timestamp when the entered date is complete and valid. If the entered date becomes incomplete, the emitted `value` is `undefined`. | `CustomEvent<{ value?: string \| undefined; }>`                          |
-| `inputErrorOccurred`     | Emitted when an error message is reported to the component.                                                                                                                                                                                        | `CustomEvent<{ inputId: string; errorMessage: string; }>`                |
-| `inputOnBlur`            | Emitted when a keyboard input event occurs when an input has lost focus.                                                                                                                                                                           | `CustomEvent<"day" \| "month" \| "year">`                                |
-| `inputOnChange`          | Emitted when a `change` event occurs within the component.                                                                                                                                                                                         | `CustomEvent<{ value: string; fieldType: "day" \| "month" \| "year"; }>` |
-| `inputOnFocus`           | Emitted when a keyboard input event occurs when an input has gained focus.                                                                                                                                                                         | `CustomEvent<"day" \| "month" \| "year">`                                |
-| `inputOnInput`           | Emitted when an `input` event occurs within the component.                                                                                                                                                                                         | `CustomEvent<{ value: string; fieldType: "day" \| "month" \| "year"; }>` |
+| Event                | Description                                                                | Type                                                                     |
+| -------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `inputErrorOccurred` | Emitted when an error message is reported to the component.                | `CustomEvent<{ inputId: string; errorMessage: string; }>`                |
+| `inputOnBlur`        | Emitted when a keyboard input event occurs when an input has lost focus.   | `CustomEvent<"day" \| "month" \| "year">`                                |
+| `inputOnChange`      | Emitted when a `change` event occurs within the component.                 | `CustomEvent<{ value: string; fieldType: "day" \| "month" \| "year"; }>` |
+| `inputOnFocus`       | Emitted when a keyboard input event occurs when an input has gained focus. | `CustomEvent<"day" \| "month" \| "year">`                                |
+| `inputOnInput`       | Emitted when an `input` event occurs within the component.                 | `CustomEvent<{ value: string; fieldType: "day" \| "month" \| "year"; }>` |
 
 ## Dependencies
 
