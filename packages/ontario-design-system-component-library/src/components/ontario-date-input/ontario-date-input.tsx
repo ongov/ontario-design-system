@@ -401,7 +401,7 @@ export class OntarioDateInput {
 	};
 
 	private emitAggregateValueEvent(name: 'input' | 'change') {
-		emitEvent(this.element, name);
+		emitEvent(this.element, name, { value: this.value });
 	}
 
 	private syncAggregateValue(normalizedValue?: string): boolean {

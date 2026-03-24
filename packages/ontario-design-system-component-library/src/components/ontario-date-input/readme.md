@@ -205,7 +205,7 @@ The `value` prop accepts either:
 
 When a valid `value` is provided, the component hydrates the internal year, month, and day fields and normalizes its aggregate value to a full UTC ISO timestamp.
 
-When the aggregate value changes, listen for host `input` and `change` events and read the normalized value from `event.target.value`, similar to a native form control. The existing `inputOnInput` and `inputOnChange` custom events remain available if you need the field-level detail.
+When the aggregate value changes, listen for host `input` and `change` events and read the normalized value from `event.target.value`, similar to a native form control. For convenience, the same aggregate value is also available in `event.detail.value`. The existing `inputOnInput` and `inputOnChange` custom events remain available if you need the field-level detail.
 
 ### Forms
 
@@ -224,6 +224,7 @@ If you are listening for changes on the host element, read the normalized aggreg
 ```js
 document.querySelector('ontario-date-input').addEventListener('change', (event) => {
 	console.log(event.target.value);
+	console.log(event.detail.value);
 });
 ```
 
@@ -358,6 +359,8 @@ See the [Events](#events) table to learn more about the available custom events 
 The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
 
 The component emits host `input` and `change` events when the aggregate date value changes so consumers can respond to updates using the familiar native event names. Read the aggregate ISO value from `event.target.value`.
+
+The same aggregate value is also included in `event.detail.value` for consumers that prefer event payloads.
 
 The field-level `inputOnInput` and `inputOnChange` custom events remain available when you need to know which sub-field changed.
 

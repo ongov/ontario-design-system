@@ -188,6 +188,7 @@ describe('ontario-date-input', () => {
 
 		expect(emitSpy).toHaveBeenCalledTimes(1);
 		expect((emitSpy.mock.calls[0][0].target as HTMLOntarioDateInputElement).value).toBe('2024-02-20T00:00:00.000Z');
+		expect(emitSpy.mock.calls[0][0].detail).toEqual({ value: '2024-02-20T00:00:00.000Z' });
 	});
 
 	it('emits a host `change` event when the aggregate value is cleared', async () => {
@@ -209,6 +210,7 @@ describe('ontario-date-input', () => {
 		expect((page.root as HTMLOntarioDateInputElement).value).toBe('');
 		expect(emitSpy).toHaveBeenCalledTimes(1);
 		expect((emitSpy.mock.calls[0][0].target as HTMLOntarioDateInputElement).value).toBe('');
+		expect(emitSpy.mock.calls[0][0].detail).toEqual({ value: '' });
 	});
 
 	it('reports an error and ignores invalid aggregate values', async () => {
