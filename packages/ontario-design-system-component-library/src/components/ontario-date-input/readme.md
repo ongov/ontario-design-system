@@ -154,8 +154,48 @@ Example of passing custom date validation function to modify validation logic or
 
 Example of prefilling the component with an aggregate value for edit or resume flows.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-date-input value="2024-02-20" caption="Exact date" hint-text="For example 2000 03 01"></ontario-date-input>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioDateInput value="2024-02-20" caption="Exact date" hintText="For example 2000 03 01" />
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-date-input
+	[value]="'2024-02-20'"
+	[caption]="'Exact date'"
+	[hintText]="'For example 2000 03 01'"
+></ontario-date-input>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 The `value` prop accepts either:
@@ -164,6 +204,8 @@ The `value` prop accepts either:
 - a full ISO 8601 timestamp such as `2024-02-20T15:30:00.000Z`
 
 When a valid `value` is provided, the component hydrates the internal year, month, and day fields and normalizes its aggregate value to a full UTC ISO timestamp.
+
+There is no dedicated aggregate value event in this change. The component continues to emit the existing field-level `inputOnInput` and `inputOnChange` events, and the normalized aggregate value can be read from `event.target.value` on the host element.
 
 ### Forms
 
