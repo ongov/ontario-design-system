@@ -153,6 +153,10 @@ export namespace Components {
          */
         "elementId"?: string;
         /**
+          * When provided, the component renders as a native anchor for navigation use cases.
+         */
+        "href"?: string;
+        /**
           * The native HTML button type the button should use.  If no htmlType is passed, it will default to 'button'.
           * @default 'button'
          */
@@ -162,6 +166,14 @@ export namespace Components {
           * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
          */
         "label"?: string;
+        /**
+          * Specifies the relationship of the linked document to the current document when `href` is provided.
+         */
+        "rel"?: string;
+        /**
+          * Specifies where to open the linked document when `href` is provided.
+         */
+        "target"?: string;
         /**
           * The type of button to render.  If no type is passed, it will default to 'secondary'.
           * @default 'secondary'
@@ -4437,6 +4449,10 @@ declare namespace LocalJSX {
          */
         "elementId"?: string;
         /**
+          * When provided, the component renders as a native anchor for navigation use cases.
+         */
+        "href"?: string;
+        /**
           * The native HTML button type the button should use.  If no htmlType is passed, it will default to 'button'.
           * @default 'button'
          */
@@ -4446,6 +4462,14 @@ declare namespace LocalJSX {
           * @example <ontario-button label="Label Text">Text</ontario-button>  The resulting button will have the label `"Label Text"`.
          */
         "label"?: string;
+        /**
+          * Specifies the relationship of the linked document to the current document when `href` is provided.
+         */
+        "rel"?: string;
+        /**
+          * Specifies where to open the linked document when `href` is provided.
+         */
+        "target"?: string;
         /**
           * The type of button to render.  If no type is passed, it will default to 'secondary'.
           * @default 'secondary'

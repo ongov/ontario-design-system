@@ -17,6 +17,21 @@ export interface Button extends Base {
 	htmlType: HtmlType;
 
 	/**
+	 * When provided, the component renders as a native anchor for navigation use cases.
+	 */
+	href?: string;
+
+	/**
+	 * Specifies where to open the linked document when `href` is provided.
+	 */
+	target?: string;
+
+	/**
+	 * Specifies the relationship of the linked document to the current document when `href` is provided.
+	 */
+	rel?: string;
+
+	/**
 	 * Text to be displayed within the button. This will override the text provided through the host element textContent.
 	 *
 	 * @example

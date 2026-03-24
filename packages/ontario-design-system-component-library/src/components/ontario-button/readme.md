@@ -117,6 +117,54 @@ Example of a button component, which includes the `label`, `elementId`, `htmlTyp
 	Element Content
 </OntarioButton>
 
+Example of a button component rendering as a native link when `href` is provided. Use this pattern for navigation, and keep `htmlType` for action and form-submit use cases.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-button href="/services" target="_blank" rel="noreferrer" type="primary">Browse services</ontario-button>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioButton href="/services" target="_blank" rel="noreferrer" type="primary">
+	Browse services
+</OntarioButton>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-button [href]="'/services'" [target]="'_blank'" [rel]="'noreferrer'" [type]="'primary'">
+	Browse services
+</ontario-button>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+<OntarioButton href="/services" target="_blank" rel="noreferrer" type="primary">Browse services</OntarioButton>
+
 This is another example of a button component, where the user is passing in the label through the `label` property - overriding the 'Element Content' value. The resulting label text will display as `Example`.
 
 ```mdx-code-block
@@ -210,6 +258,8 @@ An example of how to pass in an `onclick` function to the button component.
 The `ontario-button` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as adding an `<input type="submit">`.
 
 To use the `ontario-button` as a submit button set the `htmlType` to `"submit"`. This will wire the `ontario-button` up to the `<form>` it is in and allow it to perform the submit. Internally, the `ontario-button` will fire a `submit` event on its parent `<form>` and trigger the native behaviour of the browser.
+
+When `href` is provided, the component renders as a native link instead. In that mode, `htmlType` is ignored and should not be used for form submission.
 
 ```html
 <form>
@@ -306,8 +356,11 @@ During SSR, fallback content using `host.textContent` is not reliably available.
 | --------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------- |
 | `ariaLabelText` | `aria-label-text` | Provides more context as to what the button interaction is doing. This should only be used for accessibility purposes, if the button interaction requires more description than what the text provides. This is optional. | `string \| undefined`                                           | `undefined`   |
 | `elementId`     | `element-id`      | The unique identifier of the button. This is optional - if no ID is passed, one will be generated.                                                                                                                        | `string \| undefined`                                           | `undefined`   |
+| `href`          | `href`            | When provided, the component renders as a native anchor for navigation use cases.                                                                                                                                         | `string \| undefined`                                           | `undefined`   |
 | `htmlType`      | `html-type`       | The native HTML button type the button should use. If no htmlType is passed, it will default to 'button'.                                                                                                                 | `"button" \| "reset" \| "submit"`                               | `'button'`    |
 | `label`         | `label`           | Text to be displayed within the button. This will override the text provided through the host element textContent.                                                                                                        | `string \| undefined`                                           | `undefined`   |
+| `rel`           | `rel`             | Specifies the relationship of the linked document to the current document when `href` is provided.                                                                                                                        | `string \| undefined`                                           | `undefined`   |
+| `target`        | `target`          | Specifies where to open the linked document when `href` is provided.                                                                                                                                                      | `string \| undefined`                                           | `undefined`   |
 | `type`          | `type`            | The type of button to render. If no type is passed, it will default to 'secondary'.                                                                                                                                       | `"internalThemeDark" \| "primary" \| "secondary" \| "tertiary"` | `'secondary'` |
 
 ---

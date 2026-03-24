@@ -240,6 +240,9 @@ export const OntarioButton: StencilReactComponent<OntarioButtonElement, OntarioB
     properties: {
         type: 'type',
         htmlType: 'html-type',
+        href: 'href',
+        target: 'target',
+        rel: 'rel',
         label: 'label',
         ariaLabelText: 'aria-label-text',
         elementId: 'element-id'

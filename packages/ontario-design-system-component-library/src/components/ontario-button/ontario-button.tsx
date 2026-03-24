@@ -32,6 +32,21 @@ export class OntarioButton implements Button {
 	@Prop() htmlType: HtmlType = 'button';
 
 	/**
+	 * When provided, the component renders as a native anchor for navigation use cases.
+	 */
+	@Prop() href?: string;
+
+	/**
+	 * Specifies where to open the linked document when `href` is provided.
+	 */
+	@Prop() target?: string;
+
+	/**
+	 * Specifies the relationship of the linked document to the current document when `href` is provided.
+	 */
+	@Prop() rel?: string;
+
+	/**
 	 * Text to be displayed within the button. This will override the text provided through the host element textContent.
 	 *
 	 * @example
@@ -75,6 +90,8 @@ export class OntarioButton implements Button {
 	 */
 
 	private buttonRef: HTMLButtonElement;
+
+	private hasWarnedLinkHtmlTypeConflict = false;
 
 	/*
 	 * Watch for changes to the `label` property for validation purposes.
@@ -179,6 +196,29 @@ export class OntarioButton implements Button {
 		return `ontario-button ontario-button--${this.typeState}`;
 	}
 
+	private isLinkMode() {
+		return !!this.href;
+	}
+
+	private warnIgnoredHtmlTypeInLinkMode() {
+		if (this.hasWarnedLinkHtmlTypeConflict || !this.isLinkMode() || this.htmlTypeState === 'button') {
+			return;
+		}
+
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addMonospaceText(' htmlType ')
+			.addRegularText('on')
+			.addMonospaceText(' <ontario-button> ')
+			.addRegularText('is ignored when')
+			.addMonospaceText(' href ')
+			.addRegularText('is provided. The component renders as a native link instead.')
+			.printMessage();
+
+		this.hasWarnedLinkHtmlTypeConflict = true;
+	}
+
 	public getId(): string {
 		return this.elementId ?? '';
 	}
@@ -191,6 +231,10 @@ export class OntarioButton implements Button {
 		this.validateHtmlType();
 		this.validateType();
 		this.ariaLabelText = this.ariaLabelText ?? this.labelState;
+	}
+
+	componentWillRender() {
+		this.warnIgnoredHtmlTypeInLinkMode();
 	}
 
 	componentDidLoad() {
@@ -207,7 +251,7 @@ export class OntarioButton implements Button {
 		observer.observe(this.host, options);
 
 		// Add a click event listener to handle submitting a form
-		if (this.htmlTypeState === 'submit') {
+		if (!this.isLinkMode() && this.htmlTypeState === 'submit') {
 			this.buttonRef.addEventListener('click', () => {
 				const { form } = this.internals;
 				form?.requestSubmit();
@@ -216,6 +260,21 @@ export class OntarioButton implements Button {
 	}
 
 	render() {
+		if (this.isLinkMode()) {
+			return (
+				<a
+					href={this.href}
+					target={this.target}
+					rel={this.rel}
+					class={this.getClass()}
+					aria-label={this.ariaLabelText}
+					id={this.getId()}
+				>
+					{this.labelState}
+				</a>
+			);
+		}
+
 		return (
 			<button
 				ref={(el) => (this.buttonRef = el as HTMLButtonElement)}
