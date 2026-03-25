@@ -2868,6 +2868,10 @@ export namespace Components {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected radio option value. The component keeps the host `value` in sync as users interact with the radio group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.
+		 */
+		value?: string;
 	}
 	interface OntarioSearchBox {
 		/**
@@ -7670,6 +7674,10 @@ declare namespace LocalJSX {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected radio option value. The component keeps the host `value` in sync as users interact with the radio group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.
+		 */
+		value?: string;
 	}
 	interface OntarioSearchBox {
 		/**

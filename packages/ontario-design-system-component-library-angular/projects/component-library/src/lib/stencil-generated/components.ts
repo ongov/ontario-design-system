@@ -3523,14 +3523,14 @@ export declare interface OntarioPageAlert extends Components.OntarioPageAlert {}
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required', 'value']
 })
 @Component({
   selector: 'ontario-radio-buttons',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required'],
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required', 'value'],
   outputs: ['radioOnChange', 'radioOnBlur', 'radioOnFocus', 'inputErrorOccurred'],
   standalone: false
 })

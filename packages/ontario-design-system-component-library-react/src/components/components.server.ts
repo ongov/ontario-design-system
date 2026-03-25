@@ -2280,6 +2280,7 @@ export const OntarioRadioButtons: StencilReactComponent<OntarioRadioButtonsEleme
         hintText: 'hint-text',
         hintExpander: 'hint-expander',
         required: 'required',
+        value: 'value',
         options: 'options',
         errorMessage: 'error-message',
         customOnChange: 'custom-on-change',

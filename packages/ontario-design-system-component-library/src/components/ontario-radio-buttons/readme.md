@@ -282,6 +282,8 @@ Example of a radio button component with multiple options, a hint text and hint 
 
 The `ontario-radio-buttons` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as a a group of `<input type="radio">` elements.
 
+The component keeps its host `value` in sync with the currently checked radio option. That same `value` is used for native form submission and for host `change` event handling. If a provided `value` does not match any option, the component emits a warning and falls back to the checked option.
+
 ```html
 <form>
 	<!-- Add ontario-radio-buttons -->
@@ -318,6 +320,8 @@ Remember to set the `name` attribute as this is used to identify the field when 
 ## Event model
 
 Each event emitted by the component uses the [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) type to emit a custom event to help communicate what the component is doing. To access the data emitted by the component within the `CustomEvent` type use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail) property.
+
+For most integrations, prefer the host `change` event and read the selected option from `event.target.value`. That host event also includes `event.detail.value` as a convenience. Use `radioOnChange` when you specifically want the component's custom event payload.
 
 Eg. To access the value of any change made to this component from the `radioOnChange` event, use the following code to wire up to listen for the the `radioOnChange` event.
 
@@ -364,7 +368,7 @@ See the [Events](#events) table to learn more about the available custom events 
 
 The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
 
-The native `change` event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
+The component handles the internal radio input changes and re-emits a host `change` event so consumers can listen on the host element instead of the internal control. The current selection is available through `event.target.value`, and a convenience copy is also included in `event.detail.value`.
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
 
@@ -435,6 +439,7 @@ The Ontario Radio Button component supports server-side rendering, with a few co
 | `name`           | `name`             | The name assigned to the radio button. The name value is used to reference form data after a form is submitted.                                                                                                                                                                                                                                                                                                                                | `string`                                | `undefined` |
 | `options`        | `options`          | The options for the radio button group. Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a group, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the group. | `RadioOption[] \| string`               | `undefined` |
 | `required`       | `required`         | This is used to determine whether the radio button is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).                                                                                                                                                                                             | `boolean \| undefined`                  | `false`     |
+| `value`          | `value`            | The currently selected radio option value. The component keeps the host `value` in sync as users interact with the radio group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.                                                                                                                                                                                                                 | `string \| undefined`                   | `undefined` |
 
 ## Events
 
