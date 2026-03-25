@@ -370,6 +370,11 @@ export namespace Components {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected checkbox option values.  The component keeps the host `value` in sync as users interact with the checkbox group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.  In HTML, pass `value` as a JSON string array.
+		 * @example <ontario-checkboxes   value='["checkbox-option-1", "checkbox-option-2"]'   ...> </ontario-checkboxes>
+		 */
+		value?: string[] | string;
 	}
 	interface OntarioCriticalAlert {
 		/**
@@ -2869,7 +2874,7 @@ export namespace Components {
 		 */
 		required?: boolean;
 		/**
-		 * The currently selected radio option value. The component keeps the host `value` in sync as users interact with the radio group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.
+		 * The currently selected radio option value.  The component keeps the host `value` in sync as users interact with the radio group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.
 		 */
 		value?: string;
 	}
@@ -5051,6 +5056,11 @@ declare namespace LocalJSX {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected checkbox option values.  The component keeps the host `value` in sync as users interact with the checkbox group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.  In HTML, pass `value` as a JSON string array.
+		 * @example <ontario-checkboxes   value='["checkbox-option-1", "checkbox-option-2"]'   ...> </ontario-checkboxes>
+		 */
+		value?: string[] | string;
 	}
 	interface OntarioCriticalAlert {
 		/**
@@ -7675,7 +7685,7 @@ declare namespace LocalJSX {
 		 */
 		required?: boolean;
 		/**
-		 * The currently selected radio option value. The component keeps the host `value` in sync as users interact with the radio group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.
+		 * The currently selected radio option value.  The component keeps the host `value` in sync as users interact with the radio group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.
 		 */
 		value?: string;
 	}
