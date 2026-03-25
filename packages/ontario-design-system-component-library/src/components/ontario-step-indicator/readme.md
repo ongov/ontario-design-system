@@ -195,9 +195,20 @@ Once the component package has been installed (see Ontario Design System Compone
 
 By default the step indicator doesn't display the back button. This can be enabled by setting `show-back-button` to `true`. See the code examples for how this is used.
 
+When the back button is enabled:
+
+- `back-button-url` / `backButtonUrl` renders the back control as a link
+- `customOnClick` renders the back control as a button
+- if both are provided, the link takes precedence and a warning is emitted
+- if neither is provided, the button still renders and a warning is emitted
+
 ### Progress reporting
 
 Progress reported by the step indicator can be displayed in either a percentage or as the number of completed steps.
+
+When `percentage-complete` / `percentageComplete` is provided, the component uses percentage mode. This includes `0`.
+
+If percentage and step props are passed together, percentage mode takes precedence and a warning is emitted.
 
 #### Using a percentage
 
@@ -258,6 +269,8 @@ To use a percentage as the reported progress, set the `percentage-complete` attr
 #### Using steps
 
 To output the step the user is currently on and the total number of steps, set the `current-step` and the `number-of-steps` to the appropriate values.
+
+If only one of the step props is provided, the component renders a `?` placeholder for the missing value and emits a warning.
 
 ```mdx-code-block
 <Tabs

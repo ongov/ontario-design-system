@@ -3,6 +3,7 @@ import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import translations from '../../translations/global.i18n.json';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 @Component({
 	tag: 'ontario-step-indicator',
@@ -84,6 +85,68 @@ export class OntarioStepIndicator {
 
 	componentWillLoad() {
 		this.language = validateLanguage(this.language);
+		this.validateConfiguration();
+	}
+
+	private get isPercentageMode(): boolean {
+		return typeof this.percentageComplete !== 'undefined';
+	}
+
+	private get currentStepText(): string {
+		return typeof this.currentStep === 'number' ? `${this.currentStep}` : '?';
+	}
+
+	private get numberOfStepsText(): string {
+		return typeof this.numberOfSteps === 'number' ? `${this.numberOfSteps}` : '?';
+	}
+
+	private get shouldRenderBackLink(): boolean {
+		return this.showBackButton === true && !!this.backButtonUrl;
+	}
+
+	private get shouldRenderBackButton(): boolean {
+		return this.showBackButton === true && !this.backButtonUrl;
+	}
+
+	private warnConfiguration(messageText: string) {
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addMonospaceText(' <ontario-step-indicator> ')
+			.addRegularText(messageText)
+			.printMessage();
+	}
+
+	private validateConfiguration() {
+		const hasCurrentStep = typeof this.currentStep !== 'undefined';
+		const hasNumberOfSteps = typeof this.numberOfSteps !== 'undefined';
+		const hasPercentage = typeof this.percentageComplete !== 'undefined';
+		const hasBackButtonUrl = !!this.backButtonUrl;
+		const hasCustomOnClick = typeof this.customOnClick === 'function';
+
+		if (hasPercentage && (hasCurrentStep || hasNumberOfSteps)) {
+			this.warnConfiguration(
+				'was provided with both percentage and step props. The percentageComplete value takes precedence.',
+			);
+		}
+
+		if (hasCurrentStep !== hasNumberOfSteps) {
+			this.warnConfiguration(
+				'was provided with an incomplete step configuration. Missing step values will render as ?.',
+			);
+		}
+
+		if (this.showBackButton === true && !hasBackButtonUrl && !hasCustomOnClick) {
+			this.warnConfiguration(
+				'is rendering a back button without backButtonUrl or customOnClick. The button will render without an action.',
+			);
+		}
+
+		if (this.showBackButton === true && hasBackButtonUrl && hasCustomOnClick) {
+			this.warnConfiguration(
+				'was provided with both backButtonUrl and customOnClick. The backButtonUrl value takes precedence.',
+			);
+		}
 	}
 
 	render() {
@@ -92,19 +155,19 @@ export class OntarioStepIndicator {
 				<div class="ontario-row">
 					<div class="ontario-columns ontario-small-12">
 						<div class={`ontario-step-indicator--with-back-button--${this.showBackButton}`}>
-							{this.showBackButton === true && !this.backButtonUrl && (
+							{this.shouldRenderBackButton && (
 								<button class="ontario-button ontario-button--tertiary" onClick={(e) => this.handleCustomOnClick(e)}>
 									<ontario-icon-chevron-left colour="blue" aria-hidden="true"></ontario-icon-chevron-left>
 									{this.translations.stepIndicator.back[`${this.language}`]}
 								</button>
 							)}
-							{this.showBackButton === true && this.backButtonUrl && (
+							{this.shouldRenderBackLink && (
 								<a class="ontario-button ontario-button--tertiary" href={this.backButtonUrl}>
 									<ontario-icon-chevron-left colour="blue" aria-hidden="true"></ontario-icon-chevron-left>
 									{this.translations.stepIndicator.back[`${this.language}`]}
 								</a>
 							)}
-							{this.percentageComplete ? (
+							{this.isPercentageMode ? (
 								<span class="ontario-h4">
 									{this.percentageComplete}
 									{this.language === 'en' ? '%' : <span>&nbsp;%</span>}{' '}
@@ -112,8 +175,8 @@ export class OntarioStepIndicator {
 								</span>
 							) : (
 								<span class="ontario-h4">
-									{this.translations.stepIndicator.step[`${this.language}`]}&nbsp;{this.currentStep}{' '}
-									{this.translations.stepIndicator.of[`${this.language}`]}&nbsp;{this.numberOfSteps}
+									{this.translations.stepIndicator.step[`${this.language}`]}&nbsp;{this.currentStepText}{' '}
+									{this.translations.stepIndicator.of[`${this.language}`]}&nbsp;{this.numberOfStepsText}
 								</span>
 							)}
 						</div>
