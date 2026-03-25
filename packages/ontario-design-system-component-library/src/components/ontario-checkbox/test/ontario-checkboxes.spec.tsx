@@ -71,6 +71,53 @@ describe('ontario-checkbox', () => {
 		expect(onChange.mock.calls[0][0].detail.value).toEqual(['checkbox-option-2']);
 	});
 
+	it('should preserve the checkboxOnChange custom event detail', async () => {
+		const page = await newSpecPage({
+			components: [OntarioCheckboxes],
+			html: `<ontario-checkboxes name="checkbox-group" options='[{ "value": "checkbox-option-1", "elementId": "checkbox-1", "label": "Checkbox option 1 label" }, { "value": "checkbox-option-2", "elementId": "checkbox-2", "label": "Checkbox option 2 label" }]'></ontario-checkboxes>`,
+		});
+
+		const onCheckboxChange = jest.fn();
+		page.doc.addEventListener('checkboxOnChange', onCheckboxChange);
+
+		const checkbox = page.root?.shadowRoot?.querySelector('#checkbox-2') as HTMLInputElement;
+		checkbox.checked = true;
+		checkbox.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
+		await page.waitForChanges();
+
+		expect(onCheckboxChange).toHaveBeenCalledTimes(1);
+		expect(onCheckboxChange.mock.calls[0][0].detail).toEqual({
+			checked: true,
+			id: 'checkbox-2',
+			value: 'checkbox-option-2',
+		});
+	});
+
+	it('should update the host value across multiple checkbox toggles', async () => {
+		const page = await newSpecPage({
+			components: [OntarioCheckboxes],
+			html: `<ontario-checkboxes name="checkbox-group" options='[{ "value": "checkbox-option-1", "elementId": "checkbox-1", "label": "Checkbox option 1 label" }, { "value": "checkbox-option-2", "elementId": "checkbox-2", "label": "Checkbox option 2 label" }]'></ontario-checkboxes>`,
+		});
+
+		const checkboxOne = page.root?.shadowRoot?.querySelector('#checkbox-1') as HTMLInputElement;
+		const checkboxTwo = page.root?.shadowRoot?.querySelector('#checkbox-2') as HTMLInputElement;
+
+		checkboxOne.checked = true;
+		checkboxOne.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
+		await page.waitForChanges();
+		expect(page.root?.value).toEqual(['checkbox-option-1']);
+
+		checkboxTwo.checked = true;
+		checkboxTwo.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
+		await page.waitForChanges();
+		expect(page.root?.value).toEqual(['checkbox-option-1', 'checkbox-option-2']);
+
+		checkboxOne.checked = false;
+		checkboxOne.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
+		await page.waitForChanges();
+		expect(page.root?.value).toEqual(['checkbox-option-2']);
+	});
+
 	it('should warn and ignore provided values that do not match an option', async () => {
 		const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
 
@@ -83,5 +130,24 @@ describe('ontario-checkbox', () => {
 		expect(warnSpy).toHaveBeenCalled();
 
 		warnSpy.mockRestore();
+	});
+
+	it('should reflect external value updates in the rendered checkboxes', async () => {
+		const page = await newSpecPage({
+			components: [OntarioCheckboxes],
+			html: `<ontario-checkboxes value='["checkbox-option-1"]' options='[{ "value": "checkbox-option-1", "elementId": "checkbox-1", "label": "Checkbox option 1 label" }, { "value": "checkbox-option-2", "elementId": "checkbox-2", "label": "Checkbox option 2 label" }]'></ontario-checkboxes>`,
+		});
+
+		const checkboxOne = page.root?.shadowRoot?.querySelector('#checkbox-1') as HTMLInputElement;
+		const checkboxTwo = page.root?.shadowRoot?.querySelector('#checkbox-2') as HTMLInputElement;
+		expect(checkboxOne.checked).toBe(true);
+		expect(checkboxTwo.checked).toBe(false);
+
+		(page.root as HTMLOntarioCheckboxesElement).value = ['checkbox-option-2'];
+		await page.waitForChanges();
+
+		expect(page.root?.value).toEqual(['checkbox-option-2']);
+		expect(checkboxOne.checked).toBe(false);
+		expect(checkboxTwo.checked).toBe(true);
 	});
 });

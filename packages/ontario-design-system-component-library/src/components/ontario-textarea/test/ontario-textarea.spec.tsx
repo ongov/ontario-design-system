@@ -125,6 +125,26 @@ describe('ontario-textarea', () => {
 			expect((page.root as HTMLOntarioTextareaElement).value).toBe('Typing into the textarea');
 		});
 
+		it('should reflect external value updates in the rendered textarea', async () => {
+			const page = await newSpecPage({
+				components: [OntarioTextarea],
+				html: `<ontario-textarea
+					name="textarea-name"
+					element-id="textarea-id"
+					value="Initial value"
+					caption="Ontario Textarea"
+				></ontario-textarea>`,
+			});
+
+			const textarea = page.root?.shadowRoot?.querySelector('textarea') as HTMLTextAreaElement;
+			expect(textarea.getAttribute('value')).toBe('Initial value');
+
+			(page.root as HTMLOntarioTextareaElement).value = 'Updated externally';
+			await page.waitForChanges();
+
+			expect(textarea.getAttribute('value')).toBe('Updated externally');
+		});
+
 		it('should expose the updated host value from the synthetic change event', async () => {
 			const page = await newSpecPage({
 				components: [OntarioTextarea],

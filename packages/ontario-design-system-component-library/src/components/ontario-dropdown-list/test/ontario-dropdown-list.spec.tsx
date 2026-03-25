@@ -77,6 +77,21 @@ describe('ontario-dropdown-list', () => {
 			warnSpy.mockRestore();
 		});
 
+		it('should apply the provided value over selected option flags', async () => {
+			const page = await newSpecPage({
+				components: [OntarioDropdownList],
+				html: `<ontario-dropdown-list element-id="dropdown-list" value="dropdown-option-2" options='[{ "value": "dropdown-option-1", "label": "Option 1", "selected": true }, { "value": "dropdown-option-2", "label": "Option 2" }]'></ontario-dropdown-list>`,
+			});
+
+			const select = page.root?.shadowRoot?.querySelector('select') as HTMLSelectElement;
+			const options = Array.from(select.querySelectorAll('option')) as HTMLOptionElement[];
+
+			expect(page.root?.value).toBe('dropdown-option-2');
+			expect(select.getAttribute('value')).toBe('dropdown-option-2');
+			expect(options[0].hasAttribute('selected')).toBe(false);
+			expect(options[1].getAttribute('selected')).toBe('');
+		});
+
 		it('should keep the host value in sync with the selected option', async () => {
 			const page = await newSpecPage({
 				components: [OntarioDropdownList],
@@ -89,6 +104,28 @@ describe('ontario-dropdown-list', () => {
 			await page.waitForChanges();
 
 			expect(page.root?.value).toBe('dropdown-option-2');
+		});
+
+		it('should reflect external value updates in the rendered select', async () => {
+			const page = await newSpecPage({
+				components: [OntarioDropdownList],
+				html: `<ontario-dropdown-list element-id="dropdown-list" value="dropdown-option-1" options='[{ "value": "dropdown-option-1", "label": "Option 1" }, { "value": "dropdown-option-2", "label": "Option 2" }]'></ontario-dropdown-list>`,
+			});
+
+			const select = page.root?.shadowRoot?.querySelector('select') as HTMLSelectElement;
+			let options = Array.from(select.querySelectorAll('option')) as HTMLOptionElement[];
+			expect(select.getAttribute('value')).toBe('dropdown-option-1');
+			expect(options[0].getAttribute('selected')).toBe('');
+			expect(options[1].hasAttribute('selected')).toBe(false);
+
+			(page.root as HTMLOntarioDropdownListElement).value = 'dropdown-option-2';
+			await page.waitForChanges();
+			options = Array.from(select.querySelectorAll('option')) as HTMLOptionElement[];
+
+			expect(page.root?.value).toBe('dropdown-option-2');
+			expect(select.getAttribute('value')).toBe('dropdown-option-2');
+			expect(options[0].hasAttribute('selected')).toBe(false);
+			expect(options[1].getAttribute('selected')).toBe('');
 		});
 
 		it('should emit a host input event with the current value in detail', async () => {
@@ -127,6 +164,27 @@ describe('ontario-dropdown-list', () => {
 			expect(onChange).toHaveBeenCalledTimes(1);
 			expect(page.root?.value).toBe('dropdown-option-2');
 			expect(onChange.mock.calls[0][0].detail.value).toBe('dropdown-option-2');
+		});
+
+		it('should preserve the dropdownOnChange custom event detail', async () => {
+			const page = await newSpecPage({
+				components: [OntarioDropdownList],
+				html: `<ontario-dropdown-list element-id="dropdown-list" options='[{ "value": "dropdown-option-1", "label": "Option 1" }, { "value": "dropdown-option-2", "label": "Option 2" }]'></ontario-dropdown-list>`,
+			});
+
+			const onDropdownChange = jest.fn();
+			page.doc.addEventListener('dropdownOnChange', onDropdownChange);
+
+			const select = page.root?.shadowRoot?.querySelector('select') as HTMLSelectElement;
+			select.value = 'dropdown-option-2';
+			select.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
+			await page.waitForChanges();
+
+			expect(onDropdownChange).toHaveBeenCalledTimes(1);
+			expect(onDropdownChange.mock.calls[0][0].detail).toEqual({
+				id: 'dropdown-list',
+				value: 'dropdown-option-2',
+			});
 		});
 	});
 });

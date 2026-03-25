@@ -383,6 +383,13 @@ export class OntarioRadioButtons implements RadioButtons {
 		this.inputErrorOccurred.emit({ errorMessage: this.errorMessage ?? '' });
 	}
 
+	@Watch('value')
+	syncValueFromValueProp() {
+		if (this.internalOptions) {
+			this.syncValueFromOptions();
+		}
+	}
+
 	/**
 	 * Function to handle radio buttons events and the information pertaining to the radio buttons to emit.
 	 */

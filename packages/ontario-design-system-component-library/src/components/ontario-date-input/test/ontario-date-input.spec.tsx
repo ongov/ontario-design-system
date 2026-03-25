@@ -191,6 +191,36 @@ describe('ontario-date-input', () => {
 		expect(emitSpy.mock.calls[0][0].detail).toEqual({ value: '2024-02-20T00:00:00.000Z' });
 	});
 
+	it('preserves field-level input events while only exposing one aggregate host input event', async () => {
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input></ontario-date-input>`,
+		});
+		const hostInputSpy = jest.fn();
+		const fieldInputSpy = jest.fn();
+		page.root?.addEventListener('input', hostInputSpy);
+		page.doc.addEventListener('inputOnInput', fieldInputSpy);
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+		const [yearInput, monthInput, dayInput] = Array.from(inputs ?? []);
+
+		yearInput.value = '2024';
+		yearInput.dispatchEvent(new Event('input'));
+		monthInput.value = '02';
+		monthInput.dispatchEvent(new Event('input'));
+		dayInput.value = '20';
+		dayInput.dispatchEvent(new Event('input'));
+
+		await page.waitForChanges();
+
+		expect(fieldInputSpy).toHaveBeenCalledTimes(3);
+		expect(fieldInputSpy.mock.calls[0][0].detail).toEqual({ value: '2024', fieldType: 'year' });
+		expect(fieldInputSpy.mock.calls[1][0].detail).toEqual({ value: '02', fieldType: 'month' });
+		expect(fieldInputSpy.mock.calls[2][0].detail).toEqual({ value: '20', fieldType: 'day' });
+		expect(hostInputSpy).toHaveBeenCalledTimes(1);
+		expect(hostInputSpy.mock.calls[0][0].target).toBe(page.root);
+	});
+
 	it('emits a host `change` event when the aggregate value changes', async () => {
 		const page = await newSpecPage({
 			components: [OntarioDateInput],

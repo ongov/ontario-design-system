@@ -405,6 +405,13 @@ export class OntarioDropdownList implements Dropdown {
 		this.inputErrorOccurred.emit({ errorMessage: this.errorMessage ?? '' });
 	}
 
+	@Watch('value')
+	syncValueFromValueProp() {
+		if (this.internalOptions) {
+			this.syncValueFromOptions();
+		}
+	}
+
 	/**
 	 * Function to handle dropdown list events and the information pertaining to the dropdown list to emit.
 	 */
