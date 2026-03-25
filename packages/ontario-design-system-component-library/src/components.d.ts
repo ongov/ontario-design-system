@@ -486,6 +486,10 @@ export namespace Components {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected dropdown value.  The component keeps the host `value` in sync as users interact with the dropdown. If `value` is provided, it takes precedence over any `selected` flags passed through `options`.
+		 */
+		value?: string;
 	}
 	interface OntarioFieldset {
 		/**
@@ -5205,6 +5209,10 @@ declare namespace LocalJSX {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected dropdown value.  The component keeps the host `value` in sync as users interact with the dropdown. If `value` is provided, it takes precedence over any `selected` flags passed through `options`.
+		 */
+		value?: string;
 	}
 	interface OntarioFieldset {
 		/**

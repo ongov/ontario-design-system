@@ -21,8 +21,8 @@ describe('ontario-dropdown-list', () => {
 								<ontario-icon-alert-error></ontario-icon-alert-error>
 								<div class="ontario-error-messaging__content"></div>
 							</div>
-						<select class="ontario-dropdown ontario-input" id="dropdown-list" style="background-image: url(/assets/ontario-material-dropdown-arrow-48px.svg);">
-							<option value="dropdown-option-1">Option 1</option>
+						<select class="ontario-dropdown ontario-input" id="dropdown-list" value="dropdown-option-1" style="background-image: url(/assets/ontario-material-dropdown-arrow-48px.svg);">
+							<option selected="" value="dropdown-option-1">Option 1</option>
 						</select>
 					</div>
 				</mock:shadow-root>
@@ -47,6 +47,86 @@ describe('ontario-dropdown-list', () => {
 			expect(page.rootInstance.isEmptyStartOption).toBe('Please select');
 			expect(page.rootInstance.captionState.captionText).toBe('Label');
 			expect(page.rootInstance.options).toBe('[{ "value": "dropdown-option-1", "label": "Option 1" }]');
+		});
+
+		it('should keep the host value empty when the start option is shown first', async () => {
+			const page = await newSpecPage({
+				components: [OntarioDropdownList],
+				html: `<ontario-dropdown-list element-id="dropdown-list" is-empty-start-option="Please select" options='[{ "value": "dropdown-option-1", "label": "Option 1" }, { "value": "dropdown-option-2", "label": "Option 2" }]'></ontario-dropdown-list>`,
+			});
+
+			const select = page.root?.shadowRoot?.querySelector('select') as HTMLSelectElement;
+			const startOption = select.querySelector('option') as HTMLOptionElement;
+
+			expect(page.root?.value).toBe('');
+			expect(startOption.getAttribute('value')).toBe('');
+			expect(select.getAttribute('value')).toBe('');
+		});
+
+		it('should warn and fall back when the provided value does not match an option', async () => {
+			const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+
+			const page = await newSpecPage({
+				components: [OntarioDropdownList],
+				html: `<ontario-dropdown-list element-id="dropdown-list" value="missing-option" options='[{ "value": "dropdown-option-1", "label": "Option 1" }, { "value": "dropdown-option-2", "label": "Option 2" }]'></ontario-dropdown-list>`,
+			});
+
+			expect(page.root?.value).toBe('dropdown-option-1');
+			expect(warnSpy).toHaveBeenCalled();
+
+			warnSpy.mockRestore();
+		});
+
+		it('should keep the host value in sync with the selected option', async () => {
+			const page = await newSpecPage({
+				components: [OntarioDropdownList],
+				html: `<ontario-dropdown-list element-id="dropdown-list" options='[{ "value": "dropdown-option-1", "label": "Option 1" }, { "value": "dropdown-option-2", "label": "Option 2" }]'></ontario-dropdown-list>`,
+			});
+
+			const select = page.root?.shadowRoot?.querySelector('select') as HTMLSelectElement;
+			select.value = 'dropdown-option-2';
+			select.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+			await page.waitForChanges();
+
+			expect(page.root?.value).toBe('dropdown-option-2');
+		});
+
+		it('should emit a host input event with the current value in detail', async () => {
+			const page = await newSpecPage({
+				components: [OntarioDropdownList],
+				html: `<ontario-dropdown-list element-id="dropdown-list" options='[{ "value": "dropdown-option-1", "label": "Option 1" }, { "value": "dropdown-option-2", "label": "Option 2" }]'></ontario-dropdown-list>`,
+			});
+
+			const onInput = jest.fn();
+			page.root?.addEventListener('input', onInput);
+
+			const select = page.root?.shadowRoot?.querySelector('select') as HTMLSelectElement;
+			select.value = 'dropdown-option-2';
+			select.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+			await page.waitForChanges();
+
+			expect(onInput).toHaveBeenCalledTimes(1);
+			expect(page.root?.value).toBe('dropdown-option-2');
+			expect(onInput.mock.calls[0][0].detail.value).toBe('dropdown-option-2');
+		});
+
+		it('should emit a host change event with the current value in detail', async () => {
+			const page = await newSpecPage({
+				components: [OntarioDropdownList],
+				html: `<ontario-dropdown-list element-id="dropdown-list" options='[{ "value": "dropdown-option-1", "label": "Option 1" }, { "value": "dropdown-option-2", "label": "Option 2" }]'></ontario-dropdown-list>`,
+			});
+
+			const onChange = jest.fn();
+			page.root?.addEventListener('change', onChange);
+
+			const select = page.root?.shadowRoot?.querySelector('select') as HTMLSelectElement;
+			select.value = 'dropdown-option-2';
+			select.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
+			await page.waitForChanges();
+
+			expect(onChange).toHaveBeenCalledTimes(1);
+			expect(page.root?.value).toBe('dropdown-option-2');
+			expect(onChange.mock.calls[0][0].detail.value).toBe('dropdown-option-2');
 		});
 	});
 });

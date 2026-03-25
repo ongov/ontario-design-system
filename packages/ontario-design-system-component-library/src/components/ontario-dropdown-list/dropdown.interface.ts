@@ -42,6 +42,14 @@ export interface Dropdown extends Base {
 	elementId?: string;
 
 	/**
+	 * The currently selected dropdown value.
+	 *
+	 * The component keeps the host `value` in sync as users interact with the dropdown.
+	 * If `value` is provided, it takes precedence over any `selected` flags passed through `options`.
+	 */
+	value?: string;
+
+	/**
 	 * The options for dropdown list.
 	 *
 	 * Each option will be passed in through an object in the options array.

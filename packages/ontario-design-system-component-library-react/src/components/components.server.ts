@@ -379,6 +379,7 @@ export const OntarioDropdownList: StencilReactComponent<OntarioDropdownListEleme
         language: 'language',
         name: 'name',
         elementId: 'element-id',
+        value: 'value',
         options: 'options',
         required: 'required',
         isEmptyStartOption: 'is-empty-start-option',

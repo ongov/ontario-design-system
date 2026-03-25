@@ -347,14 +347,14 @@ export declare interface OntarioDateInput extends Components.OntarioDateInput {
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required', 'value']
 })
 @Component({
   selector: 'ontario-dropdown-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required'],
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required', 'value'],
   outputs: ['dropdownOnChange', 'dropdownOnBlur', 'dropdownOnFocus', 'inputErrorOccurred'],
   standalone: false
 })
