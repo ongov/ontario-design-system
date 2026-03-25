@@ -405,7 +405,13 @@ In the following example, all available props are passed through.
 
 The `ontario-dropdown-list` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as an `<select>`.
 
-The component keeps its host `value` in sync as users interact with the internal `<select>`. That same `value` is used for native form submission and for host `input` and `change` event handling. When `isEmptyStartOption` is enabled, the start option uses an empty string value until a real option is selected. If a provided `value` does not match any option, the component emits a warning and falls back to the selected option, empty start option, or first available option.
+The component keeps its `value` in sync as users interact with the internal
+`<select>`. That same `value` is used for native form submission and for the
+component `input` and `change` events. When `isEmptyStartOption` is enabled,
+the start option uses an empty string value until a real option is selected. If
+a provided `value` does not match any option, the component emits a warning and
+falls back to the selected option, empty start option, or first available
+option.
 
 ```html
 <form>
@@ -447,7 +453,10 @@ Remember to set the `name` attribute as this is used to identify the field when 
 
 Each event emitted by the component uses the [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) type to emit a custom event to help communicate what the component is doing. To access the data emitted by the component within the `CustomEvent` type use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail) property.
 
-For most integrations, prefer the host `input` and `change` events and read the selected option from `event.target.value`. Those host events also include `event.detail.value` as a convenience. Use `dropdownOnChange` when you specifically want the component's custom event payload.
+For most integrations, prefer the component `input` and `change` events and
+read the selected option from `event.target.value`. Those events also include
+`event.detail.value` as a convenience. Use `dropdownOnChange` when you
+specifically want the component's custom event payload.
 
 Eg. To access the value of any change made to this component from the `dropdownOnChange` event, use the following code to wire up to listen for the the `dropdownOnChange` event.
 
@@ -492,7 +501,11 @@ See the [Events](#events) table to learn more about the available custom events 
 
 The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
 
-The component handles the internal `<select>` events and re-emits host `input` and `change` events so consumers can listen on the host element instead of the internal control. The current selection is available through `event.target.value`, and a convenience copy is also included in `event.detail.value`.
+The component handles the internal `<select>` events and re-emits `input` and
+`change` events so consumers can listen on the component instead of the
+internal control. The current selection is available through
+`event.target.value`, and a convenience copy is also included in
+`event.detail.value`.
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
 

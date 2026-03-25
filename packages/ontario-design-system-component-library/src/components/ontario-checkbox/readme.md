@@ -466,7 +466,14 @@ See the [Events](#events) table to learn more about the available custom events 
 
 The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
 
-The native `change` event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
+The component keeps its `value` in sync with the currently selected checkbox
+options.
+
+The native `change` event hits the ShadowDOM boundary and stops propagating.
+The implication of this is that it can't be listened for outside the
+component. To attempt to overcome this, a synthetic change event is generated
+and emitted. The original `change` event is available via the `detail`
+property on the emitted event.
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
 

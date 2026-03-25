@@ -504,7 +504,10 @@ See the [Events](#events) table to learn more about the available custom events 
 
 The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
 
-The component handles the internal radio input changes and re-emits a host `change` event so consumers can listen on the host element instead of the internal control. The current selection is available through `event.target.value`, and a convenience copy is also included in `event.detail.value`.
+The component handles the internal radio input changes and re-emits a `change`
+event so consumers can listen on the component instead of the internal
+control. The current selection is available through `event.target.value`, and a
+convenience copy is also included in `event.detail.value`.
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
 

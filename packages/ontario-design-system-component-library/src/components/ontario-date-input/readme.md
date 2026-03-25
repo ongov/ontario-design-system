@@ -205,7 +205,12 @@ The `value` prop accepts either:
 
 When a valid `value` is provided, the component hydrates the internal year, month, and day fields and normalizes its aggregate value to a full UTC ISO timestamp.
 
-When the aggregate value changes, listen for host `input` and `change` events and read the normalized value from `event.target.value`, similar to a native form control. For convenience, the same aggregate value is also available in `event.detail.value`. The existing `inputOnInput` and `inputOnChange` custom events remain available if you need the field-level detail.
+When the aggregate value changes, listen for the component `input` and
+`change` events and read the normalized value from `event.target.value`,
+similar to a native form control. For convenience, the same aggregate value is
+also available in `event.detail.value`. The existing `inputOnInput` and
+`inputOnChange` custom events remain available if you need the field-level
+detail.
 
 ### Forms
 
@@ -213,13 +218,15 @@ The `ontario-date-input` supports integration with native HTML `<form>` elements
 
 The `ontario-date-input` returns an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formatted date with a time component of `00:00:00Z`, or midnight UTC, eg. `2024-02-20T00:00:00.000Z`, combining the _year_, _month_, and _day_ fields together. _It has to be noted that the input only supports numerical values within any of the fields._
 
-The aggregate `value` property on the host element follows the same normalized full ISO format. This means:
+The aggregate `value` property on the component follows the same normalized
+full ISO format. This means:
 
 - incoming plain ISO dates are accepted and normalized
 - incoming full ISO timestamps are accepted and normalized to midnight UTC for the same calendar date
 - incomplete or invalid field combinations do not produce an aggregate value for form submission
 
-If you are listening for changes on the host element, read the normalized aggregate value from the component instance:
+If you are listening for changes on the component, read the normalized
+aggregate value from the component instance:
 
 ```js
 document.querySelector('ontario-date-input').addEventListener('change', (event) => {
@@ -358,7 +365,9 @@ See the [Events](#events) table to learn more about the available custom events 
 
 The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
 
-The component emits host `input` and `change` events when the aggregate date value changes so consumers can respond to updates using the familiar native event names. Read the aggregate ISO value from `event.target.value`.
+The component emits `input` and `change` events when the aggregate date value
+changes so consumers can respond to updates using the familiar native event
+names. Read the aggregate ISO value from `event.target.value`.
 
 The same aggregate value is also included in `event.detail.value` for consumers that prefer event payloads.
 

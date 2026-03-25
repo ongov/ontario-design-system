@@ -157,9 +157,18 @@ Remember to set the `name` attribute as this is used to identify the field when 
 
 ## Event model
 
-Each event emitted by the component uses the [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) type to emit a custom event to help communicate what the component is doing. To access the data emitted by the component within the `CustomEvent` type use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail) property.
+If you are observing the component from the outside, prefer reading the current
+input value from `event.target.value` on the component `input` or `change`
+event. Use `inputOnInput` and `inputOnChange` when you specifically want the
+component's custom event detail.
 
-Eg. To access the value of any input entered into this component from the `inputOnInput` event, use the following code to wire up to listen for the the `inputOnInput` event.
+Each custom event emitted by the component uses the
+[`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent)
+type. To access the data emitted by the component within the `CustomEvent` type
+use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail)
+property.
+
+Example of the `inputOnInput` event:
 
 ```html
 <ontario-input id="input-1" name="input-1" caption="What is your name?" required></ontario-input>
@@ -187,9 +196,21 @@ See the [Events](#events) table to learn more about the available custom events 
 
 The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
 
+The component keeps its `value` in sync as the internal `<input>` changes.
+
 Events, such as the native `input` event, deliver data from inside of the component and flow up the event stack as expected.
 
 This isn't the case for the native `change` event, this event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
+
+```js
+document.querySelector('ontario-input').addEventListener('input', (event) => {
+	console.log(event.target.value);
+});
+
+document.querySelector('ontario-input').addEventListener('change', (event) => {
+	console.log(event.target.value);
+});
+```
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
 

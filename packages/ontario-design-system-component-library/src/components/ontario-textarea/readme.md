@@ -174,7 +174,7 @@ See the [Events](#events) table to learn more about the available custom events 
 
 The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
 
-The component keeps its host `value` in sync as the internal `<textarea>`
+The component keeps its `value` in sync as the internal `<textarea>`
 changes.
 
 Events, such as the native `input` event, deliver data from inside of the
