@@ -174,7 +174,11 @@ See the [Events](#events) table to learn more about the available custom events 
 
 The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
 
-Events, such as the native `input` event, deliver data from inside of the component and flow up the event stack as expected.
+The component keeps its host `value` in sync as the internal `<textarea>`
+changes.
+
+Events, such as the native `input` event, deliver data from inside of the
+component and flow up the event stack as expected.
 
 This isn't the case for the native `change` event, this event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
 

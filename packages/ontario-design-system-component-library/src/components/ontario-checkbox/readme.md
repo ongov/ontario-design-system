@@ -248,6 +248,101 @@ Example of a checkbox component with multiple options, a hint text and hint expa
 	></OntarioCheckboxes>
 </div>
 
+In the following example, the selected checkbox options are set using the
+component's `value`. Listen for the component `change` event to read the
+current selected values.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-checkboxes
+	id="checkboxes-value-example"
+	caption="Checkbox legend"
+	name="checkboxes"
+	value='["checkbox-option-2"]'
+	options='[
+		{
+			"value": "checkbox-option-1",
+			"label": "Checkbox option 1 label",
+			"elementId": "checkbox-1"
+		},
+		{
+			"value": "checkbox-option-2",
+			"label": "Checkbox option 2 label",
+			"elementId": "checkbox-2"
+		}
+	]'
+></ontario-checkboxes>
+<script>
+	document.getElementById('checkboxes-value-example')?.addEventListener('change', (event) => {
+		console.log(event.target.value);
+		console.log(event.detail.value);
+	});
+</script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioCheckboxes
+	caption="Checkbox legend"
+	name="checkboxes"
+	value={['checkbox-option-2']}
+	options={[
+		{ value: 'checkbox-option-1', label: 'Checkbox option 1 label', elementId: 'checkbox-1' },
+		{ value: 'checkbox-option-2', label: 'Checkbox option 2 label', elementId: 'checkbox-2' },
+	]}
+	onChange={(event) => {
+		console.log((event.target as HTMLOntarioCheckboxesElement).value);
+		console.log(event.detail.value);
+	}}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-checkboxes
+	[caption]="'Checkbox legend'"
+	[name]="'checkboxes'"
+	[value]="['checkbox-option-2']"
+	[options]="[
+		{ value: 'checkbox-option-1', label: 'Checkbox option 1 label', elementId: 'checkbox-1' },
+		{ value: 'checkbox-option-2', label: 'Checkbox option 2 label', elementId: 'checkbox-2' }
+	]"
+	(change)="handleCheckboxChange($event)"
+></ontario-checkboxes>
+```
+
+```ts
+handleCheckboxChange(event: Event) {
+	console.log((event.target as HTMLOntarioCheckboxesElement).value);
+	console.log((event as CustomEvent<{ value: string[] }>).detail.value);
+}
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 ### Forms
 
 The `ontario-checkboxes` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as a a group of `<input type="checkbox">` elements.
@@ -283,9 +378,49 @@ Remember to set the `name` attribute as this is used to identify the field when 
 
 ## Event model
 
-Each event emitted by the component uses the [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) type to emit a custom event to help communicate what the component is doing. To access the data emitted by the component within the `CustomEvent` type use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail) property.
+For most integrations, prefer the component `change` event and read the
+selected values from `event.target.value`. That event also includes
+`event.detail.value` as a convenience. Use `checkboxOnChange` when you
+specifically want the component's per-option custom event payload.
 
-Eg. To access the value of any change made to this component from the `checkboxOnChange` event, use the following code to wire up to listen for the the `checkboxOnChange` event.
+Each custom event emitted by the component uses the
+[`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent)
+type. To access the data emitted by the component within the `CustomEvent` type
+use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail)
+property.
+
+Example of the component `change` event:
+
+```html
+<ontario-checkboxes
+	id="checkboxes-change-example"
+	caption="Checkboxes"
+	name="checkboxes-1"
+	options='[
+		{
+			"value": "checkbox-option-1",
+			"label": "Checkbox option 1 label",
+			"elementId": "checkbox-1"
+		},
+		{
+			"value": "checkbox-option-2",
+			"label": "Checkbox option 2 label",
+			"elementId": "checkbox-2"
+		}
+	]'
+></ontario-checkboxes>
+<script>
+	window.onload = () => {
+		const checkboxes1 = document.getElementById('checkboxes-change-example');
+		checkboxes1.addEventListener('change', (event) => {
+			console.log(event.target.value);
+			console.log(event.detail.value);
+		});
+	};
+</script>
+```
+
+Example `checkboxOnChange` usage when you need per-option detail:
 
 ```html
 <ontario-checkboxes

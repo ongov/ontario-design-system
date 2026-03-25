@@ -122,6 +122,99 @@ Example of a dropdown list component with no `elementId` or `isEmptyStartOption`
 	></OntarioDropdownList>
 </div>
 
+In the following example, the selected option is set using the component's
+`value`. Listen for the component `input` or `change` event to read the current
+selection.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-dropdown-list
+	id="dropdown-value-example"
+	name="streaming-service"
+	caption="Select a streaming service"
+	value="crave"
+	options='[
+		{ "value": "netflix", "label": "Netflix" },
+		{ "value": "disney-plus", "label": "Disney Plus" },
+		{ "value": "crave", "label": "Crave" }
+	]'
+></ontario-dropdown-list>
+<script>
+	document.getElementById('dropdown-value-example')?.addEventListener('change', (event) => {
+		console.log(event.target.value);
+		console.log(event.detail.value);
+	});
+</script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioDropdownList
+	name="streaming-service"
+	caption="Select a streaming service"
+	value="crave"
+	options={[
+		{ value: 'netflix', label: 'Netflix' },
+		{ value: 'disney-plus', label: 'Disney Plus' },
+		{ value: 'crave', label: 'Crave' },
+	]}
+	onInput={(event) => {
+		console.log((event.target as HTMLOntarioDropdownListElement).value);
+	}}
+	onChange={(event) => {
+		console.log((event.target as HTMLOntarioDropdownListElement).value);
+		console.log(event.detail.value);
+	}}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-dropdown-list
+	[name]="'streaming-service'"
+	[caption]="'Select a streaming service'"
+	[value]="'crave'"
+	[options]="[
+		{ value: 'netflix', label: 'Netflix' },
+		{ value: 'disney-plus', label: 'Disney Plus' },
+		{ value: 'crave', label: 'Crave' }
+	]"
+	(change)="handleDropdownChange($event)"
+></ontario-dropdown-list>
+```
+
+```ts
+handleDropdownChange(event: Event) {
+	console.log((event.target as HTMLOntarioDropdownListElement).value);
+	console.log((event as CustomEvent<{ value: string }>).detail.value);
+}
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 In the following example, all available props are passed through.
 
 ```mdx-code-block

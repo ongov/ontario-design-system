@@ -278,11 +278,109 @@ Example of a radio button component with multiple options, a hint text and hint 
 	></OntarioRadioButtons>
 </div>
 
+In the following example, the selected radio option is set using the
+component's `value`. Listen for the component `change` event to read the
+current selection.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-radio-buttons
+	id="radio-value-example"
+	caption="Radio legend"
+	name="radios"
+	value="radio-option-2"
+	options='[
+		{
+			"value": "radio-option-1",
+			"elementId": "radio-1",
+			"label": "Radio option 1 label"
+		},
+		{
+			"value": "radio-option-2",
+			"elementId": "radio-2",
+			"label": "Radio option 2 label"
+		}
+	]'
+></ontario-radio-buttons>
+<script>
+	document.getElementById('radio-value-example')?.addEventListener('change', (event) => {
+		console.log(event.target.value);
+		console.log(event.detail.value);
+	});
+</script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioRadioButtons
+	caption="Radio legend"
+	name="radios"
+	value="radio-option-2"
+	options={[
+		{ value: 'radio-option-1', elementId: 'radio-1', label: 'Radio option 1 label' },
+		{ value: 'radio-option-2', elementId: 'radio-2', label: 'Radio option 2 label' },
+	]}
+	onChange={(event) => {
+		console.log((event.target as HTMLOntarioRadioButtonsElement).value);
+		console.log(event.detail.value);
+	}}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-radio-buttons
+	[caption]="'Radio legend'"
+	[name]="'radios'"
+	[value]="'radio-option-2'"
+	[options]="[
+		{ value: 'radio-option-1', elementId: 'radio-1', label: 'Radio option 1 label' },
+		{ value: 'radio-option-2', elementId: 'radio-2', label: 'Radio option 2 label' }
+	]"
+	(change)="handleRadioChange($event)"
+></ontario-radio-buttons>
+```
+
+```ts
+handleRadioChange(event: Event) {
+	console.log((event.target as HTMLOntarioRadioButtonsElement).value);
+	console.log((event as CustomEvent<{ value: string }>).detail.value);
+}
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 ### Forms
 
 The `ontario-radio-buttons` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as a a group of `<input type="radio">` elements.
 
-The component keeps its host `value` in sync with the currently checked radio option. That same `value` is used for native form submission and for host `change` event handling. If a provided `value` does not match any option, the component emits a warning and falls back to the checked option.
+The component keeps its `value` in sync with the currently checked radio
+option. That same `value` is used for native form submission and for the
+component `change` event. If a provided `value` does not match any option, the
+component emits a warning and falls back to the checked option.
 
 ```html
 <form>
@@ -319,11 +417,49 @@ Remember to set the `name` attribute as this is used to identify the field when 
 
 ## Event model
 
-Each event emitted by the component uses the [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) type to emit a custom event to help communicate what the component is doing. To access the data emitted by the component within the `CustomEvent` type use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail) property.
+Each custom event emitted by the component uses the
+[`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent)
+type. To access the data emitted by the component within the `CustomEvent` type
+use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail)
+property.
 
-For most integrations, prefer the host `change` event and read the selected option from `event.target.value`. That host event also includes `event.detail.value` as a convenience. Use `radioOnChange` when you specifically want the component's custom event payload.
+For most integrations, prefer the component `change` event and read the
+selected option from `event.target.value`. That event also includes
+`event.detail.value` as a convenience. Use `radioOnChange` when you
+specifically want the component's custom event payload.
 
-Eg. To access the value of any change made to this component from the `radioOnChange` event, use the following code to wire up to listen for the the `radioOnChange` event.
+Example of the component `change` event:
+
+```html
+<ontario-radio-buttons
+	id="radio-change-example"
+	name="radio-buttons-1"
+	caption="Radio buttons"
+	options='[
+		{
+			"value": "radio-option-1",
+			"elementId": "radio-1",
+			"label": "Radio option 1 label"
+		},
+		{
+			"value": "radio-option-2",
+			"elementId": "radio-2",
+			"label": "Radio option 2 label"
+		}
+	]'
+></ontario-radio-buttons>
+<script>
+	window.onload = () => {
+		const radioButtons1 = document.getElementById('radio-change-example');
+		radioButtons1.addEventListener('change', (event) => {
+			console.log(event.target.value);
+			console.log(event.detail.value);
+		});
+	};
+</script>
+```
+
+Example `radioOnChange` usage when you need the custom option-level detail:
 
 ```html
 <ontario-radio-buttons
