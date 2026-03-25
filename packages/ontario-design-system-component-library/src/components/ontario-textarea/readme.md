@@ -128,6 +128,8 @@ To mark a textarea as required, add the `required` attribute to the component.
 
 The `ontario-textarea` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as a `<textarea>`.
 
+The component's host `value` stays in sync as users interact with the textarea. The component updates that `value`, updates the form value, and exposes the current content through host-native events.
+
 ```html
 <form>
 	<!-- Add an ontario-textarea -->
@@ -175,6 +177,18 @@ The component uses a ShadowDOM to maintain encapsulation, however, this changes 
 Events, such as the native `input` event, deliver data from inside of the component and flow up the event stack as expected.
 
 This isn't the case for the native `change` event, this event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
+
+If you are observing the component from the outside, prefer reading the current textarea content from `event.target.value` on the host `input` or `change` event. Use `inputOnInput` and `inputOnChange` when you specifically want the component's richer custom event detail.
+
+```js
+document.querySelector('ontario-textarea').addEventListener('input', (event) => {
+	console.log(event.target.value);
+});
+
+document.querySelector('ontario-textarea').addEventListener('change', (event) => {
+	console.log(event.target.value);
+});
+```
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
 
