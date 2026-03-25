@@ -4,23 +4,23 @@ import { ControlValueAccessor } from '@angular/forms';
 @Directive({
 	standalone: false,
 })
-export abstract class BaseCustomValueAccessor implements ControlValueAccessor {
+export abstract class BaseCustomValueAccessor<T = string> implements ControlValueAccessor {
 	constructor(
 		private element: ElementRef,
 		private renderer: Renderer2,
 	) {}
 
-	onChange: (value: string) => void = () => {};
+	onChange: (value: T) => void = () => {};
 	onTouched: () => void = () => {};
 
-	writeValue(value: string) {
+	writeValue(value: T) {
 		this.renderer.setProperty(this.element.nativeElement, 'value', value);
 	}
 
-	abstract _handleChange(value: string): void;
+	abstract _handleChange(...args: any[]): void;
 	abstract _handleBlurEvent(el: any): void;
 
-	registerOnChange(fn: (value: string) => void) {
+	registerOnChange(fn: (value: T) => void) {
 		this.onChange = fn;
 	}
 
