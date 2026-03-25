@@ -191,6 +191,53 @@ describe('ontario-date-input', () => {
 		expect(emitSpy.mock.calls[0][0].detail).toEqual({ value: '2024-02-20T00:00:00.000Z' });
 	});
 
+	it('emits a host `change` event when the aggregate value changes', async () => {
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input></ontario-date-input>`,
+		});
+		const emitSpy = jest.fn();
+		page.root?.addEventListener('change', emitSpy);
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+		const [yearInput, monthInput, dayInput] = Array.from(inputs ?? []);
+
+		yearInput.value = '2024';
+		yearInput.dispatchEvent(new Event('change'));
+		monthInput.value = '02';
+		monthInput.dispatchEvent(new Event('change'));
+		dayInput.value = '20';
+		dayInput.dispatchEvent(new Event('change'));
+
+		await page.waitForChanges();
+
+		expect(emitSpy).toHaveBeenCalledTimes(1);
+		expect((emitSpy.mock.calls[0][0].target as HTMLOntarioDateInputElement).value).toBe('2024-02-20T00:00:00.000Z');
+		expect(emitSpy.mock.calls[0][0].detail).toEqual({ value: '2024-02-20T00:00:00.000Z' });
+	});
+
+	it('emits a host `input` event when the aggregate value is cleared', async () => {
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input value="2024-02-20"></ontario-date-input>`,
+		});
+		const emitSpy = jest.fn();
+		page.root?.addEventListener('input', emitSpy);
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+		const [yearInput] = Array.from(inputs ?? []);
+
+		yearInput.value = '';
+		yearInput.dispatchEvent(new Event('input'));
+
+		await page.waitForChanges();
+
+		expect((page.root as HTMLOntarioDateInputElement).value).toBe('');
+		expect(emitSpy).toHaveBeenCalledTimes(1);
+		expect((emitSpy.mock.calls[0][0].target as HTMLOntarioDateInputElement).value).toBe('');
+		expect(emitSpy.mock.calls[0][0].detail).toEqual({ value: '' });
+	});
+
 	it('emits a host `change` event when the aggregate value is cleared', async () => {
 		const page = await newSpecPage({
 			components: [OntarioDateInput],
