@@ -220,6 +220,7 @@ export class OntarioDateInput {
 	@State() private dateOptionsState: Array<DateInputFieldType>;
 
 	private isSyncingValue = false;
+	private lastCommittedValue = '';
 
 	/**
 	 * Watch for changes to the `caption` prop.
@@ -265,6 +266,7 @@ export class OntarioDateInput {
 			if (typeof this.internals?.setFormValue === 'function') {
 				this.internals.setFormValue('');
 			}
+			this.lastCommittedValue = '';
 			return;
 		}
 
@@ -282,6 +284,7 @@ export class OntarioDateInput {
 		this.resetErrorState();
 
 		this.syncAggregateValue(parsedValue.normalizedValue);
+		this.lastCommittedValue = this.value ?? '';
 	}
 
 	private processPlaceholder() {
@@ -446,13 +449,14 @@ export class OntarioDateInput {
 	};
 
 	private handleDateChanged = (value: string, fieldType: DateInputFieldType) => {
-		const aggregateValueChanged = this.handleDateUpdates(value, fieldType);
+		this.handleDateUpdates(value, fieldType);
 
 		// emit date change event
 		this.inputOnChange.emit({ value, fieldType });
 
-		if (aggregateValueChanged) {
+		if ((this.value ?? '') !== this.lastCommittedValue) {
 			this.emitAggregateValueEvent('change');
+			this.lastCommittedValue = this.value ?? '';
 		}
 	};
 

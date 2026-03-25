@@ -423,7 +423,7 @@ export class OntarioDropdownList implements Dropdown {
 		const input = event.target as HTMLSelectElement | null;
 		this.value = input?.value ?? '';
 
-		this.internals?.setFormValue?.(this.value);
+		this.internals?.setFormValue?.(this.value ?? '');
 
 		handleInputEvent(
 			event,
@@ -451,7 +451,7 @@ export class OntarioDropdownList implements Dropdown {
 
 		const input = event.target as HTMLSelectElement | null;
 		this.value = input?.value ?? '';
-		this.internals?.setFormValue?.(this.value);
+		this.internals?.setFormValue?.(this.value ?? '');
 		this.emitHostValueEvent('input');
 	}
 
@@ -505,13 +505,13 @@ export class OntarioDropdownList implements Dropdown {
 
 	private syncValueFromOptions() {
 		if (this.value === '' && this.hasEmptyStartOption()) {
-			this.internals?.setFormValue?.(this.value);
+			this.internals?.setFormValue?.(this.value ?? '');
 			return;
 		}
 
 		const hasMatchingValue = this.value && this.internalOptions?.some((option) => option.value === this.value);
 		if (hasMatchingValue) {
-			this.internals?.setFormValue?.(this.value);
+			this.internals?.setFormValue?.(this.value ?? '');
 			return;
 		}
 
@@ -531,7 +531,7 @@ export class OntarioDropdownList implements Dropdown {
 		const selectedOption = this.internalOptions?.find((option) => option.selected);
 		const firstOption = this.internalOptions?.[0];
 		this.value = selectedOption?.value ?? (this.hasEmptyStartOption() ? '' : (firstOption?.value ?? ''));
-		this.internals?.setFormValue?.(this.value);
+		this.internals?.setFormValue?.(this.value ?? '');
 	}
 
 	private isOptionSelected(option: DropdownOption) {
@@ -595,7 +595,6 @@ export class OntarioDropdownList implements Dropdown {
 					id={this.getId()}
 					name={this.name}
 					style={this.getDropdownArrow()}
-					value={this.value ?? ''}
 					onInput={(e) => this.handleInput(e)}
 					onChange={(e) => this.handleEvent(e, EventType.Change)}
 					onBlur={(e) => this.handleEvent(e, EventType.Blur)}

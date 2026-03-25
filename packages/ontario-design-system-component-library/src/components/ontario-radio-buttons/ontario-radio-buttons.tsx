@@ -412,7 +412,7 @@ export class OntarioRadioButtons implements RadioButtons {
 		this.value = this.internalOptions.find((x) => !!x.checked)?.value ?? '';
 
 		// Set the value within the form
-		this.internals?.setFormValue?.(this.value);
+		this.internals?.setFormValue?.(this.value ?? '');
 
 		handleInputEvent(
 			event,
@@ -454,7 +454,7 @@ export class OntarioRadioButtons implements RadioButtons {
 				...option,
 				checked: option.value === this.value,
 			}));
-			this.internals?.setFormValue?.(this.value);
+			this.internals?.setFormValue?.(this.value ?? '');
 			return;
 		}
 
@@ -475,7 +475,7 @@ export class OntarioRadioButtons implements RadioButtons {
 			...option,
 			checked: option.value === this.value,
 		}));
-		this.internals?.setFormValue?.(this.value);
+		this.internals?.setFormValue?.(this.value ?? '');
 	}
 
 	/**

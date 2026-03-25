@@ -21,7 +21,7 @@ describe('ontario-dropdown-list', () => {
 								<ontario-icon-alert-error></ontario-icon-alert-error>
 								<div class="ontario-error-messaging__content"></div>
 							</div>
-						<select class="ontario-dropdown ontario-input" id="dropdown-list" value="dropdown-option-1" style="background-image: url(/assets/ontario-material-dropdown-arrow-48px.svg);">
+						<select class="ontario-dropdown ontario-input" id="dropdown-list" style="background-image: url(/assets/ontario-material-dropdown-arrow-48px.svg);">
 							<option selected="" value="dropdown-option-1">Option 1</option>
 						</select>
 					</div>
@@ -60,7 +60,6 @@ describe('ontario-dropdown-list', () => {
 
 			expect(page.root?.value).toBe('');
 			expect(startOption.getAttribute('value')).toBe('');
-			expect(select.getAttribute('value')).toBe('');
 		});
 
 		it('should warn and fall back when the provided value does not match an option', async () => {
@@ -87,7 +86,6 @@ describe('ontario-dropdown-list', () => {
 			const options = Array.from(select.querySelectorAll('option')) as HTMLOptionElement[];
 
 			expect(page.root?.value).toBe('dropdown-option-2');
-			expect(select.getAttribute('value')).toBe('dropdown-option-2');
 			expect(options[0].hasAttribute('selected')).toBe(false);
 			expect(options[1].getAttribute('selected')).toBe('');
 		});
@@ -114,7 +112,6 @@ describe('ontario-dropdown-list', () => {
 
 			const select = page.root?.shadowRoot?.querySelector('select') as HTMLSelectElement;
 			let options = Array.from(select.querySelectorAll('option')) as HTMLOptionElement[];
-			expect(select.getAttribute('value')).toBe('dropdown-option-1');
 			expect(options[0].getAttribute('selected')).toBe('');
 			expect(options[1].hasAttribute('selected')).toBe(false);
 
@@ -123,7 +120,6 @@ describe('ontario-dropdown-list', () => {
 			options = Array.from(select.querySelectorAll('option')) as HTMLOptionElement[];
 
 			expect(page.root?.value).toBe('dropdown-option-2');
-			expect(select.getAttribute('value')).toBe('dropdown-option-2');
 			expect(options[0].hasAttribute('selected')).toBe(false);
 			expect(options[1].getAttribute('selected')).toBe('');
 		});
