@@ -838,7 +838,7 @@ Note: `href` is optional for printerLink
 
 ### twoColumnOptions
 
-The columns in the twoColumn type (i.e., `column1` and `column2`) and in the threeColumn type (i.e., `column1`, `column2`, and `column3`) share the same structure (i.e [FooterColumnData](#FooterColumnData)) and can be configured according to website requirments.
+The columns in the twoColumn type (i.e., `column1` and `column2`) and in the threeColumn type (i.e., `column1`, `column2`, and `column3`) share the same structure (i.e [FooterColumnData](#footercolumndata)) and can be configured according to website requirments.
 
 <!-- prettier-ignore -->
 ```html
@@ -879,8 +879,8 @@ two-column-options='{
 
 | **Property name** | **Type**                                | **Description**                                            |
 | ----------------- | --------------------------------------- | ---------------------------------------------------------- |
-| `column1`         | `[FooterColumnData](#FooterColumnData)` | Title, body, links or button for the first footer column.  |
-| `column2`         | `[FooterColumnData](#FooterColumnData)` | Title, body, links or button for the second footer column. |
+| `column1`         | `[FooterColumnData](#footercolumndata)` | Title, body, links or button for the first footer column.  |
+| `column2`         | `[FooterColumnData](#footercolumndata)` | Title, body, links or button for the second footer column. |
 
 ### threeColumnOptions
 
@@ -923,11 +923,11 @@ two-column-options='{
 
 #### threeColumn object
 
-| **Property name** | **Type**                               | **Description**                                            |
-| ----------------- | -------------------------------------- | ---------------------------------------------------------- |
-| `column1`         | `[FooterColumnData](FooterColumnData)` | Title, body, links or button for the first footer column.  |
-| `column2`         | `[FooterColumnData](FooterColumnData)` | Title, body, links or button for the second footer column. |
-| `column3`         | `[FooterColumnData](FooterColumnData)` | Title, body, links or button for the third footer column.  |
+| **Property name** | **Type**                                | **Description**                                            |
+| ----------------- | --------------------------------------- | ---------------------------------------------------------- |
+| `column1`         | `[FooterColumnData](#footercolumndata)` | Title, body, links or button for the first footer column.  |
+| `column2`         | `[FooterColumnData](#footercolumndata)` | Title, body, links or button for the second footer column. |
+| `column3`         | `[FooterColumnData](#footercolumndata)` | Title, body, links or button for the third footer column.  |
 
 ## Interfaces
 
