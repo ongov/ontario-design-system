@@ -1,6 +1,8 @@
-# stencil-sample-generator
+# @ongov/app-sample-generator
 
-Automated HTML sample generation for Stencil components with **automatic CSS inlining**.
+Automated HTML sample generation for Ontario Design System components with **automatic CSS inlining**.
+
+Works as both a **CLI tool** (run it directly from the terminal) and a **library** (import `generateSamples()` into your own scripts or build pipeline).
 
 ## What it does
 
@@ -13,6 +15,12 @@ Takes your Web Components and generates clean, standalone HTML samples with:
 - ✅ Ready to use in documentation, Fractal, or anywhere
 
 ## Quick Start
+
+### Install (when using as a library)
+
+```bash
+pnpm add @ongov/app-sample-generator
+```
 
 ### 1. Define your samples
 
@@ -32,7 +40,12 @@ Edit `src/sample-config.ts`:
 
 ```bash
 pnpm build
+
+# Write to the default generated-samples/ directory
 pnpm start
+
+# Or specify a custom output directory
+pnpm start -- --outputDirectory path/to/output
 ```
 
 ### 3. Get clean HTML output
@@ -59,6 +72,22 @@ Default output goes to `generated-samples/` (or a custom `--outputDirectory`):
 - `src/index.ts` renders + cleans HTML and writes output files.
 - `pnpm build` compiles all of this to `dist/*`.
 - `pnpm start` runs `dist/cli.js`.
+
+## Programmatic Usage (Library mode)
+
+Once installed, you can import and call the generator directly from your own scripts or build pipeline:
+
+```typescript
+import { generateSamples } from '@ongov/app-sample-generator';
+
+// Uses generated-samples/ by default
+await generateSamples();
+
+// Or write to a custom directory
+await generateSamples({ outputDirectory: 'path/to/output' });
+```
+
+This is useful if you want to run generation as part of a larger build step rather than invoking it from the terminal.
 
 ## Features
 
@@ -280,4 +309,4 @@ pnpm start
 
 ## License
 
-ISC
+Apache-2.0
