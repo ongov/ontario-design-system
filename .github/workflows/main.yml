@@ -34,7 +34,7 @@ jobs:
     needs: ['build', 'test']
     name: Predict Release Tag
     uses: ./.github/workflows/predict-release-tag.yml
-    if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta' || github.ref == 'refs/heads/scott/task/docs-automerge-workflow' || (github.event_name == 'pull_request' && github.event.pull_request.number == 207)) }}
+    if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta' || github.ref == 'refs/heads/scott/task/docs-automerge-workflow') }}
     secrets: inherit
 
   # Publish packages and release artifacts on release branches.
