@@ -57,11 +57,18 @@ jobs:
           {
             echo '## Publish Packages'
             echo ''
-            echo "Build artifacts input: \`${{ inputs.build-artifacts-name }}\`"
-            echo "Publish step outcome: \`${{ steps.publish.outcome }}\`"
+            echo "| Field | Value |"
+            echo "| --- | --- |"
+            echo "| Repository | \`${{ github.repository }}\` |"
+            echo "| Event | \`${{ github.event_name }}\` |"
+            echo "| Ref | \`${{ github.ref_name }}\` |"
+            echo "| Workflow run | [#${{ github.run_number }} attempt ${{ github.run_attempt }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |"
+            echo "| Build artifacts input | \`${{ inputs.build-artifacts-name }}\` |"
+            echo "| Publish step | \`${{ steps.publish.outcome }}\` |"
             if [ -n "${{ steps.publish.outputs.release_tag }}" ]; then
-              echo "Released tag: \`${{ steps.publish.outputs.release_tag }}\`"
+              echo "| Released tag | \`${{ steps.publish.outputs.release_tag }}\` |"
+              echo "| Release URL | [${{ steps.publish.outputs.release_tag }}](${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ steps.publish.outputs.release_tag }}) |"
             else
-              echo 'No release tag was produced during publish.'
+              echo '| Released tag | No release tag produced |'
             fi
           } >> "$GITHUB_STEP_SUMMARY"

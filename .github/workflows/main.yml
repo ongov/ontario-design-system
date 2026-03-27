@@ -87,8 +87,14 @@ jobs:
           {
             echo '## Enable Docs Auto-Merge'
             echo ''
-            echo "Released tag: \`${{ needs.publish-packages.outputs.release_tag }}\`"
-            echo "Docs PR: #${{ needs.sync-docs-to-docusaurus.outputs.pull-request-number }}"
-            echo "PR operation: \`${{ needs.sync-docs-to-docusaurus.outputs.pull-request-operation }}\`"
-            echo "Auto-merge step outcome: \`${{ steps.enable_automerge.outcome }}\`"
+            echo "| Field | Value |"
+            echo "| --- | --- |"
+            echo "| Repository | \`${{ github.repository }}\` |"
+            echo "| Ref | \`${{ github.ref_name }}\` |"
+            echo "| Workflow run | [#${{ github.run_number }} attempt ${{ github.run_attempt }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |"
+            echo "| Released tag | \`${{ needs.publish-packages.outputs.release_tag }}\` |"
+            echo "| Docs PR | [#${{ needs.sync-docs-to-docusaurus.outputs.pull-request-number }}](${{ github.server_url }}/ongov/design-system-developer-documentation-site/pull/${{ needs.sync-docs-to-docusaurus.outputs.pull-request-number }}) |"
+            echo "| PR operation | \`${{ needs.sync-docs-to-docusaurus.outputs.pull-request-operation }}\` |"
+            echo "| Auto-merge step | \`${{ steps.enable_automerge.outcome }}\` |"
+            echo "| Merge method | \`rebase\` |"
           } >> "$GITHUB_STEP_SUMMARY"

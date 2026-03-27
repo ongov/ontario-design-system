@@ -33,7 +33,7 @@ jobs:
         id: predict
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: pnpm run semantic-release -- --dry-run
+        run: pnpm exec semantic-release --dry-run
 
       - name: Summarise predicted release tag
         if: ${{ always() }}
@@ -41,9 +41,17 @@ jobs:
           {
             echo '## Predict Release Tag'
             echo ''
+            echo "| Field | Value |"
+            echo "| --- | --- |"
+            echo "| Repository | \`${{ github.repository }}\` |"
+            echo "| Event | \`${{ github.event_name }}\` |"
+            echo "| Ref | \`${{ github.ref_name }}\` |"
+            echo "| Actor | \`${{ github.actor }}\` |"
+            echo "| Workflow run | [#${{ github.run_number }} attempt ${{ github.run_attempt }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |"
+            echo "| Prediction step | \`${{ steps.predict.outcome }}\` |"
             if [ -n "${{ steps.predict.outputs.release_tag }}" ]; then
-              echo "Predicted release tag: \`${{ steps.predict.outputs.release_tag }}\`"
+              echo "| Predicted release tag | \`${{ steps.predict.outputs.release_tag }}\` |"
             else
-              echo 'No release tag was predicted for this run.'
+              echo '| Predicted release tag | No release tag predicted |'
             fi
           } >> "$GITHUB_STEP_SUMMARY"
