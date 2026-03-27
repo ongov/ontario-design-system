@@ -100,3 +100,24 @@ jobs:
             This PR updates the documentation site for version `${{ inputs.release_tag }}`.
           branch: docs/update-${{ inputs.release_tag }}
           labels: docs-update
+
+      - name: Summarise docs sync
+        if: ${{ always() }}
+        run: |
+          {
+            echo '## Sync Docs to Docusaurus'
+            echo ''
+            echo "Release tag: \`${{ inputs.release_tag }}\`"
+            echo "Docs artifacts input: \`${{ inputs.docs-artifacts-name }}\`"
+            echo "Create PR step outcome: \`${{ steps.create_pr.outcome }}\`"
+            if [ -n "${{ steps.create_pr.outputs.pull-request-number }}" ]; then
+              echo "Docs PR: #${{ steps.create_pr.outputs.pull-request-number }}"
+            else
+              echo 'No docs PR number was returned.'
+            fi
+            if [ -n "${{ steps.create_pr.outputs.pull-request-operation }}" ]; then
+              echo "PR operation: \`${{ steps.create_pr.outputs.pull-request-operation }}\`"
+            else
+              echo 'No docs PR operation was reported.'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

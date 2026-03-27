@@ -50,3 +50,18 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm run semantic-release
+
+      - name: Summarise package publish
+        if: ${{ always() }}
+        run: |
+          {
+            echo '## Publish Packages'
+            echo ''
+            echo "Build artifacts input: \`${{ inputs.build-artifacts-name }}\`"
+            echo "Publish step outcome: \`${{ steps.publish.outcome }}\`"
+            if [ -n "${{ steps.publish.outputs.release_tag }}" ]; then
+              echo "Released tag: \`${{ steps.publish.outputs.release_tag }}\`"
+            else
+              echo 'No release tag was produced during publish.'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

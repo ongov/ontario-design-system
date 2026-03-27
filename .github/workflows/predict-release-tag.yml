@@ -34,3 +34,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: pnpm run semantic-release -- --dry-run
+
+      - name: Summarise predicted release tag
+        if: ${{ always() }}
+        run: |
+          {
+            echo '## Predict Release Tag'
+            echo ''
+            if [ -n "${{ steps.predict.outputs.release_tag }}" ]; then
+              echo "Predicted release tag: \`${{ steps.predict.outputs.release_tag }}\`"
+            else
+              echo 'No release tag was predicted for this run.'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
