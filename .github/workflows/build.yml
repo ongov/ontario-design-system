@@ -73,6 +73,9 @@ jobs:
       - name: Summarise build outputs
         if: ${{ always() }}
         run: |
+          build_size="$(du -sh --exclude docusaurus packages 2>/dev/null | cut -f1)"
+          docs_size="$(du -sh packages/docusaurus/docs 2>/dev/null | cut -f1)"
+
           {
             echo '## Build'
             echo ''
@@ -85,6 +88,8 @@ jobs:
             echo "| Run | [#${{ github.run_number }} attempt ${{ github.run_attempt }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |"
             echo "| Build artifacts | \`${{ inputs.build-artifacts-name }}\` |"
             echo "| Docs artifacts | \`${{ inputs.docs-artifacts-name }}\` |"
+            echo "| Build artifact size | \`${build_size:-unknown}\` |"
+            echo "| Docs artifact size | \`${docs_size:-unknown}\` |"
             echo "| Build step | \`${{ steps.build_project.outcome }}\` |"
             echo "| Build artifact upload | \`${{ steps.upload_build_artifacts.outcome }}\` |"
             echo "| Docs artifact upload | \`${{ steps.upload_docs_artifact.outcome }}\` |"

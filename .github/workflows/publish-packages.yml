@@ -51,6 +51,44 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm run semantic-release
 
+      - name: Collect published packages
+        id: published_packages
+        if: ${{ always() }}
+        shell: bash
+        run: |
+          node <<'EOF'
+          const fs = require('fs');
+          const path = require('path');
+
+          const outputPath = process.env.GITHUB_OUTPUT;
+          const releaseTag = process.env.RELEASE_TAG || '';
+          const releaseVersion = releaseTag.replace(/^v/, '');
+          const packagesDir = path.join(process.cwd(), 'packages');
+
+          let markdown = 'No published package list available';
+
+          if (releaseVersion && fs.existsSync(packagesDir)) {
+            const entries = fs.readdirSync(packagesDir, { withFileTypes: true });
+            const published = entries
+              .filter((entry) => entry.isDirectory())
+              .map((entry) => path.join(packagesDir, entry.name, 'package.json'))
+              .filter((pkgPath) => fs.existsSync(pkgPath))
+              .map((pkgPath) => JSON.parse(fs.readFileSync(pkgPath, 'utf8')))
+              .filter((pkg) => !pkg.private && pkg.version === releaseVersion)
+              .map((pkg) => `- [\`${pkg.name}@${pkg.version}\`](https://www.npmjs.com/package/${pkg.name}/v/${pkg.version})`);
+
+            if (published.length > 0) {
+              markdown = published.join('\n');
+            } else {
+              markdown = `No public packages matched \`${releaseVersion}\``;
+            }
+          }
+
+          fs.appendFileSync(outputPath, `packages_markdown<<__PACKAGES__\n${markdown}\n__PACKAGES__\n`);
+          EOF
+        env:
+          RELEASE_TAG: ${{ steps.publish.outputs.release_tag }}
+
       - name: Summarise package publish
         if: ${{ always() }}
         run: |
@@ -71,4 +109,8 @@ jobs:
             else
               echo '| Released tag | No release tag produced |'
             fi
+            echo ''
+            echo '### Published Packages'
+            echo ''
+            echo "${{ steps.published_packages.outputs.packages_markdown }}"
           } >> "$GITHUB_STEP_SUMMARY"

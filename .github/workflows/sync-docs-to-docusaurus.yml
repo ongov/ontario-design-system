@@ -113,7 +113,7 @@ jobs:
             echo "| Ref | \`${{ github.ref_name }}\` |"
             echo "| Release tag | \`${{ inputs.release_tag }}\` |"
             echo "| Docs artifacts input | \`${{ inputs.docs-artifacts-name }}\` |"
-            echo "| Docs branch | \`docs/update-${{ inputs.release_tag }}\` |"
+            echo "| Target docs branch | \`docs/update-${{ inputs.release_tag }}\` |"
             echo "| Target repository | \`ongov/design-system-developer-documentation-site\` |"
             echo "| Create PR step | \`${{ steps.create_pr.outcome }}\` |"
             if [ -n "${{ steps.create_pr.outputs.pull-request-number }}" ]; then
@@ -122,8 +122,8 @@ jobs:
               echo '| Docs PR | No docs PR number returned |'
             fi
             if [ -n "${{ steps.create_pr.outputs.pull-request-operation }}" ]; then
-              echo "| PR operation | \`${{ steps.create_pr.outputs.pull-request-operation }}\` |"
+              echo "| PR result | \`${{ steps.create_pr.outputs.pull-request-operation }}\` |"
             else
-              echo '| PR operation | No docs PR operation reported |'
+              echo '| PR result | No docs PR operation reported |'
             fi
           } >> "$GITHUB_STEP_SUMMARY"

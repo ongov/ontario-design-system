@@ -15,6 +15,9 @@ jobs:
       release_tag: ${{ steps.predict.outputs.release_tag }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          fetch-tags: true
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -35,6 +38,41 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: pnpm exec semantic-release --dry-run
 
+      - name: Collect release prediction context
+        id: release_context
+        if: ${{ always() }}
+        shell: bash
+        run: |
+          case "${GITHUB_REF_NAME}" in
+            master) channel="latest" ;;
+            alpha) channel="alpha" ;;
+            beta) channel="beta" ;;
+            *) channel="preview" ;;
+          esac
+
+          last_tag="$(git describe --tags --abbrev=0 --match 'v*' 2>/dev/null || true)"
+
+          if [ -n "$last_tag" ]; then
+            commit_count="$(git rev-list --count "${last_tag}..HEAD")"
+          else
+            commit_count="$(git rev-list --count HEAD)"
+          fi
+
+          if [ "${{ steps.predict.outcome }}" = "success" ] && [ -z "${{ steps.predict.outputs.release_tag }}" ]; then
+            conclusion='no release'
+          elif [ -n "${{ steps.predict.outputs.release_tag }}" ]; then
+            conclusion='release predicted'
+          else
+            conclusion='prediction failed'
+          fi
+
+          {
+            echo "release_channel=${channel}"
+            echo "last_tag=${last_tag}"
+            echo "commit_count_since_last_tag=${commit_count}"
+            echo "prediction_conclusion=${conclusion}"
+          } >> "$GITHUB_OUTPUT"
+
       - name: Summarise predicted release tag
         if: ${{ always() }}
         run: |
@@ -48,7 +86,15 @@ jobs:
             echo "| Ref | \`${{ github.ref_name }}\` |"
             echo "| Actor | \`${{ github.actor }}\` |"
             echo "| Workflow run | [#${{ github.run_number }} attempt ${{ github.run_attempt }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |"
+            echo "| Release channel | \`${{ steps.release_context.outputs.release_channel }}\` |"
             echo "| Prediction step | \`${{ steps.predict.outcome }}\` |"
+            echo "| Prediction conclusion | \`${{ steps.release_context.outputs.prediction_conclusion }}\` |"
+            if [ -n "${{ steps.release_context.outputs.last_tag }}" ]; then
+              echo "| Last reachable tag | \`${{ steps.release_context.outputs.last_tag }}\` |"
+            else
+              echo '| Last reachable tag | No prior tag found |'
+            fi
+            echo "| Commits since last tag | \`${{ steps.release_context.outputs.commit_count_since_last_tag }}\` |"
             if [ -n "${{ steps.predict.outputs.release_tag }}" ]; then
               echo "| Predicted release tag | \`${{ steps.predict.outputs.release_tag }}\` |"
             else
