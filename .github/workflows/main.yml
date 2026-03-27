@@ -55,3 +55,19 @@ jobs:
       docs-artifacts-name: ${{ needs.build.outputs.docs-artifacts-name }}
       release_tag: ${{ needs.publish-packages.outputs.release_tag }}
     secrets: inherit
+
+  enable-docs-automerge:
+    needs: ['publish-packages', 'sync-docs-to-docusaurus']
+    name: Enable Docs Auto-Merge
+    runs-on: ubuntu-latest
+    if: ${{ success() && needs.publish-packages.outputs.release_tag != '' && needs.sync-docs-to-docusaurus.outputs.pull-request-number != '' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
+    steps:
+      - name: Enable docs PR auto-merge
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: >
+          gh pr merge
+          --repo ongov/design-system-developer-documentation-site
+          --auto
+          --rebase
+          ${{ needs.sync-docs-to-docusaurus.outputs.pull-request-number }}
