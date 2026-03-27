@@ -79,18 +79,14 @@ jobs:
           {
             echo '## Build'
             echo ''
-            echo "| Field | Value |"
-            echo "| --- | --- |"
-            echo "| Repository | \`${{ github.repository }}\` |"
-            echo "| Event | \`${{ github.event_name }}\` |"
-            echo "| Ref | \`${{ github.ref_name }}\` |"
-            echo "| SHA | \`${{ github.sha }}\` |"
-            echo "| Run | [#${{ github.run_number }} attempt ${{ github.run_attempt }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |"
-            echo "| Build artifacts | \`${{ inputs.build-artifacts-name }}\` |"
-            echo "| Docs artifacts | \`${{ inputs.docs-artifacts-name }}\` |"
-            echo "| Build artifact size | \`${build_size:-unknown}\` |"
-            echo "| Docs artifact size | \`${docs_size:-unknown}\` |"
-            echo "| Build step | \`${{ steps.build_project.outcome }}\` |"
-            echo "| Build artifact upload | \`${{ steps.upload_build_artifacts.outcome }}\` |"
-            echo "| Docs artifact upload | \`${{ steps.upload_docs_artifact.outcome }}\` |"
+            echo "| Repository | Event | Ref | SHA | Run | Build Step |"
+            echo "| --- | --- | --- | --- | --- | --- |"
+            echo "| \`${{ github.repository }}\` | \`${{ github.event_name }}\` | \`${{ github.ref_name }}\` | \`${{ github.sha }}\` | [#${{ github.run_number }} attempt ${{ github.run_attempt }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) | \`${{ steps.build_project.outcome }}\` |"
+            echo ''
+            echo '### Artifacts'
+            echo ''
+            echo "| Artifact | Name | Size | Upload |"
+            echo "| --- | --- | --- | --- |"
+            echo "| Build | \`${{ inputs.build-artifacts-name }}\` | \`${build_size:-unknown}\` | \`${{ steps.upload_build_artifacts.outcome }}\` |"
+            echo "| Docs | \`${{ inputs.docs-artifacts-name }}\` | \`${docs_size:-unknown}\` | \`${{ steps.upload_docs_artifact.outcome }}\` |"
           } >> "$GITHUB_STEP_SUMMARY"
