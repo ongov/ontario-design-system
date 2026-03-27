@@ -46,10 +46,12 @@ jobs:
 
       # Build the project
       - name: Build the project
+        id: build_project
         run: pnpm run build-libs
 
       # Upload build artifacts
       - name: Upload build artifacts
+        id: upload_build_artifacts
         uses: actions/upload-artifact@v6
         with:
           name: ${{ inputs.build-artifacts-name }} # Artifact name
@@ -61,8 +63,22 @@ jobs:
 
       # Upload docs artifact
       - name: Upload docs artifact
+        id: upload_docs_artifact
         uses: actions/upload-artifact@v6
         with:
           name: ${{ inputs.docs-artifacts-name }}
           compression-level: 9 # Best compression
           path: packages/docusaurus/docs/
+
+      - name: Summarise build outputs
+        if: ${{ always() }}
+        run: |
+          {
+            echo '## Build'
+            echo ''
+            echo "Build artifacts name: \`${{ inputs.build-artifacts-name }}\`"
+            echo "Docs artifacts name: \`${{ inputs.docs-artifacts-name }}\`"
+            echo "Build step outcome: \`${{ steps.build_project.outcome }}\`"
+            echo "Build artifact upload outcome: \`${{ steps.upload_build_artifacts.outcome }}\`"
+            echo "Docs artifact upload outcome: \`${{ steps.upload_docs_artifact.outcome }}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
