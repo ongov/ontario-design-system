@@ -4,7 +4,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: ['master', 'alpha', 'beta']
+    branches: ['master', 'alpha', 'beta', 'scott/task/docs-automerge-workflow']
   pull_request: # Trigger on pull request events
 
 jobs:
@@ -34,7 +34,7 @@ jobs:
     needs: ['build', 'test']
     name: Predict Release Tag
     uses: ./.github/workflows/predict-release-tag.yml
-    if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
+    if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta' || github.ref == 'refs/heads/scott/task/docs-automerge-workflow') }}
     secrets: inherit
 
   # Publish packages and release artifacts on release branches.
