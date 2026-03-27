@@ -29,9 +29,17 @@ jobs:
     with:
       build-artifacts-name: ${{ needs.build.outputs.build-artifacts-name }}
 
+  # Predict the next release tag before publishing so docs PRs can be prepared earlier.
+  predict-release-tag:
+    needs: ['build', 'test']
+    name: Predict Release Tag
+    uses: ./.github/workflows/predict-release-tag.yml
+    if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
+    secrets: inherit
+
   # Publish packages and release artifacts on release branches.
   publish-packages: # Job defined in a separate file (publish-packages.yml)
-    needs: ['build', 'test']
+    needs: ['build', 'test', 'predict-release-tag']
     name: Publish Packages
     uses: ./.github/workflows/publish-packages.yml # Path to the reusable workflow file
     if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
@@ -47,13 +55,13 @@ jobs:
   # Sync generated documentation to Docusaurus.
   # Only sync docs when there is a release_tag (semantic-release produced a tag).
   sync-docs-to-docusaurus: # Job defined in a separate file (sync-docs-to-docusaurus.yml)
-    needs: ['build', 'publish-packages']
+    needs: ['build', 'predict-release-tag']
     name: Sync Docs to Docusaurus
     uses: ./.github/workflows/sync-docs-to-docusaurus.yml
-    if: ${{ success() && needs.publish-packages.outputs.release_tag != '' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
+    if: ${{ success() && needs.predict-release-tag.outputs.release_tag != '' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
     with:
       docs-artifacts-name: ${{ needs.build.outputs.docs-artifacts-name }}
-      release_tag: ${{ needs.publish-packages.outputs.release_tag }}
+      release_tag: ${{ needs.predict-release-tag.outputs.release_tag }}
     secrets: inherit
 
   enable-docs-automerge:
