@@ -46,10 +46,12 @@ jobs:
 
       # Build the project
       - name: Build the project
+        id: build_project
         run: pnpm run build-libs
 
       # Upload build artifacts
       - name: Upload build artifacts
+        id: upload_build_artifacts
         uses: actions/upload-artifact@v6
         with:
           name: ${{ inputs.build-artifacts-name }} # Artifact name
@@ -61,8 +63,30 @@ jobs:
 
       # Upload docs artifact
       - name: Upload docs artifact
+        id: upload_docs_artifact
         uses: actions/upload-artifact@v6
         with:
           name: ${{ inputs.docs-artifacts-name }}
           compression-level: 9 # Best compression
           path: packages/docusaurus/docs/
+
+      - name: Summarise build outputs
+        if: ${{ always() }}
+        run: |
+          build_size="$(du -sh --exclude docusaurus packages 2>/dev/null | cut -f1)"
+          docs_size="$(du -sh packages/docusaurus/docs 2>/dev/null | cut -f1)"
+
+          {
+            echo '## Build'
+            echo ''
+            echo "| Repository | Event | Ref | SHA | Run | Build Step |"
+            echo "| --- | --- | --- | --- | --- | --- |"
+            echo "| \`${{ github.repository }}\` | \`${{ github.event_name }}\` | \`${{ github.ref_name }}\` | \`${{ github.sha }}\` | [#${{ github.run_number }} attempt ${{ github.run_attempt }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) | \`${{ steps.build_project.outcome }}\` |"
+            echo ''
+            echo '### Artifacts'
+            echo ''
+            echo "| Artifact | Name | Size | Upload |"
+            echo "| --- | --- | --- | --- |"
+            echo "| Build | \`${{ inputs.build-artifacts-name }}\` | \`${build_size:-unknown}\` | \`${{ steps.upload_build_artifacts.outcome }}\` |"
+            echo "| Docs | \`${{ inputs.docs-artifacts-name }}\` | \`${docs_size:-unknown}\` | \`${{ steps.upload_docs_artifact.outcome }}\` |"
+          } >> "$GITHUB_STEP_SUMMARY"

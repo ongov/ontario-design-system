@@ -29,9 +29,17 @@ jobs:
     with:
       build-artifacts-name: ${{ needs.build.outputs.build-artifacts-name }}
 
+  # Predict the next release tag before publishing so docs PRs can be prepared earlier.
+  predict-release-tag:
+    needs: ['build', 'test']
+    name: Predict Release Tag
+    uses: ./.github/workflows/predict-release-tag.yml
+    if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
+    secrets: inherit
+
   # Publish packages and release artifacts on release branches.
   publish-packages: # Job defined in a separate file (publish-packages.yml)
-    needs: ['build', 'test']
+    needs: ['build', 'test', 'predict-release-tag']
     name: Publish Packages
     uses: ./.github/workflows/publish-packages.yml # Path to the reusable workflow file
     if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
@@ -47,11 +55,46 @@ jobs:
   # Sync generated documentation to Docusaurus.
   # Only sync docs when there is a release_tag (semantic-release produced a tag).
   sync-docs-to-docusaurus: # Job defined in a separate file (sync-docs-to-docusaurus.yml)
-    needs: ['build', 'publish-packages']
+    needs: ['build', 'predict-release-tag']
     name: Sync Docs to Docusaurus
     uses: ./.github/workflows/sync-docs-to-docusaurus.yml
-    if: ${{ success() && needs.publish-packages.outputs.release_tag != '' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
+    if: ${{ success() && needs.predict-release-tag.outputs.release_tag != '' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
     with:
       docs-artifacts-name: ${{ needs.build.outputs.docs-artifacts-name }}
-      release_tag: ${{ needs.publish-packages.outputs.release_tag }}
+      release_tag: ${{ needs.predict-release-tag.outputs.release_tag }}
     secrets: inherit
+
+  enable-docs-automerge:
+    needs: ['publish-packages', 'sync-docs-to-docusaurus']
+    name: Enable Docs Auto-Merge
+    runs-on: ubuntu-latest
+    if: ${{ success() && needs.publish-packages.outputs.release_tag != '' && needs.sync-docs-to-docusaurus.outputs.pull-request-number != '' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
+    steps:
+      - name: Enable docs PR auto-merge
+        id: enable_automerge
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: >
+          gh pr merge
+          --repo ongov/design-system-developer-documentation-site
+          --auto
+          --rebase
+          ${{ needs.sync-docs-to-docusaurus.outputs.pull-request-number }}
+
+      - name: Summarise docs auto-merge handoff
+        if: ${{ always() }}
+        run: |
+          {
+            echo '## Enable Docs Auto-Merge'
+            echo ''
+            echo "| Field | Value |"
+            echo "| --- | --- |"
+            echo "| Repository | \`${{ github.repository }}\` |"
+            echo "| Ref | \`${{ github.ref_name }}\` |"
+            echo "| Workflow run | [#${{ github.run_number }} attempt ${{ github.run_attempt }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |"
+            echo "| Released tag | \`${{ needs.publish-packages.outputs.release_tag }}\` |"
+            echo "| Docs PR | [#${{ needs.sync-docs-to-docusaurus.outputs.pull-request-number }}](${{ github.server_url }}/ongov/design-system-developer-documentation-site/pull/${{ needs.sync-docs-to-docusaurus.outputs.pull-request-number }}) |"
+            echo "| PR operation | \`${{ needs.sync-docs-to-docusaurus.outputs.pull-request-operation }}\` |"
+            echo "| Auto-merge step | \`${{ steps.enable_automerge.outcome }}\` |"
+            echo "| Merge method | \`rebase\` |"
+          } >> "$GITHUB_STEP_SUMMARY"
