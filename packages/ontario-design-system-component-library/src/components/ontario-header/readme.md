@@ -496,6 +496,24 @@ application-header-info='{ "title": "Application name", "href": "/", "maxSubhead
 
 To ensure best practices, it is important to limit the number of navigation links passed to the `menuItems` property. We recommend a maximum of seven links, and to keep the labels for these links concise.
 
+## Custom event types
+
+### HeaderMenuToggleDetail
+
+Payload shape used by the `menuButtonToggled` custom event.
+
+```ts
+interface HeaderMenuToggleDetail {
+	isOpen: boolean;
+	trigger: 'click' | 'keyboard' | 'programmatic';
+}
+```
+
+| Property name | Type                                      | Description                                       |
+| ------------- | ----------------------------------------- | ------------------------------------------------- |
+| `isOpen`      | `boolean`                                 | Whether the menu is open after the toggle action. |
+| `trigger`     | `'click' \| 'keyboard' \| 'programmatic'` | How the toggle was triggered.                     |
+
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
 The Ontario Header component supports server-side rendering, with a few important limitations:
