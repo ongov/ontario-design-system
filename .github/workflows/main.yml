@@ -36,6 +36,8 @@ jobs:
     uses: ./.github/workflows/predict-release-tag.yml
     if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
     secrets: inherit
+    permissions:
+      contents: write # semantic-release dry-run still verifies git push access
 
   # Publish packages and release artifacts on release branches.
   publish-packages: # Job defined in a separate file (publish-packages.yml)
