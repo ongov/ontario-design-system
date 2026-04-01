@@ -1,3 +1,38 @@
+# 8.0.0-alpha.1 (2026-03-10)
+
+- **@ongov/ontario-design-system-component-library-angular:** feat(angular)!: expose package-root entry and style subpath exports f963cc5
+- **@ongov/ontario-design-system-global-styles:** feat(global-styles)!: remove dist scss export aliases ccb8d54
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library:** added ts-ignore flag to comment and updated logic to handle new value parameter 914d81a
+- **@ongov/ontario-design-system-component-library:** changed prop name to isDecorative c3eb59d
+- **@ongov/ontario-design-system-component-library:** fixed merge conficts 2d57216
+- **app-angular:** resolve Angular 21 build config and value accessor typings 220a8bb
+- **docker:** close arg parsing loop 1ca7d02
+
+### Features
+
+- **docker:** forward Playwright args into local runners 2d4fd48
+- **docker:** forward Playwright args via runner f748af8
+- **global-styles:** generate explicit sass export aliases 87d5bb4
+
+### BREAKING CHANGES
+
+- **@ongov/ontario-design-system-global-styles:** direct imports from
+  `@ongov/ontario-design-system-global-styles/dist/styles/scss/...`
+  are no longer exported.
+  Update Sass imports to
+  `@ongov/ontario-design-system-global-styles/styles/scss/...`
+  or
+  `pkg:@ongov/ontario-design-system-global-styles/styles/scss/...`.
+- **@ongov/ontario-design-system-component-library-angular:** `@ongov/ontario-design-system-component-library-angular/dist/component-library`
+  is no longer exported. Import
+  `@ongov/ontario-design-system-component-library-angular` instead.
+  Use
+  `@ongov/ontario-design-system-component-library-angular/styles/theme.scss`
+  for theme Sass imports.
+
 # 7.0.0 (2026-02-18)
 
 - **@ongov/ontario-design-system-complete-styles, @ongov/ontario-design-system-component-library-react, @ongov/ontario-design-system-component-library:** feat(react-lib)!: align output target + hydrate types for React 19 857071e

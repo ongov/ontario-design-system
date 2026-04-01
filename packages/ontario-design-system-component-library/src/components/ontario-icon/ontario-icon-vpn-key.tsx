@@ -25,6 +25,15 @@ export class OntarioIconVpnKey implements IconWithColour {
 	@State() iconWidthState: number;
 
 	/**
+	 * Whether the icon is decorative and should be hidden from assistive technologies.
+	 * When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element.
+	 * When set to false (default), the icon is exposed to assistive technologies with role="img".
+	 *
+	 * @default false
+	 */
+	@Prop() isDecorative: boolean = false;
+
+	/**
 	 * Watch for changes in the `iconWidth` variable for validation purpose.
 	 * If the user input is not a number or is a negative number then `iconWidth` will be set to its default (24).
 	 */
@@ -38,9 +47,7 @@ export class OntarioIconVpnKey implements IconWithColour {
 				.addRegularText('on')
 				.addMonospaceText(' <ontario-icon-vpn-key> ')
 				.addRegularText(
-					`${
-						isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'
-					}; only a positive number is allowed. The default size of`,
+					`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`,
 				)
 				.addMonospaceText(' 24px ')
 				.addRegularText('was assumed.')
@@ -127,7 +134,8 @@ export class OntarioIconVpnKey implements IconWithColour {
 				<svg
 					class="svg-icon"
 					style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}
-					role="img"
+					role={this.isDecorative ? undefined : 'img'}
+					aria-hidden={this.isDecorative ? 'true' : undefined}
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
 					id="vpn-key"

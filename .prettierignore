@@ -29,6 +29,9 @@ UserInterfaceState.xcuserstate
 # component-lib
 components.d.ts
 
+# stencil-generated
+**/stencil-generated/
+
 # component-lib-react
 createComponent.tsx
 interfaces.ts
@@ -43,4 +46,3 @@ interfaces.ts
 
 # Nx
 /.nx/workspace-data
-

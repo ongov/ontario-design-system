@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-component-library",
-	"version": "7.0.0",
+	"version": "8.0.0-alpha.1",
 	"type": "module",
 	"private": false,
 	"description": "Ontario Design System Component Library",
@@ -71,6 +71,7 @@
 		"test.watch": "stencil test --spec --e2e --watchAll",
 		"pretest:e2e": "pnpm run build:config",
 		"test:e2e": "playwright test",
+		"test:e2e:docker": "../../scripts/docker-compose.sh run --rm stencil-e2e-runner",
 		"pretest:unit": "pnpm run build:config",
 		"test:unit": "stencil test --spec"
 	},
@@ -83,7 +84,7 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "1.55.0",
-		"@stencil/angular-output-target": "^0.10.1",
+		"@stencil/angular-output-target": "^1.1.1",
 		"@stencil/playwright": "^0.2.1",
 		"@stencil/react-output-target": "^1.4.0",
 		"@stencil/sass": "^3.2.2",

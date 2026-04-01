@@ -9,7 +9,7 @@
 
 ## Introduction
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/). For more information, [find it on NPM](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-angular).
+This library is built using [`@stencil/angular-output-target`](https://www.npmjs.com/package/@stencil/angular-output-target) and supports Angular versions 20+. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/). For more information, [find it on NPM](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-angular).
 
 ## Installation and usage
 
@@ -17,42 +17,71 @@ To find documentation on individual web components in this component library, pl
 
 To use the Ontario Design System Angular component library, follow these steps:
 
-1. Install the npm package.
+### 1. Install the npm package
 
-   ```bash
-   npm install --save @ongov/ontario-design-system-component-library-angular
-   ```
+```bash
+npm install --save @ongov/ontario-design-system-component-library-angular
+```
 
-2. Add the theme file into your project. This can be done two main ways:
+### 2. Importing the component library styles
 
-   - Add the theme to the build styles in your projects `angular.json` file:
+There are three supported ways to include the Ontario Design System theme in your Angular application.
 
-     ```json
-     "build": {
-        "options": {
-           "styles": ["node_modules/@ongov/ontario-design-system-component-library-angular/dist/styles/theme.scss"]
-        }
-     }
-     ```
+**Option A: Direct Import in Angular Styles**
 
-   - Forward the theme in your main stylesheet:
+      Add the following to your global `styles.scss` file:
 
-     ```scss
-     @forward '@ongov/ontario-design-system-component-library-angular/dist/component-library/styles/theme.scss';
-     ```
+      ```scss
+      @forward 'pkg:@ongov/ontario-design-system-component-library-angular/styles/theme.scss';
+      ```
 
-3. Import the `ComponentLibraryModule`, or whichever specific component you wish to use into your root module. The `ComponentLibraryModule` import will include all the Ontario Design System web components.
+**Option B: Create a Separate Styles File**
 
-   ```typescript
-   import { ComponentLibraryModule } from '@ongov/ontario-design-system-component-library-angular/dist/component-library';
+Alternatively, you can create a new SCSS file (e.g., `theme.scss`). If you need to override the global styles theme with a custom asset base path, you can create a local theme wrapper that forwards the global styles and sets `$asset-base-path`, then import that wrapper in your app entry point.
 
-   @NgModule({
-   	imports: [ComponentLibraryModule],
-   })
-   export class AppModule {}
-   ```
+```scss
+@forward 'pkg:@ongov/ontario-design-system-component-library-angular/styles/theme.scss' with (
+	$asset-base-path: '/assets'
+);
+```
 
-### Asset path configuration (optional)
+Then, include this file in your Angular project by adding it to the `styles` array in `angular.json`:
+
+```json
+"styles": [
+   "src/theme.scss"
+]
+```
+
+**Option C: Add the Design System theme CSS**
+
+Add the following to the styles array in your project’s `angular.json` file:
+
+```bash
+"build": {
+"options": {
+   "styles": [
+      "node_modules/@ongov/ontario-design-system-global-styles/dist/styles/css/compiled/ontario-theme.css"
+   ]
+}
+```
+
+You may also use the minified version in production if desired: `ontario-theme.min.css`.
+
+### 3. Import the ComponentLibraryModule
+
+Import `ComponentLibraryModule` into your root module. This registers all Ontario Design System web components for use in your Angular application.
+
+```typescript
+import { ComponentLibraryModule } from '@ongov/ontario-design-system-component-library-angular';
+
+@NgModule({
+	imports: [ComponentLibraryModule],
+})
+export class AppModule {}
+```
+
+## Asset path configuration (optional)
 
 If your app serves component assets (fonts, images, favicons) from a non-root path, configure the asset base path before components render.
 
@@ -62,16 +91,7 @@ import { setAssetPath } from '@ongov/ontario-design-system-component-library-ang
 setAssetPath(`${window.location.origin}/assets/`);
 ```
 
-If you need to override the global styles theme with a custom asset base path, create a local theme wrapper that forwards the global styles and sets `$asset-base-path`, then import that wrapper in your app entry point.
-
-```scss
-// src/styles/ontario-theme.scss
-@forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss' with (
-	$asset-base-path: '/assets'
-);
-```
-
-### Usage
+## Usage
 
 You can now use the Angular Components in your component template files.
 
@@ -79,7 +99,7 @@ You can now use the Angular Components in your component template files.
 <ontario-button type="primary">Primary Button</ontario-button>
 ```
 
-### Local assets
+## Local assets
 
 Along with the components, the local assets (logos, fonts, etc.) need to be copied into your project so that they are available for bundling upon building your Angular application.
 
