@@ -132,14 +132,14 @@ export declare interface OntarioBlockquote extends Components.OntarioBlockquote 
 
 
 @ProxyCmp({
-  inputs: ['ariaLabelText', 'elementId', 'htmlType', 'label', 'type']
+  inputs: ['ariaLabelText', 'elementId', 'href', 'htmlType', 'label', 'rel', 'target', 'type']
 })
 @Component({
   selector: 'ontario-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['ariaLabelText', 'elementId', 'htmlType', 'label', 'type'],
+  inputs: ['ariaLabelText', 'elementId', 'href', 'htmlType', 'label', 'rel', 'target', 'type'],
   standalone: false
 })
 export class OntarioButton {
