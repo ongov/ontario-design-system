@@ -30,6 +30,7 @@
 			"import": "./dist/react-component-lib/index.js",
 			"default": "./dist/react-component-lib/index.js"
 		},
+		"./package.json": "./package.json",
 		"./styles": {
 			"default": "./dist/styles/theme.scss"
 		},
