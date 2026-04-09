@@ -254,6 +254,11 @@ export class OntarioDateInput {
 			return;
 		}
 
+		if (typeof newValue !== 'undefined' && typeof newValue !== 'string') {
+			this.logInvalidValueProp(newValue);
+			return;
+		}
+
 		if (!newValue) {
 			this.day = '';
 			this.month = '';
@@ -364,8 +369,18 @@ export class OntarioDateInput {
 		return { year, month, day, normalizedValue };
 	}
 
-	private logInvalidValueProp(value: string) {
+	private logInvalidValueProp(value: unknown) {
 		const message = new ConsoleMessageClass();
+		const formattedValue =
+			typeof value === 'string'
+				? value
+				: (() => {
+						try {
+							return JSON.stringify(value);
+						} catch {
+							return String(value);
+						}
+					})();
 		message
 			.addDesignSystemTag()
 			.addRegularText(' invalid ')
@@ -373,7 +388,7 @@ export class OntarioDateInput {
 			.addRegularText('on')
 			.addMonospaceText(' <ontario-date-input> ')
 			.addRegularText('received')
-			.addMonospaceText(` ${value} `)
+			.addMonospaceText(` ${formattedValue} `)
 			.addRegularText('Expected a plain ISO date (`YYYY-MM-DD`) or full ISO 8601 timestamp.')
 			.printMessage(ConsoleType.Error);
 	}

@@ -335,6 +335,28 @@ describe('ontario-date-input', () => {
 
 		consoleErrorSpy.mockRestore();
 	});
+
+	it('reports an error and ignores array aggregate values passed at runtime', async () => {
+		const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input value="2024-02-20"></ontario-date-input>`,
+		});
+
+		(page.root as HTMLOntarioDateInputElement).value = ['2024-02-20'] as unknown as string;
+		await page.waitForChanges();
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+
+		expect(inputs?.[0].value).toBe('2024');
+		expect(inputs?.[1].value).toBe('02');
+		expect(inputs?.[2].value).toBe('20');
+		expect((page.root as HTMLOntarioDateInputElement).value).toEqual(['2024-02-20']);
+		expect(consoleErrorSpy).toHaveBeenCalled();
+
+		consoleErrorSpy.mockRestore();
+	});
 });
 
 describe('date-validation-utils', () => {

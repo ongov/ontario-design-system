@@ -50,6 +50,30 @@ test.describe('ontario-checkboxes', () => {
 		});
 	});
 
+	test('updates the component value and emits host/custom change details when a checkbox is unchecked', async ({
+		page,
+	}) => {
+		await labels.nth(0).click();
+		await page.waitForChanges();
+		await labels.nth(1).click();
+		await page.waitForChanges();
+		await labels.nth(1).click();
+		await page.waitForChanges();
+
+		expect(await host.evaluate((element: HTMLOntarioCheckboxesElement) => element.value)).toEqual([
+			'checkbox-option-1',
+		]);
+		await expect(changeSpy).toHaveReceivedEventDetail({
+			value: ['checkbox-option-1'],
+		});
+		expect(checkboxOnChangeSpy.events.length).toBeGreaterThan(0);
+		expect(checkboxOnChangeSpy.events[checkboxOnChangeSpy.events.length - 1].detail).toEqual({
+			checked: false,
+			id: 'checkbox-2',
+			value: 'checkbox-option-2',
+		});
+	});
+
 	test('applies external value updates to the rendered checkbox selection', async ({ page }) => {
 		await host.evaluate((element: HTMLOntarioCheckboxesElement) => {
 			element.value = ['checkbox-option-2'];
