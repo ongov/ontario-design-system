@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ontario-step-indicator renders 1`] = `
+exports[`ontario-step-indicator snapshots renders 1`] = `
 <ontario-step-indicator>
   <template shadowrootmode="open">
     <div class="ontario-step-indicator">
@@ -19,7 +19,7 @@ exports[`ontario-step-indicator renders 1`] = `
 </ontario-step-indicator>
 `;
 
-exports[`ontario-step-indicator renders the expected percentage and back-link output shape 1`] = `
+exports[`ontario-step-indicator snapshots renders the expected percentage and back-link output shape 1`] = `
 <ontario-step-indicator back-button-url="https://designsystem.ontario.ca/" percentage-complete="70" show-back-button="true">
   <template shadowrootmode="open">
     <div class="ontario-step-indicator">
@@ -42,7 +42,7 @@ exports[`ontario-step-indicator renders the expected percentage and back-link ou
 </ontario-step-indicator>
 `;
 
-exports[`ontario-step-indicator renders the expected step output shape 1`] = `
+exports[`ontario-step-indicator snapshots renders the expected step output shape 1`] = `
 <ontario-step-indicator current-step="2" number-of-steps="5">
   <template shadowrootmode="open">
     <div class="ontario-step-indicator">
