@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ontario-step-indicator renders the default output 1`] = `
+<ontario-step-indicator>
+  <template shadowrootmode="open">
+    <div class="ontario-step-indicator">
+      <div class="ontario-row">
+        <div class="ontario-columns ontario-small-12">
+          <div class="ontario-step-indicator--with-back-button--false">
+            <span class="ontario-h4">
+              Step&nbsp;? of&nbsp;?
+            </span>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </template>
+</ontario-step-indicator>
+`;
+
+exports[`ontario-step-indicator renders the percentage output shape with a back link 1`] = `
+<ontario-step-indicator back-button-url="https://designsystem.ontario.ca/" percentage-complete="70" show-back-button="true">
+  <template shadowrootmode="open">
+    <div class="ontario-step-indicator">
+      <div class="ontario-row">
+        <div class="ontario-columns ontario-small-12">
+          <div class="ontario-step-indicator--with-back-button--true">
+            <a class="ontario-button ontario-button--tertiary" href="https://designsystem.ontario.ca/">
+              <ontario-icon-chevron-left aria-hidden="true" colour="blue"></ontario-icon-chevron-left>
+              Back
+            </a>
+            <span class="ontario-h4">
+              70% complete
+            </span>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </template>
+</ontario-step-indicator>
+`;
+
+exports[`ontario-step-indicator renders the step output shape 1`] = `
+<ontario-step-indicator current-step="2" number-of-steps="5">
+  <template shadowrootmode="open">
+    <div class="ontario-step-indicator">
+      <div class="ontario-row">
+        <div class="ontario-columns ontario-small-12">
+          <div class="ontario-step-indicator--with-back-button--false">
+            <span class="ontario-h4">
+              Step&nbsp;2 of&nbsp;5
+            </span>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </template>
+</ontario-step-indicator>
+`;
